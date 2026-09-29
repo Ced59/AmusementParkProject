@@ -28,6 +28,9 @@ public sealed class LiveObservationProvenanceDocument
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
     public DateTime NormalizedAtUtc { get; set; }
 
+    [BsonElement("normalizedAtUtcTicks")]
+    public long NormalizedAtUtcTicks { get; set; }
+
     [BsonElement("correlationId")]
     public string CorrelationId { get; set; } = string.Empty;
 

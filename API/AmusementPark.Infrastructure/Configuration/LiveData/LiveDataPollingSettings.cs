@@ -9,6 +9,8 @@ public sealed class LiveDataPollingSettings
 
     public bool Enabled { get; set; }
 
+    public bool PublicReadEnabled { get; set; }
+
     public int LoopDelaySeconds { get; set; } = 15;
 
     public int LeaseDurationSeconds { get; set; } = 60;

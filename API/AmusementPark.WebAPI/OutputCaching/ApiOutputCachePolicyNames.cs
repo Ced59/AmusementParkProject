@@ -14,11 +14,13 @@ public static class ApiOutputCachePolicyNames
     public const string PublicParkItemDetailData = "public-park-item-detail-data";
     public const string PublicPricingData = "public-pricing-data";
     public const string PublicWeatherDataShort = "public-weather-data-short";
+    public const string PublicLiveData = "public-live-data";
     public const string PublicReferenceData = "public-reference-data";
 
     public const string PublicSeoTag = "public-seo";
     public const string PublicDataTag = "public-data";
     public const string PublicRatingDataTag = "public-rating-data";
     public const string PublicWeatherDataTag = "public-weather-data";
+    public const string PublicLiveDataTag = "public-live-data";
     public const string PublicReferenceDataTag = "public-reference-data";
 }

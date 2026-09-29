@@ -1,6 +1,20 @@
 {
-  "version": "5.4.7",
+  "version": "5.4.8",
   "history": [
+    {
+      "version": "5.4.8",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les futures informations en direct expliquent clairement leur fraîcheur et leur source.",
+        "en": "Future live information clearly explains its freshness and source.",
+        "de": "Künftige Live-Informationen zeigen ihre Aktualität und Quelle klar an.",
+        "nl": "Toekomstige live-informatie toont duidelijk de actualiteit en bron.",
+        "it": "Le future informazioni in tempo reale indicano chiaramente freschezza e fonte.",
+        "es": "La futura información en directo indica claramente su vigencia y su fuente.",
+        "pl": "Przyszłe informacje na żywo jasno wskazują aktualność i źródło.",
+        "pt": "As futuras informações em direto indicam claramente a atualidade e a fonte."
+      }
+    },
     {
       "version": "5.4.7",
       "releasedAt": "2026-09-29",

@@ -18,6 +18,47 @@ public sealed class LiveLatestObservationRepository : ILiveLatestObservationRepo
             settings.LiveLatestObservationsCollectionName);
     }
 
+    public async Task<IReadOnlyCollection<LiveLatestObservation>> GetByTargetAsync(
+        LiveTargetType targetType,
+        string targetId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedTargetId = NormalizeIdentifier(targetId, nameof(targetId));
+        FilterDefinition<LiveLatestObservationDocument> filter =
+            Builders<LiveLatestObservationDocument>.Filter.And(
+                Builders<LiveLatestObservationDocument>.Filter.Eq(
+                    "target.type",
+                    targetType.ToString()),
+                Builders<LiveLatestObservationDocument>.Filter.Eq(
+                    "target.id",
+                    normalizedTargetId));
+        List<LiveLatestObservationDocument> documents = await this.collection
+            .Find(filter)
+            .Limit(16)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToList().AsReadOnly();
+    }
+
+    public async Task<IReadOnlyCollection<LiveLatestObservation>> GetParkItemsAsync(
+        string parkId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = NormalizeIdentifier(parkId, nameof(parkId));
+        FilterDefinition<LiveLatestObservationDocument> filter =
+            Builders<LiveLatestObservationDocument>.Filter.And(
+                Builders<LiveLatestObservationDocument>.Filter.Eq(
+                    "target.type",
+                    LiveTargetType.ParkItem.ToString()),
+                Builders<LiveLatestObservationDocument>.Filter.Eq(
+                    "target.parkId",
+                    normalizedParkId));
+        List<LiveLatestObservationDocument> documents = await this.collection
+            .Find(filter)
+            .Limit(2_000)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToList().AsReadOnly();
+    }
+
     public async Task<LiveLatestObservationWriteResult> WriteLatestAsync(
         IReadOnlyCollection<LiveLatestObservation> observations,
         CancellationToken cancellationToken)
@@ -46,5 +87,15 @@ public sealed class LiveLatestObservationRepository : ILiveLatestObservationRepo
         int updatedCount = checked((int)result.ModifiedCount);
         int ignoredCount = observations.Count - insertedCount - updatedCount;
         return new LiveLatestObservationWriteResult(insertedCount, updatedCount, ignoredCount);
+    }
+
+    private static string NormalizeIdentifier(string value, string parameterName)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new ArgumentException("A live target identifier is required.", parameterName);
+        }
+
+        return value.Trim();
     }
 }

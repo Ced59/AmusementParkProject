@@ -73,6 +73,22 @@ public sealed class PublicHttpCacheHeadersApplicatorTests
     }
 
     [Fact]
+    public void Apply_WhenPublicLiveResponseAlreadyRequiresRevalidation_ShouldKeepShortCache()
+    {
+        DefaultHttpContext context = new DefaultHttpContext();
+        context.Request.Method = HttpMethods.Get;
+        context.Request.Path = "/public/live/parks/park-1/items";
+        context.Response.StatusCode = StatusCodes.Status200OK;
+        context.Response.Headers.CacheControl = "public,max-age=30,must-revalidate";
+
+        PublicHttpCacheHeadersApplicator.Apply(context);
+
+        Assert.Equal(
+            "public,max-age=30,must-revalidate",
+            context.Response.Headers.CacheControl.ToString());
+    }
+
+    [Fact]
     public void Apply_WhenStandaloneAttractionMutationUsesControllerRoot_ShouldNotApplyPublicRule()
     {
         DefaultHttpContext context = new DefaultHttpContext();

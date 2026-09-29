@@ -67,9 +67,40 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
 
         Assert.Equal(0, Assert.Single(document.Queues).WaitTimeMinutes);
         Assert.Equal(ObservedAtUtc.Ticks, document.Provenance.ObservedAtUtcTicks);
+        Assert.Equal(
+            ObservedAtUtc.AddSeconds(10).Ticks,
+            document.Provenance.NormalizedAtUtcTicks);
         Assert.Equal(ObservedAtUtc.AddMinutes(30), document.ExpiresAtUtc);
         Assert.Equal("freshness-1", document.FreshnessPolicy.Version);
         Assert.Equal(new string('c', 64), document.PayloadSha256);
+    }
+
+    [Fact]
+    public void ToDomain_ShouldRestoreSubMillisecondTimestampsAndZeroWait()
+    {
+        LiveLatestObservation expected = CreateObservation();
+
+        LiveLatestObservation actual = expected.ToDocument().ToDomain();
+
+        Assert.Equal(expected.Provenance.ObservedAtUtc, actual.Provenance.ObservedAtUtc);
+        Assert.Equal(expected.Provenance.ReceivedAtUtc, actual.Provenance.ReceivedAtUtc);
+        Assert.Equal(expected.Provenance.NormalizedAtUtc, actual.Provenance.NormalizedAtUtc);
+        Assert.Equal(0, Assert.Single(actual.Queues).WaitTimeMinutes);
+    }
+
+    [Fact]
+    public void ToDomain_ShouldKeepLegacyNormalizedTimestampAfterExactReceivedTimestamp()
+    {
+        LiveLatestObservationDocument document = CreateObservation().ToDocument();
+        document.Provenance.NormalizedAtUtcTicks = 0;
+        document.Provenance.NormalizedAtUtc = new DateTime(
+            document.Provenance.ReceivedAtUtc.Ticks -
+                (document.Provenance.ReceivedAtUtc.Ticks % TimeSpan.TicksPerMillisecond),
+            DateTimeKind.Utc);
+
+        LiveLatestObservation actual = document.ToDomain();
+
+        Assert.Equal(actual.Provenance.ReceivedAtUtc, actual.Provenance.NormalizedAtUtc);
     }
 
     private static LiveLatestObservation CreateObservation(
