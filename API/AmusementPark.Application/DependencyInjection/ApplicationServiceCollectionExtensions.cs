@@ -98,9 +98,12 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<LiveOperationsDashboardReader>();
         services.AddSingleton<LiveLatestObservationSelectionPolicy>();
         services.AddSingleton<LiveWaitHistoryStatisticsCalculator>();
+        services.AddSingleton<LiveWaitForecastBacktestPolicy>();
+        services.AddSingleton<LiveWaitForecastBacktestCalculator>();
         services.AddScoped<PublicLiveTargetResultFactory>();
         services.AddScoped<PublicLiveLatestReader>();
         services.AddScoped<PublicLiveHistoryReader>();
+        services.AddScoped<LiveWaitForecastBacktestReader>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();

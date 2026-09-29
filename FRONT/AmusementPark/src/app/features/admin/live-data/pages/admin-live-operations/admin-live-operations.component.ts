@@ -7,6 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
   LiveOperationalScope,
   LivePollingDisposition,
+  LiveWaitForecastBacktestReason,
+  LiveWaitForecastBacktestVerdict,
   UpdateLiveOperationalControlRequest
 } from '@app/models/admin/live-data/live-operations.models';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -47,6 +49,9 @@ export class AdminLiveOperationsComponent implements OnInit {
   protected readonly dashboard = this.facade.dashboard;
   protected readonly pendingScopeKey = this.facade.pendingScopeKey;
   protected readonly replayPending = this.facade.replayPending;
+  protected readonly backtestPendingTargetId = this.facade.backtestPendingTargetId;
+  protected readonly backtest = this.facade.backtest;
+  protected readonly backtestErrorKey = this.facade.backtestErrorKey;
   protected readonly feedbackKey = this.facade.feedbackKey;
   protected readonly mutationErrorKey = this.facade.mutationErrorKey;
   protected readonly pendingChange = signal<PendingLiveOperationalChange | null>(null);
@@ -139,6 +144,36 @@ export class AdminLiveOperationsComponent implements OnInit {
 
   protected pollingDispositionKey(disposition: LivePollingDisposition): string {
     return `admin.liveOperations.polling.disposition.${disposition}`;
+  }
+
+  protected canRunBacktest(scope: LiveOperationalScope): boolean {
+    return scope.scopeType === 'Target'
+      && scope.targetType === 'ParkItem'
+      && scope.internalTargetId !== null;
+  }
+
+  protected runBacktest(scope: LiveOperationalScope): void {
+    if (this.canRunBacktest(scope) && scope.internalTargetId !== null) {
+      this.facade.runForecastBacktest(scope.internalTargetId);
+    }
+  }
+
+  protected backtestVerdictKey(verdict: LiveWaitForecastBacktestVerdict): string {
+    return `admin.liveOperations.backtest.verdict.${verdict}`;
+  }
+
+  protected backtestReasonKey(reason: LiveWaitForecastBacktestReason): string {
+    return `admin.liveOperations.backtest.reason.${reason}`;
+  }
+
+  protected backtestSeverity(
+    verdict: LiveWaitForecastBacktestVerdict
+  ): 'success' | 'warning' | 'danger' {
+    if (verdict === 'EligibleForPilot') {
+      return 'success';
+    }
+
+    return verdict === 'Abandon' ? 'danger' : 'warning';
   }
 
   private openChange(

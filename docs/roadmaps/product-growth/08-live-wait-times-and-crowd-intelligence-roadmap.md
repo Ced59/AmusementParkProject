@@ -2,7 +2,7 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` à `LIVE-12` livrés au 29 septembre 2026. La source pilote,
+> Statut : `LIVE-01` à `LIVE-14` livrés au 29 septembre 2026. La source pilote,
 > sa provenance, ses mappings, son affichage first-party, ses contrôles
 > opérationnels, ses alertes temporaires et son historique borné sont
 > implémentés. La collecte et la lecture publique restent pilotées par deux
@@ -74,10 +74,15 @@ opérationnels expirés. Le cache de 30 secondes et son ETag ne dépassent jamai
 fraîcheur métier. Le détail est consigné dans
 [`product-growth-live-08-latest-api-cache-2026-09-29.md`](../../architecture/product-growth-live-08-latest-api-cache-2026-09-29.md).
 
-Le prochain jalon est `LIVE-14` : étudier une prévision avec une baseline et un
-backtest reproductible. Cette étude doit pouvoir conclure à l'abandon si les
-données ne battent pas une référence simple ; aucune prévision publique n'est
-encore autorisée.
+`LIVE-14` livre la comparaison chronologique d'une candidate « même jour de la
+semaine » avec une référence horaire simple. Le rapport mesure les erreurs,
+l'intervalle et la dérive, puis conclut données insuffisantes, abandon ou
+éligibilité à un pilote. Le détail est consigné dans
+[`product-growth-live-14-forecast-backtest-2026-09-29.md`](../../architecture/product-growth-live-14-forecast-backtest-2026-09-29.md).
+
+Le prochain jalon est `LIVE-15` : une prévision publique strictement
+conditionnelle. Elle ne pourra apparaître que pour une cible éligible et devra
+afficher sa fourchette, sa méthode, sa date et son erreur mesurée.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -802,7 +807,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-11`](../../architecture/product-growth-live-11-temporary-alerts-2026-09-29.md) | ✅ Alertes temporaires | Hystérésis/expiration |
 | [`LIVE-12`](../../architecture/product-growth-live-12-authorized-history-2026-09-29.md) | ✅ Historique autorisé | Rétention et buckets |
 | [`LIVE-13`](../../architecture/product-growth-live-13-descriptive-statistics-2026-09-29.md) | ✅ Statistiques descriptives | Volumes/lacunes visibles |
-| `LIVE-14` | Étude prévision/backtest | Peut conclure à l’abandon |
+| [`LIVE-14`](../../architecture/product-growth-live-14-forecast-backtest-2026-09-29.md) | ✅ Étude prévision/backtest | Peut conclure à l’abandon |
 | `LIVE-15` | Prévision publique conditionnelle | Intervalle et erreur publiés |
 
 ### Implémentation `LIVE-02` — 28 septembre 2026
@@ -977,6 +982,21 @@ mapping humain et kill switches sont revérifiés avant chaque réponse. Le calc
 pur appartient à Core, MongoDB utilise un index dédié et Angular charge le bloc
 hors SSR via un port et une façade. La grille se replie jusqu'à 320 px sans
 déborder du viewport et conserve une description accessible de chaque tranche.
+
+### Implémentation `LIVE-14` — 29 septembre 2026
+
+La version `5.4.17` ajoute au pilotage live une étude reproductible par
+attraction. Chaque attente évaluée est une médiane horaire et n'est comparée
+qu'à des données strictement antérieures : une référence « même heure » affronte
+une candidate « même jour de semaine et même heure ». Le rapport montre les MAE,
+la couverture et la largeur de l'intervalle 10–90 %, ainsi que la dérive récente.
+
+Avant 100 points sur 14 jours, la conclusion reste « données insuffisantes ».
+Après ce seuil, une candidate qui ne réduit pas le MAE d'au moins 5 %, produit
+un intervalle inutilisable ou dérive conduit explicitement à l'abandon. Seul le
+troisième verdict, « éligible à un pilote », pourra ouvrir LIVE-15. La route et
+l'interface restent réservées à l'administration ; aucune prévision publique
+n'est créée par ce jalon.
 
 ## 24. Gate finale `LIVE-G`
 

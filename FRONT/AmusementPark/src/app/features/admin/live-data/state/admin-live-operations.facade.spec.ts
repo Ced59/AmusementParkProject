@@ -5,6 +5,7 @@ import {
   LiveOperationalScope,
   LiveOperationsDashboard,
   LiveQualityReplay,
+  LiveWaitForecastBacktest,
   UpdateLiveOperationalControlRequest
 } from '@app/models/admin/live-data/live-operations.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -21,7 +22,8 @@ describe('AdminLiveOperationsFacade', () => {
     const port: AdminLiveOperationsDataPort = {
       getDashboard: vi.fn().mockReturnValue(of(dashboard)),
       updateControl: vi.fn().mockReturnValue(of(scope)),
-      replayQuarantine: vi.fn()
+      replayQuarantine: vi.fn(),
+      getForecastBacktest: vi.fn()
     };
     TestBed.configureTestingModule({
       providers: [
@@ -59,7 +61,8 @@ describe('AdminLiveOperationsFacade', () => {
     const port: AdminLiveOperationsDataPort = {
       getDashboard: vi.fn().mockReturnValue(of(dashboard)),
       updateControl: vi.fn(),
-      replayQuarantine: vi.fn().mockReturnValue(of(replay))
+      replayQuarantine: vi.fn().mockReturnValue(of(replay)),
+      getForecastBacktest: vi.fn()
     };
     TestBed.configureTestingModule({
       providers: [
@@ -75,7 +78,52 @@ describe('AdminLiveOperationsFacade', () => {
     expect(facade.feedbackKey()).toBe('admin.liveOperations.messages.replayBlocked');
     expect(port.getDashboard).toHaveBeenCalledTimes(1);
   });
+
+  it('runs a forecast backtest without exposing a public prediction', () => {
+    const dashboard: LiveOperationsDashboard = createDashboard();
+    const backtest: LiveWaitForecastBacktest = createBacktest();
+    const port: AdminLiveOperationsDataPort = {
+      getDashboard: vi.fn().mockReturnValue(of(dashboard)),
+      updateControl: vi.fn(),
+      replayQuarantine: vi.fn(),
+      getForecastBacktest: vi.fn().mockReturnValue(of(backtest))
+    };
+    TestBed.configureTestingModule({
+      providers: [
+        provideCommonTestDependencies(),
+        AdminLiveOperationsFacade,
+        { provide: ADMIN_LIVE_OPERATIONS_DATA_PORT, useValue: port }
+      ]
+    });
+    const facade: AdminLiveOperationsFacade = TestBed.inject(AdminLiveOperationsFacade);
+
+    facade.runForecastBacktest('item-1');
+
+    expect(port.getForecastBacktest).toHaveBeenCalledWith('item-1');
+    expect(facade.backtest()).toEqual(backtest);
+    expect(facade.backtestPendingTargetId()).toBeNull();
+  });
 });
+
+function createBacktest(): LiveWaitForecastBacktest {
+  return {
+    targetDisplayName: 'Taron', parkDisplayName: 'Phantasialand',
+    studyVersion: 'live-wait-backtest-v1', verdict: 'InsufficientData',
+    reasons: ['InsufficientEvaluationPoints'],
+    evaluationFromUtc: '2026-06-01T00:00:00Z', evaluationToUtc: '2026-09-01T00:00:00Z',
+    timeZoneId: 'Europe/Paris', sourceObservationCount: 10, hourlyPointCount: 2,
+    evaluationPointCount: 0, evaluationDays: 0, baseline: null, candidate: null,
+    maeImprovementPercent: null, intervalMethod: 'rolling-weekday-hour-p10-p90-v1',
+    intervalCoveragePercent: null, medianIntervalWidthMinutes: null,
+    olderCandidateMaeMinutes: null, recentCandidateMaeMinutes: null, driftPercent: null,
+    driftDetected: false,
+    policy: { trainingWindowDays: 84, minimumEvaluationDays: 14,
+      minimumEvaluationPoints: 100, requiredMaeImprovementPercent: 5,
+      nominalIntervalCoveragePercent: 80, minimumIntervalCoveragePercent: 70,
+      maximumUsefulMedianIntervalWidthMinutes: 60, driftThresholdPercent: 25 },
+    generatedAtUtc: '2026-09-29T00:00:00Z'
+  };
+}
 
 function createDashboard(): LiveOperationsDashboard {
   const scope: LiveOperationalScope = {

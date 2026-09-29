@@ -87,3 +87,61 @@ export interface LiveQualityReplay {
   readonly persistedCount: number;
   readonly ignoredAsOlderCount: number;
 }
+
+export type LiveWaitForecastBacktestVerdict =
+  | 'InsufficientData'
+  | 'Abandon'
+  | 'EligibleForPilot';
+
+export type LiveWaitForecastBacktestReason =
+  | 'InsufficientEvaluationPoints'
+  | 'InsufficientEvaluationDays'
+  | 'BaselineNotBeaten'
+  | 'IntervalMiscalibrated'
+  | 'DriftDetected'
+  | 'CandidatePassed';
+
+export interface LiveWaitForecastBacktestMetric {
+  readonly method: string;
+  readonly meanAbsoluteErrorMinutes: number;
+  readonly medianAbsoluteErrorMinutes: number;
+  readonly p90AbsoluteErrorMinutes: number;
+}
+
+export interface LiveWaitForecastBacktestPolicy {
+  readonly trainingWindowDays: number;
+  readonly minimumEvaluationDays: number;
+  readonly minimumEvaluationPoints: number;
+  readonly requiredMaeImprovementPercent: number;
+  readonly nominalIntervalCoveragePercent: number;
+  readonly minimumIntervalCoveragePercent: number;
+  readonly maximumUsefulMedianIntervalWidthMinutes: number;
+  readonly driftThresholdPercent: number;
+}
+
+export interface LiveWaitForecastBacktest {
+  readonly targetDisplayName: string;
+  readonly parkDisplayName: string;
+  readonly studyVersion: string;
+  readonly verdict: LiveWaitForecastBacktestVerdict;
+  readonly reasons: readonly LiveWaitForecastBacktestReason[];
+  readonly evaluationFromUtc: string;
+  readonly evaluationToUtc: string;
+  readonly timeZoneId: string;
+  readonly sourceObservationCount: number;
+  readonly hourlyPointCount: number;
+  readonly evaluationPointCount: number;
+  readonly evaluationDays: number;
+  readonly baseline: LiveWaitForecastBacktestMetric | null;
+  readonly candidate: LiveWaitForecastBacktestMetric | null;
+  readonly maeImprovementPercent: number | null;
+  readonly intervalMethod: string;
+  readonly intervalCoveragePercent: number | null;
+  readonly medianIntervalWidthMinutes: number | null;
+  readonly olderCandidateMaeMinutes: number | null;
+  readonly recentCandidateMaeMinutes: number | null;
+  readonly driftPercent: number | null;
+  readonly driftDetected: boolean;
+  readonly policy: LiveWaitForecastBacktestPolicy;
+  readonly generatedAtUtc: string;
+}

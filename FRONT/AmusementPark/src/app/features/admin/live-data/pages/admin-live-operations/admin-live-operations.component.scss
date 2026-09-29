@@ -6,6 +6,8 @@
 .live-operations__hero > div,
 .live-operations__polling,
 .live-operations__controls,
+.live-operations__backtest,
+.live-operations__backtest-method,
 .live-operations__scope-list,
 .live-operations__scope,
 .live-operations__scope header,
@@ -63,12 +65,79 @@
 .live-operations__hero,
 .live-operations__polling,
 .live-operations__controls,
+.live-operations__backtest,
 .live-operations__technical {
   margin-bottom: 1rem;
   padding: 1rem;
   border: 1px solid var(--app-border);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, .04);
+}
+
+.live-operations__backtest {
+  border-color: color-mix(in srgb, var(--c-sky) 45%, var(--app-border));
+}
+
+.live-operations__backtest-warning {
+  display: flex;
+  gap: .55rem;
+  margin: .9rem 0;
+  padding: .75rem;
+  border-radius: .75rem;
+  color: var(--app-text-muted);
+  background: color-mix(in srgb, var(--c-sky) 8%, transparent);
+}
+
+.live-operations__backtest-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .7rem;
+}
+
+.live-operations__backtest-metrics article {
+  display: grid;
+  gap: .3rem;
+  min-width: 0;
+  padding: .75rem;
+  border-radius: .75rem;
+  background: rgba(0, 0, 0, .16);
+}
+
+.live-operations__backtest-metrics span,
+.live-operations__backtest-metrics small {
+  color: var(--app-text-muted);
+}
+
+.live-operations__backtest-metrics strong {
+  color: var(--app-heading);
+  font-size: 1.2rem;
+}
+
+.live-operations__backtest-reasons {
+  margin: .9rem 0;
+  padding-inline-start: 1.25rem;
+}
+
+.live-operations__backtest-method {
+  padding: .75rem;
+  border: 1px solid var(--app-border);
+  border-radius: .75rem;
+  overflow: clip;
+}
+
+.live-operations__backtest-method summary {
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.live-operations__backtest-method dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+}
+
+.live-operations__backtest-method dl > div {
+  min-width: 0;
 }
 
 .live-operations__feedback--success {
@@ -283,7 +352,9 @@
 
 @media (max-width: 40rem) {
   .live-operations__metrics,
+  .live-operations__backtest-metrics,
   .live-operations__polling dl,
+  .live-operations__backtest-method dl,
   .live-operations__technical dl {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -311,6 +382,7 @@
   .live-operations__hero,
   .live-operations__polling,
   .live-operations__controls,
+  .live-operations__backtest,
   .live-operations__technical,
   .live-operations__scope {
     padding: .75rem;
