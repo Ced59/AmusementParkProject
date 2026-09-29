@@ -39,6 +39,99 @@ public sealed class LivePollingOrchestratorTests
     }
 
     [Fact]
+    public async Task ExecuteAsync_WhenSourceStopWinsAdmission_ShouldNotCallProvider()
+    {
+        LiveOperationalWriteCoordinator coordinator = new LiveOperationalWriteCoordinator();
+        TaskCompletionSource stopEntered = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource releaseStop = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        Task<int> stop = coordinator.RunAsync(
+            SourceId,
+            "entity-1",
+            async _ =>
+            {
+                stopEntered.SetResult();
+                await releaseStop.Task;
+                return 1;
+            },
+            CancellationToken.None);
+        await stopEntered.Task;
+
+        TaskCompletionSource leaseAcquired = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        LivePollingCompletion? savedCompletion = null;
+        Mock<ILivePollingStateRepository> repository =
+            new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.TryAcquireAsync(
+                It.IsAny<LivePollingLeaseRequest>(),
+                It.IsAny<CancellationToken>()))
+            .Callback(() => leaseAcquired.SetResult())
+            .ReturnsAsync(new LivePollingLease(
+                SourceId,
+                "entity-1",
+                "worker-1",
+                "lease-1",
+                "\"old\"",
+                NowUtc.AddMinutes(-5),
+                0,
+                null));
+        repository.Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveOperationalGate> gate =
+            new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.SetupSequence(value => value.LoadAsync(
+                SourceId,
+                "entity-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveOperationalGateSnapshot(
+                true,
+                true,
+                "entity-1",
+                Array.Empty<LiveOperationalControl>(),
+                new LiveOperationalControlPolicy()))
+            .ReturnsAsync(new LiveOperationalGateSnapshot(
+                false,
+                true,
+                "entity-1",
+                Array.Empty<LiveOperationalControl>(),
+                new LiveOperationalControlPolicy()));
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        LivePollingOrchestrator orchestrator = new LivePollingOrchestrator(
+            new[] { adapter.Object },
+            repository.Object,
+            CreateIngestor().Object,
+            gate.Object,
+            coordinator,
+            new FixedTimeProvider(NowUtc),
+            static () => 0);
+
+        Task<LivePollingExecutionResult> execution = orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+        await leaseAcquired.Task;
+        releaseStop.SetResult();
+
+        Assert.Equal(1, await stop);
+        LivePollingExecutionResult result = await execution;
+        Assert.Equal(LivePollingExecutionDisposition.Suspended, result.Disposition);
+        Assert.NotNull(savedCompletion);
+        Assert.Equal(
+            LivePollingCompletionDisposition.Suspended,
+            savedCompletion.Disposition);
+        Assert.Equal(NowUtc, savedCompletion.NextAttemptAtUtc);
+        adapter.Verify(value => value.FetchLatestAsync(
+            It.IsAny<LiveProviderReadRequest>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    [Fact]
     public async Task ExecuteAsync_WhenTargetIsNotDue_ShouldNotCallProvider()
     {
         Mock<ILivePollingStateRepository> repository = CreateRepositoryWithoutLease();

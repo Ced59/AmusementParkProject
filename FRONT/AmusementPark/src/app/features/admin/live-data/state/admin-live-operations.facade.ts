@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import {
   LiveOperationalScope,
   LiveOperationsDashboard,
+  LiveQualityReplay,
   UpdateLiveOperationalControlRequest
 } from '@app/models/admin/live-data/live-operations.models';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -95,9 +96,16 @@ export class AdminLiveOperationsFacade {
     this.dataPort.replayQuarantine(100)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (): void => {
+        next: (result: LiveQualityReplay): void => {
           this.replayPendingSignal.set(false);
-          this.feedbackKeySignal.set('admin.liveOperations.messages.replayed');
+          const feedbackKey: string = result.resolvedCount > 0
+            ? result.stillBlockedCount > 0
+              ? 'admin.liveOperations.messages.replayPartial'
+              : 'admin.liveOperations.messages.replayed'
+            : result.stillBlockedCount > 0
+              ? 'admin.liveOperations.messages.replayBlocked'
+              : 'admin.liveOperations.messages.replayNoChange';
+          this.feedbackKeySignal.set(feedbackKey);
           this.load();
         },
         error: (): void => {

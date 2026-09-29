@@ -3241,6 +3241,7 @@
         "circuit": "Beveiligingscircuit",
         "closed": "Gesloten, normale werking",
         "disposition": {
+          "Suspended": "Gepauzeerd door het operationele beheer",
           "OutsideActiveWindow": "Buiten het verzamelvenster",
           "Success": "Geslaagd",
           "NotModified": "Geen wijziging",
@@ -3293,7 +3294,10 @@
       },
       "messages": {
         "updated": "De bediening is toegepast en in de geschiedenis bewaard.",
-        "replayed": "De quarantainebatch is begrensd opnieuw verwerkt."
+        "replayed": "De quarantainebatch is begrensd opnieuw verwerkt.",
+        "replayPartial": "Een deel van de batch is opnieuw verwerkt; sommige incidenten blijven geblokkeerd.",
+        "replayBlocked": "Geen enkel incident kon opnieuw worden verwerkt omdat de huidige bediening het nog blokkeert.",
+        "replayNoChange": "Er is geen opnieuw verwerkbaar incident gevonden."
       },
       "errors": {
         "load": "Het livebeheer kan niet worden geladen.",

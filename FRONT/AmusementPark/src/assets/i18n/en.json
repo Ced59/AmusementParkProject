@@ -3241,6 +3241,7 @@
         "circuit": "Protection circuit",
         "closed": "Closed, normal operation",
         "disposition": {
+          "Suspended": "Suspended by operations",
           "OutsideActiveWindow": "Outside collection window",
           "Success": "Successful",
           "NotModified": "No change",
@@ -3293,7 +3294,10 @@
       },
       "messages": {
         "updated": "The control is applied and retained in history.",
-        "replayed": "The quarantine batch was replayed with a bounded size."
+        "replayed": "The quarantine batch was replayed with a bounded size.",
+        "replayPartial": "Part of the batch was replayed; some incidents remain blocked.",
+        "replayBlocked": "No incident could be replayed because current controls still block them.",
+        "replayNoChange": "No replayable incident was found."
       },
       "errors": {
         "load": "Unable to load live data operations.",

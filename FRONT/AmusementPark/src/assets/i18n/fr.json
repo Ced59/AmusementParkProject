@@ -3241,6 +3241,7 @@
         "circuit": "Circuit de protection",
         "closed": "Fermé, fonctionnement normal",
         "disposition": {
+          "Suspended": "Suspendu par le pilotage",
           "OutsideActiveWindow": "Hors de la plage de collecte",
           "Success": "Réussi",
           "NotModified": "Aucun changement",
@@ -3293,7 +3294,10 @@
       },
       "messages": {
         "updated": "La commande est appliquée et conservée dans l’historique.",
-        "replayed": "Le lot de quarantaine a été rejoué de façon bornée."
+        "replayed": "Le lot de quarantaine a été rejoué de façon bornée.",
+        "replayPartial": "Une partie du lot a été rejouée ; certains incidents restent bloqués.",
+        "replayBlocked": "Aucun incident n’a pu être rejoué : les contrôles actuels les bloquent encore.",
+        "replayNoChange": "Aucun incident rejouable n’a été trouvé."
       },
       "errors": {
         "load": "Impossible de charger le pilotage des données live.",

@@ -10,6 +10,7 @@ public sealed class LivePollingOrchestrator
     private readonly ILivePollingStateRepository stateRepository;
     private readonly ILiveLatestObservationIngestor latestObservationIngestor;
     private readonly ILiveOperationalGate operationalGate;
+    private readonly LiveOperationalWriteCoordinator coordinator;
     private readonly TimeProvider timeProvider;
     private readonly Func<double> jitterSample;
 
@@ -17,12 +18,14 @@ public sealed class LivePollingOrchestrator
         IEnumerable<ILiveDataProviderAdapter> adapters,
         ILivePollingStateRepository stateRepository,
         ILiveLatestObservationIngestor latestObservationIngestor,
-        ILiveOperationalGate operationalGate)
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator)
         : this(
             adapters,
             stateRepository,
             latestObservationIngestor,
             operationalGate,
+            coordinator,
             TimeProvider.System,
             Random.Shared.NextDouble)
     {
@@ -35,11 +38,31 @@ public sealed class LivePollingOrchestrator
         ILiveOperationalGate operationalGate,
         TimeProvider timeProvider,
         Func<double> jitterSample)
+        : this(
+            adapters,
+            stateRepository,
+            latestObservationIngestor,
+            operationalGate,
+            new LiveOperationalWriteCoordinator(),
+            timeProvider,
+            jitterSample)
+    {
+    }
+
+    internal LivePollingOrchestrator(
+        IEnumerable<ILiveDataProviderAdapter> adapters,
+        ILivePollingStateRepository stateRepository,
+        ILiveLatestObservationIngestor latestObservationIngestor,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator,
+        TimeProvider timeProvider,
+        Func<double> jitterSample)
     {
         ArgumentNullException.ThrowIfNull(adapters);
         ArgumentNullException.ThrowIfNull(stateRepository);
         ArgumentNullException.ThrowIfNull(latestObservationIngestor);
         ArgumentNullException.ThrowIfNull(operationalGate);
+        ArgumentNullException.ThrowIfNull(coordinator);
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(jitterSample);
 
@@ -47,6 +70,7 @@ public sealed class LivePollingOrchestrator
         this.stateRepository = stateRepository;
         this.latestObservationIngestor = latestObservationIngestor;
         this.operationalGate = operationalGate;
+        this.coordinator = coordinator;
         this.timeProvider = timeProvider;
         this.jitterSample = jitterSample;
     }
@@ -113,15 +137,32 @@ public sealed class LivePollingOrchestrator
                 cancellationToken);
         }
 
-        LiveProviderReadResult providerResult;
+        LiveProviderReadResult? providerResult;
         try
         {
-            string? entityTag = gate.RequiresUnconditionalRefresh(
-                lease.LastSuccessfulPollAtUtc)
-                ? null
-                : lease.EntityTag;
-            providerResult = await adapter.FetchLatestAsync(
-                new LiveProviderReadRequest(target.ExternalEntityId, entityTag),
+            providerResult = await this.coordinator.RunAsync<LiveProviderReadResult?>(
+                target.SourceId,
+                target.ExternalEntityId,
+                async boundaryCancellationToken =>
+                {
+                    LiveOperationalGateSnapshot admissionGate =
+                        await this.operationalGate.LoadAsync(
+                            target.SourceId,
+                            target.ExternalEntityId,
+                            boundaryCancellationToken);
+                    if (!admissionGate.AllowsCollection())
+                    {
+                        return null;
+                    }
+
+                    string? entityTag = admissionGate.RequiresUnconditionalRefresh(
+                        lease.LastSuccessfulPollAtUtc)
+                        ? null
+                        : lease.EntityTag;
+                    return await adapter.FetchLatestAsync(
+                        new LiveProviderReadRequest(target.ExternalEntityId, entityTag),
+                        boundaryCancellationToken);
+                },
                 cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -135,6 +176,14 @@ public sealed class LivePollingOrchestrator
                 lease,
                 executionStartedAtUtc,
                 jitter,
+                cancellationToken);
+        }
+
+        if (providerResult is null)
+        {
+            return await this.CompleteSuspendedAsync(
+                lease,
+                this.timeProvider.GetUtcNow().UtcDateTime,
                 cancellationToken);
         }
 
@@ -247,6 +296,25 @@ public sealed class LivePollingOrchestrator
         return new LivePollingExecutionResult(
             LivePollingExecutionDisposition.Failed,
             circuitOpened: schedule.CircuitOpened);
+    }
+
+    private async Task<LivePollingExecutionResult> CompleteSuspendedAsync(
+        LivePollingLease lease,
+        DateTime completedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        LivePollingCompletion completion = new LivePollingCompletion(
+            lease,
+            LivePollingCompletionDisposition.Suspended,
+            completedAtUtc,
+            completedAtUtc,
+            lease.ConsecutiveFailures,
+            lease.CircuitOpenUntilUtc,
+            null,
+            false,
+            null);
+        await this.EnsureCompletedAsync(completion, cancellationToken);
+        return new LivePollingExecutionResult(LivePollingExecutionDisposition.Suspended);
     }
 
     private async Task EnsureCompletedAsync(

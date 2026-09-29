@@ -2,6 +2,7 @@ import { LiveTargetType } from './live-target-mapping.models';
 
 export type LiveOperationalScopeType = 'Source' | 'Park' | 'Target';
 export type LivePollingDisposition =
+  | 'Suspended'
   | 'OutsideActiveWindow'
   | 'Success'
   | 'NotModified'

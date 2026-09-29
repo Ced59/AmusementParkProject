@@ -34,19 +34,20 @@ contrôle source ──► contrôle parc ──► contrôle attraction
         └──────── un seul « non » arrête le périmètre ───────┘
 ```
 
-La configuration et le contrôle source sont vérifiés avant de prendre un lease
-ou d’appeler le fournisseur. Les contrôles parc et attraction s’appliquent une
-fois le mapping interne courant connu, avant persistance : un ancien contrôle de
-parc ne peut donc pas bloquer un parc remappé. Le rejeu de quarantaine applique
+La configuration et le contrôle source sont vérifiés avant de prendre un lease,
+puis de nouveau dans la frontière partagée juste avant d’admettre l’appel au
+fournisseur. Les contrôles parc et attraction s’appliquent une fois le mapping
+interne courant connu, avant persistance : un ancien contrôle de parc ne peut
+donc pas bloquer un parc remappé. Le rejeu de quarantaine applique
 également ce contrôle et laisse l’incident en attente tant que la collecte est
 arrêtée. La lecture publique applique la même hiérarchie et conserve la réponse
 publique neutre existante lorsque le direct est masqué.
 
-La mutation d’un contrôle et la dernière vérification précédant une écriture
-partagent une frontière sérialisée par source et entité externe. Une écriture
-déjà engagée se termine donc avant que l’arrêt soit confirmé ; toute écriture
-qui vient ensuite recharge les contrôles dans cette frontière et supprime les
-observations devenues interdites. Cette règle couvre la collecte normale et le
+La mutation d’un contrôle, l’admission d’un appel fournisseur et la dernière
+vérification précédant une écriture partagent une frontière sérialisée par
+source et entité externe. Un appel ou une écriture déjà engagé se termine donc
+avant que l’arrêt soit confirmé ; tout travail qui vient ensuite recharge les
+contrôles dans cette frontière. Cette règle couvre la collecte normale et le
 rejeu de quarantaine. En régime stable, la production n’exécute qu’une instance
 canonique de l’API. Pendant la bascule transactionnelle, le candidat qui
 coexiste avec l’ancienne instance démarre avec la collecte live désactivée et
@@ -107,6 +108,9 @@ dont le mapping courant est éligible. Ce compteur et le lot relu sont limités
 incidents d’une ancienne configuration ou d’un mapping encore candidat ne
 peuvent donc ni activer le bouton ni retarder le lot courant. Les diagnostics
 fournisseur et conflits de statut ne provoquent plus d’action à vide.
+Le message de résultat distingue un lot entièrement rejoué, partiellement
+rejoué, encore bloqué ou désormais vide : l’administration ne présente jamais
+comme un succès une action qui n’a résolu aucun incident.
 
 ## Retour arrière
 

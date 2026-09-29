@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import {
   LiveOperationalScope,
   LiveOperationsDashboard,
+  LiveQualityReplay,
   UpdateLiveOperationalControlRequest
 } from '@app/models/admin/live-data/live-operations.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -44,6 +45,35 @@ describe('AdminLiveOperationsFacade', () => {
     expect(facade.feedbackKey()).toBe('admin.liveOperations.messages.updated');
     expect(port.updateControl).toHaveBeenCalledWith(request);
     expect(port.getDashboard).toHaveBeenCalledTimes(2);
+  });
+
+  it('reports when every quarantine incident remains blocked', () => {
+    const dashboard: LiveOperationsDashboard = createDashboard();
+    const replay: LiveQualityReplay = {
+      examinedCount: 3,
+      resolvedCount: 0,
+      stillBlockedCount: 3,
+      persistedCount: 0,
+      ignoredAsOlderCount: 0
+    };
+    const port: AdminLiveOperationsDataPort = {
+      getDashboard: vi.fn().mockReturnValue(of(dashboard)),
+      updateControl: vi.fn(),
+      replayQuarantine: vi.fn().mockReturnValue(of(replay))
+    };
+    TestBed.configureTestingModule({
+      providers: [
+        provideCommonTestDependencies(),
+        AdminLiveOperationsFacade,
+        { provide: ADMIN_LIVE_OPERATIONS_DATA_PORT, useValue: port }
+      ]
+    });
+    const facade: AdminLiveOperationsFacade = TestBed.inject(AdminLiveOperationsFacade);
+
+    facade.replayQuarantine();
+
+    expect(facade.feedbackKey()).toBe('admin.liveOperations.messages.replayBlocked');
+    expect(port.getDashboard).toHaveBeenCalledTimes(1);
   });
 });
 

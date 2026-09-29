@@ -221,7 +221,8 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
                 .Unset(static document => document.LeaseOwner)
                 .Unset(static document => document.LeaseToken)
                 .Unset(static document => document.LeaseExpiresAtUtc);
-        if (completion.Disposition != LivePollingCompletionDisposition.OutsideActiveWindow)
+        if (completion.Disposition is not LivePollingCompletionDisposition.OutsideActiveWindow
+            and not LivePollingCompletionDisposition.Suspended)
         {
             update = update.Set(
                 static document => document.LastPolledAtUtc,
