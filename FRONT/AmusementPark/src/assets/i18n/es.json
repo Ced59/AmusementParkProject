@@ -3210,6 +3210,90 @@
         "mutation": "No se pudo guardar la decisión. Recarga la lista e inténtalo de nuevo."
       }
     },
+    "liveOperations": {
+      "navTitle": "Control de datos en directo",
+      "shortcut": "Supervisa los datos en directo y detén de inmediato una fuente, un parque o una atracción.",
+      "kicker": "Seguridad operativa",
+      "title": "Control del directo",
+      "subtitle": "Supervisa la recopilación y detén con precisión lo que ya no deba recopilarse o mostrarse, sin volver a desplegar.",
+      "refresh": "Actualizar",
+      "loading": "Cargando el estado operativo…",
+      "source": "Fuente activa",
+      "never": "Nunca",
+      "generatedAt": "Estado calculado el {{date}}",
+      "configuration": {
+        "title": "La configuración del servidor impone una parada",
+        "description": "Los controles siguientes nunca pueden reactivar algo desactivado por la configuración de producción."
+      },
+      "metrics": {
+        "aria": "Indicadores de datos en directo",
+        "covered": "Correspondencias utilizables",
+        "candidates": "Por verificar",
+        "quarantine": "En cuarentena",
+        "failures": "Errores consecutivos"
+      },
+      "polling": {
+        "kicker": "Recopilación limitada",
+        "title": "Estado de la última ejecución",
+        "lastSuccess": "Último éxito",
+        "lastStatus": "Último resultado",
+        "nextAttempt": "Próximo intento",
+        "circuit": "Circuito de protección",
+        "closed": "Cerrado, funcionamiento normal"
+      },
+      "controls": {
+        "kicker": "Parada de emergencia",
+        "title": "Ámbitos controlados",
+        "description": "La fuente se aplica a todos los datos en directo. Después puedes detener por separado un parque o una atracción."
+      },
+      "scopeType": {
+        "Source": "Fuente completa",
+        "Park": "Parque",
+        "Target": "Atracción o lugar"
+      },
+      "state": {
+        "running": "Recopilación activa",
+        "stopped": "Recopilación detenida",
+        "visible": "Visible públicamente",
+        "hidden": "Oculto al público"
+      },
+      "actions": {
+        "mappings": "Gestionar correspondencias",
+        "replay": "Reprocesar la cuarentena",
+        "replaying": "Reprocesando…",
+        "stopCollection": "Detener recopilación",
+        "resumeCollection": "Reanudar recopilación",
+        "hidePublicly": "Ocultar al público",
+        "showPublicly": "Hacer visible"
+      },
+      "confirm": {
+        "stopCollection": "Confirmar la parada de la recopilación",
+        "resumeCollection": "Confirmar la reanudación",
+        "hidePublicly": "Confirmar la ocultación pública",
+        "showPublicly": "Confirmar el retorno público",
+        "reason": "Motivo obligatorio",
+        "placeholder": "Explica brevemente la decisión…",
+        "apply": "Aplicar ahora",
+        "cancel": "Cancelar"
+      },
+      "technical": {
+        "title": "Versiones, licencia y trazabilidad",
+        "adapter": "Adaptador",
+        "transformation": "Transformación",
+        "policy": "Política de uso",
+        "reviewed": "Licencia revisada el",
+        "terms": "Consultar las condiciones de la fuente"
+      },
+      "messages": {
+        "updated": "El control se ha aplicado y se conserva en el historial.",
+        "replayed": "El lote en cuarentena se ha reprocesado con tamaño limitado."
+      },
+      "errors": {
+        "load": "No se puede cargar el control de datos en directo.",
+        "mutation": "El control no se ha guardado. Recarga la página e inténtalo de nuevo.",
+        "replay": "No se pudo reprocesar el lote en cuarentena."
+      }
+    },
     "loading": "Cargando...",
     "m14": {
       "kicker": "Administración",

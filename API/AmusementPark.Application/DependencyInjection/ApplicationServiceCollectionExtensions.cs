@@ -90,6 +90,10 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ILiveLatestObservationIngestor, LiveLatestObservationIngestor>();
         services.AddScoped<LiveQualityIncidentReplayService>();
         services.AddScoped<LivePollingOrchestrator>();
+        services.AddSingleton<LiveOperationalControlPolicy>();
+        services.AddScoped<ILiveOperationalGate, LiveOperationalGate>();
+        services.AddScoped<LiveOperationalScopeResultFactory>();
+        services.AddScoped<LiveOperationsDashboardReader>();
         services.AddSingleton<LiveLatestObservationSelectionPolicy>();
         services.AddScoped<PublicLiveTargetResultFactory>();
         services.AddScoped<PublicLiveLatestReader>();

@@ -1,6 +1,20 @@
 {
-  "version": "5.4.10",
+  "version": "5.4.11",
   "history": [
+    {
+      "version": "5.4.11",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Le direct peut être interrompu immédiatement et précisément.",
+        "en": "Live information can be stopped immediately and precisely.",
+        "de": "Live-Informationen können sofort und gezielt gestoppt werden.",
+        "nl": "Live-informatie kan direct en gericht worden gestopt.",
+        "it": "Le informazioni in tempo reale possono essere interrotte subito e con precisione.",
+        "es": "La información en directo puede detenerse de inmediato y con precisión.",
+        "pl": "Informacje na żywo można natychmiast i precyzyjnie zatrzymać.",
+        "pt": "As informações em direto podem ser interrompidas de imediato e com precisão."
+      }
+    },
     {
       "version": "5.4.10",
       "releasedAt": "2026-09-29",

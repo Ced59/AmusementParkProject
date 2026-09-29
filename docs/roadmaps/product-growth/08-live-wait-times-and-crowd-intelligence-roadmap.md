@@ -799,7 +799,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-07`](../../architecture/product-growth-live-07-quarantine-anomalies-2026-09-29.md) | ✅ Quarantaine/anomalies | Données douteuses isolées |
 | [`LIVE-08`](../../architecture/product-growth-live-08-latest-api-cache-2026-09-29.md) | ✅ API latest/cache | Source et âge obligatoires |
 | [`LIVE-09`](../../architecture/product-growth-live-09-public-ui-2026-09-29.md) | ✅ UI pilote | 0/unknown/closed distincts |
-| `LIVE-10` | Kill switches/ops | Arrêt immédiat possible |
+| [`LIVE-10`](../../architecture/product-growth-live-10-operational-controls-2026-09-29.md) | ✅ Kill switches/ops | Arrêt immédiat possible |
 | `LIVE-11` | Alertes temporaires | Hystérésis/expiration |
 | `LIVE-12` | Historique autorisé | Rétention et buckets |
 | `LIVE-13` | Statistiques descriptives | Volumes/lacunes visibles |

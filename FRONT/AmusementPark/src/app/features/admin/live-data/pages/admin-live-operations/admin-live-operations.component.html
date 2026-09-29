@@ -1,0 +1,208 @@
+<app-ui-card styleClass="admin-list-card live-operations">
+  <ng-template appUiTemplate="header">
+    <div class="admin-list-header live-operations__header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.liveOperations.kicker' | translate }}</span>
+        <h2>{{ 'admin.liveOperations.title' | translate }}</h2>
+        <p>{{ 'admin.liveOperations.subtitle' | translate }}</p>
+      </div>
+      <button
+        appUiButton
+        type="button"
+        icon="pi pi-refresh"
+        [label]="'admin.liveOperations.refresh' | translate"
+        (click)="facade.load()">
+      </button>
+    </div>
+  </ng-template>
+
+  @if (feedbackKey()) {
+    <p class="live-operations__feedback live-operations__feedback--success" role="status">
+      {{ feedbackKey()! | translate }}
+    </p>
+  }
+  @if (mutationErrorKey()) {
+    <p class="live-operations__feedback live-operations__feedback--error" role="alert">
+      {{ mutationErrorKey()! | translate }}
+    </p>
+  }
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.liveOperations.loading"
+    errorMessageKey="admin.liveOperations.errors.load">
+    @if (dashboard(); as data) {
+      @if (!data.configuredCollectionEnabled || !data.configuredPublicReadEnabled) {
+        <aside class="live-operations__configuration-warning">
+          <i class="pi pi-lock" aria-hidden="true"></i>
+          <div>
+            <strong>{{ 'admin.liveOperations.configuration.title' | translate }}</strong>
+            <p>{{ 'admin.liveOperations.configuration.description' | translate }}</p>
+          </div>
+        </aside>
+      }
+
+      <section class="live-operations__hero" aria-labelledby="live-operations-source-title">
+        <div>
+          <span>{{ 'admin.liveOperations.source' | translate }}</span>
+          <h3 id="live-operations-source-title">{{ data.sourceDisplayName }}</h3>
+          <p>{{ data.attributionText }}</p>
+        </div>
+        <div class="live-operations__hero-state">
+          <app-ui-tag
+            [value]="effectiveStateKey(data.scopes[0]?.effectiveCollectionEnabled ?? false) | translate"
+            [severity]="stateSeverity(data.scopes[0]?.effectiveCollectionEnabled ?? false)">
+          </app-ui-tag>
+          <span>{{ 'admin.liveOperations.generatedAt' | translate:{ date: (data.generatedAtUtc | date:'short':'UTC') } }}</span>
+        </div>
+      </section>
+
+      <section class="live-operations__metrics" [attr.aria-label]="'admin.liveOperations.metrics.aria' | translate">
+        <article>
+          <i class="pi pi-check-circle" aria-hidden="true"></i>
+          <span>{{ 'admin.liveOperations.metrics.covered' | translate }}</span>
+          <strong>{{ data.summary.eligibleMappingCount }}</strong>
+        </article>
+        <article>
+          <i class="pi pi-question-circle" aria-hidden="true"></i>
+          <span>{{ 'admin.liveOperations.metrics.candidates' | translate }}</span>
+          <strong>{{ data.summary.candidateMappingCount }}</strong>
+        </article>
+        <article>
+          <i class="pi pi-shield" aria-hidden="true"></i>
+          <span>{{ 'admin.liveOperations.metrics.quarantine' | translate }}</span>
+          <strong>{{ data.summary.pendingIncidentCount }}</strong>
+        </article>
+        <article>
+          <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+          <span>{{ 'admin.liveOperations.metrics.failures' | translate }}</span>
+          <strong>{{ data.polling.consecutiveFailures }}</strong>
+        </article>
+      </section>
+
+      <section class="live-operations__polling" aria-labelledby="live-operations-polling-title">
+        <div>
+          <span class="admin-kicker">{{ 'admin.liveOperations.polling.kicker' | translate }}</span>
+          <h3 id="live-operations-polling-title">{{ 'admin.liveOperations.polling.title' | translate }}</h3>
+        </div>
+        <dl>
+          <div><dt>{{ 'admin.liveOperations.polling.lastSuccess' | translate }}</dt><dd>{{ data.polling.lastSuccessfulPollAtUtc ? (data.polling.lastSuccessfulPollAtUtc | date:'short':'UTC') : ('admin.liveOperations.never' | translate) }}</dd></div>
+          <div><dt>{{ 'admin.liveOperations.polling.lastStatus' | translate }}</dt><dd>{{ data.polling.lastDisposition ?? ('admin.liveOperations.never' | translate) }}</dd></div>
+          <div><dt>{{ 'admin.liveOperations.polling.nextAttempt' | translate }}</dt><dd>{{ data.polling.nextAttemptAtUtc ? (data.polling.nextAttemptAtUtc | date:'short':'UTC') : '—' }}</dd></div>
+          <div><dt>{{ 'admin.liveOperations.polling.circuit' | translate }}</dt><dd>{{ data.polling.circuitOpenUntilUtc ? (data.polling.circuitOpenUntilUtc | date:'short':'UTC') : ('admin.liveOperations.polling.closed' | translate) }}</dd></div>
+        </dl>
+        <div class="live-operations__tool-actions">
+          <a appUiButton routerLink="/admin/live-mappings" class="p-button-secondary">
+            <i class="pi pi-sitemap" aria-hidden="true"></i>
+            {{ 'admin.liveOperations.actions.mappings' | translate }}
+          </a>
+          <button
+            appUiButton
+            type="button"
+            class="p-button-secondary"
+            [disabled]="replayPending() || data.summary.pendingIncidentCount === 0"
+            (click)="facade.replayQuarantine()">
+            <i class="pi pi-replay" aria-hidden="true"></i>
+            {{ (replayPending() ? 'admin.liveOperations.actions.replaying' : 'admin.liveOperations.actions.replay') | translate }}
+          </button>
+        </div>
+      </section>
+
+      <section class="live-operations__controls" aria-labelledby="live-operations-controls-title">
+        <div class="live-operations__section-heading">
+          <div>
+            <span class="admin-kicker">{{ 'admin.liveOperations.controls.kicker' | translate }}</span>
+            <h3 id="live-operations-controls-title">{{ 'admin.liveOperations.controls.title' | translate }}</h3>
+            <p>{{ 'admin.liveOperations.controls.description' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="live-operations__scope-list">
+          @for (scope of data.scopes; track scopeKey(scope)) {
+            <article class="live-operations__scope">
+              <header>
+                <div>
+                  <span>{{ scopeTypeKey(scope) | translate }}</span>
+                  <h4>{{ scope.displayName }}</h4>
+                  @if (scope.parentDisplayName) { <p>{{ scope.parentDisplayName }}</p> }
+                </div>
+                <div class="live-operations__badges">
+                  <app-ui-tag
+                    [value]="effectiveStateKey(scope.effectiveCollectionEnabled) | translate"
+                    [severity]="stateSeverity(scope.effectiveCollectionEnabled)">
+                  </app-ui-tag>
+                  <app-ui-tag
+                    [value]="(scope.effectivePublicReadEnabled ? 'admin.liveOperations.state.visible' : 'admin.liveOperations.state.hidden') | translate"
+                    [severity]="stateSeverity(scope.effectivePublicReadEnabled)">
+                  </app-ui-tag>
+                </div>
+              </header>
+
+              @if (scope.reason) {
+                <p class="live-operations__reason">
+                  <i class="pi pi-history" aria-hidden="true"></i>
+                  {{ scope.reason }}
+                </p>
+              }
+
+              <div class="live-operations__scope-actions">
+                <button
+                  appUiButton
+                  type="button"
+                  [severity]="scope.collectionEnabled ? 'danger' : 'success'"
+                  [disabled]="pendingScopeKey() !== null"
+                  (click)="openCollectionChange(scope)">
+                  {{ (scope.collectionEnabled ? 'admin.liveOperations.actions.stopCollection' : 'admin.liveOperations.actions.resumeCollection') | translate }}
+                </button>
+                <button
+                  appUiButton
+                  type="button"
+                  [severity]="scope.publicReadEnabled ? 'warning' : 'success'"
+                  [disabled]="pendingScopeKey() !== null"
+                  (click)="openPublicReadChange(scope)">
+                  {{ (scope.publicReadEnabled ? 'admin.liveOperations.actions.hidePublicly' : 'admin.liveOperations.actions.showPublicly') | translate }}
+                </button>
+              </div>
+
+              @if (pendingChange(); as selected) {
+                @if (selected.scope === scope) {
+                  <form class="live-operations__confirmation" (ngSubmit)="confirm()">
+                    <strong>{{ ('admin.liveOperations.confirm.' + selected.actionKey) | translate }}</strong>
+                    <label>
+                      <span>{{ 'admin.liveOperations.confirm.reason' | translate }}</span>
+                      <textarea
+                        rows="3"
+                        maxlength="500"
+                        [formControl]="reason"
+                        [placeholder]="'admin.liveOperations.confirm.placeholder' | translate">
+                      </textarea>
+                    </label>
+                    <div>
+                      <button appUiButton type="submit" [disabled]="reason.value.trim().length < 3">
+                        {{ 'admin.liveOperations.confirm.apply' | translate }}
+                      </button>
+                      <button appUiButton type="button" class="p-button-secondary" (click)="cancel()">
+                        {{ 'admin.liveOperations.confirm.cancel' | translate }}
+                      </button>
+                    </div>
+                  </form>
+                }
+              }
+            </article>
+          }
+        </div>
+      </section>
+
+      <details class="live-operations__technical">
+        <summary>{{ 'admin.liveOperations.technical.title' | translate }}</summary>
+        <dl>
+          <div><dt>{{ 'admin.liveOperations.technical.adapter' | translate }}</dt><dd>{{ data.adapterVersion }}</dd></div>
+          <div><dt>{{ 'admin.liveOperations.technical.transformation' | translate }}</dt><dd>{{ data.transformationVersion }}</dd></div>
+          <div><dt>{{ 'admin.liveOperations.technical.policy' | translate }}</dt><dd>{{ data.usagePolicyVersion }}</dd></div>
+          <div><dt>{{ 'admin.liveOperations.technical.reviewed' | translate }}</dt><dd>{{ data.usagePolicyReviewedAtUtc | date:'longDate':'UTC' }}</dd></div>
+        </dl>
+        <a [href]="data.termsUrl" target="_blank" rel="noopener noreferrer">{{ 'admin.liveOperations.technical.terms' | translate }}</a>
+      </details>
+    }
+  </app-page-state>
+</app-ui-card>

@@ -14,6 +14,31 @@ public sealed class LivePollingOrchestratorTests
     private static readonly LiveDataSourceId SourceId = LiveDataSourceId.Parse("pilot");
 
     [Fact]
+    public async Task ExecuteAsync_WhenOperationalCollectionIsStopped_ShouldNotAcquireLeaseOrCallProvider()
+    {
+        Mock<ILivePollingStateRepository> repository =
+            new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        LivePollingOrchestrator orchestrator = new LivePollingOrchestrator(
+            new[] { adapter.Object },
+            repository.Object,
+            CreateIngestor().Object,
+            CreateOperationalGate(collectionEnabled: false).Object,
+            new FixedTimeProvider(NowUtc),
+            static () => 0);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Suspended, result.Disposition);
+        repository.VerifyNoOtherCalls();
+        adapter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task ExecuteAsync_WhenTargetIsNotDue_ShouldNotCallProvider()
     {
         Mock<ILivePollingStateRepository> repository = CreateRepositoryWithoutLease();
@@ -74,6 +99,7 @@ public sealed class LivePollingOrchestratorTests
             new[] { adapter.Object },
             repository.Object,
             CreateIngestor().Object,
+            CreateOperationalGate().Object,
             new FixedTimeProvider(nightUtc),
             static () => 0);
 
@@ -130,6 +156,7 @@ public sealed class LivePollingOrchestratorTests
             new[] { adapter.Object },
             repository.Object,
             CreateIngestor().Object,
+            CreateOperationalGate().Object,
             timeProvider.Object,
             static () => 0);
 
@@ -311,6 +338,7 @@ public sealed class LivePollingOrchestratorTests
             new[] { adapter.Object },
             repository.Object,
             (ingestor ?? CreateIngestor()).Object,
+            CreateOperationalGate().Object,
             new FixedTimeProvider(NowUtc),
             static () => 0);
     }
@@ -375,8 +403,25 @@ public sealed class LivePollingOrchestratorTests
             .Setup(value => value.IngestAsync(
                 It.IsAny<LiveLatestObservationIngestionRequest>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new LiveLatestObservationIngestionResult(0, 0, 0, 0, 0, 0, 0));
+            .ReturnsAsync(new LiveLatestObservationIngestionResult(0, 0, 0, 0, 0, 0, 0, 0));
         return ingestor;
+    }
+
+    private static Mock<ILiveOperationalGate> CreateOperationalGate(bool collectionEnabled = true)
+    {
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.Setup(value => value.LoadAsync(
+                It.IsAny<LiveDataSourceId>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((LiveDataSourceId _, string externalEntityId, CancellationToken _) =>
+                new LiveOperationalGateSnapshot(
+                    collectionEnabled,
+                    true,
+                    externalEntityId,
+                    Array.Empty<LiveOperationalControl>(),
+                    new LiveOperationalControlPolicy()));
+        return gate;
     }
 
     private static LivePollingTarget CreateTarget()

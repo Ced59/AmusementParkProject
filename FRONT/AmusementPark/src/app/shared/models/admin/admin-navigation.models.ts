@@ -137,6 +137,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'live-operations',
+    segments: ['live-operations'],
+    iconClass: 'pi pi-power-off',
+    titleKey: 'admin.liveOperations.navTitle',
+    descriptionKey: 'admin.liveOperations.shortcut',
+    exact: false
+  },
+  {
     id: 'live-mappings',
     segments: ['live-mappings'],
     iconClass: 'pi pi-bolt',

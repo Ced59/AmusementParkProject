@@ -19,6 +19,37 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
             settings.LivePollingStatesCollectionName);
     }
 
+    public async Task<LivePollingStateSnapshot?> GetAsync(
+        LiveDataSourceId sourceId,
+        string externalEntityId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedExternalEntityId = externalEntityId?.Trim() ?? string.Empty;
+        if (normalizedExternalEntityId.Length == 0)
+        {
+            return null;
+        }
+
+        DateTime nowUtc = DateTime.UtcNow;
+        LivePollingStateDocument? document = await this.collection
+            .Find(item => item.SourceId == sourceId.Value
+                && item.ExternalEntityId == normalizedExternalEntityId)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document is null
+            ? null
+            : new LivePollingStateSnapshot(
+                sourceId,
+                document.ExternalEntityId,
+                document.NextAttemptAtUtc,
+                document.LastPolledAtUtc,
+                document.LastSuccessfulPollAtUtc,
+                document.ConsecutiveFailures,
+                document.CircuitOpenUntilUtc,
+                document.LastDisposition,
+                document.LeaseExpiresAtUtc.HasValue && document.LeaseExpiresAtUtc > nowUtc,
+                document.LeaseExpiresAtUtc);
+    }
+
     public async Task<LivePollingLease?> TryAcquireAsync(
         LivePollingLeaseRequest request,
         CancellationToken cancellationToken)

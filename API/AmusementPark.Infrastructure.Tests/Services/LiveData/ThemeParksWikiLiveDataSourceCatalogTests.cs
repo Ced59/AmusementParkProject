@@ -30,7 +30,9 @@ public sealed class ThemeParksWikiLiveDataSourceCatalogTests
             catalog.Find(LiveDataSourceId.Parse("themeparks-wiki"));
 
         Assert.False(catalog.IsPublicReadEnabled);
+        Assert.False(catalog.IsCollectionEnabled);
         Assert.Null(catalog.PublicPollingTarget);
+        Assert.Equal("external-park-1", catalog.ConfiguredPollingTarget?.ExternalEntityId);
         Assert.Equal(LiveDataSourceStatus.Suspended, source?.Source.Status);
     }
 
@@ -58,7 +60,9 @@ public sealed class ThemeParksWikiLiveDataSourceCatalogTests
             catalog.Find(LiveDataSourceId.Parse("themeparks-wiki"));
 
         Assert.True(catalog.IsPublicReadEnabled);
+        Assert.True(catalog.IsCollectionEnabled);
         Assert.Equal("external-park-1", catalog.PublicPollingTarget?.ExternalEntityId);
+        Assert.Equal("external-park-1", catalog.ConfiguredPollingTarget?.ExternalEntityId);
         Assert.Equal(LiveDataSourceStatus.Active, source?.Source.Status);
         Assert.Equal("Powered by ThemeParks.wiki", source?.AttributionText);
         Assert.False(source?.Source.UsagePolicy.RedistributionAllowed);

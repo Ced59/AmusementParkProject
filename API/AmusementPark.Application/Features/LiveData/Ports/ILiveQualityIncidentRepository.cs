@@ -4,6 +4,11 @@ namespace AmusementPark.Application.Features.LiveData.Ports;
 
 public interface ILiveQualityIncidentRepository
 {
+    Task<long> CountPendingAsync(
+        LiveDataSourceId sourceId,
+        DateTime nowUtc,
+        CancellationToken cancellationToken);
+
     Task SaveAsync(
         IReadOnlyCollection<LiveQualityIncident> incidents,
         CancellationToken cancellationToken);

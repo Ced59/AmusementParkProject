@@ -3210,6 +3210,90 @@
         "mutation": "De beslissing kon niet worden opgeslagen. Laad de lijst opnieuw en probeer het nogmaals."
       }
     },
+    "liveOperations": {
+      "navTitle": "Livegegevens beheren",
+      "shortcut": "Bewaak livegegevens en stop direct een bron, park of attractie.",
+      "kicker": "Operationele veiligheid",
+      "title": "Livebeheer",
+      "subtitle": "Bewaak de verzameling en stop zonder nieuwe uitrol precies wat niet meer verzameld of getoond mag worden.",
+      "refresh": "Vernieuwen",
+      "loading": "Operationele status laden…",
+      "source": "Actieve bron",
+      "never": "Nooit",
+      "generatedAt": "Status berekend op {{date}}",
+      "configuration": {
+        "title": "De serverconfiguratie dwingt een stop af",
+        "description": "De bediening hieronder kan nooit iets heractiveren dat in de productieconfiguratie is uitgeschakeld."
+      },
+      "metrics": {
+        "aria": "Indicatoren voor livegegevens",
+        "covered": "Bruikbare koppelingen",
+        "candidates": "Te controleren",
+        "quarantine": "In quarantaine",
+        "failures": "Opeenvolgende fouten"
+      },
+      "polling": {
+        "kicker": "Begrensde verzameling",
+        "title": "Status van de laatste ronde",
+        "lastSuccess": "Laatste succes",
+        "lastStatus": "Laatste resultaat",
+        "nextAttempt": "Volgende poging",
+        "circuit": "Beveiligingscircuit",
+        "closed": "Gesloten, normale werking"
+      },
+      "controls": {
+        "kicker": "Noodstop",
+        "title": "Beheerde bereiken",
+        "description": "De bron geldt voor alle livegegevens. Een park of attractie kan daarna afzonderlijk worden gestopt."
+      },
+      "scopeType": {
+        "Source": "Volledige bron",
+        "Park": "Park",
+        "Target": "Attractie of plek"
+      },
+      "state": {
+        "running": "Verzameling actief",
+        "stopped": "Verzameling gestopt",
+        "visible": "Openbaar zichtbaar",
+        "hidden": "Verborgen voor publiek"
+      },
+      "actions": {
+        "mappings": "Koppelingen beheren",
+        "replay": "Quarantaine opnieuw verwerken",
+        "replaying": "Bezig met verwerken…",
+        "stopCollection": "Verzameling stoppen",
+        "resumeCollection": "Verzameling hervatten",
+        "hidePublicly": "Openbaar verbergen",
+        "showPublicly": "Zichtbaar maken"
+      },
+      "confirm": {
+        "stopCollection": "Stop van verzameling bevestigen",
+        "resumeCollection": "Hervatting bevestigen",
+        "hidePublicly": "Openbaar verbergen bevestigen",
+        "showPublicly": "Openbare terugkeer bevestigen",
+        "reason": "Reden verplicht",
+        "placeholder": "Leg de beslissing kort uit…",
+        "apply": "Nu toepassen",
+        "cancel": "Annuleren"
+      },
+      "technical": {
+        "title": "Versies, licentie en traceerbaarheid",
+        "adapter": "Adapter",
+        "transformation": "Transformatie",
+        "policy": "Gebruiksbeleid",
+        "reviewed": "Licentie beoordeeld op",
+        "terms": "Bronvoorwaarden bekijken"
+      },
+      "messages": {
+        "updated": "De bediening is toegepast en in de geschiedenis bewaard.",
+        "replayed": "De quarantainebatch is begrensd opnieuw verwerkt."
+      },
+      "errors": {
+        "load": "Het livebeheer kan niet worden geladen.",
+        "mutation": "De bediening is niet opgeslagen. Herlaad de pagina en probeer opnieuw.",
+        "replay": "De quarantainebatch kon niet opnieuw worden verwerkt."
+      }
+    },
     "loading": "Laden...",
     "m14": {
       "kicker": "Administratie",

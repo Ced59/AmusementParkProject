@@ -12,11 +12,13 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
     public ThemeParksWikiLiveDataSourceCatalog(LiveDataPollingSettings settings)
     {
         ArgumentNullException.ThrowIfNull(settings);
-        this.PublicPollingTarget = settings.Enabled && settings.PublicReadEnabled
-            ? settings.BuildEnabledTargets().SingleOrDefault(static target =>
-                target.SourceId == LiveDataSourceId.Parse("themeparks-wiki"))
+        this.ConfiguredPollingTarget = settings.BuildEnabledTargets().SingleOrDefault(static target =>
+            target.SourceId == LiveDataSourceId.Parse("themeparks-wiki"));
+        this.IsCollectionEnabled = settings.Enabled && this.ConfiguredPollingTarget is not null;
+        this.IsPublicReadEnabled = this.IsCollectionEnabled && settings.PublicReadEnabled;
+        this.PublicPollingTarget = this.IsPublicReadEnabled
+            ? this.ConfiguredPollingTarget
             : null;
-        this.IsPublicReadEnabled = this.PublicPollingTarget is not null;
         this.presentation = new LiveDataSourcePresentation(
             new LiveDataSource(
                 LiveDataSourceId.Parse("themeparks-wiki"),
@@ -33,13 +35,17 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
                     new DateTime(2026, 9, 28, 15, 47, 0, DateTimeKind.Utc)),
                 TimeSpan.FromMinutes(5),
                 TimeSpan.FromMinutes(30),
-                this.IsPublicReadEnabled ? LiveDataSourceStatus.Active : LiveDataSourceStatus.Suspended),
+                this.IsCollectionEnabled ? LiveDataSourceStatus.Active : LiveDataSourceStatus.Suspended),
             100,
             "Powered by ThemeParks.wiki",
             "https://themeparks.wiki/");
     }
 
+    public bool IsCollectionEnabled { get; }
+
     public bool IsPublicReadEnabled { get; }
+
+    public LivePollingTarget? ConfiguredPollingTarget { get; }
 
     public LivePollingTarget? PublicPollingTarget { get; }
 

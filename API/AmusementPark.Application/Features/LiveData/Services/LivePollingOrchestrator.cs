@@ -9,17 +9,20 @@ public sealed class LivePollingOrchestrator
     private readonly IReadOnlyCollection<ILiveDataProviderAdapter> adapters;
     private readonly ILivePollingStateRepository stateRepository;
     private readonly ILiveLatestObservationIngestor latestObservationIngestor;
+    private readonly ILiveOperationalGate operationalGate;
     private readonly TimeProvider timeProvider;
     private readonly Func<double> jitterSample;
 
     public LivePollingOrchestrator(
         IEnumerable<ILiveDataProviderAdapter> adapters,
         ILivePollingStateRepository stateRepository,
-        ILiveLatestObservationIngestor latestObservationIngestor)
+        ILiveLatestObservationIngestor latestObservationIngestor,
+        ILiveOperationalGate operationalGate)
         : this(
             adapters,
             stateRepository,
             latestObservationIngestor,
+            operationalGate,
             TimeProvider.System,
             Random.Shared.NextDouble)
     {
@@ -29,18 +32,21 @@ public sealed class LivePollingOrchestrator
         IEnumerable<ILiveDataProviderAdapter> adapters,
         ILivePollingStateRepository stateRepository,
         ILiveLatestObservationIngestor latestObservationIngestor,
+        ILiveOperationalGate operationalGate,
         TimeProvider timeProvider,
         Func<double> jitterSample)
     {
         ArgumentNullException.ThrowIfNull(adapters);
         ArgumentNullException.ThrowIfNull(stateRepository);
         ArgumentNullException.ThrowIfNull(latestObservationIngestor);
+        ArgumentNullException.ThrowIfNull(operationalGate);
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(jitterSample);
 
         this.adapters = adapters.ToArray();
         this.stateRepository = stateRepository;
         this.latestObservationIngestor = latestObservationIngestor;
+        this.operationalGate = operationalGate;
         this.timeProvider = timeProvider;
         this.jitterSample = jitterSample;
     }
@@ -52,6 +58,15 @@ public sealed class LivePollingOrchestrator
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(target);
+        LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
+            target.SourceId,
+            target.ExternalEntityId,
+            cancellationToken);
+        if (!gate.AllowsCollection())
+        {
+            return new LivePollingExecutionResult(LivePollingExecutionDisposition.Suspended);
+        }
+
         DateTime acquisitionRequestedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         LivePollingLease? lease = await this.stateRepository.TryAcquireAsync(
             new LivePollingLeaseRequest(

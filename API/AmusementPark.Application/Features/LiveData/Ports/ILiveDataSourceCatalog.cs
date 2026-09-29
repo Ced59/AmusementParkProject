@@ -5,7 +5,11 @@ namespace AmusementPark.Application.Features.LiveData.Ports;
 
 public interface ILiveDataSourceCatalog
 {
+    bool IsCollectionEnabled { get; }
+
     bool IsPublicReadEnabled { get; }
+
+    LivePollingTarget? ConfiguredPollingTarget { get; }
 
     LivePollingTarget? PublicPollingTarget { get; }
 

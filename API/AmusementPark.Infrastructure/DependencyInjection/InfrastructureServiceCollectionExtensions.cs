@@ -408,6 +408,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ILiveDataProviderAdapter, ThemeParksWikiLiveDataAdapter>();
         services.AddSingleton<ILiveDataSourceCatalog, ThemeParksWikiLiveDataSourceCatalog>();
         services.AddScoped<ILivePollingStateRepository, LivePollingStateRepository>();
+        services.AddScoped<ILiveOperationalControlRepository, LiveOperationalControlRepository>();
         services.AddScoped<ILiveLatestObservationRepository, LiveLatestObservationRepository>();
         services.AddScoped<ILiveQualityIncidentRepository, LiveQualityIncidentRepository>();
         services.AddSingleton<LivePollingMetrics>();

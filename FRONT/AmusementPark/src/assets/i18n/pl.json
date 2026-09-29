@@ -3210,6 +3210,90 @@
         "mutation": "Nie udało się zapisać decyzji. Odśwież listę i spróbuj ponownie."
       }
     },
+    "liveOperations": {
+      "navTitle": "Sterowanie danymi na żywo",
+      "shortcut": "Monitoruj dane na żywo i natychmiast zatrzymaj źródło, park lub atrakcję.",
+      "kicker": "Bezpieczeństwo operacyjne",
+      "title": "Sterowanie danymi na żywo",
+      "subtitle": "Monitoruj pobieranie i bez ponownego wdrożenia precyzyjnie zatrzymuj to, czego nie wolno już pobierać ani wyświetlać.",
+      "refresh": "Odśwież",
+      "loading": "Wczytywanie stanu operacyjnego…",
+      "source": "Aktywne źródło",
+      "never": "Nigdy",
+      "generatedAt": "Stan obliczony {{date}}",
+      "configuration": {
+        "title": "Konfiguracja serwera wymusza zatrzymanie",
+        "description": "Poniższe ustawienia nigdy nie mogą ponownie włączyć elementu wyłączonego w konfiguracji produkcyjnej."
+      },
+      "metrics": {
+        "aria": "Wskaźniki danych na żywo",
+        "covered": "Użyteczne mapowania",
+        "candidates": "Do weryfikacji",
+        "quarantine": "W kwarantannie",
+        "failures": "Kolejne błędy"
+      },
+      "polling": {
+        "kicker": "Ograniczone pobieranie",
+        "title": "Stan ostatniego przebiegu",
+        "lastSuccess": "Ostatni sukces",
+        "lastStatus": "Ostatni wynik",
+        "nextAttempt": "Następna próba",
+        "circuit": "Obwód ochronny",
+        "closed": "Zamknięty, normalne działanie"
+      },
+      "controls": {
+        "kicker": "Zatrzymanie awaryjne",
+        "title": "Kontrolowane zakresy",
+        "description": "Źródło obejmuje wszystkie dane na żywo. Park lub atrakcję można następnie zatrzymać osobno."
+      },
+      "scopeType": {
+        "Source": "Całe źródło",
+        "Park": "Park",
+        "Target": "Atrakcja lub miejsce"
+      },
+      "state": {
+        "running": "Pobieranie aktywne",
+        "stopped": "Pobieranie zatrzymane",
+        "visible": "Widoczne publicznie",
+        "hidden": "Ukryte publicznie"
+      },
+      "actions": {
+        "mappings": "Zarządzaj mapowaniami",
+        "replay": "Przetwórz kwarantannę ponownie",
+        "replaying": "Ponowne przetwarzanie…",
+        "stopCollection": "Zatrzymaj pobieranie",
+        "resumeCollection": "Wznów pobieranie",
+        "hidePublicly": "Ukryj publicznie",
+        "showPublicly": "Pokaż publicznie"
+      },
+      "confirm": {
+        "stopCollection": "Potwierdź zatrzymanie pobierania",
+        "resumeCollection": "Potwierdź wznowienie pobierania",
+        "hidePublicly": "Potwierdź ukrycie publiczne",
+        "showPublicly": "Potwierdź publikację",
+        "reason": "Powód jest wymagany",
+        "placeholder": "Krótko uzasadnij decyzję…",
+        "apply": "Zastosuj teraz",
+        "cancel": "Anuluj"
+      },
+      "technical": {
+        "title": "Wersje, licencja i identyfikowalność",
+        "adapter": "Adapter",
+        "transformation": "Transformacja",
+        "policy": "Zasady użycia",
+        "reviewed": "Licencję sprawdzono",
+        "terms": "Zobacz warunki źródła"
+      },
+      "messages": {
+        "updated": "Ustawienie zastosowano i zachowano w historii.",
+        "replayed": "Ograniczony pakiet kwarantanny przetworzono ponownie."
+      },
+      "errors": {
+        "load": "Nie można wczytać sterowania danymi na żywo.",
+        "mutation": "Nie zapisano ustawienia. Odśwież stronę i spróbuj ponownie.",
+        "replay": "Nie udało się ponownie przetworzyć pakietu kwarantanny."
+      }
+    },
     "loading": "Ładowanie...",
     "m14": {
       "kicker": "Administracja",

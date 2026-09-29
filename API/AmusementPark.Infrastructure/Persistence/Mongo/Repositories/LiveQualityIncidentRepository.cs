@@ -17,6 +17,24 @@ public sealed class LiveQualityIncidentRepository : ILiveQualityIncidentReposito
             settings.LiveQualityIncidentsCollectionName);
     }
 
+    public Task<long> CountPendingAsync(
+        LiveDataSourceId sourceId,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<LiveQualityIncidentDocument> filter =
+            Builders<LiveQualityIncidentDocument>.Filter.Eq(
+                static document => document.SourceId,
+                sourceId.Value)
+            & Builders<LiveQualityIncidentDocument>.Filter.Eq(
+                static document => document.Status,
+                LiveQualityIncidentStatus.Pending)
+            & Builders<LiveQualityIncidentDocument>.Filter.Gt(
+                static document => document.ExpiresAtUtc,
+                nowUtc);
+        return this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
     public async Task SaveAsync(
         IReadOnlyCollection<LiveQualityIncident> incidents,
         CancellationToken cancellationToken)

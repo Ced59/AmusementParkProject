@@ -5,6 +5,7 @@ public sealed record LiveLatestObservationIngestionResult(
     int IgnoredAsOlderCount,
     int UnmappedCount,
     int IneligibleCount,
+    int SuppressedByOperationalControlCount,
     int InvalidFreshnessCount,
     int QuarantinedCount,
     int DiagnosticIncidentCount);
