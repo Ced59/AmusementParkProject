@@ -101,6 +101,9 @@ distincte pour le parc lui-même. Chaque changement exige un
 motif, utilise une révision attendue contre les
 écrasements concurrents et reste présent dans l’historique. Le rejeu de la
 quarantaine reste borné à 100 incidents par action.
+Les lectures publiques filtrent la source et l’entité externe immuables avant
+de trier l’historique des révisions MongoDB ; seuls l’éligibilité et le parc de
+la dernière révision sont évalués après regroupement.
 Après une mutation réussie, le cache HTTP du direct est évincé par son tag dédié
 sans refroidir les autres données publiques ni les pages SSR.
 Une génération dédiée entre aussi dans la clé du cache du direct. Si une réponse

@@ -199,6 +199,15 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
     {
         return new List<BsonDocument>
         {
+            new BsonDocument("$match", new BsonDocument
+            {
+                ["sourceId"] = sourceId.Value,
+                ["$or"] = new BsonArray
+                {
+                    new BsonDocument("externalTarget.id", externalEntityId),
+                    new BsonDocument("externalTarget.parentId", externalEntityId),
+                },
+            }),
             new BsonDocument("$sort", new BsonDocument
             {
                 ["mappingId"] = 1,
@@ -212,16 +221,10 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$document")),
             new BsonDocument("$match", new BsonDocument
             {
-                ["sourceId"] = sourceId.Value,
                 ["status"] = LiveMappingStatus.Verified.ToString(),
                 ["validToUtc"] = BsonNull.Value,
                 ["target.parkId"] = internalParkId,
                 ["target.id"] = new BsonDocument("$type", "string"),
-                ["$or"] = new BsonArray
-                {
-                    new BsonDocument("externalTarget.id", externalEntityId),
-                    new BsonDocument("externalTarget.parentId", externalEntityId),
-                },
             }),
             new BsonDocument("$group", new BsonDocument
             {
