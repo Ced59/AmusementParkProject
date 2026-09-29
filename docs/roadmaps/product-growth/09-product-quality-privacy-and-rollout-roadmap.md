@@ -2,7 +2,7 @@
 
 > Code programme : `QUAL`
 >
-> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres.
+> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` est livré au 29 septembre 2026.
 >
 > Principe : une fonctionnalité n’est pas validée parce qu’elle compile ou parce qu’elle augmente un compteur. Elle doit être comprise, utile, accessible, fiable, réversible, respectueuse de la vie privée et supportable avec les moyens réels du projet.
 
@@ -824,7 +824,7 @@ d'usage réel n'est donc revendiquée.
 
 | PR | Contenu | Critère |
 |---|---|---|
-| `QUAL-01` | ADR analytics et plan d’événements | Finalités/minimisation validées |
+| [`QUAL-01`](../../architecture/product-growth-qual-01-analytics-event-plan-2026-09-29.md) | ADR analytics et plan d’événements — livré le 29 septembre 2026 | Finalités/minimisation validées |
 | `QUAL-02` | Infrastructure feature flags | Fallback/kill switch |
 | `QUAL-03` | Baseline performance/erreurs | État avant produit connu |
 | `QUAL-04` | Matrice privacy et export/suppression | Champs catalogués |
@@ -835,6 +835,20 @@ d'usage réel n'est donc revendiquée.
 | `QUAL-09` | Runbooks et alerting | Incidents opérables |
 | `QUAL-10` | Protocole beta/recherche | Tests comparables |
 | `QUAL-11+` | Tranche transverse par roadmap | Gate locale documentée |
+
+### Implémentation `QUAL-01` — 29 septembre 2026
+
+La mesure produit est désormais organisée en trois canaux qui ne peuvent pas être
+confondus : événements Matomo consentis, agrégats métier first-party et métriques
+techniques d’exploitation. Le catalogue canonique couvre les huit familles
+`RANK`, `PASS`, `SHARE`, `FIT`, `WATCH`, `TRIP`, `HIST` et `LIVE`, fixe les
+instants d’émission, les propriétés fermées et les données interdites.
+
+Le jalon conserve les ports Matomo et agrégats existants sans créer de second
+moteur. Il prépare leur migration directe vers les helpers communs de `QUAL-05`,
+borne la conservation à 180 jours pour les événements tiers bruts et réserve les
+cohortes de valeur récurrente aux calculs internes minimisés. Aucun schéma MongoDB
+ni comportement public n’est modifié par cet ADR.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 
