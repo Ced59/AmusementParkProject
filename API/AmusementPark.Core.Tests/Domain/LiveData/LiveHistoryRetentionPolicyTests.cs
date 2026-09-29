@@ -32,6 +32,9 @@ public sealed class LiveHistoryRetentionPolicyTests
         Assert.Equal(
             bucketStartUtc.AddHours(1).AddDays(400),
             policy.GetAggregateExpirationUtc(bucketStartUtc));
+        Assert.Equal(
+            $"{TimeSpan.FromDays(7).Ticks}:{TimeSpan.FromDays(400).Ticks}:{TimeSpan.FromHours(1).Ticks}",
+            policy.StorageKey);
     }
 
     [Fact]

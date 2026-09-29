@@ -26,6 +26,9 @@ public sealed class LiveHistoryBucketDocument : MongoDocumentBase
     [BsonElement("usagePolicyVersion")]
     public string UsagePolicyVersion { get; set; } = string.Empty;
 
+    [BsonElement("retentionPolicyKey")]
+    public string RetentionPolicyKey { get; set; } = string.Empty;
+
     [BsonElement("expiresAtUtc")]
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
     public DateTime ExpiresAtUtc { get; set; }

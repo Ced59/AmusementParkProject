@@ -88,6 +88,29 @@ public sealed class LiveHistoryMongoDefinitionsTests
         Assert.Equal("usage-2", currentPolicy.UsagePolicyVersion);
     }
 
+    [Fact]
+    public void ToHistoryDocuments_WhenRetentionChanges_ShouldUseSeparateStorageKeys()
+    {
+        LiveLatestObservation observation = CreateObservation();
+        LiveHistoryRetentionPolicy shorterBuckets = new LiveHistoryRetentionPolicy(
+            TimeSpan.FromDays(7),
+            TimeSpan.FromDays(400),
+            TimeSpan.FromMinutes(30));
+
+        LiveLatestObservationDocument originalRaw =
+            observation.ToRawHistoryDocument(RetentionPolicy);
+        LiveLatestObservationDocument changedRaw =
+            observation.ToRawHistoryDocument(shorterBuckets);
+        LiveHistoryBucketDocument originalBucket =
+            observation.ToHistoryBucketDocument(RetentionPolicy);
+        LiveHistoryBucketDocument changedBucket =
+            observation.ToHistoryBucketDocument(shorterBuckets);
+
+        Assert.NotEqual(originalRaw.Id, changedRaw.Id);
+        Assert.NotEqual(originalBucket.Id, changedBucket.Id);
+        Assert.NotEqual(originalBucket.RetentionPolicyKey, changedBucket.RetentionPolicyKey);
+    }
+
     private static LiveLatestObservation CreateObservation(string usagePolicyVersion = "usage-1")
     {
         DateTime receivedAtUtc = ObservedAtUtc.AddSeconds(10);

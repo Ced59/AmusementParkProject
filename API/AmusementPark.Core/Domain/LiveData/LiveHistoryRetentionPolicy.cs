@@ -41,6 +41,8 @@ public sealed class LiveHistoryRetentionPolicy
         this.RawRetention = rawRetention;
         this.AggregateRetention = aggregateRetention;
         this.BucketDuration = bucketDuration;
+        this.StorageKey = FormattableString.Invariant(
+            $"{rawRetention.Ticks}:{aggregateRetention.Ticks}:{bucketDuration.Ticks}");
     }
 
     public TimeSpan RawRetention { get; }
@@ -48,6 +50,8 @@ public sealed class LiveHistoryRetentionPolicy
     public TimeSpan AggregateRetention { get; }
 
     public TimeSpan BucketDuration { get; }
+
+    public string StorageKey { get; }
 
     public DateTime GetBucketStartUtc(DateTime observedAtUtc)
     {

@@ -91,6 +91,7 @@ public static class LiveHistoryMongoDefinitions
             ["bucketEndUtc"] = serialized["bucketEndUtc"],
             ["bucketDurationMilliseconds"] = serialized["bucketDurationMilliseconds"],
             ["usagePolicyVersion"] = serialized["usagePolicyVersion"],
+            ["retentionPolicyKey"] = serialized["retentionPolicyKey"],
             ["expiresAtUtc"] = serialized["expiresAtUtc"],
             ["samples"] = new BsonDocument(
                 "$slice",

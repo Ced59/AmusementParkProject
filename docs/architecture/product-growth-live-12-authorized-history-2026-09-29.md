@@ -82,12 +82,13 @@ le latest déjà disponible.
 
 ```text
 live-history-raw                    live-history-buckets
-├─ _id source/cible/observedAt      ├─ _id source/cible/bucketStart/politique
+├─ _id cible/temps/politiques       ├─ _id cible/temps/politiques
 ├─ sourceId                         ├─ sourceId
 ├─ target                           ├─ target
 ├─ status                           ├─ bucketStartUtc / bucketEndUtc
 ├─ queues                           ├─ bucketDurationMilliseconds
 ├─ provenance complète              ├─ usagePolicyVersion
+├─ fraîcheur/rétention dans la clé  ├─ retentionPolicyKey
 ├─ freshnessPolicy                  ├─ samples[] (24 maximum)
 ├─ payloadSha256                    │  ├─ sampleId
 └─ expiresAtUtc (TTL, 7 j)          │  ├─ observedAt / receivedAt exacts
@@ -104,6 +105,10 @@ clés internes ne sont jamais un libellé de repli destiné au visiteur.
 Un bucket conserve au plus 24 échantillons, soit deux fois le volume nominal du
 polling à cinq minutes. Au-delà, les plus récents sont gardés et `isTruncated`
 rend explicitement cette perte visible aux statistiques futures.
+La clé de stockage contient à la fois la version juridique et une empreinte des
+trois durées de rétention. Un changement de contrat, de durée brute, de durée
+d'agrégat ou de largeur de bucket ouvre donc un nouveau document au lieu de
+réétiqueter, prolonger ou mélanger les observations déjà conservées.
 
 ## Architecture et exploitation
 

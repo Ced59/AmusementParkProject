@@ -12,7 +12,11 @@ public static class LiveHistoryMongoMapper
         ArgumentNullException.ThrowIfNull(observation);
         ArgumentNullException.ThrowIfNull(retentionPolicy);
         LiveLatestObservationDocument document = observation.ToDocument();
-        document.Id = BuildObservationId(document.Id, observation.Provenance.ObservedAtUtc.Ticks);
+        document.Id = BuildHistoryId(
+            document.Id,
+            observation.Provenance.ObservedAtUtc.Ticks,
+            observation.Provenance.UsagePolicyVersion,
+            retentionPolicy.StorageKey);
         document.ExpiresAtUtc = retentionPolicy.GetRawExpirationUtc(
             observation.Provenance.NormalizedAtUtc);
         return document;
@@ -30,10 +34,11 @@ public static class LiveHistoryMongoMapper
         DateTime bucketEndUtc = bucketStartUtc.Add(retentionPolicy.BucketDuration);
         return new LiveHistoryBucketDocument
         {
-            Id = BuildBucketId(
+            Id = BuildHistoryId(
                 latest.Id,
                 bucketStartUtc.Ticks,
-                observation.Provenance.UsagePolicyVersion),
+                observation.Provenance.UsagePolicyVersion,
+                retentionPolicy.StorageKey),
             CreatedAt = observation.Provenance.NormalizedAtUtc,
             UpdatedAt = observation.Provenance.NormalizedAtUtc,
             SourceId = observation.Provenance.SourceId.Value,
@@ -42,6 +47,7 @@ public static class LiveHistoryMongoMapper
             BucketEndUtc = bucketEndUtc,
             BucketDurationMilliseconds = (long)retentionPolicy.BucketDuration.TotalMilliseconds,
             UsagePolicyVersion = observation.Provenance.UsagePolicyVersion,
+            RetentionPolicyKey = retentionPolicy.StorageKey,
             ExpiresAtUtc = retentionPolicy.GetAggregateExpirationUtc(bucketStartUtc),
             Samples = new List<LiveHistoryBucketSampleDocument>
             {
@@ -65,12 +71,15 @@ public static class LiveHistoryMongoMapper
         return $"{targetNaturalId.Length}:{targetNaturalId}|{timeBucketTicks}";
     }
 
-    private static string BuildBucketId(
+    private static string BuildHistoryId(
         string targetNaturalId,
-        long bucketStartTicks,
-        string usagePolicyVersion)
+        long timeBucketTicks,
+        string usagePolicyVersion,
+        string retentionPolicyKey)
     {
-        string timedTargetId = BuildObservationId(targetNaturalId, bucketStartTicks);
-        return $"{timedTargetId.Length}:{timedTargetId}|{usagePolicyVersion.Length}:{usagePolicyVersion}";
+        string timedTargetId = BuildObservationId(targetNaturalId, timeBucketTicks);
+        string policyTargetId =
+            $"{timedTargetId.Length}:{timedTargetId}|{usagePolicyVersion.Length}:{usagePolicyVersion}";
+        return $"{policyTargetId.Length}:{policyTargetId}|{retentionPolicyKey.Length}:{retentionPolicyKey}";
     }
 }
