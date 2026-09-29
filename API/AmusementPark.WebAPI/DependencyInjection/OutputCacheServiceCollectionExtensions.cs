@@ -108,6 +108,7 @@ public static class OutputCacheServiceCollectionExtensions
                 .Cache()
                 .Expire(TimeSpan.FromSeconds(30))
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
                 .Tag(ApiOutputCachePolicyNames.PublicLiveDataTag)
                 .AddPolicy<PublicLiveExpirationOutputCachePolicy>());
 

@@ -75,6 +75,8 @@ MongoDB et décrit la source, et WebAPI mappe le résultat HTTP.
 - requêtes Mongo bornées à 16 sources par cible et 2 000 observations par parc ;
 - index existant `(parkId, type, expiresAtUtc)` réutilisé ;
 - rate limiting global des lectures publiques et CORS first-party existants ;
+- tag d'invalidation public partagé : masquer, supprimer ou renommer une entité
+  évince immédiatement sa réponse live mise en cache ;
 - aucun `stale-while-revalidate`, donc aucun cache ne ressuscite silencieusement
   une observation expirée.
 
