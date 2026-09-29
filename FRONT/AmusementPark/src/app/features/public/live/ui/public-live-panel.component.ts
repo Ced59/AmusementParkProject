@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PublicLiveQueue, PublicLiveSource, PublicLiveTarget } from '@app/models/live-data/public-live.models';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primitives';
+import { LiveAlertActionComponent } from '@features/watchlists/ui/live-alert-action.component';
 import { PublicLiveFilter } from '../models/public-live-filter.model';
 import { PublicLiveDisplayMode, PublicLiveViewState } from '../models/public-live-view-state.model';
 import {
@@ -23,7 +24,14 @@ import {
   templateUrl: './public-live-panel.component.html',
   styleUrls: ['./public-live-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent]
+  imports: [
+    RouterLink,
+    TranslateModule,
+    LiveAlertActionComponent,
+    UiButtonDirective,
+    UiChipComponent,
+    UiKickerComponent
+  ]
 })
 export class PublicLivePanelComponent {
   @Input({ required: true }) state!: PublicLiveViewState;

@@ -144,6 +144,10 @@
         </div>
       }
 
+      @if (mode === 'item') {
+        <app-live-alert-action [target]="target"></app-live-alert-action>
+      }
+
       @if (mode === 'park') {
         @if (state.items.length > 0) {
           <nav class="live-filters" [attr.aria-label]="'liveData.filters.label' | translate">

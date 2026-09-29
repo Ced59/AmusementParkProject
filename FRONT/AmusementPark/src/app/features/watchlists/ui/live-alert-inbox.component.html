@@ -1,0 +1,114 @@
+<section class="live-inbox" appUiSurface="panel" appUiSurfacePadding="regular">
+  <header class="live-inbox__header">
+    <span class="live-inbox__icon" aria-hidden="true"><i class="pi pi-wave-pulse"></i></span>
+    <div>
+      <p>{{ 'liveAlerts.inbox.kicker' | translate }}</p>
+      <h2>{{ 'liveAlerts.inbox.title' | translate }}</h2>
+      <span>{{ 'liveAlerts.inbox.description' | translate }}</span>
+    </div>
+    @if (facade.dashboard(); as dashboard) {
+      <app-ui-chip [tone]="dashboard.unreadCount > 0 ? 'sky' : 'soft'" iconClass="pi pi-bell">
+        {{ 'liveAlerts.inbox.unread' | translate:{ count: dashboard.unreadCount } }}
+      </app-ui-chip>
+    }
+  </header>
+
+  @if (facade.loading() && !facade.dashboard()) {
+    <p class="live-inbox__message" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      {{ 'liveAlerts.feedback.loading' | translate }}
+    </p>
+  } @else if (facade.error() && !facade.dashboard()) {
+    <p class="live-inbox__message live-inbox__message--error" role="alert">
+      {{ 'liveAlerts.feedback.error' | translate }}
+      <button appUiButton="ghost" type="button" (click)="facade.load()">{{ 'liveAlerts.feedback.retry' | translate }}</button>
+    </p>
+  } @else if (facade.dashboard(); as dashboard) {
+    @if (dashboard.subscriptions.length > 0) {
+      <div class="live-inbox__subscriptions">
+        <h3>{{ 'liveAlerts.inbox.activeTitle' | translate }}</h3>
+        <div>
+          @for (subscription of dashboard.subscriptions; track subscription.subscriptionId) {
+            <article>
+              <div>
+                <strong>{{ subscription.targetName || ('liveAlerts.inbox.targetUnavailable' | translate) }}</strong>
+                <span>{{ subscriptionLabelKey(subscription) | translate:{ threshold: subscription.thresholdMinutes } }}</span>
+                <time [attr.datetime]="subscription.expiresAtUtc">
+                  {{ 'liveAlerts.activeUntil' | translate:{ time: (subscription.expiresAtUtc | date:'shortTime') } }}
+                </time>
+              </div>
+              <button
+                appUiButton="ghost"
+                type="button"
+                [disabled]="facade.mutatingId() !== null"
+                (click)="facade.remove(subscription)">
+                <i class="pi pi-bell-slash" aria-hidden="true"></i>
+                {{ 'liveAlerts.stop' | translate }}
+              </button>
+            </article>
+          }
+        </div>
+      </div>
+    }
+
+    @if (dashboard.notifications.length > 0) {
+      <div class="live-inbox__notifications">
+        @for (notification of dashboard.notifications; track notification.notificationId) {
+          <article [class.live-inbox__notification--unread]="notification.status === 'Delivered'">
+            <app-image-display
+              [imageId]="notification.mainImageId"
+              [alt]="notification.targetName || ('liveAlerts.inbox.targetUnavailable' | translate)"
+              placeholderKind="park"
+              sizes="(max-width: 520px) 96px, 120px"
+              [srcWidth]="180"
+              [responsiveWidths]="imageWidths">
+            </app-image-display>
+            <div class="live-inbox__notification-body">
+              <div class="live-inbox__notification-meta">
+                <app-ui-chip [tone]="notification.status === 'Delivered' ? 'sky' : 'soft'">
+                  {{ (notification.status === 'Delivered' ? 'liveAlerts.inbox.new' : 'liveAlerts.inbox.read') | translate }}
+                </app-ui-chip>
+                <time [attr.datetime]="notification.deliveredAtUtc">
+                  {{ notification.deliveredAtUtc | date:'short':undefined:currentLang() }}
+                </time>
+              </div>
+              <p>{{ notification.parkName }}</p>
+              <h3>{{ notification.targetName || ('liveAlerts.inbox.targetUnavailable' | translate) }}</h3>
+              <strong>{{ typeLabelKey(notification.type) | translate:{ threshold: notification.thresholdMinutes } }}</strong>
+              <div class="live-inbox__proof">
+                <span>
+                  <i class="pi pi-verified" aria-hidden="true"></i>
+                  {{ 'liveAlerts.inbox.source' | translate:{ source: (notification.sourceName || ('liveAlerts.inbox.sourceUnavailable' | translate)) } }}
+                </span>
+                <span>
+                  <i class="pi pi-history" aria-hidden="true"></i>
+                  {{ 'liveAlerts.inbox.age' | translate:{ seconds: notification.ageSecondsAtDelivery } }}
+                </span>
+                @if (notification.attributionUrl) {
+                  <a [href]="notification.attributionUrl | safeExternalUrl" target="_blank" rel="noopener noreferrer">
+                    {{ notification.attributionText || notification.sourceName || ('liveAlerts.inbox.sourceUnavailable' | translate) }}
+                  </a>
+                }
+              </div>
+              <div class="live-inbox__actions">
+                @if (routeFor(notification); as route) {
+                  <a appUiButton="primary" [routerLink]="route">{{ 'liveAlerts.inbox.view' | translate }}</a>
+                }
+                @if (notification.status === 'Delivered') {
+                  <button appUiButton="ghost" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.markRead(notification)">
+                    {{ 'liveAlerts.inbox.markRead' | translate }}
+                  </button>
+                }
+                <button appUiButton="ghost" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.dismiss(notification)">
+                  {{ 'liveAlerts.inbox.dismiss' | translate }}
+                </button>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    } @else if (dashboard.subscriptions.length === 0) {
+      <p class="live-inbox__message">{{ 'liveAlerts.inbox.empty' | translate }}</p>
+    }
+  }
+</section>

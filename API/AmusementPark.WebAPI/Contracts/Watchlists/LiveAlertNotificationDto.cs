@@ -1,0 +1,27 @@
+namespace AmusementPark.WebAPI.Contracts.Watchlists;
+
+public sealed record LiveAlertNotificationDto(
+    string NotificationId,
+    string SubscriptionId,
+    string TargetId,
+    string ParkId,
+    string? TargetName,
+    string? ParkName,
+    string? MainImageId,
+    string Type,
+    int? ThresholdMinutes,
+    string? PreviousStatus,
+    string CurrentStatus,
+    int? PreviousWaitMinutes,
+    int? CurrentWaitMinutes,
+    string SourceId,
+    string? SourceName,
+    string? AttributionText,
+    string? AttributionUrl,
+    DateTime ObservedAtUtc,
+    DateTime DeliveredAtUtc,
+    long AgeSecondsAtDelivery,
+    string Status,
+    DateTime? ReadAtUtc,
+    DateTime ExpiresAtUtc,
+    long Version);

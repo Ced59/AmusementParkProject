@@ -234,6 +234,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<ITripInvitationSecurity, TripInvitationSecurity>();
         services.AddSingleton<ITripTimeZoneValidator, SystemTripTimeZoneValidator>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
+        services.AddScoped<ILiveAlertSubscriptionRepository, LiveAlertSubscriptionRepository>();
+        services.AddScoped<ILiveAlertNotificationRepository, LiveAlertNotificationRepository>();
         services.AddScoped<INotificationDigestRepository, NotificationDigestRepository>();
         services.AddScoped<INotificationEmailPreferenceRepository,
             NotificationEmailPreferenceRepository>();

@@ -128,6 +128,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<UserCollectionTargetReader>();
         services.AddScoped<UserCollectionLifecycleService>();
         services.AddScoped<WatchSubscriptionLifecycleService>();
+        services.AddScoped<LiveAlertLifecycleService>();
+        services.AddScoped<LiveAlertEvaluationService>();
         services.AddScoped<TripPlanLifecycleService>();
         services.AddScoped<TripPlanDateService>();
         services.AddScoped<TripPlanDeletionReconciler>();

@@ -19,6 +19,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirecti
 import { UserNotificationPresenter } from '../services/user-notification.presenter';
 import { UserNotificationsFacade } from '../state/user-notifications.facade';
 import { NotificationEmailPreferencesPanelComponent } from '../ui/notification-email-preferences-panel.component';
+import { LiveAlertInboxComponent } from '../ui/live-alert-inbox.component';
 
 @Component({
   selector: 'app-user-notifications-page',
@@ -31,6 +32,7 @@ import { NotificationEmailPreferencesPanelComponent } from '../ui/notification-e
     RouterLink,
     TranslateModule,
     ImageDisplayComponent,
+    LiveAlertInboxComponent,
     NotificationEmailPreferencesPanelComponent,
     PaginationComponent,
     SafeExternalUrlPipe,

@@ -800,7 +800,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-08`](../../architecture/product-growth-live-08-latest-api-cache-2026-09-29.md) | ✅ API latest/cache | Source et âge obligatoires |
 | [`LIVE-09`](../../architecture/product-growth-live-09-public-ui-2026-09-29.md) | ✅ UI pilote | 0/unknown/closed distincts |
 | [`LIVE-10`](../../architecture/product-growth-live-10-operational-controls-2026-09-29.md) | ✅ Kill switches/ops | Arrêt immédiat possible |
-| `LIVE-11` | Alertes temporaires | Hystérésis/expiration |
+| [`LIVE-11`](../../architecture/product-growth-live-11-temporary-alerts-2026-09-29.md) | ✅ Alertes temporaires | Hystérésis/expiration |
 | `LIVE-12` | Historique autorisé | Rétention et buckets |
 | `LIVE-13` | Statistiques descriptives | Volumes/lacunes visibles |
 | `LIVE-14` | Étude prévision/backtest | Peut conclure à l’abandon |
@@ -932,6 +932,22 @@ plus proche et arrête toute actualisation lorsque l’onglet est masqué ou hor
 ligne. La source, l’âge et une explication publique restent visibles. Le bloc ne
 s’affiche pas tant que la lecture publique du pilote est désactivée ; son
 ouverture opérationnelle reste volontairement réservée à `LIVE-10`.
+
+### Implémentation `LIVE-11` — 29 septembre 2026
+
+La version `5.4.12` permet à un membre connecté de suivre temporairement la
+réouverture, une attente sous ou au-dessus d’un seuil ou un fonctionnement
+dégradé depuis la fiche d’une attraction. Les alertes expirent automatiquement
+après 1, 3 ou 6 heures, ou au plus tard à la fin de la journée locale du parc.
+Le centre WATCH regroupe les alertes actives et les notifications reçues avec
+le nom, l’image, la source et l’âge exact de la donnée.
+
+Le domaine impose une hystérésis de cinq minutes et un cooldown de trente
+minutes pour éviter les oscillations. Seules les observations publiques,
+fraîches, plus récentes et encore autorisées par les contrôles opérationnels
+peuvent déclencher. MongoDB applique l’unicité et les TTL ; la suppression de
+compte purge ces données. Le canal reste volontairement interne au site et
+aucun identifiant technique ne remplace un libellé public manquant.
 
 ## 24. Gate finale `LIVE-G`
 

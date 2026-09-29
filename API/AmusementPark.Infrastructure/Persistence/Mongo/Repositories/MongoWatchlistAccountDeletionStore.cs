@@ -17,6 +17,8 @@ public sealed class MongoWatchlistAccountDeletionStore : IWatchlistAccountDeleti
     private readonly IMongoCollection<BsonDocument> collectionEntries;
     private readonly IMongoCollection<BsonDocument> subscriptions;
     private readonly IMongoCollection<BsonDocument> notifications;
+    private readonly IMongoCollection<BsonDocument> liveAlertSubscriptions;
+    private readonly IMongoCollection<BsonDocument> liveAlertNotifications;
     private readonly IMongoCollection<BsonDocument> digests;
     private readonly IMongoCollection<BsonDocument> emailPreferences;
     private readonly IMongoCollection<BsonDocument> deliveryAttempts;
@@ -34,6 +36,10 @@ public sealed class MongoWatchlistAccountDeletionStore : IWatchlistAccountDeleti
             settings.WatchSubscriptionsCollectionName);
         this.notifications = database.GetCollection<BsonDocument>(
             settings.UserNotificationsCollectionName);
+        this.liveAlertSubscriptions = database.GetCollection<BsonDocument>(
+            settings.LiveAlertSubscriptionsCollectionName);
+        this.liveAlertNotifications = database.GetCollection<BsonDocument>(
+            settings.LiveAlertNotificationsCollectionName);
         this.digests = database.GetCollection<BsonDocument>(
             settings.NotificationDigestsCollectionName);
         this.emailPreferences = database.GetCollection<BsonDocument>(
@@ -63,6 +69,10 @@ public sealed class MongoWatchlistAccountDeletionStore : IWatchlistAccountDeleti
             this.subscriptions,
             normalizedUserId,
             cancellationToken);
+        subscriptionCount += await DeleteByUserAsync(
+            this.liveAlertSubscriptions,
+            normalizedUserId,
+            cancellationToken);
         long backgroundJobCount = await this.DeleteJobsAsync(ownedJobIds, cancellationToken);
         long deliveryAttemptCount = await DeleteByUserAsync(
             this.deliveryAttempts,
@@ -74,6 +84,10 @@ public sealed class MongoWatchlistAccountDeletionStore : IWatchlistAccountDeleti
             cancellationToken);
         long notificationCount = await DeleteByUserAsync(
             this.notifications,
+            normalizedUserId,
+            cancellationToken);
+        notificationCount += await DeleteByUserAsync(
+            this.liveAlertNotifications,
             normalizedUserId,
             cancellationToken);
         long collectionEntryCount = await DeleteByUserAsync(

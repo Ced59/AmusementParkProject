@@ -62,6 +62,75 @@
     "languages": "Idiomas",
     "profile": "Perfil"
   },
+  "liveAlerts": {
+    "action": {
+      "label": "Alertas de espera",
+      "open": "Criar um alerta temporário",
+      "start": "Ativar este alerta"
+    },
+    "activeUntil": "Ativo até às {{ time }}",
+    "stop": "Parar alerta",
+    "panel": {
+      "title": "Que mudança queres acompanhar?",
+      "description": "Escolhe um sinal útil para esta atração. O alerta termina automaticamente hoje.",
+      "typeLabel": "Tipo de alerta",
+      "threshold": "Limite de espera",
+      "minutes": "minutos",
+      "duration": "Duração máxima",
+      "proof": "A notificação guardará a fonte e a idade exata dos dados.",
+      "timing": "A verificação é periódica; a entrega ao minuto não é garantida."
+    },
+    "types": {
+      "Reopened": {
+        "label": "Quando reabrir",
+        "active": "Reabertura acompanhada",
+        "notification": "Esta atração reabriu"
+      },
+      "WaitBelow": {
+        "label": "Espera abaixo do limite",
+        "active": "Espera abaixo de {{ threshold }} min",
+        "notification": "A espera desceu abaixo de {{ threshold }} min"
+      },
+      "WaitAbove": {
+        "label": "Espera acima do limite",
+        "active": "Espera acima de {{ threshold }} min",
+        "notification": "A espera ultrapassou {{ threshold }} min"
+      },
+      "Degraded": {
+        "label": "Serviço degradado",
+        "active": "Degradação acompanhada",
+        "notification": "A atração está a funcionar de forma degradada"
+      }
+    },
+    "durations": {
+      "60": "1 h",
+      "180": "3 h",
+      "360": "6 h",
+      "720": "Hoje"
+    },
+    "feedback": {
+      "loading": "A carregar alertas…",
+      "error": "Não foi possível processar os alertas em direto.",
+      "retry": "Tentar novamente"
+    },
+    "inbox": {
+      "kicker": "Em direto · WATCH",
+      "title": "Os teus alertas temporários",
+      "description": "Mudanças de espera e funcionamento que escolheste acompanhar.",
+      "unread": "{{ count }} novos",
+      "activeTitle": "Alertas ativos",
+      "targetUnavailable": "Atração indisponível",
+      "new": "Novo",
+      "read": "Lido",
+      "source": "Fonte: {{ source }}",
+      "sourceUnavailable": "Fonte live verificada",
+      "age": "Os dados tinham {{ seconds }} s ao ativar",
+      "view": "Ver atração",
+      "markRead": "Marcar como lido",
+      "dismiss": "Ocultar",
+      "empty": "Ainda não há alertas em direto ativos ou recebidos."
+    }
+  },
   "notifications": {
     "emailPreferences": {
       "kicker": "Resumos por e-mail",

@@ -1,0 +1,16 @@
+{
+  "liveAlerts": {
+    "action": { "label": "Alertas de espera", "open": "Crear una alerta temporal", "start": "Activar esta alerta" },
+    "activeUntil": "Activa hasta las {{ time }}", "stop": "Detener la alerta",
+    "panel": { "title": "¿Qué cambio quieres seguir?", "description": "Elige una señal útil para esta atracción. La alerta termina automáticamente hoy.", "typeLabel": "Tipo de alerta", "threshold": "Umbral de espera", "minutes": "minutos", "duration": "Duración máxima", "proof": "La notificación conservará la fuente y la antigüedad exacta del dato.", "timing": "La comprobación es periódica; no se garantiza al minuto." },
+    "types": {
+      "Reopened": { "label": "Cuando reabra", "active": "Reapertura vigilada", "notification": "Esta atracción ha reabierto" },
+      "WaitBelow": { "label": "Espera por debajo", "active": "Espera inferior a {{ threshold }} min", "notification": "La espera ha bajado de {{ threshold }} min" },
+      "WaitAbove": { "label": "Espera por encima", "active": "Espera superior a {{ threshold }} min", "notification": "La espera ha superado {{ threshold }} min" },
+      "Degraded": { "label": "Servicio degradado", "active": "Degradación vigilada", "notification": "La atracción funciona de forma degradada" }
+    },
+    "durations": { "60": "1 h", "180": "3 h", "360": "6 h", "720": "Hoy" },
+    "feedback": { "loading": "Cargando alertas…", "error": "No se pudieron procesar las alertas en directo.", "retry": "Reintentar" },
+    "inbox": { "kicker": "En directo · WATCH", "title": "Tus alertas temporales", "description": "Cambios de espera y funcionamiento que elegiste seguir.", "unread": "{{ count }} nueva(s)", "activeTitle": "Alertas activas", "targetUnavailable": "Atracción no disponible", "new": "Nueva", "read": "Leída", "source": "Fuente: {{ source }}", "sourceUnavailable": "Fuente en directo verificada", "age": "El dato tenía {{ seconds }} s al activarse", "view": "Ver la atracción", "markRead": "Marcar como leída", "dismiss": "Ocultar", "empty": "Aún no hay alertas en directo activas o recibidas." }
+  }
+}

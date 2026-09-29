@@ -794,6 +794,24 @@ private readonly IMongoDatabase database;
             WatchNotificationMongoDefinitions.BuildNotificationIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.LiveAlertSubscriptionsCollectionName,
+            cancellationToken);
+        IMongoCollection<LiveAlertSubscriptionDocument> liveAlertSubscriptions =
+            this.database.GetCollection<LiveAlertSubscriptionDocument>(
+                this.settings.LiveAlertSubscriptionsCollectionName);
+        await liveAlertSubscriptions.Indexes.CreateManyAsync(
+            LiveAlertMongoDefinitions.BuildSubscriptionIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.LiveAlertNotificationsCollectionName,
+            cancellationToken);
+        IMongoCollection<LiveAlertNotificationDocument> liveAlertNotifications =
+            this.database.GetCollection<LiveAlertNotificationDocument>(
+                this.settings.LiveAlertNotificationsCollectionName);
+        await liveAlertNotifications.Indexes.CreateManyAsync(
+            LiveAlertMongoDefinitions.BuildNotificationIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.NotificationDigestsCollectionName,
             cancellationToken);
         IMongoCollection<NotificationDigestDocument> notificationDigests =
