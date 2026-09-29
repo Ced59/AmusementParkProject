@@ -10,6 +10,21 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class LiveAlertMongoDefinitionsTests
 {
     [Fact]
+    public void BuildOwnedDeleteFilter_ShouldNotDependOnEvaluationVersion()
+    {
+        FilterDefinition<LiveAlertSubscriptionDocument> filter =
+            LiveAlertMongoDefinitions.BuildOwnedDeleteFilter("member-1", "subscription-1");
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<LiveAlertSubscriptionDocument>(
+                BsonSerializer.LookupSerializer<LiveAlertSubscriptionDocument>(),
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal("subscription-1", rendered["_id"].AsString);
+        Assert.Equal("member-1", rendered["userId"].AsString);
+        Assert.False(rendered.Contains("version"));
+    }
+
+    [Fact]
     public void BuildSubscriptionIndexes_ShouldProtectIdentityAndAtomicUserQuota()
     {
         IReadOnlyCollection<CreateIndexModel<LiveAlertSubscriptionDocument>> indexes =

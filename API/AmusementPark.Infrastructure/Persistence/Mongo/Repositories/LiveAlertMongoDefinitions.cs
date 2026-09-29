@@ -5,6 +5,18 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class LiveAlertMongoDefinitions
 {
+    public static FilterDefinition<LiveAlertSubscriptionDocument> BuildOwnedDeleteFilter(
+        string userId,
+        string subscriptionId)
+    {
+        return Builders<LiveAlertSubscriptionDocument>.Filter.Eq(
+                static document => document.Id,
+                subscriptionId)
+            & Builders<LiveAlertSubscriptionDocument>.Filter.Eq(
+                static document => document.UserId,
+                userId);
+    }
+
     public static FilterDefinition<LiveAlertSubscriptionDocument> BuildPendingDeliveryFilter(
         DateTime nowUtc)
     {

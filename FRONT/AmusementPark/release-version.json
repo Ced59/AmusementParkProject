@@ -1,6 +1,20 @@
 {
-  "version": "5.4.12",
+  "version": "5.4.13",
   "history": [
+    {
+      "version": "5.4.13",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les alertes en direct restent fiables même si leur affichage doit être actualisé.",
+        "en": "Live alerts remain reliable even when their display needs refreshing.",
+        "de": "Live-Alarme bleiben zuverlässig, auch wenn ihre Anzeige aktualisiert werden muss.",
+        "nl": "Live-meldingen blijven betrouwbaar, ook als hun weergave moet worden vernieuwd.",
+        "it": "Gli avvisi in tempo reale restano affidabili anche quando la visualizzazione deve essere aggiornata.",
+        "es": "Las alertas en directo siguen siendo fiables aunque sea necesario actualizar su visualización.",
+        "pl": "Alerty na żywo pozostają niezawodne, nawet gdy ich widok wymaga odświeżenia.",
+        "pt": "Os alertas em direto continuam fiáveis, mesmo quando é necessário atualizar a apresentação."
+      }
+    },
     {
       "version": "5.4.12",
       "releasedAt": "2026-09-29",
