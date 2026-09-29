@@ -23,7 +23,7 @@ public sealed class LiveOperationalWriteCoordinator
         await boundary.WaitAsync(cancellationToken);
         try
         {
-            return await operation(cancellationToken);
+            return await operation(CancellationToken.None);
         }
         finally
         {

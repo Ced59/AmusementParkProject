@@ -38,4 +38,27 @@ public sealed class LiveOperationalWriteCoordinatorTests
         Assert.Equal(1, await first);
         Assert.Equal(2, await second);
     }
+
+    [Fact]
+    public async Task RunAsync_WhenRequestIsCancelledAfterEntry_ShouldCompleteBoundaryOperation()
+    {
+        LiveOperationalWriteCoordinator coordinator = new LiveOperationalWriteCoordinator();
+        LiveDataSourceId sourceId = LiveDataSourceId.Parse("source");
+        using CancellationTokenSource requestCancellation = new CancellationTokenSource();
+
+        int result = await coordinator.RunAsync(
+            sourceId,
+            "external-park",
+            async boundaryCancellationToken =>
+            {
+                requestCancellation.Cancel();
+                Assert.False(boundaryCancellationToken.CanBeCanceled);
+                await Task.Yield();
+                return 1;
+            },
+            requestCancellation.Token);
+
+        Assert.True(requestCancellation.IsCancellationRequested);
+        Assert.Equal(1, result);
+    }
 }

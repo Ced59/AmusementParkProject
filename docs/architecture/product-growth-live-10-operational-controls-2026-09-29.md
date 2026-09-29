@@ -51,9 +51,11 @@ rejeu de quarantaine. Le déploiement de production n’exécute qu’une instan
 l’API ; un passage futur à plusieurs instances devra remplacer cette frontière
 en mémoire par une coordination distribuée avant la mise à l’échelle.
 L’annulation de la requête est respectée jusqu’à l’entrée dans cette frontière.
-Une fois la mutation critique engagée, la lecture de révision, l’ajout du
-contrôle et la reconstruction du résultat vont au bout sans dépendre de la
-connexion cliente. La photographie nécessaire au résultat est chargée avant
+Une fois une mutation critique ou une écriture d’observation engagée, la lecture
+du contrôle, l’écriture MongoDB et la reconstruction du résultat vont au bout
+sans dépendre de la connexion cliente. La frontière ne se libère donc jamais
+pendant qu’une écriture acceptée par MongoDB peut encore aboutir. Pour une
+mutation de contrôle, la photographie nécessaire au résultat est chargée avant
 l’ajout puis complétée en mémoire avec la révision durable : aucune lecture
 MongoDB faillible ne subsiste après le point d’engagement. Les filtres HTTP
 peuvent ainsi toujours invalider le cache et journaliser une décision déjà
