@@ -58,6 +58,9 @@
         <div class="live-overview__copy">
           <span>{{ 'liveData.currentStatus' | translate }}</span>
           <strong>{{ statusLabelKey(target) | translate }}</strong>
+          @if (confidenceLabelKey(target); as confidenceKey) {
+            <small class="live-confidence">{{ confidenceKey | translate }}</small>
+          }
         </div>
 
         @if (mode === 'item' && target.availability === 'Current' && !isClosed(target)) {
@@ -167,6 +170,9 @@
                       <strong>{{ item.displayName }}</strong>
                     }
                     <span>{{ statusLabelKey(item) | translate }}</span>
+                    @if (confidenceLabelKey(item); as confidenceKey) {
+                      <small class="live-confidence">{{ confidenceKey | translate }}</small>
+                    }
                   </div>
 
                   @if (item.availability === 'Current' && !isClosed(item)) {

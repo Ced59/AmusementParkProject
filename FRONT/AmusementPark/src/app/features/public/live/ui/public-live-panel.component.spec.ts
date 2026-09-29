@@ -1,4 +1,4 @@
-import { PublicLiveQueue } from '@app/models/live-data/public-live.models';
+import { PublicLiveQueue, PublicLiveTarget } from '@app/models/live-data/public-live.models';
 import { PublicLivePanelComponent } from './public-live-panel.component';
 
 describe('PublicLivePanelComponent queue presentation', () => {
@@ -49,6 +49,17 @@ describe('PublicLivePanelComponent queue presentation', () => {
       .toContain('1,200');
     expect(view.formatQueuePrice({ ...queue, priceMinorUnits: 1_250, currencyCode: 'KWD' }))
       .toContain('1.250');
+  });
+
+  it('exposes a localized confidence label only when confidence is available', () => {
+    const component: PublicLivePanelComponent = new PublicLivePanelComponent();
+    const view = component as unknown as {
+      confidenceLabelKey: (target: PublicLiveTarget) => string | null;
+    };
+    const target = { confidence: 'High' } as PublicLiveTarget;
+
+    expect(view.confidenceLabelKey(target)).toBe('liveData.confidence.High');
+    expect(view.confidenceLabelKey({ ...target, confidence: null })).toBeNull();
   });
 });
 

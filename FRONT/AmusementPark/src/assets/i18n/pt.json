@@ -5984,6 +5984,11 @@
     "errorTitle": "A informação em direto está temporariamente indisponível",
     "errorMessage": "Tenta novamente daqui a pouco sem sair desta página.",
     "currentStatus": "Estado atual",
+    "confidence": {
+      "Low": "Confiança baixa",
+      "Medium": "Confiança média",
+      "High": "Confiança elevada"
+    },
     "minutesShort": "min",
     "noWait": "sem espera",
     "waitUnknown": "espera desconhecida",

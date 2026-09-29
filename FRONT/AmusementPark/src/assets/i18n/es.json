@@ -5984,6 +5984,11 @@
     "errorTitle": "La información en directo no está disponible temporalmente",
     "errorMessage": "Vuelve a intentarlo en un momento sin salir de esta página.",
     "currentStatus": "Estado actual",
+    "confidence": {
+      "Low": "Confianza baja",
+      "Medium": "Confianza media",
+      "High": "Confianza alta"
+    },
     "minutesShort": "min",
     "noWait": "sin espera",
     "waitUnknown": "espera desconocida",

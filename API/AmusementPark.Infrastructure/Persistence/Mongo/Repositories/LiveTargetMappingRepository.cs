@@ -134,7 +134,6 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             {
                 ["status"] = LiveMappingStatus.Verified.ToString(),
                 ["validToUtc"] = BsonNull.Value,
-                ["target.type"] = LiveTargetType.ParkItem.ToString(),
                 ["target.parkId"] = normalizedParkId,
                 ["target.id"] = new BsonDocument("$type", "string"),
             }),

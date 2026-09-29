@@ -13,6 +13,11 @@
     "errorTitle": "Live-Informationen sind vorübergehend nicht verfügbar",
     "errorMessage": "Versuche es gleich noch einmal, ohne diese Seite zu verlassen.",
     "currentStatus": "Aktueller Status",
+    "confidence": {
+      "Low": "Geringes Vertrauen",
+      "Medium": "Mittleres Vertrauen",
+      "High": "Hohes Vertrauen"
+    },
     "minutesShort": "Min.",
     "noWait": "keine Wartezeit",
     "waitUnknown": "Wartezeit unbekannt",

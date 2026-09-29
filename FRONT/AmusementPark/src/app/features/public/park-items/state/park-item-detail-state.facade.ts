@@ -60,6 +60,7 @@ interface ParkItemDetailSourceData {
 export class ParkItemDetailStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<ParkItemDetailSourceData>();
   private readonly currentLanguageSignal = signal('en');
+  private activeItemId: string | null = null;
 
   public readonly state = this.screenStateStore.state;
   public readonly parkTimeZoneId: Signal<string | null> = computed(
@@ -109,11 +110,16 @@ export class ParkItemDetailStateFacade {
   }
 
   loadItem(itemId: string): void {
+    this.activeItemId = itemId;
     const previousData: ParkItemDetailSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
     this.parkItemsApiService.getParkItemById(itemId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (item: ParkItem) => {
+        if (this.activeItemId !== itemId) {
+          return;
+        }
+
         this.screenStateStore.setReady({
           item,
           park: null,
@@ -128,9 +134,13 @@ export class ParkItemDetailStateFacade {
           technicalPages: []
         });
 
-        this.loadRelatedData(item);
+        this.loadRelatedData(item, itemId);
       },
       error: (error: unknown) => {
+        if (this.activeItemId !== itemId) {
+          return;
+        }
+
         console.error('Error loading park item', error);
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
@@ -139,10 +149,10 @@ export class ParkItemDetailStateFacade {
     });
   }
 
-  private loadRelatedData(item: ParkItem): void {
+  private loadRelatedData(item: ParkItem, expectedItemId: string): void {
     this.parksApiService.getParkById(item.parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (park: Park) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           park
         }));
@@ -163,13 +173,13 @@ export class ParkItemDetailStateFacade {
       anonymousHttpOptions()
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (calendar: ParkOpeningHoursCalendar) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           parkTimeZoneId: calendar.timeZoneId?.trim() || null
         }));
       },
       error: (): void => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           parkTimeZoneId: null
         }));
@@ -183,13 +193,13 @@ export class ParkItemDetailStateFacade {
     const useMinimalSsrData: boolean = this.ssrRuntimeService.shouldUseMinimalPublicData();
     this.imagesApiService.getImages(ImageOwnerType.PARK_ITEM, item.id, ImageCategory.PARK_ITEM, 1, 1, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (photos: ImageDto[]) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           photos
         }));
       },
       error: () => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           photos: []
         }));
@@ -203,13 +213,13 @@ export class ParkItemDetailStateFacade {
       ownerId: item.id
     }, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: PagedResult<VideoDto>) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           hasVideos: response.pagination.totalItems > 0 || response.items.length > 0
         }));
       },
       error: () => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           hasVideos: false
         }));
@@ -218,13 +228,13 @@ export class ParkItemDetailStateFacade {
 
     this.historyApiService.getParkItemTimeline(item.id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (timeline: HistoryTimeline) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           hasHistory: (timeline.events?.length ?? 0) > 0
         }));
       },
       error: () => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           hasHistory: false
         }));
@@ -237,13 +247,13 @@ export class ParkItemDetailStateFacade {
 
     this.technicalPagesApiService.getPublicLinkIndex().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (technicalPages: TechnicalPage[]) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           technicalPages
         }));
       },
       error: () => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           technicalPages: []
         }));
@@ -252,13 +262,13 @@ export class ParkItemDetailStateFacade {
 
     this.parkItemsApiService.getParkItemSiblingNavigation(item.id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (siblingNavigation: ParkItemSiblingNavigation) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           siblingNavigation
         }));
       },
       error: () => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           siblingNavigation: null
         }));
@@ -267,13 +277,13 @@ export class ParkItemDetailStateFacade {
 
     this.parkItemsApiService.getRelatedParkItems(item.id, 3, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (items: ParkItem[]) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           relatedItems: items
         }));
       },
       error: () => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+        this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
           relatedItems: []
         }));
@@ -283,13 +293,13 @@ export class ParkItemDetailStateFacade {
     if (item.attractionDetails?.manufacturerId) {
       this.manufacturersApiService.getAttractionManufacturerById(item.attractionDetails.manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (manufacturer: { name?: string | null }) => {
-          this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
             ...current,
             manufacturerName: manufacturer.name ?? null
           }));
         },
         error: () => {
-          this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
             ...current,
             manufacturerName: null
           }));
@@ -300,13 +310,13 @@ export class ParkItemDetailStateFacade {
     if (item.zoneId) {
       this.parkZonesApiService.getParkZoneById(item.zoneId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (zone: { name?: string | null }) => {
-          this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
             ...current,
             zoneName: zone.name ?? null
           }));
         },
         error: () => {
-          this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
             ...current,
             zoneName: null
           }));
@@ -315,10 +325,17 @@ export class ParkItemDetailStateFacade {
     }
   }
 
-  private updateReadyData(updater: (current: ParkItemDetailSourceData) => ParkItemDetailSourceData): void {
+  private updateReadyData(
+    expectedItemId: string,
+    updater: (current: ParkItemDetailSourceData) => ParkItemDetailSourceData
+  ): void {
     const currentData: ParkItemDetailSourceData | undefined = this.screenStateStore.data();
 
-    if (!currentData) {
+    if (
+      !currentData
+      || this.activeItemId !== expectedItemId
+      || currentData.item.id !== expectedItemId
+    ) {
       return;
     }
 

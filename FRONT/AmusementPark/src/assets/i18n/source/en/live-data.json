@@ -13,6 +13,11 @@
     "errorTitle": "Live information is temporarily unavailable",
     "errorMessage": "Try again in a moment without leaving this page.",
     "currentStatus": "Current status",
+    "confidence": {
+      "Low": "Low confidence",
+      "Medium": "Medium confidence",
+      "High": "High confidence"
+    },
     "minutesShort": "min",
     "noWait": "no wait",
     "waitUnknown": "wait unknown",

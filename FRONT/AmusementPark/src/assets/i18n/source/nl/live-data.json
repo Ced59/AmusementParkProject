@@ -13,6 +13,11 @@
     "errorTitle": "Live-informatie is tijdelijk niet beschikbaar",
     "errorMessage": "Probeer het straks opnieuw zonder deze pagina te verlaten.",
     "currentStatus": "Huidige status",
+    "confidence": {
+      "Low": "Lage betrouwbaarheid",
+      "Medium": "Gemiddelde betrouwbaarheid",
+      "High": "Hoge betrouwbaarheid"
+    },
     "minutesShort": "min",
     "noWait": "geen wachttijd",
     "waitUnknown": "wachttijd onbekend",

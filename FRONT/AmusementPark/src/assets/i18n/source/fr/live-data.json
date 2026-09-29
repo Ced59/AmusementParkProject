@@ -13,6 +13,11 @@
     "errorTitle": "Le direct est momentanément inaccessible",
     "errorMessage": "Réessaie dans un instant sans quitter la fiche.",
     "currentStatus": "État actuel",
+    "confidence": {
+      "Low": "Confiance faible",
+      "Medium": "Confiance moyenne",
+      "High": "Confiance élevée"
+    },
     "minutesShort": "min",
     "noWait": "sans attente",
     "waitUnknown": "attente inconnue",

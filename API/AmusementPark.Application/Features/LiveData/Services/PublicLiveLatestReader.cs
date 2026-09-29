@@ -63,6 +63,16 @@ public sealed class PublicLiveLatestReader
                 ApplicationErrors.EntityNotFound(nameof(Park), normalizedParkId));
         }
 
+        IReadOnlyCollection<string> coveredTargetIds =
+            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                normalizedParkId,
+                cancellationToken);
+        if (coveredTargetIds.Count == 0)
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         IReadOnlyCollection<LiveLatestObservation> observations =
             await this.observationRepository.GetByTargetAsync(
                 LiveTargetType.Park,
@@ -113,6 +123,16 @@ public sealed class PublicLiveLatestReader
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(ParkItem), normalizedParkItemId));
+        }
+
+        IReadOnlyCollection<string> coveredTargetIds =
+            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                item.ParkId,
+                cancellationToken);
+        if (!coveredTargetIds.Contains(normalizedParkItemId, StringComparer.Ordinal))
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
         }
 
         IReadOnlyCollection<LiveLatestObservation> observations =

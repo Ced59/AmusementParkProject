@@ -5984,6 +5984,11 @@
     "errorTitle": "Informacje na żywo są chwilowo niedostępne",
     "errorMessage": "Spróbuj ponownie za chwilę bez opuszczania tej strony.",
     "currentStatus": "Bieżący stan",
+    "confidence": {
+      "Low": "Niska wiarygodność",
+      "Medium": "Średnia wiarygodność",
+      "High": "Wysoka wiarygodność"
+    },
     "minutesShort": "min",
     "noWait": "bez oczekiwania",
     "waitUnknown": "czas oczekiwania nieznany",

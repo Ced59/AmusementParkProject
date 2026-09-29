@@ -55,6 +55,10 @@ export class PublicLivePanelComponent {
     return resolvePublicLiveTone(target);
   }
 
+  protected confidenceLabelKey(target: PublicLiveTarget): string | null {
+    return target.confidence ? `liveData.confidence.${target.confidence}` : null;
+  }
+
   protected waitMinutes(target: PublicLiveTarget): number | null {
     return resolvePublicLiveWaitMinutes(target);
   }

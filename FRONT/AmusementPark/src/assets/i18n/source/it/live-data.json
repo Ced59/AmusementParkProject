@@ -13,6 +13,11 @@
     "errorTitle": "Le informazioni in tempo reale non sono temporaneamente disponibili",
     "errorMessage": "Riprova tra poco senza lasciare questa pagina.",
     "currentStatus": "Stato attuale",
+    "confidence": {
+      "Low": "Affidabilità bassa",
+      "Medium": "Affidabilità media",
+      "High": "Affidabilità alta"
+    },
     "minutesShort": "min",
     "noWait": "nessuna attesa",
     "waitUnknown": "attesa sconosciuta",
