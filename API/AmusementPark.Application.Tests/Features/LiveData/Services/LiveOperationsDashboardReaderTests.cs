@@ -59,11 +59,14 @@ public sealed class LiveOperationsDashboardReaderTests
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
         ExternalLiveTargetMapping itemMapping = CreateVerifiedItemMapping(sourceId);
+        ExternalLiveTargetMapping candidateMapping = CreateCandidateItemMapping(
+            sourceId,
+            "external-candidate");
         mappings.Setup(value => value.GetLatestByExternalEntityAsync(
                 sourceId,
                 "external-park",
                 CancellationToken.None))
-            .ReturnsAsync(new[] { itemMapping });
+            .ReturnsAsync(new[] { itemMapping, candidateMapping });
         Mock<ILivePollingStateRepository> polling =
             new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
         polling.Setup(value => value.GetAsync(sourceId, "external-park", CancellationToken.None))
@@ -103,6 +106,8 @@ public sealed class LiveOperationsDashboardReaderTests
         Assert.True(result.IsSuccess);
         Assert.False(result.Value!.ConfiguredCollectionEnabled);
         Assert.True(result.Value.ConfiguredPublicReadEnabled);
+        Assert.Equal(2, result.Value.Summary.MappingCount);
+        Assert.Equal(1, result.Value.Summary.CandidateMappingCount);
         Assert.Equal(3, result.Value.Summary.PendingIncidentCount);
         Assert.Equal(1, result.Value.Summary.ReplayablePendingIncidentCount);
         Assert.Equal(3, result.Value.Scopes.Count);
@@ -124,19 +129,9 @@ public sealed class LiveOperationsDashboardReaderTests
     private static ExternalLiveTargetMapping CreateVerifiedItemMapping(
         LiveDataSourceId sourceId)
     {
-        ExternalLiveTargetMapping candidate = ExternalLiveTargetMapping.CreateCandidate(
-            Guid.NewGuid(),
+        ExternalLiveTargetMapping candidate = CreateCandidateItemMapping(
             sourceId,
-            new ExternalLiveTargetDescriptor(
-                LiveTargetType.ParkItem,
-                "external-item",
-                "external-park",
-                "Attraction",
-                "Park",
-                "FR"),
-            null,
-            LiveMappingConfidence.Medium,
-            NowUtc.AddDays(-1));
+            "external-item");
         return candidate.Verify(
             new LiveTargetReference(
                 LiveTargetType.ParkItem,
@@ -148,5 +143,24 @@ public sealed class LiveOperationsDashboardReaderTests
             "admin-1",
             null,
             NowUtc.AddHours(-1));
+    }
+
+    private static ExternalLiveTargetMapping CreateCandidateItemMapping(
+        LiveDataSourceId sourceId,
+        string externalTargetId)
+    {
+        return ExternalLiveTargetMapping.CreateCandidate(
+            Guid.NewGuid(),
+            sourceId,
+            new ExternalLiveTargetDescriptor(
+                LiveTargetType.ParkItem,
+                externalTargetId,
+                "external-park",
+                "Attraction",
+                "Park",
+                "FR"),
+            null,
+            LiveMappingConfidence.Medium,
+            NowUtc.AddDays(-1));
     }
 }

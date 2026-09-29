@@ -79,6 +79,7 @@ public sealed class LiveOperationsDashboardReader
 
         IReadOnlyCollection<ExternalLiveTargetMapping> mappings = await mappingsTask;
         string[] configuredExternalTargetIds = mappings
+            .Where(static mapping => mapping.IsEligibleForLiveUse)
             .Select(static mapping => mapping.ExternalTarget.Id)
             .Distinct(StringComparer.Ordinal)
             .ToArray();

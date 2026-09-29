@@ -22,7 +22,8 @@ public sealed class LiveQualityIncidentReplayServiceTests
         incidents
             .Setup(value => value.GetReplayCandidatesAsync(
                 SourceId,
-                It.Is<IReadOnlyCollection<string>>(ids => ids.Contains("external-1")),
+                It.Is<IReadOnlyCollection<string>>(ids =>
+                    ids.Count == 1 && ids.Contains("external-1")),
                 25,
                 NowUtc,
                 It.IsAny<CancellationToken>()))
@@ -43,7 +44,11 @@ public sealed class LiveQualityIncidentReplayServiceTests
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
         ExternalLiveTargetMapping mapping = CreateVerifiedMapping();
-        SetupConfiguredMappings(mappings, new[] { mapping });
+        SetupConfiguredMappings(mappings, new[]
+        {
+            mapping,
+            CreateCandidateMapping(SourceId, "external-candidate"),
+        });
         mappings
             .Setup(value => value.GetLatestByExternalTargetIdsAsync(
                 SourceId,
@@ -357,7 +362,25 @@ public sealed class LiveQualityIncidentReplayServiceTests
         string externalTargetId,
         string internalTargetId)
     {
-        ExternalLiveTargetMapping candidate = ExternalLiveTargetMapping.CreateCandidate(
+        ExternalLiveTargetMapping candidate = CreateCandidateMapping(sourceId, externalTargetId);
+        return candidate.Verify(
+            new LiveTargetReference(
+                LiveTargetType.ParkItem,
+                internalTargetId,
+                "park-1",
+                "Attraction",
+                "Park",
+                "FR"),
+            "admin-1",
+            null,
+            NowUtc.AddHours(-1));
+    }
+
+    private static ExternalLiveTargetMapping CreateCandidateMapping(
+        LiveDataSourceId sourceId,
+        string externalTargetId)
+    {
+        return ExternalLiveTargetMapping.CreateCandidate(
             Guid.NewGuid(),
             sourceId,
             new ExternalLiveTargetDescriptor(
@@ -370,17 +393,6 @@ public sealed class LiveQualityIncidentReplayServiceTests
             null,
             LiveMappingConfidence.Medium,
             NowUtc.AddDays(-1));
-        return candidate.Verify(
-            new LiveTargetReference(
-                LiveTargetType.ParkItem,
-                internalTargetId,
-                "park-1",
-                "Attraction",
-                "Park",
-                "FR"),
-            "admin-1",
-            null,
-            NowUtc.AddHours(-1));
     }
 
     private static LiveFreshnessPolicy CreateFreshnessPolicy()

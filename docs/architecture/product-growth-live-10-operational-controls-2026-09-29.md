@@ -101,11 +101,12 @@ publique avait commencé avant l’arrêt, elle reste liée à l’ancienne gén
 et la politique interdit son stockage lorsque la génération a changé pendant la
 requête. Une réponse tardive ne peut donc pas repeupler le cache évincé.
 Le nombre total d’incidents en attente reste visible, tandis qu’un compteur
-distinct pilote le bouton de rejeu avec les seuls incidents encore rejouables ;
-ce compteur et le lot relu sont limités à la source et aux cibles du parc pilote
-actuellement configuré. Les incidents d’une ancienne configuration ne peuvent
-donc ni activer le bouton ni retarder le lot courant. Les diagnostics fournisseur
-et conflits de statut ne provoquent plus d’action à vide.
+distinct pilote le bouton de rejeu avec les seuls incidents encore rejouables
+dont le mapping courant est éligible. Ce compteur et le lot relu sont limités
+à la source et aux cibles éligibles du parc pilote actuellement configuré. Les
+incidents d’une ancienne configuration ou d’un mapping encore candidat ne
+peuvent donc ni activer le bouton ni retarder le lot courant. Les diagnostics
+fournisseur et conflits de statut ne provoquent plus d’action à vide.
 
 ## Retour arrière
 

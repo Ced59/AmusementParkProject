@@ -122,6 +122,7 @@ public sealed class LiveQualityIncidentReplayService
                 configuredTarget.ExternalEntityId,
                 cancellationToken);
         string[] configuredExternalTargetIds = configuredMappings
+            .Where(static mapping => mapping.IsEligibleForLiveUse)
             .Select(static mapping => mapping.ExternalTarget.Id)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
