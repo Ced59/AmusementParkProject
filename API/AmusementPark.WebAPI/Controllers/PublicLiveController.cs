@@ -30,17 +30,42 @@ public sealed class PublicLiveController : ControllerBase
     private readonly IQueryHandler<
         GetPublicParkItemLiveHistoryQuery,
         ApplicationResult<PublicLiveHistoryResult>> parkItemHistoryHandler;
+    private readonly IQueryHandler<
+        GetPublicParkItemLiveForecastQuery,
+        ApplicationResult<PublicLiveForecastResult>> parkItemForecastHandler;
 
     public PublicLiveController(
         IQueryHandler<GetPublicParkLiveQuery, ApplicationResult<PublicLiveTargetResult>> parkHandler,
         IQueryHandler<GetPublicParkItemLiveQuery, ApplicationResult<PublicLiveTargetResult>> parkItemHandler,
         IQueryHandler<GetPublicParkLiveItemsQuery, ApplicationResult<PublicParkLiveItemsResult>> parkItemsHandler,
-        IQueryHandler<GetPublicParkItemLiveHistoryQuery, ApplicationResult<PublicLiveHistoryResult>> parkItemHistoryHandler)
+        IQueryHandler<GetPublicParkItemLiveHistoryQuery, ApplicationResult<PublicLiveHistoryResult>> parkItemHistoryHandler,
+        IQueryHandler<GetPublicParkItemLiveForecastQuery, ApplicationResult<PublicLiveForecastResult>> parkItemForecastHandler)
     {
         this.parkHandler = parkHandler;
         this.parkItemHandler = parkItemHandler;
         this.parkItemsHandler = parkItemsHandler;
         this.parkItemHistoryHandler = parkItemHistoryHandler;
+        this.parkItemForecastHandler = parkItemForecastHandler;
+    }
+
+    [HttpGet("items/{itemId}/forecast")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicLiveForecastData)]
+    [ProducesResponseType(typeof(PublicLiveForecastDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status304NotModified)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetParkItemForecastAsync(
+        [FromRoute] string itemId,
+        CancellationToken cancellationToken = default)
+    {
+        this.HttpContext.Items[PublicLiveExpirationOutputCachePolicy.MaximumLifetimeItemKey] =
+            TimeSpan.FromMinutes(15);
+        ApplicationResult<PublicLiveForecastResult> result =
+            await this.parkItemForecastHandler.HandleAsync(
+                new GetPublicParkItemLiveForecastQuery(itemId),
+                cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.ToConditionalResponse(result.Value.ToHttp(), null)
+            : this.ToActionResult(result);
     }
 
     [HttpGet("items/{itemId}/history")]
@@ -124,11 +149,17 @@ public sealed class PublicLiveController : ControllerBase
 
     private IActionResult ToConditionalResponse<TValue>(
         TValue value,
-        DateTime? freshnessTransitionAtUtc)
+        DateTime? freshnessTransitionAtUtc,
+        TimeSpan? maximumLifetime = null)
     {
         string entityTag = PublicLiveEntityTagFactory.Create(value);
         this.HttpContext.Items[PublicLiveExpirationOutputCachePolicy.FreshnessTransitionItemKey] =
             freshnessTransitionAtUtc;
+        if (maximumLifetime.HasValue)
+        {
+            this.HttpContext.Items[PublicLiveExpirationOutputCachePolicy.MaximumLifetimeItemKey] =
+                maximumLifetime.Value;
+        }
         this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
         this.Response.Headers.ETag = entityTag;
         this.Response.Headers.Vary = "Accept-Language";

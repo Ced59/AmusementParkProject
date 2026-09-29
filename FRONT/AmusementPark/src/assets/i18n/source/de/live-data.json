@@ -87,6 +87,28 @@
       "title": "Wie sind diese Informationen zu lesen?",
       "description": "Die angezeigte Zeit stammt aus der genannten Quelle und besitzt das hier angegebene Alter. Null Minuten bedeuten, dass tatsächlich keine Wartezeit gemeldet wurde; ein Gedankenstrich bedeutet, dass keine verlässliche Zeit vorliegt. Abgelaufene Daten werden nie als aktuell dargestellt."
     },
+    "forecast": {
+      "kicker": "Geprüfte Prognose",
+      "title": "Geschätzte Wartezeit von {{time}}",
+      "subtitle": "Diese Schätzung erscheint nur, weil sich die Methode bei früheren Daten als zuverlässiger als unsere Referenz erwiesen hat.",
+      "verified": "Zuverlässigkeit geprüft",
+      "minutes": "geschätzte Minuten",
+      "rangeLabel": "Plausible Spanne",
+      "rangeValue": "{{from}} bis {{to}} Min.",
+      "errorLabel": "Gemessener Durchschnittsfehler",
+      "errorValue": "{{value}} Min.",
+      "coverageLabel": "Prognosen innerhalb der Spanne",
+      "coverageValue": "{{value}} %",
+      "methodLabel": "Methode",
+      "calculatedLabel": "Berechnet am",
+      "evidenceLabel": "Verwendete Nachweise",
+      "evidenceValue": "{{points}} Prüfungen · {{days}} vergleichbare Tage",
+      "disclaimer": "Eine Prognose bleibt eine Schätzung: Besucherandrang und Betrieb können sich schnell ändern.",
+      "method": {
+        "weekdayHourMedian": "Median desselben Wochentags zur selben Stunde",
+        "verifiedHistorical": "Geprüfte historische Methode"
+      }
+    },
     "history": {
       "loading": "Wartezeitverlauf wird analysiert…",
       "errorTitle": "Der Verlauf ist vorübergehend nicht verfügbar",

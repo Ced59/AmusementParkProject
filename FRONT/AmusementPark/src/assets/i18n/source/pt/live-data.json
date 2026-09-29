@@ -87,6 +87,28 @@
       "title": "Como ler estas informações?",
       "description": "O tempo apresentado vem da fonte indicada e tem a idade aqui mostrada. Zero minutos significa que foi recebida uma espera realmente nula; um travessão significa que não existe um tempo fiável. Os dados expirados nunca são apresentados como atuais."
     },
+    "forecast": {
+      "kicker": "Previsão verificada",
+      "title": "Espera estimada de {{time}}",
+      "subtitle": "Esta estimativa só aparece porque o método se mostrou mais fiável do que a nossa referência nos dados anteriores.",
+      "verified": "Fiabilidade verificada",
+      "minutes": "minutos estimados",
+      "rangeLabel": "Intervalo plausível",
+      "rangeValue": "de {{from}} a {{to}} min",
+      "errorLabel": "Erro médio medido",
+      "errorValue": "{{value}} min",
+      "coverageLabel": "Previsões dentro do intervalo",
+      "coverageValue": "{{value}}%",
+      "methodLabel": "Método",
+      "calculatedLabel": "Calculada em",
+      "evidenceLabel": "Evidências utilizadas",
+      "evidenceValue": "{{points}} verificações · {{days}} dias comparáveis",
+      "disclaimer": "Uma previsão continua a ser uma estimativa: a afluência e a operação podem mudar rapidamente.",
+      "method": {
+        "weekdayHourMedian": "Mediana do mesmo dia da semana à mesma hora",
+        "verifiedHistorical": "Método histórico verificado"
+      }
+    },
     "history": {
       "loading": "A analisar o histórico das esperas…",
       "errorTitle": "O histórico está temporariamente indisponível",

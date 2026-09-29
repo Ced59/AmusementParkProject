@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { Observable, of, throwError } from 'rxjs';
 
-import { PublicLiveHistory, PublicLiveTarget, PublicParkLiveItems } from '@app/models/live-data/public-live.models';
+import { PublicLiveForecast, PublicLiveHistory, PublicLiveTarget, PublicParkLiveItems } from '@app/models/live-data/public-live.models';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { PUBLIC_LIVE_DATA_PORT, PublicLiveDataPort } from './public-live-data.port';
 import { PublicLiveHistoryFacade } from './public-live-history.facade';
@@ -76,7 +76,8 @@ function createPort(
     getPark: vi.fn(() => of({} as PublicLiveTarget)),
     getParkItem: vi.fn(() => of({} as PublicLiveTarget)),
     getParkItems: vi.fn(() => of({} as PublicParkLiveItems)),
-    getParkItemHistory: vi.fn(getHistory)
+    getParkItemHistory: vi.fn(getHistory),
+    getParkItemForecast: vi.fn(() => of({} as PublicLiveForecast))
   };
 }
 

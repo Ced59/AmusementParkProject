@@ -13,13 +13,19 @@ import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.serv
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events';
 import { PublicLiveStateFacade } from '@features/public/live/state/public-live-state.facade';
 import { PublicLiveHistoryFacade } from '@features/public/live/state/public-live-history.facade';
+import { PublicLiveForecastFacade } from '@features/public/live/state/public-live-forecast.facade';
 
 @Component({
   selector: 'app-park-item-detail-page',
   templateUrl: './park-item-detail-page.component.html',
   styleUrls: ['./park-item-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ParkItemDetailStateFacade, PublicLiveStateFacade, PublicLiveHistoryFacade],
+  providers: [
+    ParkItemDetailStateFacade,
+    PublicLiveStateFacade,
+    PublicLiveHistoryFacade,
+    PublicLiveForecastFacade
+  ],
   imports: [ParkItemDetailViewComponent]
 })
 export class ParkItemDetailPageComponent implements OnInit {
@@ -30,6 +36,7 @@ export class ParkItemDetailPageComponent implements OnInit {
   protected readonly detail = this.stateFacade.detail;
   protected readonly liveState = this.liveStateFacade.state;
   protected readonly liveHistoryState = this.liveHistoryFacade.state;
+  protected readonly liveForecastState = this.liveForecastFacade.state;
   protected readonly parkTimeZoneId = this.stateFacade.parkTimeZoneId;
   protected readonly currentLanguage = signal<string>('en');
 
@@ -43,6 +50,7 @@ export class ParkItemDetailPageComponent implements OnInit {
     private readonly stateFacade: ParkItemDetailStateFacade,
     private readonly liveStateFacade: PublicLiveStateFacade,
     private readonly liveHistoryFacade: PublicLiveHistoryFacade,
+    private readonly liveForecastFacade: PublicLiveForecastFacade,
     private readonly seoService: SeoService,
     private readonly lcpImagePreloadService: LcpImagePreloadService,
     private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
@@ -98,6 +106,7 @@ export class ParkItemDetailPageComponent implements OnInit {
       this.stateFacade.loadItem(itemId);
       this.liveStateFacade.watchParkItem(itemId);
       this.liveHistoryFacade.load(itemId);
+      this.liveForecastFacade.load(itemId);
     });
 
     this.contextualBlockRefreshEvents.appliedBlock$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: AdminContextualBlockAppliedEvent) => {

@@ -24,22 +24,17 @@ public sealed class LiveWaitForecastBacktestCalculator
             throw new ArgumentException("The backtest evaluation period must have a positive duration.");
         }
 
-        LiveWaitHistoryObservation[] uniqueObservations = observations
+        int uniqueObservationCount = observations
             .Where(observation => observation.ObservedAtUtc < evaluationToUtc
                 && observation.ReceivedAtUtc <= evaluationToUtc)
-            .GroupBy(static observation => observation.ObservedAtUtc)
-            .Select(static group => group
-                .OrderByDescending(static observation => observation.ReceivedAtUtc)
-                .First())
-            .OrderBy(static observation => observation.ObservedAtUtc)
-            .ToArray();
-        (
-            DateTime TimestampUtc,
-            DateTime AvailableAtUtc,
-            DateOnly LocalDate,
-            DayOfWeek DayOfWeek,
-            int LocalHour,
-            double Wait)[] points = BuildHourlyPoints(uniqueObservations, activeWindow);
+            .Select(static observation => observation.ObservedAtUtc)
+            .Distinct()
+            .Count();
+        LiveWaitForecastHourlyPoint[] points = LiveWaitForecastObservationSeries.Build(
+            observations,
+            evaluationToUtc,
+            evaluationToUtc,
+            activeWindow);
         Dictionary<int, List<(DateTime TimestampUtc, double Wait)>> baselineHistory =
             new Dictionary<int, List<(DateTime, double)>>();
         Dictionary<(DayOfWeek DayOfWeek, int LocalHour), List<(DateTime TimestampUtc, double Wait)>>
@@ -56,30 +51,18 @@ public sealed class LiveWaitForecastBacktestCalculator
 
         for (int pointIndex = 0; pointIndex < points.Length; pointIndex++)
         {
-            (
-                DateTime TimestampUtc,
-                DateTime AvailableAtUtc,
-                DateOnly LocalDate,
-                DayOfWeek DayOfWeek,
-                int LocalHour,
-                double Wait) point = points[pointIndex];
+            LiveWaitForecastHourlyPoint point = points[pointIndex];
             while (pendingTrainingPoints.TryPeek(out int trainingPointIndex, out DateTime availableAtUtc)
                 && availableAtUtc <= point.TimestampUtc)
             {
                 pendingTrainingPoints.Dequeue();
-                (
-                    DateTime TimestampUtc,
-                    DateTime AvailableAtUtc,
-                    DateOnly LocalDate,
-                    DayOfWeek DayOfWeek,
-                    int LocalHour,
-                    double Wait) trainingPoint = points[trainingPointIndex];
+                LiveWaitForecastHourlyPoint trainingPoint = points[trainingPointIndex];
                 GetOrCreate(baselineHistory, trainingPoint.LocalHour)
-                    .Add((trainingPoint.TimestampUtc, trainingPoint.Wait));
+                    .Add((trainingPoint.TimestampUtc, trainingPoint.WaitMinutes));
                 GetOrCreate(
                         candidateHistory,
                         (trainingPoint.DayOfWeek, trainingPoint.LocalHour))
-                    .Add((trainingPoint.TimestampUtc, trainingPoint.Wait));
+                    .Add((trainingPoint.TimestampUtc, trainingPoint.WaitMinutes));
             }
 
             List<(DateTime TimestampUtc, double Wait)> baselineValuesByTime = GetOrCreate(
@@ -104,16 +87,24 @@ public sealed class LiveWaitForecastBacktestCalculator
                     .Select(static value => value.Wait)
                     .Order()
                     .ToArray();
-                double baselinePrediction = Percentile(baselineValues, 0.50d);
-                double candidatePrediction = Percentile(candidateValues, 0.50d);
-                double lowerBound = Percentile(candidateValues, 0.10d);
-                double upperBound = Percentile(candidateValues, 0.90d);
+                double baselinePrediction = LiveWaitForecastObservationSeries.Percentile(
+                    baselineValues,
+                    0.50d);
+                double candidatePrediction = LiveWaitForecastObservationSeries.Percentile(
+                    candidateValues,
+                    0.50d);
+                double lowerBound = LiveWaitForecastObservationSeries.Percentile(
+                    candidateValues,
+                    0.10d);
+                double upperBound = LiveWaitForecastObservationSeries.Percentile(
+                    candidateValues,
+                    0.90d);
                 folds.Add((
                     point.TimestampUtc,
                     point.LocalDate,
-                    Math.Abs(point.Wait - baselinePrediction),
-                    Math.Abs(point.Wait - candidatePrediction),
-                    point.Wait >= lowerBound && point.Wait <= upperBound,
+                    Math.Abs(point.WaitMinutes - baselinePrediction),
+                    Math.Abs(point.WaitMinutes - candidatePrediction),
+                    point.WaitMinutes >= lowerBound && point.WaitMinutes <= upperBound,
                     upperBound - lowerBound));
             }
 
@@ -121,7 +112,7 @@ public sealed class LiveWaitForecastBacktestCalculator
         }
 
         return this.BuildReport(
-            uniqueObservations.Length,
+            uniqueObservationCount,
             points.Length,
             folds,
             evaluationFromUtc,
@@ -196,7 +187,7 @@ public sealed class LiveWaitForecastBacktestCalculator
         double rawIntervalCoveragePercent =
             folds.Count(static fold => fold.IntervalHit) * 100d / folds.Count;
         double intervalCoveragePercent = Math.Round(rawIntervalCoveragePercent, 1);
-        double rawMedianIntervalWidth = Percentile(
+        double rawMedianIntervalWidth = LiveWaitForecastObservationSeries.Percentile(
             folds.Select(static fold => fold.IntervalWidth).Order().ToArray(),
             0.50d);
         double medianIntervalWidth = Math.Round(rawMedianIntervalWidth, 1);
@@ -259,46 +250,6 @@ public sealed class LiveWaitForecastBacktestCalculator
             this.policy);
     }
 
-    private static (
-        DateTime TimestampUtc,
-        DateTime AvailableAtUtc,
-        DateOnly LocalDate,
-        DayOfWeek DayOfWeek,
-        int LocalHour,
-        double Wait)[]
-        BuildHourlyPoints(
-            IReadOnlyCollection<LiveWaitHistoryObservation> observations,
-            LivePollingActiveWindow activeWindow)
-    {
-        return observations
-            .Where(observation => !observation.IsBucketTruncated
-                && activeWindow.Contains(observation.ObservedAtUtc)
-                && IsOperating(observation.Status))
-            .Select(observation => (
-                Observation: observation,
-                Wait: observation.Queues
-                    .Where(static queue => queue.Kind == LiveQueueKind.Standby)
-                    .Select(static queue => queue.WaitTimeMinutes)
-                    .FirstOrDefault(static value => value.HasValue)))
-            .Where(static value => value.Wait.HasValue)
-            .Select(value => (
-                value.Observation,
-                Wait: value.Wait!.Value,
-                Local: TimeZoneInfo.ConvertTimeFromUtc(
-                    value.Observation.ObservedAtUtc,
-                    activeWindow.TimeZone)))
-            .GroupBy(static value => (DateOnly.FromDateTime(value.Local), value.Local.Hour))
-            .Select(static group => (
-                TimestampUtc: group.Min(static value => value.Observation.ObservedAtUtc),
-                AvailableAtUtc: group.Max(static value => value.Observation.ReceivedAtUtc),
-                LocalDate: group.Key.Item1,
-                DayOfWeek: group.Key.Item1.DayOfWeek,
-                LocalHour: group.Key.Hour,
-                Wait: Percentile(group.Select(static value => (double)value.Wait).Order().ToArray(), 0.50d)))
-            .OrderBy(static point => point.TimestampUtc)
-            .ToArray();
-    }
-
     private static List<(DateTime TimestampUtc, double Wait)> GetOrCreate<TKey>(
         IDictionary<TKey, List<(DateTime TimestampUtc, double Wait)>> histories,
         TKey key)
@@ -327,8 +278,8 @@ public sealed class LiveWaitForecastBacktestCalculator
         return new LiveWaitForecastBacktestMetric(
             method,
             Math.Round(MeanRaw(sortedErrors), 1),
-            Math.Round(Percentile(sortedErrors, 0.50d), 1),
-            Math.Round(Percentile(sortedErrors, 0.90d), 1));
+            Math.Round(LiveWaitForecastObservationSeries.Percentile(sortedErrors, 0.50d), 1),
+            Math.Round(LiveWaitForecastObservationSeries.Percentile(sortedErrors, 0.90d), 1));
     }
 
     private static double MeanRaw(IEnumerable<double> values)
@@ -337,26 +288,6 @@ public sealed class LiveWaitForecastBacktestCalculator
         return materialized.Length == 0
             ? 0d
             : materialized.Average();
-    }
-
-    private static double Percentile(IReadOnlyList<double> sortedValues, double percentile)
-    {
-        if (sortedValues.Count == 0)
-        {
-            return 0d;
-        }
-
-        double index = (sortedValues.Count - 1) * percentile;
-        int lowerIndex = (int)Math.Floor(index);
-        int upperIndex = (int)Math.Ceiling(index);
-        return sortedValues[lowerIndex]
-            + ((sortedValues[upperIndex] - sortedValues[lowerIndex]) * (index - lowerIndex));
-    }
-
-    private static bool IsOperating(LiveOperationalStatus status)
-    {
-        return status is LiveOperationalStatus.Open
-            or LiveOperationalStatus.OperatingWithLimitations;
     }
 
     private static void EnsureUtc(DateTime value, string parameterName)

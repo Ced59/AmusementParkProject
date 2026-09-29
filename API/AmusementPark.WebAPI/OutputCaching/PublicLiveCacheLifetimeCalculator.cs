@@ -4,7 +4,7 @@ namespace AmusementPark.WebAPI.OutputCaching;
 
 public static class PublicLiveCacheLifetimeCalculator
 {
-    private static readonly TimeSpan MaximumLifetime = TimeSpan.FromSeconds(30);
+    public static TimeSpan DefaultMaximumLifetime => TimeSpan.FromSeconds(30);
 
     public static DateTime? ResolveTransitionAtUtc(PublicLiveTargetResult target)
     {
@@ -28,9 +28,25 @@ public static class PublicLiveCacheLifetimeCalculator
         DateTime responseStoredAtUtc,
         DateTime? freshnessTransitionAtUtc)
     {
+        return ResolveLifetime(
+            responseStoredAtUtc,
+            freshnessTransitionAtUtc,
+            DefaultMaximumLifetime);
+    }
+
+    public static TimeSpan ResolveLifetime(
+        DateTime responseStoredAtUtc,
+        DateTime? freshnessTransitionAtUtc,
+        TimeSpan maximumLifetime)
+    {
+        if (maximumLifetime <= TimeSpan.Zero)
+        {
+            return TimeSpan.Zero;
+        }
+
         if (!freshnessTransitionAtUtc.HasValue)
         {
-            return MaximumLifetime;
+            return maximumLifetime;
         }
 
         TimeSpan untilTransition = freshnessTransitionAtUtc.Value - responseStoredAtUtc;
@@ -39,9 +55,9 @@ public static class PublicLiveCacheLifetimeCalculator
             return TimeSpan.Zero;
         }
 
-        TimeSpan boundedLifetime = untilTransition < MaximumLifetime
+        TimeSpan boundedLifetime = untilTransition < maximumLifetime
             ? untilTransition
-            : MaximumLifetime;
+            : maximumLifetime;
         long wholeSeconds = boundedLifetime.Ticks / TimeSpan.TicksPerSecond;
         return wholeSeconds <= 0
             ? TimeSpan.Zero

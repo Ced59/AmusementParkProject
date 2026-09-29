@@ -1,7 +1,7 @@
 import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { PublicLiveHistory, PublicLiveTarget } from '@app/models/live-data/public-live.models';
+import { PublicLiveForecast, PublicLiveHistory, PublicLiveTarget } from '@app/models/live-data/public-live.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { environment } from '../../../environments/environment';
 import { PublicLiveApiService } from './public-live-api.service';
@@ -71,6 +71,20 @@ describe('PublicLiveApiService', () => {
     expect(request.request.method).toBe('GET');
     request.flush(history);
   });
+
+  it('loads a conditional public forecast without technical query parameters', () => {
+    const forecast: PublicLiveForecast = createForecast();
+
+    service.getParkItemForecast('item/one').subscribe((result: PublicLiveForecast) => {
+      expect(result).toEqual(forecast);
+    });
+
+    const request = http.expectOne(
+      `${environment.apiBaseUrl}public/live/items/item%2Fone/forecast`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush(forecast);
+  });
 });
 
 function createTarget(): PublicLiveTarget {
@@ -119,6 +133,36 @@ function createHistory(): PublicLiveHistory {
       total: 0
     },
     hours: [],
+    source: {
+      id: 'themeparks-wiki',
+      displayName: 'ThemeParks.wiki',
+      type: 'AuthorizedAggregator',
+      attributionText: 'Powered by ThemeParks.wiki',
+      attributionUrl: 'https://themeparks.wiki/'
+    }
+  };
+}
+
+function createForecast(): PublicLiveForecast {
+  return {
+    targetDisplayName: 'Example attraction',
+    parkDisplayName: 'Example park',
+    timeZoneId: 'Europe/Paris',
+    forecastFromUtc: '2026-09-29T13:00:00Z',
+    forecastToUtc: '2026-09-29T14:00:00Z',
+    calculatedAtUtc: '2026-09-29T12:30:00Z',
+    expectedWaitMinutes: 25,
+    lowerBoundMinutes: 15,
+    upperBoundMinutes: 35,
+    trainingDayCount: 12,
+    studyVersion: 'live-wait-backtest-v2',
+    method: 'rolling-weekday-hour-median-v1',
+    intervalMethod: 'rolling-weekday-hour-p10-p90-v1',
+    meanAbsoluteErrorMinutes: 4,
+    intervalCoveragePercent: 82,
+    evaluationFromUtc: '2026-07-01T12:30:00Z',
+    evaluationToUtc: '2026-09-29T12:30:00Z',
+    evaluationPointCount: 120,
     source: {
       id: 'themeparks-wiki',
       displayName: 'ThemeParks.wiki',

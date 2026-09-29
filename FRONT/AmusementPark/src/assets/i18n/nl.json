@@ -6268,6 +6268,28 @@
       "title": "Hoe lees je deze informatie?",
       "description": "De getoonde tijd komt van de vermelde bron en heeft de hier aangegeven leeftijd. Nul minuten betekent dat werkelijk geen wachttijd is ontvangen; een streepje betekent dat er geen betrouwbare tijd beschikbaar is. Verlopen gegevens worden nooit als actueel getoond."
     },
+    "forecast": {
+      "kicker": "Gecontroleerde voorspelling",
+      "title": "Geschatte wachttijd van {{time}}",
+      "subtitle": "Deze schatting verschijnt alleen omdat de methode op eerdere gegevens betrouwbaarder bleek dan onze referentie.",
+      "verified": "Betrouwbaarheid gecontroleerd",
+      "minutes": "geschatte minuten",
+      "rangeLabel": "Aannemelijk bereik",
+      "rangeValue": "{{from}} tot {{to}} min",
+      "errorLabel": "Gemeten gemiddelde fout",
+      "errorValue": "{{value}} min",
+      "coverageLabel": "Voorspellingen binnen bereik",
+      "coverageValue": "{{value}}%",
+      "methodLabel": "Methode",
+      "calculatedLabel": "Berekend op",
+      "evidenceLabel": "Gebruikte onderbouwing",
+      "evidenceValue": "{{points}} controles · {{days}} vergelijkbare dagen",
+      "disclaimer": "Een voorspelling blijft een schatting: drukte en bedrijfsvoering kunnen snel veranderen.",
+      "method": {
+        "weekdayHourMedian": "Mediaan van dezelfde weekdag en hetzelfde uur",
+        "verifiedHistorical": "Gecontroleerde historische methode"
+      }
+    },
     "history": {
       "loading": "Wachttijdgeschiedenis analyseren…",
       "errorTitle": "De geschiedenis is tijdelijk niet beschikbaar",

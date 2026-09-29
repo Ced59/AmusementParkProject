@@ -2,10 +2,11 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` à `LIVE-14` livrés au 29 septembre 2026. La source pilote,
+> Statut : `LIVE-01` à `LIVE-15` livrés au 29 septembre 2026. La source pilote,
 > sa provenance, ses mappings, son affichage first-party, ses contrôles
 > opérationnels, ses alertes temporaires et son historique borné sont
-> implémentés. La collecte et la lecture publique restent pilotées par deux
+> implémentés. La prévision de l'heure suivante reste conditionnée par un
+> backtest favorable et un état live actuel ouvert. La collecte et la lecture publique restent pilotées par deux
 > interrupteurs d'exploitation indépendants.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
@@ -80,9 +81,12 @@ l'intervalle et la dérive, puis conclut données insuffisantes, abandon ou
 éligibilité à un pilote. Le détail est consigné dans
 [`product-growth-live-14-forecast-backtest-2026-09-29.md`](../../architecture/product-growth-live-14-forecast-backtest-2026-09-29.md).
 
-Le prochain jalon est `LIVE-15` : une prévision publique strictement
-conditionnelle. Elle ne pourra apparaître que pour une cible éligible et devra
-afficher sa fourchette, sa méthode, sa date et son erreur mesurée.
+`LIVE-15` livre la prévision publique strictement conditionnelle. Une carte ne
+peut apparaître que lorsque le backtest courant reste éligible et que la
+prochaine heure appartient au créneau couvert de la journée. Elle affiche la
+valeur, la fourchette, la méthode, la date, l'erreur mesurée et la source. Le
+détail est consigné dans
+[`product-growth-live-15-public-conditional-forecast-2026-09-29.md`](../../architecture/product-growth-live-15-public-conditional-forecast-2026-09-29.md).
 
 ## 0. Avenant technique FOUNDATION
 
@@ -808,7 +812,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-12`](../../architecture/product-growth-live-12-authorized-history-2026-09-29.md) | ✅ Historique autorisé | Rétention et buckets |
 | [`LIVE-13`](../../architecture/product-growth-live-13-descriptive-statistics-2026-09-29.md) | ✅ Statistiques descriptives | Volumes/lacunes visibles |
 | [`LIVE-14`](../../architecture/product-growth-live-14-forecast-backtest-2026-09-29.md) | ✅ Étude prévision/backtest | Peut conclure à l’abandon |
-| `LIVE-15` | Prévision publique conditionnelle | Intervalle et erreur publiés |
+| [`LIVE-15`](../../architecture/product-growth-live-15-public-conditional-forecast-2026-09-29.md) | ✅ Prévision publique conditionnelle | Intervalle et erreur publiés |
 
 ### Implémentation `LIVE-02` — 28 septembre 2026
 
@@ -997,6 +1001,24 @@ un intervalle inutilisable ou dérive conduit explicitement à l'abandon. Seul l
 troisième verdict, « éligible à un pilote », pourra ouvrir LIVE-15. La route et
 l'interface restent réservées à l'administration ; aucune prévision publique
 n'est créée par ce jalon.
+
+### Implémentation `LIVE-15` — 29 septembre 2026
+
+La version `5.4.19` termine la phase LIVE avec une estimation publique pour la
+prochaine heure couverte de la journée. Elle reprend exactement la méthode
+candidate de LIVE-14 : médiane du même jour de semaine et de la même heure,
+accompagnée de l'intervalle 10–90 %. La carte affiche aussi l'erreur moyenne et
+la couverture réellement observées pendant les 90 jours du backtest courant,
+la méthode expliquée, la date de calcul, le volume de preuves et la source.
+
+La publication n'est jamais un simple interrupteur visuel. Source, licence,
+fiche publique, mapping humain et contrôles opérationnels sont revérifiés avant
+de charger au plus 174 jours. Un verdict insuffisant ou défavorable, moins de
+huit jours comparables, un créneau hors journée ou une erreur laisse la page
+sans prévision. Le calcul partagé appartient à Core, le contrat ne contient pas
+d'identifiant technique de cible et le cache public de quinze minutes borne la
+charge. Angular charge la carte hors SSR et la replie sur une colonne jusqu'à
+320 px. Aucun changement de schéma MongoDB n'est requis.
 
 ## 24. Gate finale `LIVE-G`
 

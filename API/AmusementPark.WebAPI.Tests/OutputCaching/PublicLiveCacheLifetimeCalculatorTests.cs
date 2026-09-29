@@ -48,6 +48,17 @@ public sealed class PublicLiveCacheLifetimeCalculatorTests
         Assert.Equal(TimeSpan.FromSeconds(30), lifetime);
     }
 
+    [Fact]
+    public void ResolveLifetime_ShouldHonorAFeatureSpecificBound()
+    {
+        TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.ResolveLifetime(
+            AsOfUtc,
+            null,
+            TimeSpan.FromMinutes(15));
+
+        Assert.Equal(TimeSpan.FromMinutes(15), lifetime);
+    }
+
     private static PublicLiveTargetResult CreateTarget(DateTime? refreshAfterUtc)
     {
         return new PublicLiveTargetResult(

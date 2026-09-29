@@ -26,6 +26,7 @@ import { UserCollectionActionsComponent } from '@features/collections/ui/user-co
 import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-subscription-action.component';
 import { PublicLiveViewState } from '@features/public/live/models/public-live-view-state.model';
 import { PublicLiveHistoryViewState } from '@features/public/live/models/public-live-history-view-state.model';
+import { PublicLiveForecastViewState } from '@features/public/live/models/public-live-forecast-view-state.model';
 import { PublicLivePanelComponent } from '@features/public/live/ui/public-live-panel.component';
 
 @Component({
@@ -100,6 +101,7 @@ export class ParkItemDetailViewComponent {
   @Input() currentLang: string = 'en';
   @Input() liveState: PublicLiveViewState | null = null;
   @Input() liveHistoryState: PublicLiveHistoryViewState | null = null;
+  @Input() liveForecastState: PublicLiveForecastViewState | null = null;
   @Input() liveTimeZoneId: string | null = null;
 
   @Output() backToItemsClicked: EventEmitter<void> = new EventEmitter<void>();

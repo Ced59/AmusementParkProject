@@ -1,0 +1,68 @@
+@if (state.kind === 'ready' && state.forecast; as forecast) {
+  <section class="live-forecast" aria-labelledby="live-forecast-title">
+    <header class="live-forecast__header">
+      <div>
+        <app-ui-kicker iconClass="pi pi-sparkles">{{ 'liveData.forecast.kicker' | translate }}</app-ui-kicker>
+        <h3 id="live-forecast-title">{{ 'liveData.forecast.title' | translate:{ time: timeRange(forecast) } }}</h3>
+        <p>{{ 'liveData.forecast.subtitle' | translate }}</p>
+      </div>
+      <span class="live-forecast__verified">
+        <i class="pi pi-verified" aria-hidden="true"></i>
+        {{ 'liveData.forecast.verified' | translate }}
+      </span>
+    </header>
+
+    <div class="live-forecast__estimate">
+      <div class="live-forecast__value">
+        <strong>{{ minutes(forecast.expectedWaitMinutes) }}</strong>
+        <span>{{ 'liveData.forecast.minutes' | translate }}</span>
+      </div>
+      <div class="live-forecast__range">
+        <span>{{ 'liveData.forecast.rangeLabel' | translate }}</span>
+        <strong>{{ 'liveData.forecast.rangeValue' | translate:{
+          from: minutes(forecast.lowerBoundMinutes),
+          to: minutes(forecast.upperBoundMinutes)
+        } }}</strong>
+      </div>
+    </div>
+
+    <div class="live-forecast__evidence">
+      <article>
+        <i class="pi pi-chart-line" aria-hidden="true"></i>
+        <span>{{ 'liveData.forecast.errorLabel' | translate }}</span>
+        <strong>{{ 'liveData.forecast.errorValue' | translate:{ value: minutes(forecast.meanAbsoluteErrorMinutes) } }}</strong>
+      </article>
+      <article>
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        <span>{{ 'liveData.forecast.coverageLabel' | translate }}</span>
+        <strong>{{ 'liveData.forecast.coverageValue' | translate:{ value: minutes(forecast.intervalCoveragePercent) } }}</strong>
+      </article>
+    </div>
+
+    <dl class="live-forecast__method">
+      <div>
+        <dt>{{ 'liveData.forecast.methodLabel' | translate }}</dt>
+        <dd>{{ methodLabelKey(forecast.method) | translate }}</dd>
+      </div>
+      <div>
+        <dt>{{ 'liveData.forecast.calculatedLabel' | translate }}</dt>
+        <dd>{{ calculationDate(forecast) }}</dd>
+      </div>
+      <div>
+        <dt>{{ 'liveData.forecast.evidenceLabel' | translate }}</dt>
+        <dd>{{ 'liveData.forecast.evidenceValue' | translate:{
+          points: forecast.evaluationPointCount,
+          days: forecast.trainingDayCount
+        } }}</dd>
+      </div>
+    </dl>
+
+    <footer>
+      <p>{{ 'liveData.forecast.disclaimer' | translate }}</p>
+      <a [href]="forecast.source.attributionUrl" target="_blank" rel="noreferrer noopener">
+        {{ forecast.source.attributionText }}
+        <i class="pi pi-external-link" aria-hidden="true"></i>
+      </a>
+    </footer>
+  </section>
+}
