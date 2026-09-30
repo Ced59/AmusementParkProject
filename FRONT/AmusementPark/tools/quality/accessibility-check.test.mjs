@@ -161,6 +161,21 @@ test('recognizes names rendered through static template outlets', () => {
   assert.deepEqual(findings, []);
 });
 
+test('scopes duplicate template references to compatible control-flow branches', () => {
+  const findings = analyseTemplate(`
+    @if (ready) {
+      <ng-template #label></ng-template>
+      <button type="button">
+        <ng-container [ngTemplateOutlet]="label" />
+      </button>
+    } @else {
+      <ng-template #label>Save</ng-template>
+    }
+  `);
+
+  assert.deepEqual(findings.map((finding) => finding.rule), ['interactive-name']);
+});
+
 test('recognizes text rendered through innerText and textContent bindings', () => {
   const findings = analyseTemplate(`
     <button type="button"><span [innerText]="'Save'"></span></button>
@@ -472,6 +487,7 @@ test('requires keyboard support and semantics on non-native click targets', () =
     <div [routerLink]="undefined">Unavailable</div>
   `);
   const invalidConditionalRouterLink = analyseTemplate('<div [routerLink]="enabled ? \'/parks\' : null">Parks</div>');
+  const validConditionalAnchorRouterLink = analyseTemplate('<a [routerLink]="enabled ? \'/parks\' : null">Parks</a>');
 
   assert.deepEqual(invalid.map((finding) => finding.rule), ['click-keyboard']);
   assert.deepEqual(invalidRouterLink.map((finding) => finding.rule), ['click-keyboard']);
@@ -518,6 +534,7 @@ test('requires keyboard support and semantics on non-native click targets', () =
   assert.deepEqual(validRouterLinkActivation, []);
   assert.deepEqual(validDisabledRouterLinks, []);
   assert.deepEqual(invalidConditionalRouterLink.map((finding) => finding.rule), ['click-keyboard']);
+  assert.deepEqual(validConditionalAnchorRouterLink, []);
 });
 
 test('reports additions and resolved debt against a baseline', () => {

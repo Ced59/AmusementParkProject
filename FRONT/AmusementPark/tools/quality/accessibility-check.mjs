@@ -671,15 +671,22 @@ function reachableTemplateReferenceNames(expression) {
   return { names: [], hasUnknown: true };
 }
 
-function referencedTemplateContainsAccessibleContent(binding, context, resolving) {
+function referencedTemplateContainsAccessibleContent(binding, outlet, context, resolving) {
   const references = reachableTemplateReferenceNames(binding?.value?.ast);
+  const outletReachability = context.reachabilityByNode.get(outlet) ?? new Map();
   return !references.hasUnknown
     && references.names.length > 0
     && references.names.every((referenceName) => {
-      const referencedTemplate = context.templatesByReference.get(referenceName);
-      return referencedTemplate
-        ? collectionContainsAccessibleContent(referencedTemplate.children ?? [], context, resolving)
-        : false;
+      const referencedTemplates = (context.templatesByReference.get(referenceName) ?? []).filter((candidate) => (
+        reachabilityContextsAreCompatible(
+          outletReachability,
+          context.reachabilityByNode.get(candidate) ?? new Map()
+        )
+      ));
+      return referencedTemplates.length > 0
+        && referencedTemplates.every((referencedTemplate) => (
+          collectionContainsAccessibleContent(referencedTemplate.children ?? [], context, resolving)
+        ));
     });
 }
 
@@ -687,7 +694,7 @@ function templateOutletContainsAccessibleContent(node, context, resolving) {
   const outletBinding = templateBinding(node, 'ngTemplateOutlet')
     ?? (node.inputs ?? []).find((input) => input.name?.toLowerCase() === 'ngtemplateoutlet');
   return outletBinding
-    ? referencedTemplateContainsAccessibleContent(outletBinding, context, resolving)
+    ? referencedTemplateContainsAccessibleContent(outletBinding, node, context, resolving)
     : null;
 }
 
@@ -722,10 +729,10 @@ function legacyIfContainsAccessibleContent(node, context, resolving) {
   const elseBinding = templateBinding(node, 'ngIfElse');
 
   const trueBranchHasContent = thenBinding
-    ? referencedTemplateContainsAccessibleContent(thenBinding, context, resolving)
+    ? referencedTemplateContainsAccessibleContent(thenBinding, node, context, resolving)
     : collectionContainsAccessibleContent(node.children ?? [], context, resolving);
   const falseBranchHasContent = elseBinding
-    ? referencedTemplateContainsAccessibleContent(elseBinding, context, resolving)
+    ? referencedTemplateContainsAccessibleContent(elseBinding, node, context, resolving)
     : false;
 
   return (!canBeTrue || trueBranchHasContent) && (!canBeFalse || falseBranchHasContent);
@@ -1284,7 +1291,13 @@ function analyseElement(node, template, source, lineOffset, locator, context) {
   const isCustomElement = name.includes('-');
   const hasPointerInteraction = hasActionableClick(node)
     || hasPotentiallyUsableLinkTarget(node, 'routerlink');
-  if (hasPointerInteraction && !isNativeInteractive(node) && !isCustomElement) {
+  const hasNativePointerInteraction = isNativeInteractive(node)
+    || (
+      name === 'a'
+      && !hasActionableClick(node)
+      && hasPotentiallyUsableLinkTarget(node, 'routerlink')
+    );
+  if (hasPointerInteraction && !hasNativePointerInteraction && !isCustomElement) {
     const hasKeyboardHandler = hasKeyboardActivation(node);
     const hasKeyboardFocus = hasReachableTabIndex(node);
 
@@ -1477,7 +1490,9 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
 
       for (const reference of node.references ?? []) {
         if (typeof reference.name === 'string' && reference.name.length > 0) {
-          context.templatesByReference.set(reference.name, node);
+          const referencedTemplates = context.templatesByReference.get(reference.name) ?? [];
+          referencedTemplates.push(node);
+          context.templatesByReference.set(reference.name, referencedTemplates);
         }
       }
 
