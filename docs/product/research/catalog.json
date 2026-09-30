@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 1,
+  "statusPolicy": {
+    "protocolStatus": "ready",
+    "fieldEvidenceStatus": "pending",
+    "blocksDelivery": false,
+    "allowGeneralizationWithoutEvidence": false,
+    "statement": "Les protocoles sont exécutables, mais aucune observation terrain n'est revendiquée tant qu'une fiche de session consentie n'existe pas."
+  },
+  "canonicalProfiles": [
+    {
+      "id": "journal-enthusiast",
+      "label": "Passionné tenant déjà un journal"
+    },
+    {
+      "id": "tool-free-enthusiast",
+      "label": "Passionné sans outil structuré"
+    },
+    {
+      "id": "occasional-visitor",
+      "label": "Visiteur occasionnel"
+    },
+    {
+      "id": "family-planner",
+      "label": "Famille préparant une sortie"
+    },
+    {
+      "id": "assistive-technology",
+      "label": "Personne utilisant le clavier ou une technologie d'assistance"
+    },
+    {
+      "id": "modest-device-network",
+      "label": "Personne sur appareil ou connexion modeste"
+    },
+    {
+      "id": "historical-contributor",
+      "label": "Contributeur historique"
+    }
+  ],
+  "commonTasks": [
+    {
+      "id": "consent",
+      "instruction": "Présenter la finalité, les données conservées et le droit d'arrêter avant toute observation.",
+      "comparableMeasure": "consent-confirmed-before-observation"
+    },
+    {
+      "id": "primary-value",
+      "instruction": "Donner l'objectif métier sans indiquer le chemin, puis observer le premier succès sans aide immédiate.",
+      "comparableMeasure": "first-success-outcome"
+    },
+    {
+      "id": "core-concept-distinction",
+      "instruction": "Demander à la personne d'expliquer avec ses propres mots les concepts que le produit ne doit pas confondre.",
+      "comparableMeasure": "concepts-explained-without-prompt"
+    },
+    {
+      "id": "label-comprehension",
+      "instruction": "Faire relire les libellés déterminants et relever uniquement les hésitations observées.",
+      "comparableMeasure": "critical-labels-understood"
+    },
+    {
+      "id": "privacy-export-deletion",
+      "instruction": "Vérifier les contrôles d'export et de suppression applicables, ou faire constater explicitement qu'aucune donnée personnelle n'est créée.",
+      "comparableMeasure": "privacy-controls-correctly-predicted"
+    },
+    {
+      "id": "unknown-data",
+      "instruction": "Présenter une donnée absente, ancienne ou insuffisante et demander ce que l'interface permet réellement de conclure.",
+      "comparableMeasure": "unknown-remains-distinct-from-negative"
+    },
+    {
+      "id": "accessible-use",
+      "instruction": "Réaliser le scénario principal au clavier ou avec la technologie d'assistance habituelle, puis sur un appareil ou réseau modeste.",
+      "comparableMeasure": "primary-scenario-accessible"
+    },
+    {
+      "id": "delayed-return",
+      "instruction": "Prévoir un retour différé sans rappel guidé pour mesurer la valeur répétée plutôt que la seule découverte.",
+      "comparableMeasure": "delayed-return-outcome"
+    }
+  ],
+  "evidenceSchema": [
+    {
+      "id": "objective",
+      "required": true,
+      "constraint": "Question décidée avant la session"
+    },
+    {
+      "id": "profile",
+      "required": true,
+      "constraint": "Profil canonique et contexte utile, sans identité civile"
+    },
+    {
+      "id": "scenario",
+      "required": true,
+      "constraint": "Tâche et produit testés"
+    },
+    {
+      "id": "outcome",
+      "required": true,
+      "constraint": "unassisted, assisted, failed ou not-observable"
+    },
+    {
+      "id": "observedFacts",
+      "required": true,
+      "constraint": "Actions vues, sans interprétation"
+    },
+    {
+      "id": "authorizedQuote",
+      "required": false,
+      "constraint": "Citation courte seulement si le consentement l'autorise"
+    },
+    {
+      "id": "issues",
+      "required": true,
+      "constraint": "Problème et sévérité critical, high, medium ou low"
+    },
+    {
+      "id": "hypotheses",
+      "required": true,
+      "constraint": "Hypothèses séparées des faits"
+    },
+    {
+      "id": "decisions",
+      "required": true,
+      "constraint": "Corriger, approfondir, accepter avec justification ou arrêter"
+    },
+    {
+      "id": "inconclusive",
+      "required": true,
+      "constraint": "Éléments insuffisants explicitement conservés comme tels"
+    }
+  ],
+  "betaGates": [
+    {
+      "id": "internal-alpha",
+      "requirements": [
+        "données de test uniquement",
+        "aucune publication publique",
+        "instrumentation disponible",
+        "erreurs visibles",
+        "export et suppression vérifiés",
+        "feature flag administrable"
+      ]
+    },
+    {
+      "id": "closed-beta",
+      "requirements": [
+        "invitation manuelle",
+        "données réelles",
+        "consentement clair",
+        "support direct",
+        "migrations réversibles",
+        "limites connues",
+        "mesure qualitative"
+      ]
+    },
+    {
+      "id": "limited-open-beta",
+      "requirements": [
+        "capacité VPS vérifiée",
+        "support dimensionné",
+        "modération dimensionnée",
+        "monitoring disponible",
+        "documentation disponible",
+        "réponse aux incidents opérable",
+        "aucune promesse de disponibilité excessive"
+      ]
+    },
+    {
+      "id": "general-availability",
+      "requirements": [
+        "valeur répétée réellement observée",
+        "erreurs sous le seuil décidé",
+        "confidentialité validée",
+        "accessibilité validée",
+        "huit langues vérifiées",
+        "performance vérifiée",
+        "coûts acceptables",
+        "flags temporaires retirés",
+        "runbook disponible"
+      ]
+    }
+  ],
+  "programs": [
+    {
+      "id": "RANK",
+      "roadmap": "docs/roadmaps/product-growth/01-ranking-trust-and-methodology-roadmap.md",
+      "gate": "RANK-G",
+      "businessQuestion": "Les visiteurs comprennent-ils pourquoi un lieu est classé et ce que les preuves permettent réellement d'affirmer ?",
+      "firstSuccess": "Trouver un classement pertinent puis expliquer son ordre sans confondre moyenne brute, score agrégé et rang publié.",
+      "profileIds": [
+        "journal-enthusiast",
+        "tool-free-enthusiast",
+        "occasional-visitor",
+        "assistive-technology",
+        "modest-device-network",
+        "historical-contributor"
+      ],
+      "taskContext": {
+        "primaryScenario": "Choisir un classement, ouvrir un résultat et retrouver les preuves qui justifient sa position.",
+        "coreConceptDistinction": "Moyenne brute, score agrégé, rang principal et absence de rang faute de contributeurs.",
+        "labelReview": "Rang principal, volume, confiance, données insuffisantes et méthode.",
+        "privacyExportDeletionScope": "Vérifier les préférences personnelles et leur export ou suppression ; le classement public ne doit pas révéler l'identité d'un votant.",
+        "unknownDataScenario": "Un lieu possède une moyenne mais pas assez de contributeurs pour publier un rang.",
+        "delayedReturnTrigger": "Revenir comparer le même lieu après une nouvelle publication de snapshot.",
+        "accessibleMode": "Parcourir et comparer les résultats sans dépendre de la couleur ni d'un pointeur précis."
+      },
+      "stopConditions": [
+        "Le rang reste interprété comme une moyenne simple après corrections répétées.",
+        "La confiance exige d'exposer des données personnelles ou une précision statistique injustifiée."
+      ],
+      "generalizationEvidence": [
+        "La méthode et les volumes sont correctement reformulés par plusieurs profils.",
+        "Les lieux non classés restent compris comme inconnus ou insuffisamment documentés."
+      ],
+      "extensionDocuments": []
+    },
+    {
+      "id": "PASS",
+      "roadmap": "docs/roadmaps/product-growth/02-visit-passport-and-ride-log-roadmap.md",
+      "gate": "PASS-G",
+      "businessQuestion": "Le passeport remplace-t-il avantageusement une note libre tout en restant compréhensible et privé par défaut ?",
+      "firstSuccess": "Créer une visite, ajouter plusieurs tours et retrouver l'historique sans assistance.",
+      "profileIds": [
+        "journal-enthusiast",
+        "tool-free-enthusiast",
+        "occasional-visitor",
+        "assistive-technology",
+        "modest-device-network"
+      ],
+      "taskContext": {
+        "primaryScenario": "Créer, organiser et terminer une visite avec plusieurs tours de la même attraction.",
+        "coreConceptDistinction": "Note globale actuelle, note privée de visite et note privée d'un tour.",
+        "labelReview": "Brouillon, terminée, privée, tour effectué, date approximative et statistiques.",
+        "privacyExportDeletionScope": "Exporter le passeport puis supprimer une donnée de test en prédisant précisément la portée de l'action.",
+        "unknownDataScenario": "Créer une ancienne visite dont seule l'année est connue et traiter une attraction désormais fermée.",
+        "delayedReturnTrigger": "Revenir sans aide enregistrer et terminer une deuxième visite.",
+        "accessibleMode": "Réordonner la timeline et terminer la visite au clavier puis sur mobile étroit."
+      },
+      "stopConditions": [
+        "La deuxième utilisation reste absente malgré une première activation réussie.",
+        "La distinction des notes ou la portée de la suppression reste incomprise après corrections répétées."
+      ],
+      "generalizationEvidence": [
+        "Plusieurs testeurs terminent une seconde visite sans assistance.",
+        "Les trois types de notes et leur influence communautaire sont correctement distingués."
+      ],
+      "extensionDocuments": [
+        "docs/product/passport-beta-validation-protocol.md"
+      ]
+    },
+    {
+      "id": "SHARE",
+      "roadmap": "docs/roadmaps/product-growth/03-shareable-recaps-and-comparisons-roadmap.md",
+      "gate": "SHARE-G",
+      "businessQuestion": "Une personne peut-elle publier un récapitulatif utile en comprenant exactement ce qui devient public et comment le révoquer ?",
+      "firstSuccess": "Prévisualiser, publier puis révoquer un partage sans exposer un champ resté privé.",
+      "profileIds": [
+        "journal-enthusiast",
+        "occasional-visitor",
+        "family-planner",
+        "assistive-technology",
+        "modest-device-network"
+      ],
+      "taskContext": {
+        "primaryScenario": "Choisir les sections d'un récapitulatif, relire l'aperçu, publier et vérifier le lien public.",
+        "coreConceptDistinction": "Donnée privée source, section explicitement publiée, comparaison publique et lien révoqué.",
+        "labelReview": "Aperçu public, visible, masqué, révoquer et comparer.",
+        "privacyExportDeletionScope": "Exporter la politique de partage puis révoquer et supprimer la publication de test sans effacer le passeport privé.",
+        "unknownDataScenario": "Comparer deux passeports publics lorsqu'une statistique manque chez l'un des membres.",
+        "delayedReturnTrigger": "Revenir modifier la politique d'un partage existant puis contrôler l'ancien lien.",
+        "accessibleMode": "Composer et vérifier un partage au clavier et à 200 % de zoom."
+      },
+      "stopConditions": [
+        "Un testeur publie une donnée qu'il pensait privée.",
+        "La révocation ou la suppression ne produit pas un résultat immédiatement vérifiable."
+      ],
+      "generalizationEvidence": [
+        "Les participants prédisent correctement chaque champ rendu public avant publication.",
+        "Un lien révoqué n'est jamais interprété comme encore partageable."
+      ],
+      "extensionDocuments": []
+    },
+    {
+      "id": "FIT",
+      "roadmap": "docs/roadmaps/product-growth/04-park-fit-recommendation-and-comparison-roadmap.md",
+      "gate": "FIT-G",
+      "businessQuestion": "Park Fit aide-t-il réellement à réduire un choix sans déguiser les données manquantes en recommandation certaine ?",
+      "firstSuccess": "Décrire ses contraintes, obtenir des résultats et expliquer au moins une recommandation et une inconnue.",
+      "profileIds": [
+        "tool-free-enthusiast",
+        "occasional-visitor",
+        "family-planner",
+        "assistive-technology",
+        "modest-device-network"
+      ],
+      "taskContext": {
+        "primaryScenario": "Préparer une sortie avec des contraintes réelles, comparer deux résultats et sauvegarder un projet pertinent.",
+        "coreConceptDistinction": "Compatibilité avec les critères, préférence déclarée, donnée inconnue et impossibilité factuelle.",
+        "labelReview": "Pourquoi ce résultat, données inconnues, incompatible, comparer et sauvegarder.",
+        "privacyExportDeletionScope": "Exporter puis supprimer les préférences ou le projet de test sans affecter les données publiques du parc.",
+        "unknownDataScenario": "Un parc ne possède pas une donnée nécessaire à l'un des critères importants.",
+        "delayedReturnTrigger": "Revenir sur le projet après quelques jours pour ajuster une contrainte et refaire le choix.",
+        "accessibleMode": "Comparer les résultats au clavier sur téléphone et connexion limités."
+      },
+      "stopConditions": [
+        "La recommandation est comprise comme une garantie ou une probabilité calculée.",
+        "Les inconnues sont régulièrement lues comme des réponses négatives."
+      ],
+      "generalizationEvidence": [
+        "Les raisons et inconnues sont reformulées correctement par plusieurs profils.",
+        "Le choix final reste attribué à l'utilisateur, jamais présenté comme une vérité algorithmique."
+      ],
+      "extensionDocuments": []
+    },
+    {
+      "id": "WATCH",
+      "roadmap": "docs/roadmaps/product-growth/05-favorites-watchlists-and-factual-alerts-roadmap.md",
+      "gate": "WATCH-G",
+      "businessQuestion": "Les favoris et alertes restent-ils utiles, factuels et contrôlables sans créer de pression à revenir ?",
+      "firstSuccess": "Suivre une cible, comprendre la condition d'alerte et arrêter le suivi sans ambiguïté.",
+      "profileIds": [
+        "journal-enthusiast",
+        "tool-free-enthusiast",
+        "occasional-visitor",
+        "family-planner",
+        "assistive-technology",
+        "modest-device-network"
+      ],
+      "taskContext": {
+        "primaryScenario": "Ajouter un favori, créer une alerte factuelle, relire sa condition puis la désactiver.",
+        "coreConceptDistinction": "Favori, abonnement, observation factuelle, notification envoyée et événement encore inconnu.",
+        "labelReview": "Suivre, condition, source, dernière vérification, suspendre et supprimer.",
+        "privacyExportDeletionScope": "Exporter les suivis puis supprimer l'alerte de test en distinguant abonnement et historique d'envoi.",
+        "unknownDataScenario": "La source n'a pas publié de valeur récente et aucune alerte ne peut être confirmée.",
+        "delayedReturnTrigger": "Revenir après un changement factuel pour vérifier la notification et son explication.",
+        "accessibleMode": "Créer et suspendre une alerte au clavier sans dépendre de la couleur d'état."
+      },
+      "stopConditions": [
+        "Les notifications poussent à revenir sans fait nouveau vérifiable.",
+        "La charge de modération ou la fréquence d'envoi dépasse les moyens d'exploitation."
+      ],
+      "generalizationEvidence": [
+        "La condition et la source d'une alerte sont comprises avant activation.",
+        "La suspension et la suppression sont retrouvées sans assistance."
+      ],
+      "extensionDocuments": []
+    },
+    {
+      "id": "TRIP",
+      "roadmap": "docs/roadmaps/product-growth/06-collaborative-trip-planning-roadmap.md",
+      "gate": "TRIP-G",
+      "businessQuestion": "Un groupe peut-il construire un séjour ensemble sans perdre la maîtrise des rôles, des décisions ou des données privées ?",
+      "firstSuccess": "Créer un voyage, inviter un participant et prendre une décision commune sans contourner les permissions.",
+      "profileIds": [
+        "journal-enthusiast",
+        "occasional-visitor",
+        "family-planner",
+        "assistive-technology",
+        "modest-device-network"
+      ],
+      "taskContext": {
+        "primaryScenario": "Créer un voyage, inviter deux rôles, proposer une étape et résoudre une décision contradictoire.",
+        "coreConceptDistinction": "Propriétaire, participant, invitation, proposition, décision et élément privé hors du groupe.",
+        "labelReview": "Inviter, rôle, proposer, décider, quitter et supprimer le voyage.",
+        "privacyExportDeletionScope": "Exporter le voyage puis quitter ou supprimer selon son rôle en prédisant ce que les autres conservent.",
+        "unknownDataScenario": "Une étape comporte un prix ou un horaire inconnu au moment de décider.",
+        "delayedReturnTrigger": "Revenir après une modification effectuée par un autre participant et retrouver la décision courante.",
+        "accessibleMode": "Réorganiser et valider le plan au clavier sur une largeur mobile."
+      },
+      "stopConditions": [
+        "Un rôle peut agir au-delà de ce que les participants comprennent ou acceptent.",
+        "Les conflits produisent des pertes silencieuses ou exigent un support disproportionné."
+      ],
+      "generalizationEvidence": [
+        "Les rôles et conséquences d'une action sont correctement prédits.",
+        "Le groupe retrouve une décision commune après un retour différé."
+      ],
+      "extensionDocuments": []
+    },
+    {
+      "id": "HIST",
+      "roadmap": "docs/roadmaps/product-growth/07-park-history-explorer-roadmap.md",
+      "gate": "HIST-G",
+      "businessQuestion": "L'exploration historique permet-elle de comprendre l'évolution d'un parc sans mélanger faits datés, incertitudes et état actuel ?",
+      "firstSuccess": "Explorer une période, relier un changement à sa source et distinguer l'historique de l'inventaire actuel.",
+      "profileIds": [
+        "journal-enthusiast",
+        "tool-free-enthusiast",
+        "occasional-visitor",
+        "assistive-technology",
+        "modest-device-network",
+        "historical-contributor"
+      ],
+      "taskContext": {
+        "primaryScenario": "Choisir une année, suivre une chronologie et ouvrir la preuve d'un changement durable.",
+        "coreConceptDistinction": "État actuel, fait historique, intervalle approximatif, source et absence de preuve.",
+        "labelReview": "À cette date, période estimée, actuel, source, correction et chronologie.",
+        "privacyExportDeletionScope": "Vérifier qu'une navigation publique ne crée pas de dossier personnel ; exporter ou supprimer seulement les contributions ou préférences applicables.",
+        "unknownDataScenario": "La fermeture d'une attraction est attestée mais son mois exact reste inconnu.",
+        "delayedReturnTrigger": "Revenir après l'ajout d'une source et retrouver ce qui a changé dans la chronologie.",
+        "accessibleMode": "Parcourir une chronologie au clavier sans dépendre de sa géométrie ou de ses couleurs."
+      },
+      "stopConditions": [
+        "Une date approximative est régulièrement interprétée comme exacte.",
+        "La provenance ou l'état actuel devient impossible à retrouver sans expertise éditoriale."
+      ],
+      "generalizationEvidence": [
+        "Faits, estimations et lacunes sont distingués par plusieurs profils.",
+        "La navigation temporelle reste compréhensible sans explication de l'équipe."
+      ],
+      "extensionDocuments": []
+    },
+    {
+      "id": "LIVE",
+      "roadmap": "docs/roadmaps/product-growth/08-live-wait-times-and-crowd-intelligence-roadmap.md",
+      "gate": "LIVE-G",
+      "businessQuestion": "Les données en direct aident-elles à décider sans être prises pour une promesse ni contaminer les notes communautaires ?",
+      "firstSuccess": "Lire une attente, sa fraîcheur et sa provenance puis prendre une décision proportionnée à sa fiabilité.",
+      "profileIds": [
+        "journal-enthusiast",
+        "tool-free-enthusiast",
+        "occasional-visitor",
+        "family-planner",
+        "assistive-technology",
+        "modest-device-network"
+      ],
+      "taskContext": {
+        "primaryScenario": "Consulter les attentes d'un parc, comparer deux attractions et comprendre le repli lorsque la source disparaît.",
+        "coreConceptDistinction": "Observation courante, historique, prévision, fraîcheur, source et vote communautaire.",
+        "labelReview": "Mis à jour, observé, estimé, source indisponible, historique et prévision.",
+        "privacyExportDeletionScope": "Exporter ou supprimer les contributions personnelles applicables sans effacer les observations publiques agrégées légitimes.",
+        "unknownDataScenario": "La source est indisponible ou la dernière observation est trop ancienne pour guider une décision.",
+        "delayedReturnTrigger": "Revenir plus tard dans la journée et expliquer pourquoi la valeur ou son niveau de confiance a changé.",
+        "accessibleMode": "Comparer les attentes au clavier sur réseau instable sans dépendre d'une animation."
+      },
+      "stopConditions": [
+        "Les visiteurs prennent une prévision pour une garantie malgré les corrections de libellé.",
+        "La source ou la charge de collecte ne peut pas être exploitée honnêtement sur le VPS."
+      ],
+      "generalizationEvidence": [
+        "Fraîcheur, source et niveau d'incertitude sont correctement reformulés.",
+        "Aucune observation temporelle n'est confondue avec une note ou un vote."
+      ],
+      "extensionDocuments": []
+    }
+  ]
+}

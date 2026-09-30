@@ -263,6 +263,11 @@ jobs:
           npm run operations:readiness:test
           npm run operations:readiness
 
+      - name: Enforce comparable product research protocols
+        run: |
+          npm run research:readiness:test
+          npm run research:readiness
+
       - name: Test crawler SSR smoke checks
         run: node --test tools/seo-ssr-smoke.test.mjs tools/server-graceful-shutdown.test.mjs tools/disk-page-cache-invalidation-reader.test.mjs
 

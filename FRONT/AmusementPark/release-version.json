@@ -1,6 +1,20 @@
 {
-  "version": "5.4.36",
+  "version": "5.4.37",
   "history": [
+    {
+      "version": "5.4.37",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "Les parcours sont prêts pour des tests utilisateur comparables.",
+        "en": "Product experiences are ready for comparable user testing.",
+        "de": "Produkterlebnisse sind für vergleichbare Nutzertests vorbereitet.",
+        "nl": "Productervaringen zijn klaar voor vergelijkbare gebruikerstests.",
+        "it": "Le esperienze dei prodotti sono pronte per test utente comparabili.",
+        "es": "Las experiencias de producto están listas para pruebas de usuario comparables.",
+        "pt": "As experiências dos produtos estão prontas para testes comparáveis com utilizadores.",
+        "pl": "Doświadczenia produktowe są gotowe do porównywalnych testów z użytkownikami."
+      }
+    },
     {
       "version": "5.4.36",
       "releasedAt": "2026-09-30",
