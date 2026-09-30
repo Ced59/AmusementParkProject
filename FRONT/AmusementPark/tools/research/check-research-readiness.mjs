@@ -484,6 +484,13 @@ export const requiredProtocolDocumentHeadings = Object.freeze({
 
 const allowedOutcomeValues = ['unassisted', 'assisted', 'failed', 'not-observable'];
 const minimumResearchSectionContentLength = 20;
+const sessionResultTableHeaders = Object.freeze([
+  'Tâche commune',
+  'Contexte produit présenté',
+  'Résultat',
+  'Faits observés',
+  'Aide minimale donnée',
+]);
 
 function isNonEmptyText(value) {
   return typeof value === 'string' && value.trim().length > 0;
@@ -528,6 +535,25 @@ function excludeFencedCodeBlocks(lines) {
     }
   }
   return visibleLines;
+}
+
+function markdownTableCells(line) {
+  const trimmedLine = line.trim();
+  if (!trimmedLine.startsWith('|') || !trimmedLine.endsWith('|')) {
+    return null;
+  }
+
+  return trimmedLine
+    .slice(1, -1)
+    .split('|')
+    .map((cell) => cell.trim());
+}
+
+function isMarkdownTableDelimiter(line, columnCount) {
+  const cells = markdownTableCells(line);
+  return cells !== null
+    && cells.length === columnCount
+    && cells.every((cell) => /^:?-{3,}:?$/.test(cell));
 }
 
 function hasMeaningfulSectionContent(lines, headingIndex) {
@@ -607,7 +633,7 @@ export function validateResearchDocumentContent(documentPath, content) {
   }
 
   const errors = [];
-  const lines = renderedContent.split(/\r?\n/);
+  const lines = excludeFencedCodeBlocks(renderedContent.split(/\r?\n/));
   for (const heading of requiredProtocolDocumentHeadings[documentPath] ?? []) {
     const headingIndex = lines.findIndex((line) => line.trim() === heading);
     if (headingIndex < 0) {
@@ -621,21 +647,59 @@ export function validateResearchDocumentContent(documentPath, content) {
     const resultsHeadingIndex = lines.findIndex((line) => line.trim() === '## Résultats par tâche');
     const resultLines = resultsHeadingIndex < 0
       ? []
-      : excludeFencedCodeBlocks(markdownSectionBodyLines(lines, resultsHeadingIndex));
+      : markdownSectionBodyLines(lines, resultsHeadingIndex);
+    const tableHeaderIndex = resultLines.findIndex((line) => {
+      const cells = markdownTableCells(line);
+      return cells !== null
+        && cells.length === sessionResultTableHeaders.length
+        && cells.every((cell, index) => cell === sessionResultTableHeaders[index]);
+    });
+    const hasTableDelimiter = tableHeaderIndex >= 0
+      && isMarkdownTableDelimiter(
+        resultLines[tableHeaderIndex + 1] ?? '',
+        sessionResultTableHeaders.length,
+      );
+    if (!hasTableDelimiter) {
+      errors.push(`Document ${documentPath}: tableau de résultats canonique absent ou invalide.`);
+    }
+
+    const taskRows = [];
+    if (hasTableDelimiter) {
+      for (let index = tableHeaderIndex + 2; index < resultLines.length; index += 1) {
+        const cells = markdownTableCells(resultLines[index]);
+        if (cells === null || cells.length !== sessionResultTableHeaders.length) {
+          break;
+        }
+        taskRows.push(cells[0]);
+      }
+    }
     for (const taskId of requiredTaskIds) {
-      const hasTaskRow = resultLines.some((line) => line.trim().split('|')[1]?.trim() === taskId);
-      if (!hasTaskRow) {
+      if (!taskRows.includes(taskId)) {
         errors.push(`Document ${documentPath}: ligne de tâche obligatoire absente ${taskId}.`);
       }
     }
+    if (hasTableDelimiter
+      && (taskRows.length !== requiredTaskIds.length
+        || requiredTaskIds.some((taskId, index) => taskRows[index] !== taskId))) {
+      errors.push(`Document ${documentPath}: ordre canonique des tâches du tableau modifié.`);
+    }
 
-    const visibleDocumentLines = excludeFencedCodeBlocks(lines).map((line) => line.trim());
-    for (const retentionField of [
-      '- Date de suppression prévue pour cette fiche :',
-      '- Fiche supprimée à la date prévue :',
+    for (const retentionRequirement of [
+      Object.freeze({
+        heading: '## Cadre',
+        field: '- Date de suppression prévue pour cette fiche :',
+      }),
+      Object.freeze({
+        heading: '## Clôture',
+        field: '- Fiche supprimée à la date prévue :',
+      }),
     ]) {
-      if (!visibleDocumentLines.includes(retentionField)) {
-        errors.push(`Document ${documentPath}: champ de rétention obligatoire absent ${retentionField}.`);
+      const headingIndex = lines.findIndex((line) => line.trim() === retentionRequirement.heading);
+      const sectionLines = headingIndex < 0
+        ? []
+        : markdownSectionBodyLines(lines, headingIndex).map((line) => line.trim());
+      if (!sectionLines.includes(retentionRequirement.field)) {
+        errors.push(`Document ${documentPath}: champ de rétention obligatoire absent ${retentionRequirement.field}.`);
       }
     }
   }

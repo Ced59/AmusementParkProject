@@ -132,6 +132,12 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   assert.ok(emptyPassportErrors.some((error) => error.includes('section obligatoire vide ou insuffisante ## Scénarios')));
   assert.ok(emptyPassportErrors.some((error) => error.includes('section obligatoire vide ou insuffisante ## Critères de validation qualitative')));
   assert.ok(emptyPassportErrors.some((error) => error.includes("section obligatoire vide ou insuffisante ## Conditions d'arrêt")));
+  const fencedPassportProtocol = `\`\`\`markdown\n${emptyPassportProtocol
+    .split('\n')
+    .map((heading) => `${heading}\nCe texte assez long reste un exemple non rendu et non exécutable.`)
+    .join('\n')}\n\`\`\``;
+  assert.ok(validateResearchDocumentContent(passportProtocolPath, fencedPassportProtocol)
+    .some((error) => error.includes('section obligatoire absente ## Scénarios')));
 
   const sessionTemplatePath = 'docs/product/research/session-result-template.md';
   const incompleteSessionTemplate = [
@@ -179,6 +185,17 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     fencedTaskRows.replace('- Date de suppression prévue pour cette fiche :', ''),
   );
   assert.ok(missingRetentionErrors.some((error) => error.includes('champ de rétention obligatoire absent')));
+  const narrativeTaskRows = fencedTaskRows.replace(
+    /```markdown[\s\S]*?```/,
+    requiredTaskIds
+      .map((taskId) => `Référence narrative | ${taskId} | sans cellule de résultat`)
+      .join('\n'),
+  );
+  const narrativeTaskErrors = validateResearchDocumentContent(sessionTemplatePath, narrativeTaskRows);
+  assert.ok(narrativeTaskErrors.some((error) => error.includes('tableau de résultats canonique absent')));
+  for (const taskId of requiredTaskIds) {
+    assert.ok(narrativeTaskErrors.some((error) => error.includes(`ligne de tâche obligatoire absente ${taskId}`)));
+  }
 
   for (const [programId, roadmapPath] of Object.entries(requiredRoadmapByProgram)) {
     assert.ok(validateResearchDocumentContent(roadmapPath, '# Roadmap incomplète')
@@ -196,6 +213,10 @@ test('rejects empty or structurally incomplete required protocol documents', () 
       roadmapPath,
       `${gateHeading}\n\n<!--\nCe critère est commenté et ne doit jamais rendre la gate exécutable.\n-->`,
     ).some((error) => error.includes('section obligatoire vide ou insuffisante')));
+    assert.ok(validateResearchDocumentContent(
+      roadmapPath,
+      `\`\`\`markdown\n${gateHeading}\n\nCe critère assez long reste enfermé dans un exemple.\n\`\`\``,
+    ).some((error) => error.includes('section obligatoire absente')));
   }
 });
 
