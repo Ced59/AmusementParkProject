@@ -6,6 +6,87 @@ import { runPerformanceBaseline } from '../performance/performance-baseline.mjs'
 
 const toolDirectory = dirname(fileURLToPath(import.meta.url));
 const defaultConfigPath = resolve(toolDirectory, 'production-alerts.config.json');
+const maximumClientAssets = 25;
+
+function readAttribute(tag, name) {
+  const match = tag.match(new RegExp(`\\b${name}\\s*=\\s*["']([^"']+)["']`, 'i'));
+  return match?.[1] ?? null;
+}
+
+export function extractRequiredClientAssetUrls(pageUrl, html) {
+  const page = new URL(pageUrl);
+  const tags = html.match(/<(?:script|link)\b[^>]*>/gi) ?? [];
+  const baseTag = html.match(/<base\b[^>]*>/i)?.[0];
+  const documentBase = new URL(baseTag ? readAttribute(baseTag, 'href') ?? page.href : page.href, page);
+  const urls = [];
+
+  for (const tag of tags) {
+    const isScript = /^<script\b/i.test(tag);
+    const relation = readAttribute(tag, 'rel')?.toLowerCase() ?? '';
+    const reference = isScript ? readAttribute(tag, 'src') : readAttribute(tag, 'href');
+    if (!reference || (!isScript && !relation.split(/\s+/).includes('modulepreload'))) {
+      continue;
+    }
+
+    const asset = new URL(reference, documentBase);
+    if (asset.origin === page.origin && !urls.includes(asset.href)) {
+      urls.push(asset.href);
+    }
+  }
+
+  return urls.slice(0, maximumClientAssets);
+}
+
+export async function probeRequiredClientAssets(baseUrl, target, fetchImplementation = globalThis.fetch) {
+  const pageUrl = new URL(target.path, baseUrl);
+  try {
+    const pageResponse = await fetchImplementation(pageUrl, {
+      headers: { accept: 'text/html', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
+    });
+    if (pageResponse.status !== target.expectedStatus) {
+      return { assetCount: 0, failures: [`page cliente HTTP ${pageResponse.status}`] };
+    }
+
+    const assetUrls = extractRequiredClientAssetUrls(pageUrl, await pageResponse.text());
+    if (assetUrls.length === 0) {
+      return { assetCount: 0, failures: ['aucun bundle client same-origin trouvé'] };
+    }
+
+    const failures = [];
+    for (const assetUrl of assetUrls) {
+      try {
+        const response = await fetchImplementation(assetUrl, {
+          headers: { accept: 'text/javascript, application/javascript', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
+        });
+        const body = await response.arrayBuffer();
+        const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
+        if (!response.ok || body.byteLength === 0 || !contentType.includes('javascript')) {
+          failures.push(`${new URL(assetUrl).pathname}: bundle client invalide`);
+        }
+      } catch {
+        failures.push(`${new URL(assetUrl).pathname}: bundle client inaccessible`);
+      }
+    }
+
+    return { assetCount: assetUrls.length, failures };
+  } catch {
+    return { assetCount: 0, failures: ['page cliente inaccessible pendant le contrôle des bundles'] };
+  }
+}
+
+async function appendClientAssetChecks(report, config, baseUrl, fetchImplementation) {
+  for (const target of config.baseline.targets.filter((candidate) => candidate.kind === 'csr-page')) {
+    const result = report.results.find((candidate) => candidate.key === target.key);
+    if (!result) {
+      continue;
+    }
+
+    const check = await probeRequiredClientAssets(baseUrl, target, fetchImplementation);
+    result.clientAssetCheck = check;
+    result.failures.push(...check.failures);
+  }
+  return report;
+}
 
 function failedTargetKeys(report) {
   return new Set(report.results
@@ -45,10 +126,14 @@ export function confirmIncidents(config, attempts) {
 export async function runConfirmedProductionProbe(config, options = {}) {
   const runBaseline = options.runBaseline ?? runPerformanceBaseline;
   const pause = options.pause ?? ((milliseconds) => new Promise((resolvePromise) => setTimeout(resolvePromise, milliseconds)));
+  const baseUrl = options.baseUrl ?? 'https://amusement-parks.fun';
   const attempts = [];
 
   for (let index = 0; index < config.confirmationAttempts; index += 1) {
-    const report = await runBaseline(config.baseline, { baseUrl: options.baseUrl });
+    const baselineReport = await runBaseline(config.baseline, { baseUrl });
+    const report = options.skipClientAssetChecks
+      ? baselineReport
+      : await appendClientAssetChecks(baselineReport, config, baseUrl, options.fetchImplementation ?? globalThis.fetch);
     attempts.push(report);
     if (report.results.every((result) => result.failures.length === 0)) {
       break;
@@ -62,7 +147,7 @@ export async function runConfirmedProductionProbe(config, options = {}) {
   return {
     schemaVersion: 1,
     checkedAtUtc: new Date().toISOString(),
-    baseUrl: options.baseUrl ?? 'https://amusement-parks.fun',
+    baseUrl,
     status: incidents.length === 0 ? 'healthy' : 'incident',
     incidents,
     attempts,

@@ -58,6 +58,9 @@ Trois modes sont distingués :
 Le jalon n'invente donc ni métrique globale ni accès administrateur automatisé.
 Les sondes publiques couvrent accueil, parcs, classements, Park Fit, santé API et
 capacités publiques. Elles contrôlent statut, transport, p95 et taille maximale.
+Park Fit étant rendu côté client, la sonde charge en plus tous ses scripts et
+modules préchargés same-origin ; une coquille HTML 200 sans JavaScript valide ne
+peut donc pas déclarer ce parcours sain.
 
 ## 4. Séquence d'alerte publique
 
@@ -88,9 +91,11 @@ sequenceDiagram
 ## 5. Coût, sécurité et confidentialité
 
 Le moniteur n'installe aucune dépendance et n'ajoute aucun service au VPS. Une
-exécution saine produit douze requêtes publiques ; la seconde série n'a lieu
-qu'après un échec. Aucun compte, cookie, jeton, query string ou contenu privé n'est
-collecté. Les rapports sont conservés trente jours dans les artefacts GitHub.
+exécution saine produit douze mesures de référence, une lecture supplémentaire de
+la coquille Park Fit et le téléchargement de ses bundles same-origin ; la seconde
+série n'a lieu qu'après un échec. Aucun compte, cookie, jeton, query string ou
+contenu privé n'est collecté. Les rapports sont conservés trente jours dans les
+artefacts GitHub.
 
 Les runbooks imposent la minimisation des preuves : trace IDs, routes modèles,
 versions, compteurs et heures UTC, jamais les commentaires, e-mails, jetons ou

@@ -1,7 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { confirmIncidents, runConfirmedProductionProbe } from './production-alert-monitor.mjs';
+import {
+  confirmIncidents,
+  extractRequiredClientAssetUrls,
+  probeRequiredClientAssets,
+  runConfirmedProductionProbe,
+} from './production-alert-monitor.mjs';
 
 const config = {
   confirmationAttempts: 2,
@@ -40,6 +45,7 @@ test('does not wait for confirmation when the first probe is healthy', async () 
     pause: async () => {
       pauseCalls += 1;
     },
+    skipClientAssetChecks: true,
   });
 
   assert.equal(result.status, 'healthy');
@@ -55,9 +61,49 @@ test('waits and reports an incident after two failed probes', async () => {
       assert.equal(milliseconds, 10000);
       pauseCalls += 1;
     },
+    skipClientAssetChecks: true,
   });
 
   assert.equal(result.status, 'incident');
   assert.equal(result.incidents[0].incidentId, 'production-rollback');
   assert.equal(pauseCalls, 1);
+});
+
+test('extracts only unique same-origin scripts and module preloads', () => {
+  const html = `
+    <base href="/">
+    <script src="main-ABC.js" type="module"></script>
+    <link rel="modulepreload" href="/chunk-ONE.js">
+    <script src="https://accounts.example/client.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main-ABC.js"></script>`;
+
+  assert.deepEqual(
+    extractRequiredClientAssetUrls('https://amusement-parks.fun/fr/park-fit', html),
+    [
+      'https://amusement-parks.fun/main-ABC.js',
+      'https://amusement-parks.fun/chunk-ONE.js',
+    ],
+  );
+});
+
+test('reports a missing client bundle even when the CSR shell returns HTTP 200', async () => {
+  const responses = new Map([
+    ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
+      status: 200,
+      headers: { 'content-type': 'text/html' },
+    })],
+    ['https://amusement-parks.fun/main.js', new Response('missing', {
+      status: 404,
+      headers: { 'content-type': 'text/html' },
+    })],
+  ]);
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    { path: '/fr/park-fit', expectedStatus: 200 },
+    async (url) => responses.get(String(url)),
+  );
+
+  assert.equal(result.assetCount, 1);
+  assert.deepEqual(result.failures, ['/main.js: bundle client invalide']);
 });

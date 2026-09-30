@@ -39,7 +39,7 @@
       {
         "key": "park-fit-fr",
         "path": "/fr/park-fit",
-        "kind": "ssr-page",
+        "kind": "csr-page",
         "expectedStatus": 200,
         "maximumP95Milliseconds": 3000,
         "maximumBytes": 750000,

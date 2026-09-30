@@ -960,9 +960,11 @@ perte et la preuve attendue avant clôture.
 Un workflow sonde toutes les quinze minutes six cibles publiques représentatives.
 Il ne confirme une alerte que si la même cible échoue deux fois à trente secondes
 d'intervalle, conserve le rapport trente jours et fait remonter l'incident par le
-canal GitHub existant. La CI empêche qu'une politique, une cible automatisée ou une
-étape de runbook devienne orpheline. Aucun service VPS, secret, compte technique,
-stockage MongoDB ou collecte utilisateur n'est ajouté.
+canal GitHub existant. Pour Park Fit, rendu côté client, il contrôle aussi les
+scripts et modules préchargés same-origin afin qu'une coquille HTTP 200 inutilisable
+ne soit pas considérée saine. La CI empêche qu'une politique, une cible automatisée
+ou une étape de runbook devienne orpheline. Aucun service VPS, secret, compte
+technique, stockage MongoDB ou collecte utilisateur n'est ajouté.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 
