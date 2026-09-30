@@ -8881,6 +8881,10 @@
       "kicker": "Mijn ranglijst",
       "title": "Jouw persoonlijke ranglijst",
       "subtitle": "Rangschik de parken en plekken die je beoordeelde volgens je eigen voorkeuren.",
+      "unavailable": {
+        "park": "Park niet beschikbaar",
+        "target": "Locatie niet beschikbaar"
+      },
       "loading": "Je ranglijst wordt geladen...",
       "emptyTitle": "Nog geen beoordeling",
       "emptyText": "Beoordeel een park of plek om je persoonlijke overzicht te starten.",

@@ -50,6 +50,7 @@
       "kicker": "Mi ranking",
       "title": "Tu ranking personal",
       "subtitle": "Ordena los parques y lugares que valoraste según tus propias preferencias.",
+      "unavailable": { "park": "Parque no disponible", "target": "Lugar no disponible" },
       "loading": "Cargando tu ranking...",
       "emptyTitle": "Aún no hay valoraciones",
       "emptyText": "Valora un parque o un lugar para empezar tu vista personal.",

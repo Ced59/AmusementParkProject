@@ -225,6 +225,27 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     ]);
   });
 
+  it('uses a neutral label instead of persisting a technical park identifier as a name', async () => {
+    const api: FakeVisitApi = new FakeVisitApi();
+    const auth: FakeAuthService = new FakeAuthService();
+    const savedDrafts: PassportAnonymousDraft[] = [];
+    auth.token = null;
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      auth,
+      createDraftStore(savedDrafts)
+    );
+
+    facade.createVisit(createDraft());
+    await vi.waitFor((): void => {
+      expect(savedDrafts).toHaveLength(1);
+    });
+
+    expect(savedDrafts[0].parkName)
+      .toBe('passport.statistics.targets.unavailablePark');
+    expect(savedDrafts[0].parkName).not.toBe(savedDrafts[0].visit.parkId);
+  });
+
   it('records the anonymous second-visit signal only once after the milestone is reached', async () => {
     const api: FakeVisitApi = new FakeVisitApi();
     const auth: FakeAuthService = new FakeAuthService();

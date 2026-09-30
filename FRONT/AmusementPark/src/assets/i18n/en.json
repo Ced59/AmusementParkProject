@@ -8881,6 +8881,10 @@
       "kicker": "My ranking",
       "title": "Your personal ranking",
       "subtitle": "Rank the parks and places you rated according to your own preferences.",
+      "unavailable": {
+        "park": "Park unavailable",
+        "target": "Place unavailable"
+      },
       "loading": "Loading your ranking...",
       "emptyTitle": "No rating yet",
       "emptyText": "Rate a park or a place to start building your personal view.",

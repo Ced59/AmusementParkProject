@@ -313,6 +313,32 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(facade.canImport()).toBe(true);
   });
 
+  it('does not expose a park item identifier when a server ride name is unavailable', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const listed: PassportVisit = createVisit({ id: 'existing-1' });
+    const occurrence: PassportRideOccurrence = createOccurrence('occurrence-1', listed.id);
+    occurrence.target = null;
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft]),
+      createVisitsPort({
+        listVisits: vi.fn(() => of({ items: [listed], nextCursor: null })),
+        getVisit: () => of(listed)
+      }),
+      createOccurrencesPort({
+        list: () => of({ items: [occurrence], nextCursor: null })
+      })
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+    facade.setChoice(draft.id, 'Merge');
+
+    await facade.setTargetVisit(draft.id, listed.id);
+
+    expect(facade.previews()[0].serverRides?.[0].attractionName).toBe('');
+    expect(facade.previews()[0].serverRides?.[0].attractionName)
+      .not.toBe(occurrence.parkItemId);
+  });
+
   it('blocks a merge when the target ride comparison cannot be loaded', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const listed: PassportVisit = createVisit({ id: 'existing-1' });

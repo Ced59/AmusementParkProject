@@ -30,7 +30,7 @@
         <article class="anonymous-import-card">
           <div class="anonymous-import-card__heading">
             <div>
-              <h3>{{ preview.draft.parkName }}</h3>
+              <h3>{{ displayParkName(preview.draft.parkName, preview.draft.visit.parkId) || ('passport.statistics.targets.unavailablePark' | translate) }}</h3>
               <p>
                 {{ preview.draft.visit.date.day || '–' }}/{{ preview.draft.visit.date.month || '–' }}/{{ preview.draft.visit.date.year }}
                 · {{ 'passport.anonymousDrafts.import.rideCount' | translate:{ count: facade.draftRideCount(preview.draft) } }}
@@ -78,7 +78,7 @@
                   <option value="">{{ 'passport.anonymousDrafts.import.targetPlaceholder' | translate }}</option>
                   @for (candidate of preview.similarVisits; track candidate.id) {
                     <option [value]="candidate.id" [disabled]="candidate.status !== 'Draft'">
-                      {{ candidate.title || candidate.parkName || candidate.parkId }} · {{ candidate.status }}
+                      {{ candidate.title || displayParkName(candidate.parkName, candidate.parkId) || ('passport.statistics.targets.unavailablePark' | translate) }} · {{ candidate.status }}
                     </option>
                   }
                 </select>
@@ -93,7 +93,7 @@
                     <ul>
                       @for (ride of preview.draft.rides; track trackLocalRide($index, ride)) {
                         <li>
-                          <strong>{{ ride.attractionName }}</strong>
+                          <strong>{{ displayRideName(ride.attractionName, ride.parkItemId) || ('passport.editor.timeline.unknownAttraction' | translate) }}</strong>
                           <span>{{ ride.moment.localTime || '–' }} · ×{{ ride.count }}</span>
                           @if (ride.privateNote) { <small>{{ ride.privateNote }}</small> }
                         </li>
@@ -110,7 +110,7 @@
                       <ul>
                         @for (ride of preview.serverRides; track trackServerRide($index, ride)) {
                           <li>
-                            <strong>{{ ride.attractionName }}</strong>
+                            <strong>{{ displayRideName(ride.attractionName) || ('passport.editor.timeline.unknownAttraction' | translate) }}</strong>
                             <span>{{ ride.localTime || '–' }}</span>
                             @if (ride.privateNote) { <small>{{ ride.privateNote }}</small> }
                           </li>
@@ -166,7 +166,7 @@
         <ul>
           @for (item of report.items; track trackReport($index, item)) {
             <li [class.anonymous-import__report-error]="item.outcome === 'Failed'">
-              <strong>{{ item.parkName }}</strong>
+              <strong>{{ item.parkName || ('passport.statistics.targets.unavailablePark' | translate) }}</strong>
               <span>{{ ('passport.anonymousDrafts.import.report.outcomes.' + item.outcome) | translate }}</span>
               @if (item.errorKey) { <small>{{ item.errorKey | translate }}</small> }
             </li>

@@ -2623,7 +2623,7 @@ describe('PassportVisitEditorStateFacade', () => {
     facade.load('visit-1', 'fr');
 
     expect(facade.loading()).toBe(false);
-    expect(facade.parkName()).toBe('park-1');
+    expect(facade.parkName()).toBe('');
     expect(facade.occurrences()).toHaveLength(2);
     expect(facade.attractionErrorKey()).toBe('passport.editor.errors.attractions');
   });

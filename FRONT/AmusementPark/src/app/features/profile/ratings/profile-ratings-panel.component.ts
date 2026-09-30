@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, Input, OnInit, Signal, computed, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService as NgxTranslateService } from '@ngx-translate/core';
 
 import {
   UserParkItemRatingRanking,
@@ -125,14 +125,16 @@ export class ProfileRatingsPanelComponent implements OnInit {
     const savingRatingIds: ReadonlySet<string> = this.savingRatingIds();
     return this.parkItemRankings().map((ranking: UserParkItemRatingRanking): RatingRankingListItem => {
       const rating: UserRatingListItem = ranking.rating;
+      const targetName: string | null = this.publicLabel(rating.targetName, rating.targetId);
+      const parkName: string | null = this.publicLabel(rating.parkName, rating.parkId);
       return {
         id: rating.id,
         rank: ranking.rank,
-        name: rating.targetName,
+        name: targetName ?? this.translate.instant('ratings.profile.unavailable.target'),
         score: rating.value,
-        route: this.targetRoute(rating, language),
-        parkName: rating.parkName || rating.parkId,
-        parkRoute: this.parkRoute(rating.parkId, rating.parkName || rating.parkId, language),
+        route: targetName ? this.targetRoute(rating, language, targetName, parkName) : null,
+        parkName: parkName ?? this.translate.instant('ratings.profile.unavailable.park'),
+        parkRoute: parkName ? this.parkRoute(rating.parkId, parkName, language) : null,
         editable: this.editableScore(rating.id, savingRatingIds)
       };
     });
@@ -142,6 +144,7 @@ export class ProfileRatingsPanelComponent implements OnInit {
     private readonly stateFacade: ProfileRatingsStateFacade,
     private readonly shareStateFacade: UserRankingShareStateFacade,
     private readonly translationService: TranslationService,
+    private readonly translate: NgxTranslateService,
     private readonly destroyRef: DestroyRef,
     private readonly elementRef: ElementRef<HTMLElement>
   ) {
@@ -252,7 +255,8 @@ export class ProfileRatingsPanelComponent implements OnInit {
 
   protected bucketLabel(bucket: UserRatingStatBucket, kind: 'targetType' | 'category' | 'park'): string {
     if (kind === 'park') {
-      return bucket.label;
+      return this.publicLabel(bucket.label, bucket.key)
+        ?? this.translate.instant('ratings.profile.unavailable.park');
     }
 
     const keyPrefix: string = kind === 'targetType' ? 'ratings.targetTypes' : 'ratings.categories';
@@ -264,16 +268,17 @@ export class ProfileRatingsPanelComponent implements OnInit {
     language: string,
     savingRatingIds: ReadonlySet<string>
   ): RatingTreePark {
+    const parkName: string | null = this.publicLabel(ranking.parkName, ranking.parkId);
     const itemRatings: UserRatingListItem[] = ranking.categories.flatMap(
       (category: UserParkRatingRankingCategory): UserRatingListItem[] => category.items
     );
     return {
       id: ranking.parkId,
       rank: ranking.rank,
-      name: ranking.parkName,
+      name: parkName ?? this.translate.instant('ratings.profile.unavailable.park'),
       score: ranking.averageRating,
       ratingCount: ranking.ratingCount,
-      route: this.parkRoute(ranking.parkId, ranking.parkName, language),
+      route: parkName ? this.parkRoute(ranking.parkId, parkName, language) : null,
       metrics: this.buildMetrics(ranking.parkRating ?? null, itemRatings),
       sections: ranking.categories.map((category: UserParkRatingRankingCategory): RatingTreeSection => {
         return {
@@ -281,11 +286,12 @@ export class ProfileRatingsPanelComponent implements OnInit {
           titleKey: `ratings.categories.${category.parkItemCategory}`,
           score: category.averageRating,
           items: category.items.map((rating: UserRatingListItem) => {
+            const targetName: string | null = this.publicLabel(rating.targetName, rating.targetId);
             return {
               id: rating.id,
-              name: rating.targetName,
+              name: targetName ?? this.translate.instant('ratings.profile.unavailable.target'),
               score: rating.value,
-              route: this.targetRoute(rating, language),
+              route: targetName ? this.targetRoute(rating, language, targetName, parkName) : null,
               editable: this.editableScore(rating.id, savingRatingIds)
             };
           })
@@ -311,21 +317,30 @@ export class ProfileRatingsPanelComponent implements OnInit {
     ];
   }
 
-  private targetRoute(rating: UserRatingListItem, language: string): string[] | null {
+  private targetRoute(
+    rating: UserRatingListItem,
+    language: string,
+    targetName: string,
+    parkName: string | null
+  ): string[] | null {
     if (rating.targetType === 'Park') {
       return buildPublicParkRouteCommands({
         language,
         parkId: rating.parkId,
-        parkName: rating.targetName
+        parkName: targetName
       });
+    }
+
+    if (!parkName) {
+      return null;
     }
 
     return buildPublicParkItemRouteCommands({
       language,
       parkId: rating.parkId,
-      parkName: rating.parkName,
+      parkName,
       itemId: rating.targetId,
-      itemName: rating.targetName
+      itemName: targetName
     });
   }
 
@@ -335,6 +350,13 @@ export class ProfileRatingsPanelComponent implements OnInit {
       parkId,
       parkName
     });
+  }
+
+  private publicLabel(value: string | null | undefined, technicalId: string): string | null {
+    const normalizedValue: string = value?.trim() ?? '';
+    return normalizedValue.length > 0 && normalizedValue !== technicalId
+      ? normalizedValue
+      : null;
   }
 
   private averageRating(ratings: UserRatingListItem[]): number {

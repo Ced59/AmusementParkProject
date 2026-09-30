@@ -9,7 +9,7 @@ export function mapPassportVisitOverviewItem(
   return {
     id: visit.id,
     parkId: visit.parkId,
-    parkName: visit.parkName?.trim() || visit.parkId,
+    parkName: visit.parkName?.trim() || null,
     title: visit.title?.trim() || null,
     dateLabel: formatPassportVisitDate(visit.date, language),
     status: visit.status,

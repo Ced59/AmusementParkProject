@@ -50,6 +50,7 @@
       "kicker": "Meine Rangliste",
       "title": "Deine persönliche Rangliste",
       "subtitle": "Ordne deine bewerteten Parks und Orte nach deinen eigenen Vorlieben.",
+      "unavailable": { "park": "Park nicht verfügbar", "target": "Ort nicht verfügbar" },
       "loading": "Deine Rangliste wird geladen...",
       "emptyTitle": "Noch keine Bewertung",
       "emptyText": "Bewerte einen Park oder Ort, um deine persönliche Ansicht zu starten.",

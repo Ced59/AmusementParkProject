@@ -211,7 +211,7 @@ export class PassportAnonymousImportStateFacade {
       const serverRides: PassportAnonymousServerRidePreview[] = occurrences.map(
         (occurrence: PassportRideOccurrence): PassportAnonymousServerRidePreview => ({
           id: occurrence.id,
-          attractionName: occurrence.target?.name?.trim() || occurrence.parkItemId,
+          attractionName: occurrence.target?.name?.trim() || '',
           status: occurrence.status,
           localTime: occurrence.moment.localTime,
           privateNote: occurrence.privateNote
@@ -799,7 +799,9 @@ export class PassportAnonymousImportStateFacade {
   ): PassportAnonymousImportReportItem {
     return {
       draftId: preview.draft.id,
-      parkName: preview.draft.parkName,
+      parkName: preview.draft.parkName.trim() === preview.draft.visit.parkId
+        ? ''
+        : preview.draft.parkName.trim(),
       outcome,
       serverVisitId,
       importedRideCount,

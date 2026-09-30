@@ -8881,6 +8881,10 @@
       "kicker": "Mój ranking",
       "title": "Twój osobisty ranking",
       "subtitle": "Uporządkuj ocenione parki i miejsca zgodnie ze swoimi preferencjami.",
+      "unavailable": {
+        "park": "Park niedostępny",
+        "target": "Miejsce niedostępne"
+      },
       "loading": "Ładowanie twojego rankingu...",
       "emptyTitle": "Brak ocen",
       "emptyText": "Oceń park lub miejsce, aby rozpocząć osobisty widok.",

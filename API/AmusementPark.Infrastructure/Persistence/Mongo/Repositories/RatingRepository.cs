@@ -526,7 +526,7 @@ public sealed class RatingRepository : IRatingRepository
 
             IReadOnlyCollection<UserRatingListItemResult> enrichedRatings = await this.EnrichUserRatingsAsync(
                 searchDocuments,
-                hideTechnicalFallbacks: false,
+                hideTechnicalFallbacks: true,
                 cancellationToken);
             IReadOnlyCollection<UserRatingListItemResult> searchItems = BuildUserRatingSearchWindow(enrichedRatings, parkSearch.Trim(), pageSize);
             return new PagedResult<UserRatingListItemResult>(searchItems, 1, pageSize, searchItems.Count);
@@ -542,7 +542,7 @@ public sealed class RatingRepository : IRatingRepository
 
         IReadOnlyCollection<UserRatingListItemResult> items = await this.EnrichUserRatingsAsync(
             documents,
-            hideTechnicalFallbacks: false,
+            hideTechnicalFallbacks: true,
             cancellationToken);
         return new PagedResult<UserRatingListItemResult>(items, page, pageSize, totalItems);
     }
@@ -1278,7 +1278,7 @@ public sealed class RatingRepository : IRatingRepository
 
         return await this.EnrichUserRatingsAsync(
             documents,
-            hideTechnicalFallbacks: false,
+            hideTechnicalFallbacks: true,
             cancellationToken);
     }
 

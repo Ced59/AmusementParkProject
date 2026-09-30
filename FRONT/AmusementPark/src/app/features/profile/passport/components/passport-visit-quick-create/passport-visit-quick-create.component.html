@@ -11,7 +11,7 @@
       <span class="passport-success__icon" aria-hidden="true"><i class="pi pi-check"></i></span>
       <div>
         <h2>{{ 'passport.quickCreate.success.title' | translate }}</h2>
-        <p>{{ 'passport.quickCreate.success.description' | translate:{ park: selectedParkName() || createdVisit.parkId } }}</p>
+        <p>{{ 'passport.quickCreate.success.description' | translate:{ park: selectedParkName() || ('passport.statistics.targets.unavailablePark' | translate) } }}</p>
         <p class="passport-private-note">
           <i class="pi pi-lock" aria-hidden="true"></i>
           <span>{{ 'passport.quickCreate.privacy' | translate }}</span>
@@ -37,7 +37,7 @@
       <span class="passport-success__icon" aria-hidden="true"><i class="pi pi-mobile"></i></span>
       <div>
         <h2>{{ 'passport.quickCreate.localSuccess.title' | translate }}</h2>
-        <p>{{ 'passport.quickCreate.localSuccess.description' | translate:{ park: selectedParkName() || form.controls.parkId.value } }}</p>
+        <p>{{ 'passport.quickCreate.localSuccess.description' | translate:{ park: selectedParkName() || ('passport.statistics.targets.unavailablePark' | translate) } }}</p>
         <p class="passport-private-note">
           <i class="pi pi-lock" aria-hidden="true"></i>
           <span>{{ 'passport.quickCreate.localSuccess.deviceWarning' | translate }}</span>

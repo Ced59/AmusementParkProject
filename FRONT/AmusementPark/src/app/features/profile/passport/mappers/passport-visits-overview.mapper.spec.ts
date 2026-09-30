@@ -13,10 +13,10 @@ describe('mapPassportVisitOverviewItem', () => {
     expect(result).not.toHaveProperty('privateNote');
   });
 
-  it('falls back to the historical park identifier when the park no longer resolves', () => {
+  it('does not expose the historical park identifier when the park no longer resolves', () => {
     const result = mapPassportVisitOverviewItem(createVisit({ parkName: null }), 'en');
 
-    expect(result.parkName).toBe('park-1');
+    expect(result.parkName).toBeNull();
     expect(result.statusLabelKey).toBe('passport.overview.status.Draft');
   });
 });
