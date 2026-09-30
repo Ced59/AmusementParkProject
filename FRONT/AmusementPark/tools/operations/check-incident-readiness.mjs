@@ -1,11 +1,12 @@
 import { readFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { dirname, isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const toolDirectory = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(toolDirectory, '../../../..');
 const defaultCatalogPath = resolve(repositoryRoot, 'docs/operations/incidents/catalog.json');
 const defaultMonitorConfigPath = resolve(toolDirectory, 'production-alerts.config.json');
+const runbookRoot = resolve(repositoryRoot, 'docs/operations/incidents');
 
 export const requiredIncidentIds = Object.freeze([
   'ranking-inconsistent',
@@ -47,6 +48,19 @@ const requiredTextFields = [
   'recoveryProof',
 ];
 
+export function isIncidentRunbookPath(runbookPath) {
+  if (typeof runbookPath !== 'string' || !runbookPath.endsWith('.md')) {
+    return false;
+  }
+
+  const candidate = resolve(repositoryRoot, runbookPath);
+  const pathFromRoot = relative(runbookRoot, candidate);
+  return pathFromRoot.length > 0
+    && !isAbsolute(pathFromRoot)
+    && pathFromRoot !== '..'
+    && !pathFromRoot.startsWith(`..${process.platform === 'win32' ? '\\' : '/'}`);
+}
+
 export function validateCatalogStructure(catalog) {
   const errors = [];
   if (catalog?.schemaVersion !== 1) {
@@ -80,8 +94,7 @@ export function validateCatalogStructure(catalog) {
       errors.push(`Incident ${incident?.id ?? '<sans-id>'}: mode de détection inconnu.`);
     }
 
-    if (typeof incident?.runbook === 'string'
-      && (!incident.runbook.startsWith('docs/operations/incidents/') || !incident.runbook.endsWith('.md'))) {
+    if (typeof incident?.runbook === 'string' && !isIncidentRunbookPath(incident.runbook)) {
       errors.push(`Incident ${incident?.id ?? '<sans-id>'}: chemin de runbook hors du catalogue opérationnel.`);
     }
   }
@@ -146,6 +159,9 @@ export async function validateOperationalReadiness(catalogPath = defaultCatalogP
   ];
 
   for (const incident of catalog.incidents ?? []) {
+    if (!isIncidentRunbookPath(incident.runbook)) {
+      continue;
+    }
     try {
       const content = await readFile(resolve(repositoryRoot, incident.runbook), 'utf8');
       errors.push(...validateRunbookContent(incident.id, content));

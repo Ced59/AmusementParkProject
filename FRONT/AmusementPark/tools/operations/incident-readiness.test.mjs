@@ -4,6 +4,7 @@ import test from 'node:test';
 import {
   requiredIncidentIds,
   requiredRunbookHeadings,
+  isIncidentRunbookPath,
   validateCatalogStructure,
   validateMonitorConfig,
   validateRunbookContent,
@@ -60,4 +61,10 @@ test('requires every recovery section in each runbook', () => {
     validateRunbookContent('incident', fullContent.replace('## Vérification', '## Contrôle')),
     ['Runbook incident: section absente ## Vérification.'],
   );
+});
+
+test('rejects a runbook path that escapes the incident directory after normalization', () => {
+  assert.equal(isIncidentRunbookPath('docs/operations/incidents/privacy-incident.md'), true);
+  assert.equal(isIncidentRunbookPath('docs/operations/incidents/../../roadmaps/example.md'), false);
+  assert.equal(isIncidentRunbookPath('docs/operations/incidents'), false);
 });

@@ -7,6 +7,7 @@ import { runPerformanceBaseline } from '../performance/performance-baseline.mjs'
 const toolDirectory = dirname(fileURLToPath(import.meta.url));
 const defaultConfigPath = resolve(toolDirectory, 'production-alerts.config.json');
 const maximumClientAssets = 25;
+const clientAssetConcurrency = 4;
 
 async function fetchTextWithTimeout(fetchImplementation, url, options, timeoutMilliseconds) {
   const controller = new AbortController();
@@ -78,6 +79,21 @@ async function probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMillis
   }
 }
 
+async function probeJavaScriptAssets(assetUrls, fetchImplementation, timeoutMilliseconds) {
+  const results = new Map();
+  for (let index = 0; index < assetUrls.length; index += clientAssetConcurrency) {
+    const batch = assetUrls.slice(index, index + clientAssetConcurrency);
+    const batchResults = await Promise.all(batch.map(async (assetUrl) => ({
+      assetUrl,
+      result: await probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMilliseconds),
+    })));
+    for (const item of batchResults) {
+      results.set(item.assetUrl, item.result);
+    }
+  }
+  return results;
+}
+
 export async function probeRequiredClientAssets(
   baseUrl,
   target,
@@ -100,8 +116,8 @@ export async function probeRequiredClientAssets(
 
     const failures = [];
     const sources = new Map();
-    for (const assetUrl of assetUrls) {
-      const result = await probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMilliseconds);
+    const assetResults = await probeJavaScriptAssets(assetUrls, fetchImplementation, timeoutMilliseconds);
+    for (const [assetUrl, result] of assetResults) {
       if (result.failure) {
         failures.push(result.failure);
       } else {
