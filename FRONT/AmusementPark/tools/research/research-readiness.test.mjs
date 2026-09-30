@@ -107,6 +107,21 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   );
   assert.ok(passportErrors.some((error) => error.includes('Critères de validation qualitative')));
   assert.ok(passportErrors.some((error) => error.includes("Conditions d'arrêt")));
+
+  const sessionTemplatePath = 'docs/product/research/session-result-template.md';
+  const incompleteSessionTemplate = [
+    '# Fiche de session produit',
+    '## Cadre',
+    '## Résultats par tâche',
+    '## Problèmes',
+    '## Synthèse minimisée',
+    '## Clôture',
+    ...requiredTaskIds
+      .filter((taskId) => taskId !== 'delayed-return')
+      .map((taskId) => `| ${taskId} | | | | |`),
+  ].join('\n');
+  assert.ok(validateResearchDocumentContent(sessionTemplatePath, incompleteSessionTemplate)
+    .some((error) => error.includes('ligne de tâche obligatoire absente delayed-return')));
 });
 
 test('rejects a missing program and duplicate canonical task', () => {

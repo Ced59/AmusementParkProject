@@ -224,9 +224,19 @@ export function validateResearchDocumentContent(documentPath, content) {
     return [`Document de recherche vide: ${documentPath}.`];
   }
 
-  return (requiredProtocolDocumentHeadings[documentPath] ?? [])
+  const errors = (requiredProtocolDocumentHeadings[documentPath] ?? [])
     .filter((heading) => !content.includes(heading))
     .map((heading) => `Document ${documentPath}: section obligatoire absente ${heading}.`);
+
+  if (documentPath === 'docs/product/research/session-result-template.md') {
+    for (const taskId of requiredTaskIds) {
+      if (!content.includes(`| ${taskId} |`)) {
+        errors.push(`Document ${documentPath}: ligne de tâche obligatoire absente ${taskId}.`);
+      }
+    }
+  }
+
+  return errors;
 }
 
 export function validateResearchCatalog(catalog) {
