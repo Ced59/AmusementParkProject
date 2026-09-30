@@ -202,7 +202,7 @@
           <h3>{{ 'ratings.profile.byPark' | translate }}</h3>
           @for (bucket of currentStats.byPark; track bucket.key) {
             <div class="profile-rating-bar">
-              <span>{{ bucket.label }}</span>
+              <span>{{ bucketLabel(bucket, 'park') }}</span>
               <div class="profile-rating-bar__track" aria-hidden="true">
                 <span [style.width]="ratingPercent(bucket.averageRating)"></span>
               </div>

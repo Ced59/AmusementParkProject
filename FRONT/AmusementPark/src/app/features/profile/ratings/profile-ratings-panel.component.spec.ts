@@ -67,6 +67,7 @@ describe('ProfileRatingsPanelComponent', () => {
     port.parkRankings[0].parkRating!.targetName = 'park-1';
     port.parkRankings[0].categories[0].items[0].targetName = 'item-1';
     port.parkRankings[0].categories[0].items[0].parkName = 'park-1';
+    port.stats.byPark[0].label = 'park-1';
 
     fixture.detectChanges();
 

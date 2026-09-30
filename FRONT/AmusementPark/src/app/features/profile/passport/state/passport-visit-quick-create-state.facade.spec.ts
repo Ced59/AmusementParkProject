@@ -241,8 +241,7 @@ describe('PassportVisitQuickCreateStateFacade', () => {
       expect(savedDrafts).toHaveLength(1);
     });
 
-    expect(savedDrafts[0].parkName)
-      .toBe('passport.statistics.targets.unavailablePark');
+    expect(savedDrafts[0].parkName).toBe('');
     expect(savedDrafts[0].parkName).not.toBe(savedDrafts[0].visit.parkId);
   });
 

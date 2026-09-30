@@ -222,8 +222,7 @@ export class PassportVisitQuickCreateStateFacade {
       id: this.pendingDraftId,
       visitOperationId: this.pendingIdempotencyKey,
       rideOperationId: this.pendingRideOperationId,
-      parkName: parkName?.trim()
-        || this.translateService.instant('passport.statistics.targets.unavailablePark'),
+      parkName: parkName?.trim() ?? '',
       visit: request,
       rides: [],
       createdAtUtc: nowUtc,
