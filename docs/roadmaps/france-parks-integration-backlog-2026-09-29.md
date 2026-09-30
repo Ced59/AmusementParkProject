@@ -11,6 +11,8 @@ Chaque ligne active est traitée avec le workflow `PARK_DATA_EDITOR`, les étape
 
 Une fusion de doublons ou un classement `NotRelevant` ne compte pas comme publication d'un parc et ne déclenche pas d'annonce Facebook artificielle. Une ligne d'attraction autonome suit en revanche sa propre fiche publique : elle ne peut être retirée qu'après publication et contrôle anonyme de la `StandaloneAttraction`, annonce Facebook `Published`, puis suppression effective de l'ancien parkItem et de l'ancien parc artificiel lorsqu'ils existent. Le simple masquage ou classement `NotRelevant` du legacy ne suffit pas.
 
+La météo est alimentée par le batch automatique. Une prévision momentanément absente ne bloque ni la complétude, ni la publication, ni le retrait d'une ligne du backlog ; seul le bon fonctionnement de l'affichage lorsque le batch fournit des données fait partie du contrôle applicatif.
+
 La demande du 29 septembre 2026 autorise explicitement la publication Facebook de chaque fiche terminée. Cette autorisation sociale est propre à ce lot français et ne doit pas être déduite d'une future demande de complétude ordinaire.
 
 ## Sources et photographie initiale
@@ -33,8 +35,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 42 | 33 |
-| **Total** | **225** | **216** |
+| Attractions autonomes à migrer ou intégrer | 42 | 32 |
+| **Total** | **225** | **215** |
 
 ## 1. Fiches publiques à compléter
 
@@ -238,7 +240,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] La Colmiane — parc legacy `79c757cf-ef8b-4004-9cb9-3d144d0d0cb7`
 - [ ] La Luge Alpine du Plan Incliné — parc legacy `60d4d7e6-741b-43f7-b0d9-966825cb3e7b`
 - [ ] La Norma Ski Resort — parc legacy `616240a8-2aec-4afd-8289-cb7cb56b61bd`
 - [ ] La Sambuy — parc legacy `3ed514ff-1f6f-412e-ac68-2327b3b6d36a`
