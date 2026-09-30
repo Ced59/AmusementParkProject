@@ -8,6 +8,7 @@ import {
   requiredEvidenceIds,
   requiredProfileIds,
   requiredProgramIds,
+  requiredRoadmapByProgram,
   requiredTaskContextFields,
   requiredTaskIds,
   validateResearchCatalog,
@@ -18,21 +19,10 @@ function item(id, fields = {}) {
   return { id, ...fields };
 }
 
-const roadmapByProgram = Object.freeze({
-  RANK: 'docs/roadmaps/product-growth/01-ranking-trust-and-methodology-roadmap.md',
-  PASS: 'docs/roadmaps/product-growth/02-visit-passport-and-ride-log-roadmap.md',
-  SHARE: 'docs/roadmaps/product-growth/03-shareable-recaps-and-comparisons-roadmap.md',
-  FIT: 'docs/roadmaps/product-growth/04-park-fit-recommendation-and-comparison-roadmap.md',
-  WATCH: 'docs/roadmaps/product-growth/05-favorites-watchlists-and-factual-alerts-roadmap.md',
-  TRIP: 'docs/roadmaps/product-growth/06-collaborative-trip-planning-roadmap.md',
-  HIST: 'docs/roadmaps/product-growth/07-park-history-explorer-roadmap.md',
-  LIVE: 'docs/roadmaps/product-growth/08-live-wait-times-and-crowd-intelligence-roadmap.md',
-});
-
 function validProgram(id) {
   return {
     id,
-    roadmap: roadmapByProgram[id],
+    roadmap: requiredRoadmapByProgram[id],
     gate: `${id}-G`,
     businessQuestion: 'Question métier',
     firstSuccess: 'Premier succès',
@@ -88,6 +78,15 @@ test('rejects a missing program and duplicate canonical task', () => {
   const errors = validateResearchCatalog(catalog);
   assert.ok(errors.some((error) => error.includes('Programme') && error.includes('RANK')));
   assert.ok(errors.some((error) => error.includes('dupliqué')));
+});
+
+test('enforces the canonical order of comparable tasks', () => {
+  const catalog = validCatalog();
+  [catalog.commonTasks[0], catalog.commonTasks[1]] = [catalog.commonTasks[1], catalog.commonTasks[0]];
+
+  const errors = validateResearchCatalog(catalog);
+  assert.ok(errors.some((error) => error.includes('consent') && error.includes('position 1')));
+  assert.ok(errors.some((error) => error.includes('primary-value') && error.includes('position 2')));
 });
 
 test('keeps field research non-blocking without allowing unproven generalization', () => {
@@ -148,12 +147,16 @@ test('requires all four explicit task outcomes in the evidence schema', () => {
 
 test('binds each program to its own roadmap, final gate and mandatory evidence', () => {
   const catalog = validCatalog();
-  catalog.programs[1].roadmap = catalog.programs[0].roadmap;
+  [catalog.programs[0].roadmap, catalog.programs[1].roadmap] = [
+    catalog.programs[1].roadmap,
+    catalog.programs[0].roadmap,
+  ];
   catalog.programs[1].gate = 'WRONG-G';
   catalog.evidenceSchema.find((field) => field.id === 'objective').required = false;
 
   const errors = validateResearchCatalog(catalog);
-  assert.ok(errors.some((error) => error.includes('roadmap déjà attribuée')));
+  assert.ok(errors.some((error) => error.includes('RANK') && error.includes('roadmap canonique')));
+  assert.ok(errors.some((error) => error.includes('PASS') && error.includes('roadmap canonique')));
   assert.ok(errors.some((error) => error.includes('gate attendue PASS-G')));
   assert.ok(errors.some((error) => error.includes('objective') && error.includes('true')));
 });

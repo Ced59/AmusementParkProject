@@ -19,6 +19,17 @@ export const requiredProgramIds = Object.freeze([
   'LIVE',
 ]);
 
+export const requiredRoadmapByProgram = Object.freeze({
+  RANK: 'docs/roadmaps/product-growth/01-ranking-trust-and-methodology-roadmap.md',
+  PASS: 'docs/roadmaps/product-growth/02-visit-passport-and-ride-log-roadmap.md',
+  SHARE: 'docs/roadmaps/product-growth/03-shareable-recaps-and-comparisons-roadmap.md',
+  FIT: 'docs/roadmaps/product-growth/04-park-fit-recommendation-and-comparison-roadmap.md',
+  WATCH: 'docs/roadmaps/product-growth/05-favorites-watchlists-and-factual-alerts-roadmap.md',
+  TRIP: 'docs/roadmaps/product-growth/06-collaborative-trip-planning-roadmap.md',
+  HIST: 'docs/roadmaps/product-growth/07-park-history-explorer-roadmap.md',
+  LIVE: 'docs/roadmaps/product-growth/08-live-wait-times-and-crowd-intelligence-roadmap.md',
+});
+
 export const requiredProfileIds = Object.freeze([
   'journal-enthusiast',
   'tool-free-enthusiast',
@@ -164,6 +175,11 @@ export function validateResearchCatalog(catalog) {
   }
 
   hasOnlyRequiredIds(catalog?.commonTasks, requiredTaskIds, 'Tâches communes', errors);
+  for (let index = 0; index < requiredTaskIds.length; index += 1) {
+    if (catalog?.commonTasks?.[index]?.id !== requiredTaskIds[index]) {
+      errors.push(`Tâches communes: ${requiredTaskIds[index]} doit occuper la position ${index + 1}.`);
+    }
+  }
   for (const task of catalog?.commonTasks ?? []) {
     if (!isNonEmptyText(task?.instruction) || !isNonEmptyText(task?.comparableMeasure)) {
       errors.push(`Tâche ${task?.id ?? '<sans-id>'}: instruction ou mesure comparable absente.`);
@@ -208,6 +224,10 @@ export function validateResearchCatalog(catalog) {
       errors.push(`Programme ${programId}: roadmap déjà attribuée à un autre programme.`);
     } else {
       roadmapPaths.add(program.roadmap);
+    }
+
+    if (requiredRoadmapByProgram[programId] && program?.roadmap !== requiredRoadmapByProgram[programId]) {
+      errors.push(`Programme ${programId}: roadmap canonique attendue ${requiredRoadmapByProgram[programId]}.`);
     }
 
     if (program?.gate !== `${programId}-G`) {
