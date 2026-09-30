@@ -8881,6 +8881,10 @@
       "kicker": "Mon classement",
       "title": "Ton classement personnel",
       "subtitle": "Classe les parcs et les lieux que tu as notés selon tes propres préférences.",
+      "unavailable": {
+        "park": "Parc indisponible",
+        "target": "Lieu indisponible"
+      },
       "loading": "Chargement de ton classement...",
       "emptyTitle": "Aucune note pour l'instant",
       "emptyText": "Note un parc ou un lieu pour commencer à construire ta sélection personnelle.",

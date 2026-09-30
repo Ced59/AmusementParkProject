@@ -88,7 +88,7 @@
             </div>
 
             <div class="passport-visit-card__copy">
-              <h3>{{ visit.parkName }}</h3>
+              <h3>{{ visit.parkName || ('passport.statistics.targets.unavailablePark' | translate) }}</h3>
               @if (visit.title) {
                 <p>{{ visit.title }}</p>
               }

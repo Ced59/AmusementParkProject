@@ -56,6 +56,7 @@ function createStats(): UserRatingStats {
 
 export class FakeProfileRatingsPort implements ProfileRatingsPort {
   readonly upsertCalls: UserRatingUpsertRequest[] = [];
+  readonly stats: UserRatingStats = createStats();
   parkItemResponse: Subject<UserParkItemRatingRankingsPage> | null = null;
   readonly parkItemCalls: Array<{
     page: number;
@@ -134,7 +135,7 @@ export class FakeProfileRatingsPort implements ProfileRatingsPort {
   }
 
   getMyRatingStats(): Observable<UserRatingStats> {
-    return of(createStats());
+    return of(this.stats);
   }
 
   upsertRating(request: UserRatingUpsertRequest): Observable<UserRating> {

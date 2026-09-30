@@ -8881,6 +8881,10 @@
       "kicker": "O meu ranking",
       "title": "O teu ranking pessoal",
       "subtitle": "Ordena os parques e locais que avaliaste segundo as tuas preferências.",
+      "unavailable": {
+        "park": "Parque indisponível",
+        "target": "Local indisponível"
+      },
       "loading": "A carregar o teu ranking...",
       "emptyTitle": "Ainda sem avaliações",
       "emptyText": "Avalia um parque ou local para começar a tua vista pessoal.",

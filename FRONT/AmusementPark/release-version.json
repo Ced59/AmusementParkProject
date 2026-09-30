@@ -1,6 +1,20 @@
 {
-  "version": "5.4.37",
+  "version": "5.4.38",
   "history": [
+    {
+      "version": "5.4.38",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "Les contenus indisponibles n’affichent plus d’identifiants techniques.",
+        "en": "Unavailable content no longer displays technical identifiers.",
+        "de": "Nicht verfügbare Inhalte zeigen keine technischen Kennungen mehr an.",
+        "nl": "Niet-beschikbare inhoud toont geen technische identificaties meer.",
+        "it": "I contenuti non disponibili non mostrano più identificatori tecnici.",
+        "es": "El contenido no disponible ya no muestra identificadores técnicos.",
+        "pt": "Os conteúdos indisponíveis já não apresentam identificadores técnicos.",
+        "pl": "Niedostępne treści nie wyświetlają już identyfikatorów technicznych."
+      }
+    },
     {
       "version": "5.4.37",
       "releasedAt": "2026-09-30",

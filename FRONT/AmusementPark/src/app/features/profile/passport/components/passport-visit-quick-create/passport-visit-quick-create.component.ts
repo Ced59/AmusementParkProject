@@ -246,7 +246,7 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
     }
 
     this.form.controls.parkId.setValue(parkId, { emitEvent: false });
-    this.selectedParkName.set(this.fixedParkName?.trim() || parkId);
+    this.selectedParkName.set(this.fixedParkName?.trim() || null);
   }
 
   private setModalLayerActive(active: boolean): void {

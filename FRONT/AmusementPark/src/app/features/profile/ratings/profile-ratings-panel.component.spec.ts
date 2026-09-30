@@ -62,6 +62,22 @@ describe('ProfileRatingsPanelComponent', () => {
     expect(text).not.toContain('ratings.targetTypes.Park');
   });
 
+  it('replaces unresolved technical identifiers with neutral localized labels', () => {
+    port.parkRankings[0].parkName = 'park-1';
+    port.parkRankings[0].parkRating!.targetName = 'park-1';
+    port.parkRankings[0].categories[0].items[0].targetName = 'item-1';
+    port.parkRankings[0].categories[0].items[0].parkName = 'park-1';
+    port.stats.byPark[0].label = 'park-1';
+
+    fixture.detectChanges();
+
+    const text: string = fixture.nativeElement.textContent ?? '';
+    expect(text).toContain('ratings.profile.unavailable.park');
+    expect(text).toContain('ratings.profile.unavailable.target');
+    expect(text).not.toContain('park-1');
+    expect(text).not.toContain('item-1');
+  });
+
   it('updates an already displayed rating from inline stars', () => {
     fixture.detectChanges();
 

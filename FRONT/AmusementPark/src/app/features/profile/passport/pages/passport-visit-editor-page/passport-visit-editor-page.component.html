@@ -12,8 +12,8 @@
     @if (facade.visit(); as visit) {
       <div class="passport-editor__heading">
         <div>
-          <h1>{{ visit.title || facade.parkName() }}</h1>
-          <p>{{ facade.parkName() }} · {{ visitDateLabel() }}</p>
+          <h1>{{ visit.title || facade.parkName() || ('passport.statistics.targets.unavailablePark' | translate) }}</h1>
+          <p>{{ facade.parkName() || ('passport.statistics.targets.unavailablePark' | translate) }} · {{ visitDateLabel() }}</p>
         </div>
         <app-ui-chip tone="primary" iconClass="pi pi-lock">
           {{ 'passport.editor.private' | translate }}

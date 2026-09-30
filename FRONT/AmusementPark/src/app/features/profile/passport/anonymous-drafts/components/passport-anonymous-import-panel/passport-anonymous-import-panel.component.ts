@@ -77,4 +77,14 @@ export class PassportAnonymousImportPanelComponent implements OnInit {
   protected trackReport(_index: number, item: PassportAnonymousImportReportItem): string {
     return item.draftId;
   }
+
+  protected displayParkName(parkName: string | null | undefined, parkId: string): string | null {
+    const normalizedName: string = parkName?.trim() ?? '';
+    return normalizedName.length > 0 && normalizedName !== parkId ? normalizedName : null;
+  }
+
+  protected displayRideName(attractionName: string | null | undefined, parkItemId?: string): string | null {
+    const normalizedName: string = attractionName?.trim() ?? '';
+    return normalizedName.length > 0 && normalizedName !== parkItemId ? normalizedName : null;
+  }
 }

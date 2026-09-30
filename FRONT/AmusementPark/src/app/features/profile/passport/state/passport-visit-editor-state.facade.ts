@@ -1592,7 +1592,7 @@ export class PassportVisitEditorStateFacade {
         }
 
         this.applyLoadedVisit(visit);
-        this.parkNameSignal.set(data.park?.name?.trim() || visit.parkId);
+        this.parkNameSignal.set(data.park?.name?.trim() || '');
         this.zonesSignal.set(data.zones
           .map((zone: ParkZone): PassportVisitEditorZone | null => mapParkZoneToVisitEditorZone(zone, this.currentLanguage))
           .filter((zone: PassportVisitEditorZone | null): zone is PassportVisitEditorZone => zone !== null));
