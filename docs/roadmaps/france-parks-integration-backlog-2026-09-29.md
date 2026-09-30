@@ -35,8 +35,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 42 | 32 |
-| **Total** | **225** | **215** |
+| Attractions autonomes à migrer ou intégrer | 42 | 22 |
+| **Total** | **225** | **205** |
 
 ## 1. Fiches publiques à compléter
 
@@ -240,16 +240,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] La Luge Alpine du Plan Incliné — parc legacy `60d4d7e6-741b-43f7-b0d9-966825cb3e7b`
-- [ ] La Norma Ski Resort — parc legacy `616240a8-2aec-4afd-8289-cb7cb56b61bd`
-- [ ] La Sambuy — parc legacy `3ed514ff-1f6f-412e-ac68-2327b3b6d36a`
-- [ ] Le Dévoluy — parc legacy `e6b97b08-14d7-4958-b0a4-0ef308ae80fc`
-- [ ] Le Lioran — parc legacy `9a42efe4-0cee-47f5-968a-ed35b44ff15c`
-- [ ] Les 7 Laux — parc legacy `686b6dae-fc8a-4db2-a2d2-358ca79d5758`
-- [ ] Les Carroz — parc legacy `eb45b3a2-eb9b-42c6-a42c-343b55617fa8`
-- [ ] Les Gets — parc legacy `77d24707-66dd-48e1-9622-377ea6f66f1e`
-- [ ] Les Menuires — parc legacy `4aaa3df2-0f6e-4f78-a0af-7445237da8d0`
-- [ ] Les Orres — parc legacy `a578af64-de3d-4ad9-86f0-878277c634f4`
 - [ ] Lou Bac Mountain — parc legacy `e1fae3e5-9c55-4fb6-a21f-5763667b3ca0`
 - [ ] Luge Park Chamrousse — parc legacy `55cf1f08-0c5d-4c5b-bb87-e4665988e69c`
 - [ ] Luges d'Été La Schlucht — parc legacy `1c59ce9e-55af-4353-931b-fee8c3699155`
