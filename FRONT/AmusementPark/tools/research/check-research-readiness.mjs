@@ -172,6 +172,81 @@ export const requiredTaskContextFields = Object.freeze([
   'accessibleMode',
 ]);
 
+export const requiredTaskContextsByProgram = Object.freeze({
+  RANK: Object.freeze({
+    primaryScenario: 'Choisir un classement, ouvrir un résultat et retrouver les preuves qui justifient sa position.',
+    coreConceptDistinction: 'Moyenne brute, score agrégé, rang principal et absence de rang faute de contributeurs.',
+    labelReview: 'Rang principal, volume, confiance, données insuffisantes et méthode.',
+    privacyExportDeletionScope: "Vérifier les préférences personnelles et leur export ou suppression ; le classement public ne doit pas révéler l'identité d'un votant.",
+    unknownDataScenario: 'Un lieu possède une moyenne mais pas assez de contributeurs pour publier un rang.',
+    delayedReturnTrigger: 'Revenir comparer le même lieu après une nouvelle publication de snapshot.',
+    accessibleMode: "Parcourir et comparer les résultats sans dépendre de la couleur ni d'un pointeur précis.",
+  }),
+  PASS: Object.freeze({
+    primaryScenario: 'Créer, organiser et terminer une visite avec plusieurs tours de la même attraction.',
+    coreConceptDistinction: "Note globale actuelle, note privée de visite et note privée d'un tour.",
+    labelReview: 'Brouillon, terminée, privée, tour effectué, date approximative et statistiques.',
+    privacyExportDeletionScope: "Exporter le passeport puis supprimer une donnée de test en prédisant précisément la portée de l'action.",
+    unknownDataScenario: "Créer une ancienne visite dont seule l'année est connue et traiter une attraction désormais fermée.",
+    delayedReturnTrigger: 'Revenir sans aide enregistrer et terminer une deuxième visite.',
+    accessibleMode: 'Réordonner la timeline et terminer la visite au clavier puis sur mobile étroit.',
+  }),
+  SHARE: Object.freeze({
+    primaryScenario: "Choisir les sections d'un récapitulatif, relire l'aperçu, publier et vérifier le lien public.",
+    coreConceptDistinction: 'Donnée privée source, section explicitement publiée, comparaison publique et lien révoqué.',
+    labelReview: 'Aperçu public, visible, masqué, révoquer et comparer.',
+    privacyExportDeletionScope: 'Exporter la politique de partage puis révoquer et supprimer la publication de test sans effacer le passeport privé.',
+    unknownDataScenario: "Comparer deux passeports publics lorsqu'une statistique manque chez l'un des membres.",
+    delayedReturnTrigger: "Revenir modifier la politique d'un partage existant puis contrôler l'ancien lien.",
+    accessibleMode: 'Composer et vérifier un partage au clavier et à 200 % de zoom.',
+  }),
+  FIT: Object.freeze({
+    primaryScenario: 'Préparer une sortie avec des contraintes réelles, comparer deux résultats et sauvegarder un projet pertinent.',
+    coreConceptDistinction: 'Compatibilité avec les critères, préférence déclarée, donnée inconnue et impossibilité factuelle.',
+    labelReview: 'Pourquoi ce résultat, données inconnues, incompatible, comparer et sauvegarder.',
+    privacyExportDeletionScope: 'Exporter puis supprimer les préférences ou le projet de test sans affecter les données publiques du parc.',
+    unknownDataScenario: "Un parc ne possède pas une donnée nécessaire à l'un des critères importants.",
+    delayedReturnTrigger: 'Revenir sur le projet après quelques jours pour ajuster une contrainte et refaire le choix.',
+    accessibleMode: 'Comparer les résultats au clavier sur téléphone et connexion limités.',
+  }),
+  WATCH: Object.freeze({
+    primaryScenario: 'Ajouter un favori, créer une alerte factuelle, relire sa condition puis la désactiver.',
+    coreConceptDistinction: 'Favori, abonnement, observation factuelle, notification envoyée et événement encore inconnu.',
+    labelReview: 'Suivre, condition, source, dernière vérification, suspendre et supprimer.',
+    privacyExportDeletionScope: "Exporter les suivis puis supprimer l'alerte de test en distinguant abonnement et historique d'envoi.",
+    unknownDataScenario: "La source n'a pas publié de valeur récente et aucune alerte ne peut être confirmée.",
+    delayedReturnTrigger: 'Revenir après un changement factuel pour vérifier la notification et son explication.',
+    accessibleMode: "Créer et suspendre une alerte au clavier sans dépendre de la couleur d'état.",
+  }),
+  TRIP: Object.freeze({
+    primaryScenario: 'Créer un voyage, inviter deux rôles, proposer une étape et résoudre une décision contradictoire.',
+    coreConceptDistinction: 'Propriétaire, participant, invitation, proposition, décision et élément privé hors du groupe.',
+    labelReview: 'Inviter, rôle, proposer, décider, quitter et supprimer le voyage.',
+    privacyExportDeletionScope: 'Exporter le voyage puis quitter ou supprimer selon son rôle en prédisant ce que les autres conservent.',
+    unknownDataScenario: "Une étape comporte un prix ou un horaire inconnu au moment de décider.",
+    delayedReturnTrigger: "Revenir après une modification effectuée par un autre participant et retrouver la décision courante.",
+    accessibleMode: 'Réorganiser et valider le plan au clavier sur une largeur mobile.',
+  }),
+  HIST: Object.freeze({
+    primaryScenario: "Choisir une année, suivre une chronologie et ouvrir la preuve d'un changement durable.",
+    coreConceptDistinction: "État actuel, fait historique, intervalle approximatif, source et absence de preuve.",
+    labelReview: 'À cette date, période estimée, actuel, source, correction et chronologie.',
+    privacyExportDeletionScope: "Vérifier qu'une navigation publique ne crée pas de dossier personnel ; exporter ou supprimer seulement les contributions ou préférences applicables.",
+    unknownDataScenario: "La fermeture d'une attraction est attestée mais son mois exact reste inconnu.",
+    delayedReturnTrigger: "Revenir après l'ajout d'une source et retrouver ce qui a changé dans la chronologie.",
+    accessibleMode: 'Parcourir une chronologie au clavier sans dépendre de sa géométrie ou de ses couleurs.',
+  }),
+  LIVE: Object.freeze({
+    primaryScenario: "Consulter les attentes d'un parc, comparer deux attractions et comprendre le repli lorsque la source disparaît.",
+    coreConceptDistinction: 'Observation courante, historique, prévision, fraîcheur, source et vote communautaire.',
+    labelReview: 'Mis à jour, observé, estimé, source indisponible, historique et prévision.',
+    privacyExportDeletionScope: 'Exporter ou supprimer les contributions personnelles applicables sans effacer les observations publiques agrégées légitimes.',
+    unknownDataScenario: 'La source est indisponible ou la dernière observation est trop ancienne pour guider une décision.',
+    delayedReturnTrigger: 'Revenir plus tard dans la journée et expliquer pourquoi la valeur ou son niveau de confiance a changé.',
+    accessibleMode: "Comparer les attentes au clavier sur réseau instable sans dépendre d'une animation.",
+  }),
+});
+
 export const requiredProtocolDocumentPaths = Object.freeze([
   'docs/product/research/README.md',
   'docs/product/research/session-result-template.md',
@@ -434,6 +509,10 @@ export function validateResearchCatalog(catalog) {
     for (const field of requiredTaskContextFields) {
       if (!isNonEmptyText(program?.taskContext?.[field])) {
         errors.push(`Programme ${programId}: contexte de tâche absent ${field}.`);
+      }
+      const canonicalContext = requiredTaskContextsByProgram[programId];
+      if (canonicalContext && program?.taskContext?.[field] !== canonicalContext[field]) {
+        errors.push(`Programme ${programId}: contexte canonique modifié ${field}.`);
       }
     }
 

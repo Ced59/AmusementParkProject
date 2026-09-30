@@ -13,6 +13,7 @@ import {
   requiredProgramIds,
   requiredRoadmapByProgram,
   requiredTaskContextFields,
+  requiredTaskContextsByProgram,
   requiredTaskIds,
   requiredTaskSemantics,
   validateResearchCatalog,
@@ -34,7 +35,7 @@ function validProgram(id) {
     businessQuestion: 'Question métier',
     firstSuccess: 'Premier succès',
     profileIds: [...profileIds],
-    taskContext: Object.fromEntries(requiredTaskContextFields.map((field) => [field, field])),
+    taskContext: { ...requiredTaskContextsByProgram[id] },
     stopConditions: ['stop one', 'stop two'],
     generalizationEvidence: ['proof one', 'proof two'],
     extensionDocuments: [...(requiredExtensionDocumentsByProgram[id] ?? [])],
@@ -241,6 +242,20 @@ test('requires every comparable context and explicit stop evidence', () => {
   assert.ok(errors.some((error) => error.includes('unknownDataScenario')));
   assert.ok(errors.some((error) => error.includes('stopConditions')));
   assert.ok(errors.some((error) => error.includes('generalizationEvidence')));
+});
+
+test('binds every task context to its canonical product program', () => {
+  const catalog = validCatalog();
+  const rankingProgram = catalog.programs.find((program) => program.id === 'RANK');
+  const passportProgram = catalog.programs.find((program) => program.id === 'PASS');
+  [rankingProgram.taskContext, passportProgram.taskContext] = [
+    passportProgram.taskContext,
+    rankingProgram.taskContext,
+  ];
+
+  const errors = validateResearchCatalog(catalog);
+  assert.ok(errors.some((error) => error.includes('RANK') && error.includes('contexte canonique modifié')));
+  assert.ok(errors.some((error) => error.includes('PASS') && error.includes('contexte canonique modifié')));
 });
 
 test('rejects document paths that escape their product documentation roots', () => {
