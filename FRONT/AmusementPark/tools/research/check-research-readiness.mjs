@@ -494,7 +494,7 @@ function markdownHeadingLevel(line) {
   return match ? match[1].length : null;
 }
 
-function hasMeaningfulSectionContent(lines, headingIndex) {
+function markdownSectionBodyLines(lines, headingIndex) {
   const headingLevel = markdownHeadingLevel(lines[headingIndex]);
   let sectionEndIndex = lines.length;
   for (let index = headingIndex + 1; index < lines.length; index += 1) {
@@ -505,8 +505,33 @@ function hasMeaningfulSectionContent(lines, headingIndex) {
     }
   }
 
-  const normalizedContent = lines
-    .slice(headingIndex + 1, sectionEndIndex)
+  return lines.slice(headingIndex + 1, sectionEndIndex);
+}
+
+function excludeFencedCodeBlocks(lines) {
+  const visibleLines = [];
+  let activeFenceCharacter = null;
+  for (const line of lines) {
+    const fenceMatch = line.match(/^\s*(`{3,}|~{3,})/);
+    if (fenceMatch) {
+      const fenceCharacter = fenceMatch[1][0];
+      if (activeFenceCharacter === null) {
+        activeFenceCharacter = fenceCharacter;
+      } else if (activeFenceCharacter === fenceCharacter) {
+        activeFenceCharacter = null;
+      }
+      continue;
+    }
+
+    if (activeFenceCharacter === null) {
+      visibleLines.push(line);
+    }
+  }
+  return visibleLines;
+}
+
+function hasMeaningfulSectionContent(lines, headingIndex) {
+  const normalizedContent = excludeFencedCodeBlocks(markdownSectionBodyLines(lines, headingIndex))
     .filter((line) => !line.trim().startsWith('<!--') && markdownHeadingLevel(line) === null)
     .join(' ')
     .replace(/[`*_>#|\[\]():-]/g, ' ')
@@ -593,9 +618,24 @@ export function validateResearchDocumentContent(documentPath, content) {
   }
 
   if (documentPath === 'docs/product/research/session-result-template.md') {
+    const resultsHeadingIndex = lines.findIndex((line) => line.trim() === '## Résultats par tâche');
+    const resultLines = resultsHeadingIndex < 0
+      ? []
+      : excludeFencedCodeBlocks(markdownSectionBodyLines(lines, resultsHeadingIndex));
     for (const taskId of requiredTaskIds) {
-      if (!renderedContent.includes(`| ${taskId} |`)) {
+      const hasTaskRow = resultLines.some((line) => line.trim().split('|')[1]?.trim() === taskId);
+      if (!hasTaskRow) {
         errors.push(`Document ${documentPath}: ligne de tâche obligatoire absente ${taskId}.`);
+      }
+    }
+
+    const visibleDocumentLines = excludeFencedCodeBlocks(lines).map((line) => line.trim());
+    for (const retentionField of [
+      '- Date de suppression prévue pour cette fiche :',
+      '- Fiche supprimée à la date prévue :',
+    ]) {
+      if (!visibleDocumentLines.includes(retentionField)) {
+        errors.push(`Document ${documentPath}: champ de rétention obligatoire absent ${retentionField}.`);
       }
     }
   }

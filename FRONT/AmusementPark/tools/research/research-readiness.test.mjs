@@ -151,6 +151,35 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   assert.ok(validateResearchDocumentContent(sessionTemplatePath, incompleteSessionTemplate)
     .some((error) => error.includes('ligne de tâche obligatoire absente delayed-return')));
 
+  const fencedTaskRows = [
+    '# Fiche de session produit',
+    'Ce modèle contient les informations nécessaires pour préparer une session.',
+    '## Cadre',
+    '- Date de suppression prévue pour cette fiche :',
+    'Ce cadre décrit le contexte de recherche sans identifier la personne.',
+    '## Résultats par tâche',
+    'Les exemples suivants ne constituent pas un tableau de résultats utilisable.',
+    '```markdown',
+    ...requiredTaskIds.map((taskId) => `| ${taskId} | | | | |`),
+    '```',
+    '## Problèmes',
+    'Les problèmes observés sont consignés ici avec leur sévérité.',
+    '## Synthèse minimisée',
+    'La synthèse sépare les faits, les hypothèses et les décisions.',
+    '## Clôture',
+    '- Fiche supprimée à la date prévue :',
+    'La clôture confirme la suppression des données arrivées à échéance.',
+  ].join('\n');
+  const fencedTaskErrors = validateResearchDocumentContent(sessionTemplatePath, fencedTaskRows);
+  for (const taskId of requiredTaskIds) {
+    assert.ok(fencedTaskErrors.some((error) => error.includes(`ligne de tâche obligatoire absente ${taskId}`)));
+  }
+  const missingRetentionErrors = validateResearchDocumentContent(
+    sessionTemplatePath,
+    fencedTaskRows.replace('- Date de suppression prévue pour cette fiche :', ''),
+  );
+  assert.ok(missingRetentionErrors.some((error) => error.includes('champ de rétention obligatoire absent')));
+
   for (const [programId, roadmapPath] of Object.entries(requiredRoadmapByProgram)) {
     assert.ok(validateResearchDocumentContent(roadmapPath, '# Roadmap incomplète')
       .some((error) => error.includes(`Gate finale \`${programId}-G\``)

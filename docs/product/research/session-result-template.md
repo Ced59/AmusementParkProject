@@ -11,6 +11,7 @@
 - Objectif décidé avant la session :
 - Gate étudiée :
 - Date :
+- Date de suppression prévue pour cette fiche :
 - Modérateur :
 - Profil canonique :
 - Appareil, largeur approximative, connexion et mode d'entrée utiles :
@@ -53,5 +54,6 @@ Utiliser uniquement `unassisted`, `assisted`, `failed` ou `not-observable`.
 
 - Données de test supprimées ou conservées avec justification :
 - Enregistrement supprimé à la date prévue :
+- Fiche supprimée à la date prévue :
 - Aucun ID technique ni contenu privé recopié : `confirmé | à corriger`
 - Gate : `non évaluée | maintenue | proposée | refusée`
