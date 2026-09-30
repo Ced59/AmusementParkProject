@@ -225,7 +225,7 @@ test('requires assistive and modest-context profiles for every program', () => {
   assert.ok(errors.some((error) => error.includes('modest-device-network')));
 });
 
-test('preserves every mandatory Passport research cohort', () => {
+test('preserves every mandatory research cohort for its product program', () => {
   const catalog = validCatalog();
   const passportProgram = catalog.programs.find((program) => program.id === 'PASS');
   passportProgram.profileIds = passportProgram.profileIds
@@ -235,6 +235,18 @@ test('preserves every mandatory Passport research cohort', () => {
   const errors = validateResearchCatalog(catalog);
   assert.ok(errors.some((error) => error.includes('PASS')
     && error.includes('profil canonique absent journal-enthusiast')));
+
+  const shareProgram = catalog.programs.find((program) => program.id === 'SHARE');
+  const fitProgram = catalog.programs.find((program) => program.id === 'FIT');
+  [shareProgram.profileIds, fitProgram.profileIds] = [
+    fitProgram.profileIds,
+    shareProgram.profileIds,
+  ];
+  const swappedErrors = validateResearchCatalog(catalog);
+  assert.ok(swappedErrors.some((error) => error.includes('SHARE')
+    && error.includes('profil canonique absent journal-enthusiast')));
+  assert.ok(swappedErrors.some((error) => error.includes('FIT')
+    && error.includes('profil canonique absent tool-free-enthusiast')));
 });
 
 test('requires every comparable context and explicit stop evidence', () => {

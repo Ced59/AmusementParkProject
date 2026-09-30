@@ -57,10 +57,63 @@ export const requiredProfileLabels = Object.freeze({
 });
 
 export const requiredProfileIdsByProgram = Object.freeze({
+  RANK: Object.freeze([
+    'journal-enthusiast',
+    'tool-free-enthusiast',
+    'occasional-visitor',
+    'assistive-technology',
+    'modest-device-network',
+    'historical-contributor',
+  ]),
   PASS: Object.freeze([
     'journal-enthusiast',
     'tool-free-enthusiast',
     'occasional-visitor',
+    'assistive-technology',
+    'modest-device-network',
+  ]),
+  SHARE: Object.freeze([
+    'journal-enthusiast',
+    'occasional-visitor',
+    'family-planner',
+    'assistive-technology',
+    'modest-device-network',
+  ]),
+  FIT: Object.freeze([
+    'tool-free-enthusiast',
+    'occasional-visitor',
+    'family-planner',
+    'assistive-technology',
+    'modest-device-network',
+  ]),
+  WATCH: Object.freeze([
+    'journal-enthusiast',
+    'tool-free-enthusiast',
+    'occasional-visitor',
+    'family-planner',
+    'assistive-technology',
+    'modest-device-network',
+  ]),
+  TRIP: Object.freeze([
+    'journal-enthusiast',
+    'occasional-visitor',
+    'family-planner',
+    'assistive-technology',
+    'modest-device-network',
+  ]),
+  HIST: Object.freeze([
+    'journal-enthusiast',
+    'tool-free-enthusiast',
+    'occasional-visitor',
+    'assistive-technology',
+    'modest-device-network',
+    'historical-contributor',
+  ]),
+  LIVE: Object.freeze([
+    'journal-enthusiast',
+    'tool-free-enthusiast',
+    'occasional-visitor',
+    'family-planner',
     'assistive-technology',
     'modest-device-network',
   ]),
