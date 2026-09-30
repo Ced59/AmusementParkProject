@@ -9,6 +9,7 @@ import {
   requiredEvidenceIds,
   requiredExtensionDocumentsByProgram,
   requiredProfileIds,
+  requiredProfileIdsByProgram,
   requiredProgramIds,
   requiredRoadmapByProgram,
   requiredTaskContextFields,
@@ -24,13 +25,15 @@ function item(id, fields = {}) {
 }
 
 function validProgram(id) {
+  const profileIds = requiredProfileIdsByProgram[id]
+    ?? ['journal-enthusiast', 'assistive-technology', 'modest-device-network'];
   return {
     id,
     roadmap: requiredRoadmapByProgram[id],
     gate: `${id}-G`,
     businessQuestion: 'Question métier',
     firstSuccess: 'Premier succès',
-    profileIds: ['journal-enthusiast', 'assistive-technology', 'modest-device-network'],
+    profileIds: [...profileIds],
     taskContext: Object.fromEntries(requiredTaskContextFields.map((field) => [field, field])),
     stopConditions: ['stop one', 'stop two'],
     generalizationEvidence: ['proof one', 'proof two'],
@@ -214,6 +217,18 @@ test('requires assistive and modest-context profiles for every program', () => {
   const errors = validateResearchCatalog(catalog);
   assert.ok(errors.some((error) => error.includes('assistive-technology')));
   assert.ok(errors.some((error) => error.includes('modest-device-network')));
+});
+
+test('preserves every mandatory Passport research cohort', () => {
+  const catalog = validCatalog();
+  const passportProgram = catalog.programs.find((program) => program.id === 'PASS');
+  passportProgram.profileIds = passportProgram.profileIds
+    .filter((profileId) => profileId !== 'journal-enthusiast');
+  passportProgram.profileIds.push('family-planner');
+
+  const errors = validateResearchCatalog(catalog);
+  assert.ok(errors.some((error) => error.includes('PASS')
+    && error.includes('profil canonique absent journal-enthusiast')));
 });
 
 test('requires every comparable context and explicit stop evidence', () => {

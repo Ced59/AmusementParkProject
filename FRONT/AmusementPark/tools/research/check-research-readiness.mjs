@@ -46,6 +46,16 @@ export const requiredProfileIds = Object.freeze([
   'historical-contributor',
 ]);
 
+export const requiredProfileIdsByProgram = Object.freeze({
+  PASS: Object.freeze([
+    'journal-enthusiast',
+    'tool-free-enthusiast',
+    'occasional-visitor',
+    'assistive-technology',
+    'modest-device-network',
+  ]),
+});
+
 export const requiredTaskIds = Object.freeze([
   'consent',
   'primary-value',
@@ -412,6 +422,11 @@ export function validateResearchCatalog(catalog) {
       for (const accessibilityProfile of ['assistive-technology', 'modest-device-network']) {
         if (!profileIds.has(accessibilityProfile)) {
           errors.push(`Programme ${programId}: profil obligatoire absent ${accessibilityProfile}.`);
+        }
+      }
+      for (const requiredProfileId of requiredProfileIdsByProgram[programId] ?? []) {
+        if (!profileIds.has(requiredProfileId)) {
+          errors.push(`Programme ${programId}: profil canonique absent ${requiredProfileId}.`);
         }
       }
     }
