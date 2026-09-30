@@ -18,6 +18,34 @@ namespace AmusementPark.WebAPI.Tests.Controllers;
 public sealed class ParkGraphUpsertsControllerTests
 {
     [Fact]
+    public async Task ExportStandaloneAttractionJsonAsync_ShouldReturnHandlerDocument()
+    {
+        byte[] content = "{\"documentType\":\"standaloneAttractionGraph\"}"u8.ToArray();
+        Mock<IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>> handler =
+            new Mock<IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>>(MockBehavior.Strict);
+        handler
+            .Setup(current => current.HandleAsync(
+                It.Is<ExportStandaloneAttractionGraphJsonQuery>(query => query.StandaloneAttractionId == "standalone-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<ParkGraphJsonExportResult>.Success(new ParkGraphJsonExportResult
+            {
+                FileName = "standalone-1.json",
+                Content = content,
+            }));
+        ParkGraphUpsertsController controller = CreateController(
+            Mock.Of<IBulkParkGraphExportJobService>(),
+            handler.Object);
+
+        IActionResult result = await controller.ExportStandaloneAttractionJsonAsync("standalone-1", CancellationToken.None);
+
+        FileContentResult fileResult = Assert.IsType<FileContentResult>(result);
+        Assert.Equal("standalone-1.json", fileResult.FileDownloadName);
+        Assert.Equal("application/json", fileResult.ContentType);
+        Assert.Equal(content, fileResult.FileContents);
+        handler.VerifyAll();
+    }
+
+    [Fact]
     public void DownloadBulkParkJsonExportJobAsync_ShouldAllowAnonymousTokenDownloadAndDisableResponseCache()
     {
         MethodInfo method = typeof(ParkGraphUpsertsController).GetMethod(nameof(ParkGraphUpsertsController.DownloadBulkParkJsonExportJobAsync))
@@ -80,7 +108,9 @@ public sealed class ParkGraphUpsertsControllerTests
         Assert.Equal("https://localhost:44391/backend/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=token", result);
     }
 
-    private static ParkGraphUpsertsController CreateController(IBulkParkGraphExportJobService jobService)
+    private static ParkGraphUpsertsController CreateController(
+        IBulkParkGraphExportJobService jobService,
+        IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>? standaloneAttractionExportHandler = null)
     {
         ParkGraphUpsertsController controller = new ParkGraphUpsertsController(
             Mock.Of<ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>>>(),
@@ -89,7 +119,7 @@ public sealed class ParkGraphUpsertsControllerTests
             Mock.Of<ICommandHandler<ApplyBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>>>(),
             Mock.Of<IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>>>(),
             Mock.Of<IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>>(),
-            Mock.Of<IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>>(),
+            standaloneAttractionExportHandler ?? Mock.Of<IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>>(),
             Mock.Of<IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>>(),
             jobService);
         controller.ControllerContext = new ControllerContext
