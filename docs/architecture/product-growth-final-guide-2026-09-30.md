@@ -146,7 +146,8 @@ L'interface n'a pas le droit de transformer « pas encore classé » en rang imp
 Pour le composant « attractions du parc », la politique exige aussi :
 
 - au moins 5 éléments éligibles ;
-- au moins 2 éléments éligibles par catégorie couverte ;
+- au moins 2 éléments éligibles par catégorie couverte, sauf si la catégorie ne
+  contient qu'un seul élément public et que celui-ci est éligible ;
 - au moins 2 catégories couvertes, sauf parc réellement mono-catégorie ;
 - au moins 10 contributeurs uniques dans le composant.
 
@@ -164,8 +165,12 @@ score parc = 70 % × score direct du parc
 
 Le score des éléments commence par calculer un score par catégorie, puis fait la
 moyenne des catégories. Une catégorie très fournie ne peut donc pas écraser seule
-les autres. Si une seule composante est disponible, elle est affichée comme telle ;
-les métadonnées de preuve indiquent ce qui manque.
+les autres. Un score direct disposant d'au moins 10 contributeurs peut recevoir un
+rang principal même si le composant des éléments n'est pas éligible. À l'inverse,
+un composant des éléments éligible sans 10 contributeurs directs au parc reste
+provisoire et ne reçoit aucun rang principal. Dans les deux cas, la composante
+disponible est affichée comme telle et les métadonnées de preuve indiquent ce qui
+manque.
 
 La quantité de notes d'éléments ne devient jamais un faux nombre de visiteurs. Les
 réponses distinguent `ratingCount`, `uniqueContributorCount`, couverture des
