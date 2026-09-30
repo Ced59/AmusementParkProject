@@ -1,6 +1,20 @@
 {
-  "version": "5.4.40",
+  "version": "5.4.41",
   "history": [
+    {
+      "version": "5.4.41",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "Dix attractions françaises supplémentaires ont désormais leur fiche dédiée.",
+        "en": "Ten more French attractions now have dedicated pages.",
+        "de": "Zehn weitere französische Attraktionen haben jetzt eigene Seiten.",
+        "nl": "Nog tien Franse attracties hebben nu een eigen pagina.",
+        "it": "Altre dieci attrazioni francesi hanno ora pagine dedicate.",
+        "es": "Otras diez atracciones francesas cuentan ahora con páginas dedicadas.",
+        "pt": "Mais dez atrações francesas têm agora páginas dedicadas.",
+        "pl": "Kolejne dziesięć francuskich atrakcji ma teraz własne strony."
+      }
+    },
     {
       "version": "5.4.40",
       "releasedAt": "2026-09-30",

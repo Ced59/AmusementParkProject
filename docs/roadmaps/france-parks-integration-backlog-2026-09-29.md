@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 13 |
-| Fiches privées existantes à intégrer | 80 | 80 |
+| Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 42 | 22 |
-| **Total** | **225** | **205** |
+| Attractions autonomes à migrer ou intégrer | 40 | 10 |
+| **Total** | **225** | **195** |
 
 ## 1. Fiches publiques à compléter
 
@@ -97,6 +97,7 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 - [ ] Magic World — `ae0dccf0-1079-4dd0-a736-7a98ccaaa487`
 - [ ] Mignon's Park — `fd1a6d57-8e35-4086-b00e-a9de15f34b6b`
 - [ ] Nigloland — `6b49033e-353e-4dab-af4a-6da12e272937`
+- [ ] Normandie Luge — `c344f253-61a0-4b07-b892-3783fd3ecea8` — parc de loisirs multi-activités confirmé, à conserver comme parc
 - [ ] Ô Parc — `6644b892-d03c-461e-855d-a61cadba76f4`
 - [ ] O'Fun Park — `81f86001-3485-418e-9266-7977dff7f56a`
 - [ ] O'Gliss Park — `6f17412f-5a84-4449-9e00-75927717b8bf`
@@ -112,6 +113,7 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 - [ ] Parc de la Mignardière — `d431c493-5727-400c-9693-d22e1b99ae30` — cycle de vie à vérifier
 - [ ] Parc de la Vallée — `f24b9993-8768-4e36-b3cb-544401210007`
 - [ ] Parc de Loisirs de la Demi Lune — `0bfbbbf6-cc60-4a37-8d11-d7265299fefe`
+- [ ] Parc de loisirs du Hautacam — `c0434ae9-1778-47f4-90b1-d514abc37985` — parc de loisirs multi-activités confirmé, à conserver comme parc
 - [ ] Parc des Combes — `271602e3-28bb-42cc-966d-aca0e04269aa`
 - [ ] Parc des Dunes — `e3c53897-49e5-4036-a165-b0e2ef9ac448`
 - [ ] Parc des Naudières — `f7f8cba8-62b4-4a91-8732-70a1cbc02b42`
@@ -240,18 +242,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] Lou Bac Mountain — parc legacy `e1fae3e5-9c55-4fb6-a21f-5763667b3ca0`
-- [ ] Luge Park Chamrousse — parc legacy `55cf1f08-0c5d-4c5b-bb87-e4665988e69c`
-- [ ] Luges d'Été La Schlucht — parc legacy `1c59ce9e-55af-4353-931b-fee8c3699155`
-- [ ] Lugik Park — parc legacy `d82e36ed-0fbc-4478-99a0-ac9eab0550a8`
-- [ ] Markstein Grand-Ballon — parc legacy `1ce8e3b2-bb20-46a1-9f00-e4cea47c10f4`
-- [ ] Montgenèvre — parc legacy `02fb8442-2107-4b53-ac23-dc4fe268a41e`
-- [ ] Normandie Luge — parc legacy `c344f253-61a0-4b07-b892-3783fd3ecea8`
-- [ ] Parc de loisirs du Hautacam — parc legacy `c0434ae9-1778-47f4-90b1-d514abc37985`
-- [ ] Pra-Loup — parc legacy `7bbb10e0-d515-48db-8375-9124e3ed807b`
-- [ ] Queyras Montagne — parc legacy `e0ea4fa2-5c75-4975-84d1-12dccbb04391`
-- [ ] Régie des Saisies — parc legacy `36334076-f35b-47ee-ad9d-c084ef187a5c`
-- [ ] Risoul Labellemontagne — parc legacy `a7ee0a1d-61d8-40e3-b1bf-c8aff2eedd94`
 - [ ] Saint François Longchamp — parc legacy `4d43b576-ff37-45a4-9aed-0320af28d2af`
 - [ ] Savoie Mont Blanc — parc legacy `08c7b84d-7f31-41f9-8c42-11304e3f4af0`
 - [ ] Speed Luge Vercors — parc legacy `876951f7-55c4-48f1-8952-62f444ef1b87`
@@ -405,7 +395,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ## Ordre de traitement
 
-1. migrer ou créer les 42 attractions autonomes avec `standaloneAttractionGraph`, sans conserver de faux parc parent ;
+1. migrer ou créer les 40 attractions autonomes avec `standaloneAttractionGraph`, sans conserver de faux parc parent ;
 2. supprimer les 99 faux parcs certains et leurs dépendances après Preview contrôlée ;
 3. reprendre les 13 fiches déjà publiques, par score croissant, pour supprimer rapidement les dettes et bloqueurs visibles ;
 4. intégrer les fiches privées existantes, en donnant la priorité aux parcs majeurs et aux identités déjà bien établies ;
