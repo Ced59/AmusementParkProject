@@ -156,6 +156,10 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     const [gateHeading] = requiredProtocolDocumentHeadings[roadmapPath];
     assert.ok(validateResearchDocumentContent(roadmapPath, gateHeading)
       .some((error) => error.includes('section obligatoire vide ou insuffisante')));
+    assert.ok(validateResearchDocumentContent(
+      roadmapPath,
+      `${gateHeading}\n\n### Ceci est seulement un sous-titre descriptif assez long`,
+    ).some((error) => error.includes('section obligatoire vide ou insuffisante')));
   }
 });
 

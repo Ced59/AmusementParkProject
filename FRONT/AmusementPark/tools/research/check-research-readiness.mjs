@@ -507,7 +507,7 @@ function hasMeaningfulSectionContent(lines, headingIndex) {
 
   const normalizedContent = lines
     .slice(headingIndex + 1, sectionEndIndex)
-    .filter((line) => !line.trim().startsWith('<!--'))
+    .filter((line) => !line.trim().startsWith('<!--') && markdownHeadingLevel(line) === null)
     .join(' ')
     .replace(/[`*_>#|\[\]():-]/g, ' ')
     .replace(/\s+/g, ' ')
