@@ -19,6 +19,7 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Handlers;
 
@@ -41,6 +42,7 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
             AttractionDetails = new AttractionDetails
             {
                 ManufacturerId = "manufacturer-1",
+                Status = ParkItemStatusNormalizer.Operating,
             },
         };
         HistoryEvent historyEvent = new HistoryEvent
@@ -106,6 +108,32 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
                 true,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { historyEvent });
+        ParkOpeningHoursSchedule openingHours = new ParkOpeningHoursSchedule
+        {
+            ParkId = "standalone-1",
+            TimeZoneId = "Europe/Vienna",
+            SourceUrl = "https://example.com/hours",
+        };
+        Mock<IStandaloneAttractionOpeningHoursRepository> openingHoursRepository =
+            new Mock<IStandaloneAttractionOpeningHoursRepository>(MockBehavior.Strict);
+        openingHoursRepository
+            .Setup(repository => repository.GetByStandaloneAttractionIdAsync(
+                "standalone-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(openingHours);
+        ParkPricingEntity pricing = new ParkPricingEntity
+        {
+            ParkId = "standalone-1",
+            CurrencyCode = "EUR",
+            SourceUrl = "https://example.com/prices",
+        };
+        Mock<IStandaloneAttractionPricingRepository> pricingRepository =
+            new Mock<IStandaloneAttractionPricingRepository>(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByStandaloneAttractionIdAsync(
+                "standalone-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(pricing);
 
         ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
             Mock.Of<IParkRepository>(MockBehavior.Strict),
@@ -116,7 +144,9 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             imageRepository.Object,
             historyEventRepository: historyRepository.Object,
-            standaloneAttractionRepository: standaloneRepository.Object);
+            standaloneAttractionRepository: standaloneRepository.Object,
+            standaloneOpeningHoursRepository: openingHoursRepository.Object,
+            standalonePricingRepository: pricingRepository.Object);
 
         ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
             new ExportStandaloneAttractionGraphJsonQuery("standalone-1"),
@@ -139,9 +169,81 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
         Assert.Equal(
             JsonValueKind.Null,
             document.RootElement.GetProperty("standaloneAttraction").GetProperty("attractionDetails").GetProperty("manufacturerKey").ValueKind);
+        JsonElement exportedOpeningHours = document.RootElement.GetProperty("openingHours");
+        Assert.Equal("standalone-1", exportedOpeningHours.GetProperty("standaloneAttractionId").GetString());
+        Assert.False(exportedOpeningHours.TryGetProperty("parkId", out _));
+        Assert.Equal("Europe/Vienna", exportedOpeningHours.GetProperty("timeZoneId").GetString());
+        JsonElement exportedPricing = document.RootElement.GetProperty("pricing");
+        Assert.Equal("standalone-1", exportedPricing.GetProperty("standaloneAttractionId").GetString());
+        Assert.False(exportedPricing.TryGetProperty("parkId", out _));
+        Assert.Equal("EUR", exportedPricing.GetProperty("currencyCode").GetString());
 
         standaloneRepository.VerifyAll();
         imageRepository.VerifyAll();
         historyRepository.VerifyAll();
+        openingHoursRepository.VerifyAll();
+        pricingRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenStandaloneIsNotOperating_ShouldOmitVisitorInformation()
+    {
+        StandaloneAttraction attraction = new StandaloneAttraction
+        {
+            Id = "standalone-closed",
+            Name = "Ancienne luge sur rail",
+            CountryCode = "FR",
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            AttractionDetails = new AttractionDetails
+            {
+                Status = ParkItemStatusNormalizer.ClosedDefinitively,
+            },
+        };
+        Mock<IStandaloneAttractionRepository> standaloneRepository =
+            new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "standalone-closed",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(attraction);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetByOwnersAsync(
+                ImageOwnerType.StandaloneAttraction,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "standalone-closed" })),
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+        Mock<IStandaloneAttractionOpeningHoursRepository> openingHoursRepository =
+            new Mock<IStandaloneAttractionOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IStandaloneAttractionPricingRepository> pricingRepository =
+            new Mock<IStandaloneAttractionPricingRepository>(MockBehavior.Strict);
+        ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object,
+            standaloneAttractionRepository: standaloneRepository.Object,
+            standaloneOpeningHoursRepository: openingHoursRepository.Object,
+            standalonePricingRepository: pricingRepository.Object);
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportStandaloneAttractionGraphJsonQuery("standalone-closed"),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        using JsonDocument document = JsonDocument.Parse(Encoding.UTF8.GetString(result.Value!.Content));
+        Assert.False(document.RootElement.TryGetProperty("openingHours", out _));
+        Assert.False(document.RootElement.TryGetProperty("pricing", out _));
+        standaloneRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        openingHoursRepository.VerifyNoOtherCalls();
+        pricingRepository.VerifyNoOtherCalls();
     }
 }

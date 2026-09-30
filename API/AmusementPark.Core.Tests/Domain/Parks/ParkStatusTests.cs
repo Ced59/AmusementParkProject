@@ -97,6 +97,20 @@ public sealed class ParkStatusTests
         Assert.True(ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
             ParkItemCategory.Attraction,
             status));
+        Assert.True(ParkItemStatusNormalizer.IsOperating(status));
+    }
+
+    [Theory]
+    [InlineData(ParkItemStatusNormalizer.Planned)]
+    [InlineData(ParkItemStatusNormalizer.UnderConstruction)]
+    [InlineData(ParkItemStatusNormalizer.TemporarilyClosed)]
+    [InlineData(ParkItemStatusNormalizer.ClosedDefinitively)]
+    [InlineData(ParkItemStatusNormalizer.Removed)]
+    [InlineData(ParkItemStatusNormalizer.Unknown)]
+    [InlineData(null)]
+    public void IsOperating_WhenStatusIsNotOperating_ShouldReturnFalse(string? status)
+    {
+        Assert.False(ParkItemStatusNormalizer.IsOperating(status));
     }
 
     [Theory]

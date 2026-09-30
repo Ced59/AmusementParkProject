@@ -49,14 +49,30 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
 
         Task<IReadOnlyCollection<Image>> imagesTask = string.IsNullOrWhiteSpace(attraction.Id) ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>()) : processorContext.imageRepository.GetByOwnersAsync(ImageOwnerType.StandaloneAttraction, new[] { attraction.Id }, null, cancellationToken);
         Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = processorContext.historyEventRepository is null || string.IsNullOrWhiteSpace(attraction.Id) ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>()) : processorContext.historyEventRepository.GetOwnerTimelineAsync(HistoryEntityType.StandaloneAttraction, attraction.Id, true, cancellationToken);
-        await Task.WhenAll(imagesTask, historyEventsTask);
+        bool exportsVisitorInformation =
+            ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status);
+        Task<ParkOpeningHoursSchedule?> openingHoursTask =
+            processorContext.standaloneOpeningHoursRepository is null || !exportsVisitorInformation
+                ? Task.FromResult<ParkOpeningHoursSchedule?>(null)
+                : processorContext.standaloneOpeningHoursRepository.GetByStandaloneAttractionIdAsync(
+                    attraction.Id,
+                    cancellationToken);
+        Task<ParkPricingEntity?> pricingTask =
+            processorContext.standalonePricingRepository is null || !exportsVisitorInformation
+                ? Task.FromResult<ParkPricingEntity?>(null)
+                : processorContext.standalonePricingRepository.GetByStandaloneAttractionIdAsync(
+                    attraction.Id,
+                    cancellationToken);
+        await Task.WhenAll(imagesTask, historyEventsTask, openingHoursTask, pricingTask);
         IReadOnlyCollection<Image> images = await imagesTask;
         IReadOnlyCollection<HistoryEvent> historyEvents = await historyEventsTask;
+        ParkOpeningHoursSchedule? openingHours = await openingHoursTask;
+        ParkPricingEntity? pricing = await pricingTask;
         DateTime exportedAtUtc = DateTime.UtcNow;
         Dictionary<string, object?> document = new Dictionary<string, object?>
         {
             ["documentType"] = "standaloneAttractionGraph",
-            ["schemaVersion"] = "2026-07-16",
+            ["schemaVersion"] = "2026-09-30",
             ["mode"] = "merge",
             ["identity"] = new
             {
@@ -75,6 +91,18 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
                 exportedAtUtc,
             },
         };
+        if (openingHours is not null)
+        {
+            document["openingHours"] =
+                ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandaloneOpeningHours(openingHours);
+        }
+
+        if (pricing is not null)
+        {
+            document["pricing"] =
+                ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandalonePricing(pricing);
+        }
+
         if (!string.IsNullOrWhiteSpace(attraction.LegacyParkId))
         {
             document["migration"] = new
@@ -147,6 +175,41 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
             width = image.Width,
             height = image.Height,
             sizeInBytes = image.SizeInBytes,
+        };
+    }
+
+    internal static object MapStandaloneOpeningHours(ParkOpeningHoursSchedule schedule)
+    {
+        ParkGraphExportOpeningHours mapped =
+            ExportParkGraphJsonQueryHandlerMappingExtensions.MapOpeningHours(schedule);
+        return new
+        {
+            standaloneAttractionId = schedule.ParkId,
+            mapped.TimeZoneId,
+            mapped.SourceUrl,
+            mapped.Notes,
+            mapped.LastVerifiedAtUtc,
+            mapped.RegularRules,
+            mapped.DateOverrides,
+        };
+    }
+
+    internal static object MapStandalonePricing(ParkPricingEntity pricing)
+    {
+        ParkGraphExportPricing mapped = ParkGraphPricingExportMapper.Map(pricing);
+        return new
+        {
+            standaloneAttractionId = pricing.ParkId,
+            mapped.CurrencyCode,
+            mapped.SourceUrl,
+            mapped.PurchaseUrl,
+            mapped.Notes,
+            mapped.LastVerifiedAtUtc,
+            mapped.AdmissionOffers,
+            mapped.AnnualPasses,
+            mapped.ParkingOffers,
+            mapped.CreditOffers,
+            mapped.HistoricalSnapshots,
         };
     }
 

@@ -655,6 +655,41 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.False(request.Refresh);
     }
 
+    [Theory]
+    [InlineData("StandaloneAttractionOpeningHours")]
+    [InlineData("StandaloneAttractionPricing")]
+    public async Task ResolveAsync_ForStandaloneVisitorInformationChange_ShouldForceHardPurge(
+        string entityType)
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetStandaloneAttractionId = "standalone-1",
+            Changes = new List<ParkGraphUpsertChangeDto>
+            {
+                new ParkGraphUpsertChangeDto
+                {
+                    EntityType = entityType,
+                    EntityId = "standalone-1",
+                    ChangeType = "Updated",
+                    Fields = new List<ParkGraphUpsertFieldChangeDto>(),
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/attraction/standalone-1/", request.Prefixes);
+        Assert.False(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
     [Fact]
     public async Task ResolveAsync_ForBulkParkGraphUpsertPreview_ShouldReturnNoOp()
     {

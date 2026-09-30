@@ -8,6 +8,9 @@ import { StandaloneAttraction, StandaloneAttractionMigrationRequest } from '@app
 import { StandaloneAttractionMapPoint } from '@app/models/standalone-attractions/standalone-attraction-map-point';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkItemType } from '@app/models/parks/park-item-type';
+import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
+import { ParkPricing } from '@app/models/parks/park-pricing';
+import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { PagedResult } from '@shared/models/contracts';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
 
@@ -53,6 +56,29 @@ export class StandaloneAttractionsApiService {
 
   getById(id: string, options: StandaloneAttractionsHttpOptions = {}): Observable<StandaloneAttraction> {
     return this.http.get<StandaloneAttraction>(`${this.baseUrl}/${encodeURIComponent(id)}`, options);
+  }
+
+  getOpeningHours(
+    id: string,
+    from?: string | null,
+    to?: string | null,
+    options: StandaloneAttractionsHttpOptions = {}
+  ): Observable<ParkOpeningHoursCalendar> {
+    let params: HttpParams = new HttpParams();
+    params = this.appendString(params, 'from', from);
+    params = this.appendString(params, 'to', to);
+    return this.http.get<ParkOpeningHoursCalendar>(
+      `${this.baseUrl}/${encodeURIComponent(id)}/opening-hours`,
+      { ...options, params }
+    );
+  }
+
+  getPricing(id: string, options: StandaloneAttractionsHttpOptions = {}): Observable<ParkPricing> {
+    return this.http.get<ParkPricing>(`${this.baseUrl}/${encodeURIComponent(id)}/pricing`, options);
+  }
+
+  getWeather(id: string, options: StandaloneAttractionsHttpOptions = {}): Observable<ParkWeatherForecast> {
+    return this.http.get<ParkWeatherForecast>(`${this.baseUrl}/${encodeURIComponent(id)}/weather`, options);
   }
 
   getVisibleMapPoints(query: string = '', region: ParkRegionFilter | null = null, options: StandaloneAttractionsHttpOptions = {}): Observable<StandaloneAttractionMapPoint[]> {

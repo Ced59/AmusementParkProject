@@ -105,6 +105,7 @@ public static class OutputCacheServiceCollectionExtensions
                 .Expire(TimeSpan.FromMinutes(5))
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
                 .SetVaryByQuery("*")
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
                 .Tag(ApiOutputCachePolicyNames.PublicWeatherDataTag));
 
             options.AddPolicy(ApiOutputCachePolicyNames.PublicLiveData, policy => policy

@@ -20,8 +20,13 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
     private readonly IMongoCollection<ParkOpeningHoursScheduleDocument> collection;
 
     public ParkOpeningHoursRepository(IMongoDatabase database, MongoDbSettings settings)
+        : this(database, settings.ParkOpeningHoursCollectionName)
     {
-        this.collection = database.GetCollection<ParkOpeningHoursScheduleDocument>(settings.ParkOpeningHoursCollectionName);
+    }
+
+    internal ParkOpeningHoursRepository(IMongoDatabase database, string collectionName)
+    {
+        this.collection = database.GetCollection<ParkOpeningHoursScheduleDocument>(collectionName);
     }
 
     public async Task<ParkOpeningHoursSchedule?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken)

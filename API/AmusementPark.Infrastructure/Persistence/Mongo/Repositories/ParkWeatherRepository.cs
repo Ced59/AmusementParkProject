@@ -12,8 +12,13 @@ public sealed class ParkWeatherRepository : IParkWeatherRepository
     private readonly IMongoCollection<ParkWeatherDailySnapshotDocument> collection;
 
     public ParkWeatherRepository(IMongoDatabase database, MongoDbSettings settings)
+        : this(database, settings.ParkWeatherDailySnapshotsCollectionName)
     {
-        this.collection = database.GetCollection<ParkWeatherDailySnapshotDocument>(settings.ParkWeatherDailySnapshotsCollectionName);
+    }
+
+    internal ParkWeatherRepository(IMongoDatabase database, string collectionName)
+    {
+        this.collection = database.GetCollection<ParkWeatherDailySnapshotDocument>(collectionName);
     }
 
     public async Task UpsertSnapshotsAsync(IReadOnlyCollection<ParkWeatherDailySnapshot> snapshots, CancellationToken cancellationToken)

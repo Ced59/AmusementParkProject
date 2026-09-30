@@ -157,7 +157,9 @@ Règles spécifiques :
 - utiliser `standaloneAttraction` pour l’identité, l’adresse, l’exploitant, les descriptions et les données techniques ;
 - utiliser `migration` pour convertir une ancienne fiche parc mono-attraction en attraction autonome ;
 - utiliser `ImageOwnerType: "StandaloneAttraction"` et `ImageCategory: "StandaloneAttraction"` pour les images de l’attraction ;
-- ne pas renseigner les horaires sur l’ancien parc legacy. Les horaires autonomes seront traités seulement quand le modèle d’horaires générique sera disponible.
+- pour une attraction `Operating`, auditer et renseigner ses propres blocs `openingHours` et `pricing` avec `standaloneAttractionId`, jamais avec `parkId` ni sur le parc legacy ;
+- vérifier ses coordonnées pour le batch météo autonome, puis contrôler l’affichage public après le premier passage du batch ;
+- appliquer les mêmes règles de sources et de prudence que les étapes 6 et 7 : aucune information visiteurs actuelle pour un autre statut, et aucune donnée du domaine touristique voisin attribuée sans preuve à l’attraction seule.
 
 ## Mode bulk JSON upsert
 

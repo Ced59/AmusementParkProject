@@ -40,12 +40,12 @@ using AmusementPark.Application.Features.Parks.Contracts;
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 internal static class ParkGraphUpsertProcessorStandaloneAttractionsExtensions
 {
-    internal static async Task<bool> ProcessStandaloneAttractionAsync(this ParkGraphUpsertProcessor processorContext, JsonElement root, bool createIfMissing, Dictionary<string, string> operatorKeys, Dictionary<string, string> manufacturerKeys, Dictionary<string, string> manufacturerIdRemaps, Dictionary<string, string> standaloneAttractionKeys, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
+    internal static async Task<(bool Changed, StandaloneAttraction? Attraction)> ProcessStandaloneAttractionAsync(this ParkGraphUpsertProcessor processorContext, JsonElement root, bool createIfMissing, Dictionary<string, string> operatorKeys, Dictionary<string, string> manufacturerKeys, Dictionary<string, string> manufacturerIdRemaps, Dictionary<string, string> standaloneAttractionKeys, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
     {
         if (processorContext.standaloneAttractionRepository is null)
         {
             result.Errors.Add("Le repository des attractions autonomes n'est pas configure.");
-            return false;
+            return (false, null);
         }
 
         JsonElement? patch = ParkGraphUpsertProcessorJsonReadingExtensions.GetObject(root, "standaloneAttraction");
@@ -54,13 +54,13 @@ internal static class ParkGraphUpsertProcessorStandaloneAttractionsExtensions
         if (patch is null && migration is null)
         {
             result.Errors.Add("Le document standalone doit contenir un objet 'standaloneAttraction' ou 'migration'.");
-            return false;
+            return (false, null);
         }
 
         StandaloneAttraction? attraction = await processorContext.ResolveStandaloneAttractionAsync(patch, identity, migration, createIfMissing, processorContext.standaloneAttractionRepository, result, cancellationToken);
         if (attraction is null)
         {
-            return false;
+            return (false, null);
         }
 
         bool isNew = string.IsNullOrWhiteSpace(attraction.Id) || await processorContext.standaloneAttractionRepository.GetByIdAsync(attraction.Id, true, cancellationToken)is null;
@@ -97,7 +97,7 @@ internal static class ParkGraphUpsertProcessorStandaloneAttractionsExtensions
             await processorContext.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.StandaloneAttractions, attraction.Id, cancellationToken);
         }
 
-        return changed;
+        return (changed, attraction);
     }
 
     internal static async Task<StandaloneAttraction?> ResolveStandaloneAttractionAsync(this ParkGraphUpsertProcessor processorContext, JsonElement? patch, JsonElement? identity, JsonElement? migration, bool createIfMissing, IStandaloneAttractionRepository standaloneAttractionRepository, ParkGraphUpsertResult result, CancellationToken cancellationToken)

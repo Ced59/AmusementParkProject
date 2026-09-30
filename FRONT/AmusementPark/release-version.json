@@ -1,6 +1,20 @@
 {
-  "version": "5.4.29",
+  "version": "5.4.30",
   "history": [
+    {
+      "version": "5.4.30",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "Les attractions isolées affichent désormais leurs horaires, leurs tarifs et la météo.",
+        "en": "Standalone attractions now display opening hours, prices and weather.",
+        "de": "Eigenständige Attraktionen zeigen jetzt Öffnungszeiten, Preise und Wetter an.",
+        "nl": "Losstaande attracties tonen nu openingstijden, prijzen en het weer.",
+        "it": "Le attrazioni isolate ora mostrano orari, prezzi e meteo.",
+        "es": "Las atracciones aisladas ahora muestran horarios, precios y el tiempo.",
+        "pt": "As atrações isoladas apresentam agora horários, preços e meteorologia.",
+        "pl": "Samodzielne atrakcje pokazują teraz godziny otwarcia, ceny i pogodę."
+      }
+    },
     {
       "version": "5.4.29",
       "releasedAt": "2026-09-30",

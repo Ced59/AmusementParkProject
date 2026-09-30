@@ -28,6 +28,10 @@ import { resolveLocalizedText } from '@shared/utils/localization/localized-text.
 import { buildPublicRoutePath, buildPublicStandaloneAttractionRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { StandaloneAttractionDetailReferenceFacade } from './standalone-attraction-detail-reference.facade';
+import { ParkOpeningHoursCardComponent } from '../../parks/ui/park-opening-hours-card.component';
+import { ParkWeatherCardComponent } from '../../parks/ui/park-weather-card.component';
+import { StandaloneAttractionPricingCardComponent } from './standalone-attraction-pricing-card.component';
+import { StandaloneAttractionVisitorInformationFacade } from './standalone-attraction-visitor-information.facade';
 import {
   buildStandaloneAttractionDetailRows,
   getStandaloneAttractionStatusTranslationKey,
@@ -286,18 +290,25 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
 @Component({
   selector: 'app-standalone-attraction-detail-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, TranslateModule, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent],
+  imports: [CommonModule, RouterLink, TranslateModule, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent, ParkOpeningHoursCardComponent, ParkWeatherCardComponent, StandaloneAttractionPricingCardComponent],
   templateUrl: './standalone-attraction-detail-page.component.html',
   styleUrl: './standalone-attraction-detail-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [StandaloneAttractionDetailReferenceFacade]
+  providers: [StandaloneAttractionDetailReferenceFacade, StandaloneAttractionVisitorInformationFacade]
 })
 export class StandaloneAttractionDetailPageComponent implements OnInit {
   private readonly referenceFacade: StandaloneAttractionDetailReferenceFacade = inject(StandaloneAttractionDetailReferenceFacade);
+  private readonly visitorInformationFacade: StandaloneAttractionVisitorInformationFacade = inject(StandaloneAttractionVisitorInformationFacade);
   protected readonly state = signal<ScreenState<StandaloneAttraction, string>>({ kind: 'loading' });
   protected readonly attraction = signal<StandaloneAttraction | null>(null);
   protected readonly photos = signal<ImageDto[]>([]);
   protected readonly manufacturerName = this.referenceFacade.manufacturerName;
+  protected readonly openingHours = this.visitorInformationFacade.openingHours;
+  protected readonly openingHoursState = this.visitorInformationFacade.openingHoursState;
+  protected readonly pricing = this.visitorInformationFacade.pricing;
+  protected readonly pricingState = this.visitorInformationFacade.pricingState;
+  protected readonly weather = this.visitorInformationFacade.weather;
+  protected readonly weatherState = this.visitorInformationFacade.weatherState;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly heroImage = computed<ImageDto | null>(() => this.photos()[0] ?? null);
   protected readonly hasCoordinates = computed<boolean>(() => {
@@ -455,6 +466,7 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
         this.applySeo();
         this.loadHeroImage(attraction);
         this.referenceFacade.loadManufacturer(attraction);
+        this.visitorInformationFacade.load(attraction.id ?? id);
       },
       error: (error: unknown) => {
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);

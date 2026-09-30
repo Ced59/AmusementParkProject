@@ -1,6 +1,9 @@
 using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.ParkWeather.Services;
+using AmusementPark.Application.Features.ParkWeather.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.StandaloneAttractions.Contracts;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Weather;
 using Moq;
@@ -10,6 +13,109 @@ namespace AmusementPark.Application.Tests.Features.ParkWeather.Services;
 
 public sealed class ParkWeatherRefreshOrchestratorTests
 {
+    [Fact]
+    public async Task ProcessRunAsync_WhenVisibleStandaloneAttractionIsOperating_ShouldPersistAndInvalidateItsWeather()
+    {
+        StandaloneAttraction attraction = new StandaloneAttraction
+        {
+            Id = "standalone-1",
+            Name = "Alpine Coaster",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            AttractionDetails = new AttractionDetails { Status = ParkItemStatusNormalizer.Operating },
+        };
+        attraction.SetPosition(45.09, 6.07);
+        ParkWeatherRun run = new ParkWeatherRun
+        {
+            Id = "run-standalone",
+            Scope = ParkWeatherRefreshScope.FullVisibleParks,
+            Status = ParkWeatherRunStatus.Queued,
+            Trigger = ParkWeatherRunTrigger.Manual,
+        };
+        ParkWeatherDailySnapshot forecast = CreateSnapshot(
+            "standalone-1",
+            DateOnly.FromDateTime(DateTime.UtcNow),
+            ParkWeatherDataKind.Forecast);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetVisibleWithValidCoordinatesAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Park>());
+        Mock<IStandaloneAttractionRepository> standaloneRepository =
+            new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneRepository
+            .Setup(repository => repository.GetVisibleMapPointsAsync(
+                It.IsAny<StandaloneAttractionSearchCriteria>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { attraction });
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredForecastsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredObservationsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IStandaloneAttractionWeatherRepository> standaloneWeatherRepository =
+            new Mock<IStandaloneAttractionWeatherRepository>(MockBehavior.Strict);
+        standaloneWeatherRepository
+            .Setup(repository => repository.UpsertSnapshotsAsync(
+                It.Is<IReadOnlyCollection<ParkWeatherDailySnapshot>>(snapshots =>
+                    snapshots.Count == 1 && snapshots.Single().ParkId == "standalone-1"),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        standaloneWeatherRepository
+            .Setup(repository => repository.DeleteExpiredForecastsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        standaloneWeatherRepository
+            .Setup(repository => repository.DeleteExpiredObservationsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
+        providerStrategy
+            .Setup(strategy => strategy.FetchDailyForecastAsync(
+                It.Is<ParkWeatherLocation>(location => location.Id == "standalone-1"),
+                7,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkWeatherProviderResult { Snapshots = new[] { forecast } });
+        Mock<IParkWeatherProviderStrategyResolver> resolver =
+            new Mock<IParkWeatherProviderStrategyResolver>(MockBehavior.Strict);
+        resolver.Setup(item => item.Resolve()).Returns(providerStrategy.Object);
+        Mock<IParkWeatherRunRepository> runRepository = CreateRunRepository(run);
+        Mock<IParkWeatherCacheInvalidator> invalidator =
+            new Mock<IParkWeatherCacheInvalidator>(MockBehavior.Strict);
+        invalidator
+            .Setup(item => item.InvalidateUpdatedWeatherAsync(
+                It.Is<IReadOnlyCollection<Park>>(parks => parks.Count == 0),
+                It.Is<IReadOnlyCollection<StandaloneAttraction>>(attractions =>
+                    attractions.Count == 1 && attractions.Single().Id == "standalone-1"),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        ParkWeatherRefreshOrchestrator orchestrator = new ParkWeatherRefreshOrchestrator(
+            parkRepository.Object,
+            weatherRepository.Object,
+            runRepository.Object,
+            resolver.Object,
+            new ParkWeatherRefreshOrchestratorTestsTestRefreshSettings(),
+            invalidator.Object,
+            new NoOpParkWeatherNotificationService(),
+            new ParkWeatherHistoricalComparisonDateResolver(),
+            standaloneRepository.Object,
+            standaloneWeatherRepository.Object);
+
+        await orchestrator.ProcessRunAsync("run-standalone", CancellationToken.None);
+
+        Assert.Equal(ParkWeatherRunStatus.Completed, run.Status);
+        Assert.Equal(1, run.TotalParkCount);
+        Assert.Equal(1, run.SucceededParkCount);
+        parkRepository.VerifyAll();
+        standaloneRepository.VerifyAll();
+        weatherRepository.VerifyAll();
+        standaloneWeatherRepository.VerifyAll();
+        providerStrategy.VerifyAll();
+        resolver.VerifyAll();
+        runRepository.VerifyAll();
+        invalidator.VerifyAll();
+    }
+
     [Fact]
     public async Task ProcessRunAsync_WhenFullRunHasSuccessAndFailure_ShouldPersistCleanupAndInvalidateSuccessfulParks()
     {
@@ -51,7 +157,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                It.Is<Park>(park => park.Id == "park-1"),
+                It.Is<ParkWeatherLocation>(location => location.Id == "park-1"),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
@@ -62,7 +168,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             });
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                It.Is<Park>(park => park.Id == "park-2"),
+                It.Is<ParkWeatherLocation>(location => location.Id == "park-2"),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
@@ -151,21 +257,21 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                It.Is<Park>(park => park.Id == "park-1"),
+                It.Is<ParkWeatherLocation>(location => location.Id == "park-1"),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new ParkWeatherProviderResult { Snapshots = new[] { firstForecast } });
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                It.Is<Park>(park => park.Id == "park-timeout"),
+                It.Is<ParkWeatherLocation>(location => location.Id == "park-timeout"),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new TaskCanceledException("The request was canceled due to the configured HttpClient.Timeout of 20 seconds elapsing."));
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                It.Is<Park>(park => park.Id == "park-3"),
+                It.Is<ParkWeatherLocation>(location => location.Id == "park-3"),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
@@ -237,7 +343,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                park,
+                CreateWeatherLocation(park),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
@@ -319,7 +425,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                It.Is<Park>(park => park.Id == "park-1"),
+                It.Is<ParkWeatherLocation>(location => location.Id == "park-1"),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
@@ -387,7 +493,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                park,
+                CreateWeatherLocation(park),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
@@ -475,7 +581,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
         providerStrategy
             .Setup(strategy => strategy.FetchDailyForecastAsync(
-                park,
+                CreateWeatherLocation(park),
                 7,
                 true,
                 It.IsAny<CancellationToken>()))
@@ -485,11 +591,11 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             });
         providerStrategy
             .Setup(strategy => strategy.FetchDailyObservationsAsync(
-                park,
+                CreateWeatherLocation(park),
                 It.IsAny<IReadOnlyCollection<DateOnly>>(),
                 It.IsAny<CancellationToken>()))
-            .Callback<Park, IReadOnlyCollection<DateOnly>, CancellationToken>((_, dates, _) => requestedHistoricalDates = dates)
-            .ReturnsAsync((Park _, IReadOnlyCollection<DateOnly> dates, CancellationToken _) => new ParkWeatherProviderResult
+            .Callback<ParkWeatherLocation, IReadOnlyCollection<DateOnly>, CancellationToken>((_, dates, _) => requestedHistoricalDates = dates)
+            .ReturnsAsync((ParkWeatherLocation _, IReadOnlyCollection<DateOnly> dates, CancellationToken _) => new ParkWeatherProviderResult
             {
                 Snapshots = dates.Select(date => CreateSnapshot("park-1", date, ParkWeatherDataKind.Observation)).ToList(),
             });
@@ -557,6 +663,11 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         };
         park.SetPosition(latitude, longitude);
         return park;
+    }
+
+    private static ParkWeatherLocation CreateWeatherLocation(Park park)
+    {
+        return new ParkWeatherLocation(park.Id ?? string.Empty, park.Name ?? string.Empty, park.Position!);
     }
 
     private static ParkWeatherDailySnapshot CreateSnapshot(string parkId, DateOnly localDate, ParkWeatherDataKind dataKind)

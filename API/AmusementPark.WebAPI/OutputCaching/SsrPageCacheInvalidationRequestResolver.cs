@@ -1108,6 +1108,13 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             return true;
         }
 
+        string entityType = NormalizeEntityType(change.EntityType);
+        if (string.Equals(entityType, "standaloneattractionopeninghours", StringComparison.Ordinal)
+            || string.Equals(entityType, "standaloneattractionpricing", StringComparison.Ordinal))
+        {
+            return true;
+        }
+
         return change.Fields.Any(static field =>
             (string.Equals(field.Field, "isVisible", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, "false", StringComparison.OrdinalIgnoreCase))
             || (string.Equals(field.Field, "adminReviewStatus", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, AdminReviewStatus.NotRelevant.ToString(), StringComparison.OrdinalIgnoreCase)));

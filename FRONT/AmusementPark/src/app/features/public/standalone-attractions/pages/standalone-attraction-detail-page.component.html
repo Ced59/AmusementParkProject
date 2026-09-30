@@ -76,6 +76,23 @@
       </main>
 
       <aside class="standalone-sidebar">
+        <app-standalone-attraction-pricing-card
+          [pricing]="pricing()"
+          [state]="pricingState()"
+          [currentLanguage]="currentLanguage()">
+        </app-standalone-attraction-pricing-card>
+
+        <app-park-opening-hours-card
+          [calendar]="openingHours()"
+          [state]="openingHoursState()">
+        </app-park-opening-hours-card>
+
+        <app-park-weather-card
+          [forecast]="weather()"
+          [state]="weatherState()"
+          [currentLang]="currentLanguage()">
+        </app-park-weather-card>
+
         <section class="standalone-panel">
           <span class="standalone-kicker">{{ t('location') }}</span>
           <div class="standalone-data-grid">

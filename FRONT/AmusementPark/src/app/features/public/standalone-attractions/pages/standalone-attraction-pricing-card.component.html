@@ -1,0 +1,51 @@
+@if (pricing && summaries.length > 0) {
+  <section class="standalone-pricing-card">
+    <header class="standalone-pricing-card__header">
+      <span class="standalone-pricing-card__icon" aria-hidden="true"><i class="pi pi-ticket"></i></span>
+      <div>
+        <h2>{{ 'parkPricing.detailCta.title' | translate }}</h2>
+        <p>{{ 'parkPricing.sections.admission.subtitle' | translate }}</p>
+      </div>
+    </header>
+
+    <dl class="standalone-pricing-card__offers">
+      @for (summary of summaries; track summary.key) {
+        <div>
+          <dt>{{ summary.label }}</dt>
+          <dd>
+            <span>{{ summary.price }}</span>
+            @if (summary.purchaseUrl) {
+              <a
+                class="standalone-pricing-card__offer-link"
+                [href]="summary.purchaseUrl | safeExternalUrl"
+                target="_blank"
+                rel="noreferrer noopener">
+                <span>{{ 'parkPricing.actions.buyOffer' | translate }}</span>
+                <i class="pi pi-external-link" aria-hidden="true"></i>
+              </a>
+            }
+          </dd>
+        </div>
+      }
+    </dl>
+
+    @if (pricing.purchaseUrl) {
+      <a
+        class="standalone-pricing-card__link"
+        [href]="pricing.purchaseUrl | safeExternalUrl"
+        target="_blank"
+        rel="noreferrer noopener">
+        <span>{{ 'parkPricing.actions.buy' | translate }}</span>
+        <i class="pi pi-external-link" aria-hidden="true"></i>
+      </a>
+    }
+  </section>
+} @else if (isLoading) {
+  <section class="standalone-pricing-card standalone-pricing-card--loading" aria-busy="true">
+    <span class="standalone-pricing-card__icon" aria-hidden="true"><i class="pi pi-ticket"></i></span>
+    <div>
+      <h2>{{ 'parkPricing.detailCta.title' | translate }}</h2>
+      <p>{{ 'parkPricing.page.loadingMessage' | translate }}</p>
+    </div>
+  </section>
+}

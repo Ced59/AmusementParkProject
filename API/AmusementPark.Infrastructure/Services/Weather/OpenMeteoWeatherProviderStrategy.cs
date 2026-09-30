@@ -1,8 +1,8 @@
 using System.Globalization;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
+using AmusementPark.Application.Features.ParkWeather.Contracts;
 using AmusementPark.Application.Features.ParkWeather.Ports;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Weather;
 using AmusementPark.Infrastructure.Configuration.Weather;
 
@@ -53,28 +53,23 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
     public string ProviderKey => Provider;
 
     public async Task<ParkWeatherProviderResult> FetchDailyForecastAsync(
-        Park park,
+        ParkWeatherLocation location,
         int forecastDays,
         bool includeYesterdayObservation,
         CancellationToken cancellationToken)
     {
-        if (park.Position is null)
-        {
-            throw new InvalidOperationException($"Park '{park.Id}' has no coordinates.");
-        }
-
         List<ParkWeatherDailySnapshot> snapshots = new List<ParkWeatherDailySnapshot>();
         List<string> warnings = new List<string>();
         HttpClient httpClient = this.httpClientFactory.CreateClient(HttpClientName);
 
         OpenMeteoResponse forecastResponse = await this.GetAsync(
             httpClient,
-            this.BuildForecastUrl(park.Position.Latitude, park.Position.Longitude, forecastDays),
+            this.BuildForecastUrl(location.Position.Latitude, location.Position.Longitude, forecastDays),
             cancellationToken);
 
         DateTime forecastFetchedAtUtc = DateTime.UtcNow;
         IReadOnlyCollection<ParkWeatherDailySnapshot> forecastSnapshots = this.MapDailySnapshots(
-            park,
+            location,
             forecastResponse,
             ParkWeatherDataKind.Forecast,
             forecastFetchedAtUtc);
@@ -94,11 +89,11 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
                     DateOnly yesterday = firstForecastLocalDate.Value.AddDays(-1);
                     OpenMeteoResponse archiveResponse = await this.GetAsync(
                         httpClient,
-                        this.BuildArchiveUrl(park.Position.Latitude, park.Position.Longitude, yesterday),
+                        this.BuildArchiveUrl(location.Position.Latitude, location.Position.Longitude, yesterday),
                         cancellationToken);
 
                     snapshots.AddRange(this.MapDailySnapshots(
-                        park,
+                        location,
                         archiveResponse,
                         ParkWeatherDataKind.Observation,
                         DateTime.UtcNow));
@@ -118,15 +113,10 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
     }
 
     public async Task<ParkWeatherProviderResult> FetchDailyObservationsAsync(
-        Park park,
+        ParkWeatherLocation location,
         IReadOnlyCollection<DateOnly> localDates,
         CancellationToken cancellationToken)
     {
-        if (park.Position is null)
-        {
-            throw new InvalidOperationException($"Park '{park.Id}' has no coordinates.");
-        }
-
         List<DateOnly> dates = localDates
             .Distinct()
             .OrderBy(static date => date)
@@ -145,11 +135,11 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
         {
             OpenMeteoResponse archiveResponse = await this.GetAsync(
                 httpClient,
-                this.BuildArchiveUrl(park.Position.Latitude, park.Position.Longitude, dateRange.Start, dateRange.End),
+                this.BuildArchiveUrl(location.Position.Latitude, location.Position.Longitude, dateRange.Start, dateRange.End),
                 cancellationToken);
 
             snapshots.AddRange(this.MapDailySnapshots(
-                    park,
+                    location,
                     archiveResponse,
                     ParkWeatherDataKind.Observation,
                     DateTime.UtcNow)
@@ -272,7 +262,7 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
     }
 
     private IReadOnlyCollection<ParkWeatherDailySnapshot> MapDailySnapshots(
-        Park park,
+        ParkWeatherLocation location,
         OpenMeteoResponse response,
         ParkWeatherDataKind dataKind,
         DateTime fetchedAtUtc)
@@ -291,15 +281,15 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
 
             snapshots.Add(new ParkWeatherDailySnapshot
             {
-                ParkId = park.Id,
+                ParkId = location.Id,
                 LocalDate = localDate,
                 DataKind = dataKind,
                 SourceProvider = Provider,
                 FetchedAtUtc = fetchedAtUtc,
                 TimeZone = response.TimeZone,
                 UtcOffsetSeconds = response.UtcOffsetSeconds,
-                Latitude = response.Latitude ?? park.Position?.Latitude ?? 0d,
-                Longitude = response.Longitude ?? park.Position?.Longitude ?? 0d,
+                Latitude = response.Latitude ?? location.Position.Latitude,
+                Longitude = response.Longitude ?? location.Position.Longitude,
                 WeatherCode = GetAt(response.Daily?.WeatherCode, index),
                 TemperatureMinCelsius = GetAt(response.Daily?.TemperatureMinCelsius, index),
                 TemperatureMaxCelsius = GetAt(response.Daily?.TemperatureMaxCelsius, index),

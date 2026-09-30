@@ -397,9 +397,12 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ISsrPageCacheInvalidator, HttpSsrPageCacheInvalidator>();
         services.AddScoped<IParkGraphUpsertHistoryRepository, ParkGraphUpsertHistoryRepository>();
         services.AddScoped<IParkWeatherRepository, ParkWeatherRepository>();
+        services.AddScoped<IStandaloneAttractionWeatherRepository, StandaloneAttractionWeatherRepository>();
         services.AddScoped<IParkWeatherRunRepository, ParkWeatherRunRepository>();
         services.AddScoped<IParkOpeningHoursRepository, ParkOpeningHoursRepository>();
+        services.AddScoped<IStandaloneAttractionOpeningHoursRepository, StandaloneAttractionOpeningHoursRepository>();
         services.AddScoped<IParkPricingRepository, ParkPricingRepository>();
+        services.AddScoped<IStandaloneAttractionPricingRepository, StandaloneAttractionPricingRepository>();
         services.AddScoped<IHistoryEventRepository, HistoryEventRepository>();
         services.AddScoped<IHistoricalSubjectPublicationStateReader, HistoricalSubjectPublicationStateReader>();
         services.AddScoped<IHistoricalFactRepository, HistoricalFactRepository>();

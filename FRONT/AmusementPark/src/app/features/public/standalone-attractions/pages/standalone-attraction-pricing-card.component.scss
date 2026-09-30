@@ -1,0 +1,102 @@
+:host {
+  display: block;
+}
+
+.standalone-pricing-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), var(--app-surface-2));
+  box-shadow: var(--shadow-card);
+}
+
+.standalone-pricing-card__header,
+.standalone-pricing-card--loading {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.standalone-pricing-card__icon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--app-primary) 12%, transparent);
+  color: var(--app-primary);
+}
+
+.standalone-pricing-card h2,
+.standalone-pricing-card p {
+  margin: 0;
+}
+
+.standalone-pricing-card h2 {
+  color: var(--app-heading);
+  font-size: 1rem;
+}
+
+.standalone-pricing-card p {
+  margin-top: 0.25rem;
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.standalone-pricing-card__offers {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.standalone-pricing-card__offers div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.standalone-pricing-card__offers div:last-child {
+  border-bottom: 0;
+}
+
+.standalone-pricing-card__offers dt {
+  color: var(--app-text-muted);
+  font-size: 0.84rem;
+}
+
+.standalone-pricing-card__offers dd {
+  display: grid;
+  justify-items: end;
+  gap: 0.25rem;
+  margin: 0;
+  color: var(--app-heading);
+  font-weight: 850;
+  text-align: right;
+}
+
+.standalone-pricing-card__offer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--app-primary);
+  font-size: 0.76rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.standalone-pricing-card__link {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  color: var(--app-primary);
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-decoration: none;
+}

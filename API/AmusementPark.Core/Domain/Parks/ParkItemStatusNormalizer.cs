@@ -61,6 +61,11 @@ public static class ParkItemStatusNormalizer
         return string.Equals(Normalize(value), ClosedDefinitively, StringComparison.Ordinal);
     }
 
+    public static bool IsOperating(string? value)
+    {
+        return string.Equals(Normalize(value), Operating, StringComparison.Ordinal);
+    }
+
     public static bool IsClosedForPublicBrowsing(string? value)
     {
         string? normalized = Normalize(value);
