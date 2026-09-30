@@ -33,8 +33,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 42 | 40 |
-| **Total** | **225** | **223** |
+| Attractions autonomes à migrer ou intégrer | 42 | 39 |
+| **Total** | **225** | **222** |
 
 ## 1. Fiches publiques à compléter
 
@@ -238,7 +238,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] Clécy Gliss — parc legacy `e151ec70-4ce2-4e6e-b9c0-d28153758455`
 - [ ] Domaine des Planards — parc legacy `077dc136-aa4d-4d69-9d07-a61310701fc2`
 - [ ] Espace San Bernardo — parc legacy `53da66a3-c70b-4766-97b5-81b1da6edac2`
 - [ ] Font-Romeu Pyrénées 2000 — parc legacy `9faa2fdb-d834-4927-a80d-87bc6ea6f7e9`
