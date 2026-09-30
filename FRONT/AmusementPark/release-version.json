@@ -1,6 +1,20 @@
 {
-  "version": "5.4.35",
+  "version": "5.4.36",
   "history": [
+    {
+      "version": "5.4.36",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "La couverture des attractions françaises s’enrichit.",
+        "en": "Coverage of French attractions is expanding.",
+        "de": "Die Abdeckung französischer Attraktionen wird erweitert.",
+        "nl": "De dekking van Franse attracties wordt uitgebreid.",
+        "it": "La copertura delle attrazioni francesi si amplia.",
+        "es": "La cobertura de las atracciones francesas se amplía.",
+        "pt": "A cobertura das atrações francesas está a aumentar.",
+        "pl": "Rozszerzamy zakres francuskich atrakcji."
+      }
+    },
     {
       "version": "5.4.35",
       "releasedAt": "2026-09-30",
