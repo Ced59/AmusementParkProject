@@ -10,6 +10,7 @@ const TOOL_DIRECTORY = path.dirname(fileURLToPath(import.meta.url));
 const FRONTEND_ROOT = path.resolve(TOOL_DIRECTORY, '..', '..');
 const APPLICATION_ROOT = path.join(FRONTEND_ROOT, 'src', 'app');
 const BASELINE_PATH = path.join(TOOL_DIRECTORY, 'accessibility-baseline.json');
+const FALLTHROUGH_BRANCH = Symbol('fallthrough-branch');
 
 const INTERACTIVE_NATIVE_ELEMENTS = new Set(['button', 'input', 'select', 'textarea', 'summary']);
 const BARE_KEYBOARD_EVENT_NAMES = new Set(['keydown', 'keyup', 'keypress']);
@@ -505,6 +506,40 @@ function templateScopesAreCompatible(source, target, context) {
   return targetScope === null || targetScope === sourceScope;
 }
 
+function targetsCoverReachableSourceStates(source, targets, context) {
+  const sourceReachability = context.reachabilityByNode.get(source) ?? new Map();
+  const owners = new Set();
+  for (const target of targets) {
+    for (const owner of (context.reachabilityByNode.get(target) ?? new Map()).keys()) {
+      if (!sourceReachability.has(owner)) {
+        owners.add(owner);
+      }
+    }
+  }
+
+  const variableOwners = [...owners];
+  function stateIsCovered(ownerIndex, state) {
+    if (ownerIndex >= variableOwners.length) {
+      return targets.some((target) => {
+        const targetReachability = context.reachabilityByNode.get(target) ?? new Map();
+        return variableOwners.every((owner) => (
+          !targetReachability.has(owner) || targetReachability.get(owner) === state.get(owner)
+        ));
+      });
+    }
+
+    const owner = variableOwners[ownerIndex];
+    const branches = context.reachableBranchesByOwner.get(owner) ?? [];
+    return branches.length > 0 && branches.every((branch) => {
+      const nestedState = new Map(state);
+      nestedState.set(owner, branch);
+      return stateIsCovered(ownerIndex + 1, nestedState);
+    });
+  }
+
+  return targets.length > 0 && stateIsCovered(0, new Map());
+}
+
 function labelledByValueResolves(value, node, context, resolving) {
   if (typeof value !== 'string') {
     return false;
@@ -520,8 +555,10 @@ function labelledByValueResolves(value, node, context, resolving) {
       )
       && templateScopesAreCompatible(node, target, context)
     ));
-    return targets.length > 0
-      && targets.every((target) => hasAccessibleName(target, context, resolving));
+    const namedTargets = targets.filter((target) => (
+      hasAccessibleName(target, context, resolving)
+    ));
+    return targetsCoverReachableSourceStates(node, namedTargets, context);
   });
 }
 
@@ -580,17 +617,7 @@ function hasUsableNativeLabel(node, context, resolving) {
   const namedLabels = compatibleLabels.filter((label) => (
     hasAccessibleName(label, context, resolving)
   ));
-  return compatibleLabels.length > 0
-    && namedLabels.length > 0
-    && compatibleLabels.every((label) => (
-      namedLabels.includes(label)
-      || namedLabels.some((namedLabel) => (
-        reachabilityContextsAreCompatible(
-          context.reachabilityByNode.get(label) ?? new Map(),
-          context.reachabilityByNode.get(namedLabel) ?? new Map()
-        )
-      ))
-    ));
+  return targetsCoverReachableSourceStates(node, namedLabels, context);
 }
 
 function hasAccessibleName(node, context, resolving = new Set()) {
@@ -1306,8 +1333,8 @@ function analyseElement(node, template, source, lineOffset, locator, context) {
 
   const isNamedInteractive = name === 'button'
     || (name === 'a' && (
-      hasUsableLinkTarget(node, 'href')
-      || hasUsableLinkTarget(node, 'routerlink')
+      hasPotentiallyUsableLinkTarget(node, 'href')
+      || hasPotentiallyUsableLinkTarget(node, 'routerlink')
       || hasActionableClick(node)
     ))
     || (name === 'input' && (() => {
@@ -1474,13 +1501,13 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
     idsByNode: new Map(),
     labelsByTargetId: new Map(),
     parentByNode: new Map(),
+    reachableBranchesByOwner: new Map(),
     structuralIdentityByNode: new Map(),
     templateScopeByNode: new Map(),
     templatesByReference: new Map(),
     reachabilityByNode: new Map()
   };
   const controlFlowHeaderOccurrences = new Map();
-  const structuralHeaderOccurrences = new Map();
 
   function indexNodes(
     nodes,
@@ -1509,13 +1536,25 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
         const occurrence = (controlFlowHeaderOccurrences.get(header) ?? 0) + 1;
         controlFlowHeaderOccurrences.set(header, occurrence);
         context.controlFlowIdentityByOwner.set(node, `${header}#${occurrence}`);
+
+        const scopedCollections = reachableScopedNodeCollections(node)
+          .filter((scoped) => scoped.owner === node);
+        const branches = [...new Set(scopedCollections.map((scoped) => scoped.branch))];
+        const canFallThrough = nodeType === 'IfBlock'
+          ? reachableIfBranches(node).canFallThrough
+          : nodeType === 'SwitchBlock'
+            ? Boolean(reachableSwitchGroups(node)?.canFallThrough)
+            : false;
+        if (canFallThrough) {
+          branches.push(FALLTHROUGH_BRANCH);
+        }
+
+        context.reachableBranchesByOwner.set(node, branches);
       }
 
       if (elementName(node).length > 0) {
         const header = startTagSource(node, template);
-        const occurrence = (structuralHeaderOccurrences.get(header) ?? 0) + 1;
-        structuralHeaderOccurrences.set(header, occurrence);
-        context.structuralIdentityByNode.set(node, `${header}#${occurrence}`);
+        context.structuralIdentityByNode.set(node, header);
       }
 
       const ids = new Set();

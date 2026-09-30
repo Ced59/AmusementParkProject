@@ -142,6 +142,18 @@ test('resolves static aria-labelledby references to accessible content', () => {
   );
 });
 
+test('requires id references to cover every state where the source is rendered', () => {
+  const findings = analyseTemplate(`
+    @if (ready) { <span id="partial-label">Save</span> }
+    <button type="button" aria-labelledby="partial-label"><img alt=""></button>
+    @if (ready) { <span id="complete-label">Save</span> }
+    @else { <span id="complete-label">Retry</span> }
+    <button type="button" aria-labelledby="complete-label"><img alt=""></button>
+  `);
+
+  assert.deepEqual(findings.map((finding) => finding.rule), ['interactive-name']);
+});
+
 test('does not resolve id references or labels from dormant template declarations', () => {
   const findings = analyseTemplate(`
     <ng-template><span id="dormant-name">Save</span></ng-template>
@@ -532,6 +544,10 @@ test('requires keyboard support and semantics on non-native click targets', () =
   `);
   const invalidConditionalRouterLink = analyseTemplate('<div [routerLink]="enabled ? \'/parks\' : null">Parks</div>');
   const validConditionalAnchorRouterLink = analyseTemplate('<a [routerLink]="enabled ? \'/parks\' : null">Parks</a>');
+  const invalidUnnamedConditionalLinks = analyseTemplate(`
+    <a [routerLink]="enabled ? '/parks' : null"><img alt=""></a>
+    <a [href]="enabled ? '/parks' : null"><img alt=""></a>
+  `);
   const validTabEnterActivation = analyseTemplate('<div role="tab" tabindex="0" (click)="select()" (keydown.enter)="select()">Tab</div>');
   const validTabSpaceActivation = analyseTemplate('<div role="tab" tabindex="0" (click)="select()" (keydown.space)="select()">Tab</div>');
 
@@ -581,6 +597,10 @@ test('requires keyboard support and semantics on non-native click targets', () =
   assert.deepEqual(validDisabledRouterLinks, []);
   assert.deepEqual(invalidConditionalRouterLink.map((finding) => finding.rule), ['click-keyboard']);
   assert.deepEqual(validConditionalAnchorRouterLink, []);
+  assert.deepEqual(
+    invalidUnnamedConditionalLinks.map((finding) => finding.rule),
+    ['interactive-name', 'interactive-name']
+  );
   assert.deepEqual(validTabEnterActivation, []);
   assert.deepEqual(validTabSpaceActivation, []);
 });
@@ -690,4 +710,15 @@ test('uses stable enclosing identities for findings outside control-flow branche
   const relocationComparison = compareBaseline(relocated, baseline);
   assert.equal(relocationComparison.added.length, 0);
   assert.equal(relocationComparison.resolved.length, 0);
+
+  const nestedBaseline = fingerprintFindings(analyseTemplate(`
+    <section><button type="button"></button></section>
+  `, 'sample.html'));
+  const nestedRelocated = fingerprintFindings(analyseTemplate(`
+    <section><button type="button" aria-label="Save"></button></section>
+    <section><button type="button"></button></section>
+  `, 'sample.html'));
+  const nestedComparison = compareBaseline(nestedRelocated, nestedBaseline);
+  assert.equal(nestedComparison.added.length, 0);
+  assert.equal(nestedComparison.resolved.length, 0);
 });
