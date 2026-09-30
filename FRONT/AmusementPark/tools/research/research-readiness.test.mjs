@@ -13,6 +13,7 @@ import {
   requiredTaskContextFields,
   requiredTaskIds,
   validateResearchCatalog,
+  validateResearchDocumentContent,
   validateResearchReadiness,
 } from './check-research-readiness.mjs';
 
@@ -69,6 +70,26 @@ test('accepts the complete canonical research catalog', () => {
 
 test('the repository catalog and all referenced protocols are ready', async () => {
   assert.deepEqual(await validateResearchReadiness(), []);
+});
+
+test('rejects empty or structurally incomplete required protocol documents', () => {
+  const readmePath = 'docs/product/research/README.md';
+  assert.deepEqual(
+    validateResearchDocumentContent(readmePath, '   \n'),
+    [`Document de recherche vide: ${readmePath}.`],
+  );
+
+  const contentWithoutStopConditions = [
+    '# Protocole commun de recherche produit',
+    '## 2. Préparer une session',
+    '## 3. Conduire les huit tâches',
+    '## 4. Séparer les faits des décisions',
+    '## 5. Passer une gate de bêta',
+  ].join('\n');
+  assert.deepEqual(
+    validateResearchDocumentContent(readmePath, contentWithoutStopConditions),
+    [`Document ${readmePath}: section obligatoire absente ## 6. Conditions d'arrêt communes.`],
+  );
 });
 
 test('rejects a missing program and duplicate canonical task', () => {

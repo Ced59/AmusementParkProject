@@ -102,11 +102,14 @@ stateDiagram-v2
     Redesign --> AlphaInterne: correction vérifiée
 ```
 
-Le passage d'une gate exige toutes ses exigences communes, les preuves de
-généralisation du programme et l'absence de condition d'arrêt ouverte. Une métrique
-quantitative, un dashboard `Candidate` ou le simple succès d'une CI ne remplace
-jamais les observations consenties. Inversement, une observation terrain en
-attente n'empêche pas de livrer un jalon technique ou métier indépendant.
+Le passage d'une gate exige les seules exigences de cette phase, leurs preuves
+observables et l'absence de condition d'arrêt ouverte. Les
+`generalizationEvidence` propres au programme ne deviennent obligatoires que pour
+proposer `general-availability` : l'alpha et les bêta servent précisément à rendre
+leur collecte possible. Une métrique quantitative, un dashboard `Candidate` ou le
+simple succès d'une CI ne remplace jamais les observations consenties.
+Inversement, une observation terrain en attente n'empêche pas de livrer un jalon
+technique ou métier indépendant.
 
 ## 6. Conditions d'arrêt communes
 

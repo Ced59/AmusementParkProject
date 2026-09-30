@@ -126,6 +126,25 @@ export const requiredProtocolDocumentPaths = Object.freeze([
   'docs/product/research/session-result-template.md',
 ]);
 
+export const requiredProtocolDocumentHeadings = Object.freeze({
+  'docs/product/research/README.md': Object.freeze([
+    '# Protocole commun de recherche produit',
+    '## 2. Préparer une session',
+    '## 3. Conduire les huit tâches',
+    '## 4. Séparer les faits des décisions',
+    '## 5. Passer une gate de bêta',
+    "## 6. Conditions d'arrêt communes",
+  ]),
+  'docs/product/research/session-result-template.md': Object.freeze([
+    '# Fiche de session produit',
+    '## Cadre',
+    '## Résultats par tâche',
+    '## Problèmes',
+    '## Synthèse minimisée',
+    '## Clôture',
+  ]),
+});
+
 const allowedOutcomeValues = ['unassisted', 'assisted', 'failed', 'not-observable'];
 
 function isNonEmptyText(value) {
@@ -182,6 +201,16 @@ export function isProductGrowthRoadmapPath(candidatePath) {
 
 export function isResearchExtensionPath(candidatePath) {
   return isPathInside(candidatePath, productDocumentationRoot);
+}
+
+export function validateResearchDocumentContent(documentPath, content) {
+  if (!isNonEmptyText(content)) {
+    return [`Document de recherche vide: ${documentPath}.`];
+  }
+
+  return (requiredProtocolDocumentHeadings[documentPath] ?? [])
+    .filter((heading) => !content.includes(heading))
+    .map((heading) => `Document ${documentPath}: section obligatoire absente ${heading}.`);
 }
 
 export function validateResearchCatalog(catalog) {
@@ -370,7 +399,8 @@ export async function validateResearchReadiness(catalogPath = defaultCatalogPath
         continue;
       }
       try {
-        await readFile(resolve(repositoryRoot, documentPath), 'utf8');
+        const content = await readFile(resolve(repositoryRoot, documentPath), 'utf8');
+        errors.push(...validateResearchDocumentContent(documentPath, content));
       } catch (error) {
         errors.push(`Programme ${program.id}: document illisible ${documentPath} (${error instanceof Error ? error.code ?? error.message : 'erreur inconnue'}).`);
       }
@@ -379,7 +409,8 @@ export async function validateResearchReadiness(catalogPath = defaultCatalogPath
 
   for (const documentPath of requiredProtocolDocumentPaths) {
     try {
-      await readFile(resolve(repositoryRoot, documentPath), 'utf8');
+      const content = await readFile(resolve(repositoryRoot, documentPath), 'utf8');
+      errors.push(...validateResearchDocumentContent(documentPath, content));
     } catch (error) {
       errors.push(`Document QUAL-10 illisible ${documentPath} (${error instanceof Error ? error.code ?? error.message : 'erreur inconnue'}).`);
     }
