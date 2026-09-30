@@ -93,6 +93,30 @@ public sealed class SharePublicationAccessResolverTests
     }
 
     [Fact]
+    public async Task ResolveAsync_WhenRevokedTokenIsNoLongerResolvable_ShouldReturnNotFoundWithoutReadingOwner()
+    {
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetResolvableByTokenAsync(
+                ShareToken.Parse(TokenValue),
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
+        SharePublicationAccessResolver resolver = new SharePublicationAccessResolver(
+            publications.Object,
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            CreateSources());
+
+        ApplicationResult<ResolvedSharePublicationResult> result = await resolver.ResolveAsync(
+            TokenValue,
+            SharePublicationType.PersonalRanking,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "rating.shared-ranking.not-found");
+        publications.VerifyAll();
+    }
+
+    [Fact]
     public async Task ResolveAsync_WhenOwnerIsBlocked_ShouldExposeNoPublicProfile()
     {
         SharePublication publication = CreatePublishedPublication();

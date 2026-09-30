@@ -1,6 +1,20 @@
 {
-  "version": "5.4.32",
+  "version": "5.4.33",
   "history": [
+    {
+      "version": "5.4.33",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "La confidentialité entre les comptes a été renforcée.",
+        "en": "Privacy between accounts has been strengthened.",
+        "de": "Der Datenschutz zwischen Konten wurde verstärkt.",
+        "nl": "De privacy tussen accounts is versterkt.",
+        "it": "La privacy tra gli account è stata rafforzata.",
+        "es": "Se ha reforzado la privacidad entre cuentas.",
+        "pt": "A privacidade entre contas foi reforçada.",
+        "pl": "Wzmocniono prywatność między kontami."
+      }
+    },
     {
       "version": "5.4.32",
       "releasedAt": "2026-09-30",

@@ -139,6 +139,7 @@ public sealed class RatingsController : ControllerBase
     [HttpGet("me")]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [ProducesResponseType(typeof(PagedResponseDto<UserRatingListItemDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetMyRatingsAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? search = null, CancellationToken cancellationToken = default)
     {
@@ -163,6 +164,7 @@ public sealed class RatingsController : ControllerBase
     [HttpGet("me/rankings/parks")]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [ProducesResponseType(typeof(PagedResponseDto<UserParkRatingRankingDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetMyParkRankingsAsync(
         [FromQuery] PaginationRequestDto pagination,
@@ -196,6 +198,7 @@ public sealed class RatingsController : ControllerBase
     [HttpGet("me/rankings/park-items")]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [ProducesResponseType(typeof(PagedResponseDto<UserParkItemRatingRankingDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetMyParkItemRankingsAsync(
         [FromQuery] PaginationRequestDto pagination,
@@ -239,6 +242,7 @@ public sealed class RatingsController : ControllerBase
     [HttpGet("me/stats")]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [ProducesResponseType(typeof(UserRatingStatsDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetMyRatingStatsAsync(CancellationToken cancellationToken = default)
     {
@@ -260,6 +264,7 @@ public sealed class RatingsController : ControllerBase
     [HttpGet("{targetType}/{targetId}/me")]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [ProducesResponseType(typeof(UserRatingDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetMyRatingForTargetAsync([FromRoute] string targetType, [FromRoute] string targetId, CancellationToken cancellationToken = default)
     {
@@ -284,6 +289,7 @@ public sealed class RatingsController : ControllerBase
     [HttpPut]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [InvalidatesPublicCache(PublicCacheScope.Data)]
     [ProducesResponseType(typeof(UserRatingDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpsertAsync([FromBody] UserRatingUpsertDto request, CancellationToken cancellationToken = default)
@@ -313,6 +319,7 @@ public sealed class RatingsController : ControllerBase
     [HttpDelete("{targetType}/{targetId}/me")]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [InvalidatesPublicCache(PublicCacheScope.Data)]
     [ProducesResponseType(typeof(RatingSummaryDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteMyRatingForTargetAsync(
