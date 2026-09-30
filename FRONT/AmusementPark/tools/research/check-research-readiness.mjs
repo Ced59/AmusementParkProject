@@ -186,6 +186,11 @@ export function isResearchExtensionPath(candidatePath) {
 
 export function validateResearchCatalog(catalog) {
   const errors = [];
+  const canonicalProfiles = Array.isArray(catalog?.canonicalProfiles) ? catalog.canonicalProfiles : [];
+  const commonTasks = Array.isArray(catalog?.commonTasks) ? catalog.commonTasks : [];
+  const evidenceSchema = Array.isArray(catalog?.evidenceSchema) ? catalog.evidenceSchema : [];
+  const betaGates = Array.isArray(catalog?.betaGates) ? catalog.betaGates : [];
+  const programs = Array.isArray(catalog?.programs) ? catalog.programs : [];
   if (catalog?.schemaVersion !== 1) {
     errors.push('Le catalogue de recherche doit utiliser schemaVersion 1.');
   }
@@ -208,7 +213,7 @@ export function validateResearchCatalog(catalog) {
   }
 
   hasOnlyRequiredIds(catalog?.canonicalProfiles, requiredProfileIds, 'Profils', errors);
-  for (const profile of catalog?.canonicalProfiles ?? []) {
+  for (const profile of canonicalProfiles) {
     if (!isNonEmptyText(profile?.label)) {
       errors.push(`Profil ${profile?.id ?? '<sans-id>'}: libellé absent.`);
     }
@@ -216,18 +221,18 @@ export function validateResearchCatalog(catalog) {
 
   hasOnlyRequiredIds(catalog?.commonTasks, requiredTaskIds, 'Tâches communes', errors);
   for (let index = 0; index < requiredTaskIds.length; index += 1) {
-    if (catalog?.commonTasks?.[index]?.id !== requiredTaskIds[index]) {
+    if (commonTasks[index]?.id !== requiredTaskIds[index]) {
       errors.push(`Tâches communes: ${requiredTaskIds[index]} doit occuper la position ${index + 1}.`);
     }
   }
-  for (const task of catalog?.commonTasks ?? []) {
+  for (const task of commonTasks) {
     if (!isNonEmptyText(task?.instruction) || !isNonEmptyText(task?.comparableMeasure)) {
       errors.push(`Tâche ${task?.id ?? '<sans-id>'}: instruction ou mesure comparable absente.`);
     }
   }
 
   hasOnlyRequiredIds(catalog?.evidenceSchema, requiredEvidenceIds, 'Schéma de preuve', errors);
-  for (const field of catalog?.evidenceSchema ?? []) {
+  for (const field of evidenceSchema) {
     if (typeof field?.required !== 'boolean' || !isNonEmptyText(field?.constraint)) {
       errors.push(`Preuve ${field?.id ?? '<sans-id>'}: obligation ou contrainte absente.`);
     }
@@ -238,9 +243,17 @@ export function validateResearchCatalog(catalog) {
   }
 
   hasOnlyRequiredIds(catalog?.betaGates, requiredBetaGateIds, 'Gates bêta', errors);
-  for (const gate of catalog?.betaGates ?? []) {
-    if (!Array.isArray(gate?.requirements)
-      || gate.requirements.length < 3
+  for (let index = 0; index < requiredBetaGateIds.length; index += 1) {
+    if (betaGates[index]?.id !== requiredBetaGateIds[index]) {
+      errors.push(`Gates bêta: ${requiredBetaGateIds[index]} doit occuper la position ${index + 1}.`);
+    }
+  }
+  for (const gate of betaGates) {
+    if (!Array.isArray(gate?.requirements)) {
+      errors.push(`Gate ${gate?.id ?? '<sans-id>'}: exigences insuffisantes.`);
+      continue;
+    }
+    if (gate.requirements.length < 3
       || gate.requirements.some((requirement) => !isNonEmptyText(requirement))) {
       errors.push(`Gate ${gate?.id ?? '<sans-id>'}: exigences insuffisantes.`);
     }
@@ -259,8 +272,7 @@ export function validateResearchCatalog(catalog) {
     }
   }
 
-  const programs = catalog?.programs;
-  hasOnlyRequiredIds(programs, requiredProgramIds, 'Programmes', errors);
+  hasOnlyRequiredIds(catalog?.programs, requiredProgramIds, 'Programmes', errors);
   const knownProfiles = new Set(requiredProfileIds);
   const roadmapPaths = new Set();
   for (const program of programs ?? []) {
@@ -336,7 +348,7 @@ export function validateResearchCatalog(catalog) {
     }
   }
 
-  const outcomeConstraint = catalog?.evidenceSchema?.find((field) => field.id === 'outcome')?.constraint ?? '';
+  const outcomeConstraint = evidenceSchema.find((field) => field.id === 'outcome')?.constraint ?? '';
   for (const allowedOutcome of allowedOutcomeValues) {
     const outcomePattern = new RegExp(`(^|[^a-z-])${allowedOutcome}([^a-z-]|$)`, 'i');
     if (!outcomePattern.test(outcomeConstraint)) {
@@ -351,7 +363,7 @@ export async function validateResearchReadiness(catalogPath = defaultCatalogPath
   const catalog = JSON.parse(await readFile(catalogPath, 'utf8'));
   const errors = validateResearchCatalog(catalog);
 
-  for (const program of catalog.programs ?? []) {
+  for (const program of Array.isArray(catalog.programs) ? catalog.programs : []) {
     const documentPaths = [program.roadmap, ...(program.extensionDocuments ?? [])];
     for (const documentPath of documentPaths) {
       if (!isProductGrowthRoadmapPath(documentPath) && !isResearchExtensionPath(documentPath)) {

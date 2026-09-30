@@ -110,10 +110,26 @@ test('requires every canonical beta gate requirement in its stable order', () =>
     generalAvailability.requirements[1],
     generalAvailability.requirements[0],
   ];
+  [catalog.betaGates[0], catalog.betaGates[1]] = [catalog.betaGates[1], catalog.betaGates[0]];
 
   const errors = validateResearchCatalog(catalog);
   assert.ok(errors.some((error) => error.includes('closed-beta') && error.includes('données réelles')));
   assert.ok(errors.some((error) => error.includes('general-availability') && error.includes('position 1')));
+  assert.ok(errors.some((error) => error.includes('internal-alpha') && error.includes('position 1')));
+});
+
+test('reports malformed catalog collections without throwing', () => {
+  const catalog = validCatalog();
+  catalog.commonTasks = {};
+  catalog.evidenceSchema = null;
+  catalog.betaGates = [{ id: 'internal-alpha' }];
+  catalog.programs = {};
+
+  const errors = validateResearchCatalog(catalog);
+  assert.ok(errors.some((error) => error.includes('Tâches communes: tableau absent')));
+  assert.ok(errors.some((error) => error.includes('Schéma de preuve: tableau absent')));
+  assert.ok(errors.some((error) => error.includes('internal-alpha') && error.includes('insuffisantes')));
+  assert.ok(errors.some((error) => error.includes('Programmes: tableau absent')));
 });
 
 test('requires assistive and modest-context profiles for every program', () => {
