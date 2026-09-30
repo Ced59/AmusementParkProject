@@ -259,6 +259,24 @@ async function appendClientAssetChecks(report, config, baseUrl, fetchImplementat
   return report;
 }
 
+export function appendSsrModeChecks(report, config) {
+  for (const target of config.baseline.targets.filter((candidate) => candidate.kind === 'ssr-page')) {
+    const result = report.results.find((candidate) => candidate.key === target.key);
+    if (!result) {
+      continue;
+    }
+
+    const unexpectedModes = result.ssrModes
+      .filter((mode) => !target.allowedSsrModes.includes(mode));
+    if (result.ssrModes.length === 0) {
+      result.failures.push('mode SSR absent de la réponse publique');
+    } else if (unexpectedModes.length > 0) {
+      result.failures.push(`mode SSR inattendu: ${unexpectedModes.join(', ')}`);
+    }
+  }
+  return report;
+}
+
 function failedTargetKeys(report) {
   return new Set(report.results
     .filter((result) => result.failures.length > 0)
@@ -302,6 +320,7 @@ export async function runConfirmedProductionProbe(config, options = {}) {
 
   for (let index = 0; index < config.confirmationAttempts; index += 1) {
     const baselineReport = await runBaseline(config.baseline, { baseUrl });
+    appendSsrModeChecks(baselineReport, config);
     const report = options.skipClientAssetChecks
       ? baselineReport
       : await appendClientAssetChecks(baselineReport, config, baseUrl, options.fetchImplementation ?? globalThis.fetch);

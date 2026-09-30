@@ -58,6 +58,9 @@ Trois modes sont distingués :
 Le jalon n'invente donc ni métrique globale ni accès administrateur automatisé.
 Les sondes publiques couvrent accueil, parcs, classements, Park Fit, santé API et
 capacités publiques. Elles contrôlent statut, transport, p95 et taille maximale.
+Les trois pages destinées aux robots doivent en plus annoncer `SSR_CACHE_HIT` ou
+`SSR_RENDERED` : un repli CSR en HTTP 200 est traité comme une panne SEO, pas comme
+une disponibilité saine.
 Park Fit étant rendu côté client, la sonde charge en plus tous ses scripts et
 modules préchargés same-origin, retrouve l'import dynamique de la route exacte et
 charge son chunk paresseux. Chaque téléchargement reprend le timeout de huit

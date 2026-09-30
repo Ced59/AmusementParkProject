@@ -34,7 +34,7 @@ test('accepts a complete incident catalog and monitor mapping', () => {
   const config = {
     confirmationAttempts: 2,
     confirmationDelayMilliseconds: 10000,
-    baseline: { targets: [{ key: 'health', incidentId: 'production-rollback' }] },
+    baseline: { targets: [{ key: 'health', kind: 'api', incidentId: 'production-rollback' }] },
   };
 
   assert.deepEqual(validateCatalogStructure(catalog), []);
@@ -47,7 +47,7 @@ test('rejects a missing incident and a monitor bound to a manual runbook', () =>
   const config = {
     confirmationAttempts: 1,
     confirmationDelayMilliseconds: 5000,
-    baseline: { targets: [{ key: 'health', incidentId: 'orphaned-visit' }] },
+    baseline: { targets: [{ key: 'health', kind: 'api', incidentId: 'orphaned-visit' }] },
   };
 
   assert.ok(validateCatalogStructure(catalog).some((error) => error.includes('ranking-inconsistent')));

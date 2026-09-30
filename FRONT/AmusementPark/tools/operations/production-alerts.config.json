@@ -16,6 +16,7 @@
         "expectedStatus": 200,
         "maximumP95Milliseconds": 3000,
         "maximumBytes": 750000,
+        "allowedSsrModes": ["SSR_CACHE_HIT", "SSR_RENDERED"],
         "incidentId": "production-rollback"
       },
       {
@@ -25,6 +26,7 @@
         "expectedStatus": 200,
         "maximumP95Milliseconds": 3000,
         "maximumBytes": 750000,
+        "allowedSsrModes": ["SSR_CACHE_HIT", "SSR_RENDERED"],
         "incidentId": "production-rollback"
       },
       {
@@ -34,6 +36,7 @@
         "expectedStatus": 200,
         "maximumP95Milliseconds": 3000,
         "maximumBytes": 750000,
+        "allowedSsrModes": ["SSR_CACHE_HIT", "SSR_RENDERED"],
         "incidentId": "production-rollback"
       },
       {

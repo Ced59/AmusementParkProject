@@ -146,6 +146,13 @@ export function validateMonitorConfig(config, catalog) {
       && (typeof target.clientRoutePath !== 'string' || target.clientRoutePath.trim().length === 0)) {
       errors.push(`Cible ${target.key}: route cliente dynamique absente.`);
     }
+
+    if (target.kind === 'ssr-page'
+      && (!Array.isArray(target.allowedSsrModes)
+        || target.allowedSsrModes.length === 0
+        || target.allowedSsrModes.includes('CSR_FALLBACK'))) {
+      errors.push(`Cible ${target.key}: modes SSR sûrs absents ou invalides.`);
+    }
   }
   return errors;
 }

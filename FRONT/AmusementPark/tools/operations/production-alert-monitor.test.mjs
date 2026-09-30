@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  appendSsrModeChecks,
   confirmIncidents,
   extractLazyRouteAssetUrl,
   extractRequiredClientAssetUrls,
@@ -34,6 +35,30 @@ function report(failures) {
 test('confirms only a target failing every required attempt', () => {
   assert.equal(confirmIncidents(config, [report(['HTTP 503']), report(['HTTP 503'])]).length, 1);
   assert.deepEqual(confirmIncidents(config, [report(['HTTP 503']), report([])]), []);
+});
+
+test('rejects a CSR fallback and a missing SSR mode for crawler-facing targets', () => {
+  const ssrConfig = {
+    baseline: {
+      targets: [{
+        key: 'home',
+        kind: 'ssr-page',
+        allowedSsrModes: ['SSR_CACHE_HIT', 'SSR_RENDERED'],
+      }],
+    },
+  };
+  const fallbackReport = {
+    results: [{ key: 'home', ssrModes: ['CSR_FALLBACK'], failures: [] }],
+  };
+  const missingReport = {
+    results: [{ key: 'home', ssrModes: [], failures: [] }],
+  };
+
+  appendSsrModeChecks(fallbackReport, ssrConfig);
+  appendSsrModeChecks(missingReport, ssrConfig);
+
+  assert.deepEqual(fallbackReport.results[0].failures, ['mode SSR inattendu: CSR_FALLBACK']);
+  assert.deepEqual(missingReport.results[0].failures, ['mode SSR absent de la réponse publique']);
 });
 
 test('does not wait for confirmation when the first probe is healthy', async () => {
