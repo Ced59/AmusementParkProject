@@ -197,6 +197,26 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     .join('\n');
   assert.ok(validateResearchDocumentContent(passportProtocolPath, referenceOnlyPassportProtocol)
     .some((error) => error.includes('section obligatoire vide ou insuffisante ## Scénarios')));
+  const invisibleOnlyPassportProtocol = emptyPassportProtocol
+    .split('\n')
+    .flatMap((heading) => [
+      heading,
+      '<br><br><br><br><br><br>&nbsp;&#32;&#x20;\u200B',
+    ])
+    .join('\n');
+  assert.ok(validateResearchDocumentContent(passportProtocolPath, invisibleOnlyPassportProtocol)
+    .some((error) => error.includes('section obligatoire vide ou insuffisante ## Scénarios')));
+  const wrongScenarioOrderProtocol = emptyPassportProtocol.replace(
+    '## Scénarios',
+    [
+      '## Scénarios',
+      ...[...requiredTaskIds]
+        .reverse()
+        .map((taskId, index) => `${index + 1}. \`${taskId}\` — scénario suffisamment détaillé.`),
+    ].join('\n'),
+  );
+  assert.ok(validateResearchDocumentContent(passportProtocolPath, wrongScenarioOrderProtocol)
+    .some((error) => error.includes('ordre canonique des scénarios PASS modifié')));
   const indentedPassportProtocol = emptyPassportProtocol
     .split('\n')
     .map((heading) => `    ${heading}\n    Ce contenu reste un exemple de code non rendu.`)

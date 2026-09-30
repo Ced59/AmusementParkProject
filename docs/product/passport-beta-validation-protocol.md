@@ -40,15 +40,14 @@ Pour chaque session :
 
 ## Scénarios
 
-1. Créer une visite récente au jour exact.
-2. Ajouter plusieurs attractions, dont plusieurs tours de la même attraction.
-3. Ajouter une note de visite et une note sur un tour, puis expliquer avec ses propres mots laquelle influence la communauté.
-4. Retrouver les statistiques globales et expliquer un graphique sans se fier uniquement à sa couleur.
-5. Corriger une erreur, réordonner la timeline au toucher ou au clavier, puis terminer la visite.
-6. Créer une ancienne visite avec l'année seulement et traiter une attraction fermée.
-7. Exporter les données et vérifier qu'aucun identifiant technique n'est présenté comme information utile.
-8. Supprimer une donnée de test et expliquer ce qui va disparaître.
-9. Sans rappel ni assistance, revenir lors d'une session différée pour enregistrer et terminer une deuxième visite.
+1. `consent` — présenter la finalité, les données conservées, la rétention de la fiche et le droit d'arrêter, puis obtenir l'accord avant toute observation.
+2. `primary-value` — demander de créer une visite récente au jour exact, d'ajouter plusieurs attractions et plusieurs tours de la même attraction, sans indiquer le chemin.
+3. `core-concept-distinction` — faire ajouter une note de visite et une note sur un tour, puis demander laquelle influence la communauté et comment elle se distingue de la note globale actuelle.
+4. `label-comprehension` — faire retrouver les statistiques globales, relire les libellés déterminants et expliquer un graphique sans se fier uniquement à sa couleur.
+5. `privacy-export-deletion` — exporter les données, vérifier qu'aucun identifiant technique n'est présenté comme information utile, puis supprimer une donnée de test et expliquer précisément ce qui disparaît.
+6. `unknown-data` — créer une ancienne visite dont seule l'année est connue, traiter une attraction fermée et expliquer ce que l'interface permet réellement de conclure.
+7. `accessible-use` — corriger une erreur, réordonner la timeline au toucher ou au clavier, puis terminer la visite sur le mode d'entrée et le contexte d'appareil prévus.
+8. `delayed-return` — sans rappel ni assistance, revenir lors d'une session différée pour enregistrer et terminer une deuxième visite.
 
 ## Questions après chaque session
 

@@ -605,6 +605,10 @@ function hasMeaningfulSectionContent(lines, headingIndex) {
       && !isIndentedCodeLine(line)
       && !isMarkdownReferenceDefinition(line))
     .join(' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/&(?:nbsp|ensp|emsp|thinsp|hairsp|ZeroWidthSpace|zwnj|zwj|lrm|rlm|shy|#(?:9|10|13|32|160|173|819[2-9]|820[0-7]|8239|8288|65279)|#x(?:9|a|d|20|a0|ad|200[0-9a-f]|202f|2060|feff));/gi, ' ')
+    .replace(/[\u200B-\u200D\u2060\uFEFF]/g, '')
     .replace(/[`*_>#|\[\]():-]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
@@ -746,6 +750,19 @@ export function validateResearchDocumentContent(documentPath, content) {
       if (!sectionLines.includes(retentionRequirement.field)) {
         errors.push(`Document ${documentPath}: champ de rétention obligatoire absent ${retentionRequirement.field}.`);
       }
+    }
+  }
+
+  if (documentPath === 'docs/product/passport-beta-validation-protocol.md') {
+    const scenariosHeadingIndex = lines.findIndex((line) => markdownHeadingText(line) === '## Scénarios');
+    const scenarioTaskIds = scenariosHeadingIndex < 0
+      ? []
+      : markdownSectionBodyLines(lines, scenariosHeadingIndex)
+        .map((line) => line.match(/^\d+\.\s+`([^`]+)`\s+—/)?.[1])
+        .filter(Boolean);
+    if (scenarioTaskIds.length !== requiredTaskIds.length
+      || requiredTaskIds.some((taskId, index) => scenarioTaskIds[index] !== taskId)) {
+      errors.push(`Document ${documentPath}: ordre canonique des scénarios PASS modifié.`);
     }
   }
 
