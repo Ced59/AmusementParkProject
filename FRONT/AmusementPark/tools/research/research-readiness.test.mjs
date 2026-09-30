@@ -6,6 +6,7 @@ import {
   isResearchExtensionPath,
   requiredBetaGateIds,
   requiredBetaGateRequirements,
+  requiredCommonStopConditions,
   requiredEvidenceConstraints,
   requiredEvidenceIds,
   requiredExtensionDocumentsByProgram,
@@ -197,6 +198,18 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     .join('\n');
   assert.ok(validateResearchDocumentContent(passportProtocolPath, referenceOnlyPassportProtocol)
     .some((error) => error.includes('section obligatoire vide ou insuffisante ## Scénarios')));
+  const multilineReferenceOnlyPassportProtocol = emptyPassportProtocol
+    .split('\n')
+    .flatMap((heading, index) => [
+      heading,
+      `[criterion-${index}]:`,
+      `  https://example.com/a-sufficiently-long-hidden-target-${index}`,
+    ])
+    .join('\n');
+  assert.ok(validateResearchDocumentContent(
+    passportProtocolPath,
+    multilineReferenceOnlyPassportProtocol,
+  ).some((error) => error.includes('section obligatoire vide ou insuffisante ## Scénarios')));
   const invisibleOnlyPassportProtocol = emptyPassportProtocol
     .split('\n')
     .flatMap((heading) => [
@@ -291,6 +304,23 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     fencedTaskRows.replace(/```markdown[\s\S]*?```/, indentedTable),
   );
   assert.ok(indentedTableErrors.some((error) => error.includes('tableau de résultats canonique absent')));
+
+  const readmeWithoutAccessibilityStop = [
+    '# Protocole commun de recherche produit',
+    'Ce protocole décrit une recherche produit comparable et respectueuse.',
+    '## 2. Préparer une session',
+    'Préparer le consentement, les tâches et le contexte de test nécessaire.',
+    '## 3. Conduire les huit tâches',
+    'Conduire toutes les tâches dans leur ordre canonique sans guider immédiatement.',
+    '## 4. Séparer les faits des décisions',
+    'Consigner les observations avant les hypothèses et les décisions de produit.',
+    '## 5. Passer une gate de bêta',
+    'Vérifier les preuves de la phase et toute condition ouverte avant la décision.',
+    "## 6. Conditions d'arrêt communes",
+    ...requiredCommonStopConditions.filter((condition) => !condition.includes("accessibilité fondamentale")),
+  ].join('\n');
+  assert.ok(validateResearchDocumentContent(readmePath, readmeWithoutAccessibilityStop)
+    .some((error) => error.includes("conditions d'arrêt communes incomplètes")));
 
   for (const [programId, roadmapPath] of Object.entries(requiredRoadmapByProgram)) {
     assert.ok(validateResearchDocumentContent(roadmapPath, '# Roadmap incomplète')

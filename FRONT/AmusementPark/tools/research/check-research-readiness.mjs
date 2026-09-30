@@ -193,6 +193,20 @@ export const requiredEvidenceConstraints = Object.freeze({
 
 export const requiredStatusPolicyStatement = "Les protocoles sont exécutables, mais aucune observation terrain n'est revendiquée tant qu'une fiche de session consentie n'existe pas.";
 
+export const requiredCommonStopConditions = Object.freeze([
+  '- la valeur reste incomprise après des tests et corrections répétés ;',
+  "- la deuxième utilisation n'existe pas malgré une première activation réussie ;",
+  '- les données nécessaires ne peuvent pas être obtenues honnêtement ;',
+  '- la modération ou le support dépassent les moyens disponibles ;',
+  '- la charge, le coût ou les performances sont disproportionnés pour le VPS ;',
+  '- la confidentialité exige plus de données ou de complexité que la valeur ne le justifie ;',
+  "- l'accessibilité fondamentale ne peut pas être assurée ;",
+  '- la fonction produit principalement des erreurs ou de la défiance ;',
+  '- une source live devient juridiquement ou techniquement indisponible ;',
+  "- un modèle prédictif n'apporte pas de résultat supérieur à une référence simple ;",
+  "- une condition d'arrêt propre au programme est observée.",
+]);
+
 export const requiredBetaGateIds = Object.freeze([
   'internal-alpha',
   'closed-beta',
@@ -511,7 +525,30 @@ function isIndentedCodeLine(line) {
 }
 
 function isMarkdownReferenceDefinition(line) {
-  return /^ {0,3}\[[^\]]+\]:\s*\S+/.test(line);
+  return /^ {0,3}\[[^\]]+\]:/.test(line);
+}
+
+function excludeMarkdownReferenceDefinitions(lines) {
+  const visibleLines = [];
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (!isMarkdownReferenceDefinition(line)) {
+      visibleLines.push(line);
+      continue;
+    }
+
+    const definitionSuffix = line.replace(/^ {0,3}\[[^\]]+\]:\s*/, '');
+    if (definitionSuffix.length === 0
+      && index + 1 < lines.length
+      && /^ {1,3}\S/.test(lines[index + 1])) {
+      index += 1;
+    }
+    if (index + 1 < lines.length
+      && /^ {1,3}(?:"[^"]*"|'[^']*'|\([^)]*\))\s*$/.test(lines[index + 1])) {
+      index += 1;
+    }
+  }
+  return visibleLines;
 }
 
 function stripNonRenderedHtmlBlocks(content) {
@@ -599,11 +636,12 @@ function isMarkdownTableDelimiter(line, columnCount) {
 }
 
 function hasMeaningfulSectionContent(lines, headingIndex) {
-  const normalizedContent = excludeFencedCodeBlocks(markdownSectionBodyLines(lines, headingIndex))
+  const normalizedContent = excludeMarkdownReferenceDefinitions(
+    excludeFencedCodeBlocks(markdownSectionBodyLines(lines, headingIndex)),
+  )
     .filter((line) => !line.trim().startsWith('<!--')
       && markdownHeadingLevel(line) === null
-      && !isIndentedCodeLine(line)
-      && !isMarkdownReferenceDefinition(line))
+      && !isIndentedCodeLine(line))
     .join(' ')
     .replace(/<[^>]*>/g, ' ')
     .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
@@ -763,6 +801,21 @@ export function validateResearchDocumentContent(documentPath, content) {
     if (scenarioTaskIds.length !== requiredTaskIds.length
       || requiredTaskIds.some((taskId, index) => scenarioTaskIds[index] !== taskId)) {
       errors.push(`Document ${documentPath}: ordre canonique des scénarios PASS modifié.`);
+    }
+  }
+
+  if (documentPath === 'docs/product/research/README.md') {
+    const stopConditionsHeadingIndex = lines.findIndex((line) => markdownHeadingText(line) === "## 6. Conditions d'arrêt communes");
+    const stopConditionLines = stopConditionsHeadingIndex < 0
+      ? []
+      : markdownSectionBodyLines(lines, stopConditionsHeadingIndex)
+        .map((line) => line.trim())
+        .filter((line) => line.startsWith('- '));
+    if (stopConditionLines.length !== requiredCommonStopConditions.length
+      || requiredCommonStopConditions.some(
+        (condition, index) => stopConditionLines[index] !== condition,
+      )) {
+      errors.push(`Document ${documentPath}: conditions d'arrêt communes incomplètes ou réordonnées.`);
     }
   }
 

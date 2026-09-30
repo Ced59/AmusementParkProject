@@ -120,8 +120,11 @@ Réduire, arrêter ou redessiner la phase si :
 - les données nécessaires ne peuvent pas être obtenues honnêtement ;
 - la modération ou le support dépassent les moyens disponibles ;
 - la charge, le coût ou les performances sont disproportionnés pour le VPS ;
-- la confidentialité exige plus de données ou de complexité que la valeur ne le
-  justifie ;
+- la confidentialité exige plus de données ou de complexité que la valeur ne le justifie ;
+- l'accessibilité fondamentale ne peut pas être assurée ;
+- la fonction produit principalement des erreurs ou de la défiance ;
+- une source live devient juridiquement ou techniquement indisponible ;
+- un modèle prédictif n'apporte pas de résultat supérieur à une référence simple ;
 - une condition d'arrêt propre au programme est observée.
 
 Le constat est consigné même lorsqu'il suspend une généralisation. Il n'autorise
