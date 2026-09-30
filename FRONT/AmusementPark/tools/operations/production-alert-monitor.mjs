@@ -1,6 +1,7 @@
 import { appendFile, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import typescript from 'typescript';
 
 import { runPerformanceBaseline } from '../performance/performance-baseline.mjs';
 
@@ -91,6 +92,16 @@ async function probeJavaScriptAsset(
     const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
     if (!response.ok || (requireNonEmptyBody && source.length === 0) || !contentType.includes('javascript')) {
       return { failure: `${new URL(assetUrl).pathname}: bundle client invalide`, source: null };
+    }
+    const sourceFile = typescript.createSourceFile(
+      new URL(assetUrl).pathname,
+      source,
+      typescript.ScriptTarget.Latest,
+      false,
+      typescript.ScriptKind.JS,
+    );
+    if (sourceFile.parseDiagnostics.length > 0) {
+      return { failure: `${new URL(assetUrl).pathname}: syntaxe JavaScript invalide`, source: null };
     }
     return { failure: null, source };
   } catch {

@@ -68,3 +68,34 @@ test('rejects a runbook path that escapes the incident directory after normaliza
   assert.equal(isIncidentRunbookPath('docs/operations/incidents/../../roadmaps/example.md'), false);
   assert.equal(isIncidentRunbookPath('docs/operations/incidents'), false);
 });
+
+test('accepts stale SSR output but rejects client fallbacks and unknown modes', () => {
+  const incidents = requiredIncidentIds.map((id) => incident(
+    id,
+    id === 'production-rollback' ? { detectionMode: 'automated' } : {},
+  ));
+  const catalog = { schemaVersion: 1, incidents };
+  const configForModes = (allowedSsrModes) => ({
+    confirmationAttempts: 2,
+    confirmationDelayMilliseconds: 10000,
+    baseline: {
+      targets: [{
+        key: 'home',
+        kind: 'ssr-page',
+        incidentId: 'production-rollback',
+        allowedSsrModes,
+      }],
+    },
+  });
+
+  assert.deepEqual(
+    validateMonitorConfig(configForModes(['SSR_RENDERED', 'SSR_STALE']), catalog),
+    [],
+  );
+  assert.ok(validateMonitorConfig(configForModes(['CSR_FALLBACK']), catalog).some(
+    (error) => error.includes('modes SSR sûrs'),
+  ));
+  assert.ok(validateMonitorConfig(configForModes(['SSR_UNKNOWN']), catalog).some(
+    (error) => error.includes('modes SSR sûrs'),
+  ));
+});

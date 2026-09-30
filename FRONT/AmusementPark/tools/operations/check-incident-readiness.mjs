@@ -33,6 +33,7 @@ export const requiredRunbookHeadings = Object.freeze([
 
 const allowedSeverities = new Set(['medium', 'high', 'critical']);
 const allowedDetectionModes = new Set(['automated', 'admin-diagnostic', 'support-escalation']);
+const safeSsrModes = new Set(['SSR_CACHE_HIT', 'SSR_RENDERED', 'SSR_STALE']);
 const requiredTextFields = [
   'id',
   'title',
@@ -150,7 +151,7 @@ export function validateMonitorConfig(config, catalog) {
     if (target.kind === 'ssr-page'
       && (!Array.isArray(target.allowedSsrModes)
         || target.allowedSsrModes.length === 0
-        || target.allowedSsrModes.includes('CSR_FALLBACK'))) {
+        || target.allowedSsrModes.some((mode) => !safeSsrModes.has(mode)))) {
       errors.push(`Cible ${target.key}: modes SSR sûrs absents ou invalides.`);
     }
   }

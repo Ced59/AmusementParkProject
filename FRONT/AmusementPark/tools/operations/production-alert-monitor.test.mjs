@@ -146,7 +146,7 @@ test('reports a missing client bundle even when the CSR shell returns HTTP 200',
 });
 
 test('finds and verifies the lazy-loaded chunk for the exact client route', async () => {
-  const mainSource = '},{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js").then(i=>i.ParkFitStartPageComponent)},{';
+  const mainSource = 'const routes=[{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js").then(i=>i.ParkFitStartPageComponent)}];export{routes};';
   assert.equal(
     extractLazyRouteAssetUrl('https://amusement-parks.fun/main.js', mainSource, 'park-fit'),
     'https://amusement-parks.fun/chunk-PARK.js',
@@ -203,7 +203,7 @@ test('reports a missing transitive static import from the Park Fit route chunk',
       status: 200,
       headers: { 'content-type': 'text/html' },
     })],
-    ['https://amusement-parks.fun/main.js', new Response('},{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js")},{', {
+    ['https://amusement-parks.fun/main.js', new Response('const routes=[{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js")}];export{routes};', {
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
@@ -223,6 +223,27 @@ test('reports a missing transitive static import from the Park Fit route chunk',
   );
 
   assert.deepEqual(result.failures, ['/chunk-MISSING.js: bundle client invalide']);
+});
+
+test('rejects a malformed client bundle even when HTTP and MIME type are valid', async () => {
+  const responses = new Map([
+    ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
+      status: 200,
+      headers: { 'content-type': 'text/html' },
+    })],
+    ['https://amusement-parks.fun/main.js', new Response('export const broken = ;', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+  ]);
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    { path: '/fr/park-fit', expectedStatus: 200 },
+    async (url) => responses.get(String(url)),
+  );
+
+  assert.equal(result.assetCount, 0);
+  assert.deepEqual(result.failures, ['/main.js: syntaxe JavaScript invalide']);
 });
 
 test('bounds a stalled CSR shell request with the configured timeout', async () => {
