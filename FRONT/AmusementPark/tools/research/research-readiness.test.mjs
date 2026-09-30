@@ -91,6 +91,22 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     validateResearchDocumentContent(readmePath, contentWithoutStopConditions),
     [`Document ${readmePath}: section obligatoire absente ## 6. Conditions d'arrêt communes.`],
   );
+
+  const passportProtocolPath = 'docs/product/passport-beta-validation-protocol.md';
+  const incompletePassportProtocol = [
+    '# Protocole de validation de la bêta passeport',
+    '## Objectif',
+    '## Cohorte minimale',
+    '## Préparation',
+    '## Scénarios',
+    '## Fiche de résultat',
+  ].join('\n');
+  const passportErrors = validateResearchDocumentContent(
+    passportProtocolPath,
+    incompletePassportProtocol,
+  );
+  assert.ok(passportErrors.some((error) => error.includes('Critères de validation qualitative')));
+  assert.ok(passportErrors.some((error) => error.includes("Conditions d'arrêt")));
 });
 
 test('rejects a missing program and duplicate canonical task', () => {

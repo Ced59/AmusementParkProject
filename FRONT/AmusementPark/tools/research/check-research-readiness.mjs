@@ -149,6 +149,16 @@ export const requiredProtocolDocumentHeadings = Object.freeze({
     '## Synthèse minimisée',
     '## Clôture',
   ]),
+  'docs/product/passport-beta-validation-protocol.md': Object.freeze([
+    '# Protocole de validation de la bêta passeport',
+    '## Objectif',
+    '## Cohorte minimale',
+    '## Préparation',
+    '## Scénarios',
+    '## Fiche de résultat',
+    '## Critères de validation qualitative `PASS-G` — suivi non bloquant',
+    "## Conditions d'arrêt ou de réduction",
+  ]),
 });
 
 const allowedOutcomeValues = ['unassisted', 'assisted', 'failed', 'not-observable'];
