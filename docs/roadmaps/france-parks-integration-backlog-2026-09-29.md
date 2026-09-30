@@ -35,8 +35,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 40 | 6 |
-| **Total** | **225** | **191** |
+| Attractions autonomes à migrer ou intégrer | 40 | 5 |
+| **Total** | **225** | **190** |
 
 ## 1. Fiches publiques à compléter
 
@@ -242,7 +242,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] Station du Col de Rousset — parc legacy `54e5eeb7-cea4-4247-b7bc-3fd455c18cdc`
 - [ ] Super Besse — parc legacy `743d2391-56c6-4ad1-be72-cf993ccf65ce`
 - [ ] Syndicat Mixte des Monts Jura — parc legacy `97044a7e-cd42-48a2-a1a9-a7a7f12ad613`
 - [ ] Tricky Track - Station du Lac Blanc — parc legacy `e3efaca9-683f-4938-915f-22c91f35b132`
