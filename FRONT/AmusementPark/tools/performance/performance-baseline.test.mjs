@@ -38,5 +38,6 @@ test('summarizes errors separately and evaluates explicit budgets', () => {
   assert.equal(summary.p50Milliseconds, 45);
   assert.deepEqual(summary.statuses, { 200: 1, 503: 1 });
   assert.deepEqual(summary.outcomes, { success: 1, server_error: 1 });
+  assert.equal(summary.missingSsrModeCount, 1);
   assert.deepEqual(evaluateSummary(target, summary), ['1 réponse(s) avec un statut inattendu']);
 });

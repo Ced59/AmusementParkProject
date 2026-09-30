@@ -53,12 +53,22 @@ test('rejects a CSR fallback and a missing SSR mode for crawler-facing targets',
   const missingReport = {
     results: [{ key: 'home', ssrModes: [], failures: [] }],
   };
+  const intermittentlyMissingReport = {
+    results: [{
+      key: 'home',
+      ssrModes: ['SSR_RENDERED'],
+      missingSsrModeCount: 1,
+      failures: [],
+    }],
+  };
 
   appendSsrModeChecks(fallbackReport, ssrConfig);
   appendSsrModeChecks(missingReport, ssrConfig);
+  appendSsrModeChecks(intermittentlyMissingReport, ssrConfig);
 
   assert.deepEqual(fallbackReport.results[0].failures, ['mode SSR inattendu: CSR_FALLBACK']);
   assert.deepEqual(missingReport.results[0].failures, ['mode SSR absent de la réponse publique']);
+  assert.deepEqual(intermittentlyMissingReport.results[0].failures, ['mode SSR absent de la réponse publique']);
 });
 
 test('does not wait for confirmation when the first probe is healthy', async () => {

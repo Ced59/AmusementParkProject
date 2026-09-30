@@ -268,7 +268,7 @@ export function appendSsrModeChecks(report, config) {
 
     const unexpectedModes = result.ssrModes
       .filter((mode) => !target.allowedSsrModes.includes(mode));
-    if (result.ssrModes.length === 0) {
+    if (result.ssrModes.length === 0 || result.missingSsrModeCount > 0) {
       result.failures.push('mode SSR absent de la réponse publique');
     } else if (unexpectedModes.length > 0) {
       result.failures.push(`mode SSR inattendu: ${unexpectedModes.join(', ')}`);

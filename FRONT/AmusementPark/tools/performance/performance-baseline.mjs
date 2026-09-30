@@ -57,6 +57,7 @@ export function summarizeSamples(target, samples) {
     outcomes,
     buildVersions: [...new Set(samples.map((sample) => sample.buildVersion).filter(Boolean))],
     ssrModes: [...new Set(samples.map((sample) => sample.ssrMode).filter(Boolean))],
+    missingSsrModeCount: samples.filter((sample) => !sample.ssrMode).length,
   };
 }
 
