@@ -1,5 +1,10 @@
 # Protocole de validation de la bêta passeport
 
+> Ce document est l'extension détaillée de `PASS` dans le
+> [protocole commun QUAL-10](research/README.md). Le catalogue transverse reste
+> l'autorité pour les profils, l'ordre des tâches, les statuts de preuve et les
+> gates ; cette extension précise uniquement les scénarios propres au Passeport.
+
 ## Objectif
 
 Vérifier que le passeport apporte plus de valeur qu'un tableur ou une note libre, que ses différents types de notes sont compris et qu'au moins quelques testeurs reviennent terminer une deuxième visite sans assistance.

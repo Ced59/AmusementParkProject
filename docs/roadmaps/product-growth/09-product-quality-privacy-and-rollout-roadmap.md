@@ -833,7 +833,7 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-07`](../../architecture/product-growth-qual-07-accessibility-i18n-automation-2026-09-30.md) | Automatisation accessibilité/i18n — livré le 30 septembre 2026 | Régressions détectées |
 | [`QUAL-08`](../../architecture/product-growth-qual-08-cross-user-security-tests-2026-09-30.md) | Tests cross-user et sécurité — livré le 30 septembre 2026 | Parcours critiques |
 | [`QUAL-09`](../../architecture/product-growth-qual-09-runbooks-alerting-2026-09-30.md) | Runbooks et alerting — livré le 30 septembre 2026 | Incidents opérables |
-| `QUAL-10` | Protocole beta/recherche | Tests comparables |
+| [`QUAL-10`](../../architecture/product-growth-qual-10-beta-research-protocols-2026-09-30.md) | Protocole bêta/recherche — livré le 30 septembre 2026 | Tests comparables |
 | `QUAL-11+` | Tranche transverse par roadmap | Gate locale documentée |
 
 ### Implémentation `QUAL-01` — 29 septembre 2026
@@ -966,6 +966,23 @@ ne soit pas considérée saine ; le chunk paresseux de la route exacte est égal
 chargé avec un timeout borné. La CI empêche qu'une politique, une cible automatisée
 ou une étape de runbook devienne orpheline. Aucun service VPS, secret, compte
 technique, stockage MongoDB ou collecte utilisateur n'est ajouté.
+
+### Implémentation `QUAL-10` — 30 septembre 2026
+
+Les huit familles produit disposent désormais d'un protocole commun exécutable.
+Le catalogue QUAL-10 fixe sept profils canoniques, huit tâches comparables, dix
+dimensions de synthèse, quatre résultats observables et les gates alpha, bêta
+fermée, bêta ouverte limitée et généralisation. Chaque programme conserve sa
+question métier, son premier succès, ses inconnues, ses conditions d'arrêt et ses
+preuves propres sans dupliquer l'autorité transverse.
+
+L'état `protocol-ready` reste strictement distinct d'une preuve terrain : aucune
+session ni valeur répétée n'est revendiquée. L'absence de cohorte ne bloque pas les
+livraisons techniques et métier indépendantes, conformément à la décision produit,
+mais la généralisation sans observation consentie reste interdite. La CI vérifie
+les huit programmes, les profils d'assistance et d'appareil modeste, les contextes
+privacy/export/suppression, les retours différés et les documents référencés. Aucun
+schéma MongoDB, contrat applicatif, écran ou collecte utilisateur n'est ajouté.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

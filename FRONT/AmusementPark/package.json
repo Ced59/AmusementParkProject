@@ -36,6 +36,8 @@
     "operations:readiness": "node tools/operations/check-incident-readiness.mjs",
     "operations:readiness:test": "node --test tools/operations/incident-readiness.test.mjs tools/operations/production-alert-monitor.test.mjs",
     "operations:production-monitor": "node tools/operations/production-alert-monitor.mjs",
+    "research:readiness": "node tools/research/check-research-readiness.mjs",
+    "research:readiness:test": "node --test tools/research/research-readiness.test.mjs",
     "i18n:build": "node tools/i18n-build.mjs",
     "i18n:check": "node tools/i18n-build.mjs --check && node tools/i18n-check.mjs"
   },
