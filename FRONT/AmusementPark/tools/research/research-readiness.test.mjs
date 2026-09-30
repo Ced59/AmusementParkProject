@@ -114,6 +114,7 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   );
   assert.ok(passportErrors.some((error) => error.includes('Critères de validation qualitative')));
   assert.ok(passportErrors.some((error) => error.includes("Conditions d'arrêt")));
+  assert.ok(passportErrors.some((error) => error.includes('critères canoniques de gate')));
 
   const emptyPassportProtocol = [
     '# Protocole de validation de la bêta passeport',
@@ -328,8 +329,12 @@ test('rejects empty or structurally incomplete required protocol documents', () 
         || error.includes(`\`${programId}-G\` — socle technique`)));
 
     const [gateHeading] = requiredProtocolDocumentHeadings[roadmapPath];
-    assert.ok(validateResearchDocumentContent(roadmapPath, gateHeading)
-      .some((error) => error.includes('section obligatoire vide ou insuffisante')));
+    const gateWithoutCriteriaErrors = validateResearchDocumentContent(
+      roadmapPath,
+      `${gateHeading}\n\nCette phrase seule ne remplace pas les critères obligatoires de la gate.`,
+    );
+    assert.ok(gateWithoutCriteriaErrors
+      .some((error) => error.includes('critères canoniques de gate')));
     assert.ok(validateResearchDocumentContent(
       roadmapPath,
       `${gateHeading}\n\n### Ceci est seulement un sous-titre descriptif assez long`,

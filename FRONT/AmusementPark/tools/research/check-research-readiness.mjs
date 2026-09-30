@@ -496,6 +496,132 @@ export const requiredProtocolDocumentHeadings = Object.freeze({
   ]),
 });
 
+export const requiredGateCriteriaByDocument = Object.freeze({
+  "docs/roadmaps/product-growth/01-ranking-trust-and-methodology-roadmap.md": Object.freeze([
+    "- aucune cible à moins de 10 contributeurs uniques n’a de rang principal ;",
+    "- les tendances faibles restent consultables sans être présentées comme établies ;",
+    "- le nombre de personnes et le nombre d’observations sont distincts ;",
+    "- la méthodologie courante est publique, traduite, versionnée et liée partout ;",
+    "- les calculs existants sont couverts par des tests de référence ;",
+    "- un changement de seuil peut être simulé, audité et annulé ;",
+    "- la future note par visite est explicitement exclue du nombre de votes communautaires ;",
+    "- les caches ne conservent pas un ancien rang après passage sous le seuil ;",
+    "- les performances restent compatibles avec le VPS ;",
+    "- le produit préfère afficher « données insuffisantes » plutôt qu’une précision injustifiée.",
+  ]),
+  "docs/roadmaps/product-growth/02-visit-passport-and-ride-log-roadmap.md": Object.freeze([
+    "- le modèle sépare physiquement et conceptuellement préférence globale et observations ;",
+    "- chaque visite et occurrence appartient uniquement à son utilisateur ;",
+    "- une personne peut noter chaque visite de parc et chaque occurrence d’élément ;",
+    "- plusieurs rides ne créent aucun vote communautaire supplémentaire ;",
+    "- les dates partielles restent partielles ;",
+    "- les cibles fermées ou renommées ne détruisent pas l’historique ;",
+    "- les opérations sont idempotentes et les conflits visibles ;",
+    "- les statistiques de référence sont reproductibles ;",
+    "- une tendance n’est pas affichée sous le seuil ;",
+    "- export et suppression sont complets ;",
+    "- le Web est utilisable sur mobile sans constituer une application mobile ;",
+    "- les coûts de requête et de stockage restent compatibles avec le VPS ;",
+    "- aucun libellé ne fait croire que la moyenne personnelle temporelle est une vérité communautaire.",
+  ]),
+  "docs/roadmaps/product-growth/03-shareable-recaps-and-comparisons-roadmap.md": Object.freeze([
+    "- aucun objet n’est public par défaut ;",
+    "- chaque champ visible résulte d’une politique explicite ;",
+    "- dates précises et commentaires privés sont masqués par défaut ;",
+    "- aperçu, HTML SSR, API et image sociale exposent le même périmètre ;",
+    "- les liens sont opaques, rotatifs et révocables ;",
+    "- une source modifiée ne publie pas silencieusement de nouvelles données ;",
+    "- les comparaisons exigent deux consentements ;",
+    "- les faibles volumes ne produisent pas de compatibilité pseudo-précise ;",
+    "- export et suppression couvrent toutes les publications ;",
+    "- l’ouverture d’un partage peut conduire au Passeport sans dark pattern ;",
+    "- la fonction reste exploitable sans fil social ni chat ;",
+    "- les premiers testeurs comprennent ce qui est public avant de confirmer.",
+  ]),
+  "docs/roadmaps/product-growth/04-park-fit-recommendation-and-comparison-roadmap.md": Object.freeze([
+    "- aucun parc n’est recommandé sans franchir la gate de données ;",
+    "- compatible, incompatible et inconnu sont distincts ;",
+    "- chaque résultat explique ses facteurs ;",
+    "- chaque restriction critique possède une source et une date ;",
+    "- les profils restent privés et minimisés ;",
+    "- aucune donnée de santé détaillée n’est stockée ;",
+    "- le score n’est pas présenté comme probabilité ;",
+    "- les inconnues peuvent réduire ou suspendre le résultat ;",
+    "- le produit ne remplace pas la confirmation officielle ;",
+    "- l’ordre ne dépend d’aucun partenariat ;",
+    "- un premier résultat utile est accessible sans compte ;",
+    "- les tests terrain confirment que les utilisateurs comprennent pourquoi un parc ressort ;",
+    "- le nombre de corrections et les données manquantes restent opérables.",
+  ]),
+  "docs/roadmaps/product-growth/05-favorites-watchlists-and-factual-alerts-roadmap.md": Object.freeze([
+    "- collections et surveillances sont sémantiquement distinctes ;",
+    "- aucune alerte ne part sans source et vérification ;",
+    "- les inconnues et corrections sont visibles ;",
+    "- les doublons sont supprimés par clé logique ;",
+    "- l’e-mail est opt-in, désabonnable et non requis ;",
+    "- la priorité ne dépend pas du potentiel commercial ;",
+    "- les listes restent privées ;",
+    "- aucune notification n’est créée pour une simple consultation ;",
+    "- une rétractation déjà distribuée produit une correction adaptée ;",
+    "- la charge et le volume sont bornés ;",
+    "- l’utilisateur peut tout exporter et supprimer ;",
+    "- les formulations restent factuelles même si une formulation sensationnelle obtiendrait plus de clics.",
+  ]),
+  "docs/roadmaps/product-growth/06-collaborative-trip-planning-roadmap.md": Object.freeze([
+    "- un voyage individuel apporte déjà de la valeur ;",
+    "- l’invitation n’est pas un prétexte artificiel à la création de compte ;",
+    "- rôles et permissions sont appliqués dans l’Application ;",
+    "- un participant contrôle et supprime ses données ;",
+    "- l’aperçu d’invitation ne fuit aucune contrainte ;",
+    "- faits officiels et choix du groupe sont distincts ;",
+    "- les désaccords restent visibles ;",
+    "- aucun vote majoritaire ne transforme une incompatibilité en compatibilité ;",
+    "- les modifications concurrentes ne s’écrasent pas silencieusement ;",
+    "- aucune visite n’est créée automatiquement après le voyage ;",
+    "- le produit fonctionne sans chat, GPS ou paiement ;",
+    "- les premiers groupes arrivent à une décision et réutilisent le plan sur une visite réelle.",
+  ]),
+  "docs/roadmaps/product-growth/07-park-history-explorer-roadmap.md": Object.freeze([
+    "- dates partielles et incertitudes sont conservées ;",
+    "- chaque fait public possède une source ou un état explicitement non certain ;",
+    "- aucune relation de remplacement n’est déduite silencieusement ;",
+    "- la vue à une date distingue ouvert, possiblement ouvert et inconnu ;",
+    "- la couverture est affichée ;",
+    "- les cibles renommées/fermées restent accessibles dans l’histoire ;",
+    "- les anciennes visites peuvent être saisies sans inventer une date ;",
+    "- les caches sont invalidés après correction ;",
+    "- les pages SEO ne prétendent pas être exhaustives sans couverture ;",
+    "- les médias sont contextualisés et licenciés ;",
+    "- le pilote démontre que l’explorateur apporte une valeur différente d’une simple liste d’événements.",
+  ]),
+  "docs/roadmaps/product-growth/08-live-wait-times-and-crowd-intelligence-roadmap.md": Object.freeze([
+    "- la source et ses droits sont documentés ;",
+    "- chaque observation conserve sa provenance ;",
+    "- les mappings sont vérifiés et versionnés ;",
+    "- `0`, `fermé`, `inconnu`, `stale` et `expired` sont distincts ;",
+    "- l’âge est toujours visible ;",
+    "- une donnée expirée ne reste pas présentée comme live ;",
+    "- les sources divergentes ne sont pas fusionnées secrètement ;",
+    "- la charge et le stockage sont bornés ;",
+    "- le kill switch fonctionne ;",
+    "- les alertes sont opt-in, temporaires et anti-oscillation ;",
+    "- l’historique respecte la licence ;",
+    "- aucune prévision n’existe avant couverture et backtest ;",
+    "- toute prévision affiche intervalle, méthode, date et erreur ;",
+    "- l’ordre des suggestions n’est pas sponsorisé ;",
+    "- le projet est prêt à renoncer à la fonctionnalité si elle apporte plus d’incertitude que de valeur.",
+  ]),
+  "docs/product/passport-beta-validation-protocol.md": Object.freeze([
+    "- toutes les garanties techniques de la roadmap PASS sont encore vérifiées ;",
+    "- plusieurs testeurs ont terminé une seconde visite sans assistance ;",
+    "- aucun problème critique de confidentialité, d'ownership, d'export ou de suppression ne reste ouvert ;",
+    "- les notes sont correctement distinguées pendant les entretiens ;",
+    "- le parcours est utilisable à 320, 360, 390 et 768 pixels, au zoom 200 %, au clavier et avec lecteur d'écran ;",
+    "- la requête d'agrégation et les écritures Matomo restent compatibles avec le VPS ;",
+    "- les limites et résultats non conclusifs sont consignés.",
+  ]),
+});
+
 const allowedOutcomeValues = ['unassisted', 'assisted', 'failed', 'not-observable'];
 const minimumResearchSectionContentLength = 20;
 const sessionResultTableHeaders = Object.freeze([
@@ -727,6 +853,23 @@ export function validateResearchDocumentContent(documentPath, content) {
       errors.push(`Document ${documentPath}: section obligatoire absente ${heading}.`);
     } else if (!hasMeaningfulSectionContent(lines, headingIndex)) {
       errors.push(`Document ${documentPath}: section obligatoire vide ou insuffisante ${heading}.`);
+    }
+  }
+
+  const requiredGateCriteria = requiredGateCriteriaByDocument[documentPath];
+  if (requiredGateCriteria) {
+    const gateHeading = documentPath === 'docs/product/passport-beta-validation-protocol.md'
+      ? '## Critères de validation qualitative `PASS-G` — suivi non bloquant'
+      : requiredProtocolDocumentHeadings[documentPath][0];
+    const gateHeadingIndex = lines.findIndex((line) => markdownHeadingText(line) === gateHeading);
+    const gateCriteriaLines = gateHeadingIndex < 0
+      ? []
+      : markdownSectionBodyLines(lines, gateHeadingIndex)
+        .map((line) => line.trim())
+        .filter((line) => line.startsWith('- '));
+    if (gateCriteriaLines.length !== requiredGateCriteria.length
+      || requiredGateCriteria.some((criterion, index) => gateCriteriaLines[index] !== criterion)) {
+      errors.push(`Document ${documentPath}: critères canoniques de gate incomplets ou réordonnés.`);
     }
   }
 

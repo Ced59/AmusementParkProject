@@ -2,7 +2,7 @@
 
 Date : 30 septembre 2026
 
-Version : 5.4.36
+Version : 5.4.37
 
 Statut : implémenté
 
