@@ -91,6 +91,20 @@ describe('StandaloneAttractionVisitorInformationFacade', () => {
     expect(facade.openingHoursState().kind).toBe('ready');
   });
 
+  it('continues the lookup when todays only opening interval has ended', () => {
+    facade.load('standalone-1');
+    const previewResponse: Subject<ParkOpeningHoursCalendar> = openingHoursResponses.get('standalone-1')!;
+
+    previewResponse.next(createOpeningHours([
+      createOpenDay('2026-09-30', '07:00', '08:00')
+    ]));
+
+    expect(openingHoursRanges).toEqual([
+      { from: '2026-09-28', to: '2026-10-14' },
+      { from: '2026-10-15', to: '2027-10-05' }
+    ]);
+  });
+
   it('ignores visitor information returned for a previous attraction', () => {
     facade.load('standalone-1');
     facade.load('standalone-2');
@@ -124,15 +138,19 @@ function createOpeningHours(
   };
 }
 
-function createOpenDay(localDate: string): ParkOpeningHoursDay {
+function createOpenDay(
+  localDate: string,
+  opensAt: string = '09:00',
+  closesAt: string = '18:00'
+): ParkOpeningHoursDay {
   return {
     localDate,
     isClosed: false,
     isDefined: true,
     sourceKind: 'RegularRule',
     timeRanges: [{
-      opensAt: '09:00',
-      closesAt: '18:00',
+      opensAt,
+      closesAt,
       closesNextDay: false,
       lastAdmissionNextDay: false
     }]

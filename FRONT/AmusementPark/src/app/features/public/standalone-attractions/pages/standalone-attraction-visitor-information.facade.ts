@@ -1,7 +1,11 @@
 import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { ParkOpeningHoursCalendar, ParkOpeningHoursDay } from '@app/models/parks/park-opening-hours';
+import {
+  ParkOpeningHoursCalendar,
+  ParkOpeningHoursDay,
+  ParkOpeningHoursTimeRange
+} from '@app/models/parks/park-opening-hours';
 import { ParkPricing } from '@app/models/parks/park-pricing';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
@@ -131,10 +135,119 @@ export class StandaloneAttractionVisitorInformationFacade {
   }
 
   private hasCurrentOrFutureOpening(calendar: ParkOpeningHoursCalendar): boolean {
-    const today: string = this.formatLocalDate(new Date());
-    return (calendar.days ?? []).some((day: ParkOpeningHoursDay): boolean => {
-      return day.localDate >= today && !day.isClosed && day.timeRanges.length > 0;
-    });
+    const parkNow: { localDate: string; minutes: number } = this.resolveParkNow(
+      calendar.timeZoneId,
+      new Date()
+    );
+    const previousDay: ParkOpeningHoursDay | null = calendar.days.find(
+      (day: ParkOpeningHoursDay): boolean => day.localDate === this.addDaysToLocalDate(parkNow.localDate, -1)
+    ) ?? null;
+    if (this.findActiveRange(previousDay, parkNow.minutes + 1440, true) !== null) {
+      return true;
+    }
+
+    for (const day of calendar.days ?? []) {
+      if (day.isClosed || day.timeRanges.length === 0) {
+        continue;
+      }
+
+      const dayOffset: number = this.diffLocalDatesInDays(parkNow.localDate, day.localDate);
+      if (dayOffset < 0) {
+        continue;
+      }
+
+      for (const range of day.timeRanges) {
+        const opensAt: number = (dayOffset * 1440) + this.toMinutes(range.opensAt);
+        const closesAt: number = (dayOffset * 1440) + this.toMinutes(range.closesAt)
+          + (range.closesNextDay ? 1440 : 0);
+        if (parkNow.minutes >= opensAt && parkNow.minutes < closesAt) {
+          return true;
+        }
+
+        if (opensAt > parkNow.minutes) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  private findActiveRange(
+    day: ParkOpeningHoursDay | null,
+    currentMinutes: number,
+    requireNextDay: boolean
+  ): ParkOpeningHoursTimeRange | null {
+    if (!day || day.isClosed) {
+      return null;
+    }
+
+    return day.timeRanges.find((range: ParkOpeningHoursTimeRange): boolean => {
+      if (requireNextDay && !range.closesNextDay) {
+        return false;
+      }
+
+      const opensAt: number = this.toMinutes(range.opensAt);
+      const closesAt: number = this.toMinutes(range.closesAt) + (range.closesNextDay ? 1440 : 0);
+      return currentMinutes >= opensAt && currentMinutes < closesAt;
+    }) ?? null;
+  }
+
+  private resolveParkNow(
+    timeZoneId: string | null | undefined,
+    now: Date
+  ): { localDate: string; minutes: number } {
+    let parts: Intl.DateTimeFormatPart[];
+    try {
+      parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: timeZoneId || undefined,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23'
+      }).formatToParts(now);
+    } catch {
+      parts = new Intl.DateTimeFormat('en-CA', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23'
+      }).formatToParts(now);
+    }
+
+    const valueByType: Record<string, string> = Object.fromEntries(
+      parts.map((part: Intl.DateTimeFormatPart) => [part.type, part.value])
+    );
+    const hour: number = Number(valueByType['hour'] ?? '0');
+    const minute: number = Number(valueByType['minute'] ?? '0');
+    return {
+      localDate: `${valueByType['year']}-${valueByType['month']}-${valueByType['day']}`,
+      minutes: (hour * 60) + minute
+    };
+  }
+
+  private addDaysToLocalDate(localDate: string, offset: number): string {
+    const parts: number[] = localDate.split('-').map((part: string): number => Number(part));
+    const date: Date = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+    date.setUTCDate(date.getUTCDate() + offset);
+    return date.toISOString().slice(0, 10);
+  }
+
+  private diffLocalDatesInDays(fromLocalDate: string, toLocalDate: string): number {
+    const fromParts: number[] = fromLocalDate.split('-').map((part: string): number => Number(part));
+    const toParts: number[] = toLocalDate.split('-').map((part: string): number => Number(part));
+    const fromTime: number = Date.UTC(fromParts[0], fromParts[1] - 1, fromParts[2]);
+    const toTime: number = Date.UTC(toParts[0], toParts[1] - 1, toParts[2]);
+    return Math.round((toTime - fromTime) / 86400000);
+  }
+
+  private toMinutes(value: string): number {
+    const parts: number[] = value.split(':').map((part: string): number => Number(part));
+    return ((parts[0] || 0) * 60) + (parts[1] || 0);
   }
 
   private mergeOpeningHoursCalendars(

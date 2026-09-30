@@ -239,8 +239,8 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         using JsonDocument document = JsonDocument.Parse(Encoding.UTF8.GetString(result.Value!.Content));
-        Assert.Equal(JsonValueKind.Null, document.RootElement.GetProperty("openingHours").ValueKind);
-        Assert.Equal(JsonValueKind.Null, document.RootElement.GetProperty("pricing").ValueKind);
+        Assert.False(document.RootElement.TryGetProperty("openingHours", out _));
+        Assert.False(document.RootElement.TryGetProperty("pricing", out _));
         standaloneRepository.VerifyAll();
         imageRepository.VerifyAll();
         openingHoursRepository.VerifyNoOtherCalls();

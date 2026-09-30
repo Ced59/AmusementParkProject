@@ -84,12 +84,6 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
                 legacyParkItemId = attraction.LegacyParkItemId,
             },
             ["standaloneAttraction"] = ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandaloneAttraction(attraction),
-            ["openingHours"] = openingHours is null
-                ? null
-                : ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandaloneOpeningHours(openingHours),
-            ["pricing"] = pricing is null
-                ? null
-                : ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandalonePricing(pricing),
             ["images"] = images.OrderBy(static image => image.IsCurrent ? 0 : 1).ThenBy(static image => image.OriginalFileName, StringComparer.OrdinalIgnoreCase).Select(ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandaloneAttractionImage).ToList(),
             ["history"] = ExportParkGraphJsonQueryHandlerHistoryMappingExtensions.MapHistory(historyEvents),
             ["metadata"] = new
@@ -97,6 +91,18 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
                 exportedAtUtc,
             },
         };
+        if (openingHours is not null)
+        {
+            document["openingHours"] =
+                ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandaloneOpeningHours(openingHours);
+        }
+
+        if (pricing is not null)
+        {
+            document["pricing"] =
+                ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandalonePricing(pricing);
+        }
+
         if (!string.IsNullOrWhiteSpace(attraction.LegacyParkId))
         {
             document["migration"] = new
