@@ -35,8 +35,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 42 | 26 |
-| **Total** | **225** | **209** |
+| Attractions autonomes à migrer ou intégrer | 42 | 25 |
+| **Total** | **225** | **208** |
 
 ## 1. Fiches publiques à compléter
 
@@ -240,7 +240,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] Les Carroz — parc legacy `eb45b3a2-eb9b-42c6-a42c-343b55617fa8`
 - [ ] Les Gets — parc legacy `77d24707-66dd-48e1-9622-377ea6f66f1e`
 - [ ] Les Menuires — parc legacy `4aaa3df2-0f6e-4f78-a0af-7445237da8d0`
 - [ ] Les Orres — parc legacy `a578af64-de3d-4ad9-86f0-878277c634f4`
