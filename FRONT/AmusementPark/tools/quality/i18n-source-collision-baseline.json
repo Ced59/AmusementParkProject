@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "collisions": [
+    {
+      "fingerprint": "en:admin.parkGraphUpserts.editor.description:admin/park-graph-upserts.json|admin/park-opening-hours.json",
+      "language": "en",
+      "key": "admin.parkGraphUpserts.editor.description",
+      "owners": [
+        "admin/park-graph-upserts.json",
+        "admin/park-opening-hours.json"
+      ]
+    },
+    {
+      "fingerprint": "en:images.categories.VIDEO_THUMBNAIL:common/images.json|common/videos.json",
+      "language": "en",
+      "key": "images.categories.VIDEO_THUMBNAIL",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "en:images.ownerTypes.VIDEO:common/images.json|common/videos.json",
+      "language": "en",
+      "key": "images.ownerTypes.VIDEO",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "fr:admin.parkGraphUpserts.editor.description:admin/park-graph-upserts.json|admin/park-opening-hours.json",
+      "language": "fr",
+      "key": "admin.parkGraphUpserts.editor.description",
+      "owners": [
+        "admin/park-graph-upserts.json",
+        "admin/park-opening-hours.json"
+      ]
+    },
+    {
+      "fingerprint": "fr:images.categories.VIDEO_THUMBNAIL:common/images.json|common/videos.json",
+      "language": "fr",
+      "key": "images.categories.VIDEO_THUMBNAIL",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "fr:images.ownerTypes.VIDEO:common/images.json|common/videos.json",
+      "language": "fr",
+      "key": "images.ownerTypes.VIDEO",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "es:admin.parkGraphUpserts.editor.description:admin/park-graph-upserts.json|admin/park-opening-hours.json",
+      "language": "es",
+      "key": "admin.parkGraphUpserts.editor.description",
+      "owners": [
+        "admin/park-graph-upserts.json",
+        "admin/park-opening-hours.json"
+      ]
+    },
+    {
+      "fingerprint": "es:images.categories.VIDEO_THUMBNAIL:common/images.json|common/videos.json",
+      "language": "es",
+      "key": "images.categories.VIDEO_THUMBNAIL",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "es:images.ownerTypes.VIDEO:common/images.json|common/videos.json",
+      "language": "es",
+      "key": "images.ownerTypes.VIDEO",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "de:admin.parkGraphUpserts.editor.description:admin/park-graph-upserts.json|admin/park-opening-hours.json",
+      "language": "de",
+      "key": "admin.parkGraphUpserts.editor.description",
+      "owners": [
+        "admin/park-graph-upserts.json",
+        "admin/park-opening-hours.json"
+      ]
+    },
+    {
+      "fingerprint": "de:images.categories.VIDEO_THUMBNAIL:common/images.json|common/videos.json",
+      "language": "de",
+      "key": "images.categories.VIDEO_THUMBNAIL",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "de:images.ownerTypes.VIDEO:common/images.json|common/videos.json",
+      "language": "de",
+      "key": "images.ownerTypes.VIDEO",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "it:admin.parkGraphUpserts.editor.description:admin/park-graph-upserts.json|admin/park-opening-hours.json",
+      "language": "it",
+      "key": "admin.parkGraphUpserts.editor.description",
+      "owners": [
+        "admin/park-graph-upserts.json",
+        "admin/park-opening-hours.json"
+      ]
+    },
+    {
+      "fingerprint": "it:images.categories.VIDEO_THUMBNAIL:common/images.json|common/videos.json",
+      "language": "it",
+      "key": "images.categories.VIDEO_THUMBNAIL",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "it:images.ownerTypes.VIDEO:common/images.json|common/videos.json",
+      "language": "it",
+      "key": "images.ownerTypes.VIDEO",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "nl:admin.parkGraphUpserts.editor.description:admin/park-graph-upserts.json|admin/park-opening-hours.json",
+      "language": "nl",
+      "key": "admin.parkGraphUpserts.editor.description",
+      "owners": [
+        "admin/park-graph-upserts.json",
+        "admin/park-opening-hours.json"
+      ]
+    },
+    {
+      "fingerprint": "nl:images.categories.VIDEO_THUMBNAIL:common/images.json|common/videos.json",
+      "language": "nl",
+      "key": "images.categories.VIDEO_THUMBNAIL",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "nl:images.ownerTypes.VIDEO:common/images.json|common/videos.json",
+      "language": "nl",
+      "key": "images.ownerTypes.VIDEO",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "pl:admin.parkGraphUpserts.editor.description:admin/park-graph-upserts.json|admin/park-opening-hours.json",
+      "language": "pl",
+      "key": "admin.parkGraphUpserts.editor.description",
+      "owners": [
+        "admin/park-graph-upserts.json",
+        "admin/park-opening-hours.json"
+      ]
+    },
+    {
+      "fingerprint": "pl:images.categories.VIDEO_THUMBNAIL:common/images.json|common/videos.json",
+      "language": "pl",
+      "key": "images.categories.VIDEO_THUMBNAIL",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "pl:images.ownerTypes.VIDEO:common/images.json|common/videos.json",
+      "language": "pl",
+      "key": "images.ownerTypes.VIDEO",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "pt:admin.parkGraphUpserts.editor.description:admin/park-graph-upserts.json|admin/park-opening-hours.json",
+      "language": "pt",
+      "key": "admin.parkGraphUpserts.editor.description",
+      "owners": [
+        "admin/park-graph-upserts.json",
+        "admin/park-opening-hours.json"
+      ]
+    },
+    {
+      "fingerprint": "pt:images.categories.VIDEO_THUMBNAIL:common/images.json|common/videos.json",
+      "language": "pt",
+      "key": "images.categories.VIDEO_THUMBNAIL",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    },
+    {
+      "fingerprint": "pt:images.ownerTypes.VIDEO:common/images.json|common/videos.json",
+      "language": "pt",
+      "key": "images.ownerTypes.VIDEO",
+      "owners": [
+        "common/images.json",
+        "common/videos.json"
+      ]
+    }
+  ]
+}

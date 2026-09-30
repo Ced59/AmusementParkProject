@@ -253,6 +253,11 @@ jobs:
       - name: Enforce typed product analytics
         run: npm run architecture:product-analytics
 
+      - name: Enforce accessibility and i18n quality gates
+        run: |
+          npm run quality:accessibility-i18n:test
+          npm run quality:accessibility-i18n
+
       - name: Test crawler SSR smoke checks
         run: node --test tools/seo-ssr-smoke.test.mjs tools/server-graceful-shutdown.test.mjs tools/disk-page-cache-invalidation-reader.test.mjs
 

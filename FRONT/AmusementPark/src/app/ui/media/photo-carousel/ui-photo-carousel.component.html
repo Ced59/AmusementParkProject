@@ -148,6 +148,7 @@
             type="button"
             class="photo-carousel-strip__item"
             [class.photo-carousel-strip__item--active]="photoIndex === activePhotoIndex"
+            [attr.aria-label]="'ui.photoCarousel.controls.select' | translate:{ name: photo.alt || (photoIndex + 1) }"
             (click)="selectPhoto(photoIndex)">
             <app-image-display
               [imageId]="photo.imageId"
@@ -339,6 +340,7 @@
           type="button"
           class="photo-lightbox__thumb"
           [class.photo-lightbox__thumb--active]="photoIndex === activePhotoIndex"
+          [attr.aria-label]="'ui.photoCarousel.controls.select' | translate:{ name: photo.alt || (photoIndex + 1) }"
           (click)="selectPhoto(photoIndex)">
           <app-image-display
             [imageId]="photo.imageId"

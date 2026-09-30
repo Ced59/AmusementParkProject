@@ -1,6 +1,20 @@
 {
-  "version": "5.4.30",
+  "version": "5.4.31",
   "history": [
+    {
+      "version": "5.4.31",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "La qualité de l’accessibilité et des traductions a été renforcée.",
+        "en": "Accessibility and translation quality have been strengthened.",
+        "de": "Die Qualität der Barrierefreiheit und Übersetzungen wurde verbessert.",
+        "nl": "De kwaliteit van toegankelijkheid en vertalingen is versterkt.",
+        "it": "La qualità dell’accessibilità e delle traduzioni è stata rafforzata.",
+        "es": "Se ha reforzado la calidad de la accesibilidad y las traducciones.",
+        "pt": "A qualidade da acessibilidade e das traduções foi reforçada.",
+        "pl": "Wzmocniono jakość dostępności i tłumaczeń."
+      }
+    },
     {
       "version": "5.4.30",
       "releasedAt": "2026-09-30",
