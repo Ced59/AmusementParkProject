@@ -30,6 +30,38 @@ test('accepts named native controls and alternative image text', () => {
   assert.deepEqual(findings, []);
 });
 
+test('recognizes native labels associated with interactive inputs', () => {
+  const findings = analyseTemplate(`
+    <label for="save">Save</label>
+    <input id="save" type="button">
+    <label for="bound-save">Save</label>
+    <input [id]="'bound-save'" type="button">
+    <label>
+      Wrapped action
+      <input type="button">
+    </label>
+    @if (ready) {
+      <label for="conditional-save">Save</label>
+      <input id="conditional-save" type="button">
+    } @else {
+      <label for="conditional-save"></label>
+    }
+  `);
+
+  assert.deepEqual(findings, []);
+});
+
+test('rejects empty or unreachable native labels', () => {
+  const findings = analyseTemplate(`
+    <label for="empty-save"></label>
+    <input id="empty-save" type="button">
+    @if (ready) { <label for="other-branch">Save</label> }
+    @else { <input id="other-branch" type="button"> }
+  `);
+
+  assert.deepEqual(findings.map((finding) => finding.rule), ['interactive-name', 'interactive-name']);
+});
+
 test('recognizes names rendered through Angular control-flow branches', () => {
   const findings = analyseTemplate(`
     <button type="button">
@@ -513,4 +545,31 @@ test('keeps fingerprints stable when an unchanged finding moves structurally', (
     { ...original[0], identity: '<button type="button"></button>', locator: 'root/Element:1' }
   ]);
   assert.notEqual(duplicates[0].fingerprint, duplicates[1].fingerprint);
+});
+
+test('keeps distinct branch findings visible when identical controls move between branches', () => {
+  const baseline = fingerprintFindings([{
+    rule: 'interactive-name',
+    path: 'sample.html',
+    line: 2,
+    context: '<button type="button">',
+    identity: '<button type="button"></button>',
+    scopeIdentity: '@if (ready) {::@if (ready) {',
+    locator: 'root/IfBlock:0/children:0/Element:0',
+    message: 'missing name'
+  }]);
+  const current = fingerprintFindings([{
+    rule: 'interactive-name',
+    path: 'sample.html',
+    line: 8,
+    context: '<button type="button">',
+    identity: '<button type="button"></button>',
+    scopeIdentity: '@if (admin) {::@if (admin) {',
+    locator: 'root/IfBlock:1/children:0/Element:0',
+    message: 'missing name'
+  }]);
+  const comparison = compareBaseline(current, baseline);
+
+  assert.equal(comparison.added.length, 1);
+  assert.equal(comparison.resolved.length, 1);
 });

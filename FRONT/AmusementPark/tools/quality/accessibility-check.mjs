@@ -537,6 +537,37 @@ function hasUsableAriaLabelledBy(node, context, resolving) {
   return outcome.values.every((value) => labelledByValueResolves(value, node, context, resolving));
 }
 
+function hasUsableNativeLabel(node, context, resolving) {
+  if (!['button', 'input', 'select', 'textarea'].includes(elementName(node))) {
+    return false;
+  }
+
+  const labels = new Set();
+  for (const id of context.idsByNode.get(node) ?? []) {
+    for (const label of context.labelsByTargetId.get(id.trim()) ?? []) {
+      labels.add(label);
+    }
+  }
+
+  let ancestor = context.parentByNode.get(node);
+  while (ancestor) {
+    if (elementName(ancestor) === 'label') {
+      labels.add(ancestor);
+    }
+
+    ancestor = context.parentByNode.get(ancestor);
+  }
+
+  const sourceReachability = context.reachabilityByNode.get(node) ?? new Map();
+  return [...labels].some((label) => (
+    reachabilityContextsAreCompatible(
+      sourceReachability,
+      context.reachabilityByNode.get(label) ?? new Map()
+    )
+    && hasAccessibleName(label, context, resolving)
+  ));
+}
+
 function hasAccessibleName(node, context, resolving = new Set()) {
   if (resolving.has(node)) {
     return false;
@@ -553,6 +584,10 @@ function hasAccessibleName(node, context, resolving = new Set()) {
   }
 
   if (hasUsableAriaLabelledBy(node, context, nestedResolving)) {
+    return true;
+  }
+
+  if (hasUsableNativeLabel(node, context, nestedResolving)) {
     return true;
   }
 
@@ -1149,7 +1184,22 @@ function interactiveRoleCandidates(node) {
   };
 }
 
-function createFinding(rule, message, node, template, source, lineOffset, locator) {
+function controlFlowScopeIdentity(node, context) {
+  const reachability = context.reachabilityByNode.get(node) ?? new Map();
+  return [...reachability].map(([owner, branch]) => {
+    const ownerHeader = owner.startSourceSpan?.toString?.()
+      ?? owner.expression?.source
+      ?? owner.constructor?.name
+      ?? 'control-flow';
+    const branchHeader = branch.startSourceSpan?.toString?.()
+      ?? branch.expression?.source
+      ?? (branch.expression === null ? 'default' : branch.constructor?.name)
+      ?? 'branch';
+    return `${ownerHeader}::${branchHeader}`.replace(/\s+/g, ' ').trim();
+  }).join(' > ');
+}
+
+function createFinding(rule, message, node, template, source, lineOffset, locator, context) {
   const sourceLine = node.sourceSpan?.start?.line ?? 0;
   const sourceStart = node.sourceSpan?.start?.offset ?? 0;
   const sourceEnd = node.sourceSpan?.end?.offset ?? sourceStart;
@@ -1162,6 +1212,7 @@ function createFinding(rule, message, node, template, source, lineOffset, locato
     element: node.name ?? node.tag ?? 'template',
     context: startTagSource(node, template),
     identity: template.slice(sourceStart, sourceEnd).replace(/\s+/g, ' ').trim(),
+    scopeIdentity: controlFlowScopeIdentity(node, context),
     locator
   };
 }
@@ -1181,7 +1232,8 @@ function analyseElement(node, template, source, lineOffset, locator, context) {
       template,
       source,
       lineOffset,
-      locator
+      locator,
+      context
     ));
   }
 
@@ -1206,7 +1258,8 @@ function analyseElement(node, template, source, lineOffset, locator, context) {
       template,
       source,
       lineOffset,
-      locator
+      locator,
+      context
     ));
   }
 
@@ -1224,7 +1277,8 @@ function analyseElement(node, template, source, lineOffset, locator, context) {
         template,
         source,
         lineOffset,
-        locator
+        locator,
+        context
       ));
     }
   }
@@ -1320,11 +1374,14 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
   const findings = [];
   const context = {
     nodesById: new Map(),
+    idsByNode: new Map(),
+    labelsByTargetId: new Map(),
+    parentByNode: new Map(),
     templatesByReference: new Map(),
     reachabilityByNode: new Map()
   };
 
-  function indexNodes(nodes, indexed = new Set(), reachability = new Map()) {
+  function indexNodes(nodes, indexed = new Set(), reachability = new Map(), parent = null) {
     for (const node of nodes) {
       if (indexed.has(node)) {
         continue;
@@ -1332,11 +1389,17 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
 
       indexed.add(node);
       context.reachabilityByNode.set(node, reachability);
+      if (parent) {
+        context.parentByNode.set(node, parent);
+      }
+
       const ids = new Set();
       const staticId = attributeValue(node, 'id');
       if (typeof staticId === 'string') {
         ids.add(staticId);
       }
+
+      context.idsByNode.set(node, ids);
 
       for (const input of node.inputs ?? []) {
         if (isAttributeBinding(input) && input.name.toLowerCase() === 'id') {
@@ -1360,6 +1423,39 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
         context.nodesById.set(normalizedId, indexedNodes);
       }
 
+      if (elementName(node) === 'label') {
+        const targets = new Set();
+        const staticTarget = attributeValue(node, 'for');
+        if (typeof staticTarget === 'string') {
+          targets.add(staticTarget);
+        }
+
+        for (const input of node.inputs ?? []) {
+          if (
+            isAttributeBinding(input)
+            && ['for', 'htmlfor'].includes(input.name.toLowerCase())
+          ) {
+            const outcome = boundReachableStaticValues(input);
+            for (const value of outcome.values) {
+              if (typeof value === 'string') {
+                targets.add(value);
+              }
+            }
+          }
+        }
+
+        for (const target of targets) {
+          const normalizedTarget = target.trim();
+          if (normalizedTarget.length === 0) {
+            continue;
+          }
+
+          const indexedLabels = context.labelsByTargetId.get(normalizedTarget) ?? [];
+          indexedLabels.push(node);
+          context.labelsByTargetId.set(normalizedTarget, indexedLabels);
+        }
+      }
+
       for (const reference of node.references ?? []) {
         if (typeof reference.name === 'string' && reference.name.length > 0) {
           context.templatesByReference.set(reference.name, node);
@@ -1372,7 +1468,7 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
           nestedReachability.set(scoped.owner, scoped.branch);
         }
 
-        indexNodes(scoped.collection, indexed, nestedReachability);
+        indexNodes(scoped.collection, indexed, nestedReachability, node);
       }
     }
   }
@@ -1629,7 +1725,11 @@ export function fingerprintFindings(findings) {
   return findings.map((finding) => {
     const normalizedIdentity = (finding.identity ?? finding.context).replace(/\s+/g, ' ').trim();
     const digest = crypto.createHash('sha256').update(normalizedIdentity).digest('hex').slice(0, 12);
-    const occurrenceKey = `${finding.rule}|${finding.path}|${digest}`;
+    const normalizedScope = finding.scopeIdentity?.replace(/\s+/g, ' ').trim() ?? '';
+    const scopeKey = normalizedScope.length > 0
+      ? `|${crypto.createHash('sha256').update(normalizedScope).digest('hex').slice(0, 12)}`
+      : '';
+    const occurrenceKey = `${finding.rule}|${finding.path}${scopeKey}|${digest}`;
     const occurrence = (occurrences.get(occurrenceKey) ?? 0) + 1;
     occurrences.set(occurrenceKey, occurrence);
 
