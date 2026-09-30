@@ -8,11 +8,13 @@ const toolDirectory = dirname(fileURLToPath(import.meta.url));
 const defaultConfigPath = resolve(toolDirectory, 'production-alerts.config.json');
 const maximumClientAssets = 25;
 
-async function fetchWithTimeout(fetchImplementation, url, options, timeoutMilliseconds) {
+async function fetchTextWithTimeout(fetchImplementation, url, options, timeoutMilliseconds) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMilliseconds);
   try {
-    return await fetchImplementation(url, { ...options, signal: controller.signal });
+    const response = await fetchImplementation(url, { ...options, signal: controller.signal });
+    const body = await response.text();
+    return { response, body };
   } finally {
     clearTimeout(timeout);
   }
@@ -63,10 +65,9 @@ export function extractLazyRouteAssetUrl(assetUrl, source, routePath) {
 
 async function probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMilliseconds) {
   try {
-    const response = await fetchWithTimeout(fetchImplementation, assetUrl, {
+    const { response, body: source } = await fetchTextWithTimeout(fetchImplementation, assetUrl, {
       headers: { accept: 'text/javascript, application/javascript', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
     }, timeoutMilliseconds);
-    const source = await response.text();
     const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
     if (!response.ok || source.length === 0 || !contentType.includes('javascript')) {
       return { failure: `${new URL(assetUrl).pathname}: bundle client invalide`, source: null };
@@ -85,14 +86,14 @@ export async function probeRequiredClientAssets(
 ) {
   const pageUrl = new URL(target.path, baseUrl);
   try {
-    const pageResponse = await fetchWithTimeout(fetchImplementation, pageUrl, {
+    const { response: pageResponse, body: pageBody } = await fetchTextWithTimeout(fetchImplementation, pageUrl, {
       headers: { accept: 'text/html', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
     }, timeoutMilliseconds);
     if (pageResponse.status !== target.expectedStatus) {
       return { assetCount: 0, failures: [`page cliente HTTP ${pageResponse.status}`] };
     }
 
-    const assetUrls = extractRequiredClientAssetUrls(pageUrl, await pageResponse.text());
+    const assetUrls = extractRequiredClientAssetUrls(pageUrl, pageBody);
     if (assetUrls.length === 0) {
       return { assetCount: 0, failures: ['aucun bundle client same-origin trouvé'] };
     }

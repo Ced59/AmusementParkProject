@@ -153,3 +153,19 @@ test('bounds a stalled CSR shell request with the configured timeout', async () 
 
   assert.deepEqual(result.failures, ['page cliente inaccessible ou expirée pendant le contrôle des bundles']);
 });
+
+test('keeps the timeout active while reading a stalled response body', async () => {
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    { path: '/fr/park-fit', expectedStatus: 200, clientRoutePath: 'park-fit' },
+    async (_url, options) => ({
+      status: 200,
+      text: () => new Promise((_resolve, reject) => {
+        options.signal.addEventListener('abort', () => reject(new Error('body aborted')));
+      }),
+    }),
+    5,
+  );
+
+  assert.deepEqual(result.failures, ['page cliente inaccessible ou expirée pendant le contrôle des bundles']);
+});
