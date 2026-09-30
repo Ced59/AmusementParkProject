@@ -137,8 +137,8 @@ La méthodologie `ratings-2026-01`, effective depuis le 31 août 2026, fixe :
 | 1 à 2 | `Insufficient` — preuve insuffisante | Non |
 | 3 à 9 | `Provisional` — provisoire | Non |
 | 10 à 29 | `Eligible` — éligible | Oui, si le scope contient au moins 3 entrées éligibles |
-| 30 à 99 | `Established` — établi | Oui |
-| 100 et plus | `StrongEvidence` — preuve forte | Oui |
+| 30 à 99 | `Established` — établi | Oui, si le scope contient au moins 3 entrées éligibles |
+| 100 et plus | `StrongEvidence` — preuve forte | Oui, si le scope contient au moins 3 entrées éligibles |
 
 Une moyenne peut donc être affichée avant son rang, avec son volume et sa limite.
 L'interface n'a pas le droit de transformer « pas encore classé » en rang implicite.
@@ -178,11 +178,13 @@ réponses distinguent `ratingCount`, `uniqueContributorCount`, couverture des
 
 ### 4.5 Égalités et stabilité
 
-Deux scores dont l'écart est strictement inférieur à `0,0001` sont ex æquo. Le classement suit la
-convention de compétition : `1, 1, 3`, et non `1, 2, 3`. Les positions et rangs
-sont construits dans un snapshot versionné ; un pointeur atomique rend le nouveau
-snapshot visible seulement après validation du nombre d'entrées, des chunks et du
-checksum.
+Après tri décroissant, chaque score est comparé au premier score du groupe d'ex
+æquo courant. Un écart strictement inférieur à `0,0001` avec cette ancre conserve
+le candidat dans le groupe ; la comparaison n'est donc pas transitive de proche en
+proche. Le classement suit la convention de compétition : `1, 1, 3`, et non
+`1, 2, 3`. Les positions et rangs sont construits dans un snapshot versionné ; un
+pointeur atomique rend le nouveau snapshot visible seulement après validation du
+nombre d'entrées, des chunks et du checksum.
 
 Preuves : `CompetitionRankCalculator.cs`, `RankingScopeDefinition.cs`,
 `RankingSnapshotHeader.cs`, `RankingSnapshotChecksum.cs` et leurs tests Core et
