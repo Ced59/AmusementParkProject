@@ -117,9 +117,10 @@ score bayésien = (somme des notes + 3,5 × 10) / (nombre de notes + 10)
 ```
 
 Exemple : une cible notée une seule fois `5/5` affiche bien cette moyenne brute,
-mais son score de classement vaut `(5 + 35) / 11 = 3,636…`. Elle ne peut donc pas
-dépasser artificiellement une cible solidement documentée, et elle ne reçoit de
-toute façon aucun rang principal avant le seuil d'éligibilité.
+mais son score de classement vaut `(5 + 35) / 11 = 3,636…`. Le prior réduit ainsi
+l'avantage statistique d'un très petit échantillon, sans garantir à lui seul son
+ordre face à toutes les cibles mieux documentées. La cible ne reçoit de toute
+façon aucun rang principal avant le seuil d'éligibilité.
 
 Preuves : `RatingScoreCalculator.CalculateAverage` et
 `RatingScoreCalculator.CalculateBayesianScore` dans
