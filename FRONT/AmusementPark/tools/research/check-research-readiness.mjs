@@ -510,6 +510,10 @@ function isIndentedCodeLine(line) {
   return /^(?: {4}|\t)/.test(line);
 }
 
+function isMarkdownReferenceDefinition(line) {
+  return /^ {0,3}\[[^\]]+\]:\s*\S+/.test(line);
+}
+
 function stripNonRenderedHtmlBlocks(content) {
   const blockTags = 'pre|script|style|textarea|template|xmp|iframe|noembed|noframes|listing';
   const pairedBlockPattern = new RegExp(
@@ -598,7 +602,8 @@ function hasMeaningfulSectionContent(lines, headingIndex) {
   const normalizedContent = excludeFencedCodeBlocks(markdownSectionBodyLines(lines, headingIndex))
     .filter((line) => !line.trim().startsWith('<!--')
       && markdownHeadingLevel(line) === null
-      && !isIndentedCodeLine(line))
+      && !isIndentedCodeLine(line)
+      && !isMarkdownReferenceDefinition(line))
     .join(' ')
     .replace(/[`*_>#|\[\]():-]/g, ' ')
     .replace(/\s+/g, ' ')

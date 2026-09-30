@@ -188,6 +188,15 @@ test('rejects empty or structurally incomplete required protocol documents', () 
       [`Document de recherche vide: ${passportProtocolPath}.`],
     );
   }
+  const referenceOnlyPassportProtocol = emptyPassportProtocol
+    .split('\n')
+    .flatMap((heading, index) => [
+      heading,
+      `[criterion-${index}]: https://example.com/a-sufficiently-long-target-${index}`,
+    ])
+    .join('\n');
+  assert.ok(validateResearchDocumentContent(passportProtocolPath, referenceOnlyPassportProtocol)
+    .some((error) => error.includes('section obligatoire vide ou insuffisante ## Scénarios')));
   const indentedPassportProtocol = emptyPassportProtocol
     .split('\n')
     .map((heading) => `    ${heading}\n    Ce contenu reste un exemple de code non rendu.`)
