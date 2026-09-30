@@ -25,16 +25,16 @@ const ACTIVATION_KEYBOARD_EVENT_NAMES = new Set([
   'keypress.spacebar'
 ]);
 const INTERACTIVE_ROLE_REQUIRED_KEYS = new Map([
-  ['button', ['enter', 'space']],
-  ['checkbox', ['space']],
-  ['link', ['enter']],
-  ['menuitem', ['enter', 'space']],
-  ['menuitemcheckbox', ['enter', 'space']],
-  ['menuitemradio', ['enter', 'space']],
-  ['radio', ['space']],
-  ['switch', ['space']],
-  ['tab', ['enter', 'space']],
-  ['treeitem', ['enter']]
+  ['button', [['enter'], ['space']]],
+  ['checkbox', [['space']]],
+  ['link', [['enter']]],
+  ['menuitem', [['enter', 'space']]],
+  ['menuitemcheckbox', [['enter', 'space']]],
+  ['menuitemradio', [['enter', 'space']]],
+  ['radio', [['space']]],
+  ['switch', [['space']]],
+  ['tab', [['enter', 'space']]],
+  ['treeitem', [['enter']]]
 ]);
 
 function walkFiles(directory, predicate) {
@@ -1145,19 +1145,14 @@ function hasKeyboardActivation(node) {
     return false;
   }
 
-  const requiredKeys = new Set();
-  for (const role of roles.roles) {
-    const roleRequiredKeys = INTERACTIVE_ROLE_REQUIRED_KEYS.get(role);
-    if (!roleRequiredKeys) {
-      return false;
-    }
-
-    for (const key of roleRequiredKeys) {
-      requiredKeys.add(key);
-    }
-  }
-
-  return [...requiredKeys].every((key) => coveredKeys.has(key));
+  return roles.roles.every((role) => {
+    const requiredKeyGroups = INTERACTIVE_ROLE_REQUIRED_KEYS.get(role);
+    return requiredKeyGroups
+      ? requiredKeyGroups.every((alternatives) => (
+        alternatives.some((key) => coveredKeys.has(key))
+      ))
+      : false;
+  });
 }
 
 function hasActionableClick(node) {
@@ -1249,6 +1244,28 @@ function controlFlowScopeIdentity(node, context) {
   }).join(' > ');
 }
 
+function enclosingElementScopeIdentity(node, context) {
+  const identities = [];
+  let ancestor = context.parentByNode.get(node);
+  while (ancestor) {
+    const identity = context.structuralIdentityByNode.get(ancestor);
+    if (identity) {
+      identities.unshift(identity);
+    }
+
+    ancestor = context.parentByNode.get(ancestor);
+  }
+
+  return identities.join(' > ');
+}
+
+function findingScopeIdentity(node, context) {
+  return [
+    enclosingElementScopeIdentity(node, context),
+    controlFlowScopeIdentity(node, context)
+  ].filter((identity) => identity.length > 0).join(' > ');
+}
+
 function createFinding(rule, message, node, template, source, lineOffset, locator, context) {
   const sourceLine = node.sourceSpan?.start?.line ?? 0;
   const sourceStart = node.sourceSpan?.start?.offset ?? 0;
@@ -1262,7 +1279,7 @@ function createFinding(rule, message, node, template, source, lineOffset, locato
     element: node.name ?? node.tag ?? 'template',
     context: startTagSource(node, template),
     identity: template.slice(sourceStart, sourceEnd).replace(/\s+/g, ' ').trim(),
-    scopeIdentity: controlFlowScopeIdentity(node, context),
+    scopeIdentity: findingScopeIdentity(node, context),
     locator
   };
 }
@@ -1457,11 +1474,13 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
     idsByNode: new Map(),
     labelsByTargetId: new Map(),
     parentByNode: new Map(),
+    structuralIdentityByNode: new Map(),
     templateScopeByNode: new Map(),
     templatesByReference: new Map(),
     reachabilityByNode: new Map()
   };
   const controlFlowHeaderOccurrences = new Map();
+  const structuralHeaderOccurrences = new Map();
 
   function indexNodes(
     nodes,
@@ -1490,6 +1509,13 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
         const occurrence = (controlFlowHeaderOccurrences.get(header) ?? 0) + 1;
         controlFlowHeaderOccurrences.set(header, occurrence);
         context.controlFlowIdentityByOwner.set(node, `${header}#${occurrence}`);
+      }
+
+      if (elementName(node).length > 0) {
+        const header = startTagSource(node, template);
+        const occurrence = (structuralHeaderOccurrences.get(header) ?? 0) + 1;
+        structuralHeaderOccurrences.set(header, occurrence);
+        context.structuralIdentityByNode.set(node, `${header}#${occurrence}`);
       }
 
       const ids = new Set();

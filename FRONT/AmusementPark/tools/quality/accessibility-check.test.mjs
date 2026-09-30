@@ -532,6 +532,8 @@ test('requires keyboard support and semantics on non-native click targets', () =
   `);
   const invalidConditionalRouterLink = analyseTemplate('<div [routerLink]="enabled ? \'/parks\' : null">Parks</div>');
   const validConditionalAnchorRouterLink = analyseTemplate('<a [routerLink]="enabled ? \'/parks\' : null">Parks</a>');
+  const validTabEnterActivation = analyseTemplate('<div role="tab" tabindex="0" (click)="select()" (keydown.enter)="select()">Tab</div>');
+  const validTabSpaceActivation = analyseTemplate('<div role="tab" tabindex="0" (click)="select()" (keydown.space)="select()">Tab</div>');
 
   assert.deepEqual(invalid.map((finding) => finding.rule), ['click-keyboard']);
   assert.deepEqual(invalidRouterLink.map((finding) => finding.rule), ['click-keyboard']);
@@ -579,6 +581,8 @@ test('requires keyboard support and semantics on non-native click targets', () =
   assert.deepEqual(validDisabledRouterLinks, []);
   assert.deepEqual(invalidConditionalRouterLink.map((finding) => finding.rule), ['click-keyboard']);
   assert.deepEqual(validConditionalAnchorRouterLink, []);
+  assert.deepEqual(validTabEnterActivation, []);
+  assert.deepEqual(validTabSpaceActivation, []);
 });
 
 test('reports additions and resolved debt against a baseline', () => {
@@ -664,4 +668,26 @@ test('distinguishes repeated control-flow headers without depending on unrelated
 
   assert.equal(comparison.added.length, 1);
   assert.equal(comparison.resolved.length, 1);
+});
+
+test('uses stable enclosing identities for findings outside control-flow branches', () => {
+  const baseline = fingerprintFindings(analyseTemplate(`
+    <button type="button"></button>
+  `, 'sample.html'));
+  const current = fingerprintFindings(analyseTemplate(`
+    <section><button type="button"></button></section>
+    <button type="button" aria-label="Save"></button>
+  `, 'sample.html'));
+  const comparison = compareBaseline(current, baseline);
+
+  assert.equal(comparison.added.length, 1);
+  assert.equal(comparison.resolved.length, 1);
+
+  const relocated = fingerprintFindings(analyseTemplate(`
+    <p>Unrelated sibling</p>
+    <button type="button"></button>
+  `, 'sample.html'));
+  const relocationComparison = compareBaseline(relocated, baseline);
+  assert.equal(relocationComparison.added.length, 0);
+  assert.equal(relocationComparison.resolved.length, 0);
 });
