@@ -2,7 +2,7 @@
 
 > Code programme : `QUAL`
 >
-> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-07` sont livrés au 30 septembre 2026.
+> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-08` sont livrés au 30 septembre 2026.
 >
 > Principe : une fonctionnalité n’est pas validée parce qu’elle compile ou parce qu’elle augmente un compteur. Elle doit être comprise, utile, accessible, fiable, réversible, respectueuse de la vie privée et supportable avec les moyens réels du projet.
 
@@ -831,7 +831,7 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-05`](../../architecture/product-growth-qual-05-typed-product-analytics-2026-09-29.md) | Helpers d’instrumentation typés — livré le 29 septembre 2026 | Pas d’événements ad hoc |
 | [`QUAL-06`](../../architecture/product-growth-qual-06-product-decision-dashboards-2026-09-29.md) | Dashboards funnel/fiabilité — livré le 29 septembre 2026 | Questions utiles uniquement |
 | [`QUAL-07`](../../architecture/product-growth-qual-07-accessibility-i18n-automation-2026-09-30.md) | Automatisation accessibilité/i18n — livré le 30 septembre 2026 | Régressions détectées |
-| `QUAL-08` | Tests cross-user et sécurité | Parcours critiques |
+| [`QUAL-08`](../../architecture/product-growth-qual-08-cross-user-security-tests-2026-09-30.md) | Tests cross-user et sécurité — livré le 30 septembre 2026 | Parcours critiques |
 | `QUAL-09` | Runbooks et alerting | Incidents opérables |
 | `QUAL-10` | Protocole beta/recherche | Tests comparables |
 | `QUAL-11+` | Tranche transverse par roadmap | Gate locale documentée |
@@ -931,6 +931,22 @@ collision de feuille entre modules source. Les 23 constats d’accessibilité et
 24 collisions historiques sont inventoriés dans des baselines versionnées : aucune
 nouvelle dette n’est tolérée et chaque résolution doit réduire volontairement la
 baseline.
+
+### Implémentation `QUAL-08` — 30 septembre 2026
+
+Les dix attaques critiques de cette roadmap disposent désormais d'une matrice de
+preuves exécutables couvrant domaine, orchestration applicative, persistance,
+frontière HTTP et routage SSR. Elle vérifie notamment l'isolation des visites et
+profils de groupe, l'idempotence des invitations, tours et e-mails, la sûreté du
+texte partagé, l'administration des mappings live et l'absence de rendu serveur
+des ressources privées.
+
+Les routes de notes personnelles refusent explicitement toute mise en cache et
+leurs nouvelles preuves garantissent qu'une mutation utilise uniquement l'identité
+du compte connecté. La révocation d'un partage est testée jusqu'au filtre MongoDB :
+seules les publications publiées, visibles et non suspendues sont résolues, et un
+ancien jeton échoue sans même lire son propriétaire. Aucun schéma MongoDB ni contrat
+public n'est modifié.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

@@ -123,6 +123,26 @@ public sealed class SharePublicationRepositoryTests
         collection.VerifyAll();
     }
 
+    [Fact]
+    public void BuildResolvableTokenFilter_ShouldExcludeRevokedOrPrivatePublications()
+    {
+        BsonDocument filter = Render(
+            SharePublicationMongoDefinitions.BuildResolvableTokenFilter(TokenValue));
+
+        Assert.Equal(TokenValue, filter["shareToken"].AsString);
+        Assert.Equal(nameof(SharePublicationStatus.Published), filter["status"].AsString);
+        Assert.Equal(
+            new[]
+            {
+                nameof(ShareVisibility.Unlisted),
+                nameof(ShareVisibility.Public),
+            },
+            filter["visibility"]["$in"].AsBsonArray
+                .Select(static value => value.AsString)
+                .ToArray());
+        Assert.Equal(0, filter["moderationSuspensionReportIds"]["$size"].AsInt32);
+    }
+
     [Theory]
     [InlineData("E11000 duplicate key index: idx_share_publication_token_unique dup key")]
     [InlineData("idx_share_publication_token_unique")]
