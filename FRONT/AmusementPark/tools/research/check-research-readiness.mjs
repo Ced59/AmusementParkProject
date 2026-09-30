@@ -647,7 +647,21 @@ function markdownHeadingText(line) {
 }
 
 function isIndentedCodeLine(line) {
-  return /^(?: {4}|\t)/.test(line);
+  let indentationColumns = 0;
+  for (const character of line) {
+    if (character === ' ') {
+      indentationColumns += 1;
+    } else if (character === '\t') {
+      indentationColumns += 4 - (indentationColumns % 4);
+    } else {
+      break;
+    }
+
+    if (indentationColumns >= 4) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function isMarkdownReferenceDefinition(line) {
@@ -679,6 +693,14 @@ function excludeMarkdownReferenceDefinitions(lines) {
 
 function stripNonRenderedHtmlBlocks(content) {
   const blockTags = 'pre|script|style|textarea|template|xmp|iframe|noembed|noframes|listing';
+  const containerTags = [
+    blockTags,
+    'a|abbr|address|article|aside|b|bdi|bdo|blockquote|body|button|caption|center|cite|code',
+    'colgroup|data|dd|del|details|dfn|dialog|dir|div|dl|dt|em|fieldset|figcaption|figure',
+    'footer|form|frameset|h[1-6]|head|header|hgroup|html|i|ins|kbd|label|legend|li|main',
+    'mark|menu|nav|ol|optgroup|option|p|q|ruby|s|samp|search|section|small|span|strong',
+    'sub|summary|sup|table|tbody|td|tfoot|th|thead|time|title|tr|u|ul|var',
+  ].join('|');
   const pairedBlockPattern = new RegExp(
     `<(${blockTags})\\b[^>]*>[\\s\\S]*?<\\/\\1\\s*>`,
     'gi',
@@ -687,13 +709,19 @@ function stripNonRenderedHtmlBlocks(content) {
     `<(?:${blockTags}|plaintext)\\b[^>]*>[\\s\\S]*$`,
     'gi',
   );
-  const pairedHtmlContainerPattern = /<([A-Za-z][A-Za-z0-9:-]*)\b[^>]*>[\s\S]*<\/\1\s*>/gi;
-  const unclosedHiddenContainerPattern = /<[A-Za-z][A-Za-z0-9:-]*\b(?=[^>]*\bhidden\b)[^>]*>[\s\S]*$/gi;
+  const pairedHtmlContainerPattern = new RegExp(
+    `<(${containerTags})\\b[^>]*>[\\s\\S]*<\\/\\1\\s*>`,
+    'gi',
+  );
+  const unclosedHtmlContainerPattern = new RegExp(
+    `<(?:${containerTags})\\b[^>]*(?<!\\/)>[\\s\\S]*$`,
+    'gi',
+  );
   return content
     .replace(pairedBlockPattern, '')
     .replace(unclosedBlockPattern, '')
     .replace(pairedHtmlContainerPattern, '')
-    .replace(unclosedHiddenContainerPattern, '');
+    .replace(unclosedHtmlContainerPattern, '');
 }
 
 function markdownSectionBodyLines(lines, headingIndex) {

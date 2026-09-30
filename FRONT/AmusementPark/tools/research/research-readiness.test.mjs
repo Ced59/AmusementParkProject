@@ -191,6 +191,16 @@ test('rejects empty or structurally incomplete required protocol documents', () 
       [`Document de recherche vide: ${passportProtocolPath}.`],
     );
   }
+  const unclosedHiddenPassportProtocol = [
+    '<div style="display:none">',
+    ...emptyPassportProtocol
+      .split('\n')
+      .flatMap((heading) => [heading, 'Ce contenu assez long reste masqué par le conteneur HTML non fermé.']),
+  ].join('\n');
+  assert.deepEqual(
+    validateResearchDocumentContent(passportProtocolPath, unclosedHiddenPassportProtocol),
+    [`Document de recherche vide: ${passportProtocolPath}.`],
+  );
   const referenceOnlyPassportProtocol = emptyPassportProtocol
     .split('\n')
     .flatMap((heading, index) => [
@@ -323,17 +333,19 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   ].join('\n');
   assert.ok(validateResearchDocumentContent(readmePath, readmeWithoutAccessibilityStop)
     .some((error) => error.includes("conditions d'arrêt communes incomplètes")));
-  const indentedStopConditions = readmeWithoutAccessibilityStop.replace(
-    requiredCommonStopConditions
-      .filter((condition) => !condition.includes("accessibilité fondamentale"))
-      .join('\n'),
-    [
-      'Cette phrase visible ne remplace pas les conditions obligatoires.',
-      ...requiredCommonStopConditions.map((condition) => `    ${condition}`),
-    ].join('\n'),
-  );
-  assert.ok(validateResearchDocumentContent(readmePath, indentedStopConditions)
-    .some((error) => error.includes("conditions d'arrêt communes incomplètes")));
+  for (const indentation of ['    ', '   \t']) {
+    const indentedStopConditions = readmeWithoutAccessibilityStop.replace(
+      requiredCommonStopConditions
+        .filter((condition) => !condition.includes("accessibilité fondamentale"))
+        .join('\n'),
+      [
+        'Cette phrase visible ne remplace pas les conditions obligatoires.',
+        ...requiredCommonStopConditions.map((condition) => `${indentation}${condition}`),
+      ].join('\n'),
+    );
+    assert.ok(validateResearchDocumentContent(readmePath, indentedStopConditions)
+      .some((error) => error.includes("conditions d'arrêt communes incomplètes")));
+  }
 
   for (const [programId, roadmapPath] of Object.entries(requiredRoadmapByProgram)) {
     assert.ok(validateResearchDocumentContent(roadmapPath, '# Roadmap incomplète')
@@ -347,14 +359,17 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     );
     assert.ok(gateWithoutCriteriaErrors
       .some((error) => error.includes('critères canoniques de gate')));
-    const indentedGateCriteria = [
-      gateHeading,
-      '',
-      'Cette phrase visible ne remplace pas les critères obligatoires de la gate.',
-      ...requiredGateCriteriaByDocument[roadmapPath].map((criterion) => `    ${criterion}`),
-    ].join('\n');
-    assert.ok(validateResearchDocumentContent(roadmapPath, indentedGateCriteria)
-      .some((error) => error.includes('critères canoniques de gate')));
+    for (const indentation of ['    ', '   \t']) {
+      const indentedGateCriteria = [
+        gateHeading,
+        '',
+        'Cette phrase visible ne remplace pas les critères obligatoires de la gate.',
+        ...requiredGateCriteriaByDocument[roadmapPath]
+          .map((criterion) => `${indentation}${criterion}`),
+      ].join('\n');
+      assert.ok(validateResearchDocumentContent(roadmapPath, indentedGateCriteria)
+        .some((error) => error.includes('critères canoniques de gate')));
+    }
     assert.ok(validateResearchDocumentContent(
       roadmapPath,
       `${gateHeading}\n\n### Ceci est seulement un sous-titre descriptif assez long`,
