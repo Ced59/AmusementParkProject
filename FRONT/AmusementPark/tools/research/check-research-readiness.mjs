@@ -71,6 +71,46 @@ export const requiredBetaGateIds = Object.freeze([
   'general-availability',
 ]);
 
+export const requiredBetaGateRequirements = Object.freeze({
+  'internal-alpha': Object.freeze([
+    'données de test uniquement',
+    'aucune publication publique',
+    'instrumentation disponible',
+    'erreurs visibles',
+    'export et suppression vérifiés',
+    'feature flag administrable',
+  ]),
+  'closed-beta': Object.freeze([
+    'invitation manuelle',
+    'données réelles',
+    'consentement clair',
+    'support direct',
+    'migrations réversibles',
+    'limites connues',
+    'mesure qualitative',
+  ]),
+  'limited-open-beta': Object.freeze([
+    'capacité VPS vérifiée',
+    'support dimensionné',
+    'modération dimensionnée',
+    'monitoring disponible',
+    'documentation disponible',
+    'réponse aux incidents opérable',
+    'aucune promesse de disponibilité excessive',
+  ]),
+  'general-availability': Object.freeze([
+    'valeur répétée réellement observée',
+    'erreurs sous le seuil décidé',
+    'confidentialité validée',
+    'accessibilité validée',
+    'huit langues vérifiées',
+    'performance vérifiée',
+    'coûts acceptables',
+    'flags temporaires retirés',
+    'runbook disponible',
+  ]),
+});
+
 export const requiredTaskContextFields = Object.freeze([
   'primaryScenario',
   'coreConceptDistinction',
@@ -203,6 +243,19 @@ export function validateResearchCatalog(catalog) {
       || gate.requirements.length < 3
       || gate.requirements.some((requirement) => !isNonEmptyText(requirement))) {
       errors.push(`Gate ${gate?.id ?? '<sans-id>'}: exigences insuffisantes.`);
+    }
+
+    const canonicalRequirements = requiredBetaGateRequirements[gate?.id];
+    if (!canonicalRequirements) {
+      continue;
+    }
+    if (gate.requirements.length !== canonicalRequirements.length) {
+      errors.push(`Gate ${gate.id}: ${canonicalRequirements.length} exigences canoniques attendues.`);
+    }
+    for (let index = 0; index < canonicalRequirements.length; index += 1) {
+      if (gate.requirements[index] !== canonicalRequirements[index]) {
+        errors.push(`Gate ${gate.id}: exigence attendue en position ${index + 1}: ${canonicalRequirements[index]}.`);
+      }
     }
   }
 

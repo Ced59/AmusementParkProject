@@ -137,7 +137,8 @@
       "requirements": [
         "données de test uniquement",
         "aucune publication publique",
-        "instrumentation et erreurs visibles",
+        "instrumentation disponible",
+        "erreurs visibles",
         "export et suppression vérifiés",
         "feature flag administrable"
       ]
@@ -146,6 +147,7 @@
       "id": "closed-beta",
       "requirements": [
         "invitation manuelle",
+        "données réelles",
         "consentement clair",
         "support direct",
         "migrations réversibles",
@@ -157,8 +159,10 @@
       "id": "limited-open-beta",
       "requirements": [
         "capacité VPS vérifiée",
-        "support et modération dimensionnés",
-        "monitoring et documentation disponibles",
+        "support dimensionné",
+        "modération dimensionnée",
+        "monitoring disponible",
+        "documentation disponible",
         "réponse aux incidents opérable",
         "aucune promesse de disponibilité excessive"
       ]
@@ -168,8 +172,10 @@
       "requirements": [
         "valeur répétée réellement observée",
         "erreurs sous le seuil décidé",
-        "confidentialité et accessibilité validées",
-        "huit langues et performance vérifiées",
+        "confidentialité validée",
+        "accessibilité validée",
+        "huit langues vérifiées",
+        "performance vérifiée",
         "coûts acceptables",
         "flags temporaires retirés",
         "runbook disponible"

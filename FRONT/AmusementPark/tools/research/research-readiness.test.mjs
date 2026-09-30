@@ -5,6 +5,7 @@ import {
   isProductGrowthRoadmapPath,
   isResearchExtensionPath,
   requiredBetaGateIds,
+  requiredBetaGateRequirements,
   requiredEvidenceIds,
   requiredProfileIds,
   requiredProgramIds,
@@ -56,7 +57,7 @@ function validCatalog() {
         : id,
     })),
     betaGates: requiredBetaGateIds.map((id) => item(id, {
-      requirements: ['one', 'two', 'three'],
+      requirements: [...requiredBetaGateRequirements[id]],
     })),
     programs: requiredProgramIds.map((id) => validProgram(id)),
   };
@@ -99,6 +100,20 @@ test('keeps field research non-blocking without allowing unproven generalization
   assert.ok(errors.some((error) => error.includes('ne doivent pas bloquer')));
   assert.ok(errors.some((error) => error.includes('sans preuve terrain')));
   assert.ok(errors.some((error) => error.includes('pending')));
+});
+
+test('requires every canonical beta gate requirement in its stable order', () => {
+  const catalog = validCatalog();
+  catalog.betaGates.find((gate) => gate.id === 'closed-beta').requirements.splice(1, 1);
+  const generalAvailability = catalog.betaGates.find((gate) => gate.id === 'general-availability');
+  [generalAvailability.requirements[0], generalAvailability.requirements[1]] = [
+    generalAvailability.requirements[1],
+    generalAvailability.requirements[0],
+  ];
+
+  const errors = validateResearchCatalog(catalog);
+  assert.ok(errors.some((error) => error.includes('closed-beta') && error.includes('données réelles')));
+  assert.ok(errors.some((error) => error.includes('general-availability') && error.includes('position 1')));
 });
 
 test('requires assistive and modest-context profiles for every program', () => {
