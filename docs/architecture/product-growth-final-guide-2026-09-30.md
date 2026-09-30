@@ -172,7 +172,7 @@ réponses distinguent `ratingCount`, `uniqueContributorCount`, couverture des
 
 ### 4.5 Égalités et stabilité
 
-Deux scores séparés d'au plus `0,0001` sont ex æquo. Le classement suit la
+Deux scores dont l'écart est strictement inférieur à `0,0001` sont ex æquo. Le classement suit la
 convention de compétition : `1, 1, 3`, et non `1, 2, 3`. Les positions et rangs
 sont construits dans un snapshot versionné ; un pointeur atomique rend le nouveau
 snapshot visible seulement après validation du nombre d'entrées, des chunks et du
@@ -485,10 +485,11 @@ qu'il faut d'abord créer ou rouvrir une visite ; elle n'invente jamais de visit
 ### 8.2 Sans compte
 
 `/passport/local` fournit des brouillons stockés dans IndexedDB sur l'appareil. Le
-membre peut préparer un Passeport sans compte, revenir hors connexion sur le même
-navigateur puis importer explicitement les brouillons après authentification.
-L'import est idempotent. Ce dispositif n'est pas une synchronisation multi-appareil
-ni une application native hors ligne.
+membre peut préparer un Passeport sans compte, retrouver ces brouillons sur le
+même navigateur lorsque l'application est de nouveau accessible, puis les importer
+explicitement après authentification. L'import est idempotent. La conservation
+locale ne constitue ni un shell applicatif garanti hors connexion, ni une
+synchronisation multi-appareil, ni une application native hors ligne.
 
 ### 8.3 Statistiques et graphiques
 
