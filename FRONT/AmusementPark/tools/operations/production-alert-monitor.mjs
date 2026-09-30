@@ -79,18 +79,60 @@ export function extractStaticModuleAssetUrls(assetUrl, source) {
   return references;
 }
 
+export function extractStaticModuleUrlsRequiringExports(assetUrl, source) {
+  const origin = new URL(assetUrl).origin;
+  const sourceFile = typescript.createSourceFile(
+    new URL(assetUrl).pathname,
+    source,
+    typescript.ScriptTarget.Latest,
+    false,
+    typescript.ScriptKind.JS,
+  );
+  const references = [];
+
+  for (const statement of sourceFile.statements) {
+    let moduleSpecifier = null;
+    let requiresExport = false;
+    if (typescript.isImportDeclaration(statement)
+      && typescript.isStringLiteralLike(statement.moduleSpecifier)) {
+      moduleSpecifier = statement.moduleSpecifier.text;
+      const clause = statement.importClause;
+      requiresExport = Boolean(clause?.name)
+        || (Boolean(clause?.namedBindings)
+          && typescript.isNamedImports(clause.namedBindings)
+          && clause.namedBindings.elements.length > 0);
+    } else if (typescript.isExportDeclaration(statement)
+      && statement.moduleSpecifier
+      && typescript.isStringLiteralLike(statement.moduleSpecifier)) {
+      moduleSpecifier = statement.moduleSpecifier.text;
+      requiresExport = Boolean(statement.exportClause)
+        && typescript.isNamedExports(statement.exportClause)
+        && statement.exportClause.elements.length > 0;
+    }
+
+    if (!requiresExport || !moduleSpecifier?.endsWith('.js')) {
+      continue;
+    }
+    const resolved = new URL(moduleSpecifier, assetUrl);
+    if (resolved.origin === origin && !references.includes(resolved.href)) {
+      references.push(resolved.href);
+    }
+  }
+
+  return references;
+}
+
 async function probeJavaScriptAsset(
   assetUrl,
   fetchImplementation,
   timeoutMilliseconds,
-  requireNonEmptyBody = true,
 ) {
   try {
     const { response, body: source } = await fetchTextWithTimeout(fetchImplementation, assetUrl, {
       headers: { accept: 'text/javascript, application/javascript', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
     }, timeoutMilliseconds);
     const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
-    if (!response.ok || (requireNonEmptyBody && source.length === 0) || !contentType.includes('javascript')) {
+    if (!response.ok || !contentType.includes('javascript')) {
       return { failure: `${new URL(assetUrl).pathname}: bundle client invalide`, source: null };
     }
     const sourceFile = typescript.createSourceFile(
@@ -113,7 +155,6 @@ async function probeJavaScriptAssets(
   assetUrls,
   fetchImplementation,
   timeoutMilliseconds,
-  requireNonEmptyBody = true,
 ) {
   const results = new Map();
   for (let index = 0; index < assetUrls.length; index += clientAssetConcurrency) {
@@ -124,7 +165,6 @@ async function probeJavaScriptAssets(
         assetUrl,
         fetchImplementation,
         timeoutMilliseconds,
-        requireNonEmptyBody,
       ),
     })));
     for (const item of batchResults) {
@@ -138,8 +178,17 @@ async function probeStaticModuleGraph(sources, fetchImplementation, timeoutMilli
   const seen = new Set(sources.keys());
   const pending = [];
   const failures = [];
+  const modulesRequiringExports = new Set();
+  const reportedEmptyModules = new Set();
 
   const enqueueImports = (assetUrl, source) => {
+    for (const dependencyUrl of extractStaticModuleUrlsRequiringExports(assetUrl, source)) {
+      modulesRequiringExports.add(dependencyUrl);
+      if (sources.get(dependencyUrl) === '' && !reportedEmptyModules.has(dependencyUrl)) {
+        failures.push(`${new URL(dependencyUrl).pathname}: module vide malgré des exports requis`);
+        reportedEmptyModules.add(dependencyUrl);
+      }
+    }
     for (const dependencyUrl of extractStaticModuleAssetUrls(assetUrl, source)) {
       if (!seen.has(dependencyUrl) && !pending.includes(dependencyUrl)) {
         pending.push(dependencyUrl);
@@ -163,7 +212,6 @@ async function probeStaticModuleGraph(sources, fetchImplementation, timeoutMilli
       batch,
       fetchImplementation,
       timeoutMilliseconds,
-      false,
     );
     discoveredCount += batch.length;
     for (const [assetUrl, result] of results) {
@@ -171,6 +219,10 @@ async function probeStaticModuleGraph(sources, fetchImplementation, timeoutMilli
       if (result.failure) {
         failures.push(result.failure);
         continue;
+      }
+      if (result.source.length === 0 && modulesRequiringExports.has(assetUrl)) {
+        failures.push(`${new URL(assetUrl).pathname}: module vide malgré des exports requis`);
+        reportedEmptyModules.add(assetUrl);
       }
       sources.set(assetUrl, result.source);
       enqueueImports(assetUrl, result.source);
@@ -206,6 +258,8 @@ export async function probeRequiredClientAssets(
     for (const [assetUrl, result] of assetResults) {
       if (result.failure) {
         failures.push(result.failure);
+      } else if (result.source.length === 0) {
+        failures.push(`${new URL(assetUrl).pathname}: bundle client vide`);
       } else {
         sources.set(assetUrl, result.source);
       }
@@ -226,6 +280,8 @@ export async function probeRequiredClientAssets(
         const lazyResult = await probeJavaScriptAsset(lazyRouteAssetUrl, fetchImplementation, timeoutMilliseconds);
         if (lazyResult.failure) {
           failures.push(lazyResult.failure);
+        } else if (lazyResult.source.length === 0) {
+          failures.push(`${new URL(lazyRouteAssetUrl).pathname}: bundle client vide`);
         } else {
           sources.set(lazyRouteAssetUrl, lazyResult.source);
         }
@@ -283,6 +339,14 @@ export function appendSsrModeChecks(report, config) {
       result.failures.push('mode SSR absent de la réponse publique');
     } else if (unexpectedModes.length > 0) {
       result.failures.push(`mode SSR inattendu: ${unexpectedModes.join(', ')}`);
+    }
+
+    const seoReadiness = result.seoReadiness ?? [];
+    const missingSeoReadyCount = result.missingSeoReadyCount ?? result.sampleCount ?? 1;
+    if (seoReadiness.length === 0 || missingSeoReadyCount > 0) {
+      result.failures.push('preuve SEO absente de la réponse publique');
+    } else if (seoReadiness.some((value) => value !== 'true')) {
+      result.failures.push(`réponse SSR non prête pour le SEO: ${seoReadiness.join(', ')}`);
     }
   }
   return report;

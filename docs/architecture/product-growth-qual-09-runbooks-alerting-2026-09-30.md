@@ -61,15 +61,17 @@ capacités publiques. Elles contrôlent statut, transport, p95 et taille maximal
 Chaque échantillon des trois pages destinées aux robots doit en plus annoncer
 `SSR_CACHE_HIT`, `SSR_RENDERED` ou `SSR_STALE`. Ce dernier mode reste un document
 HTML complet servi volontairement pendant un rafraîchissement de cache ; un repli
-CSR en HTTP 200 ou un en-tête absent est en revanche traité comme une panne SEO.
+CSR en HTTP 200, un en-tête absent ou une preuve `SEO-Ready` différente de `true`
+est en revanche traité comme une panne SEO.
 Park Fit étant rendu côté client, la sonde charge en plus tous ses scripts et
 modules préchargés same-origin, retrouve l'import dynamique de la route exacte et
 charge son chunk paresseux. Chaque téléchargement reprend le timeout de huit
 secondes, les actifs sont lus par lots bornés de quatre, leur syntaxe est analysée
 et les imports statiques transitifs sont parcourus avec un plafond de 64 nouveaux
 bundles. Une coquille HTML 200 avec un graphe JavaScript absent, tronqué ou malformé
-ne peut donc pas déclarer ce parcours sain ni épuiser silencieusement la fenêtre
-globale du job.
+ne peut donc pas déclarer ce parcours sain. Un module vide reste accepté pour un
+import d'effet de bord, mais il est refusé dès que l'importeur exige un export ; le
+contrôle ne transforme donc pas un chunk vide légitime en fausse alerte.
 
 ## 4. Séquence d'alerte publique
 

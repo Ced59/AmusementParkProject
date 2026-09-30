@@ -48,16 +48,18 @@ test('rejects a CSR fallback and a missing SSR mode for crawler-facing targets',
     },
   };
   const fallbackReport = {
-    results: [{ key: 'home', ssrModes: ['CSR_FALLBACK'], failures: [] }],
+    results: [{ key: 'home', ssrModes: ['CSR_FALLBACK'], seoReadiness: ['true'], missingSeoReadyCount: 0, failures: [] }],
   };
   const missingReport = {
-    results: [{ key: 'home', ssrModes: [], failures: [] }],
+    results: [{ key: 'home', ssrModes: [], seoReadiness: ['true'], missingSeoReadyCount: 0, failures: [] }],
   };
   const intermittentlyMissingReport = {
     results: [{
       key: 'home',
       ssrModes: ['SSR_RENDERED'],
       missingSsrModeCount: 1,
+      seoReadiness: ['true'],
+      missingSeoReadyCount: 0,
       failures: [],
     }],
   };
@@ -69,6 +71,45 @@ test('rejects a CSR fallback and a missing SSR mode for crawler-facing targets',
   assert.deepEqual(fallbackReport.results[0].failures, ['mode SSR inattendu: CSR_FALLBACK']);
   assert.deepEqual(missingReport.results[0].failures, ['mode SSR absent de la réponse publique']);
   assert.deepEqual(intermittentlyMissingReport.results[0].failures, ['mode SSR absent de la réponse publique']);
+});
+
+test('rejects every SSR sample without an explicit positive SEO readiness proof', () => {
+  const ssrConfig = {
+    baseline: {
+      targets: [{
+        key: 'home',
+        kind: 'ssr-page',
+        allowedSsrModes: ['SSR_RENDERED', 'SSR_STALE'],
+      }],
+    },
+  };
+  const notReadyReport = {
+    results: [{
+      key: 'home',
+      ssrModes: ['SSR_RENDERED'],
+      missingSsrModeCount: 0,
+      seoReadiness: ['false'],
+      missingSeoReadyCount: 0,
+      failures: [],
+    }],
+  };
+  const missingProofReport = {
+    results: [{
+      key: 'home',
+      sampleCount: 2,
+      ssrModes: ['SSR_STALE'],
+      missingSsrModeCount: 0,
+      seoReadiness: ['true'],
+      missingSeoReadyCount: 1,
+      failures: [],
+    }],
+  };
+
+  appendSsrModeChecks(notReadyReport, ssrConfig);
+  appendSsrModeChecks(missingProofReport, ssrConfig);
+
+  assert.deepEqual(notReadyReport.results[0].failures, ['réponse SSR non prête pour le SEO: false']);
+  assert.deepEqual(missingProofReport.results[0].failures, ['preuve SEO absente de la réponse publique']);
 });
 
 test('does not wait for confirmation when the first probe is healthy', async () => {
@@ -165,7 +206,7 @@ test('finds and verifies the lazy-loaded chunk for the exact client route', asyn
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
-    ['https://amusement-parks.fun/chunk-EVIDENCE.js', new Response('', {
+    ['https://amusement-parks.fun/chunk-EVIDENCE.js', new Response('export const Evidence=1;', {
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
@@ -223,6 +264,34 @@ test('reports a missing transitive static import from the Park Fit route chunk',
   );
 
   assert.deepEqual(result.failures, ['/chunk-MISSING.js: bundle client invalide']);
+});
+
+test('rejects an empty transitive module when its importer requires a named export', async () => {
+  const responses = new Map([
+    ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
+      status: 200,
+      headers: { 'content-type': 'text/html' },
+    })],
+    ['https://amusement-parks.fun/main.js', new Response('const routes=[{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js")}];export{routes};', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import{Evidence}from"./chunk-EVIDENCE.js";export{Evidence};', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-EVIDENCE.js', new Response('', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+  ]);
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    { path: '/fr/park-fit', expectedStatus: 200, clientRoutePath: 'park-fit' },
+    async (url) => responses.get(String(url)),
+  );
+
+  assert.deepEqual(result.failures, ['/chunk-EVIDENCE.js: module vide malgré des exports requis']);
 });
 
 test('rejects a malformed client bundle even when HTTP and MIME type are valid', async () => {
