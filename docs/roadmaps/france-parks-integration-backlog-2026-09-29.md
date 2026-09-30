@@ -35,8 +35,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 42 | 31 |
-| **Total** | **225** | **214** |
+| Attractions autonomes à migrer ou intégrer | 42 | 30 |
+| **Total** | **225** | **213** |
 
 ## 1. Fiches publiques à compléter
 
@@ -240,7 +240,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] La Norma Ski Resort — parc legacy `616240a8-2aec-4afd-8289-cb7cb56b61bd`
 - [ ] La Sambuy — parc legacy `3ed514ff-1f6f-412e-ac68-2327b3b6d36a`
 - [ ] Le Dévoluy — parc legacy `e6b97b08-14d7-4958-b0a4-0ef308ae80fc`
 - [ ] Le Lioran — parc legacy `9a42efe4-0cee-47f5-968a-ed35b44ff15c`
