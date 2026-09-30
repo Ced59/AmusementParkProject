@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -18,6 +18,8 @@ param(
     [int]$ExpiresInDays = 30,
 
     [string]$ParkId,
+
+    [string]$StandaloneAttractionId,
 
     [string]$Query,
 
@@ -91,6 +93,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $script:MaximumImageBytes = 10 * 1024 * 1024
+$script:MaximumProductionImageUploadBytes = 960 * 1024
 $script:MaximumOfficialMapBytes = 25 * 1024 * 1024
 $script:CredentialDirectory = Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'AmusementParkProject\Codex'
 $script:CredentialPath = Join-Path $script:CredentialDirectory 'park-data-editor-token.clixml'
@@ -725,6 +728,49 @@ function Export-ParkGraph {
     return $resolvedOutputPath
 }
 
+function Export-StandaloneAttractionGraph {
+    param([string]$TargetStandaloneAttractionId, [string]$DestinationPath, [int]$TimeoutSeconds)
+
+    $resolvedOutputPath = [IO.Path]::GetFullPath($DestinationPath)
+    $outputDirectory = [IO.Path]::GetDirectoryName($resolvedOutputPath)
+    if (-not [string]::IsNullOrWhiteSpace($outputDirectory)) {
+        [IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
+    }
+
+    $partialPath = $resolvedOutputPath + '.partial'
+    try {
+        Wait-ParkDataEditorAvailability -TimeoutSeconds $TimeoutSeconds | Out-Null
+        $document = Invoke-ParkDataEditorJsonApi `
+            -Method GET `
+            -RelativePath "admin/park-graph-upserts/standalone-attractions/$([Uri]::EscapeDataString($TargetStandaloneAttractionId))/export" `
+            -Body $null
+
+        $documentTypeProperty = $document.PSObject.Properties['documentType']
+        $identityProperty = $document.PSObject.Properties['identity']
+        $exportedIdProperty = if ($null -eq $identityProperty) {
+            $null
+        }
+        else {
+            $identityProperty.Value.PSObject.Properties['standaloneAttractionId']
+        }
+        if ($null -eq $documentTypeProperty -or $documentTypeProperty.Value -ne 'standaloneAttractionGraph' -or
+            $null -eq $exportedIdProperty -or
+            -not [string]::Equals([string]$exportedIdProperty.Value, $TargetStandaloneAttractionId, [StringComparison]::OrdinalIgnoreCase)) {
+            throw "The standalone attraction export did not return the expected document for '$TargetStandaloneAttractionId'."
+        }
+
+        Write-JsonFile -Value $document -Path $partialPath
+        Move-Item -LiteralPath $partialPath -Destination $resolvedOutputPath -Force
+    }
+    finally {
+        if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
+            Remove-Item -LiteralPath $partialPath -Force
+        }
+    }
+
+    return $resolvedOutputPath
+}
+
 function Set-JsonProperty {
     param([object]$Object, [string]$Name, [object]$Value)
 
@@ -986,6 +1032,13 @@ function Import-ParkPhoto {
         $fileInfo = Get-Item -LiteralPath $temporaryPath
         if ($fileInfo.Length -le 0 -or $fileInfo.Length -gt $script:MaximumImageBytes) {
             throw 'The downloaded image must be between 1 byte and 10 MB.'
+        }
+        $apiHost = ([Uri](Get-NormalizedApiBaseUrl $ApiBaseUrl)).Host
+        $isProductionHost = [string]::Equals($apiHost, 'amusement-parks.fun', [StringComparison]::OrdinalIgnoreCase) -or
+            [string]::Equals($apiHost, 'www.amusement-parks.fun', [StringComparison]::OrdinalIgnoreCase)
+        if ($isProductionHost -and
+            $fileInfo.Length -gt $script:MaximumProductionImageUploadBytes) {
+            throw "The downloaded image is $($fileInfo.Length) bytes. The production ingress accepts source images up to $script:MaximumProductionImageUploadBytes bytes once the multipart envelope is included. Select an official optimized JPEG, PNG or WebP source instead."
         }
 
         $contentType = Get-ImageContentType -Path $temporaryPath
@@ -1284,6 +1337,15 @@ switch ($Action) {
             -TargetParkId $ParkId `
             -DestinationPath $OutputPath `
             -RequestedSections $Sections `
+            -TimeoutSeconds $ExportTimeoutSeconds
+    }
+    'ExportStandaloneAttraction' {
+        if ([string]::IsNullOrWhiteSpace($StandaloneAttractionId) -or [string]::IsNullOrWhiteSpace($OutputPath)) {
+            throw 'StandaloneAttractionId and OutputPath are required for ExportStandaloneAttraction.'
+        }
+        Export-StandaloneAttractionGraph `
+            -TargetStandaloneAttractionId $StandaloneAttractionId.Trim() `
+            -DestinationPath $OutputPath `
             -TimeoutSeconds $ExportTimeoutSeconds
     }
     'Preview' {

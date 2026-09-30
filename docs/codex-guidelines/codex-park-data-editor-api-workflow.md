@@ -191,6 +191,14 @@ Pour une page parc, `PublishFacebook` appelé sans `Message` et sans `ImageId` u
   -OutputPath .\work\park-items-images.json
 ```
 
+Une attraction autonome utilise l’export officiel dédié. Le client attend la disponibilité globale, vérifie le type du document et son identifiant, puis ne remplace le fichier de sortie qu’après ces contrôles :
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action ExportStandaloneAttraction `
+  -StandaloneAttractionId 'standalone-attraction-id' `
+  -OutputPath .\work\standalone-attraction.json
+```
+
 - Sans `-Sections`, le client exporte toutes les sections, y compris `OfficialMaps`.
 - Pendant les étapes 0 à 8, aucun appel complet à `ExportPark` n’est obligatoire. L’état local est construit depuis la recherche du parc, les éventuels exports ciblés strictement nécessaires et les réponses réussies des mutations.
 - Avant l’étape 9, appeler une fois `ExportPark` sans `-Sections` afin d’obtenir l’état complet frais sur lequel repose l’audit final. La liste complète inclut les sections `OfficialMaps` et `Pricing`.
@@ -337,6 +345,8 @@ Le fichier de métadonnées contient les 8 langues publiques pour `altTexts`, `c
 - Image historique, chantier, rendu ou illustration d’article : `SetAsCurrent $false`, sauf décision éditoriale explicitement justifiée.
 
 Le paramètre `SetAsCurrent` vaut `true` par défaut dans le client. Codex doit donc toujours le choisir consciemment et fournir `$false` pour une image secondaire.
+
+Sur l’API publique de production, l’enveloppe multipart reste limitée à 1 Mio. Le client refuse donc avant l’upload toute image source dépassant 960 Kio et demande une variante officielle optimisée. Il ne faut ni compresser arbitrairement une œuvre, ni contourner la route officielle, ni réessayer le même fichier après un HTTP 413.
 
 Exemple avec un fichier de métadonnées localisées :
 
