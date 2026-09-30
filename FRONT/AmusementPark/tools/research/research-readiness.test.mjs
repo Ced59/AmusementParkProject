@@ -10,6 +10,7 @@ import {
   requiredExtensionDocumentsByProgram,
   requiredProfileIds,
   requiredProfileIdsByProgram,
+  requiredProgramDecisionsByProgram,
   requiredProgramIds,
   requiredRoadmapByProgram,
   requiredTaskContextFields,
@@ -28,16 +29,17 @@ function item(id, fields = {}) {
 function validProgram(id) {
   const profileIds = requiredProfileIdsByProgram[id]
     ?? ['journal-enthusiast', 'assistive-technology', 'modest-device-network'];
+  const decision = requiredProgramDecisionsByProgram[id];
   return {
     id,
     roadmap: requiredRoadmapByProgram[id],
     gate: `${id}-G`,
-    businessQuestion: 'Question métier',
-    firstSuccess: 'Premier succès',
+    businessQuestion: decision.businessQuestion,
+    firstSuccess: decision.firstSuccess,
     profileIds: [...profileIds],
     taskContext: { ...requiredTaskContextsByProgram[id] },
-    stopConditions: ['stop one', 'stop two'],
-    generalizationEvidence: ['proof one', 'proof two'],
+    stopConditions: [...decision.stopConditions],
+    generalizationEvidence: [...decision.generalizationEvidence],
     extensionDocuments: [...(requiredExtensionDocumentsByProgram[id] ?? [])],
   };
 }
@@ -256,6 +258,41 @@ test('binds every task context to its canonical product program', () => {
   const errors = validateResearchCatalog(catalog);
   assert.ok(errors.some((error) => error.includes('RANK') && error.includes('contexte canonique modifié')));
   assert.ok(errors.some((error) => error.includes('PASS') && error.includes('contexte canonique modifié')));
+});
+
+test('binds gate decisions and evidence to their canonical product program', () => {
+  const catalog = validCatalog();
+  const rankingProgram = catalog.programs.find((program) => program.id === 'RANK');
+  const passportProgram = catalog.programs.find((program) => program.id === 'PASS');
+  [rankingProgram.businessQuestion, passportProgram.businessQuestion] = [
+    passportProgram.businessQuestion,
+    rankingProgram.businessQuestion,
+  ];
+  [rankingProgram.firstSuccess, passportProgram.firstSuccess] = [
+    passportProgram.firstSuccess,
+    rankingProgram.firstSuccess,
+  ];
+  [rankingProgram.stopConditions, passportProgram.stopConditions] = [
+    passportProgram.stopConditions,
+    rankingProgram.stopConditions,
+  ];
+  [rankingProgram.generalizationEvidence, passportProgram.generalizationEvidence] = [
+    passportProgram.generalizationEvidence,
+    rankingProgram.generalizationEvidence,
+  ];
+
+  const errors = validateResearchCatalog(catalog);
+  for (const programId of ['RANK', 'PASS']) {
+    for (const field of [
+      'businessQuestion',
+      'firstSuccess',
+      'stopConditions',
+      'generalizationEvidence',
+    ]) {
+      assert.ok(errors.some((error) => error.includes(programId)
+        && error.includes(`décision canonique modifiée ${field}`)));
+    }
+  }
 });
 
 test('rejects document paths that escape their product documentation roots', () => {

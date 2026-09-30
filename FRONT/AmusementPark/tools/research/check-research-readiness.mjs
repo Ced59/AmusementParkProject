@@ -247,6 +247,105 @@ export const requiredTaskContextsByProgram = Object.freeze({
   }),
 });
 
+export const requiredProgramDecisionsByProgram = Object.freeze({
+  RANK: Object.freeze({
+    businessQuestion: "Les visiteurs comprennent-ils pourquoi un lieu est classé et ce que les preuves permettent réellement d'affirmer ?",
+    firstSuccess: 'Trouver un classement pertinent puis expliquer son ordre sans confondre moyenne brute, score agrégé et rang publié.',
+    stopConditions: Object.freeze([
+      'Le rang reste interprété comme une moyenne simple après corrections répétées.',
+      "La confiance exige d'exposer des données personnelles ou une précision statistique injustifiée.",
+    ]),
+    generalizationEvidence: Object.freeze([
+      'La méthode et les volumes sont correctement reformulés par plusieurs profils.',
+      'Les lieux non classés restent compris comme inconnus ou insuffisamment documentés.',
+    ]),
+  }),
+  PASS: Object.freeze({
+    businessQuestion: 'Le passeport remplace-t-il avantageusement une note libre tout en restant compréhensible et privé par défaut ?',
+    firstSuccess: "Créer une visite, ajouter plusieurs tours et retrouver l'historique sans assistance.",
+    stopConditions: Object.freeze([
+      'La deuxième utilisation reste absente malgré une première activation réussie.',
+      'La distinction des notes ou la portée de la suppression reste incomprise après corrections répétées.',
+    ]),
+    generalizationEvidence: Object.freeze([
+      'Plusieurs testeurs terminent une seconde visite sans assistance.',
+      'Les trois types de notes et leur influence communautaire sont correctement distingués.',
+    ]),
+  }),
+  SHARE: Object.freeze({
+    businessQuestion: 'Une personne peut-elle publier un récapitulatif utile en comprenant exactement ce qui devient public et comment le révoquer ?',
+    firstSuccess: 'Prévisualiser, publier puis révoquer un partage sans exposer un champ resté privé.',
+    stopConditions: Object.freeze([
+      "Un testeur publie une donnée qu'il pensait privée.",
+      'La révocation ou la suppression ne produit pas un résultat immédiatement vérifiable.',
+    ]),
+    generalizationEvidence: Object.freeze([
+      'Les participants prédisent correctement chaque champ rendu public avant publication.',
+      "Un lien révoqué n'est jamais interprété comme encore partageable.",
+    ]),
+  }),
+  FIT: Object.freeze({
+    businessQuestion: 'Park Fit aide-t-il réellement à réduire un choix sans déguiser les données manquantes en recommandation certaine ?',
+    firstSuccess: 'Décrire ses contraintes, obtenir des résultats et expliquer au moins une recommandation et une inconnue.',
+    stopConditions: Object.freeze([
+      'La recommandation est comprise comme une garantie ou une probabilité calculée.',
+      'Les inconnues sont régulièrement lues comme des réponses négatives.',
+    ]),
+    generalizationEvidence: Object.freeze([
+      'Les raisons et inconnues sont reformulées correctement par plusieurs profils.',
+      "Le choix final reste attribué à l'utilisateur, jamais présenté comme une vérité algorithmique.",
+    ]),
+  }),
+  WATCH: Object.freeze({
+    businessQuestion: 'Les favoris et alertes restent-ils utiles, factuels et contrôlables sans créer de pression à revenir ?',
+    firstSuccess: "Suivre une cible, comprendre la condition d'alerte et arrêter le suivi sans ambiguïté.",
+    stopConditions: Object.freeze([
+      'Les notifications poussent à revenir sans fait nouveau vérifiable.',
+      "La charge de modération ou la fréquence d'envoi dépasse les moyens d'exploitation.",
+    ]),
+    generalizationEvidence: Object.freeze([
+      "La condition et la source d'une alerte sont comprises avant activation.",
+      'La suspension et la suppression sont retrouvées sans assistance.',
+    ]),
+  }),
+  TRIP: Object.freeze({
+    businessQuestion: 'Un groupe peut-il construire un séjour ensemble sans perdre la maîtrise des rôles, des décisions ou des données privées ?',
+    firstSuccess: 'Créer un voyage, inviter un participant et prendre une décision commune sans contourner les permissions.',
+    stopConditions: Object.freeze([
+      'Un rôle peut agir au-delà de ce que les participants comprennent ou acceptent.',
+      'Les conflits produisent des pertes silencieuses ou exigent un support disproportionné.',
+    ]),
+    generalizationEvidence: Object.freeze([
+      "Les rôles et conséquences d'une action sont correctement prédits.",
+      'Le groupe retrouve une décision commune après un retour différé.',
+    ]),
+  }),
+  HIST: Object.freeze({
+    businessQuestion: "L'exploration historique permet-elle de comprendre l'évolution d'un parc sans mélanger faits datés, incertitudes et état actuel ?",
+    firstSuccess: "Explorer une période, relier un changement à sa source et distinguer l'historique de l'inventaire actuel.",
+    stopConditions: Object.freeze([
+      'Une date approximative est régulièrement interprétée comme exacte.',
+      "La provenance ou l'état actuel devient impossible à retrouver sans expertise éditoriale.",
+    ]),
+    generalizationEvidence: Object.freeze([
+      'Faits, estimations et lacunes sont distingués par plusieurs profils.',
+      "La navigation temporelle reste compréhensible sans explication de l'équipe.",
+    ]),
+  }),
+  LIVE: Object.freeze({
+    businessQuestion: 'Les données en direct aident-elles à décider sans être prises pour une promesse ni contaminer les notes communautaires ?',
+    firstSuccess: 'Lire une attente, sa fraîcheur et sa provenance puis prendre une décision proportionnée à sa fiabilité.',
+    stopConditions: Object.freeze([
+      'Les visiteurs prennent une prévision pour une garantie malgré les corrections de libellé.',
+      'La source ou la charge de collecte ne peut pas être exploitée honnêtement sur le VPS.',
+    ]),
+    generalizationEvidence: Object.freeze([
+      "Fraîcheur, source et niveau d'incertitude sont correctement reformulés.",
+      "Aucune observation temporelle n'est confondue avec une note ou un vote.",
+    ]),
+  }),
+});
+
 export const requiredProtocolDocumentPaths = Object.freeze([
   'docs/product/research/README.md',
   'docs/product/research/session-result-template.md',
@@ -285,6 +384,12 @@ const allowedOutcomeValues = ['unassisted', 'assisted', 'failed', 'not-observabl
 
 function isNonEmptyText(value) {
   return typeof value === 'string' && value.trim().length > 0;
+}
+
+function hasSameOrderedValues(actualValues, expectedValues) {
+  return Array.isArray(actualValues)
+    && actualValues.length === expectedValues.length
+    && expectedValues.every((expectedValue, index) => actualValues[index] === expectedValue);
 }
 
 function hasOnlyRequiredIds(items, requiredIds, label, errors) {
@@ -466,6 +571,13 @@ export function validateResearchCatalog(catalog) {
       }
     }
 
+    const canonicalDecision = requiredProgramDecisionsByProgram[programId];
+    for (const field of ['businessQuestion', 'firstSuccess']) {
+      if (canonicalDecision && program?.[field] !== canonicalDecision[field]) {
+        errors.push(`Programme ${programId}: décision canonique modifiée ${field}.`);
+      }
+    }
+
     if (!isProductGrowthRoadmapPath(program?.roadmap)) {
       errors.push(`Programme ${programId}: roadmap hors du périmètre produit.`);
     } else if (roadmapPaths.has(program.roadmap)) {
@@ -521,6 +633,9 @@ export function validateResearchCatalog(catalog) {
         || program[field].length < minimum
         || program[field].some((value) => !isNonEmptyText(value))) {
         errors.push(`Programme ${programId}: ${field} insuffisant.`);
+      }
+      if (canonicalDecision && !hasSameOrderedValues(program?.[field], canonicalDecision[field])) {
+        errors.push(`Programme ${programId}: décision canonique modifiée ${field}.`);
       }
     }
 
