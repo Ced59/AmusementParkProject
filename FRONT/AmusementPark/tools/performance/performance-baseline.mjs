@@ -57,6 +57,9 @@ export function summarizeSamples(target, samples) {
     outcomes,
     buildVersions: [...new Set(samples.map((sample) => sample.buildVersion).filter(Boolean))],
     ssrModes: [...new Set(samples.map((sample) => sample.ssrMode).filter(Boolean))],
+    missingSsrModeCount: samples.filter((sample) => !sample.ssrMode).length,
+    seoReadiness: [...new Set(samples.map((sample) => sample.seoReady).filter(Boolean))],
+    missingSeoReadyCount: samples.filter((sample) => !sample.seoReady).length,
   };
 }
 
@@ -108,6 +111,7 @@ async function measureOnce(baseUrl, target, timeoutMilliseconds, fetchImplementa
       bytes: body.byteLength,
       buildVersion: response.headers.get('x-amusementpark-build-version'),
       ssrMode: response.headers.get('x-amusementpark-ssr-mode'),
+      seoReady: response.headers.get('x-amusementpark-seo-ready')?.toLowerCase() ?? null,
     };
   } catch (error) {
     const isTimeout = controller.signal.aborted;
@@ -118,6 +122,7 @@ async function measureOnce(baseUrl, target, timeoutMilliseconds, fetchImplementa
       bytes: 0,
       buildVersion: null,
       ssrMode: null,
+      seoReady: null,
       error: error instanceof Error ? error.name : 'UnknownError',
     };
   } finally {

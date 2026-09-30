@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "confirmationAttempts": 2,
+  "confirmationDelayMilliseconds": 30000,
+  "baseline": {
+    "schemaVersion": 1,
+    "samples": 2,
+    "warmupSamples": 0,
+    "pauseMilliseconds": 250,
+    "timeoutMilliseconds": 8000,
+    "targets": [
+      {
+        "key": "home-fr",
+        "path": "/fr/home",
+        "kind": "ssr-page",
+        "expectedStatus": 200,
+        "maximumP95Milliseconds": 3000,
+        "maximumBytes": 750000,
+        "allowedSsrModes": ["SSR_CACHE_HIT", "SSR_RENDERED", "SSR_STALE"],
+        "incidentId": "production-rollback"
+      },
+      {
+        "key": "parks-fr",
+        "path": "/fr/parks",
+        "kind": "ssr-page",
+        "expectedStatus": 200,
+        "maximumP95Milliseconds": 3000,
+        "maximumBytes": 750000,
+        "allowedSsrModes": ["SSR_CACHE_HIT", "SSR_RENDERED", "SSR_STALE"],
+        "incidentId": "production-rollback"
+      },
+      {
+        "key": "rankings-fr",
+        "path": "/fr/rankings",
+        "kind": "ssr-page",
+        "expectedStatus": 200,
+        "maximumP95Milliseconds": 3000,
+        "maximumBytes": 750000,
+        "allowedSsrModes": ["SSR_CACHE_HIT", "SSR_RENDERED", "SSR_STALE"],
+        "incidentId": "production-rollback"
+      },
+      {
+        "key": "park-fit-fr",
+        "path": "/fr/park-fit",
+        "kind": "csr-page",
+        "expectedStatus": 200,
+        "maximumP95Milliseconds": 3000,
+        "maximumBytes": 750000,
+        "clientRoutePath": "park-fit",
+        "clientRouteExport": "ParkFitStartPageComponent",
+        "incidentId": "production-rollback"
+      },
+      {
+        "key": "api-health",
+        "path": "/api/health",
+        "kind": "api",
+        "expectedStatus": 200,
+        "maximumP95Milliseconds": 1000,
+        "maximumBytes": 100000,
+        "incidentId": "production-rollback"
+      },
+      {
+        "key": "public-capabilities",
+        "path": "/api/public/capabilities",
+        "kind": "api",
+        "expectedStatus": 200,
+        "maximumP95Milliseconds": 1500,
+        "maximumBytes": 100000,
+        "incidentId": "production-rollback"
+      }
+    ]
+  }
+}

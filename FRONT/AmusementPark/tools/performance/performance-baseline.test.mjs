@@ -31,12 +31,15 @@ test('summarizes errors separately and evaluates explicit budgets', () => {
     maximumBytes: 1000,
   };
   const summary = summarizeSamples(target, [
-    { status: 200, outcome: 'success', durationMilliseconds: 45, bytes: 800, buildVersion: '5.4.21', ssrMode: 'SSR_RENDERED' },
-    { status: 503, outcome: 'server_error', durationMilliseconds: 20, bytes: 100, buildVersion: '5.4.21', ssrMode: null },
+    { status: 200, outcome: 'success', durationMilliseconds: 45, bytes: 800, buildVersion: '5.4.21', ssrMode: 'SSR_RENDERED', seoReady: 'true' },
+    { status: 503, outcome: 'server_error', durationMilliseconds: 20, bytes: 100, buildVersion: '5.4.21', ssrMode: null, seoReady: null },
   ]);
 
   assert.equal(summary.p50Milliseconds, 45);
   assert.deepEqual(summary.statuses, { 200: 1, 503: 1 });
   assert.deepEqual(summary.outcomes, { success: 1, server_error: 1 });
+  assert.equal(summary.missingSsrModeCount, 1);
+  assert.deepEqual(summary.seoReadiness, ['true']);
+  assert.equal(summary.missingSeoReadyCount, 1);
   assert.deepEqual(evaluateSummary(target, summary), ['1 réponse(s) avec un statut inattendu']);
 });
