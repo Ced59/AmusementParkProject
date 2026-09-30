@@ -12,6 +12,7 @@ import {
   requiredProfileIds,
   requiredProfileIdsByProgram,
   requiredProfileLabels,
+  requiredProtocolDocumentHeadings,
   requiredProgramDecisionsByProgram,
   requiredProgramIds,
   requiredRoadmapByProgram,
@@ -94,10 +95,8 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     '## 4. Séparer les faits des décisions',
     '## 5. Passer une gate de bêta',
   ].join('\n');
-  assert.deepEqual(
-    validateResearchDocumentContent(readmePath, contentWithoutStopConditions),
-    [`Document ${readmePath}: section obligatoire absente ## 6. Conditions d'arrêt communes.`],
-  );
+  assert.ok(validateResearchDocumentContent(readmePath, contentWithoutStopConditions)
+    .some((error) => error === `Document ${readmePath}: section obligatoire absente ## 6. Conditions d'arrêt communes.`));
 
   const passportProtocolPath = 'docs/product/passport-beta-validation-protocol.md';
   const incompletePassportProtocol = [
@@ -114,6 +113,25 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   );
   assert.ok(passportErrors.some((error) => error.includes('Critères de validation qualitative')));
   assert.ok(passportErrors.some((error) => error.includes("Conditions d'arrêt")));
+
+  const emptyPassportProtocol = [
+    '# Protocole de validation de la bêta passeport',
+    '## Objectif',
+    '## Cohorte minimale',
+    '## Préparation',
+    '## Scénarios',
+    '## Questions après chaque session',
+    '## Fiche de résultat',
+    '## Critères de validation qualitative `PASS-G` — suivi non bloquant',
+    "## Conditions d'arrêt ou de réduction",
+  ].join('\n');
+  const emptyPassportErrors = validateResearchDocumentContent(
+    passportProtocolPath,
+    emptyPassportProtocol,
+  );
+  assert.ok(emptyPassportErrors.some((error) => error.includes('section obligatoire vide ou insuffisante ## Scénarios')));
+  assert.ok(emptyPassportErrors.some((error) => error.includes('section obligatoire vide ou insuffisante ## Critères de validation qualitative')));
+  assert.ok(emptyPassportErrors.some((error) => error.includes("section obligatoire vide ou insuffisante ## Conditions d'arrêt")));
 
   const sessionTemplatePath = 'docs/product/research/session-result-template.md';
   const incompleteSessionTemplate = [
@@ -134,6 +152,10 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     assert.ok(validateResearchDocumentContent(roadmapPath, '# Roadmap incomplète')
       .some((error) => error.includes(`Gate finale \`${programId}-G\``)
         || error.includes(`\`${programId}-G\` — socle technique`)));
+
+    const [gateHeading] = requiredProtocolDocumentHeadings[roadmapPath];
+    assert.ok(validateResearchDocumentContent(roadmapPath, gateHeading)
+      .some((error) => error.includes('section obligatoire vide ou insuffisante')));
   }
 });
 

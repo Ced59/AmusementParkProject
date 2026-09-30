@@ -483,9 +483,36 @@ export const requiredProtocolDocumentHeadings = Object.freeze({
 });
 
 const allowedOutcomeValues = ['unassisted', 'assisted', 'failed', 'not-observable'];
+const minimumResearchSectionContentLength = 20;
 
 function isNonEmptyText(value) {
   return typeof value === 'string' && value.trim().length > 0;
+}
+
+function markdownHeadingLevel(line) {
+  const match = line.trim().match(/^(#{1,6})\s+/);
+  return match ? match[1].length : null;
+}
+
+function hasMeaningfulSectionContent(lines, headingIndex) {
+  const headingLevel = markdownHeadingLevel(lines[headingIndex]);
+  let sectionEndIndex = lines.length;
+  for (let index = headingIndex + 1; index < lines.length; index += 1) {
+    const candidateLevel = markdownHeadingLevel(lines[index]);
+    if (candidateLevel !== null && candidateLevel <= headingLevel) {
+      sectionEndIndex = index;
+      break;
+    }
+  }
+
+  const normalizedContent = lines
+    .slice(headingIndex + 1, sectionEndIndex)
+    .filter((line) => !line.trim().startsWith('<!--'))
+    .join(' ')
+    .replace(/[`*_>#|\[\]():-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return normalizedContent.length >= minimumResearchSectionContentLength;
 }
 
 function hasSameOrderedValues(actualValues, expectedValues) {
@@ -551,9 +578,16 @@ export function validateResearchDocumentContent(documentPath, content) {
     return [`Document de recherche vide: ${documentPath}.`];
   }
 
-  const errors = (requiredProtocolDocumentHeadings[documentPath] ?? [])
-    .filter((heading) => !content.includes(heading))
-    .map((heading) => `Document ${documentPath}: section obligatoire absente ${heading}.`);
+  const errors = [];
+  const lines = content.split(/\r?\n/);
+  for (const heading of requiredProtocolDocumentHeadings[documentPath] ?? []) {
+    const headingIndex = lines.findIndex((line) => line.trim() === heading);
+    if (headingIndex < 0) {
+      errors.push(`Document ${documentPath}: section obligatoire absente ${heading}.`);
+    } else if (!hasMeaningfulSectionContent(lines, headingIndex)) {
+      errors.push(`Document ${documentPath}: section obligatoire vide ou insuffisante ${heading}.`);
+    }
+  }
 
   if (documentPath === 'docs/product/research/session-result-template.md') {
     for (const taskId of requiredTaskIds) {
