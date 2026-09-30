@@ -35,8 +35,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 42 | 19 |
-| **Total** | **225** | **202** |
+| Attractions autonomes à migrer ou intégrer | 42 | 18 |
+| **Total** | **225** | **201** |
 
 ## 1. Fiches publiques à compléter
 
@@ -240,7 +240,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] Lugik Park — parc legacy `d82e36ed-0fbc-4478-99a0-ac9eab0550a8`
 - [ ] Markstein Grand-Ballon — parc legacy `1ce8e3b2-bb20-46a1-9f00-e4cea47c10f4`
 - [ ] Montgenèvre — parc legacy `02fb8442-2107-4b53-ac23-dc4fe268a41e`
 - [ ] Normandie Luge — parc legacy `c344f253-61a0-4b07-b892-3783fd3ecea8`
