@@ -528,22 +528,26 @@ function excludeFencedCodeBlocks(lines) {
   const visibleLines = [];
   let activeFence = null;
   for (const line of lines) {
-    const fenceMatch = line.match(/^\s*(`{3,}|~{3,})/);
-    if (fenceMatch) {
-      const fenceCharacter = fenceMatch[1][0];
-      const fenceLength = fenceMatch[1].length;
-      if (activeFence === null) {
-        activeFence = Object.freeze({ character: fenceCharacter, length: fenceLength });
-      } else if (activeFence.character === fenceCharacter
-        && fenceLength >= activeFence.length) {
+    if (activeFence !== null) {
+      const closingFenceMatch = line.match(/^ {0,3}(`{3,}|~{3,})[ \t]*$/);
+      if (closingFenceMatch
+        && activeFence.character === closingFenceMatch[1][0]
+        && closingFenceMatch[1].length >= activeFence.length) {
         activeFence = null;
       }
       continue;
     }
 
-    if (activeFence === null) {
-      visibleLines.push(line);
+    const openingFenceMatch = line.match(/^ {0,3}(`{3,}|~{3,})/);
+    if (openingFenceMatch) {
+      activeFence = Object.freeze({
+        character: openingFenceMatch[1][0],
+        length: openingFenceMatch[1].length,
+      });
+      continue;
     }
+
+    visibleLines.push(line);
   }
   return visibleLines;
 }
