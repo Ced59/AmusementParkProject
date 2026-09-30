@@ -47,6 +47,7 @@
         "maximumP95Milliseconds": 3000,
         "maximumBytes": 750000,
         "clientRoutePath": "park-fit",
+        "clientRouteExport": "ParkFitStartPageComponent",
         "incidentId": "production-rollback"
       },
       {

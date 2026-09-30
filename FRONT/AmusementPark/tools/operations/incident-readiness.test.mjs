@@ -99,3 +99,29 @@ test('accepts stale SSR output but rejects client fallbacks and unknown modes', 
     (error) => error.includes('modes SSR sûrs'),
   ));
 });
+
+test('requires an exact lazy export for every monitored client route', () => {
+  const incidents = requiredIncidentIds.map((id) => incident(
+    id,
+    id === 'production-rollback' ? { detectionMode: 'automated' } : {},
+  ));
+  const catalog = { schemaVersion: 1, incidents };
+  const config = {
+    confirmationAttempts: 2,
+    confirmationDelayMilliseconds: 10000,
+    baseline: {
+      targets: [{
+        key: 'park-fit',
+        kind: 'csr-page',
+        incidentId: 'production-rollback',
+        clientRoutePath: 'park-fit',
+      }],
+    },
+  };
+
+  assert.ok(validateMonitorConfig(config, catalog).some(
+    (error) => error.includes('export attendu absent'),
+  ));
+  config.baseline.targets[0].clientRouteExport = 'ParkFitStartPageComponent';
+  assert.deepEqual(validateMonitorConfig(config, catalog), []);
+});

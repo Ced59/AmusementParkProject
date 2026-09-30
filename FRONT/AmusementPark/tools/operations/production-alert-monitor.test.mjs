@@ -213,7 +213,12 @@ test('finds and verifies the lazy-loaded chunk for the exact client route', asyn
   ]);
   const result = await probeRequiredClientAssets(
     'https://amusement-parks.fun',
-    { path: '/fr/park-fit', expectedStatus: 200, clientRoutePath: 'park-fit' },
+    {
+      path: '/fr/park-fit',
+      expectedStatus: 200,
+      clientRoutePath: 'park-fit',
+      clientRouteExport: 'ParkFitStartPageComponent',
+    },
     async (url) => responses.get(String(url)),
   );
 
@@ -248,7 +253,7 @@ test('reports a missing transitive static import from the Park Fit route chunk',
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
-    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import{Missing}from"./chunk-MISSING.js";', {
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import{Missing}from"./chunk-MISSING.js";export class ParkFitStartPageComponent{}', {
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
@@ -259,7 +264,12 @@ test('reports a missing transitive static import from the Park Fit route chunk',
   ]);
   const result = await probeRequiredClientAssets(
     'https://amusement-parks.fun',
-    { path: '/fr/park-fit', expectedStatus: 200, clientRoutePath: 'park-fit' },
+    {
+      path: '/fr/park-fit',
+      expectedStatus: 200,
+      clientRoutePath: 'park-fit',
+      clientRouteExport: 'ParkFitStartPageComponent',
+    },
     async (url) => responses.get(String(url)),
   );
 
@@ -276,7 +286,7 @@ test('rejects an empty transitive module when its importer requires a named expo
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
-    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import{Evidence}from"./chunk-EVIDENCE.js";export{Evidence};', {
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import{Evidence}from"./chunk-EVIDENCE.js";export{Evidence};export class ParkFitStartPageComponent{}', {
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
@@ -287,11 +297,78 @@ test('rejects an empty transitive module when its importer requires a named expo
   ]);
   const result = await probeRequiredClientAssets(
     'https://amusement-parks.fun',
-    { path: '/fr/park-fit', expectedStatus: 200, clientRoutePath: 'park-fit' },
+    {
+      path: '/fr/park-fit',
+      expectedStatus: 200,
+      clientRoutePath: 'park-fit',
+      clientRouteExport: 'ParkFitStartPageComponent',
+    },
     async (url) => responses.get(String(url)),
   );
 
   assert.deepEqual(result.failures, ['/chunk-EVIDENCE.js: module vide malgré des exports requis']);
+});
+
+test('rejects a named import that its nonempty dependency does not export', async () => {
+  const responses = new Map([
+    ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
+      status: 200,
+      headers: { 'content-type': 'text/html' },
+    })],
+    ['https://amusement-parks.fun/main.js', new Response('const routes=[{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js")}];export{routes};', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import{Evidence}from"./chunk-EVIDENCE.js";export class ParkFitStartPageComponent{}', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-EVIDENCE.js', new Response('export const Other=1;', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+  ]);
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    {
+      path: '/fr/park-fit',
+      expectedStatus: 200,
+      clientRoutePath: 'park-fit',
+      clientRouteExport: 'ParkFitStartPageComponent',
+    },
+    async (url) => responses.get(String(url)),
+  );
+
+  assert.deepEqual(result.failures, ['/chunk-EVIDENCE.js: export(s) requis absent(s): Evidence']);
+});
+
+test('rejects a lazy route chunk that omits its configured component export', async () => {
+  const responses = new Map([
+    ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
+      status: 200,
+      headers: { 'content-type': 'text/html' },
+    })],
+    ['https://amusement-parks.fun/main.js', new Response('const routes=[{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js")}];export{routes};', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('export class OtherComponent{}', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+  ]);
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    {
+      path: '/fr/park-fit',
+      expectedStatus: 200,
+      clientRoutePath: 'park-fit',
+      clientRouteExport: 'ParkFitStartPageComponent',
+    },
+    async (url) => responses.get(String(url)),
+  );
+
+  assert.deepEqual(result.failures, ['/chunk-PARK.js: export de route absent: ParkFitStartPageComponent']);
 });
 
 test('rejects a malformed client bundle even when HTTP and MIME type are valid', async () => {

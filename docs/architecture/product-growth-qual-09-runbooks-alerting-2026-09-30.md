@@ -71,7 +71,9 @@ et les imports statiques transitifs sont parcourus avec un plafond de 64 nouveau
 bundles. Une coquille HTML 200 avec un graphe JavaScript absent, tronqué ou malformé
 ne peut donc pas déclarer ce parcours sain. Un module vide reste accepté pour un
 import d'effet de bord, mais il est refusé dès que l'importeur exige un export ; le
-contrôle ne transforme donc pas un chunk vide légitime en fausse alerte.
+contrôle compare aussi chaque import nommé aux exports réels et exige
+`ParkFitStartPageComponent` dans le chunk de route. Il ne transforme donc pas un
+chunk vide légitime en fausse alerte tout en détectant les erreurs de liaison ES.
 
 ## 4. Séquence d'alerte publique
 

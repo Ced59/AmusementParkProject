@@ -144,8 +144,11 @@ export function validateMonitorConfig(config, catalog) {
     }
 
     if (target.kind === 'csr-page'
-      && (typeof target.clientRoutePath !== 'string' || target.clientRoutePath.trim().length === 0)) {
-      errors.push(`Cible ${target.key}: route cliente dynamique absente.`);
+      && (typeof target.clientRoutePath !== 'string'
+        || target.clientRoutePath.trim().length === 0
+        || typeof target.clientRouteExport !== 'string'
+        || target.clientRouteExport.trim().length === 0)) {
+      errors.push(`Cible ${target.key}: route cliente dynamique ou export attendu absent.`);
     }
 
     if (target.kind === 'ssr-page'

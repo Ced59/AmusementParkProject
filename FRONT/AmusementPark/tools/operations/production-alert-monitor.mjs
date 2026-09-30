@@ -66,20 +66,7 @@ export function extractLazyRouteAssetUrl(assetUrl, source, routePath) {
   return resolved.origin === new URL(assetUrl).origin ? resolved.href : null;
 }
 
-export function extractStaticModuleAssetUrls(assetUrl, source) {
-  const origin = new URL(assetUrl).origin;
-  const references = [];
-  const importPattern = /\b(?:from|import)\s*(?:[\w*$]+\s*,?\s*)?(?:\{[^}]*\}\s*)?["']([^"']+\.js)["']/g;
-  for (const match of source.matchAll(importPattern)) {
-    const resolved = new URL(match[1], assetUrl);
-    if (resolved.origin === origin && !references.includes(resolved.href)) {
-      references.push(resolved.href);
-    }
-  }
-  return references;
-}
-
-export function extractStaticModuleUrlsRequiringExports(assetUrl, source) {
+export function extractStaticModuleDependencies(assetUrl, source) {
   const origin = new URL(assetUrl).origin;
   const sourceFile = typescript.createSourceFile(
     new URL(assetUrl).pathname,
@@ -88,38 +75,106 @@ export function extractStaticModuleUrlsRequiringExports(assetUrl, source) {
     false,
     typescript.ScriptKind.JS,
   );
-  const references = [];
+  const dependencies = new Map();
+
+  const registerDependency = (moduleSpecifier, requiredExports) => {
+    if (!moduleSpecifier.endsWith('.js')) {
+      return;
+    }
+    const resolved = new URL(moduleSpecifier, assetUrl);
+    if (resolved.origin !== origin) {
+      return;
+    }
+    const current = dependencies.get(resolved.href) ?? new Set();
+    for (const exportName of requiredExports) {
+      current.add(exportName);
+    }
+    dependencies.set(resolved.href, current);
+  };
 
   for (const statement of sourceFile.statements) {
-    let moduleSpecifier = null;
-    let requiresExport = false;
     if (typescript.isImportDeclaration(statement)
       && typescript.isStringLiteralLike(statement.moduleSpecifier)) {
-      moduleSpecifier = statement.moduleSpecifier.text;
       const clause = statement.importClause;
-      requiresExport = Boolean(clause?.name)
-        || (Boolean(clause?.namedBindings)
-          && typescript.isNamedImports(clause.namedBindings)
-          && clause.namedBindings.elements.length > 0);
+      const requiredExports = [];
+      if (clause?.name) {
+        requiredExports.push('default');
+      }
+      if (clause?.namedBindings && typescript.isNamedImports(clause.namedBindings)) {
+        for (const element of clause.namedBindings.elements) {
+          requiredExports.push((element.propertyName ?? element.name).text);
+        }
+      }
+      registerDependency(statement.moduleSpecifier.text, requiredExports);
     } else if (typescript.isExportDeclaration(statement)
       && statement.moduleSpecifier
       && typescript.isStringLiteralLike(statement.moduleSpecifier)) {
-      moduleSpecifier = statement.moduleSpecifier.text;
-      requiresExport = Boolean(statement.exportClause)
-        && typescript.isNamedExports(statement.exportClause)
-        && statement.exportClause.elements.length > 0;
-    }
-
-    if (!requiresExport || !moduleSpecifier?.endsWith('.js')) {
-      continue;
-    }
-    const resolved = new URL(moduleSpecifier, assetUrl);
-    if (resolved.origin === origin && !references.includes(resolved.href)) {
-      references.push(resolved.href);
+      const requiredExports = [];
+      if (statement.exportClause && typescript.isNamedExports(statement.exportClause)) {
+        for (const element of statement.exportClause.elements) {
+          requiredExports.push((element.propertyName ?? element.name).text);
+        }
+      }
+      registerDependency(statement.moduleSpecifier.text, requiredExports);
     }
   }
 
-  return references;
+  return [...dependencies].map(([url, requiredExports]) => ({
+    url,
+    requiredExports: [...requiredExports],
+  }));
+}
+
+export function extractStaticModuleAssetUrls(assetUrl, source) {
+  return extractStaticModuleDependencies(assetUrl, source).map((dependency) => dependency.url);
+}
+
+export function extractModuleExportNames(assetUrl, source) {
+  const sourceFile = typescript.createSourceFile(
+    new URL(assetUrl).pathname,
+    source,
+    typescript.ScriptTarget.Latest,
+    false,
+    typescript.ScriptKind.JS,
+  );
+  const exportNames = new Set();
+
+  for (const statement of sourceFile.statements) {
+    if (typescript.isExportAssignment(statement)) {
+      exportNames.add('default');
+      continue;
+    }
+    if (typescript.isExportDeclaration(statement)) {
+      if (statement.exportClause && typescript.isNamedExports(statement.exportClause)) {
+        for (const element of statement.exportClause.elements) {
+          exportNames.add(element.name.text);
+        }
+      } else if (typescript.isNamespaceExport(statement.exportClause)) {
+        exportNames.add(statement.exportClause.name.text);
+      }
+      continue;
+    }
+
+    const modifiers = typescript.canHaveModifiers(statement)
+      ? typescript.getModifiers(statement) ?? []
+      : [];
+    if (!modifiers.some((modifier) => modifier.kind === typescript.SyntaxKind.ExportKeyword)) {
+      continue;
+    }
+    if (modifiers.some((modifier) => modifier.kind === typescript.SyntaxKind.DefaultKeyword)) {
+      exportNames.add('default');
+    } else if ('name' in statement && statement.name?.text) {
+      exportNames.add(statement.name.text);
+    } else if (typescript.isVariableStatement(statement)) {
+      for (const declaration of statement.declarationList.declarations) {
+        if (typescript.isIdentifier(declaration.name)) {
+          exportNames.add(declaration.name.text);
+        }
+      }
+    }
+  }
+
+  return exportNames;
 }
 
 async function probeJavaScriptAsset(
@@ -178,20 +233,17 @@ async function probeStaticModuleGraph(sources, fetchImplementation, timeoutMilli
   const seen = new Set(sources.keys());
   const pending = [];
   const failures = [];
-  const modulesRequiringExports = new Set();
-  const reportedEmptyModules = new Set();
+  const requiredExportsByModule = new Map();
 
   const enqueueImports = (assetUrl, source) => {
-    for (const dependencyUrl of extractStaticModuleUrlsRequiringExports(assetUrl, source)) {
-      modulesRequiringExports.add(dependencyUrl);
-      if (sources.get(dependencyUrl) === '' && !reportedEmptyModules.has(dependencyUrl)) {
-        failures.push(`${new URL(dependencyUrl).pathname}: module vide malgré des exports requis`);
-        reportedEmptyModules.add(dependencyUrl);
+    for (const dependency of extractStaticModuleDependencies(assetUrl, source)) {
+      const requiredExports = requiredExportsByModule.get(dependency.url) ?? new Set();
+      for (const exportName of dependency.requiredExports) {
+        requiredExports.add(exportName);
       }
-    }
-    for (const dependencyUrl of extractStaticModuleAssetUrls(assetUrl, source)) {
-      if (!seen.has(dependencyUrl) && !pending.includes(dependencyUrl)) {
-        pending.push(dependencyUrl);
+      requiredExportsByModule.set(dependency.url, requiredExports);
+      if (!seen.has(dependency.url) && !pending.includes(dependency.url)) {
+        pending.push(dependency.url);
       }
     }
   };
@@ -220,12 +272,24 @@ async function probeStaticModuleGraph(sources, fetchImplementation, timeoutMilli
         failures.push(result.failure);
         continue;
       }
-      if (result.source.length === 0 && modulesRequiringExports.has(assetUrl)) {
-        failures.push(`${new URL(assetUrl).pathname}: module vide malgré des exports requis`);
-        reportedEmptyModules.add(assetUrl);
-      }
       sources.set(assetUrl, result.source);
       enqueueImports(assetUrl, result.source);
+    }
+  }
+
+  for (const [assetUrl, requiredExports] of requiredExportsByModule) {
+    const source = sources.get(assetUrl);
+    if (source === undefined || requiredExports.size === 0) {
+      continue;
+    }
+    if (source.length === 0) {
+      failures.push(`${new URL(assetUrl).pathname}: module vide malgré des exports requis`);
+      continue;
+    }
+    const availableExports = extractModuleExportNames(assetUrl, source);
+    const missingExports = [...requiredExports].filter((exportName) => !availableExports.has(exportName));
+    if (missingExports.length > 0) {
+      failures.push(`${new URL(assetUrl).pathname}: export(s) requis absent(s): ${missingExports.join(', ')}`);
     }
   }
 
@@ -285,6 +349,16 @@ export async function probeRequiredClientAssets(
         } else {
           sources.set(lazyRouteAssetUrl, lazyResult.source);
         }
+      }
+    }
+
+    if (target.clientRoutePath && failures.length === 0) {
+      const lazyRouteSource = sources.get(lazyRouteAssetUrl);
+      const routeExports = extractModuleExportNames(lazyRouteAssetUrl, lazyRouteSource);
+      if (!routeExports.has(target.clientRouteExport)) {
+        failures.push(
+          `${new URL(lazyRouteAssetUrl).pathname}: export de route absent: ${target.clientRouteExport}`,
+        );
       }
     }
 
