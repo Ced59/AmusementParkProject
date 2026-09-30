@@ -172,6 +172,22 @@ test('rejects empty or structurally incomplete required protocol documents', () 
       [`Document de recherche vide: ${passportProtocolPath}.`],
     );
   }
+  for (const [openingTag, closingTag] of [
+    ['<div hidden>', '</div>'],
+    ['<template>', '</template>'],
+  ]) {
+    const hiddenPassportProtocol = [
+      openingTag,
+      ...emptyPassportProtocol
+        .split('\n')
+        .flatMap((heading) => [heading, 'Ce contenu assez long reste masqué par le conteneur HTML.']),
+      closingTag,
+    ].join('\n');
+    assert.deepEqual(
+      validateResearchDocumentContent(passportProtocolPath, hiddenPassportProtocol),
+      [`Document de recherche vide: ${passportProtocolPath}.`],
+    );
+  }
   const indentedPassportProtocol = emptyPassportProtocol
     .split('\n')
     .map((heading) => `    ${heading}\n    Ce contenu reste un exemple de code non rendu.`)

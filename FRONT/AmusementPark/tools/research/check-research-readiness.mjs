@@ -511,7 +511,7 @@ function isIndentedCodeLine(line) {
 }
 
 function stripNonRenderedHtmlBlocks(content) {
-  const blockTags = 'pre|script|style|textarea|xmp|iframe|noembed|noframes|listing';
+  const blockTags = 'pre|script|style|textarea|template|xmp|iframe|noembed|noframes|listing';
   const pairedBlockPattern = new RegExp(
     `<(${blockTags})\\b[^>]*>[\\s\\S]*?<\\/\\1\\s*>`,
     'gi',
@@ -520,9 +520,13 @@ function stripNonRenderedHtmlBlocks(content) {
     `<(?:${blockTags}|plaintext)\\b[^>]*>[\\s\\S]*$`,
     'gi',
   );
+  const pairedHtmlContainerPattern = /<([A-Za-z][A-Za-z0-9:-]*)\b[^>]*>[\s\S]*<\/\1\s*>/gi;
+  const unclosedHiddenContainerPattern = /<[A-Za-z][A-Za-z0-9:-]*\b(?=[^>]*\bhidden\b)[^>]*>[\s\S]*$/gi;
   return content
     .replace(pairedBlockPattern, '')
-    .replace(unclosedBlockPattern, '');
+    .replace(unclosedBlockPattern, '')
+    .replace(pairedHtmlContainerPattern, '')
+    .replace(unclosedHiddenContainerPattern, '');
 }
 
 function markdownSectionBodyLines(lines, headingIndex) {
