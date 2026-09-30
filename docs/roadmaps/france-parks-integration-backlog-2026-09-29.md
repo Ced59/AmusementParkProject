@@ -35,8 +35,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 40 | 12 |
-| **Total** | **225** | **197** |
+| Attractions autonomes à migrer ou intégrer | 40 | 11 |
+| **Total** | **225** | **196** |
 
 ## 1. Fiches publiques à compléter
 
@@ -242,7 +242,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] Régie des Saisies — parc legacy `36334076-f35b-47ee-ad9d-c084ef187a5c`
 - [ ] Risoul Labellemontagne — parc legacy `a7ee0a1d-61d8-40e3-b1bf-c8aff2eedd94`
 - [ ] Saint François Longchamp — parc legacy `4d43b576-ff37-45a4-9aed-0320af28d2af`
 - [ ] Savoie Mont Blanc — parc legacy `08c7b84d-7f31-41f9-8c42-11304e3f4af0`
