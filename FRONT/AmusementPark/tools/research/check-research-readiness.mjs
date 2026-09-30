@@ -57,6 +57,41 @@ export const requiredTaskIds = Object.freeze([
   'delayed-return',
 ]);
 
+export const requiredTaskSemantics = Object.freeze({
+  consent: Object.freeze({
+    instruction: "Présenter la finalité, les données conservées et le droit d'arrêter avant toute observation.",
+    comparableMeasure: 'consent-confirmed-before-observation',
+  }),
+  'primary-value': Object.freeze({
+    instruction: "Donner l'objectif métier sans indiquer le chemin, puis observer le premier succès sans aide immédiate.",
+    comparableMeasure: 'first-success-outcome',
+  }),
+  'core-concept-distinction': Object.freeze({
+    instruction: "Demander à la personne d'expliquer avec ses propres mots les concepts que le produit ne doit pas confondre.",
+    comparableMeasure: 'concepts-explained-without-prompt',
+  }),
+  'label-comprehension': Object.freeze({
+    instruction: 'Faire relire les libellés déterminants et relever uniquement les hésitations observées.',
+    comparableMeasure: 'critical-labels-understood',
+  }),
+  'privacy-export-deletion': Object.freeze({
+    instruction: "Vérifier les contrôles d'export et de suppression applicables, ou faire constater explicitement qu'aucune donnée personnelle n'est créée.",
+    comparableMeasure: 'privacy-controls-correctly-predicted',
+  }),
+  'unknown-data': Object.freeze({
+    instruction: "Présenter une donnée absente, ancienne ou insuffisante et demander ce que l'interface permet réellement de conclure.",
+    comparableMeasure: 'unknown-remains-distinct-from-negative',
+  }),
+  'accessible-use': Object.freeze({
+    instruction: "Réaliser le scénario principal au clavier ou avec la technologie d'assistance habituelle, puis sur un appareil ou réseau modeste.",
+    comparableMeasure: 'primary-scenario-accessible',
+  }),
+  'delayed-return': Object.freeze({
+    instruction: 'Prévoir un retour différé sans rappel guidé pour mesurer la valeur répétée plutôt que la seule découverte.',
+    comparableMeasure: 'delayed-return-outcome',
+  }),
+});
+
 export const requiredEvidenceIds = Object.freeze([
   'objective',
   'profile',
@@ -283,6 +318,14 @@ export function validateResearchCatalog(catalog) {
   for (const task of commonTasks) {
     if (!isNonEmptyText(task?.instruction) || !isNonEmptyText(task?.comparableMeasure)) {
       errors.push(`Tâche ${task?.id ?? '<sans-id>'}: instruction ou mesure comparable absente.`);
+    }
+
+    const canonicalSemantics = requiredTaskSemantics[task?.id];
+    if (canonicalSemantics && task.instruction !== canonicalSemantics.instruction) {
+      errors.push(`Tâche ${task.id}: instruction canonique modifiée.`);
+    }
+    if (canonicalSemantics && task.comparableMeasure !== canonicalSemantics.comparableMeasure) {
+      errors.push(`Tâche ${task.id}: mesure comparable canonique modifiée.`);
     }
   }
 

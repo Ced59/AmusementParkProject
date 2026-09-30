@@ -13,6 +13,7 @@ import {
   requiredRoadmapByProgram,
   requiredTaskContextFields,
   requiredTaskIds,
+  requiredTaskSemantics,
   validateResearchCatalog,
   validateResearchDocumentContent,
   validateResearchReadiness,
@@ -48,10 +49,7 @@ function validCatalog() {
       statement: 'Aucune observation revendiquée.',
     },
     canonicalProfiles: requiredProfileIds.map((id) => item(id, { label: id })),
-    commonTasks: requiredTaskIds.map((id) => item(id, {
-      instruction: id,
-      comparableMeasure: id,
-    })),
+    commonTasks: requiredTaskIds.map((id) => item(id, requiredTaskSemantics[id])),
     evidenceSchema: requiredEvidenceIds.map((id) => item(id, {
       required: id !== 'authorizedQuote',
       constraint: id === 'outcome'
@@ -141,6 +139,26 @@ test('enforces the canonical order of comparable tasks', () => {
   const errors = validateResearchCatalog(catalog);
   assert.ok(errors.some((error) => error.includes('consent') && error.includes('position 1')));
   assert.ok(errors.some((error) => error.includes('primary-value') && error.includes('position 2')));
+});
+
+test('binds every comparable task to its canonical instruction and measure', () => {
+  const catalog = validCatalog();
+  const consent = catalog.commonTasks.find((task) => task.id === 'consent');
+  const delayedReturn = catalog.commonTasks.find((task) => task.id === 'delayed-return');
+  [consent.instruction, delayedReturn.instruction] = [
+    delayedReturn.instruction,
+    consent.instruction,
+  ];
+  [consent.comparableMeasure, delayedReturn.comparableMeasure] = [
+    delayedReturn.comparableMeasure,
+    consent.comparableMeasure,
+  ];
+
+  const errors = validateResearchCatalog(catalog);
+  assert.ok(errors.some((error) => error.includes('consent') && error.includes('instruction canonique')));
+  assert.ok(errors.some((error) => error.includes('consent') && error.includes('mesure comparable')));
+  assert.ok(errors.some((error) => error.includes('delayed-return') && error.includes('instruction canonique')));
+  assert.ok(errors.some((error) => error.includes('delayed-return') && error.includes('mesure comparable')));
 });
 
 test('keeps field research non-blocking without allowing unproven generalization', () => {
