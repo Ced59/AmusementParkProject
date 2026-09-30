@@ -30,6 +30,12 @@ export const requiredRoadmapByProgram = Object.freeze({
   LIVE: 'docs/roadmaps/product-growth/08-live-wait-times-and-crowd-intelligence-roadmap.md',
 });
 
+export const requiredExtensionDocumentsByProgram = Object.freeze({
+  PASS: Object.freeze([
+    'docs/product/passport-beta-validation-protocol.md',
+  ]),
+});
+
 export const requiredProfileIds = Object.freeze([
   'journal-enthusiast',
   'tool-free-enthusiast',
@@ -372,6 +378,12 @@ export function validateResearchCatalog(catalog) {
           errors.push(`Programme ${programId}: extension dupliquée ${extensionPath}.`);
         } else {
           extensionPaths.add(extensionPath);
+        }
+      }
+
+      for (const requiredExtensionPath of requiredExtensionDocumentsByProgram[programId] ?? []) {
+        if (!extensionPaths.has(requiredExtensionPath)) {
+          errors.push(`Programme ${programId}: extension canonique absente ${requiredExtensionPath}.`);
         }
       }
     }

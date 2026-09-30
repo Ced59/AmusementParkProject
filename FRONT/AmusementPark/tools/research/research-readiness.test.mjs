@@ -7,6 +7,7 @@ import {
   requiredBetaGateIds,
   requiredBetaGateRequirements,
   requiredEvidenceIds,
+  requiredExtensionDocumentsByProgram,
   requiredProfileIds,
   requiredProgramIds,
   requiredRoadmapByProgram,
@@ -32,7 +33,7 @@ function validProgram(id) {
     taskContext: Object.fromEntries(requiredTaskContextFields.map((field) => [field, field])),
     stopConditions: ['stop one', 'stop two'],
     generalizationEvidence: ['proof one', 'proof two'],
-    extensionDocuments: [],
+    extensionDocuments: [...(requiredExtensionDocumentsByProgram[id] ?? [])],
   };
 }
 
@@ -211,4 +212,15 @@ test('binds each program to its own roadmap, final gate and mandatory evidence',
   assert.ok(errors.some((error) => error.includes('PASS') && error.includes('roadmap canonique')));
   assert.ok(errors.some((error) => error.includes('gate attendue PASS-G')));
   assert.ok(errors.some((error) => error.includes('objective') && error.includes('true')));
+});
+
+test('keeps every canonical program extension attached to its protocol', () => {
+  const catalog = validCatalog();
+  const passportProgram = catalog.programs.find((program) => program.id === 'PASS');
+  passportProgram.extensionDocuments = [];
+
+  const errors = validateResearchCatalog(catalog);
+  assert.ok(errors.some((error) => error.includes('PASS')
+    && error.includes('extension canonique absente')
+    && error.includes('passport-beta-validation-protocol.md')));
 });
