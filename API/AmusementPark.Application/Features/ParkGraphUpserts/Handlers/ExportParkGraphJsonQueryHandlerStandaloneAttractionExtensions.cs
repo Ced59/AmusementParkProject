@@ -49,14 +49,16 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
 
         Task<IReadOnlyCollection<Image>> imagesTask = string.IsNullOrWhiteSpace(attraction.Id) ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>()) : processorContext.imageRepository.GetByOwnersAsync(ImageOwnerType.StandaloneAttraction, new[] { attraction.Id }, null, cancellationToken);
         Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = processorContext.historyEventRepository is null || string.IsNullOrWhiteSpace(attraction.Id) ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>()) : processorContext.historyEventRepository.GetOwnerTimelineAsync(HistoryEntityType.StandaloneAttraction, attraction.Id, true, cancellationToken);
+        bool exportsVisitorInformation =
+            ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status);
         Task<ParkOpeningHoursSchedule?> openingHoursTask =
-            processorContext.standaloneOpeningHoursRepository is null
+            processorContext.standaloneOpeningHoursRepository is null || !exportsVisitorInformation
                 ? Task.FromResult<ParkOpeningHoursSchedule?>(null)
                 : processorContext.standaloneOpeningHoursRepository.GetByStandaloneAttractionIdAsync(
                     attraction.Id,
                     cancellationToken);
         Task<ParkPricingEntity?> pricingTask =
-            processorContext.standalonePricingRepository is null
+            processorContext.standalonePricingRepository is null || !exportsVisitorInformation
                 ? Task.FromResult<ParkPricingEntity?>(null)
                 : processorContext.standalonePricingRepository.GetByStandaloneAttractionIdAsync(
                     attraction.Id,

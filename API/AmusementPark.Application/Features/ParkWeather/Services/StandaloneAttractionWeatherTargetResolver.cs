@@ -32,6 +32,18 @@ internal static class StandaloneAttractionWeatherTargetResolver
             return FilterEligibleAttractions(visibleAttractions);
         }
 
+        if (run.Scope == ParkWeatherRefreshScope.SinglePark)
+        {
+            StandaloneAttraction? attraction =
+                await standaloneAttractionRepository.GetByIdAsync(
+                    run.TargetParkId ?? string.Empty,
+                    false,
+                    cancellationToken);
+            return attraction is null
+                ? Array.Empty<StandaloneAttraction>()
+                : FilterEligibleAttractions(new[] { attraction });
+        }
+
         if (run.Scope != ParkWeatherRefreshScope.FailedFromRun)
         {
             return Array.Empty<StandaloneAttraction>();
