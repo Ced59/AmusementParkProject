@@ -266,8 +266,10 @@ async function probeStaticModuleGraph(sources, fetchImplementation, timeoutMilli
       timeoutMilliseconds,
     );
     discoveredCount += batch.length;
-    for (const [assetUrl, result] of results) {
+    for (const assetUrl of results.keys()) {
       seen.add(assetUrl);
+    }
+    for (const [assetUrl, result] of results) {
       if (result.failure) {
         failures.push(result.failure);
         continue;

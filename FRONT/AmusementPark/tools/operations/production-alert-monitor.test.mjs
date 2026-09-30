@@ -243,6 +243,49 @@ test('extracts static same-origin imports without following unrelated dynamic ro
   );
 });
 
+test('downloads a dependency only once when another module from the same batch imports it', async () => {
+  const responses = new Map([
+    ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
+      status: 200,
+      headers: { 'content-type': 'text/html' },
+    })],
+    ['https://amusement-parks.fun/main.js', new Response('const routes=[{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js")}];export{routes};', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import"./chunk-A.js";import"./chunk-B.js";export class ParkFitStartPageComponent{}', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-A.js', new Response('import"./chunk-B.js";', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-B.js', new Response('export const loaded=true;', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+  ]);
+  const fetchCounts = new Map();
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    {
+      path: '/fr/park-fit',
+      expectedStatus: 200,
+      clientRoutePath: 'park-fit',
+      clientRouteExport: 'ParkFitStartPageComponent',
+    },
+    async (url) => {
+      const key = String(url);
+      fetchCounts.set(key, (fetchCounts.get(key) ?? 0) + 1);
+      return responses.get(key).clone();
+    },
+  );
+
+  assert.deepEqual(result.failures, []);
+  assert.equal(fetchCounts.get('https://amusement-parks.fun/chunk-B.js'), 1);
+});
+
 test('reports a missing transitive static import from the Park Fit route chunk', async () => {
   const responses = new Map([
     ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
