@@ -61,8 +61,9 @@ capacités publiques. Elles contrôlent statut, transport, p95 et taille maximal
 Park Fit étant rendu côté client, la sonde charge en plus tous ses scripts et
 modules préchargés same-origin, retrouve l'import dynamique de la route exacte et
 charge son chunk paresseux. Chaque téléchargement reprend le timeout de huit
-secondes et les actifs sont lus par lots bornés de quatre. Une coquille HTML 200
-sans route JavaScript utilisable ne peut donc pas déclarer ce parcours sain ni
+secondes, les actifs sont lus par lots bornés de quatre et les imports statiques
+transitifs sont parcourus avec un plafond de 64 nouveaux bundles. Une coquille HTML
+200 sans graphe JavaScript exécutable ne peut donc pas déclarer ce parcours sain ni
 épuiser silencieusement la fenêtre globale du job.
 
 ## 4. Séquence d'alerte publique

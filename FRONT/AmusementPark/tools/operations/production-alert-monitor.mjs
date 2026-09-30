@@ -7,6 +7,7 @@ import { runPerformanceBaseline } from '../performance/performance-baseline.mjs'
 const toolDirectory = dirname(fileURLToPath(import.meta.url));
 const defaultConfigPath = resolve(toolDirectory, 'production-alerts.config.json');
 const maximumClientAssets = 25;
+const maximumStaticModuleAssets = 64;
 const clientAssetConcurrency = 4;
 
 async function fetchTextWithTimeout(fetchImplementation, url, options, timeoutMilliseconds) {
@@ -64,13 +65,31 @@ export function extractLazyRouteAssetUrl(assetUrl, source, routePath) {
   return resolved.origin === new URL(assetUrl).origin ? resolved.href : null;
 }
 
-async function probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMilliseconds) {
+export function extractStaticModuleAssetUrls(assetUrl, source) {
+  const origin = new URL(assetUrl).origin;
+  const references = [];
+  const importPattern = /\b(?:from|import)\s*(?:[\w*$]+\s*,?\s*)?(?:\{[^}]*\}\s*)?["']([^"']+\.js)["']/g;
+  for (const match of source.matchAll(importPattern)) {
+    const resolved = new URL(match[1], assetUrl);
+    if (resolved.origin === origin && !references.includes(resolved.href)) {
+      references.push(resolved.href);
+    }
+  }
+  return references;
+}
+
+async function probeJavaScriptAsset(
+  assetUrl,
+  fetchImplementation,
+  timeoutMilliseconds,
+  requireNonEmptyBody = true,
+) {
   try {
     const { response, body: source } = await fetchTextWithTimeout(fetchImplementation, assetUrl, {
       headers: { accept: 'text/javascript, application/javascript', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
     }, timeoutMilliseconds);
     const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
-    if (!response.ok || source.length === 0 || !contentType.includes('javascript')) {
+    if (!response.ok || (requireNonEmptyBody && source.length === 0) || !contentType.includes('javascript')) {
       return { failure: `${new URL(assetUrl).pathname}: bundle client invalide`, source: null };
     }
     return { failure: null, source };
@@ -79,19 +98,75 @@ async function probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMillis
   }
 }
 
-async function probeJavaScriptAssets(assetUrls, fetchImplementation, timeoutMilliseconds) {
+async function probeJavaScriptAssets(
+  assetUrls,
+  fetchImplementation,
+  timeoutMilliseconds,
+  requireNonEmptyBody = true,
+) {
   const results = new Map();
   for (let index = 0; index < assetUrls.length; index += clientAssetConcurrency) {
     const batch = assetUrls.slice(index, index + clientAssetConcurrency);
     const batchResults = await Promise.all(batch.map(async (assetUrl) => ({
       assetUrl,
-      result: await probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMilliseconds),
+      result: await probeJavaScriptAsset(
+        assetUrl,
+        fetchImplementation,
+        timeoutMilliseconds,
+        requireNonEmptyBody,
+      ),
     })));
     for (const item of batchResults) {
       results.set(item.assetUrl, item.result);
     }
   }
   return results;
+}
+
+async function probeStaticModuleGraph(sources, fetchImplementation, timeoutMilliseconds) {
+  const seen = new Set(sources.keys());
+  const pending = [];
+  const failures = [];
+
+  const enqueueImports = (assetUrl, source) => {
+    for (const dependencyUrl of extractStaticModuleAssetUrls(assetUrl, source)) {
+      if (!seen.has(dependencyUrl) && !pending.includes(dependencyUrl)) {
+        pending.push(dependencyUrl);
+      }
+    }
+  };
+  for (const [assetUrl, source] of sources) {
+    enqueueImports(assetUrl, source);
+  }
+
+  let discoveredCount = 0;
+  while (pending.length > 0) {
+    if (discoveredCount >= maximumStaticModuleAssets) {
+      failures.push(`graphe des imports statiques supérieur à ${maximumStaticModuleAssets} bundles`);
+      break;
+    }
+
+    const remainingBudget = maximumStaticModuleAssets - discoveredCount;
+    const batch = pending.splice(0, Math.min(clientAssetConcurrency, remainingBudget));
+    const results = await probeJavaScriptAssets(
+      batch,
+      fetchImplementation,
+      timeoutMilliseconds,
+      false,
+    );
+    discoveredCount += batch.length;
+    for (const [assetUrl, result] of results) {
+      seen.add(assetUrl);
+      if (result.failure) {
+        failures.push(result.failure);
+        continue;
+      }
+      sources.set(assetUrl, result.source);
+      enqueueImports(assetUrl, result.source);
+    }
+  }
+
+  return { discoveredCount, failures };
 }
 
 export async function probeRequiredClientAssets(
@@ -140,12 +215,19 @@ export async function probeRequiredClientAssets(
         const lazyResult = await probeJavaScriptAsset(lazyRouteAssetUrl, fetchImplementation, timeoutMilliseconds);
         if (lazyResult.failure) {
           failures.push(lazyResult.failure);
+        } else {
+          sources.set(lazyRouteAssetUrl, lazyResult.source);
         }
       }
     }
 
+    if (target.clientRoutePath && failures.length === 0) {
+      const graph = await probeStaticModuleGraph(sources, fetchImplementation, timeoutMilliseconds);
+      failures.push(...graph.failures);
+    }
+
     return {
-      assetCount: assetUrls.length + (lazyRouteAssetUrl && !assetUrls.includes(lazyRouteAssetUrl) ? 1 : 0),
+      assetCount: sources.size,
       lazyRouteAsset: lazyRouteAssetUrl ? new URL(lazyRouteAssetUrl).pathname : null,
       failures,
     };

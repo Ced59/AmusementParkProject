@@ -5,6 +5,7 @@ import {
   confirmIncidents,
   extractLazyRouteAssetUrl,
   extractRequiredClientAssetUrls,
+  extractStaticModuleAssetUrls,
   probeRequiredClientAssets,
   runConfirmedProductionProbe,
 } from './production-alert-monitor.mjs';
@@ -105,7 +106,7 @@ test('reports a missing client bundle even when the CSR shell returns HTTP 200',
     async (url) => responses.get(String(url)),
   );
 
-  assert.equal(result.assetCount, 1);
+  assert.equal(result.assetCount, 0);
   assert.deepEqual(result.failures, ['/main.js: bundle client invalide']);
 });
 
@@ -125,7 +126,11 @@ test('finds and verifies the lazy-loaded chunk for the exact client route', asyn
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
-    ['https://amusement-parks.fun/chunk-PARK.js', new Response('export class ParkFitStartPageComponent {}', {
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import{Evidence}from"./chunk-EVIDENCE.js";export class ParkFitStartPageComponent {}', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-EVIDENCE.js', new Response('', {
       status: 200,
       headers: { 'content-type': 'text/javascript' },
     })],
@@ -136,9 +141,53 @@ test('finds and verifies the lazy-loaded chunk for the exact client route', asyn
     async (url) => responses.get(String(url)),
   );
 
-  assert.equal(result.assetCount, 2);
+  assert.equal(result.assetCount, 3);
   assert.equal(result.lazyRouteAsset, '/chunk-PARK.js');
   assert.deepEqual(result.failures, []);
+});
+
+test('extracts static same-origin imports without following unrelated dynamic routes', () => {
+  const source = `
+    import{One}from"./chunk-ONE.js";
+    import "./chunk-TWO.js";
+    const lazy=()=>import("./chunk-OTHER-ROUTE.js");
+    export{Three}from"https://cdn.example/chunk-THREE.js";`;
+
+  assert.deepEqual(
+    extractStaticModuleAssetUrls('https://amusement-parks.fun/chunk-PARK.js', source),
+    [
+      'https://amusement-parks.fun/chunk-ONE.js',
+      'https://amusement-parks.fun/chunk-TWO.js',
+    ],
+  );
+});
+
+test('reports a missing transitive static import from the Park Fit route chunk', async () => {
+  const responses = new Map([
+    ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
+      status: 200,
+      headers: { 'content-type': 'text/html' },
+    })],
+    ['https://amusement-parks.fun/main.js', new Response('},{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js")},{', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('import{Missing}from"./chunk-MISSING.js";', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-MISSING.js', new Response('missing', {
+      status: 404,
+      headers: { 'content-type': 'text/html' },
+    })],
+  ]);
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    { path: '/fr/park-fit', expectedStatus: 200, clientRoutePath: 'park-fit' },
+    async (url) => responses.get(String(url)),
+  );
+
+  assert.deepEqual(result.failures, ['/chunk-MISSING.js: bundle client invalide']);
 });
 
 test('bounds a stalled CSR shell request with the configured timeout', async () => {
