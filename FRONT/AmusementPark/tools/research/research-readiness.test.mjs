@@ -6,10 +6,12 @@ import {
   isResearchExtensionPath,
   requiredBetaGateIds,
   requiredBetaGateRequirements,
+  requiredEvidenceConstraints,
   requiredEvidenceIds,
   requiredExtensionDocumentsByProgram,
   requiredProfileIds,
   requiredProfileIdsByProgram,
+  requiredProfileLabels,
   requiredProgramDecisionsByProgram,
   requiredProgramIds,
   requiredRoadmapByProgram,
@@ -17,6 +19,7 @@ import {
   requiredTaskContextsByProgram,
   requiredTaskIds,
   requiredTaskSemantics,
+  requiredStatusPolicyStatement,
   validateResearchCatalog,
   validateResearchDocumentContent,
   validateResearchReadiness,
@@ -52,15 +55,15 @@ function validCatalog() {
       fieldEvidenceStatus: 'pending',
       blocksDelivery: false,
       allowGeneralizationWithoutEvidence: false,
-      statement: 'Aucune observation revendiquée.',
+      statement: requiredStatusPolicyStatement,
     },
-    canonicalProfiles: requiredProfileIds.map((id) => item(id, { label: id })),
+    canonicalProfiles: requiredProfileIds.map((id) => item(id, {
+      label: requiredProfileLabels[id],
+    })),
     commonTasks: requiredTaskIds.map((id) => item(id, requiredTaskSemantics[id])),
     evidenceSchema: requiredEvidenceIds.map((id) => item(id, {
       required: id !== 'authorizedQuote',
-      constraint: id === 'outcome'
-        ? 'unassisted, assisted, failed ou not-observable'
-        : id,
+      constraint: requiredEvidenceConstraints[id],
     })),
     betaGates: requiredBetaGateIds.map((id) => item(id, {
       requirements: [...requiredBetaGateRequirements[id]],
@@ -312,6 +315,34 @@ test('requires all four explicit task outcomes in the evidence schema', () => {
   const errors = validateResearchCatalog(catalog);
   assert.ok(errors.some((error) => error.includes('assisted')));
   assert.ok(errors.some((error) => error.includes('not-observable')));
+});
+
+test('binds profile labels and evidence constraints to their canonical IDs', () => {
+  const catalog = validCatalog();
+  const journalProfile = catalog.canonicalProfiles.find((profile) => profile.id === 'journal-enthusiast');
+  const occasionalProfile = catalog.canonicalProfiles.find((profile) => profile.id === 'occasional-visitor');
+  [journalProfile.label, occasionalProfile.label] = [
+    occasionalProfile.label,
+    journalProfile.label,
+  ];
+  const observedFacts = catalog.evidenceSchema.find((field) => field.id === 'observedFacts');
+  const hypotheses = catalog.evidenceSchema.find((field) => field.id === 'hypotheses');
+  [observedFacts.constraint, hypotheses.constraint] = [
+    hypotheses.constraint,
+    observedFacts.constraint,
+  ];
+  catalog.statusPolicy.statement = 'Protocole prêt.';
+
+  const errors = validateResearchCatalog(catalog);
+  assert.ok(errors.some((error) => error.includes('journal-enthusiast')
+    && error.includes('libellé canonique')));
+  assert.ok(errors.some((error) => error.includes('occasional-visitor')
+    && error.includes('libellé canonique')));
+  assert.ok(errors.some((error) => error.includes('observedFacts')
+    && error.includes('contrainte canonique')));
+  assert.ok(errors.some((error) => error.includes('hypotheses')
+    && error.includes('contrainte canonique')));
+  assert.ok(errors.some((error) => error.includes('déclaration canonique')));
 });
 
 test('binds each program to its own roadmap, final gate and mandatory evidence', () => {

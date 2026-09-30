@@ -46,6 +46,16 @@ export const requiredProfileIds = Object.freeze([
   'historical-contributor',
 ]);
 
+export const requiredProfileLabels = Object.freeze({
+  'journal-enthusiast': 'Passionné tenant déjà un journal',
+  'tool-free-enthusiast': 'Passionné sans outil structuré',
+  'occasional-visitor': 'Visiteur occasionnel',
+  'family-planner': 'Famille préparant une sortie',
+  'assistive-technology': "Personne utilisant le clavier ou une technologie d'assistance",
+  'modest-device-network': 'Personne sur appareil ou connexion modeste',
+  'historical-contributor': 'Contributeur historique',
+});
+
 export const requiredProfileIdsByProgram = Object.freeze({
   PASS: Object.freeze([
     'journal-enthusiast',
@@ -114,6 +124,21 @@ export const requiredEvidenceIds = Object.freeze([
   'decisions',
   'inconclusive',
 ]);
+
+export const requiredEvidenceConstraints = Object.freeze({
+  objective: 'Question décidée avant la session',
+  profile: 'Profil canonique et contexte utile, sans identité civile',
+  scenario: 'Tâche et produit testés',
+  outcome: 'unassisted, assisted, failed ou not-observable',
+  observedFacts: 'Actions vues, sans interprétation',
+  authorizedQuote: "Citation courte seulement si le consentement l'autorise",
+  issues: 'Problème et sévérité critical, high, medium ou low',
+  hypotheses: 'Hypothèses séparées des faits',
+  decisions: 'Corriger, approfondir, accepter avec justification ou arrêter',
+  inconclusive: 'Éléments insuffisants explicitement conservés comme tels',
+});
+
+export const requiredStatusPolicyStatement = "Les protocoles sont exécutables, mais aucune observation terrain n'est revendiquée tant qu'une fiche de session consentie n'existe pas.";
 
 export const requiredBetaGateIds = Object.freeze([
   'internal-alpha',
@@ -490,12 +515,18 @@ export function validateResearchCatalog(catalog) {
   }
   if (!isNonEmptyText(statusPolicy?.statement)) {
     errors.push('La politique doit expliquer honnêtement le statut des preuves.');
+  } else if (statusPolicy.statement !== requiredStatusPolicyStatement) {
+    errors.push('La déclaration canonique du statut des preuves a été modifiée.');
   }
 
   hasOnlyRequiredIds(catalog?.canonicalProfiles, requiredProfileIds, 'Profils', errors);
   for (const profile of canonicalProfiles) {
     if (!isNonEmptyText(profile?.label)) {
       errors.push(`Profil ${profile?.id ?? '<sans-id>'}: libellé absent.`);
+    }
+    if (requiredProfileLabels[profile?.id]
+      && profile.label !== requiredProfileLabels[profile.id]) {
+      errors.push(`Profil ${profile.id}: libellé canonique modifié.`);
     }
   }
 
@@ -527,6 +558,10 @@ export function validateResearchCatalog(catalog) {
     const expectedRequired = field?.id !== 'authorizedQuote';
     if (requiredEvidenceIds.includes(field?.id) && field?.required !== expectedRequired) {
       errors.push(`Preuve ${field.id}: required doit valoir ${expectedRequired}.`);
+    }
+    if (requiredEvidenceConstraints[field?.id]
+      && field.constraint !== requiredEvidenceConstraints[field.id]) {
+      errors.push(`Preuve ${field.id}: contrainte canonique modifiée.`);
     }
   }
 
