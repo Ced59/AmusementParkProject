@@ -33,8 +33,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
-| Attractions autonomes à migrer ou intégrer | 42 | 34 |
-| **Total** | **225** | **217** |
+| Attractions autonomes à migrer ou intégrer | 42 | 33 |
+| **Total** | **225** | **216** |
 
 ## 1. Fiches publiques à compléter
 
@@ -238,7 +238,6 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
-- [ ] La Clusaz — parc legacy `4d61e26e-9384-4492-8195-b9c2fd6d15c9`
 - [ ] La Colmiane — parc legacy `79c757cf-ef8b-4004-9cb9-3d144d0d0cb7`
 - [ ] La Luge Alpine du Plan Incliné — parc legacy `60d4d7e6-741b-43f7-b0d9-966825cb3e7b`
 - [ ] La Norma Ski Resort — parc legacy `616240a8-2aec-4afd-8289-cb7cb56b61bd`
