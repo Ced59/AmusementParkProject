@@ -144,6 +144,9 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     ...requiredTaskIds
       .filter((taskId) => taskId !== 'delayed-return')
       .map((taskId) => `| ${taskId} | | | | |`),
+    '<!--',
+    '| delayed-return | ligne commentée et donc absente du document rendu | | | |',
+    '-->',
   ].join('\n');
   assert.ok(validateResearchDocumentContent(sessionTemplatePath, incompleteSessionTemplate)
     .some((error) => error.includes('ligne de tâche obligatoire absente delayed-return')));
@@ -159,6 +162,10 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     assert.ok(validateResearchDocumentContent(
       roadmapPath,
       `${gateHeading}\n\n### Ceci est seulement un sous-titre descriptif assez long`,
+    ).some((error) => error.includes('section obligatoire vide ou insuffisante')));
+    assert.ok(validateResearchDocumentContent(
+      roadmapPath,
+      `${gateHeading}\n\n<!--\nCe critère est commenté et ne doit jamais rendre la gate exécutable.\n-->`,
     ).some((error) => error.includes('section obligatoire vide ou insuffisante')));
   }
 });

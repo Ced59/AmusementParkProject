@@ -574,12 +574,15 @@ export function isResearchExtensionPath(candidatePath) {
 }
 
 export function validateResearchDocumentContent(documentPath, content) {
-  if (!isNonEmptyText(content)) {
+  const renderedContent = typeof content === 'string'
+    ? content.replace(/<!--[\s\S]*?(?:-->|$)/g, '')
+    : content;
+  if (!isNonEmptyText(renderedContent)) {
     return [`Document de recherche vide: ${documentPath}.`];
   }
 
   const errors = [];
-  const lines = content.split(/\r?\n/);
+  const lines = renderedContent.split(/\r?\n/);
   for (const heading of requiredProtocolDocumentHeadings[documentPath] ?? []) {
     const headingIndex = lines.findIndex((line) => line.trim() === heading);
     if (headingIndex < 0) {
@@ -591,7 +594,7 @@ export function validateResearchDocumentContent(documentPath, content) {
 
   if (documentPath === 'docs/product/research/session-result-template.md') {
     for (const taskId of requiredTaskIds) {
-      if (!content.includes(`| ${taskId} |`)) {
+      if (!renderedContent.includes(`| ${taskId} |`)) {
         errors.push(`Document ${documentPath}: ligne de tâche obligatoire absente ${taskId}.`);
       }
     }
