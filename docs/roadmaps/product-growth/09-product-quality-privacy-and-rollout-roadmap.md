@@ -2,7 +2,7 @@
 
 > Code programme : `QUAL`
 >
-> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-08` sont livrés au 30 septembre 2026.
+> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-09` sont livrés au 30 septembre 2026.
 >
 > Principe : une fonctionnalité n’est pas validée parce qu’elle compile ou parce qu’elle augmente un compteur. Elle doit être comprise, utile, accessible, fiable, réversible, respectueuse de la vie privée et supportable avec les moyens réels du projet.
 
@@ -832,7 +832,7 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-06`](../../architecture/product-growth-qual-06-product-decision-dashboards-2026-09-29.md) | Dashboards funnel/fiabilité — livré le 29 septembre 2026 | Questions utiles uniquement |
 | [`QUAL-07`](../../architecture/product-growth-qual-07-accessibility-i18n-automation-2026-09-30.md) | Automatisation accessibilité/i18n — livré le 30 septembre 2026 | Régressions détectées |
 | [`QUAL-08`](../../architecture/product-growth-qual-08-cross-user-security-tests-2026-09-30.md) | Tests cross-user et sécurité — livré le 30 septembre 2026 | Parcours critiques |
-| `QUAL-09` | Runbooks et alerting | Incidents opérables |
+| [`QUAL-09`](../../architecture/product-growth-qual-09-runbooks-alerting-2026-09-30.md) | Runbooks et alerting — livré le 30 septembre 2026 | Incidents opérables |
 | `QUAL-10` | Protocole beta/recherche | Tests comparables |
 | `QUAL-11+` | Tranche transverse par roadmap | Gate locale documentée |
 
@@ -947,6 +947,22 @@ du compte connecté. La révocation d'un partage est testée jusqu'au filtre Mon
 seules les publications publiées, visibles et non suspendues sont résolues, et un
 ancien jeton échoue sans même lire son propriétaire. Aucun schéma MongoDB ni contrat
 public n'est modifié.
+
+### Implémentation `QUAL-09` — 30 septembre 2026
+
+Les neuf incidents exigés par cette roadmap possèdent désormais un catalogue
+commun et un runbook vérifié : classement incohérent, visite orpheline, partage
+révoqué encore visible, notification dupliquée, source LIVE indisponible, export
+bloqué, purge en échec, incident de confidentialité et rollback de production.
+Chaque politique nomme son propriétaire, son seuil, sa fenêtre, son repli sans
+perte et la preuve attendue avant clôture.
+
+Un workflow sonde toutes les quinze minutes six cibles publiques représentatives.
+Il ne confirme une alerte que si la même cible échoue deux fois à trente secondes
+d'intervalle, conserve le rapport trente jours et fait remonter l'incident par le
+canal GitHub existant. La CI empêche qu'une politique, une cible automatisée ou une
+étape de runbook devienne orpheline. Aucun service VPS, secret, compte technique,
+stockage MongoDB ou collecte utilisateur n'est ajouté.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

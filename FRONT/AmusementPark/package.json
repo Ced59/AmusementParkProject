@@ -33,6 +33,9 @@
     "test:performance-tools": "node --test tools/performance/performance-baseline.test.mjs tools/performance/bundle-budget.test.mjs",
     "performance:baseline": "node tools/performance/performance-baseline.mjs",
     "performance:bundle": "node tools/performance/bundle-budget.mjs",
+    "operations:readiness": "node tools/operations/check-incident-readiness.mjs",
+    "operations:readiness:test": "node --test tools/operations/incident-readiness.test.mjs tools/operations/production-alert-monitor.test.mjs",
+    "operations:production-monitor": "node tools/operations/production-alert-monitor.mjs",
     "i18n:build": "node tools/i18n-build.mjs",
     "i18n:check": "node tools/i18n-build.mjs --check && node tools/i18n-check.mjs"
   },
