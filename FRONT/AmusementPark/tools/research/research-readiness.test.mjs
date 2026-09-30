@@ -159,6 +159,19 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   ].join('\n');
   assert.ok(validateResearchDocumentContent(passportProtocolPath, invalidClosingFenceProtocol)
     .some((error) => error.includes('section obligatoire absente ## Scénarios')));
+  for (const htmlBlockTag of ['pre', 'script', 'style', 'textarea']) {
+    const htmlWrappedPassportProtocol = [
+      `<${htmlBlockTag}>`,
+      ...emptyPassportProtocol
+        .split('\n')
+        .flatMap((heading) => [heading, 'Ce contenu assez long reste du HTML brut non exécutable.']),
+      `</${htmlBlockTag}>`,
+    ].join('\n');
+    assert.deepEqual(
+      validateResearchDocumentContent(passportProtocolPath, htmlWrappedPassportProtocol),
+      [`Document de recherche vide: ${passportProtocolPath}.`],
+    );
+  }
   const indentedPassportProtocol = emptyPassportProtocol
     .split('\n')
     .map((heading) => `    ${heading}\n    Ce contenu reste un exemple de code non rendu.`)

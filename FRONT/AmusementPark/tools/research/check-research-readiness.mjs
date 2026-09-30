@@ -510,6 +510,21 @@ function isIndentedCodeLine(line) {
   return /^(?: {4}|\t)/.test(line);
 }
 
+function stripNonRenderedHtmlBlocks(content) {
+  const blockTags = 'pre|script|style|textarea|xmp|iframe|noembed|noframes|listing';
+  const pairedBlockPattern = new RegExp(
+    `<(${blockTags})\\b[^>]*>[\\s\\S]*?<\\/\\1\\s*>`,
+    'gi',
+  );
+  const unclosedBlockPattern = new RegExp(
+    `<(?:${blockTags}|plaintext)\\b[^>]*>[\\s\\S]*$`,
+    'gi',
+  );
+  return content
+    .replace(pairedBlockPattern, '')
+    .replace(unclosedBlockPattern, '');
+}
+
 function markdownSectionBodyLines(lines, headingIndex) {
   const headingLevel = markdownHeadingLevel(lines[headingIndex]);
   let sectionEndIndex = lines.length;
@@ -647,7 +662,7 @@ export function isResearchExtensionPath(candidatePath) {
 
 export function validateResearchDocumentContent(documentPath, content) {
   const renderedContent = typeof content === 'string'
-    ? content.replace(/<!--[\s\S]*?(?:-->|$)/g, '')
+    ? stripNonRenderedHtmlBlocks(content.replace(/<!--[\s\S]*?(?:-->|$)/g, ''))
     : content;
   if (!isNonEmptyText(renderedContent)) {
     return [`Document de recherche vide: ${documentPath}.`];
