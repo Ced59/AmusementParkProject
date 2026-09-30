@@ -263,6 +263,29 @@ test('evaluates only reachable constant control-flow branches', () => {
   );
 });
 
+test('correlates id references across for and deferred rendering states', () => {
+  const findings = analyseTemplate(`
+    @for (item of items; track item.id) {
+      <span id="loop-label">Save</span>
+      <button type="button" aria-labelledby="loop-label"><img alt=""></button>
+    } @empty {
+      <span id="loop-label"></span>
+    }
+    @defer {
+      <span id="defer-label">Save</span>
+      <button type="button" aria-labelledby="defer-label"><img alt=""></button>
+    } @placeholder {
+      <span id="defer-label"></span>
+    } @loading {
+      <span id="defer-label"></span>
+    } @error {
+      <span id="defer-label"></span>
+    }
+  `);
+
+  assert.deepEqual(findings, []);
+});
+
 test('traverses switch cases and for-loop empty blocks', () => {
   const findings = analyseTemplate(`
     @switch (kind()) {

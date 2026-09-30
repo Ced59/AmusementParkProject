@@ -1423,6 +1423,28 @@ function reachableScopedNodeCollections(node) {
     }
   }
 
+  if (nodeType === 'ForLoopBlock') {
+    return [
+      ...(Array.isArray(node.children)
+        ? [{ collection: node.children, owner: node, branch: node }]
+        : []),
+      ...(Array.isArray(node.empty?.children)
+        ? [{ collection: node.empty.children, owner: node, branch: node.empty }]
+        : [])
+    ];
+  }
+
+  if (nodeType === 'DeferredBlock') {
+    return [
+      ...(Array.isArray(node.children)
+        ? [{ collection: node.children, owner: node, branch: node }]
+        : []),
+      ...[node.placeholder, node.loading, node.error]
+        .filter((block) => Array.isArray(block?.children))
+        .map((block) => ({ collection: block.children, owner: node, branch: block }))
+    ];
+  }
+
   return nestedNodeCollections(node).map((collection) => ({ collection }));
 }
 
@@ -1461,7 +1483,7 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
       }
 
       const nodeType = node.constructor?.name ?? '';
-      if (nodeType === 'IfBlock' || nodeType === 'SwitchBlock') {
+      if (['IfBlock', 'SwitchBlock', 'ForLoopBlock', 'DeferredBlock'].includes(nodeType)) {
         const header = (node.startSourceSpan?.toString?.()
           ?? node.expression?.source
           ?? nodeType).replace(/\s+/g, ' ').trim();
