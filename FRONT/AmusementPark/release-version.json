@@ -1,8 +1,8 @@
 {
-  "version": "5.4.34",
+  "version": "5.4.35",
   "history": [
     {
-      "version": "5.4.34",
+      "version": "5.4.35",
       "releasedAt": "2026-09-30",
       "labels": {
         "fr": "La surveillance et la reprise après incident ont été renforcées.",
@@ -13,6 +13,20 @@
         "es": "Se han reforzado la supervisión y la recuperación ante incidentes.",
         "pt": "A monitorização e a recuperação de incidentes foram reforçadas.",
         "pl": "Wzmocniono monitorowanie incydentów i przywracanie działania."
+      }
+    },
+    {
+      "version": "5.4.34",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "Les outils d’administration ont été fiabilisés.",
+        "en": "Administration tools are now more reliable.",
+        "de": "Die Verwaltungswerkzeuge sind jetzt zuverlässiger.",
+        "nl": "De beheertools zijn nu betrouwbaarder.",
+        "it": "Gli strumenti di amministrazione sono ora più affidabili.",
+        "es": "Las herramientas de administración ahora son más fiables.",
+        "pt": "As ferramentas de administração estão agora mais fiáveis.",
+        "pl": "Narzędzia administracyjne działają teraz bardziej niezawodnie."
       }
     },
     {
