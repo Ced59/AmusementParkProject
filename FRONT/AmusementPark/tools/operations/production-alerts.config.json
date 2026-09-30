@@ -43,6 +43,7 @@
         "expectedStatus": 200,
         "maximumP95Milliseconds": 3000,
         "maximumBytes": 750000,
+        "clientRoutePath": "park-fit",
         "incidentId": "production-rollback"
       },
       {

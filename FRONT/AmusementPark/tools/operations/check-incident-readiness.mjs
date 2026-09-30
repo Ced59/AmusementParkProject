@@ -128,6 +128,11 @@ export function validateMonitorConfig(config, catalog) {
     } else if (incident.detectionMode !== 'automated') {
       errors.push(`Cible ${target.key}: l’incident ${target.incidentId} n’est pas déclaré automatisé.`);
     }
+
+    if (target.kind === 'csr-page'
+      && (typeof target.clientRoutePath !== 'string' || target.clientRoutePath.trim().length === 0)) {
+      errors.push(`Cible ${target.key}: route cliente dynamique absente.`);
+    }
   }
   return errors;
 }

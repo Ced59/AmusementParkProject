@@ -59,8 +59,10 @@ Le jalon n'invente donc ni métrique globale ni accès administrateur automatis�
 Les sondes publiques couvrent accueil, parcs, classements, Park Fit, santé API et
 capacités publiques. Elles contrôlent statut, transport, p95 et taille maximale.
 Park Fit étant rendu côté client, la sonde charge en plus tous ses scripts et
-modules préchargés same-origin ; une coquille HTML 200 sans JavaScript valide ne
-peut donc pas déclarer ce parcours sain.
+modules préchargés same-origin, retrouve l'import dynamique de la route exacte et
+charge son chunk paresseux. Chaque téléchargement reprend le timeout de huit
+secondes. Une coquille HTML 200 sans route JavaScript utilisable ne peut donc pas
+déclarer ce parcours sain.
 
 ## 4. Séquence d'alerte publique
 
@@ -92,8 +94,9 @@ sequenceDiagram
 
 Le moniteur n'installe aucune dépendance et n'ajoute aucun service au VPS. Une
 exécution saine produit douze mesures de référence, une lecture supplémentaire de
-la coquille Park Fit et le téléchargement de ses bundles same-origin ; la seconde
-série n'a lieu qu'après un échec. Aucun compte, cookie, jeton, query string ou
+la coquille Park Fit et le téléchargement de ses bundles same-origin, y compris le
+chunk dynamique de la route ; la seconde série n'a lieu qu'après un échec. Aucun
+compte, cookie, jeton, query string ou
 contenu privé n'est collecté. Les rapports sont conservés trente jours dans les
 artefacts GitHub.
 

@@ -962,7 +962,8 @@ Il ne confirme une alerte que si la même cible échoue deux fois à trente seco
 d'intervalle, conserve le rapport trente jours et fait remonter l'incident par le
 canal GitHub existant. Pour Park Fit, rendu côté client, il contrôle aussi les
 scripts et modules préchargés same-origin afin qu'une coquille HTTP 200 inutilisable
-ne soit pas considérée saine. La CI empêche qu'une politique, une cible automatisée
+ne soit pas considérée saine ; le chunk paresseux de la route exacte est également
+chargé avec un timeout borné. La CI empêche qu'une politique, une cible automatisée
 ou une étape de runbook devienne orpheline. Aucun service VPS, secret, compte
 technique, stockage MongoDB ou collecte utilisateur n'est ajouté.
 

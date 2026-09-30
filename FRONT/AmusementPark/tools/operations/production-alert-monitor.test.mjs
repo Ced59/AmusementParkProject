@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import {
   confirmIncidents,
+  extractLazyRouteAssetUrl,
   extractRequiredClientAssetUrls,
   probeRequiredClientAssets,
   runConfirmedProductionProbe,
@@ -106,4 +107,49 @@ test('reports a missing client bundle even when the CSR shell returns HTTP 200',
 
   assert.equal(result.assetCount, 1);
   assert.deepEqual(result.failures, ['/main.js: bundle client invalide']);
+});
+
+test('finds and verifies the lazy-loaded chunk for the exact client route', async () => {
+  const mainSource = '},{path:"park-fit",loadComponent:()=>import("./chunk-PARK.js").then(i=>i.ParkFitStartPageComponent)},{';
+  assert.equal(
+    extractLazyRouteAssetUrl('https://amusement-parks.fun/main.js', mainSource, 'park-fit'),
+    'https://amusement-parks.fun/chunk-PARK.js',
+  );
+
+  const responses = new Map([
+    ['https://amusement-parks.fun/fr/park-fit', new Response('<base href="/"><script src="main.js"></script>', {
+      status: 200,
+      headers: { 'content-type': 'text/html' },
+    })],
+    ['https://amusement-parks.fun/main.js', new Response(mainSource, {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+    ['https://amusement-parks.fun/chunk-PARK.js', new Response('export class ParkFitStartPageComponent {}', {
+      status: 200,
+      headers: { 'content-type': 'text/javascript' },
+    })],
+  ]);
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    { path: '/fr/park-fit', expectedStatus: 200, clientRoutePath: 'park-fit' },
+    async (url) => responses.get(String(url)),
+  );
+
+  assert.equal(result.assetCount, 2);
+  assert.equal(result.lazyRouteAsset, '/chunk-PARK.js');
+  assert.deepEqual(result.failures, []);
+});
+
+test('bounds a stalled CSR shell request with the configured timeout', async () => {
+  const result = await probeRequiredClientAssets(
+    'https://amusement-parks.fun',
+    { path: '/fr/park-fit', expectedStatus: 200, clientRoutePath: 'park-fit' },
+    async (_url, options) => new Promise((_resolve, reject) => {
+      options.signal.addEventListener('abort', () => reject(new Error('aborted')));
+    }),
+    5,
+  );
+
+  assert.deepEqual(result.failures, ['page cliente inaccessible ou expirée pendant le contrôle des bundles']);
 });

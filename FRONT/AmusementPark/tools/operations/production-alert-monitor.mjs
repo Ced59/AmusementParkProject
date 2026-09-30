@@ -8,6 +8,16 @@ const toolDirectory = dirname(fileURLToPath(import.meta.url));
 const defaultConfigPath = resolve(toolDirectory, 'production-alerts.config.json');
 const maximumClientAssets = 25;
 
+async function fetchWithTimeout(fetchImplementation, url, options, timeoutMilliseconds) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMilliseconds);
+  try {
+    return await fetchImplementation(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 function readAttribute(tag, name) {
   const match = tag.match(new RegExp(`\\b${name}\\s*=\\s*["']([^"']+)["']`, 'i'));
   return match?.[1] ?? null;
@@ -37,12 +47,47 @@ export function extractRequiredClientAssetUrls(pageUrl, html) {
   return urls.slice(0, maximumClientAssets);
 }
 
-export async function probeRequiredClientAssets(baseUrl, target, fetchImplementation = globalThis.fetch) {
+export function extractLazyRouteAssetUrl(assetUrl, source, routePath) {
+  const escapedRoutePath = routePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const routePattern = new RegExp(
+    `path\\s*:\\s*["']${escapedRoutePath}["'][\\s\\S]{0,300}?import\\s*\\(\\s*["']([^"']+\\.js)["']`,
+  );
+  const reference = source.match(routePattern)?.[1];
+  if (!reference) {
+    return null;
+  }
+
+  const resolved = new URL(reference, assetUrl);
+  return resolved.origin === new URL(assetUrl).origin ? resolved.href : null;
+}
+
+async function probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMilliseconds) {
+  try {
+    const response = await fetchWithTimeout(fetchImplementation, assetUrl, {
+      headers: { accept: 'text/javascript, application/javascript', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
+    }, timeoutMilliseconds);
+    const source = await response.text();
+    const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
+    if (!response.ok || source.length === 0 || !contentType.includes('javascript')) {
+      return { failure: `${new URL(assetUrl).pathname}: bundle client invalide`, source: null };
+    }
+    return { failure: null, source };
+  } catch {
+    return { failure: `${new URL(assetUrl).pathname}: bundle client inaccessible ou expiré`, source: null };
+  }
+}
+
+export async function probeRequiredClientAssets(
+  baseUrl,
+  target,
+  fetchImplementation = globalThis.fetch,
+  timeoutMilliseconds = 8000,
+) {
   const pageUrl = new URL(target.path, baseUrl);
   try {
-    const pageResponse = await fetchImplementation(pageUrl, {
+    const pageResponse = await fetchWithTimeout(fetchImplementation, pageUrl, {
       headers: { accept: 'text/html', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
-    });
+    }, timeoutMilliseconds);
     if (pageResponse.status !== target.expectedStatus) {
       return { assetCount: 0, failures: [`page cliente HTTP ${pageResponse.status}`] };
     }
@@ -53,24 +98,46 @@ export async function probeRequiredClientAssets(baseUrl, target, fetchImplementa
     }
 
     const failures = [];
+    const sources = new Map();
     for (const assetUrl of assetUrls) {
-      try {
-        const response = await fetchImplementation(assetUrl, {
-          headers: { accept: 'text/javascript, application/javascript', 'user-agent': 'AmusementParkProductionMonitor/1.0' },
-        });
-        const body = await response.arrayBuffer();
-        const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
-        if (!response.ok || body.byteLength === 0 || !contentType.includes('javascript')) {
-          failures.push(`${new URL(assetUrl).pathname}: bundle client invalide`);
-        }
-      } catch {
-        failures.push(`${new URL(assetUrl).pathname}: bundle client inaccessible`);
+      const result = await probeJavaScriptAsset(assetUrl, fetchImplementation, timeoutMilliseconds);
+      if (result.failure) {
+        failures.push(result.failure);
+      } else {
+        sources.set(assetUrl, result.source);
       }
     }
 
-    return { assetCount: assetUrls.length, failures };
+    let lazyRouteAssetUrl = null;
+    if (target.clientRoutePath && failures.length === 0) {
+      for (const [assetUrl, source] of sources) {
+        lazyRouteAssetUrl = extractLazyRouteAssetUrl(assetUrl, source, target.clientRoutePath);
+        if (lazyRouteAssetUrl) {
+          break;
+        }
+      }
+
+      if (!lazyRouteAssetUrl) {
+        failures.push(`chunk dynamique de la route ${target.clientRoutePath} introuvable`);
+      } else if (!sources.has(lazyRouteAssetUrl)) {
+        const lazyResult = await probeJavaScriptAsset(lazyRouteAssetUrl, fetchImplementation, timeoutMilliseconds);
+        if (lazyResult.failure) {
+          failures.push(lazyResult.failure);
+        }
+      }
+    }
+
+    return {
+      assetCount: assetUrls.length + (lazyRouteAssetUrl && !assetUrls.includes(lazyRouteAssetUrl) ? 1 : 0),
+      lazyRouteAsset: lazyRouteAssetUrl ? new URL(lazyRouteAssetUrl).pathname : null,
+      failures,
+    };
   } catch {
-    return { assetCount: 0, failures: ['page cliente inaccessible pendant le contrôle des bundles'] };
+    return {
+      assetCount: 0,
+      lazyRouteAsset: null,
+      failures: ['page cliente inaccessible ou expirée pendant le contrôle des bundles'],
+    };
   }
 }
 
@@ -81,7 +148,12 @@ async function appendClientAssetChecks(report, config, baseUrl, fetchImplementat
       continue;
     }
 
-    const check = await probeRequiredClientAssets(baseUrl, target, fetchImplementation);
+    const check = await probeRequiredClientAssets(
+      baseUrl,
+      target,
+      fetchImplementation,
+      config.baseline.timeoutMilliseconds,
+    );
     result.clientAssetCheck = check;
     result.failures.push(...check.failures);
   }
