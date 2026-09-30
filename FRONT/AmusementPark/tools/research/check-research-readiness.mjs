@@ -712,21 +712,20 @@ function stripNonRenderedHtmlBlocks(content) {
     `<(?:${blockTags}|plaintext)\\b[^>]*>[\\s\\S]*$`,
     'gi',
   );
-  const pairedHtmlContainerPattern = new RegExp(
-    `<(${containerTags})\\b[^>]*>[\\s\\S]*<\\/\\1\\s*>`,
-    'gi',
-  );
+  const pairedHtmlContainerPattern = /<([A-Za-z][A-Za-z0-9:-]*)\b[^>]*>[\s\S]*<\/\1\s*>/gi;
   const unclosedHtmlContainerPattern = new RegExp(
     `<(?:${containerTags})\\b[^>]*(?<!\\/)>[\\s\\S]*$`,
     'gi',
   );
-  const unclosedHiddenCustomContainerPattern = /<[A-Za-z][A-Za-z0-9:-]*\b(?=[^>]*\bhidden\b)[^>]*(?<!\/)>[\s\S]*$/gi;
+  const unclosedCustomContainerPattern = /<[A-Za-z][A-Za-z0-9._]*-[A-Za-z0-9._-]*\b[^>]*(?<!\/)>[\s\S]*$/gi;
+  const unclosedStyledOrHiddenContainerPattern = /<[A-Za-z][A-Za-z0-9:-]*\b(?=[^>]*(?:\bhidden\b|\bstyle\s*=))[^>]*(?<!\/)>[\s\S]*$/gi;
   return content
     .replace(pairedBlockPattern, '')
     .replace(unclosedBlockPattern, '')
     .replace(pairedHtmlContainerPattern, '')
     .replace(unclosedHtmlContainerPattern, '')
-    .replace(unclosedHiddenCustomContainerPattern, '');
+    .replace(unclosedCustomContainerPattern, '')
+    .replace(unclosedStyledOrHiddenContainerPattern, '');
 }
 
 function markdownSectionBodyLines(lines, headingIndex) {

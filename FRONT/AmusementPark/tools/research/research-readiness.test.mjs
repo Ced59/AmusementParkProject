@@ -195,6 +195,7 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     '<div style="display:none">',
     '<select hidden>',
     '<research-protocol hidden>',
+    '<research-protocol style="opacity:0">',
   ]) {
     const unclosedHiddenPassportProtocol = [
       unclosedContainer,
@@ -207,6 +208,17 @@ test('rejects empty or structurally incomplete required protocol documents', () 
       [`Document de recherche vide: ${passportProtocolPath}.`],
     );
   }
+  const pairedCustomHiddenProtocol = [
+    '<research-protocol style="display:none">',
+    ...emptyPassportProtocol
+      .split('\n')
+      .flatMap((heading) => [heading, 'Ce contenu assez long reste masqué par le conteneur HTML personnalisé.']),
+    '</research-protocol>',
+  ].join('\n');
+  assert.deepEqual(
+    validateResearchDocumentContent(passportProtocolPath, pairedCustomHiddenProtocol),
+    [`Document de recherche vide: ${passportProtocolPath}.`],
+  );
   const referenceOnlyPassportProtocol = emptyPassportProtocol
     .split('\n')
     .flatMap((heading, index) => [
