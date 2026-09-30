@@ -865,6 +865,7 @@ export function validateResearchDocumentContent(documentPath, content) {
     const gateCriteriaLines = gateHeadingIndex < 0
       ? []
       : markdownSectionBodyLines(lines, gateHeadingIndex)
+        .filter((line) => !isIndentedCodeLine(line))
         .map((line) => line.trim())
         .filter((line) => line.startsWith('- '));
     if (gateCriteriaLines.length !== requiredGateCriteria.length
@@ -952,6 +953,7 @@ export function validateResearchDocumentContent(documentPath, content) {
     const stopConditionLines = stopConditionsHeadingIndex < 0
       ? []
       : markdownSectionBodyLines(lines, stopConditionsHeadingIndex)
+        .filter((line) => !isIndentedCodeLine(line))
         .map((line) => line.trim())
         .filter((line) => line.startsWith('- '));
     if (stopConditionLines.length !== requiredCommonStopConditions.length

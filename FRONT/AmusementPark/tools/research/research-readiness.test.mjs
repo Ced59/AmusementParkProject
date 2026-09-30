@@ -10,6 +10,7 @@ import {
   requiredEvidenceConstraints,
   requiredEvidenceIds,
   requiredExtensionDocumentsByProgram,
+  requiredGateCriteriaByDocument,
   requiredProfileIds,
   requiredProfileIdsByProgram,
   requiredProfileLabels,
@@ -322,6 +323,17 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   ].join('\n');
   assert.ok(validateResearchDocumentContent(readmePath, readmeWithoutAccessibilityStop)
     .some((error) => error.includes("conditions d'arrêt communes incomplètes")));
+  const indentedStopConditions = readmeWithoutAccessibilityStop.replace(
+    requiredCommonStopConditions
+      .filter((condition) => !condition.includes("accessibilité fondamentale"))
+      .join('\n'),
+    [
+      'Cette phrase visible ne remplace pas les conditions obligatoires.',
+      ...requiredCommonStopConditions.map((condition) => `    ${condition}`),
+    ].join('\n'),
+  );
+  assert.ok(validateResearchDocumentContent(readmePath, indentedStopConditions)
+    .some((error) => error.includes("conditions d'arrêt communes incomplètes")));
 
   for (const [programId, roadmapPath] of Object.entries(requiredRoadmapByProgram)) {
     assert.ok(validateResearchDocumentContent(roadmapPath, '# Roadmap incomplète')
@@ -334,6 +346,14 @@ test('rejects empty or structurally incomplete required protocol documents', () 
       `${gateHeading}\n\nCette phrase seule ne remplace pas les critères obligatoires de la gate.`,
     );
     assert.ok(gateWithoutCriteriaErrors
+      .some((error) => error.includes('critères canoniques de gate')));
+    const indentedGateCriteria = [
+      gateHeading,
+      '',
+      'Cette phrase visible ne remplace pas les critères obligatoires de la gate.',
+      ...requiredGateCriteriaByDocument[roadmapPath].map((criterion) => `    ${criterion}`),
+    ].join('\n');
+    assert.ok(validateResearchDocumentContent(roadmapPath, indentedGateCriteria)
       .some((error) => error.includes('critères canoniques de gate')));
     assert.ok(validateResearchDocumentContent(
       roadmapPath,
