@@ -129,6 +129,12 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   ].join('\n');
   assert.ok(validateResearchDocumentContent(sessionTemplatePath, incompleteSessionTemplate)
     .some((error) => error.includes('ligne de tâche obligatoire absente delayed-return')));
+
+  for (const [programId, roadmapPath] of Object.entries(requiredRoadmapByProgram)) {
+    assert.ok(validateResearchDocumentContent(roadmapPath, '# Roadmap incomplète')
+      .some((error) => error.includes(`Gate finale \`${programId}-G\``)
+        || error.includes(`\`${programId}-G\` — socle technique`)));
+  }
 });
 
 test('rejects a missing program and duplicate canonical task', () => {
@@ -381,5 +387,13 @@ test('keeps every canonical program extension attached to its protocol', () => {
   const errors = validateResearchCatalog(catalog);
   assert.ok(errors.some((error) => error.includes('PASS')
     && error.includes('extension canonique absente')
+    && error.includes('passport-beta-validation-protocol.md')));
+
+  const catalogWithWrongOwner = validCatalog();
+  const rankingProgram = catalogWithWrongOwner.programs.find((program) => program.id === 'RANK');
+  rankingProgram.extensionDocuments.push('docs/product/passport-beta-validation-protocol.md');
+  const wrongOwnerErrors = validateResearchCatalog(catalogWithWrongOwner);
+  assert.ok(wrongOwnerErrors.some((error) => error.includes('RANK')
+    && error.includes('réservée à PASS')
     && error.includes('passport-beta-validation-protocol.md')));
 });

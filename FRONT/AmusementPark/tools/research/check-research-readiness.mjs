@@ -430,6 +430,30 @@ export const requiredProtocolDocumentPaths = Object.freeze([
 ]);
 
 export const requiredProtocolDocumentHeadings = Object.freeze({
+  'docs/roadmaps/product-growth/01-ranking-trust-and-methodology-roadmap.md': Object.freeze([
+    '## 19. Gate finale `RANK-G`',
+  ]),
+  'docs/roadmaps/product-growth/02-visit-passport-and-ride-log-roadmap.md': Object.freeze([
+    '## 27. `PASS-G` — socle technique et suivi terrain',
+  ]),
+  'docs/roadmaps/product-growth/03-shareable-recaps-and-comparisons-roadmap.md': Object.freeze([
+    '## 21. Gate finale `SHARE-G`',
+  ]),
+  'docs/roadmaps/product-growth/04-park-fit-recommendation-and-comparison-roadmap.md': Object.freeze([
+    '## 22. Gate finale `FIT-G`',
+  ]),
+  'docs/roadmaps/product-growth/05-favorites-watchlists-and-factual-alerts-roadmap.md': Object.freeze([
+    '## 19. Gate finale `WATCH-G`',
+  ]),
+  'docs/roadmaps/product-growth/06-collaborative-trip-planning-roadmap.md': Object.freeze([
+    '## 23. Gate finale `TRIP-G`',
+  ]),
+  'docs/roadmaps/product-growth/07-park-history-explorer-roadmap.md': Object.freeze([
+    '## 22. Gate finale `HIST-G`',
+  ]),
+  'docs/roadmaps/product-growth/08-live-wait-times-and-crowd-intelligence-roadmap.md': Object.freeze([
+    '## 24. Gate finale `LIVE-G`',
+  ]),
   'docs/product/research/README.md': Object.freeze([
     '# Protocole commun de recherche produit',
     '## 2. Préparer une session',
@@ -651,6 +675,12 @@ export function validateResearchCatalog(catalog) {
   hasOnlyRequiredIds(catalog?.programs, requiredProgramIds, 'Programmes', errors);
   const knownProfiles = new Set(requiredProfileIds);
   const roadmapPaths = new Set();
+  const canonicalExtensionOwners = new Map();
+  for (const [ownerProgramId, extensionPaths] of Object.entries(requiredExtensionDocumentsByProgram)) {
+    for (const extensionPath of extensionPaths) {
+      canonicalExtensionOwners.set(extensionPath, ownerProgramId);
+    }
+  }
   for (const program of programs ?? []) {
     const programId = program?.id ?? '<sans-id>';
     for (const field of ['gate', 'businessQuestion', 'firstSuccess']) {
@@ -738,6 +768,11 @@ export function validateResearchCatalog(catalog) {
           errors.push(`Programme ${programId}: extension dupliquée ${extensionPath}.`);
         } else {
           extensionPaths.add(extensionPath);
+        }
+
+        const canonicalOwner = canonicalExtensionOwners.get(extensionPath);
+        if (canonicalOwner && canonicalOwner !== programId) {
+          errors.push(`Programme ${programId}: extension canonique réservée à ${canonicalOwner}: ${extensionPath}.`);
         }
       }
 
