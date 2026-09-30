@@ -497,8 +497,17 @@ function isNonEmptyText(value) {
 }
 
 function markdownHeadingLevel(line) {
-  const match = line.trim().match(/^(#{1,6})\s+/);
+  const match = line.match(/^ {0,3}(#{1,6})\s+/);
   return match ? match[1].length : null;
+}
+
+function markdownHeadingText(line) {
+  const match = line.match(/^ {0,3}(#{1,6}\s+.*?\S)\s*$/);
+  return match ? match[1] : null;
+}
+
+function isIndentedCodeLine(line) {
+  return /^(?: {4}|\t)/.test(line);
 }
 
 function markdownSectionBodyLines(lines, headingIndex) {
@@ -538,6 +547,10 @@ function excludeFencedCodeBlocks(lines) {
 }
 
 function markdownTableCells(line) {
+  if (isIndentedCodeLine(line)) {
+    return null;
+  }
+
   const trimmedLine = line.trim();
   if (!trimmedLine.startsWith('|') || !trimmedLine.endsWith('|')) {
     return null;
@@ -558,7 +571,9 @@ function isMarkdownTableDelimiter(line, columnCount) {
 
 function hasMeaningfulSectionContent(lines, headingIndex) {
   const normalizedContent = excludeFencedCodeBlocks(markdownSectionBodyLines(lines, headingIndex))
-    .filter((line) => !line.trim().startsWith('<!--') && markdownHeadingLevel(line) === null)
+    .filter((line) => !line.trim().startsWith('<!--')
+      && markdownHeadingLevel(line) === null
+      && !isIndentedCodeLine(line))
     .join(' ')
     .replace(/[`*_>#|\[\]():-]/g, ' ')
     .replace(/\s+/g, ' ')
@@ -635,7 +650,7 @@ export function validateResearchDocumentContent(documentPath, content) {
   const errors = [];
   const lines = excludeFencedCodeBlocks(renderedContent.split(/\r?\n/));
   for (const heading of requiredProtocolDocumentHeadings[documentPath] ?? []) {
-    const headingIndex = lines.findIndex((line) => line.trim() === heading);
+    const headingIndex = lines.findIndex((line) => markdownHeadingText(line) === heading);
     if (headingIndex < 0) {
       errors.push(`Document ${documentPath}: section obligatoire absente ${heading}.`);
     } else if (!hasMeaningfulSectionContent(lines, headingIndex)) {
@@ -644,7 +659,7 @@ export function validateResearchDocumentContent(documentPath, content) {
   }
 
   if (documentPath === 'docs/product/research/session-result-template.md') {
-    const resultsHeadingIndex = lines.findIndex((line) => line.trim() === '## Résultats par tâche');
+    const resultsHeadingIndex = lines.findIndex((line) => markdownHeadingText(line) === '## Résultats par tâche');
     const resultLines = resultsHeadingIndex < 0
       ? []
       : markdownSectionBodyLines(lines, resultsHeadingIndex);
@@ -694,10 +709,10 @@ export function validateResearchDocumentContent(documentPath, content) {
         field: '- Fiche supprimée à la date prévue :',
       }),
     ]) {
-      const headingIndex = lines.findIndex((line) => line.trim() === retentionRequirement.heading);
+      const headingIndex = lines.findIndex((line) => markdownHeadingText(line) === retentionRequirement.heading);
       const sectionLines = headingIndex < 0
         ? []
-        : markdownSectionBodyLines(lines, headingIndex).map((line) => line.trim());
+        : markdownSectionBodyLines(lines, headingIndex).map((line) => line.trimEnd());
       if (!sectionLines.includes(retentionRequirement.field)) {
         errors.push(`Document ${documentPath}: champ de rétention obligatoire absent ${retentionRequirement.field}.`);
       }

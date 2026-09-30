@@ -138,6 +138,12 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     .join('\n')}\n\`\`\``;
   assert.ok(validateResearchDocumentContent(passportProtocolPath, fencedPassportProtocol)
     .some((error) => error.includes('section obligatoire absente ## Scénarios')));
+  const indentedPassportProtocol = emptyPassportProtocol
+    .split('\n')
+    .map((heading) => `    ${heading}\n    Ce contenu reste un exemple de code non rendu.`)
+    .join('\n');
+  assert.ok(validateResearchDocumentContent(passportProtocolPath, indentedPassportProtocol)
+    .some((error) => error.includes('section obligatoire absente ## Scénarios')));
 
   const sessionTemplatePath = 'docs/product/research/session-result-template.md';
   const incompleteSessionTemplate = [
@@ -196,6 +202,16 @@ test('rejects empty or structurally incomplete required protocol documents', () 
   for (const taskId of requiredTaskIds) {
     assert.ok(narrativeTaskErrors.some((error) => error.includes(`ligne de tâche obligatoire absente ${taskId}`)));
   }
+  const indentedTable = [
+    '    | Tâche commune | Contexte produit présenté | Résultat | Faits observés | Aide minimale donnée |',
+    '    |---|---|---|---|---|',
+    ...requiredTaskIds.map((taskId) => `    | ${taskId} | | | | |`),
+  ].join('\n');
+  const indentedTableErrors = validateResearchDocumentContent(
+    sessionTemplatePath,
+    fencedTaskRows.replace(/```markdown[\s\S]*?```/, indentedTable),
+  );
+  assert.ok(indentedTableErrors.some((error) => error.includes('tableau de résultats canonique absent')));
 
   for (const [programId, roadmapPath] of Object.entries(requiredRoadmapByProgram)) {
     assert.ok(validateResearchDocumentContent(roadmapPath, '# Roadmap incomplète')
@@ -216,6 +232,10 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     assert.ok(validateResearchDocumentContent(
       roadmapPath,
       `\`\`\`markdown\n${gateHeading}\n\nCe critère assez long reste enfermé dans un exemple.\n\`\`\``,
+    ).some((error) => error.includes('section obligatoire absente')));
+    assert.ok(validateResearchDocumentContent(
+      roadmapPath,
+      `    ${gateHeading}\n\n    Ce critère assez long reste un bloc de code indenté.`,
     ).some((error) => error.includes('section obligatoire absente')));
   }
 });
