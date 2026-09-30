@@ -25,6 +25,12 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24.x
+          cache: npm
+          cache-dependency-path: FRONT/AmusementPark/package-lock.json
+
+      - name: Install monitor dependencies
+        working-directory: FRONT/AmusementPark
+        run: npm ci
 
       - name: Validate incident catalog and runbooks
         working-directory: FRONT/AmusementPark
