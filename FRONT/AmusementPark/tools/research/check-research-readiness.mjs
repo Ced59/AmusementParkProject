@@ -526,20 +526,22 @@ function markdownSectionBodyLines(lines, headingIndex) {
 
 function excludeFencedCodeBlocks(lines) {
   const visibleLines = [];
-  let activeFenceCharacter = null;
+  let activeFence = null;
   for (const line of lines) {
     const fenceMatch = line.match(/^\s*(`{3,}|~{3,})/);
     if (fenceMatch) {
       const fenceCharacter = fenceMatch[1][0];
-      if (activeFenceCharacter === null) {
-        activeFenceCharacter = fenceCharacter;
-      } else if (activeFenceCharacter === fenceCharacter) {
-        activeFenceCharacter = null;
+      const fenceLength = fenceMatch[1].length;
+      if (activeFence === null) {
+        activeFence = Object.freeze({ character: fenceCharacter, length: fenceLength });
+      } else if (activeFence.character === fenceCharacter
+        && fenceLength >= activeFence.length) {
+        activeFence = null;
       }
       continue;
     }
 
-    if (activeFenceCharacter === null) {
+    if (activeFence === null) {
       visibleLines.push(line);
     }
   }

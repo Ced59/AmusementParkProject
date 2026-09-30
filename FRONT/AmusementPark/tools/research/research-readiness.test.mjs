@@ -138,6 +138,17 @@ test('rejects empty or structurally incomplete required protocol documents', () 
     .join('\n')}\n\`\`\``;
   assert.ok(validateResearchDocumentContent(passportProtocolPath, fencedPassportProtocol)
     .some((error) => error.includes('section obligatoire absente ## Scénarios')));
+  const longerFencedPassportProtocol = [
+    '````markdown',
+    '```',
+    ...emptyPassportProtocol
+      .split('\n')
+      .flatMap((heading) => [heading, 'Ce contenu assez long reste un exemple non exécutable.']),
+    '```',
+    '````',
+  ].join('\n');
+  assert.ok(validateResearchDocumentContent(passportProtocolPath, longerFencedPassportProtocol)
+    .some((error) => error.includes('section obligatoire absente ## Scénarios')));
   const indentedPassportProtocol = emptyPassportProtocol
     .split('\n')
     .map((heading) => `    ${heading}\n    Ce contenu reste un exemple de code non rendu.`)
