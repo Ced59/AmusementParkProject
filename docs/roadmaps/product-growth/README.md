@@ -1,6 +1,12 @@
 # Amusement Parks Fun — Programme produit Web, confiance et croissance utile
 
-> Statut : roadmap directrice prête à être arbitrée et découpée en PR d’implémentation.
+> Statut au 30 septembre 2026 : tranches techniques FOUNDATION à QUAL-10
+> implémentées. Les preuves terrain restent suivies séparément et ne sont pas
+> inventées. Le fonctionnement livré, ses schémas et ses preuves sont rassemblés
+> dans le [guide métier et architecture final](../../architecture/product-growth-final-guide-2026-09-30.md).
+> QUAL-04 reste une matrice de couverture : l'export fédéré du compte et la
+> suppression globale orchestrée sont des extensions de cycle de vie connues,
+> non présentées comme déjà livrées.
 >
 > Base fonctionnelle initialement auditée : `master` au commit `943f6f9c07548b91582cbe853cf17bb14cbeb0df`, le 27 août 2026. Les fondations techniques ont ensuite été réévaluées sur `master` au commit `8742d6e657ef6c1c64f6e360e29fe2aa2ae6b019`, le 28 août 2026.
 >

@@ -834,6 +834,7 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-08`](../../architecture/product-growth-qual-08-cross-user-security-tests-2026-09-30.md) | Tests cross-user et sécurité — livré le 30 septembre 2026 | Parcours critiques |
 | [`QUAL-09`](../../architecture/product-growth-qual-09-runbooks-alerting-2026-09-30.md) | Runbooks et alerting — livré le 30 septembre 2026 | Incidents opérables |
 | [`QUAL-10`](../../architecture/product-growth-qual-10-beta-research-protocols-2026-09-30.md) | Protocole bêta/recherche — livré le 30 septembre 2026 | Tests comparables |
+| [`QUAL-G`](../../architecture/product-growth-final-guide-2026-09-30.md) | Guide métier, notation, MongoDB et preuves — livré le 30 septembre 2026 | Système explicable et auditable |
 | `QUAL-11+` | Tranche transverse par roadmap | Gate locale documentée |
 
 ### Implémentation `QUAL-01` — 29 septembre 2026
@@ -983,6 +984,23 @@ mais la généralisation sans observation consentie reste interdite. La CI véri
 les huit programmes, les profils d'assistance et d'appareil modeste, les contextes
 privacy/export/suppression, les retours différés et les documents référencés. Aucun
 schéma MongoDB, contrat applicatif, écran ou collecte utilisateur n'est ajouté.
+
+### Clôture documentaire `QUAL-G` — 30 septembre 2026
+
+Le guide final relie les capacités métier aux objets de domaine, aux collections
+MongoDB, aux séquences d'écriture et aux tests. Il documente en particulier les
+trois vérités de notation, les formules publiées, les seuils de preuve et l'absence
+de chemin automatique entre observations temporelles et vote communautaire.
+
+Cette clôture décrit la livraison technique sans revendiquer de résultat terrain.
+Les cohortes, secondes utilisations et compréhensions réelles restent suivies par
+le protocole QUAL-10 et ne bloquent pas les fonctionnalités indépendantes de ces
+observations.
+
+Elle ne clôt pas les écarts de cycle de vie recensés par QUAL-04 : aucun export
+fédéré du compte ni coordinateur global de suppression n'est revendiqué. Ces deux
+capacités nécessitent de futurs jalons dédiés avant d'exposer une promesse globale
+au membre.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 
