@@ -57,9 +57,15 @@ test('rejects empty or unreachable native labels', () => {
     <input id="empty-save" type="button">
     @if (ready) { <label for="other-branch">Save</label> }
     @else { <input id="other-branch" type="button"> }
+    @if (ready) { <label for="partially-named">Save</label> }
+    @else { <label for="partially-named"></label> }
+    <input id="partially-named" type="button">
   `);
 
-  assert.deepEqual(findings.map((finding) => finding.rule), ['interactive-name', 'interactive-name']);
+  assert.deepEqual(
+    findings.map((finding) => finding.rule),
+    ['interactive-name', 'interactive-name', 'interactive-name']
+  );
 });
 
 test('recognizes names rendered through Angular control-flow branches', () => {
@@ -461,6 +467,11 @@ test('requires keyboard support and semantics on non-native click targets', () =
   const validClickEventControl = analyseTemplate('<div role="button" tabindex="0" (click)="save(); $event.stopPropagation()" (keydown.enter)="save()" (keydown.space)="save(); $event.preventDefault()">Save</div>');
   const validCheckboxActivation = analyseTemplate('<div role="checkbox" tabindex="0" (click)="toggle()" (keydown.space)="toggle()">Choice</div>');
   const validRouterLinkActivation = analyseTemplate('<div role="link" tabindex="0" routerLink="/parks" (keydown.enter)="open()">Parks</div>');
+  const validDisabledRouterLinks = analyseTemplate(`
+    <a [routerLink]="null">Unavailable</a>
+    <div [routerLink]="undefined">Unavailable</div>
+  `);
+  const invalidConditionalRouterLink = analyseTemplate('<div [routerLink]="enabled ? \'/parks\' : null">Parks</div>');
 
   assert.deepEqual(invalid.map((finding) => finding.rule), ['click-keyboard']);
   assert.deepEqual(invalidRouterLink.map((finding) => finding.rule), ['click-keyboard']);
@@ -505,6 +516,8 @@ test('requires keyboard support and semantics on non-native click targets', () =
   assert.deepEqual(validClickEventControl, []);
   assert.deepEqual(validCheckboxActivation, []);
   assert.deepEqual(validRouterLinkActivation, []);
+  assert.deepEqual(validDisabledRouterLinks, []);
+  assert.deepEqual(invalidConditionalRouterLink.map((finding) => finding.rule), ['click-keyboard']);
 });
 
 test('reports additions and resolved debt against a baseline', () => {

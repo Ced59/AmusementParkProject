@@ -559,13 +559,14 @@ function hasUsableNativeLabel(node, context, resolving) {
   }
 
   const sourceReachability = context.reachabilityByNode.get(node) ?? new Map();
-  return [...labels].some((label) => (
+  const compatibleLabels = [...labels].filter((label) => (
     reachabilityContextsAreCompatible(
       sourceReachability,
       context.reachabilityByNode.get(label) ?? new Map()
     )
-    && hasAccessibleName(label, context, resolving)
   ));
+  return compatibleLabels.length > 0
+    && compatibleLabels.every((label) => hasAccessibleName(label, context, resolving));
 }
 
 function hasAccessibleName(node, context, resolving = new Set()) {
@@ -872,6 +873,23 @@ function hasUsableLinkTarget(node, name) {
       input,
       (value) => value !== null && value !== undefined
     );
+  });
+}
+
+function hasPotentiallyUsableLinkTarget(node, name) {
+  const normalizedName = name.toLowerCase();
+  if (staticAttributes(node).some((attribute) => attribute.name.toLowerCase() === normalizedName)) {
+    return true;
+  }
+
+  return (node.inputs ?? []).some((input) => {
+    if (!isAttributeBinding(input) || input.name.toLowerCase() !== normalizedName) {
+      return false;
+    }
+
+    const outcome = boundReachableStaticValues(input);
+    return outcome.hasUnknown
+      || outcome.values.some((value) => value !== null && value !== undefined);
   });
 }
 
@@ -1264,7 +1282,8 @@ function analyseElement(node, template, source, lineOffset, locator, context) {
   }
 
   const isCustomElement = name.includes('-');
-  const hasPointerInteraction = hasActionableClick(node) || names.has('routerlink');
+  const hasPointerInteraction = hasActionableClick(node)
+    || hasPotentiallyUsableLinkTarget(node, 'routerlink');
   if (hasPointerInteraction && !isNativeInteractive(node) && !isCustomElement) {
     const hasKeyboardHandler = hasKeyboardActivation(node);
     const hasKeyboardFocus = hasReachableTabIndex(node);
