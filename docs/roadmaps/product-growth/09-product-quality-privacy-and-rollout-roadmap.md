@@ -997,6 +997,11 @@ Les cohortes, secondes utilisations et compréhensions réelles restent suivies 
 le protocole QUAL-10 et ne bloquent pas les fonctionnalités indépendantes de ces
 observations.
 
+Elle ne clôt pas les écarts de cycle de vie recensés par QUAL-04 : aucun export
+fédéré du compte ni coordinateur global de suppression n'est revendiqué. Ces deux
+capacités nécessitent de futurs jalons dédiés avant d'exposer une promesse globale
+au membre.
+
 ## 25. Checklist de gate pour toute fonctionnalité
 
 ### Produit

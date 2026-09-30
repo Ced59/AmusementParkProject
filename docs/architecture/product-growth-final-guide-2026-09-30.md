@@ -601,8 +601,26 @@ Répertoires de preuve :
 ## 12. État final et travail continu
 
 Les tranches techniques planifiées de FOUNDATION à QUAL-10 sont implémentées. Ce
-guide clôt la documentation transverse de `QUAL-G`. Les activités suivantes ne
-sont pas des fonctionnalités manquantes de la roadmap :
+guide clôt la documentation transverse de `QUAL-G`, sans transformer les écarts
+recensés par QUAL-04 en capacités livrées.
+
+Deux extensions substantielles du cycle de vie du compte restent explicitement à
+concevoir dans de futurs jalons dédiés :
+
+- un export fédéré unique réunissant identité, Passeport, voyages, Park Fit,
+  contributions et support, sans identifiants internes ;
+- un coordinateur global de suppression de compte couvrant identité, sessions et
+  tous les participants métier, avec ordre de purge, idempotence, reprise après
+  échec et règles de rétention validées.
+
+Le Passeport, les voyages et Park Fit conservent leurs exports dédiés, tandis que
+Partage et Alertes disposent déjà de participants de suppression. Cela ne suffit
+pas à présenter au membre une promesse d'export ou d'effacement global. La matrice
+[`QUAL-04`](product-growth-qual-04-privacy-export-deletion-matrix-2026-09-29.md)
+reste l'autorité sur cette limite.
+
+Les activités continues suivantes ne sont en revanche pas des fonctionnalités
+manquantes des tranches livrées :
 
 1. observer les cohortes réelles selon QUAL-10 et enregistrer honnêtement les
    succès, incompréhensions et abandons ;
