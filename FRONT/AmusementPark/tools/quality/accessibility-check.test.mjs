@@ -68,6 +68,16 @@ test('rejects empty or unreachable native labels', () => {
   );
 });
 
+test('combines concurrent native labels while validating conditional alternatives', () => {
+  const findings = analyseTemplate(`
+    <label for="save">Save</label>
+    <label for="save"></label>
+    <input id="save" type="button">
+  `);
+
+  assert.deepEqual(findings, []);
+});
+
 test('recognizes names rendered through Angular control-flow branches', () => {
   const findings = analyseTemplate(`
     <button type="button">
@@ -130,6 +140,17 @@ test('resolves static aria-labelledby references to accessible content', () => {
     findings.map((finding) => finding.rule),
     ['interactive-name', 'interactive-name', 'interactive-name']
   );
+});
+
+test('does not resolve id references or labels from dormant template declarations', () => {
+  const findings = analyseTemplate(`
+    <ng-template><span id="dormant-name">Save</span></ng-template>
+    <button type="button" aria-labelledby="dormant-name"><img alt=""></button>
+    <ng-template><label for="dormant-input">Save</label></ng-template>
+    <input id="dormant-input" type="button">
+  `);
+
+  assert.deepEqual(findings.map((finding) => finding.rule), ['interactive-name', 'interactive-name']);
 });
 
 test('recognizes names rendered through legacy ngIf branches', () => {
@@ -598,6 +619,24 @@ test('keeps distinct branch findings visible when identical controls move betwee
     locator: 'root/IfBlock:1/children:0/Element:0',
     message: 'missing name'
   }]);
+  const comparison = compareBaseline(current, baseline);
+
+  assert.equal(comparison.added.length, 1);
+  assert.equal(comparison.resolved.length, 1);
+});
+
+test('distinguishes repeated control-flow headers without depending on unrelated siblings', () => {
+  const baseline = fingerprintFindings(analyseTemplate(`
+    @if (ready) { <button type="button"></button> }
+    <p>Unrelated content</p>
+    @if (ready) { <button type="button" aria-label="Save"></button> }
+  `, 'sample.html'));
+  const current = fingerprintFindings(analyseTemplate(`
+    <div>Inserted unrelated sibling</div>
+    @if (ready) { <button type="button" aria-label="Save"></button> }
+    <p>Unrelated content</p>
+    @if (ready) { <button type="button"></button> }
+  `, 'sample.html'));
   const comparison = compareBaseline(current, baseline);
 
   assert.equal(comparison.added.length, 1);

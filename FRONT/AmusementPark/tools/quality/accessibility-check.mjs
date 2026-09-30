@@ -82,7 +82,11 @@ function outputNames(node) {
 }
 
 function elementName(node) {
-  const name = typeof node.name === 'string' ? node.name : node.tag;
+  const name = typeof node.name === 'string'
+    ? node.name
+    : typeof node.tag === 'string'
+      ? node.tag
+      : node.tagName;
   return typeof name === 'string' ? name.toLowerCase() : '';
 }
 
@@ -495,6 +499,12 @@ function reachabilityContextsAreCompatible(left, right) {
   return true;
 }
 
+function templateScopesAreCompatible(source, target, context) {
+  const sourceScope = context.templateScopeByNode.get(source) ?? null;
+  const targetScope = context.templateScopeByNode.get(target) ?? null;
+  return targetScope === null || targetScope === sourceScope;
+}
+
 function labelledByValueResolves(value, node, context, resolving) {
   if (typeof value !== 'string') {
     return false;
@@ -508,6 +518,7 @@ function labelledByValueResolves(value, node, context, resolving) {
         sourceReachability,
         context.reachabilityByNode.get(target) ?? new Map()
       )
+      && templateScopesAreCompatible(node, target, context)
     ));
     return targets.length > 0
       && targets.every((target) => hasAccessibleName(target, context, resolving));
@@ -564,9 +575,22 @@ function hasUsableNativeLabel(node, context, resolving) {
       sourceReachability,
       context.reachabilityByNode.get(label) ?? new Map()
     )
+    && templateScopesAreCompatible(node, label, context)
+  ));
+  const namedLabels = compatibleLabels.filter((label) => (
+    hasAccessibleName(label, context, resolving)
   ));
   return compatibleLabels.length > 0
-    && compatibleLabels.every((label) => hasAccessibleName(label, context, resolving));
+    && namedLabels.length > 0
+    && compatibleLabels.every((label) => (
+      namedLabels.includes(label)
+      || namedLabels.some((namedLabel) => (
+        reachabilityContextsAreCompatible(
+          context.reachabilityByNode.get(label) ?? new Map(),
+          context.reachabilityByNode.get(namedLabel) ?? new Map()
+        )
+      ))
+    ));
 }
 
 function hasAccessibleName(node, context, resolving = new Set()) {
@@ -1212,7 +1236,8 @@ function interactiveRoleCandidates(node) {
 function controlFlowScopeIdentity(node, context) {
   const reachability = context.reachabilityByNode.get(node) ?? new Map();
   return [...reachability].map(([owner, branch]) => {
-    const ownerHeader = owner.startSourceSpan?.toString?.()
+    const ownerHeader = context.controlFlowIdentityByOwner.get(owner)
+      ?? owner.startSourceSpan?.toString?.()
       ?? owner.expression?.source
       ?? owner.constructor?.name
       ?? 'control-flow';
@@ -1405,15 +1430,24 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
   const parsed = parseTemplate(template, source, { preserveWhitespaces: true });
   const findings = [];
   const context = {
+    controlFlowIdentityByOwner: new Map(),
     nodesById: new Map(),
     idsByNode: new Map(),
     labelsByTargetId: new Map(),
     parentByNode: new Map(),
+    templateScopeByNode: new Map(),
     templatesByReference: new Map(),
     reachabilityByNode: new Map()
   };
+  const controlFlowHeaderOccurrences = new Map();
 
-  function indexNodes(nodes, indexed = new Set(), reachability = new Map(), parent = null) {
+  function indexNodes(
+    nodes,
+    indexed = new Set(),
+    reachability = new Map(),
+    parent = null,
+    templateScope = null
+  ) {
     for (const node of nodes) {
       if (indexed.has(node)) {
         continue;
@@ -1421,8 +1455,19 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
 
       indexed.add(node);
       context.reachabilityByNode.set(node, reachability);
+      context.templateScopeByNode.set(node, templateScope);
       if (parent) {
         context.parentByNode.set(node, parent);
+      }
+
+      const nodeType = node.constructor?.name ?? '';
+      if (nodeType === 'IfBlock' || nodeType === 'SwitchBlock') {
+        const header = (node.startSourceSpan?.toString?.()
+          ?? node.expression?.source
+          ?? nodeType).replace(/\s+/g, ' ').trim();
+        const occurrence = (controlFlowHeaderOccurrences.get(header) ?? 0) + 1;
+        controlFlowHeaderOccurrences.set(header, occurrence);
+        context.controlFlowIdentityByOwner.set(node, `${header}#${occurrence}`);
       }
 
       const ids = new Set();
@@ -1502,7 +1547,10 @@ export function analyseTemplate(template, source = 'inline-template', lineOffset
           nestedReachability.set(scoped.owner, scoped.branch);
         }
 
-        indexNodes(scoped.collection, indexed, nestedReachability, node);
+        const nestedTemplateScope = nodeType === 'Template' && elementName(node) === 'ng-template'
+          ? node
+          : templateScope;
+        indexNodes(scoped.collection, indexed, nestedReachability, node, nestedTemplateScope);
       }
     }
   }

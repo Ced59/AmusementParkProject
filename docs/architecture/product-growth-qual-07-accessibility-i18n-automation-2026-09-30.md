@@ -38,7 +38,7 @@ La gate réutilise le compilateur et le validateur i18n existants. Elle vérifie
 
 ## Dette historique bornée
 
-Le premier inventaire conserve une baseline explicite de 23 constats
+Le premier inventaire conserve une baseline explicite de 28 constats
 d’accessibilité et 24 collisions i18n, soit trois clés historiques présentes dans
 les huit langues. Cette baseline n’autorise aucune nouvelle dette : une apparition
 fait échouer la CI. Une résolution fait également échouer la baseline jusqu’à sa

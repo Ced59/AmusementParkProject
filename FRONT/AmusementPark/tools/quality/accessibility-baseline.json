@@ -2,7 +2,7 @@
   "version": 3,
   "findings": [
     {
-      "fingerprint": "click-keyboard|src/app/components/admin/park-items/workbench/admin-park-item-quick-create-drawer.component.html|6f15d96e1e79|7ca4ec67b94d|1",
+      "fingerprint": "click-keyboard|src/app/components/admin/park-items/workbench/admin-park-item-quick-create-drawer.component.html|cab222af02aa|7ca4ec67b94d|1",
       "rule": "click-keyboard",
       "path": "src/app/components/admin/park-items/workbench/admin-park-item-quick-create-drawer.component.html",
       "line": 2,
@@ -10,6 +10,13 @@
     },
     {
       "fingerprint": "click-keyboard|src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html|9de2bd5a2aa6|1",
+      "rule": "click-keyboard",
+      "path": "src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html",
+      "line": 126,
+      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
+    },
+    {
+      "fingerprint": "click-keyboard|src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html|9de2bd5a2aa6|2",
       "rule": "click-keyboard",
       "path": "src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html",
       "line": 126,
@@ -37,6 +44,13 @@
       "message": "Non-native click targets must provide keyboard handling and interactive semantics."
     },
     {
+      "fingerprint": "click-keyboard|src/app/shared/ui/primitives/dialog.ts#inline-1|31fdb44ad3d2|2",
+      "rule": "click-keyboard",
+      "path": "src/app/shared/ui/primitives/dialog.ts#inline-1",
+      "line": 36,
+      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
+    },
+    {
       "fingerprint": "click-keyboard|src/app/shared/ui/primitives/panel.ts#inline-1|da37a45b22e0|1",
       "rule": "click-keyboard",
       "path": "src/app/shared/ui/primitives/panel.ts#inline-1",
@@ -58,28 +72,35 @@
       "message": "Non-native click targets must provide keyboard handling and interactive semantics."
     },
     {
-      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html|4f02ee1b50dc|5c819d831c6e|1",
+      "fingerprint": "click-keyboard|src/app/ui/media/photo-carousel/ui-photo-carousel.component.html|bcba1715ccba|2",
+      "rule": "click-keyboard",
+      "path": "src/app/ui/media/photo-carousel/ui-photo-carousel.component.html",
+      "line": 240,
+      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
+    },
+    {
+      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html|97501518b93c|5c819d831c6e|1",
       "rule": "interactive-name",
       "path": "src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html",
       "line": 178,
       "message": "Interactive elements must expose visible text, projected text or an ARIA name."
     },
     {
-      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html|4f02ee1b50dc|c47f5965024e|1",
+      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html|97501518b93c|c47f5965024e|1",
       "rule": "interactive-name",
       "path": "src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html",
       "line": 184,
       "message": "Interactive elements must expose visible text, projected text or an ARIA name."
     },
     {
-      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-photos-tab/admin-park-photos-tab.component.html|27a735f55e47|23f2db5d4e51|1",
+      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-photos-tab/admin-park-photos-tab.component.html|a32a2d8dd873|23f2db5d4e51|1",
       "rule": "interactive-name",
       "path": "src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-photos-tab/admin-park-photos-tab.component.html",
       "line": 218,
       "message": "Interactive elements must expose visible text, projected text or an ARIA name."
     },
     {
-      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-photos-tab/admin-park-photos-tab.component.html|27a735f55e47|659b46bb13e9|1",
+      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-photos-tab/admin-park-photos-tab.component.html|a32a2d8dd873|659b46bb13e9|1",
       "rule": "interactive-name",
       "path": "src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-photos-tab/admin-park-photos-tab.component.html",
       "line": 210,
@@ -121,14 +142,14 @@
       "message": "Interactive elements must expose visible text, projected text or an ARIA name."
     },
     {
-      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-item-edit/tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component.html|b7bb1fbd13b9|23f2db5d4e51|1",
+      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-item-edit/tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component.html|5d955ea6f585|23f2db5d4e51|1",
       "rule": "interactive-name",
       "path": "src/app/features/admin/parks/pages/admin-parks/admin-park-item-edit/tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component.html",
       "line": 278,
       "message": "Interactive elements must expose visible text, projected text or an ARIA name."
     },
     {
-      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-item-edit/tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component.html|b7bb1fbd13b9|659b46bb13e9|1",
+      "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-item-edit/tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component.html|5d955ea6f585|659b46bb13e9|1",
       "rule": "interactive-name",
       "path": "src/app/features/admin/parks/pages/admin-parks/admin-park-item-edit/tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component.html",
       "line": 272,
@@ -156,7 +177,21 @@
       "message": "Interactive elements must expose visible text, projected text or an ARIA name."
     },
     {
+      "fingerprint": "interactive-name|src/app/shared/ui/primitives/dialog.ts#inline-1|0328ad2dda56|2",
+      "rule": "interactive-name",
+      "path": "src/app/shared/ui/primitives/dialog.ts#inline-1",
+      "line": 40,
+      "message": "Interactive elements must expose visible text, projected text or an ARIA name."
+    },
+    {
       "fingerprint": "interactive-name|src/app/shared/ui/primitives/panel.ts#inline-1|7a8895eb824f|1",
+      "rule": "interactive-name",
+      "path": "src/app/shared/ui/primitives/panel.ts#inline-1",
+      "line": 38,
+      "message": "Interactive elements must expose visible text, projected text or an ARIA name."
+    },
+    {
+      "fingerprint": "interactive-name|src/app/shared/ui/primitives/panel.ts#inline-1|7a8895eb824f|2",
       "rule": "interactive-name",
       "path": "src/app/shared/ui/primitives/panel.ts#inline-1",
       "line": 38,
