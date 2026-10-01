@@ -1,6 +1,20 @@
 {
-  "version": "5.4.43",
+  "version": "5.4.44",
   "history": [
+    {
+      "version": "5.4.44",
+      "releasedAt": "2026-10-01",
+      "labels": {
+        "fr": "Dix parcs français supplémentaires disposent désormais de fiches publiques enrichies.",
+        "en": "Ten more French parks now have enriched public pages.",
+        "de": "Zehn weitere französische Parks verfügen jetzt über erweiterte öffentliche Seiten.",
+        "nl": "Nog tien Franse parken hebben nu uitgebreidere openbare pagina’s.",
+        "it": "Altri dieci parchi francesi dispongono ora di pagine pubbliche più complete.",
+        "es": "Otros diez parques franceses cuentan ahora con páginas públicas más completas.",
+        "pt": "Mais dez parques franceses dispõem agora de páginas públicas mais completas.",
+        "pl": "Kolejne dziesięć francuskich parków ma teraz bogatsze strony publiczne."
+      }
+    },
     {
       "version": "5.4.43",
       "releasedAt": "2026-10-01",
