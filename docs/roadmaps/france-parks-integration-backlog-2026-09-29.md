@@ -30,17 +30,16 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
-| Fiches déjà publiques à compléter | 13 | 2 |
+| Fiches déjà publiques à compléter | 13 | 1 |
 | Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **174** |
+| **Total** | **225** | **173** |
 
 ## 1. Fiches publiques à compléter
 
-- [ ] Parc Astérix — `efebc041-9288-40a6-9094-c701ac2af323` — score 95 — bloqueur `public-text.formulaic-content`
 - [ ] Parc Saint Paul — `6190c433-c7b4-4914-af6f-6c2646af08c5` — score 95 — bloqueur `public-text.forbidden-editorial-language`
 
 ## 2. Fiches privées existantes à intégrer
@@ -371,6 +370,10 @@ Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspon
 ### Entrées déjà `NotRelevant`
 
 Les 101 entrées françaises déjà classées `NotRelevant` ont été relues comme lot. Elles sont essentiellement des personnes physiques, familles ou exploitants forains et ne sont pas ajoutées au backlog. `L’île aux Enfants` reste la seule appellation de ce lot à réexaminer individuellement en cas de preuve d'un site fixe distinct.
+
+### Métadonnées globales hors portée du jeton parc
+
+- Les descriptions internes des logos MACK Rides `01ec66b67e574368a3a406115958485a` et ZIERER `ad46c05063a244a5a04f3a996c985152` partagent une formulation technique. L’audit individuel de Parc Astérix n’en fait pas un bloqueur de publication, mais la correction du logo global ZIERER a été refusée par `park-data-editor.image-scope-denied`. Cette dette partagée reste donc explicitement suivie sans contourner le périmètre du jeton parc.
 
 ## Ordre de traitement
 
