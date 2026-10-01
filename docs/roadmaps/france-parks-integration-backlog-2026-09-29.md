@@ -30,17 +30,16 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
-| Fiches déjà publiques à compléter | 13 | 8 |
+| Fiches déjà publiques à compléter | 13 | 7 |
 | Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **180** |
+| **Total** | **225** | **179** |
 
 ## 1. Fiches publiques à compléter
 
-- [ ] Dennlys Parc — `8023eb10-e761-4c67-8765-f079f3d66cd8` — score 95 — bloqueur `public-text.formulaic-content`
 - [ ] Festyland — `4fc0aa20-b0d7-47cc-a403-81b0d6e10f04` — score 95
 - [ ] Futuroscope — `6407a639-14a5-49d1-9a21-2336d33161f5` — score 95 — bloqueur `public-text.forbidden-editorial-language`
 - [ ] Île de loisirs d'Étampes — `3b9abd45-167e-4b02-aeec-8d2904e58f0a` — score 95 — bloqueur `public-text.forbidden-editorial-language`
