@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 72 |
+| Fiches privées existantes à intégrer | 82 | 71 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **162** |
+| **Total** | **225** | **161** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Family Park Saint-Martin-le-Beau — `2f436a73-8a36-4adc-9723-f14d569ed4f8` — identité et implantation actuelle à réconcilier
 - [ ] Fééryland — `711877e8-6309-4f30-8f4f-8cf24c99373d`
 - [ ] Fermy Land — `1345965d-9d8e-43e1-a1d3-13f0b5a5bdd4`
 - [ ] Fiesta Parc — `0baa84a5-ee92-4959-9f22-341cb97fe9a8`
@@ -352,7 +351,6 @@ Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspon
 ### Identités ou pertinence à confirmer
 
 - `1c83e45c-3335-4948-b15f-ce2805bc42e3` — Exposition Coloniale Internationale : événement historique temporaire, pas encore confirmé comme parc autonome pertinent.
-- `5f6e3757-f7d0-423b-9c77-34f64dd4aeab` — Family Park Monts : probable ancien emplacement ou doublon de la lignée Family Park.
 - `cd7332ea-45f6-4e07-a70e-44fd2d60b862` — Parc de l'Étang : identité trop générique à résoudre.
 - `5c4ec94e-c4d8-4d38-bee9-9a97e7609dbf` — Parc de Moine : parc municipal à distinguer d'un parc de loisirs structuré.
 - `d365dd74-a30f-4230-8f77-a89642d8cd2f` — Parc de Procé : parc urbain à distinguer d'un parc de loisirs structuré.
@@ -367,6 +365,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- Family Park — la fiche canonique a été réconciliée avec l'implantation actuelle de Sorigny, publiée avec ses 45 éléments, son calendrier 2026, ses tarifs 2026, son plan officiel, 46 médias propres, neuf jalons historiques et un article développé. Seul le point de restauration Ô ti’snack reste sans photographie attribuable avec certitude. L'ancien doublon artificiel `Family Park Monts` et ses deux parkItems ont été supprimés après consolidation ; le logo constructeur ZIERER partagé a été conservé.
 - Amigoland — la galerie officielle ne permet pas d’attribuer avec certitude une photographie distincte à Beach Party, Bomber Maxxx ou Gravity ; aucune image générique n’a donc été associée arbitrairement. Les tarifs unitaires des manèges ne sont pas publiés en ligne : la fiche indique uniquement les faits vérifiables, à savoir l’entrée et le parking gratuits puis le paiement séparé de chaque attraction.
 - Bid’A Parc — le site et le plan officiels 2026 établissent l’inventaire courant, mais la galerie officielle ne fournit des photographies attribuables sans ambiguïté qu’au parc, au Carrousel, à Pomme, au Bateau Pirate, au Karting et au Palmito Resto. Les autres éléments restent donc sans image plutôt que de recevoir un visuel générique ou ancien. Aucun constructeur n’a été attribué sans source explicite. Le tarif du parking municipal varie selon les pages officielles consultées ; seule sa période payante est décrite, sans publier de grille contradictoire.
 
