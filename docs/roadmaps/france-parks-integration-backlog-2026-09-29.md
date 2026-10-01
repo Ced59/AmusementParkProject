@@ -30,17 +30,16 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
-| Fiches déjà publiques à compléter | 13 | 11 |
+| Fiches déjà publiques à compléter | 13 | 10 |
 | Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **183** |
+| **Total** | **225** | **182** |
 
 ## 1. Fiches publiques à compléter
 
-- [ ] Aqualud — `14fe1db9-98eb-4301-86ff-21583bf31edf` — score 95 — fermé définitivement
 - [ ] Aquascope — `1f6dc5db-d598-46f3-9ef9-6855e3e4fbeb` — score 95 — bloqueur `public-text.forbidden-editorial-language`
 - [ ] Cobac Parc — `a2db3ed7-8f17-47dd-808f-4340936c82b7` — score 95
 - [ ] Dennlys Parc — `8023eb10-e761-4c67-8765-f079f3d66cd8` — score 95 — bloqueur `public-text.formulaic-content`
