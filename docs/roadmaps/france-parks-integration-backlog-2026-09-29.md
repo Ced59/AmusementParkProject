@@ -30,17 +30,17 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
-| Fiches déjà publiques à compléter | 13 | 1 |
+| Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **173** |
+| **Total** | **225** | **172** |
 
 ## 1. Fiches publiques à compléter
 
-- [ ] Parc Saint Paul — `6190c433-c7b4-4914-af6f-6c2646af08c5` — score 95 — bloqueur `public-text.forbidden-editorial-language`
+Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
@@ -374,6 +374,10 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 ### Métadonnées globales hors portée du jeton parc
 
 - Les descriptions internes des logos MACK Rides `01ec66b67e574368a3a406115958485a` et ZIERER `ad46c05063a244a5a04f3a996c985152` partagent une formulation technique. L’audit individuel de Parc Astérix n’en fait pas un bloqueur de publication, mais la correction du logo global ZIERER a été refusée par `park-data-editor.image-scope-denied`. Cette dette partagée reste donc explicitement suivie sans contourner le périmètre du jeton parc.
+
+### Inventaire historique à confirmer
+
+- Parc Saint Paul — L’Aire de Jeux Dino est attestée par le plan officiel 2025, mais elle est absente de l’inventaire officiel courant 2026 alors qu’une source secondaire 2026 la maintient. Grandyzer est également attesté par le plan officiel 2025 et absent de l’inventaire 2026. Faute de preuve explicite de fermeture ou de date fiable après recherche, aucun statut ni jalon historique n’a été inventé ; ces deux cas restent à reprendre lorsqu’une source probante apparaîtra.
 
 ## Ordre de traitement
 
