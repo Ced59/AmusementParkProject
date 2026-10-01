@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 82 |
+| Fiches privées existantes à intégrer | 82 | 81 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **172** |
+| **Total** | **225** | **171** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,7 +44,6 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] Amigoland — `666740e4-c561-44b5-ac45-a4febd5b7f19`
 - [ ] Bid'A Parc — `bb1605f3-58ca-45cd-bbca-6fdc811bee4c`
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
 - [ ] Cap Découverte — `8a131482-e133-4535-aca2-21563c282f90`
@@ -374,6 +373,10 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 ### Métadonnées globales hors portée du jeton parc
 
 - Les descriptions internes des logos MACK Rides `01ec66b67e574368a3a406115958485a` et ZIERER `ad46c05063a244a5a04f3a996c985152` partagent une formulation technique. L’audit individuel de Parc Astérix n’en fait pas un bloqueur de publication, mais la correction du logo global ZIERER a été refusée par `park-data-editor.image-scope-denied`. Cette dette partagée reste donc explicitement suivie sans contourner le périmètre du jeton parc.
+
+### Lacunes éditoriales documentées
+
+- Amigoland — la galerie officielle ne permet pas d’attribuer avec certitude une photographie distincte à Beach Party, Bomber Maxxx ou Gravity ; aucune image générique n’a donc été associée arbitrairement. Les tarifs unitaires des manèges ne sont pas publiés en ligne : la fiche indique uniquement les faits vérifiables, à savoir l’entrée et le parking gratuits puis le paiement séparé de chaque attraction.
 
 ### Inventaire historique à confirmer
 
