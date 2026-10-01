@@ -30,17 +30,16 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
-| Fiches déjà publiques à compléter | 13 | 4 |
+| Fiches déjà publiques à compléter | 13 | 3 |
 | Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **176** |
+| **Total** | **225** | **175** |
 
 ## 1. Fiches publiques à compléter
 
-- [ ] La Mer de Sable — `01a421d6-35b8-4227-ae30-78bab25ca7e6` — score 95 — bloqueur `public-text.forbidden-editorial-language`
 - [ ] Magic Park Land — `a6123932-ff0b-41a8-9812-71ee96c4c67a` — score 95 — bloqueur `public-text.forbidden-editorial-language`
 - [ ] Parc Astérix — `efebc041-9288-40a6-9094-c701ac2af323` — score 95 — bloqueur `public-text.formulaic-content`
 - [ ] Parc Saint Paul — `6190c433-c7b4-4914-af6f-6c2646af08c5` — score 95 — bloqueur `public-text.forbidden-editorial-language`
