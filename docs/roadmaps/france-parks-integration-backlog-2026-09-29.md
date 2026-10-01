@@ -30,29 +30,17 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
-| Fiches déjà publiques à compléter | 13 | 13 |
+| Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **185** |
+| **Total** | **225** | **172** |
 
 ## 1. Fiches publiques à compléter
 
-- [ ] Loisiparc — `eb98bd7b-a068-41d5-b196-2aa301d0feed` — score 93 — bloqueur `public-text.forbidden-editorial-language`
-- [ ] Parc Bagatelle — `34fe89e3-3d5f-44db-9b98-8106e065929a` — score 94 — bloqueur `public-text.forbidden-editorial-language`
-- [ ] Aqualud — `14fe1db9-98eb-4301-86ff-21583bf31edf` — score 95 — fermé définitivement
-- [ ] Aquascope — `1f6dc5db-d598-46f3-9ef9-6855e3e4fbeb` — score 95 — bloqueur `public-text.forbidden-editorial-language`
-- [ ] Cobac Parc — `a2db3ed7-8f17-47dd-808f-4340936c82b7` — score 95
-- [ ] Dennlys Parc — `8023eb10-e761-4c67-8765-f079f3d66cd8` — score 95 — bloqueur `public-text.formulaic-content`
-- [ ] Festyland — `4fc0aa20-b0d7-47cc-a403-81b0d6e10f04` — score 95
-- [ ] Futuroscope — `6407a639-14a5-49d1-9a21-2336d33161f5` — score 95 — bloqueur `public-text.forbidden-editorial-language`
-- [ ] Île de loisirs d'Étampes — `3b9abd45-167e-4b02-aeec-8d2904e58f0a` — score 95 — bloqueur `public-text.forbidden-editorial-language`
-- [ ] La Mer de Sable — `01a421d6-35b8-4227-ae30-78bab25ca7e6` — score 95 — bloqueur `public-text.forbidden-editorial-language`
-- [ ] Magic Park Land — `a6123932-ff0b-41a8-9812-71ee96c4c67a` — score 95 — bloqueur `public-text.forbidden-editorial-language`
-- [ ] Parc Astérix — `efebc041-9288-40a6-9094-c701ac2af323` — score 95 — bloqueur `public-text.formulaic-content`
-- [ ] Parc Saint Paul — `6190c433-c7b4-4914-af6f-6c2646af08c5` — score 95 — bloqueur `public-text.forbidden-editorial-language`
+Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
@@ -382,6 +370,14 @@ Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspon
 ### Entrées déjà `NotRelevant`
 
 Les 101 entrées françaises déjà classées `NotRelevant` ont été relues comme lot. Elles sont essentiellement des personnes physiques, familles ou exploitants forains et ne sont pas ajoutées au backlog. `L’île aux Enfants` reste la seule appellation de ce lot à réexaminer individuellement en cas de preuve d'un site fixe distinct.
+
+### Métadonnées globales hors portée du jeton parc
+
+- Les descriptions internes des logos MACK Rides `01ec66b67e574368a3a406115958485a` et ZIERER `ad46c05063a244a5a04f3a996c985152` partagent une formulation technique. L’audit individuel de Parc Astérix n’en fait pas un bloqueur de publication, mais la correction du logo global ZIERER a été refusée par `park-data-editor.image-scope-denied`. Cette dette partagée reste donc explicitement suivie sans contourner le périmètre du jeton parc.
+
+### Inventaire historique à confirmer
+
+- Parc Saint Paul — L’Aire de Jeux Dino est attestée par le plan officiel 2025, mais elle est absente de l’inventaire officiel courant 2026 alors qu’une source secondaire 2026 la maintient. Grandyzer est également attesté par le plan officiel 2025 et absent de l’inventaire 2026. Faute de preuve explicite de fermeture ou de date fiable après recherche, aucun statut ni jalon historique n’a été inventé ; ces deux cas restent à reprendre lorsqu’une source probante apparaîtra.
 
 ## Ordre de traitement
 
