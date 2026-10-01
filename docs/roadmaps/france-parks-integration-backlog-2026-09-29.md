@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 75 |
+| Fiches privées existantes à intégrer | 82 | 74 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **165** |
+| **Total** | **225** | **164** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Dinosaures Parc — `674fd8e9-0510-4623-ba65-9c541d2a17ab`
 - [ ] Diverty Parc — `148ad11d-7b3f-49a9-b055-a57065798c6a`
 - [ ] Fabrikus World — `baf98de1-33de-44b5-8a03-c5c1b76d24ee`
 - [ ] Family Park Saint-Martin-le-Beau — `2f436a73-8a36-4adc-9723-f14d569ed4f8` — identité et implantation actuelle à réconcilier
