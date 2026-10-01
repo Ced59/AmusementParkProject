@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 82 |
+| Fiches privées existantes à intégrer | 82 | 72 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **172** |
+| **Total** | **225** | **162** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,17 +44,7 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] Amigoland — `666740e4-c561-44b5-ac45-a4febd5b7f19`
-- [ ] Bid'A Parc — `bb1605f3-58ca-45cd-bbca-6fdc811bee4c`
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Cap Découverte — `8a131482-e133-4535-aca2-21563c282f90`
-- [ ] Cigoland — `4f246cec-7a5a-4eb7-a98c-e32f9d5fa5b8`
-- [ ] Coco Park — `9c031826-5afc-4035-ba58-f1ac3e737f0e`
-- [ ] Corbi Park — `a11082bc-a3a9-4ada-a235-2f76b0de130d`
-- [ ] Didi'Land — `4653aba1-869f-42d3-9254-57417d71d72b`
-- [ ] Dinosaures Parc — `674fd8e9-0510-4623-ba65-9c541d2a17ab`
-- [ ] Diverty Parc — `148ad11d-7b3f-49a9-b055-a57065798c6a`
-- [ ] Fabrikus World — `baf98de1-33de-44b5-8a03-c5c1b76d24ee`
 - [ ] Family Park Saint-Martin-le-Beau — `2f436a73-8a36-4adc-9723-f14d569ed4f8` — identité et implantation actuelle à réconcilier
 - [ ] Fééryland — `711877e8-6309-4f30-8f4f-8cf24c99373d`
 - [ ] Fermy Land — `1345965d-9d8e-43e1-a1d3-13f0b5a5bdd4`
@@ -374,6 +364,11 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 ### Métadonnées globales hors portée du jeton parc
 
 - Les descriptions internes des logos MACK Rides `01ec66b67e574368a3a406115958485a` et ZIERER `ad46c05063a244a5a04f3a996c985152` partagent une formulation technique. L’audit individuel de Parc Astérix n’en fait pas un bloqueur de publication, mais la correction du logo global ZIERER a été refusée par `park-data-editor.image-scope-denied`. Cette dette partagée reste donc explicitement suivie sans contourner le périmètre du jeton parc.
+
+### Lacunes éditoriales documentées
+
+- Amigoland — la galerie officielle ne permet pas d’attribuer avec certitude une photographie distincte à Beach Party, Bomber Maxxx ou Gravity ; aucune image générique n’a donc été associée arbitrairement. Les tarifs unitaires des manèges ne sont pas publiés en ligne : la fiche indique uniquement les faits vérifiables, à savoir l’entrée et le parking gratuits puis le paiement séparé de chaque attraction.
+- Bid’A Parc — le site et le plan officiels 2026 établissent l’inventaire courant, mais la galerie officielle ne fournit des photographies attribuables sans ambiguïté qu’au parc, au Carrousel, à Pomme, au Bateau Pirate, au Karting et au Palmito Resto. Les autres éléments restent donc sans image plutôt que de recevoir un visuel générique ou ancien. Aucun constructeur n’a été attribué sans source explicite. Le tarif du parking municipal varie selon les pages officielles consultées ; seule sa période payante est décrite, sans publier de grille contradictoire.
 
 ### Inventaire historique à confirmer
 
