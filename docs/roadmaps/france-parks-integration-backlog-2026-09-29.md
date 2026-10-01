@@ -30,17 +30,16 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
-| Fiches déjà publiques à compléter | 13 | 6 |
+| Fiches déjà publiques à compléter | 13 | 5 |
 | Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **178** |
+| **Total** | **225** | **177** |
 
 ## 1. Fiches publiques à compléter
 
-- [ ] Futuroscope — `6407a639-14a5-49d1-9a21-2336d33161f5` — score 95 — bloqueur `public-text.forbidden-editorial-language`
 - [ ] Île de loisirs d'Étampes — `3b9abd45-167e-4b02-aeec-8d2904e58f0a` — score 95 — bloqueur `public-text.forbidden-editorial-language`
 - [ ] La Mer de Sable — `01a421d6-35b8-4227-ae30-78bab25ca7e6` — score 95 — bloqueur `public-text.forbidden-editorial-language`
 - [ ] Magic Park Land — `a6123932-ff0b-41a8-9812-71ee96c4c67a` — score 95 — bloqueur `public-text.forbidden-editorial-language`
