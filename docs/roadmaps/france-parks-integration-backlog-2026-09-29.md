@@ -30,17 +30,16 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
-| Fiches déjà publiques à compléter | 13 | 9 |
+| Fiches déjà publiques à compléter | 13 | 8 |
 | Fiches privées existantes à intégrer | 82 | 82 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **181** |
+| **Total** | **225** | **180** |
 
 ## 1. Fiches publiques à compléter
 
-- [ ] Cobac Parc — `a2db3ed7-8f17-47dd-808f-4340936c82b7` — score 95
 - [ ] Dennlys Parc — `8023eb10-e761-4c67-8765-f079f3d66cd8` — score 95 — bloqueur `public-text.formulaic-content`
 - [ ] Festyland — `4fc0aa20-b0d7-47cc-a403-81b0d6e10f04` — score 95
 - [ ] Futuroscope — `6407a639-14a5-49d1-9a21-2336d33161f5` — score 95 — bloqueur `public-text.forbidden-editorial-language`
