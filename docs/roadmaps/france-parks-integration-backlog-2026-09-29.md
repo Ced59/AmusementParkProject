@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 78 |
+| Fiches privées existantes à intégrer | 82 | 77 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **168** |
+| **Total** | **225** | **167** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Coco Park — `9c031826-5afc-4035-ba58-f1ac3e737f0e`
 - [ ] Corbi Park — `a11082bc-a3a9-4ada-a235-2f76b0de130d`
 - [ ] Didi'Land — `4653aba1-869f-42d3-9254-57417d71d72b`
 - [ ] Dinosaures Parc — `674fd8e9-0510-4623-ba65-9c541d2a17ab`
