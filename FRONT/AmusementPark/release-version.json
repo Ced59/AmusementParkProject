@@ -1,6 +1,20 @@
 {
-  "version": "5.4.41",
+  "version": "5.4.42",
   "history": [
+    {
+      "version": "5.4.42",
+      "releasedAt": "2026-10-01",
+      "labels": {
+        "fr": "Toutes les attractions autonomes françaises prévues disposent désormais de leur fiche dédiée.",
+        "en": "All planned French standalone attractions now have dedicated pages.",
+        "de": "Alle vorgesehenen eigenständigen Attraktionen in Frankreich haben jetzt eigene Seiten.",
+        "nl": "Alle geplande losstaande attracties in Frankrijk hebben nu een eigen pagina.",
+        "it": "Tutte le attrazioni autonome francesi previste hanno ora una pagina dedicata.",
+        "es": "Todas las atracciones autónomas francesas previstas cuentan ya con una página dedicada.",
+        "pt": "Todas as atrações autónomas francesas previstas têm agora uma página dedicada.",
+        "pl": "Wszystkie zaplanowane samodzielne atrakcje we Francji mają już własne strony."
+      }
+    },
     {
       "version": "5.4.41",
       "releasedAt": "2026-09-30",
