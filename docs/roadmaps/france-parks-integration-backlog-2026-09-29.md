@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 69 |
+| Fiches privées existantes à intégrer | 82 | 68 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **159** |
+| **Total** | **225** | **158** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Fiesta Parc — `0baa84a5-ee92-4959-9f22-341cb97fe9a8`
 - [ ] Fraispertuis City — `ea22716e-64d2-44ef-b068-6b26ba5cf9d7`
 - [ ] Funny Land — `27798d4d-9e30-42c1-864d-cff0520d6511`
 - [ ] Grinyland — `d5d59442-1fb4-4aca-a084-98029a6a9a58`
@@ -363,6 +362,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- Fiesta Parc — la fiche publiée atteint 100 avec 12 éléments actuels, 13 médias officiels, le calendrier et les tarifs 2026, cinq jalons historiques et un article développé. Chacune des dix attractions actuelles possède une photographie attribuable ; la Pizzeria Maisons et l'aire de pique-nique restent sans vue individuelle suffisamment explicite. Aucun plan public exploitable n'a été trouvé sur le site officiel, et l'ancien coaster retiré en 2019 n'a pas reçu l'image de Bassotto. La météo est bien accessible mais ne contenait momentanément aucune prévision lors du contrôle ; conformément à la règle du lot, ce contenu alimenté par batch n'a pas conditionné le retrait.
 - Fermyland — la fiche publiée réunit 21 éléments actuels, 21 médias officiels, les horaires et tarifs 2026, cinq jalons historiques, un article développé et le constructeur LMQ Rides sourcé pour l’ancienne Chenille. Dix-huit des 21 éléments actuels possèdent une image attribuable ; Les Rapidos et le snack restent sans photographie individuelle suffisamment explicite, et l’ancienne Chenille fermée n’a pas reçu l’image de sa remplaçante. Un plan 2024 indexé par un office de tourisme a été retrouvé, mais son original et sa dérivée renvoient désormais 404 ; aucune carte dégradée ou non téléchargeable n’a été importée.
 - Fééryland — les 30 attractions de l’inventaire officiel 2026 disposent chacune d’une photographie officielle, mais le site ne fournit pas de série de trois vues distinctes par attraction. Une seule vue générale actuelle et clairement attribuable au parc a été retenue ; les neuf services visibles restent sans photographie individuelle. Le logo déjà publié a été conservé sans inventer la provenance manquante de son fichier historique.
 - Family Park — la fiche canonique a été réconciliée avec l'implantation actuelle de Sorigny, publiée avec ses 45 éléments, son calendrier 2026, ses tarifs 2026, son plan officiel, 46 médias propres, neuf jalons historiques et un article développé. Seul le point de restauration Ô ti’snack reste sans photographie attribuable avec certitude. L'ancien doublon artificiel `Family Park Monts` et ses deux parkItems ont été supprimés après consolidation ; le logo constructeur ZIERER partagé a été conservé.
