@@ -69,7 +69,7 @@ describe('ParkDetailPageComponent deferred visit form', () => {
   it('opens the form for the current park and preserves an unfinished draft when reopened', async () => {
     const fixture = TestBed.createComponent(ParkDetailPageComponent);
     fixture.detectChanges();
-    fixture.componentInstance.openVisitDialog();
+    fixture.debugElement.query(By.css('app-park-detail-view')).triggerEventHandler('visitCreateClicked', undefined);
     fixture.detectChanges();
     const blocks = await fixture.getDeferBlocks();
     await blocks[0].render(DeferBlockState.Complete);
@@ -84,7 +84,7 @@ describe('ParkDetailPageComponent deferred visit form', () => {
     dialog.visibleChange.emit(false);
     fixture.detectChanges();
     expect(dialog.visible).toBe(false);
-    fixture.componentInstance.openVisitDialog();
+    fixture.debugElement.query(By.css('app-park-detail-view')).triggerEventHandler('visitCreateClicked', undefined);
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.directive(PassportVisitQuickCreateComponent)).componentInstance).toBe(dialog);
     expect(dialog.visible).toBe(true);
@@ -95,7 +95,7 @@ describe('ParkDetailPageComponent deferred visit form', () => {
     park.set(null);
     const fixture = TestBed.createComponent(ParkDetailPageComponent);
     fixture.detectChanges();
-    fixture.componentInstance.openVisitDialog();
+    fixture.debugElement.query(By.css('app-park-detail-view')).triggerEventHandler('visitCreateClicked', undefined);
     fixture.detectChanges();
     expect(await fixture.getDeferBlocks()).toHaveLength(0);
     expect(fixture.debugElement.query(By.directive(PassportVisitQuickCreateComponent))).toBeNull();
