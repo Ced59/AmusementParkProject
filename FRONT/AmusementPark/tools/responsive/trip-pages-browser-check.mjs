@@ -1,7 +1,7 @@
 import { spawn, spawnSync } from 'node:child_process';
 import { once } from 'node:events';
 import { existsSync } from 'node:fs';
-import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:net';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -9,12 +9,14 @@ import { pathToFileURL } from 'node:url';
 
 import { compile } from 'sass';
 
-const viewportWidths = [320, 360, 390, 768, 1280];
+const viewportWidths = [320, 360, 390, 768, 1024, 1280, 1680];
 const projectRoot = process.cwd();
 const componentStyles = [
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
+  'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
   'src/app/features/public/parks/ui/park-location-section.component.scss',
+  'src/app/features/public/parks/ui/park-detail-view.component.scss',
   'src/app/features/public/ratings/ui/rating-stars.component.scss',
   'src/app/ui/layouts/cookie-consent-banner/cookie-consent-banner.component.scss',
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
@@ -33,7 +35,12 @@ const componentStyles = [
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
   .join('\n')
-  .replaceAll(':host', '.responsive-fixture-host');
+  .replaceAll(':host', '.responsive-fixture-host')
+  .replaceAll('::ng-deep', '');
+
+const imageLayoutSource = await readFile(resolve(projectRoot, 'src/app/features/public/parks/models/park-detail-image-layout.ts'), 'utf8');
+const heroImageSizes = imageLayoutSource.match(/PARK_DETAIL_HERO_IMAGE_SIZES: string = '([^']+)'/)[1];
+const mainPhotoSizes = imageLayoutSource.match(/PARK_DETAIL_MAIN_PHOTO_SIZES: string = '([^']+)'/)[1];
 
 const chromeCandidates = [
   process.env.CHROME_PATH,
@@ -338,6 +345,22 @@ const fixtureMarkup = `
   <section class="surface" data-check-bound>
     <div class="park-location-card__map-placeholder" data-check-bound aria-hidden="true"></div>
   </section>
+  <div class="app-public-layout" data-check-bound>
+    <main class="app-layout-main app-public-layout__main">
+      <section class="park-detail">
+        <section class="park-banner"><div class="park-banner__photo" data-hero-slot></div></section>
+        <div class="park-detail__body">
+          <main class="park-main">
+            <section class="park-main-photo" data-check-bound>
+              <a class="park-main-photo__link" data-photo-state="unloaded" data-check-bound><img class="park-main-photo__img" alt="Photo en attente"></a>
+              <a class="park-main-photo__link" data-photo-state="loaded" data-check-bound><img class="park-main-photo__img" width="1280" height="960" alt="Photo avec dimensions intrinsèques"></a>
+            </section>
+          </main>
+          <aside class="park-sidebar"></aside>
+        </div>
+      </section>
+    </main>
+  </div>
   <section class="app-cookie-consent" data-check-bound>
     <div class="app-cookie-consent__inner" data-check-bound>
       <div class="app-cookie-consent__icon" aria-hidden="true">i</div>
@@ -397,6 +420,31 @@ const evaluationScript = `
       if (placeholder.getBoundingClientRect().height !== 240) {
         violations.push({ selector: placeholder.className, reason: 'unreserved-map-space' });
       }
+    }
+    const unloadedPhoto = document.querySelector('[data-photo-state="unloaded"]').getBoundingClientRect();
+    const loadedPhoto = document.querySelector('[data-photo-state="loaded"]').getBoundingClientRect();
+    if (unloadedPhoto.height !== loadedPhoto.height || unloadedPhoto.height < 208 || unloadedPhoto.height > 352) {
+      violations.push({ reason: 'unstable-park-photo-height', unloaded: unloadedPhoto.height, loaded: loadedPhoto.height });
+    }
+    const advertisedWidth = (sizes) => {
+      for (const clause of sizes.split(',')) {
+        const value = clause.trim();
+        const conditional = value.match(/^\\((max-width: [^)]+)\\)\\s+(.+)$/);
+        if (conditional && !matchMedia('(' + conditional[1] + ')').matches) continue;
+        const probe = document.createElement('span');
+        probe.style.cssText = 'display:block;position:fixed;visibility:hidden;width:' + (conditional ? conditional[2] : value);
+        document.body.append(probe);
+        const width = probe.getBoundingClientRect().width;
+        probe.remove();
+        return width;
+      }
+      return 0;
+    };
+    const actualHeroWidth = document.querySelector('[data-hero-slot]').getBoundingClientRect().width;
+    const declaredHeroWidth = advertisedWidth(${JSON.stringify(heroImageSizes)});
+    const declaredPhotoWidth = advertisedWidth(${JSON.stringify(mainPhotoSizes)});
+    if (Math.abs(actualHeroWidth - declaredHeroWidth) > 2 || Math.abs(unloadedPhoto.width - declaredPhotoWidth) > 2) {
+      violations.push({ reason: 'inaccurate-park-image-size', actualHeroWidth, declaredHeroWidth, actualPhotoWidth: unloadedPhoto.width, declaredPhotoWidth });
     }
     if (viewportRight <= 576) {
       for (const root of document.querySelectorAll('[data-responsive-root]')) {

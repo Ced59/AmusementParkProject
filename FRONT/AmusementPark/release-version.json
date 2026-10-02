@@ -1,6 +1,20 @@
 {
-  "version": "5.4.54",
+  "version": "5.4.55",
   "history": [
+    {
+      "version": "5.4.55",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Photos des parcs plus légères et affichage plus stable",
+        "en": "Lighter park photos and more stable pages",
+        "de": "Kleinere Parkfotos und stabilere Seiten",
+        "nl": "Lichtere parkfoto’s en stabielere pagina’s",
+        "it": "Foto dei parchi più leggere e pagine più stabili",
+        "es": "Fotos de parques más ligeras y páginas más estables",
+        "pt": "Fotos dos parques mais leves e páginas mais estáveis",
+        "pl": "Lżejsze zdjęcia parków i stabilniejsze strony"
+      }
+    },
     {
       "version": "5.4.54",
       "releasedAt": "2026-10-02",

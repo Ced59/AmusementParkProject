@@ -30,6 +30,7 @@ import { UserCollectionActionsComponent } from '@features/collections/ui/user-co
 import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-subscription-action.component';
 import { PublicLiveViewState } from '@features/public/live/models/public-live-view-state.model';
 import { PublicLivePanelComponent } from '@features/public/live/ui/public-live-panel.component';
+import { PARK_DETAIL_HERO_IMAGE_SIZES, PARK_DETAIL_HERO_IMAGE_WIDTH, PARK_DETAIL_MAIN_PHOTO_SIZES } from '../models/park-detail-image-layout';
 
 @Component({
   selector: 'app-park-detail-view',
@@ -75,8 +76,9 @@ export class ParkDetailViewComponent {
   @Input() nearbyState: ScreenState<unknown, string> | null = null;
   @Input() currentLang: string = 'en';
   @Input() heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
-  @Input() heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
-  @Input() heroImageSrcWidth: number | null = 960;
+  @Input() heroImageSizes: string = PARK_DETAIL_HERO_IMAGE_SIZES;
+  @Input() heroImageSrcWidth: number | null = PARK_DETAIL_HERO_IMAGE_WIDTH;
+  protected readonly mainPhotoSizes: string = PARK_DETAIL_MAIN_PHOTO_SIZES;
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() exploreClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() visitCreateClicked: EventEmitter<void> = new EventEmitter<void>();
