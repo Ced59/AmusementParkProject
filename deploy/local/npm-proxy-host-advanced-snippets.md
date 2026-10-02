@@ -17,6 +17,13 @@ Websockets Support: enabled
 Avec ce snippet Advanced, afin que les imports de plans officiels acceptent réellement les fichiers jusqu'à 25 Mio avec leur enveloppe multipart :
 
 ```nginx
+gzip on;
+gzip_vary on;
+gzip_min_length 1024;
+gzip_comp_level 4;
+gzip_proxied any;
+gzip_types text/css application/javascript text/javascript image/svg+xml application/xml text/xml;
+
 client_max_body_size 1m;
 
 location = /api/park-data-editor/official-map-files {

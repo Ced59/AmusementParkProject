@@ -1,6 +1,7 @@
 interface GoogleCredentialResponse {
   credential: string;
   select_by: string;
+  state?: string;
 }
 
 interface GoogleIdConfiguration {
@@ -12,6 +13,7 @@ interface GoogleIdConfiguration {
 }
 
 interface GoogleRenderedButtonOptions {
+  state?: string;
   type?: 'standard' | 'icon';
   theme?: 'outline' | 'filled_blue' | 'filled_black';
   size?: 'large' | 'medium' | 'small';

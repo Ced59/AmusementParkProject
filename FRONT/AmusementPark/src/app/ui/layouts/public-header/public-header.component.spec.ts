@@ -2,7 +2,7 @@ import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventEmitter, NO_ERRORS_SCHEMA, Signal, WritableSignal, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { of } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 
 import {
   COMMON_TEST_IMPORTS,
@@ -30,6 +30,7 @@ describe('PublicHeaderComponent', () => {
     currentUser: WritableSignal<UserDto | null>;
   };
   let modalService: MockedObject<ModalService>;
+  let loginModalStatus: BehaviorSubject<boolean>;
 
   beforeEach(async () => {
     const imagesApiService: MockedObject<ImagesApiService> = {
@@ -63,7 +64,10 @@ describe('PublicHeaderComponent', () => {
       getModalStatus: vi.fn().mockName('ModalService.getModalStatus'),
       openModal: vi.fn().mockName('ModalService.openModal'),
     } as unknown as MockedObject<ModalService>;
-    modalService.getModalStatus.mockReturnValue(of(false));
+    loginModalStatus = new BehaviorSubject<boolean>(false);
+    modalService.getModalStatus.mockImplementation((modalName) =>
+      modalName === 'loginModal' ? loginModalStatus.asObservable() : of(false),
+    );
 
     const sharedService: MockedObject<SharedService> = {
       getLoginStatusListener: vi
@@ -198,6 +202,23 @@ describe('PublicHeaderComponent', () => {
     expect(modalService.openModal).toHaveBeenCalledTimes(1);
 
     expect(modalService.openModal).toHaveBeenCalledWith('loginModal');
+  });
+
+  it('creates authentication content only while the login dialog is open', () => {
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    expect(host.querySelector('app-auth-modal')).toBeNull();
+
+    loginModalStatus.next(true);
+    fixture.detectChanges();
+    expect(host.querySelector('app-auth-modal')).not.toBeNull();
+
+    loginModalStatus.next(false);
+    fixture.detectChanges();
+    expect(host.querySelector('app-auth-modal')).toBeNull();
+
+    loginModalStatus.next(true);
+    fixture.detectChanges();
+    expect(host.querySelectorAll('app-auth-modal')).toHaveLength(1);
   });
 
   it('places the visitor measurement toggle before login and shows the active unit', () => {
