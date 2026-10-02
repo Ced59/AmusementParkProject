@@ -69,7 +69,7 @@ test('SSR critical CSS retains both palettes before the browser selects its them
   const critical = await new Beasties({ logLevel: 'silent' }).process(
     `<html><head><style>${css}</style></head><body class="dark-mode"><app-root></app-root></body></html>`
   );
-  assert.match(critical, /:root:not\(\.dark-mode\)/);
+  assert.match(critical, /body:not\(\.dark-mode\)/);
   assert.match(critical, /--bg:\s*#fff9f0/);
   assert.match(critical, /body\.dark-mode/);
   assert.match(critical, /--bg:\s*#0f0b06/);
