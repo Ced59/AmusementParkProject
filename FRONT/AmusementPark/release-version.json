@@ -1,6 +1,20 @@
 {
-  "version": "5.4.53",
+  "version": "5.4.54",
   "history": [
+    {
+      "version": "5.4.54",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Chargement plus fluide des fiches parcs",
+        "en": "Smoother park page loading",
+        "de": "Flüssigeres Laden der Parkseiten",
+        "nl": "Vlotter laden van parkpagina’s",
+        "it": "Caricamento più fluido delle pagine dei parchi",
+        "es": "Carga más fluida de las páginas de parques",
+        "pt": "Carregamento mais fluido das páginas dos parques",
+        "pl": "Płynniejsze ładowanie stron parków"
+      }
+    },
     {
       "version": "5.4.53",
       "releasedAt": "2026-10-02",

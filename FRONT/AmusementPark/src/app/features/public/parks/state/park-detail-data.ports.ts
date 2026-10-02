@@ -9,11 +9,9 @@ import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
-import { PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
-import { HistoryApiService } from '@data-access/history/history-api.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { VideosApiService } from '@data-access/videos/videos-api.service';
@@ -42,10 +40,6 @@ export interface ParkDetailImagesPort {
   getParkItemImagesByPark(parkId: string, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<PagedResult<ParkItemImageDto>>;
 }
 
-export interface ParkDetailHistoryPort {
-  getPublicParkTimeline(parkId: string, options?: AnonymousHttpOptions, page?: number, pageSize?: number): Observable<PublicParkHistoricalTimeline>;
-}
-
 export const PARK_DETAIL_PARKS_PORT = new InjectionToken<ParkDetailParksPort>('PARK_DETAIL_PARKS_PORT', {
   providedIn: 'root',
   factory: () => inject(ParksApiService)
@@ -59,9 +53,4 @@ export const PARK_DETAIL_VIDEOS_PORT = new InjectionToken<ParkDetailVideosPort>(
 export const PARK_DETAIL_IMAGES_PORT = new InjectionToken<ParkDetailImagesPort>('PARK_DETAIL_IMAGES_PORT', {
   providedIn: 'root',
   factory: () => inject(ImagesApiService)
-});
-
-export const PARK_DETAIL_HISTORY_PORT = new InjectionToken<ParkDetailHistoryPort>('PARK_DETAIL_HISTORY_PORT', {
-  providedIn: 'root',
-  factory: () => inject(HistoryApiService)
 });

@@ -21,5 +21,7 @@ public sealed class ParkDetailSummaryResult
 
     public bool HasCurrentPricing { get; init; }
 
+    public bool HasPublicHistory { get; set; }
+
     public ParkDetailSummaryStatsResult Stats { get; init; } = new ParkDetailSummaryStatsResult();
 }

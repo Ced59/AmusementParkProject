@@ -13,7 +13,6 @@ import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRang
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
-import { PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
@@ -43,11 +42,9 @@ import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
 import {
-  PARK_DETAIL_HISTORY_PORT,
   PARK_DETAIL_PARKS_PORT,
   PARK_DETAIL_VIDEOS_PORT,
   PARK_DETAIL_IMAGES_PORT,
-  ParkDetailHistoryPort,
   ParkDetailImagesPort,
   ParkDetailParksPort,
   ParkDetailVideosPort
@@ -128,7 +125,6 @@ export class ParkDetailStateFacade {
     @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
     @Inject(PARK_DETAIL_VIDEOS_PORT) private readonly videosApiService: ParkDetailVideosPort,
     @Inject(PARK_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkDetailImagesPort,
-    @Inject(PARK_DETAIL_HISTORY_PORT) private readonly historyApiService: ParkDetailHistoryPort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly textTruncator: NaturalTextTruncatorService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
@@ -184,7 +180,7 @@ export class ParkDetailStateFacade {
         this.loadOpeningHours(summary.park);
         this.loadVideoAvailability(summary.park);
         this.loadImageAvailability(summary, loadSequence);
-        this.loadHistoryAvailability(summary.park);
+        this.hasHistorySignal.set(summary.hasPublicHistory === true);
       },
       error: (error: unknown) => {
         if (loadSequence !== this.parkLoadSequence) {
@@ -509,24 +505,6 @@ export class ParkDetailStateFacade {
         }
 
         this.hasImagesSignal.set(this.hasKnownImage(summary));
-      }
-    });
-  }
-
-  private loadHistoryAvailability(park: Park): void {
-    const parkId: string | null = park.id?.trim() ?? null;
-
-    if (!parkId) {
-      this.hasHistorySignal.set(false);
-      return;
-    }
-
-    this.historyApiService.getPublicParkTimeline(parkId, anonymousHttpOptions(), 1, 1).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (timeline: PublicParkHistoricalTimeline) => {
-        this.hasHistorySignal.set(timeline.pagination.totalItems > 0);
-      },
-      error: () => {
-        this.hasHistorySignal.set(false);
       }
     });
   }

@@ -14,6 +14,22 @@ namespace AmusementPark.WebAPI.Tests.Mappers;
 public sealed class ParksHttpMappersTests
 {
     [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void ToDetailSummaryHttp_ShouldPreservePublicHistoryAvailability(bool available)
+    {
+        ParkDetailSummaryResult result = new ParkDetailSummaryResult
+        {
+            Park = new Park { Id = "park-1", Name = "Example Park", IsVisible = true },
+            HasPublicHistory = available
+        };
+
+        ParkDetailSummaryDto dto = result.ToDetailSummaryHttp();
+
+        Assert.Equal(available, dto.HasPublicHistory);
+    }
+
+    [Theory]
     [InlineData(ParkStatus.Operating, ParkStatusDto.Operating)]
     [InlineData(ParkStatus.ClosedDefinitively, ParkStatusDto.ClosedDefinitively)]
     [InlineData(ParkStatus.Planned, ParkStatusDto.Planned)]
