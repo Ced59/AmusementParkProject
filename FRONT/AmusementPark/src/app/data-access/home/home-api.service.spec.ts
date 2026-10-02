@@ -54,4 +54,11 @@ describe('HomeApiService', () => {
     parksRequest.flush([]);
     articlesRequest.flush([]);
   });
+
+  it('allows the mapped home view to replace the raw HTTP transfer cache', () => {
+    service.getFeaturedParks(['park-1'], 3, { transferCache: false }).subscribe();
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/home-featured?limit=3&excludeIds=park-1`);
+    expect(request.request.transferCache).toBe(false);
+    request.flush([]);
+  });
 });

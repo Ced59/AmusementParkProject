@@ -72,6 +72,13 @@ describe('ParksApiService', () => {
     expect(result.length).toBe(1);
   });
 
+  it('allows the mapped hero view to replace the raw HTTP transfer cache', () => {
+    service.getRandomVisibleParks(4, { transferCache: false }).subscribe();
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/random-visible?limit=4`);
+    expect(request.request.transferCache).toBe(false);
+    request.flush([]);
+  });
+
   it('loads an official map file as a non-transfer-cached blob', () => {
     const url: string = `${environment.apiBaseUrl}parks/park-1/official-maps/map-2026/file`;
     const content: Blob = new Blob(['map'], { type: 'application/pdf' });

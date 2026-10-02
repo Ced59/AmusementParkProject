@@ -1,6 +1,20 @@
 {
-  "version": "5.4.61",
+  "version": "5.4.62",
   "history": [
+    {
+      "version": "5.4.62",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Chargement plus léger de l’accueil",
+        "en": "Lighter home page loading",
+        "de": "Schnelleres Laden der Startseite",
+        "nl": "Lichter laden van de startpagina",
+        "it": "Caricamento più leggero della pagina iniziale",
+        "es": "Carga más ligera de la página de inicio",
+        "pt": "Carregamento mais leve da página inicial",
+        "pl": "Lżejsze ładowanie strony głównej"
+      }
+    },
     {
       "version": "5.4.61",
       "releasedAt": "2026-10-02",
