@@ -1,6 +1,20 @@
 {
-  "version": "5.4.78",
+  "version": "5.4.79",
   "history": [
+    {
+      "version": "5.4.79",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Découverte du site améliorée",
+        "en": "Improved site discovery",
+        "de": "Verbesserte Auffindbarkeit der Website",
+        "nl": "Betere vindbaarheid van de site",
+        "it": "Migliore visibilità del sito",
+        "es": "Mejor descubrimiento del sitio",
+        "pt": "Melhor descoberta do site",
+        "pl": "Łatwiejsze odnajdywanie witryny"
+      }
+    },
     {
       "version": "5.4.78",
       "releasedAt": "2026-10-03",
