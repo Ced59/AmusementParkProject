@@ -26,6 +26,14 @@ Créer un Proxy Host :
 Dans l'onglet **Advanced** du Proxy Host, ajouter :
 
 ```nginx
+# Compression des ressources publiques textuelles au proxy externe.
+gzip on;
+gzip_vary on;
+gzip_min_length 1024;
+gzip_comp_level 4;
+gzip_proxied any;
+gzip_types text/css application/javascript text/javascript image/svg+xml application/xml text/xml;
+
 client_max_body_size 1m;
 
 location = /api/park-data-editor/official-map-files {
@@ -40,6 +48,8 @@ location = /api/park-data-editor/official-map-files {
 ```
 
 La limite haute reste ainsi réservée à l'import des plans officiels : elle permet de transmettre un fichier de 25 Mio avec son enveloppe multipart, tandis que les autres routes restent limitées à 1 Mio sur ce Proxy Host. Le corps est transmis en flux pour que l'API puisse appliquer l'authentification et la limitation d'opérations sans que chaque proxy mette d'abord tout le fichier en tampon. L'API conserve sa validation stricte à 25 Mio pour le contenu du fichier.
+
+NPM compresse le HTML par défaut, mais les types JavaScript, CSS et XML doivent être déclarés explicitement. Ces directives sont limitées au Proxy Host applicatif ; `Vary: Accept-Encoding` préserve les clients qui demandent une réponse non compressée. Vérifier les requêtes GET publiques avec `Accept-Encoding: gzip`, puis comparer le contenu décompressé à la réponse `Accept-Encoding: identity`. La configuration du NPM externe doit rester enregistrée dans son onglet Advanced, en plus du fichier Nginx généré.
 
 Ne crée pas de Proxy Host public pour l'API. L'API passe par `https://amusement-parks.fun/api`.
 

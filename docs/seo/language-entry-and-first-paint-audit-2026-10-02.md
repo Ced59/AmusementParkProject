@@ -50,6 +50,21 @@ Rapports reproductibles :
 
 ## Correction ciblée
 
+### Compression au proxy public
+
+Les GET publics des fichiers JavaScript et CSS ne renvoyaient pas de `Content-Encoding`, malgré une demande explicite `Accept-Encoding: gzip`. La compression NPM était activée globalement mais ses types par défaut ne couvraient pas ces ressources. Une directive `gzip_types` limitée au Proxy Host `amusement-parks.fun` a été persistée dans son Advanced et sa configuration générée le 2 octobre à 07 h 40 UTC, après sauvegarde de la base NPM et du fichier de ce host. `nginx -t` et le rechargement ont réussi. Le niveau 4 limite le coût CPU ; les réponses JSON de l’API ne sont pas ajoutées à cette liste.
+
+| Ressource | Avant | Avec gzip | Réduction |
+| --- | ---: | ---: | ---: |
+| Chunk JavaScript `5EODF4E3` | 245 804 octets | 83 655 octets | 66,0 % |
+| CSS principal `XFBSPPUG` | 217 580 octets | 34 852 octets | 84,0 % |
+| Index `sitemap.xml` | 26 561 octets | 1 298 octets | 95,1 % |
+| `static-it.xml` | 1 348 octets | 310 octets | 77,0 % |
+
+Les empreintes SHA-256 des réponses non compressées et des réponses gzip décompressées sont identiques pour les quatre ressources. Les deux XML restent valides. `Vary: Accept-Encoding` est présent sur les deux variantes. Les snippets NPM de production et de l’environnement proche production sont documentés dans `deploy/README.md` et `deploy/local/npm-proxy-host-advanced-snippets.md`.
+
+### Rendu initial et connexion facultative
+
 PageSpeed identifie le texte du bandeau de consentement comme élément LCP sur le sélecteur et l’accueil. Le bandeau était absent du HTML SSR et ajouté seulement après l’initialisation JavaScript. Son apparition tardive remplaçait le candidat LCP déjà visible.
 
 Le bandeau requis est maintenant inclus dans le HTML SSR. Le premier rendu navigateur conserve le même DOM ; `afterNextRender` applique ensuite la décision mémorisée. Une première visite conserve son bandeau, une visite avec un choix existant le retire. Le cache public reste anonyme et n’est pas personnalisé selon le consentement. Aucun traceur optionnel n’est autorisé par cette modification ; les gardes existants du service de consentement restent actifs.

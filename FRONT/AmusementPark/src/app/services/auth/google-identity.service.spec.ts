@@ -11,7 +11,7 @@ describe('GoogleIdentityService', () => {
     previousGoogle = window.google;
     window.google = undefined;
     document.querySelectorAll(scriptSelector).forEach((script: Element): void => script.remove());
-    service = new GoogleIdentityService('browser', document);
+    service = new GoogleIdentityService('browser' as unknown as object, document);
     googleApi = {
       accounts: { id: { initialize: vi.fn(), renderButton: vi.fn(), disableAutoSelect: vi.fn() } }
     };
@@ -85,7 +85,7 @@ describe('GoogleIdentityService', () => {
   });
 
   it('does not load or initialize identity services on the server', async () => {
-    const serverService = new GoogleIdentityService('server', document);
+    const serverService = new GoogleIdentityService('server' as unknown as object, document);
     await serverService.renderButtonAsync(document.createElement('div'), vi.fn());
     serverService.disableAutoSelect();
 
