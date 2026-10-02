@@ -245,22 +245,11 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
 
         IMongoCollection<BsonDocument> factBackup = this.database.GetCollection<BsonDocument>(
             this.settings.HistoricalFactCutoverBackupCollectionName);
-        List<string> backedFactIds = await factBackup
-            .Distinct<string>(
-                "factId",
-                Builders<BsonDocument>.Filter.In("factId", factIds))
-            .ToListAsync(cancellationToken);
-        string[] factIdsToBackup = factIds
-            .Except(backedFactIds, StringComparer.Ordinal)
-            .ToArray();
-        if (factIdsToBackup.Length > 0)
-        {
-            await this.BackupDocumentsAsync(
-                facts,
-                factBackup,
-                Builders<BsonDocument>.Filter.In("factId", factIdsToBackup),
-                cancellationToken);
-        }
+        await this.BackupDocumentsAsync(
+            facts,
+            factBackup,
+            Builders<BsonDocument>.Filter.In("factId", factIds),
+            cancellationToken);
 
         List<BsonDocument> backedFacts = await factBackup
             .Find(Builders<BsonDocument>.Filter.In("factId", factIds))
@@ -285,22 +274,11 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
             this.settings.HistoricalSourcesCollectionName);
         IMongoCollection<BsonDocument> sourceBackup = this.database.GetCollection<BsonDocument>(
             this.settings.HistoricalSourceCutoverBackupCollectionName);
-        List<string> backedSourceIds = await sourceBackup
-            .Distinct<string>(
-                "sourceId",
-                Builders<BsonDocument>.Filter.In("sourceId", sourceIds))
-            .ToListAsync(cancellationToken);
-        string[] sourceIdsToBackup = sourceIds
-            .Except(backedSourceIds, StringComparer.Ordinal)
-            .ToArray();
-        if (sourceIdsToBackup.Length > 0)
-        {
-            await this.BackupDocumentsAsync(
-                sources,
-                sourceBackup,
-                Builders<BsonDocument>.Filter.In("sourceId", sourceIdsToBackup),
-                cancellationToken);
-        }
+        await this.BackupDocumentsAsync(
+            sources,
+            sourceBackup,
+            Builders<BsonDocument>.Filter.In("sourceId", sourceIds),
+            cancellationToken);
     }
 
     private async Task<List<BsonDocument>> BackupDocumentsAsync(

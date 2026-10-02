@@ -15,8 +15,12 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
             ?? throw new ArgumentNullException(nameof(historicalFactRepository));
     }
 
-    public async Task RetractAsync(Guid factId, CancellationToken cancellationToken)
+    public async Task<HistoricalFact> RetractAsync(
+        Guid factId,
+        Action<HistoricalFact?> onRetractionAttempt,
+        CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(onRetractionAttempt);
         for (int attempt = 0; attempt < 2; attempt++)
         {
             HistoricalFact? latest = await this.historicalFactRepository.GetLatestRevisionAsync(
@@ -24,15 +28,18 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
                 cancellationToken);
             if (latest is null)
             {
+                onRetractionAttempt(null);
                 throw new InvalidOperationException(
                     "A canonical historical fact referenced by a narrative is missing.");
             }
 
             if (latest.PublicationState == HistoricalPublicationState.Withdrawn)
             {
-                return;
+                onRetractionAttempt(null);
+                return latest;
             }
 
+            onRetractionAttempt(latest);
             DateTime nowUtc = DateTime.UtcNow;
             DateTime recordedAtUtc = nowUtc > latest.RecordedAtUtc
                 ? nowUtc
@@ -55,7 +62,7 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
             if (outcome is HistoricalRevisionWriteDisposition.Created
                 or HistoricalRevisionWriteDisposition.AlreadyExists)
             {
-                return;
+                return latest;
             }
         }
 
@@ -143,9 +150,10 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
         {
             HistoricalEditorialWorkflowState.Draft => HistoricalReviewEventType.DraftUpdated,
             HistoricalEditorialWorkflowState.SourcesAttached => HistoricalReviewEventType.SourcesAttached,
-            HistoricalEditorialWorkflowState.EditorialReview
-                or HistoricalEditorialWorkflowState.StructuredValidation =>
-                    HistoricalReviewEventType.ReviewUpdated,
+            HistoricalEditorialWorkflowState.EditorialReview =>
+                HistoricalReviewEventType.SubmittedForEditorialReview,
+            HistoricalEditorialWorkflowState.StructuredValidation =>
+                HistoricalReviewEventType.StructuredValidationCompleted,
             HistoricalEditorialWorkflowState.Published => HistoricalReviewEventType.Published,
             HistoricalEditorialWorkflowState.Corrected => HistoricalReviewEventType.Corrected,
             _ => throw new InvalidOperationException(

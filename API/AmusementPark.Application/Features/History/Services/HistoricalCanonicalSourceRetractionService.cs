@@ -15,10 +15,12 @@ public sealed class HistoricalCanonicalSourceRetractionService
             ?? throw new ArgumentNullException(nameof(sourceRepository));
     }
 
-    public async Task<HistoricalSourceReference?> RetractAsync(
+    public async Task RetractAsync(
         Guid sourceId,
+        Action<HistoricalSourceReference?> onRetractionAttempt,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(onRetractionAttempt);
         for (int attempt = 0; attempt < 2; attempt++)
         {
             HistoricalSourceReference? latest = await this.sourceRepository.GetLatestRevisionAsync(
@@ -27,9 +29,11 @@ public sealed class HistoricalCanonicalSourceRetractionService
             if (latest is null
                 || latest.PublicationState == HistoricalPublicationState.Withdrawn)
             {
-                return null;
+                onRetractionAttempt(null);
+                return;
             }
 
+            onRetractionAttempt(latest);
             HistoricalSourceReference retraction = CreateRevision(
                 latest,
                 HistoricalSourceAccessibility.Withdrawn,
@@ -44,7 +48,7 @@ public sealed class HistoricalCanonicalSourceRetractionService
             if (disposition is HistoricalRevisionWriteDisposition.Created
                 or HistoricalRevisionWriteDisposition.AlreadyExists)
             {
-                return latest;
+                return;
             }
         }
 
@@ -151,9 +155,10 @@ public sealed class HistoricalCanonicalSourceRetractionService
         return workflowState switch
         {
             HistoricalEditorialWorkflowState.Draft => HistoricalReviewEventType.DraftUpdated,
-            HistoricalEditorialWorkflowState.EditorialReview
-                or HistoricalEditorialWorkflowState.StructuredValidation =>
-                    HistoricalReviewEventType.ReviewUpdated,
+            HistoricalEditorialWorkflowState.EditorialReview =>
+                HistoricalReviewEventType.SubmittedForEditorialReview,
+            HistoricalEditorialWorkflowState.StructuredValidation =>
+                HistoricalReviewEventType.StructuredValidationCompleted,
             HistoricalEditorialWorkflowState.Published => HistoricalReviewEventType.Published,
             HistoricalEditorialWorkflowState.Corrected => HistoricalReviewEventType.Corrected,
             _ => throw new InvalidOperationException(

@@ -1,21 +1,16 @@
-using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Services;
 
 public sealed class HistoricalCanonicalResourceRetractionService
 {
-    private readonly IHistoricalFactRepository factRepository;
     private readonly HistoricalNarrativeCanonicalFactRetractionService factRetractionService;
     private readonly HistoricalCanonicalSourceRetractionService sourceRetractionService;
 
     public HistoricalCanonicalResourceRetractionService(
-        IHistoricalFactRepository factRepository,
         HistoricalNarrativeCanonicalFactRetractionService factRetractionService,
         HistoricalCanonicalSourceRetractionService sourceRetractionService)
     {
-        this.factRepository = factRepository
-            ?? throw new ArgumentNullException(nameof(factRepository));
         this.factRetractionService = factRetractionService
             ?? throw new ArgumentNullException(nameof(factRetractionService));
         this.sourceRetractionService = sourceRetractionService
@@ -24,39 +19,34 @@ public sealed class HistoricalCanonicalResourceRetractionService
 
     public async Task RetractAsync(Guid factId, CancellationToken cancellationToken)
     {
-        HistoricalFact? latest = await this.factRepository.GetLatestRevisionAsync(
-            factId,
-            cancellationToken);
-        if (latest is null)
-        {
-            throw new InvalidOperationException(
-                "A canonical historical fact referenced by a narrative is missing.");
-        }
-
-        Guid[] sourceIds = latest.SourceReferences
-            .Select(static reference => reference.SourceId)
-            .Distinct()
-            .ToArray();
-
-        List<HistoricalSourceReference> retractedSourceSnapshots = new List<HistoricalSourceReference>();
+        HistoricalFact? attemptedFactSnapshot = null;
+        Dictionary<Guid, HistoricalSourceReference> attemptedSourceSnapshots =
+            new Dictionary<Guid, HistoricalSourceReference>();
         try
         {
-            await this.factRetractionService.RetractAsync(factId, cancellationToken);
+            HistoricalFact retractedFactSnapshot = await this.factRetractionService.RetractAsync(
+                factId,
+                snapshot => attemptedFactSnapshot = snapshot,
+                cancellationToken);
+            Guid[] sourceIds = retractedFactSnapshot.SourceReferences
+                .Select(static reference => reference.SourceId)
+                .Distinct()
+                .ToArray();
             foreach (Guid sourceId in sourceIds)
             {
-                HistoricalSourceReference? snapshot = await this.sourceRetractionService.RetractAsync(
+                await this.sourceRetractionService.RetractAsync(
                     sourceId,
+                    snapshot => RegisterSourceAttempt(
+                        attemptedSourceSnapshots,
+                        sourceId,
+                        snapshot),
                     cancellationToken);
-                if (snapshot is not null)
-                {
-                    retractedSourceSnapshots.Add(snapshot);
-                }
             }
         }
         catch (Exception retractionException)
         {
             List<Exception> compensationExceptions = new List<Exception>();
-            foreach (HistoricalSourceReference snapshot in retractedSourceSnapshots.AsEnumerable().Reverse())
+            foreach (HistoricalSourceReference snapshot in attemptedSourceSnapshots.Values.Reverse())
             {
                 try
                 {
@@ -68,13 +58,18 @@ public sealed class HistoricalCanonicalResourceRetractionService
                 }
             }
 
-            try
+            if (attemptedFactSnapshot is not null)
             {
-                await this.factRetractionService.RestoreAsync(latest, CancellationToken.None);
-            }
-            catch (Exception compensationException)
-            {
-                compensationExceptions.Add(compensationException);
+                try
+                {
+                    await this.factRetractionService.RestoreAsync(
+                        attemptedFactSnapshot,
+                        CancellationToken.None);
+                }
+                catch (Exception compensationException)
+                {
+                    compensationExceptions.Add(compensationException);
+                }
             }
 
             if (compensationExceptions.Count > 0)
@@ -87,5 +82,19 @@ public sealed class HistoricalCanonicalResourceRetractionService
 
             throw;
         }
+    }
+
+    private static void RegisterSourceAttempt(
+        IDictionary<Guid, HistoricalSourceReference> attemptedSourceSnapshots,
+        Guid sourceId,
+        HistoricalSourceReference? snapshot)
+    {
+        if (snapshot is null)
+        {
+            attemptedSourceSnapshots.Remove(sourceId);
+            return;
+        }
+
+        attemptedSourceSnapshots[sourceId] = snapshot;
     }
 }

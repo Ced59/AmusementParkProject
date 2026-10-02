@@ -13,7 +13,6 @@ internal static class HistoricalCanonicalResourceRetractionServiceTestFactory
         IHistoricalSourceRepository resolvedSourceRepository = sourceRepository
             ?? Mock.Of<IHistoricalSourceRepository>();
         return new HistoricalCanonicalResourceRetractionService(
-            factRepository,
             new HistoricalNarrativeCanonicalFactRetractionService(factRepository),
             new HistoricalCanonicalSourceRetractionService(resolvedSourceRepository));
     }
