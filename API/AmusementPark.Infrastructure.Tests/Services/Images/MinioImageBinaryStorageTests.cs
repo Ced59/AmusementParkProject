@@ -235,7 +235,7 @@ public sealed class MinioImageBinaryStorageTests
         allowPreviewCompletion.SetResult(true);
         await previewOperation.WaitAsync(TimeSpan.FromSeconds(2));
         Assert.True(await deletionOperation.WaitAsync(TimeSpan.FromSeconds(2)));
-        Assert.Equal(52, removalAttempt);
+        Assert.Equal(70, removalAttempt);
         Assert.False(MinioImageBinaryStorage.HasSocialPreviewGenerationLock(ImagePath));
         minioClient.VerifyAll();
     }
@@ -267,7 +267,7 @@ public sealed class MinioImageBinaryStorageTests
             CancellationToken.None);
 
         Assert.False(succeeded);
-        Assert.Equal(16, removalAttempt);
+        Assert.Equal(22, removalAttempt);
         minioClient.VerifyAll();
     }
 
