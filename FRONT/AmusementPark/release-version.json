@@ -5,14 +5,14 @@
       "version": "5.4.45",
       "releasedAt": "2026-10-02",
       "labels": {
-        "fr": "Améliorations techniques de fiabilité.",
-        "en": "Technical reliability improvements.",
-        "de": "Technische Verbesserungen der Zuverlässigkeit.",
-        "nl": "Technische verbeteringen in betrouwbaarheid.",
-        "it": "Miglioramenti tecnici dell’affidabilità.",
-        "es": "Mejoras técnicas de fiabilidad.",
-        "pt": "Melhorias técnicas de fiabilidade.",
-        "pl": "Techniczne ulepszenia niezawodności."
+        "fr": "Fiabilité améliorée.",
+        "en": "Improved reliability.",
+        "de": "Verbesserte Zuverlässigkeit.",
+        "nl": "Verbeterde betrouwbaarheid.",
+        "it": "Affidabilità migliorata.",
+        "es": "Fiabilidad mejorada.",
+        "pt": "Fiabilidade melhorada.",
+        "pl": "Większa niezawodność."
       }
     },
     {
