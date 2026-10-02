@@ -1,6 +1,20 @@
 {
-  "version": "5.4.70",
+  "version": "5.4.71",
   "history": [
+    {
+      "version": "5.4.71",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Suivi des parcs français précisé",
+        "en": "More precise French park tracking",
+        "de": "Präzisere Erfassung französischer Parks",
+        "nl": "Nauwkeurigere opvolging van Franse parken",
+        "it": "Monitoraggio più preciso dei parchi francesi",
+        "es": "Seguimiento más preciso de los parques franceses",
+        "pt": "Acompanhamento mais preciso dos parques franceses",
+        "pl": "Dokładniejsze śledzenie francuskich parków"
+      }
+    },
     {
       "version": "5.4.70",
       "releasedAt": "2026-10-02",
