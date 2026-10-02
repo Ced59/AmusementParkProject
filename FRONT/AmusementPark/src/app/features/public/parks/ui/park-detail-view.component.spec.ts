@@ -19,7 +19,7 @@ describe('ParkDetailViewComponent gallery accessible name', () => {
     translate.setTranslation('fr', { parks: { photos: { title: 'Photos' }, imagesPage: { kicker: 'Galerie du parc' } } });
     translate.use('fr');
     const fixture = TestBed.createComponent(ParkDetailViewComponent);
-    const park = mapParkToDetailViewModel({ id: 'park-1', name: 'Example Park', status: 'Operating' }, 'fr');
+    const park = mapParkToDetailViewModel({ id: 'park-1', name: 'Example Park', status: 'Operating', latitude: 48, longitude: 2 }, 'fr');
     park.imagesLink = ['/', 'fr', 'park', 'park-1', 'example-park', 'images'];
     park.primaryPhoto = {
       id: 'image-1', imageId: 'image-1', alt: 'Example Park', category: ImageCategory.PARK,
