@@ -15,7 +15,7 @@ internal sealed class HistoricalNarrativeCanonicalSourcePlanner
     internal HistoricalSourcePlan[] BuildPlans(
         HistoryEvent historyEvent,
         HistoricalSubject subject,
-        LegacyHistoryEventTypeMapping mapping,
+        HistoricalNarrativeTypeMapping mapping,
         HistoricalPeriod period,
         string? structuredValue,
         string? otherTypeLabel,

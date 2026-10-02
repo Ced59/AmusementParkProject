@@ -634,6 +634,7 @@ private readonly IMongoDatabase database;
     private readonly ILogger<MongoDatabaseInitializer> logger;
     private readonly PersonalRankingShareReplacementMigration personalRankingShareMigration;
     private readonly PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration;
+    private readonly HistoricalNarrativeCollectionCutoverMigration historicalNarrativeCollectionCutoverMigration;
     private readonly HistoricalNarrativeCanonicalizationMigration historicalNarrativeCanonicalizationMigration;
     private readonly HistoricalFactPublicProjectionMigration historicalFactPublicProjectionMigration;
 
@@ -645,6 +646,7 @@ private readonly IMongoDatabase database;
         ILogger<MongoDatabaseInitializer> logger,
         PersonalRankingShareReplacementMigration personalRankingShareMigration,
         PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration,
+        HistoricalNarrativeCollectionCutoverMigration historicalNarrativeCollectionCutoverMigration,
         HistoricalNarrativeCanonicalizationMigration historicalNarrativeCanonicalizationMigration,
         HistoricalFactPublicProjectionMigration historicalFactPublicProjectionMigration)
     {
@@ -655,6 +657,7 @@ private readonly IMongoDatabase database;
         this.logger = logger;
         this.personalRankingShareMigration = personalRankingShareMigration;
         this.personalRankingShareAvatarPolicyMigration = personalRankingShareAvatarPolicyMigration;
+        this.historicalNarrativeCollectionCutoverMigration = historicalNarrativeCollectionCutoverMigration;
         this.historicalNarrativeCanonicalizationMigration = historicalNarrativeCanonicalizationMigration;
         this.historicalFactPublicProjectionMigration = historicalFactPublicProjectionMigration;
     }
@@ -1127,17 +1130,12 @@ private readonly IMongoDatabase database;
             cancellationToken);
         await this.InitializeStandaloneAttractionPricingIndexesAsync(cancellationToken);
 
-        await this.EnsureCollectionExistsAsync(this.settings.HistoryEventsCollectionName, cancellationToken);
-        await this.EnsureCollectionExistsAsync(this.settings.HistoricalEventsBackupCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalNarrativesCollectionName, cancellationToken);
-        await this.EnsureCollectionExistsAsync(this.settings.HistoricalMigrationsCollectionName, cancellationToken);
-        await this.EnsureCollectionExistsAsync(this.settings.HistoricalMigrationAnomaliesCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalFactsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalSourcesCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalRelationsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalSubjectScopesCollectionName, cancellationToken);
         await this.InitializeHistoricalPersistenceIndexesAsync(cancellationToken);
-        await this.InitializeHistoricalMigrationIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(
             this.settings.LiveTargetMappingsCollectionName,
@@ -1219,6 +1217,7 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.StandaloneAttractionsCollectionName, cancellationToken);
         await this.InitializeStandaloneAttractionsIndexesAsync(cancellationToken);
 
+        await this.historicalNarrativeCollectionCutoverMigration.StageAsync(cancellationToken);
         await this.historicalNarrativeCanonicalizationMigration.ExecuteAsync(cancellationToken);
         long migratedHistoricalFactProjectionCount =
             await this.historicalFactPublicProjectionMigration.ExecuteAsync(cancellationToken);
@@ -1228,6 +1227,8 @@ private readonly IMongoDatabase database;
                 "Migrated {FactCount} historical fact revisions to the public park projection.",
                 migratedHistoricalFactProjectionCount);
         }
+
+        await this.historicalNarrativeCollectionCutoverMigration.CompleteAsync(cancellationToken);
 
         await this.InitializeHistoryEventsIndexesAsync(cancellationToken);
 
@@ -2504,32 +2505,6 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
         await states.Indexes.CreateManyAsync(
             FeatureFlagMongoDefinitions.BuildIndexes(),
             cancellationToken);
-    }
-
-    private async Task InitializeHistoricalMigrationIndexesAsync(CancellationToken cancellationToken)
-    {
-        IMongoCollection<HistoricalLegacyMigrationAnomalyDocument> anomalies =
-            this.database.GetCollection<HistoricalLegacyMigrationAnomalyDocument>(
-                this.settings.HistoricalMigrationAnomaliesCollectionName);
-        List<CreateIndexModel<HistoricalLegacyMigrationAnomalyDocument>> indexes =
-            new List<CreateIndexModel<HistoricalLegacyMigrationAnomalyDocument>>
-            {
-                new CreateIndexModel<HistoricalLegacyMigrationAnomalyDocument>(
-                    Builders<HistoricalLegacyMigrationAnomalyDocument>.IndexKeys
-                        .Ascending(static item => item.MigrationId)
-                        .Ascending(static item => item.LegacyEventId),
-                    new CreateIndexOptions
-                    {
-                        Name = "idx_historical_migration_anomaly_event",
-                        Unique = true,
-                    }),
-                new CreateIndexModel<HistoricalLegacyMigrationAnomalyDocument>(
-                    Builders<HistoricalLegacyMigrationAnomalyDocument>.IndexKeys
-                        .Ascending(static item => item.MigrationId)
-                        .Ascending(static item => item.Codes),
-                    new CreateIndexOptions { Name = "idx_historical_migration_anomaly_code" }),
-            };
-        await anomalies.Indexes.CreateManyAsync(indexes, cancellationToken);
     }
 
     private async Task InitializeRefreshTokensIndexesAsync(CancellationToken cancellationToken)

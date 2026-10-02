@@ -122,11 +122,11 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 continue;
             }
 
-            if (LegacyHistoryEventTypeMapper.RequiresManualClassification(entityType, eventType)
-                || !LegacyHistoryEventTypeMapper.TryMap(
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !HistoricalNarrativeTypeMapper.TryMap(
                     entityType,
                     eventType,
-                    out LegacyHistoryEventTypeMapping? _))
+                    out HistoricalNarrativeTypeMapping? _))
             {
                 result.Errors.Add(
                     $"Le type d'evenement history '{eventType}' doit etre classe dans le modele HIST canonique avant import.");
@@ -193,11 +193,11 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 continue;
             }
 
-            if (LegacyHistoryEventTypeMapper.RequiresManualClassification(entityType, eventType)
-                || !LegacyHistoryEventTypeMapper.TryMap(
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !HistoricalNarrativeTypeMapper.TryMap(
                     entityType,
                     eventType,
-                    out LegacyHistoryEventTypeMapping? _))
+                    out HistoricalNarrativeTypeMapping? _))
             {
                 continue;
             }

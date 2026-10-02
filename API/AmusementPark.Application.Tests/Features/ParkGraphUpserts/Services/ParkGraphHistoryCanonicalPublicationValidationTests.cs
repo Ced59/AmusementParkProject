@@ -52,4 +52,41 @@ public sealed class ParkGraphHistoryCanonicalPublicationValidationTests
         Assert.True(isValid);
         Assert.Empty(result.Errors);
     }
+
+    [Fact]
+    public void ValidateCanonicalPublication_WhenRelocationHasDestination_ShouldAllowPreview()
+    {
+        HistoryEvent historyEvent = new HistoryEvent
+        {
+            EntityType = HistoryEntityType.ParkItem,
+            EventType = ParkItemHistoryEventType.RelocationArrival.ToString(),
+            LocationLabel = "Phantasialand",
+            IsVisible = true,
+            Sources = new List<HistorySourceReference>
+            {
+                new HistorySourceReference { Url = "https://example.com/relocation" },
+            },
+        };
+        ParkGraphUpsertResult result = new ParkGraphUpsertResult();
+
+        bool isValid = ParkGraphUpsertProcessorHistoryExtensions.ValidateCanonicalPublication(
+            historyEvent,
+            "relocation-2001",
+            result);
+
+        Assert.True(isValid);
+        Assert.Empty(result.Errors);
+    }
+
+    [Fact]
+    public void IsValidHistoryDate_WhenDayDoesNotExist_ShouldRejectDate()
+    {
+        bool isValid = ParkGraphUpsertProcessorHistoryExtensions.IsValidHistoryDate(
+            2026,
+            2,
+            31,
+            HistoryDatePrecision.Day);
+
+        Assert.False(isValid);
+    }
 }

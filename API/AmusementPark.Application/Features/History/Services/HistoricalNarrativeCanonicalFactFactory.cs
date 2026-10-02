@@ -5,7 +5,7 @@ namespace AmusementPark.Application.Features.History.Services;
 
 internal sealed class HistoricalNarrativeCanonicalFactFactory
 {
-    internal HistoricalPeriod BuildPeriod(HistoryEvent historyEvent)
+    internal static HistoricalPeriod BuildPeriod(HistoryEvent historyEvent)
     {
         HistoricalDate date = historyEvent.DatePrecision switch
         {
@@ -37,7 +37,7 @@ internal sealed class HistoricalNarrativeCanonicalFactFactory
 
     internal static string? BuildStructuredValue(
         HistoryEvent historyEvent,
-        LegacyHistoryEventTypeMapping mapping)
+        HistoricalNarrativeTypeMapping mapping)
     {
         if (!mapping.AttributeKind.HasValue)
         {
@@ -47,7 +47,7 @@ internal sealed class HistoricalNarrativeCanonicalFactFactory
         string? requiredNextKey = mapping.AttributeKind.Value switch
         {
             HistoricalAttributeKind.Name or HistoricalAttributeKind.MarketPositioning
-                or HistoricalAttributeKind.Theme => "next",
+                or HistoricalAttributeKind.Theme or HistoricalAttributeKind.Location => "next",
             HistoricalAttributeKind.Logo => "nextImageId",
             HistoricalAttributeKind.Operator => "nextId",
             _ => null,
@@ -70,6 +70,10 @@ internal sealed class HistoricalNarrativeCanonicalFactFactory
                     ["previousId"] = historyEvent.PreviousOperatorId,
                     ["nextId"] = historyEvent.NewOperatorId,
                 },
+            HistoricalAttributeKind.Location => new Dictionary<string, string?>
+                {
+                    ["next"] = historyEvent.LocationLabel,
+                },
             _ => new Dictionary<string, string?>(),
         };
         Dictionary<string, string> normalized = values
@@ -89,7 +93,7 @@ internal sealed class HistoricalNarrativeCanonicalFactFactory
         Guid factId,
         HistoryEvent historyEvent,
         HistoricalSubject subject,
-        LegacyHistoryEventTypeMapping mapping,
+        HistoricalNarrativeTypeMapping mapping,
         HistoricalPeriod period,
         string? structuredValue,
         string? otherTypeLabel,

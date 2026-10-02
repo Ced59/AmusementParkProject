@@ -145,13 +145,13 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             return HistoryApplicationErrors.InvalidDate();
         }
 
-        if (LegacyHistoryEventTypeMapper.RequiresManualClassification(
+        if (HistoricalNarrativeTypeMapper.RequiresManualClassification(
                 model.EntityType,
                 model.EventType)
-            || !LegacyHistoryEventTypeMapper.TryMap(
+            || !HistoricalNarrativeTypeMapper.TryMap(
                 model.EntityType,
                 model.EventType,
-                out LegacyHistoryEventTypeMapping? mapping)
+                out HistoricalNarrativeTypeMapping? mapping)
             || mapping is null)
         {
             return HistoryApplicationErrors.InvalidEventType();
@@ -163,6 +163,15 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             model,
             ownerId,
             NormalizeKey(model.Key) ?? BuildFallbackKey(model));
+        try
+        {
+            HistoricalNarrativeCanonicalFactFactory.BuildPeriod(canonicalCandidate);
+        }
+        catch (HistoricalTemporalValidationException)
+        {
+            return HistoryApplicationErrors.InvalidDate();
+        }
+
         if (mapping.AttributeKind.HasValue
             && HistoricalNarrativeCanonicalFactFactory.BuildStructuredValue(
                 canonicalCandidate,

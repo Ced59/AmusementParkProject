@@ -747,13 +747,16 @@ sa conversion et la bascule unique restent le jalon `HIST-04`.
 
 ### Implémentation `HIST-04` — 26 septembre 2026
 
-Au démarrage du déploiement, une migration versionnée prend un instantané de
-la collection historique antérieure, calcule son empreinte et recopie chaque
-document à l'identique dans une sauvegarde dédiée. Les titres, résumés,
-articles, images, sources, slugs, identifiants liés et indicateurs de mise en
-avant restent ainsi récupérables sans dépendre du nouveau modèle. La collection
-opérationnelle est ensuite remplacée en une seule bascule par les récits
-canoniques ; l'application ne relit ni ne réécrit l'ancienne collection.
+Au démarrage du déploiement, une bascule idempotente récupère les documents
+encore présents dans les anciennes collections, sans écraser un récit déjà
+canonique. Les titres, résumés, articles, images, sources, slugs, identifiants
+liés et indicateurs de mise en avant sont placés dans
+`historical-narratives`, puis immédiatement transformés en sources et faits
+HIST ordinaires. La collection d'origine, son éventuelle sauvegarde et les
+anciens registres de migration sont supprimés seulement après la réussite de
+la canonicalisation et de la projection publique. Un échec conserve donc
+l'entrée récupérable, tandis qu'un démarrage réussi ne laisse aucun second
+système historique actif.
 
 Chaque type d'événement automatiquement convertible possède une correspondance
 explicite vers un fait structuré. Une ouverture saisonnière reste bloquée pour
@@ -773,12 +776,12 @@ ou marquée non pertinente ne peut pas être exposée par accident. Les
 conversions impossibles restent administrables comme récits bloqués : elles ne
 sont ni supprimées ni inventées.
 
-La migration possède un bail, un marqueur de réussite, des identités
-déterministes et des compteurs avant/après. Une interruption avant la bascule
-fait reconstruire uniquement la sortie inachevée au prochain démarrage. La
-réussite exige une empreinte source inchangée et l'égalité entre source,
-sauvegarde et récits migrés. MongoDB est donc mis à jour automatiquement par le
-déploiement, sans manipulation manuelle ni coexistence durable de deux moteurs.
+Les écritures de préparation utilisent l'identité MongoDB d'origine et
+`$setOnInsert` : une reprise ne duplique pas un récit et ne remplace jamais une
+version canonique plus récente. Une interruption avant la fin rejoue seulement
+la partie manquante au prochain démarrage. MongoDB est ainsi mis à jour
+automatiquement par le déploiement, sans manipulation manuelle ni coexistence
+durable de deux moteurs.
 
 ### Canonisation définitive des alimentations — 2 octobre 2026
 
@@ -794,7 +797,8 @@ plus aucun fallback historique.
 Les événements visibles sans source sont rejetés en Preview dans les workflows
 d'alimentation ; les événements volontairement masqués restent des brouillons.
 Les anciennes valeurs persistées ne sont relues que pendant cette conversion
-unique afin de ne pas perdre l'audit, jamais comme un second système métier.
+unique afin de ne pas perdre les récits. Les anciennes collections sont ensuite
+supprimées et ne servent jamais de second système métier ou de repli public.
 
 L'accès à la frise publique est distinct du seuil plus exigeant des snapshots
 annuels et du SEO : deux faits canoniques tous sourcés, dont un jalon majeur,

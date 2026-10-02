@@ -99,6 +99,52 @@ public sealed class HistoryHandlersTests
     }
 
     [Fact]
+    public async Task UpsertHistoryEvent_WhenDayDoesNotExist_ShouldFailBeforePersistence()
+    {
+        Mock<IHistoryEventRepository> historyRepository =
+            new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> historicalFactRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        UpsertHistoryEventCommandHandler handler = new UpsertHistoryEventCommandHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object),
+            Mock.Of<IHistoricalNarrativeCanonicalizer>(),
+            sitemapRefreshScheduler.Object);
+
+        ApplicationResult<HistoryEvent> result = await handler.HandleAsync(
+            new UpsertHistoryEventCommand(new HistoryEventWriteModel
+            {
+                EntityType = HistoryEntityType.Park,
+                OwnerId = "park-1",
+                Year = 2026,
+                Month = 2,
+                Day = 31,
+                DatePrecision = HistoryDatePrecision.Day,
+                EventType = ParkHistoryEventType.Opening.ToString(),
+                IsVisible = true,
+                Sources = new[]
+                {
+                    new HistorySourceReference { Url = "https://example.com/opening" },
+                },
+            }));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "history.date.invalid");
+        historyRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+        historicalFactRepository.VerifyNoOtherCalls();
+        sitemapRefreshScheduler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task UpsertHistoryEvent_WhenParkItemEventIsValid_ShouldCreateEvent()
     {
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);

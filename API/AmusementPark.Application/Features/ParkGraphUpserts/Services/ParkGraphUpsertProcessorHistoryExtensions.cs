@@ -84,11 +84,11 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
                 continue;
             }
 
-            if (LegacyHistoryEventTypeMapper.RequiresManualClassification(entityType, eventType)
-                || !LegacyHistoryEventTypeMapper.TryMap(
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !HistoricalNarrativeTypeMapper.TryMap(
                     entityType,
                     eventType,
-                    out LegacyHistoryEventTypeMapping? _))
+                    out HistoricalNarrativeTypeMapping? _))
             {
                 result.Errors.Add(
                     $"Le type d'evenement history '{eventType}' doit etre classe dans le modele HIST canonique avant import.");
@@ -151,10 +151,10 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
         string eventKey,
         ParkGraphUpsertResult result)
     {
-        if (!LegacyHistoryEventTypeMapper.TryMap(
+        if (!HistoricalNarrativeTypeMapper.TryMap(
                 historyEvent.EntityType,
                 historyEvent.EventType,
-                out LegacyHistoryEventTypeMapping? mapping)
+                out HistoricalNarrativeTypeMapping? mapping)
             || mapping is null)
         {
             result.Errors.Add(
@@ -404,13 +404,26 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
             return false;
         }
 
-        return precision switch
+        try
         {
-            HistoryDatePrecision.Year => true,
-            HistoryDatePrecision.Month => month.HasValue,
-            HistoryDatePrecision.Day => month.HasValue && day.HasValue,
-            _ => false,
-        };
+            _ = precision switch
+            {
+                HistoryDatePrecision.Year => HistoricalDate.ForYear(year),
+                HistoryDatePrecision.Month when month.HasValue =>
+                    HistoricalDate.ForMonth(year, month.Value),
+                HistoryDatePrecision.Day when month.HasValue && day.HasValue =>
+                    HistoricalDate.ForDay(year, month.Value, day.Value),
+                _ => throw new HistoricalTemporalValidationException(
+                    HistoricalTemporalErrorCodes.InvalidPrecision,
+                    "The historical date precision is invalid.",
+                    nameof(precision)),
+            };
+            return true;
+        }
+        catch (HistoricalTemporalValidationException)
+        {
+            return false;
+        }
     }
 
     internal static List<LocalizedText> ReadLocalizedTextsFlexible(JsonElement element, string arrayPropertyName, string compactPropertyName)

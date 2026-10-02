@@ -50,17 +50,17 @@ public sealed class HistoricalNarrativeCanonicalizationService : IHistoricalNarr
             return Blocked("history-canonicalization.missing-narrative-id");
         }
 
-        if (LegacyHistoryEventTypeMapper.RequiresManualClassification(
+        if (HistoricalNarrativeTypeMapper.RequiresManualClassification(
                 historyEvent.EntityType,
                 historyEvent.EventType))
         {
             return Blocked("history-canonicalization.manual-classification-required");
         }
 
-        if (!LegacyHistoryEventTypeMapper.TryMap(
+        if (!HistoricalNarrativeTypeMapper.TryMap(
                 historyEvent.EntityType,
                 historyEvent.EventType,
-                out LegacyHistoryEventTypeMapping? mapping)
+                out HistoricalNarrativeTypeMapping? mapping)
             || mapping is null)
         {
             return Blocked("history-canonicalization.unknown-event-type");
@@ -77,7 +77,7 @@ public sealed class HistoricalNarrativeCanonicalizationService : IHistoricalNarr
         HistoricalPeriod period;
         try
         {
-            period = this.factFactory.BuildPeriod(historyEvent);
+            period = HistoricalNarrativeCanonicalFactFactory.BuildPeriod(historyEvent);
         }
         catch (HistoricalTemporalValidationException)
         {

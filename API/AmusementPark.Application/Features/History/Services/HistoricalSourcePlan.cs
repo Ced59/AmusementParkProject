@@ -6,7 +6,7 @@ internal sealed record HistoricalSourcePlan(
     HistoricalSourceReference DraftSource,
     HistoricalSourceReference PublishedSource,
     HistoricalSubject Subject,
-    LegacyHistoryEventTypeMapping Mapping,
+    HistoricalNarrativeTypeMapping Mapping,
     HistoricalPeriod Period,
     string? StructuredValue,
     string? OtherTypeLabel,
