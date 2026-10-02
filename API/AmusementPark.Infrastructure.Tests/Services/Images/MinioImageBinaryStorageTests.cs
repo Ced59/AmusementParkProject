@@ -235,7 +235,7 @@ public sealed class MinioImageBinaryStorageTests
         allowPreviewCompletion.SetResult(true);
         await previewOperation.WaitAsync(TimeSpan.FromSeconds(2));
         Assert.True(await deletionOperation.WaitAsync(TimeSpan.FromSeconds(2)));
-        Assert.Equal(70, removalAttempt);
+        Assert.Equal(76, removalAttempt);
         Assert.False(MinioImageBinaryStorage.HasSocialPreviewGenerationLock(ImagePath));
         minioClient.VerifyAll();
     }
@@ -722,6 +722,10 @@ public sealed class MinioImageBinaryStorageTests
         Assert.Contains("images/photo-1.w64.v2.webp", objectNames);
         Assert.Contains("images/photo-1.w128.v2.jpg", objectNames);
         Assert.Contains("images/photo-1.w192.v2.webp", objectNames);
+        Assert.Contains("images/photo-1.w64.v3.webp", objectNames);
+        Assert.Contains("images/photo-1.w128.v3.jpg", objectNames);
+        Assert.Contains("images/photo-1.w192.v3.webp", objectNames);
+        Assert.DoesNotContain("images/photo-1.w320.v3.webp", objectNames);
         Assert.Contains("images/photo-1.w320.v2.webp", objectNames);
         Assert.Contains("images/photo-1.w320.v2.jpg", objectNames);
         Assert.Contains("images/photo-1.w1600.v2.webp", objectNames);
@@ -736,12 +740,17 @@ public sealed class MinioImageBinaryStorageTests
         Assert.Equal(objectNames.Length, objectNames.Distinct(StringComparer.Ordinal).Count());
     }
 
-    [Fact]
-    public void GetResponsiveVariantObjectName_ShouldIncludeCurrentVariantVersion()
+    [Theory]
+    [InlineData(64, 3)]
+    [InlineData(128, 3)]
+    [InlineData(192, 3)]
+    [InlineData(320, 2)]
+    [InlineData(960, 2)]
+    public void GetResponsiveVariantObjectName_ShouldIncludeCurrentVariantVersion(int width, int expectedVersion)
     {
-        string objectName = MinioImageBinaryStorage.GetResponsiveVariantObjectName("images/photo-1", 960, "webp");
+        string objectName = MinioImageBinaryStorage.GetResponsiveVariantObjectName("images/photo-1", width, "webp");
 
-        Assert.Equal("images/photo-1.w960.v2.webp", objectName);
+        Assert.Equal($"images/photo-1.w{width}.v{expectedVersion}.webp", objectName);
     }
 
     [Fact]
