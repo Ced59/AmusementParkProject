@@ -1,7 +1,26 @@
-import { buildContentSecurityPolicy } from './content-security-policy';
+import { buildContentSecurityPolicy, CROSS_ORIGIN_OPENER_POLICY } from './content-security-policy';
 import { SUPPORTED_VIDEO_EMBED_ORIGINS } from './video-embed-policy';
 
 describe('Content security policy', () => {
+  it('uses the response nonce and strict dynamic instead of unrestricted inline scripts', () => {
+    const policy: string = buildContentSecurityPolicy({ allowLocalSources: false, reportUri: '/api/security/csp-report', scriptNonce: 'a'.repeat(32) });
+    const scriptDirective: string | undefined = policy.split('; ').find((directive: string) => directive.startsWith('script-src '));
+    expect(scriptDirective).toContain(`'nonce-${'a'.repeat(32)}'`);
+    expect(scriptDirective).toContain("'strict-dynamic'");
+    expect(scriptDirective).not.toContain("'unsafe-inline'");
+    expect(policy).toContain("frame-ancestors 'none'");
+    expect(policy).toContain("style-src 'self' 'unsafe-inline'");
+    expect(policy).toContain('https://accounts.google.com');
+  });
+
+  it('rejects a nonce that could inject an extra CSP directive', () => {
+    expect(() => buildContentSecurityPolicy({ allowLocalSources: false, reportUri: '/api/security/csp-report', scriptNonce: "bad'; script-src *" })).toThrow();
+  });
+
+  it('keeps opener isolation compatible with authentication popups', () => {
+    expect(CROSS_ORIGIN_OPENER_POLICY).toBe('same-origin-allow-popups');
+  });
+
   it('allows every supported public video embed origin', () => {
     const policy: string = buildContentSecurityPolicy({
       allowLocalSources: false,

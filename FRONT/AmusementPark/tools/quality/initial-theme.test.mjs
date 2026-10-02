@@ -48,7 +48,7 @@ test('blocked storage still applies the system preference before Angular', () =>
     window: { matchMedia: () => ({ matches: false }) }
   });
   assert.deepEqual([...body.classes], ['light-mode']);
-  assert.ok(html.indexOf('data-app-theme-init') < html.indexOf('<app-root>'));
+  assert.ok(html.indexOf('data-app-theme-init') < html.indexOf('<app-root '));
 });
 
 test('critical font preloads resolve to bundled fonts without duplicate credentials', () => {

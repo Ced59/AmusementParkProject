@@ -133,9 +133,18 @@ La réponse doit contenir `Content-Security-Policy`.
 
 La CSP est appliquée en mode bloquant par défaut. Le retour temporaire en observation
 reste possible avec `CSP_REPORT_ONLY=true` si une régression est détectée. Les sources
-inline restent provisoirement autorisées afin de préserver Angular SSR et les
-intégrations tierces ; leur suppression doit être réalisée séparément avec des nonces
-et des tests dédiés.
+inline des styles restent provisoirement autorisées pour Angular et les intégrations
+tierces. Les pages HTML Angular utilisent un nonce de script aléatoire de 192 bits
+par réponse avec `strict-dynamic`, sans autoriser globalement les scripts inline.
+Le HTML conservé dans le cache SSR interne contient uniquement un marqueur : son
+remplacement est effectué lors de l'envoi, avant le calcul de `Content-Length`.
+Ces réponses portent `Cache-Control: private, no-store, max-age=0` pour empêcher
+qu'un cache HTTP partagé réutilise le nonce. Les documents antérieurs sans marqueur
+conservent leur politique existante jusqu'à leur renouvellement. Les en-têtes des
+documents techniques XML et texte restent adaptés à leur type.
+
+Le front émet également `Cross-Origin-Opener-Policy: same-origin-allow-popups`,
+compatible avec les fenêtres d'authentification Google.
 
 ## Rate limiting auth M18.6
 

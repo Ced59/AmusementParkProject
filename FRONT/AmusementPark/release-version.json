@@ -1,6 +1,20 @@
 {
-  "version": "5.4.74",
+  "version": "5.4.75",
   "history": [
+    {
+      "version": "5.4.75",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Protection des pages renforcée",
+        "en": "Stronger page protection",
+        "de": "Verbesserter Schutz der Seiten",
+        "nl": "Betere bescherming van pagina’s",
+        "it": "Protezione delle pagine rafforzata",
+        "es": "Protección de las páginas reforzada",
+        "pt": "Proteção das páginas reforçada",
+        "pl": "Lepsza ochrona stron"
+      }
+    },
     {
       "version": "5.4.74",
       "releasedAt": "2026-10-02",

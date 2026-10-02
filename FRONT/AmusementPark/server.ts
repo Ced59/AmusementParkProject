@@ -62,7 +62,8 @@ import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-write
 import { disablePublicProxyResponseBuffering } from './src/app/core/ssr/public-response-transport-policy';
 import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-policy';
 import { siteVersion } from './src/environments/version.generated';
-import { buildContentSecurityPolicy } from './src/app/core/security/content-security-policy';
+import { buildContentSecurityPolicy, CROSS_ORIGIN_OPENER_POLICY } from './src/app/core/security/content-security-policy';
+import { prepareHtmlScriptNonceResponse } from './src/server/security/html-script-nonce';
 import {
   hasOnlyFacebookImageOverrideQuery,
   normalizeFacebookImageOverrideCacheUrl,
@@ -2082,6 +2083,19 @@ function prepareHtmlForResponse(req: Request, res: Response, html: string, optio
 
 function sendPreparedHtmlResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): void {
   const preparedHtml: string = prepareHtmlForResponse(req, res, html, options);
+  const scriptNonceResponse = cspEnabled ? prepareHtmlScriptNonceResponse(preparedHtml) : null;
+  if (scriptNonceResponse !== null) {
+    const cspHeaderName: string = cspReportOnly ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
+    res.setHeader(cspHeaderName, buildContentSecurityPolicy({
+      allowLocalSources: allowLocalCspSources,
+      reportUri: process.env['SSR_CSP_REPORT_URI'] ?? '/api/security/csp-report',
+      scriptNonce: scriptNonceResponse.nonce
+    }));
+    // The internal page cache keeps the placeholder; delivery nonces must never enter a shared HTTP cache.
+    res.setHeader('Cache-Control', 'private, no-store, max-age=0');
+    writeSsrHtmlResponse(req.method, res, scriptNonceResponse.html);
+    return;
+  }
   writeSsrHtmlResponse(req.method, res, preparedHtml);
 }
 
@@ -3401,6 +3415,7 @@ function redirectHttpToHttps(req: Request, res: Response, next: NextFunction): v
 function applySecurityHeaders(req: Request, res: Response, next: NextFunction): void {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Cross-Origin-Opener-Policy', CROSS_ORIGIN_OPENER_POLICY);
   res.setHeader(
     'Referrer-Policy',
     isPublicSharedVisitRecapSsrRoute(getPathOnly(req.originalUrl))

@@ -3,9 +3,18 @@ import { SUPPORTED_VIDEO_EMBED_ORIGINS } from './video-embed-policy';
 export interface ContentSecurityPolicyOptions {
   readonly allowLocalSources: boolean;
   readonly reportUri: string;
+  readonly scriptNonce?: string;
 }
 
+export const CROSS_ORIGIN_OPENER_POLICY: string = 'same-origin-allow-popups';
+
 export function buildContentSecurityPolicy(options: ContentSecurityPolicyOptions): string {
+  if (options.scriptNonce !== undefined && !/^[A-Za-z0-9+/]{32}$/.test(options.scriptNonce)) {
+    throw new Error('Invalid script CSP nonce.');
+  }
+  const scriptAuthorization: string[] = options.scriptNonce === undefined
+    ? ["'unsafe-inline'"]
+    : [`'nonce-${options.scriptNonce}'`, "'strict-dynamic'"];
   const localScriptSources: string[] = options.allowLocalSources
     ? ['http://localhost:*', 'http://matomo.amusement.localhost:*']
     : [];
@@ -22,7 +31,7 @@ export function buildContentSecurityPolicy(options: ContentSecurityPolicyOptions
     "object-src 'none'",
     "frame-ancestors 'none'",
     "form-action 'self'",
-    joinCspDirective('script-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com', 'https://apis.google.com', 'https://matomo.cedric-caudron.com', 'https://www.clarity.ms', 'https://*.clarity.ms', ...localScriptSources]),
+    joinCspDirective('script-src', ["'self'", ...scriptAuthorization, 'https://accounts.google.com', 'https://apis.google.com', 'https://matomo.cedric-caudron.com', 'https://www.clarity.ms', 'https://*.clarity.ms', ...localScriptSources]),
     joinCspDirective('style-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com']),
     joinCspDirective('style-src-elem', ["'self'", "'unsafe-inline'", 'https://accounts.google.com']),
     joinCspDirective('font-src', ["'self'", 'data:']),
