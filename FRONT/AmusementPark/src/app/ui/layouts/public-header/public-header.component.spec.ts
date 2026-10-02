@@ -1,5 +1,5 @@
 import type { MockedObject } from 'vitest';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, DeferBlockBehavior, DeferBlockState, TestBed } from '@angular/core/testing';
 import { EventEmitter, NO_ERRORS_SCHEMA, Signal, WritableSignal, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, of } from 'rxjs';
@@ -101,6 +101,7 @@ describe('PublicHeaderComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, PublicHeaderComponent],
+      deferBlockBehavior: DeferBlockBehavior.Manual,
       providers: [
         ...provideCommonTestDependencies(),
         { provide: ImagesApiService, useValue: imagesApiService },
@@ -120,6 +121,10 @@ describe('PublicHeaderComponent', () => {
 
     const translateService: TranslateService = TestBed.inject(TranslateService);
     translateService.setTranslation('fr', {
+      common: {
+        loadingMessage: 'Le contenu est en cours de chargement.',
+        errorMessage: 'Le contenu demandé n’a pas pu être chargé.',
+      },
       sidebar: {
         about: 'A propos',
         home: 'Accueil',
@@ -210,20 +215,73 @@ describe('PublicHeaderComponent', () => {
     expect(modalService.openModal).toHaveBeenCalledWith('loginModal');
   });
 
-  it('creates authentication content only while the login dialog is open', () => {
+  it('defers authentication content until the login dialog opens and recreates it on reopening', async () => {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     expect(host.querySelector('app-auth-modal')).toBeNull();
+    expect(await fixture.getDeferBlocks()).toHaveLength(0);
 
     loginModalStatus.next(true);
     fixture.detectChanges();
+    const blocks = await fixture.getDeferBlocks();
+    expect(blocks).toHaveLength(1);
+    expect(host.querySelector('app-auth-modal')).toBeNull();
+    await blocks[0].render(DeferBlockState.Loading);
+    expect(host.querySelector('[role="status"]')?.textContent).toContain(
+      'Le contenu est en cours de chargement.',
+    );
+    await blocks[0].render(DeferBlockState.Complete);
     expect(host.querySelector('app-auth-modal')).not.toBeNull();
 
     loginModalStatus.next(false);
     fixture.detectChanges();
     expect(host.querySelector('app-auth-modal')).toBeNull();
+    expect(await fixture.getDeferBlocks()).toHaveLength(0);
 
     loginModalStatus.next(true);
     fixture.detectChanges();
+    const reopenedBlocks = await fixture.getDeferBlocks();
+    expect(reopenedBlocks).toHaveLength(1);
+    await reopenedBlocks[0].render(DeferBlockState.Complete);
+    expect(host.querySelectorAll('app-auth-modal')).toHaveLength(1);
+  });
+
+  it('discards a pending authentication view when the visitor closes the dialog', async () => {
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    loginModalStatus.next(true);
+    fixture.detectChanges();
+    const blocks = await fixture.getDeferBlocks();
+    await blocks[0].render(DeferBlockState.Loading);
+
+    loginModalStatus.next(false);
+    fixture.detectChanges();
+    expect(host.querySelector('[role="status"]')).toBeNull();
+    expect(host.querySelector('app-auth-modal')).toBeNull();
+    expect(await fixture.getDeferBlocks()).toHaveLength(0);
+
+    loginModalStatus.next(true);
+    fixture.detectChanges();
+    expect(await fixture.getDeferBlocks()).toHaveLength(1);
+    expect(host.querySelector('app-auth-modal')).toBeNull();
+  });
+
+  it('announces a loading error and allows a fresh attempt after reopening', async () => {
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    loginModalStatus.next(true);
+    fixture.detectChanges();
+    const blocks = await fixture.getDeferBlocks();
+    await blocks[0].render(DeferBlockState.Error);
+    expect(host.querySelector('[role="alert"]')?.textContent).toContain(
+      'Le contenu demandé n’a pas pu être chargé.',
+    );
+    expect(host.querySelector('app-auth-modal')).toBeNull();
+
+    loginModalStatus.next(false);
+    fixture.detectChanges();
+    loginModalStatus.next(true);
+    fixture.detectChanges();
+    const reopenedBlocks = await fixture.getDeferBlocks();
+    expect(host.querySelector('[role="alert"]')).toBeNull();
+    await reopenedBlocks[0].render(DeferBlockState.Complete);
     expect(host.querySelectorAll('app-auth-modal')).toHaveLength(1);
   });
 
