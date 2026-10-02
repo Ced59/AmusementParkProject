@@ -7,9 +7,9 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 190 parcs étaient publiés (`isVisible: true`).
 - Les 190 scores ont été recalculés individuellement avec `Completeness`.
-- 68 parcs atteignent le niveau `Excellent` et satisfont désormais tous la condition de sortie, avec un score strictement supérieur à 95.
-- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 122 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif est **entièrement traité** et contient **0 parc**.
-- Le dernier retrait a été validé le **28 septembre 2026** pour Bayside Fun Park, avec un score courant de **96 (99/103)**, aucun bloqueur de publication et une annonce Facebook déjà publiée.
+- 68 parcs atteignaient le niveau `Excellent` et satisfaisaient la condition de sortie lors du rafraîchissement de référence, avec un score strictement supérieur à 95.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; les 122 retraits validés et les 2 exceptions explicites enregistrées ci-dessous avaient entièrement vidé cette liste au 28 septembre 2026.
+- Un inventaire différentiel ciblé sur l’Allemagne, effectué le **1er octobre 2026 à 18:53 CEST** sur les 60 pages de recherche, a contrôlé individuellement les 246 fiches allemandes et retrouvé 7 parcs publics au seuil de 95. BELANTIS a été réintégré puis retiré le **2 octobre 2026** après audit complet, publication des données et médias, score réel de **100 (108/108)** sans bloqueur et réconciliation réussie de son annonce Facebook existante. Le backlog actif contient donc désormais **6 parcs**.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -28,10 +28,16 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 3 — niveau `Excellent` au seuil (0)
+## Priorité 3 — niveau `Excellent` au seuil (6)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
+| 95 | Excellent | Bayern-Park | Allemagne | Operating | Regional | 106/109 | `b297b32c-0ac9-4e19-ab36-a5cbe07198b3` |
+| 95 | Excellent | Europa-Park | Allemagne | Operating | International | 112/115 | `81643366-3581-44a0-8b9b-78d5dcd513cf` |
+| 95 | Excellent | Miramar Weinheim | Allemagne | Operating | Regional | 105/108 | `7787637d-e506-4b9f-83fa-ac3aca8a969d` |
+| 95 | Excellent | Movie Park Germany | Allemagne | Operating | International | 113/115 | `da14fdc3-bbda-4eb7-aa3a-0ec8daf05717` |
+| 95 | Excellent | Phantasialand | Allemagne | Operating | International | 112/115 | `50555bb2-abd4-4c3a-b0d2-b2fa5f547c6e` |
+| 95 | Excellent | Rulantica | Allemagne | Operating | International | 112/114 | `7b22baed-4cc2-434f-b911-5b4667c74f1e` |
 
 ## Exceptions explicitement acceptées
 
