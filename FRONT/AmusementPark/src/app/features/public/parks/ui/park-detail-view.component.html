@@ -206,8 +206,7 @@
               <section class="park-main-photo">
                 <a
                   class="park-main-photo__link"
-                  [routerLink]="currentPark.imagesLink"
-                  [attr.aria-label]="'parks.imagesPage.title' | translate:{ name: currentPark.name }">
+                  [routerLink]="currentPark.imagesLink">
                   <app-image-display
                     [imageId]="mainPhoto.imageId"
                     [alt]="mainPhoto.alt"

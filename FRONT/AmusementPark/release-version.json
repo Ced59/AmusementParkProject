@@ -1,6 +1,20 @@
 {
-  "version": "5.4.49",
+  "version": "5.4.50",
   "history": [
+    {
+      "version": "5.4.50",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Les liens et les textes publics sont plus accessibles.",
+        "en": "Public links and text are more accessible.",
+        "de": "Öffentliche Links und Texte sind leichter zugänglich.",
+        "nl": "Openbare links en teksten zijn toegankelijker.",
+        "it": "I link e i testi pubblici sono più accessibili.",
+        "es": "Los enlaces y textos públicos son más accesibles.",
+        "pt": "As ligações e os textos públicos estão mais acessíveis.",
+        "pl": "Publiczne odnośniki i teksty są bardziej dostępne."
+      }
+    },
     {
       "version": "5.4.49",
       "releasedAt": "2026-10-02",
