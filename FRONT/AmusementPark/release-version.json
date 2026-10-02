@@ -1,6 +1,20 @@
 {
-  "version": "5.4.73",
+  "version": "5.4.74",
   "history": [
+    {
+      "version": "5.4.74",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Sept parcs allemands disposent désormais de fiches publiques enrichies.",
+        "en": "Seven German parks now have enriched public pages.",
+        "de": "Sieben deutsche Parks verfügen jetzt über erweiterte öffentliche Seiten.",
+        "nl": "Zeven Duitse parken hebben nu uitgebreidere openbare pagina’s.",
+        "it": "Sette parchi tedeschi dispongono ora di pagine pubbliche più complete.",
+        "es": "Siete parques alemanes cuentan ahora con páginas públicas más completas.",
+        "pt": "Sete parques alemães dispõem agora de páginas públicas mais completas.",
+        "pl": "Siedem niemieckich parków ma teraz bogatsze strony publiczne."
+      }
+    },
     {
       "version": "5.4.73",
       "releasedAt": "2026-10-02",
