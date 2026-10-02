@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 63 |
+| Fiches privées existantes à intégrer | 82 | 62 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **153** |
+| **Total** | **225** | **152** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Jardin des Bêtes — `da438248-c5da-4c0a-8578-8d78ff2c64d2`
 - [ ] Kangoo Park — `bac6532e-ed3e-40dd-9c8f-2a9b50f3d980`
 - [ ] Kid Parc — `a48caf8e-871b-40cc-8b98-9faff4219e96`
 - [ ] Kingoland — `900ceb7b-7bb8-40c0-9e4a-6340d019a6d8`
@@ -361,6 +360,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- Jardin des Bêtes — la fiche publique atteint 96 avec 24 éléments actuels, les huit langues sur chaque description, 24 médias publiés dont le logo, le plan officiel 2026, 104 dates d'ouverture, les tarifs officiels 2026, quatre jalons historiques et un article développé. Vingt et un éléments disposent d'une photographie officielle attribuable ; La Paillote, Les Palanges et Le Kiosque restent sans vue propre, la page officielle de restauration n'exposant qu'une illustration générique du parc. Les tarifs 2026 restent visibles jusqu'à la fin de leur année de référence tandis que le calendrier gouverne seul les jours d'ouverture. La page météo répond correctement avec une prévision momentanément vide ; son alimentation par batch n'a pas conditionné la publication ni le retrait.
 - Jacquou Parc — la fiche publiée atteint 98 avec 26 éléments actuels, les huit langues sur chaque description, les horaires et tarifs officiels 2026, huit jalons historiques, un article développé, le plan officiel 2025 et treize médias publiés dont le logo. Huit éléments possèdent une photographie individuelle clairement attribuable ; les autres conservent leur description sourcée sans recevoir de visuel générique. Les quatre vues générales documentent notamment l'espace aquatique et l'ambiance boisée. La saison 2026 étant achevée et aucun calendrier 2027 n'étant encore publié, la grille vérifiée reste conservée sans inventer de dates futures. La route météo répond correctement ; son contenu alimenté par batch n'a pas conditionné la publication ni le retrait.
 - Grinyland — la fiche historique publiée atteint 97 avec les 30 entrées nommées du dernier plan officiel, sept zones, six jalons de parc, un jalon d'attraction, un article développé et sept médias publiés dont le logo officiel. Six visuels représentatifs ont été conservés après recherche ; les 26 éléments sans photographie individuelle clairement attribuable n'ont pas reçu d'image générique. Le parc ayant fermé définitivement le 30 septembre 2025, aucune grille tarifaire ni aucun horaire courant n'a été inventé ; les dernières informations 2025 sont documentées dans le récit historique. La météo alimentée par batch n'a pas conditionné la publication ni le retrait.
 - Funny Land — la fiche publique atteint 96 avec 20 lieux actuels, les huit langues sur chaque description, huit médias officiels, le plan 2024, les horaires et tarifs vérifiés, deux jalons historiques et un article développé. Cinq lieux disposent d’une photographie individuelle clairement attribuable ; les quinze autres restent sans image plutôt que de recevoir un visuel générique. Aucun constructeur n’a été attribué sans source explicite : les sources spécialisées consultées décrivent Crazy Chenille comme un parcours de type Wacky Worm sans identifier son fabricant. La météo, alimentée par batch, n’a pas conditionné la publication ni le retrait.
