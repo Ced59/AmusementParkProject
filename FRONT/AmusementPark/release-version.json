@@ -1,6 +1,20 @@
 {
-  "version": "5.4.76",
+  "version": "5.4.77",
   "history": [
+    {
+      "version": "5.4.77",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Lisibilité de la navigation améliorée",
+        "en": "Clearer navigation labels",
+        "de": "Besser lesbare Navigation",
+        "nl": "Beter leesbare navigatie",
+        "it": "Navigazione più leggibile",
+        "es": "Navegación más legible",
+        "pt": "Navegação mais legível",
+        "pl": "Czytelniejsza nawigacja"
+      }
+    },
     {
       "version": "5.4.76",
       "releasedAt": "2026-10-02",
