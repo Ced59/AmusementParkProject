@@ -18,14 +18,22 @@ export class GoogleIdentityService {
 
   async renderButtonAsync(
     container: HTMLElement,
-    callback: (response: GoogleCredentialResponse) => void): Promise<void> {
-    if (!isPlatformBrowser(this.platformId)) {
+    callback: (response: GoogleCredentialResponse) => void,
+    signal?: AbortSignal): Promise<void> {
+    if (!isPlatformBrowser(this.platformId) || signal?.aborted) {
       return;
     }
 
     await this.waitForGoogleLibraryAsync();
+    if (signal?.aborted) {
+      return;
+    }
 
-    this.credentialCallback = callback;
+    this.credentialCallback = (response: GoogleCredentialResponse): void => {
+      if (!signal?.aborted) {
+        callback(response);
+      }
+    };
     this.initializeIfNeeded();
 
     container.innerHTML = '';

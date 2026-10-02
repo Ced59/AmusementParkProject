@@ -92,4 +92,17 @@ describe('GoogleIdentityService', () => {
     expect(document.querySelector(scriptSelector)).toBeNull();
     expect(vi.getTimerCount()).toBe(0);
   });
+
+  it('does not render a button whose dialog closes while the shared library is loading', async () => {
+    const controller: AbortController = new AbortController();
+    const render: Promise<void> = service.renderButtonAsync(document.createElement('div'), vi.fn(), controller.signal);
+    controller.abort();
+    window.google = googleApi;
+    document.querySelector(scriptSelector)?.dispatchEvent(new Event('load'));
+    await render;
+
+    expect(googleApi.accounts.id.initialize).not.toHaveBeenCalled();
+    expect(googleApi.accounts.id.renderButton).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(0);
+  });
 });

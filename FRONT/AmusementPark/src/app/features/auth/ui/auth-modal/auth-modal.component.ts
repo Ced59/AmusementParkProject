@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, OnDestroy, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -24,7 +24,8 @@ import { TranslationService } from '@app/services/translation.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RegisterFormComponent, LoginFormComponent, TranslateModule, UiButtonDirective, UiKickerComponent, UiSurfaceDirective]
 })
-export class AuthModalComponent implements AfterViewInit {
+export class AuthModalComponent implements AfterViewInit, OnDestroy {
+  private readonly googleRenderAbortController: AbortController = new AbortController();
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   @ViewChild('googleButtonContainer', { static: true })
   private googleButtonContainer?: ElementRef<HTMLDivElement>;
@@ -46,6 +47,10 @@ export class AuthModalComponent implements AfterViewInit {
     await this.renderGoogleButtonAsync();
   }
 
+  ngOnDestroy(): void {
+    this.googleRenderAbortController.abort();
+  }
+
   async onLoginSuccess(): Promise<void> {
     this.closeModal.emit();
     await this.restoreProtectedDestinationAsync();
@@ -61,8 +66,12 @@ export class AuthModalComponent implements AfterViewInit {
         this.googleButtonContainer.nativeElement,
         (response: GoogleCredentialResponse) => {
           void this.authenticateWithGoogleAsync(response.credential);
-        });
+        },
+        this.googleRenderAbortController.signal);
     } catch (error: unknown) {
+      if (this.googleRenderAbortController.signal.aborted) {
+        return;
+      }
       console.error('Unable to render Google button.', error);
       this.messageService.add('error', this.translate('common.error', 'Error'), this.translate('auth.login.google_unavailable', 'Google sign-in is temporarily unavailable.'));
     }
