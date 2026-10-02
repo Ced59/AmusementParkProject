@@ -7,7 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
+import { SKIP_AUTHORIZATION_HEADER, SKIP_PUBLIC_VIEW_SIMULATION } from '@core/http/auth/auth-request-policy';
 import { AdminPublicViewMode } from '../models/admin-public-view-mode.model';
 import { AdminPublicViewModeFacade } from '../state/admin-public-view-mode.facade';
 
@@ -41,6 +41,7 @@ export class AdminPublicViewSimulationInterceptor implements HttpInterceptor {
 
   private shouldApplySimulation(req: HttpRequest<unknown>): boolean {
     return req.context.get(SKIP_AUTHORIZATION_HEADER)
+      && !req.context.get(SKIP_PUBLIC_VIEW_SIMULATION)
       && (req.method === 'GET' || req.method === 'HEAD');
   }
 }

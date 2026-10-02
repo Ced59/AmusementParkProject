@@ -2,6 +2,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { DestroyRef, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { firstValueFrom, timeout } from 'rxjs';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { SKIP_PUBLIC_VIEW_SIMULATION } from '@core/http/auth/auth-request-policy';
 import { SearchApiResponse } from '@app/models/search/search-api-response';
 import { SearchResultItem } from '@app/models/search/search-result-item';
 import { buildPublicParkRouteCommands, buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
@@ -79,8 +80,10 @@ export class PublicAgentToolsService {
     }
     this.searchInProgress = true;
     try {
+      const options = anonymousHttpOptions();
+      options.context.set(SKIP_PUBLIC_VIEW_SIMULATION, true);
       const response: SearchApiResponse = await firstValueFrom(
-        this.searchPort.getSearch(query.trim(), ['park'], 1, 10, anonymousHttpOptions()).pipe(timeout(10000))
+        this.searchPort.getSearch(query.trim(), ['park'], 1, 10, options).pipe(timeout(10000))
       );
       const language: string = resolveSupportedLanguage(this.document.documentElement.lang);
       return {

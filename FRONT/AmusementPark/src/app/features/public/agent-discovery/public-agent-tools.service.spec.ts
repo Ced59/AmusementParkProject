@@ -3,7 +3,7 @@ import { PLATFORM_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of, Subject } from 'rxjs';
 import { SearchApiResponse } from '@app/models/search/search-api-response';
-import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
+import { SKIP_AUTHORIZATION_HEADER, SKIP_PUBLIC_VIEW_SIMULATION } from '@core/http/auth/auth-request-policy';
 import { PARK_LIST_STATE_SEARCH_API_SERVICE_PORT } from '../parks/state/park-list-state-data.ports';
 import { PublicAgentTool } from './public-agent-tool.model';
 import { PublicAgentToolsService } from './public-agent-tools.service';
@@ -70,6 +70,7 @@ describe('PublicAgentToolsService', () => {
     const result = await tool.execute({ query: ' Phantasialand ' });
     expect(getSearch.mock.calls[0].slice(0, 4)).toEqual(['Phantasialand', ['park'], 1, 10]);
     expect(getSearch.mock.calls[0][4].context.get(SKIP_AUTHORIZATION_HEADER)).toBe(true);
+    expect(getSearch.mock.calls[0][4].context.get(SKIP_PUBLIC_VIEW_SIMULATION)).toBe(true);
     expect(result).toEqual({ language: 'fr', parks: [{ name: 'Phantasialand', url: '/fr/park/park-1/phantasialand', city: 'Brühl', countryCode: null }] });
   });
 
