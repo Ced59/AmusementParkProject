@@ -1,6 +1,20 @@
 {
-  "version": "5.4.68",
+  "version": "5.4.69",
   "history": [
+    {
+      "version": "5.4.69",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Images plus légères",
+        "en": "Lighter images",
+        "de": "Kleinere Bilddateien",
+        "nl": "Lichtere afbeeldingen",
+        "it": "Immagini più leggere",
+        "es": "Imágenes más ligeras",
+        "pt": "Imagens mais leves",
+        "pl": "Lżejsze obrazy"
+      }
+    },
     {
       "version": "5.4.68",
       "releasedAt": "2026-10-02",

@@ -211,6 +211,8 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
     private const int MaxFileSizeKb = 300;
     private const int MaxLongEdge = 1920;
     private const int ResponsiveVariantVersion = 2;
+    private const int SmallResponsiveVariantVersion = 3;
+    private const int SmallResponsiveMaxWidth = 192;
     private const int SocialPreviewVariantVersion = 1;
     private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
     private static readonly TimeSpan SocialPreviewLeaseRetryDelay = TimeSpan.FromMilliseconds(500);
@@ -855,7 +857,7 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
 
     private async Task<(Stream Stream, string ContentType)?> GetResizedVariantAsync(string pathWithoutExtension, int width, bool supportsWebp, CancellationToken cancellationToken)
     {
-        foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetReadableFormats(supportsWebp))
+        foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetReadableFormats(supportsWebp, width))
         {
             string objectName = GetResponsiveVariantObjectName(pathWithoutExtension, width, format.extension);
             (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(objectName, format.contentType, cancellationToken);
@@ -973,23 +975,10 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
             await using Stream sourceStream = source.Value.Stream;
             using Image image = await Image.LoadAsync(sourceStream, cancellationToken);
 
-            if (image.Width <= width)
+            if (!PrepareResponsiveVariant(image, width))
             {
                 return null;
             }
-
-            double scale = (double)width / image.Width;
-            int targetHeight = Math.Max(
-                1,
-                (int)Math.Round(image.Height * scale));
-            image.Mutate(context =>
-            {
-                context.Resize(new ResizeOptions
-                {
-                    Size = new Size(width, targetHeight),
-                    Mode = ResizeMode.Max,
-                });
-            });
 
             byte[] content = await EncodeResponsiveVariantAsync(
                 image,
@@ -1538,12 +1527,13 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
         yield return $"{pathWithoutExtension}.jpeg";
         yield return $"{pathWithoutExtension}.png";
 
+        foreach (string objectName in GetResponsiveObjectNamesForDeletion(pathWithoutExtension))
+        {
+            yield return objectName;
+        }
+
         foreach (int width in ResponsiveWidths)
         {
-            yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.webp";
-            yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
-            yield return $"{pathWithoutExtension}.w{width}.webp";
-            yield return $"{pathWithoutExtension}.w{width}.jpg";
             yield return GetSocialPreviewValidationObjectName(pathWithoutExtension, width);
             yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
@@ -1564,6 +1554,12 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
         {
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.webp";
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
+            if (width <= SmallResponsiveMaxWidth)
+            {
+                yield return GetResponsiveVariantObjectName(pathWithoutExtension, width, "webp");
+                yield return GetResponsiveVariantObjectName(pathWithoutExtension, width, "jpg");
+            }
+
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
         }
@@ -1571,7 +1567,8 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
 
     internal static string GetResponsiveVariantObjectName(string pathWithoutExtension, int width, string extension)
     {
-        return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.{extension}";
+        int version = width <= SmallResponsiveMaxWidth ? SmallResponsiveVariantVersion : ResponsiveVariantVersion;
+        return $"{pathWithoutExtension}.w{width}.v{version}.{extension}";
     }
 
     internal static string GetSocialPreviewVariantObjectName(string pathWithoutExtension, int width)
@@ -1590,14 +1587,43 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
         yield return ("jpg", quality => new JpegEncoder { Quality = quality }, "image/jpeg");
     }
 
-    private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetReadableFormats(bool supportsWebp)
+    private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetReadableFormats(bool supportsWebp, int width)
     {
         if (supportsWebp)
         {
-            yield return ("webp", quality => new WebpEncoder { Quality = quality }, "image/webp");
+            yield return ("webp", quality => CreateResponsiveWebpEncoder(width, quality), "image/webp");
         }
 
         yield return ("jpg", quality => new JpegEncoder { Quality = quality }, "image/jpeg");
+    }
+
+    internal static WebpEncoder CreateResponsiveWebpEncoder(int width, int quality)
+    {
+        return new WebpEncoder
+        {
+            Quality = quality,
+            FileFormat = width <= SmallResponsiveMaxWidth ? WebpFileFormatType.Lossy : null,
+        };
+    }
+
+    internal static bool PrepareResponsiveVariant(Image image, int width)
+    {
+        if (image.Width <= width)
+        {
+            return width <= SmallResponsiveMaxWidth;
+        }
+
+        double scale = (double)width / image.Width;
+        int targetHeight = Math.Max(1, (int)Math.Round(image.Height * scale));
+        image.Mutate(context =>
+        {
+            context.Resize(new ResizeOptions
+            {
+                Size = new Size(width, targetHeight),
+                Mode = ResizeMode.Max,
+            });
+        });
+        return true;
     }
 
     internal static int? NormalizeResponsiveWidth(int? width)

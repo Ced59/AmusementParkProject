@@ -173,9 +173,11 @@ describe('ImagesApiService', () => {
   });
 
   it('allows small logo variants without adding them to every photo srcset', () => {
-    expect(service.buildImageUrl('logo-1', { width: 64 })).toBe(`${environment.imagesBaseUrl}/logo-1?width=64&v=2`);
+    expect(service.buildImageUrl('logo-1', { width: 64 })).toBe(`${environment.imagesBaseUrl}/logo-1?width=64&v=3`);
+    expect(service.buildImageUrl('logo-1', { width: 192 })).toBe(`${environment.imagesBaseUrl}/logo-1?width=192&v=3`);
+    expect(service.buildImageUrl('photo-1', { width: 193 })).toBe(`${environment.imagesBaseUrl}/photo-1?width=193&v=2`);
     expect(service.buildImageSrcSet('logo-1', [64, 128, 192])).toBe(
-      [64, 128, 192].map(width => `${environment.imagesBaseUrl}/logo-1?width=${width}&v=2 ${width}w`).join(', ')
+      [64, 128, 192].map(width => `${environment.imagesBaseUrl}/logo-1?width=${width}&v=3 ${width}w`).join(', ')
     );
     expect(service.buildImageUrl('logo-1', { width: 63 })).toBe(`${environment.imagesBaseUrl}/logo-1`);
   });

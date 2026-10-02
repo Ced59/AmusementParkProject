@@ -40,6 +40,8 @@ interface ImageSrcSetOptions {
 }
 
 const ResponsiveImageVersion = 2;
+const SmallResponsiveImageVersion = 3;
+const SmallResponsiveImageMaxWidth = 192;
 const ResponsiveImageWidths: readonly number[] = [320, 480, 640, 800, 960, 1280, 1600, 1920];
 
 @Injectable({
@@ -165,7 +167,8 @@ export class ImagesApiService {
     const queryParts: string[] = [];
 
     if (width !== null) {
-      queryParts.push(`width=${width}`, `v=${ResponsiveImageVersion}`);
+      const version: number = width <= SmallResponsiveImageMaxWidth ? SmallResponsiveImageVersion : ResponsiveImageVersion;
+      queryParts.push(`width=${width}`, `v=${version}`);
     }
 
     if (retryAttempt !== null) {
