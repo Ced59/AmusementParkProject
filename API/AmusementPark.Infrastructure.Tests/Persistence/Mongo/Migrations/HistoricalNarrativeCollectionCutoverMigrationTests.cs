@@ -27,6 +27,9 @@ public sealed class HistoricalNarrativeCollectionCutoverMigrationTests
         Assert.Equal(
             HistoricalNarrativeCanonicalizationState.PendingReview.ToString(),
             narrative["canonicalizationState"].AsString);
+        Assert.Equal(
+            HistoricalNarrativeCollectionCutoverMigration.CutoverVersion,
+            narrative["cutoverVersion"].AsString);
         Assert.False(narrative.Contains("migrationVersion"));
         Assert.False(narrative.Contains("migrationWarnings"));
         Assert.True(source.Contains("migrationVersion"));

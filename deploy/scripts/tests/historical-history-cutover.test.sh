@@ -39,11 +39,23 @@ if ! grep -Fq 'arm-cutover --resource historical-history' "${deploy_script}"; th
 fi
 
 resume_recovery_line="$(grep -n 'cutover-pending --resource historical-history' "${deploy_script}" | head -n 1 | cut -d: -f1)"
-migration_check_line="$(grep -n 'getCollection("historical-migrations")' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+cutover_check_line="$(grep -n 'history-events-cutover-source-hist-04-v1' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${resume_recovery_line}" ] \
-  || [ -z "${migration_check_line}" ] \
-  || [ "${resume_recovery_line}" -ge "${migration_check_line}" ]; then
-  echo 'A resumed historical cutover must restore its rollback flag before accepting a completed migration.' >&2
+  || [ -z "${cutover_check_line}" ] \
+  || [ "${resume_recovery_line}" -ge "${cutover_check_line}" ]; then
+  echo 'A resumed historical cutover must restore its rollback flag before checking the physical source.' >&2
+  exit 1
+fi
+
+deploy_transaction_line="$(grep -n 'deployment_transaction.py deploy' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+completion_line="$(grep -n '^complete_historical_history_cutover$' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+rollback_disarm_line="$(grep -n '^historical_history_cutover_started=false$' "${deploy_script}" | tail -n 1 | cut -d: -f1)"
+if [ -z "${deploy_transaction_line}" ] \
+  || [ -z "${completion_line}" ] \
+  || [ -z "${rollback_disarm_line}" ] \
+  || [ "${deploy_transaction_line}" -ge "${completion_line}" ] \
+  || [ "${completion_line}" -ge "${rollback_disarm_line}" ]; then
+  echo 'Historical collections may be removed only after promotion and before rollback is disarmed.' >&2
   exit 1
 fi
 
@@ -60,6 +72,8 @@ done
 
 rollback_script="${deploy_root}/scripts/rollback-history-5.3.82.js"
 for required_filter in \
+  "cutoverVersion: canonicalCutoverVersion" \
+  "narrativeContentId: { \$in: stagedNarrativeIds }" \
   "migrationVersion: migrationId" \
   "publicationMethodologyVersion: methodologyVersion" \
   "'transitionReviewEvent.actorUserId': migrationActor" \
@@ -67,6 +81,18 @@ for required_filter in \
   "renameCollection(legacyCollectionName, false)"; do
   if ! grep -Fq "${required_filter}" "${rollback_script}"; then
     echo "Historical rollback is missing its targeted filter: ${required_filter}" >&2
+    exit 1
+  fi
+done
+
+completion_script="${deploy_root}/scripts/complete-history-cutover-5.4.78.js"
+for required_completion_step in \
+  "history-events-cutover-source-hist-04-v1" \
+  "history-events-backup-hist-04-v1" \
+  "\$unset: { cutoverVersion: '' }" \
+  "deletedMigrationStates"; do
+  if ! grep -Fq "${required_completion_step}" "${completion_script}"; then
+    echo "Historical completion is missing its canonical cleanup step: ${required_completion_step}" >&2
     exit 1
   fi
 done

@@ -1228,8 +1228,6 @@ private readonly IMongoDatabase database;
                 migratedHistoricalFactProjectionCount);
         }
 
-        await this.historicalNarrativeCollectionCutoverMigration.CompleteAsync(cancellationToken);
-
         await this.InitializeHistoryEventsIndexesAsync(cancellationToken);
 
         AttractionAccessConditionProvenanceMigration parkItemAccessConditionMigration =

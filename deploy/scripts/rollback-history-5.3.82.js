@@ -5,6 +5,7 @@ const frozenCollectionName = 'history-events-cutover-source-hist-04-v1';
 const migrationId = 'hist-04-history-events-v1';
 const migrationActor = 'system:hist-04-migration';
 const methodologyVersion = 'hist-v1-legacy';
+const canonicalCutoverVersion = 'hist-canonical-cutover-v1';
 const legacyInfo = database.getCollectionInfos({ name: legacyCollectionName });
 const frozenExists = database.getCollectionInfos({ name: frozenCollectionName }).length > 0;
 
@@ -27,6 +28,29 @@ const sources = database.getCollection('historical-sources');
 const anomalies = database.getCollection('historical-migration-anomalies');
 const migrations = database.getCollection('historical-migrations');
 const backup = database.getCollection('history-events-backup-hist-04-v1');
+
+const stagedNarrativeIds = narratives
+  .find({ cutoverVersion: canonicalCutoverVersion }, { _id: 1 })
+  .toArray()
+  .map(document => document._id.toString());
+const stagedFacts = stagedNarrativeIds.length === 0
+  ? []
+  : facts.find(
+    { narrativeContentId: { $in: stagedNarrativeIds } },
+    { sources: 1 },
+  ).toArray();
+const stagedSourceIds = [...new Set(stagedFacts.flatMap(document =>
+  (document.sources || []).map(reference => reference.sourceId),
+))];
+const canonicalFactResult = stagedNarrativeIds.length === 0
+  ? { deletedCount: 0 }
+  : facts.deleteMany({ narrativeContentId: { $in: stagedNarrativeIds } });
+const canonicalSourceResult = stagedSourceIds.length === 0
+  ? { deletedCount: 0 }
+  : sources.deleteMany({ sourceId: { $in: stagedSourceIds } });
+const canonicalNarrativeResult = narratives.deleteMany({
+  cutoverVersion: canonicalCutoverVersion,
+});
 
 const narrativeResult = narratives.deleteMany({ migrationVersion: migrationId });
 const factResult = facts.deleteMany({
@@ -64,8 +88,11 @@ if (legacyInfo.length === 1 && legacyInfo[0].type === 'view') {
 printjson({
   legacyCollectionRestored,
   deletedNarratives: narrativeResult.deletedCount,
+  deletedCanonicalNarratives: canonicalNarrativeResult.deletedCount,
   deletedFacts: factResult.deletedCount,
+  deletedCanonicalFacts: canonicalFactResult.deletedCount,
   deletedSources: sourceResult.deletedCount,
+  deletedCanonicalSources: canonicalSourceResult.deletedCount,
   deletedAnomalies: anomalyResult.deletedCount,
   deletedMigrationStates: migrationResult.deletedCount,
   deletedBackupDocuments: backupResult.deletedCount,

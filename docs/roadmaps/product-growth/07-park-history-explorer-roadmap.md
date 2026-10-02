@@ -754,9 +754,10 @@ liés et indicateurs de mise en avant sont placés dans
 `historical-narratives`, puis immédiatement transformés en sources et faits
 HIST ordinaires. La collection d'origine, son éventuelle sauvegarde et les
 anciens registres de migration sont supprimés seulement après la réussite de
-la canonicalisation et de la projection publique. Un échec conserve donc
-l'entrée récupérable, tandis qu'un démarrage réussi ne laisse aucun second
-système historique actif.
+la canonicalisation, de la projection publique et de la promotion de la
+nouvelle autorité applicative. Un échec avant promotion conserve donc l'entrée
+récupérable et restaure l'autorité précédente, tandis qu'un déploiement réussi
+ne laisse aucun second système historique actif.
 
 Chaque type d'événement automatiquement convertible possède une correspondance
 explicite vers un fait structuré. Une ouverture saisonnière reste bloquée pour

@@ -285,22 +285,22 @@ prepare_personal_ranking_cutover() {
 }
 
 prepare_historical_history_cutover() {
-  local migration_completed=""
+  local cutover_required=""
   if python3 ./scripts/deployment_transaction.py cutover-pending --resource historical-history; then
     historical_history_cutover_started=true
   fi
 
-  migration_completed="$(compose exec -T \
+  cutover_required="$(compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \
       --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      --eval 'const state=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark").getCollection("historical-migrations").findOne({_id:"hist-04-history-events-v1"}); print(state && state.completedAtUtc ? "true" : "false");' \
+      --eval 'const d=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark"); const names=["historyEvents","history-events-cutover-source-hist-04-v1"]; print(d.getCollectionInfos().some(info => names.includes(info.name)) ? "true" : "false");' \
     | tail -n 1)"
-  if [ "${migration_completed}" = "true" ]; then
-    echo "Legacy historical replacement is already complete."
+  if [ "${cutover_required}" != "true" ]; then
+    echo "Canonical historical cutover is already complete."
     return 0
   fi
 
@@ -317,6 +317,18 @@ prepare_historical_history_cutover() {
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
       < ./scripts/freeze-legacy-history-5.3.82.js
+}
+
+complete_historical_history_cutover() {
+  echo "Removing superseded historical collections after canonical authority was promoted..."
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      < ./scripts/complete-history-cutover-5.4.78.js
 }
 
 run_legacy_enum_migrations() {
@@ -521,6 +533,7 @@ else
   echo "Recovering an exposed authority; the legacy cutover must not be reverted or frozen again."
 fi
 python3 ./scripts/deployment_transaction.py deploy
+complete_historical_history_cutover
 personal_ranking_cutover_started=false
 historical_history_cutover_started=false
 

@@ -298,6 +298,9 @@ public sealed class MongoDbSettings
     public string HistoricalEventsBackupCollectionName { get; set; } =
         "history-events-backup-hist-04-v1";
 
+    public string HistoricalFrozenSourceCollectionName { get; set; } =
+        "history-events-cutover-source-hist-04-v1";
+
     /// <summary>
     /// Lie la configuration et applique des valeurs par défaut.
     /// </summary>

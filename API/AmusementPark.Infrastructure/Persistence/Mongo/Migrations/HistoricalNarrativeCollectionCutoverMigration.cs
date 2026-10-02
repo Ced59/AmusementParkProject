@@ -12,6 +12,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Migrations;
 /// </summary>
 public sealed class HistoricalNarrativeCollectionCutoverMigration
 {
+    internal const string CutoverVersion = "hist-canonical-cutover-v1";
+
     private readonly IMongoDatabase database;
     private readonly MongoDbSettings settings;
     private readonly ILogger<HistoricalNarrativeCollectionCutoverMigration> logger;
@@ -43,6 +45,11 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
             this.settings.HistoricalEventsBackupCollectionName,
             destination,
             cancellationToken);
+        importedCount += await this.StageCollectionAsync(
+            collectionNames,
+            this.settings.HistoricalFrozenSourceCollectionName,
+            destination,
+            cancellationToken);
 
         if (importedCount > 0)
         {
@@ -52,27 +59,6 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
         }
 
         return importedCount;
-    }
-
-    public async Task CompleteAsync(CancellationToken cancellationToken)
-    {
-        HashSet<string> collectionNames = await this.GetCollectionNamesAsync(cancellationToken);
-        string[] supersededCollections =
-        {
-            this.settings.HistoryEventsCollectionName,
-            this.settings.HistoricalEventsBackupCollectionName,
-            this.settings.HistoricalMigrationsCollectionName,
-            this.settings.HistoricalMigrationAnomaliesCollectionName,
-        };
-        foreach (string collectionName in supersededCollections
-                     .Where(collectionNames.Contains)
-                     .Distinct(StringComparer.Ordinal))
-        {
-            await this.database.DropCollectionAsync(collectionName, cancellationToken);
-            this.logger.LogInformation(
-                "Removed superseded historical collection {CollectionName} after canonical cutover.",
-                collectionName);
-        }
     }
 
     internal static BsonDocument PrepareNarrative(BsonDocument source)
@@ -86,6 +72,7 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
         BsonDocument narrative = source.DeepClone().AsBsonDocument;
         narrative["canonicalizationState"] =
             HistoricalNarrativeCanonicalizationState.PendingReview.ToString();
+        narrative["cutoverVersion"] = CutoverVersion;
         narrative.Remove("migrationVersion");
         narrative.Remove("migrationWarnings");
         return narrative;
