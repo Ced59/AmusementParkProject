@@ -2,7 +2,8 @@
   <section class="language-entry__panel" aria-labelledby="language-entry-title">
     <img
       class="language-entry__logo"
-      src="assets/general-icon/logo-amusementpark-ui.webp"
+      src="/assets/general-icon/logo-amusementpark-language-136.webp"
+      srcset="/assets/general-icon/logo-amusementpark-language-136.webp 1x, /assets/general-icon/logo-amusementpark-language-272.webp 2x, /assets/general-icon/logo-amusementpark-language-408.webp 3x"
       width="184"
       height="184"
       alt="Amusement Parks">
@@ -13,11 +14,10 @@
       Choisis ta langue · Elige tu idioma · Wähle deine Sprache
     </p>
 
-    <div class="language-entry__grid" role="list">
+    <div class="language-entry__grid">
       @for (language of languages; track language.value) {
         <a
           class="language-entry__choice"
-          role="listitem"
           [routerLink]="['/', language.value, 'home']"
           [attr.lang]="language.code"
           [attr.aria-label]="language.invitation"
