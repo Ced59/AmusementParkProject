@@ -1,6 +1,20 @@
 {
-  "version": "5.4.58",
+  "version": "5.4.59",
   "history": [
+    {
+      "version": "5.4.59",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Affichage plus stable des pages publiques",
+        "en": "More stable public pages",
+        "de": "Stabilere Anzeige öffentlicher Seiten",
+        "nl": "Stabielere weergave van openbare pagina’s",
+        "it": "Visualizzazione più stabile delle pagine pubbliche",
+        "es": "Visualización más estable de las páginas públicas",
+        "pt": "Apresentação mais estável das páginas públicas",
+        "pl": "Stabilniejsze wyświetlanie stron publicznych"
+      }
+    },
     {
       "version": "5.4.58",
       "releasedAt": "2026-10-02",

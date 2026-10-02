@@ -94,14 +94,6 @@ export class PublicLiveStateFacade {
       return;
     }
 
-    this.stateSignal.update((state: PublicLiveViewState) => ({
-      ...state,
-      kind: state.target ? 'ready' : 'loading',
-      isRefreshing: state.target !== null,
-      isOnline: true,
-      refreshFailed: false
-    }));
-
     const targetId: string = this.currentTargetId;
     const mode: PublicLiveDisplayMode = this.currentMode;
     const request: Observable<PublicLiveLoadResult | null> = this.liveDataPort.isPublicReadEnabled().pipe(
@@ -109,6 +101,15 @@ export class PublicLiveStateFacade {
         if (!enabled) {
           return of(null);
         }
+
+        this.stateSignal.update((state: PublicLiveViewState) => ({
+          ...state,
+          kind: state.target ? 'ready' : 'loading',
+          isRefreshing: state.target !== null,
+          isOnline: navigator.onLine,
+          refreshFailed: false
+        }));
+
         return mode === 'park'
           ? forkJoin({
             target: this.liveDataPort.getPark(targetId),
