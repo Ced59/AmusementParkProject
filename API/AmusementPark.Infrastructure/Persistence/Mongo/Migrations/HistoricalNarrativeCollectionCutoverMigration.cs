@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using Microsoft.Extensions.Logging;
@@ -13,6 +14,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Migrations;
 public sealed class HistoricalNarrativeCollectionCutoverMigration
 {
     internal const string CutoverVersion = "hist-canonical-cutover-v1";
+    internal const string PreviousCanonicalFactIdField = "cutoverPreviousCanonicalFactId";
 
     private readonly IMongoDatabase database;
     private readonly MongoDbSettings settings;
@@ -33,6 +35,15 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
         HashSet<string> collectionNames = await this.GetCollectionNamesAsync(cancellationToken);
         IMongoCollection<BsonDocument> destination = this.database.GetCollection<BsonDocument>(
             this.settings.HistoricalNarrativesCollectionName);
+        IMongoCollection<BsonDocument> narrativeBackup = this.database.GetCollection<BsonDocument>(
+            this.settings.HistoricalNarrativeCutoverBackupCollectionName);
+        FilterDefinition<BsonDocument> candidateFilter = BuildCandidateFilter();
+        List<BsonDocument> existingCandidates = await this.BackupDocumentsAsync(
+            destination,
+            narrativeBackup,
+            candidateFilter,
+            cancellationToken);
+        await MarkExistingCandidatesAsync(destination, existingCandidates, cancellationToken);
         long importedCount = 0;
 
         importedCount += await this.StageCollectionAsync(
@@ -40,6 +51,7 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
             this.settings.HistoryEventsCollectionName,
             destination,
             cancellationToken);
+
         importedCount += await this.StageCollectionAsync(
             collectionNames,
             this.settings.HistoricalEventsBackupCollectionName,
@@ -51,6 +63,9 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
             destination,
             cancellationToken);
 
+        await this.BackupReferencedCanonicalDocumentsAsync(destination, cancellationToken);
+        await this.MarkBackupStageCompleteAsync(cancellationToken);
+
         if (importedCount > 0)
         {
             this.logger.LogInformation(
@@ -59,6 +74,22 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
         }
 
         return importedCount;
+    }
+
+    private async Task MarkBackupStageCompleteAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<BsonDocument> state = this.database.GetCollection<BsonDocument>(
+            this.settings.HistoricalCutoverStateCollectionName);
+        BsonDocument document = new BsonDocument
+        {
+            { "_id", CutoverVersion },
+            { "backupStageCompletedAtUtc", DateTime.UtcNow },
+        };
+        await state.ReplaceOneAsync(
+            Builders<BsonDocument>.Filter.Eq("_id", CutoverVersion),
+            document,
+            new ReplaceOptions { IsUpsert = true },
+            cancellationToken);
     }
 
     internal static BsonDocument PrepareNarrative(BsonDocument source)
@@ -73,9 +104,186 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
         narrative["canonicalizationState"] =
             HistoricalNarrativeCanonicalizationState.PendingReview.ToString();
         narrative["cutoverVersion"] = CutoverVersion;
+        if (narrative.TryGetValue("canonicalFactId", out BsonValue? canonicalFactId)
+            && canonicalFactId.IsString
+            && !string.IsNullOrWhiteSpace(canonicalFactId.AsString))
+        {
+            narrative[PreviousCanonicalFactIdField] = canonicalFactId.AsString;
+        }
+
         narrative.Remove("migrationVersion");
         narrative.Remove("migrationWarnings");
         return narrative;
+    }
+
+    internal static FilterDefinition<BsonDocument> BuildCandidateFilter()
+    {
+        FilterDefinitionBuilder<BsonDocument> builder = Builders<BsonDocument>.Filter;
+        return builder.Ne("cutoverVersion", CutoverVersion)
+            & (builder.Ne(
+                "migrationVersion",
+                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion)
+            | builder.Nin(
+                "canonicalizationState",
+                new[]
+                {
+                    HistoricalNarrativeCanonicalizationState.Canonicalized.ToString(),
+                    HistoricalNarrativeCanonicalizationState.Blocked.ToString(),
+                }));
+    }
+
+    private static async Task MarkExistingCandidatesAsync(
+        IMongoCollection<BsonDocument> destination,
+        IReadOnlyCollection<BsonDocument> candidates,
+        CancellationToken cancellationToken)
+    {
+        if (candidates.Count == 0)
+        {
+            return;
+        }
+
+        List<WriteModel<BsonDocument>> writes = new List<WriteModel<BsonDocument>>(candidates.Count);
+        foreach (BsonDocument candidate in candidates)
+        {
+            BsonValue identifier = candidate["_id"];
+            UpdateDefinition<BsonDocument> update = Builders<BsonDocument>.Update
+                .Set("cutoverVersion", CutoverVersion);
+            if (candidate.TryGetValue("canonicalFactId", out BsonValue? canonicalFactId)
+                && canonicalFactId.IsString
+                && !string.IsNullOrWhiteSpace(canonicalFactId.AsString))
+            {
+                update = update.Set(PreviousCanonicalFactIdField, canonicalFactId.AsString);
+            }
+            else
+            {
+                update = update.Unset(PreviousCanonicalFactIdField);
+            }
+
+            writes.Add(new UpdateOneModel<BsonDocument>(
+                Builders<BsonDocument>.Filter.Eq("_id", identifier),
+                update));
+        }
+
+        await destination.BulkWriteAsync(
+            writes,
+            new BulkWriteOptions { IsOrdered = true },
+            cancellationToken);
+    }
+
+    private async Task BackupReferencedCanonicalDocumentsAsync(
+        IMongoCollection<BsonDocument> narratives,
+        CancellationToken cancellationToken)
+    {
+        List<BsonDocument> stagedNarratives = await narratives
+            .Find(Builders<BsonDocument>.Filter.Eq("cutoverVersion", CutoverVersion))
+            .Project(new BsonDocument(PreviousCanonicalFactIdField, 1))
+            .ToListAsync(cancellationToken);
+        string[] factIds = stagedNarratives
+            .Where(static narrative =>
+                narrative.TryGetValue(PreviousCanonicalFactIdField, out BsonValue? value)
+                && value.IsString
+                && !string.IsNullOrWhiteSpace(value.AsString))
+            .Select(static narrative => narrative[PreviousCanonicalFactIdField].AsString)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (factIds.Length == 0)
+        {
+            return;
+        }
+
+        IMongoCollection<BsonDocument> facts = this.database.GetCollection<BsonDocument>(
+            this.settings.HistoricalFactsCollectionName);
+        IMongoCollection<BsonDocument> factBackup = this.database.GetCollection<BsonDocument>(
+            this.settings.HistoricalFactCutoverBackupCollectionName);
+        List<string> backedFactIds = await factBackup
+            .Distinct<string>(
+                "factId",
+                Builders<BsonDocument>.Filter.In("factId", factIds))
+            .ToListAsync(cancellationToken);
+        string[] factIdsToBackup = factIds
+            .Except(backedFactIds, StringComparer.Ordinal)
+            .ToArray();
+        if (factIdsToBackup.Length > 0)
+        {
+            await this.BackupDocumentsAsync(
+                facts,
+                factBackup,
+                Builders<BsonDocument>.Filter.In("factId", factIdsToBackup),
+                cancellationToken);
+        }
+
+        List<BsonDocument> backedFacts = await factBackup
+            .Find(Builders<BsonDocument>.Filter.In("factId", factIds))
+            .ToListAsync(cancellationToken);
+        string[] sourceIds = backedFacts
+            .Where(static fact => fact.TryGetValue("sources", out BsonValue? value) && value.IsBsonArray)
+            .SelectMany(static fact => fact["sources"].AsBsonArray)
+            .Where(static source =>
+                source.IsBsonDocument
+                && source.AsBsonDocument.TryGetValue("sourceId", out BsonValue? value)
+                && value.IsString
+                && !string.IsNullOrWhiteSpace(value.AsString))
+            .Select(static source => source.AsBsonDocument["sourceId"].AsString)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (sourceIds.Length == 0)
+        {
+            return;
+        }
+
+        IMongoCollection<BsonDocument> sources = this.database.GetCollection<BsonDocument>(
+            this.settings.HistoricalSourcesCollectionName);
+        IMongoCollection<BsonDocument> sourceBackup = this.database.GetCollection<BsonDocument>(
+            this.settings.HistoricalSourceCutoverBackupCollectionName);
+        List<string> backedSourceIds = await sourceBackup
+            .Distinct<string>(
+                "sourceId",
+                Builders<BsonDocument>.Filter.In("sourceId", sourceIds))
+            .ToListAsync(cancellationToken);
+        string[] sourceIdsToBackup = sourceIds
+            .Except(backedSourceIds, StringComparer.Ordinal)
+            .ToArray();
+        if (sourceIdsToBackup.Length > 0)
+        {
+            await this.BackupDocumentsAsync(
+                sources,
+                sourceBackup,
+                Builders<BsonDocument>.Filter.In("sourceId", sourceIdsToBackup),
+                cancellationToken);
+        }
+    }
+
+    private async Task<List<BsonDocument>> BackupDocumentsAsync(
+        IMongoCollection<BsonDocument> source,
+        IMongoCollection<BsonDocument> backup,
+        FilterDefinition<BsonDocument> filter,
+        CancellationToken cancellationToken)
+    {
+        List<BsonDocument> documents = await source.Find(filter).ToListAsync(cancellationToken);
+        if (documents.Count == 0)
+        {
+            return documents;
+        }
+
+        List<WriteModel<BsonDocument>> writes = new List<WriteModel<BsonDocument>>(documents.Count);
+        foreach (BsonDocument document in documents)
+        {
+            BsonDocument valuesToInsert = document.DeepClone().AsBsonDocument;
+            BsonValue identifier = valuesToInsert["_id"];
+            valuesToInsert.Remove("_id");
+            writes.Add(new UpdateOneModel<BsonDocument>(
+                Builders<BsonDocument>.Filter.Eq("_id", identifier),
+                new BsonDocument("$setOnInsert", valuesToInsert))
+            {
+                IsUpsert = true,
+            });
+        }
+
+        await backup.BulkWriteAsync(
+            writes,
+            new BulkWriteOptions { IsOrdered = true },
+            cancellationToken);
+        return documents;
     }
 
     private async Task<long> StageCollectionAsync(

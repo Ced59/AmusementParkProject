@@ -214,7 +214,7 @@ rollback_incomplete_historical_history_cutover() {
   # removing migration-owned output and restoring legacy write authority.
   python3 ./scripts/deployment_transaction.py quiesce-unexposed
 
-  echo "Deployment did not complete; restoring the legacy historical authority..." >&2
+  echo "Deployment did not complete; restoring the pre-cutover historical state..." >&2
   compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \
@@ -222,7 +222,7 @@ rollback_incomplete_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/rollback-history-5.3.82.js
+      < ./scripts/rollback-history-cutover-5.4.79.js
   python3 ./scripts/deployment_transaction.py cutover-restored --resource historical-history
   historical_history_cutover_started=false
 }
@@ -297,14 +297,14 @@ prepare_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      --eval 'const d=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark"); const names=["historyEvents","history-events-cutover-source-hist-04-v1"]; print(d.getCollectionInfos().some(info => names.includes(info.name)) ? "true" : "false");' \
+      --eval 'const d=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark"); const names=["historyEvents","history-events-cutover-source-hist-04-v1"]; const hasSource=d.getCollectionInfos().some(info => names.includes(info.name)); const narratives=d.getCollection("historical-narratives"); const total=narratives.countDocuments({}); const pending=narratives.countDocuments({$or:[{migrationVersion:{$ne:"hist-canonical-v2"}},{canonicalizationState:{$nin:["Canonicalized","Blocked"]}}]}); print(hasSource || total === 0 || pending > 0 ? "true" : "false");' \
     | tail -n 1)"
   if [ "${cutover_required}" != "true" ]; then
     echo "Canonical historical cutover is already complete."
     return 0
   fi
 
-  echo "Freezing legacy historical writes before zero-downtime cutover..."
+  echo "Freezing historical write authorities before zero-downtime cutover..."
   # Arm rollback before collMod: MongoDB may apply the validator even if the
   # client loses the command response and exits with an error.
   python3 ./scripts/deployment_transaction.py arm-cutover --resource historical-history
@@ -316,7 +316,7 @@ prepare_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/freeze-legacy-history-5.3.82.js
+      < ./scripts/freeze-history-authorities-5.4.79.js
 }
 
 complete_historical_history_cutover() {
@@ -328,7 +328,7 @@ complete_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/complete-history-cutover-5.4.78.js
+      < ./scripts/complete-history-cutover-5.4.79.js
 }
 
 run_legacy_enum_migrations() {

@@ -17,6 +17,7 @@ public sealed class HistoricalNarrativeCollectionCutoverMigrationTests
             { "migrationVersion", "hist-04-history-events-v1" },
             { "migrationWarnings", new BsonArray { "old-warning" } },
             { "canonicalizationState", "Canonicalized" },
+            { "canonicalFactId", "fact-before-cutover" },
         };
 
         BsonDocument narrative = HistoricalNarrativeCollectionCutoverMigration.PrepareNarrative(
@@ -30,6 +31,10 @@ public sealed class HistoricalNarrativeCollectionCutoverMigrationTests
         Assert.Equal(
             HistoricalNarrativeCollectionCutoverMigration.CutoverVersion,
             narrative["cutoverVersion"].AsString);
+        Assert.Equal(
+            "fact-before-cutover",
+            narrative[HistoricalNarrativeCollectionCutoverMigration.PreviousCanonicalFactIdField]
+                .AsString);
         Assert.False(narrative.Contains("migrationVersion"));
         Assert.False(narrative.Contains("migrationWarnings"));
         Assert.True(source.Contains("migrationVersion"));
@@ -43,5 +48,19 @@ public sealed class HistoricalNarrativeCollectionCutoverMigrationTests
                 new BsonDocument("ownerId", "park-1")));
 
         Assert.Contains("identifier", exception.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void PrepareNarrative_WhenNoPreviousFactExists_ShouldNotInventRollbackReference()
+    {
+        BsonDocument narrative = HistoricalNarrativeCollectionCutoverMigration.PrepareNarrative(
+            new BsonDocument
+            {
+                { "_id", "event-without-fact" },
+                { "ownerId", "park-1" },
+            });
+
+        Assert.False(narrative.Contains(
+            HistoricalNarrativeCollectionCutoverMigration.PreviousCanonicalFactIdField));
     }
 }

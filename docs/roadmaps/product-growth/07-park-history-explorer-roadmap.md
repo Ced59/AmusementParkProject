@@ -777,12 +777,17 @@ ou marquée non pertinente ne peut pas être exposée par accident. Les
 conversions impossibles restent administrables comme récits bloqués : elles ne
 sont ni supprimées ni inventées.
 
-Les écritures de préparation utilisent l'identité MongoDB d'origine et
-`$setOnInsert` : une reprise ne duplique pas un récit et ne remplace jamais une
-version canonique plus récente. Une interruption avant la fin rejoue seulement
-la partie manquante au prochain démarrage. MongoDB est ainsi mis à jour
-automatiquement par le déploiement, sans manipulation manuelle ni coexistence
-durable de deux moteurs.
+Le déploiement gèle à la fois l'ancienne collection source et les écritures non
+canoniques dans `historical-narratives`. Avant toute conversion, il sauvegarde
+exactement les récits concernés ainsi que toutes les révisions de faits et de
+sources auxquelles ils étaient liés. Les écritures de préparation utilisent
+l'identité MongoDB d'origine et `$setOnInsert` : une reprise ne duplique pas un
+récit et ne remplace jamais une version canonique plus récente. Si le candidat
+échoue, les sauvegardes restaurent l'état antérieur document pour document ; si
+la promotion réussit, elles sont supprimées avec toutes les collections et
+registres HIST-04 devenus inutiles. MongoDB est ainsi mis à jour automatiquement
+par le déploiement, sans manipulation manuelle ni coexistence durable de deux
+moteurs.
 
 ### Canonisation définitive des alimentations — 2 octobre 2026
 
@@ -790,7 +795,9 @@ La voie transitoire de `HIST-04` est retirée du fonctionnement actif. Une
 migration idempotente reprend tous les récits existants, crée des sources et
 faits de révision `Ordinary`, conserve la publication seulement lorsqu'une
 preuve valide et une cible publique le permettent, puis retire leurs anciennes
-révisions actives. Les alimentations Park Graph, attraction autonome et édition
+révisions actives. Aucun service, contrôleur, dépôt, fallback ou tâche de fond
+HIST-04 ne reste enregistré après la bascule. Les alimentations Park Graph,
+attraction autonome et édition
 unitaire écrivent désormais directement dans ce modèle canonique. La lecture
 publique, le calcul des snapshots et le bouton d'accès à l'histoire n'utilisent
 plus aucun fallback historique.
