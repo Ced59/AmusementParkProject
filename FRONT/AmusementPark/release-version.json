@@ -1,6 +1,20 @@
 {
-  "version": "5.4.51",
+  "version": "5.4.52",
   "history": [
+    {
+      "version": "5.4.52",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Les cartes de localisation se chargent au bon moment.",
+        "en": "Location maps load when needed.",
+        "de": "Standortkarten laden bei Bedarf.",
+        "nl": "Locatiekaarten laden wanneer nodig.",
+        "it": "Le mappe di posizione si caricano quando servono.",
+        "es": "Los mapas de ubicación cargan cuando hacen falta.",
+        "pt": "Os mapas de localização carregam quando são necessários.",
+        "pl": "Mapy lokalizacji wczytują się wtedy, gdy są potrzebne."
+      }
+    },
     {
       "version": "5.4.51",
       "releasedAt": "2026-10-02",

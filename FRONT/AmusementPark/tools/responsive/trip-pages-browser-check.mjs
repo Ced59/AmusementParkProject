@@ -14,6 +14,7 @@ const projectRoot = process.cwd();
 const componentStyles = [
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
+  'src/app/features/public/parks/ui/park-location-section.component.scss',
   'src/app/features/public/ratings/ui/rating-stars.component.scss',
   'src/app/ui/layouts/cookie-consent-banner/cookie-consent-banner.component.scss',
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
@@ -334,6 +335,9 @@ const fixtureMarkup = `
       <div class="ui-featured-park-card__logo-frame"><img class="ui-featured-park-card__logo" alt="Logo en attente de chargement" data-check-bound></div>
     </article>
   </section>
+  <section class="surface" data-check-bound>
+    <div class="park-location-card__map-placeholder" data-check-bound aria-hidden="true"></div>
+  </section>
   <section class="app-cookie-consent" data-check-bound>
     <div class="app-cookie-consent__inner" data-check-bound>
       <div class="app-cookie-consent__icon" aria-hidden="true">i</div>
@@ -387,6 +391,11 @@ const evaluationScript = `
       const bounds = logo.getBoundingClientRect();
       if (bounds.height < 40 || bounds.width < 40) {
         violations.push({ selector: logo.className, reason: 'unreserved-logo-space', width: bounds.width, height: bounds.height });
+      }
+    }
+    for (const placeholder of document.querySelectorAll('.park-location-card__map-placeholder')) {
+      if (placeholder.getBoundingClientRect().height !== 240) {
+        violations.push({ selector: placeholder.className, reason: 'unreserved-map-space' });
       }
     }
     if (viewportRight <= 576) {

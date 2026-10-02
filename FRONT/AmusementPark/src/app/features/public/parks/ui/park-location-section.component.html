@@ -12,11 +12,17 @@
 
     <div class="park-location-card__body info-card__body">
       <app-ui-map-slot [available]="hasCoordinates" minHeight="15rem">
-        <app-leaflet-static-map
-          [center]="center"
-          [zoom]="13"
-          [markers]="markers">
-        </app-leaflet-static-map>
+        @if (hasCoordinates) {
+          @defer (on viewport) {
+            <app-leaflet-static-map
+              [center]="center"
+              [zoom]="13"
+              [markers]="markers">
+            </app-leaflet-static-map>
+          } @placeholder {
+            <div class="park-location-card__map-placeholder" aria-hidden="true"></div>
+          }
+        }
       </app-ui-map-slot>
 
       @if (hasCoordinates) {
