@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 72 |
+| Fiches privées existantes à intégrer | 82 | 62 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **162** |
+| **Total** | **225** | **152** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,16 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Family Park Saint-Martin-le-Beau — `2f436a73-8a36-4adc-9723-f14d569ed4f8` — identité et implantation actuelle à réconcilier
-- [ ] Fééryland — `711877e8-6309-4f30-8f4f-8cf24c99373d`
-- [ ] Fermy Land — `1345965d-9d8e-43e1-a1d3-13f0b5a5bdd4`
-- [ ] Fiesta Parc — `0baa84a5-ee92-4959-9f22-341cb97fe9a8`
-- [ ] Fraispertuis City — `ea22716e-64d2-44ef-b068-6b26ba5cf9d7`
-- [ ] Funny Land — `27798d4d-9e30-42c1-864d-cff0520d6511`
-- [ ] Grinyland — `d5d59442-1fb4-4aca-a084-98029a6a9a58`
-- [ ] Jacquou Parc — `d536babf-4e8a-4cb8-9584-abe4d6d0ae6f`
-- [ ] Jardin d'Acclimatation — `ce97d925-9044-47dd-ad19-47467f663ce1`
-- [ ] Jardin des Bêtes — `da438248-c5da-4c0a-8578-8d78ff2c64d2`
 - [ ] Kangoo Park — `bac6532e-ed3e-40dd-9c8f-2a9b50f3d980`
 - [ ] Kid Parc — `a48caf8e-871b-40cc-8b98-9faff4219e96`
 - [ ] Kingoland — `900ceb7b-7bb8-40c0-9e4a-6340d019a6d8`
@@ -352,7 +342,6 @@ Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspon
 ### Identités ou pertinence à confirmer
 
 - `1c83e45c-3335-4948-b15f-ce2805bc42e3` — Exposition Coloniale Internationale : événement historique temporaire, pas encore confirmé comme parc autonome pertinent.
-- `5f6e3757-f7d0-423b-9c77-34f64dd4aeab` — Family Park Monts : probable ancien emplacement ou doublon de la lignée Family Park.
 - `cd7332ea-45f6-4e07-a70e-44fd2d60b862` — Parc de l'Étang : identité trop générique à résoudre.
 - `5c4ec94e-c4d8-4d38-bee9-9a97e7609dbf` — Parc de Moine : parc municipal à distinguer d'un parc de loisirs structuré.
 - `d365dd74-a30f-4230-8f77-a89642d8cd2f` — Parc de Procé : parc urbain à distinguer d'un parc de loisirs structuré.
@@ -365,8 +354,21 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 - Les descriptions internes des logos MACK Rides `01ec66b67e574368a3a406115958485a` et ZIERER `ad46c05063a244a5a04f3a996c985152` partagent une formulation technique. L’audit individuel de Parc Astérix n’en fait pas un bloqueur de publication, mais la correction du logo global ZIERER a été refusée par `park-data-editor.image-scope-denied`. Cette dette partagée reste donc explicitement suivie sans contourner le périmètre du jeton parc.
 
+### Médias orphelins hors graphe
+
+- Fraispertuis City — les imports privés `214b9e0769384beda31feef8e31657de` et `57885c3627d7405d8f466694773c80e4` ont été créés avec des clés de lot devenues obsolètes au lieu des identifiants persistés de Golden Driller et Sawmill. Ils n’appartiennent pas au graphe publié et ne sont ni courants ni publics. Leur suppression contrôlée a été refusée parce que le serveur ne peut plus les rattacher au parc cible ; les deux photographies ont été réimportées sur les IDs vérifiés. Les prochains imports doivent recouper chaque `OwnerId` avec l’export courant avant l’appel afin de ne pas reproduire cette anomalie.
+
 ### Lacunes éditoriales documentées
 
+- Jardin des Bêtes — la fiche publique atteint 96 avec 24 éléments actuels, les huit langues sur chaque description, 24 médias publiés dont le logo, le plan officiel 2026, 104 dates d'ouverture, les tarifs officiels 2026, quatre jalons historiques et un article développé. Vingt et un éléments disposent d'une photographie officielle attribuable ; La Paillote, Les Palanges et Le Kiosque restent sans vue propre, la page officielle de restauration n'exposant qu'une illustration générique du parc. Les tarifs 2026 restent visibles jusqu'à la fin de leur année de référence tandis que le calendrier gouverne seul les jours d'ouverture. La page météo répond correctement avec une prévision momentanément vide ; son alimentation par batch n'a pas conditionné la publication ni le retrait.
+- Jacquou Parc — la fiche publiée atteint 98 avec 26 éléments actuels, les huit langues sur chaque description, les horaires et tarifs officiels 2026, huit jalons historiques, un article développé, le plan officiel 2025 et treize médias publiés dont le logo. Huit éléments possèdent une photographie individuelle clairement attribuable ; les autres conservent leur description sourcée sans recevoir de visuel générique. Les quatre vues générales documentent notamment l'espace aquatique et l'ambiance boisée. La saison 2026 étant achevée et aucun calendrier 2027 n'étant encore publié, la grille vérifiée reste conservée sans inventer de dates futures. La route météo répond correctement ; son contenu alimenté par batch n'a pas conditionné la publication ni le retrait.
+- Grinyland — la fiche historique publiée atteint 97 avec les 30 entrées nommées du dernier plan officiel, sept zones, six jalons de parc, un jalon d'attraction, un article développé et sept médias publiés dont le logo officiel. Six visuels représentatifs ont été conservés après recherche ; les 26 éléments sans photographie individuelle clairement attribuable n'ont pas reçu d'image générique. Le parc ayant fermé définitivement le 30 septembre 2025, aucune grille tarifaire ni aucun horaire courant n'a été inventé ; les dernières informations 2025 sont documentées dans le récit historique. La météo alimentée par batch n'a pas conditionné la publication ni le retrait.
+- Funny Land — la fiche publique atteint 96 avec 20 lieux actuels, les huit langues sur chaque description, huit médias officiels, le plan 2024, les horaires et tarifs vérifiés, deux jalons historiques et un article développé. Cinq lieux disposent d’une photographie individuelle clairement attribuable ; les quinze autres restent sans image plutôt que de recevoir un visuel générique. Aucun constructeur n’a été attribué sans source explicite : les sources spécialisées consultées décrivent Crazy Chenille comme un parcours de type Wacky Worm sans identifier son fabricant. La météo, alimentée par batch, n’a pas conditionné la publication ni le retrait.
+- Fraispertuis City — la fiche publiée atteint 98 avec 70 éléments, les huit langues sur chaque description, les horaires et tarifs officiels 2026, huit jalons historiques, un article développé et sept médias propres au parc ou à ses attractions. Cinq attractions majeures disposent d’une photographie officielle ; les autres éléments conservent des descriptions sourcées sans image arbitraire. Les pages officielles très brèves ont conduit à retenir deux paragraphes spécifiques plutôt qu’un remplissage générique. La grille 2026, échue le 27 septembre, reste archivée dans le graphe mais l’API publique la masque désormais comme périmée ; aucune grille 2027 n’était publiée lors du contrôle. La page météo répondait correctement avec une prévision momentanément vide, ce qui n’a pas conditionné le retrait.
+- Fiesta Parc — la fiche publiée atteint 100 avec 12 éléments actuels, 13 médias officiels, le calendrier et les tarifs 2026, cinq jalons historiques et un article développé. Chacune des dix attractions actuelles possède une photographie attribuable ; la Pizzeria Maisons et l'aire de pique-nique restent sans vue individuelle suffisamment explicite. Aucun plan public exploitable n'a été trouvé sur le site officiel, et l'ancien coaster retiré en 2019 n'a pas reçu l'image de Bassotto. La météo est bien accessible mais ne contenait momentanément aucune prévision lors du contrôle ; conformément à la règle du lot, ce contenu alimenté par batch n'a pas conditionné le retrait.
+- Fermyland — la fiche publiée réunit 21 éléments actuels, 21 médias officiels, les horaires et tarifs 2026, cinq jalons historiques, un article développé et le constructeur LMQ Rides sourcé pour l’ancienne Chenille. Dix-huit des 21 éléments actuels possèdent une image attribuable ; Les Rapidos et le snack restent sans photographie individuelle suffisamment explicite, et l’ancienne Chenille fermée n’a pas reçu l’image de sa remplaçante. Un plan 2024 indexé par un office de tourisme a été retrouvé, mais son original et sa dérivée renvoient désormais 404 ; aucune carte dégradée ou non téléchargeable n’a été importée.
+- Fééryland — les 30 attractions de l’inventaire officiel 2026 disposent chacune d’une photographie officielle, mais le site ne fournit pas de série de trois vues distinctes par attraction. Une seule vue générale actuelle et clairement attribuable au parc a été retenue ; les neuf services visibles restent sans photographie individuelle. Le logo déjà publié a été conservé sans inventer la provenance manquante de son fichier historique.
+- Family Park — la fiche canonique a été réconciliée avec l'implantation actuelle de Sorigny, publiée avec ses 45 éléments, son calendrier 2026, ses tarifs 2026, son plan officiel, 46 médias propres, neuf jalons historiques et un article développé. Seul le point de restauration Ô ti’snack reste sans photographie attribuable avec certitude. L'ancien doublon artificiel `Family Park Monts` et ses deux parkItems ont été supprimés après consolidation ; le logo constructeur ZIERER partagé a été conservé.
 - Amigoland — la galerie officielle ne permet pas d’attribuer avec certitude une photographie distincte à Beach Party, Bomber Maxxx ou Gravity ; aucune image générique n’a donc été associée arbitrairement. Les tarifs unitaires des manèges ne sont pas publiés en ligne : la fiche indique uniquement les faits vérifiables, à savoir l’entrée et le parking gratuits puis le paiement séparé de chaque attraction.
 - Bid’A Parc — le site et le plan officiels 2026 établissent l’inventaire courant, mais la galerie officielle ne fournit des photographies attribuables sans ambiguïté qu’au parc, au Carrousel, à Pomme, au Bateau Pirate, au Karting et au Palmito Resto. Les autres éléments restent donc sans image plutôt que de recevoir un visuel générique ou ancien. Aucun constructeur n’a été attribué sans source explicite. Le tarif du parking municipal varie selon les pages officielles consultées ; seule sa période payante est décrite, sans publier de grille contradictoire.
 
