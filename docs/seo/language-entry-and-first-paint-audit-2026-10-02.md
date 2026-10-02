@@ -26,6 +26,10 @@ La diminution des impressions est de 76,5 %, sur un volume très faible. La posi
 
 Le rapport d’indexation est toujours daté du 21 septembre : 399 pages indexées et 174 exclues. Il ne permet pas de mesurer l’effet des derniers correctifs. Le détail du sitemap `static-it.xml` affiche encore « Impossible de lire le sitemap », dernière lecture le 28 septembre, zéro page découverte.
 
+L’inspection réelle de la fiche de Disneyland Park le 2 octobre à 09 h 19 confirme « Google a accès à cette URL » et « La page peut être indexée ». Le HTML rendu contient le titre français, les cinq paragraphes de présentation et les liens internes du parc. L’index consulté avant ce test indique cependant « Google ne reconnaît pas cette URL » et aucun sitemap référent. La disponibilité technique et la découverte/indexation sont donc deux observations distinctes.
+
+Les logs Nginx du 28 septembre au 2 octobre à 07 h 20 UTC, filtrés par les plages IP officielles de Google et le User-Agent Googlebot, montrent 73 récupérations HTML en HTTP 200 et quatre HTTP 404. Aucune récupération HTML Googlebot de `/` ni aucun HTTP 5xx n’apparaît dans cette fenêtre. Les tests d’inspection et PageSpeed sont comptés séparément. Les seuls téléchargements XML vérifiés sont ceux des tests d’inspection du 28 septembre ; aucune récupération automatique supplémentaire de sitemap n’est observée. Source de vérification des robots : <https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests>.
+
 ## PageSpeed Insights avant correction
 
 Mesures de laboratoire, émulation mobile et connexion 4G lente. Aucun jeu de données CrUX disponible : ces valeurs ne représentent pas les Core Web Vitals réels de tous les visiteurs.
@@ -50,11 +54,13 @@ PageSpeed identifie le texte du bandeau de consentement comme élément LCP sur 
 
 Le bandeau requis est maintenant inclus dans le HTML SSR. Le premier rendu navigateur conserve le même DOM ; `afterNextRender` applique ensuite la décision mémorisée. Une première visite conserve son bandeau, une visite avec un choix existant le retire. Le cache public reste anonyme et n’est pas personnalisé selon le consentement. Aucun traceur optionnel n’est autorisé par cette modification ; les gardes existants du service de consentement restent actifs.
 
-Les tests couvrent le rendu initial, le maintien du bandeau sur une première visite, les deux actions de consentement, le retrait après restauration d’un choix et la désactivation du bandeau.
+Le script Google Identity Services était également chargé depuis `index.html` à chaque visite : environ 98,9 Kio transférés, dont 71,5 Kio signalés inutilisés sur l’accueil. Il est désormais chargé uniquement lorsque le formulaire de connexion demande son bouton Google. Un chargement unique est partagé entre appels concurrents, avec délai maximal de dix secondes et nouvelle tentative possible après une erreur. Le script provient toujours de l’URL officielle ; les vérifications d’authentification et la CSP sont conservées.
+
+Les tests couvrent le rendu initial, le maintien du bandeau sur une première visite, les deux actions de consentement, le retrait après restauration d’un choix et la désactivation du bandeau. Six tests supplémentaires couvrent l’absence de chargement du SDK pendant la navigation, les appels concurrents, une bibliothèque existante et sa transmission de credentials au callback, l’échec puis la reprise, l’expiration du délai et l’absence de chargement serveur.
 
 ## Points restant à traiter séparément
 
-- JavaScript inutilisé : environ 377–386 Kio sur le sélecteur et l’accueil, 530 Kio sur la fiche de parc.
+- JavaScript inutilisé avant correction : environ 377–386 Kio sur le sélecteur et l’accueil, 530 Kio sur la fiche de parc. Le SDK Google reporté à la connexion en représente environ 71,5 Kio sur l’accueil ; les autres modules doivent être étudiés selon leur usage réel.
 - CSS inutilisé : environ 144–202 Kio suivant la page. Sa réduction demande un découpage des styles réellement partagés, pas une suppression aveugle.
 - Plusieurs logos utilisent des variantes plus larges que leur affichage ; PageSpeed estime 199 Kio économisables sur l’accueil mobile.
 - La fiche de parc signale des zones tactiles trop rapprochées et des réponses API 400/404 pour des fonctionnalités optionnelles. Ces réponses ne remplacent pas le contenu SSR du parc par un sélecteur.
