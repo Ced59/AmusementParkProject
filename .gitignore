@@ -374,3 +374,7 @@ AmusementParkProject.zip
 
 /deploy/nginx/runtime/
 /deploy/.installation-pending.json
+
+# Generated translation payloads (full dictionaries remain versioned for SSR).
+/FRONT/AmusementPark/src/assets/i18n/public/
+/FRONT/AmusementPark/src/assets/i18n/admin/

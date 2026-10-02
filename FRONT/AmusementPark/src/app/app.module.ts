@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { PublicFirstTranslateLoader } from '@core/i18n/public-first-translate.loader';
 import { TranslationService } from './services/translation.service';
 import { AuthService } from './services/auth/auth.service';
 import { firstValueFrom } from 'rxjs';
 import { AuthenticatedUserLanguageService } from './services/users/authenticated-user-language.service';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new PublicFirstTranslateLoader(http);
 }
 
 export function initializeApp(

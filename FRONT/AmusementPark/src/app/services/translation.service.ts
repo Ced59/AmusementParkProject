@@ -1,11 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { EventEmitter, Inject, Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { firstValueFrom, forkJoin, Observable, of, tap } from 'rxjs';
+import { EventEmitter, Inject, Injectable, Optional } from '@angular/core';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { firstValueFrom, forkJoin, Observable, of, switchMap, tap } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { LANGUAGES } from '@shared/models/localization';
 import { resolveLanguageFromUrl } from '@shared/utils/routing/route-language.utils';
+import { PublicFirstTranslateLoader } from '@core/i18n/public-first-translate.loader';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class TranslationService {
 
   constructor(
     private readonly translate: TranslateService,
-    @Inject(DOCUMENT) private readonly document: Document
+    @Inject(DOCUMENT) private readonly document: Document,
+    @Optional() private readonly loader: TranslateLoader | null = null
   ) {
   }
 
@@ -27,18 +29,35 @@ export class TranslationService {
   useLang(lang: string): Observable<unknown> {
     this.document.documentElement.lang = lang;
 
-    return this.translate.use(lang).pipe(
+    return this.activateLanguage(lang).pipe(
       catchError((error: unknown): Observable<unknown> => {
         console.error(`Error loading language ${lang}:`, error);
         if (lang !== 'en') {
           this.setDefaultLang('en');
-          return this.translate.use('en');
+          return this.activateLanguage('en');
         }
 
         return of(null);
       }),
       tap((): void => this.languageChanged.emit(lang))
     );
+  }
+
+  loadCompleteTranslations(language: string = this.getCurrentLang() || 'en'): Observable<unknown> {
+    if (!(this.loader instanceof PublicFirstTranslateLoader)) {
+      return of(null);
+    }
+    return this.loader.getCompleteTranslation(language).pipe(
+      tap((dictionary: Record<string, unknown>): void => this.translate.setTranslation(language, dictionary, true))
+    );
+  }
+
+  private activateLanguage(language: string): Observable<unknown> {
+    // ngx-translate can already hold a public-only dictionary for this language.
+    const preparation: Observable<unknown> = this.loader instanceof PublicFirstTranslateLoader && this.loader.requiresCompleteTranslations
+      ? this.loadCompleteTranslations(language)
+      : of(null);
+    return preparation.pipe(switchMap(() => this.translate.use(language)));
   }
 
   isValidLang(lang: string): boolean {

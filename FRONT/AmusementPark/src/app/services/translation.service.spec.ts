@@ -2,6 +2,10 @@ import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 import { of, throwError } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader } from '@ngx-translate/core';
+import { PublicFirstTranslateLoader } from '@core/i18n/public-first-translate.loader';
 
 import { TranslationService } from './translation.service';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -73,6 +77,37 @@ describe('TranslationService', () => {
       ['fr'],
       ['en'],
     ]);
+  });
+
+  it('adds complete translations before reusing a language cached by ngx-translate', async () => {
+    const loader = new PublicFirstTranslateLoader({} as HttpClient);
+    vi.spyOn(loader, 'requiresCompleteTranslations', 'get').mockReturnValue(true);
+    const dictionary = { home: { title: 'Start' }, admin: { title: 'Verwaltung' } };
+    const load = vi.spyOn(loader, 'getCompleteTranslation').mockReturnValue(of(dictionary));
+    const translate = {
+      currentLang: 'fr',
+      setTranslation: vi.fn(),
+      use: vi.fn().mockReturnValue(of(dictionary))
+    } as unknown as MockedObject<TranslateService>;
+    const testedService = new TranslationService(translate, createDocumentForPath('/fr/admin'), loader);
+
+    await firstValueFrom(testedService.useLang('de'));
+
+    expect(load).toHaveBeenCalledWith('de');
+    expect(translate.setTranslation).toHaveBeenCalledWith('de', dictionary, true);
+    expect(translate.setTranslation.mock.invocationCallOrder[0]).toBeLessThan(translate.use.mock.invocationCallOrder[0]);
+    expect(translate.use).toHaveBeenCalledWith('de');
+  });
+
+  it('keeps complete server or standard loaders unchanged', async () => {
+    const loader = { getTranslation: vi.fn() } as TranslateLoader;
+    const translate = { currentLang: 'fr', setTranslation: vi.fn() } as unknown as MockedObject<TranslateService>;
+    const testedService = new TranslationService(translate, createDocumentForPath('/fr/admin'), loader);
+
+    await firstValueFrom(testedService.loadCompleteTranslations('fr'));
+
+    expect(loader.getTranslation).not.toHaveBeenCalled();
+    expect(translate.setTranslation).not.toHaveBeenCalled();
   });
 });
 
