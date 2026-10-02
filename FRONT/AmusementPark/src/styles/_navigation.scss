@@ -72,7 +72,7 @@
   color: var(--app-text-muted);
   font-size: 0.9rem;
   font-weight: 800;
-  transition: var(--transition);
+  transition: transform var(--transition);
 }
 
 .nav__links a:hover,
@@ -128,7 +128,7 @@
   padding: 0.5rem 0.25rem;
   border-radius: 1rem;
   color: var(--app-text-muted);
-  transition: var(--transition);
+  transition: transform var(--transition);
 }
 
 
@@ -251,10 +251,7 @@ button.app-mobile-bottom-nav__item {
   border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
   cursor: pointer;
-  transition:
-    transform var(--transition),
-    border-color var(--transition),
-    background-color var(--transition);
+  transition: transform var(--transition);
 }
 
 .app-public-nav__profile:hover {
@@ -329,11 +326,7 @@ button.app-mobile-bottom-nav__item {
   color: var(--app-text-muted);
   background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
   cursor: pointer;
-  transition:
-    transform var(--transition),
-    border-color var(--transition),
-    color var(--transition),
-    background-color var(--transition);
+  transition: transform var(--transition);
 }
 
 .app-public-nav__measurement-toggle:hover {
@@ -514,7 +507,7 @@ button.app-mobile-bottom-nav__item {
   color: var(--app-text-muted);
   font-size: 0.9rem;
   font-weight: 800;
-  transition: var(--transition);
+  transition: transform var(--transition);
 }
 
 .app-public-nav__tree-trigger:hover,
@@ -600,7 +593,7 @@ button.app-mobile-bottom-nav__item {
   color: var(--app-text-muted);
   font-size: 0.86rem;
   font-weight: 800;
-  transition: var(--transition);
+  transition: transform var(--transition);
 }
 
 .app-public-park-tree__item:hover,

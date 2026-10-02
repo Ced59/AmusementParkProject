@@ -1,6 +1,20 @@
 {
-  "version": "5.4.65",
+  "version": "5.4.66",
   "history": [
+    {
+      "version": "5.4.66",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Animations des boutons plus fluides",
+        "en": "Smoother button animations",
+        "de": "Flüssigere Schaltflächenanimationen",
+        "nl": "Soepelere knopanimaties",
+        "it": "Animazioni dei pulsanti più fluide",
+        "es": "Animaciones de botones más fluidas",
+        "pt": "Animações dos botões mais suaves",
+        "pl": "Płynniejsze animacje przycisków"
+      }
+    },
     {
       "version": "5.4.65",
       "releasedAt": "2026-10-02",
