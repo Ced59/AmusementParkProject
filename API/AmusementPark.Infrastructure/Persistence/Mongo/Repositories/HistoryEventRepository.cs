@@ -323,18 +323,32 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
                 nameof(canonicalizationVersion));
         }
 
-        FilterDefinition<HistoryEventDocument> filter =
-            Builders<HistoryEventDocument>.Filter.Ne(
-                document => document.MigrationVersion,
-                normalizedVersion)
-            | Builders<HistoryEventDocument>.Filter.Exists(
-                document => document.MigrationVersion,
-                false);
+        FilterDefinition<HistoryEventDocument> filter = BuildCanonicalizationCandidateFilter(
+            normalizedVersion);
         List<HistoryEventDocument> documents = await this.collection
             .Find(filter)
             .SortBy(static document => document.Id)
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    internal static FilterDefinition<HistoryEventDocument> BuildCanonicalizationCandidateFilter(
+        string canonicalizationVersion)
+    {
+        return
+            Builders<HistoryEventDocument>.Filter.Ne(
+                document => document.MigrationVersion,
+                canonicalizationVersion)
+            | Builders<HistoryEventDocument>.Filter.Exists(
+                document => document.MigrationVersion,
+                false)
+            | Builders<HistoryEventDocument>.Filter.Nin(
+                document => document.CanonicalizationState,
+                new[]
+                {
+                    HistoricalNarrativeCanonicalizationState.Canonicalized,
+                    HistoricalNarrativeCanonicalizationState.Blocked,
+                });
     }
 
     public async Task<bool> SetCanonicalizationAsync(

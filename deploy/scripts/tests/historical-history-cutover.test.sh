@@ -26,10 +26,25 @@ fi
 
 rollback_arm_line="$(grep -n 'historical_history_cutover_started=true' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 freeze_command_line="$(grep -n 'freeze-history-authorities-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+writer_quiesce_line="$(grep -n 'quiesce-original-history-writer' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${rollback_arm_line}" ] \
+  || [ -z "${writer_quiesce_line}" ] \
   || [ -z "${freeze_command_line}" ] \
-  || [ "${rollback_arm_line}" -ge "${freeze_command_line}" ]; then
-  echo 'Historical rollback must be armed before attempting the legacy collection freeze.' >&2
+  || [ "${rollback_arm_line}" -ge "${writer_quiesce_line}" ] \
+  || [ "${writer_quiesce_line}" -ge "${freeze_command_line}" ]; then
+  echo 'Historical rollback and original-writer isolation must precede the collection freeze.' >&2
+  exit 1
+fi
+
+rollback_script_line="$(grep -n 'rollback-history-cutover-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+writer_restore_line="$(grep -n 'restore-original-history-writer' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+cutover_restored_line="$(grep -n 'cutover-restored --resource historical-history' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${rollback_script_line}" ] \
+  || [ -z "${writer_restore_line}" ] \
+  || [ -z "${cutover_restored_line}" ] \
+  || [ "${rollback_script_line}" -ge "${writer_restore_line}" ] \
+  || [ "${writer_restore_line}" -ge "${cutover_restored_line}" ]; then
+  echo 'Rollback must finish before the original historical writer is restored and disarmed.' >&2
   exit 1
 fi
 

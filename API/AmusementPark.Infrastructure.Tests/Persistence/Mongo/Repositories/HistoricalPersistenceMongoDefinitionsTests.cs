@@ -280,6 +280,32 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildCanonicalizationCandidateFilter_ShouldResumeNonFinalCurrentVersionNarratives()
+    {
+        FilterDefinition<HistoryEventDocument> filter =
+            HistoryEventRepository.BuildCanonicalizationCandidateFilter("hist-canonical-v2");
+        IBsonSerializer<HistoryEventDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoryEventDocument>();
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<HistoryEventDocument>(serializer, BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("migrationVersion", json, StringComparison.Ordinal);
+        Assert.Contains("hist-canonical-v2", json, StringComparison.Ordinal);
+        Assert.Contains("canonicalizationState", json, StringComparison.Ordinal);
+        Assert.Contains("$nin", json, StringComparison.Ordinal);
+        Assert.Contains(
+            HistoricalNarrativeCanonicalizationState.Canonicalized.ToString(),
+            json,
+            StringComparison.Ordinal);
+        Assert.Contains(
+            HistoricalNarrativeCanonicalizationState.Blocked.ToString(),
+            json,
+            StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void BuildLatestRevisionsPipeline_ShouldSelectOneRevisionPerSourceOnServer()
     {
         IReadOnlyCollection<BsonDocument> stages =

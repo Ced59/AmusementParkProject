@@ -777,8 +777,11 @@ ou marquée non pertinente ne peut pas être exposée par accident. Les
 conversions impossibles restent administrables comme récits bloqués : elles ne
 sont ni supprimées ni inventées.
 
-Le déploiement gèle à la fois l'ancienne collection source et les écritures non
-canoniques dans `historical-narratives`. Avant toute conversion, il sauvegarde
+Le déploiement arrête proprement l'ancienne API avant toute conversion : le
+candidat devient ainsi l'unique autorité capable d'écrire, y compris pour les
+suppressions et les effets secondaires que les validateurs MongoDB ne peuvent
+pas interdire. Il gèle en défense supplémentaire l'ancienne collection source
+et les écritures non canoniques dans `historical-narratives`. Avant toute conversion, il sauvegarde
 exactement les récits concernés ainsi que toutes les révisions de faits et de
 sources auxquelles ils étaient liés. Les écritures de préparation utilisent
 l'identité MongoDB d'origine et `$setOnInsert` : une reprise ne duplique pas un
@@ -787,7 +790,8 @@ récit et ne remplace jamais une version canonique plus récente. Si le candidat
 la promotion réussit, elles sont supprimées avec toutes les collections et
 registres HIST-04 devenus inutiles. MongoDB est ainsi mis à jour automatiquement
 par le déploiement, sans manipulation manuelle ni coexistence durable de deux
-moteurs.
+moteurs. En cas d'échec, l'ancienne API n'est redémarrée qu'après la
+restauration intégrale des documents sauvegardés.
 
 ### Canonisation définitive des alimentations — 2 octobre 2026
 

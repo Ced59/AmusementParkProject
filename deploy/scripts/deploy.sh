@@ -223,6 +223,7 @@ rollback_incomplete_historical_history_cutover() {
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
       < ./scripts/rollback-history-cutover-5.4.80.js
+  python3 ./scripts/deployment_transaction.py restore-original-history-writer
   python3 ./scripts/deployment_transaction.py cutover-restored --resource historical-history
   historical_history_cutover_started=false
 }
@@ -304,11 +305,12 @@ prepare_historical_history_cutover() {
     return 0
   fi
 
-  echo "Freezing historical write authorities before zero-downtime cutover..."
-  # Arm rollback before collMod: MongoDB may apply the validator even if the
-  # client loses the command response and exits with an error.
+  echo "Isolating the historical writer before the canonical cutover..."
+  # Arm rollback and persist the stopped-writer intent before touching either
+  # Docker or MongoDB. A lost response can then be resumed without two writers.
   python3 ./scripts/deployment_transaction.py arm-cutover --resource historical-history
   historical_history_cutover_started=true
+  python3 ./scripts/deployment_transaction.py quiesce-original-history-writer
   compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \

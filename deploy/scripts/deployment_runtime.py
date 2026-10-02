@@ -222,27 +222,75 @@ class DockerRuntime:
         self.wait_healthy(existing)
         return existing
 
-    def stop_remove(self, reference, allow_failed_start=False, record_exit=None):
+    def validate_application_reference(self, reference, expected_service=None):
         container = self.inspect(reference["id"])
         if container is None:
-            return
+            return None
         if container["Name"].lstrip("/") != reference["name"]:
-            raise DeploymentError("Refusing to stop a renamed deployment container")
+            raise DeploymentError("Refusing to mutate a renamed deployment container")
         labels = container["Config"].get("Labels") or {}
         if (labels.get("com.docker.compose.project") != self.project
                 or labels.get("com.docker.compose.service") not in {"api", "front"}):
-            raise DeploymentError("Refusing to stop a container outside the application pair")
+            raise DeploymentError("Refusing to mutate a container outside the application pair")
+        if expected_service is not None and labels.get("com.docker.compose.service") != expected_service:
+            raise DeploymentError(f"Deployment container is not the expected {expected_service} service")
+        return container
+
+    @staticmethod
+    def validate_intentional_stop(container):
+        state = container["State"]
+        if state["Running"]:
+            raise DeploymentError("Container did not stop")
+        if state.get("OOMKilled") or state.get("ExitCode") not in {0, 143}:
+            raise DeploymentError(
+                f"Abnormal intentional stop for {container['Name'].lstrip('/')} "
+                f"(exit {state.get('ExitCode')})")
+
+    def stop_keep(self, reference):
+        container = self.validate_application_reference(reference, "api")
+        if container is None:
+            raise DeploymentError("Original API disappeared before historical writer isolation")
+        if container["State"]["Running"]:
+            self.run(
+                "docker",
+                "stop",
+                "--time",
+                str(self.stop_timeout),
+                reference["id"],
+                timeout=self.stop_timeout + 15)
+            container = self.validate_application_reference(reference, "api")
+            if container is None:
+                raise DeploymentError("Stopped API disappeared before its exit status was checked")
+        self.validate_intentional_stop(container)
+
+    def start_existing(self, reference):
+        container = self.validate_application_reference(reference, "api")
+        if container is None:
+            raise DeploymentError("Original API disappeared before historical rollback recovery")
+        if not container["State"]["Running"]:
+            self.run("docker", "start", reference["id"])
+        self.wait_healthy(reference)
+
+    def stop_remove(self, reference, allow_failed_start=False, record_exit=None,
+                    allow_intentional_stop=False):
+        container = self.validate_application_reference(reference)
+        if container is None:
+            return
         # Never rm -f. An error/timeout returns before the caller touches its API.
         was_running = container["State"]["Running"]
-        self.run("docker", "stop", "--time", str(self.stop_timeout), reference["id"], timeout=self.stop_timeout + 15)
-        stopped = self.inspect(reference["id"])
+        if was_running:
+            self.run("docker", "stop", "--time", str(self.stop_timeout), reference["id"], timeout=self.stop_timeout + 15)
+        stopped = self.validate_application_reference(reference)
         if stopped is None:
             raise DeploymentError("Stopped container disappeared before its exit status was checked")
         state = stopped["State"]
         if state["Running"]:
             raise DeploymentError("Container did not stop")
+        labels = stopped["Config"].get("Labels") or {}
         legacy = labels.get(GENERATION_LABEL) in (None, "unmanaged")
         accepted_exit_codes = {0, 143} if legacy else {0}
+        if allow_intentional_stop:
+            accepted_exit_codes.add(143)
         if allow_failed_start and not was_running:
             # Broken entrypoints/startup can be discarded ONLY after the caller
             # proved non-exposure. Forced kills/OOM still require investigation.
