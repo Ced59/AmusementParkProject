@@ -24,6 +24,15 @@ gzip_comp_level 4;
 gzip_proxied any;
 gzip_types text/css application/javascript text/javascript image/svg+xml application/xml text/xml;
 
+location ^~ /assets/i18n/ {
+  gzip_types application/json;
+  add_header Strict-Transport-Security $hsts_header always;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection $http_connection;
+  proxy_http_version 1.1;
+  include conf.d/include/proxy.conf;
+}
+
 client_max_body_size 1m;
 
 location = /api/park-data-editor/official-map-files {

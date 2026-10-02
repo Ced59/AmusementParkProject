@@ -34,6 +34,15 @@ gzip_comp_level 4;
 gzip_proxied any;
 gzip_types text/css application/javascript text/javascript image/svg+xml application/xml text/xml;
 
+location ^~ /assets/i18n/ {
+  gzip_types application/json;
+  add_header Strict-Transport-Security $hsts_header always;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection $http_connection;
+  proxy_http_version 1.1;
+  include conf.d/include/proxy.conf;
+}
+
 client_max_body_size 1m;
 
 location = /api/park-data-editor/official-map-files {
@@ -50,6 +59,8 @@ location = /api/park-data-editor/official-map-files {
 La limite haute reste ainsi réservée à l'import des plans officiels : elle permet de transmettre un fichier de 25 Mio avec son enveloppe multipart, tandis que les autres routes restent limitées à 1 Mio sur ce Proxy Host. Le corps est transmis en flux pour que l'API puisse appliquer l'authentification et la limitation d'opérations sans que chaque proxy mette d'abord tout le fichier en tampon. L'API conserve sa validation stricte à 25 Mio pour le contenu du fichier.
 
 NPM compresse le HTML par défaut, mais les types JavaScript, CSS et XML doivent être déclarés explicitement. Ces directives sont limitées au Proxy Host applicatif ; `Vary: Accept-Encoding` préserve les clients qui demandent une réponse non compressée. Vérifier les requêtes GET publiques avec `Accept-Encoding: gzip`, puis comparer le contenu décompressé à la réponse `Accept-Encoding: identity`. La configuration du NPM externe doit rester enregistrée dans son onglet Advanced, en plus du fichier Nginx généré.
+
+La compression JSON est réservée aux traductions publiques sous `/assets/i18n/`. Leur cache conserve la revalidation décidée par l’origine. Les réponses JSON de l’API gardent leur politique existante.
 
 Ne crée pas de Proxy Host public pour l'API. L'API passe par `https://amusement-parks.fun/api`.
 

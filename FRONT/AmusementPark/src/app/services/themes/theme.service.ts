@@ -18,7 +18,12 @@ export class ThemeService {
       return;
     }
 
-    const savedTheme: string | null = localStorage.getItem(this.storageKey);
+    let savedTheme: string | null = null;
+    try {
+      savedTheme = localStorage.getItem(this.storageKey);
+    } catch {
+      // The system preference remains usable when browser storage is blocked.
+    }
 
     if (savedTheme === 'light' || savedTheme === 'dark') {
       this.changeTheme(savedTheme);
@@ -60,6 +65,10 @@ export class ThemeService {
     body.classList.remove('light-mode', 'dark-mode');
     body.classList.add(`${normalizedTheme}-mode`);
 
-    localStorage.setItem(this.storageKey, normalizedTheme);
+    try {
+      localStorage.setItem(this.storageKey, normalizedTheme);
+    } catch {
+      // Changing the visible theme must not depend on storage availability.
+    }
   }
 }
