@@ -385,7 +385,7 @@ export class ImagesApiService {
 
     const roundedWidth: number = Math.round(width);
 
-    if (roundedWidth < 160 || roundedWidth > 1920) {
+    if (roundedWidth < 64 || roundedWidth > 1920) {
       return null;
     }
 

@@ -235,7 +235,7 @@ public sealed class MinioImageBinaryStorageTests
         allowPreviewCompletion.SetResult(true);
         await previewOperation.WaitAsync(TimeSpan.FromSeconds(2));
         Assert.True(await deletionOperation.WaitAsync(TimeSpan.FromSeconds(2)));
-        Assert.Equal(52, removalAttempt);
+        Assert.Equal(70, removalAttempt);
         Assert.False(MinioImageBinaryStorage.HasSocialPreviewGenerationLock(ImagePath));
         minioClient.VerifyAll();
     }
@@ -267,7 +267,7 @@ public sealed class MinioImageBinaryStorageTests
             CancellationToken.None);
 
         Assert.False(succeeded);
-        Assert.Equal(16, removalAttempt);
+        Assert.Equal(22, removalAttempt);
         minioClient.VerifyAll();
     }
 
@@ -680,7 +680,13 @@ public sealed class MinioImageBinaryStorageTests
     [InlineData(null, null)]
     [InlineData(0, null)]
     [InlineData(-1, null)]
-    [InlineData(1, 320)]
+    [InlineData(1, 64)]
+    [InlineData(64, 64)]
+    [InlineData(65, 128)]
+    [InlineData(128, 128)]
+    [InlineData(129, 192)]
+    [InlineData(192, 192)]
+    [InlineData(193, 320)]
     [InlineData(320, 320)]
     [InlineData(321, 480)]
     [InlineData(480, 480)]
@@ -713,6 +719,9 @@ public sealed class MinioImageBinaryStorageTests
         Assert.Contains("images/photo-1.jpg", objectNames);
         Assert.Contains("images/photo-1.jpeg", objectNames);
         Assert.Contains("images/photo-1.png", objectNames);
+        Assert.Contains("images/photo-1.w64.v2.webp", objectNames);
+        Assert.Contains("images/photo-1.w128.v2.jpg", objectNames);
+        Assert.Contains("images/photo-1.w192.v2.webp", objectNames);
         Assert.Contains("images/photo-1.w320.v2.webp", objectNames);
         Assert.Contains("images/photo-1.w320.v2.jpg", objectNames);
         Assert.Contains("images/photo-1.w1600.v2.webp", objectNames);

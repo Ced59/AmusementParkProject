@@ -215,7 +215,7 @@ a.public-feature-card:hover {
   position: relative;
   z-index: 1;
   width: min(8rem, 48%);
-  max-height: 7rem;
+  height: 7rem;
   object-fit: contain;
   filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.22));
 }

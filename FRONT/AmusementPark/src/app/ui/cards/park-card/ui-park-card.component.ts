@@ -14,6 +14,7 @@ import { UiButtonDirective, UiChipComponent } from '@ui/primitives';
   imports: [ImageDisplayComponent, RouterLink, TranslateModule, SafeExternalUrlPipe, UiButtonDirective, UiChipComponent]
 })
 export class UiParkCardComponent {
+  readonly logoResponsiveWidths: readonly number[] = [128, 192, 320];
   @Input() park: ParkCardModel | null = null;
   @Input() detailLink: string[] | null = null;
   @Input() compact: boolean = false;
