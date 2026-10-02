@@ -94,6 +94,21 @@ describe('RatingStarsComponent', () => {
     expect(facade.removeRating).toHaveBeenCalledTimes(1);
   });
 
+  it('preserves all half-point choices with decorative star visuals', () => {
+    const choices: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.rating-stars__hit[role="radio"]');
+    const visuals: NodeListOf<HTMLElement> =
+      fixture.nativeElement.querySelectorAll('.rating-stars__visual[aria-hidden="true"]');
+
+    expect(choices.length).toBe(10);
+    expect(visuals.length).toBe(5);
+    expect(choices[6].getAttribute('aria-checked')).toBe('true');
+    choices[6].click();
+    expect(facade.rate).toHaveBeenCalledWith(3.5);
+    choices[9].click();
+    expect(facade.rate).toHaveBeenCalledWith(5);
+  });
+
   it('shows the target place when it belongs to a ranking', () => {
     const rank: HTMLElement | null =
       fixture.nativeElement.querySelector('.rating-stars__rank');

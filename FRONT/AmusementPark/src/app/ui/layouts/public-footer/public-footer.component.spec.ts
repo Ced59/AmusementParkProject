@@ -57,13 +57,13 @@ describe('PublicFooterComponent', () => {
     const languageLinks: NodeListOf<HTMLAnchorElement> = host.querySelectorAll('.app-public-footer__links--languages a');
 
     expect(languageLinks.length).toBe(8);
-    for (const link of languageLinks) {
+    languageLinks.forEach((link: HTMLAnchorElement): void => {
       const flag: HTMLImageElement | null = link.querySelector('img');
       expect(flag?.getAttribute('alt')).toBe('');
       expect(flag?.getAttribute('aria-hidden')).toBe('true');
       expect(link.querySelector('span')?.textContent?.trim().length).toBeGreaterThan(0);
       expect(link.getAttribute('href')).toBeTruthy();
-    }
+    });
   });
 
   it('displays the generated site version', () => {

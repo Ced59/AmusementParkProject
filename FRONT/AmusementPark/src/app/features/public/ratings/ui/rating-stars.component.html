@@ -20,8 +20,10 @@
   <div class="rating-stars__control" role="radiogroup" [attr.aria-label]="'ratings.stars.chooseLabel' | translate">
     @for (star of starIndexes; track star) {
       <span class="rating-stars__star" [style.--fill]="fillPercent(star)">
-        <i class="pi pi-star rating-stars__star-empty" aria-hidden="true"></i>
-        <i class="pi pi-star-fill rating-stars__star-filled" aria-hidden="true"></i>
+        <span class="rating-stars__visual" aria-hidden="true">
+          <i class="pi pi-star rating-stars__star-empty"></i>
+          <i class="pi pi-star-fill rating-stars__star-filled"></i>
+        </span>
         <button
           type="button"
           class="rating-stars__hit rating-stars__hit--left"

@@ -13,6 +13,7 @@ const viewportWidths = [320, 360, 390, 768, 1280];
 const projectRoot = process.cwd();
 const componentStyles = [
   'src/styles/_layout.scss',
+  'src/app/features/public/ratings/ui/rating-stars.component.scss',
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
   'src/app/features/profile/trips/pages/trip-overview-page/trip-overview-page.component.scss',
   'src/app/features/profile/trips/components/trip-candidate-card/trip-candidate-card.component.scss',
@@ -314,6 +315,15 @@ const fixtureMarkup = `
       </article>
     </main>
   </div>
+  <section class="surface" data-check-bound>
+    <h2>Donne une note à cette expérience</h2>
+    <div class="rating-stars">
+      <div class="rating-stars__score"><strong>Moyenne des notes</strong><span>4,25 / 5</span></div>
+      <div class="rating-stars__control" role="radiogroup" aria-label="Choisis ta note">
+        ${[1, 2, 3, 4, 5].map(star => `<span class="rating-stars__star" style="--fill: 50%"><span class="rating-stars__visual" aria-hidden="true"><i class="rating-stars__star-empty">☆</i><i class="rating-stars__star-filled">★</i></span><button type="button" role="radio" aria-label="Noter ${star - 0.5}" aria-checked="false" class="rating-stars__hit rating-stars__hit--left"></button><button type="button" role="radio" aria-label="Noter ${star}" aria-checked="false" class="rating-stars__hit rating-stars__hit--right"></button></span>`).join('')}
+      </div>
+    </div>
+  </section>
   <nav class="test-mobile-navigation" aria-hidden="true">Navigation mobile</nav>`;
 
 const baseStyles = `
@@ -341,6 +351,12 @@ const evaluationScript = `
       const bounds = element.getBoundingClientRect();
       if (bounds.left < -1 || bounds.right > viewportRight + 1) {
         violations.push({ selector: element.tagName.toLowerCase() + (element.className ? '.' + String(element.className).trim().replaceAll(' ', '.') : ''), reason: 'out-of-bounds', left: bounds.left, right: bounds.right, viewportRight });
+      }
+    }
+    for (const target of document.querySelectorAll('.rating-stars__hit')) {
+      const bounds = target.getBoundingClientRect();
+      if (bounds.width < 24 || bounds.height < 24) {
+        violations.push({ selector: target.className, reason: 'undersized-rating-target', width: bounds.width, height: bounds.height });
       }
     }
     if (viewportRight <= 576) {
