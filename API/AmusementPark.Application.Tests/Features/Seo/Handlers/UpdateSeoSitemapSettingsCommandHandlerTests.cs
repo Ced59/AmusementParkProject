@@ -20,6 +20,8 @@ public sealed class UpdateSeoSitemapSettingsCommandHandlerTests
     [InlineData("existing-key", "https://amusement-parks.fun/sitemap-static-fr.txt")]
     [InlineData("existing-key", "https://amusement-parks.fun/sitemap-static-fr.txt?version=1#fragment")]
     [InlineData("existing-key", "https://amusement-parks.fun/%73itemap-static-fr.txt")]
+    [InlineData("existing-key", "verification/../sitemap-static-fr.txt")]
+    [InlineData("existing-key", "/verification/%2e%2e/sitemap-static-fr.txt")]
     public async Task HandleAsync_WhenEnabledKeyWouldShadowTextSitemap_ShouldRejectWithoutSaving(string key, string location)
     {
         Mock<ISeoSitemapSettingsRepository> repository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);

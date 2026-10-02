@@ -79,7 +79,9 @@ public sealed class UpdateSeoSitemapSettingsCommandHandler : ICommandHandler<Upd
             path = $"/{path}";
         }
 
-        return string.Equals(path, "/sitemap-static-fr.txt", StringComparison.OrdinalIgnoreCase);
+        // Resolve relative dot segments after decoding, without making a network request.
+        return Uri.TryCreate($"https://indexnow-key-path.invalid{path}", UriKind.Absolute, out Uri? normalizedUri) &&
+            string.Equals(normalizedUri.AbsolutePath, "/sitemap-static-fr.txt", StringComparison.OrdinalIgnoreCase);
     }
 
     private static IReadOnlyCollection<string> NormalizeEndpoints(IReadOnlyCollection<string> endpoints)
