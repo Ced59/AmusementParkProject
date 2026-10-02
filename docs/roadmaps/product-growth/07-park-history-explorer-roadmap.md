@@ -788,7 +788,10 @@ l'identité MongoDB d'origine et `$setOnInsert` : une reprise ne duplique pas un
 récit et ne remplace jamais une version canonique plus récente. Si le candidat
 échoue, les sauvegardes restaurent l'état antérieur document pour document ; si
 la promotion réussit, elles sont supprimées avec toutes les collections et
-registres HIST-04 devenus inutiles. MongoDB est ainsi mis à jour automatiquement
+registres HIST-04 devenus inutiles. Les révisions temporaires portant encore
+l'origine `LegacyMigration` ne sont supprimées qu'après avoir vérifié que
+chaque récit correspondant a atteint un état canonique final et que chaque
+source héritée reste rattachée à un fait converti. MongoDB est ainsi mis à jour automatiquement
 par le déploiement, sans manipulation manuelle ni coexistence durable de deux
 moteurs. En cas d'échec, l'ancienne API n'est redémarrée qu'après la
 restauration intégrale des documents sauvegardés.

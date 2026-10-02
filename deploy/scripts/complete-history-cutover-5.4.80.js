@@ -2,6 +2,7 @@ const databaseName = process.env.MONGO_APP_DATABASE || 'AmusementPark';
 const database = db.getSiblingDB(databaseName);
 const migrationId = 'hist-04-history-events-v1';
 const cutoverVersion = 'hist-canonical-cutover-v1';
+const canonicalizationVersion = 'hist-canonical-v2';
 const narrativeCollectionName = 'historical-narratives';
 const supersededCollectionNames = [
   'historyEvents',
@@ -25,6 +26,58 @@ if (database.getCollectionInfos({ name: narrativeCollectionName }).length > 0) {
 }
 
 const narratives = database.getCollection(narrativeCollectionName);
+const facts = database.getCollection('historical-facts');
+const sources = database.getCollection('historical-sources');
+const relations = database.getCollection('historical-relations');
+const legacyRevisionFilter = { revisionOrigin: 'LegacyMigration' };
+const legacyFactsWithoutNarrative = facts.countDocuments({
+  ...legacyRevisionFilter,
+  $or: [
+    { narrativeContentId: { $exists: false } },
+    { narrativeContentId: null },
+    { narrativeContentId: '' },
+  ],
+});
+if (legacyFactsWithoutNarrative > 0) {
+  throw new Error('Legacy historical facts without a recoverable narrative cannot be removed safely.');
+}
+
+const legacyNarrativeIds = facts.distinct('narrativeContentId', legacyRevisionFilter);
+const completedLegacyNarratives = legacyNarrativeIds.length === 0
+  ? 0
+  : narratives.countDocuments({
+    _id: { $in: legacyNarrativeIds },
+    migrationVersion: canonicalizationVersion,
+    canonicalizationState: { $in: ['Canonicalized', 'Blocked'] },
+  });
+if (completedLegacyNarratives !== legacyNarrativeIds.length) {
+  throw new Error('Legacy historical facts still depend on a non-final narrative conversion.');
+}
+
+const referencedLegacySourceIds = new Set(facts.distinct('sources.sourceId', legacyRevisionFilter));
+const legacySourceIds = sources.distinct('sourceId', legacyRevisionFilter);
+const orphanedLegacySourceIds = legacySourceIds.filter(
+  sourceId => !referencedLegacySourceIds.has(sourceId));
+if (orphanedLegacySourceIds.length > 0) {
+  throw new Error('Legacy historical sources without a converted fact cannot be removed safely.');
+}
+const ordinaryFactsUsingLegacySources = legacySourceIds.length === 0
+  ? 0
+  : facts.countDocuments({
+    revisionOrigin: { $ne: 'LegacyMigration' },
+    'sources.sourceId': { $in: legacySourceIds },
+  });
+if (ordinaryFactsUsingLegacySources > 0) {
+  throw new Error('Canonical historical facts still reference legacy source revisions.');
+}
+
+const legacyRelationCount = relations.countDocuments(legacyRevisionFilter);
+if (legacyRelationCount > 0) {
+  throw new Error('Unexpected legacy historical relations require an explicit migration.');
+}
+
+const deletedLegacyFacts = facts.deleteMany(legacyRevisionFilter);
+const deletedLegacySources = sources.deleteMany(legacyRevisionFilter);
 const normalizedNarratives = narratives.updateMany(
   { cutoverVersion },
   {
@@ -61,6 +114,8 @@ if (migrations.countDocuments({}) === 0
 
 printjson({
   normalizedNarratives: normalizedNarratives.modifiedCount,
+  deletedLegacyFacts: deletedLegacyFacts.deletedCount,
+  deletedLegacySources: deletedLegacySources.deletedCount,
   deletedAnomalies: deletedAnomalies.deletedCount,
   deletedMigrationStates: deletedMigrationStates.deletedCount,
   droppedCollections,

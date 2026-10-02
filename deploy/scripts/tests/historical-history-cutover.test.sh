@@ -140,6 +140,13 @@ for required_completion_step in \
   "historical-cutover-state-hist-canonical-v1" \
   "cutoverPreviousCanonicalFactId: ''" \
   "collMod: narrativeCollectionName" \
+  "legacyFactsWithoutNarrative" \
+  "completedLegacyNarratives !== legacyNarrativeIds.length" \
+  "orphanedLegacySourceIds.length > 0" \
+  "ordinaryFactsUsingLegacySources > 0" \
+  "relations.countDocuments(legacyRevisionFilter)" \
+  "facts.deleteMany(legacyRevisionFilter)" \
+  "sources.deleteMany(legacyRevisionFilter)" \
   "deletedMigrationStates"; do
   if ! grep -Fq "${required_completion_step}" "${completion_script}"; then
     echo "Historical completion is missing its canonical cleanup step: ${required_completion_step}" >&2
