@@ -1,6 +1,20 @@
 {
-  "version": "5.4.55",
+  "version": "5.4.56",
   "history": [
+    {
+      "version": "5.4.56",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Navigation publique adaptée aux assistants",
+        "en": "Public browsing support for assistants",
+        "de": "Öffentliche Navigation für Assistenten",
+        "nl": "Openbare navigatie voor assistenten",
+        "it": "Navigazione pubblica per gli assistenti",
+        "es": "Navegación pública para asistentes",
+        "pt": "Navegação pública para assistentes",
+        "pl": "Publiczna nawigacja dla asystentów"
+      }
+    },
     {
       "version": "5.4.55",
       "releasedAt": "2026-10-02",
