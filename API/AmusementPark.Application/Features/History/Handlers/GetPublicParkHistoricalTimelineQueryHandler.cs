@@ -55,8 +55,17 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
 
         string parkId = query.ParkId.Trim();
         PublicParkHistoricalScope? scope = await this.dataLoader.LoadScopeAsync(parkId, cancellationToken);
-        if (scope is null
-            || !(await this.dataLoader.AssessRolloutGateAsync(scope, cancellationToken)).IsOpen)
+        if (scope is null)
+        {
+            return ApplicationResult<PublicParkHistoricalTimelineResult>.Failure(
+                ApplicationErrors.EntityNotFound(nameof(Park), parkId));
+        }
+
+        HistoricalParkRolloutGate rolloutGate = await this.dataLoader.AssessRolloutGateAsync(
+            scope,
+            cancellationToken);
+        if (!rolloutGate.IsOpen
+            && !await this.dataLoader.HasLegacyPublicTimelineAsync(scope, cancellationToken))
         {
             return ApplicationResult<PublicParkHistoricalTimelineResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), parkId));
@@ -83,7 +92,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                 loadedSources.Select(static source => source.Id).Distinct().ToArray(),
                 cancellationToken);
         Dictionary<(Guid Id, int Revision), HistoricalSourceReference> publicSources =
-            HistoricalRelationEvidenceValidator.FilterCurrentlyAdmissiblePublicSources(
+            HistoricalFactEvidenceValidator.FilterPublicTimelineSources(
                 loadedSources,
                 latestTimelineSources)
             .ToDictionary(static source => (source.Id, source.Revision));
@@ -103,9 +112,9 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             StringComparer.Ordinal);
         Dictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> publicCurrentSubjects =
             scope.PublicCurrentSubjects.ToDictionary(static subject => (subject.Type, subject.Id));
-        HashSet<HistoricalSubjectKey> subjectsWithLineage = await this.LoadSubjectsWithLineageAsync(
-            pageFacts,
-            cancellationToken);
+        HashSet<HistoricalSubjectKey> subjectsWithLineage = rolloutGate.IsOpen
+            ? await this.LoadSubjectsWithLineageAsync(pageFacts, cancellationToken)
+            : new HashSet<HistoricalSubjectKey>();
         PublicHistoricalTimelineEntryResult[] entries = pageFacts
             .Select(fact => new PublicHistoricalTimelineEntryResult(
                 fact,
@@ -131,7 +140,11 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             PublicParkHistoricalDataLoader.ResolvePublicZoneNames(scope, pageFacts);
 
         return ApplicationResult<PublicParkHistoricalTimelineResult>.Success(
-            new PublicParkHistoricalTimelineResult(scope.Park, page, publicZoneNames));
+            new PublicParkHistoricalTimelineResult(
+                scope.Park,
+                page,
+                publicZoneNames,
+                rolloutGate.IsOpen));
     }
 
     private async Task<HashSet<HistoricalSubjectKey>> LoadSubjectsWithLineageAsync(

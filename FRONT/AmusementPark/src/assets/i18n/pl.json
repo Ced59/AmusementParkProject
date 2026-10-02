@@ -6694,6 +6694,8 @@
       "kicker": "Pamięć parku",
       "timelineTitle": "Historia {{park}}",
       "timelineDescription": "Poznaj zmiany w parku w kolejności wraz z poziomem dowodów i źródłami.",
+      "pendingReviewTitle": "Historia w trakcie weryfikacji",
+      "pendingReviewMessage": "Te wydarzenia pochodzą z istniejącej publicznej historii. Pozostają dostępne podczas weryfikacji dowodów; rekonstrukcje według lat i porównania zostaną udostępnione po zatwierdzeniu.",
       "chooseYear": "Poznaj wybrany rok",
       "exploreYear": "Zobacz ten okres",
       "unknownDate": "Data nieznana",

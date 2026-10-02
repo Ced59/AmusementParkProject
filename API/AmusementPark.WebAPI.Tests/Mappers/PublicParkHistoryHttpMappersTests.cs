@@ -131,7 +131,8 @@ public sealed class PublicParkHistoryHttpMappersTests
                 1,
                 25,
                 1),
-            new Dictionary<string, string>());
+            new Dictionary<string, string>(),
+            true);
 
         PublicParkHistoricalTimelineDto dto = result.ToHttp();
         PublicHistoricalTimelineEntryDto entry = Assert.Single(dto.Events);
@@ -139,6 +140,7 @@ public sealed class PublicParkHistoryHttpMappersTests
 
         Assert.Null(entry.PreviousDisplayValue);
         Assert.Null(entry.NextDisplayValue);
+        Assert.True(dto.HasDecisionSnapshots);
         Assert.Equal("Nom public actuel", entry.CurrentSubjectName);
         Assert.Equal(narrative.Id, entry.Narrative?.EventId);
         Assert.Equal("opening-article", entry.Narrative?.Slug);

@@ -173,6 +173,22 @@ public static class HistoricalFactEvidenceValidator
         return BuildRequiredScopes(fact).All(coveredScopes.Contains);
     }
 
+    public static IReadOnlyCollection<HistoricalSourceReference> FilterPublicTimelineSources(
+        IReadOnlyCollection<HistoricalSourceReference> resolvedRevisions,
+        IReadOnlyCollection<HistoricalSourceReference> latestRevisions)
+    {
+        ArgumentNullException.ThrowIfNull(resolvedRevisions);
+        ArgumentNullException.ThrowIfNull(latestRevisions);
+        HashSet<Guid> currentlyPublicSourceIds = latestRevisions
+            .Where(IsPublicTimelineSource)
+            .Select(static source => source.Id)
+            .ToHashSet();
+        return resolvedRevisions
+            .Where(source => IsPublicTimelineSource(source)
+                && currentlyPublicSourceIds.Contains(source.Id))
+            .ToArray();
+    }
+
     private static HistoricalSourceScope[] BuildRequiredScopes(HistoricalFact fact)
     {
         List<HistoricalSourceScope> scopes = new List<HistoricalSourceScope>
@@ -220,6 +236,20 @@ public static class HistoricalFactEvidenceValidator
         }
 
         return supportingReferences.Length > 0 && contradictingReferences.Length == 0;
+    }
+
+    private static bool IsPublicTimelineSource(HistoricalSourceReference source)
+    {
+        bool hasPublicWorkflow = source.PublicationState == HistoricalPublicationState.Published
+                && (source.WorkflowState is HistoricalEditorialWorkflowState.Published
+                    or HistoricalEditorialWorkflowState.Corrected)
+            || source.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview
+                && source.RevisionOrigin == HistoricalRevisionOrigin.LegacyMigration
+                && (source.WorkflowState is HistoricalEditorialWorkflowState.EditorialReview
+                    or HistoricalEditorialWorkflowState.StructuredValidation);
+        return hasPublicWorkflow
+            && (source.Accessibility is HistoricalSourceAccessibility.Accessible
+                or HistoricalSourceAccessibility.Archived);
     }
 
     private static HistoricalPersistenceValidationException Invalid(string code, string message)

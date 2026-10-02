@@ -88,6 +88,7 @@ function createTimeline(): PublicParkHistoricalTimeline {
   return {
     parkId: 'park-1',
     parkName: 'Example Park',
+    hasDecisionSnapshots: true,
     events: [],
     pagination: { currentPage: 1, itemsPerPage: 50, totalItems: 0, totalPages: 1 }
   };

@@ -13,6 +13,7 @@ internal static class PublicParkHistoryHttpMappers
         {
             ParkId = result.Park.Id,
             ParkName = result.Park.Name ?? string.Empty,
+            HasDecisionSnapshots = result.HasDecisionSnapshots,
             Events = result.Page.Items.Select(entry => entry.ToHttp(result.ZoneNames)).ToArray(),
             Pagination = new PaginationDto
             {

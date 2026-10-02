@@ -8,6 +8,8 @@ public sealed class PublicParkHistoricalTimelineDto
 
     public string ParkName { get; set; } = string.Empty;
 
+    public bool HasDecisionSnapshots { get; set; }
+
     public IReadOnlyCollection<PublicHistoricalTimelineEntryDto> Events { get; set; } =
         Array.Empty<PublicHistoricalTimelineEntryDto>();
 

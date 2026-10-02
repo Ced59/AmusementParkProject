@@ -120,6 +120,11 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<HistoricalFact>());
+        factRepository.Setup(repository => repository.HasLatestLegacyPublicTimelineRevisionForParkAsync(
+                park.Id,
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
         GetPublicParkHistoricalTimelineQueryHandler handler = new(
             CreateLoader(
                 parkRepository,
@@ -135,6 +140,75 @@ public sealed class PublicParkHistoricalHandlersTests
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "park.not-found");
+    }
+
+    [Fact]
+    public async Task Timeline_WhenLegacyPublishedHistoryAwaitsReview_ShouldExposeTimelineWithoutSnapshots()
+    {
+        Park park = PublicParkHistoryTestData.CreatePark();
+        HistoricalFact legacyFact = CreateLegacyPublishedFact(park);
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalRelationRepository> relationRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalSubjectPublicationStateReader> publicationReader = new(MockBehavior.Strict);
+        parkRepository.Setup(repository => repository.GetByIdAsync(
+                park.Id,
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkItemRepository.Setup(repository => repository.GetByParkIdAsync(
+                park.Id,
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkZoneRepository.Setup(repository => repository.GetByParkIdAsync(
+                park.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        factRepository.Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
+                park.Id,
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<HistoricalFact>());
+        factRepository.Setup(repository => repository.HasLatestLegacyPublicTimelineRevisionForParkAsync(
+                park.Id,
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        factRepository.Setup(repository => repository.GetLatestPublicTimelineRevisionsForParkPageAsync(
+                park.Id,
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                1,
+                25,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<HistoricalFact>(new[] { legacyFact }, 1, 25, 1));
+        GetPublicParkHistoricalTimelineQueryHandler handler = new(
+            CreateLoader(
+                parkRepository,
+                parkItemRepository,
+                parkZoneRepository,
+                factRepository,
+                false),
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict).Object,
+            new Mock<IHistoryEventRepository>(MockBehavior.Strict).Object,
+            relationRepository.Object,
+            publicationReader.Object);
+
+        ApplicationResult<PublicParkHistoricalTimelineResult> result = await handler.HandleAsync(
+            new GetPublicParkHistoricalTimelineQuery(park.Id));
+
+        Assert.True(result.IsSuccess);
+        PublicParkHistoricalTimelineResult timeline = Assert.IsType<PublicParkHistoricalTimelineResult>(
+            result.Value);
+        Assert.False(timeline.HasDecisionSnapshots);
+        PublicHistoricalTimelineEntryResult entry = Assert.Single(timeline.Page.Items);
+        Assert.Same(legacyFact, entry.Fact);
+        Assert.False(entry.HasPublishedLineage);
+        factRepository.VerifyAll();
+        relationRepository.VerifyNoOtherCalls();
+        publicationReader.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -316,7 +390,7 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { visibleFact, removedFact, earlierFact, laterEarlierFact });
         factRepository
-            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+            .Setup(repository => repository.GetLatestPublicTimelineRevisionsForParkPageAsync(
                 "park-1",
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 2,
@@ -567,7 +641,7 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { parkFact });
         factRepository
-            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+            .Setup(repository => repository.GetLatestPublicTimelineRevisionsForParkPageAsync(
                 "park-1",
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 int.MaxValue,
@@ -732,6 +806,44 @@ public sealed class PublicParkHistoricalHandlersTests
             parkZoneRepository.Object,
             factRepository.Object,
             rolloutGate.Object);
+    }
+
+    private static HistoricalFact CreateLegacyPublishedFact(Park park)
+    {
+        return new HistoricalFact(
+            Guid.NewGuid(),
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                park.Id,
+                park.Name!,
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                park.Id),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForYear(1967)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalLocalizationPolicy.SupportedLanguageCodes
+                .Select(static languageCode => new HistoricalLocalizedText(
+                    languageCode,
+                    "Cette information historique publique reste à vérifier."))
+                .ToArray(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            null,
+            null,
+            null,
+            "hist-v1-legacy",
+            1,
+            null,
+            new DateTime(2026, 9, 26, 12, 0, 0, DateTimeKind.Utc),
+            HistoricalRevisionOrigin.LegacyMigration);
     }
 
     private static HistoricalRelation CreatePublishedRelation(HistoricalSubject source)

@@ -26,6 +26,7 @@ export interface HistoryTimelinePageViewModel {
   pageRanges: HistoryTimelinePageRangeViewModel[];
   yearStart: number;
   yearEnd: number;
+  hasDecisionSnapshots?: boolean;
 }
 
 export interface HistoryTimelinePageRangeViewModel {
@@ -59,6 +60,7 @@ export interface HistoryTimelineEventViewModel {
   sourceCount: number;
   positionPercent: number;
   isFirstInYear: boolean;
+  isDecisionEligible?: boolean;
 }
 
 export interface HistoryArticlePageViewModel {

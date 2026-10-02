@@ -6694,6 +6694,8 @@
       "kicker": "Geheugen van het park",
       "timelineTitle": "De geschiedenis van {{park}}",
       "timelineDescription": "Volg de veranderingen van het park in volgorde, met bewijsniveau en bronnen.",
+      "pendingReviewTitle": "Geschiedenis wordt gecontroleerd",
+      "pendingReviewMessage": "Deze gebeurtenissen komen uit de bestaande openbare geschiedenis. Ze blijven zichtbaar terwijl de bewijzen worden gecontroleerd; reconstructies per jaar en vergelijkingen worden daarna beschikbaar.",
       "chooseYear": "Verken een jaar",
       "exploreYear": "Bekijk dit tijdperk",
       "unknownDate": "Datum onbekend",

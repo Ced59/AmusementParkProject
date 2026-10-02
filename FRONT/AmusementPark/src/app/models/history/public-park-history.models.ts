@@ -60,6 +60,7 @@ export interface PublicHistoricalTimelineEntry {
 export interface PublicParkHistoricalTimeline {
   parkId: string;
   parkName: string;
+  hasDecisionSnapshots: boolean;
   events: PublicHistoricalTimelineEntry[];
   pagination: PaginationContract;
 }

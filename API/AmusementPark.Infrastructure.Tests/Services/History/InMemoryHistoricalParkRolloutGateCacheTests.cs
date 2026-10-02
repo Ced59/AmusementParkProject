@@ -74,4 +74,39 @@ public sealed class InMemoryHistoricalParkRolloutGateCacheTests
 
         Assert.Equal(2, factoryCalls);
     }
+
+    [Fact]
+    public async Task GetOrCreateLegacyTimelineAvailabilityAsync_ShouldReuseValueUntilInvalidated()
+    {
+        using MemoryCache memoryCache = new(new MemoryCacheOptions());
+        using InMemoryHistoricalParkRolloutGateCache cache = new(memoryCache);
+        int factoryCalls = 0;
+        Func<CancellationToken, Task<bool>> factory = _ =>
+        {
+            factoryCalls++;
+            return Task.FromResult(true);
+        };
+
+        bool first = await cache.GetOrCreateLegacyTimelineAvailabilityAsync(
+            "park-1",
+            "scope-a",
+            factory,
+            CancellationToken.None);
+        bool second = await cache.GetOrCreateLegacyTimelineAvailabilityAsync(
+            "park-1",
+            "scope-a",
+            factory,
+            CancellationToken.None);
+        cache.Invalidate();
+        bool refreshed = await cache.GetOrCreateLegacyTimelineAvailabilityAsync(
+            "park-1",
+            "scope-a",
+            factory,
+            CancellationToken.None);
+
+        Assert.True(first);
+        Assert.True(second);
+        Assert.True(refreshed);
+        Assert.Equal(2, factoryCalls);
+    }
 }

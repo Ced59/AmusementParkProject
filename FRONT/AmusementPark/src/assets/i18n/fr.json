@@ -6696,6 +6696,8 @@
       "timelineDescription": "Parcours les changements du parc dans l'ordre, avec leur niveau de preuve et leurs sources.",
       "chooseYear": "Explore une année",
       "exploreYear": "Voir cette époque",
+      "pendingReviewTitle": "Historique en cours de vérification",
+      "pendingReviewMessage": "Ces événements proviennent de l’historique public existant. Ils restent consultables pendant la vérification de leurs preuves ; les reconstitutions par année et les comparaisons seront disponibles après cette validation.",
       "unknownDate": "Date inconnue",
       "approximateDate": "Vers {{date}}",
       "datePeriod": "Du {{start}} au {{end}}",

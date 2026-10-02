@@ -219,11 +219,38 @@ public sealed class PublicParkHistoricalDataLoader
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(scope);
-        return this.historicalFactRepository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+        return this.historicalFactRepository.GetLatestPublicTimelineRevisionsForParkPageAsync(
             scope.Park.Id,
             scope.PublicCurrentSubjects,
             page,
             pageSize,
+            cancellationToken);
+    }
+
+    public Task<bool> HasLegacyPublicTimelineAsync(
+        PublicParkHistoricalScope scope,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(scope);
+        if (this.rolloutGateCache is not null)
+        {
+            return this.rolloutGateCache.GetOrCreateLegacyTimelineAvailabilityAsync(
+                scope.Park.Id,
+                BuildScopeFingerprint(scope),
+                token => this.HasLegacyPublicTimelineUncachedAsync(scope, token),
+                cancellationToken);
+        }
+
+        return this.HasLegacyPublicTimelineUncachedAsync(scope, cancellationToken);
+    }
+
+    private Task<bool> HasLegacyPublicTimelineUncachedAsync(
+        PublicParkHistoricalScope scope,
+        CancellationToken cancellationToken)
+    {
+        return this.historicalFactRepository.HasLatestLegacyPublicTimelineRevisionForParkAsync(
+            scope.Park.Id,
+            scope.PublicCurrentSubjects,
             cancellationToken);
     }
 
@@ -310,7 +337,7 @@ public sealed class PublicParkHistoricalDataLoader
         IReadOnlySet<HistoricalSubjectKey> publicCurrentSubjects,
         string parkId)
     {
-        if (!fact.IsDecisionEligible
+        if (!fact.IsPublicTimelineEligible
             || fact.Subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed)
         {
             return false;

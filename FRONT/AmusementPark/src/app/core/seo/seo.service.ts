@@ -11,7 +11,11 @@ import { VideoDto } from '@app/models/videos/video-dto';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
 import { ParkReferenceDetailViewModel, ParkReferenceKind } from '@features/public/parks/models/park-reference-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
-import { HistoryArticlePageViewModel, HistoryTimelinePageViewModel } from '@features/public/history/models/history-view.model';
+import {
+  HistoryArticlePageViewModel,
+  HistoryTimelineEventViewModel,
+  HistoryTimelinePageViewModel
+} from '@features/public/history/models/history-view.model';
 import { CommentThread } from '@app/models/comments/comment.models';
 import { environment } from '../../../environments/environment';
 import { SOCIAL_PREVIEW_PATH_VERSION } from '@shared/utils/images/social-preview-image.constants';
@@ -2808,7 +2812,8 @@ export class SeoService {
     const description: string = `${copy.timelineDescription(contextLabel)}${this.resolveHistoryTimelinePaginationDescriptionSuffix(timeline, normalizedLanguage)}`;
     const imageId: string | null = this.resolveHistoryTimelineSocialImageId(timeline);
     const totalEvents: number = timeline.pagination?.totalItems ?? timeline.events.length;
-    const isIndexable: boolean = isHistoryTimelineIndexable(totalEvents, url);
+    const isIndexable: boolean = timeline.hasDecisionSnapshots !== false
+      && isHistoryTimelineIndexable(totalEvents, url);
 
     this.apply({
       title,
@@ -3430,6 +3435,9 @@ export class SeoService {
 
   private buildHistoryTimelineJsonLd(timeline: HistoryTimelinePageViewModel, url: string, description: string): unknown {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const decisionEligibleEvents: HistoryTimelineEventViewModel[] = timeline.events.filter(
+      (event: HistoryTimelineEventViewModel): boolean => event.isDecisionEligible !== false
+    );
     const itemOffset: number = timeline.pagination
       ? Math.max(0, (timeline.pagination.currentPage - 1) * timeline.pagination.itemsPerPage)
       : 0;
@@ -3440,8 +3448,8 @@ export class SeoService {
       name: timeline.title,
       description,
       url: canonicalUrl,
-      numberOfItems: timeline.pagination?.totalItems ?? timeline.events.length,
-      itemListElement: timeline.events.map((event, index) => ({
+      numberOfItems: decisionEligibleEvents.length,
+      itemListElement: decisionEligibleEvents.map((event, index) => ({
         '@type': 'ListItem',
         position: itemOffset + index + 1,
         name: event.title,

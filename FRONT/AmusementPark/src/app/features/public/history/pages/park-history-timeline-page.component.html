@@ -27,23 +27,37 @@
           <p>{{ 'history.explorer.timelineDescription' | translate }}</p>
         </div>
 
-        <form class="park-history-date-picker" (ngSubmit)="openYear()">
-          <label for="history-year">{{ 'history.explorer.chooseYear' | translate }}</label>
-          <div>
-            <input id="history-year" name="historyYear" type="number" min="1000" max="9999" inputmode="numeric" [(ngModel)]="requestedYear" required>
-            <button class="app-button app-button--primary" type="submit">
-              <i class="pi pi-calendar" aria-hidden="true"></i>
-              <span>{{ 'history.explorer.exploreYear' | translate }}</span>
-            </button>
-          </div>
-        </form>
+        @if (currentTimeline.hasDecisionSnapshots) {
+          <form class="park-history-date-picker" (ngSubmit)="openYear()">
+            <label for="history-year">{{ 'history.explorer.chooseYear' | translate }}</label>
+            <div>
+              <input id="history-year" name="historyYear" type="number" min="1000" max="9999" inputmode="numeric" [(ngModel)]="requestedYear" required>
+              <button class="app-button app-button--primary" type="submit">
+                <i class="pi pi-calendar" aria-hidden="true"></i>
+                <span>{{ 'history.explorer.exploreYear' | translate }}</span>
+              </button>
+            </div>
+          </form>
+        }
       </header>
 
-      <a class="history-comparison-callout" [routerLink]="comparisonLink(currentTimeline)">
-        <i class="pi pi-arrows-h" aria-hidden="true"></i>
-        <span><strong>{{ 'history.comparison.breadcrumb' | translate }}</strong><small>{{ 'history.comparison.description' | translate }}</small></span>
-        <i class="pi pi-arrow-right" aria-hidden="true"></i>
-      </a>
+      @if (currentTimeline.hasDecisionSnapshots) {
+        <a class="history-comparison-callout" [routerLink]="comparisonLink(currentTimeline)">
+          <i class="pi pi-arrows-h" aria-hidden="true"></i>
+          <span><strong>{{ 'history.comparison.breadcrumb' | translate }}</strong><small>{{ 'history.comparison.description' | translate }}</small></span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      }
+
+      @if (hasPendingReviewEntries(currentTimeline)) {
+        <aside class="history-review-notice" role="note">
+          <i class="pi pi-shield" aria-hidden="true"></i>
+          <span>
+            <strong>{{ 'history.explorer.pendingReviewTitle' | translate }}</strong>
+            <small>{{ 'history.explorer.pendingReviewMessage' | translate }}</small>
+          </span>
+        </aside>
+      }
 
       <section class="park-history-metrics" [attr.aria-label]="'history.explorer.timelineSummary' | translate">
         <article>
@@ -95,7 +109,7 @@
                   </a>
                 }
 
-                @if (event.hasPublishedLineage && lineageLink(event, currentTimeline); as lineageRoute) {
+                @if (currentTimeline.hasDecisionSnapshots && event.hasPublishedLineage && lineageLink(event, currentTimeline); as lineageRoute) {
                   <a class="history-lineage-link" [routerLink]="lineageRoute">
                     <i class="pi pi-sitemap" aria-hidden="true"></i>
                     {{ 'history.lineage.open' | translate }}
