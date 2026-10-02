@@ -19,5 +19,7 @@ public sealed class ParkDetailSummaryDto
 
     public bool HasCurrentPricing { get; set; }
 
+    public bool HasPublicHistory { get; set; }
+
     public ParkDetailSummaryStatsDto Stats { get; set; } = new ParkDetailSummaryStatsDto();
 }

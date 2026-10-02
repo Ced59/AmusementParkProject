@@ -5,7 +5,6 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
-import { PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import {
@@ -27,12 +26,10 @@ import { CountryDisplayService } from '@shared/services/countries/country-displa
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
 import {
-  PARK_DETAIL_HISTORY_PORT,
   PARK_DETAIL_IMAGES_PORT,
   PARK_DETAIL_PARKS_PORT,
   ParkDetailHttpOptions,
   PARK_DETAIL_VIDEOS_PORT,
-  ParkDetailHistoryPort,
   ParkDetailImagesPort,
   ParkDetailParksPort,
   ParkDetailVideosPort,
@@ -42,7 +39,6 @@ import { FakeParksPort } from './test-helpers/park-detail-state.facade/fake-park
 import { FakeSsrHttpStatusService } from './test-helpers/park-detail-state.facade/fake-ssr-http-status-service';
 import { FakeVideosPort } from './test-helpers/park-detail-state.facade/fake-videos-port';
 import { FakeImagesPort } from './test-helpers/park-detail-state.facade/fake-images-port';
-import { FakeHistoryPort } from './test-helpers/park-detail-state.facade/fake-history-port';
 
 function createPark(
   hasLogo: boolean = true,
@@ -162,40 +158,6 @@ function createImagePage<TItem>(
       currentPage: 1,
       itemsPerPage: 1,
     },
-  };
-}
-
-function createHistoryTimeline(totalEvents: number): PublicParkHistoricalTimeline {
-  return {
-    parkId: 'park-1',
-    parkName: 'Bellewaerde',
-    events:
-      totalEvents > 0
-        ? [
-            {
-              subjectType: 'Park',
-              subjectId: 'park-1',
-              subjectLabel: 'Bellewaerde',
-              factType: 'Opening',
-              period: {
-                start: { year: 1954, precision: 'Year' },
-                end: null,
-                startConfidence: 'Certain',
-                endConfidence: 'Unknown'
-              },
-              evidenceState: 'Verified',
-              importance: 'Major',
-              uncertaintyExplanations: [],
-              sources: []
-            }
-          ]
-        : [],
-    pagination: {
-      totalItems: totalEvents,
-      totalPages: totalEvents > 0 ? 1 : 0,
-      currentPage: 1,
-      itemsPerPage: 1
-    }
   };
 }
 
@@ -341,13 +303,11 @@ function configureFacade(): {
   parksPort: FakeParksPort;
   videosPort: FakeVideosPort;
   imagesPort: FakeImagesPort;
-  historyPort: FakeHistoryPort;
   ssrStatusService: FakeSsrHttpStatusService;
 } {
   const parksPort: FakeParksPort = new FakeParksPort();
   const videosPort: FakeVideosPort = new FakeVideosPort();
   const imagesPort: FakeImagesPort = new FakeImagesPort();
-  const historyPort: FakeHistoryPort = new FakeHistoryPort();
   const ssrStatusService: FakeSsrHttpStatusService =
     new FakeSsrHttpStatusService();
 
@@ -357,7 +317,6 @@ function configureFacade(): {
       { provide: PARK_DETAIL_PARKS_PORT, useValue: parksPort },
       { provide: PARK_DETAIL_VIDEOS_PORT, useValue: videosPort },
       { provide: PARK_DETAIL_IMAGES_PORT, useValue: imagesPort },
-      { provide: PARK_DETAIL_HISTORY_PORT, useValue: historyPort },
       {
         provide: CountryDisplayService,
         useValue: {
@@ -373,7 +332,6 @@ function configureFacade(): {
     parksPort,
     videosPort,
     imagesPort,
-    historyPort,
     ssrStatusService,
   };
 }
@@ -439,9 +397,6 @@ describe('ParkDetailStateFacade', () => {
     expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
     expect(context.parksPort.openingHoursCalls.length).toBe(1);
     expect(context.parksPort.openingHoursCalls[0].id).toBe('park-1');
-    expect(context.historyPort.calls).toEqual([
-      { parkId: 'park-1', page: 1, pageSize: 1 },
-    ]);
     expect(context.facade.nearbyState().kind).toBe('ready');
     expect(context.facade.nearbyParks().map((park) => park.id)).toEqual([
       'near-1',
@@ -572,10 +527,9 @@ describe('ParkDetailStateFacade', () => {
       ...context.parksPort.weatherOptions,
       ...context.parksPort.openingHoursOptions,
       ...context.videosPort.options,
-      ...context.historyPort.options,
     ];
 
-    expect(capturedOptions.length).toBe(7);
+    expect(capturedOptions.length).toBe(6);
     expect(
       capturedOptions.every(
         (options: AnonymousHttpOptions | undefined) =>
@@ -584,9 +538,9 @@ describe('ParkDetailStateFacade', () => {
     ).toBe(true);
   });
 
-  it('exposes the history link when the park timeline has events', () => {
+  it('exposes the history link from the public summary availability', () => {
     const context = configureFacade();
-    context.historyPort.timelineResponse$ = of(createHistoryTimeline(1));
+    context.parksPort.summaryResponse$ = of({ ...createSummary(), hasPublicHistory: true });
 
     context.facade.setCurrentLanguage('fr');
     context.facade.loadPark('park-1');
@@ -603,16 +557,11 @@ describe('ParkDetailStateFacade', () => {
 
   it('keeps the history link hidden when the canonical history is unavailable', () => {
     const context = configureFacade();
-    context.historyPort.timelineResponses$ = [
-      throwError(() => ({ status: 404 })),
-    ];
+    context.parksPort.summaryResponse$ = of({ ...createSummary(), hasPublicHistory: false });
 
     context.facade.setCurrentLanguage('fr');
     context.facade.loadPark('park-1');
 
-    expect(context.historyPort.calls).toEqual([
-      { parkId: 'park-1', page: 1, pageSize: 1 },
-    ]);
     expect(context.facade.park()?.historyLink).toBeNull();
   });
 

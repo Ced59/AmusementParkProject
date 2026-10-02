@@ -26,5 +26,6 @@ export interface ParkDetailSummary {
   references: ParkDetailReferenceSummary;
   rating?: RatingSummary | null;
   hasCurrentPricing?: boolean;
+  hasPublicHistory?: boolean;
   stats: ParkDetailSummaryStats;
 }
