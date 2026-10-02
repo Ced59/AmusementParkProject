@@ -25,7 +25,7 @@ if [ -z "${historical_rollback_line}" ] \
 fi
 
 rollback_arm_line="$(grep -n 'historical_history_cutover_started=true' "${deploy_script}" | head -n 1 | cut -d: -f1)"
-freeze_command_line="$(grep -n 'freeze-history-authorities-5.4.79.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+freeze_command_line="$(grep -n 'freeze-history-authorities-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${rollback_arm_line}" ] \
   || [ -z "${freeze_command_line}" ] \
   || [ "${rollback_arm_line}" -ge "${freeze_command_line}" ]; then
@@ -69,7 +69,7 @@ for required_cutover_check in \
   fi
 done
 
-freeze_script="${deploy_root}/scripts/freeze-history-authorities-5.4.79.js"
+freeze_script="${deploy_root}/scripts/freeze-history-authorities-5.4.80.js"
 for required_freeze_step in \
   "renameCollection(frozenCollectionName, false)" \
   "createView(legacyCollectionName, frozenCollectionName, [])" \
@@ -84,7 +84,7 @@ for required_freeze_step in \
   fi
 done
 
-rollback_script="${deploy_root}/scripts/rollback-history-cutover-5.4.79.js"
+rollback_script="${deploy_root}/scripts/rollback-history-cutover-5.4.80.js"
 for required_filter in \
   "cutoverVersion: canonicalCutoverVersion" \
   "narrativeContentId: { \$in: stagedNarrativeIds }" \
@@ -105,7 +105,7 @@ for required_filter in \
   fi
 done
 
-completion_script="${deploy_root}/scripts/complete-history-cutover-5.4.79.js"
+completion_script="${deploy_root}/scripts/complete-history-cutover-5.4.80.js"
 for required_completion_step in \
   "history-events-cutover-source-hist-04-v1" \
   "history-events-backup-hist-04-v1" \
