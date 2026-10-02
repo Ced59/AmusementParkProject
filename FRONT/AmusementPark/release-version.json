@@ -1,6 +1,20 @@
 {
-  "version": "5.4.62",
+  "version": "5.4.63",
   "history": [
+    {
+      "version": "5.4.63",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Affichage plus fluide des thèmes dès l’ouverture",
+        "en": "Smoother theme display from the first moment",
+        "de": "Flüssigere Theme-Anzeige beim Öffnen",
+        "nl": "Soepelere themaweergave vanaf het openen",
+        "it": "Visualizzazione più fluida dei temi all’apertura",
+        "es": "Visualización más fluida de los temas al abrir",
+        "pt": "Apresentação mais fluida dos temas ao abrir",
+        "pl": "Płynniejsze wyświetlanie motywów od otwarcia"
+      }
+    },
     {
       "version": "5.4.62",
       "releasedAt": "2026-10-02",

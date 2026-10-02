@@ -1,3 +1,6 @@
+// The server starts with a dark body. Keep the light palette in critical CSS
+// through the non-dark fallback, before the browser applies its chosen theme.
+body:not(.dark-mode),
 body.light-mode {
   color-scheme: light;
 
