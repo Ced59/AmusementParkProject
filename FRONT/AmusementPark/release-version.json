@@ -1,6 +1,20 @@
 {
-  "version": "5.4.56",
+  "version": "5.4.57",
   "history": [
+    {
+      "version": "5.4.57",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Ouverture plus légère des fiches de parcs",
+        "en": "Lighter initial loading of park pages",
+        "de": "Schnelleres Laden der Parkseiten",
+        "nl": "Parkpagina’s laden sneller",
+        "it": "Caricamento più leggero delle schede dei parchi",
+        "es": "Carga más ligera de las fichas de parques",
+        "pt": "Carregamento mais leve das páginas dos parques",
+        "pl": "Lżejsze wczytywanie stron parków"
+      }
+    },
     {
       "version": "5.4.56",
       "releasedAt": "2026-10-02",
