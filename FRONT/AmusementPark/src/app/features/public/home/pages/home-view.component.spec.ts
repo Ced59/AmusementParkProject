@@ -225,7 +225,7 @@ describe('HomeViewComponent', () => {
     const park: ParkCardModel = {
       id: 'park-1', name: 'Example Park', countryCode: 'FR', city: 'Paris',
       status: 'Operating', statusLabelKey: null, statusIconClass: null,
-      statusTone: 'green', latitude: null, longitude: null, logoImageId: null,
+      statusTone: 'lime', latitude: null, longitude: null, logoImageId: null,
       websiteUrl: null, locationLine: 'Paris · France', addressLine: null,
       coordinatesLine: null, shortDescription: null,
       isClosedDefinitively: false, isOpenToVisitors: true,
