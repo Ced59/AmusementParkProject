@@ -4,7 +4,9 @@ using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Comments.Ports;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
@@ -705,6 +707,8 @@ public sealed class ParkGraphUpsertProcessorTests
                 savedEvents.Add(historyEvent);
             })
             .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        Mock<IHistoricalNarrativeCanonicalizer> historicalNarrativeCanonicalizer =
+            ConfigureCanonicalHistoryPersistence(historyEventRepository);
 
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
         searchProjectionWriter
@@ -734,7 +738,8 @@ public sealed class ParkGraphUpsertProcessorTests
             historyRepository.Object,
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
-            historyEventRepository: historyEventRepository.Object);
+            historyEventRepository: historyEventRepository.Object,
+            historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -745,7 +750,10 @@ public sealed class ParkGraphUpsertProcessorTests
               "ownerId": "item-1",
               "key": "miralooping-mirapolis",
               "eventType": "Opening",
-              "date": "1988-07"
+              "date": "1988-07",
+              "sources": [
+                { "url": "https://example.test/miralooping-mirapolis" }
+              ]
             },
             {
               "owner": "parkItem",
@@ -753,7 +761,11 @@ public sealed class ParkGraphUpsertProcessorTests
               "key": "miralooping-spreepark",
               "eventType": "RelocationArrival",
               "date": "1992",
-              "contextParkId": "none"
+              "contextParkId": "none",
+              "locationLabel": "Spreepark",
+              "sources": [
+                { "url": "https://example.test/miralooping-spreepark" }
+              ]
             },
             {
               "owner": "parkItem",
@@ -761,7 +773,11 @@ public sealed class ParkGraphUpsertProcessorTests
               "key": "miralooping-imported-null-context",
               "eventType": "ThemeChange",
               "date": "1993",
-              "contextParkId": null
+              "contextParkId": null,
+              "newName": "Mira Looping",
+              "sources": [
+                { "url": "https://example.test/miralooping-theme" }
+              ]
             }
           ]
         }
@@ -797,6 +813,7 @@ public sealed class ParkGraphUpsertProcessorTests
 
         parkRepository.VerifyAll();
         historyEventRepository.VerifyAll();
+        historicalNarrativeCanonicalizer.VerifyAll();
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
@@ -836,6 +853,8 @@ public sealed class ParkGraphUpsertProcessorTests
                 savedEvents.Add(historyEvent);
             })
             .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        Mock<IHistoricalNarrativeCanonicalizer> historicalNarrativeCanonicalizer =
+            ConfigureCanonicalHistoryPersistence(historyEventRepository);
 
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
         searchProjectionWriter
@@ -865,7 +884,8 @@ public sealed class ParkGraphUpsertProcessorTests
             historyRepository.Object,
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
-            historyEventRepository: historyEventRepository.Object);
+            historyEventRepository: historyEventRepository.Object,
+            historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -886,6 +906,13 @@ public sealed class ParkGraphUpsertProcessorTests
               "summaries": {
                 "fr": "Mirapolis ouvre au public."
               },
+              "sources": [
+                {
+                  "label": "Source du fait",
+                  "url": "https://example.test/mirapolis-opening",
+                  "accessedAt": "2026-06-30"
+                }
+              ],
               "article": {
                 "slug": "ouverture-mirapolis",
                 "isPublished": true,
@@ -957,6 +984,7 @@ public sealed class ParkGraphUpsertProcessorTests
 
         parkRepository.VerifyAll();
         historyEventRepository.VerifyAll();
+        historicalNarrativeCanonicalizer.VerifyAll();
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
@@ -1020,6 +1048,8 @@ public sealed class ParkGraphUpsertProcessorTests
                 savedEvents.Add(historyEvent);
             })
             .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        Mock<IHistoricalNarrativeCanonicalizer> historicalNarrativeCanonicalizer =
+            ConfigureCanonicalHistoryPersistence(historyEventRepository);
 
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
         searchProjectionWriter
@@ -1049,7 +1079,8 @@ public sealed class ParkGraphUpsertProcessorTests
             historyRepository.Object,
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
-            historyEventRepository: historyEventRepository.Object);
+            historyEventRepository: historyEventRepository.Object,
+            historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -1076,6 +1107,9 @@ public sealed class ParkGraphUpsertProcessorTests
               "eventType": "Opening",
               "date": "1987-05-20",
               "mainImageKey": "mirapolis-aerial",
+              "sources": [
+                { "url": "https://example.test/mirapolis-opening" }
+              ],
               "article": {
                 "title": {
                   "fr": "Ouverture de Mirapolis"
@@ -1128,6 +1162,7 @@ public sealed class ParkGraphUpsertProcessorTests
         imageRepository.VerifyAll();
         remoteImageImporter.VerifyAll();
         historyEventRepository.VerifyAll();
+        historicalNarrativeCanonicalizer.VerifyAll();
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
@@ -5157,4 +5192,29 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
 
+    private static Mock<IHistoricalNarrativeCanonicalizer> ConfigureCanonicalHistoryPersistence(
+        Mock<IHistoryEventRepository> historyEventRepository)
+    {
+        Mock<IHistoricalNarrativeCanonicalizer> canonicalizer =
+            new Mock<IHistoricalNarrativeCanonicalizer>(MockBehavior.Strict);
+        canonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(() => new HistoricalNarrativeCanonicalizationResult(
+                Guid.NewGuid(),
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                Array.Empty<string>()));
+        historyEventRepository
+            .Setup(value => value.SetCanonicalizationAsync(
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        return canonicalizer;
+    }
 }
