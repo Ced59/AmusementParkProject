@@ -1,6 +1,20 @@
 {
-  "version": "5.4.66",
+  "version": "5.4.67",
   "history": [
+    {
+      "version": "5.4.67",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Affichage des pages optimisé",
+        "en": "Optimized page rendering",
+        "de": "Optimierte Seitenanzeige",
+        "nl": "Geoptimaliseerde paginaweergave",
+        "it": "Visualizzazione delle pagine ottimizzata",
+        "es": "Visualización de páginas optimizada",
+        "pt": "Apresentação das páginas otimizada",
+        "pl": "Zoptymalizowane wyświetlanie stron"
+      }
+    },
     {
       "version": "5.4.66",
       "releasedAt": "2026-10-02",
