@@ -213,6 +213,12 @@
   [resizable]="false"
   [style]="{ width: 'min(96vw, 64rem)' }">
   @if (displayLoginModal()) {
-    <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
+    @defer (on immediate) {
+      <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
+    } @loading {
+      <p role="status">{{ 'common.loadingMessage' | translate }}</p>
+    } @error {
+      <p role="alert">{{ 'common.errorMessage' | translate }}</p>
+    }
   }
 </app-ui-dialog>

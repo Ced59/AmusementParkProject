@@ -1,6 +1,20 @@
 {
-  "version": "5.4.60",
+  "version": "5.4.61",
   "history": [
+    {
+      "version": "5.4.61",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Chargement plus léger des pages publiques",
+        "en": "Lighter loading of public pages",
+        "de": "Schnelleres Laden öffentlicher Seiten",
+        "nl": "Lichter laden van openbare pagina’s",
+        "it": "Caricamento più leggero delle pagine pubbliche",
+        "es": "Carga más ligera de las páginas públicas",
+        "pt": "Carregamento mais leve das páginas públicas",
+        "pl": "Lżejsze ładowanie stron publicznych"
+      }
+    },
     {
       "version": "5.4.60",
       "releasedAt": "2026-10-02",
