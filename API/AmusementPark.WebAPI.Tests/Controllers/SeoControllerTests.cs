@@ -19,6 +19,29 @@ namespace AmusementPark.WebAPI.Tests.Controllers;
 
 public sealed class SeoControllerTests
 {
+    [Theory]
+    [InlineData("https://amusement-parks.fun")]
+    [InlineData("https://amusement-parks.fun/")]
+    public void GetRobotsTxt_ShouldAdvertiseBothPublicSitemapsOnTheCanonicalOrigin(string publicBaseUrl)
+    {
+        SeoController controller = CreateController(new SeoSettings
+        {
+            PublicBaseUrl = publicBaseUrl,
+        });
+
+        ContentResult result = Assert.IsType<ContentResult>(controller.GetRobotsTxt());
+        string content = Assert.IsType<string>(result.Content);
+        string[] sitemapLines = content.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
+            .Where(static line => line.StartsWith("Sitemap: ", StringComparison.Ordinal))
+            .ToArray();
+
+        Assert.Equal(new[]
+        {
+            "Sitemap: https://amusement-parks.fun/sitemap.xml",
+            "Sitemap: https://amusement-parks.fun/sitemap-static-fr.txt",
+        }, sitemapLines);
+    }
+
     [Fact]
     public void GetRobotsTxt_WhenUsingDefaultRules_ShouldLetCrawlersReadNoindexPages()
     {

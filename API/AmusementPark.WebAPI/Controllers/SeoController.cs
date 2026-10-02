@@ -70,6 +70,7 @@ public sealed class SeoController : ControllerBase
 
         builder.AppendLine();
         builder.Append("Sitemap: ").Append(publicBaseUrl).AppendLine("/sitemap.xml");
+        builder.Append("Sitemap: ").Append(publicBaseUrl).AppendLine("/sitemap-static-fr.txt");
 
         return this.Content(builder.ToString(), "text/plain", Encoding.UTF8);
     }
