@@ -1,6 +1,20 @@
 {
-  "version": "5.4.57",
+  "version": "5.4.58",
   "history": [
+    {
+      "version": "5.4.58",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Chargement plus léger du logo",
+        "en": "Lighter logo loading",
+        "de": "Schnelleres Laden des Logos",
+        "nl": "Lichter laden van het logo",
+        "it": "Caricamento più leggero del logo",
+        "es": "Carga más ligera del logotipo",
+        "pt": "Carregamento mais leve do logótipo",
+        "pl": "Lżejsze wczytywanie logo"
+      }
+    },
     {
       "version": "5.4.57",
       "releasedAt": "2026-10-02",

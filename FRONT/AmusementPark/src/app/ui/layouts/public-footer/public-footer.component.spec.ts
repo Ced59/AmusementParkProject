@@ -99,9 +99,15 @@ describe('PublicFooterComponent', () => {
 
     expect(brandLink?.getAttribute('aria-label')).toBe('AMUSEMENT-PARKS.fun');
     expect(logoImage?.getAttribute('src')).toBe(
-      '/assets/general-icon/logo-amusementpark-ui.webp',
+      '/assets/general-icon/logo-amusementpark-ui-36.webp',
     );
     expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
+    expect(logoImage?.getAttribute('srcset')).toBe(
+      '/assets/general-icon/logo-amusementpark-ui-36.webp 36w, /assets/general-icon/logo-amusementpark-ui-72.webp 72w, /assets/general-icon/logo-amusementpark-ui.webp 96w',
+    );
+    expect(logoImage?.getAttribute('sizes')).toBe('36px');
+    expect(logoImage?.getAttribute('width')).toBe('36');
+    expect(logoImage?.getAttribute('height')).toBe('36');
     expect(base?.textContent).toBe('AMUSEMENT-PARKS');
     expect(dot?.textContent).toBe('.');
     expect(fun?.textContent).toBe('fun');
