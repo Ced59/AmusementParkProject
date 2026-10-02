@@ -62,4 +62,94 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
         throw new InvalidOperationException(
             "The canonical historical fact changed concurrently and could not be retracted safely.");
     }
+
+    public async Task RestoreAsync(HistoricalFact snapshot, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(snapshot);
+        for (int attempt = 0; attempt < 2; attempt++)
+        {
+            HistoricalFact? latest = await this.historicalFactRepository.GetLatestRevisionAsync(
+                snapshot.Id,
+                cancellationToken);
+            if (latest is null)
+            {
+                throw new InvalidOperationException(
+                    "A canonical historical fact could not be restored because its latest revision is missing.");
+            }
+
+            if (latest.PublicationState != HistoricalPublicationState.Withdrawn)
+            {
+                return;
+            }
+
+            DateTime nowUtc = DateTime.UtcNow;
+            DateTime recordedAtUtc = nowUtc > latest.RecordedAtUtc
+                ? nowUtc
+                : latest.RecordedAtUtc;
+            HistoricalFact restoration = new HistoricalFact(
+                snapshot.Id,
+                snapshot.Subject,
+                snapshot.Type,
+                snapshot.Period,
+                snapshot.State,
+                snapshot.Importance,
+                snapshot.WorkflowState,
+                snapshot.PublicationState,
+                snapshot.PublicUncertaintyExplanation,
+                snapshot.LifecycleBoundaryMeaning,
+                snapshot.AttributeKind,
+                snapshot.AttributeBoundaryMeaning,
+                snapshot.SequenceWithinDate,
+                snapshot.SourceReferences,
+                snapshot.StructuredValue,
+                snapshot.OtherTypeLabel,
+                snapshot.NarrativeContentId,
+                snapshot.VerifiedAtUtc,
+                snapshot.PublishedAtUtc,
+                snapshot.PublicationMethodologyVersion,
+                latest.Revision + 1,
+                latest.Revision,
+                recordedAtUtc,
+                snapshot.RevisionOrigin);
+            HistoricalReviewEvent reviewEvent = new HistoricalReviewEvent(
+                Guid.NewGuid(),
+                HistoricalReviewResourceType.Fact,
+                restoration.Id,
+                restoration.Revision,
+                ResolveRestorationEventType(snapshot.WorkflowState),
+                "system:history-narrative-change",
+                "Restauration compensatoire après l'échec du retrait d'une ressource HIST canonique.",
+                recordedAtUtc);
+            HistoricalRevisionWriteDisposition outcome =
+                await this.historicalFactRepository.AppendRevisionAsync(
+                    restoration,
+                    reviewEvent,
+                    cancellationToken);
+            if (outcome is HistoricalRevisionWriteDisposition.Created
+                or HistoricalRevisionWriteDisposition.AlreadyExists)
+            {
+                return;
+            }
+        }
+
+        throw new InvalidOperationException(
+            "The canonical historical fact changed concurrently and could not be restored safely.");
+    }
+
+    private static HistoricalReviewEventType ResolveRestorationEventType(
+        HistoricalEditorialWorkflowState workflowState)
+    {
+        return workflowState switch
+        {
+            HistoricalEditorialWorkflowState.Draft => HistoricalReviewEventType.DraftUpdated,
+            HistoricalEditorialWorkflowState.SourcesAttached => HistoricalReviewEventType.SourcesAttached,
+            HistoricalEditorialWorkflowState.EditorialReview
+                or HistoricalEditorialWorkflowState.StructuredValidation =>
+                    HistoricalReviewEventType.ReviewUpdated,
+            HistoricalEditorialWorkflowState.Published => HistoricalReviewEventType.Published,
+            HistoricalEditorialWorkflowState.Corrected => HistoricalReviewEventType.Corrected,
+            _ => throw new InvalidOperationException(
+                "The canonical historical fact snapshot cannot be restored to its previous workflow state."),
+        };
+    }
 }

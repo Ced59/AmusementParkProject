@@ -174,6 +174,46 @@ public sealed class HistoricalSourceRevisionValidatorTests
             structuredValidation.PublicationState);
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenCompensationRestoresRetractedSource_ShouldAcceptTransition()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalSourceReference retraction = CreateSource(
+            sourceId,
+            6,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Retracted,
+            HistoricalPublicationState.Withdrawn);
+        HistoricalSourceReference restoration = CreateSource(
+            sourceId,
+            7,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published);
+
+        HistoricalSourceRevisionValidator.ValidatePredecessor(restoration, retraction);
+    }
+
+    [Fact]
+    public void ValidatePredecessor_WhenDraftIsRetracted_ShouldAcceptTransition()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalSourceReference draft = CreateSource(
+            sourceId,
+            1,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft);
+        HistoricalSourceReference retraction = CreateSource(
+            sourceId,
+            2,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Retracted,
+            HistoricalPublicationState.Withdrawn);
+
+        HistoricalSourceRevisionValidator.ValidatePredecessor(retraction, draft);
+    }
+
     private static HistoricalSourceReference CreateSource(
         Guid sourceId,
         int revision,

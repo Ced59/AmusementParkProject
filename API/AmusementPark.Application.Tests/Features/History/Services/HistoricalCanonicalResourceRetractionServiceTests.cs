@@ -52,4 +52,60 @@ public sealed class HistoricalCanonicalResourceRetractionServiceTests
         factRepository.VerifyAll();
         sourceRepository.VerifyAll();
     }
+
+    [Fact]
+    public async Task RetractAsync_WhenSourceKeepsConflicting_ShouldRestoreRetractedFact()
+    {
+        HistoricalSubject subject = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+        HistoricalFact fact = PublicParkHistoryTestData.CreateOpeningFact(subject, 1998);
+        HistoricalSourceReference source = PublicParkHistoryTestData.CreateSource(fact);
+        HistoricalFact factRetraction = fact.CreateRetraction(fact.RecordedAtUtc.AddSeconds(1));
+        Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository = new(MockBehavior.Strict);
+        factRepository
+            .SetupSequence(value => value.GetLatestRevisionAsync(
+                fact.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(fact)
+            .ReturnsAsync(fact)
+            .ReturnsAsync(factRetraction);
+        factRepository
+            .Setup(value => value.AppendRevisionAsync(
+                It.Is<HistoricalFact>(candidate => candidate.PublicationState
+                    == HistoricalPublicationState.Withdrawn),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        factRepository
+            .Setup(value => value.AppendRevisionAsync(
+                It.Is<HistoricalFact>(candidate => candidate.PublicationState
+                    == HistoricalPublicationState.Published),
+                It.Is<HistoricalReviewEvent>(review => review.EventType
+                    == HistoricalReviewEventType.Published),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        sourceRepository
+            .Setup(value => value.GetLatestRevisionAsync(source.Id, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(source);
+        sourceRepository
+            .Setup(value => value.AppendRevisionAsync(
+                It.IsAny<HistoricalSourceReference>(),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Conflict);
+        HistoricalCanonicalResourceRetractionService service =
+            HistoricalCanonicalResourceRetractionServiceTestFactory.Create(
+                factRepository.Object,
+                sourceRepository.Object);
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            service.RetractAsync(fact.Id, CancellationToken.None));
+
+        factRepository.VerifyAll();
+        sourceRepository.VerifyAll();
+    }
 }

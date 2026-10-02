@@ -53,6 +53,18 @@ public sealed class HistoricalFactTests
     }
 
     [Fact]
+    public void CreateRetraction_WhenOrdinaryDraftHasNoMethodology_ShouldCreateWithdrawnRevision()
+    {
+        HistoricalFact draft = CreateUnverifiedPrePublicationFact(
+            HistoricalEditorialWorkflowState.Draft);
+
+        HistoricalFact retraction = draft.CreateRetraction(RecordedAtUtc.AddMinutes(1));
+
+        Assert.Equal(HistoricalPublicationState.Withdrawn, retraction.PublicationState);
+        Assert.Null(retraction.PublicationMethodologyVersion);
+    }
+
+    [Fact]
     public void Constructor_WhenPublishedProbableFactMissesTranslations_ShouldRejectFact()
     {
         HistoricalPersistenceValidationException exception =

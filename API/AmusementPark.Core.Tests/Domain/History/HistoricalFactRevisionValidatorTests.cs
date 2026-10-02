@@ -164,6 +164,50 @@ public sealed class HistoricalFactRevisionValidatorTests
             structuredValidation.PublicationState);
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenCompensationRestoresRetractedFact_ShouldAcceptTransition()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact retraction = CreateFact(
+            factId,
+            6,
+            5,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Retracted,
+            HistoricalPublicationState.Withdrawn);
+        HistoricalFact restoration = CreateFact(
+            factId,
+            7,
+            6,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published);
+
+        HistoricalFactRevisionValidator.ValidatePredecessor(restoration, retraction);
+    }
+
+    [Fact]
+    public void ValidatePredecessor_WhenDraftIsRetracted_ShouldAcceptTransition()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact draft = CreateFact(
+            factId,
+            1,
+            null,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft);
+        HistoricalFact retraction = CreateFact(
+            factId,
+            2,
+            1,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Retracted,
+            HistoricalPublicationState.Withdrawn);
+
+        HistoricalFactRevisionValidator.ValidatePredecessor(retraction, draft);
+    }
+
     private static HistoricalFact CreateFact(
         Guid factId,
         int revision,

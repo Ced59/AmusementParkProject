@@ -63,7 +63,7 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
             destination,
             cancellationToken);
 
-        await this.BackupReferencedCanonicalDocumentsAsync(destination, cancellationToken);
+        await this.BackupAffectedCanonicalDocumentsAsync(destination, cancellationToken);
         await this.MarkBackupStageCompleteAsync(cancellationToken);
 
         if (importedCount > 0)
@@ -170,15 +170,52 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
             cancellationToken);
     }
 
-    private async Task BackupReferencedCanonicalDocumentsAsync(
+    internal static FilterDefinition<BsonDocument> BuildAffectedFactFilter(
+        IReadOnlyCollection<string> narrativeIds,
+        IReadOnlyCollection<string> linkedFactIds)
+    {
+        ArgumentNullException.ThrowIfNull(narrativeIds);
+        ArgumentNullException.ThrowIfNull(linkedFactIds);
+        FilterDefinitionBuilder<BsonDocument> builder = Builders<BsonDocument>.Filter;
+        List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>(2);
+        if (narrativeIds.Count > 0)
+        {
+            filters.Add(builder.In("narrativeContentId", narrativeIds));
+        }
+
+        if (linkedFactIds.Count > 0)
+        {
+            filters.Add(builder.In("factId", linkedFactIds));
+        }
+
+        if (filters.Count == 0)
+        {
+            return builder.Where(static _ => false);
+        }
+
+        return filters.Count == 1 ? filters[0] : builder.Or(filters);
+    }
+
+    private async Task BackupAffectedCanonicalDocumentsAsync(
         IMongoCollection<BsonDocument> narratives,
         CancellationToken cancellationToken)
     {
         List<BsonDocument> stagedNarratives = await narratives
             .Find(Builders<BsonDocument>.Filter.Eq("cutoverVersion", CutoverVersion))
-            .Project(new BsonDocument(PreviousCanonicalFactIdField, 1))
+            .Project(new BsonDocument
+            {
+                { "_id", 1 },
+                { PreviousCanonicalFactIdField, 1 },
+            })
             .ToListAsync(cancellationToken);
-        string[] factIds = stagedNarratives
+        string[] narrativeIds = stagedNarratives
+            .Where(static narrative => narrative.TryGetValue("_id", out BsonValue? value)
+                && value.IsString
+                && !string.IsNullOrWhiteSpace(value.AsString))
+            .Select(static narrative => narrative["_id"].AsString)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        string[] linkedFactIds = stagedNarratives
             .Where(static narrative =>
                 narrative.TryGetValue(PreviousCanonicalFactIdField, out BsonValue? value)
                 && value.IsString
@@ -186,13 +223,26 @@ public sealed class HistoricalNarrativeCollectionCutoverMigration
             .Select(static narrative => narrative[PreviousCanonicalFactIdField].AsString)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        if (factIds.Length == 0)
+        if (narrativeIds.Length == 0 && linkedFactIds.Length == 0)
         {
             return;
         }
 
         IMongoCollection<BsonDocument> facts = this.database.GetCollection<BsonDocument>(
             this.settings.HistoricalFactsCollectionName);
+        List<string> affectedFactIds = await facts
+            .Distinct<string>(
+                "factId",
+                BuildAffectedFactFilter(narrativeIds, linkedFactIds))
+            .ToListAsync(cancellationToken);
+        string[] factIds = affectedFactIds
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (factIds.Length == 0)
+        {
+            return;
+        }
+
         IMongoCollection<BsonDocument> factBackup = this.database.GetCollection<BsonDocument>(
             this.settings.HistoricalFactCutoverBackupCollectionName);
         List<string> backedFactIds = await factBackup

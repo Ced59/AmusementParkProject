@@ -554,7 +554,8 @@ public sealed class HistoricalFact
                 && methodologyVersion is not null,
             HistoricalPublicationState.Withdrawn => workflowState == HistoricalEditorialWorkflowState.Retracted
                 && state == HistoricalFactState.Retracted
-                && methodologyVersion is not null,
+                && (revisionOrigin == HistoricalRevisionOrigin.Ordinary
+                    || methodologyVersion is not null),
             _ => false,
         };
         if (!publicationIsValid

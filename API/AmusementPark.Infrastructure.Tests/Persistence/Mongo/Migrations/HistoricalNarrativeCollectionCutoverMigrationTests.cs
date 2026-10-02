@@ -1,6 +1,8 @@
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Migrations;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Migrations;
@@ -62,5 +64,21 @@ public sealed class HistoricalNarrativeCollectionCutoverMigrationTests
 
         Assert.False(narrative.Contains(
             HistoricalNarrativeCollectionCutoverMigration.PreviousCanonicalFactIdField));
+    }
+
+    [Fact]
+    public void BuildAffectedFactFilter_ShouldProtectEveryFactFamilyMatchedByRollback()
+    {
+        FilterDefinition<BsonDocument> filter =
+            HistoricalNarrativeCollectionCutoverMigration.BuildAffectedFactFilter(
+                new[] { "narrative-1" },
+                new[] { "fact-1" });
+
+        BsonDocument rendered = filter.Render(new RenderArgs<BsonDocument>(
+            BsonSerializer.SerializerRegistry.GetSerializer<BsonDocument>(),
+            BsonSerializer.SerializerRegistry));
+
+        Assert.Equal("narrative-1", rendered["$or"][0]["narrativeContentId"]["$in"][0].AsString);
+        Assert.Equal("fact-1", rendered["$or"][1]["factId"]["$in"][0].AsString);
     }
 }

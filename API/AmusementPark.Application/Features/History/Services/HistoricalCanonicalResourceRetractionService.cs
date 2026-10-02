@@ -38,10 +38,54 @@ public sealed class HistoricalCanonicalResourceRetractionService
             .Distinct()
             .ToArray();
 
-        await this.factRetractionService.RetractAsync(factId, cancellationToken);
-        foreach (Guid sourceId in sourceIds)
+        List<HistoricalSourceReference> retractedSourceSnapshots = new List<HistoricalSourceReference>();
+        try
         {
-            await this.sourceRetractionService.RetractAsync(sourceId, cancellationToken);
+            await this.factRetractionService.RetractAsync(factId, cancellationToken);
+            foreach (Guid sourceId in sourceIds)
+            {
+                HistoricalSourceReference? snapshot = await this.sourceRetractionService.RetractAsync(
+                    sourceId,
+                    cancellationToken);
+                if (snapshot is not null)
+                {
+                    retractedSourceSnapshots.Add(snapshot);
+                }
+            }
+        }
+        catch (Exception retractionException)
+        {
+            List<Exception> compensationExceptions = new List<Exception>();
+            foreach (HistoricalSourceReference snapshot in retractedSourceSnapshots.AsEnumerable().Reverse())
+            {
+                try
+                {
+                    await this.sourceRetractionService.RestoreAsync(snapshot, CancellationToken.None);
+                }
+                catch (Exception compensationException)
+                {
+                    compensationExceptions.Add(compensationException);
+                }
+            }
+
+            try
+            {
+                await this.factRetractionService.RestoreAsync(latest, CancellationToken.None);
+            }
+            catch (Exception compensationException)
+            {
+                compensationExceptions.Add(compensationException);
+            }
+
+            if (compensationExceptions.Count > 0)
+            {
+                compensationExceptions.Insert(0, retractionException);
+                throw new AggregateException(
+                    "Canonical historical resources could not be retracted or fully restored safely.",
+                    compensationExceptions);
+            }
+
+            throw;
         }
     }
 }
