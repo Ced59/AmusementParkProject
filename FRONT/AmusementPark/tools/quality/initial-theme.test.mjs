@@ -3,6 +3,8 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { runInNewContext } from 'node:vm';
 import test from 'node:test';
+import Beasties from 'beasties';
+import { compileString } from 'sass';
 
 const indexPath = resolve(import.meta.dirname, '../../src/index.html');
 const html = readFileSync(indexPath, 'utf8');
@@ -55,4 +57,20 @@ test('critical font preloads resolve to bundled fonts without duplicate credenti
   for (const [, href] of fontPreloads) {
     assert.ok(existsSync(resolve(import.meta.dirname, '../../src' + href)));
   }
+});
+
+test('SSR critical CSS retains both palettes before the browser selects its theme', async () => {
+  const themeDirectory = resolve(import.meta.dirname, '../../src/styles');
+  const css = compileString(
+    readFileSync(resolve(themeDirectory, '_theme-dark.scss'), 'utf8') + '\n' +
+    readFileSync(resolve(themeDirectory, '_theme-light.scss'), 'utf8'),
+    { style: 'compressed' }
+  ).css;
+  const critical = await new Beasties({ logLevel: 'silent' }).process(
+    `<html><head><style>${css}</style></head><body class="dark-mode"><app-root></app-root></body></html>`
+  );
+  assert.match(critical, /:root:not\(\.dark-mode\)/);
+  assert.match(critical, /--bg:\s*#fff9f0/);
+  assert.match(critical, /body\.dark-mode/);
+  assert.match(critical, /--bg:\s*#0f0b06/);
 });
