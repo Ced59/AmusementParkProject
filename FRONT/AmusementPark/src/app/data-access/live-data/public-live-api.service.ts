@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of, throwError } from 'rxjs';
+import { Observable, catchError, map, of, shareReplay, throwError } from 'rxjs';
 
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { PublicLiveForecast, PublicLiveHistory, PublicLiveTarget, PublicParkLiveItems } from '@app/models/live-data/public-live.models';
@@ -17,8 +17,19 @@ interface CachedPublicLiveResponse {
 export class PublicLiveApiService {
   private static readonly MAX_CACHED_RESPONSES = 20;
   private readonly responseCache = new Map<string, CachedPublicLiveResponse>();
+  private publicReadEnabled$: Observable<boolean> | null = null;
 
   constructor(private readonly http: HttpClient) {
+  }
+
+  isPublicReadEnabled(): Observable<boolean> {
+    this.publicReadEnabled$ ??= this.http.get<readonly { key: string; isEnabled: boolean }[]>(
+      `${environment.apiBaseUrl}public/capabilities`, anonymousHttpOptions()
+    ).pipe(
+      map(capabilities => capabilities.some(capability => capability.key === 'live:public-experience' && capability.isEnabled)),
+      shareReplay({ bufferSize: 1, refCount: false })
+    );
+    return this.publicReadEnabled$;
   }
 
   getPark(parkId: string): Observable<PublicLiveTarget> {

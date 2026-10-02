@@ -162,6 +162,32 @@ describe('PublicLiveStateFacade', () => {
     expect(facade.state().isOnline).toBe(false);
   });
 
+  it('does not call disabled live endpoints after a successful availability response', () => {
+    const port: PublicLiveDataPort = createPort({ isPublicReadEnabled: () => of(false) });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+    facade.watchPark('park-1');
+    facade.refresh();
+    expect(facade.state().kind).toBe('disabled');
+    expect(port.getPark).not.toHaveBeenCalled();
+    expect(port.getParkItems).not.toHaveBeenCalled();
+    expect(port.getParkItem).not.toHaveBeenCalled();
+    expect(port.isPublicReadEnabled).toHaveBeenCalledTimes(1);
+  });
+
+  it('waits for availability before starting the park requests', () => {
+    const enabled: Subject<boolean> = new Subject<boolean>();
+    const port: PublicLiveDataPort = createPort({ isPublicReadEnabled: () => enabled.asObservable() });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+    facade.watchPark('park-1');
+    expect(port.getPark).not.toHaveBeenCalled();
+    expect(port.getParkItems).not.toHaveBeenCalled();
+    enabled.next(true);
+    enabled.complete();
+    expect(port.getPark).toHaveBeenCalledTimes(1);
+    expect(port.getParkItems).toHaveBeenCalledTimes(1);
+    expect(facade.state().kind).toBe('ready');
+  });
+
   it('does not poll during server-side rendering', () => {
     const port: PublicLiveDataPort = createPort();
     const facade: PublicLiveStateFacade = configureFacade(port, false);
@@ -169,11 +195,13 @@ describe('PublicLiveStateFacade', () => {
     facade.watchPark('park-1');
 
     expect(port.getPark).not.toHaveBeenCalled();
+    expect(port.isPublicReadEnabled).not.toHaveBeenCalled();
     expect(facade.state().kind).toBe('idle');
   });
 });
 
 interface PortOverrides {
+  readonly isPublicReadEnabled?: () => Observable<boolean>;
   readonly getParkItem?: (itemId: string) => Observable<PublicLiveTarget>;
 }
 
@@ -198,6 +226,7 @@ function createPort(overrides: PortOverrides = {}): PublicLiveDataPort {
   const target: PublicLiveTarget = createTarget();
   const parkTarget: PublicLiveTarget = { ...target, targetId: 'park-1', targetType: 'Park' };
   return {
+    isPublicReadEnabled: vi.fn(overrides.isPublicReadEnabled ?? (() => of(true))),
     getPark: vi.fn(() => of(parkTarget)),
     getParkItem: vi.fn(overrides.getParkItem ?? (() => of(target))),
     getParkItems: vi.fn(() => of({

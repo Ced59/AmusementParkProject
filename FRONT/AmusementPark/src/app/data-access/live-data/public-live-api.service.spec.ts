@@ -20,6 +20,26 @@ describe('PublicLiveApiService', () => {
     http.verify();
   });
 
+  it('shares and caches availability for park and item views', () => {
+    const values: boolean[] = [];
+    service.isPublicReadEnabled().subscribe(value => values.push(value));
+    service.isPublicReadEnabled().subscribe(value => values.push(value));
+    const request = http.expectOne(`${environment.apiBaseUrl}public/capabilities`);
+    request.flush([{ key: 'live:public-experience', isEnabled: false }]);
+    service.isPublicReadEnabled().subscribe(value => values.push(value));
+    expect(values).toEqual([false, false, false]);
+    http.expectNone(`${environment.apiBaseUrl}public/capabilities`);
+  });
+
+  it('retries a failed availability lookup instead of caching the error permanently', () => {
+    service.isPublicReadEnabled().subscribe({ error: () => undefined });
+    http.expectOne(`${environment.apiBaseUrl}public/capabilities`).flush(null, { status: 503, statusText: 'Unavailable' });
+    let enabled = false;
+    service.isPublicReadEnabled().subscribe(value => enabled = value);
+    http.expectOne(`${environment.apiBaseUrl}public/capabilities`).flush([{ key: 'live:public-experience', isEnabled: true }]);
+    expect(enabled).toBe(true);
+  });
+
   it('revalidates with the stored ETag and reuses the cached body on 304', () => {
     const target: PublicLiveTarget = createTarget();
     const received: PublicLiveTarget[] = [];
