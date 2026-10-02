@@ -3,6 +3,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Contracts;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -21,6 +22,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
     private readonly IParkItemRepository parkItemRepository;
     private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
     private readonly HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService;
+    private readonly IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer;
     private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
     public UpsertHistoryEventCommandHandler(
@@ -28,6 +30,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
+        IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
         : this(
             historyEventRepository,
@@ -35,6 +38,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             parkItemRepository,
             null,
             canonicalFactRetractionService,
+            historicalNarrativeCanonicalizer,
             sitemapRefreshScheduler)
     {
     }
@@ -45,6 +49,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         IParkItemRepository parkItemRepository,
         IStandaloneAttractionRepository? standaloneAttractionRepository,
         HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
+        IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.historyEventRepository = historyEventRepository;
@@ -53,6 +58,8 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         this.standaloneAttractionRepository = standaloneAttractionRepository;
         this.canonicalFactRetractionService = canonicalFactRetractionService
             ?? throw new ArgumentNullException(nameof(canonicalFactRetractionService));
+        this.historicalNarrativeCanonicalizer = historicalNarrativeCanonicalizer
+            ?? throw new ArgumentNullException(nameof(historicalNarrativeCanonicalizer));
         this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
@@ -86,6 +93,30 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         HistoryEvent saved = existing is null
             ? await this.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
             : await this.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken) ?? historyEvent;
+        HistoricalNarrativeCanonicalizationResult canonicalization =
+            await this.historicalNarrativeCanonicalizer.CanonicalizeAsync(saved, cancellationToken);
+        if (canonicalization.State == HistoricalNarrativeCanonicalizationState.Blocked)
+        {
+            return ApplicationResult<HistoryEvent>.Failure(
+                HistoryApplicationErrors.InvalidEventType());
+        }
+
+        bool canonicalizationSaved = await this.historyEventRepository.SetCanonicalizationAsync(
+            saved.Id,
+            saved.UpdatedAtUtc,
+            canonicalization.CanonicalFactId,
+            canonicalization.State,
+            HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+            canonicalization.Warnings,
+            cancellationToken);
+        if (!canonicalizationSaved)
+        {
+            throw new InvalidOperationException(
+                "The historical narrative changed while its canonical HIST fact was being linked.");
+        }
+
+        saved.CanonicalFactId = canonicalization.CanonicalFactId;
+        saved.CanonicalizationState = canonicalization.State;
 
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<HistoryEvent>.Success(saved);
@@ -112,6 +143,17 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         if (model.DatePrecision == HistoryDatePrecision.Day && (!model.Month.HasValue || !model.Day.HasValue))
         {
             return HistoryApplicationErrors.InvalidDate();
+        }
+
+        if (LegacyHistoryEventTypeMapper.RequiresManualClassification(
+                model.EntityType,
+                model.EventType)
+            || !LegacyHistoryEventTypeMapper.TryMap(
+                model.EntityType,
+                model.EventType,
+                out LegacyHistoryEventTypeMapping? _))
+        {
+            return HistoryApplicationErrors.InvalidEventType();
         }
 
         if (model.EntityType == HistoryEntityType.Park)

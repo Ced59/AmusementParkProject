@@ -83,6 +83,17 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
                 continue;
             }
 
+            if (LegacyHistoryEventTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !LegacyHistoryEventTypeMapper.TryMap(
+                    entityType,
+                    eventType,
+                    out LegacyHistoryEventTypeMapping? _))
+            {
+                result.Errors.Add(
+                    $"Le type d'evenement history '{eventType}' doit etre classe dans le modele HIST canonique avant import.");
+                continue;
+            }
+
             HistoryDateParts? dateParts = ParkGraphUpsertProcessorHistoryExtensions.ReadHistoryDate(patch);
             if (dateParts is null)
             {
@@ -100,6 +111,15 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
                 change.ChangeType = existing is null ? "Created" : "Updated";
             }
 
+            if (!ParkGraphUpsertProcessorHistoryExtensions.ValidateCanonicalPublication(
+                    historyEvent,
+                    key,
+                    result))
+            {
+                result.Changes.Add(change);
+                continue;
+            }
+
             if (apply && (change.Fields.Count > 0 || existing is null))
             {
                 if (existing is not null)
@@ -113,11 +133,39 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
                     ? await processorContext.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
                     : await processorContext.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken)
                         ?? historyEvent;
+                await processorContext.CanonicalizeHistoryNarrativeAsync(
+                    historyEvent,
+                    key,
+                    result,
+                    cancellationToken);
                 change.EntityId = historyEvent.Id;
             }
 
             result.Changes.Add(change);
         }
+    }
+
+    internal static bool ValidateCanonicalPublication(
+        HistoryEvent historyEvent,
+        string eventKey,
+        ParkGraphUpsertResult result)
+    {
+        if (!historyEvent.IsVisible)
+        {
+            return true;
+        }
+
+        bool hasValidSource = historyEvent.Sources.Any(static source =>
+            Uri.TryCreate(source.Url?.Trim(), UriKind.Absolute, out Uri? uri)
+            && uri.Scheme is "http" or "https");
+        if (hasValidSource)
+        {
+            return true;
+        }
+
+        result.Errors.Add(
+            $"L'evenement history visible '{eventKey}' doit fournir au moins une source HTTP ou HTTPS valide pour etre publie dans HIST.");
+        return false;
     }
 
     internal static JsonElement? ResolveHistoryEvents(JsonElement root)

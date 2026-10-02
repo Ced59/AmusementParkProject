@@ -29,6 +29,7 @@ using AmusementPark.Application.Features.AttractionAccessConditionTypes.Contract
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.AdminAudit;
 using AmusementPark.Application.Features.BackgroundJobs.Models;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.BackgroundJobs;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Comments;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Contact;
@@ -633,7 +634,7 @@ private readonly IMongoDatabase database;
     private readonly ILogger<MongoDatabaseInitializer> logger;
     private readonly PersonalRankingShareReplacementMigration personalRankingShareMigration;
     private readonly PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration;
-    private readonly HistoricalLegacyHistoryReplacementMigration historicalLegacyHistoryMigration;
+    private readonly HistoricalNarrativeCanonicalizationMigration historicalNarrativeCanonicalizationMigration;
     private readonly HistoricalFactPublicProjectionMigration historicalFactPublicProjectionMigration;
 
     public MongoDatabaseInitializer(
@@ -644,7 +645,7 @@ private readonly IMongoDatabase database;
         ILogger<MongoDatabaseInitializer> logger,
         PersonalRankingShareReplacementMigration personalRankingShareMigration,
         PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration,
-        HistoricalLegacyHistoryReplacementMigration historicalLegacyHistoryMigration,
+        HistoricalNarrativeCanonicalizationMigration historicalNarrativeCanonicalizationMigration,
         HistoricalFactPublicProjectionMigration historicalFactPublicProjectionMigration)
     {
         this.database = database;
@@ -654,7 +655,7 @@ private readonly IMongoDatabase database;
         this.logger = logger;
         this.personalRankingShareMigration = personalRankingShareMigration;
         this.personalRankingShareAvatarPolicyMigration = personalRankingShareAvatarPolicyMigration;
-        this.historicalLegacyHistoryMigration = historicalLegacyHistoryMigration;
+        this.historicalNarrativeCanonicalizationMigration = historicalNarrativeCanonicalizationMigration;
         this.historicalFactPublicProjectionMigration = historicalFactPublicProjectionMigration;
     }
 
@@ -1218,7 +1219,7 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.StandaloneAttractionsCollectionName, cancellationToken);
         await this.InitializeStandaloneAttractionsIndexesAsync(cancellationToken);
 
-        await this.historicalLegacyHistoryMigration.ExecuteAsync(cancellationToken);
+        await this.historicalNarrativeCanonicalizationMigration.ExecuteAsync(cancellationToken);
         long migratedHistoricalFactProjectionCount =
             await this.historicalFactPublicProjectionMigration.ExecuteAsync(cancellationToken);
         if (migratedHistoricalFactProjectionCount > 0)

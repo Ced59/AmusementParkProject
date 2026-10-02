@@ -48,8 +48,4 @@ public interface IHistoricalFactRepository
         int pageSize,
         CancellationToken cancellationToken);
 
-    Task<bool> HasLatestLegacyPublicTimelineRevisionForParkAsync(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        CancellationToken cancellationToken);
 }

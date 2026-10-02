@@ -60,41 +60,4 @@ public sealed class PublicParkHistoricalDataLoaderTests
         assessment.VerifyNoOtherCalls();
     }
 
-    [Fact]
-    public async Task HasLegacyPublicTimelineAsync_WhenAvailabilityIsCached_ShouldNotQueryHistoricalFacts()
-    {
-        Park park = PublicParkHistoryTestData.CreatePark();
-        HistoricalSubject parkSubject = new(
-            HistoricalSubjectType.Park,
-            park.Id,
-            park.Name!,
-            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
-            park.Id);
-        PublicParkHistoricalScope scope = new(
-            park,
-            new[] { parkSubject },
-            new Dictionary<string, string>(StringComparer.Ordinal));
-        Mock<IHistoricalParkRolloutGateCache> cache = new(MockBehavior.Strict);
-        cache
-            .Setup(value => value.GetOrCreateLegacyTimelineAvailabilityAsync(
-                park.Id,
-                It.Is<string>(fingerprint => fingerprint.Length == 64),
-                It.IsAny<Func<CancellationToken, Task<bool>>>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(true);
-        Mock<IHistoricalFactRepository> facts = new(MockBehavior.Strict);
-        PublicParkHistoricalDataLoader loader = new(
-            new Mock<IParkRepository>(MockBehavior.Strict).Object,
-            new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
-            new Mock<IParkZoneRepository>(MockBehavior.Strict).Object,
-            facts.Object,
-            new Mock<IHistoricalParkRolloutGateAssessmentService>(MockBehavior.Strict).Object,
-            cache.Object);
-
-        bool result = await loader.HasLegacyPublicTimelineAsync(scope, CancellationToken.None);
-
-        Assert.True(result);
-        cache.VerifyAll();
-        facts.VerifyNoOtherCalls();
-    }
 }

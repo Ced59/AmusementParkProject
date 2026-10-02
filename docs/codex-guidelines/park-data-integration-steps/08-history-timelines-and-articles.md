@@ -12,6 +12,31 @@ Objectif : créer une histoire fiable, sourcée et lisible, en séparant les év
 
 Dans les deux modes, utiliser le registre consolidé et les réponses validées des étapes d’inventaire, de descriptions, d’images et d’horaires, sans nouvel export complet. Les timelines doivent pouvoir référencer les vrais IDs ou les `itemKey` existants ; demander seulement la section nécessaire lorsqu’un identifiant manque réellement.
 
+## Contrat de publication HIST canonique
+
+`history.events` reste le format éditorial d'entrée, mais chaque événement est
+converti pendant le même Apply en source et fait du registre HIST canonique. Il
+n'existe plus de second moteur historique ni de lecture publique de secours.
+
+- Un événement `isVisible: true` doit porter au moins une source HTTP ou HTTPS
+  valide dans `history.events[].sources`. Une source placée uniquement dans
+  `article.sources` ne remplace pas la preuve du fait de timeline.
+- La Preview refuse un événement visible non sourcé avant toute mutation.
+- L'Apply crée des révisions HIST ordinaires et suit le workflow canonique
+  `Draft` → revue éditoriale → validation structurée → `Published`.
+- Un événement `isVisible: false` reste un brouillon HIST canonique ; il ne
+  devient pas public par la seule publication du parc ou de l'article.
+- Un type inconnu, une date invalide ou une transition structurée incomplète
+  bloque le lot au lieu de produire un fait approximatif.
+- La migration des événements déjà présents est unique et idempotente. Elle
+  convertit leurs preuves et leur publication dans ce même modèle, puis retire
+  les anciennes révisions actives ; aucune nouvelle donnée ne peut entrer dans
+  l'ancien état transitoire.
+
+Après Apply, contrôler que l'événement a bien été canonisé et qu'aucun warning
+de preuve n'a reporté sa publication. Pour une timeline destinée au public, ne
+pas conclure l'étape 8 tant que ce contrôle n'est pas positif.
+
 ## Découpage recommandé
 
 Pour un parc riche :

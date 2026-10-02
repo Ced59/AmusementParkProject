@@ -64,8 +64,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         HistoricalParkRolloutGate rolloutGate = await this.dataLoader.AssessRolloutGateAsync(
             scope,
             cancellationToken);
-        if (!rolloutGate.IsOpen
-            && !await this.dataLoader.HasLegacyPublicTimelineAsync(scope, cancellationToken))
+        if (!rolloutGate.IsOpen)
         {
             return ApplicationResult<PublicParkHistoricalTimelineResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), parkId));

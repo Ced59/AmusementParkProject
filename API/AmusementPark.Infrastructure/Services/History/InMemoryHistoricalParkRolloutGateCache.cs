@@ -76,61 +76,6 @@ public sealed class InMemoryHistoricalParkRolloutGateCache :
         }
     }
 
-    public async Task<bool> GetOrCreateLegacyTimelineAvailabilityAsync(
-        string parkId,
-        string scopeFingerprint,
-        Func<CancellationToken, Task<bool>> factory,
-        CancellationToken cancellationToken)
-    {
-        if (string.IsNullOrWhiteSpace(parkId))
-        {
-            throw new ArgumentException("A park identifier is required.", nameof(parkId));
-        }
-
-        if (string.IsNullOrWhiteSpace(scopeFingerprint))
-        {
-            throw new ArgumentException("A public scope fingerprint is required.", nameof(scopeFingerprint));
-        }
-
-        ArgumentNullException.ThrowIfNull(factory);
-        string cacheKey = $"history:park-legacy-timeline:{parkId.Trim()}:{scopeFingerprint.Trim()}";
-        string refreshLockKey = $"history:park-legacy-timeline-lock:{parkId.Trim()}";
-        while (true)
-        {
-            long currentGeneration = Volatile.Read(ref this.generation);
-            if (this.TryGetCurrent(cacheKey, currentGeneration, out bool cachedAvailability))
-            {
-                return cachedAvailability;
-            }
-
-            SemaphoreSlim refreshLock = this.refreshLocks.GetOrAdd(
-                refreshLockKey,
-                static _ => new SemaphoreSlim(1, 1));
-            await refreshLock.WaitAsync(cancellationToken);
-            try
-            {
-                currentGeneration = Volatile.Read(ref this.generation);
-                if (this.TryGetCurrent(cacheKey, currentGeneration, out cachedAvailability))
-                {
-                    return cachedAvailability;
-                }
-
-                bool availability = await factory(cancellationToken);
-                if (currentGeneration != Volatile.Read(ref this.generation))
-                {
-                    continue;
-                }
-
-                this.memoryCache.Set(cacheKey, (currentGeneration, availability), GateDuration);
-                return availability;
-            }
-            finally
-            {
-                refreshLock.Release();
-            }
-        }
-    }
-
     public void Invalidate()
     {
         Interlocked.Increment(ref this.generation);
@@ -161,20 +106,4 @@ public sealed class InMemoryHistoricalParkRolloutGateCache :
         return false;
     }
 
-    private bool TryGetCurrent(
-        string cacheKey,
-        long currentGeneration,
-        out bool availability)
-    {
-        if (this.memoryCache.TryGetValue(cacheKey, out object? cachedValue)
-            && cachedValue is ValueTuple<long, bool> cachedAvailability
-            && cachedAvailability.Item1 == currentGeneration)
-        {
-            availability = cachedAvailability.Item2;
-            return true;
-        }
-
-        availability = false;
-        return false;
-    }
 }

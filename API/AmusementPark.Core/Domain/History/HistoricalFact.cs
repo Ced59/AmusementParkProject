@@ -170,9 +170,7 @@ public sealed class HistoricalFact
             or HistoricalFactState.Probable
             or HistoricalFactState.Disputed);
 
-    public bool IsPublicTimelineEligible => this.IsDecisionEligible
-        || (this.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview
-            && this.State == HistoricalFactState.Unverified);
+    public bool IsPublicTimelineEligible => this.IsDecisionEligible;
 
     public HistoricalFact CreateRetraction(DateTime recordedAtUtc)
     {

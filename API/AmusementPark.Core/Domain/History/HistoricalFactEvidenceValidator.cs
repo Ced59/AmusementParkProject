@@ -241,12 +241,8 @@ public static class HistoricalFactEvidenceValidator
     private static bool IsPublicTimelineSource(HistoricalSourceReference source)
     {
         bool hasPublicWorkflow = source.PublicationState == HistoricalPublicationState.Published
-                && (source.WorkflowState is HistoricalEditorialWorkflowState.Published
-                    or HistoricalEditorialWorkflowState.Corrected)
-            || source.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview
-                && source.RevisionOrigin == HistoricalRevisionOrigin.LegacyMigration
-                && (source.WorkflowState is HistoricalEditorialWorkflowState.EditorialReview
-                    or HistoricalEditorialWorkflowState.StructuredValidation);
+            && (source.WorkflowState is HistoricalEditorialWorkflowState.Published
+                or HistoricalEditorialWorkflowState.Corrected);
         return hasPublicWorkflow
             && (source.Accessibility is HistoricalSourceAccessibility.Accessible
                 or HistoricalSourceAccessibility.Archived);

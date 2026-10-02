@@ -10,11 +10,5 @@ public interface IHistoricalParkRolloutGateCache
         Func<CancellationToken, Task<HistoricalParkRolloutGate>> factory,
         CancellationToken cancellationToken);
 
-    Task<bool> GetOrCreateLegacyTimelineAvailabilityAsync(
-        string parkId,
-        string scopeFingerprint,
-        Func<CancellationToken, Task<bool>> factory,
-        CancellationToken cancellationToken);
-
     void Invalidate();
 }

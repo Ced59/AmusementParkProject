@@ -214,7 +214,7 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
         BsonDocument narrative = legacyDocument.DeepClone().AsBsonDocument;
         narrative["canonicalizationState"] = blocked
             ? HistoricalNarrativeCanonicalizationState.Blocked.ToString()
-            : HistoricalNarrativeCanonicalizationState.Migrated.ToString();
+            : HistoricalNarrativeCanonicalizationState.Canonicalized.ToString();
         narrative["migrationVersion"] = MigrationId;
         narrative["migrationWarnings"] = new BsonArray(warnings);
         if (canonicalFactId is null)

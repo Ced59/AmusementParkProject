@@ -35,7 +35,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         Guid factId = Guid.NewGuid();
         HistoryEvent existing = BuildExistingEvent();
         existing.CanonicalFactId = factId;
-        existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Migrated;
+        existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
         context.HistoricalFactRepository
             .Setup(repository => repository.GetLatestRevisionAsync(factId, It.IsAny<CancellationToken>()))

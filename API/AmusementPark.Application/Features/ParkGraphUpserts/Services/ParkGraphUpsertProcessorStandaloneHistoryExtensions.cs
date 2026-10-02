@@ -122,6 +122,17 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 continue;
             }
 
+            if (LegacyHistoryEventTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !LegacyHistoryEventTypeMapper.TryMap(
+                    entityType,
+                    eventType,
+                    out LegacyHistoryEventTypeMapping? _))
+            {
+                result.Errors.Add(
+                    $"Le type d'evenement history '{eventType}' doit etre classe dans le modele HIST canonique avant import.");
+                continue;
+            }
+
             if (ParkGraphUpsertProcessorHistoryExtensions.ReadHistoryDate(patch)is null)
             {
                 result.Errors.Add($"L'evenement history '{key ?? eventType}' doit definir une date valide.");
@@ -182,6 +193,15 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 continue;
             }
 
+            if (LegacyHistoryEventTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !LegacyHistoryEventTypeMapper.TryMap(
+                    entityType,
+                    eventType,
+                    out LegacyHistoryEventTypeMapping? _))
+            {
+                continue;
+            }
+
             HistoryDateParts? dateParts = ParkGraphUpsertProcessorHistoryExtensions.ReadHistoryDate(patch);
             if (dateParts is null)
             {
@@ -199,6 +219,15 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 changed = true;
             }
 
+            if (!ParkGraphUpsertProcessorHistoryExtensions.ValidateCanonicalPublication(
+                    historyEvent,
+                    key,
+                    result))
+            {
+                result.Changes.Add(change);
+                continue;
+            }
+
             if (apply && (change.Fields.Count > 0 || existing is null))
             {
                 if (existing is not null)
@@ -212,6 +241,11 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                     ? await processorContext.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
                     : await processorContext.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken)
                         ?? historyEvent;
+                await processorContext.CanonicalizeHistoryNarrativeAsync(
+                    historyEvent,
+                    key,
+                    result,
+                    cancellationToken);
                 change.EntityId = historyEvent.Id;
             }
 

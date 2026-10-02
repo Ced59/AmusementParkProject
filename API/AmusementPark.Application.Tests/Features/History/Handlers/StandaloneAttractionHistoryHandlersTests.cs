@@ -2,6 +2,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Contracts;
 using AmusementPark.Application.Features.History.Handlers;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
@@ -31,6 +32,9 @@ public sealed class StandaloneAttractionHistoryHandlersTests
             new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<IStandaloneAttractionRepository> standaloneAttractionRepository = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        Guid canonicalFactId = Guid.NewGuid();
+        Mock<IHistoricalNarrativeCanonicalizer> canonicalizer =
+            new Mock<IHistoricalNarrativeCanonicalizer>(MockBehavior.Strict);
         StandaloneAttraction attraction = new StandaloneAttraction
         {
             Id = "standalone-1",
@@ -60,6 +64,24 @@ public sealed class StandaloneAttractionHistoryHandlersTests
                     historyEvent.EventType == ParkItemHistoryEventType.Opening.ToString()),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        canonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HistoricalNarrativeCanonicalizationResult(
+                canonicalFactId,
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                Array.Empty<string>()));
+        historyRepository
+            .Setup(repository => repository.SetCanonicalizationAsync(
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                canonicalFactId,
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
         sitemapRefreshScheduler
             .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
@@ -70,6 +92,7 @@ public sealed class StandaloneAttractionHistoryHandlersTests
             parkItemRepository.Object,
             standaloneAttractionRepository.Object,
             new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object),
+            canonicalizer.Object,
             sitemapRefreshScheduler.Object);
 
         ApplicationResult<HistoryEvent> result = await handler.HandleAsync(new UpsertHistoryEventCommand(new HistoryEventWriteModel

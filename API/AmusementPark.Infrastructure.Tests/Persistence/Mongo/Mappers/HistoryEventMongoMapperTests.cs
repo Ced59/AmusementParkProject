@@ -15,14 +15,14 @@ public sealed class HistoryEventMongoMapperTests
         {
             Id = "event-1",
             CanonicalFactId = factId.ToString("N"),
-            CanonicalizationState = HistoricalNarrativeCanonicalizationState.Migrated,
+            CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized,
         };
 
         HistoryEvent domain = document.ToDomain();
         HistoryEventDocument roundTrip = domain.ToDocument();
 
         Assert.Equal(factId, domain.CanonicalFactId);
-        Assert.Equal(HistoricalNarrativeCanonicalizationState.Migrated, domain.CanonicalizationState);
+        Assert.Equal(HistoricalNarrativeCanonicalizationState.Canonicalized, domain.CanonicalizationState);
         Assert.Equal(document.CanonicalFactId, roundTrip.CanonicalFactId);
         Assert.Equal(document.CanonicalizationState, roundTrip.CanonicalizationState);
     }

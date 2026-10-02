@@ -311,6 +311,74 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return result.MatchedCount == 0 ? null : document.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(
+        string canonicalizationVersion,
+        CancellationToken cancellationToken)
+    {
+        string normalizedVersion = canonicalizationVersion?.Trim() ?? string.Empty;
+        if (normalizedVersion.Length == 0)
+        {
+            throw new ArgumentException(
+                "A historical canonicalization version is required.",
+                nameof(canonicalizationVersion));
+        }
+
+        FilterDefinition<HistoryEventDocument> filter =
+            Builders<HistoryEventDocument>.Filter.Ne(
+                document => document.MigrationVersion,
+                normalizedVersion)
+            | Builders<HistoryEventDocument>.Filter.Exists(
+                document => document.MigrationVersion,
+                false);
+        List<HistoryEventDocument> documents = await this.collection
+            .Find(filter)
+            .SortBy(static document => document.Id)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<bool> SetCanonicalizationAsync(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? canonicalFactId,
+        HistoricalNarrativeCanonicalizationState state,
+        string canonicalizationVersion,
+        IReadOnlyCollection<string> warnings,
+        CancellationToken cancellationToken)
+    {
+        string normalizedEventId = eventId?.Trim() ?? string.Empty;
+        string normalizedVersion = canonicalizationVersion?.Trim() ?? string.Empty;
+        if (normalizedEventId.Length == 0 || normalizedVersion.Length == 0)
+        {
+            return false;
+        }
+
+        FilterDefinition<HistoryEventDocument> filter =
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.Id, normalizedEventId)
+            & Builders<HistoryEventDocument>.Filter.Eq(
+                document => document.UpdatedAt,
+                expectedUpdatedAtUtc);
+        UpdateDefinition<HistoryEventDocument> update = Builders<HistoryEventDocument>.Update
+            .Set(document => document.CanonicalizationState, state)
+            .Set(document => document.MigrationVersion, normalizedVersion)
+            .Set(document => document.MigrationWarnings, warnings
+                .Where(static warning => !string.IsNullOrWhiteSpace(warning))
+                .Select(static warning => warning.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .OrderBy(static warning => warning, StringComparer.Ordinal)
+                .ToList());
+        update = canonicalFactId.HasValue
+            ? update.Set(
+                document => document.CanonicalFactId,
+                canonicalFactId.Value.ToString("N"))
+            : update.Unset(document => document.CanonicalFactId);
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            filter,
+            update,
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
     public async Task<bool> DeleteAsync(string eventId, CancellationToken cancellationToken)
     {
         DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == eventId, cancellationToken);

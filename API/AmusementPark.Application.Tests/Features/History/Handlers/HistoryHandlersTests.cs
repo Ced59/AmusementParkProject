@@ -38,6 +38,7 @@ public sealed class HistoryHandlersTests
             parkRepository.Object,
             parkItemRepository.Object,
             canonicalFactRetractionService,
+            Mock.Of<IHistoricalNarrativeCanonicalizer>(),
             sitemapRefreshScheduler.Object);
 
         ApplicationResult<HistoryEvent> result = await handler.HandleAsync(new UpsertHistoryEventCommand(new HistoryEventWriteModel
@@ -69,6 +70,9 @@ public sealed class HistoryHandlersTests
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService =
             new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object);
+        Guid canonicalFactId = Guid.NewGuid();
+        Mock<IHistoricalNarrativeCanonicalizer> canonicalizer =
+            new Mock<IHistoricalNarrativeCanonicalizer>(MockBehavior.Strict);
         ParkItem item = new ParkItem
         {
             Id = "item-1",
@@ -93,6 +97,24 @@ public sealed class HistoryHandlersTests
                 historyEvent.ContextParkId == "park-1" &&
                 historyEvent.EventType == ParkItemHistoryEventType.Retrack.ToString()), It.IsAny<CancellationToken>()))
             .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        canonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HistoricalNarrativeCanonicalizationResult(
+                canonicalFactId,
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                Array.Empty<string>()));
+        historyRepository
+            .Setup(repository => repository.SetCanonicalizationAsync(
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                canonicalFactId,
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
         sitemapRefreshScheduler
             .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
@@ -102,6 +124,7 @@ public sealed class HistoryHandlersTests
             parkRepository.Object,
             parkItemRepository.Object,
             canonicalFactRetractionService,
+            canonicalizer.Object,
             sitemapRefreshScheduler.Object);
 
         ApplicationResult<HistoryEvent> result = await handler.HandleAsync(new UpsertHistoryEventCommand(new HistoryEventWriteModel
@@ -136,6 +159,9 @@ public sealed class HistoryHandlersTests
             new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
             new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        Guid replacementFactId = Guid.NewGuid();
+        Mock<IHistoricalNarrativeCanonicalizer> canonicalizer =
+            new Mock<IHistoricalNarrativeCanonicalizer>(MockBehavior.Strict);
         HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService =
             new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object);
         HistoryEvent existing = new HistoryEvent
@@ -149,7 +175,7 @@ public sealed class HistoryHandlersTests
             DatePrecision = HistoryDatePrecision.Year,
             EventType = ParkHistoryEventType.Opening.ToString(),
             CanonicalFactId = factId,
-            CanonicalizationState = HistoricalNarrativeCanonicalizationState.Migrated,
+            CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized,
         };
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
@@ -176,6 +202,24 @@ public sealed class HistoryHandlersTests
                     && historyEvent.Year == 1999),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((string _, HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        canonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HistoricalNarrativeCanonicalizationResult(
+                replacementFactId,
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                Array.Empty<string>()));
+        historyRepository
+            .Setup(repository => repository.SetCanonicalizationAsync(
+                "event-1",
+                It.IsAny<DateTime>(),
+                replacementFactId,
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
         sitemapRefreshScheduler
             .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
@@ -184,6 +228,7 @@ public sealed class HistoryHandlersTests
             parkRepository.Object,
             parkItemRepository.Object,
             canonicalFactRetractionService,
+            canonicalizer.Object,
             sitemapRefreshScheduler.Object);
 
         ApplicationResult<HistoryEvent> result = await handler.HandleAsync(new UpsertHistoryEventCommand(
@@ -991,7 +1036,7 @@ public sealed class HistoryHandlersTests
             {
                 Id = "event-1",
                 CanonicalFactId = factId,
-                CanonicalizationState = HistoricalNarrativeCanonicalizationState.Migrated,
+                CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized,
             });
         historicalFactRepository
             .Setup(repository => repository.GetLatestRevisionAsync(factId, It.IsAny<CancellationToken>()))

@@ -258,7 +258,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             DatePrecision = HistoryDatePrecision.Year,
             EventType = ParkItemHistoryEventType.Opening.ToString(),
             CanonicalFactId = factId,
-            CanonicalizationState = HistoricalNarrativeCanonicalizationState.Migrated,
+            CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized,
         };
         Mock<IHistoryEventRepository> historyEventRepository =
             new Mock<IHistoryEventRepository>(MockBehavior.Strict);
@@ -276,6 +276,8 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                     && historyEvent.IsMajor),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((string _, HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        Mock<IHistoricalNarrativeCanonicalizer> canonicalizer = ConfigureCanonicalization(
+            historyEventRepository);
         Mock<IHistoricalFactRepository> historicalFactRepository =
             new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         historicalFactRepository
@@ -302,7 +304,8 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             searchProjectionWriter,
             upsertHistoryRepository,
             publicSeoUpdateNotifier,
-            new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object));
+            new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object),
+            historicalNarrativeCanonicalizer: canonicalizer.Object);
         const string rawJson = """
         {
           "documentType": "standaloneAttractionGraph",
@@ -316,7 +319,10 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                 "ownerId": "standalone-1",
                 "date": "2007",
                 "eventType": "Opening",
-                "isMajor": true
+                "isMajor": true,
+                "sources": [
+                  { "label": "Source officielle", "url": "https://example.com/history" }
+                ]
               }
             ]
           }
@@ -361,6 +367,8 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                 persistedEvent = historyEvent;
                 return historyEvent;
             });
+        Mock<IHistoricalNarrativeCanonicalizer> canonicalizer = ConfigureCanonicalization(
+            historyEventRepository);
 
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
         Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository = CreateUpsertHistoryRepository();
@@ -374,7 +382,8 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             historyEventRepository,
             searchProjectionWriter,
             upsertHistoryRepository,
-            publicSeoUpdateNotifier);
+            publicSeoUpdateNotifier,
+            historicalNarrativeCanonicalizer: canonicalizer.Object);
 
         const string rawJson = """
         {
@@ -408,6 +417,9 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                 "eventType": "Opening",
                 "isMajor": true,
                 "isVisible": true,
+                "sources": [
+                  { "label": "Source officielle", "url": "https://example.com/history" }
+                ],
                 "titles": {
                   "fr": "Ouverture de Pendolino",
                   "en": "Pendolino opens"
@@ -522,6 +534,8 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                 persistedEvent = historyEvent;
                 return historyEvent;
             });
+        Mock<IHistoricalNarrativeCanonicalizer> canonicalizer = ConfigureCanonicalization(
+            historyEventRepository);
 
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
         searchProjectionWriter
@@ -541,7 +555,8 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             historyEventRepository,
             searchProjectionWriter,
             upsertHistoryRepository,
-            publicSeoUpdateNotifier);
+            publicSeoUpdateNotifier,
+            historicalNarrativeCanonicalizer: canonicalizer.Object);
 
         const string rawJson = """
         {
@@ -557,7 +572,10 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                 "key": "pendolino-opening-2007",
                 "entityType": "StandaloneAttraction",
                 "date": "2007",
-                "eventType": "Opening"
+                "eventType": "Opening",
+                "sources": [
+                  { "label": "Source officielle", "url": "https://example.com/history" }
+                ]
               }
             ]
           }
@@ -760,6 +778,33 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
         return repository;
     }
 
+    private static Mock<IHistoricalNarrativeCanonicalizer> ConfigureCanonicalization(
+        Mock<IHistoryEventRepository> historyEventRepository)
+    {
+        Guid factId = Guid.NewGuid();
+        Mock<IHistoricalNarrativeCanonicalizer> canonicalizer =
+            new Mock<IHistoricalNarrativeCanonicalizer>(MockBehavior.Strict);
+        canonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HistoricalNarrativeCanonicalizationResult(
+                factId,
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                Array.Empty<string>()));
+        historyEventRepository
+            .Setup(repository => repository.SetCanonicalizationAsync(
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                factId,
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        return canonicalizer;
+    }
+
     private static ParkGraphUpsertProcessor CreateProcessor(
         Mock<IStandaloneAttractionRepository> standaloneRepository,
         Mock<IHistoryEventRepository> historyEventRepository,
@@ -768,7 +813,8 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
         Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier,
         HistoricalNarrativeCanonicalFactRetractionService? canonicalFactRetractionService = null,
         IStandaloneAttractionOpeningHoursRepository? standaloneOpeningHoursRepository = null,
-        IStandaloneAttractionPricingRepository? standalonePricingRepository = null)
+        IStandaloneAttractionPricingRepository? standalonePricingRepository = null,
+        IHistoricalNarrativeCanonicalizer? historicalNarrativeCanonicalizer = null)
     {
         return new ParkGraphUpsertProcessor(
             Mock.Of<IParkRepository>(MockBehavior.Strict),
@@ -786,6 +832,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             historyEventRepository: historyEventRepository.Object,
             standaloneAttractionRepository: standaloneRepository.Object,
             canonicalFactRetractionService: canonicalFactRetractionService,
+            historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer,
             parkOpeningHoursScheduleNormalizer: new ParkOpeningHoursScheduleNormalizer(),
             parkOpeningHoursCoverageSegmentBuilder: new ParkOpeningHoursCoverageSegmentBuilder(),
             standaloneOpeningHoursRepository: standaloneOpeningHoursRepository,
