@@ -6,7 +6,7 @@ import { Inject, Injectable, PLATFORM_ID, TransferState, makeStateKey } from '@a
 export class PublicViewTransferState {
   constructor(
     private readonly transferState: TransferState,
-    @Inject(PLATFORM_ID) private readonly platformId: object
+    @Inject(PLATFORM_ID) private readonly platformId: string
   ) {
   }
 
