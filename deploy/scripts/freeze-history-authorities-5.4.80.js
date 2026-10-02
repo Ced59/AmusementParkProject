@@ -9,7 +9,9 @@ const legacyInfo = database.getCollectionInfos({ name: legacyCollectionName });
 const frozenInfo = database.getCollectionInfos({ name: frozenCollectionName });
 
 if (legacyInfo.length === 1 && legacyInfo[0].type === 'view') {
-  if (legacyInfo[0].options.viewOn !== frozenCollectionName) {
+  if (legacyInfo[0].options.viewOn !== frozenCollectionName
+      || frozenInfo.length !== 1
+      || frozenInfo[0].type !== 'collection') {
     throw new Error('The historical source name is already used by an unexpected view.');
   }
 } else if (legacyInfo.length === 0 && frozenInfo.length === 0) {
@@ -23,6 +25,8 @@ if (legacyInfo.length === 1 && legacyInfo[0].type === 'view') {
       throw new Error('The historical source namespace has an unsupported type.');
     }
     database.getCollection(legacyCollectionName).renameCollection(frozenCollectionName, false);
+  } else if (frozenInfo[0].type !== 'collection') {
+    throw new Error('The frozen historical source namespace is not a collection.');
   }
   database.createView(legacyCollectionName, frozenCollectionName, []);
   print('The superseded historical source is now exposed through a read-only cutover view.');

@@ -102,6 +102,18 @@ const restoredSources = collectionExists(sourceBackupName)
   ? restoreDocuments(sources, sourceBackup)
   : 0;
 
+let historicalSourceRestored = false;
+if (legacyInfo.length === 1 && legacyInfo[0].type === 'view') {
+  database.getCollection(legacyCollectionName).drop();
+  database.getCollection(frozenCollectionName).renameCollection(legacyCollectionName, false);
+  historicalSourceRestored = true;
+} else if (legacyInfo.length === 0 && frozenExists) {
+  database.getCollection(frozenCollectionName).renameCollection(legacyCollectionName, false);
+  historicalSourceRestored = true;
+} else if (legacyInfo.length === 1 && legacyInfo[0].type === 'collection') {
+  historicalSourceRestored = true;
+}
+
 const droppedBackups = [];
 for (const backupName of [
   narrativeBackupName,
@@ -113,18 +125,6 @@ for (const backupName of [
     database.getCollection(backupName).drop();
     droppedBackups.push(backupName);
   }
-}
-
-let historicalSourceRestored = false;
-if (legacyInfo.length === 1 && legacyInfo[0].type === 'view') {
-  database.getCollection(legacyCollectionName).drop();
-  database.getCollection(frozenCollectionName).renameCollection(legacyCollectionName, false);
-  historicalSourceRestored = true;
-} else if (legacyInfo.length === 0 && frozenExists) {
-  database.getCollection(frozenCollectionName).renameCollection(legacyCollectionName, false);
-  historicalSourceRestored = true;
-} else if (legacyInfo.length === 1 && legacyInfo[0].type === 'collection') {
-  historicalSourceRestored = true;
 }
 
 printjson({

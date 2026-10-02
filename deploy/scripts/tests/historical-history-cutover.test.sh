@@ -74,6 +74,7 @@ for required_freeze_step in \
   "renameCollection(frozenCollectionName, false)" \
   "createView(legacyCollectionName, frozenCollectionName, [])" \
   "legacyInfo[0].type === 'view'" \
+  "frozenInfo[0].type !== 'collection'" \
   "collMod: narrativeCollectionName" \
   "{ cutoverVersion }" \
   "migrationVersion: canonicalizationVersion" \
@@ -104,6 +105,15 @@ for required_filter in \
     exit 1
   fi
 done
+
+source_restore_line="$(grep -n 'renameCollection(legacyCollectionName, false)' "${rollback_script}" | tail -n 1 | cut -d: -f1)"
+backup_cleanup_line="$(grep -n 'const droppedBackups = \[\]' "${rollback_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${source_restore_line}" ] \
+  || [ -z "${backup_cleanup_line}" ] \
+  || [ "${source_restore_line}" -ge "${backup_cleanup_line}" ]; then
+  echo 'Rollback backups must remain available until historical source authority is restored.' >&2
+  exit 1
+fi
 
 completion_script="${deploy_root}/scripts/complete-history-cutover-5.4.80.js"
 for required_completion_step in \
