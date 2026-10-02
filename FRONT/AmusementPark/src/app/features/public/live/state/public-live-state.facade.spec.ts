@@ -198,6 +198,66 @@ describe('PublicLiveStateFacade', () => {
     expect(port.isPublicReadEnabled).not.toHaveBeenCalled();
     expect(facade.state().kind).toBe('idle');
   });
+
+  it('keeps the panel invisible throughout a delayed disabled capability response', () => {
+    vi.useFakeTimers();
+    const enabled: Subject<boolean> = new Subject<boolean>();
+    const port: PublicLiveDataPort = createPort({ isPublicReadEnabled: () => enabled.asObservable() });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+
+    facade.watchPark('park-1');
+    expect(facade.state().kind).toBe('idle');
+    vi.advanceTimersByTime(1000);
+    facade.refresh();
+    expect(facade.state().kind).toBe('idle');
+    expect(port.isPublicReadEnabled).toHaveBeenCalledTimes(1);
+
+    enabled.next(false);
+    enabled.complete();
+    expect(facade.state().kind).toBe('disabled');
+    expect(port.getPark).not.toHaveBeenCalled();
+    expect(port.getParkItems).not.toHaveBeenCalled();
+  });
+
+  it('shows loading only after live reads are enabled and while the target is pending', () => {
+    const enabled: Subject<boolean> = new Subject<boolean>();
+    const response: Subject<PublicLiveTarget> = new Subject<PublicLiveTarget>();
+    const port: PublicLiveDataPort = createPort({
+      isPublicReadEnabled: () => enabled.asObservable(),
+      getParkItem: () => response.asObservable()
+    });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+
+    facade.watchParkItem('item-1');
+    expect(facade.state().kind).toBe('idle');
+    expect(port.getParkItem).not.toHaveBeenCalled();
+
+    enabled.next(true);
+    enabled.complete();
+    expect(facade.state().kind).toBe('loading');
+    expect(port.getParkItem).toHaveBeenCalledTimes(1);
+
+    response.next(createTarget());
+    response.complete();
+    expect(facade.state().kind).toBe('ready');
+  });
+
+  it('cancels the previous capability check when the watched target changes', () => {
+    const enabled: Subject<boolean> = new Subject<boolean>();
+    const port: PublicLiveDataPort = createPort({ isPublicReadEnabled: () => enabled.asObservable() });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+
+    facade.watchPark('park-1');
+    facade.watchParkItem('item-1');
+    expect(facade.state().kind).toBe('idle');
+
+    enabled.next(true);
+    enabled.complete();
+    expect(port.getPark).not.toHaveBeenCalled();
+    expect(port.getParkItems).not.toHaveBeenCalled();
+    expect(port.getParkItem).toHaveBeenCalledWith('item-1');
+    expect(facade.state().target?.targetId).toBe('item-1');
+  });
 });
 
 interface PortOverrides {
