@@ -1,6 +1,20 @@
 {
-  "version": "5.4.50",
+  "version": "5.4.51",
   "history": [
+    {
+      "version": "5.4.51",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Les logos se chargent plus vite et les cartes restent stables.",
+        "en": "Logos load faster and cards remain stable.",
+        "de": "Logos laden schneller und Karten bleiben stabil.",
+        "nl": "Logo’s laden sneller en kaarten blijven stabiel.",
+        "it": "I loghi si caricano più velocemente e le schede restano stabili.",
+        "es": "Los logotipos cargan más rápido y las tarjetas se mantienen estables.",
+        "pt": "Os logótipos carregam mais depressa e os cartões ficam estáveis.",
+        "pl": "Logotypy wczytują się szybciej, a karty pozostają stabilne."
+      }
+    },
     {
       "version": "5.4.50",
       "releasedAt": "2026-10-02",
