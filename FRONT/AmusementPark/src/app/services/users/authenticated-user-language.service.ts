@@ -93,7 +93,10 @@ export class AuthenticatedUserLanguageService {
         this.currentUserService.setCurrentUser(user);
         this.measurementPreferenceService.syncFromUser(user);
         this.languagePreferenceService.setPreferredLanguage(user.preferredLanguage);
-      })
+      }),
+      switchMap((user: UserDto): Observable<UserDto> => this.authService.hasRole('ADMIN')
+        ? this.translationService.loadCompleteTranslations().pipe(map(() => user))
+        : of(user))
     );
   }
 

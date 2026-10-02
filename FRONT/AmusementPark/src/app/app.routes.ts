@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { languageGuard } from '@core/guards/language.guard';
 import { authGuard } from '@core/guards/auth.guard';
 import { adminGuard } from '@core/guards/admin.guard';
+import { completeTranslationsGuard } from '@core/guards/complete-translations.guard';
 import { HISTORY_ARTICLE_ROUTE_DATA_KEY, historyArticleResolver } from '@features/public/history/state/history-article.resolver';
 import { HISTORY_TIMELINE_ROUTE_DATA_KEY, historyTimelineResolver } from '@features/public/history/state/history-timeline.resolver';
 import { HISTORICAL_LINEAGE_ROUTE_DATA_KEY, historicalLineageResolver } from '@features/public/history/state/historical-lineage.resolver';
@@ -29,6 +30,7 @@ export const routes: Routes = [
         path: 'admin',
         loadComponent: () => import('@ui/layouts/admin-app-layout/admin-app-layout.component').then((m) => m.AdminAppLayoutComponent),
         canActivate: [authGuard, adminGuard],
+        canActivateChild: [completeTranslationsGuard],
         children: [
           {
             path: '',

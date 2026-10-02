@@ -38,7 +38,31 @@ describe('AuthenticatedUserLanguageService', () => {
     expect(dependencies.measurementPreferenceService.syncFromUser).toHaveBeenCalledWith(user);
     expect(dependencies.languagePreferenceService.setPreferredLanguage).toHaveBeenCalledWith('FR');
     expect(dependencies.translationService.useLang).not.toHaveBeenCalled();
+    expect(dependencies.translationService.loadCompleteTranslations).not.toHaveBeenCalled();
     expect(dependencies.router.navigateByUrl).not.toHaveBeenCalled();
+  });
+
+  it('loads admin labels for contextual public editors after session restoration', async () => {
+    const dependencies = createDependencies('/fr/parks');
+    dependencies.authService.hasRole.mockReturnValue(true);
+    const service = createService(dependencies);
+
+    await firstValueFrom(service.hydratePreferencesFromCurrentUser());
+
+    expect(dependencies.translationService.loadCompleteTranslations).toHaveBeenCalledTimes(1);
+    expect(dependencies.router.navigateByUrl).not.toHaveBeenCalled();
+  });
+
+  it('prepares admin labels before applying the language after login', async () => {
+    const dependencies = createDependencies('/de/parks');
+    dependencies.authService.hasRole.mockReturnValue(true);
+    const service = createService(dependencies);
+
+    await firstValueFrom(service.syncPreferredLanguageFromCurrentUser());
+
+    expect(dependencies.translationService.loadCompleteTranslations).toHaveBeenCalledTimes(1);
+    expect(dependencies.translationService.loadCompleteTranslations.mock.invocationCallOrder[0])
+      .toBeLessThan(dependencies.translationService.useLang.mock.invocationCallOrder[0]);
   });
 
   it('keeps an explicit route language ahead of the account preference', async () => {
@@ -82,6 +106,7 @@ function createDependencies(url: string): Dependencies {
   } as unknown as MockedObject<AuthApiService>;
   const authService = {
     getUserIdFromToken: vi.fn().mockReturnValue('user-1'),
+    hasRole: vi.fn().mockReturnValue(false),
   } as unknown as MockedObject<AuthService>;
   const currentUserService = {
     setCurrentUser: vi.fn(),
@@ -99,6 +124,7 @@ function createDependencies(url: string): Dependencies {
   const translationService = {
     getCurrentLang: vi.fn().mockReturnValue('en'),
     useLang: vi.fn().mockReturnValue(of(null)),
+    loadCompleteTranslations: vi.fn().mockReturnValue(of(null)),
   } as unknown as MockedObject<TranslationService>;
 
   return {

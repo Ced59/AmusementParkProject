@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { splitTranslationPayloads } from './i18n-payloads.mjs';
 
 const root = process.cwd();
 const i18nDir = path.join(root, 'src', 'assets', 'i18n');
@@ -89,6 +90,12 @@ for (const language of languages) {
   }
 
   writeJson(outputPath, translations);
+  const payloads = splitTranslationPayloads(translations);
+  for (const scope of ['public', 'admin']) {
+    const directory = path.join(i18nDir, scope);
+    fs.mkdirSync(directory, { recursive: true });
+    writeJson(path.join(directory, `${language}.json`), payloads[scope]);
+  }
 }
 
 if (outdatedFiles.length > 0) {
