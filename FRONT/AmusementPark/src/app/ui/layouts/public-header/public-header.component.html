@@ -212,5 +212,7 @@
   [draggable]="false"
   [resizable]="false"
   [style]="{ width: 'min(96vw, 64rem)' }">
-  <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
+  @if (displayLoginModal()) {
+    <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
+  }
 </app-ui-dialog>
