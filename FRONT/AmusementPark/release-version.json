@@ -1,6 +1,20 @@
 {
-  "version": "5.4.48",
+  "version": "5.4.49",
   "history": [
+    {
+      "version": "5.4.49",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Les pages s’affichent plus vite et restent plus stables.",
+        "en": "Pages load faster and remain more stable.",
+        "de": "Seiten laden schneller und bleiben stabiler.",
+        "nl": "Pagina’s laden sneller en blijven stabieler.",
+        "it": "Le pagine si caricano più velocemente e restano più stabili.",
+        "es": "Las páginas cargan más rápido y se mantienen más estables.",
+        "pt": "As páginas carregam mais depressa e ficam mais estáveis.",
+        "pl": "Strony wczytują się szybciej i pozostają bardziej stabilne."
+      }
+    },
     {
       "version": "5.4.48",
       "releasedAt": "2026-10-02",

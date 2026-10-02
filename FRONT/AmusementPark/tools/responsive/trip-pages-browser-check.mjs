@@ -14,6 +14,7 @@ const projectRoot = process.cwd();
 const componentStyles = [
   'src/styles/_layout.scss',
   'src/app/features/public/ratings/ui/rating-stars.component.scss',
+  'src/app/ui/layouts/cookie-consent-banner/cookie-consent-banner.component.scss',
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
   'src/app/features/profile/trips/pages/trip-overview-page/trip-overview-page.component.scss',
   'src/app/features/profile/trips/components/trip-candidate-card/trip-candidate-card.component.scss',
@@ -321,6 +322,20 @@ const fixtureMarkup = `
       <div class="rating-stars__score"><strong>Moyenne des notes</strong><span>4,25 / 5</span></div>
       <div class="rating-stars__control" role="radiogroup" aria-label="Choisis ta note">
         ${[1, 2, 3, 4, 5].map(star => `<span class="rating-stars__star" style="--fill: 50%"><span class="rating-stars__visual" aria-hidden="true"><i class="rating-stars__star-empty">☆</i><i class="rating-stars__star-filled">★</i></span><button type="button" role="radio" aria-label="Noter ${star - 0.5}" aria-checked="false" class="rating-stars__hit rating-stars__hit--left"></button><button type="button" role="radio" aria-label="Noter ${star}" aria-checked="false" class="rating-stars__hit rating-stars__hit--right"></button></span>`).join('')}
+      </div>
+    </div>
+  </section>
+  <section class="app-cookie-consent" data-check-bound>
+    <div class="app-cookie-consent__inner" data-check-bound>
+      <div class="app-cookie-consent__icon" aria-hidden="true">i</div>
+      <div class="app-cookie-consent__content">
+        <h2 class="app-cookie-consent__title">Cookies und Datenschutz</h2>
+        <p class="app-cookie-consent__text">AmusementPark verwendet notwendige Cookies, damit die Website funktioniert. Zusätzliche Dienste bleiben deine Entscheidung.</p>
+      </div>
+      <div class="app-cookie-consent__actions">
+        <button class="app-cookie-consent__button app-cookie-consent__button--ghost">Nur notwendige Cookies</button>
+        <button class="app-cookie-consent__button app-cookie-consent__button--ghost">Einstellungen anpassen</button>
+        <button class="app-cookie-consent__button app-cookie-consent__button--primary">Alle akzeptieren</button>
       </div>
     </div>
   </section>

@@ -5,6 +5,9 @@
   <title>Amusement Parks</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="/assets/fonts/google/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/google/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/satisfy-brand-fun.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -13,6 +16,19 @@
   <link rel="manifest" href="/site.webmanifest">
 </head>
 <body class="dark-mode">
+<script data-app-theme-init>
+(() => {
+  let theme;
+  try { theme = localStorage.getItem('amusement-park-theme'); } catch {}
+  if (theme !== 'light' && theme !== 'dark') {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  for (const element of [document.documentElement, document.body]) {
+    element.classList.toggle('light-mode', theme === 'light');
+    element.classList.toggle('dark-mode', theme === 'dark');
+  }
+})();
+</script>
 <app-root></app-root>
 </body>
 </html>
