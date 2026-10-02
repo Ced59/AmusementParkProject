@@ -20,7 +20,7 @@ describe('ParkDetailPageComponent deferred visit form', () => {
   const applyParkDetailSeo = vi.fn();
 
   beforeEach(async () => {
-    park.set(mapParkToDetailViewModel({ id: 'park-1', name: 'Example Park', status: 'Operating' }, 'fr'));
+    park.set(mapParkToDetailViewModel({ id: 'park-1', name: 'Example Park', status: 'Operating', latitude: 48, longitude: 2 }, 'fr'));
     applyParkDetailSeo.mockReset();
     const stateFacade = {
       park, state: signal(null), nearbyState: signal(null), weatherState: signal(null),
