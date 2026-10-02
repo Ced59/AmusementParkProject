@@ -7,7 +7,6 @@ import {
   HttpClient
 } from '@angular/common/http';
 import { provideClientHydration, withIncrementalHydration } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { MessageService } from '@shared/ui/primitives/api';
@@ -47,7 +46,6 @@ export const appConfig: ApplicationConfig = {
       })
     ),
 
-    provideAnimations(),
     provideClientHydration(withIncrementalHydration()),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
 
