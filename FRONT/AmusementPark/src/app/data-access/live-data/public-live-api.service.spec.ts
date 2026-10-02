@@ -25,7 +25,7 @@ describe('PublicLiveApiService', () => {
     service.isPublicReadEnabled().subscribe(value => values.push(value));
     service.isPublicReadEnabled().subscribe(value => values.push(value));
     const request = http.expectOne(`${environment.apiBaseUrl}public/capabilities`);
-    request.flush([{ key: 'live:public-experience', isEnabled: false }]);
+    request.flush([{ key: 'another-feature', isEnabled: true }, { key: 'live:public-experience', isEnabled: false }]);
     service.isPublicReadEnabled().subscribe(value => values.push(value));
     expect(values).toEqual([false, false, false]);
     http.expectNone(`${environment.apiBaseUrl}public/capabilities`);
