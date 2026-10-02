@@ -13,6 +13,7 @@ const viewportWidths = [320, 360, 390, 768, 1280];
 const projectRoot = process.cwd();
 const componentStyles = [
   'src/styles/_layout.scss',
+  'src/styles/_cards.scss',
   'src/app/features/public/ratings/ui/rating-stars.component.scss',
   'src/app/ui/layouts/cookie-consent-banner/cookie-consent-banner.component.scss',
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
@@ -325,6 +326,14 @@ const fixtureMarkup = `
       </div>
     </div>
   </section>
+  <section class="surface" data-check-bound>
+    <article class="ui-park-card" data-check-bound>
+      <div class="ui-park-card__visual"><img class="ui-park-card__logo" alt="Logo en attente de chargement" data-check-bound></div>
+    </article>
+    <article class="ui-featured-park-card" data-check-bound>
+      <div class="ui-featured-park-card__logo-frame"><img class="ui-featured-park-card__logo" alt="Logo en attente de chargement" data-check-bound></div>
+    </article>
+  </section>
   <section class="app-cookie-consent" data-check-bound>
     <div class="app-cookie-consent__inner" data-check-bound>
       <div class="app-cookie-consent__icon" aria-hidden="true">i</div>
@@ -372,6 +381,12 @@ const evaluationScript = `
       const bounds = target.getBoundingClientRect();
       if (bounds.width < 24 || bounds.height < 24) {
         violations.push({ selector: target.className, reason: 'undersized-rating-target', width: bounds.width, height: bounds.height });
+      }
+    }
+    for (const logo of document.querySelectorAll('.ui-park-card__logo, .ui-featured-park-card__logo')) {
+      const bounds = logo.getBoundingClientRect();
+      if (bounds.height < 40 || bounds.width < 40) {
+        violations.push({ selector: logo.className, reason: 'unreserved-logo-space', width: bounds.width, height: bounds.height });
       }
     }
     if (viewportRight <= 576) {

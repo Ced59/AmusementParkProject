@@ -158,7 +158,7 @@ describe('PublicHeaderComponent', () => {
 
     expect(logoImage).not.toBeNull();
     expect(logoImage?.getAttribute('src')).toBe(
-      '/assets/general-icon/logo-amusementpark-ui.png',
+      '/assets/general-icon/logo-amusementpark-ui.webp',
     );
     expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
   });

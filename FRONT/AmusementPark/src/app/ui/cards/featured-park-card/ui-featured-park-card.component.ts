@@ -14,6 +14,7 @@ import { LocalizedPluralPipe } from '@shared/pipes';
   imports: [RouterLink, TranslateModule, ImageDisplayComponent, UiButtonDirective, UiChipComponent, LocalizedPluralPipe]
 })
 export class UiFeaturedParkCardComponent {
+  readonly logoResponsiveWidths: readonly number[] = [64, 128, 192];
   @Input() park: HomeFeaturedParkCardModel | null = null;
 
   protected get hasLogo(): boolean {

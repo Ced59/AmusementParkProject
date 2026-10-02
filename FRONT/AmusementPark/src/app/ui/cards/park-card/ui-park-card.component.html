@@ -24,7 +24,9 @@
       <app-image-display
         [imageId]="currentPark.logoImageId"
         [alt]="currentPark.name || 'Park logo'"
-        sizes="160px"
+        sizes="128px"
+        [srcWidth]="128"
+        [responsiveWidths]="logoResponsiveWidths"
         imgClass="ui-park-card__logo">
       </app-image-display>
     </div>
