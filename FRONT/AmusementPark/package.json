@@ -26,7 +26,7 @@
     "architecture:one-class-per-file": "node tools/architecture/check-one-class-per-file.mjs",
     "architecture:one-class-per-file:test": "node --test tools/architecture/one-class-per-file.test.mjs",
     "architecture:product-analytics": "node tools/architecture/check-product-analytics.mjs",
-    "quality:accessibility-i18n": "npm run i18n:check && node tools/quality/i18n-source-collision-check.mjs && node tools/quality/accessibility-check.mjs && node --test tools/quality/initial-theme.test.mjs",
+    "quality:accessibility-i18n": "npm run i18n:check && node tools/quality/i18n-source-collision-check.mjs && node tools/quality/accessibility-check.mjs && node --test tools/quality/initial-theme.test.mjs tools/quality/footer-contrast.test.mjs",
     "quality:accessibility-i18n:test": "node --test tools/quality/i18n-source-collision-check.test.mjs tools/quality/accessibility-check.test.mjs",
     "privacy:catalog": "node tools/privacy/check-personal-data-catalog.mjs",
     "privacy:catalog:test": "node --test tools/privacy/personal-data-catalog.test.mjs",
