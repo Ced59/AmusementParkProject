@@ -71,18 +71,29 @@
 
 .rating-stars__control {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.08rem;
+  max-width: 100%;
 }
 
 .rating-stars__star {
   --fill: 0%;
   position: relative;
   display: inline-grid;
+  flex: 0 0 3rem;
+  width: 3rem;
+  height: 2rem;
+  place-items: center;
+  color: color-mix(in srgb, var(--app-border) 76%, var(--app-text) 24%);
+}
+
+.rating-stars__visual {
+  display: inline-grid;
   width: 1.42rem;
   height: 1.42rem;
   place-items: center;
-  color: color-mix(in srgb, var(--app-border) 76%, var(--app-text) 24%);
+  pointer-events: none;
 }
 
 .rating-stars__star-empty,

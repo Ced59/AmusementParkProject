@@ -52,6 +52,20 @@ describe('PublicFooterComponent', () => {
     fixture.detectChanges();
   });
 
+  it('announces each language once while keeping its flag decorative', () => {
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const languageLinks: NodeListOf<HTMLAnchorElement> = host.querySelectorAll('.app-public-footer__links--languages a');
+
+    expect(languageLinks.length).toBe(8);
+    languageLinks.forEach((link: HTMLAnchorElement): void => {
+      const flag: HTMLImageElement | null = link.querySelector('img');
+      expect(flag?.getAttribute('alt')).toBe('');
+      expect(flag?.getAttribute('aria-hidden')).toBe('true');
+      expect(link.querySelector('span')?.textContent?.trim().length).toBeGreaterThan(0);
+      expect(link.getAttribute('href')).toBeTruthy();
+    });
+  });
+
   it('displays the generated site version', () => {
     const textContent =
       (fixture.nativeElement as HTMLElement).textContent ?? '';
@@ -133,10 +147,10 @@ describe('PublicFooterComponent', () => {
     expect(activeLanguageLink?.textContent).toContain('English');
     expect(activeLanguageLink?.getAttribute('aria-current')).toBe('page');
     expect(activeLanguageLink?.querySelector('img')?.getAttribute('alt')).toBe(
-      'English',
+      '',
     );
     expect(
-      activeLanguageLink?.querySelector('img')?.hasAttribute('aria-hidden'),
-    ).toBe(false);
+      activeLanguageLink?.querySelector('img')?.getAttribute('aria-hidden'),
+    ).toBe('true');
   });
 });
