@@ -31,6 +31,14 @@ public sealed class UpdateSeoSitemapSettingsCommandHandler : ICommandHandler<Upd
             return ApplicationResult<SeoSitemapSettings>.Failure(ApplicationErrors.Required("indexNowKey"));
         }
 
+        if (command.IsIndexNowEnabled &&
+            (IsReservedIndexNowKeyPath($"/{normalizedKey}.txt") || IsReservedIndexNowKeyPath(normalizedKeyLocation)))
+        {
+            return ApplicationResult<SeoSitemapSettings>.Failure(ApplicationError.Validation(
+                "seo.indexnow.reserved-key-path",
+                "Le chemin /sitemap-static-fr.txt est réservé au sitemap public. Choisis une autre clé ou URL de vérification IndexNow."));
+        }
+
         SeoSitemapSettings settings = new SeoSitemapSettings
         {
             IsIndexNowEnabled = command.IsIndexNowEnabled,
@@ -49,6 +57,31 @@ public sealed class UpdateSeoSitemapSettingsCommandHandler : ICommandHandler<Upd
     private static string Normalize(string? value)
     {
         return string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
+    }
+
+    private static bool IsReservedIndexNowKeyPath(string value)
+    {
+        string path = value.Trim();
+        int suffixIndex = path.IndexOfAny(new[] { '?', '#' });
+        if (suffixIndex >= 0)
+        {
+            path = path[..suffixIndex];
+        }
+
+        if (Uri.TryCreate(path, UriKind.Absolute, out Uri? absoluteUri))
+        {
+            path = absoluteUri.AbsolutePath;
+        }
+
+        path = Uri.UnescapeDataString(path);
+        if (!path.StartsWith('/'))
+        {
+            path = $"/{path}";
+        }
+
+        // Resolve relative dot segments after decoding, without making a network request.
+        return Uri.TryCreate($"https://indexnow-key-path.invalid{path}", UriKind.Absolute, out Uri? normalizedUri) &&
+            string.Equals(normalizedUri.AbsolutePath, "/sitemap-static-fr.txt", StringComparison.OrdinalIgnoreCase);
     }
 
     private static IReadOnlyCollection<string> NormalizeEndpoints(IReadOnlyCollection<string> endpoints)

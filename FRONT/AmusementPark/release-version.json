@@ -1,6 +1,20 @@
 {
-  "version": "5.4.77",
+  "version": "5.4.78",
   "history": [
+    {
+      "version": "5.4.78",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Fiabilité des sitemaps améliorée",
+        "en": "More reliable sitemaps",
+        "de": "Zuverlässigere Sitemaps",
+        "nl": "Betrouwbaardere sitemaps",
+        "it": "Sitemap più affidabili",
+        "es": "Sitemaps más fiables",
+        "pt": "Sitemaps mais fiáveis",
+        "pl": "Bardziej niezawodne mapy witryny"
+      }
+    },
     {
       "version": "5.4.77",
       "releasedAt": "2026-10-02",
