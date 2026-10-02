@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, Subscription, forkJoin, map } from 'rxjs';
+import { Observable, Subscription, forkJoin, map, of, switchMap } from 'rxjs';
 
 import { PublicLiveTarget, PublicParkLiveItems } from '@app/models/live-data/public-live.models';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
@@ -102,22 +102,38 @@ export class PublicLiveStateFacade {
       refreshFailed: false
     }));
 
-    const request: Observable<PublicLiveLoadResult> = this.currentMode === 'park'
-      ? forkJoin({
-        target: this.liveDataPort.getPark(this.currentTargetId),
-        collection: this.liveDataPort.getParkItems(this.currentTargetId)
-      }).pipe(map((result: { target: PublicLiveTarget; collection: PublicParkLiveItems }) => ({
-        target: result.target,
-        items: result.collection.items
-      })))
-      : this.liveDataPort.getParkItem(this.currentTargetId).pipe(
-        map((target: PublicLiveTarget) => ({ target, items: [] }))
-      );
+    const targetId: string = this.currentTargetId;
+    const mode: PublicLiveDisplayMode = this.currentMode;
+    const request: Observable<PublicLiveLoadResult | null> = this.liveDataPort.isPublicReadEnabled().pipe(
+      switchMap((enabled: boolean) => {
+        if (!enabled) {
+          return of(null);
+        }
+        return mode === 'park'
+          ? forkJoin({
+            target: this.liveDataPort.getPark(targetId),
+            collection: this.liveDataPort.getParkItems(targetId)
+          }).pipe(map((result: { target: PublicLiveTarget; collection: PublicParkLiveItems }) => ({
+            target: result.target,
+            items: result.collection.items
+          })))
+          : this.liveDataPort.getParkItem(targetId).pipe(
+            map((target: PublicLiveTarget) => ({ target, items: [] }))
+          );
+      })
+    );
 
     const subscription: Subscription = request.subscribe({
-      next: (result: PublicLiveLoadResult) => {
+      next: (result: PublicLiveLoadResult | null) => {
         this.requestSubscription = null;
         this.isTemporarilySuspended = false;
+        if (result === null) {
+          this.cancelScheduledRefresh();
+          this.cancelScheduledExpiration();
+          this.cancelScheduledAgeUpdate();
+          this.stateSignal.set({ ...INITIAL_PUBLIC_LIVE_VIEW_STATE, kind: 'disabled', mode, isOnline: navigator.onLine });
+          return;
+        }
         const now: number = Date.now();
         const target: PublicLiveTarget = this.ageTarget(result.target, now);
         const items: readonly PublicLiveTarget[] = result.items.map(

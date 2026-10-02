@@ -73,6 +73,7 @@ function createPort(
   getHistory: () => Observable<PublicLiveHistory>
 ): PublicLiveDataPort {
   return {
+    isPublicReadEnabled: vi.fn(() => of(true)),
     getPark: vi.fn(() => of({} as PublicLiveTarget)),
     getParkItem: vi.fn(() => of({} as PublicLiveTarget)),
     getParkItems: vi.fn(() => of({} as PublicParkLiveItems)),

@@ -5,6 +5,7 @@ import { PublicLiveForecast, PublicLiveHistory, PublicLiveTarget, PublicParkLive
 import { PublicLiveApiService } from '@data-access/live-data/public-live-api.service';
 
 export interface PublicLiveDataPort {
+  isPublicReadEnabled(): Observable<boolean>;
   getPark(parkId: string): Observable<PublicLiveTarget>;
   getParkItem(itemId: string): Observable<PublicLiveTarget>;
   getParkItems(parkId: string): Observable<PublicParkLiveItems>;

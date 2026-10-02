@@ -1,6 +1,20 @@
 {
-  "version": "5.4.52",
+  "version": "5.4.53",
   "history": [
+    {
+      "version": "5.4.53",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Les informations en direct se chargent uniquement lorsqu’elles sont disponibles.",
+        "en": "Live information loads only when it is available.",
+        "de": "Live-Informationen laden nur, wenn sie verfügbar sind.",
+        "nl": "Live-informatie laadt alleen wanneer die beschikbaar is.",
+        "it": "Le informazioni in tempo reale si caricano solo quando sono disponibili.",
+        "es": "La información en directo carga solo cuando está disponible.",
+        "pt": "A informação em direto carrega apenas quando está disponível.",
+        "pl": "Informacje na żywo wczytują się tylko wtedy, gdy są dostępne."
+      }
+    },
     {
       "version": "5.4.52",
       "releasedAt": "2026-10-02",
