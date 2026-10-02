@@ -1,6 +1,20 @@
 {
-  "version": "5.4.59",
+  "version": "5.4.60",
   "history": [
+    {
+      "version": "5.4.60",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Sélection de langue plus nette et accessible",
+        "en": "Clearer and more accessible language selection",
+        "de": "Klarere und besser zugängliche Sprachauswahl",
+        "nl": "Duidelijkere en toegankelijkere taalkeuze",
+        "it": "Scelta della lingua più nitida e accessibile",
+        "es": "Selección de idioma más nítida y accesible",
+        "pt": "Seleção de idioma mais nítida e acessível",
+        "pl": "Wyraźniejszy i bardziej dostępny wybór języka"
+      }
+    },
     {
       "version": "5.4.59",
       "releasedAt": "2026-10-02",

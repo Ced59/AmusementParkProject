@@ -44,4 +44,27 @@ describe('LanguageEntryPageComponent', () => {
 
     expect(languageChoiceService.chooseLanguage).toHaveBeenCalledWith('fr');
   });
+
+  it('preserves native link semantics for every language choice', () => {
+    const choices: NodeListOf<HTMLAnchorElement> = fixture.nativeElement.querySelectorAll('.language-entry__choice');
+
+    for (const choice of Array.from(choices)) {
+      expect(choice.tagName).toBe('A');
+      expect(choice.hasAttribute('role')).toBe(false);
+      expect(choice.getAttribute('href')).toMatch(/^\/(en|fr|es|de|it|pl|nl|pt)\/home$/);
+      expect(choice.getAttribute('aria-label')?.trim()).toBeTruthy();
+    }
+    expect(fixture.nativeElement.querySelector('[role="list"]')).toBeNull();
+  });
+
+  it('provides a high density logo without changing its reserved aspect ratio', () => {
+    const logo: HTMLImageElement = fixture.nativeElement.querySelector('.language-entry__logo');
+
+    expect(logo.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark-language-136.webp');
+    expect(logo.getAttribute('srcset')).toBe(
+      '/assets/general-icon/logo-amusementpark-language-136.webp 1x, /assets/general-icon/logo-amusementpark-language-272.webp 2x, /assets/general-icon/logo-amusementpark-language-408.webp 3x',
+    );
+    expect(logo.getAttribute('width')).toBe('184');
+    expect(logo.getAttribute('height')).toBe('184');
+  });
 });

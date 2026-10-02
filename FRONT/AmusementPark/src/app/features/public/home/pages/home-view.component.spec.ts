@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { SearchResultItem } from '@app/models/search/search-result-item';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
+import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import {
   COMMON_TEST_IMPORTS,
   provideCommonTestDependencies,
@@ -217,6 +218,29 @@ describe('HomeViewComponent', () => {
     searchButton.click();
 
     expect(searchCount).toBe(1);
+  });
+
+  it('keeps the complete visible hero card text in its native accessible link name', () => {
+    const fixture: ComponentFixture<HomeViewComponent> = createComponent([]);
+    const park: ParkCardModel = {
+      id: 'park-1', name: 'Example Park', countryCode: 'FR', city: 'Paris',
+      status: 'Operating', statusLabelKey: null, statusIconClass: null,
+      statusTone: 'lime', latitude: null, longitude: null, logoImageId: null,
+      websiteUrl: null, locationLine: 'Paris · France', addressLine: null,
+      coordinatesLine: null, shortDescription: null,
+      isClosedDefinitively: false, isOpenToVisitors: true,
+    };
+    fixture.componentInstance.heroFeaturedParks = signal<ParkCardModel[]>([park]).asReadonly();
+
+    fixture.detectChanges();
+
+    const card: HTMLAnchorElement = fixture.nativeElement.querySelector('a.home-hero-card');
+    expect(card.getAttribute('href')).toBe('/en/park/park-1/example-park');
+    expect(card.hasAttribute('aria-label')).toBe(false);
+    expect(card.hasAttribute('aria-labelledby')).toBe(false);
+    expect(card.textContent).toContain('Example Park');
+    expect(card.textContent).toContain('Paris · France');
+    expect(card.querySelector('.home-hero-card__tag')?.textContent?.trim()).toBeTruthy();
   });
 });
 

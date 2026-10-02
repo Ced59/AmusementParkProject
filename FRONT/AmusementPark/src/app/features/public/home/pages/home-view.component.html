@@ -57,8 +57,7 @@
               @if (buildParkLink(park); as parkLink) {
                 <a
                   [class]="getHeroCardClass(index)"
-                  [routerLink]="parkLink"
-                  [attr.aria-label]="park.name">
+                  [routerLink]="parkLink">
                   <span class="home-hero-card__icon">
                     <i [class]="getHeroCardStyle(index).iconClass" aria-hidden="true"></i>
                   </span>
