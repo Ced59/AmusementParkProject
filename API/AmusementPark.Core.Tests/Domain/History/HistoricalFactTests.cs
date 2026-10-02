@@ -271,7 +271,7 @@ public sealed class HistoricalFactTests
             HistoricalRevisionOrigin.LegacyMigration);
 
         Assert.Equal(HistoricalRevisionOrigin.LegacyMigration, fact.RevisionOrigin);
-        Assert.True(fact.IsPublicTimelineEligible);
+        Assert.False(fact.IsPublicTimelineEligible);
         Assert.False(fact.IsDecisionEligible);
     }
 

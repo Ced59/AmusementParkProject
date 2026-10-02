@@ -9,7 +9,7 @@ public sealed class HistoricalFactEvidenceValidatorTests
         new DateTime(2026, 9, 26, 10, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public void FilterPublicTimelineSources_WhenLegacyPublishedSourceIsStillPendingReview_ShouldKeepSourceVisible()
+    public void FilterPublicTimelineSources_WhenLegacyPublishedSourceIsStillPendingReview_ShouldExcludeSource()
     {
         HistoricalSourceReference legacySource = new HistoricalSourceReference(
             Guid.NewGuid(),
@@ -42,7 +42,7 @@ public sealed class HistoricalFactEvidenceValidatorTests
                 new[] { legacySource },
                 new[] { legacySource });
 
-        Assert.Same(legacySource, Assert.Single(publicSources));
+        Assert.Empty(publicSources);
     }
 
     [Fact]
