@@ -1,6 +1,20 @@
 {
-  "version": "5.4.75",
+  "version": "5.4.76",
   "history": [
+    {
+      "version": "5.4.76",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Navigation mobile plus légère",
+        "en": "Lighter mobile navigation",
+        "de": "Flüssigere mobile Navigation",
+        "nl": "Lichtere mobiele navigatie",
+        "it": "Navigazione mobile più fluida",
+        "es": "Navegación móvil más fluida",
+        "pt": "Navegação móvel mais fluida",
+        "pl": "Płynniejsza nawigacja mobilna"
+      }
+    },
     {
       "version": "5.4.75",
       "releasedAt": "2026-10-02",

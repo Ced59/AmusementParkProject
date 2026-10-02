@@ -844,3 +844,13 @@ button.app-mobile-bottom-nav__item {
   margin-left: auto;
   color: var(--c-lime);
 }
+
+@media (max-width: 680px) {
+  // Avoid filtering the same scrolling content through three fixed/sticky layers.
+  .app-public-nav,
+  .app-public-park-trail,
+  .app-mobile-bottom-nav {
+    background: var(--app-bg);
+    backdrop-filter: none;
+  }
+}
