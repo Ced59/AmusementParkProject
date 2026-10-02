@@ -105,6 +105,10 @@
   .app-cookie-consent__inner {
     grid-template-columns: 1fr;
     align-items: start;
+    // A nearly opaque mobile panel does not need to filter the content behind it.
+    background: linear-gradient(180deg, var(--app-surface), var(--app-surface-2));
+    background-color: var(--app-bg);
+    backdrop-filter: none;
   }
 
   .app-cookie-consent__icon {
