@@ -13,6 +13,7 @@ import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.serv
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events';
 import { PassportVisitQuickCreateComponent } from '@features/profile/passport/components/passport-visit-quick-create/passport-visit-quick-create.component';
 import { PublicLiveStateFacade } from '@features/public/live/state/public-live-state.facade';
+import { PARK_DETAIL_HERO_IMAGE_SIZES, PARK_DETAIL_HERO_IMAGE_WIDTH } from '../models/park-detail-image-layout';
 
 @Component({
   selector: 'app-park-detail-page',
@@ -24,8 +25,8 @@ import { PublicLiveStateFacade } from '@features/public/live/state/public-live-s
 })
 export class ParkDetailPageComponent implements OnInit {
   protected readonly heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
-  protected readonly heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
-  protected readonly heroImageSrcWidth: number = 960;
+  protected readonly heroImageSizes: string = PARK_DETAIL_HERO_IMAGE_SIZES;
+  protected readonly heroImageSrcWidth: number = PARK_DETAIL_HERO_IMAGE_WIDTH;
   protected readonly state = this.stateFacade.state;
   protected readonly nearbyState = this.stateFacade.nearbyState;
   protected readonly weatherState = this.stateFacade.weatherState;

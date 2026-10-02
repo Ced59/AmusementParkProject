@@ -15,6 +15,7 @@ const componentStyles = [
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
   'src/app/features/public/parks/ui/park-location-section.component.scss',
+  'src/app/features/public/parks/ui/park-detail-view.component.scss',
   'src/app/features/public/ratings/ui/rating-stars.component.scss',
   'src/app/ui/layouts/cookie-consent-banner/cookie-consent-banner.component.scss',
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
@@ -33,7 +34,8 @@ const componentStyles = [
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
   .join('\n')
-  .replaceAll(':host', '.responsive-fixture-host');
+  .replaceAll(':host', '.responsive-fixture-host')
+  .replaceAll('::ng-deep', '');
 
 const chromeCandidates = [
   process.env.CHROME_PATH,
@@ -338,6 +340,10 @@ const fixtureMarkup = `
   <section class="surface" data-check-bound>
     <div class="park-location-card__map-placeholder" data-check-bound aria-hidden="true"></div>
   </section>
+  <section class="park-main-photo" data-check-bound>
+    <a class="park-main-photo__link" data-photo-state="unloaded" data-check-bound><img class="park-main-photo__img" alt="Photo en attente"></a>
+    <a class="park-main-photo__link" data-photo-state="loaded" data-check-bound><img class="park-main-photo__img" width="1280" height="960" alt="Photo avec dimensions intrinsèques"></a>
+  </section>
   <section class="app-cookie-consent" data-check-bound>
     <div class="app-cookie-consent__inner" data-check-bound>
       <div class="app-cookie-consent__icon" aria-hidden="true">i</div>
@@ -397,6 +403,11 @@ const evaluationScript = `
       if (placeholder.getBoundingClientRect().height !== 240) {
         violations.push({ selector: placeholder.className, reason: 'unreserved-map-space' });
       }
+    }
+    const unloadedPhoto = document.querySelector('[data-photo-state="unloaded"]').getBoundingClientRect();
+    const loadedPhoto = document.querySelector('[data-photo-state="loaded"]').getBoundingClientRect();
+    if (unloadedPhoto.height !== loadedPhoto.height || unloadedPhoto.height < 208 || unloadedPhoto.height > 352) {
+      violations.push({ reason: 'unstable-park-photo-height', unloaded: unloadedPhoto.height, loaded: loadedPhoto.height });
     }
     if (viewportRight <= 576) {
       for (const root of document.querySelectorAll('[data-responsive-root]')) {
