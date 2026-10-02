@@ -17,18 +17,18 @@ namespace AmusementPark.Application.Features.History.Handlers;
 public sealed class DeleteHistoryEventCommandHandler : ICommandHandler<DeleteHistoryEventCommand, ApplicationResult>
 {
     private readonly IHistoryEventRepository historyEventRepository;
-    private readonly HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService;
+    private readonly HistoricalCanonicalResourceRetractionService canonicalResourceRetractionService;
     private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
     public DeleteHistoryEventCommandHandler(
         IHistoryEventRepository historyEventRepository,
-        HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
+        HistoricalCanonicalResourceRetractionService canonicalResourceRetractionService,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.historyEventRepository = historyEventRepository
             ?? throw new ArgumentNullException(nameof(historyEventRepository));
-        this.canonicalFactRetractionService = canonicalFactRetractionService
-            ?? throw new ArgumentNullException(nameof(canonicalFactRetractionService));
+        this.canonicalResourceRetractionService = canonicalResourceRetractionService
+            ?? throw new ArgumentNullException(nameof(canonicalResourceRetractionService));
         this.sitemapRefreshScheduler = sitemapRefreshScheduler
             ?? throw new ArgumentNullException(nameof(sitemapRefreshScheduler));
     }
@@ -52,7 +52,7 @@ public sealed class DeleteHistoryEventCommandHandler : ICommandHandler<DeleteHis
 
         if (historyEvent.CanonicalFactId.HasValue)
         {
-            await this.canonicalFactRetractionService.RetractAsync(
+            await this.canonicalResourceRetractionService.RetractAsync(
                 historyEvent.CanonicalFactId.Value,
                 cancellationToken);
         }

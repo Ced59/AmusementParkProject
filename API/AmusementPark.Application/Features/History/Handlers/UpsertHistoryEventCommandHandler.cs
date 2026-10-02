@@ -21,7 +21,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
-    private readonly HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService;
+    private readonly HistoricalCanonicalResourceRetractionService canonicalResourceRetractionService;
     private readonly IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer;
     private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
@@ -29,7 +29,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         IHistoryEventRepository historyEventRepository,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
-        HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
+        HistoricalCanonicalResourceRetractionService canonicalResourceRetractionService,
         IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
         : this(
@@ -37,7 +37,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             parkRepository,
             parkItemRepository,
             null,
-            canonicalFactRetractionService,
+            canonicalResourceRetractionService,
             historicalNarrativeCanonicalizer,
             sitemapRefreshScheduler)
     {
@@ -48,7 +48,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IStandaloneAttractionRepository? standaloneAttractionRepository,
-        HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
+        HistoricalCanonicalResourceRetractionService canonicalResourceRetractionService,
         IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
@@ -56,8 +56,8 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
-        this.canonicalFactRetractionService = canonicalFactRetractionService
-            ?? throw new ArgumentNullException(nameof(canonicalFactRetractionService));
+        this.canonicalResourceRetractionService = canonicalResourceRetractionService
+            ?? throw new ArgumentNullException(nameof(canonicalResourceRetractionService));
         this.historicalNarrativeCanonicalizer = historicalNarrativeCanonicalizer
             ?? throw new ArgumentNullException(nameof(historicalNarrativeCanonicalizer));
         this.sitemapRefreshScheduler = sitemapRefreshScheduler;
@@ -83,7 +83,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
 
         if (existing?.CanonicalFactId is Guid canonicalFactId)
         {
-            await this.canonicalFactRetractionService.RetractAsync(
+            await this.canonicalResourceRetractionService.RetractAsync(
                 canonicalFactId,
                 cancellationToken);
         }
@@ -111,6 +111,13 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             cancellationToken);
         if (!canonicalizationSaved)
         {
+            if (canonicalization.CanonicalFactId.HasValue)
+            {
+                await this.canonicalResourceRetractionService.RetractAsync(
+                    canonicalization.CanonicalFactId.Value,
+                    cancellationToken);
+            }
+
             throw new InvalidOperationException(
                 "The historical narrative changed while its canonical HIST fact was being linked.");
         }

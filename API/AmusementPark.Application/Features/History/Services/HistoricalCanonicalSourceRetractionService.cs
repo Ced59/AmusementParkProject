@@ -21,8 +21,7 @@ public sealed class HistoricalCanonicalSourceRetractionService
             sourceId,
             cancellationToken);
         if (latest is null
-            || latest.PublicationState == HistoricalPublicationState.Withdrawn
-            || latest.PublicationState == HistoricalPublicationState.Draft)
+            || latest.PublicationState == HistoricalPublicationState.Withdrawn)
         {
             return;
         }

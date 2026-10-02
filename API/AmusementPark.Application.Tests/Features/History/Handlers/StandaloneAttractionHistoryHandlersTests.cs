@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Tests.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -91,7 +92,7 @@ public sealed class StandaloneAttractionHistoryHandlersTests
             parkRepository.Object,
             parkItemRepository.Object,
             standaloneAttractionRepository.Object,
-            new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object),
+            HistoricalCanonicalResourceRetractionServiceTestFactory.Create(historicalFactRepository.Object),
             canonicalizer.Object,
             sitemapRefreshScheduler.Object);
 

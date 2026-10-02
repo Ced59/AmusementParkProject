@@ -319,6 +319,17 @@ prepare_historical_history_cutover() {
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
       < ./scripts/freeze-history-authorities-5.4.80.js
+
+  echo "Starting and verifying the unexposed canonical-history candidate..."
+  python3 ./scripts/deployment_transaction.py prepare-candidates
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      < ./scripts/release-history-write-freeze-5.4.80.js
 }
 
 complete_historical_history_cutover() {

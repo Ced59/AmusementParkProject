@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Tests.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -304,7 +305,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             searchProjectionWriter,
             upsertHistoryRepository,
             publicSeoUpdateNotifier,
-            new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object),
+            HistoricalCanonicalResourceRetractionServiceTestFactory.Create(historicalFactRepository.Object),
             historicalNarrativeCanonicalizer: canonicalizer.Object);
         const string rawJson = """
         {
@@ -811,7 +812,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
         Mock<ISearchProjectionWriter> searchProjectionWriter,
         Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository,
         Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier,
-        HistoricalNarrativeCanonicalFactRetractionService? canonicalFactRetractionService = null,
+        HistoricalCanonicalResourceRetractionService? canonicalResourceRetractionService = null,
         IStandaloneAttractionOpeningHoursRepository? standaloneOpeningHoursRepository = null,
         IStandaloneAttractionPricingRepository? standalonePricingRepository = null,
         IHistoricalNarrativeCanonicalizer? historicalNarrativeCanonicalizer = null)
@@ -831,7 +832,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             MeasurementConversionService.Instance,
             historyEventRepository: historyEventRepository.Object,
             standaloneAttractionRepository: standaloneRepository.Object,
-            canonicalFactRetractionService: canonicalFactRetractionService,
+            canonicalResourceRetractionService: canonicalResourceRetractionService,
             historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer,
             parkOpeningHoursScheduleNormalizer: new ParkOpeningHoursScheduleNormalizer(),
             parkOpeningHoursCoverageSegmentBuilder: new ParkOpeningHoursCoverageSegmentBuilder(),

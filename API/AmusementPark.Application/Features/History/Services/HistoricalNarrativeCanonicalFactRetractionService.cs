@@ -33,11 +33,6 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
                 return;
             }
 
-            if (latest.PublicationState == HistoricalPublicationState.Draft)
-            {
-                return;
-            }
-
             DateTime nowUtc = DateTime.UtcNow;
             DateTime recordedAtUtc = nowUtc > latest.RecordedAtUtc
                 ? nowUtc

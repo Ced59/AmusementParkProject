@@ -294,6 +294,21 @@ class DeploymentTransactionTests(unittest.TestCase):
         self.assertIsNotNone(state["transition"])
         validate_state(state)
 
+    def test_candidates_can_be_verified_without_becoming_public(self):
+        self.transaction.prepare()
+
+        self.transaction.prepare_candidates()
+
+        state = self.transaction.read()
+        self.assertEqual(state["phase"], "prepared")
+        self.assertFalse(state["authority_exposed"])
+        self.assertEqual(len(self.runtime.candidates()), 2)
+        self.assertFalse(any(event == "reload" for event in self.runtime.events))
+
+        self.transaction.execute()
+        self.assertEqual(self.runtime.events.count("start-api"), 1)
+        self.assertEqual(self.runtime.events.count("start-front"), 1)
+
 
     def test_worker_respawn_missing_from_initial_snapshot_still_blocks_retirement(self):
         self.transaction.prepare()

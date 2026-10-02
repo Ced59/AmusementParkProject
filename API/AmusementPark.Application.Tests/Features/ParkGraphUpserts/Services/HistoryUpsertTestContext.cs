@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Tests.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -120,8 +121,8 @@ internal sealed class HistoryUpsertTestContext
             this.publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
             historyEventRepository: this.HistoryEventRepository.Object,
-            canonicalFactRetractionService:
-                new HistoricalNarrativeCanonicalFactRetractionService(this.HistoricalFactRepository.Object),
+            canonicalResourceRetractionService:
+                HistoricalCanonicalResourceRetractionServiceTestFactory.Create(this.HistoricalFactRepository.Object),
             historicalNarrativeCanonicalizer: this.HistoricalNarrativeCanonicalizer.Object);
     }
 

@@ -331,14 +331,7 @@ class DeploymentTransaction:
             raise DeploymentError("Finish unexposed abandonment before preparing another deployment")
         self.assert_candidates_known()
         if self.state["phase"] == "prepared":
-            for service in ("api", "front"):
-                reference = self.runtime.start_candidate(service, self.state["candidate_names"][service],
-                                                         self.state["generation"], self.state["candidate_names"]["api"])
-                if self.state["candidate"][service] not in (None, reference):
-                    raise DeploymentError("Candidate identity changed while preparing")
-                self.state["candidate"][service] = reference
-                self.save()
-            self.runtime.verify_pair(self.state["candidate"], candidate=True)
+            self.prepare_candidates()
             # Conservatively disarm business rollback BEFORE routing intent.
             # A lost reload response may already expose the new authority.
             self.state["authority_exposed"] = True
@@ -381,17 +374,38 @@ class DeploymentTransaction:
         self.assert_active_route(self.state["canonical"]["front"])
         print("Deployment committed: canonical pair healthy, durable worker enabled", flush=True)
 
+    def prepare_candidates(self):
+        if self.state is None:
+            self.state = self.read()
+        if self.state is None or self.state["fingerprint"] != self.runtime.fingerprint:
+            raise DeploymentError("Deployment must be prepared under the installation lock")
+        if self.state["phase"] != "prepared" or self.state["authority_exposed"]:
+            raise DeploymentError("Candidates can be prepared only before any public exposure")
+        self.assert_candidates_known()
+        for service in ("api", "front"):
+            reference = self.runtime.start_candidate(
+                service,
+                self.state["candidate_names"][service],
+                self.state["generation"],
+                self.state["candidate_names"]["api"])
+            if self.state["candidate"][service] not in (None, reference):
+                raise DeploymentError("Candidate identity changed while preparing")
+            self.state["candidate"][service] = reference
+            self.save()
+        self.runtime.verify_pair(self.state["candidate"], candidate=True)
+        print("Candidate pair ready and still unexposed", flush=True)
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("prepare", "deploy", "rollback-safe", "assert-complete",
+    parser.add_argument("command", choices=("prepare", "prepare-candidates", "deploy", "rollback-safe", "assert-complete",
                                             "arm-cutover", "cutover-pending", "cutover-restored", "abandon-unexposed",
                                             "quiesce-unexposed", "quiesce-original-history-writer",
                                             "restore-original-history-writer", "validate-journal", "maintain-mongodb"))
     parser.add_argument("--resource", choices=sorted(CUTOVER_RESOURCES))
     args = parser.parse_args()
     directory = Path(__file__).resolve().parent.parent
-    if args.command in {"prepare", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed",
+    if args.command in {"prepare", "prepare-candidates", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed",
                         "quiesce-original-history-writer", "restore-original-history-writer",
                         "maintain-mongodb"}:
         import fcntl
@@ -438,6 +452,8 @@ def main():
     transaction = DeploymentTransaction(runtime, directory / "nginx/runtime")
     if args.command == "prepare":
         transaction.prepare()
+    elif args.command == "prepare-candidates":
+        transaction.prepare_candidates()
     elif args.command == "deploy":
         transaction.execute()
     elif args.command == "abandon-unexposed":

@@ -27,12 +27,18 @@ fi
 rollback_arm_line="$(grep -n 'historical_history_cutover_started=true' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 freeze_command_line="$(grep -n 'freeze-history-authorities-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 writer_quiesce_line="$(grep -n 'quiesce-original-history-writer' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+candidate_prepare_line="$(grep -n 'deployment_transaction.py prepare-candidates' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+write_release_line="$(grep -n 'release-history-write-freeze-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${rollback_arm_line}" ] \
   || [ -z "${writer_quiesce_line}" ] \
   || [ -z "${freeze_command_line}" ] \
+  || [ -z "${candidate_prepare_line}" ] \
+  || [ -z "${write_release_line}" ] \
   || [ "${rollback_arm_line}" -ge "${writer_quiesce_line}" ] \
-  || [ "${writer_quiesce_line}" -ge "${freeze_command_line}" ]; then
-  echo 'Historical rollback and original-writer isolation must precede the collection freeze.' >&2
+  || [ "${writer_quiesce_line}" -ge "${freeze_command_line}" ] \
+  || [ "${freeze_command_line}" -ge "${candidate_prepare_line}" ] \
+  || [ "${candidate_prepare_line}" -ge "${write_release_line}" ]; then
+  echo 'History must be frozen until the isolated, unexposed candidate is healthy.' >&2
   exit 1
 fi
 
@@ -68,6 +74,7 @@ rollback_disarm_line="$(grep -n '^historical_history_cutover_started=false$' "${
 if [ -z "${deploy_transaction_line}" ] \
   || [ -z "${completion_line}" ] \
   || [ -z "${rollback_disarm_line}" ] \
+  || [ "${write_release_line}" -ge "${deploy_transaction_line}" ] \
   || [ "${deploy_transaction_line}" -ge "${completion_line}" ] \
   || [ "${completion_line}" -ge "${rollback_disarm_line}" ]; then
   echo 'Historical collections may be removed only after promotion and before rollback is disarmed.' >&2
@@ -117,6 +124,17 @@ for required_filter in \
   "renameCollection(legacyCollectionName, false)"; do
   if ! grep -Fq "${required_filter}" "${rollback_script}"; then
     echo "Historical rollback is missing its targeted filter: ${required_filter}" >&2
+    exit 1
+  fi
+done
+
+release_script="${deploy_root}/scripts/release-history-write-freeze-5.4.80.js"
+for required_release_step in \
+  "collMod: narrativeCollectionName" \
+  "validator: {}" \
+  "validationLevel: 'off'"; do
+  if ! grep -Fq "${required_release_step}" "${release_script}"; then
+    echo "The historical candidate release is missing: ${required_release_step}" >&2
     exit 1
   fi
 done

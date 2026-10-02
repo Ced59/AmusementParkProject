@@ -232,7 +232,7 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
             {
                 if (existing is not null)
                 {
-                    await processorContext.RetractCanonicalFactBeforeHistoryMutationAsync(
+                    await processorContext.RetractCanonicalResourcesBeforeHistoryMutationAsync(
                         existing,
                         cancellationToken);
                 }
