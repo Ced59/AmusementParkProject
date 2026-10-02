@@ -73,6 +73,31 @@ describe('PublicSharePanelComponent', () => {
     fixture.detectChanges();
   });
 
+  it('preserves native button and link roles in the named primary action group', () => {
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const group: HTMLElement | null = host.querySelector('.public-share-panel__actions');
+
+    expect(group?.getAttribute('role')).toBe('group');
+    expect(group?.getAttribute('aria-labelledby')).toBe('public-share-panel-title');
+    expect(group?.querySelectorAll('button').length).toBeGreaterThan(0);
+    expect(group?.querySelectorAll('a[href]').length).toBeGreaterThan(0);
+    expect(group?.querySelector('[role="listitem"]')).toBeNull();
+    expect(group?.querySelector('button[role], a[role]')).toBeNull();
+  });
+
+  it('preserves native action roles when the secondary group is opened', () => {
+    clickButton('Plus');
+    fixture.detectChanges();
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const group: HTMLElement | null = host.querySelector('.public-share-panel__secondary');
+
+    expect(group?.getAttribute('role')).toBe('group');
+    expect(group?.getAttribute('aria-labelledby')).toBe('public-share-panel-title');
+    expect(group?.querySelector('button[role], a[role]')).toBeNull();
+    expect(group?.querySelector('a[href^="mailto:"]')).not.toBeNull();
+    expect(group?.querySelector('button')).not.toBeNull();
+  });
+
   it('renders the generated QR code when the QR action succeeds', async () => {
     qrCodeService.createDataUrl.mockResolvedValue('data:image/png;base64,qr');
 
