@@ -8,7 +8,8 @@ internal sealed class HistoricalNarrativeCanonicalSourcePlanner
     internal static bool HasValidSource(HistoryEvent historyEvent)
     {
         return historyEvent.Sources.Any(static source =>
-            Uri.TryCreate(source.Url?.Trim(), UriKind.Absolute, out Uri? uri)
+            NormalizeSourceUrl(source.Url) is string normalizedUrl
+            && Uri.TryCreate(normalizedUrl, UriKind.Absolute, out Uri? uri)
             && uri.Scheme is "http" or "https");
     }
 
@@ -27,8 +28,9 @@ internal sealed class HistoricalNarrativeCanonicalSourcePlanner
         for (int index = 0; index < historyEvent.Sources.Count; index++)
         {
             HistorySourceReference source = historyEvent.Sources[index];
-            string normalizedUrl = source.Url?.Trim() ?? string.Empty;
-            if (!Uri.TryCreate(normalizedUrl, UriKind.Absolute, out Uri? uri)
+            string? normalizedUrl = NormalizeSourceUrl(source.Url);
+            if (normalizedUrl is null
+                || !Uri.TryCreate(normalizedUrl, UriKind.Absolute, out Uri? uri)
                 || uri.Scheme is not ("http" or "https"))
             {
                 warnings.Add("history-canonicalization.invalid-source");
@@ -96,6 +98,19 @@ internal sealed class HistoricalNarrativeCanonicalSourcePlanner
         }
 
         return plans.ToArray();
+    }
+
+    private static string? NormalizeSourceUrl(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        string normalized = value.Trim();
+        return normalized.Length <= HistoricalSourceReference.MaximumUrlLength
+            ? normalized
+            : null;
     }
 
     internal HistoricalSourceReference CreateRevision(

@@ -38,12 +38,16 @@ public static class HistoricalNarrativeTypeMapper
                     normalizedEventType,
                     true,
                     out ParkHistoryEventType parkEventType)
-                && parkEventType == ParkHistoryEventType.SeasonOpening,
+                && parkEventType is ParkHistoryEventType.SeasonOpening
+                    or ParkHistoryEventType.OwnershipChange
+                    or ParkHistoryEventType.Acquisition
+                    or ParkHistoryEventType.Sale,
             HistoryEntityType.ParkItem or HistoryEntityType.StandaloneAttraction => Enum.TryParse(
                     normalizedEventType,
                     true,
                     out ParkItemHistoryEventType parkItemEventType)
-                && parkItemEventType == ParkItemHistoryEventType.SeasonOpening,
+                && parkItemEventType is ParkItemHistoryEventType.SeasonOpening
+                    or ParkItemHistoryEventType.ManufacturerChange,
             _ => false,
         };
     }
@@ -89,11 +93,6 @@ public static class HistoricalNarrativeTypeMapper
             ParkHistoryEventType.LogoChange => Attribute(
                 HistoricalFactType.LogoChange,
                 HistoricalAttributeKind.Logo),
-            ParkHistoryEventType.OwnershipChange
-                or ParkHistoryEventType.Acquisition
-                or ParkHistoryEventType.Sale => Attribute(
-                    HistoricalFactType.OwnerChange,
-                    HistoricalAttributeKind.Owner),
             ParkHistoryEventType.OperatorChange => Attribute(
                 HistoricalFactType.OperatorChange,
                 HistoricalAttributeKind.Operator),
@@ -180,9 +179,6 @@ public static class HistoricalNarrativeTypeMapper
             ParkItemHistoryEventType.LogoChange => Attribute(
                 HistoricalFactType.LogoChange,
                 HistoricalAttributeKind.Logo),
-            ParkItemHistoryEventType.ManufacturerChange => Attribute(
-                HistoricalFactType.ManufacturerChange,
-                HistoricalAttributeKind.Manufacturer),
             ParkItemHistoryEventType.RelocationDeparture
                 or ParkItemHistoryEventType.RelocationArrival
                 or ParkItemHistoryEventType.Transfer

@@ -10,7 +10,9 @@ public sealed class HistoricalNarrativeTypeMapperTests
     {
         foreach (ParkHistoryEventType eventType in Enum.GetValues<ParkHistoryEventType>())
         {
-            if (eventType == ParkHistoryEventType.SeasonOpening)
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(
+                    HistoryEntityType.Park,
+                    eventType.ToString()))
             {
                 continue;
             }
@@ -30,7 +32,9 @@ public sealed class HistoricalNarrativeTypeMapperTests
     {
         foreach (ParkItemHistoryEventType eventType in Enum.GetValues<ParkItemHistoryEventType>())
         {
-            if (eventType == ParkItemHistoryEventType.SeasonOpening)
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(
+                    HistoryEntityType.ParkItem,
+                    eventType.ToString()))
             {
                 continue;
             }
@@ -84,6 +88,29 @@ public sealed class HistoricalNarrativeTypeMapperTests
         bool mapped = HistoricalNarrativeTypeMapper.TryMap(
             entityType,
             "SeasonOpening",
+            out HistoricalNarrativeTypeMapping? mapping);
+
+        Assert.True(requiresManualClassification);
+        Assert.False(mapped);
+        Assert.Null(mapping);
+    }
+
+    [Theory]
+    [InlineData(HistoryEntityType.Park, "OwnershipChange")]
+    [InlineData(HistoryEntityType.Park, "Acquisition")]
+    [InlineData(HistoryEntityType.Park, "Sale")]
+    [InlineData(HistoryEntityType.ParkItem, "ManufacturerChange")]
+    [InlineData(HistoryEntityType.StandaloneAttraction, "ManufacturerChange")]
+    public void TryMap_WhenStructuredTransitionPayloadDoesNotExist_ShouldRequireManualClassification(
+        HistoryEntityType entityType,
+        string eventType)
+    {
+        bool requiresManualClassification = HistoricalNarrativeTypeMapper.RequiresManualClassification(
+            entityType,
+            eventType);
+        bool mapped = HistoricalNarrativeTypeMapper.TryMap(
+            entityType,
+            eventType,
             out HistoricalNarrativeTypeMapping? mapping);
 
         Assert.True(requiresManualClassification);

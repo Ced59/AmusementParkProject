@@ -114,6 +114,56 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         parkItemRepository.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task MigrateExistingAsync_WhenSourceUrlExceedsDomainLimit_ShouldKeepDraftAndReportWarning()
+    {
+        Mock<IHistoricalFactRepository> factRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository =
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = CreatePublicParkRepository();
+        Mock<IParkItemRepository> parkItemRepository =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        List<HistoricalFact> writtenFacts = new List<HistoricalFact>();
+        factRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.IsAny<HistoricalFact>(),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<HistoricalFact, HistoricalReviewEvent, CancellationToken>(
+                (fact, _, _) => writtenFacts.Add(fact))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        HistoricalNarrativeCanonicalizationService service = CreateService(
+            factRepository.Object,
+            sourceRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object);
+        HistoryEvent historyEvent = CreateOpeningEvent(withSource: false);
+        historyEvent.Sources.Add(new HistorySourceReference
+        {
+            Label = "Source historique invalide",
+            Url = $"https://example.com/{new string('a', 2000)}",
+            AccessedAt = "2026-09-30",
+        });
+
+        HistoricalNarrativeCanonicalizationResult result = await service.MigrateExistingAsync(
+            historyEvent,
+            CancellationToken.None);
+
+        Assert.Equal(HistoricalNarrativeCanonicalizationState.Canonicalized, result.State);
+        Assert.Contains("history-canonicalization.invalid-source", result.Warnings);
+        Assert.Contains(
+            "history-canonicalization.publication-deferred-without-source",
+            result.Warnings);
+        HistoricalFact fact = Assert.Single(writtenFacts);
+        Assert.Equal(HistoricalPublicationState.Draft, fact.PublicationState);
+        Assert.Empty(fact.SourceReferences);
+        sourceRepository.VerifyNoOtherCalls();
+        factRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
     private static Mock<IParkRepository> CreatePublicParkRepository()
     {
         Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
