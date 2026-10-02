@@ -33,6 +33,11 @@
             "assets": [
               "src/favicon.ico",
               {
+                "glob": "*",
+                "input": "src/agent-discovery",
+                "output": "/"
+              },
+              {
                 "glob": "apple-touch-icon.png",
                 "input": "src/assets/favicon",
                 "output": "/"

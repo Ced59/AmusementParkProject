@@ -1,0 +1,19 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "AMUSEMENT-PARKS.fun",
+    "documentationUrl": "https://amusement-parks.fun/en/about"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:amusement-parks.fun:public:park-discovery",
+      "displayName": "Public amusement park discovery",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://amusement-parks.fun/agent-guide.md",
+      "description": "Find and read published amusement park pages in eight languages using the public directory or the browser's read-only WebMCP search tool.",
+      "capabilities": ["public-park-search", "localized-public-page-discovery"],
+      "representativeQueries": ["Find the published Phantasialand park page", "Find public amusement park information in Germany"],
+      "version": "1.0.0"
+    }
+  ]
+}

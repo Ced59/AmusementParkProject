@@ -15,6 +15,7 @@ import { PublicParkNavigationTreeFacade } from '@features/public/navigation/stat
 import { PublicAppLayoutComponent } from './public-app-layout.component';
 import { PublicParkNavigationTreeFacadeStub } from './test-helpers/public-app-layout.component/public-park-navigation-tree-facade-stub';
 import { TestAdminPublicViewToolbarComponent } from './test-helpers/public-app-layout.component/test-admin-public-view-toolbar-component';
+import { PublicAgentToolsService } from '@features/public/agent-discovery/public-agent-tools.service';
 
 describe('PublicAppLayoutComponent', () => {
   let authService: MockedObject<AuthService>;
@@ -53,6 +54,7 @@ describe('PublicAppLayoutComponent', () => {
       providers: [
         ...provideCommonTestDependencies(),
         AdminPublicViewModeFacade,
+        { provide: PublicAgentToolsService, useValue: { initialize: vi.fn() } },
         { provide: AuthService, useValue: authService },
         { provide: SharedService, useValue: sharedService },
         {
