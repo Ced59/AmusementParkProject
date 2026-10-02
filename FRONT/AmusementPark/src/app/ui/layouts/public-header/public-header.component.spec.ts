@@ -158,9 +158,15 @@ describe('PublicHeaderComponent', () => {
 
     expect(logoImage).not.toBeNull();
     expect(logoImage?.getAttribute('src')).toBe(
-      '/assets/general-icon/logo-amusementpark-ui.webp',
+      '/assets/general-icon/logo-amusementpark-ui-36.webp',
     );
     expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
+    expect(logoImage?.getAttribute('srcset')).toBe(
+      '/assets/general-icon/logo-amusementpark-ui-36.webp 36w, /assets/general-icon/logo-amusementpark-ui-72.webp 72w, /assets/general-icon/logo-amusementpark-ui.webp 96w',
+    );
+    expect(logoImage?.getAttribute('sizes')).toBe('(max-width: 680px) 34px, 36px');
+    expect(logoImage?.getAttribute('width')).toBe('36');
+    expect(logoImage?.getAttribute('height')).toBe('36');
   });
 
   it('renders a descriptive alt text on the selected language flag', () => {
