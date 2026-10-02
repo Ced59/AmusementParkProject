@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 61 |
+| Fiches privées existantes à intégrer | 82 | 60 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **151** |
+| **Total** | **225** | **150** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Kid Parc — `a48caf8e-871b-40cc-8b98-9faff4219e96`
 - [ ] Kingoland — `900ceb7b-7bb8-40c0-9e4a-6340d019a6d8`
 - [ ] Koaland — `a01011e8-b400-40c7-bbe2-5635d7dd24f7`
 - [ ] L'Île aux Géants — `29a2498e-9b6c-4c55-a2ac-e521dc6e4586`
