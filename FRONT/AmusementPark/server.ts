@@ -30,6 +30,7 @@ import {
 import type { SeoReadyHtmlCheckResult } from './src/app/core/ssr/robot-html-optimizer';
 import { prepareSsrRobotsResponse } from './src/app/core/ssr/ssr-robots-response';
 import { registerPublicAgentDiscoveryRoutes } from './src/server/agent-discovery/public-agent-discovery-routes';
+import { registerPublicTextSitemapRoutes } from './src/server/seo/public-text-sitemap-routes';
 import {
   detectRobotFamilyFromUserAgent,
   getRobotFamilyCategory,
@@ -545,6 +546,7 @@ export function app(): express.Express {
   server.get('/sitemaps/:fileName([A-Za-z0-9_-]+\\.xml)', redirectLegacySitemapSectionRoute);
 
   registerPublicAgentDiscoveryRoutes(server, browserDistFolder);
+  registerPublicTextSitemapRoutes(server, browserDistFolder);
 
   server.head('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
     proxySeoDocumentToApi(req, res, next, req.originalUrl);

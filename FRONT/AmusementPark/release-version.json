@@ -1,6 +1,20 @@
 {
-  "version": "5.4.70",
+  "version": "5.4.71",
   "history": [
+    {
+      "version": "5.4.71",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Amélioration de la découverte des pages publiques",
+        "en": "Improved public page discovery",
+        "de": "Verbesserte Auffindbarkeit öffentlicher Seiten",
+        "nl": "Verbeterde vindbaarheid van openbare pagina’s",
+        "it": "Migliore visibilità delle pagine pubbliche",
+        "es": "Mejora del descubrimiento de páginas públicas",
+        "pt": "Melhoria da descoberta de páginas públicas",
+        "pl": "Lepsze wykrywanie stron publicznych"
+      }
+    },
     {
       "version": "5.4.70",
       "releasedAt": "2026-10-02",

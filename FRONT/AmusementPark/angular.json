@@ -38,6 +38,11 @@
                 "output": "/"
               },
               {
+                "glob": "sitemap-static-fr.txt",
+                "input": "src/seo-discovery",
+                "output": "/"
+              },
+              {
                 "glob": "apple-touch-icon.png",
                 "input": "src/assets/favicon",
                 "output": "/"
