@@ -48,7 +48,7 @@ describe('LanguageEntryPageComponent', () => {
   it('preserves native link semantics for every language choice', () => {
     const choices: NodeListOf<HTMLAnchorElement> = fixture.nativeElement.querySelectorAll('.language-entry__choice');
 
-    for (const choice of choices) {
+    for (const choice of Array.from(choices)) {
       expect(choice.tagName).toBe('A');
       expect(choice.hasAttribute('role')).toBe(false);
       expect(choice.getAttribute('href')).toMatch(/^\/(en|fr|es|de|it|pl|nl|pt)\/home$/);
