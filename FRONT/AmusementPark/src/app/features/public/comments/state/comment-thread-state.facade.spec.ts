@@ -24,6 +24,17 @@ import { FakeTranslateService } from './test-helpers/comment-thread-state.facade
 import { FakeSsrHttpStatusService } from './test-helpers/comment-thread-state.facade/fake-ssr-http-status-service';
 
 describe('CommentThreadStateFacade', () => {
+  it('checks public author access without forcing an anonymous refresh', () => {
+    const context = createFacade();
+    const sessionSpy = vi.spyOn(context.authService, 'ensureValidAccessToken');
+
+    context.facade.initializeAuthorAccess();
+
+    expect(sessionSpy).toHaveBeenCalledWith(false);
+    expect(context.facade.canWrite()).toBe(false);
+    expect(context.facade.canManage()).toBe(false);
+  });
+
   it('sorts the official review before newer regular comments', () => {
     const context = createFacade();
 

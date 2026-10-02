@@ -1,6 +1,20 @@
 {
-  "version": "5.4.47",
+  "version": "5.4.48",
   "history": [
+    {
+      "version": "5.4.48",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "La consultation des pages publiques est plus fluide.",
+        "en": "Public pages are smoother to browse.",
+        "de": "Öffentliche Seiten lassen sich flüssiger ansehen.",
+        "nl": "Openbare pagina’s zijn soepeler te bekijken.",
+        "it": "La consultazione delle pagine pubbliche è più fluida.",
+        "es": "La navegación por las páginas públicas es más fluida.",
+        "pt": "A consulta das páginas públicas está mais fluida.",
+        "pl": "Przeglądanie stron publicznych jest płynniejsze."
+      }
+    },
     {
       "version": "5.4.47",
       "releasedAt": "2026-10-02",
