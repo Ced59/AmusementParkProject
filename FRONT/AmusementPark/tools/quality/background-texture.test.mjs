@@ -8,7 +8,7 @@ test('decorative noise rasterization stays bounded independently of the viewport
   const source = readFileSync(resolve(import.meta.dirname, '../../src/styles/_base.scss'), 'utf8');
   const { css } = compileString(source);
   const rule = css.match(/body::after\s*\{([^}]+)\}/)[1];
-  const svg = decodeURIComponent(rule.match(/url\("data:image\/svg\+xml,([^"\)]+)"\)/)[1]);
+  const svg = decodeURIComponent(rule.match(/url\("data:image\/svg\+xml,([^"]+)"\)/)[1]);
   const width = Number(svg.match(/<svg\s[^>]*width='(\d+)'/)[1]);
   const height = Number(svg.match(/<svg\s[^>]*height='(\d+)'/)[1]);
   assert.ok(width > 0 && height > 0 && width * height <= 16384);
