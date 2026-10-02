@@ -13,14 +13,14 @@ namespace AmusementPark.Application.Features.Parks.Handlers;
 public sealed class GetParkDetailSummaryQueryHandler : IQueryHandler<GetParkDetailSummaryQuery, ApplicationResult<ParkDetailSummaryResult>>
 {
     private readonly IParkDetailSummaryReadRepository repository;
-    private readonly IHistoricalParkRolloutGateAccessService historicalRolloutGate;
+    private readonly IHistoricalParkPublicTimelineAccessService historicalTimelineAccess;
 
     public GetParkDetailSummaryQueryHandler(
         IParkDetailSummaryReadRepository repository,
-        IHistoricalParkRolloutGateAccessService historicalRolloutGate)
+        IHistoricalParkPublicTimelineAccessService historicalTimelineAccess)
     {
         this.repository = repository;
-        this.historicalRolloutGate = historicalRolloutGate;
+        this.historicalTimelineAccess = historicalTimelineAccess;
     }
 
     public async Task<ApplicationResult<ParkDetailSummaryResult>> HandleAsync(GetParkDetailSummaryQuery query, CancellationToken cancellationToken = default)
@@ -37,7 +37,7 @@ public sealed class GetParkDetailSummaryQueryHandler : IQueryHandler<GetParkDeta
         }
 
         summary.HasPublicHistory = summary.Park.IsVisible == true
-            && await this.historicalRolloutGate.IsOpenAsync(summary.Park.Id, cancellationToken);
+            && await this.historicalTimelineAccess.IsAvailableAsync(summary.Park.Id, cancellationToken);
         return ApplicationResult<ParkDetailSummaryResult>.Success(summary);
     }
 }

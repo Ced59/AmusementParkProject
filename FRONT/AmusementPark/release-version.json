@@ -1,6 +1,20 @@
 {
-  "version": "5.4.71",
+  "version": "5.4.72",
   "history": [
+    {
+      "version": "5.4.72",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "L’histoire des parcs déjà renseignée redevient accessible",
+        "en": "Existing park history is accessible again",
+        "de": "Bereits erfasste Parkgeschichte ist wieder zugänglich",
+        "nl": "Bestaande parkgeschiedenis is weer toegankelijk",
+        "it": "La storia dei parchi già presente è di nuovo accessibile",
+        "es": "La historia existente de los parques vuelve a estar accesible",
+        "pt": "A história já existente dos parques volta a estar acessível",
+        "pl": "Istniejąca historia parków jest ponownie dostępna"
+      }
+    },
     {
       "version": "5.4.71",
       "releasedAt": "2026-10-02",

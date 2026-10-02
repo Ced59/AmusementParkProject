@@ -7,6 +7,42 @@
   list-style: none;
 }
 
+.history-review-notice {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  min-width: 0;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--app-accent-gold) 46%, var(--app-border));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-accent-gold) 7%, var(--app-surface));
+}
+
+.history-review-notice > i {
+  margin-top: 0.15rem;
+  color: var(--app-accent-gold);
+}
+
+.history-review-notice span,
+.history-review-notice strong,
+.history-review-notice small {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.history-review-notice strong {
+  color: var(--app-heading);
+}
+
+.history-review-notice small {
+  margin-top: 0.3rem;
+  color: var(--app-text-muted);
+  line-height: 1.5;
+}
+
 .canonical-history-event {
   display: grid;
   grid-template-columns: 2.25rem minmax(0, 1fr);

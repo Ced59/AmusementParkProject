@@ -6,4 +6,5 @@ namespace AmusementPark.Application.Features.History.Results;
 public sealed record PublicParkHistoricalTimelineResult(
     Park Park,
     PagedResult<PublicHistoricalTimelineEntryResult> Page,
-    IReadOnlyDictionary<string, string> ZoneNames);
+    IReadOnlyDictionary<string, string> ZoneNames,
+    bool HasDecisionSnapshots);

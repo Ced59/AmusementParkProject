@@ -92,6 +92,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IHistoricalParkRolloutGateAssessmentService, HistoricalParkRolloutGateAssessmentService>();
         services.AddScoped<PublicParkHistoricalDataLoader>();
         services.AddScoped<IHistoricalParkRolloutGateAccessService, HistoricalParkRolloutGateAccessService>();
+        services.AddScoped<IHistoricalParkPublicTimelineAccessService, HistoricalParkPublicTimelineAccessService>();
         services.AddScoped<LiveTargetReferenceResolver>();
         services.AddScoped<ILiveLatestObservationIngestor, LiveLatestObservationIngestor>();
         services.AddScoped<LiveQualityIncidentReplayService>();

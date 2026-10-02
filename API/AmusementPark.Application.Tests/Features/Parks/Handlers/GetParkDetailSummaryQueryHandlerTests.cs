@@ -18,7 +18,7 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
     public async Task HandleAsync_WhenParkIdIsBlank_ShouldFailWithoutCallingRepository()
     {
         FakeParkDetailSummaryReadRepository repository = new FakeParkDetailSummaryReadRepository();
-        GetParkDetailSummaryQueryHandler handler = new GetParkDetailSummaryQueryHandler(repository, Mock.Of<IHistoricalParkRolloutGateAccessService>());
+        GetParkDetailSummaryQueryHandler handler = new GetParkDetailSummaryQueryHandler(repository, Mock.Of<IHistoricalParkPublicTimelineAccessService>());
 
         ApplicationResult<ParkDetailSummaryResult> result = await handler.HandleAsync(new GetParkDetailSummaryQuery("   "));
 
@@ -45,7 +45,7 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
         {
             Summary = summary
         };
-        GetParkDetailSummaryQueryHandler handler = new GetParkDetailSummaryQueryHandler(repository, Mock.Of<IHistoricalParkRolloutGateAccessService>());
+        GetParkDetailSummaryQueryHandler handler = new GetParkDetailSummaryQueryHandler(repository, Mock.Of<IHistoricalParkPublicTimelineAccessService>());
 
         ApplicationResult<ParkDetailSummaryResult> result = await handler.HandleAsync(new GetParkDetailSummaryQuery(" park-1 ", true));
 
@@ -58,7 +58,7 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
     public async Task HandleAsync_WhenSummaryDoesNotExist_ShouldFail()
     {
         FakeParkDetailSummaryReadRepository repository = new FakeParkDetailSummaryReadRepository();
-        GetParkDetailSummaryQueryHandler handler = new GetParkDetailSummaryQueryHandler(repository, Mock.Of<IHistoricalParkRolloutGateAccessService>());
+        GetParkDetailSummaryQueryHandler handler = new GetParkDetailSummaryQueryHandler(repository, Mock.Of<IHistoricalParkPublicTimelineAccessService>());
 
         ApplicationResult<ParkDetailSummaryResult> result = await handler.HandleAsync(new GetParkDetailSummaryQuery("park-404"));
 
@@ -70,8 +70,8 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
     [InlineData(true, true, true)]
     [InlineData(true, false, false)]
     [InlineData(false, true, false)]
-    public async Task HandleAsync_ShouldExposeHistoryOnlyForVisibleParksWithAnOpenRolloutGate(
-        bool isVisible, bool isGateOpen, bool expectedAvailability)
+    public async Task HandleAsync_ShouldExposeHistoryOnlyForVisibleParksWithAPublicTimeline(
+        bool isVisible, bool isTimelineAvailable, bool expectedAvailability)
     {
         Park park = CreatePark("park-1");
         park.IsVisible = isVisible;
@@ -79,18 +79,25 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
         {
             Summary = new ParkDetailSummaryResult { Park = park }
         };
-        Mock<IHistoricalParkRolloutGateAccessService> gate = new Mock<IHistoricalParkRolloutGateAccessService>(MockBehavior.Strict);
+        Mock<IHistoricalParkPublicTimelineAccessService> timelineAccess =
+            new Mock<IHistoricalParkPublicTimelineAccessService>(MockBehavior.Strict);
         if (isVisible)
         {
-            gate.Setup(value => value.IsOpenAsync("park-1", CancellationToken.None)).ReturnsAsync(isGateOpen);
+            timelineAccess
+                .Setup(value => value.IsAvailableAsync("park-1", CancellationToken.None))
+                .ReturnsAsync(isTimelineAvailable);
         }
-        GetParkDetailSummaryQueryHandler handler = new GetParkDetailSummaryQueryHandler(repository, gate.Object);
+        GetParkDetailSummaryQueryHandler handler = new GetParkDetailSummaryQueryHandler(
+            repository,
+            timelineAccess.Object);
 
         ApplicationResult<ParkDetailSummaryResult> result = await handler.HandleAsync(new GetParkDetailSummaryQuery("park-1", true));
 
         Assert.True(result.IsSuccess);
         Assert.Equal(expectedAvailability, result.Value!.HasPublicHistory);
-        gate.Verify(value => value.IsOpenAsync("park-1", CancellationToken.None), isVisible ? Times.Once() : Times.Never());
+        timelineAccess.Verify(
+            value => value.IsAvailableAsync("park-1", CancellationToken.None),
+            isVisible ? Times.Once() : Times.Never());
     }
 
     private static Park CreatePark(string id)

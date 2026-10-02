@@ -6694,6 +6694,8 @@
       "kicker": "Gedächtnis des Parks",
       "timelineTitle": "Die Geschichte von {{park}}",
       "timelineDescription": "Verfolge die Veränderungen des Parks mit Belegstufe und Quellen in zeitlicher Reihenfolge.",
+      "pendingReviewTitle": "Geschichte wird geprüft",
+      "pendingReviewMessage": "Diese Ereignisse stammen aus der bereits veröffentlichten Geschichte. Sie bleiben während der Prüfung ihrer Belege sichtbar; Jahresrekonstruktionen und Vergleiche werden nach der Bestätigung verfügbar.",
       "chooseYear": "Jahr erkunden",
       "exploreYear": "Diese Zeit ansehen",
       "unknownDate": "Datum unbekannt",

@@ -96,7 +96,11 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
   protected openYear(): void {
     const currentTimeline: PublicParkHistoricalTimeline | undefined = this.timeline();
     const year: number = Number(this.requestedYear);
-    if (!currentTimeline || !Number.isInteger(year) || year < 1000 || year > 9999) {
+    if (!currentTimeline
+      || !currentTimeline.hasDecisionSnapshots
+      || !Number.isInteger(year)
+      || year < 1000
+      || year > 9999) {
       return;
     }
 
@@ -132,8 +136,18 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
     entry: PublicHistoricalTimelineEntry,
     timeline: PublicParkHistoricalTimeline
   ): string[] | null {
+    if (!timeline.hasDecisionSnapshots || entry.evidenceState === 'Unverified') {
+      return null;
+    }
+
     const year: number | undefined = entry.period.start?.year ?? entry.period.end?.year;
     return year ? [...this.historyBaseLink(timeline), String(year)] : null;
+  }
+
+  protected hasPendingReviewEntries(timeline: PublicParkHistoricalTimeline): boolean {
+    return timeline.events.some(
+      (entry: PublicHistoricalTimelineEntry): boolean => entry.evidenceState === 'Unverified'
+    );
   }
 
   protected lineageLink(
@@ -258,6 +272,7 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
         articleLink: this.narrativeLink(entry, timeline),
         sourceCount: entry.sources.length,
         positionPercent: 0,
+        isDecisionEligible: entry.evidenceState !== 'Unverified',
         isFirstInYear: index === 0
           || (timeline.events[index - 1]?.period.start?.year ?? timeline.events[index - 1]?.period.end?.year ?? 1)
             !== (entry.period.start?.year ?? entry.period.end?.year ?? 1)
@@ -286,7 +301,8 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
       pagination: timeline.pagination,
       pageRanges: [pageRange],
       yearStart: pageRange.startYear,
-      yearEnd: pageRange.endYear
+      yearEnd: pageRange.endYear,
+      hasDecisionSnapshots: timeline.hasDecisionSnapshots
     };
   }
 }

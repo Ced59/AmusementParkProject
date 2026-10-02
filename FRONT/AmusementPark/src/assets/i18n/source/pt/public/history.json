@@ -5,7 +5,7 @@
       "loadingTitle": "A carregar a história", "loadingMessage": "Os acontecimentos documentados estão a ser carregados.", "loadingSnapshotMessage": "O parque dessa época está a ser reconstituído.",
       "errorTitle": "História indisponível", "errorMessage": "Não foi possível carregar estas informações históricas neste momento.",
       "breadcrumbAria": "Navegação histórica", "home": "Início", "parks": "Parques", "history": "História",
-      "kicker": "Memória do parque", "timelineTitle": "A história de {{park}}", "timelineDescription": "Percorre as mudanças do parque por ordem, com o respetivo nível de prova e fontes.",
+      "kicker": "Memória do parque", "timelineTitle": "A história de {{park}}", "timelineDescription": "Percorre as mudanças do parque por ordem, com o respetivo nível de prova e fontes.", "pendingReviewTitle": "História em verificação", "pendingReviewMessage": "Estes eventos provêm da história pública existente. Continuam disponíveis enquanto as provas são verificadas; as reconstruções por ano e as comparações ficarão disponíveis após a validação.",
       "chooseYear": "Explora um ano", "exploreYear": "Ver esta época", "unknownDate": "Data desconhecida", "approximateDate": "Por volta de {{date}}",
       "datePeriod": "De {{start}} a {{end}}", "dateFrom": "Desde {{date}}", "dateUntil": "Até {{date}}",
       "dateQualifiers": { "Early": "Início de {{date}}", "Mid": "Meados de {{date}}", "Late": "Fim de {{date}}", "Before": "Antes de {{date}}", "After": "Depois de {{date}}", "Circa": "Por volta de {{date}}" },

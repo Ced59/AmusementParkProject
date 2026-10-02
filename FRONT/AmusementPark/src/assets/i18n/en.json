@@ -6694,6 +6694,8 @@
       "kicker": "Park memory",
       "timelineTitle": "The history of {{park}}",
       "timelineDescription": "Follow the park's changes in order, together with their evidence level and sources.",
+      "pendingReviewTitle": "History under review",
+      "pendingReviewMessage": "These events come from the existing public history. They remain available while their evidence is reviewed; yearly reconstructions and comparisons will become available after validation.",
       "chooseYear": "Explore a year",
       "exploreYear": "View this era",
       "unknownDate": "Unknown date",

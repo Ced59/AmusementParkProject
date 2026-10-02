@@ -9,6 +9,43 @@ public sealed class HistoricalFactEvidenceValidatorTests
         new DateTime(2026, 9, 26, 10, 0, 0, DateTimeKind.Utc);
 
     [Fact]
+    public void FilterPublicTimelineSources_WhenLegacyPublishedSourceIsStillPendingReview_ShouldKeepSourceVisible()
+    {
+        HistoricalSourceReference legacySource = new HistoricalSourceReference(
+            Guid.NewGuid(),
+            1,
+            HistoricalSourceType.OfficialWebsite,
+            "Historique public migré",
+            "Parc exemple",
+            "https://example.com/history",
+            null,
+            new DateOnly(2001, 1, 1),
+            new DateOnly(2026, 9, 25),
+            "fr",
+            null,
+            new[]
+            {
+                HistoricalSourceScope.SubjectIdentity,
+                HistoricalSourceScope.HistoricalLabel,
+                HistoricalSourceScope.FactType,
+                HistoricalSourceScope.Period,
+            },
+            null,
+            HistoricalSourceAccessibility.Accessible,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            RecordedAtUtc,
+            HistoricalRevisionOrigin.LegacyMigration);
+
+        IReadOnlyCollection<HistoricalSourceReference> publicSources =
+            HistoricalFactEvidenceValidator.FilterPublicTimelineSources(
+                new[] { legacySource },
+                new[] { legacySource });
+
+        Assert.Same(legacySource, Assert.Single(publicSources));
+    }
+
+    [Fact]
     public void Validate_WhenExactPublishedEvidenceCoversFact_ShouldAcceptEvidence()
     {
         Guid sourceId = Guid.NewGuid();

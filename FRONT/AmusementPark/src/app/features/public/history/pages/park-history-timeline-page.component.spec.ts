@@ -14,6 +14,11 @@ interface TimelineSeoHarness {
     entry: PublicHistoricalTimelineEntry,
     timeline: PublicParkHistoricalTimeline
   ) => string[] | null;
+  snapshotLink: (
+    entry: PublicHistoricalTimelineEntry,
+    timeline: PublicParkHistoricalTimeline
+  ) => string[] | null;
+  hasPendingReviewEntries: (timeline: PublicParkHistoricalTimeline) => boolean;
   translateService: { instant: (key: string) => string };
   toSeoViewModel: (timeline: PublicParkHistoricalTimeline) => HistoryTimelinePageViewModel;
 }
@@ -28,6 +33,7 @@ describe('park history timeline page SEO model', () => {
     const timeline: PublicParkHistoricalTimeline = {
       parkId: 'park-1',
       parkName: 'Parc test',
+      hasDecisionSnapshots: true,
       events: [entry],
       pagination: { currentPage: 1, itemsPerPage: 25, totalItems: 1, totalPages: 1 }
     };
@@ -44,6 +50,54 @@ describe('park history timeline page SEO model', () => {
     const viewModel: HistoryTimelinePageViewModel = harness.toSeoViewModel(timeline);
 
     expect(viewModel.events[0]?.articleLink).toEqual(articleLink);
+  });
+
+  it('does not link unreviewed legacy events to decision snapshots', () => {
+    const entry: PublicHistoricalTimelineEntry = createEntry();
+    const timeline: PublicParkHistoricalTimeline = {
+      parkId: 'park-1',
+      parkName: 'Parc test',
+      hasDecisionSnapshots: true,
+      events: [entry],
+      pagination: { currentPage: 1, itemsPerPage: 25, totalItems: 1, totalPages: 1 }
+    };
+    const harness: TimelineSeoHarness = Object.create(
+      ParkHistoryTimelinePageComponent.prototype
+    ) as unknown as TimelineSeoHarness;
+    entry.evidenceState = 'Unverified';
+
+    expect(harness.snapshotLink(entry, timeline)).toBeNull();
+  });
+
+  it('keeps the pending-review warning on mixed timelines and excludes the legacy event from SEO facts', () => {
+    const reviewedEntry: PublicHistoricalTimelineEntry = createEntry();
+    const pendingEntry: PublicHistoricalTimelineEntry = {
+      ...createEntry(),
+      subjectId: 'item-2',
+      evidenceState: 'Unverified'
+    };
+    const timeline: PublicParkHistoricalTimeline = {
+      parkId: 'park-1',
+      parkName: 'Parc test',
+      hasDecisionSnapshots: true,
+      events: [reviewedEntry, pendingEntry],
+      pagination: { currentPage: 1, itemsPerPage: 25, totalItems: 2, totalPages: 1 }
+    };
+    const harness: TimelineSeoHarness = Object.create(
+      ParkHistoryTimelinePageComponent.prototype
+    ) as unknown as TimelineSeoHarness;
+    harness.eventKey = (entry: PublicHistoricalTimelineEntry): string => entry.subjectId;
+    harness.uncertainty = (): null => null;
+    harness.eventDate = (): string => '1998';
+    harness.factTypeLabel = (): string => 'Ouverture';
+    harness.narrativeLink = (): null => null;
+    harness.translateService = { instant: (key: string): string => key };
+
+    const viewModel: HistoryTimelinePageViewModel = harness.toSeoViewModel(timeline);
+
+    expect(harness.hasPendingReviewEntries(timeline)).toBe(true);
+    expect(viewModel.hasDecisionSnapshots).toBe(true);
+    expect(viewModel.events.map((entry) => entry.isDecisionEligible)).toEqual([true, false]);
   });
 });
 

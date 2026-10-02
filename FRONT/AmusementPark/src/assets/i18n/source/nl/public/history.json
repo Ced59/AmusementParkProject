@@ -5,7 +5,7 @@
       "loadingTitle": "Geschiedenis laden", "loadingMessage": "De gedocumenteerde gebeurtenissen worden geladen.", "loadingSnapshotMessage": "Het park op dit moment wordt gereconstrueerd.",
       "errorTitle": "Geschiedenis niet beschikbaar", "errorMessage": "Deze historische informatie kan momenteel niet worden geladen.",
       "breadcrumbAria": "Historisch kruimelpad", "home": "Home", "parks": "Parken", "history": "Geschiedenis",
-      "kicker": "Geheugen van het park", "timelineTitle": "De geschiedenis van {{park}}", "timelineDescription": "Volg de veranderingen van het park in volgorde, met bewijsniveau en bronnen.",
+      "kicker": "Geheugen van het park", "timelineTitle": "De geschiedenis van {{park}}", "timelineDescription": "Volg de veranderingen van het park in volgorde, met bewijsniveau en bronnen.", "pendingReviewTitle": "Geschiedenis wordt gecontroleerd", "pendingReviewMessage": "Deze gebeurtenissen komen uit de bestaande openbare geschiedenis. Ze blijven zichtbaar terwijl de bewijzen worden gecontroleerd; reconstructies per jaar en vergelijkingen worden daarna beschikbaar.",
       "chooseYear": "Verken een jaar", "exploreYear": "Bekijk dit tijdperk", "unknownDate": "Datum onbekend", "approximateDate": "Rond {{date}}",
       "datePeriod": "Van {{start}} tot {{end}}", "dateFrom": "Sinds {{date}}", "dateUntil": "Tot {{date}}",
       "dateQualifiers": { "Early": "Begin {{date}}", "Mid": "Midden {{date}}", "Late": "Eind {{date}}", "Before": "Vóór {{date}}", "After": "Na {{date}}", "Circa": "Rond {{date}}" },

@@ -188,6 +188,69 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildLatestPublicTimelineForParkPipeline_ShouldKeepReviewedAndLegacyPublishedFactsDistinct()
+    {
+        HistoricalSubject currentPark = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+
+        BsonDocument[] pipeline = HistoricalFactRepository
+            .BuildLatestPublicTimelineForParkPipeline(
+                "park-1",
+                new[] { currentPark },
+                "historical-facts")
+            .ToArray();
+
+        BsonArray conditions = pipeline[6]["$match"]["$and"].AsBsonArray;
+        BsonArray lifecycleAlternatives = conditions[0]["$or"].AsBsonArray;
+        Assert.Contains(
+            lifecycleAlternatives,
+            alternative => alternative["publicationState"]
+                == HistoricalPublicationState.Published.ToString());
+        Assert.Contains(
+            lifecycleAlternatives,
+            alternative => alternative["publicationState"]
+                    == HistoricalPublicationState.LegacyPublishedPendingReview.ToString()
+                && alternative["state"] == HistoricalFactState.Unverified.ToString()
+                && alternative["revisionOrigin"] == HistoricalRevisionOrigin.LegacyMigration.ToString());
+        BsonArray publicSubjects = conditions[1]["$or"].AsBsonArray;
+        Assert.Contains(
+            publicSubjects,
+            filter => filter.AsBsonDocument.GetValue("subject.id", BsonNull.Value) == "park-1");
+    }
+
+    [Fact]
+    public void BuildLatestLegacyPublicTimelineForParkPipeline_ShouldExcludeOrdinaryPublishedFacts()
+    {
+        HistoricalSubject currentPark = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+
+        BsonDocument[] pipeline = HistoricalFactRepository
+            .BuildLatestLegacyPublicTimelineForParkPipeline(
+                "park-1",
+                new[] { currentPark },
+                "historical-facts")
+            .ToArray();
+
+        BsonDocument lifecycleFilter = pipeline[6]["$match"].AsBsonDocument;
+        Assert.Equal(
+            HistoricalPublicationState.LegacyPublishedPendingReview.ToString(),
+            lifecycleFilter["publicationState"].AsString);
+        Assert.Equal(HistoricalFactState.Unverified.ToString(), lifecycleFilter["state"].AsString);
+        Assert.Equal(
+            HistoricalRevisionOrigin.LegacyMigration.ToString(),
+            lifecycleFilter["revisionOrigin"].AsString);
+        Assert.True(lifecycleFilter.Contains("$or"));
+    }
+
+    [Fact]
     public void BuildParkCandidateScopeFilter_ShouldFindCurrentAndDurablyScopedFactChains()
     {
         HistoricalSubject currentPark = new HistoricalSubject(

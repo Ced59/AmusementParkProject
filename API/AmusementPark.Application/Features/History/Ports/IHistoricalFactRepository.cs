@@ -40,4 +40,16 @@ public interface IHistoricalFactRepository
         int page,
         int pageSize,
         CancellationToken cancellationToken);
+
+    Task<PagedResult<HistoricalFact>> GetLatestPublicTimelineRevisionsForParkPageAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
+        int page,
+        int pageSize,
+        CancellationToken cancellationToken);
+
+    Task<bool> HasLatestLegacyPublicTimelineRevisionForParkAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
+        CancellationToken cancellationToken);
 }

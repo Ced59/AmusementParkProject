@@ -8,6 +8,7 @@ describe('history narrative link', () => {
   const timeline: PublicParkHistoricalTimeline = {
     parkId: 'park-1',
     parkName: 'Parc Astérix',
+    hasDecisionSnapshots: true,
     events: [],
     pagination: { currentPage: 1, itemsPerPage: 25, totalItems: 1, totalPages: 1 }
   };

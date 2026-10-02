@@ -996,6 +996,42 @@ describe('SeoService', () => {
     expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
   });
 
+  it('keeps migrated pending-review timelines out of the search index even with several events', () => {
+    service.applyHistoryTimelineSeo(
+      buildHistoryTimeline({ hasDecisionSnapshots: false }),
+      'fr',
+      '/fr/park/park-1/mirapolis/history',
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+  });
+
+  it('excludes pending-review events from structured data on a reviewed mixed timeline', () => {
+    const timeline: HistoryTimelinePageViewModel = buildHistoryTimeline();
+    service.applyHistoryTimelineSeo(
+      buildHistoryTimeline({
+        hasDecisionSnapshots: true,
+        events: [
+          { ...timeline.events[0], isDecisionEligible: false },
+          { ...timeline.events[1], isDecisionEligible: true },
+        ],
+      }),
+      'fr',
+      '/fr/park/park-1/mirapolis/history',
+    );
+
+    const itemList: Record<string, unknown> | undefined = readJsonLdScripts().find(
+      (entry: Record<string, unknown>): boolean => entry['@type'] === 'ItemList',
+    );
+    const items: Array<Record<string, unknown>> = itemList?.['itemListElement'] as Array<Record<string, unknown>>;
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(itemList?.['numberOfItems']).toBe(1);
+    expect(items).toHaveLength(1);
+    expect(items[0]?.['name']).toBe(timeline.events[1]?.title);
+  });
+
   it('keeps exploratory historical lineages canonical but outside the search index', () => {
     service.applyHistoricalLineageSeo(
       'Liens historiques de l’attraction',
