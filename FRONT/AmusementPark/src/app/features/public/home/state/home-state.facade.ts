@@ -21,6 +21,7 @@ import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { mapArray, mapParkToCardModel } from '@shared/utils/mapping';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { PublicViewTransferState } from '@core/performance/public-view-transfer-state';
 import { mapHomeFeaturedParkToCardModel } from '../mappers/home-featured-park.mapper';
 
 import {
@@ -80,7 +81,8 @@ export class HomeStateFacade {
     @Inject(HOME_STATE_HOME_API_SERVICE_PORT) private readonly homeApiService: HomeStateHomeApiServicePort,
     private readonly textTruncator: NaturalTextTruncatorService,
     private readonly countryDisplayService: CountryDisplayService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly publicViewTransferState: PublicViewTransferState
   ) {
     this.searchStateStore.setReady({
       results: [],
@@ -105,16 +107,25 @@ export class HomeStateFacade {
   }
 
   loadFeaturedParks(currentLanguage: string): void {
+    const transferKey: string = `home.hero.v1:${currentLanguage}`;
+    const transferred: HomeHeroParksViewModel | undefined = this.publicViewTransferState.consume<HomeHeroParksViewModel>(transferKey);
+    if (transferred !== undefined) {
+      this.setHeroParks(transferred.parks);
+      this.loadHomeFeaturedParks(currentLanguage, transferred.parks.map((park: ParkCardModel) => park.id).filter((parkId: string | null): parkId is string => !!parkId));
+      return;
+    }
+
     const previousHeroData: HomeHeroParksViewModel | undefined = this.heroParksStateStore.data();
     const previousFeaturedData: HomeFeaturedViewModel | undefined = this.featuredStateStore.data();
 
     this.heroParksStateStore.setLoading(previousHeroData);
     this.featuredStateStore.setLoading(previousFeaturedData);
 
-    this.parksApiService.getRandomVisibleParks(4, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getRandomVisibleParks(4, { ...anonymousHttpOptions(), transferCache: false }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: Park[]) => {
         const heroParks: ParkCardModel[] = mapArray(response, (park: Park) =>
           mapParkToCardModel(park, currentLanguage, this.countryDisplayService, this.textTruncator));
+        this.publicViewTransferState.store<HomeHeroParksViewModel>(transferKey, { parks: heroParks });
         this.setHeroParks(heroParks);
         this.loadHomeFeaturedParks(currentLanguage, heroParks.map((park: ParkCardModel) => park.id).filter((parkId: string | null): parkId is string => !!parkId));
       },
@@ -190,25 +201,35 @@ export class HomeStateFacade {
   }
 
   private loadHomeFeaturedParks(currentLanguage: string, excludedParkIds: readonly string[]): void {
+    const transferKey: string = `home.featured.v1:${currentLanguage}:${excludedParkIds.join(',')}`;
+    const transferred: HomeFeaturedViewModel | undefined = this.publicViewTransferState.consume<HomeFeaturedViewModel>(transferKey);
+    if (transferred !== undefined) {
+      this.setFeaturedParks(transferred.parks);
+      return;
+    }
+
     const previousData: HomeFeaturedViewModel | undefined = this.featuredStateStore.data();
 
-    this.homeApiService.getFeaturedParks(excludedParkIds, 3, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.homeApiService.getFeaturedParks(excludedParkIds, 3, { ...anonymousHttpOptions(), transferCache: false }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: HomeFeaturedParkModel[]) => {
         const parks: HomeFeaturedParkCardModel[] = response.map((park: HomeFeaturedParkModel, index: number) =>
           mapHomeFeaturedParkToCardModel(park, currentLanguage, this.textTruncator, index, this.countryDisplayService));
-        const viewModel: HomeFeaturedViewModel = { parks };
-
-        if (parks.length === 0) {
-          this.featuredStateStore.setEmpty(viewModel);
-          return;
-        }
-
-        this.featuredStateStore.setReady(viewModel);
+        this.publicViewTransferState.store<HomeFeaturedViewModel>(transferKey, { parks });
+        this.setFeaturedParks(parks);
       },
       error: (error: unknown) => {
         console.error('Error loading featured parks', error);
         this.featuredStateStore.setError('home.featured.errorMessage', previousData);
       }
     });
+  }
+
+  private setFeaturedParks(parks: HomeFeaturedParkCardModel[]): void {
+    const viewModel: HomeFeaturedViewModel = { parks };
+    if (parks.length === 0) {
+      this.featuredStateStore.setEmpty(viewModel);
+      return;
+    }
+    this.featuredStateStore.setReady(viewModel);
   }
 }

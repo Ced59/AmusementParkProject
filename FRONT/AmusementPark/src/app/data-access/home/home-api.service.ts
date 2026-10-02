@@ -10,6 +10,7 @@ import { HOME_API_ENDPOINTS } from './home-api-endpoints';
 
 interface HomeHttpOptions {
   context?: HttpContext;
+  transferCache?: boolean;
 }
 
 @Injectable({

@@ -51,6 +51,7 @@ interface ParkWriteRequest {
 
 interface ParksHttpOptions {
   context?: HttpContext;
+  transferCache?: boolean;
   closedFilter?: ClosedEntityFilter;
   audienceClassificationFilter?: ParkAudienceClassificationFilter | null;
   sort?: ParkAdminListSort;
