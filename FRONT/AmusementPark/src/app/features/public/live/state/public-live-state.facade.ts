@@ -74,7 +74,6 @@ export class PublicLiveStateFacade {
     this.currentTargetId = targetId;
     this.stateSignal.set({
       ...INITIAL_PUBLIC_LIVE_VIEW_STATE,
-      kind: 'loading',
       mode,
       isOnline: navigator.onLine
     });
