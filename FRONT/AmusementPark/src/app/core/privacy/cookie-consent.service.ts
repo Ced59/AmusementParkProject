@@ -13,6 +13,8 @@ export class CookieConsentService {
   private readonly isBrowser: boolean;
   private readonly decisionState: WritableSignal<CookieConsentDecision | null> = signal<CookieConsentDecision | null>(null);
 
+  public readonly isConsentRequired: boolean = environment.analytics.consentBannerEnabled &&
+    (environment.analytics.matomoRequireConsent || environment.analytics.clarityEnabled);
   public readonly decision: Signal<CookieConsentDecision | null> = this.decisionState.asReadonly();
   public readonly hasAcceptedOptionalCookies: Signal<boolean> = computed((): boolean => this.decisionState() === 'accepted');
   public readonly isBannerVisible: Signal<boolean> = computed((): boolean => {
@@ -249,8 +251,6 @@ export class CookieConsentService {
   }
 
   private isCookieBannerEnabled(): boolean {
-    return this.isBrowser &&
-      environment.analytics.consentBannerEnabled &&
-      (environment.analytics.matomoRequireConsent || environment.analytics.clarityEnabled);
+    return this.isBrowser && this.isConsentRequired;
   }
 }

@@ -1,6 +1,20 @@
 {
-  "version": "5.4.45",
+  "version": "5.4.46",
   "history": [
+    {
+      "version": "5.4.46",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "L’affichage initial des pages publiques est plus rapide.",
+        "en": "Public pages now display sooner on the first visit.",
+        "de": "Öffentliche Seiten werden beim ersten Besuch schneller angezeigt.",
+        "nl": "Openbare pagina’s verschijnen sneller bij het eerste bezoek.",
+        "it": "Le pagine pubbliche si mostrano più rapidamente alla prima visita.",
+        "es": "Las páginas públicas se muestran antes en la primera visita.",
+        "pt": "As páginas públicas aparecem mais rapidamente na primeira visita.",
+        "pl": "Strony publiczne wyświetlają się szybciej przy pierwszej wizycie."
+      }
+    },
     {
       "version": "5.4.45",
       "releasedAt": "2026-10-02",

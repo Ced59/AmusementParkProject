@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, WritableSignal, signal } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, computed, DestroyRef, OnInit, Signal, WritableSignal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,7 +16,14 @@ import { resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized
   imports: [RouterLink, TranslateModule]
 })
 export class CookieConsentBannerComponent implements OnInit {
-  protected readonly isVisible: Signal<boolean> = this.cookieConsentService.isBannerVisible;
+  private readonly clientStateReady: WritableSignal<boolean> = signal<boolean>(false);
+  protected readonly isVisible: Signal<boolean> = computed((): boolean => {
+    // Keep the initial server and browser DOM identical. Restore the visitor's
+    // existing choice after hydration without adding a late first-visit banner.
+    return this.clientStateReady()
+      ? this.cookieConsentService.isBannerVisible()
+      : this.cookieConsentService.isConsentRequired;
+  });
   protected readonly currentLanguage: WritableSignal<string> = signal<string>('en');
 
   constructor(
@@ -25,6 +32,9 @@ export class CookieConsentBannerComponent implements OnInit {
     private readonly translationService: TranslationService,
     private readonly destroyRef: DestroyRef
   ) {
+    afterNextRender((): void => {
+      this.clientStateReady.set(true);
+    });
   }
 
   ngOnInit(): void {
