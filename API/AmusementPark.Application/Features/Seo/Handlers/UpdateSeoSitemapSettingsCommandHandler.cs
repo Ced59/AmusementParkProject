@@ -62,15 +62,15 @@ public sealed class UpdateSeoSitemapSettingsCommandHandler : ICommandHandler<Upd
     private static bool IsReservedIndexNowKeyPath(string value)
     {
         string path = value.Trim();
-        if (Uri.TryCreate(path, UriKind.Absolute, out Uri? absoluteUri))
-        {
-            path = absoluteUri.AbsolutePath;
-        }
-
         int suffixIndex = path.IndexOfAny(new[] { '?', '#' });
         if (suffixIndex >= 0)
         {
             path = path[..suffixIndex];
+        }
+
+        if (Uri.TryCreate(path, UriKind.Absolute, out Uri? absoluteUri))
+        {
+            path = absoluteUri.AbsolutePath;
         }
 
         path = Uri.UnescapeDataString(path);
