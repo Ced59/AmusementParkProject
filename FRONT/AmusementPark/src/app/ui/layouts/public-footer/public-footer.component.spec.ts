@@ -150,7 +150,7 @@ describe('PublicFooterComponent', () => {
       '',
     );
     expect(
-      activeLanguageLink?.querySelector('img')?.hasAttribute('aria-hidden'),
-    ).toBe(false);
+      activeLanguageLink?.querySelector('img')?.getAttribute('aria-hidden'),
+    ).toBe('true');
   });
 });
