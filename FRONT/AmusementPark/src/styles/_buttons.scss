@@ -28,6 +28,10 @@
     color var(--transition);
 }
 
+.app-public-layout .app-button {
+  transition: transform var(--transition);
+}
+
 .btn > :where(i, svg),
 .app-button > :where(i, svg) {
   flex: 0 0 auto;
@@ -189,6 +193,10 @@
     background-color var(--transition),
     color var(--transition),
     box-shadow var(--transition);
+}
+
+.app-public-nav .btn-nav {
+  transition: transform var(--transition);
 }
 
 .btn-nav:focus-visible {
