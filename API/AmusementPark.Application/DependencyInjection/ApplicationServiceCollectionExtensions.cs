@@ -84,6 +84,10 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<FactualChangeEventAdministrationService>();
         services.AddScoped<HistoricalNarrativeCanonicalFactRetractionService>();
         services.AddScoped<HistoricalCanonicalSourceRetractionService>();
+        services.AddScoped<HistoricalNarrativeCanonicalSubjectResolver>();
+        services.AddScoped<HistoricalNarrativeCanonicalSourcePlanner>();
+        services.AddScoped<HistoricalNarrativeCanonicalFactFactory>();
+        services.AddScoped<HistoricalNarrativeCanonicalRevisionWriter>();
         services.AddScoped<HistoricalNarrativeCanonicalizationService>();
         services.AddScoped<HistoricalNarrativeCanonicalizationMigration>();
         services.AddScoped<IHistoricalNarrativeCanonicalizer>(serviceProvider =>

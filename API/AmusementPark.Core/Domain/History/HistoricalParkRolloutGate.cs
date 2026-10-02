@@ -49,8 +49,10 @@ public sealed record HistoricalParkRolloutGate
 
     public bool HasIndexableKeyYear => this.IndexableKeyYears.Count > 0;
 
-    public bool IsOpen => this.HasEnoughStructuredFacts
+    public bool HasPublicTimeline => this.HasEnoughStructuredFacts
         && this.HasCompleteSourceCoverage
-        && this.HasMajorMilestone
+        && this.HasMajorMilestone;
+
+    public bool IsOpen => this.HasPublicTimeline
         && this.HasIndexableKeyYear;
 }

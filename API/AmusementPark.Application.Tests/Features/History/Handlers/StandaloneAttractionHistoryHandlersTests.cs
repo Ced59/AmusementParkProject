@@ -103,6 +103,10 @@ public sealed class StandaloneAttractionHistoryHandlersTests
             Year = 2007,
             EventType = ParkItemHistoryEventType.Opening.ToString(),
             Titles = new[] { new LocalizedText("fr", "Ouverture de Pendolino") },
+            Sources = new[]
+            {
+                new HistorySourceReference { Url = "https://example.com/opening" },
+            },
         }));
 
         Assert.True(result.IsSuccess);

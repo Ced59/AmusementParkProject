@@ -60,6 +60,45 @@ public sealed class HistoryHandlersTests
     }
 
     [Fact]
+    public async Task UpsertHistoryEvent_WhenVisibleEventHasNoSource_ShouldFailBeforePersistence()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> historicalFactRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        UpsertHistoryEventCommandHandler handler = new UpsertHistoryEventCommandHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object),
+            Mock.Of<IHistoricalNarrativeCanonicalizer>(),
+            sitemapRefreshScheduler.Object);
+
+        ApplicationResult<HistoryEvent> result = await handler.HandleAsync(
+            new UpsertHistoryEventCommand(new HistoryEventWriteModel
+            {
+                EntityType = HistoryEntityType.Park,
+                OwnerId = "park-1",
+                Year = 2001,
+                EventType = ParkHistoryEventType.Opening.ToString(),
+                IsVisible = true,
+            }));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "history.publication-source.missing");
+        historyRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+        historicalFactRepository.VerifyNoOtherCalls();
+        sitemapRefreshScheduler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task UpsertHistoryEvent_WhenParkItemEventIsValid_ShouldCreateEvent()
     {
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
@@ -137,6 +176,10 @@ public sealed class HistoryHandlersTests
             Year = 2001,
             EventType = ParkItemHistoryEventType.Retrack.ToString(),
             Titles = new[] { new LocalizedText("fr", "Retrack") },
+            Sources = new[]
+            {
+                new HistorySourceReference { Url = "https://example.com/retrack" },
+            },
         }));
 
         Assert.True(result.IsSuccess);
@@ -241,6 +284,10 @@ public sealed class HistoryHandlersTests
                 Year = 1999,
                 EventType = ParkHistoryEventType.Opening.ToString(),
                 Titles = new[] { new LocalizedText("fr", "Ouverture corrigée") },
+                Sources = new[]
+                {
+                    new HistorySourceReference { Url = "https://example.com/opening" },
+                },
             }));
 
         Assert.True(result.IsSuccess);

@@ -68,6 +68,15 @@ public sealed class HistoricalParkRolloutGateEvaluatorTests
     }
 
     [Fact]
+    public void RolloutGate_WhenCanonicalTimelineIsReadyWithoutIndexableYear_ShouldExposeTimelineOnly()
+    {
+        HistoricalParkRolloutGate result = new(2, 2, 1, Array.Empty<int>());
+
+        Assert.True(result.HasPublicTimeline);
+        Assert.False(result.IsOpen);
+    }
+
+    [Fact]
     public void Evaluate_WithoutMajorMilestone_ShouldKeepParkClosed()
     {
         HistoricalFact firstFact = CreateFact(1998, HistoricalImportance.Standard);

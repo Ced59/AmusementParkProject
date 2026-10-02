@@ -1,6 +1,20 @@
 {
-  "version": "5.4.79",
+  "version": "5.4.80",
   "history": [
+    {
+      "version": "5.4.80",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Historique des parcs plus fiable et toujours accessible",
+        "en": "More reliable and consistently accessible park history",
+        "de": "Zuverlässigere und stets zugängliche Parkgeschichte",
+        "nl": "Betrouwbaardere en altijd toegankelijke parkgeschiedenis",
+        "it": "Storia dei parchi più affidabile e sempre accessibile",
+        "es": "Historia de los parques más fiable y siempre accesible",
+        "pt": "História dos parques mais fiável e sempre acessível",
+        "pl": "Bardziej wiarygodna i zawsze dostępna historia parków"
+      }
+    },
     {
       "version": "5.4.79",
       "releasedAt": "2026-10-03",

@@ -1,0 +1,117 @@
+using System.Globalization;
+using AmusementPark.Application.Features.History.Models;
+using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Core.Domain.History;
+
+namespace AmusementPark.Application.Features.History.Services;
+
+internal sealed class HistoricalNarrativeCanonicalRevisionWriter
+{
+    private readonly IHistoricalFactRepository factRepository;
+    private readonly IHistoricalSourceRepository sourceRepository;
+    private readonly HistoricalNarrativeCanonicalSourcePlanner sourcePlanner;
+
+    public HistoricalNarrativeCanonicalRevisionWriter(
+        IHistoricalFactRepository factRepository,
+        IHistoricalSourceRepository sourceRepository,
+        HistoricalNarrativeCanonicalSourcePlanner sourcePlanner)
+    {
+        this.factRepository = factRepository ?? throw new ArgumentNullException(nameof(factRepository));
+        this.sourceRepository = sourceRepository ?? throw new ArgumentNullException(nameof(sourceRepository));
+        this.sourcePlanner = sourcePlanner ?? throw new ArgumentNullException(nameof(sourcePlanner));
+    }
+
+    internal async Task PersistSourceAsync(
+        HistoricalSourcePlan plan,
+        CancellationToken cancellationToken)
+    {
+        HistoricalSourceReference latest = plan.DraftSource;
+        await this.AppendSourceAsync(
+            latest,
+            HistoricalReviewEventType.Created,
+            "Création de la source HIST canonique depuis la référence éditoriale.",
+            cancellationToken);
+        while (latest.Revision < plan.PublishedSource.Revision)
+        {
+            HistoricalEditorialWorkflowState target = HistoricalEditorialTransitionPolicy.GetNextStage(
+                HistoricalReviewResourceType.Source,
+                latest.WorkflowState);
+            latest = this.sourcePlanner.CreateRevision(latest, target, latest.RecordedAtUtc);
+            await this.AppendSourceAsync(
+                latest,
+                HistoricalEditorialTransitionPolicy.GetAdvanceEventType(target),
+                "Conservation de la publication éditoriale existante pendant la migration canonique.",
+                cancellationToken);
+        }
+    }
+
+    internal async Task AppendFactAsync(
+        HistoricalFact fact,
+        HistoricalReviewEventType eventType,
+        string note,
+        CancellationToken cancellationToken)
+    {
+        HistoricalReviewEvent reviewEvent = CreateReviewEvent(
+            HistoricalReviewResourceType.Fact,
+            fact.Id,
+            fact.Revision,
+            eventType,
+            note,
+            fact.RecordedAtUtc);
+        HistoricalRevisionWriteDisposition disposition = await this.factRepository.AppendRevisionAsync(
+            fact,
+            reviewEvent,
+            cancellationToken);
+        if (disposition == HistoricalRevisionWriteDisposition.Conflict)
+        {
+            throw new InvalidOperationException("A canonical historical fact identity collided.");
+        }
+    }
+
+    private async Task AppendSourceAsync(
+        HistoricalSourceReference source,
+        HistoricalReviewEventType eventType,
+        string note,
+        CancellationToken cancellationToken)
+    {
+        HistoricalReviewEvent reviewEvent = CreateReviewEvent(
+            HistoricalReviewResourceType.Source,
+            source.Id,
+            source.Revision,
+            eventType,
+            note,
+            source.RecordedAtUtc);
+        HistoricalRevisionWriteDisposition disposition = await this.sourceRepository.AppendRevisionAsync(
+            source,
+            reviewEvent,
+            cancellationToken);
+        if (disposition == HistoricalRevisionWriteDisposition.Conflict)
+        {
+            throw new InvalidOperationException("A canonical historical source identity collided.");
+        }
+    }
+
+    private static HistoricalReviewEvent CreateReviewEvent(
+        HistoricalReviewResourceType resourceType,
+        Guid resourceId,
+        int revision,
+        HistoricalReviewEventType eventType,
+        string note,
+        DateTime occurredAtUtc)
+    {
+        string resourceName = resourceType.ToString().ToLowerInvariant();
+        return new HistoricalReviewEvent(
+            HistoricalNarrativeCanonicalIdentity.CreateGuid(
+                HistoricalNarrativeCanonicalizationPolicy.Version,
+                $"{resourceName}-review-{revision.ToString(CultureInfo.InvariantCulture)}",
+                resourceId.ToString("N", CultureInfo.InvariantCulture),
+                occurredAtUtc),
+            resourceType,
+            resourceId,
+            revision,
+            eventType,
+            HistoricalNarrativeCanonicalizationPolicy.Actor,
+            note,
+            occurredAtUtc);
+    }
+}

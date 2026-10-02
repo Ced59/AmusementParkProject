@@ -28,7 +28,7 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
             .Callback<HistoricalFact, HistoricalReviewEvent, CancellationToken>(
                 (fact, _, _) => writtenFacts.Add(fact))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
-        HistoricalNarrativeCanonicalizationService service = new HistoricalNarrativeCanonicalizationService(
+        HistoricalNarrativeCanonicalizationService service = CreateService(
             factRepository.Object,
             sourceRepository.Object,
             parkRepository.Object,
@@ -76,7 +76,7 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
             .Callback<HistoricalSourceReference, HistoricalReviewEvent, CancellationToken>(
                 (source, _, _) => writtenSources.Add(source))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
-        HistoricalNarrativeCanonicalizationService service = new HistoricalNarrativeCanonicalizationService(
+        HistoricalNarrativeCanonicalizationService service = CreateService(
             factRepository.Object,
             sourceRepository.Object,
             parkRepository.Object,
@@ -131,6 +131,24 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
                 AdminReviewStatus = AdminReviewStatus.Validated,
             });
         return repository;
+    }
+
+    private static HistoricalNarrativeCanonicalizationService CreateService(
+        IHistoricalFactRepository factRepository,
+        IHistoricalSourceRepository sourceRepository,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository)
+    {
+        HistoricalNarrativeCanonicalSourcePlanner sourcePlanner =
+            new HistoricalNarrativeCanonicalSourcePlanner();
+        return new HistoricalNarrativeCanonicalizationService(
+            new HistoricalNarrativeCanonicalSubjectResolver(parkRepository, parkItemRepository),
+            sourcePlanner,
+            new HistoricalNarrativeCanonicalFactFactory(),
+            new HistoricalNarrativeCanonicalRevisionWriter(
+                factRepository,
+                sourceRepository,
+                sourcePlanner));
     }
 
     private static HistoryEvent CreateOpeningEvent(bool withSource)

@@ -27,6 +27,7 @@ using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 using System.Text;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkPricing.Ports;
@@ -150,14 +151,38 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
         string eventKey,
         ParkGraphUpsertResult result)
     {
+        if (!LegacyHistoryEventTypeMapper.TryMap(
+                historyEvent.EntityType,
+                historyEvent.EventType,
+                out LegacyHistoryEventTypeMapping? mapping)
+            || mapping is null)
+        {
+            result.Errors.Add(
+                $"L'evenement history '{eventKey}' ne peut pas etre converti dans HIST.");
+            return false;
+        }
+
+        if (mapping.AttributeKind.HasValue
+            && HistoricalNarrativeCanonicalFactFactory.BuildStructuredValue(historyEvent, mapping) is null)
+        {
+            result.Errors.Add(
+                $"L'evenement history '{eventKey}' doit renseigner la valeur d'arrivee requise par sa transition HIST.");
+            return false;
+        }
+
+        bool hasValidSource = HistoricalNarrativeCanonicalSourcePlanner.HasValidSource(historyEvent);
+        if (mapping.FactType == HistoricalFactType.Other && !hasValidSource)
+        {
+            result.Errors.Add(
+                $"L'evenement history de type Other '{eventKey}' doit fournir au moins une source HTTP ou HTTPS valide.");
+            return false;
+        }
+
         if (!historyEvent.IsVisible)
         {
             return true;
         }
 
-        bool hasValidSource = historyEvent.Sources.Any(static source =>
-            Uri.TryCreate(source.Url?.Trim(), UriKind.Absolute, out Uri? uri)
-            && uri.Scheme is "http" or "https");
         if (hasValidSource)
         {
             return true;

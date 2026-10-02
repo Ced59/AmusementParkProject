@@ -151,9 +151,36 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             || !LegacyHistoryEventTypeMapper.TryMap(
                 model.EntityType,
                 model.EventType,
-                out LegacyHistoryEventTypeMapping? _))
+                out LegacyHistoryEventTypeMapping? mapping)
+            || mapping is null)
         {
             return HistoryApplicationErrors.InvalidEventType();
+        }
+
+        HistoryEvent canonicalCandidate = new HistoryEvent();
+        this.ApplyWriteModel(
+            canonicalCandidate,
+            model,
+            ownerId,
+            NormalizeKey(model.Key) ?? BuildFallbackKey(model));
+        if (mapping.AttributeKind.HasValue
+            && HistoricalNarrativeCanonicalFactFactory.BuildStructuredValue(
+                canonicalCandidate,
+                mapping) is null)
+        {
+            return HistoryApplicationErrors.InvalidCanonicalShape();
+        }
+
+        bool hasValidSource = HistoricalNarrativeCanonicalSourcePlanner.HasValidSource(
+            canonicalCandidate);
+        if (mapping.FactType == HistoricalFactType.Other && !hasValidSource)
+        {
+            return HistoryApplicationErrors.InvalidCanonicalShape();
+        }
+
+        if (canonicalCandidate.IsVisible && !hasValidSource)
+        {
+            return HistoryApplicationErrors.MissingPublicationSource();
         }
 
         if (model.EntityType == HistoryEntityType.Park)

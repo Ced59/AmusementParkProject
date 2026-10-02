@@ -796,6 +796,12 @@ d'alimentation ; les événements volontairement masqués restent des brouillons
 Les anciennes valeurs persistées ne sont relues que pendant cette conversion
 unique afin de ne pas perdre l'audit, jamais comme un second système métier.
 
+L'accès à la frise publique est distinct du seuil plus exigeant des snapshots
+annuels et du SEO : deux faits canoniques tous sourcés, dont un jalon majeur,
+suffisent à rendre l'histoire consultable. L'indexation d'une année continue
+d'exiger une reconstitution assez complète pour ne pas présenter un état
+historique trompeur.
+
 ### Implémentation `HIST-05` — 26 septembre 2026
 
 Le Core peut désormais reconstruire l'état d'un parc, d'une attraction ou

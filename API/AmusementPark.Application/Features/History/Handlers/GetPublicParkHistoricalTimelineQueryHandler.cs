@@ -64,7 +64,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         HistoricalParkRolloutGate rolloutGate = await this.dataLoader.AssessRolloutGateAsync(
             scope,
             cancellationToken);
-        if (!rolloutGate.IsOpen)
+        if (!rolloutGate.HasPublicTimeline)
         {
             return ApplicationResult<PublicParkHistoricalTimelineResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), parkId));
@@ -111,7 +111,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             StringComparer.Ordinal);
         Dictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> publicCurrentSubjects =
             scope.PublicCurrentSubjects.ToDictionary(static subject => (subject.Type, subject.Id));
-        HashSet<HistoricalSubjectKey> subjectsWithLineage = rolloutGate.IsOpen
+        HashSet<HistoricalSubjectKey> subjectsWithLineage = rolloutGate.HasPublicTimeline
             ? await this.LoadSubjectsWithLineageAsync(pageFacts, cancellationToken)
             : new HashSet<HistoricalSubjectKey>();
         PublicHistoricalTimelineEntryResult[] entries = pageFacts
@@ -143,7 +143,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                 scope.Park,
                 page,
                 publicZoneNames,
-                rolloutGate.IsOpen));
+                rolloutGate.HasPublicTimeline));
     }
 
     private async Task<HashSet<HistoricalSubjectKey>> LoadSubjectsWithLineageAsync(

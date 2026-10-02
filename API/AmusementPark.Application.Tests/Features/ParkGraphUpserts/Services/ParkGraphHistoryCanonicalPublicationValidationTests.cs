@@ -12,6 +12,8 @@ public sealed class ParkGraphHistoryCanonicalPublicationValidationTests
     {
         HistoryEvent historyEvent = new HistoryEvent
         {
+            EntityType = HistoryEntityType.Park,
+            EventType = ParkHistoryEventType.Opening.ToString(),
             IsVisible = true,
             Sources = new List<HistorySourceReference>
             {
@@ -34,7 +36,12 @@ public sealed class ParkGraphHistoryCanonicalPublicationValidationTests
     [Fact]
     public void ValidateCanonicalPublication_WhenHiddenEventHasNoSource_ShouldAllowDraft()
     {
-        HistoryEvent historyEvent = new HistoryEvent { IsVisible = false };
+        HistoryEvent historyEvent = new HistoryEvent
+        {
+            EntityType = HistoryEntityType.Park,
+            EventType = ParkHistoryEventType.Opening.ToString(),
+            IsVisible = false,
+        };
         ParkGraphUpsertResult result = new ParkGraphUpsertResult();
 
         bool isValid = ParkGraphUpsertProcessorHistoryExtensions.ValidateCanonicalPublication(

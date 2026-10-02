@@ -28,6 +28,6 @@ public sealed class HistoricalParkPublicTimelineAccessService :
         HistoricalParkRolloutGate rolloutGate = await this.dataLoader.AssessRolloutGateAsync(
             scope,
             cancellationToken);
-        return rolloutGate.IsOpen;
+        return rolloutGate.HasPublicTimeline;
     }
 }
