@@ -29,6 +29,7 @@ import {
 } from './src/app/core/ssr/robot-html-optimizer';
 import type { SeoReadyHtmlCheckResult } from './src/app/core/ssr/robot-html-optimizer';
 import { prepareSsrRobotsResponse } from './src/app/core/ssr/ssr-robots-response';
+import { registerPublicAgentDiscoveryRoutes } from './src/server/agent-discovery/public-agent-discovery-routes';
 import {
   detectRobotFamilyFromUserAgent,
   getRobotFamilyCategory,
@@ -542,6 +543,8 @@ export function app(): express.Express {
   server.head('/sitemaps/:fileName([A-Za-z0-9_-]+\\.xml)', redirectLegacySitemapSectionRoute);
 
   server.get('/sitemaps/:fileName([A-Za-z0-9_-]+\\.xml)', redirectLegacySitemapSectionRoute);
+
+  registerPublicAgentDiscoveryRoutes(server, browserDistFolder);
 
   server.head('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
     proxySeoDocumentToApi(req, res, next, req.originalUrl);

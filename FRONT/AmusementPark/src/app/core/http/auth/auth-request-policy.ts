@@ -3,6 +3,7 @@ import { HttpContextToken } from '@angular/common/http';
 const API_PATH_PREFIX = '/api';
 
 export const SKIP_AUTHORIZATION_HEADER = new HttpContextToken<boolean>(() => false);
+export const SKIP_PUBLIC_VIEW_SIMULATION = new HttpContextToken<boolean>(() => false);
 
 const ANONYMOUS_POST_PATHS: readonly string[] = [
   '/auth/login',

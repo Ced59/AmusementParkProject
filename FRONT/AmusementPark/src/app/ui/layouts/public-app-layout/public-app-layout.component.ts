@@ -11,13 +11,14 @@ import { PublicFooterComponent } from '@ui/layouts/public-footer/public-footer.c
 import { PublicHeaderComponent } from '@ui/layouts/public-header/public-header.component';
 import { PublicMobileBottomNavComponent } from '@ui/layouts/public-mobile-bottom-nav/public-mobile-bottom-nav.component';
 import { PublicParkNavigationTrailComponent } from '@ui/layouts/public-park-navigation-trail/public-park-navigation-trail.component';
+import { PublicAgentToolsService } from '@features/public/agent-discovery/public-agent-tools.service';
 
 @Component({
   selector: 'app-public-app-layout',
   templateUrl: './public-app-layout.component.html',
   styleUrl: './public-app-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [PublicParkNavigationTreeFacade, PublicParkNavigationTreeState],
+  providers: [PublicParkNavigationTreeFacade, PublicParkNavigationTreeState, PublicAgentToolsService],
   imports: [
     NgComponentOutlet,
     PublicFooterComponent,
@@ -36,12 +37,14 @@ export class PublicAppLayoutComponent implements OnInit {
     private readonly publicParkNavigationTreeFacade: PublicParkNavigationTreeFacade,
     private readonly authService: AuthService,
     private readonly sharedService: SharedService,
+    private readonly publicAgentToolsService: PublicAgentToolsService,
     private readonly destroyRef: DestroyRef,
     @Inject(PLATFORM_ID) private readonly platformId: object
   ) {
   }
 
   ngOnInit(): void {
+    this.publicAgentToolsService.initialize();
     this.publicParkNavigationTreeFacade.initialize();
     this.refreshAdminToolbarVisibility();
 

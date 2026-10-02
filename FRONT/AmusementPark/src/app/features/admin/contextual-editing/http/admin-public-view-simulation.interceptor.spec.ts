@@ -6,7 +6,8 @@ import {
 } from '@angular/common/http';
 import { of } from 'rxjs';
 
-import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
+import { SKIP_AUTHORIZATION_HEADER, SKIP_PUBLIC_VIEW_SIMULATION } from '@core/http/auth/auth-request-policy';
+import { AdminPublicViewMode } from '../models/admin-public-view-mode.model';
 import { AdminPublicViewModeFacade } from '../state/admin-public-view-mode.facade';
 import { AdminPublicViewSimulationInterceptor } from './admin-public-view-simulation.interceptor';
 
@@ -66,6 +67,23 @@ describe('AdminPublicViewSimulationInterceptor', () => {
     expect(capturedRequest.headers.get('Pragma')).toBe('no-cache');
     expect(capturedRequest.context.get(SKIP_AUTHORIZATION_HEADER)).toBe(false);
   });
+
+  it.each(['userVisitor', 'moderatorVisitor', 'adminPreview'] as AdminPublicViewMode[])(
+    'preserves strictly anonymous agent requests in %s mode', async (viewMode: AdminPublicViewMode) => {
+      const facade = new AdminPublicViewModeFacade();
+      facade.setViewMode(viewMode);
+      const interceptor = new AdminPublicViewSimulationInterceptor(facade);
+      const request = createAnonymousGetRequest();
+      request.context.set(SKIP_PUBLIC_VIEW_SIMULATION, true);
+
+      const capturedRequest = await captureRequest(interceptor, request);
+
+      expect(capturedRequest).toBe(request);
+      expect(capturedRequest.context.get(SKIP_AUTHORIZATION_HEADER)).toBe(true);
+      expect(capturedRequest.headers.has('Authorization')).toBe(false);
+      expect(capturedRequest.headers.has('X-AmusementPark-Public-View-Mode')).toBe(false);
+    },
+  );
 
   it('adds the simulated role header and allows auth for admin preview mode', async () => {
     const facade = new AdminPublicViewModeFacade();

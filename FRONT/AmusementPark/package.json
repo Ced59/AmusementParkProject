@@ -30,7 +30,7 @@
     "quality:accessibility-i18n:test": "node --test tools/quality/i18n-source-collision-check.test.mjs tools/quality/accessibility-check.test.mjs",
     "privacy:catalog": "node tools/privacy/check-personal-data-catalog.mjs",
     "privacy:catalog:test": "node --test tools/privacy/personal-data-catalog.test.mjs",
-    "test:performance-tools": "node --test tools/performance/performance-baseline.test.mjs tools/performance/bundle-budget.test.mjs",
+    "test:performance-tools": "node --test tools/performance/performance-baseline.test.mjs tools/performance/bundle-budget.test.mjs tools/agent-discovery/agent-discovery.test.mjs",
     "performance:baseline": "node tools/performance/performance-baseline.mjs",
     "performance:bundle": "node tools/performance/bundle-budget.mjs",
     "operations:readiness": "node tools/operations/check-incident-readiness.mjs",

@@ -1,0 +1,29 @@
+# AMUSEMENT-PARKS.fun
+
+> A multilingual public directory of amusement parks, attractions and their manufacturers, with park information, photographs and published historical material where available.
+
+Public pages are available in English, French, German, Dutch, Italian, Spanish, Portuguese and Polish. Use the localized page's canonical URL when citing a park. Opening hours, prices and historical material are available only where published; do not infer missing information.
+
+## Park directories
+
+- [English parks](https://amusement-parks.fun/en/parks): Public park directory and search.
+- [Parcs en français](https://amusement-parks.fun/fr/parks): Annuaire et recherche de parcs.
+- [Parks auf Deutsch](https://amusement-parks.fun/de/parks): Öffentliches Parkverzeichnis.
+- [Parken in het Nederlands](https://amusement-parks.fun/nl/parks): Openbare parkzoekfunctie.
+- [Parchi in italiano](https://amusement-parks.fun/it/parks): Elenco pubblico dei parchi.
+- [Parques en español](https://amusement-parks.fun/es/parks): Directorio público de parques.
+- [Parques em português](https://amusement-parks.fun/pt/parks): Diretório público de parques.
+- [Parki po polsku](https://amusement-parks.fun/pl/parks): Publiczny katalog parków.
+
+## Reference pages
+
+- [Manufacturers](https://amusement-parks.fun/en/manufacturers): Published manufacturer reference pages.
+- [Rankings](https://amusement-parks.fun/en/rankings): Public rankings.
+- [Ranking methodology](https://amusement-parks.fun/en/rankings/methodology): How the rankings are calculated.
+- [About the site](https://amusement-parks.fun/en/about): Site presentation.
+
+## Agent access
+
+- [Public discovery guide](https://amusement-parks.fun/agent-guide.md): Read-only park discovery and WebMCP usage.
+- [Capability catalog](https://amusement-parks.fun/ai-catalog.json): Machine-readable resource discovery.
+- [Sitemap index](https://amusement-parks.fun/sitemap.xml): Published localized URLs.
