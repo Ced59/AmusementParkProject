@@ -53,7 +53,7 @@ export class CommentSummaryStateFacade {
   }
 
   initializeAuthorAccess(): void {
-    this.authService.ensureValidAccessToken(true)
+    this.authService.ensureValidAccessToken(false)
       .pipe(take(1), takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (token: string | null): void => {
