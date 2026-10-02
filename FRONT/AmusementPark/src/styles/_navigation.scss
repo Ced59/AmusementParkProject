@@ -140,7 +140,7 @@ button.app-mobile-bottom-nav__item {
 
 .mobile-bottom-nav__item.active,
 .app-mobile-bottom-nav__item.active {
-  color: var(--c-orange);
+  color: var(--app-navigation-active-text);
   background: rgba(255, 90, 31, 0.1);
 }
 
@@ -734,7 +734,7 @@ button.app-mobile-bottom-nav__item {
 }
 
 .app-public-park-trail__item--current {
-  color: var(--c-orange);
+  color: var(--app-navigation-active-text);
   border-color: color-mix(in srgb, var(--c-orange) 30%, var(--app-border));
   background: rgba(255, 90, 31, 0.1);
 }
