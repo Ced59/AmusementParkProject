@@ -232,7 +232,7 @@ body.light-mode .home-hero__title-line--outline {
     linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
   box-shadow: var(--shadow-lift);
   transform: rotate(var(--hero-card-rot));
-  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+  transition: transform var(--transition);
   animation: home-hero-float linear infinite alternate;
 }
 

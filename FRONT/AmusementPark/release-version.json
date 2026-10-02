@@ -1,6 +1,20 @@
 {
-  "version": "5.4.69",
+  "version": "5.4.70",
   "history": [
+    {
+      "version": "5.4.70",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Accueil plus fluide",
+        "en": "Smoother home page",
+        "de": "Flüssigere Startseite",
+        "nl": "Vloeiendere startpagina",
+        "it": "Pagina iniziale più fluida",
+        "es": "Página de inicio más fluida",
+        "pt": "Página inicial mais fluida",
+        "pl": "Płynniejsza strona główna"
+      }
+    },
     {
       "version": "5.4.69",
       "releasedAt": "2026-10-02",

@@ -33,3 +33,21 @@ for (const file of ['_buttons.scss', '_navigation.scss']) {
     }
   });
 }
+
+test('home hero cards preserve movement and focus without animating paint properties', () => {
+  const source = readFileSync(resolve(import.meta.dirname, '../../src/app/features/public/home/pages/home.component.scss'), 'utf8');
+  const { css } = compileString(source);
+  const cardRule = css.match(/\.home-hero-card\s*\{([^}]+)\}/)[1];
+  const transition = cardRule.match(/transition:\s*([^;]+);/)[1];
+  for (const part of transition.split(',')) {
+    assert.match(part.trim(), /^(transform|opacity)\s+/);
+  }
+  assert.match(cardRule, /animation:\s*home-hero-float linear infinite alternate/);
+  const frames = css.match(/@keyframes home-hero-float\s*\{\s*from\s*\{([^}]+)\}\s*to\s*\{([^}]+)\}/);
+  assert.ok(frames);
+  for (const frame of frames.slice(1)) {
+    assert.match(frame.trim(), /^transform:[^;]+;$/);
+  }
+  assert.match(css, /\.home-hero-card:hover\s*\{[^}]*border-color:[^}]*box-shadow:/);
+  assert.match(css, /\.home-hero-card:focus-visible\s*\{[^}]*box-shadow:\s*var\(--shadow-focus\)/);
+});
