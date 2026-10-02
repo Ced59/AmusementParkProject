@@ -1,6 +1,20 @@
 {
-  "version": "5.4.67",
+  "version": "5.4.68",
   "history": [
+    {
+      "version": "5.4.68",
+      "releasedAt": "2026-10-02",
+      "labels": {
+        "fr": "Chargement plus léger",
+        "en": "Lighter page loading",
+        "de": "Schlankeres Laden der Seiten",
+        "nl": "Lichter laden van pagina’s",
+        "it": "Caricamento delle pagine più leggero",
+        "es": "Carga de páginas más ligera",
+        "pt": "Carregamento de páginas mais leve",
+        "pl": "Lżejsze ładowanie stron"
+      }
+    },
     {
       "version": "5.4.67",
       "releasedAt": "2026-10-02",
