@@ -7,7 +7,8 @@ import { environment } from '../../../environments/environment';
 })
 export class GoogleIdentityService {
   private isInitialized: boolean = false;
-  private credentialCallback?: (response: GoogleCredentialResponse) => void;
+  private readonly credentialCallbacks: Map<string, (response: GoogleCredentialResponse) => void> = new Map();
+  private nextButtonId: number = 0;
   private libraryLoadPromise: Promise<void> | null = null;
 
   constructor(
@@ -29,21 +30,32 @@ export class GoogleIdentityService {
       return;
     }
 
-    this.credentialCallback = (response: GoogleCredentialResponse): void => {
+    const state: string = `amusementpark-google-${++this.nextButtonId}`;
+    const unregister = (): void => {
+      this.credentialCallbacks.delete(state);
+      signal?.removeEventListener('abort', unregister);
+    };
+    this.credentialCallbacks.set(state, (response: GoogleCredentialResponse): void => {
       if (!signal?.aborted) {
         callback(response);
       }
-    };
-    this.initializeIfNeeded();
-
-    container.innerHTML = '';
-    window.google?.accounts.id.renderButton(container, {
-      theme: 'outline',
-      size: 'large',
-      text: 'continue_with',
-      shape: 'rectangular',
-      width: 260
     });
+    signal?.addEventListener('abort', unregister, { once: true });
+    try {
+      this.initializeIfNeeded();
+      container.innerHTML = '';
+      window.google?.accounts.id.renderButton(container, {
+        theme: 'outline',
+        size: 'large',
+        text: 'continue_with',
+        shape: 'rectangular',
+        width: 260,
+        state
+      });
+    } catch (error: unknown) {
+      unregister();
+      throw error;
+    }
   }
 
   disableAutoSelect(): void {
@@ -66,8 +78,8 @@ export class GoogleIdentityService {
     window.google.accounts.id.initialize({
       client_id: environment.googleClientId,
       callback: (response: GoogleCredentialResponse) => {
-        if (this.credentialCallback) {
-          this.credentialCallback(response);
+        if (response.state !== undefined) {
+          this.credentialCallbacks.get(response.state)?.(response);
         }
       },
       ux_mode: 'popup',

@@ -71,7 +71,15 @@ Le bandeau requis est maintenant inclus dans le HTML SSR. Le premier rendu navig
 
 Le script Google Identity Services était également chargé depuis `index.html` à chaque visite : environ 98,9 Kio transférés, dont 71,5 Kio signalés inutilisés sur l’accueil. Le contenu du formulaire de connexion est désormais créé uniquement à l’ouverture du dialogue ; son bouton demande alors le SDK Google. Un chargement unique est partagé entre appels concurrents, avec délai maximal de dix secondes et nouvelle tentative possible après une erreur. Le script provient toujours de l’URL officielle ; les vérifications d’authentification et la CSP sont conservées.
 
-Les tests couvrent le rendu initial, le maintien du bandeau sur une première visite, les deux actions de consentement, le retrait après restauration d’un choix et la désactivation du bandeau. Six tests supplémentaires couvrent l’absence de chargement du SDK pendant la navigation, les appels concurrents, une bibliothèque existante et sa transmission de credentials au callback, l’échec puis la reprise, l’expiration du délai et l’absence de chargement serveur. Un test du header vérifie l’absence du formulaire fermé, sa création à l’ouverture, sa suppression à la fermeture et sa réouverture sans doublon.
+Les tests couvrent le rendu initial, le maintien du bandeau sur une première visite, les deux actions de consentement, le retrait après restauration d’un choix et la désactivation du bandeau. Neuf tests supplémentaires couvrent le chargement du SDK, les erreurs, le SSR, l’annulation du rendu et l’association des réponses au bouton d’origine. Un test du header vérifie le dialogue fermé, ouvert, fermé puis rouvert sans doublon. Deux tests du formulaire vérifient qu’une erreur tardive ne produit pas de notification après destruction, tandis qu’un dialogue actif conserve son message d’erreur.
+
+Chaque bouton reçoit un `state` propre, renvoyé par le SDK officiel dans `CredentialResponse`. La fermeture du dialogue retire son callback : une réponse issue d’une ancienne fenêtre Google ne peut pas être transmise au dialogue rouvert. Cette association suit la référence officielle : <https://developers.google.com/identity/gsi/web/reference/js-reference#state>.
+
+## Incident mémoire et nettoyage du VPS
+
+Pendant la sauvegarde précédant le déploiement du 2 octobre, le VPS de 8 Go ne disposait plus que de 22 Mo de RAM disponible, sans swap, avec une charge observée de 73. Les accès SSH et HTTPS expiraient. Un swap de secours de 2 Go, réservé à root et enregistré dans `fstab`, a permis au serveur de retrouver de la marge ; le déploiement a ensuite réussi. Cette mesure ne remplace pas un dimensionnement des caches et de la mémoire de pointe.
+
+À la demande explicite du propriétaire, 157 fichiers de sauvegarde du projet et anciennes copies de configuration ont ensuite été supprimés : 35 596 659 725 octets, soit 33,15 Gio. Le disque est passé de 77 % à 42 % d’occupation, avec environ 57 Gio disponibles. Les copies de configuration du proxy et de `fstab` créées durant cette intervention font partie de ce nettoyage. Les sauvegardes futures restent activées.
 
 ## Points restant à traiter séparément
 

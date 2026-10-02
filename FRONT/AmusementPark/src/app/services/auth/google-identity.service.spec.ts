@@ -53,7 +53,8 @@ describe('GoogleIdentityService', () => {
     const callback = vi.fn();
     await service.renderButtonAsync(document.createElement('div'), callback);
     const configuration: GoogleIdConfiguration = vi.mocked(googleApi.accounts.id.initialize).mock.calls[0][0];
-    const response: GoogleCredentialResponse = { credential: 'test-credential', select_by: 'btn' };
+    const state: string | undefined = vi.mocked(googleApi.accounts.id.renderButton).mock.calls[0][1].state;
+    const response: GoogleCredentialResponse = { credential: 'test-credential', select_by: 'btn', state };
     configuration.callback(response);
 
     expect(callback).toHaveBeenCalledWith(response);
@@ -104,5 +105,36 @@ describe('GoogleIdentityService', () => {
     expect(googleApi.accounts.id.initialize).not.toHaveBeenCalled();
     expect(googleApi.accounts.id.renderButton).not.toHaveBeenCalled();
     expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('does not deliver an old popup response to a reopened dialog', async () => {
+    window.google = googleApi;
+    const firstController: AbortController = new AbortController();
+    const firstCallback = vi.fn();
+    const secondCallback = vi.fn();
+    await service.renderButtonAsync(document.createElement('div'), firstCallback, firstController.signal);
+    const firstState: string | undefined = vi.mocked(googleApi.accounts.id.renderButton).mock.calls[0][1].state;
+    firstController.abort();
+    await service.renderButtonAsync(document.createElement('div'), secondCallback, new AbortController().signal);
+    const secondState: string | undefined = vi.mocked(googleApi.accounts.id.renderButton).mock.calls[1][1].state;
+    const configuration: GoogleIdConfiguration = vi.mocked(googleApi.accounts.id.initialize).mock.calls[0][0];
+
+    expect(firstState).not.toBe(secondState);
+    configuration.callback({ credential: 'old-credential', select_by: 'btn', state: firstState });
+    expect(firstCallback).not.toHaveBeenCalled();
+    expect(secondCallback).not.toHaveBeenCalled();
+    configuration.callback({ credential: 'new-credential', select_by: 'btn', state: secondState });
+    expect(secondCallback).toHaveBeenCalledOnce();
+  });
+
+  it('ignores credential responses without a recognized button state', async () => {
+    window.google = googleApi;
+    const callback = vi.fn();
+    await service.renderButtonAsync(document.createElement('div'), callback);
+    const configuration: GoogleIdConfiguration = vi.mocked(googleApi.accounts.id.initialize).mock.calls[0][0];
+    configuration.callback({ credential: 'test-credential', select_by: 'btn' });
+    configuration.callback({ credential: 'test-credential', select_by: 'btn', state: 'unknown' });
+
+    expect(callback).not.toHaveBeenCalled();
   });
 });
