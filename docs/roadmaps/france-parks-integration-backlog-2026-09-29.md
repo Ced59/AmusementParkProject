@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 68 |
+| Fiches privées existantes à intégrer | 82 | 67 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **158** |
+| **Total** | **225** | **157** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Fraispertuis City — `ea22716e-64d2-44ef-b068-6b26ba5cf9d7`
 - [ ] Funny Land — `27798d4d-9e30-42c1-864d-cff0520d6511`
 - [ ] Grinyland — `d5d59442-1fb4-4aca-a084-98029a6a9a58`
 - [ ] Jacquou Parc — `d536babf-4e8a-4cb8-9584-abe4d6d0ae6f`
@@ -360,8 +359,13 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 - Les descriptions internes des logos MACK Rides `01ec66b67e574368a3a406115958485a` et ZIERER `ad46c05063a244a5a04f3a996c985152` partagent une formulation technique. L’audit individuel de Parc Astérix n’en fait pas un bloqueur de publication, mais la correction du logo global ZIERER a été refusée par `park-data-editor.image-scope-denied`. Cette dette partagée reste donc explicitement suivie sans contourner le périmètre du jeton parc.
 
+### Médias orphelins hors graphe
+
+- Fraispertuis City — les imports privés `214b9e0769384beda31feef8e31657de` et `57885c3627d7405d8f466694773c80e4` ont été créés avec des clés de lot devenues obsolètes au lieu des identifiants persistés de Golden Driller et Sawmill. Ils n’appartiennent pas au graphe publié et ne sont ni courants ni publics. Leur suppression contrôlée a été refusée parce que le serveur ne peut plus les rattacher au parc cible ; les deux photographies ont été réimportées sur les IDs vérifiés. Les prochains imports doivent recouper chaque `OwnerId` avec l’export courant avant l’appel afin de ne pas reproduire cette anomalie.
+
 ### Lacunes éditoriales documentées
 
+- Fraispertuis City — la fiche publiée atteint 98 avec 70 éléments, les huit langues sur chaque description, les horaires et tarifs officiels 2026, huit jalons historiques, un article développé et sept médias propres au parc ou à ses attractions. Cinq attractions majeures disposent d’une photographie officielle ; les autres éléments conservent des descriptions sourcées sans image arbitraire. Les pages officielles très brèves ont conduit à retenir deux paragraphes spécifiques plutôt qu’un remplissage générique. La grille 2026, échue le 27 septembre, reste archivée dans le graphe mais l’API publique la masque désormais comme périmée ; aucune grille 2027 n’était publiée lors du contrôle. La page météo répondait correctement avec une prévision momentanément vide, ce qui n’a pas conditionné le retrait.
 - Fiesta Parc — la fiche publiée atteint 100 avec 12 éléments actuels, 13 médias officiels, le calendrier et les tarifs 2026, cinq jalons historiques et un article développé. Chacune des dix attractions actuelles possède une photographie attribuable ; la Pizzeria Maisons et l'aire de pique-nique restent sans vue individuelle suffisamment explicite. Aucun plan public exploitable n'a été trouvé sur le site officiel, et l'ancien coaster retiré en 2019 n'a pas reçu l'image de Bassotto. La météo est bien accessible mais ne contenait momentanément aucune prévision lors du contrôle ; conformément à la règle du lot, ce contenu alimenté par batch n'a pas conditionné le retrait.
 - Fermyland — la fiche publiée réunit 21 éléments actuels, 21 médias officiels, les horaires et tarifs 2026, cinq jalons historiques, un article développé et le constructeur LMQ Rides sourcé pour l’ancienne Chenille. Dix-huit des 21 éléments actuels possèdent une image attribuable ; Les Rapidos et le snack restent sans photographie individuelle suffisamment explicite, et l’ancienne Chenille fermée n’a pas reçu l’image de sa remplaçante. Un plan 2024 indexé par un office de tourisme a été retrouvé, mais son original et sa dérivée renvoient désormais 404 ; aucune carte dégradée ou non téléchargeable n’a été importée.
 - Fééryland — les 30 attractions de l’inventaire officiel 2026 disposent chacune d’une photographie officielle, mais le site ne fournit pas de série de trois vues distinctes par attraction. Une seule vue générale actuelle et clairement attribuable au parc a été retenue ; les neuf services visibles restent sans photographie individuelle. Le logo déjà publié a été conservé sans inventer la provenance manquante de son fichier historique.
