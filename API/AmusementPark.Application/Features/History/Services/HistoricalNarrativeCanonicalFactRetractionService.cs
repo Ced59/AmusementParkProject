@@ -66,6 +66,7 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
             }
         }
 
+        onRetractionAttempt(null);
         throw new InvalidOperationException(
             "The canonical historical fact changed concurrently and could not be retracted safely.");
     }
@@ -84,7 +85,10 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
                     "A canonical historical fact could not be restored because its latest revision is missing.");
             }
 
-            if (latest.PublicationState != HistoricalPublicationState.Withdrawn)
+            bool isMatchingRetraction = latest.PublicationState == HistoricalPublicationState.Withdrawn
+                && latest.Revision == snapshot.Revision + 1
+                && latest.SupersedesRevision == snapshot.Revision;
+            if (!isMatchingRetraction)
             {
                 return;
             }

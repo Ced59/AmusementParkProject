@@ -52,6 +52,7 @@ public sealed class HistoricalCanonicalSourceRetractionService
             }
         }
 
+        onRetractionAttempt(null);
         throw new InvalidOperationException(
             "The historical source changed concurrently and could not be retracted safely.");
     }
@@ -72,7 +73,9 @@ public sealed class HistoricalCanonicalSourceRetractionService
                     "A historical source could not be restored because its latest revision is missing.");
             }
 
-            if (latest.PublicationState != HistoricalPublicationState.Withdrawn)
+            bool isMatchingRetraction = latest.PublicationState == HistoricalPublicationState.Withdrawn
+                && latest.Revision == snapshot.Revision + 1;
+            if (!isMatchingRetraction)
             {
                 return;
             }
