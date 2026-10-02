@@ -20,9 +20,11 @@
 </app-park-detail-view>
 
 @if (park(); as currentPark) {
-  <app-passport-visit-quick-create
-    [(visible)]="visitDialogVisible"
-    [fixedParkId]="currentPark.id"
-    [fixedParkName]="currentPark.name">
-  </app-passport-visit-quick-create>
+  @defer (when visitDialogVisible) {
+    <app-passport-visit-quick-create
+      [(visible)]="visitDialogVisible"
+      [fixedParkId]="currentPark.id"
+      [fixedParkName]="currentPark.name">
+    </app-passport-visit-quick-create>
+  }
 }
