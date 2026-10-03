@@ -174,6 +174,47 @@ public sealed class HistoricalCanonicalResourceRetractionServiceTests
         sourceRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task RestoreAsync_WhenSourceRestoreFails_ShouldKeepFactWithdrawn()
+    {
+        HistoricalSubject subject = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+        HistoricalFact fact = PublicParkHistoryTestData.CreateOpeningFact(subject, 1998);
+        HistoricalSourceReference source = PublicParkHistoryTestData.CreateSource(fact);
+        HistoricalSourceReference sourceRetraction = CreateSourceRetraction(source);
+        HistoricalCanonicalResourceRetractionSnapshot snapshot = new(
+            fact,
+            new[] { source });
+        Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository = new(MockBehavior.Strict);
+        sourceRepository
+            .Setup(value => value.GetLatestRevisionAsync(
+                source.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(sourceRetraction);
+        sourceRepository
+            .Setup(value => value.AppendRevisionAsync(
+                It.Is<HistoricalSourceReference>(candidate => candidate.Id == source.Id
+                    && candidate.PublicationState == HistoricalPublicationState.Published),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException("source restoration failed"));
+        HistoricalCanonicalResourceRetractionService service =
+            HistoricalCanonicalResourceRetractionServiceTestFactory.Create(
+                factRepository.Object,
+                sourceRepository.Object);
+
+        AggregateException exception = await Assert.ThrowsAsync<AggregateException>(() =>
+            service.RestoreAsync(snapshot, CancellationToken.None));
+
+        Assert.Contains("fact remains withdrawn", exception.Message, StringComparison.Ordinal);
+        factRepository.VerifyNoOtherCalls();
+        sourceRepository.VerifyAll();
+    }
+
     private static HistoricalSourceReference CreateSourceRetraction(
         HistoricalSourceReference source)
     {

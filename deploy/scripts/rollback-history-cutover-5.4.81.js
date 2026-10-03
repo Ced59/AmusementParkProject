@@ -5,6 +5,7 @@ const frozenCollectionName = 'history-events-cutover-source-hist-04-v1';
 const narrativeCollectionName = 'historical-narratives';
 const factCollectionName = 'historical-facts';
 const sourceCollectionName = 'historical-sources';
+const relationCollectionName = 'historical-relations';
 const narrativeBackupName = 'historical-narratives-cutover-backup-hist-canonical-v1';
 const factBackupName = 'historical-facts-cutover-backup-hist-canonical-v1';
 const sourceBackupName = 'historical-sources-cutover-backup-hist-canonical-v1';
@@ -39,14 +40,21 @@ if (legacyInfo.length === 1
   throw new Error('The historical source namespace has an unsupported type.');
 }
 
-if (collectionExists(narrativeCollectionName)) {
-  const unfreezeResult = database.runCommand({
-    collMod: narrativeCollectionName,
-    validator: {},
-    validationLevel: 'off',
-  });
-  if (!unfreezeResult.ok) {
-    throw new Error('Could not restore historical narrative write authority.');
+for (const collectionName of [
+  narrativeCollectionName,
+  factCollectionName,
+  sourceCollectionName,
+  relationCollectionName,
+]) {
+  if (collectionExists(collectionName)) {
+    const unfreezeResult = database.runCommand({
+      collMod: collectionName,
+      validator: {},
+      validationLevel: 'off',
+    });
+    if (!unfreezeResult.ok) {
+      throw new Error(`Could not restore canonical history writes for '${collectionName}'.`);
+    }
   }
 }
 

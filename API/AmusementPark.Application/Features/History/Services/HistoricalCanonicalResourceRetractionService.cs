@@ -92,6 +92,13 @@ public sealed class HistoricalCanonicalResourceRetractionService
             }
         }
 
+        if (compensationExceptions.Count > 0)
+        {
+            throw new AggregateException(
+                "Canonical historical sources could not be fully restored safely; the fact remains withdrawn.",
+                compensationExceptions);
+        }
+
         if (snapshot.Fact is not null)
         {
             try

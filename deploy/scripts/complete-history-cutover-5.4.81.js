@@ -13,17 +13,12 @@ const supersededCollectionNames = [
   'historical-sources-cutover-backup-hist-canonical-v1',
   'historical-cutover-state-hist-canonical-v1',
 ];
-
-if (database.getCollectionInfos({ name: narrativeCollectionName }).length > 0) {
-  const unfreezeResult = database.runCommand({
-    collMod: narrativeCollectionName,
-    validator: {},
-    validationLevel: 'off',
-  });
-  if (!unfreezeResult.ok) {
-    throw new Error('Could not release canonical historical narrative writes.');
-  }
-}
+const editorialCollectionNames = [
+  narrativeCollectionName,
+  'historical-facts',
+  'historical-sources',
+  'historical-relations',
+];
 
 const narratives = database.getCollection(narrativeCollectionName);
 const facts = database.getCollection('historical-facts');
@@ -119,6 +114,22 @@ if (migrations.countDocuments({}) === 0
     && database.getCollectionInfos({ name: 'historical-migrations' }).length > 0) {
   migrations.drop();
   droppedCollections.push('historical-migrations');
+}
+
+for (const collectionName of editorialCollectionNames) {
+  const collectionInfo = database.getCollectionInfos({ name: collectionName });
+  if (collectionInfo.length !== 1 || collectionInfo[0].type !== 'collection') {
+    throw new Error(`Canonical history collection '${collectionName}' cannot be unfrozen safely.`);
+  }
+
+  const unfreezeResult = database.runCommand({
+    collMod: collectionName,
+    validator: {},
+    validationLevel: 'off',
+  });
+  if (!unfreezeResult.ok) {
+    throw new Error(`Could not release canonical history writes: ${JSON.stringify(unfreezeResult)}`);
+  }
 }
 
 printjson({

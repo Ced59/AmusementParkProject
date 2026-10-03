@@ -129,7 +129,8 @@ for required_filter in \
   "restoreDocuments(narratives, narrativeBackup)" \
   "restoreDocuments(facts, factBackup)" \
   "restoreDocuments(sources, sourceBackup)" \
-  "collMod: narrativeCollectionName" \
+  "relationCollectionName = 'historical-relations'" \
+  "collMod: collectionName" \
   "getCollection(legacyCollectionName).drop()" \
   "renameCollection(legacyCollectionName, false)"; do
   if ! grep -Fq "${required_filter}" "${rollback_script}"; then
@@ -140,11 +141,17 @@ done
 
 release_script="${deploy_root}/scripts/release-history-write-freeze-5.4.81.js"
 for required_release_step in \
-  "collMod: narrativeCollectionName" \
-  "validator: {}" \
-  "validationLevel: 'off'"; do
+  "editorialCollectionNames" \
+  "'historical-narratives'" \
+  "'historical-facts'" \
+  "'historical-sources'" \
+  "'historical-relations'" \
+  "collMod: collectionName" \
+  "validator: { \$expr: { \$eq: [1, 0] } }" \
+  "validationLevel: 'strict'" \
+  "validationAction: 'error'"; do
   if ! grep -Fq "${required_release_step}" "${release_script}"; then
-    echo "The historical candidate release is missing: ${required_release_step}" >&2
+    echo "The historical cleanup freeze is missing: ${required_release_step}" >&2
     exit 1
   fi
 done
@@ -176,11 +183,24 @@ for required_completion_step in \
   "relations.countDocuments(legacyRevisionFilter)" \
   "facts.deleteMany(legacyRevisionFilter)" \
   "sources.deleteMany(legacyRevisionFilter)" \
+  "for (const collectionName of editorialCollectionNames)" \
+  "collMod: collectionName" \
+  "validator: {}" \
+  "validationLevel: 'off'" \
   "deletedMigrationStates"; do
   if ! grep -Fq "${required_completion_step}" "${completion_script}"; then
     echo "Historical completion is missing its canonical cleanup step: ${required_completion_step}" >&2
     exit 1
   fi
 done
+
+legacy_delete_line="$(grep -n 'sources.deleteMany(legacyRevisionFilter)' "${completion_script}" | head -n 1 | cut -d: -f1)"
+completion_unfreeze_line="$(grep -n 'for (const collectionName of editorialCollectionNames)' "${completion_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${legacy_delete_line}" ] \
+  || [ -z "${completion_unfreeze_line}" ] \
+  || [ "${legacy_delete_line}" -ge "${completion_unfreeze_line}" ]; then
+  echo 'Canonical history writes must remain frozen until legacy evidence is deleted.' >&2
+  exit 1
+fi
 
 echo 'Historical history cutover deployment tests passed.'
