@@ -21,8 +21,8 @@
     },
     "exports": {
       "kicker": "Cópia dos teus dados",
-      "title": "Exporta o teu passaporte",
-      "description": "Transfere todas as visitas, registos de atrações, avaliações privadas, partilhas, comparações, favoritos, desejos e alertas. As tuas escolhas de e-mail e a prova de consentimento estão incluídas. O JSON versionado e o ZIP CSV usam apenas referências próprias da exportação, sem identificadores internos.",
+      "title": "Exporta os dados da tua conta",
+      "description": "Transfere num único ficheiro o teu perfil, avaliações globais, passaporte, partilhas, favoritos e alertas, viagens, perfis Park Fit e contribuições. O JSON versionado e o ZIP CSV usam nomes legíveis e apenas referências próprias da exportação, sem identificadores internos.",
       "retention": "O ficheiro permanece privado, requer a tua sessão e expira uma hora depois de ser gerado.",
       "actions": { "json": "Preparar o JSON", "csv": "Preparar os CSV", "download": "Transferir o ficheiro" },
       "status": { "generating": "A preparar a exportação…", "ready": "A tua exportação está pronta" },
@@ -31,7 +31,7 @@
         "status": "Não foi possível verificar o estado. Inicia-a novamente se necessário.",
         "download": "Não foi possível transferir o ficheiro ou este expirou.",
         "failed": "Não foi possível gerar a exportação. Podes iniciá-la novamente.",
-        "tooLarge": "O teu passaporte é demasiado grande para esta exportação. Nenhum dado foi truncado.",
+        "tooLarge": "Os dados da tua conta são demasiado grandes para esta exportação. Nenhum dado foi truncado.",
         "expired": "Esta exportação expirou. Prepara uma nova para a transferir."
       }
     },

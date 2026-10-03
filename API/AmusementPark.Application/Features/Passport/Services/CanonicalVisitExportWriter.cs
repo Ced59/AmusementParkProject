@@ -12,7 +12,7 @@ namespace AmusementPark.Application.Features.Passport.Services;
 
 public sealed class CanonicalVisitExportWriter : IVisitExportWriter
 {
-    public const int SchemaVersion = 4;
+    public const int SchemaVersion = 5;
     public const int MaximumArtifactBytes = 64 * 1024 * 1024;
     private static readonly UTF8Encoding Utf8WithoutBom = new UTF8Encoding(false);
 
@@ -39,7 +39,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             "yyyyMMdd-HHmmss-fffffff",
             CultureInfo.InvariantCulture);
         return new PassportExportArtifact(
-            $"amusement-park-passport-{date}.{extension}",
+            $"amusement-park-account-{date}.{extension}",
             contentType,
             content,
             SchemaVersion,
@@ -102,6 +102,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         writer.WriteEndArray();
         PassportShareLifecycleExportWriter.WriteJson(writer, request, references);
         PassportWatchlistExportWriter.WriteJson(writer, request, references);
+        FederatedAccountExportWriter.WriteJson(writer, request);
         writer.WriteEndObject();
         writer.Flush();
         return output.ToArray();
@@ -123,6 +124,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             WriteRideAssessmentsCsv(archive, request, references);
             PassportShareLifecycleExportWriter.WriteCsvEntries(archive, request, references);
             PassportWatchlistExportWriter.WriteCsvEntries(archive, request, references);
+            FederatedAccountExportWriter.WriteCsvEntries(archive, request);
         }
 
         return output.ToArray();
@@ -131,7 +133,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
     private static void WriteSchema(Utf8JsonWriter writer, PassportExportWriteRequest request, string format)
     {
         writer.WriteStartObject("schema");
-        writer.WriteString("name", "amusement-park-passport");
+        writer.WriteString("name", "amusement-park-account");
         writer.WriteNumber("version", SchemaVersion);
         writer.WriteString("format", format);
         writer.WriteString("exportedAtUtc", FormatUtc(request.ExportedAtUtc));
@@ -160,6 +162,11 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         }
 
         foreach (string fileName in PassportWatchlistExportWriter.CsvFileNames)
+        {
+            writer.WriteStringValue(fileName);
+        }
+
+        foreach (string fileName in FederatedAccountExportWriter.CsvFileNames)
         {
             writer.WriteStringValue(fileName);
         }

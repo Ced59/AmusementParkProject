@@ -9,6 +9,7 @@ import { OwnerImageUploadDialogComponent } from '@shared/components/owner-image-
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
 import { UserDto } from '@app/models/users/user_dto';
+import { PassportExportPanelComponent } from '@features/profile/passport/components/passport-export-panel/passport-export-panel.component';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -119,6 +120,18 @@ describe('ProfilePageComponent', () => {
     expect(fixture.nativeElement.querySelector('.profile-passport-entry--collections button')).toBeTruthy();
     expect(fixture.nativeElement.querySelector('.profile-passport-entry--notifications button')).toBeTruthy();
     expect(fixture.nativeElement.querySelector('.profile-passport-entry--trips button')).toBeTruthy();
+  });
+
+  it('makes the federated account export directly available from the profile tab', () => {
+    fixture.detectChanges();
+    const stateFacade: ProfilePageStateFacade = fixture.debugElement.injector.get(ProfilePageStateFacade);
+    stateFacade.setUser(createUser());
+    fixture.detectChanges();
+
+    const exportPanel = fixture.debugElement.query(By.directive(PassportExportPanelComponent));
+
+    expect(exportPanel).toBeTruthy();
+    expect(exportPanel.nativeElement.id).toBe('account-export');
   });
 
   it('navigates from the profile to the localized passport overview', () => {

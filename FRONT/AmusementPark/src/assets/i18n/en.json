@@ -475,8 +475,8 @@
     },
     "exports": {
       "kicker": "Your data copy",
-      "title": "Export your passport",
-      "description": "Download all your visits, ride entries, private ratings, shares, comparisons, favourites, wish lists and alerts. Your email choices and consent proof are included. The versioned JSON and CSV ZIP use export-only references, without internal identifiers.",
+      "title": "Export your account data",
+      "description": "Download your profile, global ratings, passport, shares, favourites and alerts, trips, Park Fit profiles and contributions in one file. The versioned JSON and CSV ZIP use readable names and export-only references, without internal identifiers.",
       "retention": "The file stays private, requires your signed-in session and expires one hour after it is generated.",
       "actions": {
         "json": "Prepare JSON",
@@ -492,7 +492,7 @@
         "status": "The export status could not be checked. Start it again if needed.",
         "download": "The file could not be downloaded or has expired.",
         "failed": "The export could not be generated. You can start it again.",
-        "tooLarge": "Your passport is too large for this export. No data was truncated.",
+        "tooLarge": "Your account data is too large for this export. No data was truncated.",
         "expired": "This export has expired. Prepare a new one to download it."
       }
     },

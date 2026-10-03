@@ -102,6 +102,14 @@ public sealed class PassportExportJobHandlerTests
                     ReferenceEquals(budget, observedSourceBudget)),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(PassportWatchlistExportData.Empty);
+        Mock<IFederatedAccountExportSource> account =
+            new Mock<IFederatedAccountExportSource>(MockBehavior.Strict);
+        account.Setup(source => source.LoadAsync(
+                "user-1",
+                It.Is<PassportExportSourceBudget>(budget =>
+                    ReferenceEquals(budget, observedSourceBudget)),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(FederatedAccountExportData.Empty);
         Mock<IVisitExportWriter> writer = new Mock<IVisitExportWriter>(MockBehavior.Strict);
         writer.Setup(value => value.Write(It.Is<PassportExportWriteRequest>(request =>
                 request.ExportId == exportId
@@ -110,6 +118,7 @@ public sealed class PassportExportJobHandlerTests
                 && request.RideOccurrences.Count == 0
                 && request.ShareLifecycle.Publications.Count == 0
                 && request.WatchlistLifecycle.CollectionEntries.Count == 0
+                && request.AccountData.Ratings.Count == 0
                 && request.Parks["park-1"].Name == "Test Park")))
             .Returns(artifact);
         Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
@@ -122,6 +131,7 @@ public sealed class PassportExportJobHandlerTests
             targets.Object,
             shareLifecycle.Object,
             watchlistLifecycle.Object,
+            account.Object,
             writer.Object,
             clock.Object);
         PassportExportJobPayload payload = new PassportExportJobPayload(
@@ -147,6 +157,7 @@ public sealed class PassportExportJobHandlerTests
         targets.VerifyAll();
         shareLifecycle.VerifyAll();
         watchlistLifecycle.VerifyAll();
+        account.VerifyAll();
         writer.VerifyAll();
     }
 
@@ -201,6 +212,7 @@ public sealed class PassportExportJobHandlerTests
             Mock.Of<IVisitTargetResolver>(MockBehavior.Strict),
             Mock.Of<IPassportShareLifecycleExportSource>(MockBehavior.Strict),
             Mock.Of<IPassportWatchlistExportSource>(MockBehavior.Strict),
+            Mock.Of<IFederatedAccountExportSource>(MockBehavior.Strict),
             Mock.Of<IVisitExportWriter>(MockBehavior.Strict),
             clock.Object);
         PassportExportJobPayload payload = new PassportExportJobPayload(
@@ -235,6 +247,7 @@ public sealed class PassportExportJobHandlerTests
             Mock.Of<IVisitTargetResolver>(MockBehavior.Strict),
             Mock.Of<IPassportShareLifecycleExportSource>(MockBehavior.Strict),
             Mock.Of<IPassportWatchlistExportSource>(MockBehavior.Strict),
+            Mock.Of<IFederatedAccountExportSource>(MockBehavior.Strict),
             Mock.Of<IVisitExportWriter>(MockBehavior.Strict),
             Mock.Of<IPassportClock>(MockBehavior.Strict));
         PassportExportJobPayload payload = new PassportExportJobPayload(

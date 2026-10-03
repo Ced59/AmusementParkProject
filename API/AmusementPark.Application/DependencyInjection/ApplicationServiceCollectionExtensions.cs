@@ -295,6 +295,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IPassportHistoricalTargetResolver, PassportHistoricalTargetResolver>();
         services.AddSingleton<IVisitExportWriter, CanonicalVisitExportWriter>();
         services.AddScoped<IPassportWatchlistExportSource, PassportWatchlistExportSource>();
+        services.AddScoped<IAccountTripExportSource, AccountTripExportSource>();
+        services.AddScoped<IFederatedAccountExportSource, FederatedAccountExportSource>();
         services.AddScoped<PassportExportScheduler>();
         services.AddDurableBackgroundJobHandler<PassportExportJobHandler>();
         services.AddScoped<VisitPurgeScheduler>();

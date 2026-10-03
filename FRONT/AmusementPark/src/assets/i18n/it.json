@@ -475,8 +475,8 @@
     },
     "exports": {
       "kicker": "Copia dei tuoi dati",
-      "title": "Esporta il tuo passaporto",
-      "description": "Scarica tutte le visite, i passaggi, le valutazioni private, le condivisioni, i confronti, i preferiti, i desideri e gli avvisi. Sono incluse le tue scelte e-mail e la prova del consenso. Il JSON versionato e lo ZIP CSV usano solo riferimenti propri dell’esportazione, senza identificativi interni.",
+      "title": "Esporta i dati del tuo account",
+      "description": "Scarica in un unico file il profilo, le valutazioni globali, il passaporto, le condivisioni, i preferiti e gli avvisi, i viaggi, i profili Park Fit e i contributi. Il JSON versionato e lo ZIP CSV usano nomi leggibili e solo riferimenti propri dell’esportazione, senza identificativi interni.",
       "retention": "Il file resta privato, richiede l’accesso al tuo account e scade un’ora dopo la generazione.",
       "actions": {
         "json": "Prepara il JSON",
@@ -492,7 +492,7 @@
         "status": "Non è stato possibile verificarne lo stato. Se serve, avviala di nuovo.",
         "download": "Non è stato possibile scaricare il file oppure è scaduto.",
         "failed": "Non è stato possibile generare l’esportazione. Puoi avviarla di nuovo.",
-        "tooLarge": "Il tuo passaporto è troppo grande per questa esportazione. Nessun dato è stato troncato.",
+        "tooLarge": "I dati del tuo account sono troppo grandi per questa esportazione. Nessun dato è stato troncato.",
         "expired": "Questa esportazione è scaduta. Preparane una nuova per scaricarla."
       }
     },

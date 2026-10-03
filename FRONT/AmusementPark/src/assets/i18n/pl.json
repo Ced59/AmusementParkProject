@@ -475,8 +475,8 @@
     },
     "exports": {
       "kicker": "Kopia twoich danych",
-      "title": "Wyeksportuj swój paszport",
-      "description": "Pobierz wszystkie wizyty, przejazdy, prywatne oceny, udostępnienia, porównania, ulubione miejsca, plany i alerty. Eksport obejmuje też ustawienia e-mail oraz dowód zgody. Wersjonowany plik JSON i archiwum ZIP CSV używają wyłącznie odwołań właściwych dla eksportu, bez wewnętrznych identyfikatorów.",
+      "title": "Wyeksportuj dane swojego konta",
+      "description": "Pobierz w jednym pliku swój profil, oceny ogólne, paszport, udostępnienia, ulubione miejsca i alerty, podróże, profile Park Fit oraz własne treści. Wersjonowany plik JSON i archiwum ZIP CSV używają czytelnych nazw oraz wyłącznie odwołań właściwych dla eksportu, bez wewnętrznych identyfikatorów.",
       "retention": "Plik pozostaje prywatny, wymaga zalogowania i wygasa godzinę po wygenerowaniu.",
       "actions": {
         "json": "Przygotuj JSON",
@@ -492,7 +492,7 @@
         "status": "Nie udało się sprawdzić stanu eksportu. W razie potrzeby uruchom go ponownie.",
         "download": "Nie udało się pobrać pliku albo plik wygasł.",
         "failed": "Nie udało się wygenerować eksportu. Możesz uruchomić go ponownie.",
-        "tooLarge": "Twój paszport jest zbyt duży dla tego eksportu. Żadne dane nie zostały ucięte.",
+        "tooLarge": "Dane twojego konta są zbyt duże dla tego eksportu. Żadne dane nie zostały ucięte.",
         "expired": "Ten eksport wygasł. Przygotuj nowy, aby go pobrać."
       }
     },

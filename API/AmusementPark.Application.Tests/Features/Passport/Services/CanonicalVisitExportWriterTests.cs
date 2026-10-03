@@ -81,18 +81,27 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.Equal(
             new[]
             {
+                "account-linked-logins.csv",
+                "account-profile.csv",
                 "collections.csv",
+                "comment-bodies.csv",
+                "comments.csv",
                 "comparison-invitations.csv",
                 "comparison-missed-items.csv",
                 "comparison-parks.csv",
                 "comparison-ratings.csv",
                 "comparison-years.csv",
                 "comparisons.csv",
+                "contributed-image-localizations.csv",
+                "contributed-images.csv",
+                "global-ratings.csv",
+                "historical-existence-reports.csv",
                 "notification-delivery-attempts.csv",
                 "notification-digest-entries.csv",
                 "notification-digests.csv",
                 "notification-email-preference.csv",
                 "notifications.csv",
+                "park-fit-profiles.csv",
                 "park-items.csv",
                 "parks.csv",
                 "passport-share-selections.csv",
@@ -101,6 +110,12 @@ public sealed class CanonicalVisitExportWriterTests
                 "schema.json",
                 "share-publications.csv",
                 "share-snapshots.csv",
+                "social-share-events.csv",
+                "trip-candidate-parks.csv",
+                "trip-day-blocks.csv",
+                "trip-days.csv",
+                "trip-decisions.csv",
+                "trips.csv",
                 "visit-assessments.csv",
                 "visits.csv",
                 "watch-subscriptions.csv",
@@ -134,8 +149,79 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.DoesNotContain("01JTESTOCCURRENCE0000000000", content, StringComparison.Ordinal);
         Assert.DoesNotContain("park-1", content, StringComparison.Ordinal);
         Assert.DoesNotContain("item-1", content, StringComparison.Ordinal);
+        Assert.Contains("amusement-park-account", content, StringComparison.Ordinal);
         Assert.EndsWith(".zip", artifact.FileName, StringComparison.Ordinal);
         Assert.DoesNotContain("01234567", artifact.FileName, StringComparison.Ordinal);
+    }
+
+    [Theory]
+    [InlineData(PassportExportFormat.Json)]
+    [InlineData(PassportExportFormat.Csv)]
+    public void Write_AccountSectionsUseReadableDataWithoutAccountIdentifiers(
+        PassportExportFormat format)
+    {
+        FederatedAccountExportData accountData = new FederatedAccountExportData(
+            new AccountIdentityExportData(
+                "Camille",
+                "Martin",
+                "CoasterCamille",
+                "camille@example.com",
+                true,
+                false,
+                "fr",
+                "Metric",
+                true,
+                new[] { "User" },
+                new[]
+                {
+                    new AccountLinkedLoginExportData(
+                        "Google",
+                        "camille@example.com",
+                        true,
+                        "Camille",
+                        NowUtc,
+                        NowUtc),
+                },
+                NowUtc,
+                NowUtc,
+                NowUtc,
+                NowUtc),
+            new[]
+            {
+                new AccountRatingExportData(
+                    RatingTargetType.ParkItem,
+                    "Silver Star",
+                    "Europa Park",
+                    ParkItemCategory.Attraction,
+                    ParkItemType.RollerCoaster,
+                    4.5,
+                    NowUtc),
+            },
+            new[]
+            {
+                new AccountParkFitProfileExportData(
+                    "Enfant",
+                    120,
+                    8,
+                    true,
+                    40,
+                    NowUtc,
+                    NowUtc),
+            },
+            Array.Empty<AccountTripExportData>(),
+            AccountCommunityExportData.Empty);
+        PassportExportWriteRequest request = CreateRequest(format, accountData);
+
+        PassportExportArtifact artifact = new CanonicalVisitExportWriter().Write(request);
+
+        string content = ReadAllText(artifact);
+        Assert.Contains("CoasterCamille", content, StringComparison.Ordinal);
+        Assert.Contains("camille@example.com", content, StringComparison.Ordinal);
+        Assert.Contains("Silver Star", content, StringComparison.Ordinal);
+        Assert.Contains("Enfant", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("user-1", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("provider-user-id", content, StringComparison.Ordinal);
+        Assert.StartsWith("amusement-park-account-", artifact.FileName, StringComparison.Ordinal);
     }
 
     [Theory]
@@ -418,7 +504,9 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.DoesNotContain(secondRequest.ExportId, second.FileName, StringComparison.Ordinal);
     }
 
-    private static PassportExportWriteRequest CreateRequest(PassportExportFormat format)
+    private static PassportExportWriteRequest CreateRequest(
+        PassportExportFormat format,
+        FederatedAccountExportData? accountData = null)
     {
         Visit visit = Visit.Create(
             VisitId.Parse("01JTESTVISIT00000000000000"),
@@ -468,7 +556,8 @@ public sealed class CanonicalVisitExportWriterTests
             new Dictionary<string, Park>(StringComparer.Ordinal) { [park.Id] = park },
             new Dictionary<string, VisitTarget>(StringComparer.Ordinal) { [target.ParkItemId] = target },
             PassportShareLifecycleExportData.Empty,
-            PassportWatchlistExportData.Empty);
+            PassportWatchlistExportData.Empty,
+            accountData ?? FederatedAccountExportData.Empty);
     }
 
     private static IReadOnlyCollection<string> ReadPassportSelectionParkNames(
