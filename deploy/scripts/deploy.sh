@@ -248,6 +248,38 @@ prepare_personal_ranking_cutover() {
       < ./scripts/freeze-legacy-ranking-shares-5.2.6.js
 }
 
+assert_canonical_history_authority() {
+  local authority_ready=""
+  authority_ready="$(compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      --eval '
+        const d=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark");
+        const obsolete=["historyEvents","history-events-cutover-source-hist-04-v1","history-events-backup-hist-04-v1","historical-narratives-cutover-backup-hist-canonical-v1","historical-facts-cutover-backup-hist-canonical-v1","historical-sources-cutover-backup-hist-canonical-v1","historical-cutover-state-hist-canonical-v1","historical-migrations","historical-migration-anomalies"];
+        const canonical=["historical-narratives","historical-facts","historical-sources","historical-relations"];
+        const names=new Set(d.getCollectionInfos().map(info => info.name));
+        const writable=canonical.every(name => { const info=d.getCollectionInfos({name})[0]; return info && info.type === "collection" && info.options && info.options.validationLevel === "off"; });
+        const narratives=d.getCollection("historical-narratives");
+        const facts=d.getCollection("historical-facts");
+        const sources=d.getCollection("historical-sources");
+        const ready=!obsolete.some(name => names.has(name)) && writable
+          && facts.countDocuments({revisionOrigin:"LegacyMigration"}) === 0
+          && sources.countDocuments({revisionOrigin:"LegacyMigration"}) === 0
+          && narratives.countDocuments({$or:[{migrationVersion:{$ne:"hist-canonical-v2"}},{canonicalizationState:{$nin:["Canonicalized","Blocked"]}}]}) === 0
+          && facts.countDocuments({timelineSortOrdinal:{$exists:false}}) === 0
+          && facts.countDocuments({"subject.type":{$in:["Park","ParkItem","ParkZone"]},"subject.contextParkId":{$exists:false}}) === 0;
+        print(ready ? "true" : "false");' \
+    | tail -n 1)"
+  if [ "${authority_ready}" != "true" ]; then
+    echo "Canonical historical authority is not fully finalized; refusing deployment and preserving recovery artifacts." >&2
+    return 1
+  fi
+}
+
 recover_interrupted_unexposed_deployment() {
   if ! python3 ./scripts/deployment_transaction.py rollback-safe; then
     return 0
@@ -463,6 +495,7 @@ esac
 
 recover_interrupted_unexposed_deployment
 python3 ./scripts/deployment_transaction.py prepare
+assert_canonical_history_authority
 if python3 ./scripts/deployment_transaction.py rollback-safe; then
   prepare_personal_ranking_cutover
 else
