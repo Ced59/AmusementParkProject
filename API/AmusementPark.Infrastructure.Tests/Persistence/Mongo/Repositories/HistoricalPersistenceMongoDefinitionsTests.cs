@@ -209,9 +209,6 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Equal(
             HistoricalPublicationState.Published.ToString(),
             lifecycle["publicationState"].AsString);
-        Assert.DoesNotContain(
-            HistoricalPublicationState.LegacyPublishedPendingReview.ToString(),
-            pipeline.ToJson());
         BsonArray publicSubjects = conditions[1]["$or"].AsBsonArray;
         Assert.Contains(
             publicSubjects,

@@ -111,32 +111,6 @@ public sealed class HistoricalSourceReferenceTests
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
     }
 
-    [Fact]
-    public void Constructor_WhenLegacyMigrationUsesDedicatedInitialState_ShouldAcceptSource()
-    {
-        HistoricalSourceReference source = new HistoricalSourceReference(
-            Guid.NewGuid(),
-            1,
-            HistoricalSourceType.Archive,
-            "Archive du parc",
-            "Archives municipales",
-            "https://example.com/archive",
-            null,
-            new DateOnly(1998, 5, 12),
-            new DateOnly(2026, 9, 25),
-            "fr",
-            null,
-            new[] { HistoricalSourceScope.Period },
-            null,
-            HistoricalSourceAccessibility.Accessible,
-            HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            RecordedAtUtc,
-            HistoricalRevisionOrigin.LegacyMigration);
-
-        Assert.Equal(HistoricalRevisionOrigin.LegacyMigration, source.RevisionOrigin);
-    }
-
     private static HistoricalSourceReference CreatePublishedSource(
         HistoricalSourceAccessibility accessibility = HistoricalSourceAccessibility.Archived,
         HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,

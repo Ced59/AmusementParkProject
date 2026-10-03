@@ -30,7 +30,7 @@ namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Services;
 public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
 {
     [Fact]
-    public async Task ApplyAsync_WhenMigratedNarrativeChanges_ShouldRetractCanonicalFactFirst()
+    public async Task ApplyAsync_WhenCanonicalNarrativeChanges_ShouldRetractCanonicalFactFirst()
     {
         Guid factId = Guid.NewGuid();
         HistoryEvent existing = BuildExistingEvent();
@@ -39,7 +39,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
         context.HistoricalFactRepository
             .Setup(repository => repository.GetLatestRevisionAsync(factId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(CreateLegacyCanonicalFact(factId, HistoricalSubjectType.Park, "park-1"));
+            .ReturnsAsync(CreateCanonicalFact(factId, HistoricalSubjectType.Park, "park-1"));
         context.HistoricalFactRepository
             .Setup(repository => repository.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == factId
@@ -73,13 +73,13 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
-    public async Task ApplyAsync_WhenMigratedNarrativeUpdateFails_ShouldRestoreCanonicalFact()
+    public async Task ApplyAsync_WhenCanonicalNarrativeUpdateFails_ShouldRestoreCanonicalFact()
     {
         Guid factId = Guid.NewGuid();
         HistoryEvent existing = BuildExistingEvent();
         existing.CanonicalFactId = factId;
         existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
-        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(
+        HistoricalFact canonicalFact = CreateCanonicalFact(
             factId,
             HistoricalSubjectType.Park,
             "park-1");
@@ -104,9 +104,9 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
             .Setup(repository => repository.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == factId
                     && fact.Revision == retraction.Revision + 1
-                    && fact.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                    && fact.PublicationState == HistoricalPublicationState.Published),
                 It.Is<HistoricalReviewEvent>(review => review.EventType
-                    == HistoricalReviewEventType.SubmittedForEditorialReview),
+                    == HistoricalReviewEventType.Published),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
         context.FailNextHistoryUpdate(new TimeoutException("write failed before commit"));
@@ -132,7 +132,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         HistoryEvent existing = BuildExistingEvent();
         existing.CanonicalFactId = factId;
         existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
-        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(
+        HistoricalFact canonicalFact = CreateCanonicalFact(
             factId,
             HistoricalSubjectType.Park,
             "park-1");
@@ -161,7 +161,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
             .Setup(repository => repository.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == factId
                     && fact.Revision == retraction.Revision + 1
-                    && fact.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                    && fact.PublicationState == HistoricalPublicationState.Published),
                 It.IsAny<HistoricalReviewEvent>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
@@ -182,13 +182,13 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
-    public async Task ApplyAsync_WhenMigratedNarrativeUpdateCommitsWithoutAcknowledgement_ShouldCanonicalizeCommittedUpdate()
+    public async Task ApplyAsync_WhenCanonicalNarrativeUpdateCommitsWithoutAcknowledgement_ShouldCanonicalizeCommittedUpdate()
     {
         Guid factId = Guid.NewGuid();
         HistoryEvent existing = BuildExistingEvent();
         existing.CanonicalFactId = factId;
         existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
-        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(
+        HistoricalFact canonicalFact = CreateCanonicalFact(
             factId,
             HistoricalSubjectType.Park,
             "park-1");
@@ -693,12 +693,13 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         };
     }
 
-    private static HistoricalFact CreateLegacyCanonicalFact(
+    private static HistoricalFact CreateCanonicalFact(
         Guid factId,
         HistoricalSubjectType subjectType,
         string subjectId)
     {
         DateTime recordedAtUtc = DateTime.UtcNow.AddMinutes(-1);
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(1979));
         return new HistoricalFact(
             factId,
             new HistoricalSubject(
@@ -707,29 +708,51 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 "Cible historique",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForYear(1979)),
-            HistoricalFactState.Unverified,
+            period,
+            HistoricalFactState.Verified,
             HistoricalImportance.Standard,
-            HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            HistoricalLocalizationPolicy.SupportedLanguageCodes
-                .Select(static code => new HistoricalLocalizedText(code, "À vérifier."))
-                .ToArray(),
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            Array.Empty<HistoricalLocalizedText>(),
             LifecycleBoundaryMeaning.FirstOperatingDay,
             null,
             null,
             null,
-            Array.Empty<HistoricalSourceRevisionReference>(),
+            new[]
+            {
+                new HistoricalSourceRevisionReference(
+                    Guid.Parse("44444444-4444-4444-4444-444444444444"),
+                    1,
+                    subjectType,
+                    subjectId,
+                    HistoricalFactType.Opening,
+                    period,
+                    HistoricalEvidencePosition.Supports,
+                    new[]
+                    {
+                        HistoricalSourceScope.SubjectIdentity,
+                        HistoricalSourceScope.FactType,
+                        HistoricalSourceScope.Period,
+                        HistoricalSourceScope.HistoricalLabel,
+                    },
+                    "Cible historique",
+                    null,
+                    null,
+                    null,
+                    null,
+                    LifecycleBoundaryMeaning.FirstOperatingDay,
+                    null,
+                    null),
+            },
             null,
             null,
             "history-1",
-            null,
-            null,
-            "hist-v1-legacy",
-            1,
-            null,
-            recordedAtUtc,
-            HistoricalRevisionOrigin.LegacyMigration);
+            recordedAtUtc.AddMinutes(-2),
+            recordedAtUtc.AddMinutes(-1),
+            "hist-v1",
+            4,
+            3,
+            recordedAtUtc);
     }
 
 }

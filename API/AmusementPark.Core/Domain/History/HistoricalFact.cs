@@ -42,7 +42,7 @@ public sealed class HistoricalFact
         ArgumentNullException.ThrowIfNull(period);
         ValidateEnums(type, state, importance, workflowState, publicationState, revisionOrigin);
         HistoricalFactSubjectTypeValidator.Validate(subject.Type, type);
-        ValidateRevision(revision, supersedesRevision, workflowState, publicationState, revisionOrigin);
+        ValidateRevision(revision, supersedesRevision, workflowState, publicationState);
         EnsureUtc(recordedAtUtc);
         EnsureOptionalUtc(verifiedAtUtc);
         EnsureOptionalUtc(publishedAtUtc);
@@ -84,7 +84,6 @@ public sealed class HistoricalFact
             state,
             workflowState,
             publicationState,
-            revisionOrigin,
             normalizedSourceReferences,
             normalizedExplanations,
             verifiedAtUtc,
@@ -231,8 +230,7 @@ public sealed class HistoricalFact
         int revision,
         int? supersedesRevision,
         HistoricalEditorialWorkflowState workflowState,
-        HistoricalPublicationState publicationState,
-        HistoricalRevisionOrigin revisionOrigin)
+        HistoricalPublicationState publicationState)
     {
         bool valid = revision >= 1
             && (revision == 1
@@ -246,31 +244,14 @@ public sealed class HistoricalFact
         }
 
 
-        bool validInitialRevision = revisionOrigin switch
-        {
-            HistoricalRevisionOrigin.Ordinary => revision != 1
-                || (workflowState == HistoricalEditorialWorkflowState.Draft
-                    && publicationState == HistoricalPublicationState.Draft),
-            HistoricalRevisionOrigin.LegacyMigration => revision != 1
-                || (workflowState == HistoricalEditorialWorkflowState.EditorialReview
-                    && publicationState is HistoricalPublicationState.LegacyPublishedPendingReview
-                        or HistoricalPublicationState.Suppressed),
-            _ => false,
-        };
-        bool validPublicationForOrigin = revisionOrigin switch
-        {
-            HistoricalRevisionOrigin.Ordinary => publicationState
-                is not HistoricalPublicationState.LegacyPublishedPendingReview
-                    and not HistoricalPublicationState.Suppressed,
-            HistoricalRevisionOrigin.LegacyMigration => publicationState
-                != HistoricalPublicationState.Draft,
-            _ => false,
-        };
-        if (!validInitialRevision || !validPublicationForOrigin)
+        bool validInitialRevision = revision != 1
+            || workflowState == HistoricalEditorialWorkflowState.Draft
+                && publicationState == HistoricalPublicationState.Draft;
+        if (!validInitialRevision)
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidRevision,
-                "A historical fact must start as a draft or through the explicit legacy migration state.");
+                "A historical fact must start as an ordinary draft.");
         }
     }
 
@@ -477,7 +458,6 @@ public sealed class HistoricalFact
         HistoricalFactState state,
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState,
-        HistoricalRevisionOrigin revisionOrigin,
         IReadOnlyCollection<HistoricalSourceRevisionReference> sourceReferences,
         IReadOnlyCollection<HistoricalLocalizedText> explanations,
         DateTime? verifiedAtUtc,
@@ -508,11 +488,10 @@ public sealed class HistoricalFact
             throw Invalid(HistoricalPersistenceErrorCodes.MissingSource, "A verified historical fact requires evidence.");
         }
 
-        bool ordinaryReviewRequiresEvidence = revisionOrigin == HistoricalRevisionOrigin.Ordinary
-            && workflowState is HistoricalEditorialWorkflowState.SourcesAttached
-                or HistoricalEditorialWorkflowState.EditorialReview
-                or HistoricalEditorialWorkflowState.StructuredValidation;
-        if (ordinaryReviewRequiresEvidence && sourceReferences.Count == 0)
+        bool reviewRequiresEvidence = workflowState is HistoricalEditorialWorkflowState.SourcesAttached
+            or HistoricalEditorialWorkflowState.EditorialReview
+            or HistoricalEditorialWorkflowState.StructuredValidation;
+        if (reviewRequiresEvidence && sourceReferences.Count == 0)
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.MissingSource,
@@ -542,34 +521,20 @@ public sealed class HistoricalFact
                 && sourceReferences.Count > 0
                 && publishedAtUtc.HasValue
                 && methodologyVersion is not null,
-            HistoricalPublicationState.LegacyPublishedPendingReview => (workflowState
-                    is HistoricalEditorialWorkflowState.EditorialReview
-                        or HistoricalEditorialWorkflowState.StructuredValidation)
-                && state == HistoricalFactState.Unverified
-                && methodologyVersion is not null,
-            HistoricalPublicationState.Suppressed => revisionOrigin == HistoricalRevisionOrigin.LegacyMigration
-                && workflowState == HistoricalEditorialWorkflowState.EditorialReview
-                && state == HistoricalFactState.Unverified
-                && subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed
-                && methodologyVersion is not null,
             HistoricalPublicationState.Withdrawn => workflowState == HistoricalEditorialWorkflowState.Retracted
-                && state == HistoricalFactState.Retracted
-                && (revisionOrigin == HistoricalRevisionOrigin.Ordinary
-                    || methodologyVersion is not null),
+                && state == HistoricalFactState.Retracted,
             _ => false,
         };
         if (!publicationIsValid
             || (subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed
-                && publicationState is HistoricalPublicationState.Published
-                    or HistoricalPublicationState.LegacyPublishedPendingReview))
+                && publicationState == HistoricalPublicationState.Published))
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidFactState,
                 "The historical fact proof, workflow and publication states are inconsistent.");
         }
 
-        bool requiresPublicExplanation = (publicationState is HistoricalPublicationState.Published
-                or HistoricalPublicationState.LegacyPublishedPendingReview)
+        bool requiresPublicExplanation = publicationState == HistoricalPublicationState.Published
             && (state is HistoricalFactState.Probable
                 or HistoricalFactState.Disputed
                 or HistoricalFactState.Unverified);

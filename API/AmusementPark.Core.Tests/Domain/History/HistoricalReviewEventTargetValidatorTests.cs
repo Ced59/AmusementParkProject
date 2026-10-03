@@ -78,70 +78,10 @@ public sealed class HistoricalReviewEventTargetValidatorTests
     }
 
     [Fact]
-    public void ValidateFactTarget_WhenInitialLegacyRevisionUsesEditorialSubmission_ShouldRejectEvent()
-    {
-        HistoricalFact fact = CreateLegacyFact();
-        HistoricalReviewEvent reviewEvent = CreateEvent(
-            HistoricalReviewResourceType.Fact,
-            fact.Id,
-            fact.Revision,
-            HistoricalReviewEventType.SubmittedForEditorialReview);
-
-        HistoricalPersistenceValidationException exception =
-            Assert.Throws<HistoricalPersistenceValidationException>(() =>
-                HistoricalReviewEventTargetValidator.ValidateFactTarget(reviewEvent, fact));
-
-        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidReviewEvent, exception.ErrorCode);
-    }
-
-    [Fact]
-    public void ValidateSourceTarget_WhenInitialLegacyRevisionUsesEditorialSubmission_ShouldRejectEvent()
-    {
-        HistoricalSourceReference source = CreateLegacySource();
-        HistoricalReviewEvent reviewEvent = CreateEvent(
-            HistoricalReviewResourceType.Source,
-            source.Id,
-            source.Revision,
-            HistoricalReviewEventType.SubmittedForEditorialReview);
-
-        HistoricalPersistenceValidationException exception =
-            Assert.Throws<HistoricalPersistenceValidationException>(() =>
-                HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source));
-
-        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidReviewEvent, exception.ErrorCode);
-    }
-
-    [Fact]
-    public void ValidateFactTarget_WhenInitialLegacyRevisionUsesMigrated_ShouldAcceptEvent()
-    {
-        HistoricalFact fact = CreateLegacyFact();
-        HistoricalReviewEvent reviewEvent = CreateEvent(
-            HistoricalReviewResourceType.Fact,
-            fact.Id,
-            fact.Revision,
-            HistoricalReviewEventType.Migrated);
-
-        HistoricalReviewEventTargetValidator.ValidateFactTarget(reviewEvent, fact);
-    }
-
-    [Fact]
-    public void ValidateSourceTarget_WhenInitialLegacyRevisionUsesMigrated_ShouldAcceptEvent()
-    {
-        HistoricalSourceReference source = CreateLegacySource();
-        HistoricalReviewEvent reviewEvent = CreateEvent(
-            HistoricalReviewResourceType.Source,
-            source.Id,
-            source.Revision,
-            HistoricalReviewEventType.Migrated);
-
-        HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source);
-    }
-
-    [Fact]
     public void ValidateFactTransition_WhenEditorialReviewDoesNotAdvance_ShouldRequireReviewUpdate()
     {
-        HistoricalFact predecessor = CreateLegacyFact();
-        HistoricalFact fact = CreateLegacyFact(revision: 2);
+        HistoricalFact predecessor = CreateReviewFact();
+        HistoricalFact fact = CreateReviewFact(revision: 3);
         HistoricalReviewEvent reviewEvent = CreateEvent(
             HistoricalReviewResourceType.Fact,
             fact.Id,
@@ -161,8 +101,8 @@ public sealed class HistoricalReviewEventTargetValidatorTests
     [Fact]
     public void ValidateFactTransition_WhenEditorialReviewIsUpdated_ShouldAcceptReviewUpdate()
     {
-        HistoricalFact predecessor = CreateLegacyFact();
-        HistoricalFact fact = CreateLegacyFact(revision: 2);
+        HistoricalFact predecessor = CreateReviewFact();
+        HistoricalFact fact = CreateReviewFact(revision: 3);
         HistoricalReviewEvent reviewEvent = CreateEvent(
             HistoricalReviewResourceType.Fact,
             fact.Id,
@@ -176,8 +116,8 @@ public sealed class HistoricalReviewEventTargetValidatorTests
     [Fact]
     public void ValidateSourceTransition_WhenEditorialReviewDoesNotAdvance_ShouldRequireReviewUpdate()
     {
-        HistoricalSourceReference predecessor = CreateLegacySource();
-        HistoricalSourceReference source = CreateLegacySource(revision: 2);
+        HistoricalSourceReference predecessor = CreateReviewSource();
+        HistoricalSourceReference source = CreateReviewSource(revision: 3);
         HistoricalReviewEvent reviewEvent = CreateEvent(
             HistoricalReviewResourceType.Source,
             source.Id,
@@ -197,8 +137,8 @@ public sealed class HistoricalReviewEventTargetValidatorTests
     [Fact]
     public void ValidateSourceTransition_WhenEditorialReviewIsUpdated_ShouldAcceptReviewUpdate()
     {
-        HistoricalSourceReference predecessor = CreateLegacySource();
-        HistoricalSourceReference source = CreateLegacySource(revision: 2);
+        HistoricalSourceReference predecessor = CreateReviewSource();
+        HistoricalSourceReference source = CreateReviewSource(revision: 3);
         HistoricalReviewEvent reviewEvent = CreateEvent(
             HistoricalReviewResourceType.Source,
             source.Id,
@@ -338,7 +278,7 @@ public sealed class HistoricalReviewEventTargetValidatorTests
             RecordedAtUtc);
     }
 
-    private static HistoricalFact CreateLegacyFact(int revision = 1)
+    private static HistoricalFact CreateReviewFact(int revision = 2)
     {
         Guid factId = Guid.Parse("22222222-2222-2222-2222-222222222222");
         return new HistoricalFact(
@@ -353,38 +293,62 @@ public sealed class HistoricalReviewEventTargetValidatorTests
             HistoricalFactState.Unverified,
             HistoricalImportance.Major,
             HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalPublicationState.Draft,
             HistoricalLocalizationPolicy.SupportedLanguageCodes
                 .Select(static languageCode => new HistoricalLocalizedText(
                     languageCode,
-                    "Contenu historique hérité en attente de revue."))
+                    "Contenu historique en attente de revue."))
                 .ToArray(),
             LifecycleBoundaryMeaning.FirstOperatingDay,
             null,
             null,
             null,
-            Array.Empty<HistoricalSourceRevisionReference>(),
+            new[]
+            {
+                new HistoricalSourceRevisionReference(
+                    Guid.Parse("44444444-4444-4444-4444-444444444444"),
+                    1,
+                    HistoricalSubjectType.Park,
+                    "park-1",
+                    HistoricalFactType.Opening,
+                    HistoricalPeriod.Point(HistoricalDate.ForYear(1998)),
+                    HistoricalEvidencePosition.Supports,
+                    new[]
+                    {
+                        HistoricalSourceScope.SubjectIdentity,
+                        HistoricalSourceScope.FactType,
+                        HistoricalSourceScope.Period,
+                        HistoricalSourceScope.HistoricalLabel,
+                    },
+                    "Parc exemple",
+                    null,
+                    null,
+                    null,
+                    null,
+                    LifecycleBoundaryMeaning.FirstOperatingDay,
+                    null,
+                    null),
+            },
             null,
             null,
-            "legacy-event-1",
+            "history-opening-1998",
             null,
             null,
-            "hist-v1-legacy",
+            null,
             revision,
-            revision == 1 ? null : revision - 1,
-            RecordedAtUtc,
-            HistoricalRevisionOrigin.LegacyMigration);
+            revision - 1,
+            RecordedAtUtc);
     }
 
-    private static HistoricalSourceReference CreateLegacySource(int revision = 1)
+    private static HistoricalSourceReference CreateReviewSource(int revision = 2)
     {
         return new HistoricalSourceReference(
             Guid.Parse("33333333-3333-3333-3333-333333333333"),
             revision,
             HistoricalSourceType.OfficialWebsite,
-            "Source historique héritée",
+            "Source historique",
             "Éditeur historique",
-            "https://example.com/legacy-history",
+            "https://example.com/history",
             null,
             null,
             new DateOnly(2026, 9, 25),
@@ -394,8 +358,7 @@ public sealed class HistoricalReviewEventTargetValidatorTests
             null,
             HistoricalSourceAccessibility.Accessible,
             HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            RecordedAtUtc,
-            HistoricalRevisionOrigin.LegacyMigration);
+            HistoricalPublicationState.Draft,
+            RecordedAtUtc);
     }
 }

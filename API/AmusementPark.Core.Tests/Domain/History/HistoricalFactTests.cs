@@ -250,44 +250,6 @@ public sealed class HistoricalFactTests
     }
 
     [Fact]
-    public void Constructor_WhenLegacyMigrationUsesDedicatedInitialState_ShouldAcceptFact()
-    {
-        HistoricalFact fact = new HistoricalFact(
-            Guid.NewGuid(),
-            new HistoricalSubject(
-                HistoricalSubjectType.Park,
-                "park-1",
-                "Parc exemple",
-                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
-            HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
-            HistoricalFactState.Unverified,
-            HistoricalImportance.Major,
-            HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            CreateCompleteExplanations(),
-            LifecycleBoundaryMeaning.FirstOperatingDay,
-            null,
-            null,
-            null,
-            Array.Empty<HistoricalSourceRevisionReference>(),
-            null,
-            null,
-            "history-opening-1998",
-            null,
-            null,
-            "hist-migration-v1",
-            1,
-            null,
-            RecordedAtUtc,
-            HistoricalRevisionOrigin.LegacyMigration);
-
-        Assert.Equal(HistoricalRevisionOrigin.LegacyMigration, fact.RevisionOrigin);
-        Assert.False(fact.IsPublicTimelineEligible);
-        Assert.False(fact.IsDecisionEligible);
-    }
-
-    [Fact]
     public void Constructor_WhenPublicationPrecedesVerification_ShouldRejectFact()
     {
         HistoricalPersistenceValidationException exception =

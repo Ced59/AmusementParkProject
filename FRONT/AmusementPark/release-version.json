@@ -1,6 +1,20 @@
 {
-  "version": "5.4.85",
+  "version": "5.4.86",
   "history": [
+    {
+      "version": "5.4.86",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Historique des parcs unifié",
+        "en": "Unified park history",
+        "de": "Einheitliche Parkgeschichte",
+        "nl": "Eenduidige parkgeschiedenis",
+        "it": "Storia dei parchi unificata",
+        "es": "Historia de los parques unificada",
+        "pt": "História dos parques unificada",
+        "pl": "Ujednolicona historia parków"
+      }
+    },
     {
       "version": "5.4.85",
       "releasedAt": "2026-10-03",

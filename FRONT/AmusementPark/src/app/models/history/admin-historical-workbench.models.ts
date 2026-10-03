@@ -2,7 +2,7 @@ import { AdminHistoricalParkDiagnostics, AdminHistoricalVisitDiagnostics } from 
 
 export type HistoricalEditorialResourceType = 'Fact' | 'Source' | 'Relation';
 export type HistoricalWorkflowState = 'Draft' | 'SourcesAttached' | 'EditorialReview' | 'StructuredValidation' | 'Published' | 'Corrected' | 'Retracted';
-export type HistoricalPublicationState = 'Draft' | 'Published' | 'LegacyPublishedPendingReview' | 'Withdrawn' | 'Suppressed';
+export type HistoricalPublicationState = 'Draft' | 'Published' | 'Withdrawn';
 export type HistoricalFactState = 'Verified' | 'Probable' | 'Disputed' | 'Unverified' | 'Retracted';
 export type HistoricalSubjectType = 'Park' | 'ParkItem' | 'ParkZone' | 'StandaloneAttraction' | 'ParkOperator' | 'AttractionManufacturer';
 

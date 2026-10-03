@@ -8,8 +8,7 @@ public static class HistoricalSubjectPublicationValidator
     public static void Validate(HistoricalFact fact, bool currentSubjectIsPublic)
     {
         ArgumentNullException.ThrowIfNull(fact);
-        bool isPublicRevision = fact.PublicationState is HistoricalPublicationState.Published
-            or HistoricalPublicationState.LegacyPublishedPendingReview;
+        bool isPublicRevision = fact.PublicationState == HistoricalPublicationState.Published;
         bool requiresDurableParkScope = fact.Subject.PublicationPolicy
                 == HistoricalSubjectPublicationPolicy.HistoricalOnly
             && fact.Subject.Type is HistoricalSubjectType.ParkItem or HistoricalSubjectType.ParkZone;

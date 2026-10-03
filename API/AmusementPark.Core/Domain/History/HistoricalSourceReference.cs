@@ -35,7 +35,7 @@ public sealed class HistoricalSourceReference
         }
 
         ValidateEnums(type, accessibility, workflowState, publicationState, revisionOrigin);
-        ValidateInitialRevision(revision, workflowState, publicationState, revisionOrigin);
+        ValidateInitialRevision(revision, workflowState, publicationState);
         string normalizedTitle = NormalizeRequired(title, 500, nameof(title));
         string normalizedPublisher = NormalizeRequired(publisherOrAuthor, 300, nameof(publisherOrAuthor));
         string? normalizedUrl = NormalizeOptionalUri(url, nameof(url));
@@ -65,7 +65,7 @@ public sealed class HistoricalSourceReference
         string? normalizedLanguageCode = NormalizeLanguageCode(languageCode);
         string? normalizedArchiveUrl = NormalizeOptionalUri(archiveUrl, nameof(archiveUrl));
         HistoricalSourceScope[] normalizedScopes = NormalizeScopes(scopes);
-        ValidatePublication(workflowState, publicationState, accessibility, revisionOrigin);
+        ValidatePublication(workflowState, publicationState, accessibility);
 
         this.Id = id;
         this.Revision = revision;
@@ -143,8 +143,7 @@ public sealed class HistoricalSourceReference
     private static void ValidatePublication(
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState,
-        HistoricalSourceAccessibility accessibility,
-        HistoricalRevisionOrigin revisionOrigin)
+        HistoricalSourceAccessibility accessibility)
     {
         bool valid = publicationState switch
         {
@@ -154,10 +153,6 @@ public sealed class HistoricalSourceReference
             HistoricalPublicationState.Published => (workflowState is HistoricalEditorialWorkflowState.Published
                     or HistoricalEditorialWorkflowState.Corrected)
                 && accessibility is not HistoricalSourceAccessibility.Withdrawn,
-            HistoricalPublicationState.LegacyPublishedPendingReview => revisionOrigin
-                    == HistoricalRevisionOrigin.LegacyMigration
-                && (workflowState is HistoricalEditorialWorkflowState.EditorialReview
-                    or HistoricalEditorialWorkflowState.StructuredValidation),
             HistoricalPublicationState.Withdrawn => workflowState == HistoricalEditorialWorkflowState.Retracted,
             _ => false,
         };
@@ -173,32 +168,16 @@ public sealed class HistoricalSourceReference
     private static void ValidateInitialRevision(
         int revision,
         HistoricalEditorialWorkflowState workflowState,
-        HistoricalPublicationState publicationState,
-        HistoricalRevisionOrigin revisionOrigin)
+        HistoricalPublicationState publicationState)
     {
-        bool validInitialRevision = revisionOrigin switch
-        {
-            HistoricalRevisionOrigin.Ordinary => revision != 1
-                || (workflowState == HistoricalEditorialWorkflowState.Draft
-                    && publicationState == HistoricalPublicationState.Draft),
-            HistoricalRevisionOrigin.LegacyMigration => revision != 1
-                || (workflowState == HistoricalEditorialWorkflowState.EditorialReview
-                    && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
-            _ => false,
-        };
-        bool validPublicationForOrigin = revisionOrigin switch
-        {
-            HistoricalRevisionOrigin.Ordinary => publicationState
-                != HistoricalPublicationState.LegacyPublishedPendingReview,
-            HistoricalRevisionOrigin.LegacyMigration => publicationState
-                != HistoricalPublicationState.Draft,
-            _ => false,
-        };
-        if (!validInitialRevision || !validPublicationForOrigin)
+        bool validInitialRevision = revision != 1
+            || workflowState == HistoricalEditorialWorkflowState.Draft
+                && publicationState == HistoricalPublicationState.Draft;
+        if (!validInitialRevision)
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidRevision,
-                "A historical source must start as a draft or through the explicit legacy migration state.");
+                "A historical source must start as an ordinary draft.");
         }
     }
 
