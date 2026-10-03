@@ -161,13 +161,35 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         committedUpdate.CanonicalFactId = factId;
         committedUpdate.CanonicalizationState = HistoricalNarrativeCanonicalizationState.PendingReview;
         committedUpdate.UpdatedAtUtc = existing.UpdatedAtUtc.AddSeconds(1);
+        Guid committedMutationId = Guid.Empty;
         context.HistoryEventRepository
-            .Setup(repository => repository.GetCommittedUpdateAsync(
+            .Setup(repository => repository.UpdateAsync(
+                "history-1",
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()))
+            .Returns((string _, HistoryEvent _, DateTime _, Guid? _, Guid mutationId, CancellationToken _) =>
+            {
+                committedMutationId = mutationId;
+                return Task.FromException<HistoryEvent?>(
+                    new TimeoutException("acknowledgement lost after commit"));
+            });
+        context.HistoryEventRepository
+            .SetupSequence(repository => repository.GetCommittedUpdateAsync(
                 "history-1",
                 It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(committedUpdate);
-        context.FailNextHistoryUpdate(new TimeoutException("acknowledgement lost after commit"));
+            .ThrowsAsync(new TimeoutException("first mutation lookup failed"))
+            .ThrowsAsync(new TimeoutException("second mutation lookup failed"));
+        context.HistoryEventRepository
+            .Setup(repository => repository.GetMutationSnapshotAsync(
+                "history-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(() => new HistoryEventMutationSnapshot(
+                committedUpdate,
+                committedMutationId));
         string document = BuildDocument("""
         "sources": [
           {

@@ -298,7 +298,7 @@ prepare_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      --eval 'const d=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark"); const names=["historyEvents","history-events-cutover-source-hist-04-v1"]; const hasSource=d.getCollectionInfos().some(info => names.includes(info.name)); const narratives=d.getCollection("historical-narratives"); const total=narratives.countDocuments({}); const pending=narratives.countDocuments({$or:[{migrationVersion:{$ne:"hist-canonical-v2"}},{canonicalizationState:{$nin:["Canonicalized","Blocked"]}}]}); print(hasSource || total === 0 || pending > 0 ? "true" : "false");' \
+      --eval 'const d=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark"); const names=["historyEvents","history-events-cutover-source-hist-04-v1"]; const hasSource=d.getCollectionInfos().some(info => names.includes(info.name)); const narratives=d.getCollection("historical-narratives"); const pending=narratives.countDocuments({$or:[{migrationVersion:{$ne:"hist-canonical-v2"}},{canonicalizationState:{$nin:["Canonicalized","Blocked"]}}]}); print(hasSource || pending > 0 ? "true" : "false");' \
     | tail -n 1)"
   if [ "${cutover_required}" != "true" ]; then
     echo "Canonical historical cutover is already complete."

@@ -39,6 +39,25 @@ public static class HistoricalNarrativeMutationRecovery
             }
         }
 
+        if (reconciliationFailures.Count > 0)
+        {
+            try
+            {
+                HistoryEventMutationSnapshot? mutationSnapshot =
+                    await historyEventRepository.GetMutationSnapshotAsync(
+                        historyEventId,
+                        CancellationToken.None);
+                if (mutationSnapshot?.LastMutationId == mutationId)
+                {
+                    return mutationSnapshot.HistoryEvent;
+                }
+            }
+            catch (Exception snapshotException)
+            {
+                reconciliationFailures.Add(snapshotException);
+            }
+        }
+
         if (!expectedCanonicalFactId.HasValue || retractionSnapshot is null)
         {
             if (reconciliationFailures.Count > 0)

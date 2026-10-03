@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -336,6 +337,27 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             .Find(filter)
             .FirstOrDefaultAsync(cancellationToken);
         return document?.ToDomain();
+    }
+
+    public async Task<HistoryEventMutationSnapshot?> GetMutationSnapshotAsync(
+        string eventId,
+        CancellationToken cancellationToken)
+    {
+        HistoryEventDocument? document = await this.collection
+            .Find(item => item.Id == eventId)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (document is null)
+        {
+            return null;
+        }
+
+        Guid? lastMutationId = Guid.TryParseExact(
+            document.LastMutationId,
+            "N",
+            out Guid parsedMutationId)
+            ? parsedMutationId
+            : null;
+        return new HistoryEventMutationSnapshot(document.ToDomain(), lastMutationId);
     }
 
     internal static FilterDefinition<HistoryEventDocument> BuildConditionalUpdateFilter(

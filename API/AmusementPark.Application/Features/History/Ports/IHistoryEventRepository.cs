@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Ports;
@@ -46,6 +47,10 @@ public interface IHistoryEventRepository
     Task<HistoryEvent?> GetCommittedUpdateAsync(
         string eventId,
         Guid mutationId,
+        CancellationToken cancellationToken);
+
+    Task<HistoryEventMutationSnapshot?> GetMutationSnapshotAsync(
+        string eventId,
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(

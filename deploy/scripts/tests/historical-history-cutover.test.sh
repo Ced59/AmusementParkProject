@@ -42,6 +42,16 @@ if [ -z "${rollback_arm_line}" ] \
   exit 1
 fi
 
+if grep -Fq 'hasSource || total === 0 || pending > 0' "${deploy_script}"; then
+  echo 'An empty canonical history without a legacy source must not replay the cutover.' >&2
+  exit 1
+fi
+
+if ! grep -Fq 'hasSource || pending > 0' "${deploy_script}"; then
+  echo 'The historical cutover detector must require a legacy source or pending canonical work.' >&2
+  exit 1
+fi
+
 rollback_script_line="$(grep -n 'rollback-history-cutover-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 writer_restore_line="$(grep -n 'restore-original-history-writer' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 cutover_restored_line="$(grep -n 'cutover-restored --resource historical-history' "${deploy_script}" | head -n 1 | cut -d: -f1)"
@@ -82,7 +92,7 @@ if [ -z "${deploy_transaction_line}" ] \
 fi
 
 for required_cutover_check in \
-  'total === 0' \
+  'hasSource || pending > 0' \
   'pending > 0' \
   'canonicalizationState:{$nin:'; do
   if ! grep -Fq "${required_cutover_check}" "${deploy_script}"; then
