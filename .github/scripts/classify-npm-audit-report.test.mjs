@@ -118,6 +118,30 @@ test('blocks an expired exception', () => {
   assert.equal(result.kind, 'vulnerabilities');
 });
 
+test('fails closed when npm omits affected installations', () => {
+  const report = JSON.parse(createHighReport());
+  report.vulnerabilities['http-cache-semantics'].nodes = [];
+  const result = classifyNpmAuditReport(JSON.stringify(report), 1, {
+    exceptionsText: exceptionPolicy,
+    packageLockText: createPackageLock(),
+    currentDate: '2026-10-03'
+  });
+
+  assert.equal(result.kind, 'scan-error');
+});
+
+test('fails closed when an exception expiration is not a real calendar date', () => {
+  const policy = JSON.parse(exceptionPolicy);
+  policy.exceptions[0].expiresOn = '2026-99-99';
+  const result = classifyNpmAuditReport(createHighReport(), 1, {
+    exceptionsText: JSON.stringify(policy),
+    packageLockText: createPackageLock(),
+    currentDate: '2026-10-03'
+  });
+
+  assert.equal(result.kind, 'scan-error');
+});
+
 test('blocks a different high advisory', () => {
   const result = classifyNpmAuditReport(createHighReport({ source: 9999999 }), 1, {
     exceptionsText: exceptionPolicy,

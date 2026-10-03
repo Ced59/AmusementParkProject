@@ -152,7 +152,12 @@ function isValidException(exception) {
 }
 
 function isIsoDate(value) {
-  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return false;
+  }
+
+  const parsedDate = new Date(`${value}T00:00:00.000Z`);
+  return !Number.isNaN(parsedDate.getTime()) && parsedDate.toISOString().slice(0, 10) === value;
 }
 
 function traceVulnerability(packageName, vulnerabilities, visited) {
@@ -165,9 +170,14 @@ function traceVulnerability(packageName, vulnerabilities, visited) {
     return { kind: 'scan-error', message: `npm audit returned incomplete vulnerability details for ${packageName}.` };
   }
 
+  if (!Array.isArray(vulnerability.nodes) || vulnerability.nodes.length === 0
+    || vulnerability.nodes.some((node) => typeof node !== 'string' || node.length === 0)) {
+    return { kind: 'scan-error', message: `npm audit did not identify affected installations for ${packageName}.` };
+  }
+
   const nextVisited = new Set(visited);
   nextVisited.add(packageName);
-  const nodes = new Set(Array.isArray(vulnerability.nodes) ? vulnerability.nodes : []);
+  const nodes = new Set(vulnerability.nodes);
   const advisories = [];
 
   for (const cause of vulnerability.via) {
