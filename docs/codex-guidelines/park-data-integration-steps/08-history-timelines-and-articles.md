@@ -37,6 +37,21 @@ Après Apply, contrôler que l'événement a bien été canonisé et qu'aucun wa
 de preuve n'a reporté sa publication. Pour une timeline destinée au public, ne
 pas conclure l'étape 8 tant que ce contrôle n'est pas positif.
 
+Pour un parc déjà visible, exécuter ensuite `HistoryDiagnostics` et rapprocher
+ses compteurs de la section `history.events` réellement appliquée. Une frise de
+parc attendue doit posséder au moins deux faits publiés et sourcés, dont un
+jalon majeur, sans bloqueur. Vérifier anonymement que la fiche annonce
+`hasPublicHistory: true` et que l'endpoint public de timeline répond avec au
+moins ces deux faits. Contrôler séparément les pages historiques des parkItems
+majeurs et les routes des articles publiés.
+
+Pour un nouveau parc encore masqué, le diagnostic public peut légitimement
+rester fermé. Inscrire alors dans le registre de travail le nombre de faits de
+parc, de faits de parkItems, de jalons majeurs et de sources qui devront devenir
+publics. Cette attente devient un contrôle bloquant immédiatement après la mise
+en visibilité décrite à l'étape 9 ; elle ne peut pas être remplacée par la seule
+présence des événements dans l'export.
+
 ## Découpage recommandé
 
 Pour un parc riche :

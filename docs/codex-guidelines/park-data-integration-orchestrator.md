@@ -299,6 +299,14 @@ la présence du récit, de l'article ou du bouton historique comme acquise tant
 que la réponse Apply n'a pas confirmé cette canonisation. Aucun état HIST
 historique transitoire ne doit être écrit ou utilisé comme solution de repli.
 
+Pour un parc déjà visible, terminer aussi l'étape par `HistoryDiagnostics` et
+par une lecture publique anonyme de la frise. Pour un nouveau parc encore
+masqué, conserver les compteurs attendus de faits sourcés et majeurs dans le
+registre de travail : ils devront être rapprochés du diagnostic réel juste
+après la mise en visibilité. Une intégration ne peut pas être déclarée publiée
+si une timeline attendue existe dans l'export mais que son lien public, son
+endpoint ou les historiques de ses parkItems majeurs restent absents.
+
 ### Étape 9 — Audit final
 
 Lire `park-data-integration-steps/09-final-audit-and-publication.md`.

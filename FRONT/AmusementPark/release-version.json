@@ -1,6 +1,20 @@
 {
-  "version": "5.4.93",
+  "version": "5.4.94",
   "history": [
+    {
+      "version": "5.4.94",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Publication des histoires mieux contrôlée",
+        "en": "Improved history publication checks",
+        "de": "Verbesserte Prüfung der Geschichtsveröffentlichung",
+        "nl": "Betere controles voor publicatie van geschiedenis",
+        "it": "Controlli migliorati sulla pubblicazione delle storie",
+        "es": "Mejores controles de publicación de historias",
+        "pt": "Melhores controlos da publicação de histórias",
+        "pl": "Lepsza kontrola publikacji historii"
+      }
+    },
     {
       "version": "5.4.93",
       "releasedAt": "2026-10-03",

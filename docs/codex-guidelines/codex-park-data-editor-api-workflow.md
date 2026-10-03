@@ -416,6 +416,35 @@ Il effectue également, langue par langue, un balayage par familles de vocabulai
 
 Si l’export complet préalable à l’étape 9 échoue ou arrive tronqué, ne jamais le présenter comme l’état courant ni le remplacer silencieusement par un ancien export ou par le registre consolidé. Réessayer par la surface technique autorisée et obtenir impérativement un nouvel export complet valide. Hors audit final, une Preview exacte du lot peut prouver si une écriture ambiguë reste attendue ; utiliser un export ciblé seulement lorsqu’il apporte une information supplémentaire nécessaire. Ne pas basculer vers l’administration ou la base de données.
 
-Après une instruction explicite de publication, Codex contrôle d’abord l’état global des opérations, obtient un nouvel export complet frais et rejoue sur cet état réel tous les contrôles bloquants de l’étape 9. Toute différence inexpliquée avec l’export audité ou les reçus de correction suspend la publication. Ce contrôle appartient au flux de publication séparément autorisé et ne change pas l’unique export complet obligatoire du parcours de complétion 0 à 9. Codex suit ensuite l’ordre de l’étape 9 : publier de façon ciblée les images et contenus dépendants prêts, puis les articles, contrôler les parkItems, et enfin valider et rendre visible le nouveau parc en dernier. La publication des images réutilise leurs IDs exportés et la surface de métadonnées autorisée ou un JSON upsert borné conforme au contrat exporté ; elle ne réimporte jamais les fichiers. Codex vérifie ensuite les pages publiques anonymes, le logo, les articles, la complétude et l’idempotence d’un dernier Preview. Une annonce sociale indisponible est rapportée séparément et n’autorise aucun appel à une route admin interdite.
+Après une instruction explicite de publication, Codex contrôle d’abord l’état global des opérations, obtient un nouvel export complet frais et rejoue sur cet état réel tous les contrôles bloquants de l’étape 9. Toute différence inexpliquée avec l’export audité ou les reçus de correction suspend la publication. Ce contrôle appartient au flux de publication séparément autorisé et ne change pas l’unique export complet obligatoire du parcours de complétion 0 à 9. Codex suit ensuite l’ordre de l’étape 9 : publier de façon ciblée les images et contenus dépendants prêts, puis les articles, contrôler les parkItems, et enfin valider et rendre visible le nouveau parc en dernier. La publication des images réutilise leurs IDs exportés et la surface de métadonnées autorisée ou un JSON upsert borné conforme au contrat exporté ; elle ne réimporte jamais les fichiers.
+
+Une fois le parc visible, Codex exécute obligatoirement :
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action HistoryDiagnostics -ParkId '<park-id>'
+```
+
+Si l'étape 8 prévoit une frise de parc, le diagnostic doit exposer au moins deux
+faits publiés et sourcés, dont un majeur, sans bloqueur. Codex vérifie aussi,
+sans authentification, que `GET parks/{id}/detail-summary` renvoie
+`hasPublicHistory: true` et que
+`GET public/parks/{id}/history/timeline?page=1&pageSize=1` répond en HTTP 200
+avec `pagination.totalItems >= 2`. Il ouvre les historiques des parkItems
+majeurs et chaque article attendu ; la réussite du seul endpoint du parc ne les
+valide pas.
+
+Si les événements sont présents dans l'export mais restent non publiés, Codex
+contrôle de nouveau `Status`, effectue un export borné à `-Sections History`,
+encapsule ce document dans une requête `merge` ciblée avec
+`createIfMissing: false` et `replaceCollections: false`, puis passe par Preview
+et Apply. La Preview doit être sans erreur ni warning et ne contenir que les
+changements historiques attendus. Il répète ensuite le diagnostic et les
+lectures publiques. Aucun endpoint historique alternatif, adaptateur legacy ou
+accès direct à la base n'est autorisé ; un second échec bloque la conclusion.
+
+Codex vérifie enfin les autres pages publiques anonymes, le logo, les articles,
+la complétude et l'idempotence d'un dernier Preview. Une annonce sociale
+indisponible est rapportée séparément et n'autorise aucun appel à une route
+admin interdite.
 
 Le propriétaire peut rapprocher chaque appel avec `park-data-editor.request` dans le journal d’audit et filtrer par compte, email, trace ID ou identifiant de jeton.
