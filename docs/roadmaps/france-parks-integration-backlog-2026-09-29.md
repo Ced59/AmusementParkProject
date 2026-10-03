@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 56 |
+| Fiches privées existantes à intégrer | 82 | 55 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **146** |
+| **Total** | **225** | **145** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] La Coccinelle — `e1fa4656-8011-4908-a1bf-e7d581285a83`
 - [ ] Le Pal — `1675e96c-6361-48ff-862b-43218167facd`
 - [ ] LennyPark — `0d9fb07f-a134-40b5-94b1-6b449a684772`
 - [ ] Lulu Parc — `29c89bcf-d733-42f1-982b-a8aa54aeeb09`
@@ -354,6 +353,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- La Coccinelle — la fiche publique atteint 97 avec les 23 éléments de l’inventaire officiel, les huit langues sur chaque description, 26 médias publiés dont le logo et 20 photographies d’éléments, le plan officiel 2026, 141 dates d’ouverture, sept offres d’entrée, un pass, le parking gratuit, sept jalons historiques et un article développé. La Table des Coccinelles, Le Coin des Douceurs et Les Cocc'Italiennes restent sans photographie individuelle suffisamment attribuable ; les autres éléments disposent d’un visuel propre. L’historique courant est servi publiquement par la timeline du parc. La météo alimentée par batch n’a pas conditionné la publication ni le retrait.
 - L'Île aux Géants — la fiche publique atteint 98 avec 21 éléments validés : les 18 attractions du site officiel, la pataugeoire, O'resto d'Iros et les aires de pique-nique. Les huit langues couvrent chaque description ; 19 médias officiels sont publiés, dont le logo, deux vues générales et une image pour 16 attractions. Aucun plan visiteur officiel n'a été trouvé : l'image-calendrier 2026 n'a pas été détournée en carte. Manège enchanté, Petit train, Pataugeoire, O'resto d'Iros et les aires de pique-nique restent sans visuel propre faute de photographie officielle distincte. Les horaires et cinq tarifs d'entrée 2026 ainsi que le parking gratuit sont structurés ; trois jalons et un article développé documentent l'ouverture de 2013 et les deux montagnes russes. La météo alimentée par batch n'a pas conditionné la publication ni le retrait.
 - Koaland — la fiche publique atteint 98 avec 19 éléments validés : 16 activités actuelles illustrées, Music Lab et lʼespace fitness conservés privés comme développements annoncés, ainsi que Chenille publiée comme attraction définitivement fermée et reliée à un jalon historique. Les huit langues couvrent chaque description ; 22 médias officiels sont publiés, dont le logo, cinq vues générales et une image pour chacune des 16 activités actuelles, avec le plan officiel 2026, les horaires sourcés, lʼentrée gratuite, quatre lots de jetons, la pêche aux canards, deux jalons et un article développé. Aucun visuel historique officiel réutilisable nʼa été trouvé pour Chenille. Les horaires dynamiques du site officiel étant contradictoires, la dernière communication sociale officielle fiable — mercredi, samedi et dimanche de 10 h à 19 h — a été structurée ; les tarifs sportifs et de restauration restent omis faute de grille publique complète. La météo alimentée par batch nʼa pas conditionné la publication ni le retrait.
 - Kingoland — la fiche publique atteint 97 avec les 43 éléments de l’inventaire officiel, les huit langues sur chaque description, 49 médias propres publiés dont le logo et une image pour chacun des 43 éléments, le plan officiel 2026, 109 dates d’ouverture, six offres tarifaires, un pass, le parking gratuit, neuf jalons historiques et un article développé. Six aires ou expériences sans seuil officiel conservent volontairement leurs règles d’accès vides, et aucune géolocalisation individuelle ni zone thématique durable n’a été inventée. La source tarifaire 2026 reste la page officielle archivée sous `/test/`, la page de billetterie canonique annonçant déjà la saison 2027 sans nouvelle grille. La météo alimentée par batch n’a pas conditionné la publication ni le retrait.
