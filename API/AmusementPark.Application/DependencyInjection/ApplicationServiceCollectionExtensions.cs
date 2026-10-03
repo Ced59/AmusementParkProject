@@ -95,7 +95,6 @@ public static class ApplicationServiceCollectionExtensions
                 serviceProvider.GetRequiredService<HistoricalNarrativeCanonicalSourcePlanner>(),
                 serviceProvider.GetRequiredService<HistoricalNarrativeCanonicalFactFactory>(),
                 serviceProvider.GetRequiredService<HistoricalNarrativeCanonicalRevisionWriter>()));
-        services.AddScoped<HistoricalNarrativeCanonicalizationMigration>();
         services.AddScoped<IHistoricalNarrativeCanonicalizer>(serviceProvider =>
             serviceProvider.GetRequiredService<HistoricalNarrativeCanonicalizationService>());
         services.AddScoped<HistoricalParkEditorialScopeLoader>();

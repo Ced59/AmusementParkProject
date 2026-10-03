@@ -634,10 +634,6 @@ private readonly IMongoDatabase database;
     private readonly ILogger<MongoDatabaseInitializer> logger;
     private readonly PersonalRankingShareReplacementMigration personalRankingShareMigration;
     private readonly PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration;
-    private readonly HistoricalNarrativeCollectionCutoverMigration historicalNarrativeCollectionCutoverMigration;
-    private readonly HistoricalNarrativeCanonicalizationMigration historicalNarrativeCanonicalizationMigration;
-    private readonly HistoricalFactPublicProjectionMigration historicalFactPublicProjectionMigration;
-
     public MongoDatabaseInitializer(
         IMongoDatabase database,
         MongoDbSettings settings,
@@ -645,10 +641,7 @@ private readonly IMongoDatabase database;
         IHostEnvironment hostEnvironment,
         ILogger<MongoDatabaseInitializer> logger,
         PersonalRankingShareReplacementMigration personalRankingShareMigration,
-        PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration,
-        HistoricalNarrativeCollectionCutoverMigration historicalNarrativeCollectionCutoverMigration,
-        HistoricalNarrativeCanonicalizationMigration historicalNarrativeCanonicalizationMigration,
-        HistoricalFactPublicProjectionMigration historicalFactPublicProjectionMigration)
+        PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration)
     {
         this.database = database;
         this.settings = settings;
@@ -657,9 +650,6 @@ private readonly IMongoDatabase database;
         this.logger = logger;
         this.personalRankingShareMigration = personalRankingShareMigration;
         this.personalRankingShareAvatarPolicyMigration = personalRankingShareAvatarPolicyMigration;
-        this.historicalNarrativeCollectionCutoverMigration = historicalNarrativeCollectionCutoverMigration;
-        this.historicalNarrativeCanonicalizationMigration = historicalNarrativeCanonicalizationMigration;
-        this.historicalFactPublicProjectionMigration = historicalFactPublicProjectionMigration;
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
@@ -1216,17 +1206,6 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.StandaloneAttractionsCollectionName, cancellationToken);
         await this.InitializeStandaloneAttractionsIndexesAsync(cancellationToken);
-
-        await this.historicalNarrativeCollectionCutoverMigration.StageAsync(cancellationToken);
-        await this.historicalNarrativeCanonicalizationMigration.ExecuteAsync(cancellationToken);
-        long migratedHistoricalFactProjectionCount =
-            await this.historicalFactPublicProjectionMigration.ExecuteAsync(cancellationToken);
-        if (migratedHistoricalFactProjectionCount > 0)
-        {
-            this.logger.LogInformation(
-                "Migrated {FactCount} historical fact revisions to the public park projection.",
-                migratedHistoricalFactProjectionCount);
-        }
 
         await this.InitializeHistoryEventsIndexesAsync(cancellationToken);
 
