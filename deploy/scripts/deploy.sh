@@ -269,6 +269,8 @@ assert_canonical_history_authority() {
         const ready=!obsolete.some(name => names.has(name)) && writable
           && facts.countDocuments({revisionOrigin:"LegacyMigration"}) === 0
           && sources.countDocuments({revisionOrigin:"LegacyMigration"}) === 0
+          && facts.countDocuments({publicationState:{$in:["LegacyPublishedPendingReview","Suppressed"]}}) === 0
+          && sources.countDocuments({publicationState:"LegacyPublishedPendingReview"}) === 0
           && narratives.countDocuments({$or:[{migrationVersion:{$ne:"hist-canonical-v2"}},{canonicalizationState:{$nin:["Canonicalized","Blocked"]}}]}) === 0
           && facts.countDocuments({timelineSortOrdinal:{$exists:false}}) === 0
           && facts.countDocuments({

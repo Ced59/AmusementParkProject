@@ -8,6 +8,7 @@ for required_proof in \
   'assert_canonical_history_authority' \
   'validationLevel === "off"' \
   'revisionOrigin:"LegacyMigration"' \
+  'publicationState:{$in:["LegacyPublishedPendingReview","Suppressed"]}' \
   'migrationVersion:{$ne:"hist-canonical-v2"}' \
   'timelineSortOrdinal:{$exists:false}' \
   'publicationState:{$in:["Published","LegacyPublishedPendingReview"]}' \
