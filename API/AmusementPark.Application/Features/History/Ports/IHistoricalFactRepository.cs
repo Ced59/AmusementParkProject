@@ -1,5 +1,4 @@
 using AmusementPark.Application.Features.History.Models;
-using AmusementPark.Application.Common.Results;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Ports;
@@ -44,19 +43,4 @@ public interface IHistoricalFactRepository
         string parkId,
         IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
         CancellationToken cancellationToken);
-
-    Task<PagedResult<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParkPageAsync(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        int page,
-        int pageSize,
-        CancellationToken cancellationToken);
-
-    Task<PagedResult<HistoricalFact>> GetLatestPublicTimelineRevisionsForParkPageAsync(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        int page,
-        int pageSize,
-        CancellationToken cancellationToken);
-
 }
