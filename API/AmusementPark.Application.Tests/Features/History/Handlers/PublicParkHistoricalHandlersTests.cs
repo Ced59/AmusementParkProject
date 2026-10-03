@@ -384,7 +384,9 @@ public sealed class PublicParkHistoricalHandlersTests
             parkRepository,
             parkItemRepository,
             parkZoneRepository,
-            factRepository);
+            factRepository,
+            rolloutIsOpen: false,
+            timelineOnly: true);
         GetPublicParkHistoricalTimelineQueryHandler handler = new(
             loader,
             sourceRepository.Object,
@@ -400,6 +402,7 @@ public sealed class PublicParkHistoricalHandlersTests
             result.Value);
         Assert.Equal(4, timeline.Page.TotalItems);
         Assert.Equal(2, timeline.Page.Items.Count);
+        Assert.False(timeline.HasDecisionSnapshots);
         PublicHistoricalTimelineEntryResult visibleEntry = Assert.Single(
             timeline.Page.Items,
             entry => entry.Fact.Id == visibleFact.Id);
@@ -715,7 +718,8 @@ public sealed class PublicParkHistoricalHandlersTests
         Mock<IParkItemRepository> parkItemRepository,
         Mock<IParkZoneRepository> parkZoneRepository,
         Mock<IHistoricalFactRepository> factRepository,
-        bool rolloutIsOpen = true)
+        bool rolloutIsOpen = true,
+        bool timelineOnly = false)
     {
         Mock<IHistoricalParkRolloutGateAssessmentService> rolloutGate = new(MockBehavior.Strict);
         rolloutGate.Setup(service => service.AssessAsync(
@@ -725,7 +729,9 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(rolloutIsOpen
                 ? new HistoricalParkRolloutGate(2, 2, 1, new[] { 1998 })
-                : new HistoricalParkRolloutGate(0, 0, 0, Array.Empty<int>()));
+                : timelineOnly
+                    ? new HistoricalParkRolloutGate(2, 2, 1, Array.Empty<int>())
+                    : new HistoricalParkRolloutGate(0, 0, 0, Array.Empty<int>()));
         return new PublicParkHistoricalDataLoader(
             parkRepository.Object,
             parkItemRepository.Object,

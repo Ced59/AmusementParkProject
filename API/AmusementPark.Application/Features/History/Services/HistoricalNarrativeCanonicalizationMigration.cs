@@ -32,26 +32,82 @@ public sealed class HistoricalNarrativeCanonicalizationMigration
         foreach (HistoryEvent historyEvent in candidates)
         {
             Guid? previousFactId = historyEvent.CanonicalFactId;
-            HistoricalNarrativeCanonicalizationResult canonicalization =
-                await this.canonicalizationService.MigrateExistingAsync(
-                    historyEvent,
-                    cancellationToken);
-            await HistoricalNarrativeCanonicalLinker.LinkAsync(
-                this.historyEventRepository,
-                this.resourceRetractionService,
-                historyEvent,
-                canonicalization,
-                cancellationToken);
-
-            if (!previousFactId.HasValue
-                || previousFactId == canonicalization.CanonicalFactId)
+            Guid generatedFactId = HistoricalNarrativeCanonicalIdentity.CreateGuid(
+                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                "fact",
+                historyEvent.Id,
+                historyEvent.UpdatedAtUtc);
+            Guid[] generatedSourceIds = historyEvent.Sources
+                .Select((_, index) => HistoricalNarrativeCanonicalIdentity.CreateGuid(
+                    HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                    "source",
+                    historyEvent.Id,
+                    historyEvent.UpdatedAtUtc,
+                    index))
+                .ToArray();
+            HistoricalCanonicalResourceRetractionSnapshot? previousResourceSnapshot = null;
+            try
             {
-                continue;
-            }
+                HistoricalNarrativeCanonicalizationResult canonicalization =
+                    await this.canonicalizationService.MigrateExistingAsync(
+                        historyEvent,
+                        cancellationToken);
+                if (previousFactId.HasValue
+                    && previousFactId != canonicalization.CanonicalFactId)
+                {
+                    previousResourceSnapshot = await this.resourceRetractionService.RetractAsync(
+                        previousFactId.Value,
+                        cancellationToken);
+                }
 
-            await this.resourceRetractionService.RetractAsync(
-                previousFactId.Value,
-                cancellationToken);
+                await HistoricalNarrativeCanonicalLinker.LinkAsync(
+                    this.historyEventRepository,
+                    this.resourceRetractionService,
+                    historyEvent,
+                    canonicalization,
+                    cancellationToken);
+            }
+            catch (Exception migrationException)
+            {
+                List<Exception> recoveryExceptions = new List<Exception>();
+                if (previousFactId != generatedFactId)
+                {
+                    try
+                    {
+                        await this.resourceRetractionService.RetractGeneratedAsync(
+                            generatedFactId,
+                            generatedSourceIds,
+                            CancellationToken.None);
+                    }
+                    catch (Exception cleanupException)
+                    {
+                        recoveryExceptions.Add(cleanupException);
+                    }
+                }
+
+                if (previousResourceSnapshot is not null)
+                {
+                    try
+                    {
+                        await this.resourceRetractionService.RestoreAsync(
+                            previousResourceSnapshot,
+                            CancellationToken.None);
+                    }
+                    catch (Exception restorationException)
+                    {
+                        recoveryExceptions.Add(restorationException);
+                    }
+                }
+
+                if (recoveryExceptions.Count > 0)
+                {
+                    throw new AggregateException(
+                        "The canonical narrative migration failed and could not be fully compensated.",
+                        new[] { migrationException }.Concat(recoveryExceptions));
+                }
+
+                throw;
+            }
         }
     }
 }

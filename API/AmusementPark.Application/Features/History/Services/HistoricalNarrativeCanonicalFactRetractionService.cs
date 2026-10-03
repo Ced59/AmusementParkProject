@@ -20,6 +20,19 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
         Action<HistoricalFact?> onRetractionAttempt,
         CancellationToken cancellationToken)
     {
+        HistoricalFact? retracted = await this.RetractIfExistsAsync(
+            factId,
+            onRetractionAttempt,
+            cancellationToken);
+        return retracted ?? throw new InvalidOperationException(
+            "A canonical historical fact referenced by a narrative is missing.");
+    }
+
+    public async Task<HistoricalFact?> RetractIfExistsAsync(
+        Guid factId,
+        Action<HistoricalFact?> onRetractionAttempt,
+        CancellationToken cancellationToken)
+    {
         ArgumentNullException.ThrowIfNull(onRetractionAttempt);
         for (int attempt = 0; attempt < 2; attempt++)
         {
@@ -29,8 +42,7 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
             if (latest is null)
             {
                 onRetractionAttempt(null);
-                throw new InvalidOperationException(
-                    "A canonical historical fact referenced by a narrative is missing.");
+                return null;
             }
 
             if (latest.PublicationState == HistoricalPublicationState.Withdrawn)

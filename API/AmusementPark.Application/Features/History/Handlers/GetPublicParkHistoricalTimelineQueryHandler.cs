@@ -143,7 +143,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                 scope.Park,
                 page,
                 publicZoneNames,
-                rolloutGate.HasPublicTimeline));
+                rolloutGate.IsOpen));
     }
 
     private async Task<HashSet<HistoricalSubjectKey>> LoadSubjectsWithLineageAsync(

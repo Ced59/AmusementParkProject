@@ -172,6 +172,7 @@ for required_completion_step in \
   "completedLegacyNarratives !== legacyNarrativeIds.length" \
   "orphanedLegacySourceIds.length > 0" \
   "ordinaryFactsUsingLegacySources > 0" \
+  "ordinaryRelationsUsingLegacySources > 0" \
   "relations.countDocuments(legacyRevisionFilter)" \
   "facts.deleteMany(legacyRevisionFilter)" \
   "sources.deleteMany(legacyRevisionFilter)" \

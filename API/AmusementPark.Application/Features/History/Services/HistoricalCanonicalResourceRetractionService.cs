@@ -114,6 +114,48 @@ public sealed class HistoricalCanonicalResourceRetractionService
         }
     }
 
+    public async Task RetractGeneratedAsync(
+        Guid factId,
+        IReadOnlyCollection<Guid> sourceIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(sourceIds);
+        List<Exception> cleanupExceptions = new List<Exception>();
+        try
+        {
+            await this.factRetractionService.RetractIfExistsAsync(
+                factId,
+                static _ => { },
+                cancellationToken);
+        }
+        catch (Exception cleanupException)
+        {
+            cleanupExceptions.Add(cleanupException);
+        }
+
+        foreach (Guid sourceId in sourceIds.Distinct())
+        {
+            try
+            {
+                await this.sourceRetractionService.RetractAsync(
+                    sourceId,
+                    static _ => { },
+                    cancellationToken);
+            }
+            catch (Exception cleanupException)
+            {
+                cleanupExceptions.Add(cleanupException);
+            }
+        }
+
+        if (cleanupExceptions.Count > 0)
+        {
+            throw new AggregateException(
+                "Generated canonical historical resources could not be fully withdrawn.",
+                cleanupExceptions);
+        }
+    }
+
     private static void RegisterSourceAttempt(
         IDictionary<Guid, HistoricalSourceReference> attemptedSourceSnapshots,
         Guid sourceId,

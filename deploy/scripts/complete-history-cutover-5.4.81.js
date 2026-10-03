@@ -70,6 +70,15 @@ const ordinaryFactsUsingLegacySources = legacySourceIds.length === 0
 if (ordinaryFactsUsingLegacySources > 0) {
   throw new Error('Canonical historical facts still reference legacy source revisions.');
 }
+const ordinaryRelationsUsingLegacySources = legacySourceIds.length === 0
+  ? 0
+  : relations.countDocuments({
+    revisionOrigin: { $ne: 'LegacyMigration' },
+    'sources.sourceId': { $in: legacySourceIds },
+  });
+if (ordinaryRelationsUsingLegacySources > 0) {
+  throw new Error('Canonical historical relations still reference legacy source revisions.');
+}
 
 const legacyRelationCount = relations.countDocuments(legacyRevisionFilter);
 if (legacyRelationCount > 0) {

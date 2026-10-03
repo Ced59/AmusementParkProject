@@ -13,9 +13,13 @@ internal static class HistoricalNarrativeCanonicalIdentity
         DateTime narrativeUpdatedAtUtc,
         int index = 0)
     {
+        long persistedMilliseconds = HistoricalNarrativeCanonicalizationPolicy
+            .NormalizeUtc(narrativeUpdatedAtUtc)
+            .Ticks
+            / TimeSpan.TicksPerMillisecond;
         string value = string.Create(
             CultureInfo.InvariantCulture,
-            $"{version}:{resourceType}:{narrativeId.Trim()}:{narrativeUpdatedAtUtc.Ticks}:{index}");
+            $"{version}:{resourceType}:{narrativeId.Trim()}:{persistedMilliseconds}:{index}");
         byte[] digest = SHA256.HashData(Encoding.UTF8.GetBytes(value));
         byte[] guidBytes = digest[..16];
         guidBytes[7] = (byte)((guidBytes[7] & 0x0f) | 0x50);
