@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 60 |
+| Fiches privées existantes à intégrer | 82 | 59 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **150** |
+| **Total** | **225** | **149** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Kingoland — `900ceb7b-7bb8-40c0-9e4a-6340d019a6d8`
 - [ ] Koaland — `a01011e8-b400-40c7-bbe2-5635d7dd24f7`
 - [ ] L'Île aux Géants — `29a2498e-9b6c-4c55-a2ac-e521dc6e4586`
 - [ ] L'Île aux Pirates, Capbreton — candidats `efac8649-a15b-4ed6-866c-2e926579d6de` et `5e9e6a61-3d74-49cd-9c3a-8ca107edd018` à réconcilier avant intégration
@@ -358,6 +357,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- Kingoland — la fiche publique atteint 97 avec les 43 éléments de l’inventaire officiel, les huit langues sur chaque description, 49 médias propres publiés dont le logo et une image pour chacun des 43 éléments, le plan officiel 2026, 109 dates d’ouverture, six offres tarifaires, un pass, le parking gratuit, neuf jalons historiques et un article développé. Six aires ou expériences sans seuil officiel conservent volontairement leurs règles d’accès vides, et aucune géolocalisation individuelle ni zone thématique durable n’a été inventée. La source tarifaire 2026 reste la page officielle archivée sous `/test/`, la page de billetterie canonique annonçant déjà la saison 2027 sans nouvelle grille. La météo alimentée par batch n’a pas conditionné la publication ni le retrait.
 - Jardin d'Acclimatation — la fiche publique atteint 100 avec les 62 éléments de l'inventaire officiel courant, cinq attractions historiques, les huit langues sur chaque description, 74 médias publiés dont le logo et une image pour chacun des 62 éléments actuels, le plan officiel, 92 dates d'ouverture, huit offres tarifaires, dix jalons de parc, cinq jalons d'attraction et un article développé. Les cinq attractions historiques restent sans photographie plutôt que de recevoir un visuel actuel ou insuffisamment attribuable. La page météo alimentée par batch n'a pas conditionné la publication ni le retrait.
 - Jardin des Bêtes — la fiche publique atteint 96 avec 24 éléments actuels, les huit langues sur chaque description, 24 médias publiés dont le logo, le plan officiel 2026, 104 dates d'ouverture, les tarifs officiels 2026, quatre jalons historiques et un article développé. Vingt et un éléments disposent d'une photographie officielle attribuable ; La Paillote, Les Palanges et Le Kiosque restent sans vue propre, la page officielle de restauration n'exposant qu'une illustration générique du parc. Les tarifs 2026 restent visibles jusqu'à la fin de leur année de référence tandis que le calendrier gouverne seul les jours d'ouverture. La page météo répond correctement avec une prévision momentanément vide ; son alimentation par batch n'a pas conditionné la publication ni le retrait.
 - Jacquou Parc — la fiche publiée atteint 98 avec 26 éléments actuels, les huit langues sur chaque description, les horaires et tarifs officiels 2026, huit jalons historiques, un article développé, le plan officiel 2025 et treize médias publiés dont le logo. Huit éléments possèdent une photographie individuelle clairement attribuable ; les autres conservent leur description sourcée sans recevoir de visuel générique. Les quatre vues générales documentent notamment l'espace aquatique et l'ambiance boisée. La saison 2026 étant achevée et aucun calendrier 2027 n'étant encore publié, la grille vérifiée reste conservée sans inventer de dates futures. La route météo répond correctement ; son contenu alimenté par batch n'a pas conditionné la publication ni le retrait.
