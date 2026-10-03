@@ -3,5 +3,6 @@ export const USERS_API_ENDPOINTS = {
   getUserById: (id: string) => `users/${id}`,
   putUserById: (id: string | null) => `users/${id}`,
   updateCurrentUserPreferredLanguage: 'users/me/preferences/language',
-  uploadCurrentUserAvatar: 'users/me/avatar'
+  uploadCurrentUserAvatar: 'users/me/avatar',
+  deleteCurrentAccount: 'users/me'
 };

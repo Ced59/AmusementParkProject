@@ -609,23 +609,21 @@ Répertoires de preuve :
 
 ## 12. État final et travail continu
 
-Les tranches techniques planifiées de FOUNDATION à QUAL-10 sont implémentées. Ce
+Les tranches techniques planifiées de FOUNDATION à QUAL-12 sont implémentées. Ce
 guide clôt la documentation transverse de `QUAL-G`, sans transformer les écarts
 recensés par QUAL-04 en capacités livrées.
 
 L'extension d'export fédéré du cycle de vie du compte est livrée par QUAL-11 :
 elle réunit identité lisible, Passeport, voyages, Park Fit et contributions
-rattachables, sans identifiants internes. Une extension substantielle reste à
-concevoir dans un jalon dédié : un coordinateur global de suppression de compte
-couvrant identité, sessions et tous les participants métier, avec ordre de purge,
-idempotence, reprise après échec et règles de rétention validées.
+rattachables, sans identifiants internes. QUAL-12 livre ensuite le coordinateur
+global de suppression couvrant identité, sessions et participants métier, avec
+ordre de purge, idempotence et reprise après échec.
 
 Le Passeport, les voyages et Park Fit conservent leurs exports dédiés, désormais
-agrégés par le moteur fédéré. Partage et Alertes disposent déjà de participants de
-suppression, mais cela ne suffit pas à présenter au membre une promesse
-d'effacement global. La matrice
+agrégés par le moteur fédéré. Partage et Alertes conservent leurs participants
+spécialisés, appelés par QUAL-12 sans créer de second système. La matrice
 [`QUAL-04`](product-growth-qual-04-privacy-export-deletion-matrix-2026-09-29.md)
-reste l'autorité sur cette limite.
+reste l'autorité sur les règles de rétention et d’anonymisation.
 
 Les activités continues suivantes ne sont en revanche pas des fonctionnalités
 manquantes des tranches livrées :

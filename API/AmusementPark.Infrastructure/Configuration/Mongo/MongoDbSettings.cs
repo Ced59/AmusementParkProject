@@ -60,6 +60,9 @@ public sealed class MongoDbSettings
 
     public string RefreshTokensCollectionName { get; set; } = "refreshTokens";
 
+    public string AccountDeletionOperationsCollectionName { get; set; } =
+        "account-deletion-operations";
+
     public string ParkDataEditorAccessTokensCollectionName { get; set; } = "parkDataEditorAccessTokens";
 
     public string ParksCollectionName { get; set; } = "parks";

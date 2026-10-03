@@ -1,6 +1,20 @@
 {
-  "version": "5.4.95",
+  "version": "5.4.96",
   "history": [
+    {
+      "version": "5.4.96",
+      "releasedAt": "2026-10-04",
+      "labels": {
+        "fr": "Suppression complète du compte",
+        "en": "Complete account deletion",
+        "de": "Vollständige Kontolöschung",
+        "nl": "Volledige verwijdering van het account",
+        "it": "Eliminazione completa dell’account",
+        "es": "Eliminación completa de la cuenta",
+        "pt": "Eliminação completa da conta",
+        "pl": "Pełne usuwanie konta"
+      }
+    },
     {
       "version": "5.4.95",
       "releasedAt": "2026-10-03",

@@ -1,0 +1,22 @@
+{
+  "accountDeletion": {
+    "kicker": "Area di sicurezza",
+    "title": "Elimina il tuo account",
+    "description": "Prepara l’eliminazione definitiva del tuo account e di tutti i dati personali collegati.",
+    "openAction": "Prepara l’eliminazione",
+    "warning": "Questa azione è irreversibile. Le tue visite, corse, valutazioni, condivisioni, preferiti, viaggi, profili e contributi riconducibili saranno eliminati.",
+    "emailLabel": "Conferma il tuo indirizzo e-mail",
+    "emailPlaceholder": "il-tuo-indirizzo@esempio.it",
+    "passwordLabel": "Password attuale",
+    "passwordPlaceholder": "La tua password",
+    "passwordHint": "Lascia vuoto questo campo se accedi esclusivamente con Google.",
+    "submitting": "Eliminazione in corso…",
+    "confirmAction": "Elimina definitivamente il mio account",
+    "cancelAction": "Annulla",
+    "accepted": "L’eliminazione del tuo account è iniziata.",
+    "errors": {
+      "emailMismatch": "L’indirizzo inserito non corrisponde a quello del tuo account.",
+      "request": "Non è stato possibile avviare l’eliminazione. Controlla i dati e riprova."
+    }
+  }
+}

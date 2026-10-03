@@ -8,6 +8,7 @@ import { UserPut } from '@app/models/users/user_put';
 import { UsersApiResponse } from '@app/models/users/users_api_response';
 import { ImageDto } from '@app/models/images/image-dto';
 import { USERS_API_ENDPOINTS } from './users-api-endpoints';
+import { AccountDeletionRequest } from '@app/models/users/account-deletion-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,13 @@ export class UsersApiService {
     const formData: FormData = new FormData();
     formData.append('File', file);
     return this.http.post<ImageDto>(url, formData);
+  }
+
+  deleteCurrentAccount(request: AccountDeletionRequest): Observable<void> {
+    const url: string = `${environment.apiBaseUrl}${USERS_API_ENDPOINTS.deleteCurrentAccount}`;
+    return this.http.delete<void>(url, {
+      ...this.jsonHttpOptions,
+      body: request
+    });
   }
 }

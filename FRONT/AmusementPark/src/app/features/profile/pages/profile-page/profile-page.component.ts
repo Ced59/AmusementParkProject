@@ -225,6 +225,18 @@ export class ProfilePageComponent implements OnInit {
     this.router.navigate(['/', currentLang, 'home']);
   }
 
+  onAccountDeletionAccepted(): void {
+    this.authService.clearAfterAccountDeletion();
+    this.sharedService.emitLoginStatusChange();
+    const currentLang: string = this.router.url.split('/')[1] || 'en';
+    void this.router.navigate(['/', currentLang, 'home']);
+    this.messageService.add(
+      'success',
+      this.translate('common.success', 'Success'),
+      this.translate('accountDeletion.accepted', 'Your account deletion has started.')
+    );
+  }
+
   openPassportVisitDialog(): void {
     this.passportVisitDialogVisible = true;
   }

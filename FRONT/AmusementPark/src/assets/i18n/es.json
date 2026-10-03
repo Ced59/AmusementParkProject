@@ -1,4 +1,24 @@
 {
+  "accountDeletion": {
+    "kicker": "Zona de seguridad",
+    "title": "Elimina tu cuenta",
+    "description": "Prepara la eliminación definitiva de tu cuenta y de todos los datos personales vinculados.",
+    "openAction": "Preparar la eliminación",
+    "warning": "Esta acción es irreversible. Se eliminarán tus visitas, recorridos, valoraciones, contenidos compartidos, favoritos, viajes, perfiles y contribuciones atribuibles.",
+    "emailLabel": "Confirma tu correo electrónico",
+    "emailPlaceholder": "tu-direccion@ejemplo.es",
+    "passwordLabel": "Contraseña actual",
+    "passwordPlaceholder": "Tu contraseña",
+    "passwordHint": "Deja este campo vacío si solo inicias sesión con Google.",
+    "submitting": "Eliminación en curso…",
+    "confirmAction": "Eliminar mi cuenta definitivamente",
+    "cancelAction": "Cancelar",
+    "accepted": "La eliminación de tu cuenta ha comenzado.",
+    "errors": {
+      "emailMismatch": "La dirección introducida no coincide con la de tu cuenta.",
+      "request": "No se pudo iniciar la eliminación. Comprueba tus datos e inténtalo de nuevo."
+    }
+  },
   "collections": {
     "kicker": "Tus deseos",
     "title": "Tu colección de parques",

@@ -385,6 +385,13 @@ public static class InfrastructureServiceCollectionExtensions
             InMemoryPublicLiveForecastComputationCache>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IAccountDeletionOperationRepository, AccountDeletionOperationRepository>();
+        services.AddScoped<IAccountDataDeletionStore, MongoAccountDataDeletionStore>();
+        services.AddScoped<IAccountOwnedImageReader, MongoAccountOwnedImageReader>();
+        services.AddScoped<MongoAccountDeletionDocumentStore>();
+        services.AddScoped<MongoAccountPassportDataDeletion>();
+        services.AddScoped<MongoAccountTripDataDeletion>();
+        services.AddScoped<MongoAccountOperationalDataDeletion>();
         services.AddScoped<IParkDataEditorAccessTokenRepository, ParkDataEditorAccessTokenRepository>();
         services.AddScoped<IAdminAuditLogWriter, AdminAuditLogWriter>();
         services.AddScoped<IAdminAuditLogReader, AdminAuditLogReader>();

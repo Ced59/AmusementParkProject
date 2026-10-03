@@ -1,0 +1,22 @@
+{
+  "accountDeletion": {
+    "kicker": "Beveiligde zone",
+    "title": "Je account verwijderen",
+    "description": "Bereid de definitieve verwijdering van je account en alle gekoppelde persoonsgegevens voor.",
+    "openAction": "Verwijdering voorbereiden",
+    "warning": "Deze actie kan niet ongedaan worden gemaakt. Je bezoeken, ritten, beoordelingen, gedeelde pagina’s, favorieten, reizen, profielen en herleidbare bijdragen worden verwijderd.",
+    "emailLabel": "Bevestig je e-mailadres",
+    "emailPlaceholder": "jouw-adres@voorbeeld.nl",
+    "passwordLabel": "Huidig wachtwoord",
+    "passwordPlaceholder": "Je wachtwoord",
+    "passwordHint": "Laat dit veld leeg als je uitsluitend met Google inlogt.",
+    "submitting": "Verwijdering wordt uitgevoerd…",
+    "confirmAction": "Mijn account definitief verwijderen",
+    "cancelAction": "Annuleren",
+    "accepted": "De verwijdering van je account is gestart.",
+    "errors": {
+      "emailMismatch": "Het ingevoerde adres komt niet overeen met je account.",
+      "request": "De verwijdering kon niet starten. Controleer je gegevens en probeer het opnieuw."
+    }
+  }
+}

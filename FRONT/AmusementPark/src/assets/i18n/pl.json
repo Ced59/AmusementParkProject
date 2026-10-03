@@ -1,4 +1,24 @@
 {
+  "accountDeletion": {
+    "kicker": "Strefa bezpieczeństwa",
+    "title": "Usuń swoje konto",
+    "description": "Przygotuj trwałe usunięcie konta i wszystkich powiązanych z nim danych osobowych.",
+    "openAction": "Przygotuj usunięcie",
+    "warning": "Tej czynności nie można cofnąć. Twoje wizyty, przejazdy, oceny, udostępnienia, ulubione, podróże, profile i możliwe do przypisania treści zostaną usunięte.",
+    "emailLabel": "Potwierdź swój adres e-mail",
+    "emailPlaceholder": "twoj-adres@przyklad.pl",
+    "passwordLabel": "Aktualne hasło",
+    "passwordPlaceholder": "Twoje hasło",
+    "passwordHint": "Pozostaw to pole puste, jeśli logujesz się wyłącznie przez Google.",
+    "submitting": "Usuwanie w toku…",
+    "confirmAction": "Trwale usuń moje konto",
+    "cancelAction": "Anuluj",
+    "accepted": "Usuwanie Twojego konta zostało rozpoczęte.",
+    "errors": {
+      "emailMismatch": "Wpisany adres nie jest zgodny z adresem Twojego konta.",
+      "request": "Nie udało się rozpocząć usuwania. Sprawdź dane i spróbuj ponownie."
+    }
+  },
   "collections": {
     "kicker": "Twoje marzenia",
     "title": "Twoja kolekcja parków",

@@ -1,0 +1,22 @@
+{
+  "accountDeletion": {
+    "kicker": "Área de segurança",
+    "title": "Elimina a tua conta",
+    "description": "Prepara a eliminação definitiva da tua conta e de todos os dados pessoais associados.",
+    "openAction": "Preparar a eliminação",
+    "warning": "Esta ação é irreversível. As tuas visitas, voltas, avaliações, partilhas, favoritos, viagens, perfis e contribuições associáveis serão eliminados.",
+    "emailLabel": "Confirma o teu endereço de e-mail",
+    "emailPlaceholder": "o-teu-endereco@exemplo.pt",
+    "passwordLabel": "Palavra-passe atual",
+    "passwordPlaceholder": "A tua palavra-passe",
+    "passwordHint": "Deixa este campo vazio se iniciares sessão apenas com o Google.",
+    "submitting": "Eliminação em curso…",
+    "confirmAction": "Eliminar definitivamente a minha conta",
+    "cancelAction": "Cancelar",
+    "accepted": "A eliminação da tua conta começou.",
+    "errors": {
+      "emailMismatch": "O endereço introduzido não corresponde ao da tua conta.",
+      "request": "Não foi possível iniciar a eliminação. Verifica os teus dados e tenta novamente."
+    }
+  }
+}

@@ -6,6 +6,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Commands;
+using AmusementPark.Application.Features.Users.Contracts;
 using AmusementPark.Application.Features.Users.Queries;
 using AmusementPark.Core.Domain.Users;
 using AmusementPark.WebAPI.Authorization;
@@ -45,6 +46,7 @@ public sealed class UsersController : ControllerBase
     private readonly ICommandHandler<RemoveRoleCommand, ApplicationResult<User>> removeRoleCommandHandler;
     private readonly ICommandHandler<LockUserCommand, ApplicationResult<User>> lockUserCommandHandler;
     private readonly ICommandHandler<UnlockUserCommand, ApplicationResult<User>> unlockUserCommandHandler;
+    private readonly ICommandHandler<DeleteAccountCommand, ApplicationResult> deleteAccountCommandHandler;
 
     public UsersController(
         ICommandHandler<RegisterLocalUserCommand, ApplicationResult<User>> registerLocalUserCommandHandler,
@@ -60,7 +62,8 @@ public sealed class UsersController : ControllerBase
         ICommandHandler<AssignRoleCommand, ApplicationResult<User>> assignRoleCommandHandler,
         ICommandHandler<RemoveRoleCommand, ApplicationResult<User>> removeRoleCommandHandler,
         ICommandHandler<LockUserCommand, ApplicationResult<User>> lockUserCommandHandler,
-        ICommandHandler<UnlockUserCommand, ApplicationResult<User>> unlockUserCommandHandler)
+        ICommandHandler<UnlockUserCommand, ApplicationResult<User>> unlockUserCommandHandler,
+        ICommandHandler<DeleteAccountCommand, ApplicationResult> deleteAccountCommandHandler)
     {
         this.registerLocalUserCommandHandler = registerLocalUserCommandHandler;
         this.getUserByEmailQueryHandler = getUserByEmailQueryHandler;
@@ -76,6 +79,39 @@ public sealed class UsersController : ControllerBase
         this.removeRoleCommandHandler = removeRoleCommandHandler;
         this.lockUserCommandHandler = lockUserCommandHandler;
         this.unlockUserCommandHandler = unlockUserCommandHandler;
+        this.deleteAccountCommandHandler = deleteAccountCommandHandler;
+    }
+
+    [HttpDelete("me")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
+    [ProducesResponseType(typeof(AccountDeletionAcceptedDto), StatusCodes.Status202Accepted)]
+    public async Task<IActionResult> DeleteCurrentAccountAsync(
+        [FromBody] DeleteAccountRequestDto request,
+        CancellationToken cancellationToken = default)
+    {
+        string? currentUserId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(currentUserId))
+        {
+            return this.ToProblemDetailsResult(
+                StatusCodes.Status401Unauthorized,
+                "You must be authenticated to delete your account.",
+                "authentication.required");
+        }
+
+        ApplicationResult result = await this.deleteAccountCommandHandler.HandleAsync(
+            new DeleteAccountCommand(
+                currentUserId,
+                new DeleteAccountRequest(
+                    request.ConfirmationEmail,
+                    request.CurrentPassword)),
+            cancellationToken);
+        if (!result.IsSuccess)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Accepted(new AccountDeletionAcceptedDto("scheduled"));
     }
 
     [HttpPost]

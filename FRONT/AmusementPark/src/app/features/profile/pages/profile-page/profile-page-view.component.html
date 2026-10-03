@@ -282,6 +282,10 @@
               </div>
 
               <app-passport-export-panel id="account-export"></app-passport-export-panel>
+              <app-account-deletion-panel
+                [accountEmail]="currentUser.email || ''"
+                (deletionAccepted)="onAccountDeletionAccepted()">
+              </app-account-deletion-panel>
             </article>
           } @else {
             <article class="profile-panel profile-panel--ratings" appUiSurface="panel" appUiSurfacePadding="spacious">

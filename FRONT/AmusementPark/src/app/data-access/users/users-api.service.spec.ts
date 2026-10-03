@@ -81,4 +81,19 @@ describe('UsersApiService', () => {
     expect(request.request.headers.has('Content-Type')).toBe(false);
     request.flush({ id: 'avatar-1' });
   });
+
+  it('deletes the current account with an explicit confirmation payload', () => {
+    const payload = {
+      confirmationEmail: 'member@example.com',
+      currentPassword: 'secret'
+    };
+
+    service.deleteCurrentAccount(payload).subscribe();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}users/me`);
+    expect(request.request.method).toBe('DELETE');
+    expect(request.request.headers.get('Content-Type')).toBe('application/json');
+    expect(request.request.body).toEqual(payload);
+    request.flush(null);
+  });
 });
