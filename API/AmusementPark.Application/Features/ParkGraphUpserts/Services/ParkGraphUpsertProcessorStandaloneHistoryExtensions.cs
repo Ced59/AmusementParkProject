@@ -249,41 +249,13 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 }
                 else
                 {
-                    HistoryEvent? updatedHistoryEvent;
-                    try
-                    {
-                        updatedHistoryEvent = await processorContext.historyEventRepository.UpdateAsync(
-                            historyEvent.Id,
-                            historyEvent,
-                            expectedUpdatedAtUtc,
-                            expectedCanonicalFactId,
-                            cancellationToken);
-                    }
-                    catch (Exception mutationException)
-                    {
-                        await processorContext.RestoreCanonicalResourcesAfterHistoryMutationFailureAsync(
-                            historyEvent.Id,
-                            expectedUpdatedAtUtc,
-                            expectedCanonicalFactId,
-                            retractionSnapshot,
-                            mutationException);
-                        throw;
-                    }
-
-                    if (updatedHistoryEvent is null)
-                    {
-                        InvalidOperationException conflictException = new InvalidOperationException(
-                            "The historical narrative changed concurrently and could not be updated safely.");
-                        await processorContext.RestoreCanonicalResourcesAfterHistoryMutationFailureAsync(
-                            historyEvent.Id,
-                            expectedUpdatedAtUtc,
-                            expectedCanonicalFactId,
-                            retractionSnapshot,
-                            conflictException);
-                        throw conflictException;
-                    }
-
-                    historyEvent = updatedHistoryEvent;
+                    historyEvent = await ParkGraphHistoricalNarrativeUpdater.UpdateAsync(
+                        processorContext,
+                        historyEvent,
+                        expectedUpdatedAtUtc,
+                        expectedCanonicalFactId,
+                        retractionSnapshot,
+                        cancellationToken);
                 }
 
                 await processorContext.CanonicalizeHistoryNarrativeAsync(
