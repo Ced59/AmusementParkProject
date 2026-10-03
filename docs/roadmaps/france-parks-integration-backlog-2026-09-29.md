@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 57 |
+| Fiches privées existantes à intégrer | 82 | 58 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **147** |
+| **Total** | **225** | **148** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,8 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] L'Île aux Pirates, Capbreton — candidats `efac8649-a15b-4ed6-866c-2e926579d6de` et `5e9e6a61-3d74-49cd-9c3a-8ca107edd018` à réconcilier avant intégration
+- [ ] L'Île aux Pirates, Capbreton — `5e9e6a61-3d74-49cd-9c3a-8ca107edd018`
+- [ ] L'Île aux Pirates, La Tranche-sur-Mer — `efac8649-a15b-4ed6-866c-2e926579d6de` — distinct du parc homonyme de Capbreton ; l'identité vendéenne et la Chenille ont été confirmées lors de la réconciliation
 - [ ] La Coccinelle — `e1fa4656-8011-4908-a1bf-e7d581285a83`
 - [ ] Le Pal — `1675e96c-6361-48ff-862b-43218167facd`
 - [ ] LennyPark — `0d9fb07f-a134-40b5-94b1-6b449a684772`
