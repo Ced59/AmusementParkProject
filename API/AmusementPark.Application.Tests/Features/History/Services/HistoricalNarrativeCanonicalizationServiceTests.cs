@@ -52,7 +52,7 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         Guid factId = Guid.NewGuid();
         Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sourceRepository = new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
-        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = CreatePublicParkRepository();
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         factRepository
             .Setup(repository => repository.GetLatestRevisionAsync(
@@ -75,7 +75,7 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         Assert.True(repairRequired);
         factRepository.VerifyAll();
         sourceRepository.VerifyNoOtherCalls();
-        parkRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
     }
 
@@ -86,7 +86,7 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         HistoricalFact fact = CreatePublishedCanonicalFact(factId);
         Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sourceRepository = new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
-        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = CreatePublicParkRepository();
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         factRepository
             .Setup(repository => repository.GetLatestRevisionAsync(
@@ -113,7 +113,7 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         Assert.True(repairRequired);
         factRepository.VerifyAll();
         sourceRepository.VerifyAll();
-        parkRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
     }
 
@@ -125,13 +125,19 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         HistoricalSourceReference source = PublicParkHistoryTestData.CreateSource(fact);
         Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sourceRepository = new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
-        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = CreatePublicParkRepository();
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         factRepository
             .Setup(repository => repository.GetLatestRevisionAsync(
                 factId,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(fact);
+        factRepository
+            .Setup(repository => repository.IsLatestRevisionSubjectAlignedAsync(
+                factId,
+                It.IsAny<HistoricalSubject>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
         sourceRepository
             .Setup(repository => repository.GetRevisionsAsync(
                 It.IsAny<IReadOnlyCollection<HistoricalSourceRevisionReference>>(),
@@ -157,7 +163,7 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         Assert.False(repairRequired);
         factRepository.VerifyAll();
         sourceRepository.VerifyAll();
-        parkRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
     }
 
@@ -192,6 +198,98 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         factRepository.VerifyAll();
         sourceRepository.VerifyNoOtherCalls();
         parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task NeedsCanonicalRepairAsync_WhenPublicNarrativeFactHasSuppressedSubject_ShouldRequestRepair()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact fact = CreateSuppressedCanonicalFact(factId);
+        Mock<IHistoricalFactRepository> factRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository =
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = CreatePublicParkRepository();
+        Mock<IParkItemRepository> parkItemRepository =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        factRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(
+                factId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(fact);
+        HistoricalNarrativeCanonicalizationService service = CreateService(
+            factRepository.Object,
+            sourceRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object);
+        HistoryEvent historyEvent = CreateOpeningEvent(withSource: true);
+        historyEvent.CanonicalFactId = factId;
+
+        bool repairRequired = await service.NeedsCanonicalRepairAsync(
+            historyEvent,
+            CancellationToken.None);
+
+        Assert.True(repairRequired);
+        factRepository.VerifyAll();
+        sourceRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task NeedsCanonicalRepairAsync_WhenPublicNarrativeFactLostParkContext_ShouldRequestRepair()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact fact = CreatePublishedCanonicalFact(
+            factId,
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            null);
+        HistoricalSourceReference source = PublicParkHistoryTestData.CreateSource(fact);
+        Mock<IHistoricalFactRepository> factRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository =
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = CreatePublicParkRepository();
+        Mock<IParkItemRepository> parkItemRepository =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        factRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(
+                factId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(fact);
+        factRepository
+            .Setup(repository => repository.IsLatestRevisionSubjectAlignedAsync(
+                factId,
+                It.IsAny<HistoricalSubject>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        sourceRepository
+            .Setup(repository => repository.GetRevisionsAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSourceRevisionReference>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { source });
+        sourceRepository
+            .Setup(repository => repository.GetLatestRevisionsAsync(
+                It.IsAny<IReadOnlyCollection<Guid>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { source });
+        HistoricalNarrativeCanonicalizationService service = CreateService(
+            factRepository.Object,
+            sourceRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object);
+        HistoryEvent historyEvent = CreateOpeningEvent(withSource: true);
+        historyEvent.CanonicalFactId = factId;
+
+        bool repairRequired = await service.NeedsCanonicalRepairAsync(
+            historyEvent,
+            CancellationToken.None);
+
+        Assert.True(repairRequired);
+        factRepository.VerifyAll();
+        sourceRepository.VerifyAll();
+        parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
     }
 
@@ -467,7 +565,8 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
                 HistoricalSubjectType.Park,
                 "park-1",
                 "Parc de référence",
-                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                "park-1"),
             HistoricalFactType.Opening,
             HistoricalPeriod.Point(HistoricalDate.ForYear(2001)),
             HistoricalFactState.Unverified,
@@ -491,16 +590,55 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
             recordedAtUtc);
     }
 
-    private static HistoricalFact CreatePublishedCanonicalFact(Guid factId)
+    private static HistoricalFact CreatePublishedCanonicalFact(
+        Guid factId,
+        HistoricalSubjectPublicationPolicy publicationPolicy =
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+        string? contextParkId = "park-1")
     {
         return PublicParkHistoryTestData.CreateOpeningFact(
             new HistoricalSubject(
                 HistoricalSubjectType.Park,
                 "park-1",
                 "Parc de référence",
-                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+                publicationPolicy,
+                contextParkId),
             2001,
             factId,
             narrativeContentId: "history-1");
+    }
+
+    private static HistoricalFact CreateSuppressedCanonicalFact(Guid factId)
+    {
+        DateTime recordedAtUtc = new DateTime(2026, 10, 1, 12, 0, 0, DateTimeKind.Utc);
+        return new HistoricalFact(
+            factId,
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc de référence",
+                HistoricalSubjectPublicationPolicy.Suppressed),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForYear(2001)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft,
+            Array.Empty<HistoricalLocalizedText>(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "history-1",
+            null,
+            null,
+            null,
+            1,
+            null,
+            recordedAtUtc,
+            HistoricalRevisionOrigin.Ordinary);
     }
 }

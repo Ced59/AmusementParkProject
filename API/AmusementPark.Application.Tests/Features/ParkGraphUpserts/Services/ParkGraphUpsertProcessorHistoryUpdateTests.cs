@@ -422,6 +422,13 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.Is<HistoryEvent>(historyEvent => historyEvent.Id == "history-1"),
                 It.IsAny<CancellationToken>()),
             Times.Once);
+        context.HistoricalFactRepository.Verify(
+            repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == existing.CanonicalFactId
+                    && fact.PublicationState == HistoricalPublicationState.Withdrawn),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
     }
 
     [Fact]

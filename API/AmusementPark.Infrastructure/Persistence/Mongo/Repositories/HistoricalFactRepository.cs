@@ -128,6 +128,44 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         return document?.ToDomain();
     }
 
+    public async Task<bool> IsLatestRevisionSubjectAlignedAsync(
+        Guid factId,
+        HistoricalSubject expectedSubject,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(expectedSubject);
+        if (factId == Guid.Empty)
+        {
+            return false;
+        }
+
+        string normalizedFactId = factId.ToString("N", CultureInfo.InvariantCulture);
+        HistoricalFactDocument? document = await this.collection
+            .Find(item => item.FactId == normalizedFactId)
+            .SortByDescending(item => item.Revision)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document is not null && IsSubjectAligned(document.Subject, expectedSubject);
+    }
+
+    internal static bool IsSubjectAligned(
+        HistoricalSubjectDocument persistedSubject,
+        HistoricalSubject expectedSubject)
+    {
+        ArgumentNullException.ThrowIfNull(persistedSubject);
+        ArgumentNullException.ThrowIfNull(expectedSubject);
+        return persistedSubject.Type == expectedSubject.Type
+            && string.Equals(persistedSubject.Id, expectedSubject.Id, StringComparison.Ordinal)
+            && string.Equals(
+                persistedSubject.HistoricalLabel,
+                expectedSubject.HistoricalLabel,
+                StringComparison.Ordinal)
+            && persistedSubject.PublicationPolicy == expectedSubject.PublicationPolicy
+            && string.Equals(
+                persistedSubject.ContextParkId,
+                expectedSubject.ContextParkId,
+                StringComparison.Ordinal);
+    }
+
     public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestRevisionsForSubjectsAsync(
         IReadOnlyCollection<HistoricalSubject> subjects,
         CancellationToken cancellationToken)

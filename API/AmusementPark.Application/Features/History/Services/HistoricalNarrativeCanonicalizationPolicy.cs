@@ -2,9 +2,9 @@ namespace AmusementPark.Application.Features.History.Services;
 
 internal static class HistoricalNarrativeCanonicalizationPolicy
 {
-    internal const string Version = "hist-canonical-v2";
+    internal const string Version = "hist-canonical-v3";
     internal const string Actor = "system:hist-canonicalization";
-    internal const string MethodologyVersion = "hist-v2-canonical";
+    internal const string MethodologyVersion = "hist-v3-canonical";
 
     internal static DateTime NormalizeUtc(DateTime value)
     {

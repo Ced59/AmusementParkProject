@@ -252,6 +252,7 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                     existing,
                     historyEvent,
                     narrativeChanged,
+                    canonicalFactMissing,
                     expectedUpdatedAtUtc,
                     expectedCanonicalFactId,
                     key,

@@ -32,12 +32,40 @@ public sealed class HistoricalNarrativeCanonicalizationService : IHistoricalNarr
         return this.CanonicalizeInternalAsync(historyEvent, cancellationToken);
     }
 
-    public Task<bool> NeedsCanonicalRepairAsync(
+    public async Task<bool> NeedsCanonicalRepairAsync(
         HistoryEvent historyEvent,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(historyEvent);
-        return this.revisionWriter.NeedsCanonicalRepairAsync(historyEvent, cancellationToken);
+        HistoricalFact? fact = await this.revisionWriter.LoadLinkedFactAsync(
+            historyEvent,
+            cancellationToken);
+        if (fact is null)
+        {
+            return true;
+        }
+
+        if (fact.PublicationState == HistoricalPublicationState.Withdrawn)
+        {
+            return false;
+        }
+
+        HistoricalSubjectResolution? subjectResolution = await this.subjectResolver.ResolveAsync(
+            historyEvent,
+            cancellationToken);
+        if (subjectResolution is null)
+        {
+            return false;
+        }
+
+        HistoricalSubject expectedSubject = this.factFactory.BuildSubject(
+            historyEvent,
+            subjectResolution);
+        return await this.revisionWriter.NeedsCanonicalRepairAsync(
+            historyEvent,
+            fact,
+            expectedSubject,
+            cancellationToken);
     }
 
     public Task<HistoricalNarrativeCanonicalizationResult> MigrateExistingAsync(

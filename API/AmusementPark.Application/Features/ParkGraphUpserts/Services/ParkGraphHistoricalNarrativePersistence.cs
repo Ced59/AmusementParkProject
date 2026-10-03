@@ -43,6 +43,7 @@ internal static class ParkGraphHistoricalNarrativePersistence
         HistoryEvent? existing,
         HistoryEvent historyEvent,
         bool narrativeChanged,
+        bool canonicalRepairRequired,
         DateTime expectedUpdatedAtUtc,
         Guid? expectedCanonicalFactId,
         string key,
@@ -56,7 +57,7 @@ internal static class ParkGraphHistoricalNarrativePersistence
         }
 
         HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
-        if (existing is not null && narrativeChanged)
+        if (existing is not null && (narrativeChanged || canonicalRepairRequired))
         {
             retractionSnapshot = await processorContext.RetractCanonicalResourcesBeforeHistoryMutationAsync(
                 existing,
