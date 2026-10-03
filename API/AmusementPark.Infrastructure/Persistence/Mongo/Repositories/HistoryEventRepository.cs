@@ -276,6 +276,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         HistoryEvent historyEvent,
         DateTime expectedUpdatedAtUtc,
         Guid? expectedCanonicalFactId,
+        Guid mutationId,
         CancellationToken cancellationToken)
     {
         FilterDefinition<HistoryEventDocument> mutationFilter = BuildConditionalUpdateFilter(
@@ -311,6 +312,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             .Distinct(StringComparer.Ordinal)
             .OrderBy(static warning => warning, StringComparer.Ordinal)
             .ToList();
+        document.LastMutationId = mutationId.ToString("N");
 
         ReplaceOneResult result = await this.collection.ReplaceOneAsync(
             mutationFilter,
@@ -318,6 +320,22 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             cancellationToken: cancellationToken);
 
         return result.MatchedCount == 0 ? null : document.ToDomain();
+    }
+
+    public async Task<HistoryEvent?> GetCommittedUpdateAsync(
+        string eventId,
+        Guid mutationId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<HistoryEventDocument> filter =
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.Id, eventId)
+            & Builders<HistoryEventDocument>.Filter.Eq(
+                document => document.LastMutationId,
+                mutationId.ToString("N"));
+        HistoryEventDocument? document = await this.collection
+            .Find(filter)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
     }
 
     internal static FilterDefinition<HistoryEventDocument> BuildConditionalUpdateFilter(

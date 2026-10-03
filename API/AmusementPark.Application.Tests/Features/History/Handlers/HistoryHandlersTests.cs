@@ -340,8 +340,9 @@ public sealed class HistoryHandlersTests
                     && historyEvent.Year == 1999),
                 existing.UpdatedAtUtc,
                 factId,
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, HistoryEvent historyEvent, DateTime _, Guid? _, CancellationToken _) => historyEvent);
+            .ReturnsAsync((string _, HistoryEvent historyEvent, DateTime _, Guid? _, Guid _, CancellationToken _) => historyEvent);
         canonicalizer
             .Setup(value => value.CanonicalizeAsync(
                 It.IsAny<HistoryEvent>(),
@@ -455,6 +456,7 @@ public sealed class HistoryHandlersTests
                 It.IsAny<HistoryEvent>(),
                 originalUpdatedAtUtc,
                 originalFactId,
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((HistoryEvent?)null);
         UpsertHistoryEventCommandHandler handler = new UpsertHistoryEventCommandHandler(
@@ -551,8 +553,15 @@ public sealed class HistoryHandlersTests
                 It.IsAny<HistoryEvent>(),
                 updatedAtUtc,
                 factId,
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new TimeoutException("write failed before commit"));
+        historyRepository
+            .Setup(value => value.GetCommittedUpdateAsync(
+                "event-1",
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoryEvent?)null);
         UpsertHistoryEventCommandHandler handler = new UpsertHistoryEventCommandHandler(
             historyRepository.Object,
             parkRepository.Object,

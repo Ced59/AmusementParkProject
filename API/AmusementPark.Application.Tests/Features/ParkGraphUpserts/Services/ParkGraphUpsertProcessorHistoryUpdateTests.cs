@@ -67,6 +67,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.Is<HistoryEvent>(historyEvent => historyEvent.CanonicalFactId == factId),
                 It.IsAny<DateTime>(),
                 factId,
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()),
             Times.Once);
     }
@@ -125,6 +126,70 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenMigratedNarrativeUpdateCommitsWithoutAcknowledgement_ShouldCanonicalizeCommittedUpdate()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoryEvent existing = BuildExistingEvent();
+        existing.CanonicalFactId = factId;
+        existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
+        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(
+            factId,
+            HistoricalSubjectType.Park,
+            "park-1");
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
+        context.HistoricalFactRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(
+                factId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(canonicalFact);
+        context.HistoricalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == factId
+                    && fact.PublicationState == HistoricalPublicationState.Withdrawn),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        HistoryEvent committedUpdate = BuildExistingEvent();
+        committedUpdate.Sources = new List<HistorySourceReference>
+        {
+            new HistorySourceReference
+            {
+                Label = "Nouvelle archive",
+                Url = "https://example.test/new-history",
+            },
+        };
+        committedUpdate.CanonicalFactId = factId;
+        committedUpdate.CanonicalizationState = HistoricalNarrativeCanonicalizationState.PendingReview;
+        committedUpdate.UpdatedAtUtc = existing.UpdatedAtUtc.AddSeconds(1);
+        context.HistoryEventRepository
+            .Setup(repository => repository.GetCommittedUpdateAsync(
+                "history-1",
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(committedUpdate);
+        context.FailNextHistoryUpdate(new TimeoutException("acknowledgement lost after commit"));
+        string document = BuildDocument("""
+        "sources": [
+          {
+            "label": "Nouvelle archive",
+            "url": "https://example.test/new-history"
+          }
+        ]
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.ApplyAsync(document);
+
+        Assert.True(result.IsSuccess);
+        context.HistoricalNarrativeCanonicalizer.Verify(
+            canonicalizer => canonicalizer.CanonicalizeAsync(
+                It.Is<HistoryEvent>(historyEvent => historyEvent.Sources.Any(
+                    source => source.Url == "https://example.test/new-history")),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
+        context.HistoricalFactRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task PreviewAndApplyAsync_WhenExistingArticleTextChanges_ShouldReportAndPersistUpdate()
     {
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());
@@ -146,6 +211,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()),
             Times.Never);
 
@@ -159,6 +225,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()),
             Times.Once);
         HistoryEvent persistedEvent = context.ReadPersistedEvent();
@@ -241,6 +308,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()),
             Times.Never);
         Assert.Equal(new[] { "photo", "intro" }, context.ReadPersistedEvent().Article!.Blocks.Select(static block => block.Id));
@@ -267,6 +335,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()),
             Times.Never);
 
@@ -295,6 +364,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()),
             Times.Never);
     }

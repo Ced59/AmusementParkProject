@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.History.Models;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
@@ -19,6 +20,7 @@ internal static class ParkGraphHistoricalNarrativeUpdater
                 "Historical narrative persistence is required for Park Graph updates.");
         }
 
+        Guid mutationId = Guid.NewGuid();
         HistoryEvent? updatedHistoryEvent;
         try
         {
@@ -27,17 +29,26 @@ internal static class ParkGraphHistoricalNarrativeUpdater
                 historyEvent,
                 expectedUpdatedAtUtc,
                 expectedCanonicalFactId,
+                mutationId,
                 cancellationToken);
         }
         catch (Exception mutationException)
         {
-            await processorContext.RestoreCanonicalResourcesAfterHistoryMutationFailureAsync(
+            HistoryEvent? committedUpdate = await HistoricalNarrativeMutationRecovery.ResolveCommittedUpdateAsync(
+                processorContext.historyEventRepository,
+                processorContext.canonicalResourceRetractionService,
                 historyEvent.Id,
+                mutationId,
                 expectedUpdatedAtUtc,
                 expectedCanonicalFactId,
                 retractionSnapshot,
                 mutationException);
-            throw;
+            if (committedUpdate is null)
+            {
+                throw;
+            }
+
+            return committedUpdate;
         }
 
         if (updatedHistoryEvent is not null)

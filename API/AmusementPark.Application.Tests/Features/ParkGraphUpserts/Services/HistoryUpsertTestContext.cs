@@ -72,8 +72,9 @@ internal sealed class HistoryUpsertTestContext
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()))
-            .Returns((string _, HistoryEvent historyEvent, DateTime _, Guid? _, CancellationToken _) =>
+            .Returns((string _, HistoryEvent historyEvent, DateTime _, Guid? _, Guid _, CancellationToken _) =>
             {
                 if (this.nextHistoryUpdateFailure is not null)
                 {
@@ -85,6 +86,12 @@ internal sealed class HistoryUpsertTestContext
                 this.persistedEvent = CloneHistoryEvent(historyEvent);
                 return Task.FromResult<HistoryEvent?>(CloneHistoryEvent(historyEvent));
             });
+        this.HistoryEventRepository
+            .Setup(value => value.GetCommittedUpdateAsync(
+                "history-1",
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoryEvent?)null);
         this.HistoricalNarrativeCanonicalizer
             .Setup(value => value.CanonicalizeAsync(
                 It.IsAny<HistoryEvent>(),

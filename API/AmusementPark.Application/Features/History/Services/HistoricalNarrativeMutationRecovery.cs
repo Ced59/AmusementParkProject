@@ -6,6 +6,54 @@ namespace AmusementPark.Application.Features.History.Services;
 
 public static class HistoricalNarrativeMutationRecovery
 {
+    public static async Task<HistoryEvent?> ResolveCommittedUpdateAsync(
+        IHistoryEventRepository historyEventRepository,
+        HistoricalCanonicalResourceRetractionService? resourceRetractionService,
+        string historyEventId,
+        Guid mutationId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot,
+        Exception mutationFailure)
+    {
+        ArgumentNullException.ThrowIfNull(historyEventRepository);
+        try
+        {
+            HistoryEvent? committedUpdate = await historyEventRepository.GetCommittedUpdateAsync(
+                historyEventId,
+                mutationId,
+                CancellationToken.None);
+            if (committedUpdate is not null)
+            {
+                return committedUpdate;
+            }
+        }
+        catch (Exception reconciliationException)
+        {
+            throw new AggregateException(
+                "The failed historical narrative update could not be reconciled by mutation identifier.",
+                mutationFailure,
+                reconciliationException);
+        }
+
+        if (!expectedCanonicalFactId.HasValue || retractionSnapshot is null)
+        {
+            return null;
+        }
+
+        await RestoreIfNarrativeIsUnchangedAsync(
+            historyEventRepository,
+            resourceRetractionService
+                ?? throw new InvalidOperationException(
+                    "Canonical resource retraction is required to restore a failed narrative update."),
+            historyEventId,
+            expectedUpdatedAtUtc,
+            expectedCanonicalFactId.Value,
+            retractionSnapshot,
+            mutationFailure);
+        return null;
+    }
+
     public static async Task RestoreIfNarrativeIsUnchangedAsync(
         IHistoryEventRepository historyEventRepository,
         HistoricalCanonicalResourceRetractionService resourceRetractionService,

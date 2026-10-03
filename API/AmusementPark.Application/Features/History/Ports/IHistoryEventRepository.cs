@@ -40,6 +40,12 @@ public interface IHistoryEventRepository
         HistoryEvent historyEvent,
         DateTime expectedUpdatedAtUtc,
         Guid? expectedCanonicalFactId,
+        Guid mutationId,
+        CancellationToken cancellationToken);
+
+    Task<HistoryEvent?> GetCommittedUpdateAsync(
+        string eventId,
+        Guid mutationId,
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(

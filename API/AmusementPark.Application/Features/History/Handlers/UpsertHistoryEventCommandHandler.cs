@@ -100,6 +100,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         }
         else
         {
+            Guid mutationId = Guid.NewGuid();
             HistoryEvent? updatedHistoryEvent;
             try
             {
@@ -108,17 +109,24 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
                     historyEvent,
                     expectedUpdatedAtUtc,
                     expectedCanonicalFactId,
+                    mutationId,
                     cancellationToken);
             }
             catch (Exception mutationException)
             {
-                await this.RestorePreviousResourcesIfNeededAsync(
+                updatedHistoryEvent = await HistoricalNarrativeMutationRecovery.ResolveCommittedUpdateAsync(
+                    this.historyEventRepository,
+                    this.canonicalResourceRetractionService,
                     historyEvent.Id,
+                    mutationId,
                     expectedUpdatedAtUtc,
                     expectedCanonicalFactId,
                     retractionSnapshot,
                     mutationException);
-                throw;
+                if (updatedHistoryEvent is null)
+                {
+                    throw;
+                }
             }
 
             if (updatedHistoryEvent is null)
