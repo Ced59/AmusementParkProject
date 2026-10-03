@@ -1,6 +1,20 @@
 {
-  "version": "5.4.82",
+  "version": "5.4.83",
   "history": [
+    {
+      "version": "5.4.83",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Exports de données plus fiables",
+        "en": "More reliable data exports",
+        "de": "Zuverlässigere Datenexporte",
+        "nl": "Betrouwbaardere gegevensexports",
+        "it": "Esportazioni dei dati più affidabili",
+        "es": "Exportaciones de datos más fiables",
+        "pt": "Exportações de dados mais fiáveis",
+        "pl": "Bardziej niezawodny eksport danych"
+      }
+    },
     {
       "version": "5.4.82",
       "releasedAt": "2026-10-03",
