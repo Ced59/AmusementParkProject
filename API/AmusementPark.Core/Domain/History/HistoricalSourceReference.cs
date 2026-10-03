@@ -2,6 +2,8 @@ namespace AmusementPark.Core.Domain.History;
 
 public sealed class HistoricalSourceReference
 {
+    public const int MaximumUrlLength = 2000;
+
     public HistoricalSourceReference(
         Guid id,
         int revision,
@@ -251,7 +253,7 @@ public sealed class HistoricalSourceReference
 
     private static string? NormalizeOptionalUri(string? value, string parameterName)
     {
-        string? normalizedValue = NormalizeOptional(value, 2000);
+        string? normalizedValue = NormalizeOptional(value, MaximumUrlLength);
         if (normalizedValue is null)
         {
             return null;

@@ -11,7 +11,7 @@ if ! grep -Fq 'prepare_historical_history_cutover' "${deploy_script}"; then
 fi
 
 if ! grep -Fq 'rollback_incomplete_historical_history_cutover' "${deploy_script}"; then
-  echo 'The deployment must restore legacy historical authority when cutover is interrupted.' >&2
+  echo 'The deployment must restore the pre-cutover historical state when cutover is interrupted.' >&2
   exit 1
 fi
 
@@ -25,11 +25,42 @@ if [ -z "${historical_rollback_line}" ] \
 fi
 
 rollback_arm_line="$(grep -n 'historical_history_cutover_started=true' "${deploy_script}" | head -n 1 | cut -d: -f1)"
-freeze_command_line="$(grep -n 'freeze-legacy-history-5.3.82.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+freeze_command_line="$(grep -n 'freeze-history-authorities-5.4.81.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+writer_quiesce_line="$(grep -n 'quiesce-original-history-writer' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+candidate_prepare_line="$(grep -n 'deployment_transaction.py prepare-candidates' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+write_release_line="$(grep -n 'release-history-write-freeze-5.4.81.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${rollback_arm_line}" ] \
+  || [ -z "${writer_quiesce_line}" ] \
   || [ -z "${freeze_command_line}" ] \
-  || [ "${rollback_arm_line}" -ge "${freeze_command_line}" ]; then
-  echo 'Historical rollback must be armed before attempting the legacy collection freeze.' >&2
+  || [ -z "${candidate_prepare_line}" ] \
+  || [ -z "${write_release_line}" ] \
+  || [ "${rollback_arm_line}" -ge "${writer_quiesce_line}" ] \
+  || [ "${writer_quiesce_line}" -ge "${freeze_command_line}" ] \
+  || [ "${freeze_command_line}" -ge "${candidate_prepare_line}" ] \
+  || [ "${candidate_prepare_line}" -ge "${write_release_line}" ]; then
+  echo 'History must be frozen until the isolated, unexposed candidate is healthy.' >&2
+  exit 1
+fi
+
+if grep -Fq 'hasSource || total === 0 || pending > 0' "${deploy_script}"; then
+  echo 'An empty canonical history without a legacy source must not replay the cutover.' >&2
+  exit 1
+fi
+
+if ! grep -Fq 'hasSource || pending > 0' "${deploy_script}"; then
+  echo 'The historical cutover detector must require a legacy source or pending canonical work.' >&2
+  exit 1
+fi
+
+rollback_script_line="$(grep -n 'rollback-history-cutover-5.4.81.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+writer_restore_line="$(grep -n 'restore-original-history-writer' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+cutover_restored_line="$(grep -n 'cutover-restored --resource historical-history' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${rollback_script_line}" ] \
+  || [ -z "${writer_restore_line}" ] \
+  || [ -z "${cutover_restored_line}" ] \
+  || [ "${rollback_script_line}" -ge "${writer_restore_line}" ] \
+  || [ "${writer_restore_line}" -ge "${cutover_restored_line}" ]; then
+  echo 'Rollback must finish before the original historical writer is restored and disarmed.' >&2
   exit 1
 fi
 
@@ -39,30 +70,67 @@ if ! grep -Fq 'arm-cutover --resource historical-history' "${deploy_script}"; th
 fi
 
 resume_recovery_line="$(grep -n 'cutover-pending --resource historical-history' "${deploy_script}" | head -n 1 | cut -d: -f1)"
-migration_check_line="$(grep -n 'getCollection("historical-migrations")' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+cutover_check_line="$(grep -n 'hist-canonical-v2' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${resume_recovery_line}" ] \
-  || [ -z "${migration_check_line}" ] \
-  || [ "${resume_recovery_line}" -ge "${migration_check_line}" ]; then
-  echo 'A resumed historical cutover must restore its rollback flag before accepting a completed migration.' >&2
+  || [ -z "${cutover_check_line}" ] \
+  || [ "${resume_recovery_line}" -ge "${cutover_check_line}" ]; then
+  echo 'A resumed historical cutover must restore its rollback flag before checking the physical source.' >&2
   exit 1
 fi
 
-freeze_script="${deploy_root}/scripts/freeze-legacy-history-5.3.82.js"
-for required_freeze_step in \
-  "renameCollection(frozenCollectionName, false)" \
-  "createView(legacyCollectionName, frozenCollectionName, [])" \
-  "legacyInfo[0].type === 'view'"; do
-  if ! grep -Fq "${required_freeze_step}" "${freeze_script}"; then
-    echo "The historical cutover is missing its read-only view step: ${required_freeze_step}" >&2
+deploy_transaction_line="$(grep -n 'deployment_transaction.py deploy' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+completion_line="$(grep -n '^complete_historical_history_cutover$' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+rollback_disarm_line="$(grep -n '^historical_history_cutover_started=false$' "${deploy_script}" | tail -n 1 | cut -d: -f1)"
+if [ -z "${deploy_transaction_line}" ] \
+  || [ -z "${completion_line}" ] \
+  || [ -z "${rollback_disarm_line}" ] \
+  || [ "${write_release_line}" -ge "${deploy_transaction_line}" ] \
+  || [ "${deploy_transaction_line}" -ge "${completion_line}" ] \
+  || [ "${completion_line}" -ge "${rollback_disarm_line}" ]; then
+  echo 'Historical collections may be removed only after promotion and before rollback is disarmed.' >&2
+  exit 1
+fi
+
+for required_cutover_check in \
+  'hasSource || pending > 0' \
+  'pending > 0' \
+  'canonicalizationState:{$nin:'; do
+  if ! grep -Fq "${required_cutover_check}" "${deploy_script}"; then
+    echo "The deployment cutover check is incomplete: ${required_cutover_check}" >&2
     exit 1
   fi
 done
 
-rollback_script="${deploy_root}/scripts/rollback-history-5.3.82.js"
+freeze_script="${deploy_root}/scripts/freeze-history-authorities-5.4.81.js"
+for required_freeze_step in \
+  "renameCollection(frozenCollectionName, false)" \
+  "createView(legacyCollectionName, frozenCollectionName, [])" \
+  "legacyInfo[0].type === 'view'" \
+  "frozenInfo[0].type !== 'collection'" \
+  "collMod: narrativeCollectionName" \
+  "{ cutoverVersion }" \
+  "migrationVersion: canonicalizationVersion" \
+  "canonicalizationState: { \$in: ['Canonicalized', 'Blocked'] }"; do
+  if ! grep -Fq "${required_freeze_step}" "${freeze_script}"; then
+    echo "The historical cutover is missing a write freeze step: ${required_freeze_step}" >&2
+    exit 1
+  fi
+done
+
+rollback_script="${deploy_root}/scripts/rollback-history-cutover-5.4.81.js"
 for required_filter in \
-  "migrationVersion: migrationId" \
-  "publicationMethodologyVersion: methodologyVersion" \
-  "'transitionReviewEvent.actorUserId': migrationActor" \
+  "cutoverVersion: canonicalCutoverVersion" \
+  "narrativeContentId: { \$in: stagedNarrativeIds }" \
+  "historical-narratives-cutover-backup-hist-canonical-v1" \
+  "historical-facts-cutover-backup-hist-canonical-v1" \
+  "historical-sources-cutover-backup-hist-canonical-v1" \
+  "historical-cutover-state-hist-canonical-v1" \
+  "backupStageComplete" \
+  "restoreDocuments(narratives, narrativeBackup)" \
+  "restoreDocuments(facts, factBackup)" \
+  "restoreDocuments(sources, sourceBackup)" \
+  "relationCollectionName = 'historical-relations'" \
+  "collMod: collectionName" \
   "getCollection(legacyCollectionName).drop()" \
   "renameCollection(legacyCollectionName, false)"; do
   if ! grep -Fq "${required_filter}" "${rollback_script}"; then
@@ -70,5 +138,69 @@ for required_filter in \
     exit 1
   fi
 done
+
+release_script="${deploy_root}/scripts/release-history-write-freeze-5.4.81.js"
+for required_release_step in \
+  "editorialCollectionNames" \
+  "'historical-narratives'" \
+  "'historical-facts'" \
+  "'historical-sources'" \
+  "'historical-relations'" \
+  "collMod: collectionName" \
+  "validator: { \$expr: { \$eq: [1, 0] } }" \
+  "validationLevel: 'strict'" \
+  "validationAction: 'error'"; do
+  if ! grep -Fq "${required_release_step}" "${release_script}"; then
+    echo "The historical cleanup freeze is missing: ${required_release_step}" >&2
+    exit 1
+  fi
+done
+
+source_restore_line="$(grep -n 'renameCollection(legacyCollectionName, false)' "${rollback_script}" | tail -n 1 | cut -d: -f1)"
+backup_cleanup_line="$(grep -n 'const droppedBackups = \[\]' "${rollback_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${source_restore_line}" ] \
+  || [ -z "${backup_cleanup_line}" ] \
+  || [ "${source_restore_line}" -ge "${backup_cleanup_line}" ]; then
+  echo 'Rollback backups must remain available until historical source authority is restored.' >&2
+  exit 1
+fi
+
+completion_script="${deploy_root}/scripts/complete-history-cutover-5.4.81.js"
+for required_completion_step in \
+  "history-events-cutover-source-hist-04-v1" \
+  "history-events-backup-hist-04-v1" \
+  "historical-narratives-cutover-backup-hist-canonical-v1" \
+  "historical-facts-cutover-backup-hist-canonical-v1" \
+  "historical-sources-cutover-backup-hist-canonical-v1" \
+  "historical-cutover-state-hist-canonical-v1" \
+  "cutoverPreviousCanonicalFactId: ''" \
+  "bypassDocumentValidation: true" \
+  "legacyFactsWithoutNarrative" \
+  "completedLegacyNarratives !== legacyNarrativeIds.length" \
+  "orphanedLegacySourceIds.length > 0" \
+  "ordinaryFactsUsingLegacySources > 0" \
+  "ordinaryRelationsUsingLegacySources > 0" \
+  "relations.countDocuments(legacyRevisionFilter)" \
+  "facts.deleteMany(legacyRevisionFilter)" \
+  "sources.deleteMany(legacyRevisionFilter)" \
+  "for (const collectionName of editorialCollectionNames)" \
+  "collMod: collectionName" \
+  "validator: {}" \
+  "validationLevel: 'off'" \
+  "deletedMigrationStates"; do
+  if ! grep -Fq "${required_completion_step}" "${completion_script}"; then
+    echo "Historical completion is missing its canonical cleanup step: ${required_completion_step}" >&2
+    exit 1
+  fi
+done
+
+legacy_delete_line="$(grep -n 'sources.deleteMany(legacyRevisionFilter)' "${completion_script}" | head -n 1 | cut -d: -f1)"
+completion_unfreeze_line="$(grep -n 'for (const collectionName of editorialCollectionNames)' "${completion_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${legacy_delete_line}" ] \
+  || [ -z "${completion_unfreeze_line}" ] \
+  || [ "${legacy_delete_line}" -ge "${completion_unfreeze_line}" ]; then
+  echo 'Canonical history writes must remain frozen until legacy evidence is deleted.' >&2
+  exit 1
+fi
 
 echo 'Historical history cutover deployment tests passed.'

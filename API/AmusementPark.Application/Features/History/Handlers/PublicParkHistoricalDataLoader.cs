@@ -227,33 +227,6 @@ public sealed class PublicParkHistoricalDataLoader
             cancellationToken);
     }
 
-    public Task<bool> HasLegacyPublicTimelineAsync(
-        PublicParkHistoricalScope scope,
-        CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(scope);
-        if (this.rolloutGateCache is not null)
-        {
-            return this.rolloutGateCache.GetOrCreateLegacyTimelineAvailabilityAsync(
-                scope.Park.Id,
-                BuildScopeFingerprint(scope),
-                token => this.HasLegacyPublicTimelineUncachedAsync(scope, token),
-                cancellationToken);
-        }
-
-        return this.HasLegacyPublicTimelineUncachedAsync(scope, cancellationToken);
-    }
-
-    private Task<bool> HasLegacyPublicTimelineUncachedAsync(
-        PublicParkHistoricalScope scope,
-        CancellationToken cancellationToken)
-    {
-        return this.historicalFactRepository.HasLatestLegacyPublicTimelineRevisionForParkAsync(
-            scope.Park.Id,
-            scope.PublicCurrentSubjects,
-            cancellationToken);
-    }
-
     private async Task<(HistoricalSubject[] Subjects, HistoricalFact[] Facts, HistoricalParkRolloutGate Gate)>
         LoadProjectionAsync(
             PublicParkHistoricalScope scope,

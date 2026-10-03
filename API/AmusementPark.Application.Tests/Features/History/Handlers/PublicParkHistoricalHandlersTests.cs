@@ -120,11 +120,6 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<HistoricalFact>());
-        factRepository.Setup(repository => repository.HasLatestLegacyPublicTimelineRevisionForParkAsync(
-                park.Id,
-                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(false);
         GetPublicParkHistoricalTimelineQueryHandler handler = new(
             CreateLoader(
                 parkRepository,
@@ -140,75 +135,6 @@ public sealed class PublicParkHistoricalHandlersTests
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "park.not-found");
-    }
-
-    [Fact]
-    public async Task Timeline_WhenLegacyPublishedHistoryAwaitsReview_ShouldExposeTimelineWithoutSnapshots()
-    {
-        Park park = PublicParkHistoryTestData.CreatePark();
-        HistoricalFact legacyFact = CreateLegacyPublishedFact(park);
-        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
-        Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
-        Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
-        Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
-        Mock<IHistoricalRelationRepository> relationRepository = new(MockBehavior.Strict);
-        Mock<IHistoricalSubjectPublicationStateReader> publicationReader = new(MockBehavior.Strict);
-        parkRepository.Setup(repository => repository.GetByIdAsync(
-                park.Id,
-                false,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(park);
-        parkItemRepository.Setup(repository => repository.GetByParkIdAsync(
-                park.Id,
-                false,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(Array.Empty<ParkItem>());
-        parkZoneRepository.Setup(repository => repository.GetByParkIdAsync(
-                park.Id,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(Array.Empty<ParkZone>());
-        factRepository.Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
-                park.Id,
-                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(Array.Empty<HistoricalFact>());
-        factRepository.Setup(repository => repository.HasLatestLegacyPublicTimelineRevisionForParkAsync(
-                park.Id,
-                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(true);
-        factRepository.Setup(repository => repository.GetLatestPublicTimelineRevisionsForParkPageAsync(
-                park.Id,
-                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                1,
-                25,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new PagedResult<HistoricalFact>(new[] { legacyFact }, 1, 25, 1));
-        GetPublicParkHistoricalTimelineQueryHandler handler = new(
-            CreateLoader(
-                parkRepository,
-                parkItemRepository,
-                parkZoneRepository,
-                factRepository,
-                false),
-            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict).Object,
-            new Mock<IHistoryEventRepository>(MockBehavior.Strict).Object,
-            relationRepository.Object,
-            publicationReader.Object);
-
-        ApplicationResult<PublicParkHistoricalTimelineResult> result = await handler.HandleAsync(
-            new GetPublicParkHistoricalTimelineQuery(park.Id));
-
-        Assert.True(result.IsSuccess);
-        PublicParkHistoricalTimelineResult timeline = Assert.IsType<PublicParkHistoricalTimelineResult>(
-            result.Value);
-        Assert.False(timeline.HasDecisionSnapshots);
-        PublicHistoricalTimelineEntryResult entry = Assert.Single(timeline.Page.Items);
-        Assert.Same(legacyFact, entry.Fact);
-        Assert.False(entry.HasPublishedLineage);
-        factRepository.VerifyAll();
-        relationRepository.VerifyNoOtherCalls();
-        publicationReader.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -458,7 +384,9 @@ public sealed class PublicParkHistoricalHandlersTests
             parkRepository,
             parkItemRepository,
             parkZoneRepository,
-            factRepository);
+            factRepository,
+            rolloutIsOpen: false,
+            timelineOnly: true);
         GetPublicParkHistoricalTimelineQueryHandler handler = new(
             loader,
             sourceRepository.Object,
@@ -474,6 +402,7 @@ public sealed class PublicParkHistoricalHandlersTests
             result.Value);
         Assert.Equal(4, timeline.Page.TotalItems);
         Assert.Equal(2, timeline.Page.Items.Count);
+        Assert.False(timeline.HasDecisionSnapshots);
         PublicHistoricalTimelineEntryResult visibleEntry = Assert.Single(
             timeline.Page.Items,
             entry => entry.Fact.Id == visibleFact.Id);
@@ -789,7 +718,8 @@ public sealed class PublicParkHistoricalHandlersTests
         Mock<IParkItemRepository> parkItemRepository,
         Mock<IParkZoneRepository> parkZoneRepository,
         Mock<IHistoricalFactRepository> factRepository,
-        bool rolloutIsOpen = true)
+        bool rolloutIsOpen = true,
+        bool timelineOnly = false)
     {
         Mock<IHistoricalParkRolloutGateAssessmentService> rolloutGate = new(MockBehavior.Strict);
         rolloutGate.Setup(service => service.AssessAsync(
@@ -799,7 +729,9 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(rolloutIsOpen
                 ? new HistoricalParkRolloutGate(2, 2, 1, new[] { 1998 })
-                : new HistoricalParkRolloutGate(0, 0, 0, Array.Empty<int>()));
+                : timelineOnly
+                    ? new HistoricalParkRolloutGate(2, 2, 1, Array.Empty<int>())
+                    : new HistoricalParkRolloutGate(0, 0, 0, Array.Empty<int>()));
         return new PublicParkHistoricalDataLoader(
             parkRepository.Object,
             parkItemRepository.Object,

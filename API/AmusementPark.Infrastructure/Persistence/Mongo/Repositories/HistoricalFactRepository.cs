@@ -69,8 +69,7 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             predecessorDocument?.TransitionReviewEvent.ToDomain());
         bool requiresCurrentSubjectResolution = fact.Subject.PublicationPolicy
                 == HistoricalSubjectPublicationPolicy.FollowCurrentSubject
-            && fact.PublicationState is HistoricalPublicationState.Published
-                or HistoricalPublicationState.LegacyPublishedPendingReview;
+            && fact.PublicationState == HistoricalPublicationState.Published;
         bool currentSubjectIsPublic = !requiresCurrentSubjectResolution
             || await this.subjectPublicationStateReader.IsPublicAsync(fact.Subject, cancellationToken);
         HistoricalSubjectPublicationValidator.Validate(fact, currentSubjectIsPublic);
@@ -250,26 +249,6 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         return await this.ExecutePageAsync(stages, page, pageSize, cancellationToken);
     }
 
-    public async Task<bool> HasLatestLegacyPublicTimelineRevisionForParkAsync(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        CancellationToken cancellationToken)
-    {
-        string normalizedParkId = NormalizeParkId(parkId);
-        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        List<BsonDocument> stages = BuildLatestLegacyPublicTimelineForParkPipeline(
-                normalizedParkId,
-                publicCurrentSubjects,
-                this.collectionName)
-            .ToList();
-        stages.Add(new BsonDocument("$limit", 1));
-        PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument> pipeline =
-            PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument>.Create(stages);
-        using IAsyncCursor<HistoricalFactDocument> cursor = await this.collection
-            .AggregateAsync(pipeline, cancellationToken: cancellationToken);
-        return await cursor.AnyAsync(cancellationToken);
-    }
-
     private async Task<PagedResult<HistoricalFact>> ExecutePageAsync(
         List<BsonDocument> stages,
         int page,
@@ -337,64 +316,18 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
                 {
                     ["$and"] = new BsonArray
                     {
-                        new BsonDocument("$or", new BsonArray
+                        new BsonDocument
                         {
-                            new BsonDocument
+                            ["publicationState"] = HistoricalPublicationState.Published.ToString(),
+                            ["state"] = new BsonDocument("$in", new BsonArray
                             {
-                                ["publicationState"] = HistoricalPublicationState.Published.ToString(),
-                                ["state"] = new BsonDocument("$in", new BsonArray
-                                {
-                                    HistoricalFactState.Verified.ToString(),
-                                    HistoricalFactState.Probable.ToString(),
-                                    HistoricalFactState.Disputed.ToString(),
-                                }),
-                            },
-                            new BsonDocument
-                            {
-                                ["publicationState"] = HistoricalPublicationState
-                                    .LegacyPublishedPendingReview
-                                    .ToString(),
-                                ["state"] = HistoricalFactState.Unverified.ToString(),
-                                ["revisionOrigin"] = HistoricalRevisionOrigin.LegacyMigration.ToString(),
-                            },
-                        }),
+                                HistoricalFactState.Verified.ToString(),
+                                HistoricalFactState.Probable.ToString(),
+                                HistoricalFactState.Disputed.ToString(),
+                            }),
+                        },
                         new BsonDocument("$or", publicEligibilityFilters),
                     },
-                }),
-            })
-            .ToArray();
-    }
-
-    internal static IReadOnlyCollection<BsonDocument> BuildLatestLegacyPublicTimelineForParkPipeline(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        string collectionName)
-    {
-        string normalizedParkId = NormalizeParkId(parkId);
-        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        string normalizedCollectionName = collectionName?.Trim() ?? string.Empty;
-        if (normalizedCollectionName.Length == 0)
-        {
-            throw new ArgumentException("A historical facts collection name is required.", nameof(collectionName));
-        }
-
-        BsonArray publicEligibilityFilters = BuildPublicEligibilityFilters(
-            normalizedParkId,
-            publicCurrentSubjects);
-        return BuildLatestForParkPipeline(
-                normalizedParkId,
-                publicCurrentSubjects,
-                normalizedCollectionName)
-            .Concat(new[]
-            {
-                new BsonDocument("$match", new BsonDocument
-                {
-                    ["publicationState"] = HistoricalPublicationState
-                        .LegacyPublishedPendingReview
-                        .ToString(),
-                    ["state"] = HistoricalFactState.Unverified.ToString(),
-                    ["revisionOrigin"] = HistoricalRevisionOrigin.LegacyMigration.ToString(),
-                    ["$or"] = publicEligibilityFilters,
                 }),
             })
             .ToArray();

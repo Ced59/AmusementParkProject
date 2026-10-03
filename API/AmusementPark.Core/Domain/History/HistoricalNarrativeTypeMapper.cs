@@ -1,17 +1,17 @@
 namespace AmusementPark.Core.Domain.History;
 
 /// <summary>
-/// Table explicite de conversion des types historiques antérieurs.
+/// Table explicite de projection des types narratifs vers les faits HIST canoniques.
 /// Une valeur inconnue n'est jamais rabattue silencieusement vers Other.
 /// </summary>
-public static class LegacyHistoryEventTypeMapper
+public static class HistoricalNarrativeTypeMapper
 {
     public static bool TryMap(
         HistoryEntityType entityType,
-        string? legacyEventType,
-        out LegacyHistoryEventTypeMapping? mapping)
+        string? eventType,
+        out HistoricalNarrativeTypeMapping? mapping)
     {
-        if (RequiresManualClassification(entityType, legacyEventType))
+        if (RequiresManualClassification(entityType, eventType))
         {
             mapping = null;
             return false;
@@ -19,9 +19,9 @@ public static class LegacyHistoryEventTypeMapper
 
         mapping = entityType switch
         {
-            HistoryEntityType.Park => MapPark(legacyEventType),
+            HistoryEntityType.Park => MapPark(eventType),
             HistoryEntityType.ParkItem or HistoryEntityType.StandaloneAttraction =>
-                MapParkItem(legacyEventType),
+                MapParkItem(eventType),
             _ => null,
         };
         return mapping is not null;
@@ -29,28 +29,32 @@ public static class LegacyHistoryEventTypeMapper
 
     public static bool RequiresManualClassification(
         HistoryEntityType entityType,
-        string? legacyEventType)
+        string? eventType)
     {
-        string? normalizedEventType = legacyEventType?.Trim();
+        string? normalizedEventType = eventType?.Trim();
         return entityType switch
         {
             HistoryEntityType.Park => Enum.TryParse(
                     normalizedEventType,
                     true,
                     out ParkHistoryEventType parkEventType)
-                && parkEventType == ParkHistoryEventType.SeasonOpening,
+                && parkEventType is ParkHistoryEventType.SeasonOpening
+                    or ParkHistoryEventType.OwnershipChange
+                    or ParkHistoryEventType.Acquisition
+                    or ParkHistoryEventType.Sale,
             HistoryEntityType.ParkItem or HistoryEntityType.StandaloneAttraction => Enum.TryParse(
                     normalizedEventType,
                     true,
                     out ParkItemHistoryEventType parkItemEventType)
-                && parkItemEventType == ParkItemHistoryEventType.SeasonOpening,
+                && parkItemEventType is ParkItemHistoryEventType.SeasonOpening
+                    or ParkItemHistoryEventType.ManufacturerChange,
             _ => false,
         };
     }
 
-    private static LegacyHistoryEventTypeMapping? MapPark(string? legacyEventType)
+    private static HistoricalNarrativeTypeMapping? MapPark(string? eventType)
     {
-        if (!Enum.TryParse(legacyEventType?.Trim(), true, out ParkHistoryEventType type)
+        if (!Enum.TryParse(eventType?.Trim(), true, out ParkHistoryEventType type)
             || !Enum.IsDefined(type))
         {
             return null;
@@ -89,11 +93,6 @@ public static class LegacyHistoryEventTypeMapper
             ParkHistoryEventType.LogoChange => Attribute(
                 HistoricalFactType.LogoChange,
                 HistoricalAttributeKind.Logo),
-            ParkHistoryEventType.OwnershipChange
-                or ParkHistoryEventType.Acquisition
-                or ParkHistoryEventType.Sale => Attribute(
-                    HistoricalFactType.OwnerChange,
-                    HistoricalAttributeKind.Owner),
             ParkHistoryEventType.OperatorChange => Attribute(
                 HistoricalFactType.OperatorChange,
                 HistoricalAttributeKind.Operator),
@@ -139,9 +138,9 @@ public static class LegacyHistoryEventTypeMapper
         };
     }
 
-    private static LegacyHistoryEventTypeMapping? MapParkItem(string? legacyEventType)
+    private static HistoricalNarrativeTypeMapping? MapParkItem(string? eventType)
     {
-        if (!Enum.TryParse(legacyEventType?.Trim(), true, out ParkItemHistoryEventType type)
+        if (!Enum.TryParse(eventType?.Trim(), true, out ParkItemHistoryEventType type)
             || !Enum.IsDefined(type))
         {
             return null;
@@ -180,9 +179,6 @@ public static class LegacyHistoryEventTypeMapper
             ParkItemHistoryEventType.LogoChange => Attribute(
                 HistoricalFactType.LogoChange,
                 HistoricalAttributeKind.Logo),
-            ParkItemHistoryEventType.ManufacturerChange => Attribute(
-                HistoricalFactType.ManufacturerChange,
-                HistoricalAttributeKind.Manufacturer),
             ParkItemHistoryEventType.RelocationDeparture
                 or ParkItemHistoryEventType.RelocationArrival
                 or ParkItemHistoryEventType.Transfer
@@ -227,23 +223,23 @@ public static class LegacyHistoryEventTypeMapper
         };
     }
 
-    private static LegacyHistoryEventTypeMapping Simple(HistoricalFactType factType)
+    private static HistoricalNarrativeTypeMapping Simple(HistoricalFactType factType)
     {
-        return new LegacyHistoryEventTypeMapping(factType, null, null, null);
+        return new HistoricalNarrativeTypeMapping(factType, null, null, null);
     }
 
-    private static LegacyHistoryEventTypeMapping Lifecycle(
+    private static HistoricalNarrativeTypeMapping Lifecycle(
         HistoricalFactType factType,
         LifecycleBoundaryMeaning boundaryMeaning)
     {
-        return new LegacyHistoryEventTypeMapping(factType, boundaryMeaning, null, null);
+        return new HistoricalNarrativeTypeMapping(factType, boundaryMeaning, null, null);
     }
 
-    private static LegacyHistoryEventTypeMapping Attribute(
+    private static HistoricalNarrativeTypeMapping Attribute(
         HistoricalFactType factType,
         HistoricalAttributeKind attributeKind)
     {
-        return new LegacyHistoryEventTypeMapping(
+        return new HistoricalNarrativeTypeMapping(
             factType,
             null,
             attributeKind,

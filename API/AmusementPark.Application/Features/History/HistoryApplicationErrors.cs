@@ -29,6 +29,20 @@ internal static class HistoryApplicationErrors
         return ApplicationError.Validation("history.event-type.invalid", "The history event type is invalid for the selected owner.");
     }
 
+    public static ApplicationError InvalidCanonicalShape()
+    {
+        return ApplicationError.Validation(
+            "history.canonical-shape.invalid",
+            "The history event is missing the structured destination value required by HIST.");
+    }
+
+    public static ApplicationError MissingPublicationSource()
+    {
+        return ApplicationError.Validation(
+            "history.publication-source.missing",
+            "A visible history event must cite at least one valid HTTP or HTTPS source.");
+    }
+
     public static ApplicationError InvalidSnapshotDate()
     {
         return ApplicationError.Validation(

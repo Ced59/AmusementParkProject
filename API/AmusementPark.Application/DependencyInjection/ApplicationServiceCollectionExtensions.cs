@@ -13,6 +13,7 @@ using AmusementPark.Application.Features.FactualEvents.Services;
 using AmusementPark.Application.Features.FeatureFlags.Ports;
 using AmusementPark.Application.Features.FeatureFlags.Services;
 using AmusementPark.Application.Features.History.Handlers;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.LiveData.Services;
@@ -82,6 +83,16 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IFactualChangeMaterializationScheduler, FactualChangeMaterializationScheduler>();
         services.AddScoped<FactualChangeEventAdministrationService>();
         services.AddScoped<HistoricalNarrativeCanonicalFactRetractionService>();
+        services.AddScoped<HistoricalCanonicalSourceRetractionService>();
+        services.AddScoped<HistoricalCanonicalResourceRetractionService>();
+        services.AddScoped<HistoricalNarrativeCanonicalSubjectResolver>();
+        services.AddScoped<HistoricalNarrativeCanonicalSourcePlanner>();
+        services.AddScoped<HistoricalNarrativeCanonicalFactFactory>();
+        services.AddScoped<HistoricalNarrativeCanonicalRevisionWriter>();
+        services.AddScoped<HistoricalNarrativeCanonicalizationService>();
+        services.AddScoped<HistoricalNarrativeCanonicalizationMigration>();
+        services.AddScoped<IHistoricalNarrativeCanonicalizer>(serviceProvider =>
+            serviceProvider.GetRequiredService<HistoricalNarrativeCanonicalizationService>());
         services.AddScoped<HistoricalParkEditorialScopeLoader>();
         services.AddScoped<HistoricalParkEditorialSubjectResolver>();
         services.AddScoped<HistoricalLineagePublicationValidator>();

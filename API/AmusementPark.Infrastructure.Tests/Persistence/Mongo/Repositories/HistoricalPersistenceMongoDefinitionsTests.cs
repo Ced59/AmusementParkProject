@@ -188,7 +188,7 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     }
 
     [Fact]
-    public void BuildLatestPublicTimelineForParkPipeline_ShouldKeepReviewedAndLegacyPublishedFactsDistinct()
+    public void BuildLatestPublicTimelineForParkPipeline_ShouldOnlyKeepCanonicalPublishedFacts()
     {
         HistoricalSubject currentPark = new HistoricalSubject(
             HistoricalSubjectType.Park,
@@ -205,49 +205,17 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
             .ToArray();
 
         BsonArray conditions = pipeline[6]["$match"]["$and"].AsBsonArray;
-        BsonArray lifecycleAlternatives = conditions[0]["$or"].AsBsonArray;
-        Assert.Contains(
-            lifecycleAlternatives,
-            alternative => alternative["publicationState"]
-                == HistoricalPublicationState.Published.ToString());
-        Assert.Contains(
-            lifecycleAlternatives,
-            alternative => alternative["publicationState"]
-                    == HistoricalPublicationState.LegacyPublishedPendingReview.ToString()
-                && alternative["state"] == HistoricalFactState.Unverified.ToString()
-                && alternative["revisionOrigin"] == HistoricalRevisionOrigin.LegacyMigration.ToString());
+        BsonDocument lifecycle = conditions[0].AsBsonDocument;
+        Assert.Equal(
+            HistoricalPublicationState.Published.ToString(),
+            lifecycle["publicationState"].AsString);
+        Assert.DoesNotContain(
+            HistoricalPublicationState.LegacyPublishedPendingReview.ToString(),
+            pipeline.ToJson());
         BsonArray publicSubjects = conditions[1]["$or"].AsBsonArray;
         Assert.Contains(
             publicSubjects,
             filter => filter.AsBsonDocument.GetValue("subject.id", BsonNull.Value) == "park-1");
-    }
-
-    [Fact]
-    public void BuildLatestLegacyPublicTimelineForParkPipeline_ShouldExcludeOrdinaryPublishedFacts()
-    {
-        HistoricalSubject currentPark = new HistoricalSubject(
-            HistoricalSubjectType.Park,
-            "park-1",
-            "Parc témoin",
-            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
-            "park-1");
-
-        BsonDocument[] pipeline = HistoricalFactRepository
-            .BuildLatestLegacyPublicTimelineForParkPipeline(
-                "park-1",
-                new[] { currentPark },
-                "historical-facts")
-            .ToArray();
-
-        BsonDocument lifecycleFilter = pipeline[6]["$match"].AsBsonDocument;
-        Assert.Equal(
-            HistoricalPublicationState.LegacyPublishedPendingReview.ToString(),
-            lifecycleFilter["publicationState"].AsString);
-        Assert.Equal(HistoricalFactState.Unverified.ToString(), lifecycleFilter["state"].AsString);
-        Assert.Equal(
-            HistoricalRevisionOrigin.LegacyMigration.ToString(),
-            lifecycleFilter["revisionOrigin"].AsString);
-        Assert.True(lifecycleFilter.Contains("$or"));
     }
 
     [Fact]
@@ -309,6 +277,81 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Equal(-1, auditKeys["transitionReviewEvent.occurredAtUtc"].AsInt32);
         Assert.Equal(-1, auditKeys["revision"].AsInt32);
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
+    }
+
+    [Fact]
+    public void BuildCanonicalizationCandidateFilter_ShouldResumeNonFinalCurrentVersionNarratives()
+    {
+        FilterDefinition<HistoryEventDocument> filter =
+            HistoryEventRepository.BuildCanonicalizationCandidateFilter("hist-canonical-v2");
+        IBsonSerializer<HistoryEventDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoryEventDocument>();
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<HistoryEventDocument>(serializer, BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("migrationVersion", json, StringComparison.Ordinal);
+        Assert.Contains("hist-canonical-v2", json, StringComparison.Ordinal);
+        Assert.Contains("canonicalizationState", json, StringComparison.Ordinal);
+        Assert.Contains("$nin", json, StringComparison.Ordinal);
+        Assert.Contains(
+            HistoricalNarrativeCanonicalizationState.Canonicalized.ToString(),
+            json,
+            StringComparison.Ordinal);
+        Assert.Contains(
+            HistoricalNarrativeCanonicalizationState.Blocked.ToString(),
+            json,
+            StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void BuildConditionalUpdateFilter_ShouldMatchNarrativeVersionAndCanonicalFact()
+    {
+        Guid canonicalFactId = Guid.NewGuid();
+        DateTime updatedAtUtc = new DateTime(2026, 10, 3, 8, 15, 0, DateTimeKind.Utc);
+        FilterDefinition<HistoryEventDocument> filter =
+            HistoryEventRepository.BuildConditionalUpdateFilter(
+                "history-1",
+                updatedAtUtc,
+                canonicalFactId);
+        IBsonSerializer<HistoryEventDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoryEventDocument>();
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<HistoryEventDocument>(serializer, BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("history-1", json, StringComparison.Ordinal);
+        Assert.Contains("updatedAt", json, StringComparison.Ordinal);
+        Assert.Contains("canonicalFactId", json, StringComparison.Ordinal);
+        Assert.Contains(canonicalFactId.ToString("N"), json, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void ResolveNextMutationTimestamp_WhenClockRemainsInSameMillisecond_ShouldAdvanceOneMillisecond()
+    {
+        DateTime previous = new DateTime(2026, 10, 3, 8, 15, 0, 123, DateTimeKind.Utc);
+        DateTime sameMillisecond = previous.AddTicks(TimeSpan.TicksPerMillisecond - 1);
+
+        DateTime result = HistoryEventRepository.ResolveNextMutationTimestamp(
+            previous,
+            sameMillisecond);
+
+        Assert.Equal(previous.AddMilliseconds(1), result);
+        Assert.Equal(DateTimeKind.Utc, result.Kind);
+    }
+
+    [Fact]
+    public void ResolveNextMutationTimestamp_WhenClockHasAdvanced_ShouldKeepMongoPrecision()
+    {
+        DateTime previous = new DateTime(2026, 10, 3, 8, 15, 0, 123, DateTimeKind.Utc);
+        DateTime later = previous.AddMilliseconds(7).AddTicks(9999);
+
+        DateTime result = HistoryEventRepository.ResolveNextMutationTimestamp(previous, later);
+
+        Assert.Equal(previous.AddMilliseconds(7), result);
+        Assert.Equal(0, result.Ticks % TimeSpan.TicksPerMillisecond);
     }
 
     [Fact]

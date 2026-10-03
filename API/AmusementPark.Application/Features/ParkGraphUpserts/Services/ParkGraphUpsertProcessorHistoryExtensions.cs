@@ -26,7 +26,9 @@ using AmusementPark.Application.Features.Parks.Services;
 using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 using System.Text;
 using AmusementPark.Application.Common.Measurements;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkPricing.Ports;
@@ -83,6 +85,17 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
                 continue;
             }
 
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !HistoricalNarrativeTypeMapper.TryMap(
+                    entityType,
+                    eventType,
+                    out HistoricalNarrativeTypeMapping? _))
+            {
+                result.Errors.Add(
+                    $"Le type d'evenement history '{eventType}' doit etre classe dans le modele HIST canonique avant import.");
+                continue;
+            }
+
             HistoryDateParts? dateParts = ParkGraphUpsertProcessorHistoryExtensions.ReadHistoryDate(patch);
             if (dateParts is null)
             {
@@ -92,6 +105,8 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
 
             key ??= ParkGraphUpsertProcessorHistoryExtensions.BuildHistoryKey(entityType, ownerId, eventType, dateParts);
             HistoryEvent? existing = await processorContext.historyEventRepository.GetByOwnerKeyAsync(entityType, ownerId, key, cancellationToken);
+            DateTime expectedUpdatedAtUtc = existing?.UpdatedAtUtc ?? default;
+            Guid? expectedCanonicalFactId = existing?.CanonicalFactId;
             HistoryEvent historyEvent = existing ?? new HistoryEvent();
             ParkGraphUpsertChange change = ParkGraphUpsertProcessorResolutionExtensions.BuildEntityChange("HistoryEvent", historyEvent.Id, key, ParkGraphUpsertProcessorHistoryExtensions.ResolveHistoryDisplayName(patch, eventType), existing is null ? "Created" : "Unchanged", existing is null ? "key" : "ownerKey");
             ParkGraphUpsertProcessorHistoryExtensions.PatchHistoryEvent(historyEvent, patch, targetPark.Id, entityType, ownerId, key, eventType, dateParts, imageKeys, result, apply, change);
@@ -100,24 +115,101 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
                 change.ChangeType = existing is null ? "Created" : "Updated";
             }
 
+            if (!ParkGraphUpsertProcessorHistoryExtensions.ValidateCanonicalPublication(
+                    historyEvent,
+                    key,
+                    result))
+            {
+                result.Changes.Add(change);
+                continue;
+            }
+
             if (apply && (change.Fields.Count > 0 || existing is null))
             {
+                HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
                 if (existing is not null)
                 {
-                    await processorContext.RetractCanonicalFactBeforeHistoryMutationAsync(
+                    retractionSnapshot = await processorContext.RetractCanonicalResourcesBeforeHistoryMutationAsync(
                         existing,
                         cancellationToken);
                 }
 
-                historyEvent = existing is null
-                    ? await processorContext.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
-                    : await processorContext.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken)
-                        ?? historyEvent;
+                if (existing is null)
+                {
+                    historyEvent = await processorContext.historyEventRepository.CreateAsync(
+                        historyEvent,
+                        cancellationToken);
+                }
+                else
+                {
+                    historyEvent = await ParkGraphHistoricalNarrativeUpdater.UpdateAsync(
+                        processorContext,
+                        historyEvent,
+                        expectedUpdatedAtUtc,
+                        expectedCanonicalFactId,
+                        retractionSnapshot,
+                        cancellationToken);
+                }
+
+                await processorContext.CanonicalizeHistoryNarrativeAsync(
+                    historyEvent,
+                    expectedCanonicalFactId,
+                    retractionSnapshot,
+                    key,
+                    result,
+                    cancellationToken);
                 change.EntityId = historyEvent.Id;
             }
 
             result.Changes.Add(change);
         }
+    }
+
+    internal static bool ValidateCanonicalPublication(
+        HistoryEvent historyEvent,
+        string eventKey,
+        ParkGraphUpsertResult result)
+    {
+        if (!HistoricalNarrativeTypeMapper.TryMap(
+                historyEvent.EntityType,
+                historyEvent.EventType,
+                out HistoricalNarrativeTypeMapping? mapping)
+            || mapping is null)
+        {
+            result.Errors.Add(
+                $"L'evenement history '{eventKey}' ne peut pas etre converti dans HIST.");
+            return false;
+        }
+
+        if (mapping.AttributeKind.HasValue
+            && HistoricalNarrativeCanonicalFactFactory.BuildStructuredValue(historyEvent, mapping) is null)
+        {
+            result.Errors.Add(
+                $"L'evenement history '{eventKey}' doit renseigner la valeur d'arrivee requise par sa transition HIST.");
+            return false;
+        }
+
+        bool hasValidSource = HistoricalNarrativeCanonicalSourcePlanner.HasValidSource(historyEvent);
+        if (mapping.FactType == HistoricalFactType.Other && !hasValidSource)
+        {
+            result.Errors.Add(
+                $"L'evenement history de type Other '{eventKey}' doit fournir au moins une source HTTP ou HTTPS valide.");
+            return false;
+        }
+
+        if (!historyEvent.IsVisible)
+        {
+            return true;
+        }
+
+        if (hasValidSource)
+        {
+            return true;
+        }
+
+        result.Errors.Add(
+            $"L'evenement history visible '{eventKey}' doit fournir au moins une source HTTP ou HTTPS valide pour etre publie dans HIST.");
+        return false;
     }
 
     internal static JsonElement? ResolveHistoryEvents(JsonElement root)
@@ -331,13 +423,26 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
             return false;
         }
 
-        return precision switch
+        try
         {
-            HistoryDatePrecision.Year => true,
-            HistoryDatePrecision.Month => month.HasValue,
-            HistoryDatePrecision.Day => month.HasValue && day.HasValue,
-            _ => false,
-        };
+            _ = precision switch
+            {
+                HistoryDatePrecision.Year => HistoricalDate.ForYear(year),
+                HistoryDatePrecision.Month when month.HasValue =>
+                    HistoricalDate.ForMonth(year, month.Value),
+                HistoryDatePrecision.Day when month.HasValue && day.HasValue =>
+                    HistoricalDate.ForDay(year, month.Value, day.Value),
+                _ => throw new HistoricalTemporalValidationException(
+                    HistoricalTemporalErrorCodes.InvalidPrecision,
+                    "The historical date precision is invalid.",
+                    nameof(precision)),
+            };
+            return true;
+        }
+        catch (HistoricalTemporalValidationException)
+        {
+            return false;
+        }
     }
 
     internal static List<LocalizedText> ReadLocalizedTextsFlexible(JsonElement element, string arrayPropertyName, string compactPropertyName)

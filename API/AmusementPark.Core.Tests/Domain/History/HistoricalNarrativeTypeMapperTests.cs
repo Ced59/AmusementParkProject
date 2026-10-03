@@ -3,22 +3,24 @@ using Xunit;
 
 namespace AmusementPark.Core.Tests.Domain.History;
 
-public sealed class LegacyHistoryEventTypeMapperTests
+public sealed class HistoricalNarrativeTypeMapperTests
 {
     [Fact]
     public void TryMap_ShouldExplicitlyCoverEveryAutomaticallyConvertibleParkEventType()
     {
         foreach (ParkHistoryEventType eventType in Enum.GetValues<ParkHistoryEventType>())
         {
-            if (eventType == ParkHistoryEventType.SeasonOpening)
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(
+                    HistoryEntityType.Park,
+                    eventType.ToString()))
             {
                 continue;
             }
 
-            bool mapped = LegacyHistoryEventTypeMapper.TryMap(
+            bool mapped = HistoricalNarrativeTypeMapper.TryMap(
                 HistoryEntityType.Park,
                 eventType.ToString(),
-                out LegacyHistoryEventTypeMapping? mapping);
+                out HistoricalNarrativeTypeMapping? mapping);
 
             Assert.True(mapped, $"Park event type {eventType} is not mapped.");
             Assert.NotNull(mapping);
@@ -30,15 +32,17 @@ public sealed class LegacyHistoryEventTypeMapperTests
     {
         foreach (ParkItemHistoryEventType eventType in Enum.GetValues<ParkItemHistoryEventType>())
         {
-            if (eventType == ParkItemHistoryEventType.SeasonOpening)
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(
+                    HistoryEntityType.ParkItem,
+                    eventType.ToString()))
             {
                 continue;
             }
 
-            bool mapped = LegacyHistoryEventTypeMapper.TryMap(
+            bool mapped = HistoricalNarrativeTypeMapper.TryMap(
                 HistoryEntityType.ParkItem,
                 eventType.ToString(),
-                out LegacyHistoryEventTypeMapping? mapping);
+                out HistoricalNarrativeTypeMapping? mapping);
 
             Assert.True(mapped, $"Park-item event type {eventType} is not mapped.");
             Assert.NotNull(mapping);
@@ -48,10 +52,10 @@ public sealed class LegacyHistoryEventTypeMapperTests
     [Fact]
     public void TryMap_WhenEventTypeIsUnknown_ShouldNotSilentlyUseOther()
     {
-        bool mapped = LegacyHistoryEventTypeMapper.TryMap(
+        bool mapped = HistoricalNarrativeTypeMapper.TryMap(
             HistoryEntityType.Park,
-            "UnexpectedLegacyValue",
-            out LegacyHistoryEventTypeMapping? mapping);
+            "UnexpectedValue",
+            out HistoricalNarrativeTypeMapping? mapping);
 
         Assert.False(mapped);
         Assert.Null(mapping);
@@ -60,10 +64,10 @@ public sealed class LegacyHistoryEventTypeMapperTests
     [Fact]
     public void TryMap_WhenLogoChanges_ShouldPreserveLogoBoundary()
     {
-        bool mapped = LegacyHistoryEventTypeMapper.TryMap(
+        bool mapped = HistoricalNarrativeTypeMapper.TryMap(
             HistoryEntityType.Park,
             ParkHistoryEventType.LogoChange.ToString(),
-            out LegacyHistoryEventTypeMapping? mapping);
+            out HistoricalNarrativeTypeMapping? mapping);
 
         Assert.True(mapped);
         Assert.Equal(HistoricalFactType.LogoChange, mapping!.FactType);
@@ -78,13 +82,36 @@ public sealed class LegacyHistoryEventTypeMapperTests
     public void TryMap_WhenSeasonOpeningCouldBeMistakenForInitialOpening_ShouldRequireManualClassification(
         HistoryEntityType entityType)
     {
-        bool requiresManualClassification = LegacyHistoryEventTypeMapper.RequiresManualClassification(
+        bool requiresManualClassification = HistoricalNarrativeTypeMapper.RequiresManualClassification(
             entityType,
             "SeasonOpening");
-        bool mapped = LegacyHistoryEventTypeMapper.TryMap(
+        bool mapped = HistoricalNarrativeTypeMapper.TryMap(
             entityType,
             "SeasonOpening",
-            out LegacyHistoryEventTypeMapping? mapping);
+            out HistoricalNarrativeTypeMapping? mapping);
+
+        Assert.True(requiresManualClassification);
+        Assert.False(mapped);
+        Assert.Null(mapping);
+    }
+
+    [Theory]
+    [InlineData(HistoryEntityType.Park, "OwnershipChange")]
+    [InlineData(HistoryEntityType.Park, "Acquisition")]
+    [InlineData(HistoryEntityType.Park, "Sale")]
+    [InlineData(HistoryEntityType.ParkItem, "ManufacturerChange")]
+    [InlineData(HistoryEntityType.StandaloneAttraction, "ManufacturerChange")]
+    public void TryMap_WhenStructuredTransitionPayloadDoesNotExist_ShouldRequireManualClassification(
+        HistoryEntityType entityType,
+        string eventType)
+    {
+        bool requiresManualClassification = HistoricalNarrativeTypeMapper.RequiresManualClassification(
+            entityType,
+            eventType);
+        bool mapped = HistoricalNarrativeTypeMapper.TryMap(
+            entityType,
+            eventType,
+            out HistoricalNarrativeTypeMapping? mapping);
 
         Assert.True(requiresManualClassification);
         Assert.False(mapped);

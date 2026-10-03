@@ -35,6 +35,12 @@ public static class HistoricalSourceRevisionValidator
         HistoricalSourceReference source,
         HistoricalSourceReference predecessor)
     {
+        if (predecessor.WorkflowState == HistoricalEditorialWorkflowState.Retracted)
+        {
+            return source.WorkflowState != HistoricalEditorialWorkflowState.Retracted
+                && source.PublicationState != HistoricalPublicationState.Withdrawn;
+        }
+
         return source.WorkflowState switch
         {
             HistoricalEditorialWorkflowState.Corrected =>
@@ -42,14 +48,8 @@ public static class HistoricalSourceRevisionValidator
                     or HistoricalEditorialWorkflowState.Corrected
                 && predecessor.PublicationState == HistoricalPublicationState.Published,
             HistoricalEditorialWorkflowState.Retracted =>
-                predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
-                        or HistoricalEditorialWorkflowState.Corrected
-                    && predecessor.PublicationState == HistoricalPublicationState.Published
-                || predecessor.RevisionOrigin == HistoricalRevisionOrigin.LegacyMigration
-                    && (predecessor.WorkflowState is HistoricalEditorialWorkflowState.EditorialReview
-                        or HistoricalEditorialWorkflowState.StructuredValidation)
-                    && predecessor.PublicationState
-                        == HistoricalPublicationState.LegacyPublishedPendingReview,
+                predecessor.WorkflowState != HistoricalEditorialWorkflowState.Retracted
+                    && predecessor.PublicationState != HistoricalPublicationState.Withdrawn,
             _ => IsPrePublicationTransitionValid(source.WorkflowState, predecessor.WorkflowState),
         };
     }

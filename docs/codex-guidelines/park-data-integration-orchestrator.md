@@ -291,6 +291,14 @@ Objectif : créer la timeline du parc, puis les timelines des parkItems importan
 
 Sortie attendue : JSON upsert centré sur `history.events`, en plusieurs lots.
 
+Chaque événement public doit inclure sa propre source HTTP ou HTTPS dans
+`history.events[].sources`, même si son article possède déjà des sources. La
+Preview doit confirmer sa compatibilité avec HIST ; l'Apply produit directement
+les révisions canoniques ordinaires et leur publication. Ne jamais considérer
+la présence du récit, de l'article ou du bouton historique comme acquise tant
+que la réponse Apply n'a pas confirmé cette canonisation. Aucun état HIST
+historique transitoire ne doit être écrit ou utilisé comme solution de repli.
+
 ### Étape 9 — Audit final
 
 Lire `park-data-integration-steps/09-final-audit-and-publication.md`.

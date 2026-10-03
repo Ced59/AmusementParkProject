@@ -1,6 +1,6 @@
 namespace AmusementPark.Core.Domain.History;
 
-public sealed record LegacyHistoryEventTypeMapping(
+public sealed record HistoricalNarrativeTypeMapping(
     HistoricalFactType FactType,
     LifecycleBoundaryMeaning? LifecycleBoundaryMeaning,
     HistoricalAttributeKind? AttributeKind,

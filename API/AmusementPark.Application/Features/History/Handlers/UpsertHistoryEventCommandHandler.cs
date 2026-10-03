@@ -3,6 +3,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Contracts;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -20,21 +21,24 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
-    private readonly HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService;
+    private readonly HistoricalCanonicalResourceRetractionService canonicalResourceRetractionService;
+    private readonly IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer;
     private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
     public UpsertHistoryEventCommandHandler(
         IHistoryEventRepository historyEventRepository,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
-        HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
+        HistoricalCanonicalResourceRetractionService canonicalResourceRetractionService,
+        IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
         : this(
             historyEventRepository,
             parkRepository,
             parkItemRepository,
             null,
-            canonicalFactRetractionService,
+            canonicalResourceRetractionService,
+            historicalNarrativeCanonicalizer,
             sitemapRefreshScheduler)
     {
     }
@@ -44,15 +48,18 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IStandaloneAttractionRepository? standaloneAttractionRepository,
-        HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
+        HistoricalCanonicalResourceRetractionService canonicalResourceRetractionService,
+        IHistoricalNarrativeCanonicalizer historicalNarrativeCanonicalizer,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.historyEventRepository = historyEventRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
-        this.canonicalFactRetractionService = canonicalFactRetractionService
-            ?? throw new ArgumentNullException(nameof(canonicalFactRetractionService));
+        this.canonicalResourceRetractionService = canonicalResourceRetractionService
+            ?? throw new ArgumentNullException(nameof(canonicalResourceRetractionService));
+        this.historicalNarrativeCanonicalizer = historicalNarrativeCanonicalizer
+            ?? throw new ArgumentNullException(nameof(historicalNarrativeCanonicalizer));
         this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
@@ -73,22 +80,112 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         HistoryEvent historyEvent = existing is null
             ? new HistoryEvent()
             : existing;
+        DateTime expectedUpdatedAtUtc = existing?.UpdatedAtUtc ?? default;
+        Guid? expectedCanonicalFactId = existing?.CanonicalFactId;
+        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
 
         if (existing?.CanonicalFactId is Guid canonicalFactId)
         {
-            await this.canonicalFactRetractionService.RetractAsync(
+            retractionSnapshot = await this.canonicalResourceRetractionService.RetractAsync(
                 canonicalFactId,
                 cancellationToken);
         }
 
         this.ApplyWriteModel(historyEvent, command.Event, ownerId, key);
 
-        HistoryEvent saved = existing is null
-            ? await this.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
-            : await this.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken) ?? historyEvent;
+        HistoryEvent saved;
+        if (existing is null)
+        {
+            saved = await this.historyEventRepository.CreateAsync(historyEvent, cancellationToken);
+        }
+        else
+        {
+            Guid mutationId = Guid.NewGuid();
+            HistoryEvent? updatedHistoryEvent;
+            try
+            {
+                updatedHistoryEvent = await this.historyEventRepository.UpdateAsync(
+                    historyEvent.Id,
+                    historyEvent,
+                    expectedUpdatedAtUtc,
+                    expectedCanonicalFactId,
+                    mutationId,
+                    cancellationToken);
+            }
+            catch (Exception mutationException)
+            {
+                updatedHistoryEvent = await HistoricalNarrativeMutationRecovery.ResolveCommittedUpdateAsync(
+                    this.historyEventRepository,
+                    this.canonicalResourceRetractionService,
+                    historyEvent.Id,
+                    mutationId,
+                    expectedUpdatedAtUtc,
+                    expectedCanonicalFactId,
+                    retractionSnapshot,
+                    mutationException);
+                if (updatedHistoryEvent is null)
+                {
+                    throw;
+                }
+            }
+
+            if (updatedHistoryEvent is null)
+            {
+                InvalidOperationException conflictException = new InvalidOperationException(
+                    "The historical narrative changed concurrently and could not be updated safely.");
+                await this.RestorePreviousResourcesIfNeededAsync(
+                    historyEvent.Id,
+                    expectedUpdatedAtUtc,
+                    expectedCanonicalFactId,
+                    retractionSnapshot,
+                    conflictException);
+                throw conflictException;
+            }
+
+            saved = updatedHistoryEvent;
+        }
+        HistoricalNarrativeCanonicalizationResult canonicalization =
+            await HistoricalNarrativeCanonicalizationCoordinator.ExecuteAsync(
+                this.historyEventRepository,
+                this.historicalNarrativeCanonicalizer,
+                this.canonicalResourceRetractionService,
+                saved,
+                expectedCanonicalFactId,
+                retractionSnapshot,
+                cancellationToken);
+        if (canonicalization.State == HistoricalNarrativeCanonicalizationState.Blocked)
+        {
+            return ApplicationResult<HistoryEvent>.Failure(
+                HistoryApplicationErrors.InvalidEventType());
+        }
+
+        saved.CanonicalFactId = canonicalization.CanonicalFactId;
+        saved.CanonicalizationState = canonicalization.State;
 
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<HistoryEvent>.Success(saved);
+    }
+
+    private Task RestorePreviousResourcesIfNeededAsync(
+        string historyEventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot,
+        Exception mutationFailure)
+    {
+        if (!expectedCanonicalFactId.HasValue || retractionSnapshot is null)
+        {
+            return Task.CompletedTask;
+        }
+
+        return HistoricalNarrativeMutationRecovery.RestoreIfNarrativeIsUnchangedAsync(
+            this.historyEventRepository,
+            this.canonicalResourceRetractionService,
+            historyEventId,
+            expectedUpdatedAtUtc,
+            expectedCanonicalFactId.Value,
+            retractionSnapshot,
+            mutationFailure);
     }
 
     private async Task<ApplicationError?> ValidateAsync(HistoryEventWriteModel model, CancellationToken cancellationToken)
@@ -112,6 +209,53 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         if (model.DatePrecision == HistoryDatePrecision.Day && (!model.Month.HasValue || !model.Day.HasValue))
         {
             return HistoryApplicationErrors.InvalidDate();
+        }
+
+        if (HistoricalNarrativeTypeMapper.RequiresManualClassification(
+                model.EntityType,
+                model.EventType)
+            || !HistoricalNarrativeTypeMapper.TryMap(
+                model.EntityType,
+                model.EventType,
+                out HistoricalNarrativeTypeMapping? mapping)
+            || mapping is null)
+        {
+            return HistoryApplicationErrors.InvalidEventType();
+        }
+
+        HistoryEvent canonicalCandidate = new HistoryEvent();
+        this.ApplyWriteModel(
+            canonicalCandidate,
+            model,
+            ownerId,
+            NormalizeKey(model.Key) ?? BuildFallbackKey(model));
+        try
+        {
+            HistoricalNarrativeCanonicalFactFactory.BuildPeriod(canonicalCandidate);
+        }
+        catch (HistoricalTemporalValidationException)
+        {
+            return HistoryApplicationErrors.InvalidDate();
+        }
+
+        if (mapping.AttributeKind.HasValue
+            && HistoricalNarrativeCanonicalFactFactory.BuildStructuredValue(
+                canonicalCandidate,
+                mapping) is null)
+        {
+            return HistoryApplicationErrors.InvalidCanonicalShape();
+        }
+
+        bool hasValidSource = HistoricalNarrativeCanonicalSourcePlanner.HasValidSource(
+            canonicalCandidate);
+        if (mapping.FactType == HistoricalFactType.Other && !hasValidSource)
+        {
+            return HistoryApplicationErrors.InvalidCanonicalShape();
+        }
+
+        if (canonicalCandidate.IsVisible && !hasValidSource)
+        {
+            return HistoryApplicationErrors.MissingPublicationSource();
         }
 
         if (model.EntityType == HistoryEntityType.Park)

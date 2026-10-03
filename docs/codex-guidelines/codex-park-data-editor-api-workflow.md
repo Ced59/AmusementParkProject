@@ -219,6 +219,11 @@ Les noms, l’ordre et le contenu des étapes restent ceux de l’orchestrateur 
 3. Pour les étapes 1 à 8, maintenir un registre local consolidé des entités, IDs, clés, compteurs et lacunes à partir de la recherche initiale, des éventuels exports ciblés et des réponses réussies de Preview, Apply et d’import d’image. Ne produire un export ciblé que pour lever une ambiguïté, récupérer un identifiant créé ou vérifier une dépendance précise ; l’unique export complet obligatoire n’intervient qu’immédiatement avant l’étape 9.
 4. Rechercher et sourcer seulement les données de l’étape courante. Produire un JSON borné et conserver le compteur traité/total ainsi que le registre des lacunes.
 5. Avant `Preview`, analyser les valeurs brutes du JSON pour les entités HTML. Les champs de texte brut, dont les blocs d’articles historiques, doivent en contenir zéro ; le HTML riche doit utiliser les caractères de présentation directement en Unicode et ne peut conserver que `&amp;`, `&lt;` et `&gt;` lorsqu’ils protègent réellement la syntaxe. Une occurrence telle que `&rsquo;`, `&#8217;`, `&eacute;`, `&nbsp;`, `&amp;rsquo;`, `&amp;#8217;` ou `&amp;amp;` bloque le lot.
+6. Pour chaque `history.events[]` public, fournir au moins une source HTTP ou
+   HTTPS valide dans le tableau `sources` de l'événement. Les sources d'un
+   article ne sont pas réutilisées implicitement. La Preview doit refuser le
+   lot si le fait ne peut pas rejoindre HIST ; après Apply, vérifier la
+   canonisation et la publication ordinaires avant de valider l'étape 8.
 6. Exécuter `Preview`. Examiner toutes les erreurs, tous les warnings, les entités résolues et chaque changement de champ.
 7. Ne jamais exécuter `Apply` si `canApply` est faux, si une erreur existe ou si un warning bloquant subsiste. Par défaut, le client bloque même les warnings non bloquants; `-AllowWarnings` exige une décision explicite après lecture.
 8. Le client écrit un reçu contenant le hash SHA-256 du JSON, l’API visée et l’heure du Preview. `Apply` refuse un reçu âgé de plus de 30 minutes ou un JSON modifié depuis le Preview.

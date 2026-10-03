@@ -29,6 +29,7 @@ class RuntimeFake:
         self.events = []
         self.fail_at = None
         self.block_drain = False
+        self.stopped = set()
         self.edge = {"container": "e" * 64, "master": {"pid": 1, "start": 100},
                      "workers": [{"pid": 2, "start": 101}]}
         self.marker = "bootstrap"
@@ -64,8 +65,21 @@ class RuntimeFake:
         return entry["reference"] if entry else None
 
     def wait_healthy(self, reference):
-        if reference is None or self.find(reference["name"]) != reference:
+        if (reference is None or self.find(reference["name"]) != reference
+                or reference["name"] in self.stopped):
             raise DeploymentError("Missing identity")
+
+    def stop_keep(self, reference):
+        if self.find(reference["name"]) != reference:
+            raise DeploymentError("Missing identity")
+        self.event("stop-keep-" + reference["name"])
+        self.stopped.add(reference["name"])
+
+    def start_existing(self, reference):
+        if self.find(reference["name"]) != reference:
+            raise DeploymentError("Missing identity")
+        self.event("start-existing-" + reference["name"])
+        self.stopped.discard(reference["name"])
 
     def start_candidate(self, service, name, generation, api_name):
         existing = self.find(name, generation)
@@ -86,13 +100,15 @@ class RuntimeFake:
             self.wait_healthy(reference)
             assert ("candidate" in reference["name"]) == candidate
 
-    def stop_remove(self, reference, allow_failed_start=False, record_exit=None):
+    def stop_remove(self, reference, allow_failed_start=False, record_exit=None,
+                    allow_intentional_stop=False):
         current = self.find(reference["name"])
         if current is None or current["id"] != reference["id"]:
             return  # Old canonical IDs must never remove their replacements.
         self.event("before-stop-" + reference["name"])
         if record_exit is not None:
             record_exit({"exit_code": 0, "oom_killed": False})
+        self.stopped.discard(reference["name"])
         del self.containers[reference["name"]]
         self.event("removed-" + reference["name"])
 
@@ -239,6 +255,35 @@ class DeploymentTransactionTests(unittest.TestCase):
             self.transaction.prepare()
         self.assertFalse(self.runtime.events)
 
+    def test_history_writer_is_stopped_before_cutover_and_restarted_only_after_rollback(self):
+        self.transaction.prepare()
+        self.transaction.state["cutover_armed"] = True
+        self.transaction.state["cutover_resources"] = ["historical-history"]
+        self.transaction.save()
+
+        self.transaction.quiesce_original_history_writer()
+
+        self.assertTrue(self.transaction.read()["history_writer_quiesced"])
+        self.assertIn("api", self.runtime.stopped)
+        self.transaction.quiesce_original_history_writer()
+        self.transaction.restore_original_history_writer()
+        self.assertFalse(self.transaction.read()["history_writer_quiesced"])
+        self.assertNotIn("api", self.runtime.stopped)
+        self.assertEqual(self.runtime.events.count("stop-keep-api"), 2)
+        self.assertEqual(self.runtime.events.count("start-existing-api"), 1)
+
+    def test_promoted_candidate_retires_quiesced_original_and_clears_intent(self):
+        self.transaction.prepare()
+        self.transaction.state["cutover_armed"] = True
+        self.transaction.state["cutover_resources"] = ["historical-history"]
+        self.transaction.save()
+        self.transaction.quiesce_original_history_writer()
+
+        self.transaction.execute()
+
+        self.assertEqual(self.transaction.read()["phase"], "complete")
+        self.assertFalse(self.transaction.read()["history_writer_quiesced"])
+
     def test_intent_is_persisted_before_reload_can_expose_new_authority(self):
         self.transaction.prepare()
         self.runtime.fail_at = 3  # reload applied, response lost
@@ -248,6 +293,21 @@ class DeploymentTransactionTests(unittest.TestCase):
         self.assertTrue(state["authority_exposed"])
         self.assertIsNotNone(state["transition"])
         validate_state(state)
+
+    def test_candidates_can_be_verified_without_becoming_public(self):
+        self.transaction.prepare()
+
+        self.transaction.prepare_candidates()
+
+        state = self.transaction.read()
+        self.assertEqual(state["phase"], "prepared")
+        self.assertFalse(state["authority_exposed"])
+        self.assertEqual(len(self.runtime.candidates()), 2)
+        self.assertFalse(any(event == "reload" for event in self.runtime.events))
+
+        self.transaction.execute()
+        self.assertEqual(self.runtime.events.count("start-api"), 1)
+        self.assertEqual(self.runtime.events.count("start-front"), 1)
 
 
     def test_worker_respawn_missing_from_initial_snapshot_still_blocks_retirement(self):
@@ -373,12 +433,12 @@ class EdgeReloadTests(unittest.TestCase):
 
 
 class StopPolicyTests(unittest.TestCase):
-    def runtime(self, exit_code, running=True, generation="new", oom=False):
+    def runtime(self, exit_code, running=True, generation="new", oom=False, service="front"):
         runtime = object.__new__(DockerRuntime)
         runtime.project = "test"
         runtime.stop_timeout = 1
-        container = {"Id": "a" * 64, "Name": "/front", "Config": {"Labels": {
-            "com.docker.compose.project": "test", "com.docker.compose.service": "front",
+        container = {"Id": "a" * 64, "Name": f"/{service}", "Config": {"Labels": {
+            "com.docker.compose.project": "test", "com.docker.compose.service": service,
             "fun.amusement-parks.deployment-generation": generation}},
             "State": {"Running": running, "ExitCode": exit_code, "OOMKilled": oom}}
         calls = []
@@ -386,10 +446,41 @@ class StopPolicyTests(unittest.TestCase):
             calls.append(args)
             if args[1] == "stop":
                 container["State"]["Running"] = False
+            if args[1] == "start":
+                container["State"]["Running"] = True
             return ""
         runtime.inspect = lambda identifier: copy.deepcopy(container)
         runtime.run = run
         return runtime, calls
+
+    def test_intentional_history_writer_stop_keeps_exact_api_for_rollback(self):
+        runtime, calls = self.runtime(0, service="api")
+
+        runtime.stop_keep({"id": "a" * 64, "name": "api"})
+
+        self.assertTrue(any(call[1] == "stop" for call in calls))
+        self.assertFalse(any(call[1] == "rm" for call in calls))
+
+    def test_rollback_restarts_and_health_checks_the_exact_original_api(self):
+        runtime, calls = self.runtime(0, running=False, service="api")
+        health_checks = []
+        runtime.wait_healthy = health_checks.append
+        reference = {"id": "a" * 64, "name": "api"}
+
+        runtime.start_existing(reference)
+
+        self.assertTrue(any(call[1] == "start" for call in calls))
+        self.assertEqual(health_checks, [reference])
+
+    def test_promoted_intentionally_stopped_api_can_be_removed_without_second_stop(self):
+        runtime, calls = self.runtime(143, running=False, service="api")
+
+        runtime.stop_remove(
+            {"id": "a" * 64, "name": "api"},
+            allow_intentional_stop=True)
+
+        self.assertFalse(any(call[1] == "stop" for call in calls))
+        self.assertEqual(calls[-1][1], "rm")
 
     def test_forced_or_failed_normal_stop_never_removes_the_front(self):
         for code, oom in ((1, False), (137, False), (0, True)):

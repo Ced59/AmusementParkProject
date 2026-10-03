@@ -4,7 +4,9 @@ using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Tests.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -34,6 +36,7 @@ internal sealed class HistoryUpsertTestContext
     private readonly Mock<ISearchProjectionWriter> searchProjectionWriter;
     private readonly Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier;
     private HistoryEvent persistedEvent;
+    private Exception? nextHistoryUpdateFailure;
 
     public HistoryUpsertTestContext(HistoryEvent existingEvent)
     {
@@ -48,6 +51,8 @@ internal sealed class HistoryUpsertTestContext
 
         this.HistoryEventRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
         this.HistoricalFactRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        this.HistoricalNarrativeCanonicalizer =
+            new Mock<IHistoricalNarrativeCanonicalizer>(MockBehavior.Strict);
         this.HistoryEventRepository
             .Setup(value => value.GetByOwnerKeyAsync(
                 HistoryEntityType.Park,
@@ -56,12 +61,62 @@ internal sealed class HistoryUpsertTestContext
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(() => CloneHistoryEvent(this.persistedEvent));
         this.HistoryEventRepository
-            .Setup(value => value.UpdateAsync("history-1", It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()))
-            .Callback<string, HistoryEvent, CancellationToken>((_, historyEvent, _) =>
+            .Setup(value => value.GetByIdAsync(
+                "history-1",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(() => CloneHistoryEvent(this.persistedEvent));
+        this.HistoryEventRepository
+            .Setup(value => value.UpdateAsync(
+                "history-1",
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()))
+            .Returns((string _, HistoryEvent historyEvent, DateTime _, Guid? _, Guid _, CancellationToken _) =>
             {
+                if (this.nextHistoryUpdateFailure is not null)
+                {
+                    Exception failure = this.nextHistoryUpdateFailure;
+                    this.nextHistoryUpdateFailure = null;
+                    return Task.FromException<HistoryEvent?>(failure);
+                }
+
                 this.persistedEvent = CloneHistoryEvent(historyEvent);
-            })
-            .ReturnsAsync((string _, HistoryEvent historyEvent, CancellationToken _) => CloneHistoryEvent(historyEvent));
+                return Task.FromResult<HistoryEvent?>(CloneHistoryEvent(historyEvent));
+            });
+        this.HistoryEventRepository
+            .Setup(value => value.GetCommittedUpdateAsync(
+                "history-1",
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoryEvent?)null);
+        this.HistoricalNarrativeCanonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) =>
+                new HistoricalNarrativeCanonicalizationResult(
+                    Guid.NewGuid(),
+                    HistoricalNarrativeCanonicalizationState.Canonicalized,
+                    Array.Empty<string>()));
+        this.HistoryEventRepository
+            .Setup(value => value.SetCanonicalizationAsync(
+                "history-1",
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                HistoricalNarrativeCanonicalizationState.Canonicalized,
+                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<string, DateTime, Guid?, HistoricalNarrativeCanonicalizationState, string, IReadOnlyCollection<string>, CancellationToken>(
+                (_, _, canonicalFactId, state, _, _, _) =>
+                {
+                    this.persistedEvent.CanonicalFactId = canonicalFactId;
+                    this.persistedEvent.CanonicalizationState = state;
+                })
+            .ReturnsAsync(true);
 
         this.upsertHistoryRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
         this.upsertHistoryRepository
@@ -92,13 +147,16 @@ internal sealed class HistoryUpsertTestContext
             this.publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
             historyEventRepository: this.HistoryEventRepository.Object,
-            canonicalFactRetractionService:
-                new HistoricalNarrativeCanonicalFactRetractionService(this.HistoricalFactRepository.Object));
+            canonicalResourceRetractionService:
+                HistoricalCanonicalResourceRetractionServiceTestFactory.Create(this.HistoricalFactRepository.Object),
+            historicalNarrativeCanonicalizer: this.HistoricalNarrativeCanonicalizer.Object);
     }
 
     public Mock<IHistoryEventRepository> HistoryEventRepository { get; }
 
     public Mock<IHistoricalFactRepository> HistoricalFactRepository { get; }
+
+    public Mock<IHistoricalNarrativeCanonicalizer> HistoricalNarrativeCanonicalizer { get; }
 
     private ParkGraphUpsertProcessor Processor { get; }
 
@@ -115,6 +173,22 @@ internal sealed class HistoryUpsertTestContext
     public HistoryEvent ReadPersistedEvent()
     {
         return CloneHistoryEvent(this.persistedEvent);
+    }
+
+    public void FailNextHistoryUpdate(Exception failure)
+    {
+        this.nextHistoryUpdateFailure = failure
+            ?? throw new ArgumentNullException(nameof(failure));
+    }
+
+    public void FailCanonicalization(Exception failure)
+    {
+        ArgumentNullException.ThrowIfNull(failure);
+        this.HistoricalNarrativeCanonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(failure);
     }
 
     private static HistoryEvent CloneHistoryEvent(HistoryEvent source)

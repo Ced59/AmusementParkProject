@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Ports;
@@ -35,7 +36,39 @@ public interface IHistoryEventRepository
 
     Task<HistoryEvent> CreateAsync(HistoryEvent historyEvent, CancellationToken cancellationToken);
 
-    Task<HistoryEvent?> UpdateAsync(string eventId, HistoryEvent historyEvent, CancellationToken cancellationToken);
+    Task<HistoryEvent?> UpdateAsync(
+        string eventId,
+        HistoryEvent historyEvent,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        Guid mutationId,
+        CancellationToken cancellationToken);
 
-    Task<bool> DeleteAsync(string eventId, CancellationToken cancellationToken);
+    Task<HistoryEvent?> GetCommittedUpdateAsync(
+        string eventId,
+        Guid mutationId,
+        CancellationToken cancellationToken);
+
+    Task<HistoryEventMutationSnapshot?> GetMutationSnapshotAsync(
+        string eventId,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(
+        string canonicalizationVersion,
+        CancellationToken cancellationToken);
+
+    Task<bool> SetCanonicalizationAsync(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? canonicalFactId,
+        HistoricalNarrativeCanonicalizationState state,
+        string canonicalizationVersion,
+        IReadOnlyCollection<string> warnings,
+        CancellationToken cancellationToken);
+
+    Task<bool> DeleteAsync(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        CancellationToken cancellationToken);
 }

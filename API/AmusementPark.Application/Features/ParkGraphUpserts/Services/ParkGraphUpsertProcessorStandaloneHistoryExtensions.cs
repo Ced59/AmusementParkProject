@@ -26,6 +26,7 @@ using AmusementPark.Application.Features.Parks.Services;
 using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 using System.Text;
 using AmusementPark.Application.Common.Measurements;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
@@ -122,6 +123,17 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 continue;
             }
 
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !HistoricalNarrativeTypeMapper.TryMap(
+                    entityType,
+                    eventType,
+                    out HistoricalNarrativeTypeMapping? _))
+            {
+                result.Errors.Add(
+                    $"Le type d'evenement history '{eventType}' doit etre classe dans le modele HIST canonique avant import.");
+                continue;
+            }
+
             if (ParkGraphUpsertProcessorHistoryExtensions.ReadHistoryDate(patch)is null)
             {
                 result.Errors.Add($"L'evenement history '{key ?? eventType}' doit definir une date valide.");
@@ -182,6 +194,15 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 continue;
             }
 
+            if (HistoricalNarrativeTypeMapper.RequiresManualClassification(entityType, eventType)
+                || !HistoricalNarrativeTypeMapper.TryMap(
+                    entityType,
+                    eventType,
+                    out HistoricalNarrativeTypeMapping? _))
+            {
+                continue;
+            }
+
             HistoryDateParts? dateParts = ParkGraphUpsertProcessorHistoryExtensions.ReadHistoryDate(patch);
             if (dateParts is null)
             {
@@ -190,6 +211,8 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
 
             key ??= ParkGraphUpsertProcessorHistoryExtensions.BuildHistoryKey(entityType, ownerId, eventType, dateParts);
             HistoryEvent? existing = await processorContext.historyEventRepository.GetByOwnerKeyAsync(entityType, ownerId, key, cancellationToken);
+            DateTime expectedUpdatedAtUtc = existing?.UpdatedAtUtc ?? default;
+            Guid? expectedCanonicalFactId = existing?.CanonicalFactId;
             HistoryEvent historyEvent = existing ?? new HistoryEvent();
             ParkGraphUpsertChange change = ParkGraphUpsertProcessorResolutionExtensions.BuildEntityChange("HistoryEvent", historyEvent.Id, key, ParkGraphUpsertProcessorHistoryExtensions.ResolveHistoryDisplayName(patch, eventType), existing is null ? "Created" : "Unchanged", existing is null ? "key" : "ownerKey");
             ParkGraphUpsertProcessorHistoryExtensions.PatchHistoryEvent(historyEvent, patch, null, entityType, ownerId, key, eventType, dateParts, imageKeys, result, apply, change);
@@ -199,19 +222,49 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 changed = true;
             }
 
+            if (!ParkGraphUpsertProcessorHistoryExtensions.ValidateCanonicalPublication(
+                    historyEvent,
+                    key,
+                    result))
+            {
+                result.Changes.Add(change);
+                continue;
+            }
+
             if (apply && (change.Fields.Count > 0 || existing is null))
             {
+                HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
                 if (existing is not null)
                 {
-                    await processorContext.RetractCanonicalFactBeforeHistoryMutationAsync(
+                    retractionSnapshot = await processorContext.RetractCanonicalResourcesBeforeHistoryMutationAsync(
                         existing,
                         cancellationToken);
                 }
 
-                historyEvent = existing is null
-                    ? await processorContext.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
-                    : await processorContext.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken)
-                        ?? historyEvent;
+                if (existing is null)
+                {
+                    historyEvent = await processorContext.historyEventRepository.CreateAsync(
+                        historyEvent,
+                        cancellationToken);
+                }
+                else
+                {
+                    historyEvent = await ParkGraphHistoricalNarrativeUpdater.UpdateAsync(
+                        processorContext,
+                        historyEvent,
+                        expectedUpdatedAtUtc,
+                        expectedCanonicalFactId,
+                        retractionSnapshot,
+                        cancellationToken);
+                }
+
+                await processorContext.CanonicalizeHistoryNarrativeAsync(
+                    historyEvent,
+                    expectedCanonicalFactId,
+                    retractionSnapshot,
+                    key,
+                    result,
+                    cancellationToken);
                 change.EntityId = historyEvent.Id;
             }
 

@@ -124,4 +124,8 @@ public sealed class HistoryEventDocument : MongoDocumentBase
 
     [BsonElement("migrationWarnings")]
     public List<string> MigrationWarnings { get; set; } = new List<string>();
+
+    [BsonElement("lastMutationId")]
+    [BsonIgnoreIfNull]
+    public string? LastMutationId { get; set; }
 }

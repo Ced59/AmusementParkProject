@@ -170,9 +170,7 @@ public sealed class HistoricalFact
             or HistoricalFactState.Probable
             or HistoricalFactState.Disputed);
 
-    public bool IsPublicTimelineEligible => this.IsDecisionEligible
-        || (this.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview
-            && this.State == HistoricalFactState.Unverified);
+    public bool IsPublicTimelineEligible => this.IsDecisionEligible;
 
     public HistoricalFact CreateRetraction(DateTime recordedAtUtc)
     {
@@ -556,7 +554,8 @@ public sealed class HistoricalFact
                 && methodologyVersion is not null,
             HistoricalPublicationState.Withdrawn => workflowState == HistoricalEditorialWorkflowState.Retracted
                 && state == HistoricalFactState.Retracted
-                && methodologyVersion is not null,
+                && (revisionOrigin == HistoricalRevisionOrigin.Ordinary
+                    || methodologyVersion is not null),
             _ => false,
         };
         if (!publicationIsValid

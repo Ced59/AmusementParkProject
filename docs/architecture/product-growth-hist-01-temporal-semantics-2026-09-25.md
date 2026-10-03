@@ -366,12 +366,10 @@ l’on peut conclure. Ils ne sont pas interchangeables : un fait `Disputed` peut
 n’est pas public.
 
 Le fait, la relation et le récit lié possèdent chacun leur propre workflow et
-leur propre état de publication. `HistoricalPublicationState` vaut `Draft`,
-`Published`, `LegacyPublishedPendingReview` ou `Withdrawn`.
-`LegacyPublishedPendingReview` est réservé à HIST-04 : il conserve temporairement
-un contenu déjà public dont les preuves ne satisfont pas encore le nouveau
-contrat, sans le présenter comme vérifié. Aucun endpoint de création ou
-modification ordinaire ne peut choisir cet état.
+leur propre état de publication. Le flux canonique utilise `Draft`, `Published`
+ou `Withdrawn`. `LegacyPublishedPendingReview` ne subsiste dans le type persistant
+que pour relire les révisions créées avant la canonisation définitive : aucun
+service actif ne peut le produire, le publier ou s'en servir comme repli.
 
 Cette indépendance est obligatoire : un fait peut rester public tandis que son
 article est encore en brouillon ou a été retiré. Dans ce cas, la réponse
@@ -382,9 +380,10 @@ ressource.
 
 Dans le flux normal, `Published` exige un workflow `Published` ou `Corrected` ;
 les étapes antérieures restent `Draft`, et une rétractation impose
-`Withdrawn`. La migration place `LegacyPublishedPendingReview` en
-`EditorialReview`. Le Core refuse toute combinaison contradictoire au lieu de
-laisser l’Application ou MongoDB en interpréter le sens.
+`Withdrawn`. La canonisation transforme les récits dans ce flux ordinaire puis
+retire les anciennes révisions actives. Le Core refuse toute combinaison
+contradictoire au lieu de laisser l’Application ou MongoDB en interpréter le
+sens.
 
 Un fait ou une relation `Probable` ou `Disputed` possède en propre une
 `PublicUncertaintyExplanation` localisée, distincte du récit et de toute note
@@ -397,13 +396,11 @@ Règles de publication :
 - un fait ou une relation `Unverified` ou `Retracted` ne peut jamais recevoir
   `HistoricalPublicationState.Published` ; le Core refuse également le workflow
   `Published` pour ces états de preuve ;
-- la seule exposition publique temporaire d'un contenu `Unverified` est
-  `LegacyPublishedPendingReview`, créée exclusivement par HIST-04 avec son
-  avertissement et ses exclusions obligatoires ;
+- aucune révision issue de l'ancien état
+  `LegacyPublishedPendingReview` n'est admissible dans les lectures publiques ;
 - `Probable` et `Disputed` exigent une explication visible ;
-- `LegacyPublishedPendingReview` affiche un avertissement localisé obligatoire,
-  reste exclu des snapshots décisionnels et des nouveaux liens SEO, et apparaît
-  dans les diagnostics jusqu’à sa revue ;
+- `LegacyPublishedPendingReview` reste exclu des snapshots décisionnels, du SEO
+  et de toute nouvelle écriture ;
 - `Retracted` ne participe plus aux calculs publics ;
 - chaque publication fige une révision et une version de méthode ;
 - l’absence de traduction utilise le fallback annoncé, jamais un faux texte
@@ -570,10 +567,10 @@ note admin privée.
 
 ## 11. Migration du système existant
 
-Le dépôt possède aujourd’hui un modèle `HistoryEvent` et une collection
+Le dépôt possédait un modèle `HistoryEvent` dans une collection
 `historyEvents`. La cible est une **migration**, pas un adaptateur permanent ni
-deux moteurs concurrents. `HIST-04` effectuera une bascule versionnée et
-rejouable après que le Core et la persistance canoniques auront été livrés.
+deux moteurs concurrents. La bascule versionnée et rejouable importe cette
+source une seule fois, puis la supprime après promotion du stockage canonique.
 
 ### 11.1 Correspondance initiale
 

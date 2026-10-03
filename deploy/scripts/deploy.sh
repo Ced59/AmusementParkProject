@@ -214,7 +214,7 @@ rollback_incomplete_historical_history_cutover() {
   # removing migration-owned output and restoring legacy write authority.
   python3 ./scripts/deployment_transaction.py quiesce-unexposed
 
-  echo "Deployment did not complete; restoring the legacy historical authority..." >&2
+  echo "Deployment did not complete; restoring the pre-cutover historical state..." >&2
   compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \
@@ -222,7 +222,8 @@ rollback_incomplete_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/rollback-history-5.3.82.js
+      < ./scripts/rollback-history-cutover-5.4.81.js
+  python3 ./scripts/deployment_transaction.py restore-original-history-writer
   python3 ./scripts/deployment_transaction.py cutover-restored --resource historical-history
   historical_history_cutover_started=false
 }
@@ -285,30 +286,31 @@ prepare_personal_ranking_cutover() {
 }
 
 prepare_historical_history_cutover() {
-  local migration_completed=""
+  local cutover_required=""
   if python3 ./scripts/deployment_transaction.py cutover-pending --resource historical-history; then
     historical_history_cutover_started=true
   fi
 
-  migration_completed="$(compose exec -T \
+  cutover_required="$(compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \
       --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      --eval 'const state=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark").getCollection("historical-migrations").findOne({_id:"hist-04-history-events-v1"}); print(state && state.completedAtUtc ? "true" : "false");' \
+      --eval 'const d=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark"); const names=["historyEvents","history-events-cutover-source-hist-04-v1"]; const hasSource=d.getCollectionInfos().some(info => names.includes(info.name)); const narratives=d.getCollection("historical-narratives"); const pending=narratives.countDocuments({$or:[{migrationVersion:{$ne:"hist-canonical-v2"}},{canonicalizationState:{$nin:["Canonicalized","Blocked"]}}]}); print(hasSource || pending > 0 ? "true" : "false");' \
     | tail -n 1)"
-  if [ "${migration_completed}" = "true" ]; then
-    echo "Legacy historical replacement is already complete."
+  if [ "${cutover_required}" != "true" ]; then
+    echo "Canonical historical cutover is already complete."
     return 0
   fi
 
-  echo "Freezing legacy historical writes before zero-downtime cutover..."
-  # Arm rollback before collMod: MongoDB may apply the validator even if the
-  # client loses the command response and exits with an error.
+  echo "Isolating the historical writer before the canonical cutover..."
+  # Arm rollback and persist the stopped-writer intent before touching either
+  # Docker or MongoDB. A lost response can then be resumed without two writers.
   python3 ./scripts/deployment_transaction.py arm-cutover --resource historical-history
   historical_history_cutover_started=true
+  python3 ./scripts/deployment_transaction.py quiesce-original-history-writer
   compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \
@@ -316,7 +318,30 @@ prepare_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/freeze-legacy-history-5.3.82.js
+      < ./scripts/freeze-history-authorities-5.4.81.js
+
+  echo "Starting and verifying the unexposed canonical-history candidate..."
+  python3 ./scripts/deployment_transaction.py prepare-candidates
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      < ./scripts/release-history-write-freeze-5.4.81.js
+}
+
+complete_historical_history_cutover() {
+  echo "Removing superseded historical collections after canonical authority was promoted..."
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      < ./scripts/complete-history-cutover-5.4.81.js
 }
 
 run_legacy_enum_migrations() {
@@ -521,6 +546,7 @@ else
   echo "Recovering an exposed authority; the legacy cutover must not be reverted or frozen again."
 fi
 python3 ./scripts/deployment_transaction.py deploy
+complete_historical_history_cutover
 personal_ranking_cutover_started=false
 historical_history_cutover_started=false
 

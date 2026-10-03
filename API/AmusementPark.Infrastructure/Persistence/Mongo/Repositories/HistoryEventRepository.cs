@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -264,20 +265,31 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
     public async Task<HistoryEvent> CreateAsync(HistoryEvent historyEvent, CancellationToken cancellationToken)
     {
         HistoryEventDocument document = historyEvent.ToDocument();
-        document.CreatedAt = DateTime.UtcNow;
+        document.CreatedAt = NormalizeMongoTimestamp(DateTime.UtcNow);
         document.UpdatedAt = document.CreatedAt;
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
         return document.ToDomain();
     }
 
-    public async Task<HistoryEvent?> UpdateAsync(string eventId, HistoryEvent historyEvent, CancellationToken cancellationToken)
+    public async Task<HistoryEvent?> UpdateAsync(
+        string eventId,
+        HistoryEvent historyEvent,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        Guid mutationId,
+        CancellationToken cancellationToken)
     {
-        HistoryEventDocument? existing = await this.collection.Find(document => document.Id == eventId)
+        FilterDefinition<HistoryEventDocument> mutationFilter = BuildConditionalUpdateFilter(
+            eventId,
+            expectedUpdatedAtUtc,
+            expectedCanonicalFactId);
+        HistoryEventDocument? existing = await this.collection.Find(mutationFilter)
             .Project(static document => new HistoryEventDocument
             {
                 Id = document.Id,
                 CreatedAt = document.CreatedAt,
+                UpdatedAt = document.UpdatedAt,
                 CanonicalFactId = document.CanonicalFactId,
                 CanonicalizationState = document.CanonicalizationState,
                 MigrationVersion = document.MigrationVersion,
@@ -293,7 +305,9 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         HistoryEventDocument document = historyEvent.ToDocument();
         document.Id = eventId;
         document.CreatedAt = existing.CreatedAt;
-        document.UpdatedAt = DateTime.UtcNow;
+        document.UpdatedAt = ResolveNextMutationTimestamp(
+            existing.UpdatedAt,
+            DateTime.UtcNow);
         document.CanonicalFactId = existing.CanonicalFactId;
         document.CanonicalizationState = HistoricalNarrativeCanonicalizationState.PendingReview;
         document.MigrationVersion = existing.MigrationVersion;
@@ -302,18 +316,183 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             .Distinct(StringComparer.Ordinal)
             .OrderBy(static warning => warning, StringComparer.Ordinal)
             .ToList();
+        document.LastMutationId = mutationId.ToString("N");
 
         ReplaceOneResult result = await this.collection.ReplaceOneAsync(
-            current => current.Id == eventId,
+            mutationFilter,
             document,
             cancellationToken: cancellationToken);
 
         return result.MatchedCount == 0 ? null : document.ToDomain();
     }
 
-    public async Task<bool> DeleteAsync(string eventId, CancellationToken cancellationToken)
+    internal static DateTime ResolveNextMutationTimestamp(
+        DateTime previousUpdatedAtUtc,
+        DateTime nowUtc)
     {
-        DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == eventId, cancellationToken);
+        DateTime previous = NormalizeMongoTimestamp(previousUpdatedAtUtc);
+        DateTime current = NormalizeMongoTimestamp(nowUtc);
+        DateTime minimum = previous.AddMilliseconds(1);
+        return current >= minimum ? current : minimum;
+    }
+
+    private static DateTime NormalizeMongoTimestamp(DateTime timestamp)
+    {
+        DateTime utc = timestamp.Kind switch
+        {
+            DateTimeKind.Utc => timestamp,
+            DateTimeKind.Local => timestamp.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(timestamp, DateTimeKind.Utc),
+        };
+        long normalizedTicks = utc.Ticks - (utc.Ticks % TimeSpan.TicksPerMillisecond);
+        return new DateTime(normalizedTicks, DateTimeKind.Utc);
+    }
+
+    public async Task<HistoryEvent?> GetCommittedUpdateAsync(
+        string eventId,
+        Guid mutationId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<HistoryEventDocument> filter =
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.Id, eventId)
+            & Builders<HistoryEventDocument>.Filter.Eq(
+                document => document.LastMutationId,
+                mutationId.ToString("N"));
+        HistoryEventDocument? document = await this.collection
+            .Find(filter)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
+    public async Task<HistoryEventMutationSnapshot?> GetMutationSnapshotAsync(
+        string eventId,
+        CancellationToken cancellationToken)
+    {
+        HistoryEventDocument? document = await this.collection
+            .Find(item => item.Id == eventId)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (document is null)
+        {
+            return null;
+        }
+
+        Guid? lastMutationId = Guid.TryParseExact(
+            document.LastMutationId,
+            "N",
+            out Guid parsedMutationId)
+            ? parsedMutationId
+            : null;
+        return new HistoryEventMutationSnapshot(document.ToDomain(), lastMutationId);
+    }
+
+    internal static FilterDefinition<HistoryEventDocument> BuildConditionalUpdateFilter(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId)
+    {
+        return Builders<HistoryEventDocument>.Filter.Eq(document => document.Id, eventId)
+            & Builders<HistoryEventDocument>.Filter.Eq(
+                document => document.UpdatedAt,
+                expectedUpdatedAtUtc)
+            & Builders<HistoryEventDocument>.Filter.Eq(
+                document => document.CanonicalFactId,
+                expectedCanonicalFactId?.ToString("N"));
+    }
+
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(
+        string canonicalizationVersion,
+        CancellationToken cancellationToken)
+    {
+        string normalizedVersion = canonicalizationVersion?.Trim() ?? string.Empty;
+        if (normalizedVersion.Length == 0)
+        {
+            throw new ArgumentException(
+                "A historical canonicalization version is required.",
+                nameof(canonicalizationVersion));
+        }
+
+        FilterDefinition<HistoryEventDocument> filter = BuildCanonicalizationCandidateFilter(
+            normalizedVersion);
+        List<HistoryEventDocument> documents = await this.collection
+            .Find(filter)
+            .SortBy(static document => document.Id)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    internal static FilterDefinition<HistoryEventDocument> BuildCanonicalizationCandidateFilter(
+        string canonicalizationVersion)
+    {
+        return
+            Builders<HistoryEventDocument>.Filter.Ne(
+                document => document.MigrationVersion,
+                canonicalizationVersion)
+            | Builders<HistoryEventDocument>.Filter.Exists(
+                document => document.MigrationVersion,
+                false)
+            | Builders<HistoryEventDocument>.Filter.Nin(
+                document => document.CanonicalizationState,
+                new[]
+                {
+                    HistoricalNarrativeCanonicalizationState.Canonicalized,
+                    HistoricalNarrativeCanonicalizationState.Blocked,
+                });
+    }
+
+    public async Task<bool> SetCanonicalizationAsync(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? canonicalFactId,
+        HistoricalNarrativeCanonicalizationState state,
+        string canonicalizationVersion,
+        IReadOnlyCollection<string> warnings,
+        CancellationToken cancellationToken)
+    {
+        string normalizedEventId = eventId?.Trim() ?? string.Empty;
+        string normalizedVersion = canonicalizationVersion?.Trim() ?? string.Empty;
+        if (normalizedEventId.Length == 0 || normalizedVersion.Length == 0)
+        {
+            return false;
+        }
+
+        FilterDefinition<HistoryEventDocument> filter =
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.Id, normalizedEventId)
+            & Builders<HistoryEventDocument>.Filter.Eq(
+                document => document.UpdatedAt,
+                expectedUpdatedAtUtc);
+        UpdateDefinition<HistoryEventDocument> update = Builders<HistoryEventDocument>.Update
+            .Set(document => document.CanonicalizationState, state)
+            .Set(document => document.MigrationVersion, normalizedVersion)
+            .Set(document => document.MigrationWarnings, warnings
+                .Where(static warning => !string.IsNullOrWhiteSpace(warning))
+                .Select(static warning => warning.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .OrderBy(static warning => warning, StringComparer.Ordinal)
+                .ToList());
+        update = canonicalFactId.HasValue
+            ? update.Set(
+                document => document.CanonicalFactId,
+                canonicalFactId.Value.ToString("N"))
+            : update.Unset(document => document.CanonicalFactId);
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            filter,
+            update,
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
+    public async Task<bool> DeleteAsync(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            BuildConditionalUpdateFilter(
+                eventId,
+                expectedUpdatedAtUtc,
+                expectedCanonicalFactId),
+            cancellationToken);
         return result.DeletedCount > 0;
     }
 

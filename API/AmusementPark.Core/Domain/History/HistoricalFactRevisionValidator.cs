@@ -32,6 +32,12 @@ public static class HistoricalFactRevisionValidator
 
     private static bool IsWorkflowTransitionValid(HistoricalFact fact, HistoricalFact predecessor)
     {
+        if (predecessor.WorkflowState == HistoricalEditorialWorkflowState.Retracted)
+        {
+            return fact.WorkflowState != HistoricalEditorialWorkflowState.Retracted
+                && fact.PublicationState != HistoricalPublicationState.Withdrawn;
+        }
+
         return fact.WorkflowState switch
         {
             HistoricalEditorialWorkflowState.Corrected =>
@@ -39,15 +45,8 @@ public static class HistoricalFactRevisionValidator
                     or HistoricalEditorialWorkflowState.Corrected
                 && predecessor.PublicationState == HistoricalPublicationState.Published,
             HistoricalEditorialWorkflowState.Retracted =>
-                predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
-                        or HistoricalEditorialWorkflowState.Corrected
-                    && predecessor.PublicationState == HistoricalPublicationState.Published
-                || predecessor.RevisionOrigin == HistoricalRevisionOrigin.LegacyMigration
-                    && (predecessor.WorkflowState is HistoricalEditorialWorkflowState.EditorialReview
-                        or HistoricalEditorialWorkflowState.StructuredValidation)
-                    && predecessor.PublicationState
-                        is HistoricalPublicationState.LegacyPublishedPendingReview
-                            or HistoricalPublicationState.Suppressed,
+                predecessor.WorkflowState != HistoricalEditorialWorkflowState.Retracted
+                    && predecessor.PublicationState != HistoricalPublicationState.Withdrawn,
             _ => predecessor.WorkflowState < HistoricalEditorialWorkflowState.Published
                 && fact.WorkflowState >= predecessor.WorkflowState
                 && (int)fact.WorkflowState <= (int)predecessor.WorkflowState + 1,

@@ -747,13 +747,17 @@ sa conversion et la bascule unique restent le jalon `HIST-04`.
 
 ### Implémentation `HIST-04` — 26 septembre 2026
 
-Au démarrage du déploiement, une migration versionnée prend un instantané de
-la collection historique antérieure, calcule son empreinte et recopie chaque
-document à l'identique dans une sauvegarde dédiée. Les titres, résumés,
-articles, images, sources, slugs, identifiants liés et indicateurs de mise en
-avant restent ainsi récupérables sans dépendre du nouveau modèle. La collection
-opérationnelle est ensuite remplacée en une seule bascule par les récits
-canoniques ; l'application ne relit ni ne réécrit l'ancienne collection.
+Au démarrage du déploiement, une bascule idempotente récupère les documents
+encore présents dans les anciennes collections, sans écraser un récit déjà
+canonique. Les titres, résumés, articles, images, sources, slugs, identifiants
+liés et indicateurs de mise en avant sont placés dans
+`historical-narratives`, puis immédiatement transformés en sources et faits
+HIST ordinaires. La collection d'origine, son éventuelle sauvegarde et les
+anciens registres de migration sont supprimés seulement après la réussite de
+la canonicalisation, de la projection publique et de la promotion de la
+nouvelle autorité applicative. Un échec avant promotion conserve donc l'entrée
+récupérable et restaure l'autorité précédente, tandis qu'un déploiement réussi
+ne laisse aucun second système historique actif.
 
 Chaque type d'événement automatiquement convertible possède une correspondance
 explicite vers un fait structuré. Une ouverture saisonnière reste bloquée pour
@@ -766,21 +770,56 @@ reste elle aussi bloquée pour classification manuelle. Une valeur inconnue n'es
 silencieusement en « autre ». Les associations historiques vagues sont
 conservées dans le récit mais ne deviennent pas des relations sans preuve.
 
-Les sources valides deviennent des références canoniques figées sur leur
-première révision. Les informations absentes ou invalides alimentent un rapport
-d'anomalies mesurable. Un contenu visible mais encore non prouvé entre dans la
-file `LegacyPublishedPendingReview`, avec un avertissement dans les huit
-langues, et reste exclu des décisions certaines. Une cible cachée, absente ou
-marquée non pertinente est conservée avec la politique `Suppressed` et ne peut
-pas être exposée par accident. Les conversions impossibles restent
-administrables comme récits bloqués : elles ne sont ni supprimées ni inventées.
+Les sources valides deviennent des références canoniques révisionnées. Les
+informations absentes ou invalides alimentent un rapport d'anomalies mesurable.
+Un contenu non prouvé reste un brouillon non public ; une cible cachée, absente
+ou marquée non pertinente ne peut pas être exposée par accident. Les
+conversions impossibles restent administrables comme récits bloqués : elles ne
+sont ni supprimées ni inventées.
 
-La migration possède un bail, un marqueur de réussite, des identités
-déterministes et des compteurs avant/après. Une interruption avant la bascule
-fait reconstruire uniquement la sortie inachevée au prochain démarrage. La
-réussite exige une empreinte source inchangée et l'égalité entre source,
-sauvegarde et récits migrés. MongoDB est donc mis à jour automatiquement par le
-déploiement, sans manipulation manuelle ni coexistence durable de deux moteurs.
+Le déploiement arrête proprement l'ancienne API avant toute conversion : le
+candidat devient ainsi l'unique autorité capable d'écrire, y compris pour les
+suppressions et les effets secondaires que les validateurs MongoDB ne peuvent
+pas interdire. Il gèle en défense supplémentaire l'ancienne collection source
+et les écritures non canoniques dans `historical-narratives`. Avant toute conversion, il sauvegarde
+exactement les récits concernés ainsi que toutes les révisions de faits et de
+sources auxquelles ils étaient liés. Les écritures de préparation utilisent
+l'identité MongoDB d'origine et `$setOnInsert` : une reprise ne duplique pas un
+récit et ne remplace jamais une version canonique plus récente. Si le candidat
+échoue, les sauvegardes restaurent l'état antérieur document pour document ; si
+la promotion réussit, elles sont supprimées avec toutes les collections et
+registres HIST-04 devenus inutiles. Les révisions temporaires portant encore
+l'origine `LegacyMigration` ne sont supprimées qu'après avoir vérifié que
+chaque récit correspondant a atteint un état canonique final et que chaque
+source héritée reste rattachée à un fait converti. MongoDB est ainsi mis à jour automatiquement
+par le déploiement, sans manipulation manuelle ni coexistence durable de deux
+moteurs. En cas d'échec, l'ancienne API n'est redémarrée qu'après la
+restauration intégrale des documents sauvegardés.
+
+### Canonisation définitive des alimentations — 2 octobre 2026
+
+La voie transitoire de `HIST-04` est retirée du fonctionnement actif. Une
+migration idempotente reprend tous les récits existants, crée des sources et
+faits de révision `Ordinary`, conserve la publication seulement lorsqu'une
+preuve valide et une cible publique le permettent, puis retire leurs anciennes
+révisions actives. Aucun service, contrôleur, dépôt, fallback ou tâche de fond
+HIST-04 ne reste enregistré après la bascule. Les alimentations Park Graph,
+attraction autonome et édition
+unitaire écrivent désormais directement dans ce modèle canonique. La lecture
+publique, le calcul des snapshots et le bouton d'accès à l'histoire n'utilisent
+plus aucun fallback historique.
+
+Les événements visibles sans source sont rejetés en Preview dans les workflows
+d'alimentation ; les événements volontairement masqués restent des brouillons.
+Les anciennes valeurs persistées ne sont relues que pendant cette conversion
+unique afin de ne pas perdre les récits. Les anciennes collections sont ensuite
+supprimées et ne servent jamais de second système métier ou de repli public.
+
+L'accès à la frise publique est distinct du seuil plus exigeant des snapshots
+annuels et du SEO : deux faits canoniques tous sourcés, dont un jalon majeur,
+suffisent à rendre l'histoire consultable. L'indexation d'une année continue
+d'exiger une reconstitution assez complète pour ne pas présenter un état
+historique trompeur.
 
 ### Implémentation `HIST-05` — 26 septembre 2026
 
@@ -804,9 +843,9 @@ reste applicable jusqu'à une éventuelle réouverture explicite.
 Les attributs historiques sont réduits séparément : un changement de nom,
 d'exploitant, de propriétaire, de thème, de zone, de logo ou de localisation ne
 modifie aucun autre attribut. La valeur précédente, la nouvelle valeur et le
-côté de la frontière restent traçables. Les révisions remplacées ou retirées,
-les brouillons et les contenus hérités encore en attente de revue sont exclus
-du calcul décisionnel. Les faits probables ou contestés peuvent expliquer un
+côté de la frontière restent traçables. Les révisions remplacées ou retirées
+et les brouillons sont exclus du calcul décisionnel. Les faits probables ou
+contestés peuvent expliquer un
 état possible, mais ne créent jamais seuls une certitude.
 
 Le builder est un service de domaine pur et déterministe : il ne dépend ni de
@@ -864,8 +903,8 @@ requête de frise ne matérialise donc plus tout le registre en mémoire. Un par
 ou élément actuellement public suit son état
 de publication courant ; une cible historique masquée n'est retenue que si sa
 politique `HistoricalOnly` l'autorise explicitement. Les brouillons, faits
-retirés, héritages encore en attente de revue et cibles explicitement marquées
-`Suppressed` restent absents des réponses publiques.
+retirés et cibles explicitement marquées `Suppressed` restent absents des
+réponses publiques.
 
 La sélection MongoDB commence par les chaînes ayant appartenu au périmètre du
 parc, puis rejoint dans la même agrégation leur dernière révision globale avant
