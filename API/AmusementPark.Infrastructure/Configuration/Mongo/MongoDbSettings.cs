@@ -259,8 +259,6 @@ public sealed class MongoDbSettings
     public string StandaloneAttractionPricingCollectionName { get; set; } =
         "standaloneAttractionPricing";
 
-    public string HistoryEventsCollectionName { get; set; } = "historyEvents";
-
     public string HistoricalExistenceReportsCollectionName { get; set; } =
         "historical-existence-reports";
 
@@ -289,29 +287,6 @@ public sealed class MongoDbSettings
     public string FeatureFlagStatesCollectionName { get; set; } = "feature-flag-states";
 
     public string HistoricalNarrativesCollectionName { get; set; } = "historical-narratives";
-
-    public string HistoricalMigrationsCollectionName { get; set; } = "historical-migrations";
-
-    public string HistoricalMigrationAnomaliesCollectionName { get; set; } =
-        "historical-migration-anomalies";
-
-    public string HistoricalEventsBackupCollectionName { get; set; } =
-        "history-events-backup-hist-04-v1";
-
-    public string HistoricalFrozenSourceCollectionName { get; set; } =
-        "history-events-cutover-source-hist-04-v1";
-
-    public string HistoricalNarrativeCutoverBackupCollectionName { get; set; } =
-        "historical-narratives-cutover-backup-hist-canonical-v1";
-
-    public string HistoricalFactCutoverBackupCollectionName { get; set; } =
-        "historical-facts-cutover-backup-hist-canonical-v1";
-
-    public string HistoricalSourceCutoverBackupCollectionName { get; set; } =
-        "historical-sources-cutover-backup-hist-canonical-v1";
-
-    public string HistoricalCutoverStateCollectionName { get; set; } =
-        "historical-cutover-state-hist-canonical-v1";
 
     /// <summary>
     /// Lie la configuration et applique des valeurs par défaut.

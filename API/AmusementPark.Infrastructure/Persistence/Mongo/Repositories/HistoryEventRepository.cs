@@ -399,46 +399,6 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
                 expectedCanonicalFactId?.ToString("N"));
     }
 
-    public async Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(
-        string canonicalizationVersion,
-        CancellationToken cancellationToken)
-    {
-        string normalizedVersion = canonicalizationVersion?.Trim() ?? string.Empty;
-        if (normalizedVersion.Length == 0)
-        {
-            throw new ArgumentException(
-                "A historical canonicalization version is required.",
-                nameof(canonicalizationVersion));
-        }
-
-        FilterDefinition<HistoryEventDocument> filter = BuildCanonicalizationCandidateFilter(
-            normalizedVersion);
-        List<HistoryEventDocument> documents = await this.collection
-            .Find(filter)
-            .SortBy(static document => document.Id)
-            .ToListAsync(cancellationToken);
-        return documents.Select(static document => document.ToDomain()).ToArray();
-    }
-
-    internal static FilterDefinition<HistoryEventDocument> BuildCanonicalizationCandidateFilter(
-        string canonicalizationVersion)
-    {
-        return
-            Builders<HistoryEventDocument>.Filter.Ne(
-                document => document.MigrationVersion,
-                canonicalizationVersion)
-            | Builders<HistoryEventDocument>.Filter.Exists(
-                document => document.MigrationVersion,
-                false)
-            | Builders<HistoryEventDocument>.Filter.Nin(
-                document => document.CanonicalizationState,
-                new[]
-                {
-                    HistoricalNarrativeCanonicalizationState.Canonicalized,
-                    HistoricalNarrativeCanonicalizationState.Blocked,
-                });
-    }
-
     public async Task<bool> SetCanonicalizationAsync(
         string eventId,
         DateTime expectedUpdatedAtUtc,

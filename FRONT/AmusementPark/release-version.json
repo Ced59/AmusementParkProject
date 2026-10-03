@@ -1,6 +1,20 @@
 {
-  "version": "5.4.83",
+  "version": "5.4.84",
   "history": [
+    {
+      "version": "5.4.84",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Historique des parcs consolidé",
+        "en": "Consolidated park history",
+        "de": "Konsolidierte Parkgeschichte",
+        "nl": "Geconsolideerde parkgeschiedenis",
+        "it": "Storia dei parchi consolidata",
+        "es": "Historia de los parques consolidada",
+        "pt": "História dos parques consolidada",
+        "pl": "Ujednolicona historia parków"
+      }
+    },
     {
       "version": "5.4.83",
       "releasedAt": "2026-10-03",

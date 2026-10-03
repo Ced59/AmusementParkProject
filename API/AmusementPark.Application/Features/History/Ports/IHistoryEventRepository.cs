@@ -53,10 +53,6 @@ public interface IHistoryEventRepository
         string eventId,
         CancellationToken cancellationToken);
 
-    Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(
-        string canonicalizationVersion,
-        CancellationToken cancellationToken);
-
     Task<bool> SetCanonicalizationAsync(
         string eventId,
         DateTime expectedUpdatedAtUtc,
