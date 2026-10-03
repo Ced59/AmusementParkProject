@@ -351,6 +351,8 @@ jobs:
           node ../../.github/scripts/classify-npm-audit-report.mjs \
             ../../dependency-security-reports/npm-audit.json \
             "${audit_status}" \
+            package-lock.json \
+            ../../.github/dependency-security-exceptions.json \
             > ../../dependency-security-reports/npm-audit.txt
           classification_status=$?
           cat ../../dependency-security-reports/npm-audit.txt

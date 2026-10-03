@@ -1,6 +1,20 @@
 {
-  "version": "5.4.79",
+  "version": "5.4.80",
   "history": [
+    {
+      "version": "5.4.80",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Contrôles de sécurité des dépendances renforcés",
+        "en": "Stronger dependency security checks",
+        "de": "Stärkere Sicherheitsprüfungen für Abhängigkeiten",
+        "nl": "Sterkere beveiligingscontroles voor afhankelijkheden",
+        "it": "Controlli di sicurezza delle dipendenze rafforzati",
+        "es": "Controles de seguridad de dependencias reforzados",
+        "pt": "Controlos de segurança das dependências reforçados",
+        "pl": "Wzmocnione kontrole bezpieczeństwa zależności"
+      }
+    },
     {
       "version": "5.4.79",
       "releasedAt": "2026-10-03",
