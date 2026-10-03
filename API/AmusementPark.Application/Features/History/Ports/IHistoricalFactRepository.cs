@@ -20,6 +20,11 @@ public interface IHistoricalFactRepository
         Guid factId,
         CancellationToken cancellationToken);
 
+    Task<bool> IsLatestRevisionSubjectAlignedAsync(
+        Guid factId,
+        HistoricalSubject expectedSubject,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<HistoricalFact>> GetLatestRevisionsForSubjectsAsync(
         IReadOnlyCollection<HistoricalSubject> subjects,
         CancellationToken cancellationToken);

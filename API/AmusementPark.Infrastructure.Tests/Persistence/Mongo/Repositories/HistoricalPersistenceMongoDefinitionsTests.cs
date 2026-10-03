@@ -246,6 +246,52 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     }
 
     [Fact]
+    public void IsSubjectAligned_WhenPersistedParkContextIsMissing_ShouldRejectRevision()
+    {
+        HistoricalSubject expected = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalSubjectDocument persisted = new HistoricalSubjectDocument
+        {
+            Type = HistoricalSubjectType.Park,
+            Id = "park-1",
+            HistoricalLabel = "Parc témoin",
+            PublicationPolicy = HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            ContextParkId = null,
+        };
+
+        bool aligned = HistoricalFactRepository.IsSubjectAligned(persisted, expected);
+
+        Assert.False(aligned);
+    }
+
+    [Fact]
+    public void IsSubjectAligned_WhenPersistedSubjectMatchesExpectedScope_ShouldAcceptRevision()
+    {
+        HistoricalSubject expected = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalSubjectDocument persisted = new HistoricalSubjectDocument
+        {
+            Type = HistoricalSubjectType.Park,
+            Id = "park-1",
+            HistoricalLabel = "Parc témoin",
+            PublicationPolicy = HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            ContextParkId = "park-1",
+        };
+
+        bool aligned = HistoricalFactRepository.IsSubjectAligned(persisted, expected);
+
+        Assert.True(aligned);
+    }
+
+    [Fact]
     public void BuildSourceIndexes_ShouldProtectImmutableRevisionsWithoutExpiration()
     {
         IReadOnlyCollection<CreateIndexModel<HistoricalSourceDocument>> indexes =

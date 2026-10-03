@@ -203,6 +203,60 @@ internal sealed class HistoryUpsertTestContext
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(repairRequired);
+        if (!repairRequired || !this.persistedEvent.CanonicalFactId.HasValue)
+        {
+            return;
+        }
+
+        Guid canonicalFactId = this.persistedEvent.CanonicalFactId.Value;
+        HistoricalFact currentFact = CreateRepairableCanonicalFact(canonicalFactId);
+        this.HistoricalFactRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(
+                canonicalFactId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(currentFact);
+        this.HistoricalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == canonicalFactId
+                    && fact.PublicationState == HistoricalPublicationState.Withdrawn),
+                It.Is<HistoricalReviewEvent>(review =>
+                    review.EventType == HistoricalReviewEventType.Retracted),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+    }
+
+    private static HistoricalFact CreateRepairableCanonicalFact(Guid factId)
+    {
+        DateTime recordedAtUtc = new DateTime(2026, 10, 1, 12, 0, 0, DateTimeKind.Utc);
+        return new HistoricalFact(
+            factId,
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Mirapolis",
+                HistoricalSubjectPublicationPolicy.Suppressed),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForYear(1979)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft,
+            Array.Empty<HistoricalLocalizedText>(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "history-1",
+            null,
+            null,
+            null,
+            1,
+            null,
+            recordedAtUtc,
+            HistoricalRevisionOrigin.Ordinary);
     }
 
     private static HistoryEvent CloneHistoryEvent(HistoryEvent source)

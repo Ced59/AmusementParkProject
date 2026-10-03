@@ -1,6 +1,20 @@
 {
-  "version": "5.4.88",
+  "version": "5.4.89",
   "history": [
+    {
+      "version": "5.4.89",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Frises historiques de nouveau reliées aux parcs",
+        "en": "Historical timelines linked to parks again",
+        "de": "Historische Zeitleisten wieder mit Parks verknüpft",
+        "nl": "Historische tijdlijnen weer aan parken gekoppeld",
+        "it": "Cronologie storiche nuovamente collegate ai parchi",
+        "es": "Cronologías históricas vinculadas de nuevo a los parques",
+        "pt": "Cronologias históricas novamente ligadas aos parques",
+        "pl": "Historyczne osie czasu ponownie powiązane z parkami"
+      }
+    },
     {
       "version": "5.4.88",
       "releasedAt": "2026-10-03",
