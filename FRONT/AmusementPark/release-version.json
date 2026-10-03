@@ -1,6 +1,20 @@
 {
-  "version": "5.4.84",
+  "version": "5.4.85",
   "history": [
+    {
+      "version": "5.4.85",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Déploiements de l’historique simplifiés",
+        "en": "Simplified history deployments",
+        "de": "Vereinfachte Bereitstellung der Historie",
+        "nl": "Vereenvoudigde implementatie van geschiedenis",
+        "it": "Distribuzione della cronologia semplificata",
+        "es": "Despliegue del historial simplificado",
+        "pt": "Implementação do histórico simplificada",
+        "pl": "Uproszczone wdrażanie historii"
+      }
+    },
     {
       "version": "5.4.84",
       "releasedAt": "2026-10-03",

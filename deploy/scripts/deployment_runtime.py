@@ -236,43 +236,7 @@ class DockerRuntime:
             raise DeploymentError(f"Deployment container is not the expected {expected_service} service")
         return container
 
-    @staticmethod
-    def validate_intentional_stop(container):
-        state = container["State"]
-        if state["Running"]:
-            raise DeploymentError("Container did not stop")
-        if state.get("OOMKilled") or state.get("ExitCode") not in {0, 143}:
-            raise DeploymentError(
-                f"Abnormal intentional stop for {container['Name'].lstrip('/')} "
-                f"(exit {state.get('ExitCode')})")
-
-    def stop_keep(self, reference):
-        container = self.validate_application_reference(reference, "api")
-        if container is None:
-            raise DeploymentError("Original API disappeared before historical writer isolation")
-        if container["State"]["Running"]:
-            self.run(
-                "docker",
-                "stop",
-                "--time",
-                str(self.stop_timeout),
-                reference["id"],
-                timeout=self.stop_timeout + 15)
-            container = self.validate_application_reference(reference, "api")
-            if container is None:
-                raise DeploymentError("Stopped API disappeared before its exit status was checked")
-        self.validate_intentional_stop(container)
-
-    def start_existing(self, reference):
-        container = self.validate_application_reference(reference, "api")
-        if container is None:
-            raise DeploymentError("Original API disappeared before historical rollback recovery")
-        if not container["State"]["Running"]:
-            self.run("docker", "start", reference["id"])
-        self.wait_healthy(reference)
-
-    def stop_remove(self, reference, allow_failed_start=False, record_exit=None,
-                    allow_intentional_stop=False):
+    def stop_remove(self, reference, allow_failed_start=False, record_exit=None):
         container = self.validate_application_reference(reference)
         if container is None:
             return
@@ -289,8 +253,6 @@ class DockerRuntime:
         labels = stopped["Config"].get("Labels") or {}
         legacy = labels.get(GENERATION_LABEL) in (None, "unmanaged")
         accepted_exit_codes = {0, 143} if legacy else {0}
-        if allow_intentional_stop:
-            accepted_exit_codes.add(143)
         if allow_failed_start and not was_running and not state.get("OOMKilled"):
             # A stopped startup failure can be discarded ONLY after the caller
             # proved that the candidate was never exposed. Preserve SIGKILL for

@@ -14,7 +14,7 @@ from deployment_runtime import DeploymentError, DockerRuntime, NAME
 
 PHASES = {"prepared", "abandoning", "switch-candidate", "replace-canonical", "switch-canonical", "cleanup", "complete", "abandoned"}
 SHARED_INFRASTRUCTURE_MAINTENANCE_SETTING = "SHARED_INFRASTRUCTURE_MAINTENANCE"
-CUTOVER_RESOURCES = {"personal-ranking", "historical-history"}
+CUTOVER_RESOURCES = {"personal-ranking"}
 
 
 def atomic_write(path: Path, content: str, mode=0o600):
@@ -71,7 +71,6 @@ def validate_state(state):
     if (not isinstance(state, dict) or state.get("version") != 1 or state.get("phase") not in PHASES
             or not isinstance(state.get("authority_exposed"), bool)
             or not isinstance(state.get("cutover_armed"), bool)
-            or not isinstance(state.get("history_writer_quiesced"), bool)
             or not re.fullmatch(r"[a-f0-9]{32}", str(state.get("generation", "")))
             or not re.fullmatch(r"[a-f0-9]{64}", str(state.get("fingerprint", "")))):
         raise DeploymentError("Invalid deployment journal; preserving all containers")
@@ -82,10 +81,6 @@ def validate_state(state):
             or any(resource not in CUTOVER_RESOURCES for resource in cutover_resources)
             or state["cutover_armed"] != bool(cutover_resources)):
         raise DeploymentError("Invalid business cutover resources in deployment journal")
-    if state["history_writer_quiesced"] and "historical-history" not in (cutover_resources or []):
-        raise DeploymentError("Historical writer isolation requires an armed historical cutover")
-    if state["phase"] in {"complete", "abandoned"} and state["history_writer_quiesced"]:
-        raise DeploymentError("A terminal deployment cannot retain a stopped historical writer")
     for key in ("original", "candidate", "canonical"):
         pair = state.get(key)
         if not isinstance(pair, dict) or set(pair) != {"api", "front"}:
@@ -145,8 +140,6 @@ class DeploymentTransaction:
             state = json.loads(self.journal.read_text(encoding="utf-8"))
             if "cutover_resources" not in state:
                 state["cutover_resources"] = ["personal-ranking"] if state["cutover_armed"] else []
-            if "history_writer_quiesced" not in state:
-                state["history_writer_quiesced"] = False
             validate_state(state)
         except (ValueError, KeyError, TypeError, OSError) as error:
             raise DeploymentError("Unreadable deployment journal; no cleanup is safe") from error
@@ -191,7 +184,7 @@ class DeploymentTransaction:
         generation = uuid.uuid4().hex
         self.state = {"version": 1, "phase": "prepared", "fingerprint": self.runtime.fingerprint,
                       "generation": generation, "authority_exposed": False, "cutover_armed": False,
-                      "cutover_resources": [], "history_writer_quiesced": False,
+                      "cutover_resources": [],
                       "original": original, "candidate": {"api": None, "front": None},
                       "canonical": {"api": None, "front": None}, "transition": None, "route": None,
                       "baseline": {"edge": self.runtime.edge_processes(), "marker": self.runtime.edge_generation(),
@@ -215,8 +208,7 @@ class DeploymentTransaction:
             raise DeploymentError("Original route changed; unexposed cleanup cannot be proven")
         self.assert_candidates_known()
         self.runtime.wait_healthy(self.state["original"]["front"])
-        if not self.state["history_writer_quiesced"]:
-            self.runtime.wait_healthy(self.state["original"]["api"])
+        self.runtime.wait_healthy(self.state["original"]["api"])
         self.phase("abandoning")
         for service in ("front", "api"):
             reference = self.runtime.find(self.state["candidate_names"][service], self.state["generation"])
@@ -226,40 +218,10 @@ class DeploymentTransaction:
                     self.save()
                 self.runtime.stop_remove(reference, allow_failed_start=True, record_exit=record_exit)
 
-    def quiesce_original_history_writer(self):
-        self.state = self.read()
-        if (self.state is None or self.state["phase"] not in {"prepared", "abandoning"}
-                or self.state["authority_exposed"] or self.state["transition"] is not None
-                or "historical-history" not in self.state["cutover_resources"]):
-            raise DeploymentError("Historical writer isolation requires an armed unexposed preparation")
-        baseline = self.state["baseline"]
-        self.same_edge(baseline["edge"], self.runtime.edge_processes())
-        if self.runtime.edge_generation() != baseline["marker"] or self.routing_hash() != baseline["routing_sha"]:
-            raise DeploymentError("Original route changed; historical writer isolation cannot be proven")
-        self.assert_candidates_known()
-        if not self.state["history_writer_quiesced"]:
-            self.state["history_writer_quiesced"] = True
-            self.save()
-        self.runtime.stop_keep(self.state["original"]["api"])
-
-    def restore_original_history_writer(self):
-        self.state = self.read()
-        if (self.state is None or self.state["phase"] not in {"prepared", "abandoning"}
-                or self.state["authority_exposed"] or self.state["transition"] is not None):
-            raise DeploymentError("Only an unexposed historical rollback can restore the original writer")
-        if self.state["history_writer_quiesced"]:
-            self.runtime.start_existing(self.state["original"]["api"])
-            self.state["history_writer_quiesced"] = False
-            self.save()
-        else:
-            self.runtime.wait_healthy(self.state["original"]["api"])
-
     def abandon_unexposed(self):
         self.quiesce_unexposed()
         if self.state["cutover_armed"]:
             raise DeploymentError("Stopped candidates still require the interrupted business rollback before abandonment")
-        if self.state["history_writer_quiesced"]:
-            raise DeploymentError("The original historical writer must be restored before abandonment")
         self.phase("abandoned")
         print("Unexposed preparation abandoned; original pair retained", flush=True)
 
@@ -345,13 +307,7 @@ class DeploymentTransaction:
             self.assert_active_route(self.state["candidate"]["front"])
             # IDs, never reusable names. A failed front stop leaves its API up.
             for service in ("front", "api"):
-                self.runtime.stop_remove(
-                    self.state["original"][service],
-                    allow_intentional_stop=(
-                        service == "api" and self.state["history_writer_quiesced"]))
-            if self.state["history_writer_quiesced"]:
-                self.state["history_writer_quiesced"] = False
-                self.save()
+                self.runtime.stop_remove(self.state["original"][service])
             for service in ("api", "front"):
                 reference = self.runtime.create_canonical(service, self.state["generation"] + "c")
                 if self.state["canonical"][service] not in (None, reference):
@@ -400,8 +356,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("prepare", "prepare-candidates", "deploy", "rollback-safe", "assert-complete",
                                             "arm-cutover", "cutover-pending", "cutover-restored", "abandon-unexposed",
-                                            "quiesce-unexposed", "quiesce-original-history-writer",
-                                            "restore-original-history-writer", "validate-journal", "maintain-mongodb"))
+                                            "quiesce-unexposed", "validate-journal", "maintain-mongodb"))
     parser.add_argument("--resource", choices=sorted(CUTOVER_RESOURCES))
     args = parser.parse_args()
     directory_override = os.environ.get("DEPLOYMENT_DIRECTORY_OVERRIDE")
@@ -409,7 +364,6 @@ def main():
                  if directory_override
                  else Path(__file__).resolve().parent.parent)
     if args.command in {"prepare", "prepare-candidates", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed",
-                        "quiesce-original-history-writer", "restore-original-history-writer",
                         "maintain-mongodb"}:
         import fcntl
         try:
@@ -463,10 +417,6 @@ def main():
         transaction.abandon_unexposed()
     elif args.command == "quiesce-unexposed":
         transaction.quiesce_unexposed()
-    elif args.command == "quiesce-original-history-writer":
-        transaction.quiesce_original_history_writer()
-    elif args.command == "restore-original-history-writer":
-        transaction.restore_original_history_writer()
     else:
         state = transaction.read()
         if state is None or state["phase"] != "complete" or runtime.candidates():

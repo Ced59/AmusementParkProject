@@ -94,7 +94,6 @@ class InstallationTests(unittest.TestCase):
             "authority_exposed": False,
             "cutover_armed": False,
             "cutover_resources": [],
-            "history_writer_quiesced": False,
         }
 
         self.assertTrue(installer.can_recover_unexposed_with_bundle(base))
@@ -102,8 +101,7 @@ class InstallationTests(unittest.TestCase):
                 {"phase": "switch-candidate"},
                 {"authority_exposed": True},
                 {"cutover_armed": True},
-                {"cutover_resources": ["historical-history"]},
-                {"history_writer_quiesced": True}):
+                {"cutover_resources": ["personal-ranking"]}):
             with self.subTest(override=override):
                 self.assertFalse(installer.can_recover_unexposed_with_bundle({**base, **override}))
 
@@ -151,7 +149,6 @@ journal.write_text(json.dumps(state))
             "authority_exposed": False,
             "cutover_armed": False,
             "cutover_resources": [],
-            "history_writer_quiesced": False,
         }))
         (self.target / "scripts/deployment_transaction.py").write_text(
             "import sys\nassert sys.argv[1] == 'validate-journal'\n")
