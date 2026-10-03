@@ -740,44 +740,6 @@ public sealed class PublicParkHistoricalHandlersTests
             rolloutGate.Object);
     }
 
-    private static HistoricalFact CreateLegacyPublishedFact(Park park)
-    {
-        return new HistoricalFact(
-            Guid.NewGuid(),
-            new HistoricalSubject(
-                HistoricalSubjectType.Park,
-                park.Id,
-                park.Name!,
-                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
-                park.Id),
-            HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForYear(1967)),
-            HistoricalFactState.Unverified,
-            HistoricalImportance.Major,
-            HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            HistoricalLocalizationPolicy.SupportedLanguageCodes
-                .Select(static languageCode => new HistoricalLocalizedText(
-                    languageCode,
-                    "Cette information historique publique reste à vérifier."))
-                .ToArray(),
-            LifecycleBoundaryMeaning.FirstOperatingDay,
-            null,
-            null,
-            null,
-            Array.Empty<HistoricalSourceRevisionReference>(),
-            null,
-            null,
-            null,
-            null,
-            null,
-            "hist-v1-legacy",
-            1,
-            null,
-            new DateTime(2026, 9, 26, 12, 0, 0, DateTimeKind.Utc),
-            HistoricalRevisionOrigin.LegacyMigration);
-    }
-
     private static HistoricalRelation CreatePublishedRelation(HistoricalSubject source)
     {
         HistoricalSubject target = new(

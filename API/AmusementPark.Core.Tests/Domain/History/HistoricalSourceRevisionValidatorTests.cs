@@ -123,57 +123,6 @@ public sealed class HistoricalSourceRevisionValidatorTests
         HistoricalSourceRevisionValidator.ValidatePredecessor(editorialReview, predecessor);
     }
 
-    [Theory]
-    [InlineData(1, HistoricalEditorialWorkflowState.EditorialReview)]
-    [InlineData(2, HistoricalEditorialWorkflowState.StructuredValidation)]
-    public void ValidatePredecessor_WhenLegacyMigrationIsRejected_ShouldAcceptRetraction(
-        int predecessorRevision,
-        HistoricalEditorialWorkflowState predecessorWorkflowState)
-    {
-        Guid sourceId = Guid.NewGuid();
-        HistoricalSourceReference predecessor = CreateSource(
-            sourceId,
-            predecessorRevision,
-            RecordedAtUtc.AddMinutes(-1),
-            predecessorWorkflowState,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            HistoricalRevisionOrigin.LegacyMigration);
-        HistoricalSourceReference retraction = CreateSource(
-            sourceId,
-            predecessorRevision + 1,
-            RecordedAtUtc,
-            HistoricalEditorialWorkflowState.Retracted,
-            HistoricalPublicationState.Withdrawn,
-            HistoricalRevisionOrigin.LegacyMigration);
-
-        HistoricalSourceRevisionValidator.ValidatePredecessor(retraction, predecessor);
-    }
-
-    [Fact]
-    public void ValidatePredecessor_WhenLegacyMigrationAdvancesReview_ShouldKeepPendingPublication()
-    {
-        Guid sourceId = Guid.NewGuid();
-        HistoricalSourceReference predecessor = CreateSource(
-            sourceId,
-            1,
-            RecordedAtUtc.AddMinutes(-1),
-            HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            HistoricalRevisionOrigin.LegacyMigration);
-        HistoricalSourceReference structuredValidation = CreateSource(
-            sourceId,
-            2,
-            RecordedAtUtc,
-            HistoricalEditorialWorkflowState.StructuredValidation,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            HistoricalRevisionOrigin.LegacyMigration);
-
-        HistoricalSourceRevisionValidator.ValidatePredecessor(structuredValidation, predecessor);
-        Assert.Equal(
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            structuredValidation.PublicationState);
-    }
-
     [Fact]
     public void ValidatePredecessor_WhenCompensationRestoresRetractedSource_ShouldAcceptTransition()
     {
@@ -219,8 +168,7 @@ public sealed class HistoricalSourceRevisionValidatorTests
         int revision,
         DateTime recordedAtUtc,
         HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
-        HistoricalPublicationState publicationState = HistoricalPublicationState.Published,
-        HistoricalRevisionOrigin revisionOrigin = HistoricalRevisionOrigin.Ordinary)
+        HistoricalPublicationState publicationState = HistoricalPublicationState.Published)
     {
         return new HistoricalSourceReference(
             sourceId,
@@ -239,7 +187,6 @@ public sealed class HistoricalSourceRevisionValidatorTests
             HistoricalSourceAccessibility.Accessible,
             workflowState,
             publicationState,
-            recordedAtUtc,
-            revisionOrigin);
+            recordedAtUtc);
     }
 }

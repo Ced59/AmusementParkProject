@@ -87,12 +87,6 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
             CancellationToken.None);
 
         Assert.Equal(HistoricalNarrativeCanonicalizationState.Canonicalized, result.State);
-        Assert.DoesNotContain(
-            writtenFacts,
-            static fact => fact.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview);
-        Assert.DoesNotContain(
-            writtenSources,
-            static source => source.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview);
         Assert.All(writtenFacts, static fact => Assert.Equal(HistoricalRevisionOrigin.Ordinary, fact.RevisionOrigin));
         Assert.All(writtenSources, static source => Assert.Equal(HistoricalRevisionOrigin.Ordinary, source.RevisionOrigin));
         HistoricalFact publishedFact = Assert.Single(

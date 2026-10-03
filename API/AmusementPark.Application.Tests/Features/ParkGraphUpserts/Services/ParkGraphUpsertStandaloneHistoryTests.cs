@@ -286,7 +286,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         historicalFactRepository
             .Setup(repository => repository.GetLatestRevisionAsync(factId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(CreateLegacyCanonicalFact(factId));
+            .ReturnsAsync(CreateCanonicalFact(factId));
         historicalFactRepository
             .Setup(repository => repository.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.State == HistoricalFactState.Retracted
@@ -848,9 +848,10 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             standalonePricingRepository: standalonePricingRepository);
     }
 
-    private static HistoricalFact CreateLegacyCanonicalFact(Guid factId)
+    private static HistoricalFact CreateCanonicalFact(Guid factId)
     {
         DateTime recordedAtUtc = DateTime.UtcNow.AddMinutes(-1);
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(2007));
         return new HistoricalFact(
             factId,
             new HistoricalSubject(
@@ -859,28 +860,50 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                 "Pendolino",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForYear(2007)),
-            HistoricalFactState.Unverified,
+            period,
+            HistoricalFactState.Verified,
             HistoricalImportance.Standard,
-            HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            HistoricalLocalizationPolicy.SupportedLanguageCodes
-                .Select(static code => new HistoricalLocalizedText(code, "À vérifier."))
-                .ToArray(),
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            Array.Empty<HistoricalLocalizedText>(),
             LifecycleBoundaryMeaning.FirstOperatingDay,
             null,
             null,
             null,
-            Array.Empty<HistoricalSourceRevisionReference>(),
+            new[]
+            {
+                new HistoricalSourceRevisionReference(
+                    Guid.Parse("44444444-4444-4444-4444-444444444444"),
+                    1,
+                    HistoricalSubjectType.StandaloneAttraction,
+                    "standalone-1",
+                    HistoricalFactType.Opening,
+                    period,
+                    HistoricalEvidencePosition.Supports,
+                    new[]
+                    {
+                        HistoricalSourceScope.SubjectIdentity,
+                        HistoricalSourceScope.FactType,
+                        HistoricalSourceScope.Period,
+                        HistoricalSourceScope.HistoricalLabel,
+                    },
+                    "Pendolino",
+                    null,
+                    null,
+                    null,
+                    null,
+                    LifecycleBoundaryMeaning.FirstOperatingDay,
+                    null,
+                    null),
+            },
             null,
             null,
             "history-1",
-            null,
-            null,
-            "hist-v1-legacy",
-            1,
-            null,
-            recordedAtUtc,
-            HistoricalRevisionOrigin.LegacyMigration);
+            recordedAtUtc.AddMinutes(-2),
+            recordedAtUtc.AddMinutes(-1),
+            "hist-v1",
+            4,
+            3,
+            recordedAtUtc);
     }
 }

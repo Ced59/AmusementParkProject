@@ -323,11 +323,11 @@ public sealed class HistoryHandlersTests
             .ReturnsAsync(existing);
         historicalFactRepository
             .Setup(repository => repository.GetLatestRevisionAsync(factId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(CreateLegacyCanonicalFact(factId));
+            .ReturnsAsync(CreateCanonicalFact(factId));
         historicalFactRepository
             .Setup(repository => repository.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == factId
-                    && fact.Revision == 2
+                    && fact.Revision == 5
                     && fact.State == HistoricalFactState.Retracted
                     && fact.PublicationState == HistoricalPublicationState.Withdrawn),
                 It.Is<HistoricalReviewEvent>(review => review.EventType == HistoricalReviewEventType.Retracted),
@@ -442,7 +442,7 @@ public sealed class HistoryHandlersTests
             .Setup(value => value.GetLatestRevisionAsync(
                 originalFactId,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(CreateLegacyCanonicalFact(originalFactId));
+            .ReturnsAsync(CreateCanonicalFact(originalFactId));
         factRepository
             .Setup(value => value.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == originalFactId
@@ -510,7 +510,7 @@ public sealed class HistoryHandlersTests
             CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized,
             UpdatedAtUtc = updatedAtUtc,
         };
-        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(factId);
+        HistoricalFact canonicalFact = CreateCanonicalFact(factId);
         HistoricalFact retraction = canonicalFact.CreateRetraction(
             canonicalFact.RecordedAtUtc.AddSeconds(1));
         Mock<IHistoryEventRepository> historyRepository = new(MockBehavior.Strict);
@@ -542,9 +542,9 @@ public sealed class HistoryHandlersTests
             .Setup(value => value.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == factId
                     && fact.Revision == retraction.Revision + 1
-                    && fact.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                    && fact.PublicationState == HistoricalPublicationState.Published),
                 It.Is<HistoricalReviewEvent>(review => review.EventType
-                    == HistoricalReviewEventType.SubmittedForEditorialReview),
+                    == HistoricalReviewEventType.Published),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
         historyRepository
@@ -629,7 +629,7 @@ public sealed class HistoryHandlersTests
             CanonicalizationState = HistoricalNarrativeCanonicalizationState.PendingReview,
             UpdatedAtUtc = committedUpdatedAtUtc,
         };
-        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(factId);
+        HistoricalFact canonicalFact = CreateCanonicalFact(factId);
         HistoricalFact retraction = canonicalFact.CreateRetraction(
             canonicalFact.RecordedAtUtc.AddSeconds(1));
         Mock<IHistoryEventRepository> historyRepository = new(MockBehavior.Strict);
@@ -670,9 +670,9 @@ public sealed class HistoryHandlersTests
             .Setup(value => value.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == factId
                     && fact.Revision == retraction.Revision + 1
-                    && fact.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                    && fact.PublicationState == HistoricalPublicationState.Published),
                 It.Is<HistoricalReviewEvent>(review => review.EventType
-                    == HistoricalReviewEventType.SubmittedForEditorialReview),
+                    == HistoricalReviewEventType.Published),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
         historyRepository
@@ -1609,7 +1609,7 @@ public sealed class HistoryHandlersTests
             new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
             new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
-        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(factId);
+        HistoricalFact canonicalFact = CreateCanonicalFact(factId);
         historyRepository
             .Setup(repository => repository.GetByIdAsync("event-1", true, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new HistoryEvent
@@ -1624,7 +1624,7 @@ public sealed class HistoryHandlersTests
         historicalFactRepository
             .Setup(repository => repository.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == factId
-                    && fact.Revision == 2
+                    && fact.Revision == 5
                     && fact.State == HistoricalFactState.Retracted
                     && fact.PublicationState == HistoricalPublicationState.Withdrawn),
                 It.Is<HistoricalReviewEvent>(review => review.EventType == HistoricalReviewEventType.Retracted),
@@ -1665,7 +1665,7 @@ public sealed class HistoryHandlersTests
             CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized,
             UpdatedAtUtc = updatedAtUtc,
         };
-        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(factId);
+        HistoricalFact canonicalFact = CreateCanonicalFact(factId);
         HistoricalFact retraction = canonicalFact.CreateRetraction(
             canonicalFact.RecordedAtUtc.AddSeconds(1));
         Mock<IHistoryEventRepository> historyRepository = new(MockBehavior.Strict);
@@ -1690,9 +1690,9 @@ public sealed class HistoryHandlersTests
         factRepository
             .Setup(value => value.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Revision == retraction.Revision + 1
-                    && fact.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                    && fact.PublicationState == HistoricalPublicationState.Published),
                 It.Is<HistoricalReviewEvent>(review => review.EventType
-                    == HistoricalReviewEventType.SubmittedForEditorialReview),
+                    == HistoricalReviewEventType.Published),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
         historyRepository
@@ -1731,9 +1731,10 @@ public sealed class HistoryHandlersTests
         };
     }
 
-    private static HistoricalFact CreateLegacyCanonicalFact(Guid factId)
+    private static HistoricalFact CreateCanonicalFact(Guid factId)
     {
         DateTime recordedAtUtc = DateTime.UtcNow.AddMinutes(-1);
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(1998));
         return new HistoricalFact(
             factId,
             new HistoricalSubject(
@@ -1742,28 +1743,50 @@ public sealed class HistoryHandlersTests
                 "Parc exemple",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForYear(1998)),
-            HistoricalFactState.Unverified,
+            period,
+            HistoricalFactState.Verified,
             HistoricalImportance.Standard,
-            HistoricalEditorialWorkflowState.EditorialReview,
-            HistoricalPublicationState.LegacyPublishedPendingReview,
-            HistoricalLocalizationPolicy.SupportedLanguageCodes
-                .Select(static code => new HistoricalLocalizedText(code, "À vérifier."))
-                .ToArray(),
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            Array.Empty<HistoricalLocalizedText>(),
             LifecycleBoundaryMeaning.FirstOperatingDay,
             null,
             null,
             null,
-            Array.Empty<HistoricalSourceRevisionReference>(),
+            new[]
+            {
+                new HistoricalSourceRevisionReference(
+                    Guid.Parse("44444444-4444-4444-4444-444444444444"),
+                    1,
+                    HistoricalSubjectType.Park,
+                    "park-1",
+                    HistoricalFactType.Opening,
+                    period,
+                    HistoricalEvidencePosition.Supports,
+                    new[]
+                    {
+                        HistoricalSourceScope.SubjectIdentity,
+                        HistoricalSourceScope.FactType,
+                        HistoricalSourceScope.Period,
+                        HistoricalSourceScope.HistoricalLabel,
+                    },
+                    "Parc exemple",
+                    null,
+                    null,
+                    null,
+                    null,
+                    LifecycleBoundaryMeaning.FirstOperatingDay,
+                    null,
+                    null),
+            },
             null,
             null,
             "event-1",
-            null,
-            null,
-            "hist-v1-legacy",
-            1,
-            null,
-            recordedAtUtc,
-            HistoricalRevisionOrigin.LegacyMigration);
+            recordedAtUtc.AddMinutes(-2),
+            recordedAtUtc.AddMinutes(-1),
+            "hist-v1",
+            4,
+            3,
+            recordedAtUtc);
     }
 }

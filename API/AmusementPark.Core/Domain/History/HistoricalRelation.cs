@@ -38,7 +38,7 @@ public sealed class HistoricalRelation
         ArgumentNullException.ThrowIfNull(period);
         HistoricalRelationTypeValidator.Validate(source, target, type, direction);
         ValidateEnums(state, workflowState, publicationState, revisionOrigin);
-        ValidateRevision(revision, supersedesRevision, workflowState, publicationState, revisionOrigin);
+        ValidateRevision(revision, supersedesRevision, workflowState, publicationState);
         EnsureUtc(recordedAtUtc);
         EnsureOptionalUtc(verifiedAtUtc);
         EnsureOptionalUtc(publishedAtUtc);
@@ -73,7 +73,6 @@ public sealed class HistoricalRelation
             state,
             workflowState,
             publicationState,
-            revisionOrigin,
             normalizedSources,
             normalizedExplanations,
             verifiedAtUtc,
@@ -190,16 +189,14 @@ public sealed class HistoricalRelation
         int revision,
         int? supersedesRevision,
         HistoricalEditorialWorkflowState workflowState,
-        HistoricalPublicationState publicationState,
-        HistoricalRevisionOrigin revisionOrigin)
+        HistoricalPublicationState publicationState)
     {
         bool chainIsValid = revision >= 1
             && (revision == 1 ? !supersedesRevision.HasValue : supersedesRevision == revision - 1);
         bool initialRevisionIsValid = revision != 1
-            || revisionOrigin == HistoricalRevisionOrigin.Ordinary
-                && workflowState == HistoricalEditorialWorkflowState.Draft
+            || workflowState == HistoricalEditorialWorkflowState.Draft
                 && publicationState == HistoricalPublicationState.Draft;
-        if (!chainIsValid || !initialRevisionIsValid || revisionOrigin != HistoricalRevisionOrigin.Ordinary)
+        if (!chainIsValid || !initialRevisionIsValid)
         {
             throw Invalid(HistoricalPersistenceErrorCodes.InvalidRevision, "A relation revision must form an ordinary immutable chain.");
         }
@@ -211,7 +208,6 @@ public sealed class HistoricalRelation
         HistoricalFactState state,
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState,
-        HistoricalRevisionOrigin revisionOrigin,
         IReadOnlyCollection<HistoricalRelationSourceRevisionReference> sources,
         IReadOnlyCollection<HistoricalLocalizedText> explanations,
         DateTime? verifiedAtUtc,
@@ -242,8 +238,7 @@ public sealed class HistoricalRelation
         };
         bool subjectsCanBePublic = source.PublicationPolicy != HistoricalSubjectPublicationPolicy.Suppressed
             && target.PublicationPolicy != HistoricalSubjectPublicationPolicy.Suppressed;
-        bool reviewNeedsSources = revisionOrigin == HistoricalRevisionOrigin.Ordinary
-            && workflowState >= HistoricalEditorialWorkflowState.SourcesAttached
+        bool reviewNeedsSources = workflowState >= HistoricalEditorialWorkflowState.SourcesAttached
             && workflowState != HistoricalEditorialWorkflowState.Retracted;
         if (!retractionIsValid
             || !verificationIsValid

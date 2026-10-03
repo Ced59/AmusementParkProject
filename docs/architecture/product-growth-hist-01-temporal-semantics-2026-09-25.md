@@ -227,7 +227,7 @@ source.
 | `Verified` | Au moins une preuve admissible soutient le fait et la revue structurée est achevée. | Publique. |
 | `Probable` | Les preuves convergent mais ne permettent pas une affirmation certaine. | Publique avec avertissement et raison. |
 | `Disputed` | Des sources admissibles se contredisent ou la conclusion est activement contestée. | Publique avec les positions et la fourchette. |
-| `Unverified` | La donnée est importée, incomplète ou pas encore revue. | Administration uniquement, hors transition de migration explicitement balisée. |
+| `Unverified` | La donnée est incomplète ou pas encore revue. | Administration uniquement. |
 | `Retracted` | Une révision a invalidé une assertion auparavant conservée. | Non active ; trace d’audit conservée. |
 
 `VerifiedAtUtc` est nullable et n’est renseigné qu’au passage réel vers
@@ -366,10 +366,9 @@ l’on peut conclure. Ils ne sont pas interchangeables : un fait `Disputed` peut
 n’est pas public.
 
 Le fait, la relation et le récit lié possèdent chacun leur propre workflow et
-leur propre état de publication. Le flux canonique utilise `Draft`, `Published`
-ou `Withdrawn`. `LegacyPublishedPendingReview` ne subsiste dans le type persistant
-que pour relire les révisions créées avant la canonisation définitive : aucun
-service actif ne peut le produire, le publier ou s'en servir comme repli.
+leur propre état de publication. Le modèle canonique ne connaît que `Draft`,
+`Published` ou `Withdrawn`. Aucun état transitoire de l'ancien moteur ne subsiste
+dans le domaine, les contrats ou le stockage actif.
 
 Cette indépendance est obligatoire : un fait peut rester public tandis que son
 article est encore en brouillon ou a été retiré. Dans ce cas, la réponse
@@ -396,11 +395,7 @@ Règles de publication :
 - un fait ou une relation `Unverified` ou `Retracted` ne peut jamais recevoir
   `HistoricalPublicationState.Published` ; le Core refuse également le workflow
   `Published` pour ces états de preuve ;
-- aucune révision issue de l'ancien état
-  `LegacyPublishedPendingReview` n'est admissible dans les lectures publiques ;
 - `Probable` et `Disputed` exigent une explication visible ;
-- `LegacyPublishedPendingReview` reste exclu des snapshots décisionnels, du SEO
-  et de toute nouvelle écriture ;
 - `Retracted` ne participe plus aux calculs publics ;
 - chaque publication fige une révision et une version de méthode ;
 - l’absence de traduction utilise le fallback annoncé, jamais un faux texte
@@ -425,13 +420,12 @@ Ordre de décision :
 2. charger l’historique de cycle de vie publié nécessaire jusqu’à l’instant
    demandé, pas seulement les faits ponctuels dont la période contient cet
    instant ;
-3. écarter `LegacyPublishedPendingReview` du calcul décisionnel ;
-4. calculer les enveloppes sans compléter les dates ;
-5. réduire les transitions de cycle de vie selon les règles ci-dessous ;
-6. détecter contradictions et bornes ambiguës ;
-7. rendre un état certain seulement si toutes les preuves décisionnelles
+3. calculer les enveloppes sans compléter les dates ;
+4. réduire les transitions de cycle de vie selon les règles ci-dessous ;
+5. détecter contradictions et bornes ambiguës ;
+6. rendre un état certain seulement si toutes les preuves décisionnelles
    nécessaires le permettent ;
-8. sinon rendre `PossiblyOpen` ou `Unknown` avec des raisons structurées.
+7. sinon rendre `PossiblyOpen` ou `Unknown` avec des raisons structurées.
 
 Un élément sans date n’est jamais présumé ouvert. Un fait `Probable` ou
 `Disputed` peut expliquer `PossiblyOpen`, mais pas produire seul `KnownOpen`.
@@ -549,9 +543,8 @@ Une relation et une transition cohérentes renforcent la traçabilité mais
 n'élargissent pas artificiellement leur période respective. La candidate unique
 n'est applicable que sur les portions effectivement couvertes par au moins une
 assertion admissible ; une borne partielle conserve son niveau d'incertitude.
-Les relations brouillon, retirées, rétractées ou
-`LegacyPublishedPendingReview` sont exclues des snapshots décisionnels comme
-leurs équivalents factuels.
+Les relations brouillon, retirées ou rétractées sont exclues des snapshots
+décisionnels comme leurs équivalents factuels.
 
 ## 10. Couverture et ambiguïtés
 
@@ -565,14 +558,15 @@ résultat. Une ambiguïté possède un code stable, les sujets concernés, les f
 ou relations en cause et une explication localisable. Elle ne contient aucune
 note admin privée.
 
-## 11. Migration du système existant
+## 11. Bascule achevée depuis l'ancien système
 
 Le dépôt possédait un modèle `HistoryEvent` dans une collection
-`historyEvents`. La cible est une **migration**, pas un adaptateur permanent ni
-deux moteurs concurrents. La bascule versionnée et rejouable importe cette
-source une seule fois, puis la supprime après promotion du stockage canonique.
+`historyEvents`. La bascule a été une **migration**, pas un adaptateur permanent
+ni deux moteurs concurrents. Elle a converti cette source une seule fois, puis
+a supprimé les collections, marqueurs, états et chemins d'exécution transitoires
+après promotion du stockage canonique.
 
-### 11.1 Correspondance initiale
+### 11.1 Correspondance appliquée
 
 | Existant | Cible | Règle de migration |
 |---|---|---|
@@ -590,15 +584,17 @@ source une seule fois, puis la supprime après promotion du stockage canonique.
 | `RelatedParkIds`, `RelatedParkItemIds` | contexte de migration | Jamais converti automatiquement en `ReplacedBy` ou autre relation. |
 | événement automatique d’ouverture/fermeture | fait candidat issu de l’entité actuelle | Revue de la précision et provenance avant publication canonique. |
 
-### 11.2 Garanties
+### 11.2 Garanties de la bascule achevée
 
 - aucune suppression de titre, résumé, article, source, image ou identifiant ;
 - conservation exacte de l’importance éditoriale et des conditions historiques
   de mise en avant, routage d’article et éligibilité sitemap ;
-- conservation d’une copie de sauvegarde et d’un rapport avant bascule ;
-- migration idempotente avec marqueur de version et compteurs avant/après ;
-- la première révision importée porte obligatoirement l'événement d'audit
-  `Migrated`, jamais une transition éditoriale ordinaire ;
+- une copie de sauvegarde et un rapport ont protégé la bascule, puis ont été
+  retirés après validation de la promotion ;
+- la migration idempotente a contrôlé ses compteurs avant/après ; ses marqueurs
+  et événements techniques ne font pas partie du modèle actif ;
+- les chaînes conservées utilisent exclusivement les événements éditoriaux
+  canoniques et l'origine ordinaire ;
 - les enregistrements incomplets deviennent `Unverified`, pas `Verified` ;
 - `HistoryArticle.IsPublished` est migré vers l’état de publication propre du
   récit, indépendamment de celui du fait ;
@@ -608,13 +604,10 @@ source une seule fois, puis la supprime après promotion du stockage canonique.
   `IsVisible` ;
 - `HistoricalOnly` ne peut résulter que d’une revue explicite après migration,
   jamais d’une heuristique sur une cible manquante ;
-- une donnée actuellement visible mais non prouvée est migrée vers
-  `LegacyPublishedPendingReview`, conserve son contenu public avec un
-  avertissement explicite, ne participe à aucun état certain et rejoint une file
-  de revue mesurable ; elle n’est pas promue artificiellement ;
-- ce statut transitoire ne peut être créé que par la migration, doit évoluer
-  vers `Published` après preuve ou `Withdrawn` après décision, et son compteur
-  doit atteindre zéro avant la gate finale `HIST-G` ;
+- une donnée sans preuve suffisante reste un récit `PendingReview` ou `Blocked`
+  non public ; seuls un fait et ses sources canoniques validés deviennent
+  `Published` ;
+- aucun statut transitoire de migration n'est encore défini ni accepté ;
 - aucune double écriture durable après la bascule ;
 - retour arrière par restauration contrôlée, jamais par lecture simultanée des
   deux modèles ;
@@ -623,8 +616,8 @@ source une seule fois, puis la supprime après promotion du stockage canonique.
 - rapport des cibles absentes, types inconnus, dates invalides, sources
   incomplètes et associations non converties.
 
-MongoDB sera mis à jour par la migration applicative déployée. Aucune opération
-manuelle directe sur la base de production n’est requise de l’utilisateur.
+MongoDB a été mis à jour par la migration déployée. Aucune opération manuelle
+directe sur la base de production n’a été requise de l’utilisateur.
 
 ## 12. Architecture cible
 
@@ -762,9 +755,7 @@ inaccessibles.
 
 ## 14. Contrats publics et confidentialité
 
-- seuls les faits et relations `Published`, plus les contenus de migration
-  `LegacyPublishedPendingReview` explicitement avertis, entrent dans les réponses
-  publiques ;
+- seuls les faits et relations `Published` entrent dans les réponses publiques ;
 - leur sujet doit en plus être éligible selon
   `HistoricalSubjectPublicationPolicy` ;
 - seuls les faits et relations `Published` admissibles participent aux
