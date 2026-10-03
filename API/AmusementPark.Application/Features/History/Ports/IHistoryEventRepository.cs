@@ -35,7 +35,12 @@ public interface IHistoryEventRepository
 
     Task<HistoryEvent> CreateAsync(HistoryEvent historyEvent, CancellationToken cancellationToken);
 
-    Task<HistoryEvent?> UpdateAsync(string eventId, HistoryEvent historyEvent, CancellationToken cancellationToken);
+    Task<HistoryEvent?> UpdateAsync(
+        string eventId,
+        HistoryEvent historyEvent,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(
         string canonicalizationVersion,

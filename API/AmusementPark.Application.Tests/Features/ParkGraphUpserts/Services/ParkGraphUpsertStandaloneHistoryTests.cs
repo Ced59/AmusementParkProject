@@ -275,8 +275,10 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                 "history-1",
                 It.Is<HistoryEvent>(historyEvent => historyEvent.CanonicalFactId == factId
                     && historyEvent.IsMajor),
+                existing.UpdatedAtUtc,
+                factId,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+            .ReturnsAsync((string _, HistoryEvent historyEvent, DateTime _, Guid? _, CancellationToken _) => historyEvent);
         Mock<IHistoricalNarrativeCanonicalizer> canonicalizer = ConfigureCanonicalization(
             historyEventRepository);
         Mock<IHistoricalFactRepository> historicalFactRepository =

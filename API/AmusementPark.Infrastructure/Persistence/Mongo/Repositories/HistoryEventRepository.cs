@@ -271,9 +271,18 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return document.ToDomain();
     }
 
-    public async Task<HistoryEvent?> UpdateAsync(string eventId, HistoryEvent historyEvent, CancellationToken cancellationToken)
+    public async Task<HistoryEvent?> UpdateAsync(
+        string eventId,
+        HistoryEvent historyEvent,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        CancellationToken cancellationToken)
     {
-        HistoryEventDocument? existing = await this.collection.Find(document => document.Id == eventId)
+        FilterDefinition<HistoryEventDocument> mutationFilter = BuildConditionalUpdateFilter(
+            eventId,
+            expectedUpdatedAtUtc,
+            expectedCanonicalFactId);
+        HistoryEventDocument? existing = await this.collection.Find(mutationFilter)
             .Project(static document => new HistoryEventDocument
             {
                 Id = document.Id,
@@ -304,11 +313,25 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             .ToList();
 
         ReplaceOneResult result = await this.collection.ReplaceOneAsync(
-            current => current.Id == eventId,
+            mutationFilter,
             document,
             cancellationToken: cancellationToken);
 
         return result.MatchedCount == 0 ? null : document.ToDomain();
+    }
+
+    internal static FilterDefinition<HistoryEventDocument> BuildConditionalUpdateFilter(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId)
+    {
+        return Builders<HistoryEventDocument>.Filter.Eq(document => document.Id, eventId)
+            & Builders<HistoryEventDocument>.Filter.Eq(
+                document => document.UpdatedAt,
+                expectedUpdatedAtUtc)
+            & Builders<HistoryEventDocument>.Filter.Eq(
+                document => document.CanonicalFactId,
+                expectedCanonicalFactId?.ToString("N"));
     }
 
     public async Task<IReadOnlyCollection<HistoryEvent>> GetCanonicalizationCandidatesAsync(

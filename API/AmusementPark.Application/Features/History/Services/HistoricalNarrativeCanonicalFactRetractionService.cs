@@ -64,6 +64,8 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
             {
                 return latest;
             }
+
+            onRetractionAttempt(null);
         }
 
         onRetractionAttempt(null);

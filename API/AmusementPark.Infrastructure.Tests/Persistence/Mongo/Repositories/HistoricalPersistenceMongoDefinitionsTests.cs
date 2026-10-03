@@ -306,6 +306,29 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildConditionalUpdateFilter_ShouldMatchNarrativeVersionAndCanonicalFact()
+    {
+        Guid canonicalFactId = Guid.NewGuid();
+        DateTime updatedAtUtc = new DateTime(2026, 10, 3, 8, 15, 0, DateTimeKind.Utc);
+        FilterDefinition<HistoryEventDocument> filter =
+            HistoryEventRepository.BuildConditionalUpdateFilter(
+                "history-1",
+                updatedAtUtc,
+                canonicalFactId);
+        IBsonSerializer<HistoryEventDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoryEventDocument>();
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<HistoryEventDocument>(serializer, BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("history-1", json, StringComparison.Ordinal);
+        Assert.Contains("updatedAt", json, StringComparison.Ordinal);
+        Assert.Contains("canonicalFactId", json, StringComparison.Ordinal);
+        Assert.Contains(canonicalFactId.ToString("N"), json, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void BuildLatestRevisionsPipeline_ShouldSelectOneRevisionPerSourceOnServer()
     {
         IReadOnlyCollection<BsonDocument> stages =

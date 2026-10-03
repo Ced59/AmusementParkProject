@@ -80,6 +80,8 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         HistoryEvent historyEvent = existing is null
             ? new HistoryEvent()
             : existing;
+        DateTime expectedUpdatedAtUtc = existing?.UpdatedAtUtc ?? default;
+        Guid? expectedCanonicalFactId = existing?.CanonicalFactId;
 
         if (existing?.CanonicalFactId is Guid canonicalFactId)
         {
@@ -90,9 +92,22 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
 
         this.ApplyWriteModel(historyEvent, command.Event, ownerId, key);
 
-        HistoryEvent saved = existing is null
-            ? await this.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
-            : await this.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken) ?? historyEvent;
+        HistoryEvent saved;
+        if (existing is null)
+        {
+            saved = await this.historyEventRepository.CreateAsync(historyEvent, cancellationToken);
+        }
+        else
+        {
+            saved = await this.historyEventRepository.UpdateAsync(
+                    historyEvent.Id,
+                    historyEvent,
+                    expectedUpdatedAtUtc,
+                    expectedCanonicalFactId,
+                    cancellationToken)
+                ?? throw new InvalidOperationException(
+                    "The historical narrative changed concurrently and could not be updated safely.");
+        }
         HistoricalNarrativeCanonicalizationResult canonicalization =
             await this.historicalNarrativeCanonicalizer.CanonicalizeAsync(saved, cancellationToken);
         if (canonicalization.State == HistoricalNarrativeCanonicalizationState.Blocked)

@@ -50,6 +50,8 @@ public sealed class HistoricalCanonicalSourceRetractionService
             {
                 return;
             }
+
+            onRetractionAttempt(null);
         }
 
         onRetractionAttempt(null);

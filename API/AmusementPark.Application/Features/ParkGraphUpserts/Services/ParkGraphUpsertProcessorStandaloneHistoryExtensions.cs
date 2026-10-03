@@ -210,6 +210,8 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
 
             key ??= ParkGraphUpsertProcessorHistoryExtensions.BuildHistoryKey(entityType, ownerId, eventType, dateParts);
             HistoryEvent? existing = await processorContext.historyEventRepository.GetByOwnerKeyAsync(entityType, ownerId, key, cancellationToken);
+            DateTime expectedUpdatedAtUtc = existing?.UpdatedAtUtc ?? default;
+            Guid? expectedCanonicalFactId = existing?.CanonicalFactId;
             HistoryEvent historyEvent = existing ?? new HistoryEvent();
             ParkGraphUpsertChange change = ParkGraphUpsertProcessorResolutionExtensions.BuildEntityChange("HistoryEvent", historyEvent.Id, key, ParkGraphUpsertProcessorHistoryExtensions.ResolveHistoryDisplayName(patch, eventType), existing is null ? "Created" : "Unchanged", existing is null ? "key" : "ownerKey");
             ParkGraphUpsertProcessorHistoryExtensions.PatchHistoryEvent(historyEvent, patch, null, entityType, ownerId, key, eventType, dateParts, imageKeys, result, apply, change);
@@ -237,10 +239,24 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                         cancellationToken);
                 }
 
-                historyEvent = existing is null
-                    ? await processorContext.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
-                    : await processorContext.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken)
-                        ?? historyEvent;
+                if (existing is null)
+                {
+                    historyEvent = await processorContext.historyEventRepository.CreateAsync(
+                        historyEvent,
+                        cancellationToken);
+                }
+                else
+                {
+                    historyEvent = await processorContext.historyEventRepository.UpdateAsync(
+                            historyEvent.Id,
+                            historyEvent,
+                            expectedUpdatedAtUtc,
+                            expectedCanonicalFactId,
+                            cancellationToken)
+                        ?? throw new InvalidOperationException(
+                            "The historical narrative changed concurrently and could not be updated safely.");
+                }
+
                 await processorContext.CanonicalizeHistoryNarrativeAsync(
                     historyEvent,
                     key,

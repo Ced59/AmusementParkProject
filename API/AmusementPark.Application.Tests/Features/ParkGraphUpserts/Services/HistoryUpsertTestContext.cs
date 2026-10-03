@@ -60,12 +60,18 @@ internal sealed class HistoryUpsertTestContext
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(() => CloneHistoryEvent(this.persistedEvent));
         this.HistoryEventRepository
-            .Setup(value => value.UpdateAsync("history-1", It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()))
-            .Callback<string, HistoryEvent, CancellationToken>((_, historyEvent, _) =>
+            .Setup(value => value.UpdateAsync(
+                "history-1",
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<string, HistoryEvent, DateTime, Guid?, CancellationToken>((_, historyEvent, _, _, _) =>
             {
                 this.persistedEvent = CloneHistoryEvent(historyEvent);
             })
-            .ReturnsAsync((string _, HistoryEvent historyEvent, CancellationToken _) => CloneHistoryEvent(historyEvent));
+            .ReturnsAsync((string _, HistoryEvent historyEvent, DateTime _, Guid? _, CancellationToken _) =>
+                CloneHistoryEvent(historyEvent));
         this.HistoricalNarrativeCanonicalizer
             .Setup(value => value.CanonicalizeAsync(
                 It.IsAny<HistoryEvent>(),

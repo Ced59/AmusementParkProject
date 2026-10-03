@@ -65,6 +65,8 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
             repository => repository.UpdateAsync(
                 "history-1",
                 It.Is<HistoryEvent>(historyEvent => historyEvent.CanonicalFactId == factId),
+                It.IsAny<DateTime>(),
+                factId,
                 It.IsAny<CancellationToken>()),
             Times.Once);
     }
@@ -86,7 +88,12 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
             previewChange.Fields.Single(static field => field.Field == "article").OldValue,
             previewChange.Fields.Single(static field => field.Field == "article").NewValue);
         context.HistoryEventRepository.Verify(
-            value => value.UpdateAsync(It.IsAny<string>(), It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            value => value.UpdateAsync(
+                It.IsAny<string>(),
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<CancellationToken>()),
             Times.Never);
 
         ApplicationResult<ParkGraphUpsertResult> apply = await context.ApplyAsync(document);
@@ -94,7 +101,12 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         Assert.True(apply.IsSuccess);
         AssertHistoryChange(apply, "Updated", "article");
         context.HistoryEventRepository.Verify(
-            value => value.UpdateAsync("history-1", It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            value => value.UpdateAsync(
+                "history-1",
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<CancellationToken>()),
             Times.Once);
         HistoryEvent persistedEvent = context.ReadPersistedEvent();
         HistoryArticleBlock introBlock = Assert.Single(persistedEvent.Article!.Blocks, static block => block.Id == "intro");
@@ -171,7 +183,12 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         ParkGraphUpsertChange change = AssertHistoryChange(apply, "Unchanged");
         Assert.Empty(change.Fields);
         context.HistoryEventRepository.Verify(
-            value => value.UpdateAsync(It.IsAny<string>(), It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            value => value.UpdateAsync(
+                It.IsAny<string>(),
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<CancellationToken>()),
             Times.Never);
         Assert.Equal(new[] { "photo", "intro" }, context.ReadPersistedEvent().Article!.Blocks.Select(static block => block.Id));
     }
@@ -192,7 +209,12 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         Assert.Contains(apply.Value.Warnings, static warning => warning.Contains("missing-block", StringComparison.Ordinal));
         Assert.Contains(apply.Value.Warnings, static warning => warning.Contains("missing-gallery", StringComparison.Ordinal));
         context.HistoryEventRepository.Verify(
-            value => value.UpdateAsync(It.IsAny<string>(), It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            value => value.UpdateAsync(
+                It.IsAny<string>(),
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<CancellationToken>()),
             Times.Never);
 
         HistoryArticle persistedArticle = Assert.IsType<HistoryArticle>(context.ReadPersistedEvent().Article);
@@ -215,7 +237,12 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         Assert.True(preview.IsSuccess);
         AssertHistoryChange(preview, "Updated", "article");
         context.HistoryEventRepository.Verify(
-            value => value.UpdateAsync(It.IsAny<string>(), It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            value => value.UpdateAsync(
+                It.IsAny<string>(),
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<CancellationToken>()),
             Times.Never);
     }
 

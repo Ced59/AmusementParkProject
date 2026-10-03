@@ -11,6 +11,41 @@ namespace AmusementPark.Application.Tests.Features.History.Services;
 public sealed class HistoricalCanonicalSourceRetractionServiceTests
 {
     [Fact]
+    public async Task RetractAsync_WhenAppendConflicts_ShouldClearCompensationBeforeRetryRead()
+    {
+        HistoricalSubject subject = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+        HistoricalFact fact = PublicParkHistoryTestData.CreateOpeningFact(subject, 1998);
+        HistoricalSourceReference source = PublicParkHistoryTestData.CreateSource(fact);
+        Mock<IHistoricalSourceRepository> repository = new(MockBehavior.Strict);
+        repository
+            .SetupSequence(value => value.GetLatestRevisionAsync(
+                source.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(source)
+            .ThrowsAsync(new InvalidOperationException("read failed"));
+        repository
+            .Setup(value => value.AppendRevisionAsync(
+                It.IsAny<HistoricalSourceReference>(),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Conflict);
+        HistoricalCanonicalSourceRetractionService service = new(repository.Object);
+        HistoricalSourceReference? compensationSnapshot = null;
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.RetractAsync(
+            source.Id,
+            snapshot => compensationSnapshot = snapshot,
+            CancellationToken.None));
+
+        Assert.Null(compensationSnapshot);
+        repository.VerifyAll();
+    }
+
+    [Fact]
     public async Task RestoreAsync_WhenSnapshotWasInEditorialReview_ShouldUseSubmissionEvent()
     {
         HistoricalSubject subject = new HistoricalSubject(

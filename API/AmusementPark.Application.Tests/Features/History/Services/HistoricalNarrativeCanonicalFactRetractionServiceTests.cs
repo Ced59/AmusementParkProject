@@ -43,6 +43,40 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionServiceTests
     }
 
     [Fact]
+    public async Task RetractAsync_WhenAppendConflicts_ShouldClearCompensationBeforeRetryRead()
+    {
+        HistoricalSubject subject = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+        HistoricalFact fact = PublicParkHistoryTestData.CreateOpeningFact(subject, 1998);
+        Mock<IHistoricalFactRepository> repository = new(MockBehavior.Strict);
+        repository
+            .SetupSequence(value => value.GetLatestRevisionAsync(
+                fact.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(fact)
+            .ThrowsAsync(new InvalidOperationException("read failed"));
+        repository
+            .Setup(value => value.AppendRevisionAsync(
+                It.IsAny<HistoricalFact>(),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Conflict);
+        HistoricalNarrativeCanonicalFactRetractionService service = new(repository.Object);
+        HistoricalFact? compensationSnapshot = null;
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.RetractAsync(
+            fact.Id,
+            snapshot => compensationSnapshot = snapshot,
+            CancellationToken.None));
+
+        Assert.Null(compensationSnapshot);
+        repository.VerifyAll();
+    }
+
+    [Fact]
     public async Task RestoreAsync_WhenSnapshotWasInStructuredValidation_ShouldUseValidationEvent()
     {
         HistoricalSubject subject = new HistoricalSubject(
