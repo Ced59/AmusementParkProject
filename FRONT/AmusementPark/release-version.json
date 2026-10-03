@@ -1,6 +1,20 @@
 {
-  "version": "5.4.81",
+  "version": "5.4.82",
   "history": [
+    {
+      "version": "5.4.82",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Fiabilité du déploiement améliorée",
+        "en": "Improved deployment reliability",
+        "de": "Verbesserte Zuverlässigkeit der Bereitstellung",
+        "nl": "Betrouwbaardere implementatie",
+        "it": "Affidabilità della distribuzione migliorata",
+        "es": "Fiabilidad del despliegue mejorada",
+        "pt": "Fiabilidade da implementação melhorada",
+        "pl": "Większa niezawodność wdrażania"
+      }
+    },
     {
       "version": "5.4.81",
       "releasedAt": "2026-10-03",

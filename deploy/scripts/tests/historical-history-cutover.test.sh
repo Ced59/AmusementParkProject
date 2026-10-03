@@ -15,6 +15,49 @@ if ! grep -Fq 'rollback_incomplete_historical_history_cutover' "${deploy_script}
   exit 1
 fi
 
+for mongo_script in \
+  'freeze-history-authorities-5.4.81.js' \
+  'release-history-write-freeze-5.4.81.js' \
+  'complete-history-cutover-5.4.81.js' \
+  'rollback-history-cutover-5.4.81.js'; do
+  script_line="$(grep -n "${mongo_script}" "${deploy_script}" | head -n 1 | cut -d: -f1)"
+  script_context="$(sed -n "$((script_line - 2)),$((script_line + 1))p" "${deploy_script}")"
+  if ! grep -Fq -- '--file /dev/stdin' <<< "${script_context}"; then
+    echo "MongoDB must parse ${mongo_script} as one complete file." >&2
+    exit 1
+  fi
+done
+
+if ! grep -Fq 'Historical rollback did not complete; the original writer remains isolated.' "${deploy_script}"; then
+  echo 'A failed historical rollback must not restart its writer.' >&2
+  exit 1
+fi
+
+for guarded_rollback_failure in \
+  'The unexposed historical candidate could not be isolated; rollback is paused.' \
+  'The historical data was restored, but its original writer did not restart.' \
+  'The historical rollback completed, but its deployment journal remains armed.'; do
+  if ! grep -Fq "${guarded_rollback_failure}" "${deploy_script}"; then
+    echo "Historical rollback is missing a fail-closed transition: ${guarded_rollback_failure}" >&2
+    exit 1
+  fi
+done
+
+if ! grep -Fq 'recover_interrupted_unexposed_deployment' "${deploy_script}" \
+  || ! grep -Fq 'deployment_transaction.py abandon-unexposed' "${deploy_script}"; then
+  echo 'A diagnosed unexposed candidate must be recoverable by the next deployment.' >&2
+  exit 1
+fi
+
+recovery_call_line="$(grep -n '^recover_interrupted_unexposed_deployment$' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+deployment_prepare_line="$(grep -n '^python3 ./scripts/deployment_transaction.py prepare$' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${recovery_call_line}" ] \
+  || [ -z "${deployment_prepare_line}" ] \
+  || [ "${recovery_call_line}" -ge "${deployment_prepare_line}" ]; then
+  echo 'An unexposed interrupted deployment must be recovered before preparing new candidates.' >&2
+  exit 1
+fi
+
 historical_rollback_line="$(grep -n 'rollback_incomplete_historical_history_cutover || historical_rollback_exit_code=$?' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 ranking_rollback_line="$(grep -n 'rollback_incomplete_personal_ranking_cutover || ranking_rollback_exit_code=$?' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${historical_rollback_line}" ] \

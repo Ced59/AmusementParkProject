@@ -212,19 +212,32 @@ rollback_incomplete_historical_history_cutover() {
 
   # The candidate can still be importing the frozen snapshot. Stop it before
   # removing migration-owned output and restoring legacy write authority.
-  python3 ./scripts/deployment_transaction.py quiesce-unexposed
+  if ! python3 ./scripts/deployment_transaction.py quiesce-unexposed; then
+    echo "The unexposed historical candidate could not be isolated; rollback is paused." >&2
+    return 1
+  fi
 
   echo "Deployment did not complete; restoring the pre-cutover historical state..." >&2
-  compose exec -T \
-    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
-    mongodb mongosh --quiet \
-      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
-      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
-      --authenticationDatabase admin \
-      "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/rollback-history-cutover-5.4.81.js
-  python3 ./scripts/deployment_transaction.py restore-original-history-writer
-  python3 ./scripts/deployment_transaction.py cutover-restored --resource historical-history
+  if ! compose exec -T \
+      -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+      mongodb mongosh --quiet \
+        --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+        --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+        --authenticationDatabase admin \
+        "${MONGO_DATABASE_NAME:-AmusementPark}" \
+        --file /dev/stdin \
+        < ./scripts/rollback-history-cutover-5.4.81.js; then
+    echo "Historical rollback did not complete; the original writer remains isolated." >&2
+    return 1
+  fi
+  if ! python3 ./scripts/deployment_transaction.py restore-original-history-writer; then
+    echo "The historical data was restored, but its original writer did not restart." >&2
+    return 1
+  fi
+  if ! python3 ./scripts/deployment_transaction.py cutover-restored --resource historical-history; then
+    echo "The historical rollback completed, but its deployment journal remains armed." >&2
+    return 1
+  fi
   historical_history_cutover_started=false
 }
 
@@ -318,6 +331,7 @@ prepare_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      --file /dev/stdin \
       < ./scripts/freeze-history-authorities-5.4.81.js
 
   echo "Starting and verifying the unexposed canonical-history candidate..."
@@ -329,6 +343,7 @@ prepare_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      --file /dev/stdin \
       < ./scripts/release-history-write-freeze-5.4.81.js
 }
 
@@ -341,7 +356,22 @@ complete_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      --file /dev/stdin \
       < ./scripts/complete-history-cutover-5.4.81.js
+}
+
+recover_interrupted_unexposed_deployment() {
+  if ! python3 ./scripts/deployment_transaction.py rollback-safe; then
+    return 0
+  fi
+
+  if python3 ./scripts/deployment_transaction.py cutover-pending; then
+    echo "An interrupted business cutover still requires its installed rollback bundle." >&2
+    return 0
+  fi
+
+  echo "Removing the diagnosed, unexposed candidate from the previous deployment..."
+  python3 ./scripts/deployment_transaction.py abandon-unexposed
 }
 
 run_legacy_enum_migrations() {
@@ -538,6 +568,7 @@ case "${shared_infrastructure_maintenance}" in
     ;;
 esac
 
+recover_interrupted_unexposed_deployment
 python3 ./scripts/deployment_transaction.py prepare
 if python3 ./scripts/deployment_transaction.py rollback-safe; then
   prepare_personal_ranking_cutover
