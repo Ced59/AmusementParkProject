@@ -33,7 +33,7 @@ export function classifyNpmAuditReport(reportText, auditExitCode, options = {}) 
   }
 
   if (high > 0) {
-    const exceptionResult = classifyHighVulnerabilities(report, options);
+    const exceptionResult = classifyHighVulnerabilities(report, high, options);
     if (exceptionResult.kind !== 'allowed') {
       return exceptionResult;
     }
@@ -47,7 +47,7 @@ export function classifyNpmAuditReport(reportText, auditExitCode, options = {}) 
   return { kind: 'clean', message: 'npm audit detected no high or critical vulnerabilities.' };
 }
 
-function classifyHighVulnerabilities(report, options) {
+function classifyHighVulnerabilities(report, expectedHighCount, options) {
   const parsedInputs = parseExceptionInputs(options);
   if (parsedInputs.kind === 'scan-error') {
     return parsedInputs;
@@ -61,8 +61,8 @@ function classifyHighVulnerabilities(report, options) {
   const highPackages = Object.entries(vulnerabilities)
     .filter(([, vulnerability]) => vulnerability?.severity === 'high')
     .map(([packageName]) => packageName);
-  if (highPackages.length === 0) {
-    return { kind: 'scan-error', message: 'npm audit reported high vulnerabilities without package details.' };
+  if (highPackages.length !== expectedHighCount) {
+    return { kind: 'scan-error', message: 'npm audit high vulnerability details do not match its summary.' };
   }
 
   const usedExceptions = new Set();
