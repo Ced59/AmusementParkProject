@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 55 |
+| Fiches privées existantes à intégrer | 82 | 54 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **145** |
+| **Total** | **225** | **144** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] Le Pal — `1675e96c-6361-48ff-862b-43218167facd`
 - [ ] LennyPark — `0d9fb07f-a134-40b5-94b1-6b449a684772`
 - [ ] Lulu Parc — `29c89bcf-d733-42f1-982b-a8aa54aeeb09`
 - [ ] Luna Park Carnon — `7321d4b5-b994-48c4-9d26-bd3fe6cc0354`
@@ -367,6 +366,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 - Fermyland — la fiche publiée réunit 21 éléments actuels, 21 médias officiels, les horaires et tarifs 2026, cinq jalons historiques, un article développé et le constructeur LMQ Rides sourcé pour l’ancienne Chenille. Dix-neuf des 21 éléments actuels possèdent une image attribuable ; Les Rapidos et Le snack de Fermyland restent sans photographie individuelle suffisamment explicite, et l’ancienne Chenille fermée n’a pas reçu l’image de sa remplaçante. Un plan 2024 indexé par un office de tourisme a été retrouvé, mais son original et sa dérivée renvoient désormais 404 ; aucune carte dégradée ou non téléchargeable n’a été importée.
 - Fééryland — les 30 attractions de l’inventaire officiel 2026 disposent chacune d’une photographie officielle, mais le site ne fournit pas de série de trois vues distinctes par attraction. Une seule vue générale actuelle et clairement attribuable au parc a été retenue ; les neuf services visibles restent sans photographie individuelle. Le logo déjà publié a été conservé sans inventer la provenance manquante de son fichier historique.
 - Family Park — la fiche canonique a été réconciliée avec l'implantation actuelle de Sorigny, publiée avec ses 45 éléments, son calendrier 2026, ses tarifs 2026, son plan officiel, 46 médias propres, neuf jalons historiques et un article développé. Seul le point de restauration Ô ti’snack reste sans photographie attribuable avec certitude. L'ancien doublon artificiel `Family Park Monts` et ses deux parkItems ont été supprimés après consolidation ; le logo constructeur ZIERER partagé a été conservé.
+- Le PAL — la fiche publique atteint 100 avec 131 éléments validés sur 132 enregistrements, le doublon ancien d’Azteka restant masqué et classé `NotRelevant`. Les huit langues couvrent chaque description ; 134 médias propres sont publiés, dont le logo, cinq vues du domaine et 128 photographies d’éléments. Le plan officiel 2025, 134 dates d’ouverture 2026, dix offres d’entrée, deux pass, le parking gratuit, treize jalons historiques et un article développé sont publics. La Chenille Fantastique est conservée comme attraction historique de 1981 à 2003. Les huit routes publiques contrôlées — fiche, éléments, météo, horaires, tarifs, histoire, images et plan — répondent en 200 ; la météo alimentée par batch n’a pas conditionné la complétude. L’annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon.
 - Amigoland — la galerie officielle ne permet pas d’attribuer avec certitude une photographie distincte à Beach Party, Bomber Maxxx ou Gravity ; aucune image générique n’a donc été associée arbitrairement. Les tarifs unitaires des manèges ne sont pas publiés en ligne : la fiche indique uniquement les faits vérifiables, à savoir l’entrée et le parking gratuits puis le paiement séparé de chaque attraction.
 - Bid’A Parc — le site et le plan officiels 2026 établissent l’inventaire courant, mais la galerie officielle ne fournit des photographies attribuables sans ambiguïté qu’au parc, au Carrousel, à Pomme, au Bateau Pirate, au Karting et au Palmito Resto. Les autres éléments restent donc sans image plutôt que de recevoir un visuel générique ou ancien. Aucun constructeur n’a été attribué sans source explicite. Le tarif du parking municipal varie selon les pages officielles consultées ; seule sa période payante est décrite, sans publier de grille contradictoire.
 
