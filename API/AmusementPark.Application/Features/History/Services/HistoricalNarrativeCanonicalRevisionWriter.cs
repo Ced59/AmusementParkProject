@@ -47,7 +47,7 @@ internal sealed class HistoricalNarrativeCanonicalRevisionWriter
         }
     }
 
-    internal async Task<bool> IsCanonicalFactMissingAsync(
+    internal async Task<bool> NeedsCanonicalRepairAsync(
         HistoryEvent historyEvent,
         CancellationToken cancellationToken)
     {
@@ -60,7 +60,61 @@ internal sealed class HistoricalNarrativeCanonicalRevisionWriter
         HistoricalFact? fact = await this.factRepository.GetLatestRevisionAsync(
             historyEvent.CanonicalFactId.Value,
             cancellationToken);
-        return fact is null;
+        if (fact is null)
+        {
+            return true;
+        }
+
+        if (!historyEvent.IsVisible
+            || fact.Subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed)
+        {
+            return false;
+        }
+
+        if (fact.PublicationState == HistoricalPublicationState.Withdrawn)
+        {
+            return false;
+        }
+
+        if (!fact.IsPublicTimelineEligible || fact.SourceReferences.Count == 0)
+        {
+            return true;
+        }
+
+        IReadOnlyCollection<HistoricalSourceReference> resolvedSources =
+            await this.sourceRepository.GetRevisionsAsync(
+                fact.SourceReferences,
+                cancellationToken);
+        HashSet<(Guid SourceId, int Revision)> expectedSourceRevisions = fact.SourceReferences
+            .Select(static reference => (reference.SourceId, reference.Revision))
+            .ToHashSet();
+        HashSet<(Guid SourceId, int Revision)> resolvedSourceRevisions = resolvedSources
+            .Select(static source => (source.Id, source.Revision))
+            .ToHashSet();
+        if (!expectedSourceRevisions.SetEquals(resolvedSourceRevisions))
+        {
+            return true;
+        }
+
+        IReadOnlyCollection<HistoricalSourceReference> latestSources =
+            await this.sourceRepository.GetLatestRevisionsAsync(
+                resolvedSources.Select(static source => source.Id).Distinct().ToArray(),
+                cancellationToken);
+        if (latestSources.Any(static source =>
+                source.PublicationState == HistoricalPublicationState.Withdrawn))
+        {
+            return false;
+        }
+
+        IReadOnlySet<(Guid SourceId, int Revision)> admissibleSourceRevisions =
+            HistoricalRelationEvidenceValidator.FilterCurrentlyAdmissiblePublicSources(
+                    resolvedSources,
+                    latestSources)
+                .Select(static source => (source.Id, source.Revision))
+                .ToHashSet();
+        return !HistoricalFactEvidenceValidator.HasCurrentlyAdmissiblePublicEvidence(
+            fact,
+            admissibleSourceRevisions);
     }
 
     internal async Task AppendFactAsync(

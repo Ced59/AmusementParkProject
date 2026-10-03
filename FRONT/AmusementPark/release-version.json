@@ -1,6 +1,20 @@
 {
-  "version": "5.4.87",
+  "version": "5.4.88",
   "history": [
+    {
+      "version": "5.4.88",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Histoires publiques rétablies",
+        "en": "Public park stories restored",
+        "de": "Öffentliche Parkgeschichten wiederhergestellt",
+        "nl": "Openbare parkverhalen hersteld",
+        "it": "Storie pubbliche dei parchi ripristinate",
+        "es": "Historias públicas de los parques restauradas",
+        "pt": "Histórias públicas dos parques restauradas",
+        "pl": "Przywrócono publiczne historie parków"
+      }
+    },
     {
       "version": "5.4.87",
       "releasedAt": "2026-10-03",

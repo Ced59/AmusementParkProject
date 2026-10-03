@@ -399,7 +399,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         existing.CanonicalFactId = Guid.NewGuid();
         existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
-        context.SetCanonicalFactMissing(true);
+        context.SetCanonicalRepairRequired(true);
         string document = BuildDocument($$"""
         "article": {{BuildArticleJson(introText: "  Looping Star et Wild Water Slide arrivent en 1979.  ", includeBlockIds: false)}}
         """);

@@ -21,9 +21,9 @@ internal static class ParkGraphHistoricalNarrativePersistence
             return false;
         }
 
-        bool canonicalFactMissing = await processorContext.historicalNarrativeCanonicalizer
-            .IsCanonicalFactMissingAsync(historyEvent, cancellationToken);
-        if (!canonicalFactMissing)
+        bool canonicalRepairRequired = await processorContext.historicalNarrativeCanonicalizer
+            .NeedsCanonicalRepairAsync(historyEvent, cancellationToken);
+        if (!canonicalRepairRequired)
         {
             return false;
         }
@@ -32,7 +32,7 @@ internal static class ParkGraphHistoricalNarrativePersistence
         change.Fields.Add(new ParkGraphUpsertFieldChange
         {
             Field = "canonicalHistory",
-            OldValue = "missing",
+            OldValue = "incomplete",
             NewValue = "restored",
         });
         return true;
