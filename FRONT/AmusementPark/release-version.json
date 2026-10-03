@@ -1,6 +1,20 @@
 {
-  "version": "5.4.92",
+  "version": "5.4.93",
   "history": [
+    {
+      "version": "5.4.93",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Frises historiques publiques rétablies",
+        "en": "Public historical timelines restored",
+        "de": "Öffentliche historische Zeitleisten wiederhergestellt",
+        "nl": "Openbare historische tijdlijnen hersteld",
+        "it": "Cronologie storiche pubbliche ripristinate",
+        "es": "Cronologías históricas públicas restauradas",
+        "pt": "Cronologias históricas públicas restauradas",
+        "pl": "Przywrócono publiczne historyczne osie czasu"
+      }
+    },
     {
       "version": "5.4.92",
       "releasedAt": "2026-10-03",

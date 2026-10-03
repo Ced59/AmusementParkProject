@@ -212,19 +212,36 @@ public sealed class PublicParkHistoricalDataLoader
         return zoneNames;
     }
 
-    public Task<PagedResult<HistoricalFact>> GetTimelinePageAsync(
-        PublicParkHistoricalScope scope,
+    public PagedResult<HistoricalFact> CreateTimelinePage(
+        PublicParkHistoricalData data,
         int page,
-        int pageSize,
-        CancellationToken cancellationToken)
+        int pageSize)
     {
-        ArgumentNullException.ThrowIfNull(scope);
-        return this.historicalFactRepository.GetLatestPublicTimelineRevisionsForParkPageAsync(
-            scope.Park.Id,
-            scope.PublicCurrentSubjects,
+        ArgumentNullException.ThrowIfNull(data);
+        if (page < 1 || pageSize < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(page));
+        }
+
+        HistoricalFact[] orderedFacts = data.Facts
+            .OrderBy(static fact => HistoricalTimelineOrdering.ResolveDayNumber(fact.Period))
+            .ThenBy(static fact => fact.SequenceWithinDate)
+            .ThenBy(static fact => fact.Subject.HistoricalLabel, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static fact => fact.Type)
+            .ThenBy(static fact => fact.Id)
+            .ToArray();
+        long offset = (long)(page - 1) * pageSize;
+        HistoricalFact[] pageFacts = offset >= orderedFacts.LongLength
+            ? Array.Empty<HistoricalFact>()
+            : orderedFacts
+                .Skip((int)offset)
+                .Take(pageSize)
+                .ToArray();
+        return new PagedResult<HistoricalFact>(
+            pageFacts,
             page,
             pageSize,
-            cancellationToken);
+            orderedFacts.LongLength);
     }
 
     private async Task<(HistoricalSubject[] Subjects, HistoricalFact[] Facts, HistoricalParkRolloutGate Gate)>

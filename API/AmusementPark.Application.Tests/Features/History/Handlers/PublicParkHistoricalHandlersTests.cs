@@ -315,18 +315,6 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { visibleFact, removedFact, earlierFact, laterEarlierFact });
-        factRepository
-            .Setup(repository => repository.GetLatestPublicTimelineRevisionsForParkPageAsync(
-                "park-1",
-                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                2,
-                2,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new PagedResult<HistoricalFact>(
-                new[] { visibleFact, removedFact },
-                2,
-                2,
-                4));
         sourceRepository
             .Setup(repository => repository.GetRevisionsAsync(
                 It.Is<IReadOnlyCollection<HistoricalSourceRevisionReference>>(
@@ -569,18 +557,6 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { parkFact });
-        factRepository
-            .Setup(repository => repository.GetLatestPublicTimelineRevisionsForParkPageAsync(
-                "park-1",
-                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                int.MaxValue,
-                50,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new PagedResult<HistoricalFact>(
-                Array.Empty<HistoricalFact>(),
-                int.MaxValue,
-                50,
-                1));
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,
             parkItemRepository,

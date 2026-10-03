@@ -1,5 +1,4 @@
 using System.Globalization;
-using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Core.Domain.History;
@@ -7,7 +6,6 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -253,210 +251,13 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
         CancellationToken cancellationToken)
     {
-        string normalizedParkId = NormalizeParkId(parkId);
-        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        List<BsonDocument> stages = BuildLatestDecisionEligibleForParkPipeline(
-                normalizedParkId,
-                publicCurrentSubjects,
-                this.collectionName)
-            .ToList();
-        stages.Add(BuildTimelineSortStage());
-        PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument> pipeline =
-            PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument>.Create(stages);
-        List<HistoricalFactDocument> documents = await this.collection
-            .Aggregate(pipeline)
-            .ToListAsync(cancellationToken);
-        return documents.Select(static document => document.ToDomain()).ToArray();
-    }
-
-    public async Task<PagedResult<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParkPageAsync(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        int page,
-        int pageSize,
-        CancellationToken cancellationToken)
-    {
-        string normalizedParkId = NormalizeParkId(parkId);
-        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        if (page < 1 || pageSize < 1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(page));
-        }
-
-        List<BsonDocument> stages = BuildLatestDecisionEligibleForParkPipeline(
-                normalizedParkId,
-                publicCurrentSubjects,
-                this.collectionName)
-            .ToList();
-        return await this.ExecutePageAsync(stages, page, pageSize, cancellationToken);
-    }
-
-    public async Task<PagedResult<HistoricalFact>> GetLatestPublicTimelineRevisionsForParkPageAsync(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        int page,
-        int pageSize,
-        CancellationToken cancellationToken)
-    {
-        string normalizedParkId = NormalizeParkId(parkId);
-        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        if (page < 1 || pageSize < 1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(page));
-        }
-
-        List<BsonDocument> stages = BuildLatestPublicTimelineForParkPipeline(
-                normalizedParkId,
-                publicCurrentSubjects,
-                this.collectionName)
-            .ToList();
-        return await this.ExecutePageAsync(stages, page, pageSize, cancellationToken);
-    }
-
-    private async Task<PagedResult<HistoricalFact>> ExecutePageAsync(
-        List<BsonDocument> stages,
-        int page,
-        int pageSize,
-        CancellationToken cancellationToken)
-    {
-        long offset = (long)(page - 1) * pageSize;
-        stages.Add(BuildTimelineSortStage());
-        stages.Add(new BsonDocument("$facet", new BsonDocument
-        {
-            ["metadata"] = new BsonArray
-            {
-                new BsonDocument("$count", "total"),
-            },
-            ["items"] = new BsonArray
-            {
-                new BsonDocument("$skip", offset),
-                new BsonDocument("$limit", pageSize),
-            },
-        }));
-        PipelineDefinition<HistoricalFactDocument, BsonDocument> pipeline =
-            PipelineDefinition<HistoricalFactDocument, BsonDocument>.Create(stages);
-        BsonDocument? result = await this.collection
-            .Aggregate(pipeline)
-            .FirstOrDefaultAsync(cancellationToken);
-        if (result is null)
-        {
-            return new PagedResult<HistoricalFact>(Array.Empty<HistoricalFact>(), page, pageSize, 0);
-        }
-
-        BsonArray metadata = result["metadata"].AsBsonArray;
-        long total = metadata.Count == 0
-            ? 0
-            : metadata[0].AsBsonDocument["total"].ToInt64();
-        HistoricalFact[] facts = result["items"].AsBsonArray
-            .Select(static value => BsonSerializer.Deserialize<HistoricalFactDocument>(value.AsBsonDocument))
-            .Select(static document => document.ToDomain())
+        IReadOnlyCollection<HistoricalFact> latestFacts = await this.GetLatestRevisionsForParkAsync(
+            parkId,
+            publicCurrentSubjects,
+            cancellationToken);
+        return latestFacts
+            .Where(static fact => fact.IsDecisionEligible)
             .ToArray();
-        return new PagedResult<HistoricalFact>(facts, page, pageSize, total);
-    }
-
-    internal static IReadOnlyCollection<BsonDocument> BuildLatestPublicTimelineForParkPipeline(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        string collectionName)
-    {
-        string normalizedParkId = NormalizeParkId(parkId);
-        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        string normalizedCollectionName = collectionName?.Trim() ?? string.Empty;
-        if (normalizedCollectionName.Length == 0)
-        {
-            throw new ArgumentException("A historical facts collection name is required.", nameof(collectionName));
-        }
-
-        BsonArray publicEligibilityFilters = BuildPublicEligibilityFilters(
-            normalizedParkId,
-            publicCurrentSubjects);
-        return BuildLatestForParkPipeline(
-                normalizedParkId,
-                publicCurrentSubjects,
-                normalizedCollectionName)
-            .Concat(new[]
-            {
-                new BsonDocument("$match", new BsonDocument
-                {
-                    ["$and"] = new BsonArray
-                    {
-                        new BsonDocument
-                        {
-                            ["publicationState"] = HistoricalPublicationState.Published.ToString(),
-                            ["state"] = new BsonDocument("$in", new BsonArray
-                            {
-                                HistoricalFactState.Verified.ToString(),
-                                HistoricalFactState.Probable.ToString(),
-                                HistoricalFactState.Disputed.ToString(),
-                            }),
-                        },
-                        new BsonDocument("$or", publicEligibilityFilters),
-                    },
-                }),
-            })
-            .ToArray();
-    }
-
-    internal static IReadOnlyCollection<BsonDocument> BuildLatestDecisionEligibleForParkPipeline(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        string collectionName)
-    {
-        string normalizedParkId = NormalizeParkId(parkId);
-        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        string normalizedCollectionName = collectionName?.Trim() ?? string.Empty;
-        if (normalizedCollectionName.Length == 0)
-        {
-            throw new ArgumentException("A historical facts collection name is required.", nameof(collectionName));
-        }
-
-        BsonArray publicEligibilityFilters = BuildPublicEligibilityFilters(
-            normalizedParkId,
-            publicCurrentSubjects);
-
-        return BuildLatestForParkPipeline(
-                normalizedParkId,
-                publicCurrentSubjects,
-                normalizedCollectionName)
-            .Concat(new[]
-            {
-            new BsonDocument("$match", new BsonDocument
-            {
-                ["publicationState"] = HistoricalPublicationState.Published.ToString(),
-                ["state"] = new BsonDocument("$in", new BsonArray
-                {
-                    HistoricalFactState.Verified.ToString(),
-                    HistoricalFactState.Probable.ToString(),
-                    HistoricalFactState.Disputed.ToString(),
-                }),
-                ["$or"] = publicEligibilityFilters,
-            }),
-            })
-            .ToArray();
-    }
-
-    private static BsonArray BuildPublicEligibilityFilters(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects)
-    {
-        BsonDocument[] publicSubjectFilters = publicCurrentSubjects
-            .DistinctBy(static subject => (subject.Type, subject.Id))
-            .Select(static subject => new BsonDocument
-            {
-                ["subject.type"] = subject.Type.ToString(),
-                ["subject.id"] = subject.Id,
-                ["subject.publicationPolicy"] =
-                    HistoricalSubjectPublicationPolicy.FollowCurrentSubject.ToString(),
-            })
-            .ToArray();
-        BsonArray publicEligibilityFilters = new BsonArray(
-            publicSubjectFilters.Select(static filter => filter.DeepClone()));
-        publicEligibilityFilters.Add(new BsonDocument
-        {
-            ["subject.publicationPolicy"] = HistoricalSubjectPublicationPolicy.HistoricalOnly.ToString(),
-            ["subject.contextParkId"] = parkId,
-        });
-        return publicEligibilityFilters;
     }
 
     internal static IReadOnlyCollection<BsonDocument> BuildLatestForParkPipeline(
