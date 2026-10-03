@@ -69,18 +69,6 @@ class RuntimeFake:
                 or reference["name"] in self.stopped):
             raise DeploymentError("Missing identity")
 
-    def stop_keep(self, reference):
-        if self.find(reference["name"]) != reference:
-            raise DeploymentError("Missing identity")
-        self.event("stop-keep-" + reference["name"])
-        self.stopped.add(reference["name"])
-
-    def start_existing(self, reference):
-        if self.find(reference["name"]) != reference:
-            raise DeploymentError("Missing identity")
-        self.event("start-existing-" + reference["name"])
-        self.stopped.discard(reference["name"])
-
     def start_candidate(self, service, name, generation, api_name):
         existing = self.find(name, generation)
         if existing is None:
@@ -100,8 +88,7 @@ class RuntimeFake:
             self.wait_healthy(reference)
             assert ("candidate" in reference["name"]) == candidate
 
-    def stop_remove(self, reference, allow_failed_start=False, record_exit=None,
-                    allow_intentional_stop=False):
+    def stop_remove(self, reference, allow_failed_start=False, record_exit=None):
         current = self.find(reference["name"])
         if current is None or current["id"] != reference["id"]:
             return  # Old canonical IDs must never remove their replacements.
@@ -237,6 +224,20 @@ class DeploymentTransactionTests(unittest.TestCase):
         with self.assertRaisesRegex(DeploymentError, "business cutover resources"):
             validate_state(state)
 
+    def test_historical_history_is_not_a_supported_cutover_resource(self):
+        self.transaction.prepare()
+        state = self.transaction.read()
+        state["cutover_armed"] = True
+        state["cutover_resources"] = ["historical-history"]
+
+        with self.assertRaisesRegex(DeploymentError, "business cutover resources"):
+            validate_state(state)
+
+    def test_new_journal_contains_no_historical_writer_state(self):
+        self.transaction.prepare()
+
+        self.assertNotIn("history_writer_quiesced", self.transaction.read())
+
     def test_legacy_cutover_journal_is_normalized_as_personal_ranking(self):
         self.transaction.prepare()
         state = self.transaction.read()
@@ -254,35 +255,6 @@ class DeploymentTransactionTests(unittest.TestCase):
         with self.assertRaisesRegex(DeploymentError, "different configuration"):
             self.transaction.prepare()
         self.assertFalse(self.runtime.events)
-
-    def test_history_writer_is_stopped_before_cutover_and_restarted_only_after_rollback(self):
-        self.transaction.prepare()
-        self.transaction.state["cutover_armed"] = True
-        self.transaction.state["cutover_resources"] = ["historical-history"]
-        self.transaction.save()
-
-        self.transaction.quiesce_original_history_writer()
-
-        self.assertTrue(self.transaction.read()["history_writer_quiesced"])
-        self.assertIn("api", self.runtime.stopped)
-        self.transaction.quiesce_original_history_writer()
-        self.transaction.restore_original_history_writer()
-        self.assertFalse(self.transaction.read()["history_writer_quiesced"])
-        self.assertNotIn("api", self.runtime.stopped)
-        self.assertEqual(self.runtime.events.count("stop-keep-api"), 2)
-        self.assertEqual(self.runtime.events.count("start-existing-api"), 1)
-
-    def test_promoted_candidate_retires_quiesced_original_and_clears_intent(self):
-        self.transaction.prepare()
-        self.transaction.state["cutover_armed"] = True
-        self.transaction.state["cutover_resources"] = ["historical-history"]
-        self.transaction.save()
-        self.transaction.quiesce_original_history_writer()
-
-        self.transaction.execute()
-
-        self.assertEqual(self.transaction.read()["phase"], "complete")
-        self.assertFalse(self.transaction.read()["history_writer_quiesced"])
 
     def test_intent_is_persisted_before_reload_can_expose_new_authority(self):
         self.transaction.prepare()
@@ -452,35 +424,6 @@ class StopPolicyTests(unittest.TestCase):
         runtime.inspect = lambda identifier: copy.deepcopy(container)
         runtime.run = run
         return runtime, calls
-
-    def test_intentional_history_writer_stop_keeps_exact_api_for_rollback(self):
-        runtime, calls = self.runtime(0, service="api")
-
-        runtime.stop_keep({"id": "a" * 64, "name": "api"})
-
-        self.assertTrue(any(call[1] == "stop" for call in calls))
-        self.assertFalse(any(call[1] == "rm" for call in calls))
-
-    def test_rollback_restarts_and_health_checks_the_exact_original_api(self):
-        runtime, calls = self.runtime(0, running=False, service="api")
-        health_checks = []
-        runtime.wait_healthy = health_checks.append
-        reference = {"id": "a" * 64, "name": "api"}
-
-        runtime.start_existing(reference)
-
-        self.assertTrue(any(call[1] == "start" for call in calls))
-        self.assertEqual(health_checks, [reference])
-
-    def test_promoted_intentionally_stopped_api_can_be_removed_without_second_stop(self):
-        runtime, calls = self.runtime(143, running=False, service="api")
-
-        runtime.stop_remove(
-            {"id": "a" * 64, "name": "api"},
-            allow_intentional_stop=True)
-
-        self.assertFalse(any(call[1] == "stop" for call in calls))
-        self.assertEqual(calls[-1][1], "rm")
 
     def test_forced_or_failed_normal_stop_never_removes_the_front(self):
         for code, oom in ((1, False), (137, False), (0, True)):

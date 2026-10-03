@@ -81,8 +81,7 @@ def can_recover_unexposed_with_bundle(state: dict) -> bool:
     return (state.get("phase") in {"prepared", "abandoning"}
             and state.get("authority_exposed") is False
             and not state.get("cutover_armed")
-            and not cutover_resources
-            and not state.get("history_writer_quiesced", False))
+            and not cutover_resources)
 
 
 def recover_unexposed_with_bundle(
