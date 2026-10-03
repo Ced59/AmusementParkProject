@@ -655,17 +655,12 @@ function Invoke-ResumableFileDownload {
     return $partialPath
 }
 
-function Export-ParkGraph {
-    param([string]$TargetParkId, [string]$DestinationPath, [string[]]$RequestedSections, [int]$TimeoutSeconds)
+function New-ParkGraphExportRequest {
+    param([string]$TargetParkId, [string[]]$RequestedSections)
 
-    $resolvedOutputPath = [IO.Path]::GetFullPath($DestinationPath)
-    $outputDirectory = [IO.Path]::GetDirectoryName($resolvedOutputPath)
-    if (-not [string]::IsNullOrWhiteSpace($outputDirectory)) {
-        [IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
-    }
-
-    $effectiveSections = if (@($RequestedSections).Count -eq 0) {
-        @(
+    [string[]]$effectiveSections = @($RequestedSections)
+    if ($effectiveSections.Count -eq 0) {
+        $effectiveSections = @(
             'ParkBasics',
             'ParkAudience',
             'ParkLocation',
@@ -682,20 +677,33 @@ function Export-ParkGraph {
             'History'
         )
     }
-    else {
-        @($RequestedSections)
+
+    return @{
+        selectionMode = 'explicit'
+        parkIds = @($TargetParkId)
+        sections = @($effectiveSections)
     }
+}
+
+function Export-ParkGraph {
+    param([string]$TargetParkId, [string]$DestinationPath, [string[]]$RequestedSections, [int]$TimeoutSeconds)
+
+    $resolvedOutputPath = [IO.Path]::GetFullPath($DestinationPath)
+    $outputDirectory = [IO.Path]::GetDirectoryName($resolvedOutputPath)
+    if (-not [string]::IsNullOrWhiteSpace($outputDirectory)) {
+        [IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
+    }
+
+    $exportRequest = New-ParkGraphExportRequest `
+        -TargetParkId $TargetParkId `
+        -RequestedSections $RequestedSections
 
     $partialPath = $resolvedOutputPath + '.partial'
     try {
         Wait-ParkDataEditorAvailability -TimeoutSeconds $TimeoutSeconds | Out-Null
         $job = Invoke-ParkDataEditorJsonApi -Method POST `
             -RelativePath 'admin/park-graph-upserts/bulk/export-jobs' `
-            -Body @{
-                selectionMode = 'explicit'
-                parkIds = @($TargetParkId)
-                sections = $effectiveSections
-            }
+            -Body $exportRequest
         $completedJob = Wait-ParkGraphExportJob -InitialSnapshot $job -TimeoutSeconds $TimeoutSeconds
         $partialPath = Invoke-ResumableFileDownload `
             -Url ([string]$completedJob.downloadUrl) `
