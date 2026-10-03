@@ -69,7 +69,6 @@ public sealed class HistoricalNarrativeCanonicalizationMigration
             }
             catch (Exception migrationException)
             {
-                List<Exception> recoveryExceptions = new List<Exception>();
                 if (previousFactId != generatedFactId)
                 {
                     try
@@ -81,7 +80,10 @@ public sealed class HistoricalNarrativeCanonicalizationMigration
                     }
                     catch (Exception cleanupException)
                     {
-                        recoveryExceptions.Add(cleanupException);
+                        throw new AggregateException(
+                            "The canonical narrative migration failed and its candidate resources could not be withdrawn safely.",
+                            migrationException,
+                            cleanupException);
                     }
                 }
 
@@ -95,15 +97,11 @@ public sealed class HistoricalNarrativeCanonicalizationMigration
                     }
                     catch (Exception restorationException)
                     {
-                        recoveryExceptions.Add(restorationException);
+                        throw new AggregateException(
+                            "The canonical narrative migration failed and its previous resources could not be restored.",
+                            migrationException,
+                            restorationException);
                     }
-                }
-
-                if (recoveryExceptions.Count > 0)
-                {
-                    throw new AggregateException(
-                        "The canonical narrative migration failed and could not be fully compensated.",
-                        new[] { migrationException }.Concat(recoveryExceptions));
                 }
 
                 throw;
