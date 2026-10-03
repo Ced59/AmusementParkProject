@@ -119,7 +119,7 @@ export class PassportExportStateFacade {
     const objectUrl: string = URL.createObjectURL(content);
     const link: HTMLAnchorElement = this.document.createElement('a');
     link.href = objectUrl;
-    link.download = fileName || 'amusement-park-passport-export';
+    link.download = fileName || 'amusement-park-account-export';
     link.rel = 'noopener';
     link.click();
     URL.revokeObjectURL(objectUrl);

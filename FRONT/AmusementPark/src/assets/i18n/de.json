@@ -475,8 +475,8 @@
     },
     "exports": {
       "kicker": "Kopie deiner Daten",
-      "title": "Exportiere deinen Pass",
-      "description": "Lade alle Besuche, Fahrteinträge, privaten Bewertungen, Freigaben, Vergleiche, Favoriten, Wunschlisten und Warnmeldungen herunter. Deine E-Mail-Auswahl und der Einwilligungsnachweis sind enthalten. Das versionierte JSON und das CSV-ZIP verwenden nur exporteigene Verweise und keine internen Kennungen.",
+      "title": "Exportiere deine Kontodaten",
+      "description": "Lade dein Profil, deine globalen Bewertungen, deinen Pass, Freigaben, Favoriten und Warnmeldungen, Reisen, Park-Fit-Profile und Beiträge in einer Datei herunter. Das versionierte JSON und das CSV-ZIP verwenden lesbare Namen und nur exporteigene Verweise, ohne interne Kennungen.",
       "retention": "Die Datei bleibt privat, erfordert deine Anmeldung und läuft eine Stunde nach der Erstellung ab.",
       "actions": {
         "json": "JSON vorbereiten",
@@ -492,7 +492,7 @@
         "status": "Der Exportstatus konnte nicht geprüft werden. Starte ihn bei Bedarf erneut.",
         "download": "Die Datei konnte nicht heruntergeladen werden oder ist abgelaufen.",
         "failed": "Der Export konnte nicht erstellt werden. Du kannst ihn erneut starten.",
-        "tooLarge": "Dein Pass ist für diesen Export zu groß. Es wurden keine Daten abgeschnitten.",
+        "tooLarge": "Deine Kontodaten sind für diesen Export zu groß. Es wurden keine Daten abgeschnitten.",
         "expired": "Dieser Export ist abgelaufen. Erstelle einen neuen, um ihn herunterzuladen."
       }
     },

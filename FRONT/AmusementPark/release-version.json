@@ -1,6 +1,20 @@
 {
-  "version": "5.4.94",
+  "version": "5.4.95",
   "history": [
+    {
+      "version": "5.4.95",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Export complet des données du compte",
+        "en": "Complete account data export",
+        "de": "Vollständiger Export der Kontodaten",
+        "nl": "Volledige export van accountgegevens",
+        "it": "Esportazione completa dei dati dell’account",
+        "es": "Exportación completa de los datos de la cuenta",
+        "pt": "Exportação completa dos dados da conta",
+        "pl": "Pełny eksport danych konta"
+      }
+    },
     {
       "version": "5.4.94",
       "releasedAt": "2026-10-03",

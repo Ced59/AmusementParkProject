@@ -346,6 +346,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IPassportExportRepository, PassportExportRepository>();
         services.AddScoped<IPassportShareLifecycleExportSource,
             MongoPassportShareLifecycleExportSource>();
+        services.AddScoped<IAccountCommunityExportSource,
+            MongoAccountCommunityExportSource>();
         services.AddScoped<IWatchlistExportStore, MongoWatchlistExportStore>();
         services.AddScoped<MongoVisitDeletionStore>();
         services.AddScoped<IVisitDeletionStore>(provider =>

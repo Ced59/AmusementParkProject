@@ -47,50 +47,29 @@ public sealed class TripExportService
         string exportRequestId,
         CancellationToken cancellationToken)
     {
-        if (!TryNormalize(
+        string normalizedRequestId = exportRequestId?.Trim() ?? string.Empty;
+        if (normalizedRequestId.Length is 0 or > MaximumExportRequestIdLength
+            || !TryNormalizeScope(
                 userId,
                 tripPlanId,
-                exportRequestId,
                 out string normalizedUserId,
-                out TripPlanId parsedTripId,
-                out string normalizedRequestId))
+                out TripPlanId parsedTripId))
         {
             return ApplicationResult<TripExportResult>.Failure(TripPlanApplicationErrors.NotFound());
         }
 
-        TripPlan? trip = await this.plans.GetAccessibleAsync(
-            normalizedUserId,
-            parsedTripId,
-            cancellationToken);
-        TripEffectiveRole? role = trip?.ResolveRole(normalizedUserId);
-        if (trip is null
-            || !role.HasValue
-            || !TripAuthorizationPolicy.HasPermission(role.Value, TripPermission.Export))
+        (ApplicationResult<TripExportResult> Result, TripPlan? Trip) snapshot =
+            await this.BuildPortableSnapshotAsync(
+                normalizedUserId,
+                parsedTripId,
+                cancellationToken);
+        if (!snapshot.Result.IsSuccess || snapshot.Result.Value is null || snapshot.Trip is null)
         {
-            return ApplicationResult<TripExportResult>.Failure(TripPlanApplicationErrors.NotFound());
+            return snapshot.Result;
         }
 
-        ApplicationResult<TripProgramSnapshotResult> programResult =
-            await this.programFactory.BuildSnapshotAsync(parsedTripId, cancellationToken);
-        if (!programResult.IsSuccess || programResult.Value is null)
-        {
-            return ApplicationResult<TripExportResult>.Failure(programResult.Errors);
-        }
-
-        IReadOnlyCollection<TripItemDecision> tripDecisions = await this.decisions.ListAsync(
-            parsedTripId,
-            cancellationToken);
-        IReadOnlyCollection<TripExportDecisionResult> exportedDecisions = await this.BuildDecisionsAsync(
-            tripDecisions,
-            programResult.Value.Parks,
-            cancellationToken);
-        DateTime generatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        TripExportResult export = BuildResult(
-            trip,
-            programResult.Value.Program,
-            exportedDecisions,
-            generatedAtUtc);
-
+        TripPlan trip = snapshot.Trip;
+        TripExportResult export = snapshot.Result.Value;
         TripActivityWrite activity = this.activityRecorder.CreateWrite(
             trip,
             normalizedUserId,
@@ -106,6 +85,71 @@ public sealed class TripExportService
         }
 
         return ApplicationResult<TripExportResult>.Success(export);
+    }
+
+    public async Task<ApplicationResult<TripExportResult>> BuildPortableAsync(
+        string userId,
+        string tripPlanId,
+        CancellationToken cancellationToken)
+    {
+        if (!TryNormalizeScope(
+                userId,
+                tripPlanId,
+                out string normalizedUserId,
+                out TripPlanId parsedTripId))
+        {
+            return ApplicationResult<TripExportResult>.Failure(TripPlanApplicationErrors.NotFound());
+        }
+
+        (ApplicationResult<TripExportResult> Result, TripPlan? Trip) snapshot =
+            await this.BuildPortableSnapshotAsync(
+                normalizedUserId,
+                parsedTripId,
+                cancellationToken);
+        return snapshot.Result;
+    }
+
+    private async Task<(ApplicationResult<TripExportResult> Result, TripPlan? Trip)>
+        BuildPortableSnapshotAsync(
+            string normalizedUserId,
+            TripPlanId parsedTripId,
+            CancellationToken cancellationToken)
+    {
+        TripPlan? trip = await this.plans.GetAccessibleAsync(
+            normalizedUserId,
+            parsedTripId,
+            cancellationToken);
+        TripEffectiveRole? role = trip?.ResolveRole(normalizedUserId);
+        if (trip is null
+            || !role.HasValue
+            || !TripAuthorizationPolicy.HasPermission(role.Value, TripPermission.Export))
+        {
+            return (
+                ApplicationResult<TripExportResult>.Failure(TripPlanApplicationErrors.NotFound()),
+                null);
+        }
+
+        ApplicationResult<TripProgramSnapshotResult> programResult =
+            await this.programFactory.BuildSnapshotAsync(parsedTripId, cancellationToken);
+        if (!programResult.IsSuccess || programResult.Value is null)
+        {
+            return (ApplicationResult<TripExportResult>.Failure(programResult.Errors), trip);
+        }
+
+        IReadOnlyCollection<TripItemDecision> tripDecisions = await this.decisions.ListAsync(
+            parsedTripId,
+            cancellationToken);
+        IReadOnlyCollection<TripExportDecisionResult> exportedDecisions = await this.BuildDecisionsAsync(
+            tripDecisions,
+            programResult.Value.Parks,
+            cancellationToken);
+        DateTime generatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        TripExportResult export = BuildResult(
+            trip,
+            programResult.Value.Program,
+            exportedDecisions,
+            generatedAtUtc);
+        return (ApplicationResult<TripExportResult>.Success(export), trip);
     }
 
     private async Task<IReadOnlyCollection<TripExportDecisionResult>> BuildDecisionsAsync(
@@ -194,21 +238,14 @@ public sealed class TripExportService
             decisions);
     }
 
-    private static bool TryNormalize(
+    private static bool TryNormalizeScope(
         string userId,
         string tripPlanId,
-        string exportRequestId,
         out string normalizedUserId,
-        out TripPlanId parsedTripId,
-        out string normalizedRequestId)
+        out TripPlanId parsedTripId)
     {
         normalizedUserId = string.Empty;
         parsedTripId = default;
-        normalizedRequestId = exportRequestId?.Trim() ?? string.Empty;
-        if (normalizedRequestId.Length is 0 or > MaximumExportRequestIdLength)
-        {
-            return false;
-        }
 
         try
         {

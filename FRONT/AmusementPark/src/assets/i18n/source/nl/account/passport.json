@@ -21,8 +21,8 @@
     },
     "exports": {
       "kicker": "Kopie van je gegevens",
-      "title": "Exporteer je paspoort",
-      "description": "Download al je bezoeken, ritregistraties, privébeoordelingen, gedeelde inhoud, vergelijkingen, favorieten, wensen en meldingen. Je e-mailkeuzes en toestemmingsbewijs zijn inbegrepen. De JSON met versienummer en het CSV-zipbestand gebruiken alleen exportspecifieke verwijzingen, zonder interne identificaties.",
+      "title": "Exporteer je accountgegevens",
+      "description": "Download je profiel, algemene beoordelingen, paspoort, gedeelde inhoud, favorieten en meldingen, reizen, Park Fit-profielen en bijdragen in één bestand. De JSON met versienummer en het CSV-zipbestand gebruiken leesbare namen en alleen exportspecifieke verwijzingen, zonder interne identificaties.",
       "retention": "Het bestand blijft privé, vereist dat je bent aangemeld en verloopt één uur na het aanmaken.",
       "actions": { "json": "JSON voorbereiden", "csv": "CSV-bestanden voorbereiden", "download": "Bestand downloaden" },
       "status": { "generating": "Export wordt voorbereid…", "ready": "Je export staat klaar" },
@@ -31,7 +31,7 @@
         "status": "De exportstatus kon niet worden gecontroleerd. Start hem zo nodig opnieuw.",
         "download": "Het bestand kon niet worden gedownload of is verlopen.",
         "failed": "De export kon niet worden gemaakt. Je kunt hem opnieuw starten.",
-        "tooLarge": "Je paspoort is te groot voor deze export. Er zijn geen gegevens afgekapt.",
+        "tooLarge": "Je accountgegevens zijn te groot voor deze export. Er zijn geen gegevens afgekapt.",
         "expired": "Deze export is verlopen. Maak een nieuwe om hem te downloaden."
       }
     },

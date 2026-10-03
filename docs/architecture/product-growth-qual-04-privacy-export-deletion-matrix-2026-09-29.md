@@ -1,7 +1,8 @@
 # QUAL-04 — Matrice confidentialité, export et suppression
 
 > Date : 29 septembre 2026  
-> Version : 5.4.23  
+> Version initiale : 5.4.23
+> Couverture export actualisée : 3 octobre 2026, version 5.4.95
 > Portée : inventaire transverse des données personnelles persistées et garde-fou CI  
 > Effet sur MongoDB : aucun changement de schéma, aucune migration et aucune donnée modifiée
 
@@ -32,13 +33,13 @@ revue.
 
 | Surface | Visibilité par défaut | Export actuel | Suppression actuelle | Écart principal |
 | --- | --- | --- | --- | --- |
-| Compte et accès | privée | passeport seulement, pas d'export global du compte | sessions et ressources locales, sans orchestration globale | export et suppression transversaux absents |
-| Passeport et notes | privée | JSON/CSV canonique, sans identifiants internes | suppression unitaire des visites | purge de compte non coordonnée |
-| Partages et comparaisons | désactivée, projection explicite | partages du passeport inclus ; comparaisons partielles | participant idempotent prêt | coordinateur global absent |
-| Favoris et alertes | privée | inclus dans l'export du passeport | participant avec fence prêt | coordinateur global absent |
-| Voyages | privée aux membres admis | export portable par voyage | suppression par voyage | export et purge de compte non globaux |
-| Profils Park Fit | privée | export dédié | suppression dédiée | raccordement global absent |
-| Contributions et support | brouillon privé, publication explicite | non regroupé | suppressions locales selon la ressource | contrat de rétention et export transverse incomplets |
+| Compte et accès | privée | export fédéré JSON/CSV, sans secret ni identifiant fournisseur | sessions et ressources locales, sans orchestration globale | suppression transverse absente |
+| Passeport et notes | privée | export fédéré canonique, sans identifiants internes | suppression unitaire des visites | purge de compte non coordonnée |
+| Partages et comparaisons | désactivée, projection explicite | inclus avec références locales, sans jeton public | participant idempotent prêt | coordinateur global absent |
+| Favoris et alertes | privée | inclus avec libellés lisibles | participant avec fence prêt | coordinateur global absent |
+| Voyages | privée aux membres admis | tous les plans accessibles regroupés en format portable | suppression par voyage | purge de compte non globale |
+| Profils Park Fit | privée | tous les profils du membre regroupés | suppression dédiée | raccordement global absent |
+| Contributions et support | brouillon privé, publication explicite | commentaires, textes et métadonnées média, signalements historiques et partages regroupés ; demandes sans lien de compte remises séparément | suppressions locales selon la ressource | rétention support et purge transverse incomplètes |
 | Administration et audit | rôles habilités uniquement | exclusion justifiée ou remise séparée | rétention/anonymisation selon obligation | durées chiffrées à formaliser |
 
 ## 3. Fonctionnement réel de la suppression
@@ -100,23 +101,43 @@ node tools/privacy/check-personal-data-catalog.mjs --refresh-reviewed-shapes
 Le changement d'empreinte reste visible dans la PR et doit être accompagné de la
 mise à jour de la politique lorsque la finalité ou la visibilité évolue.
 
-## 5. Ce que QUAL-04 ne prétend pas avoir livré
+## 5. Évolution QUAL-11 : export fédéré du compte
+
+Depuis la version 5.4.95, le moteur asynchrone d'export du Passeport produit un
+export fédéré unique au schéma `amusement-park-account` v5. Le membre le demande
+depuis son profil ou son Passeport ; le traitement reste borné en taille, expire
+automatiquement et n'introduit pas un second moteur concurrent.
+
+L'archive JSON ou CSV rassemble l'identité lisible, les connexions externes sans
+identifiant fournisseur, les notes globales, le Passeport, ses partages et
+alertes, les voyages accessibles, les profils Park Fit et les contributions
+rattachables au compte. Les références entre fichiers sont locales à l'archive.
+Les identifiants MongoDB, identifiants de compte, jetons, hashes, secrets et URL
+susceptibles de révéler une cible interne n'y figurent jamais.
+
+Deux limites restent explicites : le binaire original des médias n'est pas copié
+dans l'archive structurée, qui contient leurs métadonnées et textes ; les demandes
+de contact et signalements Park Fit dont le schéma ne porte aucun identifiant de
+membre ne peuvent pas être associés automatiquement. Leur accès éventuel passe
+par une demande support vérifiée. Les journaux administratifs ou de sécurité
+restent exclus ou remis séparément après revue afin de protéger les tiers et le
+service.
+
+## 6. Ce que QUAL-04 ne prétend pas avoir livré
 
 - pas de nouvel écran de confidentialité ;
 - pas de nouvel endpoint de suppression de compte ;
 - pas de migration MongoDB ;
-- pas d'export global unifié ;
 - pas de durée légale inventée pour les audits ou demandes de support ;
 - pas de modification de la visibilité d'une visite, d'un voyage ou d'un profil ;
 - pas de suppression ou de réécriture des données existantes.
 
 Le prochain travail de cycle de vie doit partir de cette matrice : construire un
-coordinateur de suppression complet, ajouter un export de compte fédéré et définir
-des durées chiffrées validées pour le support et l'audit. Ces travaux doivent rester
-des PR dédiées, avec tests de graphe, ordre de purge, idempotence, reprise après
-échec et invalidation des caches.
+coordinateur de suppression complet et définir des durées chiffrées validées pour
+le support et l'audit. Ces travaux doivent rester des PR dédiées, avec tests de
+graphe, ordre de purge, idempotence, reprise après échec et invalidation des caches.
 
-## 6. Exploitation
+## 7. Exploitation
 
 - aucun déploiement ordonné API/front n'est requis ;
 - aucun rollback de données n'est nécessaire ;

@@ -835,7 +835,8 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-09`](../../architecture/product-growth-qual-09-runbooks-alerting-2026-09-30.md) | Runbooks et alerting — livré le 30 septembre 2026 | Incidents opérables |
 | [`QUAL-10`](../../architecture/product-growth-qual-10-beta-research-protocols-2026-09-30.md) | Protocole bêta/recherche — livré le 30 septembre 2026 | Tests comparables |
 | [`QUAL-G`](../../architecture/product-growth-final-guide-2026-09-30.md) | Guide métier, notation, MongoDB et preuves — livré le 30 septembre 2026 | Système explicable et auditable |
-| `QUAL-11+` | Tranche transverse par roadmap | Gate locale documentée |
+| [`QUAL-11`](../../architecture/product-growth-qual-11-federated-account-export-2026-10-03.md) | Export fédéré des données du compte — livré le 3 octobre 2026 | Archive lisible et sans identifiants internes |
+| `QUAL-12+` | Tranche transverse par roadmap | Gate locale documentée |
 
 ### Implémentation `QUAL-01` — 29 septembre 2026
 
@@ -997,10 +998,25 @@ Les cohortes, secondes utilisations et compréhensions réelles restent suivies 
 le protocole QUAL-10 et ne bloquent pas les fonctionnalités indépendantes de ces
 observations.
 
-Elle ne clôt pas les écarts de cycle de vie recensés par QUAL-04 : aucun export
-fédéré du compte ni coordinateur global de suppression n'est revendiqué. Ces deux
-capacités nécessitent de futurs jalons dédiés avant d'exposer une promesse globale
-au membre.
+QUAL-11 clôt l'écart d'export fédéré recensé par QUAL-04 : le compte, les données
+produit et les contributions rattachables sont désormais réunis dans une archive
+lisible, sans identifiants internes. Le coordinateur global de suppression n'est
+pas encore revendiqué et reste le prochain jalon dédié avant d'exposer une
+promesse d'effacement complet au membre.
+
+### Implémentation `QUAL-11` — 3 octobre 2026
+
+L'export asynchrone existant évolue vers le schéma de compte v5 sans faire
+coexister deux systèmes. Il est accessible depuis le profil et le Passeport et
+regroupe identité lisible, notes globales, visites, partages, alertes, voyages,
+profils Park Fit et contributions rattachables. Les relations internes deviennent
+des références locales ; identifiants MongoDB, secrets, hashes et jetons sont
+exclus. Le budget de taille est commun à l'ensemble et une limite dépassée échoue
+explicitement plutôt que de tronquer le résultat.
+
+La couverture précise, les limites support/médias et les preuves automatisées sont
+documentées dans
+[`QUAL-11`](../../architecture/product-growth-qual-11-federated-account-export-2026-10-03.md).
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

@@ -16,6 +16,71 @@ namespace AmusementPark.Application.Tests.Features.Trips;
 public sealed class TripExportServiceTests
 {
     [Fact]
+    public async Task BuildPortableAsync_ShouldBuildTheSnapshotWithoutPublishingAStandaloneExportActivity()
+    {
+        DateTime nowUtc = new(2027, 8, 12, 9, 30, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "account-owner-42",
+            "Voyage fédéré",
+            TripDateProposal.None(),
+            null,
+            nowUtc);
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        plans.Setup(repository => repository.GetAccessibleAsync(
+                trip.OwnerUserId,
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip);
+        plans.SetupSequence(repository => repository.GetProgramReadSequenceAsync(
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(0)
+            .ReturnsAsync(0);
+        Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
+        candidates.Setup(repository => repository.ListAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripParkCandidate>());
+        Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
+        days.Setup(repository => repository.ListAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripDayPlan>());
+        Mock<IParkRepository> parks = new(MockBehavior.Strict);
+        Mock<ITripItemDecisionRepository> decisions = new(MockBehavior.Strict);
+        decisions.Setup(repository => repository.ListAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripItemDecision>());
+        Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
+        Mock<ITripAuditWriter> auditWriter = new(MockBehavior.Strict);
+        Mock<TimeProvider> timeProvider = new(MockBehavior.Strict);
+        timeProvider.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        TripProgramResultFactory programFactory = new(
+            plans.Object,
+            candidates.Object,
+            days.Object,
+            parks.Object);
+        TripExportService service = new(
+            plans.Object,
+            decisions.Object,
+            parkItems.Object,
+            parks.Object,
+            programFactory,
+            new TripActivityRecorder(auditWriter.Object, timeProvider.Object),
+            timeProvider.Object);
+
+        ApplicationResult<TripExportResult> result = await service.BuildPortableAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Equal("Voyage fédéré", result.Value.Title);
+        plans.VerifyAll();
+        candidates.VerifyAll();
+        days.VerifyAll();
+        decisions.VerifyAll();
+        auditWriter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task ExportAsync_ShouldReturnAPortablePlanWithoutTechnicalIdentifiers()
     {
         DateTime nowUtc = new(2027, 8, 12, 9, 30, 0, DateTimeKind.Utc);

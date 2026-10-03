@@ -19,6 +19,7 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
     private readonly IVisitTargetResolver targetResolver;
     private readonly IPassportShareLifecycleExportSource shareLifecycleSource;
     private readonly IPassportWatchlistExportSource watchlistSource;
+    private readonly IFederatedAccountExportSource accountSource;
     private readonly IVisitExportWriter writer;
     private readonly IPassportClock clock;
 
@@ -30,6 +31,7 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
         IVisitTargetResolver targetResolver,
         IPassportShareLifecycleExportSource shareLifecycleSource,
         IPassportWatchlistExportSource watchlistSource,
+        IFederatedAccountExportSource accountSource,
         IVisitExportWriter writer,
         IPassportClock clock)
     {
@@ -40,6 +42,7 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
         this.targetResolver = targetResolver;
         this.shareLifecycleSource = shareLifecycleSource;
         this.watchlistSource = watchlistSource;
+        this.accountSource = accountSource;
         this.writer = writer;
         this.clock = clock;
     }
@@ -174,6 +177,11 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
                 passportExport.UserId,
                 sourceBudget,
                 cancellationToken);
+        FederatedAccountExportData accountData =
+            await this.accountSource.LoadAsync(
+                passportExport.UserId,
+                sourceBudget,
+                cancellationToken);
         string[] parkIds = visits.Select(static visit => visit.ParkId)
             .Concat(loadedOccurrences.Select(static occurrence => occurrence.ParkId))
             .Distinct(StringComparer.Ordinal)
@@ -201,7 +209,8 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
             parks,
             await targetsTask,
             shareLifecycle,
-            watchlistLifecycle);
+            watchlistLifecycle,
+            accountData);
     }
 
     private static PassportExportJobPayload? Deserialize(

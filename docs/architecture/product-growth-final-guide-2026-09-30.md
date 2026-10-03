@@ -613,18 +613,17 @@ Les tranches techniques planifiées de FOUNDATION à QUAL-10 sont implémentées
 guide clôt la documentation transverse de `QUAL-G`, sans transformer les écarts
 recensés par QUAL-04 en capacités livrées.
 
-Deux extensions substantielles du cycle de vie du compte restent explicitement à
-concevoir dans de futurs jalons dédiés :
+L'extension d'export fédéré du cycle de vie du compte est livrée par QUAL-11 :
+elle réunit identité lisible, Passeport, voyages, Park Fit et contributions
+rattachables, sans identifiants internes. Une extension substantielle reste à
+concevoir dans un jalon dédié : un coordinateur global de suppression de compte
+couvrant identité, sessions et tous les participants métier, avec ordre de purge,
+idempotence, reprise après échec et règles de rétention validées.
 
-- un export fédéré unique réunissant identité, Passeport, voyages, Park Fit,
-  contributions et support, sans identifiants internes ;
-- un coordinateur global de suppression de compte couvrant identité, sessions et
-  tous les participants métier, avec ordre de purge, idempotence, reprise après
-  échec et règles de rétention validées.
-
-Le Passeport, les voyages et Park Fit conservent leurs exports dédiés, tandis que
-Partage et Alertes disposent déjà de participants de suppression. Cela ne suffit
-pas à présenter au membre une promesse d'export ou d'effacement global. La matrice
+Le Passeport, les voyages et Park Fit conservent leurs exports dédiés, désormais
+agrégés par le moteur fédéré. Partage et Alertes disposent déjà de participants de
+suppression, mais cela ne suffit pas à présenter au membre une promesse
+d'effacement global. La matrice
 [`QUAL-04`](product-growth-qual-04-privacy-export-deletion-matrix-2026-09-29.md)
 reste l'autorité sur cette limite.
 

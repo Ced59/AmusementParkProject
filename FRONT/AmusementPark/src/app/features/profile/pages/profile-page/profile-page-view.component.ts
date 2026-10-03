@@ -13,6 +13,7 @@ import { ImageDisplayComponent } from '@shared/components/image-display/image-di
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiFieldInputComponent } from '@ui/forms';
 import { ProfileRatingsPanelComponent } from '@features/profile/ratings/profile-ratings-panel.component';
+import { PassportExportPanelComponent } from '@features/profile/passport/components/passport-export-panel/passport-export-panel.component';
 
 @Component({
   selector: 'app-profile-page-view',
@@ -30,7 +31,8 @@ import { ProfileRatingsPanelComponent } from '@features/profile/ratings/profile-
     UiKickerComponent,
     UiSectionHeaderComponent,
     UiSurfaceDirective,
-    ProfileRatingsPanelComponent
+    ProfileRatingsPanelComponent,
+    PassportExportPanelComponent
   ]
 })
 export class ProfilePageViewComponent {
