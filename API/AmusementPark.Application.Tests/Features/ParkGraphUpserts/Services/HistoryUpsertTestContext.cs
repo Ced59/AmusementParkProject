@@ -93,7 +93,7 @@ internal sealed class HistoryUpsertTestContext
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((HistoryEvent?)null);
         this.HistoricalNarrativeCanonicalizer
-            .Setup(value => value.IsCanonicalFactMissingAsync(
+            .Setup(value => value.NeedsCanonicalRepairAsync(
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(false);
@@ -196,13 +196,13 @@ internal sealed class HistoryUpsertTestContext
             .ThrowsAsync(failure);
     }
 
-    public void SetCanonicalFactMissing(bool isMissing)
+    public void SetCanonicalRepairRequired(bool repairRequired)
     {
         this.HistoricalNarrativeCanonicalizer
-            .Setup(value => value.IsCanonicalFactMissingAsync(
+            .Setup(value => value.NeedsCanonicalRepairAsync(
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(isMissing);
+            .ReturnsAsync(repairRequired);
     }
 
     private static HistoryEvent CloneHistoryEvent(HistoryEvent source)

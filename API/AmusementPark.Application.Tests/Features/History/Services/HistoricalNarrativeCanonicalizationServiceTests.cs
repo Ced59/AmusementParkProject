@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Tests.Features.History.Handlers;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
@@ -13,7 +14,7 @@ namespace AmusementPark.Application.Tests.Features.History.Services;
 public sealed class HistoricalNarrativeCanonicalizationServiceTests
 {
     [Fact]
-    public async Task IsCanonicalFactMissingAsync_WhenLinkedFactWasRemoved_ShouldRequestRepair()
+    public async Task NeedsCanonicalRepairAsync_WhenLinkedFactWasRemoved_ShouldRequestRepair()
     {
         Guid factId = Guid.NewGuid();
         Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
@@ -34,11 +35,11 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         historyEvent.CanonicalFactId = factId;
         historyEvent.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
 
-        bool isMissing = await service.IsCanonicalFactMissingAsync(
+        bool repairRequired = await service.NeedsCanonicalRepairAsync(
             historyEvent,
             CancellationToken.None);
 
-        Assert.True(isMissing);
+        Assert.True(repairRequired);
         factRepository.VerifyAll();
         sourceRepository.VerifyNoOtherCalls();
         parkRepository.VerifyNoOtherCalls();
@@ -46,7 +47,7 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
     }
 
     [Fact]
-    public async Task IsCanonicalFactMissingAsync_WhenLinkedFactExists_ShouldNotRequestRepair()
+    public async Task NeedsCanonicalRepairAsync_WhenLinkedFactExistsOnlyAsDraft_ShouldRequestRepair()
     {
         Guid factId = Guid.NewGuid();
         Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
@@ -67,11 +68,127 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         historyEvent.CanonicalFactId = factId;
         historyEvent.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
 
-        bool isMissing = await service.IsCanonicalFactMissingAsync(
+        bool repairRequired = await service.NeedsCanonicalRepairAsync(
             historyEvent,
             CancellationToken.None);
 
-        Assert.False(isMissing);
+        Assert.True(repairRequired);
+        factRepository.VerifyAll();
+        sourceRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task NeedsCanonicalRepairAsync_WhenPublishedFactLostItsSource_ShouldRequestRepair()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact fact = CreatePublishedCanonicalFact(factId);
+        Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository = new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        factRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(
+                factId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(fact);
+        sourceRepository
+            .Setup(repository => repository.GetRevisionsAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSourceRevisionReference>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<HistoricalSourceReference>());
+        HistoricalNarrativeCanonicalizationService service = CreateService(
+            factRepository.Object,
+            sourceRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object);
+        HistoryEvent historyEvent = CreateOpeningEvent(withSource: true);
+        historyEvent.CanonicalFactId = factId;
+
+        bool repairRequired = await service.NeedsCanonicalRepairAsync(
+            historyEvent,
+            CancellationToken.None);
+
+        Assert.True(repairRequired);
+        factRepository.VerifyAll();
+        sourceRepository.VerifyAll();
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task NeedsCanonicalRepairAsync_WhenPublishedFactHasPublicEvidence_ShouldNotRequestRepair()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact fact = CreatePublishedCanonicalFact(factId);
+        HistoricalSourceReference source = PublicParkHistoryTestData.CreateSource(fact);
+        Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository = new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        factRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(
+                factId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(fact);
+        sourceRepository
+            .Setup(repository => repository.GetRevisionsAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSourceRevisionReference>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { source });
+        sourceRepository
+            .Setup(repository => repository.GetLatestRevisionsAsync(
+                It.IsAny<IReadOnlyCollection<Guid>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { source });
+        HistoricalNarrativeCanonicalizationService service = CreateService(
+            factRepository.Object,
+            sourceRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object);
+        HistoryEvent historyEvent = CreateOpeningEvent(withSource: true);
+        historyEvent.CanonicalFactId = factId;
+
+        bool repairRequired = await service.NeedsCanonicalRepairAsync(
+            historyEvent,
+            CancellationToken.None);
+
+        Assert.False(repairRequired);
+        factRepository.VerifyAll();
+        sourceRepository.VerifyAll();
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task NeedsCanonicalRepairAsync_WhenFactWasExplicitlyWithdrawn_ShouldPreserveWithdrawal()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact fact = CreatePublishedCanonicalFact(factId)
+            .CreateRetraction(new DateTime(2026, 10, 2, 12, 0, 0, DateTimeKind.Utc));
+        Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository = new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        factRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(
+                factId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(fact);
+        HistoricalNarrativeCanonicalizationService service = CreateService(
+            factRepository.Object,
+            sourceRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object);
+        HistoryEvent historyEvent = CreateOpeningEvent(withSource: true);
+        historyEvent.CanonicalFactId = factId;
+
+        bool repairRequired = await service.NeedsCanonicalRepairAsync(
+            historyEvent,
+            CancellationToken.None);
+
+        Assert.False(repairRequired);
         factRepository.VerifyAll();
         sourceRepository.VerifyNoOtherCalls();
         parkRepository.VerifyNoOtherCalls();
@@ -372,5 +489,18 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
             1,
             null,
             recordedAtUtc);
+    }
+
+    private static HistoricalFact CreatePublishedCanonicalFact(Guid factId)
+    {
+        return PublicParkHistoryTestData.CreateOpeningFact(
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc de référence",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            2001,
+            factId,
+            narrativeContentId: "history-1");
     }
 }

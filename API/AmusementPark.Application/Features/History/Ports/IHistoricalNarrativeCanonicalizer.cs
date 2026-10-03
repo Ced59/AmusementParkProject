@@ -5,7 +5,7 @@ namespace AmusementPark.Application.Features.History.Ports;
 
 public interface IHistoricalNarrativeCanonicalizer
 {
-    Task<bool> IsCanonicalFactMissingAsync(
+    Task<bool> NeedsCanonicalRepairAsync(
         HistoryEvent historyEvent,
         CancellationToken cancellationToken);
 
