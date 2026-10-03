@@ -63,7 +63,6 @@ public static class HistoricalNarrativeCanonicalizationCoordinator
         HistoricalCanonicalResourceRetractionSnapshot? previousResourceSnapshot,
         Exception canonicalizationException)
     {
-        List<Exception> recoveryExceptions = new List<Exception>();
         Guid generatedFactId = HistoricalNarrativeCanonicalIdentity.CreateGuid(
             HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
             "fact",
@@ -86,7 +85,10 @@ public static class HistoricalNarrativeCanonicalizationCoordinator
         }
         catch (Exception cleanupException)
         {
-            recoveryExceptions.Add(cleanupException);
+            throw new AggregateException(
+                "The failed canonical HIST update could not withdraw its candidate resources safely.",
+                canonicalizationException,
+                cleanupException);
         }
 
         try
@@ -101,14 +103,10 @@ public static class HistoricalNarrativeCanonicalizationCoordinator
         }
         catch (Exception restorationException)
         {
-            recoveryExceptions.Add(restorationException);
-        }
-
-        if (recoveryExceptions.Count > 0)
-        {
             throw new AggregateException(
                 "The failed canonical HIST update could not be fully compensated.",
-                new[] { canonicalizationException }.Concat(recoveryExceptions));
+                canonicalizationException,
+                restorationException);
         }
     }
 
