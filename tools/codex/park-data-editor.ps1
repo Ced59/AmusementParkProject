@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'HistoryDiagnostics', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -1508,6 +1508,14 @@ switch ($Action) {
         $projectionQuery = if ($ProjectForPublication) { '?projectForPublication=true' } else { '' }
         Invoke-ParkDataEditorJsonApi -Method GET `
             -RelativePath "park-data-editor/parks/$([Uri]::EscapeDataString($ParkId))/data-completeness$projectionQuery" `
+            -Body $null
+    }
+    'HistoryDiagnostics' {
+        if ([string]::IsNullOrWhiteSpace($ParkId)) {
+            throw 'ParkId is required for HistoryDiagnostics.'
+        }
+        Invoke-ParkDataEditorJsonApi -Method GET `
+            -RelativePath "park-data-editor/parks/$([Uri]::EscapeDataString($ParkId))/history-diagnostics" `
             -Body $null
     }
     'ImportPhoto' {

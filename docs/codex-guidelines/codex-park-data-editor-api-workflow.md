@@ -103,6 +103,7 @@ Pour couper l’accès depuis Codex :
 | Prévisualiser/appliquer une suppression contrôlée explicitement autorisée | mêmes routes via `PreviewDeletion` puis `ApplyDeletion` |
 | Lire l’historique d’intégration | `GET admin/park-graph-upserts/history` |
 | Contrôler la complétude courante ou projetée pour publication | `GET park-data-editor/parks/{id}/data-completeness` |
+| Diagnostiquer l'éligibilité publique de l'historique d'un parc | `GET park-data-editor/parks/{id}/history-diagnostics` |
 | Téléverser/rattacher/documenter une image de parc | `park-data-editor/images/*` |
 | Préparer puis publier explicitement un lien Facebook | `GET park-data-editor/social-publications/facebook/draft`, puis `POST park-data-editor/social-publications/facebook` |
 | Révoquer le jeton courant | `DELETE park-data-editor/tokens/current` |
@@ -115,6 +116,12 @@ Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, le
 
 ```powershell
 .\tools\codex\park-data-editor.ps1 -Action Completeness -ParkId '<park-id>' -ProjectForPublication
+```
+
+`HistoryDiagnostics` expose, par le même jeton technique borné, les compteurs de faits publiés, sourcés et majeurs ainsi que le verdict de publication de la frise. Utilise-le lorsqu'un parc possède des événements HIST mais que son lien public reste absent :
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action HistoryDiagnostics -ParkId '<park-id>'
 ```
 
 Cette projection est en lecture seule. Elle ne change aucune visibilité, ne publie aucun contenu et ne rend jamais publiable une fiche `NotRelevant`. Elle ne doit être utilisée comme feu vert qu’après l’audit final sans bloqueur ; le score courant doit être recalculé après la publication effective.

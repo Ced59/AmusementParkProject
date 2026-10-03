@@ -1,6 +1,20 @@
 {
-  "version": "5.4.91",
+  "version": "5.4.92",
   "history": [
+    {
+      "version": "5.4.92",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Amélioration de l'ergonomie d'administration",
+        "en": "Admin ergonomics improvements",
+        "de": "Verbesserte Verwaltungsoberfläche",
+        "nl": "Verbeterde beheerergonomie",
+        "it": "Miglioramenti all'ergonomia di amministrazione",
+        "es": "Mejoras de ergonomía en la administración",
+        "pt": "Melhorias de ergonomia na administração",
+        "pl": "Ulepszenia ergonomii administracji"
+      }
+    },
     {
       "version": "5.4.91",
       "releasedAt": "2026-10-03",
