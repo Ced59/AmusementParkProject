@@ -1,8 +1,8 @@
 {
-  "version": "5.4.89",
+  "version": "5.4.90",
   "history": [
     {
-      "version": "5.4.89",
+      "version": "5.4.90",
       "releasedAt": "2026-10-03",
       "labels": {
         "fr": "Frises historiques de nouveau reliées aux parcs",
@@ -13,6 +13,20 @@
         "es": "Cronologías históricas vinculadas de nuevo a los parques",
         "pt": "Cronologias históricas novamente ligadas aos parques",
         "pl": "Historyczne osie czasu ponownie powiązane z parkami"
+      }
+    },
+    {
+      "version": "5.4.89",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Fiabilité des mises à jour améliorée",
+        "en": "Update reliability improved",
+        "de": "Zuverlässigkeit von Aktualisierungen verbessert",
+        "nl": "Betrouwbaarheid van updates verbeterd",
+        "it": "Affidabilità degli aggiornamenti migliorata",
+        "es": "Fiabilidad de las actualizaciones mejorada",
+        "pt": "Fiabilidade das atualizações melhorada",
+        "pl": "Zwiększona niezawodność aktualizacji"
       }
     },
     {
