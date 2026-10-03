@@ -25,10 +25,10 @@ if [ -z "${historical_rollback_line}" ] \
 fi
 
 rollback_arm_line="$(grep -n 'historical_history_cutover_started=true' "${deploy_script}" | head -n 1 | cut -d: -f1)"
-freeze_command_line="$(grep -n 'freeze-history-authorities-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+freeze_command_line="$(grep -n 'freeze-history-authorities-5.4.81.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 writer_quiesce_line="$(grep -n 'quiesce-original-history-writer' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 candidate_prepare_line="$(grep -n 'deployment_transaction.py prepare-candidates' "${deploy_script}" | head -n 1 | cut -d: -f1)"
-write_release_line="$(grep -n 'release-history-write-freeze-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+write_release_line="$(grep -n 'release-history-write-freeze-5.4.81.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${rollback_arm_line}" ] \
   || [ -z "${writer_quiesce_line}" ] \
   || [ -z "${freeze_command_line}" ] \
@@ -52,7 +52,7 @@ if ! grep -Fq 'hasSource || pending > 0' "${deploy_script}"; then
   exit 1
 fi
 
-rollback_script_line="$(grep -n 'rollback-history-cutover-5.4.80.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+rollback_script_line="$(grep -n 'rollback-history-cutover-5.4.81.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 writer_restore_line="$(grep -n 'restore-original-history-writer' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 cutover_restored_line="$(grep -n 'cutover-restored --resource historical-history' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${rollback_script_line}" ] \
@@ -101,7 +101,7 @@ for required_cutover_check in \
   fi
 done
 
-freeze_script="${deploy_root}/scripts/freeze-history-authorities-5.4.80.js"
+freeze_script="${deploy_root}/scripts/freeze-history-authorities-5.4.81.js"
 for required_freeze_step in \
   "renameCollection(frozenCollectionName, false)" \
   "createView(legacyCollectionName, frozenCollectionName, [])" \
@@ -117,7 +117,7 @@ for required_freeze_step in \
   fi
 done
 
-rollback_script="${deploy_root}/scripts/rollback-history-cutover-5.4.80.js"
+rollback_script="${deploy_root}/scripts/rollback-history-cutover-5.4.81.js"
 for required_filter in \
   "cutoverVersion: canonicalCutoverVersion" \
   "narrativeContentId: { \$in: stagedNarrativeIds }" \
@@ -138,7 +138,7 @@ for required_filter in \
   fi
 done
 
-release_script="${deploy_root}/scripts/release-history-write-freeze-5.4.80.js"
+release_script="${deploy_root}/scripts/release-history-write-freeze-5.4.81.js"
 for required_release_step in \
   "collMod: narrativeCollectionName" \
   "validator: {}" \
@@ -158,7 +158,7 @@ if [ -z "${source_restore_line}" ] \
   exit 1
 fi
 
-completion_script="${deploy_root}/scripts/complete-history-cutover-5.4.80.js"
+completion_script="${deploy_root}/scripts/complete-history-cutover-5.4.81.js"
 for required_completion_step in \
   "history-events-cutover-source-hist-04-v1" \
   "history-events-backup-hist-04-v1" \

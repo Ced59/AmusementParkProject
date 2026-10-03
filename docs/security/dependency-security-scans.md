@@ -70,3 +70,15 @@ dependency-security-reports
 - Une vulnérabilité critique ou haute détectée par npm ou .NET fait échouer le job et bloque les images ainsi que le déploiement.
 - Les alertes modérées restent non bloquantes afin de suivre les dépendances d’outillage sans masquer le niveau de risque.
 - Les rapports sont téléversés même lorsqu’un seuil bloquant est atteint.
+
+### Exception temporaire et bornée
+
+Une alerte haute peut exceptionnellement être tolérée lorsque l’éditeur n’a encore publié aucune version corrigée. Cette tolérance est déclarée dans `.github/dependency-security-exceptions.json` et reste bloquante par défaut :
+
+- l’identifiant npm et l’identifiant GHSA doivent correspondre exactement ;
+- toute la chaîne affectée doit être marquée `dev: true` dans le verrou npm ;
+- aucune alerte critique ne peut être tolérée ;
+- toute autre alerte haute continue de bloquer ;
+- la tolérance expire automatiquement à la date déclarée.
+
+L’exception actuelle concerne uniquement `GHSA-ch52-4w7c-c8xp`, transitive aux outils Angular, et expire le 17 octobre 2026. Elle doit être supprimée dès la publication d’une version corrigée.

@@ -222,7 +222,7 @@ rollback_incomplete_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/rollback-history-cutover-5.4.80.js
+      < ./scripts/rollback-history-cutover-5.4.81.js
   python3 ./scripts/deployment_transaction.py restore-original-history-writer
   python3 ./scripts/deployment_transaction.py cutover-restored --resource historical-history
   historical_history_cutover_started=false
@@ -318,7 +318,7 @@ prepare_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/freeze-history-authorities-5.4.80.js
+      < ./scripts/freeze-history-authorities-5.4.81.js
 
   echo "Starting and verifying the unexposed canonical-history candidate..."
   python3 ./scripts/deployment_transaction.py prepare-candidates
@@ -329,7 +329,7 @@ prepare_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/release-history-write-freeze-5.4.80.js
+      < ./scripts/release-history-write-freeze-5.4.81.js
 }
 
 complete_historical_history_cutover() {
@@ -341,7 +341,7 @@ complete_historical_history_cutover() {
       --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
-      < ./scripts/complete-history-cutover-5.4.80.js
+      < ./scripts/complete-history-cutover-5.4.81.js
 }
 
 run_legacy_enum_migrations() {

@@ -1,0 +1,13 @@
+{
+  "exceptions": [
+    {
+      "advisorySource": 1240991,
+      "ghsaId": "GHSA-ch52-4w7c-c8xp",
+      "package": "http-cache-semantics",
+      "severity": "high",
+      "scope": "development-only",
+      "expiresOn": "2026-10-17",
+      "reason": "Aucune version corrigée n'est publiée ; la CI vérifie que toute la chaîne affectée reste strictement réservée aux outils de développement."
+    }
+  ]
+}
