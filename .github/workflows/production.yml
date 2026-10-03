@@ -173,6 +173,10 @@ jobs:
           python3 -m unittest discover -s deploy/scripts/tests -p 'test_deployment_*.py'
           python3 -m unittest deploy/scripts/tests/test_install_deployment.py
 
+      - name: Test park data editor client serialization
+        shell: pwsh
+        run: ./tools/codex/park-data-editor.tests.ps1
+
       - name: Exercise interrupted deployments and in-flight requests with real Docker containers
         timeout-minutes: 12
         run: python3 deploy/scripts/tests/deployment-transaction-docker.py
