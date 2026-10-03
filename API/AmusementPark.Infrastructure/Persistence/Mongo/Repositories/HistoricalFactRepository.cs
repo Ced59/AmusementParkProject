@@ -128,6 +128,32 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         return document?.ToDomain();
     }
 
+    public async Task<bool> WasLatestRevisionTransitionRecordedByAsync(
+        Guid factId,
+        HistoricalReviewEventType eventType,
+        string actorUserId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedActorUserId = actorUserId?.Trim() ?? string.Empty;
+        if (factId == Guid.Empty || normalizedActorUserId.Length == 0)
+        {
+            return false;
+        }
+
+        string normalizedFactId = factId.ToString("N", CultureInfo.InvariantCulture);
+        HistoricalReviewEventDocument? reviewEvent = await this.collection
+            .Find(item => item.FactId == normalizedFactId)
+            .SortByDescending(item => item.Revision)
+            .Project(item => item.TransitionReviewEvent)
+            .FirstOrDefaultAsync(cancellationToken);
+        return reviewEvent is not null
+            && reviewEvent.EventType == eventType
+            && string.Equals(
+                reviewEvent.ActorUserId,
+                normalizedActorUserId,
+                StringComparison.Ordinal);
+    }
+
     public async Task<bool> IsLatestRevisionSubjectAlignedAsync(
         Guid factId,
         HistoricalSubject expectedSubject,

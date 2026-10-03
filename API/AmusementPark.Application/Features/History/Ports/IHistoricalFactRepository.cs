@@ -20,6 +20,12 @@ public interface IHistoricalFactRepository
         Guid factId,
         CancellationToken cancellationToken);
 
+    Task<bool> WasLatestRevisionTransitionRecordedByAsync(
+        Guid factId,
+        HistoricalReviewEventType eventType,
+        string actorUserId,
+        CancellationToken cancellationToken);
+
     Task<bool> IsLatestRevisionSubjectAlignedAsync(
         Guid factId,
         HistoricalSubject expectedSubject,

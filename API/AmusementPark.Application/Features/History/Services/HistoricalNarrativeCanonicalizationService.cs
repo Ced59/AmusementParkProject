@@ -47,7 +47,9 @@ public sealed class HistoricalNarrativeCanonicalizationService : IHistoricalNarr
 
         if (fact.PublicationState == HistoricalPublicationState.Withdrawn)
         {
-            return false;
+            return await this.revisionWriter.WasFactAutomaticallyRetractedAsync(
+                fact,
+                cancellationToken);
         }
 
         HistoricalSubjectResolution? subjectResolution = await this.subjectResolver.ResolveAsync(

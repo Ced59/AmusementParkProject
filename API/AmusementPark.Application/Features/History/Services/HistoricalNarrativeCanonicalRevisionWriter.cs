@@ -62,6 +62,32 @@ internal sealed class HistoricalNarrativeCanonicalRevisionWriter
             cancellationToken);
     }
 
+    internal async Task<bool> WasFactAutomaticallyRetractedAsync(
+        HistoricalFact fact,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(fact);
+        bool automaticallyRetracted = await this.factRepository
+            .WasLatestRevisionTransitionRecordedByAsync(
+                fact.Id,
+                HistoricalReviewEventType.Retracted,
+                HistoricalNarrativeCanonicalFactRetractionService.RetractionActor,
+                cancellationToken);
+        if (!automaticallyRetracted || fact.SourceReferences.Count == 0)
+        {
+            return automaticallyRetracted;
+        }
+
+        IReadOnlyCollection<HistoricalSourceReference> latestSources =
+            await this.sourceRepository.GetLatestRevisionsAsync(
+                fact.SourceReferences
+                    .Select(static source => source.SourceId)
+                    .Distinct()
+                    .ToArray(),
+                cancellationToken);
+        return await this.CanRepairWithdrawnSourcesAsync(latestSources, cancellationToken);
+    }
+
     internal async Task<bool> NeedsCanonicalRepairAsync(
         HistoryEvent historyEvent,
         HistoricalFact fact,
@@ -89,10 +115,15 @@ internal sealed class HistoricalNarrativeCanonicalRevisionWriter
                 : await this.sourceRepository.GetLatestRevisionsAsync(
                     resolvedSources.Select(static source => source.Id).Distinct().ToArray(),
                     cancellationToken);
-        if (latestSources.Any(static source =>
-                source.PublicationState == HistoricalPublicationState.Withdrawn))
+        HistoricalSourceReference[] withdrawnSources = latestSources
+            .Where(static source =>
+                source.PublicationState == HistoricalPublicationState.Withdrawn)
+            .ToArray();
+        if (withdrawnSources.Length > 0)
         {
-            return false;
+            return await this.CanRepairWithdrawnSourcesAsync(
+                withdrawnSources,
+                cancellationToken);
         }
 
         if (!historyEvent.IsVisible
@@ -144,6 +175,28 @@ internal sealed class HistoricalNarrativeCanonicalRevisionWriter
         return !HistoricalFactEvidenceValidator.HasCurrentlyAdmissiblePublicEvidence(
             fact,
             admissibleSourceRevisions);
+    }
+
+    private async Task<bool> CanRepairWithdrawnSourcesAsync(
+        IReadOnlyCollection<HistoricalSourceReference> sources,
+        CancellationToken cancellationToken)
+    {
+        foreach (HistoricalSourceReference withdrawnSource in sources.Where(static source =>
+                     source.PublicationState == HistoricalPublicationState.Withdrawn))
+        {
+            bool automaticallyRetracted = await this.sourceRepository
+                .WasLatestRevisionTransitionRecordedByAsync(
+                    withdrawnSource.Id,
+                    HistoricalReviewEventType.Retracted,
+                    HistoricalCanonicalSourceRetractionService.RetractionActor,
+                    cancellationToken);
+            if (!automaticallyRetracted)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private static bool HasSameCanonicalSubject(
