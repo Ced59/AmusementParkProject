@@ -265,7 +265,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
     public async Task<HistoryEvent> CreateAsync(HistoryEvent historyEvent, CancellationToken cancellationToken)
     {
         HistoryEventDocument document = historyEvent.ToDocument();
-        document.CreatedAt = DateTime.UtcNow;
+        document.CreatedAt = NormalizeMongoTimestamp(DateTime.UtcNow);
         document.UpdatedAt = document.CreatedAt;
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
@@ -289,6 +289,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             {
                 Id = document.Id,
                 CreatedAt = document.CreatedAt,
+                UpdatedAt = document.UpdatedAt,
                 CanonicalFactId = document.CanonicalFactId,
                 CanonicalizationState = document.CanonicalizationState,
                 MigrationVersion = document.MigrationVersion,
@@ -304,7 +305,9 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         HistoryEventDocument document = historyEvent.ToDocument();
         document.Id = eventId;
         document.CreatedAt = existing.CreatedAt;
-        document.UpdatedAt = DateTime.UtcNow;
+        document.UpdatedAt = ResolveNextMutationTimestamp(
+            existing.UpdatedAt,
+            DateTime.UtcNow);
         document.CanonicalFactId = existing.CanonicalFactId;
         document.CanonicalizationState = HistoricalNarrativeCanonicalizationState.PendingReview;
         document.MigrationVersion = existing.MigrationVersion;
@@ -321,6 +324,28 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             cancellationToken: cancellationToken);
 
         return result.MatchedCount == 0 ? null : document.ToDomain();
+    }
+
+    internal static DateTime ResolveNextMutationTimestamp(
+        DateTime previousUpdatedAtUtc,
+        DateTime nowUtc)
+    {
+        DateTime previous = NormalizeMongoTimestamp(previousUpdatedAtUtc);
+        DateTime current = NormalizeMongoTimestamp(nowUtc);
+        DateTime minimum = previous.AddMilliseconds(1);
+        return current >= minimum ? current : minimum;
+    }
+
+    private static DateTime NormalizeMongoTimestamp(DateTime timestamp)
+    {
+        DateTime utc = timestamp.Kind switch
+        {
+            DateTimeKind.Utc => timestamp,
+            DateTimeKind.Local => timestamp.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(timestamp, DateTimeKind.Utc),
+        };
+        long normalizedTicks = utc.Ticks - (utc.Ticks % TimeSpan.TicksPerMillisecond);
+        return new DateTime(normalizedTicks, DateTimeKind.Utc);
     }
 
     public async Task<HistoryEvent?> GetCommittedUpdateAsync(

@@ -329,6 +329,32 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     }
 
     [Fact]
+    public void ResolveNextMutationTimestamp_WhenClockRemainsInSameMillisecond_ShouldAdvanceOneMillisecond()
+    {
+        DateTime previous = new DateTime(2026, 10, 3, 8, 15, 0, 123, DateTimeKind.Utc);
+        DateTime sameMillisecond = previous.AddTicks(TimeSpan.TicksPerMillisecond - 1);
+
+        DateTime result = HistoryEventRepository.ResolveNextMutationTimestamp(
+            previous,
+            sameMillisecond);
+
+        Assert.Equal(previous.AddMilliseconds(1), result);
+        Assert.Equal(DateTimeKind.Utc, result.Kind);
+    }
+
+    [Fact]
+    public void ResolveNextMutationTimestamp_WhenClockHasAdvanced_ShouldKeepMongoPrecision()
+    {
+        DateTime previous = new DateTime(2026, 10, 3, 8, 15, 0, 123, DateTimeKind.Utc);
+        DateTime later = previous.AddMilliseconds(7).AddTicks(9999);
+
+        DateTime result = HistoryEventRepository.ResolveNextMutationTimestamp(previous, later);
+
+        Assert.Equal(previous.AddMilliseconds(7), result);
+        Assert.Equal(0, result.Ticks % TimeSpan.TicksPerMillisecond);
+    }
+
+    [Fact]
     public void BuildLatestRevisionsPipeline_ShouldSelectOneRevisionPerSourceOnServer()
     {
         IReadOnlyCollection<BsonDocument> stages =
