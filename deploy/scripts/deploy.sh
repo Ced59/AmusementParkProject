@@ -271,7 +271,16 @@ assert_canonical_history_authority() {
           && sources.countDocuments({revisionOrigin:"LegacyMigration"}) === 0
           && narratives.countDocuments({$or:[{migrationVersion:{$ne:"hist-canonical-v2"}},{canonicalizationState:{$nin:["Canonicalized","Blocked"]}}]}) === 0
           && facts.countDocuments({timelineSortOrdinal:{$exists:false}}) === 0
-          && facts.countDocuments({"subject.type":{$in:["Park","ParkItem","ParkZone"]},"subject.contextParkId":{$exists:false}}) === 0;
+          && facts.countDocuments({
+            publicationState:{$in:["Published","LegacyPublishedPendingReview"]},
+            "subject.type":{$in:["ParkItem","ParkZone"]},
+            "subject.publicationPolicy":"HistoricalOnly",
+            $or:[
+              {"subject.contextParkId":{$exists:false}},
+              {"subject.contextParkId":null},
+              {"subject.contextParkId":""}
+            ]
+          }) === 0;
         print(ready ? "true" : "false");' \
     | tail -n 1)"
   if [ "${authority_ready}" != "true" ]; then

@@ -10,6 +10,8 @@ for required_proof in \
   'revisionOrigin:"LegacyMigration"' \
   'migrationVersion:{$ne:"hist-canonical-v2"}' \
   'timelineSortOrdinal:{$exists:false}' \
+  'publicationState:{$in:["Published","LegacyPublishedPendingReview"]}' \
+  'subject.publicationPolicy":"HistoricalOnly"' \
   'subject.contextParkId":{$exists:false}' \
   'refusing deployment and preserving recovery artifacts'; do
   if ! grep -Fq "${required_proof}" "${deploy_script}"; then
