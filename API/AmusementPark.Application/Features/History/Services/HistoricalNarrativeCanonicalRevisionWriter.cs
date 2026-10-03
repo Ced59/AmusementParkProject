@@ -7,6 +7,8 @@ namespace AmusementPark.Application.Features.History.Services;
 
 internal sealed class HistoricalNarrativeCanonicalRevisionWriter
 {
+    private const int MaximumWriteAttempts = 3;
+
     private readonly IHistoricalFactRepository factRepository;
     private readonly IHistoricalSourceRepository sourceRepository;
     private readonly HistoricalNarrativeCanonicalSourcePlanner sourcePlanner;
@@ -58,10 +60,10 @@ internal sealed class HistoricalNarrativeCanonicalRevisionWriter
             eventType,
             note,
             fact.RecordedAtUtc);
-        HistoricalRevisionWriteDisposition disposition = await this.factRepository.AppendRevisionAsync(
-            fact,
-            reviewEvent,
-            cancellationToken);
+        HistoricalRevisionWriteDisposition disposition = await AppendWithReconciliationAsync(
+            token => this.factRepository.AppendRevisionAsync(fact, reviewEvent, token),
+            cancellationToken,
+            "The canonical historical fact revision could not be reconciled after an ambiguous write.");
         if (disposition == HistoricalRevisionWriteDisposition.Conflict)
         {
             throw new InvalidOperationException("A canonical historical fact identity collided.");
@@ -81,14 +83,39 @@ internal sealed class HistoricalNarrativeCanonicalRevisionWriter
             eventType,
             note,
             source.RecordedAtUtc);
-        HistoricalRevisionWriteDisposition disposition = await this.sourceRepository.AppendRevisionAsync(
-            source,
-            reviewEvent,
-            cancellationToken);
+        HistoricalRevisionWriteDisposition disposition = await AppendWithReconciliationAsync(
+            token => this.sourceRepository.AppendRevisionAsync(source, reviewEvent, token),
+            cancellationToken,
+            "The canonical historical source revision could not be reconciled after an ambiguous write.");
         if (disposition == HistoricalRevisionWriteDisposition.Conflict)
         {
             throw new InvalidOperationException("A canonical historical source identity collided.");
         }
+    }
+
+    private static async Task<HistoricalRevisionWriteDisposition> AppendWithReconciliationAsync(
+        Func<CancellationToken, Task<HistoricalRevisionWriteDisposition>> appendRevisionAsync,
+        CancellationToken cancellationToken,
+        string failureMessage)
+    {
+        ArgumentNullException.ThrowIfNull(appendRevisionAsync);
+        List<Exception> failures = new List<Exception>();
+        for (int attempt = 0; attempt < MaximumWriteAttempts; attempt++)
+        {
+            CancellationToken effectiveToken = attempt == 0
+                ? cancellationToken
+                : CancellationToken.None;
+            try
+            {
+                return await appendRevisionAsync(effectiveToken);
+            }
+            catch (Exception exception)
+            {
+                failures.Add(exception);
+            }
+        }
+
+        throw new AggregateException(failureMessage, failures);
     }
 
     private static HistoricalReviewEvent CreateReviewEvent(

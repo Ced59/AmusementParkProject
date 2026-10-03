@@ -492,7 +492,7 @@ public sealed class HistoryHandlersTests
     }
 
     [Fact]
-    public async Task UpsertHistoryEvent_WhenUpdateFailsBeforeCommit_ShouldRestoreCanonicalResources()
+    public async Task UpsertHistoryEvent_WhenMutationLookupFailsTransiently_ShouldRestoreCanonicalResources()
     {
         Guid factId = Guid.NewGuid();
         DateTime updatedAtUtc = new DateTime(2026, 10, 3, 9, 15, 0, DateTimeKind.Utc);
@@ -557,10 +557,11 @@ public sealed class HistoryHandlersTests
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new TimeoutException("write failed before commit"));
         historyRepository
-            .Setup(value => value.GetCommittedUpdateAsync(
+            .SetupSequence(value => value.GetCommittedUpdateAsync(
                 "event-1",
                 It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException("mutation lookup temporarily unavailable"))
             .ReturnsAsync((HistoryEvent?)null);
         UpsertHistoryEventCommandHandler handler = new UpsertHistoryEventCommandHandler(
             historyRepository.Object,

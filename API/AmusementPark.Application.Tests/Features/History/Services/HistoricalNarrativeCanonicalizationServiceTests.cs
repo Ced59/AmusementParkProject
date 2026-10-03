@@ -115,6 +115,55 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
     }
 
     [Fact]
+    public async Task CanonicalizeAsync_WhenPublishedFactCommitsWithoutAcknowledgement_ShouldReconcileExactRevision()
+    {
+        Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository = new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = CreatePublicParkRepository();
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        factRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Revision != 5),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        factRepository
+            .SetupSequence(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Revision == 5
+                    && fact.PublicationState == HistoricalPublicationState.Published),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException("acknowledgement lost after commit"))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.AlreadyExists);
+        sourceRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.IsAny<HistoricalSourceReference>(),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        HistoricalNarrativeCanonicalizationService service = CreateService(
+            factRepository.Object,
+            sourceRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object);
+
+        HistoricalNarrativeCanonicalizationResult result = await service.CanonicalizeAsync(
+            CreateOpeningEvent(withSource: true),
+            CancellationToken.None);
+
+        Assert.Equal(HistoricalNarrativeCanonicalizationState.Canonicalized, result.State);
+        Assert.NotNull(result.CanonicalFactId);
+        factRepository.Verify(repository => repository.AppendRevisionAsync(
+            It.Is<HistoricalFact>(fact => fact.Revision == 5),
+            It.IsAny<HistoricalReviewEvent>(),
+            It.IsAny<CancellationToken>()), Times.Exactly(2));
+        factRepository.VerifyAll();
+        sourceRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task MigrateExistingAsync_WhenSourceUrlExceedsDomainLimit_ShouldKeepDraftAndReportWarning()
     {
         Mock<IHistoricalFactRepository> factRepository =

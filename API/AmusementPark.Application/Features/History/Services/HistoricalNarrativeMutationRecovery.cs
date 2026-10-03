@@ -17,30 +17,45 @@ public static class HistoricalNarrativeMutationRecovery
         Exception mutationFailure)
     {
         ArgumentNullException.ThrowIfNull(historyEventRepository);
-        try
+        List<Exception> reconciliationFailures = new List<Exception>();
+        for (int attempt = 0; attempt < 2; attempt++)
         {
-            HistoryEvent? committedUpdate = await historyEventRepository.GetCommittedUpdateAsync(
-                historyEventId,
-                mutationId,
-                CancellationToken.None);
-            if (committedUpdate is not null)
+            try
             {
-                return committedUpdate;
+                HistoryEvent? committedUpdate = await historyEventRepository.GetCommittedUpdateAsync(
+                    historyEventId,
+                    mutationId,
+                    CancellationToken.None);
+                if (committedUpdate is not null)
+                {
+                    return committedUpdate;
+                }
+
+                break;
             }
-        }
-        catch (Exception reconciliationException)
-        {
-            throw new AggregateException(
-                "The failed historical narrative update could not be reconciled by mutation identifier.",
-                mutationFailure,
-                reconciliationException);
+            catch (Exception reconciliationException)
+            {
+                reconciliationFailures.Add(reconciliationException);
+            }
         }
 
         if (!expectedCanonicalFactId.HasValue || retractionSnapshot is null)
         {
+            if (reconciliationFailures.Count > 0)
+            {
+                throw new AggregateException(
+                    "The failed historical narrative update could not be reconciled by mutation identifier.",
+                    new[] { mutationFailure }.Concat(reconciliationFailures));
+            }
+
             return null;
         }
 
+        Exception recoveryFailure = reconciliationFailures.Count == 0
+            ? mutationFailure
+            : new AggregateException(
+                "The failed historical narrative update could not be reconciled by mutation identifier.",
+                new[] { mutationFailure }.Concat(reconciliationFailures));
         await RestoreIfNarrativeIsUnchangedAsync(
             historyEventRepository,
             resourceRetractionService
@@ -50,7 +65,7 @@ public static class HistoricalNarrativeMutationRecovery
             expectedUpdatedAtUtc,
             expectedCanonicalFactId.Value,
             retractionSnapshot,
-            mutationFailure);
+            recoveryFailure);
         return null;
     }
 
