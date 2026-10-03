@@ -202,6 +202,20 @@ public sealed class ParkGraphUpsertProcessor
         result.Warnings.AddRange(canonicalization.Warnings);
     }
 
+    internal async Task<bool> IsCanonicalHistoryFactMissingAsync(
+        HistoryEvent historyEvent,
+        CancellationToken cancellationToken)
+    {
+        if (this.historicalNarrativeCanonicalizer is null)
+        {
+            return false;
+        }
+
+        return await this.historicalNarrativeCanonicalizer.IsCanonicalFactMissingAsync(
+            historyEvent,
+            cancellationToken);
+    }
+
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)
     {
         return await this.ProcessAsync(request, requestedByUserId, false, cancellationToken);

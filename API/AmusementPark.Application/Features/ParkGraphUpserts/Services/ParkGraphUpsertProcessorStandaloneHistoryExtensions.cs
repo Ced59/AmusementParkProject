@@ -216,7 +216,8 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
             HistoryEvent historyEvent = existing ?? new HistoryEvent();
             ParkGraphUpsertChange change = ParkGraphUpsertProcessorResolutionExtensions.BuildEntityChange("HistoryEvent", historyEvent.Id, key, ParkGraphUpsertProcessorHistoryExtensions.ResolveHistoryDisplayName(patch, eventType), existing is null ? "Created" : "Unchanged", existing is null ? "key" : "ownerKey");
             ParkGraphUpsertProcessorHistoryExtensions.PatchHistoryEvent(historyEvent, patch, null, entityType, ownerId, key, eventType, dateParts, imageKeys, result, apply, change);
-            if (change.Fields.Count > 0 || existing is null)
+            bool narrativeChanged = change.Fields.Count > 0 || existing is null;
+            if (narrativeChanged)
             {
                 change.ChangeType = existing is null ? "Created" : "Updated";
                 changed = true;
@@ -231,10 +232,27 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                 continue;
             }
 
-            if (apply && (change.Fields.Count > 0 || existing is null))
+            bool canonicalFactMissing = existing is not null
+                && !narrativeChanged
+                && await processorContext.IsCanonicalHistoryFactMissingAsync(
+                    historyEvent,
+                    cancellationToken);
+            if (canonicalFactMissing)
+            {
+                change.ChangeType = "Updated";
+                change.Fields.Add(new ParkGraphUpsertFieldChange
+                {
+                    Field = "canonicalHistory",
+                    OldValue = "missing",
+                    NewValue = "restored",
+                });
+                changed = true;
+            }
+
+            if (apply && (narrativeChanged || canonicalFactMissing))
             {
                 HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
-                if (existing is not null)
+                if (existing is not null && narrativeChanged)
                 {
                     retractionSnapshot = await processorContext.RetractCanonicalResourcesBeforeHistoryMutationAsync(
                         existing,
@@ -247,7 +265,7 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
                         historyEvent,
                         cancellationToken);
                 }
-                else
+                else if (narrativeChanged)
                 {
                     historyEvent = await ParkGraphHistoricalNarrativeUpdater.UpdateAsync(
                         processorContext,

@@ -32,6 +32,14 @@ public sealed class HistoricalNarrativeCanonicalizationService : IHistoricalNarr
         return this.CanonicalizeInternalAsync(historyEvent, cancellationToken);
     }
 
+    public Task<bool> IsCanonicalFactMissingAsync(
+        HistoryEvent historyEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(historyEvent);
+        return this.revisionWriter.IsCanonicalFactMissingAsync(historyEvent, cancellationToken);
+    }
+
     public Task<HistoricalNarrativeCanonicalizationResult> MigrateExistingAsync(
         HistoryEvent historyEvent,
         CancellationToken cancellationToken)
