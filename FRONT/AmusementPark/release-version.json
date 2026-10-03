@@ -1,6 +1,20 @@
 {
-  "version": "5.4.88",
+  "version": "5.4.89",
   "history": [
+    {
+      "version": "5.4.89",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Fiabilité des mises à jour améliorée",
+        "en": "Update reliability improved",
+        "de": "Zuverlässigkeit von Aktualisierungen verbessert",
+        "nl": "Betrouwbaarheid van updates verbeterd",
+        "it": "Affidabilità degli aggiornamenti migliorata",
+        "es": "Fiabilidad de las actualizaciones mejorada",
+        "pt": "Fiabilidade das atualizações melhorada",
+        "pl": "Zwiększona niezawodność aktualizacji"
+      }
+    },
     {
       "version": "5.4.88",
       "releasedAt": "2026-10-03",
