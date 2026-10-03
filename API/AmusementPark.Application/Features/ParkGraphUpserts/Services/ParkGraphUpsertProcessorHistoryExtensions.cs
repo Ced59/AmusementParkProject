@@ -110,7 +110,8 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
             HistoryEvent historyEvent = existing ?? new HistoryEvent();
             ParkGraphUpsertChange change = ParkGraphUpsertProcessorResolutionExtensions.BuildEntityChange("HistoryEvent", historyEvent.Id, key, ParkGraphUpsertProcessorHistoryExtensions.ResolveHistoryDisplayName(patch, eventType), existing is null ? "Created" : "Unchanged", existing is null ? "key" : "ownerKey");
             ParkGraphUpsertProcessorHistoryExtensions.PatchHistoryEvent(historyEvent, patch, targetPark.Id, entityType, ownerId, key, eventType, dateParts, imageKeys, result, apply, change);
-            if (change.Fields.Count > 0 || existing is null)
+            bool narrativeChanged = change.Fields.Count > 0 || existing is null;
+            if (narrativeChanged)
             {
                 change.ChangeType = existing is null ? "Created" : "Updated";
             }
@@ -124,37 +125,24 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
                 continue;
             }
 
-            if (apply && (change.Fields.Count > 0 || existing is null))
-            {
-                HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
-                if (existing is not null)
-                {
-                    retractionSnapshot = await processorContext.RetractCanonicalResourcesBeforeHistoryMutationAsync(
-                        existing,
-                        cancellationToken);
-                }
-
-                if (existing is null)
-                {
-                    historyEvent = await processorContext.historyEventRepository.CreateAsync(
-                        historyEvent,
-                        cancellationToken);
-                }
-                else
-                {
-                    historyEvent = await ParkGraphHistoricalNarrativeUpdater.UpdateAsync(
-                        processorContext,
-                        historyEvent,
-                        expectedUpdatedAtUtc,
-                        expectedCanonicalFactId,
-                        retractionSnapshot,
-                        cancellationToken);
-                }
-
-                await processorContext.CanonicalizeHistoryNarrativeAsync(
+            bool canonicalFactMissing = await ParkGraphHistoricalNarrativePersistence
+                .DetectMissingCanonicalFactAsync(
+                    processorContext,
+                    existing,
                     historyEvent,
+                    narrativeChanged,
+                    change,
+                    cancellationToken);
+
+            if (apply && (narrativeChanged || canonicalFactMissing))
+            {
+                historyEvent = await ParkGraphHistoricalNarrativePersistence.PersistAsync(
+                    processorContext,
+                    existing,
+                    historyEvent,
+                    narrativeChanged,
+                    expectedUpdatedAtUtc,
                     expectedCanonicalFactId,
-                    retractionSnapshot,
                     key,
                     result,
                     cancellationToken);

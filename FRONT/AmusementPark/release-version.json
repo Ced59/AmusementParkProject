@@ -1,6 +1,20 @@
 {
-  "version": "5.4.86",
+  "version": "5.4.87",
   "history": [
+    {
+      "version": "5.4.87",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Histoires des parcs de nouveau accessibles",
+        "en": "Park stories accessible again",
+        "de": "Parkgeschichten wieder zugänglich",
+        "nl": "Parkverhalen weer toegankelijk",
+        "it": "Storie dei parchi di nuovo accessibili",
+        "es": "Historias de los parques de nuevo accesibles",
+        "pt": "Histórias dos parques novamente acessíveis",
+        "pl": "Historie parków ponownie dostępne"
+      }
+    },
     {
       "version": "5.4.86",
       "releasedAt": "2026-10-03",

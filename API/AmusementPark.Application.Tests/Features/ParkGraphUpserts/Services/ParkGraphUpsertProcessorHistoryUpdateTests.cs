@@ -393,6 +393,38 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenArticleIsUnchangedButCanonicalFactIsMissing_ShouldRebuildCanonicalResources()
+    {
+        HistoryEvent existing = BuildExistingEvent();
+        existing.CanonicalFactId = Guid.NewGuid();
+        existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
+        context.SetCanonicalFactMissing(true);
+        string document = BuildDocument($$"""
+        "article": {{BuildArticleJson(introText: "  Looping Star et Wild Water Slide arrivent en 1979.  ", includeBlockIds: false)}}
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> apply = await context.ApplyAsync(document);
+
+        Assert.True(apply.IsSuccess);
+        AssertHistoryChange(apply, "Updated", "canonicalHistory");
+        context.HistoryEventRepository.Verify(
+            value => value.UpdateAsync(
+                It.IsAny<string>(),
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+        context.HistoricalNarrativeCanonicalizer.Verify(
+            value => value.CanonicalizeAsync(
+                It.Is<HistoryEvent>(historyEvent => historyEvent.Id == "history-1"),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenArticleImageKeysCannotBeResolved_ShouldPreserveExistingImageIds()
     {
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());

@@ -47,6 +47,22 @@ internal sealed class HistoricalNarrativeCanonicalRevisionWriter
         }
     }
 
+    internal async Task<bool> IsCanonicalFactMissingAsync(
+        HistoryEvent historyEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(historyEvent);
+        if (!historyEvent.CanonicalFactId.HasValue)
+        {
+            return true;
+        }
+
+        HistoricalFact? fact = await this.factRepository.GetLatestRevisionAsync(
+            historyEvent.CanonicalFactId.Value,
+            cancellationToken);
+        return fact is null;
+    }
+
     internal async Task AppendFactAsync(
         HistoricalFact fact,
         HistoricalReviewEventType eventType,
