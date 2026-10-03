@@ -1,0 +1,98 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.account-deletion {
+  display: grid;
+  min-width: 0;
+  gap: 1rem;
+  border-color: color-mix(in srgb, var(--c-rose) 40%, var(--app-border));
+}
+
+.account-deletion__heading {
+  display: grid;
+  min-width: 0;
+  gap: 0.45rem;
+}
+
+.account-deletion__heading h2,
+.account-deletion__heading p,
+.account-deletion__warning p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.account-deletion__heading p,
+.account-deletion__fields small {
+  color: var(--app-text-muted);
+  line-height: 1.5;
+}
+
+.account-deletion__open {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.account-deletion__warning {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  min-width: 0;
+  padding: 0.9rem;
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--c-rose) 12%, var(--app-surface-2));
+  color: var(--app-heading);
+}
+
+.account-deletion__warning i,
+.account-deletion__error {
+  color: var(--c-rose);
+}
+
+.account-deletion__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.account-deletion__fields small {
+  grid-column: 1 / -1;
+}
+
+.account-deletion__error {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.account-deletion__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .account-deletion__fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .account-deletion__fields small {
+    grid-column: auto;
+  }
+
+  .account-deletion__actions,
+  .account-deletion__actions button,
+  .account-deletion__open {
+    width: 100%;
+  }
+
+  .account-deletion__actions button,
+  .account-deletion__open {
+    justify-content: center;
+  }
+}

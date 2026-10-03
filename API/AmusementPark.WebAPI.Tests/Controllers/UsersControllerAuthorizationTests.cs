@@ -111,6 +111,8 @@ public sealed class UsersControllerAuthorizationTests
             new Mock<ICommandHandler<LockUserCommand, ApplicationResult<User>>>(
                 MockBehavior.Strict).Object,
             new Mock<ICommandHandler<UnlockUserCommand, ApplicationResult<User>>>(
+                MockBehavior.Strict).Object,
+            new Mock<ICommandHandler<DeleteAccountCommand, ApplicationResult>>(
                 MockBehavior.Strict).Object);
     }
 }

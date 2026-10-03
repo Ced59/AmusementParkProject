@@ -77,4 +77,34 @@ public sealed class RefreshTokenRepository : IRefreshTokenRepository
         UpdateResult result = await this.collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
         return result.ModifiedCount > 0;
     }
+
+    public async Task<long> RevokeAllAsync(
+        string userId,
+        string reason,
+        CancellationToken cancellationToken)
+    {
+        DateTime now = DateTime.UtcNow;
+        FilterDefinition<RefreshTokenDocument> filter = Builders<RefreshTokenDocument>.Filter.And(
+            Builders<RefreshTokenDocument>.Filter.Eq(document => document.UserId, userId),
+            Builders<RefreshTokenDocument>.Filter.Eq(document => document.RevokedAtUtc, null));
+        UpdateDefinition<RefreshTokenDocument> update = Builders<RefreshTokenDocument>.Update
+            .Set(document => document.RevokedAtUtc, now)
+            .Set(document => document.RevocationReason, reason)
+            .Set(document => document.UpdatedAt, now);
+        UpdateResult result = await this.collection.UpdateManyAsync(
+            filter,
+            update,
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount;
+    }
+
+    public async Task<long> DeleteAllAsync(
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteManyAsync(
+            document => document.UserId == userId,
+            cancellationToken);
+        return result.DeletedCount;
+    }
 }

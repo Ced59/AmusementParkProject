@@ -1,4 +1,24 @@
 {
+  "accountDeletion": {
+    "kicker": "Sicherheitsbereich",
+    "title": "Dein Konto löschen",
+    "description": "Bereite die endgültige Löschung deines Kontos und aller damit verknüpften personenbezogenen Daten vor.",
+    "openAction": "Löschung vorbereiten",
+    "warning": "Diese Aktion kann nicht rückgängig gemacht werden. Deine Besuche, Fahrten, Bewertungen, Freigaben, Favoriten, Reisen, Profile und zuordenbaren Beiträge werden gelöscht.",
+    "emailLabel": "Bestätige deine E-Mail-Adresse",
+    "emailPlaceholder": "deine-adresse@beispiel.de",
+    "passwordLabel": "Aktuelles Passwort",
+    "passwordPlaceholder": "Dein Passwort",
+    "passwordHint": "Lass dieses Feld leer, wenn du dich ausschließlich mit Google anmeldest.",
+    "submitting": "Löschung läuft…",
+    "confirmAction": "Mein Konto endgültig löschen",
+    "cancelAction": "Abbrechen",
+    "accepted": "Die Löschung deines Kontos wurde gestartet.",
+    "errors": {
+      "emailMismatch": "Die eingegebene Adresse stimmt nicht mit deinem Konto überein.",
+      "request": "Die Löschung konnte nicht gestartet werden. Prüfe deine Angaben und versuche es erneut."
+    }
+  },
   "collections": {
     "kicker": "Deine Wünsche",
     "title": "Deine Park-Sammlung",

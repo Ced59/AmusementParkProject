@@ -45,4 +45,5 @@ internal static class UserApplicationErrors
     public static ApplicationError PasswordResetTokenExpired() => ApplicationError.RuleViolation("user.password-reset.token.expired", "The password reset token has expired.");
     public static ApplicationError PasswordResetEmailSendFailed() => ApplicationError.Technical("user.password-reset.email.failed", "The password reset email could not be sent.");
     public static ApplicationError PasswordResetFailed() => ApplicationError.Technical("user.password-reset.failed", "Password reset failed.");
+    public static ApplicationError AccountDeletionConfirmationInvalid() => ApplicationError.RuleViolation("user.account-deletion.confirmation-invalid", "The account deletion confirmation is invalid.");
 }

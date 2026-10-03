@@ -836,7 +836,8 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-10`](../../architecture/product-growth-qual-10-beta-research-protocols-2026-09-30.md) | Protocole bêta/recherche — livré le 30 septembre 2026 | Tests comparables |
 | [`QUAL-G`](../../architecture/product-growth-final-guide-2026-09-30.md) | Guide métier, notation, MongoDB et preuves — livré le 30 septembre 2026 | Système explicable et auditable |
 | [`QUAL-11`](../../architecture/product-growth-qual-11-federated-account-export-2026-10-03.md) | Export fédéré des données du compte — livré le 3 octobre 2026 | Archive lisible et sans identifiants internes |
-| `QUAL-12+` | Tranche transverse par roadmap | Gate locale documentée |
+| [`QUAL-12`](../../architecture/product-growth-qual-12-global-account-deletion-2026-10-04.md) | Suppression globale du compte — livrée le 4 octobre 2026 | Coupure immédiate, purge relançable et audit anonymisé |
+| `QUAL-13+` | Tranche transverse future par roadmap | Gate locale documentée |
 
 ### Implémentation `QUAL-01` — 29 septembre 2026
 
@@ -882,7 +883,7 @@ seconde observabilité.
 ### Implémentation `QUAL-04` — 29 septembre 2026
 
 Le registre versionné de confidentialité applique les douze dimensions de cette
-roadmap à huit surfaces métier, 116 documents et 1 105 champs persistés. Il décrit
+roadmap à huit surfaces métier, 117 documents et 1 107 champs persistés. Il décrit
 les visibilités privées ou explicitement publiées, les exports réellement couverts,
 les rétentions, les sous-traitants et les accès support sans présenter les
 capacités partielles comme terminées.
@@ -1017,6 +1018,23 @@ explicitement plutôt que de tronquer le résultat.
 La couverture précise, les limites support/médias et les preuves automatisées sont
 documentées dans
 [`QUAL-11`](../../architecture/product-growth-qual-11-federated-account-export-2026-10-03.md).
+
+### Implémentation `QUAL-12` — 4 octobre 2026
+
+Le profil propose une zone de danger responsive qui exige l’adresse exacte du
+compte et, pour un compte local, le mot de passe actuel. L’API enregistre une
+opération idempotente, programme un job durable puis coupe immédiatement les
+sessions. Une relance du navigateur ou du worker reprend la même opération au
+lieu de créer deux suppressions concurrentes.
+
+Le coordinateur appelle les suppressions sûres déjà existantes pour les notes,
+les partages et les alertes, puis purge Passeport, voyages, Park Fit,
+contributions, médias et accès techniques rattachables. L’identité et les jetons
+sont supprimés en dernier. Les références indispensables à l’audit sont
+anonymisées ; le job durable ne transporte que l’identifiant éphémère de
+l’opération et celle-ci disparaît après succès. Le schéma, l’ordre et les limites
+sont documentés dans
+[`QUAL-12`](../../architecture/product-growth-qual-12-global-account-deletion-2026-10-04.md).
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

@@ -14,6 +14,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderC
 import { UiFieldInputComponent } from '@ui/forms';
 import { ProfileRatingsPanelComponent } from '@features/profile/ratings/profile-ratings-panel.component';
 import { PassportExportPanelComponent } from '@features/profile/passport/components/passport-export-panel/passport-export-panel.component';
+import { AccountDeletionPanelComponent } from '@features/profile/components/account-deletion-panel/account-deletion-panel.component';
 
 @Component({
   selector: 'app-profile-page-view',
@@ -32,7 +33,8 @@ import { PassportExportPanelComponent } from '@features/profile/passport/compone
     UiSectionHeaderComponent,
     UiSurfaceDirective,
     ProfileRatingsPanelComponent,
-    PassportExportPanelComponent
+    PassportExportPanelComponent,
+    AccountDeletionPanelComponent
   ]
 })
 export class ProfilePageViewComponent {
@@ -74,6 +76,7 @@ export class ProfilePageViewComponent {
   @Output() notificationsOpened: EventEmitter<void> = new EventEmitter<void>();
   @Output() tripsOpened: EventEmitter<void> = new EventEmitter<void>();
   @Output() passportVisitCreateClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() accountDeletionAccepted: EventEmitter<void> = new EventEmitter<void>();
 
   editField(field: string): void {
     this.editFieldClicked.emit(field);
@@ -133,5 +136,9 @@ export class ProfilePageViewComponent {
 
   openTrips(): void {
     this.tripsOpened.emit();
+  }
+
+  onAccountDeletionAccepted(): void {
+    this.accountDeletionAccepted.emit();
   }
 }

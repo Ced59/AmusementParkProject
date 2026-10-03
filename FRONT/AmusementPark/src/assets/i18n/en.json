@@ -1,4 +1,24 @@
 {
+  "accountDeletion": {
+    "kicker": "Security area",
+    "title": "Delete your account",
+    "description": "Prepare the permanent deletion of your account and all personal data linked to it.",
+    "openAction": "Prepare deletion",
+    "warning": "This action cannot be undone. Your visits, rides, ratings, shares, favourites, trips, profiles and attributable contributions will be deleted.",
+    "emailLabel": "Confirm your email address",
+    "emailPlaceholder": "your-address@example.com",
+    "passwordLabel": "Current password",
+    "passwordPlaceholder": "Your password",
+    "passwordHint": "Leave this field empty if you only sign in with Google.",
+    "submitting": "Deletion in progress…",
+    "confirmAction": "Permanently delete my account",
+    "cancelAction": "Cancel",
+    "accepted": "Your account deletion has started.",
+    "errors": {
+      "emailMismatch": "The address you entered does not match your account.",
+      "request": "Deletion could not start. Check your details and try again."
+    }
+  },
   "collections": {
     "kicker": "Your wish list",
     "title": "Your park collection",

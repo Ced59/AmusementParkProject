@@ -14,4 +14,8 @@ public interface IRefreshTokenRepository
     Task<bool> RotateAsync(string currentTokenHash, RefreshToken replacementToken, CancellationToken cancellationToken);
 
     Task<bool> RevokeAsync(string tokenHash, string reason, CancellationToken cancellationToken);
+
+    Task<long> RevokeAllAsync(string userId, string reason, CancellationToken cancellationToken);
+
+    Task<long> DeleteAllAsync(string userId, CancellationToken cancellationToken);
 }

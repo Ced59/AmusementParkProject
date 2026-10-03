@@ -2224,6 +2224,21 @@ public sealed class ImageRepository : IImageRepository
         return result.DeletedCount > 0;
     }
 
+    public async Task<bool> DeleteForAccountDeletionAsync(
+        string imageId,
+        CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            document => document.Id == imageId,
+            cancellationToken);
+        if (result.DeletedCount > 0)
+        {
+            InvalidateReadCache();
+        }
+
+        return result.DeletedCount > 0;
+    }
+
     public async Task<bool> DeleteIfUnchangedAsync(
         string imageId,
         ImageMutationPrecondition precondition,

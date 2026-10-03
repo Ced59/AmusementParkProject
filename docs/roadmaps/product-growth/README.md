@@ -1,13 +1,13 @@
 # Amusement Parks Fun — Programme produit Web, confiance et croissance utile
 
-> Statut au 30 septembre 2026 : tranches techniques FOUNDATION à QUAL-10
+> Statut au 4 octobre 2026 : tranches techniques FOUNDATION à QUAL-12
 > implémentées. Les preuves terrain restent suivies séparément et ne sont pas
 > inventées. Le fonctionnement livré, ses schémas et ses preuves sont rassemblés
 > dans le [guide métier et architecture final](../../architecture/product-growth-final-guide-2026-09-30.md).
 > L'export fédéré du compte identifié par QUAL-04 est livré par
 > [QUAL-11](../../architecture/product-growth-qual-11-federated-account-export-2026-10-03.md).
-> La suppression globale orchestrée reste l'extension de cycle de vie connue,
-> non présentée comme déjà livrée.
+> La suppression globale orchestrée est livrée par
+> [QUAL-12](../../architecture/product-growth-qual-12-global-account-deletion-2026-10-04.md).
 >
 > Base fonctionnelle initialement auditée : `master` au commit `943f6f9c07548b91582cbe853cf17bb14cbeb0df`, le 27 août 2026. Les fondations techniques ont ensuite été réévaluées sur `master` au commit `8742d6e657ef6c1c64f6e360e29fe2aa2ae6b019`, le 28 août 2026.
 >

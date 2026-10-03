@@ -191,6 +191,16 @@ public sealed class UserRepository : IUserRepository
                 expectedUpdatedAtUtc));
     }
 
+    public async Task<bool> DeleteAsync(
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            document => document.Id == userId,
+            cancellationToken);
+        return result.DeletedCount == 1;
+    }
+
     public async Task<bool> UpdateAvatarUrlAsync(
         string userId,
         string? avatarUrl,

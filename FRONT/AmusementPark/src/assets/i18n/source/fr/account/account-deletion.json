@@ -1,0 +1,22 @@
+{
+  "accountDeletion": {
+    "kicker": "Zone de sécurité",
+    "title": "Supprimer ton compte",
+    "description": "Prépare la suppression définitive de ton compte et de toutes les données personnelles qui lui sont rattachées.",
+    "openAction": "Préparer la suppression",
+    "warning": "Cette action est irréversible. Tes visites, tours, notes, partages, favoris, voyages, profils et contributions rattachables seront supprimés.",
+    "emailLabel": "Confirme ton adresse e-mail",
+    "emailPlaceholder": "ton-adresse@exemple.fr",
+    "passwordLabel": "Mot de passe actuel",
+    "passwordPlaceholder": "Ton mot de passe",
+    "passwordHint": "Laisse ce champ vide si tu te connectes uniquement avec Google.",
+    "submitting": "Suppression en cours…",
+    "confirmAction": "Supprimer définitivement mon compte",
+    "cancelAction": "Annuler",
+    "accepted": "La suppression de ton compte a commencé.",
+    "errors": {
+      "emailMismatch": "L’adresse saisie ne correspond pas à celle de ton compte.",
+      "request": "La suppression n’a pas pu démarrer. Vérifie tes informations et réessaie."
+    }
+  }
+}

@@ -39,6 +39,7 @@ using AmusementPark.Core.Domain.Trips;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Services;
 using AmusementPark.Application.Features.Trips.Services;
+using AmusementPark.Application.Features.Users.Services;
 using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Validation;
@@ -299,6 +300,10 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IFederatedAccountExportSource, FederatedAccountExportSource>();
         services.AddScoped<PassportExportScheduler>();
         services.AddDurableBackgroundJobHandler<PassportExportJobHandler>();
+        services.AddScoped<AccountDeletionScheduler>();
+        services.AddScoped<AccountRatingDeletionService>();
+        services.AddScoped<AccountDeletionCoordinator>();
+        services.AddDurableBackgroundJobHandler<AccountDeletionJobHandler>();
         services.AddScoped<VisitPurgeScheduler>();
         services.AddDurableBackgroundJobHandler<VisitPurgeJobHandler>();
         services.AddScoped<RideOccurrenceAppendOrderNormalizer>();

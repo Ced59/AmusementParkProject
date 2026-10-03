@@ -1,0 +1,63 @@
+<section class="account-deletion" appUiSurface="panel" appUiSurfacePadding="spacious" aria-labelledby="account-deletion-title">
+  <div class="account-deletion__heading">
+    <app-ui-kicker tone="rose" iconClass="pi pi-shield">
+      {{ 'accountDeletion.kicker' | translate }}
+    </app-ui-kicker>
+    <h2 id="account-deletion-title">{{ 'accountDeletion.title' | translate }}</h2>
+    <p>{{ 'accountDeletion.description' | translate }}</p>
+  </div>
+
+  @if (!expanded()) {
+    <button appUiButton="soft" type="button" class="account-deletion__open" (click)="open()">
+      <i class="pi pi-trash" aria-hidden="true"></i>
+      <span>{{ 'accountDeletion.openAction' | translate }}</span>
+    </button>
+  } @else {
+    <div class="account-deletion__warning" role="note">
+      <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+      <p>{{ 'accountDeletion.warning' | translate }}</p>
+    </div>
+
+    <div class="account-deletion__fields">
+      <app-ui-field-input
+        inputId="account-deletion-email"
+        type="email"
+        autocomplete="email"
+        labelKey="accountDeletion.emailLabel"
+        placeholderKey="accountDeletion.emailPlaceholder"
+        [value]="confirmationEmail"
+        [disabled]="submitting()"
+        (valueChange)="confirmationEmail = $event">
+      </app-ui-field-input>
+
+      <app-ui-field-input
+        inputId="account-deletion-password"
+        type="password"
+        autocomplete="current-password"
+        labelKey="accountDeletion.passwordLabel"
+        placeholderKey="accountDeletion.passwordPlaceholder"
+        [value]="currentPassword"
+        [disabled]="submitting()"
+        (valueChange)="currentPassword = $event">
+      </app-ui-field-input>
+      <small>{{ 'accountDeletion.passwordHint' | translate }}</small>
+    </div>
+
+    @if (errorKey()) {
+      <p class="account-deletion__error" role="alert">
+        <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+        <span>{{ errorKey()! | translate }}</span>
+      </p>
+    }
+
+    <div class="account-deletion__actions">
+      <button appUiButton="rose" type="button" [disabled]="submitting()" (click)="submit()">
+        <i [class]="submitting() ? 'pi pi-spin pi-spinner' : 'pi pi-trash'" aria-hidden="true"></i>
+        <span>{{ (submitting() ? 'accountDeletion.submitting' : 'accountDeletion.confirmAction') | translate }}</span>
+      </button>
+      <button appUiButton="ghost" type="button" [disabled]="submitting()" (click)="cancel()">
+        {{ 'accountDeletion.cancelAction' | translate }}
+      </button>
+    </div>
+  }
+</section>

@@ -174,6 +174,10 @@ export class AuthService {
     }
   }
 
+  clearAfterAccountDeletion(): void {
+    this.clearSession(true);
+  }
+
   hasRole(expectedRole: string): boolean {
     if (!this.isLoggedIn()) {
       return false;

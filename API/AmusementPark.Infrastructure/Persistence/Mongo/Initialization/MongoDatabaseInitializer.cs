@@ -670,6 +670,11 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.RefreshTokensCollectionName, cancellationToken);
         await this.InitializeRefreshTokensIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(
+            this.settings.AccountDeletionOperationsCollectionName,
+            cancellationToken);
+        await this.InitializeAccountDeletionOperationIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.ParkDataEditorAccessTokensCollectionName, cancellationToken);
         await this.InitializeParkDataEditorAccessTokensIndexesAsync(cancellationToken);
 
@@ -2513,6 +2518,25 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken);
+    }
+
+    private async Task InitializeAccountDeletionOperationIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<AccountDeletionOperationDocument> collection =
+            this.database.GetCollection<AccountDeletionOperationDocument>(
+                this.settings.AccountDeletionOperationsCollectionName);
+        CreateIndexModel<AccountDeletionOperationDocument> userKeyIndex = new(
+            Builders<AccountDeletionOperationDocument>.IndexKeys.Ascending(
+                document => document.UserKey),
+            new CreateIndexOptions
+            {
+                Unique = true,
+                Name = "ux_account_deletion_operations_userKey",
+            });
+        await collection.Indexes.CreateOneAsync(
+            userKeyIndex,
+            cancellationToken: cancellationToken);
     }
 
     private async Task InitializeAdminUserAsync(CancellationToken cancellationToken)
