@@ -72,6 +72,59 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenMigratedNarrativeUpdateFails_ShouldRestoreCanonicalFact()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoryEvent existing = BuildExistingEvent();
+        existing.CanonicalFactId = factId;
+        existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
+        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(
+            factId,
+            HistoricalSubjectType.Park,
+            "park-1");
+        HistoricalFact retraction = canonicalFact.CreateRetraction(
+            canonicalFact.RecordedAtUtc.AddSeconds(1));
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
+        context.HistoricalFactRepository
+            .SetupSequence(repository => repository.GetLatestRevisionAsync(
+                factId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(canonicalFact)
+            .ReturnsAsync(retraction);
+        context.HistoricalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == factId
+                    && fact.PublicationState == HistoricalPublicationState.Withdrawn),
+                It.Is<HistoricalReviewEvent>(review => review.EventType
+                    == HistoricalReviewEventType.Retracted),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        context.HistoricalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == factId
+                    && fact.Revision == retraction.Revision + 1
+                    && fact.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                It.Is<HistoricalReviewEvent>(review => review.EventType
+                    == HistoricalReviewEventType.SubmittedForEditorialReview),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        context.FailNextHistoryUpdate(new TimeoutException("write failed before commit"));
+        string document = BuildDocument("""
+        "sources": [
+          {
+            "label": "Nouvelle archive",
+            "url": "https://example.test/new-history"
+          }
+        ]
+        """);
+
+        await Assert.ThrowsAsync<TimeoutException>(() => context.ApplyAsync(document));
+
+        context.HistoricalFactRepository.VerifyAll();
+        Assert.Equal(factId, context.ReadPersistedEvent().CanonicalFactId);
+    }
+
+    [Fact]
     public async Task PreviewAndApplyAsync_WhenExistingArticleTextChanges_ShouldReportAndPersistUpdate()
     {
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());

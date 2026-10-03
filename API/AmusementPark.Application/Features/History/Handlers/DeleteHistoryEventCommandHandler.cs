@@ -3,6 +3,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Contracts;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -50,20 +51,64 @@ public sealed class DeleteHistoryEventCommandHandler : ICommandHandler<DeleteHis
             return ApplicationResult.Failure(ApplicationErrors.EntityNotFound(nameof(HistoryEvent), command.EventId));
         }
 
+        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
         if (historyEvent.CanonicalFactId.HasValue)
         {
-            await this.canonicalResourceRetractionService.RetractAsync(
+            retractionSnapshot = await this.canonicalResourceRetractionService.RetractAsync(
                 historyEvent.CanonicalFactId.Value,
                 cancellationToken);
         }
 
-        bool deleted = await this.historyEventRepository.DeleteAsync(eventId, cancellationToken);
+        bool deleted;
+        try
+        {
+            deleted = await this.historyEventRepository.DeleteAsync(
+                eventId,
+                historyEvent.UpdatedAtUtc,
+                historyEvent.CanonicalFactId,
+                cancellationToken);
+        }
+        catch (Exception deletionException)
+        {
+            await this.RestorePreviousResourcesIfNeededAsync(
+                historyEvent,
+                retractionSnapshot,
+                deletionException);
+            throw;
+        }
+
         if (!deleted)
         {
+            InvalidOperationException conflictException = new InvalidOperationException(
+                "The historical narrative changed concurrently and could not be deleted safely.");
+            await this.RestorePreviousResourcesIfNeededAsync(
+                historyEvent,
+                retractionSnapshot,
+                conflictException);
             return ApplicationResult.Failure(ApplicationErrors.EntityNotFound(nameof(HistoryEvent), command.EventId));
         }
 
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult.Success();
+    }
+
+    private Task RestorePreviousResourcesIfNeededAsync(
+        HistoryEvent historyEvent,
+        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot,
+        Exception deletionFailure)
+    {
+        if (!historyEvent.CanonicalFactId.HasValue || retractionSnapshot is null)
+        {
+            return Task.CompletedTask;
+        }
+
+        return HistoricalNarrativeMutationRecovery.RestoreIfNarrativeIsUnchangedAsync(
+            this.historyEventRepository,
+            this.canonicalResourceRetractionService,
+            historyEvent.Id,
+            historyEvent.UpdatedAtUtc,
+            historyEvent.CanonicalFactId.Value,
+            retractionSnapshot,
+            deletionFailure);
     }
 }

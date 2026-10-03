@@ -55,5 +55,9 @@ public interface IHistoryEventRepository
         IReadOnlyCollection<string> warnings,
         CancellationToken cancellationToken);
 
-    Task<bool> DeleteAsync(string eventId, CancellationToken cancellationToken);
+    Task<bool> DeleteAsync(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        CancellationToken cancellationToken);
 }

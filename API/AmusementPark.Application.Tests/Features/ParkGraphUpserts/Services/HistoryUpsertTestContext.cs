@@ -36,6 +36,7 @@ internal sealed class HistoryUpsertTestContext
     private readonly Mock<ISearchProjectionWriter> searchProjectionWriter;
     private readonly Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier;
     private HistoryEvent persistedEvent;
+    private Exception? nextHistoryUpdateFailure;
 
     public HistoryUpsertTestContext(HistoryEvent existingEvent)
     {
@@ -60,18 +61,30 @@ internal sealed class HistoryUpsertTestContext
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(() => CloneHistoryEvent(this.persistedEvent));
         this.HistoryEventRepository
+            .Setup(value => value.GetByIdAsync(
+                "history-1",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(() => CloneHistoryEvent(this.persistedEvent));
+        this.HistoryEventRepository
             .Setup(value => value.UpdateAsync(
                 "history-1",
                 It.IsAny<HistoryEvent>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<Guid?>(),
                 It.IsAny<CancellationToken>()))
-            .Callback<string, HistoryEvent, DateTime, Guid?, CancellationToken>((_, historyEvent, _, _, _) =>
+            .Returns((string _, HistoryEvent historyEvent, DateTime _, Guid? _, CancellationToken _) =>
             {
+                if (this.nextHistoryUpdateFailure is not null)
+                {
+                    Exception failure = this.nextHistoryUpdateFailure;
+                    this.nextHistoryUpdateFailure = null;
+                    return Task.FromException<HistoryEvent?>(failure);
+                }
+
                 this.persistedEvent = CloneHistoryEvent(historyEvent);
-            })
-            .ReturnsAsync((string _, HistoryEvent historyEvent, DateTime _, Guid? _, CancellationToken _) =>
-                CloneHistoryEvent(historyEvent));
+                return Task.FromResult<HistoryEvent?>(CloneHistoryEvent(historyEvent));
+            });
         this.HistoricalNarrativeCanonicalizer
             .Setup(value => value.CanonicalizeAsync(
                 It.IsAny<HistoryEvent>(),
@@ -153,6 +166,12 @@ internal sealed class HistoryUpsertTestContext
     public HistoryEvent ReadPersistedEvent()
     {
         return CloneHistoryEvent(this.persistedEvent);
+    }
+
+    public void FailNextHistoryUpdate(Exception failure)
+    {
+        this.nextHistoryUpdateFailure = failure
+            ?? throw new ArgumentNullException(nameof(failure));
     }
 
     private static HistoryEvent CloneHistoryEvent(HistoryEvent source)

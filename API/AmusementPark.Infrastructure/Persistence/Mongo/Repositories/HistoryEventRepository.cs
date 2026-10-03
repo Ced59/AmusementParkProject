@@ -416,9 +416,18 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return result.MatchedCount == 1;
     }
 
-    public async Task<bool> DeleteAsync(string eventId, CancellationToken cancellationToken)
+    public async Task<bool> DeleteAsync(
+        string eventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        CancellationToken cancellationToken)
     {
-        DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == eventId, cancellationToken);
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            BuildConditionalUpdateFilter(
+                eventId,
+                expectedUpdatedAtUtc,
+                expectedCanonicalFactId),
+            cancellationToken);
         return result.DeletedCount > 0;
     }
 

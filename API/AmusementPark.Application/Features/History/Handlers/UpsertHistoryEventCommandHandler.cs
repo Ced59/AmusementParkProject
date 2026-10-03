@@ -82,10 +82,11 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             : existing;
         DateTime expectedUpdatedAtUtc = existing?.UpdatedAtUtc ?? default;
         Guid? expectedCanonicalFactId = existing?.CanonicalFactId;
+        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
 
         if (existing?.CanonicalFactId is Guid canonicalFactId)
         {
-            await this.canonicalResourceRetractionService.RetractAsync(
+            retractionSnapshot = await this.canonicalResourceRetractionService.RetractAsync(
                 canonicalFactId,
                 cancellationToken);
         }
@@ -99,14 +100,41 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         }
         else
         {
-            saved = await this.historyEventRepository.UpdateAsync(
+            HistoryEvent? updatedHistoryEvent;
+            try
+            {
+                updatedHistoryEvent = await this.historyEventRepository.UpdateAsync(
                     historyEvent.Id,
                     historyEvent,
                     expectedUpdatedAtUtc,
                     expectedCanonicalFactId,
-                    cancellationToken)
-                ?? throw new InvalidOperationException(
+                    cancellationToken);
+            }
+            catch (Exception mutationException)
+            {
+                await this.RestorePreviousResourcesIfNeededAsync(
+                    historyEvent.Id,
+                    expectedUpdatedAtUtc,
+                    expectedCanonicalFactId,
+                    retractionSnapshot,
+                    mutationException);
+                throw;
+            }
+
+            if (updatedHistoryEvent is null)
+            {
+                InvalidOperationException conflictException = new InvalidOperationException(
                     "The historical narrative changed concurrently and could not be updated safely.");
+                await this.RestorePreviousResourcesIfNeededAsync(
+                    historyEvent.Id,
+                    expectedUpdatedAtUtc,
+                    expectedCanonicalFactId,
+                    retractionSnapshot,
+                    conflictException);
+                throw conflictException;
+            }
+
+            saved = updatedHistoryEvent;
         }
         HistoricalNarrativeCanonicalizationResult canonicalization =
             await this.historicalNarrativeCanonicalizer.CanonicalizeAsync(saved, cancellationToken);
@@ -116,32 +144,40 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
                 HistoryApplicationErrors.InvalidEventType());
         }
 
-        bool canonicalizationSaved = await this.historyEventRepository.SetCanonicalizationAsync(
-            saved.Id,
-            saved.UpdatedAtUtc,
-            canonicalization.CanonicalFactId,
-            canonicalization.State,
-            HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
-            canonicalization.Warnings,
+        await HistoricalNarrativeCanonicalLinker.LinkAsync(
+            this.historyEventRepository,
+            this.canonicalResourceRetractionService,
+            saved,
+            canonicalization,
             cancellationToken);
-        if (!canonicalizationSaved)
-        {
-            if (canonicalization.CanonicalFactId.HasValue)
-            {
-                await this.canonicalResourceRetractionService.RetractAsync(
-                    canonicalization.CanonicalFactId.Value,
-                    cancellationToken);
-            }
-
-            throw new InvalidOperationException(
-                "The historical narrative changed while its canonical HIST fact was being linked.");
-        }
 
         saved.CanonicalFactId = canonicalization.CanonicalFactId;
         saved.CanonicalizationState = canonicalization.State;
 
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<HistoryEvent>.Success(saved);
+    }
+
+    private Task RestorePreviousResourcesIfNeededAsync(
+        string historyEventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot,
+        Exception mutationFailure)
+    {
+        if (!expectedCanonicalFactId.HasValue || retractionSnapshot is null)
+        {
+            return Task.CompletedTask;
+        }
+
+        return HistoricalNarrativeMutationRecovery.RestoreIfNarrativeIsUnchangedAsync(
+            this.historyEventRepository,
+            this.canonicalResourceRetractionService,
+            historyEventId,
+            expectedUpdatedAtUtc,
+            expectedCanonicalFactId.Value,
+            retractionSnapshot,
+            mutationFailure);
     }
 
     private async Task<ApplicationError?> ValidateAsync(HistoryEventWriteModel model, CancellationToken cancellationToken)

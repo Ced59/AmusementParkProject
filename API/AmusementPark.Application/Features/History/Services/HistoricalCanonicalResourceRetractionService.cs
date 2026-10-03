@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Services;
@@ -17,7 +18,9 @@ public sealed class HistoricalCanonicalResourceRetractionService
             ?? throw new ArgumentNullException(nameof(sourceRetractionService));
     }
 
-    public async Task RetractAsync(Guid factId, CancellationToken cancellationToken)
+    public async Task<HistoricalCanonicalResourceRetractionSnapshot> RetractAsync(
+        Guid factId,
+        CancellationToken cancellationToken)
     {
         HistoricalFact? attemptedFactSnapshot = null;
         Dictionary<Guid, HistoricalSourceReference> attemptedSourceSnapshots =
@@ -42,45 +45,72 @@ public sealed class HistoricalCanonicalResourceRetractionService
                         snapshot),
                     cancellationToken);
             }
+
+            return new HistoricalCanonicalResourceRetractionSnapshot(
+                attemptedFactSnapshot,
+                attemptedSourceSnapshots.Values.ToArray());
         }
         catch (Exception retractionException)
         {
-            List<Exception> compensationExceptions = new List<Exception>();
-            foreach (HistoricalSourceReference snapshot in attemptedSourceSnapshots.Values.Reverse())
+            HistoricalCanonicalResourceRetractionSnapshot snapshot =
+                new HistoricalCanonicalResourceRetractionSnapshot(
+                    attemptedFactSnapshot,
+                    attemptedSourceSnapshots.Values.ToArray());
+            try
             {
-                try
-                {
-                    await this.sourceRetractionService.RestoreAsync(snapshot, CancellationToken.None);
-                }
-                catch (Exception compensationException)
-                {
-                    compensationExceptions.Add(compensationException);
-                }
+                await this.RestoreAsync(snapshot, CancellationToken.None);
             }
-
-            if (attemptedFactSnapshot is not null)
+            catch (Exception compensationException)
             {
-                try
-                {
-                    await this.factRetractionService.RestoreAsync(
-                        attemptedFactSnapshot,
-                        CancellationToken.None);
-                }
-                catch (Exception compensationException)
-                {
-                    compensationExceptions.Add(compensationException);
-                }
-            }
-
-            if (compensationExceptions.Count > 0)
-            {
-                compensationExceptions.Insert(0, retractionException);
                 throw new AggregateException(
                     "Canonical historical resources could not be retracted or fully restored safely.",
-                    compensationExceptions);
+                    retractionException,
+                    compensationException);
             }
 
             throw;
+        }
+    }
+
+    public async Task RestoreAsync(
+        HistoricalCanonicalResourceRetractionSnapshot snapshot,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(snapshot);
+        List<Exception> compensationExceptions = new List<Exception>();
+        foreach (HistoricalSourceReference sourceSnapshot in snapshot.Sources.Reverse())
+        {
+            try
+            {
+                await this.sourceRetractionService.RestoreAsync(
+                    sourceSnapshot,
+                    cancellationToken);
+            }
+            catch (Exception compensationException)
+            {
+                compensationExceptions.Add(compensationException);
+            }
+        }
+
+        if (snapshot.Fact is not null)
+        {
+            try
+            {
+                await this.factRetractionService.RestoreAsync(
+                    snapshot.Fact,
+                    cancellationToken);
+            }
+            catch (Exception compensationException)
+            {
+                compensationExceptions.Add(compensationException);
+            }
+        }
+
+        if (compensationExceptions.Count > 0)
+        {
+            throw new AggregateException(
+                "Canonical historical resources could not be fully restored safely.",
+                compensationExceptions);
         }
     }
 

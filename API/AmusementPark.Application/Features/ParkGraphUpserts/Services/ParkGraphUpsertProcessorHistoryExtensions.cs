@@ -26,6 +26,7 @@ using AmusementPark.Application.Features.Parks.Services;
 using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 using System.Text;
 using AmusementPark.Application.Common.Measurements;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
@@ -125,9 +126,10 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
 
             if (apply && (change.Fields.Count > 0 || existing is null))
             {
+                HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot = null;
                 if (existing is not null)
                 {
-                    await processorContext.RetractCanonicalResourcesBeforeHistoryMutationAsync(
+                    retractionSnapshot = await processorContext.RetractCanonicalResourcesBeforeHistoryMutationAsync(
                         existing,
                         cancellationToken);
                 }
@@ -140,14 +142,41 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
                 }
                 else
                 {
-                    historyEvent = await processorContext.historyEventRepository.UpdateAsync(
+                    HistoryEvent? updatedHistoryEvent;
+                    try
+                    {
+                        updatedHistoryEvent = await processorContext.historyEventRepository.UpdateAsync(
                             historyEvent.Id,
                             historyEvent,
                             expectedUpdatedAtUtc,
                             expectedCanonicalFactId,
-                            cancellationToken)
-                        ?? throw new InvalidOperationException(
+                            cancellationToken);
+                    }
+                    catch (Exception mutationException)
+                    {
+                        await processorContext.RestoreCanonicalResourcesAfterHistoryMutationFailureAsync(
+                            historyEvent.Id,
+                            expectedUpdatedAtUtc,
+                            expectedCanonicalFactId,
+                            retractionSnapshot,
+                            mutationException);
+                        throw;
+                    }
+
+                    if (updatedHistoryEvent is null)
+                    {
+                        InvalidOperationException conflictException = new InvalidOperationException(
                             "The historical narrative changed concurrently and could not be updated safely.");
+                        await processorContext.RestoreCanonicalResourcesAfterHistoryMutationFailureAsync(
+                            historyEvent.Id,
+                            expectedUpdatedAtUtc,
+                            expectedCanonicalFactId,
+                            retractionSnapshot,
+                            conflictException);
+                        throw conflictException;
+                    }
+
+                    historyEvent = updatedHistoryEvent;
                 }
 
                 await processorContext.CanonicalizeHistoryNarrativeAsync(

@@ -36,26 +36,12 @@ public sealed class HistoricalNarrativeCanonicalizationMigration
                 await this.canonicalizationService.MigrateExistingAsync(
                     historyEvent,
                     cancellationToken);
-            bool linked = await this.historyEventRepository.SetCanonicalizationAsync(
-                historyEvent.Id,
-                historyEvent.UpdatedAtUtc,
-                canonicalization.CanonicalFactId,
-                canonicalization.State,
-                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
-                canonicalization.Warnings,
+            await HistoricalNarrativeCanonicalLinker.LinkAsync(
+                this.historyEventRepository,
+                this.resourceRetractionService,
+                historyEvent,
+                canonicalization,
                 cancellationToken);
-            if (!linked)
-            {
-                if (canonicalization.CanonicalFactId.HasValue)
-                {
-                    await this.resourceRetractionService.RetractAsync(
-                        canonicalization.CanonicalFactId.Value,
-                        cancellationToken);
-                }
-
-                throw new InvalidOperationException(
-                    "A historical narrative changed while its canonical migration was running.");
-            }
 
             if (!previousFactId.HasValue
                 || previousFactId == canonicalization.CanonicalFactId)

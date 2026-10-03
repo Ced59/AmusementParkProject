@@ -119,13 +119,13 @@ public sealed class ParkGraphUpsertProcessor
         this.commentRepository = commentRepository;
     }
 
-    internal async Task RetractCanonicalResourcesBeforeHistoryMutationAsync(
+    internal async Task<HistoricalCanonicalResourceRetractionSnapshot?> RetractCanonicalResourcesBeforeHistoryMutationAsync(
         HistoryEvent historyEvent,
         CancellationToken cancellationToken)
     {
         if (!historyEvent.CanonicalFactId.HasValue)
         {
-            return;
+            return null;
         }
 
         if (this.canonicalResourceRetractionService is null)
@@ -134,9 +134,37 @@ public sealed class ParkGraphUpsertProcessor
                 "Canonical resource retraction is required before updating a migrated historical narrative.");
         }
 
-        await this.canonicalResourceRetractionService.RetractAsync(
+        return await this.canonicalResourceRetractionService.RetractAsync(
             historyEvent.CanonicalFactId.Value,
             cancellationToken);
+    }
+
+    internal Task RestoreCanonicalResourcesAfterHistoryMutationFailureAsync(
+        string historyEventId,
+        DateTime expectedUpdatedAtUtc,
+        Guid? expectedCanonicalFactId,
+        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot,
+        Exception mutationFailure)
+    {
+        if (!expectedCanonicalFactId.HasValue || retractionSnapshot is null)
+        {
+            return Task.CompletedTask;
+        }
+
+        if (this.historyEventRepository is null || this.canonicalResourceRetractionService is null)
+        {
+            throw new InvalidOperationException(
+                "Canonical HIST persistence is required to recover a failed historical narrative mutation.");
+        }
+
+        return HistoricalNarrativeMutationRecovery.RestoreIfNarrativeIsUnchangedAsync(
+            this.historyEventRepository,
+            this.canonicalResourceRetractionService,
+            historyEventId,
+            expectedUpdatedAtUtc,
+            expectedCanonicalFactId.Value,
+            retractionSnapshot,
+            mutationFailure);
     }
 
     internal async Task CanonicalizeHistoryNarrativeAsync(
@@ -155,32 +183,12 @@ public sealed class ParkGraphUpsertProcessor
             await this.historicalNarrativeCanonicalizer.CanonicalizeAsync(
                 historyEvent,
                 cancellationToken);
-        bool canonicalizationSaved = await this.historyEventRepository.SetCanonicalizationAsync(
-            historyEvent.Id,
-            historyEvent.UpdatedAtUtc,
-            canonicalization.CanonicalFactId,
-            canonicalization.State,
-            HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
-            canonicalization.Warnings,
+        await HistoricalNarrativeCanonicalLinker.LinkAsync(
+            this.historyEventRepository,
+            this.canonicalResourceRetractionService,
+            historyEvent,
+            canonicalization,
             cancellationToken);
-        if (!canonicalizationSaved)
-        {
-            if (canonicalization.CanonicalFactId.HasValue)
-            {
-                if (this.canonicalResourceRetractionService is null)
-                {
-                    throw new InvalidOperationException(
-                        "Canonical resource retraction is required after a concurrent historical narrative change.");
-                }
-
-                await this.canonicalResourceRetractionService.RetractAsync(
-                    canonicalization.CanonicalFactId.Value,
-                    cancellationToken);
-            }
-
-            throw new InvalidOperationException(
-                "The historical narrative changed while its canonical HIST fact was being linked.");
-        }
 
         if (canonicalization.State == HistoricalNarrativeCanonicalizationState.Blocked)
         {
