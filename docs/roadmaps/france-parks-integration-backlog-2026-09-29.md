@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 58 |
+| Fiches privées existantes à intégrer | 82 | 57 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **148** |
+| **Total** | **225** | **147** |
 
 ## 1. Fiches publiques à compléter
 
@@ -45,7 +45,6 @@ Aucune fiche ne reste dans cette catégorie.
 ## 2. Fiches privées existantes à intégrer
 
 - [ ] Breizh Land Parc — `fd97efd8-9ebb-4a76-94cb-9cfa95100314`
-- [ ] L'Île aux Géants — `29a2498e-9b6c-4c55-a2ac-e521dc6e4586`
 - [ ] L'Île aux Pirates, Capbreton — candidats `efac8649-a15b-4ed6-866c-2e926579d6de` et `5e9e6a61-3d74-49cd-9c3a-8ca107edd018` à réconcilier avant intégration
 - [ ] La Coccinelle — `e1fa4656-8011-4908-a1bf-e7d581285a83`
 - [ ] Le Pal — `1675e96c-6361-48ff-862b-43218167facd`
@@ -356,6 +355,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- L'Île aux Géants — la fiche publique atteint 98 avec 21 éléments validés : les 18 attractions du site officiel, la pataugeoire, O'resto d'Iros et les aires de pique-nique. Les huit langues couvrent chaque description ; 19 médias officiels sont publiés, dont le logo, deux vues générales et une image pour 16 attractions. Aucun plan visiteur officiel n'a été trouvé : l'image-calendrier 2026 n'a pas été détournée en carte. Manège enchanté, Petit train, Pataugeoire, O'resto d'Iros et les aires de pique-nique restent sans visuel propre faute de photographie officielle distincte. Les horaires et cinq tarifs d'entrée 2026 ainsi que le parking gratuit sont structurés ; trois jalons et un article développé documentent l'ouverture de 2013 et les deux montagnes russes. La météo alimentée par batch n'a pas conditionné la publication ni le retrait.
 - Koaland — la fiche publique atteint 98 avec 19 éléments validés : 16 activités actuelles illustrées, Music Lab et lʼespace fitness conservés privés comme développements annoncés, ainsi que Chenille publiée comme attraction définitivement fermée et reliée à un jalon historique. Les huit langues couvrent chaque description ; 22 médias officiels sont publiés, dont le logo, cinq vues générales et une image pour chacune des 16 activités actuelles, avec le plan officiel 2026, les horaires sourcés, lʼentrée gratuite, quatre lots de jetons, la pêche aux canards, deux jalons et un article développé. Aucun visuel historique officiel réutilisable nʼa été trouvé pour Chenille. Les horaires dynamiques du site officiel étant contradictoires, la dernière communication sociale officielle fiable — mercredi, samedi et dimanche de 10 h à 19 h — a été structurée ; les tarifs sportifs et de restauration restent omis faute de grille publique complète. La météo alimentée par batch nʼa pas conditionné la publication ni le retrait.
 - Kingoland — la fiche publique atteint 97 avec les 43 éléments de l’inventaire officiel, les huit langues sur chaque description, 49 médias propres publiés dont le logo et une image pour chacun des 43 éléments, le plan officiel 2026, 109 dates d’ouverture, six offres tarifaires, un pass, le parking gratuit, neuf jalons historiques et un article développé. Six aires ou expériences sans seuil officiel conservent volontairement leurs règles d’accès vides, et aucune géolocalisation individuelle ni zone thématique durable n’a été inventée. La source tarifaire 2026 reste la page officielle archivée sous `/test/`, la page de billetterie canonique annonçant déjà la saison 2027 sans nouvelle grille. La météo alimentée par batch n’a pas conditionné la publication ni le retrait.
 - Jardin d'Acclimatation — la fiche publique atteint 100 avec les 62 éléments de l'inventaire officiel courant, cinq attractions historiques, les huit langues sur chaque description, 74 médias publiés dont le logo et une image pour chacun des 62 éléments actuels, le plan officiel, 92 dates d'ouverture, huit offres tarifaires, dix jalons de parc, cinq jalons d'attraction et un article développé. Les cinq attractions historiques restent sans photographie plutôt que de recevoir un visuel actuel ou insuffisamment attribuable. La page météo alimentée par batch n'a pas conditionné la publication ni le retrait.
