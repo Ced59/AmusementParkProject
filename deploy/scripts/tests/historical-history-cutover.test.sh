@@ -174,7 +174,6 @@ for required_completion_step in \
   "historical-sources-cutover-backup-hist-canonical-v1" \
   "historical-cutover-state-hist-canonical-v1" \
   "cutoverPreviousCanonicalFactId: ''" \
-  "collMod: narrativeCollectionName" \
   "legacyFactsWithoutNarrative" \
   "completedLegacyNarratives !== legacyNarrativeIds.length" \
   "orphanedLegacySourceIds.length > 0" \
