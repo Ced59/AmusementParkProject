@@ -404,7 +404,10 @@ def main():
                                             "restore-original-history-writer", "validate-journal", "maintain-mongodb"))
     parser.add_argument("--resource", choices=sorted(CUTOVER_RESOURCES))
     args = parser.parse_args()
-    directory = Path(__file__).resolve().parent.parent
+    directory_override = os.environ.get("DEPLOYMENT_DIRECTORY_OVERRIDE")
+    directory = (Path(directory_override).resolve()
+                 if directory_override
+                 else Path(__file__).resolve().parent.parent)
     if args.command in {"prepare", "prepare-candidates", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed",
                         "quiesce-original-history-writer", "restore-original-history-writer",
                         "maintain-mongodb"}:

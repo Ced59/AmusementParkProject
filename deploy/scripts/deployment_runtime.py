@@ -291,10 +291,13 @@ class DockerRuntime:
         accepted_exit_codes = {0, 143} if legacy else {0}
         if allow_intentional_stop:
             accepted_exit_codes.add(143)
-        if allow_failed_start and not was_running:
-            # Broken entrypoints/startup can be discarded ONLY after the caller
-            # proved non-exposure. Forced kills/OOM still require investigation.
-            accepted_exit_codes |= {1, 2, 126, 127}
+        if allow_failed_start and not was_running and not state.get("OOMKilled"):
+            # A stopped startup failure can be discarded ONLY after the caller
+            # proved that the candidate was never exposed. Preserve SIGKILL for
+            # explicit investigation; record every other diagnosed exit first.
+            failed_start_exit_code = state.get("ExitCode")
+            if failed_start_exit_code != 137:
+                accepted_exit_codes.add(failed_start_exit_code)
         if state.get("OOMKilled") or state.get("ExitCode") not in accepted_exit_codes:
             raise DeploymentError(f"Abnormal stop for {reference['name']} (exit {state.get('ExitCode')}); container and dependent API retained")
         if record_exit is not None:

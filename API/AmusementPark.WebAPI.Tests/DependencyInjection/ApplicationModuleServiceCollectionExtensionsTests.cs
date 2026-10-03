@@ -14,6 +14,8 @@ using AmusementPark.Application.Features.FactualEvents.Handlers;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.FactualEvents.Queries;
 using AmusementPark.Application.Features.FactualEvents.Results;
+using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.HistoricalExistenceReports.Commands;
 using AmusementPark.Application.Features.HistoricalExistenceReports.Handlers;
 using AmusementPark.Application.Features.HistoricalExistenceReports.Ports;
@@ -152,6 +154,26 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.IsType<VerifyFactualChangeEventCommandHandler>(verifyHandler);
         Assert.IsType<PublishFactualChangeEventCommandHandler>(publishHandler);
         Assert.IsType<GetFactualChangeEventsQueryHandler>(queryHandler);
+    }
+
+    [Fact]
+    public void AddApplicationModules_WhenCalled_ShouldResolveHistoricalNarrativeCanonicalizationService()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+        services.AddApplicationModules(configuration);
+        services.AddSingleton(Mock.Of<IParkRepository>());
+        services.AddSingleton(Mock.Of<IParkItemRepository>());
+        services.AddSingleton(Mock.Of<IHistoricalFactRepository>());
+        services.AddSingleton(Mock.Of<IHistoricalSourceRepository>());
+
+        using ServiceProvider serviceProvider = services.BuildServiceProvider();
+        using IServiceScope scope = serviceProvider.CreateScope();
+
+        HistoricalNarrativeCanonicalizationService service = scope.ServiceProvider
+            .GetRequiredService<HistoricalNarrativeCanonicalizationService>();
+
+        Assert.NotNull(service);
     }
 
     [Fact]

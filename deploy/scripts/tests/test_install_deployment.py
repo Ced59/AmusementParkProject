@@ -1,5 +1,6 @@
 import importlib.util
 import io
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -86,6 +87,108 @@ class InstallationTests(unittest.TestCase):
                     installer.install_bundle(self.archive, self.target)
                 self.assertEqual(sentinel.read_text(), "old")
                 self.assertFalse((self.target / ".installation-pending.json").exists())
+
+    def test_only_clean_unexposed_state_uses_uploaded_recovery_runtime(self):
+        base = {
+            "phase": "abandoning",
+            "authority_exposed": False,
+            "cutover_armed": False,
+            "cutover_resources": [],
+            "history_writer_quiesced": False,
+        }
+
+        self.assertTrue(installer.can_recover_unexposed_with_bundle(base))
+        for override in (
+                {"phase": "switch-candidate"},
+                {"authority_exposed": True},
+                {"cutover_armed": True},
+                {"cutover_resources": ["historical-history"]},
+                {"history_writer_quiesced": True}):
+            with self.subTest(override=override):
+                self.assertFalse(installer.can_recover_unexposed_with_bundle({**base, **override}))
+
+    def test_uploaded_runtime_recovers_unexposed_state_without_installing_active_files(self):
+        self.target.mkdir()
+        runtime = "# bundled recovery dependency\n"
+        transaction = """import json
+import os
+from pathlib import Path
+import sys
+
+assert sys.argv[1] == "abandon-unexposed"
+target = Path(os.environ["DEPLOYMENT_DIRECTORY_OVERRIDE"])
+journal = target / "nginx/runtime/deployment.json"
+state = json.loads(journal.read_text())
+state["phase"] = "abandoned"
+journal.write_text(json.dumps(state))
+(target / "uploaded-recovery-used").write_text("true")
+"""
+        bundle(
+            self.archive,
+            "two",
+            {
+                "scripts/deployment_runtime.py": runtime,
+                "scripts/deployment_transaction.py": transaction,
+            })
+        journal = self.target / "nginx/runtime/deployment.json"
+        journal.parent.mkdir(parents=True)
+        journal.write_text(json.dumps({"phase": "abandoning"}))
+
+        installer.recover_unexposed_with_bundle(self.archive, self.target, ())
+
+        self.assertEqual(json.loads(journal.read_text())["phase"], "abandoned")
+        self.assertEqual((self.target / "uploaded-recovery-used").read_text(), "true")
+        self.assertFalse((self.target / "scripts").exists())
+
+    @unittest.skipUnless(sys.platform == "linux", "Uploaded recovery handoff is tested in CI")
+    def test_installer_uses_uploaded_runtime_before_rejected_installed_recovery(self):
+        installer.install_bundle(self.archive, self.target)
+        journal = self.target / "nginx/runtime/deployment.json"
+        journal.parent.mkdir(parents=True)
+        journal.write_text(json.dumps({
+            "version": 1,
+            "phase": "abandoning",
+            "authority_exposed": False,
+            "cutover_armed": False,
+            "cutover_resources": [],
+            "history_writer_quiesced": False,
+        }))
+        (self.target / "scripts/deployment_transaction.py").write_text(
+            "import sys\nassert sys.argv[1] == 'validate-journal'\n")
+        (self.target / "scripts/deploy.sh").write_text(
+            "#!/usr/bin/env bash\ntouch installed-recovery-used\nexit 77\n")
+
+        bundled_transaction = """import json
+import os
+from pathlib import Path
+import sys
+
+assert sys.argv[1] == "abandon-unexposed"
+target = Path(os.environ["DEPLOYMENT_DIRECTORY_OVERRIDE"])
+journal = target / "nginx/runtime/deployment.json"
+state = json.loads(journal.read_text())
+state["phase"] = "abandoned"
+journal.write_text(json.dumps(state))
+(target / "uploaded-recovery-used").write_text("true")
+"""
+        second = self.directory / "run-two.tgz"
+        bundle(second, "two", {
+            "scripts/deployment_runtime.py": "# bundled recovery dependency\n",
+            "scripts/deployment_transaction.py": bundled_transaction,
+        })
+        (self.target / "two.release").touch()
+
+        result = subprocess.run(
+            [sys.executable, str(SCRIPTS / "install-deployment.py"), str(second), str(self.target)],
+            env={**os.environ, "DEPLOY_LOCK_FILE": str(self.directory / "handoff.lock")},
+            capture_output=True,
+            text=True,
+            timeout=15)
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertFalse((self.target / "installed-recovery-used").exists())
+        self.assertEqual((self.target / "uploaded-recovery-used").read_text(), "true")
+        self.assertEqual((self.target / ".env").read_text(), "LABEL=two\n")
 
     @unittest.skipUnless(sys.platform == "linux", "Real Linux flock is tested in CI")
     def test_two_real_installers_never_extract_or_read_new_env_before_lock(self):

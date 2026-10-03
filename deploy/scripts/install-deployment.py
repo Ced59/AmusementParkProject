@@ -12,6 +12,7 @@ from pathlib import Path
 import shutil
 import stat
 import subprocess
+import sys
 import tarfile
 import tempfile
 import time
@@ -44,6 +45,22 @@ def mark_installation(target: Path, archive: Path):
     sync_directory(target)
 
 
+def validate_bundle_members(bundle: tarfile.TarFile) -> list[tarfile.TarInfo]:
+    allowed_roots = {".env", "compose.prod.yml", "mongo-init.js", "scripts", "nginx"}
+    members = bundle.getmembers()
+    for member in members:
+        path = Path(member.name)
+        if (path.is_absolute() or ".." in path.parts or not path.parts
+                or path.parts[0] not in allowed_roots
+                or (len(path.parts) > 1 and path.parts[:2] == ("nginx", "runtime"))
+                or not (member.isfile() or member.isdir())):
+            raise RuntimeError(f"Unsupported deployment bundle entry: {member.name}")
+    files = {member.name for member in members if member.isfile()}
+    if not {".env", "compose.prod.yml", "scripts/deploy.sh"}.issubset(files):
+        raise RuntimeError("Incomplete deployment bundle")
+    return members
+
+
 def acquire_lock(path: Path, timeout: int) -> int:
     import fcntl  # Production and CI are Linux; no simulated Windows lock.
     descriptor = os.open(path, os.O_RDWR | os.O_CREAT, 0o600)
@@ -59,20 +76,56 @@ def acquire_lock(path: Path, timeout: int) -> int:
             time.sleep(min(1, max(0, deadline - time.monotonic())))
 
 
+def can_recover_unexposed_with_bundle(state: dict) -> bool:
+    cutover_resources = state.get("cutover_resources") or []
+    return (state.get("phase") in {"prepared", "abandoning"}
+            and state.get("authority_exposed") is False
+            and not state.get("cutover_armed")
+            and not cutover_resources
+            and not state.get("history_writer_quiesced", False))
+
+
+def recover_unexposed_with_bundle(
+        archive: Path,
+        target: Path,
+        pass_fds: tuple[int, ...]) -> None:
+    required_scripts = (
+        "scripts/deployment_runtime.py",
+        "scripts/deployment_transaction.py",
+    )
+    with tempfile.TemporaryDirectory(prefix="amusementpark-recovery-") as temporary:
+        recovery_root = Path(temporary)
+        recovery_scripts = recovery_root / "scripts"
+        recovery_scripts.mkdir()
+        with tarfile.open(archive, "r:gz") as bundle:
+            validate_bundle_members(bundle)
+            for script_name in required_scripts:
+                try:
+                    member = bundle.getmember(script_name)
+                except KeyError as error:
+                    raise RuntimeError(
+                        f"Deployment bundle cannot recover the installed transaction: {script_name} is missing") from error
+                if not member.isfile():
+                    raise RuntimeError(
+                        f"Deployment recovery entry is not a regular file: {script_name}")
+                destination = recovery_root / script_name
+                with bundle.extractfile(member) as source, destination.open("wb") as output:
+                    shutil.copyfileobj(source, output)
+                destination.chmod(0o700)
+
+        recovery_environment = dict(os.environ)
+        recovery_environment["DEPLOYMENT_DIRECTORY_OVERRIDE"] = str(target)
+        subprocess.run(
+            [sys.executable, str(recovery_scripts / "deployment_transaction.py"), "abandon-unexposed"],
+            check=True,
+            cwd=target,
+            env=recovery_environment,
+            pass_fds=pass_fds)
+
+
 def install_bundle(archive: Path, target: Path) -> None:
-    allowed_roots = {".env", "compose.prod.yml", "mongo-init.js", "scripts", "nginx"}
     with tarfile.open(archive, "r:gz") as bundle:
-        members = bundle.getmembers()
-        for member in members:
-            path = Path(member.name)
-            if (path.is_absolute() or ".." in path.parts or not path.parts
-                    or path.parts[0] not in allowed_roots
-                    or (len(path.parts) > 1 and path.parts[:2] == ("nginx", "runtime"))
-                    or not (member.isfile() or member.isdir())):
-                raise RuntimeError(f"Unsupported deployment bundle entry: {member.name}")
-        files = {member.name for member in members if member.isfile()}
-        if not {".env", "compose.prod.yml", "scripts/deploy.sh"}.issubset(files):
-            raise RuntimeError("Incomplete deployment bundle")
+        members = validate_bundle_members(bundle)
         target.mkdir(parents=True, exist_ok=True)
         mark_installation(target, archive)
         # Validate the whole archive before the first active write. Each file is
@@ -140,10 +193,16 @@ def main() -> None:
             # Finish using the installed config/images before replacing .env or
             # scripts. A new workflow never creates a third pair to recover B.
             print("Recovering the installed deployment before installing the next bundle", flush=True)
-            recovery_environment = dict(os.environ)
-            if state["phase"] in {"prepared", "abandoning"} and state.get("authority_exposed") is False:
-                recovery_environment["DEPLOY_ABANDON_UNEXPOSED"] = "true"
-            subprocess.run(["bash", str(target / "scripts/deploy.sh")], check=True, pass_fds=(9,), env=recovery_environment)
+            if can_recover_unexposed_with_bundle(state):
+                print(
+                    "Recovering the diagnosed unexposed candidate with the uploaded runtime",
+                    flush=True)
+                recover_unexposed_with_bundle(args.archive.resolve(strict=True), target, (9,))
+            else:
+                recovery_environment = dict(os.environ)
+                if state["phase"] in {"prepared", "abandoning"} and state.get("authority_exposed") is False:
+                    recovery_environment["DEPLOY_ABANDON_UNEXPOSED"] = "true"
+                subprocess.run(["bash", str(target / "scripts/deploy.sh")], check=True, pass_fds=(9,), env=recovery_environment)
             if json.loads(journal.read_text(encoding="utf-8")).get("phase") not in {"complete", "abandoned"}:
                 raise RuntimeError("Installed deployment did not complete; new bundle remains untouched")
     install_bundle(args.archive.resolve(strict=True), target)

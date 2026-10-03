@@ -502,6 +502,28 @@ class StopPolicyTests(unittest.TestCase):
         self.assertEqual(recorded, [{"exit_code": 1, "oom_killed": False}])
         self.assertEqual(calls[-1][1], "rm")
 
+    def test_diagnosed_unexposed_runtime_crash_can_be_removed_with_recorded_cause(self):
+        runtime, calls = self.runtime(139, running=False)
+        recorded = []
+
+        runtime.stop_remove(
+            {"id": "a" * 64, "name": "front"},
+            allow_failed_start=True,
+            record_exit=recorded.append)
+
+        self.assertEqual(recorded, [{"exit_code": 139, "oom_killed": False}])
+        self.assertEqual(calls[-1][1], "rm")
+
+    def test_unexposed_sigkill_is_retained_for_investigation(self):
+        runtime, calls = self.runtime(137, running=False)
+
+        with self.assertRaisesRegex(DeploymentError, "Abnormal stop"):
+            runtime.stop_remove(
+                {"id": "a" * 64, "name": "front"},
+                allow_failed_start=True)
+
+        self.assertFalse(any(call[1] == "rm" for call in calls))
+
     def test_unexposed_permission_does_not_hide_a_new_shutdown_failure(self):
         runtime, calls = self.runtime(1, running=True)
         with self.assertRaises(DeploymentError):
