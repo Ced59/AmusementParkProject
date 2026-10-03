@@ -153,6 +153,8 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
 
                 await processorContext.CanonicalizeHistoryNarrativeAsync(
                     historyEvent,
+                    expectedCanonicalFactId,
+                    retractionSnapshot,
                     key,
                     result,
                     cancellationToken);

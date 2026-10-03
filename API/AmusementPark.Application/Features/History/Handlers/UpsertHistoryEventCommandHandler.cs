@@ -144,94 +144,26 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
 
             saved = updatedHistoryEvent;
         }
-        HistoricalNarrativeCanonicalizationResult canonicalization;
-        try
-        {
-            canonicalization = await this.historicalNarrativeCanonicalizer.CanonicalizeAsync(
-                saved,
-                cancellationToken);
-        }
-        catch (Exception canonicalizationException)
-        {
-            await this.RecoverCanonicalizationFailureAsync(
+        HistoricalNarrativeCanonicalizationResult canonicalization =
+            await HistoricalNarrativeCanonicalizationCoordinator.ExecuteAsync(
+                this.historyEventRepository,
+                this.historicalNarrativeCanonicalizer,
+                this.canonicalResourceRetractionService,
                 saved,
                 expectedCanonicalFactId,
                 retractionSnapshot,
-                canonicalizationException);
-            throw;
-        }
+                cancellationToken);
         if (canonicalization.State == HistoricalNarrativeCanonicalizationState.Blocked)
         {
             return ApplicationResult<HistoryEvent>.Failure(
                 HistoryApplicationErrors.InvalidEventType());
         }
 
-        await HistoricalNarrativeCanonicalLinker.LinkAsync(
-            this.historyEventRepository,
-            this.canonicalResourceRetractionService,
-            saved,
-            canonicalization,
-            cancellationToken);
-
         saved.CanonicalFactId = canonicalization.CanonicalFactId;
         saved.CanonicalizationState = canonicalization.State;
 
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<HistoryEvent>.Success(saved);
-    }
-
-    private async Task RecoverCanonicalizationFailureAsync(
-        HistoryEvent saved,
-        Guid? expectedCanonicalFactId,
-        HistoricalCanonicalResourceRetractionSnapshot? retractionSnapshot,
-        Exception canonicalizationException)
-    {
-        List<Exception> recoveryExceptions = new List<Exception>();
-        Guid generatedFactId = HistoricalNarrativeCanonicalIdentity.CreateGuid(
-            HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
-            "fact",
-            saved.Id,
-            saved.UpdatedAtUtc);
-        Guid[] generatedSourceIds = saved.Sources
-            .Select((_, index) => HistoricalNarrativeCanonicalIdentity.CreateGuid(
-                HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
-                "source",
-                saved.Id,
-                saved.UpdatedAtUtc,
-                index))
-            .ToArray();
-        try
-        {
-            await this.canonicalResourceRetractionService.RetractGeneratedAsync(
-                generatedFactId,
-                generatedSourceIds,
-                CancellationToken.None);
-        }
-        catch (Exception cleanupException)
-        {
-            recoveryExceptions.Add(cleanupException);
-        }
-
-        try
-        {
-            await this.RestorePreviousResourcesIfNeededAsync(
-                saved.Id,
-                saved.UpdatedAtUtc,
-                expectedCanonicalFactId,
-                retractionSnapshot,
-                canonicalizationException);
-        }
-        catch (Exception restorationException)
-        {
-            recoveryExceptions.Add(restorationException);
-        }
-
-        if (recoveryExceptions.Count > 0)
-        {
-            throw new AggregateException(
-                "The failed canonical HIST update could not be fully compensated.",
-                new[] { canonicalizationException }.Concat(recoveryExceptions));
-        }
     }
 
     private Task RestorePreviousResourcesIfNeededAsync(

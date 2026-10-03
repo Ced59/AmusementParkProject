@@ -32,6 +32,7 @@ public sealed class HistoricalNarrativeCanonicalLinkerTests
         Mock<IHistoryEventRepository> historyRepository = new(MockBehavior.Strict);
         Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sourceRepository = new(MockBehavior.Strict);
+        List<string> operations = new List<string>();
         historyRepository
             .SetupSequence(value => value.SetCanonicalizationAsync(
                 narrative.Id,
@@ -58,6 +59,7 @@ public sealed class HistoricalNarrativeCanonicalLinkerTests
                     && candidate.PublicationState == HistoricalPublicationState.Withdrawn),
                 It.IsAny<HistoricalReviewEvent>(),
                 It.IsAny<CancellationToken>()))
+            .Callback(() => operations.Add("fact-cleaned"))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
         sourceRepository
             .Setup(value => value.GetLatestRevisionAsync(source.Id, It.IsAny<CancellationToken>()))
@@ -68,6 +70,7 @@ public sealed class HistoricalNarrativeCanonicalLinkerTests
                     && candidate.PublicationState == HistoricalPublicationState.Withdrawn),
                 It.IsAny<HistoricalReviewEvent>(),
                 It.IsAny<CancellationToken>()))
+            .Callback(() => operations.Add("source-cleaned"))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
 
         await Assert.ThrowsAsync<AggregateException>(() =>
@@ -78,8 +81,16 @@ public sealed class HistoricalNarrativeCanonicalLinkerTests
                     sourceRepository.Object),
                 narrative,
                 canonicalization,
-                CancellationToken.None));
+                CancellationToken.None,
+                _ =>
+                {
+                    operations.Add("previous-restored");
+                    return Task.CompletedTask;
+                }));
 
+        Assert.Equal(
+            new[] { "fact-cleaned", "source-cleaned", "previous-restored" },
+            operations);
         historyRepository.VerifyAll();
         factRepository.VerifyAll();
         sourceRepository.VerifyAll();

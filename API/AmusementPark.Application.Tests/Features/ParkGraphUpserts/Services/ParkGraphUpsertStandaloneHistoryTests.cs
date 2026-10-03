@@ -820,6 +820,11 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
         IStandaloneAttractionPricingRepository? standalonePricingRepository = null,
         IHistoricalNarrativeCanonicalizer? historicalNarrativeCanonicalizer = null)
     {
+        HistoricalCanonicalResourceRetractionService resolvedRetractionService =
+            canonicalResourceRetractionService
+            ?? HistoricalCanonicalResourceRetractionServiceTestFactory.Create(
+                Mock.Of<IHistoricalFactRepository>(),
+                Mock.Of<IHistoricalSourceRepository>());
         return new ParkGraphUpsertProcessor(
             Mock.Of<IParkRepository>(MockBehavior.Strict),
             Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
@@ -835,7 +840,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             MeasurementConversionService.Instance,
             historyEventRepository: historyEventRepository.Object,
             standaloneAttractionRepository: standaloneRepository.Object,
-            canonicalResourceRetractionService: canonicalResourceRetractionService,
+            canonicalResourceRetractionService: resolvedRetractionService,
             historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer,
             parkOpeningHoursScheduleNormalizer: new ParkOpeningHoursScheduleNormalizer(),
             parkOpeningHoursCoverageSegmentBuilder: new ParkOpeningHoursCoverageSegmentBuilder(),

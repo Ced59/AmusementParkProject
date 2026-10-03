@@ -11,7 +11,8 @@ public static class HistoricalNarrativeCanonicalLinker
         HistoricalCanonicalResourceRetractionService? resourceRetractionService,
         HistoryEvent historyEvent,
         HistoricalNarrativeCanonicalizationResult canonicalization,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        Func<Exception, Task>? onUnlinkedFailure = null)
     {
         ArgumentNullException.ThrowIfNull(historyEventRepository);
         ArgumentNullException.ThrowIfNull(historyEvent);
@@ -45,6 +46,7 @@ public static class HistoricalNarrativeCanonicalLinker
                     resourceRetractionService,
                     historyEvent,
                     canonicalization,
+                    onUnlinkedFailure,
                     new AggregateException(
                         "The canonical HIST link could not be confirmed after retry.",
                         exception,
@@ -71,6 +73,7 @@ public static class HistoricalNarrativeCanonicalLinker
             resourceRetractionService,
             historyEvent,
             canonicalization,
+            onUnlinkedFailure,
             failure);
     }
 
@@ -95,6 +98,7 @@ public static class HistoricalNarrativeCanonicalLinker
         HistoricalCanonicalResourceRetractionService? resourceRetractionService,
         HistoryEvent historyEvent,
         HistoricalNarrativeCanonicalizationResult canonicalization,
+        Func<Exception, Task>? onUnlinkedFailure,
         Exception failure)
     {
         HistoryEvent? durableNarrative;
@@ -144,6 +148,21 @@ public static class HistoricalNarrativeCanonicalLinker
                     "The failed canonical HIST link left resources that could not be withdrawn safely.",
                     failure,
                     cleanupException);
+            }
+        }
+
+        if (onUnlinkedFailure is not null)
+        {
+            try
+            {
+                await onUnlinkedFailure(failure);
+            }
+            catch (Exception compensationException)
+            {
+                throw new AggregateException(
+                    "The failed canonical HIST link was cleaned up, but the previous resources could not be restored.",
+                    failure,
+                    compensationException);
             }
         }
 

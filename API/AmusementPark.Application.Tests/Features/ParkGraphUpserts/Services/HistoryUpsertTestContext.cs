@@ -181,6 +181,16 @@ internal sealed class HistoryUpsertTestContext
             ?? throw new ArgumentNullException(nameof(failure));
     }
 
+    public void FailCanonicalization(Exception failure)
+    {
+        ArgumentNullException.ThrowIfNull(failure);
+        this.HistoricalNarrativeCanonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(failure);
+    }
+
     private static HistoryEvent CloneHistoryEvent(HistoryEvent source)
     {
         string json = JsonSerializer.Serialize(source);

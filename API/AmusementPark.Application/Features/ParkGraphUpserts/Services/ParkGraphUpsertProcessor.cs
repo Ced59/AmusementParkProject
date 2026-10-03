@@ -169,26 +169,29 @@ public sealed class ParkGraphUpsertProcessor
 
     internal async Task CanonicalizeHistoryNarrativeAsync(
         HistoryEvent historyEvent,
+        Guid? previousCanonicalFactId,
+        HistoricalCanonicalResourceRetractionSnapshot? previousResourceSnapshot,
         string key,
         ParkGraphUpsertResult result,
         CancellationToken cancellationToken)
     {
-        if (this.historyEventRepository is null || this.historicalNarrativeCanonicalizer is null)
+        if (this.historyEventRepository is null
+            || this.historicalNarrativeCanonicalizer is null
+            || this.canonicalResourceRetractionService is null)
         {
             throw new InvalidOperationException(
                 "Canonical HIST persistence is required when importing historical narratives.");
         }
 
         HistoricalNarrativeCanonicalizationResult canonicalization =
-            await this.historicalNarrativeCanonicalizer.CanonicalizeAsync(
+            await HistoricalNarrativeCanonicalizationCoordinator.ExecuteAsync(
+                this.historyEventRepository,
+                this.historicalNarrativeCanonicalizer,
+                this.canonicalResourceRetractionService,
                 historyEvent,
+                previousCanonicalFactId,
+                previousResourceSnapshot,
                 cancellationToken);
-        await HistoricalNarrativeCanonicalLinker.LinkAsync(
-            this.historyEventRepository,
-            this.canonicalResourceRetractionService,
-            historyEvent,
-            canonicalization,
-            cancellationToken);
 
         if (canonicalization.State == HistoricalNarrativeCanonicalizationState.Blocked)
         {

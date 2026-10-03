@@ -126,6 +126,62 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenCanonicalizationFailsAfterUpdate_ShouldRestoreCanonicalFact()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoryEvent existing = BuildExistingEvent();
+        existing.CanonicalFactId = factId;
+        existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
+        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(
+            factId,
+            HistoricalSubjectType.Park,
+            "park-1");
+        HistoricalFact retraction = canonicalFact.CreateRetraction(
+            canonicalFact.RecordedAtUtc.AddSeconds(1));
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
+        context.HistoricalFactRepository
+            .SetupSequence(repository => repository.GetLatestRevisionAsync(
+                factId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(canonicalFact)
+            .ReturnsAsync(retraction);
+        context.HistoricalFactRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(
+                It.Is<Guid>(candidateId => candidateId != factId),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoricalFact?)null);
+        context.HistoricalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == factId
+                    && fact.PublicationState == HistoricalPublicationState.Withdrawn),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        context.HistoricalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == factId
+                    && fact.Revision == retraction.Revision + 1
+                    && fact.PublicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        context.FailCanonicalization(new TimeoutException("canonicalization failed"));
+        string document = BuildDocument("""
+        "sources": [
+          {
+            "label": "Nouvelle archive",
+            "url": "https://example.test/new-history"
+          }
+        ]
+        """);
+
+        await Assert.ThrowsAsync<TimeoutException>(() => context.ApplyAsync(document));
+
+        context.HistoricalFactRepository.VerifyAll();
+        Assert.Equal(factId, context.ReadPersistedEvent().CanonicalFactId);
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenMigratedNarrativeUpdateCommitsWithoutAcknowledgement_ShouldCanonicalizeCommittedUpdate()
     {
         Guid factId = Guid.NewGuid();
