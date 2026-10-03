@@ -6,6 +6,8 @@ namespace AmusementPark.Application.Features.History.Services;
 
 public sealed class HistoricalCanonicalSourceRetractionService
 {
+    internal const string RetractionActor = "system:history-canonicalization";
+
     private readonly IHistoricalSourceRepository sourceRepository;
 
     public HistoricalCanonicalSourceRetractionService(
@@ -149,7 +151,7 @@ public sealed class HistoricalCanonicalSourceRetractionService
             source.Id,
             source.Revision,
             eventType,
-            "system:history-canonicalization",
+            RetractionActor,
             note,
             source.RecordedAtUtc);
     }

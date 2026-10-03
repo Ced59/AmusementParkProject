@@ -1,6 +1,20 @@
 {
-  "version": "5.4.90",
+  "version": "5.4.91",
   "history": [
+    {
+      "version": "5.4.91",
+      "releasedAt": "2026-10-03",
+      "labels": {
+        "fr": "Réparation fiable des frises historiques interrompues",
+        "en": "Reliable recovery for interrupted historical timelines",
+        "de": "Zuverlässige Wiederherstellung unterbrochener historischer Zeitleisten",
+        "nl": "Betrouwbaar herstel van onderbroken historische tijdlijnen",
+        "it": "Ripristino affidabile delle cronologie storiche interrotte",
+        "es": "Recuperación fiable de cronologías históricas interrumpidas",
+        "pt": "Recuperação fiável de cronologias históricas interrompidas",
+        "pl": "Niezawodne przywracanie przerwanych historycznych osi czasu"
+      }
+    },
     {
       "version": "5.4.90",
       "releasedAt": "2026-10-03",

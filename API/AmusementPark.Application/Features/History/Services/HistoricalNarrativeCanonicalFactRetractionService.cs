@@ -6,6 +6,8 @@ namespace AmusementPark.Application.Features.History.Services;
 
 public sealed class HistoricalNarrativeCanonicalFactRetractionService
 {
+    internal const string RetractionActor = "system:history-narrative-change";
+
     private readonly IHistoricalFactRepository historicalFactRepository;
 
     public HistoricalNarrativeCanonicalFactRetractionService(
@@ -63,7 +65,7 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
                 factId,
                 retraction.Revision,
                 HistoricalReviewEventType.Retracted,
-                "system:history-narrative-change",
+                RetractionActor,
                 "Retrait du fait canonique avant modification ou suppression de son récit administratif.",
                 recordedAtUtc);
             HistoricalRevisionWriteDisposition outcome =
@@ -142,7 +144,7 @@ public sealed class HistoricalNarrativeCanonicalFactRetractionService
                 restoration.Id,
                 restoration.Revision,
                 ResolveRestorationEventType(snapshot.WorkflowState),
-                "system:history-narrative-change",
+                RetractionActor,
                 "Restauration compensatoire après l'échec du retrait d'une ressource HIST canonique.",
                 recordedAtUtc);
             HistoricalRevisionWriteDisposition outcome =

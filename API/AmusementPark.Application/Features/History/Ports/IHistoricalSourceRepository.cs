@@ -19,6 +19,12 @@ public interface IHistoricalSourceRepository
         Guid sourceId,
         CancellationToken cancellationToken);
 
+    Task<bool> WasLatestRevisionTransitionRecordedByAsync(
+        Guid sourceId,
+        HistoricalReviewEventType eventType,
+        string actorUserId,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
         IReadOnlyCollection<HistoricalSourceRevisionReference> sourceReferences,
         CancellationToken cancellationToken);
