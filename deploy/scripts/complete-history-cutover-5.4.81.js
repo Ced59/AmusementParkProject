@@ -14,10 +14,10 @@ const supersededCollectionNames = [
   'historical-cutover-state-hist-canonical-v1',
 ];
 const editorialCollectionNames = [
-  narrativeCollectionName,
-  'historical-facts',
   'historical-sources',
+  'historical-facts',
   'historical-relations',
+  narrativeCollectionName,
 ];
 
 const narratives = database.getCollection(narrativeCollectionName);

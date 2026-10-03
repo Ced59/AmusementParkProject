@@ -41,10 +41,10 @@ if (legacyInfo.length === 1
 }
 
 for (const collectionName of [
-  narrativeCollectionName,
-  factCollectionName,
   sourceCollectionName,
+  factCollectionName,
   relationCollectionName,
+  narrativeCollectionName,
 ]) {
   if (collectionExists(collectionName)) {
     const unfreezeResult = database.runCommand({
