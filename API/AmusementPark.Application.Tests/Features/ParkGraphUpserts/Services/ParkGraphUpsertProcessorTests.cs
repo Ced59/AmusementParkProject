@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Tests.Features.History.Services;
 using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
@@ -739,6 +740,7 @@ public sealed class ParkGraphUpsertProcessorTests
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
             historyEventRepository: historyEventRepository.Object,
+            canonicalResourceRetractionService: CreateNoopCanonicalRetractionService(),
             historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
@@ -885,6 +887,7 @@ public sealed class ParkGraphUpsertProcessorTests
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
             historyEventRepository: historyEventRepository.Object,
+            canonicalResourceRetractionService: CreateNoopCanonicalRetractionService(),
             historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
@@ -1080,6 +1083,7 @@ public sealed class ParkGraphUpsertProcessorTests
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
             historyEventRepository: historyEventRepository.Object,
+            canonicalResourceRetractionService: CreateNoopCanonicalRetractionService(),
             historicalNarrativeCanonicalizer: historicalNarrativeCanonicalizer.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
@@ -5216,5 +5220,12 @@ public sealed class ParkGraphUpsertProcessorTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
         return canonicalizer;
+    }
+
+    private static HistoricalCanonicalResourceRetractionService CreateNoopCanonicalRetractionService()
+    {
+        return HistoricalCanonicalResourceRetractionServiceTestFactory.Create(
+            Mock.Of<IHistoricalFactRepository>(),
+            Mock.Of<IHistoricalSourceRepository>());
     }
 }
