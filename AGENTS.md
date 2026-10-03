@@ -44,6 +44,16 @@ The project must preserve its current architecture, SOLID principles, separation
 - If `.codex-remote-attachments/` exists in the local repository, remove it before committing or pushing.
 - When unsure, inspect the existing pattern and follow it.
 
+## Git memory safety — absolute rule
+
+- Preventing Git memory or output overflow is an absolute requirement. It takes precedence over speed and convenience for every local Git operation, including reads, fetches, checkouts, worktrees, commits, pushes and maintenance.
+- Never run Git commands concurrently. Before any operation whose cost can grow with repository size or history, confirm that no other Git process is active, narrow the refs and paths involved, disable the pager, cap captured output, and use a memory-bounded form of the command.
+- For repository-sized fetch, checkout, worktree, commit or push operations, disable automatic maintenance with `-c gc.auto=0`, use one packing thread with `-c pack.threads=1`, bound pack memory with `-c pack.windowMemory=32m`, and bound the delta cache with `-c core.deltaBaseCacheLimit=16m`. Add `-c checkout.workers=1` for checkout or worktree operations. Use stricter limits when the host is already under memory pressure.
+- Never materialize an unbounded log, diff, object list, file list or status result in memory or tool output. Use targeted refs and paths plus limits such as `--max-count`, `--stat`, `--name-only`, pagination disabled and an explicit tool-output cap. Inspect large results in small sequential slices.
+- Monitor available system memory and the Git process working set throughout every potentially heavy operation. Terminate the operation before paging, UI instability or exhaustion develops; a Git working set of 1 GiB or available physical memory below 2 GiB is a mandatory stop signal unless a stricter host limit applies.
+- Do not run `git gc`, `git repack`, `git prune`, a full `git fsck`, an unfiltered full-history clone or another repository-wide maintenance command unless it is strictly required for the task and can be executed with the same serial, bounded and monitored safeguards.
+- After an out-of-memory error, crash, abnormal growth or ambiguous interruption, never retry the same command unchanged. First inspect repository and process state with bounded read-only commands, then use a narrower or partial operation. If a safe bound cannot be guaranteed, stop and report the blocker instead of risking another crash.
+
 ## Park data completion requests
 
 - Treat a request such as `Complète le parc <nom>`, `Intègre le parc <nom>` or an equivalent formulation as a data-integration operation, not as a request to change application code or to work directly in the administration UI.
