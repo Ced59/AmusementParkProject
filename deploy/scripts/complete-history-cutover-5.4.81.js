@@ -90,6 +90,7 @@ const normalizedNarratives = narratives.updateMany(
       cutoverPreviousCanonicalFactId: '',
     },
   },
+  { bypassDocumentValidation: true },
 );
 
 const anomalies = database.getCollection('historical-migration-anomalies');
