@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 47 |
+| Fiches privées existantes à intégrer | 82 | 46 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **137** |
+| **Total** | **225** | **136** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,7 +44,6 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] Luna Park Le Barcarès — `bf2c2fc3-91b4-4ff1-807a-159b68ec01a2`
 - [ ] Lunapark Agde — `25747158-6f76-4a93-abc3-21cfad2a3385`
 - [ ] Lunapark Fréjus — `dd83349f-e060-493c-a5d2-615c9b44967d`
 - [ ] Magic World — `ae0dccf0-1079-4dd0-a736-7a98ccaaa487`
