@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 50 |
+| Fiches privées existantes à intégrer | 82 | 49 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **140** |
+| **Total** | **225** | **139** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,7 +44,6 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] Luna Park d'Argelès-sur-Mer — `63593dcd-fe87-4a9f-b6a9-91594eb69286`
 - [ ] Luna Park de Palavas — `cdf42c3e-a34b-4c3c-bc7a-914cc9028903`
 - [ ] Luna Park La Palmyre — `3f28a900-9e1d-4728-a987-ba5781ea0075`
 - [ ] Luna Park Le Barcarès — `bf2c2fc3-91b4-4ff1-807a-159b68ec01a2`
@@ -370,6 +369,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 - LennyPark — la fiche publique atteint 97 avec les 14 éléments de l’inventaire officiel, les huit langues sur chaque description, le logo, deux vues documentaires du parc et deux photographies d’éléments. Les 86 dates d’ouverture 2026, l’entrée libre, le bracelet journée, les lots de tickets et le parking gratuit sont structurés ; un jalon et un article développé relient l’ouverture du 18 avril 2026 à l’histoire du Parc du Tremblay. Les illustrations promotionnelles officielles des autres manèges dépassaient la limite d’import de production et n’ont pas été relayées par un proxy ni présentées comme des photographies. Les routes publiques de la fiche et de l’inventaire répondent en 200 avec horaires, tarifs et météo affichables ; la météo alimentée par batch n’a pas conditionné la complétude. L’annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon.
 - Breizh Land Parc — la fiche historique publique atteint 96 avec les 14 éléments attestés de l’unique saison 2018, les huit langues sur chaque description, six médias publiés, sept jalons sourcés et un article développé. Les horaires quotidiens de 10 h 30 à 18 h 30 et les tarifs historiques de 13,50 € pour les adultes, 10 € de trois à huit ans et la gratuité avant trois ans sont conservés dans le récit sans créer de grille actuelle pour un parc fermé. La Chenille est documentée comme montagne russe familiale principalement destinée aux enfants, sans inventer de seuil de taille absent des sources. La fiche et l’inventaire publics répondent en 200 et signalent correctement la fermeture définitive ; ni météo, ni horaires, ni tarifs courants ne sont affichés pour ce site disparu. L’annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon.
 - Lulu Parc — la fiche publique atteint 96 avec les 40 expériences et services nommés par les pages et le plan officiels 2026, les huit langues sur chaque description, douze médias officiels, la carte illustrée, 103 dates d’ouverture, six offres d’entrée, le pass annuel et les crédits des voitures électriques. Trois jalons sourcés et un article développé retracent la création de 1996, l’arrivée de Turbobob et le trentième anniversaire. Neuf éléments disposent d’une photographie individuelle attribuable ; les autres restent sans image plutôt que de recevoir un visuel générique ou une découpe artificielle du plan. Aucune condition d’accès n’a été inventée faute de seuil officiel exploitable. Les pages publiques de la fiche et de l’inventaire répondent en 200 avec horaires, tarifs et météo affichables ; la météo alimentée par batch n’a pas conditionné la complétude. L’annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon.
+- Luna Park d'Argelès-sur-Mer — la fiche publique atteint 96 avec 19 éléments validés : les 18 attractions, jeux et points de restauration nommément attestés, ainsi que le parking gratuit voisin. Les huit langues couvrent chaque description ; cinq médias sont publiés, dont le logo, trois vues générales de l'office de tourisme et une photographie de Techno. Les 76 soirées du 23 juin au 6 septembre 2026, l'entrée libre, le paiement séparé des métiers et le parking gratuit sont structurés ; cinq jalons sourcés et un article développé retracent la fondation de 1975, le transfert de 1993, Grand Huit, Cobra et la convention GLPA de 2023. L'office de tourisme annonce environ 40 attractions, mais les autres concessions ne sont pas nommées de façon suffisamment stable en ligne : elles n'ont pas été inventées. Les seuils d'accès et les tarifs unitaires restent absents faute de grille commune publiée ; la saison 2027 est datée du 26 juin au 6 septembre sans horaires détaillés. Les pages publiques de la fiche, de l'inventaire, de la météo, des horaires et des tarifs répondent en 200 ; la prévision météo momentanément vide, alimentée par batch, n'a pas conditionné la complétude. L'annonce Facebook officielle est confirmée au statut `Published`, sans création de doublon.
 - Amigoland — la galerie officielle ne permet pas d’attribuer avec certitude une photographie distincte à Beach Party, Bomber Maxxx ou Gravity ; aucune image générique n’a donc été associée arbitrairement. Les tarifs unitaires des manèges ne sont pas publiés en ligne : la fiche indique uniquement les faits vérifiables, à savoir l’entrée et le parking gratuits puis le paiement séparé de chaque attraction.
 - Bid’A Parc — le site et le plan officiels 2026 établissent l’inventaire courant, mais la galerie officielle ne fournit des photographies attribuables sans ambiguïté qu’au parc, au Carrousel, à Pomme, au Bateau Pirate, au Karting et au Palmito Resto. Les autres éléments restent donc sans image plutôt que de recevoir un visuel générique ou ancien. Aucun constructeur n’a été attribué sans source explicite. Le tarif du parking municipal varie selon les pages officielles consultées ; seule sa période payante est décrite, sans publier de grille contradictoire.
 
