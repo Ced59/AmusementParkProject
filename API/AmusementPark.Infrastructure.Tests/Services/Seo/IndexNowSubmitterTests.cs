@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text;
 using System.Text.Json;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Infrastructure.Services.Seo;
@@ -30,6 +31,10 @@ public sealed class IndexNowSubmitterTests
         Assert.Equal(2, httpClientFactory.RequestBodies.Count);
         Assert.Equal(10000, CountUrls(httpClientFactory.RequestBodies[0]));
         Assert.Equal(1, CountUrls(httpClientFactory.RequestBodies[1]));
+        Assert.Equal(
+            httpClientFactory.RequestBodies.Select(static requestBody => (long?)Encoding.UTF8.GetByteCount(requestBody)),
+            httpClientFactory.RequestContentLengths);
+        Assert.All(httpClientFactory.RequestMediaTypes, static mediaType => Assert.Equal("application/json", mediaType));
         Assert.Equal(new[] { "https://api.indexnow.org/indexnow" }, result.AcceptedEndpoints);
     }
 

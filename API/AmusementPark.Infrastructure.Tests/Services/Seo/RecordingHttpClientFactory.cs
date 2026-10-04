@@ -10,8 +10,15 @@ internal sealed class RecordingHttpClientFactory : IHttpClientFactory
 {
     public List<string> RequestBodies { get; } = new List<string>();
 
+    public List<long?> RequestContentLengths { get; } = new List<long?>();
+
+    public List<string?> RequestMediaTypes { get; } = new List<string?>();
+
     public HttpClient CreateClient(string name)
     {
-        return new HttpClient(new RecordingHttpMessageHandler(this.RequestBodies));
+        return new HttpClient(new RecordingHttpMessageHandler(
+            this.RequestBodies,
+            this.RequestContentLengths,
+            this.RequestMediaTypes));
     }
 }
