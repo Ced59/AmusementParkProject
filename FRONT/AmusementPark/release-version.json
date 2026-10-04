@@ -1,6 +1,20 @@
 {
-  "version": "5.4.96",
+  "version": "5.4.97",
   "history": [
+    {
+      "version": "5.4.97",
+      "releasedAt": "2026-10-04",
+      "labels": {
+        "fr": "Notifications des moteurs de recherche fiabilisées",
+        "en": "More reliable search engine notifications",
+        "de": "Zuverlässigere Benachrichtigungen für Suchmaschinen",
+        "nl": "Betrouwbaardere meldingen aan zoekmachines",
+        "it": "Notifiche ai motori di ricerca più affidabili",
+        "es": "Notificaciones a los buscadores más fiables",
+        "pt": "Notificações aos motores de pesquisa mais fiáveis",
+        "pl": "Bardziej niezawodne powiadomienia wyszukiwarek"
+      }
+    },
     {
       "version": "5.4.96",
       "releasedAt": "2026-10-04",

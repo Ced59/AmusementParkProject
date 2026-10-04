@@ -1,4 +1,5 @@
-using System.Net.Http.Json;
+using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -89,7 +90,15 @@ public sealed class IndexNowSubmitter : IIndexNowSubmitter
                         UrlList = batch,
                     };
 
-                    HttpResponseMessage response = await client.PostAsJsonAsync(endpoint, payload, cancellationToken);
+                    byte[] serializedPayload = JsonSerializer.SerializeToUtf8Bytes(payload);
+                    using ByteArrayContent content = new ByteArrayContent(serializedPayload);
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json")
+                    {
+                        CharSet = "utf-8",
+                    };
+                    content.Headers.ContentLength = serializedPayload.Length;
+
+                    using HttpResponseMessage response = await client.PostAsync(endpoint, content, cancellationToken);
                     if (!response.IsSuccessStatusCode)
                     {
                         endpointAcceptedAllBatches = false;

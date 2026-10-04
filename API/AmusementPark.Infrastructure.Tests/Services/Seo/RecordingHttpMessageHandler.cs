@@ -9,10 +9,17 @@ namespace AmusementPark.Infrastructure.Tests.Services.Seo;
 internal sealed class RecordingHttpMessageHandler : HttpMessageHandler
 {
     private readonly List<string> requestBodies;
+    private readonly List<long?> requestContentLengths;
+    private readonly List<string?> requestMediaTypes;
 
-    public RecordingHttpMessageHandler(List<string> requestBodies)
+    public RecordingHttpMessageHandler(
+        List<string> requestBodies,
+        List<long?> requestContentLengths,
+        List<string?> requestMediaTypes)
     {
         this.requestBodies = requestBodies;
+        this.requestContentLengths = requestContentLengths;
+        this.requestMediaTypes = requestMediaTypes;
     }
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -21,6 +28,8 @@ internal sealed class RecordingHttpMessageHandler : HttpMessageHandler
             ? string.Empty
             : await request.Content.ReadAsStringAsync(cancellationToken);
         this.requestBodies.Add(requestBody);
+        this.requestContentLengths.Add(request.Content?.Headers.ContentLength);
+        this.requestMediaTypes.Add(request.Content?.Headers.ContentType?.MediaType);
 
         return new HttpResponseMessage(HttpStatusCode.OK);
     }
