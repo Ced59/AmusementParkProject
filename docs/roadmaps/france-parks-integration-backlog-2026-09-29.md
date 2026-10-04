@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 51 |
+| Fiches privées existantes à intégrer | 82 | 50 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **141** |
+| **Total** | **225** | **140** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,7 +44,6 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] Luna Park Carnon — `7321d4b5-b994-48c4-9d26-bd3fe6cc0354`
 - [ ] Luna Park d'Argelès-sur-Mer — `63593dcd-fe87-4a9f-b6a9-91594eb69286`
 - [ ] Luna Park de Palavas — `cdf42c3e-a34b-4c3c-bc7a-914cc9028903`
 - [ ] Luna Park La Palmyre — `3f28a900-9e1d-4728-a987-ba5781ea0075`
@@ -338,6 +337,10 @@ Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspon
 ### Entrées déjà `NotRelevant`
 
 Les 101 entrées françaises déjà classées `NotRelevant` ont été relues comme lot. Elles sont essentiellement des personnes physiques, familles ou exploitants forains et ne sont pas ajoutées au backlog. `L’île aux Enfants` reste la seule appellation de ce lot à réexaminer individuellement en cas de preuve d'un site fixe distinct.
+
+### Suppressions contrôlées terminées
+
+- Luna Park Carnon — la commune atteste la fermeture définitive et irréversible du Luna Park en 2021 puis documente en 2026 l'aménagement du parking qui occupe son ancien site. La fiche privée était un ancien regroupement artificiel de cinq montagnes russes Captain Coaster, dont trois déjà délocalisées, sans description, média, horaire, tarif ni contenu historique. Les cinq parkItems ont été supprimés individuellement après Preview, un export intermédiaire a confirmé un inventaire vide, puis le parc masqué a été classé `NotRelevant` et supprimé par une dernière opération contrôlée. Les recherches finales par nom et par identifiant renvoient toutes deux zéro résultat.
 
 ### Métadonnées globales hors portée du jeton parc
 
