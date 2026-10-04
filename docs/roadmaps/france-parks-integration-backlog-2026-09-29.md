@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 44 |
+| Fiches privées existantes à intégrer | 82 | 43 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **134** |
+| **Total** | **225** | **133** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,7 +44,6 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] Magic World — `ae0dccf0-1079-4dd0-a736-7a98ccaaa487`
 - [ ] Mignon's Park — `fd1a6d57-8e35-4086-b00e-a9de15f34b6b`
 - [ ] Nigloland — `6b49033e-353e-4dab-af4a-6da12e272937`
 - [ ] Normandie Luge — `c344f253-61a0-4b07-b892-3783fd3ecea8` — parc de loisirs multi-activités confirmé, à conserver comme parc
@@ -346,6 +345,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- Magic World — la fiche publique atteint 96 avec 43 éléments validés : 37 attractions actuelles, quatre services ou lieux de restauration et deux attractions historiques classées `Removed`. Les huit langues couvrent chaque description ; 33 médias sont publiés, dont le logo, deux vues du parc et 30 photographies d’éléments. Les 99 soirées du 23 mai au 29 août 2026, de 20 h à 2 h, l’entrée libre, les fourchettes indicatives de 3–5 €, 5–7 € et 8–10 €, ainsi que le parking gratuit sont structurés et affichables toute l’année ; les dates de validité artificielles des tarifs ont été retirées après vérification publique. Sept jalons et un article développé retracent les débuts autour de 1970 et le renouvellement des attractions ; trois constructeurs sont reliés, dont Troisne pour Banzai. L’inventaire officiel annonce plus de 40 attractions, mais seules les 37 attractions actuelles nommées ont été créées afin de ne pas inventer les éléments non identifiés. Les conditions d’accès individuelles, l’exploitant juridique et certaines photographies restent absents faute de source fiable ; l’exploitant collectif Magic World Hyères est distingué des forains indépendants. La fiche, les horaires et les tarifs répondent publiquement ; la météo reste en attente du batch automatique et n’a pas conditionné la complétude. L’annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon.
 - Lunapark Fréjus — la fiche publique atteint 98 avec 41 éléments validés : 36 attractions actuelles, trois montagnes russes historiques classées `Removed`, la Brasserie du Luna Park et les toilettes. Les huit langues couvrent chaque description ; 33 médias propres sont publiés, dont le logo, une vue générale et 31 photographies d’éléments. Les sept fiches sans photographie individuelle attribuable sont Carrousel, Family Roller Coaster, Gonflable Bob l’éponge, Manège d’avion, Toilettes, Tokaido Express et Trampoline. Les 100 soirées du 22 mai au 29 août 2026, l’entrée libre et le parking gratuit sont structurés ; les prix unitaires restent omis, chaque métier gérant son tarif et ses moyens de paiement sans grille 2026 commune. Les tailles minimales officielles de Gravity et Shaker sont structurées ; aucune condition n’a été extrapolée pour les autres attractions. Six jalons et un article développé retracent l’ouverture de 2006 et l’évolution des montagnes russes. La page publique et son URL canonique répondent en 200 ; la météo alimentée par batch n’a pas conditionné la complétude. L’annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon.
 - La Coccinelle — la fiche publique atteint 97 avec les 23 éléments de l’inventaire officiel, les huit langues sur chaque description, 26 médias publiés dont le logo et 20 photographies d’éléments, le plan officiel 2026, 141 dates d’ouverture, sept offres d’entrée, un pass, le parking gratuit, sept jalons historiques et un article développé. La Table des Coccinelles, Le Coin des Douceurs et Les Cocc'Italiennes restent sans photographie individuelle suffisamment attribuable ; les autres éléments disposent d’un visuel propre. L’historique courant est servi publiquement par la timeline du parc. La météo alimentée par batch n’a pas conditionné la publication ni le retrait.
 - L'Île aux Géants — la fiche publique atteint 98 avec 21 éléments validés : les 18 attractions du site officiel, la pataugeoire, O'resto d'Iros et les aires de pique-nique. Les huit langues couvrent chaque description ; 19 médias officiels sont publiés, dont le logo, deux vues générales et une image pour 16 attractions. Aucun plan visiteur officiel n'a été trouvé : l'image-calendrier 2026 n'a pas été détournée en carte. Manège enchanté, Petit train, Pataugeoire, O'resto d'Iros et les aires de pique-nique restent sans visuel propre faute de photographie officielle distincte. Les horaires et cinq tarifs d'entrée 2026 ainsi que le parking gratuit sont structurés ; trois jalons et un article développé documentent l'ouverture de 2013 et les deux montagnes russes. La météo alimentée par batch n'a pas conditionné la publication ni le retrait.
