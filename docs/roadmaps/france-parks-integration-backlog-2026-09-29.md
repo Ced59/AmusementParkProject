@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 41 |
+| Fiches privées existantes à intégrer | 82 | 40 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **131** |
+| **Total** | **225** | **130** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,7 +44,6 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] Normandie Luge — `c344f253-61a0-4b07-b892-3783fd3ecea8` — parc de loisirs multi-activités confirmé, à conserver comme parc
 - [ ] Ô Parc — `6644b892-d03c-461e-855d-a61cadba76f4`
 - [ ] O'Fun Park — `81f86001-3485-418e-9266-7977dff7f56a`
 - [ ] O'Gliss Park — `6f17412f-5a84-4449-9e00-75927717b8bf`
@@ -343,6 +342,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- Normandie Luge — la fiche publique atteint 100 avec huit éléments validés : six activités, le restaurant-bar-glaces et le parking P2. Les huit langues couvrent chaque description ; neuf médias officiels sont publiés, dont le logo, une vue générale et une photographie pour sept éléments, le parking P2 restant sans visuel propre faute d'image officielle distincte. Le plan officiel 2025, les 160 dates d'ouverture 2026, l'accès libre au site, les deux parkings gratuits et les dix-huit offres d'activités ou de packs sont structurés. Quinze jalons et un article développé retracent l'ouverture de 2013 et les extensions durables du site ; les fondateurs, l'exploitant et Wiegand sont reliés et décrits. Les pages publiques de la fiche, des activités, des images, du plan, de la météo, des horaires et des tarifs répondent en 200 ; la prévision météo momentanément absente, alimentée par batch, n'a pas conditionné la complétude. L'annonce Facebook officielle est confirmée au statut `Published` : https://www.facebook.com/1285475681307050/posts/122121477363424431.
 - Nigloland — la fiche publique atteint 100 avec 46 éléments documentés : 39 expériences actuelles, Supersonic annoncé pour 2027, les hôtels Hôtel des Pirates et Cabaïana, ainsi que quatre attractions historiques conservées privées avec le statut `Removed`. Les 42 éléments visibles possèdent une photographie propre et les huit langues couvrent chaque description ; le logo, une vue représentative et le plan officiel sont également publiés. Les 147 dates d'ouverture de la saison 2026, sept offres d'entrée, le pass saison et le parking gratuit sont structurés. Treize jalons et un article développé retracent l'histoire et les nouveautés durables du parc. Les huit routes publiques contrôlées — fiche, éléments, images, plan, zones, météo, horaires et tarifs — répondent en 200 ; la météo alimentée par batch n'a pas conditionné la complétude. Deux médias privés issus d'identifiants temporaires de Preview restent orphelins et non rattachés à la fiche ; leur suppression nécessite une autorisation distincte et ne bloque pas la publication. L'annonce Facebook officielle est confirmée au statut `Published`.
 - Mignon's Park — la fiche publique atteint 97 avec huit éléments validés : cinq attractions actuelles, Mignon's Diner, le parking et Pomme conservée comme montagne russe retirée après ses saisons 2024 et 2025. Les huit langues couvrent chaque description ; deux médias sont publiés, avec le logo officiel et une vue générale, mais aucune photographie individuelle suffisamment attribuable n'a été trouvée pour les éléments. Les horaires 2026 sont structurés ; aucune grille de base actuelle n'étant publiée, aucun montant n'a été extrapolé, tandis que les forfaits illimités de 5, 10 et 15 € annoncés à Noël 2021 restent clairement présentés comme un repère historique. Quatre jalons et un article développé retracent l'ouverture d'avril 2021 par David et Olivia Langlais, la création d'OSK en 2023 et le passage de Pomme. Aucun plan officiel n'a été trouvé. La page météo existe mais attend encore son alimentation par le batch automatique, qui n'a pas conditionné la complétude. La fiche, les horaires et l'absence explicite de tarif courant ont été vérifiés publiquement ; l'annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon.
 - Magic World — la fiche publique atteint 96 avec 43 éléments validés : 37 attractions actuelles, quatre services ou lieux de restauration et deux attractions historiques classées `Removed`. Les huit langues couvrent chaque description ; 33 médias sont publiés, dont le logo, deux vues du parc et 30 photographies d’éléments. Les 99 soirées du 23 mai au 29 août 2026, de 20 h à 2 h, l’entrée libre, les fourchettes indicatives de 3–5 €, 5–7 € et 8–10 €, ainsi que le parking gratuit sont structurés et affichables toute l’année ; les dates de validité artificielles des tarifs ont été retirées après vérification publique. Sept jalons et un article développé retracent les débuts autour de 1970 et le renouvellement des attractions ; trois constructeurs sont reliés, dont Troisne pour Banzai. L’inventaire officiel annonce plus de 40 attractions, mais seules les 37 attractions actuelles nommées ont été créées afin de ne pas inventer les éléments non identifiés. Les conditions d’accès individuelles, l’exploitant juridique et certaines photographies restent absents faute de source fiable ; l’exploitant collectif Magic World Hyères est distingué des forains indépendants. La fiche, les horaires et les tarifs répondent publiquement ; la météo reste en attente du batch automatique et n’a pas conditionné la complétude. L’annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon.
