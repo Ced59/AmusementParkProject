@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 37 |
+| Fiches privées existantes à intégrer | 82 | 36 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **127** |
+| **Total** | **225** | **126** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,7 +44,6 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] OK Corral — `6ba29848-f17a-4982-b583-4f0dbba2e201`
 - [ ] Papéa Parc — `5c22b408-5e7c-4f3b-a55f-ccf4bbe16cd2`
 - [ ] Paradis Land — `0d9d2926-ec5e-4ba8-b992-21bc5bcab91f`
 - [ ] Parc Ange Michel — `6c673827-ae94-450d-b164-73ffdf519491`
@@ -339,6 +338,7 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 ### Lacunes éditoriales documentées
 
+- OK Corral — la fiche publique atteint 98 avec 56 éléments validés : 34 attractions actuelles, quatre spectacles, huit points de restauration, sept services ou transports et trois montagnes russes historiques conservées avec leur statut `Délocalisé`. Les huit langues couvrent le récit du parc et chaque description d’élément ; 48 médias officiels propres au parc sont publiés, dont le logo, une vue aérienne et 46 photographies d’éléments. Les 365 dates du calendrier 2026, six offres d’entrée, le pass annuel et le parking gratuit sont structurés. Treize jalons et un article développé retracent l’ouverture de 1966, les familles Lorge et Bembom, les hébergements et les attractions marquantes. Aucun plan visiteur officiel réutilisable n’a été trouvé. Le logo global partagé d’Anton Schwarzkopf reste sans source ni crédits vérifiables ; il n’a pas été réécrit dans ce traitement propre au parc. La page publique répond en 200 avec l’inventaire, la météo, les horaires, les tarifs, l’histoire et les médias présents dans le rendu initial ; la météo alimentée par batch n’a pas conditionné la complétude. L’annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon : https://www.facebook.com/1285475681307050/posts/122121536799424431.
 - O'Fun Park — la fiche publique atteint 97 avec 61 éléments validés, dont 43 attractions, quatre attractions Zamperla annoncées pour 2027, les six univers officiels et les principaux services du site. Les huit langues couvrent les descriptions du parc, des zones et de chaque élément ; 34 médias officiels sont publiés, avec le logo courant, quatre vues générales et 29 photographies d'éléments. Le plan officiel 2026, les 244 dates du calendrier, les tarifs 2026 corrigés à partir des montants officiels, les pass saison, les formules de groupe et le parking gratuit sont structurés. Sept jalons et un article développé retracent l'ouverture d'Indian Forest en 2002, le changement de nom, la nouvelle identité western et les ouvertures prévues en 2027. Les quatre rendus des nouveautés futures sont explicitement décrits comme des illustrations conceptuelles et restent marqués non courants. Les éléments sans photographie propre, les anciennes étapes sans image historique, les coordonnées individuelles et la date précise d'ouverture du parc restent volontairement absents faute de source fiable. La page publique répond en 200 ; la météo alimentée par batch n'a pas conditionné la complétude. L'annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon : https://www.facebook.com/1285475681307050/posts/122121506505424431.
 - Ô Parc — la fiche historique publique atteint 96 avec les 31 entrées du dernier plan officiel : 27 attractions, deux points de restauration, la boutique d'accueil et le poulailler. Les huit langues couvrent chaque description ; l'Aqua Zone et la Baby Zone regroupent les huit activités explicitement zonées, et onze médias officiels sont publiés, dont le logo, une vue générale et neuf photographies d'éléments. Le plan final 2026, cinq jalons du parc, trois jalons d'attractions et un article développé retracent l'ouverture de 2017, La Chenille, les nouveautés 2025 et la fermeture définitive du 31 août 2026. Les derniers horaires et tarifs sont conservés dans le récit historique sans créer de grille active pour un parc fermé. Aucun constructeur n'a été attribué sans source fiable, et les éléments sans photographie propre n'ont pas reçu de visuel générique. La page publique répond en 200 ; la météo alimentée par batch n'a pas conditionné la complétude. L'annonce Facebook officielle existait déjà au statut `Published`, sans création de doublon : https://www.facebook.com/1285475681307050/posts/122121487455424431.
 - Normandie Luge — la fiche publique atteint 100 avec huit éléments validés : six activités, le restaurant-bar-glaces et le parking P2. Les huit langues couvrent chaque description ; neuf médias officiels sont publiés, dont le logo, une vue générale et une photographie pour sept éléments, le parking P2 restant sans visuel propre faute d'image officielle distincte. Le plan officiel 2025, les 160 dates d'ouverture 2026, l'accès libre au site, les deux parkings gratuits et les dix-huit offres d'activités ou de packs sont structurés. Quinze jalons et un article développé retracent l'ouverture de 2013 et les extensions durables du site ; les fondateurs, l'exploitant et Wiegand sont reliés et décrits. Les pages publiques de la fiche, des activités, des images, du plan, de la météo, des horaires et des tarifs répondent en 200 ; la prévision météo momentanément absente, alimentée par batch, n'a pas conditionné la complétude. L'annonce Facebook officielle est confirmée au statut `Published` : https://www.facebook.com/1285475681307050/posts/122121477363424431.
