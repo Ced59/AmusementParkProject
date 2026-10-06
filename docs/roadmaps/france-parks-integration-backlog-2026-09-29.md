@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 38 |
+| Fiches privées existantes à intégrer | 82 | 37 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **128** |
+| **Total** | **225** | **127** |
 
 ## 1. Fiches publiques à compléter
 
@@ -44,7 +44,6 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 2. Fiches privées existantes à intégrer
 
-- [ ] O'Gliss Park — `6f17412f-5a84-4449-9e00-75927717b8bf`
 - [ ] OK Corral — `6ba29848-f17a-4982-b583-4f0dbba2e201`
 - [ ] Papéa Parc — `5c22b408-5e7c-4f3b-a55f-ccf4bbe16cd2`
 - [ ] Paradis Land — `0d9d2926-ec5e-4ba8-b992-21bc5bcab91f`
