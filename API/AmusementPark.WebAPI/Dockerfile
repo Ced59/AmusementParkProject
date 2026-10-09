@@ -13,7 +13,9 @@ COPY API/AmusementPark.WebAPI/AmusementPark.WebAPI.csproj ./API/AmusementPark.We
 RUN dotnet restore ./API/AmusementPark.WebAPI/AmusementPark.WebAPI.csproj
 
 COPY API ./API
-RUN dotnet publish ./API/AmusementPark.WebAPI/AmusementPark.WebAPI.csproj \
+RUN --mount=type=secret,id=sixlabors_license_key \
+    SIXLABORS_LICENSE_KEY="$(cat /run/secrets/sixlabors_license_key)" \
+    dotnet publish ./API/AmusementPark.WebAPI/AmusementPark.WebAPI.csproj \
     --configuration Release \
     --no-restore \
     --output /app/publish \

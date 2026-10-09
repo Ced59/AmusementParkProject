@@ -363,6 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 /.env
 /DB/AmusementPark
+sixlabors.lic
 
 .idea
 AmusementParkProject.zip
