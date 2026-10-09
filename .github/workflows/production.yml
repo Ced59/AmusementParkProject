@@ -184,7 +184,7 @@ jobs:
     name: Backend build and tests
     runs-on: ubuntu-latest
     env:
-      BACKEND_BUILD_CONFIGURATION: ${{ secrets.SIXLABORS_LICENSE_KEY != '' && 'Release' || 'Debug' }}
+      BACKEND_BUILD_CONFIGURATION: ${{ (github.event_name != 'pull_request' || secrets.SIXLABORS_LICENSE_KEY != '') && 'Release' || 'Debug' }}
       SIXLABORS_LICENSE_KEY: ${{ secrets.SIXLABORS_LICENSE_KEY }}
     steps:
       - name: Checkout
@@ -397,7 +397,7 @@ jobs:
     name: Build Docker images
     runs-on: ubuntu-latest
     env:
-      BACKEND_BUILD_CONFIGURATION: ${{ secrets.SIXLABORS_LICENSE_KEY != '' && 'Release' || 'Debug' }}
+      BACKEND_BUILD_CONFIGURATION: ${{ (github.event_name != 'pull_request' || secrets.SIXLABORS_LICENSE_KEY != '') && 'Release' || 'Debug' }}
     needs:
       - release-version
       - backend
