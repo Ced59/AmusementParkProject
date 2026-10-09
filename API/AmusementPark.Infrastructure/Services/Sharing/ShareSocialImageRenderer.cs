@@ -173,7 +173,7 @@ public sealed class ShareSocialImageRenderer
         using Image<Rgba32> image = new Image<Rgba32>(
             ShareSocialImageTemplate.Width,
             ShareSocialImageTemplate.Height,
-            Color.ParseHex("090704"));
+            Color.ParseHex("090704").ToPixel<Rgba32>());
         ShareSocialImageCanvasPainter.Draw(
             image,
             model,

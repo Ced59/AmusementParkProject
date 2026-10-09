@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Infrastructure.Services.Images;
 using Microsoft.Extensions.Caching.Memory;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
@@ -86,7 +87,7 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
 
     private async Task<byte[]> RenderPngCoreAsync(UserRankingSharePreviewResult preview)
     {
-        using Image<Rgba32> image = new Image<Rgba32>(ImageWidth, ImageHeight, Color.ParseHex("070A12"));
+        using Image<Rgba32> image = new Image<Rgba32>(ImageWidth, ImageHeight, Color.ParseHex("070A12").ToPixel<Rgba32>());
         Font brandFont = this.fontFamily.CreateFont(38, FontStyle.Regular);
         Font nameFont = this.fontFamily.CreateFont(64, FontStyle.Regular);
         Font topFont = this.fontFamily.CreateFont(28, FontStyle.Regular);
@@ -96,68 +97,71 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
         IReadOnlyCollection<UserRankingSharePreviewItemResult> items = preview.Items.Take(5).ToList();
         string displayName = ResolveDisplayName(preview.DisplayName);
 
-        image.Mutate(context =>
+        image.Mutate(processingContext =>
         {
-            context.Fill(
-                new LinearGradientBrush(
-                    new PointF(0, 0),
-                    new PointF(ImageWidth, ImageHeight),
-                    GradientRepetitionMode.None,
-                    new[]
-                    {
-                        new ColorStop(0f, Color.ParseHex("111827")),
-                        new ColorStop(0.58f, Color.ParseHex("07101E")),
-                        new ColorStop(1f, Color.ParseHex("05070C")),
-                    }),
-                new RectangleF(0, 0, ImageWidth, ImageHeight));
-            context.Fill(Color.FromRgba(255, 111, 0, 36), new EllipsePolygon(1080, 70, 260));
-            context.Fill(Color.FromRgba(30, 200, 255, 28), new EllipsePolygon(120, 610, 300));
-            context.Fill(Color.ParseHex("FF7A00"), new RectangleF(58, 50, 10, 78));
-            context.DrawText("AMUSEMENT-PARKS.FUN", brandFont, Color.ParseHex("F8FAFC"), new PointF(88, 48));
-            context.DrawText(
-                FitText(displayName, nameFont, 760),
-                nameFont,
-                Color.ParseHex("FFFFFF"),
-                new PointF(58, 102));
-            context.Fill(Color.ParseHex("DFFF00"), new RectangleF(930, 62, 204, 62));
-            context.DrawText("TOP 5", topFont, Color.ParseHex("07101E"), new PointF(990, 77));
-
-            int itemIndex = 0;
-            foreach (UserRankingSharePreviewItemResult item in items)
+            processingContext.Paint(context =>
             {
-                float y = 202 + itemIndex * 78;
-                Color cardColor = itemIndex == 0
-                    ? Color.FromRgba(255, 122, 0, 44)
-                    : Color.FromRgba(255, 255, 255, 18);
-                context.Fill(cardColor, new RectangleF(58, y, 1076, 64));
-                context.DrawText($"#{item.Rank}", itemFont, Color.ParseHex("FFB15C"), new PointF(82, y + 14));
+                context.Fill(
+                    new LinearGradientBrush(
+                        new PointF(0, 0),
+                        new PointF(ImageWidth, ImageHeight),
+                        GradientRepetitionMode.None,
+                        new[]
+                        {
+                            new ColorStop(0f, Color.ParseHex("111827")),
+                            new ColorStop(0.58f, Color.ParseHex("07101E")),
+                            new ColorStop(1f, Color.ParseHex("05070C")),
+                        }),
+                    new RectangleF(0, 0, ImageWidth, ImageHeight));
+                context.Fill(Color.FromPixel(new Rgba32(255, 111, 0, 36)), new EllipsePolygon(1080, 70, 260));
+                context.Fill(Color.FromPixel(new Rgba32(30, 200, 255, 28)), new EllipsePolygon(120, 610, 300));
+                context.Fill(Color.ParseHex("FF7A00"), new RectangleF(58, 50, 10, 78));
+                context.DrawText("AMUSEMENT-PARKS.FUN", brandFont, Color.ParseHex("F8FAFC"), new PointF(88, 48));
                 context.DrawText(
-                    FitText(item.Name, itemFont, 610),
-                    itemFont,
-                    Color.ParseHex("F8FAFC"),
-                    new PointF(158, y + 8));
-                if (!string.IsNullOrWhiteSpace(item.ParkName))
+                    FitText(displayName, nameFont, 760),
+                    nameFont,
+                    Color.ParseHex("FFFFFF"),
+                    new PointF(58, 102));
+                context.Fill(Color.ParseHex("DFFF00"), new RectangleF(930, 62, 204, 62));
+                context.DrawText("TOP 5", topFont, Color.ParseHex("07101E"), new PointF(990, 77));
+
+                int itemIndex = 0;
+                foreach (UserRankingSharePreviewItemResult item in items)
                 {
+                    float y = 202 + itemIndex * 78;
+                    Color cardColor = itemIndex == 0
+                        ? Color.FromPixel(new Rgba32(255, 122, 0, 44))
+                        : Color.FromPixel(new Rgba32(255, 255, 255, 18));
+                    context.Fill(cardColor, new RectangleF(58, y, 1076, 64));
+                    context.DrawText($"#{item.Rank}", itemFont, Color.ParseHex("FFB15C"), new PointF(82, y + 14));
                     context.DrawText(
-                        FitText(item.ParkName, detailFont, 610),
-                        detailFont,
-                        Color.ParseHex("A8B3C7"),
-                        new PointF(160, y + 38));
+                        FitText(item.Name, itemFont, 610),
+                        itemFont,
+                        Color.ParseHex("F8FAFC"),
+                        new PointF(158, y + 8));
+                    if (!string.IsNullOrWhiteSpace(item.ParkName))
+                    {
+                        context.DrawText(
+                            FitText(item.ParkName, detailFont, 610),
+                            detailFont,
+                            Color.ParseHex("A8B3C7"),
+                            new PointF(160, y + 38));
+                    }
+
+                    context.DrawText(
+                        $"{item.Rating:0.0} / 5",
+                        scoreFont,
+                        Color.ParseHex("DFFF00"),
+                        new PointF(985, y + 14));
+                    itemIndex++;
                 }
 
                 context.DrawText(
-                    $"{item.Rating:0.0} / 5",
-                    scoreFont,
-                    Color.ParseHex("DFFF00"),
-                    new PointF(985, y + 14));
-                itemIndex++;
-            }
-
-            context.DrawText(
-                "AMUSEMENT-PARKS.FUN",
-                detailFont,
-                Color.ParseHex("7F8CA3"),
-                new PointF(948, 596));
+                    "AMUSEMENT-PARKS.FUN",
+                    detailFont,
+                    Color.ParseHex("7F8CA3"),
+                    new PointF(948, 596));
+            });
         });
 
         await using MemoryStream stream = new MemoryStream();
@@ -203,7 +207,7 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
             return AnonymousDisplayName;
         }
 
-        if (TextMeasurer.MeasureSize(normalizedValue, new TextOptions(font)).Width <= maximumWidth)
+        if (TextMeasurer.MeasureRenderableBounds(normalizedValue, new TextOptions(font)).Width <= maximumWidth)
         {
             return normalizedValue;
         }
@@ -213,7 +217,7 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
         {
             candidate = candidate[..^1].TrimEnd();
             string truncated = $"{candidate}…";
-            if (TextMeasurer.MeasureSize(truncated, new TextOptions(font)).Width <= maximumWidth)
+            if (TextMeasurer.MeasureRenderableBounds(truncated, new TextOptions(font)).Width <= maximumWidth)
             {
                 return truncated;
             }

@@ -171,12 +171,10 @@ public sealed class ShareSocialImageRendererTests
         {
             bool isAvailable = font.TryGetGlyphs(
                 new CodePoint(character),
-                out IReadOnlyList<Glyph>? glyphs);
-            IReadOnlyList<Glyph> availableGlyphs = glyphs
-                ?? throw new InvalidOperationException("Font API returned no glyph collection.");
+                out Glyph? glyph);
 
             Assert.True(isAvailable, $"The embedded social-image font is missing '{character}'.");
-            Assert.NotEmpty(availableGlyphs);
+            Assert.NotNull(glyph);
         }
     }
 
@@ -195,10 +193,10 @@ public sealed class ShareSocialImageRendererTests
         {
             bool isAvailable = font.TryGetGlyphs(
                 new CodePoint(character),
-                out IReadOnlyList<Glyph>? glyphs);
+                out Glyph? glyph);
 
             Assert.True(isAvailable, $"The embedded Unicode fallback is missing '{character}'.");
-            Assert.NotEmpty(glyphs ?? Array.Empty<Glyph>());
+            Assert.NotNull(glyph);
         }
     }
 
@@ -215,10 +213,10 @@ public sealed class ShareSocialImageRendererTests
 
         bool isAvailable = font.TryGetGlyphs(
             new CodePoint(0x1F3A2),
-            out IReadOnlyList<Glyph>? glyphs);
+            out Glyph? glyph);
 
         Assert.True(isAvailable, "The embedded symbol fallback is missing the roller coaster glyph.");
-        Assert.NotEmpty(glyphs ?? Array.Empty<Glyph>());
+        Assert.NotNull(glyph);
     }
 
     [Theory]
@@ -263,7 +261,7 @@ public sealed class ShareSocialImageRendererTests
         string digest = Convert.ToHexString(SHA256.HashData(result.Content)).ToLowerInvariant();
 
         Assert.Equal(
-            "a089020b89c5ca87db4715aa02aee3a72eedd5e114ba2348ab4e61ae49a2d7fb",
+            "39cdf7922fed4750b8f56e33bae013d528037f3bc45c38b7afec9aa60e7b7007",
             digest);
     }
 

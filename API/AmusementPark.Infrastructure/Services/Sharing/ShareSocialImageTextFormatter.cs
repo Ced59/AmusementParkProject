@@ -127,7 +127,7 @@ internal static class ShareSocialImageTextFormatter
         {
             FallbackFontFamilies = fallbackFontFamilies,
         };
-        if (TextMeasurer.MeasureSize(normalizedValue, options).Width <= maximumWidth)
+        if (TextMeasurer.MeasureRenderableBounds(normalizedValue, options).Width <= maximumWidth)
         {
             return normalizedValue;
         }
@@ -139,7 +139,7 @@ internal static class ShareSocialImageTextFormatter
         {
             string candidate = normalizedValue[..textElementIndexes[textElementCount]].TrimEnd();
             string truncated = $"{candidate}…";
-            if (TextMeasurer.MeasureSize(truncated, options).Width <= maximumWidth)
+            if (TextMeasurer.MeasureRenderableBounds(truncated, options).Width <= maximumWidth)
             {
                 return truncated;
             }

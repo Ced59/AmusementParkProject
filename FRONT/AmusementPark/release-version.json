@@ -1,6 +1,20 @@
 {
-  "version": "5.4.97",
+  "version": "5.4.98",
   "history": [
+    {
+      "version": "5.4.98",
+      "releasedAt": "2026-10-10",
+      "labels": {
+        "fr": "Mises à jour de sécurité des composants",
+        "en": "Component security updates",
+        "de": "Sicherheitsupdates für Komponenten",
+        "nl": "Beveiligingsupdates voor componenten",
+        "it": "Aggiornamenti di sicurezza dei componenti",
+        "es": "Actualizaciones de seguridad de componentes",
+        "pt": "Atualizações de segurança dos componentes",
+        "pl": "Aktualizacje zabezpieczeń komponentów"
+      }
+    },
     {
       "version": "5.4.97",
       "releasedAt": "2026-10-04",

@@ -88,6 +88,8 @@ services:
     build:
       context: ../..
       dockerfile: API/AmusementPark.WebAPI/Dockerfile
+      secrets:
+        - sixlabors_license_key
     container_name: amusementpark-local-api
     restart: unless-stopped
     depends_on:
@@ -279,6 +281,10 @@ services:
       - ./matomo-configure-local.php:/usr/local/bin/matomo-configure-local.php:ro
     security_opt:
       - no-new-privileges:true
+
+secrets:
+  sixlabors_license_key:
+    file: ${SIXLABORS_LICENSE_FILE:-../../sixlabors.lic}
 
 networks:
   public_edge:

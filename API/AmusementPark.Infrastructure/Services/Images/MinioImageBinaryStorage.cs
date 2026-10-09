@@ -13,6 +13,7 @@ using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Formats.Webp;
+using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 
 namespace AmusementPark.Infrastructure.Services.Images;
@@ -296,9 +297,12 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
         {
             if (this.watermarkFonts.IsUsable)
             {
-                image.Mutate(context =>
+                image.Mutate(processingContext =>
                 {
-                    this.DrawWatermark(context, image.Width, image.Height);
+                    processingContext.Paint(context =>
+                    {
+                        this.DrawWatermark(context, image.Width, image.Height);
+                    });
                 });
             }
             else
@@ -1793,9 +1797,12 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
         }
 
         using Image image = await Image.LoadAsync(imageStream, cancellationToken);
-        image.Mutate(context =>
+        image.Mutate(processingContext =>
         {
-            this.DrawWatermark(context, image.Width, image.Height);
+            processingContext.Paint(context =>
+            {
+                this.DrawWatermark(context, image.Width, image.Height);
+            });
         });
 
         MemoryStream output = new MemoryStream();
@@ -1804,7 +1811,7 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
         return output;
     }
 
-    private void DrawWatermark(IImageProcessingContext context, int imageWidth, int imageHeight)
+    private void DrawWatermark(DrawingCanvas context, int imageWidth, int imageHeight)
     {
         WatermarkLayout layout = BuildWatermarkLayout(this.watermarkFonts, imageWidth, imageHeight);
         RectangleF background = new RectangleF(layout.X, layout.Y, layout.Width, layout.Height);
@@ -1817,15 +1824,15 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
         float funX = dotX + layout.DotSize.Width + (layout.FontSize * 0.09f);
         float underlineY = funY + layout.FunSize.Height + (layout.FontSize * 0.03f);
 
-        context.Fill(Color.FromRgba(5, 7, 12, 126), background);
+        context.Fill(Color.FromPixel(new Rgba32(5, 7, 12, 126)), background);
         context.DrawText(
             BuildTextOptions(layout.BaseFont, baseX, baseY),
             WatermarkBaseText,
-            Color.FromRgba(255, 255, 255, 220));
+            Color.FromPixel(new Rgba32(255, 255, 255, 220)));
         context.DrawText(
             BuildTextOptions(layout.BaseFont, dotX, dotY),
             WatermarkDotText,
-            Color.FromRgba(255, 255, 255, 220));
+            Color.FromPixel(new Rgba32(255, 255, 255, 220)));
 
         Brush funBrush = new LinearGradientBrush(
             new PointF(funX, funY),
@@ -1833,19 +1840,19 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
             GradientRepetitionMode.None,
             new[]
             {
-                new ColorStop(0.00f, Color.FromRgba(255, 74, 0, 222)),
-                new ColorStop(0.25f, Color.FromRgba(255, 122, 0, 222)),
-                new ColorStop(0.43f, Color.FromRgba(223, 255, 0, 222)),
-                new ColorStop(0.58f, Color.FromRgba(141, 255, 0, 222)),
-                new ColorStop(0.78f, Color.FromRgba(0, 234, 255, 222)),
-                new ColorStop(1.00f, Color.FromRgba(0, 141, 255, 222)),
+                new ColorStop(0.00f, Color.FromPixel(new Rgba32(255, 74, 0, 222))),
+                new ColorStop(0.25f, Color.FromPixel(new Rgba32(255, 122, 0, 222))),
+                new ColorStop(0.43f, Color.FromPixel(new Rgba32(223, 255, 0, 222))),
+                new ColorStop(0.58f, Color.FromPixel(new Rgba32(141, 255, 0, 222))),
+                new ColorStop(0.78f, Color.FromPixel(new Rgba32(0, 234, 255, 222))),
+                new ColorStop(1.00f, Color.FromPixel(new Rgba32(0, 141, 255, 222))),
             });
 
         context.DrawText(
             BuildTextOptions(layout.FunFont, funX, funY),
             WatermarkFunText,
             funBrush,
-            Pens.Solid(Color.FromRgba(255, 255, 255, 92), Math.Max(0.5f, layout.FontSize * 0.014f)));
+            Pens.Solid(Color.FromPixel(new Rgba32(255, 255, 255, 92)), Math.Max(0.5f, layout.FontSize * 0.014f)));
 
         context.Fill(
             new LinearGradientBrush(
@@ -1854,9 +1861,9 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
                 GradientRepetitionMode.None,
                 new[]
                 {
-                    new ColorStop(0f, Color.FromRgba(255, 74, 0, 190)),
-                    new ColorStop(0.5f, Color.FromRgba(223, 255, 0, 190)),
-                    new ColorStop(1f, Color.FromRgba(0, 141, 255, 190)),
+                    new ColorStop(0f, Color.FromPixel(new Rgba32(255, 74, 0, 190))),
+                    new ColorStop(0.5f, Color.FromPixel(new Rgba32(223, 255, 0, 190))),
+                    new ColorStop(1f, Color.FromPixel(new Rgba32(0, 141, 255, 190))),
                 }),
             new RectangleF(funX + layout.FontSize * 0.2f, underlineY, Math.Max(1f, layout.FunSize.Width * 0.9f), Math.Max(1f, layout.FontSize * 0.055f)));
     }
@@ -1892,9 +1899,9 @@ private const string WatermarkBaseText = "AMUSEMENT-PARKS";
     {
         Font baseFont = fonts.BaseFamily.CreateFont(fontSize, FontStyle.Regular);
         Font funFont = fonts.FunFamily.CreateFont(fontSize * 1.13f, FontStyle.Regular);
-        FontRectangle baseSize = TextMeasurer.MeasureSize(WatermarkBaseText, new TextOptions(baseFont));
-        FontRectangle dotSize = TextMeasurer.MeasureSize(WatermarkDotText, new TextOptions(baseFont));
-        FontRectangle funSize = TextMeasurer.MeasureSize(WatermarkFunText, new TextOptions(funFont));
+        FontRectangle baseSize = TextMeasurer.MeasureRenderableBounds(WatermarkBaseText, new TextOptions(baseFont));
+        FontRectangle dotSize = TextMeasurer.MeasureRenderableBounds(WatermarkDotText, new TextOptions(baseFont));
+        FontRectangle funSize = TextMeasurer.MeasureRenderableBounds(WatermarkFunText, new TextOptions(funFont));
         float paddingX = Math.Max(5f, fontSize * 0.42f);
         float paddingY = Math.Max(4f, fontSize * 0.24f);
         float gap = fontSize * 0.14f;

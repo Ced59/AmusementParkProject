@@ -183,6 +183,9 @@ jobs:
   backend:
     name: Backend build and tests
     runs-on: ubuntu-latest
+    env:
+      BACKEND_BUILD_CONFIGURATION: ${{ (github.event_name != 'pull_request' || secrets.SIXLABORS_LICENSE_KEY != '') && 'Release' || 'Debug' }}
+      SIXLABORS_LICENSE_KEY: ${{ secrets.SIXLABORS_LICENSE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -196,7 +199,7 @@ jobs:
         run: dotnet restore AmusementPark.sln
 
       - name: Build backend
-        run: dotnet build AmusementPark.sln --configuration Release --no-restore
+        run: dotnet build AmusementPark.sln --configuration "${BACKEND_BUILD_CONFIGURATION}" --no-restore
 
       - name: Run backend tests when present
         shell: bash
@@ -209,7 +212,7 @@ jobs:
           fi
 
           for test_project in "${test_projects[@]}"; do
-            dotnet test "${test_project}" --configuration Release --no-build --logger trx --results-directory TestResults
+            dotnet test "${test_project}" --configuration "${BACKEND_BUILD_CONFIGURATION}" --no-build --logger trx --results-directory TestResults
           done
 
       - name: Upload backend test results
@@ -393,6 +396,8 @@ jobs:
   docker-images:
     name: Build Docker images
     runs-on: ubuntu-latest
+    env:
+      BACKEND_BUILD_CONFIGURATION: ${{ (github.event_name != 'pull_request' || secrets.SIXLABORS_LICENSE_KEY != '') && 'Release' || 'Debug' }}
     needs:
       - release-version
       - backend
@@ -435,6 +440,10 @@ jobs:
         with:
           context: .
           file: API/AmusementPark.WebAPI/Dockerfile
+          build-args: |
+            BUILD_CONFIGURATION=${{ env.BACKEND_BUILD_CONFIGURATION }}
+          secrets: |
+            sixlabors_license_key=${{ secrets.SIXLABORS_LICENSE_KEY }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ steps.image-names.outputs.api_image }}

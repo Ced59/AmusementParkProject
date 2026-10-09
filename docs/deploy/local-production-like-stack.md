@@ -27,6 +27,8 @@ copy deploy\local\.env.local.example deploy\local\.env.local
 .\deploy\local\start-local-prod.ps1 -Build
 ```
 
+La construction de l'API utilise ImageSharp 4 et nécessite la licence Six Labors du projet. Télécharger le fichier `sixlabors.lic` depuis le portail Six Labors, puis le placer à la racine du dépôt avant d'utiliser `-Build`. Le fichier est ignoré par Git. Pour le conserver ailleurs, renseigner son chemin dans `SIXLABORS_LICENSE_FILE` dans `deploy/local/.env.local` ; le chemin est résolu depuis `deploy/local`.
+
 Accès direct SSR, sans NPM :
 
 ```txt
