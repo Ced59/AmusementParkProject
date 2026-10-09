@@ -1,6 +1,20 @@
 {
-  "version": "5.4.99",
+  "version": "5.4.100",
   "history": [
+    {
+      "version": "5.4.100",
+      "releasedAt": "2026-10-10",
+      "labels": {
+        "fr": "Dates de mise à jour des sitemaps plus fiables",
+        "en": "More reliable sitemap update dates",
+        "de": "Zuverlässigere Aktualisierungsdaten für Sitemaps",
+        "nl": "Betrouwbaardere wijzigingsdatums voor sitemaps",
+        "it": "Date di aggiornamento delle sitemap più affidabili",
+        "es": "Fechas de actualización de los sitemaps más fiables",
+        "pt": "Datas de atualização dos sitemaps mais fiáveis",
+        "pl": "Wiarygodniejsze daty aktualizacji map witryny"
+      }
+    },
     {
       "version": "5.4.99",
       "releasedAt": "2026-10-10",

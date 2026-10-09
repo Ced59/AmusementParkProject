@@ -183,6 +183,53 @@ public sealed class SeoSitemapGenerationOrchestratorTests
     }
 
     [Fact]
+    public async Task GenerateAsync_WhenSectionHasNoKnownLastModification_ShouldOmitLastModifiedFromIndex()
+    {
+        ISitemapSectionProvider[] providers = new ISitemapSectionProvider[]
+        {
+            new FakeSitemapSectionProvider(
+                SitemapSectionKeys.Static,
+                "static.xml",
+                "Pages statiques",
+                new[] { new SitemapUrlEntry("/fr/home") }),
+        };
+        SitemapSnapshot? savedSnapshot = null;
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+
+        snapshotRepository
+            .Setup(repository => repository.SaveAsync(It.IsAny<SitemapSnapshot>(), It.IsAny<CancellationToken>()))
+            .Callback<SitemapSnapshot, CancellationToken>((snapshot, _) => savedSnapshot = snapshot)
+            .Returns(Task.CompletedTask);
+        historyRepository
+            .Setup(repository => repository.WriteAsync(It.IsAny<SitemapGenerationHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            providers,
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            new InMemorySeoSitemapRuntimeStateStore());
+
+        SitemapGenerationResult result = await orchestrator.GenerateAsync(
+            "https://example.com/",
+            new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } },
+            SitemapGenerationTrigger.Manual,
+            triggeredByUserId: "admin-1",
+            triggeredByUserEmail: "admin@example.com",
+            CancellationToken.None);
+
+        Assert.Equal(SitemapGenerationStatus.Succeeded, result.Status);
+        Assert.NotNull(savedSnapshot);
+        SitemapSnapshot snapshot = savedSnapshot!;
+        SitemapSectionStats section = Assert.Single(snapshot.Sections);
+        Assert.Null(section.LastModifiedUtc);
+        Assert.DoesNotContain("<lastmod>", snapshot.IndexXml, StringComparison.Ordinal);
+        snapshotRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task GenerateAsync_WhenGenerationIsCanceled_ShouldReleaseRuntimeState()
     {
         ISitemapSectionProvider[] providers = new ISitemapSectionProvider[]
