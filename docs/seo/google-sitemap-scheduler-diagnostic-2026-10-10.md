@@ -13,6 +13,12 @@ Ce constat ne prouve pas la cause interne chez Google et ne permet pas de
 déclarer le traitement rétabli. Il écarte en revanche la nécessité de modifier à
 nouveau les routes, le type MIME ou le format XML sans nouvelle trace contraire.
 
+Le rapport Search Console relu le 10 octobre affiche pour `/sitemap.xml` une
+dernière lecture au 2 octobre, zéro page découverte et « Impossible de lire le
+sitemap ». Aucune requête autonome correspondante n'est identifiable dans les
+journaux avec les plages officielles Google. Cette divergence doit être suivie
+sans convertir une date d'interface en preuve d'une réponse HTTP défectueuse.
+
 ## Preuves du 9 octobre 2026
 
 Les contrôles publics de l'index XML, du petit sitemap texte français et de
@@ -57,12 +63,12 @@ garantir l'indexation.
 
 ## Suite opérationnelle
 
-1. Lire une seule fois l'état courant par l'API Search Console et conserver
-   `isPending`, `lastSubmitted`, `lastDownloaded`, le type et les compteurs.
-2. Si l'index reste non traité après le déploiement, effectuer une seule nouvelle
+1. Après le déploiement, effectuer une seule nouvelle
    soumission de l'URL canonique `/sitemap.xml` ; ne pas multiplier les variantes
    ni les soumissions quotidiennes.
-3. Corréler l'heure de cette soumission avec les accès du proxy provenant des
+2. Relire ensuite l'état par l'API Search Console et conserver `isPending`,
+   `lastSubmitted`, `lastDownloaded`, le type et les compteurs.
+3. Corréler l'heure de la soumission avec les accès du proxy provenant des
    plages officielles Google. Une requête autonome suivie d'un `200` déplacerait
    le diagnostic vers le traitement Google ; une erreur HTTP observée fournirait
    au contraire une nouvelle piste serveur précise.
