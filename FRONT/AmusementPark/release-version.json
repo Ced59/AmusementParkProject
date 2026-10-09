@@ -1,6 +1,20 @@
 {
-  "version": "5.4.98",
+  "version": "5.4.99",
   "history": [
+    {
+      "version": "5.4.99",
+      "releasedAt": "2026-10-10",
+      "labels": {
+        "fr": "Environnement local plus fiable",
+        "en": "More reliable local environment",
+        "de": "Zuverlässigere lokale Umgebung",
+        "nl": "Betrouwbaardere lokale omgeving",
+        "it": "Ambiente locale più affidabile",
+        "es": "Entorno local más fiable",
+        "pt": "Ambiente local mais fiável",
+        "pl": "Bardziej niezawodne środowisko lokalne"
+      }
+    },
     {
       "version": "5.4.98",
       "releasedAt": "2026-10-10",
