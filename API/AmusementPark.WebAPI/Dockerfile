@@ -13,10 +13,13 @@ COPY API/AmusementPark.WebAPI/AmusementPark.WebAPI.csproj ./API/AmusementPark.We
 RUN dotnet restore ./API/AmusementPark.WebAPI/AmusementPark.WebAPI.csproj
 
 COPY API ./API
-RUN --mount=type=secret,id=sixlabors_license_key \
-    SIXLABORS_LICENSE_KEY="$(cat /run/secrets/sixlabors_license_key)" \
+ARG BUILD_CONFIGURATION=Release
+RUN --mount=type=secret,id=sixlabors_license_key,required=false \
+    if [ -f /run/secrets/sixlabors_license_key ]; then \
+        export SIXLABORS_LICENSE_KEY="$(cat /run/secrets/sixlabors_license_key)"; \
+    fi && \
     dotnet publish ./API/AmusementPark.WebAPI/AmusementPark.WebAPI.csproj \
-    --configuration Release \
+    --configuration "${BUILD_CONFIGURATION}" \
     --no-restore \
     --output /app/publish \
     /p:UseAppHost=false
