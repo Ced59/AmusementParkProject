@@ -445,7 +445,7 @@ public sealed class SeoSitemapGenerationOrchestrator
             }
         }
 
-        return lastModifiedUtc ?? DateTime.UtcNow;
+        return lastModifiedUtc;
     }
 
     private static string NormalizeRelativePath(string relativePath)
