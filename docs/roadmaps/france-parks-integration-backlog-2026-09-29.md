@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 34 |
+| Fiches privées existantes à intégrer | 82 | 33 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **124** |
+| **Total** | **225** | **123** |
 
 ## 1. Fiches publiques à compléter
 
@@ -50,7 +50,6 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc Bellevue — `995d713b-a338-46f0-81de-b0e23656a2ca`
 - [ ] Parc d'Attractions Marseillan-Plage — `be33ee68-0db5-4342-8f52-705b61752fc7`
 - [ ] Parc d'attractions Odet Loisirs — `3274297f-e3c1-417a-a4fd-9408943c9dcd`
-- [ ] Parc de la Mignardière — `d431c493-5727-400c-9693-d22e1b99ae30` — cycle de vie à vérifier
 - [ ] Parc de la Vallée — `f24b9993-8768-4e36-b3cb-544401210007`
 - [ ] Parc de Loisirs de la Demi Lune — `0bfbbbf6-cc60-4a37-8d11-d7265299fefe`
 - [ ] Parc de loisirs du Hautacam — `c0434ae9-1778-47f4-90b1-d514abc37985` — parc de loisirs multi-activités confirmé, à conserver comme parc
