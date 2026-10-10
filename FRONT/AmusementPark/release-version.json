@@ -1,6 +1,20 @@
 {
-  "version": "5.4.100",
+  "version": "5.4.101",
   "history": [
+    {
+      "version": "5.4.101",
+      "releasedAt": "2026-10-10",
+      "labels": {
+        "fr": "Compatibilité des sitemaps existants renforcée",
+        "en": "Improved compatibility for existing sitemaps",
+        "de": "Verbesserte Kompatibilität bestehender Sitemaps",
+        "nl": "Verbeterde compatibiliteit voor bestaande sitemaps",
+        "it": "Compatibilità migliorata per le sitemap esistenti",
+        "es": "Compatibilidad mejorada para los sitemaps existentes",
+        "pt": "Compatibilidade melhorada para sitemaps existentes",
+        "pl": "Lepsza zgodność istniejących map witryny"
+      }
+    },
     {
       "version": "5.4.100",
       "releasedAt": "2026-10-10",

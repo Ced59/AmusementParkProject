@@ -1,3 +1,4 @@
+using System.Xml.Linq;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
@@ -61,11 +62,12 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
 
         if (string.IsNullOrWhiteSpace(query.SectionKey))
         {
+            IReadOnlyCollection<SitemapSectionStats> publicSections = RemoveLegacyStaticLastModifiedDates(snapshot.Sections);
             return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
             {
                 Content = this.sitemapXmlWriter.WriteSitemapIndex(
                     query.PublicBaseUrl,
-                    SitemapSectionChunker.ExpandSections(snapshot.Sections)),
+                    SitemapSectionChunker.ExpandSections(publicSections)),
                 WasGeneratedOnDemand = wasGeneratedOnDemand,
             });
         }
@@ -88,7 +90,9 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
 
             return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
             {
-                Content = sectionXml,
+                Content = IsStaticSection(normalizedSectionKey)
+                    ? RemoveLastModifiedElements(sectionXml)
+                    : sectionXml,
                 WasGeneratedOnDemand = wasGeneratedOnDemand,
             });
         }
@@ -102,9 +106,12 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
             string? baseSectionXml = await this.snapshotRepository.GetSectionXmlAsync(baseSection.Key, cancellationToken);
             if (baseSectionXml is not null)
             {
+                string publicSectionXml = IsStaticSection(baseSection.Key)
+                    ? RemoveLastModifiedElements(baseSectionXml)
+                    : baseSectionXml;
                 return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
                 {
-                    Content = SitemapSectionChunker.BuildChunkXml(baseSectionXml, chunkIndex),
+                    Content = SitemapSectionChunker.BuildChunkXml(publicSectionXml, chunkIndex),
                     WasGeneratedOnDemand = wasGeneratedOnDemand,
                 });
             }
@@ -128,6 +135,32 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
     {
         return sections.FirstOrDefault(section =>
             string.Equals(section.Key, normalizedSectionKey, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static IReadOnlyCollection<SitemapSectionStats> RemoveLegacyStaticLastModifiedDates(
+        IReadOnlyCollection<SitemapSectionStats> sections)
+    {
+        return sections
+            .Select(static section => IsStaticSection(section.Key) && section.LastModifiedUtc.HasValue
+                ? section with { LastModifiedUtc = null }
+                : section)
+            .ToList();
+    }
+
+    private static bool IsStaticSection(string sectionKey)
+    {
+        return string.Equals(sectionKey, SitemapSectionKeys.Static, StringComparison.OrdinalIgnoreCase)
+            || sectionKey.StartsWith($"{SitemapSectionKeys.Static}-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string RemoveLastModifiedElements(string sitemapXml)
+    {
+        XDocument document = XDocument.Parse(sitemapXml, LoadOptions.PreserveWhitespace);
+        document
+            .Descendants()
+            .Where(static element => string.Equals(element.Name.LocalName, "lastmod", StringComparison.OrdinalIgnoreCase))
+            .Remove();
+        return document.ToString(SaveOptions.DisableFormatting);
     }
 
 }

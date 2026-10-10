@@ -14,7 +14,7 @@ namespace AmusementPark.Application.Tests.Features.Seo.Handlers;
 public sealed class GetPublicSitemapDocumentQueryHandlerTests
 {
     [Fact]
-    public async Task HandleAsync_WhenSectionIsRequested_ShouldReadOnlyRequestedSection()
+    public async Task HandleAsync_WhenLegacyStaticSectionIsRequested_ShouldRemoveLastModifiedElements()
     {
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
@@ -37,7 +37,14 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             .ReturnsAsync(snapshot);
         snapshotRepository
             .Setup(repository => repository.GetSectionXmlAsync("static-fr", It.IsAny<CancellationToken>()))
-            .ReturnsAsync("<urlset />");
+            .ReturnsAsync("""
+                <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+                  <url>
+                    <loc>https://example.com/fr/home</loc>
+                    <lastmod>2026-06-20</lastmod>
+                  </url>
+                </urlset>
+                """);
 
         SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
             Array.Empty<ISitemapSectionProvider>(),
@@ -56,7 +63,8 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
-        Assert.Equal("<urlset />", result.Value.Content);
+        Assert.Contains("https://example.com/fr/home", result.Value.Content, StringComparison.Ordinal);
+        Assert.DoesNotContain("<lastmod>", result.Value.Content, StringComparison.Ordinal);
         snapshotRepository.VerifyAll();
         historyRepository.VerifyNoOtherCalls();
         settingsRepository.VerifyNoOtherCalls();
@@ -113,7 +121,7 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenPersistedIndexUsesLegacySectionLocations_ShouldReturnRootSectionLocations()
+    public async Task HandleAsync_WhenPersistedIndexUsesLegacyStaticMetadata_ShouldReturnCanonicalLocationWithoutLastModified()
     {
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
@@ -133,7 +141,12 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
                 """,
             Sections = new[]
             {
-                new SitemapSectionStats("static-fr", "static-fr.xml", "Static FR", 1, null),
+                new SitemapSectionStats(
+                    "static-fr",
+                    "static-fr.xml",
+                    "Static FR",
+                    1,
+                    new DateTime(2026, 6, 20, 0, 0, 0, DateTimeKind.Utc)),
             },
             TotalUrlCount = 1,
         };
@@ -161,6 +174,7 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
         Assert.NotNull(result.Value);
         Assert.Contains("https://example.com/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
         Assert.DoesNotContain("https://example.com/sitemaps/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
+        Assert.DoesNotContain("<lastmod>", result.Value.Content, StringComparison.Ordinal);
         snapshotRepository.VerifyAll();
         historyRepository.VerifyNoOtherCalls();
         settingsRepository.VerifyNoOtherCalls();
