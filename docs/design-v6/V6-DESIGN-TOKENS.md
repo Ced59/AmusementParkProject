@@ -50,6 +50,8 @@ Le texte courant vise au moins 4,5:1 ; le texte large et les séparateurs essent
 - Pas de gradients décoratifs, glassmorphism, texture de bruit ni halo systématique.
 - Cibles tactiles : au moins 44 px lorsque le contrôle est isolé ; tableaux admin compacts avec focus et libellé conservés.
 
+Les gradients restants sont bornés et vérifiables : rendu historique du `.fun` dans le wordmark protégé, shimmer du skeleton avec arrêt sous `prefers-reduced-motion`, grille de fond et relief des marqueurs cartographiques. Ils ne définissent aucune surface de page, carte, formulaire, navigation ou panneau.
+
 ## Typographie
 
 - `Plus Jakarta Sans` reste la police de lecture locale principale.

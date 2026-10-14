@@ -48,7 +48,7 @@
 }
 
 .localized-rich-text-editor .p-editor-container {
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 

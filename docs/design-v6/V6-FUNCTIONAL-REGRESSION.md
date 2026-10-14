@@ -22,7 +22,7 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 | Park Fit/passeport/trips | validations, résultats, brouillons, permissions | CONTRATS PASS — scénarios authentifiés complets à P21 |
 | Auth/compte | login, inscription, reset, session expirée, export/suppression | CONTRATS PASS — scénarios authentifiés complets à P21 |
 | Admin | 58 écrans, tables, formulaires, import, édition, jobs, dirty/apply | CONTRATS PASS — mutations réelles avec compte de recette à P21 |
-| Transversal | consentement, toasts, dialogs, 403/404/500, Quill, unités | À TESTER |
+| Transversal | consentement, toasts, dialogs, 403/404/500, Quill, unités | CONTRATS PASS — clavier/SR et erreurs intégrées à P20/P21 |
 
 ## Contrats gelés
 
@@ -86,4 +86,8 @@ Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les
 ## Contrôles P18
 
 `playground-v6-admin.test.mjs` relit la matrice générée et échoue si l’un des 58 terminaux, quatre guards hérités, composants ou templates disparaît. Il protège également les routes CRUD, le cycle preview/apply JSON, le drawer contextuel, les transitions historiques, confirmations live, décisions de mapping, import, formulaires à onglets, field mode et batch médias. Les actions destructives ou publiantes ne sont pas exécutées sur des données réelles localement ; leurs tests Angular et la recette isolée restent requis à P21.
+
+## Contrôles P19
+
+`playground-v6-transversal.test.mjs` protège les huit choix de langue, les deux décisions de consentement, le montage global toast/cookie/page-jump, les rôles et annonces des overlays, le clavier des tooltips, les trois états de page, la réduction de mouvement, les uploads et le rich text sanitisé. Il vérifie aussi que les surfaces ciblées sont plates et que l’ancien pictogramme de sélection de langue n’est plus rendu.
 

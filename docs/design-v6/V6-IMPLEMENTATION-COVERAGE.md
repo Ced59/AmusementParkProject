@@ -60,7 +60,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P16 — autres parcours publics | PASS | Park Fit, passeports partagés/locaux, références et pages secondaires protégés ; 67 tests cumulés |
 | P17 — auth/compte | PASS | 21 routes profil protégées, auth/récupération, suppression, passeport et trips couverts ; 74 tests cumulés |
 | P18 — administration | PASS | 58 terminaux, guards, éditeurs, imports, preview/apply, opérations et consoles spécialisées couverts ; 81 tests cumulés |
-| P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
+| P19 — états rares | PASS | langue initiale, consentement, modales, toasts, tooltips, états, uploads, Quill et contrôles flottants couverts ; 88 tests cumulés |
 | P20 — responsive/a11y | À FAIRE | matrice 320–1920, zoom, clavier, deux thèmes |
 | P21 — CI/performance/SEO | À FAIRE | scripts contractuels verts |
 | P22 — version et release atomique | À FAIRE | 6.0.0, PR unique, feu vert explicite |
@@ -215,6 +215,17 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - Les formulaires longs, huit panneaux de l’éditeur parc, horaires JSON, upload multiple, catégorisation en lot, chargement incrémental, tables et états responsive gardent leurs interactions.
 - Le skin admin conserve sa densité propre et passe à des surfaces opaques, filets, petits rayons et indicateurs unis. Les 41 gradients/flous décoratifs admin ont été retirés sans changer les graphiques de données ni leurs valeurs.
 - Preuve ciblée cumulée : 81 tests Node réussis ; toutes les feuilles admin sont sans gradient ni `backdrop-filter`, et aucun fichier métier/API/guard n’est modifié.
+
+## Couverture P19 — états et composants transversaux
+
+- La sélection initiale conserve huit langues, route localisée et persistance du choix. Son ancien pictogramme autonome a été remplacé par une marque Playground originale, conformément à l’exception de marque limitée à la navbar et au footer.
+- Le consentement conserve acceptation optionnelle, refus aux cookies nécessaires, lien confidentialité, initialisation compatible SSR/hydratation et safe-area mobile.
+- Dialogues, toasts et tooltips conservent rôles, régions live, fermeture, masque, clavier, focus et `aria-describedby`; le style statique du tooltip rejoint le système SCSS au lieu de rester injecté en ligne.
+- Les états loading/empty/error restent annoncés ; le skeleton est neutralisé sous `prefers-reduced-motion`. Uploads, drag/drop, blocage pendant envoi et contrôle de saut de page sont protégés.
+- L’éditeur Quill localisé conserve huit panneaux possibles, sanitization HTML, images gérées, alt/layout, readonly et scroll local de toolbar.
+- Les dernières surfaces oubliées (résumé de contenu parc, cartes de zones et quick-create admin) adoptent panneaux opaques, filets et petits rayons.
+- Après P19, les seuls gradients encore présents sont ceux du wordmark sanctuarisé, du skeleton fonctionnel et des fonds/marqueurs cartographiques. Aucun `backdrop-filter` ne reste dans l’UI.
+- Preuve ciblée cumulée : 88 tests Node réussis, sans changement de service, facade, sanitization, consentement ni routage.
 
 ## Invariants fonctionnels
 

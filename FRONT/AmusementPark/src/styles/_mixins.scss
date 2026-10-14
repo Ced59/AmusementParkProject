@@ -14,11 +14,10 @@ $breakpoint-phone: 480px;
 }
 
 @mixin app-card {
-  border-radius: var(--app-radius-lg);
+  border-radius: var(--app-radius-md);
   border: var(--app-border-width) solid var(--app-border);
   background: var(--app-surface);
-  box-shadow: var(--app-shadow-1);
-  backdrop-filter: blur(10px);
+  box-shadow: none;
 }
 
 @mixin app-surface-2 {
@@ -29,14 +28,11 @@ $breakpoint-phone: 480px;
 
 @mixin app-hover-lift {
   transition:
-    transform var(--app-transition-base),
-    box-shadow var(--app-transition-base),
     border-color var(--app-transition-base),
     background-color var(--app-transition-base);
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--app-shadow-2);
+    border-color: var(--app-border-strong);
   }
 }
 

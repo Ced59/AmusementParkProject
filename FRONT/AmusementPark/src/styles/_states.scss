@@ -35,6 +35,13 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .app-skeleton::after {
+    animation: none;
+    transform: none;
+  }
+}
+
 :focus-visible {
   outline: none;
   box-shadow: var(--shadow-focus);

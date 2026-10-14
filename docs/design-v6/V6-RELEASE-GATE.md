@@ -29,7 +29,8 @@
 | P16 | PASS CIBLÉ — toutes les familles publiques secondaires protégées, 67 tests cumulés |
 | P17 | PASS CIBLÉ — auth, profil, passeport et trips protégés, 74 tests cumulés |
 | P18 | PASS CIBLÉ — 58 terminaux et workflows admin protégés, 81 tests cumulés |
-| P19–P21 | NON EXÉCUTÉS |
+| P19 | PASS CIBLÉ — états et composants transversaux protégés, 88 tests cumulés |
+| P20–P21 | NON EXÉCUTÉS |
 | Version `6.0.0` et historique 8 langues | NON PRÉPARÉS |
 | Diff limité au frontend visuel, tests et documentation | NON AUDITÉ |
 | PR unique prête pour revue | NON OUVERTE |

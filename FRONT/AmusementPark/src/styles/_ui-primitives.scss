@@ -497,7 +497,7 @@
   border-radius: var(--app-radius-md);
   background: var(--app-surface);
   color: var(--app-text);
-  box-shadow: var(--app-shadow-3);
+  box-shadow: var(--app-shadow-1);
   overflow: hidden;
 }
 
@@ -561,7 +561,7 @@
   border-radius: var(--app-radius-md);
   background: var(--app-surface);
   color: var(--app-text);
-  box-shadow: var(--app-shadow-1);
+  box-shadow: none;
   pointer-events: auto;
 }
 
@@ -605,6 +605,22 @@
 
 .p-toast-message-error {
   --toast-accent: var(--app-danger, #dc2626);
+}
+
+.app-ui-tooltip {
+  position: fixed;
+  z-index: 10000;
+  max-width: 17.5rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--app-border-strong);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-heading);
+  color: var(--app-bg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.35;
+  pointer-events: none;
+  white-space: normal;
 }
 
 .p-editor-container {

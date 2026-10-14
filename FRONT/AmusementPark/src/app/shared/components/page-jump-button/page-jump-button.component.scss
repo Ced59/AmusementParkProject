@@ -8,17 +8,16 @@
   height: 2.85rem;
   place-items: center;
   border: 1px solid rgba(56, 197, 245, 0.34);
-  border-radius: 999px;
-  background: rgba(15, 11, 6, 0.82);
-  color: var(--color-sky, #38c5f5);
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-sm);
+  background: var(--app-surface);
+  color: var(--c-sky);
+  box-shadow: none;
   cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 
   &:hover {
     border-color: rgba(56, 197, 245, 0.56);
     background: rgba(56, 197, 245, 0.14);
-    transform: translateY(-1px);
   }
 
   &:focus-visible {
