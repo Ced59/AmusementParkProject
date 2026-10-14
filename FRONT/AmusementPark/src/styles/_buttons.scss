@@ -81,7 +81,7 @@
 
 .btn--rose,
 .app-button--rose {
-  color: #ffffff;
+  color: var(--app-on-rose);
   background: var(--c-rose);
   box-shadow: none;
 }
@@ -105,7 +105,7 @@
 
 .btn--purple,
 .app-button--purple {
-  color: #ffffff;
+  color: var(--app-on-purple);
   background: var(--c-purple);
   box-shadow: none;
 }

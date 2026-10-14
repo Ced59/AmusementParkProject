@@ -20,6 +20,9 @@ Les variables V6 alimentent les alias `--app-*` et `--ap-*` existants. Aucun sec
 | Orange | `#e54b28` | `#ff7551` | `--c-orange`, `--app-primary` |
 | Lime | `#d5ed60` | `#d1ec70` | `--c-lime`, succès/accent |
 | Bleu/teal | `#0c8ca3` | `#49c9df` | `--c-sky`, lien/technique |
+| Rose secondaire | `#bd315d` | `#ff8fae` | `--c-rose`, danger/variation éditoriale |
+| Or secondaire | `#9a6500` | `#f5c451` | `--c-gold`, avertissement/variation éditoriale |
+| Violet secondaire | `#7250a8` | `#c4a7ff` | `--c-purple`, variation éditoriale |
 | Carte | `#e0e8de` | `#243c34` | fond du shell cartographique |
 
 ## Correspondance V5 → V6
@@ -39,7 +42,7 @@ Les variables V6 alimentent les alias `--app-*` et `--ap-*` existants. Aucun sec
 | `--radius-2xl` | `2.5rem` | `1rem` |
 | `--shadow-card` | halo de 24 px | filet d’élévation de 1 px |
 
-Le texte courant vise au moins 4,5:1 ; le texte large et les séparateurs essentiels au moins 3:1. Le texte posé sur le lime reste foncé. Le focus ne dépend jamais uniquement de la couleur.
+Le texte courant vise au moins 4,5:1 ; le texte large et les séparateurs essentiels au moins 3:1. Le texte posé sur le lime et sur les accents secondaires clairs du thème sombre reste foncé. Les variantes rose, or et violet atteignent au moins 4,5:1 sur leur surface teintée à 14 %. Le focus ne dépend jamais uniquement de la couleur.
 
 ## Géométrie et densité
 

@@ -13,10 +13,22 @@ function variables(source) {
   return new Map([...source.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]));
 }
 
-function luminance(hex) {
-  const channels = hex.match(/[\da-f]{2}/gi).map((channel) => Number.parseInt(channel, 16) / 255)
+function rgb(hex) {
+  return hex.match(/[\da-f]{2}/gi).map((channel) => Number.parseInt(channel, 16) / 255);
+}
+
+function luminance(color) {
+  const channels = (Array.isArray(color) ? color : rgb(color))
     .map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
   return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+}
+
+function mix(foreground, background, foregroundWeight) {
+  const foregroundChannels = rgb(foreground);
+  const backgroundChannels = rgb(background);
+  return foregroundChannels.map(
+    (channel, index) => channel * foregroundWeight + backgroundChannels[index] * (1 - foregroundWeight),
+  );
 }
 
 function contrast(foreground, background) {
@@ -44,6 +56,9 @@ test('Playground V6 keeps the canonical palette in both existing theme selectors
   assert.equal(darkVariables.get('--c-orange'), '#ff7551');
   assert.equal(darkVariables.get('--c-lime'), '#d1ec70');
   assert.equal(darkVariables.get('--c-sky'), '#49c9df');
+  assert.equal(darkVariables.get('--c-rose'), '#ff8fae');
+  assert.equal(darkVariables.get('--c-gold'), '#f5c451');
+  assert.equal(darkVariables.get('--c-purple'), '#c4a7ff');
 });
 
 test('Playground V6 text colors meet WCAG AA on the page background', () => {
@@ -52,6 +67,19 @@ test('Playground V6 text colors meet WCAG AA on the page background', () => {
     assert.ok(contrast(theme.get('--text'), theme.get('--bg')) >= 4.5);
     assert.ok(contrast(theme.get('--text-muted'), theme.get('--bg')) >= 4.5);
   }
+});
+
+test('Playground V6 secondary dark accents remain readable on their soft surfaces', () => {
+  const theme = variables(dark);
+
+  for (const accent of ['--c-rose', '--c-gold', '--c-purple']) {
+    const foreground = theme.get(accent);
+    const softSurface = mix(foreground, theme.get('--bg-card'), 0.14);
+    assert.ok(contrast(foreground, softSurface) >= 4.5, `${accent} must meet AA on its soft surface`);
+  }
+
+  assert.ok(contrast(theme.get('--app-on-rose'), theme.get('--c-rose')) >= 4.5);
+  assert.ok(contrast(theme.get('--app-on-purple'), theme.get('--c-purple')) >= 4.5);
 });
 
 test('Playground V6 uses the editorial width, restrained geometry and flat page surfaces', () => {

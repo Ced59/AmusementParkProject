@@ -91,6 +91,7 @@ test('the Playground shell uses editorial width, flat navigation and safe mobile
   assert.match(navigationStyles, /border-top:\s*3px solid var\(--c-orange\)/);
   assert.match(navigationStyles, /env\(safe-area-inset-bottom\)/);
   assert.match(navigationStyles, /\.app-mobile-bottom-nav[\s\S]*?border-radius:\s*0/);
+  assert.match(navigationStyles, /\.app-language-dialog \.language-option--active\s*\{/);
   assert.match(navigationStyles, /@media \(max-width:\s*680px\)[\s\S]*?--topbar-height:\s*104px/);
   assert.match(wordmarkStyles, /@media \(max-width:\s*430px\)[\s\S]*?max-width:\s*100%/);
   assert.doesNotMatch(navigationStyles, /(?:linear|radial|conic)-gradient\(/);
