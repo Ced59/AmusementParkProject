@@ -8,7 +8,7 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 
 | Famille | Scénarios minimum | État |
 |---|---|---|
-| Navigation | 8 langues, anonyme/auth/admin, back/forward, deep links, 404 | À TESTER |
+| Navigation | 8 langues, anonyme/auth/admin, back/forward, deep links, 404 | CONTRATS PASS — parcours complets à P20/P21 |
 | Recherche | tous types, accents, 0/1/n résultats, suggestions, 5/10/20, pagination | À TESTER |
 | Parcs | filtres, carte synchronisée, page 2, Le Fleury + profils distincts | À TESTER |
 | ParkItems | catégories, sans média/géoloc, précédente/suivante, 38 lieux du Fleury | À TESTER |
@@ -35,4 +35,8 @@ Les fichiers métier, facades, ports, DTO, guards, resolvers, services API, stor
 - Aucun avertissement ni erreur console n’a été relevé pendant la capture ciblée.
 
 Les parcours authentifiés et admin ne sont pas manipulés sur la production. Leur baseline repose sur les templates, tests et fixtures du dépôt, puis sera exercée dans l’environnement isolé de recette.
+
+## Contrôles P03
+
+Les templates conservent toutes les routes, conditions d’authentification et d’administration, commandes de profil, unité, langue et thème. Les tests de composants existants ont été ajustés uniquement pour l’absence du pictogramme optionnel ; leurs assertions sur le wordmark, le slogan, les langues, la version et les modales restent en place. La suite Angular complète sera exécutée à P21 après installation isolée des dépendances.
 

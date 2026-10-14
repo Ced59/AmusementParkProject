@@ -94,3 +94,12 @@ La structure et les styles de `.app-brand-wordmark` sont conservés pour le nom 
 - Vérification architecture : 160 facades conformes aux ports.
 - Le contrôle a11y complet requiert `@angular/compiler`, absent tant que `npm ci` n’a pas été exécuté ; il est bloquant à P21/CI et non ignoré.
 
+## Application P03 aux shells
+
+- Header : filet orange supérieur, surface opaque, navigation active soulignée, contrôles carrés et grille à deux rangées sous 680 px pour ne pas tronquer le wordmark.
+- Navigation mobile : barre pleine largeur, filet supérieur, réserve de `safe-area`, aucune carte flottante ni flou d’arrière-plan.
+- Trail et arbre de parc : panneaux plats, niveaux et états courants lisibles sans modifier les commandes de route ni les paramètres.
+- Footer : composition éditoriale marque + trois colonnes, repli 3 puis 1 colonne, slogan intact et contraste AA contrôlé.
+- Compte/admin : surfaces plates et denses ; les outlets, guards et comportements existants ne sont pas déplacés.
+- Le test `playground-v6-shell.test.mjs` protège la composition de marque, les contrôles de navigation, les dimensions et les invariants responsive.
+

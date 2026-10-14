@@ -86,9 +86,9 @@ describe('PublicAppLayoutComponent', () => {
       PublicAppLayoutComponent as unknown as { ɵcmp: { styles: string[] } }
     ).ɵcmp.styles.join('\n');
 
-    expect(styles).toContain('--content-max-width: 92rem');
-    expect(styles).toContain('--content-wide-max-width: 100rem');
-    expect(styles).toContain('width: min(100% - 1.5rem, var(--content-wide-max-width))');
+    expect(styles).toContain('--content-max-width: 1160px');
+    expect(styles).toContain('--content-wide-max-width: 1480px');
+    expect(styles).toContain('width: min(100% - 1.5rem, var(--content-max-width))');
     expect(styles).toContain('width: min(100% - 1rem, var(--content-max-width))');
   });
 

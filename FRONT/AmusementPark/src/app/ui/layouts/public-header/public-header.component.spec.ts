@@ -156,22 +156,13 @@ describe('PublicHeaderComponent', () => {
     );
   });
 
-  it('renders the official logo asset in the brand link', () => {
-    const logoImage: HTMLImageElement | null = (
+  it('keeps the protected wordmark without the optional legacy pictogram', () => {
+    const brandLink: HTMLAnchorElement | null = (
       fixture.nativeElement as HTMLElement
-    ).querySelector('.app-public-nav__logo-mark');
+    ).querySelector('.app-public-nav__logo');
 
-    expect(logoImage).not.toBeNull();
-    expect(logoImage?.getAttribute('src')).toBe(
-      '/assets/general-icon/logo-amusementpark-ui-36.webp',
-    );
-    expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
-    expect(logoImage?.getAttribute('srcset')).toBe(
-      '/assets/general-icon/logo-amusementpark-ui-36.webp 36w, /assets/general-icon/logo-amusementpark-ui-72.webp 72w, /assets/general-icon/logo-amusementpark-ui.webp 96w',
-    );
-    expect(logoImage?.getAttribute('sizes')).toBe('(max-width: 680px) 34px, 36px');
-    expect(logoImage?.getAttribute('width')).toBe('36');
-    expect(logoImage?.getAttribute('height')).toBe('36');
+    expect(brandLink?.querySelector('.app-brand-wordmark')).not.toBeNull();
+    expect(brandLink?.querySelector('.app-public-nav__logo-mark')).toBeNull();
   });
 
   it('renders a descriptive alt text on the selected language flag', () => {

@@ -1,0 +1,109 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import test from 'node:test';
+
+const projectRoot = resolve(import.meta.dirname, '../..');
+const read = (relativePath) =>
+  readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+const header = read('src/app/ui/layouts/public-header/public-header.component.html');
+const footer = read('src/app/ui/layouts/public-footer/public-footer.component.html');
+const mobileNav = read(
+  'src/app/ui/layouts/public-mobile-bottom-nav/public-mobile-bottom-nav.component.html',
+);
+const navigationStyles = read('src/styles/_navigation.scss');
+const footerStyles = read('src/styles/_footer.scss');
+const layoutStyles = read('src/styles/_layout.scss');
+const wordmarkStyles = read('src/styles/_brand-wordmark.scss');
+const publicLayoutStyles = read(
+  'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
+);
+
+const protectedWordmarkParts = [
+  'app-brand-wordmark__base',
+  'app-brand-wordmark__dot',
+  'app-brand-wordmark__fun-text',
+  'AMUSEMENT-PARKS',
+  '>.<',
+  '>fun<',
+];
+
+test('the public header and footer keep the protected wordmark without the optional pictogram', () => {
+  for (const template of [header, footer]) {
+    for (const part of protectedWordmarkParts) {
+      assert.ok(template.includes(part), `${part} must remain in both brand locations`);
+    }
+
+    assert.doesNotMatch(template, /logo-amusementpark-ui/i);
+    assert.doesNotMatch(template, /__logo-mark/);
+  }
+
+  assert.match(footer, /footer\.brand\.sloganData/);
+  assert.match(footer, /footer\.brand\.sloganFun/);
+});
+
+test('the complete public navigation contract remains represented', () => {
+  for (const key of [
+    'sidebar.home',
+    'sidebar.parks',
+    'sidebar.technical',
+    'sidebar.rankings',
+    'sidebar.manufacturers',
+    'sidebar.about',
+    'sidebar.admin',
+  ]) {
+    assert.ok(header.includes(key), `${key} must remain in the desktop header`);
+  }
+
+  for (const interaction of [
+    'toggleMeasurementSystem()',
+    "openModal('loginModal')",
+    "openModal('languageModal')",
+    '<app-theme-switcher>',
+    'navigateToCurrentUserProfile()',
+    'isLoggedIn() && isAdmin()',
+  ]) {
+    assert.ok(header.includes(interaction), `${interaction} must remain available`);
+  }
+});
+
+test('the mobile navigation keeps every public entry and its conditional admin access', () => {
+  for (const key of [
+    'sidebar.home',
+    'sidebar.parks',
+    'sidebar.rankings',
+    'sidebar.technical',
+    'sidebar.manufacturers',
+    'sidebar.profile',
+    'sidebar.admin',
+  ]) {
+    assert.ok(mobileNav.includes(key), `${key} must remain in the mobile navigation`);
+  }
+
+  assert.match(mobileNav, /isLoggedIn\(\) && isAdmin\(\)/);
+  assert.match(mobileNav, /navigateToCurrentUserProfile\(\)/);
+});
+
+test('the Playground shell uses editorial width, flat navigation and safe mobile insets', () => {
+  assert.match(publicLayoutStyles, /--content-max-width:\s*1160px/);
+  assert.match(publicLayoutStyles, /--content-wide-max-width:\s*1480px/);
+  assert.match(navigationStyles, /border-top:\s*3px solid var\(--c-orange\)/);
+  assert.match(navigationStyles, /env\(safe-area-inset-bottom\)/);
+  assert.match(navigationStyles, /\.app-mobile-bottom-nav[\s\S]*?border-radius:\s*0/);
+  assert.match(navigationStyles, /@media \(max-width:\s*680px\)[\s\S]*?--topbar-height:\s*104px/);
+  assert.match(wordmarkStyles, /@media \(max-width:\s*430px\)[\s\S]*?max-width:\s*100%/);
+  assert.doesNotMatch(navigationStyles, /(?:linear|radial|conic)-gradient\(/);
+  assert.doesNotMatch(navigationStyles, /backdrop-filter\s*:/);
+});
+
+test('the footer and account/admin shells share the flat Playground composition', () => {
+  assert.match(
+    footerStyles,
+    /grid-template-columns:\s*minmax\(15rem, 1\.35fr\) repeat\(3, minmax\(8rem, 0\.75fr\)\)/,
+  );
+  assert.match(footerStyles, /border-top:\s*4px solid var\(--c-orange\)/);
+  assert.doesNotMatch(footerStyles, /(?:linear|radial|conic)-gradient\(/);
+  assert.match(layoutStyles, /\.app-account-layout__aside[\s\S]*?border-top:\s*4px solid var\(--c-orange\)/);
+  assert.match(layoutStyles, /\.app-admin-layout__body[\s\S]*?grid-template-columns:\s*minmax\(15rem, 17rem\) minmax\(0, 1fr\)/);
+});

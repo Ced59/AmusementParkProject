@@ -44,7 +44,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P00 — baseline et inventaires | PASS | 4 CSV générés, 24 captures V5, baseline performance/SSR, cas protégés |
 | P01 — tokens et thèmes | PASS | mapping documenté, 4 tests ciblés, moteur SSR intact |
 | P02 — primitives | PASS | 7 tests statiques verts, 160 facades conformes, suite a11y complète réservée à P21 |
-| P03 — shells et navigation | À FAIRE | wordmark/slogan protégés, contrôles inchangés |
+| P03 — shells et navigation | PASS | wordmark/slogan protégés, 17 tests statiques, contrats de navigation inchangés |
 | P04–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
@@ -71,6 +71,16 @@ Un gate reste bloquant tant que sa preuve n’est pas enregistrée. La version e
 | Auth/compte | modales et routes profil | login, Google, inscription, reset, expiration, export/suppression |
 
 Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents dans la matrice de routes ; ils ne peuvent pas être exclus par une absence de maquette.
+
+## Couverture P03 — shells et navigation
+
+- Le header et le footer utilisent toujours la structure complète de `.app-brand-wordmark` ; seul le pictogramme autonome, non sanctuarisé, a été retiré de ces deux compositions.
+- Les clés `footer.brand.sloganData` et `footer.brand.sloganFun` restent les seules sources du slogan traduit.
+- Les accès Accueil, Parcs, Technique, Classements, Constructeurs, À propos et Admin conditionnel restent présents, comme les contrôles profil/login, unités, langue et thème.
+- La navigation mobile conserve ses six accès publics et l’accès Admin conditionnel, avec cible tactile, état actif et `safe-area-inset-bottom`.
+- L’arbre dynamique et le trail conservent leurs routes, `queryParams`, niveaux et libellés issus de la facade ; seuls leurs styles ont changé.
+- Les shells public, compte et admin conservent leurs outlets et leur composition fonctionnelle. Le public adopte la largeur éditoriale de 1160 px et l’admin garde la largeur dense de 1480 px.
+- Preuve ciblée : 17 tests Node réussis, dont contraste du footer et des états actifs, absence de glassmorphism, marque protégée et exhaustivité statique des accès.
 
 ## Invariants fonctionnels
 
