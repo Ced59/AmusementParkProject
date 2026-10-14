@@ -62,7 +62,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P18 — administration | PASS | 58 terminaux, guards, éditeurs, imports, preview/apply, opérations et consoles spécialisées couverts ; 81 tests cumulés |
 | P19 — états rares | PASS | langue initiale, consentement, modales, toasts, tooltips, états, uploads, Quill et contrôles flottants couverts ; 88 tests cumulés |
 | P20 — responsive/a11y | PASS CIBLÉ | 30 cas Chromium, 13 largeurs, 2 thèmes, faible hauteur, 113 contrôles qualité/a11y ; revue Angular réelle à P22 |
-| P21 — CI/performance/SEO | À FAIRE | scripts contractuels verts |
+| P21 — CI/performance/SEO | PASS LOCAL CIBLÉ | build/budgets/architecture/a11y/i18n/SEO verts ; couverture complète et Node 24 requis en CI |
 | P22 — version et release atomique | À FAIRE | 6.0.0, PR unique, feu vert explicite |
 
 Un gate reste bloquant tant que sa preuve n’est pas enregistrée. La version et la PR ne seront préparées qu’à P22.

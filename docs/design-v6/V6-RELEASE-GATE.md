@@ -32,7 +32,8 @@
 | P19 | PASS CIBLÉ — états et composants transversaux protégés, 88 tests cumulés |
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | EN ATTENTE — serveur local interdit, validation sur environnement de revue requise |
-| P21 | NON EXÉCUTÉ |
+| P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
+| P21 CI Node 24 | EN ATTENTE — couverture Angular intégrale et tests avec services éphémères |
 | Version `6.0.0` et historique 8 langues | NON PRÉPARÉS |
 | Diff limité au frontend visuel, tests et documentation | NON AUDITÉ |
 | PR unique prête pour revue | NON OUVERTE |

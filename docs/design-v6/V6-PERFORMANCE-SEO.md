@@ -38,6 +38,34 @@ Le panneau des quatre parcs hero réutilise `app-image-display` et les identifia
 
 Les suites sont exécutées en série, avec contrôle de RAM avant et pendant. La CI fournit la preuve finale si une suite locale enfreint la marge de sécurité.
 
+## Résultats locaux P21
+
+| Contrôle | Résultat |
+|---|---|
+| Build SSR production | PASS — initial 824 269 o, sous le warning Angular 950 kB et l’erreur 1 MB |
+| Budget initial outillé | PASS — 824 269 / 1 000 000 o |
+| Plus gros chunk lazy | PASS — 214 874 / 300 000 o |
+| JavaScript total | PASS — 6 694 120 / 7 200 000 o |
+| CSS total | PASS — 210 814 / 250 000 o |
+| Architecture facades/ports | PASS — 160 facades |
+| Une classe par fichier | PASS — 0 violation C# ou TypeScript |
+| Analytics typés | PASS — 1 914 fichiers TypeScript |
+| Qualité accessibilité/i18n | PASS — 113/113 tests, 8 langues, 7 316 clés |
+| Test Angular ciblé fiche parc | PASS — 1/1 |
+| Tests outils SSR avec type stripping | PASS — 15/15 |
+| Tests cœur des budgets/performance | PASS — 6/6 |
+| Smoke SEO production V5 | PASS — 5/5 routes, HTML SSR Bing sans JS exécutable |
+| Baseline HTTP V5 | PASS — 30/30 échantillons HTTP attendus, aucun budget dépassé |
+| Suite Angular avec couverture | CI REQUISE — compilation réussie, arrêt préventif à 1,56 Gio libres avant exécution |
+| Outils Node 24 avec serveurs éphémères | CI REQUISE — poste local en Node 22 et démarrage de service local non autorisé |
+| Smoke SSR du bundle V6 | CI/REVUE REQUISE — aucun serveur applicatif local démarré |
+
+Le rapport brut HTTP est versionné dans `evidence/performance-baseline-v5.json`. Ses p95 sont 46,58 ms (home), 77,63 ms (parcs), 36,83 ms (classements), 37,21 ms (Park Fit), 24,70 ms (health) et 31,53 ms (capabilities). Les pages home, parcs et classements répondent depuis le cache SSR ; Park Fit conserve son mode CSR fallback existant.
+
+Le budget JavaScript total possède 505 880 octets de marge et le budget CSS 39 186 octets. Ces marges sont suffisantes pour la branche mais restent des points d’attention : aucune nouvelle dépendance UI n’a été ajoutée. Le build signale le diagnostic Angular `NG8102` déjà hors périmètre visuel et les dépendances CommonJS existantes Leaflet, Quill, QRCode, dijkstrajs et pngjs ; aucune n’a été introduite par la refonte.
+
+La commande complète `test:ci` a construit les 14,95 MB de bundles de test puis Vitest a commencé. La RAM libre est descendue de 5,45 à 1,56 Gio, encore en croissance ; la suite lancée par Codex a été interrompue proprement pour respecter la marge absolue de 1,5 Gio. La CI Node 24, isolée, reste donc la preuve obligatoire de couverture avant toute fusion.
+
 ## SEO/SSR à préserver
 
 Codes 200/301/404, canonical, hreflang réels, locale Open Graph, JSON-LD fiable, robots/noindex, sitemap, HTML SSR initial et absence de discordance d’hydratation. Les routes admin, compte, auth, techniques et erreurs ne deviennent pas indexables.
