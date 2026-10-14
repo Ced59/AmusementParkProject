@@ -51,10 +51,8 @@
 :host ::ng-deep .results-workbench .app-search-panel {
   position: relative;
   overflow: hidden;
-  border-radius: calc(var(--radius-xl) - 0.35rem);
-  background:
-    radial-gradient(ellipse 30% 90% at 4% 0%, rgba(255, 90, 31, 0.08), transparent 70%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
 }
 
 :host ::ng-deep .results-workbench .app-search-panel::before {
@@ -62,7 +60,7 @@
   position: absolute;
   inset: 0 0 auto;
   height: 3px;
-  background: linear-gradient(90deg, var(--app-primary), var(--c-gold), var(--c-sky));
+  background: var(--app-primary);
 }
 
 .items-map-panel {
@@ -78,7 +76,7 @@
 :host ::ng-deep .items-map-panel__slot .leaflet-map-container {
   height: clamp(21rem, 36vw, 30rem);
   border: 0;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   box-shadow: none;
 }
 
@@ -88,15 +86,15 @@
   min-height: 2.1rem;
   padding: 0.35rem 0.82rem;
   border: 1px solid rgba(255, 210, 140, 0.14);
-  border-radius: var(--radius-pill);
-  background: rgba(255, 210, 140, 0.06);
+  border-radius: var(--radius-sm);
+  background: var(--app-field);
   color: var(--app-text-muted);
   font-size: 0.74rem;
   font-weight: 900;
   line-height: 1.1;
   text-align: left;
   text-transform: uppercase;
-  transition: var(--transition-fast);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .items-map-panel__chip:hover,
@@ -116,7 +114,7 @@
 }
 
 :host ::ng-deep .items-grid .ui-item-card {
-  border-radius: calc(var(--radius-xl) - 0.25rem);
+  border-radius: var(--radius-md);
 }
 
 :host ::ng-deep .items-grid .ui-item-card__visual {
@@ -140,7 +138,7 @@
   z-index: 1;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 0.95rem;
+  border-radius: var(--radius-sm);
   font-size: 1.08rem;
 }
 
@@ -155,18 +153,18 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.01);
+  transform: none;
 }
 
 :host ::ng-deep .items-grid .ui-item-card__visual--photo::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(12, 8, 5, 0.15), rgba(12, 8, 5, 0.72));
+  background: rgba(21, 26, 23, 0.42);
 }
 
 :host ::ng-deep .items-grid .ui-item-card__visual--photo .ui-item-card__icon {
-  box-shadow: 0 0.7rem 1.5rem rgba(0, 0, 0, 0.28);
+  box-shadow: none;
 }
 
 :host ::ng-deep .items-grid .ui-item-card__body {

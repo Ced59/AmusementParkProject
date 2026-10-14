@@ -11,7 +11,7 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 | Navigation | 8 langues, anonyme/auth/admin, back/forward, deep links, 404 | CONTRATS PASS — parcours complets à P20/P21 |
 | Recherche | tous types, accents, 0/1/n résultats, suggestions, 5/10/20, pagination | CONTRATS HOME PASS — exécution complète à P21 |
 | Parcs | filtres, carte synchronisée, page 2, Le Fleury + profils distincts | CONTRATS LISTE + FICHE PASS — données réelles à P20/P21 |
-| ParkItems | catégories, sans média/géoloc, précédente/suivante, 38 lieux du Fleury | À TESTER |
+| ParkItems | catégories, sans média/géoloc, précédente/suivante, 38 lieux du Fleury | CONTRATS LISTE + FICHE PASS — données réelles à P20/P21 |
 | Standalone | visibilité, aucun faux parent, historique, prix/météo | À TESTER |
 | Médias | 0/1/8/9/100+, pagination/load more, lightbox, alt/crédits, erreur CDN | À TESTER |
 | Historique | timeline, article, snapshots, comparaison, deep links | À TESTER |
@@ -51,4 +51,8 @@ Le test `playground-v6-home.test.mjs` protège les trois compteurs API, les deux
 ## Contrôles P06
 
 `playground-v6-details.test.mjs` protège toutes les actions et sections de `park-detail-view`, les conditions de données manquantes et la discipline de chargement des images. Aucune facade, mapper, route, donnée ou appel API n’est modifié. La recette Le Fleury + deux profils réels, dans les deux thèmes, demeure un contrôle visuel/données de P20/P21.
+
+## Contrôles P07–P08
+
+`playground-v6-details.test.mjs` protège désormais l’inventaire ParkItem (filtres, carte de zone, éléments sans coordonnées, cartes, pagination serveur 6/12/24/48 et partage) et la fiche complète (précédent/suivant, facettes, rich text, spécifications, accès, Leaflet conditionnel, contenus liés, médias, historique et actions sociales). Les facades, routes et modèles restent inchangés. La validation avec les 38 lieux visibles du Fleury, les quatre exemples nommés et les variantes sans média/non-attraction est réservée à la recette de données P20/P21.
 

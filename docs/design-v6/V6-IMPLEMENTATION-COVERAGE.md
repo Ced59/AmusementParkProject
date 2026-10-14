@@ -48,7 +48,9 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P04 — accueil | PASS | structure réelle complète, 24 tests statiques, données et recherche dynamiques |
 | P05 — catalogue, exploration, recherche | PASS | filtres, carte, URL et pagination conservés ; 28 tests statiques cumulés |
 | P06 — détail de parc | PASS | toutes les sections/actions conservées, 32 tests statiques cumulés |
-| P07–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
+| P07 — inventaire des ParkItems | PASS | filtres, carte, états sans coordonnées et pagination conservés ; 35 tests statiques cumulés |
+| P08 — fiches ParkItem | PASS | navigation, sections techniques, médias et actions conservées ; 35 tests statiques cumulés |
+| P09–P16 — autres parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
@@ -111,6 +113,22 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - Les absences de logo, photo, description, géolocalisation ou données pratiques gardent leurs conditions et placeholders existants.
 - Une seule image hero reste eager/prioritaire ; les médias secondaires restent lazy et les tailles responsive existantes sont inchangées.
 - Preuve ciblée cumulée : 32 tests Node réussis et test de composant existant conservé pour le lien galerie, son nom accessible et ses tailles d’image.
+
+## Couverture P07 — inventaire des ParkItems
+
+- Les filtres texte, catégorie, type, zone et éléments fermés conservent leurs inputs, outputs, compteurs et conditions d’affichage.
+- La carte de zone reste une vraie surface Leaflet, avec sélection des marqueurs et état explicite des éléments sans coordonnées.
+- Chaque carte conserve sa navigation vers une page ParkItem complète ; aucune ouverture en popup ni modification de route n’est introduite.
+- La pagination serveur conserve les tailles 6/12/24/48, le total, les liens et les actions précédent/suivant.
+- Les badges, images de repli, états vide/chargement/erreur et le partage restent présents, avec une composition éditoriale plate Playground.
+
+## Couverture P08 — fiches ParkItem
+
+- Les liens précédent/suivant, retours parc/zone et facettes catégorie/type/sous-type conservent les mêmes routes et paramètres.
+- Le hero, la description riche, les spécifications par type, l’accès, la géolocalisation conditionnelle, les médias, vidéos, historiques et contenus liés restent intacts.
+- Les notes, commentaires, collections, watch, passeport, état live et partage gardent leurs conditions d’authentification et leurs événements.
+- La carte n’est rendue que lorsque les coordonnées existent ; aucune géolocalisation ni relation parente n’est inventée.
+- Preuve ciblée cumulée P07/P08 : 35 tests Node réussis. Les cas Le Fleury/Rhaegal/L’épée d’Odin/La Catapulte, sans média et non-attraction restent dus à la recette de données P20/P21.
 
 ## Invariants fonctionnels
 
