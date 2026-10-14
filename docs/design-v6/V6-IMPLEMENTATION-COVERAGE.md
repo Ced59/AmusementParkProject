@@ -63,7 +63,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P19 — états rares | PASS | langue initiale, consentement, modales, toasts, tooltips, états, uploads, Quill et contrôles flottants couverts ; 88 tests cumulés |
 | P20 — responsive/a11y | PASS CIBLÉ | 30 cas Chromium, 13 largeurs, 2 thèmes, faible hauteur, 113 contrôles qualité/a11y ; revue Angular réelle à P22 |
 | P21 — CI/performance/SEO | PASS LOCAL CIBLÉ | build/budgets/architecture/a11y/i18n/SEO verts ; couverture complète et Node 24 requis en CI |
-| P22 — version et release atomique | À FAIRE | 6.0.0, PR unique, feu vert explicite |
+| P22 — version et release atomique | PRÊT POUR PR | 6.0.0 préparée, portée auditée ; CI, revue propriétaire, merge et déploiement en attente |
 
 Un gate reste bloquant tant que sa preuve n’est pas enregistrée. La version et la PR ne seront préparées qu’à P22.
 
@@ -77,6 +77,16 @@ Un gate reste bloquant tant que sa preuve n’est pas enregistrée. La version e
 - Le contrôle a révélé puis corrigé les attributs `sizes` de la fiche parc, restés dimensionnés pour l’ancienne largeur éditoriale : les images hero et principale correspondent désormais au conteneur V6 de 1160 px.
 
 La recette visuelle sur l’application Angular branchée aux données réelles, les rôles authentifié/admin et les gestes Leaflet reste une décision humaine de P22. Elle n’est pas simulée localement, car le contrat interdit de démarrer un serveur applicatif sur ce PC sans autorisation.
+
+## Préparation P22 — release atomique
+
+- `origin/master` a été rafraîchi juste avant la release et reste au SHA de départ ; aucun correctif fonctionnel concurrent n’est absent de la branche.
+- Les inventaires finaux reproduisent les 148 routes et 273 composants de P00, sans route, template ou SCSS manquant.
+- `release-version.json` passe directement de 5.4.101 à 6.0.0 avec une entrée datée du 14 octobre 2026 et huit libellés localisés.
+- L’audit de diff confirme 237 fichiers dans les seuls périmètres frontend/docs, aucune suppression, aucun changement API, route, dépendance, lockfile, workflow ou infrastructure.
+- Le SHA de contenu versionné et audité est `545345dc3a81c099a328e29a510447339b3f9342`.
+
+La PR finale unique est l’étape suivante. Les états CI, revue visuelle, feu vert, merge, déploiement et postchecks ne seront marqués PASS qu’après preuve effective.
 
 ## Registre des cas sensibles P00
 

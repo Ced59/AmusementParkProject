@@ -2,7 +2,7 @@
 
 ## Décision actuelle
 
-**NO-GO — chantier en cours.** Aucun merge, tag ni déploiement n’est autorisé avant que toutes les lignes soient PASS et que le propriétaire donne son feu vert explicite.
+**NO-GO MERGE — branche prête pour la PR et la CI.** Aucun merge, tag ni déploiement n’est autorisé avant les checks Node 24, la revue visuelle Angular réelle et le feu vert explicite du propriétaire.
 
 | Contrôle | État |
 |---|---|
@@ -34,8 +34,8 @@
 | Revue visuelle Angular réelle P22 | EN ATTENTE — serveur local interdit, validation sur environnement de revue requise |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
 | P21 CI Node 24 | EN ATTENTE — couverture Angular intégrale et tests avec services éphémères |
-| Version `6.0.0` et historique 8 langues | NON PRÉPARÉS |
-| Diff limité au frontend visuel, tests et documentation | NON AUDITÉ |
+| Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
+| Diff limité au frontend visuel, tests et documentation | PASS — 237 fichiers, 0 suppression, aucun API/deploy/workflow |
 | PR unique prête pour revue | NON OUVERTE |
 | CI intégralement verte | NON EXÉCUTÉE |
 | Revue visuelle propriétaire | NON DEMANDÉE |
@@ -49,6 +49,22 @@
 - Branche : `feat/ui-v6-playground-redesign`
 - Version cible : `6.0.0`
 - Date de cadrage : 14 octobre 2026
+- `origin/master` rafraîchi avant release : `7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22` (aucune divergence entrante)
+- SHA de contenu 6.0.0 audité : `545345dc3a81c099a328e29a510447339b3f9342`
+
+## Audit de portée P22
+
+- 237 fichiers modifiés : 169 sous `FRONT/` et 68 sous `docs/`.
+- 132 feuilles SCSS, 4 templates, 24 tests/outils MJS, 7 fichiers TypeScript dont 4 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
+- Aucun fichier supprimé ; aucun changement sous `API/`, `deploy/` ou `.github/`.
+- `app.routes.ts`, `package-lock.json`, endpoints, DTO, guards, facades, ports, services, persistance et infrastructure inchangés.
+- Les seuls TypeScript de production modifiés ajoutent le composant image existant à l’accueil, réalignent les métadonnées `sizes` sur le conteneur V6 et déplacent le style du tooltip vers le SCSS partagé.
+- Zéro ajout de `!important`, gradient décoratif, `backdrop-filter`, letter-spacing négatif, `overflow-x: hidden`, dépendance ou URL externe.
+- Inventaire final régénéré sans écart : 148 routes et 273 composants.
+
+## Décision avant fusion
+
+La branche peut être poussée et la PR unique ouverte. La fusion reste interdite jusqu’à ce que la CI Node 24 soit entièrement verte, que les captures Angular réelles soient revues et que le propriétaire écrive explicitement son feu vert. La procédure de rollback demeure celle de `docs/deploy/transactional-app-deployment.md` et porte sur une génération complète.
 
 ## Rollback
 

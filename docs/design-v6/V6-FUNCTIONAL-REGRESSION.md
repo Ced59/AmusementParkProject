@@ -97,3 +97,9 @@ Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les
 
 `quality:accessibility-i18n` passe intégralement avec 113 tests : 8 langues, collisions i18n sans régression, audit accessibilité sans nouvelle dette, contrastes, thème initial SSR, focus/ARIA, mouvement réduit et invariants V6. Les 28 constats accessibilité historiques et les 1 915 chaînes volontairement identiques à l’anglais restent signalés par les outils, sans nouvelle occurrence imputable à la refonte.
 
+## Audit de non-régression P22
+
+La comparaison finale des inventaires P00/P22 conserve 148 routes, 273 composants et tous les templates associés. `app.routes.ts`, les modules lazy, guards, resolvers, services, facades, ports, contrats d’input/output et le lockfile restent inchangés. Aucun fichier API ou infrastructure n’est présent dans le diff et aucun fichier n’est supprimé.
+
+Les 16 suites contractuelles Playground V6 relisent les actions, conditions, états, permissions, navigations, pagination, médias, cartes, histoire, compte et administration directement dans les templates/routes existants. La suite qualité complète passe à 113/113 ; la suite Angular ciblée de la fiche parc passe à 1/1. L’intégralité Vitest avec couverture reste volontairement attribuée à la CI isolée après arrêt local à la limite RAM contractuelle.
+
