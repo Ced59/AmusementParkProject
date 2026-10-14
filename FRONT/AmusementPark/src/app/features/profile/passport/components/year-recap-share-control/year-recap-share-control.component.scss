@@ -15,8 +15,9 @@
   padding: clamp(1rem, 3vw, 1.5rem);
   overflow-x: clip;
   border: 1px solid color-mix(in srgb, var(--c-gold) 45%, var(--app-border));
-  border-radius: var(--radius-xl);
-  background: radial-gradient(circle at 95% 0%, color-mix(in srgb, var(--c-gold) 18%, transparent), transparent 42%), var(--app-surface);
+  border-radius: var(--radius-md);
+  border-top: 4px solid var(--c-gold);
+  background: var(--app-surface);
 }
 
 .year-share__heading {
@@ -184,8 +185,8 @@
   padding: clamp(0.9rem, 3vw, 1.4rem);
   overflow-x: clip;
   border: 1px solid color-mix(in srgb, var(--c-gold) 50%, var(--app-border));
-  border-radius: var(--app-radius-lg);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--c-gold) 11%, var(--app-surface)), var(--app-surface));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--c-gold) 9%, var(--app-surface));
 }
 
 .year-recap-card > header {

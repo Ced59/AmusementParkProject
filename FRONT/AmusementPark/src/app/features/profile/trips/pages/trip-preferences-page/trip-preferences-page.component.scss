@@ -313,10 +313,8 @@ select {
   padding: 0.85rem;
   gap: 1rem;
   border: 1px solid color-mix(in srgb, var(--c-orange) 40%, var(--app-border));
-  border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--app-surface) 94%, transparent);
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(18px);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
 }
 
 .preference-savebar > div:first-child {

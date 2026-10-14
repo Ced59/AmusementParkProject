@@ -58,7 +58,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P14 — données pratiques | PASS | horaires, météo, prix, proximité et live protégés ; 56 tests cumulés |
 | P15 — notes, classements et actions sociales | PASS | classements, commentaires, collections, watch et partage protégés ; 61 tests cumulés |
 | P16 — autres parcours publics | PASS | Park Fit, passeports partagés/locaux, références et pages secondaires protégés ; 67 tests cumulés |
-| P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
+| P17 — auth/compte | PASS | 21 routes profil protégées, auth/récupération, suppression, passeport et trips couverts ; 74 tests cumulés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
 | P20 — responsive/a11y | À FAIRE | matrice 320–1920, zoom, clavier, deux thèmes |
@@ -196,6 +196,15 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - À propos, contact, confidentialité/cookies, versions, sitemap paginé, pages techniques riches, invitation trip et 404 gardent toutes leurs routes et actions.
 - Les pages secondaires utilisent désormais largeur éditoriale, panneaux plats, petits rayons et filets d’accent, sans gradient décoratif ni nouvelle dépendance.
 - Preuve ciblée cumulée : 67 tests Node réussis ; les 148 routes inventoriées restent présentes et les tests SEO/SSR complets restent réservés à P21.
+
+## Couverture P17 — authentification, compte et profil
+
+- La modale conserve Google, inscription et connexion ; les formulaires gardent soumission, autocomplétion, validation, confirmation, renvoi et récupération de mot de passe.
+- Les routes `confirm-account`, `forgot-password` et `reset-password` restent dans le layout compte. Les 21 routes profil restent lazy et protégées par `authGuard`.
+- Le profil conserve identité, langue, unités, avatar, déconnexion et accès aux collections, notifications, voyages et passeport. La suppression exige toujours email, mot de passe et confirmation explicite.
+- Park Fit profil, passeport, statistiques, partage, visites, transitions, suppression et évaluations restent câblés aux mêmes facades et permissions.
+- Les voyages conservent création, dates, jours, participants, wishlist, préférences, cohérence, activité, transition passeport, impression et export JSON.
+- Preuve ciblée cumulée : 74 tests Node réussis ; aucune route, facade, port, endpoint ou validation auth/compte n’est modifié.
 
 ## Invariants fonctionnels
 

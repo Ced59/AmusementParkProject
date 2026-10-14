@@ -382,11 +382,9 @@
   gap: 0.8rem;
   padding: clamp(1rem, 3vw, 1.75rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(ellipse 65% 90% at 100% 0%, color-mix(in srgb, var(--app-primary) 18%, transparent), transparent 72%),
-    var(--app-surface);
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+  border-top: 4px solid var(--app-primary);
+  background: var(--app-surface);
 }
 
 .passport-editor__back {

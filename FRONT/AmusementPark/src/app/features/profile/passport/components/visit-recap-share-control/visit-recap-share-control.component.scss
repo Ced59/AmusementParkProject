@@ -12,10 +12,9 @@
   padding: clamp(1rem, 3vw, 1.4rem);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--app-primary) 36%, var(--app-border));
-  border-radius: var(--app-radius-lg);
-  background:
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--c-gold) 15%, transparent), transparent 44%),
-    color-mix(in srgb, var(--app-surface-2) 88%, transparent);
+  border-radius: var(--app-radius-md);
+  border-top: 4px solid var(--c-gold);
+  background: var(--app-surface);
 }
 
 .visit-share__heading {
@@ -240,7 +239,7 @@
   padding: clamp(0.85rem, 2vw, 1.2rem);
   border: 1px solid color-mix(in srgb, var(--c-gold) 42%, var(--app-border));
   border-radius: var(--app-radius-md);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--c-gold) 10%, var(--app-surface)), var(--app-surface));
+  background: color-mix(in srgb, var(--c-gold) 9%, var(--app-surface));
 }
 
 .visit-share-preview__date {

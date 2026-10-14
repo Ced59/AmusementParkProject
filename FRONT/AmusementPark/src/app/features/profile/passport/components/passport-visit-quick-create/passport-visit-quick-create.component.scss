@@ -316,7 +316,7 @@
   min-width: 0;
   padding-top: 0.85rem;
   padding-bottom: max(0.15rem, env(safe-area-inset-bottom));
-  background: linear-gradient(transparent, var(--app-surface) 0.8rem);
+  background: var(--app-surface);
 }
 
 .passport-success {

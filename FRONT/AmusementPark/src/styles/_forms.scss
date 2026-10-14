@@ -292,15 +292,16 @@
   border: 1px solid var(--app-border);
   border-radius: var(--radius-md);
   background: var(--app-surface);
-  box-shadow: var(--shadow-card);
 }
 
 .auth-form-card--login {
   border-color: color-mix(in srgb, var(--c-sky) 20%, var(--app-border));
+  border-top: 4px solid var(--c-sky);
 }
 
 .auth-form-card--register {
   border-color: color-mix(in srgb, var(--c-lime) 18%, var(--app-border));
+  border-top: 4px solid var(--c-lime);
 }
 
 .auth-form {

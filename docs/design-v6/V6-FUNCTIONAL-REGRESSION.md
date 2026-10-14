@@ -19,8 +19,8 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 | Historique | timeline, article, snapshots, comparaison, deep links | CONTRATS PASS — données/SEO réels à P20/P21 |
 | Pratique | horaires, météo, prix, live, données absentes/anciennes | CONTRATS PASS — valeurs réelles à P20/P21 |
 | Social | notes, commentaires, classements, collections, watch, partage | À TESTER |
-| Park Fit/passeport/trips | validations, résultats, brouillons, permissions | À TESTER |
-| Auth/compte | login, inscription, reset, session expirée, export/suppression | À TESTER |
+| Park Fit/passeport/trips | validations, résultats, brouillons, permissions | CONTRATS PASS — scénarios authentifiés complets à P21 |
+| Auth/compte | login, inscription, reset, session expirée, export/suppression | CONTRATS PASS — scénarios authentifiés complets à P21 |
 | Admin | 58 écrans, tables, formulaires, import, édition, jobs, dirty/apply | À TESTER |
 | Transversal | consentement, toasts, dialogs, 403/404/500, Quill, unités | À TESTER |
 
@@ -78,4 +78,8 @@ Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les
 ## Contrôles P16
 
 `playground-v6-public-complete.test.mjs` vérifie les routes secondaires publiques, le questionnaire/résultat/comparateur Park Fit, les références métier, les passeports partagés et brouillons anonymes, puis les pages contact, confidentialité, sitemap, technique, invitation et erreur. Les contrats de formulaire, filtres, sources, deep links, consentement, import et partage restent explicitement présents.
+
+## Contrôles P17
+
+`playground-v6-account.test.mjs` protège les 21 routes profil authentifiées, les trois routes de récupération, Google/login/inscription, la validation des mots de passe, l’identité et l’avatar, la suppression confirmée, les profils Park Fit, le partage et les statistiques passeport, l’éditeur de visite, les participants, préférences et exports de voyage. Les tests Angular existants restent la preuve des appels de facades, des erreurs serveur et des sessions expirées ; ils seront exécutés à P21.
 
