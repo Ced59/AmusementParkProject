@@ -46,7 +46,8 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P02 — primitives | PASS | 7 tests statiques verts, 160 facades conformes, suite a11y complète réservée à P21 |
 | P03 — shells et navigation | PASS | wordmark/slogan protégés, 17 tests statiques, contrats de navigation inchangés |
 | P04 — accueil | PASS | structure réelle complète, 24 tests statiques, données et recherche dynamiques |
-| P05–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
+| P05 — catalogue, exploration, recherche | PASS | filtres, carte, URL et pagination conservés ; 28 tests statiques cumulés |
+| P06–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
@@ -91,6 +92,15 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - Les vedettes, derniers parcs, derniers articles et le partage sont tous conservés. Le bloc des derniers contenus garde `@defer`, l’hydratation au viewport et le prefetch idle.
 - La mise en page transpose la maquette V6 en grille éditoriale, avec quatre cartes dynamiques et un repli sans animation décorative à 960/680/350 px.
 - Preuve ciblée cumulée : 24 tests Node réussis. Les tests Angular existants restent la preuve exécutable des handlers et facades et seront lancés avec la suite P21.
+
+## Couverture P05 — catalogue des parcs
+
+- Le terme, la région, le statut, la classification d’audience et la portée de découverte restent connectés aux mêmes inputs/outputs et à la même facade.
+- La carte reste une vraie carte Leaflet synchronisée : bounds, marqueurs, sélection, filtres régionaux et événement `markerClick` sont inchangés.
+- Les cartes ouvrent toujours les routes de détail ; les résultats mixtes gardent leurs liens typés. Aucun clic n’est transformé en popup.
+- La pagination serveur conserve ses liens `pageHref`, son trail, les tailles 6/9/18/36, le retour navigateur et les métadonnées SEO existantes.
+- Les tests Angular existants couvrent directement page 2, précédent/suivant, changements de filtre/langue, tailles personnalisées, historique et erreurs HTTP. Ils ne sont pas réécrits par la refonte.
+- Preuve ciblée cumulée : 28 tests Node réussis, surfaces catalogue sans gradient ni backdrop et contrats de carte/filtres/pagination présents.
 
 ## Invariants fonctionnels
 

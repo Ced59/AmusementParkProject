@@ -20,8 +20,8 @@
 
 .parks-map__filter {
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-pill);
-  background: color-mix(in srgb, var(--app-surface) 78%, transparent);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-field);
   color: var(--app-text-muted);
   cursor: pointer;
   font-size: 0.72rem;
@@ -30,7 +30,7 @@
   line-height: 1;
   padding: 0.5rem 0.78rem;
   text-transform: uppercase;
-  transition: var(--app-transition);
+  transition: border-color var(--app-transition-fast), background-color var(--app-transition-fast), color var(--app-transition-fast);
 }
 
 .parks-map__filter:hover,
@@ -41,7 +41,8 @@
 }
 
 .parks-map__filter--active {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--c-sky) 28%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--c-sky) 32%, transparent);
+  outline-offset: 1px;
 }
 
 @media (max-width: 720px) {
