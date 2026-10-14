@@ -211,7 +211,7 @@
 }
 
 :host ::ng-deep .admin-photo-batch-progress .p-progressbar-value {
-  background: linear-gradient(90deg, #22c55e, #a3e635);
+  background: var(--c-lime);
 }
 
 @media (max-width: 980px) {

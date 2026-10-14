@@ -258,11 +258,11 @@
 }
 
 .admin-passport-beta-bar__fill--completed {
-  background: linear-gradient(180deg, #ff7a45 0%, #ff4d1f 100%);
+  background: var(--c-orange);
 }
 
 .admin-passport-beta-bar__fill--second {
-  background: linear-gradient(180deg, #a3e635 0%, #4d7c0f 100%);
+  background: var(--c-lime);
 }
 
 .admin-passport-beta-bar__date {

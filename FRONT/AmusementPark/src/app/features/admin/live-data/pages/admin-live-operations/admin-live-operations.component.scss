@@ -171,7 +171,7 @@
 .live-operations__hero {
   align-items: center;
   border-color: color-mix(in srgb, var(--c-sky) 45%, var(--app-border));
-  background: linear-gradient(135deg, color-mix(in srgb, var(--c-sky) 10%, transparent), rgba(255, 255, 255, .025));
+  background: color-mix(in srgb, var(--c-sky) 8%, var(--app-surface));
 }
 
 .live-operations__hero > div:first-child > span,

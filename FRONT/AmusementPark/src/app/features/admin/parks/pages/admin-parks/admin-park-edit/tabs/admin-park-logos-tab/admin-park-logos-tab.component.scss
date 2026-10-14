@@ -56,11 +56,7 @@
 .logo-card__header {
   padding: 1rem 1.25rem 0.85rem 1.25rem;
   border-bottom: 1px solid var(--app-border);
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--app-surface-2) 92%, transparent),
-    color-mix(in srgb, var(--app-surface) 100%, transparent)
-  );
+  background: var(--app-surface-2);
 }
 
 .logo-card__header h4 {

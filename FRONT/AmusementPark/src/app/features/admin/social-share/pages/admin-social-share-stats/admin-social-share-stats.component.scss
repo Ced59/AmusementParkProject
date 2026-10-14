@@ -121,7 +121,7 @@
   height: var(--bar-height);
   min-height: 0.35rem;
   border-radius: 0.45rem 0.45rem 0.15rem 0.15rem;
-  background: linear-gradient(180deg, #22c55e 0%, #38bdf8 100%);
+  background: var(--app-success);
 }
 
 .admin-social-share-bar__value,

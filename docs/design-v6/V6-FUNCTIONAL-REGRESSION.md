@@ -21,7 +21,7 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 | Social | notes, commentaires, classements, collections, watch, partage | À TESTER |
 | Park Fit/passeport/trips | validations, résultats, brouillons, permissions | CONTRATS PASS — scénarios authentifiés complets à P21 |
 | Auth/compte | login, inscription, reset, session expirée, export/suppression | CONTRATS PASS — scénarios authentifiés complets à P21 |
-| Admin | 58 écrans, tables, formulaires, import, édition, jobs, dirty/apply | À TESTER |
+| Admin | 58 écrans, tables, formulaires, import, édition, jobs, dirty/apply | CONTRATS PASS — mutations réelles avec compte de recette à P21 |
 | Transversal | consentement, toasts, dialogs, 403/404/500, Quill, unités | À TESTER |
 
 ## Contrats gelés
@@ -82,4 +82,8 @@ Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les
 ## Contrôles P17
 
 `playground-v6-account.test.mjs` protège les 21 routes profil authentifiées, les trois routes de récupération, Google/login/inscription, la validation des mots de passe, l’identité et l’avatar, la suppression confirmée, les profils Park Fit, le partage et les statistiques passeport, l’éditeur de visite, les participants, préférences et exports de voyage. Les tests Angular existants restent la preuve des appels de facades, des erreurs serveur et des sessions expirées ; ils seront exécutés à P21.
+
+## Contrôles P18
+
+`playground-v6-admin.test.mjs` relit la matrice générée et échoue si l’un des 58 terminaux, quatre guards hérités, composants ou templates disparaît. Il protège également les routes CRUD, le cycle preview/apply JSON, le drawer contextuel, les transitions historiques, confirmations live, décisions de mapping, import, formulaires à onglets, field mode et batch médias. Les actions destructives ou publiantes ne sont pas exécutées sur des données réelles localement ; leurs tests Angular et la recette isolée restent requis à P21.
 

@@ -117,8 +117,8 @@
 
 .admin-park-fit-pilot-bar__plot { display: flex; align-items: end; justify-content: center; gap: 0.18rem; height: 100%; }
 .admin-park-fit-pilot-bar__fill { --bar-height: 0%; display: block; width: 42%; height: var(--bar-height); border-radius: 0.35rem 0.35rem 0.1rem 0.1rem; }
-.admin-park-fit-pilot-bar__fill--completed { background: linear-gradient(180deg, #ff7a45, #ff4d1f); }
-.admin-park-fit-pilot-bar__fill--reports { background: linear-gradient(180deg, #facc15, #a16207); }
+.admin-park-fit-pilot-bar__fill--completed { background: var(--c-orange); }
+.admin-park-fit-pilot-bar__fill--reports { background: var(--c-gold); }
 
 .admin-park-fit-pilot-breakdowns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; margin-top: 1rem; min-width: 0; }
 .admin-park-fit-pilot-breakdowns h3 { margin: 0 0 0.85rem; color: var(--app-heading); font-size: 1rem; }

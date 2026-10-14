@@ -53,7 +53,7 @@ i.pi-arrow-right {
   flex-direction: column;
   gap: .9rem;
   padding: .75rem;
-  border-radius: .75rem;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(220, 38, 38, .22);
   background: rgba(220, 38, 38, .08);
 }
@@ -90,7 +90,7 @@ i.pi-arrow-right {
   padding: .75rem;
   border-radius: .75rem;
   border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
-  background: linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
+  background: var(--app-surface, #1a140f);
   color: var(--app-text, #f6eed9);
   cursor: pointer;
 }
@@ -101,9 +101,8 @@ i.pi-arrow-right {
 }
 
 .duplicate-variant-card--suggested {
-  background:
-    radial-gradient(circle at 12% 0%, rgba(59, 130, 246, .14), transparent 46%),
-    linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
+  border-color: color-mix(in srgb, var(--c-sky) 42%, var(--app-border));
+  background: color-mix(in srgb, var(--c-sky) 8%, var(--app-surface, #1a140f));
 }
 
 .duplicate-variant-card__header {

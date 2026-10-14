@@ -112,10 +112,10 @@
   min-height: 100%;
   padding: 1rem;
   border: 1px solid var(--app-border, rgba(255, 210, 140, 0.08));
-  border-radius: 1rem;
-  background: linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
+  border-radius: var(--radius-md);
+  background: var(--app-surface, #1a140f);
   color: var(--app-text, #f6eed9);
-  box-shadow: var(--shadow-card, 0 8px 24px rgba(0, 0, 0, 0.14));
+  box-shadow: none;
 }
 
 .status-card__label {

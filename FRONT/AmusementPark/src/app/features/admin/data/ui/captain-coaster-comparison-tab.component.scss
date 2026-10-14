@@ -100,8 +100,8 @@
   flex-wrap: wrap;
   margin-bottom: .75rem;
   padding: .8rem 1rem;
-  background: linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
-  border-radius: .85rem;
+  background: var(--app-surface, #1a140f);
+  border-radius: var(--radius-md);
   border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
 }
 

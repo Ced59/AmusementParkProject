@@ -5,10 +5,10 @@
 :host ::ng-deep .admin-list-card {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  background: linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
-  box-shadow: var(--shadow-card);
+  background: var(--bg-card);
+  box-shadow: none;
 }
 
 .admin-list-header {

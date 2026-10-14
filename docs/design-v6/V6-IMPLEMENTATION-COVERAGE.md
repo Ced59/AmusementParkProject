@@ -59,7 +59,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P15 — notes, classements et actions sociales | PASS | classements, commentaires, collections, watch et partage protégés ; 61 tests cumulés |
 | P16 — autres parcours publics | PASS | Park Fit, passeports partagés/locaux, références et pages secondaires protégés ; 67 tests cumulés |
 | P17 — auth/compte | PASS | 21 routes profil protégées, auth/récupération, suppression, passeport et trips couverts ; 74 tests cumulés |
-| P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
+| P18 — administration | PASS | 58 terminaux, guards, éditeurs, imports, preview/apply, opérations et consoles spécialisées couverts ; 81 tests cumulés |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
 | P20 — responsive/a11y | À FAIRE | matrice 320–1920, zoom, clavier, deux thèmes |
 | P21 — CI/performance/SEO | À FAIRE | scripts contractuels verts |
@@ -205,6 +205,16 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - Park Fit profil, passeport, statistiques, partage, visites, transitions, suppression et évaluations restent câblés aux mêmes facades et permissions.
 - Les voyages conservent création, dates, jours, participants, wishlist, préférences, cohérence, activité, transition passeport, impression et export JSON.
 - Preuve ciblée cumulée : 74 tests Node réussis ; aucune route, facade, port, endpoint ou validation auth/compte n’est modifié.
+
+## Couverture P18 — administration intégrale
+
+- Les 58 terminaux admin inventoriés conservent `languageGuard`, `authGuard`, `adminGuard` et `completeTranslationsGuard`, leurs composants lazy, templates et routes exactes.
+- Dashboard, utilisateurs, parcs, zones, ParkItems, standalone, exploitants, fondateurs, constructeurs, pages techniques, images et vidéos restent couverts avec leurs listes et éditeurs.
+- Field mode, graph upsert simple/bulk et tiroir contextuel gardent fichiers JSON, aperçu obligatoire, capacité d’application, erreurs, sélection et confirmations.
+- Import Captain Coaster, diagnostics/workbench historiques, live operations/mappings, audit, SEO, météo, contact, partage, quality, passeport, Park Fit, classements, modération, événements, watch, trip et statistiques techniques restent présents.
+- Les formulaires longs, huit panneaux de l’éditeur parc, horaires JSON, upload multiple, catégorisation en lot, chargement incrémental, tables et états responsive gardent leurs interactions.
+- Le skin admin conserve sa densité propre et passe à des surfaces opaques, filets, petits rayons et indicateurs unis. Les 41 gradients/flous décoratifs admin ont été retirés sans changer les graphiques de données ni leurs valeurs.
+- Preuve ciblée cumulée : 81 tests Node réussis ; toutes les feuilles admin sont sans gradient ni `backdrop-filter`, et aucun fichier métier/API/guard n’est modifié.
 
 ## Invariants fonctionnels
 
