@@ -9,7 +9,7 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 | Famille | Scénarios minimum | État |
 |---|---|---|
 | Navigation | 8 langues, anonyme/auth/admin, back/forward, deep links, 404 | CONTRATS PASS — parcours complets à P20/P21 |
-| Recherche | tous types, accents, 0/1/n résultats, suggestions, 5/10/20, pagination | À TESTER |
+| Recherche | tous types, accents, 0/1/n résultats, suggestions, 5/10/20, pagination | CONTRATS HOME PASS — exécution complète à P21 |
 | Parcs | filtres, carte synchronisée, page 2, Le Fleury + profils distincts | À TESTER |
 | ParkItems | catégories, sans média/géoloc, précédente/suivante, 38 lieux du Fleury | À TESTER |
 | Standalone | visibilité, aucun faux parent, historique, prix/météo | À TESTER |
@@ -39,4 +39,8 @@ Les parcours authentifiés et admin ne sont pas manipulés sur la production. Le
 ## Contrôles P03
 
 Les templates conservent toutes les routes, conditions d’authentification et d’administration, commandes de profil, unité, langue et thème. Les tests de composants existants ont été ajustés uniquement pour l’absence du pictogramme optionnel ; leurs assertions sur le wordmark, le slogan, les langues, la version et les modales restent en place. La suite Angular complète sera exécutée à P21 après installation isolée des dépendances.
+
+## Contrôles P04
+
+Le test `playground-v6-home.test.mjs` protège les trois compteurs API, les deux CTA, les quatre parcs dynamiques, toute la chaîne de recherche et de pagination, les contenus différés et le partage. `HomeStateFacade`, ses ports, le debounce, l’exclusion des doublons et les méthodes de routage ne sont pas modifiés. L’ajout visuel du logo de parc passe par `app-image-display` avec une seule image prioritaire.
 

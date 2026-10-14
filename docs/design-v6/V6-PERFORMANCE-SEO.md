@@ -18,6 +18,10 @@
 - `@defer`, lazy routes, `loading="lazy"`, `srcset`, `sizes`, cache, `TransferState`, hydratation et préchargements SEO restent intacts.
 - Aucun serveur local ne sera démarré sans autorisation explicite.
 
+## Contrôle accueil P04
+
+Le panneau des quatre parcs hero réutilise `app-image-display` et les identifiants issus de l’API. Seul le premier média visible reçoit `loading="eager"` et `fetchpriority="high"` ; les trois suivants restent lazy, avec `srcset`, `sizes`, dimensions réservées et placeholder. Le bloc des derniers contenus conserve `@defer (on viewport; hydrate on viewport; prefetch on idle)`. Aucun endpoint, requête initiale ou dépendance n’est ajouté.
+
 ## Contrôles P21
 
 - `npm run build -- --configuration production`

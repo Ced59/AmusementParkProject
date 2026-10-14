@@ -979,6 +979,22 @@ body.light-mode .ui-featured-park-card__visual-bg {
   background: transparent;
 }
 
+/* Home hero media is rendered by the shared image component but composed by the
+   editorial Playground card. Keep these selectors global so the projected img
+   and placeholder receive the same sizing under Angular encapsulation. */
+.home-hero-card__image {
+  width: min(72%, 18rem);
+  height: min(72%, 10rem);
+  object-fit: contain;
+}
+
+.home-hero-card__image-placeholder {
+  min-height: 10rem;
+  border-radius: 0;
+  color: var(--app-text-muted);
+  background: var(--app-map);
+}
+
 @media (max-width: 680px) {
   .ui-featured-park-card {
     min-height: 26rem;

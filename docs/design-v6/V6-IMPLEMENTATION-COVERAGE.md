@@ -45,7 +45,8 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P01 — tokens et thèmes | PASS | mapping documenté, 4 tests ciblés, moteur SSR intact |
 | P02 — primitives | PASS | 7 tests statiques verts, 160 facades conformes, suite a11y complète réservée à P21 |
 | P03 — shells et navigation | PASS | wordmark/slogan protégés, 17 tests statiques, contrats de navigation inchangés |
-| P04–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
+| P04 — accueil | PASS | structure réelle complète, 24 tests statiques, données et recherche dynamiques |
+| P05–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
@@ -81,6 +82,15 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - L’arbre dynamique et le trail conservent leurs routes, `queryParams`, niveaux et libellés issus de la facade ; seuls leurs styles ont changé.
 - Les shells public, compte et admin conservent leurs outlets et leur composition fonctionnelle. Le public adopte la largeur éditoriale de 1160 px et l’admin garde la largeur dense de 1480 px.
 - Preuve ciblée : 17 tests Node réussis, dont contraste du footer et des états actifs, absence de glassmorphism, marque protégée et exhaustivité statique des accès.
+
+## Couverture P04 — accueil réel
+
+- Le hero conserve ses deux CTA, les trois statistiques issues de `homeStats()` et les quatre emplacements issus de `heroFeaturedParks()` ; aucune valeur de la maquette n’est codée en dur.
+- Le premier média réel disponible est le seul marqué `eager`/priorité haute ; les trois autres restent lazy. Le composant image, ses `srcset`, tailles, placeholder et texte alternatif existants sont réutilisés.
+- La recherche conserve la saisie, le clavier, le bouton explicite, les catégories, l’effacement, l’autocomplétion, les suggestions, les liens par type, les états et la pagination 5/10/20.
+- Les vedettes, derniers parcs, derniers articles et le partage sont tous conservés. Le bloc des derniers contenus garde `@defer`, l’hydratation au viewport et le prefetch idle.
+- La mise en page transpose la maquette V6 en grille éditoriale, avec quatre cartes dynamiques et un repli sans animation décorative à 960/680/350 px.
+- Preuve ciblée cumulée : 24 tests Node réussis. Les tests Angular existants restent la preuve exécutable des handlers et facades et seront lancés avec la suite P21.
 
 ## Invariants fonctionnels
 

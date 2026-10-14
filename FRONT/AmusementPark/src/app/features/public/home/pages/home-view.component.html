@@ -58,6 +58,20 @@
                 <a
                   [class]="getHeroCardClass(index)"
                   [routerLink]="parkLink">
+                  <span class="home-hero-card__media">
+                    <app-image-display
+                      [imageId]="park.logoImageId"
+                      [alt]="park.name"
+                      imgClass="home-hero-card__image"
+                      placeholderClass="home-hero-card__image-placeholder"
+                      placeholderKind="park"
+                      [loading]="index === 0 ? 'eager' : 'lazy'"
+                      [fetchPriority]="index === 0 ? 'high' : 'low'"
+                      sizes="(max-width: 960px) 78vw, 36vw"
+                      [srcWidth]="640"
+                      [responsiveWidths]="[320, 480, 640, 800]">
+                    </app-image-display>
+                  </span>
                   <span class="home-hero-card__icon">
                     <i [class]="getHeroCardStyle(index).iconClass" aria-hidden="true"></i>
                   </span>
