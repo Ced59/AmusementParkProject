@@ -22,6 +22,23 @@ Les variables V6 alimentent les alias `--app-*` et `--ap-*` existants. Aucun sec
 | Bleu/teal | `#0c8ca3` | `#49c9df` | `--c-sky`, lien/technique |
 | Carte | `#e0e8de` | `#243c34` | fond du shell cartographique |
 
+## Correspondance V5 → V6
+
+| Token existant | V5 clair / sombre | V6 clair / sombre |
+|---|---|---|
+| `--bg` | `#fff9f0` / `#0f0b06` | `#f7f6f0` / `#151a17` |
+| `--bg-card` | `#ffffff` / `#1a140f` | `#eeefe8` / `#252c26` |
+| `--text` | `#2a1a08` / `#f6eed9` | `#19201d` / `#f5f5ec` |
+| `--text-muted` | `#5f411e` / `#b09d7a` | `#57605a` / `#bbc5bc` |
+| `--border` | brun translucide | `#d8ddd5` / `#38433b` |
+| `--c-orange` | `#ff5a1f` | `#e54b28` / `#ff7551` |
+| `--c-lime` | `#c4ff27` | `#d5ed60` / `#d1ec70` |
+| `--c-sky` | `#38c5f5` | `#0c8ca3` / `#49c9df` |
+| `--content-max-width` | `1340px` | `1160px` |
+| `--radius-md` | `1rem` | `0.375rem` |
+| `--radius-2xl` | `2.5rem` | `1rem` |
+| `--shadow-card` | halo de 24 px | filet d’élévation de 1 px |
+
 Le texte courant vise au moins 4,5:1 ; le texte large et les séparateurs essentiels au moins 3:1. Le texte posé sur le lime reste foncé. Le focus ne dépend jamais uniquement de la couleur.
 
 ## Géométrie et densité
@@ -57,4 +74,12 @@ Les points structurels du dépôt restent `480`, `680`, `960` et `1180px`. Les m
 ## Marque protégée
 
 La structure et les styles de `.app-brand-wordmark` sont conservés pour le nom `AMUSEMENT-PARKS.fun` dans la navbar et le footer. Le pictogramme autonome n’est pas sanctuarisé. Le footer conserve les clés `footer.brand.sloganData` et `footer.brand.sloganFun` ; en français : « La rigueur des données » et « pour toujours plus de fun ».
+
+## Preuves P01
+
+- Le moteur de thème, ses sélecteurs et le script de premier rendu ne sont pas modifiés.
+- Les surfaces de page des deux thèmes sont plates : aucun gradient ni bruit SVG dans `base` ou les thèmes.
+- Le test `playground-v6-tokens.test.mjs` contrôle les valeurs, la largeur, les rayons et les contrastes AA du texte courant/secondaire.
+- Le test de texture a été converti en garde anti-texture V6.
+- Contrôle ciblé exécuté : 4 tests réussis, 0 échec.
 

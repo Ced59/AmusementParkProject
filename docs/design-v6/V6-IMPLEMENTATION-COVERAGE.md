@@ -42,7 +42,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | Gate | État | Preuve attendue |
 |---|---|---|
 | P00 — baseline et inventaires | PASS | 4 CSV générés, 24 captures V5, baseline performance/SSR, cas protégés |
-| P01 — tokens et thèmes | À FAIRE | mapping documenté, contrastes, aucun flash de thème |
+| P01 — tokens et thèmes | PASS | mapping documenté, 4 tests ciblés, moteur SSR intact |
 | P02 — primitives | À FAIRE | composants génériques et états transversaux |
 | P03 — shells et navigation | À FAIRE | wordmark/slogan protégés, contrôles inchangés |
 | P04–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |

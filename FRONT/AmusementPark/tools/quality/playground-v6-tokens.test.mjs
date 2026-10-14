@@ -1,0 +1,64 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import test from 'node:test';
+
+const styles = resolve(import.meta.dirname, '../../src/styles');
+const designTokens = readFileSync(resolve(styles, '_design-tokens.scss'), 'utf8');
+const base = readFileSync(resolve(styles, '_base.scss'), 'utf8');
+const light = readFileSync(resolve(styles, '_theme-light.scss'), 'utf8');
+const dark = readFileSync(resolve(styles, '_theme-dark.scss'), 'utf8');
+
+function variables(source) {
+  return new Map([...source.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]));
+}
+
+function luminance(hex) {
+  const channels = hex.match(/[\da-f]{2}/gi).map((channel) => Number.parseInt(channel, 16) / 255)
+    .map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
+  return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+}
+
+function contrast(foreground, background) {
+  const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
+  return (values[0] + 0.05) / (values[1] + 0.05);
+}
+
+test('Playground V6 keeps the canonical palette in both existing theme selectors', () => {
+  const lightVariables = variables(light);
+  const darkVariables = variables(dark);
+
+  assert.match(light, /body:not\(\.dark-mode\),\s*body\.light-mode/);
+  assert.match(dark, /body\.dark-mode,\s*body:not\(\.light-mode\)/);
+  assert.equal(lightVariables.get('--bg'), '#f7f6f0');
+  assert.equal(lightVariables.get('--text'), '#19201d');
+  assert.equal(lightVariables.get('--bg-card'), '#eeefe8');
+  assert.equal(lightVariables.get('--field'), '#ffffff');
+  assert.equal(lightVariables.get('--c-orange'), '#e54b28');
+  assert.equal(lightVariables.get('--c-lime'), '#d5ed60');
+  assert.equal(lightVariables.get('--c-sky'), '#0c8ca3');
+  assert.equal(darkVariables.get('--bg'), '#151a17');
+  assert.equal(darkVariables.get('--text'), '#f5f5ec');
+  assert.equal(darkVariables.get('--bg-card'), '#252c26');
+  assert.equal(darkVariables.get('--field'), '#1c241e');
+  assert.equal(darkVariables.get('--c-orange'), '#ff7551');
+  assert.equal(darkVariables.get('--c-lime'), '#d1ec70');
+  assert.equal(darkVariables.get('--c-sky'), '#49c9df');
+});
+
+test('Playground V6 text colors meet WCAG AA on the page background', () => {
+  for (const source of [light, dark]) {
+    const theme = variables(source);
+    assert.ok(contrast(theme.get('--text'), theme.get('--bg')) >= 4.5);
+    assert.ok(contrast(theme.get('--text-muted'), theme.get('--bg')) >= 4.5);
+  }
+});
+
+test('Playground V6 uses the editorial width, restrained geometry and flat page surfaces', () => {
+  assert.match(designTokens, /--content-max-width:\s*1160px/);
+  assert.match(designTokens, /--radius-md:\s*0\.375rem/);
+  assert.match(designTokens, /--radius-2xl:\s*1rem/);
+  assert.doesNotMatch(`${light}\n${dark}\n${base}`, /(?:linear|radial|conic)-gradient\(/);
+  assert.doesNotMatch(base, /fractalNoise|data:image\/svg\+xml/);
+});
+

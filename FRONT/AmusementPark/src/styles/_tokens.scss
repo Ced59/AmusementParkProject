@@ -96,7 +96,7 @@
 
   --app-shadow-1: var(--shadow-card);
   --app-shadow-2: var(--shadow-lift);
-  --app-shadow-3: 0 28px 72px rgba(0, 0, 0, 0.28);
+  --app-shadow-3: 0 14px 36px rgba(25, 32, 29, 0.14);
   --app-shadow-soft-orange: var(--shadow-soft-orange);
   --app-shadow-soft-lime: var(--shadow-soft-lime);
 
@@ -168,6 +168,12 @@
   --ap-bg-contrast: 1;
   --ap-bg-blur: 0;
   --ap-focus-ring: var(--shadow-focus);
+
+  --app-field: var(--field);
+  --app-map: var(--map);
+  --app-line: var(--line);
+  --app-line-weak: var(--line-weak);
+  --app-on-accent: var(--on-accent);
 
   --ap-z-dropdown: 1000;
   --ap-z-sticky: 1020;
