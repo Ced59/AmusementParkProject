@@ -346,7 +346,7 @@
 
 .park-opening-hours-cell--closed {
   border-color: color-mix(in srgb, var(--app-danger, #ff6b6b) 34%, var(--app-border, rgba(255, 210, 140, 0.12)));
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-danger, #ff6b6b) 13%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+  background: color-mix(in srgb, var(--app-danger, #ff6b6b) 10%, var(--app-surface, #1a140f));
 }
 
 .park-opening-hours-cell--closed .park-opening-hours-cell__tone {
@@ -355,7 +355,7 @@
 
 .park-opening-hours-cell--short {
   border-color: color-mix(in srgb, var(--app-accent-gold, #ffd166) 36%, var(--app-border, rgba(255, 210, 140, 0.12)));
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-accent-gold, #ffd166) 14%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+  background: color-mix(in srgb, var(--app-accent-gold, #ffd166) 10%, var(--app-surface, #1a140f));
 }
 
 .park-opening-hours-cell--short .park-opening-hours-cell__tone {
@@ -364,7 +364,7 @@
 
 .park-opening-hours-cell--standard {
   border-color: color-mix(in srgb, var(--app-success, #42d392) 34%, var(--app-border, rgba(255, 210, 140, 0.12)));
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-success, #42d392) 12%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+  background: color-mix(in srgb, var(--app-success, #42d392) 9%, var(--app-surface, #1a140f));
 }
 
 .park-opening-hours-cell--standard .park-opening-hours-cell__tone {
@@ -373,7 +373,7 @@
 
 .park-opening-hours-cell--long {
   border-color: color-mix(in srgb, var(--app-info, #38bdf8) 38%, var(--app-border, rgba(255, 210, 140, 0.12)));
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-info, #38bdf8) 12%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+  background: color-mix(in srgb, var(--app-info, #38bdf8) 9%, var(--app-surface, #1a140f));
 }
 
 .park-opening-hours-cell--long .park-opening-hours-cell__tone {

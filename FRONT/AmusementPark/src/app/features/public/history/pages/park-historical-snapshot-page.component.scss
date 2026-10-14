@@ -58,8 +58,8 @@
   margin-top: 1.5rem;
   padding: clamp(1rem, 3vw, 1.5rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--app-surface) 95%, transparent), var(--app-surface-2));
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
 }
 
 .snapshot-section > header p,
@@ -108,7 +108,7 @@
   min-width: 0;
   padding: 1rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--app-bg) 62%, transparent);
 }
 
@@ -246,7 +246,7 @@
   margin-top: 1.5rem;
   padding: clamp(1rem, 3vw, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 32%, var(--app-border));
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--app-accent-cyan) 6%, var(--app-surface));
 }
 

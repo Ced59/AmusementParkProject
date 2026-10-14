@@ -9,10 +9,8 @@
   padding: clamp(0.95rem, 2.5vw, 1.35rem);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--c-lime) 32%, var(--app-border));
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--c-lime) 12%, transparent), transparent 42%),
-    color-mix(in srgb, var(--app-surface-2) 92%, transparent);
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
 }
 
 .live-forecast__header {
@@ -50,7 +48,7 @@
   max-width: 100%;
   padding: 0.42rem 0.65rem;
   border: 1px solid color-mix(in srgb, var(--c-lime) 48%, var(--app-border));
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   color: var(--c-lime);
   font-size: 0.78rem;
   font-weight: 850;

@@ -68,7 +68,7 @@
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--app-surface);
 }
 
@@ -86,11 +86,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 180ms ease;
-}
-
-.official-map-card__preview:hover img {
-  transform: scale(1.02);
+  transition: opacity var(--transition-fast);
 }
 
 .official-map-card__placeholder {
@@ -122,7 +118,7 @@
 
 .official-map-card__meta span {
   padding: 0.2rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--app-primary) 10%, transparent);
   color: var(--app-text-muted);
   font-size: 0.78rem;

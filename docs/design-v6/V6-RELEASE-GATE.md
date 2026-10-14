@@ -21,7 +21,11 @@
 | P08 | PASS CIBLÉ — fiche complète et actions protégées, 35 tests statiques cumulés |
 | P09 | PASS CIBLÉ — autonomie, données pratiques et visibilité protégées |
 | P10 | PASS CIBLÉ — zones, carte et liens filtrés protégés, 38 tests statiques cumulés |
-| P11–P21 | NON EXÉCUTÉS |
+| P11 | PASS CIBLÉ — Leaflet et plans officiels protégés, 42 tests cumulés |
+| P12 | PASS CIBLÉ — médias et lecteurs protégés, 46 tests cumulés |
+| P13 | PASS CIBLÉ — histoire et routes profondes protégées, 51 tests cumulés |
+| P14 | PASS CIBLÉ — données pratiques et live protégés, 56 tests cumulés |
+| P15–P21 | NON EXÉCUTÉS |
 | Version `6.0.0` et historique 8 langues | NON PRÉPARÉS |
 | Diff limité au frontend visuel, tests et documentation | NON AUDITÉ |
 | PR unique prête pour revue | NON OUVERTE |

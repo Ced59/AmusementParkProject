@@ -56,9 +56,7 @@
   --weather-axis-width: 4.6rem;
   --weather-day-width: minmax(5.8rem, 1fr);
   --weather-chart-min-width: 47.5rem;
-  --weather-panel-bg: linear-gradient(160deg,
-    color-mix(in srgb, var(--app-surface-2, #211a13) 92%, var(--app-accent-cyan, #38c5f5) 8%),
-    color-mix(in srgb, var(--app-surface, #1a140f) 96%, transparent));
+  --weather-panel-bg: var(--app-surface, #1a140f);
   --weather-panel-border: color-mix(in srgb, var(--app-accent-cyan, #38c5f5) 20%, var(--app-border, rgba(255, 210, 140, 0.12)));
   --weather-grid-line: color-mix(in srgb, var(--app-border, rgba(255, 210, 140, 0.12)) 78%, var(--app-text-muted, #b09d7a));
   --weather-max: var(--app-primary, #ff5a1f);
@@ -69,9 +67,9 @@
   padding: clamp(1rem, 2.5vw, 1.35rem);
   overflow: hidden;
   border: 1px solid var(--weather-panel-border);
-  border-radius: var(--radius-xl, 1.4rem);
+  border-radius: var(--radius-md, 8px);
   background: var(--weather-panel-bg);
-  box-shadow: var(--shadow-card, 0 18px 38px rgba(0, 0, 0, 0.18));
+  box-shadow: none;
   color: var(--app-text, #f6eed9);
 }
 
@@ -170,7 +168,7 @@
   content: '';
   width: 0.9rem;
   height: 0.2rem;
-  border-radius: 999px;
+  border-radius: var(--radius-sm, 4px);
   background: currentColor;
 }
 

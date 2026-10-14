@@ -12,18 +12,12 @@
 
 .park-subpage-hero {
   display: block;
+  border-top: 4px solid var(--app-primary);
   border-color: color-mix(in srgb, var(--app-primary) 22%, var(--app-border));
 }
 
 .park-subpage-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.06;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, currentColor 39px, currentColor 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, currentColor 39px, currentColor 40px);
+  content: none;
 }
 
 .park-subpage-hero__content {

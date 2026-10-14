@@ -14,9 +14,10 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 | ParkItems | catégories, sans média/géoloc, précédente/suivante, 38 lieux du Fleury | CONTRATS LISTE + FICHE PASS — données réelles à P20/P21 |
 | Standalone | visibilité, aucun faux parent, historique, prix/météo | CONTRATS PASS — visibilité/données réelles à P20/P21 |
 | Zones | parc avec/sans zones, carte, `?zone=`, liens ParkItem | CONTRATS LISTE + FICHE PASS — données réelles à P20/P21 |
-| Médias | 0/1/8/9/100+, pagination/load more, lightbox, alt/crédits, erreur CDN | À TESTER |
-| Historique | timeline, article, snapshots, comparaison, deep links | À TESTER |
-| Pratique | horaires, météo, prix, live, données absentes/anciennes | À TESTER |
+| Cartes/plans | Leaflet, filtres, marqueurs, années, provenance, documents | CONTRATS PASS — interactions réelles à P20/P21 |
+| Médias | 0/1/8/9/100+, pagination/load more, lightbox, alt/crédits, erreur CDN | CONTRATS PASS — volumes/erreurs réels à P20/P21 |
+| Historique | timeline, article, snapshots, comparaison, deep links | CONTRATS PASS — données/SEO réels à P20/P21 |
+| Pratique | horaires, météo, prix, live, données absentes/anciennes | CONTRATS PASS — valeurs réelles à P20/P21 |
 | Social | notes, commentaires, classements, collections, watch, partage | À TESTER |
 | Park Fit/passeport/trips | validations, résultats, brouillons, permissions | À TESTER |
 | Auth/compte | login, inscription, reset, session expirée, export/suppression | À TESTER |
@@ -60,4 +61,13 @@ Le test `playground-v6-home.test.mjs` protège les trois compteurs API, les deux
 ## Contrôles P09–P10
 
 Le même test protège l’autonomie de la fiche standalone, ses données pratiques et son CTA officiel, puis la liste et le détail de zone avec quantités, descriptions, deep links, paramètres de filtre, Leaflet et cartes ParkItem. Aucun modèle, endpoint, état de visibilité ni relation métier n’est modifié. Les cas public/masqué et parc avec/sans zone seront exercés sur données de recette à P20/P21.
+
+## Contrôles P11–P14
+
+- `playground-v6-maps.test.mjs` protège les deux modes carte, les événements Leaflet et les plans officiels multi-années.
+- `playground-v6-media.test.mjs` protège filtres, lightbox, alt/crédits/sources, chargements eager/lazy, galeries et vidéos.
+- `playground-v6-history.test.mjs` protège routes/resolvers, chronologies paginées, articles complets, snapshots, comparaison et lignées.
+- `playground-v6-practical.test.mjs` protège calendrier, météo, prix, proximité et tous les états/attributions live.
+
+Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les gestes Leaflet, grands volumes médias, SEO SSR historique et valeurs API réelles restent bloquants à P20/P21.
 

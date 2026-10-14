@@ -22,23 +22,14 @@
   min-height: clamp(18rem, 34vh, 26rem);
   padding: clamp(1.5rem, 4vw, 3.5rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(ellipse 78% 62% at 16% 32%, color-mix(in srgb, var(--app-primary) 16%, transparent), transparent 62%),
-    radial-gradient(ellipse 52% 52% at 86% 18%, color-mix(in srgb, var(--app-accent-cyan) 10%, transparent), transparent 58%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 94%, transparent), var(--app-surface-2));
-  box-shadow: var(--shadow-card);
+  border-top: 4px solid var(--app-primary);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
+  box-shadow: none;
 }
 
 .history-article__hero::after {
-  position: absolute;
-  inset: 0;
-  content: '';
-  opacity: 0.04;
-  pointer-events: none;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.55) 39px, rgba(255, 255, 255, 0.55) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.55) 39px, rgba(255, 255, 255, 0.55) 40px);
+  content: none;
 }
 
 .history-article__hero-copy,
@@ -121,7 +112,7 @@
   min-height: 15rem;
   padding: 0.9rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--app-bg) 42%, transparent);
 }
 
@@ -158,9 +149,9 @@
 .history-article__content,
 .history-article__sources {
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), var(--app-surface-2));
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
+  box-shadow: none;
 }
 
 .history-article__content {
@@ -214,7 +205,7 @@
 :host ::ng-deep .history-article__figure-placeholder {
   width: 100%;
   max-height: 32rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   object-fit: cover;
 }
 
@@ -251,7 +242,7 @@
   margin: 1.7rem 0;
   border: 1px solid var(--app-border);
   border-left: 5px solid var(--app-primary);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--app-primary-soft) 70%, transparent);
 }
 
@@ -335,7 +326,7 @@
   .history-article__hero,
   .history-article__content,
   .history-article__sources {
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
   }
 
   .history-article__back {

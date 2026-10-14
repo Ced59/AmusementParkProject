@@ -52,7 +52,11 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P08 — fiches ParkItem | PASS | navigation, sections techniques, médias et actions conservées ; 35 tests statiques cumulés |
 | P09 — attractions autonomes | PASS | parent autonome, historique, données pratiques et carte conservés ; 38 tests statiques cumulés |
 | P10 — zones | PASS | liste, détail, carte, facettes et liens ParkItem conservés ; 38 tests statiques cumulés |
-| P11–P16 — autres parcours publics | À FAIRE | toutes les familles de routes et données réelles |
+| P11 — cartes et plans | PASS | Leaflet, filtres, marqueurs, années et documents source protégés ; 42 tests cumulés |
+| P12 — médias | PASS | galeries, lightbox, crédits, lazy loading, vidéos et load more protégés ; 46 tests cumulés |
+| P13 — histoire | PASS | timelines, articles, snapshots, comparaison et lignées protégés ; 51 tests cumulés |
+| P14 — données pratiques | PASS | horaires, météo, prix, proximité et live protégés ; 56 tests cumulés |
+| P15–P16 — autres parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
@@ -145,6 +149,34 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - Le détail conserve description, compteurs, lien filtré `?zone=`, carte Leaflet avec bounds, cartes ParkItem, état sans marqueur et partage.
 - Les parcs avec et sans zone restent distingués par les conditions et états existants ; aucune zone fictive n’est créée.
 - Les surfaces adoptent les filets, petits rayons et accents Playground sans modifier les modèles ni la facade.
+
+## Couverture P11 — cartes interactives et plans officiels
+
+- Les modes carte interactive/plans officiels, tabs, filtre fermé, filtres zone/catégorie et états sans géolocalisation restent câblés aux mêmes inputs/outputs.
+- Leaflet conserve `fitBounds`, zoom maximal, marqueurs de navigation, sélection catalogue et événement `markerClick`.
+- Les plans conservent année, document original, aperçu, langue, taille, nom de fichier, provenance et liens externes.
+- Les conteneurs sont plats, réservent toujours leur hauteur et n’ajoutent aucun marqueur ou placeholder présenté comme une donnée réelle.
+
+## Couverture P12 — médias
+
+- Le carrousel conserve filtres année/tag, photo active eager, miniatures lazy, alt, métadonnées, crédits, sources, carte, clavier et lightbox modale.
+- Les galeries parc et ParkItem gardent leurs tabs, lots API, `loadMore`, états vide/chargement/erreur et liens de retour.
+- Les listes vidéo conservent tabs, type, tag, créateur, détail, miniatures, métadonnées, tags et chargement incrémental.
+- Le lecteur conserve embed/externe, précédent/suivant, créateur, fournisseur, tags, erreurs et partage ; aucune vidéo de démonstration n’est ajoutée.
+
+## Couverture P13 — histoire
+
+- Les routes profondes, resolvers, pagination, dates/précision, sujets, événements, images, sources et articles restent inchangés.
+- Les snapshots gardent date complète et couverture ; le comparateur garde `fromYear`/`toYear`, ouverts, fermés, modifiés, incertains et stables.
+- Les lignées gardent relations, cycles/troncatures, preuves, auteurs/éditeurs et sources externes.
+- Les contenus rédigés ne sont ni tronqués ni remplacés ; la refonte se limite aux surfaces plates et à la géométrie.
+
+## Couverture P14 — horaires, météo, prix, proximité et live
+
+- Le calendrier conserve navigation mois, jour sélectionné, horaires, dernière admission, événements, fuseau, couverture et source officielle.
+- La météo conserve séries min/max, probabilité et somme de précipitations, vent, graphe SVG, états indisponibles et comparaison historique différée.
+- Les prix conservent entrées, crédits, abonnements, parking, web/guichet, validité, conditions, achats, historique, devise, source et fraîcheur.
+- La proximité conserve distance/provenance. Le live conserve heure locale, refresh, offline, erreurs, files multiples, filtres, prévision, historique, fraîcheur, méthodologie et attributions.
 
 ## Invariants fonctionnels
 
