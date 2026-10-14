@@ -1,6 +1,20 @@
 {
-  "version": "5.4.101",
+  "version": "6.0.0",
   "history": [
+    {
+      "version": "6.0.0",
+      "releasedAt": "2026-10-14",
+      "labels": {
+        "fr": "Toute l’expérience visuelle repensée en édition Playground",
+        "en": "A complete visual redesign in the Playground edition",
+        "de": "Ein vollständig neues Erscheinungsbild in der Playground Edition",
+        "nl": "Een volledig vernieuwde vormgeving in de Playground-editie",
+        "it": "Un restyling visivo completo in edizione Playground",
+        "es": "Un rediseño visual completo en edición Playground",
+        "pt": "Uma renovação visual completa na edição Playground",
+        "pl": "Całkowicie odświeżona oprawa wizualna w edycji Playground"
+      }
+    },
     {
       "version": "5.4.101",
       "releasedAt": "2026-10-10",
