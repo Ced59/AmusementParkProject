@@ -4,7 +4,7 @@
 
 - Cible : HTML et captures du pack Playground V6.
 - Avant : production V5.4.101 capturée le 14 octobre 2026 sans démarrer de serveur local.
-- Après : captures Angular à produire dans un environnement isolé après chaque famille de pages.
+- Après : captures de géométrie V6 produites sur fixture Chromium ; captures Angular réelles à valider dans l’environnement de revue final.
 
 ## Baseline V5 enregistrée
 
@@ -22,6 +22,19 @@ Les fichiers sont sous `evidence/baseline-v5/`.
 | 404 FR | — | oui | 390 | 1366 |
 
 Les captures pleine page mobiles de l’accueil contiennent des zones réservées par les blocs différés avant leur réalisation complète. Elles prouvent la géométrie initiale mais ne remplacent pas les captures segmentées des états chargés à P20.
+
+## Preuves responsive V6 P20
+
+Le dossier `evidence/responsive-v6/` contient 30 captures WebP et `responsive-report.json`. Chaque largeur contractuelle est mesurée en clair et sombre, avec deux cas supplémentaires de faible hauteur/paysage. Verdict automatisé : 30/30 sans violation de largeur, bounds, navigation fixe, cible de notation ou réservation média/carte.
+
+| Échantillon inspecté | Verdict |
+|---|---|
+| 320 × 1200 sombre | PASS — reflow mono-colonne, contenu long contenu, consentement au-dessus de la bottom-nav |
+| 390 × 568 clair | PASS — faible hauteur, actions de consentement accessibles, navigation réservée |
+| 1366 × 1200 clair | PASS — composition dense, grilles et actions contenues |
+| Matrice complète clair/sombre | PASS AUTOMATISÉ — 13 largeurs + 2 hauteurs contraintes, 0 violation |
+
+La fixture compile les SCSS de production sans mocks métier ni faux routeur et ne nécessite aucun serveur. Ces images ne prétendent pas remplacer la revue des données réelles : home, Le Fleury, ParkItems, standalone visible, cartes, médias, compte et admin devront être approuvés sur la branche déployée pour revue avant le feu vert de fusion P22.
 
 ## Verdicts à renseigner après migration
 

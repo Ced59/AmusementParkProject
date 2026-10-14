@@ -61,11 +61,22 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P17 — auth/compte | PASS | 21 routes profil protégées, auth/récupération, suppression, passeport et trips couverts ; 74 tests cumulés |
 | P18 — administration | PASS | 58 terminaux, guards, éditeurs, imports, preview/apply, opérations et consoles spécialisées couverts ; 81 tests cumulés |
 | P19 — états rares | PASS | langue initiale, consentement, modales, toasts, tooltips, états, uploads, Quill et contrôles flottants couverts ; 88 tests cumulés |
-| P20 — responsive/a11y | À FAIRE | matrice 320–1920, zoom, clavier, deux thèmes |
+| P20 — responsive/a11y | PASS CIBLÉ | 30 cas Chromium, 13 largeurs, 2 thèmes, faible hauteur, 113 contrôles qualité/a11y ; revue Angular réelle à P22 |
 | P21 — CI/performance/SEO | À FAIRE | scripts contractuels verts |
 | P22 — version et release atomique | À FAIRE | 6.0.0, PR unique, feu vert explicite |
 
 Un gate reste bloquant tant que sa preuve n’est pas enregistrée. La version et la PR ne seront préparées qu’à P22.
+
+## Couverture P20 — responsive et accessibilité
+
+- La fixture Chromium statique couvre 320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440 et 1920 px dans les deux thèmes, plus 390 × 568 et 1024 × 600.
+- Les 30 cas enregistrés dans `evidence/responsive-v6/responsive-report.json` ne présentent aucun overflow global, élément hors viewport, recouvrement de navigation fixe, cible de notation sous-dimensionnée ni réservation instable d’image ou de carte.
+- Les largeurs 320–480 constituent la preuve de reflow équivalente au zoom navigateur 200 % d’un viewport 640–960 px ; `overflow-x: clip` n’est jamais utilisé comme verdict, car les bounds de chaque contrôle sont mesurés séparément.
+- Les 30 captures WebP clair/sombre ont été produites sans serveur applicatif. Elles documentent la géométrie des composants, les libellés longs, le consentement, la navigation mobile et les panneaux admin/compte.
+- `quality:accessibility-i18n` passe : 8 langues et 7 316 clés, contrastes actifs/footer, thème initial SSR, réduction de mouvement, navigation, focus/ARIA et 113 tests Node.
+- Le contrôle a révélé puis corrigé les attributs `sizes` de la fiche parc, restés dimensionnés pour l’ancienne largeur éditoriale : les images hero et principale correspondent désormais au conteneur V6 de 1160 px.
+
+La recette visuelle sur l’application Angular branchée aux données réelles, les rôles authentifié/admin et les gestes Leaflet reste une décision humaine de P22. Elle n’est pas simulée localement, car le contrat interdit de démarrer un serveur applicatif sur ce PC sans autorisation.
 
 ## Registre des cas sensibles P00
 

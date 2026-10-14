@@ -1,7 +1,7 @@
 import { spawn, spawnSync } from 'node:child_process';
 import { once } from 'node:events';
 import { existsSync } from 'node:fs';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:net';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -9,8 +9,17 @@ import { pathToFileURL } from 'node:url';
 
 import { compile } from 'sass';
 
-const viewportWidths = [320, 360, 390, 768, 1024, 1280, 1680];
+const viewportWidths = [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920];
+const viewportCases = [
+  ...viewportWidths.map((width) => ({ height: 1200, label: `${width}px`, width })),
+  { height: 568, label: 'mobile-low-height', width: 390 },
+  { height: 600, label: 'tablet-landscape-low-height', width: 1024 }
+];
+const themes = ['light', 'dark'];
 const projectRoot = process.cwd();
+const evidenceDirectory = process.env.V6_RESPONSIVE_EVIDENCE_DIR
+  ? resolve(projectRoot, process.env.V6_RESPONSIVE_EVIDENCE_DIR)
+  : null;
 const componentStyles = [
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
@@ -378,10 +387,11 @@ const fixtureMarkup = `
   <nav class="test-mobile-navigation" aria-hidden="true">Navigation mobile</nav>`;
 
 const baseStyles = `
-  :root { --font-heading: sans-serif; --text-muted: #8a8175; --text-primary: #fff; --app-border: #655847; --app-surface: #17110c; --app-surface-2: #211810; --c-rose: #ff477e; --c-orange: #ff5b2d; --c-sky: #58c9ee; --c-gold: #d6a945; --c-lime: #b8e532; --c-purple: #a978ff; --radius-md: 0.75rem; --radius-lg: 1rem; --shadow-lg: 0 1rem 2rem #0008; --bottom-nav-height: 4.75rem; --content-max-width: 1200px; --content-wide-max-width: 1440px; --topbar-height: 4rem; }
+  :root { --font-heading: sans-serif; --text-muted: #bbc5bc; --text-primary: #f5f5ec; --app-border: #67716a; --app-surface: #252c26; --app-surface-2: #1c241e; --c-rose: #ff477e; --c-orange: #ff7551; --c-sky: #49c9df; --c-gold: #d6a945; --c-lime: #d1ec70; --c-purple: #a978ff; --radius-md: 0.25rem; --radius-lg: 0.375rem; --shadow-lg: none; --bottom-nav-height: 4.75rem; --content-max-width: 1160px; --content-wide-max-width: 1480px; --topbar-height: 4rem; }
   * { box-sizing: border-box; }
   html, body { width: 100%; max-width: 100%; margin: 0; overflow-x: clip; }
-  body { background: #0d0906; color: var(--text-primary); font: 16px/1.4 sans-serif; }
+  body { background: #151a17; color: var(--text-primary); font: 16px/1.4 sans-serif; }
+  body[data-theme="light"] { --text-muted: #57605a; --text-primary: #19201d; --app-border: #aeb7ae; --app-surface: #eeefe8; --app-surface-2: #fff; --c-orange: #e54b28; --c-sky: #0c8ca3; --c-lime: #d5ed60; background: #f7f6f0; }
   button, input, select, textarea, a { max-width: 100%; font: inherit; }
   button, a { overflow-wrap: anywhere; }
   .surface { padding: 1rem; border: 1px solid var(--app-border); border-radius: var(--radius-lg); background: var(--app-surface); }
@@ -391,6 +401,7 @@ const baseStyles = `
 
 const evaluationScript = `
   (() => {
+    document.body.dataset.theme = new URLSearchParams(window.location.search).get('theme') ?? 'dark';
     const viewportRight = document.documentElement.clientWidth;
     const checked = Array.from(document.querySelectorAll('[data-responsive-root], [data-check-bound], input, select, textarea, button, a'))
       .filter((element) => !element.closest('.wishlist-strip'));
@@ -532,6 +543,7 @@ const connectDevTools = async (webSocketUrl) => {
 const workingDirectory = await mkdtemp(join(tmpdir(), 'trip-responsive-'));
 let chromeProcess;
 let devTools;
+const evidenceResults = [];
 
 try {
   const htmlPath = join(workingDirectory, 'trip-responsive.html');
@@ -554,32 +566,72 @@ try {
   await devTools.send('Page.enable');
   await devTools.send('Runtime.enable');
 
-  for (const width of viewportWidths) {
-    await devTools.send('Emulation.setDeviceMetricsOverride', {
-      width,
-      height: 1200,
-      deviceScaleFactor: 1,
-      mobile: false,
-      screenWidth: width,
-      screenHeight: 1200
-    });
-    const pageLoaded = devTools.waitFor('Page.loadEventFired');
-    await devTools.send('Page.navigate', { url: `${pathToFileURL(htmlPath).href}?width=${width}` });
-    await pageLoaded;
-    const evaluation = await devTools.send('Runtime.evaluate', {
-      expression: "document.querySelector('#responsive-result')?.textContent",
-      returnByValue: true
-    });
-    if (!evaluation.result?.value) {
-      throw new Error(`Chrome did not return responsive measurements at ${width}px.`);
-    }
-    const result = JSON.parse(evaluation.result.value);
-    if (result.viewportRight !== width || result.violations.length > 0) {
-      throw new Error(`Trip responsive check failed at ${width}px: ${JSON.stringify(result)}`);
+  if (evidenceDirectory) {
+    await mkdir(evidenceDirectory, { recursive: true });
+  }
+
+  for (const viewport of viewportCases) {
+    for (const theme of themes) {
+      await devTools.send('Emulation.setDeviceMetricsOverride', {
+        width: viewport.width,
+        height: viewport.height,
+        deviceScaleFactor: 1,
+        mobile: false,
+        screenWidth: viewport.width,
+        screenHeight: viewport.height
+      });
+      const pageLoaded = devTools.waitFor('Page.loadEventFired');
+      await devTools.send('Page.navigate', {
+        url: `${pathToFileURL(htmlPath).href}?width=${viewport.width}&height=${viewport.height}&theme=${theme}`
+      });
+      await pageLoaded;
+      const evaluation = await devTools.send('Runtime.evaluate', {
+        expression: "document.querySelector('#responsive-result')?.textContent",
+        returnByValue: true
+      });
+      if (!evaluation.result?.value) {
+        throw new Error(`Chrome did not return responsive measurements at ${viewport.width}x${viewport.height}px in ${theme} theme.`);
+      }
+      const result = JSON.parse(evaluation.result.value);
+      if (result.viewportRight !== viewport.width || result.violations.length > 0) {
+        throw new Error(`Trip responsive check failed at ${viewport.width}x${viewport.height}px in ${theme} theme: ${JSON.stringify(result)}`);
+      }
+
+      const evidence = {
+        height: viewport.height,
+        label: viewport.label,
+        theme,
+        violations: result.violations,
+        viewportRight: result.viewportRight,
+        width: viewport.width
+      };
+      if (evidenceDirectory) {
+        const screenshotName = `v6-responsive-${viewport.width}x${viewport.height}-${theme}.webp`;
+        const screenshot = await devTools.send('Page.captureScreenshot', {
+          captureBeyondViewport: false,
+          format: 'webp',
+          fromSurface: true,
+          quality: 72
+        });
+        await writeFile(join(evidenceDirectory, screenshotName), Buffer.from(screenshot.data, 'base64'));
+        evidence.screenshot = screenshotName;
+      }
+      evidenceResults.push(evidence);
     }
   }
 
-  console.log(`Trip pages fit real Chromium viewports: ${viewportWidths.join(', ')}px.`);
+  if (evidenceDirectory) {
+    await writeFile(join(evidenceDirectory, 'responsive-report.json'), `${JSON.stringify({
+      generatedAt: new Date().toISOString(),
+      note: 'Static Chromium fixture: layout evidence only; final real-data Angular captures remain part of the owner review gate.',
+      results: evidenceResults,
+      themes,
+      viewportWidths,
+      zoom200ReflowProxyWidths: [320, 360, 390, 414, 480]
+    }, null, 2)}\n`, 'utf8');
+  }
+
+  console.log(`V6 responsive fixture fits ${viewportCases.length} real Chromium viewports in light and dark themes: ${viewportWidths.join(', ')}px.`);
 } finally {
   devTools?.close();
   if (chromeProcess && chromeProcess.exitCode === null) {

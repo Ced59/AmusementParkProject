@@ -91,3 +91,9 @@ Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les
 
 `playground-v6-transversal.test.mjs` protège les huit choix de langue, les deux décisions de consentement, le montage global toast/cookie/page-jump, les rôles et annonces des overlays, le clavier des tooltips, les trois états de page, la réduction de mouvement, les uploads et le rich text sanitisé. Il vérifie aussi que les surfaces ciblées sont plates et que l’ancien pictogramme de sélection de langue n’est plus rendu.
 
+## Contrôles P20
+
+`trip-pages-browser-check.mjs` compile les SCSS réels et mesure 30 rendus dans Chrome headless : 13 largeurs contractuelles en clair/sombre, mobile faible hauteur et tablette paysage faible hauteur. Les contrôles portent sur l’overflow global, les bounds de chaque champ/action/panneau, la bottom-nav, les cibles de notation, les espaces réservés des logos/cartes/photos et la justesse des attributs `sizes`. Le rapport versionné contient zéro violation.
+
+`quality:accessibility-i18n` passe intégralement avec 113 tests : 8 langues, collisions i18n sans régression, audit accessibilité sans nouvelle dette, contrastes, thème initial SSR, focus/ARIA, mouvement réduit et invariants V6. Les 28 constats accessibilité historiques et les 1 915 chaînes volontairement identiques à l’anglais restent signalés par les outils, sans nouvelle occurrence imputable à la refonte.
+
