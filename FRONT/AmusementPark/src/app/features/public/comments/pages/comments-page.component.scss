@@ -33,6 +33,8 @@
   display: flex;
   gap: 1.5rem;
   justify-content: space-between;
+  padding-top: clamp(1rem, 3vw, 2rem);
+  border-top: 4px solid var(--c-orange);
 }
 
 .comments-hero h1,
@@ -97,7 +99,7 @@
   align-items: start;
   background: color-mix(in srgb, var(--c-lime) 10%, var(--surface));
   border: 1px solid color-mix(in srgb, var(--c-lime) 34%, var(--border));
-  border-radius: 0.9rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
   display: flex;
   gap: 0.75rem;
@@ -142,9 +144,8 @@
 }
 
 .comment-card--official {
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--c-lime) 10%, transparent), transparent 54%),
-    var(--surface);
+  border-left: 4px solid var(--c-lime);
+  background: color-mix(in srgb, var(--c-lime) 8%, var(--surface));
   border-color: color-mix(in srgb, var(--c-lime) 44%, var(--border));
 }
 
@@ -218,7 +219,7 @@
 }
 
 .comment-card__body ::ng-deep img.rich-text__image {
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
   height: auto;
   max-width: 100%;
 }

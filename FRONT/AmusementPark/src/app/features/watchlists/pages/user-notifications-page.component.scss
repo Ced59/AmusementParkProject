@@ -31,6 +31,8 @@
 .notifications-page__hero {
   display: grid;
   gap: 1rem;
+  padding-top: clamp(1rem, 3vw, 2rem);
+  border-top: 4px solid var(--c-sky);
 }
 
 .notifications-page__hero-copy {
@@ -52,7 +54,7 @@ h1 {
   max-width: 13ch;
   font-family: var(--font-heading);
   font-size: clamp(2.5rem, 8vw, 5.3rem);
-  line-height: 0.92;
+  line-height: 1;
 }
 
 .notifications-page__hero-copy p,
@@ -67,7 +69,7 @@ h1 {
   flex: 0 0 auto;
   min-width: 7rem;
   padding: 0.8rem 1rem;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
   text-align: center;
 }
@@ -146,12 +148,10 @@ h1 {
   overflow: hidden;
 }
 
-.notification-card--unread {
-  box-shadow: inset 4px 0 0 var(--c-sky);
-}
+.notification-card--unread { border-left: 4px solid var(--c-sky); }
 .notification-card--correction { border-color: color-mix(in srgb, var(--blue-400) 55%, var(--surface-border)); }
 .notification-card--retraction { border-color: color-mix(in srgb, var(--pink-400) 65%, var(--surface-border)); }
-.notification-card__lifecycle { align-items: flex-start; background: color-mix(in srgb, var(--blue-400) 12%, transparent); border: 1px solid color-mix(in srgb, var(--blue-400) 40%, var(--surface-border)); border-radius: .9rem; display: flex; gap: .7rem; min-width: 0; padding: .8rem; }
+.notification-card__lifecycle { align-items: flex-start; background: color-mix(in srgb, var(--blue-400) 12%, transparent); border: 1px solid color-mix(in srgb, var(--blue-400) 40%, var(--surface-border)); border-radius: var(--radius-sm); display: flex; gap: .7rem; min-width: 0; padding: .8rem; }
 .notification-card__lifecycle[data-kind='Retraction'] { background: color-mix(in srgb, var(--pink-400) 10%, transparent); border-color: color-mix(in srgb, var(--pink-400) 50%, var(--surface-border)); }
 .notification-card__lifecycle > i { flex: 0 0 auto; margin-top: .15rem; }
 .notification-card__lifecycle > div { display: grid; gap: .2rem; min-width: 0; }
@@ -214,7 +214,7 @@ h1 {
   align-items: center;
   padding: 0.8rem;
   gap: 0.7rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   background: var(--app-surface-2);
 }
 
@@ -242,7 +242,7 @@ h1 {
   padding: 0.75rem;
   gap: 0.65rem;
   border: 1px solid color-mix(in srgb, var(--c-lime) 35%, var(--app-border));
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
 }
 
 .notification-card__source > i {

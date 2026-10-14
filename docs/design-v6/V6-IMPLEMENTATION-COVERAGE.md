@@ -56,7 +56,8 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P12 — médias | PASS | galeries, lightbox, crédits, lazy loading, vidéos et load more protégés ; 46 tests cumulés |
 | P13 — histoire | PASS | timelines, articles, snapshots, comparaison et lignées protégés ; 51 tests cumulés |
 | P14 — données pratiques | PASS | horaires, météo, prix, proximité et live protégés ; 56 tests cumulés |
-| P15–P16 — autres parcours publics | À FAIRE | toutes les familles de routes et données réelles |
+| P15 — notes, classements et actions sociales | PASS | classements, commentaires, collections, watch et partage protégés ; 61 tests cumulés |
+| P16 — autres parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
@@ -177,6 +178,15 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - La météo conserve séries min/max, probabilité et somme de précipitations, vent, graphe SVG, états indisponibles et comparaison historique différée.
 - Les prix conservent entrées, crédits, abonnements, parking, web/guichet, validité, conditions, achats, historique, devise, source et fraîcheur.
 - La proximité conserve distance/provenance. Le live conserve heure locale, refresh, offline, erreurs, files multiples, filtres, prévision, historique, fraîcheur, méthodologie et attributions.
+
+## Couverture P15 — notes, classements, collections, watch et partage
+
+- Les classements conservent catégories, filtres d’attractions, recherche, chargement incrémental, arbre, liste et routes de méthodologie versionnée.
+- La méthodologie conserve seuils de preuve, score bayésien, composition du score parc, règles de publication, historique des versions et canal de signalement.
+- Les notes restent éditables par demi-étoile selon les mêmes permissions ; les commentaires gardent rich text localisé, langues, rôles, édition, suppression, images gérées et états.
+- Les collections gardent filtres, routes typées, suppression et états. Watch, alertes live et notifications gardent abonnements, pause, seuils, filtres, sources, pagination et signalement.
+- Le partage conserve Web Share, copie, réseaux, QR avec ses états et signalement de modération. Les surfaces deviennent plates, à petits rayons et accents par filet.
+- Preuve ciblée cumulée : 61 tests Node réussis ; aucune facade, route, API, permission ou règle de classement n’est modifiée.
 
 ## Invariants fonctionnels
 

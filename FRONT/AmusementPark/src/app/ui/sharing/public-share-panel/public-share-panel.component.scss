@@ -4,6 +4,7 @@
   min-width: 0;
   margin-block: clamp(1.5rem, 4vw, 3rem);
   border-color: color-mix(in srgb, var(--app-border) 82%, var(--app-accent, #38bdf8) 18%);
+  border-top: 4px solid var(--app-accent-cyan);
 }
 
 .public-share-panel__header {
@@ -47,14 +48,14 @@
   min-height: 2.65rem;
   padding: 0.62rem 0.95rem;
   border: 1px solid color-mix(in srgb, var(--app-border) 84%, #94a3b8 16%);
-  border-radius: 999px;
+  border-radius: var(--app-radius-sm);
   background: color-mix(in srgb, var(--app-panel-bg) 88%, transparent);
   color: var(--app-heading);
   font: inherit;
   font-weight: 800;
   text-decoration: none;
   cursor: pointer;
-  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+  transition: border-color 160ms ease, background-color 160ms ease;
 
   i {
     font-size: 1rem;
@@ -64,7 +65,6 @@
   &:focus-visible {
     border-color: color-mix(in srgb, var(--app-accent, #38bdf8) 65%, var(--app-border) 35%);
     background: color-mix(in srgb, var(--app-accent, #38bdf8) 12%, var(--app-panel-bg) 88%);
-    transform: translateY(-1px);
   }
 }
 
@@ -79,7 +79,7 @@
   width: min(100%, 28rem);
   padding: 1rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--app-panel-bg) 90%, #ffffff 10%);
 
   h3 {
@@ -92,7 +92,7 @@
     display: block;
     max-width: 100%;
     height: auto;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-sm);
     background: #ffffff;
   }
 

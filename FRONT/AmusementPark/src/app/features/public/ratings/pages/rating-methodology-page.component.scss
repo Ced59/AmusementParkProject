@@ -9,6 +9,8 @@
   gap: clamp(1.25rem, 3vw, 2.25rem);
   max-width: 72rem;
   margin: 0 auto;
+  padding-top: clamp(1rem, 3vw, 2rem);
+  border-top: 4px solid var(--app-primary);
 }
 
 .methodology-page > *,
@@ -86,9 +88,8 @@
 .methodology-state {
   padding: clamp(1.1rem, 2.5vw, 1.75rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-lg);
+  border-radius: var(--app-radius-md);
   background: var(--app-surface);
-  box-shadow: var(--app-shadow-sm);
 }
 
 .methodology-card h2,
@@ -111,7 +112,8 @@
 
 .methodology-section--accent {
   border-color: color-mix(in srgb, var(--app-primary) 42%, var(--app-border));
-  background: linear-gradient(135deg, color-mix(in srgb, var(--app-primary) 8%, var(--app-surface)), var(--app-surface));
+  border-left: 4px solid var(--app-primary);
+  background: color-mix(in srgb, var(--app-primary) 8%, var(--app-surface));
 }
 
 .methodology-formula {

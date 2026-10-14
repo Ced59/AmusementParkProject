@@ -71,3 +71,7 @@ Le même test protège l’autonomie de la fiche standalone, ses données pratiq
 
 Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les gestes Leaflet, grands volumes médias, SEO SSR historique et valeurs API réelles restent bloquants à P20/P21.
 
+## Contrôles P15
+
+`playground-v6-social.test.mjs` protège les filtres et recherches de classement, la méthodologie versionnée, les demi-notes, les commentaires localisés et modérables, les collections, les abonnements watch, les alertes et notifications paginées, ainsi que le partage natif/copie/réseaux/QR et son signalement. Les tests Angular existants restent la preuve des appels de facades et des permissions ; ils seront exécutés avec la suite P21.
+

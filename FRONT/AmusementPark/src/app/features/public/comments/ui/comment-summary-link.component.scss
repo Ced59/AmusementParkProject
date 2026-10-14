@@ -5,11 +5,9 @@
 
 .comment-summary-link {
   align-items: center;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--c-lime) 14%, transparent), transparent 68%),
-    color-mix(in srgb, var(--surface) 92%, transparent);
+  background: color-mix(in srgb, var(--c-lime) 9%, var(--surface));
   border: 1px solid color-mix(in srgb, var(--c-lime) 34%, var(--border));
-  border-radius: 1rem;
+  border-radius: var(--radius-md);
   color: inherit;
   display: grid;
   gap: 0.8rem;
@@ -17,18 +15,17 @@
   max-width: 46rem;
   padding: 0.9rem 1rem;
   text-decoration: none;
-  transition: border-color 160ms ease, transform 160ms ease;
+  transition: border-color 160ms ease;
 }
 
 .comment-summary-link:hover {
   border-color: var(--c-lime);
-  transform: translateY(-1px);
 }
 
 .comment-summary-link__icon {
   align-items: center;
   background: color-mix(in srgb, var(--c-lime) 18%, transparent);
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
   color: var(--c-lime);
   display: inline-flex;
   height: 2.5rem;
