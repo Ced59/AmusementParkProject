@@ -11,6 +11,15 @@ const itemListTemplate = read('src/app/features/public/park-items/ui/park-items-
 const itemListStyles = read('src/app/features/public/park-items/ui/park-items-list-view.component.scss');
 const itemTemplate = read('src/app/features/public/park-items/ui/park-item-detail-view.component.html');
 const itemStyles = read('src/app/features/public/park-items/ui/park-item-detail-view.component.scss');
+const standaloneTemplate = read('src/app/features/public/standalone-attractions/pages/standalone-attraction-detail-page.component.html');
+const standaloneStyles = read('src/app/features/public/standalone-attractions/pages/standalone-attraction-detail-page.component.scss');
+const standalonePricingTemplate = read('src/app/features/public/standalone-attractions/pages/standalone-attraction-pricing-card.component.html');
+const standalonePricingStyles = read('src/app/features/public/standalone-attractions/pages/standalone-attraction-pricing-card.component.scss');
+const zonesTemplate = read('src/app/features/public/parks/ui/park-zones-view.component.html');
+const zonesStyles = read('src/app/features/public/parks/ui/park-zones-view.component.scss');
+const zoneTemplate = read('src/app/features/public/parks/ui/park-zone-view.component.html');
+const zoneStyles = read('src/app/features/public/parks/ui/park-zone-view.component.scss');
+const zonesSectionStyles = read('src/app/features/public/parks/ui/park-zones-section.component.scss');
 
 test('the park detail preserves every public action and conditional destination', () => {
   for (const contract of [
@@ -124,4 +133,59 @@ test('ParkItem inventory and detail use flat Playground surfaces', () => {
   assert.doesNotMatch(`${itemListStyles}\n${itemStyles}`, /(?:linear|radial|conic|repeating-linear)-gradient\(/);
   assert.doesNotMatch(itemStyles, /mask-image\s*:/);
   assert.doesNotMatch(itemStyles, /!important/);
+});
+
+test('the standalone attraction remains autonomous and preserves every practical section', () => {
+  for (const contract of [
+    "[routerLink]=\"['/', currentLanguage(), 'parks']\"",
+    '[routerLink]="historyLink(current)"',
+    '[href]="websiteUrl"',
+    '[innerHTML]="description() | safeRichHtml"',
+    '<app-standalone-attraction-pricing-card',
+    '<app-park-opening-hours-card',
+    '<app-park-weather-card',
+    '*ngIf="hasCoordinates()"',
+    '<app-leaflet-map',
+  ]) {
+    assert.ok(standaloneTemplate.includes(contract), `${contract} must remain in the standalone attraction detail`);
+  }
+
+  assert.doesNotMatch(standaloneTemplate, /park-item-detail|parentPark|parkParent/);
+  assert.ok(standalonePricingTemplate.includes('pricing.purchaseUrl'));
+  assert.ok(standalonePricingTemplate.includes('summary.purchaseUrl'));
+});
+
+test('zone list and detail preserve counts, deep links, filters, map and item cards', () => {
+  for (const contract of [
+    'currentPage.zoneCount',
+    'currentPage.totalItems',
+    'zone.description | safeRichHtml',
+    '[routerLink]="zone.zoneLink"',
+    '<app-public-share-panel',
+  ]) {
+    assert.ok(zonesTemplate.includes(contract), `${contract} must remain in the zone inventory`);
+  }
+
+  for (const contract of [
+    'currentPage.zoneDescription | safeRichHtml',
+    '[routerLink]="currentPage.allItemsLink"',
+    '[queryParams]="currentPage.allItemsQueryParams"',
+    '<app-leaflet-map',
+    '[fitBounds]="true"',
+    '<app-park-item-card-view',
+    '<app-public-share-panel',
+  ]) {
+    assert.ok(zoneTemplate.includes(contract), `${contract} must remain in the zone detail`);
+  }
+});
+
+test('standalone and zone surfaces use the flat Playground visual language', () => {
+  const styles = [standaloneStyles, standalonePricingStyles, zonesStyles, zoneStyles, zonesSectionStyles].join('\n');
+  assert.match(standaloneStyles, /--standalone-content-max-width:\s*var\(--content-max-width,\s*1160px\)/);
+  assert.match(standaloneStyles, /\.standalone-hero[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
+  assert.match(zonesStyles, /\.zones-hero[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
+  assert.match(zoneStyles, /\.zone-hero[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
+  assert.doesNotMatch(styles, /(?:linear|radial|conic|repeating-linear)-gradient\(/);
+  assert.doesNotMatch(styles, /mask-image\s*:/);
+  assert.doesNotMatch(styles, /!important/);
 });

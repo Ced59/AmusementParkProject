@@ -50,7 +50,9 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P06 — détail de parc | PASS | toutes les sections/actions conservées, 32 tests statiques cumulés |
 | P07 — inventaire des ParkItems | PASS | filtres, carte, états sans coordonnées et pagination conservés ; 35 tests statiques cumulés |
 | P08 — fiches ParkItem | PASS | navigation, sections techniques, médias et actions conservées ; 35 tests statiques cumulés |
-| P09–P16 — autres parcours publics | À FAIRE | toutes les familles de routes et données réelles |
+| P09 — attractions autonomes | PASS | parent autonome, historique, données pratiques et carte conservés ; 38 tests statiques cumulés |
+| P10 — zones | PASS | liste, détail, carte, facettes et liens ParkItem conservés ; 38 tests statiques cumulés |
+| P11–P16 — autres parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
@@ -129,6 +131,20 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - Les notes, commentaires, collections, watch, passeport, état live et partage gardent leurs conditions d’authentification et leurs événements.
 - La carte n’est rendue que lorsque les coordonnées existent ; aucune géolocalisation ni relation parente n’est inventée.
 - Preuve ciblée cumulée P07/P08 : 35 tests Node réussis. Les cas Le Fleury/Rhaegal/L’épée d’Odin/La Catapulte, sans média et non-attraction restent dus à la recette de données P20/P21.
+
+## Couverture P09 — attractions autonomes
+
+- La route autonome conserve son identité propre : aucun parent parc ou ParkItem artificiel n’a été introduit.
+- Description riche, caractéristiques, constructeur, état, conditions, image LCP, prix, horaires, météo, localisation, carte conditionnelle, historique et site officiel restent présents.
+- Les données tarifaires et liens d’achat proviennent toujours des modèles/API existants ; aucune donnée Pendolino ou valeur de maquette n’est intégrée.
+- Preuve ciblée : contrats statiques et surfaces plates inclus dans les 38 tests Node cumulés. Le contrôle d’une attraction publique visible et de Pendolino masqué reste dû à P20/P21.
+
+## Couverture P10 — zones
+
+- La liste conserve quantités réelles, descriptions localisées, highlights par type, lien de détail, retour au parc, état vide et partage.
+- Le détail conserve description, compteurs, lien filtré `?zone=`, carte Leaflet avec bounds, cartes ParkItem, état sans marqueur et partage.
+- Les parcs avec et sans zone restent distingués par les conditions et états existants ; aucune zone fictive n’est créée.
+- Les surfaces adoptent les filets, petits rayons et accents Playground sans modifier les modèles ni la facade.
 
 ## Invariants fonctionnels
 

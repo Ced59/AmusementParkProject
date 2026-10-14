@@ -19,7 +19,9 @@
 | P06 | PASS CIBLÉ — 32 tests statiques, données multi-parcs à P20/P21 |
 | P07 | PASS CIBLÉ — inventaire, filtres, carte et pagination protégés |
 | P08 | PASS CIBLÉ — fiche complète et actions protégées, 35 tests statiques cumulés |
-| P09–P21 | NON EXÉCUTÉS |
+| P09 | PASS CIBLÉ — autonomie, données pratiques et visibilité protégées |
+| P10 | PASS CIBLÉ — zones, carte et liens filtrés protégés, 38 tests statiques cumulés |
+| P11–P21 | NON EXÉCUTÉS |
 | Version `6.0.0` et historique 8 langues | NON PRÉPARÉS |
 | Diff limité au frontend visuel, tests et documentation | NON AUDITÉ |
 | PR unique prête pour revue | NON OUVERTE |

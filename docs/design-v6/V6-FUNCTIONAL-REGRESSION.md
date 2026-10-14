@@ -12,7 +12,8 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 | Recherche | tous types, accents, 0/1/n résultats, suggestions, 5/10/20, pagination | CONTRATS HOME PASS — exécution complète à P21 |
 | Parcs | filtres, carte synchronisée, page 2, Le Fleury + profils distincts | CONTRATS LISTE + FICHE PASS — données réelles à P20/P21 |
 | ParkItems | catégories, sans média/géoloc, précédente/suivante, 38 lieux du Fleury | CONTRATS LISTE + FICHE PASS — données réelles à P20/P21 |
-| Standalone | visibilité, aucun faux parent, historique, prix/météo | À TESTER |
+| Standalone | visibilité, aucun faux parent, historique, prix/météo | CONTRATS PASS — visibilité/données réelles à P20/P21 |
+| Zones | parc avec/sans zones, carte, `?zone=`, liens ParkItem | CONTRATS LISTE + FICHE PASS — données réelles à P20/P21 |
 | Médias | 0/1/8/9/100+, pagination/load more, lightbox, alt/crédits, erreur CDN | À TESTER |
 | Historique | timeline, article, snapshots, comparaison, deep links | À TESTER |
 | Pratique | horaires, météo, prix, live, données absentes/anciennes | À TESTER |
@@ -55,4 +56,8 @@ Le test `playground-v6-home.test.mjs` protège les trois compteurs API, les deux
 ## Contrôles P07–P08
 
 `playground-v6-details.test.mjs` protège désormais l’inventaire ParkItem (filtres, carte de zone, éléments sans coordonnées, cartes, pagination serveur 6/12/24/48 et partage) et la fiche complète (précédent/suivant, facettes, rich text, spécifications, accès, Leaflet conditionnel, contenus liés, médias, historique et actions sociales). Les facades, routes et modèles restent inchangés. La validation avec les 38 lieux visibles du Fleury, les quatre exemples nommés et les variantes sans média/non-attraction est réservée à la recette de données P20/P21.
+
+## Contrôles P09–P10
+
+Le même test protège l’autonomie de la fiche standalone, ses données pratiques et son CTA officiel, puis la liste et le détail de zone avec quantités, descriptions, deep links, paramètres de filtre, Leaflet et cartes ParkItem. Aucun modèle, endpoint, état de visibilité ni relation métier n’est modifié. Les cas public/masqué et parc avec/sans zone seront exercés sur données de recette à P20/P21.
 

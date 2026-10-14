@@ -3,7 +3,7 @@
 }
 
 .standalone-attraction-page {
-  --standalone-content-max-width: var(--content-wide-max-width, 1480px);
+  --standalone-content-max-width: var(--content-max-width, 1160px);
 
   display: flex;
   flex-direction: column;
@@ -16,6 +16,7 @@
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  border-top: 4px solid var(--app-primary);
   border-bottom: 1px solid var(--app-border);
   background: var(--app-surface-2);
 }
@@ -28,25 +29,18 @@
 }
 
 .standalone-hero__backdrop {
-  background:
-    radial-gradient(ellipse 78% 62% at 16% 32%, color-mix(in srgb, var(--app-primary) 16%, transparent), transparent 62%),
-    radial-gradient(ellipse 52% 52% at 82% 80%, color-mix(in srgb, var(--app-accent-cyan) 9%, transparent), transparent 58%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface-2) 94%, transparent), var(--app-bg));
+  background: var(--app-surface-2);
 }
 
 .standalone-hero__pattern {
-  opacity: 0.04;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.55) 39px, rgba(255, 255, 255, 0.55) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.55) 39px, rgba(255, 255, 255, 0.55) 40px);
+  display: none;
 }
 
 .standalone-hero__media {
   position: absolute;
   inset: 0 0 0 auto;
   width: min(48rem, 52%);
-  opacity: 0.3;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 34%, #000 100%);
+  opacity: 0.24;
   pointer-events: none;
 }
 
@@ -129,9 +123,9 @@
   gap: 0.85rem;
   padding: clamp(1.25rem, 3vw, 1.7rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), var(--app-surface-2));
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
+  box-shadow: none;
 }
 
 .standalone-kicker {
@@ -273,8 +267,7 @@
 
   .standalone-hero__media {
     width: 100%;
-    opacity: 0.16;
-    mask-image: linear-gradient(180deg, #000 0%, transparent 86%);
+    opacity: 0.12;
   }
 
   .standalone-hero__content,

@@ -13,6 +13,7 @@
 .zone-hero {
   grid-template-columns: minmax(0, 1fr);
   align-items: end;
+  border-top: 4px solid var(--app-primary);
 }
 
 .zone-hero__content,
@@ -80,7 +81,7 @@
 :host ::ng-deep .zone-map .leaflet-map-container {
   height: clamp(22rem, 38vw, 31rem);
   border: 0;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   box-shadow: none;
 }
 

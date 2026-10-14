@@ -7,6 +7,7 @@
   gap: 1rem;
   align-items: end;
   justify-content: space-between;
+  border-top: 4px solid var(--app-primary);
 }
 
 .zones-hero h1 {
@@ -41,6 +42,7 @@
 .zone-card {
   display: grid;
   gap: 0.9rem;
+  border-top: 3px solid var(--app-accent-lime);
 }
 
 .zone-card__header {
@@ -77,7 +79,7 @@
   min-height: 1.9rem;
   padding: 0.25rem 0.68rem;
   border: 1px solid color-mix(in srgb, var(--app-primary) 20%, var(--app-border));
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   color: var(--app-text-muted);
   background: color-mix(in srgb, var(--app-primary) 8%, transparent);
   font-size: 0.73rem;
