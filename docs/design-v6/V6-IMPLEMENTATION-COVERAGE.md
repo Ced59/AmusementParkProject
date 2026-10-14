@@ -47,7 +47,8 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P03 — shells et navigation | PASS | wordmark/slogan protégés, 17 tests statiques, contrats de navigation inchangés |
 | P04 — accueil | PASS | structure réelle complète, 24 tests statiques, données et recherche dynamiques |
 | P05 — catalogue, exploration, recherche | PASS | filtres, carte, URL et pagination conservés ; 28 tests statiques cumulés |
-| P06–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
+| P06 — détail de parc | PASS | toutes les sections/actions conservées, 32 tests statiques cumulés |
+| P07–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
@@ -101,6 +102,15 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - La pagination serveur conserve ses liens `pageHref`, son trail, les tailles 6/9/18/36, le retour navigateur et les métadonnées SEO existantes.
 - Les tests Angular existants couvrent directement page 2, précédent/suivant, changements de filtre/langue, tailles personnalisées, historique et erreurs HTTP. Ils ne sont pas réécrits par la refonte.
 - Preuve ciblée cumulée : 28 tests Node réussis, surfaces catalogue sans gradient ni backdrop et contrats de carte/filtres/pagination présents.
+
+## Couverture P06 — détail de parc
+
+- Le hero conserve image LCP, logo, badges, titre, note, commentaires, collections, watch, visite passeport et tous les liens conditionnels (inventaire, zones, médias, histoire, carte, site officiel).
+- Le cycle de vie, le live, les statistiques, la photo secondaire lazy, la description riche, le résumé de contenu, les données pratiques et références sont intacts.
+- La colonne pratique conserve géographie, tarification, horaires et météo ; le partage et les parcs proches restent après le contenu principal.
+- Les absences de logo, photo, description, géolocalisation ou données pratiques gardent leurs conditions et placeholders existants.
+- Une seule image hero reste eager/prioritaire ; les médias secondaires restent lazy et les tailles responsive existantes sont inchangées.
+- Preuve ciblée cumulée : 32 tests Node réussis et test de composant existant conservé pour le lien galerie, son nom accessible et ses tailles d’image.
 
 ## Invariants fonctionnels
 

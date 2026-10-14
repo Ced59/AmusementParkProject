@@ -10,7 +10,7 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 |---|---|---|
 | Navigation | 8 langues, anonyme/auth/admin, back/forward, deep links, 404 | CONTRATS PASS — parcours complets à P20/P21 |
 | Recherche | tous types, accents, 0/1/n résultats, suggestions, 5/10/20, pagination | CONTRATS HOME PASS — exécution complète à P21 |
-| Parcs | filtres, carte synchronisée, page 2, Le Fleury + profils distincts | CATALOGUE PASS — fiches P06 |
+| Parcs | filtres, carte synchronisée, page 2, Le Fleury + profils distincts | CONTRATS LISTE + FICHE PASS — données réelles à P20/P21 |
 | ParkItems | catégories, sans média/géoloc, précédente/suivante, 38 lieux du Fleury | À TESTER |
 | Standalone | visibilité, aucun faux parent, historique, prix/météo | À TESTER |
 | Médias | 0/1/8/9/100+, pagination/load more, lightbox, alt/crédits, erreur CDN | À TESTER |
@@ -47,4 +47,8 @@ Le test `playground-v6-home.test.mjs` protège les trois compteurs API, les deux
 ## Contrôles P05
 
 `playground-v6-catalog.test.mjs` vérifie les cinq dimensions de filtrage/recherche, les sélections carte/liste, les cartes parc et résultats mixtes, Leaflet et la pagination serveur. Les suites existantes `park-list-page.component.spec.ts` et `park-list-page.navigation.spec.ts` conservent les preuves page 2, URL, SEO, back/forward, filtres, changement de langue, 404/503 et tailles de page ; leur exécution intégrale est prévue à P21.
+
+## Contrôles P06
+
+`playground-v6-details.test.mjs` protège toutes les actions et sections de `park-detail-view`, les conditions de données manquantes et la discipline de chargement des images. Aucune facade, mapper, route, donnée ou appel API n’est modifié. La recette Le Fleury + deux profils réels, dans les deux thèmes, demeure un contrôle visuel/données de P20/P21.
 
