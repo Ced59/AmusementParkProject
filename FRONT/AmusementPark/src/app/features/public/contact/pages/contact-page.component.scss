@@ -28,12 +28,8 @@
   position: relative;
   isolation: isolate;
   border-color: color-mix(in srgb, var(--c-rose) 34%, var(--app-border-strong));
-  background:
-    radial-gradient(ellipse 42% 120% at 0% 0%, color-mix(in srgb, var(--c-rose) 13%, transparent), transparent 66%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 94%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
-  box-shadow:
-    var(--shadow-card),
-    inset 0 1px 0 color-mix(in srgb, #ffffff 8%, transparent);
+  border-top: 4px solid var(--c-rose);
+  background: var(--app-surface);
 }
 
 .contact-form::before {
@@ -42,7 +38,7 @@
   inset: 0 0 auto;
   height: 4px;
   pointer-events: none;
-  background: linear-gradient(90deg, var(--c-rose), var(--c-orange), var(--c-gold));
+  background: var(--c-rose);
 }
 
 .contact-hero h1,

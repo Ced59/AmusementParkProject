@@ -9,6 +9,7 @@
 .version-history-hero {
   display: grid;
   gap: 1rem;
+  border-top: 4px solid var(--c-rose);
 }
 
 .version-history-hero h1 {
@@ -47,7 +48,7 @@
   left: 0.35rem;
   width: 2px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--c-rose), var(--c-sky), var(--c-lime));
+  background: var(--app-border-strong);
 }
 
 .version-entry {
@@ -78,7 +79,7 @@
   width: calc(var(--version-entry-indent-connector, var(--version-indent-minor)) - 0.45rem);
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, var(--version-level-color, var(--c-lime)));
+  background: var(--version-level-color, var(--c-lime));
 }
 
 .version-entry--minor {

@@ -75,3 +75,7 @@ Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les
 
 `playground-v6-social.test.mjs` protège les filtres et recherches de classement, la méthodologie versionnée, les demi-notes, les commentaires localisés et modérables, les collections, les abonnements watch, les alertes et notifications paginées, ainsi que le partage natif/copie/réseaux/QR et son signalement. Les tests Angular existants restent la preuve des appels de facades et des permissions ; ils seront exécutés avec la suite P21.
 
+## Contrôles P16
+
+`playground-v6-public-complete.test.mjs` vérifie les routes secondaires publiques, le questionnaire/résultat/comparateur Park Fit, les références métier, les passeports partagés et brouillons anonymes, puis les pages contact, confidentialité, sitemap, technique, invitation et erreur. Les contrats de formulaire, filtres, sources, deep links, consentement, import et partage restent explicitement présents.
+

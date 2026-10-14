@@ -27,9 +27,8 @@
 
 .technical-detail__hero {
   border-bottom: 1px solid var(--app-border);
-  background:
-    linear-gradient(145deg, color-mix(in srgb, var(--app-accent-cyan) 13%, transparent), transparent 48%),
-    linear-gradient(180deg, var(--app-surface-2), var(--app-bg));
+  border-top: 4px solid var(--app-accent-cyan);
+  background: var(--app-surface);
 }
 
 .technical-detail__hero-inner,
@@ -103,8 +102,8 @@
   gap: 1rem;
   padding: clamp(1.15rem, 3vw, 1.8rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 94%, transparent), var(--app-surface-2));
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
 }
 
 .technical-block h2 {
@@ -167,10 +166,8 @@
   padding: 1.2rem;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 30%, var(--app-border));
-  border-radius: var(--radius-lg);
-  background:
-    repeating-linear-gradient(90deg, color-mix(in srgb, var(--app-border) 70%, transparent) 0 1px, transparent 1px 36px),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-bg) 72%, transparent), var(--app-surface));
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
 }
 
 .technical-diagram__rail {
@@ -181,7 +178,7 @@
   height: 0.35rem;
   transform: translateY(-50%);
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--app-accent-cyan), var(--app-accent-lime));
+  background: var(--app-accent-cyan);
 }
 
 .technical-diagram__node {
@@ -192,7 +189,7 @@
   place-items: center;
   padding: 0.9rem;
   border: 1px solid var(--app-border-strong);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--app-surface) 92%, transparent);
   color: var(--app-heading);
   font-weight: 900;
@@ -219,19 +216,14 @@
   aspect-ratio: 1;
   border: 0.4rem solid var(--app-accent-lime);
   border-radius: 50%;
-  background:
-    radial-gradient(circle, var(--app-surface) 0 32%, transparent 34%),
-    conic-gradient(from 45deg, color-mix(in srgb, var(--app-accent-lime) 42%, transparent) 0 25%, transparent 0 50%, color-mix(in srgb, var(--app-accent-lime) 42%, transparent) 0 75%, transparent 0);
+  background: var(--app-surface);
 }
 
 .technical-diagram[data-diagram-key='chain-lift'] .technical-diagram__rail {
   height: 0.55rem;
   transform: translateY(-50%) rotate(-9deg);
   border: 1px solid color-mix(in srgb, var(--app-accent-lime) 48%, var(--app-bg));
-  background:
-    repeating-linear-gradient(90deg, var(--app-accent-lime) 0 0.65rem, var(--app-accent-cyan) 0.65rem 1.05rem, color-mix(in srgb, var(--app-bg) 35%, transparent) 1.05rem 1.3rem),
-    linear-gradient(90deg, var(--app-accent-cyan), var(--app-accent-lime));
-  box-shadow: 0 0 1.3rem color-mix(in srgb, var(--app-accent-cyan) 22%, transparent);
+  background: var(--app-accent-lime);
 }
 
 .technical-table-wrap {
@@ -383,8 +375,6 @@
     width: 0.55rem;
     height: auto;
     transform: translateX(-50%);
-    background:
-      repeating-linear-gradient(180deg, var(--app-accent-lime) 0 0.65rem, var(--app-accent-cyan) 0.65rem 1.05rem, color-mix(in srgb, var(--app-bg) 35%, transparent) 1.05rem 1.3rem),
-      linear-gradient(180deg, var(--app-accent-cyan), var(--app-accent-lime));
+    background: var(--app-accent-lime);
   }
 }

@@ -8,10 +8,10 @@
 .not-found-page__content {
   width: min(760px, 100%);
   border: 1px solid rgba(255, 210, 140, 0.16);
-  border-radius: 2rem;
+  border-radius: var(--radius-md);
   padding: clamp(1.5rem, 5vw, 3rem);
-  background: linear-gradient(145deg, rgba(26, 20, 15, 0.94), rgba(33, 26, 19, 0.88));
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.25);
+  border-top: 4px solid var(--c-orange);
+  background: var(--app-surface);
   text-align: center;
 }
 

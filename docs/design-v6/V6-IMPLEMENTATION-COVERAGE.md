@@ -57,7 +57,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P13 — histoire | PASS | timelines, articles, snapshots, comparaison et lignées protégés ; 51 tests cumulés |
 | P14 — données pratiques | PASS | horaires, météo, prix, proximité et live protégés ; 56 tests cumulés |
 | P15 — notes, classements et actions sociales | PASS | classements, commentaires, collections, watch et partage protégés ; 61 tests cumulés |
-| P16 — autres parcours publics | À FAIRE | toutes les familles de routes et données réelles |
+| P16 — autres parcours publics | PASS | Park Fit, passeports partagés/locaux, références et pages secondaires protégés ; 67 tests cumulés |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |
 | P18 — administration | À FAIRE | 58 écrans + workflows denses couverts |
 | P19 — états rares | À FAIRE | modales, toasts, consentement, erreurs, Quill |
@@ -187,6 +187,15 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 - Les collections gardent filtres, routes typées, suppression et états. Watch, alertes live et notifications gardent abonnements, pause, seuils, filtres, sources, pagination et signalement.
 - Le partage conserve Web Share, copie, réseaux, QR avec ses états et signalement de modération. Les surfaces deviennent plates, à petits rayons et accents par filet.
 - Preuve ciblée cumulée : 61 tests Node réussis ; aucune facade, route, API, permission ou règle de classement n’est modifiée.
+
+## Couverture P16 — autres parcours publics
+
+- Park Fit conserve le questionnaire conditionnel (date, localisation, 1–8 participants, âge, taille, accompagnement et préférences), les profils enregistrés, résultats sourcés et comparaison 2–4 parcs.
+- Les passeports partagés conservent visites, récapitulatifs annuels, profil, classements, catégories de comparaison, limites, CTA et signalement. Les brouillons locaux gardent recherche, trajets, export, suppression et import comparé/consenti.
+- Le catalogue constructeur et les fiches exploitant/fondateur/constructeur gardent recherche, rich text, faits, sites officiels, parcs et attractions liés.
+- À propos, contact, confidentialité/cookies, versions, sitemap paginé, pages techniques riches, invitation trip et 404 gardent toutes leurs routes et actions.
+- Les pages secondaires utilisent désormais largeur éditoriale, panneaux plats, petits rayons et filets d’accent, sans gradient décoratif ni nouvelle dépendance.
+- Preuve ciblée cumulée : 67 tests Node réussis ; les 148 routes inventoriées restent présentes et les tests SEO/SSR complets restent réservés à P21.
 
 ## Invariants fonctionnels
 

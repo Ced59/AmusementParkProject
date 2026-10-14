@@ -13,6 +13,7 @@
   gap: clamp(1.5rem, 4vw, 3.6rem);
   align-items: center;
   overflow: hidden;
+  border-top: 4px solid var(--c-orange);
 }
 
 .about-hero::before {
@@ -48,7 +49,7 @@
   font-family: var(--font-display);
   font-size: clamp(3.7rem, 8vw, 7.2rem);
   font-weight: 400;
-  line-height: 0.94;
+  line-height: 1;
   letter-spacing: 0.025em;
   text-transform: uppercase;
 }
@@ -83,12 +84,8 @@
   position: absolute;
   inset: 10% 4% 8% 7%;
   z-index: -2;
-  border-radius: 48% 52% 58% 42% / 42% 46% 54% 58%;
-  background:
-    radial-gradient(circle at 30% 24%, color-mix(in srgb, var(--c-orange) 42%, transparent), transparent 36%),
-    radial-gradient(circle at 72% 70%, color-mix(in srgb, var(--c-sky) 35%, transparent), transparent 42%),
-    color-mix(in srgb, var(--bg-card) 84%, transparent);
-  transform: rotate(-7deg);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--c-orange) 10%, var(--bg-card));
 }
 
 .about-ride__track {
@@ -122,11 +119,9 @@
   width: min(22rem, 76vw);
   padding: 1.5rem;
   border: 1px solid color-mix(in srgb, var(--c-orange) 48%, var(--border));
-  border-radius: var(--radius-xl);
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--c-orange) 10%, var(--bg-card)), color-mix(in srgb, var(--c-sky) 8%, var(--bg-card-2)));
-  box-shadow: var(--shadow-lift);
-  transform: translate(-50%, -50%) rotate(-4deg);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  transform: translate(-50%, -50%);
 }
 
 .about-ticket::after {
@@ -134,7 +129,7 @@
   position: absolute;
   inset: 0.48rem;
   border: 1px dashed color-mix(in srgb, var(--text-muted) 30%, transparent);
-  border-radius: calc(var(--radius-xl) - 0.4rem);
+  border-radius: var(--radius-sm);
   pointer-events: none;
 }
 
@@ -356,7 +351,7 @@
   width: 16rem;
   height: 16rem;
   border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--c-sky) 10%, transparent), transparent 68%);
+  background: color-mix(in srgb, var(--c-sky) 8%, transparent);
   pointer-events: none;
 }
 
