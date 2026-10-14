@@ -12,7 +12,8 @@
 | Baseline visuelle V5 initiale | PASS |
 | P00 complet | PASS |
 | P01 | PASS |
-| P02–P21 | NON EXÉCUTÉS |
+| P02 | PASS CIBLÉ — suite a11y complète à P21 |
+| P03–P21 | NON EXÉCUTÉS |
 | Version `6.0.0` et historique 8 langues | NON PRÉPARÉS |
 | Diff limité au frontend visuel, tests et documentation | NON AUDITÉ |
 | PR unique prête pour revue | NON OUVERTE |

@@ -83,3 +83,14 @@ La structure et les styles de `.app-brand-wordmark` sont conservés pour le nom 
 - Le test de texture a été converti en garde anti-texture V6.
 - Contrôle ciblé exécuté : 4 tests réussis, 0 échec.
 
+## Preuves P02
+
+- Boutons et champs partagés : géométrie carrée, focus commun, cibles d’au moins 40–44 px selon la densité.
+- Cards et surfaces : aplats, filets, accents supérieurs ou latéraux, sans translation décorative au hover.
+- États : loading, empty, error et skeleton conservent leurs sélecteurs et leur contenu.
+- Primitives denses : tables, pagination, tabs, dialogs, toasts et éditeur riche restent couvertes dans `_ui-primitives.scss`.
+- Shells cartographiques : vraie carte inchangée, réserve de hauteur conservée, fond `--app-map` pour les placeholders.
+- Tests ciblés P01/P02 : 7 réussis, 0 échec.
+- Vérification architecture : 160 facades conformes aux ports.
+- Le contrôle a11y complet requiert `@angular/compiler`, absent tant que `npm ci` n’a pas été exécuté ; il est bloquant à P21/CI et non ignoré.
+

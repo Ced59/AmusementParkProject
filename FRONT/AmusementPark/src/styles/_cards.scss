@@ -3,8 +3,8 @@
 .public-shell-card,
 .public-stat-card {
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
   box-shadow: var(--shadow-card);
 }
 
@@ -12,7 +12,6 @@
 .public-feature-card[href],
 a.public-feature-card {
   transition:
-    transform var(--transition),
     border-color var(--transition),
     box-shadow var(--transition),
     background-color var(--transition);
@@ -21,9 +20,8 @@ a.public-feature-card {
 .app-card--interactive:hover,
 .public-feature-card[href]:hover,
 a.public-feature-card:hover {
-  transform: translateY(-4px);
   border-color: var(--app-border-stronger);
-  box-shadow: var(--shadow-lift);
+  box-shadow: var(--shadow-card);
 }
 
 .public-stat-grid,
@@ -39,7 +37,8 @@ a.public-feature-card:hover {
 
 .public-stat-card--accent,
 .app-stat-card--accent {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--c-orange) 10%, var(--app-surface)), color-mix(in srgb, var(--c-sky) 8%, var(--app-surface-2)));
+  border-top: 3px solid var(--c-orange);
+  background: var(--app-surface);
 }
 
 .public-stat-card__label,
@@ -114,23 +113,28 @@ a.public-feature-card:hover {
 
 
 .app-stat-card--lime {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--c-lime) 9%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-top: 3px solid var(--c-lime);
+  background: var(--app-surface);
 }
 
 .app-stat-card--sky {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--c-sky) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-top: 3px solid var(--c-sky);
+  background: var(--app-surface);
 }
 
 .app-stat-card--rose {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--c-rose) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-top: 3px solid var(--c-rose);
+  background: var(--app-surface);
 }
 
 .app-stat-card--gold {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--c-gold) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-top: 3px solid var(--c-gold);
+  background: var(--app-surface);
 }
 
 .app-stat-card--purple {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--c-purple) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-top: 3px solid var(--c-purple);
+  background: var(--app-surface);
 }
 
 /* M05 shared card components. Keep card structure here so feature components stay layout-only. */
@@ -143,11 +147,10 @@ a.public-feature-card:hover {
   overflow: hidden;
   height: 100%;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
   box-shadow: var(--shadow-card);
   transition:
-    transform var(--transition),
     border-color var(--transition),
     box-shadow var(--transition),
     background-color var(--transition);
@@ -157,9 +160,8 @@ a.public-feature-card:hover {
 .ui-item-card:hover,
 .ui-result-card:hover,
 .ui-info-card:hover {
-  transform: translateY(-3px);
   border-color: var(--app-border-stronger);
-  box-shadow: var(--shadow-lift);
+  box-shadow: var(--shadow-card);
 }
 
 .ui-park-card {
@@ -172,25 +174,15 @@ a.public-feature-card:hover {
   min-height: 12rem;
   place-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 16% 20%, rgba(255, 90, 31, 0.14), transparent 34%),
-    radial-gradient(circle at 84% 14%, rgba(196, 255, 39, 0.10), transparent 34%),
-    linear-gradient(135deg, color-mix(in srgb, var(--app-surface-2) 92%, transparent), color-mix(in srgb, var(--app-surface) 100%, transparent));
+  background: var(--app-map);
 }
 
 .ui-park-card__visual::after {
-  content: "";
-  position: absolute;
-  inset: auto -10% -35% -10%;
-  height: 60%;
-  background: radial-gradient(ellipse at center, rgba(255, 90, 31, 0.18), transparent 64%);
-  pointer-events: none;
+  content: none;
 }
 
 .ui-park-card__visual--placeholder {
-  background:
-    radial-gradient(circle at 50% 35%, rgba(255, 90, 31, 0.16), transparent 42%),
-    linear-gradient(135deg, color-mix(in srgb, var(--app-surface-2) 88%, transparent), color-mix(in srgb, var(--app-surface) 100%, transparent));
+  background: var(--app-map);
 }
 
 .ui-park-card__badges,
@@ -217,7 +209,7 @@ a.public-feature-card:hover {
   width: min(8rem, 48%);
   height: 7rem;
   object-fit: contain;
-  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.22));
+  filter: none;
 }
 
 .ui-park-card__body,
@@ -280,8 +272,8 @@ a.public-feature-card:hover {
   gap: 0.15rem;
   padding: 0.75rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 210, 140, 0.035);
+  border-radius: var(--radius-sm);
+  background: var(--app-surface-2);
 }
 
 .ui-park-card__label,
@@ -303,7 +295,7 @@ a.public-feature-card:hover {
 
 .ui-park-card__detail--distance {
   border-color: var(--app-border);
-  background: rgba(255, 210, 140, 0.035);
+  background: var(--app-surface-2);
 }
 
 .ui-park-card__detail--distance strong {
@@ -356,10 +348,7 @@ a.public-feature-card:hover {
   display: grid;
   gap: 0.85rem;
   padding: 1rem;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255, 90, 31, 0.14), transparent 30%),
-    radial-gradient(circle at 80% 35%, rgba(155, 93, 229, 0.12), transparent 32%),
-    linear-gradient(135deg, color-mix(in srgb, var(--app-surface-2) 92%, transparent), color-mix(in srgb, var(--app-surface) 100%, transparent));
+  background: var(--app-surface-2);
 }
 
 .ui-item-card__icon {
@@ -367,9 +356,9 @@ a.public-feature-card:hover {
   width: 3.2rem;
   height: 3.2rem;
   place-items: center;
-  border-radius: 1.15rem;
+  border-radius: var(--radius-sm);
   background: var(--app-primary);
-  color: #000000;
+  color: var(--app-on-accent);
   box-shadow: var(--shadow-soft-orange);
   font-size: 1.35rem;
 }
@@ -388,7 +377,7 @@ a.public-feature-card:hover {
   border: 1px solid var(--app-border);
   border-radius: var(--radius-pill);
   color: var(--app-text-muted);
-  background: rgba(255, 210, 140, 0.04);
+  background: var(--app-surface-2);
   font-size: 0.78rem;
   font-weight: 800;
 }
@@ -408,33 +397,33 @@ a.public-feature-card:hover {
   place-items: center;
   border-radius: var(--radius-md);
   color: var(--app-primary);
-  background: rgba(255, 90, 31, 0.10);
+  background: color-mix(in srgb, var(--c-orange) 12%, var(--app-surface));
   font-size: 1.25rem;
 }
 
 .ui-result-card[data-tone="sky"] .ui-result-card__icon {
   color: var(--c-sky);
-  background: rgba(56, 197, 245, 0.12);
+  background: color-mix(in srgb, var(--c-sky) 12%, var(--app-surface));
 }
 
 .ui-result-card[data-tone="gold"] .ui-result-card__icon {
   color: var(--c-gold);
-  background: rgba(255, 182, 39, 0.12);
+  background: color-mix(in srgb, var(--c-gold) 12%, var(--app-surface));
 }
 
 .ui-result-card[data-tone="purple"] .ui-result-card__icon {
   color: var(--c-purple);
-  background: rgba(155, 93, 229, 0.12);
+  background: color-mix(in srgb, var(--c-purple) 12%, var(--app-surface));
 }
 
 .ui-result-card[data-tone="lime"] .ui-result-card__icon {
   color: var(--c-lime);
-  background: rgba(196, 255, 39, 0.10);
+  background: color-mix(in srgb, var(--c-lime) 12%, var(--app-surface));
 }
 
 .ui-result-card[data-tone="rose"] .ui-result-card__icon {
   color: var(--c-rose);
-  background: rgba(255, 77, 139, 0.12);
+  background: color-mix(in srgb, var(--c-rose) 12%, var(--app-surface));
 }
 
 .ui-result-card__main {
@@ -496,7 +485,7 @@ a.public-feature-card:hover {
 .ui-result-card__description :where(code) {
   padding: 0.05rem 0.3rem;
   border: 1px solid rgba(196, 255, 39, 0.14);
-  border-radius: 0.45rem;
+  border-radius: var(--radius-xs);
   color: var(--c-lime);
   background: rgba(196, 255, 39, 0.07);
   font-size: 0.9em;
@@ -544,7 +533,7 @@ a.public-feature-card:hover {
 
 .ui-search-result-card {
   --search-result-accent: var(--c-orange);
-  --search-result-soft: rgba(255, 90, 31, 0.10);
+  --search-result-soft: color-mix(in srgb, var(--c-orange) 12%, var(--app-surface));
 
   position: relative;
   display: grid;
@@ -553,11 +542,11 @@ a.public-feature-card:hover {
   align-items: start;
   padding: 1.05rem 1.15rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   color: var(--text);
-  background: linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
+  background: var(--app-surface);
   box-shadow: var(--shadow-card);
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .ui-search-result-card::before {
@@ -565,40 +554,39 @@ a.public-feature-card:hover {
   position: absolute;
   inset: 0 auto 0 0;
   width: 3px;
-  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
   background: var(--search-result-accent);
   opacity: 0.9;
 }
 
 .ui-search-result-card:hover {
-  transform: translateX(3px);
   border-color: color-mix(in srgb, var(--search-result-accent) 36%, var(--border-3));
-  box-shadow: var(--shadow-lift);
+  box-shadow: var(--shadow-card);
 }
 
 .ui-search-result-card--sky {
   --search-result-accent: var(--c-sky);
-  --search-result-soft: rgba(56, 197, 245, 0.12);
+  --search-result-soft: color-mix(in srgb, var(--c-sky) 12%, var(--app-surface));
 }
 
 .ui-search-result-card--gold {
   --search-result-accent: var(--c-gold);
-  --search-result-soft: rgba(255, 182, 39, 0.12);
+  --search-result-soft: color-mix(in srgb, var(--c-gold) 12%, var(--app-surface));
 }
 
 .ui-search-result-card--purple {
   --search-result-accent: var(--c-purple);
-  --search-result-soft: rgba(155, 93, 229, 0.12);
+  --search-result-soft: color-mix(in srgb, var(--c-purple) 12%, var(--app-surface));
 }
 
 .ui-search-result-card--lime {
   --search-result-accent: var(--c-lime);
-  --search-result-soft: rgba(196, 255, 39, 0.10);
+  --search-result-soft: color-mix(in srgb, var(--c-lime) 12%, var(--app-surface));
 }
 
 .ui-search-result-card--rose {
   --search-result-accent: var(--c-rose);
-  --search-result-soft: rgba(255, 77, 139, 0.12);
+  --search-result-soft: color-mix(in srgb, var(--c-rose) 12%, var(--app-surface));
 }
 
 .ui-search-result-card__visual {
@@ -609,9 +597,7 @@ a.public-feature-card:hover {
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--search-result-accent) 18%, transparent);
   border-radius: var(--radius-md);
-  background:
-    radial-gradient(circle at 25% 20%, var(--search-result-soft), transparent 58%),
-    rgba(255, 210, 140, 0.035);
+  background: var(--app-surface-2);
 }
 
 .ui-search-result-card__icon,
@@ -630,7 +616,7 @@ a.public-feature-card:hover {
   height: 100%;
   object-fit: contain;
   padding: 0.36rem;
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--app-field);
 }
 
 .ui-search-result-card__content {
@@ -767,8 +753,8 @@ a.public-feature-card:hover {
 .ui-featured-park-card {
   --featured-park-accent: var(--c-orange);
   --featured-park-accent-2: var(--c-gold);
-  --featured-park-soft: rgba(255, 90, 31, 0.14);
-  --featured-park-logo-bg: rgba(255, 90, 31, 0.13);
+  --featured-park-soft: color-mix(in srgb, var(--c-orange) 14%, var(--app-surface));
+  --featured-park-logo-bg: color-mix(in srgb, var(--c-orange) 14%, var(--app-surface));
   --featured-park-button-color: var(--c-orange);
 
   position: relative;
@@ -778,17 +764,16 @@ a.public-feature-card:hover {
   overflow: hidden;
   flex-direction: column;
   border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   color: var(--text);
-  background: linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
+  background: var(--app-surface);
   box-shadow: var(--shadow-card);
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .ui-featured-park-card:hover {
-  transform: translateY(-5px) scale(1.01);
   border-color: color-mix(in srgb, var(--featured-park-accent) 32%, var(--border-3));
-  box-shadow: var(--shadow-lift);
+  box-shadow: var(--shadow-card);
 }
 
 .ui-featured-park-card::before {
@@ -796,23 +781,23 @@ a.public-feature-card:hover {
   position: absolute;
   inset: 0 0 auto;
   z-index: 2;
-  height: 4px;
-  background: linear-gradient(90deg, var(--featured-park-accent), var(--featured-park-accent-2));
+  height: 3px;
+  background: var(--featured-park-accent);
 }
 
 .ui-featured-park-card[data-tone="sky"] {
   --featured-park-accent: var(--c-sky);
   --featured-park-accent-2: var(--c-lime);
-  --featured-park-soft: rgba(56, 197, 245, 0.14);
-  --featured-park-logo-bg: rgba(56, 197, 245, 0.15);
+  --featured-park-soft: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
+  --featured-park-logo-bg: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
   --featured-park-button-color: var(--c-sky);
 }
 
 .ui-featured-park-card[data-tone="purple"] {
   --featured-park-accent: var(--c-purple);
   --featured-park-accent-2: var(--c-rose);
-  --featured-park-soft: rgba(155, 93, 229, 0.14);
-  --featured-park-logo-bg: rgba(155, 93, 229, 0.15);
+  --featured-park-soft: color-mix(in srgb, var(--c-purple) 14%, var(--app-surface));
+  --featured-park-logo-bg: color-mix(in srgb, var(--c-purple) 14%, var(--app-surface));
   --featured-park-button-color: var(--c-purple);
 }
 
@@ -822,23 +807,13 @@ a.public-feature-card:hover {
   min-height: 11.25rem;
   place-items: center;
   overflow: hidden;
-  background:
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--bg-card-2) 82%, var(--featured-park-accent) 18%),
-      color-mix(in srgb, var(--bg-card-2) 92%, var(--featured-park-accent-2) 8%));
+  background: color-mix(in srgb, var(--featured-park-accent) 12%, var(--app-map));
 }
 
 .ui-featured-park-card__visual-bg {
   position: absolute;
   inset: 0;
-  opacity: 0.05;
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 18px,
-    rgba(255, 255, 255, 0.45) 18px,
-    rgba(255, 255, 255, 0.45) 19px
-  );
+  display: none;
 }
 
 body.light-mode .ui-featured-park-card__visual-bg {
@@ -865,11 +840,11 @@ body.light-mode .ui-featured-park-card__visual-bg {
   height: 5rem;
   place-items: center;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   color: var(--featured-park-accent);
   background: var(--featured-park-logo-bg);
   font-size: 2rem;
-  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+  box-shadow: none;
 }
 
 .ui-featured-park-card__logo {
@@ -954,9 +929,9 @@ body.light-mode .ui-featured-park-card__visual-bg {
 .ui-featured-park-card__cta.app-button,
 .ui-featured-park-card__cta.btn {
   border-color: transparent;
-  color: #000000;
+  color: var(--app-on-accent);
   background: var(--featured-park-button-color);
-  box-shadow: 0 0 18px color-mix(in srgb, var(--featured-park-button-color) 16%, transparent);
+  box-shadow: none;
 }
 
 .ui-featured-park-card[data-tone="purple"] .ui-featured-park-card__cta.app-button,
@@ -998,10 +973,6 @@ body.light-mode .ui-featured-park-card__visual-bg {
   transition: transform var(--transition-slow, 320ms ease);
 }
 
-.ui-article-card:hover .ui-article-card__image {
-  transform: scale(1.035);
-}
-
 .ui-article-card__image-placeholder {
   border-radius: 0;
   color: var(--featured-park-accent);
@@ -1011,7 +982,7 @@ body.light-mode .ui-featured-park-card__visual-bg {
 @media (max-width: 680px) {
   .ui-featured-park-card {
     min-height: 26rem;
-    border-radius: 1.6rem;
+    border-radius: var(--radius-md);
   }
 
   .ui-featured-park-card__visual {

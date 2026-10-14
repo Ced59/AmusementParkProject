@@ -43,7 +43,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 |---|---|---|
 | P00 — baseline et inventaires | PASS | 4 CSV générés, 24 captures V5, baseline performance/SSR, cas protégés |
 | P01 — tokens et thèmes | PASS | mapping documenté, 4 tests ciblés, moteur SSR intact |
-| P02 — primitives | À FAIRE | composants génériques et états transversaux |
+| P02 — primitives | PASS | 7 tests statiques verts, 160 facades conformes, suite a11y complète réservée à P21 |
 | P03 — shells et navigation | À FAIRE | wordmark/slogan protégés, contrôles inchangés |
 | P04–P16 — parcours publics | À FAIRE | toutes les familles de routes et données réelles |
 | P17 — auth/compte | À FAIRE | endpoints, validations et permissions inchangés |

@@ -9,8 +9,8 @@
   min-height: 2.75rem;
   height: auto;
   padding: 0.78rem 1.5rem;
-  border: 0;
-  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
   color: inherit;
   background: transparent;
   font-size: 0.92rem;
@@ -21,15 +21,10 @@
   overflow-wrap: anywhere;
   cursor: pointer;
   transition:
-    transform var(--transition),
     border-color var(--transition),
     box-shadow var(--transition),
     background-color var(--transition),
     color var(--transition);
-}
-
-.app-public-layout .app-button {
-  transition: transform var(--transition);
 }
 
 .btn > :where(i, svg),
@@ -50,66 +45,61 @@
 
 .btn--primary,
 .app-button--primary {
-  color: #000000;
+  color: var(--app-on-accent);
   background: var(--c-orange);
   box-shadow: var(--shadow-soft-orange);
 }
 
 .btn--primary:hover,
 .app-button--primary:hover {
-  transform: translateY(-2px);
   background: var(--c-orange-2);
 }
 
 .btn--lime,
 .app-button--lime {
-  color: #000000;
+  color: var(--app-on-accent);
   background: var(--c-lime);
   box-shadow: var(--shadow-soft-lime);
 }
 
 .btn--lime:hover,
 .app-button--lime:hover {
-  transform: translateY(-2px);
   background: var(--c-lime-2);
 }
 
 .btn--sky,
 .app-button--sky {
-  color: #000000;
+  color: var(--app-on-accent);
   background: var(--c-sky);
-  box-shadow: 0 0 16px rgba(56, 197, 245, 0.14);
+  box-shadow: none;
 }
 
 .btn--sky:hover,
 .app-button--sky:hover {
-  transform: translateY(-2px);
   background: var(--c-sky-2);
 }
 
 .btn--rose,
 .app-button--rose {
-  color: #000000;
+  color: #ffffff;
   background: var(--c-rose);
-  box-shadow: 0 0 16px rgba(255, 77, 139, 0.16);
+  box-shadow: none;
 }
 
 .btn--rose:hover,
 .app-button--rose:hover {
-  transform: translateY(-2px);
   background: color-mix(in srgb, var(--c-rose) 82%, #ffffff);
 }
 
 .btn--gold,
 .app-button--gold {
-  color: #000000;
+  color: var(--app-on-accent);
   background: var(--c-gold);
-  box-shadow: 0 0 16px rgba(255, 182, 39, 0.16);
+  box-shadow: none;
 }
 
 .btn--gold:hover,
 .app-button--gold:hover {
-  transform: translateY(-2px);
   background: color-mix(in srgb, var(--c-gold) 82%, #ffffff);
 }
 
@@ -117,12 +107,11 @@
 .app-button--purple {
   color: #ffffff;
   background: var(--c-purple);
-  box-shadow: 0 0 16px rgba(155, 93, 229, 0.16);
+  box-shadow: none;
 }
 
 .btn--purple:hover,
 .app-button--purple:hover {
-  transform: translateY(-2px);
   background: color-mix(in srgb, var(--c-purple) 82%, #ffffff);
 }
 
@@ -130,14 +119,14 @@
 .app-button--soft {
   color: var(--app-text-muted);
   border: 1px solid var(--app-border);
-  background: rgba(255, 210, 140, 0.06);
+  background: var(--app-surface);
 }
 
 .btn--soft:hover,
 .app-button--soft:hover {
   color: var(--app-heading);
   border-color: var(--app-border-stronger);
-  background: rgba(255, 210, 140, 0.1);
+  background: var(--app-surface-2);
 }
 
 .app-button--disabled,
@@ -157,7 +146,7 @@
 .app-button--ghost:hover {
   color: var(--app-heading);
   border-color: var(--app-border-stronger);
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--app-surface-2);
 }
 
 .btn--full,
@@ -179,8 +168,8 @@
   gap: 0.45rem;
   min-height: 2.5rem;
   padding: 0.52rem 1.05rem;
-  border: 0;
-  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
   font-size: 0.86rem;
   font-weight: 800;
   line-height: 1;
@@ -188,15 +177,10 @@
   cursor: pointer;
   white-space: nowrap;
   transition:
-    transform var(--transition),
     border-color var(--transition),
     background-color var(--transition),
     color var(--transition),
     box-shadow var(--transition);
-}
-
-.app-public-nav .btn-nav {
-  transition: transform var(--transition);
 }
 
 .btn-nav:focus-visible {
@@ -213,16 +197,15 @@
 .btn-nav--ghost:hover {
   color: var(--app-heading);
   border-color: var(--app-border-stronger);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--app-surface);
 }
 
 .btn-nav--primary {
-  color: #000000;
+  color: var(--app-on-accent);
   background: var(--c-orange);
   box-shadow: var(--shadow-soft-orange);
 }
 
 .btn-nav--primary:hover {
-  transform: translateY(-1px);
   background: var(--c-orange-2);
 }
