@@ -11,7 +11,7 @@
 | Inventaire route/template/SCSS/interaction généré | PASS |
 | Baseline visuelle V5 initiale | PASS |
 | P00 inventaires | PASS — baseline visuelle ciblée ; couverture exhaustive des états non démontrée |
-| P01 | PASS |
+| P01 | PASS CIBLÉ — tokens et thèmes contrôlés ; contrastes de tous les états encore à recetter |
 | P02 | PASS CIBLÉ — suite a11y complète à P21 |
 | P03 | PASS CIBLÉ — 17 tests statiques, suite Angular complète à P21 |
 | P04 | PASS CIBLÉ — 24 tests statiques, suite Angular complète à P21 |
@@ -33,11 +33,11 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | EN ATTENTE — serveur local interdit, validation sur environnement de revue requise |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | PASS au commit `0920100cc` pour frontend/backend/version/configuration ; dernier commit à revalider |
+| P21 CI Node 24 | PASS au commit `e98d7f8fb` : frontend, backend, version, configuration, sécurité et Docker ; prochain commit à revalider |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exception sécurité explicitement autorisée le 15 octobre : référence PKCS 10.0.13 dans Infrastructure |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | BLOQUÉE au commit `0920100cc` par PKCS ; correctif autorisé en cours de validation |
+| CI intégralement verte | PASS au commit `e98d7f8fb` ; sécurité corrigée, nouvelle recette encore ouverte |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | Feu vert explicite de fusion | NON REÇU |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
@@ -54,13 +54,13 @@
 
 ## Audit de portée P22
 
-- 237 fichiers modifiés : 169 sous `FRONT/` et 68 sous `docs/`.
-- 132 feuilles SCSS, 4 templates, 24 tests/outils MJS, 7 fichiers TypeScript dont 4 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
-- Aucun fichier supprimé ; aucun changement sous `API/`, `deploy/` ou `.github/`.
+- 242 fichiers modifiés : 172 sous `FRONT/`, 68 sous `docs/`, un projet sous `API/` et un workflow sous `.github/`.
+- 132 feuilles SCSS, 4 templates, 25 tests/outils MJS, 9 fichiers TypeScript dont 6 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
+- Aucun fichier supprimé ; aucun changement sous `deploy/`. La seule exception backend est la référence PKCS autorisée ci-dessous ; le workflow reçoit uniquement la recette CI conditionnelle à la branche V6.
 - `app.routes.ts`, `package-lock.json`, endpoints, DTO, guards, facades, ports, services, persistance et infrastructure inchangés.
 - Les seuls TypeScript de production modifiés ajoutent le composant image existant à l’accueil, réalignent les métadonnées `sizes` sur le conteneur V6 et déplacent le style du tooltip vers le SCSS partagé.
-- Zéro ajout de `!important`, gradient décoratif, `backdrop-filter`, letter-spacing négatif, `overflow-x: hidden`, dépendance ou URL externe.
-- Inventaire final régénéré sans écart : 148 routes et 273 composants.
+- Zéro ajout de `!important`, gradient décoratif, `backdrop-filter`, letter-spacing négatif, `overflow-x: hidden` ou dépendance UI. Les URLs du nouvel outil de recette sont réservées aux lectures publiques et à son origine de navigateur isolé ; elles ne sont pas ajoutées au produit.
+- Dernier inventaire généré : 148 routes et 273 composants. La régénération finale après gel visuel reste requise ; elle n'est pas déclarée achevée pendant les corrections de recette.
 
 ## Décision avant fusion
 
@@ -71,6 +71,8 @@ La PR unique est ouverte. La fusion reste interdite jusqu’à ce que la CI Node
 Le scan détecte `System.Security.Cryptography.Pkcs 10.0.0`, transitive déjà présente sur la base `origin/master`, affectée par [CVE-2026-84008, High 7,5](https://github.com/advisories/GHSA-846f-f764-76mx) et [CVE-2026-70162, Moderate 5,9](https://github.com/advisories/GHSA-2fmv-rv2c-59x7), publiées le 13 octobre. Le propriétaire a explicitement autorisé le correctif minimal dans la même PR : référence directe `10.0.13` dans le projet Infrastructure, commit `235470597`. Aucun endpoint, code métier ou configuration d'infrastructure n'est modifié par cette exception ; le scan est conservé sans contournement.
 
 La [CI du commit 4bde5e74d](https://github.com/Ced59/AmusementParkProject/actions/runs/38689894921) réussit intégralement, y compris le scan de sécurité et les builds Docker. Le déploiement est normalement ignoré pour la PR. Les corrections visuelles et l'outillage de capture ajoutés ensuite imposent une nouvelle CI.
+
+La [CI du commit e98d7f8fb](https://github.com/Ced59/AmusementParkProject/actions/runs/38697638768) réussit également intégralement : 19 routes publiques capturées, 38 lieux Fleury rendus en SSR et quatre interactions d'accueil hydraté vérifiées. Les parcours compte/admin, les états rares, la comparaison visuelle exhaustive et le feu vert propriétaire ne sont pas soldés : **la décision demeure NO-GO**.
 
 Le workflow existant reçoit uniquement deux étapes de recette conditionnées à la PR de cette branche : capture initiale SSR publique et dépôt de l'artefact. Les conditions de livraison, images et déploiement ne sont pas modifiées. La PR reste en brouillon tant que la recette complète n'est pas démontrée.
 

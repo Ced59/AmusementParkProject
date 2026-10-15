@@ -68,5 +68,16 @@ La commande complète `test:ci` a construit les 14,95 MB de bundles de test puis
 
 ## SEO/SSR à préserver
 
+La [CI e98d7f8fb](https://github.com/Ced59/AmusementParkProject/actions/runs/38697638768) réussit build SSR, tests frontend avec couverture, budgets, qualité, sécurité, backend et images Docker. Le moteur SSR réel rend 19 routes publiques et les 38 détails visibles du Fleury. Le navigateur isolé hydrate l'accueil sans exception et exécute consentement, thème et recherche. Ces preuves ne mesurent pas les Core Web Vitals terrain et ne remplacent pas les codes HTTP, le cache et les en-têtes du serveur de recette déployé.
+
+| Mesure CI `e98d7f8fb` | Octets | Budget | Verdict |
+|---|---:|---:|---|
+| Initial | 824 846 | 1 000 000 | PASS |
+| Plus gros lazy chunk | 214 874 | 300 000 | PASS |
+| JavaScript total | 6 695 088 | 7 200 000 | PASS |
+| CSS total | 211 393 | 250 000 | PASS |
+
+Les 578 fichiers de tests Angular passent. Le CSS possède encore 38 607 octets de marge ; aucun budget n'a été augmenté pour faire passer la refonte.
+
 Codes 200/301/404, canonical, hreflang réels, locale Open Graph, JSON-LD fiable, robots/noindex, sitemap, HTML SSR initial et absence de discordance d’hydratation. Les routes admin, compte, auth, techniques et erreurs ne deviennent pas indexables.
 

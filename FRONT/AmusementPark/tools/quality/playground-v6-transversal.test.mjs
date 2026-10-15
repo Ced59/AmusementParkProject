@@ -41,6 +41,13 @@ test('the language entry keeps eight choices without reusing the legacy standalo
   assert.ok(!languageEntry.includes('logo-amusementpark-language'));
 });
 
+test('the small language-entry eyebrow uses a readable semantic foreground', () => {
+  const eyebrow = languageEntryStyles.match(/\.language-entry__eyebrow\s*\{([^}]+)\}/)?.[1];
+  assert.ok(eyebrow, 'the language-entry eyebrow rule must exist');
+  assert.match(eyebrow, /color:\s*var\(--app-primary-strong\)/);
+  assert.doesNotMatch(eyebrow, /color:\s*var\(--c-orange\)/);
+});
+
 test('the root shell keeps toast, privacy consent and the page jump control', () => {
   for (const selector of ['<router-outlet>', '<app-ui-toast', '<app-cookie-consent-banner>', '<app-page-jump-button>']) {
     assert.ok(appRoot.includes(selector), `${selector} must remain mounted`);

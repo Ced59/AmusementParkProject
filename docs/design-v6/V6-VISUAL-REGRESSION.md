@@ -18,6 +18,10 @@ Le diagnostic local sur le build précédent, explicitement marqué `UNVERIFIED_
 
 L'[artefact de la CI 38694067574](https://github.com/Ced59/AmusementParkProject/actions/runs/38694067574), source `7637b029c`, contient 728 captures sur 14 routes (dont les huit langues de l'accueil). Les titres hero ont une largeur minimale de 218,42 px ; les 13 largeurs passent le contrôle d'overflow global. L'inspection a ensuite révélé cinq alias de thème non résolus sur `body`, corrigés dans `_tokens.scss`. La capture active désormais `prefers-reduced-motion: reduce` pour ne pas mesurer un mélange de couleurs au milieu de la transition de thème. Une nouvelle CI doit attester ces dernières corrections.
 
+Le [run 38697638768](https://github.com/Ced59/AmusementParkProject/actions/runs/38697638768), source `e98d7f8fb`, réussit intégralement et produit [l'artefact SSR](https://github.com/Ced59/AmusementParkProject/actions/runs/38697638768/artifacts/11954423044) : 19 routes × 13 largeurs × 2 thèmes × 2 états de consentement, soit 988 captures initiales, plus deux captures de l'accueil hydraté. Les assertions de largeur, de titre hero, d'alias de thème et de couleur active du footer passent. Ce volume ne remplace pas l'inspection humaine de chaque famille et état.
+
+La revue a signalé le petit surtitre orange du choix de langue (environ 3,38:1 en clair). Il utilise désormais le token sémantique `--app-primary-strong`, protégé par un test ciblé. La prochaine campagne inclut aussi la route racine et relève les candidats de contraste sur fonds simples à 390/1366 px ; ce diagnostic ne constitue pas un verdict AA sur les images, fonds complexes ou tous les états interactifs.
+
 ## Baseline V5 enregistrée
 
 Les fichiers sont sous `evidence/baseline-v5/`.
