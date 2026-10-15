@@ -35,6 +35,7 @@ test('the protected wordmark keeps its original ink independently from the V6 he
   assert.match(wordmarkStyles, /body\.light-mode \.app-brand-wordmark\s*\{[^}]*--brand-wordmark-base-ink:\s*#160a00/);
   assert.match(wordmarkStyles, /color:\s*var\(--brand-wordmark-base-ink\)/);
   assert.match(wordmarkStyles, /font-family:\s*var\(--font-display\)/);
+  assert.match(wordmarkStyles, /\.app-brand-wordmark\s*\{[^}]*--font-display:\s*"Bebas Neue", "Syne", "Plus Jakarta Sans", sans-serif/);
   assert.match(wordmarkStyles, /font-family:\s*"Satisfy Brand Fun"/);
 });
 

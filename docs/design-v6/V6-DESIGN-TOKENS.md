@@ -65,8 +65,8 @@ Les gradients restants sont bornés et vérifiables : rendu historique du `.fun`
 
 ## Typographie
 
-- `Plus Jakarta Sans` reste la police de lecture locale principale.
-- `Bebas Neue` peut servir de repère éditorial chiffré ou de display, jamais pour un long texte ni un libellé critique.
+- Les titres/display utilisent `Arial, Helvetica, sans-serif` et le texte courant `system-ui, -apple-system, "Segoe UI", Arial, sans-serif`, comme le HTML V6 fourni. Aucun téléchargement ni nouvelle police n'est ajouté.
+- `Bebas Neue` et ses fallbacks historiques restent isolés dans `.app-brand-wordmark`, y compris pour le point, avec le `.fun` en Satisfy existant. Ils ne définissent plus la typographie des titres éditoriaux.
 - Les titres utilisent des hauteurs de ligne lisibles et aucun `letter-spacing` négatif.
 - Les mots longs allemands, néerlandais et polonais utilisent `min-width: 0`, `overflow-wrap: anywhere` aux bons niveaux, sans tronquer l’information essentielle.
 - Les descriptions restent de vrais paragraphes ; la casse forcée est limitée aux kickers courts.
@@ -74,6 +74,8 @@ Les gradients restants sont bornés et vérifiables : rendu historique du `.fun`
 ## Responsive
 
 Les points structurels du dépôt restent `480`, `680`, `960` et `1180px`. Les mesures de recette sont 320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440 et 1920 px, plus faible hauteur, paysage et zoom 200 %.
+
+Les gouttières du shell public sont de 48 px au total sur desktop, 30 px sous 680 et 28 px sous 480, avec la largeur maximale de 1160 px. Les points de rupture restent ceux du dépôt ; les valeurs viennent de la maquette. L'accueil reprend son split 1,08/0,92, gap 18–38 px, titre 39–74 px (38–53 px mobile, 35 px sous 350), interligne 1,065/1,09 et média principal de 205 px. Ces alignements nécessitent encore les mesures CI et la revue visuelle ; les données réelles et textes de production restent intacts.
 
 ## Interactions
 

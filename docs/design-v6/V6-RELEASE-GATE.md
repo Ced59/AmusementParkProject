@@ -90,6 +90,8 @@ Le workflow existant reçoit uniquement deux étapes de recette conditionnées �
 
 La [CI 5f5de42e3](https://github.com/Ced59/AmusementParkProject/actions/runs/38707367998) valide tests, build et sécurité et produit les 1 976 captures des 38 routes ainsi que les 38 détails Fleury. Les nouveaux scénarios hydratés atteignent le retour navigateur, puis l'outil échoue en répondant à des requêtes annulées par Chromium. Le correctif de recette n'accepte cette erreur de protocole que si `Network.loadingFailed` atteste l'annulation du même identifiant réseau ; les autres erreurs restent bloquantes. Une nouvelle CI est requise.
 
+La [CI adcd267f1](https://github.com/Ced59/AmusementParkProject/actions/runs/38709110336) passe les seize contrôles hydratés et les captures, mais échoue au nettoyage du navigateur. Le prochain correctif draine les lectures avant fermeture et bloque tout nouvel accès réseau pendant le nettoyage. Les nouveaux tests HTTP Express restent exclusivement sur Linux CI. Le réalignement typographique/géométrique à la maquette exige également une nouvelle CI et revue visuelle ; la décision reste NO-GO.
+
 ## Rollback
 
 En cas d’échec après feu vert et fusion, appliquer la procédure transactionnelle existante de `docs/deploy/transactional-app-deployment.md` vers la génération complète antérieure. Aucun rollback CSS sélectif, aucune publication partielle et aucun mélange permanent V5/V6.

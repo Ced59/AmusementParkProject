@@ -188,6 +188,7 @@ async function captureHydratedHome(rawHtml) {
   report.hydratedHome = result;
   const mimeTypes = { '.mjs': 'text/javascript', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.ico': 'image/x-icon' };
   const interceptionErrors = [];
+  result.interceptionErrors = interceptionErrors;
   const canceledNetworkRequests = new Set();
   const pendingInterceptions = new Set();
   const stopCancellations = cdp.on('Network.loadingFailed', ({ requestId, canceled }) => {
@@ -327,10 +328,15 @@ async function captureHydratedHome(rawHtml) {
     if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser raised an exception; inspect report.json.');
     console.log(`Hydrated home: ${result.checks.length} checks passed; production writes blocked.`);
   } finally {
-    // Cancel remaining lazy reads before disabling interception; all promises
-    // settle while their cancellation evidence is still being observed.
-    try { await cdp.send('Page.navigate', { url: 'about:blank' }); } catch (error) { result.exceptions.push(error.message); }
-    await Promise.allSettled([...pendingInterceptions]);
+    // Block new network work first, then drain existing intercepted reads.
+    // Navigating away before draining invalidates otherwise valid Fetch IDs.
+    // Keeping the block in place also prevents released requests from escaping
+    // the read-only sandbox when Fetch.disable is called during cleanup.
+    try { await cdp.send('Network.setBlockedURLs', { urls: ['*'] }); } catch (error) { result.exceptions.push(error.message); }
+    for (let pass = 0; pass < 10 && pendingInterceptions.size; pass++) {
+      await Promise.allSettled([...pendingInterceptions]);
+    }
+    if (pendingInterceptions.size) interceptionErrors.push('Interception cleanup did not finish.');
     try { await cdp.send('Fetch.disable'); } catch (error) { result.exceptions.push(error.message); }
     stopInterception();
     stopCancellations();
@@ -479,6 +485,8 @@ try {
             return { viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
               title: document.title, fontStatus: document.fonts.status,
               wordmarkColors: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).color),
+              wordmarkFonts: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).fontFamily),
+              homeTitleFontSize: document.querySelector('.home-hero__title') ? getComputedStyle(document.querySelector('.home-hero__title')).fontSize : null,
               heroTitleWidth: hero ? hero.getBoundingClientRect().width : null,
               bodyBackground: bodyStyle.backgroundColor, aliases, headingColor,
               footerActiveColor };
@@ -508,6 +516,15 @@ try {
     }
     console.log(`${path}: ${route.captures.length} initial SSR captures; ${reads.length} anonymous API reads`);
     await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
+    if (route.captures.some(capture => capture.state === 'initial' && capture.wordmarkFonts.some(font => !/^"?Bebas Neue/.test(font)))) {
+      throw new Error(`Protected wordmark font changed: ${path}`);
+    }
+    if (path.endsWith('/home') && route.captures.some(capture => {
+      if (capture.state !== 'initial') return false;
+      const expected = capture.width <= 350 ? 35 : capture.width <= 680
+        ? Math.min(53, Math.max(38, capture.width * 0.09)) : Math.min(74, Math.max(39, capture.width * 0.053));
+      return Math.abs(Number.parseFloat(capture.homeTitleFontSize) - expected) > 0.1;
+    })) throw new Error(`V6 home title size differs from the reference scale: ${path}`);
     if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)))) {
       throw new Error(`Initial SSR presentation requires correction: ${path}; see report.json.`);
     }

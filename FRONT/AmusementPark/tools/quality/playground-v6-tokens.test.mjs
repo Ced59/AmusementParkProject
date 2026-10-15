@@ -43,6 +43,13 @@ function resolveThemeColor(theme, name) {
   return alias ? resolveThemeColor(theme, alias[1]) : value;
 }
 
+test('editorial fonts match the V6 reference without changing the protected wordmark', () => {
+  const tokens = variables(designTokens);
+  assert.equal(tokens.get('--font-heading'), 'Arial, Helvetica, sans-serif');
+  assert.equal(tokens.get('--font-display'), 'Arial, Helvetica, sans-serif');
+  assert.equal(tokens.get('--font-body'), 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif');
+});
+
 test('Playground V6 keeps the canonical palette in both existing theme selectors', () => {
   const lightVariables = variables(light);
   const darkVariables = variables(dark);

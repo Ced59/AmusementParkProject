@@ -57,7 +57,7 @@ test('featured, latest and sharing blocks keep their deferred production composi
 });
 
 test('the Playground home uses the editorial split without decorative effects', () => {
-  assert.match(styles, /grid-template-columns:\s*minmax\(0, 1\.12fr\) minmax\(22rem, 0\.88fr\)/);
+  assert.match(styles, /grid-template-columns:\s*minmax\(0, 1\.08fr\) minmax\(0, 0\.92fr\)/);
   assert.match(styles, /\.home-hero__spotlight[\s\S]*?border-left:\s*3px solid var\(--app-heading\)/);
   assert.match(styles, /\.home-hero-card--1[\s\S]*?border-top:\s*5px solid var\(--c-orange\)/);
   assert.match(styles, /@media \(max-width:\s*960px\)[\s\S]*?grid-template-columns:\s*1fr/);
@@ -65,4 +65,13 @@ test('the Playground home uses the editorial split without decorative effects', 
   assert.doesNotMatch(styles, /(?:linear|radial|conic)-gradient\(/);
   assert.doesNotMatch(styles, /animation\s*:/);
   assert.doesNotMatch(styles, /backdrop-filter\s*:/);
+});
+
+test('the home title and primary image use the supplied V6 dimensions rather than the previous oversized envelope', () => {
+  assert.match(styles, /font-size:\s*clamp\(39px, 5\.3vw, 74px\)/);
+  assert.match(styles, /line-height:\s*1\.065/);
+  assert.match(styles, /gap:\s*clamp\(18px, 3vw, 38px\)/);
+  assert.match(styles, /\.home-hero-card--1 \.home-hero-card__media\s*\{[^}]*height:\s*205px/);
+  assert.match(styles, /font-size:\s*clamp\(38px, 9vw, 53px\)/);
+  assert.match(styles, /\.home-hero__title-line--outline\s*\{[^}]*color:\s*var\(--app-heading\);[^}]*-webkit-text-stroke:\s*0/);
 });

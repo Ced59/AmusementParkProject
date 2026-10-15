@@ -9,6 +9,7 @@
 
 .app-brand-wordmark {
   // Protected production lettering: do not inherit the new editorial ink.
+  --font-display: "Bebas Neue", "Syne", "Plus Jakarta Sans", sans-serif;
   --brand-wordmark-base-ink: #ffffff;
   --brand-wordmark-fun-size: 1.18em;
   --brand-wordmark-fun-lift: -0.17em;

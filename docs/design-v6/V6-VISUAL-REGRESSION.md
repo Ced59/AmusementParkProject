@@ -34,6 +34,10 @@ La [CI 2675e3a8b](https://github.com/Ced59/AmusementParkProject/actions/runs/387
 
 Le prochain smoke hydraté ajoute pagination page 2 réellement lue par API, tailles 20/10/5 avec retour page 1, recherche sans résultat, erreur 503 injectée uniquement dans le navigateur isolé, ouverture/fermeture et bounds de la modale anonyme, clic de résultat vers la vraie fiche parc et retour navigateur. Aucun formulaire d'authentification n'est soumis ; Google reste hors validation et ses requêtes externes sont bloquées. Les captures d'états simulés sont étiquetées comme recette, jamais comme données servies en production.
 
+La campagne `5f5de42e3` produit 1 976 captures initiales et ne relève plus de candidat insuffisant dans son échantillon de contraste 390/1366 sur fonds simples. Quinze scénarios hydratés passent avant une erreur d'interception au retour arrière. La campagne `adcd267f1` passe les seize scénarios, y compris le retour, puis échoue pendant le nettoyage du navigateur : le document était détruit avant la fin des réponses interceptées. Le nettoyage bloque désormais les nouveaux accès réseau puis attend les réponses en cours, sans relâcher l'interdiction d'écriture. Ces campagnes ne sont pas déclarées intégralement vertes.
+
+La comparaison des règles de la référence révèle encore un écart de fidélité : le titre à 1366 px était de 84,69 px au lieu de 72,40 px, la photo principale pouvait atteindre 240 px au lieu de 205 px, et les polices éditoriales conservaient les familles V5. Corrections : tokens Arial/system-ui de la maquette, police historique isolée au wordmark, titre/split/gap/marges et image de 205 px réalignés. Les gouttières du shell rejoignent 48/30/28 px. Le palier de reflow reste 960/680 selon le dépôt, au lieu de multiplier les 920/650 de la maquette ; les CTA se replient à 320 pour préserver leur texte. Les chiffres cités sont calculés depuis le CSS, pas présentés comme des captures inspectées. Les mesures navigateur et la revue des grandes enveloppes après correction restent requises.
+
 ## Baseline V5 enregistrée
 
 Les fichiers sont sous `evidence/baseline-v5/`.

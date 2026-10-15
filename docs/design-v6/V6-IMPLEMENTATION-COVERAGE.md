@@ -83,7 +83,7 @@ La recette visuelle sur l’application Angular branchée aux données réelles,
 ## Préparation P22 — release atomique
 
 - `origin/master` a été rafraîchi juste avant la release et reste au SHA de départ ; aucun correctif fonctionnel concurrent n’est absent de la branche.
-- Les inventaires finaux reproduisent les 148 routes et 273 composants de P00, sans route, template ou SCSS manquant.
+- Les régénérations CI reproduisent les 148 routes et 273 composants de P00, sans route, template ou SCSS manquant ; la régénération versionnée après gel visuel reste à faire.
 - `release-version.json` passe directement de 5.4.101 à 6.0.0 avec une entrée datée du 14 octobre 2026 et huit libellés localisés.
 - L'audit de portée actualisé est dans `V6-RELEASE-GATE.md` : aucune suppression, route ou contrat métier modifié ; seule exception backend, la dépendance PKCS autorisée. Le workflow reçoit uniquement deux étapes de recette CI V6, sans changer le déploiement.
 - Le SHA de contenu versionné et audité est `545345dc3a81c099a328e29a510447339b3f9342`.
