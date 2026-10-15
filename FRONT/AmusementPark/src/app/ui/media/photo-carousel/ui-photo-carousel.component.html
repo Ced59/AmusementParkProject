@@ -244,7 +244,7 @@
   aria-modal="true"
   [attr.aria-label]="lightboxTitleKey | translate"
   (click)="closeLightbox()">
-  <div class="photo-lightbox__dialog" (click)="$event.stopPropagation()">
+  <div class="photo-lightbox__dialog" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" (click)="$event.stopPropagation()">
     <header class="photo-lightbox__header">
       <div>
         <span class="photo-lightbox__kicker">
@@ -258,6 +258,7 @@
       <button
         type="button"
         class="photo-lightbox__close"
+        cdkFocusInitial
         (click)="closeLightbox()"
         [attr.aria-label]="closeFullscreenLabelKey | translate">
         <i class="pi pi-times" aria-hidden="true"></i>

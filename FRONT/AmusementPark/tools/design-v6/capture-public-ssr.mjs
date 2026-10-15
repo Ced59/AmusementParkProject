@@ -10,6 +10,8 @@ import { publicDirectoryReadEvidence, publicParkItemsReadEvidence, publicRouteEv
 import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeVitalsObserver } from './home-network-evidence.mjs';
 import { exercisePublicParkItems } from './exercise-public-park-items.mjs';
 import { initialThemeObserver, validateInitialTheme } from './initial-theme-evidence.mjs';
+import { publicPhotoReadEvidence } from './public-photo-evidence.mjs';
+import { exercisePublicPhotos } from './exercise-public-photos.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -257,8 +259,9 @@ async function captureHydratedHome(rawHtml, options = {}) {
       const bytes = await response.arrayBuffer();
       const directory = publicDirectoryReadEvidence(target, response.status, bytes);
       const parkItems = publicParkItemsReadEvidence(target, response.status, bytes);
+      const photos = publicPhotoReadEvidence(target, response.status, bytes);
       result.apiReads.push({ path: target.pathname, query: target.search, status: response.status,
-        ...(directory ? { directory } : {}), ...(parkItems ? { parkItems } : {}) });
+        ...(directory ? { directory } : {}), ...(parkItems ? { parkItems } : {}), ...(photos ? { photos } : {}) });
       await respond(response.status, response.headers.get('content-type') ?? 'application/octet-stream', bytes);
       return;
     }
@@ -511,6 +514,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
       index: navigation.currentEntry.index, key: navigation.currentEntry.key })`);
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'browser back from inventory restores the full park');
+    await exercisePublicPhotos({ evaluate, waitUntil, result });
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
     let directoryCursor = result.apiReads.length;

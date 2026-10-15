@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
+import { publicPhotoReadEvidence } from '../design-v6/public-photo-evidence.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -17,7 +18,38 @@ const videoListStyles = read('src/app/features/public/videos/ui/public-video-lis
 const videoWatchTemplate = read('src/app/features/public/videos/ui/public-video-watch-view.component.html');
 const videoWatchStyles = read('src/app/features/public/videos/ui/public-video-watch-view.component.scss');
 
+test('photo evidence retains only published IDs and real bounded pagination', () => {
+  const id = '00000000-0000-0000-0000-000000000001';
+  const pagination = { currentPage: 1, itemsPerPage: 100, totalItems: 141 };
+  const image = { id, isPublished: true, exifMetadata: { latitude: 'not evidence' }, credits: ['not evidence'] };
+  const bytes = Buffer.from(JSON.stringify({ data: [image], pagination }));
+  assert.deepEqual(publicPhotoReadEvidence(`/api/images/1/${id}/2?page=1&size=100`, 200, bytes), { kind: 'park', ids: [id], pagination });
+  const items = Buffer.from(JSON.stringify({ data: [{ image, item: { isVisible: true, internalNote: 'not evidence' } }], pagination }));
+  assert.deepEqual(publicPhotoReadEvidence(`/api/images/parks/${id}/park-items?page=1&size=100`, 200, items), { kind: 'items', ids: [id], pagination });
+  const compactId = '1'.repeat(32);
+  const compact = Buffer.from(JSON.stringify({ data: [{ image: { ...image, id: compactId }, item: { name: 'Public item' } }], pagination }));
+  assert.deepEqual(publicPhotoReadEvidence(`/api/images/parks/${id}/park-items`, 200, compact), { kind: 'items', ids: [compactId], pagination });
+  assert.equal(publicPhotoReadEvidence('/api/images', 200, Buffer.from('not JSON')), undefined);
+  assert.equal(publicPhotoReadEvidence(`/api/images/1/${id}/2`, 503, Buffer.from('not JSON')), undefined);
+  assert.throws(() => publicPhotoReadEvidence(`/api/images/1/${id}/2?includeUnpublished=true`, 200, bytes), /Unpublished/);
+  assert.throws(() => publicPhotoReadEvidence(`/api/images/1/${id}/2`, 200, Buffer.from(JSON.stringify({ data: [{ ...image, isPublished: false }], pagination }))), /unpublished/);
+  assert.throws(() => publicPhotoReadEvidence(`/api/images/parks/${id}/park-items`, 200, Buffer.from(JSON.stringify({ data: [{ image, item: { isVisible: false } }], pagination }))), /hidden/);
+});
+
+test('the photo recipe exercises real controls and 100-plus server-paginated media without writes', () => {
+  const recipe = read('tools/design-v6/exercise-public-photos.mjs');
+  for (const contract of ['photo next control', 'photo previous control', 'photo year filter', 'photo tag filter', 'photo lightbox opens through the existing keyboard handler',
+    'photo lightbox closes', 'item photo tab requests its real server page size', 'cumulative page', 'only after all server pages', 'gallery browser back restores the original full park entry']) {
+    assert.ok(recipe.includes(contract), `${contract} must remain in the read-only photo recipe`);
+  }
+  assert.doesNotMatch(recipe, /nativeFetch|fetch\(|POST|PUT|PATCH|DELETE/);
+  assert.ok(recipe.includes('pagination.itemsPerPage !== 100'));
+  assert.ok(recipe.includes('photoScenarios'));
+});
+
 test('photo galleries preserve filters, lazy thumbnails, credits, maps and lightbox controls', () => {
+  assert.ok(carouselTemplate.includes('cdkTrapFocus [cdkTrapFocusAutoCapture]="true"'));
+  assert.ok(carouselTemplate.includes('cdkFocusInitial'));
   for (const contract of [
     'selectYear(',
     'selectTag(',

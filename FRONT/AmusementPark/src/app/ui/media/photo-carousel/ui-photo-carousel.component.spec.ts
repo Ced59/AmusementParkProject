@@ -1,9 +1,58 @@
 import { SimpleChange } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { CdkTrapFocus, InteractivityChecker } from '@angular/cdk/a11y';
+import { TestBed } from '@angular/core/testing';
 
 import { UiPhotoCarouselComponent } from './ui-photo-carousel.component';
 import { UiPhotoCarouselImage } from '../models/ui-photo-carousel.model';
 
 describe('UiPhotoCarouselComponent', () => {
+  it('captures, loops and restores modal keyboard focus using the existing CDK', async () => {
+    await TestBed.configureTestingModule({
+      imports: [UiPhotoCarouselComponent],
+      providers: [{ provide: InteractivityChecker, useValue: {
+        // The unit DOM has no layout; browser visibility is exercised by CI.
+        isFocusable: (element: HTMLElement): boolean => element.tagName === 'BUTTON' && !element.hasAttribute('disabled'),
+        isTabbable: (element: HTMLElement): boolean => element.tagName === 'BUTTON' && !element.hasAttribute('disabled')
+      } }]
+    }).overrideComponent(UiPhotoCarouselComponent, { set: {
+      imports: [NgIf, CdkTrapFocus],
+      template: `<button class="opener" (click)="openLightbox(0)">Open</button>
+        <div *ngIf="lightboxOpen" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+          <button class="close" cdkFocusInitial (click)="closeLightbox()">Close</button>
+          <button class="last" (click)="nextPhoto()">Next</button>
+        </div>`
+    } }).compileComponents();
+    const fixture = TestBed.createComponent(UiPhotoCarouselComponent);
+    try {
+      fixture.componentInstance.photos = [buildPhoto('photo-1', 'coasters', '2024')];
+      fixture.componentInstance.ngOnChanges({ photos: new SimpleChange(undefined, fixture.componentInstance.photos, true) });
+      fixture.detectChanges();
+      const root: HTMLElement = fixture.nativeElement;
+      const opener: HTMLButtonElement = root.querySelector<HTMLButtonElement>('.opener')!;
+      opener.focus();
+      opener.click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+      const close: HTMLButtonElement = root.querySelector<HTMLButtonElement>('.close')!;
+      const last: HTMLButtonElement = root.querySelector<HTMLButtonElement>('.last')!;
+      const anchors: NodeListOf<HTMLElement> = root.querySelectorAll<HTMLElement>('.cdk-focus-trap-anchor');
+      expect(document.activeElement).toBe(close);
+      expect(anchors.length).toBe(2);
+      anchors[0].focus();
+      expect(document.activeElement).toBe(last);
+      anchors[1].focus();
+      expect(document.activeElement).toBe(close);
+      close.click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+      expect(root.querySelector('.cdk-focus-trap-anchor')).toBeNull();
+      expect(document.activeElement).toBe(opener);
+    } finally {
+      fixture.destroy();
+    }
+  });
+
   it('keeps displayed photos stable between reads until the state changes', () => {
     const component = new UiPhotoCarouselComponent();
     component.photos = [
