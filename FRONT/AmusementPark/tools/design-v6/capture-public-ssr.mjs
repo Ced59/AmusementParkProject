@@ -211,6 +211,47 @@ async function captureHydratedHome(rawHtml) {
   }
 }
 
+async function verifyFleuryItemRendering(application) {
+  const parkPath = '/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury';
+  const inventoryResponse = await nativeFetch(`${publicOrigin}/api/park-items/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4?page=1&size=48`, { signal: AbortSignal.timeout(20000) });
+  if (!inventoryResponse.ok) throw new Error('Could not read the public Fleury item inventory.');
+  const inventory = await inventoryResponse.json();
+  const total = inventory.pagination?.totalItems;
+  if (!Number.isInteger(total) || total > 96) throw new Error('The public inventory exceeds this bounded review fixture; update its coverage explicitly.');
+  const expected = [...inventory.data];
+  if (total > 48) {
+    const nextResponse = await nativeFetch(`${publicOrigin}/api/park-items/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4?page=2&size=48`, { signal: AbortSignal.timeout(20000) });
+    if (!nextResponse.ok) throw new Error('Could not read the second public inventory page.');
+    expected.push(...(await nextResponse.json()).data);
+  }
+  if (expected.length !== total || expected.some((item) => item.isVisible !== true)) throw new Error('The anonymous public fixture is incomplete or contains a non-public entity.');
+  const linksById = new Map();
+  for (let page = 1; page <= Math.max(1, Math.ceil(total / 48)); page++) {
+    const response = await application.handle(new Request(`${publicOrigin}${parkPath}/items?size=48&page=${page}&closed=all`, { signal: AbortSignal.timeout(45000) }));
+    const html = await response?.text();
+    if (!html) throw new Error('No Angular SSR item-list content.');
+    for (const match of html.matchAll(/href="(\/fr\/park\/[^"?#]+\/item\/([^/"?#]+)\/[^/"?#]+)"/g)) linksById.set(match[2], match[1]);
+  }
+  const result = { scope: 'initial SSR entity rendering; no interaction or HTTP-server acceptance', expectedVisibleCount: total, discoveredDetailLinks: linksById.size, items: [] };
+  report.fleuryItemRendering = result;
+  try {
+    for (const item of expected) {
+      const path = linksById.get(item.id);
+      if (!path) throw new Error(`No actual Angular detail link for public item ${item.id}.`);
+      const response = await application.handle(new Request(new URL(path, publicOrigin), { signal: AbortSignal.timeout(45000) }));
+      const html = await response?.text();
+      const heading = html?.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? '';
+      const escapedName = item.name.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+      const hasEntityHeading = heading.includes(escapedName);
+      result.items.push({ id: item.id, name: item.name, category: item.category, type: item.type, path, engineStatus: response?.status, hasEntityHeading });
+      if (!hasEntityHeading) throw new Error(`Initial SSR item heading missing: ${item.name}.`);
+    }
+    console.log(`Fleury initial SSR: ${result.items.length}/${total} public item details contain their entity heading.`);
+  } finally {
+    await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
+  }
+}
+
 const tempRoot = await mkdtemp(join(tmpdir(), 'apf-v6-ssr-'));
 let chrome;
 let cdp;
@@ -280,11 +321,22 @@ try {
             const headingColor = getComputedStyle(probe).color;
             probe.remove();
             const footerLink = document.querySelector('.app-public-footer__language-link--active');
+            let footerActiveColor = null;
+            if (footerLink) {
+              footerLink.scrollIntoView({ behavior: 'instant', block: 'end' });
+              for (let attempt = 0; attempt < 10; attempt++) {
+                footerActiveColor = getComputedStyle(footerLink).color;
+                if (footerActiveColor === headingColor) break;
+                await new Promise(r => setTimeout(r, 50));
+              }
+              window.scrollTo({ top: 0, behavior: 'instant' });
+              await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+            }
             return { viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
               title: document.title, fontStatus: document.fonts.status,
               heroTitleWidth: hero ? hero.getBoundingClientRect().width : null,
               bodyBackground: bodyStyle.backgroundColor, aliases, headingColor,
-              footerActiveColor: footerLink ? getComputedStyle(footerLink).color : null };
+              footerActiveColor };
           })()`,
           awaitPromise: true, returnByValue: true,
         });
@@ -313,7 +365,10 @@ try {
   }
   // Never run the hydrated browser smoke locally: its build and browser workload
   // belong to the isolated CI runner, outside the user's shared memory budget.
-  if (process.env.CI === 'true' && homeRawHtml) await captureHydratedHome(homeRawHtml);
+  if (process.env.CI === 'true' && homeRawHtml) {
+    await verifyFleuryItemRendering(application);
+    await captureHydratedHome(homeRawHtml);
+  }
 } finally {
   entry?.ɵdestroyAngularServerApp();
   try { await cdp?.send('Browser.close'); } catch { /* Chrome may close its socket first. */ }

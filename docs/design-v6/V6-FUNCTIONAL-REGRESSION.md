@@ -105,3 +105,5 @@ Les 16 suites contractuelles Playground V6 relisent les actions, conditions, ét
 
 Le 15 octobre, le test Angular ciblé de l'accueil a été arrêté préventivement pendant la compilation à 2,16 Gio disponibles et en baisse. Sa vérification est transférée à la CI. Les corrections de revue concernent les contrastes des boutons repos/survol, les numéros d'étape des voyages et le logo décoratif de l'accueil masqué aux technologies d'assistance.
 
+Le GET public de l'inventaire Fleury a confirmé 38 lieux visibles le 15 octobre. Le complément CI relit ce total, récupère les liens produits par la vraie liste Angular (`size=48`, `closed=all`) puis rend chaque détail séquentiellement pour vérifier son titre. Il reste une preuve de rendu initial, pas une validation de chaque interaction ou permission. Le contrôle borne la fixture à 96 lieux et échoue explicitement si le volume la dépasse au lieu d'omettre des lignes.
+
