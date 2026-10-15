@@ -33,11 +33,11 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | PASS au commit `88ad17e45` : frontend, backend, version, configuration, sécurité, Docker et recette HTTP ; prochains changements à revalider |
+| P21 CI Node 24 | PASS au commit `ae874422d` : frontend, backend, version, configuration, sécurité, Docker et recette HTTP ; prochains changements à revalider |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exception sécurité explicitement autorisée le 15 octobre : référence PKCS 10.0.13 dans Infrastructure |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | PASS au commit `88ad17e45` ; recette exhaustive encore ouverte |
+| CI intégralement verte | PASS au commit `ae874422d` ; recette exhaustive encore ouverte |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
 | Réseau initial des nouveaux médias hero | À MESURER — quatre visuels ajoutés, P04.6 non démontré |

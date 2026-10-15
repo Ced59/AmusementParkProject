@@ -86,6 +86,7 @@ try {
   const routes = [
     ...['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'].map(lang => ({ path: `/${lang}/home`, status: 200, lang, home: true })),
     { path: '/fr/parks', status: 200, lang: 'fr' },
+    { path: '/fr/parks?page=2', status: 200, lang: 'fr' },
     { path: park, status: 200, lang: 'fr' },
     { path: '/fr/park/1675e96c-6361-48ff-862b-43218167facd/le-pal', status: 200, lang: 'fr' },
     { path: `${park}/item/088b092c-808f-4eba-9407-34141caa94dc/rhaegal`, status: 200, lang: 'fr' },

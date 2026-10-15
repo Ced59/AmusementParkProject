@@ -254,6 +254,8 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 
 ## Invariants fonctionnels
 
+Dernière campagne complète verte : [CI `ae874422d`](https://github.com/Ced59/AmusementParkProject/actions/runs/38743956202), 39 routes / 2 028 captures, 38 détails Fleury, 25 GET / 213 assertions HTTP et 28 contrôles hydratés. Le complément P05 en préparation couvre page 2 directe, filtre d'audience, quatre tailles de page et distinction sélection carte/fiche ; ses résultats CI ne sont pas encore acquis. Les scénarios de toutes les familles et la revue visuelle exhaustive restent ouverts.
+
 - Aucun changement d’API, DTO, facade, port, guard, resolver, route, slug, query parameter ou règle de visibilité.
 - Aucun changement d’authentification, rôle, pagination serveur, classement, note, collection, watch, passeport, Park Fit, trip ou workflow admin.
 - Aucun remplacement de Leaflet, Quill, SSR, hydratation, `TransferState`, `@defer`, lazy loading, cache, SEO, canonical, hreflang ou JSON-LD.

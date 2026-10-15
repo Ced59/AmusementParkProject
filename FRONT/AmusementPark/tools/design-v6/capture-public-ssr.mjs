@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import { extname, join, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isCanceledInterceptionError } from './browser-interception-errors.mjs';
+import { publicDirectoryReadEvidence, publicRouteEvidenceName } from './public-directory-evidence.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -21,6 +22,7 @@ const paths = process.env.V6_SSR_PATHS?.split(',') ?? [
   '/',
   ...['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'].map((language) => `/${language}/home`),
   '/fr/parks',
+  '/fr/parks?page=2',
   '/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury',
   '/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/item/088b092c-808f-4eba-9407-34141caa94dc/rhaegal',
   '/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/item/c01aa022-260c-424b-897a-793e1c406421/l-epee-d-odin',
@@ -38,6 +40,9 @@ const paths = process.env.V6_SSR_PATHS?.split(',') ?? [
 ];
 if (paths.some((path) => path !== '/' && (!/^\/(fr|en|de|nl|it|es|pt|pl)\//.test(path) || /\/admin|\/profile/.test(path)))) {
   throw new Error('Only anonymous localized public routes are accepted.');
+}
+if (new Set(paths.map(publicRouteEvidenceName)).size !== paths.length) {
+  throw new Error('Public evidence filenames must be unique, including query-string pages.');
 }
 
 const chromeCandidates = [
@@ -215,8 +220,10 @@ async function captureHydratedHome(rawHtml) {
         return;
       }
       const response = await nativeFetch(target, { method: request.method, signal: AbortSignal.timeout(20000) });
-      result.apiReads.push({ path: target.pathname, query: target.search, status: response.status });
-      await fulfill(requestId, response.status, response.headers.get('content-type') ?? 'application/octet-stream', await response.arrayBuffer());
+      const bytes = await response.arrayBuffer();
+      const directory = publicDirectoryReadEvidence(target, response.status, bytes);
+      result.apiReads.push({ path: target.pathname, query: target.search, status: response.status, ...(directory ? { directory } : {}) });
+      await fulfill(requestId, response.status, response.headers.get('content-type') ?? 'application/octet-stream', bytes);
       return;
     }
     if (resourceType === 'Document' && url.origin === origin && url.pathname === '/fr/home') {
@@ -257,13 +264,15 @@ async function captureHydratedHome(rawHtml) {
   const waitUntil = async (expression, label) => {
     for (let attempt = 0; attempt < 100; attempt++) {
       if (interceptionErrors.length) throw new Error(interceptionErrors.join('; '));
-      if (await evaluate(expression)) { result.checks.push(label); return; }
+      if (typeof expression === 'function' ? await expression() : await evaluate(expression)) { result.checks.push(label); return; }
       await new Promise((yes) => setTimeout(yes, 200));
     }
     result.failedCheck = label;
     try {
       result.failedBrowserState = await evaluate(`({ path: location.pathname + location.search, viewport: innerWidth,
         heading: document.querySelector('h1')?.textContent?.trim(),
+        directoryNames: [...document.querySelectorAll('.parks-results .ui-park-card__title')].map(title => title.textContent.trim()),
+        directoryPage: document.querySelector('.parks-results .p-paginator-page.p-highlight')?.textContent.trim(),
         treeExpanded: document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded'),
         treeLinks: [...document.querySelectorAll('.app-public-park-tree a')].map(link => ({ href: link.getAttribute('href'), label: link.textContent.trim(), current: link.classList.contains('app-public-park-tree__item--current') })) })`);
       const failurePixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
@@ -272,6 +281,25 @@ async function captureHydratedHome(rawHtml) {
       result.failureDiagnosticError = error.message;
     }
     throw new Error(`Hydrated browser check timed out: ${label}`);
+  };
+  const verifyDirectory = async (cursor, expected, label) => {
+    let read;
+    await waitUntil(() => {
+      read = result.apiReads.slice(cursor).find(candidate => candidate.directory
+        && Object.entries(expected).every(([key, value]) => new URLSearchParams(candidate.query).get(key) === value));
+      return Boolean(read);
+    }, `${label}: real anonymous directory request`);
+    if (read.directory.pagination.currentPage !== Number(expected.page) || read.directory.pagination.itemsPerPage !== Number(expected.size)) {
+      throw new Error(`Directory response did not honor the requested page/size: ${label}`);
+    }
+    await waitUntil(`location.pathname === '/fr/parks'
+      && !document.querySelector('.parks-results .app-page-state--loading')
+      && JSON.stringify([...document.querySelectorAll('.parks-results .ui-park-card__title')].map(title => title.textContent.trim())) === ${JSON.stringify(JSON.stringify(read.directory.names))}
+      && (${read.directory.pagination.totalItems > read.directory.pagination.itemsPerPage}
+        ? document.querySelector('.parks-results .p-paginator-page.p-highlight')?.textContent.trim() === '${read.directory.pagination.currentPage}'
+        : !document.querySelector('.parks-results .app-pagination'))`, `${label}: API names and pagination match the rendered cards`);
+    (result.directoryScenarios ??= []).push({ label, path: read.path, query: read.query, ...read.directory });
+    return read.directory;
   };
   try {
     await cdp.send('Network.enable');
@@ -378,6 +406,50 @@ async function captureHydratedHome(rawHtml) {
     await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'browser back from inventory restores the full park');
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
+    let directoryCursor = result.apiReads.length;
+    await evaluate(`document.querySelector('.app-public-nav__links a[href="/fr/parks"]').click()`);
+    await verifyDirectory(directoryCursor, { page: '1', size: '9' }, 'catalogue entry');
+    directoryCursor = result.apiReads.length;
+    await evaluate(`[...document.querySelectorAll('.parks-results .p-paginator-page')].find(link => link.textContent.trim() === '2').click()`);
+    await verifyDirectory(directoryCursor, { page: '2', size: '9' }, 'catalogue page two');
+    await waitUntil(`location.search === '?page=2' && document.querySelector('link[rel="canonical"]')?.href === '${publicOrigin}/fr/parks?page=2'`, 'catalogue page two retains its real URL and canonical');
+    directoryCursor = result.apiReads.length;
+    await evaluate(`history.back()`);
+    await verifyDirectory(directoryCursor, { page: '1', size: '9' }, 'catalogue browser back');
+    await waitUntil(`location.search === ''`, 'catalogue browser back restores the first-page URL');
+    directoryCursor = result.apiReads.length;
+    await evaluate(`(() => { const select = document.querySelector('#search-panel-audienceClassification'); const option = [...select.options].find(option => option.value.endsWith('Regional')); if (!option) throw new Error('Missing Regional filter'); select.value = option.value; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+    await verifyDirectory(directoryCursor, { page: '1', size: '9', audienceClassification: 'Regional' }, 'catalogue audience filter');
+    directoryCursor = result.apiReads.length;
+    await evaluate(`(() => { const select = document.querySelector('#search-panel-audienceClassification'); select.selectedIndex = 0; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+    await verifyDirectory(directoryCursor, { page: '1', size: '9', audienceClassification: null }, 'catalogue audience reset');
+    for (const rows of [6, 18, 36, 9]) {
+      directoryCursor = result.apiReads.length;
+      await evaluate(`(() => { const select = document.querySelector('.parks-results .p-paginator-rpp-options'); const option = [...select.options].find(option => option.textContent.trim() === '${rows}'); if (!option) throw new Error('Missing directory page size'); select.value = option.value; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await verifyDirectory(directoryCursor, { page: '1', size: String(rows), audienceClassification: null }, `catalogue page size ${rows}`);
+    }
+    directoryCursor = result.apiReads.length;
+    await evaluate(`(() => { const input = document.querySelector('#parks-search-input'); input.value = 'Fleury'; input.dispatchEvent(new Event('input', { bubbles: true })); document.querySelector('.parks-toolbar .app-search-panel__submit button').click(); })()`);
+    const directorySearch = await verifyDirectory(directoryCursor, { page: '1', size: '9', query: 'Fleury' }, 'catalogue text search');
+    await evaluate(`document.querySelector('.parks-results__card-target .ui-park-card__title').click()`);
+    await waitUntil(`location.pathname === '/fr/parks' && !!document.querySelector('.parks-results__clear-selection') && document.querySelectorAll('.parks-results__card-target').length === 1 && !!document.querySelector('.parks-results__card-target--selected')`, 'catalogue card body selects the real map park without opening a detail');
+    await evaluate(`document.querySelector('.parks-results__clear-selection').click()`);
+    await waitUntil(`!document.querySelector('.parks-results__clear-selection') && document.querySelectorAll('.parks-results__card-target').length === ${directorySearch.names.length}`, 'catalogue clear selection restores the real result list');
+    for (const width of [390, 1366]) {
+      await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
+      await evaluate(`document.querySelector('.parks-results').scrollIntoView({ block: 'start', behavior: 'instant' })`);
+      const directoryBounds = await evaluate(`({ viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth })`);
+      if (directoryBounds.scrollWidth > width + 1) throw new Error('Hydrated catalogue overflows the viewport.');
+      const directoryScreenshot = `fr_parks_hydrated_search_${width}.webp`;
+      const directoryPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+      await writeFile(join(outputRoot, directoryScreenshot), Buffer.from(directoryPixels.data, 'base64'));
+      result.captures.push(directoryScreenshot);
+    }
+    const directoryDetailPath = await evaluate(`document.querySelector('.parks-results .ui-park-card__cta').getAttribute('href')`);
+    await evaluate(`document.querySelector('.parks-results .ui-park-card__cta').click()`);
+    await waitUntil(`location.pathname === ${JSON.stringify(directoryDetailPath)} && !!document.querySelector('app-park-detail-page h1') && !document.querySelector('.parks-results')`, 'catalogue detail action opens its full real park route');
+    await evaluate(`document.querySelector('.app-public-nav__links a[href="/fr/home"]').click()`);
+    await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'catalogue recipe restores the home route');
     if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser raised an exception; inspect report.json.');
     console.log(`Hydrated home: ${result.checks.length} checks passed; production writes blocked.`);
   } finally {
@@ -488,7 +560,7 @@ try {
     if (!path.endsWith('/not-found') && /<app-public-not-found-page\b/i.test(html)) {
       throw new Error(`Unexpected not-found component in initial Angular content: ${path}`);
     }
-    const routeName = path === '/' ? 'language-entry' : path.slice(1).replaceAll('/', '_');
+    const routeName = publicRouteEvidenceName(path);
     const htmlPath = join(outputRoot, `${routeName}.html`);
     await writeFile(htmlPath, await staticDocument(html));
     const headingPattern = expectedEmptyPricing ? /<h3\b[^>]*>([\s\S]*?)<\/h3>/i : /<h1\b[^>]*>([\s\S]*?)<\/h1>/i;
