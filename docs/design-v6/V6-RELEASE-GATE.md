@@ -78,6 +78,8 @@ La [CI du commit e98d7f8fb](https://github.com/Ced59/AmusementParkProject/action
 
 La [CI ce3f7b800](https://github.com/Ced59/AmusementParkProject/actions/runs/38699592749) réussit intégralement avec la route racine ajoutée (20 routes). Son diagnostic révèle des contrastes visibles à corriger, malgré les tests précédemment verts : les gates P01/P02/P03/P20 restent ouverts. Les nouvelles corrections et l'élargissement à 36 routes doivent passer la prochaine CI avant tout nouveau verdict.
 
+La [CI 3e7266e0e](https://github.com/Ced59/AmusementParkProject/actions/runs/38701602727) valide tests/build/budgets/sécurité mais échoue dans la capture : le cas tarifs Fleury est réellement vide (API et page V5 404), non une fiche remplie avec H1. L'outillage exige désormais la preuve de cet état vide et ajoute Efteling rempli. Deux derniers contrastes calendrier/galerie sont corrigés ; les 38 routes de la nouvelle campagne et les gates ouverts doivent encore être validés.
+
 Le workflow existant reçoit uniquement deux étapes de recette conditionnées à la PR de cette branche : capture initiale SSR publique et dépôt de l'artefact. Les conditions de livraison, images et déploiement ne sont pas modifiées. La PR reste en brouillon tant que la recette complète n'est pas démontrée.
 
 ## Rollback

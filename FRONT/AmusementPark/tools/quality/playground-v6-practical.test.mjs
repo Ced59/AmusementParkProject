@@ -25,6 +25,10 @@ const practicalStyles = [
   'src/app/features/public/live/ui/public-live-history-panel.component.scss',
 ].map(read).join('\n');
 
+test('the today badge uses the per-theme gold foreground rather than a fixed dark label', () => {
+  assert.match(practicalStyles, /\.park-opening-hours-cell__today\s*\{[^}]*color:\s*var\(--app-on-gold\)/);
+});
+
 test('opening hours preserve month navigation, selected day, admissions and timezone', () => {
   for (const contract of [
     'previousMonthKey(data.calendar)',

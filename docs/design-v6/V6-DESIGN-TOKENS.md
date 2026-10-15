@@ -50,6 +50,8 @@ Les alias `--app-field`, `--app-map`, `--app-line`, `--app-line-weak` et `--app-
 
 Le diagnostic sur les 20 routes du commit `ce3f7b800` a relevé des petits textes encore décoratifs (kickers, navigation desktop, liens de notation), des chips primaires à 4,15:1 et du texte discret à 4,11:1 en clair. Corrections en recette : `--app-primary-strong` clair réutilise `--app-navigation-active-text` (`#9a2c15`), le rose sémantique devient `#9c1643` et `--text-faint` devient `#5e6761`. Les aplats orange/rose et leurs couleurs de bouton ne sont pas remplacés par ces premiers plans. Les tests calculent aussi le contraste sur les vrais fonds teintés/composités, pas uniquement sur le papier général ; la prochaine CI doit confirmer les mesures navigateur.
 
+Les six alias `--type-*` rejoignent également le bloc `body` existant de `_tokens.scss` : leur valeur suit alors les accents du thème courant, au lieu d'hériter de couleurs déjà résolues sur `:root`. Les surcharges sémantiques claires de catégories sont conservées. Le badge de jour courant utilise le premier plan or de chaque thème et les petits compteurs de galerie l'encre du thème sur leur double fond teinté.
+
 ## Géométrie et densité
 
 - Largeur éditoriale courante : `1160px`.

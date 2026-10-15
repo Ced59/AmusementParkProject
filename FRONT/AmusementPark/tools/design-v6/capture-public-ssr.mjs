@@ -30,6 +30,8 @@ const paths = process.env.V6_SSR_PATHS?.split(',') ?? [
   ...['items', 'zones', 'map', 'images', 'videos', 'weather', 'opening-hours', 'pricing', 'comments', 'history']
     .map((suffix) => `/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/${suffix}`),
   '/fr/rankings', '/fr/rankings/methodology', '/fr/manufacturers', '/fr/technical', '/fr/versions',
+  '/fr/park/94a4c4df-5ab6-4dc3-b756-2de664e947c4/efteling',
+  '/fr/park/94a4c4df-5ab6-4dc3-b756-2de664e947c4/efteling/pricing',
   '/fr/about', '/fr/contact', '/fr/privacy', '/fr/not-found',
 ];
 if (paths.some((path) => path !== '/' && (!/^\/(fr|en|de|nl|it|es|pt|pl)\//.test(path) || /\/admin|\/profile/.test(path)))) {
@@ -345,15 +347,26 @@ try {
     if (!response) throw new Error(`No Angular route matched ${path}`);
     const html = await response.text();
     if (path === '/fr/home') homeRawHtml = html;
-    if (!/<app-root\b[^>]*>[\s\S]*?<h1\b/i.test(html)) throw new Error(`Missing initial Angular content for ${path}`);
+    // The public Fleury pricing API genuinely returns 404. Production V5 renders
+    // its existing empty-state h3, not an entity h1. Require both the API evidence
+    // and the real empty component; this is not permission to accept blank pages.
+    const expectedEmptyPricing = path === '/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/pricing'
+      && reads.some((read) => read.path === '/api/parks/4e0155db-9dbf-4755-a32f-0cc8950d61c4/pricing' && read.status === 404)
+      && /<app-park-pricing-page\b[\s\S]*?<app-empty-state\b[\s\S]*?<h3\b/i.test(html);
+    if (!/<app-root\b/i.test(html) || (!/<h1\b/i.test(html) && !expectedEmptyPricing)) {
+      await writeFile(join(outputRoot, 'failed-initial-content.html'), await staticDocument(html));
+      throw new Error(`Missing initial Angular content for ${path}`);
+    }
     if (!path.endsWith('/not-found') && /<app-public-not-found-page\b/i.test(html)) {
       throw new Error(`Unexpected not-found component in initial Angular content: ${path}`);
     }
     const routeName = path === '/' ? 'language-entry' : path.slice(1).replaceAll('/', '_');
     const htmlPath = join(outputRoot, `${routeName}.html`);
     await writeFile(htmlPath, await staticDocument(html));
-    const initialHeading = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    const route = { path, engineStatus: response.status, initialHeading, bytes: Buffer.byteLength(html), reads: [...reads], captures: [] };
+    const headingPattern = expectedEmptyPricing ? /<h3\b[^>]*>([\s\S]*?)<\/h3>/i : /<h1\b[^>]*>([\s\S]*?)<\/h1>/i;
+    const initialHeading = html.match(headingPattern)?.[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const route = { path, engineStatus: response.status, initialState: expectedEmptyPricing ? 'empty-public-pricing-404' : 'content',
+      initialHeading, initialHeadingLevel: expectedEmptyPricing ? 3 : 1, bytes: Buffer.byteLength(html), reads: [...reads], captures: [] };
     report.routes.push(route);
     const fileUrl = pathToFileURL(htmlPath).href;
     await cdp.send('Page.navigate', { url: fileUrl });

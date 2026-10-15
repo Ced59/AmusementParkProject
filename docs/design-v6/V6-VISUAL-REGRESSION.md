@@ -26,6 +26,10 @@ La [CI ce3f7b800](https://github.com/Ced59/AmusementParkProject/actions/runs/386
 
 La campagne suivante ajoute les sous-pages Fleury (inventaire, zones, carte, images, vidéos, météo, horaires, prix, commentaires et histoire), l'histoire standalone visible, les classements/méthodologie, constructeurs, technique et versions : 36 routes prévues. Elle refuse un composant 404 inattendu et enregistre le titre initial de chaque route. Les blocs différés et cartes non hydratées restent explicitement hors validation interactive. L'inventaire complet est régénéré dans l'artefact CI ; les tailles SCSS utilisent des fins de ligne normalisées pour être reproductibles entre Windows et Linux.
 
+Le [run 38701602727](https://github.com/Ced59/AmusementParkProject/actions/runs/38701602727) valide les tests et budgets, puis capture 24 routes / 1 248 images avant de refuser le titre manquant des tarifs Fleury. Diagnostic public : l'API tarifs renvoie réellement 404 et la production V5 renvoie déjà 404 avec le H3 « Aucun tarif disponible ». L'outil conserve l'exigence H1 pour les fiches remplies et n'accepte cet état vide que pour cette fixture, avec preuve API 404 et composant vide réel. Un échec futur dépose désormais le HTML diagnostique. La campagne ajoute aussi le parc Efteling et ses tarifs (API publique 200, 4 billets, 3 abonnements, 1 parking au 15 octobre), soit 38 routes prévues, sans donnée de démonstration ni publication.
+
+Sur les 24 routes mesurées, les contrastes précédents ne réapparaissent pas. Il reste cinq occurrences candidates correspondant à deux composants : le badge « Aujourd'hui » du calendrier (2,82:1 en clair) et le compte sélectionné de galerie (2,42:1 en clair / 3,86:1 en sombre). Les premiers plans deviennent respectivement `--app-on-gold` et `--app-heading`, avec tests sur les deux thèmes et les fonds composités. Les alias de catégories sont aussi résolus sur `body` plutôt que `:root`, pour ne pas figer les accents clairs lors d'une bascule sombre. La prochaine CI doit attester ces changements.
+
 ## Baseline V5 enregistrée
 
 Les fichiers sont sous `evidence/baseline-v5/`.

@@ -8,6 +8,7 @@ const designTokens = readFileSync(resolve(styles, '_design-tokens.scss'), 'utf8'
 const base = readFileSync(resolve(styles, '_base.scss'), 'utf8');
 const light = readFileSync(resolve(styles, '_theme-light.scss'), 'utf8');
 const dark = readFileSync(resolve(styles, '_theme-dark.scss'), 'utf8');
+const adapters = readFileSync(resolve(styles, '_tokens.scss'), 'utf8');
 
 function variables(source) {
   return new Map([...source.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]));
@@ -24,8 +25,8 @@ function luminance(color) {
 }
 
 function mix(foreground, background, foregroundWeight) {
-  const foregroundChannels = rgb(foreground);
-  const backgroundChannels = rgb(background);
+  const foregroundChannels = Array.isArray(foreground) ? foreground : rgb(foreground);
+  const backgroundChannels = Array.isArray(background) ? background : rgb(background);
   return foregroundChannels.map(
     (channel, index) => channel * foregroundWeight + backgroundChannels[index] * (1 - foregroundWeight),
   );
@@ -111,6 +112,27 @@ test('Playground light semantic chip tones meet AA on the composited soft backgr
     const background = channels.slice(0, 3).map((channel, index) =>
       channel / 255 * channels[3] + surface[index] * (1 - channels[3]));
     assert.ok(contrast(foreground, background) >= 4.5, `${tone} chips must meet AA in light mode`);
+  }
+});
+
+test('Playground category aliases resolve where the theme values live, not on root', () => {
+  assert.doesNotMatch(designTokens, /--type-(?:coaster|water|family|show|food|thrill):/);
+  const body = adapters.match(/body\s*\{([^}]+)\}/)?.[1];
+  assert.ok(body);
+  for (const [category, accent] of [['coaster', 'orange'], ['water', 'sky'], ['family', 'lime'], ['show', 'purple'], ['food', 'gold'], ['thrill', 'rose']]) {
+    assert.ok(body.includes(`--type-${category}: var(--c-${accent});`));
+  }
+});
+
+test('calendar today labels and active gallery counts meet AA in both themes', () => {
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(source)]);
+    assert.ok(contrast(resolveThemeColor(theme, '--app-on-gold'), resolveThemeColor(theme, '--app-accent-gold')) >= 4.5);
+    for (const accent of ['orange', 'sky', 'lime', 'gold', 'rose', 'purple']) {
+      const axisSurface = mix(theme.get(`--c-${accent}`), theme.get('--bg-card'), 0.1);
+      const countSurface = mix(theme.get(`--c-${accent}`), axisSurface, 0.22);
+      assert.ok(contrast(theme.get('--heading'), countSurface) >= 4.5, `${accent} gallery counts must meet AA`);
+    }
   }
 });
 
