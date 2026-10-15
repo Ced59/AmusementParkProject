@@ -151,6 +151,7 @@ test('secondary pages preserve legal, contact, sitemap, rich content, invitation
 });
 
 test('secondary public surfaces follow the flat Playground language', () => {
+  assert.match(secondaryStyles, /\.manufacturers-group__letter\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
   assert.match(secondaryStyles, /\.park-fit-hero[\s\S]*?border-top:\s*4px solid var\(--c-orange\)/);
   assert.match(secondaryStyles, /\.shared-passport__story[^}]*border-top:\s*4px solid var\(--c-gold\)/);
   assert.match(secondaryStyles, /\.technical-detail__hero[\s\S]*?border-top:\s*4px solid var\(--app-accent-cyan\)/);

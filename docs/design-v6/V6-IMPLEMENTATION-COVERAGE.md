@@ -61,7 +61,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P15 — notes, classements et actions sociales | CIBLÉ — RECETTE OUVERTE | contrats protégés ; actions authentifiées non exercées en recette |
 | P16 — autres parcours publics | CIBLÉ — RECETTE OUVERTE | contrats protégés ; pages secondaires partiellement capturées |
 | P17 — auth/compte | CIBLÉ — RECETTE OUVERTE | tests unitaires/contrats ; comptes et sessions de recette nécessaires |
-| P18 — administration | CIBLÉ — RECETTE OUVERTE | 58 terminaux/guards/workflows inventoriés ; recette admin isolée nécessaire |
+| P18 — administration | CIBLÉ — EXCEPTION DE RECETTE ACCEPTÉE | 58 terminaux/guards/workflows inventoriés ; propriétaire accepte les corrections admin après déploiement faute d'environnement isolé, sans prétendre à une recette réelle complète |
 | P19 — états rares | CIBLÉ — RECETTE OUVERTE | contrats protégés ; tous les overlays/erreurs/états longs à valider |
 | P20 — responsive/a11y | PASS CIBLÉ | 30 cas Chromium, 13 largeurs, 2 thèmes, faible hauteur, 113 contrôles qualité/a11y ; revue Angular réelle à P22 |
 | P21 — CI/performance/SEO | PASS CI CIBLÉ | CI e98d7f8fb intégralement verte ; réseau/CWV/serveur déployé à recetter |

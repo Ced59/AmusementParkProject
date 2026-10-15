@@ -2,7 +2,7 @@
    Keep dark visual identity untouched. Light-mode overrides only improve contrast. */
 
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 3px solid transparent;
+  outline: 3px solid var(--app-accent-cyan);
   outline-offset: 3px;
   box-shadow: var(--shadow-focus);
 }

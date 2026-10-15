@@ -29,6 +29,12 @@ test('the today badge uses the per-theme gold foreground rather than a fixed dar
   assert.match(practicalStyles, /\.park-opening-hours-cell__today\s*\{[^}]*color:\s*var\(--app-on-gold\)/);
 });
 
+test('pricing breadcrumbs, kickers and audience chips use semantic text accents', () => {
+  for (const selector of ['park-pricing-breadcrumb a', 'park-pricing-hero__kicker', 'park-price-card__audience']) {
+    assert.match(practicalStyles, new RegExp(`\\.${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
+  }
+});
+
 test('opening hours preserve month navigation, selected day, admissions and timezone', () => {
   for (const contract of [
     'previousMonthKey(data.calendar)',

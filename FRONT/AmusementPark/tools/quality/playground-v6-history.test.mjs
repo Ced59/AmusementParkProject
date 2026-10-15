@@ -24,6 +24,12 @@ const historyStyles = [
   'park-history-comparison-page.component.scss',
 ].map((file) => read(`src/app/features/public/history/pages/${file}`)).join('\n');
 
+test('small timeline labels and narrative links use readable semantic text accents', () => {
+  for (const selector of ['canonical-history-event__type', 'history-narrative-link']) {
+    assert.match(historyStyles, new RegExp(`\\.${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
+  }
+});
+
 test('historical routes keep resolvers, deep links, years and pagination', () => {
   for (const contract of [
     "path: 'attraction/:standaloneAttractionId/:slug/history/page/:page'",

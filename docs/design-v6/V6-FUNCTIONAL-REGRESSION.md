@@ -21,7 +21,7 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 | Social | notes, commentaires, classements, collections, watch, partage | À TESTER |
 | Park Fit/passeport/trips | validations, résultats, brouillons, permissions | CONTRATS PASS — scénarios authentifiés complets à P21 |
 | Auth/compte | login, inscription, reset, session expirée, export/suppression | CONTRATS PASS — scénarios authentifiés complets à P21 |
-| Admin | 58 écrans, tables, formulaires, import, édition, jobs, dirty/apply | CONTRATS PASS — mutations réelles avec compte de recette à P21 |
+| Admin | 58 écrans, tables, formulaires, import, édition, jobs, dirty/apply | CONTRATS PASS — propriétaire accepte la limite de recette réelle et les corrections après déploiement faute d'environnement isolé (15 octobre) |
 | Transversal | consentement, toasts, dialogs, 403/404/500, Quill, unités | CONTRATS PASS — clavier/SR et erreurs intégrées à P20/P21 |
 
 ## Contrats gelés
@@ -37,6 +37,8 @@ Les fichiers métier, facades, ports, DTO, guards, resolvers, services API, stor
 - Aucun avertissement ni erreur console n’a été relevé pendant la capture ciblée.
 
 Les parcours authentifiés et admin ne sont pas manipulés sur la production. Leur baseline repose sur les templates, tests et fixtures du dépôt, puis sera exercée dans l’environnement isolé de recette.
+
+Instruction actualisée du propriétaire le 15 octobre : aucun environnement isolé admin n'est disponible ; poursuivre les écrans et les tests CI, avec corrections admin après déploiement si nécessaire. Cette limite est acceptée et n'est plus présentée comme un blocage d'environnement. Les opérations réelles ne sont pas déclarées testées ; les permissions, tests existants et interdictions de mutations parasites restent en vigueur.
 
 ## Contrôles P03
 
@@ -110,6 +112,8 @@ Le GET public de l'inventaire Fleury a confirmé 38 lieux visibles le 15 octobre
 Dans le même run, le smoke `hydratedHome` réussit ses quatre contrôles : racine Angular hydratée, bouton de cookies nécessaires, bascule de thème et recherche réelle retournant Le Fleury. Aucune exception navigateur n'est enregistrée. Toutes les mutations réseau sont bloquées dans ce navigateur de recette ; les tests de notes, compte, import et publication exigent donc toujours un environnement isolé avec comptes de test.
 
 Le 15 octobre, les contrôles publics de tarifs distinguent les données réellement disponibles : Fleury, API 404 et page V5 404 avec état vide « Aucun tarif disponible » ; Efteling visible, API 200 avec 4 offres d'entrée, 3 abonnements et 1 parking. Le test de capture est adapté à cette absence attendue, pas le produit : aucun prix, état de visibilité, code HTTP, template ou source tarifaire n'est modifié. La fixture Efteling complète le contrôle de l'état rempli.
+
+La revue relève un écart de périmètre du test d'inventaire Fleury : la liste Angular utilisait `closed=all`, contrairement à la lecture API restée au défaut `openOnly`. Les deux lectures API bornées utilisent maintenant `closedFilter=all` et le rapport l'enregistre ; un test protège l'alignement et le rejet de tout élément non public. La lecture publique complète confirme toujours 38 éléments visibles au 15 octobre. Les fonctionnalités de filtre du produit ne sont pas modifiées.
 
 Les nouvelles règles mémoire du 15 octobre imposent aussi 3,5 Gio physiques et 4 Gio de réserve de commit avant opération intensive, ainsi qu'un verrou partagé entre chats. Les contrôles lourds suivants sont déportés en CI. L'incident temporaire à 1 037 processus / 0,78 Gio de commit a imposé une pause ; aucun processus utilisateur n'a été terminé. Les lectures légères ont repris après retour à 329 processus / 11,07 Gio de commit.
 

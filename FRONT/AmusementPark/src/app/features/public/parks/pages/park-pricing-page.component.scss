@@ -18,7 +18,7 @@
 }
 
 .park-pricing-breadcrumb a {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   text-decoration: none;
 }
 
@@ -39,7 +39,7 @@
 
 .park-pricing-hero__kicker {
   margin: 0 0 0.55rem;
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -194,7 +194,7 @@
   margin-top: 0.45rem;
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   background: color-mix(in srgb, var(--app-primary) 12%, transparent);
   font-size: 0.76rem;
   font-weight: 700;

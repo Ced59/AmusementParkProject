@@ -33,13 +33,13 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | EN ATTENTE — serveur local interdit, validation sur environnement de revue requise |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | PASS au commit `e98d7f8fb` : frontend, backend, version, configuration, sécurité et Docker ; prochain commit à revalider |
+| P21 CI Node 24 | PASS au commit `2675e3a8b` : frontend, backend, version, configuration, sécurité et Docker ; prochain commit à revalider |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exception sécurité explicitement autorisée le 15 octobre : référence PKCS 10.0.13 dans Infrastructure |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | PASS au commit `e98d7f8fb` ; sécurité corrigée, nouvelle recette encore ouverte |
+| CI intégralement verte | PASS au commit `2675e3a8b` ; sécurité corrigée, nouvelle recette encore ouverte |
 | Revue visuelle propriétaire | NON DEMANDÉE |
-| Recette isolée compte/admin | BLOQUÉE — URL et accès de test non fournis ; aucune mutation de production autorisée |
+| Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
 | Réseau initial des nouveaux médias hero | À MESURER — quatre visuels ajoutés, P04.6 non démontré |
 | Feu vert explicite de fusion | NON REÇU |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
@@ -56,8 +56,8 @@
 
 ## Audit de portée P22
 
-- 244 fichiers modifiés : 174 sous `FRONT/`, 68 sous `docs/`, un projet sous `API/` et un workflow sous `.github/`.
-- 134 feuilles SCSS, 4 templates, 25 tests/outils MJS, 9 fichiers TypeScript dont 6 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
+- 245 fichiers modifiés : 175 sous `FRONT/`, 68 sous `docs/`, un projet sous `API/` et un workflow sous `.github/`.
+- 135 feuilles SCSS, 4 templates, 25 tests/outils MJS, 9 fichiers TypeScript dont 6 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
 - Aucun fichier supprimé ; aucun changement sous `deploy/`. La seule exception backend est la référence PKCS autorisée ci-dessous ; le workflow reçoit uniquement la recette CI conditionnelle à la branche V6.
 - `app.routes.ts`, `package-lock.json`, endpoints, DTO, guards, facades, ports, services, persistance et infrastructure inchangés.
 - Les seuls TypeScript de production modifiés ajoutent le composant image existant à l’accueil, réalignent les métadonnées `sizes` sur le conteneur V6 et déplacent le style du tooltip vers le SCSS partagé.
@@ -67,6 +67,10 @@
 ## Décision avant fusion
 
 La PR unique est ouverte. La fusion reste interdite jusqu’à ce que la CI Node 24 du dernier commit soit entièrement verte, que les scénarios Angular réels et les comparaisons visuelles contractuelles soient exécutés puis revus, et que le propriétaire écrive explicitement son feu vert. Les captures de fixtures ne permettent pas de remplacer cette recette. La procédure de rollback demeure celle de `docs/deploy/transactional-app-deployment.md` et porte sur une génération complète.
+
+### Ajustement explicite du propriétaire — recette admin
+
+Le 15 octobre, en réponse à la demande d'URL et d'accès de recette, le propriétaire indique ne pas disposer d'un environnement isolé et demande de réaliser les écrans admin, quitte à les corriger un par un après déploiement. Cette instruction plus récente lève le blocage lié à l'absence d'environnement pour la recette réelle admin. Les 58 écrans restent dans le périmètre d'implémentation et de tests CI ; leur validation opérationnelle complète n'est pas déclarée acquise. Aucune mutation de production n'est autorisée pour simuler une recette. Cette acceptation de risque ne vaut ni feu vert final de fusion, ni acceptation d'un défaut bloquant connu de sécurité, permission, métier ou disponibilité. Les autres gates restent applicables.
 
 ## Exception sécurité autorisée le 15 octobre
 
@@ -79,6 +83,8 @@ La [CI du commit e98d7f8fb](https://github.com/Ced59/AmusementParkProject/action
 La [CI ce3f7b800](https://github.com/Ced59/AmusementParkProject/actions/runs/38699592749) réussit intégralement avec la route racine ajoutée (20 routes). Son diagnostic révèle des contrastes visibles à corriger, malgré les tests précédemment verts : les gates P01/P02/P03/P20 restent ouverts. Les nouvelles corrections et l'élargissement à 36 routes doivent passer la prochaine CI avant tout nouveau verdict.
 
 La [CI 3e7266e0e](https://github.com/Ced59/AmusementParkProject/actions/runs/38701602727) valide tests/build/budgets/sécurité mais échoue dans la capture : le cas tarifs Fleury est réellement vide (API et page V5 404), non une fiche remplie avec H1. L'outillage exige désormais la preuve de cet état vide et ajoute Efteling rempli. Deux derniers contrastes calendrier/galerie sont corrigés ; les 38 routes de la nouvelle campagne et les gates ouverts doivent encore être validés.
+
+La [CI 2675e3a8b](https://github.com/Ced59/AmusementParkProject/actions/runs/38703888781) réussit intégralement avec les 38 routes. Le diagnostic identifie des libellés encore insuffisamment contrastés sur les pages ajoutées ; corrections, couleur protégée du wordmark, périmètre fermé de l'inventaire et nouveaux scénarios hydratés restent à attester sur le prochain commit. Aucune recette complète n'est déduite de la seule couleur verte de la CI.
 
 Le workflow existant reçoit uniquement deux étapes de recette conditionnées à la PR de cette branche : capture initiale SSR publique et dépôt de l'artefact. Les conditions de livraison, images et déploiement ne sont pas modifiées. La PR reste en brouillon tant que la recette complète n'est pas démontrée.
 

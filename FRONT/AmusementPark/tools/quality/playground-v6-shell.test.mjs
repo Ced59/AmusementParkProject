@@ -16,6 +16,7 @@ const navigationStyles = read('src/styles/_navigation.scss');
 const footerStyles = read('src/styles/_footer.scss');
 const layoutStyles = read('src/styles/_layout.scss');
 const wordmarkStyles = read('src/styles/_brand-wordmark.scss');
+const accessibilityStyles = read('src/styles/_accessibility-polish.scss');
 const publicLayoutStyles = read(
   'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
 );
@@ -28,6 +29,18 @@ const protectedWordmarkParts = [
   '>.<',
   '>fun<',
 ];
+
+test('the protected wordmark keeps its original ink independently from the V6 heading palette', () => {
+  assert.match(wordmarkStyles, /\.app-brand-wordmark\s*\{[^}]*--brand-wordmark-base-ink:\s*#ffffff/);
+  assert.match(wordmarkStyles, /body\.light-mode \.app-brand-wordmark\s*\{[^}]*--brand-wordmark-base-ink:\s*#160a00/);
+  assert.match(wordmarkStyles, /color:\s*var\(--brand-wordmark-base-ink\)/);
+  assert.match(wordmarkStyles, /font-family:\s*var\(--font-display\)/);
+  assert.match(wordmarkStyles, /font-family:\s*"Satisfy Brand Fun"/);
+});
+
+test('keyboard focus uses an opaque semantic outline in addition to the soft halo', () => {
+  assert.match(accessibilityStyles, /:focus-visible\s*\{[^}]*outline:\s*3px solid var\(--app-accent-cyan\)/);
+});
 
 test('the public header and footer keep the protected wordmark without the optional pictogram', () => {
   for (const template of [header, footer]) {

@@ -201,8 +201,13 @@ async function captureHydratedHome(rawHtml) {
     }
     if (url.pathname.startsWith('/api/')) {
       const target = new URL(`${url.pathname}${url.search}`, publicOrigin);
+      if (target.pathname === '/api/search' && target.searchParams.get('query') === 'APF-READONLY-ERROR-FIXTURE') {
+        (result.injectedFailures ??= []).push({ path: target.pathname, query: target.search, status: 503, scope: 'isolated browser only; not sent to production' });
+        await fulfill(requestId, 503, 'application/problem+json', JSON.stringify({ type: 'about:blank', title: 'Read-only review fixture', status: 503 }));
+        return;
+      }
       const response = await nativeFetch(target, { method: request.method, signal: AbortSignal.timeout(20000) });
-      result.apiReads.push({ path: target.pathname, status: response.status });
+      result.apiReads.push({ path: target.pathname, query: target.search, status: response.status });
       await fulfill(requestId, response.status, response.headers.get('content-type') ?? 'application/octet-stream', await response.arrayBuffer());
       return;
     }
@@ -261,6 +266,46 @@ async function captureHydratedHome(rawHtml) {
     const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
     await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
     result.captures.push(screenshot);
+    await evaluate(`(() => { const input = document.querySelector('#home-search-input'); input.value = 'park'; input.dispatchEvent(new Event('input', { bubbles: true })); document.querySelector('.app-search-panel__submit button').click(); })()`);
+    await waitUntil(`document.querySelectorAll('.home-results .p-paginator-page').length > 1`, 'real public search offers multiple pages');
+    await evaluate(`[...document.querySelectorAll('.home-results .p-paginator-page')].find(button => button.textContent.trim() === '2').click()`);
+    await waitUntil(`document.querySelector('.home-results .p-paginator-page.p-highlight')?.textContent.trim() === '2' && !!document.querySelector('.home-results__grid app-ui-search-result-card')`, 'real search page two loaded');
+    if (!result.apiReads.some(read => read.path === '/api/search' && new URLSearchParams(read.query).get('page') === '2')) throw new Error('Search pagination did not issue the real page-two API read.');
+    for (const rows of [20, 10, 5]) {
+      await evaluate(`(() => { const select = document.querySelector('.home-results .p-paginator-rpp-options'); const option = [...select.options].find(option => option.textContent.trim() === '${rows}'); if (!option) throw new Error('Missing page-size option'); select.value = option.value; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await waitUntil(`document.querySelectorAll('.home-results__grid app-ui-search-result-card').length === ${rows} && document.querySelector('.home-results .p-paginator-page.p-highlight')?.textContent.trim() === '1'`, `real search page size ${rows} loaded and reset to page one`);
+    }
+    for (const [query, selector, label] of [
+      ['zzv6qaf0fe25ac1be14b5cba302e46356ba3bb', '.home-results .app-page-state--empty', 'real no-result search shows the empty state'],
+      ['APF-READONLY-ERROR-FIXTURE', '.home-results .app-page-state--error', 'isolated 503 fixture shows the real search error state'],
+    ]) {
+      await evaluate(`(() => { const input = document.querySelector('#home-search-input'); input.value = '${query}'; input.dispatchEvent(new Event('input', { bubbles: true })); document.querySelector('.app-search-panel__submit button').click(); })()`);
+      await waitUntil(`!!document.querySelector('${selector}')`, label);
+      const stateScreenshot = `fr_home_hydrated_${selector.endsWith('empty') ? 'empty' : 'error'}_1366.webp`;
+      const statePixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+      await writeFile(join(outputRoot, stateScreenshot), Buffer.from(statePixels.data, 'base64'));
+      result.captures.push(stateScreenshot);
+    }
+    await evaluate(`document.querySelector('.app-public-nav__right .btn-nav--primary').click()`);
+    await waitUntil(`!!document.querySelector('app-auth-modal #loginEmail') && !!document.querySelector('app-auth-modal #registerEmail')`, 'anonymous authentication dialog rendered both forms');
+    for (const width of [390, 1366]) {
+      await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
+      const bounds = await evaluate(`(() => { const dialog = document.querySelector('.p-dialog'); const bounds = dialog.getBoundingClientRect(); return { viewport: innerWidth, left: bounds.left, right: bounds.right, width: bounds.width, scrollWidth: document.documentElement.scrollWidth }; })()`);
+      if (bounds.left < -1 || bounds.right > width + 1 || bounds.scrollWidth > width + 1) throw new Error('Anonymous auth dialog overflows the viewport.');
+      const authScreenshot = `fr_auth_dialog_anonymous_${width}.webp`;
+      const authPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+      await writeFile(join(outputRoot, authScreenshot), Buffer.from(authPixels.data, 'base64'));
+      result.captures.push(authScreenshot);
+      (result.authDialogBounds ??= []).push(bounds);
+    }
+    await evaluate(`document.querySelector('.p-dialog-header-close').click()`);
+    await waitUntil(`!document.querySelector('app-auth-modal')`, 'anonymous authentication dialog closed without submission');
+    await evaluate(`(() => { const input = document.querySelector('#home-search-input'); input.value = 'Fleury'; input.dispatchEvent(new Event('input', { bubbles: true })); document.querySelector('.app-search-panel__submit button').click(); })()`);
+    await waitUntil(`!!document.querySelector('.home-results a[href*="/le-fleury"]')`, 'Fleury detail link restored after pagination');
+    await evaluate(`document.querySelector('.home-results a[href*="/le-fleury"]').click()`);
+    await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'real result link opens the full park page');
+    await evaluate(`history.back()`);
+    await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
     if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser raised an exception; inspect report.json.');
     console.log(`Hydrated home: ${result.checks.length} checks passed; production writes blocked.`);
   } finally {
@@ -273,14 +318,14 @@ async function captureHydratedHome(rawHtml) {
 
 async function verifyFleuryItemRendering(application) {
   const parkPath = '/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury';
-  const inventoryResponse = await nativeFetch(`${publicOrigin}/api/park-items/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4?page=1&size=48`, { signal: AbortSignal.timeout(20000) });
+  const inventoryResponse = await nativeFetch(`${publicOrigin}/api/park-items/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4?page=1&size=48&closedFilter=all`, { signal: AbortSignal.timeout(20000) });
   if (!inventoryResponse.ok) throw new Error('Could not read the public Fleury item inventory.');
   const inventory = await inventoryResponse.json();
   const total = inventory.pagination?.totalItems;
   if (!Number.isInteger(total) || total > 96) throw new Error('The public inventory exceeds this bounded review fixture; update its coverage explicitly.');
   const expected = [...inventory.data];
   if (total > 48) {
-    const nextResponse = await nativeFetch(`${publicOrigin}/api/park-items/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4?page=2&size=48`, { signal: AbortSignal.timeout(20000) });
+    const nextResponse = await nativeFetch(`${publicOrigin}/api/park-items/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4?page=2&size=48&closedFilter=all`, { signal: AbortSignal.timeout(20000) });
     if (!nextResponse.ok) throw new Error('Could not read the second public inventory page.');
     expected.push(...(await nextResponse.json()).data);
   }
@@ -292,7 +337,7 @@ async function verifyFleuryItemRendering(application) {
     if (!html) throw new Error('No Angular SSR item-list content.');
     for (const match of html.matchAll(/href="(\/fr\/park\/[^"?#]+\/item\/([^/"?#]+)\/[^/"?#]+)"/g)) linksById.set(match[2], match[1]);
   }
-  const result = { scope: 'initial SSR entity rendering; no interaction or HTTP-server acceptance', expectedVisibleCount: total, discoveredDetailLinks: linksById.size, items: [] };
+  const result = { scope: 'initial SSR entity rendering; no interaction or HTTP-server acceptance', closedFilter: 'all', expectedVisibleCount: total, discoveredDetailLinks: linksById.size, items: [] };
   report.fleuryItemRendering = result;
   try {
     for (const item of expected) {
@@ -409,6 +454,7 @@ try {
             }
             return { viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
               title: document.title, fontStatus: document.fonts.status,
+              wordmarkColors: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).color),
               heroTitleWidth: hero ? hero.getBoundingClientRect().width : null,
               bodyBackground: bodyStyle.backgroundColor, aliases, headingColor,
               footerActiveColor };
@@ -438,7 +484,7 @@ try {
     }
     console.log(`${path}: ${route.captures.length} initial SSR captures; ${reads.length} anonymous API reads`);
     await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
-    if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)))) {
+    if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)))) {
       throw new Error(`Initial SSR presentation requires correction: ${path}; see report.json.`);
     }
   }

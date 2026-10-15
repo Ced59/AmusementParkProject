@@ -38,7 +38,7 @@
 }
 
 .rankings-hero__note a {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-weight: 900;
   white-space: nowrap;
   text-underline-offset: 0.18em;
@@ -101,7 +101,7 @@
 }
 
 .rankings-evidence-summary__meta a {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-weight: 900;
   overflow-wrap: anywhere;
 }
@@ -118,7 +118,7 @@
 
 .rankings-filters__button--active {
   border-color: var(--app-primary);
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .rankings-type-filter {

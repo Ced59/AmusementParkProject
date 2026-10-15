@@ -21,6 +21,15 @@ const zoneTemplate = read('src/app/features/public/parks/ui/park-zone-view.compo
 const zoneStyles = read('src/app/features/public/parks/ui/park-zone-view.component.scss');
 const zonesSectionStyles = read('src/app/features/public/parks/ui/park-zones-section.component.scss');
 
+test('the Fleury SSR review inventories the same visible open and closed population as its list', () => {
+  const capture = read('tools/design-v6/capture-public-ssr.mjs');
+  const inventoryRequests = capture.match(/\/api\/park-items\/park\/[^`]+\?page=[12]&size=48&closedFilter=all/g);
+  assert.equal(inventoryRequests?.length, 2, 'both bounded API pages must explicitly include closed items');
+  assert.ok(capture.includes('/items?size=48&page=${page}&closed=all'));
+  assert.ok(capture.includes("expected.some((item) => item.isVisible !== true)"));
+  assert.ok(capture.includes("closedFilter: 'all'"));
+});
+
 test('the park detail preserves every public action and conditional destination', () => {
   for (const contract of [
     '<app-rating-stars',

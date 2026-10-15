@@ -88,6 +88,8 @@ Les points structurels du dépôt restent `480`, `680`, `960` et `1180px`. Les m
 
 La structure et les styles de `.app-brand-wordmark` sont conservés pour le nom `AMUSEMENT-PARKS.fun` dans la navbar et le footer. Le pictogramme autonome n’est pas sanctuarisé. Le footer conserve les clés `footer.brand.sloganData` et `footer.brand.sloganFun` ; en français : « La rigueur des données » et « pour toujours plus de fun ».
 
+L'audit de dépendances confirme que la police display est identique à celle de `origin/master`, mais que l'ancien `color: var(--app-heading)` aurait hérité de la nouvelle encre V6. La couleur du lettrage et du point est donc isolée dans le scope de marque : blanc `#ffffff` en sombre et `#160a00` en clair, exactement les valeurs de production de la base. Le traitement `fun`, ses gradients, filtres, police Satisfy et proportions restent inchangés. Un test protège cette indépendance par rapport à la palette éditoriale.
+
 ## Preuves P01
 
 - Le moteur de thème, ses sélecteurs et le script de premier rendu ne sont pas modifiés.

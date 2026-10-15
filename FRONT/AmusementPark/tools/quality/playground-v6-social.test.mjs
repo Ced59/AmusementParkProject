@@ -27,6 +27,10 @@ const ratingStarsStyles = read('src/app/features/public/ratings/ui/rating-stars.
 const ratingEvidenceStyles = read('src/app/shared/components/rating-evidence/rating-evidence.component.scss');
 
 test('small rating links and evidence actions use readable semantic colors', () => {
+  for (const selector of ['rankings-hero__note a', 'rankings-evidence-summary__meta a', 'rankings-filters__button--active']) {
+    assert.match(rankingsStyles, new RegExp(`\\.${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
+  }
+  assert.match(methodologyStyles, /\.methodology-history a\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
   for (const selector of ['rating-stars__methodology', 'rating-stars__clear']) {
     assert.match(ratingStarsStyles, new RegExp(`\\.${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
   }
