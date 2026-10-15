@@ -6,6 +6,11 @@ import { isCanceledInterceptionError } from '../design-v6/browser-interception-e
 const responsiveScript = await readFile(new URL('../responsive/trip-pages-browser-check.mjs', import.meta.url), 'utf8');
 const designTokens = await readFile(new URL('../../../../docs/design-v6/V6-DESIGN-TOKENS.md', import.meta.url), 'utf8');
 const httpScript = await readFile(new URL('../design-v6/verify-public-http.mjs', import.meta.url), 'utf8');
+const baseStyles = await readFile(new URL('../../src/styles/_base.scss', import.meta.url), 'utf8');
+
+test('the page body cannot conceal horizontal layout regressions', () => {
+  assert.doesNotMatch(baseStyles, /overflow-x:\s*(?:hidden|clip)/);
+});
 
 test('the real HTTP acceptance tool cannot start a server on the Windows workstation', () => {
   assert.match(httpScript, /process\.env\.CI !== 'true' \|\| process\.platform !== 'linux'/);

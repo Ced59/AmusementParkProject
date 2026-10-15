@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
-import { readHomeEvidenceFixtures, summarizeHomeResources } from '../design-v6/home-network-evidence.mjs';
+import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples } from '../design-v6/home-network-evidence.mjs';
 
 test('home comparison fixtures accept only bounded successful public home responses', () => {
   const record = { key: '/api/parks/random-visible?limit=4', status: 200, contentType: 'application/json; charset=utf-8', bodyBase64: Buffer.from('[{"name":"Parc été"}]').toString('base64') };
@@ -37,10 +37,49 @@ test('home comparison builds the exact master frontend and preserves distinct SS
   assert.ok(workflow.includes('archive "${V6_BASELINE_SHA}" FRONT/AmusementPark'));
   assert.ok(workflow.includes('cmp package-lock.json'));
   assert.ok(capture.includes('for (const width of [390, 1366])'));
-  assert.ok(capture.includes('Home comparison populations differ'));
+  assert.ok(capture.includes('compareHomeNetworkSamples(report.homeNetworkSamples)'));
+  assert.ok(capture.includes("sampleNumber % 2 ? ['master', 'v6'] : ['v6', 'master']"));
   assert.ok(capture.includes('P04.6: additional initial requests measured'));
   assert.ok(capture.includes('decoded bytes, not wire compression'));
   assert.ok(capture.includes('LCP/CLS proxies, not field CWV or INP'));
+});
+
+function pairedHomeSamples() {
+  return [1, 2, 3].flatMap(sampleNumber => ['master', 'v6'].map(label => ({
+    width: 390, sampleNumber, label,
+    summary: { requests: 100, decodedBytes: label === 'master' ? 2000 : 1900 },
+    vitals: { heroNames: ['Public park'], lcpMs: sampleNumber * (label === 'master' ? 100 : 90), cls: 0, domCompleteMs: sampleNumber * 200 },
+  })));
+}
+
+test('repeated home evidence keeps every paired sample and reports median and range, not a field metric', () => {
+  const result = compareHomeNetworkSamples(pairedHomeSamples(), [390]);
+  assert.equal(result.comparisons.length, 3);
+  assert.deepEqual(result.aggregates[0].before.lcpMs, { min: 100, median: 200, max: 300 });
+  assert.deepEqual(result.aggregates[0].after.lcpMs, { min: 90, median: 180, max: 270 });
+  assert.deepEqual(result.aggregates[0].additionalRequests, { min: 0, median: 0, max: 0 });
+  assert.deepEqual(result.aggregates[0].decodedBytesDelta, { min: -100, median: -100, max: -100 });
+});
+
+test('home comparison rejects missing, duplicate, mismatched and incomplete samples', () => {
+  const samples = pairedHomeSamples();
+  assert.throws(() => compareHomeNetworkSamples(samples.slice(1), [390]), /Missing or duplicate/);
+  assert.throws(() => compareHomeNetworkSamples([...samples, samples[0]], [390]), /Missing or duplicate/);
+  const mismatched = structuredClone(samples);
+  mismatched[1].vitals.heroNames = ['Different population'];
+  assert.throws(() => compareHomeNetworkSamples(mismatched, [390]), /populations differ/);
+  const incomplete = structuredClone(samples);
+  incomplete[1].vitals.lcpMs = null;
+  assert.throws(() => compareHomeNetworkSamples(incomplete, [390]), /Incomplete home timing/);
+});
+
+test('one regressing request sample cannot be hidden by a non-positive median', () => {
+  const samples = pairedHomeSamples();
+  samples[1].summary.requests = 101;
+  const result = compareHomeNetworkSamples(samples, [390]);
+  assert.equal(result.aggregates[0].additionalRequests.median, 0);
+  assert.equal(result.aggregates[0].additionalRequests.max, 1);
+  assert.equal(result.comparisons.some(pair => pair.additionalRequests > 0), true);
 });
 
 const projectRoot = resolve(import.meta.dirname, '../..');

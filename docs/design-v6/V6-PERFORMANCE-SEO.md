@@ -39,6 +39,10 @@ Le bilan est de **0 requête supplémentaire et −13 086 octets décodés**, ma
 
 Le `domComplete` est plus tardif en V6 dans ce passage : ce résultat est conservé, pas masqué par le LCP plus court. Une répétition est nécessaire pour distinguer variance de laboratoire et régression stable. Ces mesures ne simulent ni connexion mobile ralentie, ni compression réseau, ni coût réel de l'API et du CDN, ni navigation longue ; elles ne soldent donc pas P21 dans son ensemble.
 
+Le complément de recette prépare **trois paires par largeur**, avec ordre V5/V6 alterné et origines isolées distinctes à chaque passe. Il conserve chaque mesure brute et publie min/médiane/max ; un seul échantillon comportant une requête supplémentaire reste bloquant même si la médiane est nulle. Des mesures manquantes, dupliquées ou sans LCP observé ne sont pas acceptées. Son exécution CI reste à attester ; les chiffres du tableau précédent ne sont pas présentés comme des médianes répétées.
+
+Six autres navigations isolées préparent le contrôle du thème initial : système clair/sombre × préférence absente/claire/sombre. L'observateur ne modifie pas les classes de thème ; il prépare uniquement la clé locale existante avant le vrai script `data-app-theme-init`, puis observe les couleurs après le premier paint et le résultat après hydratation. Les frames antérieures au premier paint ne sont pas présentées comme un flash visible. Absence de paint/frame, échec de stockage de la fixture ou couleur incorrecte font échouer le contrôle. Le moteur de thème et ses contrats restent inchangés. Résultat CI encore requis.
+
 ## Contrôles P21
 
 - `npm run build -- --configuration production`

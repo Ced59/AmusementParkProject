@@ -42,7 +42,7 @@
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
 | Réseau initial des nouveaux médias hero | PASS CIBLÉ `a75861a30` — rapport inspecté à 390/1366 px : 105 → 105 requêtes, −13 086 o décodés ; répétitions et performances terrain encore ouvertes |
 | Navigation rapide pendant un zoom Leaflet | RÉOUVERT `4c64f7c62` — la recette étendue révèle une autre transition de destruction ; complément de cycle de vie et trois cas Angular à valider, aucune exception ignorée |
-| Feu vert explicite de fusion | NON REÇU |
+| Instruction du propriétaire sur la fusion | Poursuite jusqu'au merge explicitement demandée le 15 octobre ; exécution conditionnée à la recette et aux checks, aucun défaut connu accepté silencieusement |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
 
 ## Informations de référence
@@ -66,6 +66,8 @@
 - Dernier inventaire généré : 148 routes et 273 composants. La régénération finale après gel visuel reste requise ; elle n'est pas déclarée achevée pendant les corrections de recette.
 
 ## Décision avant fusion
+
+Le 15 octobre, le propriétaire autorise les corrections nécessaires aux blocages et demande de poursuivre jusqu'au push, à la PR et au merge. Cette instruction est enregistrée sans transformer les gates ouverts en PASS. La revue visuelle propriétaire demeure non réalisée et les critères de recette restent applicables. Le garde mémoire local, hors dépôt et hors livraison, reçoit une récupération sur preuve native de fin pour les seuls appels d'entrée CUA finis et strictement bornés ; 31 tests ciblés passent, seuils et classification des opérations inchangés. Aucun processus actif, onglet ou automatisation GSC n'est fermé ou désactivé par cette réparation.
 
 ### Exception de nettoyage Leaflet autorisée le 15 octobre
 

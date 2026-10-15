@@ -7,8 +7,9 @@ import { extname, join, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isCanceledInterceptionError } from './browser-interception-errors.mjs';
 import { publicDirectoryReadEvidence, publicParkItemsReadEvidence, publicRouteEvidenceName } from './public-directory-evidence.mjs';
-import { readHomeEvidenceFixtures, summarizeHomeResources, homeVitalsObserver } from './home-network-evidence.mjs';
+import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeVitalsObserver } from './home-network-evidence.mjs';
 import { exercisePublicParkItems } from './exercise-public-park-items.mjs';
+import { initialThemeObserver, validateInitialTheme } from './initial-theme-evidence.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -205,12 +206,13 @@ async function connect(webSocketUrl) {
 }
 
 async function captureHydratedHome(rawHtml, options = {}) {
-  const origin = options.networkProbe ? `https://apf-network-${options.label}-${options.width}.invalid` : 'https://apf-review.invalid';
+  const origin = options.networkProbe ? `https://apf-network-${options.label}-${options.width}-${options.sampleNumber ?? 1}.invalid` : 'https://apf-review.invalid';
   const root = options.browserRoot ?? browserRoot;
   const result = { scope: 'anonymous hydrated home, navigation and catalogue smoke; isolated browser origin', apiReads: [], blockedRequests: [], exceptions: [], checks: [], captures: [] };
   if (options.networkProbe) {
-    Object.assign(result, { label: options.label, width: options.width, resources: [] });
-    (report.homeNetworkSamples ??= []).push(result);
+    Object.assign(result, { label: options.label, width: options.width, sampleNumber: options.sampleNumber ?? 1, resources: [] });
+    if (options.initialTheme) (report.initialThemeSamples ??= []).push(result);
+    else (report.homeNetworkSamples ??= []).push(result);
   } else report.hydratedHome = result;
   const mimeTypes = { '.mjs': 'text/javascript', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.ico': 'image/x-icon' };
   const interceptionErrors = [];
@@ -348,7 +350,13 @@ async function captureHydratedHome(rawHtml, options = {}) {
       await cdp.send('Page.navigate', { url: 'about:blank' });
       await waitUntil(`location.href === 'about:blank' && document.readyState === 'complete'`, 'previous isolated document unloaded');
       await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
-      observerScript = (await cdp.send('Page.addScriptToEvaluateOnNewDocument', { source: homeVitalsObserver })).identifier;
+      await cdp.send('Emulation.setEmulatedMedia', { features: [
+        { name: 'prefers-reduced-motion', value: 'reduce' },
+        { name: 'prefers-color-scheme', value: options.initialTheme?.system ?? 'light' },
+      ] });
+      observerScript = (await cdp.send('Page.addScriptToEvaluateOnNewDocument', {
+        source: homeVitalsObserver + (options.initialTheme ? initialThemeObserver(options.initialTheme.saved) : ''),
+      })).identifier;
     }
     await cdp.send('Fetch.enable', { patterns: [{ urlPattern: '*' }] });
     await cdp.send('Network.setBlockedURLs', { urls: [] });
@@ -363,6 +371,14 @@ async function captureHydratedHome(rawHtml, options = {}) {
         heroNames: [...document.querySelectorAll('.home-hero-card__content strong')].map(node => node.textContent.trim()),
         heroImages: [...document.querySelectorAll('.home-hero-card__media img')].map(image => ({ path: new URL(image.currentSrc || image.src).pathname, complete: image.complete, naturalWidth: image.naturalWidth })),
         domCompleteMs: performance.getEntriesByType('navigation')[0]?.domComplete })`);
+      if (options.initialTheme) {
+        result.initialThemeEvidence = await evaluate(`({ ...window.__apfInitialTheme,
+          firstContentfulPaintMs: performance.getEntriesByType('paint').find(entry => entry.name === 'first-contentful-paint')?.startTime,
+          finalTheme: document.body.classList.contains('light-mode') ? 'light' : 'dark',
+          finalBackground: getComputedStyle(document.body).backgroundColor })`);
+        result.initialThemeSettings = options.initialTheme;
+        result.initialThemeVerdict = validateInitialTheme(result.initialThemeEvidence, options.initialTheme.saved ?? options.initialTheme.system);
+      }
       // A trusted mouse interaction, not Runtime.evaluate(...click()), for an
       // Event Timing proxy. This is one local unit preference, never field INP.
       const initialMeasurement = await evaluate(`document.querySelector('.app-public-nav__measurement-toggle').textContent.trim()`);
@@ -374,7 +390,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
         durationsAtLeast16ms: window.__apfHomeVitals.interactionDurations, measurement: document.querySelector('.app-public-nav__measurement-toggle').textContent.trim() })`);
       if (result.vitals.unitInteraction.measurement === initialMeasurement) throw new Error('The measured native unit click did not update its real control.');
       result.summary = summarizeHomeResources(result.resources);
-      const networkScreenshot = `fr_home_network_${options.label}_${options.width}.webp`;
+      const networkScreenshot = `fr_home_network_${options.label}_${options.width}_${options.sampleNumber ?? 1}.webp`;
       const networkPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
       await writeFile(join(outputRoot, networkScreenshot), Buffer.from(networkPixels.data, 'base64'));
       result.captures.push(networkScreenshot);
@@ -513,7 +529,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
     for (const width of [390, 1366]) {
       await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
       await evaluate(`document.querySelector('.parks-results').scrollIntoView({ block: 'start', behavior: 'instant' })`);
-      const directoryBounds = await evaluate(`({ viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth })`);
+      const directoryBounds = await evaluate(`({ viewport: innerWidth, scrollWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) })`);
       if (directoryBounds.scrollWidth > width + 1) throw new Error('Hydrated catalogue overflows the viewport.');
       const directoryScreenshot = `fr_parks_hydrated_search_${width}.webp`;
       const directoryPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
@@ -670,7 +686,15 @@ try {
             document.body.classList.remove('light-mode','dark-mode');
             document.body.classList.add('${theme}-mode');
             await document.fonts.ready;
-            await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+            // A forced static theme switch is not an SSR first-paint test.
+            // Wait for its real CSS transition, without editing product styles.
+            const expectedBackground = '${theme}' === 'light' ? 'rgb(247, 246, 240)' : 'rgb(21, 26, 23)';
+            let settled = false;
+            for (let attempt = 0; attempt < 30; attempt++) {
+              await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+              if (getComputedStyle(document.body).backgroundColor === expectedBackground) { settled = true; break; }
+            }
+            if (!settled) throw new Error('Static snapshot theme did not settle.');
             const hero = document.querySelector('.home-hero-card--1 .home-hero-card__content');
             const bodyStyle = getComputedStyle(document.body);
             const outline = document.querySelector('.home-hero__title-line--outline');
@@ -703,7 +727,7 @@ try {
               window.scrollTo({ top: 0, behavior: 'instant' });
               await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
             }
-            return { viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
+            return { viewport: innerWidth, scrollWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
               title: document.title, fontStatus: document.fonts.status,
               wordmarkColors: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).color),
               wordmarkFonts: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).fontFamily),
@@ -793,27 +817,38 @@ try {
     if (homeFixtureDocument) {
       const baselineHtml = await readFile(join(outputRoot, 'home-baseline.html'), 'utf8');
       for (const width of [390, 1366]) {
-        await captureHydratedHome(baselineHtml, { networkProbe: true, label: 'master', width, browserRoot: resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') });
-        await captureHydratedHome(homeRawHtml, { networkProbe: true, label: 'v6', width });
+        for (let sampleNumber = 1; sampleNumber <= 3; sampleNumber++) {
+          // Alternate order to expose warm-runner/compilation effects rather
+          // than treating a single faster or slower navigation as a verdict.
+          for (const label of sampleNumber % 2 ? ['master', 'v6'] : ['v6', 'master']) {
+            await captureHydratedHome(label === 'master' ? baselineHtml : homeRawHtml,
+              { networkProbe: true, label, width, sampleNumber,
+                ...(label === 'master' ? { browserRoot: resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') } : {}) });
+          }
+        }
       }
       report.homeNetworkComparison = {
         scope: 'same-runner lab, cold browser cache, identical SSR and client API populations; decoded bytes, not wire compression; LCP/CLS proxies, not field CWV or INP',
         baseSha: homeFixtureDocument.baseSha,
         observationAfterHydrationMs: 5000,
-        comparisons: [390, 1366].map(width => {
-          const before = report.homeNetworkSamples.find(sample => sample.width === width && sample.label === 'master');
-          const after = report.homeNetworkSamples.find(sample => sample.width === width && sample.label === 'v6');
-          if (JSON.stringify(before.vitals.heroNames) !== JSON.stringify(after.vitals.heroNames)) throw new Error('Home comparison populations differ; the comparison is invalid.');
-          return { width, additionalRequests: after.summary.requests - before.summary.requests,
-            decodedBytesDelta: after.summary.decodedBytes - before.summary.decodedBytes,
-            before: before.summary, after: after.summary, beforeVitals: before.vitals, afterVitals: after.vitals };
-        }),
+        repetitions: 3,
+        ...compareHomeNetworkSamples(report.homeNetworkSamples),
       };
       await writeFile(join(outputRoot, 'home-network-comparison.json'), JSON.stringify(report.homeNetworkComparison, null, 2));
       await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
       if (report.homeNetworkComparison.comparisons.some(comparison => comparison.additionalRequests > 0)) {
         throw new Error('P04.6: additional initial requests measured; correction or explicit owner exception required.');
       }
+      for (const system of ['light', 'dark']) {
+        for (const saved of [null, 'light', 'dark']) {
+          await captureHydratedHome(homeRawHtml, { networkProbe: true, width: 390,
+            label: `theme-${system}-${saved ?? 'auto'}`, initialTheme: { system, saved } });
+        }
+      }
+      await writeFile(join(outputRoot, 'initial-theme-report.json'), JSON.stringify({
+        scope: 'real initial-theme script and Angular hydration; system and saved preference; post-first-paint frames, not forced static switches',
+        samples: report.initialThemeSamples.map(sample => ({ settings: sample.initialThemeSettings, verdict: sample.initialThemeVerdict, evidence: sample.initialThemeEvidence, captures: sample.captures })),
+      }, null, 2));
     }
   }
 } finally {
