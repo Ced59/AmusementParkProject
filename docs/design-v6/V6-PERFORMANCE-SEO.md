@@ -110,6 +110,24 @@ Codes 200/301/404, canonical, hreflang réels, locale Open Graph, JSON-LD fiable
 
 ## Recette HTTP du bundle — CI uniquement
 
+### Comparaison répétée `3b560d471` — laboratoire isolé
+
+Le [run 38820443559](https://github.com/Ced59/AmusementParkProject/actions/runs/38820443559) valide le frontend, les 2 718 tests, 90 contrôles hydratés, 40 routes / 2 080 captures, 38 détails Fleury et les contrats de source. Trois paires par largeur alternent V5/V6 avec les mêmes populations API. Les mesures suivantes sont des proxys de laboratoire, pas des Core Web Vitals terrain ou un INP :
+
+| Médiane, trois paires | 390 px V5 → V6 | 1 366 px V5 → V6 |
+|---|---:|---:|
+| Requêtes initiales | 106 → 105 | 106 → 105 |
+| Octets décodés | 1 723 552 → 1 697 871 | 1 723 552 → 1 765 939 |
+| LCP proxy | 180 → 164 ms | 288 → 152 ms |
+| CLS proxy | 0 → 0 | 0 → 0 |
+| `domComplete` | 242,6 → 531,8 ms | 240,4 → 691,9 ms |
+
+Les trois répétitions gardent les mêmes deltas de requêtes/octets. Plages LCP : mobile 168–204 → 136–164 ms ; desktop 240–300 → 148–152 ms. `domComplete` est plus tardif et le coût décodé desktop augmente de 42 387 o : ces résultats ne sont pas masqués derrière le LCP favorable. Le détail isole le surcoût aux images (18 147 → 99 141 o desktop), tandis que CSS (218 015 → 213 854 o), scripts (936 317 → 928 089 o) et fontes (64 260 → 42 532 o, quatre → trois requêtes) diminuent. Le budget initial du build est de 827 307 o et le plus gros lazy de 214 874 o, budgets inchangés.
+
+La revue de source identifie un `sizes` trop large pour le nouveau logo hero : le CSS borne l'image à `min(72%, 18rem)` mais le HTML annonçait `36vw` desktop. Le correctif décrit le vrai plafond `18rem` et les petits écrans, sans changer pixels CSS, image, priorité, `srcWidth` de secours ou candidats retina. Un test protège ce raccordement ; une nouvelle comparaison doit démontrer le résultat, aucune baisse future n'est présumée. Les tailles et coûts de la lightbox CDK nouvellement raccordée doivent aussi être revalidés.
+
+Les six combinaisons système clair/sombre × préférence auto/clair/sombre passent : 29–31 frames post-FCP observées par cas, zéro frame de mauvais thème. Le FCP varie de 136 à 168 ms. C'est une preuve bornée de l'initialisation réelle dans ce navigateur, pas une garantie universelle sur tous appareils.
+
 L'outil `tools/design-v6/verify-public-http.mjs` refuse de fonctionner hors runner Linux CI. Avant le démarrage de Chromium, il démarre le serveur Express compilé sur un port éphémère du runner, puis l'arrête systématiquement. Cette exécution séquentielle fait échouer rapidement une recette HTTP incorrecte, avant de produire les 1 976 captures. Aucun serveur n'est démarré sur le PC du propriétaire ; aucune configuration produit ou infrastructure n'est modifiée. Les appels sont des GET anonymes, séquentiels ; l'API publique fournit les données réelles sans compte, cookie ni écriture.
 
 La campagne vérifie huit accueils, catalogue, parc, ParkItem, standalone, tarifs remplis et vides, 404 connue/inconnue, canonical, hreflang, locale Open Graph, JSON-LD, CSP, version et cache chaud Bing/Google. Quatre routes compte/admin/auth/Park Fit conservent leur shell CSR et `noindex` ; elles ne sont pas déclarées fonctionnellement recettées. La redirection 301 vidéo utilise un identifiant synthétique uniquement pour tester la normalisation d'URL, sans prétendre vérifier un média réel. `http-ssr-report.json` et le journal borné du serveur sont joints à l'artefact CI. Ce contrôle doit encore passer ; il n'atteste ni le déploiement, ni les métriques terrain, ni la bascule transactionnelle.

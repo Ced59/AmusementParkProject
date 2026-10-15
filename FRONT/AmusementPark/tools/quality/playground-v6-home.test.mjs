@@ -4,6 +4,20 @@ import { resolve } from 'node:path';
 import test from 'node:test';
 import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples } from '../design-v6/home-network-evidence.mjs';
 
+test('the hero logo advertises its actual 72-percent / 18-rem cap instead of the entire card', () => {
+  const read = path => readFileSync(resolve(import.meta.dirname, '../..', path), 'utf8');
+  const template = read('src/app/features/public/home/pages/home-view.component.html');
+  const cards = read('src/styles/_cards.scss');
+  assert.match(cards, /\.home-hero-card__image\s*\{[^}]*width:\s*min\(72%, 18rem\)/);
+  assert.ok(template.includes('sizes="(max-width: 428px) calc(72vw - 20.16px), 18rem"'));
+  assert.doesNotMatch(template, /sizes="\(max-width: 960px\) 78vw, 36vw"/);
+  for (const width of [320, 360, 390, 414]) {
+    const advertised = width * 0.72 - 20.16;
+    assert.ok(Math.abs(advertised - (width - 28) * 0.72) < 1);
+  }
+  assert.ok(template.includes('[responsiveWidths]="[320, 480, 640, 800]"'), 'retina candidates remain available');
+});
+
 test('home comparison fixtures accept only bounded successful public home responses', () => {
   const record = { key: '/api/parks/random-visible?limit=4', status: 200, contentType: 'application/json; charset=utf-8', bodyBase64: Buffer.from('[{"name":"Parc été"}]').toString('base64') };
   const fixtures = readHomeEvidenceFixtures([record]);
