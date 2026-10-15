@@ -14,13 +14,30 @@
 - Budget de style composant confirmé : avertissement 100 kB, erreur 150 kB.
 - Budgets outillés : initial 1 000 000 octets, plus gros lazy chunk 300 000, JavaScript total 7 200 000, CSS total 250 000.
 - Aucune dépendance UI, police ou icône ajoutée.
-- Vidéos et chargements différés existants conservés ; coût initial des quatre nouveaux visuels hero encore à comparer à V5.
+- Vidéos et chargements différés existants conservés ; coût initial des quatre nouveaux visuels hero comparé à V5 dans l'échantillon décrit ci-dessous.
 - `@defer`, lazy routes, `loading="lazy"`, `srcset`, `sizes`, cache, `TransferState`, hydratation et préchargements SEO restent intacts.
 - Aucun serveur local ne sera démarré sans autorisation explicite.
 
 ## Contrôle accueil P04
 
-Le panneau des quatre parcs hero réutilise `app-image-display` et les identifiants issus de l’API. Seul le premier média visible reçoit `loading="eager"` et `fetchpriority="high"` ; les trois suivants restent lazy, avec `srcset`, `sizes`, dimensions réservées et placeholder. Le bloc des derniers contenus conserve `@defer (on viewport; hydrate on viewport; prefetch on idle)`. Aucun endpoint ou dépendance UI n'est ajouté. En revanche, ces quatre images n'existaient pas dans le template hero V5 : les téléchargements d'assets peuvent augmenter, même avec `loading="lazy"` pour les trois dernières. L'exigence P04.6 de non-augmentation des requêtes initiales **n'est pas démontrée** et reste bloquante ; elle doit être mesurée à données/viewport identiques puis corrigée ou faire l'objet d'une décision explicite, sans inventer de résultat.
+Le panneau des quatre parcs hero réutilise `app-image-display` et les identifiants issus de l’API. Seul le premier média visible reçoit `loading="eager"` et `fetchpriority="high"` ; les trois suivants restent lazy, avec `srcset`, `sizes`, dimensions réservées et placeholder. Le bloc des derniers contenus conserve `@defer (on viewport; hydrate on viewport; prefetch on idle)`. Aucun endpoint ou dépendance UI n'est ajouté. Ces quatre images n'existaient pas dans le template hero V5 : leur impact doit être mesuré, pas déduit du seul attribut lazy. La campagne comparative `a75861a30` démontre la non-augmentation des requêtes initiales pour les deux largeurs et populations anonymes testées ; ce PASS ciblé ne couvre pas toutes les populations possibles ni les performances terrain.
+
+### Mesure comparative inspectée — CI `a75861a30`
+
+Source : [`home-network-comparison.json`, artefact 11992235285](https://github.com/Ced59/AmusementParkProject/actions/runs/38769363185/artifacts/11992235285), contre `master@7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22`. Un passage par largeur/version, cinq secondes après hydratation, cache navigateur froid et mêmes populations API SSR/client. Les réponses publiques rejouées sont exclusivement des fixtures CI, jamais des données du produit.
+
+| Mesure V5 → V6 | 390 px | 1366 px |
+|---|---:|---:|
+| Requêtes émises | 105 → 105 | 105 → 105 |
+| Corps décodés totaux | 1 700 250 → 1 687 164 o | 1 700 250 → 1 687 164 o |
+| Images : requêtes / corps décodés | 12 / 16 320 → 12 / 20 077 o | 12 / 16 320 → 12 / 20 077 o |
+| LCP proxy de laboratoire | 188 → 152 ms | 240 → 144 ms |
+| CLS observé | 0 → 0 | 0 → 0,0001014 |
+| `domComplete` | 228 → 422 ms | 226,6 → 445 ms |
+
+Le bilan est de **0 requête supplémentaire et −13 086 octets décodés**, malgré +3 757 octets d'images ; CSS et scripts compensent cette différence. Les trois images hero non prioritaires sont encore non chargées dans cet état initial, conformément à leur présentation hors du premier emplacement. Polices chargées dans les quatre passes. Le clic natif d'unités fournit des événements ≥16 ms de 24 ms avant / 16 et 16 ms après au mobile ; aucun événement ≥16 ms au desktop. L'absence d'échantillon ne signifie pas zéro latence, et ce geste unique n'est pas une mesure INP.
+
+Le `domComplete` est plus tardif en V6 dans ce passage : ce résultat est conservé, pas masqué par le LCP plus court. Une répétition est nécessaire pour distinguer variance de laboratoire et régression stable. Ces mesures ne simulent ni connexion mobile ralentie, ni compression réseau, ni coût réel de l'API et du CDN, ni navigation longue ; elles ne soldent donc pas P21 dans son ensemble.
 
 ## Contrôles P21
 
@@ -68,11 +85,11 @@ La commande complète `test:ci` a construit les 14,95 MB de bundles de test puis
 
 ## SEO/SSR à préserver
 
-Dernière campagne entièrement verte : [CI `6195d1a68`](https://github.com/Ced59/AmusementParkProject/actions/runs/38766079549), 2 712 tests, 40 routes / 2 080 captures, 26 GET / 224 assertions HTTP et 54 assertions hydratées sans exception. Initial **827 368 o**, CSS **213 915 o** ; aucun budget n'a été relevé.
+Dernière campagne entièrement verte inspectée : [CI `a75861a30`](https://github.com/Ced59/AmusementParkProject/actions/runs/38769363185), 2 712 tests, 40 routes / 2 080 captures, 26 GET / 224 assertions HTTP et 54 assertions hydratées sans exception. Initial **827 368 o**, CSS **213 915 o** ; aucun budget n'a été relevé. Le complément P07 suivant reste en CI.
 
 Le complément de mesure de l'accueil compile séparément le frontend du SHA exact de base de la PR sur le runner Linux, avec le même lockfile et les dépendances déjà installées, puis le frontend V6 est comparé à ce build. Aucun serveur local ou de production n'est démarré par cette mesure. Les cinq réponses API publiques initiales sont enregistrées anonymement, sans cookies/autorisation ; le renouvellement client des parcs aléatoires dispose de sa seconde vraie réponse. Ces deux populations sont rejouées à l'identique aux deux builds, uniquement dans l'outillage CI, jamais dans l'application livrée.
 
-Deux largeurs (390/1366) sont observées cinq secondes après hydratation, cache navigateur désactivé : requêtes émises, corps décodés par type, LCP/CLS de laboratoire et Event Timing d'un clic natif sur les unités. Ce ne sont ni des octets réseau compressés, ni des Core Web Vitals terrain, ni l'INP d'une visite complète. Les mutations et origines tierces restent bloquées. Toute augmentation des requêtes initiales fait échouer P04.6 : elle exige correction ou exception précise du propriétaire après mesure, pas un PASS silencieux. L'exécution de ce complément reste à attester.
+Deux largeurs (390/1366) sont observées cinq secondes après hydratation, cache navigateur désactivé : requêtes émises, corps décodés par type, LCP/CLS de laboratoire et Event Timing d'un clic natif sur les unités. Ce ne sont ni des octets réseau compressés, ni des Core Web Vitals terrain, ni l'INP d'une visite complète. Les mutations et origines tierces restent bloquées. Toute augmentation des requêtes initiales fait échouer P04.6 : elle exige correction ou exception précise du propriétaire après mesure, pas un PASS silencieux. L'exécution et les résultats inspectés sont consignés dans le tableau ci-dessus.
 
 La [CI e98d7f8fb](https://github.com/Ced59/AmusementParkProject/actions/runs/38697638768) réussit build SSR, tests frontend avec couverture, budgets, qualité, sécurité, backend et images Docker. Le moteur SSR réel rend 19 routes publiques et les 38 détails visibles du Fleury. Le navigateur isolé hydrate l'accueil sans exception et exécute consentement, thème et recherche. Ces preuves ne mesurent pas les Core Web Vitals terrain et ne remplacent pas les codes HTTP, le cache et les en-têtes du serveur de recette déployé.
 

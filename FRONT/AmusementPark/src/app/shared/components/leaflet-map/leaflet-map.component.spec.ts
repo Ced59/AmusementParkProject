@@ -34,6 +34,8 @@ type LeafletMapComponentInternals = {
   scheduleViewportUpdate: () => void;
   scheduleMapSizeStabilization: () => void;
   applyDefaultViewport: () => void;
+  initMap: () => void;
+  bindMapZoomLifecycle: (map: unknown) => void;
   fitMapToMarkersIfNeeded: () => boolean;
   ensureFitBoundsMinimumZoom: () => void;
   refreshMarkers: () => void;
@@ -176,6 +178,48 @@ describe('LeafletMapComponent', () => {
     expect(map.remove).toHaveBeenCalledTimes(1);
     expect(map.setView).not.toHaveBeenCalled();
     expect(map.setZoom).not.toHaveBeenCalled();
+  });
+
+  it.each(['before the animation class appears', 'during zoomend dispatch'])('defers destruction %s using the public zoom lifecycle', async (phase: string) => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const handlers: Map<string, () => void> = new Map<string, () => void>();
+    const map: LeafletTestMap & { once: Mock; on: Mock } = {
+      fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(),
+      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), once: vi.fn(),
+      on: vi.fn().mockImplementation((event: string, handler: () => void): void => {
+        handlers.set(event, handler);
+      }),
+    };
+    component.mapContainer = new ElementRef(document.createElement('div'));
+    internals.map = map;
+    internals.bindMapZoomLifecycle(map);
+    handlers.get('zoomstart')?.();
+    if (phase === 'during zoomend dispatch') {
+      handlers.get('zoomend')?.();
+    }
+
+    component.ngOnDestroy();
+    expect(internals.map).toBeNull();
+    expect(map.remove).not.toHaveBeenCalled();
+    if (phase !== 'during zoomend dispatch') {
+      handlers.get('zoomend')?.();
+    }
+    await Promise.resolve();
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    const onceHandler: () => void = map.once.mock.calls[0][1] as () => void;
+    onceHandler();
+    await Promise.resolve();
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    expect(map.setView).not.toHaveBeenCalled();
+    expect(map.setZoom).not.toHaveBeenCalled();
+  });
+
+  it('does not initialize a detached map when destroyed while Leaflet loads', async () => {
+    const initialize = vi.spyOn(component as unknown as LeafletMapComponentInternals, 'initMap');
+    const pendingInitialization: Promise<void> = component.ngAfterViewInit();
+    component.ngOnDestroy();
+    await pendingInitialization;
+    expect(initialize).not.toHaveBeenCalled();
   });
 
   it('uses unscoped component styles so Leaflet CSS can stay out of the initial global bundle', () => {

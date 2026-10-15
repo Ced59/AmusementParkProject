@@ -545,7 +545,10 @@ async function captureHydratedHome(rawHtml, options = {}) {
     stopCancellations();
     stopExceptions();
     await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
-    if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser or interception failed; inspect report.json.');
+    if (result.exceptions.length || interceptionErrors.length) {
+      console.error(JSON.stringify({ lastCheck: result.checks.at(-1), exceptions: result.exceptions.slice(0, 3).map(message => message.slice(0, 2500)), interceptionErrors: interceptionErrors.slice(0, 3) }));
+      throw new Error('Hydrated browser or interception failed; inspect report.json.');
+    }
   }
 }
 

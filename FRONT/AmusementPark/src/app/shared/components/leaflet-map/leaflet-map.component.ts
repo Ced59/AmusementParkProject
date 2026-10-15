@@ -35,6 +35,9 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   private markerRefreshTimeoutId: number | null = null;
   private mapSizeRefreshTimeoutIds: number[] = [];
   private pendingPopupMarkerId: string | null = null;
+  private destroyed = false;
+  private mapZoomInProgress = false;
+  private pendingMapRemoval: import('leaflet').Map | null = null;
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
@@ -99,17 +102,24 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   }
 
   async ngAfterViewInit(): Promise<void> {
-    if (!this.isBrowser) {
+    if (!this.isBrowser || this.destroyed) {
       return;
     }
 
     try {
       const leafletModule: LeafletModule = await import('leaflet') as LeafletModule;
+      if (this.destroyed) {
+        return;
+      }
       this.L = this.resolveLeafletNamespace(leafletModule);
 
       await new Promise<void>((resolve: () => void): void => {
         window.setTimeout(resolve, 0);
       });
+
+      if (this.destroyed) {
+        return;
+      }
 
       this.configureDefaultMarkerIcon();
       this.initMap();
@@ -151,6 +161,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   }
 
   ngOnDestroy(): void {
+    this.destroyed = true;
     this.clearViewportUpdateTimers();
     this.clearMarkerRefreshTimer();
     this.clearMapSizeRefreshTimers();
@@ -164,13 +175,13 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     if (this.map) {
       const map: import('leaflet').Map = this.map;
       this.map = null;
-      // Leaflet's pending zoom completion still needs its pane. Let the native
-      // zoomend finish, then remove after the whole event dispatch; do not touch
-      // private Leaflet fields or disable animations on the live map.
-      if (this.mapContainer?.nativeElement.querySelector('.leaflet-zoom-anim')) {
+      // zoomstart precedes the CSS class, and that class is removed before
+      // zoomend dispatch finishes. Track the public events as well as the DOM.
+      if (this.mapZoomInProgress || this.mapContainer?.nativeElement.querySelector('.leaflet-zoom-anim')) {
+        this.pendingMapRemoval = map;
         map.once('zoomend', (): void => {
           queueMicrotask((): void => {
-            map.remove();
+            this.removePendingMap(map);
           });
         });
       } else {
@@ -179,6 +190,28 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     this.tileLayer = null;
+  }
+
+  private bindMapZoomLifecycle(map: import('leaflet').Map): void {
+    map.on('zoomstart', (): void => {
+      this.mapZoomInProgress = true;
+    });
+    map.on('zoomend', (): void => {
+      // Also handles destruction during an existing zoomend dispatch, when a
+      // once listener registered by ngOnDestroy cannot join that dispatch.
+      queueMicrotask((): void => {
+        this.mapZoomInProgress = false;
+        this.removePendingMap(map);
+      });
+    });
+  }
+
+  private removePendingMap(map: import('leaflet').Map): void {
+    if (this.pendingMapRemoval !== map) {
+      return;
+    }
+    this.pendingMapRemoval = null;
+    map.remove();
   }
 
   public refreshMapSize(redrawTiles: boolean = false): void {
@@ -243,6 +276,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       center: this.toMutableLatLng(this.center),
       zoom: this.zoom
     });
+    this.bindMapZoomLifecycle(this.map);
 
     this.tileLayer = this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', this.buildTileLayerOptions()).addTo(this.map);
 
