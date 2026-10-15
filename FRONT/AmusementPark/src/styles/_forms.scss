@@ -261,6 +261,138 @@
   }
 }
 
+// Home composition follows the V6 search bar; catalogue/admin search panels
+// keep their independent, variable filter grids and existing component API.
+.home-command-center .app-search-panel {
+  gap: 18px;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-command-center .app-search-panel::before { content: none; }
+
+.home-command-center .app-search-panel__heading { gap: 12px; }
+
+.home-command-center .app-kicker {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.13em;
+}
+
+.home-command-center .app-search-panel__title {
+  font-size: clamp(27px, 3.2vw, 39px);
+  line-height: 1.13;
+}
+
+.home-command-center .app-search-panel__grid {
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 0.42fr) auto;
+  gap: 0;
+  align-items: stretch;
+}
+
+.home-command-center .app-search-panel__search-field,
+.home-command-center .app-search-panel__select-field {
+  grid-column: auto;
+  min-width: 0;
+  padding: 13px 16px;
+  border: 2px solid var(--app-heading);
+  border-inline-end: 0;
+  background: var(--app-field);
+}
+
+.home-command-center .app-search-panel__select-field {
+  border-inline-start: 1px solid var(--app-line);
+}
+
+.home-command-center .app-field { gap: 5px; }
+
+.home-command-center .app-field__label {
+  color: var(--app-text-muted);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}
+
+.home-command-center .app-input,
+.home-command-center .app-select {
+  min-width: 0;
+  min-height: 32px;
+  padding: 4px 0 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 15px;
+}
+
+.home-command-center .ui-field-input--with-icon .app-input { padding-inline-start: 23px; }
+.home-command-center .ui-field-input__control > i { left: 0; }
+
+.home-command-center .app-search-panel__submit .app-button {
+  height: 100%;
+  padding: 10px 20px;
+  border: 2px solid var(--app-heading);
+  border-radius: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.home-command-center .app-search-panel__clear {
+  grid-column: 1 / -1;
+  justify-self: start;
+  width: auto;
+  min-height: 44px;
+  margin-top: 10px;
+}
+
+.home-command-center .app-search-panel__clear .app-button {
+  width: auto;
+  min-height: 44px;
+  padding-inline: 0;
+  border: 0;
+  background: transparent;
+  color: var(--app-text-muted);
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+@media (max-width: 680px) {
+  .home-command-center .app-search-panel__title { font-size: clamp(24px, 7vw, 31px); }
+
+  .home-command-center .app-search-panel__grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .home-command-center .app-search-panel__search-field {
+    grid-column: 1 / -1;
+    padding: 10px 13px;
+    border-inline-end: 2px solid var(--app-heading);
+    border-bottom: 1px solid var(--app-line);
+  }
+
+  .home-command-center .app-search-panel__search { grid-column: auto; }
+
+  .home-command-center .app-search-panel__select-field {
+    padding: 10px 13px;
+    border-top: 0;
+    border-inline-start: 2px solid var(--app-heading);
+  }
+
+  .home-command-center .app-search-panel__submit .app-button {
+    padding: 10px 12px;
+    border-top: 0;
+    font-size: 11px;
+  }
+}
+
 /* M13 account/auth/profile design extension. */
 .auth-page,
 .profile-page {

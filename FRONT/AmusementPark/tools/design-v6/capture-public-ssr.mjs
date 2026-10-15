@@ -500,6 +500,12 @@ try {
               homeTitleFontSize: document.querySelector('.home-hero__title') ? getComputedStyle(document.querySelector('.home-hero__title')).fontSize : null,
               homeOutline: outlineStyle ? { color: outlineStyle.color, stroke: outlineStyle.webkitTextStrokeColor, strokeWidth: outlineStyle.webkitTextStrokeWidth } : null,
               navigationLayout: navInner ? { inner: rect(navInner), links: rect(navLinks), actions: rect(navActions), brand: rect(navBrand) } : null,
+              homeSearchLayout: document.querySelector('.home-command-center') ? {
+                query: rect(document.querySelector('.home-command-center .app-search-panel__search-field')),
+                category: rect(document.querySelector('.home-command-center .app-search-panel__select-field')),
+                submit: rect(document.querySelector('.home-command-center .app-search-panel__submit')),
+                clear: rect(document.querySelector('.home-command-center .app-search-panel__clear')),
+              } : null,
               heroTitleWidth: hero ? hero.getBoundingClientRect().width : null,
               bodyBackground: bodyStyle.backgroundColor, aliases, headingColor,
               footerActiveColor };
@@ -553,6 +559,14 @@ try {
         ? !links || Math.abs(links.width - inner.width) > 1 || Math.abs(links.y - inner.y - 85) > 1 || links.y < actions.bottom || links.y < brand.bottom
         : links !== null || actions.y < brand.bottom;
     })) throw new Error(`The V6 masthead must keep separate brand, utility and navigation rows: ${path}`);
+    if (path.endsWith('/home') && route.captures.some(capture => {
+      if (capture.state !== 'initial') return false;
+      const { query, category, submit, clear } = capture.homeSearchLayout ?? {};
+      if (!query || !category || !submit || !clear || clear.y < submit.bottom - 1) return true;
+      return capture.width > 680
+        ? Math.abs(query.y - category.y) > 1 || Math.abs(category.y - submit.y) > 1
+        : category.y < query.bottom - 1 || Math.abs(category.y - submit.y) > 1;
+    })) throw new Error(`Home search controls differ from the V6 desktop/mobile composition: ${path}`);
     if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)))) {
       throw new Error(`Initial SSR presentation requires correction: ${path}; see report.json.`);
     }

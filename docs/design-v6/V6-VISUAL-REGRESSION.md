@@ -86,6 +86,8 @@ La comparaison de la capture réelle `fd54cfcc3` à `V6_home_1366.png` montre qu
 
 L’accueil suit les enveloppes de la référence 1366/390 : manifeste et statistiques à gauche, quatre emplacements API à droite, recherche pleine largeur, puis vedettes et nouveautés. Les photos de démonstration sont remplacées par le média réel disponible via le service image ; les valeurs, parcs et contenus de la maquette ne sont jamais repris comme fixtures de production. La capture après Angular demeure bloquante à P20.
 
+La recherche est réalignée sur `.v6-search-controls` : barre de champs blanche à bordure d'encre, trois colonnes desktop (requête / catégorie / action), puis requête pleine largeur et catégorie/action côte à côte au mobile. Le conteneur encadré et le kicker en pastille sont retirés uniquement pour l'accueil ; les panneaux à filtres variables des autres pages conservent leur composition. Le bouton d'effacement reste visible, distinct et utilisable au clavier ; labels, autocomplétion, état compact après recherche, chargement et événements ne changent pas. Les positions réelles des champs seront contrôlées aux treize largeurs dans la prochaine CI.
+
 ## Transposition P07–P08
 
 L’inventaire et la fiche ParkItem utilisent les mêmes surfaces plates, filets visibles et petits rayons que la fiche parc, tout en conservant la densité des spécifications, conditions d’accès et facettes. Les rail/cards n’emploient ni gradient, ni masque décoratif, ni ombre de carte. La navigation latérale garde uniquement sa translation fonctionnelle de centrage vertical. Les captures chargées, sans média, non-attraction, clair/sombre et 390/1366 restent dues à P20.

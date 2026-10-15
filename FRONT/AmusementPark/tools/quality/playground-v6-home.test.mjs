@@ -13,6 +13,14 @@ const styles = readFileSync(
   'utf8',
 );
 const accessibilityStyles = readFileSync(resolve(projectRoot, 'src/styles/_accessibility-polish.scss'), 'utf8');
+const formStyles = readFileSync(resolve(projectRoot, 'src/styles/_forms.scss'), 'utf8');
+
+test('the home search bar uses the supplied desktop and mobile control composition without changing other search panels', () => {
+  assert.match(formStyles, /\.home-command-center \.app-search-panel\s*\{[^}]*border:\s*0;[^}]*background:\s*transparent/);
+  assert.match(formStyles, /\.home-command-center \.app-search-panel__grid\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\) minmax\(190px, 0\.42fr\) auto/);
+  assert.match(formStyles, /@media \(max-width:\s*680px\)\s*\{[\s\S]*?\.home-command-center \.app-search-panel__grid\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\) auto/);
+  assert.match(formStyles, /\.home-command-center \.app-search-panel__clear\s*\{[^}]*grid-column:\s*1 \/ -1;[^}]*min-height:\s*44px/);
+});
 
 test('the home hero keeps API statistics, two CTAs and four dynamic park slots', () => {
   for (const count of ['parksCount', 'attractionsCount', 'countriesCount']) {
