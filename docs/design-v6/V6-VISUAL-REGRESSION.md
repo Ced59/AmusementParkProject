@@ -38,6 +38,8 @@ La campagne `5f5de42e3` produit 1 976 captures initiales et ne relève plus de c
 
 La comparaison des règles de la référence révèle encore un écart de fidélité : le titre à 1366 px était de 84,69 px au lieu de 72,40 px, la photo principale pouvait atteindre 240 px au lieu de 205 px, et les polices éditoriales conservaient les familles V5. Corrections : tokens Arial/system-ui de la maquette, police historique isolée au wordmark, titre/split/gap/marges et image de 205 px réalignés. Les gouttières du shell rejoignent 48/30/28 px. Le palier de reflow reste 960/680 selon le dépôt, au lieu de multiplier les 920/650 de la maquette ; les CTA se replient à 320 pour préserver leur texte. Les chiffres cités sont calculés depuis le CSS, pas présentés comme des captures inspectées. Les mesures navigateur et la revue des grandes enveloppes après correction restent requises.
 
+L'inspection de la capture Angular `5f5de42e3` face au PNG V6 fourni confirme aussi le contour orange V5 de « parfait. ». Une règle globale de thème clair, plus spécifique, écrasait le style du composant : elle est retirée plutôt que contrebalancée par une nouvelle surcharge. La recette mesure désormais le contour de 1,4 px en encre sur desktop et le texte plein sans contour sur mobile, dans les deux thèmes. Les images du hero utilisent les logos réels disponibles dans le modèle existant ; elles ne sont pas déclarées équivalentes à une photographie de démonstration et aucun champ/endpoint n'est ajouté pour contourner cette différence de données.
+
 ## Baseline V5 enregistrée
 
 Les fichiers sont sous `evidence/baseline-v5/`.

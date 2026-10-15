@@ -14,6 +14,8 @@ test('the real HTTP acceptance tool cannot start a server on the Windows worksta
   assert.match(httpScript, /SSR_RENDER_MAX_CONCURRENCY: '1'/);
   assert.match(httpScript, /server\.kill\('SIGTERM'\)/);
   assert.match(httpScript, /http-ssr-report\.json/);
+  assert.match(httpScript, /route\.home \? jsonLd\.length === 0 : jsonLd\.length > 0/);
+  assert.match(httpScript, /for \(const \[, json\] of jsonLd\) JSON\.parse\(json\)/);
 });
 
 test('hydrated review accepts only protocol errors with a proven matching router cancellation', () => {

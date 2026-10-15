@@ -463,6 +463,8 @@ try {
             await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
             const hero = document.querySelector('.home-hero-card--1 .home-hero-card__content');
             const bodyStyle = getComputedStyle(document.body);
+            const outline = document.querySelector('.home-hero__title-line--outline');
+            const outlineStyle = outline ? getComputedStyle(outline) : null;
             const aliases = Object.fromEntries(['--app-field','--app-map','--app-line','--app-line-weak','--app-on-accent']
               .map(name => [name,bodyStyle.getPropertyValue(name).trim()]));
             const probe = document.createElement('span');
@@ -487,6 +489,7 @@ try {
               wordmarkColors: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).color),
               wordmarkFonts: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).fontFamily),
               homeTitleFontSize: document.querySelector('.home-hero__title') ? getComputedStyle(document.querySelector('.home-hero__title')).fontSize : null,
+              homeOutline: outlineStyle ? { color: outlineStyle.color, stroke: outlineStyle.webkitTextStrokeColor, strokeWidth: outlineStyle.webkitTextStrokeWidth } : null,
               heroTitleWidth: hero ? hero.getBoundingClientRect().width : null,
               bodyBackground: bodyStyle.backgroundColor, aliases, headingColor,
               footerActiveColor };
@@ -525,6 +528,13 @@ try {
         ? Math.min(53, Math.max(38, capture.width * 0.09)) : Math.min(74, Math.max(39, capture.width * 0.053));
       return Math.abs(Number.parseFloat(capture.homeTitleFontSize) - expected) > 0.1;
     })) throw new Error(`V6 home title size differs from the reference scale: ${path}`);
+    if (path.endsWith('/home') && route.captures.some(capture => {
+      if (capture.state !== 'initial') return false;
+      const outline = capture.homeOutline;
+      return !outline || (capture.width <= 680
+        ? outline.color !== capture.headingColor || Number.parseFloat(outline.strokeWidth) !== 0
+        : outline.stroke !== capture.headingColor || Math.abs(Number.parseFloat(outline.strokeWidth) - 1.4) > 0.01);
+    })) throw new Error(`A legacy theme override changed the V6 home title: ${path}`);
     if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)))) {
       throw new Error(`Initial SSR presentation requires correction: ${path}; see report.json.`);
     }

@@ -1,5 +1,5 @@
 ﻿/* M16 — accessibility, state and premium polish.
-   Keep dark visual identity untouched. Light-mode overrides only improve contrast. */
+   Editorial details stay in component styles, not legacy theme overrides. */
 
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 3px solid var(--app-accent-cyan);
@@ -13,12 +13,6 @@
 }
 
 body.light-mode {
-  .home-hero__title-line--outline {
-    color: transparent;
-    -webkit-text-stroke: 2.25px var(--app-primary);
-    text-shadow: 0 0 1px rgba(22, 10, 0, 0.18);
-  }
-
   .home-hero__backdrop {
     opacity: 0;
     background-image: none;

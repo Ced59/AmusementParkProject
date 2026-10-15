@@ -12,6 +12,7 @@ const styles = readFileSync(
   resolve(projectRoot, 'src/app/features/public/home/pages/home.component.scss'),
   'utf8',
 );
+const accessibilityStyles = readFileSync(resolve(projectRoot, 'src/styles/_accessibility-polish.scss'), 'utf8');
 
 test('the home hero keeps API statistics, two CTAs and four dynamic park slots', () => {
   for (const count of ['parksCount', 'attractionsCount', 'countriesCount']) {
@@ -74,4 +75,6 @@ test('the home title and primary image use the supplied V6 dimensions rather tha
   assert.match(styles, /\.home-hero-card--1 \.home-hero-card__media\s*\{[^}]*height:\s*205px/);
   assert.match(styles, /font-size:\s*clamp\(38px, 9vw, 53px\)/);
   assert.match(styles, /\.home-hero__title-line--outline\s*\{[^}]*color:\s*var\(--app-heading\);[^}]*-webkit-text-stroke:\s*0/);
+  assert.doesNotMatch(accessibilityStyles, /\.home-hero__title-line--outline/,
+    'a higher-specificity light theme override must not restore the V5 orange outline on mobile');
 });

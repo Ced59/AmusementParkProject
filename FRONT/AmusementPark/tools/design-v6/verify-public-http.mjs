@@ -22,6 +22,7 @@ const port = portProbe.address().port;
 await new Promise((yes, no) => portProbe.close(error => error ? no(error) : yes()));
 let serverLog = '';
 let serverError;
+let lastDocument;
 const server = spawn(process.execPath, ['--max-old-space-size=768', 'dist/amusement-park/server/server.mjs'], {
   stdio: ['ignore', 'pipe', 'pipe'],
   env: {
@@ -50,6 +51,7 @@ async function get(path, agent = 'bing') {
     headers: { accept: 'text/html', host: 'amusement-parks.fun', 'x-forwarded-proto': 'https', 'user-agent': userAgents[agent] },
   });
   const html = await response.text();
+  lastDocument = { path, html };
   const record = { path, agent, status: response.status, milliseconds: Math.round(performance.now() - started), htmlBytes: Buffer.byteLength(html), headers: Object.fromEntries(response.headers) };
   report.requests.push(record);
   return { response, html, record };
@@ -109,7 +111,11 @@ try {
       const jsonLd = [...html.matchAll(/<script\b[^>]*\btype=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
       for (const [, json] of jsonLd) JSON.parse(json);
       record.jsonLdBlocks = jsonLd.length;
-      check(jsonLd.length > 0, `${route.path}: parseable structured data`);
+      // Existing Home SEO deliberately emits no JSON-LD (verified on V5 and in
+      // SeoService.applyHomeSeo). Do not invent structured data during a UI-only
+      // migration; entity/directory pages still require their actual blocks.
+      check(route.home ? jsonLd.length === 0 : jsonLd.length > 0,
+        `${route.path}: existing structured-data contract`);
     }
     if (route.home) {
       const alternates = (html.match(/<link\b[^>]*>/gi) ?? []).filter(tag => attribute(tag, 'rel') === 'alternate');
@@ -147,6 +153,10 @@ try {
 } catch (error) {
   report.passed = false;
   report.error = error.stack;
+  if (lastDocument) {
+    report.failedDocumentPath = lastDocument.path;
+    await writeFile(join(evidenceRoot, 'failed-http-response.html'), lastDocument.html);
+  }
   throw error;
 } finally {
   // Stop only the process this test owns, even if assertions or startup fail.
