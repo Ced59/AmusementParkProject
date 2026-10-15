@@ -33,11 +33,11 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | PASS complet `3b560d471`, dont 2 718 tests, 90 contrôles hydratés et six premiers thèmes ; nouveaux compléments photos/focus/sizes encore à valider |
+| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `3ca29a15f` passe 2 719 tests et le build mais bloque sur une attente de recette galerie ; ciblage des pages corrigé, nouveau run requis |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | PASS `3b560d471` ; modifications suivantes encore à valider avant tout verdict final |
+| CI intégralement verte | NON sur le dernier commit ; aucun merge avant une nouvelle réussite complète |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
@@ -46,6 +46,7 @@
 | Navigation rapide pendant un zoom Leaflet | PASS CIBLÉ `483818796` — les deux adaptateurs corrigés, 2 718 tests passent et retour fiche → inventaire sans exception ; reste du parcours interrompu par une attente d'historique distincte |
 | Instruction du propriétaire sur la fusion | Poursuite jusqu'au merge explicitement demandée le 15 octobre ; exécution conditionnée à la recette et aux checks, aucun défaut connu accepté silencieusement |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
+| Libellés admin ciblés | 13 noms traduits ajoutés sans changement de handler ; 7 318 clés i18n, 179 tests Node et scan local à 13 constats hérités, nouvelle CI requise |
 
 ## Informations de référence
 

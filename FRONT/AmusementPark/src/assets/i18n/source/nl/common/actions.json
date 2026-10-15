@@ -1,5 +1,7 @@
 {
   "actions": {
+    "moveUp": "Omhoog verplaatsen",
+    "moveDown": "Omlaag verplaatsen",
     "cancel": "Annuleren",
     "close": "Sluiten",
     "save": "Opslaan",

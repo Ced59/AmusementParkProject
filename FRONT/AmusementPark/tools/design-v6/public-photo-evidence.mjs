@@ -1,4 +1,16 @@
 // Keep public image identifiers and pagination only, never full media/EXIF DTOs.
+export function publicParkGalleryPages(reads, parkId) {
+  const paths = [1, 2].map(type => `/api/images/1/${parkId}/${type}`);
+  const pages = new Map();
+  for (const read of reads) {
+    if (paths.includes(read.path) && read.photos?.kind === 'park'
+      && read.photos.pagination.currentPage === 1 && read.photos.pagination.itemsPerPage === 100) {
+      pages.set(read.path, read);
+    }
+  }
+  return paths.flatMap(path => pages.has(path) ? [pages.get(path)] : []);
+}
+
 export function publicPhotoReadEvidence(url, status, bytes) {
   const target = new URL(url, 'https://amusement-parks.fun');
   const items = /^\/api\/images\/parks\/[0-9a-f-]{36}\/park-items$/i.test(target.pathname);

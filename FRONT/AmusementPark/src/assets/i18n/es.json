@@ -6011,6 +6011,8 @@
     }
   },
   "actions": {
+    "moveUp": "Mover arriba",
+    "moveDown": "Mover abajo",
     "cancel": "Cancelar",
     "close": "Cerrar",
     "save": "Guardar",

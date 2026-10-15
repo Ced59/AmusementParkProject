@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
-import { publicPhotoReadEvidence } from '../design-v6/public-photo-evidence.mjs';
+import { publicParkGalleryPages, publicPhotoReadEvidence } from '../design-v6/public-photo-evidence.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -34,6 +34,18 @@ test('photo evidence retains only published IDs and real bounded pagination', ()
   assert.throws(() => publicPhotoReadEvidence(`/api/images/1/${id}/2?includeUnpublished=true`, 200, bytes), /Unpublished/);
   assert.throws(() => publicPhotoReadEvidence(`/api/images/1/${id}/2`, 200, Buffer.from(JSON.stringify({ data: [{ ...image, isPublished: false }], pagination }))), /unpublished/);
   assert.throws(() => publicPhotoReadEvidence(`/api/images/parks/${id}/park-items`, 200, Buffer.from(JSON.stringify({ data: [{ image, item: { isVisible: false } }], pagination }))), /hidden/);
+});
+
+test('gallery evidence excludes late summary pages and identifies both complete media types', () => {
+  const parkId = '00000000-0000-0000-0000-000000000001';
+  const page = (type, size, id, owner = parkId) => ({ path: `/api/images/1/${owner}/${type}`,
+    photos: { kind: 'park', ids: [id], pagination: { currentPage: 1, itemsPerPage: size, totalItems: 1 } } });
+  const photo = page(2, 100, 'photo');
+  const logo = page(1, 100, 'logo');
+  const reads = [page(2, 24, 'summary'), page(1, 1, 'summary-logo'), photo,
+    page(1, 100, 'other-park', '00000000-0000-0000-0000-000000000002'), photo];
+  assert.deepEqual(publicParkGalleryPages(reads, parkId), [photo]);
+  assert.deepEqual(publicParkGalleryPages([...reads, logo, page(2, 1, 'late-summary')], parkId), [logo, photo]);
 });
 
 test('the photo recipe exercises real controls and 100-plus server-paginated media without writes', () => {

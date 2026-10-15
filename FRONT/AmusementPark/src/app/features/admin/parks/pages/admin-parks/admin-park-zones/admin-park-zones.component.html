@@ -33,6 +33,7 @@
               appUiButton
               type="button"
               icon="pi pi-pencil"
+              [attr.aria-label]="'actions.edit' | translate"
               class="p-button-text"
               [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'zones', zone.id]">
             </button>
@@ -40,6 +41,7 @@
               appUiButton
               type="button"
               icon="pi pi-trash"
+              [attr.aria-label]="'actions.delete' | translate"
               class="p-button-text p-button-danger"
               (click)="deleteZone(zone)">
             </button>

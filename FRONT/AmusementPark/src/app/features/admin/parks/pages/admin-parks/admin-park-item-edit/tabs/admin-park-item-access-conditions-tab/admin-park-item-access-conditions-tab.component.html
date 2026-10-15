@@ -137,9 +137,9 @@
               </div>
 
               <div class="access-condition-card__actions">
-                <button appUiButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp.emit(accessCondition.index)" [disabled]="visibleIndex === 0"></button>
-                <button appUiButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown.emit(accessCondition.index)" [disabled]="visibleIndex === standaloneAccessConditionEntries.length - 1"></button>
-                <button appUiButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition.emit(accessCondition.index)"></button>
+                <button appUiButton type="button" icon="pi pi-arrow-up" [attr.aria-label]="'actions.moveUp' | translate" class="p-button-text p-button-sm" (click)="moveAccessConditionUp.emit(accessCondition.index)" [disabled]="visibleIndex === 0"></button>
+                <button appUiButton type="button" icon="pi pi-arrow-down" [attr.aria-label]="'actions.moveDown' | translate" class="p-button-text p-button-sm" (click)="moveAccessConditionDown.emit(accessCondition.index)" [disabled]="visibleIndex === standaloneAccessConditionEntries.length - 1"></button>
+                <button appUiButton type="button" icon="pi pi-trash" [attr.aria-label]="'actions.delete' | translate" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition.emit(accessCondition.index)"></button>
               </div>
             </div>
           </ng-template>

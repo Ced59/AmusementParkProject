@@ -1,11 +1,16 @@
 // Only real Angular controls and browser history; no API writes or demo media.
+import { publicParkGalleryPages } from './public-photo-evidence.mjs';
+
 export async function exercisePublicPhotos({ evaluate, waitUntil, result }) {
   const parent = await evaluate(`({ path: location.pathname, key: navigation.currentEntry.key })`);
+  const parkId = parent.path.match(/\/park\/([0-9a-f-]{36})(?:\/|$)/i)?.[1];
+  if (!parkId) throw new Error('The photo recipe requires its actual public park parent.');
   let cursor = result.apiReads.length;
   await evaluate(`document.querySelector('.park-banner__actions a[href$="/images"]').click()`);
   await waitUntil(`location.pathname === ${JSON.stringify(`${parent.path}/images`)} && !!document.querySelector('.photo-carousel__stage img') && document.querySelectorAll('.photo-carousel-strip__item').length > 1`, 'real park gallery opens with published photos');
-  await waitUntil(() => result.apiReads.slice(cursor).filter(read => read.photos?.kind === 'park').length === 2, 'park gallery reads its real photo and logo pages');
-  const parkReads = result.apiReads.slice(cursor).filter(read => read.photos?.kind === 'park');
+  await waitUntil(() => publicParkGalleryPages(result.apiReads.slice(cursor), parkId).length === 2, 'park gallery reads its real photo and logo pages');
+  const parkReads = publicParkGalleryPages(result.apiReads.slice(cursor), parkId);
+  if (parkReads.some(read => read.photos.ids.length !== read.photos.pagination.totalItems)) throw new Error('This park gallery recipe requires both complete bounded server pages.');
   const parkIds = new Set(parkReads.flatMap(read => read.photos.ids));
   const verifyLoaded = async (ids, label) => {
     await waitUntil(`Number(document.querySelector('.photo-carousel-years button:first-child strong')?.textContent) === ${ids.size}

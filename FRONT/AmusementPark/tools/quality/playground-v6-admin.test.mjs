@@ -163,3 +163,27 @@ test('admin surfaces use the dense flat Playground system at desktop and mobile 
   assert.doesNotMatch(adminStyles, /(?:linear|radial|conic|repeating-linear)-gradient\(/);
   assert.doesNotMatch(adminStyles, /backdrop-filter\s*:/);
 });
+
+test('admin image, location, zone and access-order icon buttons retain translated accessible names', () => {
+  const base = 'src/app/features/admin/parks/pages/admin-parks/';
+  for (const path of ['admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html',
+    'admin-park-edit/tabs/admin-park-photos-tab/admin-park-photos-tab.component.html',
+    'admin-park-item-edit/tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component.html']) {
+    const source = read(base + path);
+    assert.ok(source.includes('[attr.aria-label]="\'admin.images.batch.setAsCurrent\' | translate"'));
+    assert.ok(source.includes('[attr.aria-label]="\'actions.delete\' | translate"'));
+    assert.ok(source.includes('setCurrent'));
+    assert.ok(source.includes('deletePhoto') || source.includes('deleteLogo'));
+  }
+  const access = read(base + 'admin-park-item-edit/tabs/admin-park-item-access-conditions-tab/admin-park-item-access-conditions-tab.component.html');
+  for (const key of ['moveUp', 'moveDown', 'delete']) assert.ok(access.includes(`[attr.aria-label]="'actions.${key}' | translate"`));
+  const locations = read(base + 'admin-park-item-edit/tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component.html');
+  assert.ok(locations.includes("('actions.edit' | translate) + ' — ' + (locationOption.labelKey | translate)"));
+  assert.ok(locations.includes("('actions.clear' | translate) + ' — ' + (locationOption.labelKey | translate)"));
+  const zones = read(base + 'admin-park-zones/admin-park-zones.component.html');
+  for (const key of ['edit', 'delete']) assert.ok(zones.includes(`[attr.aria-label]="'actions.${key}' | translate"`));
+  for (const language of ['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl']) {
+    const translations = JSON.parse(read(`src/assets/i18n/source/${language}/common/actions.json`));
+    assert.ok(translations.actions.moveUp.trim() && translations.actions.moveDown.trim());
+  }
+});

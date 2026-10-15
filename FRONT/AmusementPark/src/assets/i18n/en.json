@@ -6011,6 +6011,8 @@
     }
   },
   "actions": {
+    "moveUp": "Move up",
+    "moveDown": "Move down",
     "cancel": "Cancel",
     "close": "Close",
     "save": "Save",

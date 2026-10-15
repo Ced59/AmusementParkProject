@@ -211,6 +211,7 @@
                         appUiButton
                         type="button"
                         icon="pi pi-check"
+                        [attr.aria-label]="'admin.images.batch.setAsCurrent' | translate"
                         class="p-button-sm p-button-success"
                         (click)="setCurrentPhoto.emit(photo)"
                         [disabled]="photo.isCurrent">
@@ -219,6 +220,7 @@
                         appUiButton
                         type="button"
                         icon="pi pi-trash"
+                        [attr.aria-label]="'actions.delete' | translate"
                         class="p-button-sm p-button-danger"
                         (click)="deletePhoto.emit(photo)">
                       </button>
