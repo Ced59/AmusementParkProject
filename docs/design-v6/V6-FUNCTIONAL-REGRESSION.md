@@ -117,3 +117,5 @@ La revue relève un écart de périmètre du test d'inventaire Fleury : la liste
 
 Les nouvelles règles mémoire du 15 octobre imposent aussi 3,5 Gio physiques et 4 Gio de réserve de commit avant opération intensive, ainsi qu'un verrou partagé entre chats. Les contrôles lourds suivants sont déportés en CI. L'incident temporaire à 1 037 processus / 0,78 Gio de commit a imposé une pause ; aucun processus utilisateur n'a été terminé. Les lectures légères ont repris après retour à 329 processus / 11,07 Gio de commit.
 
+La suite légère complète de qualité/présentation passe maintenant **138/138** avec `--test-concurrency=1`, dont le contraste réel de la navigation V6, le repli de la barre de recherche et les fonds neutres des logos transparents. La recette hydratée est étendue aux unités aller/retour, aux huit choix de langue avec passage réel FR→DE→FR, puis à l'ouverture/fermeture de l'arbre du Fleury et à son lien d'inventaire. Les bounds et captures des dialogues/menus sont enregistrés. Ces nouveaux scénarios doivent encore réussir en CI ; aucune écriture ni session authentifiée de production n'est utilisée.
+

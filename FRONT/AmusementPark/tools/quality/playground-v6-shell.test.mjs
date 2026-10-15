@@ -13,6 +13,7 @@ const mobileNav = read(
   'src/app/ui/layouts/public-mobile-bottom-nav/public-mobile-bottom-nav.component.html',
 );
 const navigationStyles = read('src/styles/_navigation.scss');
+const browserReview = read('tools/design-v6/capture-public-ssr.mjs');
 const footerStyles = read('src/styles/_footer.scss');
 const layoutStyles = read('src/styles/_layout.scss');
 const wordmarkStyles = read('src/styles/_brand-wordmark.scss');
@@ -80,6 +81,19 @@ test('the complete public navigation contract remains represented', () => {
   ]) {
     assert.ok(header.includes(interaction), `${interaction} must remain available`);
   }
+});
+
+test('the isolated hydrated review exercises units, all language choices and the actual park tree without production writes', () => {
+  for (const proof of [
+    'anonymous unit preference restored',
+    'language dialog exposes all eight existing choices',
+    'real language choice preserves the home route in German',
+    'real language choice restores the French home route',
+    'real park navigation tree exposes its inventory link',
+    'real park navigation tree closes without changing the route',
+  ]) assert.ok(browserReview.includes(proof), `${proof} must remain in the browser recipe`);
+  assert.ok(browserReview.includes("if (!['GET', 'HEAD'].includes(request.method)"));
+  assert.ok(browserReview.includes("const origin = 'https://apf-review.invalid'"));
 });
 
 test('the mobile navigation keeps every public entry and its conditional admin access', () => {

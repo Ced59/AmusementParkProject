@@ -6,7 +6,7 @@ import { createServer } from 'node:net';
 import { resolve, join } from 'node:path';
 
 // Never start an application server on the owner's Windows PC. This acceptance
-// check runs serially after Chromium has closed, on the isolated Linux CI runner.
+// check runs serially before Chromium starts, on the isolated Linux CI runner.
 if (process.env.CI !== 'true' || process.platform !== 'linux') {
   throw new Error('Public HTTP acceptance is restricted to the isolated Linux CI runner.');
 }
@@ -87,6 +87,7 @@ try {
     ...['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'].map(lang => ({ path: `/${lang}/home`, status: 200, lang, home: true })),
     { path: '/fr/parks', status: 200, lang: 'fr' },
     { path: park, status: 200, lang: 'fr' },
+    { path: '/fr/park/1675e96c-6361-48ff-862b-43218167facd/le-pal', status: 200, lang: 'fr' },
     { path: `${park}/item/088b092c-808f-4eba-9407-34141caa94dc/rhaegal`, status: 200, lang: 'fr' },
     { path: '/fr/attraction/46a57823-75cd-4ff3-9fde-495ad0204b1b/hasenhorn-coaster', status: 200, lang: 'fr' },
     { path: '/fr/park/94a4c4df-5ab6-4dc3-b756-2de664e947c4/efteling/pricing', status: 200, lang: 'fr' },

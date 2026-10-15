@@ -47,7 +47,7 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P01 — tokens et thèmes | CIBLÉ — RECETTE OUVERTE | mapping et tests ciblés ; contraste exhaustif/focus à valider |
 | P02 — primitives | CIBLÉ — RECETTE OUVERTE | 7 tests statiques verts, 160 facades conformes ; parcours clavier/SR à valider |
 | P03 — shells et navigation | CIBLÉ — RECETTE OUVERTE | wordmark/slogan protégés, contrats de navigation inchangés ; rôles et menus complets à valider |
-| P04 — accueil | CIBLÉ — RECETTE OUVERTE | structure réelle, hydratation/thème/consentement/recherche vérifiés ; pagination et coût réseau à valider |
+| P04 — accueil | CIBLÉ — RECETTE OUVERTE | structure réelle, hydratation/thème/consentement/recherche et pagination 5/10/20 vérifiés ; coût réseau à mesurer |
 | P05 — catalogue, exploration, recherche | CIBLÉ — RECETTE OUVERTE | filtres, carte, URL et pagination protégés statiquement |
 | P06 — détail de parc | CIBLÉ — RECETTE OUVERTE | sections/actions protégées ; capture SSR Fleury disponible, autres profils à valider |
 | P07 — inventaire des ParkItems | CIBLÉ — RECETTE OUVERTE | filtres/carte/pagination protégés ; liens réels des 38 lieux Fleury découverts |
@@ -64,10 +64,12 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 | P18 — administration | CIBLÉ — EXCEPTION DE RECETTE ACCEPTÉE | 58 terminaux/guards/workflows inventoriés ; propriétaire accepte les corrections admin après déploiement faute d'environnement isolé, sans prétendre à une recette réelle complète |
 | P19 — états rares | CIBLÉ — RECETTE OUVERTE | contrats protégés ; tous les overlays/erreurs/états longs à valider |
 | P20 — responsive/a11y | PASS CIBLÉ | 30 cas Chromium, 13 largeurs, 2 thèmes, faible hauteur, 113 contrôles qualité/a11y ; revue Angular réelle à P22 |
-| P21 — CI/performance/SEO | PASS CI CIBLÉ | CI e98d7f8fb intégralement verte ; réseau/CWV/serveur déployé à recetter |
+| P21 — CI/performance/SEO | PASS CI CIBLÉ | CI 88ad17e45 intégralement verte, 202 assertions HTTP du bundle ; réseau/CWV et déploiement non attestés |
 | P22 — version et release atomique | NO-GO | PR #917 en brouillon ; recette complète, feu vert, merge et déploiement en attente |
 
 Un gate reste bloquant tant que toutes ses preuves ne sont pas enregistrées. La version et la PR ont déjà été préparées sur la branche, mais ne constituent pas une validation P22 ni une autorisation de sortie.
+
+Le PAL est ajouté comme troisième profil de parc à la prochaine campagne, aux côtés du Fleury et d'Efteling. Son URL et son état public sont vérifiés par recherche API anonyme, puis HTTP 200/canonical/H1 sur V5.4.101. Cet identifiant est une fixture de recette uniquement, pas une donnée figée du produit. La nouvelle couverture prévue est de 39 routes / 2 028 captures ; elle n'est pas déclarée exécutée avant résultat CI.
 
 ## Couverture P20 — responsive et accessibilité
 

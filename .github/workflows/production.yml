@@ -295,6 +295,7 @@ jobs:
         run: npm run performance:bundle
 
       - name: Capture initial Angular SSR for the V6 visual review
+        id: v6-review
         if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
         env:
           V6_SSR_EVIDENCE_DIR: ${{ runner.temp }}/v6-public-ssr
@@ -302,11 +303,11 @@ jobs:
           V6_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           node tools/design-v6/generate-p00-inventory.mjs
-          node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
           node tools/design-v6/verify-public-http.mjs
+          node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
 
       - name: Upload initial V6 public SSR evidence
-        if: always() && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        if: always() && steps.v6-review.outcome != 'skipped' && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
         uses: actions/upload-artifact@v7
         with:
           name: v6-public-ssr-initial

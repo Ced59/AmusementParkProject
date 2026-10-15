@@ -32,6 +32,7 @@ const paths = process.env.V6_SSR_PATHS?.split(',') ?? [
     .map((suffix) => `/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/${suffix}`),
   '/fr/rankings', '/fr/rankings/methodology', '/fr/manufacturers', '/fr/technical', '/fr/versions',
   '/fr/park/94a4c4df-5ab6-4dc3-b756-2de664e947c4/efteling',
+  '/fr/park/1675e96c-6361-48ff-862b-43218167facd/le-pal',
   '/fr/park/94a4c4df-5ab6-4dc3-b756-2de664e947c4/efteling/pricing',
   '/fr/about', '/fr/contact', '/fr/privacy', '/fr/not-found',
 ];
@@ -269,6 +270,26 @@ async function captureHydratedHome(rawHtml) {
     await waitUntil(`location.origin === '${origin}' && document.readyState === 'complete' && document.querySelector('app-root') && !document.querySelector('app-root').hasAttribute('ngh') && !!document.querySelector('#home-search-input')`, 'Angular root hydrated');
     await evaluate(`document.querySelector('.app-cookie-consent__button--ghost')?.click()`);
     await waitUntil(`!document.querySelector('.app-cookie-consent')`, 'necessary-cookie choice handled by Angular');
+    const initialUnits = await evaluate(`document.querySelector('.app-public-nav__measurement-toggle').textContent.trim()`);
+    await evaluate(`document.querySelector('.app-public-nav__measurement-toggle').click()`);
+    await waitUntil(`document.querySelector('.app-public-nav__measurement-toggle').textContent.trim() !== ${JSON.stringify(initialUnits)}`, 'anonymous unit control updates its real preference');
+    await evaluate(`document.querySelector('.app-public-nav__measurement-toggle').click()`);
+    await waitUntil(`document.querySelector('.app-public-nav__measurement-toggle').textContent.trim() === ${JSON.stringify(initialUnits)}`, 'anonymous unit preference restored');
+    await evaluate(`document.querySelector('.app-public-nav__language').click()`);
+    await waitUntil(`document.querySelectorAll('.app-language-dialog .language-option').length === 8`, 'language dialog exposes all eight existing choices');
+    const languageBounds = await evaluate(`(() => { const rect = document.querySelector('.app-language-dialog').getBoundingClientRect(); return { left: rect.left, right: rect.right, viewport: innerWidth }; })()`);
+    if (languageBounds.left < -1 || languageBounds.right > languageBounds.viewport + 1) throw new Error('Language dialog overflows the mobile viewport.');
+    result.languageDialogBounds = languageBounds;
+    const languageScreenshot = 'fr_language_dialog_anonymous_390.webp';
+    const languagePixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+    await writeFile(join(outputRoot, languageScreenshot), Buffer.from(languagePixels.data, 'base64'));
+    result.captures.push(languageScreenshot);
+    await evaluate(`[...document.querySelectorAll('.app-language-dialog .language-option')].find(button => button.querySelector('small')?.textContent.trim() === 'DE').click()`);
+    await waitUntil(`location.pathname === '/de/home' && document.querySelector('.app-public-nav__language-code')?.textContent.trim() === 'DE' && !document.querySelector('.app-language-dialog')`, 'real language choice preserves the home route in German');
+    await evaluate(`document.querySelector('.app-public-nav__language').click()`);
+    await waitUntil(`document.querySelectorAll('.app-language-dialog .language-option').length === 8`, 'language dialog reopens in German');
+    await evaluate(`[...document.querySelectorAll('.app-language-dialog .language-option')].find(button => button.querySelector('small')?.textContent.trim() === 'FR').click()`);
+    await waitUntil(`location.pathname === '/fr/home' && document.querySelector('.app-public-nav__language-code')?.textContent.trim() === 'FR' && !document.querySelector('.app-language-dialog')`, 'real language choice restores the French home route');
     const initialTheme = await evaluate(`document.body.classList.contains('dark-mode') ? 'dark' : 'light'`);
     await evaluate(`document.querySelector('app-theme-switcher button').click()`);
     await waitUntil(`document.body.classList.contains('${initialTheme === 'dark' ? 'light' : 'dark'}-mode')`, 'theme button handled by Angular');
@@ -323,6 +344,17 @@ async function captureHydratedHome(rawHtml) {
     await waitUntil(`!!document.querySelector('.home-results a[href*="/le-fleury"]')`, 'Fleury detail link restored after pagination');
     await evaluate(`document.querySelector('.home-results a[href*="/le-fleury"]').click()`);
     await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'real result link opens the full park page');
+    await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);
+    await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'true' && !!document.querySelector('.app-public-park-tree a[href$="/le-fleury/items"]')`, 'real park navigation tree exposes its inventory link');
+    const treeBounds = await evaluate(`(() => { const rect = document.querySelector('.app-public-park-tree').getBoundingClientRect(); return { left: rect.left, right: rect.right, viewport: innerWidth }; })()`);
+    if (treeBounds.left < -1 || treeBounds.right > treeBounds.viewport + 1) throw new Error('Park navigation tree overflows the desktop viewport.');
+    result.parkTreeBounds = treeBounds;
+    const treeScreenshot = 'fr_fleury_navigation_tree_1366.webp';
+    const treePixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+    await writeFile(join(outputRoot, treeScreenshot), Buffer.from(treePixels.data, 'base64'));
+    result.captures.push(treeScreenshot);
+    await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);
+    await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'false' && !document.querySelector('.app-public-park-tree')`, 'real park navigation tree closes without changing the route');
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
     if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser raised an exception; inspect report.json.');
@@ -498,6 +530,7 @@ try {
               wordmarkColors: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).color),
               wordmarkFonts: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).fontFamily),
               homeTitleFontSize: document.querySelector('.home-hero__title') ? getComputedStyle(document.querySelector('.home-hero__title')).fontSize : null,
+              homeLogoSurface: document.querySelector('.home-hero-card--1 .home-hero-card__media') ? getComputedStyle(document.querySelector('.home-hero-card--1 .home-hero-card__media')).backgroundColor : null,
               homeOutline: outlineStyle ? { color: outlineStyle.color, stroke: outlineStyle.webkitTextStrokeColor, strokeWidth: outlineStyle.webkitTextStrokeWidth } : null,
               navigationLayout: navInner ? { inner: rect(navInner), links: rect(navLinks), actions: rect(navActions), brand: rect(navBrand) } : null,
               homeSearchLayout: document.querySelector('.home-command-center') ? {
@@ -551,6 +584,9 @@ try {
         ? outline.color !== capture.headingColor || Number.parseFloat(outline.strokeWidth) !== 0
         : outline.stroke !== capture.headingColor || Math.abs(Number.parseFloat(outline.strokeWidth) - 1.4) > 0.01);
     })) throw new Error(`A legacy theme override changed the V6 home title: ${path}`);
+    if (path.endsWith('/home') && route.captures.some(capture => capture.state === 'initial' && capture.homeLogoSurface !== null && capture.homeLogoSurface !== 'rgb(247, 246, 240)')) {
+      throw new Error(`An entity logo lost its readable neutral matte: ${path}`);
+    }
     if (route.captures.some(capture => {
       if (capture.state !== 'initial' || !capture.navigationLayout) return false;
       const { inner, links, actions, brand } = capture.navigationLayout;
