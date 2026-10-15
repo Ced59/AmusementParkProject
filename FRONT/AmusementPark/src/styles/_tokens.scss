@@ -169,12 +169,6 @@
   --ap-bg-blur: 0;
   --ap-focus-ring: var(--shadow-focus);
 
-  --app-field: var(--field);
-  --app-map: var(--map);
-  --app-line: var(--line);
-  --app-line-weak: var(--line-weak);
-  --app-on-accent: var(--on-accent);
-
   --ap-z-dropdown: 1000;
   --ap-z-sticky: 1020;
   --ap-z-fixed: 1030;
@@ -182,6 +176,16 @@
   --ap-z-modal: 1050;
   --ap-z-popover: 1060;
   --ap-z-tooltip: 1070;
+}
+
+// Theme values live on body. Resolve their aliases at that same scope before
+// inheritance; resolving them on :root would leave their body values unavailable.
+body {
+  --app-field: var(--field);
+  --app-map: var(--map);
+  --app-line: var(--line);
+  --app-line-weak: var(--line-weak);
+  --app-on-accent: var(--on-accent);
 }
 
 @font-face {

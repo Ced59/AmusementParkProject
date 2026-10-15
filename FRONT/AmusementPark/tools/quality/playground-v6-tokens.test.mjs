@@ -69,6 +69,23 @@ test('Playground V6 text colors meet WCAG AA on the page background', () => {
   }
 });
 
+test('Playground V6 semantic accents meet AA for small search labels on every supporting surface', () => {
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(source)]);
+    const resolveColor = (name) => {
+      const value = theme.get(name);
+      const alias = /^var\((--[\w-]+)\)$/.exec(value);
+      return alias ? resolveColor(alias[1]) : value;
+    };
+    for (const foreground of ['--app-primary-strong', '--app-accent-cyan', '--app-accent-lime']) {
+      for (const background of ['--field', '--bg', '--bg-card']) {
+        assert.ok(contrast(resolveColor(foreground), resolveColor(background)) >= 4.5,
+          `${foreground} must meet AA on ${background}`);
+      }
+    }
+  }
+});
+
 test('Playground V6 secondary dark accents remain readable on their soft surfaces', () => {
   const theme = variables(dark);
 

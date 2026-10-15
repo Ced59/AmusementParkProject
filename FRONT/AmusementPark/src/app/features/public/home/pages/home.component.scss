@@ -50,7 +50,7 @@
   gap: 0.5rem;
   width: fit-content;
   max-width: 100%;
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.13em;
@@ -304,7 +304,7 @@
   grid-column: 2;
   align-self: end;
   margin-right: 0.35rem;
-  color: var(--hero-card-accent);
+  color: var(--app-primary-strong);
 }
 
 .home-hero-card__bar {
@@ -371,7 +371,7 @@
 
 .home-search-autocomplete__label {
   flex: 0 0 auto;
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -599,7 +599,7 @@ app-pagination {
   }
 
   .home-search-suggestion {
-    --suggestion-accent: var(--c-orange);
+    --suggestion-accent: var(--app-primary-strong);
 
     width: 100%;
     min-height: 3.4rem;
@@ -628,20 +628,20 @@ app-pagination {
   }
 
   .home-search-suggestion--sky {
-    --suggestion-accent: var(--c-sky);
+    --suggestion-accent: var(--app-accent-cyan);
   }
 
   .home-search-suggestion--gold,
   .home-search-suggestion--rose {
-    --suggestion-accent: var(--c-orange);
+    --suggestion-accent: var(--app-primary-strong);
   }
 
   .home-search-suggestion--lime {
-    --suggestion-accent: #718500;
+    --suggestion-accent: var(--app-accent-lime);
   }
 
   .home-search-suggestion--purple {
-    --suggestion-accent: var(--c-sky);
+    --suggestion-accent: var(--app-accent-cyan);
   }
 
   .home-search-suggestion__icon {

@@ -21,6 +21,11 @@ const evidenceDirectory = process.env.V6_RESPONSIVE_EVIDENCE_DIR
   ? resolve(projectRoot, process.env.V6_RESPONSIVE_EVIDENCE_DIR)
   : null;
 const componentStyles = [
+  'src/styles/_design-tokens.scss',
+  'src/styles/_tokens.scss',
+  'src/styles/_theme-dark.scss',
+  'src/styles/_theme-light.scss',
+  'src/styles/_buttons.scss',
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
   'src/app/features/public/home/pages/home.component.scss',
@@ -414,10 +419,17 @@ const baseStyles = `
 const evaluationScript = `
   (() => {
     document.body.dataset.theme = new URLSearchParams(window.location.search).get('theme') ?? 'dark';
+    document.body.classList.add(document.body.dataset.theme + '-mode');
     const viewportRight = document.documentElement.clientWidth;
     const checked = Array.from(document.querySelectorAll('[data-responsive-root], [data-check-bound], input, select, textarea, button, a'))
       .filter((element) => !element.closest('.wishlist-strip'));
     const violations = [];
+    const bodyStyle = getComputedStyle(document.body);
+    for (const alias of ['--app-field', '--app-map', '--app-line', '--app-line-weak', '--app-on-accent']) {
+      if (!bodyStyle.getPropertyValue(alias).trim()) {
+        violations.push({ reason: 'unresolved-theme-alias', alias });
+      }
+    }
     if (document.documentElement.scrollWidth > viewportRight + 1) {
       violations.push({ selector: 'document', reason: 'horizontal-overflow', right: document.documentElement.scrollWidth, viewportRight });
     }

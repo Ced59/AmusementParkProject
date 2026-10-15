@@ -46,6 +46,8 @@ Le texte courant vise au moins 4,5:1 ; le texte large et les séparateurs essent
 
 Les contrôles pleins utilisent des premiers plans adaptés à chaque ton et état. En clair, `--on-accent: #101512` est réservé aux aplats orange/teal/lime ; le survol orange/teal utilise `--app-on-accent-hover: #ffffff`. Les boutons or/rose/violet utilisent un texte blanc et assombrissent leur aplat au survol. En sombre, ces textes restent `#151a17` et les aplats s'éclaircissent au survol. Le test de contraste contrôle les deux états de chaque ton à 4,5:1 minimum.
 
+Les alias `--app-field`, `--app-map`, `--app-line`, `--app-line-weak` et `--app-on-accent` sont résolus sur `body`, où vivent leurs valeurs de thème. Leur ancienne déclaration sur `:root` ne pouvait pas lire les variables définies sur le descendant `body` ; le test Chromium a reproduit cinq valeurs calculées vides avant correction puis passe dans les 30 cas après correction. Les petits libellés de recherche utilisent les premiers plans sémantiques contrastés (`--app-primary-strong`, `--app-accent-cyan`, `--app-accent-lime`) plutôt que les couleurs décoratives.
+
 ## Géométrie et densité
 
 - Largeur éditoriale courante : `1160px`.

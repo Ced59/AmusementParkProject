@@ -110,6 +110,7 @@ const report = {
   scope: 'Angular initial SSR, anonymous public data, no hydration or workflow acceptance',
   buildSha: process.env.GITHUB_SHA ?? 'UNVERIFIED_LOCAL_BUILD',
   sourceHeadSha: process.env.V6_SOURCE_HEAD_SHA ?? 'UNVERIFIED_LOCAL_BUILD',
+  reducedMotion: true,
   generatedAt: new Date().toISOString(),
   routes: [],
 };
@@ -126,6 +127,7 @@ try {
   cdp = await connect(targets.find((target) => target.type === 'page').webSocketDebuggerUrl);
   await cdp.send('Page.enable');
   await cdp.send('Runtime.enable');
+  await cdp.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
   entry = await import(pathToFileURL(resolve('dist/amusement-park/server/main.server.mjs')));
   const application = entry.ɵgetOrCreateAngularServerApp();
   for (const path of paths) {
@@ -152,7 +154,7 @@ try {
       await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
       for (const theme of ['light', 'dark']) {
         const measurement = await cdp.send('Runtime.evaluate', {
-          expression: `(async () => { document.body.classList.remove('light-mode','dark-mode'); document.body.classList.add('${theme}-mode'); await document.fonts.ready; await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); const hero = document.querySelector('.home-hero-card--1 .home-hero-card__content'); return { viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth, title: document.title, fontStatus: document.fonts.status, heroTitleWidth: hero ? hero.getBoundingClientRect().width : null }; })()`,
+          expression: `(async () => { document.body.classList.remove('light-mode','dark-mode'); document.body.classList.add('${theme}-mode'); await document.fonts.ready; await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); const hero = document.querySelector('.home-hero-card--1 .home-hero-card__content'); const bodyStyle = getComputedStyle(document.body); const aliases = Object.fromEntries(['--app-field','--app-map','--app-line','--app-line-weak','--app-on-accent'].map(name => [name,bodyStyle.getPropertyValue(name).trim()])); return { viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth, title: document.title, fontStatus: document.fonts.status, heroTitleWidth: hero ? hero.getBoundingClientRect().width : null, bodyBackground: bodyStyle.backgroundColor, aliases }; })()`,
           awaitPromise: true, returnByValue: true,
         });
         if (measurement.exceptionDetails) throw new Error('Could not measure the rendered SSR snapshot.');
@@ -174,7 +176,7 @@ try {
     }
     console.log(`${path}: ${route.captures.length} initial SSR captures; ${reads.length} anonymous API reads`);
     await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
-    if (route.captures.some((capture) => capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112))) {
+    if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value)))) {
       throw new Error(`Initial SSR geometry requires correction: ${path}; see report.json.`);
     }
   }
