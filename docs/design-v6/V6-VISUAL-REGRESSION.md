@@ -132,3 +132,9 @@ L’administration reprend Playground dans une déclinaison dense : largeur 1480
 
 Les overlays et états rares suivent désormais les mêmes panneaux plats : consentement, dialogs, toast, tooltip, upload, quick-create, états de page et rich text. La page racine de choix de langue emploie une marque APF Playground distincte et non le pictogramme historique, avec une grille 2→1 colonnes. Les seuls gradients conservés ont un rôle contractuel ou fonctionnel documenté : lettrage `.fun` du wordmark, shimmer de skeleton neutralisé en mouvement réduit et rendu cartographique. Les captures focus, erreur, upload, consentement et texte long restent dues à P20.
 
+## Complément P09 — identité autonome et photographie
+
+La capture Hasenhorn 390 px du run `483818796` confirme l'ancien fond photographique estompé et une enveloppe trop haute. Le correctif replace kicker, titre, types/statut et trois liens réels dans un en-tête transparent ; la photographie publique existante rejoint le contenu, distincte du texte, dans le cadre de 340 px de la maquette standalone. La grille 1,45/0,8 et l'écart de 26 px reprennent sa composition ; les données techniques rejoignent la colonne latérale devant les mêmes tarifs, horaires, météo et carte conditionnelle. Au mobile, la grille se replie, les actions restent tactiles et les valeurs se réorganisent sans troncature.
+
+Toutes les expressions de données, clés traduites, sources, permissions et appels réseau sont conservés. Aucun champ chiffré, avertissement de démonstration ou lien de faux routeur n'est copié ; Pendolino et ses médias masqués ne sont pas publiés. Les `sizes` décrivent seulement le cadre réel. Deux tests supplémentaires protègent composition et treize largeurs ; **159 tests ciblés** passent avec les contrôles existants de contraste/thème, et ce SCSS compile seul (4 268 caractères). Les captures Angular après correction sont encore requises : ce paragraphe ne constitue pas leur approbation.
+

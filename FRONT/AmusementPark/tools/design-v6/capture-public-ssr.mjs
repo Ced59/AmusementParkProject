@@ -706,6 +706,8 @@ try {
             const outlineStyle = outline ? getComputedStyle(outline) : null;
             const itemHero = document.querySelector('.item-detail-hero');
             const itemPhoto = itemHero?.querySelector('.item-detail-hero__photo');
+            const standaloneHero = document.querySelector('.standalone-hero');
+            const standalonePhoto = document.querySelector('.standalone-main__media');
             const navInner = document.querySelector('.app-public-nav__inner');
             const navLinks = document.querySelector('.app-public-nav__links');
             const navActions = document.querySelector('.app-public-nav__right');
@@ -747,6 +749,13 @@ try {
                 photoOpacity: itemPhoto ? getComputedStyle(itemPhoto).opacity : null,
                 photoPosition: itemPhoto ? getComputedStyle(itemPhoto).position : null,
                 imageSizes: itemPhoto?.querySelector('img')?.getAttribute('sizes') ?? null } : null,
+              standaloneLayout: standaloneHero ? { hero: rect(standaloneHero),
+                title: rect(standaloneHero.querySelector('h1')), chips: rect(standaloneHero.querySelector('.standalone-hero__chips')),
+                body: rect(document.querySelector('.standalone-body')), photo: rect(standalonePhoto),
+                sidebar: rect(document.querySelector('.standalone-sidebar')),
+                photoOpacity: standalonePhoto ? getComputedStyle(standalonePhoto).opacity : null,
+                photoPosition: standalonePhoto ? getComputedStyle(standalonePhoto).position : null,
+                image: rect(standalonePhoto?.querySelector('img')) } : null,
               homeSearchLayout: document.querySelector('.home-command-center') ? {
                 query: rect(document.querySelector('.home-command-center .app-search-panel__search-field')),
                 category: rect(document.querySelector('.home-command-center .app-search-panel__select-field')),
@@ -817,6 +826,17 @@ try {
         ? Math.abs(query.y - category.y) > 1 || Math.abs(category.y - submit.y) > 1
         : category.y < query.bottom - 1 || Math.abs(category.y - submit.y) > 1;
     })) throw new Error(`Home search controls differ from the V6 desktop/mobile composition: ${path}`);
+    if (route.captures.some(capture => {
+      const layout = capture.standaloneLayout;
+      if (capture.state !== 'initial' || !layout) return false;
+      if (!layout.title || !layout.chips || layout.title.bottom > layout.chips.y + 1) return true;
+      if (!layout.photo) return false;
+      return layout.photoOpacity !== '1' || layout.photoPosition !== 'relative'
+        || layout.photo.y < layout.hero.bottom - 1 || Math.abs(layout.photo.height - 340) > 1
+        || layout.photo.x < layout.body.x - 1 || layout.photo.right > layout.body.right + 1
+        || !layout.image || Math.abs(layout.image.width - layout.photo.width + 2) > 1
+        || (capture.viewport >= 960 && (!layout.sidebar || layout.sidebar.x < layout.photo.right - 1));
+    })) throw new Error(`Standalone photograph must remain separate from its identity and technical sidebar: ${path}`);
     if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)
       || (capture.itemHeroLayout?.photo && (capture.itemHeroLayout.photoOpacity !== '1' || capture.itemHeroLayout.photoPosition !== 'relative'
         || !Number.isFinite(capture.itemHeroLayout.title?.bottom) || capture.itemHeroLayout.photo.width < 112 || capture.itemHeroLayout.photo.height < 100

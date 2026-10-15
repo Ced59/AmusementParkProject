@@ -691,6 +691,7 @@ button.app-mobile-bottom-nav__item {
 
 .app-public-park-trail__item--current {
   color: var(--app-heading);
+  background: var(--app-bg);
   text-decoration: underline;
   text-underline-offset: 4px;
 }

@@ -39,7 +39,7 @@
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
 | CI intégralement verte | NON pour `483818796` : attente du retour navigateur non satisfaite ; aucune exception Leaflet dans le rapport de cette exécution, dernier PASS complet `a75861a30` |
 | Revue visuelle propriétaire | NON DEMANDÉE |
-| En-têtes ParkItem et standalone | ParkItem : correction photographique préparée, nouvelles captures CI requises ; standalone encore à corriger ; aucune validation graphique globale |
+| En-têtes ParkItem et standalone | Corrections photographiques préparées pour les deux familles ; nouvelles captures CI requises, aucune validation graphique globale |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
 | Réseau initial des nouveaux médias hero | PASS CIBLÉ `a75861a30` — rapport inspecté à 390/1366 px : 105 → 105 requêtes, −13 086 o décodés ; répétitions et performances terrain encore ouvertes |
 | Navigation rapide pendant un zoom Leaflet | PASS CIBLÉ `483818796` — les deux adaptateurs corrigés, 2 718 tests passent et retour fiche → inventaire sans exception ; reste du parcours interrompu par une attente d'historique distincte |

@@ -241,6 +241,36 @@ test('ParkItem inventory and detail use flat Playground surfaces', () => {
   assert.doesNotMatch(itemStyles, /!important/);
 });
 
+test('the standalone identity precedes a distinct real photograph and dense technical sidebar', () => {
+  assert.doesNotMatch(standaloneTemplate, /standalone-hero__backdrop|standalone-hero__pattern|standalone-hero__media/);
+  assert.ok(standaloneTemplate.indexOf('<h1>') < standaloneTemplate.indexOf('standalone-hero__chips'));
+  assert.ok(standaloneTemplate.indexOf('standalone-hero__actions') < standaloneTemplate.indexOf('standalone-main__media'));
+  assert.ok(standaloneTemplate.indexOf('<aside') < standaloneTemplate.indexOf('detailsRows().length'));
+  assert.match(standaloneStyles, /\.standalone-main__media\s*\{[^}]*position:\s*relative;[^}]*height:\s*340px/);
+  assert.match(standaloneStyles, /grid-template-columns:\s*minmax\(0, 1\.45fr\) minmax\(0, 0\.8fr\)/);
+  assert.doesNotMatch(standaloneStyles, /opacity:\s*0\.(?:24|12);/);
+  assert.match(standaloneStyles, /\.standalone-hero__actions a\s*\{[^}]*min-height:\s*44px;[^}]*white-space:\s*normal/);
+  assert.equal((standaloneTemplate.match(/fetchPriority="high"/g) ?? []).length, 1);
+  assert.doesNotMatch(standaloneTemplate, /Pendolino|1 900|2007|isVisible\s*=|isPublished\s*=/);
+});
+
+test('the standalone photograph sizes match its actual shell and technical column', () => {
+  const sizes = standaloneTemplate.match(/sizes="([^"]+)"/)[1];
+  for (const width of [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920]) {
+    let advertised;
+    for (const clause of sizes.split(',')) {
+      const condition = clause.trim().match(/^\(max-width: (\d+)px\) (.+)$/);
+      if (condition && width > Number(condition[1])) continue;
+      const value = (condition ? condition[2] : clause.trim()).replace(/^calc\(|\)$/g, '');
+      advertised = value.split(' - ').map(part => part.endsWith('vw') ? Number.parseFloat(part) * width / 100 : Number.parseFloat(part)).reduce((total, part) => total - part);
+      break;
+    }
+    const shell = Math.min(1160, width - (width <= 480 ? 28 : width <= 680 ? 30 : 48));
+    const expected = (width < 960 ? shell : (shell - 26) * 1.45 / 2.25) - 2;
+    assert.ok(Math.abs(advertised - expected) < 1, `standalone photograph at ${width}px`);
+  }
+});
+
 test('the standalone attraction remains autonomous and preserves every practical section', () => {
   for (const contract of [
     "[routerLink]=\"['/', currentLanguage(), 'parks']\"",
