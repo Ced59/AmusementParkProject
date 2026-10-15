@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
+import { publicParkItemsReadEvidence } from '../design-v6/public-directory-evidence.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -21,6 +22,29 @@ const zoneTemplate = read('src/app/features/public/parks/ui/park-zone-view.compo
 const zoneStyles = read('src/app/features/public/parks/ui/park-zone-view.component.scss');
 const zonesSectionStyles = read('src/app/features/public/parks/ui/park-zones-section.component.scss');
 const imageLayout = read('src/app/features/public/parks/models/park-detail-image-layout.ts');
+
+test('item evidence records only visible names and server pagination for the exact public parent endpoint', () => {
+  const url = '/api/park-items/park/00000000-0000-0000-0000-000000000001?page=2&size=12';
+  const body = Buffer.from(JSON.stringify({ data: [{ name: 'Attraction été', isVisible: true, internalNote: 'not evidence' }], pagination: { currentPage: 2, itemsPerPage: 12, totalItems: 38 } }));
+  assert.deepEqual(publicParkItemsReadEvidence(url, 200, body), { names: ['Attraction été'], pagination: { currentPage: 2, itemsPerPage: 12, totalItems: 38 } });
+  assert.equal(publicParkItemsReadEvidence('/api/admin/park-items', 200, Buffer.from('not JSON')), undefined);
+  assert.equal(publicParkItemsReadEvidence(url, 503, Buffer.from('not JSON')), undefined);
+  assert.throws(() => publicParkItemsReadEvidence(`${url}&includeHidden=true`, 200, body), /Hidden item evidence is prohibited/);
+  assert.throws(() => publicParkItemsReadEvidence(url, 200, Buffer.from(JSON.stringify({ data: [{ name: 'Hidden', isVisible: false }], pagination: { currentPage: 2, itemsPerPage: 12, totalItems: 38 } }))), /Invalid or non-public/);
+});
+
+test('the item browser recipe preserves paging, filters, empty state, full detail and exact browser-history entry', () => {
+  const recipe = read('tools/design-v6/exercise-public-park-items.mjs');
+  for (const contract of [
+    'item inventory page two', 'item inventory browser forward', 'for (const rows of [6, 24, 12, 48])',
+    'item inventory restaurant category', 'item inventory category reset', 'item inventory includes visible closed items',
+    'item inventory renders its real empty filtered state', 'real item card opens its full detail page, never a popup',
+    'item detail back restores filtered inventory', 'item recipe preserves the original park navigation history',
+    'API names and page match the item cards',
+  ]) assert.ok(recipe.includes(contract), `${contract} must remain in the read-only recipe`);
+  assert.ok(recipe.includes('navigation.currentEntry.index'));
+  assert.doesNotMatch(recipe, /nativeFetch|fetch\(|POST|PUT|PATCH|DELETE/);
+});
 
 test('the editorial park header separates real photography and puts every action below the identity row', () => {
   assert.ok(parkTemplate.includes('[class.park-banner--has-photo]="currentPark.heroImageId && currentPark.heroImageId !== currentPark.logoImageId"'));

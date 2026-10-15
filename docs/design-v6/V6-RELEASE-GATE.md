@@ -33,14 +33,14 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | PASS au commit `6195d1a68` : frontend, backend, version, configuration, sécurité, Docker et recette HTTP ; prochains changements à revalider |
+| P21 CI Node 24 | PASS au commit `a75861a30` : frontend, backend, version, configuration, sécurité, Docker et recette HTTP ; complément P07 à revalider |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | PASS `6195d1a68` ; 54 assertions hydratées sans exception, dont la navigation rapide qui échouait sur `61ec6e8bf` |
+| CI intégralement verte | PASS `a75861a30` ; 54 assertions hydratées sans exception, dont la navigation rapide qui échouait sur `61ec6e8bf` ; prochain complément non encore exécuté |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
-| Réseau initial des nouveaux médias hero | À MESURER — quatre visuels ajoutés, P04.6 non démontré |
+| Réseau initial des nouveaux médias hero | MESURE CI EXÉCUTÉE `a75861a30` — comparaison au SHA de base à 390/1366 px ; revue détaillée du rapport encore requise, P04.6 non déclaré soldé |
 | Navigation rapide pendant un zoom Leaflet | PASS CIBLÉ `6195d1a68` — correctif autorisé, deux tests Angular et parcours rapide CI verts ; aucune exception ignorée |
 | Feu vert explicite de fusion | NON REÇU |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |

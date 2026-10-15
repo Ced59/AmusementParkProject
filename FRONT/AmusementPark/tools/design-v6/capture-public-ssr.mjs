@@ -6,8 +6,9 @@ import { tmpdir } from 'node:os';
 import { extname, join, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isCanceledInterceptionError } from './browser-interception-errors.mjs';
-import { publicDirectoryReadEvidence, publicRouteEvidenceName } from './public-directory-evidence.mjs';
+import { publicDirectoryReadEvidence, publicParkItemsReadEvidence, publicRouteEvidenceName } from './public-directory-evidence.mjs';
 import { readHomeEvidenceFixtures, summarizeHomeResources, homeVitalsObserver } from './home-network-evidence.mjs';
+import { exercisePublicParkItems } from './exercise-public-park-items.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -253,7 +254,9 @@ async function captureHydratedHome(rawHtml, options = {}) {
       const response = await nativeFetch(target, { method: request.method, signal: AbortSignal.timeout(20000) });
       const bytes = await response.arrayBuffer();
       const directory = publicDirectoryReadEvidence(target, response.status, bytes);
-      result.apiReads.push({ path: target.pathname, query: target.search, status: response.status, ...(directory ? { directory } : {}) });
+      const parkItems = publicParkItemsReadEvidence(target, response.status, bytes);
+      result.apiReads.push({ path: target.pathname, query: target.search, status: response.status,
+        ...(directory ? { directory } : {}), ...(parkItems ? { parkItems } : {}) });
       await respond(response.status, response.headers.get('content-type') ?? 'application/octet-stream', bytes);
       return;
     }
@@ -469,6 +472,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
     await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'false' && !document.querySelector('.app-public-park-tree')`, 'real park navigation tree closes without changing the route');
     await evaluate(`document.querySelector('.park-banner__actions .pi-sitemap').closest('button').click()`);
     await waitUntil(`location.pathname.endsWith('/le-fleury/items') && !!document.querySelector('#park-items-search-input') && document.querySelectorAll('app-park-item-card-view').length > 0`, 'real park action opens the full item inventory');
+    await exercisePublicParkItems({ evaluate, waitUntil, result });
     await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);
     await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'true' && !!document.querySelector('.app-public-park-tree a.app-public-park-tree__item--current[href$="/le-fleury/items"]')`, 'real inventory tree exposes its current list');
     await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);

@@ -2,6 +2,19 @@
 export function publicDirectoryReadEvidence(url, status, bytes) {
   const target = new URL(url, 'https://amusement-parks.fun');
   if (target.pathname !== '/api/parks' || target.searchParams.get('visibleOnly') !== 'true' || status !== 200) return undefined;
+  return publicPagedVisibleEvidence(bytes);
+}
+
+export function publicParkItemsReadEvidence(url, status, bytes) {
+  const target = new URL(url, 'https://amusement-parks.fun');
+  if (!/^\/api\/park-items\/park\/[0-9a-f-]{36}$/i.test(target.pathname) || status !== 200) return undefined;
+  if (target.searchParams.has('includeHidden') && target.searchParams.get('includeHidden') !== 'false') {
+    throw new Error('Hidden item evidence is prohibited.');
+  }
+  return publicPagedVisibleEvidence(bytes);
+}
+
+function publicPagedVisibleEvidence(bytes) {
   const payload = JSON.parse(Buffer.from(bytes).toString('utf8'));
   const pagination = payload.pagination;
   if (!Array.isArray(payload.data) || payload.data.length > 100
