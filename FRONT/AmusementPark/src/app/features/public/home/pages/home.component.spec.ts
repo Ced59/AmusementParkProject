@@ -39,14 +39,15 @@ describe('HomeComponent', () => {
     ).ɵcmp.styles.join('\n');
 
     expect(styles).toContain('max-width: var(--content-max-width, 1160px)');
-    expect(styles).toMatch(/\.home-hero__inner[\s\S]*grid-template-columns: minmax\(0, 1\.12fr\) minmax\(22rem, 0\.88fr\)[\s\S]*align-items: stretch/);
-    expect(styles).toMatch(/\.home-hero__title[\s\S]*width: 100%[\s\S]*max-width: none[\s\S]*font-size: clamp\(3\.6rem, 6\.2vw, 6\.25rem\)/);
+    expect(styles).toMatch(/\.home-hero__inner[\s\S]*grid-template-columns: minmax\(0, 1\.08fr\) minmax\(0, 0\.92fr\)[\s\S]*align-items: start/);
+    expect(styles).toMatch(/\.home-hero__title[\s\S]*width: 100%[\s\S]*max-width: none[\s\S]*font-size: clamp\(39px, 5\.3vw, 74px\)/);
     expect(styles).toMatch(/\.home-hero__title-line[\s\S]*text-wrap: balance/);
     expect(styles).toMatch(/\.home-hero__spotlight[\s\S]*border-left: 3px solid var\(--app-heading\)/);
     expect(styles).toMatch(/\.home-hero-card--1[\s\S]*border-top: 5px solid var\(--c-orange\)/);
     expect(styles).toMatch(/@media \(max-width: 960px\)[\s\S]*\.home-hero__inner[\s\S]*grid-template-columns: 1fr/);
     expect(styles).toMatch(/@media \(max-width: 960px\)[\s\S]*\.home-hero__spotlight[\s\S]*border-left: 0/);
-    expect(styles).toMatch(/@media \(max-width: 680px\)[\s\S]*\.home-hero__title[\s\S]*font-size: clamp\(2\.5rem, 12vw, 3\.65rem\)/);
+    expect(styles).toMatch(/@media \(max-width: 680px\)[\s\S]*\.home-hero__title[\s\S]*font-size: clamp\(38px, 9vw, 53px\)/);
+    expect(styles).toMatch(/\.home-hero-card--1[^}]*\.home-hero-card__media[^}]*height: 205px/);
     expect(styles).toMatch(/@media \(max-width: 680px\)[\s\S]*\.home-featured__grid[\s\S]*display: flex[\s\S]*overflow-x: auto/);
     expect(styles).toMatch(/\.home-featured[^{]*>\s*app-page-state[^{]*\{[^}]*min-width: 0;[^}]*width: 100%/);
     expect(styles).toContain('scroll-snap-type: x mandatory');

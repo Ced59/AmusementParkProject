@@ -88,8 +88,9 @@ describe('PublicAppLayoutComponent', () => {
 
     expect(styles).toContain('--content-max-width: 1160px');
     expect(styles).toContain('--content-wide-max-width: 1480px');
-    expect(styles).toContain('width: min(100% - 1.5rem, var(--content-max-width))');
-    expect(styles).toContain('width: min(100% - 1rem, var(--content-max-width))');
+    expect(styles).toContain('width: min(100% - 48px, var(--content-max-width))');
+    expect(styles).toContain('width: min(100% - 30px, var(--content-max-width))');
+    expect(styles).toContain('width: calc(100% - 28px)');
   });
 
   it('lazy-renders the admin toolbar for authenticated admins in the browser', async () => {
