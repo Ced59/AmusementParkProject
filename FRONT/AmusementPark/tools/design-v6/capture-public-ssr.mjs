@@ -7,6 +7,7 @@ import { extname, join, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isCanceledInterceptionError } from './browser-interception-errors.mjs';
 import { publicDirectoryReadEvidence, publicRouteEvidenceName } from './public-directory-evidence.mjs';
+import { readHomeEvidenceFixtures, summarizeHomeResources, homeVitalsObserver } from './home-network-evidence.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -57,6 +58,14 @@ const chromeExecutable = chromeCandidates.find((candidate) => candidate.includes
 if (!chromeExecutable) throw new Error('A Chromium executable is required.');
 
 const nativeFetch = globalThis.fetch;
+const homeFixtureDocument = process.env.V6_BASELINE_DIST_DIR
+  ? JSON.parse(await readFile(join(outputRoot, 'home-public-fixtures.json'), 'utf8')) : null;
+if (homeFixtureDocument && (!/^[a-f0-9]{40}$/.test(homeFixtureDocument.baseSha ?? '') || homeFixtureDocument.baseSha !== process.env.V6_BASELINE_SHA)) {
+  throw new Error('The home comparison baseline must match the exact PR base SHA.');
+}
+const homeSsrFixtures = homeFixtureDocument ? readHomeEvidenceFixtures(homeFixtureDocument.ssr) : new Map();
+const homeClientFixtures = homeFixtureDocument ? readHomeEvidenceFixtures(homeFixtureDocument.client) : new Map();
+let replayHomeSsr = false;
 let reads = [];
 globalThis.fetch = async (input, options = {}) => {
   const request = new Request(input, options);
@@ -66,6 +75,12 @@ globalThis.fetch = async (input, options = {}) => {
     throw new Error(`Unexpected SSR network origin: ${url.origin}`);
   }
   const target = url.origin === 'http://api:8080' ? new URL(`/api${url.pathname}${url.search}`, publicOrigin) : url;
+  if (replayHomeSsr) {
+    const fixture = homeSsrFixtures.get(`${target.pathname}${target.search}`);
+    if (!fixture) throw new Error('A new SSR home request has no exact master fixture; investigate before comparison.');
+    reads.push({ path: target.pathname, status: fixture.status, source: 'same anonymous baseline response' });
+    return new Response(fixture.bytes, { status: fixture.status, headers: { 'content-type': fixture.contentType } });
+  }
   const headers = new Headers(request.headers);
   for (const name of ['authorization', 'cookie', 'X-AmusementPark-Internal-SSR']) headers.delete(name);
   const response = await nativeFetch(target, { method: request.method, headers, signal: AbortSignal.timeout(20000) });
@@ -188,10 +203,14 @@ async function connect(webSocketUrl) {
   };
 }
 
-async function captureHydratedHome(rawHtml) {
-  const origin = 'https://apf-review.invalid';
+async function captureHydratedHome(rawHtml, options = {}) {
+  const origin = options.networkProbe ? `https://apf-network-${options.label}-${options.width}.invalid` : 'https://apf-review.invalid';
+  const root = options.browserRoot ?? browserRoot;
   const result = { scope: 'anonymous hydrated home, navigation and catalogue smoke; isolated browser origin', apiReads: [], blockedRequests: [], exceptions: [], checks: [], captures: [] };
-  report.hydratedHome = result;
+  if (options.networkProbe) {
+    Object.assign(result, { label: options.label, width: options.width, resources: [] });
+    (report.homeNetworkSamples ??= []).push(result);
+  } else report.hydratedHome = result;
   const mimeTypes = { '.mjs': 'text/javascript', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.ico': 'image/x-icon' };
   const interceptionErrors = [];
   result.interceptionErrors = interceptionErrors;
@@ -212,31 +231,43 @@ async function captureHydratedHome(rawHtml) {
       await cdp.send('Fetch.failRequest', { requestId, errorReason: 'BlockedByClient' });
       return;
     }
+    const resource = options.networkProbe ? { path: `${url.pathname}${url.search}`, type: resourceType, status: null, decodedBytes: 0 } : null;
+    if (resource) result.resources.push(resource);
+    const respond = async (status, contentType, bytes) => {
+      if (resource) Object.assign(resource, { status, decodedBytes: Buffer.byteLength(Buffer.from(bytes)) });
+      await fulfill(requestId, status, contentType, bytes);
+    };
     if (url.pathname.startsWith('/api/')) {
       const target = new URL(`${url.pathname}${url.search}`, publicOrigin);
       if (target.pathname === '/api/search' && target.searchParams.get('query') === 'APF-READONLY-ERROR-FIXTURE') {
         (result.injectedFailures ??= []).push({ path: target.pathname, query: target.search, status: 503, scope: 'isolated browser only; not sent to production' });
-        await fulfill(requestId, 503, 'application/problem+json', JSON.stringify({ type: 'about:blank', title: 'Read-only review fixture', status: 503 }));
+        await respond(503, 'application/problem+json', JSON.stringify({ type: 'about:blank', title: 'Read-only review fixture', status: 503 }));
+        return;
+      }
+      const fixture = options.networkProbe ? homeClientFixtures.get(`${target.pathname}${target.search}`) : null;
+      if (fixture) {
+        result.apiReads.push({ path: target.pathname, query: target.search, status: fixture.status, source: 'same anonymous baseline client response' });
+        await respond(fixture.status, fixture.contentType, fixture.bytes);
         return;
       }
       const response = await nativeFetch(target, { method: request.method, signal: AbortSignal.timeout(20000) });
       const bytes = await response.arrayBuffer();
       const directory = publicDirectoryReadEvidence(target, response.status, bytes);
       result.apiReads.push({ path: target.pathname, query: target.search, status: response.status, ...(directory ? { directory } : {}) });
-      await fulfill(requestId, response.status, response.headers.get('content-type') ?? 'application/octet-stream', bytes);
+      await respond(response.status, response.headers.get('content-type') ?? 'application/octet-stream', bytes);
       return;
     }
     if (resourceType === 'Document' && url.origin === origin && url.pathname === '/fr/home') {
-      await fulfill(requestId, 200, 'text/html; charset=utf-8', rawHtml);
+      await respond(200, 'text/html; charset=utf-8', rawHtml);
       return;
     }
-    const assetPath = resolve(browserRoot, `.${decodeURIComponent(url.pathname)}`);
-    if (!assetPath.startsWith(`${browserRoot}${sep}`)) throw new Error('Rejected asset traversal.');
+    const assetPath = resolve(root, `.${decodeURIComponent(url.pathname)}`);
+    if (!assetPath.startsWith(`${root}${sep}`)) throw new Error('Rejected asset traversal.');
     try {
-      await fulfill(requestId, 200, mimeTypes[extname(assetPath)] ?? 'application/octet-stream', await readFile(assetPath));
+      await respond(200, mimeTypes[extname(assetPath)] ?? 'application/octet-stream', await readFile(assetPath));
     } catch (error) {
       if (error.code !== 'ENOENT') throw error;
-      await fulfill(requestId, 404, 'text/plain', 'No review asset at this path.');
+      await respond(404, 'text/plain', 'No review asset at this path.');
     }
   };
   const stopInterception = cdp.on('Fetch.requestPaused', (request) => {
@@ -307,12 +338,46 @@ async function captureHydratedHome(rawHtml) {
     (result.directoryScenarios ??= []).push({ label, path: read.path, query: read.query, ...read.directory });
     return read.directory;
   };
+  let observerScript;
   try {
     await cdp.send('Network.enable');
+    if (options.networkProbe) {
+      await cdp.send('Page.navigate', { url: 'about:blank' });
+      await waitUntil(`location.href === 'about:blank' && document.readyState === 'complete'`, 'previous isolated document unloaded');
+      await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
+      observerScript = (await cdp.send('Page.addScriptToEvaluateOnNewDocument', { source: homeVitalsObserver })).identifier;
+    }
     await cdp.send('Fetch.enable', { patterns: [{ urlPattern: '*' }] });
-    await cdp.send('Emulation.setDeviceMetricsOverride', { width: 390, height: 1200, deviceScaleFactor: 1, mobile: false });
+    await cdp.send('Network.setBlockedURLs', { urls: [] });
+    await cdp.send('Emulation.setDeviceMetricsOverride', { width: options.width ?? 390, height: 1200, deviceScaleFactor: 1, mobile: false });
     await cdp.send('Page.navigate', { url: `${origin}/fr/home` });
     await waitUntil(`location.origin === '${origin}' && document.readyState === 'complete' && document.querySelector('app-root') && !document.querySelector('app-root').hasAttribute('ngh') && !!document.querySelector('#home-search-input')`, 'Angular root hydrated');
+    if (options.networkProbe) {
+      // Identical observation window for both real builds. Not a delay added to
+      // an interaction recipe: the rapid catalogue teardown remains unchanged.
+      await new Promise(yes => setTimeout(yes, 5000));
+      result.vitals = await evaluate(`({ ...window.__apfHomeVitals, fontStatus: document.fonts.status,
+        heroNames: [...document.querySelectorAll('.home-hero-card__content strong')].map(node => node.textContent.trim()),
+        heroImages: [...document.querySelectorAll('.home-hero-card__media img')].map(image => ({ path: new URL(image.currentSrc || image.src).pathname, complete: image.complete, naturalWidth: image.naturalWidth })),
+        domCompleteMs: performance.getEntriesByType('navigation')[0]?.domComplete })`);
+      // A trusted mouse interaction, not Runtime.evaluate(...click()), for an
+      // Event Timing proxy. This is one local unit preference, never field INP.
+      const initialMeasurement = await evaluate(`document.querySelector('.app-public-nav__measurement-toggle').textContent.trim()`);
+      const unitPoint = await evaluate(`(() => { const rect = document.querySelector('.app-public-nav__measurement-toggle').getBoundingClientRect(); return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 }; })()`);
+      await cdp.send('Input.dispatchMouseEvent', { type: 'mousePressed', ...unitPoint, button: 'left', clickCount: 1 });
+      await cdp.send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...unitPoint, button: 'left', clickCount: 1 });
+      await new Promise(yes => setTimeout(yes, 200));
+      result.vitals.unitInteraction = await evaluate(`({ eventTimingAvailable: window.__apfHomeVitals.eventTimingAvailable,
+        durationsAtLeast16ms: window.__apfHomeVitals.interactionDurations, measurement: document.querySelector('.app-public-nav__measurement-toggle').textContent.trim() })`);
+      if (result.vitals.unitInteraction.measurement === initialMeasurement) throw new Error('The measured native unit click did not update its real control.');
+      result.summary = summarizeHomeResources(result.resources);
+      const networkScreenshot = `fr_home_network_${options.label}_${options.width}.webp`;
+      const networkPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+      await writeFile(join(outputRoot, networkScreenshot), Buffer.from(networkPixels.data, 'base64'));
+      result.captures.push(networkScreenshot);
+      if (result.exceptions.length || interceptionErrors.length) throw new Error('Home network probe raised a browser exception.');
+      return;
+    }
     await evaluate(`document.querySelector('.app-cookie-consent__button--ghost')?.click()`);
     await waitUntil(`!document.querySelector('.app-cookie-consent')`, 'necessary-cookie choice handled by Angular');
     const initialUnits = await evaluate(`document.querySelector('.app-public-nav__measurement-toggle').textContent.trim()`);
@@ -468,7 +533,10 @@ async function captureHydratedHome(rawHtml) {
       await Promise.allSettled([...pendingInterceptions]);
     }
     if (pendingInterceptions.size) interceptionErrors.push('Interception cleanup did not finish.');
+    if (options.networkProbe) result.summary = summarizeHomeResources(result.resources);
     try { await cdp.send('Fetch.disable'); } catch (error) { result.exceptions.push(error.message); }
+    if (observerScript) await cdp.send('Page.removeScriptToEvaluateOnNewDocument', { identifier: observerScript });
+    if (options.networkProbe) await cdp.send('Network.setCacheDisabled', { cacheDisabled: false });
     stopInterception();
     stopCancellations();
     stopExceptions();
@@ -549,7 +617,11 @@ try {
   let homeRawHtml;
   for (const path of paths) {
     reads = [];
-    const response = await application.handle(new Request(new URL(path, publicOrigin), { signal: AbortSignal.timeout(45000) }));
+    let response;
+    replayHomeSsr = path === '/fr/home' && homeSsrFixtures.size > 0;
+    try {
+      response = await application.handle(new Request(new URL(path, publicOrigin), { signal: AbortSignal.timeout(45000) }));
+    } finally { replayHomeSsr = false; }
     if (!response) throw new Error(`No Angular route matched ${path}`);
     const html = await response.text();
     if (path === '/fr/home') homeRawHtml = html;
@@ -711,6 +783,31 @@ try {
   if (process.env.CI === 'true' && homeRawHtml) {
     await verifyFleuryItemRendering(application);
     await captureHydratedHome(homeRawHtml);
+    if (homeFixtureDocument) {
+      const baselineHtml = await readFile(join(outputRoot, 'home-baseline.html'), 'utf8');
+      for (const width of [390, 1366]) {
+        await captureHydratedHome(baselineHtml, { networkProbe: true, label: 'master', width, browserRoot: resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') });
+        await captureHydratedHome(homeRawHtml, { networkProbe: true, label: 'v6', width });
+      }
+      report.homeNetworkComparison = {
+        scope: 'same-runner lab, cold browser cache, identical SSR and client API populations; decoded bytes, not wire compression; LCP/CLS proxies, not field CWV or INP',
+        baseSha: homeFixtureDocument.baseSha,
+        observationAfterHydrationMs: 5000,
+        comparisons: [390, 1366].map(width => {
+          const before = report.homeNetworkSamples.find(sample => sample.width === width && sample.label === 'master');
+          const after = report.homeNetworkSamples.find(sample => sample.width === width && sample.label === 'v6');
+          if (JSON.stringify(before.vitals.heroNames) !== JSON.stringify(after.vitals.heroNames)) throw new Error('Home comparison populations differ; the comparison is invalid.');
+          return { width, additionalRequests: after.summary.requests - before.summary.requests,
+            decodedBytesDelta: after.summary.decodedBytes - before.summary.decodedBytes,
+            before: before.summary, after: after.summary, beforeVitals: before.vitals, afterVitals: after.vitals };
+        }),
+      };
+      await writeFile(join(outputRoot, 'home-network-comparison.json'), JSON.stringify(report.homeNetworkComparison, null, 2));
+      await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
+      if (report.homeNetworkComparison.comparisons.some(comparison => comparison.additionalRequests > 0)) {
+        throw new Error('P04.6: additional initial requests measured; correction or explicit owner exception required.');
+      }
+    }
   }
 } finally {
   entry?.ɵdestroyAngularServerApp();

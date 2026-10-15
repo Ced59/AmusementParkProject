@@ -294,6 +294,23 @@ jobs:
       - name: Enforce frontend bundle budgets
         run: npm run performance:bundle
 
+      - name: Compile the exact master UI baseline for V6 comparison
+        if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        env:
+          V6_BASELINE_SHA: ${{ github.event.pull_request.base.sha }}
+          ANGULAR_BUILD_MAX_WORKERS: '1'
+        run: |
+          set -euo pipefail
+          baseline_export="${RUNNER_TEMP}/v6-baseline-source"
+          mkdir -p "${baseline_export}"
+          git -C "${GITHUB_WORKSPACE}" -c gc.auto=0 -c pack.threads=1 -c pack.windowMemory=32m -c core.deltaBaseCacheLimit=16m archive "${V6_BASELINE_SHA}" FRONT/AmusementPark | tar -x -C "${baseline_export}"
+          baseline_source="${baseline_export}/FRONT/AmusementPark"
+          cmp package-lock.json "${baseline_source}/package-lock.json"
+          ln -s "${GITHUB_WORKSPACE}/FRONT/AmusementPark/node_modules" "${baseline_source}/node_modules"
+          pushd "${baseline_source}"
+          SITE_VERSION="$(node scripts/read-release-version.mjs)" npm run build -- --configuration production --output-path "${RUNNER_TEMP}/v6-baseline-dist"
+          popd
+
       - name: Capture initial Angular SSR for the V6 visual review
         id: v6-review
         if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
@@ -301,8 +318,11 @@ jobs:
           V6_SSR_EVIDENCE_DIR: ${{ runner.temp }}/v6-public-ssr
           V6_INVENTORY_DIR: ${{ runner.temp }}/v6-public-ssr/inventory
           V6_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          V6_BASELINE_SHA: ${{ github.event.pull_request.base.sha }}
+          V6_BASELINE_DIST_DIR: ${{ runner.temp }}/v6-baseline-dist
         run: |
           node tools/design-v6/generate-p00-inventory.mjs
+          node --max-old-space-size=768 tools/design-v6/render-home-baseline.mjs
           node tools/design-v6/verify-public-http.mjs
           node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
 

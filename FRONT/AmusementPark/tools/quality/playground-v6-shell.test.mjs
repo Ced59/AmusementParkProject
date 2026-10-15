@@ -94,7 +94,8 @@ test('the isolated hydrated review exercises units, all language choices and the
     'real park navigation tree closes without changing the route',
   ]) assert.ok(browserReview.includes(proof), `${proof} must remain in the browser recipe`);
   assert.ok(browserReview.includes("if (!['GET', 'HEAD'].includes(request.method)"));
-  assert.ok(browserReview.includes("const origin = 'https://apf-review.invalid'"));
+  assert.ok(browserReview.includes('const origin = options.networkProbe ?'));
+  assert.ok(browserReview.includes(": 'https://apf-review.invalid';"));
   const treeFacade = read('src/app/features/public/navigation/state/public-park-navigation-tree.facade.ts');
   assert.match(treeFacade, /context\.pageKind === 'park-items' && !zoneId/);
   assert.ok(browserReview.includes('failed-hydrated-check.webp'));

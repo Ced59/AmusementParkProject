@@ -68,6 +68,12 @@ La commande complète `test:ci` a construit les 14,95 MB de bundles de test puis
 
 ## SEO/SSR à préserver
 
+Dernière campagne entièrement verte : [CI `6195d1a68`](https://github.com/Ced59/AmusementParkProject/actions/runs/38766079549), 2 712 tests, 40 routes / 2 080 captures, 26 GET / 224 assertions HTTP et 54 assertions hydratées sans exception. Initial **827 368 o**, CSS **213 915 o** ; aucun budget n'a été relevé.
+
+Le complément de mesure de l'accueil compile séparément le frontend du SHA exact de base de la PR sur le runner Linux, avec le même lockfile et les dépendances déjà installées, puis le frontend V6 est comparé à ce build. Aucun serveur local ou de production n'est démarré par cette mesure. Les cinq réponses API publiques initiales sont enregistrées anonymement, sans cookies/autorisation ; le renouvellement client des parcs aléatoires dispose de sa seconde vraie réponse. Ces deux populations sont rejouées à l'identique aux deux builds, uniquement dans l'outillage CI, jamais dans l'application livrée.
+
+Deux largeurs (390/1366) sont observées cinq secondes après hydratation, cache navigateur désactivé : requêtes émises, corps décodés par type, LCP/CLS de laboratoire et Event Timing d'un clic natif sur les unités. Ce ne sont ni des octets réseau compressés, ni des Core Web Vitals terrain, ni l'INP d'une visite complète. Les mutations et origines tierces restent bloquées. Toute augmentation des requêtes initiales fait échouer P04.6 : elle exige correction ou exception précise du propriétaire après mesure, pas un PASS silencieux. L'exécution de ce complément reste à attester.
+
 La [CI e98d7f8fb](https://github.com/Ced59/AmusementParkProject/actions/runs/38697638768) réussit build SSR, tests frontend avec couverture, budgets, qualité, sécurité, backend et images Docker. Le moteur SSR réel rend 19 routes publiques et les 38 détails visibles du Fleury. Le navigateur isolé hydrate l'accueil sans exception et exécute consentement, thème et recherche. Ces preuves ne mesurent pas les Core Web Vitals terrain et ne remplacent pas les codes HTTP, le cache et les en-têtes du serveur de recette déployé.
 
 | Mesure CI `e98d7f8fb` | Octets | Budget | Verdict |

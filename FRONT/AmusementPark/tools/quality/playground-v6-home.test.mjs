@@ -2,6 +2,46 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
+import { readHomeEvidenceFixtures, summarizeHomeResources } from '../design-v6/home-network-evidence.mjs';
+
+test('home comparison fixtures accept only bounded successful public home responses', () => {
+  const record = { key: '/api/parks/random-visible?limit=4', status: 200, contentType: 'application/json; charset=utf-8', bodyBase64: Buffer.from('[{"name":"Parc été"}]').toString('base64') };
+  const fixtures = readHomeEvidenceFixtures([record]);
+  assert.equal(fixtures.get(record.key).bytes.toString('utf8'), '[{"name":"Parc été"}]');
+  for (const invalid of [
+    { ...record, key: '/api/admin/parks' }, { ...record, key: '/api/profile' },
+    { ...record, key: 'https://untrusted.invalid/api/parks/random-visible' },
+    { ...record, status: 503 }, { ...record, contentType: 'text/html' },
+    { ...record, bodyBase64: 'a'.repeat(2800001) },
+  ]) assert.throws(() => readHomeEvidenceFixtures([invalid]), /Unexpected home fixture/);
+  assert.throws(() => readHomeEvidenceFixtures([record, record]), /Unexpected home fixture/);
+  assert.throws(() => readHomeEvidenceFixtures(Array(17).fill(record)), /Invalid bounded/);
+});
+
+test('network evidence counts issued requests separately from decoded body bytes', () => {
+  assert.deepEqual(summarizeHomeResources([
+    { type: 'Image', decodedBytes: 30 }, { type: 'Image', decodedBytes: 0 },
+    { type: 'Script', decodedBytes: 100 },
+  ]), { requests: 3, decodedBytes: 130, byType: { Image: { requests: 2, decodedBytes: 30 }, Script: { requests: 1, decodedBytes: 100 } } });
+});
+
+test('home comparison builds the exact master frontend and preserves distinct SSR and refreshed client data', () => {
+  const read = path => readFileSync(resolve(import.meta.dirname, '../..', path), 'utf8');
+  const baseline = read('tools/design-v6/render-home-baseline.mjs');
+  const capture = read('tools/design-v6/capture-public-ssr.mjs');
+  const workflow = readFileSync(resolve(import.meta.dirname, '../../../../.github/workflows/production.yml'), 'utf8');
+  assert.ok(baseline.includes("process.env.CI !== 'true' || process.platform !== 'linux'"));
+  assert.ok(baseline.includes("request.method !== 'GET'"));
+  assert.ok(baseline.includes('clientRecords.push({ key: record.key'));
+  assert.ok(baseline.includes('ssr: [...records.values()], client: clientRecords'));
+  assert.ok(workflow.includes('archive "${V6_BASELINE_SHA}" FRONT/AmusementPark'));
+  assert.ok(workflow.includes('cmp package-lock.json'));
+  assert.ok(capture.includes('for (const width of [390, 1366])'));
+  assert.ok(capture.includes('Home comparison populations differ'));
+  assert.ok(capture.includes('P04.6: additional initial requests measured'));
+  assert.ok(capture.includes('decoded bytes, not wire compression'));
+  assert.ok(capture.includes('LCP/CLS proxies, not field CWV or INP'));
+});
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const template = readFileSync(
