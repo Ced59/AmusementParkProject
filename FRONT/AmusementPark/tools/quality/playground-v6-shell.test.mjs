@@ -89,11 +89,15 @@ test('the isolated hydrated review exercises units, all language choices and the
     'language dialog exposes all eight existing choices',
     'real language choice preserves the home route in German',
     'real language choice restores the French home route',
-    'real park navigation tree exposes its inventory link',
+    'real park overview tree exposes catalogue and current park',
+    'real inventory tree exposes its current list',
     'real park navigation tree closes without changing the route',
   ]) assert.ok(browserReview.includes(proof), `${proof} must remain in the browser recipe`);
   assert.ok(browserReview.includes("if (!['GET', 'HEAD'].includes(request.method)"));
   assert.ok(browserReview.includes("const origin = 'https://apf-review.invalid'"));
+  const treeFacade = read('src/app/features/public/navigation/state/public-park-navigation-tree.facade.ts');
+  assert.match(treeFacade, /context\.pageKind === 'park-items' && !zoneId/);
+  assert.ok(browserReview.includes('failed-hydrated-check.webp'));
 });
 
 test('the mobile navigation keeps every public entry and its conditional admin access', () => {

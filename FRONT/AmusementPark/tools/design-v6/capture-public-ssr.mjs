@@ -260,6 +260,17 @@ async function captureHydratedHome(rawHtml) {
       if (await evaluate(expression)) { result.checks.push(label); return; }
       await new Promise((yes) => setTimeout(yes, 200));
     }
+    result.failedCheck = label;
+    try {
+      result.failedBrowserState = await evaluate(`({ path: location.pathname + location.search, viewport: innerWidth,
+        heading: document.querySelector('h1')?.textContent?.trim(),
+        treeExpanded: document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded'),
+        treeLinks: [...document.querySelectorAll('.app-public-park-tree a')].map(link => ({ href: link.getAttribute('href'), label: link.textContent.trim(), current: link.classList.contains('app-public-park-tree__item--current') })) })`);
+      const failurePixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+      await writeFile(join(outputRoot, 'failed-hydrated-check.webp'), Buffer.from(failurePixels.data, 'base64'));
+    } catch (error) {
+      result.failureDiagnosticError = error.message;
+    }
     throw new Error(`Hydrated browser check timed out: ${label}`);
   };
   try {
@@ -345,7 +356,9 @@ async function captureHydratedHome(rawHtml) {
     await evaluate(`document.querySelector('.home-results a[href*="/le-fleury"]').click()`);
     await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'real result link opens the full park page');
     await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);
-    await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'true' && !!document.querySelector('.app-public-park-tree a[href$="/le-fleury/items"]')`, 'real park navigation tree exposes its inventory link');
+    // This existing tree is contextual, not a second full park section menu:
+    // the overview has catalogue/current park; inventory appears on /items.
+    await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'true' && !!document.querySelector('.app-public-park-tree a[href="/fr/parks"]') && !!document.querySelector('.app-public-park-tree a.app-public-park-tree__item--current[href$="/le-fleury"]')`, 'real park overview tree exposes catalogue and current park');
     const treeBounds = await evaluate(`(() => { const rect = document.querySelector('.app-public-park-tree').getBoundingClientRect(); return { left: rect.left, right: rect.right, viewport: innerWidth }; })()`);
     if (treeBounds.left < -1 || treeBounds.right > treeBounds.viewport + 1) throw new Error('Park navigation tree overflows the desktop viewport.');
     result.parkTreeBounds = treeBounds;
@@ -355,6 +368,14 @@ async function captureHydratedHome(rawHtml) {
     result.captures.push(treeScreenshot);
     await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);
     await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'false' && !document.querySelector('.app-public-park-tree')`, 'real park navigation tree closes without changing the route');
+    await evaluate(`document.querySelector('.park-banner__actions .pi-sitemap').closest('button').click()`);
+    await waitUntil(`location.pathname.endsWith('/le-fleury/items') && !!document.querySelector('#park-items-search-input') && document.querySelectorAll('app-park-item-card-view').length > 0`, 'real park action opens the full item inventory');
+    await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);
+    await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'true' && !!document.querySelector('.app-public-park-tree a.app-public-park-tree__item--current[href$="/le-fleury/items"]')`, 'real inventory tree exposes its current list');
+    await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);
+    await waitUntil(`!document.querySelector('.app-public-park-tree')`, 'inventory tree closes without navigating');
+    await evaluate(`history.back()`);
+    await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'browser back from inventory restores the full park');
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
     if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser raised an exception; inspect report.json.');
