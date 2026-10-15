@@ -70,6 +70,10 @@ La PR unique est ouverte. La fusion reste interdite jusqu’à ce que la CI Node
 
 Le scan détecte `System.Security.Cryptography.Pkcs 10.0.0`, transitive déjà présente sur la base `origin/master`, affectée par [CVE-2026-84008, High 7,5](https://github.com/advisories/GHSA-846f-f764-76mx) et [CVE-2026-70162, Moderate 5,9](https://github.com/advisories/GHSA-2fmv-rv2c-59x7), publiées le 13 octobre. Le propriétaire a explicitement autorisé le correctif minimal dans la même PR : référence directe `10.0.13` dans le projet Infrastructure, commit `235470597`. Aucun endpoint, code métier ou configuration d'infrastructure n'est modifié par cette exception ; le scan est conservé sans contournement.
 
+La [CI du commit 4bde5e74d](https://github.com/Ced59/AmusementParkProject/actions/runs/38689894921) réussit intégralement, y compris le scan de sécurité et les builds Docker. Le déploiement est normalement ignoré pour la PR. Les corrections visuelles et l'outillage de capture ajoutés ensuite imposent une nouvelle CI.
+
+Le workflow existant reçoit uniquement deux étapes de recette conditionnées à la PR de cette branche : capture initiale SSR publique et dépôt de l'artefact. Les conditions de livraison, images et déploiement ne sont pas modifiées. La PR reste en brouillon tant que la recette complète n'est pas démontrée.
+
 ## Rollback
 
 En cas d’échec après feu vert et fusion, appliquer la procédure transactionnelle existante de `docs/deploy/transactional-app-deployment.md` vers la génération complète antérieure. Aucun rollback CSS sélectif, aucune publication partielle et aucun mélange permanent V5/V6.
