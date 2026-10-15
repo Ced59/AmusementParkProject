@@ -17,7 +17,19 @@ const results = [];
 for (const file of files) {
   const before = git(['show', `${base}:${file}`]);
   const after = readFileSync(resolve(repositoryRoot, file), 'utf8');
-  results.push({ file, ...compareTemplateContracts(templateContracts(before, file), templateContracts(after, file)) });
+  const comparison = compareTemplateContracts(templateContracts(before, file), templateContracts(after, file));
+  // Exact, reviewed presentation-only exception: the old dialog container no
+  // longer needs to stop bubbling into a clickable parent. Its backdrop is now
+  // a named native button, while both real close handlers remain protected.
+  if (file === 'FRONT/AmusementPark/src/app/ui/media/photo-carousel/ui-photo-carousel.component.html'
+    && /<button\s+class="photo-lightbox__backdrop"\s+type="button"\s+tabindex="-1"\s+\[attr\.aria-label\]="closeFullscreenLabelKey \| translate"\s+\(click\)="closeLightbox\(\)"/.test(after)
+    && after.includes('cdkTrapFocus [cdkTrapFocusAutoCapture]="true"')
+    && comparison.missing.length === 1
+    && JSON.stringify(comparison.missing[0]) === JSON.stringify(['event', 'click', 0, '$event.stopPropagation()'])) {
+    comparison.presentationChanges = [{ contract: comparison.missing[0], reason: 'Bubbling guard obsolete with the named native backdrop button; close handlers preserved.' }];
+    comparison.missing = [];
+  }
+  results.push({ file, ...comparison });
 }
 const report = { scope: 'existing template source contracts; not complete browser/role acceptance', base, results };
 if (process.env.V6_SSR_EVIDENCE_DIR) {

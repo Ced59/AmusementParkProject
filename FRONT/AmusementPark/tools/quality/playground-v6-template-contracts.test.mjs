@@ -8,6 +8,14 @@ test('moving controls and photographs does not remove their source contracts', (
   assert.deepEqual(compareTemplateContracts(templateContracts(before), templateContracts(after)).missing, []);
 });
 
+test('structural wrappers do not double-count a DOM event and native replacements preserve the action', () => {
+  const before = templateContracts('<section *ngIf="open" (click)="close()"></section>');
+  const after = templateContracts('<section *ngIf="open"><button (click)="close()"></button></section>');
+  assert.equal(before.filter(value => JSON.parse(value)[0] === 'event').length, 1);
+  assert.deepEqual(compareTemplateContracts(before, after).missing, []);
+  assert.ok(compareTemplateContracts(before, templateContracts('<section *ngIf="open"></section>')).missing.length);
+});
+
 test('lost handlers, conditions, labels, image loading and duplicate controls fail comparison', () => {
   for (const [before, after] of [
     ['<button (click)="save()"></button>', '<button></button>'],

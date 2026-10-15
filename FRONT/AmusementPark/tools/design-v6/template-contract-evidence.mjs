@@ -14,18 +14,21 @@ export function templateContracts(source, filename = 'review.html') {
   function walk(node) {
     const kind = node.constructor.name;
     const tag = node.name ?? node.tagName ?? kind;
-    for (const attribute of node.attributes ?? []) {
+    // *ngIf/*ngFor wrappers repeat the child's element bindings in the AST.
+    // Count the actual element once, but retain the wrapper's own directives.
+    const desugared = kind === 'Template' && node.tagName !== 'ng-template';
+    for (const attribute of desugared ? [] : node.attributes ?? []) {
       if (semanticAttribute.test(attribute.name)) add('attribute', tag, attribute.name, attribute.value);
     }
-    for (const input of node.inputs ?? []) {
+    for (const input of desugared ? [] : node.inputs ?? []) {
       if ([BindingType.Class, BindingType.Style, BindingType.Animation].includes(input.type)
         || ['class', 'style', 'ngClass', 'ngStyle', 'iconClass', 'tone'].includes(input.name)
         || (tag === 'app-image-display' && imagePresentation.has(input.name))) continue;
       add('input', tag, input.type, input.name, expression(input.value));
     }
-    for (const output of node.outputs ?? []) add('event', tag, output.name, output.type, expression(output.handler));
+    for (const output of desugared ? [] : node.outputs ?? []) add('event', output.name, output.type, expression(output.handler));
     for (const attribute of node.templateAttrs ?? []) add('template', tag, attribute.name, expression(attribute.value));
-    for (const reference of node.references ?? []) add('reference', tag, reference.name, reference.value);
+    for (const reference of desugared ? [] : node.references ?? []) add('reference', tag, reference.name, reference.value);
     for (const variable of node.variables ?? []) add('variable', tag, variable.name, variable.value);
     if (kind === 'BoundText') add('text', expression(node.value));
     if (node.expression) add('expression', kind, expression(node.expression));

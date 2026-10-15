@@ -88,4 +88,23 @@ export async function exercisePublicParkItems({ evaluate, waitUntil, result }) {
   await waitUntil(`location.pathname + location.search === ${JSON.stringify(original.url)} && navigation.currentEntry.key === ${JSON.stringify(original.key)}`, 'item recipe preserves the original park navigation history');
   result.itemHistory.restored = await historySnapshot();
   if (result.itemHistory.restored.key !== original.key) throw new Error('Item history restored a different browser entry with the same URL and index.');
+  // Keep the rapid Rhaegal detail/back transition above unchanged. Exercise
+  // siblings separately, after that teardown regression has already passed.
+  const firstDetail = await evaluate(`(() => { const card = document.querySelector('.items-grid .ui-item-card'); return { path: card.querySelector('.ui-item-card__footer a').getAttribute('href'), name: card.querySelector('.ui-item-card__title').textContent.trim() }; })()`);
+  await evaluate(`document.querySelector('.items-grid .ui-item-card__footer a').click()`);
+  await waitUntil(`location.pathname === ${JSON.stringify(firstDetail.path)} && document.querySelector('h1')?.textContent.trim() === ${JSON.stringify(firstDetail.name)}`, 'independent item sibling recipe opens a real full detail');
+  await waitUntil(`document.querySelectorAll('.item-detail-hero__sibling').length > 0`, 'real public sibling navigation is available after client enrichment');
+  const siblingDirections = await evaluate(`Array.from(document.querySelectorAll('.item-detail-hero__sibling'), link => link.classList.contains('item-detail-hero__sibling--next') ? 'next' : 'previous')`);
+  for (const direction of siblingDirections) {
+    const selector = `.item-detail-hero__sibling--${direction}`;
+    await waitUntil(`!!document.querySelector(${JSON.stringify(selector)})`, `item ${direction} control remains available`);
+    const sibling = await evaluate(`(() => { const link = document.querySelector(${JSON.stringify(selector)}); return { path: link.getAttribute('href'), name: link.querySelector('strong').textContent.trim() }; })()`);
+    await evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
+    await waitUntil(`location.pathname === ${JSON.stringify(sibling.path)} && document.querySelector('h1')?.textContent.trim() === ${JSON.stringify(sibling.name)} && !document.querySelector('.p-dialog')`, `item ${direction} opens its full real sibling route`);
+    (result.itemSiblingScenarios ??= []).push({ direction, ...sibling });
+    await evaluate('history.back()');
+    await waitUntil(`location.pathname === ${JSON.stringify(firstDetail.path)} && document.querySelector('h1')?.textContent.trim() === ${JSON.stringify(firstDetail.name)}`, `item ${direction} browser back restores the source detail`);
+  }
+  await evaluate('history.back()');
+  await waitUntil(`location.pathname + location.search === ${JSON.stringify(original.url)} && navigation.currentEntry.key === ${JSON.stringify(original.key)} && !!document.querySelector('.park-items-page')`, 'sibling recipe restores the exact original inventory entry');
 }

@@ -76,6 +76,9 @@ test('the item browser recipe preserves paging, filters, empty state, full detai
     'item inventory renders its real empty filtered state', 'real item card opens its full detail page, never a popup',
     'item detail back restores filtered inventory', 'item recipe preserves the original park navigation history',
     'API names and page match the item cards',
+    'independent item sibling recipe opens a real full detail',
+    'opens its full real sibling route',
+    'sibling recipe restores the exact original inventory entry',
   ]) assert.ok(recipe.includes(contract), `${contract} must remain in the read-only recipe`);
   assert.ok(recipe.includes('navigation.currentEntry.index'));
   assert.doesNotMatch(recipe, /nativeFetch|fetch\(|POST|PUT|PATCH|DELETE/);

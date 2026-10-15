@@ -40,6 +40,16 @@ export async function exercisePublicPhotos({ evaluate, waitUntil, result }) {
   await evaluate(`document.querySelector('.photo-lightbox__close').click()`);
   await waitUntil(`!document.querySelector('.photo-lightbox')`, 'photo lightbox closes without navigation or mutation');
   await waitUntil(`document.activeElement === document.querySelector('.photo-carousel__stage')`, 'photo lightbox restores keyboard focus to its original stage');
+  await evaluate(`document.querySelector('.photo-carousel__stage').dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))`);
+  await waitUntil(`!!document.querySelector('.photo-lightbox__dialog')`, 'photo lightbox reopens for its backdrop recipe');
+  await evaluate(`document.querySelector('.photo-lightbox__header h2').click()`);
+  await waitUntil(`!!document.querySelector('.photo-lightbox__dialog')`, 'photo dialog content click never closes the modal');
+  await evaluate(`document.querySelector('.photo-lightbox__backdrop').click()`);
+  await waitUntil(`!document.querySelector('.photo-lightbox') && document.activeElement === document.querySelector('.photo-carousel__stage')`, 'named native backdrop retains outside-click close and restores focus');
+  await evaluate(`document.querySelector('.photo-carousel__stage').dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))`);
+  await waitUntil(`document.activeElement === document.querySelector('.photo-lightbox__close')`, 'photo lightbox captures focus again before Escape');
+  await evaluate(`document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))`);
+  await waitUntil(`!document.querySelector('.photo-lightbox') && document.activeElement === document.querySelector('.photo-carousel__stage')`, 'photo lightbox Escape preserves its existing close and restores focus');
   cursor = result.apiReads.length;
   await evaluate(`document.querySelector('#park-images-tab-items').click()`);
   await waitUntil(() => result.apiReads.slice(cursor).some(read => read.photos?.kind === 'items' && read.photos.pagination.itemsPerPage === 100), 'item photo tab requests its real server page size');

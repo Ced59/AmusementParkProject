@@ -50,6 +50,8 @@ test('the photo recipe exercises real controls and 100-plus server-paginated med
 test('photo galleries preserve filters, lazy thumbnails, credits, maps and lightbox controls', () => {
   assert.ok(carouselTemplate.includes('cdkTrapFocus [cdkTrapFocusAutoCapture]="true"'));
   assert.ok(carouselTemplate.includes('cdkFocusInitial'));
+  assert.match(carouselTemplate, /<button\s+class="photo-lightbox__backdrop"\s+type="button"\s+tabindex="-1"\s+\[attr\.aria-label\]="closeFullscreenLabelKey \| translate"\s+\(click\)="closeLightbox\(\)"/);
+  assert.doesNotMatch(carouselTemplate, /\$event\.stopPropagation/);
   for (const contract of [
     'selectYear(',
     'selectTag(',

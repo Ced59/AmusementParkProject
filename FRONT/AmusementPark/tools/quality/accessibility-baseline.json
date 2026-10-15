@@ -65,20 +65,6 @@
       "message": "Non-native click targets must provide keyboard handling and interactive semantics."
     },
     {
-      "fingerprint": "click-keyboard|src/app/ui/media/photo-carousel/ui-photo-carousel.component.html|bcba1715ccba|1",
-      "rule": "click-keyboard",
-      "path": "src/app/ui/media/photo-carousel/ui-photo-carousel.component.html",
-      "line": 240,
-      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
-    },
-    {
-      "fingerprint": "click-keyboard|src/app/ui/media/photo-carousel/ui-photo-carousel.component.html|f7c6b0decac2|bcba1715ccba|1",
-      "rule": "click-keyboard",
-      "path": "src/app/ui/media/photo-carousel/ui-photo-carousel.component.html",
-      "line": 240,
-      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
-    },
-    {
       "fingerprint": "interactive-name|src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html|b5a1ca6f79e9|5c819d831c6e|1",
       "rule": "interactive-name",
       "path": "src/app/features/admin/parks/pages/admin-parks/admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component.html",
