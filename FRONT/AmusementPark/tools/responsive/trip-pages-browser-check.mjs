@@ -23,6 +23,7 @@ const evidenceDirectory = process.env.V6_RESPONSIVE_EVIDENCE_DIR
 const componentStyles = [
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
+  'src/app/features/public/home/pages/home.component.scss',
   'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
   'src/app/features/public/parks/ui/park-location-section.component.scss',
   'src/app/features/public/parks/ui/park-detail-view.component.scss',
@@ -77,6 +78,17 @@ if (!chromeExecutable) {
 
 const fixtureMarkup = `
   <div class="responsive-fixture-host">
+    <main class="home-page" data-check-bound>
+      <div class="home-floating-stack">
+        <a class="home-hero-card home-hero-card--1 home-hero-card--primary" data-check-bound>
+          <span class="home-hero-card__media" aria-hidden="true">Photo du parc</span>
+          <span class="home-hero-card__icon" aria-hidden="true">↗</span>
+          <span class="home-hero-card__content" data-check-bound><strong>Un parc au nom particulièrement long</strong><span>Une localisation également très longue</span></span>
+          <span class="home-hero-card__tag">À découvrir</span>
+          <span class="home-hero-card__bar" aria-hidden="true"></span>
+        </a>
+      </div>
+    </main>
     <main class="app-admin-layout__main" data-responsive-root="admin-trip-pilot" data-check-bound>
       <div class="trip-pilot surface" data-check-bound>
         <header class="trip-pilot__header"><div><span>Pilotage des voyages privés</span><h2>Pilote collaboratif</h2><p>Des indicateurs agrégés avec des libellés volontairement longs pour éprouver l'affichage mobile.</p></div><button>Actualiser les indicateurs</button></header>
@@ -415,6 +427,10 @@ const evaluationScript = `
         violations.push({ selector: element.tagName.toLowerCase() + (element.className ? '.' + String(element.className).trim().replaceAll(' ', '.') : ''), reason: 'out-of-bounds', left: bounds.left, right: bounds.right, viewportRight });
       }
     }
+    const heroText = document.querySelector('.home-hero-card--1 .home-hero-card__content').getBoundingClientRect();
+    if (heroText.width < 112) {
+      violations.push({ selector: '.home-hero-card--1 .home-hero-card__content', reason: 'compressed-hero-title', width: heroText.width });
+    }
     for (const target of document.querySelectorAll('.rating-stars__hit')) {
       const bounds = target.getBoundingClientRect();
       if (bounds.width < 24 || bounds.height < 24) {
@@ -505,7 +521,6 @@ const connectDevTools = async (webSocketUrl) => {
 
   let sequence = 0;
   const pending = new Map();
-  const eventWaiters = new Map();
   socket.addEventListener('message', (event) => {
     const message = JSON.parse(event.data);
     if (message.id) {
@@ -518,24 +533,21 @@ const connectDevTools = async (webSocketUrl) => {
       }
       return;
     }
-    const waiters = eventWaiters.get(message.method) ?? [];
-    eventWaiters.delete(message.method);
-    for (const resolveEvent of waiters) {
-      resolveEvent(message.params);
-    }
   });
 
   return {
     close: () => socket.close(),
     send: (method, params = {}) => new Promise((resolveRequest, rejectRequest) => {
       const id = ++sequence;
-      pending.set(id, { reject: rejectRequest, resolve: resolveRequest });
+      const timer = setTimeout(() => {
+        pending.delete(id);
+        rejectRequest(new Error(`Chromium request timed out: ${method}`));
+      }, 15000);
+      pending.set(id, {
+        reject: (error) => { clearTimeout(timer); rejectRequest(error); },
+        resolve: (value) => { clearTimeout(timer); resolveRequest(value); }
+      });
       socket.send(JSON.stringify({ id, method, params }));
-    }),
-    waitFor: (method) => new Promise((resolveEvent) => {
-      const waiters = eventWaiters.get(method) ?? [];
-      waiters.push(resolveEvent);
-      eventWaiters.set(method, waiters);
     })
   };
 };
@@ -580,15 +592,19 @@ try {
         screenWidth: viewport.width,
         screenHeight: viewport.height
       });
-      const pageLoaded = devTools.waitFor('Page.loadEventFired');
+      const query = `?width=${viewport.width}&height=${viewport.height}&theme=${theme}`;
       await devTools.send('Page.navigate', {
-        url: `${pathToFileURL(htmlPath).href}?width=${viewport.width}&height=${viewport.height}&theme=${theme}`
+        url: `${pathToFileURL(htmlPath).href}${query}`
       });
-      await pageLoaded;
-      const evaluation = await devTools.send('Runtime.evaluate', {
-        expression: "document.querySelector('#responsive-result')?.textContent",
-        returnByValue: true
-      });
+      let evaluation;
+      for (let attempt = 0; attempt < 100; attempt++) {
+        evaluation = await devTools.send('Runtime.evaluate', {
+          expression: `location.search === ${JSON.stringify(query)} && document.querySelector('#responsive-result')?.textContent`,
+          returnByValue: true
+        });
+        if (evaluation.result?.value) break;
+        await new Promise((resolveWait) => setTimeout(resolveWait, 100));
+      }
       if (!evaluation.result?.value) {
         throw new Error(`Chrome did not return responsive measurements at ${viewport.width}x${viewport.height}px in ${theme} theme.`);
       }
@@ -617,6 +633,7 @@ try {
         evidence.screenshot = screenshotName;
       }
       evidenceResults.push(evidence);
+      console.log(`PASS ${viewport.width}x${viewport.height} ${theme}`);
     }
   }
 
@@ -633,6 +650,7 @@ try {
 
   console.log(`V6 responsive fixture fits ${viewportCases.length} real Chromium viewports in light and dark themes: ${viewportWidths.join(', ')}px.`);
 } finally {
+  try { await devTools?.send('Browser.close'); } catch { /* Chromium can close the socket before its reply. */ }
   devTools?.close();
   if (chromeProcess && chromeProcess.exitCode === null) {
     chromeProcess.kill();

@@ -539,8 +539,11 @@ app-pagination {
   }
 
   .home-hero-card {
-    grid-template-columns: 1.7rem minmax(0, 1fr) auto;
     gap: 0.5rem;
+  }
+
+  .home-hero-card:not(.home-hero-card--1) {
+    grid-template-columns: 1.7rem minmax(0, 1fr) auto;
     padding-block: 0.75rem;
   }
 
