@@ -90,6 +90,7 @@ test('public gallery, map and video headers share the editorial shell without du
   assert.match(mixins, /@mixin public-editorial-page\s*\{[^}]*width:\s*100%;[^}]*min-width:\s*0/);
   assert.match(mixins, /@mixin public-editorial-header\s*\{[^}]*padding:\s*18px 0;[^}]*border-top:\s*4px solid var\(--app-primary\);[^}]*border-radius:\s*0;[^}]*background:\s*transparent/);
   for (const source of [parkImagesStyles, itemImagesStyles, videoListStyles, read('src/app/features/public/parks/ui/park-map-view.component.scss')]) {
+    assert.ok(source.startsWith('@use "../../../../../styles/mixins" as m;'), 'component styles must resolve the existing mixin without a custom include path');
     assert.match(source, /@include m\.public-editorial-page/);
     assert.match(source, /@include m\.public-editorial-header/);
     assert.doesNotMatch(source, /width:\s*min\(100% -/);
