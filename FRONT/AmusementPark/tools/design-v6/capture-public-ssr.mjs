@@ -465,6 +465,15 @@ try {
             const bodyStyle = getComputedStyle(document.body);
             const outline = document.querySelector('.home-hero__title-line--outline');
             const outlineStyle = outline ? getComputedStyle(outline) : null;
+            const navInner = document.querySelector('.app-public-nav__inner');
+            const navLinks = document.querySelector('.app-public-nav__links');
+            const navActions = document.querySelector('.app-public-nav__right');
+            const navBrand = document.querySelector('.app-public-nav__logo');
+            const rect = element => {
+              if (!element || getComputedStyle(element).display === 'none') return null;
+              const { x, y, width, height, bottom, right } = element.getBoundingClientRect();
+              return { x, y, width, height, bottom, right };
+            };
             const aliases = Object.fromEntries(['--app-field','--app-map','--app-line','--app-line-weak','--app-on-accent']
               .map(name => [name,bodyStyle.getPropertyValue(name).trim()]));
             const probe = document.createElement('span');
@@ -490,6 +499,7 @@ try {
               wordmarkFonts: [...document.querySelectorAll('.app-brand-wordmark')].map(mark => getComputedStyle(mark).fontFamily),
               homeTitleFontSize: document.querySelector('.home-hero__title') ? getComputedStyle(document.querySelector('.home-hero__title')).fontSize : null,
               homeOutline: outlineStyle ? { color: outlineStyle.color, stroke: outlineStyle.webkitTextStrokeColor, strokeWidth: outlineStyle.webkitTextStrokeWidth } : null,
+              navigationLayout: navInner ? { inner: rect(navInner), links: rect(navLinks), actions: rect(navActions), brand: rect(navBrand) } : null,
               heroTitleWidth: hero ? hero.getBoundingClientRect().width : null,
               bodyBackground: bodyStyle.backgroundColor, aliases, headingColor,
               footerActiveColor };
@@ -535,6 +545,14 @@ try {
         ? outline.color !== capture.headingColor || Number.parseFloat(outline.strokeWidth) !== 0
         : outline.stroke !== capture.headingColor || Math.abs(Number.parseFloat(outline.strokeWidth) - 1.4) > 0.01);
     })) throw new Error(`A legacy theme override changed the V6 home title: ${path}`);
+    if (route.captures.some(capture => {
+      if (capture.state !== 'initial' || !capture.navigationLayout) return false;
+      const { inner, links, actions, brand } = capture.navigationLayout;
+      if (!inner || !actions || !brand || actions.right > capture.viewport + 1 || brand.right > capture.viewport + 1) return true;
+      return capture.width > 680
+        ? !links || Math.abs(links.width - inner.width) > 1 || Math.abs(links.y - inner.y - 85) > 1 || links.y < actions.bottom || links.y < brand.bottom
+        : links !== null || actions.y < brand.bottom;
+    })) throw new Error(`The V6 masthead must keep separate brand, utility and navigation rows: ${path}`);
     if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)))) {
       throw new Error(`Initial SSR presentation requires correction: ${path}; see report.json.`);
     }

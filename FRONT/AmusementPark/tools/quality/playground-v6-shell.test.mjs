@@ -102,7 +102,13 @@ test('the mobile navigation keeps every public entry and its conditional admin a
 test('the Playground shell uses editorial width, flat navigation and safe mobile insets', () => {
   assert.match(publicLayoutStyles, /--content-max-width:\s*1160px/);
   assert.match(publicLayoutStyles, /--content-wide-max-width:\s*1480px/);
-  assert.match(navigationStyles, /border-top:\s*3px solid var\(--c-orange\)/);
+  assert.match(navigationStyles, /grid-template-areas:\s*"brand actions"\s*"links links"/);
+  assert.match(navigationStyles, /grid-template-rows:\s*minmax\(85px, auto\) auto/);
+  assert.match(navigationStyles, /border-block:\s*2px solid var\(--app-heading\)/);
+  assert.match(navigationStyles, /grid-template-areas:\s*"brand" "actions"/);
+  assert.match(navigationStyles, /html:has\(\.app-public-nav\)\s*\{[^}]*--topbar-height:\s*134px/);
+  assert.match(navigationStyles, /\.app-public-nav__links > li > a/);
+  assert.match(header, /app-public-nav__language-code[^>]*>[\s\S]*?selectedLanguage\(\)\.toUpperCase\(\)/);
   assert.match(navigationStyles, /env\(safe-area-inset-bottom\)/);
   assert.match(navigationStyles, /\.app-mobile-bottom-nav[\s\S]*?border-radius:\s*0/);
   assert.match(navigationStyles, /\.app-language-dialog \.language-option--active\s*\{/);

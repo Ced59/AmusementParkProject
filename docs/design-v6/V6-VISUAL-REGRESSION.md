@@ -80,6 +80,8 @@ Tolérances : les alignements invariants dépassant 3 px et les blocs stables di
 
 Le pictogramme carré historique a été retiré du header et du footer, conformément à la clarification de marque. Le wordmark typographique original reste inchangé dans les deux emplacements. Le shell adopte la largeur de 1160 px, les filets, surfaces opaques et angles faibles de Playground ; les captures Angular finales restent dues à P20 dans l’environnement de recette.
 
+La comparaison de la capture réelle `fd54cfcc3` à `V6_home_1366.png` montre que les liens étaient encore comprimés entre la marque et les utilitaires. Le shell est repris en deux niveaux : masthead de 85 px, puis navigation pleine largeur bordée de filets d'encre de 2 px, libellés 12 px et état actif orange à texte sombre contrasté. Le mobile conserve ses contrôles existants sur une ligne distincte et ses six accès de bas de page ; aucun faux menu ni bandeau de démonstration n'est importé. Le drapeau compact s'accompagne du code de langue, sans modifier les libellés accessibles ; la bascule de thème perd son disque et sa translation décorative. Les offsets d'ancres suivent cette hauteur sans modifier le header admin indépendant. Les captures CI vérifient la séparation des lignes et leur largeur réelle ; validation après build encore requise.
+
 ## Transposition P04
 
 L’accueil suit les enveloppes de la référence 1366/390 : manifeste et statistiques à gauche, quatre emplacements API à droite, recherche pleine largeur, puis vedettes et nouveautés. Les photos de démonstration sont remplacées par le média réel disponible via le service image ; les valeurs, parcs et contenus de la maquette ne sont jamais repris comme fixtures de production. La capture après Angular demeure bloquante à P20.

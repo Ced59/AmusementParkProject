@@ -149,6 +149,7 @@
 
       <button type="button" class="btn-nav btn-nav--ghost app-public-nav__language" (click)="openModal('languageModal')" [attr.aria-label]="'topbar.choose_language' | translate">
         <img [src]="flagAssetPath(selectedLanguage())" class="app-public-nav__flag" [alt]="languageLabel(selectedLanguage())" aria-hidden="true" />
+        <span class="app-public-nav__language-code" aria-hidden="true">{{ selectedLanguage().toUpperCase() }}</span>
       </button>
 
       <app-theme-switcher></app-theme-switcher>
