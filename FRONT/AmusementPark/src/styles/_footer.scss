@@ -109,7 +109,7 @@
 }
 
 .app-public-footer__links a:hover,
-.app-public-footer__language-link--active {
+.app-public-footer__links .app-public-footer__language-link--active {
   color: var(--app-heading);
   text-decoration: underline;
   text-decoration-color: var(--c-orange);
