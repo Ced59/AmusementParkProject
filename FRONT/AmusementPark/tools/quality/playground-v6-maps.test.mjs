@@ -3,6 +3,16 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
 
+test('the authorized Leaflet teardown waits for the native zoom event without changing live interactions', () => {
+  const component = readFileSync(resolve(import.meta.dirname, '../../src/app/shared/components/leaflet-map/leaflet-map.component.ts'), 'utf8');
+  const teardown = component.slice(component.indexOf('  ngOnDestroy(): void {'), component.indexOf('  public refreshMapSize('));
+  assert.ok(teardown.includes("querySelector('.leaflet-zoom-anim')"));
+  assert.ok(teardown.includes("map.once('zoomend'"));
+  assert.ok(teardown.includes('queueMicrotask('));
+  assert.doesNotMatch(teardown, /setTimeout|_onZoomTransitionEnd|_animatingZoom|animate:\s*false/);
+  assert.ok(teardown.indexOf('this.map = null;') < teardown.indexOf("map.once('zoomend'"));
+});
+
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
 

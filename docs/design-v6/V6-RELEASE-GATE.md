@@ -35,12 +35,13 @@
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
 | P21 CI Node 24 | PASS au commit `ae874422d` : frontend, backend, version, configuration, sécurité, Docker et recette HTTP ; prochains changements à revalider |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
-| Diff de portée | Exception sécurité explicitement autorisée le 15 octobre : référence PKCS 10.0.13 dans Infrastructure |
+| Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | PASS au commit `ae874422d` ; recette exhaustive encore ouverte |
+| CI intégralement verte | Dernier PASS `ae874422d` ; extension `61ec6e8bf` FAIL sur une course de destruction Leaflet malgré 54 assertions hydratées réussies |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
 | Réseau initial des nouveaux médias hero | À MESURER — quatre visuels ajoutés, P04.6 non démontré |
+| Navigation rapide pendant un zoom Leaflet | FAIL `61ec6e8bf` — correctif de nettoyage autorisé le 15 octobre, en cours de validation CI ; aucune exception ignorée |
 | Feu vert explicite de fusion | NON REÇU |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
 
@@ -60,11 +61,15 @@
 - 135 feuilles SCSS, 4 templates, 25 tests/outils MJS, 9 fichiers TypeScript dont 6 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
 - Aucun fichier supprimé ; aucun changement sous `deploy/`. La seule exception backend est la référence PKCS autorisée ci-dessous ; le workflow reçoit uniquement la recette CI conditionnelle à la branche V6.
 - `app.routes.ts`, `package-lock.json`, endpoints, DTO, guards, facades, ports, services, persistance et infrastructure inchangés.
-- Les seuls TypeScript de production modifiés ajoutent le composant image existant à l’accueil, réalignent les métadonnées `sizes` sur le conteneur V6 et déplacent le style du tooltip vers le SCSS partagé.
+- Les TypeScript de production ajoutent le composant image existant à l’accueil, réalignent les métadonnées `sizes`, déplacent le style du tooltip vers le SCSS partagé et corrigent le nettoyage Leaflet explicitement autorisé. Aucun contrat d'entrée/sortie n'est modifié.
 - Zéro ajout de `!important`, gradient décoratif, `backdrop-filter`, letter-spacing négatif, `overflow-x: hidden` ou dépendance UI. Les URLs du nouvel outil de recette sont réservées aux lectures publiques et à son origine de navigateur isolé ; elles ne sont pas ajoutées au produit.
 - Dernier inventaire généré : 148 routes et 273 composants. La régénération finale après gel visuel reste requise ; elle n'est pas déclarée achevée pendant les corrections de recette.
 
 ## Décision avant fusion
+
+### Exception de nettoyage Leaflet autorisée le 15 octobre
+
+Le propriétaire répond « Oui, corriger uniquement ce nettoyage » au diagnostic de fin de zoom après destruction de la carte. Le correctif est borné à `LeafletMapComponent.ngOnDestroy()` : libération immédiate de la référence du composant, retrait immédiat au repos ou retrait après l'événement natif `zoomend` et son dispatch. Il ne touche pas aux données, marqueurs, interactions, dépendances, champs privés Leaflet, facades ou API. Deux tests Angular et la recette rapide ayant découvert l'exception doivent passer avant de lever ce blocage. L'autorisation ne vaut pas feu vert de fusion ni permission d'élargir une correction fonctionnelle.
 
 La PR unique est ouverte. La fusion reste interdite jusqu’à ce que la CI Node 24 du dernier commit soit entièrement verte, que les scénarios Angular réels et les comparaisons visuelles contractuelles soient exécutés puis revus, et que le propriétaire écrive explicitement son feu vert. Les captures de fixtures ne permettent pas de remplacer cette recette. La procédure de rollback demeure celle de `docs/deploy/transactional-app-deployment.md` et porte sur une génération complète.
 

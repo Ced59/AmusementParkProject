@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SimpleChange, ViewEncapsulation } from '@angular/core';
+import { ElementRef, SimpleChange, ViewEncapsulation } from '@angular/core';
 
 import { LeafletMapComponent } from './leaflet-map.component';
 import {
@@ -131,6 +131,51 @@ describe('LeafletMapComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('removes an idle map immediately and only once', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap & { once: Mock } = {
+      fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(),
+      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), once: vi.fn(),
+    };
+    component.mapContainer = new ElementRef(document.createElement('div'));
+    internals.map = map;
+
+    component.ngOnDestroy();
+    component.ngOnDestroy();
+
+    expect(internals.map).toBeNull();
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    expect(map.once).not.toHaveBeenCalled();
+  });
+
+  it('keeps the pane alive until zoomend dispatch finishes when destroyed during a zoom', async () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap & { once: Mock } = {
+      fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(),
+      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), once: vi.fn(),
+    };
+    const container: HTMLDivElement = document.createElement('div');
+    const pane: HTMLDivElement = document.createElement('div');
+    pane.classList.add('leaflet-zoom-anim');
+    container.append(pane);
+    component.mapContainer = new ElementRef(container);
+    internals.map = map;
+
+    component.ngOnDestroy();
+    component.ngOnDestroy();
+
+    expect(internals.map).toBeNull();
+    expect(map.remove).not.toHaveBeenCalled();
+    expect(map.once).toHaveBeenCalledExactlyOnceWith('zoomend', expect.any(Function));
+    const completeZoom: () => void = map.once.mock.calls[0][1] as () => void;
+    completeZoom();
+    expect(map.remove).not.toHaveBeenCalled();
+    await Promise.resolve();
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    expect(map.setView).not.toHaveBeenCalled();
+    expect(map.setZoom).not.toHaveBeenCalled();
   });
 
   it('uses unscoped component styles so Leaflet CSS can stay out of the initial global bundle', () => {

@@ -190,7 +190,7 @@ async function connect(webSocketUrl) {
 
 async function captureHydratedHome(rawHtml) {
   const origin = 'https://apf-review.invalid';
-  const result = { scope: 'anonymous hydrated home smoke; isolated browser origin', apiReads: [], blockedRequests: [], exceptions: [], checks: [], captures: [] };
+  const result = { scope: 'anonymous hydrated home, navigation and catalogue smoke; isolated browser origin', apiReads: [], blockedRequests: [], exceptions: [], checks: [], captures: [] };
   report.hydratedHome = result;
   const mimeTypes = { '.mjs': 'text/javascript', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.ico': 'image/x-icon' };
   const interceptionErrors = [];
@@ -254,7 +254,9 @@ async function captureHydratedHome(rawHtml) {
     pendingInterceptions.add(task);
   });
   const stopExceptions = cdp.on('Runtime.exceptionThrown', ({ exceptionDetails }) => {
-    result.exceptions.push((exceptionDetails.exception?.description ?? exceptionDetails.text).slice(0, 1500));
+    const message = (exceptionDetails.exception?.description ?? exceptionDetails.text).slice(0, 1500);
+    result.exceptions.push(message);
+    (result.exceptionContexts ??= []).push({ afterCheck: result.checks.at(-1) ?? null, message });
   });
   const evaluate = async (expression) => {
     const evaluation = await cdp.send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
@@ -264,6 +266,10 @@ async function captureHydratedHome(rawHtml) {
   const waitUntil = async (expression, label) => {
     for (let attempt = 0; attempt < 100; attempt++) {
       if (interceptionErrors.length) throw new Error(interceptionErrors.join('; '));
+      if (result.exceptions.length) {
+        result.failedCheck = label;
+        throw new Error(`Browser exception while checking: ${label}; inspect exceptionContexts.`);
+      }
       if (typeof expression === 'function' ? await expression() : await evaluate(expression)) { result.checks.push(label); return; }
       await new Promise((yes) => setTimeout(yes, 200));
     }

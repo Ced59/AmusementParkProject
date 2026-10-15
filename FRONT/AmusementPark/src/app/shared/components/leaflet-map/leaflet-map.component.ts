@@ -162,8 +162,20 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     if (this.map) {
-      this.map.remove();
+      const map: import('leaflet').Map = this.map;
       this.map = null;
+      // Leaflet's pending zoom completion still needs its pane. Let the native
+      // zoomend finish, then remove after the whole event dispatch; do not touch
+      // private Leaflet fields or disable animations on the live map.
+      if (this.mapContainer?.nativeElement.querySelector('.leaflet-zoom-anim')) {
+        map.once('zoomend', (): void => {
+          queueMicrotask((): void => {
+            map.remove();
+          });
+        });
+      } else {
+        map.remove();
+      }
     }
 
     this.tileLayer = null;
