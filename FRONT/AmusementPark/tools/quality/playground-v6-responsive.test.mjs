@@ -14,6 +14,9 @@ test('the real HTTP acceptance tool cannot start a server on the Windows worksta
   assert.match(httpScript, /SSR_RENDER_MAX_CONCURRENCY: '1'/);
   assert.match(httpScript, /'x-forwarded-host': 'amusement-parks\.fun'/);
   assert.match(httpScript, /SSR_API_INTERNAL_URL: publicOrigin/);
+  assert.match(httpScript, /path: '\/fr\/not-found', status: 404, lang: 'en', csr: true/);
+  assert.match(httpScript, /path: '\/fr\/apf-v6-nonexistent-route', status: 404, lang: 'en', csr: true/);
+  assert.match(httpScript, /error shell has no language alternates/);
   assert.match(httpScript, /server\.kill\('SIGTERM'\)/);
   assert.match(httpScript, /http-ssr-report\.json/);
   assert.match(httpScript, /route\.home \? jsonLd\.length === 0 : jsonLd\.length > 0/);

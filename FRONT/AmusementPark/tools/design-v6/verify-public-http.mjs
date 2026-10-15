@@ -91,8 +91,10 @@ try {
     { path: '/fr/attraction/46a57823-75cd-4ff3-9fde-495ad0204b1b/hasenhorn-coaster', status: 200, lang: 'fr' },
     { path: '/fr/park/94a4c4df-5ab6-4dc3-b756-2de664e947c4/efteling/pricing', status: 200, lang: 'fr' },
     { path: `${park}/pricing`, status: 404, lang: 'fr', empty: true },
-    { path: '/fr/not-found', status: 404, lang: 'fr' },
-    { path: '/fr/apf-v6-nonexistent-route', status: 404, lang: 'fr' },
+    // The existing Express policy serves non-critical error routes as a noindex
+    // CSR shell (including its original lang=en), not as indexable entity SSR.
+    { path: '/fr/not-found', status: 404, lang: 'en', csr: true },
+    { path: '/fr/apf-v6-nonexistent-route', status: 404, lang: 'en', csr: true },
   ];
   for (const route of routes) {
     const { response, html, record } = await get(route.path);
@@ -100,10 +102,17 @@ try {
     check(response.headers.get('x-amusementpark-build-version') === version, `${route.path}: current build version`);
     check(Boolean(response.headers.get('content-security-policy')), `${route.path}: CSP retained`);
     check(/<title[^>]*>[^<]{8,}<\/title>/i.test(html), `${route.path}: useful title`);
-    check(meta(html, 'description').length >= 30, `${route.path}: useful description`);
     check(new RegExp(`<html\\b[^>]*\\blang=["']${route.lang}["']`, 'i').test(html), `${route.path}: HTML language`);
-    check(meta(html, 'og:locale').startsWith(`${route.lang}_`), `${route.path}: localized Open Graph`);
-    check(!/<script\b(?![^>]*\btype=["']application\/ld\+json["'])/i.test(html), `${route.path}: Bing has no executable scripts`);
+    if (route.csr) {
+      check(response.headers.get('x-amusementpark-ssr-fallback') !== null, `${route.path}: existing error CSR policy`);
+      check(/<script\b[^>]*\bsrc=["'][^"']+\.m?js/i.test(html), `${route.path}: error shell retains client application`);
+      check(!/\bhreflang\s*=/i.test(html), `${route.path}: error shell has no language alternates`);
+      check(!/<script\b[^>]*\btype=["']application\/ld\+json["']/i.test(html), `${route.path}: error shell has no structured entity data`);
+    } else {
+      check(meta(html, 'description').length >= 30, `${route.path}: useful description`);
+      check(meta(html, 'og:locale').startsWith(`${route.lang}_`), `${route.path}: localized Open Graph`);
+      check(!/<script\b(?![^>]*\btype=["']application\/ld\+json["'])/i.test(html), `${route.path}: Bing has no executable scripts`);
+    }
     if (route.status === 404) {
       check(/noindex/i.test(`${response.headers.get('x-robots-tag')} ${meta(html, 'robots')}`), `${route.path}: missing content is not indexable`);
     } else {
