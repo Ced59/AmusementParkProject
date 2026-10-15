@@ -28,7 +28,7 @@ const server = spawn(process.execPath, ['--max-old-space-size=768', 'dist/amusem
   env: {
     ...process.env, PORT: String(port),
     SSR_ALLOWED_HOSTS: 'localhost;127.0.0.1;amusement-parks.fun',
-    SSR_API_INTERNAL_URL: `${publicOrigin}/api`,
+    SSR_API_INTERNAL_URL: publicOrigin,
     SSR_RENDER_MAX_CONCURRENCY: '1', SSR_PAGE_CACHE_MAX_ENTRIES: '64',
     SSR_DISK_PAGE_CACHE_ENABLED: 'false', SSR_TECHNICAL_STATS_PERSISTENCE_ENABLED: 'false',
     SSR_SEO_STATIC_SNAPSHOT_ENABLED: 'false',
@@ -48,7 +48,10 @@ async function get(path, agent = 'bing') {
   const started = performance.now();
   const response = await fetch(`http://127.0.0.1:${port}${path}`, {
     method: 'GET', redirect: 'manual', signal: AbortSignal.timeout(60000),
-    headers: { accept: 'text/html', host: 'amusement-parks.fun', 'x-forwarded-proto': 'https', 'user-agent': userAgents[agent] },
+    // Reproduce the existing reverse-proxy contract explicitly. Undici may keep
+    // the connection's loopback Host; the public forwarded host is authoritative
+    // for SSR absolute URLs, canonical metadata and same-origin API requests.
+    headers: { accept: 'text/html', 'x-forwarded-host': 'amusement-parks.fun', 'x-forwarded-proto': 'https', 'user-agent': userAgents[agent] },
   });
   const html = await response.text();
   lastDocument = { path, html };

@@ -110,6 +110,8 @@ test('the park detail uses the editorial Playground surface at every breakpoint'
 });
 
 test('the ParkItem inventory preserves all filters, zone map, unlocated items and server paging', () => {
+  assert.match(itemListStyles, /\.items-map-panel__chip--active\s*\{[^}]*color:\s*var\(--app-heading\)/);
+  assert.doesNotMatch(itemListStyles, /\.items-map-panel__chip--all\s*\{[^}]*color:\s*var\(--app-primary\)/);
   for (const contract of [
     '[selectedCategory]="selectedCategory"',
     '[selectedType]="selectedType"',

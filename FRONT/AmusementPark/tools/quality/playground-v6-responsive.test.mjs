@@ -12,6 +12,8 @@ test('the real HTTP acceptance tool cannot start a server on the Windows worksta
   assert.ok(httpScript.indexOf("if (process.env.CI") < httpScript.indexOf('portProbe.listen('));
   assert.match(httpScript, /method: 'GET', redirect: 'manual'/);
   assert.match(httpScript, /SSR_RENDER_MAX_CONCURRENCY: '1'/);
+  assert.match(httpScript, /'x-forwarded-host': 'amusement-parks\.fun'/);
+  assert.match(httpScript, /SSR_API_INTERNAL_URL: publicOrigin/);
   assert.match(httpScript, /server\.kill\('SIGTERM'\)/);
   assert.match(httpScript, /http-ssr-report\.json/);
   assert.match(httpScript, /route\.home \? jsonLd\.length === 0 : jsonLd\.length > 0/);

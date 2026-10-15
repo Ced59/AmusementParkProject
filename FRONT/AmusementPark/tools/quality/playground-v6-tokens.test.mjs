@@ -143,6 +143,14 @@ test('calendar today labels and active gallery counts meet AA in both themes', (
   }
 });
 
+test('the active inventory map filter uses readable ink on its actual primary-tinted card', () => {
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(source)]);
+    const surface = mix(theme.get('--c-orange'), theme.get('--bg-card'), 0.16);
+    assert.ok(contrast(theme.get('--heading'), surface) >= 4.5);
+  }
+});
+
 test('Playground V6 secondary dark accents remain readable on their soft surfaces', () => {
   const theme = variables(dark);
 
