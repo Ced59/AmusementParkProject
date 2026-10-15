@@ -936,7 +936,7 @@ body.light-mode .ui-featured-park-card__visual-bg {
 
 .ui-featured-park-card[data-tone="purple"] .ui-featured-park-card__cta.app-button,
 .ui-featured-park-card[data-tone="purple"] .ui-featured-park-card__cta.btn {
-  color: #ffffff;
+  color: var(--app-on-purple);
 }
 
 .ui-featured-park-card__sponsored-badge {

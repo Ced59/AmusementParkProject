@@ -52,6 +52,7 @@
 
 .btn--primary:hover,
 .app-button--primary:hover {
+  color: var(--app-on-accent-hover);
   background: var(--c-orange-2);
 }
 
@@ -76,6 +77,7 @@
 
 .btn--sky:hover,
 .app-button--sky:hover {
+  color: var(--app-on-accent-hover);
   background: var(--c-sky-2);
 }
 
@@ -88,19 +90,19 @@
 
 .btn--rose:hover,
 .app-button--rose:hover {
-  background: color-mix(in srgb, var(--c-rose) 82%, #ffffff);
+  background: color-mix(in srgb, var(--c-rose) 82%, var(--app-accent-hover-mix));
 }
 
 .btn--gold,
 .app-button--gold {
-  color: var(--app-on-accent);
+  color: var(--app-on-gold);
   background: var(--c-gold);
   box-shadow: none;
 }
 
 .btn--gold:hover,
 .app-button--gold:hover {
-  background: color-mix(in srgb, var(--c-gold) 82%, #ffffff);
+  background: color-mix(in srgb, var(--c-gold) 82%, var(--app-accent-hover-mix));
 }
 
 .btn--purple,
@@ -112,7 +114,7 @@
 
 .btn--purple:hover,
 .app-button--purple:hover {
-  background: color-mix(in srgb, var(--c-purple) 82%, #ffffff);
+  background: color-mix(in srgb, var(--c-purple) 82%, var(--app-accent-hover-mix));
 }
 
 .btn--soft,
@@ -207,5 +209,6 @@
 }
 
 .btn-nav--primary:hover {
+  color: var(--app-on-accent-hover);
   background: var(--c-orange-2);
 }

@@ -58,7 +58,7 @@
                 <a
                   [class]="getHeroCardClass(index)"
                   [routerLink]="parkLink">
-                  <span class="home-hero-card__media">
+                  <span class="home-hero-card__media" aria-hidden="true">
                     <app-image-display
                       [imageId]="park.logoImageId"
                       [alt]="park.name"

@@ -82,6 +82,34 @@ test('Playground V6 secondary dark accents remain readable on their soft surface
   assert.ok(contrast(theme.get('--app-on-purple'), theme.get('--c-purple')) >= 4.5);
 });
 
+test('Playground V6 accent button labels meet AA at rest and on hover in both themes', () => {
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(source)]);
+    const pairs = [
+      ['--on-accent', '--c-orange'],
+      ['--app-on-accent-hover', '--c-orange-2'],
+      ['--on-accent', '--c-sky'],
+      ['--app-on-accent-hover', '--c-sky-2'],
+      ['--on-accent', '--c-lime'],
+      ['--on-accent', '--c-lime-2'],
+      ['--app-on-gold', '--c-gold'],
+      ['--app-on-rose', '--c-rose'],
+      ['--app-on-purple', '--c-purple'],
+    ];
+
+    for (const [foreground, background] of pairs) {
+      assert.ok(contrast(theme.get(foreground), theme.get(background)) >= 4.5,
+        `${foreground} must meet AA on ${background}`);
+    }
+
+    for (const tone of ['gold', 'rose', 'purple']) {
+      const background = mix(theme.get(`--c-${tone}`), theme.get('--app-accent-hover-mix'), 0.82);
+      assert.ok(contrast(theme.get(`--app-on-${tone}`), background) >= 4.5,
+        `${tone} button must meet AA on hover`);
+    }
+  }
+});
+
 test('Playground V6 uses the editorial width, restrained geometry and flat page surfaces', () => {
   assert.match(designTokens, /--content-max-width:\s*1160px/);
   assert.match(designTokens, /--radius-md:\s*0\.375rem/);
