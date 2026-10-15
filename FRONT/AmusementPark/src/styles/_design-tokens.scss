@@ -4,6 +4,9 @@
   --font-heading: Arial, Helvetica, sans-serif;
   --font-body: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  // Transparent entity logos keep their authored dark ink in both themes.
+  // This matte is not a page/card surface and never recolors image pixels.
+  --app-logo-surface: #f7f6f0;
 
   --radius-xs: 0.125rem;
   --radius-sm: 0.25rem;

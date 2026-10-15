@@ -50,6 +50,22 @@ test('editorial fonts match the V6 reference without changing the protected word
   assert.equal(tokens.get('--font-body'), 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif');
 });
 
+test('transparent entity logos retain a light neutral matte in both themes without image inversion', () => {
+  const matte = variables(designTokens).get('--app-logo-surface');
+  assert.equal(matte, '#f7f6f0');
+  assert.ok(contrast('#19201d', matte) >= 4.5);
+  for (const source of [light, dark]) assert.doesNotMatch(source, /--app-logo-surface:/);
+  const cards = readFileSync(resolve(styles, '_cards.scss'), 'utf8');
+  const home = readFileSync(resolve(styles, '../app/features/public/home/pages/home.component.scss'), 'utf8');
+  const park = readFileSync(resolve(styles, '../app/features/public/parks/ui/park-detail-view.component.scss'), 'utf8');
+  assert.match(cards, /\.ui-park-card__visual\s*\{[^}]*background:\s*var\(--app-logo-surface\)/);
+  assert.match(cards, /\.ui-search-result-card__logo\s*\{[^}]*background:\s*var\(--app-logo-surface\)/);
+  assert.match(cards, /--featured-park-logo-bg:\s*var\(--app-logo-surface\)/);
+  assert.match(home, /\.home-hero-card--1 \.home-hero-card__media\s*\{[^}]*background:\s*var\(--app-logo-surface\)/);
+  assert.match(park, /\.park-logo-frame\s*\{[^}]*background:\s*var\(--app-logo-surface\)/);
+  for (const source of [cards, home, park]) assert.doesNotMatch(source, /filter:\s*invert\(/);
+});
+
 test('Playground V6 keeps the canonical palette in both existing theme selectors', () => {
   const lightVariables = variables(light);
   const darkVariables = variables(dark);

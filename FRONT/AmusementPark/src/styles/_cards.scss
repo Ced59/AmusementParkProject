@@ -174,7 +174,7 @@ a.public-feature-card:hover {
   min-height: 12rem;
   place-items: center;
   overflow: hidden;
-  background: var(--app-map);
+  background: var(--app-logo-surface);
 }
 
 .ui-park-card__visual::after {
@@ -616,7 +616,7 @@ a.public-feature-card:hover {
   height: 100%;
   object-fit: contain;
   padding: 0.36rem;
-  background: var(--app-field);
+  background: var(--app-logo-surface);
 }
 
 .ui-search-result-card__content {
@@ -754,7 +754,7 @@ a.public-feature-card:hover {
   --featured-park-accent: var(--c-orange);
   --featured-park-accent-2: var(--c-gold);
   --featured-park-soft: color-mix(in srgb, var(--c-orange) 14%, var(--app-surface));
-  --featured-park-logo-bg: color-mix(in srgb, var(--c-orange) 14%, var(--app-surface));
+  --featured-park-logo-bg: var(--app-logo-surface);
   --featured-park-button-color: var(--c-orange);
 
   position: relative;
@@ -789,7 +789,6 @@ a.public-feature-card:hover {
   --featured-park-accent: var(--c-sky);
   --featured-park-accent-2: var(--c-lime);
   --featured-park-soft: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
-  --featured-park-logo-bg: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
   --featured-park-button-color: var(--c-sky);
 }
 
@@ -797,7 +796,6 @@ a.public-feature-card:hover {
   --featured-park-accent: var(--c-purple);
   --featured-park-accent-2: var(--c-rose);
   --featured-park-soft: color-mix(in srgb, var(--c-purple) 14%, var(--app-surface));
-  --featured-park-logo-bg: color-mix(in srgb, var(--c-purple) 14%, var(--app-surface));
   --featured-park-button-color: var(--c-purple);
 }
 

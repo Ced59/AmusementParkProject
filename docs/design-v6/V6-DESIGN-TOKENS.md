@@ -52,6 +52,8 @@ Le diagnostic sur les 20 routes du commit `ce3f7b800` a relevé des petits texte
 
 Les six alias `--type-*` rejoignent également le bloc `body` existant de `_tokens.scss` : leur valeur suit alors les accents du thème courant, au lieu d'hériter de couleurs déjà résolues sur `:root`. Les surcharges sémantiques claires de catégories sont conservées. Le badge de jour courant utilise le premier plan or de chaque thème et les petits compteurs de galerie l'encre du thème sur leur double fond teinté.
 
+`--app-logo-surface: #f7f6f0` est un fond neutre réservé aux logos d'entités transparents (hero accueil, cartes, résultats et cadre de logo parc), identique dans les deux thèmes. La capture sombre de Six Flags Over Georgia révèle que son lettrage noir disparaît sur le fond cartographique sombre ; l'image originale n'est ni inversée, ni recolorée, ni remplacée. Les photos, cartes, placeholders sans logo et le wordmark protégé gardent leurs traitements propres. Ce token s'intègre au SCSS existant, sans moteur de thème parallèle.
+
 ## Géométrie et densité
 
 - Largeur éditoriale courante : `1160px`.
