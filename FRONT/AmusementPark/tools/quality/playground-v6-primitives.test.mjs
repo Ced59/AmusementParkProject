@@ -11,6 +11,7 @@ const forms = read('_forms.scss');
 const maps = read('_maps.scss');
 const surfaces = read('_surfaces.scss');
 const primitives = read('_ui-primitives.scss');
+const chips = read('_chips.scss');
 
 test('Playground shared surfaces and cards are flat editorial panels', () => {
   assert.doesNotMatch(`${surfaces}\n${cards}\n${forms}`, /(?:linear|radial|conic)-gradient\(/);
@@ -33,5 +34,10 @@ test('Playground primitives cover dense data, overlays and feedback states', () 
   }
   assert.match(maps, /background:\s*var\(--app-map\)/);
   assert.doesNotMatch(primitives, /backdrop-filter\s*:/);
+});
+
+test('small primary kickers and chips use semantic foregrounds rather than decorative accents', () => {
+  assert.match(chips, /\.app-kicker\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
+  assert.match(chips, /\.app-chip--primary,[\s\S]*?\.public-pill\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
 });
 

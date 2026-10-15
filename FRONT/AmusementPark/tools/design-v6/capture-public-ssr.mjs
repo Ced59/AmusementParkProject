@@ -26,6 +26,10 @@ const paths = process.env.V6_SSR_PATHS?.split(',') ?? [
   '/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/item/d20e775e-1beb-48ce-919d-8f55f586cb31/la-catapulte',
   '/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/item/8b479fdb-4e5d-4b05-8af1-420b07c3689f/la-creperie',
   '/fr/attraction/46a57823-75cd-4ff3-9fde-495ad0204b1b/hasenhorn-coaster',
+  '/fr/attraction/46a57823-75cd-4ff3-9fde-495ad0204b1b/hasenhorn-coaster/history',
+  ...['items', 'zones', 'map', 'images', 'videos', 'weather', 'opening-hours', 'pricing', 'comments', 'history']
+    .map((suffix) => `/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/${suffix}`),
+  '/fr/rankings', '/fr/rankings/methodology', '/fr/manufacturers', '/fr/technical', '/fr/versions',
   '/fr/about', '/fr/contact', '/fr/privacy', '/fr/not-found',
 ];
 if (paths.some((path) => path !== '/' && (!/^\/(fr|en|de|nl|it|es|pt|pl)\//.test(path) || /\/admin|\/profile/.test(path)))) {
@@ -111,7 +115,13 @@ function collectContrastCandidates() {
     if (!foreground || foreground[3] < 0.1) continue;
     const ancestors = [];
     for (let parent = element; parent; parent = parent.parentElement) ancestors.push(parent);
-    if (ancestors.some((parent) => { const css = getComputedStyle(parent); return css.backgroundImage !== 'none' || Number(css.opacity) < 0.99; })) continue;
+    if (ancestors.some((parent) => {
+      const css = getComputedStyle(parent);
+      const hiddenDetailsContent = parent.tagName === 'DETAILS' && !parent.open
+        && !parent.querySelector(':scope > summary')?.contains(element);
+      return hiddenDetailsContent || css.display === 'none' || css.visibility !== 'visible'
+        || css.backgroundImage !== 'none' || Number(css.opacity) < 0.99;
+    })) continue;
     let background = [1, 1, 1];
     for (const parent of ancestors.reverse()) {
       const color = parseColor(getComputedStyle(parent).backgroundColor);
@@ -336,10 +346,14 @@ try {
     const html = await response.text();
     if (path === '/fr/home') homeRawHtml = html;
     if (!/<app-root\b[^>]*>[\s\S]*?<h1\b/i.test(html)) throw new Error(`Missing initial Angular content for ${path}`);
+    if (!path.endsWith('/not-found') && /<app-public-not-found-page\b/i.test(html)) {
+      throw new Error(`Unexpected not-found component in initial Angular content: ${path}`);
+    }
     const routeName = path === '/' ? 'language-entry' : path.slice(1).replaceAll('/', '_');
     const htmlPath = join(outputRoot, `${routeName}.html`);
     await writeFile(htmlPath, await staticDocument(html));
-    const route = { path, engineStatus: response.status, bytes: Buffer.byteLength(html), reads: [...reads], captures: [] };
+    const initialHeading = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const route = { path, engineStatus: response.status, initialHeading, bytes: Buffer.byteLength(html), reads: [...reads], captures: [] };
     report.routes.push(route);
     const fileUrl = pathToFileURL(htmlPath).href;
     await cdp.send('Page.navigate', { url: fileUrl });

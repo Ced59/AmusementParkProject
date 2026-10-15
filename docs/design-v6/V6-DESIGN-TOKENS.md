@@ -48,6 +48,8 @@ Les contrôles pleins utilisent des premiers plans adaptés à chaque ton et ét
 
 Les alias `--app-field`, `--app-map`, `--app-line`, `--app-line-weak` et `--app-on-accent` sont résolus sur `body`, où vivent leurs valeurs de thème. Leur ancienne déclaration sur `:root` ne pouvait pas lire les variables définies sur le descendant `body` ; le test Chromium a reproduit cinq valeurs calculées vides avant correction puis passe dans les 30 cas après correction. Les petits libellés de recherche utilisent les premiers plans sémantiques contrastés (`--app-primary-strong`, `--app-accent-cyan`, `--app-accent-lime`) plutôt que les couleurs décoratives.
 
+Le diagnostic sur les 20 routes du commit `ce3f7b800` a relevé des petits textes encore décoratifs (kickers, navigation desktop, liens de notation), des chips primaires à 4,15:1 et du texte discret à 4,11:1 en clair. Corrections en recette : `--app-primary-strong` clair réutilise `--app-navigation-active-text` (`#9a2c15`), le rose sémantique devient `#9c1643` et `--text-faint` devient `#5e6761`. Les aplats orange/rose et leurs couleurs de bouton ne sont pas remplacés par ces premiers plans. Les tests calculent aussi le contraste sur les vrais fonds teintés/composités, pas uniquement sur le papier général ; la prochaine CI doit confirmer les mesures navigateur.
+
 ## Géométrie et densité
 
 - Largeur éditoriale courante : `1160px`.

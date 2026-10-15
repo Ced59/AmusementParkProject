@@ -23,6 +23,16 @@ const shareTemplate = read('src/app/ui/sharing/public-share-panel/public-share-p
 const shareReportTemplate = read('src/app/ui/sharing/public-share-report/public-share-report.component.html');
 const shareStyles = read('src/app/ui/sharing/public-share-panel/public-share-panel.component.scss');
 const ratingInputStyles = read('src/app/shared/components/rating-input/rating-input.component.scss');
+const ratingStarsStyles = read('src/app/features/public/ratings/ui/rating-stars.component.scss');
+const ratingEvidenceStyles = read('src/app/shared/components/rating-evidence/rating-evidence.component.scss');
+
+test('small rating links and evidence actions use readable semantic colors', () => {
+  for (const selector of ['rating-stars__methodology', 'rating-stars__clear']) {
+    assert.match(ratingStarsStyles, new RegExp(`\\.${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
+  }
+  assert.match(ratingEvidenceStyles, /\.rating-evidence__action\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
+  assert.match(ratingEvidenceStyles, /\.rating-evidence__badge--provisional\s*\{[^}]*--evidence-tone:\s*var\(--app-warning\)/);
+});
 
 test('rankings preserve filters, searches, methodology evidence and incremental loading', () => {
   for (const contract of [

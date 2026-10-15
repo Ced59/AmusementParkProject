@@ -298,8 +298,11 @@ jobs:
         if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
         env:
           V6_SSR_EVIDENCE_DIR: ${{ runner.temp }}/v6-public-ssr
+          V6_INVENTORY_DIR: ${{ runner.temp }}/v6-public-ssr/inventory
           V6_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
+        run: |
+          node tools/design-v6/generate-p00-inventory.mjs
+          node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
 
       - name: Upload initial V6 public SSR evidence
         if: always() && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'

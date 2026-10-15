@@ -68,7 +68,7 @@
 
 .nav__links a.active,
 .app-public-nav__links a.active {
-  color: var(--c-orange);
+  color: var(--app-navigation-active-text);
   border-bottom-color: var(--c-orange);
 }
 
@@ -492,7 +492,7 @@ button.app-mobile-bottom-nav__item {
 .app-public-nav__tree-trigger:hover,
 .app-public-nav__tree-trigger.active,
 .app-public-nav__parks-node--open .app-public-nav__tree-trigger {
-  color: var(--c-orange);
+  color: var(--app-navigation-active-text);
   border-bottom-color: var(--c-orange);
   background: var(--app-surface-2);
 }

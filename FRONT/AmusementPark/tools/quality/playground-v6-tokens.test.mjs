@@ -36,6 +36,12 @@ function contrast(foreground, background) {
   return (values[0] + 0.05) / (values[1] + 0.05);
 }
 
+function resolveThemeColor(theme, name) {
+  const value = theme.get(name);
+  const alias = /^var\((--[\w-]+)\)$/.exec(value);
+  return alias ? resolveThemeColor(theme, alias[1]) : value;
+}
+
 test('Playground V6 keeps the canonical palette in both existing theme selectors', () => {
   const lightVariables = variables(light);
   const darkVariables = variables(dark);
@@ -72,17 +78,39 @@ test('Playground V6 text colors meet WCAG AA on the page background', () => {
 test('Playground V6 semantic accents meet AA for small search labels on every supporting surface', () => {
   for (const source of [light, dark]) {
     const theme = new Map([...variables(designTokens), ...variables(source)]);
-    const resolveColor = (name) => {
-      const value = theme.get(name);
-      const alias = /^var\((--[\w-]+)\)$/.exec(value);
-      return alias ? resolveColor(alias[1]) : value;
-    };
+    const resolveColor = (name) => resolveThemeColor(theme, name);
     for (const foreground of ['--app-primary-strong', '--app-accent-cyan', '--app-accent-lime']) {
       for (const background of ['--field', '--bg', '--bg-card']) {
         assert.ok(contrast(resolveColor(foreground), resolveColor(background)) >= 4.5,
           `${foreground} must meet AA on ${background}`);
       }
     }
+  }
+});
+
+test('Playground small primary chips and faint text meet AA on their actual surfaces', () => {
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(source)]);
+    const primary = resolveThemeColor(theme, '--app-primary-strong');
+    const chipSurface = mix(theme.get('--c-orange'), theme.get('--bg-card'), 0.14);
+    assert.ok(contrast(primary, chipSurface) >= 4.5, 'primary chips must meet AA on the tinted surface');
+    for (const background of ['--field', '--bg', '--bg-card', '--bg-3']) {
+      assert.ok(contrast(theme.get('--text-faint'), theme.get(background)) >= 4.5,
+        `faint text must meet AA on ${background}`);
+    }
+  }
+});
+
+test('Playground light semantic chip tones meet AA on the composited soft backgrounds', () => {
+  const theme = variables(light);
+  for (const tone of ['lime', 'sky', 'gold', 'rose', 'purple']) {
+    const foreground = resolveThemeColor(theme, `--app-light-accent-${tone}`);
+    const soft = theme.get(`--app-light-accent-${tone}-soft`);
+    const channels = soft.match(/[\d.]+/g).map(Number);
+    const surface = rgb(theme.get('--bg-card'));
+    const background = channels.slice(0, 3).map((channel, index) =>
+      channel / 255 * channels[3] + surface[index] * (1 - channels[3]));
+    assert.ok(contrast(foreground, background) >= 4.5, `${tone} chips must meet AA in light mode`);
   }
 });
 

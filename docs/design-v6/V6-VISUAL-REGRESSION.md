@@ -22,6 +22,10 @@ Le [run 38697638768](https://github.com/Ced59/AmusementParkProject/actions/runs/
 
 La revue a signalé le petit surtitre orange du choix de langue (environ 3,38:1 en clair). Il utilise désormais le token sémantique `--app-primary-strong`, protégé par un test ciblé. La prochaine campagne inclut aussi la route racine et relève les candidats de contraste sur fonds simples à 390/1366 px ; ce diagnostic ne constitue pas un verdict AA sur les images, fonds complexes ou tous les états interactifs.
 
+La [CI ce3f7b800](https://github.com/Ced59/AmusementParkProject/actions/runs/38699592749) passe intégralement avec 20 routes / 1 040 captures initiales et le même smoke hydraté. Le diagnostic relève 163 occurrences candidates, et non 163 défauts confirmés : une partie concerne des descendants de `details` fermés, non peints, dont Chromium conserve les anciens styles/bounds. Le collecteur exclut maintenant explicitement ces descendants sans exclure leur `summary` visible. Les défauts visibles relevés portent sur la navigation active desktop, les kickers/chips primaires, le rose sémantique, les libellés discrets, la page 404, le contact et les liens de notation ; ils font l'objet de corrections et tests de contraste dédiés.
+
+La campagne suivante ajoute les sous-pages Fleury (inventaire, zones, carte, images, vidéos, météo, horaires, prix, commentaires et histoire), l'histoire standalone visible, les classements/méthodologie, constructeurs, technique et versions : 36 routes prévues. Elle refuse un composant 404 inattendu et enregistre le titre initial de chaque route. Les blocs différés et cartes non hydratées restent explicitement hors validation interactive. L'inventaire complet est régénéré dans l'artefact CI ; les tailles SCSS utilisent des fins de ligne normalisées pour être reproductibles entre Windows et Linux.
+
 ## Baseline V5 enregistrée
 
 Les fichiers sont sous `evidence/baseline-v5/`.

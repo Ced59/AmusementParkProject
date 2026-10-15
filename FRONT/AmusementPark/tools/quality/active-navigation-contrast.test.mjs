@@ -20,7 +20,7 @@ function blend(foreground, background, percentage) {
 }
 
 for (const theme of ['dark', 'light']) {
-  test(`active mobile navigation meets WCAG AA contrast in ${theme} mode`, () => {
+  test(`active desktop, mobile and contextual navigation meets WCAG AA contrast in ${theme} mode`, () => {
     const source = tokens + readFileSync(resolve(styles, `_theme-${theme}.scss`), 'utf8');
     const variables = new Map([...source.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map(([, key, value]) => [key, value]));
     function color(value) {
@@ -32,7 +32,7 @@ for (const theme of ['dark', 'light']) {
     }
     const surface = color(variables.get('--app-surface-2'));
     const accent = color(variables.get('--c-orange'));
-    for (const selector of ['app-mobile-bottom-nav__item.active', 'app-public-park-trail__item--current']) {
+    for (const selector of ['app-public-nav__links a.active', 'app-mobile-bottom-nav__item.active', 'app-public-park-trail__item--current']) {
       const rule = navigation.match(new RegExp(`\\.${selector.replace('.', '\\.')}\\s*\\{([^}]+)\\}`))[1];
       const foreground = color(rule.match(/color:\s*([^;]+)/)[1]);
       const background = selector.includes('trail')

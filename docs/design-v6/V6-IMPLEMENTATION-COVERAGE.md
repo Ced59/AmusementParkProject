@@ -43,37 +43,37 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 
 | Gate | État | Preuve attendue |
 |---|---|---|
-| P00 — baseline et inventaires | PASS | 4 CSV générés, 24 captures V5, baseline performance/SSR, cas protégés |
-| P01 — tokens et thèmes | PASS | mapping documenté, 4 tests ciblés, moteur SSR intact |
-| P02 — primitives | PASS | 7 tests statiques verts, 160 facades conformes, suite a11y complète réservée à P21 |
-| P03 — shells et navigation | PASS | wordmark/slogan protégés, 17 tests statiques, contrats de navigation inchangés |
-| P04 — accueil | PASS | structure réelle complète, 24 tests statiques, données et recherche dynamiques |
-| P05 — catalogue, exploration, recherche | PASS | filtres, carte, URL et pagination conservés ; 28 tests statiques cumulés |
-| P06 — détail de parc | PASS | toutes les sections/actions conservées, 32 tests statiques cumulés |
-| P07 — inventaire des ParkItems | PASS | filtres, carte, états sans coordonnées et pagination conservés ; 35 tests statiques cumulés |
-| P08 — fiches ParkItem | PASS | navigation, sections techniques, médias et actions conservées ; 35 tests statiques cumulés |
-| P09 — attractions autonomes | PASS | parent autonome, historique, données pratiques et carte conservés ; 38 tests statiques cumulés |
-| P10 — zones | PASS | liste, détail, carte, facettes et liens ParkItem conservés ; 38 tests statiques cumulés |
-| P11 — cartes et plans | PASS | Leaflet, filtres, marqueurs, années et documents source protégés ; 42 tests cumulés |
-| P12 — médias | PASS | galeries, lightbox, crédits, lazy loading, vidéos et load more protégés ; 46 tests cumulés |
-| P13 — histoire | PASS | timelines, articles, snapshots, comparaison et lignées protégés ; 51 tests cumulés |
-| P14 — données pratiques | PASS | horaires, météo, prix, proximité et live protégés ; 56 tests cumulés |
-| P15 — notes, classements et actions sociales | PASS | classements, commentaires, collections, watch et partage protégés ; 61 tests cumulés |
-| P16 — autres parcours publics | PASS | Park Fit, passeports partagés/locaux, références et pages secondaires protégés ; 67 tests cumulés |
-| P17 — auth/compte | PASS | 21 routes profil protégées, auth/récupération, suppression, passeport et trips couverts ; 74 tests cumulés |
-| P18 — administration | PASS | 58 terminaux, guards, éditeurs, imports, preview/apply, opérations et consoles spécialisées couverts ; 81 tests cumulés |
-| P19 — états rares | PASS | langue initiale, consentement, modales, toasts, tooltips, états, uploads, Quill et contrôles flottants couverts ; 88 tests cumulés |
+| P00 — baseline et inventaires | CIBLÉ — RECETTE OUVERTE | 4 CSV générés, 24 captures V5 ; tous les états de baseline non exercés |
+| P01 — tokens et thèmes | CIBLÉ — RECETTE OUVERTE | mapping et tests ciblés ; contraste exhaustif/focus à valider |
+| P02 — primitives | CIBLÉ — RECETTE OUVERTE | 7 tests statiques verts, 160 facades conformes ; parcours clavier/SR à valider |
+| P03 — shells et navigation | CIBLÉ — RECETTE OUVERTE | wordmark/slogan protégés, contrats de navigation inchangés ; rôles et menus complets à valider |
+| P04 — accueil | CIBLÉ — RECETTE OUVERTE | structure réelle, hydratation/thème/consentement/recherche vérifiés ; pagination et coût réseau à valider |
+| P05 — catalogue, exploration, recherche | CIBLÉ — RECETTE OUVERTE | filtres, carte, URL et pagination protégés statiquement |
+| P06 — détail de parc | CIBLÉ — RECETTE OUVERTE | sections/actions protégées ; capture SSR Fleury disponible, autres profils à valider |
+| P07 — inventaire des ParkItems | CIBLÉ — RECETTE OUVERTE | filtres/carte/pagination protégés ; liens réels des 38 lieux Fleury découverts |
+| P08 — fiches ParkItem | CIBLÉ — RECETTE OUVERTE | 38 détails Fleury rendus en SSR ; interactions et états à valider |
+| P09 — attractions autonomes | CIBLÉ — RECETTE OUVERTE | Hasenhorn visible capturé ; état masqué et interactions à valider |
+| P10 — zones | CIBLÉ — RECETTE OUVERTE | liste, détail, carte, facettes et liens ParkItem protégés statiquement |
+| P11 — cartes et plans | CIBLÉ — RECETTE OUVERTE | Leaflet/années/documents protégés ; gestes réels et plans à valider |
+| P12 — médias | CIBLÉ — RECETTE OUVERTE | galeries/lightbox/crédits/lazy/vidéos protégés ; volumes et erreurs à valider |
+| P13 — histoire | CIBLÉ — RECETTE OUVERTE | timelines/articles/snapshots/comparaison/lignées protégés statiquement |
+| P14 — données pratiques | CIBLÉ — RECETTE OUVERTE | horaires/météo/prix/live protégés ; valeurs et interactions réelles à valider |
+| P15 — notes, classements et actions sociales | CIBLÉ — RECETTE OUVERTE | contrats protégés ; actions authentifiées non exercées en recette |
+| P16 — autres parcours publics | CIBLÉ — RECETTE OUVERTE | contrats protégés ; pages secondaires partiellement capturées |
+| P17 — auth/compte | CIBLÉ — RECETTE OUVERTE | tests unitaires/contrats ; comptes et sessions de recette nécessaires |
+| P18 — administration | CIBLÉ — RECETTE OUVERTE | 58 terminaux/guards/workflows inventoriés ; recette admin isolée nécessaire |
+| P19 — états rares | CIBLÉ — RECETTE OUVERTE | contrats protégés ; tous les overlays/erreurs/états longs à valider |
 | P20 — responsive/a11y | PASS CIBLÉ | 30 cas Chromium, 13 largeurs, 2 thèmes, faible hauteur, 113 contrôles qualité/a11y ; revue Angular réelle à P22 |
-| P21 — CI/performance/SEO | PASS LOCAL CIBLÉ | build/budgets/architecture/a11y/i18n/SEO verts ; couverture complète et Node 24 requis en CI |
-| P22 — version et release atomique | PRÊT POUR PR | 6.0.0 préparée, portée auditée ; CI, revue propriétaire, merge et déploiement en attente |
+| P21 — CI/performance/SEO | PASS CI CIBLÉ | CI e98d7f8fb intégralement verte ; réseau/CWV/serveur déployé à recetter |
+| P22 — version et release atomique | NO-GO | PR #917 en brouillon ; recette complète, feu vert, merge et déploiement en attente |
 
-Un gate reste bloquant tant que sa preuve n’est pas enregistrée. La version et la PR ne seront préparées qu’à P22.
+Un gate reste bloquant tant que toutes ses preuves ne sont pas enregistrées. La version et la PR ont déjà été préparées sur la branche, mais ne constituent pas une validation P22 ni une autorisation de sortie.
 
 ## Couverture P20 — responsive et accessibilité
 
 - La fixture Chromium statique couvre 320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440 et 1920 px dans les deux thèmes, plus 390 × 568 et 1024 × 600.
 - Les 30 cas enregistrés dans `evidence/responsive-v6/responsive-report.json` ne présentent aucun overflow global, élément hors viewport, recouvrement de navigation fixe, cible de notation sous-dimensionnée ni réservation instable d’image ou de carte.
-- Les largeurs 320–480 constituent la preuve de reflow équivalente au zoom navigateur 200 % d’un viewport 640–960 px ; `overflow-x: clip` n’est jamais utilisé comme verdict, car les bounds de chaque contrôle sont mesurés séparément.
+- Les largeurs 320–480 vérifient le reflow étroit ; elles ne remplacent pas le zoom navigateur 200 % ni l'agrandissement de police, encore à tester. `overflow-x: clip` n’est jamais utilisé comme verdict, car les bounds de chaque contrôle sont mesurés séparément.
 - Les 30 captures WebP clair/sombre ont été produites sans serveur applicatif. Elles documentent la géométrie des composants, les libellés longs, le consentement, la navigation mobile et les panneaux admin/compte.
 - `quality:accessibility-i18n` passe : 8 langues et 7 316 clés, contrastes actifs/footer, thème initial SSR, réduction de mouvement, navigation, focus/ARIA et 113 tests Node.
 - Le contrôle a révélé puis corrigé les attributs `sizes` de la fiche parc, restés dimensionnés pour l’ancienne largeur éditoriale : les images hero et principale correspondent désormais au conteneur V6 de 1160 px.
@@ -85,10 +85,10 @@ La recette visuelle sur l’application Angular branchée aux données réelles,
 - `origin/master` a été rafraîchi juste avant la release et reste au SHA de départ ; aucun correctif fonctionnel concurrent n’est absent de la branche.
 - Les inventaires finaux reproduisent les 148 routes et 273 composants de P00, sans route, template ou SCSS manquant.
 - `release-version.json` passe directement de 5.4.101 à 6.0.0 avec une entrée datée du 14 octobre 2026 et huit libellés localisés.
-- L’audit de diff confirme 237 fichiers dans les seuls périmètres frontend/docs, aucune suppression, aucun changement API, route, dépendance, lockfile, workflow ou infrastructure.
+- L'audit de portée actualisé est dans `V6-RELEASE-GATE.md` : aucune suppression, route ou contrat métier modifié ; seule exception backend, la dépendance PKCS autorisée. Le workflow reçoit uniquement deux étapes de recette CI V6, sans changer le déploiement.
 - Le SHA de contenu versionné et audité est `545345dc3a81c099a328e29a510447339b3f9342`.
 
-La PR unique est désormais ouverte : [#917](https://github.com/Ced59/AmusementParkProject/pull/917). La CI du commit `0920100cc` passe pour le frontend, le backend, la version et la configuration de déploiement. La dépendance transitive PKCS bloque le scan sécurité ; son correctif vers 10.0.13 a été autorisé explicitement le 15 octobre et committé dans `235470597`. La recette Angular réelle, le feu vert, le merge, le déploiement et les postchecks restent ouverts.
+La PR unique est désormais ouverte en brouillon : [#917](https://github.com/Ced59/AmusementParkProject/pull/917). La CI du commit `e98d7f8fb` passe intégralement, y compris sécurité et Docker. Le correctif PKCS 10.0.13 autorisé est dans `235470597`. Le 15 octobre, la référence GitHub de `master` reste `7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22`. La recette complète, le feu vert, le merge, le déploiement et les postchecks restent ouverts.
 
 ## Registre des cas sensibles P00
 

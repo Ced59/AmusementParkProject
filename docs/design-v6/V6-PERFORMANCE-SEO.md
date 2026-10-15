@@ -14,13 +14,13 @@
 - Budget de style composant confirmé : avertissement 100 kB, erreur 150 kB.
 - Budgets outillés : initial 1 000 000 octets, plus gros lazy chunk 300 000, JavaScript total 7 200 000, CSS total 250 000.
 - Aucune dépendance UI, police ou icône ajoutée.
-- Aucun chargement d’image ou vidéo hors viewport supplémentaire.
+- Vidéos et chargements différés existants conservés ; coût initial des quatre nouveaux visuels hero encore à comparer à V5.
 - `@defer`, lazy routes, `loading="lazy"`, `srcset`, `sizes`, cache, `TransferState`, hydratation et préchargements SEO restent intacts.
 - Aucun serveur local ne sera démarré sans autorisation explicite.
 
 ## Contrôle accueil P04
 
-Le panneau des quatre parcs hero réutilise `app-image-display` et les identifiants issus de l’API. Seul le premier média visible reçoit `loading="eager"` et `fetchpriority="high"` ; les trois suivants restent lazy, avec `srcset`, `sizes`, dimensions réservées et placeholder. Le bloc des derniers contenus conserve `@defer (on viewport; hydrate on viewport; prefetch on idle)`. Aucun endpoint, requête initiale ou dépendance n’est ajouté.
+Le panneau des quatre parcs hero réutilise `app-image-display` et les identifiants issus de l’API. Seul le premier média visible reçoit `loading="eager"` et `fetchpriority="high"` ; les trois suivants restent lazy, avec `srcset`, `sizes`, dimensions réservées et placeholder. Le bloc des derniers contenus conserve `@defer (on viewport; hydrate on viewport; prefetch on idle)`. Aucun endpoint ou dépendance UI n'est ajouté. En revanche, ces quatre images n'existaient pas dans le template hero V5 : les téléchargements d'assets peuvent augmenter, même avec `loading="lazy"` pour les trois dernières. L'exigence P04.6 de non-augmentation des requêtes initiales **n'est pas démontrée** et reste bloquante ; elle doit être mesurée à données/viewport identiques puis corrigée ou faire l'objet d'une décision explicite, sans inventer de résultat.
 
 ## Contrôles P21
 

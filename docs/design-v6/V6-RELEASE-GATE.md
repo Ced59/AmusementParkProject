@@ -39,6 +39,8 @@
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
 | CI intégralement verte | PASS au commit `e98d7f8fb` ; sécurité corrigée, nouvelle recette encore ouverte |
 | Revue visuelle propriétaire | NON DEMANDÉE |
+| Recette isolée compte/admin | BLOQUÉE — URL et accès de test non fournis ; aucune mutation de production autorisée |
+| Réseau initial des nouveaux médias hero | À MESURER — quatre visuels ajoutés, P04.6 non démontré |
 | Feu vert explicite de fusion | NON REÇU |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
 
@@ -54,8 +56,8 @@
 
 ## Audit de portée P22
 
-- 242 fichiers modifiés : 172 sous `FRONT/`, 68 sous `docs/`, un projet sous `API/` et un workflow sous `.github/`.
-- 132 feuilles SCSS, 4 templates, 25 tests/outils MJS, 9 fichiers TypeScript dont 6 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
+- 244 fichiers modifiés : 174 sous `FRONT/`, 68 sous `docs/`, un projet sous `API/` et un workflow sous `.github/`.
+- 134 feuilles SCSS, 4 templates, 25 tests/outils MJS, 9 fichiers TypeScript dont 6 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
 - Aucun fichier supprimé ; aucun changement sous `deploy/`. La seule exception backend est la référence PKCS autorisée ci-dessous ; le workflow reçoit uniquement la recette CI conditionnelle à la branche V6.
 - `app.routes.ts`, `package-lock.json`, endpoints, DTO, guards, facades, ports, services, persistance et infrastructure inchangés.
 - Les seuls TypeScript de production modifiés ajoutent le composant image existant à l’accueil, réalignent les métadonnées `sizes` sur le conteneur V6 et déplacent le style du tooltip vers le SCSS partagé.
@@ -73,6 +75,8 @@ Le scan détecte `System.Security.Cryptography.Pkcs 10.0.0`, transitive déjà p
 La [CI du commit 4bde5e74d](https://github.com/Ced59/AmusementParkProject/actions/runs/38689894921) réussit intégralement, y compris le scan de sécurité et les builds Docker. Le déploiement est normalement ignoré pour la PR. Les corrections visuelles et l'outillage de capture ajoutés ensuite imposent une nouvelle CI.
 
 La [CI du commit e98d7f8fb](https://github.com/Ced59/AmusementParkProject/actions/runs/38697638768) réussit également intégralement : 19 routes publiques capturées, 38 lieux Fleury rendus en SSR et quatre interactions d'accueil hydraté vérifiées. Les parcours compte/admin, les états rares, la comparaison visuelle exhaustive et le feu vert propriétaire ne sont pas soldés : **la décision demeure NO-GO**.
+
+La [CI ce3f7b800](https://github.com/Ced59/AmusementParkProject/actions/runs/38699592749) réussit intégralement avec la route racine ajoutée (20 routes). Son diagnostic révèle des contrastes visibles à corriger, malgré les tests précédemment verts : les gates P01/P02/P03/P20 restent ouverts. Les nouvelles corrections et l'élargissement à 36 routes doivent passer la prochaine CI avant tout nouveau verdict.
 
 Le workflow existant reçoit uniquement deux étapes de recette conditionnées à la PR de cette branche : capture initiale SSR publique et dépôt de l'artefact. Les conditions de livraison, images et déploiement ne sont pas modifiées. La PR reste en brouillon tant que la recette complète n'est pas démontrée.
 

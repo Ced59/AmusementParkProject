@@ -6,7 +6,9 @@ const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const frontendRoot = resolve(scriptDirectory, '..', '..');
 const appRoot = join(frontendRoot, 'src', 'app');
 const repositoryRoot = resolve(frontendRoot, '..', '..');
-const outputDirectory = join(repositoryRoot, 'docs', 'design-v6', 'generated');
+const outputDirectory = process.env.V6_INVENTORY_DIR
+  ? resolve(process.env.V6_INVENTORY_DIR)
+  : join(repositoryRoot, 'docs', 'design-v6', 'generated');
 
 const aliasRoots = new Map([
   ['@app/', appRoot],
@@ -549,7 +551,8 @@ function buildStyleInventory() {
     .filter((path) => path.endsWith('.scss'))
     .sort()
     .map((styleFile) => {
-      const source = readFileSync(styleFile, 'utf8');
+      // Repository-normalized bytes make this inventory reproducible on Windows and Linux.
+      const source = readFileSync(styleFile, 'utf8').replaceAll('\r\n', '\n');
       return {
         styleFile: repositoryPath(styleFile),
         bytes: Buffer.byteLength(source, 'utf8'),
