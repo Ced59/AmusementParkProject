@@ -81,3 +81,9 @@ Les 578 fichiers de tests Angular passent. Le CSS possède encore 38 607 octets 
 
 Codes 200/301/404, canonical, hreflang réels, locale Open Graph, JSON-LD fiable, robots/noindex, sitemap, HTML SSR initial et absence de discordance d’hydratation. Les routes admin, compte, auth, techniques et erreurs ne deviennent pas indexables.
 
+## Recette HTTP du bundle — CI uniquement
+
+L'outil `tools/design-v6/verify-public-http.mjs` refuse de fonctionner hors runner Linux CI. Après fermeture de Chromium, il démarre le serveur Express compilé sur un port éphémère du runner, puis l'arrête systématiquement. Aucun serveur n'est démarré sur le PC du propriétaire ; aucune configuration produit ou infrastructure n'est modifiée. Les appels sont des GET anonymes, séquentiels ; l'API publique fournit les données réelles sans compte, cookie ni écriture.
+
+La campagne vérifie huit accueils, catalogue, parc, ParkItem, standalone, tarifs remplis et vides, 404 connue/inconnue, canonical, hreflang, locale Open Graph, JSON-LD, CSP, version et cache chaud Bing/Google. Quatre routes compte/admin/auth/Park Fit conservent leur shell CSR et `noindex` ; elles ne sont pas déclarées fonctionnellement recettées. La redirection 301 vidéo utilise un identifiant synthétique uniquement pour tester la normalisation d'URL, sans prétendre vérifier un média réel. `http-ssr-report.json` et le journal borné du serveur sont joints à l'artefact CI. Ce contrôle doit encore passer ; il n'atteste ni le déploiement, ni les métriques terrain, ni la bascule transactionnelle.
+

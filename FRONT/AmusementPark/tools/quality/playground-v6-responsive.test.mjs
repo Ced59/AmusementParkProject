@@ -5,6 +5,16 @@ import { isCanceledInterceptionError } from '../design-v6/browser-interception-e
 
 const responsiveScript = await readFile(new URL('../responsive/trip-pages-browser-check.mjs', import.meta.url), 'utf8');
 const designTokens = await readFile(new URL('../../../../docs/design-v6/V6-DESIGN-TOKENS.md', import.meta.url), 'utf8');
+const httpScript = await readFile(new URL('../design-v6/verify-public-http.mjs', import.meta.url), 'utf8');
+
+test('the real HTTP acceptance tool cannot start a server on the Windows workstation', () => {
+  assert.match(httpScript, /process\.env\.CI !== 'true' \|\| process\.platform !== 'linux'/);
+  assert.ok(httpScript.indexOf("if (process.env.CI") < httpScript.indexOf('portProbe.listen('));
+  assert.match(httpScript, /method: 'GET', redirect: 'manual'/);
+  assert.match(httpScript, /SSR_RENDER_MAX_CONCURRENCY: '1'/);
+  assert.match(httpScript, /server\.kill\('SIGTERM'\)/);
+  assert.match(httpScript, /http-ssr-report\.json/);
+});
 
 test('hydrated review accepts only protocol errors with a proven matching router cancellation', () => {
   const canceled = new Set(['canceled-request']);

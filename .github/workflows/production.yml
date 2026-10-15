@@ -303,6 +303,7 @@ jobs:
         run: |
           node tools/design-v6/generate-p00-inventory.mjs
           node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
+          node tools/design-v6/verify-public-http.mjs
 
       - name: Upload initial V6 public SSR evidence
         if: always() && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
