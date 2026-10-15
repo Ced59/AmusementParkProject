@@ -2,6 +2,8 @@
 
 ## Références
 
+Revue de la [campagne `ae874422d`](https://github.com/Ced59/AmusementParkProject/actions/runs/38743956202) : 39 routes / 2 028 captures initiales, puis neuf captures hydratées anonymes. Le logo transparent de parc reste lisible sur son fond neutre. La fiche Fleury desktop révèle encore un en-tête trop haut et une colonne d'actions verticale héritée. Le correctif P06 en cours place ces actions sous l'identité, reprend l'échelle de titre 34–57 px (30–41 px au mobile), réserve un vrai cadre à la photographie et supprime le doublon de logo estompé en fond. Le logo réel reste dans son cadre ; l'image, ses sources, son chargement et son preload ne sont pas remplacés. Les actions supplémentaires du produit, absentes de la maquette, restent intégralement visibles et peuvent revenir à la ligne. Les nouvelles captures CI et leur revue restent requises ; aucun verdict pixel-perfect n'est acquis.
+
 - Cible : HTML et captures du pack Playground V6.
 - Avant : production V5.4.101 capturée le 14 octobre 2026 sans démarrer de serveur local.
 - Après : captures de géométrie V6 produites sur fixture Chromium ; captures Angular réelles à valider dans l’environnement de revue final.

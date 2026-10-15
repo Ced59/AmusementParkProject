@@ -7,36 +7,27 @@
 
 .park-banner {
   position: relative;
-  min-height: clamp(17rem, 28vh, 22rem);
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
+  display: block;
   border-top: 4px solid var(--c-orange);
   border-bottom: 3px solid var(--app-heading);
-  background: var(--app-surface-2);
-}
-
-.park-banner__bg,
-.park-banner__pattern {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.park-banner__bg {
-  background: var(--app-surface-2);
-}
-
-.park-banner__pattern {
-  display: none;
+  background: var(--app-bg);
 }
 
 .park-banner__photo {
-  position: absolute;
-  inset: 0 0 0 auto;
-  width: min(48rem, 52%);
-  opacity: 0.24;
+  display: none;
+  position: relative;
+  grid-column: 3;
+  grid-row: 1;
+  width: 100%;
+  height: clamp(210px, 25vw, 320px);
+  overflow: hidden;
+  border: 1px solid var(--app-line);
+  background: var(--app-map);
   pointer-events: none;
+}
+
+.park-banner--has-photo .park-banner__photo {
+  display: block;
 }
 
 :host ::ng-deep .park-banner__photo-img,
@@ -53,23 +44,29 @@
 }
 
 .park-banner__content {
-  position: relative;
-  z-index: 1;
-  width: min(100% - 2.5rem, var(--park-detail-content-max-width));
+  width: 100%;
   margin: 0 auto;
   display: grid;
-  gap: 1.25rem;
-  padding: 1.35rem 0 1.9rem;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem 1.25rem;
+  padding: 1.5rem 0 0;
+}
+
+.park-banner--has-photo .park-banner__content {
+  grid-template-columns: 72px minmax(0, 1fr) 52%;
 }
 
 .park-logo-frame {
-  width: 108px;
-  height: 108px;
+  grid-column: 1;
+  grid-row: 1;
+  width: 72px;
+  height: 72px;
   display: grid;
   place-items: center;
   overflow: hidden;
   border: 2px solid var(--app-border-strong);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   background: var(--app-logo-surface);
   box-shadow: none;
 }
@@ -94,6 +91,8 @@
 }
 
 .park-banner__info {
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -108,14 +107,31 @@
   align-items: center;
 }
 
+.park-banner__actions {
+  grid-column: 1 / -1;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--app-line);
+  gap: 0.5rem;
+}
+
+.park-banner__actions > button,
+.park-banner__actions > a {
+  min-width: 0;
+  min-height: 44px;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
 .park-banner__name {
   margin: 0;
   color: var(--app-heading);
   font-family: var(--font-heading);
-  font-size: clamp(2.6rem, 5.6vw, 4.8rem);
+  font-size: clamp(34px, 4.4vw, 57px);
   font-weight: 900;
-  line-height: 1.06;
+  line-height: 1.14;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .park-banner__lead {
@@ -498,16 +514,6 @@
 }
 
 @media (min-width: 960px) {
-  .park-banner__content {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: end;
-  }
-
-  .park-banner__actions {
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
   .park-detail__body {
     grid-template-columns: minmax(0, 1fr) minmax(360px, 410px);
   }
@@ -519,27 +525,24 @@
   }
 }
 
-@media (max-width: 959px) {
-  .park-banner__actions {
-    align-items: stretch;
-  }
-}
-
 @media (max-width: 680px) {
-  .park-banner {
-    min-height: auto;
+  .park-banner__content,
+  .park-banner--has-photo .park-banner__content {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 0.85rem 0.75rem;
   }
 
   .park-banner__photo {
+    grid-column: 1 / -1;
+    grid-row: 2;
     width: 100%;
-    opacity: 0.1;
+    height: clamp(200px, 56vw, 320px);
   }
 
   .park-detail__body {
     gap: 1rem;
   }
 
-  .park-banner__content,
   .park-detail__body,
   .park-nearby-block {
     width: 100%;
@@ -548,16 +551,16 @@
   }
 
   .park-logo-frame {
-    width: 86px;
-    height: 86px;
+    width: 64px;
+    height: 64px;
   }
 
   .park-banner__name {
-    word-break: break-word;
+    font-size: clamp(30px, 8.5vw, 41px);
+    line-height: 1.2;
   }
 
   .park-banner__actions {
-    flex-direction: column;
     align-items: stretch;
   }
 
@@ -565,10 +568,15 @@
     max-width: 100%;
   }
 
+  .park-banner__actions > button,
+  .park-banner__actions > a {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+
   .park-banner__actions span {
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .park-info-row {
@@ -589,18 +597,6 @@
 }
 
 @media (min-width: 960px) and (max-width: 1119px) {
-  .park-banner__content {
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: end;
-  }
-
-  .park-banner__actions {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
   .park-detail__body {
     grid-template-columns: 1fr;
   }
@@ -614,7 +610,6 @@
 }
 
 @media (min-width: 681px) and (max-width: 959px) {
-  .park-banner__content,
   .park-detail__body,
   .park-nearby-block {
     width: min(100% - 1.5rem, var(--park-detail-content-max-width));

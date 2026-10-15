@@ -22,6 +22,17 @@ const zoneStyles = read('src/app/features/public/parks/ui/park-zone-view.compone
 const zonesSectionStyles = read('src/app/features/public/parks/ui/park-zones-section.component.scss');
 const imageLayout = read('src/app/features/public/parks/models/park-detail-image-layout.ts');
 
+test('the editorial park header separates real photography and puts every action below the identity row', () => {
+  assert.ok(parkTemplate.includes('[class.park-banner--has-photo]="currentPark.heroImageId && currentPark.heroImageId !== currentPark.logoImageId"'));
+  assert.match(parkStyles, /\.park-banner--has-photo \.park-banner__content\s*\{[^}]*grid-template-columns:\s*72px minmax\(0, 1fr\) 52%/);
+  assert.match(parkStyles, /\.park-banner__actions\s*\{[^}]*grid-column:\s*1 \/ -1/);
+  assert.match(parkStyles, /font-size:\s*clamp\(34px, 4\.4vw, 57px\)/);
+  assert.match(parkStyles, /\.park-banner__actions span\s*\{[^}]*white-space:\s*normal;[^}]*overflow-wrap:\s*anywhere/);
+  assert.doesNotMatch(parkStyles, /opacity:\s*0\.(?:24|1);/);
+  assert.doesNotMatch(parkStyles, /\.park-banner__actions\s*\{[^}]*flex-direction:\s*column/);
+  assert.doesNotMatch(parkTemplate, /park-banner__bg|park-banner__pattern/);
+});
+
 test('park image sizes follow the V6 shell gutters and existing detail columns at every QA width', () => {
   const hero = imageLayout.match(/PARK_DETAIL_HERO_IMAGE_SIZES: string = '([^']+)'/)[1];
   const photo = imageLayout.match(/PARK_DETAIL_MAIN_PHOTO_SIZES: string = '([^']+)'/)[1];

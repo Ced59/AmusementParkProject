@@ -11,7 +11,7 @@ import { ImageDisplayComponent } from '@shared/components/image-display/image-di
 import { PARK_DETAIL_HERO_IMAGE_SIZES, PARK_DETAIL_HERO_IMAGE_WIDTH, PARK_DETAIL_MAIN_PHOTO_SIZES } from '../models/park-detail-image-layout';
 
 describe('ParkDetailViewComponent gallery accessible name', () => {
-  it('uses the visible caption without replacing it with a different name', async () => {
+  it('preserves the gallery name and distinguishes an actual hero photo from the logo fallback', async () => {
     await TestBed.configureTestingModule({
       imports: [ParkDetailViewComponent], providers: provideCommonTestDependencies()
     }).overrideComponent(ParkDetailViewComponent, {
@@ -38,5 +38,17 @@ describe('ParkDetailViewComponent gallery accessible name', () => {
     expect(link.querySelector('img')?.getAttribute('sizes')).toBe(PARK_DETAIL_MAIN_PHOTO_SIZES);
     expect(fixture.componentInstance.heroImageSizes).toBe(PARK_DETAIL_HERO_IMAGE_SIZES);
     expect(fixture.componentInstance.heroImageSrcWidth).toBe(PARK_DETAIL_HERO_IMAGE_WIDTH);
+    expect(fixture.nativeElement.querySelector('.park-banner').classList.contains('park-banner--has-photo')).toBe(false);
+    fixture.componentRef.setInput('park', { ...park, heroImageId: 'image-1', logoImageId: 'logo-1' });
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.park-banner').classList.contains('park-banner--has-photo')).toBe(true);
+    const hero: HTMLImageElement = fixture.nativeElement.querySelector('.park-banner__photo img');
+    expect(hero.getAttribute('loading')).toBe('eager');
+    expect(hero.getAttribute('fetchpriority')).toBe('high');
+    expect(hero.getAttribute('sizes')).toBe(PARK_DETAIL_HERO_IMAGE_SIZES);
+    fixture.componentRef.setInput('park', { ...park, heroImageId: 'logo-1', logoImageId: 'logo-1' });
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.park-banner').classList.contains('park-banner--has-photo')).toBe(false);
+    expect(fixture.nativeElement.querySelector('.park-logo-frame app-image-display')).not.toBeNull();
   });
 });

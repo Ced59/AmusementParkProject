@@ -12,27 +12,9 @@
   }">
   @if (currentPark) {
     <section class="park-detail">
-      <section class="park-banner" [appPublicContextualBlock]="getContextualBlock('park.hero', currentPark)">
-        <div class="park-banner__bg" aria-hidden="true"></div>
-        <div class="park-banner__pattern" aria-hidden="true"></div>
-
-        @if (currentPark.heroImageId) {
-          <div class="park-banner__photo" aria-hidden="true">
-            <app-image-display
-              [imageId]="currentPark.heroImageId"
-              [alt]="currentPark.name"
-              loading="eager"
-              fetchPriority="high"
-              [sizes]="heroImageSizes"
-              [srcWidth]="heroImageSrcWidth"
-              [responsiveWidths]="heroImageResponsiveWidths"
-              imgClass="park-banner__photo-img"
-              placeholderClass="park-banner__photo-placeholder"
-              placeholderKind="photo">
-            </app-image-display>
-          </div>
-        }
-
+      <section class="park-banner"
+        [class.park-banner--has-photo]="currentPark.heroImageId && currentPark.heroImageId !== currentPark.logoImageId"
+        [appPublicContextualBlock]="getContextualBlock('park.hero', currentPark)">
         <div class="park-banner__content">
           <div class="park-logo-frame" [class.park-logo-frame--placeholder]="!currentPark.logoImageId">
             <app-image-display
@@ -91,6 +73,23 @@
               </app-comment-summary-link>
             }
           </div>
+
+          @if (currentPark.heroImageId) {
+            <div class="park-banner__photo" aria-hidden="true">
+              <app-image-display
+                [imageId]="currentPark.heroImageId"
+                [alt]="currentPark.name"
+                loading="eager"
+                fetchPriority="high"
+                [sizes]="heroImageSizes"
+                [srcWidth]="heroImageSrcWidth"
+                [responsiveWidths]="heroImageResponsiveWidths"
+                imgClass="park-banner__photo-img"
+                placeholderClass="park-banner__photo-placeholder"
+                placeholderKind="photo">
+              </app-image-display>
+            </div>
+          }
 
           <div class="park-banner__actions">
             @if (currentPark.id; as parkId) {

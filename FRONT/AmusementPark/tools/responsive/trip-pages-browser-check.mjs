@@ -374,7 +374,12 @@ const fixtureMarkup = `
   <div class="app-public-layout" data-check-bound>
     <main class="app-layout-main app-public-layout__main">
       <section class="park-detail">
-        <section class="park-banner"><div class="park-banner__photo" data-hero-slot></div></section>
+        <section class="park-banner park-banner--has-photo"><div class="park-banner__content">
+          <div class="park-logo-frame" data-check-bound></div>
+          <div class="park-banner__info" data-check-bound><h1 class="park-banner__name">Ein besonders langer Freizeitparkname</h1></div>
+          <div class="park-banner__photo" data-hero-slot data-check-bound></div>
+          <div class="park-banner__actions" data-check-bound><button data-check-bound>Alle Attraktionen und Orte entdecken</button><a data-check-bound>Zurück zur Übersicht</a></div>
+        </div></section>
         <div class="park-detail__body">
           <main class="park-main">
             <section class="park-main-photo" data-check-bound>
