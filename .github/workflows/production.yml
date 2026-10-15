@@ -322,6 +322,7 @@ jobs:
           V6_BASELINE_DIST_DIR: ${{ runner.temp }}/v6-baseline-dist
         run: |
           node tools/design-v6/generate-p00-inventory.mjs
+          node tools/design-v6/verify-template-contracts.mjs
           node --max-old-space-size=768 tools/design-v6/render-home-baseline.mjs
           node tools/design-v6/verify-public-http.mjs
           node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs

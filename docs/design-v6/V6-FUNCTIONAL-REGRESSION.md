@@ -6,6 +6,12 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 
 ## Familles obligatoires
 
+### Comparaison structurelle des templates avec la base exacte
+
+`verify-template-contracts.mjs` utilise le parseur Angular déjà installé et le SHA exact de base de PR, sans nouvelle dépendance. Il compare tous les templates modifiés (sept actuellement) et refuse une suppression de template. Les **838 contrats existants sont conservés**, notamment événements, conditions, expressions, références, formulaires, labels accessibles, liens, chargement image et déclencheurs/durées `@defer`. Cinq ajouts sont purement présentationnels : les quatre entrées du composant image d'accueil existant et le code de langue visible.
+
+L'ordre et les classes/styles de présentation, tons, pictogrammes et `sizes` des images peuvent changer ; ces propriétés sont exclues explicitement, pas les données, chargements ou interactions. Le contrôle de multiensemble détecte aussi la perte d'une des occurrences d'un même contrôle. Il ne prouve ni l'imbrication des permissions, ni le comportement du navigateur, ni une validation exhaustive des états. Trois tests protègent l'analyseur ; **162 tests ciblés** passent localement en série, sans build Angular complet. La comparaison est raccordée à la recette CI V6 et dépose `template-contract-comparison.json` dans l'artefact.
+
 | Famille | Scénarios minimum | État |
 |---|---|---|
 | Navigation | 8 langues, anonyme/auth/admin, back/forward, deep links, 404 | CONTRATS PASS — parcours complets à P20/P21 |
