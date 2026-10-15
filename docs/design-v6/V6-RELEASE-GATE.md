@@ -88,6 +88,8 @@ La [CI 2675e3a8b](https://github.com/Ced59/AmusementParkProject/actions/runs/387
 
 Le workflow existant reçoit uniquement deux étapes de recette conditionnées à la PR de cette branche : capture initiale SSR publique et dépôt de l'artefact. Les conditions de livraison, images et déploiement ne sont pas modifiées. La PR reste en brouillon tant que la recette complète n'est pas démontrée.
 
+La [CI 5f5de42e3](https://github.com/Ced59/AmusementParkProject/actions/runs/38707367998) valide tests, build et sécurité et produit les 1 976 captures des 38 routes ainsi que les 38 détails Fleury. Les nouveaux scénarios hydratés atteignent le retour navigateur, puis l'outil échoue en répondant à des requêtes annulées par Chromium. Le correctif de recette n'accepte cette erreur de protocole que si `Network.loadingFailed` atteste l'annulation du même identifiant réseau ; les autres erreurs restent bloquantes. Une nouvelle CI est requise.
+
 ## Rollback
 
 En cas d’échec après feu vert et fusion, appliquer la procédure transactionnelle existante de `docs/deploy/transactional-app-deployment.md` vers la génération complète antérieure. Aucun rollback CSS sélectif, aucune publication partielle et aucun mélange permanent V5/V6.

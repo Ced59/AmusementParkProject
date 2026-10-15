@@ -5,6 +5,7 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { extname, join, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { isCanceledInterceptionError } from './browser-interception-errors.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -187,6 +188,11 @@ async function captureHydratedHome(rawHtml) {
   report.hydratedHome = result;
   const mimeTypes = { '.mjs': 'text/javascript', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.ico': 'image/x-icon' };
   const interceptionErrors = [];
+  const canceledNetworkRequests = new Set();
+  const pendingInterceptions = new Set();
+  const stopCancellations = cdp.on('Network.loadingFailed', ({ requestId, canceled }) => {
+    if (canceled) canceledNetworkRequests.add(requestId);
+  });
   const fulfill = (requestId, status, contentType, bytes) => cdp.send('Fetch.fulfillRequest', {
     requestId, responseCode: status,
     responseHeaders: [{ name: 'Content-Type', value: contentType }, { name: 'Cache-Control', value: 'no-store' }],
@@ -225,7 +231,18 @@ async function captureHydratedHome(rawHtml) {
     }
   };
   const stopInterception = cdp.on('Fetch.requestPaused', (request) => {
-    void intercept(request).catch((error) => { interceptionErrors.push(error.message); });
+    const task = intercept(request).catch(async (error) => {
+      // CDP can deliver loadingFailed just after the failed fulfillment response.
+      if (error.message === 'Invalid InterceptionId.' && request.networkId) {
+        await new Promise((yes) => setTimeout(yes, 100));
+      }
+      if (isCanceledInterceptionError(error, request.networkId, canceledNetworkRequests)) {
+        (result.canceledRequests ??= []).push({ path: new URL(request.request.url).pathname, networkId: request.networkId });
+      } else {
+        interceptionErrors.push(error.message);
+      }
+    }).finally(() => pendingInterceptions.delete(task));
+    pendingInterceptions.add(task);
   });
   const stopExceptions = cdp.on('Runtime.exceptionThrown', ({ exceptionDetails }) => {
     result.exceptions.push((exceptionDetails.exception?.description ?? exceptionDetails.text).slice(0, 1500));
@@ -244,6 +261,7 @@ async function captureHydratedHome(rawHtml) {
     throw new Error(`Hydrated browser check timed out: ${label}`);
   };
   try {
+    await cdp.send('Network.enable');
     await cdp.send('Fetch.enable', { patterns: [{ urlPattern: '*' }] });
     await cdp.send('Emulation.setDeviceMetricsOverride', { width: 390, height: 1200, deviceScaleFactor: 1, mobile: false });
     await cdp.send('Page.navigate', { url: `${origin}/fr/home` });
@@ -309,10 +327,16 @@ async function captureHydratedHome(rawHtml) {
     if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser raised an exception; inspect report.json.');
     console.log(`Hydrated home: ${result.checks.length} checks passed; production writes blocked.`);
   } finally {
+    // Cancel remaining lazy reads before disabling interception; all promises
+    // settle while their cancellation evidence is still being observed.
+    try { await cdp.send('Page.navigate', { url: 'about:blank' }); } catch (error) { result.exceptions.push(error.message); }
+    await Promise.allSettled([...pendingInterceptions]);
     try { await cdp.send('Fetch.disable'); } catch (error) { result.exceptions.push(error.message); }
     stopInterception();
+    stopCancellations();
     stopExceptions();
     await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
+    if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser or interception failed; inspect report.json.');
   }
 }
 

@@ -1,9 +1,20 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
+import { isCanceledInterceptionError } from '../design-v6/browser-interception-errors.mjs';
 
 const responsiveScript = await readFile(new URL('../responsive/trip-pages-browser-check.mjs', import.meta.url), 'utf8');
 const designTokens = await readFile(new URL('../../../../docs/design-v6/V6-DESIGN-TOKENS.md', import.meta.url), 'utf8');
+
+test('hydrated review accepts only protocol errors with a proven matching router cancellation', () => {
+  const canceled = new Set(['canceled-request']);
+  const invalidId = new Error('Invalid InterceptionId.');
+  assert.equal(isCanceledInterceptionError(invalidId, 'canceled-request', canceled), true);
+  assert.equal(isCanceledInterceptionError(invalidId, 'active-request', canceled), false);
+  assert.equal(isCanceledInterceptionError(invalidId, undefined, canceled), false);
+  assert.equal(isCanceledInterceptionError(new Error('CDP timeout: Fetch.fulfillRequest'), 'canceled-request', canceled), false);
+  assert.equal(isCanceledInterceptionError(new Error('Rejected asset traversal.'), 'canceled-request', canceled), false);
+});
 
 test('the V6 Chromium fixture covers every contractual responsive width', () => {
   const contractualWidths = [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920];
