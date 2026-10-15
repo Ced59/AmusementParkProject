@@ -20,6 +20,29 @@ const zonesStyles = read('src/app/features/public/parks/ui/park-zones-view.compo
 const zoneTemplate = read('src/app/features/public/parks/ui/park-zone-view.component.html');
 const zoneStyles = read('src/app/features/public/parks/ui/park-zone-view.component.scss');
 const zonesSectionStyles = read('src/app/features/public/parks/ui/park-zones-section.component.scss');
+const imageLayout = read('src/app/features/public/parks/models/park-detail-image-layout.ts');
+
+test('park image sizes follow the V6 shell gutters and existing detail columns at every QA width', () => {
+  const hero = imageLayout.match(/PARK_DETAIL_HERO_IMAGE_SIZES: string = '([^']+)'/)[1];
+  const photo = imageLayout.match(/PARK_DETAIL_MAIN_PHOTO_SIZES: string = '([^']+)'/)[1];
+  function advertisedWidth(sizes, width) {
+    for (const clause of sizes.split(',')) {
+      const condition = clause.trim().match(/^\(max-width: (\d+)px\) (.+)$/);
+      if (condition && width > Number(condition[1])) continue;
+      const value = (condition ? condition[2] : clause.trim()).replace(/^calc\(|\)$/g, '');
+      return value.split(' - ').map(part => part.endsWith('vw') ? Number.parseFloat(part) * width / 100 : Number.parseFloat(part))
+        .reduce((total, part) => total - part);
+    }
+    throw new Error('Missing image size fallback');
+  }
+  for (const width of [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920]) {
+    const shell = Math.min(1160, width - (width <= 480 ? 28 : width <= 680 ? 30 : 48));
+    const heroWidth = width <= 680 ? shell : shell * 0.52;
+    const photoWidth = width <= 680 ? shell - 32 : width <= 959 ? shell - 24 : width <= 1119 ? shell - 40 : shell - 40 - 22.4 - 410;
+    assert.ok(Math.abs(advertisedWidth(hero, width) - heroWidth) <= 1, `hero at ${width}px`);
+    assert.ok(Math.abs(advertisedWidth(photo, width) - photoWidth) <= 1, `photo at ${width}px`);
+  }
+});
 
 test('the Fleury SSR review inventories the same visible open and closed population as its list', () => {
   const capture = read('tools/design-v6/capture-public-ssr.mjs');

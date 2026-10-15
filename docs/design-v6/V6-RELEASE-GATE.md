@@ -92,6 +92,8 @@ La [CI 5f5de42e3](https://github.com/Ced59/AmusementParkProject/actions/runs/387
 
 La [CI adcd267f1](https://github.com/Ced59/AmusementParkProject/actions/runs/38709110336) passe les seize contrôles hydratés et les captures, mais échoue au nettoyage du navigateur. Le prochain correctif draine les lectures avant fermeture et bloque tout nouvel accès réseau pendant le nettoyage. Les nouveaux tests HTTP Express restent exclusivement sur Linux CI. Le réalignement typographique/géométrique à la maquette exige également une nouvelle CI et revue visuelle ; la décision reste NO-GO.
 
+Le verrou mémoire local a été réparé avec l'autorisation explicite du propriétaire le 15 octobre : récupération uniquement sur preuve native de fin de l'opération exacte, identité conservée, seuils inchangés, aucun processus actif fermé. Les 26 tests ciblés du garde et les 30 tests de présentation ciblés passent. Les changements V6 préparés sont publiés dans `c74663c46` et `042e86389`. La [CI 042e86389](https://github.com/Ced59/AmusementParkProject/actions/runs/38715838997) détecte ensuite les attributs `sizes` restés sur les anciennes gouttières (à 320 px : 304 déclarés / 292 rendus pour le hero, 272 / 260 pour la photo). Leurs formules sont réalignées sur 48/30/28 px, sans modifier chargement, sources ou résolution. La recette CI reste requise.
+
 ## Rollback
 
 En cas d’échec après feu vert et fusion, appliquer la procédure transactionnelle existante de `docs/deploy/transactional-app-deployment.md` vers la génération complète antérieure. Aucun rollback CSS sélectif, aucune publication partielle et aucun mélange permanent V5/V6.
