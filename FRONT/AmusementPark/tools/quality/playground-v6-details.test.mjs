@@ -31,6 +31,9 @@ test('the editorial park header separates real photography and puts every action
   assert.doesNotMatch(parkStyles, /opacity:\s*0\.(?:24|1);/);
   assert.doesNotMatch(parkStyles, /\.park-banner__actions\s*\{[^}]*flex-direction:\s*column/);
   assert.doesNotMatch(parkTemplate, /park-banner__bg|park-banner__pattern/);
+  assert.match(parkStyles, /\.park-banner__info\s*\{[^}]*display:\s*contents/);
+  assert.match(parkStyles, /\.park-banner__meta\s*\{[^}]*grid-column:\s*1 \/ -1;[^}]*grid-row:\s*2/);
+  assert.match(parkStyles, /app-user-collection-actions:empty/);
 });
 
 test('park image sizes follow the V6 shell gutters and existing detail columns at every QA width', () => {

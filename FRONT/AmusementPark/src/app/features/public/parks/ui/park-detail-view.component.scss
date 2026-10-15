@@ -123,6 +123,11 @@
   overflow-wrap: anywhere;
 }
 
+.park-banner__actions > app-user-collection-actions:empty,
+.park-banner__actions > app-watch-subscription-action:empty {
+  display: none;
+}
+
 .park-banner__name {
   margin: 0;
   color: var(--app-heading);
@@ -555,9 +560,30 @@
     height: 64px;
   }
 
+  .park-banner__info {
+    display: contents;
+  }
+
+  .park-banner__meta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
   .park-banner__name {
+    grid-column: 2;
+    grid-row: 1;
     font-size: clamp(30px, 8.5vw, 41px);
     line-height: 1.2;
+  }
+
+  .park-banner__lead,
+  .park-banner__rating,
+  .park-banner__info > app-comment-summary-link {
+    grid-column: 1 / -1;
+  }
+
+  .park-banner__photo {
+    grid-row: auto;
   }
 
   .park-banner__actions {
