@@ -2,7 +2,7 @@
 
 ## Décision actuelle
 
-**NO-GO MERGE — branche prête pour la PR et la CI.** Aucun merge, tag ni déploiement n’est autorisé avant les checks Node 24, la revue visuelle Angular réelle et le feu vert explicite du propriétaire.
+**NO-GO MERGE — PR #917 ouverte, recette complète non terminée.** Les PASS ciblés ci-dessous ne constituent pas une acceptation de tous les critères de chaque gate. Aucun merge, tag ni déploiement n’est autorisé avant les checks du dernier commit, la recette visuelle/fonctionnelle Angular réelle et le feu vert explicite du propriétaire.
 
 | Contrôle | État |
 |---|---|
@@ -10,7 +10,7 @@
 | SHA et version de départ consignés | PASS |
 | Inventaire route/template/SCSS/interaction généré | PASS |
 | Baseline visuelle V5 initiale | PASS |
-| P00 complet | PASS |
+| P00 inventaires | PASS — baseline visuelle ciblée ; couverture exhaustive des états non démontrée |
 | P01 | PASS |
 | P02 | PASS CIBLÉ — suite a11y complète à P21 |
 | P03 | PASS CIBLÉ — 17 tests statiques, suite Angular complète à P21 |
@@ -33,11 +33,11 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | EN ATTENTE — serveur local interdit, validation sur environnement de revue requise |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | EN ATTENTE — couverture Angular intégrale et tests avec services éphémères |
+| P21 CI Node 24 | PASS au commit `0920100cc` pour frontend/backend/version/configuration ; dernier commit à revalider |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
-| Diff limité au frontend visuel, tests et documentation | PASS — 237 fichiers, 0 suppression, aucun API/deploy/workflow |
-| PR unique prête pour revue | NON OUVERTE |
-| CI intégralement verte | NON EXÉCUTÉE |
+| Diff de portée | Exception sécurité explicitement autorisée le 15 octobre : référence PKCS 10.0.13 dans Infrastructure |
+| PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
+| CI intégralement verte | BLOQUÉE au commit `0920100cc` par PKCS ; correctif autorisé en cours de validation |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | Feu vert explicite de fusion | NON REÇU |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
@@ -64,7 +64,11 @@
 
 ## Décision avant fusion
 
-La branche peut être poussée et la PR unique ouverte. La fusion reste interdite jusqu’à ce que la CI Node 24 soit entièrement verte, que les captures Angular réelles soient revues et que le propriétaire écrive explicitement son feu vert. La procédure de rollback demeure celle de `docs/deploy/transactional-app-deployment.md` et porte sur une génération complète.
+La PR unique est ouverte. La fusion reste interdite jusqu’à ce que la CI Node 24 du dernier commit soit entièrement verte, que les scénarios Angular réels et les comparaisons visuelles contractuelles soient exécutés puis revus, et que le propriétaire écrive explicitement son feu vert. Les captures de fixtures ne permettent pas de remplacer cette recette. La procédure de rollback demeure celle de `docs/deploy/transactional-app-deployment.md` et porte sur une génération complète.
+
+## Exception sécurité autorisée le 15 octobre
+
+Le scan détecte `System.Security.Cryptography.Pkcs 10.0.0`, transitive déjà présente sur la base `origin/master`, affectée par [CVE-2026-84008, High 7,5](https://github.com/advisories/GHSA-846f-f764-76mx) et [CVE-2026-70162, Moderate 5,9](https://github.com/advisories/GHSA-2fmv-rv2c-59x7), publiées le 13 octobre. Le propriétaire a explicitement autorisé le correctif minimal dans la même PR : référence directe `10.0.13` dans le projet Infrastructure, commit `235470597`. Aucun endpoint, code métier ou configuration d'infrastructure n'est modifié par cette exception ; le scan est conservé sans contournement.
 
 ## Rollback
 

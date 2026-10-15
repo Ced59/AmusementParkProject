@@ -2,7 +2,7 @@
 
 ## Méthode
 
-La matrice générée recense 148 terminaux de route et 1 869 interactions/champs. Chaque ligne est vérifiée statiquement pendant l’implémentation puis exercée par les tests existants, les tests ciblés V6 et la CI. Les suites lourdes ne sont pas lancées sur le PC si la marge RAM de 1,5 Gio ne peut pas être tenue.
+La matrice générée recense 148 terminaux de route et 1 869 interactions/champs. Les contrôles statiques et la suite Angular vérifient une partie des contrats ; ils ne démontrent pas que chaque ligne a été exercée dans un navigateur avec tous ses états, données et rôles. La matrice de recette complète reste ouverte. Les suites lourdes ne sont pas poursuivies sur le PC si la marge RAM de 1,5 Gio serait menacée.
 
 ## Familles obligatoires
 
@@ -101,5 +101,7 @@ Ces contrôles vérifient les contrats statiques sans substituer de donnée. Les
 
 La comparaison finale des inventaires P00/P22 conserve 148 routes, 273 composants et tous les templates associés. `app.routes.ts`, les modules lazy, guards, resolvers, services, facades, ports, contrats d’input/output et le lockfile restent inchangés. Aucun fichier API ou infrastructure n’est présent dans le diff et aucun fichier n’est supprimé.
 
-Les 16 suites contractuelles Playground V6 relisent les actions, conditions, états, permissions, navigations, pagination, médias, cartes, histoire, compte et administration directement dans les templates/routes existants. La suite qualité complète passe à 113/113 ; la suite Angular ciblée de la fiche parc passe à 1/1. L’intégralité Vitest avec couverture reste volontairement attribuée à la CI isolée après arrêt local à la limite RAM contractuelle.
+Les 16 suites contractuelles Playground V6 relisent les actions, conditions, états, permissions, navigations, pagination, médias, cartes, histoire, compte et administration directement dans les templates/routes existants. La suite qualité initiale passe à 113/113 ; la suite Angular ciblée de la fiche parc passe à 1/1. La suite frontend complète avec couverture et le build SSR ont ensuite réussi dans la [CI du commit 0920100cc](https://github.com/Ced59/AmusementParkProject/actions/runs/38642374215). Cela ne solde pas les scénarios navigateur/données réelles listés ci-dessus.
+
+Le 15 octobre, le test Angular ciblé de l'accueil a été arrêté préventivement pendant la compilation à 2,16 Gio disponibles et en baisse. Sa vérification est transférée à la CI. Les corrections de revue concernent les contrastes des boutons repos/survol, les numéros d'étape des voyages et le logo décoratif de l'accueil masqué aux technologies d'assistance.
 

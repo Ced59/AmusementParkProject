@@ -44,6 +44,8 @@ Les variables V6 alimentent les alias `--app-*` et `--ap-*` existants. Aucun sec
 
 Le texte courant vise au moins 4,5:1 ; le texte large et les séparateurs essentiels au moins 3:1. Le texte posé sur le lime et sur les accents secondaires clairs du thème sombre reste foncé. Les variantes rose, or et violet atteignent au moins 4,5:1 sur leur surface teintée à 14 %. Le focus ne dépend jamais uniquement de la couleur.
 
+Les contrôles pleins utilisent des premiers plans adaptés à chaque ton et état. En clair, `--on-accent: #101512` est réservé aux aplats orange/teal/lime ; le survol orange/teal utilise `--app-on-accent-hover: #ffffff`. Les boutons or/rose/violet utilisent un texte blanc et assombrissent leur aplat au survol. En sombre, ces textes restent `#151a17` et les aplats s'éclaircissent au survol. Le test de contraste contrôle les deux états de chaque ton à 4,5:1 minimum.
+
 ## Géométrie et densité
 
 - Largeur éditoriale courante : `1160px`.

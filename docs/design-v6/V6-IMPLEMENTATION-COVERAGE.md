@@ -39,6 +39,8 @@ Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent a
 
 ## Gates
 
+**Lecture corrigée au 15 octobre 2026 : les PASS ci-dessous désignent les contrôles ciblés cités, pas l'acceptation des gates contractuels complets.** Les contrats statiques, les tests unitaires et la fixture responsive ne prouvent pas la fidélité pixel-perfect, les interactions Angular rendues, les huit langues et toutes les variantes authentifiées/admin. Ces recettes restent ouvertes et bloquent la fusion. L'implémentation n'est pas déclarée terminée.
+
 | Gate | État | Preuve attendue |
 |---|---|---|
 | P00 — baseline et inventaires | PASS | 4 CSV générés, 24 captures V5, baseline performance/SSR, cas protégés |
@@ -76,7 +78,7 @@ Un gate reste bloquant tant que sa preuve n’est pas enregistrée. La version e
 - `quality:accessibility-i18n` passe : 8 langues et 7 316 clés, contrastes actifs/footer, thème initial SSR, réduction de mouvement, navigation, focus/ARIA et 113 tests Node.
 - Le contrôle a révélé puis corrigé les attributs `sizes` de la fiche parc, restés dimensionnés pour l’ancienne largeur éditoriale : les images hero et principale correspondent désormais au conteneur V6 de 1160 px.
 
-La recette visuelle sur l’application Angular branchée aux données réelles, les rôles authentifié/admin et les gestes Leaflet reste une décision humaine de P22. Elle n’est pas simulée localement, car le contrat interdit de démarrer un serveur applicatif sur ce PC sans autorisation.
+La recette visuelle sur l’application Angular branchée aux données réelles, les rôles authentifié/admin et les gestes Leaflet reste à exécuter et documenter avant P22. Elle relève de la validation du chantier ; le feu vert humain ne remplace pas cette preuve. Le contrat interdit de démarrer un serveur applicatif sur ce PC sans autorisation et permet les vérifications en CI isolée.
 
 ## Préparation P22 — release atomique
 
@@ -86,7 +88,7 @@ La recette visuelle sur l’application Angular branchée aux données réelles,
 - L’audit de diff confirme 237 fichiers dans les seuls périmètres frontend/docs, aucune suppression, aucun changement API, route, dépendance, lockfile, workflow ou infrastructure.
 - Le SHA de contenu versionné et audité est `545345dc3a81c099a328e29a510447339b3f9342`.
 
-La PR finale unique est l’étape suivante. Les états CI, revue visuelle, feu vert, merge, déploiement et postchecks ne seront marqués PASS qu’après preuve effective.
+La PR unique est désormais ouverte : [#917](https://github.com/Ced59/AmusementParkProject/pull/917). La CI du commit `0920100cc` passe pour le frontend, le backend, la version et la configuration de déploiement. La dépendance transitive PKCS bloque le scan sécurité ; son correctif vers 10.0.13 a été autorisé explicitement le 15 octobre et committé dans `235470597`. La recette Angular réelle, le feu vert, le merge, le déploiement et les postchecks restent ouverts.
 
 ## Registre des cas sensibles P00
 
