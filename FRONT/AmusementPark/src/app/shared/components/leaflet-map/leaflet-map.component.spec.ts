@@ -8,6 +8,8 @@ import {
   provideCommonTestDependencies,
 } from '@app/testing/common-test-providers';
 import { MapMarker } from '@app/models/map/map-marker';
+import type { Map as LeafletMap } from 'leaflet';
+import { createLeafletMapDisposer } from '@shared/utils/maps/leaflet-map-disposer';
 
 type LeafletTestMap = {
   fitBounds: Mock;
@@ -35,7 +37,7 @@ type LeafletMapComponentInternals = {
   scheduleMapSizeStabilization: () => void;
   applyDefaultViewport: () => void;
   initMap: () => void;
-  bindMapZoomLifecycle: (map: unknown) => void;
+  disposeMap: (() => void) | null;
   fitMapToMarkersIfNeeded: () => boolean;
   ensureFitBoundsMinimumZoom: () => void;
   refreshMarkers: () => void;
@@ -154,9 +156,9 @@ describe('LeafletMapComponent', () => {
 
   it('keeps the pane alive until zoomend dispatch finishes when destroyed during a zoom', async () => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: LeafletTestMap & { once: Mock } = {
+    const map: LeafletTestMap & { on: Mock; getPane: Mock } = {
       fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(),
-      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), once: vi.fn(),
+      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), on: vi.fn(), getPane: vi.fn(),
     };
     const container: HTMLDivElement = document.createElement('div');
     const pane: HTMLDivElement = document.createElement('div');
@@ -164,14 +166,15 @@ describe('LeafletMapComponent', () => {
     container.append(pane);
     component.mapContainer = new ElementRef(container);
     internals.map = map;
+    map.getPane.mockReturnValue(pane);
+    internals.disposeMap = createLeafletMapDisposer(map as unknown as LeafletMap);
 
     component.ngOnDestroy();
     component.ngOnDestroy();
 
     expect(internals.map).toBeNull();
     expect(map.remove).not.toHaveBeenCalled();
-    expect(map.once).toHaveBeenCalledExactlyOnceWith('zoomend', expect.any(Function));
-    const completeZoom: () => void = map.once.mock.calls[0][1] as () => void;
+    const completeZoom: () => void = map.on.mock.calls.find((call) => call[0] === 'zoomend')?.[1] as () => void;
     completeZoom();
     expect(map.remove).not.toHaveBeenCalled();
     await Promise.resolve();
@@ -183,16 +186,17 @@ describe('LeafletMapComponent', () => {
   it.each(['before the animation class appears', 'during zoomend dispatch'])('defers destruction %s using the public zoom lifecycle', async (phase: string) => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
     const handlers: Map<string, () => void> = new Map<string, () => void>();
-    const map: LeafletTestMap & { once: Mock; on: Mock } = {
+    const map: LeafletTestMap & { getPane: Mock; on: Mock } = {
       fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(),
-      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), once: vi.fn(),
+      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), getPane: vi.fn(),
       on: vi.fn().mockImplementation((event: string, handler: () => void): void => {
         handlers.set(event, handler);
       }),
     };
     component.mapContainer = new ElementRef(document.createElement('div'));
     internals.map = map;
-    internals.bindMapZoomLifecycle(map);
+    const dispose: () => void = createLeafletMapDisposer(map as unknown as LeafletMap);
+    internals.disposeMap = dispose;
     handlers.get('zoomstart')?.();
     if (phase === 'during zoomend dispatch') {
       handlers.get('zoomend')?.();
@@ -206,8 +210,7 @@ describe('LeafletMapComponent', () => {
     }
     await Promise.resolve();
     expect(map.remove).toHaveBeenCalledTimes(1);
-    const onceHandler: () => void = map.once.mock.calls[0][1] as () => void;
-    onceHandler();
+    dispose();
     await Promise.resolve();
     expect(map.remove).toHaveBeenCalledTimes(1);
     expect(map.setView).not.toHaveBeenCalled();

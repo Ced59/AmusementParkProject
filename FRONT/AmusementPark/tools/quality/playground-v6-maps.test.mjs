@@ -6,11 +6,12 @@ import test from 'node:test';
 test('the authorized Leaflet teardown waits for the native zoom event without changing live interactions', () => {
   const component = readFileSync(resolve(import.meta.dirname, '../../src/app/shared/components/leaflet-map/leaflet-map.component.ts'), 'utf8');
   const teardown = component.slice(component.indexOf('  ngOnDestroy(): void {'), component.indexOf('  public refreshMapSize('));
-  assert.ok(teardown.includes("querySelector('.leaflet-zoom-anim')"));
-  assert.ok(teardown.includes("map.once('zoomend'"));
-  assert.ok(teardown.includes('queueMicrotask('));
+  const disposer = readFileSync(resolve(import.meta.dirname, '../../src/app/shared/utils/maps/leaflet-map-disposer.ts'), 'utf8');
+  assert.ok(teardown.includes('this.disposeMap();'));
+  assert.ok(disposer.includes("map.on('zoomend'"));
+  assert.ok(disposer.includes('queueMicrotask('));
   assert.doesNotMatch(teardown, /setTimeout|_onZoomTransitionEnd|_animatingZoom|animate:\s*false/);
-  assert.ok(teardown.indexOf('this.map = null;') < teardown.indexOf("map.once('zoomend'"));
+  assert.ok(teardown.indexOf('this.map = null;') < teardown.indexOf('this.disposeMap();'));
 });
 
 const projectRoot = resolve(import.meta.dirname, '../..');

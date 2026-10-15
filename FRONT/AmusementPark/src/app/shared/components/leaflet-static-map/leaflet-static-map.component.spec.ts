@@ -7,11 +7,15 @@ import {
   provideCommonTestDependencies,
 } from '@app/testing/common-test-providers';
 import { LeafletStaticMapComponent } from './leaflet-static-map.component';
+import type { Map as LeafletMap } from 'leaflet';
+import { createLeafletMapDisposer } from '@shared/utils/maps/leaflet-map-disposer';
 
 type LeafletStaticMapComponentInternals = {
   addMarker: (marker: MapMarker) => void;
   focusSelectedMarker: () => boolean;
   renderMarkers: () => void;
+  initMap: () => void;
+  disposeMap: (() => void) | null;
   L: {
     marker: Mock;
     divIcon: Mock;
@@ -105,6 +109,36 @@ describe('LeafletStaticMapComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it.each([false, true])('uses the shared disposer for static map destruction (zoom active: %s)', async (zoomActive: boolean) => {
+    const internals: LeafletStaticMapComponentInternals = component as unknown as LeafletStaticMapComponentInternals;
+    const handlers: Map<string, () => void> = new Map<string, () => void>();
+    const map = { getZoom: vi.fn(), invalidateSize: vi.fn(), remove: vi.fn(), setView: vi.fn(),
+      getPane: vi.fn(), on: vi.fn((event: string, handler: () => void): void => { handlers.set(event, handler); }) };
+    internals.map = map;
+    internals.disposeMap = createLeafletMapDisposer(map as unknown as LeafletMap);
+    if (zoomActive) {
+      handlers.get('zoomstart')?.();
+    }
+    component.ngOnDestroy();
+    component.ngOnDestroy();
+    expect(internals.map).toBeNull();
+    expect(map.remove).toHaveBeenCalledTimes(zoomActive ? 0 : 1);
+    if (zoomActive) {
+      handlers.get('zoomend')?.();
+      await Promise.resolve();
+    }
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    expect(map.setView).not.toHaveBeenCalled();
+  });
+
+  it('does not initialize a static map after destruction during its async import', async () => {
+    const initialize = vi.spyOn(component as unknown as LeafletStaticMapComponentInternals, 'initMap');
+    const pendingInitialization: Promise<void> = component.ngAfterViewInit();
+    component.ngOnDestroy();
+    await pendingInitialization;
+    expect(initialize).not.toHaveBeenCalled();
   });
 
   it('binds and opens a directions popup when the marker is clicked', () => {
