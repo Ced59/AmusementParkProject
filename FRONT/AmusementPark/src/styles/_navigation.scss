@@ -668,37 +668,31 @@ button.app-mobile-bottom-nav__item {
   z-index: 45;
   display: none;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.35rem;
   padding: 0.45rem 0.75rem;
-  overflow-x: auto;
   border-bottom: 1px solid var(--app-border);
   background: var(--app-topbar-bg);
-  scrollbar-width: none;
-}
-
-.app-public-park-trail::-webkit-scrollbar {
-  display: none;
 }
 
 .app-public-park-trail__item {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  flex: 0 0 auto;
-  max-width: 12rem;
-  padding: 0.34rem 0.55rem;
-  border: 1px solid var(--app-border);
-  border-radius: var(--radius-xs);
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 0.35rem 0;
   color: var(--app-text-muted);
-  background: var(--app-surface-2);
   font-size: 0.74rem;
   font-weight: 900;
 }
 
 .app-public-park-trail__item--current {
-  color: var(--app-navigation-active-text);
-  border-color: color-mix(in srgb, var(--c-orange) 30%, var(--app-border));
-  background: color-mix(in srgb, var(--c-orange) 10%, var(--app-surface));
+  color: var(--app-heading);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .app-public-park-trail__icon {
@@ -710,9 +704,9 @@ button.app-mobile-bottom-nav__item {
 }
 
 .app-public-park-trail__label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .app-public-park-trail__separator {

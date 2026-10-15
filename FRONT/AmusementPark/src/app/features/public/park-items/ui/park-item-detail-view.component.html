@@ -7,65 +7,13 @@
     errorMessageKey: 'parkItems.detail.errorMessage'
   }">
   <section class="park-item-detail public-page" *ngIf="detail() as currentDetail" [attr.data-item-tone]="currentDetail.typeTone">
-    <section class="item-detail-hero">
-      <div class="item-detail-hero__bg"></div>
-      <div class="item-detail-hero__accent" aria-hidden="true">
-        <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" fill="none">
-          <path d="M18 236 C76 86, 176 74, 244 116 S320 226, 402 84" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <circle cx="90" cy="214" r="18" fill="currentColor"/>
-          <circle cx="252" cy="132" r="18" fill="currentColor"/>
-          <circle cx="374" cy="102" r="18" fill="currentColor"/>
-        </svg>
-      </div>
-
-      <div class="item-detail-hero__photo" *ngIf="currentDetail.heroPhoto">
-        <app-image-display
-          [imageId]="currentDetail.heroPhoto.imageId"
-          [alt]="currentDetail.heroPhoto.alt"
-          loading="eager"
-          fetchPriority="high"
-          [sizes]="heroImageSizes"
-          [srcWidth]="heroImageSrcWidth"
-          [responsiveWidths]="heroImageResponsiveWidths"
-          imgClass="item-detail-hero__photo-img"
-          placeholderClass="item-detail-hero__photo-placeholder"
-          placeholderKind="photo">
-        </app-image-display>
-      </div>
-
-      <nav class="item-detail-hero__siblings" *ngIf="currentDetail.siblingNavigation as siblingNavigation" [attr.aria-label]="'parkItems.detail.siblingNavigation' | translate">
-        <a
-          *ngIf="siblingNavigation.previous as previousItem"
-          class="item-detail-hero__sibling item-detail-hero__sibling--previous"
-          [routerLink]="previousItem.routerLink"
-          [attr.aria-label]="'parkItems.detail.previousItemAria' | translate:{ name: previousItem.name }">
-          <span class="item-detail-hero__sibling-icon">
-            <i class="pi pi-chevron-left" aria-hidden="true"></i>
-          </span>
-          <span class="item-detail-hero__sibling-label">{{ 'parkItems.detail.previousItem' | translate }}</span>
-          <strong>{{ previousItem.name }}</strong>
-        </a>
-
-        <a
-          *ngIf="siblingNavigation.next as nextItem"
-          class="item-detail-hero__sibling item-detail-hero__sibling--next"
-          [routerLink]="nextItem.routerLink"
-          [attr.aria-label]="'parkItems.detail.nextItemAria' | translate:{ name: nextItem.name }">
-          <span class="item-detail-hero__sibling-icon">
-            <i class="pi pi-chevron-right" aria-hidden="true"></i>
-          </span>
-          <span class="item-detail-hero__sibling-label">{{ 'parkItems.detail.nextItem' | translate }}</span>
-          <strong>{{ nextItem.name }}</strong>
-        </a>
-      </nav>
+    <section class="item-detail-hero" [class.item-detail-hero--has-photo]="!!currentDetail.heroPhoto">
 
       <div class="item-detail-hero__content">
         <div class="item-detail-hero__type">
-          <div class="item-detail-icon">
-            <i [class]="currentDetail.typeIconClass" aria-hidden="true"></i>
-          </div>
-
           <div class="item-detail-hero__main">
+            <h1 class="item-detail-hero__name">{{ currentDetail.name }}</h1>
+
             <div class="item-detail-hero__tags">
               <a
                 *ngIf="currentDetail.categoryNavigation as categoryNavigation; else plainCategoryChip"
@@ -108,8 +56,6 @@
               <app-ui-chip tone="soft" *ngIf="currentDetail.zoneName && !currentDetail.zoneNavigation">{{ currentDetail.zoneName }}</app-ui-chip>
             </div>
 
-            <h1 class="item-detail-hero__name">{{ currentDetail.name }}</h1>
-
             <p class="item-detail-hero__lead" *ngIf="currentDetail.parkName">
               <i class="pi pi-map-marker" aria-hidden="true"></i>
               <a *ngIf="currentDetail.parkLink" class="public-inline-link" [routerLink]="currentDetail.parkLink">
@@ -130,6 +76,21 @@
                 </ng-template>
               </ng-container>
             </p>
+
+            <div class="item-detail-hero__photo" *ngIf="currentDetail.heroPhoto">
+              <app-image-display
+                [imageId]="currentDetail.heroPhoto.imageId"
+                [alt]="currentDetail.heroPhoto.alt"
+                loading="eager"
+                fetchPriority="high"
+                [sizes]="heroImageSizes"
+                [srcWidth]="heroImageSrcWidth"
+                [responsiveWidths]="heroImageResponsiveWidths"
+                imgClass="item-detail-hero__photo-img"
+                placeholderClass="item-detail-hero__photo-placeholder"
+                placeholderKind="photo">
+              </app-image-display>
+            </div>
 
             <app-rating-stars
               *ngIf="currentDetail.id && currentDetail.rating"
@@ -183,6 +144,32 @@
           </a>
         </div>
       </div>
+
+      <nav class="item-detail-hero__siblings" *ngIf="currentDetail.siblingNavigation as siblingNavigation" [attr.aria-label]="'parkItems.detail.siblingNavigation' | translate">
+        <a
+          *ngIf="siblingNavigation.previous as previousItem"
+          class="item-detail-hero__sibling item-detail-hero__sibling--previous"
+          [routerLink]="previousItem.routerLink"
+          [attr.aria-label]="'parkItems.detail.previousItemAria' | translate:{ name: previousItem.name }">
+          <span class="item-detail-hero__sibling-icon">
+            <i class="pi pi-chevron-left" aria-hidden="true"></i>
+          </span>
+          <span class="item-detail-hero__sibling-label">{{ 'parkItems.detail.previousItem' | translate }}</span>
+          <strong>{{ previousItem.name }}</strong>
+        </a>
+
+        <a
+          *ngIf="siblingNavigation.next as nextItem"
+          class="item-detail-hero__sibling item-detail-hero__sibling--next"
+          [routerLink]="nextItem.routerLink"
+          [attr.aria-label]="'parkItems.detail.nextItemAria' | translate:{ name: nextItem.name }">
+          <span class="item-detail-hero__sibling-icon">
+            <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          </span>
+          <span class="item-detail-hero__sibling-label">{{ 'parkItems.detail.nextItem' | translate }}</span>
+          <strong>{{ nextItem.name }}</strong>
+        </a>
+      </nav>
     </section>
 
     <app-park-lifecycle-notice [status]="currentDetail.parkStatus" [parkName]="currentDetail.parkName"></app-park-lifecycle-notice>

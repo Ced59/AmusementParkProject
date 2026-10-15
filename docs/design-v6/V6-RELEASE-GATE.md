@@ -33,16 +33,16 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `a75861a30` ; `618c85228` FAIL au retour de fiche, adaptateur statique Leaflet désormais identifié et correction partagée à valider |
+| P21 CI Node 24 | Dernier PASS complet `a75861a30` ; `483818796` : 2 718 tests passent, captures initiales réussies, FAIL sur le retour inventaire → parc ; diagnostic d'historique en cours |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | NON pour `618c85228` : échec du parcours hydraté étendu ; nouveaux correctifs à valider, dernier PASS complet `a75861a30` |
+| CI intégralement verte | NON pour `483818796` : attente du retour navigateur non satisfaite ; aucune exception Leaflet dans le rapport de cette exécution, dernier PASS complet `a75861a30` |
 | Revue visuelle propriétaire | NON DEMANDÉE |
-| En-têtes ParkItem et standalone | À CORRIGER — revue Rhaegal : photographie estompée en fond héritée, non conforme à la référence V6 ; aucune validation graphique globale |
+| En-têtes ParkItem et standalone | ParkItem : correction photographique préparée, nouvelles captures CI requises ; standalone encore à corriger ; aucune validation graphique globale |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
 | Réseau initial des nouveaux médias hero | PASS CIBLÉ `a75861a30` — rapport inspecté à 390/1366 px : 105 → 105 requêtes, −13 086 o décodés ; répétitions et performances terrain encore ouvertes |
-| Navigation rapide pendant un zoom Leaflet | RÉOUVERT `4c64f7c62` — la recette étendue révèle une autre transition de destruction ; complément de cycle de vie et trois cas Angular à valider, aucune exception ignorée |
+| Navigation rapide pendant un zoom Leaflet | PASS CIBLÉ `483818796` — les deux adaptateurs corrigés, 2 718 tests passent et retour fiche → inventaire sans exception ; reste du parcours interrompu par une attente d'historique distincte |
 | Instruction du propriétaire sur la fusion | Poursuite jusqu'au merge explicitement demandée le 15 octobre ; exécution conditionnée à la recette et aux checks, aucun défaut connu accepté silencieusement |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
 

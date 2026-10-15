@@ -56,6 +56,8 @@ Les six alias `--type-*` rejoignent également le bloc `body` existant de `_toke
 
 ## Géométrie et densité
 
+Le header ParkItem utilise un cadre photo 16/10 distinct, une grille desktop 1,55 / 0,85 avec 22 px de séparation, puis une seule colonne à 960 px. Titres 34–57 px, 30–41 px au mobile. Les contrôles réels restent en flux, comme les liens précédent/suivant ; aucun texte n'est posé sur une photographie estompée. Le gabarit image est partagé entre vue et preload. Les valeurs de `sizes` décrivent le slot de viewport et non les données du lieu ; un éventuel gutter natif de navigateur peut réduire le rendu sans modifier le contrat d'image. Le trail mobile se replie sur plusieurs lignes au lieu de tronquer le nom courant.
+
 - Largeur éditoriale courante : `1160px`.
 - Largeur dense/admin : l’alias large existant reste disponible jusqu’à `1480px`.
 - Rayons : 2–8 px en règle générale ; 12–16 px uniquement pour des surfaces explicitement adoucies ; pilule réservée aux petits contrôles et statuts.

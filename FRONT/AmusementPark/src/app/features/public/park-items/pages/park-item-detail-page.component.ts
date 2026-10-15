@@ -8,6 +8,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { buildPublicParkItemRouteCommands, buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkItemDetailStateFacade } from '../state/park-item-detail-state.facade';
 import { ParkItemDetailViewComponent } from '../ui/park-item-detail-view.component';
+import { PARK_ITEM_DETAIL_HERO_IMAGE_SIZES } from '../models/park-item-detail-image-layout';
 import { SeoService } from '@core/seo/seo.service';
 import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.service';
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events';
@@ -30,7 +31,7 @@ import { PublicLiveForecastFacade } from '@features/public/live/state/public-liv
 })
 export class ParkItemDetailPageComponent implements OnInit {
   protected readonly heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
-  protected readonly heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
+  protected readonly heroImageSizes: string = PARK_ITEM_DETAIL_HERO_IMAGE_SIZES;
   protected readonly heroImageSrcWidth: number = 960;
   protected readonly state = this.stateFacade.state;
   protected readonly detail = this.stateFacade.detail;

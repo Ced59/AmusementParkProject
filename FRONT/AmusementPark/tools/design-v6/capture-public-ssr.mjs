@@ -312,6 +312,9 @@ async function captureHydratedHome(rawHtml, options = {}) {
     result.failedCheck = label;
     try {
       result.failedBrowserState = await evaluate(`({ path: location.pathname + location.search, viewport: innerWidth,
+        history: { index: navigation.currentEntry.index, key: navigation.currentEntry.key,
+          entries: navigation.entries().map(entry => ({ index: entry.index, key: entry.key,
+            url: new URL(entry.url).pathname + new URL(entry.url).search })) },
         heading: document.querySelector('h1')?.textContent?.trim(),
         directoryNames: [...document.querySelectorAll('.parks-results .ui-park-card__title')].map(title => title.textContent.trim()),
         directoryPage: document.querySelector('.parks-results .p-paginator-page.p-highlight')?.textContent.trim(),
@@ -493,6 +496,8 @@ async function captureHydratedHome(rawHtml, options = {}) {
     await waitUntil(`document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded') === 'true' && !!document.querySelector('.app-public-park-tree a.app-public-park-tree__item--current[href$="/le-fleury/items"]')`, 'real inventory tree exposes its current list');
     await evaluate(`document.querySelector('.app-public-nav__tree-trigger').click()`);
     await waitUntil(`!document.querySelector('.app-public-park-tree')`, 'inventory tree closes without navigating');
+    result.itemHistory.beforeLeaving = await evaluate(`({ url: location.pathname + location.search,
+      index: navigation.currentEntry.index, key: navigation.currentEntry.key })`);
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'browser back from inventory restores the full park');
     await evaluate(`history.back()`);
@@ -699,6 +704,8 @@ try {
             const bodyStyle = getComputedStyle(document.body);
             const outline = document.querySelector('.home-hero__title-line--outline');
             const outlineStyle = outline ? getComputedStyle(outline) : null;
+            const itemHero = document.querySelector('.item-detail-hero');
+            const itemPhoto = itemHero?.querySelector('.item-detail-hero__photo');
             const navInner = document.querySelector('.app-public-nav__inner');
             const navLinks = document.querySelector('.app-public-nav__links');
             const navActions = document.querySelector('.app-public-nav__right');
@@ -735,6 +742,11 @@ try {
               homeLogoSurface: document.querySelector('.home-hero-card--1 .home-hero-card__media') ? getComputedStyle(document.querySelector('.home-hero-card--1 .home-hero-card__media')).backgroundColor : null,
               homeOutline: outlineStyle ? { color: outlineStyle.color, stroke: outlineStyle.webkitTextStrokeColor, strokeWidth: outlineStyle.webkitTextStrokeWidth } : null,
               navigationLayout: navInner ? { inner: rect(navInner), links: rect(navLinks), actions: rect(navActions), brand: rect(navBrand) } : null,
+              itemHeroLayout: itemHero ? { hero: rect(itemHero), title: rect(itemHero.querySelector('h1')),
+                photo: rect(itemPhoto), rating: rect(itemHero.querySelector('.item-detail-hero__rating')),
+                photoOpacity: itemPhoto ? getComputedStyle(itemPhoto).opacity : null,
+                photoPosition: itemPhoto ? getComputedStyle(itemPhoto).position : null,
+                imageSizes: itemPhoto?.querySelector('img')?.getAttribute('sizes') ?? null } : null,
               homeSearchLayout: document.querySelector('.home-command-center') ? {
                 query: rect(document.querySelector('.home-command-center .app-search-panel__search-field')),
                 category: rect(document.querySelector('.home-command-center .app-search-panel__select-field')),
@@ -805,7 +817,12 @@ try {
         ? Math.abs(query.y - category.y) > 1 || Math.abs(category.y - submit.y) > 1
         : category.y < query.bottom - 1 || Math.abs(category.y - submit.y) > 1;
     })) throw new Error(`Home search controls differ from the V6 desktop/mobile composition: ${path}`);
-    if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)))) {
+    if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)
+      || (capture.itemHeroLayout?.photo && (capture.itemHeroLayout.photoOpacity !== '1' || capture.itemHeroLayout.photoPosition !== 'relative'
+        || !Number.isFinite(capture.itemHeroLayout.title?.bottom) || capture.itemHeroLayout.photo.width < 112 || capture.itemHeroLayout.photo.height < 100
+        || capture.itemHeroLayout.title.bottom > capture.itemHeroLayout.photo.y + 1
+        || capture.itemHeroLayout.photo.x < capture.itemHeroLayout.hero.x - 1 || capture.itemHeroLayout.photo.right > capture.itemHeroLayout.hero.right + 1
+        || (capture.viewport > 960 && capture.itemHeroLayout.rating && capture.itemHeroLayout.rating.x < capture.itemHeroLayout.photo.right - 1)))))) {
       throw new Error(`Initial SSR presentation requires correction: ${path}; see report.json.`);
     }
   }

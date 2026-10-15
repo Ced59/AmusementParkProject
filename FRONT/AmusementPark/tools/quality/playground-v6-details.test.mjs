@@ -22,6 +22,40 @@ const zoneTemplate = read('src/app/features/public/parks/ui/park-zone-view.compo
 const zoneStyles = read('src/app/features/public/parks/ui/park-zone-view.component.scss');
 const zonesSectionStyles = read('src/app/features/public/parks/ui/park-zones-section.component.scss');
 const imageLayout = read('src/app/features/public/parks/models/park-detail-image-layout.ts');
+const itemImageLayout = read('src/app/features/public/park-items/models/park-item-detail-image-layout.ts');
+
+test('the item header uses a distinct photo, full-flow siblings and a readable editorial identity', () => {
+  assert.ok(itemTemplate.includes('[class.item-detail-hero--has-photo]="!!currentDetail.heroPhoto"'));
+  assert.doesNotMatch(itemTemplate, /item-detail-hero__bg|item-detail-hero__accent/);
+  assert.match(itemStyles, /grid-template-columns:\s*minmax\(0, 1\.55fr\) minmax\(0, 0\.85fr\)/);
+  assert.match(itemStyles, /\.item-detail-hero__photo\s*\{[^}]*position:\s*relative;[^}]*aspect-ratio:\s*16 \/ 10/);
+  assert.doesNotMatch(itemStyles, /opacity:\s*0\.(?:24|12|2);/);
+  assert.match(itemStyles, /\.item-detail-hero__siblings\s*\{[^}]*display:\s*grid/);
+  assert.match(itemStyles, /\.item-detail-hero__sibling strong\s*\{[^}]*overflow-wrap:\s*anywhere/);
+  assert.doesNotMatch(itemStyles, /-webkit-line-clamp/);
+  assert.ok(itemTemplate.indexOf('item-detail-hero__name') < itemTemplate.indexOf('item-detail-hero__tags'));
+  assert.ok(itemTemplate.includes('loading="eager"') && itemTemplate.includes('fetchPriority="high"'));
+});
+
+test('item photo sizes and its existing preload follow the same V6 envelope at all QA widths', () => {
+  const sizes = itemImageLayout.match(/PARK_ITEM_DETAIL_HERO_IMAGE_SIZES: string = '([^']+)'/)[1];
+  for (const width of [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920]) {
+    let advertised;
+    for (const clause of sizes.split(',')) {
+      const condition = clause.trim().match(/^\(max-width: (\d+)px\) (.+)$/);
+      if (condition && width > Number(condition[1])) continue;
+      const value = (condition ? condition[2] : clause.trim()).replace(/^calc\(|\)$/g, '');
+      advertised = value.split(' - ').map(part => part.endsWith('vw') ? Number.parseFloat(part) * width / 100 : Number.parseFloat(part)).reduce((total, part) => total - part);
+      break;
+    }
+    const shell = Math.min(1160, width - (width <= 480 ? 28 : width <= 680 ? 30 : 48));
+    const expected = (width <= 960 ? shell : (shell - 22) * 1.55 / 2.4) - 2;
+    assert.ok(Math.abs(advertised - expected) < 1, `item hero at ${width}px`);
+  }
+  for (const path of ['pages/park-item-detail-page.component.ts', 'ui/park-item-detail-view.component.ts']) {
+    assert.ok(read(`src/app/features/public/park-items/${path}`).includes('heroImageSizes: string = PARK_ITEM_DETAIL_HERO_IMAGE_SIZES'));
+  }
+});
 
 test('item evidence records only visible names and server pagination for the exact public parent endpoint', () => {
   const url = '/api/park-items/park/00000000-0000-0000-0000-000000000001?page=2&size=12';

@@ -31,6 +31,15 @@ const protectedWordmarkParts = [
   '>fun<',
 ];
 
+test('the mobile park trail keeps complete localized labels and wraps its 44px links instead of clipping them', () => {
+  assert.match(navigationStyles, /\.app-public-park-trail\s*\{[^}]*flex-wrap:\s*wrap/);
+  assert.match(navigationStyles, /\.app-public-park-trail__item\s*\{[^}]*min-width:\s*0;[^}]*max-width:\s*100%;[^}]*min-height:\s*44px/);
+  const labelRule = navigationStyles.match(/\.app-public-park-trail__label\s*\{[^}]*\}/)[0];
+  assert.match(labelRule, /white-space:\s*normal/);
+  assert.match(labelRule, /overflow-wrap:\s*anywhere/);
+  assert.doesNotMatch(labelRule, /ellipsis|overflow:\s*hidden/);
+});
+
 test('the protected wordmark keeps its original ink independently from the V6 heading palette', () => {
   assert.match(wordmarkStyles, /\.app-brand-wordmark\s*\{[^}]*--brand-wordmark-base-ink:\s*#ffffff/);
   assert.match(wordmarkStyles, /body\.light-mode \.app-brand-wordmark\s*\{[^}]*--brand-wordmark-base-ink:\s*#160a00/);

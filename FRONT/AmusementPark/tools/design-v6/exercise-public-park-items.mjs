@@ -1,7 +1,12 @@
 // Read-only browser recipe; all actions go through real Angular controls and
 // browser history. The application never imports this tool.
 export async function exercisePublicParkItems({ evaluate, waitUntil, result }) {
-  const original = await evaluate(`({ url: location.pathname + location.search, index: navigation.currentEntry.index })`);
+  const historySnapshot = () => evaluate(`({ url: location.pathname + location.search,
+    index: navigation.currentEntry.index, key: navigation.currentEntry.key,
+    entries: navigation.entries().map(entry => ({ index: entry.index, key: entry.key,
+      url: new URL(entry.url).pathname + new URL(entry.url).search })) })`);
+  const original = await historySnapshot();
+  result.itemHistory = { original };
   const originalQuery = new URL(original.url, 'https://apf-review.invalid').searchParams;
   const verify = async (cursor, expected, label) => {
     let read;
@@ -73,4 +78,6 @@ export async function exercisePublicParkItems({ evaluate, waitUntil, result }) {
   await evaluate(`history.go(${restoreDelta})`);
   await verify(cursor, { page: String(originalQuery.get('page') ?? 1), size: String(originalQuery.get('size') ?? 12), search: originalQuery.get('search'), closedFilter: originalQuery.get('closed') }, 'item inventory original history entry restored');
   await waitUntil(`location.pathname + location.search === ${JSON.stringify(original.url)} && navigation.currentEntry.index === ${original.index}`, 'item recipe preserves the original park navigation history');
+  result.itemHistory.restored = await historySnapshot();
+  if (result.itemHistory.restored.key !== original.key) throw new Error('Item history restored a different browser entry with the same URL and index.');
 }

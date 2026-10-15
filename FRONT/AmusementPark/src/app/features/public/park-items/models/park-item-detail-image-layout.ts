@@ -1,0 +1,1 @@
+export const PARK_ITEM_DETAIL_HERO_IMAGE_SIZES: string = '(max-width: 480px) calc(100vw - 30px), (max-width: 680px) calc(100vw - 32px), (max-width: 960px) calc(100vw - 50px), (max-width: 1208px) calc(64.583333vw - 47.208333px), 733px';
