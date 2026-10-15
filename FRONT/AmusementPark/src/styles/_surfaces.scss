@@ -92,12 +92,25 @@
   max-width: 100%;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3.6rem);
-  line-height: 1.08;
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
+  font-size: clamp(27px, 3.2vw, 39px);
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
   overflow-wrap: anywhere;
   word-break: normal;
+}
+
+h1.public-section-header__title {
+  font-size: clamp(34px, 4.4vw, 57px);
+  line-height: 1.14;
+}
+
+@media (max-width: 680px) {
+  h1.public-section-header__title {
+    font-size: clamp(30px, 8.5vw, 41px);
+    line-height: 1.2;
+  }
 }
 
 .app-section-header__subtitle,

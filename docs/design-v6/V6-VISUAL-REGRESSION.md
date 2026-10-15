@@ -138,3 +138,11 @@ La capture Hasenhorn 390 px du run `483818796` confirme l'ancien fond photograph
 
 Toutes les expressions de données, clés traduites, sources, permissions et appels réseau sont conservés. Aucun champ chiffré, avertissement de démonstration ou lien de faux routeur n'est copié ; Pendolino et ses médias masqués ne sont pas publiés. Les `sizes` décrivent seulement le cadre réel. Deux tests supplémentaires protègent composition et treize largeurs ; **159 tests ciblés** passent avec les contrôles existants de contraste/thème, et ce SCSS compile seul (4 268 caractères). Les captures Angular après correction sont encore requises : ce paragraphe ne constitue pas leur approbation.
 
+## Complément P12 — enveloppes médias et filtres lisibles
+
+Les captures Rhaegal sombre et Hasenhorn clair à 390 px du [run `a6bbfb21d`](https://github.com/Ced59/AmusementParkProject/actions/runs/38818065272) sont maintenant inspectées : photographie distincte, titre lisible, actions repliées et fil mobile visible. Les gardes de géométrie passent aux treize largeurs et deux thèmes pour ces familles. Cela ne solde ni les autres états/permissions ni la revue comparative exhaustive ; les cadres de sous-pages médias ci-dessous restent à contrôler sur leur nouveau build.
+
+La capture de galerie Fleury à 390 px du run `483818796` présente encore un en-tête encadré/arrondi et des libellés d'année comprimés. Deux mixins dans `_mixins.scss`, réutilisés directement par galeries parc/item, liste vidéo et page carte, suppriment les marges intérieures doublées et définissent un en-tête transparent à filets, sans nouvelle couche CSS. Les titres de section de `_surfaces.scss` retrouvent la casse réelle, l'espacement nul et l'échelle V6 ; les H1 publics sont distingués des H2, sans agrandir les titres admin.
+
+Les filtres années/tags gardent leur scroll local, leurs comptes et leurs actions, avec cellules d'au moins 11 rem, texte repliable et cibles de 44 px ; aucun masquage global d'overflow n'est réintroduit. La recette SSR relève les alignements du shell, les surfaces et largeurs utiles des labels. **164 contrôles ciblés passent** ; les six feuilles concernées compilent seules. La nouvelle campagne CI doit encore confirmer ces géométries et fournir les captures après correction. Aucun template ou appel de média/carte n'est modifié par cet incrément.
+

@@ -1,5 +1,13 @@
 // Read-only browser recipe; all actions go through real Angular controls and
 // browser history. The application never imports this tool.
+export function historyRestoreDelta(snapshot, key) {
+  const entry = snapshot.entries.find(candidate => candidate.key === key);
+  if (!entry) throw new Error('The original item history entry was discarded; an equal URL or index is not its replacement.');
+  const delta = entry.index - snapshot.index;
+  if (!Number.isInteger(delta) || delta >= 0) throw new Error('The item recipe cannot restore its exact original history entry.');
+  return delta;
+}
+
 export async function exercisePublicParkItems({ evaluate, waitUntil, result }) {
   const historySnapshot = () => evaluate(`({ url: location.pathname + location.search,
     index: navigation.currentEntry.index, key: navigation.currentEntry.key,
@@ -72,12 +80,12 @@ export async function exercisePublicParkItems({ evaluate, waitUntil, result }) {
   cursor = result.apiReads.length;
   await evaluate('history.back()');
   await verify(cursor, { page: '1', size: '12', closedFilter: 'all', search: 'Rhaegal' }, 'item detail back restores filtered inventory');
-  const restoreDelta = await evaluate(`${original.index} - navigation.currentEntry.index`);
-  if (!Number.isInteger(restoreDelta) || restoreDelta >= 0) throw new Error('The item recipe cannot restore its exact original history entry.');
+  result.itemHistory.beforeRestore = await historySnapshot();
+  const restoreDelta = historyRestoreDelta(result.itemHistory.beforeRestore, original.key);
   cursor = result.apiReads.length;
   await evaluate(`history.go(${restoreDelta})`);
   await verify(cursor, { page: String(originalQuery.get('page') ?? 1), size: String(originalQuery.get('size') ?? 12), search: originalQuery.get('search'), closedFilter: originalQuery.get('closed') }, 'item inventory original history entry restored');
-  await waitUntil(`location.pathname + location.search === ${JSON.stringify(original.url)} && navigation.currentEntry.index === ${original.index}`, 'item recipe preserves the original park navigation history');
+  await waitUntil(`location.pathname + location.search === ${JSON.stringify(original.url)} && navigation.currentEntry.key === ${JSON.stringify(original.key)}`, 'item recipe preserves the original park navigation history');
   result.itemHistory.restored = await historySnapshot();
   if (result.itemHistory.restored.key !== original.key) throw new Error('Item history restored a different browser entry with the same URL and index.');
 }

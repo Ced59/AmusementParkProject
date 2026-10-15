@@ -366,6 +366,17 @@ async function captureHydratedHome(rawHtml, options = {}) {
     await cdp.send('Emulation.setDeviceMetricsOverride', { width: options.width ?? 390, height: 1200, deviceScaleFactor: 1, mobile: false });
     await cdp.send('Page.navigate', { url: `${origin}/fr/home` });
     await waitUntil(`location.origin === '${origin}' && document.readyState === 'complete' && document.querySelector('app-root') && !document.querySelector('app-root').hasAttribute('ngh') && !!document.querySelector('#home-search-input')`, 'Angular root hydrated');
+    if (!options.networkProbe) {
+      // Forty independent static route captures precede this scenario in the
+      // same CI tab. Start its browser history at the real hydrated home, so
+      // those unrelated file navigations cannot evict its back/forward chain.
+      const beforeHistory = await cdp.send('Page.getNavigationHistory');
+      await cdp.send('Page.resetNavigationHistory');
+      const afterHistory = await cdp.send('Page.getNavigationHistory');
+      result.historySetup = { previousEntryCount: beforeHistory.entries.length,
+        entryCount: afterHistory.entries.length, currentIndex: afterHistory.currentIndex };
+      if (afterHistory.entries.length !== 1 || afterHistory.currentIndex !== 0) throw new Error('The isolated browser history did not reset before its interaction scenario.');
+    }
     if (options.networkProbe) {
       // Identical observation window for both real builds. Not a delay added to
       // an interaction recipe: the rapid catalogue teardown remains unchanged.
@@ -708,6 +719,8 @@ try {
             const itemPhoto = itemHero?.querySelector('.item-detail-hero__photo');
             const standaloneHero = document.querySelector('.standalone-hero');
             const standalonePhoto = document.querySelector('.standalone-main__media');
+            const mediaPage = document.querySelector('.park-images-page, .park-item-images-page, .public-video-list, .park-map-page');
+            const mediaHeader = mediaPage?.querySelector('.park-subpage-hero, .public-video-list__hero');
             const navInner = document.querySelector('.app-public-nav__inner');
             const navLinks = document.querySelector('.app-public-nav__links');
             const navActions = document.querySelector('.app-public-nav__right');
@@ -756,6 +769,12 @@ try {
                 photoOpacity: standalonePhoto ? getComputedStyle(standalonePhoto).opacity : null,
                 photoPosition: standalonePhoto ? getComputedStyle(standalonePhoto).position : null,
                 image: rect(standalonePhoto?.querySelector('img')) } : null,
+              publicMediaLayout: mediaPage && mediaHeader ? { page: rect(mediaPage),
+                shell: rect(document.querySelector('.app-public-layout__main')), header: rect(mediaHeader),
+                headerRadius: getComputedStyle(mediaHeader).borderRadius,
+                headerBackground: getComputedStyle(mediaHeader).backgroundColor,
+                titleTransform: getComputedStyle(mediaHeader.querySelector('h1')).textTransform,
+                yearLabelWidths: [...document.querySelectorAll('.photo-carousel-years .photo-carousel-axis span')].map(label => label.getBoundingClientRect().width) } : null,
               homeSearchLayout: document.querySelector('.home-command-center') ? {
                 query: rect(document.querySelector('.home-command-center .app-search-panel__search-field')),
                 category: rect(document.querySelector('.home-command-center .app-search-panel__select-field')),
@@ -837,6 +856,13 @@ try {
         || !layout.image || Math.abs(layout.image.width - layout.photo.width + 2) > 1
         || (capture.viewport >= 960 && (!layout.sidebar || layout.sidebar.x < layout.photo.right - 1));
     })) throw new Error(`Standalone photograph must remain separate from its identity and technical sidebar: ${path}`);
+    if (route.captures.some(capture => {
+      const layout = capture.publicMediaLayout;
+      if (capture.state !== 'initial' || !layout) return false;
+      return !layout.shell || Math.abs(layout.page.x - layout.shell.x) > 1 || Math.abs(layout.page.width - layout.shell.width) > 1
+        || layout.headerRadius !== '0px' || layout.headerBackground !== 'rgba(0, 0, 0, 0)' || layout.titleTransform !== 'none'
+        || layout.yearLabelWidths.some(width => width < 90);
+    })) throw new Error(`Media and map subpages must share the editorial shell and readable year labels: ${path}`);
     if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)
       || (capture.itemHeroLayout?.photo && (capture.itemHeroLayout.photoOpacity !== '1' || capture.itemHeroLayout.photoPosition !== 'relative'
         || !Number.isFinite(capture.itemHeroLayout.title?.bottom) || capture.itemHeroLayout.photo.width < 112 || capture.itemHeroLayout.photo.height < 100

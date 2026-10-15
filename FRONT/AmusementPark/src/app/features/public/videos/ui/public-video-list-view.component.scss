@@ -1,18 +1,15 @@
+@use "mixins" as m;
+
 :host {
   display: block;
 }
 
 .public-video-list {
-  width: min(100% - 2rem, var(--content-wide-max-width, 1480px));
-  margin: 0 auto;
-  padding: clamp(1rem, 3vw, 1.6rem) 0 clamp(2rem, 4vw, 3rem);
-  display: grid;
-  gap: clamp(1.1rem, 3vw, 1.8rem);
+  @include m.public-editorial-page;
 }
 
 .public-video-list__hero {
-  border-top: 4px solid var(--app-primary);
-  border-color: color-mix(in srgb, var(--app-primary) 22%, var(--app-border));
+  @include m.public-editorial-header;
 }
 
 .public-video-list__hero::before {
@@ -306,10 +303,6 @@
 }
 
 @media (max-width: 700px) {
-  .public-video-list {
-    width: min(100% - 1rem, var(--content-wide-max-width, 1480px));
-  }
-
   .public-video-list__filters {
     grid-template-columns: 1fr;
   }

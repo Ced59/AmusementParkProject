@@ -12,6 +12,14 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 
 L'ordre et les classes/styles de présentation, tons, pictogrammes et `sizes` des images peuvent changer ; ces propriétés sont exclues explicitement, pas les données, chargements ou interactions. Le contrôle de multiensemble détecte aussi la perte d'une des occurrences d'un même contrôle. Il ne prouve ni l'imbrication des permissions, ni le comportement du navigateur, ni une validation exhaustive des états. Trois tests protègent l'analyseur ; **162 tests ciblés** passent localement en série, sans build Angular complet. La comparaison est raccordée à la recette CI V6 et dépose `template-contract-comparison.json` dans l'artefact.
 
+### Historique du scénario navigateur — diagnostic `a6bbfb21d`
+
+Le [run 38818065272](https://github.com/Ced59/AmusementParkProject/actions/runs/38818065272) passe les nouvelles géométries ParkItem/standalone et produit les 40 routes / 2 080 captures, puis refuse la restauration d'historique : l'entrée d'origine (clé `b805…`) n'existe plus dans la liste ; l'indice 4 et l'URL vide de filtre désignent désormais une autre entrée (clé `d5fe…`), précédée de Restaurant. Il ne s'agit donc pas d'une preuve de retour correct, contrairement à l'ancienne comparaison URL/indice.
+
+Le scénario hydraté partageait son onglet CI avec les quarante navigations de captures statiques. Il démarre désormais son historique à l'accueil réellement hydraté avec [`Page.resetNavigationHistory`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-resetNavigationHistory), avant la première interaction, et enregistre les tailles avant/après. Aucun historique du produit ou du navigateur du propriétaire n'est modifié. Les retours suivent ensuite la clé stable et son indice actuel ; une entrée disparue reste une erreur explicite. Un test couvre les URLs répétées, les indices décalés et le rejet d'une entrée perdue. **165 contrôles ciblés passent** avec les compléments médias ; ce scénario doit encore réussir en CI, sans délai artificiel ni changement des gestes rapides.
+
+Le même run échoue aussi sur le test backend préexistant `ExecuteAsync_WhenLeaseCannotBeConfirmedBeforeDeadline_ShouldCancelPromotion` : son garde externe de deux secondes lève `TimeoutException` au lieu de l'annulation attendue. Les 630 tests WebAPI et 1 130 autres tests Infrastructure passent. Aucun code Mongo ni délai de test n'est modifié sur cette observation isolée ; l'échec reste enregistré et la prochaine CI complète doit être verte.
+
 | Famille | Scénarios minimum | État |
 |---|---|---|
 | Navigation | 8 langues, anonyme/auth/admin, back/forward, deep links, 404 | CONTRATS PASS — parcours complets à P20/P21 |

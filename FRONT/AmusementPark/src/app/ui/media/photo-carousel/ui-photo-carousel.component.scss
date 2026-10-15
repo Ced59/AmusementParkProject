@@ -19,7 +19,7 @@
   overflow: hidden;
   background: var(--app-surface);
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-md);
+  border-radius: 0;
   box-shadow: none;
 }
 
@@ -33,7 +33,7 @@
 
 .photo-carousel-years {
   display: grid;
-  grid-auto-columns: minmax(6.8rem, 9rem);
+  grid-auto-columns: minmax(11rem, 13rem);
   grid-auto-flow: column;
   gap: 0.55rem;
   overflow-x: auto;
@@ -47,7 +47,7 @@
   align-items: center;
   gap: 0.55rem;
   min-width: 0;
-  min-height: 2.55rem;
+  min-height: 44px;
   padding: 0.48rem 0.68rem;
   border: 1px solid var(--app-border);
   border-radius: var(--radius-sm);
@@ -60,12 +60,11 @@
 
 .photo-carousel-axis span {
   min-width: 0;
-  overflow: hidden;
   font-size: 0.78rem;
   font-weight: 900;
   line-height: 1.15;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .photo-carousel-axis strong {
@@ -653,7 +652,7 @@
   }
 
   .photo-carousel-tags {
-    grid-auto-columns: minmax(8rem, 12rem);
+    grid-auto-columns: minmax(11rem, 13rem);
     grid-auto-flow: column;
     overflow-x: auto;
     max-height: none;
@@ -693,11 +692,11 @@
 
 @media (max-width: 680px) {
   .photo-carousel-panel {
-    border-radius: var(--radius-md);
+    border-radius: 0;
   }
 
   .photo-carousel-years {
-    grid-auto-columns: minmax(6.2rem, 8rem);
+    grid-auto-columns: minmax(11rem, 13rem);
   }
 
   .photo-carousel-axis span {

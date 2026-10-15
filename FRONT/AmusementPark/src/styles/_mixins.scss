@@ -26,6 +26,30 @@ $breakpoint-phone: 480px;
   background: var(--app-surface-2);
 }
 
+// Editorial public subpages share the enclosing shell; they must not subtract
+// another pair of gutters or turn the identity into a padded dashboard card.
+@mixin public-editorial-page {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 48px;
+  display: grid;
+  gap: 24px;
+}
+
+@mixin public-editorial-header {
+  display: block;
+  min-width: 0;
+  padding: 18px 0;
+  border: 0;
+  border-top: 4px solid var(--app-primary);
+  border-bottom: 1px solid var(--app-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
 @mixin app-hover-lift {
   transition:
     border-color var(--app-transition-base),

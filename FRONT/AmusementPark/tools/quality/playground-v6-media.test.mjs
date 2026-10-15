@@ -85,12 +85,36 @@ test('video catalogue and player preserve filtering, pagination, metadata and un
   }
 });
 
+test('public gallery, map and video headers share the editorial shell without duplicate gutters', () => {
+  const mixins = read('src/styles/_mixins.scss');
+  assert.match(mixins, /@mixin public-editorial-page\s*\{[^}]*width:\s*100%;[^}]*min-width:\s*0/);
+  assert.match(mixins, /@mixin public-editorial-header\s*\{[^}]*padding:\s*18px 0;[^}]*border-top:\s*4px solid var\(--app-primary\);[^}]*border-radius:\s*0;[^}]*background:\s*transparent/);
+  for (const source of [parkImagesStyles, itemImagesStyles, videoListStyles, read('src/app/features/public/parks/ui/park-map-view.component.scss')]) {
+    assert.match(source, /@include m\.public-editorial-page/);
+    assert.match(source, /@include m\.public-editorial-header/);
+    assert.doesNotMatch(source, /width:\s*min\(100% -/);
+  }
+  const surfaces = read('src/styles/_surfaces.scss');
+  assert.match(surfaces, /\.public-section-header__title\s*\{[^}]*line-height:\s*1\.2;[^}]*letter-spacing:\s*0;[^}]*text-transform:\s*none/);
+  assert.match(surfaces, /h1\.public-section-header__title\s*\{[^}]*font-size:\s*clamp\(34px, 4\.4vw, 57px\)/);
+});
+
+test('photo filters keep readable label columns and an explicit local scroll at every width', () => {
+  for (const rule of carouselStyles.matchAll(/\.photo-carousel-years\s*\{([^}]+)\}/g)) {
+    assert.match(rule[1], /grid-auto-columns:\s*minmax\(11rem, 13rem\)/);
+  }
+  assert.match(carouselStyles, /\.photo-carousel-axis span\s*\{[^}]*white-space:\s*normal/);
+  assert.doesNotMatch(carouselStyles.match(/\.photo-carousel-axis span\s*\{([^}]+)\}/)[1], /overflow:\s*hidden|text-overflow:\s*ellipsis/);
+  assert.match(carouselStyles, /\.photo-carousel-years\s*\{[^}]*overflow-x:\s*auto/);
+  assert.match(carouselStyles, /\.photo-carousel-axis\s*\{[^}]*min-height:\s*44px/);
+});
+
 test('media surfaces are flat and responsive without decorative filters', () => {
   const styles = [carouselStyles, parkImagesStyles, itemImagesStyles, videoListStyles, videoWatchStyles].join('\n');
-  assert.match(carouselStyles, /\.photo-carousel-panel[\s\S]*?border-radius:\s*var\(--app-radius-md\)[\s\S]*?box-shadow:\s*none/);
-  assert.match(parkImagesStyles, /\.park-subpage-hero[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
-  assert.match(itemImagesStyles, /\.park-subpage-hero[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
-  assert.match(videoListStyles, /\.public-video-list__hero[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
+  assert.match(carouselStyles, /\.photo-carousel-panel[\s\S]*?border-radius:\s*0[\s\S]*?box-shadow:\s*none/);
+  assert.match(parkImagesStyles, /\.park-subpage-hero[\s\S]*?@include m\.public-editorial-header/);
+  assert.match(itemImagesStyles, /\.park-subpage-hero[\s\S]*?@include m\.public-editorial-header/);
+  assert.match(videoListStyles, /\.public-video-list__hero[\s\S]*?@include m\.public-editorial-header/);
   assert.match(videoWatchStyles, /\.public-video-watch__header[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
   assert.doesNotMatch(styles, /(?:linear|radial|conic|repeating-linear)-gradient\(/);
   assert.doesNotMatch(styles, /backdrop-filter\s*:/);

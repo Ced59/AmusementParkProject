@@ -84,7 +84,7 @@ test('official maps preserve year, original documents, metadata and sources', ()
 
 test('map containers use flat, stable Playground surfaces', () => {
   const styles = [viewStyles, interactiveStyles, officialStyles, leafletStyles].join('\n');
-  assert.match(viewStyles, /\.park-subpage-hero[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
+  assert.match(viewStyles, /\.park-subpage-hero[\s\S]*?@include m\.public-editorial-header/);
   assert.match(interactiveStyles, /\.park-items-map[\s\S]*?background:\s*var\(--app-surface\)[\s\S]*?box-shadow:\s*none/);
   assert.match(leafletStyles, /\.leaflet-map-container[\s\S]*?border-radius:\s*var\(--app-radius-md\)[\s\S]*?box-shadow:\s*none/);
   assert.doesNotMatch(styles, /(?:linear|radial|conic|repeating-linear)-gradient\(/);

@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
 import { publicParkItemsReadEvidence } from '../design-v6/public-directory-evidence.mjs';
+import { historyRestoreDelta } from '../design-v6/exercise-public-park-items.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -78,6 +79,16 @@ test('the item browser recipe preserves paging, filters, empty state, full detai
   ]) assert.ok(recipe.includes(contract), `${contract} must remain in the read-only recipe`);
   assert.ok(recipe.includes('navigation.currentEntry.index'));
   assert.doesNotMatch(recipe, /nativeFetch|fetch\(|POST|PUT|PATCH|DELETE/);
+});
+
+test('history restoration follows the stable key even after index changes and rejects a discarded entry', () => {
+  const entries = [{ key: 'original', index: 1, url: '/items' }, { key: 'same-url', index: 4, url: '/items' }, { key: 'detail', index: 8, url: '/item' }];
+  assert.equal(historyRestoreDelta({ index: 8, entries }, 'original'), -7);
+  assert.equal(historyRestoreDelta({ index: 8, entries }, 'same-url'), -4);
+  assert.throws(() => historyRestoreDelta({ index: 8, entries: entries.slice(1) }, 'original'), /discarded/);
+  assert.throws(() => historyRestoreDelta({ index: 1, entries }, 'original'), /cannot restore/);
+  const capture = read('tools/design-v6/capture-public-ssr.mjs');
+  assert.ok(capture.indexOf("'Page.resetNavigationHistory'") < capture.indexOf("'necessary-cookie choice handled by Angular'"));
 });
 
 test('the editorial park header separates real photography and puts every action below the identity row', () => {
