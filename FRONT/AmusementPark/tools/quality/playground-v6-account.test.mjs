@@ -23,10 +23,68 @@ import { isolatedLayoutPreflightPlan } from '../design-v6/isolated-layout-prefli
 import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from '../design-v6/account-layout-acceptance.mjs';
 import { positionAccountCaptureTarget } from '../design-v6/browser-account-target.mjs';
 import { collectAdminShellLayout, adminShellLayoutIssues } from '../design-v6/browser-admin-shell.mjs';
+import { exercisePublicFitForm } from '../design-v6/exercise-public-fit-form.mjs';
+import { settleAccountDocument } from '../design-v6/settle-account-document.mjs';
 import { advanceMainDocument, forgetRetiredDocumentOwners, isRetiredDocumentInterceptionError } from '../design-v6/browser-interception-errors.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('account navigation waits for actual fonts and current intercepted responses instead of ignoring a canceled font', async () => {
+  const events = [], pending = new Set();
+  let finish;
+  const response = new Promise(resolveResponse => { finish = resolveResponse; }).finally(() => { events.push('response'); pending.delete(response); });
+  pending.add(response);
+  await settleAccountDocument({ pending, evaluate: async expression => {
+    assert.equal(expression, 'document.fonts.ready.then(() => document.fonts.status)');
+    events.push('fonts'); finish(); return 'loaded';
+  } });
+  assert.deepEqual(events, ['fonts', 'response']);
+  assert.equal(pending.size, 0);
+  const source = read('tools/design-v6/capture-account-layout.mjs');
+  const navigate = source.split('const navigateDocument = async path => {')[1].split('};')[0];
+  assert.ok(navigate.indexOf('await settleAccountDocument') < navigate.indexOf("await cdp.send('Page.navigate'"));
+  assert.match(source, /nativeCancellationObserved: canceled.has\(request.networkId\), nativeRetirementObserved: retired.has\(request.networkId\)/);
+});
+
+test('document settling refuses unresolved fonts, failed responses and a non-draining pending set', async () => {
+  await assert.rejects(() => settleAccountDocument({ evaluate: async () => 'loading', pending: new Set() }), /fonts did not settle/);
+  await assert.rejects(() => settleAccountDocument({ evaluate: async () => 'loaded', pending: new Set([Promise.reject(new Error('protocol failure'))]) }), /intercepted response failed/);
+  await assert.rejects(() => settleAccountDocument({ evaluate: async () => 'loaded', pending: new Set([Promise.resolve()]) }), /bounded drain/);
+});
+
+test('public Park Fit recipe covers local participant and validation states without searching or requesting location', async () => {
+  const navigations = [], captures = [], checks = [], expressions = [];
+  const result = { apiReads: [] };
+  await exercisePublicFitForm({ fixture: { language: 'pl' }, result,
+    navigateDocument: async path => navigations.push(path), evaluate: async expression => expressions.push(expression),
+    waitUntil: async (expression, label) => checks.push({ expression, label }),
+    captureLayouts: async (selector, page) => captures.push({ selector, page }) });
+  assert.deepEqual(navigations, ['/pl/park-fit', '/pl/park-fit/results', '/pl/park-fit/compare']);
+  assert.equal(captures.length, 7);
+  assert.ok(checks.some(check => check.expression.includes("classList.contains('ng-invalid')")));
+  assert.ok(checks.some(check => check.label.includes('eighth participant')));
+  assert.deepEqual(result.publicFitForm, { language: 'pl', maximumParticipants: 8, invalidSubmitOnly: true,
+    searchRequested: false, locationRequested: false, scoredResultsExercised: false });
+  for (const expression of expressions) {
+    new Script(expression);
+    assert.doesNotMatch(expression, /fetch\(|XMLHttpRequest|geolocation|requestLocation|\.submit\(|requestSubmit\(/);
+  }
+  assert.ok(checks.findIndex(check => check.label.includes('deliberately empty date')) >= 0);
+  const capture = read('tools/design-v6/capture-account-layout.mjs');
+  assert.ok(capture.includes('...anonymousDocuments, ...publicFitDocuments'));
+  assert.ok(read('tools/design-v6/capture-public-ssr.mjs').includes("'/fr/park-fit', '/fr/park-fit/results', '/fr/park-fit/compare'"));
+});
+
+test('public Park Fit local-only recipe refuses any unexpected API request', async () => {
+  const result = { apiReads: [] };
+  await assert.rejects(() => exercisePublicFitForm({ fixture: { language: 'fr' }, result,
+    navigateDocument: async () => {}, evaluate: async () => {}, waitUntil: async () => {},
+    captureLayouts: async (_, page) => { if (page === 'public-fit-comparison-missing') result.apiReads.push({ path: '/api/public/park-fit/search' }); } }),
+  /unexpectedly requested an API/);
+  const fixture = createAccountLayoutFixture('standard', 1792144800);
+  assert.equal(accountLayoutFixtureResponse({ method: 'POST', url: accountLayoutFixtureOrigin + '/api/public/park-fit/search', postData: '{}' }, fixture), null);
+});
 
 test('admin shell measurement reads the real links and toolbar without navigation or mutation', () => {
   const icon = {};

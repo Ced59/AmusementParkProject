@@ -1,5 +1,9 @@
 # V6 — performance, SEO et SSR
 
+## Complément SSR Parc Fit en attente
+
+Les chemins `/fr/park-fit`, `/fr/park-fit/results` et `/fr/park-fit/compare` étendent la prochaine recette initiale de 40 à 43 chemins, sans publication de données ni nouveau serveur. Le questionnaire client est testé sans recherche API ni géolocalisation, résultats/comparaison uniquement dans leur état sans donnée. Les premiers plans SCSS rejoignent les encres existantes ; le coût CSS et le rendu après ce lot restent à mesurer. Aucun budget, seuil de contraste, garde SSR ou plafond P04.6 n'est assoupli ; aucun nouveau PASS de performance/SEO n'est inféré des tests Node.
+
 ## Refus de compteur diagnostiqué — `136a9b8e2`
 
 La [CI `38897387404`](https://github.com/Ced59/AmusementParkProject/actions/runs/38897387404) valide backend, **2 770 tests Angular**, les contrôles publics et les captures, puis refuse P04.6 avant la recette compte. Les six paires montrent **105 → 106 requêtes**, scripts **84 → 86**, **+3 280 octets JS** et **−8 378 octets décodés au total**. Ce n'est pas un dépassement du plafond JS : images **12 → 11**, car seul `/assets/general-icon/logo-amusementpark-ui-36.webp` disparaît ; les onze autres chemins d'image sont identiques, sans appel API/font/ressource supplémentaire. [Artefact `12045810091`](https://github.com/Ced59/AmusementParkProject/actions/runs/38897387404/artifacts/12045810091).

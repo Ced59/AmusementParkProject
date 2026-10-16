@@ -110,6 +110,35 @@ test('the conditional public admin toolbar uses AA text on its canonical orange-
   }
 });
 
+test('Park Fit foregrounds use semantic ink while their decorative fills keep the V6 palette', () => {
+  const root = '../app/features/public/park-fit/';
+  for (const file of ['pages/park-fit-start-page.component.scss', 'pages/park-fit-results-page.component.scss',
+    'pages/park-fit-comparison-page.component.scss', 'components/park-fit-source-report/park-fit-source-report.component.scss',
+    'components/park-fit-trust-notice/park-fit-trust-notice.component.scss']) {
+    const source = readFileSync(resolve(styles, root + file), 'utf8');
+    assert.doesNotMatch(source, /^[ \t]*color:[ \t]*var\(--c-/m, file);
+    assert.match(source, /color:\s*var\(--app-(?:primary-strong|accent-cyan|accent-lime|accent-gold|danger)\)/);
+  }
+  const start = readFileSync(resolve(styles, root + 'pages/park-fit-start-page.component.scss'), 'utf8');
+  assert.match(start, /background:\s*color-mix\(in srgb, var\(--c-orange\) 20%, var\(--app-surface\)\)/);
+  assert.match(start, /background:\s*color-mix\(in srgb, var\(--c-sky\) 18%, var\(--app-surface\)\)/);
+});
+
+test('Park Fit semantic numbers, links and status text meet AA on their existing tinted panels', () => {
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
+    for (const [ink, fill, amount] of [['--app-primary-strong', '--c-orange', 0.2],
+      ['--app-accent-cyan', '--c-sky', 0.18], ['--app-accent-lime', '--c-lime', 0.2],
+      ['--app-accent-gold', '--c-gold', 0.14], ['--app-danger', '--c-rose', 0.14]]) {
+      for (const surface of ['--app-bg', '--app-surface', '--app-surface-2', '--field']) {
+        assert.ok(contrast(resolveThemeColor(theme, ink),
+          mix(resolveThemeColor(theme, fill), resolveThemeColor(theme, surface), amount)) >= 4.5,
+        `${ink}: Park Fit tinted ${surface}`);
+      }
+    }
+  }
+});
+
 function variables(source) {
   return new Map([...source.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]));
 }

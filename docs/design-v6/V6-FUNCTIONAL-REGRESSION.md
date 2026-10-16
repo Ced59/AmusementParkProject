@@ -1,5 +1,17 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic `b56328197` — police master et frontière de document
+
+Le [run `38975602735`](https://github.com/Ced59/AmusementParkProject/actions/runs/38975602735) conserve dans l'[artefact `12079610272`](https://github.com/Ced59/AmusementParkProject/actions/runs/38975602735/artifacts/12079610272) V6 standard FR **PASS 670 contrôles / 364 captures**, zéro fixture/exception. Master s'arrête après **603 / 328**, à l'entrée de la timeline locale : réponse Fetch de `syne-latin-ext.woff2` refusée avec `Invalid InterceptionId.`, zéro exception navigateur. Le rapport antérieur ne conserve pas les identités réseau/frame de ce refus ; il ne justifie donc aucune nouvelle règle d'ignorance.
+
+Le protocole attend maintenant `document.fonts.ready` et les réponses interceptées de la vue courante avant navigation native/capture. Drain limité à 16 passes, rejet si police non prête/réponse échouée/tâche persistante ; les anciennes règles exactes d'annulation/retraite ne changent pas. Les prochains refus ajoutent IDs, propriétaire et proofs natifs au diagnostic. **168 tests Node ciblés PASS** dont ordre/erreurs du drainage, 23 templates sans contrat manquant. Le produit et son chargement de polices ne sont pas modifiés. Campagne intégrale et nouveau shell admin encore à exécuter ; refus historique non requalifié.
+
+## Complément Parc Fit public — prêt pour CI, pas encore exécuté
+
+Les trois routes critères/résultats/comparaison rejoignent la matrice SSR (43 chemins prévus). La recette client isolée ajoute : participant initial anonyme, âge de l'accompagnant, ajout jusqu'à huit avec bouton désactivé, retrait jusqu'au dernier non supprimable, préférence réversible/indoor, date explicitement invalide **avant** activation du submit, puis deep links résultats absents/comparaison sans sélection. Aucun appel API n'est autorisé pendant cette séquence ; tout appel de recherche échoue faute de fixture, aucun calcul, signalement de source ou géolocalisation n'est déclenché. Les résultats réellement calculés/comparaisons remplies ne sont **pas** revendiqués par ce cas.
+
+Deux tests du protocole, refus d'appel inattendu et assertions de syntaxe sont ajoutés. Les encres décoratives de cinq feuilles Parc Fit rejoignent les alias lisibles, sans modifier templates, champs, bornes, calculs, modèle, façade ou API. **166 tests Node ciblés PASS** ; captures/SSR CI suivants obligatoires. Inventaires recalculés, ensembles et comptes inchangés.
+
 ## Diagnostic préalable vert et shell admin conditionnel préparé
 
 L'étape préalable `db82d71eb / 38973483962` passe les quatre cas standard/incomplet FR master/V6 à 390/1 366 px clair/sombre. La campagne complète est en cours ; pas de verdict intégral anticipé.

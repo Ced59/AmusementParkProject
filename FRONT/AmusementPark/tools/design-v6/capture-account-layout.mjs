@@ -1,5 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { collectAdminShellLayout, adminShellLayoutIssues } from './browser-admin-shell.mjs';
+import { exercisePublicFitForm } from './exercise-public-fit-form.mjs';
+import { settleAccountDocument } from './settle-account-document.mjs';
 import { extname, join, resolve, sep } from 'node:path';
 import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse, accountLayoutResetQuery } from './account-layout-fixtures.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument, forgetRetiredDocumentOwners } from './browser-interception-errors.mjs';
@@ -47,8 +49,9 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const anonymousPath = `/${language}/passport/local`;
   const anonymousDocuments = [anonymousPath, ...anonymousDraftIds.map(id => `${anonymousPath}/${id}`)];
   const historyDocuments = historyLayoutDocuments(language);
-  const unauthenticatedDocuments = [...anonymousDocuments, ...new Set(historyDocuments.map(path => path.split('?')[0]))];
-  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, ...tripDocuments, ...passportDocuments, ...visitDocuments, ...anonymousDocuments, ...historyDocuments];
+  const publicFitDocuments = ['', '/results', '/compare'].map(suffix => `/${language}/park-fit${suffix}`);
+  const unauthenticatedDocuments = [...anonymousDocuments, ...publicFitDocuments, ...new Set(historyDocuments.map(path => path.split('?')[0]))];
+  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, ...tripDocuments, ...passportDocuments, ...visitDocuments, ...anonymousDocuments, ...historyDocuments, ...publicFitDocuments];
   if (fixture.kind === 'expired' && (!(homeFixtures instanceof Map) || !homeFixtures.size)) throw new Error('Expired account UI requires exact local public-home fixtures.');
   if (!Array.isArray(widths) || widths.length < 1 || widths.length > 13 || widths.some(width => !Number.isInteger(width) || width < 320 || width > 1920)) throw new Error('Account capture widths exceed their bound.');
   const root = resolve(browserRoot);
@@ -131,7 +134,10 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     const task = intercept(request).catch(async error => {
       if (error.message === 'Invalid InterceptionId.' && request.networkId) await new Promise(yes => setTimeout(yes, 100));
       if (!isCanceledInterceptionError(error, request.networkId, canceled) && !isRetiredDocumentInterceptionError(error, request.networkId, retired)) {
-        result.fixtureFailures.push({ method: request.request.method, path: new URL(request.request.url).pathname, reason: error.message.slice(0, 1000) });
+        result.fixtureFailures.push({ method: request.request.method, path: new URL(request.request.url).pathname, reason: error.message.slice(0, 1000),
+          requestId: request.requestId, networkId: request.networkId ?? null, frameId: request.frameId ?? null, resourceType: request.resourceType,
+          requestOwner: documents.get(request.networkId) ?? null, mainDocument,
+          nativeCancellationObserved: canceled.has(request.networkId), nativeRetirementObserved: retired.has(request.networkId) });
         try { await cdp.send('Fetch.failRequest', { requestId: request.requestId, errorReason: 'BlockedByClient' }); } catch { /* original error is retained */ }
       }
     }).finally(() => pending.delete(task));
@@ -181,6 +187,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           }
         }
         await waitUntil(`document.body.classList.contains('${theme}-mode')`, `account fixture uses the existing ${theme} theme control`);
+        await settleAccountDocument({ evaluate, pending });
         for (const width of widths) {
           await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
           let layout;
@@ -236,6 +243,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     } else {
       const navigateDocument = async path => {
         if (!accountDocuments.includes(path) && path !== resetPath + accountLayoutResetQuery) throw new Error('Unknown isolated account deep-link recipe.');
+        await settleAccountDocument({ evaluate, pending });
         await cdp.send('Page.navigate', { url: accountLayoutFixtureOrigin + path });
       };
       await captureLayouts('.profile-hero', 'account-profile');
@@ -252,6 +260,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         await exerciseAccountAuthPages({ evaluate, waitUntil, captureLayouts, fixture, result, navigateDocument, expectedConfirmationMessage });
       }
       await exerciseAnonymousDraftPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
+      await exercisePublicFitForm({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result });
       await exerciseIsolatedHistoryPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
     }
     if (result.fixtureFailures.length || result.exceptions.length) throw new Error('Account layout accumulated an unexpected fixture or browser failure.');

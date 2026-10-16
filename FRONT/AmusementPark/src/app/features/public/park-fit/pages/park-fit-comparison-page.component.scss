@@ -76,7 +76,7 @@
 .park-fit-comparison__breadcrumb a,
 .park-fit-comparison__parks a,
 .park-fit-comparison__cell a {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-weight: 800;
   text-underline-offset: 0.2em;
   overflow-wrap: anywhere;
@@ -113,7 +113,7 @@
 
 .park-fit-comparison__reading > i {
   margin-top: 0.15rem;
-  color: var(--c-lime);
+  color: var(--app-accent-lime);
   font-size: 1.2rem;
 }
 
@@ -139,7 +139,7 @@
 }
 
 .park-fit-comparison__parks article > strong {
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
   font-family: var(--font-heading);
   font-size: 2.35rem;
 }
@@ -171,7 +171,7 @@
 }
 
 .park-fit-comparison__reasons > strong {
-  color: var(--c-gold);
+  color: var(--app-accent-gold);
   font-size: 0.85rem;
 }
 
@@ -227,7 +227,7 @@
 }
 
 .park-fit-comparison__row > header > i {
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
 }
 
 .park-fit-comparison__cell {
@@ -245,7 +245,7 @@
 
 .park-fit-comparison__cell-park {
   display: block;
-  color: var(--c-sky) !important;
+  color: var(--app-accent-cyan) !important;
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -256,7 +256,7 @@
   display: inline-flex;
   gap: 0.35rem;
   align-items: center;
-  color: var(--c-gold) !important;
+  color: var(--app-accent-gold) !important;
   font-weight: 800;
 }
 
@@ -268,7 +268,7 @@
 
 .park-fit-comparison__missing > i,
 .park-fit-comparison__no-difference > i {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-size: 1.8rem;
 }
 

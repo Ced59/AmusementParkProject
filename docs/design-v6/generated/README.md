@@ -1,6 +1,6 @@
 # Inventaire P00 généré
 
-- Source : e31fd061d + styles de barre admin et recette admin-shell, aucun contrat modifié
+- Source : b56328197 + encres Parc Fit et recette de formulaire, aucun contrat modifié
 - Routes terminales, redirections et écrans développés : **148**
 - Composants Angular de présentation recensés : **293**
 - Interactions et champs explicitement recensés : **2057**

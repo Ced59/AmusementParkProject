@@ -1,5 +1,15 @@
 # V6 — régression visuelle
 
+## Capture stabilisée sur les polices — nouveau run requis
+
+`b56328197 / 38975602735` valide les 364 captures standard FR V6 puis refuse un appel de police master pendant un remplacement de document. La recette attend dorénavant les vraies polices et réponses locales avant de mesurer/capturer/naviguer ; aucun nouveau timeout ignoré ni défaut visuel accepté. Le produit, la famille de polices et le chargement public restent intacts. **168 tests Node ciblés PASS**, dont les refus d'un drainage non terminé ou défaillant. Le prochain artefact doit confirmer ce protocole ; la nouvelle recette admin-shell n'est pas présumée exécutée.
+
+## Parc Fit public — formulaire et états sans recherche à capturer
+
+Mini-fiche complémentaire : questionnaire en panneaux à filets, numéros d'étapes lisibles, champs date/âge/taille alignés, groupe flexible jusqu'à huit, préférences à états non seulement colorés ; résultats absents et comparaison sans sélection gardent leurs liens de retour et textes. Les sept états de capture préparés sont `public-fit-form-initial`, `public-fit-form-accompanied`, `public-fit-form-eighth-participant`, `public-fit-form-preferences`, `public-fit-form-invalid-date`, `public-fit-results-missing`, `public-fit-comparison-missing`. Ils suivent la matrice de largeur/langue/thème existante, avec nouveaux rendus encore requis ; aucun artefact ou accord propriétaire n'est inventé.
+
+La revue des cinq feuilles Parc Fit distingue **37 propriétés de premier plan** (chiffres, liens, états et icônes) encore basées sur les couleurs décoratives : orange → `app-primary-strong`, sky/lime/gold → leurs encres `app-accent-*`, rose → `app-danger`. Les aplats/bordures, nombres, textes, composants, champs et règles restent intacts. Tests numériques des encres sur quatre surfaces et leurs compositions teintées, dans les deux thèmes, à 4,5:1 minimum. **166 tests Node ciblés PASS**, sans verdict pixel-perfect ou validation de résultats calculés.
+
 ## Shell connecté admin — gabarit conditionnel à recapturer
 
 Après le PASS préalable FR du run `38973483962`, une recette spécifique prépare les deux liens conditionnels admin et la barre lazy, sans ouvrir de back-office réel. Le contrôle exige les sept accès mobiles et leur hit-test, bounds de barre et absence de recouvrement. Les 13 largeurs FR et sept autres langues mobile/desktop, deux thèmes et master/V6, restent **à exécuter dans la nouvelle campagne**, pas approuvés par les seuls tests Node.

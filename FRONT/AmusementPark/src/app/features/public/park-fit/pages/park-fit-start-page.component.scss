@@ -110,7 +110,7 @@
 .park-fit-privacy > i,
 .park-fit-feedback > i {
   margin-top: 0.15rem;
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-size: 1.2rem;
 }
 
@@ -146,7 +146,7 @@
   place-items: center;
   border-radius: 999px;
   background: color-mix(in srgb, var(--c-orange) 20%, var(--app-surface));
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
   font-weight: 900;
 }
 
@@ -296,13 +296,13 @@
   place-items: center;
   border-radius: 50%;
   background: color-mix(in srgb, var(--c-sky) 18%, var(--app-surface));
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .park-fit-saved__status--error {
-  color: var(--c-rose);
+  color: var(--app-danger);
 }
 
 .park-fit-member {
@@ -344,7 +344,7 @@
   gap: 0.4rem;
   border: 0;
   background: transparent;
-  color: var(--c-rose);
+  color: var(--app-danger);
   font: inherit;
   font-weight: 800;
   cursor: pointer;
@@ -419,7 +419,7 @@
 }
 
 .park-fit-preference i {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
 }
 
 .park-fit-preference--selected {
@@ -428,7 +428,7 @@
 }
 
 .park-fit-preference--selected i {
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
 }
 
 .park-fit-check--indoor {
@@ -450,7 +450,7 @@
 
 .park-fit-inline-error {
   margin: 0;
-  color: var(--c-rose);
+  color: var(--app-danger);
   overflow-wrap: anywhere;
 }
 
@@ -477,12 +477,12 @@
   place-items: center;
   border-radius: 999px;
   background: color-mix(in srgb, var(--c-sky) 18%, var(--app-surface));
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
 }
 
 .park-fit-location--ready .park-fit-location__icon {
   background: color-mix(in srgb, var(--c-lime) 18%, var(--app-surface));
-  color: var(--c-lime);
+  color: var(--app-accent-lime);
 }
 
 .park-fit-location__copy {
@@ -502,7 +502,7 @@
 }
 
 .park-fit-location__copy small {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
 }
 
 .park-fit-feedback--error {
@@ -510,7 +510,7 @@
 }
 
 .park-fit-feedback--error > i {
-  color: var(--c-rose);
+  color: var(--app-danger);
 }
 
 .park-fit-result {
@@ -558,7 +558,7 @@
 }
 
 .park-fit-result__metrics strong {
-  color: var(--c-lime);
+  color: var(--app-accent-lime);
   font-size: 1.7rem;
 }
 

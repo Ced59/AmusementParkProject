@@ -2,6 +2,8 @@
 
 ## Principes
 
+Complément Parc Fit du 17 octobre : 37 propriétés `color` de cinq feuilles sont raccordées aux encres sémantiques existantes ; les couleurs `--c-*` restent les aplats et filets décoratifs. Aucun token n'est ajouté/modifié, aucun graphique ou valeur n'est recalculé. Les tests vérifient les liaisons, l'absence de ces couleurs brutes en premier plan dans cette famille et les contrastes sur fonds papier/panneau/secondaire/champ, teintés et dans les deux thèmes. **166 tests Node ciblés PASS ; rendu CI requis.**
+
 Audit complémentaire du 17 octobre : les références CSS de 1 895 fichiers de production (SCSS, templates et styles inline TypeScript) contenaient 57 noms absents de toute déclaration, dont 38 utilisés sans fallback. Les consommateurs sont raccordés aux tokens **existants**, dans 75 fichiers de présentation ; aucun nouveau moteur de thème ni alias global de compatibilité n'est ajouté. Après correction : zéro nom inconnu obligatoire, seulement les deux références externes optionnelles avec repli `--p-primary-color` et `--app-public-header-height`. Le test vérifie aussi les bindings Angular et `setProperty`. C'est une couverture **lexicale**, pas une preuve de résolution dans chaque scope CSS ; les rendus CI restent obligatoires.
 
 | Anciennes références | Tokens existants utilisés | Rôle préservé |

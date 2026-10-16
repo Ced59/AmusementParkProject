@@ -2,6 +2,8 @@
 
 ## Point de contrôle du 17 octobre — standard V6/master
 
+Trois chemins SSR Parc Fit et sept états client sans recherche sont ajoutés après `b56328197` : 43 chemins SSR préparés, sans prétendre qu'ils sont déjà capturés. Champs/participants/préférences/validation invalides et états sans résultat sont distincts du calcul serveur ou d'une comparaison remplie. Les 37 encres de cette famille rejoignent les tokens existants ; inventaires source à nouveau calculés, comptes/contrats de routes/composants inchangés. **166 tests Node ciblés PASS**, recette CI de ce complément ouverte.
+
 Le diagnostic préalable suivant `db82d71eb / 38973483962` passe les quatre cas FR standard/incomplet master/V6 ; la campagne complète tourne. Le scénario conditionnel `admin-shell` est préparé séparément pour les huit langues, sans aucune ouverture ou mutation admin. Il mesure les liens, les sept accès mobiles et la toolbar réelle ; il ne transforme pas l'exception propriétaire admin en recette opérationnelle réalisée. **162 tests Node ciblés PASS**, preuve navigateur du nouveau scénario en attente.
 
 Le run `4331fa087 / 38968888897` termine les scénarios isolés standard FR V6 **et** master (670 contrôles / 364 captures chacun). Le cas V6 incomplet termine 426 contrôles / 232 captures puis refuse un contraste e-mail, corrigé en source. Tous les compléments compte/auth/brouillons/histoire listés ci-dessous ont désormais une preuve standard FR de scénario ; leurs états complets, permissions serveur et workflows persistés ne sont pas déduits de ce sous-ensemble. La matrice historique ci-dessous décrit les anciens checkpoints, non le dernier état de recette. **Campagne intégrale et gel final encore ouverts.**

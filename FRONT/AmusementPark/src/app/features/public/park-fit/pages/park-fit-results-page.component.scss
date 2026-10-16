@@ -46,7 +46,7 @@
 }
 
 .park-fit-results__breadcrumb a {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-weight: 800;
   text-underline-offset: 0.2em;
   overflow-wrap: anywhere;
@@ -201,7 +201,7 @@
 .park-fit-results__reading > i,
 .park-fit-result-card__unknowns > i {
   margin-top: 0.15rem;
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-size: 1.15rem;
 }
 
@@ -256,7 +256,7 @@
   place-items: center;
   border-radius: 999px;
   background: color-mix(in srgb, var(--c-orange) 22%, var(--app-surface));
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
   font-size: 1.15rem;
   font-weight: 900;
 }
@@ -287,7 +287,7 @@
 
 .park-fit-result-card__practical-grid article > i {
   margin-top: 0.2rem;
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
 }
 
 .park-fit-result-card__practical-grid article > div {
@@ -306,7 +306,7 @@
 
 .park-fit-result-card__practical-grid a {
   justify-self: start;
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-weight: 800;
   overflow-wrap: anywhere;
 }
@@ -339,7 +339,7 @@
 }
 
 .park-fit-result-card__metrics i {
-  color: var(--c-lime);
+  color: var(--app-accent-lime);
 }
 
 .park-fit-result-card__metrics strong {
@@ -356,7 +356,7 @@
 }
 
 .park-fit-result-card__unknowns > i {
-  color: var(--c-gold);
+  color: var(--app-accent-gold);
 }
 
 .park-fit-result-card__unknowns--clear {
@@ -365,7 +365,7 @@
 }
 
 .park-fit-result-card__unknowns--clear > i {
-  color: var(--c-lime);
+  color: var(--app-accent-lime);
 }
 
 .park-fit-result-card__members article > strong {
@@ -374,7 +374,7 @@
 }
 
 .park-fit-result-card__member-unknown {
-  color: var(--c-gold) !important;
+  color: var(--app-accent-gold) !important;
 }
 
 .park-fit-result-card__reason-list {
@@ -386,7 +386,7 @@
 }
 
 .park-fit-result-card__reason-list li::marker {
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
 }
 
 .park-fit-result-card__score {
@@ -412,7 +412,7 @@
 }
 
 .park-fit-result-card__score-value strong {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-family: var(--font-heading);
   font-size: 2.8rem;
 }
@@ -497,7 +497,7 @@
 
 .park-fit-result-card__sources li > i {
   margin-top: 0.15rem;
-  color: var(--c-lime);
+  color: var(--app-accent-lime);
 }
 
 .park-fit-result-card__sources li > div {
@@ -510,7 +510,7 @@
   display: inline-flex;
   gap: 0.3rem;
   align-items: center;
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-weight: 800;
   text-decoration: none;
 }
@@ -542,7 +542,7 @@
 }
 
 .park-fit-results__empty > i {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-size: 1.8rem;
 }
 

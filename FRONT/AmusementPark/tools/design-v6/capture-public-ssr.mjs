@@ -54,6 +54,7 @@ const paths = process.env.V6_SSR_PATHS?.split(',') ?? [
   ...['items', 'zones', 'map', 'images', 'videos', 'weather', 'opening-hours', 'pricing', 'comments', 'history']
     .map((suffix) => `/fr/park/4e0155db-9dbf-4755-a32f-0cc8950d61c4/le-fleury/${suffix}`),
   '/fr/rankings', '/fr/rankings/methodology', '/fr/manufacturers', '/fr/technical', '/fr/versions',
+  '/fr/park-fit', '/fr/park-fit/results', '/fr/park-fit/compare',
   '/fr/park/94a4c4df-5ab6-4dc3-b756-2de664e947c4/efteling',
   '/fr/park/1675e96c-6361-48ff-862b-43218167facd/le-pal',
   '/fr/park/94a4c4df-5ab6-4dc3-b756-2de664e947c4/efteling/pricing',
