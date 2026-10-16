@@ -1,5 +1,13 @@
 # V6 — régression visuelle
 
+## Ajustements du 16 octobre — primitives et pages pratiques
+
+Les onglets segmentés utilisent des filets carrés, une bordure active sans ombre et un focus contrasté ; les rôles, comptes et touches restent ceux du composant existant. Les en-têtes repliables deviennent un bouton natif pleine largeur, sans réduire leur surface cliquable. Le dialogue partagé conserve sa composition et reçoit des commandes nommées et un focus limité au seul mode modal. Les nouveaux tests Angular et la revue des variantes restent à exécuter en CI.
+
+Météo, horaires et tarifs réutilisent les mixins éditoriaux des sous-pages médias/cartes : suppression des gouttières imbriquées à toutes les largeurs, en-tête transparent à filets et titre plafonné à 57 px. Les styles de calendrier, graphiques et offres, leurs scrolls locaux et les marges basses mobiles sont conservés. Aucun template de données pratiques ni calcul n'est changé. Le contrôle de géométrie SSR couvre désormais aussi ces trois familles ; la comparaison réelle après ces modifications est **en attente de CI**, pas déclarée pixel-perfect.
+
+La capture d'échec `004d01867/failed-hydrated-check.webp` montre la lightbox réelle en sombre à 1 366 px, avec photo publiée, crédits, contrôle Fermer et vignettes. Elle ne prouve pas la boucle clavier, qui échoue encore dans ce run. Le prochain test utilise Tab/Shift+Tab natifs et conserve un diagnostic dédié.
+
 ## Références
 
 La capture Rhaegal 390 sombre de `a75861a30` révèle une photographie de fond estompée et un hero arrondi hérités. La correction P08 retire uniquement les décorations SVG/fonds, replace la vraie photo dans un cadre 16/10 distinct, met l'identité au-dessus et les actions sous le contenu, puis les liens précédent/suivant dans le flux. Notation, commentaires, taxonomy/zone, collections/watch, retours et médias restent liés aux mêmes données/événements. `sizes` et le preload existant partagent un unique gabarit de présentation ; aucune source photo ni priorité de chargement n'est changée. Le trail mobile revient à la ligne et conserve les noms complets avec des liens de 44 px, sans ellipsis ni scroll caché. Les 136 tests Node passent et le SCSS item compile (17 693 caractères avant le dernier ajustement de focus). Les mesures Angular aux 13 largeurs, deux thèmes et la revue après restent requises ; la standalone présente encore son ancien hero et n'est pas déclarée corrigée par ce lot.

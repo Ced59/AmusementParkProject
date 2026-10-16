@@ -319,6 +319,9 @@ async function captureHydratedHome(rawHtml, options = {}) {
           entries: navigation.entries().map(entry => ({ index: entry.index, key: entry.key,
             url: new URL(entry.url).pathname + new URL(entry.url).search })) },
         heading: document.querySelector('h1')?.textContent?.trim(),
+        focus: { tag: document.activeElement?.tagName, classes: document.activeElement?.className,
+          insidePhotoDialog: !!document.querySelector('.photo-lightbox__dialog')?.contains(document.activeElement),
+          photoAnchors: [...document.querySelectorAll('.photo-lightbox .cdk-focus-trap-anchor')].map(anchor => ({ tabIndex: anchor.tabIndex, classes: anchor.className })) },
         directoryNames: [...document.querySelectorAll('.parks-results .ui-park-card__title')].map(title => title.textContent.trim()),
         directoryPage: document.querySelector('.parks-results .p-paginator-page.p-highlight')?.textContent.trim(),
         treeExpanded: document.querySelector('.app-public-nav__tree-trigger')?.getAttribute('aria-expanded'),
@@ -514,7 +517,11 @@ async function captureHydratedHome(rawHtml, options = {}) {
       index: navigation.currentEntry.index, key: navigation.currentEntry.key })`);
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'browser back from inventory restores the full park');
-    await exercisePublicPhotos({ evaluate, waitUntil, result });
+    await exercisePublicPhotos({ evaluate, waitUntil, result, pressTab: async backward => {
+      const key = { key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9, modifiers: backward ? 8 : 0 };
+      await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', ...key });
+      await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', ...key });
+    } });
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
     let directoryCursor = result.apiReads.length;
@@ -658,6 +665,7 @@ try {
   entry = await import(pathToFileURL(resolve('dist/amusement-park/server/main.server.mjs')));
   const application = entry.ɵgetOrCreateAngularServerApp();
   let homeRawHtml;
+  let hydratedSmokePassed = false;
   for (const path of paths) {
     reads = [];
     let response;
@@ -684,6 +692,12 @@ try {
     const routeName = publicRouteEvidenceName(path);
     const htmlPath = join(outputRoot, `${routeName}.html`);
     await writeFile(htmlPath, await staticDocument(html));
+    // Fail on real interaction defects before spending minutes on all static
+    // widths. A passing run still executes every capture and comparison below.
+    if (process.env.CI === 'true' && path === '/fr/home') {
+      await captureHydratedHome(homeRawHtml);
+      hydratedSmokePassed = true;
+    }
     const headingPattern = expectedEmptyPricing ? /<h3\b[^>]*>([\s\S]*?)<\/h3>/i : /<h1\b[^>]*>([\s\S]*?)<\/h1>/i;
     const initialHeading = html.match(headingPattern)?.[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
     const route = { path, engineStatus: response.status, initialState: expectedEmptyPricing ? 'empty-public-pricing-404' : 'content',
@@ -723,8 +737,8 @@ try {
             const itemPhoto = itemHero?.querySelector('.item-detail-hero__photo');
             const standaloneHero = document.querySelector('.standalone-hero');
             const standalonePhoto = document.querySelector('.standalone-main__media');
-            const mediaPage = document.querySelector('.park-images-page, .park-item-images-page, .public-video-list, .park-map-page');
-            const mediaHeader = mediaPage?.querySelector('.park-subpage-hero, .public-video-list__hero');
+            const mediaPage = document.querySelector('.park-images-page, .park-item-images-page, .public-video-list, .park-map-page, .park-weather-page, .park-opening-hours-page, .park-pricing-page');
+            const mediaHeader = mediaPage?.querySelector('.park-subpage-hero, .public-video-list__hero, .park-weather-hero, .park-opening-hours-hero, .park-pricing-hero');
             const navInner = document.querySelector('.app-public-nav__inner');
             const navLinks = document.querySelector('.app-public-nav__links');
             const navActions = document.querySelector('.app-public-nav__right');
@@ -866,7 +880,7 @@ try {
       return !layout.shell || Math.abs(layout.page.x - layout.shell.x) > 1 || Math.abs(layout.page.width - layout.shell.width) > 1
         || layout.headerRadius !== '0px' || layout.headerBackground !== 'rgba(0, 0, 0, 0)' || layout.titleTransform !== 'none'
         || layout.yearLabelWidths.some(width => width < 90);
-    })) throw new Error(`Media and map subpages must share the editorial shell and readable year labels: ${path}`);
+    })) throw new Error(`Media, map and practical subpages must share the editorial shell and readable year labels: ${path}`);
     if (route.captures.some((capture) => capture.state === 'initial' && (capture.scrollWidth > capture.viewport + 1 || (capture.heroTitleWidth !== null && capture.heroTitleWidth < 112) || Object.values(capture.aliases).some(value => !value) || capture.wordmarkColors.some(color => color !== (capture.theme === 'light' ? 'rgb(22, 10, 0)' : 'rgb(255, 255, 255)')) || (path !== '/' && capture.footerActiveColor !== capture.headingColor)
       || (capture.itemHeroLayout?.photo && (capture.itemHeroLayout.photoOpacity !== '1' || capture.itemHeroLayout.photoPosition !== 'relative'
         || !Number.isFinite(capture.itemHeroLayout.title?.bottom) || capture.itemHeroLayout.photo.width < 112 || capture.itemHeroLayout.photo.height < 100
@@ -879,8 +893,8 @@ try {
   // Never run the hydrated browser smoke locally: its build and browser workload
   // belong to the isolated CI runner, outside the user's shared memory budget.
   if (process.env.CI === 'true' && homeRawHtml) {
+    if (!hydratedSmokePassed) throw new Error('The required hydrated smoke did not complete.');
     await verifyFleuryItemRendering(application);
-    await captureHydratedHome(homeRawHtml);
     if (homeFixtureDocument) {
       const baselineHtml = await readFile(join(outputRoot, 'home-baseline.html'), 'utf8');
       for (const width of [390, 1366]) {

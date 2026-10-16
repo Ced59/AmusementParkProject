@@ -1,16 +1,15 @@
+@use "../../../../../styles/mixins" as m;
+
 :host {
   display: block;
 }
 
 .park-opening-hours-page {
-  display: grid;
-  gap: clamp(1.25rem, 3vw, 2rem);
-  width: min(1120px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  @include m.public-editorial-page;
 }
 
 .park-opening-hours-hero {
+  @include m.public-editorial-header;
   display: grid;
   gap: 0.8rem;
 }
@@ -28,7 +27,7 @@
   margin: 0;
   color: var(--app-heading, #ffffff);
   font-family: var(--font-heading, inherit);
-  font-size: clamp(2.1rem, 5vw, 4rem);
+  font-size: clamp(2.125rem, 5vw, 3.5625rem);
   font-weight: 900;
   line-height: 1.06;
   letter-spacing: 0;
@@ -498,7 +497,6 @@
 
 @media (max-width: 760px) {
   .park-opening-hours-page {
-    width: min(100% - 1.5rem, 1120px);
     padding-bottom: 7rem;
   }
 
@@ -597,10 +595,6 @@
 }
 
 @media (max-width: 380px) {
-  .park-opening-hours-page {
-    width: min(100% - 1rem, 1120px);
-  }
-
   .park-opening-hours-month__table {
     border-spacing: 0.16rem;
   }

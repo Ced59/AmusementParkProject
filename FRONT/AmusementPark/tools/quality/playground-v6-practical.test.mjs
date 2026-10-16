@@ -29,6 +29,17 @@ test('the today badge uses the per-theme gold foreground rather than a fixed dar
   assert.match(practicalStyles, /\.park-opening-hours-cell__today\s*\{[^}]*color:\s*var\(--app-on-gold\)/);
 });
 
+test('practical pages share the full editorial shell without nested responsive gutters', () => {
+  for (const name of ['weather', 'opening-hours', 'pricing']) {
+    const styles = read(`src/app/features/public/parks/pages/park-${name}-page.component.scss`);
+    assert.ok(styles.startsWith('@use "../../../../../styles/mixins" as m;'));
+    assert.ok(styles.includes('font-size: clamp(2.125rem, 5vw, 3.5625rem)'));
+    assert.match(styles, new RegExp(`\\.park-${name}-page\\s*\\{[^}]*@include m\\.public-editorial-page`));
+    assert.match(styles, new RegExp(`\\.park-${name}-hero\\s*\\{[^}]*@include m\\.public-editorial-header`));
+    assert.doesNotMatch(styles, new RegExp(`\\.park-${name}-page\\s*\\{[^}]*[;{]\\s*width:`));
+  }
+});
+
 test('pricing breadcrumbs, kickers and audience chips use semantic text accents', () => {
   for (const selector of ['park-pricing-breadcrumb a', 'park-pricing-hero__kicker', 'park-price-card__audience']) {
     assert.match(practicalStyles, new RegExp(`\\.${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
@@ -115,7 +126,8 @@ test('nearby and live panels preserve distance, refresh, offline, filters, forec
 test('practical data surfaces use flat Playground panels without decorative gradients', () => {
   assert.match(practicalStyles, /\.park-weather-card[\s\S]*?background:\s*var\(--app-surface/);
   assert.match(practicalStyles, /\.park-opening-hours-card[\s\S]*?background:\s*var\(--app-surface/);
-  assert.match(practicalStyles, /\.park-pricing-hero[\s\S]*?border-top:\s*4px solid var\(--app-primary\)/);
+  assert.match(practicalStyles, /\.park-pricing-hero\s*\{[^}]*@include m\.public-editorial-header/);
+  assert.match(read('src/styles/_mixins.scss'), /@mixin public-editorial-header\s*\{[^}]*border-top:\s*4px solid var\(--app-primary\)/);
   assert.match(practicalStyles, /\.live-panel[\s\S]*?border-top:\s*4px solid var\(--app-accent-cyan\)/);
   assert.doesNotMatch(practicalStyles, /(?:linear|radial|conic|repeating-linear)-gradient\(/);
   assert.doesNotMatch(practicalStyles, /mask-image\s*:/);

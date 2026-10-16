@@ -1,7 +1,7 @@
 // Only real Angular controls and browser history; no API writes or demo media.
 import { publicParkGalleryPages } from './public-photo-evidence.mjs';
 
-export async function exercisePublicPhotos({ evaluate, waitUntil, result }) {
+export async function exercisePublicPhotos({ evaluate, waitUntil, pressTab, result }) {
   const parent = await evaluate(`({ path: location.pathname, key: navigation.currentEntry.key })`);
   const parkId = parent.path.match(/\/park\/([0-9a-f-]{36})(?:\/|$)/i)?.[1];
   if (!parkId) throw new Error('The photo recipe requires its actual public park parent.');
@@ -40,8 +40,15 @@ export async function exercisePublicPhotos({ evaluate, waitUntil, result }) {
   await evaluate(`(() => { const stage = document.querySelector('.photo-carousel__stage'); stage.focus(); stage.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); })()`);
   await waitUntil(`!!document.querySelector('.photo-lightbox[role="dialog"][aria-modal="true"] img.photo-lightbox__image')`, 'photo lightbox opens through the existing keyboard handler');
   await waitUntil(`document.activeElement === document.querySelector('.photo-lightbox__close')`, 'photo lightbox captures keyboard focus on its close control');
-  await evaluate(`document.querySelector('.photo-lightbox__dialog').parentElement.querySelector('.cdk-focus-trap-anchor').focus()`);
-  await waitUntil(`!!document.querySelector('.photo-lightbox__dialog')?.contains(document.activeElement)`, 'photo lightbox focus boundary loops inside the modal');
+  result.photoFocusBeforeTab = await evaluate(`(() => { const root = document.querySelector('.photo-lightbox'); return {
+    active: { tag: document.activeElement.tagName, classes: document.activeElement.className },
+    anchors: Array.from(root.querySelectorAll('.cdk-focus-trap-anchor'), anchor => ({ tabIndex: anchor.tabIndex, display: getComputedStyle(anchor).display, visibility: getComputedStyle(anchor).visibility })),
+    buttons: Array.from(root.querySelectorAll('button'), button => ({ classes: button.className, disabled: button.disabled, tabIndex: button.tabIndex })) }; })()`);
+  // Real Chromium key input tests native traversal, not a synthetic focus call.
+  await pressTab(true);
+  await waitUntil(`document.activeElement === document.querySelector('.photo-lightbox__thumb:last-child')`, 'photo lightbox Shift+Tab loops to its last real thumbnail');
+  await pressTab(false);
+  await waitUntil(`document.activeElement === document.querySelector('.photo-lightbox__close')`, 'photo lightbox Tab loops back to its first close control');
   await evaluate(`document.querySelector('.photo-lightbox__close').click()`);
   await waitUntil(`!document.querySelector('.photo-lightbox')`, 'photo lightbox closes without navigation or mutation');
   await waitUntil(`document.activeElement === document.querySelector('.photo-carousel__stage')`, 'photo lightbox restores keyboard focus to its original stage');

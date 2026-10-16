@@ -57,6 +57,9 @@ test('the photo recipe exercises real controls and 100-plus server-paginated med
   assert.doesNotMatch(recipe, /nativeFetch|fetch\(|POST|PUT|PATCH|DELETE/);
   assert.ok(recipe.includes('pagination.itemsPerPage !== 100'));
   assert.ok(recipe.includes('photoScenarios'));
+  assert.ok(recipe.includes('await pressTab(true)'));
+  assert.ok(recipe.includes('await pressTab(false)'));
+  assert.ok(recipe.includes('photoFocusBeforeTab'));
 });
 
 test('photo galleries preserve filters, lazy thumbnails, credits, maps and lightbox controls', () => {
