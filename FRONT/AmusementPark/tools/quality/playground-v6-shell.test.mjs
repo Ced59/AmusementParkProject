@@ -31,6 +31,13 @@ const protectedWordmarkParts = [
   '>fun<',
 ];
 
+test('mobile navigation gives long localized labels the full equal-width column without shrinking text', () => {
+  assert.match(navigationStyles, /\.app-mobile-bottom-nav\s*\{[^}]*gap:\s*0;/);
+  assert.match(navigationStyles, /\.app-mobile-bottom-nav__item\s*\{[^}]*min-width:\s*0;[^}]*min-height:\s*3\.9rem;[^}]*flex:\s*1 1 0;[^}]*padding:\s*0\.5rem 0\.125rem;/);
+  assert.match(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*font-size:\s*0\.68rem;[^}]*overflow-wrap:\s*anywhere;[^}]*white-space:\s*normal;/);
+  assert.doesNotMatch(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*(?:text-overflow:\s*ellipsis|overflow:\s*hidden|line-clamp)/);
+});
+
 test('the mobile park trail keeps complete localized labels and wraps its 44px links instead of clipping them', () => {
   assert.match(navigationStyles, /\.app-public-park-trail\s*\{[^}]*flex-wrap:\s*wrap/);
   assert.match(navigationStyles, /\.app-public-park-trail__item\s*\{[^}]*min-width:\s*0;[^}]*max-width:\s*100%;[^}]*min-height:\s*44px/);

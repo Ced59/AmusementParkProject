@@ -115,7 +115,7 @@ html:has(.app-public-nav) {
   display: none;
   align-items: center;
   justify-content: space-between;
-  gap: 0.35rem;
+  gap: 0;
   padding: 0.35rem 0.5rem max(0.35rem, env(safe-area-inset-bottom));
   border: 0;
   border-top: 1px solid var(--app-line);
@@ -134,7 +134,7 @@ html:has(.app-public-nav) {
   align-items: center;
   justify-content: center;
   gap: 0.22rem;
-  padding: 0.5rem 0.25rem;
+  padding: 0.5rem 0.125rem;
   border-top: 3px solid transparent;
   border-radius: 0;
   color: var(--app-text-muted);

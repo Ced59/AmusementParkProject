@@ -6,6 +6,8 @@ L'[artefact `12071546796`](https://github.com/Ced59/AmusementParkProject/actions
 
 Le texte rejoint l'alias existant `--app-primary-strong` dans le SCSS footer, sans toucher au wordmark ni aux clés/valeurs des huit slogans. Le test de contraste inclut désormais les deux segments du slogan dans les deux thèmes, plus un garde interdisant le retour à l'orange décoratif brut. **Nouveau rendu CI requis.**
 
+La même capture révèle des libellés bottom-nav inutilement fragmentés : six colonnes partagent des gaps de 0,35rem et deux paddings latéraux de 0,25rem par lien. Les gaps sont supprimés et le padding latéral ramené à 0,125rem ; police, hauteur tactile, liens et condition admin sont conservés. Aucune ellipse, réduction de texte ou information masquée. Le garde de structure protège ce gain de largeur ; la lisibilité des nouveaux rendus, notamment à 320 px et en allemand/polonais, reste à inspecter en CI.
+
 ## Mini-fiches des familles non dessinées — validation finale ouverte
 
 Ces transpositions réutilisent uniquement tokens, primitives et composants existants. Ce tableau n'est **ni une approbation propriétaire ni une preuve de rendu**. Les noms de captures ci-dessous désignent les états attendus dans les prochains artefacts ; aucun lien vers un fichier inexistant n'est présenté comme preuve.
