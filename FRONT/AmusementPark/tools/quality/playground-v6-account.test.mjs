@@ -7,6 +7,7 @@ import { exerciseAnonymousAuth } from '../design-v6/exercise-anonymous-auth.mjs'
 import { accountLayoutFixtureOrigin, createAccountLayoutFixture, accountLayoutFixtureResponse } from '../design-v6/account-layout-fixtures.mjs';
 import { accountLayoutCaptureAllowed } from '../design-v6/capture-account-layout.mjs';
 import { exerciseAccountLists } from '../design-v6/exercise-account-lists.mjs';
+import { exerciseAccountProfileControls } from '../design-v6/exercise-account-profile-controls.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -25,6 +26,7 @@ test('account layout fixtures distinguish complete, incomplete and expired UI se
   assert.equal(claims.aud, 'apf-ci-layout-only');
   assert.equal(incomplete.user.firstName, '');
   assert.equal(incomplete.user.isActivated, true);
+  assert.equal(standard.user.preferredMeasurementSystem, 'Metric');
   assert.throws(() => createAccountLayoutFixture('admin', now), /Unknown/);
 });
 
@@ -71,13 +73,26 @@ test('compiled collection filters and trip draft recipe retain exact fixtures an
   assert.doesNotMatch(read('tools/design-v6/exercise-account-lists.mjs'), /fetch\(|requestSubmit\(|\.submit\(|\/api\//);
 });
 
+test('profile editor, export presence and deletion disclosure compile without persisted or destructive actions', async () => {
+  const result = {};
+  const captures = [];
+  await exerciseAccountProfileControls({ result, fixture: createAccountLayoutFixture('standard', 1792144800),
+    evaluate: async expression => assert.doesNotThrow(() => new Script(expression)),
+    waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+    captureLayouts: async (_selector, page) => captures.push(page),
+  });
+  assert.deepEqual(captures, ['account-identity-editor', 'account-deletion-warning']);
+  assert.deepEqual(result.profileControls, { identityNotSaved: true, exportNotRequested: true, deletionNotSubmitted: true });
+  assert.doesNotMatch(read('tools/design-v6/exercise-account-profile-controls.mjs'), /fetch\(|requestSubmit\(|\.submit\(|\/api\//);
+});
+
 test('compiled account capture is Linux-CI-only, never forwards API traffic and unloads the app before removing interception', () => {
   assert.equal(accountLayoutCaptureAllowed('true', 'linux'), true);
   assert.equal(accountLayoutCaptureAllowed(undefined, 'linux'), false);
   assert.equal(accountLayoutCaptureAllowed('true', 'win32'), false);
   const capture = read('tools/design-v6/capture-account-layout.mjs');
   assert.ok(capture.includes('url.origin !== accountLayoutFixtureOrigin'));
-  assert.ok(capture.includes('accountLayoutFixtureResponse(request, fixture)'));
+  assert.ok(capture.includes('accountLayoutFixtureResponse(request, fixture, homeFixtures)'));
   assert.ok(capture.includes('no exact local fixture; never forwarded'));
   assert.ok(capture.includes('isCanceledInterceptionError(error, request.networkId, canceled)'));
   assert.ok(capture.includes('isRetiredDocumentInterceptionError(error, request.networkId, retired)'));
@@ -85,6 +100,24 @@ test('compiled account capture is Linux-CI-only, never forwards API traffic and 
   assert.ok(capture.indexOf("await cdp.send('Page.navigate', { url: 'about:blank' })") < capture.indexOf("await cdp.send('Fetch.disable')"));
   const script = read('tools/design-v6/capture-public-ssr.mjs');
   assert.ok(script.indexOf('await captureAccountLayout(') > script.indexOf("'initial-theme-report.json'"));
+});
+
+test('expired account UI can replay only exact bounded anonymous home data on its local origin', () => {
+  const fixture = createAccountLayoutFixture('expired', 1792144800);
+  const key = '/api/public-stats/home';
+  const record = { status: 200, contentType: 'application/json', bytes: Buffer.from('{"parksCount":0}') };
+  const fixtures = new Map([[key, record], ['/api/me/trips', record]]);
+  const request = { method: 'GET', url: accountLayoutFixtureOrigin + key };
+  assert.deepEqual(accountLayoutFixtureResponse(request, fixture, fixtures).body, { parksCount: 0 });
+  for (const method of ['POST', 'PUT', 'DELETE']) assert.equal(accountLayoutFixtureResponse({ ...request, method }, fixture, fixtures), null);
+  assert.equal(accountLayoutFixtureResponse({ ...request, url: request.url + '?unexpected=true' }, fixture, fixtures), null);
+  assert.equal(accountLayoutFixtureResponse({ ...request, url: accountLayoutFixtureOrigin + '/api/me/trips' }, fixture, fixtures), null);
+  assert.equal(accountLayoutFixtureResponse(request, createAccountLayoutFixture('standard', 1792144800), fixtures), null);
+  assert.equal(accountLayoutFixtureResponse(request, fixture, new Map([[key, { ...record, bytes: Buffer.alloc(2097153) }]])), null);
+  const capture = read('tools/design-v6/capture-account-layout.mjs');
+  assert.ok(capture.includes("read.path.startsWith('/api/users/') || read.path.startsWith('/api/me/')"));
+  assert.ok(capture.includes('closeUnobscured'));
+  assert.ok(capture.includes('result.fixtureFailures.length || result.exceptions.length'));
 });
 
 test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {

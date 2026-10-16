@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Profil compilé — premier PASS `fc742b010`
+
+Les **104 captures compte master/V6**, identités standard/incomplètes, passent les 13 largeurs et deux thèmes dans [l'artefact `12043431107`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894/artifacts/12043431107). Inspection de `v6_standard_account-profile_390_dark.webp` : nom long sur plusieurs lignes, avatar sans média, email et navigation mobile dans le viewport. Inspection de `v6_incomplete_account-profile_1366_light.webp` : fallback email visible, panneau plat, sections/actions présentes. Ce sont des données synthétiques réservées à la recette CI, jamais un compte ou texte de production. Éditeur détaillé, avertissement suppression, listes compte et session expirée attendent leur nouvelle campagne. Approbation propriétaire et couverture exhaustive restent ouvertes.
+
 ## Dernier rendu attesté — `791dc2c46`
 
 La [campagne complète `38889015354`, artefact `12041197882`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354/artifacts/12041197882) passe 2 080 captures SSR et **732 captures hydratées additionnelles** : 30 popups carte, 208 détails et 208 panneaux de données standalone (huit langues × 13 largeurs × deux thèmes), puis les cas vidéos, récit, sources, calendrier, météo, historique standalone et récupération de mot de passe. Les trois lightboxes 320 × 568, 390 × 640 et 1 366 × 480 gardent une image de 208/303/117 px et Fermer au premier plan. Les 30 popups gardent titre, actions, Fermer et les deux commandes de zoom accessibles ; le défaut de recouvrement cité dans les campagnes antérieures est soldé dans ces cas précis.

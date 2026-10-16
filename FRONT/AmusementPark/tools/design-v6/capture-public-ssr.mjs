@@ -26,8 +26,8 @@ import { mapPopupLayoutIssues, mapReviewScrollDelta } from './map-popup-layout.m
 import { createAccountLayoutFixture } from './account-layout-fixtures.mjs';
 import { captureAccountLayout } from './capture-account-layout.mjs';
 
-// Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
-// starts a server, authenticates, performs remote writes or replaces full acceptance.
+// Initial public SSR/hydration plus network-denied, synthetic account UI in CI.
+// Never starts a server, authenticates remotely, performs writes or replaces full acceptance.
 const publicOrigin = 'https://amusement-parks.fun';
 const browserRoot = resolve('dist/amusement-park/browser');
 const outputRoot = resolve(process.env.V6_SSR_EVIDENCE_DIR ?? '../../docs/design-v6/evidence/public-ssr');
@@ -823,7 +823,7 @@ let chrome;
 let cdp;
 let entry;
 const report = {
-  scope: 'Anonymous public SSR snapshots and a CI-only hydrated home smoke; not full workflow acceptance',
+  scope: 'Anonymous public SSR/hydration and network-denied synthetic account UI; not real-auth or full workflow acceptance',
   buildSha: process.env.GITHUB_SHA ?? 'UNVERIFIED_LOCAL_BUILD',
   sourceHeadSha: process.env.V6_SOURCE_HEAD_SHA ?? 'UNVERIFIED_LOCAL_BUILD',
   reducedMotion: true,
@@ -1134,11 +1134,11 @@ try {
       }, null, 2));
       report.accountLayouts = [];
       const fixtureTime = Math.floor(Date.now() / 1000);
-      for (const kind of ['standard', 'incomplete']) {
+      for (const kind of ['standard', 'incomplete', 'expired']) {
         const fixture = createAccountLayoutFixture(kind, fixtureTime);
         for (const label of ['master', 'v6']) {
           try {
-            report.accountLayouts.push(await captureAccountLayout({ cdp, widths, outputRoot, fixture, label,
+            report.accountLayouts.push(await captureAccountLayout({ cdp, widths, outputRoot, fixture, label, homeFixtures: homeClientFixtures,
               browserRoot: label === 'master' ? resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') : browserRoot }));
           } catch (error) {
             report.accountLayoutFailure = { label, kind, error: error.message };

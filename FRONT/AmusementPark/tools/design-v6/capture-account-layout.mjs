@@ -3,6 +3,7 @@ import { extname, join, resolve, sep } from 'node:path';
 import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse } from './account-layout-fixtures.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from './browser-interception-errors.mjs';
 import { exerciseAccountLists } from './exercise-account-lists.mjs';
+import { exerciseAccountProfileControls } from './exercise-account-profile-controls.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -10,9 +11,10 @@ export function accountLayoutCaptureAllowed(ci, platform) {
 
 // Compiled application, existing guards/services, synthetic HTTP input only.
 // This is UI acceptance, never proof of authentication or a private API call.
-export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label }) {
+export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label, homeFixtures = new Map() }) {
   if (!accountLayoutCaptureAllowed(process.env.CI, process.platform)) throw new Error('Account layout capture requires isolated Linux CI.');
-  if (!['master', 'v6'].includes(label) || !['standard', 'incomplete'].includes(fixture.kind)) throw new Error('Unsupported account layout capture case.');
+  if (!['master', 'v6'].includes(label) || !['standard', 'incomplete', 'expired'].includes(fixture.kind)) throw new Error('Unsupported account layout capture case.');
+  if (fixture.kind === 'expired' && (!(homeFixtures instanceof Map) || !homeFixtures.size)) throw new Error('Expired account UI requires exact local public-home fixtures.');
   if (!Array.isArray(widths) || widths.length < 1 || widths.length > 13 || widths.some(width => !Number.isInteger(width) || width < 320 || width > 1920)) throw new Error('Account capture widths exceed their bound.');
   const root = resolve(browserRoot);
   const rawHtml = await readFile(join(root, 'index.csr.html'), 'utf8');
@@ -51,7 +53,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       return;
     }
     if (url.pathname.startsWith('/api/')) {
-      const response = accountLayoutFixtureResponse(request, fixture);
+      const response = accountLayoutFixtureResponse(request, fixture, homeFixtures);
       if (!response) {
         result.fixtureFailures.push({ method: request.method, path: url.pathname, query: url.search, reason: 'no exact local fixture; never forwarded' });
         await fulfill(requestId, 503, 'application/problem+json', JSON.stringify({ status: 503, title: 'Missing isolated account fixture' }));
@@ -63,7 +65,8 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     }
     if (!['GET', 'HEAD'].includes(request.method)) throw new Error('Unexpected non-fixture mutation in account layout capture.');
     if (resourceType === 'Document') {
-      if (url.pathname !== '/fr/profile' || url.search) throw new Error('Unexpected account fixture document navigation.');
+      if (!(url.pathname === '/fr/profile' && !url.search)
+          && !(fixture.kind === 'expired' && url.pathname === '/fr/home' && url.searchParams.size === 1 && url.searchParams.get('returnUrl') === '/fr/profile')) throw new Error('Unexpected account fixture document navigation.');
       await fulfill(requestId, 200, 'text/html; charset=utf-8', rawHtml);
       return;
     }
@@ -107,17 +110,32 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     await cdp.send('Fetch.enable', { patterns: [{ urlPattern: '*', requestStage: 'Request' }] });
     await cdp.send('Page.navigate', { url: `${accountLayoutFixtureOrigin}/fr/profile` });
     const displayName = fixture.user.publicDisplayName || fixture.user.firstName || fixture.user.email;
-    await waitUntil(`document.querySelector('.profile-hero__title')?.textContent.trim() === ${JSON.stringify(displayName)}`, 'existing guard and refresh flow render the local account fixture');
-    await waitUntil(`!document.querySelector('a[href="/fr/admin"]')`, 'standard account fixture does not expose the conditional admin entry');
-    await evaluate(`document.querySelector('.app-cookie-consent__button--ghost')?.click()`);
-    await waitUntil(`!document.querySelector('.app-cookie-consent')`, 'account layout uses the real necessary-cookie control');
-    await evaluate(`document.querySelector('.profile-row--identity > button').click()`);
-    await waitUntil(`!!document.getElementById('profile-firstname') && document.getElementById('profile-firstname').value === ${JSON.stringify(fixture.user.firstName)}`, 'identity editor retains the exact fixture fields without submitting');
-    await evaluate(`document.querySelector('.profile-actions--editing button:last-child').click()`);
-    await waitUntil(`!document.querySelector('.profile-identity-editor') && document.querySelector('.profile-hero__title').textContent.trim() === ${JSON.stringify(displayName)}`, 'identity cancellation restores the same visible account');
+    if (fixture.kind === 'expired') {
+      await waitUntil(`location.pathname === '/fr/home' && new URLSearchParams(location.search).get('returnUrl') === '/fr/profile' && !!document.querySelector('app-auth-modal #loginEmail') && !document.querySelector('.profile-hero')`, 'expired local refresh retains the real guard redirect, return URL and login dialog without private profile content');
+      await waitUntil(`localStorage.getItem(${JSON.stringify(accountLayoutRefreshMarker)}) === null`, 'expired local refresh clears the existing session marker');
+    } else {
+      await waitUntil(`document.querySelector('.profile-hero__title')?.textContent.trim() === ${JSON.stringify(displayName)}`, 'existing guard and refresh flow render the local account fixture');
+      await waitUntil(`!document.querySelector('a[href="/fr/admin"]')`, 'standard account fixture does not expose the conditional admin entry');
+      await evaluate(`document.querySelector('.app-cookie-consent__button--ghost')?.click()`);
+      await waitUntil(`!document.querySelector('.app-cookie-consent')`, 'account layout uses the real necessary-cookie control');
+      await evaluate(`document.querySelector('.profile-row--identity > button').click()`);
+      await waitUntil(`!!document.getElementById('profile-firstname') && document.getElementById('profile-firstname').value === ${JSON.stringify(fixture.user.firstName)}`, 'identity editor retains the exact fixture fields without submitting');
+      await evaluate(`document.querySelector('.profile-actions--editing button:last-child').click()`);
+      await waitUntil(`!document.querySelector('.profile-identity-editor') && document.querySelector('.profile-hero__title').textContent.trim() === ${JSON.stringify(displayName)}`, 'identity cancellation restores the same visible account');
+    }
     const captureLayouts = async (selector, page) => {
       for (const theme of ['dark', 'light']) {
-        if (!(await evaluate(`document.body.classList.contains('${theme}-mode')`))) await evaluate(`document.querySelector('app-theme-switcher button').click()`);
+        if (!(await evaluate(`document.body.classList.contains('${theme}-mode')`))) {
+          if (fixture.kind === 'expired') {
+            await evaluate(`document.querySelector('.p-dialog-header-close').click()`);
+            await waitUntil(`!document.querySelector('app-auth-modal')`, 'expired account dialog closes before using background theme navigation');
+          }
+          await evaluate(`document.querySelector('app-theme-switcher button').click()`);
+          if (fixture.kind === 'expired') {
+            await evaluate(`document.querySelector('.app-public-nav__right .btn-nav--primary').click()`);
+            await waitUntil(`!!document.querySelector('app-auth-modal #loginEmail') && new URLSearchParams(location.search).get('returnUrl') === '/fr/profile'`, 'expired account login dialog reopens with the same return URL after the real theme change');
+          }
+        }
         await waitUntil(`document.body.classList.contains('${theme}-mode')`, `account fixture uses the existing ${theme} theme control`);
         for (const width of widths) {
           await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
@@ -127,7 +145,10 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           await waitUntil(async () => {
             layout = await evaluate(`({ width: innerWidth, height: innerHeight, documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
               theme: document.body.classList.contains('light-mode') ? 'light' : 'dark', titleWidth: document.querySelector('h1').getBoundingClientRect().width,
-              avatarWidth: document.querySelector('.profile-avatar, .profile-avatar--placeholder')?.getBoundingClientRect().width ?? null })`);
+              avatarWidth: document.querySelector('.profile-avatar, .profile-avatar--placeholder')?.getBoundingClientRect().width ?? null,
+              dialog: (() => { const node = document.querySelector('.p-dialog'); if (!node) return null; const box = node.getBoundingClientRect();
+                const close = node.querySelector('.p-dialog-header-close'); const rect = close.getBoundingClientRect();
+                return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, closeUnobscured: close.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2)) }; })() })`);
             result.lastLayout = layout;
             const serialized = JSON.stringify(layout);
             const stable = previous === serialized;
@@ -135,6 +156,8 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
             return stable && layout.width === width && layout.theme === theme;
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
+          if (page === 'account-expired' && (!layout.dialog || layout.dialog.x < -1 || layout.dialog.y < -1
+              || layout.dialog.right > width + 1 || layout.dialog.bottom > layout.height + 1 || !layout.dialog.closeUnobscured)) issues.push('expired login dialog bounds or close action');
           const screenshot = `${label}_${fixture.kind}_${page}_${width}_${theme}.webp`;
           const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
           await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
@@ -143,12 +166,26 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         }
       }
     };
-    await captureLayouts('.profile-hero', 'account-profile');
-    await exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result });
+    if (fixture.kind === 'expired') {
+      await captureLayouts('.p-dialog', 'account-expired');
+      if (result.apiReads.some(read => read.path.startsWith('/api/users/') || read.path.startsWith('/api/me/'))) throw new Error('Expired layout unexpectedly requested private profile data.');
+      result.expiredSession = { localRefreshRejected: true, guardRedirectExercised: true, realAuthIntegrationExercised: false };
+    } else {
+      await captureLayouts('.profile-hero', 'account-profile');
+      await exerciseAccountProfileControls({ evaluate, waitUntil, captureLayouts, fixture, result });
+      await exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result });
+    }
+    if (result.fixtureFailures.length || result.exceptions.length) throw new Error('Account layout accumulated an unexpected fixture or browser failure.');
     result.passed = true;
   } catch (error) {
     result.passed = false;
     result.error = error.message;
+    try {
+      result.lastDocument = await evaluate(`({ path: location.pathname, query: location.search, hasLogin: !!document.querySelector('app-auth-modal'), hasProfile: !!document.querySelector('.profile-hero') })`);
+      const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+      result.failureScreenshot = `${label}_${fixture.kind}_account-failure.webp`;
+      await writeFile(join(outputRoot, result.failureScreenshot), Buffer.from(pixels.data, 'base64'));
+    } catch { /* Keep the original failed check if the browser is unavailable. */ }
   } finally {
     closing = true;
     await cdp.send('Page.navigate', { url: 'about:blank' });
@@ -156,6 +193,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     await cdp.send('Fetch.disable');
     stopInterception(); stopCancellation(); stopExceptions(); stopDocuments(); stopRetirement();
     if (injectedScript) await cdp.send('Page.removeScriptToEvaluateOnNewDocument', { identifier: injectedScript });
+    if (result.fixtureFailures.length || result.exceptions.length) { result.passed = false; result.error ??= 'Unexpected account fixture or browser failure during cleanup.'; }
     await writeFile(join(outputRoot, `${label}_${fixture.kind}_account-report.json`), JSON.stringify(result, null, 2));
   }
   if (!result.passed) throw new Error(`Isolated account layout ${label}/${fixture.kind}: ${result.error}`);

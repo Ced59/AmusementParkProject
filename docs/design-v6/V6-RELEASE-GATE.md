@@ -33,13 +33,13 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | PASS complet `791dc2c46` — 2 769 tests Angular / 583 fichiers, 224 tests qualité, 224 assertions HTTP, 307 contrôles hydratés et Docker ; nouveau complément compte à exécuter |
+| P21 CI Node 24 | PASS complet `fc742b010` — 2 769 tests Angular / 583 fichiers, 224 tests qualité, 224 assertions HTTP, 307 contrôles publics hydratés, 132 contrôles/104 captures profil master/V6 et Docker ; compléments listes/session expirée à exécuter |
 | Exception P04.6 | PASS_WITH_OWNER_EXCEPTION sur six paires `791dc2c46` : deux scripts CDK, +3 280 octets JS, aucun autre nombre de requêtes modifié ; plafond +3 302 inchangé, marge 22 octets |
 | Recette pratique additionnelle | PASS CIBLÉ `791dc2c46` — 732 captures hydratées additionnelles, calendrier localement défilable, météo, 30 popups, vidéos, récit et standalone huit langues ; scénarios absents et revue exhaustive toujours ouverts |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | OUI sur `791dc2c46`, [run 38889015354](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354), Docker compris, déploiement ignoré ; ne préjuge pas des commits suivants ni des gates ouverts |
+| CI intégralement verte | OUI sur `fc742b010`, [run 38892315894](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894), Docker compris, déploiement ignoré ; ne préjuge pas des commits suivants ni des gates ouverts |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |

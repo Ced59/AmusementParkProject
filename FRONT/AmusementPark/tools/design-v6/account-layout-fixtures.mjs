@@ -1,4 +1,5 @@
 // CI-only layout fixtures. Never imported by Angular or sent to a real server.
+import { homeEvidenceApiPaths } from './home-network-evidence.mjs';
 export const accountLayoutFixtureOrigin = 'https://apf-account-layout.invalid';
 export const accountLayoutRefreshMarker = 'amusementpark.hasRefreshSession';
 const userId = '00000000-0000-4000-8000-000000000017';
@@ -12,7 +13,7 @@ export function createAccountLayoutFixture(kind, nowSeconds) {
     firstName: kind === 'incomplete' ? '' : 'Camille', lastName: kind === 'incomplete' ? '' : 'Démonstration',
     publicDisplayName: kind === 'incomplete' ? null : 'Compte de recette — caractères longs Äéł',
     publicIdentifier: 'layout-review', isActivated: true, isBlocked: false, roles: ['USER'],
-    preferredLanguage: 'FR', preferredMeasurementSystem: 'SI', avatarUrl: '', createdAt: date, updatedAt: date };
+    preferredLanguage: 'FR', preferredMeasurementSystem: 'Metric', avatarUrl: '', createdAt: date, updatedAt: date };
   const claims = { sub: user.id, nameidentifier: user.id, email: user.email, firstname: user.firstName,
     lastname: user.lastName, avatar: '', lastlogin: date, roles: [...user.roles], jti: 'apf-ci-layout-only',
     exp: nowSeconds + 3600, iss: 'urn:apf-ci-layout-fixture', aud: 'apf-ci-layout-only' };
@@ -42,9 +43,17 @@ export function createAccountLayoutFixture(kind, nowSeconds) {
   return { kind, user, accessToken, collections, trips };
 }
 
-export function accountLayoutFixtureResponse(request, fixture) {
+export function accountLayoutFixtureResponse(request, fixture, homeFixtures = new Map()) {
   const url = new URL(request.url);
-  if (url.origin !== accountLayoutFixtureOrigin || url.search || url.hash) return null;
+  if (url.origin !== accountLayoutFixtureOrigin || url.hash) return null;
+  if (fixture.kind === 'expired' && request.method === 'GET' && homeEvidenceApiPaths.has(url.pathname)
+      && homeFixtures instanceof Map && homeFixtures.size <= 16) {
+    const record = homeFixtures.get(url.pathname + url.search);
+    if (record?.status === 200 && record.contentType?.includes('application/json') && Buffer.isBuffer(record.bytes)
+        && record.bytes.length <= 2097152) return { status: 200, body: JSON.parse(record.bytes.toString('utf8')) };
+    return null;
+  }
+  if (url.search) return null;
   if (request.method === 'POST' && url.pathname === '/api/auth/refresh-token') {
     return fixture.kind === 'expired'
       ? { status: 401, body: { status: 401, title: 'Expired isolated layout session' } }
