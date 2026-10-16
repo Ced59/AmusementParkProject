@@ -33,7 +33,7 @@
 
 .park-history-breadcrumb a:hover,
 .park-history-breadcrumb a:focus-visible {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .park-history-hero {
@@ -192,7 +192,7 @@
 .history-badge--unknown,
 .history-badge--partial {
   border-color: color-mix(in srgb, var(--app-primary) 48%, var(--app-border));
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .park-history-pagination {

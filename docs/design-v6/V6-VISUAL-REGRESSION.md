@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Diagnostic `e4c477022` — snapshots et formulaire local
+
+L'[artefact `12075055605`](https://github.com/Ced59/AmusementParkProject/actions/runs/38964725822/artifacts/12075055605) conserve 348 captures et trois nouveaux défauts en clair : « Inventaire établi » orange sur `#eeefe8` à **3,38:1**, badge couverture partielle sur `#f7f6f0` à **3,61:1**, confirmation historique anonyme or sur `[0.931216, 0.898667, 0.864627]` à **3,99:1**. Les deux textes orange et le hover/focus du breadcrumb rejoignent `--app-primary-strong` ; l'avertissement utilise `--app-accent-gold` avec un selector précis sans l'ancien `!important`. Fonds, textes, données historiques et confirmations restent inchangés. Les fonds mesurés et liaisons CSS sont testés ; **nouveau rendu CI requis**, aucune validation des écrans suivants déduite de ces seuls tests.
+
 ## Audit source des erreurs rares de partage/consentement
 
 Quatre textes d'erreur passeport/partage/comparaison utilisaient `--color-danger` non défini, avec le fallback pastel `#ff4f87`. Leur seule propriété `color` rejoint `--app-danger` ; contenus, conditionnels, traitements d'erreur et fonds restent conservés. Le test vérifie le raccordement et 4,5:1 sur fond général et surface teintée à 8 % dans les deux thèmes. **C'est une preuve source/numérique, pas une capture d'erreur serveur réelle ni un nouveau PASS de workflow.**
