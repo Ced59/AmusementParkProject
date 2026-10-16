@@ -194,7 +194,10 @@ test('seven private trip deep-link recipes compile exact browser expressions wit
     assert.equal(documents.at(-1), '/de/profile');
     assert.equal(result.tripPages.persistenceInvitationsDownloadsPrintAndPassportConfirmationNotExercised, true);
   }
-  assert.doesNotMatch(read('tools/design-v6/exercise-account-trip-pages.mjs'), /fetch\(|requestSubmit|\.submit\(|\.save\(|\.print\(|downloadJson\(|\.confirm\(/);
+  const source = read('tools/design-v6/exercise-account-trip-pages.mjs');
+  assert.doesNotMatch(source, /fetch\(|requestSubmit|\.submit\(|\.save\(|\.print\(|downloadJson\(|\.confirm\(/);
+  assert.ok(source.includes('JSON.stringify(`${hero} h1`)'));
+  assert.ok(!source.includes("document.querySelector('h1')"), 'hidden account-shell heading must not replace the exact trip page title');
 });
 
 test('notification layout fixtures retain exact pagination, filters, immutable rows and intentional isolated errors', () => {

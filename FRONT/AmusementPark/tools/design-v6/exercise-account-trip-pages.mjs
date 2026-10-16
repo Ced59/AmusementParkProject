@@ -14,7 +14,7 @@ export async function exerciseAccountTripPages({ evaluate, waitUntil, captureLay
   ];
   for (const [suffix, hero, content] of pages) {
     await navigateDocument(prefix + suffix);
-    await waitUntil(`location.pathname === ${JSON.stringify(prefix + suffix)} && !!document.querySelector(${JSON.stringify(content)}) && document.querySelector('h1').textContent.trim() === ${JSON.stringify(data.plan.title)}`, `private trip ${suffix || 'overview'} renders its exact local plan without an API mutation`);
+    await waitUntil(`location.pathname === ${JSON.stringify(prefix + suffix)} && !!document.querySelector(${JSON.stringify(content)}) && document.querySelector(${JSON.stringify(`${hero} h1`)})?.textContent.trim() === ${JSON.stringify(data.plan.title)}`, `private trip ${suffix || 'overview'} renders its exact local plan without an API mutation`);
     const name = suffix.slice(1) || 'overview';
     await captureLayouts(hero, `account-trip-${name}`);
     await captureLayouts(content, `account-trip-${name}-content`);

@@ -172,7 +172,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           let previous;
           await waitUntil(async () => {
             layout = await evaluate(`({ width: innerWidth, height: innerHeight, documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
-              theme: document.body.classList.contains('light-mode') ? 'light' : 'dark', titleWidth: document.querySelector('h1').getBoundingClientRect().width,
+              theme: document.body.classList.contains('light-mode') ? 'light' : 'dark', titleWidth: (document.querySelector('.app-account-layout__content h1') ?? document.querySelector('h1'))?.getBoundingClientRect().width ?? null,
               avatarWidth: document.querySelector('.profile-avatar, .profile-avatar--placeholder')?.getBoundingClientRect().width ?? null,
               dialog: (() => { const node = document.querySelector('.p-dialog'); if (!node) return null; const box = node.getBoundingClientRect();
                 const close = node.querySelector('.p-dialog-header-close'); const rect = close.getBoundingClientRect();

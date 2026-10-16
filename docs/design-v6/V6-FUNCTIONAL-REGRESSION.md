@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## CI `906bff28b` — baseline notifications atteinte, sélecteur de recette corrigé
+
+Le [run `38906152400`](https://github.com/Ced59/AmusementParkProject/actions/runs/38906152400), [artefact `12049570393`](https://github.com/Ced59/AmusementParkProject/actions/runs/38906152400/artifacts/12049570393), s'arrête **dans master**, avant V6. La baseline standard FR atteint 577 contrôles/494 captures, dont notifications, filtres, page 2, erreur/retry et reprise ; aucun échec de fixture ni exception navigateur. Les GET de voyage répondent 200 et la capture montre le vrai titre attendu.
+
+Le sélecteur de recette comparait pourtant le premier `h1` du document, celui de l'introduction du shell compte, au titre de voyage. Il est corrigé vers le `h1` du hero de chaque sous-page, avec la même valeur attendue exacte. La mesure de largeur privilégie aussi le titre de contenu plutôt que le titre masqué du shell. **Aucun template, titre, service, guard ou donnée du produit n'est modifié.** Un test protège le scope et les expressions exactes ; 48 tests Node compte/tokens passent. Nouveau run requis, aucun PASS V6 ni contraste final déduit de cet échec master.
+
 ## CI `f975d9bc4` — tests auth verts, recette encore FAIL
 
 Le [run `38903181087`](https://github.com/Ced59/AmusementParkProject/actions/runs/38903181087) valide **2 777 tests Angular / 583 fichiers**, dont les sept nouveaux cas auth : fallback FR/EN, absence d'appel sans token et payloads inchangés. Build, budgets, backend et sécurité passent. Le profil clair mobile franchit le défaut bleu corrigé ; le prochain refus est le kicker or desktop à 4,25:1, sans erreur navigateur/fixture. L'alias or et une combinaison lime détectée par le garde de 25 compositions sont corrigés ; 17 tests tokens passent. Les nouveaux rendus et les compléments compte suivants restent non attestés. Pas de PASS global ni d'autorisation de merge déduits des tests unitaires.
