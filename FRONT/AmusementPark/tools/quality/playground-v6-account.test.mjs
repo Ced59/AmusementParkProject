@@ -6,6 +6,7 @@ import { Script } from 'node:vm';
 import { exerciseAnonymousAuth } from '../design-v6/exercise-anonymous-auth.mjs';
 import { accountLayoutFixtureOrigin, createAccountLayoutFixture, accountLayoutFixtureResponse } from '../design-v6/account-layout-fixtures.mjs';
 import { accountLayoutCaptureAllowed } from '../design-v6/capture-account-layout.mjs';
+import { exerciseAccountLists } from '../design-v6/exercise-account-lists.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -39,7 +40,35 @@ test('account layout fixtures reject production origins, unknown endpoints and a
   }
   response.body.roles.push('ADMIN');
   assert.deepEqual(fixture.user.roles, ['USER']);
+  for (const path of ['/api/me/collections', '/api/me/trips']) {
+    const request = { method: 'GET', url: accountLayoutFixtureOrigin + path };
+    const list = accountLayoutFixtureResponse(request, fixture);
+    assert.ok(list.body.length > 0);
+    list.body.splice(0, list.body.length);
+    assert.ok(accountLayoutFixtureResponse(request, fixture).body.length > 0);
+    for (const method of ['POST', 'PUT', 'PATCH', 'DELETE']) assert.equal(accountLayoutFixtureResponse({ ...request, method }, fixture), null);
+    assert.deepEqual(accountLayoutFixtureResponse(request, createAccountLayoutFixture('incomplete', 1792144800)).body, []);
+    assert.equal(accountLayoutFixtureResponse(request, createAccountLayoutFixture('expired', 1792144800)), null);
+  }
   assert.doesNotMatch(read('tools/design-v6/account-layout-fixtures.mjs'), /fetch\(|https:\/\/amusement-parks\.fun|password\s*:/);
+});
+
+test('compiled collection filters and trip draft recipe retain exact fixtures and never submit a persisted write', async () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const captures = [];
+    const result = {};
+    const fixture = createAccountLayoutFixture(kind, 1792144800);
+    await exerciseAccountLists({ fixture, result,
+      evaluate: async expression => { assert.doesNotThrow(() => new Script(expression)); return expression.includes('path: location.pathname') ? { path: '/fr/profile', index: 2, key: 'exact-profile' } : undefined; },
+      waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+      captureLayouts: async (_selector, page) => captures.push(page),
+    });
+    assert.deepEqual(captures, ['account-collections', 'account-trips', 'account-trip-draft']);
+    assert.equal(result.lists.collections, fixture.collections.length);
+    assert.equal(result.lists.trips, fixture.trips.length);
+    assert.equal(result.lists.persistedWritesExercised, false);
+  }
+  assert.doesNotMatch(read('tools/design-v6/exercise-account-lists.mjs'), /fetch\(|requestSubmit\(|\.submit\(|\/api\//);
 });
 
 test('compiled account capture is Linux-CI-only, never forwards API traffic and unloads the app before removing interception', () => {

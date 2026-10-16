@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { extname, join, resolve, sep } from 'node:path';
 import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse } from './account-layout-fixtures.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from './browser-interception-errors.mjs';
+import { exerciseAccountLists } from './exercise-account-lists.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -114,32 +115,36 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     await waitUntil(`!!document.getElementById('profile-firstname') && document.getElementById('profile-firstname').value === ${JSON.stringify(fixture.user.firstName)}`, 'identity editor retains the exact fixture fields without submitting');
     await evaluate(`document.querySelector('.profile-actions--editing button:last-child').click()`);
     await waitUntil(`!document.querySelector('.profile-identity-editor') && document.querySelector('.profile-hero__title').textContent.trim() === ${JSON.stringify(displayName)}`, 'identity cancellation restores the same visible account');
-    for (const theme of ['dark', 'light']) {
-      if (!(await evaluate(`document.body.classList.contains('${theme}-mode')`))) await evaluate(`document.querySelector('app-theme-switcher button').click()`);
-      await waitUntil(`document.body.classList.contains('${theme}-mode')`, `account fixture uses the existing ${theme} theme control`);
-      for (const width of widths) {
-        await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
-        await evaluate(`document.querySelector('.profile-hero').scrollIntoView({ block: 'start', behavior: 'instant' })`);
-        let layout;
-        let previous;
-        await waitUntil(async () => {
-          layout = await evaluate(`({ width: innerWidth, height: innerHeight, documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
-            theme: document.body.classList.contains('light-mode') ? 'light' : 'dark', titleWidth: document.querySelector('.profile-hero__title').getBoundingClientRect().width,
-            avatarWidth: document.querySelector('.profile-avatar, .profile-avatar--placeholder')?.getBoundingClientRect().width ?? null })`);
-          result.lastLayout = layout;
-          const serialized = JSON.stringify(layout);
-          const stable = previous === serialized;
-          previous = serialized;
-          return stable && layout.width === width && layout.theme === theme;
-        }, `${label} ${fixture.kind} account layout settles at ${width}px (${theme})`);
-        const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
-        const screenshot = `${label}_${fixture.kind}_account-profile_${width}_${theme}.webp`;
-        const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
-        await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
-        result.layouts.push({ ...layout, screenshot, issues });
-        if (label === 'v6' && issues.length) throw new Error(`Account profile layout requires correction: ${width}px ${theme}`);
+    const captureLayouts = async (selector, page) => {
+      for (const theme of ['dark', 'light']) {
+        if (!(await evaluate(`document.body.classList.contains('${theme}-mode')`))) await evaluate(`document.querySelector('app-theme-switcher button').click()`);
+        await waitUntil(`document.body.classList.contains('${theme}-mode')`, `account fixture uses the existing ${theme} theme control`);
+        for (const width of widths) {
+          await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
+          await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({ block: 'start', behavior: 'instant' })`);
+          let layout;
+          let previous;
+          await waitUntil(async () => {
+            layout = await evaluate(`({ width: innerWidth, height: innerHeight, documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
+              theme: document.body.classList.contains('light-mode') ? 'light' : 'dark', titleWidth: document.querySelector('h1').getBoundingClientRect().width,
+              avatarWidth: document.querySelector('.profile-avatar, .profile-avatar--placeholder')?.getBoundingClientRect().width ?? null })`);
+            result.lastLayout = layout;
+            const serialized = JSON.stringify(layout);
+            const stable = previous === serialized;
+            previous = serialized;
+            return stable && layout.width === width && layout.theme === theme;
+          }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
+          const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
+          const screenshot = `${label}_${fixture.kind}_${page}_${width}_${theme}.webp`;
+          const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+          await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
+          result.layouts.push({ ...layout, page, screenshot, issues });
+          if (label === 'v6' && issues.length) throw new Error(`Account ${page} layout requires correction: ${width}px ${theme}`);
+        }
       }
-    }
+    };
+    await captureLayouts('.profile-hero', 'account-profile');
+    await exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result });
     result.passed = true;
   } catch (error) {
     result.passed = false;

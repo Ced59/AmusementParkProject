@@ -19,7 +19,27 @@ export function createAccountLayoutFixture(kind, nowSeconds) {
   const encode = value => Buffer.from(JSON.stringify(value)).toString('base64url');
   // Deliberately unsigned, local-only UI input. This is not authentication proof.
   const accessToken = `${encode({ alg: 'none', typ: 'JWT' })}.${encode(claims)}.ci-layout-only`;
-  return { kind, user, accessToken };
+  const collections = kind !== 'standard' ? [] : ['Favorite', 'WantToVisit', 'Planned'].map((collectionKind, index) => ({
+    entryId: `00000000-0000-4000-8000-00000000003${index}`, targetType: index === 1 ? 'ParkItem' : 'Park',
+    targetId: `00000000-0000-4000-8000-00000000004${index}`, kind: collectionKind,
+    targetStatus: index === 2 ? 'Unknown' : 'Available',
+    targetName: index === 2 ? null : 'Lieu de recette uniquement — nom très long Äéł pour vérifier le retour à la ligne',
+    parentParkId: index === 1 ? '00000000-0000-4000-8000-000000000050' : null,
+    parentParkName: index === 1 ? 'Parc de recette uniquement' : null,
+    mainImageId: null, privateNote: null, priority: null, preferredStartsOn: null, preferredEndsOn: null,
+    createdAtUtc: date, updatedAtUtc: date, version: 1,
+  }));
+  const trips = kind !== 'standard' ? [] : ['None', 'Fixed', 'Range', 'Candidates'].map((proposalKind, index) => ({
+    tripPlanId: `00000000-0000-4000-8000-00000000006${index}`,
+    title: `Voyage de recette uniquement — titre long avec caractères Äéł (${proposalKind})`,
+    dateProposal: { kind: proposalKind, startDate: ['Fixed', 'Range'].includes(proposalKind) ? '2026-12-20' : null,
+      endDate: proposalKind === 'Range' ? '2026-12-22' : proposalKind === 'Fixed' ? '2026-12-20' : null,
+      candidateDates: proposalKind === 'Candidates' ? ['2026-12-20', '2026-12-22'] : [] },
+    destinationTimeZoneId: proposalKind === 'None' ? null : 'Europe/Paris', status: 'Draft', accessScope: 'Private',
+    memberCount: 2, isOwner: true, effectiveRole: 'Owner', canEditPlan: true, canEditProgram: true,
+    canInvite: true, canChangeRoles: true, createdAtUtc: date, updatedAtUtc: date, version: 1,
+  }));
+  return { kind, user, accessToken, collections, trips };
 }
 
 export function accountLayoutFixtureResponse(request, fixture) {
@@ -32,6 +52,9 @@ export function accountLayoutFixtureResponse(request, fixture) {
   }
   if (request.method === 'GET' && url.pathname === `/api/users/${fixture.user.id}` && fixture.kind !== 'expired') {
     return { status: 200, body: { ...fixture.user, roles: [...fixture.user.roles] } };
+  }
+  if (request.method === 'GET' && fixture.kind !== 'expired' && ['/api/me/collections', '/api/me/trips'].includes(url.pathname)) {
+    return { status: 200, body: structuredClone(url.pathname === '/api/me/collections' ? fixture.collections : fixture.trips) };
   }
   // No generic fallback, account creation, mutation, real cookie or network call.
   return null;
