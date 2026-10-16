@@ -16,6 +16,9 @@ import { resumeStaticCaptures } from './browser-phase-isolation.mjs';
 import { photoLightboxLayoutIssues } from './photo-lightbox-layout.mjs';
 import { exercisePublicPractical } from './exercise-public-practical.mjs';
 import { publicPracticalReadEvidence, openingCalendarLayoutIssues } from './public-practical-evidence.mjs';
+import { publicVideoReadEvidence } from './public-video-evidence.mjs';
+import { exercisePublicMediaHistory } from './exercise-public-media-history.mjs';
+import { exercisePublicMap } from './exercise-public-map.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -266,8 +269,9 @@ async function captureHydratedHome(rawHtml, options = {}) {
       const parkItems = publicParkItemsReadEvidence(target, response.status, bytes);
       const photos = publicPhotoReadEvidence(target, response.status, bytes);
       const practical = publicPracticalReadEvidence(target, response.status, bytes);
+      const videos = publicVideoReadEvidence(target, response.status, bytes);
       result.apiReads.push({ path: target.pathname, query: target.search, status: response.status,
-        ...(directory ? { directory } : {}), ...(parkItems ? { parkItems } : {}), ...(photos ? { photos } : {}), ...(practical ? { practical } : {}) });
+        ...(directory ? { directory } : {}), ...(parkItems ? { parkItems } : {}), ...(photos ? { photos } : {}), ...(practical ? { practical } : {}), ...(videos ? { videos } : {}) });
       await respond(response.status, response.headers.get('content-type') ?? 'application/octet-stream', bytes);
       return;
     }
@@ -548,7 +552,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
       await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', ...key });
       await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', ...key });
     } });
-    await exercisePublicPractical({ evaluate, waitUntil, result, capturePractical: async (label, selector) => {
+    const captureHydratedPage = async (label, selector) => {
       const originalTheme = await evaluate(`document.body.classList.contains('light-mode') ? 'light' : 'dark'`);
       const setTheme = async theme => {
         if (await evaluate(`!document.body.classList.contains('${theme}-mode')`)) {
@@ -563,7 +567,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
             await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
             await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({ block: 'start', behavior: 'instant' })`);
             await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
-            const layout = await evaluate(`({ width: innerWidth, documentWidth: document.documentElement.scrollWidth, theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
+            const layout = await evaluate(`({ width: innerWidth, documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth), theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
             if (layout.documentWidth > width + 1) throw new Error(`Hydrated practical page overflows at ${width}px.`);
             if (label === 'opening-hours-selected') {
               const cells = await evaluate(`(() => {
@@ -591,7 +595,10 @@ async function captureHydratedHome(rawHtml, options = {}) {
         await cdp.send('Emulation.setDeviceMetricsOverride', { width: 1366, height: 1200, deviceScaleFactor: 1, mobile: false });
         await setTheme(originalTheme);
       }
-    } });
+    };
+    await exercisePublicPractical({ evaluate, waitUntil, result, capturePractical: captureHydratedPage });
+    await exercisePublicMap({ evaluate, waitUntil, result, capturePage: captureHydratedPage });
+    await exercisePublicMediaHistory({ evaluate, waitUntil, result, capturePage: captureHydratedPage });
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
     let directoryCursor = result.apiReads.length;

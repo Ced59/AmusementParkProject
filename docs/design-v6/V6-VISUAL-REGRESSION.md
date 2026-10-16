@@ -6,6 +6,8 @@ La [campagne `38859824025`, artefact `12028973687`](https://github.com/Ced59/Amu
 
 La météo historique réelle à 390 px sombre a aussi été inspectée : matrice en défilement local, attribution et partage lisibles. Ce constat ciblé ne valide pas les huit langues, le zoom ou tous les états pratiques.
 
+Les captures statiques Fleury vidéos, histoire et carte à 390 px sombre de ce même artefact ont été inspectées : en-têtes, filtres, sources et navigation restent dans le document, sans chevauchement visible dans l'échantillon. La carte initiale est une réservation SSR, pas une preuve de tuiles/gestes Leaflet ; la vidéo initiale ne prouve pas la lecture du fournisseur. Les prochains scénarios hydratés ciblent justement ces états et le récit complet.
+
 Les cinq déclarations orphelines `--hero-stat-color` sont retirées : aucune lecture de cette variable n'existait dans `src/`. Les chiffres de l'accueil conservent leur premier plan et leurs sources ; cette suppression de CSS mort n'élargit pas l'exception de poids JS acceptée.
 
 ## Lightbox corrigée — validation `579060704`

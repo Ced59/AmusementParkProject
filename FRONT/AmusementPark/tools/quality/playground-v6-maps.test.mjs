@@ -27,6 +27,13 @@ const officialStyles = read('src/app/features/public/parks/ui/park-official-maps
 const listTemplate = read('src/app/features/public/parks/ui/park-list-map.component.html');
 const leafletStyles = read('src/app/shared/components/leaflet-map/leaflet-map.component.scss');
 
+test('map browser acceptance uses real zoom controls, category counts, popup detail routes and available official years', () => {
+  const recipe = read('tools/design-v6/exercise-public-map.mjs');
+  for (const token of ['leaflet-control-zoom-in', 'beforeZoom', 'category.count', 'category.total', 'leaflet-map-popup__action--detail', 'mapKey', 'official.multiYearNotExercised = false', 'externalTilesAndDirectionsNotValidated: true', 'pointerDragNotExercised: true']) assert.ok(recipe.includes(token));
+  assert.doesNotMatch(recipe, /fetch\(|localStorage\.setItem|setView\(|setZoom\(|\.fire\(|_leaflet_id|new Date\(/);
+  assert.ok(read('tools/design-v6/capture-public-ssr.mjs').includes('await exercisePublicMap('));
+});
+
 test('the park map page preserves interactive and official modes with their filters', () => {
   for (const contract of [
     '[map]="map()"',

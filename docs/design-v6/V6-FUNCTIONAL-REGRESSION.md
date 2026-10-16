@@ -14,6 +14,14 @@ Le correctif suivant fait revenir les libellés de calendrier à la ligne sans l
 
 La comparaison source actuelle protège **20 templates, 1 753 → 1 792 contrats, zéro manquant**, avec les deux transformations présentationnelles exactes déjà documentées. Elle compare désormais aussi toutes les valeurs existantes des huit dictionnaires à la base exacte : zéro suppression ni modification, quatre nouveaux libellés génériques seulement. Les slogans sont donc protégés dans les huit langues, et pas uniquement par leur présence de clé. Un test refuse notamment une perte d'accent ou un changement d'ordre de tableau. Cette preuve source ne remplace pas les scénarios authentifiés.
 
+### Extensions cartes, vidéos et récit — navigateur encore à exécuter
+
+La recette suivante ouvre les liens réels du parc et conserve les clés d'historique. Sur Leaflet : zoom natif aller/retour, catégorie vérifiée par son vrai compte, remise à zéro, popup puis fiche ParkItem complète et retour. Les plans officiels et années ne sont exercés que si le parc en possède ; les tuiles externes, directions et glisser du pointeur restent explicitement hors verdict.
+
+Les vidéos sont comparées aux identifiants et à la pagination de leurs réponses publiques, sans conserver métadonnées de fournisseur ni DTO privés. Onglets, filtre de type avec query param, remise à zéro, recherche de créateur sans résultat, fiche complète et lecteur nommé/fallback sont vérifiés. Le lecteur externe reste bloqué par le sandbox : aucune lecture effective YouTube/Vimeo n'est annoncée.
+
+La timeline ouvre/ferme les sources natives, suit son lien vers un récit publié, capture l'en-tête et le corps puis restaure la même entrée et le même nombre d'événements. Snapshots/comparaisons et pagination historique restent marqués non exercés ; leur simple disponibilité ne leur donne pas un PASS. Les captures de chaque état sont prévues aux 13 largeurs et deux thèmes. **27 tests Node ciblés passent, syntaxe du script principal valide ; aucune exécution navigateur de cette extension n'est encore attestée.**
+
 ### Tri au clavier — contrôle partagé
 
 La directive de colonne triable conserve son input `field` et les vrais `<th>` : pas de rôle bouton substitué au rôle natif d'en-tête. Entrée/Espace sur l'en-tête focalisé passent par son même clic, donc par le tri et les sorties de pagination existants de `Table`, inchangés. Les événements d'un input descendant sont ignorés afin de ne pas doubler une activation. Deux tests Angular utilisant une fixture isolée sous `src/testing/` vérifient ordre ascendant/descendant, pagination et absence d'effet sur les autres touches. La fixture n'est importée que par le test, jamais dans les routes ou le bundle applicatif. **PASS CI `47c850246`, 2 728 tests / 581 fichiers** ; le constat statique du conteneur délégué reste suivi, sans exemption ajoutée ni verdict AA exhaustif.

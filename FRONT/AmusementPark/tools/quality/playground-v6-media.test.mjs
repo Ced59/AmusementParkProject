@@ -5,6 +5,7 @@ import test from 'node:test';
 import { publicParkGalleryPages, publicPhotoReadEvidence } from '../design-v6/public-photo-evidence.mjs';
 import { photoLightboxLayoutIssues } from '../design-v6/photo-lightbox-layout.mjs';
 import { browserModuleEvidence } from '../design-v6/browser-module-evidence.mjs';
+import { publicVideoReadEvidence } from '../design-v6/public-video-evidence.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -19,6 +20,33 @@ const videoListTemplate = read('src/app/features/public/videos/ui/public-video-l
 const videoListStyles = read('src/app/features/public/videos/ui/public-video-list-view.component.scss');
 const videoWatchTemplate = read('src/app/features/public/videos/ui/public-video-watch-view.component.html');
 const videoWatchStyles = read('src/app/features/public/videos/ui/public-video-watch-view.component.scss');
+
+test('video acceptance retains only published IDs and bounded pagination for the exact public owner endpoints', () => {
+  const id = '00000000-0000-0000-0000-000000000001';
+  const pagination = { currentPage: 1, itemsPerPage: 24, totalItems: 1 };
+  const video = { id, isPublished: true, externalMetadata: { channel: 'not retained' }, creatorName: 'not retained' };
+  const path = `/api/videos?ownerType=Park&ownerId=${id}`;
+  const bytes = Buffer.from(JSON.stringify({ data: [video], pagination }));
+  assert.deepEqual(publicVideoReadEvidence(path, 200, bytes), { kind: 'park', ids: [id], pagination });
+  const itemPath = `/api/videos/parks/${id}/park-items`;
+  const items = Buffer.from(JSON.stringify({ data: [{ video, item: { name: 'Public item' } }], pagination }));
+  assert.deepEqual(publicVideoReadEvidence(itemPath, 200, items), { kind: 'items', ids: [id], pagination });
+  assert.equal(publicVideoReadEvidence('/api/videos', 200, Buffer.from('not parsed')), undefined);
+  assert.equal(publicVideoReadEvidence('/api/admin/videos', 200, bytes), undefined);
+  assert.equal(publicVideoReadEvidence(path, 503, bytes), undefined);
+  assert.throws(() => publicVideoReadEvidence(`${path}&isPublished=false`, 200, bytes), /Unpublished/);
+  assert.throws(() => publicVideoReadEvidence(path, 200, Buffer.from(JSON.stringify({ data: [{ ...video, isPublished: false }], pagination }))), /unpublished/);
+  assert.throws(() => publicVideoReadEvidence(itemPath, 200, Buffer.from(JSON.stringify({ data: [{ video, item: { isVisible: false } }], pagination }))), /hidden/);
+  assert.throws(() => publicVideoReadEvidence(path, 200, Buffer.alloc(2 * 1024 * 1024 + 1)), /response bound/);
+  assert.throws(() => publicVideoReadEvidence(path, 200, Buffer.from(JSON.stringify({ data: [video], pagination: { ...pagination, itemsPerPage: 101 } }))), /pagination/);
+});
+
+test('video browser acceptance uses actual tabs, API IDs, query filters, empty results and complete watch pages', () => {
+  const recipe = read('tools/design-v6/exercise-public-media-history.mjs');
+  for (const contract of ['verifyVideos', 'pagination.itemsPerPage === 24', 'aria-selected', 'creatorName', 'video filters reset', 'videoWatch', 'externalPlaybackNotValidated: true', 'navigation.currentEntry.key']) assert.ok(recipe.includes(contract));
+  assert.doesNotMatch(recipe, /fetch\(|\.submit\(|localStorage\.setItem|\.emit\(|\.ngOnInit\(/);
+  assert.ok(read('tools/design-v6/capture-public-ssr.mjs').includes('await exercisePublicMediaHistory('));
+});
 
 test('lightbox geometry rejects offscreen controls, overlapping photographs and unreadable shrinking', () => {
   const layout = { width: 390, height: 640, documentWidth: 390,

@@ -24,6 +24,12 @@ const historyStyles = [
   'park-history-comparison-page.component.scss',
 ].map((file) => read(`src/app/features/public/history/pages/${file}`)).join('\n');
 
+test('history browser acceptance opens real source disclosures and complete narrative links without fabricating unavailable variants', () => {
+  const recipe = read('tools/design-v6/exercise-public-media-history.mjs');
+  for (const token of ['history-narrative-link', 'history-sources', 'history-article__content p', 'history-article-body', 'timeline.key', 'snapshotsAndComparisonNotExercised: true', 'serverPaginationNotExercised: true']) assert.ok(recipe.includes(token));
+  assert.doesNotMatch(recipe, /fetch\(|localStorage\.setItem|new Date\(/);
+});
+
 test('small timeline labels and narrative links use readable semantic text accents', () => {
   for (const selector of ['canonical-history-event__type', 'history-narrative-link']) {
     assert.match(historyStyles, new RegExp(`\\.${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
