@@ -8,6 +8,8 @@ L'audit lexical couvre 1 895 fichiers SCSS/templates/TypeScript, sans référenc
 
 Les CSV V6 sont régénérés depuis `db82d71eb7a7ca31466545fc2c20f3551cfdd4a4`, base master immuable conservée. Comparaison indépendante : **148 contrats de routes identiques** (type, composant, template/styles, guards, resolvers, fichier de routage), **293 fichiers de composants identiques**, 268 SCSS + deux blocs inline, zéro template manquant. Les cibles reviennent à **2 057 → 2 057** : au delta historique −1 s'ajoute le bouton clavier natif standalone déjà documenté et testé. L'égalité des comptes n'est pas utilisée comme preuve d'égalité fonctionnelle ; les contrats et scénarios restent distincts. `origin/master` est à nouveau lu le 17 octobre, toujours `7f6a9088…`. Nouveau recalcul requis si la source change après ce checkpoint.
 
+Les tailles de styles sont recalculées après la correction de couleur de texte du bouton primaire dense admin ; ce delta purement SCSS est explicitement indiqué dans le README généré. Les ensembles de routes/composants et les comptes ne changent pas. La baseline master reste intacte.
+
 ## Point de contrôle du 16 octobre — source et recette distinctes
 
 `master` distant reste `7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22` après nouvelle lecture. Les CSV ci-dessous restent le snapshot de source `579060704`, pas un inventaire final du chantier. Le nouveau bouton clavier standalone ajoute une cible de présentation : son delta et les tailles SCSS devront être recalculés avec le générateur existant au gel final, sans modifier la base immuable.

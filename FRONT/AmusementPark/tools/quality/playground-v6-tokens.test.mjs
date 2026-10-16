@@ -89,6 +89,17 @@ test('incomplete-account email warnings retain AA on the exact card observed in 
   }
 });
 
+test('the dense admin button skin does not override the primary label with unreadable fixed white', () => {
+  const source = readFileSync(resolve(styles, '_admin-skin.scss'), 'utf8');
+  assert.match(source, /\.admin-shell \.p-button,\s*\.admin-button\s*\{[^}]*background:\s*var\(--app-primary\);\s*color:\s*var\(--app-on-accent\)/);
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
+    const background = resolveThemeColor(theme, '--app-primary');
+    assert.ok(contrast('#ffffff', background) < 4.5, 'the previous white override must remain a regression case');
+    assert.ok(contrast(resolveThemeColor(theme, '--app-on-accent'), background) >= 4.5);
+  }
+});
+
 function variables(source) {
   return new Map([...source.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]));
 }

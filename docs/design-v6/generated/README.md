@@ -1,6 +1,6 @@
 # Inventaire P00 généré
 
-- Source : db82d71eb7a7ca31466545fc2c20f3551cfdd4a4
+- Source : db82d71eb + correction du premier plan admin, styles uniquement
 - Routes terminales, redirections et écrans développés : **148**
 - Composants Angular de présentation recensés : **293**
 - Interactions et champs explicitement recensés : **2057**
