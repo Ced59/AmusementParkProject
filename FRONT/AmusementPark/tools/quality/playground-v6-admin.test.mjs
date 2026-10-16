@@ -40,6 +40,12 @@ const liveMappings = read('src/app/features/admin/live-data/pages/admin-live-tar
 const photoBatch = read('src/app/features/admin/site/pages/admin-site/admin-photo-batch/admin-photo-batch.component.html');
 const parkEditor = read('src/app/features/admin/parks/pages/admin-parks/admin-park-edit/admin-park-edit.component.html');
 
+test('historical admin controls use the existing themed cyan instead of the old fixed accent', () => {
+  const styles = read('src/app/features/admin/history/pages/admin-history/admin-history.component.scss');
+  assert.match(styles, /accent-color:\s*var\(--c-sky\)/);
+  assert.doesNotMatch(styles, /accent-color:\s*#38c5f5/);
+});
+
 test('the exhaustive inventory keeps all 58 admin terminals under every inherited guard', () => {
   assert.equal(adminRoutes.length, 58);
   for (const entry of adminRoutes) {

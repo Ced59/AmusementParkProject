@@ -72,6 +72,8 @@ test('real popup surfaces/actions are themed and open popup reflow uses public L
   assert.match(leafletStyles, /\.leaflet-popup-content-wrapper\s*\{[^}]*border-radius:\s*var\(--app-radius-sm\);[^}]*background:\s*var\(--app-field\)/);
   assert.doesNotMatch(leafletStyles, /#(?:ff5a1f|c4ff27|1a140f|3a3026)/i);
   assert.ok(leafletStyles.includes('min-height: 2.75rem'));
+  assert.match(interactiveStyles, /\.leaflet-map-popup__lines span:first-child\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
+  assert.doesNotMatch(interactiveStyles, /#6a4424/);
   const source = read('src/app/shared/components/leaflet-map/leaflet-map.component.ts');
   const reflow = source.slice(source.indexOf('  private refreshOpenPopupLayout()'), source.indexOf('  private bindViewportChangeListeners()'));
   assert.ok(reflow.includes('popup?.isOpen()'));

@@ -128,7 +128,7 @@
 }
 
 :host ::ng-deep .leaflet-popup-content .leaflet-map-popup__lines span:first-child {
-  color: #6a4424;
+  color: var(--app-primary-strong);
   font-weight: 700;
 }
 
