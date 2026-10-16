@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import test from 'node:test';
 import { publicParkGalleryPages, publicPhotoReadEvidence } from '../design-v6/public-photo-evidence.mjs';
 import { photoLightboxLayoutIssues } from '../design-v6/photo-lightbox-layout.mjs';
+import { browserModuleEvidence } from '../design-v6/browser-module-evidence.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -27,6 +28,13 @@ test('lightbox geometry rejects offscreen controls, overlapping photographs and 
   assert.ok(photoLightboxLayoutIssues({ ...layout, image: { ...layout.image, bottom: 510 } }).includes('image overlaps caption or thumbnails'));
   assert.ok(photoLightboxLayoutIssues({ ...layout, close: { ...layout.close, bottom: 700 } }).includes('close control outside viewport'));
   assert.ok(photoLightboxLayoutIssues({ ...layout, image: { ...layout.image, height: 20 } }).includes('image compressed into an unusable region'));
+});
+
+test('compiled-module diagnostics keep only import edges and bounded focus markers, never source content', () => {
+  const source = 'import {a} from "./chunk-ABC123.js"; import "./chunk-DEF456.js"; const selector="cdk-focus-trap-anchor"; const hidden="cdk-visually-hidden"; const dialog="p-dialog-mask";';
+  assert.deepEqual(browserModuleEvidence('chunk-test.js', source), { filename: 'chunk-test.js', bytes: Buffer.byteLength(source),
+    staticImports: ['chunk-ABC123.js', 'chunk-DEF456.js'], behaviors: { focusTrap: true, visuallyHiddenStyles: true, sharedDialog: true } });
+  assert.deepEqual(browserModuleEvidence('main.js', 'import("./chunk-LAZY.js")').staticImports, []);
 });
 
 test('photo evidence retains only published IDs and real bounded pagination', () => {

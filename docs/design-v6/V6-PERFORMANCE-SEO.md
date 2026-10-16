@@ -1,5 +1,13 @@
 # V6 — performance, SEO et SSR
 
+## Mesure bloquante du 16 octobre — `0a75fa1e4`
+
+La [CI 38829033532](https://github.com/Ced59/AmusementParkProject/actions/runs/38829033532) passe le backend, la sécurité, les **2 726 tests Angular**, 40 routes / 2 080 captures, les 38 détails Fleury et 123 contrôles hydratés. L'isolation entre recette et snapshots est réparée. Les nouveaux en-têtes pratiques passent les contrôles de géométrie. La campagne s'arrête ensuite sur P04.6 : les six comparaisons identiques par population, à 390/1 366 px, mesurent **105 → 107 requêtes** et **+60 364 octets décodés**. Ce dépassement n'est ni ignoré ni accepté par défaut.
+
+Le détail est stable sur les trois répétitions : scripts **84 → 86** et **+3 270 octets** ; images **12 → 12**, **+65 465 octets** pour cette population réelle ; fonts **3 → 3**, CSS **−3 719**, HTML **−4 786**, XHR **+134 octets**. Les quatre noms de hero sont identiques entre les deux versions ; il s'agit ici de Beech Bend, Six Flags Fiesta Texas, Babylon Park London et Arcolandia Pacifico, pas de nouvelles valeurs figées du produit. La différence de coût d'image dépend donc de la population API et ne doit pas être masquée par la campagne précédente plus légère.
+
+Les LCP proxy sont 228–260 → 192–220 ms en mobile et 296–332 → 196–204 ms en desktop. Le CLS est nul sauf un échantillon V6 mobile à 0,00202 ; ce ne sont pas des CWV terrain. L'origine des deux modules supplémentaires reste à attester par le graphe compilé, sans l'attribuer prématurément au focus. Le prochain artefact conserve seulement noms, tailles, imports statiques et marqueurs focus/dialogue, pas le code, les données API ou des credentials. Le seuil et les budgets restent inchangés.
+
 ## Baseline
 
 - Base : `origin/master@7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22`, version 5.4.101.

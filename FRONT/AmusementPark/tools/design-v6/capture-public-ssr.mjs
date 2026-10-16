@@ -14,6 +14,7 @@ import { publicPhotoReadEvidence } from './public-photo-evidence.mjs';
 import { exercisePublicPhotos } from './exercise-public-photos.mjs';
 import { resumeStaticCaptures } from './browser-phase-isolation.mjs';
 import { photoLightboxLayoutIssues } from './photo-lightbox-layout.mjs';
+import { readBrowserModuleEvidence } from './browser-module-evidence.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -671,6 +672,14 @@ const report = {
 };
 try {
   await mkdir(outputRoot, { recursive: true });
+  if (process.env.CI === 'true' && process.env.V6_BASELINE_DIST_DIR) {
+    // Persist bounded module metadata before a possible browser-test failure.
+    // No executable source, API data or credentials enter this diagnostic.
+    const modules = { scope: 'compiled module imports and focus/dialog markers; not proof of initial loading',
+      master: await readBrowserModuleEvidence(resolve(process.env.V6_BASELINE_DIST_DIR, 'browser')),
+      v6: await readBrowserModuleEvidence(browserRoot) };
+    await writeFile(join(outputRoot, 'browser-module-evidence.json'), JSON.stringify(modules, null, 2));
+  }
   chrome = spawn(chromeExecutable, ['--headless=new', '--disable-gpu', '--disable-dev-shm-usage', '--no-sandbox',
     '--allow-file-access-from-files', '--remote-debugging-port=0', `--user-data-dir=${tempRoot}`, 'about:blank'], { stdio: 'ignore' });
   let port;
@@ -770,7 +779,7 @@ try {
               const { x, y, width, height, bottom, right } = element.getBoundingClientRect();
               return { x, y, width, height, bottom, right };
             };
-            const aliases = Object.fromEntries(['--app-field','--app-map','--app-line','--app-line-weak','--app-on-accent']
+            const aliases = Object.fromEntries(['--app-field','--app-map','--app-line','--app-line-weak','--app-on-accent','--app-surface-muted']
               .map(name => [name,bodyStyle.getPropertyValue(name).trim()]));
             const probe = document.createElement('span');
             probe.style.color = 'var(--app-heading)';

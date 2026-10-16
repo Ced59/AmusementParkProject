@@ -33,7 +33,7 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `b166b2c2a` passe 2 724 tests et 123 contrôles hydratés, puis bloque sur le réseau laissé fermé pour les captures statiques ; isolation des phases et horloge du test backend corrigées, nouvelle CI requise |
+| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `0a75fa1e4` passe 2 726 tests, 40 routes et 123 contrôles, puis bloque sur P04.6 : deux scripts supplémentaires mesurés ; diagnostic de modules et nouvelle CI requis |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
@@ -41,7 +41,7 @@
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
-| Réseau initial des nouveaux médias hero | Trois paires `3b560d471` : 106 → 105 requêtes ; octets mobile −25 681 / desktop +42 387 et DOM complet plus tardif ; correction sizes préparée, nouvelle mesure requise |
+| Réseau initial des nouveaux médias hero | BLOQUANT `0a75fa1e4` — six paires : 105 → 107 requêtes, scripts +2 / +3 270 octets, total +60 364 pour la population réelle ; aucune exception acceptée |
 | Premier thème réel | PASS CIBLÉ `3b560d471` — six variantes système/préférence, 29–31 frames post-FCP par cas, zéro mauvais thème |
 | Navigation rapide pendant un zoom Leaflet | PASS CIBLÉ `483818796` — les deux adaptateurs corrigés, 2 718 tests passent et retour fiche → inventaire sans exception ; reste du parcours interrompu par une attente d'historique distincte |
 | Instruction du propriétaire sur la fusion | Poursuite jusqu'au merge explicitement demandée le 15 octobre ; exécution conditionnée à la recette et aux checks, aucun défaut connu accepté silencieusement |
