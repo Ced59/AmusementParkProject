@@ -39,7 +39,7 @@
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | NON sur `e01f88a1a` : l'extracteur de preuve vidéo attendait `Park` au lieu du vrai enum `PARK` ; aucune modification d'API ou du produit, nouveaux contrôles à repasser |
+| CI intégralement verte | NON sur `553184fc4` : enum corrigé et onglets passés ; la recette vidéo lisait l'onglet durant le chargement du filtre, attente du panneau réel corrigée. Aucun changement d'API ou du produit ; suite à repasser |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |

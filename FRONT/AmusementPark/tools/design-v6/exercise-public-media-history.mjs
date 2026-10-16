@@ -4,6 +4,11 @@ import { exercisePublicHistoryExplorer } from './exercise-public-history-explore
 
 export const publicVideoCardIdsExpression = "[...document.querySelectorAll('.public-video-card')].map(link => link.getAttribute('href').split('/videos/')[1]?.split('/')[0])";
 
+export function publicVideoSelectionKind(selectedId, expectedId) {
+  if (typeof selectedId !== 'string' || !selectedId || (expectedId && selectedId !== expectedId)) return null;
+  return selectedId.endsWith('items') ? 'items' : 'park';
+}
+
 export async function exercisePublicMediaHistory({ evaluate, waitUntil, capturePage, result }) {
   const parent = await evaluate(`({ path: location.pathname, key: navigation.currentEntry.key, index: navigation.currentEntry.index })`);
   const parkId = parent.path.match(/\/park\/([0-9a-f-]{36})(?:\/|$)/i)?.[1];
@@ -21,10 +26,15 @@ export async function exercisePublicMediaHistory({ evaluate, waitUntil, captureP
   let cursor = result.apiReads.length;
   await openParkLink('videos');
   await waitUntil(`!!document.querySelector('.public-video-list h1') && document.querySelectorAll('.public-video-list__tab').length > 0`, 'actual public video list and tabs are ready');
-  const verifyVideos = async (start, filters, label) => {
-    const kind = await evaluate(`document.querySelector('.public-video-list__tab[aria-selected="true"]').id.endsWith('-items') ? 'items' : 'park'`);
+  const verifyVideos = async (start, filters, label, expectedTab) => {
+    let kind;
     let read;
-    await waitUntil(() => {
+    await waitUntil(async () => {
+      // The existing facade falls back to the park empty state when neither
+      // source has videos, and then hides tabs. The real panel still names it.
+      const selected = await evaluate(`document.getElementById('public-video-list-panel')?.getAttribute('aria-labelledby') ?? null`);
+      kind = publicVideoSelectionKind(selected, expectedTab);
+      if (kind === null) return false;
       read = result.apiReads.slice(start).findLast(candidate => {
         const query = new URLSearchParams(candidate.query);
         return candidate.videos?.kind === kind && candidate.videos.pagination.currentPage === 1
@@ -47,9 +57,9 @@ export async function exercisePublicMediaHistory({ evaluate, waitUntil, captureP
   for (const id of otherTabs) {
     await evaluate(`document.getElementById(${JSON.stringify(id)}).click()`);
     await waitUntil(`document.getElementById(${JSON.stringify(id)}).getAttribute('aria-selected') === 'true'`, 'video tab switches through its existing handler');
-    await verifyVideos(0, { type: null, tagId: null, creatorName: null }, 'other video tab');
+    await verifyVideos(0, { type: null, tagId: null, creatorName: null }, 'other video tab', id);
     await evaluate(`document.getElementById(${JSON.stringify(originalTab)}).click()`);
-    await verifyVideos(0, { type: null, tagId: null, creatorName: null }, 'original video tab restored');
+    await verifyVideos(0, { type: null, tagId: null, creatorName: null }, 'original video tab restored', originalTab);
   }
   cursor = result.apiReads.length;
   const selectedType = await evaluate(`(() => { const select = document.querySelector('.public-video-list__filter-field select'); const option = [...select.options].find(option => option.value); if (!option) throw new Error('Missing video type choices'); select.value = option.value; select.dispatchEvent(new Event('change', { bubbles: true })); return option.value; })()`);

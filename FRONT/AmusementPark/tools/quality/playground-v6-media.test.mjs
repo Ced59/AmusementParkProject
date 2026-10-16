@@ -7,7 +7,7 @@ import { publicParkGalleryPages, publicPhotoReadEvidence } from '../design-v6/pu
 import { photoLightboxLayoutIssues, photoLightboxLayoutExpression } from '../design-v6/photo-lightbox-layout.mjs';
 import { browserModuleEvidence } from '../design-v6/browser-module-evidence.mjs';
 import { publicVideoReadEvidence } from '../design-v6/public-video-evidence.mjs';
-import { publicVideoCardIdsExpression } from '../design-v6/exercise-public-media-history.mjs';
+import { publicVideoCardIdsExpression, publicVideoSelectionKind } from '../design-v6/exercise-public-media-history.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -28,6 +28,18 @@ test('the exact generated browser expression parses and extracts park/item video
   const paths = ['/fr/park/park-id/name/videos/first-id/title', '/fr/park/park-id/name/item/item-id/name/videos/second-id/title'];
   const actual = runInNewContext(publicVideoCardIdsExpression, { document: { querySelectorAll: () => paths.map(path => ({ getAttribute: () => path })) } });
   assert.equal(JSON.stringify(actual), JSON.stringify(['first-id', 'second-id']));
+});
+
+test('video selection evidence waits for the expected real tab instead of dereferencing loading or stale content', () => {
+  assert.equal(publicVideoSelectionKind(null), null);
+  assert.equal(publicVideoSelectionKind(undefined), null);
+  assert.equal(publicVideoSelectionKind(''), null);
+  assert.equal(publicVideoSelectionKind('video-tab-items', 'video-tab-park'), null);
+  assert.equal(publicVideoSelectionKind('video-tab-items', 'video-tab-items'), 'items');
+  assert.equal(publicVideoSelectionKind('video-tab-park', 'video-tab-park'), 'park');
+  const recipe = read('tools/design-v6/exercise-public-media-history.mjs');
+  assert.ok(recipe.includes("document.getElementById('public-video-list-panel')?.getAttribute('aria-labelledby')"));
+  assert.ok(recipe.includes("'video creator empty result');"));
 });
 
 test('lightbox review waits for stable real viewport-unit layout while keeping all geometry and hit-test requirements', () => {
