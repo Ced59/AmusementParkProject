@@ -85,7 +85,10 @@ public sealed class GetWatchPilotMetricsQueryHandlerTests
                 expectedToUtc,
                 CancellationToken.None))
             .ReturnsAsync(EmptySnapshot());
-        GetWatchPilotMetricsQueryHandler handler = new(repository.Object);
+        GetWatchPilotMetricsQueryHandler handler = new(
+            repository.Object,
+            new FixedWatchPilotTimeProvider(
+                new DateTimeOffset(2026, 9, 17, 12, 0, 0, TimeSpan.Zero)));
 
         ApplicationResult<WatchPilotMetricsResult> result = await handler.HandleAsync(
             new GetWatchPilotMetricsQuery(
