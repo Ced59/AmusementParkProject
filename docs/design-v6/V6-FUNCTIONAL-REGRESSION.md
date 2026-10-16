@@ -1,5 +1,7 @@
 # V6 — non-régression fonctionnelle
 
+Le run `2d93b5e68 / 38977656405` termine **736 contrôles / 392 captures V6 standard FR**, dont ajout/retrait 1–8 participants, accompagnement, préférences, date invalide et liens sans résultat/sélection. `searchRequested:false`, `locationRequested:false`, aucune fixture ou exception défaillante. Le garde final refuse le libellé du CTA à 1,49/1,66:1 ; correction limitée au selector descriptif qui empiétait sur son span. **171 tests Node ciblés PASS**, inventaires source recalculés, aucun changement de métier/contrat. Nouveau run requis, pas de validation de recherche réelle, master ou variantes suivantes inférée.
+
 Le complément de stress ne modifie que les outils CI : font racine doublée et mesurée, restauration inconditionnelle, capture d'échec avant nettoyage, aucun appel métier supplémentaire. Le diagnostic admin conditionnel passe en tête à 320/390/1 366 px avant les cas FR existants ; aucun état ou scénario de la campagne complète n'est retiré. Deux tests couvrent restauration après succès/échec, baseline inattendue et override non appliqué. **170 tests Node ciblés PASS**, preuve navigateur et zoom natif toujours requis.
 
 ## Diagnostic `b56328197` — police master et frontière de document

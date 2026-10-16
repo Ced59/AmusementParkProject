@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Diagnostic `2d93b5e68` — CTA Parc Fit
+
+L'[artefact `12079114374`](https://github.com/Ced59/AmusementParkProject/actions/runs/38977656405/artifacts/12079114374) conserve **392 captures / 736 contrôles V6 standard FR**, tous les nouveaux scénarios locaux Parc Fit terminés, zéro fixture/exception. Huit captures révèlent le même override du texte « Chercher un parc adapté » à 14,72 px : encre secondaire sur l'orange, **1,49:1 sombre / 1,66:1 clair**. `v6_standard_fr_public-fit-form-preferences_390_light.webp` est inspecté : préférences et bouton complets, libellé trop discret confirmé.
+
+La règle `.park-fit-submit span` devient `.park-fit-submit > div > span` : seul le texte descriptif reste secondaire ; le span du bouton hérite de son premier plan contrasté existant. Label, données, couleurs d'aplat, événement et validations restent identiques. Un test garde les ratios défaillants et le selector précis ; **171 tests Node ciblés PASS**, nouvelle capture obligatoire.
+
 ## Stress de police agrandie — à exécuter
 
 Le shell admin conditionnel reçoit une seconde capture avec la taille racine **réellement mesurée puis doublée** dans le navigateur CI. La valeur calculée est conservée dans chaque layout ; l'override inline est restauré même en cas d'échec et la capture du défaut est enregistrée avant restauration. Les bounds, hit-tests, contrastes et recouvrements habituels restent bloquants. Ce stress CSS n'est **pas** une preuve de zoom natif 200 %, de préférence réelle du navigateur ou de revue SR ; ces recettes restent ouvertes.

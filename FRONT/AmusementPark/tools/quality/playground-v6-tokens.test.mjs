@@ -124,6 +124,18 @@ test('Park Fit foregrounds use semantic ink while their decorative fills keep th
   assert.match(start, /background:\s*color-mix\(in srgb, var\(--c-sky\) 18%, var\(--app-surface\)\)/);
 });
 
+test('Park Fit submit captions cannot override the nested action label with muted text', () => {
+  const source = readFileSync(resolve(styles, '../app/features/public/park-fit/pages/park-fit-start-page.component.scss'), 'utf8');
+  assert.match(source, /\.park-fit-submit > div > span,/);
+  assert.doesNotMatch(source, /\.park-fit-submit span,/);
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
+    const fill = resolveThemeColor(theme, '--app-primary');
+    assert.ok(contrast(resolveThemeColor(theme, '--app-text-muted'), fill) < 4.5, 'run 38977656405 measured the muted override at 1.49/1.66:1');
+    assert.ok(contrast(resolveThemeColor(theme, '--app-on-accent'), fill) >= 4.5);
+  }
+});
+
 test('Park Fit semantic numbers, links and status text meet AA on their existing tinted panels', () => {
   for (const source of [light, dark]) {
     const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
