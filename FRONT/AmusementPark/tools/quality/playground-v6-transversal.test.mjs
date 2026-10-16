@@ -61,7 +61,8 @@ test('the root shell keeps toast, privacy consent and the page jump control', ()
 
 test('dialogs, toasts and tooltips retain accessible roles and dismissal behavior', () => {
   assert.ok(dialog.includes('role="dialog"'));
-  assert.ok(dialog.includes('aria-modal="true"'));
+  assert.ok(dialog.includes("[attr.aria-modal]=\"modal ? 'true' : null\""));
+  assert.ok(dialog.includes('[cdkTrapFocus]="modal"'));
   assert.ok(dialog.includes('dismissableMask'));
   assert.ok(dialog.includes('visibleChange.emit(false)'));
   assert.ok(toast.includes("message.severity === 'error' ? 'alert' : 'status'"));

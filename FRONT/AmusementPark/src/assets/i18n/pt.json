@@ -6011,6 +6011,8 @@
     }
   },
   "actions": {
+    "expand": "Expandir",
+    "collapse": "Recolher",
     "moveUp": "Mover para cima",
     "moveDown": "Mover para baixo",
     "cancel": "Cancelar",

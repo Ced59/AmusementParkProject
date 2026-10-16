@@ -41,3 +41,25 @@ test('small primary kickers and chips use semantic foregrounds rather than decor
   assert.match(chips, /\.app-chip--primary,[\s\S]*?\.public-pill\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
 });
 
+test('segmented tabs use flat editorial separators, visible focus and reduced motion', () => {
+  const tabs = readFileSync(resolve(styles, '../app/ui/primitives/segmented-tabs/ui-segmented-tabs.component.scss'), 'utf8');
+  assert.doesNotMatch(tabs, /box-shadow|border-radius:\s*[1-9]/);
+  assert.match(tabs, /border-bottom-color:\s*var\(--app-primary-strong\)/);
+  assert.match(tabs, /outline:\s*3px solid var\(--app-primary-strong\)/);
+  assert.match(tabs, /overflow-wrap:\s*anywhere/);
+  assert.match(tabs, /prefers-reduced-motion:\s*reduce/);
+});
+
+test('shared panel and dialog retain native controls and translated names without container click targets', () => {
+  const panel = readFileSync(resolve(styles, '../app/shared/ui/primitives/panel.ts'), 'utf8');
+  const dialog = readFileSync(resolve(styles, '../app/shared/ui/primitives/dialog.ts'), 'utf8');
+  assert.doesNotMatch(panel, /<div[^>]*\(click\)/);
+  assert.match(panel, /<button[\s\S]*?\[attr\.aria-expanded\]="!collapsed"[\s\S]*?\(click\)="toggle\(\)"/);
+  assert.ok(panel.includes("'actions.expand' : 'actions.collapse'"));
+  assert.doesNotMatch(dialog, /<div[^>]*\(click\)/);
+  assert.match(dialog, /<button\s+\*ngIf="dismissableMask"[^>]*class="p-dialog-mask p-dialog-mask__backdrop"[\s\S]*?\(click\)="onMaskClick\(\$event\)"/);
+  assert.ok(dialog.includes('[cdkTrapFocus]="modal" [cdkTrapFocusAutoCapture]="modal"'));
+  assert.ok(dialog.includes("[attr.aria-label]=\"'actions.close' | translate\""));
+  assert.match(primitives, /\.p-panel-toggle\s*\{[^}]*width:\s*100%;[^}]*min-height:\s*2\.75rem/);
+});
+

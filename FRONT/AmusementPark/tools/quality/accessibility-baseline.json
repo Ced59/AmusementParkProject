@@ -37,60 +37,11 @@
       "message": "Non-native click targets must provide keyboard handling and interactive semantics."
     },
     {
-      "fingerprint": "click-keyboard|src/app/shared/ui/primitives/dialog.ts#inline-1|31fdb44ad3d2|1",
-      "rule": "click-keyboard",
-      "path": "src/app/shared/ui/primitives/dialog.ts#inline-1",
-      "line": 36,
-      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
-    },
-    {
-      "fingerprint": "click-keyboard|src/app/shared/ui/primitives/dialog.ts#inline-1|e78923f429ca|31fdb44ad3d2|1",
-      "rule": "click-keyboard",
-      "path": "src/app/shared/ui/primitives/dialog.ts#inline-1",
-      "line": 36,
-      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
-    },
-    {
-      "fingerprint": "click-keyboard|src/app/shared/ui/primitives/panel.ts#inline-1|da37a45b22e0|1",
-      "rule": "click-keyboard",
-      "path": "src/app/shared/ui/primitives/panel.ts#inline-1",
-      "line": 36,
-      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
-    },
-    {
       "fingerprint": "click-keyboard|src/app/shared/ui/primitives/table.ts#inline-1|5bd3dc4fecde|1",
       "rule": "click-keyboard",
       "path": "src/app/shared/ui/primitives/table.ts#inline-1",
       "line": 57,
       "message": "Non-native click targets must provide keyboard handling and interactive semantics."
-    },
-    {
-      "fingerprint": "interactive-name|src/app/shared/ui/primitives/dialog.ts#inline-1|45972e647ac6|0328ad2dda56|1",
-      "rule": "interactive-name",
-      "path": "src/app/shared/ui/primitives/dialog.ts#inline-1",
-      "line": 40,
-      "message": "Interactive elements must expose visible text, projected text or an ARIA name."
-    },
-    {
-      "fingerprint": "interactive-name|src/app/shared/ui/primitives/dialog.ts#inline-1|80a9b8e4a22f|0328ad2dda56|1",
-      "rule": "interactive-name",
-      "path": "src/app/shared/ui/primitives/dialog.ts#inline-1",
-      "line": 40,
-      "message": "Interactive elements must expose visible text, projected text or an ARIA name."
-    },
-    {
-      "fingerprint": "interactive-name|src/app/shared/ui/primitives/panel.ts#inline-1|19bdbd16f28f|7a8895eb824f|1",
-      "rule": "interactive-name",
-      "path": "src/app/shared/ui/primitives/panel.ts#inline-1",
-      "line": 38,
-      "message": "Interactive elements must expose visible text, projected text or an ARIA name."
-    },
-    {
-      "fingerprint": "interactive-name|src/app/shared/ui/primitives/panel.ts#inline-1|8c78906fcbcb|7a8895eb824f|1",
-      "rule": "interactive-name",
-      "path": "src/app/shared/ui/primitives/panel.ts#inline-1",
-      "line": 38,
-      "message": "Interactive elements must expose visible text, projected text or an ARIA name."
     }
   ]
 }

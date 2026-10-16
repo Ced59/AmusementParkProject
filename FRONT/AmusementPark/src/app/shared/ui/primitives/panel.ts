@@ -24,18 +24,21 @@ import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/f
 
 import { NgClass, NgFor, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
 
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { UiTemplate } from './ui-template';
 
 @Component({
   selector: 'app-ui-panel',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, TranslateModule],
   template: `
-    <div class="p-panel-header" (click)="toggle()" [class.p-panel-header--toggleable]="toggleable">
-      <span>{{ header }}</span>
-      <button *ngIf="toggleable" type="button" class="p-panel-toggle" [attr.aria-expanded]="!collapsed">
+    <div class="p-panel-header" [class.p-panel-header--toggleable]="toggleable">
+      <span *ngIf="!toggleable">{{ header }}</span>
+      <button *ngIf="toggleable" type="button" class="p-panel-toggle" [attr.aria-expanded]="!collapsed"
+        [attr.aria-label]="((collapsed ? 'actions.expand' : 'actions.collapse') | translate) + (header ? ' — ' + header : '')"
+        (click)="toggle()">
+        <span>{{ header }}</span>
         <span [class]="collapsed ? 'pi pi-chevron-down' : 'pi pi-chevron-up'" aria-hidden="true"></span>
       </button>
     </div>

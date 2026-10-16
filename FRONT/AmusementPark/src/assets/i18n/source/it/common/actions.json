@@ -1,5 +1,7 @@
 {
   "actions": {
+    "expand": "Espandi",
+    "collapse": "Comprimi",
     "moveUp": "Sposta su",
     "moveDown": "Sposta giù",
     "cancel": "Annulla",
