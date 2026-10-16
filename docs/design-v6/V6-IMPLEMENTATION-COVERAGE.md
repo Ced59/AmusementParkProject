@@ -1,6 +1,10 @@
 # V6 — couverture d’implémentation
 
-Audit complémentaire du 16 octobre : le filtre historique `*.component.ts` omettait **20 primitives `shared/ui` nommées simplement `dialog.ts`, `table.ts`, etc.** Le générateur corrigé lit les vrais décorateurs TypeScript et l'AST Angular des templates externes/inline, sans tronquer les expressions contenant `>`. Le recalcul temporaire recense **293 composants de production, 2 056 contrôles/champs/cibles événementielles, 268 feuilles SCSS et deux styles inline**, sans template manquant. Onze hôtes de tests sont explicitement exclus ; les événements et conditions héritées sont conservés. Le recalcul de la base immuable et des CSV versionnés reste requis avant le gel. Ces nombres de source ne prouvent pas l'exécution des scénarios.
+Audit complémentaire du 16 octobre : le filtre historique `*.component.ts` omettait **20 primitives `shared/ui` nommées simplement `dialog.ts`, `table.ts`, etc.** Le générateur corrigé lit les vrais décorateurs TypeScript et l'AST Angular des templates externes/inline, sans tronquer les expressions contenant `>`. Les CSV de la base immuable et de la V6 sont recalculés : **293 composants de production, 268 feuilles SCSS et deux styles inline** dans les deux versions, sans template manquant. Onze hôtes de tests sont explicitement exclus ; les événements et conditions héritées sont conservés. Ces nombres de source ne prouvent pas l'exécution des scénarios.
+
+La base exacte `7f6a9088…` est relue depuis une archive Git limitée à `src/app` et `src/styles`, sans checkout, dépendances ni serveur supplémentaire. Une comparaison indépendante des CSV confirme les mêmes 148 routes (type, composant, fichier de routage, guards et resolvers) et les mêmes 293 fichiers de composants, dont 22 templates inline. Le générateur refuse désormais une déclaration de route non résolue au lieu de l'omettre silencieusement. `V6_SOURCE_ROOT`, `V6_SOURCE_REVISION` et `V6_INVENTORY_DIR` permettent de reproduire le calcul avec le même outil.
+
+Les cibles recensées passent de **2 057 à 2 056** : upload **+1** (bouton natif pleine surface), panneau **−1** (ancien bouton interne regroupé dans l'en-tête natif) et lightbox **−1** (suppression du conteneur qui ne faisait que stopper la propagation, fond natif distinct). Ce delta de cibles n'est pas une perte d'action ; les handlers utiles et sorties restent vérifiés par la comparaison des contrats et les tests de composants.
 
 ## Référence immuable
 
@@ -16,19 +20,20 @@ Audit complémentaire du 16 octobre : le filtre historique `*.component.ts` omet
 
 Le script `FRONT/AmusementPark/tools/design-v6/generate-p00-inventory.mjs` analyse `app.routes.ts`, les enfants `loadChildren`, les métadonnées des composants, leurs templates et leurs styles. Il doit être rejoué après chaque intégration de `origin/master` et avant P22.
 
-| Élément | Quantité de référence |
-|---|---:|
-| Routes terminales, redirections et écrans développés | 148 |
-| Composants Angular de présentation | 273 |
-| Interactions et champs explicites | 1 869 |
-| Feuilles SCSS globales et locales | 268 |
-| Templates de route manquants | 0 |
-| Écrans d’administration | 58 |
-| Écrans compte/profil | 26 |
-| Écrans publics généraux | 29 |
-| Écrans parc | 19 |
-| Écrans ParkItem | 10 |
-| Écrans standalone | 3 |
+| Élément | Base master | V6 `579060704` |
+|---|---:|---:|
+| Routes terminales, redirections et écrans développés | 148 | 148 |
+| Composants Angular de production | 293 | 293 |
+| Contrôles, champs et cibles événementielles | 2 057 | 2 056 |
+| Feuilles SCSS globales et locales | 268 | 268 |
+| Blocs de styles inline | 2 | 2 |
+| Templates de composants manquants | 0 | 0 |
+| Écrans d’administration | 58 | 58 |
+| Écrans compte/profil | 26 | 26 |
+| Écrans publics généraux | 29 | 29 |
+| Écrans parc | 19 | 19 |
+| Écrans ParkItem | 10 | 10 |
+| Écrans standalone | 3 | 3 |
 
 Les sources exhaustives et versionnables sont :
 
@@ -36,6 +41,8 @@ Les sources exhaustives et versionnables sont :
 - `generated/V6-COMPONENT-INVENTORY.csv` : tous les composants `ui`, `shared`, `features/public`, `features/profile`, `features/auth` et `features/admin` ;
 - `generated/V6-INTERACTION-INVENTORY.csv` : boutons, liens, formulaires, champs, handlers, routes, états disabled et conditions de visibilité.
 - `generated/V6-STYLE-INVENTORY.csv` : taille, variables, media/container queries, gradients, ombres, rayons et usages de `!important` de chaque feuille SCSS.
+
+Les mêmes quatre CSV sous `generated/baseline-master/` décrivent exclusivement la base immuable. Leurs README consignent leur SHA. Les anciens nombres 273 / 1 869 correspondaient au filtre incomplet, pas à un retrait de composants. Les styles inline portent une référence `fichier.ts#style-N`, sans fabriquer de fichier SCSS.
 
 Deux lignes `/:lang` peuvent apparaître dans la matrice : elles appartiennent aux deux branches de layout ordonnées de l’application. Elles ne représentent pas deux URLs publiques distinctes.
 

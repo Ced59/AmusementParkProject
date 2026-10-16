@@ -1,10 +1,12 @@
 # Inventaire P00 généré
 
+- Source : feat/ui-v6-playground-redesign@579060704c4fec364cfa0624f33b5ee9a398f558
 - Routes terminales, redirections et écrans développés : **148**
-- Composants Angular de présentation recensés : **273**
-- Interactions et champs explicitement recensés : **1869**
+- Composants Angular de présentation recensés : **293**
+- Interactions et champs explicitement recensés : **2056**
 - Feuilles SCSS globales et locales recensées : **268**
-- Templates de routes manquants : **0**
+- Blocs de styles inline recensés : **2**
+- Templates de composants manquants : **0**
 
 ## Routes par famille
 
@@ -30,7 +32,9 @@
 | features/profile | 41 |
 | features/public | 83 |
 | features/watchlists | 5 |
-| shared | 19 |
+| shared | 39 |
 | ui | 30 |
 
 Les CSV voisins sont la source exhaustive. Ils doivent être régénérés après chaque intégration de `origin/master` et avant P22.
+Les conditions et événements sont des preuves de source Angular, pas des scénarios exécutés ni des validations fonctionnelles.
+Les composants de tests (`test-helpers`, `testing`, `fixtures`, `__tests__`, `*.spec.ts`) sont exclus du périmètre de production.
