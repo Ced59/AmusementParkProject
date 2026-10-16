@@ -26,6 +26,12 @@ Le complément couvre statistiques globales et historiques, fiches statistiques 
 
 **27 tests Node compte passent**, dont l'immutabilité des réponses, sept deep links et compilation des expressions navigateur. Les 16 états remplis et 15 vides attendent encore leurs captures du bundle réel en CI. Ce n'est pas une preuve d'autorisation serveur ou de publication. L'éditeur de visite, les brouillons anonymes et les workflows persistés restent ouverts ; aucun de ces manques n'est déclaré soldé par ce complément.
 
+## Éditeur de visite — recette préparée, non exécutée
+
+Trois états sont préparés sur les vrais deep links : brouillon Year modifiable, visite Month terminée et archive vide avec parent 404 intentionnel. Les données sont uniquement synthétiques, locales au navigateur CI : cible historique avec/sans cohérence vérifiée, journal initial 2 lignes puis curseur avec doublon et troisième ligne, commentaire privé fictif et note personnelle. Tous les GET sont exacts et clonés ; toute écriture, cible/query inconnue ou curseur arbitraire est refusé.
+
+La recette ouvre le disclosure de métadonnées, modifie/restaure un titre sans enregistrer, vérifie les contrôles en lecture seule, charge le dernier lot du journal et ouvre/annule l'aperçu de suppression avec confirmation décochée. Elle prévoit 13 captures d'états Draft/Completed et quatre Archived, plus les paliers/thèmes de chaque variante. **29 tests Node compte passent ; aucun rendu navigateur n'est encore attesté pour ce complément.** Sauvegarde, notes, ajout de tour, réorganisation, changement de statut, suppression confirmée et publication restent non exercés. Les brouillons anonymes/IndexedDB restent ouverts.
+
 ## Compte standard/incomplet — premier PASS `fc742b010`
 
 La [CI `38892315894`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894) passe intégralement, Docker compris. Les quatre variantes master/V6 × standard/incomplet passent **132 contrôles et 104 captures** (13 largeurs × deux thèmes), sans exception, réponse manquante ni débordement du document. Seuls trois échanges **locaux** par variante sont nécessaires : refresh synthétique et deux lectures du même `UserDto` (header/profil). Aucun appel distant authentifié, sauvegarde, export ou suppression. [Artefact `12043431107`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894/artifacts/12043431107).

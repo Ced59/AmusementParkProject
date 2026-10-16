@@ -14,9 +14,55 @@ import { exerciseAccountNotifications } from '../design-v6/exercise-account-noti
 import { exerciseAccountTripPages } from '../design-v6/exercise-account-trip-pages.mjs';
 import { exerciseAccountPassportStatistics } from '../design-v6/exercise-account-passport-statistics.mjs';
 import { accountComparisonFixtureToken } from '../design-v6/account-passport-statistics-fixtures.mjs';
+import { exerciseAccountVisitEditor } from '../design-v6/exercise-account-visit-editor.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('visit editor input keeps exact draft/completed/archived states, cursor and destructive-write denial', () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const fixture = createAccountLayoutFixture(kind, 1792144800);
+    const get = path => accountLayoutFixtureResponse({ method: 'GET', url: accountLayoutFixtureOrigin + path }, fixture);
+    assert.deepEqual(fixture.visitEditorData.map(item => item.visit.status), kind === 'standard' ? ['Draft', 'Completed'] : ['Archived']);
+    for (const data of fixture.visitEditorData) {
+      const prefix = `/api/me/passport/visits/${data.visit.id}`;
+      assert.equal(get(prefix).body.status, data.visit.status);
+      assert.equal(get(`${prefix}/occurrences?limit=50`).body.items.length, kind === 'standard' ? 2 : 0);
+      const next = get(`${prefix}/occurrences?limit=50&cursor=apf-editor-next`);
+      if (kind === 'standard') {
+        assert.equal(next.body.items.length, 2);
+        assert.equal(next.body.items[0].id, data.occurrences[0].id);
+        assert.equal(next.body.nextCursor, null);
+      } else assert.equal(next, null);
+      assert.equal(get(`${prefix}/historical-ride-targets?page=1&pageSize=24&scope=KnownOpen`).body.items.length, data.targets.length);
+      assert.equal(get(`${prefix}/deletion-preview`).body.occurrenceCount, data.occurrences.length);
+      assert.equal(get(`${prefix}/occurrences?limit=100`), null);
+      assert.equal(get(`${prefix}/historical-ride-targets?page=2&pageSize=24&scope=KnownOpen`), null);
+      for (const method of ['POST', 'PUT', 'DELETE']) for (const suffix of ['', '/complete', '/archive', '/assessment', '/occurrences:batch']) {
+        assert.equal(accountLayoutFixtureResponse({ method, url: accountLayoutFixtureOrigin + prefix + suffix }, fixture), null);
+      }
+      const first = get(prefix);
+      first.body.title = 'changed';
+      assert.notEqual(get(prefix).body.title, 'changed');
+    }
+    assert.equal(get(`/api/parks/${fixture.visitEditorData[0].visit.parkId}`).status, kind === 'standard' ? 200 : 404);
+  }
+});
+
+test('visit editor expressions compile without saved metadata, assessments or confirmed deletion', async () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const fixture = createAccountLayoutFixture(kind, 1792144800, 'de');
+    const result = {};
+    const captures = [];
+    await exerciseAccountVisitEditor({ fixture, result, language: 'de',
+      evaluate: async expression => assert.doesNotThrow(() => new Script(expression)),
+      waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+      captureLayouts: async (_selector, page) => captures.push(page), navigateDocument: async () => {} });
+    assert.equal(captures.length, kind === 'standard' ? 13 : 4);
+    assert.equal(result.visitEditor.writesAssessmentsRideLogsStatusChangesDeletionAndPublicationNotExercised, true);
+  }
+  assert.doesNotMatch(read('tools/design-v6/exercise-account-visit-editor.mjs'), /fetch\(|requestSubmit|\.submit\(|saveVisitMetadata\(|confirmVisitDeletion\(|\.complete\(|\.archive\(/);
+});
 
 test('private passport statistics fixtures preserve exact scopes, local filters and unpublished comparison/share states', () => {
   for (const kind of ['standard', 'incomplete']) {
