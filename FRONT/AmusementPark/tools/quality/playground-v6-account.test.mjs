@@ -34,8 +34,9 @@ const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 
 test('enlarged-font evidence measures twice the root size and restores the inline value, even after failure', async () => {
   for (const fail of [false, true]) {
     const style = { fontSize: '' };
-    const sandbox = { document: { documentElement: { style } }, getComputedStyle: () => ({ fontSize: style.fontSize || '16px' }), parseFloat };
-    const evaluate = async expression => JSON.parse(JSON.stringify(runInNewContext(expression, sandbox)));
+    const sandbox = { document: { documentElement: { style } }, getComputedStyle: () => ({ fontSize: style.fontSize || '16px' }), parseFloat,
+      requestAnimationFrame: callback => callback() };
+    const evaluate = async expression => JSON.parse(JSON.stringify(await runInNewContext(expression, sandbox)));
     const operation = () => withDoubledRootFont({ evaluate, capture: async ({ rootFontSizePx }) => {
       assert.equal(rootFontSizePx, 32);
       assert.equal(style.fontSize, '32px');
@@ -60,6 +61,18 @@ test('enlarged-font stress rejects unexpected baselines and an override that was
     return expression.startsWith('({') ? { inline: '', pixels: 16 } : 16;
   }, capture: async () => assert.fail('must not capture') }), /did not take effect/);
   assert.ok(expressions.at(-1).endsWith('= ""'));
+  assert.equal(expressions.filter(expression => expression.startsWith('new Promise')).length, 30);
+});
+
+test('enlarged-font capture waits for computed size without weakening the exact doubled-size requirement', async () => {
+  let frames = 0;
+  let captured = false;
+  await withDoubledRootFont({ evaluate: async expression => {
+    if (expression.startsWith('({')) return { inline: '', pixels: 16 };
+    if (expression.startsWith('new Promise')) return ++frames < 3 ? 24 : 32;
+  }, capture: async ({ rootFontSizePx }) => { captured = true; assert.equal(rootFontSizePx, 32); } });
+  assert.equal(frames, 3);
+  assert.equal(captured, true);
 });
 
 test('account navigation waits for actual fonts and current intercepted responses instead of ignoring a canceled font', async () => {

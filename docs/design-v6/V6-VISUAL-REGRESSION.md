@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Diagnostic `acbbf19f6` — six rendus compte, stress non appliqué
+
+L'[artefact `12081170571`](https://github.com/Ced59/AmusementParkProject/actions/runs/38979892609/artifacts/12081170571) conserve six captures normales du compte admin : trois largeurs, deux thèmes, root 16 px et zéro issue. Après 13 contrôles, l'override de police échoue à sa vérification immédiate, avant toute capture agrandie ou page publique. La recette attend maintenant au plus 30 frames, sans tolérer une taille différente de celle demandée ; si elle ne s'applique toujours pas, valeurs inline/calculées/priorité/transition sont enregistrées avant restauration. **173 tests Node ciblés PASS**, preuve suivante requise. Aucun diagnostic de clipping ou succès 200 % n'est inventé à partir de cet arrêt.
+
 ## Diagnostic `a31f12c25` — pas de rendu de stress acquis
 
 Le run `38978469321` s'arrête avant capture : le scénario attendait à tort la toolbar publique dans le profil `AccountLayout`. Sa capture de diagnostic, inspectée, montre le compte et le consentement, pas un défaut responsive prouvé. Les mesures sont séparées : compte avec deux liens admin et **sans** toolbar publique ; confidentialité dans `PublicAppLayout` avec toolbar. Chacun sera capturé en taille normale/doublée ; aucun écran admin ni workflow distant n'est ouvert. **172 tests Node ciblés PASS**, artefact suivant toujours obligatoire.

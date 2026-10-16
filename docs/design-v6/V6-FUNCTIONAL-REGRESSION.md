@@ -1,5 +1,7 @@
 # V6 — non-régression fonctionnelle
 
+Le run `acbbf19f6 / 38979892609` passe les deux liens/sept entrées du compte admin en six captures normales, root 16 px, sans fixture/exception ; il s'arrête ensuite parce que la taille doublée n'est pas confirmée immédiatement. Ce n'est pas une recette de toolbar publique ou de stress réussi. L'attente devient bornée à 30 frames de rendu, sans changer l'égalité exacte de taille ni les seuils d'acceptation ; diagnostic CSS enrichi, nettoyage/restauration conservés. **173 tests Node ciblés PASS**, dont l'application différée exacte après trois frames et le refus après 30 frames, aucun changement du site.
+
 ## Diagnostic `a31f12c25` — mauvaise composition attendue par le test
 
 L'[artefact `12080715086`](https://github.com/Ced59/AmusementParkProject/actions/runs/38978469321/artifacts/12080715086) garde le refus avant capture, sur `/fr/profile`, zéro fixture/exception. Le test attendait la toolbar d'édition alors que le profil utilise `AccountLayout`, qui ne la comporte pas ; `PublicAppLayout` seul l'instancie. **Le produit n'est pas changé pour satisfaire cette attente erronée.** La recette mesure maintenant les deux liens sur le compte et exige l'absence de toolbar publique, puis ouvre seulement `/privacy` pour mesurer la vraie toolbar lazy et ses sept accès mobiles. Aucun lien `/admin`, édition ou endpoint admin n'est activé.

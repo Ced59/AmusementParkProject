@@ -5,8 +5,17 @@ export async function withDoubledRootFont({ evaluate, capture }) {
   const pixels = initial.pixels * 2;
   try {
     await evaluate(`document.documentElement.style.fontSize = ${JSON.stringify(`${pixels}px`)}`);
-    const measured = await evaluate('parseFloat(getComputedStyle(document.documentElement).fontSize)');
-    if (measured !== pixels) throw new Error('The enlarged-font override did not take effect.');
+    let measured;
+    for (let frame = 0; frame < 30; frame++) {
+      measured = await evaluate('new Promise(resolve => requestAnimationFrame(() => resolve(parseFloat(getComputedStyle(document.documentElement).fontSize))))');
+      if (measured === pixels) break;
+    }
+    if (measured !== pixels) {
+      const css = await evaluate('(() => { const root = document.documentElement; const computed = getComputedStyle(root); return { inline: root.style.fontSize, priority: root.style.getPropertyPriority("font-size"), computed: computed.fontSize, transition: computed.transitionProperty, duration: computed.transitionDuration }; })()');
+      const error = new Error(`The enlarged-font override did not take effect: expected ${pixels}px, measured ${measured}px.`);
+      error.fontOverrideEvidence = { expectedPixels: pixels, measuredPixels: measured ?? null, initial, css };
+      throw error;
+    }
     await capture({ rootFontSizePx: pixels });
   } finally {
     await evaluate(`document.documentElement.style.fontSize = ${JSON.stringify(initial.inline)}`);
