@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
+import { componentPresentations, isProductionPresentationFile } from '../design-v6/presentation-inventory-evidence.mjs';
 
 const styles = resolve(import.meta.dirname, '../../src/styles');
 const read = (name) => readFileSync(resolve(styles, name), 'utf8');
@@ -23,9 +24,11 @@ test('Playground shared surfaces and cards are flat editorial panels', () => {
 test('local surfaces use existing V6 radius tokens instead of fixed legacy large corners', () => {
   const appRoot = resolve(styles, '../app');
   const violations = [];
-  for (const path of readdirSync(appRoot, { recursive: true }).filter(path => path.endsWith('.scss'))) {
+  for (const path of readdirSync(appRoot, { recursive: true }).filter(path => path.endsWith('.scss') || isProductionPresentationFile(path))) {
     const source = readFileSync(resolve(appRoot, path), 'utf8');
-    for (const match of source.matchAll(/border-radius:\s*(\d*\.?\d+)(rem|px)\s*;/g)) {
+    const styles = path.endsWith('.scss') ? source : /@Component\s*\(/.test(source)
+      ? componentPresentations(source, path).flatMap(component => component.inlineStyles).join('\n') : '';
+    for (const match of styles.matchAll(/border-radius:\s*(\d*\.?\d+)(rem|px)\s*;/g)) {
       const value = Number(match[1]);
       if (match[2] === 'rem' ? value >= 0.65 : value > 7 && ![999, 9999].includes(value)) violations.push({ path, radius: match[0] });
     }

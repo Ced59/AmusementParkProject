@@ -1,6 +1,6 @@
 # V6 — couverture d’implémentation
 
-Audit complémentaire du 16 octobre : le filtre historique `*.component.ts` du générateur omet **20 primitives `shared/ui` nommées simplement `dialog.ts`, `table.ts`, etc.** Deux blocs de styles intégrés aux composants ne figurent pas non plus dans la liste SCSS. Ces composants sont connus et leurs styles/contrats ont été examinés, mais les CSV ne sont donc pas encore exhaustifs sur ce point. Leur découverte et les interactions inline doivent être corrigées et recalculées avant le gel final. Les nombres de référence ci-dessous ne sont pas requalifiés en couverture 100 %.
+Audit complémentaire du 16 octobre : le filtre historique `*.component.ts` omettait **20 primitives `shared/ui` nommées simplement `dialog.ts`, `table.ts`, etc.** Le générateur corrigé lit les vrais décorateurs TypeScript et l'AST Angular des templates externes/inline, sans tronquer les expressions contenant `>`. Le recalcul temporaire recense **293 composants de production, 2 056 contrôles/champs/cibles événementielles, 268 feuilles SCSS et deux styles inline**, sans template manquant. Onze hôtes de tests sont explicitement exclus ; les événements et conditions héritées sont conservés. Le recalcul de la base immuable et des CSV versionnés reste requis avant le gel. Ces nombres de source ne prouvent pas l'exécution des scénarios.
 
 ## Référence immuable
 

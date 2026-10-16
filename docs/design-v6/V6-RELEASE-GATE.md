@@ -8,9 +8,9 @@
 |---|---|
 | Branche unique issue du dernier `origin/master` | PASS |
 | SHA et version de départ consignés | PASS |
-| Inventaire route/template/SCSS/interaction généré | PASS |
+| Inventaire route/template/SCSS/interaction généré | RECALCUL CIBLÉ — 293 composants / 2 056 contrôles, CSV et base immuable à mettre à jour |
 | Baseline visuelle V5 initiale | PASS |
-| P00 inventaires | CORRECTION OUVERTE — 20 primitives `.ts` et deux styles inline exclus par le filtre historique ; recalcul requis, états complets toujours non démontrés |
+| P00 inventaires | Générateur corrigé : 20 primitives et deux styles inline réintégrés ; base immuable et CSV à recalculer, états complets toujours non démontrés |
 | P01 | PASS CIBLÉ — tokens et thèmes contrôlés ; contrastes de tous les états encore à recetter |
 | P02 | PASS CIBLÉ — suite a11y complète à P21 |
 | P03 | PASS CIBLÉ — 17 tests statiques, suite Angular complète à P21 |
@@ -33,7 +33,7 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `408c71639` passe 2 728 tests et le backend, mais le runner ne peut joindre l'API publique pendant HTTP SSR ; P04.6 précédent toujours bloquant et nouvelles captures à exécuter |
+| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `47c850246` passe 2 728 tests et 224 contrôles HTTP SSR, puis révèle un chevauchement lightbox à 320 × 568 ; correction à valider, P04.6 précédent toujours ouvert |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |

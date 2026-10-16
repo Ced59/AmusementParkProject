@@ -547,6 +547,7 @@
   position: relative;
   z-index: 1;
   width: min(100%, 1440px);
+  height: min(64rem, calc(100dvh - clamp(1.6rem, 4vw, 3rem)));
   max-height: calc(100vh - clamp(1.6rem, 4vw, 3rem));
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
@@ -595,6 +596,12 @@
   font-family: var(--font-heading);
   font-size: 1.8rem;
   font-weight: 900;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.photo-lightbox__header > div {
+  min-width: 0;
 }
 
 .photo-lightbox__close {
@@ -608,12 +615,14 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: clamp(0.65rem, 2vw, 1rem);
-  align-items: center;
+  align-items: stretch;
 }
 
 .photo-lightbox__image-frame {
   min-width: 0;
   min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
   overflow: hidden;
   border: 1px solid var(--app-border);
   border-radius: var(--radius-md);
@@ -624,7 +633,9 @@
 :host ::ng-deep .photo-lightbox__image,
 .photo-lightbox__placeholder {
   width: 100%;
-  height: min(66vh, 46rem);
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
   object-fit: contain;
   background: #050403;
 }
@@ -633,12 +644,15 @@
   width: 3.1rem;
   height: 3.1rem;
   font-size: 1rem;
+  align-self: center;
 }
 
 .photo-lightbox__footer {
   display: grid;
   gap: 0.85rem;
   min-width: 0;
+  max-height: min(42dvh, 24rem);
+  overflow: auto;
 }
 
 .photo-lightbox__thumbs {
@@ -758,12 +772,9 @@
   }
 
   .photo-lightbox__dialog {
+    height: calc(100dvh - 1rem);
     max-height: calc(100vh - 1rem);
     border-radius: var(--radius-md);
   }
 
-  :host ::ng-deep .photo-lightbox__image,
-  .photo-lightbox__placeholder {
-    height: min(58vh, 34rem);
-  }
 }

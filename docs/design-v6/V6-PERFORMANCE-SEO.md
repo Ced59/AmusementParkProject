@@ -1,5 +1,11 @@
 # V6 — performance, SEO et SSR
 
+## Diagnostic attesté des deux scripts — `47c850246`
+
+La [CI 38833796275](https://github.com/Ced59/AmusementParkProject/actions/runs/38833796275) retrouve cinq fixtures API valides et passe les 224 contrôles HTTP SSR. Son graphe compilé contient 379 modules master / 381 V6. Les ressources initiales du run `0a75fa1e4` chargent bien le dialogue `chunk-O2443OX5.js` (3 497 octets), son import focus `chunk-27DQZD33.js` (7 645), puis son import `chunk-WT6YM62S.js` (2 942), absents de la chaîne du dialogue master `chunk-TJ7DNCNS.js` (2 846). Ces noms et imports sont recoupés avec `browser-module-evidence.json` du nouvel artefact : les deux requêtes supplémentaires proviennent de la chaîne CDK du confinement clavier, déjà installé dans le projet. Le delta net de tous les scripts reste +3 270 octets, et non la somme brute de ces chunks. Aucune nouvelle requête API n'est mesurée.
+
+Une exception propriétaire **strictement limitée à ces deux requêtes d'accessibilité** a été demandée ; elle n'est pas encore acceptée. Le seuil P04.6 reste bloquant. Le coût des images réelles et les autres budgets ne sont pas exemptés par cette demande. La recette s'arrête auparavant sur un chevauchement de lightbox à 320 × 568 : la nouvelle comparaison réseau finale n'a donc pas encore été exécutée.
+
 ## Incident réseau du runner — `408c71639`
 
 La CI `38832267608` passe **2 728 tests Angular / 581 fichiers** et le backend. Les appels du SSR isolé vers `https://amusement-parks.fun` échouent ensuite avec `UND_ERR_CONNECT_TIMEOUT` (connexion 10 s), avant toute campagne navigateur. Le catalogue Bing renvoie alors 503 avec `missing-canonical`, conformément au garde SEO, et le contrôle exigeant 200 refuse ce rendu. La fixture de référence ne contient aucune réponse API : elle ne doit pas être utilisée comme vraie comparaison V5/V6.

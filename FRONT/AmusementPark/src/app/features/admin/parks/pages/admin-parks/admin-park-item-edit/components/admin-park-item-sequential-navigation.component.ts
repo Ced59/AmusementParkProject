@@ -60,7 +60,7 @@ import {
       margin-top: 0.85rem;
       padding: 0.75rem;
       border: 1px solid var(--surface-border);
-      border-radius: 14px;
+      border-radius: var(--app-radius-md);
       background: var(--surface-50);
     }
 
@@ -71,7 +71,7 @@ import {
       gap: 0.45rem;
       min-width: 7rem;
       padding: 0.5rem 0.75rem;
-      border-radius: 999px;
+      border-radius: var(--app-radius-pill);
       background: var(--surface-0);
       color: var(--text-color-secondary);
       font-weight: 700;

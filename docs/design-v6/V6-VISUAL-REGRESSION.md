@@ -1,5 +1,13 @@
 # V6 — régression visuelle
 
+## Défaut réel de lightbox — CI `47c850246`
+
+La [capture 320 × 568 sombre, artefact 12018054610](https://github.com/Ced59/AmusementParkProject/actions/runs/38833796275/artifacts/12018054610) montre une image de 329 px qui dépasse de 46 px sur le footer. La navigation fixe recouvre aussi le dialogue, enfermé dans le stacking context du contenu. Le correctif réserve une hauteur de dialogue liée au viewport dynamique, donne à l'image la place restante dans la grille et borne les crédits/vignettes à une zone de défilement locale. Le contenu principal rejoint sa couche modale existante uniquement lorsqu'une lightbox est présente (`:has`), sans changer d'état Angular ni de comportement de navigation. Le prochain contrôle vérifie aussi que le bouton Fermer est réellement au premier plan avec `elementFromPoint`. Les trois paliers et la fermeture clavier doivent repasser : **correctif non encore validé en navigateur**.
+
+L'inventaire corrigé découvre également les deux blocs CSS inline : rayon du panneau de navigation admin raccordé au token existant, pilule de position conservée et indicateur d'upload de l'éditeur respectant `prefers-reduced-motion`. Aucun champ ou flux d'édition n'est modifié.
+
+Les **29 contrôles Node ciblés** (inventaire/contrats, primitives, médias) passent le 16 octobre en série. Ils ne remplacent pas la nouvelle mesure du navigateur isolé. Les styles de la lightbox et du layout ont aussi été compilés sans erreur lors du contrôle ciblé précédent ; aucun build Angular local n'est lancé.
+
 ## Ajustements du 16 octobre — primitives et pages pratiques
 
 La revue des captures `0a75fa1e4` confirme les en-têtes et gouttières de météo Fleury à 390 px et tarifs Efteling à 1 366 px. Elle détecte deux petits textes encore en accent décoratif : légende Max et liens d'offre. Leur premier plan devient sémantique contrasté ; les courbes gardent leurs couleurs. Les rayons de tokens encore à 6–16 px sont également ramenés à 2 px. Ces corrections doivent être revues sur le prochain rendu ; les badges de données brutes, prix, dates, champs et contenus API ne sont ni réécrits ni figés.

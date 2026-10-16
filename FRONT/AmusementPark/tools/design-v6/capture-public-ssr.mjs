@@ -527,6 +527,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
             width: innerWidth, height: innerHeight, documentWidth: document.documentElement.scrollWidth,
             theme: document.body.classList.contains('light-mode') ? 'light' : 'dark',
             dialog: rect('.photo-lightbox__dialog'), close: rect('.photo-lightbox__close'),
+            closeUnobscured: (() => { const node = document.querySelector('.photo-lightbox__close'); if (!node) return false; const r = node.getBoundingClientRect(); return node.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)); })(),
             image: rect('img.photo-lightbox__image'), footer: rect('.photo-lightbox__footer') }; })()`);
           const screenshot = `fr_photo_lightbox_${width}_${height}_${layout.theme}.webp`;
           const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });

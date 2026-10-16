@@ -1,23 +1,9 @@
 import { BindingType, parseTemplate } from '@angular/compiler';
-import ts from 'typescript';
+import { componentPresentations } from './presentation-inventory-evidence.mjs';
 
 export function inlineComponentTemplates(source, filename = 'review.ts') {
-  const parsed = ts.createSourceFile(filename, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
-  if (parsed.parseDiagnostics.length) throw new Error(`Cannot parse component source: ${filename}`);
-  const templates = [];
-  for (const declaration of parsed.statements.filter(ts.isClassDeclaration)) {
-    for (const decorator of ts.getDecorators(declaration) ?? []) {
-      const call = decorator.expression;
-      if (!ts.isCallExpression(call) || !ts.isIdentifier(call.expression) || call.expression.text !== 'Component') continue;
-      const metadata = call.arguments[0];
-      if (!metadata || !ts.isObjectLiteralExpression(metadata)) throw new Error(`Dynamic component metadata: ${filename}`);
-      const template = metadata.properties.find(property => ts.isPropertyAssignment(property) && property.name.getText(parsed) === 'template');
-      if (!template) continue;
-      if (!ts.isStringLiteral(template.initializer) && !ts.isNoSubstitutionTemplateLiteral(template.initializer)) throw new Error(`Dynamic inline component template: ${filename}`);
-      templates.push({ name: declaration.name?.text ?? 'anonymous', source: template.initializer.text });
-    }
-  }
-  return templates;
+  return componentPresentations(source, filename).filter(component => component.template !== null)
+    .map(component => ({ name: component.name, source: component.template }));
 }
 
 // Presentation may move, but its existing expressions, events, accessible labels,

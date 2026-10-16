@@ -28,6 +28,7 @@ test('lightbox geometry rejects offscreen controls, overlapping photographs and 
   assert.ok(photoLightboxLayoutIssues({ ...layout, image: { ...layout.image, bottom: 510 } }).includes('image overlaps caption or thumbnails'));
   assert.ok(photoLightboxLayoutIssues({ ...layout, close: { ...layout.close, bottom: 700 } }).includes('close control outside viewport'));
   assert.ok(photoLightboxLayoutIssues({ ...layout, image: { ...layout.image, height: 20 } }).includes('image compressed into an unusable region'));
+  assert.ok(photoLightboxLayoutIssues({ ...layout, closeUnobscured: false }).includes('close control covered by another layer'));
 });
 
 test('compiled-module diagnostics keep only import edges and bounded focus markers, never source content', () => {
@@ -176,6 +177,14 @@ test('photo filters keep readable label columns and an explicit local scroll at 
   assert.doesNotMatch(carouselStyles.match(/\.photo-carousel-axis span\s*\{([^}]+)\}/)[1], /overflow:\s*hidden|text-overflow:\s*ellipsis/);
   assert.match(carouselStyles, /\.photo-carousel-years\s*\{[^}]*overflow-x:\s*auto/);
   assert.match(carouselStyles, /\.photo-carousel-axis\s*\{[^}]*min-height:\s*44px/);
+});
+
+test('photo lightbox reserves bounded image space and stays above fixed navigation', () => {
+  assert.match(carouselStyles, /\.photo-lightbox__dialog\s*\{[^}]*height:\s*min\(64rem, calc\(100dvh/);
+  assert.match(carouselStyles, /\.photo-lightbox__image-frame\s*\{[^}]*grid-template-rows:\s*minmax\(0, 1fr\)/);
+  assert.match(carouselStyles, /\.photo-lightbox__footer\s*\{[^}]*max-height:\s*min\(42dvh, 24rem\);[^}]*overflow:\s*auto/);
+  assert.doesNotMatch(carouselStyles, /height:\s*min\((?:58|66)vh/);
+  assert.match(read('src/styles/_layout.scss'), /\.app-layout-main:has\(\.photo-lightbox\)\s*\{[^}]*z-index:\s*2000/);
 });
 
 test('media surfaces are flat and responsive without decorative filters', () => {

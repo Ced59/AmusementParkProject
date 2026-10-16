@@ -1,14 +1,18 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { componentPresentations, isProductionPresentationFile, presentationInteractions } from './presentation-inventory-evidence.mjs';
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
-const frontendRoot = resolve(scriptDirectory, '..', '..');
+const frontendRoot = process.env.V6_SOURCE_ROOT ? resolve(process.env.V6_SOURCE_ROOT) : resolve(scriptDirectory, '..', '..');
 const appRoot = join(frontendRoot, 'src', 'app');
 const repositoryRoot = resolve(frontendRoot, '..', '..');
 const outputDirectory = process.env.V6_INVENTORY_DIR
   ? resolve(process.env.V6_INVENTORY_DIR)
   : join(repositoryRoot, 'docs', 'design-v6', 'generated');
+const metadataCache = new Map();
+const templateSources = new Map();
+const inlineStyleSources = new Map();
 
 const aliasRoots = new Map([
   ['@app/', appRoot],
@@ -305,30 +309,31 @@ function findComponentMetadata(componentFile) {
   if (!componentFile || !existsSync(componentFile)) {
     return { template: '', styles: [], metrics: emptyMetrics() };
   }
+  if (metadataCache.has(componentFile)) return metadataCache.get(componentFile);
   const source = readFileSync(componentFile, 'utf8');
-  const templateMatch = /templateUrl\s*:\s*['"]([^'"]+)['"]/.exec(source);
-  const styleMatches = [];
-  const styleUrlMatch = /styleUrl\s*:\s*['"]([^'"]+)['"]/.exec(source);
-  if (styleUrlMatch) {
-    styleMatches.push(styleUrlMatch[1]);
-  }
-  const styleUrlsMatch = /styleUrls\s*:\s*\[([\s\S]*?)\]/.exec(source);
-  if (styleUrlsMatch) {
-    for (const match of styleUrlsMatch[1].matchAll(/['"]([^'"]+)['"]/g)) {
-      styleMatches.push(match[1]);
-    }
-  }
-
-  const templateFile = templateMatch ? resolve(dirname(componentFile), templateMatch[1]) : '';
-  const templateSource = templateFile && existsSync(templateFile) ? readFileSync(templateFile, 'utf8') : '';
-  return {
-    template: templateFile && existsSync(templateFile) ? repositoryPath(templateFile) : templateMatch ? `MISSING:${templateMatch[1]}` : 'inline-or-none',
-    styles: styleMatches.map((style) => {
+  const presentations = componentPresentations(source, componentFile);
+  if (presentations.length !== 1) throw new Error(`Expected one actual component in ${repositoryPath(componentFile)}; found ${presentations.length}.`);
+  const presentation = presentations[0];
+  const templateFile = presentation.templateUrl ? resolve(dirname(componentFile), presentation.templateUrl) : '';
+  const template = templateFile ? existsSync(templateFile) ? repositoryPath(templateFile) : `MISSING:${presentation.templateUrl}`
+    : `${repositoryPath(componentFile)}#inline-${presentation.name}`;
+  const templateSource = templateFile ? existsSync(templateFile) ? readFileSync(templateFile, 'utf8') : '' : presentation.template ?? '';
+  templateSources.set(template, templateSource);
+  const inlineStyles = presentation.inlineStyles.map((style, index) => {
+    const reference = `${repositoryPath(componentFile)}#style-${index + 1}`;
+    inlineStyleSources.set(reference, style);
+    return reference;
+  });
+  const metadata = {
+    selector: presentation.selector ?? '', template,
+    styles: [...presentation.styleUrls.map((style) => {
       const styleFile = resolve(dirname(componentFile), style);
       return existsSync(styleFile) ? repositoryPath(styleFile) : `MISSING:${style}`;
-    }),
+    }), ...inlineStyles],
     metrics: inspectPresentation(source, templateSource)
   };
+  metadataCache.set(componentFile, metadata);
+  return metadata;
 }
 
 function countMatches(source, expression) {
@@ -372,75 +377,14 @@ function inspectPresentation(componentSource, templateSource) {
   };
 }
 
-function compactText(value) {
-  return (value ?? '')
-    .replace(/<!--[\s\S]*?-->/g, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\{\{[\s\S]*?\}\}/g, '{{…}}')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, 180);
-}
-
-function attributeValue(source, name) {
-  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const match = new RegExp(`(?:^|\\s)${escapedName}\\s*=\\s*(["'])([\\s\\S]*?)\\1`, 'i').exec(source);
-  return match?.[2]?.replace(/\s+/g, ' ').trim() ?? '';
-}
-
 function inspectInteractions(component) {
-  if (!component.template || component.template === 'inline-or-none' || component.template.startsWith('MISSING:')) {
-    return [];
-  }
-
-  const templateFile = resolve(repositoryRoot, component.template);
-  if (!existsSync(templateFile)) {
-    return [];
-  }
-
-  const templateSource = readFileSync(templateFile, 'utf8');
-  const interactions = [];
-  const pushInteraction = (type, attributes, content = '') => {
-    interactions.push({
+  if (!templateSources.has(component.template)) throw new Error(`Unresolved template: ${component.template}`);
+  return presentationInteractions(templateSources.get(component.template), component.template).map(row => ({
       scope: component.scope,
       componentFile: component.componentFile,
       template: component.template,
-      type,
-      label: attributeValue(attributes, 'aria-label')
-        || attributeValue(attributes, '[attr.aria-label]')
-        || attributeValue(attributes, '[label]')
-        || attributeValue(attributes, 'label')
-        || attributeValue(attributes, '[placeholder]')
-        || attributeValue(attributes, 'placeholder')
-        || attributeValue(attributes, 'title')
-        || attributeValue(attributes, 'name')
-        || compactText(content),
-      click: attributeValue(attributes, '(click)'),
-      submit: attributeValue(attributes, '(ngSubmit)'),
-      routerLink: attributeValue(attributes, '[routerLink]') || attributeValue(attributes, 'routerLink'),
-      href: attributeValue(attributes, 'href') || attributeValue(attributes, '[href]'),
-      disabled: attributeValue(attributes, '[disabled]') || attributeValue(attributes, 'disabled'),
-      visibility: attributeValue(attributes, '*ngIf') || attributeValue(attributes, '[hidden]')
-    });
-  };
-
-  for (const match of templateSource.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)) {
-    pushInteraction('button', match[1], match[2]);
-  }
-  for (const match of templateSource.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
-    pushInteraction('link', match[1], match[2]);
-  }
-  for (const match of templateSource.matchAll(/<form\b([^>]*)>/gi)) {
-    pushInteraction('form', match[1]);
-  }
-  for (const match of templateSource.matchAll(/<(input|select|textarea)\b([^>]*)>/gi)) {
-    pushInteraction(match[1].toLowerCase(), match[2]);
-  }
-  for (const match of templateSource.matchAll(/<app-ui-button\b([^>]*)>([\s\S]*?)<\/app-ui-button>/gi)) {
-    pushInteraction('app-ui-button', match[1], match[2]);
-  }
-
-  return interactions;
+      ...row
+  }));
 }
 
 function parseRoutesFile(routeFile, prefix = '', ancestryGuards = []) {
@@ -462,6 +406,9 @@ function parseRouteArray(routeArray, routeFile, prefix, ancestryGuards) {
     const children = properties.get('children');
     const lazy = parseImport(properties.get('loadChildren'));
     const component = parseImport(properties.get('loadComponent'));
+    if ((properties.has('loadChildren') && !lazy) || (properties.has('loadComponent') && !component) || properties.has('component')) {
+      throw new Error(`Unsupported route component declaration: ${repositoryPath(routeFile)} ${fullRoute}`);
+    }
     const redirect = unquote(properties.get('redirectTo'));
     const resolvers = [...(properties.get('resolve') ?? '').matchAll(/:\s*([A-Za-z_$][\w$]*Resolver)\b/g)].map((match) => match[1]);
 
@@ -529,7 +476,11 @@ function walk(directory) {
 
 function buildComponentInventory() {
   return walk(appRoot)
-    .filter((path) => path.endsWith('.component.ts') && !path.endsWith('.spec.ts'))
+    .filter(isProductionPresentationFile)
+    .filter((path) => {
+      const source = readFileSync(path, 'utf8');
+      return /@Component\s*\(/.test(source) && componentPresentations(source, path).length > 0;
+    })
     .sort()
     .map((componentFile) => {
       const metadata = findComponentMetadata(componentFile);
@@ -537,6 +488,7 @@ function buildComponentInventory() {
       return {
         scope: scopeMatch?.[1] ?? 'app',
         componentFile: repositoryPath(componentFile),
+        selector: metadata.selector,
         template: metadata.template,
         styles: metadata.styles.join(' | '),
         ...metadata.metrics
@@ -550,23 +502,26 @@ function buildStyleInventory() {
     .flatMap((directory) => walk(directory))
     .filter((path) => path.endsWith('.scss'))
     .sort()
-    .map((styleFile) => {
-      // Repository-normalized bytes make this inventory reproducible on Windows and Linux.
-      const source = readFileSync(styleFile, 'utf8').replaceAll('\r\n', '\n');
-      return {
-        styleFile: repositoryPath(styleFile),
-        bytes: Buffer.byteLength(source, 'utf8'),
-        lines: source.split(/\r?\n/).length,
-        customProperties: countMatches(source, /--[a-z0-9-]+\s*:/gi),
-        variableReferences: countMatches(source, /var\(\s*--[a-z0-9-]+/gi),
-        mediaQueries: countMatches(source, /@media\b/gi),
-        containerQueries: countMatches(source, /@container\b/gi),
-        important: countMatches(source, /!important\b/gi),
-        gradients: countMatches(source, /(?:linear|radial|conic)-gradient\(/gi),
-        shadows: countMatches(source, /(?:box|text)-shadow\s*:/gi),
-        radiusDeclarations: countMatches(source, /border-radius\s*:/gi)
-      };
-    });
+    .map((styleFile) => styleRecord(repositoryPath(styleFile), readFileSync(styleFile, 'utf8')))
+    .concat([...inlineStyleSources].map(([reference, source]) => styleRecord(reference, source)));
+}
+
+function styleRecord(reference, content) {
+  // Repository-normalized bytes make this inventory reproducible on Windows and Linux.
+  const source = content.replaceAll('\r\n', '\n');
+  return {
+    styleFile: reference,
+    bytes: Buffer.byteLength(source, 'utf8'),
+    lines: source.split(/\r?\n/).length,
+    customProperties: countMatches(source, /--[a-z0-9-]+\s*:/gi),
+    variableReferences: countMatches(source, /var\(\s*--[a-z0-9-]+/gi),
+    mediaQueries: countMatches(source, /@media\b/gi),
+    containerQueries: countMatches(source, /@container\b/gi),
+    important: countMatches(source, /!important\b/gi),
+    gradients: countMatches(source, /(?:linear|radial|conic)-gradient\(/gi),
+    shadows: countMatches(source, /(?:box|text)-shadow\s*:/gi),
+    radiusDeclarations: countMatches(source, /border-radius\s*:/gi)
+  };
 }
 
 mkdirSync(outputDirectory, { recursive: true });
@@ -582,14 +537,14 @@ writeCsv(join(outputDirectory, 'V6-ROUTE-INVENTORY.csv'), routes, routeColumns);
 const components = buildComponentInventory();
 const componentColumns = [
   'scope', 'componentFile', 'template', 'styles', 'buttons', 'links', 'forms', 'inputs', 'clicks',
-  'conditions', 'loops', 'deferred', 'loading', 'empty', 'error', 'dialogs', 'tables'
+  'conditions', 'loops', 'deferred', 'loading', 'empty', 'error', 'dialogs', 'tables', 'selector'
 ];
 writeCsv(join(outputDirectory, 'V6-COMPONENT-INVENTORY.csv'), components, componentColumns);
 
 const interactions = components.flatMap(inspectInteractions);
 const interactionColumns = [
   'scope', 'componentFile', 'template', 'type', 'label', 'click', 'submit', 'routerLink', 'href',
-  'disabled', 'visibility'
+  'disabled', 'visibility', 'events', 'bindings', 'line'
 ];
 writeCsv(join(outputDirectory, 'V6-INTERACTION-INVENTORY.csv'), interactions, interactionColumns);
 
@@ -606,16 +561,20 @@ const familyCounts = [...new Set(routes.map((route) => route.family))]
 const scopeCounts = [...new Set(components.map((component) => component.scope))]
   .sort()
   .map((scope) => ({ scope, count: components.filter((component) => component.scope === scope).length }));
-const missingTemplates = routes.filter((route) => route.kind === 'component' && route.template.startsWith('MISSING:'));
+const missingTemplates = components.filter(component => component.template.startsWith('MISSING:'));
+const missingStyles = components.filter(component => component.styles.includes('MISSING:'));
+if (missingTemplates.length || missingStyles.length) throw new Error('Unresolved component template or styles.');
 
 const summary = [
   '# Inventaire P00 généré',
   '',
+  `- Source : ${process.env.V6_SOURCE_REVISION ?? 'arbre de travail courant ; SHA à consigner dans le rapport de couverture'}`,
   `- Routes terminales, redirections et écrans développés : **${routes.length}**`,
   `- Composants Angular de présentation recensés : **${components.length}**`,
   `- Interactions et champs explicitement recensés : **${interactions.length}**`,
-  `- Feuilles SCSS globales et locales recensées : **${styles.length}**`,
-  `- Templates de routes manquants : **${missingTemplates.length}**`,
+  `- Feuilles SCSS globales et locales recensées : **${styles.length - inlineStyleSources.size}**`,
+  `- Blocs de styles inline recensés : **${inlineStyleSources.size}**`,
+  `- Templates de composants manquants : **${missingTemplates.length}**`,
   '',
   '## Routes par famille',
   '',
@@ -630,6 +589,8 @@ const summary = [
   ...scopeCounts.map(({ scope, count }) => `| ${scope} | ${count} |`),
   '',
   'Les CSV voisins sont la source exhaustive. Ils doivent être régénérés après chaque intégration de `origin/master` et avant P22.',
+  'Les conditions et événements sont des preuves de source Angular, pas des scénarios exécutés ni des validations fonctionnelles.',
+  'Les composants de tests (`test-helpers`, `testing`, `fixtures`, `__tests__`, `*.spec.ts`) sont exclus du périmètre de production.',
   ''
 ].join('\n');
 writeFileSync(join(outputDirectory, 'README.md'), summary, 'utf8');

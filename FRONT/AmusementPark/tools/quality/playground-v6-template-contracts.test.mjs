@@ -2,6 +2,43 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { compareTemplateContracts, inlineComponentTemplates, templateContracts } from '../design-v6/template-contract-evidence.mjs';
 import { resumeStaticCaptures } from '../design-v6/browser-phase-isolation.mjs';
+import { componentPresentations, isProductionPresentationFile, presentationInteractions } from '../design-v6/presentation-inventory-evidence.mjs';
+
+test('production inventory includes non-suffixed primitives but excludes test-only component hosts', () => {
+  assert.equal(isProductionPresentationFile('src/app/shared/ui/primitives/dialog.ts'), true);
+  assert.equal(isProductionPresentationFile('src/app/ui/page.component.ts'), true);
+  for (const name of ['src/app/page.spec.ts', 'src/app/test-helpers/host.ts', 'src/app/fixtures/host.component.ts', 'src/testing/host.ts']) {
+    assert.equal(isProductionPresentationFile(name), false);
+  }
+});
+
+test('inventory discovers inline primitives, external views and inline styles from real decorators', () => {
+  const source = '// @Component({template: "ignore"})\n@Component({selector:"app-panel", template:`<button>Toggle</button>`, styles:[`:host{display:block}`]}) export class Panel {}';
+  assert.deepEqual(componentPresentations(source), [{ name: 'Panel', selector: 'app-panel', template: '<button>Toggle</button>', templateUrl: null,
+    styleUrls: [], inlineStyles: [':host{display:block}'] }]);
+  const external = componentPresentations('@Component({templateUrl:"page.html", styleUrl:"page.scss"}) export class Page {}')[0];
+  assert.equal(external.templateUrl, 'page.html');
+  assert.deepEqual(external.styleUrls, ['page.scss']);
+  assert.throws(() => componentPresentations('@Component({styles: computedStyles}) export class Dynamic {}'), /Dynamic component presentation/);
+});
+
+test('inventory retains complete bindings, generic events and inherited visibility without wrapper duplicates', () => {
+  const source = '@if (canEdit()) { <button *ngIf="enabled" [disabled]="rows.length > 1" (click)="save()" (keydown.enter)="save()">{{ "actions.save" | translate }}</button><app-ui-paginator (onPageChange)="page($event)"/><div [routerLink]="target()">Open</div> } @else { <input disabled name="readonly"/> }';
+  const rows = presentationInteractions(source);
+  assert.equal(rows.length, 4);
+  assert.equal(rows[0].disabled, 'rows.length > 1');
+  assert.equal(rows[0].click, 'save()');
+  assert.ok(rows[0].label.includes('actions.save'));
+  assert.ok(rows[0].visibility.includes('canEdit()'));
+  assert.ok(rows[0].visibility.includes('ngIf: enabled'));
+  assert.ok(rows[0].events.includes('keydown.enter'));
+  assert.equal(rows[1].type, 'app-ui-paginator');
+  assert.ok(rows[1].events.includes('onPageChange'));
+  assert.equal(rows[2].routerLink, 'target()');
+  assert.equal(rows[3].disabled, 'true');
+  assert.ok(rows[3].visibility.includes('else'));
+  assert.throws(() => presentationInteractions('<div>{{ broken( }}</div>'), /Cannot inventory/);
+});
 
 test('static captures unblock only after the hydrated application document has been destroyed', async () => {
   const calls = [];
