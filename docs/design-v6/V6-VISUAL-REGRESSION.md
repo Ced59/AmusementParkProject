@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Audit source complémentaire — textes de comparaison/lignée
+
+Les petits kickers de comparaison, deltas négatifs, badges de relation et liens de sources utilisaient aussi l'orange décoratif comme texte sur les surfaces claires. Seules leurs propriétés `color` rejoignent `--app-primary-strong`, déjà testé à 4,5:1 sur ces surfaces ; aplats, graphes, dates, catégories et algorithme de comparaison restent intacts. La liaison de chacun des quatre selectors est protégée. **Audit source, rendus de comparaison/lignée encore requis.**
+
 ## Diagnostic `e4c477022` — snapshots et formulaire local
 
 L'[artefact `12075055605`](https://github.com/Ced59/AmusementParkProject/actions/runs/38964725822/artifacts/12075055605) conserve 348 captures et trois nouveaux défauts en clair : « Inventaire établi » orange sur `#eeefe8` à **3,38:1**, badge couverture partielle sur `#f7f6f0` à **3,61:1**, confirmation historique anonyme or sur `[0.931216, 0.898667, 0.864627]` à **3,99:1**. Les deux textes orange et le hover/focus du breadcrumb rejoignent `--app-primary-strong` ; l'avertissement utilise `--app-accent-gold` avec un selector précis sans l'ancien `!important`. Fonds, textes, données historiques et confirmations restent inchangés. Les fonds mesurés et liaisons CSS sont testés ; **nouveau rendu CI requis**, aucune validation des écrans suivants déduite de ces seuls tests.

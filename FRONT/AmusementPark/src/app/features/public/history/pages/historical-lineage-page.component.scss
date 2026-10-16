@@ -229,7 +229,7 @@
 
 .historical-lineage-card__facts .historical-lineage-type {
   border-color: color-mix(in srgb, var(--app-primary) 48%, var(--app-border));
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-weight: 900;
 }
 
@@ -271,7 +271,7 @@
 }
 
 .historical-lineage-sources a {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .historical-lineage-sources small {

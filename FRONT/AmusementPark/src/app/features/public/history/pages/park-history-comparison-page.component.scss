@@ -85,7 +85,7 @@
 
 .comparison-section > header > p {
   margin: 0;
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -146,7 +146,7 @@
 .category-evolution__list strong { color: var(--app-heading); overflow-wrap: anywhere; }
 .category-evolution__list header span { color: var(--app-text-muted); font-weight: 900; }
 .category-evolution__list header .is-positive { color: var(--app-success, #87c72a); }
-.category-evolution__list header .is-negative { color: var(--app-primary); }
+.category-evolution__list header .is-negative { color: var(--app-primary-strong); }
 .category-bar { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.5rem; align-items: center; margin-top: 0.5rem; }
 .category-bar small { color: var(--app-text-muted); text-align: right; }
 .category-bar > span { display: block; height: 0.48rem; overflow: hidden; border-radius: var(--radius-sm); background: var(--app-surface-2); }
