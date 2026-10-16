@@ -15,7 +15,7 @@ h1 { font-size: clamp(2rem, 9vw, 4rem); line-height: .96; text-transform: upperc
 .comparison-consent__proof { padding: 1rem; border-radius: var(--app-radius-md); background: color-mix(in srgb, var(--c-sky) 9%, transparent); }
 .comparison-consent__blocked > i, .comparison-consent__success > i { font-size: 1.6rem; color: var(--c-lime); }
 .comparison-consent__blocked > div, .comparison-consent__success > div { display: grid; gap: .35rem; min-width: 0; }
-.comparison-consent__error { color: var(--color-danger, #ff4f87); }
+.comparison-consent__error { color: var(--app-danger); }
 @media (max-width: 520px) {
   .comparison-consent__people { grid-template-columns: minmax(0, 1fr); }
   .comparison-consent__arrow { transform: rotate(90deg); justify-self: center; }

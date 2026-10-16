@@ -96,7 +96,7 @@ p {
   grid-column: 1 / -1;
 }
 .comparison-management__error {
-  color: var(--color-danger, #ff4f87);
+  color: var(--app-danger);
 }
 @media (max-width: 420px) {
   .comparison-management__actions,

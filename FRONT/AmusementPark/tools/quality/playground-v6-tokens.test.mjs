@@ -43,6 +43,25 @@ function resolveThemeColor(theme, name) {
   return alias ? resolveThemeColor(theme, alias[1]) : value;
 }
 
+test('rare passport sharing errors use the real theme danger token rather than an unmapped pastel fallback', () => {
+  for (const file of [
+    'pages/passport-profile-share-page/passport-profile-share-page.component.scss',
+    'pages/profile-comparison-invitation-page/profile-comparison-invitation-page.component.scss',
+    'components/profile-comparison-invitation-creator/profile-comparison-invitation-creator.component.scss',
+    'components/profile-comparison-management/profile-comparison-management.component.scss',
+  ]) {
+    const source = readFileSync(resolve(styles, `../app/features/profile/passport/${file}`), 'utf8');
+    assert.match(source, /color:\s*var\(--app-danger\)/);
+    assert.doesNotMatch(source, /color:\s*var\(--color-danger,/);
+  }
+  for (const source of [light, dark]) {
+    const theme = variables(source);
+    const text = resolveThemeColor(theme, '--app-danger');
+    assert.ok(contrast(text, resolveThemeColor(theme, '--app-bg')) >= 4.5);
+    assert.ok(contrast(text, mix('#ff4f87', resolveThemeColor(theme, '--app-surface'), 0.08)) >= 4.5);
+  }
+});
+
 test('account notification, passport and trip labels keep AA ink on CI-observed surfaces', () => {
   const cases = [
     [light, '--app-accent-cyan', [0.8092548986666667, 0.8829020156862745, 0.8719216125490197]],

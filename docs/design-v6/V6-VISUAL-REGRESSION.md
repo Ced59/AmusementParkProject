@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Audit source des erreurs rares de partage/consentement
+
+Quatre textes d'erreur passeport/partage/comparaison utilisaient `--color-danger` non défini, avec le fallback pastel `#ff4f87`. Leur seule propriété `color` rejoint `--app-danger` ; contenus, conditionnels, traitements d'erreur et fonds restent conservés. Le test vérifie le raccordement et 4,5:1 sur fond général et surface teintée à 8 % dans les deux thèmes. **C'est une preuve source/numérique, pas une capture d'erreur serveur réelle ni un nouveau PASS de workflow.**
+
 ## Diagnostic `e7ee95546` — cible visible, deux contrastes supplémentaires
 
 L'[artefact `12074465539`](https://github.com/Ced59/AmusementParkProject/actions/runs/38962998793/artifacts/12074465539) contient 308 captures V6 standard FR avec bounds de cible. Les dix-sept combinaisons du run précédent ne réapparaissent plus ; deux nouveaux textes sont refusés : confidentialité d'invitation lime sur `#f7f6f0` à **1,20:1**, puis kicker de partage d'une visite Completed or sur `#eeefe8` à **4,28:1**. Ils rejoignent `--app-accent-lime` / `--app-accent-gold` ; le texte de privacy de l'éditeur de partage utilise aussi le lime sémantique. Tests sur les fonds mesurés/composés et liaison CSS, aucun changement de contenu ou d'action.

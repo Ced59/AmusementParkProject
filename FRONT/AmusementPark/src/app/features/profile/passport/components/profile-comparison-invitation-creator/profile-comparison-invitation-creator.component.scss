@@ -13,7 +13,7 @@ input[type='checkbox'] { inline-size: 1.15rem; block-size: 1.15rem; accent-color
 .comparison-invite__result { display: grid; gap: .5rem; padding: 1rem; border-radius: var(--app-radius-md); background: color-mix(in srgb, var(--c-lime) 10%, transparent); min-width: 0; }
 .comparison-invite__link-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .65rem; min-width: 0; }
 .comparison-invite__link-row input { box-sizing: border-box; inline-size: 100%; min-width: 0; padding: .8rem; border-radius: var(--app-radius-md); color: inherit; background: color-mix(in srgb, #000 16%, transparent); border: 1px solid color-mix(in srgb, currentColor 22%, transparent); text-overflow: ellipsis; }
-.comparison-invite__error { display: flex; align-items: flex-start; gap: .5rem; color: var(--color-danger, #ff4f87); }
+.comparison-invite__error { display: flex; align-items: flex-start; gap: .5rem; color: var(--app-danger); }
 @media (max-width: 480px) {
   .comparison-invite__link-row { grid-template-columns: minmax(0, 1fr); }
   .comparison-invite__link-row button, .comparison-invite > button { inline-size: 100%; }

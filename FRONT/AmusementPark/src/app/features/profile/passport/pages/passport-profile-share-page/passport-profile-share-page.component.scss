@@ -36,7 +36,7 @@ textarea { box-sizing: border-box; width: 100%; max-width: 100%; resize: vertica
 .passport-share__preview-block li span { opacity: .76; }
 .passport-share__quote { font-size: 1.15rem; font-style: italic; }
 .passport-share__comparison, .passport-share__notice { padding: 1rem; border-radius: var(--app-radius-md); background: color-mix(in srgb, var(--c-sky) 8%, transparent); }
-.passport-share__error { display: flex; align-items: flex-start; gap: .55rem; color: var(--color-danger, #ff4f87); }
+.passport-share__error { display: flex; align-items: flex-start; gap: .55rem; color: var(--app-danger); }
 .passport-share__revoke { justify-self: start; }
 .passport-share__cache-note { display: flex; align-items: flex-start; gap: .55rem; min-width: 0; opacity: .76; overflow-wrap: anywhere; }
 @media (max-width: 420px) {
