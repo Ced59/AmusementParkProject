@@ -160,6 +160,31 @@ test('small sky kickers remain AA on the actual nested profile surface found by 
   assert.equal(resolveThemeColor(theme, '--app-accent-cyan'), foreground);
 });
 
+test('small gold kickers remain AA on the desktop nested profile surface found by Chromium', () => {
+  const theme = variables(light);
+  const foreground = resolveThemeColor(theme, '--app-light-accent-gold');
+  const observedBackground = [0.855767505882353, 0.8121790090196078, 0.7198372];
+  assert.ok(contrast('#8a4f00', observedBackground) < 4.5);
+  assert.ok(contrast(foreground, observedBackground) >= 4.5);
+  assert.equal(resolveThemeColor(theme, '--app-accent-gold'), foreground);
+});
+
+test('light semantic kickers retain AA when nested on existing tinted profile cards', () => {
+  const theme = new Map([...variables(designTokens), ...variables(light)]);
+  const failures = [];
+  for (const tone of ['lime', 'sky', 'gold', 'rose', 'purple']) {
+    const foreground = resolveThemeColor(theme, `--app-light-accent-${tone}`);
+    const channels = theme.get(`--app-light-accent-${tone}-soft`).match(/[\d.]+/g).map(Number);
+    for (const parentTone of ['orange', 'sky', 'gold', 'rose', 'purple']) {
+      const parent = mix(resolveThemeColor(theme, `--c-${parentTone}`), theme.get('--bg-card'), 0.08);
+      const composite = mix(channels.slice(0, 3).map(channel => channel / 255), parent, channels[3]);
+      const ratio = contrast(foreground, composite);
+      if (ratio < 4.5) failures.push({ tone, parentTone, ratio });
+    }
+  }
+  assert.deepEqual(failures, []);
+});
+
 test('Playground category aliases resolve where the theme values live, not on root', () => {
   assert.doesNotMatch(designTokens, /--type-(?:coaster|water|family|show|food|thrill):/);
   const body = adapters.match(/body\s*\{([^}]+)\}/)?.[1];

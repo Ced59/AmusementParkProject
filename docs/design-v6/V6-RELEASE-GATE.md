@@ -35,7 +35,7 @@
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
 | P21 CI Node 24 | PASS complet `fc742b010` — 2 769 tests Angular / 583 fichiers, 224 tests qualité, 224 assertions HTTP, 307 contrôles publics hydratés, 132 contrôles/104 captures profil master/V6 et Docker ; compléments listes/session expirée à exécuter |
 | Exception P04.6 | PASS ciblé `7115bb901`, six paires, +3 110 octets JS sous plafond +3 302, aucune défaillance ; économie du seul pictogramme prouvée séparément, aucun élargissement de l'exception positive |
-| Dernière CI `7115bb901` | FAIL recette profil : deux kickers clairs à 390 px mesurés 4,25:1 ; tests/build/budgets et backend verts. Couleur corrigée et test ajouté, nouveau rendu CI obligatoire ; aucun PASS global |
+| Dernière CI `f975d9bc4` | 2 777 tests Angular verts, build/budgets/backend verts ; FAIL kicker or profil clair 1 366 px à 4,25:1, après correction bleue mobile validée. Or/lime corrigés avec deux fonds mesurés et 25 compositions numériques protégés ; nouveau rendu CI obligatoire |
 | Recette pratique additionnelle | PASS CIBLÉ `791dc2c46` — 732 captures hydratées additionnelles, calendrier localement défilable, météo, 30 popups, vidéos, récit et standalone huit langues ; scénarios absents et revue exhaustive toujours ouverts |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions autorisées : PKCS 10.0.13, nettoyage Leaflet, tests backend stabilisés (deadline image PASS `136a9b8e2`) ; correction présentationnelle de quatre messages de secours dans trois facades auth, sans modification des mécanismes/ports/validations/payloads, nouveaux tests à attester |

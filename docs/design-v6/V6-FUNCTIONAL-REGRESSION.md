@@ -1,5 +1,9 @@
 # V6 — non-régression fonctionnelle
 
+## CI `f975d9bc4` — tests auth verts, recette encore FAIL
+
+Le [run `38903181087`](https://github.com/Ced59/AmusementParkProject/actions/runs/38903181087) valide **2 777 tests Angular / 583 fichiers**, dont les sept nouveaux cas auth : fallback FR/EN, absence d'appel sans token et payloads inchangés. Build, budgets, backend et sécurité passent. Le profil clair mobile franchit le défaut bleu corrigé ; le prochain refus est le kicker or desktop à 4,25:1, sans erreur navigateur/fixture. L'alias or et une combinaison lime détectée par le garde de 25 compositions sont corrigés ; 17 tests tokens passent. Les nouveaux rendus et les compléments compte suivants restent non attestés. Pas de PASS global ni d'autorisation de merge déduits des tests unitaires.
+
 ## Dernière recette — `7115bb901`, FAIL conservé
 
 Le [run `38900388260`](https://github.com/Ced59/AmusementParkProject/actions/runs/38900388260) passe tests/build/budgets frontend, backend et les six paires réseau P04.6 (+3 110 octets JS, plafond inchangé). La variante master standard FR passe 370 contrôles et 312 captures de profil/éditeurs/listes/passeport/Park Fit sans exception ni fixture manquante. La V6 s'arrête ensuite au contraste du profil clair 390 px (deux kickers à 4,25:1), avant les variantes suivantes : **leurs compléments ne sont pas déclarés PASS**. Correction de couleur et nouveau rendu exigés. Les 51 tests Node ciblés compte/tokens/accueil passent après correction ; les sept nouveaux tests Angular auth et les pages auth ajoutées attendent leur exécution CI.

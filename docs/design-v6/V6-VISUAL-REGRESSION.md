@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Second contraste profil — `f975d9bc4`
+
+Le [run `38903181087`](https://github.com/Ced59/AmusementParkProject/actions/runs/38903181087) passe 2 777 tests Angular et atteint le profil clair 1 366 px. La capture `v6_standard_fr_account-profile_1366_light.webp` est inspectée : en-tête, nom long et panneaux restent dans le document ; le kicker bleu mobile précédemment refusé ne bloque plus. Le kicker « Passeport de visites » de 11,52 px mesure **4,25:1** et arrête la recette. Aucune exception ni fixture manquante. L'alias or et le cas numérique de sa composition sont corrigés ; un garde de 25 compositions complète aussi le lime. **Ce run reste FAIL ; nouveau rendu requis.**
+
 ## Défaut profil détecté — `7115bb901`
 
 L'[artefact `12046276843`](https://github.com/Ced59/AmusementParkProject/actions/runs/38900388260/artifacts/12046276843) conserve le FAIL original : `v6_standard_fr_account-profile_390_light.webp` et son rapport. La capture inspectée montre nom long, navigation et actions repliés dans le viewport ; le document ne déborde pas. Deux kickers de 11,52 px (« Radar personnel » et « Voyages à préparer ») sont mesurés à **4,25:1**, sous le seuil de 4,5:1. Aucun échec de fixture ni exception navigateur. La couleur de texte est corrigée via l'alias existant et un test protège ce fond exact ; **nouvelle CI/capture requise**, sans transformer rétroactivement ce FAIL en PASS.
