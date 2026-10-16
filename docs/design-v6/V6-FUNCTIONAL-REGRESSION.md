@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## Complément de recette historique — préparé le 16 octobre
+
+La recette utilise uniquement les liens publiés de la timeline courante : page suivante, année documentée, comparaison et lignée. Elle contrôle le résumé de pagination, les champs de couverture du snapshot, la sélection mois/jour et ses paramètres d'URL, la validation d'une plage d'années, la soumission valide et le disclosure natif des sujets stables. Chaque retour restaure la même entrée d'historique. Les capacités absentes sont enregistrées explicitement dans `historyExplorer.unavailable`, sans URL de fixture ni publication de données.
+
+Les tests Node ciblés couvrent notamment le cas sans snapshot et la syntaxe exacte de toutes les expressions navigateur générées. Les parcours hydratés et leurs nouvelles captures ne sont **pas encore exécutés** ; les tests de calcul historique et les contrats API restent inchangés.
+
 ## Méthode
 
 La matrice corrigée recense 148 terminaux de route, 293 composants et 2 056 contrôles/champs/cibles événementielles, contre 2 057 à la base exacte. Les trois écarts de présentation sont détaillés dans le rapport de couverture ; les anciens 1 869 lignes provenaient d'un filtre incomplet. Les contrôles statiques et la suite Angular vérifient une partie des contrats ; ils ne démontrent pas que chaque ligne a été exercée dans un navigateur avec tous ses états, données et rôles. La matrice de recette complète reste ouverte. Les lancements locaux exigent au moins 3,5 Gio de RAM et 4 Gio de commit, avec une réserve physique absolue de 1,5 Gio ; les builds et suites lourdes restent en CI.

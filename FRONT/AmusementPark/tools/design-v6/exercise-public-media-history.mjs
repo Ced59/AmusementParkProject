@@ -1,5 +1,7 @@
 // Anonymous, existing controls only. External video playback stays blocked by
 // the caller's sandbox; this recipe never claims to validate the provider.
+import { exercisePublicHistoryExplorer } from './exercise-public-history-explorer.mjs';
+
 export const publicVideoCardIdsExpression = "[...document.querySelectorAll('.public-video-card')].map(link => link.getAttribute('href').split('/videos/')[1]?.split('/')[0])";
 
 export async function exercisePublicMediaHistory({ evaluate, waitUntil, capturePage, result }) {
@@ -91,7 +93,7 @@ export async function exercisePublicMediaHistory({ evaluate, waitUntil, captureP
   await capturePage('history-article-body', '.history-article__content');
   await evaluate('history.back()');
   await waitUntil(`navigation.currentEntry.key === ${JSON.stringify(timeline.key)} && document.querySelectorAll('.canonical-history-event').length === ${timeline.events}`, 'article back restores the exact timeline and event count');
-  result.historyScenarios = { timeline, article: { path: articlePath, ...article },
-    snapshotsAndComparisonNotExercised: true, serverPaginationNotExercised: true };
+  result.historyScenarios = { timeline, article: { path: articlePath, ...article } };
+  await exercisePublicHistoryExplorer({ evaluate, waitUntil, capturePage, result });
   await restoreParent();
 }
