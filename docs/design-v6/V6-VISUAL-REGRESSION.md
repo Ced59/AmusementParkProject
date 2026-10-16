@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Marqueurs Leaflet réels — styles V5 résiduels identifiés
+
+La capture hydratée du run `2335fc043` révèle les pins et clusters brillants encore dans le SCSS global `_maps.scss`, non visibles dans les réservations SSR de carte. Le lot suivant remplace leurs dégradés, grandes ombres, rondelles et mouvement de survol par des têtes quasi carrées, aplat de champ, filet/couleur de catégorie et contour au focus/survol. Le halo d'un pixel est uniquement un contour de lisibilité sur les tuiles. Les 36 couleurs de la factory UI deviennent des références aux tokens existants, sans palette parallèle. Le pictogramme de marque séparé des marqueurs parc/site est remplacé par leur glyph 🎢 déjà défini ; aucun fichier asset n'est supprimé, aucun nouveau téléchargement n'est ajouté. Les wordmarks navbar/footer ne sont pas touchés.
+
+Dimensions, ancrages/popup, catégories, glyphs des lieux, labels et seuils de clusters sont protégés par les nouveaux tests. Les 22 contrôles Node cartes/tokens et la compilation SCSS globale ciblée passent (9 713 caractères avant retrait du style logo désormais inutilisé). **Rendu hydraté et 38 nouveaux tests Vitest à attester en CI.**
+
 ## Calendrier à 320 px — lisibilité après le premier correctif
 
 La [CI `754cce98c`, artefact `12029833735`](https://github.com/Ced59/AmusementParkProject/actions/runs/38863174263/artifacts/12029833735) passe 26 géométries internes du calendrier (31 vrais jours et un badge Aujourd'hui chacune), ainsi que 26 captures météo historique. L'inspection du calendrier **320 px sombre** confirme la disparition du chevauchement, mais montre encore des heures morcelées et le badge sur quatre lignes : la lisibilité n'est pas validée par le seul containment.

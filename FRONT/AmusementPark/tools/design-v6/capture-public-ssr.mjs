@@ -19,6 +19,7 @@ import { publicPracticalReadEvidence, openingCalendarLayoutIssues } from './publ
 import { publicVideoReadEvidence } from './public-video-evidence.mjs';
 import { exercisePublicMediaHistory } from './exercise-public-media-history.mjs';
 import { exercisePublicMap } from './exercise-public-map.mjs';
+import { canRenderPublicDocument } from './public-document-evidence.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -277,6 +278,15 @@ async function captureHydratedHome(rawHtml, options = {}) {
     }
     if (resourceType === 'Document' && url.origin === origin && url.pathname === '/fr/home') {
       await respond(200, 'text/html; charset=utf-8', rawHtml);
+      return;
+    }
+    if (resourceType === 'Document' && url.origin === origin && !options.networkProbe && options.renderDocument) {
+      const path = url.pathname + url.search;
+      if (!canRenderPublicDocument(path)) throw new Error(`Unexpected non-public review document: ${path}`);
+      if ((result.documentNavigations?.length ?? 0) >= 12) throw new Error('Public document navigation exceeds its explicit recipe bound.');
+      const document = await options.renderDocument(path);
+      (result.documentNavigations ??= []).push({ path, engineStatus: document.status, reads: document.reads });
+      await respond(document.status, 'text/html; charset=utf-8', document.html);
       return;
     }
     const assetPath = resolve(root, `.${decodeURIComponent(url.pathname)}`);
@@ -760,6 +770,23 @@ try {
   await cdp.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
   entry = await import(pathToFileURL(resolve('dist/amusement-park/server/main.server.mjs')));
   const application = entry.ɵgetOrCreateAngularServerApp();
+  let documentRenderInFlight = false;
+  const renderDocument = async path => {
+    if (!canRenderPublicDocument(path)) throw new Error('Only bounded public park/attraction documents can use the compiled SSR renderer.');
+    if (documentRenderInFlight) throw new Error('Public review documents must render serially.');
+    documentRenderInFlight = true;
+    const previousReads = reads;
+    reads = [];
+    try {
+      const response = await application.handle(new Request(new URL(path, publicOrigin), { signal: AbortSignal.timeout(45000) }));
+      const html = await response?.text();
+      if (response?.status !== 200 || !/<app-root\b/i.test(html ?? '') || !/<h1\b/i.test(html ?? '')) throw new Error(`The actual public document did not render a complete successful Angular page: ${path}`);
+      return { status: response.status, html, reads: [...reads] };
+    } finally {
+      reads = previousReads;
+      documentRenderInFlight = false;
+    }
+  };
   let homeRawHtml;
   let hydratedSmokePassed = false;
   for (const path of paths) {
@@ -791,7 +818,7 @@ try {
     // Fail on real interaction defects before spending minutes on all static
     // widths. A passing run still executes every capture and comparison below.
     if (process.env.CI === 'true' && path === '/fr/home') {
-      await captureHydratedHome(homeRawHtml);
+      await captureHydratedHome(homeRawHtml, { renderDocument });
       hydratedSmokePassed = true;
       report.hydratedToStaticReset = await resumeStaticCaptures(cdp);
     }

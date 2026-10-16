@@ -3,6 +3,20 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
 import { mapViewportSettled } from '../design-v6/exercise-public-map.mjs';
+import { canRenderPublicDocument } from '../design-v6/public-document-evidence.mjs';
+
+test('native public detail navigation renders the same compiled SSR build, never a production V5 or private document', () => {
+  const path = '/fr/park/00000000-0000-0000-0000-000000000001/park/item/00000000-0000-0000-0000-000000000002/item';
+  assert.equal(canRenderPublicDocument(path), true);
+  assert.equal(canRenderPublicDocument('/pl/attraction/00000000-0000-0000-0000-000000000001/ride/history?page=2'), true);
+  for (const forbidden of ['/fr/admin/parks', '/fr/account/profile', '/api/parks', 'https://amusement-parks.fun' + path, '//evil.invalid' + path, path + '\\escape', path + 'a'.repeat(2049), path + '/%2e%2e/%2e%2e/%2e%2e/admin']) assert.equal(canRenderPublicDocument(forbidden), false);
+  const capture = read('tools/design-v6/capture-public-ssr.mjs');
+  assert.ok(capture.includes('!options.networkProbe && options.renderDocument'));
+  assert.ok(capture.includes('result.documentNavigations'));
+  assert.ok(capture.includes('const previousReads = reads'));
+  assert.ok(capture.includes('reads = previousReads'));
+  assert.ok(capture.includes('await captureHydratedHome(homeRawHtml, { renderDocument })'));
+});
 
 test('the separate map zoom recipe requires stable initial public DOM without weakening the actual zoom assertion', () => {
   const stable = { transform: 'translate3d(10px, 20px, 0) scale(32768)', animating: false };
@@ -36,6 +50,18 @@ const officialTemplate = read('src/app/features/public/parks/ui/park-official-ma
 const officialStyles = read('src/app/features/public/parks/ui/park-official-maps-section.component.scss');
 const listTemplate = read('src/app/features/public/parks/ui/park-list-map.component.html');
 const leafletStyles = read('src/app/shared/components/leaflet-map/leaflet-map.component.scss');
+
+test('actual Leaflet pins and clusters use flat themed Playground markers, not residual V5 gradients or the separate pictogram', () => {
+  const styles = read('src/styles/_maps.scss').split('/* Centralized Leaflet marker design. */')[1].split('/* M10 responsive hardening')[0];
+  assert.match(styles, /\.app-leaflet-marker__head\s*\{[^}]*background:\s*var\(--app-field\)/);
+  assert.match(styles, /\.app-leaflet-marker__symbol\s*\{[^}]*color:\s*var\(--app-heading\)/);
+  assert.doesNotMatch(styles, /gradient\(|drop-shadow\(|text-shadow:|border-radius:\s*(?:50%|1[468]px)/);
+  const factory = read('src/app/ui/maps/leaflet/leaflet-marker-icon.factory.ts');
+  assert.equal((factory.match(/color: 'var\(/g) ?? []).length, 36);
+  assert.doesNotMatch(factory, /color: '#|logo-amusementpark-marker|<img/);
+  assert.ok(factory.includes('iconSize: isItemMarker ? ItemMarkerSize : LocationMarkerSize'));
+  assert.ok(factory.includes('popupAnchor: isItemMarker ? ItemPopupAnchor : LocationPopupAnchor'));
+});
 
 test('map browser acceptance uses real zoom controls, category counts, popup detail routes and available official years', () => {
   const recipe = read('tools/design-v6/exercise-public-map.mjs');

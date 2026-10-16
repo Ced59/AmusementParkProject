@@ -45,10 +45,11 @@ export async function exercisePublicMap({ evaluate, waitUntil, capturePage, resu
   await evaluate(`document.querySelector('.park-items-map .leaflet-marker-icon').click()`);
   await waitUntil(`!!document.querySelector('.leaflet-popup .leaflet-map-popup__action--detail')`, 'real marker opens its detail popup');
   const detail = await evaluate(`({ path: document.querySelector('.leaflet-popup .leaflet-map-popup__action--detail').getAttribute('href'), directionsAvailable: !!document.querySelector('.leaflet-popup .leaflet-map-popup__action--directions') })`);
+  result.mapScenarios.detail = detail;
   if (!detail.path.startsWith(`${parent.path}/item/`)) throw new Error('Map popup did not retain its real park/item parent.');
   await capturePage('map-marker-popup', '.park-items-map');
   await evaluate(`document.querySelector('.leaflet-popup .leaflet-map-popup__action--detail').click()`);
-  await waitUntil(`location.pathname === ${JSON.stringify(detail.path)} && !!document.querySelector('app-park-item-detail-page h1') && !document.querySelector('.p-dialog')`, 'map popup opens the full actual item page, never a modal');
+  await waitUntil(`location.pathname === ${JSON.stringify(detail.path)} && !!document.querySelector('app-park-item-detail-page h1') && !document.querySelector('app-root')?.hasAttribute('ngh') && !document.querySelector('.p-dialog')`, 'map popup opens the full actual item page, never a modal');
   await evaluate('history.back()');
   await waitUntil(`navigation.currentEntry.key === ${JSON.stringify(mapKey)} && !!document.querySelector('.park-map-page h1')`, 'map detail browser back restores the exact map entry');
   const official = { available: initial.officialTabAvailable, multiYearNotExercised: true };

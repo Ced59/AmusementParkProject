@@ -7,225 +7,222 @@ interface LeafletMarkerIconDefinition {
   readonly color: string;
   readonly symbol: string;
   readonly family: 'park' | 'location' | 'item';
-  readonly useLogo?: boolean;
 }
 
 const MarkerDefinitions: Record<MapMarkerIconKind, LeafletMarkerIconDefinition> = {
   park: {
     label: 'Parc',
-    color: '#FF5A1F',
+    color: 'var(--c-orange)',
     symbol: '🎢',
-    family: 'park',
-    useLogo: true
+    family: 'park'
   },
   site: {
     label: 'Site',
-    color: '#FF5A1F',
+    color: 'var(--c-orange)',
     symbol: '🎢',
-    family: 'park',
-    useLogo: true
+    family: 'park'
   },
   entrance: {
     label: 'Entrée',
-    color: '#C4FF27',
+    color: 'var(--c-lime)',
     symbol: '↪',
     family: 'location'
   },
   exit: {
     label: 'Sortie',
-    color: '#FF4D8B',
+    color: 'var(--c-rose)',
     symbol: '↩',
     family: 'location'
   },
   fastPassEntrance: {
     label: 'Entrée Fast Pass',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: '⚡',
     family: 'location'
   },
   accessibleEntrance: {
     label: 'Entrée PMR',
-    color: '#9B5DE5',
+    color: 'var(--c-purple)',
     symbol: '♿',
     family: 'location'
   },
   attraction: {
     label: 'Attraction',
-    color: '#FF5A1F',
+    color: 'var(--c-orange)',
     symbol: '🎡',
     family: 'item'
   },
   rollerCoaster: {
     label: 'Roller coaster',
-    color: '#FF5A1F',
+    color: 'var(--c-orange)',
     symbol: '🎢',
     family: 'item'
   },
   waterRide: {
     label: 'Attraction aquatique',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: '🌊',
     family: 'item'
   },
   darkRide: {
     label: 'Dark ride',
-    color: '#9B5DE5',
+    color: 'var(--c-purple)',
     symbol: '🌙',
     family: 'item'
   },
   flatRide: {
     label: 'Flat ride',
-    color: '#FFB627',
+    color: 'var(--c-gold)',
     symbol: '🎠',
     family: 'item'
   },
   familyRide: {
     label: 'Attraction familiale',
-    color: '#C4FF27',
+    color: 'var(--c-lime)',
     symbol: '👨‍👩‍👧',
     family: 'item'
   },
   thrillRide: {
     label: 'Sensation forte',
-    color: '#FF4D8B',
+    color: 'var(--c-rose)',
     symbol: '⚡',
     family: 'item'
   },
   transportRide: {
     label: 'Transport ride',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: '🚝',
     family: 'item'
   },
   walkThrough: {
     label: 'Walkthrough',
-    color: '#9B5DE5',
+    color: 'var(--c-purple)',
     symbol: '🚶',
     family: 'item'
   },
   playground: {
     label: 'Aire de jeux',
-    color: '#C4FF27',
+    color: 'var(--c-lime)',
     symbol: '🧸',
     family: 'item'
   },
   interactiveExperience: {
     label: 'Expérience interactive',
-    color: '#FF4D8B',
+    color: 'var(--c-rose)',
     symbol: '🎯',
     family: 'item'
   },
   observationRide: {
     label: 'Point de vue',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: '🔭',
     family: 'item'
   },
   animal: {
     label: 'Animal',
-    color: '#C4FF27',
+    color: 'var(--c-lime)',
     symbol: '🦁',
     family: 'item'
   },
   show: {
     label: 'Spectacle',
-    color: '#9B5DE5',
+    color: 'var(--c-purple)',
     symbol: '🎭',
     family: 'item'
   },
   restaurant: {
     label: 'Restaurant',
-    color: '#FFB627',
+    color: 'var(--c-gold)',
     symbol: '🍔',
     family: 'item'
   },
   snack: {
     label: 'Snack',
-    color: '#FFB627',
+    color: 'var(--c-gold)',
     symbol: '🍦',
     family: 'item'
   },
   shop: {
     label: 'Boutique',
-    color: '#C4FF27',
+    color: 'var(--c-lime)',
     symbol: '🛍️',
     family: 'item'
   },
   hotel: {
     label: 'Hôtel',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: '🏨',
     family: 'item'
   },
   game: {
     label: 'Jeu',
-    color: '#FF4D8B',
+    color: 'var(--c-rose)',
     symbol: '🎯',
     family: 'item'
   },
   meetAndGreet: {
     label: 'Rencontre personnage',
-    color: '#FF4D8B',
+    color: 'var(--c-rose)',
     symbol: '⭐',
     family: 'item'
   },
   transport: {
     label: 'Transport',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: '🚝',
     family: 'item'
   },
   station: {
     label: 'Station',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: '🚉',
     family: 'item'
   },
   photo: {
     label: 'Photo',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: 'IMG',
     family: 'item'
   },
   toilets: {
     label: 'Toilettes',
-    color: '#B09D7A',
+    color: 'var(--app-text-muted)',
     symbol: '🚻',
     family: 'item'
   },
   firstAid: {
     label: 'Premiers secours',
-    color: '#FF4D8B',
+    color: 'var(--c-rose)',
     symbol: '✚',
     family: 'item'
   },
   information: {
     label: 'Information',
-    color: '#38C5F5',
+    color: 'var(--c-sky)',
     symbol: 'i',
     family: 'item'
   },
   locker: {
     label: 'Consigne',
-    color: '#B09D7A',
+    color: 'var(--app-text-muted)',
     symbol: '🔐',
     family: 'item'
   },
   parking: {
     label: 'Parking',
-    color: '#B09D7A',
+    color: 'var(--app-text-muted)',
     symbol: 'P',
     family: 'item'
   },
   service: {
     label: 'Service',
-    color: '#B09D7A',
+    color: 'var(--app-text-muted)',
     symbol: '🛠️',
     family: 'item'
   },
   other: {
     label: 'Autre',
-    color: '#B09D7A',
+    color: 'var(--app-text-muted)',
     symbol: '•',
     family: 'item'
   }
@@ -277,9 +274,7 @@ export function createLeafletMarkerClusterIcon(
 }
 
 function buildMarkerHtml(iconKind: MapMarkerIconKind, definition: LeafletMarkerIconDefinition): string {
-  const content: string = definition.useLogo
-    ? '<img class="app-leaflet-marker__logo" src="assets/general-icon/logo-amusementpark-marker.webp" alt="AMUSEMENT-PARKS.fun map marker" loading="lazy" width="32" height="32">'
-    : `<span class="app-leaflet-marker__symbol">${definition.symbol}</span>`;
+  const content: string = `<span class="app-leaflet-marker__symbol">${definition.symbol}</span>`;
 
   return `
     <div
