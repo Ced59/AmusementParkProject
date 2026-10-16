@@ -626,9 +626,17 @@ async function captureHydratedHome(rawHtml, options = {}) {
                   const rect = node => { if (!node) return null; const r = node.getBoundingClientRect(); return { x: r.x, y: r.y, right: r.right, bottom: r.bottom }; };
                   const control = node => { const r = rect(node); return r ? { ...r, unobscured: node.contains(document.elementFromPoint((r.x + r.right) / 2, (r.y + r.bottom) / 2)) } : null; };
                   const heading = document.querySelector('.park-items-map .leaflet-popup-content > strong');
+                  const popupHost = document.querySelector('.park-items-map .leaflet-popup');
+                  const popupContent = document.querySelector('.park-items-map .leaflet-popup-content');
+                  const mapNode = document.querySelector('.park-items-map .leaflet-map-container');
+                  const popupStyle = popupHost ? getComputedStyle(popupHost) : null;
                   const headingVisible = (() => { if (!heading) return null; const range = document.createRange(); range.selectNodeContents(heading); const rows = [...range.getClientRects()];
                     return { unobscured: rows.length > 0 && rows.every(r => [r.x + 2, r.x + r.width / 2, r.right - 2].every(x => heading.contains(document.elementFromPoint(x, r.y + r.height / 2)))) }; })();
                   return { map: rect(document.querySelector('.park-items-map .leaflet-map-container')), popup: rect(document.querySelector('.park-items-map .leaflet-popup-content-wrapper')), heading: headingVisible,
+                    measured: { mapClientWidth: mapNode?.clientWidth, mapClientHeight: mapNode?.clientHeight, popupHost: rect(popupHost),
+                      popupOffsetHeight: popupHost?.offsetHeight, content: rect(popupContent),
+                      popupStyle: popupStyle ? { marginBottom: popupStyle.marginBottom, bottom: popupStyle.bottom, top: popupStyle.top,
+                        position: popupStyle.position, transform: popupStyle.transform, boxSizing: popupStyle.boxSizing } : null },
                     close: control(document.querySelector('.park-items-map .leaflet-popup-close-button')), actions: [...document.querySelectorAll('.park-items-map .leaflet-map-popup__action')].map(control) };
                 })()`);
                 return mapPopupLayoutIssues(result.lastPopupLayout).length === 0;
