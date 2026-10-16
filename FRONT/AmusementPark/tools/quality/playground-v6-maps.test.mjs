@@ -41,7 +41,16 @@ test('the separate map zoom recipe requires stable initial public DOM without we
   assert.equal(mapViewportSettled([stable, stable]), false);
   assert.equal(mapViewportSettled([stable, { ...stable, transform: 'different' }, stable]), false);
   assert.equal(mapViewportSettled([stable, stable, { ...stable, animating: true }]), false);
+  assert.equal(mapViewportSettled([{ ...stable, paneTransform: 'first' }, { ...stable, paneTransform: 'second' }, { ...stable, paneTransform: 'second' }]), false);
   assert.equal(mapViewportSettled([{ transform: '' }, { transform: '' }, { transform: '' }]), false);
+});
+
+test('normal popup captures wait for actual category bounds and auto-pan without weakening rapid navigation tests', () => {
+  const recipe = readFileSync(resolve(import.meta.dirname, '../design-v6/exercise-public-map.mjs'), 'utf8');
+  assert.ok(recipe.includes('paneTransform: document.querySelector'));
+  assert.ok(recipe.includes('leaflet-pan-anim'));
+  assert.ok(recipe.indexOf('category reset finishes native bounds') < recipe.indexOf("document.querySelector('.park-items-map .leaflet-marker-icon').click()"));
+  assert.ok(recipe.includes('normal popup auto-pan finishes before responsive geometry capture'));
 });
 
 test('the authorized Leaflet teardown waits for the native zoom event without changing live interactions', () => {

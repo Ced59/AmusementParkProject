@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Popup normal — synchronisation des bounds à attester
+
+Le [run `527bbabf3`, artefact `12038434133`](https://github.com/Ced59/AmusementParkProject/actions/runs/38883443563/artifacts/12038434133) valide à nouveau les trois lightboxes (photos 208/303/117 px, Fermer au premier plan), puis constate le dépassement de popup à 320 px. Le diagnostic DOM conserve 194 px de hauteur et un `bottom: -7px` natif ; aucun champ privé n'est utilisé. La relecture identifie que le retour du nombre de marqueurs ne prouve pas la fin des cycles de bounds existants (0 puis 120 ms) ni de l'auto-pan du popup. La recette normale attend désormais trois observations stables du proxy **et** du pane, sans classe native pan/zoom, après reset puis ouverture. Aucun délai produit, option Leaflet, interaction ou test de destruction rapide n'est changé. Le défaut reste ouvert jusqu'au nouveau rendu, sans attribution définitive prématurée.
+
 ## Mesure transitoire de lightbox — `348589406`
 
 La [CI `38882167904`, artefact `12037963149`](https://github.com/Ced59/AmusementParkProject/actions/runs/38882167904/artifacts/12037963149) s'arrête avant la carte : la première mesure 320 × 568 conserve une hauteur de dialogue de 1 024 px, alors que la capture peinte juste après montre déjà le dialogue borné et la photo d'environ 200 px. Cet écart mesure/paint après l'émulation du viewport interdit d'attribuer le défaut au CSS sans vérification. La recette attend désormais deux mesures identiques et valides du vrai dialogue, avec les mêmes bounds, minimum d'image et hit-test Fermer ; en cas de timeout elle conserve la dernière mesure et échoue. Aucun style de produit ni assertion de géométrie n'est affaibli pour ce cas.

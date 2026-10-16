@@ -3,7 +3,8 @@
 export function mapViewportSettled(samples) {
   const recent = samples.slice(-3);
   return recent.length === 3 && recent.every(sample => sample.transform
-    && !sample.animating && sample.transform === recent[0].transform);
+    && !sample.animating && sample.transform === recent[0].transform
+    && sample.paneTransform === recent[0].paneTransform);
 }
 
 export async function exercisePublicMap({ evaluate, waitUntil, capturePage, result }) {
@@ -18,12 +19,17 @@ export async function exercisePublicMap({ evaluate, waitUntil, capturePage, resu
   const initial = await evaluate(`({ markers: document.querySelectorAll('.park-items-map .leaflet-marker-icon').length, officialTabAvailable: !!document.getElementById('park-map-tab-official') })`);
   const proxy = '.park-items-map .leaflet-proxy';
   result.mapScenarios = { initial, viewportSamples: [], zoomObservations: [], externalTilesAndDirectionsNotValidated: true, pointerDragNotExercised: true };
-  await waitUntil(async () => {
-    const sample = await evaluate(`({ transform: document.querySelector('${proxy}')?.style.transform ?? '', animating: !!document.querySelector('.park-items-map .leaflet-zoom-anim') })`);
-    result.mapScenarios.viewportSamples.push(sample);
-    if (result.mapScenarios.viewportSamples.length > 12) result.mapScenarios.viewportSamples.shift();
-    return mapViewportSettled(result.mapScenarios.viewportSamples);
-  }, 'initial Leaflet viewport is stable across consecutive DOM observations');
+  const settleViewport = async (samples, label) => {
+    await waitUntil(async () => {
+      const sample = await evaluate(`({ transform: document.querySelector('${proxy}')?.style.transform ?? '',
+        paneTransform: document.querySelector('.park-items-map .leaflet-map-pane')?.style.transform ?? '',
+        animating: !!document.querySelector('.park-items-map .leaflet-zoom-anim, .park-items-map .leaflet-pan-anim') })`);
+      samples.push(sample);
+      if (samples.length > 12) samples.shift();
+      return mapViewportSettled(samples);
+    }, label);
+  };
+  await settleViewport(result.mapScenarios.viewportSamples, 'initial Leaflet viewport is stable across consecutive DOM observations');
   const beforeZoom = await evaluate(`document.querySelector('${proxy}')?.style.transform ?? ''`);
   result.mapScenarios.beforeZoom = beforeZoom;
   if (!beforeZoom) throw new Error('The real Leaflet zoom transform is unavailable; zoom acceptance is not covered.');
@@ -42,11 +48,15 @@ export async function exercisePublicMap({ evaluate, waitUntil, capturePage, resu
   await capturePage('map-category-selected', '.park-items-map');
   await evaluate(`document.querySelector('.park-items-map__category-button').click()`);
   await waitUntil(`document.querySelector('.park-items-map__category-button').classList.contains('park-items-map__category-button--active') && document.querySelectorAll('.park-items-map .leaflet-marker-icon').length === ${category.total}`, 'all map categories restore their actual markers');
+  result.mapScenarios.resetViewportSamples = [];
+  await settleViewport(result.mapScenarios.resetViewportSamples, 'category reset finishes native bounds and pan before opening the normal popup');
   await evaluate(`document.querySelector('.park-items-map .leaflet-marker-icon').click()`);
   await waitUntil(`!!document.querySelector('.leaflet-popup .leaflet-map-popup__action--detail')`, 'real marker opens its detail popup');
   const detail = await evaluate(`({ path: document.querySelector('.leaflet-popup .leaflet-map-popup__action--detail').getAttribute('href'), directionsAvailable: !!document.querySelector('.leaflet-popup .leaflet-map-popup__action--directions') })`);
   result.mapScenarios.detail = detail;
   if (!detail.path.startsWith(`${parent.path}/item/`)) throw new Error('Map popup did not retain its real park/item parent.');
+  result.mapScenarios.popupViewportSamples = [];
+  await settleViewport(result.mapScenarios.popupViewportSamples, 'normal popup auto-pan finishes before responsive geometry capture');
   await capturePage('map-marker-popup', '.park-items-map');
   await evaluate(`document.querySelector('.leaflet-popup .leaflet-map-popup__action--detail').click()`);
   await waitUntil(`location.pathname === ${JSON.stringify(detail.path)} && !!document.querySelector('app-park-item-detail-page h1') && !document.querySelector('app-root')?.hasAttribute('ngh') && !document.querySelector('.p-dialog')`, 'map popup opens the full actual item page, never a modal');
