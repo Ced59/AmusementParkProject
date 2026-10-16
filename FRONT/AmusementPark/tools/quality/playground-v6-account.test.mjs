@@ -2,9 +2,32 @@ import assert from 'node:assert/strict';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import test from 'node:test';
+import { Script } from 'node:vm';
+import { exerciseAnonymousAuth } from '../design-v6/exercise-anonymous-auth.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {
+  const result = {};
+  const captures = [];
+  await exerciseAnonymousAuth({ result,
+    evaluate: async expression => {
+      assert.doesNotThrow(() => new Script(expression));
+      if (expression.includes('path: location.pathname')) return { path: '/fr/home', index: 0, key: 'home-entry' };
+      if (expression.includes('loginEmail:')) return { loginEmail: 'email', loginPassword: 'password', loginAutocomplete: 'current-password', registerAutocomplete: 'new-password', providerHost: true };
+      if (expression === 'navigation.currentEntry.key') return 'recovery-entry';
+    },
+    waitUntil: async (expression, label) => assert.doesNotThrow(() => new Script(expression), label),
+    capturePage: async label => captures.push(label),
+  });
+  assert.deepEqual(captures, ['forgot-password-empty']);
+  assert.equal(result.anonymousAuth.recovery.emailNotSent, true);
+  assert.equal(result.anonymousAuth.authenticatedAccountNotExercised, true);
+  const source = read('tools/design-v6/exercise-anonymous-auth.mjs');
+  assert.doesNotMatch(source, /fetch\(|requestSubmit\(|\.submit\(|localStorage\.|sessionStorage\.|\/api\//);
+  assert.doesNotMatch(source, /button\[type=submit\].*\.click\(/);
+});
 
 const collectScss = (directory) => readdirSync(directory, { withFileTypes: true })
   .flatMap((entry) => {

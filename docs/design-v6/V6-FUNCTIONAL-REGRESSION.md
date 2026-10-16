@@ -8,6 +8,8 @@ Les tests Node ciblés couvrent notamment le cas sans snapshot et la syntaxe exa
 
 ## Méthode
 
+Complément anonyme préparé le 16 octobre : validation des champs d'inscription invalides/différents/valides puis vidés, sans clic de soumission, vérification des types/autocomplétions et du conteneur Google, ouverture du vrai lien mot de passe oublié, bouton vide désactivé, captures du shell compte et retour exact à l'accueil. Aucune inscription, connexion, récupération par email ou interaction fournisseur n'est déclenchée ; les parcours compte authentifié et tokens restent explicitement non exercés. Les exemples de champs existent uniquement dans l'outil CI isolé, jamais dans le produit.
+
 La matrice corrigée recense 148 terminaux de route, 293 composants et 2 056 contrôles/champs/cibles événementielles, contre 2 057 à la base exacte. Les trois écarts de présentation sont détaillés dans le rapport de couverture ; les anciens 1 869 lignes provenaient d'un filtre incomplet. Les contrôles statiques et la suite Angular vérifient une partie des contrats ; ils ne démontrent pas que chaque ligne a été exercée dans un navigateur avec tous ses états, données et rôles. La matrice de recette complète reste ouverte. Les lancements locaux exigent au moins 3,5 Gio de RAM et 4 Gio de commit, avec une réserve physique absolue de 1,5 Gio ; les builds et suites lourdes restent en CI.
 
 ## Familles obligatoires

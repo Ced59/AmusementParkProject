@@ -21,6 +21,7 @@ import { exercisePublicMediaHistory } from './exercise-public-media-history.mjs'
 import { exercisePublicMap } from './exercise-public-map.mjs';
 import { canRenderPublicDocument } from './public-document-evidence.mjs';
 import { exercisePublicStandalone } from './exercise-public-standalone.mjs';
+import { exerciseAnonymousAuth } from './exercise-anonymous-auth.mjs';
 import { mapPopupLayoutIssues, mapReviewScrollDelta } from './map-popup-layout.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
@@ -743,6 +744,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
     await evaluate(`document.querySelector('.app-public-nav__links a[href="/fr/home"]').click()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'catalogue recipe restores the home route');
     await exercisePublicStandalone({ evaluate, waitUntil, result, capturePage: captureHydratedPage });
+    await exerciseAnonymousAuth({ evaluate, waitUntil, result, capturePage: captureHydratedPage });
     if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser raised an exception; inspect report.json.');
     console.log(`Hydrated home: ${result.checks.length} checks passed; production writes blocked.`);
   } finally {
