@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Stress de police agrandie — à exécuter
+
+Le shell admin conditionnel reçoit une seconde capture avec la taille racine **réellement mesurée puis doublée** dans le navigateur CI. La valeur calculée est conservée dans chaque layout ; l'override inline est restauré même en cas d'échec et la capture du défaut est enregistrée avant restauration. Les bounds, hit-tests, contrastes et recouvrements habituels restent bloquants. Ce stress CSS n'est **pas** une preuve de zoom natif 200 %, de préférence réelle du navigateur ou de revue SR ; ces recettes restent ouvertes.
+
+Pour détecter ces défauts avant les longues campagnes, le prochain diagnostic commence par `admin-shell` FR à 320/390/1 366 px (taille normale puis doublée, deux thèmes, V6/master), puis conserve les scénarios standard/incomplet existants. La matrice intégrale reste obligatoire, huit langues et toutes les largeurs prévues. **170 tests Node ciblés PASS ; rendus de stress encore en attente.**
+
 ## Capture stabilisée sur les polices — nouveau run requis
 
 `b56328197 / 38975602735` valide les 364 captures standard FR V6 puis refuse un appel de police master pendant un remplacement de document. La recette attend dorénavant les vraies polices et réponses locales avant de mesurer/capturer/naviguer ; aucun nouveau timeout ignoré ni défaut visuel accepté. Le produit, la famille de polices et le chargement public restent intacts. **168 tests Node ciblés PASS**, dont les refus d'un drainage non terminé ou défaillant. Le prochain artefact doit confirmer ce protocole ; la nouvelle recette admin-shell n'est pas présumée exécutée.

@@ -25,10 +25,42 @@ import { positionAccountCaptureTarget } from '../design-v6/browser-account-targe
 import { collectAdminShellLayout, adminShellLayoutIssues } from '../design-v6/browser-admin-shell.mjs';
 import { exercisePublicFitForm } from '../design-v6/exercise-public-fit-form.mjs';
 import { settleAccountDocument } from '../design-v6/settle-account-document.mjs';
+import { withDoubledRootFont } from '../design-v6/account-layout-stress.mjs';
 import { advanceMainDocument, forgetRetiredDocumentOwners, isRetiredDocumentInterceptionError } from '../design-v6/browser-interception-errors.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('enlarged-font evidence measures twice the root size and restores the inline value, even after failure', async () => {
+  for (const fail of [false, true]) {
+    const style = { fontSize: '' };
+    const sandbox = { document: { documentElement: { style } }, getComputedStyle: () => ({ fontSize: style.fontSize || '16px' }), parseFloat };
+    const evaluate = async expression => JSON.parse(JSON.stringify(runInNewContext(expression, sandbox)));
+    const operation = () => withDoubledRootFont({ evaluate, capture: async ({ rootFontSizePx }) => {
+      assert.equal(rootFontSizePx, 32);
+      assert.equal(style.fontSize, '32px');
+      if (fail) throw new Error('capture refused');
+    } });
+    if (fail) await assert.rejects(operation, /capture refused/);
+    else await operation();
+    assert.equal(style.fontSize, '');
+  }
+  const source = read('tools/design-v6/capture-account-layout.mjs');
+  assert.match(source, /rootFontSizePx: parseFloat\(getComputedStyle\(document.documentElement\).fontSize\)/);
+  assert.match(source, /'account-admin-shell-large-font'/);
+});
+
+test('enlarged-font stress rejects unexpected baselines and an override that was not actually applied', async () => {
+  for (const pixels of [NaN, 0, 11, 25, 100]) {
+    await assert.rejects(() => withDoubledRootFont({ evaluate: async () => ({ inline: '', pixels }), capture: async () => assert.fail('must not capture') }), /Unexpected root font/);
+  }
+  const expressions = [];
+  await assert.rejects(() => withDoubledRootFont({ evaluate: async expression => {
+    expressions.push(expression);
+    return expression.startsWith('({') ? { inline: '', pixels: 16 } : 16;
+  }, capture: async () => assert.fail('must not capture') }), /did not take effect/);
+  assert.ok(expressions.at(-1).endsWith('= ""'));
+});
 
 test('account navigation waits for actual fonts and current intercepted responses instead of ignoring a canceled font', async () => {
   const events = [], pending = new Set();
@@ -245,7 +277,8 @@ test('isolated preflight is an explicit Linux CI subset, never a replacement for
   assert.equal(isolatedLayoutPreflightPlan({}, 'win32'), null);
   assert.deepEqual(isolatedLayoutPreflightPlan(environment, 'linux'), {
     fullCampaignRequired: true,
-    cases: ['standard', 'incomplete'].map(kind => ({ kind, language: 'fr', widths: [390, 1366] })),
+    cases: [{ kind: 'admin-shell', language: 'fr', widths: [320, 390, 1366] },
+      ...['standard', 'incomplete'].map(kind => ({ kind, language: 'fr', widths: [390, 1366] }))],
   });
   for (const patch of [{ CI: undefined }, { CI: 'false' }, { V6_BASELINE_DIST_DIR: undefined }, { V6_BASELINE_SHA: 'master' }, { V6_ISOLATED_PREFLIGHT: 'false' }]) {
     assert.throws(() => isolatedLayoutPreflightPlan({ ...environment, ...patch }, 'linux'));

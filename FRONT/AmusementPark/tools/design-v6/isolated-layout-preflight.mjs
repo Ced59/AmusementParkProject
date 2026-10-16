@@ -12,6 +12,9 @@ export function isolatedLayoutPreflightPlan(environment, platform) {
   }
   return {
     fullCampaignRequired: true,
-    cases: ['standard', 'incomplete'].map(kind => ({ kind, language: 'fr', widths: [390, 1366] })),
+    cases: [
+      { kind: 'admin-shell', language: 'fr', widths: [320, 390, 1366] },
+      ...['standard', 'incomplete'].map(kind => ({ kind, language: 'fr', widths: [390, 1366] })),
+    ],
   };
 }

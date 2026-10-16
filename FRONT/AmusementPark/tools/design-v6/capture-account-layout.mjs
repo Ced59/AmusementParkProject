@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { collectAdminShellLayout, adminShellLayoutIssues } from './browser-admin-shell.mjs';
 import { exercisePublicFitForm } from './exercise-public-fit-form.mjs';
 import { settleAccountDocument } from './settle-account-document.mjs';
+import { withDoubledRootFont } from './account-layout-stress.mjs';
 import { extname, join, resolve, sep } from 'node:path';
 import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse, accountLayoutResetQuery } from './account-layout-fixtures.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument, forgetRetiredDocumentOwners } from './browser-interception-errors.mjs';
@@ -58,6 +59,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const rawHtml = await readFile(join(root, 'index.csr.html'), 'utf8');
   const result = { scope: 'compiled public/account UI with CI-only synthetic input; not authentication/API/HTTP-SEO acceptance', label,
     kind: fixture.kind, language, deferContrastFailure, checks: [], layouts: [], apiReads: [], blockedRequests: [], fixtureFailures: [], exceptions: [] };
+  console.log(`Isolated UI ${label}/${fixture.kind}/${language}: starting ${widths.length} widths and both themes.`);
   const pending = new Set();
   const canceled = new Set();
   const documents = new Map();
@@ -194,7 +196,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           let previous;
           await waitUntil(async () => {
             const target = await evaluate(`(${positionAccountCaptureTarget.toString()})(${JSON.stringify(selector)})`);
-            layout = await evaluate(`({ width: innerWidth, height: innerHeight, documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
+            layout = await evaluate(`({ width: innerWidth, height: innerHeight, rootFontSizePx: parseFloat(getComputedStyle(document.documentElement).fontSize), documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
               theme: document.body.classList.contains('light-mode') ? 'light' : 'dark', titleWidth: (document.querySelector('.app-account-layout__content h1') ?? document.querySelector('h1'))?.getBoundingClientRect().width ?? null,
               avatarWidth: document.querySelector('.profile-avatar, .profile-avatar--placeholder')?.getBoundingClientRect().width ?? null,
               dialog: (() => { const node = document.querySelector('.p-dialog'); if (!node) return null; const box = node.getBoundingClientRect();
@@ -238,6 +240,20 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       result.expiredSession = { localRefreshRejected: true, guardRedirectExercised: true, realAuthIntegrationExercised: false };
     } else if (fixture.kind === 'admin-shell') {
       await captureLayouts('.profile-hero', 'account-admin-shell');
+      await withDoubledRootFont({ evaluate, capture: async ({ rootFontSizePx }) => {
+        try {
+          await captureLayouts('.profile-hero', 'account-admin-shell-large-font');
+          if (result.layouts.at(-1).rootFontSizePx !== rootFontSizePx) throw new Error('Admin enlarged-font capture lost its measured override.');
+        } catch (error) {
+          result.enlargedFontFailure = { rootFontSizePx, error: error.message, scope: 'CI font override, not native browser zoom' };
+          try {
+            const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+            result.enlargedFontFailure.screenshot = `${label}_${fixture.kind}_${language}_large-font-failure.webp`;
+            await writeFile(join(outputRoot, result.enlargedFontFailure.screenshot), Buffer.from(pixels.data, 'base64'));
+          } catch { /* Preserve the original failure and restore the font below. */ }
+          throw error;
+        }
+      } });
       if (result.apiReads.some(read => read.path.startsWith('/api/admin/'))) throw new Error('Admin shell presentation unexpectedly requested an administration API.');
       result.adminShell = { presentationRoleOnly: true, serverAuthorizationExercised: false, adminWorkflowsExercised: false };
     } else {
@@ -285,6 +301,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     if (result.fixtureFailures.length || result.exceptions.length) { result.passed = false; result.error ??= 'Unexpected account fixture or browser failure during cleanup.'; }
     await writeFile(join(outputRoot, `${label}_${fixture.kind}_${language}_account-report.json`), JSON.stringify(result, null, 2));
   }
+  console.log(`Isolated UI ${label}/${fixture.kind}/${language}: ${result.passed ? 'PASS' : 'FAIL'}, ${result.checks.length} checks and ${result.layouts.length} captures.`);
   if (!result.passed) throw new Error(`Isolated account layout ${label}/${fixture.kind}: ${result.error}`);
   return result;
 }

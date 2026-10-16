@@ -1,6 +1,6 @@
 # Inventaire P00 généré
 
-- Source : b56328197 + encres Parc Fit et recette de formulaire, aucun contrat modifié
+- Source : 2d93b5e68abfa552b388bd83a133d82c6661e588 ; source UI inchangée dans le complément de stress de recette
 - Routes terminales, redirections et écrans développés : **148**
 - Composants Angular de présentation recensés : **293**
 - Interactions et champs explicitement recensés : **2057**

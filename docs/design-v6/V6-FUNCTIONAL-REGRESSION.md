@@ -1,5 +1,7 @@
 # V6 — non-régression fonctionnelle
 
+Le complément de stress ne modifie que les outils CI : font racine doublée et mesurée, restauration inconditionnelle, capture d'échec avant nettoyage, aucun appel métier supplémentaire. Le diagnostic admin conditionnel passe en tête à 320/390/1 366 px avant les cas FR existants ; aucun état ou scénario de la campagne complète n'est retiré. Deux tests couvrent restauration après succès/échec, baseline inattendue et override non appliqué. **170 tests Node ciblés PASS**, preuve navigateur et zoom natif toujours requis.
+
 ## Diagnostic `b56328197` — police master et frontière de document
 
 Le [run `38975602735`](https://github.com/Ced59/AmusementParkProject/actions/runs/38975602735) conserve dans l'[artefact `12079610272`](https://github.com/Ced59/AmusementParkProject/actions/runs/38975602735/artifacts/12079610272) V6 standard FR **PASS 670 contrôles / 364 captures**, zéro fixture/exception. Master s'arrête après **603 / 328**, à l'entrée de la timeline locale : réponse Fetch de `syne-latin-ext.woff2` refusée avec `Invalid InterceptionId.`, zéro exception navigateur. Le rapport antérieur ne conserve pas les identités réseau/frame de ce refus ; il ne justifie donc aucune nouvelle règle d'ignorance.
