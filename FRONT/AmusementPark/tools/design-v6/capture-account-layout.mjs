@@ -7,6 +7,7 @@ import { exerciseAccountProfileControls } from './exercise-account-profile-contr
 import { exerciseAccountPassportAndFit } from './exercise-account-passport-and-fit.mjs';
 import { collectContrastCandidates } from './browser-text-contrast.mjs';
 import { exerciseAccountAuthPages } from './exercise-account-auth-pages.mjs';
+import { exerciseAccountNotifications } from './exercise-account-notifications.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -197,6 +198,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       await exerciseAccountProfileControls({ evaluate, waitUntil, captureLayouts, fixture, result });
       await exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result, language });
       await exerciseAccountPassportAndFit({ evaluate, waitUntil, captureLayouts, fixture, result, language, navigateDocument });
+      await exerciseAccountNotifications({ evaluate, waitUntil, captureLayouts, fixture, result, language });
       if (fixture.kind === 'standard') {
         const dictionary = JSON.parse(await readFile(join(root, `assets/i18n/${language}.json`), 'utf8'));
         const expectedConfirmationMessage = dictionary.auth.confirm.invalidLinkMessage ?? 'Le lien de confirmation est invalide.';

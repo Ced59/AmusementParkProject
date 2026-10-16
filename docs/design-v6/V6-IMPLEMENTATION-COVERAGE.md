@@ -14,7 +14,7 @@ Les 26 routes de la famille compte ne sont pas déclarées toutes recettées :
 | Collections, liste voyages, passeport et profils de groupe Park Fit | 4 | Master standard FR passe dans `7115bb901` ; V6 arrêtée au contraste du profil avant ces compléments, aucun PASS comparatif |
 | Détails et outils de voyage | 7 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
 | Éditeur visite, statistiques, partage et invitation passeport | 8 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
-| Notifications | 1 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
+| Notifications | 1 | Recette locale remplie/vide, pagination/filtres/erreur, email/live préparée ; 23 tests Node compte verts, rendu CI encore requis |
 | Confirmation et réinitialisation de compte | 2 | Recette UI isolée préparée, sans soumission ; nouveaux tests Angular et rendu CI requis |
 | Brouillons locaux anonymes | 2 | Source/styles et tests unitaires ; recette navigateur/IndexedDB dédiée ouverte |
 

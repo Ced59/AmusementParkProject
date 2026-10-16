@@ -10,9 +10,72 @@ import { exerciseAccountLists } from '../design-v6/exercise-account-lists.mjs';
 import { exerciseAccountProfileControls } from '../design-v6/exercise-account-profile-controls.mjs';
 import { exerciseAccountPassportAndFit } from '../design-v6/exercise-account-passport-and-fit.mjs';
 import { exerciseAccountAuthPages } from '../design-v6/exercise-account-auth-pages.mjs';
+import { exerciseAccountNotifications } from '../design-v6/exercise-account-notifications.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('notification layout fixtures retain exact pagination, filters, immutable rows and intentional isolated errors', () => {
+  const fixture = createAccountLayoutFixture('standard', 1792144800);
+  const response = query => accountLayoutFixtureResponse({ method: 'GET', url: `${accountLayoutFixtureOrigin}/api/me/notifications${query}` }, fixture);
+  const first = response('?page=1&size=12&unreadOnly=false');
+  assert.equal(first.body.items.length, 12);
+  assert.equal(first.body.totalItems, 13);
+  assert.equal(first.body.totalPages, 2);
+  const second = response('?page=2&size=12&unreadOnly=false');
+  assert.equal(second.body.items.length, 1);
+  assert.equal(second.body.items[0].notificationId, fixture.notificationData.notifications[12].notificationId);
+  assert.equal(response('?page=1&size=12&unreadOnly=true').body.items.length, 7);
+  assert.equal(response('?page=1&size=12&unreadOnly=false&parkId=00000000-0000-4000-8000-000000000050').body.items.length, 7);
+  assert.equal(response('?page=1&size=12&unreadOnly=false&eventType=ParkNameChanged').body.items.length, 6);
+  assert.equal(response('?page=1&size=12&unreadOnly=false&eventType=VerifiedSourceAdded').status, 503);
+  first.body.items[0].target.name = 'changed';
+  assert.notEqual(response('?page=1&size=12&unreadOnly=false').body.items[0].target.name, 'changed');
+  for (const query of ['?page=3&size=12&unreadOnly=false', '?page=1&size=100&unreadOnly=false', '?page=1&size=12&unreadOnly=false&unknown=true']) assert.equal(response(query), null);
+  const empty = createAccountLayoutFixture('incomplete', 1792144800);
+  assert.equal(accountLayoutFixtureResponse({ method: 'GET', url: `${accountLayoutFixtureOrigin}/api/me/notifications?page=1&size=12&unreadOnly=false` }, empty).body.totalItems, 0);
+});
+
+test('notification stubs allow only exact automatic page-open telemetry and reject private mutations', () => {
+  const fixture = createAccountLayoutFixture('standard', 1792144800);
+  const request = { method: 'POST', url: `${accountLayoutFixtureOrigin}/api/me/notifications/pilot-interactions`,
+    postData: JSON.stringify({ interactionKind: 'NotificationCenterOpened', notificationId: null }) };
+  assert.equal(accountLayoutFixtureResponse(request, fixture).status, 200);
+  for (const postData of ['', 'null', '{', JSON.stringify({ interactionKind: 'SourceOpened', notificationId: null }),
+    JSON.stringify({ interactionKind: 'NotificationCenterOpened', notificationId: 'unknown' }),
+    JSON.stringify({ interactionKind: 'NotificationCenterOpened', notificationId: null, extra: true })]) {
+    assert.equal(accountLayoutFixtureResponse({ ...request, postData }, fixture), null);
+  }
+  for (const [method, path] of [['POST', '/api/me/notifications/read-all'], ['POST', '/api/me/notifications/unknown/read'],
+    ['DELETE', '/api/me/notifications/unknown/subscription'], ['PUT', '/api/me/notification-preferences'], ['DELETE', '/api/me/live-alerts/unknown']]) {
+    assert.equal(accountLayoutFixtureResponse({ method, url: accountLayoutFixtureOrigin + path }, fixture), null);
+  }
+  assert.equal(accountLayoutFixtureResponse({ ...request, url: request.url.replace(accountLayoutFixtureOrigin, 'https://amusement-parks.fun') }, fixture), null);
+  assert.equal(accountLayoutFixtureResponse(request, createAccountLayoutFixture('expired', 1792144800)), null);
+  for (const kind of ['standard', 'incomplete']) {
+    const variant = createAccountLayoutFixture(kind, 1792144800);
+    const preference = accountLayoutFixtureResponse({ method: 'GET', url: `${accountLayoutFixtureOrigin}/api/me/notification-preferences` }, variant);
+    assert.equal(preference.body.emailAvailable, kind === 'standard');
+    const live = accountLayoutFixtureResponse({ method: 'GET', url: `${accountLayoutFixtureOrigin}/api/me/live-alerts` }, variant);
+    assert.equal(live.body.notifications.length, kind === 'standard' ? 1 : 0);
+  }
+});
+
+test('notification recipe compiles exact browser expressions without activating private write controls', async () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const captures = [];
+    const result = { apiReads: [] };
+    await exerciseAccountNotifications({ fixture: createAccountLayoutFixture(kind, 1792144800, 'pl'), result, language: 'pl',
+      evaluate: async expression => { assert.doesNotThrow(() => new Script(expression)); return { index: 3, key: 'profile-entry' }; },
+      waitUntil: async predicate => { if (typeof predicate === 'string') assert.doesNotThrow(() => new Script(predicate)); },
+      captureLayouts: async (_selector, page) => captures.push(page) });
+    assert.equal(captures.length, kind === 'standard' ? 7 : 3);
+    assert.equal(result.notifications.mutationsExercised, false);
+    assert.equal(result.notifications.emailConsentChanged, false);
+  }
+  const source = read('tools/design-v6/exercise-account-notifications.mjs');
+  assert.doesNotMatch(source, /fetch\(|requestSubmit|\.submit\(|\.markRead\(|\.dismiss\(|\.unsubscribe\(|\.enable\(/);
+});
 
 test('account layout fixtures distinguish complete, incomplete and expired UI sessions without real credentials', () => {
   const now = 1792144800;
