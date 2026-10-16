@@ -1,13 +1,13 @@
 // Runs only inside capture-account-layout's network-denied .invalid session.
 // These are rendering/input checks, not proof of private APIs or persisted writes.
-export async function exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result }) {
+export async function exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result, language = 'fr' }) {
   const profile = await evaluate(`({ path: location.pathname, index: navigation.currentEntry.index, key: navigation.currentEntry.key })`);
   const restore = async () => {
     await evaluate(`history.go(${profile.index} - navigation.currentEntry.index)`);
     await waitUntil(`navigation.currentEntry.key === ${JSON.stringify(profile.key)} && location.pathname === ${JSON.stringify(profile.path)} && !!document.querySelector('.profile-hero__title')`, 'account list returns to the exact profile history entry');
   };
   await evaluate(`document.querySelector('.profile-passport-entry--collections button').click()`);
-  await waitUntil(`location.pathname === '/fr/profile/collections' && document.querySelectorAll('.collection-card').length === ${fixture.collections.length} && !!document.querySelector(${JSON.stringify(fixture.collections.length ? '.collections-page__grid' : '.collections-page__empty')})`, 'compiled collections render the exact isolated filled or empty response');
+  await waitUntil(`location.pathname === ${JSON.stringify(`/${language}/profile/collections`)} && document.querySelectorAll('.collection-card').length === ${fixture.collections.length} && !!document.querySelector(${JSON.stringify(fixture.collections.length ? '.collections-page__grid' : '.collections-page__empty')})`, 'compiled collections render the exact isolated filled or empty response');
   await captureLayouts('.collections-page__hero', 'account-collections');
   const kinds = ['All', 'Favorite', 'WantToVisit', 'WantToExperience', 'Planned'];
   for (let index = 1; index < kinds.length; index++) {
@@ -20,7 +20,7 @@ export async function exerciseAccountLists({ evaluate, waitUntil, captureLayouts
   await restore();
 
   await evaluate(`document.querySelector('.profile-passport-entry--trips button').click()`);
-  await waitUntil(`location.pathname === '/fr/profile/trips' && document.querySelectorAll('.trip-card').length === ${fixture.trips.length} && !!document.querySelector(${JSON.stringify(fixture.trips.length ? '.trip-list-page__grid' : '.trip-list-page__empty')})`, 'compiled trip list renders the exact isolated filled or empty response');
+  await waitUntil(`location.pathname === ${JSON.stringify(`/${language}/profile/trips`)} && document.querySelectorAll('.trip-card').length === ${fixture.trips.length} && !!document.querySelector(${JSON.stringify(fixture.trips.length ? '.trip-list-page__grid' : '.trip-list-page__empty')})`, 'compiled trip list renders the exact isolated filled or empty response');
   await captureLayouts('.trip-list-page__hero', 'account-trips');
   await evaluate(`document.querySelector('.trip-list-page__hero-actions button').click()`);
   await waitUntil(`!!document.querySelector('.trip-composer') && document.querySelector('.trip-composer > button').disabled`, 'empty trip composer retains its disabled creation control');

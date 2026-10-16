@@ -3,9 +3,19 @@ import { homeEvidenceApiPaths } from './home-network-evidence.mjs';
 export const accountLayoutFixtureOrigin = 'https://apf-account-layout.invalid';
 export const accountLayoutRefreshMarker = 'amusementpark.hasRefreshSession';
 const userId = '00000000-0000-4000-8000-000000000017';
+const languages = ['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'];
 
-export function createAccountLayoutFixture(kind, nowSeconds) {
-  if (!['standard', 'incomplete', 'expired'].includes(kind) || !Number.isInteger(nowSeconds) || nowSeconds < 1) {
+export function accountLayoutCases(widths) {
+  if (!Array.isArray(widths) || !widths.includes(390) || !widths.includes(1366) || widths.length > 13
+      || new Set(widths).size !== widths.length || widths.some(width => !Number.isInteger(width) || width < 320 || width > 1920)) throw new Error('Account acceptance requires bounded widths including 390 and 1366.');
+  return [
+    ...['standard', 'incomplete', 'expired'].map(kind => ({ kind, language: 'fr', widths: [...widths] })),
+    ...languages.slice(1).map(language => ({ kind: 'standard', language, widths: [390, 1366] })),
+  ];
+}
+
+export function createAccountLayoutFixture(kind, nowSeconds, language = 'fr') {
+  if (!['standard', 'incomplete', 'expired'].includes(kind) || !languages.includes(language) || !Number.isInteger(nowSeconds) || nowSeconds < 1) {
     throw new Error('Unknown or undated account layout fixture.');
   }
   const date = new Date(nowSeconds * 1000).toISOString();
@@ -13,7 +23,7 @@ export function createAccountLayoutFixture(kind, nowSeconds) {
     firstName: kind === 'incomplete' ? '' : 'Camille', lastName: kind === 'incomplete' ? '' : 'Démonstration',
     publicDisplayName: kind === 'incomplete' ? null : 'Compte de recette — caractères longs Äéł',
     publicIdentifier: 'layout-review', isActivated: true, isBlocked: false, roles: ['USER'],
-    preferredLanguage: 'FR', preferredMeasurementSystem: 'Metric', avatarUrl: '', createdAt: date, updatedAt: date };
+    preferredLanguage: language.toUpperCase(), preferredMeasurementSystem: 'Metric', avatarUrl: '', createdAt: date, updatedAt: date };
   const claims = { sub: user.id, nameidentifier: user.id, email: user.email, firstname: user.firstName,
     lastname: user.lastName, avatar: '', lastlogin: date, roles: [...user.roles], jti: 'apf-ci-layout-only',
     exp: nowSeconds + 3600, iss: 'urn:apf-ci-layout-fixture', aud: 'apf-ci-layout-only' };
@@ -54,7 +64,7 @@ export function createAccountLayoutFixture(kind, nowSeconds) {
     heightCentimeters: index ? 120 : null, ageYears: index ? 9 : null, canBeAccompanied: accompanied,
     companionAgeYears: accompanied ? 32 : null, createdAtUtc: date, updatedAtUtc: date, version: 1,
   }));
-  return { kind, user, accessToken, collections, trips, visits, fitProfiles };
+  return { kind, language, user, accessToken, collections, trips, visits, fitProfiles };
 }
 
 export function accountLayoutFixtureResponse(request, fixture, homeFixtures = new Map()) {

@@ -1,10 +1,10 @@
 // UI-only synthetic private input, inside capture-account-layout's denied network.
 // No export, creation, update, sharing, confirmed deletion or remote API call.
-export async function exerciseAccountPassportAndFit({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result }) {
+export async function exerciseAccountPassportAndFit({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language = 'fr' }) {
   const profile = await evaluate(`({ index: navigation.currentEntry.index, key: navigation.currentEntry.key })`);
   await evaluate(`document.querySelector('.profile-panel button:has(.pi-book)').click()`);
   const firstPageCount = Math.min(2, fixture.visits.length);
-  await waitUntil(`location.pathname === '/fr/profile/passport' && document.querySelectorAll('.passport-visit-card').length === ${firstPageCount} && !!document.querySelector(${JSON.stringify(firstPageCount ? '.passport-overview__content' : '.passport-overview__state')})`, 'passport overview renders the exact isolated first cursor page or empty state');
+  await waitUntil(`location.pathname === ${JSON.stringify(`/${language}/profile/passport`)} && document.querySelectorAll('.passport-visit-card').length === ${firstPageCount} && !!document.querySelector(${JSON.stringify(firstPageCount ? '.passport-overview__content' : '.passport-overview__state')})`, 'passport overview renders the exact isolated first cursor page or empty state');
   await captureLayouts('.passport-overview__hero', 'account-passport');
   if (fixture.visits.length > firstPageCount) {
     await evaluate(`document.querySelector('.passport-overview__load-more button').click()`);
@@ -12,10 +12,10 @@ export async function exerciseAccountPassportAndFit({ evaluate, waitUntil, captu
     await captureLayouts('.passport-overview__content', 'account-passport-final-page');
   }
   await evaluate(`history.go(${profile.index} - navigation.currentEntry.index)`);
-  await waitUntil(`navigation.currentEntry.key === ${JSON.stringify(profile.key)} && location.pathname === '/fr/profile' && !!document.querySelector('.profile-hero')`, 'passport review restores the same profile history entry');
+  await waitUntil(`navigation.currentEntry.key === ${JSON.stringify(profile.key)} && location.pathname === ${JSON.stringify(`/${language}/profile`)} && !!document.querySelector('.profile-hero')`, 'passport review restores the same profile history entry');
 
-  await navigateDocument('/fr/profile/park-fit/profiles');
-  await waitUntil(`location.pathname === '/fr/profile/park-fit/profiles' && document.querySelectorAll('.park-fit-profiles__card').length === ${fixture.fitProfiles.length} && !!document.querySelector(${JSON.stringify(fixture.fitProfiles.length ? '.park-fit-profiles__cards' : '.park-fit-profiles__empty')})`, 'private Park Fit profile deep link uses the existing guard and exact isolated list');
+  await navigateDocument(`/${language}/profile/park-fit/profiles`);
+  await waitUntil(`location.pathname === ${JSON.stringify(`/${language}/profile/park-fit/profiles`)} && document.querySelectorAll('.park-fit-profiles__card').length === ${fixture.fitProfiles.length} && !!document.querySelector(${JSON.stringify(fixture.fitProfiles.length ? '.park-fit-profiles__cards' : '.park-fit-profiles__empty')})`, 'private Park Fit profile deep link uses the existing guard and exact isolated list');
   await captureLayouts('.park-fit-profiles__hero', 'account-park-fit');
   await captureLayouts('.park-fit-profiles__library', 'account-park-fit-library');
   if (fixture.fitProfiles.length) {
@@ -35,7 +35,7 @@ export async function exerciseAccountPassportAndFit({ evaluate, waitUntil, captu
   await evaluate(`(() => { const height = document.querySelector('input[formcontrolname="heightCentimeters"]'); height.value = '120'; height.dispatchEvent(new Event('input', { bubbles: true })); document.querySelector('input[formcontrolname="canBeAccompanied"]').click(); })()`);
   await waitUntil(`!document.querySelector('.park-fit-profiles__composer [role="alert"]') && !!document.querySelector('input[formcontrolname="companionAgeYears"]')`, 'valid Park Fit facts retain the conditional accompaniment field without submission');
   await captureLayouts('.park-fit-profiles__composer', 'account-park-fit-draft');
-  await navigateDocument('/fr/profile');
-  await waitUntil(`location.pathname === '/fr/profile' && !!document.querySelector('.profile-hero')`, 'private Park Fit draft is left without a saved mutation');
+  await navigateDocument(`/${language}/profile`);
+  await waitUntil(`location.pathname === ${JSON.stringify(`/${language}/profile`)} && !!document.querySelector('.profile-hero')`, 'private Park Fit draft is left without a saved mutation');
   result.passportAndFit = { visits: fixture.visits.length, fitProfiles: fixture.fitProfiles.length, persistedWritesExercised: false, sharingNotExercised: true };
 }

@@ -4,7 +4,7 @@ import { join, resolve } from 'node:path';
 import test from 'node:test';
 import { Script } from 'node:vm';
 import { exerciseAnonymousAuth } from '../design-v6/exercise-anonymous-auth.mjs';
-import { accountLayoutFixtureOrigin, createAccountLayoutFixture, accountLayoutFixtureResponse } from '../design-v6/account-layout-fixtures.mjs';
+import { accountLayoutFixtureOrigin, createAccountLayoutFixture, accountLayoutFixtureResponse, accountLayoutCases } from '../design-v6/account-layout-fixtures.mjs';
 import { accountLayoutCaptureAllowed } from '../design-v6/capture-account-layout.mjs';
 import { exerciseAccountLists } from '../design-v6/exercise-account-lists.mjs';
 import { exerciseAccountProfileControls } from '../design-v6/exercise-account-profile-controls.mjs';
@@ -29,6 +29,22 @@ test('account layout fixtures distinguish complete, incomplete and expired UI se
   assert.equal(incomplete.user.isActivated, true);
   assert.equal(standard.user.preferredMeasurementSystem, 'Metric');
   assert.throws(() => createAccountLayoutFixture('admin', now), /Unknown/);
+});
+
+test('account acceptance retains all French widths and explicit two-theme mobile/desktop cases in the other seven languages', () => {
+  const widths = [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920];
+  const cases = accountLayoutCases(widths);
+  assert.equal(cases.length, 10);
+  assert.deepEqual(cases.slice(0, 3).map(item => item.kind), ['standard', 'incomplete', 'expired']);
+  assert.deepEqual(cases.slice(0, 3).map(item => item.widths), [widths, widths, widths]);
+  assert.deepEqual(cases.slice(3).map(item => item.language), ['en', 'de', 'nl', 'it', 'es', 'pt', 'pl']);
+  for (const item of cases.slice(3)) {
+    assert.deepEqual(item.widths, [390, 1366]);
+    assert.equal(createAccountLayoutFixture(item.kind, 1792144800, item.language).user.preferredLanguage, item.language.toUpperCase());
+  }
+  assert.throws(() => accountLayoutCases([320]), /390 and 1366/);
+  assert.throws(() => accountLayoutCases([...widths, 390]), /bounded widths/);
+  assert.throws(() => createAccountLayoutFixture('standard', 1792144800, 'unknown'), /Unknown/);
 });
 
 test('account layout fixtures reject production origins, unknown endpoints and all user-data mutations', () => {

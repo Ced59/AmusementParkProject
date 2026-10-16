@@ -23,7 +23,7 @@ import { canRenderPublicDocument } from './public-document-evidence.mjs';
 import { exercisePublicStandalone } from './exercise-public-standalone.mjs';
 import { exerciseAnonymousAuth } from './exercise-anonymous-auth.mjs';
 import { mapPopupLayoutIssues, mapReviewScrollDelta } from './map-popup-layout.mjs';
-import { createAccountLayoutFixture } from './account-layout-fixtures.mjs';
+import { createAccountLayoutFixture, accountLayoutCases } from './account-layout-fixtures.mjs';
 import { captureAccountLayout } from './capture-account-layout.mjs';
 import { collectContrastCandidates } from './browser-text-contrast.mjs';
 
@@ -1084,14 +1084,14 @@ try {
       }, null, 2));
       report.accountLayouts = [];
       const fixtureTime = Math.floor(Date.now() / 1000);
-      for (const kind of ['standard', 'incomplete', 'expired']) {
-        const fixture = createAccountLayoutFixture(kind, fixtureTime);
+      for (const { kind, language, widths: accountWidths } of accountLayoutCases(widths)) {
+        const fixture = createAccountLayoutFixture(kind, fixtureTime, language);
         for (const label of ['master', 'v6']) {
           try {
-            report.accountLayouts.push(await captureAccountLayout({ cdp, widths, outputRoot, fixture, label, homeFixtures: homeClientFixtures,
+            report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label, homeFixtures: homeClientFixtures,
               browserRoot: label === 'master' ? resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') : browserRoot }));
           } catch (error) {
-            report.accountLayoutFailure = { label, kind, error: error.message };
+            report.accountLayoutFailure = { label, kind, language, error: error.message };
             throw error;
           } finally {
             await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
