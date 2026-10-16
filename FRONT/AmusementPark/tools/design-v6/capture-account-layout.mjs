@@ -14,6 +14,8 @@ import { exerciseAccountPassportStatistics } from './exercise-account-passport-s
 import { exerciseAccountVisitEditor } from './exercise-account-visit-editor.mjs';
 import { anonymousDraftIds } from './account-anonymous-draft-fixtures.mjs';
 import { exerciseAnonymousDraftPages } from './exercise-anonymous-draft-pages.mjs';
+import { historyLayoutDocuments } from './public-history-layout-fixtures.mjs';
+import { exerciseIsolatedHistoryPages } from './exercise-isolated-history-pages.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -40,12 +42,14 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const visitDocuments = fixture.visitEditorData.map(data => `${profilePath}/visits/${data.visit.id}`);
   const anonymousPath = `/${language}/passport/local`;
   const anonymousDocuments = [anonymousPath, ...anonymousDraftIds.map(id => `${anonymousPath}/${id}`)];
-  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, ...tripDocuments, ...passportDocuments, ...visitDocuments, ...anonymousDocuments];
+  const historyDocuments = historyLayoutDocuments(language);
+  const unauthenticatedDocuments = [...anonymousDocuments, ...new Set(historyDocuments.map(path => path.split('?')[0]))];
+  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, ...tripDocuments, ...passportDocuments, ...visitDocuments, ...anonymousDocuments, ...historyDocuments];
   if (fixture.kind === 'expired' && (!(homeFixtures instanceof Map) || !homeFixtures.size)) throw new Error('Expired account UI requires exact local public-home fixtures.');
   if (!Array.isArray(widths) || widths.length < 1 || widths.length > 13 || widths.some(width => !Number.isInteger(width) || width < 320 || width > 1920)) throw new Error('Account capture widths exceed their bound.');
   const root = resolve(browserRoot);
   const rawHtml = await readFile(join(root, 'index.csr.html'), 'utf8');
-  const result = { scope: 'compiled account UI with CI-only synthetic input; not authentication/API/HTTP-SEO acceptance', label,
+  const result = { scope: 'compiled public/account UI with CI-only synthetic input; not authentication/API/HTTP-SEO acceptance', label,
     kind: fixture.kind, language, checks: [], layouts: [], apiReads: [], blockedRequests: [], fixtureFailures: [], exceptions: [] };
   const pending = new Set();
   const canceled = new Set();
@@ -93,6 +97,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     if (!['GET', 'HEAD'].includes(request.method)) throw new Error('Unexpected non-fixture mutation in account layout capture.');
     if (resourceType === 'Document') {
       if (!((url.pathname === profilePath || (fixture.kind !== 'expired' && accountDocuments.includes(url.pathname))) && !url.search)
+          && !(fixture.kind !== 'expired' && historyDocuments.includes(url.pathname + url.search))
           && !(fixture.kind === 'standard' && url.pathname === resetPath && url.search === accountLayoutResetQuery)
           && !(fixture.kind === 'expired' && url.pathname === homePath && url.searchParams.size === 1 && url.searchParams.get('returnUrl') === profilePath)) throw new Error('Unexpected account fixture document navigation.');
       await fulfill(requestId, 200, 'text/html; charset=utf-8', rawHtml);
@@ -134,7 +139,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     await cdp.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }, { name: 'prefers-color-scheme', value: 'dark' }] });
     await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
     injectedScript = (await cdp.send('Page.addScriptToEvaluateOnNewDocument', { source:
-      `if (location.origin === ${JSON.stringify(accountLayoutFixtureOrigin)}) { if (${JSON.stringify(anonymousDocuments)}.includes(location.pathname)) localStorage.removeItem(${JSON.stringify(accountLayoutRefreshMarker)}); else localStorage.setItem(${JSON.stringify(accountLayoutRefreshMarker)}, 'true'); }` })).identifier;
+      `if (location.origin === ${JSON.stringify(accountLayoutFixtureOrigin)}) { if (${JSON.stringify(unauthenticatedDocuments)}.includes(location.pathname)) localStorage.removeItem(${JSON.stringify(accountLayoutRefreshMarker)}); else localStorage.setItem(${JSON.stringify(accountLayoutRefreshMarker)}, 'true'); }` })).identifier;
     await cdp.send('Fetch.enable', { patterns: [{ urlPattern: '*', requestStage: 'Request' }] });
     await cdp.send('Page.navigate', { url: accountLayoutFixtureOrigin + profilePath });
     const displayName = fixture.user.publicDisplayName || fixture.user.firstName || fixture.user.email;
@@ -222,6 +227,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         await exerciseAccountAuthPages({ evaluate, waitUntil, captureLayouts, fixture, result, navigateDocument, expectedConfirmationMessage });
       }
       await exerciseAnonymousDraftPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
+      await exerciseIsolatedHistoryPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
     }
     if (result.fixtureFailures.length || result.exceptions.length) throw new Error('Account layout accumulated an unexpected fixture or browser failure.');
     result.passed = true;

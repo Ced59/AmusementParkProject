@@ -5,6 +5,7 @@ import { createAccountTripFixture, accountTripFixtureResponse } from './account-
 import { createAccountPassportStatisticsFixture, accountPassportStatisticsFixtureResponse } from './account-passport-statistics-fixtures.mjs';
 import { createAccountVisitEditorFixture, accountVisitEditorFixtureResponse } from './account-visit-editor-fixtures.mjs';
 import { anonymousDraftFixtureResponse } from './account-anonymous-draft-fixtures.mjs';
+import { createHistoryLayoutFixture, historyLayoutFixtureResponse } from './public-history-layout-fixtures.mjs';
 export const accountLayoutFixtureOrigin = 'https://apf-account-layout.invalid';
 export const accountLayoutRefreshMarker = 'amusementpark.hasRefreshSession';
 export const accountLayoutResetQuery = '?token=APF-CI-UI-NOT-A-REAL-RESET-TOKEN';
@@ -72,12 +73,15 @@ export function createAccountLayoutFixture(kind, nowSeconds, language = 'fr') {
   }));
   return { kind, language, user, accessToken, collections, trips, visits, fitProfiles,
     notificationData: createAccountNotificationFixture(kind, date), tripData: createAccountTripFixture(kind, date, user, trips),
-    passportStatisticsData: createAccountPassportStatisticsFixture(kind, date), visitEditorData: createAccountVisitEditorFixture(kind, date, visits) };
+    passportStatisticsData: createAccountPassportStatisticsFixture(kind, date), visitEditorData: createAccountVisitEditorFixture(kind, date, visits),
+    historyLayoutData: createHistoryLayoutFixture(kind, date) };
 }
 
 export function accountLayoutFixtureResponse(request, fixture, homeFixtures = new Map()) {
   const url = new URL(request.url);
   if (url.origin !== accountLayoutFixtureOrigin || url.hash) return null;
+  const historyResponse = historyLayoutFixtureResponse(request, url, fixture);
+  if (historyResponse) return historyResponse;
   if (fixture.kind !== 'expired') {
     const anonymousResponse = anonymousDraftFixtureResponse(request, url);
     if (anonymousResponse) return anonymousResponse;

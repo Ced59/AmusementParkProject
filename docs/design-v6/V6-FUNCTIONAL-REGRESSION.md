@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## Capacités historiques absentes des exemples publiés — recette isolée préparée
+
+Un complément local CI prépare les capacités réellement absentes du Fleury/Efteling/Le Pal observés : timeline paginée 25 + 1, snapshot avec cinq groupes de sujets/coverage et date mois/jour, comparaison avec ouvert/fermé/renommé/stable/incertain, lignée et source dépliable. Les réponses synthétiques utilisent les DTO existants, un seul identifiant de parc de recette, deux plages exactes et des GET bornés sur l'origine `.invalid` ; aucun fallback réseau, mutation ou publication. Les documents sont anonymes et les routes/resolvers/formulaires Angular réels sont conservés. Une variante vide est aussi préparée.
+
+**33 tests Node compte/fixtures et 17 tokens passent (50 au total).** Neuf états remplis et six vides attendent leurs rendus CI. Ces fixtures ne rejoignent jamais `src/`, n'exposent pas Pendolino, ne reclassent pas les capacités absentes du Fleury en PASS et ne prouvent pas les codes HTTP/SEO serveur de données publiées. Les 224 assertions SSR réelles restent une preuve séparée. Ce complément élargit les scénarios de présentation, pas les données de production.
+
 ## CI `906bff28b` — baseline notifications atteinte, sélecteur de recette corrigé
 
 Le [run `38906152400`](https://github.com/Ced59/AmusementParkProject/actions/runs/38906152400), [artefact `12049570393`](https://github.com/Ced59/AmusementParkProject/actions/runs/38906152400/artifacts/12049570393), s'arrête **dans master**, avant V6. La baseline standard FR atteint 577 contrôles/494 captures, dont notifications, filtres, page 2, erreur/retry et reprise ; aucun échec de fixture ni exception navigateur. Les GET de voyage répondent 200 et la capture montre le vrai titre attendu.

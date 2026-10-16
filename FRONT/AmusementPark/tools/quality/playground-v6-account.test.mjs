@@ -17,9 +17,51 @@ import { accountComparisonFixtureToken } from '../design-v6/account-passport-sta
 import { exerciseAccountVisitEditor } from '../design-v6/exercise-account-visit-editor.mjs';
 import { exerciseAnonymousDraftPages } from '../design-v6/exercise-anonymous-draft-pages.mjs';
 import { createAnonymousDraftFixtures, seedAnonymousDraftBrowser, anonymousDraftParkId } from '../design-v6/account-anonymous-draft-fixtures.mjs';
+import { historyLayoutDocuments, historyLayoutParkId, historyLayoutSubjectId } from '../design-v6/public-history-layout-fixtures.mjs';
+import { exerciseIsolatedHistoryPages } from '../design-v6/exercise-isolated-history-pages.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('isolated historical capabilities keep exact paged DTOs, snapshot dates, ranges and lineage without publication', () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const fixture = createAccountLayoutFixture(kind, 1792144800);
+    const prefix = `/api/public/parks/${historyLayoutParkId}/history`;
+    const get = path => accountLayoutFixtureResponse({ method: 'GET', url: accountLayoutFixtureOrigin + path }, fixture);
+    const timeline = get(prefix + '/timeline?page=1&pageSize=25');
+    assert.equal(timeline.body.events.length, kind === 'standard' ? 25 : 0);
+    assert.equal(timeline.body.pagination.totalPages, kind === 'standard' ? 2 : 1);
+    assert.equal(get(prefix + '/timeline?page=2&pageSize=25').body.events.length, kind === 'standard' ? 1 : 0);
+    const snapshot = get(prefix + '/snapshot?year=2000&month=1&day=1');
+    assert.deepEqual(snapshot.body.requestedInstant, { year: 2000, month: 1, day: 1, precision: 'Day' });
+    assert.equal(snapshot.body.isIndexableKeyYear, false);
+    snapshot.body.subjects.push({ subjectId: 'changed' });
+    assert.equal(get(prefix + '/snapshot?year=2000').body.subjects.length, kind === 'standard' ? 5 : 0);
+    assert.equal(get(prefix + '/compare?fromYear=2001&toYear=2002').body.fromInstant.year, 2001);
+    const lineage = get(`/api/public/history/subjects/ParkItem/${historyLayoutSubjectId}/lineage?contextParkId=${historyLayoutParkId}`);
+    assert.equal(lineage.body.relations.length, kind === 'standard' ? 1 : 0);
+    for (const suffix of ['/timeline?page=3&pageSize=25', '/snapshot?year=2026', '/snapshot?year=2000&unknown=true', '/compare?fromYear=2002&toYear=2000']) assert.equal(get(prefix + suffix), null);
+    for (const method of ['POST', 'PATCH', 'DELETE']) assert.equal(accountLayoutFixtureResponse({ method, url: accountLayoutFixtureOrigin + prefix + '/snapshot?year=2000' }, fixture), null);
+    const documents = historyLayoutDocuments('pl');
+    assert.equal(documents.length, 7);
+    assert.ok(documents.every(path => path.startsWith('/pl/')));
+  }
+});
+
+test('isolated history expressions compile date/range/pagination/source interactions without data publication', async () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const result = {};
+    const captures = [];
+    await exerciseIsolatedHistoryPages({ fixture: createAccountLayoutFixture(kind, 1792144800, 'de'), result, language: 'de',
+      evaluate: async expression => assert.doesNotThrow(() => new Script(expression)),
+      waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+      captureLayouts: async (_selector, page) => captures.push(page), navigateDocument: async () => {} });
+    assert.equal(captures.length, kind === 'standard' ? 9 : 6);
+    assert.equal(result.isolatedHistory.historyPublished, false);
+    assert.equal(result.isolatedHistory.publicFleuryCapabilitiesNotReclassified, true);
+  }
+  assert.doesNotMatch(read('tools/design-v6/exercise-isolated-history-pages.mjs'), /fetch\(|\.publish\(|\.save\(|admin\/history/);
+});
 
 test('anonymous draft seed is bounded to the isolated browser origin and never touches user storage', async () => {
   const drafts = createAnonymousDraftFixtures('2026-10-16T12:00:00Z');
@@ -59,7 +101,8 @@ test('anonymous draft recipe compiles local list/editor/lock states without impo
   }
   assert.doesNotMatch(read('tools/design-v6/exercise-anonymous-draft-pages.mjs'), /fetch\(|requestSubmit|\.submit\(|\.export\(|\.addRide\(|\.deleteDraft\(/);
   const harness = read('tools/design-v6/capture-account-layout.mjs');
-  assert.ok(harness.includes('anonymousDocuments)}.includes(location.pathname)'));
+  assert.ok(harness.includes('unauthenticatedDocuments)}.includes(location.pathname)'));
+  assert.ok(harness.includes('const unauthenticatedDocuments = [...anonymousDocuments,'));
   assert.ok(harness.includes('localStorage.removeItem('));
 });
 
