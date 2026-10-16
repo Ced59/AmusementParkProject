@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Calendrier à 320 px — lisibilité après le premier correctif
+
+La [CI `754cce98c`, artefact `12029833735`](https://github.com/Ced59/AmusementParkProject/actions/runs/38863174263/artifacts/12029833735) passe 26 géométries internes du calendrier (31 vrais jours et un badge Aujourd'hui chacune), ainsi que 26 captures météo historique. L'inspection du calendrier **320 px sombre** confirme la disparition du chevauchement, mais montre encore des heures morcelées et le badge sur quatre lignes : la lisibilité n'est pas validée par le seul containment.
+
+Le complément conserve des cases d'au moins 44 px et un tableau de largeur minimale 26 rem, dans une région nommée focalisable avec défilement horizontal **local**, scrollbar contrastée et aucune dissimulation du document. La recette exige l'accès effectif à la dernière colonne et capture séparément la fin du scroll. Les horaires mobiles passent de 9,9 à 11,2 px ; dates, données et sélection restent inchangées. **Nouvelle capture et inspection requises.** Le SCSS ciblé compile (12 424 caractères), les 40 tests pratiques/cartes/médias/histoire passent et les 21 templates comparés ne perdent aucun contrat (1 889 → 1 931).
+
 ## Calendrier mobile — défaut découvert après la CI verte `da81bf4ab`
 
 La [campagne `38859824025`, artefact `12028973687`](https://github.com/Ced59/AmusementParkProject/actions/runs/38859824025/artifacts/12028973687) passe les contrôles fonctionnels et la largeur du document. L'inspection de `fr_opening-hours-selected_390_dark.webp` révèle pourtant le badge Aujourd'hui débordant dans la case voisine. Le contrôle global de largeur ne suffisait donc pas. Le correctif borne le track de grille à `minmax(0, 1fr)`, laisse revenir le texte complet à la ligne et supprime sa réduction mobile à 7–8 px ainsi que les rayons fixes 6/7 px. Les jours, horaires, états et handlers restent inchangés. La recette suivante vérifie les rectangles et scroll internes de chaque case aux 13 largeurs, deux thèmes, et exige que le vrai mois comporte effectivement le badge testé. **Correctif source testé ; rendu navigateur à attester, défaut non déclaré soldé.**

@@ -2,6 +2,16 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
+import { mapViewportSettled } from '../design-v6/exercise-public-map.mjs';
+
+test('the separate map zoom recipe requires stable initial public DOM without weakening the actual zoom assertion', () => {
+  const stable = { transform: 'translate3d(10px, 20px, 0) scale(32768)', animating: false };
+  assert.equal(mapViewportSettled([stable, stable, stable]), true);
+  assert.equal(mapViewportSettled([stable, stable]), false);
+  assert.equal(mapViewportSettled([stable, { ...stable, transform: 'different' }, stable]), false);
+  assert.equal(mapViewportSettled([stable, stable, { ...stable, animating: true }]), false);
+  assert.equal(mapViewportSettled([{ transform: '' }, { transform: '' }, { transform: '' }]), false);
+});
 
 test('the authorized Leaflet teardown waits for the native zoom event without changing live interactions', () => {
   const component = readFileSync(resolve(import.meta.dirname, '../../src/app/shared/components/leaflet-map/leaflet-map.component.ts'), 'utf8');

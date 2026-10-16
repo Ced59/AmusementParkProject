@@ -584,6 +584,25 @@ async function captureHydratedHome(rawHtml, options = {}) {
               layout.todayBadges = cells.flatMap(cell => cell.labels).filter(label => label.today).length;
               if (layout.todayBadges !== 1) throw new Error('The actual calendar month does not cover its today badge; this layout scenario is not exercised.');
               if (issues.length) throw new Error(`Calendar content overlaps or clips at ${width}px (${theme}): ${issues.join(', ')}`);
+              layout.calendarScroll = await evaluate(`(() => {
+                const wrap = document.querySelector('.park-opening-hours-month__table-wrap');
+                const needsScroll = wrap.scrollWidth > wrap.clientWidth + 1;
+                wrap.scrollLeft = wrap.scrollWidth;
+                const last = wrap.querySelector('thead th:last-child').getBoundingClientRect();
+                const bounds = wrap.getBoundingClientRect();
+                return { needsScroll, scrollLeft: wrap.scrollLeft, named: !!wrap.getAttribute('aria-label'), tabIndex: wrap.tabIndex,
+                  lastColumnReachable: last.right <= bounds.right + 1 && last.x >= bounds.x - 1 };
+              })()`);
+              if (!layout.calendarScroll.named || layout.calendarScroll.tabIndex !== 0 || !layout.calendarScroll.lastColumnReachable) {
+                throw new Error(`The calendar's last column is not reachable inside its named keyboard-scrollable region at ${width}px.`);
+              }
+              if (layout.calendarScroll.needsScroll) {
+                const scrollEndScreenshot = `fr_${label}_${width}_${layout.theme}_scroll-end.webp`;
+                const endPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+                await writeFile(join(outputRoot, scrollEndScreenshot), Buffer.from(endPixels.data, 'base64'));
+                layout.calendarScroll.screenshot = scrollEndScreenshot;
+              }
+              await evaluate(`document.querySelector('.park-opening-hours-month__table-wrap').scrollLeft = 0`);
             }
             const screenshot = `fr_${label}_${width}_${layout.theme}.webp`;
             const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });

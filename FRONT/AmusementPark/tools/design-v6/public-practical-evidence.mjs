@@ -15,6 +15,7 @@ export function openingCalendarLayoutIssues(cells) {
     && child.right <= parent.right + 1 && child.y >= parent.y - 1 && child.bottom <= parent.bottom + 1;
   for (const [index, cell] of cells.entries()) {
     if (!inside(cell.button, cell.bounds)) issues.push(`cell ${index}: button outside table cell`);
+    if (cell.button?.right - cell.button?.x < 44) issues.push(`cell ${index}: compressed day target`);
     if (!cell.labels?.length) issues.push(`cell ${index}: missing day label`);
     for (const label of cell.labels ?? []) {
       if (!inside(label.bounds, cell.button)) issues.push(`cell ${index}: label outside button`);

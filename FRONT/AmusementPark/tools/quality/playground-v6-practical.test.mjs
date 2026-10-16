@@ -57,10 +57,13 @@ test('calendar labels reflow inside fixed grid tracks without shrinking the toda
   assert.match(styles, /\.park-opening-hours-cell__today\s*\{[^}]*overflow-wrap:\s*anywhere/);
   assert.doesNotMatch(styles, /\.park-opening-hours-cell__today\s*\{[^}]*(?:ellipsis|nowrap|overflow:\s*hidden|font-size:\s*0\.[45])/);
   assert.doesNotMatch(styles, /border-radius:\s*[67]px/);
+  assert.match(styles, /\.park-opening-hours-month__table-wrap\s*\{[^}]*overflow-x:\s*auto/);
+  assert.match(styles, /\.park-opening-hours-month__table\s*\{[^}]*min-width:\s*26rem/);
+  assert.match(openingTemplate, /class="park-opening-hours-month__table-wrap" role="region" tabindex="0" \[attr\.aria-label\]="group\.label"/);
 });
 
 test('calendar geometry rejects internal overlap even when document width passes', () => {
-  const bounds = { x: 20, y: 100, right: 60, bottom: 200 };
+  const bounds = { x: 20, y: 100, right: 72, bottom: 200 };
   const cell = { bounds, button: { ...bounds }, labels: [{ bounds: { x: 24, y: 120, right: 56, bottom: 160 }, clientWidth: 32, scrollWidth: 32, clientHeight: 40, scrollHeight: 40, today: true, textOverflow: 'clip', whiteSpace: 'normal' }] };
   assert.deepEqual(openingCalendarLayoutIssues([cell, cell]), []);
   const overlap = structuredClone(cell);
@@ -72,6 +75,9 @@ test('calendar geometry rejects internal overlap even when document width passes
   const ellipsis = structuredClone(cell);
   ellipsis.labels[0].textOverflow = 'ellipsis';
   assert.ok(openingCalendarLayoutIssues([cell, ellipsis]).some(issue => issue.includes('cannot reflow')));
+  const compressed = structuredClone(cell);
+  compressed.button.right = 59;
+  assert.ok(openingCalendarLayoutIssues([cell, compressed]).some(issue => issue.includes('compressed day target')));
   assert.ok(openingCalendarLayoutIssues([]).length > 0);
 });
 

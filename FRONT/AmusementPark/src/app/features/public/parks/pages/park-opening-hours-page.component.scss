@@ -206,10 +206,13 @@
 
 .park-opening-hours-month__table-wrap {
   min-width: 0;
+  overflow-x: auto;
+  scrollbar-color: var(--app-text-muted) var(--app-surface-2);
 }
 
 .park-opening-hours-month__table {
   width: 100%;
+  min-width: 26rem;
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0.35rem;
@@ -576,7 +579,7 @@
 
   .park-opening-hours-cell__status,
   .park-opening-hours-cell__hours {
-    font-size: 0.62rem;
+    font-size: 0.7rem;
   }
 
   .park-opening-hours-day-detail {

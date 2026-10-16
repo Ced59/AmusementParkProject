@@ -1,5 +1,11 @@
 // Existing Leaflet DOM controls only. No synthetic coordinates or private map
 // fields; external tiles/directions remain outside this read-only CI sandbox.
+export function mapViewportSettled(samples) {
+  const recent = samples.slice(-3);
+  return recent.length === 3 && recent.every(sample => sample.transform
+    && !sample.animating && sample.transform === recent[0].transform);
+}
+
 export async function exercisePublicMap({ evaluate, waitUntil, capturePage, result }) {
   const parent = await evaluate(`({ path: location.pathname, key: navigation.currentEntry.key, index: navigation.currentEntry.index })`);
   const selector = `app-park-detail-page a[href="${parent.path}/map"]`;
@@ -11,10 +17,22 @@ export async function exercisePublicMap({ evaluate, waitUntil, capturePage, resu
   const mapKey = await evaluate('navigation.currentEntry.key');
   const initial = await evaluate(`({ markers: document.querySelectorAll('.park-items-map .leaflet-marker-icon').length, officialTabAvailable: !!document.getElementById('park-map-tab-official') })`);
   const proxy = '.park-items-map .leaflet-proxy';
+  result.mapScenarios = { initial, viewportSamples: [], zoomObservations: [], externalTilesAndDirectionsNotValidated: true, pointerDragNotExercised: true };
+  await waitUntil(async () => {
+    const sample = await evaluate(`({ transform: document.querySelector('${proxy}')?.style.transform ?? '', animating: !!document.querySelector('.park-items-map .leaflet-zoom-anim') })`);
+    result.mapScenarios.viewportSamples.push(sample);
+    if (result.mapScenarios.viewportSamples.length > 12) result.mapScenarios.viewportSamples.shift();
+    return mapViewportSettled(result.mapScenarios.viewportSamples);
+  }, 'initial Leaflet viewport is stable across consecutive DOM observations');
   const beforeZoom = await evaluate(`document.querySelector('${proxy}')?.style.transform ?? ''`);
+  result.mapScenarios.beforeZoom = beforeZoom;
   if (!beforeZoom) throw new Error('The real Leaflet zoom transform is unavailable; zoom acceptance is not covered.');
   await evaluate(`document.querySelector('.park-items-map .leaflet-control-zoom-in').click()`);
-  await waitUntil(`document.querySelector('${proxy}')?.style.transform !== ${JSON.stringify(beforeZoom)} && !document.querySelector('.park-items-map .leaflet-zoom-anim')`, 'native zoom-in changes the real map transform and finishes');
+  await waitUntil(async () => {
+    const sample = await evaluate(`({ transform: document.querySelector('${proxy}')?.style.transform ?? '', animating: !!document.querySelector('.park-items-map .leaflet-zoom-anim'), disabled: document.querySelector('.park-items-map .leaflet-control-zoom-in')?.getAttribute('aria-disabled') })`);
+    if (result.mapScenarios.zoomObservations.length < 12) result.mapScenarios.zoomObservations.push(sample);
+    return sample.transform !== beforeZoom && !sample.animating;
+  }, 'native zoom-in changes the real map transform and finishes');
   await evaluate(`document.querySelector('.park-items-map .leaflet-control-zoom-out').click()`);
   await waitUntil(`document.querySelector('${proxy}')?.style.transform === ${JSON.stringify(beforeZoom)} && !document.querySelector('.park-items-map .leaflet-zoom-anim')`, 'native zoom-out restores the original map transform');
   const category = await evaluate(`(() => { const buttons = [...document.querySelectorAll('.park-items-map__category-button')]; const total = Number(buttons[0]?.querySelector('strong')?.textContent.trim()); const button = buttons.slice(1).find(node => { const count = Number(node.querySelector('strong').textContent.trim()); return count > 0 && count < total; }); if (!button) return null; const index = buttons.indexOf(button); return { index, count: Number(button.querySelector('strong').textContent.trim()), total }; })()`);
@@ -48,7 +66,7 @@ export async function exercisePublicMap({ evaluate, waitUntil, capturePage, resu
     }
     await capturePage('official-map-year', '.official-maps');
   }
-  result.mapScenarios = { initial, category, detail, official, externalTilesAndDirectionsNotValidated: true, pointerDragNotExercised: true };
+  Object.assign(result.mapScenarios, { category, detail, official });
   await evaluate(`history.go(${parent.index} - navigation.currentEntry.index)`);
   await waitUntil(`location.pathname === ${JSON.stringify(parent.path)} && navigation.currentEntry.key === ${JSON.stringify(parent.key)} && !!document.querySelector('app-park-detail-page h1')`, 'map recipe restores the exact original park history entry');
 }

@@ -1,5 +1,11 @@
 # V6 — performance, SEO et SSR
 
+## Contrôle borné validé — `754cce98c`
+
+La [CI `38863174263`](https://github.com/Ced59/AmusementParkProject/actions/runs/38863174263) réussit intégralement, Docker compris : 2 728 tests Angular, 200 tests Node qualité, 224 assertions HTTP, 40 routes / 2 080 captures, 38 détails Fleury, 142 contrôles hydratés et 52 captures pratiques. Les six paires restent **105 → 107 requêtes**, avec **+2 854 octets JS** et **+5 500 octets décodés au total** pour cette population. Le manifeste conserve son plafond de +3 302 : il n'est ni augmenté ni réinterprété. Le retrait des variables CSS orphelines explique une partie de la baisse ; aucun nouveau nombre de requêtes API, images ou fonts n'est accepté.
+
+Médianes LCP proxy : **180 → 140 ms** mobile, **224 → 144 ms** desktop ; CLS V6 médian nul, maximum mobile **0,00327**. `domComplete` médian **214,5 → 555,5 ms** mobile et **230,8 → 529,6 ms** desktop. Les populations restent identiques dans chaque paire, pas entre campagnes. Il s'agit toujours d'un laboratoire, pas de CWV terrain ou d'une mesure INP de production. Les corrections et recettes suivantes doivent repasser ces mêmes contrôles.
+
 ## Exception propriétaire acceptée — mesure `579060704`
 
 Le propriétaire a explicitement accepté le 16 octobre : **« Oui, accepter cette exception ciblée »** pour les deux requêtes JavaScript du confinement clavier CDK. La portée est enregistrée dans `V6-PERFORMANCE-EXCEPTION.json`, liée à la base exacte `7f6a9088…` et au run `38857089021`. Le contrôle exige exactement deux scripts supplémentaires, au plus **3 302 octets JS décodés supplémentaires**, et aucun changement du nombre de requêtes d'un autre type (dont API, images, fonts). Une nouvelle base, un troisième script, un dépassement d'octets ou une requête d'un autre type échoue. Le verdict est `PASS_WITH_OWNER_EXCEPTION`, jamais un PASS sans réserve ; les budgets Angular et les autres gates restent inchangés.

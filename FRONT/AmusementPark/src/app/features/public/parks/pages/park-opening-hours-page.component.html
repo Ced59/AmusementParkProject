@@ -114,7 +114,7 @@
                 <p>{{ monthSummaryKey(group) | translate:{ open: group.openDays, closed: group.closedDays } }}</p>
               </header>
 
-              <div class="park-opening-hours-month__table-wrap">
+              <div class="park-opening-hours-month__table-wrap" role="region" tabindex="0" [attr.aria-label]="group.label">
                 <table class="park-opening-hours-month__table">
                   <caption>{{ group.label }}</caption>
                   <thead>

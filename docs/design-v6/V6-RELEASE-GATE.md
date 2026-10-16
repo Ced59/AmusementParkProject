@@ -33,13 +33,13 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | PASS complet `da81bf4ab` : 2 728 tests Angular / 581 fichiers, 197 tests Node qualité, 224 assertions HTTP, 40 routes / 2 080 captures et 138 contrôles hydratés ; prochaine correction calendrier à revalider |
-| Exception P04.6 | PASS_WITH_OWNER_EXCEPTION sur six paires `da81bf4ab` : deux scripts CDK, +3 302 octets JS, aucun autre nombre de requêtes modifié ; manifeste borné et refus de tout élargissement non approuvé |
-| Recette pratique additionnelle | PASS CIBLÉ `da81bf4ab` — jour/mois réel, historique météo différé/cache et retour exact ; chevauchement interne Aujourd'hui découvert à l'inspection, correctif et contrôle 13 largeurs × 2 thèmes à attester |
+| P21 CI Node 24 | Dernier PASS complet `754cce98c` : 2 728 tests Angular / 581 fichiers, 200 tests Node qualité, 224 assertions HTTP, 40 routes / 2 080 captures et 142 contrôles hydratés ; `2335fc043` échoue ensuite sur la nouvelle assertion de zoom |
+| Exception P04.6 | PASS_WITH_OWNER_EXCEPTION sur six paires `754cce98c` : deux scripts CDK, +2 854 octets JS, aucun autre nombre de requêtes modifié ; plafond +3 302 inchangé |
+| Recette pratique additionnelle | PASS CIBLÉ `754cce98c` — jour/mois réel, historique météo différé/cache, retour exact et 52 captures ; chevauchement corrigé mais textes comprimés à 320 px, nouveau tableau localement défilable à attester |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | OUI sur `da81bf4ab` ; la correction calendrier suivante impose une nouvelle campagne avant merge |
+| CI intégralement verte | NON sur `2335fc043` : assertion de zoom nouvelle en échec ; stabilisation de recette et lisibilité calendrier à revalider |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |

@@ -16,11 +16,15 @@ La comparaison source actuelle protège **20 templates, 1 753 → 1 792 contrats
 
 ### Extensions cartes, vidéos et récit — navigateur encore à exécuter
 
+La [CI `2335fc043 / 38864648061`](https://github.com/Ced59/AmusementParkProject/actions/runs/38864648061) passe tests/build/budgets/sécurité et HTTP, puis s'arrête sur l'assertion de zoom-in Leaflet, sans exception applicative. Le composant existant réajuste ses bounds lors de l'initialisation ; une course est possible mais non prouvée par l'ancien diagnostic. La recette attend désormais trois observations DOM consécutives stables avant son test de zoom séparé et conserve les transforms observés en cas d'échec. L'assertion de changement/fin et le scénario de retour rapide ayant trouvé la destruction Leaflet restent inchangés. Aucun code de carte, délai de production ou champ privé Leaflet n'est modifié. Vidéos et récit ne sont pas déclarés atteints par ce run.
+
 La recette suivante ouvre les liens réels du parc et conserve les clés d'historique. Sur Leaflet : zoom natif aller/retour, catégorie vérifiée par son vrai compte, remise à zéro, popup puis fiche ParkItem complète et retour. Les plans officiels et années ne sont exercés que si le parc en possède ; les tuiles externes, directions et glisser du pointeur restent explicitement hors verdict.
 
 Les vidéos sont comparées aux identifiants et à la pagination de leurs réponses publiques, sans conserver métadonnées de fournisseur ni DTO privés. Onglets, filtre de type avec query param, remise à zéro, recherche de créateur sans résultat, fiche complète et lecteur nommé/fallback sont vérifiés. Le lecteur externe reste bloqué par le sandbox : aucune lecture effective YouTube/Vimeo n'est annoncée.
 
 La timeline ouvre/ferme les sources natives, suit son lien vers un récit publié, capture l'en-tête et le corps puis restaure la même entrée et le même nombre d'événements. Snapshots/comparaisons et pagination historique restent marqués non exercés ; leur simple disponibilité ne leur donne pas un PASS. Les captures de chaque état sont prévues aux 13 largeurs et deux thèmes. **27 tests Node ciblés passent, syntaxe du script principal valide ; aucune exécution navigateur de cette extension n'est encore attestée.**
+
+Le calendrier devient ensuite une région nommée défilable au clavier : le tableau n'est plus comprimé pour forcer sept colonnes dans 320 px. Le contrôle exige des cibles journalières d'au moins 44 px, l'absence de clipping interne et l'accès à la dernière colonne. **40 tests ciblés passent ; exécution navigateur et revue encore requises.** L'ajout d'attributs de région porte la comparaison à **21 templates, 1 889 → 1 931 contrats, zéro manquant** ; huit langues toujours inchangées hors quatre nouveaux libellés génériques.
 
 ### Tri au clavier — contrôle partagé
 
