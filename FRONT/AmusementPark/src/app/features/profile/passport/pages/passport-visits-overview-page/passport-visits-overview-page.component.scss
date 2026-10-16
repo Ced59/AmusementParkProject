@@ -59,12 +59,12 @@
   line-height: 1.55;
 }
 
-.passport-overview__privacy {
+.passport-overview__hero-copy > .passport-overview__privacy {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: var(--c-gold) !important;
-  font-size: 0.9rem !important;
+  color: var(--app-accent-gold);
+  font-size: 0.9rem;
   font-weight: 700;
 }
 

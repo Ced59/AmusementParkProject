@@ -8,7 +8,7 @@ h1 { font-size: clamp(2.15rem, 8vw, 4.5rem); line-height: .95; text-transform: u
 .passport-share__live > div:first-child { display: grid; gap: .15rem; }
 .passport-share__live-actions { display: flex; flex-wrap: wrap; gap: .5rem; min-width: 0; }
 .passport-share__section-heading { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .8rem; align-items: start; margin-top: .5rem; }
-.passport-share__section-heading > span { display: grid; place-items: center; width: 2.25rem; aspect-ratio: 1; border-radius: 50%; background: var(--color-primary, #ff5a2a); color: #fff; font-weight: 800; }
+.passport-share__section-heading > span { display: grid; place-items: center; width: 2.25rem; aspect-ratio: 1; border-radius: 50%; background: var(--app-primary); color: var(--app-on-accent); font-weight: 800; }
 fieldset { min-width: 0; margin: 0; padding: 0; border: 0; display: grid; gap: .75rem; }
 legend, .passport-share__caption > span { margin-bottom: .75rem; font-weight: 800; }
 .passport-share__choices, .passport-share__visibility { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: .65rem; min-width: 0; }

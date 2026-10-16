@@ -43,6 +43,49 @@ function resolveThemeColor(theme, name) {
   return alias ? resolveThemeColor(theme, alias[1]) : value;
 }
 
+test('account notification, passport and trip labels keep AA ink on CI-observed surfaces', () => {
+  const cases = [
+    [light, '--app-accent-cyan', [0.8092548986666667, 0.8829020156862745, 0.8719216125490197]],
+    [light, '--app-text-muted', '#eeefe8'],
+    [light, '--app-accent-gold', '#eeefe8'],
+    [light, '--app-primary-strong', [0.928392, 0.847216, 0.804392]],
+    [dark, '--app-primary-strong', [0.264784, 0.212627, 0.172627]],
+    [light, '--app-primary-strong', [0.950784, 0.920784, 0.907255]],
+    [light, '--app-primary-strong', [0.931569, 0.905098, 0.872157]],
+  ];
+  for (const [source, token, background] of cases) {
+    assert.ok(contrast(resolveThemeColor(variables(source), token), background) >= 4.5, `${token}: measured account surface`);
+  }
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
+    for (const fill of ['--app-primary', '--c-sky']) {
+      assert.ok(contrast(resolveThemeColor(theme, '--app-on-accent'), resolveThemeColor(theme, fill)) >= 4.5);
+    }
+  }
+  for (const [file, selector, token] of [
+    ['watchlists/pages/user-notifications-page.component.scss', 'notifications-page__counter strong', '--app-accent-cyan'],
+    ['watchlists/pages/user-notifications-page.component.scss', 'notifications-filters__pill--active', '--app-accent-cyan'],
+    ['watchlists/ui/live-alert-inbox.component.scss', 'live-inbox__header p', '--app-accent-cyan'],
+    ['profile/trips/components/trip-participant-panel/trip-participant-panel.component.scss', 'participant-card__identity small', '--app-text-muted'],
+    ['profile/trips/components/trip-invitation-panel/trip-invitation-panel.component.scss', 'invitation-panel__step', '--app-on-accent'],
+    ['profile/passport/components/year-recap-share-control/year-recap-share-control.component.scss', 'year-recap-card > header span', '--app-accent-gold'],
+    ['profile/passport/components/passport-historical-existence-report/passport-historical-existence-report.component.scss', 'history-report__kicker', '--app-accent-gold'],
+    ['profile/passport/pages/passport-visits-overview-page/passport-visits-overview-page.component.scss', 'passport-overview__privacy', '--app-accent-gold'],
+    ['profile/passport/pages/passport-visit-editor-page/passport-visit-editor-page.component.scss', 'passport-visit__eyebrow', '--app-primary-strong'],
+    ['profile/passport/pages/passport-visit-editor-page/passport-visit-editor-page.component.scss', 'passport-occurrence__index', '--app-primary-strong'],
+    ['profile/passport/pages/passport-visit-editor-page/passport-visit-editor-page.component.scss', 'passport-ride-assessment > summary strong', '--app-primary-strong'],
+  ]) {
+    const source = readFileSync(resolve(styles, `../app/features/${file}`), 'utf8');
+    const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    assert.match(source, new RegExp(`\\.${escaped}\\s*\\{[^}]*color:\\s*var\\(${token}\\)`));
+  }
+  const transition = readFileSync(resolve(styles, '../app/features/profile/trips/pages/trip-passport-transition-page/trip-passport-transition-page.component.scss'), 'utf8');
+  assert.match(transition, /\.trip-passport-day__confirm > span\s*\{/);
+  assert.doesNotMatch(transition, /\.trip-passport-day__confirm span\s*\{/);
+  const share = readFileSync(resolve(styles, '../app/features/profile/passport/pages/passport-profile-share-page/passport-profile-share-page.component.scss'), 'utf8');
+  assert.match(share, /\.passport-share__section-heading > span\s*\{[^}]*background:\s*var\(--app-primary\);\s*color:\s*var\(--app-on-accent\)/);
+});
+
 test('active collection filter text meets AA on the exact CI-observed rose surface', () => {
   const source = readFileSync(resolve(styles, '../app/features/collections/pages/user-collections-page.component.scss'), 'utf8');
   assert.match(source, /\.collections-page__filter--active\s*\{[^}]*color:\s*var\(--app-accent-pink\)/);

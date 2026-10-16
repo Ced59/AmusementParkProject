@@ -151,7 +151,7 @@
 }
 
 .passport-visit__eyebrow {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -273,7 +273,7 @@
   place-items: center;
   border-radius: 999px;
   background: color-mix(in srgb, var(--app-primary) 14%, var(--app-surface-2));
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .passport-assessment__comment {
@@ -346,7 +346,7 @@
 .passport-readonly-assessment__rating i,
 .passport-readonly-assessment__rating strong,
 .passport-readonly-note i {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .passport-readonly-note {
@@ -1069,7 +1069,7 @@
   place-items: center;
   border-radius: 999px;
   background: color-mix(in srgb, var(--app-primary) 14%, var(--app-surface));
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-weight: 900;
 }
 
@@ -1153,7 +1153,7 @@
 
 .passport-ride-assessment > summary i,
 .passport-ride-assessment > summary strong {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .passport-ride-assessment__body {

@@ -75,7 +75,7 @@ h1 {
 }
 
 .notifications-page__counter strong {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-size: 2rem;
 }
 
@@ -113,7 +113,7 @@ h1 {
 .notifications-filters__pill--active {
   border-color: color-mix(in srgb, var(--c-sky) 65%, var(--app-border));
   background: color-mix(in srgb, var(--c-sky) 14%, transparent);
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
 }
 
 .notifications-filters__field {

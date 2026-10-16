@@ -1,5 +1,23 @@
 # V6 — régression visuelle
 
+## Diagnostic `6e8a908f6` — contrastes regroupés et preuve de cadrage renforcée
+
+L'[artefact `12072059746`](https://github.com/Ced59/AmusementParkProject/actions/runs/38960232576/artifacts/12072059746) contient 240 captures et dix-sept combinaisons défaillantes conservées dans `isolated-preflight/v6_standard_fr_account-report.json` :
+
+| Texte/contrôle | Ratio observé | Correction de présentation |
+|---|---:|---|
+| Filtres, compteur notifications et kicker live | 2,92–3,43 | Premier plan `--app-accent-cyan`, mêmes fonds |
+| Rôle participant et « Toi » | 1,97 | `--app-text-muted` au lieu du fallback clair hérité |
+| Privacy passeport, année à partager, mémoire du parc | 4,28 | `--app-accent-gold` ; privacy scopée sans deux anciens `!important` |
+| Numéros d'étapes partage/invitation | 3,11 / 1,96 | Premier plan `--app-on-accent`, aplat orange partage raccordé au token V6 existant |
+| Libellé créer le brouillon | 1,49 / 1,66 | Règle de texte secondaire limitée au span direct, sans écraser le texte du bouton |
+| Index d'occurrence clair/sombre | 2,85 / 4,37 | `--app-primary-strong`, fond conservé |
+| Eyebrows visite/suppression et note de tour | 3,32–3,38 / 3,18 | `--app-primary-strong`, données et actions intactes |
+
+Les tests numériques reprennent les fonds composés effectivement mesurés et vérifient aussi les liaisons des selectors aux tokens, ainsi que les premiers plans des étapes dans les deux thèmes. Aucun seuil n'est abaissé ; **nouveaux rendus requis**.
+
+La capture `v6_standard_fr_account-trip-participants_390_light.webp`, inspectée, cadrait le footer et non le panneau attendu. Le précédent compteur de captures ne prouve donc pas ce gabarit mobile. La recette recadre maintenant après chaque reflow et mesure les bounds de la cible, sa visibilité hors des navigations fixes et sa stabilité ; cible cachée/absente ou débordante bloque. Les deux nouveaux tests du cadrage sont verts. Ceci corrige uniquement l'outil, pas le produit, et impose une nouvelle campagne comparative.
+
 ## Diagnostic `cba391e78` — filtre Collections et règle mobile résiduelle
 
 L'[artefact `12071807977`](https://github.com/Ced59/AmusementParkProject/actions/runs/38959031789/artifacts/12071807977) conserve `isolated-preflight/v6_standard_fr_account-collections_390_light.webp`, inspecté : filtre « Tout » à 16 px, `#bd315d` sur le fond composé `[0.90451, 0.82549, 0.828039]`, **3,88:1**. Profil, identité et avertissement de suppression passent auparavant (34 contrôles / 15 captures jusqu'au refus), zéro fixture/exception. Le slogan footer ne bloque plus. Seule la couleur textuelle du filtre actif devient `--app-accent-pink` ; fond et bordure restent inchangés. Un test protège le fond réellement mesuré et l'ancien ratio insuffisant.
