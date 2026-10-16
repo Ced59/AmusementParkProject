@@ -9,18 +9,18 @@
 .admin-standalone-feedback {
   margin: 1rem 1.35rem 0;
   padding: 0.7rem 0.9rem;
-  border: 1px solid rgba(56, 197, 245, 0.28);
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 28%, var(--border));
   border-radius: var(--radius-lg);
-  background: rgba(56, 197, 245, 0.08);
-  color: var(--c-sky);
+  background: color-mix(in srgb, var(--app-accent-cyan) 8%, var(--bg-card));
+  color: var(--app-accent-cyan);
   font-size: 0.86rem;
   font-weight: 800;
 }
 
 .admin-standalone-feedback--error {
-  border-color: rgba(255, 90, 31, 0.32);
-  background: rgba(255, 90, 31, 0.1);
-  color: var(--c-orange);
+  border-color: color-mix(in srgb, var(--app-primary-strong) 32%, var(--border));
+  background: color-mix(in srgb, var(--app-primary-strong) 10%, var(--bg-card));
+  color: var(--app-primary-strong);
 }
 
 .admin-standalone-controls {
@@ -43,7 +43,7 @@
 .admin-standalone-editor__section {
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--bg-card) 90%, transparent);
+  background: var(--bg-card);
   box-shadow: var(--shadow-card);
 }
 
@@ -111,7 +111,7 @@
 
 .admin-standalone-table tr:hover,
 .admin-standalone-row--active {
-  background: rgba(56, 197, 245, 0.08);
+  background: color-mix(in srgb, var(--app-accent-cyan) 8%, var(--bg-card));
 }
 
 .admin-standalone-table strong,
@@ -167,7 +167,7 @@
 }
 
 .admin-standalone-empty .pi {
-  color: var(--c-sky);
+  color: var(--app-accent-cyan);
   font-size: 2rem;
 }
 
@@ -230,9 +230,9 @@
   display: grid;
   gap: 0.75rem;
   padding: 0.8rem;
-  border: 1px solid rgba(56, 197, 245, 0.28);
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 28%, var(--border));
   border-radius: var(--radius-lg);
-  background: rgba(56, 197, 245, 0.07);
+  background: color-mix(in srgb, var(--app-accent-cyan) 7%, var(--bg-card));
 }
 
 .admin-standalone-import__head,
@@ -273,7 +273,7 @@
 
 .admin-standalone-import__error-count,
 .admin-standalone-import__error {
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
 }
 
 .admin-standalone-import__messages {
@@ -305,7 +305,7 @@
   min-height: 2.55rem;
   border: 1px solid var(--border-2);
   border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  background: var(--app-field);
   color: var(--text);
   outline: none;
   transition: var(--transition);
@@ -326,8 +326,8 @@
 .admin-field textarea:focus,
 .admin-field input:focus,
 .admin-field select:focus {
-  border-color: rgba(56, 197, 245, 0.42);
-  box-shadow: 0 0 0 3px rgba(56, 197, 245, 0.08);
+  border-color: var(--app-accent-cyan);
+  box-shadow: 0 0 0 3px var(--app-focus-ring);
 }
 
 .admin-standalone-actions {
@@ -371,7 +371,7 @@
   padding: 0.65rem 0.75rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--bg) 76%, transparent);
+  background: var(--bg-card);
   color: var(--text);
   text-align: left;
   cursor: pointer;
@@ -379,8 +379,8 @@
 
 .admin-standalone-legacy-result:hover,
 .admin-standalone-legacy-result--active {
-  border-color: rgba(56, 197, 245, 0.36);
-  background: rgba(56, 197, 245, 0.08);
+  border-color: color-mix(in srgb, var(--app-accent-cyan) 36%, var(--border));
+  background: color-mix(in srgb, var(--app-accent-cyan) 8%, var(--bg-card));
 }
 
 .admin-standalone-legacy-result strong,
@@ -409,9 +409,9 @@
   display: grid;
   gap: 0.2rem;
   padding: 0.65rem 0.75rem;
-  border: 1px solid rgba(56, 197, 245, 0.28);
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 28%, var(--border));
   border-radius: var(--radius-md);
-  background: rgba(56, 197, 245, 0.08);
+  background: color-mix(in srgb, var(--app-accent-cyan) 8%, var(--bg-card));
 }
 
 .admin-standalone-legacy-selected span {
@@ -444,7 +444,7 @@
 .admin-standalone-switch input,
 .admin-standalone-check input,
 .admin-standalone-table input {
-  accent-color: var(--c-sky);
+  accent-color: var(--app-accent-cyan);
 }
 
 @media (max-width: 1280px) {

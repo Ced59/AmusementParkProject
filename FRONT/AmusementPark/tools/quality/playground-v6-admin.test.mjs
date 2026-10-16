@@ -143,6 +143,10 @@ test('standalone row selection has a named native keyboard alternative while ret
   assert.match(html, /<button type="button" class="admin-standalone-row__select"[^>]+\[attr.aria-pressed\]="selected\(\)\?\.id === row.id"[^>]+\(click\)="select\(row\); \$event.stopPropagation\(\)"/);
   assert.match(html, /type="checkbox" \[attr.aria-label\]="row.name"/);
   assert.doesNotMatch(html, /<tr[^>]+role="button"/);
+  const scss = read('src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.scss');
+  assert.ok(!/rgba\(56, 197, 245|rgba\(255, 90, 31|color: var\(--c-sky\)|color: var\(--c-orange\)/.test(scss), 'standalone surfaces and small text must use the themed semantic palette');
+  assert.ok(scss.includes('background: var(--app-field)'));
+  assert.ok(scss.includes('outline: 2px solid var(--text)'));
 });
 
 test('every specialist administration domain remains represented', () => {

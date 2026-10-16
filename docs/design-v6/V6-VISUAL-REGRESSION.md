@@ -8,6 +8,8 @@ L'inspection de `fr_home_hydrated_1366.webp` confirme les gouttières, le filet 
 
 Les variantes compte compilées standard/incomplètes ajoutées après ce run restent **à exécuter**. Revue propriétaire, zoom réel 200 %, SR et autres familles/états restent ouverts.
 
+La revue source du tableau standalone admin découvre encore des fonds cyan/orange codés avec les anciennes valeurs. Ils sont raccordés aux tokens sémantiques existants, avec panneaux/champs opaques, focus contrasté et texte d'erreur `--app-primary-strong` plutôt que l'orange décoratif clair. Cette feuille SCSS compile seule (8 768 octets avant le dernier raccordement de deux couleurs) ; rendu admin et test Angular du nouveau bouton clavier restent à attester, pas déclarés visuellement approuvés.
+
 ## Popup normal — synchronisation des bounds à attester
 
 La campagne `e6a531fe6` refuse encore la géométrie à 320 px après les attentes normales. Son [artefact `12039486997`](https://github.com/Ced59/AmusementParkProject/actions/runs/38884665674/artifacts/12039486997) montre cette fois le cadre entièrement dans la carte (y 433 → 626,9 dans y 382,9 → 734,9), mais le titre recouvert par les contrôles de zoom. La synchronisation seule n'est donc pas présentée comme la cause résolue.
