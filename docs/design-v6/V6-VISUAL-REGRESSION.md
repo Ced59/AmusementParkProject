@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Lightbox corrigée — validation `579060704`
+
+Les trois captures réelles passent sans chevauchement ni bouton recouvert : **320 × 568**, **390 × 640** et **1 366 × 480**. `elementFromPoint` confirme Fermer au premier plan dans les trois cas. Les hauteurs de l'image sont respectivement **208, 303 et 117 px** ; les crédits/vignettes restent dans leur zone accessible. La capture 320 × 568 sombre est inspectée : la navigation ne couvre plus le dialogue, le titre revient à la ligne et la photographie ne chevauche plus sa légende. [Artefact 12028425423](https://github.com/Ced59/AmusementParkProject/actions/runs/38857089021/artifacts/12028425423). Les contrôles clavier/fermeture/restauration et 124 contrôles hydratés passent. Il s'agit d'une validation ciblée, pas d'une approbation visuelle exhaustive P22.
+
 ## Défaut réel de lightbox — CI `47c850246`
 
 La [capture 320 × 568 sombre, artefact 12018054610](https://github.com/Ced59/AmusementParkProject/actions/runs/38833796275/artifacts/12018054610) montre une image de 329 px qui dépasse de 46 px sur le footer. La navigation fixe recouvre aussi le dialogue, enfermé dans le stacking context du contenu. Le correctif réserve une hauteur de dialogue liée au viewport dynamique, donne à l'image la place restante dans la grille et borne les crédits/vignettes à une zone de défilement locale. Le contenu principal rejoint sa couche modale existante uniquement lorsqu'une lightbox est présente (`:has`), sans changer d'état Angular ni de comportement de navigation. Le prochain contrôle vérifie aussi que le bouton Fermer est réellement au premier plan avec `elementFromPoint`. Les trois paliers et la fermeture clavier doivent repasser : **correctif non encore validé en navigateur**.

@@ -1,10 +1,18 @@
 # V6 — performance, SEO et SSR
 
+## Exception propriétaire acceptée — mesure `579060704`
+
+Le propriétaire a explicitement accepté le 16 octobre : **« Oui, accepter cette exception ciblée »** pour les deux requêtes JavaScript du confinement clavier CDK. La portée est enregistrée dans `V6-PERFORMANCE-EXCEPTION.json`, liée à la base exacte `7f6a9088…` et au run `38857089021`. Le contrôle exige exactement deux scripts supplémentaires, au plus **3 302 octets JS décodés supplémentaires**, et aucun changement du nombre de requêtes d'un autre type (dont API, images, fonts). Une nouvelle base, un troisième script, un dépassement d'octets ou une requête d'un autre type échoue. Le verdict est `PASS_WITH_OWNER_EXCEPTION`, jamais un PASS sans réserve ; les budgets Angular et les autres gates restent inchangés.
+
+Cette [CI 38857089021](https://github.com/Ced59/AmusementParkProject/actions/runs/38857089021) confirme 2 728 tests Angular, 224 contrôles HTTP, 40 routes / 2 080 captures, 38 détails Fleury et **124 contrôles hydratés**, sans exception ni erreur d'interception. Les six paires mesurent 105 → 107 requêtes et **+7 944 octets décodés** : JS +3 302, images +12 431 (même nombre), CSS −3 599, HTML −4 324, XHR +134 (même nombre), fonts identiques. Les populations API sont identiques dans chaque paire, mais différentes du run précédent ; aucun nombre ou nom ne devient une donnée du produit.
+
+Médianes LCP proxy : mobile **180 → 156 ms**, desktop **264 → 156 ms** ; CLS V6 nul dans les six échantillons. `domComplete` reste plus tardif : médianes **229 → 547 ms** en mobile et **263 → 553 ms** en desktop. Ces mesures de laboratoire ne prouvent ni INP ni CWV terrain. Le run s'est arrêté sur l'ancien refus inconditionnel des deux requêtes, avant les six scénarios de thème ; le contrôle borné et la nouvelle recette pratique doivent encore repasser en CI.
+
 ## Diagnostic attesté des deux scripts — `47c850246`
 
 La [CI 38833796275](https://github.com/Ced59/AmusementParkProject/actions/runs/38833796275) retrouve cinq fixtures API valides et passe les 224 contrôles HTTP SSR. Son graphe compilé contient 379 modules master / 381 V6. Les ressources initiales du run `0a75fa1e4` chargent bien le dialogue `chunk-O2443OX5.js` (3 497 octets), son import focus `chunk-27DQZD33.js` (7 645), puis son import `chunk-WT6YM62S.js` (2 942), absents de la chaîne du dialogue master `chunk-TJ7DNCNS.js` (2 846). Ces noms et imports sont recoupés avec `browser-module-evidence.json` du nouvel artefact : les deux requêtes supplémentaires proviennent de la chaîne CDK du confinement clavier, déjà installé dans le projet. Le delta net de tous les scripts reste +3 270 octets, et non la somme brute de ces chunks. Aucune nouvelle requête API n'est mesurée.
 
-Une exception propriétaire **strictement limitée à ces deux requêtes d'accessibilité** a été demandée ; elle n'est pas encore acceptée. Le seuil P04.6 reste bloquant. Le coût des images réelles et les autres budgets ne sont pas exemptés par cette demande. La recette s'arrête auparavant sur un chevauchement de lightbox à 320 × 568 : la nouvelle comparaison réseau finale n'a donc pas encore été exécutée.
+À cet instant, l'exception était seulement demandée. Son acceptation ultérieure est consignée ci-dessus ; le coût des images réelles et les autres budgets ne sont pas exemptés. Ce run antérieur s'arrête sur un chevauchement de lightbox à 320 × 568, corrigé et validé par `579060704`.
 
 ## Incident réseau du runner — `408c71639`
 

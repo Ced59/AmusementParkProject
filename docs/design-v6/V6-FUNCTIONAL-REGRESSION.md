@@ -2,13 +2,19 @@
 
 ## Méthode
 
-La matrice générée recense 148 terminaux de route et 1 869 interactions/champs. Les contrôles statiques et la suite Angular vérifient une partie des contrats ; ils ne démontrent pas que chaque ligne a été exercée dans un navigateur avec tous ses états, données et rôles. La matrice de recette complète reste ouverte. Les suites lourdes ne sont pas poursuivies sur le PC si la marge RAM de 1,5 Gio serait menacée.
+La matrice corrigée recense 148 terminaux de route, 293 composants et 2 056 contrôles/champs/cibles événementielles, contre 2 057 à la base exacte. Les trois écarts de présentation sont détaillés dans le rapport de couverture ; les anciens 1 869 lignes provenaient d'un filtre incomplet. Les contrôles statiques et la suite Angular vérifient une partie des contrats ; ils ne démontrent pas que chaque ligne a été exercée dans un navigateur avec tous ses états, données et rôles. La matrice de recette complète reste ouverte. Les lancements locaux exigent au moins 3,5 Gio de RAM et 4 Gio de commit, avec une réserve physique absolue de 1,5 Gio ; les builds et suites lourdes restent en CI.
 
 ## Familles obligatoires
 
+### Recette pratique complémentaire — à exécuter
+
+Le scénario isolé ajouté après la galerie utilise les liens du parc, sans URL de données reconstruite ni mutation. Il sélectionne un autre vrai jour et vérifie le détail/état pressé, change vers un mois réellement disponible puis revient au mois initial. Sur la météo, il ouvre le vrai disclosure historique, vérifie le nombre d'années de la réponse publique et les paramètres de dates, puis sa réouverture en cache sans nouveau départ de requête. Il revient à l'entrée navigateur d'origine par sa clé et son index, pas par une URL inventée. Les captures 390/1 366 px doivent refuser tout overflow du document. Si la population n'offre pas de mois voisin ou d'historique rempli, le scénario échoue explicitement ; il ne prétend pas couvrir un état vide à sa place. **Exécution navigateur CI encore requise.**
+
+Les **168 tests Node Playground ciblés passent en série**, y compris le contrôle d'exception et les gardes de la nouvelle recette ; son exécution navigateur reste à confirmer. La CI `579060704` valide déjà les 124 contrôles hydratés existants, les trois nouveaux cas de lightbox et la source d'inventaire corrigée.
+
 ### Tri au clavier — contrôle partagé
 
-La directive de colonne triable conserve son input `field` et les vrais `<th>` : pas de rôle bouton substitué au rôle natif d'en-tête. Entrée/Espace sur l'en-tête focalisé passent par son même clic, donc par le tri et les sorties de pagination existants de `Table`, inchangés. Les événements d'un input descendant sont ignorés afin de ne pas doubler une activation. Deux tests Angular utilisant une fixture isolée sous `src/testing/` vérifient ordre ascendant/descendant, pagination et absence d'effet sur les autres touches. La fixture n'est importée que par le test, jamais dans les routes ou le bundle applicatif. **Exécution CI requise** ; le constat statique du conteneur délégué reste suivi, sans exemption ajoutée ni verdict AA exhaustif.
+La directive de colonne triable conserve son input `field` et les vrais `<th>` : pas de rôle bouton substitué au rôle natif d'en-tête. Entrée/Espace sur l'en-tête focalisé passent par son même clic, donc par le tri et les sorties de pagination existants de `Table`, inchangés. Les événements d'un input descendant sont ignorés afin de ne pas doubler une activation. Deux tests Angular utilisant une fixture isolée sous `src/testing/` vérifient ordre ascendant/descendant, pagination et absence d'effet sur les autres touches. La fixture n'est importée que par le test, jamais dans les routes ou le bundle applicatif. **PASS CI `47c850246`, 2 728 tests / 581 fichiers** ; le constat statique du conteneur délégué reste suivi, sans exemption ajoutée ni verdict AA exhaustif.
 
 ### Résultat `b166b2c2a` — photos réelles et clavier
 

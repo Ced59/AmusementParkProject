@@ -1,0 +1,11 @@
+{
+  "id": "P04.6-modal-focus-2026-10-16",
+  "approvedBy": "repository-owner",
+  "approvedOn": "2026-10-16",
+  "approval": "Oui, accepter cette exception ciblée",
+  "baselineSha": "7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22",
+  "maximumAdditionalScriptRequests": 2,
+  "maximumScriptDecodedBytesDelta": 3302,
+  "scope": "Confinement clavier CDK déjà installé : deux modules supplémentaires, sans requête API, image, police ou autre ressource supplémentaire. Les autres budgets restent inchangés.",
+  "evidenceRun": 38857089021
+}

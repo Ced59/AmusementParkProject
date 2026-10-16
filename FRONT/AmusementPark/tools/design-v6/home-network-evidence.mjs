@@ -70,6 +70,42 @@ export function compareHomeNetworkSamples(samples, widths = [390, 1366], repetit
   }) };
 }
 
+export function homeNetworkAcceptance(report, approval = null) {
+  if (!Array.isArray(report.comparisons) || report.comparisons.length === 0) {
+    return { status: 'FAIL', exceptions: [], failures: [{ reason: 'missing-comparisons' }] };
+  }
+  const exceptions = [];
+  const failures = [];
+  for (const comparison of report.comparisons) {
+    const { width, sampleNumber, before, after, additionalRequests } = comparison;
+    if (additionalRequests !== after.requests - before.requests) {
+      failures.push({ width, sampleNumber, reason: 'inconsistent-request-count' });
+      continue;
+    }
+    if (additionalRequests <= 0) continue;
+    const approved = approval?.id === 'P04.6-modal-focus-2026-10-16'
+      && approval.approvedBy === 'repository-owner' && approval.approval === 'Oui, accepter cette exception ciblée'
+      && approval.baselineSha === report.baseSha
+      && approval.maximumAdditionalScriptRequests === 2 && approval.maximumScriptDecodedBytesDelta === 3302;
+    if (!approved) {
+      failures.push({ width, sampleNumber, reason: 'no-matching-owner-approval' });
+      continue;
+    }
+    const types = new Set([...Object.keys(before.byType ?? {}), ...Object.keys(after.byType ?? {})]);
+    const extraOtherType = [...types].some(type => type !== 'Script'
+      && (after.byType?.[type]?.requests ?? 0) !== (before.byType?.[type]?.requests ?? 0));
+    const scriptRequests = (after.byType?.Script?.requests ?? 0) - (before.byType?.Script?.requests ?? 0);
+    const scriptBytes = after.byType?.Script?.decodedBytes - before.byType?.Script?.decodedBytes;
+    if (extraOtherType || scriptRequests !== additionalRequests || scriptRequests !== 2
+      || !Number.isInteger(scriptBytes) || scriptBytes > 3302) {
+      failures.push({ width, sampleNumber, reason: 'outside-approved-modal-focus-bounds', scriptRequests, scriptBytes });
+      continue;
+    }
+    exceptions.push({ width, sampleNumber, approvalId: approval.id, scriptRequests, scriptDecodedBytesDelta: scriptBytes });
+  }
+  return { status: failures.length ? 'FAIL' : exceptions.length ? 'PASS_WITH_OWNER_EXCEPTION' : 'PASS', exceptions, failures };
+}
+
 // Browser-only diagnostic injection. No app code or persistence is modified.
 export const homeVitalsObserver = `(() => {
   window.__apfHomeVitals = { lcpMs: null, cls: 0, interactionDurations: [], eventTimingAvailable: PerformanceObserver.supportedEntryTypes.includes('event') };

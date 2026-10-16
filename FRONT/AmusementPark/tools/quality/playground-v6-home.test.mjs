@@ -2,7 +2,27 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
-import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples } from '../design-v6/home-network-evidence.mjs';
+import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeNetworkAcceptance } from '../design-v6/home-network-evidence.mjs';
+
+test('owner exception accepts only the measured two focus scripts and never other resource types or a new baseline', () => {
+  const approval = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../../docs/design-v6/V6-PERFORMANCE-EXCEPTION.json'), 'utf8'));
+  const before = { requests: 105, byType: { Script: { requests: 84, decodedBytes: 936317 }, XHR: { requests: 2 }, Image: { requests: 12 } } };
+  const after = { requests: 107, byType: { Script: { requests: 86, decodedBytes: 939619 }, XHR: { requests: 2 }, Image: { requests: 12 } } };
+  const report = { baseSha: approval.baselineSha, comparisons: [{ width: 390, sampleNumber: 1, before, after, additionalRequests: 2 }] };
+  assert.equal(homeNetworkAcceptance(report).status, 'FAIL');
+  assert.equal(homeNetworkAcceptance(report, approval).status, 'PASS_WITH_OWNER_EXCEPTION');
+  assert.equal(homeNetworkAcceptance({ ...report, baseSha: 'another-master' }, approval).status, 'FAIL');
+  for (const changed of [
+    { ...after, byType: { ...after.byType, Script: { requests: 86, decodedBytes: 939620 } } },
+    { ...after, byType: { ...after.byType, XHR: { requests: 3 } } },
+    { ...after, byType: { ...after.byType, Image: { requests: 13 } } },
+    { ...after, byType: { ...after.byType, Font: { requests: 1 } } },
+    { ...after, requests: 108 },
+  ]) assert.equal(homeNetworkAcceptance({ ...report, comparisons: [{ ...report.comparisons[0], after: changed }] }, approval).status, 'FAIL');
+  assert.equal(homeNetworkAcceptance({ ...report, comparisons: [{ ...report.comparisons[0], after: before, additionalRequests: 0 }] }).status, 'PASS');
+  assert.equal(homeNetworkAcceptance(report, { ...approval, maximumAdditionalScriptRequests: 3 }).status, 'FAIL');
+  assert.equal(homeNetworkAcceptance({ ...report, comparisons: [] }, approval).status, 'FAIL');
+});
 
 test('the hero logo advertises its actual 72-percent / 18-rem cap instead of the entire card', () => {
   const read = path => readFileSync(resolve(import.meta.dirname, '../..', path), 'utf8');
@@ -53,7 +73,9 @@ test('home comparison builds the exact master frontend and preserves distinct SS
   assert.ok(capture.includes('for (const width of [390, 1366])'));
   assert.ok(capture.includes('compareHomeNetworkSamples(report.homeNetworkSamples)'));
   assert.ok(capture.includes("sampleNumber % 2 ? ['master', 'v6'] : ['v6', 'master']"));
-  assert.ok(capture.includes('P04.6: additional initial requests measured'));
+  assert.ok(capture.includes('homeNetworkAcceptance(report.homeNetworkComparison, ownerApproval)'));
+  assert.ok(capture.includes("report.homeNetworkComparison.acceptance.status === 'FAIL'"));
+  assert.ok(capture.includes('P04.6: initial requests exceed the exact owner-approved focus exception'));
   assert.ok(capture.includes('decoded bytes, not wire compression'));
   assert.ok(capture.includes('LCP/CLS proxies, not field CWV or INP'));
 });

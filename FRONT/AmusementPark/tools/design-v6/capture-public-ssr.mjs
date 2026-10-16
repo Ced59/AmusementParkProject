@@ -7,13 +7,15 @@ import { extname, join, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isCanceledInterceptionError } from './browser-interception-errors.mjs';
 import { publicDirectoryReadEvidence, publicParkItemsReadEvidence, publicRouteEvidenceName } from './public-directory-evidence.mjs';
-import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeVitalsObserver } from './home-network-evidence.mjs';
+import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeNetworkAcceptance, homeVitalsObserver } from './home-network-evidence.mjs';
 import { exercisePublicParkItems } from './exercise-public-park-items.mjs';
 import { initialThemeObserver, validateInitialTheme } from './initial-theme-evidence.mjs';
 import { publicPhotoReadEvidence } from './public-photo-evidence.mjs';
 import { exercisePublicPhotos } from './exercise-public-photos.mjs';
 import { resumeStaticCaptures } from './browser-phase-isolation.mjs';
 import { photoLightboxLayoutIssues } from './photo-lightbox-layout.mjs';
+import { exercisePublicPractical } from './exercise-public-practical.mjs';
+import { publicPracticalReadEvidence } from './public-practical-evidence.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -246,6 +248,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
     };
     if (url.pathname.startsWith('/api/')) {
       const target = new URL(`${url.pathname}${url.search}`, publicOrigin);
+      (result.apiRequests ??= []).push({ path: target.pathname, query: target.search });
       if (target.pathname === '/api/search' && target.searchParams.get('query') === 'APF-READONLY-ERROR-FIXTURE') {
         (result.injectedFailures ??= []).push({ path: target.pathname, query: target.search, status: 503, scope: 'isolated browser only; not sent to production' });
         await respond(503, 'application/problem+json', JSON.stringify({ type: 'about:blank', title: 'Read-only review fixture', status: 503 }));
@@ -262,8 +265,9 @@ async function captureHydratedHome(rawHtml, options = {}) {
       const directory = publicDirectoryReadEvidence(target, response.status, bytes);
       const parkItems = publicParkItemsReadEvidence(target, response.status, bytes);
       const photos = publicPhotoReadEvidence(target, response.status, bytes);
+      const practical = publicPracticalReadEvidence(target, response.status, bytes);
       result.apiReads.push({ path: target.pathname, query: target.search, status: response.status,
-        ...(directory ? { directory } : {}), ...(parkItems ? { parkItems } : {}), ...(photos ? { photos } : {}) });
+        ...(directory ? { directory } : {}), ...(parkItems ? { parkItems } : {}), ...(photos ? { photos } : {}), ...(practical ? { practical } : {}) });
       await respond(response.status, response.headers.get('content-type') ?? 'application/octet-stream', bytes);
       return;
     }
@@ -543,6 +547,23 @@ async function captureHydratedHome(rawHtml, options = {}) {
       const key = { key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9, modifiers: backward ? 8 : 0 };
       await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', ...key });
       await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', ...key });
+    } });
+    await exercisePublicPractical({ evaluate, waitUntil, result, capturePractical: async (label, selector) => {
+      try {
+        for (const width of [390, 1366]) {
+          await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
+          await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({ block: 'start', behavior: 'instant' })`);
+          await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+          const layout = await evaluate(`({ width: innerWidth, documentWidth: document.documentElement.scrollWidth, theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
+          if (layout.documentWidth > width + 1) throw new Error(`Hydrated practical page overflows at ${width}px.`);
+          const screenshot = `fr_${label}_${width}_${layout.theme}.webp`;
+          const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+          await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
+          (result.practicalLayouts ??= []).push({ label, ...layout, screenshot });
+        }
+      } finally {
+        await cdp.send('Emulation.setDeviceMetricsOverride', { width: 1366, height: 1200, deviceScaleFactor: 1, mobile: false });
+      }
     } });
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
@@ -938,10 +959,12 @@ try {
         repetitions: 3,
         ...compareHomeNetworkSamples(report.homeNetworkSamples),
       };
+      const ownerApproval = JSON.parse(await readFile(resolve('../../docs/design-v6/V6-PERFORMANCE-EXCEPTION.json'), 'utf8'));
+      report.homeNetworkComparison.acceptance = homeNetworkAcceptance(report.homeNetworkComparison, ownerApproval);
       await writeFile(join(outputRoot, 'home-network-comparison.json'), JSON.stringify(report.homeNetworkComparison, null, 2));
       await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
-      if (report.homeNetworkComparison.comparisons.some(comparison => comparison.additionalRequests > 0)) {
-        throw new Error('P04.6: additional initial requests measured; correction or explicit owner exception required.');
+      if (report.homeNetworkComparison.acceptance.status === 'FAIL') {
+        throw new Error('P04.6: initial requests exceed the exact owner-approved focus exception; inspect acceptance.failures.');
       }
       for (const system of ['light', 'dark']) {
         for (const saved of [null, 'light', 'dark']) {

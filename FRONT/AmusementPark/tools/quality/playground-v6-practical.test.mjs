@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
+import { publicPracticalReadEvidence } from '../design-v6/public-practical-evidence.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -24,6 +25,27 @@ const practicalStyles = [
   'src/app/features/public/live/ui/public-live-forecast-card.component.scss',
   'src/app/features/public/live/ui/public-live-history-panel.component.scss',
 ].map(read).join('\n');
+
+test('practical evidence retains only bounded public comparison-year counts, not weather payloads', () => {
+  const path = '/api/parks/00000000-0000-0000-0000-000000000001/weather/historical-comparisons?days=7&years=10';
+  const bytes = Buffer.from(JSON.stringify({ years: [{ days: ['not retained'], internal: 'not retained' }] }));
+  assert.deepEqual(publicPracticalReadEvidence(path, 200, bytes), { kind: 'weather-history', yearsCount: 1 });
+  assert.deepEqual(publicPracticalReadEvidence(path, 200, Buffer.from('{"data":{"years":[]}}')), { kind: 'weather-history', yearsCount: 0 });
+  assert.equal(publicPracticalReadEvidence('/api/admin/parks/example/weather', 200, bytes), undefined);
+  assert.equal(publicPracticalReadEvidence(path, 503, bytes), undefined);
+  assert.throws(() => publicPracticalReadEvidence(path, 200, Buffer.from('{}')), /Invalid bounded/);
+  assert.throws(() => publicPracticalReadEvidence(path, 200, Buffer.alloc(2 * 1024 * 1024 + 1)), /response bound/);
+});
+
+test('practical browser recipe exercises actual dates, month controls, lazy history and exact back entry without mutations', () => {
+  const recipe = read('tools/design-v6/exercise-public-practical.mjs');
+  for (const token of ['aria-pressed', 'initialDayDetail', 'changedMonth', 'historyYears', 'cachedReopen', 'history.go', 'navigation.currentEntry.key']) assert.ok(recipe.includes(token));
+  assert.doesNotMatch(recipe, /fetch\(|localStorage\.setItem|\.submit\(|\.emit\(|new Date\(/);
+  assert.ok(recipe.includes('empty-state acceptance remains separate'));
+  const capture = read('tools/design-v6/capture-public-ssr.mjs');
+  assert.ok(capture.includes('await exercisePublicPractical('));
+  assert.ok(capture.includes('Hydrated practical page overflows'));
+});
 
 test('the today badge uses the per-theme gold foreground rather than a fixed dark label', () => {
   assert.match(practicalStyles, /\.park-opening-hours-cell__today\s*\{[^}]*color:\s*var\(--app-on-gold\)/);
