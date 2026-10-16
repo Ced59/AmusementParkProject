@@ -14,6 +14,12 @@ La matrice corrigée recense 148 terminaux de route, 293 composants et 2 056 con
 
 ## Familles obligatoires
 
+### Carte validée, preuve vidéo corrigée — `e01f88a1a`
+
+La [CI `38886592541`](https://github.com/Ced59/AmusementParkProject/actions/runs/38886592541) passe 2 769 tests Angular / 583 fichiers et 221 tests qualité Node. Les 30 captures de popup vérifient titre, Fermer, actions **et les deux zooms** au premier plan, sur 13 largeurs/deux thèmes et deux faibles hauteurs ; les trois lightboxes restent valides. L'inspection du popup 320 px sombre confirme la lisibilité et l'absence de recouvrement par le zoom. La réservation native de 80 px est uniquement présentationnelle ; données, ancres, événements et activation pan/zoom sont conservés.
+
+Le parcours atteint les vraies vidéos d'items (7 identifiants publiés / lot 24), puis l'autre onglet. Sa réponse existe bien en HTTP 200 avec `ownerType=PARK`, conforme à `VideoOwnerType.PARK` ; l'extracteur de preuve attendait à tort `Park` et l'ignorait. Seuls cet extracteur et ses tests sont corrigés, avec rejet des valeurs non conformes et de `PARK_ITEM` sur cet endpoint de preuve parc. Aucun endpoint, paramètre envoyé, état ou gestionnaire de l'application ne change. La suite vidéos/histoire/standalone/auth reste à exécuter ; le run n'est pas déclaré vert.
+
 ### Recette pratique complémentaire — exécutée sur `da81bf4ab`
 
 Le scénario isolé utilise les liens du parc, sans mutation. La [CI `38859824025`](https://github.com/Ced59/AmusementParkProject/actions/runs/38859824025) valide **138 contrôles hydratés**, sans exception navigateur ni erreur d'interception : sélection d'un autre jour réel, octobre → novembre 2026 → mois initial, état pressé/détail, historique météo différé (7 dates / 3 années réellement retournées), fermeture et réouverture sans nouveau départ de requête, puis restauration de la clé d'entrée navigateur d'origine. Les dates et comptes sont des observations de recette, jamais des données de production codées en dur. Les captures 390/1 366 px passent le contrôle de largeur du document ; leur inspection révèle toutefois un débordement interne du badge Aujourd'hui, suivi séparément dans le rapport visuel. Aucun PASS responsive exhaustif n'en est déduit.

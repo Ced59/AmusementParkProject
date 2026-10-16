@@ -2,7 +2,7 @@
 export function publicVideoReadEvidence(target, status, bytes) {
   const url = new URL(target, 'https://amusement-parks.fun');
   const items = /^\/api\/videos\/parks\/[0-9a-f-]{36}\/park-items$/i.test(url.pathname);
-  const park = url.pathname === '/api/videos' && url.searchParams.get('ownerType') === 'Park'
+  const park = url.pathname === '/api/videos' && url.searchParams.get('ownerType') === 'PARK'
     && /^[0-9a-f-]{36}$/i.test(url.searchParams.get('ownerId') ?? '');
   if ((!items && !park) || status !== 200) return undefined;
   if (url.searchParams.get('isPublished') === 'false') throw new Error('Unpublished video evidence is prohibited.');

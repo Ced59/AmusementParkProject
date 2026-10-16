@@ -43,9 +43,11 @@ test('video acceptance retains only published IDs and bounded pagination for the
   const id = '00000000-0000-0000-0000-000000000001';
   const pagination = { currentPage: 1, itemsPerPage: 24, totalItems: 1 };
   const video = { id, isPublished: true, externalMetadata: { channel: 'not retained' }, creatorName: 'not retained' };
-  const path = `/api/videos?ownerType=Park&ownerId=${id}`;
+  const path = `/api/videos?ownerType=PARK&ownerId=${id}`;
   const bytes = Buffer.from(JSON.stringify({ data: [video], pagination }));
   assert.deepEqual(publicVideoReadEvidence(path, 200, bytes), { kind: 'park', ids: [id], pagination });
+  assert.equal(publicVideoReadEvidence(path.replace('ownerType=PARK', 'ownerType=Park'), 200, bytes), undefined);
+  assert.equal(publicVideoReadEvidence(path.replace('ownerType=PARK', 'ownerType=PARK_ITEM'), 200, bytes), undefined);
   const itemPath = `/api/videos/parks/${id}/park-items`;
   const items = Buffer.from(JSON.stringify({ data: [{ video, item: { name: 'Public item' } }], pagination }));
   assert.deepEqual(publicVideoReadEvidence(itemPath, 200, items), { kind: 'items', ids: [id], pagination });
