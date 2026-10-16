@@ -8,6 +8,7 @@ import { accountLayoutFixtureOrigin, createAccountLayoutFixture, accountLayoutFi
 import { accountLayoutCaptureAllowed } from '../design-v6/capture-account-layout.mjs';
 import { exerciseAccountLists } from '../design-v6/exercise-account-lists.mjs';
 import { exerciseAccountProfileControls } from '../design-v6/exercise-account-profile-controls.mjs';
+import { exerciseAccountPassportAndFit } from '../design-v6/exercise-account-passport-and-fit.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -42,7 +43,7 @@ test('account layout fixtures reject production origins, unknown endpoints and a
   }
   response.body.roles.push('ADMIN');
   assert.deepEqual(fixture.user.roles, ['USER']);
-  for (const path of ['/api/me/collections', '/api/me/trips']) {
+  for (const path of ['/api/me/collections', '/api/me/trips', '/api/me/park-fit/group-profiles']) {
     const request = { method: 'GET', url: accountLayoutFixtureOrigin + path };
     const list = accountLayoutFixtureResponse(request, fixture);
     assert.ok(list.body.length > 0);
@@ -53,6 +54,47 @@ test('account layout fixtures reject production origins, unknown endpoints and a
     assert.equal(accountLayoutFixtureResponse(request, createAccountLayoutFixture('expired', 1792144800)), null);
   }
   assert.doesNotMatch(read('tools/design-v6/account-layout-fixtures.mjs'), /fetch\(|https:\/\/amusement-parks\.fun|password\s*:/);
+});
+
+test('private passport cursor fixture is exact, immutable and rejects arbitrary query or mutation', () => {
+  const fixture = createAccountLayoutFixture('standard', 1792144800);
+  const request = { method: 'GET', url: accountLayoutFixtureOrigin + '/api/me/passport/visits?limit=20' };
+  const first = accountLayoutFixtureResponse(request, fixture);
+  assert.equal(first.body.items.length, 2);
+  assert.equal(first.body.nextCursor, 'apf-layout-next-page');
+  const second = accountLayoutFixtureResponse({ ...request, url: request.url + '&cursor=apf-layout-next-page' }, fixture);
+  assert.equal(second.body.items[0].id, first.body.items[0].id);
+  assert.equal(second.body.nextCursor, null);
+  second.body.items[0].title = 'Modified fixture copy';
+  assert.notEqual(fixture.visits[0].title, 'Modified fixture copy');
+  for (const query of ['', '?limit=100', '?limit=20&cursor=unknown', '?limit=20&includeHidden=true']) {
+    assert.equal(accountLayoutFixtureResponse({ ...request, url: accountLayoutFixtureOrigin + '/api/me/passport/visits' + query }, fixture), null);
+  }
+  for (const method of ['POST', 'PATCH', 'DELETE']) assert.equal(accountLayoutFixtureResponse({ ...request, method }, fixture), null);
+  assert.deepEqual(accountLayoutFixtureResponse(request, createAccountLayoutFixture('incomplete', 1792144800)).body, { items: [], nextCursor: null });
+  assert.equal(accountLayoutFixtureResponse(request, createAccountLayoutFixture('expired', 1792144800)), null);
+});
+
+test('passport pagination and private Park Fit drafts compile without sharing or confirmed mutations', async () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const captures = [];
+    const navigations = [];
+    const result = {};
+    const fixture = createAccountLayoutFixture(kind, 1792144800);
+    await exerciseAccountPassportAndFit({ fixture, result,
+      evaluate: async expression => { assert.doesNotThrow(() => new Script(expression)); return expression.includes('index: navigation.currentEntry.index') ? { index: 1, key: 'original-profile' } : undefined; },
+      waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+      captureLayouts: async (_selector, page) => captures.push(page),
+      navigateDocument: async path => navigations.push(path),
+    });
+    assert.deepEqual(navigations, ['/fr/profile/park-fit/profiles', '/fr/profile']);
+    assert.ok(captures.includes('account-passport'));
+    assert.ok(captures.includes('account-park-fit-draft'));
+    assert.equal(captures.includes('account-passport-final-page'), kind === 'standard');
+    assert.equal(captures.includes('account-park-fit-delete-warning'), kind === 'standard');
+    assert.equal(result.passportAndFit.persistedWritesExercised, false);
+  }
+  assert.doesNotMatch(read('tools/design-v6/exercise-account-passport-and-fit.mjs'), /fetch\(|requestSubmit\(|\.submit\(|\/api\//);
 });
 
 test('compiled collection filters and trip draft recipe retain exact fixtures and never submit a persisted write', async () => {

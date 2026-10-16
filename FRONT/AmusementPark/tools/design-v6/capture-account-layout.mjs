@@ -4,6 +4,7 @@ import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFi
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from './browser-interception-errors.mjs';
 import { exerciseAccountLists } from './exercise-account-lists.mjs';
 import { exerciseAccountProfileControls } from './exercise-account-profile-controls.mjs';
+import { exerciseAccountPassportAndFit } from './exercise-account-passport-and-fit.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -65,7 +66,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     }
     if (!['GET', 'HEAD'].includes(request.method)) throw new Error('Unexpected non-fixture mutation in account layout capture.');
     if (resourceType === 'Document') {
-      if (!(url.pathname === '/fr/profile' && !url.search)
+      if (!((url.pathname === '/fr/profile' || (fixture.kind !== 'expired' && url.pathname === '/fr/profile/park-fit/profiles')) && !url.search)
           && !(fixture.kind === 'expired' && url.pathname === '/fr/home' && url.searchParams.size === 1 && url.searchParams.get('returnUrl') === '/fr/profile')) throw new Error('Unexpected account fixture document navigation.');
       await fulfill(requestId, 200, 'text/html; charset=utf-8', rawHtml);
       return;
@@ -174,6 +175,11 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       await captureLayouts('.profile-hero', 'account-profile');
       await exerciseAccountProfileControls({ evaluate, waitUntil, captureLayouts, fixture, result });
       await exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result });
+      await exerciseAccountPassportAndFit({ evaluate, waitUntil, captureLayouts, fixture, result,
+        navigateDocument: async path => {
+          if (!['/fr/profile', '/fr/profile/park-fit/profiles'].includes(path)) throw new Error('Unknown isolated account deep-link recipe.');
+          await cdp.send('Page.navigate', { url: accountLayoutFixtureOrigin + path });
+        } });
     }
     if (result.fixtureFailures.length || result.exceptions.length) throw new Error('Account layout accumulated an unexpected fixture or browser failure.');
     result.passed = true;

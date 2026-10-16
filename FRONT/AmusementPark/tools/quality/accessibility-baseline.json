@@ -2,14 +2,14 @@
   "version": 3,
   "findings": [
     {
-      "fingerprint": "click-keyboard|src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html|7c70e96015e6|9de2bd5a2aa6|1",
+      "fingerprint": "click-keyboard|src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html|7c70e96015e6|4243bccb2041|1",
       "rule": "click-keyboard",
       "path": "src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html",
       "line": 126,
       "message": "Non-native click targets must provide keyboard handling and interactive semantics."
     },
     {
-      "fingerprint": "click-keyboard|src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html|a28f4037f34c|9de2bd5a2aa6|1",
+      "fingerprint": "click-keyboard|src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html|a28f4037f34c|4243bccb2041|1",
       "rule": "click-keyboard",
       "path": "src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html",
       "line": 126,

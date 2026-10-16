@@ -1,5 +1,11 @@
 # V6 — performance, SEO et SSR
 
+## Nouvelle population comparée — `fc742b010`
+
+La [CI `38892315894`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894) est intégralement verte, Docker compris. Les contrôles publics précédents passent à nouveau ; le profil standard/incomplet ajoute 132 contrôles et 104 captures master/V6 sur données locales isolées. L'exception réseau reste **105 → 107 requêtes**, exactement deux scripts et **+3 280 octets JS**, marge 22 octets sous le plafond inchangé. La nouvelle population API, identique dans chacune des six paires mais différente du run précédent, donne **+6 244 octets décodés au total** (1 698 934 → 1 705 178). La baisse de 851 octets de `791dc2c46` n'est donc pas extrapolée à toute population.
+
+Médianes LCP proxy **256 → 212 ms** mobile, **352 → 208 ms** desktop ; CLS V6 mobile nul et desktop **0,00025**. `domComplete` médian **320,8 → 476,3 ms** mobile et **388 → 543,9 ms** desktop. Les six premiers thèmes ont zéro frame erronée sur 26–29 frames post-FCP. Toujours pas de preuve INP/CWV terrain ou de gain général ; les extensions de recette et styles admin ultérieurs nécessitent une nouvelle CI.
+
 ## Dernier contrôle borné validé — `791dc2c46`
 
 La [CI `38889015354`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354) réussit intégralement, Docker compris : **2 769 tests Angular / 583 fichiers**, **224 tests Node qualité**, **26 GET / 224 assertions HTTP**, **40 routes / 2 080 captures SSR**, **38 détails Fleury**, **307 contrôles hydratés** et **732 captures hydratées additionnelles**, sans exception navigateur ni erreur d'interception. Déploiement ignoré sur PR. [Artefact `12041197882`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354/artifacts/12041197882).

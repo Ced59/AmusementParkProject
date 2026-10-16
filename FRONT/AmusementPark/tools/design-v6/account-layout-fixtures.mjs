@@ -40,7 +40,21 @@ export function createAccountLayoutFixture(kind, nowSeconds) {
     memberCount: 2, isOwner: true, effectiveRole: 'Owner', canEditPlan: true, canEditProgram: true,
     canInvite: true, canChangeRoles: true, createdAtUtc: date, updatedAtUtc: date, version: 1,
   }));
-  return { kind, user, accessToken, collections, trips };
+  const visits = kind !== 'standard' ? [] : ['Year', 'Month', 'Day'].map((precision, index) => ({
+    id: `00000000-0000-4000-8000-00000000007${index}`, parkId: '00000000-0000-4000-8000-000000000050',
+    parkName: index === 2 ? null : 'Parc de recette uniquement — nom long Äéł',
+    date: { year: 2026, month: precision === 'Year' ? null : 9, day: precision === 'Day' ? 3 : null,
+      precision, isApproximate: precision === 'Year' }, timeZoneId: precision === 'Day' ? 'Europe/Paris' : null,
+    serviceDayConvention: 'VisitStartLocalDate', status: ['Draft', 'Completed', 'Archived'][index], privacy: 'Private',
+    title: 'Visite de recette uniquement — sans donnée personnelle', privateNote: null, hasPrivateNote: index === 1,
+    version: 1, createdAtUtc: date, updatedAtUtc: date, completedAtUtc: index === 1 ? date : null,
+  }));
+  const fitProfiles = kind !== 'standard' ? [] : [false, true].map((accompanied, index) => ({
+    profileId: `00000000-0000-4000-8000-00000000008${index}`, alias: index ? 'Groupe de recette — Élise et Łukasz' : 'Profil de recette — données partielles',
+    heightCentimeters: index ? 120 : null, ageYears: index ? 9 : null, canBeAccompanied: accompanied,
+    companionAgeYears: accompanied ? 32 : null, createdAtUtc: date, updatedAtUtc: date, version: 1,
+  }));
+  return { kind, user, accessToken, collections, trips, visits, fitProfiles };
 }
 
 export function accountLayoutFixtureResponse(request, fixture, homeFixtures = new Map()) {
@@ -51,6 +65,13 @@ export function accountLayoutFixtureResponse(request, fixture, homeFixtures = ne
     const record = homeFixtures.get(url.pathname + url.search);
     if (record?.status === 200 && record.contentType?.includes('application/json') && Buffer.isBuffer(record.bytes)
         && record.bytes.length <= 2097152) return { status: 200, body: JSON.parse(record.bytes.toString('utf8')) };
+    return null;
+  }
+  if (request.method === 'GET' && fixture.kind !== 'expired' && url.pathname === '/api/me/passport/visits') {
+    if (url.search === '?limit=20') return { status: 200, body: { items: structuredClone(fixture.visits.slice(0, 2)), nextCursor: fixture.visits.length > 2 ? 'apf-layout-next-page' : null } };
+    if (url.search === '?limit=20&cursor=apf-layout-next-page' && fixture.visits.length > 2) return {
+      status: 200, body: { items: structuredClone([fixture.visits[0], ...fixture.visits.slice(2)]), nextCursor: null },
+    };
     return null;
   }
   if (url.search) return null;
@@ -64,6 +85,9 @@ export function accountLayoutFixtureResponse(request, fixture, homeFixtures = ne
   }
   if (request.method === 'GET' && fixture.kind !== 'expired' && ['/api/me/collections', '/api/me/trips'].includes(url.pathname)) {
     return { status: 200, body: structuredClone(url.pathname === '/api/me/collections' ? fixture.collections : fixture.trips) };
+  }
+  if (request.method === 'GET' && fixture.kind !== 'expired' && url.pathname === '/api/me/park-fit/group-profiles') {
+    return { status: 200, body: structuredClone(fixture.fitProfiles) };
   }
   // No generic fallback, account creation, mutation, real cookie or network call.
   return null;
