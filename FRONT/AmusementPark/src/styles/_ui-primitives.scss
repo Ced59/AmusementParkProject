@@ -39,6 +39,7 @@
   --button-bg: var(--app-primary);
   --button-border: var(--app-primary);
   --button-color: var(--app-on-accent);
+  --button-ink: var(--app-primary-strong);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -72,38 +73,48 @@
   --button-bg: var(--app-surface-2);
   --button-border: var(--app-border);
   --button-color: var(--app-text);
+  --button-ink: var(--app-text);
 }
 
 .p-button-success {
-  --button-bg: var(--app-success, #16a34a);
-  --button-border: var(--app-success, #16a34a);
+  --button-bg: var(--c-lime);
+  --button-border: var(--c-lime);
+  --button-ink: var(--app-accent-lime);
 }
 
 .p-button-info {
-  --button-bg: var(--app-info, #0284c7);
-  --button-border: var(--app-info, #0284c7);
+  --button-bg: var(--c-sky, #0284c7);
+  --button-border: var(--c-sky, #0284c7);
+  --button-ink: var(--app-accent-cyan);
 }
 
 .p-button-warning {
-  --button-bg: var(--app-warning, #d97706);
-  --button-border: var(--app-warning, #d97706);
+  --button-bg: var(--c-gold);
+  --button-border: var(--c-gold);
+  --button-color: var(--app-on-gold);
+  --button-ink: var(--app-accent-gold);
 }
 
 .p-button-danger {
-  --button-bg: var(--app-danger, #dc2626);
-  --button-border: var(--app-danger, #dc2626);
+  --button-bg: var(--c-rose);
+  --button-border: var(--c-rose);
+  --button-color: var(--app-on-rose);
+  --button-ink: var(--app-accent-pink);
 }
 
 .p-button-help {
-  --button-bg: #7c3aed;
-  --button-border: #7c3aed;
+  --button-bg: var(--c-purple);
+  --button-border: var(--c-purple);
+  --button-color: var(--app-on-purple);
+  --button-ink: var(--app-accent-purple);
 }
 
 .p-button-outlined,
 .p-button-text,
 .p-button-link {
   background: transparent;
-  color: var(--button-border);
+  border-color: var(--button-ink);
+  color: var(--button-ink);
   box-shadow: none;
 }
 
@@ -255,8 +266,8 @@
 }
 
 .p-tag-info {
-  background: color-mix(in srgb, var(--app-info, #0284c7) 18%, transparent);
-  color: var(--app-info, #0369a1);
+  background: color-mix(in srgb, var(--c-sky, #0284c7) 18%, transparent);
+  color: var(--app-accent-cyan, #0369a1);
 }
 
 .p-tag-warn,
@@ -628,7 +639,7 @@
 }
 
 .p-toast-message-info {
-  --toast-accent: var(--app-info, #0284c7);
+  --toast-accent: var(--app-accent-cyan, #0284c7);
 }
 
 .p-toast-message-warn {

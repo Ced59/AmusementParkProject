@@ -179,7 +179,7 @@ p {
 
 .history-diagnostics__park:hover,
 .history-diagnostics__park:focus-visible {
-  border-color: var(--app-accent);
+  border-color: var(--c-sky);
 }
 
 .history-diagnostics__park span:nth-child(2) {
@@ -250,7 +250,7 @@ p {
 }
 
 .history-diagnostics__kpi--visits strong {
-  color: var(--app-accent);
+  color: var(--app-accent-cyan);
 }
 
 .history-diagnostics__workflow-steps {
@@ -265,7 +265,7 @@ p {
   min-width: 0;
   padding: 0.75rem;
   border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--app-accent) 8%, var(--app-surface-2));
+  background: color-mix(in srgb, var(--c-sky) 8%, var(--app-surface-2));
 }
 
 .history-diagnostics__workflow-step span {
@@ -362,7 +362,7 @@ p {
   height: 100%;
   max-width: 100%;
   border-radius: inherit;
-  background: var(--app-accent);
+  background: var(--c-sky);
 }
 
 .history-diagnostics__empty,
@@ -378,8 +378,8 @@ p {
 }
 
 .history-diagnostics__privacy {
-  border: 1px solid color-mix(in srgb, var(--app-accent) 30%, var(--app-border));
-  background: color-mix(in srgb, var(--app-accent) 8%, var(--app-surface));
+  border: 1px solid color-mix(in srgb, var(--c-sky) 30%, var(--app-border));
+  background: color-mix(in srgb, var(--c-sky) 8%, var(--app-surface));
 }
 
 .history-diagnostics__privacy > div {

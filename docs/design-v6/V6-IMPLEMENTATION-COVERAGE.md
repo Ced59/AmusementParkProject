@@ -1,5 +1,11 @@
 # V6 — couverture d’implémentation
 
+## Point de contrôle du 17 octobre — standard V6/master
+
+Le run `4331fa087 / 38968888897` termine les scénarios isolés standard FR V6 **et** master (670 contrôles / 364 captures chacun). Le cas V6 incomplet termine 426 contrôles / 232 captures puis refuse un contraste e-mail, corrigé en source. Tous les compléments compte/auth/brouillons/histoire listés ci-dessous ont désormais une preuve standard FR de scénario ; leurs états complets, permissions serveur et workflows persistés ne sont pas déduits de ce sous-ensemble. La matrice historique ci-dessous décrit les anciens checkpoints, non le dernier état de recette. **Campagne intégrale et gel final encore ouverts.**
+
+L'audit lexical couvre 1 895 fichiers SCSS/templates/TypeScript, sans référence obligatoire inconnue après migration vers les tokens existants. Les deux seules références externes optionnelles ont un fallback explicite. Les 75 fichiers de présentation raccordés et le warning e-mail sont protégés par 157 tests Node ciblés ; aucun nouveau composant métier, contrat ou route. Ce contrôle lexical ne prouve ni le scope calculé de chaque token ni le rendu admin opérationnel.
+
 ## Point de contrôle du 16 octobre — source et recette distinctes
 
 `master` distant reste `7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22` après nouvelle lecture. Les CSV ci-dessous restent le snapshot de source `579060704`, pas un inventaire final du chantier. Le nouveau bouton clavier standalone ajoute une cible de présentation : son delta et les tailles SCSS devront être recalculés avec le générateur existant au gel final, sans modifier la base immuable.

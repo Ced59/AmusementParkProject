@@ -6,9 +6,9 @@
   display: grid;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--app-border-stronger);
   border-radius: var(--app-radius-md);
-  background: var(--surface-card);
+  background: var(--app-surface);
 }
 
 .pricing-offer-editor__header {
@@ -23,7 +23,7 @@
   }
 
   span {
-    color: var(--text-color-secondary);
+    color: var(--app-text-muted);
     font-size: 0.85rem;
   }
 }
@@ -47,7 +47,7 @@
   min-width: 0;
 
   > span {
-    color: var(--text-color-secondary);
+    color: var(--app-text-muted);
     font-size: 0.82rem;
     font-weight: 600;
   }
@@ -58,10 +58,10 @@
   width: 100%;
   min-height: 2.6rem;
   padding: 0.55rem 0.7rem;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--app-border-stronger);
   border-radius: 0.45rem;
-  background: var(--surface-ground);
-  color: var(--text-color);
+  background: var(--app-bg);
+  color: var(--app-text);
 }
 
 .pricing-offer-editor fieldset {
@@ -71,7 +71,7 @@
   min-width: 0;
   margin: 0;
   padding: 0.85rem;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--app-border-stronger);
   border-radius: 0.6rem;
 
   legend {
@@ -80,7 +80,7 @@
   }
 
   small {
-    color: var(--text-color-secondary);
+    color: var(--app-text-muted);
   }
 }
 

@@ -90,7 +90,7 @@ p {
   gap: 0.5rem;
   padding: 0.8rem;
   border-radius: var(--app-radius-md);
-  background: color-mix(in srgb, var(--color-danger, #ff4f87) 8%, transparent);
+  background: color-mix(in srgb, var(--app-danger, #ff4f87) 8%, transparent);
 }
 .comparison-management__confirm p {
   grid-column: 1 / -1;

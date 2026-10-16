@@ -14,7 +14,7 @@
   gap: .6rem;
 
   i {
-    color: var(--app-accent-cyan, var(--primary-color, #3b82f6));
+    color: var(--app-accent-cyan, var(--app-primary-strong, #3b82f6));
   }
 }
 
@@ -51,7 +51,7 @@
 }
 
 .tab-badge {
-  background: var(--app-primary, var(--primary-color, #3b82f6));
+  background: var(--app-primary, var(--app-primary, #3b82f6));
   color: #000;
   border-radius: var(--app-radius-pill);
   font-size: .7rem;

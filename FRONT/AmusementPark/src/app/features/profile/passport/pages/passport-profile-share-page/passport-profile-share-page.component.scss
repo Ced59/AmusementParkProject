@@ -16,7 +16,7 @@ legend, .passport-share__caption > span { margin-bottom: .75rem; font-weight: 80
 .passport-share__choices label, .passport-share__visibility label, .passport-share__master-choice { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .75rem; align-items: center; padding: .9rem; border: 1px solid color-mix(in srgb, currentColor 18%, transparent); border-radius: var(--app-radius-md); min-width: 0; cursor: pointer; }
 label span { min-width: 0; display: grid; gap: .15rem; overflow-wrap: anywhere; }
 label small { opacity: .72; }
-input { accent-color: var(--color-primary, #ff5a2a); inline-size: 1.15rem; block-size: 1.15rem; }
+input { accent-color: var(--app-primary, #ff5a2a); inline-size: 1.15rem; block-size: 1.15rem; }
 .passport-share__caption { display: grid; gap: .5rem; min-width: 0; }
 textarea { box-sizing: border-box; width: 100%; max-width: 100%; resize: vertical; border-radius: var(--app-radius-md); padding: 1rem; color: inherit; background: color-mix(in srgb, #000 16%, transparent); border: 1px solid color-mix(in srgb, currentColor 22%, transparent); }
 .passport-share__caption small { justify-self: end; }

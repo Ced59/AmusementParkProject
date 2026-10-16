@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic `4331fa087` — standard V6/master terminé
+
+Le [run `38968888897`](https://github.com/Ced59/AmusementParkProject/actions/runs/38968888897) passe **2 777 tests Angular / 583 fichiers**, build/budgets/backend/sécurité. Standard FR V6 et master réussissent chacun **670 contrôles / 364 captures** : parcours compte/auth non soumis, notifications, rôles Owner/Viewer, voyages, statistiques/partage, visites, brouillons locaux et histoire synthétique. V6 incomplet termine **426 contrôles / 232 captures**, zéro erreur fixture/interception/exception, mais refuse le contraste d'un avertissement e-mail. Aucun workflow distant persisté ni vraie permission serveur n'est certifié par ces fixtures ; master incomplet, session expirée, huit langues et matrice intégrale restent à exécuter.
+
+Le raccordement complémentaire des anciens noms de variables concerne 74 feuilles SCSS et un bloc `styles` inline d'un composant admin, plus le warning e-mail déjà identifié. Aucun template, événement, conditionnel, méthode TypeScript ou modèle n'est changé par ce lot. Les boutons de compatibilité utilisent les encres et aplats sémantiques existants ; directive et signatures conservées. **157 tests Node ciblés PASS**, incluant audit lexical des références et contrastes par sévérité ; ces preuves ne remplacent pas la prochaine CI Angular/visuelle.
+
 ## Diagnostic `bc5d44032` — parcours standard terminé, refus visuel final
 
 Le [run `38966748161`](https://github.com/Ced59/AmusementParkProject/actions/runs/38966748161) passe 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité. **670 contrôles / 364 captures** parcourent toute la recette V6 standard FR à 390/1 366 px clair/sombre : compte/auth non soumis, brouillons IndexedDB, timeline paginée, snapshot jour, comparaison validée/invalide et lignée/source. Zéro erreur fixture/interception, zéro exception navigateur. Le repli 404 auxiliaire et la map active corrigés passent ; aucune histoire publiée, aucun workflow distant persisté.

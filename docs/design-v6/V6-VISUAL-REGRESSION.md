@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Diagnostic `4331fa087` — standard comparé, avertissement incomplet
+
+L'[artefact `12076835909`](https://github.com/Ced59/AmusementParkProject/actions/runs/38968888897/artifacts/12076835909) conserve les scénarios standard FR V6 et master, chacun **364 captures / 670 contrôles**. Les textes comparaison/lignée précédemment refusés et l'alignement des inputs d'année passent les assertions V6. La baseline master conserve ses anciens défauts visuels dans le rapport ; son PASS est un PASS de scénarios, pas une conformité AA rétroactive.
+
+La fixture V6 incomplète termine **232 captures / 426 contrôles**, puis le garde final refuse un avertissement : « Confirme d’abord ton adresse e-mail pour activer les résumés. », 16 px, `#e54b28` sur `#eeefe8`, **3,38:1** (cinq captures notifications/email/live, clair). Warning rejoint `--app-primary-strong`, error `--app-danger`, sans changer les textes, conditions ou contrôles. Le test garde le ratio défaillant comme contre-exemple. L'audit lexical des styles corrige en outre les anciennes références sans définition ; mapping documenté dans les tokens. **Nouveaux rendus CI requis**, aucune acceptation de la matrice complète déduite des 157 tests source/numériques.
+
 ## Diagnostic `bc5d44032` — deux contrastes et champs d'année
 
 L'[artefact `12075251929`](https://github.com/Ced59/AmusementParkProject/actions/runs/38966748161/artifacts/12075251929) conserve le refus final après 364 captures V6 standard FR : kicker « Nouveautés établies » (12,16 px) et badge « Renommé en » (16 px), orange `#e54b28` sur `#eeefe8`, **3,38:1**. Ils sont inclus dans le correctif source `100aaa853`, pas encore exécuté dans ce run. Zéro erreur fixture/exception ; les six captures concernées restent FAIL.

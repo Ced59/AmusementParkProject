@@ -2,6 +2,23 @@
 
 ## Principes
 
+Audit complémentaire du 17 octobre : les références CSS de 1 895 fichiers de production (SCSS, templates et styles inline TypeScript) contenaient 57 noms absents de toute déclaration, dont 38 utilisés sans fallback. Les consommateurs sont raccordés aux tokens **existants**, dans 75 fichiers de présentation ; aucun nouveau moteur de thème ni alias global de compatibilité n'est ajouté. Après correction : zéro nom inconnu obligatoire, seulement les deux références externes optionnelles avec repli `--p-primary-color` et `--app-public-header-height`. Le test vérifie aussi les bindings Angular et `setProperty`. C'est une couverture **lexicale**, pas une preuve de résolution dans chaque scope CSS ; les rendus CI restent obligatoires.
+
+| Anciennes références | Tokens existants utilisés | Rôle préservé |
+|---|---|---|
+| `text-color`, `text-primary` / `text-color-secondary`, `app-muted` | `app-text` / `app-text-muted` | Encre / texte secondaire |
+| `surface-ground` / `surface-card`, `surface-100`, anciens alias panel/admin | `app-bg` / `app-surface` | Papier / panneau |
+| `surface-50`, `app-surface-alt` / `surface-0`, `app-surface-raised` | `app-surface-2` / `field` | Surface secondaire / champ |
+| `surface-border`, `color-border` | `app-border-stronger` | Filet essentiel |
+| `primary-color` | `app-primary-strong` pour le texte, `app-primary` pour l'aplat | Encre distincte du signal décoratif |
+| `app-info`, `app-accent`, anciens `color-sky*` | `app-accent-cyan` pour le texte, `c-sky` pour l'aplat | Bleu sémantique / bleu décoratif |
+| Anciens `green*`, `yellow*`, `pink*`, `color-lime*`, `color-gold*` | Encres `app-accent-lime/gold/pink`, aplats `c-lime/gold/rose` selon la propriété | État et type de contrôle conservés |
+| `app-error`, anciens `red*`, `color-danger*` | `app-danger` | Erreur lisible dans les deux thèmes |
+| `app-primary-contrast`, `app-on-primary`, ancien `app-background` utilisé en premier plan | `app-on-accent` | Texte sur aplat |
+| `shadow-lg`, `shadow-popover` | `app-shadow-2` | Élévation existante |
+
+Les boutons de compatibilité de la directive partagée distinguent maintenant leur aplat (`--button-bg`) de leur encre outline/text/link (`--button-ink`, propriété locale). Succès utilise le lime décoratif et son encre sémantique, warning/danger/help les premiers plans or/rose/violet déjà présents. Les signatures, événements, labels, états disabled et dimensions ne changent pas. Tests numériques : chaque sévérité pleine et ses variantes sur quatre surfaces, dans les deux thèmes, à 4,5:1 minimum. L'avertissement d'adresse e-mail non confirmée rejoint `--app-primary-strong`, son erreur `--app-danger`, après la mesure CI à 3,38:1. **157 tests Node ciblés passent ; nouvelles captures requises.** La marque protégée n'est pas modifiée par ce raccordement.
+
 Le run suivant `f975d9bc4 / 38903181087` valide le kicker bleu mobile puis mesure le kicker or du profil desktop à 4,25:1. `--app-light-accent-gold` devient `#794500`, avec son alias sémantique relié. Un garde numérique supplémentaire vérifie les cinq tons de petits kickers sur cinq fonds de cartes teintés existants ; il révèle aussi une combinaison lime/orange insuffisante, corrigée par `--app-light-accent-lime: #495a00` et son alias. Les 17 tests tokens passent, dont les deux fonds réellement mesurés et les 25 compositions ; les nouveaux rendus restent exigés. Palette canonique, wordmark, fonds et sombre inchangés.
 
 La CI `7115bb901 / 38900388260` mesure deux kickers du profil clair à 4,25:1 sur leur fond réellement composé. L'alias de texte `--app-light-accent-sky` passe de `#086b7c` à `#075f6e` et `--app-accent-cyan` le réutilise. Le bleu canonique de la maquette, les fonds, le sombre et la marque ne changent pas. Un test conserve la composition mesurée comme cas de régression sous 4,5:1 avec l'ancienne couleur et au-dessus avec la nouvelle ; cela ne remplace pas le nouveau rendu navigateur exigé.

@@ -122,7 +122,7 @@
 .selected-count {
   font-size: .82rem;
   font-weight: 700;
-  color: var(--app-accent-cyan, var(--primary-color, #3b82f6));
+  color: var(--app-accent-cyan, var(--app-primary-strong, #3b82f6));
 }
 
 .table-wrapper {

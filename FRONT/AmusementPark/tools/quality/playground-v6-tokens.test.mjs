@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
+import { auditStyleTokenReferences } from '../design-v6/style-token-references.mjs';
 
 const styles = resolve(import.meta.dirname, '../../src/styles');
 const designTokens = readFileSync(resolve(styles, '_design-tokens.scss'), 'utf8');
@@ -9,6 +10,84 @@ const base = readFileSync(resolve(styles, '_base.scss'), 'utf8');
 const light = readFileSync(resolve(styles, '_theme-light.scss'), 'utf8');
 const dark = readFileSync(resolve(styles, '_theme-dark.scss'), 'utf8');
 const adapters = readFileSync(resolve(styles, '_tokens.scss'), 'utf8');
+const primitives = readFileSync(resolve(styles, '_ui-primitives.scss'), 'utf8');
+
+test('style reference audit rejects unknown tokens even with a fallback, including inline bindings', () => {
+  const documents = [{ path: 'fixture.scss', source: `
+    /* --comment-only: red; */
+    :root { --known: #fff; }
+    .card { color: var(--unknown, var(--known)); border-color: var(--comment-only); }
+    .map { top: var(--app-public-header-height, 80px); color: var(--p-primary-color, blue); }
+    .caption { color: var(--binding); background: var(--runtime); border-color: var(--quoted); }
+  ` }, { path: 'fixture.ts', source: `
+    element.style.setProperty('--runtime', '#fff');
+    const styles = { '--quoted': 'blue' };
+    const template = '<div [style.--binding]="color"></div>';
+  ` }];
+  const result = auditStyleTokenReferences(documents);
+  assert.deepEqual(result.issues.map(issue => issue.name), ['--unknown', '--comment-only']);
+  assert.deepEqual(result.external.map(issue => issue.name), ['--app-public-header-height', '--p-primary-color']);
+  assert.equal(result.issues[0].uses[0].hasFallback, true);
+  assert.equal(result.issues[0].uses[0].path, 'fixture.scss');
+  assert.equal(result.issues[0].uses[0].line, 4);
+  assert.deepEqual(auditStyleTokenReferences([{ path: 'missing.scss', source: '.x{color:var(--p-primary-color)}' }])
+    .issues.map(issue => issue.name), ['--p-primary-color']);
+});
+
+test('all production styles, templates and inline styles use declared tokens or reviewed optional vendor offsets', () => {
+  const documents = [];
+  function collect(directory) {
+    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      const path = resolve(directory, entry.name);
+      if (entry.isDirectory()) collect(path);
+      else if (/\.(?:scss|ts|html)$/.test(entry.name) && !/\.spec\.ts$/.test(entry.name)) {
+        documents.push({ path, source: readFileSync(path, 'utf8') });
+      }
+    }
+  }
+  collect(resolve(styles, '../app'));
+  collect(styles);
+  const result = auditStyleTokenReferences(documents);
+  assert.ok(result.files > 1800, 'include all feature styles, not only the global theme');
+  assert.deepEqual(result.issues, []);
+  assert.deepEqual(result.external.map(issue => issue.name).sort(), ['--app-public-header-height', '--p-primary-color']);
+});
+
+test('compatible button severities separate AA text ink from filled accents in both themes', () => {
+  const block = selector => primitives.match(new RegExp(`${selector}\\s*\\{([^}]+)\\}`))?.[1];
+  const defaults = variables(block('\\.p-button'));
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
+    for (const severity of ['', 'secondary', 'success', 'info', 'warning', 'danger', 'help']) {
+      const local = new Map([...defaults, ...variables(severity ? block(`\\.p-button-${severity}`) : '')]);
+      const color = name => {
+        const token = /^var\((--[\w-]+)(?:,[^)]*)?\)$/.exec(local.get(name));
+        assert.ok(token, `${severity}: ${name} must resolve to an existing theme token`);
+        return resolveThemeColor(theme, token[1]);
+      };
+      assert.ok(contrast(color('--button-color'), color('--button-bg')) >= 4.5, `${severity}: filled label`);
+      for (const surface of ['--app-bg', '--app-surface', '--app-surface-2', '--field']) {
+        assert.ok(contrast(color('--button-ink'), resolveThemeColor(theme, surface)) >= 4.5,
+          `${severity}: outlined/text/link label on ${surface}`);
+      }
+    }
+  }
+  assert.match(primitives, /\.p-button-outlined,\s*\.p-button-text,\s*\.p-button-link\s*\{[^}]*color:\s*var\(--button-ink\)/);
+  assert.match(primitives, /\.p-button-text,\s*\.p-button-link\s*\{\s*border-color:\s*transparent/);
+});
+
+test('incomplete-account email warnings retain AA on the exact card observed in Chromium', () => {
+  const panel = readFileSync(resolve(styles, '../app/features/watchlists/ui/notification-email-preferences-panel.component.scss'), 'utf8');
+  assert.match(panel, /\.email-preferences__feedback--warning\s*\{\s*color:\s*var\(--app-primary-strong\)/);
+  assert.match(panel, /\.email-preferences__feedback--error\s*\{\s*color:\s*var\(--app-danger\)/);
+  assert.ok(contrast('#e54b28', '#eeefe8') < 4.5, 'run 38968888897 measured the old warning at 3.38:1');
+  for (const source of [light, dark]) {
+    const theme = variables(source);
+    for (const token of ['--app-primary-strong', '--app-danger']) {
+      assert.ok(contrast(resolveThemeColor(theme, token), resolveThemeColor(theme, '--app-surface')) >= 4.5);
+    }
+  }
+});
 
 function variables(source) {
   return new Map([...source.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]));

@@ -6,9 +6,9 @@
   display: grid;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--app-border-stronger);
   border-radius: var(--app-radius-md);
-  background: var(--surface-ground);
+  background: var(--app-bg);
 }
 
 .pricing-snapshot-editor > header,
@@ -20,7 +20,7 @@
 }
 
 .pricing-snapshot-editor > header span {
-  color: var(--text-color-secondary);
+  color: var(--app-text-muted);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -29,7 +29,7 @@
 .pricing-snapshot-editor h5,
 .pricing-snapshot-editor h6 {
   margin: 0;
-  color: var(--text-color);
+  color: var(--app-text);
 }
 
 .pricing-snapshot-editor h5 {
@@ -50,7 +50,7 @@
 }
 
 .pricing-snapshot-editor__fields span {
-  color: var(--text-color-secondary);
+  color: var(--app-text-muted);
   font-size: 0.8rem;
   font-weight: 700;
 }
@@ -59,10 +59,10 @@
   width: 100%;
   min-width: 0;
   padding: 0.6rem;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--app-border-stronger);
   border-radius: 0.45rem;
-  color: var(--text-color);
-  background: var(--surface-card);
+  color: var(--app-text);
+  background: var(--app-surface);
 }
 
 .pricing-snapshot-editor__wide {
@@ -73,7 +73,7 @@
   display: grid;
   gap: 0.75rem;
   padding-top: 0.8rem;
-  border-top: 1px solid var(--surface-border);
+  border-top: 1px solid var(--app-border-stronger);
 }
 
 @media (max-width: 760px) {

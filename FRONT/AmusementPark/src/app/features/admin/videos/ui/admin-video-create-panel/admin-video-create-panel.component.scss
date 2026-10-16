@@ -21,7 +21,7 @@
 
 .admin-video-create-panel__header h3 {
   margin: 0.25rem 0 0;
-  color: var(--heading, var(--text-color));
+  color: var(--heading, var(--app-text));
   font-family: var(--font-heading, inherit);
   font-size: 1.08rem;
 }
@@ -65,7 +65,7 @@
 .admin-video-create-panel__message--success {
   border: 1px solid rgba(34, 197, 94, 0.28);
   background: rgba(34, 197, 94, 0.1);
-  color: var(--green-700, #15803d);
+  color: var(--app-accent-lime, #15803d);
 }
 
 .admin-video-create-panel__message--warning {
@@ -91,7 +91,7 @@
 .admin-video-create-panel__field span,
 .admin-video-create-panel__localized > span,
 .admin-video-create-panel__tags > span {
-  color: var(--text-color-secondary, var(--text-muted));
+  color: var(--app-text-muted, var(--text-muted));
   font-size: 0.74rem;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -102,10 +102,10 @@
 .admin-video-create-panel__field select,
 .admin-video-create-panel__field textarea {
   min-height: 2.55rem;
-  border: 1px solid var(--border-2, var(--surface-border));
+  border: 1px solid var(--border-2, var(--app-border-stronger));
   border-radius: var(--radius-md, 8px);
-  background: color-mix(in srgb, var(--bg, var(--surface-0)) 72%, transparent);
-  color: var(--text, var(--text-color));
+  background: color-mix(in srgb, var(--bg, var(--field)) 72%, transparent);
+  color: var(--text, var(--app-text));
   outline: none;
   transition: var(--transition, border-color 160ms ease, box-shadow 160ms ease);
 }
@@ -149,7 +149,7 @@
   align-items: center;
   min-height: 2.5rem;
   gap: 0.55rem;
-  color: var(--heading, var(--text-color));
+  color: var(--heading, var(--app-text));
   font-weight: 800;
 }
 
@@ -173,7 +173,7 @@
   max-height: 12rem;
   overflow: auto;
   padding: 0.55rem;
-  border: 1px solid var(--border, var(--surface-border));
+  border: 1px solid var(--border, var(--app-border-stronger));
   border-radius: var(--radius-lg, 8px);
   background: rgba(56, 197, 245, 0.04);
 }
@@ -183,7 +183,7 @@
   align-items: center;
   gap: 0.45rem;
   min-width: 0;
-  color: var(--text-muted, var(--text-color-secondary));
+  color: var(--text-muted, var(--app-text-muted));
   font-size: 0.78rem;
 }
 
@@ -201,9 +201,9 @@
   width: 12rem;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border: 1px solid var(--border, var(--surface-border));
+  border: 1px solid var(--border, var(--app-border-stronger));
   border-radius: var(--radius-lg, 8px);
-  background: color-mix(in srgb, var(--bg, var(--surface-0)) 70%, transparent);
+  background: color-mix(in srgb, var(--bg, var(--field)) 70%, transparent);
 }
 
 :host ::ng-deep .admin-video-create-panel__thumbnail--placeholder {
@@ -227,7 +227,7 @@
   gap: 0.45rem;
   min-height: 220px;
   padding: 2rem;
-  color: var(--text-muted, var(--text-color-secondary));
+  color: var(--text-muted, var(--app-text-muted));
   text-align: center;
 }
 
@@ -237,7 +237,7 @@
 }
 
 .admin-video-create-panel__empty strong {
-  color: var(--heading, var(--text-color));
+  color: var(--heading, var(--app-text));
 }
 
 @container (max-width: 44rem) {

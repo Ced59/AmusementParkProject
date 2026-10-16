@@ -170,7 +170,7 @@
   display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: color-mix(in srgb, var(--app-surface-alt) 82%, black 10%);
+  background: color-mix(in srgb, var(--app-surface-2) 82%, black 10%);
 }
 
 .public-video-card__thumbnail app-image-display {

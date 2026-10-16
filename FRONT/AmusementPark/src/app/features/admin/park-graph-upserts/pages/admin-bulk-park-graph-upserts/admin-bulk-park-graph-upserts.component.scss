@@ -50,7 +50,7 @@
   padding: 0.42rem 0.85rem;
   border: 1px solid rgba(56, 197, 245, 0.22);
   border-radius: var(--radius-pill);
-  color: var(--c-sky, var(--color-sky, #38c5f5));
+  color: var(--c-sky, var(--app-accent-cyan, #38c5f5));
   background: rgba(56, 197, 245, 0.1);
   font-size: 0.78rem;
   font-weight: 800;
@@ -551,11 +551,11 @@ td code,
 }
 
 .change-status--created {
-  color: var(--color-success, #4ddf8a);
+  color: var(--app-success, #4ddf8a);
 }
 
 .change-status--updated {
-  color: var(--color-sky, #38c5f5);
+  color: var(--app-accent-cyan, #38c5f5);
 }
 
 .change-status--deleted {

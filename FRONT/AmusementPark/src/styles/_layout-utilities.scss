@@ -80,11 +80,11 @@
 }
 
 .text-color-secondary {
-  color: var(--text-color-secondary, var(--app-text-muted, var(--text-muted))) !important;
+  color: var(--app-text-muted, var(--app-text-muted, var(--text-muted))) !important;
 }
 
 .border-primary {
-  border-color: var(--primary-color, var(--p-primary-color, var(--app-primary))) !important;
+  border-color: var(--app-primary, var(--p-primary-color, var(--app-primary))) !important;
 }
 
 .mt-1 {

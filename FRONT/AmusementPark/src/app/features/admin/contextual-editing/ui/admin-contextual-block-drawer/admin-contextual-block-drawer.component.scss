@@ -321,7 +321,7 @@
 
 .admin-contextual-block-drawer__segmented-button--active {
   background: var(--app-primary) !important;
-  color: var(--app-on-primary, #fff) !important;
+  color: var(--app-on-accent, #fff) !important;
 }
 
 .admin-contextual-block-drawer__file-picker {
@@ -654,7 +654,7 @@
 
 .admin-contextual-block-drawer__action--primary {
   background: var(--app-primary);
-  color: var(--app-on-primary, #fff);
+  color: var(--app-on-accent, #fff);
 }
 
 .admin-contextual-block-drawer__action--secondary {

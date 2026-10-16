@@ -43,7 +43,7 @@
 .admin-contextual-block__edit-button:focus-visible {
   border-color: var(--app-primary);
   background: var(--app-primary);
-  color: var(--app-on-primary, #fff);
+  color: var(--app-on-accent, #fff);
 }
 
 .admin-contextual-block__edit-button span {

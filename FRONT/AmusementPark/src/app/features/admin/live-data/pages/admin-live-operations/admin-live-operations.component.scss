@@ -146,8 +146,8 @@
 }
 
 .live-operations__feedback--error {
-  color: var(--app-error);
-  border-color: color-mix(in srgb, var(--app-error) 45%, transparent);
+  color: var(--app-danger);
+  border-color: color-mix(in srgb, var(--app-danger) 45%, transparent);
 }
 
 .live-operations__configuration-warning {

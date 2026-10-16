@@ -174,7 +174,7 @@
 }
 
 .park-opening-hours-legend-dot--long {
-  background: var(--app-info, #38bdf8);
+  background: var(--c-sky, #38bdf8);
 }
 
 .park-opening-hours-month {
@@ -374,12 +374,12 @@
 }
 
 .park-opening-hours-cell--long {
-  border-color: color-mix(in srgb, var(--app-info, #38bdf8) 38%, var(--app-border, rgba(255, 210, 140, 0.12)));
-  background: color-mix(in srgb, var(--app-info, #38bdf8) 9%, var(--app-surface, #1a140f));
+  border-color: color-mix(in srgb, var(--c-sky, #38bdf8) 38%, var(--app-border, rgba(255, 210, 140, 0.12)));
+  background: color-mix(in srgb, var(--c-sky, #38bdf8) 9%, var(--app-surface, #1a140f));
 }
 
 .park-opening-hours-cell--long .park-opening-hours-cell__tone {
-  background: var(--app-info, #38bdf8);
+  background: var(--c-sky, #38bdf8);
 }
 
 .park-opening-hours-cell--today {

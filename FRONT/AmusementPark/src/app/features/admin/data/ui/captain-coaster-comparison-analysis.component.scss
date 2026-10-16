@@ -96,7 +96,7 @@ i.pi-arrow-right {
 }
 
 .duplicate-variant-card--selected {
-  border-color: var(--app-accent-cyan, var(--primary-color, #3b82f6));
+  border-color: var(--app-accent-cyan, var(--app-primary, #3b82f6));
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--app-accent-cyan, #38c5f5) 28%, transparent);
 }
 
