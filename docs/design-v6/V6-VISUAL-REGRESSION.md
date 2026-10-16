@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Diagnostic préalable `eea4e8b10` — contraste du slogan footer
+
+L'[artefact `12071546796`](https://github.com/Ced59/AmusementParkProject/actions/runs/38957806574/artifacts/12071546796) conserve le FAIL : `isolated-preflight/v6_standard_fr_account-deletion-warning_390_light.webp`, inspecté. Le panneau n'est pas la source du défaut : le footer visible contient « pour toujours plus de fun » à 15,6 px, orange `#e54b28` sur `#eeefe8`, **3,38:1**. Document 375 px dans un viewport 390 px, aucune fixture manquante ni exception. Les profils/éditeurs d'identité V6 390/1 366 px clair/sombre passent ce diagnostic ; ni les scénarios suivants ni la campagne complète ne sont déclarés PASS.
+
+Le texte rejoint l'alias existant `--app-primary-strong` dans le SCSS footer, sans toucher au wordmark ni aux clés/valeurs des huit slogans. Le test de contraste inclut désormais les deux segments du slogan dans les deux thèmes, plus un garde interdisant le retour à l'orange décoratif brut. **Nouveau rendu CI requis.**
+
 ## Mini-fiches des familles non dessinées — validation finale ouverte
 
 Ces transpositions réutilisent uniquement tokens, primitives et composants existants. Ce tableau n'est **ni une approbation propriétaire ni une preuve de rendu**. Les noms de captures ci-dessous désignent les états attendus dans les prochains artefacts ; aucun lien vers un fichier inexistant n'est présenté comme preuve.

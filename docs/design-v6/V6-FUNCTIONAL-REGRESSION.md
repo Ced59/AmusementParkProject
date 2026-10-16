@@ -1,5 +1,9 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic préalable `eea4e8b10`
+
+La [CI `38957806574`](https://github.com/Ced59/AmusementParkProject/actions/runs/38957806574) valide 2 777 tests Angular / 583 fichiers, build, budgets, backend et sécurité. Le diagnostic V6 standard FR passe profil/identité à 390/1 366 px clair/sombre, puis refuse le contraste du slogan footer clair à 3,38:1 pendant le panneau de suppression. **Zéro erreur fixture/exception**, aucune mutation privée ; l'échec est visuel. Les scénarios voyage, visite, brouillons et histoire suivants ne sont pas exécutés dans ce run. La correction utilise uniquement le token de texte existant du footer ; wordmark, slogans traduits et comportements restent intacts. Les 65 tests Node ciblés compte/tokens/shell/footer passent après correction, sans PASS navigateur extrapolé.
+
 ## Dernier refus CI — rapport historique de visite manquant dans la fixture
 
 Le [run `38909139005`](https://github.com/Ced59/AmusementParkProject/actions/runs/38909139005), commit `5ccfde1edcd1a164bb232b12cd7381ee3a411f0b`, valide tests/build/budgets, backend et sécurité. Le parcours master standard FR atteint **1 561 contrôles / 1 378 captures**, dont les sept vues voyage et sept vues statistiques/partage. Il s'arrête ensuite avant la V6 sur le GET exact `historical-existence-reports` de l'éditeur de visite, absent de la fixture : aucune requête n'est transmise à une API privée. Ce run reste FAIL.

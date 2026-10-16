@@ -12,13 +12,15 @@ Les 26 routes de la famille compte ne sont pas déclarées toutes recettées :
 |---|---:|---|
 | Profil et mot de passe oublié | 2 | PASS ciblé `fc742b010` et campagne publique ; identité/annulation, état vide de récupération, sans soumission |
 | Collections, liste voyages, passeport et profils de groupe Park Fit | 4 | Master standard FR passe dans `7115bb901` ; V6 arrêtée au contraste du profil avant ces compléments, aucun PASS comparatif |
-| Détails et outils de voyage | 7 | Recette deep links propriétaire/lecture seule préparée ; 25 tests Node compte verts, rendu CI encore requis |
-| Éditeur visite, statistiques, partage et invitation passeport | 8 | Huit vues préparées, dont éditeur Draft/Completed/Archived ; 29 tests Node compte verts, rendus CI et workflows persistés encore ouverts |
-| Notifications | 1 | Recette locale remplie/vide, pagination/filtres/erreur, email/live préparée ; 23 tests Node compte verts, rendu CI encore requis |
-| Confirmation et réinitialisation de compte | 2 | Recette UI isolée préparée, sans soumission ; nouveaux tests Angular et rendu CI requis |
-| Brouillons locaux anonymes | 2 | Recette IndexedDB CI vide/remplie/verrouillée/manquante préparée ; 31 tests Node compte verts, rendu CI et import réel ouverts |
+| Détails et outils de voyage | 7 | Master standard FR passe les sept vues dans `5ccfde1ed` ; variantes V6 et lecture seule encore non attestées |
+| Éditeur visite, statistiques, partage et invitation passeport | 8 | Master standard FR passe les sept statistiques/partage dans `5ccfde1ed`, puis s'arrête au GET de rapports manquant dans la fixture éditeur ; réponse exacte corrigée, rendus V6 et workflows persistés encore ouverts |
+| Notifications | 1 | Master standard FR passe dans `906bff28b` puis `5ccfde1ed` ; variantes V6 et vides encore non attestées |
+| Confirmation et réinitialisation de compte | 2 | Sept nouveaux tests Angular auth PASS dans `f975d9bc4` ; recette UI isolée sans soumission préparée, rendu CI encore requis |
+| Brouillons locaux anonymes | 2 | Recette IndexedDB CI vide/remplie/verrouillée/manquante préparée ; rendu CI et import réel ouverts |
 
 Ce décompte conserve toutes les routes de la matrice et ne transforme pas la présence de tests en preuve de tous leurs scénarios, permissions ou états. La release reste NO-GO.
+
+Les 36 tests Node compte/fixtures et 17 tokens passent (53 ciblés). Le diagnostic préalable ajouté dans `eea4e8b10` réutilise les scénarios FR standard/incomplet à 390/1 366 px, V6/master et deux thèmes ; **ce sous-ensemble ne remplace pas la campagne complète**. Le [run `38957806574`](https://github.com/Ced59/AmusementParkProject/actions/runs/38957806574) atteste profil/identité V6 aux quatre combinaisons largeur/thème, puis refuse le slogan footer clair à 3,38:1. Les suites suivantes ne sont pas exécutées ; les 1 561 contrôles / 1 378 captures de `5ccfde1ed` restent une preuve master partielle, pas une comparaison V6 réussie. Après correction sémantique du slogan, 65 tests ciblés compte/tokens/shell/footer passent ; nouveau rendu requis.
 
 Audit complémentaire du 16 octobre : le filtre historique `*.component.ts` omettait **20 primitives `shared/ui` nommées simplement `dialog.ts`, `table.ts`, etc.** Le générateur corrigé lit les vrais décorateurs TypeScript et l'AST Angular des templates externes/inline, sans tronquer les expressions contenant `>`. Les CSV de la base immuable et de la V6 sont recalculés : **293 composants de production, 268 feuilles SCSS et deux styles inline** dans les deux versions, sans template manquant. Onze hôtes de tests sont explicitement exclus ; les événements et conditions héritées sont conservés. Ces nombres de source ne prouvent pas l'exécution des scénarios.
 
