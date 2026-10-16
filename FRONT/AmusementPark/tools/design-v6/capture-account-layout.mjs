@@ -8,6 +8,7 @@ import { exerciseAccountPassportAndFit } from './exercise-account-passport-and-f
 import { collectContrastCandidates } from './browser-text-contrast.mjs';
 import { exerciseAccountAuthPages } from './exercise-account-auth-pages.mjs';
 import { exerciseAccountNotifications } from './exercise-account-notifications.mjs';
+import { exerciseAccountTripPages } from './exercise-account-trip-pages.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -26,7 +27,9 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const confirmPath = `/${language}/confirm-account`;
   const resetPath = `/${language}/reset-password`;
   const recoveryPath = `/${language}/forgot-password`;
-  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath];
+  const tripPath = `${profilePath}/trips/${fixture.tripData.plan.tripPlanId}`;
+  const tripDocuments = ['', '/preferences', '/preference-summary', '/coherence', '/activity', '/export', '/passport'].map(suffix => tripPath + suffix);
+  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, ...tripDocuments];
   if (fixture.kind === 'expired' && (!(homeFixtures instanceof Map) || !homeFixtures.size)) throw new Error('Expired account UI requires exact local public-home fixtures.');
   if (!Array.isArray(widths) || widths.length < 1 || widths.length > 13 || widths.some(width => !Number.isInteger(width) || width < 320 || width > 1920)) throw new Error('Account capture widths exceed their bound.');
   const root = resolve(browserRoot);
@@ -199,6 +202,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       await exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result, language });
       await exerciseAccountPassportAndFit({ evaluate, waitUntil, captureLayouts, fixture, result, language, navigateDocument });
       await exerciseAccountNotifications({ evaluate, waitUntil, captureLayouts, fixture, result, language });
+      await exerciseAccountTripPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
       if (fixture.kind === 'standard') {
         const dictionary = JSON.parse(await readFile(join(root, `assets/i18n/${language}.json`), 'utf8'));
         const expectedConfirmationMessage = dictionary.auth.confirm.invalidLinkMessage ?? 'Le lien de confirmation est invalide.';

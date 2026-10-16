@@ -11,9 +11,55 @@ import { exerciseAccountProfileControls } from '../design-v6/exercise-account-pr
 import { exerciseAccountPassportAndFit } from '../design-v6/exercise-account-passport-and-fit.mjs';
 import { exerciseAccountAuthPages } from '../design-v6/exercise-account-auth-pages.mjs';
 import { exerciseAccountNotifications } from '../design-v6/exercise-account-notifications.mjs';
+import { exerciseAccountTripPages } from '../design-v6/exercise-account-trip-pages.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('private trip UI input preserves exact read-only endpoints, local role variants and activity cursor deduplication', () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const fixture = createAccountLayoutFixture(kind, 1792144800);
+    const prefix = `/api/me/trips/${fixture.tripData.plan.tripPlanId}`;
+    const get = path => accountLayoutFixtureResponse({ method: 'GET', url: accountLayoutFixtureOrigin + path }, fixture);
+    for (const suffix of ['', '/program', '/preferences', '/preference-summary', '/coherence', '/activity', '/participants', '/invitations', '/notifications', '/export', '/passport-transition']) assert.equal(get(prefix + suffix).status, 200, suffix);
+    assert.equal(get(prefix).body.effectiveRole, kind === 'standard' ? 'Owner' : 'Viewer');
+    assert.equal(get(prefix + '/preferences').body.canVote, kind === 'standard');
+    const first = get(prefix + '/program');
+    first.body.candidates.push({ candidateId: 'changed' });
+    assert.equal(get(prefix + '/program').body.candidates.length, kind === 'standard' ? 1 : 0);
+    if (kind === 'standard') {
+      const activity = get(prefix + '/activity');
+      const older = get(prefix + '/activity?beforeSequence=3');
+      assert.equal(older.body.entries[0].sequence, activity.body.entries[0].sequence);
+      assert.deepEqual(older.body.entries.map(item => item.sequence), [3, 2]);
+      assert.equal(older.body.nextBeforeSequence, null);
+    } else assert.equal(get(prefix + '/activity?beforeSequence=3'), null);
+    assert.equal(get('/api/me/collections?targetType=Park').body.every(item => item.targetType === 'Park'), true);
+    for (const path of [prefix + '/unknown', prefix + '?unknown=true', prefix + '/activity?beforeSequence=2', '/api/me/trips/unknown/program']) assert.equal(get(path), null);
+    for (const method of ['POST', 'PUT', 'PATCH', 'DELETE']) for (const suffix of ['', '/dates', '/program', '/invitations', '/participants', '/preferences', '/passport-transition/days/2026-12-20/confirm']) {
+      assert.equal(accountLayoutFixtureResponse({ method, url: accountLayoutFixtureOrigin + prefix + suffix }, fixture), null);
+    }
+  }
+});
+
+test('seven private trip deep-link recipes compile exact browser expressions without saved mutations or downloads', async () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const fixture = createAccountLayoutFixture(kind, 1792144800, 'de');
+    const result = {};
+    const documents = [];
+    const captures = [];
+    await exerciseAccountTripPages({ fixture, result, language: 'de',
+      evaluate: async expression => assert.doesNotThrow(() => new Script(expression)),
+      waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+      captureLayouts: async (_selector, page) => captures.push(page), navigateDocument: async path => documents.push(path) });
+    assert.equal(documents.length, 8);
+    assert.equal(captures.length, kind === 'standard' ? 18 : 16);
+    assert.equal(result.tripPages.pages, 7);
+    assert.equal(documents.at(-1), '/de/profile');
+    assert.equal(result.tripPages.persistenceInvitationsDownloadsPrintAndPassportConfirmationNotExercised, true);
+  }
+  assert.doesNotMatch(read('tools/design-v6/exercise-account-trip-pages.mjs'), /fetch\(|requestSubmit|\.submit\(|\.save\(|\.print\(|downloadJson\(|\.confirm\(/);
+});
 
 test('notification layout fixtures retain exact pagination, filters, immutable rows and intentional isolated errors', () => {
   const fixture = createAccountLayoutFixture('standard', 1792144800);

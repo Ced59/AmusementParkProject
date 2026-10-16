@@ -1,6 +1,7 @@
 // CI-only layout fixtures. Never imported by Angular or sent to a real server.
 import { homeEvidenceApiPaths } from './home-network-evidence.mjs';
 import { createAccountNotificationFixture, accountNotificationFixtureResponse } from './account-notification-fixtures.mjs';
+import { createAccountTripFixture, accountTripFixtureResponse } from './account-trip-fixtures.mjs';
 export const accountLayoutFixtureOrigin = 'https://apf-account-layout.invalid';
 export const accountLayoutRefreshMarker = 'amusementpark.hasRefreshSession';
 export const accountLayoutResetQuery = '?token=APF-CI-UI-NOT-A-REAL-RESET-TOKEN';
@@ -67,7 +68,7 @@ export function createAccountLayoutFixture(kind, nowSeconds, language = 'fr') {
     companionAgeYears: accompanied ? 32 : null, createdAtUtc: date, updatedAtUtc: date, version: 1,
   }));
   return { kind, language, user, accessToken, collections, trips, visits, fitProfiles,
-    notificationData: createAccountNotificationFixture(kind, date) };
+    notificationData: createAccountNotificationFixture(kind, date), tripData: createAccountTripFixture(kind, date, user, trips) };
 }
 
 export function accountLayoutFixtureResponse(request, fixture, homeFixtures = new Map()) {
@@ -75,6 +76,8 @@ export function accountLayoutFixtureResponse(request, fixture, homeFixtures = ne
   if (url.origin !== accountLayoutFixtureOrigin || url.hash) return null;
   const notificationResponse = accountNotificationFixtureResponse(request, url, fixture);
   if (notificationResponse) return notificationResponse;
+  const tripResponse = accountTripFixtureResponse(request, url, fixture);
+  if (tripResponse) return tripResponse;
   if (fixture.kind === 'expired' && request.method === 'GET' && homeEvidenceApiPaths.has(url.pathname)
       && homeFixtures instanceof Map && homeFixtures.size <= 16) {
     const record = homeFixtures.get(url.pathname + url.search);

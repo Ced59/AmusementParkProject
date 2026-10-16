@@ -10,6 +10,12 @@ Un complément CI utilise uniquement l'origine `.invalid` et le bundle réel : t
 
 L'ouverture déclenche normalement `NotificationCenterOpened` : seul ce POST automatique, avec exactement ses deux champs et notificationId null, est absorbé par un stub local, sans journaliser son corps ni rien transmettre. SourceOpened, signalement, marquage lu, dismiss, désabonnement et consentement restent interdits ; aucun de leurs contrôles n'est activé. Tous les endpoints, queries, corps ou origines non explicitement reconnus échouent. Aucun fichier sous `src/` n'est modifié par cet incrément ; aucune fixture ne rejoint le produit.
 
+## Sept sous-pages de voyage — recette préparée, non exécutée
+
+Les vrais deep links aperçu/préférences/synthèse/cohérence/activité/export/transition passeport reçoivent une fixture privée propriétaire remplie et une fixture lecture seule vide. Seuls onze GET exacts d'un identifiant synthétique, le curseur activité `beforeSequence=3` et la lecture de wishlist `targetType=Park` sont reconnus. La recette contrôle titre exact, champs de dates éditables ou lecture seule, participants/permissions, absence d'invitation pour Viewer, filtres de préférence réversibles, déduplication du curseur et contrôles export présents sans activation. Elle prévoit 18 états capturés propriétaire et 16 lecture seule, dans les paliers/thèmes de la variante compte.
+
+**25 tests Node compte passent ; aucun PASS navigateur n'est encore revendiqué.** Toutes les écritures voyage, invitations, rôles, votes/décisions, confirmations passeport, téléchargement et impression restent non exercés/interdits dans ce navigateur. L'export GET est alimenté localement, sans requête distante ni écriture d'audit serveur. Ce complément modifie uniquement outils/tests/docs, pas la logique ou les données de l'application.
+
 ## Compte standard/incomplet — premier PASS `fc742b010`
 
 La [CI `38892315894`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894) passe intégralement, Docker compris. Les quatre variantes master/V6 × standard/incomplet passent **132 contrôles et 104 captures** (13 largeurs × deux thèmes), sans exception, réponse manquante ni débordement du document. Seuls trois échanges **locaux** par variante sont nécessaires : refresh synthétique et deux lectures du même `UserDto` (header/profil). Aucun appel distant authentifié, sauvegarde, export ou suppression. [Artefact `12043431107`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894/artifacts/12043431107).
