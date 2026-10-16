@@ -1,5 +1,25 @@
 # V6 — couverture d’implémentation
 
+## Point de contrôle du 16 octobre — source et recette distinctes
+
+`master` distant reste `7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22` après nouvelle lecture. Les CSV ci-dessous restent le snapshot de source `579060704`, pas un inventaire final du chantier. Le nouveau bouton clavier standalone ajoute une cible de présentation : son delta et les tailles SCSS devront être recalculés avec le générateur existant au gel final, sans modifier la base immuable.
+
+La comparaison courante porte désormais sur **23 templates**, **2 197 → 2 244 contrats**, **zéro contrat manquant après les exceptions présentationnelles exactes documentées**. Les deux noms de région/groupe compte passent de littéraux anglais à des bindings traduits ; cette transformation ne permet ni handler absent ni autre remplacement. Les huit dictionnaires conservent toutes leurs 7 316 valeurs de base ; seules six clés de nommage clavier/a11y ont été ajoutées (7 322 au total). Le décor d'accueil supprimé était vide, caché et sans contrat fonctionnel.
+
+Les 26 routes de la famille compte ne sont pas déclarées toutes recettées :
+
+| Famille de recette compte | Routes | Preuve navigateur actuelle |
+|---|---:|---|
+| Profil et mot de passe oublié | 2 | PASS ciblé `fc742b010` et campagne publique ; identité/annulation, état vide de récupération, sans soumission |
+| Collections, liste voyages, passeport et profils de groupe Park Fit | 4 | Compléments préparés ; campagne `136a9b8e2` en cours, pas encore PASS |
+| Détails et outils de voyage | 7 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
+| Éditeur visite, statistiques, partage et invitation passeport | 8 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
+| Notifications | 1 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
+| Confirmation et réinitialisation de compte | 2 | Source/styles et tests unitaires ; tokens/états navigateur dédiés ouverts |
+| Brouillons locaux anonymes | 2 | Source/styles et tests unitaires ; recette navigateur/IndexedDB dédiée ouverte |
+
+Ce décompte conserve toutes les routes de la matrice et ne transforme pas la présence de tests en preuve de tous leurs scénarios, permissions ou états. La release reste NO-GO.
+
 Audit complémentaire du 16 octobre : le filtre historique `*.component.ts` omettait **20 primitives `shared/ui` nommées simplement `dialog.ts`, `table.ts`, etc.** Le générateur corrigé lit les vrais décorateurs TypeScript et l'AST Angular des templates externes/inline, sans tronquer les expressions contenant `>`. Les CSV de la base immuable et de la V6 sont recalculés : **293 composants de production, 268 feuilles SCSS et deux styles inline** dans les deux versions, sans template manquant. Onze hôtes de tests sont explicitement exclus ; les événements et conditions héritées sont conservés. Ces nombres de source ne prouvent pas l'exécution des scénarios.
 
 La base exacte `7f6a9088…` est relue depuis une archive Git limitée à `src/app` et `src/styles`, sans checkout, dépendances ni serveur supplémentaire. Une comparaison indépendante des CSV confirme les mêmes 148 routes (type, composant, fichier de routage, guards et resolvers) et les mêmes 293 fichiers de composants, dont 22 templates inline. Le générateur refuse désormais une déclaration de route non résolue au lieu de l'omettre silencieusement. `V6_SOURCE_ROOT`, `V6_SOURCE_REVISION` et `V6_INVENTORY_DIR` permettent de reproduire le calcul avec le même outil.

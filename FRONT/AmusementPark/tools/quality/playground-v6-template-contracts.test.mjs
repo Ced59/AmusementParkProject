@@ -1,9 +1,25 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { accountLayoutNameLocalizationEvidence } from '../design-v6/account-layout-name-evidence.mjs';
 import { compareTemplateContracts, inlineComponentTemplates, templateContracts } from '../design-v6/template-contract-evidence.mjs';
 import { resumeStaticCaptures } from '../design-v6/browser-phase-isolation.mjs';
 import { componentPresentations, isProductionPresentationFile, presentationInteractions } from '../design-v6/presentation-inventory-evidence.mjs';
 import { compareLocalizationContracts } from '../design-v6/localization-contract-evidence.mjs';
+
+test('account accessible-name evidence permits only the two exact localized replacements, never an absent action or a different scope', () => {
+  const file = 'FRONT/AmusementPark/src/app/ui/layouts/account-layout/account-layout.component.html';
+  const missing = [
+    ['attribute', 'aside', 'aria-label', 'Account experience introduction'],
+    ['attribute', 'div', 'aria-label', 'Account feature highlights'],
+  ];
+  const source = `<aside [attr.aria-label]="'accountLayout.introductionLabel' | translate"></aside><div role="group" [attr.aria-label]="'accountLayout.featuresLabel' | translate"></div>`;
+  assert.equal(accountLayoutNameLocalizationEvidence(file, source, missing).length, 2);
+  assert.equal(accountLayoutNameLocalizationEvidence('other.html', source, missing), null);
+  assert.equal(accountLayoutNameLocalizationEvidence(file, source.replace('featuresLabel', 'unknown'), missing), null);
+  assert.equal(accountLayoutNameLocalizationEvidence(file, source.replace('role="group" ', ''), missing), null);
+  assert.equal(accountLayoutNameLocalizationEvidence(file, source, [...missing, ['event', 'click', 0, 'save()']]), null);
+  assert.equal(accountLayoutNameLocalizationEvidence(file, source, [missing[0], missing[0]]), null);
+});
 
 test('localization contracts preserve exact accents, slogans, arrays and existing keys while allowing new labels', () => {
   const before = { footer: { brand: { sloganData: 'La rigueur des données', sloganFun: 'pour toujours plus de fun' } }, weekdays: ['Lun', 'Mar'] };

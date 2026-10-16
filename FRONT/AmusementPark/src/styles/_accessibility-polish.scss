@@ -13,11 +13,6 @@
 }
 
 body.light-mode {
-  .home-hero__backdrop {
-    opacity: 0;
-    background-image: none;
-  }
-
   .home-hero-card--lime {
     --hero-card-accent: var(--app-light-accent-lime);
     --hero-card-soft: var(--app-light-accent-lime-soft);

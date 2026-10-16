@@ -75,6 +75,8 @@
     }
   },
   "accountLayout": {
+    "introductionLabel": "Présentation de ton espace personnel",
+    "featuresLabel": "Fonctions de ton espace personnel",
     "kicker": "Espace personnel",
     "title": "Ton passeport parcs",
     "subtitle": "Gère ton profil, ta langue et tes accès depuis un espace personnel clair.",

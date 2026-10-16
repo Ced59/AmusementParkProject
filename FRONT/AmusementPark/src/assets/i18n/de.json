@@ -75,6 +75,8 @@
     }
   },
   "accountLayout": {
+    "introductionLabel": "Dein persönlicher Bereich im Überblick",
+    "featuresLabel": "Funktionen deines persönlichen Bereichs",
     "kicker": "Persönlicher Bereich",
     "title": "Dein Park-Pass",
     "subtitle": "Verwalte Profil, Sprache und Zugriff in einem klaren persönlichen Bereich.",

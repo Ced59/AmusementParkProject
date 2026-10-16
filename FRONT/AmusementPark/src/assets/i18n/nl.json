@@ -75,6 +75,8 @@
     }
   },
   "accountLayout": {
+    "introductionLabel": "Overzicht van je persoonlijke ruimte",
+    "featuresLabel": "Functies van je persoonlijke ruimte",
     "kicker": "Persoonlijke ruimte",
     "title": "Jouw parkpas",
     "subtitle": "Beheer je profiel, taal en toegang vanuit een duidelijke persoonlijke ruimte.",

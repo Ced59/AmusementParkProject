@@ -3,6 +3,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { compareTemplateContracts, inlineComponentTemplates, templateContracts } from './template-contract-evidence.mjs';
 import { compareLocalizationContracts } from './localization-contract-evidence.mjs';
+import { accountLayoutNameLocalizationEvidence } from './account-layout-name-evidence.mjs';
 
 const base = process.env.V6_BASELINE_SHA;
 if (!/^[a-f0-9]{40}$/.test(base ?? '')) throw new Error('An exact V6 baseline SHA is required.');
@@ -50,6 +51,11 @@ for (const { file, before, after } of pairs) {
     && comparison.missing.length === 1
     && JSON.stringify(comparison.missing[0]) === JSON.stringify(['attribute', 'section', 'aria-modal', 'true'])) {
     comparison.presentationChanges = [{ contract: comparison.missing[0], reason: 'Modal semantics and focus trap follow the existing modal input; non-modal dialogs must not claim modality.' }];
+    comparison.missing = [];
+  }
+  const localizedAccountNames = accountLayoutNameLocalizationEvidence(file, after, comparison.missing);
+  if (localizedAccountNames) {
+    comparison.presentationChanges = localizedAccountNames;
     comparison.missing = [];
   }
   results.push({ file, ...comparison });

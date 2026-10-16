@@ -47,6 +47,18 @@ test('account acceptance retains all French widths and explicit two-theme mobile
   assert.throws(() => createAccountLayoutFixture('standard', 1792144800, 'unknown'), /Unknown/);
 });
 
+test('account introduction and feature group have localized accessible names in all eight dictionaries', () => {
+  const html = read('src/app/ui/layouts/account-layout/account-layout.component.html');
+  assert.ok(html.includes("[attr.aria-label]=\"'accountLayout.introductionLabel' | translate\""));
+  assert.ok(html.includes("role=\"group\" [attr.aria-label]=\"'accountLayout.featuresLabel' | translate\""));
+  assert.doesNotMatch(html, /aria-label="Account (experience introduction|feature highlights)"/);
+  for (const language of ['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl']) {
+    const labels = JSON.parse(read(`src/assets/i18n/source/${language}/account/layout.json`)).accountLayout;
+    assert.ok(labels.introductionLabel.trim());
+    assert.ok(labels.featuresLabel.trim());
+  }
+});
+
 test('account layout fixtures reject production origins, unknown endpoints and all user-data mutations', () => {
   const fixture = createAccountLayoutFixture('standard', 1792144800);
   const profile = `${accountLayoutFixtureOrigin}/api/users/${fixture.user.id}`;
