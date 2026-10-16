@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
 import { publicParkGalleryPages, publicPhotoReadEvidence } from '../design-v6/public-photo-evidence.mjs';
+import { photoLightboxLayoutIssues } from '../design-v6/photo-lightbox-layout.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -17,6 +18,16 @@ const videoListTemplate = read('src/app/features/public/videos/ui/public-video-l
 const videoListStyles = read('src/app/features/public/videos/ui/public-video-list-view.component.scss');
 const videoWatchTemplate = read('src/app/features/public/videos/ui/public-video-watch-view.component.html');
 const videoWatchStyles = read('src/app/features/public/videos/ui/public-video-watch-view.component.scss');
+
+test('lightbox geometry rejects offscreen controls, overlapping photographs and unreadable shrinking', () => {
+  const layout = { width: 390, height: 640, documentWidth: 390,
+    dialog: { x: 8, y: 8, right: 382, bottom: 632 }, close: { x: 324, y: 20, right: 368, bottom: 64 },
+    image: { width: 320, height: 360, bottom: 450 }, footer: { y: 460 } };
+  assert.deepEqual(photoLightboxLayoutIssues(layout), []);
+  assert.ok(photoLightboxLayoutIssues({ ...layout, image: { ...layout.image, bottom: 510 } }).includes('image overlaps caption or thumbnails'));
+  assert.ok(photoLightboxLayoutIssues({ ...layout, close: { ...layout.close, bottom: 700 } }).includes('close control outside viewport'));
+  assert.ok(photoLightboxLayoutIssues({ ...layout, image: { ...layout.image, height: 20 } }).includes('image compressed into an unusable region'));
+});
 
 test('photo evidence retains only published IDs and real bounded pagination', () => {
   const id = '00000000-0000-0000-0000-000000000001';

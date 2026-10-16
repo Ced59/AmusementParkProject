@@ -13,6 +13,7 @@ import { initialThemeObserver, validateInitialTheme } from './initial-theme-evid
 import { publicPhotoReadEvidence } from './public-photo-evidence.mjs';
 import { exercisePublicPhotos } from './exercise-public-photos.mjs';
 import { resumeStaticCaptures } from './browser-phase-isolation.mjs';
+import { photoLightboxLayoutIssues } from './photo-lightbox-layout.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -374,9 +375,8 @@ async function captureHydratedHome(rawHtml, options = {}) {
     await cdp.send('Page.navigate', { url: `${origin}/fr/home` });
     await waitUntil(`location.origin === '${origin}' && document.readyState === 'complete' && document.querySelector('app-root') && !document.querySelector('app-root').hasAttribute('ngh') && !!document.querySelector('#home-search-input')`, 'Angular root hydrated');
     if (!options.networkProbe) {
-      // Forty independent static route captures precede this scenario in the
-      // same CI tab. Start its browser history at the real hydrated home, so
-      // those unrelated file navigations cannot evict its back/forward chain.
+      // Discard setup/file navigations before the first real interaction so
+      // unrelated entries cannot evict this scenario's back/forward chain.
       const beforeHistory = await cdp.send('Page.getNavigationHistory');
       await cdp.send('Page.resetNavigationHistory');
       const afterHistory = await cdp.send('Page.getNavigationHistory');
@@ -518,7 +518,27 @@ async function captureHydratedHome(rawHtml, options = {}) {
       index: navigation.currentEntry.index, key: navigation.currentEntry.key })`);
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname.endsWith('/le-fleury') && !!document.querySelector('app-park-detail-page h1')`, 'browser back from inventory restores the full park');
-    await exercisePublicPhotos({ evaluate, waitUntil, result, pressTab: async backward => {
+    await exercisePublicPhotos({ evaluate, waitUntil, result, captureLightbox: async () => {
+      try {
+        for (const [width, height] of [[320, 568], [390, 640], [1366, 480]]) {
+          await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
+          await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+          const layout = await evaluate(`(() => { const rect = selector => { const node = document.querySelector(selector); if (!node) return null; const { x, y, width, height, right, bottom } = node.getBoundingClientRect(); return { x, y, width, height, right, bottom }; }; return {
+            width: innerWidth, height: innerHeight, documentWidth: document.documentElement.scrollWidth,
+            theme: document.body.classList.contains('light-mode') ? 'light' : 'dark',
+            dialog: rect('.photo-lightbox__dialog'), close: rect('.photo-lightbox__close'),
+            image: rect('img.photo-lightbox__image'), footer: rect('.photo-lightbox__footer') }; })()`);
+          const screenshot = `fr_photo_lightbox_${width}_${height}_${layout.theme}.webp`;
+          const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+          await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
+          const issues = photoLightboxLayoutIssues(layout);
+          (result.photoLightboxLayouts ??= []).push({ ...layout, screenshot, issues });
+          if (issues.length) throw new Error(`Real photo lightbox geometry requires correction at ${width}×${height}: ${issues.join(', ')}`);
+        }
+      } finally {
+        await cdp.send('Emulation.setDeviceMetricsOverride', { width: 1366, height: 1200, deviceScaleFactor: 1, mobile: false });
+      }
+    }, pressTab: async backward => {
       const key = { key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9, modifiers: backward ? 8 : 0 };
       await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', ...key });
       await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', ...key });

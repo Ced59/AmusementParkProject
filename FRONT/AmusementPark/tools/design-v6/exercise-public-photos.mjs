@@ -1,7 +1,7 @@
 // Only real Angular controls and browser history; no API writes or demo media.
 import { publicParkGalleryPages } from './public-photo-evidence.mjs';
 
-export async function exercisePublicPhotos({ evaluate, waitUntil, pressTab, result }) {
+export async function exercisePublicPhotos({ evaluate, waitUntil, pressTab, captureLightbox, result }) {
   const parent = await evaluate(`({ path: location.pathname, key: navigation.currentEntry.key })`);
   const parkId = parent.path.match(/\/park\/([0-9a-f-]{36})(?:\/|$)/i)?.[1];
   if (!parkId) throw new Error('The photo recipe requires its actual public park parent.');
@@ -49,6 +49,8 @@ export async function exercisePublicPhotos({ evaluate, waitUntil, pressTab, resu
   await waitUntil(`document.activeElement === document.querySelector('.photo-lightbox__thumb:last-child')`, 'photo lightbox Shift+Tab loops to its last real thumbnail');
   await pressTab(false);
   await waitUntil(`document.activeElement === document.querySelector('.photo-lightbox__close')`, 'photo lightbox Tab loops back to its first close control');
+  await waitUntil(`document.querySelector('img.photo-lightbox__image')?.complete && document.querySelector('img.photo-lightbox__image')?.naturalWidth > 0`, 'photo lightbox loads its actual published image before geometry review');
+  await captureLightbox();
   await evaluate(`document.querySelector('.photo-lightbox__close').click()`);
   await waitUntil(`!document.querySelector('.photo-lightbox')`, 'photo lightbox closes without navigation or mutation');
   await waitUntil(`document.activeElement === document.querySelector('.photo-carousel__stage')`, 'photo lightbox restores keyboard focus to its original stage');

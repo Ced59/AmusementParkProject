@@ -2,6 +2,10 @@
 
 ## Ajustements du 16 octobre — primitives et pages pratiques
 
+L'audit supplémentaire raccorde 108 déclarations de rayon dans 41 feuilles locales : 106 surfaces/champs/médias sur le token de surface et deux petits badges sur le token pilule. Les styles compilent en série, sans changement de dimensions ni de template. Un contrôle Node couvre l'ensemble des feuilles locales ; la revue du rendu complet et les états restent ouverts.
+
+La prochaine recette hydratée capture aussi la vraie lightbox en 320 × 568, 390 × 640 et 1 366 × 480. Elle doit refuser un dialogue ou Fermer hors viewport, une photographie empiétant sur les crédits/vignettes et une image comprimée à moins de 80 px. Les captures et mesures seront conservées dans l'artefact ; ces trois nouveaux cas ne sont pas encore déclarés exécutés.
+
 Les onglets segmentés utilisent des filets carrés, une bordure active sans ombre et un focus contrasté ; les rôles, comptes et touches restent ceux du composant existant. Les en-têtes repliables deviennent un bouton natif pleine largeur, sans réduire leur surface cliquable. Le dialogue partagé conserve sa composition et reçoit des commandes nommées et un focus limité au seul mode modal. Les nouveaux tests Angular et la revue des variantes restent à exécuter en CI.
 
 Météo, horaires et tarifs réutilisent les mixins éditoriaux des sous-pages médias/cartes : suppression des gouttières imbriquées à toutes les largeurs, en-tête transparent à filets et titre plafonné à 57 px. Les styles de calendrier, graphiques et offres, leurs scrolls locaux et les marges basses mobiles sont conservés. Aucun template de données pratiques ni calcul n'est changé. Le contrôle de géométrie SSR couvre désormais aussi ces trois familles ; la comparaison réelle après ces modifications est **en attente de CI**, pas déclarée pixel-perfect.
