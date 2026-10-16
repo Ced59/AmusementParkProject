@@ -71,7 +71,7 @@
   flex: 1;
   padding: .65rem .85rem;
   border: 1px dashed var(--app-border-strong, rgba(255, 210, 140, 0.22));
-  border-radius: .75rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--app-bg, #0f0b06) 82%, transparent);
   color: var(--app-text, #f6eed9);
   cursor: pointer;

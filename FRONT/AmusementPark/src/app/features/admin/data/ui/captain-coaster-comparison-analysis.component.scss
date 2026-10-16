@@ -88,7 +88,7 @@ i.pi-arrow-right {
   flex-direction: column;
   gap: .5rem;
   padding: .75rem;
-  border-radius: .75rem;
+  border-radius: var(--app-radius-md);
   border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
   background: var(--app-surface, #1a140f);
   color: var(--app-text, #f6eed9);
@@ -132,7 +132,7 @@ i.pi-arrow-right {
   flex-direction: column;
   gap: .5rem;
   padding: .75rem;
-  border-radius: .75rem;
+  border-radius: var(--app-radius-md);
   background: var(--app-surface, #1a140f);
   border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
 }

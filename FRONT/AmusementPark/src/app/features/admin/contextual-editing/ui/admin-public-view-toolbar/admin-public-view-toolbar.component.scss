@@ -155,7 +155,7 @@
     flex-direction: column;
     max-height: min(34vh, 15rem);
     overflow-y: auto;
-    border-radius: 0.85rem;
+    border-radius: var(--app-radius-md);
     -webkit-overflow-scrolling: touch;
   }
 

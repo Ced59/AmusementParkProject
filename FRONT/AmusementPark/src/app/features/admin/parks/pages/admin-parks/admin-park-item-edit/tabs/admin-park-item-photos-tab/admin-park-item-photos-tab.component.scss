@@ -22,7 +22,7 @@
   width: 100%;
   max-width: 260px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--app-radius-md);
 }
 
 .photo-preview {

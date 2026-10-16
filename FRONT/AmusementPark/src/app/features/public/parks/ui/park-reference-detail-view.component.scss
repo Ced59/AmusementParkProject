@@ -182,7 +182,7 @@
   height: 2.1rem;
   display: grid;
   place-items: center;
-  border-radius: 0.75rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 13%, transparent);
   color: var(--reference-accent, var(--app-primary));
 }
@@ -270,7 +270,7 @@ a.reference-fact__value:hover {
   height: 2.4rem;
   display: grid;
   place-items: center;
-  border-radius: .9rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 14%, transparent);
   color: var(--reference-accent, var(--app-primary));
 }

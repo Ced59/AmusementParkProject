@@ -2,6 +2,8 @@
 
 ## Principes
 
+Audit des styles locaux du 16 octobre : 106 rayons fixes de panneaux/champs/médias, répartis dans 41 feuilles public/compte/admin, sont raccordés à `--app-radius-md`. Les deux badges explicitement en pilule utilisent `--app-radius-pill` ; avatars et pourcentages circulaires restent distincts. Aucun token concurrent, wrapper, dimension, condition ou handler n'est ajouté par ce raccordement. Les 41 feuilles compilent séparément sans chemin Sass ajouté ; un test parcourt tous les styles locaux pour empêcher le retour de gros rayons numériques. Ce contrôle de cohérence n'est pas une preuve de recette visuelle complète.
+
 La V6 est une interface éditoriale documentée et ludique : papier, encre, filets visibles, photographie prioritaire, grands repères numériques et géométrie essentiellement droite. Les accents orange, lime et bleu signalent une action ou une information ; ils ne remplacent pas la hiérarchie sémantique.
 
 Les variables V6 alimentent les alias `--app-*` et `--ap-*` existants. Aucun second système de thème n’est créé et la logique `body.light-mode` / `body.dark-mode`, l’initialisation SSR et le stockage de préférence restent inchangés.

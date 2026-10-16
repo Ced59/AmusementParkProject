@@ -14,7 +14,7 @@
   gap: 1rem;
   padding: 1rem;
   border: 1px solid var(--app-border, var(--surface-border));
-  border-radius: 1rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--app-surface, var(--surface-card)) 92%, transparent);
 
   h3 {

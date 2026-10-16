@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
 
@@ -18,6 +18,23 @@ test('Playground shared surfaces and cards are flat editorial panels', () => {
   assert.doesNotMatch(`${surfaces}\n${primitives}`, /backdrop-filter\s*:/);
   assert.match(surfaces, /border-radius:\s*var\(--radius-md\)/);
   assert.match(cards, /\.ui-park-card[\s\S]*?border-radius:\s*var\(--radius-md\)/);
+});
+
+test('local surfaces use existing V6 radius tokens instead of fixed legacy large corners', () => {
+  const appRoot = resolve(styles, '../app');
+  const violations = [];
+  for (const path of readdirSync(appRoot, { recursive: true }).filter(path => path.endsWith('.scss'))) {
+    const source = readFileSync(resolve(appRoot, path), 'utf8');
+    for (const match of source.matchAll(/border-radius:\s*(\d*\.?\d+)(rem|px)\s*;/g)) {
+      const value = Number(match[1]);
+      if (match[2] === 'rem' ? value >= 0.65 : value > 7 && ![999, 9999].includes(value)) violations.push({ path, radius: match[0] });
+    }
+  }
+  assert.deepEqual(violations, []);
+  for (const name of ['comparison-tab', 'admin-provider']) {
+    const source = readFileSync(resolve(appRoot, `features/admin/data/ui/captain-coaster-${name}.component.scss`), 'utf8');
+    assert.ok(source.includes('border-radius: var(--app-radius-pill)'));
+  }
 });
 
 test('Playground buttons and fields keep square control geometry', () => {

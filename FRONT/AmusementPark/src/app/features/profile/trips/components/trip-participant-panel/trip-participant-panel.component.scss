@@ -41,7 +41,7 @@
   gap: .8rem;
   padding: 1rem;
   border: 1px solid color-mix(in srgb, var(--color-border, #786b58) 48%, transparent);
-  border-radius: 1rem;
+  border-radius: var(--app-radius-md);
 }
 
 .participant-card--self {
@@ -91,7 +91,7 @@
   display: grid;
   gap: .75rem;
   padding: 1rem;
-  border-radius: .9rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--color-gold-400, #f6c84a) 10%, transparent);
 }
 

@@ -3,7 +3,7 @@
   gap: 1rem;
   padding: 1rem;
   border: 1px solid var(--surface-border, #dfe3e8);
-  border-radius: .75rem;
+  border-radius: var(--app-radius-md);
 }
 
 .credit-offer-editor > header {

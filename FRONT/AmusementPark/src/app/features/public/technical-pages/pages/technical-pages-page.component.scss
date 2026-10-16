@@ -100,7 +100,7 @@
   display: grid;
   place-items: center;
   border: 1px solid color-mix(in srgb, var(--app-accent-lime) 32%, var(--app-border));
-  border-radius: 0.8rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--app-accent-lime) 10%, transparent);
   color: var(--app-accent-lime);
 }

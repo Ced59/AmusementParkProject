@@ -179,7 +179,7 @@ h1 {
 }
 .profile-comparison__park-grid dl > div {
   padding: 0.65rem;
-  border-radius: 0.7rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--c-sky) 7%, transparent);
 }
 .profile-comparison__park-grid dt {
@@ -305,7 +305,7 @@ h1 {
   display: grid;
   gap: 0.15rem;
   padding: 0.6rem;
-  border-radius: 0.7rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--c-lime) 7%, transparent);
 }
 .profile-comparison__chips dt {

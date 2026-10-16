@@ -7,7 +7,7 @@
 .public-share-report {
   background: color-mix(in srgb, var(--surface-card, #17130f) 92%, transparent);
   border: 1px solid color-mix(in srgb, var(--text-color, #fff) 14%, transparent);
-  border-radius: 1.25rem;
+  border-radius: var(--app-radius-md);
   color: var(--text-color, #fff);
   max-width: 100%;
   overflow: hidden;
@@ -40,7 +40,7 @@ select,
 textarea {
   background: var(--surface-ground, #0d0b09);
   border: 1px solid color-mix(in srgb, var(--text-color, #fff) 22%, transparent);
-  border-radius: .9rem;
+  border-radius: var(--app-radius-md);
   box-sizing: border-box;
   color: inherit;
   font: inherit;
@@ -79,7 +79,7 @@ small,
 
 @media (max-width: 35rem) {
   .public-share-report {
-    border-radius: 1rem;
+    border-radius: var(--app-radius-md);
     padding: .9rem;
   }
 }

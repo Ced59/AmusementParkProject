@@ -18,7 +18,7 @@
   gap: 1rem;
   padding: 1rem;
   border: 1px solid rgba(168, 134, 92, 0.18);
-  border-radius: 8px;
+  border-radius: var(--app-radius-md);
   background: rgba(18, 12, 8, 0.55);
 }
 
@@ -114,7 +114,7 @@
   gap: 0.55rem;
   padding: 0.85rem;
   border: 1px solid rgba(168, 134, 92, 0.24);
-  border-radius: 8px;
+  border-radius: var(--app-radius-md);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -149,7 +149,7 @@
   display: grid;
   overflow: hidden;
   border: 1px solid rgba(168, 134, 92, 0.22);
-  border-radius: 8px;
+  border-radius: var(--app-radius-md);
   background: rgba(18, 12, 8, 0.72);
 }
 
@@ -193,7 +193,7 @@
   margin: 0;
   padding: 1rem;
   border: 1px dashed rgba(168, 134, 92, 0.28);
-  border-radius: 8px;
+  border-radius: var(--app-radius-md);
   color: #aa9678;
   text-align: center;
 }

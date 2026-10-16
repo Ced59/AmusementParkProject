@@ -184,7 +184,7 @@
   height: 3rem;
   place-items: center;
   border: 1px solid var(--border-2);
-  border-radius: 1rem;
+  border-radius: var(--app-radius-md);
   color: var(--heading);
   background: var(--bg-card);
   box-shadow: var(--shadow-card);
@@ -315,7 +315,7 @@
   width: 2.8rem;
   height: 2.8rem;
   place-items: center;
-  border-radius: 0.9rem;
+  border-radius: var(--app-radius-md);
   color: var(--about-step-color);
   background: color-mix(in srgb, var(--about-step-color) 12%, transparent);
   font-size: 1.25rem;
