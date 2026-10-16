@@ -41,9 +41,10 @@ test('practical pages share the full editorial shell without nested responsive g
 });
 
 test('pricing breadcrumbs, kickers and audience chips use semantic text accents', () => {
-  for (const selector of ['park-pricing-breadcrumb a', 'park-pricing-hero__kicker', 'park-price-card__audience']) {
+  for (const selector of ['park-pricing-breadcrumb a', 'park-pricing-hero__kicker', 'park-price-card__audience', 'park-price-card__buy', 'park-weather-board__legend-item--max']) {
     assert.match(practicalStyles, new RegExp(`\\.${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
   }
+  assert.match(practicalStyles, /\.park-weather-board__legend-item--max::before\s*\{[^}]*background:\s*var\(--weather-max\)/);
 });
 
 test('opening hours preserve month navigation, selected day, admissions and timezone', () => {

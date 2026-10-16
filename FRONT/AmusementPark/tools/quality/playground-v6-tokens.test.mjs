@@ -125,6 +125,17 @@ test('Playground small primary chips and faint text meet AA on their actual surf
   }
 });
 
+test('practical offer links and weather legend text meet AA on card and secondary surfaces', () => {
+  const body = adapters.match(/body\s*\{([^}]+)\}/)?.[1];
+  assert.match(body, /--app-surface-muted:\s*var\(--app-surface-2\)/);
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(source)]);
+    for (const background of ['--bg-card', '--bg-card-2']) {
+      assert.ok(contrast(resolveThemeColor(theme, '--app-primary-strong'), theme.get(background)) >= 4.5);
+    }
+  }
+});
+
 test('Playground light semantic chip tones meet AA on the composited soft backgrounds', () => {
   const theme = variables(light);
   for (const tone of ['lime', 'sky', 'gold', 'rose', 'purple']) {
@@ -210,8 +221,9 @@ test('Playground V6 accent button labels meet AA at rest and on hover in both th
 
 test('Playground V6 uses the editorial width, restrained geometry and flat page surfaces', () => {
   assert.match(designTokens, /--content-max-width:\s*1160px/);
-  assert.match(designTokens, /--radius-md:\s*0\.375rem/);
-  assert.match(designTokens, /--radius-2xl:\s*1rem/);
+  for (const radius of ['xs', 'sm', 'md', 'lg', 'xl', '2xl']) {
+    assert.match(designTokens, new RegExp(`--radius-${radius}:\\s*0\\.125rem`));
+  }
   assert.doesNotMatch(`${light}\n${dark}\n${base}`, /(?:linear|radial|conic)-gradient\(/);
   assert.doesNotMatch(base, /fractalNoise|data:image\/svg\+xml/);
 });

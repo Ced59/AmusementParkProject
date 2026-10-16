@@ -4,6 +4,8 @@
 
 Audit des styles locaux du 16 octobre : 106 rayons fixes de panneaux/champs/médias, répartis dans 41 feuilles public/compte/admin, sont raccordés à `--app-radius-md`. Les deux badges explicitement en pilule utilisent `--app-radius-pill` ; avatars et pourcentages circulaires restent distincts. Aucun token concurrent, wrapper, dimension, condition ou handler n'est ajouté par ce raccordement. Les 41 feuilles compilent séparément sans chemin Sass ajouté ; un test parcourt tous les styles locaux pour empêcher le retour de gros rayons numériques. Ce contrôle de cohérence n'est pas une preuve de recette visuelle complète.
 
+Les alias de rayon `xs` à `2xl` sont ensuite plafonnés ensemble à `0.125rem` (2 px) : la première adaptation gardait encore des rayons de 6–16 px sur certaines surfaces, non conformes à la géométrie quasi carrée de référence. Les noms et familles existants sont conservés. `--app-surface-muted`, déjà utilisé dans six déclarations mais absent du moteur, est relié à `--app-surface-2` sur `body`, au niveau réel des thèmes ; les captures SSR vérifient désormais aussi sa résolution. Les petits liens d'offre et la légende Max utilisent le premier plan contrasté, sans recolorer les séries météo. **190 tests Node passent**, dont les contrastes sur surfaces principales/secondaires dans les deux thèmes ; le rendu après ces corrections exige une nouvelle CI.
+
 La V6 est une interface éditoriale documentée et ludique : papier, encre, filets visibles, photographie prioritaire, grands repères numériques et géométrie essentiellement droite. Les accents orange, lime et bleu signalent une action ou une information ; ils ne remplacent pas la hiérarchie sémantique.
 
 Les variables V6 alimentent les alias `--app-*` et `--ap-*` existants. Aucun second système de thème n’est créé et la logique `body.light-mode` / `body.dark-mode`, l’initialisation SSR et le stockage de préférence restent inchangés.
@@ -40,8 +42,8 @@ Les variables V6 alimentent les alias `--app-*` et `--ap-*` existants. Aucun sec
 | `--c-lime` | `#c4ff27` | `#d5ed60` / `#d1ec70` |
 | `--c-sky` | `#38c5f5` | `#0c8ca3` / `#49c9df` |
 | `--content-max-width` | `1340px` | `1160px` |
-| `--radius-md` | `1rem` | `0.375rem` |
-| `--radius-2xl` | `2.5rem` | `1rem` |
+| `--radius-md` | `1rem` | `0.125rem` |
+| `--radius-2xl` | `2.5rem` | `0.125rem` |
 | `--shadow-card` | halo de 24 px | filet d’élévation de 1 px |
 
 Le texte courant vise au moins 4,5:1 ; le texte large et les séparateurs essentiels au moins 3:1. Le texte posé sur le lime et sur les accents secondaires clairs du thème sombre reste foncé. Les variantes rose, or et violet atteignent au moins 4,5:1 sur leur surface teintée à 14 %. Le focus ne dépend jamais uniquement de la couleur.
@@ -62,7 +64,7 @@ Le header ParkItem utilise un cadre photo 16/10 distinct, une grille desktop 1,5
 
 - Largeur éditoriale courante : `1160px`.
 - Largeur dense/admin : l’alias large existant reste disponible jusqu’à `1480px`.
-- Rayons : 2–8 px en règle générale ; 12–16 px uniquement pour des surfaces explicitement adoucies ; pilule réservée aux petits contrôles et statuts.
+- Rayons de surface : 2 px via les alias conservés `xs` à `2xl`, ou 0 explicite sur les filets éditoriaux ; aucun panneau 12–16 px. Les petits contrôles peuvent garder leur géométrie spécifique ; pilule et cercle restent réservés aux contrôles/statuts et avatars, pas aux surfaces de page.
 - Ombres : une séparation légère seulement lorsqu’un filet ou un changement de surface ne suffit pas.
 - Pas de gradients décoratifs, glassmorphism, texture de bruit ni halo systématique.
 - Cibles tactiles : au moins 44 px lorsque le contrôle est isolé ; tableaux admin compacts avec focus et libellé conservés.

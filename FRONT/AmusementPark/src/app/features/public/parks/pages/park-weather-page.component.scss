@@ -171,7 +171,11 @@
 }
 
 .park-weather-board__legend-item--max {
-  color: var(--weather-max);
+  color: var(--app-primary-strong);
+}
+
+.park-weather-board__legend-item--max::before {
+  background: var(--weather-max);
 }
 
 .park-weather-board__legend-item--min {

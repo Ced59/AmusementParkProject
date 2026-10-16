@@ -181,6 +181,7 @@
 // Theme values live on body. Resolve their aliases at that same scope before
 // inheritance; resolving them on :root would leave their body values unavailable.
 body {
+  --app-surface-muted: var(--app-surface-2);
   --app-field: var(--field);
   --app-map: var(--map);
   --app-line: var(--line);

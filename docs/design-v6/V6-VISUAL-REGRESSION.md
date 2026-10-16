@@ -2,6 +2,8 @@
 
 ## Ajustements du 16 octobre — primitives et pages pratiques
 
+La revue des captures `0a75fa1e4` confirme les en-têtes et gouttières de météo Fleury à 390 px et tarifs Efteling à 1 366 px. Elle détecte deux petits textes encore en accent décoratif : légende Max et liens d'offre. Leur premier plan devient sémantique contrasté ; les courbes gardent leurs couleurs. Les rayons de tokens encore à 6–16 px sont également ramenés à 2 px. Ces corrections doivent être revues sur le prochain rendu ; les badges de données brutes, prix, dates, champs et contenus API ne sont ni réécrits ni figés.
+
 L'audit supplémentaire raccorde 108 déclarations de rayon dans 41 feuilles locales : 106 surfaces/champs/médias sur le token de surface et deux petits badges sur le token pilule. Les styles compilent en série, sans changement de dimensions ni de template. Un contrôle Node couvre l'ensemble des feuilles locales ; la revue du rendu complet et les états restent ouverts.
 
 La prochaine recette hydratée capture aussi la vraie lightbox en 320 × 568, 390 × 640 et 1 366 × 480. Elle doit refuser un dialogue ou Fermer hors viewport, une photographie empiétant sur les crédits/vignettes et une image comprimée à moins de 80 px. Les captures et mesures seront conservées dans l'artefact ; ces trois nouveaux cas ne sont pas encore déclarés exécutés.
