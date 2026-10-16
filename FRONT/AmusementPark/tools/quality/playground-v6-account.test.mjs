@@ -20,9 +20,29 @@ import { createAnonymousDraftFixtures, seedAnonymousDraftBrowser, anonymousDraft
 import { historyLayoutDocuments, historyLayoutParkId, historyLayoutSubjectId } from '../design-v6/public-history-layout-fixtures.mjs';
 import { exerciseIsolatedHistoryPages } from '../design-v6/exercise-isolated-history-pages.mjs';
 import { isolatedLayoutPreflightPlan } from '../design-v6/isolated-layout-preflight.mjs';
+import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from '../design-v6/account-layout-acceptance.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('diagnostic contrast collection cannot accept a failed fixture or defer geometry and missing coverage', () => {
+  assert.equal(accountLayoutMustStop('v6', [accountContrastIssue]), true);
+  assert.equal(accountLayoutMustStop('v6', [accountContrastIssue], true), false);
+  for (const issue of ['document horizontal overflow', 'expired login dialog bounds or close action', 'no measurable visible flat text for the account contrast probe']) {
+    assert.equal(accountLayoutMustStop('v6', [accountContrastIssue, issue], true), true);
+  }
+  assert.equal(accountLayoutMustStop('v6', [], true), false);
+  assert.equal(accountLayoutMustStop('master', [accountContrastIssue]), false);
+  assert.equal(accountLayoutsHaveFailure('v6', [{ issues: [] }, { issues: [accountContrastIssue] }]), true);
+  assert.equal(accountLayoutsHaveFailure('v6', [{ issues: [] }]), false);
+  assert.equal(accountLayoutsHaveFailure('master', [{ issues: [accountContrastIssue] }]), false);
+  const source = read('tools/design-v6/capture-account-layout.mjs');
+  assert.match(source, /deferContrastFailure = false/);
+  assert.match(source, /deferContrastFailure && process\.env\.V6_ISOLATED_PREFLIGHT !== 'true'/);
+  assert.ok(source.indexOf('if (accountLayoutsHaveFailure(label, result.layouts)) throw') < source.indexOf('result.passed = true'));
+  const fullCampaign = read('tools/design-v6/capture-public-ssr.mjs').split('entry = await import(pathToFileURL')[1];
+  assert.doesNotMatch(fullCampaign, /deferContrastFailure/);
+});
 
 test('isolated preflight is an explicit Linux CI subset, never a replacement for the full matrix', () => {
   const environment = { CI: 'true', V6_ISOLATED_PREFLIGHT: 'true', V6_BASELINE_DIST_DIR: '/ci/master-dist', V6_BASELINE_SHA: 'a'.repeat(40) };

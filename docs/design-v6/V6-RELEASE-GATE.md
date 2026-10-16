@@ -8,6 +8,8 @@ Un diagnostic préliminaire Linux CI vérifie maintenant les scénarios isolés 
 
 Les 53 tests Node ciblés compte/tokens passent localement, sérialisés ; syntaxe du script de capture contrôlée. Aucun navigateur, serveur ni build local n'est lancé. Les conditions de production/master ne changent pas ; seul le diagnostic PR V6 et la conservation de son artefact sont ajoutés.
 
+Le diagnostic peut désormais **recenser plusieurs contrastes défaillants d'une même fixture avant de la refuser**. Ce mode exige explicitement le flag préflight, garde chaque mesure/capture dans `layouts` et vérifie obligatoirement toutes les issues avant `passed=true` : aucun défaut n'est accepté. Géométrie, absence de texte mesurable, requête inconnue et exceptions restent des arrêts immédiats. La campagne complète conserve son arrêt au premier défaut et les seuils 4,5:1 / 3:1 inchangés. Les 69 tests Node ciblés compte/tokens/shell/footer passent, dont le refus final d'une fixture ayant un seul contraste différé et l'impossibilité de différer un débordement.
+
 **NO-GO MERGE — PR #917 ouverte, recette complète non terminée.** Les PASS ciblés ci-dessous ne constituent pas une acceptation de tous les critères de chaque gate. Aucun merge, tag ni déploiement n’est autorisé avant les checks du dernier commit, la recette visuelle/fonctionnelle Angular réelle et le feu vert explicite du propriétaire.
 
 | Contrôle | État |

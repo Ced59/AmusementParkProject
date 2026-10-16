@@ -806,7 +806,7 @@ try {
       const fixture = createAccountLayoutFixture(kind, fixtureTime, language);
       for (const label of ['v6', 'master']) {
         try {
-          report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label,
+          report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label, deferContrastFailure: true,
             browserRoot: label === 'master' ? resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') : browserRoot }));
         } catch (error) {
           report.accountLayoutFailure = { label, kind, language, error: error.message };

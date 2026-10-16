@@ -16,6 +16,7 @@ import { anonymousDraftIds } from './account-anonymous-draft-fixtures.mjs';
 import { exerciseAnonymousDraftPages } from './exercise-anonymous-draft-pages.mjs';
 import { historyLayoutDocuments } from './public-history-layout-fixtures.mjs';
 import { exerciseIsolatedHistoryPages } from './exercise-isolated-history-pages.mjs';
+import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from './account-layout-acceptance.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -23,8 +24,9 @@ export function accountLayoutCaptureAllowed(ci, platform) {
 
 // Compiled application, existing guards/services, synthetic HTTP input only.
 // This is UI acceptance, never proof of authentication or a private API call.
-export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label, homeFixtures = new Map() }) {
+export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label, homeFixtures = new Map(), deferContrastFailure = false }) {
   if (!accountLayoutCaptureAllowed(process.env.CI, process.platform)) throw new Error('Account layout capture requires isolated Linux CI.');
+  if (typeof deferContrastFailure !== 'boolean' || (deferContrastFailure && process.env.V6_ISOLATED_PREFLIGHT !== 'true')) throw new Error('Deferred contrast findings are restricted to the explicit diagnostic preflight.');
   if (!['master', 'v6'].includes(label) || !['standard', 'incomplete', 'expired'].includes(fixture.kind)) throw new Error('Unsupported account layout capture case.');
   const language = fixture.language;
   if (!['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'].includes(language)) throw new Error('Unsupported account fixture language.');
@@ -50,7 +52,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const root = resolve(browserRoot);
   const rawHtml = await readFile(join(root, 'index.csr.html'), 'utf8');
   const result = { scope: 'compiled public/account UI with CI-only synthetic input; not authentication/API/HTTP-SEO acceptance', label,
-    kind: fixture.kind, language, checks: [], layouts: [], apiReads: [], blockedRequests: [], fixtureFailures: [], exceptions: [] };
+    kind: fixture.kind, language, deferContrastFailure, checks: [], layouts: [], apiReads: [], blockedRequests: [], fixtureFailures: [], exceptions: [] };
   const pending = new Set();
   const canceled = new Set();
   const documents = new Map();
@@ -192,7 +194,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           if ([390, 1366].includes(width)) {
             layout.contrast = await evaluate(`(${collectContrastCandidates.toString()})({ includeCoverage: true })`);
             if (!layout.contrast.checked) issues.push('no measurable visible flat text for the account contrast probe');
-            if (layout.contrast.warnings.length) issues.push('visible flat account text below its AA contrast threshold');
+            if (layout.contrast.warnings.length) issues.push(accountContrastIssue);
           }
           if (page === 'account-expired' && (!layout.dialog || layout.dialog.x < -1 || layout.dialog.y < -1
               || layout.dialog.right > width + 1 || layout.dialog.bottom > layout.height + 1 || !layout.dialog.closeUnobscured)) issues.push('expired login dialog bounds or close action');
@@ -200,7 +202,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
           await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
           result.layouts.push({ ...layout, page, screenshot, issues });
-          if (label === 'v6' && issues.length) throw new Error(`Account ${page} layout requires correction: ${width}px ${theme}`);
+          if (accountLayoutMustStop(label, issues, deferContrastFailure)) throw new Error(`Account ${page} layout requires correction: ${width}px ${theme}`);
         }
       }
     };
@@ -230,6 +232,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       await exerciseIsolatedHistoryPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
     }
     if (result.fixtureFailures.length || result.exceptions.length) throw new Error('Account layout accumulated an unexpected fixture or browser failure.');
+    if (accountLayoutsHaveFailure(label, result.layouts)) throw new Error('Account layout accumulated visual findings; inspect every layouts[].issues and contrast.warnings.');
     result.passed = true;
   } catch (error) {
     result.passed = false;
