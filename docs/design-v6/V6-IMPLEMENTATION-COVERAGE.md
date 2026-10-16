@@ -2,6 +2,8 @@
 
 ## Point de contrôle du 17 octobre — standard V6/master
 
+Le diagnostic `a31f12c25` révèle une mauvaise attente du test, pas une toolbar manquante du produit : le compte n'utilise pas le shell public. La recette distingue maintenant profil et confidentialité publique avant de contrôler la toolbar, sans changer les layouts/routage du site. **172 tests Node ciblés PASS** après correction et CTA ; captures de stress encore à exécuter, anciens FAIL conservés.
+
 Le dernier complément est uniquement de recette : shell admin normal/police doublée réellement mesurée, dès le diagnostic à 320/390/1 366 px ; matrice intégrale et huit langues conservées. Les 170 tests Node ciblés passent, mais aucun nouveau rendu n'est déclaré acquis. L'inventaire de source UI pointe maintenant exactement sur `2d93b5e68abfa552b388bd83a133d82c6661e588` ; outils/docs ultérieurs ne changent pas ses composants/routes/styles.
 
 Trois chemins SSR Parc Fit et sept états client sans recherche sont ajoutés après `b56328197` : 43 chemins SSR préparés, sans prétendre qu'ils sont déjà capturés. Champs/participants/préférences/validation invalides et états sans résultat sont distincts du calcul serveur ou d'une comparaison remplie. Les 37 encres de cette famille rejoignent les tokens existants ; inventaires source à nouveau calculés, comptes/contrats de routes/composants inchangés. **166 tests Node ciblés PASS**, recette CI de ce complément ouverte.

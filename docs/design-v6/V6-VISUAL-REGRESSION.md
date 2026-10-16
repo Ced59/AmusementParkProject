@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Diagnostic `a31f12c25` — pas de rendu de stress acquis
+
+Le run `38978469321` s'arrête avant capture : le scénario attendait à tort la toolbar publique dans le profil `AccountLayout`. Sa capture de diagnostic, inspectée, montre le compte et le consentement, pas un défaut responsive prouvé. Les mesures sont séparées : compte avec deux liens admin et **sans** toolbar publique ; confidentialité dans `PublicAppLayout` avec toolbar. Chacun sera capturé en taille normale/doublée ; aucun écran admin ni workflow distant n'est ouvert. **172 tests Node ciblés PASS**, artefact suivant toujours obligatoire.
+
 ## Diagnostic `2d93b5e68` — CTA Parc Fit
 
 L'[artefact `12079114374`](https://github.com/Ced59/AmusementParkProject/actions/runs/38977656405/artifacts/12079114374) conserve **392 captures / 736 contrôles V6 standard FR**, tous les nouveaux scénarios locaux Parc Fit terminés, zéro fixture/exception. Huit captures révèlent le même override du texte « Chercher un parc adapté » à 14,72 px : encre secondaire sur l'orange, **1,49:1 sombre / 1,66:1 clair**. `v6_standard_fr_public-fit-form-preferences_390_light.webp` est inspecté : préférences et bouton complets, libellé trop discret confirmé.

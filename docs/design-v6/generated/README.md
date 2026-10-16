@@ -1,6 +1,6 @@
 # Inventaire P00 généré
 
-- Source : a31f12c25 + selector de description Parc Fit, styles uniquement
+- Source : 9492817ac24d2436f257ddf38661d8aed3ea6097 ; source UI inchangée dans la correction de scénario compte/public
 - Routes terminales, redirections et écrans développés : **148**
 - Composants Angular de présentation recensés : **293**
 - Interactions et champs explicitement recensés : **2057**

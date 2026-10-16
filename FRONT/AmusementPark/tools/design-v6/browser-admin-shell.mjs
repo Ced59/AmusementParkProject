@@ -17,7 +17,7 @@ export function collectAdminShellLayout() {
     const box = node.getBoundingClientRect();
     return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, width: box.width, height: box.height };
   };
-  return { adminPath, width: innerWidth, height: innerHeight, entries,
+  return { adminPath, width: innerWidth, height: innerHeight, publicLayout: !!document.querySelector('.app-public-layout'), entries,
     bottomItemCount: document.querySelectorAll('.app-mobile-bottom-nav__item').length,
     toolbar: rect('.admin-public-view-toolbar'), bottomNavigation: rect('.app-mobile-bottom-nav') };
 }
@@ -35,10 +35,12 @@ export function adminShellLayoutIssues(layout) {
     issues.push('conditional admin navigation hidden, clipped or obscured');
   }
   const toolbar = layout.toolbar;
-  if (!toolbar || toolbar.width <= 0 || toolbar.height <= 0 || toolbar.x < -1 || toolbar.y < -1
-    || toolbar.right > layout.width + 1 || toolbar.bottom > layout.height + 1) {
+  if (typeof layout.publicLayout !== 'boolean') issues.push('admin shell layout scope not measured');
+  if (layout.publicLayout && (!toolbar || toolbar.width <= 0 || toolbar.height <= 0 || toolbar.x < -1 || toolbar.y < -1
+    || toolbar.right > layout.width + 1 || toolbar.bottom > layout.height + 1)) {
     issues.push('public admin toolbar missing or outside the viewport');
   }
+  if (layout.publicLayout === false && toolbar) issues.push('unexpected public admin toolbar in the account layout');
   const nav = layout.bottomNavigation;
   if (toolbar && nav?.height > 0 && toolbar.x < nav.right && toolbar.right > nav.x
     && toolbar.y < nav.bottom && toolbar.bottom > nav.y) issues.push('admin toolbar overlaps the mobile navigation');

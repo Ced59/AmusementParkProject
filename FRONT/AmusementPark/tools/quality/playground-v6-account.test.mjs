@@ -130,6 +130,7 @@ test('admin shell measurement reads the real links and toolbar without navigatio
       ? rect(8, 960, 374, 150) : rect(0, 1128, 390, 72) }), elementFromPoint: () => icon } };
   const layout = JSON.parse(JSON.stringify(runInNewContext(`(${collectAdminShellLayout.toString()})()`, sandbox)));
   assert.deepEqual(adminShellLayoutIssues(layout), []);
+  assert.equal(layout.publicLayout, true);
   assert.deepEqual(layout.entries.map(entry => entry.scope), ['header', 'mobile']);
   assert.equal(layout.entries[1].unobscured, true);
   assert.equal(layout.adminPath, '/fr/admin');
@@ -137,11 +138,13 @@ test('admin shell measurement reads the real links and toolbar without navigatio
   const branch = capture.split("} else if (fixture.kind === 'admin-shell') {")[1].split('} else {')[0];
   assert.match(branch, /await captureLayouts\('\.profile-hero', 'account-admin-shell'\)/);
   assert.match(branch, /serverAuthorizationExercised: false, adminWorkflowsExercised: false/);
-  assert.doesNotMatch(branch, /navigateDocument|\.click\(/);
+  assert.match(branch, /await navigateDocument\(publicAdminPath\)/);
+  assert.ok(capture.includes('const publicAdminPath = `/${language}/privacy`;'));
+  assert.doesNotMatch(branch, /\.click\(/);
 });
 
 test('admin shell acceptance refuses missing entries, obscured controls and toolbar overlap', () => {
-  const layout = { adminPath: '/pl/admin', width: 390, height: 1200, bottomItemCount: 7,
+  const layout = { adminPath: '/pl/admin', width: 390, height: 1200, publicLayout: true, bottomItemCount: 7,
     entries: [
       { scope: 'header', href: '/pl/admin', visible: false },
       { scope: 'mobile', href: '/pl/admin', visible: true, unobscured: true, x: 330, y: 1128,
@@ -149,6 +152,9 @@ test('admin shell acceptance refuses missing entries, obscured controls and tool
     ], toolbar: { x: 8, y: 960, right: 382, bottom: 1110, width: 374, height: 150 },
     bottomNavigation: { x: 0, y: 1128, right: 390, bottom: 1200, width: 390, height: 72 } };
   assert.deepEqual(adminShellLayoutIssues(layout), []);
+  assert.deepEqual(adminShellLayoutIssues({ ...layout, publicLayout: false, toolbar: null }), []);
+  assert.ok(adminShellLayoutIssues({ ...layout, publicLayout: false }).includes('unexpected public admin toolbar in the account layout'));
+  assert.ok(adminShellLayoutIssues({ ...layout, publicLayout: undefined }).includes('admin shell layout scope not measured'));
   for (const change of [
     value => value.entries.pop(), value => value.entries.push({ ...value.entries[1] }),
     value => { value.bottomItemCount = 6; }, value => { value.entries[1].unobscured = false; },
@@ -169,6 +175,18 @@ test('the unencapsulated public admin toolbar targets its real host, including t
   assert.doesNotMatch(source, /:host\b/);
   assert.match(source, /app-admin-public-view-toolbar\s*\{\s*position:\s*fixed/);
   assert.match(source, /@media \(max-width: 680px\)\s*\{\s*app-admin-public-view-toolbar\s*\{[^}]*bottom:\s*calc\(var\(--bottom-nav-height\) \+ max\(1rem, env\(safe-area-inset-bottom\)\)\)/);
+});
+
+test('admin shell recipe preserves the actual distinct account and public layout composition', () => {
+  const account = read('src/app/ui/layouts/account-layout/account-layout.component.html');
+  const publicLayout = read('src/app/ui/layouts/public-app-layout/public-app-layout.component.html');
+  assert.doesNotMatch(account, /adminToolbarComponent|ngComponentOutlet|admin-public-view-toolbar/);
+  assert.match(publicLayout, /@if \(adminToolbarComponent\(\); as toolbarComponent\)/);
+  assert.match(publicLayout, /\*ngComponentOutlet="toolbarComponent"/);
+  const capture = read('tools/design-v6/capture-account-layout.mjs');
+  assert.match(capture, /await captureLargeFont\('\.profile-hero', 'account-admin-shell-large-font'\)/);
+  assert.match(capture, /await captureLargeFont\('\.app-public-layout__content', 'public-admin-shell-large-font'\)/);
+  assert.match(capture, /account exposes its two existing navigation entries without a public-layout toolbar/);
 });
 
 test('history compare keeps the unchanged trail missing-article fallback exact and read-only', () => {

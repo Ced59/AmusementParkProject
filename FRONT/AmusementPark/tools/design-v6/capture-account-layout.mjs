@@ -51,8 +51,9 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const anonymousDocuments = [anonymousPath, ...anonymousDraftIds.map(id => `${anonymousPath}/${id}`)];
   const historyDocuments = historyLayoutDocuments(language);
   const publicFitDocuments = ['', '/results', '/compare'].map(suffix => `/${language}/park-fit${suffix}`);
+  const publicAdminPath = `/${language}/privacy`;
   const unauthenticatedDocuments = [...anonymousDocuments, ...publicFitDocuments, ...new Set(historyDocuments.map(path => path.split('?')[0]))];
-  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, ...tripDocuments, ...passportDocuments, ...visitDocuments, ...anonymousDocuments, ...historyDocuments, ...publicFitDocuments];
+  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, publicAdminPath, ...tripDocuments, ...passportDocuments, ...visitDocuments, ...anonymousDocuments, ...historyDocuments, ...publicFitDocuments];
   if (fixture.kind === 'expired' && (!(homeFixtures instanceof Map) || !homeFixtures.size)) throw new Error('Expired account UI requires exact local public-home fixtures.');
   if (!Array.isArray(widths) || widths.length < 1 || widths.length > 13 || widths.some(width => !Number.isInteger(width) || width < 320 || width > 1920)) throw new Error('Account capture widths exceed their bound.');
   const root = resolve(browserRoot);
@@ -164,7 +165,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     } else {
       await waitUntil(`document.querySelector('.profile-hero__title')?.textContent.trim() === ${JSON.stringify(displayName)}`, 'existing guard and refresh flow render the local account fixture');
       if (fixture.kind === 'admin-shell') {
-        await waitUntil(`document.querySelectorAll('a[href="/${language}/admin"]').length === 2 && !!document.querySelector('.admin-public-view-toolbar')`, 'local admin presentation exposes the two existing navigation entries and lazy toolbar');
+        await waitUntil(`document.querySelectorAll('a[href="/${language}/admin"]').length === 2 && !document.querySelector('.admin-public-view-toolbar')`, 'local admin account exposes its two existing navigation entries without a public-layout toolbar');
       } else {
         await waitUntil(`!document.querySelector('a[href="/${language}/admin"]')`, 'standard account fixture does not expose the conditional admin entry');
       }
@@ -234,34 +235,40 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         }
       }
     };
+    const navigateDocument = async path => {
+      if (!accountDocuments.includes(path) && path !== resetPath + accountLayoutResetQuery) throw new Error('Unknown isolated account deep-link recipe.');
+      await settleAccountDocument({ evaluate, pending });
+      await cdp.send('Page.navigate', { url: accountLayoutFixtureOrigin + path });
+    };
     if (fixture.kind === 'expired') {
       await captureLayouts('.p-dialog', 'account-expired');
       if (result.apiReads.some(read => read.path.startsWith('/api/users/') || read.path.startsWith('/api/me/'))) throw new Error('Expired layout unexpectedly requested private profile data.');
       result.expiredSession = { localRefreshRejected: true, guardRedirectExercised: true, realAuthIntegrationExercised: false };
     } else if (fixture.kind === 'admin-shell') {
       await captureLayouts('.profile-hero', 'account-admin-shell');
-      await withDoubledRootFont({ evaluate, capture: async ({ rootFontSizePx }) => {
+      const captureLargeFont = async (selector, page) => withDoubledRootFont({ evaluate, capture: async ({ rootFontSizePx }) => {
         try {
-          await captureLayouts('.profile-hero', 'account-admin-shell-large-font');
+          await captureLayouts(selector, page);
           if (result.layouts.at(-1).rootFontSizePx !== rootFontSizePx) throw new Error('Admin enlarged-font capture lost its measured override.');
         } catch (error) {
           result.enlargedFontFailure = { rootFontSizePx, error: error.message, scope: 'CI font override, not native browser zoom' };
           try {
             const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
-            result.enlargedFontFailure.screenshot = `${label}_${fixture.kind}_${language}_large-font-failure.webp`;
+            result.enlargedFontFailure.screenshot = `${label}_${fixture.kind}_${language}_${page}-failure.webp`;
             await writeFile(join(outputRoot, result.enlargedFontFailure.screenshot), Buffer.from(pixels.data, 'base64'));
           } catch { /* Preserve the original failure and restore the font below. */ }
           throw error;
         }
       } });
+      await captureLargeFont('.profile-hero', 'account-admin-shell-large-font');
+      await navigateDocument(publicAdminPath);
+      await waitUntil(`!!document.querySelector('.app-public-layout') && !!document.querySelector('app-privacy-policy-page') && !!document.querySelector('.admin-public-view-toolbar') && document.querySelectorAll('a[href="/${language}/admin"]').length === 2`,
+        'the existing public layout, unlike the account layout, mounts the lazy admin toolbar');
+      await captureLayouts('.app-public-layout__content', 'public-admin-shell');
+      await captureLargeFont('.app-public-layout__content', 'public-admin-shell-large-font');
       if (result.apiReads.some(read => read.path.startsWith('/api/admin/'))) throw new Error('Admin shell presentation unexpectedly requested an administration API.');
       result.adminShell = { presentationRoleOnly: true, serverAuthorizationExercised: false, adminWorkflowsExercised: false };
     } else {
-      const navigateDocument = async path => {
-        if (!accountDocuments.includes(path) && path !== resetPath + accountLayoutResetQuery) throw new Error('Unknown isolated account deep-link recipe.');
-        await settleAccountDocument({ evaluate, pending });
-        await cdp.send('Page.navigate', { url: accountLayoutFixtureOrigin + path });
-      };
       await captureLayouts('.profile-hero', 'account-profile');
       await exerciseAccountProfileControls({ evaluate, waitUntil, captureLayouts, fixture, result });
       await exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result, language });

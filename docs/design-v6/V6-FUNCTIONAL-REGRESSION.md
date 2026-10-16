@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic `a31f12c25` — mauvaise composition attendue par le test
+
+L'[artefact `12080715086`](https://github.com/Ced59/AmusementParkProject/actions/runs/38978469321/artifacts/12080715086) garde le refus avant capture, sur `/fr/profile`, zéro fixture/exception. Le test attendait la toolbar d'édition alors que le profil utilise `AccountLayout`, qui ne la comporte pas ; `PublicAppLayout` seul l'instancie. **Le produit n'est pas changé pour satisfaire cette attente erronée.** La recette mesure maintenant les deux liens sur le compte et exige l'absence de toolbar publique, puis ouvre seulement `/privacy` pour mesurer la vraie toolbar lazy et ses sept accès mobiles. Aucun lien `/admin`, édition ou endpoint admin n'est activé.
+
+Le scope de layout est mesuré dans le DOM et obligatoire dans l'acceptation : toolbar manquante en public, ajoutée au compte, ou scope absent échoue. Police normale/doublée et tous les autres contrôles restent requis. Le test de composition vérifie les deux vrais templates. **172 tests Node ciblés PASS ; nouveau rendu requis**, aucun défaut responsive ou stress réussi n'est inféré de cet ancien timeout.
+
 Le run `2d93b5e68 / 38977656405` termine **736 contrôles / 392 captures V6 standard FR**, dont ajout/retrait 1–8 participants, accompagnement, préférences, date invalide et liens sans résultat/sélection. `searchRequested:false`, `locationRequested:false`, aucune fixture ou exception défaillante. Le garde final refuse le libellé du CTA à 1,49/1,66:1 ; correction limitée au selector descriptif qui empiétait sur son span. **171 tests Node ciblés PASS**, inventaires source recalculés, aucun changement de métier/contrat. Nouveau run requis, pas de validation de recherche réelle, master ou variantes suivantes inférée.
 
 Le complément de stress ne modifie que les outils CI : font racine doublée et mesurée, restauration inconditionnelle, capture d'échec avant nettoyage, aucun appel métier supplémentaire. Le diagnostic admin conditionnel passe en tête à 320/390/1 366 px avant les cas FR existants ; aucun état ou scénario de la campagne complète n'est retiré. Deux tests couvrent restauration après succès/échec, baseline inattendue et override non appliqué. **170 tests Node ciblés PASS**, preuve navigateur et zoom natif toujours requis.
