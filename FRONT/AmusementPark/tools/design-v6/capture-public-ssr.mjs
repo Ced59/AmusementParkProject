@@ -5,7 +5,7 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { extname, join, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { isCanceledInterceptionError } from './browser-interception-errors.mjs';
+import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from './browser-interception-errors.mjs';
 import { publicDirectoryReadEvidence, publicParkItemsReadEvidence, publicRouteEvidenceName } from './public-directory-evidence.mjs';
 import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeNetworkAcceptance, homeVitalsObserver } from './home-network-evidence.mjs';
 import { exercisePublicParkItems } from './exercise-public-park-items.mjs';
@@ -20,6 +20,7 @@ import { publicVideoReadEvidence } from './public-video-evidence.mjs';
 import { exercisePublicMediaHistory } from './exercise-public-media-history.mjs';
 import { exercisePublicMap } from './exercise-public-map.mjs';
 import { canRenderPublicDocument } from './public-document-evidence.mjs';
+import { exercisePublicStandalone } from './exercise-public-standalone.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -229,6 +230,20 @@ async function captureHydratedHome(rawHtml, options = {}) {
   result.interceptionErrors = interceptionErrors;
   const canceledNetworkRequests = new Set();
   const pendingInterceptions = new Set();
+  const requestDocuments = new Map();
+  const retiredNetworkRequests = new Set();
+  let currentMainDocument;
+  const stopRequestDocuments = cdp.on('Network.requestWillBeSent', ({ requestId, frameId, loaderId }) => {
+    if (!frameId || !loaderId) return;
+    if (requestDocuments.size >= 4096 && !requestDocuments.has(requestId)) {
+      interceptionErrors.push('Request/document evidence exceeds its explicit bound.');
+      return;
+    }
+    requestDocuments.set(requestId, { frameId, loaderId });
+  });
+  const stopDocumentRetirement = cdp.on('Page.frameNavigated', ({ frame }) => {
+    currentMainDocument = advanceMainDocument(currentMainDocument, frame, requestDocuments, retiredNetworkRequests);
+  });
   const stopCancellations = cdp.on('Network.loadingFailed', ({ requestId, canceled }) => {
     if (canceled) canceledNetworkRequests.add(requestId);
   });
@@ -304,12 +319,18 @@ async function captureHydratedHome(rawHtml, options = {}) {
       if (error.message === 'Invalid InterceptionId.' && request.networkId) {
         await new Promise((yes) => setTimeout(yes, 100));
       }
-      if (isCanceledInterceptionError(error, request.networkId, canceledNetworkRequests)) {
-        (result.canceledRequests ??= []).push({ path: new URL(request.request.url).pathname, networkId: request.networkId });
+      const canceled = isCanceledInterceptionError(error, request.networkId, canceledNetworkRequests);
+      const retired = isRetiredDocumentInterceptionError(error, request.networkId, retiredNetworkRequests);
+      if (canceled || retired) {
+        (result.canceledRequests ??= []).push({ path: new URL(request.request.url).pathname, networkId: request.networkId,
+          reason: canceled ? 'matching-network-cancellation' : 'matching-retired-document',
+          ...(retired ? { document: requestDocuments.get(request.networkId) } : {}) });
       } else {
         interceptionErrors.push(error.message);
+        (result.interceptionDiagnostics ??= []).push({ message: error.message, networkId: request.networkId,
+          document: requestDocuments.get(request.networkId), currentMainDocument, retiredNetworkRequests: [...retiredNetworkRequests].slice(0, 20) });
       }
-    }).finally(() => pendingInterceptions.delete(task));
+    }).finally(() => { pendingInterceptions.delete(task); requestDocuments.delete(request.networkId); retiredNetworkRequests.delete(request.networkId); });
     pendingInterceptions.add(task);
   });
   const stopExceptions = cdp.on('Runtime.exceptionThrown', ({ exceptionDetails }) => {
@@ -577,7 +598,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
             await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
             await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({ block: 'start', behavior: 'instant' })`);
             await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
-            const layout = await evaluate(`({ width: innerWidth, documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth), theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
+            const layout = await evaluate(`({ width: innerWidth, locale: location.pathname.split('/')[1], documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth), theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
             if (layout.documentWidth > width + 1) throw new Error(`Hydrated practical page overflows at ${width}px.`);
             if (label === 'opening-hours-selected') {
               const cells = await evaluate(`(() => {
@@ -607,14 +628,14 @@ async function captureHydratedHome(rawHtml, options = {}) {
                 throw new Error(`The calendar's last column is not reachable inside its named keyboard-scrollable region at ${width}px.`);
               }
               if (layout.calendarScroll.needsScroll) {
-                const scrollEndScreenshot = `fr_${label}_${width}_${layout.theme}_scroll-end.webp`;
+                const scrollEndScreenshot = `${layout.locale}_${label}_${width}_${layout.theme}_scroll-end.webp`;
                 const endPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
                 await writeFile(join(outputRoot, scrollEndScreenshot), Buffer.from(endPixels.data, 'base64'));
                 layout.calendarScroll.screenshot = scrollEndScreenshot;
               }
               await evaluate(`document.querySelector('.park-opening-hours-month__table-wrap').scrollLeft = 0`);
             }
-            const screenshot = `fr_${label}_${width}_${layout.theme}.webp`;
+            const screenshot = `${layout.locale}_${label}_${width}_${layout.theme}.webp`;
             const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
             await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
             (result.practicalLayouts ??= []).push({ label, ...layout, screenshot });
@@ -674,6 +695,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
     await waitUntil(`location.pathname === ${JSON.stringify(directoryDetailPath)} && !!document.querySelector('app-park-detail-page h1') && !document.querySelector('.parks-results')`, 'catalogue detail action opens its full real park route');
     await evaluate(`document.querySelector('.app-public-nav__links a[href="/fr/home"]').click()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'catalogue recipe restores the home route');
+    await exercisePublicStandalone({ evaluate, waitUntil, result, capturePage: captureHydratedPage });
     if (result.exceptions.length || interceptionErrors.length) throw new Error('Hydrated browser raised an exception; inspect report.json.');
     console.log(`Hydrated home: ${result.checks.length} checks passed; production writes blocked.`);
   } finally {
@@ -692,6 +714,8 @@ async function captureHydratedHome(rawHtml, options = {}) {
     if (options.networkProbe) await cdp.send('Network.setCacheDisabled', { cacheDisabled: false });
     stopInterception();
     stopCancellations();
+    stopRequestDocuments();
+    stopDocumentRetirement();
     stopExceptions();
     await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
     if (result.exceptions.length || interceptionErrors.length) {

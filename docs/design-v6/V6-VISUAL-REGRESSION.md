@@ -8,6 +8,8 @@ Dimensions, ancrages/popup, catégories, glyphs des lieux, labels et seuils de c
 
 ## Calendrier à 320 px — lisibilité après le premier correctif
 
+La capture `fr_opening-hours-selected_320_dark_scroll-end.webp` du run `f5ddfd8a4` a ensuite été inspectée : les plages sont regroupées sur deux lignes à la séparation, le badge complet tient sur deux lignes et la dernière colonne est atteignable avec une scrollbar visible. La compression précédente est corrigée dans cet échantillon ; ce n'est pas une validation des huit langues ou du zoom. Le run reste globalement en échec sur la navigation document du sandbox, indépendante de cette capture.
+
 La [CI `754cce98c`, artefact `12029833735`](https://github.com/Ced59/AmusementParkProject/actions/runs/38863174263/artifacts/12029833735) passe 26 géométries internes du calendrier (31 vrais jours et un badge Aujourd'hui chacune), ainsi que 26 captures météo historique. L'inspection du calendrier **320 px sombre** confirme la disparition du chevauchement, mais montre encore des heures morcelées et le badge sur quatre lignes : la lisibilité n'est pas validée par le seul containment.
 
 Le complément conserve des cases d'au moins 44 px et un tableau de largeur minimale 26 rem, dans une région nommée focalisable avec défilement horizontal **local**, scrollbar contrastée et aucune dissimulation du document. La recette exige l'accès effectif à la dernière colonne et capture séparément la fin du scroll. Les horaires mobiles passent de 9,9 à 11,2 px ; dates, données et sélection restent inchangées. **Nouvelle capture et inspection requises.** Le SCSS ciblé compile (12 424 caractères), les 40 tests pratiques/cartes/médias/histoire passent et les 21 templates comparés ne perdent aucun contrat (1 889 → 1 931).

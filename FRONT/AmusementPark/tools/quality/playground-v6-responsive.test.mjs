@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
-import { isCanceledInterceptionError } from '../design-v6/browser-interception-errors.mjs';
+import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from '../design-v6/browser-interception-errors.mjs';
 
 const responsiveScript = await readFile(new URL('../responsive/trip-pages-browser-check.mjs', import.meta.url), 'utf8');
 const designTokens = await readFile(new URL('../../../../docs/design-v6/V6-DESIGN-TOKENS.md', import.meta.url), 'utf8');
@@ -36,6 +36,28 @@ test('hydrated review accepts only protocol errors with a proven matching router
   assert.equal(isCanceledInterceptionError(invalidId, undefined, canceled), false);
   assert.equal(isCanceledInterceptionError(new Error('CDP timeout: Fetch.fulfillRequest'), 'canceled-request', canceled), false);
   assert.equal(isCanceledInterceptionError(new Error('Rejected asset traversal.'), 'canceled-request', canceled), false);
+});
+
+test('native document retirement requires the exact previous main frame/loader and never an active or restored document', () => {
+  const retired = new Set();
+  const first = { id: 'main', loaderId: 'first' };
+  const second = { id: 'main', loaderId: 'second' };
+  const requests = new Map([['old', { frameId: 'main', loaderId: 'first' }], ['active', { frameId: 'main', loaderId: 'second' }], ['other-frame', { frameId: 'child', loaderId: 'first' }]]);
+  let current = advanceMainDocument(undefined, first, requests, retired);
+  current = advanceMainDocument(current, first, requests, retired);
+  assert.equal(retired.size, 0);
+  assert.equal(advanceMainDocument(current, { id: 'child', loaderId: 'child-load', parentId: 'main' }, requests, retired), current);
+  current = advanceMainDocument(current, second, requests, retired);
+  const invalid = new Error('Invalid InterceptionId.');
+  assert.equal(isRetiredDocumentInterceptionError(invalid, 'old', retired), true);
+  for (const id of ['active', 'other-frame', 'missing', undefined]) assert.equal(isRetiredDocumentInterceptionError(invalid, id, retired), false);
+  assert.equal(isRetiredDocumentInterceptionError(new Error('CDP timeout: Fetch.fulfillRequest'), 'old', retired), false);
+  current = advanceMainDocument(current, first, requests, retired);
+  requests.set('restored-active', { frameId: 'main', loaderId: 'first' });
+  assert.equal(isRetiredDocumentInterceptionError(invalid, 'restored-active', retired), false);
+  assert.equal(isRetiredDocumentInterceptionError(invalid, 'old', retired), true);
+  assert.equal(isRetiredDocumentInterceptionError(invalid, 'active', retired), true);
+  assert.equal(current, JSON.stringify(['main', 'first']));
 });
 
 test('the V6 Chromium fixture covers every contractual responsive width', () => {

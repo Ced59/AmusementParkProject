@@ -7,6 +7,13 @@ import { historyRestoreDelta } from '../design-v6/exercise-public-park-items.mjs
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('standalone browser acceptance follows a visible search result, eight real language controls and its own history without publication', () => {
+  const recipe = read('tools/design-v6/exercise-public-standalone.mjs');
+  for (const token of ['Hasenhorn', 'inventedParkLinks', 'standalone-data', "['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl']", 'og:locale', 'canonical', 'hiddenFixtureNotPublishedOrExercised: true', 'history-breadcrumb', 'detail.key', 'home.key']) assert.ok(recipe.includes(token));
+  assert.doesNotMatch(recipe, /fetch\(|localStorage\.setItem|\.submit\(|\.emit\(|Pendolino/);
+  assert.ok(read('tools/design-v6/capture-public-ssr.mjs').includes('await exercisePublicStandalone('));
+});
 const parkTemplate = read('src/app/features/public/parks/ui/park-detail-view.component.html');
 const parkStyles = read('src/app/features/public/parks/ui/park-detail-view.component.scss');
 const itemListTemplate = read('src/app/features/public/park-items/ui/park-items-list-view.component.html');

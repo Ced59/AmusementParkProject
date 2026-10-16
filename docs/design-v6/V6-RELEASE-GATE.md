@@ -33,13 +33,13 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `754cce98c` : 2 728 tests Angular / 581 fichiers, 200 tests Node qualité, 224 assertions HTTP, 40 routes / 2 080 captures et 142 contrôles hydratés ; `f5ddfd8a4` passe ensuite zoom/catégories mais le sandbox ne sert pas encore les navigations document publiques |
+| P21 CI Node 24 | Dernier PASS complet `754cce98c` ; `725ced59c` valide 2 766 tests Angular / 582 fichiers, 207 tests Node qualité et HTTP, puis échoue sur deux interceptions invalidées après la nouvelle navigation document ; preuve de retraite native et standalone i18n à exécuter |
 | Exception P04.6 | PASS_WITH_OWNER_EXCEPTION sur six paires `754cce98c` : deux scripts CDK, +2 854 octets JS, aucun autre nombre de requêtes modifié ; plafond +3 302 inchangé |
 | Recette pratique additionnelle | PASS CIBLÉ `754cce98c` — jour/mois réel, historique météo différé/cache, retour exact et 52 captures ; chevauchement corrigé mais textes comprimés à 320 px, nouveau tableau localement défilable à attester |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | NON sur `f5ddfd8a4` : URL Aeroclub atteinte mais document traité comme asset par l'outil ; renderer SSR V6 borné et marqueurs plats à revalider |
+| CI intégralement verte | NON sur `725ced59c` : rendu public V6 et Aeroclub hydraté passent, deux interceptions invalidées restent à classifier par preuve native exacte ; aucun assouplissement général |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
