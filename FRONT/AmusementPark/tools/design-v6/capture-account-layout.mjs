@@ -12,6 +12,8 @@ import { exerciseAccountTripPages } from './exercise-account-trip-pages.mjs';
 import { accountComparisonFixtureToken } from './account-passport-statistics-fixtures.mjs';
 import { exerciseAccountPassportStatistics } from './exercise-account-passport-statistics.mjs';
 import { exerciseAccountVisitEditor } from './exercise-account-visit-editor.mjs';
+import { anonymousDraftIds } from './account-anonymous-draft-fixtures.mjs';
+import { exerciseAnonymousDraftPages } from './exercise-anonymous-draft-pages.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -36,7 +38,9 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const passportDocuments = ['/statistics', '/statistics/history', `/items/${passportData.itemId}`, `/parks/${passportData.parkId}`,
     '/years/2026', '/share', `/comparisons/invitations/${accountComparisonFixtureToken}`].map(suffix => `${profilePath}/passport${suffix}`);
   const visitDocuments = fixture.visitEditorData.map(data => `${profilePath}/visits/${data.visit.id}`);
-  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, ...tripDocuments, ...passportDocuments, ...visitDocuments];
+  const anonymousPath = `/${language}/passport/local`;
+  const anonymousDocuments = [anonymousPath, ...anonymousDraftIds.map(id => `${anonymousPath}/${id}`)];
+  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath, ...tripDocuments, ...passportDocuments, ...visitDocuments, ...anonymousDocuments];
   if (fixture.kind === 'expired' && (!(homeFixtures instanceof Map) || !homeFixtures.size)) throw new Error('Expired account UI requires exact local public-home fixtures.');
   if (!Array.isArray(widths) || widths.length < 1 || widths.length > 13 || widths.some(width => !Number.isInteger(width) || width < 320 || width > 1920)) throw new Error('Account capture widths exceed their bound.');
   const root = resolve(browserRoot);
@@ -130,7 +134,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     await cdp.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }, { name: 'prefers-color-scheme', value: 'dark' }] });
     await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
     injectedScript = (await cdp.send('Page.addScriptToEvaluateOnNewDocument', { source:
-      `if (location.origin === ${JSON.stringify(accountLayoutFixtureOrigin)}) localStorage.setItem(${JSON.stringify(accountLayoutRefreshMarker)}, 'true');` })).identifier;
+      `if (location.origin === ${JSON.stringify(accountLayoutFixtureOrigin)}) { if (${JSON.stringify(anonymousDocuments)}.includes(location.pathname)) localStorage.removeItem(${JSON.stringify(accountLayoutRefreshMarker)}); else localStorage.setItem(${JSON.stringify(accountLayoutRefreshMarker)}, 'true'); }` })).identifier;
     await cdp.send('Fetch.enable', { patterns: [{ urlPattern: '*', requestStage: 'Request' }] });
     await cdp.send('Page.navigate', { url: accountLayoutFixtureOrigin + profilePath });
     const displayName = fixture.user.publicDisplayName || fixture.user.firstName || fixture.user.email;
@@ -217,6 +221,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         const expectedConfirmationMessage = dictionary.auth.confirm.invalidLinkMessage ?? 'Le lien de confirmation est invalide.';
         await exerciseAccountAuthPages({ evaluate, waitUntil, captureLayouts, fixture, result, navigateDocument, expectedConfirmationMessage });
       }
+      await exerciseAnonymousDraftPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
     }
     if (result.fixtureFailures.length || result.exceptions.length) throw new Error('Account layout accumulated an unexpected fixture or browser failure.');
     result.passed = true;

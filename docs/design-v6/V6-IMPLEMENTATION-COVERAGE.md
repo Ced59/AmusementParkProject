@@ -16,7 +16,7 @@ Les 26 routes de la famille compte ne sont pas déclarées toutes recettées :
 | Éditeur visite, statistiques, partage et invitation passeport | 8 | Huit vues préparées, dont éditeur Draft/Completed/Archived ; 29 tests Node compte verts, rendus CI et workflows persistés encore ouverts |
 | Notifications | 1 | Recette locale remplie/vide, pagination/filtres/erreur, email/live préparée ; 23 tests Node compte verts, rendu CI encore requis |
 | Confirmation et réinitialisation de compte | 2 | Recette UI isolée préparée, sans soumission ; nouveaux tests Angular et rendu CI requis |
-| Brouillons locaux anonymes | 2 | Source/styles et tests unitaires ; recette navigateur/IndexedDB dédiée ouverte |
+| Brouillons locaux anonymes | 2 | Recette IndexedDB CI vide/remplie/verrouillée/manquante préparée ; 31 tests Node compte verts, rendu CI et import réel ouverts |
 
 Ce décompte conserve toutes les routes de la matrice et ne transforme pas la présence de tests en preuve de tous leurs scénarios, permissions ou états. La release reste NO-GO.
 

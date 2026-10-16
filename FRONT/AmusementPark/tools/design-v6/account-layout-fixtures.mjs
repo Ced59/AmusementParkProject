@@ -4,6 +4,7 @@ import { createAccountNotificationFixture, accountNotificationFixtureResponse } 
 import { createAccountTripFixture, accountTripFixtureResponse } from './account-trip-fixtures.mjs';
 import { createAccountPassportStatisticsFixture, accountPassportStatisticsFixtureResponse } from './account-passport-statistics-fixtures.mjs';
 import { createAccountVisitEditorFixture, accountVisitEditorFixtureResponse } from './account-visit-editor-fixtures.mjs';
+import { anonymousDraftFixtureResponse } from './account-anonymous-draft-fixtures.mjs';
 export const accountLayoutFixtureOrigin = 'https://apf-account-layout.invalid';
 export const accountLayoutRefreshMarker = 'amusementpark.hasRefreshSession';
 export const accountLayoutResetQuery = '?token=APF-CI-UI-NOT-A-REAL-RESET-TOKEN';
@@ -77,6 +78,10 @@ export function createAccountLayoutFixture(kind, nowSeconds, language = 'fr') {
 export function accountLayoutFixtureResponse(request, fixture, homeFixtures = new Map()) {
   const url = new URL(request.url);
   if (url.origin !== accountLayoutFixtureOrigin || url.hash) return null;
+  if (fixture.kind !== 'expired') {
+    const anonymousResponse = anonymousDraftFixtureResponse(request, url);
+    if (anonymousResponse) return anonymousResponse;
+  }
   const notificationResponse = accountNotificationFixtureResponse(request, url, fixture);
   if (notificationResponse) return notificationResponse;
   const tripResponse = accountTripFixtureResponse(request, url, fixture);

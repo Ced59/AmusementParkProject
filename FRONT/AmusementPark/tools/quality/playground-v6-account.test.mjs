@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import test from 'node:test';
-import { Script } from 'node:vm';
+import { Script, runInNewContext } from 'node:vm';
 import { exerciseAnonymousAuth } from '../design-v6/exercise-anonymous-auth.mjs';
 import { accountLayoutFixtureOrigin, createAccountLayoutFixture, accountLayoutFixtureResponse, accountLayoutCases } from '../design-v6/account-layout-fixtures.mjs';
 import { accountLayoutCaptureAllowed } from '../design-v6/capture-account-layout.mjs';
@@ -15,9 +15,53 @@ import { exerciseAccountTripPages } from '../design-v6/exercise-account-trip-pag
 import { exerciseAccountPassportStatistics } from '../design-v6/exercise-account-passport-statistics.mjs';
 import { accountComparisonFixtureToken } from '../design-v6/account-passport-statistics-fixtures.mjs';
 import { exerciseAccountVisitEditor } from '../design-v6/exercise-account-visit-editor.mjs';
+import { exerciseAnonymousDraftPages } from '../design-v6/exercise-anonymous-draft-pages.mjs';
+import { createAnonymousDraftFixtures, seedAnonymousDraftBrowser, anonymousDraftParkId } from '../design-v6/account-anonymous-draft-fixtures.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('anonymous draft seed is bounded to the isolated browser origin and never touches user storage', async () => {
+  const drafts = createAnonymousDraftFixtures('2026-10-16T12:00:00Z');
+  assert.equal(drafts.length, 2);
+  assert.equal(drafts[0].schemaVersion, 1);
+  assert.equal(drafts[0].rides[0].count, 2);
+  assert.equal(drafts[0].pendingImport, null);
+  assert.equal(drafts[1].pendingImport.choice, 'Separate');
+  for (const origin of ['https://amusement-parks.fun', 'null', 'https://unrelated.invalid']) {
+    await assert.rejects(runInNewContext(`(${seedAnonymousDraftBrowser.toString()})(${JSON.stringify(accountLayoutFixtureOrigin)}, [])`, {
+      location: { origin }, indexedDB: { open: () => { throw new Error('Must not touch storage.'); } },
+    }), /not isolated/);
+  }
+  await assert.rejects(runInNewContext(`(${seedAnonymousDraftBrowser.toString()})(${JSON.stringify(accountLayoutFixtureOrigin)}, [{},{},{}])`, {
+    location: { origin: accountLayoutFixtureOrigin }, indexedDB: { open: () => { throw new Error('Must not touch storage.'); } },
+  }), /fixture bound/);
+  const fixture = createAccountLayoutFixture('standard', 1792144800);
+  const request = { method: 'GET', url: `${accountLayoutFixtureOrigin}/api/park-items/park/${anonymousDraftParkId}?page=1&size=20&closedFilter=all&category=Attraction` };
+  assert.equal(accountLayoutFixtureResponse(request, fixture).body.items.length, 1);
+  assert.equal(accountLayoutFixtureResponse({ ...request, method: 'POST' }, fixture), null);
+  assert.equal(accountLayoutFixtureResponse({ ...request, url: request.url + '&unknown=true' }, fixture), null);
+  assert.equal(accountLayoutFixtureResponse({ ...request, url: request.url.replace(accountLayoutFixtureOrigin, 'https://amusement-parks.fun') }, fixture), null);
+});
+
+test('anonymous draft recipe compiles local list/editor/lock states without import, remote write or export', async () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const fixture = createAccountLayoutFixture(kind, 1792144800, 'pl');
+    const result = { apiReads: [] };
+    const captures = [];
+    await exerciseAnonymousDraftPages({ fixture, result, language: 'pl',
+      evaluate: async expression => assert.doesNotThrow(() => new Script(expression)),
+      waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+      captureLayouts: async (_selector, page) => captures.push(page), navigateDocument: async () => {} });
+    assert.equal(captures.length, kind === 'standard' ? 7 : 2);
+    assert.equal(result.anonymousDrafts.indexedDbExercised, true);
+    assert.equal(result.anonymousDrafts.importExportAndConfirmedDeletionNotExercised, true);
+  }
+  assert.doesNotMatch(read('tools/design-v6/exercise-anonymous-draft-pages.mjs'), /fetch\(|requestSubmit|\.submit\(|\.export\(|\.addRide\(|\.deleteDraft\(/);
+  const harness = read('tools/design-v6/capture-account-layout.mjs');
+  assert.ok(harness.includes('anonymousDocuments)}.includes(location.pathname)'));
+  assert.ok(harness.includes('localStorage.removeItem('));
+});
 
 test('visit editor input keeps exact draft/completed/archived states, cursor and destructive-write denial', () => {
   for (const kind of ['standard', 'incomplete']) {
