@@ -16,9 +16,9 @@ Le diagnostic peut désormais **recenser plusieurs contrastes défaillants d'une
 |---|---|
 | Branche unique issue du dernier `origin/master` | PASS |
 | SHA et version de départ consignés | PASS |
-| Inventaire route/template/SCSS/interaction généré | SOURCE RÉCONCILIÉE — 148 routes / 293 composants / 268 SCSS + 2 styles inline, CSV master et V6 versionnés ; source distincte des scénarios exécutés |
+| Inventaire route/template/SCSS/interaction généré | SOURCE RÉCONCILIÉE `db82d71eb` — 148 contrats de routes et 293 fichiers de composants identiques, 268 SCSS + 2 styles inline, CSV master et V6 versionnés ; source distincte des scénarios exécutés |
 | Baseline visuelle V5 initiale | PASS |
-| P00 inventaires | Base exacte et V6 réconciliées : 2 057 → 2 056 cibles, delta présentationnel expliqué ; états et baseline comportementale complète toujours non démontrés |
+| P00 inventaires | Base exacte et V6 réconciliées : 2 057 → 2 057 cibles après bouton natif standalone, deltas présentationnels expliqués ; états et baseline comportementale complète toujours non démontrés |
 | P01 | PASS CIBLÉ — tokens et thèmes contrôlés ; contrastes de tous les états encore à recetter |
 | P02 | PASS CIBLÉ — suite a11y complète à P21 |
 | P03 | PASS CIBLÉ — 17 tests statiques, suite Angular complète à P21 |
@@ -43,7 +43,7 @@ Le diagnostic peut désormais **recenser plusieurs contrastes défaillants d'une
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
 | P21 CI Node 24 | PASS complet `fc742b010` — 2 769 tests Angular / 583 fichiers, 224 tests qualité, 224 assertions HTTP, 307 contrôles publics hydratés, 132 contrôles/104 captures profil master/V6 et Docker ; compléments listes/session expirée à exécuter |
 | Exception P04.6 | PASS ciblé `7115bb901`, six paires, +3 110 octets JS sous plafond +3 302, aucune défaillance ; économie du seul pictogramme prouvée séparément, aucun élargissement de l'exception positive |
-| Dernière CI terminée `bc5d44032` | FAIL deux contrastes après recette V6 standard FR complète (670 contrôles/364 captures), zéro erreur fixture/exception ; corrections préparées, autres variantes et campagne intégrale encore à attester |
+| Dernière CI terminée `4331fa087` | Standard FR V6/master chacun 670 contrôles/364 captures ; FAIL avertissement e-mail du cas V6 incomplet après 426 contrôles/232 captures, zéro erreur fixture/exception ; corrigé dans `db82d71eb`, campagne intégrale encore à attester |
 | Recette pratique additionnelle | PASS CIBLÉ `791dc2c46` — 732 captures hydratées additionnelles, calendrier localement défilable, météo, 30 popups, vidéos, récit et standalone huit langues ; scénarios absents et revue exhaustive toujours ouverts |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions autorisées : PKCS 10.0.13, nettoyage Leaflet, tests backend stabilisés (deadline image PASS `136a9b8e2`) ; correction présentationnelle de quatre messages de secours dans trois facades auth, sans modification des mécanismes/ports/validations/payloads, sept nouveaux tests auth PASS `f975d9bc4` |
