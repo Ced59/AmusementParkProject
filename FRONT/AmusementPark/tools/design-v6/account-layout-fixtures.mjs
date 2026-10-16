@@ -2,6 +2,7 @@
 import { homeEvidenceApiPaths } from './home-network-evidence.mjs';
 import { createAccountNotificationFixture, accountNotificationFixtureResponse } from './account-notification-fixtures.mjs';
 import { createAccountTripFixture, accountTripFixtureResponse } from './account-trip-fixtures.mjs';
+import { createAccountPassportStatisticsFixture, accountPassportStatisticsFixtureResponse } from './account-passport-statistics-fixtures.mjs';
 export const accountLayoutFixtureOrigin = 'https://apf-account-layout.invalid';
 export const accountLayoutRefreshMarker = 'amusementpark.hasRefreshSession';
 export const accountLayoutResetQuery = '?token=APF-CI-UI-NOT-A-REAL-RESET-TOKEN';
@@ -68,7 +69,8 @@ export function createAccountLayoutFixture(kind, nowSeconds, language = 'fr') {
     companionAgeYears: accompanied ? 32 : null, createdAtUtc: date, updatedAtUtc: date, version: 1,
   }));
   return { kind, language, user, accessToken, collections, trips, visits, fitProfiles,
-    notificationData: createAccountNotificationFixture(kind, date), tripData: createAccountTripFixture(kind, date, user, trips) };
+    notificationData: createAccountNotificationFixture(kind, date), tripData: createAccountTripFixture(kind, date, user, trips),
+    passportStatisticsData: createAccountPassportStatisticsFixture(kind, date) };
 }
 
 export function accountLayoutFixtureResponse(request, fixture, homeFixtures = new Map()) {
@@ -78,6 +80,8 @@ export function accountLayoutFixtureResponse(request, fixture, homeFixtures = ne
   if (notificationResponse) return notificationResponse;
   const tripResponse = accountTripFixtureResponse(request, url, fixture);
   if (tripResponse) return tripResponse;
+  const passportStatisticsResponse = accountPassportStatisticsFixtureResponse(request, url, fixture);
+  if (passportStatisticsResponse) return passportStatisticsResponse;
   if (fixture.kind === 'expired' && request.method === 'GET' && homeEvidenceApiPaths.has(url.pathname)
       && homeFixtures instanceof Map && homeFixtures.size <= 16) {
     const record = homeFixtures.get(url.pathname + url.search);

@@ -12,9 +12,55 @@ import { exerciseAccountPassportAndFit } from '../design-v6/exercise-account-pas
 import { exerciseAccountAuthPages } from '../design-v6/exercise-account-auth-pages.mjs';
 import { exerciseAccountNotifications } from '../design-v6/exercise-account-notifications.mjs';
 import { exerciseAccountTripPages } from '../design-v6/exercise-account-trip-pages.mjs';
+import { exerciseAccountPassportStatistics } from '../design-v6/exercise-account-passport-statistics.mjs';
+import { accountComparisonFixtureToken } from '../design-v6/account-passport-statistics-fixtures.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('private passport statistics fixtures preserve exact scopes, local filters and unpublished comparison/share states', () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const fixture = createAccountLayoutFixture(kind, 1792144800);
+    const data = fixture.passportStatisticsData;
+    const get = path => accountLayoutFixtureResponse({ method: 'GET', url: accountLayoutFixtureOrigin + path }, fixture);
+    for (const path of ['/api/me/passport/stats', '/api/me/passport/stats/history', `/api/me/passport/items/${data.itemId}/stats`,
+      `/api/me/passport/parks/${data.parkId}/stats`, '/api/me/passport/years/2026/stats', '/api/me/passport/share', '/api/me/passport/share/selection',
+      '/api/me/passport/years/2026/share', '/api/me/passport/years/2026/share/selection', '/api/me/profile-comparisons',
+      `/api/me/comparisons/invitations/${accountComparisonFixtureToken}/preview`]) assert.equal(get(path).status, 200, path);
+    assert.equal(get('/api/me/passport/stats').body.summary.visitCount, kind === 'standard' ? 2 : 0);
+    assert.equal(get('/api/me/passport/stats?year=2026').body.selectedYear, 2026);
+    assert.equal(get(`/api/me/passport/stats?year=2026&parkId=${data.parkId}`).body.selectedParkId, data.parkId);
+    const first = get('/api/me/passport/stats');
+    first.body.availableYears.push(1900);
+    assert.equal(get('/api/me/passport/stats').body.availableYears.includes(1900), false);
+    assert.equal(get('/api/me/passport/share').body.isPublic, false);
+    assert.equal(get(`/api/me/comparisons/invitations/${accountComparisonFixtureToken}/preview`).body.status, kind === 'standard' ? 'Ready' : 'Expired');
+    for (const path of ['/api/me/passport/stats?year=1900', '/api/me/passport/stats?unknown=true', '/api/me/passport/items/unknown/stats',
+      '/api/me/comparisons/invitations/unknown/preview', '/api/me/passport/years/2025/share']) assert.equal(get(path), null);
+    for (const method of ['POST', 'PUT', 'PATCH', 'DELETE']) for (const path of ['/api/me/shares/preview', '/api/me/shares/publish',
+      '/api/me/passport/share', '/api/me/profile-comparisons/ci-comparison-only', `/api/me/comparisons/invitations/${accountComparisonFixtureToken}/accept`]) {
+      assert.equal(accountLayoutFixtureResponse({ method, url: accountLayoutFixtureOrigin + path }, fixture), null);
+    }
+  }
+});
+
+test('seven private passport statistics/share recipes compile without publication or comparison consent', async () => {
+  for (const kind of ['standard', 'incomplete']) {
+    const fixture = createAccountLayoutFixture(kind, 1792144800, 'pl');
+    const result = {};
+    const documents = [];
+    const captures = [];
+    await exerciseAccountPassportStatistics({ fixture, result, language: 'pl',
+      evaluate: async expression => assert.doesNotThrow(() => new Script(expression)),
+      waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+      captureLayouts: async (_selector, page) => captures.push(page), navigateDocument: async path => documents.push(path) });
+    assert.equal(documents.length, 8);
+    assert.equal(captures.length, kind === 'standard' ? 16 : 15);
+    assert.equal(documents.at(-1), '/pl/profile');
+    assert.equal(result.passportStatisticsPages.sharingComparisonAndPublicationNotExercised, true);
+  }
+  assert.doesNotMatch(read('tools/design-v6/exercise-account-passport-statistics.mjs'), /fetch\(|requestSubmit|\.submit\(|\.publish\(|previewPublication\(|\.accept\(|\.revoke\(/);
+});
 
 test('private trip UI input preserves exact read-only endpoints, local role variants and activity cursor deduplication', () => {
   for (const kind of ['standard', 'incomplete']) {

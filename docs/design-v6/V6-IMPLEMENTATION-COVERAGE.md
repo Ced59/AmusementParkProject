@@ -13,7 +13,7 @@ Les 26 routes de la famille compte ne sont pas déclarées toutes recettées :
 | Profil et mot de passe oublié | 2 | PASS ciblé `fc742b010` et campagne publique ; identité/annulation, état vide de récupération, sans soumission |
 | Collections, liste voyages, passeport et profils de groupe Park Fit | 4 | Master standard FR passe dans `7115bb901` ; V6 arrêtée au contraste du profil avant ces compléments, aucun PASS comparatif |
 | Détails et outils de voyage | 7 | Recette deep links propriétaire/lecture seule préparée ; 25 tests Node compte verts, rendu CI encore requis |
-| Éditeur visite, statistiques, partage et invitation passeport | 8 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
+| Éditeur visite, statistiques, partage et invitation passeport | 8 | Sept vues statistiques/partage/invitation préparées, 27 tests Node compte verts ; rendu CI et éditeur de visite encore ouverts |
 | Notifications | 1 | Recette locale remplie/vide, pagination/filtres/erreur, email/live préparée ; 23 tests Node compte verts, rendu CI encore requis |
 | Confirmation et réinitialisation de compte | 2 | Recette UI isolée préparée, sans soumission ; nouveaux tests Angular et rendu CI requis |
 | Brouillons locaux anonymes | 2 | Source/styles et tests unitaires ; recette navigateur/IndexedDB dédiée ouverte |
