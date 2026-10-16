@@ -4,6 +4,10 @@
 
 Dernier run [`38909139005`](https://github.com/Ced59/AmusementParkProject/actions/runs/38909139005) : **FAIL recette** au GET synthétique de rapports historiques d'une visite, après 1 561 contrôles master standard FR. Les tests/build/budgets/backend/sécurité passent, mais les variantes V6 suivantes ne sont pas exécutées. La fixture exacte et son disclosure non soumis sont corrigés ; nouvelle CI obligatoire. Aucun check vert antérieur ne couvre ce nouveau HEAD.
 
+Un diagnostic préliminaire Linux CI vérifie maintenant les scénarios isolés standard/incomplet FR à 390/1 366 px, deux thèmes, V6 puis master. Il réutilise le navigateur de recette et le nettoyage existants, sans serveur ni réseau privé. Son rapport porte `preflightOnly: true` et `fullCampaignRequired: true` : **il ne valide aucune gate globale**. La campagne complète reste obligatoire après réussite ; un échec conserve ses captures dans le même artefact et bloque les étapes suivantes. Thèmes, huit langues, paliers complets, état session expirée, SSR public et métriques réseau ne sont pas remplacés par ce sous-ensemble.
+
+Les 53 tests Node ciblés compte/tokens passent localement, sérialisés ; syntaxe du script de capture contrôlée. Aucun navigateur, serveur ni build local n'est lancé. Les conditions de production/master ne changent pas ; seul le diagnostic PR V6 et la conservation de son artefact sont ajoutés.
+
 **NO-GO MERGE — PR #917 ouverte, recette complète non terminée.** Les PASS ciblés ci-dessous ne constituent pas une acceptation de tous les critères de chaque gate. Aucun merge, tag ni déploiement n’est autorisé avant les checks du dernier commit, la recette visuelle/fonctionnelle Angular réelle et le feu vert explicite du propriétaire.
 
 | Contrôle | État |

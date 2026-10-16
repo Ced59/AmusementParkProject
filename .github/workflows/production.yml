@@ -311,6 +311,17 @@ jobs:
           SITE_VERSION="$(node scripts/read-release-version.mjs)" npm run build -- --configuration production --output-path "${RUNNER_TEMP}/v6-baseline-dist"
           popd
 
+      - name: Diagnose isolated V6 UI before the full visual campaign
+        id: v6-preflight
+        if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        env:
+          V6_ISOLATED_PREFLIGHT: 'true'
+          V6_SSR_EVIDENCE_DIR: ${{ runner.temp }}/v6-public-ssr/isolated-preflight
+          V6_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          V6_BASELINE_SHA: ${{ github.event.pull_request.base.sha }}
+          V6_BASELINE_DIST_DIR: ${{ runner.temp }}/v6-baseline-dist
+        run: node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
+
       - name: Capture initial Angular SSR for the V6 visual review
         id: v6-review
         if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
@@ -329,7 +340,7 @@ jobs:
           node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
 
       - name: Upload initial V6 public SSR evidence
-        if: always() && steps.v6-review.outcome != 'skipped' && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        if: always() && (steps.v6-preflight.outcome != 'skipped' || steps.v6-review.outcome != 'skipped') && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
         uses: actions/upload-artifact@v7
         with:
           name: v6-public-ssr-initial

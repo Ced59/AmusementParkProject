@@ -19,9 +19,52 @@ import { exerciseAnonymousDraftPages } from '../design-v6/exercise-anonymous-dra
 import { createAnonymousDraftFixtures, seedAnonymousDraftBrowser, anonymousDraftParkId } from '../design-v6/account-anonymous-draft-fixtures.mjs';
 import { historyLayoutDocuments, historyLayoutParkId, historyLayoutSubjectId } from '../design-v6/public-history-layout-fixtures.mjs';
 import { exerciseIsolatedHistoryPages } from '../design-v6/exercise-isolated-history-pages.mjs';
+import { isolatedLayoutPreflightPlan } from '../design-v6/isolated-layout-preflight.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('isolated preflight is an explicit Linux CI subset, never a replacement for the full matrix', () => {
+  const environment = { CI: 'true', V6_ISOLATED_PREFLIGHT: 'true', V6_BASELINE_DIST_DIR: '/ci/master-dist', V6_BASELINE_SHA: 'a'.repeat(40) };
+  assert.equal(isolatedLayoutPreflightPlan({}, 'win32'), null);
+  assert.deepEqual(isolatedLayoutPreflightPlan(environment, 'linux'), {
+    fullCampaignRequired: true,
+    cases: ['standard', 'incomplete'].map(kind => ({ kind, language: 'fr', widths: [390, 1366] })),
+  });
+  for (const patch of [{ CI: undefined }, { CI: 'false' }, { V6_BASELINE_DIST_DIR: undefined }, { V6_BASELINE_SHA: 'master' }, { V6_ISOLATED_PREFLIGHT: 'false' }]) {
+    assert.throws(() => isolatedLayoutPreflightPlan({ ...environment, ...patch }, 'linux'));
+  }
+  assert.throws(() => isolatedLayoutPreflightPlan(environment, 'win32'), /Linux CI/);
+  assert.throws(() => isolatedLayoutPreflightPlan(environment, 'darwin'), /Linux CI/);
+});
+
+test('preflight rejects local execution before Chromium and does not load public fixtures or SSR', () => {
+  const source = read('tools/design-v6/capture-public-ssr.mjs');
+  assert.ok(source.indexOf('isolatedLayoutPreflightPlan(process.env, process.platform)') < source.indexOf('const chromeCandidates'));
+  assert.match(source, /const homeFixtureDocument = !preflightPlan && process\.env\.V6_BASELINE_DIST_DIR/);
+  assert.match(source, /report\.preflightOnly = true;/);
+  assert.match(source, /report\.fullCampaignRequired = preflightPlan\.fullCampaignRequired;/);
+  assert.match(source, /\} else \{\s+entry = await import\(pathToFileURL/);
+  assert.match(source, /accountLayoutCases\(widths\)/);
+  assert.match(source, /finally \{\s+entry\?\.ɵdestroyAngularServerApp\(\);/);
+  assert.match(source, /globalThis\.fetch = nativeFetch;/);
+  assert.match(source, /await rm\(tempRoot, \{ recursive: true, force: true/);
+});
+
+test('CI keeps full visual capture mandatory after preflight and retains failure artifacts', () => {
+  const workflow = read('../../.github/workflows/production.yml');
+  const preflight = workflow.indexOf('id: v6-preflight');
+  const full = workflow.indexOf('id: v6-review');
+  const upload = workflow.indexOf('name: Upload initial V6 public SSR evidence');
+  assert.ok(preflight > 0 && full > preflight && upload > full);
+  const diagnosticStep = workflow.slice(preflight, full);
+  const fullStep = workflow.slice(full, upload);
+  assert.match(diagnosticStep, /V6_ISOLATED_PREFLIGHT: 'true'/);
+  assert.doesNotMatch(diagnosticStep + fullStep, /continue-on-error:/);
+  assert.doesNotMatch(fullStep, /V6_ISOLATED_PREFLIGHT|steps\.v6-preflight/);
+  assert.match(fullStep, /node --max-old-space-size=768 tools\/design-v6\/capture-public-ssr\.mjs/);
+  assert.match(workflow.slice(upload, upload + 480), /always\(\).*steps\.v6-preflight\.outcome != 'skipped'.*steps\.v6-review\.outcome != 'skipped'/);
+});
 
 test('isolated historical capabilities keep exact paged DTOs, snapshot dates, ranges and lineage without publication', () => {
   for (const kind of ['standard', 'incomplete']) {
@@ -503,7 +546,9 @@ test('compiled account capture is Linux-CI-only, never forwards API traffic and 
   assert.doesNotMatch(capture, /fetch\(|nativeFetch|spawn\(|request\.headers|request\.postData/);
   assert.ok(capture.indexOf("await cdp.send('Page.navigate', { url: 'about:blank' })") < capture.indexOf("await cdp.send('Fetch.disable')"));
   const script = read('tools/design-v6/capture-public-ssr.mjs');
-  assert.ok(script.indexOf('await captureAccountLayout(') > script.indexOf("'initial-theme-report.json'"));
+  const fullCampaign = script.slice(script.indexOf('entry = await import(pathToFileURL'));
+  assert.ok(fullCampaign.indexOf("'initial-theme-report.json'") >= 0);
+  assert.ok(fullCampaign.indexOf('await captureAccountLayout(') > fullCampaign.indexOf("'initial-theme-report.json'"));
 });
 
 test('expired account UI can replay only exact bounded anonymous home data on its local origin', () => {

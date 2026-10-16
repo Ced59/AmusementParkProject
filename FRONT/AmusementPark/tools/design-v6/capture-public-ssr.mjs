@@ -26,9 +26,11 @@ import { mapPopupLayoutIssues, mapReviewScrollDelta } from './map-popup-layout.m
 import { createAccountLayoutFixture, accountLayoutCases } from './account-layout-fixtures.mjs';
 import { captureAccountLayout } from './capture-account-layout.mjs';
 import { collectContrastCandidates } from './browser-text-contrast.mjs';
+import { isolatedLayoutPreflightPlan } from './isolated-layout-preflight.mjs';
 
 // Initial public SSR/hydration plus network-denied, synthetic account UI in CI.
 // Never starts a server, authenticates remotely, performs writes or replaces full acceptance.
+const preflightPlan = isolatedLayoutPreflightPlan(process.env, process.platform);
 const publicOrigin = 'https://amusement-parks.fun';
 const browserRoot = resolve('dist/amusement-park/browser');
 const outputRoot = resolve(process.env.V6_SSR_EVIDENCE_DIR ?? '../../docs/design-v6/evidence/public-ssr');
@@ -76,7 +78,7 @@ const chromeExecutable = chromeCandidates.find((candidate) => candidate.includes
 if (!chromeExecutable) throw new Error('A Chromium executable is required.');
 
 const nativeFetch = globalThis.fetch;
-const homeFixtureDocument = process.env.V6_BASELINE_DIST_DIR
+const homeFixtureDocument = !preflightPlan && process.env.V6_BASELINE_DIST_DIR
   ? JSON.parse(await readFile(join(outputRoot, 'home-public-fixtures.json'), 'utf8')) : null;
 if (homeFixtureDocument && (!/^[a-f0-9]{40}$/.test(homeFixtureDocument.baseSha ?? '') || homeFixtureDocument.baseSha !== process.env.V6_BASELINE_SHA)) {
   throw new Error('The home comparison baseline must match the exact PR base SHA.');
@@ -794,6 +796,27 @@ try {
   await cdp.send('Page.enable');
   await cdp.send('Runtime.enable');
   await cdp.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  if (preflightPlan) {
+    report.scope = 'Diagnostic isolated UI subset only; not full acceptance, real authentication or public SSR/SEO evidence';
+    report.preflightOnly = true;
+    report.fullCampaignRequired = preflightPlan.fullCampaignRequired;
+    report.accountLayouts = [];
+    const fixtureTime = Math.floor(Date.now() / 1000);
+    for (const { kind, language, widths: accountWidths } of preflightPlan.cases) {
+      const fixture = createAccountLayoutFixture(kind, fixtureTime, language);
+      for (const label of ['v6', 'master']) {
+        try {
+          report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label,
+            browserRoot: label === 'master' ? resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') : browserRoot }));
+        } catch (error) {
+          report.accountLayoutFailure = { label, kind, language, error: error.message };
+          throw error;
+        } finally {
+          await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
+        }
+      }
+    }
+  } else {
   entry = await import(pathToFileURL(resolve('dist/amusement-park/server/main.server.mjs')));
   const application = entry.ɵgetOrCreateAngularServerApp();
   let documentRenderInFlight = false;
@@ -1099,6 +1122,7 @@ try {
         }
       }
     }
+  }
   }
 } finally {
   entry?.ɵdestroyAngularServerApp();
