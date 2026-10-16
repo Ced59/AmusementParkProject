@@ -114,6 +114,8 @@ Le verrou mémoire local a été réparé avec l'autorisation explicite du propr
 
 ## Reprise autorisée le 16 octobre
 
+La CI `df03114c9` passe 2 767 tests Angular / 582 fichiers, 213 tests qualité Node et 224 contrôles HTTP. La recette s'arrête à 139 contrôles sur le cadrage du document à 390 × 640 ; aucun échec applicatif/interception n'est enregistré. Le popup tient dans les bounds Leaflet mais la carte entière dépasse en haut du viewport. Le recadrage de recette doit repasser avant d'atteindre les scénarios vidéo/histoire/standalone ; aucun résultat ultérieur n'est acquis.
+
 Le propriétaire autorise la libération du verrou de l'appel navigateur exactement confirmé terminé, et des suivants dans le même cas après vérification. La récupération vérifie l'identité native du propriétaire, la fin native de l'appel exact et la fin de son tour sous le verrou partagé. Aucun processus, seuil, hook ou service n'est modifié. Cette autorisation n'autorise pas la suppression d'un verrou actif ou sans preuve de fin.
 
 Les corrections sauvegardées de recette vidéo et du popup Leaflet passent 35 contrôles Node ciblés et la compilation Sass du popup (2 501 octets CSS compressés). Le popup réutilise sa mise en page native après redimensionnement, rebranche les mêmes liens et conserve leur focus ; test Angular et captures réelles à valider en CI. Aucun PASS global ni feu vert de fusion n'est déduit de ces seuls contrôles locaux.

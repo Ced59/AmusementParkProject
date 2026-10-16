@@ -21,7 +21,7 @@ import { exercisePublicMediaHistory } from './exercise-public-media-history.mjs'
 import { exercisePublicMap } from './exercise-public-map.mjs';
 import { canRenderPublicDocument } from './public-document-evidence.mjs';
 import { exercisePublicStandalone } from './exercise-public-standalone.mjs';
-import { mapPopupLayoutIssues } from './map-popup-layout.mjs';
+import { mapPopupLayoutIssues, mapReviewScrollDelta } from './map-popup-layout.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -611,6 +611,17 @@ async function captureHydratedHome(rawHtml, options = {}) {
             if (layout.documentWidth > width + 1) throw new Error(`Hydrated practical page overflows at ${width}px.`);
             if (label === 'map-marker-popup') {
               await waitUntil(async () => {
+                const position = await evaluate(`(() => {
+                  const map = document.querySelector('.park-items-map .leaflet-map-container').getBoundingClientRect();
+                  const bottom = document.querySelector('.app-mobile-bottom-nav')?.getBoundingClientRect();
+                  return { mapTop: map.top, mapHeight: map.height, viewportHeight: innerHeight,
+                    bottomNavigationHeight: bottom && bottom.height > 0 && bottom.bottom >= innerHeight - 1 ? bottom.height : 0 };
+                })()`);
+                const scrollDelta = mapReviewScrollDelta(position);
+                if (Math.abs(scrollDelta) > 1) {
+                  await evaluate(`scrollBy({ top: ${JSON.stringify(scrollDelta)}, behavior: 'instant' })`);
+                  await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
+                }
                 result.lastPopupLayout = await evaluate(`(() => {
                   const rect = node => { if (!node) return null; const r = node.getBoundingClientRect(); return { x: r.x, y: r.y, right: r.right, bottom: r.bottom }; };
                   const control = node => { const r = rect(node); return r ? { ...r, unobscured: node.contains(document.elementFromPoint((r.x + r.right) / 2, (r.y + r.bottom) / 2)) } : null; };

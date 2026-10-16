@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Popup après correction — preuve `df03114c9`
+
+La [CI `38880212474`, artefact `12037800624`](https://github.com/Ced59/AmusementParkProject/actions/runs/38880212474/artifacts/12037800624) valide les 13 largeurs du popup sombre à hauteur 1 200 px, mais refuse ensuite la capture 390 × 640. La géométrie distingue le défaut : le popup tient dans la carte (y −44,6 → 149,3 dans y −50,7 → 301,3), mais **la carte entière a défilé au-dessus du viewport** après le reflow. L'inspection de la capture d'échec confirme ce décalage du document, pas une nouvelle troncature interne du popup.
+
+Le recadrage de recette utilise désormais la position réelle de la carte et la place prise par la navigation mobile, puis défile uniquement le document après le reflow. Il ne rouvre pas le popup, ne déplace pas la carte Leaflet et conserve les assertions de titre, Fermer et actions au premier plan. Trois cas purs couvrent le décalage, le cadrage déjà correct et la faible hauteur. **La nouvelle capture reste requise ; la campagne précédente n'est pas déclarée verte.**
+
 ## Popup Leaflet — défaut résiduel observé, correction à recapturer
 
 La capture hydratée `fr_map-marker-popup_390_dark.webp` du [run `cd1b7dd28`, artefact `12032732139`](https://github.com/Ced59/AmusementParkProject/actions/runs/38869945426/artifacts/12032732139) confirme les nouveaux marqueurs plats. Elle révèle cependant une bulle encore blanche/arrondie V5 et le titre hors des bounds après redimensionnement. Les styles réutilisent désormais les tokens de champ/texte/boutons, des coins 2 px, une largeur bornée et un défilement vertical local pour le contenu très long. Les actions gardent leurs liens et des cibles de 44 px ; Fermer reste un contrôle natif Leaflet d'au moins 32 px au réglage de base.

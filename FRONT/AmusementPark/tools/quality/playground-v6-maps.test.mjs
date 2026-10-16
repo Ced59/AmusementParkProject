@@ -4,7 +4,13 @@ import { resolve } from 'node:path';
 import test from 'node:test';
 import { mapViewportSettled } from '../design-v6/exercise-public-map.mjs';
 import { canRenderPublicDocument } from '../design-v6/public-document-evidence.mjs';
-import { mapPopupLayoutIssues } from '../design-v6/map-popup-layout.mjs';
+import { mapPopupLayoutIssues, mapReviewScrollDelta } from '../design-v6/map-popup-layout.mjs';
+
+test('map review recentres a real page after responsive reflow, allowing for the fixed bottom navigation', () => {
+  assert.equal(mapReviewScrollDelta({ mapTop: -50, mapHeight: 352, viewportHeight: 640, bottomNavigationHeight: 76 }), -156);
+  assert.equal(mapReviewScrollDelta({ mapTop: 106, mapHeight: 352, viewportHeight: 640, bottomNavigationHeight: 76 }), 0);
+  assert.equal(mapReviewScrollDelta({ mapTop: 30, mapHeight: 500, viewportHeight: 480, bottomNavigationHeight: 76 }), 30);
+});
 
 test('map popup geometry rejects clipped headings, covered actions and compressed touch controls', () => {
   const layout = { map: { x: 10, y: 20, right: 310, bottom: 440 }, popup: { x: 50, y: 40, right: 270, bottom: 200 }, heading: { unobscured: true }, close: { x: 238, y: 40, right: 270, bottom: 72, unobscured: true }, actions: [{ x: 62, y: 136, right: 180, bottom: 180, unobscured: true }] };
