@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Défaut profil détecté — `7115bb901`
+
+L'[artefact `12046276843`](https://github.com/Ced59/AmusementParkProject/actions/runs/38900388260/artifacts/12046276843) conserve le FAIL original : `v6_standard_fr_account-profile_390_light.webp` et son rapport. La capture inspectée montre nom long, navigation et actions repliés dans le viewport ; le document ne déborde pas. Deux kickers de 11,52 px (« Radar personnel » et « Voyages à préparer ») sont mesurés à **4,25:1**, sous le seuil de 4,5:1. Aucun échec de fixture ni exception navigateur. La couleur de texte est corrigée via l'alias existant et un test protège ce fond exact ; **nouvelle CI/capture requise**, sans transformer rétroactivement ce FAIL en PASS.
+
 ## Profil compilé — premier PASS `fc742b010`
 
 Les **104 captures compte master/V6**, identités standard/incomplètes, passent les 13 largeurs et deux thèmes dans [l'artefact `12043431107`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894/artifacts/12043431107). Inspection de `v6_standard_account-profile_390_dark.webp` : nom long sur plusieurs lignes, avatar sans média, email et navigation mobile dans le viewport. Inspection de `v6_incomplete_account-profile_1366_light.webp` : fallback email visible, panneau plat, sections/actions présentes. Ce sont des données synthétiques réservées à la recette CI, jamais un compte ou texte de production. Éditeur détaillé, avertissement suppression, listes compte et session expirée attendent leur nouvelle campagne. Approbation propriétaire et couverture exhaustive restent ouvertes.

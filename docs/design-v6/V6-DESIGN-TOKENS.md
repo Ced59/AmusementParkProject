@@ -2,6 +2,8 @@
 
 ## Principes
 
+La CI `7115bb901 / 38900388260` mesure deux kickers du profil clair à 4,25:1 sur leur fond réellement composé. L'alias de texte `--app-light-accent-sky` passe de `#086b7c` à `#075f6e` et `--app-accent-cyan` le réutilise. Le bleu canonique de la maquette, les fonds, le sombre et la marque ne changent pas. Un test conserve la composition mesurée comme cas de régression sous 4,5:1 avec l'ancienne couleur et au-dessus avec la nouvelle ; cela ne remplace pas le nouveau rendu navigateur exigé.
+
 Le shell compte reçoit deux noms de régions/groupes localisés, jusque-là figés en anglais. Deux nouvelles clés sont ajoutées dans chaque langue (7 322 clés au total), sans modifier une valeur existante ni les slogans. Le groupe de repères reçoit la sémantique `group`, sans événement ou logique supplémentaire. Le décor vide `home-hero__backdrop`, déjà `display:none` dans les deux thèmes, et ses deux règles mortes sont retirés : aucun contenu, image ou contrôle n'est supprimé. Rendu et mesure P04.6 du prochain build restent requis, plafond JS inchangé.
 
 Quatre messages de secours auth sont ensuite localisés dans les huit langues (7 326 clés), avec textes français et messages serveur préservés. Cette correction de présentation, documentée dans la recette et le gate, ne touche ni aux tokens visuels ni aux mécanismes d'authentification. Elle exige ses nouveaux tests et rendus CI avant acceptation.

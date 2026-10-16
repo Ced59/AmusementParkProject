@@ -149,6 +149,17 @@ test('Playground light semantic chip tones meet AA on the composited soft backgr
   }
 });
 
+test('small sky kickers remain AA on the actual nested profile surface found by Chromium', () => {
+  const theme = variables(light);
+  const foreground = resolveThemeColor(theme, '--app-light-accent-sky');
+  // Run 38900388260: two 11.52px profile kickers measured 4.25:1.
+  // Preserve the measured composite as a regression case, not a browser PASS.
+  const observedBackground = [0.8037894588235295, 0.8525680329411766, 0.8132834823529411];
+  assert.ok(contrast('#086b7c', observedBackground) < 4.5);
+  assert.ok(contrast(foreground, observedBackground) >= 4.5);
+  assert.equal(resolveThemeColor(theme, '--app-accent-cyan'), foreground);
+});
+
 test('Playground category aliases resolve where the theme values live, not on root', () => {
   assert.doesNotMatch(designTokens, /--type-(?:coaster|water|family|show|food|thrill):/);
   const body = adapters.match(/body\s*\{([^}]+)\}/)?.[1];

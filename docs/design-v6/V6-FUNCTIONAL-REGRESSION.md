@@ -1,5 +1,9 @@
 # V6 — non-régression fonctionnelle
 
+## Dernière recette — `7115bb901`, FAIL conservé
+
+Le [run `38900388260`](https://github.com/Ced59/AmusementParkProject/actions/runs/38900388260) passe tests/build/budgets frontend, backend et les six paires réseau P04.6 (+3 110 octets JS, plafond inchangé). La variante master standard FR passe 370 contrôles et 312 captures de profil/éditeurs/listes/passeport/Park Fit sans exception ni fixture manquante. La V6 s'arrête ensuite au contraste du profil clair 390 px (deux kickers à 4,25:1), avant les variantes suivantes : **leurs compléments ne sont pas déclarés PASS**. Correction de couleur et nouveau rendu exigés. Les 51 tests Node ciblés compte/tokens/accueil passent après correction ; les sept nouveaux tests Angular auth et les pages auth ajoutées attendent leur exécution CI.
+
 ## Compte standard/incomplet — premier PASS `fc742b010`
 
 La [CI `38892315894`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894) passe intégralement, Docker compris. Les quatre variantes master/V6 × standard/incomplet passent **132 contrôles et 104 captures** (13 largeurs × deux thèmes), sans exception, réponse manquante ni débordement du document. Seuls trois échanges **locaux** par variante sont nécessaires : refresh synthétique et deux lectures du même `UserDto` (header/profil). Aucun appel distant authentifié, sauvegarde, export ou suppression. [Artefact `12043431107`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894/artifacts/12043431107).

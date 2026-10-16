@@ -11,11 +11,11 @@ Les 26 routes de la famille compte ne sont pas déclarées toutes recettées :
 | Famille de recette compte | Routes | Preuve navigateur actuelle |
 |---|---:|---|
 | Profil et mot de passe oublié | 2 | PASS ciblé `fc742b010` et campagne publique ; identité/annulation, état vide de récupération, sans soumission |
-| Collections, liste voyages, passeport et profils de groupe Park Fit | 4 | Compléments préparés ; campagne `136a9b8e2` en cours, pas encore PASS |
+| Collections, liste voyages, passeport et profils de groupe Park Fit | 4 | Master standard FR passe dans `7115bb901` ; V6 arrêtée au contraste du profil avant ces compléments, aucun PASS comparatif |
 | Détails et outils de voyage | 7 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
 | Éditeur visite, statistiques, partage et invitation passeport | 8 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
 | Notifications | 1 | Source/styles et tests unitaires ; recette navigateur dédiée ouverte |
-| Confirmation et réinitialisation de compte | 2 | Source/styles et tests unitaires ; tokens/états navigateur dédiés ouverts |
+| Confirmation et réinitialisation de compte | 2 | Recette UI isolée préparée, sans soumission ; nouveaux tests Angular et rendu CI requis |
 | Brouillons locaux anonymes | 2 | Source/styles et tests unitaires ; recette navigateur/IndexedDB dédiée ouverte |
 
 Ce décompte conserve toutes les routes de la matrice et ne transforme pas la présence de tests en preuve de tous leurs scénarios, permissions ou états. La release reste NO-GO.

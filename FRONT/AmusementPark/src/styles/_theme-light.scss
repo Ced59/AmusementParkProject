@@ -42,7 +42,7 @@ body.light-mode {
   /* M16 light-specific contrast aliases. Dark keeps the original mockup values. */
   --app-light-accent-lime: #536600;
   --app-light-accent-lime-soft: rgba(83, 102, 0, 0.12);
-  --app-light-accent-sky: #086b7c;
+  --app-light-accent-sky: #075f6e;
   --app-light-accent-sky-soft: rgba(12, 140, 163, 0.12);
   --app-light-accent-gold: #8a4f00;
   --app-light-accent-gold-soft: rgba(138, 79, 0, 0.14);
@@ -86,7 +86,7 @@ body.light-mode {
   --app-topbar-bg: var(--nav-bg);
   --app-sidebar-bg: var(--bg-card);
   --app-background-illustration-opacity: 0;
-  --app-accent-cyan: #086b7c;
+  --app-accent-cyan: var(--app-light-accent-sky);
   --app-accent-pink: var(--app-light-accent-rose);
   --app-accent-gold: #8a4f00;
   --app-accent-lime: #536600;
