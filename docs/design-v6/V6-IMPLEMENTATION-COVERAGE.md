@@ -1,5 +1,7 @@
 # V6 — couverture d’implémentation
 
+Audit complémentaire du 16 octobre : le filtre historique `*.component.ts` du générateur omet **20 primitives `shared/ui` nommées simplement `dialog.ts`, `table.ts`, etc.** Deux blocs de styles intégrés aux composants ne figurent pas non plus dans la liste SCSS. Ces composants sont connus et leurs styles/contrats ont été examinés, mais les CSV ne sont donc pas encore exhaustifs sur ce point. Leur découverte et les interactions inline doivent être corrigées et recalculées avant le gel final. Les nombres de référence ci-dessous ne sont pas requalifiés en couverture 100 %.
+
 ## Référence immuable
 
 - Branche : `feat/ui-v6-playground-redesign`

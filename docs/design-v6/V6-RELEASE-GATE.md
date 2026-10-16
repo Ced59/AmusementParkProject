@@ -10,7 +10,7 @@
 | SHA et version de départ consignés | PASS |
 | Inventaire route/template/SCSS/interaction généré | PASS |
 | Baseline visuelle V5 initiale | PASS |
-| P00 inventaires | PASS — baseline visuelle ciblée ; couverture exhaustive des états non démontrée |
+| P00 inventaires | CORRECTION OUVERTE — 20 primitives `.ts` et deux styles inline exclus par le filtre historique ; recalcul requis, états complets toujours non démontrés |
 | P01 | PASS CIBLÉ — tokens et thèmes contrôlés ; contrastes de tous les états encore à recetter |
 | P02 | PASS CIBLÉ — suite a11y complète à P21 |
 | P03 | PASS CIBLÉ — 17 tests statiques, suite Angular complète à P21 |
@@ -33,7 +33,7 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `0a75fa1e4` passe 2 726 tests, 40 routes et 123 contrôles, puis bloque sur P04.6 : deux scripts supplémentaires mesurés ; diagnostic de modules et nouvelle CI requis |
+| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `408c71639` passe 2 728 tests et le backend, mais le runner ne peut joindre l'API publique pendant HTTP SSR ; P04.6 précédent toujours bloquant et nouvelles captures à exécuter |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |

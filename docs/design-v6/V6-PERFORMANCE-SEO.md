@@ -1,5 +1,11 @@
 # V6 — performance, SEO et SSR
 
+## Incident réseau du runner — `408c71639`
+
+La CI `38832267608` passe **2 728 tests Angular / 581 fichiers** et le backend. Les appels du SSR isolé vers `https://amusement-parks.fun` échouent ensuite avec `UND_ERR_CONNECT_TIMEOUT` (connexion 10 s), avant toute campagne navigateur. Le catalogue Bing renvoie alors 503 avec `missing-canonical`, conformément au garde SEO, et le contrôle exigeant 200 refuse ce rendu. La fixture de référence ne contient aucune réponse API : elle ne doit pas être utilisée comme vraie comparaison V5/V6.
+
+Une unique lecture anonyme de `/api/public-stats/home` depuis le poste répond 200 en 981 ms après le run ; cela ne prouve pas la connectivité du runner et ne requalifie pas son échec. Aucun délai, politique SSR, service ou infrastructure n'est modifié. Le diagnostic compilé est déplacé avant la recette HTTP, afin de rester disponible même quand cette connexion échoue. Une nouvelle CI est nécessaire ; le dépassement de deux scripts du run précédent reste également ouvert.
+
 ## Mesure bloquante du 16 octobre — `0a75fa1e4`
 
 La [CI 38829033532](https://github.com/Ced59/AmusementParkProject/actions/runs/38829033532) passe le backend, la sécurité, les **2 726 tests Angular**, 40 routes / 2 080 captures, les 38 détails Fleury et 123 contrôles hydratés. L'isolation entre recette et snapshots est réparée. Les nouveaux en-têtes pratiques passent les contrôles de géométrie. La campagne s'arrête ensuite sur P04.6 : les six comparaisons identiques par population, à 390/1 366 px, mesurent **105 → 107 requêtes** et **+60 364 octets décodés**. Ce dépassement n'est ni ignoré ni accepté par défaut.

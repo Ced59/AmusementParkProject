@@ -1,5 +1,5 @@
-import { readdir, readFile, stat } from 'node:fs/promises';
-import { join } from 'node:path';
+import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
 
 export function browserModuleEvidence(filename, source) {
   return { filename, bytes: Buffer.byteLength(source),
@@ -25,4 +25,17 @@ export async function readBrowserModuleEvidence(root) {
     modules.push(evidence);
   }
   return modules;
+}
+
+if (process.argv.includes('--write')) {
+  if (process.env.CI !== 'true' || !process.env.V6_BASELINE_DIST_DIR || !process.env.V6_SSR_EVIDENCE_DIR) {
+    throw new Error('Compiled module evidence is restricted to the configured isolated CI review.');
+  }
+  const modules = { scope: 'compiled module imports and focus/dialog markers; not proof of initial loading',
+    master: await readBrowserModuleEvidence(resolve(process.env.V6_BASELINE_DIST_DIR, 'browser')),
+    v6: await readBrowserModuleEvidence(resolve('dist/amusement-park/browser')) };
+  const directory = resolve(process.env.V6_SSR_EVIDENCE_DIR);
+  await mkdir(directory, { recursive: true });
+  await writeFile(join(directory, 'browser-module-evidence.json'), JSON.stringify(modules, null, 2));
+  console.log(`Compiled module evidence: ${modules.master.length} master / ${modules.v6.length} V6 modules.`);
 }
