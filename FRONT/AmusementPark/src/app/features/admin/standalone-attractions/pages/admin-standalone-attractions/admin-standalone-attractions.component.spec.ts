@@ -157,7 +157,7 @@ describe('AdminStandaloneAttractionsComponent', () => {
       load: () => Promise<void>;
       select: (value: StandaloneAttraction) => void;
       selected: () => StandaloneAttraction | null;
-      isSelected: (id: string | null) => boolean;
+      isSelected: (id: string | null | undefined) => boolean;
     };
     await accessor.load();
     fixture.detectChanges();

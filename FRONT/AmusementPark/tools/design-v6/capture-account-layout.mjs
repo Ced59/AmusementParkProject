@@ -5,6 +5,7 @@ import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanc
 import { exerciseAccountLists } from './exercise-account-lists.mjs';
 import { exerciseAccountProfileControls } from './exercise-account-profile-controls.mjs';
 import { exerciseAccountPassportAndFit } from './exercise-account-passport-and-fit.mjs';
+import { collectContrastCandidates } from './browser-text-contrast.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -157,6 +158,11 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
             return stable && layout.width === width && layout.theme === theme;
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
+          if ([390, 1366].includes(width)) {
+            layout.contrast = await evaluate(`(${collectContrastCandidates.toString()})({ includeCoverage: true })`);
+            if (!layout.contrast.checked) issues.push('no measurable visible flat text for the account contrast probe');
+            if (layout.contrast.warnings.length) issues.push('visible flat account text below its AA contrast threshold');
+          }
           if (page === 'account-expired' && (!layout.dialog || layout.dialog.x < -1 || layout.dialog.y < -1
               || layout.dialog.right > width + 1 || layout.dialog.bottom > layout.height + 1 || !layout.dialog.closeUnobscured)) issues.push('expired login dialog bounds or close action');
           const screenshot = `${label}_${fixture.kind}_${page}_${width}_${theme}.webp`;

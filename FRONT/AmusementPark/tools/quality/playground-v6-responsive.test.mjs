@@ -1,12 +1,36 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
+import { runInNewContext } from 'node:vm';
+import { collectContrastCandidates } from '../design-v6/browser-text-contrast.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from '../design-v6/browser-interception-errors.mjs';
 
 const responsiveScript = await readFile(new URL('../responsive/trip-pages-browser-check.mjs', import.meta.url), 'utf8');
 const designTokens = await readFile(new URL('../../../../docs/design-v6/V6-DESIGN-TOKENS.md', import.meta.url), 'utf8');
 const httpScript = await readFile(new URL('../design-v6/verify-public-http.mjs', import.meta.url), 'utf8');
 const baseStyles = await readFile(new URL('../../src/styles/_base.scss', import.meta.url), 'utf8');
+
+test('the shared browser contrast probe measures composited text, distinguishes large text and reports unmeasured media honestly', () => {
+  const probe = (foreground, { size = '16px', weight = '400', backgroundImage = 'none', opacity = '1' } = {}, includeCoverage = true) => {
+    const style = { color: foreground, backgroundColor: 'rgb(255, 255, 255)', display: 'block', visibility: 'visible', backgroundImage, opacity, fontSize: size, fontWeight: weight };
+    const element = { tagName: 'SPAN', classList: ['probe'], closest: () => null, parentElement: null,
+      getBoundingClientRect: () => ({ width: 100, height: 30, top: 0, bottom: 30 }) };
+    let returned = false;
+    return JSON.parse(JSON.stringify(runInNewContext(`(${collectContrastCandidates.toString()})({includeCoverage: ${includeCoverage}})`, {
+      document: { body: {}, createTreeWalker: () => ({ nextNode: () => { if (returned) return null; returned = true; return { textContent: 'Visible text', parentElement: element }; } }) },
+      NodeFilter: { SHOW_TEXT: 4 }, innerHeight: 100, getComputedStyle: () => style,
+    })));
+  };
+  assert.equal(probe('rgb(118, 118, 118)').warnings.length, 0);
+  assert.equal(probe('rgb(119, 119, 119)').warnings[0].required, 4.5);
+  assert.equal(probe('rgb(119, 119, 119)', { size: '24px' }).warnings.length, 0);
+  assert.equal(probe('rgba(0, 0, 0, 0.5)').warnings.length, 1);
+  const media = probe('rgb(119, 119, 119)', { backgroundImage: 'url(photo.webp)' });
+  assert.equal(media.checked, 0);
+  assert.equal(media.skipped, 1);
+  assert.match(media.scope, /not full AA acceptance/);
+  assert.ok(Array.isArray(probe('rgb(0, 0, 0)', {}, false)));
+});
 
 test('the page body cannot conceal horizontal layout regressions', () => {
   assert.doesNotMatch(baseStyles, /overflow-x:\s*(?:hidden|clip)/);
