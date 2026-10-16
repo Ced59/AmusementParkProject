@@ -642,7 +642,8 @@ async function captureHydratedHome(rawHtml, options = {}) {
                       popupOffsetHeight: popupHost?.offsetHeight, content: rect(popupContent),
                       popupStyle: popupStyle ? { marginBottom: popupStyle.marginBottom, bottom: popupStyle.bottom, top: popupStyle.top,
                         position: popupStyle.position, transform: popupStyle.transform, boxSizing: popupStyle.boxSizing } : null },
-                    close: control(document.querySelector('.park-items-map .leaflet-popup-close-button')), actions: [...document.querySelectorAll('.park-items-map .leaflet-map-popup__action')].map(control) };
+                    close: control(document.querySelector('.park-items-map .leaflet-popup-close-button')), actions: [...document.querySelectorAll('.park-items-map .leaflet-map-popup__action')].map(control),
+                    zoomControls: [...document.querySelectorAll('.park-items-map .leaflet-control-zoom a')].map(control) };
                 })()`);
                 return mapPopupLayoutIssues(result.lastPopupLayout).length === 0;
               }, `resized real map popup remains complete and actionable at ${width}×${height} (${theme})`);

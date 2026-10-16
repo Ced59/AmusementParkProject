@@ -387,6 +387,7 @@ describe('LeafletMapComponent', () => {
     expect(testDouble.marker.bindPopup).toHaveBeenCalled();
     const popupContent: string = vi.mocked(testDouble.marker.bindPopup).mock
       .lastCall![0] as string;
+    expect(testDouble.marker.bindPopup).toHaveBeenCalledWith(popupContent, { autoPanPaddingTopLeft: [5, 80] });
     expect(popupContent).toContain('leaflet-map-popup__action--directions');
     expect(popupContent).toContain('Y aller');
     expect(popupContent).not.toContain('<strong></strong>');

@@ -21,7 +21,7 @@ app-leaflet-static-map {
 
   .leaflet-popup-content {
     max-width: min(16rem, calc(100vw - 7rem));
-    max-height: min(20rem, 320px);
+    max-height: min(14rem, 224px);
     margin: 12px;
     overflow: auto;
     font-size: 0.82rem;

@@ -2,6 +2,10 @@
 
 ## Popup normal — synchronisation des bounds à attester
 
+La campagne `e6a531fe6` refuse encore la géométrie à 320 px après les attentes normales. Son [artefact `12039486997`](https://github.com/Ced59/AmusementParkProject/actions/runs/38884665674/artifacts/12039486997) montre cette fois le cadre entièrement dans la carte (y 433 → 626,9 dans y 382,9 → 734,9), mais le titre recouvert par les contrôles de zoom. La synchronisation seule n'est donc pas présentée comme la cause résolue.
+
+Le correctif réutilise une factory pure sous `ui/maps/leaflet` pour réserver les 80 px des deux boutons natifs et de leur marge, via **`autoPanPaddingTopLeft: [5, 80]`**. C'est une option de placement présentationnel explicitement documentée, appliquée aux deux adaptateurs ; activation de pan, zoom, drag, fermeture, coordonnées, ancres, liens et événements restent inchangés. Le contenu conserve un scroll local avec maximum 224 px pour tenir dans la carte mobile. Aucun décalage forcé du popup, masquage des contrôles ou changement de `z-index` n'est utilisé. Tests Angular de factory/liaison et nouvelles captures requis ; aucun succès annoncé sur la seule compilation.
+
 Le [run `527bbabf3`, artefact `12038434133`](https://github.com/Ced59/AmusementParkProject/actions/runs/38883443563/artifacts/12038434133) valide à nouveau les trois lightboxes (photos 208/303/117 px, Fermer au premier plan), puis constate le dépassement de popup à 320 px. Le diagnostic DOM conserve 194 px de hauteur et un `bottom: -7px` natif ; aucun champ privé n'est utilisé. La relecture identifie que le retour du nombre de marqueurs ne prouve pas la fin des cycles de bounds existants (0 puis 120 ms) ni de l'auto-pan du popup. La recette normale attend désormais trois observations stables du proxy **et** du pane, sans classe native pan/zoom, après reset puis ouverture. Aucun délai produit, option Leaflet, interaction ou test de destruction rapide n'est changé. Le défaut reste ouvert jusqu'au nouveau rendu, sans attribution définitive prématurée.
 
 ## Mesure transitoire de lightbox — `348589406`

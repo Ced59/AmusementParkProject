@@ -13,13 +13,14 @@ test('map review recentres a real page after responsive reflow, allowing for the
 });
 
 test('map popup geometry rejects clipped headings, covered actions and compressed touch controls', () => {
-  const layout = { map: { x: 10, y: 20, right: 310, bottom: 440 }, popup: { x: 50, y: 40, right: 270, bottom: 200 }, heading: { unobscured: true }, close: { x: 238, y: 40, right: 270, bottom: 72, unobscured: true }, actions: [{ x: 62, y: 136, right: 180, bottom: 180, unobscured: true }] };
+  const layout = { map: { x: 10, y: 20, right: 310, bottom: 440 }, popup: { x: 50, y: 40, right: 270, bottom: 200 }, heading: { unobscured: true }, close: { x: 238, y: 40, right: 270, bottom: 72, unobscured: true }, actions: [{ x: 62, y: 136, right: 180, bottom: 180, unobscured: true }], zoomControls: [{ unobscured: true }, { unobscured: true }] };
   assert.deepEqual(mapPopupLayoutIssues(layout), []);
   assert.ok(mapPopupLayoutIssues({ ...layout, popup: { ...layout.popup, y: 10 } }).includes('popup clipped by map bounds'));
   assert.ok(mapPopupLayoutIssues({ ...layout, close: { ...layout.close, unobscured: false } }).includes('popup control covered or outside the visible viewport'));
   assert.ok(mapPopupLayoutIssues({ ...layout, close: { ...layout.close, right: 255 } }).includes('compressed popup target'));
   assert.ok(mapPopupLayoutIssues({ ...layout, heading: { unobscured: false } }).includes('popup heading covered by map controls'));
   assert.ok(mapPopupLayoutIssues({ ...layout, heading: null }).includes('missing actual map popup content'));
+  assert.ok(mapPopupLayoutIssues({ ...layout, zoomControls: [{ unobscured: false }, { unobscured: true }] }).includes('map zoom control covered by popup'));
 });
 
 test('native public detail navigation renders the same compiled SSR build, never a production V5 or private document', () => {
@@ -81,6 +82,10 @@ test('real popup surfaces/actions are themed and open popup reflow uses public L
   assert.match(leafletStyles, /\.leaflet-popup-content-wrapper\s*\{[^}]*border-radius:\s*var\(--app-radius-sm\);[^}]*background:\s*var\(--app-field\)/);
   assert.doesNotMatch(leafletStyles, /#(?:ff5a1f|c4ff27|1a140f|3a3026)/i);
   assert.ok(leafletStyles.includes('min-height: 2.75rem'));
+  assert.ok(leafletStyles.includes('max-height: min(14rem, 224px)'));
+  const popupLayout = read('src/app/ui/maps/leaflet/leaflet-popup-layout.factory.ts');
+  assert.ok(popupLayout.includes('autoPanPaddingTopLeft: [5, 80]'));
+  assert.doesNotMatch(popupLayout, /(?:autoPan|keepInView|zoom|center)\s*:|(?:setView|panBy)\s*\(/);
   assert.match(interactiveStyles, /\.leaflet-map-popup__lines span:first-child\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
   assert.doesNotMatch(interactiveStyles, /#6a4424/);
   const source = read('src/app/shared/components/leaflet-map/leaflet-map.component.ts');

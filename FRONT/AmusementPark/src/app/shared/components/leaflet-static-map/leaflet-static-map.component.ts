@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { MapMarker } from '@app/models/map/map-marker';
 import { MapMarkerPopupContentService } from '@shared/services/maps/map-marker-popup-content.service';
 import { createLeafletMapDisposer } from '@shared/utils/maps/leaflet-map-disposer';
-import { createLeafletMarkerIcon } from '@ui/maps/leaflet';
+import { createLeafletMarkerIcon, createLeafletPopupLayoutOptions } from '@ui/maps/leaflet';
 import type { TileLayerOptions } from 'leaflet';
 
 type LeafletNamespace = typeof import('leaflet');
@@ -300,7 +300,7 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
     const popupContent: string = this.mapMarkerPopupContentService.buildPopupContent(markerModel);
 
     if (popupContent.length > 0) {
-      marker.bindPopup(popupContent);
+      marker.bindPopup(popupContent, createLeafletPopupLayoutOptions());
       marker.on('popupopen', (): void => this.handleMarkerPopupOpen(markerModel.id));
       marker.on('popupclose', (): void => this.handleMarkerPopupClose(markerModel.id));
     }

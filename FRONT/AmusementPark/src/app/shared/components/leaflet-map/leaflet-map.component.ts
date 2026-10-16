@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmi
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { MapMarker } from '@app/models/map/map-marker';
-import { createLeafletMarkerClusterIcon, createLeafletMarkerIcon } from '@ui/maps/leaflet';
+import { createLeafletMarkerClusterIcon, createLeafletMarkerIcon, createLeafletPopupLayoutOptions } from '@ui/maps/leaflet';
 import { MapMarkerPopupContentService } from '@shared/services/maps/map-marker-popup-content.service';
 import { createLeafletMapDisposer } from '@shared/utils/maps/leaflet-map-disposer';
 import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker, TileLayerOptions } from 'leaflet';
@@ -651,7 +651,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     const popupContent: string = this.mapMarkerPopupContentService.buildPopupContent(markerModel);
 
     if (popupContent.length > 0) {
-      marker.bindPopup(popupContent);
+      marker.bindPopup(popupContent, createLeafletPopupLayoutOptions());
       marker.on('popupopen', (): void => this.bindInternalPopupNavigationLinks());
     }
 
