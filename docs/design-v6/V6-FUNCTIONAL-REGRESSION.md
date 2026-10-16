@@ -1,5 +1,13 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic `e4c477022` — repli de navigation et suivi des documents
+
+Le [run `38964725822`](https://github.com/Ced59/AmusementParkProject/actions/runs/38964725822) passe 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité et atteint **638 contrôles / 348 captures V6 standard FR**. Les brouillons anonymes normal/verrouillé, timeline historique paginée et snapshots année/jour sont franchis. La vraie comparaison reçoit son GET local 200, mais le fil de navigation existant interprète aussi `compare` comme un identifiant d'article et tente `GET /api/history/articles/compare` : fixture absente, jamais transmise. Le parser et son `catchError → null` restent inchangés ; seul ce GET sans query reçoit maintenant un 404 local explicite, sans faux article. Autres identifiants, queries et mutations restent refusés.
+
+La même campagne atteint la borne inchangée de 4 096 identités de requêtes parce que la map conservait les propriétaires d'anciens documents. Après la preuve native frame/loader de retraite, seules ces entrées quittent la map active ; leurs identifiants restent dans l'ensemble de preuves, aucune erreur protocole supplémentaire n'est ignorée. Le test simule 8 000 requêtes sur 80 documents, garde 100 entrées actives et toutes les preuves exactes, y compris le refus d'attribuer une retraite à une future requête de loader remis en cache. **Borne non augmentée**, aucun changement réseau/application.
+
+Trois contrastes supplémentaires restent conservés (deux textes snapshot/couverture et avertissement du formulaire anonyme), corrigés par alias existants. Les **100 tests Node ciblés** compte/tokens/shell/footer/histoire/cartes passent après correction, sans PASS du navigateur suivant. Comparaison, lignée, variantes master/incomplètes et campagne complète restent à exécuter.
+
 ## Diagnostic `e7ee95546` — liste locale triée, clic de recette non identifié
 
 Le [run `38962998793`](https://github.com/Ced59/AmusementParkProject/actions/runs/38962998793) passe 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité, puis atteint **569 contrôles / 308 captures V6 standard FR**. Les éditeurs Draft/Completed et pages auth sont franchis. L'ouverture du brouillon anonyme échoue parce que le test clique le premier bouton d'une liste triée : l'URL réelle mène au brouillon **verrouillé**, pas à l'identifiant normal attendu. Zéro erreur fixture/exception. Le produit et son tri ne sont pas corrigés : le test repère l'unique carte non verrouillée, active uniquement Continuer et conserve l'assertion d'URL exacte. Un test en ordre normal/inversé et cas ambigu protège ce choix ; aucune suppression/import/export n'est activé.

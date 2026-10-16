@@ -49,6 +49,10 @@ export function createHistoryLayoutFixture(kind, date) {
 export function historyLayoutFixtureResponse(request, url, fixture) {
   if (fixture.kind === 'expired' || request.method !== 'GET') return null;
   const data = fixture.historyLayoutData;
+  // The unchanged navigation-trail parser probes this nonexistent article on
+  // a compare route. Preserve its catchError/null fallback, never invent an article.
+  if (url.pathname === '/api/history/articles/compare' && !url.search) return { status: 404,
+    body: { title: 'No article named compare in the isolated history fixture' } };
   if (url.pathname === `/api/parks/${historyLayoutParkId}/detail-summary` && !url.search) return { status: 200, body: { park: structuredClone(data.park) } };
   const prefix = `/api/public/parks/${historyLayoutParkId}/history`;
   if (url.pathname === `${prefix}/timeline` && ['?page=1&pageSize=25', '?page=2&pageSize=25'].includes(url.search)) {

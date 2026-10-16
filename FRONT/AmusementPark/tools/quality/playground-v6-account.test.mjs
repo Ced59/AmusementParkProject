@@ -22,9 +22,38 @@ import { exerciseIsolatedHistoryPages } from '../design-v6/exercise-isolated-his
 import { isolatedLayoutPreflightPlan } from '../design-v6/isolated-layout-preflight.mjs';
 import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from '../design-v6/account-layout-acceptance.mjs';
 import { positionAccountCaptureTarget } from '../design-v6/browser-account-target.mjs';
+import { advanceMainDocument, forgetRetiredDocumentOwners, isRetiredDocumentInterceptionError } from '../design-v6/browser-interception-errors.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('history compare keeps the unchanged trail missing-article fallback exact and read-only', () => {
+  const fixture = createAccountLayoutFixture('standard', 1792144800);
+  const request = { method: 'GET', url: accountLayoutFixtureOrigin + '/api/history/articles/compare' };
+  assert.equal(accountLayoutFixtureResponse(request, fixture).status, 404);
+  for (const changed of [{ method: 'POST' }, { method: 'DELETE' }, { url: request.url + '?unknown=true' }, { url: request.url.replace('/compare', '/unknown') }]) {
+    assert.equal(accountLayoutFixtureResponse({ ...request, ...changed }, fixture), null);
+  }
+});
+
+test('account document ownership stays bounded after retirement without losing exact cancellation evidence', () => {
+  const documents = new Map();
+  const retired = new Set();
+  let current;
+  for (let page = 0; page < 80; page++) {
+    current = advanceMainDocument(current, { id: 'main', loaderId: `loader-${page}` }, documents, retired);
+    forgetRetiredDocumentOwners(documents, retired);
+    for (let index = 0; index < 100; index++) documents.set(`${page}-${index}`, { frameId: 'main', loaderId: `loader-${page}` });
+    assert.equal(documents.size, 100);
+  }
+  assert.equal(retired.size, 7900);
+  assert.equal(isRetiredDocumentInterceptionError(new Error('Invalid InterceptionId.'), '0-0', retired), true);
+  assert.equal(isRetiredDocumentInterceptionError(new Error('Invalid InterceptionId.'), '79-0', retired), false);
+  documents.set('future-cached-request', { frameId: 'main', loaderId: 'loader-0' });
+  forgetRetiredDocumentOwners(documents, retired);
+  assert.equal(documents.has('future-cached-request'), true);
+  assert.ok(read('tools/design-v6/capture-account-layout.mjs').includes('documents.size >= 4096'));
+});
 
 test('the participant header does not stretch a compact count chip to paragraph height on mobile', () => {
   const source = read('src/app/features/profile/trips/components/trip-participant-panel/trip-participant-panel.component.scss');

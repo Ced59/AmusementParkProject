@@ -24,3 +24,11 @@ export function advanceMainDocument(current, frame, requestDocuments, retiredNet
   // may become active again through the back/forward cache.
   return document;
 }
+
+// Only identities already retired by the native frame/loader proof may leave
+// the active ownership map. Keep the exact retired IDs as protocol evidence.
+export function forgetRetiredDocumentOwners(requestDocuments, retiredNetworkRequests) {
+  for (const id of requestDocuments.keys()) {
+    if (retiredNetworkRequests.has(id)) requestDocuments.delete(id);
+  }
+}

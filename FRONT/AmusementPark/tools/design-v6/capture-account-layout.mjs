@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { extname, join, resolve, sep } from 'node:path';
 import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse, accountLayoutResetQuery } from './account-layout-fixtures.mjs';
-import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from './browser-interception-errors.mjs';
+import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument, forgetRetiredDocumentOwners } from './browser-interception-errors.mjs';
 import { exerciseAccountLists } from './exercise-account-lists.mjs';
 import { exerciseAccountProfileControls } from './exercise-account-profile-controls.mjs';
 import { exerciseAccountPassportAndFit } from './exercise-account-passport-and-fit.mjs';
@@ -121,7 +121,10 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     if (documents.size >= 4096 && !documents.has(requestId)) { result.fixtureFailures.push({ reason: 'request/document evidence bound exceeded' }); return; }
     documents.set(requestId, { frameId, loaderId });
   });
-  const stopRetirement = cdp.on('Page.frameNavigated', ({ frame }) => { mainDocument = advanceMainDocument(mainDocument, frame, documents, retired); });
+  const stopRetirement = cdp.on('Page.frameNavigated', ({ frame }) => {
+    mainDocument = advanceMainDocument(mainDocument, frame, documents, retired);
+    forgetRetiredDocumentOwners(documents, retired);
+  });
   const stopExceptions = cdp.on('Runtime.exceptionThrown', ({ exceptionDetails }) => result.exceptions.push({ text: exceptionDetails.text, line: exceptionDetails.lineNumber }));
   const stopInterception = cdp.on('Fetch.requestPaused', request => {
     const task = intercept(request).catch(async error => {
