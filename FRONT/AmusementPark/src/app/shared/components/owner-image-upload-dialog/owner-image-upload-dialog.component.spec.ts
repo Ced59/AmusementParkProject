@@ -27,6 +27,51 @@ describe('OwnerImageUploadDialogComponent', () => {
     usersApiService = TestBed.inject(UsersApiService);
   });
 
+  it('keeps both native picker surfaces on the existing file input without double activation', async () => {
+    fixture.componentRef.setInput('visible', true);
+    fixture.detectChanges();
+    await fixture.whenStable();
+    const root: HTMLElement = fixture.nativeElement;
+    const input = root.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const open = vi.spyOn(input, 'click').mockImplementation(() => {});
+    const picker = root.querySelector<HTMLButtonElement>('.drop-zone__picker')!;
+    expect(picker.type).toBe('button');
+    expect(picker.getAttribute('aria-label')).toBeTruthy();
+    expect(picker.tabIndex).toBe(-1);
+    picker.click();
+    expect(open).toHaveBeenCalledTimes(1);
+    root.querySelector<HTMLButtonElement>('.drop-zone__placeholder button')!.click();
+    expect(open).toHaveBeenCalledTimes(2);
+    expect(root.querySelector('.drop-zone')!.getAttribute('role')).toBeNull();
+  });
+
+  it('makes an existing preview keyboard-replaceable but never opens a picker during upload', async () => {
+    fixture.componentRef.setInput('visible', true);
+    component.previewUrl = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+    try {
+      fixture.detectChanges();
+      await fixture.whenStable();
+      const root: HTMLElement = fixture.nativeElement;
+      const input = root.querySelector<HTMLInputElement>('input[type="file"]')!;
+      const open = vi.spyOn(input, 'click').mockImplementation(() => {});
+      const picker = root.querySelector<HTMLButtonElement>('.drop-zone__picker')!;
+      expect(picker.tabIndex).toBe(0);
+      expect(root.querySelector('.drop-zone__placeholder')).toBeNull();
+      picker.click();
+      expect(open).toHaveBeenCalledTimes(1);
+      component.isUploading = true;
+      fixture.changeDetectorRef.markForCheck();
+      fixture.detectChanges();
+      expect(picker.disabled).toBe(true);
+      picker.click();
+      component.openFilePicker();
+      expect(open).toHaveBeenCalledTimes(1);
+    } finally {
+      // This presentation fixture never created an object URL to revoke.
+      component.previewUrl = null;
+    }
+  });
+
   it('uses the dedicated current-user endpoint without trusting an owner id', () => {
     const file: File = new File(['avatar'], 'avatar.png', { type: 'image/png' });
     const image: ImageDto = createImage();

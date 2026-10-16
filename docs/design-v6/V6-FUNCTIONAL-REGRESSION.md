@@ -6,6 +6,18 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 
 ## Familles obligatoires
 
+### Résultat `b166b2c2a` — photos réelles et clavier
+
+Après ces corrections, **185 tests Node qualité passent** en série et le scan conserve quatre constats hérités, sans régression. Les deux nouveaux tests Angular d'upload et le test .NET à horloge fixe restent à exécuter en CI.
+
+La [CI 38827970453](https://github.com/Ced59/AmusementParkProject/actions/runs/38827970453) passe **2 724 tests Angular / 580 fichiers**, dont les cinq nouveaux tests de panneau/dialogue. Les **123 contrôles hydratés** passent sans exception ni erreur d'interception : Shift+Tab atteint la dernière vignette, Tab revient à Fermer ; les fermetures bouton/fond/Échap et le retour de focus passent. Les deux pages publiques de lieux chargent **100 puis 141 images**, et le retour à l'onglet parc retrouve ses 17 médias. Ces comptes sont des observations de l'API à cet instant, jamais des valeurs du produit.
+
+La campagne statique suivante s'arrête à l'accueil étroit : le nettoyage hydraté conserve volontairement `Network.setBlockedURLs(['*'])`. Depuis le passage anticipé de cette recette, il bloque aussi les fichiers de polices utilisés ensuite ; la page mesurée déborde à 386 px sur 320/360 px. La correction détruit d'abord le document applicatif par navigation contrôlée vers `about:blank`, attend sa fin puis réautorise le chargement des snapshots sans JavaScript. Un test refuse tout déblocage si cette navigation n'est pas attestée. Aucune protection de lecture seule n'est retirée pendant le scénario Angular. Nouvelle campagne statique complète requise.
+
+Le même run détecte un test backend devenu dépendant de la date réelle à minuit UTC le 16 octobre : le 16 septembre sort de la fenêtre de rétention de 30 jours. Le test de normalisation reçoit seulement le `FixedWatchPilotTimeProvider` existant, comme ses voisins. Dates, assertions et handler de production restent inchangés. Cette stabilisation de test entre dans l'autorisation explicite du propriétaire de corriger les blocages ; elle doit repasser en CI, sans suite .NET locale lourde.
+
+La zone d'upload et le fond du tiroir de création utilisent désormais des boutons natifs nommés, sans clic de conteneur. Le glisser-déposer, les handlers, l'interdiction pendant l'envoi et la surface de clic sont conservés. Les rayons fixes de l'upload sont raccordés aux tokens V6. Deux tests Angular supplémentaires couvrent le vrai template et le choix de fichier sans double activation. Seuls les deux constats résolus quittent la baseline (**6 → 4**). La comparaison source couvre désormais **18 templates, 1 722 contrats initiaux dont 1 720 conservés et deux transformations documentées, 41 ajouts**.
+
 ### Diagnostic suivant — focus de la lightbox `004d01867`
 
 La [CI 38825986254](https://github.com/Ced59/AmusementParkProject/actions/runs/38825986254) confirme les 2 719 tests Angular, le build et les 40 routes / 2 080 captures. Le ciblage des pages est validé : 17 médias parc, navigation suivant/précédent, comptes des filtres année/tag et remises à zéro passent. **80 contrôles hydratés** sont atteints, sans exception applicative ni erreur d'interception. L'ouverture clavier capture bien le bouton Fermer. L'attente après focus programmatique d'une ancre CDK échoue : le résultat n'est pas requalifié en succès et aucune cause applicative n'est encore affirmée.

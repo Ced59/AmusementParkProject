@@ -1,6 +1,27 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { compareTemplateContracts, inlineComponentTemplates, templateContracts } from '../design-v6/template-contract-evidence.mjs';
+import { resumeStaticCaptures } from '../design-v6/browser-phase-isolation.mjs';
+
+test('static captures unblock only after the hydrated application document has been destroyed', async () => {
+  const calls = [];
+  let evaluations = 0;
+  const cdp = { send: async (method, params) => {
+    calls.push({ method, params });
+    if (method === 'Runtime.evaluate') return { result: { value: ++evaluations === 2 } };
+    return {};
+  } };
+  assert.deepEqual(await resumeStaticCaptures(cdp, async () => {}), { hydratedDocumentDestroyed: true, networkBlockedUntilBlank: true });
+  assert.deepEqual(calls.map(call => call.method), ['Page.navigate', 'Runtime.evaluate', 'Runtime.evaluate', 'Network.setBlockedURLs']);
+  assert.equal(calls[0].params.url, 'about:blank');
+  assert.deepEqual(calls.at(-1).params.urls, []);
+  const blockedCalls = [];
+  await assert.rejects(resumeStaticCaptures({ send: async method => {
+    blockedCalls.push(method);
+    return { result: { value: false } };
+  } }, async () => {}), /network remains blocked/);
+  assert.ok(!blockedCalls.includes('Network.setBlockedURLs'));
+});
 
 test('inline contracts come only from actual component decorators, never comments or helper strings', () => {
   const source = '// @Component({ template: "not a component" })\nconst fixture = { template: "ignore" };\n@Component({ selector: "app-test", template: `<button (click)="save()">Save</button>` })\nexport class TestComponent {}';

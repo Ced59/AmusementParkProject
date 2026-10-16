@@ -33,7 +33,7 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `004d01867` passe 2 719 tests, 40 routes et 80 contrôles hydratés, puis bloque sur une limite de focus lightbox ; diagnostic clavier natif et nouveaux contrôles à valider |
+| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `b166b2c2a` passe 2 724 tests et 123 contrôles hydratés, puis bloque sur le réseau laissé fermé pour les captures statiques ; isolation des phases et horloge du test backend corrigées, nouvelle CI requise |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
@@ -48,6 +48,7 @@
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
 | Libellés admin ciblés | 13 noms traduits ajoutés sans changement de handler ; 7 318 clés i18n, 179 tests Node et scan local à 13 constats hérités, nouvelle CI requise |
 | Primitives transversales P20 | Onglets plats, panneau natif, dialogue modal avec focus ; 182 tests Node, 7 320 clés et scan à six constats hérités ; cinq nouveaux tests Angular à exécuter en CI |
+| Upload/tiroir P19/P20 | Boutons natifs, rayons raccordés et même blocage pendant upload ; scan local à quatre constats hérités ; deux nouveaux tests Angular à valider |
 
 ## Informations de référence
 
@@ -82,6 +83,10 @@ La PR unique est ouverte. La fusion reste interdite jusqu’à ce que la CI Node
 ### Ajustement explicite du propriétaire — recette admin
 
 Le 15 octobre, en réponse à la demande d'URL et d'accès de recette, le propriétaire indique ne pas disposer d'un environnement isolé et demande de réaliser les écrans admin, quitte à les corriger un par un après déploiement. Cette instruction plus récente lève le blocage lié à l'absence d'environnement pour la recette réelle admin. Les 58 écrans restent dans le périmètre d'implémentation et de tests CI ; leur validation opérationnelle complète n'est pas déclarée acquise. Aucune mutation de production n'est autorisée pour simuler une recette. Cette acceptation de risque ne vaut ni feu vert final de fusion, ni acceptation d'un défaut bloquant connu de sécurité, permission, métier ou disponibilité. Les autres gates restent applicables.
+
+## Stabilisation d'un test au 16 octobre
+
+L'autorisation générale de corriger les blocages couvre le test `GetWatchPilotMetricsQueryHandlerTests.HandleAsync_NormalizesAllMetricsToTheRequestedUtcCalendarDays`. Son horloge système rendait les dates fixes de septembre invalides après le changement de journée UTC. Le correctif injecte uniquement le `FixedWatchPilotTimeProvider` déjà présent ; aucune assertion, règle métier, borne de rétention, API ni implémentation de production n'est modifiée. La validation est confiée à la CI.
 
 ## Exception sécurité autorisée le 15 octobre
 

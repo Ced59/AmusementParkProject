@@ -12,6 +12,7 @@ import { exercisePublicParkItems } from './exercise-public-park-items.mjs';
 import { initialThemeObserver, validateInitialTheme } from './initial-theme-evidence.mjs';
 import { publicPhotoReadEvidence } from './public-photo-evidence.mjs';
 import { exercisePublicPhotos } from './exercise-public-photos.mjs';
+import { resumeStaticCaptures } from './browser-phase-isolation.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -697,6 +698,7 @@ try {
     if (process.env.CI === 'true' && path === '/fr/home') {
       await captureHydratedHome(homeRawHtml);
       hydratedSmokePassed = true;
+      report.hydratedToStaticReset = await resumeStaticCaptures(cdp);
     }
     const headingPattern = expectedEmptyPricing ? /<h3\b[^>]*>([\s\S]*?)<\/h3>/i : /<h1\b[^>]*>([\s\S]*?)<\/h1>/i;
     const initialHeading = html.match(headingPattern)?.[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();

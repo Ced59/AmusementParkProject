@@ -2,13 +2,6 @@
   "version": 3,
   "findings": [
     {
-      "fingerprint": "click-keyboard|src/app/components/admin/park-items/workbench/admin-park-item-quick-create-drawer.component.html|cab222af02aa|7ca4ec67b94d|1",
-      "rule": "click-keyboard",
-      "path": "src/app/components/admin/park-items/workbench/admin-park-item-quick-create-drawer.component.html",
-      "line": 2,
-      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
-    },
-    {
       "fingerprint": "click-keyboard|src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html|7c70e96015e6|9de2bd5a2aa6|1",
       "rule": "click-keyboard",
       "path": "src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html",
@@ -27,13 +20,6 @@
       "rule": "click-keyboard",
       "path": "src/app/features/admin/users/pages/admin-users/admin-users-view.component.html",
       "line": 42,
-      "message": "Non-native click targets must provide keyboard handling and interactive semantics."
-    },
-    {
-      "fingerprint": "click-keyboard|src/app/shared/components/owner-image-upload-dialog/owner-image-upload-dialog.component.html|4425a737125d|2f5e85ad6131|1",
-      "rule": "click-keyboard",
-      "path": "src/app/shared/components/owner-image-upload-dialog/owner-image-upload-dialog.component.html",
-      "line": 31,
       "message": "Non-native click targets must provide keyboard handling and interactive semantics."
     },
     {

@@ -32,6 +32,17 @@ const cardMixins = read('src/styles/_mixins.scss');
 const contentSummaryStyles = read('src/app/features/public/parks/ui/park-content-summary.component.scss');
 const zoneListStyles = read('src/app/features/public/park-items/ui/park-items-zone-list.component.scss');
 
+test('upload selection and drawer backdrops remain named native buttons without container clicks', () => {
+  const drawer = read('src/app/components/admin/park-items/workbench/admin-park-item-quick-create-drawer.component.html');
+  const uploadStyles = read('src/app/shared/components/owner-image-upload-dialog/owner-image-upload-dialog.component.scss');
+  assert.match(drawer, /<button type="button" tabindex="-1" class="quick-create-backdrop"[\s\S]*?\(click\)="closed\.emit\(\)"/);
+  assert.match(ownerUpload, /<button\s+type="button"\s+class="drop-zone__picker"[\s\S]*?\[disabled\]="isUploading"[\s\S]*?\(click\)="openFilePicker\(\)"/);
+  assert.ok(ownerUpload.includes('[attr.tabindex]="previewUrl ? 0 : -1"'));
+  assert.doesNotMatch(ownerUpload, /<div[^>]*\(click\)/);
+  assert.doesNotMatch(uploadStyles, /border-radius:\s*(?:1rem|0\.75rem)/);
+  assert.ok(uploadStyles.includes('.drop-zone__picker:focus-visible'));
+});
+
 test('the language entry keeps eight choices without reusing the legacy standalone logo', () => {
   assert.equal(languageEntryState.match(/^\s{2}(?:en|fr|es|de|it|pl|nl|pt):/gm)?.length, 8);
   assert.ok(languageEntry.includes("[routerLink]=\"['/', language.value, 'home']\""));

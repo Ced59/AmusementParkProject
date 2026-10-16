@@ -1,5 +1,6 @@
 @if (isOpen && localDraft) {
-  <div class="quick-create-backdrop" (click)="closed.emit()"></div>
+  <button type="button" tabindex="-1" class="quick-create-backdrop"
+    [attr.aria-label]="'admin.parks.items.quickCreate.close' | translate" (click)="closed.emit()"></button>
   <aside
     class="quick-create-drawer"
     role="dialog"
