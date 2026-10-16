@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
-import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeNetworkAcceptance } from '../design-v6/home-network-evidence.mjs';
+import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeNetworkAcceptance, homeBrandImageRequestSaving } from '../design-v6/home-network-evidence.mjs';
 
 test('owner exception accepts only the measured two focus scripts and never other resource types or a new baseline', () => {
   const approval = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../../docs/design-v6/V6-PERFORMANCE-EXCEPTION.json'), 'utf8'));
@@ -22,6 +22,29 @@ test('owner exception accepts only the measured two focus scripts and never othe
   assert.equal(homeNetworkAcceptance({ ...report, comparisons: [{ ...report.comparisons[0], after: before, additionalRequests: 0 }] }).status, 'PASS');
   assert.equal(homeNetworkAcceptance(report, { ...approval, maximumAdditionalScriptRequests: 3 }).status, 'FAIL');
   assert.equal(homeNetworkAcceptance({ ...report, comparisons: [] }, approval).status, 'FAIL');
+});
+
+test('removing only the approved separate brand pictogram is a proven saving, not an additional resource or a missing hero allowance', () => {
+  const approval = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../../docs/design-v6/V6-PERFORMANCE-EXCEPTION.json'), 'utf8'));
+  const brand = { type: 'Image', path: '/assets/general-icon/logo-amusementpark-ui-36.webp' };
+  const otherImages = Array.from({ length: 11 }, (_, index) => ({ type: 'Image', path: `/test-image-${index}.webp` }));
+  const before = { requests: 105, byType: { Script: { requests: 84, decodedBytes: 936317 }, XHR: { requests: 2 }, Image: { requests: 12 } } };
+  const after = { requests: 106, byType: { Script: { requests: 86, decodedBytes: 939597 }, XHR: { requests: 2 }, Image: { requests: 11 } } };
+  const beforeSample = { summary: before, resources: [brand, ...otherImages] };
+  const afterSample = { summary: after, resources: otherImages };
+  const saving = homeBrandImageRequestSaving(beforeSample, afterSample);
+  assert.equal(saving.requestsSaved, 1);
+  const comparison = { width: 390, sampleNumber: 1, before, after, additionalRequests: 1, brandImageSaving: saving };
+  const report = { baseSha: approval.baselineSha, comparisons: [comparison] };
+  assert.equal(homeNetworkAcceptance(report, approval).status, 'PASS_WITH_OWNER_EXCEPTION');
+  assert.equal(homeNetworkAcceptance({ ...report, comparisons: [{ ...comparison, brandImageSaving: null }] }, approval).status, 'FAIL');
+  assert.equal(homeBrandImageRequestSaving(beforeSample, { ...afterSample, resources: [brand, ...otherImages.slice(1)] }), null);
+  assert.equal(homeBrandImageRequestSaving(beforeSample, { ...afterSample, resources: otherImages.slice(1) }), null);
+  assert.equal(homeBrandImageRequestSaving(beforeSample, { ...afterSample, resources: [...otherImages.slice(1), { type: 'Image', path: '/different-hero.webp' }] }), null);
+  assert.equal(homeBrandImageRequestSaving(beforeSample, { ...afterSample, resources: otherImages.map(resource => ({ type: resource.type })) }), null);
+  assert.equal(homeBrandImageRequestSaving(beforeSample, { ...afterSample, summary: { byType: { Image: { requests: 10 } } } }), null);
+  const apiRegression = { ...after, requests: 107, byType: { ...after.byType, XHR: { requests: 3 } } };
+  assert.equal(homeNetworkAcceptance({ ...report, comparisons: [{ ...comparison, after: apiRegression, additionalRequests: 2 }] }, approval).status, 'FAIL');
 });
 
 test('the hero logo advertises its actual 72-percent / 18-rem cap instead of the entire card', () => {

@@ -1,5 +1,11 @@
 # V6 — performance, SEO et SSR
 
+## Refus de compteur diagnostiqué — `136a9b8e2`
+
+La [CI `38897387404`](https://github.com/Ced59/AmusementParkProject/actions/runs/38897387404) valide backend, **2 770 tests Angular**, les contrôles publics et les captures, puis refuse P04.6 avant la recette compte. Les six paires montrent **105 → 106 requêtes**, scripts **84 → 86**, **+3 280 octets JS** et **−8 378 octets décodés au total**. Ce n'est pas un dépassement du plafond JS : images **12 → 11**, car seul `/assets/general-icon/logo-amusementpark-ui-36.webp` disparaît ; les onze autres chemins d'image sont identiques, sans appel API/font/ressource supplémentaire. [Artefact `12045810091`](https://github.com/Ced59/AmusementParkProject/actions/runs/38897387404/artifacts/12045810091).
+
+Le compteur précédent assimilait toute baisse d'image à une requête supplémentaire et exigeait que le total net soit égal aux deux scripts. La correction est bornée à cette suppression graphique déjà autorisée : la liste réelle des requêtes doit prouver exactement un ancien pictogramme retiré et tous les autres chemins d'image inchangés. Une autre image perdue/modifiée, un appel API supplémentaire ou un delta JS au-delà de +3 302 échoue toujours. Ce gain est rapporté séparément de l'exception CDK, dont le manifeste et le plafond sont **inchangés**. Les captures du wordmark restent protégées. Le sélecteur du diagnostic des images hero rejoint aussi leurs vrais éléments `.home-hero-card img`, sans changer leur chargement. **Nouveau passage CI requis ; le run refusé n'est pas requalifié en réussite intégrale.**
+
 ## Nouvelle population comparée — `fc742b010`
 
 La [CI `38892315894`](https://github.com/Ced59/AmusementParkProject/actions/runs/38892315894) est intégralement verte, Docker compris. Les contrôles publics précédents passent à nouveau ; le profil standard/incomplet ajoute 132 contrôles et 104 captures master/V6 sur données locales isolées. L'exception réseau reste **105 → 107 requêtes**, exactement deux scripts et **+3 280 octets JS**, marge 22 octets sous le plafond inchangé. La nouvelle population API, identique dans chacune des six paires mais différente du run précédent, donne **+6 244 octets décodés au total** (1 698 934 → 1 705 178). La baisse de 851 octets de `791dc2c46` n'est donc pas extrapolée à toute population.

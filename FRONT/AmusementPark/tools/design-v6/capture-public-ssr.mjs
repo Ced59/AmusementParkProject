@@ -388,7 +388,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
       await new Promise(yes => setTimeout(yes, 5000));
       result.vitals = await evaluate(`({ ...window.__apfHomeVitals, fontStatus: document.fonts.status,
         heroNames: [...document.querySelectorAll('.home-hero-card__content strong')].map(node => node.textContent.trim()),
-        heroImages: [...document.querySelectorAll('.home-hero-card__media img')].map(image => ({ path: new URL(image.currentSrc || image.src).pathname, complete: image.complete, naturalWidth: image.naturalWidth })),
+        heroImages: [...document.querySelectorAll('.home-hero-card img')].map(image => ({ path: new URL(image.currentSrc || image.src).pathname, complete: image.complete, naturalWidth: image.naturalWidth })),
         domCompleteMs: performance.getEntriesByType('navigation')[0]?.domComplete })`);
       if (options.initialTheme) {
         result.initialThemeEvidence = await evaluate(`({ ...window.__apfInitialTheme,

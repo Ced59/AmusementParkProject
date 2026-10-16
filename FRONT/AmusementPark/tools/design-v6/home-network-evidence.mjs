@@ -34,6 +34,21 @@ export function summarizeHomeResources(resources) {
   return { requests: resources.length, decodedBytes: Object.values(byType).reduce((sum, item) => sum + item.decodedBytes, 0), byType };
 }
 
+export function homeBrandImageRequestSaving(before, after) {
+  if (!Array.isArray(before.resources) || !Array.isArray(after.resources)) return null;
+  const brandPath = '/assets/general-icon/logo-amusementpark-ui-36.webp';
+  const images = sample => sample.resources.filter(resource => resource.type === 'Image').map(resource => resource.path);
+  const beforePaths = images(before);
+  const afterPaths = images(after);
+  if ([...beforePaths, ...afterPaths].some(path => typeof path !== 'string' || !path.startsWith('/'))
+      || beforePaths.length !== before.summary?.byType?.Image?.requests || afterPaths.length !== after.summary?.byType?.Image?.requests
+      || beforePaths.filter(path => path === brandPath).length !== 1 || afterPaths.includes(brandPath)
+      || beforePaths.length !== afterPaths.length + 1
+      || JSON.stringify(beforePaths.filter(path => path !== brandPath).sort()) !== JSON.stringify([...afterPaths].sort())) return null;
+  return { type: 'Image', path: brandPath, beforeRequests: beforePaths.length, afterRequests: afterPaths.length, requestsSaved: 1,
+    reason: 'Separate original brand pictogram removed by the approved redesign; every other image request path is unchanged.' };
+}
+
 export function compareHomeNetworkSamples(samples, widths = [390, 1366], repetitions = 3) {
   const comparisons = [];
   for (const width of widths) {
@@ -54,7 +69,8 @@ export function compareHomeNetworkSamples(samples, widths = [390, 1366], repetit
       if (JSON.stringify(before.vitals.heroNames) !== JSON.stringify(after.vitals.heroNames)) throw new Error('Home comparison populations differ; the comparison is invalid.');
       comparisons.push({ width, sampleNumber, additionalRequests: after.summary.requests - before.summary.requests,
         decodedBytesDelta: after.summary.decodedBytes - before.summary.decodedBytes,
-        before: before.summary, after: after.summary, beforeVitals: before.vitals, afterVitals: after.vitals });
+        before: before.summary, after: after.summary, beforeVitals: before.vitals, afterVitals: after.vitals,
+        brandImageSaving: homeBrandImageRequestSaving(before, after) });
     }
   }
   const range = values => {
@@ -92,16 +108,22 @@ export function homeNetworkAcceptance(report, approval = null) {
       continue;
     }
     const types = new Set([...Object.keys(before.byType ?? {}), ...Object.keys(after.byType ?? {})]);
+    const saving = comparison.brandImageSaving;
+    const knownBrandSaving = saving?.type === 'Image' && saving.path === '/assets/general-icon/logo-amusementpark-ui-36.webp'
+      && saving.requestsSaved === 1 && saving.beforeRequests === before.byType?.Image?.requests
+      && saving.afterRequests === after.byType?.Image?.requests && saving.beforeRequests === saving.afterRequests + 1;
     const extraOtherType = [...types].some(type => type !== 'Script'
-      && (after.byType?.[type]?.requests ?? 0) !== (before.byType?.[type]?.requests ?? 0));
+      && (after.byType?.[type]?.requests ?? 0) !== (before.byType?.[type]?.requests ?? 0)
+      && !(type === 'Image' && knownBrandSaving));
     const scriptRequests = (after.byType?.Script?.requests ?? 0) - (before.byType?.Script?.requests ?? 0);
     const scriptBytes = after.byType?.Script?.decodedBytes - before.byType?.Script?.decodedBytes;
-    if (extraOtherType || scriptRequests !== additionalRequests || scriptRequests !== 2
+    if (extraOtherType || scriptRequests - (knownBrandSaving ? 1 : 0) !== additionalRequests || scriptRequests !== 2
       || !Number.isInteger(scriptBytes) || scriptBytes > 3302) {
       failures.push({ width, sampleNumber, reason: 'outside-approved-modal-focus-bounds', scriptRequests, scriptBytes });
       continue;
     }
-    exceptions.push({ width, sampleNumber, approvalId: approval.id, scriptRequests, scriptDecodedBytesDelta: scriptBytes });
+    exceptions.push({ width, sampleNumber, approvalId: approval.id, scriptRequests, scriptDecodedBytesDelta: scriptBytes,
+      ...(knownBrandSaving ? { presentationRequestSaving: saving } : {}) });
   }
   return { status: failures.length ? 'FAIL' : exceptions.length ? 'PASS_WITH_OWNER_EXCEPTION' : 'PASS', exceptions, failures };
 }
