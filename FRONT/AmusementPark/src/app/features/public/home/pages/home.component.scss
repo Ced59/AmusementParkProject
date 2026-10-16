@@ -98,6 +98,17 @@
   margin: 25px 0;
 }
 
+.home-hero__actions .app-button {
+  min-height: 44px;
+  gap: 6px;
+  padding: 10px 14px;
+  border-width: 2px;
+  font-size: 0.75rem;
+  font-weight: 850;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+}
+
 .home-hero__stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -473,7 +484,7 @@ app-pagination {
     width: 100%;
     min-width: 0;
     padding-inline: 0.55rem;
-    font-size: 0.72rem;
+    font-size: 0.6875rem;
   }
 
   .home-hero-stat {

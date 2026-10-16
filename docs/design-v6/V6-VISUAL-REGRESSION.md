@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Fidélité des deux CTA d'accueil
+
+La relecture du vrai CSS de la maquette confirme `12px / 850`, capitales, approche positive `0.015em`, bordure 2 px, padding 10/14 px et mobile 11 px. Les seuls CTA du hero sont réalignés sur ces valeurs dans le SCSS existant, avec `0.75rem / 0.6875rem` pour respecter une taille racine agrandie ; les routes réelles **parcs** et **à propos**, traductions et événements ne sont pas remplacés par ceux du prototype. La hauteur minimale reste **44 px** au lieu des 40 px de la maquette, exception de présentation motivée par la cible tactile/accessibilité, à montrer lors de la revue finale. **Capture du prochain build et mesure P04.6 bornée encore requises.**
+
 ## Marqueurs Leaflet réels — styles V5 résiduels identifiés
 
 La capture hydratée du run `2335fc043` révèle les pins et clusters brillants encore dans le SCSS global `_maps.scss`, non visibles dans les réservations SSR de carte. Le lot suivant remplace leurs dégradés, grandes ombres, rondelles et mouvement de survol par des têtes quasi carrées, aplat de champ, filet/couleur de catégorie et contour au focus/survol. Le halo d'un pixel est uniquement un contour de lisibilité sur les tuiles. Les 36 couleurs de la factory UI deviennent des références aux tokens existants, sans palette parallèle. Le pictogramme de marque séparé des marqueurs parc/site est remplacé par leur glyph 🎢 déjà défini ; aucun fichier asset n'est supprimé, aucun nouveau téléchargement n'est ajouté. Les wordmarks navbar/footer ne sont pas touchés.

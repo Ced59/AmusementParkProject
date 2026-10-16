@@ -137,6 +137,13 @@ test('the home search bar uses the supplied desktop and mobile control compositi
   assert.match(formStyles, /\.home-command-center \.app-search-panel__clear\s*\{[^}]*grid-column:\s*1 \/ -1;[^}]*min-height:\s*44px/);
 });
 
+test('hero CTA typography follows the V6 reference while retaining 44px targets and both real destinations', () => {
+  assert.match(styles, /\.home-hero__actions \.app-button\s*\{[^}]*min-height:\s*44px;[^}]*padding:\s*10px 14px;[^}]*border-width:\s*2px;[^}]*font-size:\s*0\.75rem;[^}]*font-weight:\s*850;[^}]*letter-spacing:\s*0\.015em;[^}]*text-transform:\s*uppercase/);
+  assert.match(styles, /\.home-hero__actions \.btn\s*\{[^}]*font-size:\s*0\.6875rem/);
+  assert.ok(template.includes("[routerLink]=\"['/', currentLang(), 'parks']\""));
+  assert.ok(template.includes("[routerLink]=\"['/', currentLang(), 'about']\""));
+});
+
 test('the home hero keeps API statistics, two CTAs and four dynamic park slots', () => {
   for (const count of ['parksCount', 'attractionsCount', 'countriesCount']) {
     assert.match(template, new RegExp(`formatStatValue\\(homeStats\\(\\)\\?\\.${count}\\)`));
