@@ -23,7 +23,11 @@ export function createAccountVisitEditorFixture(kind, date, visits) {
     const targets = !filled ? [] : occurrences.slice(0, 2).map(item => ({ parkItemId: item.parkItemId, name: item.target.name,
       category: 'Attraction', operationalState: 'KnownOpen', historicalConsistency: item.historicalConsistency,
       isHistoricalOnly: true, mainImageId: null, zoneId: null, lifecycleStatus: null, openingDate: null, closingDate: null }));
-    return { visit, occurrences, targets, parentAvailable: filled };
+    const reports = filled ? [{ reportId: `ci-history-report-${visitIndex}`, parkId: visit.parkId,
+      parkName: 'Parc de recette uniquement', visitDate: structuredClone(visit.date),
+      claimedName: 'Signalement de recette uniquement — nom long Äéł', sourceUrl: null, sourceReference: 'CI-UI-ONLY',
+      details: null, status: 'Pending', submittedAtUtc: date, reviewedAtUtc: null, decisionNote: null, revision: 1 }] : [];
+    return { visit, occurrences, targets, reports, parentAvailable: filled };
   });
 }
 
@@ -38,6 +42,7 @@ export function accountVisitEditorFixtureResponse(request, url, fixture) {
   for (const data of all) {
     const prefix = `/api/me/passport/visits/${data.visit.id}`;
     if (!url.search && url.pathname === prefix) return { status: 200, body: structuredClone(data.visit) };
+    if (!url.search && url.pathname === `${prefix}/historical-existence-reports`) return { status: 200, body: structuredClone(data.reports) };
     if (!url.search && url.pathname === `${prefix}/deletion-preview`) return { status: 200, body: {
       visitId: data.visit.id, expectedVersion: 1, occurrenceCount: data.occurrences.length,
       assessmentCount: data.occurrences.filter(item => item.assessment).length, retentionDays: 30 } };

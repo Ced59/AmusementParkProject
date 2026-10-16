@@ -2,6 +2,8 @@
 
 ## Décision actuelle
 
+Dernier run [`38909139005`](https://github.com/Ced59/AmusementParkProject/actions/runs/38909139005) : **FAIL recette** au GET synthétique de rapports historiques d'une visite, après 1 561 contrôles master standard FR. Les tests/build/budgets/backend/sécurité passent, mais les variantes V6 suivantes ne sont pas exécutées. La fixture exacte et son disclosure non soumis sont corrigés ; nouvelle CI obligatoire. Aucun check vert antérieur ne couvre ce nouveau HEAD.
+
 **NO-GO MERGE — PR #917 ouverte, recette complète non terminée.** Les PASS ciblés ci-dessous ne constituent pas une acceptation de tous les critères de chaque gate. Aucun merge, tag ni déploiement n’est autorisé avant les checks du dernier commit, la recette visuelle/fonctionnelle Angular réelle et le feu vert explicite du propriétaire.
 
 | Contrôle | État |

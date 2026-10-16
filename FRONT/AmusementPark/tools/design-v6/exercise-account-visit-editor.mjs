@@ -9,6 +9,13 @@ export async function exerciseAccountVisitEditor({ evaluate, waitUntil, captureL
     await captureLayouts('.passport-editor__hero', `account-visit-${state}`);
     await captureLayouts('.passport-visit', `account-visit-${state}-metadata`);
     await captureLayouts('.passport-timeline', `account-visit-${state}-timeline`);
+    await waitUntil(`document.querySelectorAll('.history-report__item').length === ${data.reports.length} && !document.querySelector('.history-report__loading, .history-report__load-error')`, 'visit historical-existence reports retain their exact local pending or empty list');
+    await captureLayouts('.history-report', `account-visit-${state}-historical-reports`);
+    await evaluate(`document.querySelector('.history-report__heading button').click()`);
+    await waitUntil(`!!document.querySelector('.history-report__form input[formcontrolname="claimedName"]') && document.querySelector('.history-report__heading button').getAttribute('aria-expanded') === 'true'`, 'historical report disclosure opens its existing fields without submitting a report');
+    await captureLayouts('.history-report__form', `account-visit-${state}-historical-report-unsubmitted`);
+    await evaluate(`document.querySelector('.history-report__heading button').click()`);
+    await waitUntil(`!document.querySelector('.history-report__form')`, 'historical report form closes without a source submission or saved mutation');
     if (data.visit.status === 'Draft') {
       await waitUntil(`!!document.querySelector('.passport-visit__details summary') && document.querySelectorAll('.passport-attraction').length === ${data.targets.length}`, 'draft visit retains editable disclosure and exact historical target rows');
       await captureLayouts('.passport-selector', 'account-visit-draft-selector');

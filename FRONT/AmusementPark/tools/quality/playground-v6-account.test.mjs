@@ -123,9 +123,11 @@ test('visit editor input keeps exact draft/completed/archived states, cursor and
       } else assert.equal(next, null);
       assert.equal(get(`${prefix}/historical-ride-targets?page=1&pageSize=24&scope=KnownOpen`).body.items.length, data.targets.length);
       assert.equal(get(`${prefix}/deletion-preview`).body.occurrenceCount, data.occurrences.length);
+      assert.equal(get(`${prefix}/historical-existence-reports`).body.length, kind === 'standard' ? 1 : 0);
+      assert.equal(get(`${prefix}/historical-existence-reports?unknown=true`), null);
       assert.equal(get(`${prefix}/occurrences?limit=100`), null);
       assert.equal(get(`${prefix}/historical-ride-targets?page=2&pageSize=24&scope=KnownOpen`), null);
-      for (const method of ['POST', 'PUT', 'DELETE']) for (const suffix of ['', '/complete', '/archive', '/assessment', '/occurrences:batch']) {
+      for (const method of ['POST', 'PUT', 'DELETE']) for (const suffix of ['', '/complete', '/archive', '/assessment', '/occurrences:batch', '/historical-existence-reports']) {
         assert.equal(accountLayoutFixtureResponse({ method, url: accountLayoutFixtureOrigin + prefix + suffix }, fixture), null);
       }
       const first = get(prefix);
@@ -145,7 +147,7 @@ test('visit editor expressions compile without saved metadata, assessments or co
       evaluate: async expression => assert.doesNotThrow(() => new Script(expression)),
       waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
       captureLayouts: async (_selector, page) => captures.push(page), navigateDocument: async () => {} });
-    assert.equal(captures.length, kind === 'standard' ? 13 : 4);
+    assert.equal(captures.length, kind === 'standard' ? 17 : 6);
     assert.equal(result.visitEditor.writesAssessmentsRideLogsStatusChangesDeletionAndPublicationNotExercised, true);
   }
   assert.doesNotMatch(read('tools/design-v6/exercise-account-visit-editor.mjs'), /fetch\(|requestSubmit|\.submit\(|saveVisitMetadata\(|confirmVisitDeletion\(|\.complete\(|\.archive\(/);

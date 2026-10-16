@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## Dernier refus CI — rapport historique de visite manquant dans la fixture
+
+Le [run `38909139005`](https://github.com/Ced59/AmusementParkProject/actions/runs/38909139005), commit `5ccfde1edcd1a164bb232b12cd7381ee3a411f0b`, valide tests/build/budgets, backend et sécurité. Le parcours master standard FR atteint **1 561 contrôles / 1 378 captures**, dont les sept vues voyage et sept vues statistiques/partage. Il s'arrête ensuite avant la V6 sur le GET exact `historical-existence-reports` de l'éditeur de visite, absent de la fixture : aucune requête n'est transmise à une API privée. Ce run reste FAIL.
+
+Le correctif ajoute uniquement cette réponse GET synthétique : un rapport Pending ou une liste vide, DTO existant, aucun paramètre additionnel accepté, aucune mutation permise. La recette ouvre/referme le formulaire de signalement sans soumission et prévoit désormais **17 états Draft/Completed et six Archived**. Les tests ciblés vérifient aussi le refus POST/PUT/DELETE et des queries inconnues. **50 tests Node ciblés passent ; ces nouveaux rendus ne sont pas encore attestés en CI.** Les corrections de contraste V6 et scénarios suivants ne sont pas déclarés PASS par le passage master.
+
 ## Capacités historiques absentes des exemples publiés — recette isolée préparée
 
 Un complément local CI prépare les capacités réellement absentes du Fleury/Efteling/Le Pal observés : timeline paginée 25 + 1, snapshot avec cinq groupes de sujets/coverage et date mois/jour, comparaison avec ouvert/fermé/renommé/stable/incertain, lignée et source dépliable. Les réponses synthétiques utilisent les DTO existants, un seul identifiant de parc de recette, deux plages exactes et des GET bornés sur l'origine `.invalid` ; aucun fallback réseau, mutation ou publication. Les documents sont anonymes et les routes/resolvers/formulaires Angular réels sont conservés. Une variante vide est aussi préparée.
@@ -42,7 +48,7 @@ Le complément couvre statistiques globales et historiques, fiches statistiques 
 
 Trois états sont préparés sur les vrais deep links : brouillon Year modifiable, visite Month terminée et archive vide avec parent 404 intentionnel. Les données sont uniquement synthétiques, locales au navigateur CI : cible historique avec/sans cohérence vérifiée, journal initial 2 lignes puis curseur avec doublon et troisième ligne, commentaire privé fictif et note personnelle. Tous les GET sont exacts et clonés ; toute écriture, cible/query inconnue ou curseur arbitraire est refusé.
 
-La recette ouvre le disclosure de métadonnées, modifie/restaure un titre sans enregistrer, vérifie les contrôles en lecture seule, charge le dernier lot du journal et ouvre/annule l'aperçu de suppression avec confirmation décochée. Elle prévoit 13 captures d'états Draft/Completed et quatre Archived, plus les paliers/thèmes de chaque variante. **29 tests Node compte passent ; aucun rendu navigateur n'est encore attesté pour ce complément.** Sauvegarde, notes, ajout de tour, réorganisation, changement de statut, suppression confirmée et publication restent non exercés. Les brouillons anonymes/IndexedDB restent ouverts.
+La recette ouvre le disclosure de métadonnées, modifie/restaure un titre sans enregistrer, vérifie les contrôles en lecture seule, charge le dernier lot du journal et ouvre/annule l'aperçu de suppression avec confirmation décochée. Le complément signalement porte les captures prévues à 17 états Draft/Completed et six Archived, plus les paliers/thèmes de chaque variante. **33 tests Node compte passent ; aucun rendu navigateur complet n'est encore attesté pour ce complément.** Sauvegarde, notes, ajout de tour, réorganisation, changement de statut, suppression confirmée et publication restent non exercés. Les brouillons anonymes/IndexedDB restent ouverts.
 
 ## Deux routes de brouillons anonymes — recette préparée, non exécutée
 
