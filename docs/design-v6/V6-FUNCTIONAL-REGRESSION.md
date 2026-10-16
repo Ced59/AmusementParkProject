@@ -1,5 +1,9 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic `cba391e78` — défaut de contraste conservé comme FAIL
+
+Le [run `38959031789`](https://github.com/Ced59/AmusementParkProject/actions/runs/38959031789) passe à nouveau 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité. Le diagnostic atteint Collections après le profil, l'identité et le panneau de suppression ; le filtre actif clair échoue à 3,88:1. Zéro erreur fixture/exception, aucun changement de données, aucun appel privé transmis. Les scénarios suivants restent non exécutés. Le correctif du texte conserve exactement filtres, handlers et résultats ; le cas numérique observé est protégé par un test.
+
 ## Diagnostic préalable `eea4e8b10`
 
 La [CI `38957806574`](https://github.com/Ced59/AmusementParkProject/actions/runs/38957806574) valide 2 777 tests Angular / 583 fichiers, build, budgets, backend et sécurité. Le diagnostic V6 standard FR passe profil/identité à 390/1 366 px clair/sombre, puis refuse le contraste du slogan footer clair à 3,38:1 pendant le panneau de suppression. **Zéro erreur fixture/exception**, aucune mutation privée ; l'échec est visuel. Les scénarios voyage, visite, brouillons et histoire suivants ne sont pas exécutés dans ce run. La correction utilise uniquement le token de texte existant du footer ; wordmark, slogans traduits et comportements restent intacts. Les 65 tests Node ciblés compte/tokens/shell/footer passent après correction, sans PASS navigateur extrapolé.

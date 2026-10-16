@@ -43,6 +43,15 @@ function resolveThemeColor(theme, name) {
   return alias ? resolveThemeColor(theme, alias[1]) : value;
 }
 
+test('active collection filter text meets AA on the exact CI-observed rose surface', () => {
+  const source = readFileSync(resolve(styles, '../app/features/collections/pages/user-collections-page.component.scss'), 'utf8');
+  assert.match(source, /\.collections-page__filter--active\s*\{[^}]*color:\s*var\(--app-accent-pink\)/);
+  const measuredBackground = [0.90451, 0.82549, 0.828039];
+  const theme = variables(light);
+  assert.ok(contrast(resolveThemeColor(theme, '--app-accent-pink'), measuredBackground) >= 4.5);
+  assert.ok(contrast('#bd315d', measuredBackground) < 4.5, 'the observed failing decorative rose remains a regression case');
+});
+
 test('small trip priority and date text uses AA semantic ink, not decorative orange', () => {
   for (const [page, selector] of [
     ['trip-preferences-page', 'preference-card__current--mustdo'],

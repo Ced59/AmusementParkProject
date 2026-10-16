@@ -87,7 +87,7 @@ h1 {
 .collections-page__filter--active {
   border-color: color-mix(in srgb, var(--c-rose) 62%, var(--app-border));
   background: color-mix(in srgb, var(--c-rose) 15%, var(--app-surface));
-  color: var(--c-rose);
+  color: var(--app-accent-pink);
 }
 
 .collections-page__grid {

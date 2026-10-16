@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Diagnostic `cba391e78` — filtre Collections et règle mobile résiduelle
+
+L'[artefact `12071807977`](https://github.com/Ced59/AmusementParkProject/actions/runs/38959031789/artifacts/12071807977) conserve `isolated-preflight/v6_standard_fr_account-collections_390_light.webp`, inspecté : filtre « Tout » à 16 px, `#bd315d` sur le fond composé `[0.90451, 0.82549, 0.828039]`, **3,88:1**. Profil, identité et avertissement de suppression passent auparavant (34 contrôles / 15 captures jusqu'au refus), zéro fixture/exception. Le slogan footer ne bloque plus. Seule la couleur textuelle du filtre actif devient `--app-accent-pink` ; fond et bordure restent inchangés. Un test protège le fond réellement mesuré et l'ancien ratio insuffisant.
+
+La navigation reste fragmentée dans cette capture : une règle ultérieure `max-width:390px` réintroduisait gaps et police 0,6rem. Ces trois overrides redondants sont retirés ; le padding extérieur compact reste conservé et le texte hérite de 0,68rem. Le test inspecte désormais toutes les règles de la nav, pas seulement sa première déclaration. **Nouveau rendu mobile requis ; aucun PASS visuel inventé.**
+
 ## Diagnostic préalable `eea4e8b10` — contraste du slogan footer
 
 L'[artefact `12071546796`](https://github.com/Ced59/AmusementParkProject/actions/runs/38957806574/artifacts/12071546796) conserve le FAIL : `isolated-preflight/v6_standard_fr_account-deletion-warning_390_light.webp`, inspecté. Le panneau n'est pas la source du défaut : le footer visible contient « pour toujours plus de fun » à 15,6 px, orange `#e54b28` sur `#eeefe8`, **3,38:1**. Document 375 px dans un viewport 390 px, aucune fixture manquante ni exception. Les profils/éditeurs d'identité V6 390/1 366 px clair/sombre passent ce diagnostic ; ni les scénarios suivants ni la campagne complète ne sont déclarés PASS.

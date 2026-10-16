@@ -36,6 +36,11 @@ test('mobile navigation gives long localized labels the full equal-width column 
   assert.match(navigationStyles, /\.app-mobile-bottom-nav__item\s*\{[^}]*min-width:\s*0;[^}]*min-height:\s*3\.9rem;[^}]*flex:\s*1 1 0;[^}]*padding:\s*0\.5rem 0\.125rem;/);
   assert.match(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*font-size:\s*0\.68rem;[^}]*overflow-wrap:\s*anywhere;[^}]*white-space:\s*normal;/);
   assert.doesNotMatch(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*(?:text-overflow:\s*ellipsis|overflow:\s*hidden|line-clamp)/);
+  for (const [, rule] of navigationStyles.matchAll(/\.app-mobile-bottom-nav\s*\{([^}]*)\}/g)) {
+    const gap = /\bgap:\s*([^;]+)/.exec(rule);
+    if (gap) assert.equal(gap[1].trim(), '0', 'narrow media rules must not reinstate inter-column gaps');
+  }
+  assert.doesNotMatch(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*font-size:\s*0\.6rem/);
 });
 
 test('the mobile park trail keeps complete localized labels and wraps its 44px links instead of clipping them', () => {
