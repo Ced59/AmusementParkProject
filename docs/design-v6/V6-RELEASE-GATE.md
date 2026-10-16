@@ -2,6 +2,10 @@
 
 ## Décision actuelle
 
+Le diagnostic préalable du [run `db82d71eb / 38973483962`](https://github.com/Ced59/AmusementParkProject/actions/runs/38973483962) est **PASS** : standard/incomplet FR, master/V6, 390/1 366 px et deux thèmes. Le run poursuit la campagne complète ; aucun PASS intégral n'est encore déduit. Les compléments locaux suivants (encre primaire admin, barre et nouveau cas admin-shell) exigent leur propre CI sur le prochain HEAD.
+
+La recette admin-shell est ajoutée sans environnement privé : entrée de rôle **synthétique CI uniquement**, liens conditionnels header/mobile et toolbar lazy réels, 13 largeurs FR et mobile/desktop dans les sept autres langues, master/V6 et deux thèmes. Aucun écran admin ni endpoint admin n'est ouvert par ce scénario, aucune mutation métier ; il ne certifie ni autorisation serveur ni workflow admin. **162 tests Node ciblés PASS** et syntaxe de capture contrôlée. Le garde vérifie présence des deux liens, sept accès mobiles, bounds/taille/hit-test et absence de recouvrement toolbar/navigation ; nouveaux rendus obligatoires.
+
 Dernier run [`38968888897`](https://github.com/Ced59/AmusementParkProject/actions/runs/38968888897), `4331fa087` : **FAIL du diagnostic incomplet**, après réussite des scénarios standard FR V6 et master, chacun à **670 contrôles / 364 captures**. Les deux anciens contrastes comparaison/lignée et l'alignement des champs d'année passent côté V6. La fixture V6 incomplète termine 426 contrôles / 232 captures sans erreur fixture/interception ni exception, mais refuse cinq captures pour un seul avertissement e-mail à **3,38:1**. Le SCSS corrigé réutilise l'encre AA ; l'audit lexical raccorde aussi les anciens noms de variables absents aux tokens existants, y compris les styles admin. **157 tests Node ciblés passent** après correction. Les 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité du run passent ; nouvelle CI, master incomplet et campagne intégrale toujours obligatoires. Le PASS des scénarios master ne certifie pas ses anciens contrastes, conservés comme baseline.
 
 Un diagnostic préliminaire Linux CI vérifie maintenant les scénarios isolés standard/incomplet FR à 390/1 366 px, deux thèmes, V6 puis master. Il réutilise le navigateur de recette et le nettoyage existants, sans serveur ni réseau privé. Son rapport porte `preflightOnly: true` et `fullCampaignRequired: true` : **il ne valide aucune gate globale**. La campagne complète reste obligatoire après réussite ; un échec conserve ses captures dans le même artefact et bloque les étapes suivantes. Thèmes, huit langues, paliers complets, état session expirée, SSR public et métriques réseau ne sont pas remplacés par ce sous-ensemble.
@@ -72,6 +76,8 @@ Le diagnostic peut désormais **recenser plusieurs contrastes défaillants d'une
 - SHA de contenu 6.0.0 audité : `545345dc3a81c099a328e29a510447339b3f9342`
 
 ## Audit de portée P22
+
+Audit borné du 17 octobre au commit `e31fd061d` : **448 fichiers**, zéro suppression, zéro route/guard/resolver ou lockfile modifié. Hors frontend/docs V6 : le workflow de recette et les quatre fichiers backend de sécurité/tests déjà autorisés, aucun code métier ni fichier `deploy/`. Le nouveau helper admin-shell est un outil de recette hors bundle, pas un service de production. Cette liste doit encore être rafraîchie au gel final.
 
 - Audit du SHA `da81bf4ab` : 352 fichiers modifiés, dont 275 sous `FRONT/`, 74 sous `docs/`, deux sous `API/` et un workflow sous `.github/`.
 - 165 feuilles SCSS, 16 templates HTML, 45 tests/outils MJS, 30 fichiers TypeScript, huit inventaires CSV et 22 JSON ; les preuves graphiques et documents complètent ce décompte. Cet audit daté doit être recalculé au gel final, pas extrapolé après les corrections suivantes.

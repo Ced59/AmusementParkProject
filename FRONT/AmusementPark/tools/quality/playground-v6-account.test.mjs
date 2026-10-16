@@ -22,10 +22,64 @@ import { exerciseIsolatedHistoryPages } from '../design-v6/exercise-isolated-his
 import { isolatedLayoutPreflightPlan } from '../design-v6/isolated-layout-preflight.mjs';
 import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from '../design-v6/account-layout-acceptance.mjs';
 import { positionAccountCaptureTarget } from '../design-v6/browser-account-target.mjs';
+import { collectAdminShellLayout, adminShellLayoutIssues } from '../design-v6/browser-admin-shell.mjs';
 import { advanceMainDocument, forgetRetiredDocumentOwners, isRetiredDocumentInterceptionError } from '../design-v6/browser-interception-errors.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('admin shell measurement reads the real links and toolbar without navigation or mutation', () => {
+  const icon = {};
+  const rect = (x, y, width, height) => ({ x, y, width, height, right: x + width, bottom: y + height });
+  const link = (mobile, box) => ({ getAttribute: () => '/fr/admin', closest: () => mobile,
+    getBoundingClientRect: () => box, contains: node => node === icon });
+  const links = [link(false, rect(0, 0, 0, 0)), link(true, rect(330, 1128, 53, 72))];
+  const sandbox = { innerWidth: 390, innerHeight: 1200, location: { pathname: '/fr/profile' }, document: {
+    querySelectorAll: selector => selector === '.app-mobile-bottom-nav__item' ? Array(7).fill({}) : links,
+    querySelector: selector => ({ getBoundingClientRect: () => selector === '.admin-public-view-toolbar'
+      ? rect(8, 960, 374, 150) : rect(0, 1128, 390, 72) }), elementFromPoint: () => icon } };
+  const layout = JSON.parse(JSON.stringify(runInNewContext(`(${collectAdminShellLayout.toString()})()`, sandbox)));
+  assert.deepEqual(adminShellLayoutIssues(layout), []);
+  assert.deepEqual(layout.entries.map(entry => entry.scope), ['header', 'mobile']);
+  assert.equal(layout.entries[1].unobscured, true);
+  assert.equal(layout.adminPath, '/fr/admin');
+  const capture = read('tools/design-v6/capture-account-layout.mjs');
+  const branch = capture.split("} else if (fixture.kind === 'admin-shell') {")[1].split('} else {')[0];
+  assert.match(branch, /await captureLayouts\('\.profile-hero', 'account-admin-shell'\)/);
+  assert.match(branch, /serverAuthorizationExercised: false, adminWorkflowsExercised: false/);
+  assert.doesNotMatch(branch, /navigateDocument|\.click\(/);
+});
+
+test('admin shell acceptance refuses missing entries, obscured controls and toolbar overlap', () => {
+  const layout = { adminPath: '/pl/admin', width: 390, height: 1200, bottomItemCount: 7,
+    entries: [
+      { scope: 'header', href: '/pl/admin', visible: false },
+      { scope: 'mobile', href: '/pl/admin', visible: true, unobscured: true, x: 330, y: 1128,
+        right: 383, bottom: 1200, width: 53, height: 72 },
+    ], toolbar: { x: 8, y: 960, right: 382, bottom: 1110, width: 374, height: 150 },
+    bottomNavigation: { x: 0, y: 1128, right: 390, bottom: 1200, width: 390, height: 72 } };
+  assert.deepEqual(adminShellLayoutIssues(layout), []);
+  for (const change of [
+    value => value.entries.pop(), value => value.entries.push({ ...value.entries[1] }),
+    value => { value.bottomItemCount = 6; }, value => { value.entries[1].unobscured = false; },
+    value => { value.entries[1].right = 392; }, value => { value.entries[1].width = 10; },
+    value => { value.entries[1].height = 20; }, value => { value.toolbar = null; },
+    value => { value.toolbar.bottom = 1140; }, value => { value.toolbar.right = 400; },
+  ]) {
+    const invalid = structuredClone(layout);
+    change(invalid);
+    assert.ok(adminShellLayoutIssues(invalid).length, 'every invalid layout must be refused');
+  }
+});
+
+test('the unencapsulated public admin toolbar targets its real host, including the mobile safe-area rule', () => {
+  const root = 'src/app/features/admin/contextual-editing/ui/admin-public-view-toolbar/admin-public-view-toolbar.component';
+  assert.match(read(root + '.ts'), /encapsulation:\s*ViewEncapsulation.None/);
+  const source = read(root + '.scss');
+  assert.doesNotMatch(source, /:host\b/);
+  assert.match(source, /app-admin-public-view-toolbar\s*\{\s*position:\s*fixed/);
+  assert.match(source, /@media \(max-width: 680px\)\s*\{\s*app-admin-public-view-toolbar\s*\{[^}]*bottom:\s*calc\(var\(--bottom-nav-height\) \+ max\(1rem, env\(safe-area-inset-bottom\)\)\)/);
+});
 
 test('history compare keeps the unchanged trail missing-article fallback exact and read-only', () => {
   const fixture = createAccountLayoutFixture('standard', 1792144800);
@@ -476,13 +530,24 @@ test('account layout fixtures distinguish complete, incomplete and expired UI se
 test('account acceptance retains all French widths and explicit two-theme mobile/desktop cases in the other seven languages', () => {
   const widths = [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920];
   const cases = accountLayoutCases(widths);
-  assert.equal(cases.length, 10);
+  assert.equal(cases.length, 18);
   assert.deepEqual(cases.slice(0, 3).map(item => item.kind), ['standard', 'incomplete', 'expired']);
   assert.deepEqual(cases.slice(0, 3).map(item => item.widths), [widths, widths, widths]);
-  assert.deepEqual(cases.slice(3).map(item => item.language), ['en', 'de', 'nl', 'it', 'es', 'pt', 'pl']);
-  for (const item of cases.slice(3)) {
+  assert.deepEqual(cases.slice(3, 10).map(item => item.language), ['en', 'de', 'nl', 'it', 'es', 'pt', 'pl']);
+  for (const item of cases.slice(3, 10)) {
     assert.deepEqual(item.widths, [390, 1366]);
     assert.equal(createAccountLayoutFixture(item.kind, 1792144800, item.language).user.preferredLanguage, item.language.toUpperCase());
+  }
+  assert.deepEqual(cases.slice(10).map(item => item.language), ['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl']);
+  assert.deepEqual(cases[10].widths, widths);
+  for (const item of cases.slice(10)) {
+    assert.equal(item.kind, 'admin-shell');
+    const fixture = createAccountLayoutFixture(item.kind, 1792144800, item.language);
+    assert.deepEqual(fixture.user.roles, ['USER', 'ADMIN']);
+    const claims = JSON.parse(Buffer.from(fixture.accessToken.split('.')[1], 'base64url'));
+    assert.deepEqual(claims.roles, fixture.user.roles);
+    assert.deepEqual(createAccountLayoutFixture('standard', 1792144800, item.language).user.roles, ['USER']);
+    assert.equal(accountLayoutFixtureResponse({ method: 'GET', url: accountLayoutFixtureOrigin + '/api/admin/users' }, fixture), null);
   }
   assert.throws(() => accountLayoutCases([320]), /390 and 1366/);
   assert.throws(() => accountLayoutCases([...widths, 390]), /bounded widths/);

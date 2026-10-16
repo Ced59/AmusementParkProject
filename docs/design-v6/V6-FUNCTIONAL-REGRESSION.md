@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic préalable vert et shell admin conditionnel préparé
+
+L'étape préalable `db82d71eb / 38973483962` passe les quatre cas standard/incomplet FR master/V6 à 390/1 366 px clair/sombre. La campagne complète est en cours ; pas de verdict intégral anticipé.
+
+Le cas `admin-shell`, ajouté ensuite à la campagne complète, utilise uniquement un rôle synthétique et un token volontairement non signé sur l'origine `.invalid` déjà isolée. Les rôles USER des scénarios existants restent intacts. Profil réel compilé, liens admin conditionnels header/mobile et toolbar lazy sont mesurés ; aucun lien admin n'est activé, aucun mode d'édition ni workflow admin n'est exécuté, tout GET admin reste sans fixture et refusé. FR aux 13 largeurs, sept autres langues à 390/1 366 px, deux thèmes et master/V6. Les unités refusent lien absent/dupliqué, septième entrée perdue, contrôle masqué, taille/bounds invalides et recouvrement. **162 tests Node ciblés PASS ; rendus CI requis.**
+
 ## Diagnostic `4331fa087` — standard V6/master terminé
 
 Le [run `38968888897`](https://github.com/Ced59/AmusementParkProject/actions/runs/38968888897) passe **2 777 tests Angular / 583 fichiers**, build/budgets/backend/sécurité. Standard FR V6 et master réussissent chacun **670 contrôles / 364 captures** : parcours compte/auth non soumis, notifications, rôles Owner/Viewer, voyages, statistiques/partage, visites, brouillons locaux et histoire synthétique. V6 incomplet termine **426 contrôles / 232 captures**, zéro erreur fixture/interception/exception, mais refuse le contraste d'un avertissement e-mail. Aucun workflow distant persisté ni vraie permission serveur n'est certifié par ces fixtures ; master incomplet, session expirée, huit langues et matrice intégrale restent à exécuter.

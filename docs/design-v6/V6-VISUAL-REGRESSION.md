@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Shell connecté admin — gabarit conditionnel à recapturer
+
+Après le PASS préalable FR du run `38973483962`, une recette spécifique prépare les deux liens conditionnels admin et la barre lazy, sans ouvrir de back-office réel. Le contrôle exige les sept accès mobiles et leur hit-test, bounds de barre et absence de recouvrement. Les 13 largeurs FR et sept autres langues mobile/desktop, deux thèmes et master/V6, restent **à exécuter dans la nouvelle campagne**, pas approuvés par les seuls tests Node.
+
+La revue source relève le petit texte actif orange sur fond teinté de la barre ; il rejoint `--app-primary-strong`, avec aplat `color-mix` basé sur l'orange V6. Le host utilisait `:host` alors que ce composant conserve `ViewEncapsulation.None` : le compilateur Angular local ne transforme ces sélecteurs qu'en Emulated. Les trois règles ciblent maintenant l'élément exact `app-admin-public-view-toolbar`, sans changement de classe TypeScript, encapsulation, événement ou mode. Position fixe et safe-area existants peuvent ainsi s'appliquer au vrai host. Explication conforme à la [documentation Angular sur les styles](https://angular.dev/guide/components/styling#viewencapsulationnone) ; preuve navigateur de cette correction encore requise.
+
 ## Diagnostic `4331fa087` — standard comparé, avertissement incomplet
 
 L'[artefact `12076835909`](https://github.com/Ced59/AmusementParkProject/actions/runs/38968888897/artifacts/12076835909) conserve les scénarios standard FR V6 et master, chacun **364 captures / 670 contrôles**. Les textes comparaison/lignée précédemment refusés et l'alignement des inputs d'année passent les assertions V6. La baseline master conserve ses anciens défauts visuels dans le rapport ; son PASS est un PASS de scénarios, pas une conformité AA rétroactive.

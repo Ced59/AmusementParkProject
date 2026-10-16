@@ -18,18 +18,19 @@ export function accountLayoutCases(widths) {
   return [
     ...['standard', 'incomplete', 'expired'].map(kind => ({ kind, language: 'fr', widths: [...widths] })),
     ...languages.slice(1).map(language => ({ kind: 'standard', language, widths: [390, 1366] })),
+    ...languages.map(language => ({ kind: 'admin-shell', language, widths: language === 'fr' ? [...widths] : [390, 1366] })),
   ];
 }
 
 export function createAccountLayoutFixture(kind, nowSeconds, language = 'fr') {
-  if (!['standard', 'incomplete', 'expired'].includes(kind) || !languages.includes(language) || !Number.isInteger(nowSeconds) || nowSeconds < 1) {
+  if (!['standard', 'incomplete', 'expired', 'admin-shell'].includes(kind) || !languages.includes(language) || !Number.isInteger(nowSeconds) || nowSeconds < 1) {
     throw new Error('Unknown or undated account layout fixture.');
   }
   const date = new Date(nowSeconds * 1000).toISOString();
   const user = { id: userId, email: 'layout-review@apf-fixture.invalid',
     firstName: kind === 'incomplete' ? '' : 'Camille', lastName: kind === 'incomplete' ? '' : 'Démonstration',
     publicDisplayName: kind === 'incomplete' ? null : 'Compte de recette — caractères longs Äéł',
-    publicIdentifier: 'layout-review', isActivated: true, isBlocked: false, roles: ['USER'],
+    publicIdentifier: 'layout-review', isActivated: true, isBlocked: false, roles: kind === 'admin-shell' ? ['USER', 'ADMIN'] : ['USER'],
     preferredLanguage: language.toUpperCase(), preferredMeasurementSystem: 'Metric', avatarUrl: '', createdAt: date, updatedAt: date };
   const claims = { sub: user.id, nameidentifier: user.id, email: user.email, firstname: user.firstName,
     lastname: user.lastName, avatar: '', lastlogin: date, roles: [...user.roles], jti: 'apf-ci-layout-only',

@@ -100,6 +100,16 @@ test('the dense admin button skin does not override the primary label with unrea
   }
 });
 
+test('the conditional public admin toolbar uses AA text on its canonical orange-tinted surface', () => {
+  const source = readFileSync(resolve(styles, '../app/features/admin/contextual-editing/ui/admin-public-view-toolbar/admin-public-view-toolbar.component.scss'), 'utf8');
+  assert.match(source, /\.admin-public-view-toolbar__edition--active\s*\{[^}]*color:\s*var\(--app-primary-strong\);\s*background:\s*color-mix\(in srgb, var\(--c-orange\) 12%, transparent\)/);
+  for (const source of [light, dark]) {
+    const theme = variables(source);
+    assert.ok(contrast(resolveThemeColor(theme, '--app-primary-strong'),
+      mix(resolveThemeColor(theme, '--c-orange'), resolveThemeColor(theme, '--app-surface'), 0.12)) >= 4.5);
+  }
+});
+
 function variables(source) {
   return new Map([...source.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]));
 }

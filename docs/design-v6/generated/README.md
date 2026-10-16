@@ -1,6 +1,6 @@
 # Inventaire P00 généré
 
-- Source : db82d71eb + correction du premier plan admin, styles uniquement
+- Source : e31fd061d + styles de barre admin et recette admin-shell, aucun contrat modifié
 - Routes terminales, redirections et écrans développés : **148**
 - Composants Angular de présentation recensés : **293**
 - Interactions et champs explicitement recensés : **2057**

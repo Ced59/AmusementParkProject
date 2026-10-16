@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { collectAdminShellLayout, adminShellLayoutIssues } from './browser-admin-shell.mjs';
 import { extname, join, resolve, sep } from 'node:path';
 import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse, accountLayoutResetQuery } from './account-layout-fixtures.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument, forgetRetiredDocumentOwners } from './browser-interception-errors.mjs';
@@ -28,7 +29,7 @@ export function accountLayoutCaptureAllowed(ci, platform) {
 export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label, homeFixtures = new Map(), deferContrastFailure = false }) {
   if (!accountLayoutCaptureAllowed(process.env.CI, process.platform)) throw new Error('Account layout capture requires isolated Linux CI.');
   if (typeof deferContrastFailure !== 'boolean' || (deferContrastFailure && process.env.V6_ISOLATED_PREFLIGHT !== 'true')) throw new Error('Deferred contrast findings are restricted to the explicit diagnostic preflight.');
-  if (!['master', 'v6'].includes(label) || !['standard', 'incomplete', 'expired'].includes(fixture.kind)) throw new Error('Unsupported account layout capture case.');
+  if (!['master', 'v6'].includes(label) || !['standard', 'incomplete', 'expired', 'admin-shell'].includes(fixture.kind)) throw new Error('Unsupported account layout capture case.');
   const language = fixture.language;
   if (!['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'].includes(language)) throw new Error('Unsupported account fixture language.');
   const profilePath = `/${language}/profile`;
@@ -154,7 +155,11 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       await waitUntil(`localStorage.getItem(${JSON.stringify(accountLayoutRefreshMarker)}) === null`, 'expired local refresh clears the existing session marker');
     } else {
       await waitUntil(`document.querySelector('.profile-hero__title')?.textContent.trim() === ${JSON.stringify(displayName)}`, 'existing guard and refresh flow render the local account fixture');
-      await waitUntil(`!document.querySelector('a[href="/${language}/admin"]')`, 'standard account fixture does not expose the conditional admin entry');
+      if (fixture.kind === 'admin-shell') {
+        await waitUntil(`document.querySelectorAll('a[href="/${language}/admin"]').length === 2 && !!document.querySelector('.admin-public-view-toolbar')`, 'local admin presentation exposes the two existing navigation entries and lazy toolbar');
+      } else {
+        await waitUntil(`!document.querySelector('a[href="/${language}/admin"]')`, 'standard account fixture does not expose the conditional admin entry');
+      }
       await evaluate(`document.querySelector('.app-cookie-consent__button--ghost')?.click()`);
       await waitUntil(`!document.querySelector('.app-cookie-consent')`, 'account layout uses the real necessary-cookie control');
       await evaluate(`document.querySelector('.profile-row--identity > button').click()`);
@@ -196,6 +201,10 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
             return stable && layout.width === width && layout.theme === theme && layout.target.visible;
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
+          if (fixture.kind === 'admin-shell') {
+            layout.adminShell = await evaluate(`(${collectAdminShellLayout.toString()})()`);
+            issues.push(...adminShellLayoutIssues(layout.adminShell));
+          }
           if (layout.target.x < -1 || layout.target.right > width + 1) issues.push('captured target horizontal bounds');
           if (page === 'isolated-history-comparison' && width > 520) {
             layout.yearFields = await evaluate(`['comparison-from', 'comparison-to'].map(id => { const input = document.getElementById(id); return input ? { top: input.getBoundingClientRect().top, width: input.getBoundingClientRect().width } : null; })`);
@@ -220,6 +229,10 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       await captureLayouts('.p-dialog', 'account-expired');
       if (result.apiReads.some(read => read.path.startsWith('/api/users/') || read.path.startsWith('/api/me/'))) throw new Error('Expired layout unexpectedly requested private profile data.');
       result.expiredSession = { localRefreshRejected: true, guardRedirectExercised: true, realAuthIntegrationExercised: false };
+    } else if (fixture.kind === 'admin-shell') {
+      await captureLayouts('.profile-hero', 'account-admin-shell');
+      if (result.apiReads.some(read => read.path.startsWith('/api/admin/'))) throw new Error('Admin shell presentation unexpectedly requested an administration API.');
+      result.adminShell = { presentationRoleOnly: true, serverAuthorizationExercised: false, adminWorkflowsExercised: false };
     } else {
       const navigateDocument = async path => {
         if (!accountDocuments.includes(path) && path !== resetPath + accountLayoutResetQuery) throw new Error('Unknown isolated account deep-link recipe.');
