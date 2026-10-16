@@ -1,5 +1,24 @@
 # V6 — régression visuelle
 
+## Mini-fiches des familles non dessinées — validation finale ouverte
+
+Ces transpositions réutilisent uniquement tokens, primitives et composants existants. Ce tableau n'est **ni une approbation propriétaire ni une preuve de rendu**. Les noms de captures ci-dessous désignent les états attendus dans les prochains artefacts ; aucun lien vers un fichier inexistant n'est présenté comme preuve.
+
+| Famille | Cible Playground et densité | États de présentation obligatoires | Repère de capture attendu |
+|---|---|---|---|
+| Compte/profil | Panneaux opaques à filets, grille identité puis actions ; nom long replié, avatar réservé, navigation tactile distincte | Standard/incomplet, identité ouverte/annulée, suppression non soumise, deux thèmes | `account-profile`, `account-identity-editor`, `account-deletion-warning` |
+| Auth | Carte de formulaire lisible, labels et erreurs conservés, focus modal confiné ; aucun faux login du prototype | Vide, invalide, champs non soumis, token absent, session expirée ; Google non simulé comme réussi | `account-expired`, `account-reset-form-unsubmitted`, `account-recovery-empty` |
+| Voyages | Atelier plus dense que le hero public, étapes numérotées contrastées, panneaux participants et droits séparés | Owner/Viewer, date éditable/lecture seule, listes vides/remplies, filtres et dernier lot d'activité | `account-trip-overview`, `account-trip-participants`, `account-trip-activity-final-page` |
+| Éditeur de visite | Formulaire et journal larges, disclosures natifs, sélection historique distincte, actions destructives explicites | Draft/Completed/Archived, période imprécise, parent absent, journal paginé, confirmation annulée | `account-visit-draft-unsubmitted`, `account-visit-completed-timeline`, `account-visit-archived-deletion-warning` |
+| Statistiques privées | Données alignées, unités/denominators présents, graphiques et tableaux à filets ; pas de chiffres du prototype | Résumé vide/rempli, item/parc/année, couverture partielle, filtres réversibles | `account-passport-statistics`, `account-passport-item-content`, `account-passport-statistics-history` |
+| Partage/consentement | Périmètre et confidentialité avant les actions, choix locaux lisibles, consentement séparé du résultat | Non publié, périmètre non soumis, invitation prête/expirée, comparaison absente/présente | `account-passport-share-unsubmitted`, `account-passport-comparison-consent` |
+| Brouillons anonymes | Avertissement local toujours visible, cartes compactes, journal simple ; verrou d'import non masqué | Vide/rempli, brouillon manquant, formulaire non soumis, import verrouillé | `account-anonymous-passport-empty`, `account-anonymous-editor-unsubmitted`, `account-anonymous-editor-locked` |
+| Histoire décisionnelle | Enveloppe éditoriale du parc, couverture/ambiguïtés visibles, comparaison et sources en panneaux denses | Page 2, date précise, plage invalide/valide, sujet stable, lignée et source ; données de recette uniquement | `isolated-history-page-two`, `isolated-history-snapshot-day`, `isolated-history-lineage-source` |
+| Administration | Déclinaison dense, titres contenus, tables à scroll local explicite, formulaires alignés et confirmations inchangées | Droits, états dirty/partial, import/preview/apply et longues tables à conserver ; aucune mutation de recette en production | Exception propriétaire de recette isolée documentée ; pas de faux artefact admin |
+| Pages secondaires/états | Texte long lisible, mêmes surfaces/focus/erreurs, aucun gradient ou gros rayon résiduel | Contact/légal/version, consentement, toast, dialogue, erreur, skeleton et rich text | Artefacts publics et contrôles ciblés existants ; revue exhaustive encore ouverte |
+
+Le verdict final doit relier avant master, cible de ce gabarit et après Angular, avec même état, largeur, langue et thème. Les PASS ciblés existants restent datés ; les nouveaux états ne deviennent TESTED qu'après exécution et inspection de leurs captures.
+
 ## Second contraste profil — `f975d9bc4`
 
 Le [run `38903181087`](https://github.com/Ced59/AmusementParkProject/actions/runs/38903181087) passe 2 777 tests Angular et atteint le profil clair 1 366 px. La capture `v6_standard_fr_account-profile_1366_light.webp` est inspectée : en-tête, nom long et panneaux restent dans le document ; le kicker bleu mobile précédemment refusé ne bloque plus. Le kicker « Passeport de visites » de 11,52 px mesure **4,25:1** et arrête la recette. Aucune exception ni fixture manquante. L'alias or et le cas numérique de sa composition sont corrigés ; un garde de 25 compositions complète aussi le lime. **Ce run reste FAIL ; nouveau rendu requis.**
