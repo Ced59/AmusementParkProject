@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Diagnostic `bc5d44032` — deux contrastes et champs d'année
+
+L'[artefact `12075251929`](https://github.com/Ced59/AmusementParkProject/actions/runs/38966748161/artifacts/12075251929) conserve le refus final après 364 captures V6 standard FR : kicker « Nouveautés établies » (12,16 px) et badge « Renommé en » (16 px), orange `#e54b28` sur `#eeefe8`, **3,38:1**. Ils sont inclus dans le correctif source `100aaa853`, pas encore exécuté dans ce run. Zéro erreur fixture/exception ; les six captures concernées restent FAIL.
+
+`isolated-preflight/v6_standard_fr_isolated-history-comparison_1366_light.webp`, inspecté, montre aussi les champs départ/arrivée décalés : l'auto-placement du DOM plaçait le deuxième label à la ligne du premier input. Au-dessus du palier existant 520 px, les labels occupent explicitement la ligne 1 et les inputs/flèche la ligne 2. Le mobile conserve son auto-placement empilé, sans ajout de `!important`. La recette mesure maintenant les deux inputs et refuse un delta vertical supérieur à 1 px sur desktop/tablette ; **nouvelle capture obligatoire**.
+
 ## Audit source complémentaire — textes de comparaison/lignée
 
 Les petits kickers de comparaison, deltas négatifs, badges de relation et liens de sources utilisaient aussi l'orange décoratif comme texte sur les surfaces claires. Seules leurs propriétés `color` rejoignent `--app-primary-strong`, déjà testé à 4,5:1 sur ces surfaces ; aplats, graphes, dates, catégories et algorithme de comparaison restent intacts. La liaison de chacun des quatre selectors est protégée. **Audit source, rendus de comparaison/lignée encore requis.**

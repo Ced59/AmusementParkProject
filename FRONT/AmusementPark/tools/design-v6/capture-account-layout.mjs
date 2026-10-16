@@ -197,6 +197,10 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
           if (layout.target.x < -1 || layout.target.right > width + 1) issues.push('captured target horizontal bounds');
+          if (page === 'isolated-history-comparison' && width > 520) {
+            layout.yearFields = await evaluate(`['comparison-from', 'comparison-to'].map(id => { const input = document.getElementById(id); return input ? { top: input.getBoundingClientRect().top, width: input.getBoundingClientRect().width } : null; })`);
+            if (layout.yearFields.some(field => !field || field.width <= 0) || Math.abs(layout.yearFields[0].top - layout.yearFields[1].top) > 1) issues.push('historical comparison year fields not aligned');
+          }
           if ([390, 1366].includes(width)) {
             layout.contrast = await evaluate(`(${collectContrastCandidates.toString()})({ includeCoverage: true })`);
             if (!layout.contrast.checked) issues.push('no measurable visible flat text for the account contrast probe');

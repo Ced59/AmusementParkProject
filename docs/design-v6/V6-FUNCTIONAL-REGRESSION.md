@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic `bc5d44032` — parcours standard terminé, refus visuel final
+
+Le [run `38966748161`](https://github.com/Ced59/AmusementParkProject/actions/runs/38966748161) passe 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité. **670 contrôles / 364 captures** parcourent toute la recette V6 standard FR à 390/1 366 px clair/sombre : compte/auth non soumis, brouillons IndexedDB, timeline paginée, snapshot jour, comparaison validée/invalide et lignée/source. Zéro erreur fixture/interception, zéro exception navigateur. Le repli 404 auxiliaire et la map active corrigés passent ; aucune histoire publiée, aucun workflow distant persisté.
+
+Le garde final refuse néanmoins six captures pour seulement deux combinaisons de contraste : kicker de comparaison et badge de relation, tous deux à 3,38:1 en clair. Le correctif préparé `100aaa853` les raccorde au token AA ; les autres variantes et la campagne intégrale restent non exécutées. L'inspection révèle aussi les champs d'année desktop décalés : placement de grille corrigé dans la présentation et assertion navigateur ≤1 px ajoutée, sans imposer cette ligne commune au mobile. **Nouveau rendu requis, aucune requalification du FAIL en PASS global.**
+
 ## Diagnostic `e4c477022` — repli de navigation et suivi des documents
 
 Le [run `38964725822`](https://github.com/Ced59/AmusementParkProject/actions/runs/38964725822) passe 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité et atteint **638 contrôles / 348 captures V6 standard FR**. Les brouillons anonymes normal/verrouillé, timeline historique paginée et snapshots année/jour sont franchis. La vraie comparaison reçoit son GET local 200, mais le fil de navigation existant interprète aussi `compare` comme un identifiant d'article et tente `GET /api/history/articles/compare` : fixture absente, jamais transmise. Le parser et son `catchError → null` restent inchangés ; seul ce GET sans query reçoit maintenant un 404 local explicite, sans faux article. Autres identifiants, queries et mutations restent refusés.

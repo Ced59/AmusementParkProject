@@ -8,6 +8,15 @@ import { exercisePublicHistoryExplorer } from '../design-v6/exercise-public-hist
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
 
+test('historical comparison aligns desktop year fields without forcing shared rows on stacked mobile fields', () => {
+  const source = read('src/app/features/public/history/pages/park-history-comparison-page.component.scss');
+  assert.match(source, /@media \(min-width: 521px\)\s*\{\s*\.comparison-picker__fields label\s*\{\s*grid-row: 1;\s*\}\s*\.comparison-picker__fields input,\s*\.comparison-picker__fields > span\s*\{\s*grid-row: 2;/);
+  const browser = read('tools/design-v6/capture-account-layout.mjs');
+  assert.ok(browser.includes("page === 'isolated-history-comparison' && width > 520"));
+  assert.ok(browser.includes('Math.abs(layout.yearFields[0].top - layout.yearFields[1].top) > 1'));
+  assert.ok(browser.includes('historical comparison year fields not aligned'));
+});
+
 const routes = read('src/app/app.routes.ts');
 const timelineTemplate = read('src/app/features/public/history/pages/history-timeline-page.component.html');
 const parkTimelineTemplate = read('src/app/features/public/history/pages/park-history-timeline-page.component.html');

@@ -25,6 +25,12 @@
 .comparison-picker__fields > span { grid-column: 2; color: var(--app-primary); font-weight: 900; }
 .comparison-picker__fields input:last-of-type { grid-column: 3; }
 
+@media (min-width: 521px) {
+  .comparison-picker__fields label { grid-row: 1; }
+  .comparison-picker__fields input,
+  .comparison-picker__fields > span { grid-row: 2; }
+}
+
 .comparison-picker button { width: 100%; }
 
 .comparison-picker__error {
