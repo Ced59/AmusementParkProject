@@ -2,10 +2,12 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
+import { Script, runInNewContext } from 'node:vm';
 import { publicParkGalleryPages, publicPhotoReadEvidence } from '../design-v6/public-photo-evidence.mjs';
 import { photoLightboxLayoutIssues } from '../design-v6/photo-lightbox-layout.mjs';
 import { browserModuleEvidence } from '../design-v6/browser-module-evidence.mjs';
 import { publicVideoReadEvidence } from '../design-v6/public-video-evidence.mjs';
+import { publicVideoCardIdsExpression } from '../design-v6/exercise-public-media-history.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -20,6 +22,13 @@ const videoListTemplate = read('src/app/features/public/videos/ui/public-video-l
 const videoListStyles = read('src/app/features/public/videos/ui/public-video-list-view.component.scss');
 const videoWatchTemplate = read('src/app/features/public/videos/ui/public-video-watch-view.component.html');
 const videoWatchStyles = read('src/app/features/public/videos/ui/public-video-watch-view.component.scss');
+
+test('the exact generated browser expression parses and extracts park/item video IDs without template-literal slash escaping', () => {
+  assert.doesNotThrow(() => new Script(`JSON.stringify(${publicVideoCardIdsExpression}) === '[]'`));
+  const paths = ['/fr/park/park-id/name/videos/first-id/title', '/fr/park/park-id/name/item/item-id/name/videos/second-id/title'];
+  const actual = runInNewContext(publicVideoCardIdsExpression, { document: { querySelectorAll: () => paths.map(path => ({ getAttribute: () => path })) } });
+  assert.equal(JSON.stringify(actual), JSON.stringify(['first-id', 'second-id']));
+});
 
 test('video acceptance retains only published IDs and bounded pagination for the exact public owner endpoints', () => {
   const id = '00000000-0000-0000-0000-000000000001';

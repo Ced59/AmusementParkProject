@@ -1,5 +1,7 @@
 // Anonymous, existing controls only. External video playback stays blocked by
 // the caller's sandbox; this recipe never claims to validate the provider.
+export const publicVideoCardIdsExpression = "[...document.querySelectorAll('.public-video-card')].map(link => link.getAttribute('href').split('/videos/')[1]?.split('/')[0])";
+
 export async function exercisePublicMediaHistory({ evaluate, waitUntil, capturePage, result }) {
   const parent = await evaluate(`({ path: location.pathname, key: navigation.currentEntry.key, index: navigation.currentEntry.index })`);
   const parkId = parent.path.match(/\/park\/([0-9a-f-]{36})(?:\/|$)/i)?.[1];
@@ -30,7 +32,7 @@ export async function exercisePublicMediaHistory({ evaluate, waitUntil, captureP
       });
       return Boolean(read);
     }, `${label}: real public video page`);
-    await waitUntil(`JSON.stringify([...document.querySelectorAll('.public-video-card')].map(link => link.getAttribute('href').match(/\/videos\/([^/]+)/)?.[1])) === ${JSON.stringify(JSON.stringify(read.videos.ids))}
+    await waitUntil(`JSON.stringify(${publicVideoCardIdsExpression}) === ${JSON.stringify(JSON.stringify(read.videos.ids))}
       && (${read.videos.ids.length > 0} ? !document.querySelector('.public-video-list__empty') : !!document.querySelector('.public-video-list__empty'))`, `${label}: public API identifiers match full-detail links or the actual empty state`);
     (result.videoScenarios ??= []).push({ label, path: read.path, query: read.query, ...read.videos });
     return read.videos;

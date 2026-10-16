@@ -411,6 +411,8 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       if (options.redrawTiles === true) {
         this.tileLayer?.redraw();
       }
+
+      this.refreshOpenPopupLayout();
     }, delayMs);
 
     this.mapSizeRefreshTimeoutIds.push(timeoutId);
@@ -422,6 +424,33 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     this.mapSizeRefreshTimeoutIds = [];
+  }
+
+  private refreshOpenPopupLayout(): void {
+    let updated: boolean = false;
+    let focusedHref: string | null = null;
+    for (const marker of this.leafletMarkers.values()) {
+      const popup: import('leaflet').Popup | undefined = marker.getPopup();
+      if (popup?.isOpen()) {
+        if (!updated) {
+          const activeElement: Element | null = this.mapContainer.nativeElement.ownerDocument.activeElement;
+          if (activeElement instanceof HTMLAnchorElement
+            && this.mapContainer.nativeElement.contains(activeElement)
+            && activeElement.closest('.leaflet-popup-content')) {
+            focusedHref = activeElement.getAttribute('href');
+          }
+        }
+        popup.update();
+        updated = true;
+      }
+    }
+    if (updated) {
+      this.bindInternalPopupNavigationLinks();
+      if (focusedHref) {
+        Array.from(this.mapContainer.nativeElement.querySelectorAll<HTMLAnchorElement>('.leaflet-popup-content a[href]'))
+          .find((link: HTMLAnchorElement): boolean => link.getAttribute('href') === focusedHref)?.focus();
+      }
+    }
   }
 
   private bindViewportChangeListeners(): void {

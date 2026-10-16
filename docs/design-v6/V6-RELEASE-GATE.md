@@ -33,13 +33,13 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `754cce98c` ; `725ced59c` valide 2 766 tests Angular / 582 fichiers, 207 tests Node qualité et HTTP, puis échoue sur deux interceptions invalidées après la nouvelle navigation document ; preuve de retraite native et standalone i18n à exécuter |
+| P21 CI Node 24 | Dernier PASS complet `754cce98c` ; `cd1b7dd28` passe la carte complète et atteint les vidéos (134 contrôles), sans exception/interception ; expression de test vidéo corrigée, nouveaux CTA/popup et standalone i18n à exécuter |
 | Exception P04.6 | PASS_WITH_OWNER_EXCEPTION sur six paires `754cce98c` : deux scripts CDK, +2 854 octets JS, aucun autre nombre de requêtes modifié ; plafond +3 302 inchangé |
 | Recette pratique additionnelle | PASS CIBLÉ `754cce98c` — jour/mois réel, historique météo différé/cache, retour exact et 52 captures ; chevauchement corrigé mais textes comprimés à 320 px, nouveau tableau localement défilable à attester |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | NON sur `725ced59c` : rendu public V6 et Aeroclub hydraté passent, deux interceptions invalidées restent à classifier par preuve native exacte ; aucun assouplissement général |
+| CI intégralement verte | NON sur `cd1b7dd28` : syntaxe d'une expression navigateur du test vidéo ; correction couverte par compilation/exécution exacte, nouveaux visuels à recetter |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
@@ -111,6 +111,12 @@ La [CI 5f5de42e3](https://github.com/Ced59/AmusementParkProject/actions/runs/387
 La [CI adcd267f1](https://github.com/Ced59/AmusementParkProject/actions/runs/38709110336) passe les seize contrôles hydratés et les captures, mais échoue au nettoyage du navigateur. Le prochain correctif draine les lectures avant fermeture et bloque tout nouvel accès réseau pendant le nettoyage. Les nouveaux tests HTTP Express restent exclusivement sur Linux CI. Le réalignement typographique/géométrique à la maquette exige également une nouvelle CI et revue visuelle ; la décision reste NO-GO.
 
 Le verrou mémoire local a été réparé avec l'autorisation explicite du propriétaire le 15 octobre : récupération uniquement sur preuve native de fin de l'opération exacte, identité conservée, seuils inchangés, aucun processus actif fermé. Les 26 tests ciblés du garde et les 30 tests de présentation ciblés passent. Les changements V6 préparés sont publiés dans `c74663c46` et `042e86389`. La [CI 042e86389](https://github.com/Ced59/AmusementParkProject/actions/runs/38715838997) détecte ensuite les attributs `sizes` restés sur les anciennes gouttières (à 320 px : 304 déclarés / 292 rendus pour le hero, 272 / 260 pour la photo). Leurs formules sont réalignées sur 48/30/28 px, sans modifier chargement, sources ou résolution. La recette CI reste requise.
+
+## Reprise autorisée le 16 octobre
+
+Le propriétaire autorise la libération du verrou de l'appel navigateur exactement confirmé terminé, et des suivants dans le même cas après vérification. La récupération vérifie l'identité native du propriétaire, la fin native de l'appel exact et la fin de son tour sous le verrou partagé. Aucun processus, seuil, hook ou service n'est modifié. Cette autorisation n'autorise pas la suppression d'un verrou actif ou sans preuve de fin.
+
+Les corrections sauvegardées de recette vidéo et du popup Leaflet passent 35 contrôles Node ciblés et la compilation Sass du popup (2 501 octets CSS compressés). Le popup réutilise sa mise en page native après redimensionnement, rebranche les mêmes liens et conserve leur focus ; test Angular et captures réelles à valider en CI. Aucun PASS global ni feu vert de fusion n'est déduit de ces seuls contrôles locaux.
 
 ## Rollback
 

@@ -4,6 +4,17 @@ import { resolve } from 'node:path';
 import test from 'node:test';
 import { mapViewportSettled } from '../design-v6/exercise-public-map.mjs';
 import { canRenderPublicDocument } from '../design-v6/public-document-evidence.mjs';
+import { mapPopupLayoutIssues } from '../design-v6/map-popup-layout.mjs';
+
+test('map popup geometry rejects clipped headings, covered actions and compressed touch controls', () => {
+  const layout = { map: { x: 10, y: 20, right: 310, bottom: 440 }, popup: { x: 50, y: 40, right: 270, bottom: 200 }, heading: { unobscured: true }, close: { x: 238, y: 40, right: 270, bottom: 72, unobscured: true }, actions: [{ x: 62, y: 136, right: 180, bottom: 180, unobscured: true }] };
+  assert.deepEqual(mapPopupLayoutIssues(layout), []);
+  assert.ok(mapPopupLayoutIssues({ ...layout, popup: { ...layout.popup, y: 10 } }).includes('popup clipped by map bounds'));
+  assert.ok(mapPopupLayoutIssues({ ...layout, close: { ...layout.close, unobscured: false } }).includes('popup control covered or outside the visible viewport'));
+  assert.ok(mapPopupLayoutIssues({ ...layout, close: { ...layout.close, right: 255 } }).includes('compressed popup target'));
+  assert.ok(mapPopupLayoutIssues({ ...layout, heading: { unobscured: false } }).includes('popup heading covered by map controls'));
+  assert.ok(mapPopupLayoutIssues({ ...layout, heading: null }).includes('missing actual map popup content'));
+});
 
 test('native public detail navigation renders the same compiled SSR build, never a production V5 or private document', () => {
   const path = '/fr/park/00000000-0000-0000-0000-000000000001/park/item/00000000-0000-0000-0000-000000000002/item';
@@ -50,6 +61,18 @@ const officialTemplate = read('src/app/features/public/parks/ui/park-official-ma
 const officialStyles = read('src/app/features/public/parks/ui/park-official-maps-section.component.scss');
 const listTemplate = read('src/app/features/public/parks/ui/park-list-map.component.html');
 const leafletStyles = read('src/app/shared/components/leaflet-map/leaflet-map.component.scss');
+
+test('real popup surfaces/actions are themed and open popup reflow uses public Leaflet update without changing zoom or data', () => {
+  assert.match(leafletStyles, /\.leaflet-popup-content-wrapper\s*\{[^}]*border-radius:\s*var\(--app-radius-sm\);[^}]*background:\s*var\(--app-field\)/);
+  assert.doesNotMatch(leafletStyles, /#(?:ff5a1f|c4ff27|1a140f|3a3026)/i);
+  assert.ok(leafletStyles.includes('min-height: 2.75rem'));
+  const source = read('src/app/shared/components/leaflet-map/leaflet-map.component.ts');
+  const reflow = source.slice(source.indexOf('  private refreshOpenPopupLayout()'), source.indexOf('  private bindViewportChangeListeners()'));
+  assert.ok(reflow.includes('popup?.isOpen()'));
+  assert.ok(reflow.includes('popup.update()'));
+  assert.ok(reflow.includes('this.bindInternalPopupNavigationLinks()'));
+  assert.doesNotMatch(reflow, /openPopup\(|setView\(|setZoom\(|fitBounds\(|_popup|\.options\./);
+});
 
 test('actual Leaflet pins and clusters use flat themed Playground markers, not residual V5 gradients or the separate pictogram', () => {
   const styles = read('src/styles/_maps.scss').split('/* Centralized Leaflet marker design. */')[1].split('/* M10 responsive hardening')[0];

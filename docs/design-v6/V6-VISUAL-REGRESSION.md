@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Popup Leaflet — défaut résiduel observé, correction à recapturer
+
+La capture hydratée `fr_map-marker-popup_390_dark.webp` du [run `cd1b7dd28`, artefact `12032732139`](https://github.com/Ced59/AmusementParkProject/actions/runs/38869945426/artifacts/12032732139) confirme les nouveaux marqueurs plats. Elle révèle cependant une bulle encore blanche/arrondie V5 et le titre hors des bounds après redimensionnement. Les styles réutilisent désormais les tokens de champ/texte/boutons, des coins 2 px, une largeur bornée et un défilement vertical local pour le contenu très long. Les actions gardent leurs liens et des cibles de 44 px ; Fermer reste un contrôle natif Leaflet d'au moins 32 px au réglage de base.
+
+La mise à jour de taille existante recalcule seulement les popups ouvertes, sans rouvrir celles fermées ni changer les options de zoom/drag/autoPan ou les données. Le focus et les listeners du même lien sont conservés après reconstruction du contenu. Le contrôle suivant refuse titre/surface coupés et actions/Fermer recouverts, y compris aux hauteurs réduites. **Correctif et test Angular à attester, aucune disparition du défaut annoncée avant capture.**
+
 ## Fidélité des deux CTA d'accueil
 
 La relecture du vrai CSS de la maquette confirme `12px / 850`, capitales, approche positive `0.015em`, bordure 2 px, padding 10/14 px et mobile 11 px. Les seuls CTA du hero sont réalignés sur ces valeurs dans le SCSS existant, avec `0.75rem / 0.6875rem` pour respecter une taille racine agrandie ; les routes réelles **parcs** et **à propos**, traductions et événements ne sont pas remplacés par ceux du prototype. La hauteur minimale reste **44 px** au lieu des 40 px de la maquette, exception de présentation motivée par la cible tactile/accessibilité, à montrer lors de la revue finale. **Capture du prochain build et mesure P04.6 bornée encore requises.**

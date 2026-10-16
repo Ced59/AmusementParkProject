@@ -21,6 +21,7 @@ import { exercisePublicMediaHistory } from './exercise-public-media-history.mjs'
 import { exercisePublicMap } from './exercise-public-map.mjs';
 import { canRenderPublicDocument } from './public-document-evidence.mjs';
 import { exercisePublicStandalone } from './exercise-public-standalone.mjs';
+import { mapPopupLayoutIssues } from './map-popup-layout.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -340,10 +341,15 @@ async function captureHydratedHome(rawHtml, options = {}) {
   });
   const evaluate = async (expression) => {
     const evaluation = await cdp.send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
-    if (evaluation.exceptionDetails) throw new Error(evaluation.exceptionDetails.text);
+    if (evaluation.exceptionDetails) {
+      const description = (evaluation.exceptionDetails.exception?.description ?? evaluation.exceptionDetails.text).split('\n')[0].slice(0, 1000);
+      (result.evaluationFailures ??= []).push({ check: result.activeCheck ?? result.checks.at(-1), description });
+      throw new Error(description);
+    }
     return evaluation.result.value;
   };
   const waitUntil = async (expression, label) => {
+    result.activeCheck = label;
     for (let attempt = 0; attempt < 100; attempt++) {
       if (interceptionErrors.length) throw new Error(interceptionErrors.join('; '));
       if (result.exceptions.length) {
@@ -594,12 +600,30 @@ async function captureHydratedHome(rawHtml, options = {}) {
       try {
         for (const theme of [originalTheme, originalTheme === 'dark' ? 'light' : 'dark']) {
           await setTheme(theme);
-          for (const width of widths) {
-            await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
-            await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({ block: 'start', behavior: 'instant' })`);
+          const sizes = widths.map(width => ({ width, height: 1200 }));
+          if (label === 'map-marker-popup') sizes.push({ width: 390, height: 640 }, { width: 1366, height: 480 });
+          for (const { width, height } of sizes) {
+            await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
+            const scrollSelector = label === 'map-marker-popup' ? '.park-items-map .leaflet-map-container' : selector;
+            await evaluate(`document.querySelector(${JSON.stringify(scrollSelector)}).scrollIntoView({ block: '${label === 'map-marker-popup' ? 'center' : 'start'}', behavior: 'instant' })`);
             await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
-            const layout = await evaluate(`({ width: innerWidth, locale: location.pathname.split('/')[1], documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth), theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
+            const layout = await evaluate(`({ width: innerWidth, height: innerHeight, locale: location.pathname.split('/')[1], documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth), theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
             if (layout.documentWidth > width + 1) throw new Error(`Hydrated practical page overflows at ${width}px.`);
+            if (label === 'map-marker-popup') {
+              await waitUntil(async () => {
+                result.lastPopupLayout = await evaluate(`(() => {
+                  const rect = node => { if (!node) return null; const r = node.getBoundingClientRect(); return { x: r.x, y: r.y, right: r.right, bottom: r.bottom }; };
+                  const control = node => { const r = rect(node); return r ? { ...r, unobscured: node.contains(document.elementFromPoint((r.x + r.right) / 2, (r.y + r.bottom) / 2)) } : null; };
+                  const heading = document.querySelector('.park-items-map .leaflet-popup-content > strong');
+                  const headingVisible = (() => { if (!heading) return null; const range = document.createRange(); range.selectNodeContents(heading); const rows = [...range.getClientRects()];
+                    return { unobscured: rows.length > 0 && rows.every(r => [r.x + 2, r.x + r.width / 2, r.right - 2].every(x => heading.contains(document.elementFromPoint(x, r.y + r.height / 2)))) }; })();
+                  return { map: rect(document.querySelector('.park-items-map .leaflet-map-container')), popup: rect(document.querySelector('.park-items-map .leaflet-popup-content-wrapper')), heading: headingVisible,
+                    close: control(document.querySelector('.park-items-map .leaflet-popup-close-button')), actions: [...document.querySelectorAll('.park-items-map .leaflet-map-popup__action')].map(control) };
+                })()`);
+                return mapPopupLayoutIssues(result.lastPopupLayout).length === 0;
+              }, `resized real map popup remains complete and actionable at ${width}×${height} (${theme})`);
+              layout.popup = result.lastPopupLayout;
+            }
             if (label === 'opening-hours-selected') {
               const cells = await evaluate(`(() => {
                 const rect = node => { const r = node.getBoundingClientRect(); return { x: r.x, y: r.y, right: r.right, bottom: r.bottom }; };
@@ -635,7 +659,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
               }
               await evaluate(`document.querySelector('.park-opening-hours-month__table-wrap').scrollLeft = 0`);
             }
-            const screenshot = `${layout.locale}_${label}_${width}_${layout.theme}.webp`;
+            const screenshot = `${layout.locale}_${label}_${width}${height === 1200 ? '' : `_${height}`}_${layout.theme}.webp`;
             const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
             await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
             (result.practicalLayouts ??= []).push({ label, ...layout, screenshot });
