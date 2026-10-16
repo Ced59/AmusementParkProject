@@ -4,9 +4,42 @@ import { join, resolve } from 'node:path';
 import test from 'node:test';
 import { Script } from 'node:vm';
 import { exerciseAnonymousAuth } from '../design-v6/exercise-anonymous-auth.mjs';
+import { accountLayoutFixtureOrigin, createAccountLayoutFixture, accountLayoutFixtureResponse } from '../design-v6/account-layout-fixtures.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('account layout fixtures distinguish complete, incomplete and expired UI sessions without real credentials', () => {
+  const now = 1792144800;
+  const standard = createAccountLayoutFixture('standard', now);
+  const incomplete = createAccountLayoutFixture('incomplete', now);
+  const expired = createAccountLayoutFixture('expired', now);
+  const request = { method: 'POST', url: `${accountLayoutFixtureOrigin}/api/auth/refresh-token` };
+  assert.equal(accountLayoutFixtureResponse(request, standard).status, 200);
+  assert.equal(accountLayoutFixtureResponse(request, expired).status, 401);
+  const claims = JSON.parse(Buffer.from(standard.accessToken.split('.')[1], 'base64url').toString());
+  assert.deepEqual(claims.roles, ['USER']);
+  assert.equal(claims.exp, now + 3600);
+  assert.equal(claims.aud, 'apf-ci-layout-only');
+  assert.equal(incomplete.user.firstName, '');
+  assert.equal(incomplete.user.isActivated, true);
+  assert.throws(() => createAccountLayoutFixture('admin', now), /Unknown/);
+});
+
+test('account layout fixtures reject production origins, unknown endpoints and all user-data mutations', () => {
+  const fixture = createAccountLayoutFixture('standard', 1792144800);
+  const profile = `${accountLayoutFixtureOrigin}/api/users/${fixture.user.id}`;
+  const response = accountLayoutFixtureResponse({ method: 'GET', url: profile }, fixture);
+  assert.equal(response.body.id, fixture.user.id);
+  assert.equal(accountLayoutFixtureResponse({ method: 'GET', url: profile.replace(accountLayoutFixtureOrigin, 'https://amusement-parks.fun') }, fixture), null);
+  for (const method of ['POST', 'PUT', 'PATCH', 'DELETE']) assert.equal(accountLayoutFixtureResponse({ method, url: profile }, fixture), null);
+  for (const path of ['/api/admin/users', '/api/users', '/api/users/forgot-password', `/api/users/${fixture.user.id}?includePrivate=true`]) {
+    assert.equal(accountLayoutFixtureResponse({ method: 'GET', url: accountLayoutFixtureOrigin + path }, fixture), null);
+  }
+  response.body.roles.push('ADMIN');
+  assert.deepEqual(fixture.user.roles, ['USER']);
+  assert.doesNotMatch(read('tools/design-v6/account-layout-fixtures.mjs'), /fetch\(|https:\/\/amusement-parks\.fun|password\s*:/);
+});
 
 test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {
   const result = {};
