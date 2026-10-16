@@ -23,6 +23,8 @@ import { canRenderPublicDocument } from './public-document-evidence.mjs';
 import { exercisePublicStandalone } from './exercise-public-standalone.mjs';
 import { exerciseAnonymousAuth } from './exercise-anonymous-auth.mjs';
 import { mapPopupLayoutIssues, mapReviewScrollDelta } from './map-popup-layout.mjs';
+import { createAccountLayoutFixture } from './account-layout-fixtures.mjs';
+import { captureAccountLayout } from './capture-account-layout.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -1130,6 +1132,22 @@ try {
         scope: 'real initial-theme script and Angular hydration; system and saved preference; post-first-paint frames, not forced static switches',
         samples: report.initialThemeSamples.map(sample => ({ settings: sample.initialThemeSettings, verdict: sample.initialThemeVerdict, evidence: sample.initialThemeEvidence, captures: sample.captures })),
       }, null, 2));
+      report.accountLayouts = [];
+      const fixtureTime = Math.floor(Date.now() / 1000);
+      for (const kind of ['standard', 'incomplete']) {
+        const fixture = createAccountLayoutFixture(kind, fixtureTime);
+        for (const label of ['master', 'v6']) {
+          try {
+            report.accountLayouts.push(await captureAccountLayout({ cdp, widths, outputRoot, fixture, label,
+              browserRoot: label === 'master' ? resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') : browserRoot }));
+          } catch (error) {
+            report.accountLayoutFailure = { label, kind, error: error.message };
+            throw error;
+          } finally {
+            await writeFile(join(outputRoot, 'report.json'), JSON.stringify(report, null, 2));
+          }
+        }
+      }
     }
   }
 } finally {

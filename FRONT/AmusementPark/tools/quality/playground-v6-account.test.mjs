@@ -5,6 +5,7 @@ import test from 'node:test';
 import { Script } from 'node:vm';
 import { exerciseAnonymousAuth } from '../design-v6/exercise-anonymous-auth.mjs';
 import { accountLayoutFixtureOrigin, createAccountLayoutFixture, accountLayoutFixtureResponse } from '../design-v6/account-layout-fixtures.mjs';
+import { accountLayoutCaptureAllowed } from '../design-v6/capture-account-layout.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -39,6 +40,22 @@ test('account layout fixtures reject production origins, unknown endpoints and a
   response.body.roles.push('ADMIN');
   assert.deepEqual(fixture.user.roles, ['USER']);
   assert.doesNotMatch(read('tools/design-v6/account-layout-fixtures.mjs'), /fetch\(|https:\/\/amusement-parks\.fun|password\s*:/);
+});
+
+test('compiled account capture is Linux-CI-only, never forwards API traffic and unloads the app before removing interception', () => {
+  assert.equal(accountLayoutCaptureAllowed('true', 'linux'), true);
+  assert.equal(accountLayoutCaptureAllowed(undefined, 'linux'), false);
+  assert.equal(accountLayoutCaptureAllowed('true', 'win32'), false);
+  const capture = read('tools/design-v6/capture-account-layout.mjs');
+  assert.ok(capture.includes('url.origin !== accountLayoutFixtureOrigin'));
+  assert.ok(capture.includes('accountLayoutFixtureResponse(request, fixture)'));
+  assert.ok(capture.includes('no exact local fixture; never forwarded'));
+  assert.ok(capture.includes('isCanceledInterceptionError(error, request.networkId, canceled)'));
+  assert.ok(capture.includes('isRetiredDocumentInterceptionError(error, request.networkId, retired)'));
+  assert.doesNotMatch(capture, /fetch\(|nativeFetch|spawn\(|request\.headers|request\.postData/);
+  assert.ok(capture.indexOf("await cdp.send('Page.navigate', { url: 'about:blank' })") < capture.indexOf("await cdp.send('Fetch.disable')"));
+  const script = read('tools/design-v6/capture-public-ssr.mjs');
+  assert.ok(script.indexOf('await captureAccountLayout(') > script.indexOf("'initial-theme-report.json'"));
 });
 
 test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {
