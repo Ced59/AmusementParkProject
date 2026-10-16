@@ -1,3 +1,14 @@
+export const photoLightboxLayoutExpression = `(() => {
+  const rect = selector => { const node = document.querySelector(selector); if (!node) return null;
+    const { x, y, width, height, right, bottom } = node.getBoundingClientRect(); return { x, y, width, height, right, bottom }; };
+  return { width: innerWidth, height: innerHeight, documentWidth: document.documentElement.scrollWidth,
+    theme: document.body.classList.contains('light-mode') ? 'light' : 'dark',
+    dialog: rect('.photo-lightbox__dialog'), close: rect('.photo-lightbox__close'),
+    closeUnobscured: (() => { const node = document.querySelector('.photo-lightbox__close'); if (!node) return false;
+      const r = node.getBoundingClientRect(); return node.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)); })(),
+    image: rect('img.photo-lightbox__image'), footer: rect('.photo-lightbox__footer') };
+})()`;
+
 export function photoLightboxLayoutIssues(layout) {
   const issues = [];
   const { width, height, dialog, close, image, footer, documentWidth } = layout;

@@ -13,7 +13,7 @@ import { initialThemeObserver, validateInitialTheme } from './initial-theme-evid
 import { publicPhotoReadEvidence } from './public-photo-evidence.mjs';
 import { exercisePublicPhotos } from './exercise-public-photos.mjs';
 import { resumeStaticCaptures } from './browser-phase-isolation.mjs';
-import { photoLightboxLayoutIssues } from './photo-lightbox-layout.mjs';
+import { photoLightboxLayoutIssues, photoLightboxLayoutExpression } from './photo-lightbox-layout.mjs';
 import { exercisePublicPractical } from './exercise-public-practical.mjs';
 import { publicPracticalReadEvidence, openingCalendarLayoutIssues } from './public-practical-evidence.mjs';
 import { publicVideoReadEvidence } from './public-video-evidence.mjs';
@@ -568,12 +568,16 @@ async function captureHydratedHome(rawHtml, options = {}) {
         for (const [width, height] of [[320, 568], [390, 640], [1366, 480]]) {
           await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
           await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
-          const layout = await evaluate(`(() => { const rect = selector => { const node = document.querySelector(selector); if (!node) return null; const { x, y, width, height, right, bottom } = node.getBoundingClientRect(); return { x, y, width, height, right, bottom }; }; return {
-            width: innerWidth, height: innerHeight, documentWidth: document.documentElement.scrollWidth,
-            theme: document.body.classList.contains('light-mode') ? 'light' : 'dark',
-            dialog: rect('.photo-lightbox__dialog'), close: rect('.photo-lightbox__close'),
-            closeUnobscured: (() => { const node = document.querySelector('.photo-lightbox__close'); if (!node) return false; const r = node.getBoundingClientRect(); return node.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)); })(),
-            image: rect('img.photo-lightbox__image'), footer: rect('.photo-lightbox__footer') }; })()`);
+          let layout;
+          let previousLayout;
+          await waitUntil(async () => {
+            layout = await evaluate(photoLightboxLayoutExpression);
+            result.lastLightboxLayout = layout;
+            const serialized = JSON.stringify(layout);
+            const settled = previousLayout === serialized;
+            previousLayout = serialized;
+            return settled && layout.width === width && layout.height === height && photoLightboxLayoutIssues(layout).length === 0;
+          }, `real photo lightbox settles inside the ${width}×${height} viewport before capture`);
           const screenshot = `fr_photo_lightbox_${width}_${height}_${layout.theme}.webp`;
           const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
           await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));

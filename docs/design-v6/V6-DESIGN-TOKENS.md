@@ -71,7 +71,7 @@ Le header ParkItem utilise un cadre photo 16/10 distinct, une grille desktop 1,5
 - Pas de gradients décoratifs, glassmorphism, texture de bruit ni halo systématique.
 - Cibles tactiles : au moins 44 px lorsque le contrôle est isolé ; tableaux admin compacts avec focus et libellé conservés.
 
-Les gradients restants sont bornés et vérifiables : rendu historique du `.fun` dans le wordmark protégé, shimmer du skeleton avec arrêt sous `prefers-reduced-motion`, grille de fond et relief des marqueurs cartographiques. Ils ne définissent aucune surface de page, carte, formulaire, navigation ou panneau.
+Les gradients restants sont bornés et vérifiables : rendu historique du `.fun` dans le wordmark protégé, shimmer du skeleton avec arrêt sous `prefers-reduced-motion` et grille de fond cartographique. Le relief brillant des marqueurs, repéré lors de la recette hydratée, a été retiré dans `725ced59c` au profit des aplats thématiques. Aucun gradient décoratif ne définit une surface de page, carte, formulaire, navigation ou panneau.
 
 ## Typographie
 

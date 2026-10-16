@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import test from 'node:test';
 import { Script, runInNewContext } from 'node:vm';
 import { publicParkGalleryPages, publicPhotoReadEvidence } from '../design-v6/public-photo-evidence.mjs';
-import { photoLightboxLayoutIssues } from '../design-v6/photo-lightbox-layout.mjs';
+import { photoLightboxLayoutIssues, photoLightboxLayoutExpression } from '../design-v6/photo-lightbox-layout.mjs';
 import { browserModuleEvidence } from '../design-v6/browser-module-evidence.mjs';
 import { publicVideoReadEvidence } from '../design-v6/public-video-evidence.mjs';
 import { publicVideoCardIdsExpression } from '../design-v6/exercise-public-media-history.mjs';
@@ -28,6 +28,15 @@ test('the exact generated browser expression parses and extracts park/item video
   const paths = ['/fr/park/park-id/name/videos/first-id/title', '/fr/park/park-id/name/item/item-id/name/videos/second-id/title'];
   const actual = runInNewContext(publicVideoCardIdsExpression, { document: { querySelectorAll: () => paths.map(path => ({ getAttribute: () => path })) } });
   assert.equal(JSON.stringify(actual), JSON.stringify(['first-id', 'second-id']));
+});
+
+test('lightbox review waits for stable real viewport-unit layout while keeping all geometry and hit-test requirements', () => {
+  assert.doesNotThrow(() => new Script(photoLightboxLayoutExpression));
+  const capture = read('tools/design-v6/capture-public-ssr.mjs');
+  assert.ok(capture.includes('previousLayout === serialized'));
+  assert.ok(capture.includes('layout.width === width && layout.height === height && photoLightboxLayoutIssues(layout).length === 0'));
+  assert.ok(capture.includes('result.lastLightboxLayout = layout'));
+  assert.ok(photoLightboxLayoutExpression.includes('document.elementFromPoint'));
 });
 
 test('video acceptance retains only published IDs and bounded pagination for the exact public owner endpoints', () => {

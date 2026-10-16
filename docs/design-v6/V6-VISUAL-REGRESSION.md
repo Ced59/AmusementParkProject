@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Mesure transitoire de lightbox — `348589406`
+
+La [CI `38882167904`, artefact `12037963149`](https://github.com/Ced59/AmusementParkProject/actions/runs/38882167904/artifacts/12037963149) s'arrête avant la carte : la première mesure 320 × 568 conserve une hauteur de dialogue de 1 024 px, alors que la capture peinte juste après montre déjà le dialogue borné et la photo d'environ 200 px. Cet écart mesure/paint après l'émulation du viewport interdit d'attribuer le défaut au CSS sans vérification. La recette attend désormais deux mesures identiques et valides du vrai dialogue, avec les mêmes bounds, minimum d'image et hit-test Fermer ; en cas de timeout elle conserve la dernière mesure et échoue. Aucun style de produit ni assertion de géométrie n'est affaibli pour ce cas.
+
 ## Popup après correction — preuve `df03114c9`
 
 La campagne suivante `a9cbcbe93` recadre effectivement le document, mais révèle un second défaut distinct à 320 px : le wrapper du popup dépasse de 6,9 px le haut de la carte (y 376 contre 382,9), alors que ses textes et liens restent visibles. L'assertion de bounds n'est pas assouplie. Le prochain diagnostic conserve les dimensions DOM/CSS publiques de la bulle et du conteneur pour identifier l'écart, sans lire ni modifier les champs privés Leaflet. Les vidéos/histoires restent non exécutées dans cette campagne.
