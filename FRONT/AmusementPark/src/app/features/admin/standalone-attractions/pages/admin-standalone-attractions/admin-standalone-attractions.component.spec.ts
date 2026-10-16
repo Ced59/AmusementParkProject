@@ -150,6 +150,39 @@ describe('AdminStandaloneAttractionsComponent', () => {
     await fixture.whenStable();
   });
 
+  it('provides a named native row-selection button without changing pointer or checkbox selection', async () => {
+    const row: StandaloneAttraction = createAttraction('standalone-keyboard');
+    standaloneApiService.pageResponse$ = of({ items: [row], pagination: createPagination() });
+    const accessor = component as unknown as {
+      load: () => Promise<void>;
+      select: (value: StandaloneAttraction) => void;
+      selected: () => StandaloneAttraction | null;
+      isSelected: (id: string | null) => boolean;
+    };
+    await accessor.load();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    const select = vi.spyOn(accessor, 'select');
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector('.admin-standalone-row__select');
+    expect(button.tagName).toBe('BUTTON');
+    expect(button.type).toBe('button');
+    expect(button.textContent?.trim()).toBe(row.name);
+    expect(button.getAttribute('aria-pressed')).toBe('false');
+    button.click();
+    fixture.detectChanges();
+    expect(select).toHaveBeenCalledTimes(1);
+    expect(accessor.selected()?.id).toBe(row.id);
+    expect(button.getAttribute('aria-pressed')).toBe('true');
+    const checkbox: HTMLInputElement = fixture.nativeElement.querySelector('.admin-standalone-table input[type="checkbox"]');
+    expect(checkbox.getAttribute('aria-label')).toBe(row.name);
+    checkbox.click();
+    expect(accessor.isSelected(row.id)).toBe(true);
+    expect(select).toHaveBeenCalledTimes(1);
+    const tableRow: HTMLTableRowElement = button.closest('tr')!;
+    tableRow.click();
+    expect(select).toHaveBeenCalledTimes(2);
+  });
+
   it('searches legacy parks from the standalone filters and fills the migration park id', async () => {
     const componentAccessor = component as unknown as {
       search: string;

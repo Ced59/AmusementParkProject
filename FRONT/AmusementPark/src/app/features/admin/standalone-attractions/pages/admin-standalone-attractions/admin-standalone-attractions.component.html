@@ -125,10 +125,12 @@
           <tbody>
             <tr *ngFor="let row of rows(); trackBy: trackById" [class.admin-standalone-row--active]="selected()?.id === row.id" (click)="select(row)">
               <td>
-                <input type="checkbox" [checked]="isSelected(row.id)" (click)="$event.stopPropagation()" (change)="toggleSelected(row.id, $any($event.target).checked)">
+                <input type="checkbox" [attr.aria-label]="row.name" [checked]="isSelected(row.id)" (click)="$event.stopPropagation()" (change)="toggleSelected(row.id, $any($event.target).checked)">
               </td>
               <td>
-                <strong>{{ row.name }}</strong>
+                <button type="button" class="admin-standalone-row__select" [attr.aria-pressed]="selected()?.id === row.id" (click)="select(row); $event.stopPropagation()">
+                  <strong>{{ row.name }}</strong>
+                </button>
                 <span>{{ row.city || '-' }}</span>
               </td>
               <td>{{ row.countryCode || '-' }}</td>

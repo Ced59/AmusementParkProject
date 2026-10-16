@@ -137,6 +137,14 @@ test('long editors, uploads and batch actions preserve their dense workflows', (
   }
 });
 
+test('standalone row selection has a named native keyboard alternative while retaining table and checkbox semantics', () => {
+  const html = read('src/app/features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component.html');
+  assert.match(html, /<tr[^>]+\(click\)="select\(row\)"/);
+  assert.match(html, /<button type="button" class="admin-standalone-row__select"[^>]+\[attr.aria-pressed\]="selected\(\)\?\.id === row.id"[^>]+\(click\)="select\(row\); \$event.stopPropagation\(\)"/);
+  assert.match(html, /type="checkbox" \[attr.aria-label\]="row.name"/);
+  assert.doesNotMatch(html, /<tr[^>]+role="button"/);
+});
+
 test('every specialist administration domain remains represented', () => {
   const routes = adminRoutes.map((entry) => entry.route).join('\n');
   for (const segment of [
