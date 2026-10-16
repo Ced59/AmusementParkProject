@@ -346,7 +346,8 @@
 }
 
 .p-panel-toggle:focus-visible,
-.p-dialog-header-close:focus-visible {
+.p-dialog-header-close:focus-visible,
+.p-sortable-column:focus-visible {
   outline: 3px solid var(--app-primary-strong);
   outline-offset: -3px;
 }

@@ -80,3 +80,14 @@ test('shared panel and dialog retain native controls and translated names withou
   assert.match(primitives, /\.p-panel-toggle\s*\{[^}]*width:\s*100%;[^}]*min-height:\s*2\.75rem/);
 });
 
+test('sortable headers keep native table semantics and route keyboard activation through the same click', () => {
+  const sortable = readFileSync(resolve(styles, '../app/shared/ui/primitives/sortable-column.ts'), 'utf8');
+  assert.ok(sortable.includes("@HostBinding('attr.tabindex')"));
+  assert.ok(sortable.includes("@HostListener('keydown', ['$event'])"));
+  assert.ok(sortable.includes('event.target !== this.elementRef.nativeElement'));
+  assert.ok(sortable.includes("['Enter', ' '].includes(event.key)"));
+  assert.ok(sortable.includes('this.elementRef.nativeElement.click()'));
+  assert.doesNotMatch(sortable, /attr\.role|aria-sort|onSort\.emit|onLazyLoad\.emit/);
+  assert.match(primitives, /\.p-sortable-column:focus-visible\s*\{[^}]*outline:\s*3px solid/);
+});
+

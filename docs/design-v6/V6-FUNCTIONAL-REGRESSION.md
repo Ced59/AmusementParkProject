@@ -6,6 +6,10 @@ La matrice générée recense 148 terminaux de route et 1 869 interactions/champ
 
 ## Familles obligatoires
 
+### Tri au clavier — contrôle partagé
+
+La directive de colonne triable conserve son input `field` et les vrais `<th>` : pas de rôle bouton substitué au rôle natif d'en-tête. Entrée/Espace sur l'en-tête focalisé passent par son même clic, donc par le tri et les sorties de pagination existants de `Table`, inchangés. Les événements d'un input descendant sont ignorés afin de ne pas doubler une activation. Deux tests Angular utilisant une fixture isolée sous `src/testing/` vérifient ordre ascendant/descendant, pagination et absence d'effet sur les autres touches. La fixture n'est importée que par le test, jamais dans les routes ou le bundle applicatif. **Exécution CI requise** ; le constat statique du conteneur délégué reste suivi, sans exemption ajoutée ni verdict AA exhaustif.
+
 ### Résultat `b166b2c2a` — photos réelles et clavier
 
 Après ces corrections, **185 tests Node qualité passent** en série et le scan conserve quatre constats hérités, sans régression. Les deux nouveaux tests Angular d'upload et le test .NET à horloge fixe restent à exécuter en CI.
