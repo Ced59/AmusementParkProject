@@ -2,6 +2,7 @@
 import { homeEvidenceApiPaths } from './home-network-evidence.mjs';
 export const accountLayoutFixtureOrigin = 'https://apf-account-layout.invalid';
 export const accountLayoutRefreshMarker = 'amusementpark.hasRefreshSession';
+export const accountLayoutResetQuery = '?token=APF-CI-UI-NOT-A-REAL-RESET-TOKEN';
 const userId = '00000000-0000-4000-8000-000000000017';
 const languages = ['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'];
 

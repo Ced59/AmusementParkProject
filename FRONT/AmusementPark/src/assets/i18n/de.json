@@ -5982,6 +5982,8 @@
       "back_home": "Zur Startseite"
     },
     "confirm": {
+      "invalidLinkMessage": "Der Bestätigungslink ist ungültig.",
+      "fallbackError": "Dein Konto konnte nicht bestätigt werden.",
       "title": "Kontobestätigung",
       "loading": "Kontobestätigung läuft...",
       "kicker": "Bestätigung",
@@ -5990,6 +5992,7 @@
       "error_badge": "Fehlgeschlagen"
     },
     "forgot_password": {
+      "fallbackError": "Die Anfrage ist fehlgeschlagen.",
       "title": "Passwort vergessen",
       "description": "Gib deine E-Mail-Adresse ein, um einen Link zum Zurücksetzen zu erhalten.",
       "submit": "Link zum Zurücksetzen senden",
@@ -5997,6 +6000,7 @@
       "sent_badge": "Gesendet"
     },
     "reset_password": {
+      "fallbackError": "Dein Passwort konnte nicht zurückgesetzt werden.",
       "title": "Passwort zurücksetzen",
       "invalid_link": "Dieser Link zum Zurücksetzen ist ungültig.",
       "submit": "Passwort zurücksetzen",

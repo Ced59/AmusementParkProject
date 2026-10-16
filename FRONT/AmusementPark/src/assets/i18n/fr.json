@@ -5982,6 +5982,8 @@
       "back_home": "Retour à l’accueil"
     },
     "confirm": {
+      "invalidLinkMessage": "Le lien de confirmation est invalide.",
+      "fallbackError": "La confirmation du compte a échoué.",
       "title": "Confirmation du compte",
       "loading": "Confirmation du compte en cours...",
       "kicker": "Confirmation",
@@ -5990,6 +5992,7 @@
       "error_badge": "Échec"
     },
     "forgot_password": {
+      "fallbackError": "La demande a échoué.",
       "title": "Mot de passe oublié",
       "description": "Saisis ton adresse email pour recevoir un lien de réinitialisation.",
       "submit": "Envoyer le lien de réinitialisation",
@@ -5997,6 +6000,7 @@
       "sent_badge": "Envoyé"
     },
     "reset_password": {
+      "fallbackError": "La réinitialisation du mot de passe a échoué.",
       "title": "Réinitialiser le mot de passe",
       "invalid_link": "Ce lien de réinitialisation est invalide.",
       "submit": "Réinitialiser le mot de passe",

@@ -1,11 +1,12 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { extname, join, resolve, sep } from 'node:path';
-import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse } from './account-layout-fixtures.mjs';
+import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse, accountLayoutResetQuery } from './account-layout-fixtures.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from './browser-interception-errors.mjs';
 import { exerciseAccountLists } from './exercise-account-lists.mjs';
 import { exerciseAccountProfileControls } from './exercise-account-profile-controls.mjs';
 import { exerciseAccountPassportAndFit } from './exercise-account-passport-and-fit.mjs';
 import { collectContrastCandidates } from './browser-text-contrast.mjs';
+import { exerciseAccountAuthPages } from './exercise-account-auth-pages.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -21,6 +22,10 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const profilePath = `/${language}/profile`;
   const fitPath = `${profilePath}/park-fit/profiles`;
   const homePath = `/${language}/home`;
+  const confirmPath = `/${language}/confirm-account`;
+  const resetPath = `/${language}/reset-password`;
+  const recoveryPath = `/${language}/forgot-password`;
+  const accountDocuments = [profilePath, fitPath, confirmPath, resetPath, recoveryPath];
   if (fixture.kind === 'expired' && (!(homeFixtures instanceof Map) || !homeFixtures.size)) throw new Error('Expired account UI requires exact local public-home fixtures.');
   if (!Array.isArray(widths) || widths.length < 1 || widths.length > 13 || widths.some(width => !Number.isInteger(width) || width < 320 || width > 1920)) throw new Error('Account capture widths exceed their bound.');
   const root = resolve(browserRoot);
@@ -72,7 +77,8 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     }
     if (!['GET', 'HEAD'].includes(request.method)) throw new Error('Unexpected non-fixture mutation in account layout capture.');
     if (resourceType === 'Document') {
-      if (!((url.pathname === profilePath || (fixture.kind !== 'expired' && url.pathname === fitPath)) && !url.search)
+      if (!((url.pathname === profilePath || (fixture.kind !== 'expired' && accountDocuments.includes(url.pathname))) && !url.search)
+          && !(fixture.kind === 'standard' && url.pathname === resetPath && url.search === accountLayoutResetQuery)
           && !(fixture.kind === 'expired' && url.pathname === homePath && url.searchParams.size === 1 && url.searchParams.get('returnUrl') === profilePath)) throw new Error('Unexpected account fixture document navigation.');
       await fulfill(requestId, 200, 'text/html; charset=utf-8', rawHtml);
       return;
@@ -183,14 +189,19 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       if (result.apiReads.some(read => read.path.startsWith('/api/users/') || read.path.startsWith('/api/me/'))) throw new Error('Expired layout unexpectedly requested private profile data.');
       result.expiredSession = { localRefreshRejected: true, guardRedirectExercised: true, realAuthIntegrationExercised: false };
     } else {
+      const navigateDocument = async path => {
+        if (!accountDocuments.includes(path) && path !== resetPath + accountLayoutResetQuery) throw new Error('Unknown isolated account deep-link recipe.');
+        await cdp.send('Page.navigate', { url: accountLayoutFixtureOrigin + path });
+      };
       await captureLayouts('.profile-hero', 'account-profile');
       await exerciseAccountProfileControls({ evaluate, waitUntil, captureLayouts, fixture, result });
       await exerciseAccountLists({ evaluate, waitUntil, captureLayouts, fixture, result, language });
-      await exerciseAccountPassportAndFit({ evaluate, waitUntil, captureLayouts, fixture, result, language,
-        navigateDocument: async path => {
-          if (![profilePath, fitPath].includes(path)) throw new Error('Unknown isolated account deep-link recipe.');
-          await cdp.send('Page.navigate', { url: accountLayoutFixtureOrigin + path });
-        } });
+      await exerciseAccountPassportAndFit({ evaluate, waitUntil, captureLayouts, fixture, result, language, navigateDocument });
+      if (fixture.kind === 'standard') {
+        const dictionary = JSON.parse(await readFile(join(root, `assets/i18n/${language}.json`), 'utf8'));
+        const expectedConfirmationMessage = dictionary.auth.confirm.invalidLinkMessage ?? 'Le lien de confirmation est invalide.';
+        await exerciseAccountAuthPages({ evaluate, waitUntil, captureLayouts, fixture, result, navigateDocument, expectedConfirmationMessage });
+      }
     }
     if (result.fixtureFailures.length || result.exceptions.length) throw new Error('Account layout accumulated an unexpected fixture or browser failure.');
     result.passed = true;

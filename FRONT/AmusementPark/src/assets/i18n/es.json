@@ -5982,6 +5982,8 @@
       "back_home": "Volver al inicio"
     },
     "confirm": {
+      "invalidLinkMessage": "El enlace de confirmación no es válido.",
+      "fallbackError": "No se ha podido confirmar tu cuenta.",
       "title": "Confirmación de cuenta",
       "loading": "Confirmación de cuenta en curso...",
       "kicker": "Confirmación",
@@ -5990,6 +5992,7 @@
       "error_badge": "Error"
     },
     "forgot_password": {
+      "fallbackError": "La solicitud ha fallado.",
       "title": "Contraseña olvidada",
       "description": "Introduce tu dirección de correo para recibir un enlace de restablecimiento.",
       "submit": "Enviar enlace de restablecimiento",
@@ -5997,6 +6000,7 @@
       "sent_badge": "Enviado"
     },
     "reset_password": {
+      "fallbackError": "No se ha podido restablecer tu contraseña.",
       "title": "Restablecer contraseña",
       "invalid_link": "Este enlace de restablecimiento no es válido.",
       "submit": "Restablecer contraseña",

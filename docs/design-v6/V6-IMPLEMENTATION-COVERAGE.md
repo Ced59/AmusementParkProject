@@ -4,7 +4,7 @@
 
 `master` distant reste `7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22` après nouvelle lecture. Les CSV ci-dessous restent le snapshot de source `579060704`, pas un inventaire final du chantier. Le nouveau bouton clavier standalone ajoute une cible de présentation : son delta et les tailles SCSS devront être recalculés avec le générateur existant au gel final, sans modifier la base immuable.
 
-La comparaison courante porte désormais sur **23 templates**, **2 197 → 2 244 contrats**, **zéro contrat manquant après les exceptions présentationnelles exactes documentées**. Les deux noms de région/groupe compte passent de littéraux anglais à des bindings traduits ; cette transformation ne permet ni handler absent ni autre remplacement. Les huit dictionnaires conservent toutes leurs 7 316 valeurs de base ; seules six clés de nommage clavier/a11y ont été ajoutées (7 322 au total). Le décor d'accueil supprimé était vide, caché et sans contrat fonctionnel.
+La comparaison courante porte désormais sur **23 templates**, **2 197 → 2 244 contrats**, **zéro contrat manquant après les exceptions présentationnelles exactes documentées**. Les deux noms de région/groupe compte passent de littéraux anglais à des bindings traduits ; cette transformation ne permet ni handler absent ni autre remplacement. Les huit dictionnaires conservent toutes leurs 7 316 valeurs de base ; six clés de nommage clavier/a11y puis quatre messages de secours auth ont été ajoutés (7 326 au total). Le décor d'accueil supprimé était vide, caché et sans contrat fonctionnel. L'exception de libellés auth touche explicitement trois facades, sans changement de port, signal, validation, appel ou payload ; elle n'est pas dissimulée derrière une affirmation de diff SCSS pur.
 
 Les 26 routes de la famille compte ne sont pas déclarées toutes recettées :
 
@@ -285,7 +285,7 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 
 Dernière campagne complète verte : [CI `791dc2c46`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354), Docker compris, 40 routes / 2 080 captures, 38 détails Fleury, 26 GET / 224 assertions HTTP, **307 contrôles hydratés et 732 captures additionnelles**, sans exception navigateur ni erreur d'interception. Marqueurs, 30 popups avec zoom non recouvert, CTA, vidéo, récit, calendrier et standalone huit langues passent les cas cités. L'exception P04.6 reste bornée à deux scripts et +3 302 octets JS (observé +3 280). Les snapshots/comparaisons/lignées non publiés dans la fixture Fleury, le nouveau complément compte et les scénarios de toutes les familles/revue exhaustive restent ouverts ; aucun PASS global déduit de ce run.
 
-- Aucun changement d’API, DTO, facade, port, guard, resolver, route, slug, query parameter ou règle de visibilité.
+- Aucun changement d’API, DTO, port, guard, resolver, route, slug, query parameter ou règle de visibilité. Exception de présentation documentée : quatre messages de secours localisés dans trois facades auth, français et contrats fonctionnels conservés.
 - Aucun changement d’authentification, rôle, pagination serveur, classement, note, collection, watch, passeport, Park Fit, trip ou workflow admin.
 - Aucun remplacement de Leaflet, Quill, SSR, hydratation, `TransferState`, `@defer`, lazy loading, cache, SEO, canonical, hreflang ou JSON-LD.
 - Aucun nombre, parc, ParkItem, prix, horaire, météo ou événement de la maquette n’est codé en dur.

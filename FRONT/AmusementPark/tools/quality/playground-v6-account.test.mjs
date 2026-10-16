@@ -9,6 +9,7 @@ import { accountLayoutCaptureAllowed } from '../design-v6/capture-account-layout
 import { exerciseAccountLists } from '../design-v6/exercise-account-lists.mjs';
 import { exerciseAccountProfileControls } from '../design-v6/exercise-account-profile-controls.mjs';
 import { exerciseAccountPassportAndFit } from '../design-v6/exercise-account-passport-and-fit.mjs';
+import { exerciseAccountAuthPages } from '../design-v6/exercise-account-auth-pages.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -57,6 +58,46 @@ test('account introduction and feature group have localized accessible names in 
     assert.ok(labels.introductionLabel.trim());
     assert.ok(labels.featuresLabel.trim());
   }
+});
+
+test('auth fallback copy is localized without replacing existing dictionary values or server messages', () => {
+  for (const language of ['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl']) {
+    const labels = JSON.parse(read(`src/assets/i18n/source/${language}/auth/auth.json`)).auth;
+    for (const value of [labels.confirm.invalidLinkMessage, labels.confirm.fallbackError, labels.forgot_password.fallbackError, labels.reset_password.fallbackError]) assert.ok(value.trim());
+  }
+  const french = JSON.parse(read('src/assets/i18n/source/fr/auth/auth.json')).auth;
+  assert.equal(french.confirm.invalidLinkMessage, 'Le lien de confirmation est invalide.');
+  assert.equal(french.confirm.fallbackError, 'La confirmation du compte a échoué.');
+  assert.equal(french.forgot_password.fallbackError, 'La demande a échoué.');
+  assert.equal(french.reset_password.fallbackError, 'La réinitialisation du mot de passe a échoué.');
+  for (const name of ['confirm-account', 'forgot-password', 'reset-password']) {
+    const source = read(`src/app/features/auth/state/${name}-page-state.facade.ts`);
+    assert.ok(source.includes('private readonly translateService: TranslateService'));
+    assert.ok(source.includes("'Message' in nestedError"));
+    assert.ok(source.includes("'message' in nestedError"));
+  }
+});
+
+test('auth deep-link rendering uses a local noncredential token and never submits confirmation, reset or recovery', async () => {
+  for (const language of ['fr', 'de', 'pl']) {
+    const result = {};
+    const navigations = [];
+    const captures = [];
+    await exerciseAccountAuthPages({ result, fixture: createAccountLayoutFixture('standard', 1792144800, language), expectedConfirmationMessage: 'Localized test message',
+      evaluate: async expression => assert.doesNotThrow(() => new Script(expression)),
+      waitUntil: async expression => assert.doesNotThrow(() => new Script(expression)),
+      captureLayouts: async (_selector, page) => captures.push(page),
+      navigateDocument: async path => navigations.push(path),
+    });
+    assert.equal(navigations.length, 5);
+    assert.ok(navigations.every(path => path.startsWith(`/${language}/`)));
+    assert.ok(navigations[2].endsWith('?token=APF-CI-UI-NOT-A-REAL-RESET-TOKEN'));
+    assert.equal(captures.length, 5);
+    assert.equal(result.authPages.confirmationNotRequested, true);
+    assert.equal(result.authPages.resetNotSubmitted, true);
+    assert.equal(result.authPages.recoveryEmailNotSent, true);
+  }
+  assert.doesNotMatch(read('tools/design-v6/exercise-account-auth-pages.mjs'), /fetch\(|requestSubmit\(|\.submit\(|\.click\(|\/api\//);
 });
 
 test('account layout fixtures reject production origins, unknown endpoints and all user-data mutations', () => {
