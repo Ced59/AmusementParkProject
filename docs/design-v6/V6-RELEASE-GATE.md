@@ -33,18 +33,18 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `3b560d471` ; `579060704` passe 2 728 tests, 224 contrôles HTTP, 40 routes / 2 080 captures et 124 contrôles hydratés ; lightbox corrigée, ancien refus P04.6 à remplacer par l'exception exacte acceptée |
-| Exception P04.6 | ACCEPTÉE EXPLICITEMENT le 16 octobre : deux scripts CDK, maximum +3 302 octets JS et aucun autre nombre de requêtes modifié ; nouvelle CI du contrôle borné requise |
-| Recette pratique additionnelle | À EXÉCUTER — jour/mois réel, historique météo différé/cache, captures et retour exact ; aucun PASS anticipé |
+| P21 CI Node 24 | PASS complet `da81bf4ab` : 2 728 tests Angular / 581 fichiers, 197 tests Node qualité, 224 assertions HTTP, 40 routes / 2 080 captures et 138 contrôles hydratés ; prochaine correction calendrier à revalider |
+| Exception P04.6 | PASS_WITH_OWNER_EXCEPTION sur six paires `da81bf4ab` : deux scripts CDK, +3 302 octets JS, aucun autre nombre de requêtes modifié ; manifeste borné et refus de tout élargissement non approuvé |
+| Recette pratique additionnelle | PASS CIBLÉ `da81bf4ab` — jour/mois réel, historique météo différé/cache et retour exact ; chevauchement interne Aujourd'hui découvert à l'inspection, correctif et contrôle 13 largeurs × 2 thèmes à attester |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | NON sur le dernier commit ; aucun merge avant une nouvelle réussite complète |
+| CI intégralement verte | OUI sur `da81bf4ab` ; la correction calendrier suivante impose une nouvelle campagne avant merge |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
-| Réseau initial des nouveaux médias hero | BLOQUANT `0a75fa1e4` — six paires : 105 → 107 requêtes, scripts +2 / +3 270 octets, total +60 364 pour la population réelle ; aucune exception acceptée |
-| Premier thème réel | PASS CIBLÉ `3b560d471` — six variantes système/préférence, 29–31 frames post-FCP par cas, zéro mauvais thème |
+| Réseau initial des nouveaux médias hero | Exception ciblée acceptée et contrôlée ; aucun appel API supplémentaire, populations API distinctes des premières campagnes, pas d'exception générale de poids ou de requêtes |
+| Premier thème réel | PASS CIBLÉ `da81bf4ab` — six variantes système/préférence, 25–28 frames post-FCP par cas, zéro mauvais thème |
 | Navigation rapide pendant un zoom Leaflet | PASS CIBLÉ `483818796` — les deux adaptateurs corrigés, 2 718 tests passent et retour fiche → inventaire sans exception ; reste du parcours interrompu par une attente d'historique distincte |
 | Instruction du propriétaire sur la fusion | Poursuite jusqu'au merge explicitement demandée le 15 octobre ; exécution conditionnée à la recette et aux checks, aucun défaut connu accepté silencieusement |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |
@@ -64,13 +64,13 @@
 
 ## Audit de portée P22
 
-- 245 fichiers modifiés : 175 sous `FRONT/`, 68 sous `docs/`, un projet sous `API/` et un workflow sous `.github/`.
-- 135 feuilles SCSS, 4 templates, 25 tests/outils MJS, 9 fichiers TypeScript dont 6 specs, 30 preuves WebP, 24 captures baseline PNG, 4 inventaires CSV et les documents contractuels.
-- Aucun fichier supprimé ; aucun changement sous `deploy/`. La seule exception backend est la référence PKCS autorisée ci-dessous ; le workflow reçoit uniquement la recette CI conditionnelle à la branche V6.
+- Audit du SHA `da81bf4ab` : 352 fichiers modifiés, dont 275 sous `FRONT/`, 74 sous `docs/`, deux sous `API/` et un workflow sous `.github/`.
+- 165 feuilles SCSS, 16 templates HTML, 45 tests/outils MJS, 30 fichiers TypeScript, huit inventaires CSV et 22 JSON ; les preuves graphiques et documents complètent ce décompte. Cet audit daté doit être recalculé au gel final, pas extrapolé après les corrections suivantes.
+- Aucun fichier supprimé ; aucun changement sous `deploy/`. Les exceptions backend sont la référence PKCS autorisée et la stabilisation du test à horloge fixe ci-dessous ; le workflow reçoit uniquement la recette CI conditionnelle à la branche V6.
 - `app.routes.ts`, `package-lock.json`, endpoints, DTO, guards, facades, ports, services, persistance et infrastructure inchangés.
-- Les TypeScript de production ajoutent le composant image existant à l’accueil, réalignent les métadonnées `sizes`, déplacent le style du tooltip vers le SCSS partagé et corrigent le nettoyage Leaflet explicitement autorisé. Aucun contrat d'entrée/sortie n'est modifié.
+- Les TypeScript de production réutilisent le composant image et CDK déjà installés, réalignent `sizes`, déplacent le style du tooltip vers le SCSS partagé, rendent natifs les contrôles d'accessibilité et corrigent le nettoyage Leaflet explicitement autorisé. Aucun contrat d'entrée/sortie n'est modifié. Le clavier des en-têtes triables passe par leur même clic et le tri existant, avec tests dédiés.
 - Zéro ajout de `!important`, gradient décoratif, `backdrop-filter`, letter-spacing négatif, `overflow-x: hidden` ou dépendance UI. Les URLs du nouvel outil de recette sont réservées aux lectures publiques et à son origine de navigateur isolé ; elles ne sont pas ajoutées au produit.
-- Dernier inventaire généré : 148 routes et 273 composants. La régénération finale après gel visuel reste requise ; elle n'est pas déclarée achevée pendant les corrections de recette.
+- Dernier inventaire généré et réconcilié avec la base exacte : 148 routes, 293 composants, 268 SCSS et deux styles inline. La régénération finale après gel visuel reste requise ; elle n'est pas déclarée achevée pendant les corrections de recette.
 
 ## Décision avant fusion
 

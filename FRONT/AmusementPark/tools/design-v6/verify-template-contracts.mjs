@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { compareTemplateContracts, inlineComponentTemplates, templateContracts } from './template-contract-evidence.mjs';
+import { compareLocalizationContracts } from './localization-contract-evidence.mjs';
 
 const base = process.env.V6_BASELINE_SHA;
 if (!/^[a-f0-9]{40}$/.test(base ?? '')) throw new Error('An exact V6 baseline SHA is required.');
@@ -53,7 +54,12 @@ for (const { file, before, after } of pairs) {
   }
   results.push({ file, ...comparison });
 }
-const report = { scope: 'existing template source contracts; not complete browser/role acceptance', base, results };
+const localizations = ['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'].map(language => {
+  const file = `FRONT/AmusementPark/src/assets/i18n/${language}.json`;
+  return { language, ...compareLocalizationContracts(JSON.parse(git(['show', `${base}:${file}`])),
+    JSON.parse(readFileSync(resolve(repositoryRoot, file), 'utf8'))) };
+});
+const report = { scope: 'existing template and localization source contracts; not complete browser/role acceptance', base, results, localizations };
 if (process.env.V6_SSR_EVIDENCE_DIR) {
   const directory = resolve(process.env.V6_SSR_EVIDENCE_DIR);
   mkdirSync(directory, { recursive: true });
@@ -63,3 +69,4 @@ console.log(JSON.stringify({ ...report, results: results.map(result => ({ ...res
   missingCount: result.missing.length, addedCount: result.added.length,
   missing: result.missing.slice(0, 10), added: result.added.slice(0, 10) })) }, null, 2));
 if (results.some(result => result.missing.length)) throw new Error('An existing template contract disappeared; correct or document its exact presentation-only exception.');
+if (localizations.some(result => result.missing.length || result.changed.length)) throw new Error('An existing localized value changed or disappeared; a graphical redesign must preserve existing translations, including the footer slogans.');

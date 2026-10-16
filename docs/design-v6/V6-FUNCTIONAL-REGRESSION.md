@@ -6,11 +6,13 @@ La matrice corrigée recense 148 terminaux de route, 293 composants et 2 056 con
 
 ## Familles obligatoires
 
-### Recette pratique complémentaire — à exécuter
+### Recette pratique complémentaire — exécutée sur `da81bf4ab`
 
-Le scénario isolé ajouté après la galerie utilise les liens du parc, sans URL de données reconstruite ni mutation. Il sélectionne un autre vrai jour et vérifie le détail/état pressé, change vers un mois réellement disponible puis revient au mois initial. Sur la météo, il ouvre le vrai disclosure historique, vérifie le nombre d'années de la réponse publique et les paramètres de dates, puis sa réouverture en cache sans nouveau départ de requête. Il revient à l'entrée navigateur d'origine par sa clé et son index, pas par une URL inventée. Les captures 390/1 366 px doivent refuser tout overflow du document. Si la population n'offre pas de mois voisin ou d'historique rempli, le scénario échoue explicitement ; il ne prétend pas couvrir un état vide à sa place. **Exécution navigateur CI encore requise.**
+Le scénario isolé utilise les liens du parc, sans mutation. La [CI `38859824025`](https://github.com/Ced59/AmusementParkProject/actions/runs/38859824025) valide **138 contrôles hydratés**, sans exception navigateur ni erreur d'interception : sélection d'un autre jour réel, octobre → novembre 2026 → mois initial, état pressé/détail, historique météo différé (7 dates / 3 années réellement retournées), fermeture et réouverture sans nouveau départ de requête, puis restauration de la clé d'entrée navigateur d'origine. Les dates et comptes sont des observations de recette, jamais des données de production codées en dur. Les captures 390/1 366 px passent le contrôle de largeur du document ; leur inspection révèle toutefois un débordement interne du badge Aujourd'hui, suivi séparément dans le rapport visuel. Aucun PASS responsive exhaustif n'en est déduit.
 
-Les **168 tests Node Playground ciblés passent en série**, y compris le contrôle d'exception et les gardes de la nouvelle recette ; son exécution navigateur reste à confirmer. La CI `579060704` valide déjà les 124 contrôles hydratés existants, les trois nouveaux cas de lightbox et la source d'inventaire corrigée.
+Le correctif suivant fait revenir les libellés de calendrier à la ligne sans les masquer ni les rétrécir, et ajoute un contrôle des bounds/scroll internes à chaque case aux 13 largeurs et deux thèmes, via la vraie bascule Angular. **Cette extension navigateur reste à exécuter.** Les 36 tests Node ciblés calendrier/contrats/accueil puis l'ensemble des **171 tests Playground** passent en série ; le SCSS calendrier compile seul (12 334 caractères compressés). Aucun build lourd ni serveur local n'est lancé.
+
+La comparaison source actuelle protège **20 templates, 1 753 → 1 792 contrats, zéro manquant**, avec les deux transformations présentationnelles exactes déjà documentées. Elle compare désormais aussi toutes les valeurs existantes des huit dictionnaires à la base exacte : zéro suppression ni modification, quatre nouveaux libellés génériques seulement. Les slogans sont donc protégés dans les huit langues, et pas uniquement par leur présence de clé. Un test refuse notamment une perte d'accent ou un changement d'ordre de tableau. Cette preuve source ne remplace pas les scénarios authentifiés.
 
 ### Tri au clavier — contrôle partagé
 

@@ -1,5 +1,13 @@
 # V6 — régression visuelle
 
+## Calendrier mobile — défaut découvert après la CI verte `da81bf4ab`
+
+La [campagne `38859824025`, artefact `12028973687`](https://github.com/Ced59/AmusementParkProject/actions/runs/38859824025/artifacts/12028973687) passe les contrôles fonctionnels et la largeur du document. L'inspection de `fr_opening-hours-selected_390_dark.webp` révèle pourtant le badge Aujourd'hui débordant dans la case voisine. Le contrôle global de largeur ne suffisait donc pas. Le correctif borne le track de grille à `minmax(0, 1fr)`, laisse revenir le texte complet à la ligne et supprime sa réduction mobile à 7–8 px ainsi que les rayons fixes 6/7 px. Les jours, horaires, états et handlers restent inchangés. La recette suivante vérifie les rectangles et scroll internes de chaque case aux 13 largeurs, deux thèmes, et exige que le vrai mois comporte effectivement le badge testé. **Correctif source testé ; rendu navigateur à attester, défaut non déclaré soldé.**
+
+La météo historique réelle à 390 px sombre a aussi été inspectée : matrice en défilement local, attribution et partage lisibles. Ce constat ciblé ne valide pas les huit langues, le zoom ou tous les états pratiques.
+
+Les cinq déclarations orphelines `--hero-stat-color` sont retirées : aucune lecture de cette variable n'existait dans `src/`. Les chiffres de l'accueil conservent leur premier plan et leurs sources ; cette suppression de CSS mort n'élargit pas l'exception de poids JS acceptée.
+
 ## Lightbox corrigée — validation `579060704`
 
 Les trois captures réelles passent sans chevauchement ni bouton recouvert : **320 × 568**, **390 × 640** et **1 366 × 480**. `elementFromPoint` confirme Fermer au premier plan dans les trois cas. Les hauteurs de l'image sont respectivement **208, 303 et 117 px** ; les crédits/vignettes restent dans leur zone accessible. La capture 320 × 568 sombre est inspectée : la navigation ne couvre plus le dialogue, le titre revient à la ligne et la photographie ne chevauche plus sa légende. [Artefact 12028425423](https://github.com/Ced59/AmusementParkProject/actions/runs/38857089021/artifacts/12028425423). Les contrôles clavier/fermeture/restauration et 124 contrôles hydratés passent. Il s'agit d'une validation ciblée, pas d'une approbation visuelle exhaustive P22.

@@ -15,7 +15,7 @@ import { exercisePublicPhotos } from './exercise-public-photos.mjs';
 import { resumeStaticCaptures } from './browser-phase-isolation.mjs';
 import { photoLightboxLayoutIssues } from './photo-lightbox-layout.mjs';
 import { exercisePublicPractical } from './exercise-public-practical.mjs';
-import { publicPracticalReadEvidence } from './public-practical-evidence.mjs';
+import { publicPracticalReadEvidence, openingCalendarLayoutIssues } from './public-practical-evidence.mjs';
 
 // Initial SSR snapshots plus a CI-only anonymous hydration smoke. This tool never
 // starts a server, authenticates, performs remote writes or replaces full acceptance.
@@ -549,20 +549,47 @@ async function captureHydratedHome(rawHtml, options = {}) {
       await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', ...key });
     } });
     await exercisePublicPractical({ evaluate, waitUntil, result, capturePractical: async (label, selector) => {
+      const originalTheme = await evaluate(`document.body.classList.contains('light-mode') ? 'light' : 'dark'`);
+      const setTheme = async theme => {
+        if (await evaluate(`!document.body.classList.contains('${theme}-mode')`)) {
+          await evaluate(`document.querySelector('app-theme-switcher button').click()`);
+          await waitUntil(`document.body.classList.contains('${theme}-mode')`, 'practical theme control updates Angular');
+        }
+      };
       try {
-        for (const width of [390, 1366]) {
-          await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
-          await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({ block: 'start', behavior: 'instant' })`);
-          await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
-          const layout = await evaluate(`({ width: innerWidth, documentWidth: document.documentElement.scrollWidth, theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
-          if (layout.documentWidth > width + 1) throw new Error(`Hydrated practical page overflows at ${width}px.`);
-          const screenshot = `fr_${label}_${width}_${layout.theme}.webp`;
-          const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
-          await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
-          (result.practicalLayouts ??= []).push({ label, ...layout, screenshot });
+        for (const theme of [originalTheme, originalTheme === 'dark' ? 'light' : 'dark']) {
+          await setTheme(theme);
+          for (const width of widths) {
+            await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
+            await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({ block: 'start', behavior: 'instant' })`);
+            await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+            const layout = await evaluate(`({ width: innerWidth, documentWidth: document.documentElement.scrollWidth, theme: document.body.classList.contains('light-mode') ? 'light' : 'dark' })`);
+            if (layout.documentWidth > width + 1) throw new Error(`Hydrated practical page overflows at ${width}px.`);
+            if (label === 'opening-hours-selected') {
+              const cells = await evaluate(`(() => {
+                const rect = node => { const r = node.getBoundingClientRect(); return { x: r.x, y: r.y, right: r.right, bottom: r.bottom }; };
+                return [...document.querySelectorAll('button.park-opening-hours-cell')].map(button => ({
+                  bounds: rect(button.closest('td')), button: rect(button), labels: [...button.querySelectorAll('.park-opening-hours-cell__date, .park-opening-hours-cell__today, .park-opening-hours-cell__status, .park-opening-hours-cell__hours')].map(node => ({
+                    bounds: rect(node), clientWidth: node.clientWidth, scrollWidth: node.scrollWidth, clientHeight: node.clientHeight, scrollHeight: node.scrollHeight,
+                    today: node.classList.contains('park-opening-hours-cell__today'), textOverflow: getComputedStyle(node).textOverflow, whiteSpace: getComputedStyle(node).whiteSpace
+                  }))
+                }));
+              })()`);
+              const issues = openingCalendarLayoutIssues(cells);
+              layout.calendarCells = cells.length;
+              layout.todayBadges = cells.flatMap(cell => cell.labels).filter(label => label.today).length;
+              if (layout.todayBadges !== 1) throw new Error('The actual calendar month does not cover its today badge; this layout scenario is not exercised.');
+              if (issues.length) throw new Error(`Calendar content overlaps or clips at ${width}px (${theme}): ${issues.join(', ')}`);
+            }
+            const screenshot = `fr_${label}_${width}_${layout.theme}.webp`;
+            const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+            await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
+            (result.practicalLayouts ??= []).push({ label, ...layout, screenshot });
+          }
         }
       } finally {
         await cdp.send('Emulation.setDeviceMetricsOverride', { width: 1366, height: 1200, deviceScaleFactor: 1, mobile: false });
+        await setTheme(originalTheme);
       }
     } });
     await evaluate(`history.back()`);

@@ -3,6 +3,20 @@ import test from 'node:test';
 import { compareTemplateContracts, inlineComponentTemplates, templateContracts } from '../design-v6/template-contract-evidence.mjs';
 import { resumeStaticCaptures } from '../design-v6/browser-phase-isolation.mjs';
 import { componentPresentations, isProductionPresentationFile, presentationInteractions } from '../design-v6/presentation-inventory-evidence.mjs';
+import { compareLocalizationContracts } from '../design-v6/localization-contract-evidence.mjs';
+
+test('localization contracts preserve exact accents, slogans, arrays and existing keys while allowing new labels', () => {
+  const before = { footer: { brand: { sloganData: 'La rigueur des données', sloganFun: 'pour toujours plus de fun' } }, weekdays: ['Lun', 'Mar'] };
+  const after = { ...before, actions: { expand: 'Développer' } };
+  assert.deepEqual(compareLocalizationContracts(before, after), { baselineCount: 3, currentCount: 4, missing: [], changed: [], added: ['actions.expand'] });
+  const changed = structuredClone(after);
+  changed.footer.brand.sloganData = 'La rigueur des donnees';
+  changed.weekdays.reverse();
+  assert.deepEqual(compareLocalizationContracts(before, changed).changed, ['footer.brand.sloganData', 'weekdays']);
+  delete changed.footer.brand.sloganFun;
+  assert.deepEqual(compareLocalizationContracts(before, changed).missing, ['footer.brand.sloganFun']);
+  assert.deepEqual(compareLocalizationContracts({ optional: null, count: 0, enabled: false }, { optional: '', count: '0', enabled: true }).changed, ['optional', 'count', 'enabled']);
+});
 
 test('production inventory includes non-suffixed primitives but excludes test-only component hosts', () => {
   assert.equal(isProductionPresentationFile('src/app/shared/ui/primitives/dialog.ts'), true);

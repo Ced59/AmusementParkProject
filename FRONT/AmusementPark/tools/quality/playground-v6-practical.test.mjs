@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
-import { publicPracticalReadEvidence } from '../design-v6/public-practical-evidence.mjs';
+import { publicPracticalReadEvidence, openingCalendarLayoutIssues } from '../design-v6/public-practical-evidence.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
@@ -49,6 +49,30 @@ test('practical browser recipe exercises actual dates, month controls, lazy hist
 
 test('the today badge uses the per-theme gold foreground rather than a fixed dark label', () => {
   assert.match(practicalStyles, /\.park-opening-hours-cell__today\s*\{[^}]*color:\s*var\(--app-on-gold\)/);
+});
+
+test('calendar labels reflow inside fixed grid tracks without shrinking the today label on mobile', () => {
+  const styles = read('src/app/features/public/parks/pages/park-opening-hours-page.component.scss');
+  assert.match(styles, /\.park-opening-hours-cell\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\)/);
+  assert.match(styles, /\.park-opening-hours-cell__today\s*\{[^}]*overflow-wrap:\s*anywhere/);
+  assert.doesNotMatch(styles, /\.park-opening-hours-cell__today\s*\{[^}]*(?:ellipsis|nowrap|overflow:\s*hidden|font-size:\s*0\.[45])/);
+  assert.doesNotMatch(styles, /border-radius:\s*[67]px/);
+});
+
+test('calendar geometry rejects internal overlap even when document width passes', () => {
+  const bounds = { x: 20, y: 100, right: 60, bottom: 200 };
+  const cell = { bounds, button: { ...bounds }, labels: [{ bounds: { x: 24, y: 120, right: 56, bottom: 160 }, clientWidth: 32, scrollWidth: 32, clientHeight: 40, scrollHeight: 40, today: true, textOverflow: 'clip', whiteSpace: 'normal' }] };
+  assert.deepEqual(openingCalendarLayoutIssues([cell, cell]), []);
+  const overlap = structuredClone(cell);
+  overlap.labels[0].bounds.right = 75;
+  assert.ok(openingCalendarLayoutIssues([cell, overlap]).some(issue => issue.includes('outside button')));
+  const clipped = structuredClone(cell);
+  clipped.labels[0].scrollWidth = 52;
+  assert.ok(openingCalendarLayoutIssues([cell, clipped]).some(issue => issue.includes('clipped label')));
+  const ellipsis = structuredClone(cell);
+  ellipsis.labels[0].textOverflow = 'ellipsis';
+  assert.ok(openingCalendarLayoutIssues([cell, ellipsis]).some(issue => issue.includes('cannot reflow')));
+  assert.ok(openingCalendarLayoutIssues([]).length > 0);
 });
 
 test('practical pages share the full editorial shell without nested responsive gutters', () => {
