@@ -1,6 +1,14 @@
 # V6 — performance, SEO et SSR
 
-## Contrôle borné validé — `754cce98c`
+## Dernier contrôle borné validé — `791dc2c46`
+
+La [CI `38889015354`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354) réussit intégralement, Docker compris : **2 769 tests Angular / 583 fichiers**, **224 tests Node qualité**, **26 GET / 224 assertions HTTP**, **40 routes / 2 080 captures SSR**, **38 détails Fleury**, **307 contrôles hydratés** et **732 captures hydratées additionnelles**, sans exception navigateur ni erreur d'interception. Déploiement ignoré sur PR. [Artefact `12041197882`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354/artifacts/12041197882).
+
+Les six paires 390/1 366 px conservent les mêmes populations API master/V6 : **105 → 107 requêtes**, **84 → 86 scripts**, **+3 280 octets JS**, **−851 octets décodés au total** (1 700 561 → 1 699 710). Fonts 3, images 12, CSS 1, document 1, XHR 2 et autres 2 restent inchangés en nombre. Le verdict est **PASS_WITH_OWNER_EXCEPTION**, avec seulement **22 octets** de marge sous le plafond inchangé de +3 302 ; aucune extension de l'exception.
+
+Médianes LCP proxy : **244 → 212 ms** mobile, **364 → 216 ms** desktop. CLS V6 médian nul ; maximum desktop **0,00365**, mobile nul. `domComplete` médian **317,2 → 389,1 ms** mobile et **391,7 → 389,2 ms** desktop : le ralentissement mobile reste visible, sans conclusion générale de gain de performance. Ce sont des proxys de laboratoire, pas une mesure INP ou CWV terrain. Les six variantes du premier thème passent, avec 25–29 frames post-FCP et zéro mauvais thème. Les captures compte sur fixtures isolées, ajoutées ensuite, ne sont pas encore attestées.
+
+## Contrôle antérieur — `754cce98c`
 
 La [CI `38863174263`](https://github.com/Ced59/AmusementParkProject/actions/runs/38863174263) réussit intégralement, Docker compris : 2 728 tests Angular, 200 tests Node qualité, 224 assertions HTTP, 40 routes / 2 080 captures, 38 détails Fleury, 142 contrôles hydratés et 52 captures pratiques. Les six paires restent **105 → 107 requêtes**, avec **+2 854 octets JS** et **+5 500 octets décodés au total** pour cette population. Le manifeste conserve son plafond de +3 302 : il n'est ni augmenté ni réinterprété. Le retrait des variables CSS orphelines explique une partie de la baisse ; aucun nouveau nombre de requêtes API, images ou fonts n'est accepté.
 

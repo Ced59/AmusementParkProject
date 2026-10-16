@@ -33,18 +33,18 @@
 | P20 | PASS CIBLÉ — 30 cas Chromium, 13 largeurs, deux thèmes, faible hauteur, 113 tests qualité/a11y |
 | Revue visuelle Angular réelle P22 | PARTIELLE — captures du bundle CI réel inspectées ; revue exhaustive et validation propriétaire toujours requises |
 | P21 local | PASS CIBLÉ — build SSR, budgets, architecture, a11y/i18n, SEO et tests ciblés verts |
-| P21 CI Node 24 | Dernier PASS complet `754cce98c` ; `e01f88a1a` passe 2 769 tests Angular / 583 fichiers, 221 tests qualité et la recette carte renforcée (30 popups) ; extraction de l'enum vidéo de recette corrigée, suite des parcours à exécuter |
-| Exception P04.6 | PASS_WITH_OWNER_EXCEPTION sur six paires `754cce98c` : deux scripts CDK, +2 854 octets JS, aucun autre nombre de requêtes modifié ; plafond +3 302 inchangé |
-| Recette pratique additionnelle | PASS CIBLÉ `754cce98c` — jour/mois réel, historique météo différé/cache, retour exact et 52 captures ; chevauchement corrigé mais textes comprimés à 320 px, nouveau tableau localement défilable à attester |
+| P21 CI Node 24 | PASS complet `791dc2c46` — 2 769 tests Angular / 583 fichiers, 224 tests qualité, 224 assertions HTTP, 307 contrôles hydratés et Docker ; nouveau complément compte à exécuter |
+| Exception P04.6 | PASS_WITH_OWNER_EXCEPTION sur six paires `791dc2c46` : deux scripts CDK, +3 280 octets JS, aucun autre nombre de requêtes modifié ; plafond +3 302 inchangé, marge 22 octets |
+| Recette pratique additionnelle | PASS CIBLÉ `791dc2c46` — 732 captures hydratées additionnelles, calendrier localement défilable, météo, 30 popups, vidéos, récit et standalone huit langues ; scénarios absents et revue exhaustive toujours ouverts |
 | Version `6.0.0` et historique 8 langues | PASS — commit de contenu `545345dc3a81c099a328e29a510447339b3f9342` |
 | Diff de portée | Exceptions explicitement autorisées le 15 octobre : référence PKCS 10.0.13 et nettoyage Leaflet à la destruction |
 | PR unique | [#917](https://github.com/Ced59/AmusementParkProject/pull/917) ouverte ; recette complète encore requise |
-| CI intégralement verte | NON sur `553184fc4` : enum corrigé et onglets passés ; la recette vidéo lisait l'onglet durant le chargement du filtre, attente du panneau réel corrigée. Aucun changement d'API ou du produit ; suite à repasser |
+| CI intégralement verte | OUI sur `791dc2c46`, [run 38889015354](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354), Docker compris, déploiement ignoré ; ne préjuge pas des commits suivants ni des gates ouverts |
 | Revue visuelle propriétaire | NON DEMANDÉE |
 | En-têtes ParkItem et standalone | PASS GÉOMÉTRIE CIBLÉ `a6bbfb21d`, captures Rhaegal et Hasenhorn 390 px inspectées ; variantes complètes et approbation globale toujours ouvertes |
 | Recette isolée admin | EXCEPTION ACCEPTÉE le 15 octobre — environnement inexistant ; tests CI/présentation avant sortie, corrections admin après déploiement acceptées par le propriétaire |
 | Réseau initial des nouveaux médias hero | Exception ciblée acceptée et contrôlée ; aucun appel API supplémentaire, populations API distinctes des premières campagnes, pas d'exception générale de poids ou de requêtes |
-| Premier thème réel | PASS CIBLÉ `da81bf4ab` — six variantes système/préférence, 25–28 frames post-FCP par cas, zéro mauvais thème |
+| Premier thème réel | PASS CIBLÉ `791dc2c46` — six variantes système/préférence, 25–29 frames post-FCP par cas, zéro mauvais thème |
 | Navigation rapide pendant un zoom Leaflet | PASS CIBLÉ `483818796` — les deux adaptateurs corrigés, 2 718 tests passent et retour fiche → inventaire sans exception ; reste du parcours interrompu par une attente d'historique distincte |
 | Instruction du propriétaire sur la fusion | Poursuite jusqu'au merge explicitement demandée le 15 octobre ; exécution conditionnée à la recette et aux checks, aucun défaut connu accepté silencieusement |
 | Déploiement transactionnel et postchecks | NON EXÉCUTÉS |

@@ -1,5 +1,13 @@
 # V6 — non-régression fonctionnelle
 
+## Dernière campagne attestée — `791dc2c46`
+
+La [CI `38889015354`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354) passe **307 contrôles hydratés**, sans exception navigateur ni erreur d'interception. Sept scénarios vidéo comparent les filtres/onglets aux vrais IDs et réponses publiques, avec état vide et réversibilité. Le vrai lecteur La Catapulte conserve son titre et son iframe nommé ; la lecture externe du fournisseur n'est pas validée par l'isolation. Le récit Fleury conserve quatre paragraphes, deux titres de section et six sources. L'attraction autonome Hasenhorn passe huit langues, canonical/locale et données sans faux parent ; son historique propre et le retour FR sont exercés.
+
+Les contrôles anonymes d'inscription/récupération préparés ci-dessous sont désormais exécutés : validation invalide/différente/valide sans soumission, route oubli de mot de passe, bouton vide désactivé, 26 captures et retour exact. Aucune création, connexion réelle, email ou interaction Google n'a lieu. Les captures de compte standard/incomplet ajoutées après ce run restent à exécuter.
+
+La timeline Fleury expose 20 événements et aucune page suivante, année snapshot, comparaison ou lignée. Ces quatre capacités sont consignées dans `historyExplorer.unavailable`, **pas déclarées PASS**. Leur couverture nécessite une autre entrée publiée ou des fixtures CI isolées ; aucune donnée historique n'est inventée dans l'application.
+
 ## Complément de recette historique — préparé le 16 octobre
 
 La recette utilise uniquement les liens publiés de la timeline courante : page suivante, année documentée, comparaison et lignée. Elle contrôle le résumé de pagination, les champs de couverture du snapshot, la sélection mois/jour et ses paramètres d'URL, la validation d'une plage d'années, la soumission valide et le disclosure natif des sujets stables. Chaque retour restaure la même entrée d'historique. Les capacités absentes sont enregistrées explicitement dans `historyExplorer.unavailable`, sans URL de fixture ni publication de données.

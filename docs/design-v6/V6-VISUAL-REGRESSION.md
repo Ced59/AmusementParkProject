@@ -1,5 +1,13 @@
 # V6 — régression visuelle
 
+## Dernier rendu attesté — `791dc2c46`
+
+La [campagne complète `38889015354`, artefact `12041197882`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354/artifacts/12041197882) passe 2 080 captures SSR et **732 captures hydratées additionnelles** : 30 popups carte, 208 détails et 208 panneaux de données standalone (huit langues × 13 largeurs × deux thèmes), puis les cas vidéos, récit, sources, calendrier, météo, historique standalone et récupération de mot de passe. Les trois lightboxes 320 × 568, 390 × 640 et 1 366 × 480 gardent une image de 208/303/117 px et Fermer au premier plan. Les 30 popups gardent titre, actions, Fermer et les deux commandes de zoom accessibles ; le défaut de recouvrement cité dans les campagnes antérieures est soldé dans ces cas précis.
+
+L'inspection de `fr_home_hydrated_1366.webp` confirme les gouttières, le filet de séparation, les CTA réels et le wordmark original dans cet échantillon sombre. Les parcs et chiffres sont ceux de la population API du run, pas des valeurs intégrées au produit. `pl_standalone-data_390_dark.webp` montre des données techniques, météo et adresse polonaises lisibles, avec retour à la ligne et navigation mobile. Ces deux inspections ne valent pas approbation exhaustive/pixel-perfect. Les tuiles externes et lecteurs fournisseurs bloqués par l'isolation ne sont pas déclarés testés.
+
+Les variantes compte compilées standard/incomplètes ajoutées après ce run restent **à exécuter**. Revue propriétaire, zoom réel 200 %, SR et autres familles/états restent ouverts.
+
 ## Popup normal — synchronisation des bounds à attester
 
 La campagne `e6a531fe6` refuse encore la géométrie à 320 px après les attentes normales. Son [artefact `12039486997`](https://github.com/Ced59/AmusementParkProject/actions/runs/38884665674/artifacts/12039486997) montre cette fois le cadre entièrement dans la carte (y 433 → 626,9 dans y 382,9 → 734,9), mais le titre recouvert par les contrôles de zoom. La synchronisation seule n'est donc pas présentée comme la cause résolue.

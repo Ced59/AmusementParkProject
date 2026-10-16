@@ -263,7 +263,7 @@ Les 58 terminaux admin et les 26 terminaux compte sont explicitement présents d
 
 ## Invariants fonctionnels
 
-Dernière campagne complète verte : [CI `754cce98c`](https://github.com/Ced59/AmusementParkProject/actions/runs/38863174263), 40 routes / 2 080 captures, 38 détails Fleury, 26 GET / 224 assertions HTTP, 142 contrôles hydratés et 52 captures pratiques. La pagination directe du catalogue, ses quatre tailles, filtres et distinction sélection/détail ont depuis été exercés. Les corrections plus récentes de marqueurs, popup, CTA et recettes additionnelles imposent un nouveau PASS complet ; le défaut de popup à 320 px reste bloquant. Les scénarios de toutes les familles et la revue visuelle exhaustive restent ouverts.
+Dernière campagne complète verte : [CI `791dc2c46`](https://github.com/Ced59/AmusementParkProject/actions/runs/38889015354), Docker compris, 40 routes / 2 080 captures, 38 détails Fleury, 26 GET / 224 assertions HTTP, **307 contrôles hydratés et 732 captures additionnelles**, sans exception navigateur ni erreur d'interception. Marqueurs, 30 popups avec zoom non recouvert, CTA, vidéo, récit, calendrier et standalone huit langues passent les cas cités. L'exception P04.6 reste bornée à deux scripts et +3 302 octets JS (observé +3 280). Les snapshots/comparaisons/lignées non publiés dans la fixture Fleury, le nouveau complément compte et les scénarios de toutes les familles/revue exhaustive restent ouverts ; aucun PASS global déduit de ce run.
 
 - Aucun changement d’API, DTO, facade, port, guard, resolver, route, slug, query parameter ou règle de visibilité.
 - Aucun changement d’authentification, rôle, pagination serveur, classement, note, collection, watch, passeport, Park Fit, trip ou workflow admin.
