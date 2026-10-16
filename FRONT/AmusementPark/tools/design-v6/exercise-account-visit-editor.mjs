@@ -29,7 +29,7 @@ export async function exerciseAccountVisitEditor({ evaluate, waitUntil, captureL
     } else await waitUntil(`!document.querySelector('.passport-visit__details') && !!document.querySelector('.passport-visit__locked') && !document.querySelector('.passport-selector')`, 'completed or archived visit retains its existing read-only controls');
     if (data.occurrences.length > 2) {
       await evaluate(`document.querySelector('.passport-timeline__more').click()`);
-      await waitUntil(`document.querySelectorAll('.passport-occurrence').length === ${data.occurrences.length} && !document.querySelector('.passport-timeline__more')`, 'visit journal final cursor appends without duplicating the existing occurrence');
+      await waitUntil(`document.querySelectorAll('.passport-occurrence').length === ${data.occurrences.length} && !document.querySelector('.passport-timeline__more')`, 'visit journal final cursor appends the exact nonoverlapping next page and removes its exhausted pagination control');
       await captureLayouts('.passport-timeline', `account-visit-${state}-timeline-final`);
     }
     await evaluate(`document.querySelector('.passport-visit-deletion > button').click()`);

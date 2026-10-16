@@ -1,5 +1,11 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic `6e8a908f6` — hypothèse de curseur rectifiée
+
+Le [run `38960232576`](https://github.com/Ced59/AmusementParkProject/actions/runs/38960232576) valide 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité. Le diagnostic V6 standard FR atteint **445 contrôles / 240 captures**, zéro erreur fixture/exception, puis attend à tort trois lignes de journal après une réponse synthétique avec doublon. La façade existante concatène les pages (`loadMoreTimeline` puis `setTimelineOccurrences`/`setOccurrences`) sans dédoublonnage ; la refonte n'a pas modifié ce code. La fixture et le test sont corrigés vers une vraie page suivante sans chevauchement (deux lignes puis la troisième), curseur final null. Aucun correctif métier n'est introduit pour satisfaire un scénario inventé.
+
+Le rapport conserve aussi dix-sept combinaisons de texte/couleur/fond insuffisantes, regroupées sur notifications, participants, partages et éditeur. Les corrections restent présentationnelles et utilisent les alias déjà existants. Les 72 tests ciblés compte/tokens/shell/footer passent après correction ; les nouveaux rendus attendent la CI. Les captures d'un panneau participants mobile révèlent un cadrage sur le footer après reflow : le navigateur mesure désormais la cible réellement visible, deux fois stable, en tenant compte des navigations fixes. Les anciens compteurs de captures restent datés et ne prouvent pas le gabarit d'un panneau absent du cadre.
+
 ## Diagnostic `cba391e78` — défaut de contraste conservé comme FAIL
 
 Le [run `38959031789`](https://github.com/Ced59/AmusementParkProject/actions/runs/38959031789) passe à nouveau 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité. Le diagnostic atteint Collections après le profil, l'identité et le panneau de suppression ; le filtre actif clair échoue à 3,88:1. Zéro erreur fixture/exception, aucun changement de données, aucun appel privé transmis. Les scénarios suivants restent non exécutés. Le correctif du texte conserve exactement filtres, handlers et résultats ; le cas numérique observé est protégé par un test.
@@ -54,7 +60,7 @@ Le complément couvre statistiques globales et historiques, fiches statistiques 
 
 ## Éditeur de visite — recette préparée, non exécutée
 
-Trois états sont préparés sur les vrais deep links : brouillon Year modifiable, visite Month terminée et archive vide avec parent 404 intentionnel. Les données sont uniquement synthétiques, locales au navigateur CI : cible historique avec/sans cohérence vérifiée, journal initial 2 lignes puis curseur avec doublon et troisième ligne, commentaire privé fictif et note personnelle. Tous les GET sont exacts et clonés ; toute écriture, cible/query inconnue ou curseur arbitraire est refusé.
+Trois états sont préparés sur les vrais deep links : brouillon Year modifiable, visite Month terminée et archive vide avec parent 404 intentionnel. Les données sont uniquement synthétiques, locales au navigateur CI : cible historique avec/sans cohérence vérifiée, journal initial deux lignes puis curseur sans chevauchement vers la troisième ligne, commentaire privé fictif et note personnelle. La précédente hypothèse de doublon est explicitement retirée après lecture de la façade existante ; son comportement n'est pas changé. Tous les GET sont exacts et clonés ; toute écriture, cible/query inconnue ou curseur arbitraire est refusé.
 
 La recette ouvre le disclosure de métadonnées, modifie/restaure un titre sans enregistrer, vérifie les contrôles en lecture seule, charge le dernier lot du journal et ouvre/annule l'aperçu de suppression avec confirmation décochée. Le complément signalement porte les captures prévues à 17 états Draft/Completed et six Archived, plus les paliers/thèmes de chaque variante. **33 tests Node compte passent ; aucun rendu navigateur complet n'est encore attesté pour ce complément.** Sauvegarde, notes, ajout de tour, réorganisation, changement de statut, suppression confirmée et publication restent non exercés. Les brouillons anonymes/IndexedDB restent ouverts.
 

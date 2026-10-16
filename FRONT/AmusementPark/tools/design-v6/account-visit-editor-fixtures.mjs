@@ -52,7 +52,7 @@ export function accountVisitEditorFixtureResponse(request, url, fixture) {
       if (url.search === '?limit=50') return { status: 200, body: { items: structuredClone(data.occurrences.slice(0, 2)),
         nextCursor: data.occurrences.length > 2 ? 'apf-editor-next' : null } };
       if (url.search === '?limit=50&cursor=apf-editor-next' && data.occurrences.length > 2) return { status: 200,
-        body: { items: structuredClone([data.occurrences[0], ...data.occurrences.slice(2)]), nextCursor: null } };
+        body: { items: structuredClone(data.occurrences.slice(2)), nextCursor: null } };
     }
     if (url.pathname === `${prefix}/historical-ride-targets`
         && ['?page=1&pageSize=24&scope=KnownOpen', '?page=1&pageSize=24&scope=PossiblyOpen', '?page=1&pageSize=24&scope=AllHistory'].includes(url.search)) {

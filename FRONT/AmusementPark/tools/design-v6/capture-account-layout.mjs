@@ -17,6 +17,7 @@ import { exerciseAnonymousDraftPages } from './exercise-anonymous-draft-pages.mj
 import { historyLayoutDocuments } from './public-history-layout-fixtures.mjs';
 import { exerciseIsolatedHistoryPages } from './exercise-isolated-history-pages.mjs';
 import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from './account-layout-acceptance.mjs';
+import { positionAccountCaptureTarget } from './browser-account-target.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -174,23 +175,25 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         await waitUntil(`document.body.classList.contains('${theme}-mode')`, `account fixture uses the existing ${theme} theme control`);
         for (const width of widths) {
           await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
-          await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({ block: 'start', behavior: 'instant' })`);
           let layout;
           let previous;
           await waitUntil(async () => {
+            const target = await evaluate(`(${positionAccountCaptureTarget.toString()})(${JSON.stringify(selector)})`);
             layout = await evaluate(`({ width: innerWidth, height: innerHeight, documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
               theme: document.body.classList.contains('light-mode') ? 'light' : 'dark', titleWidth: (document.querySelector('.app-account-layout__content h1') ?? document.querySelector('h1'))?.getBoundingClientRect().width ?? null,
               avatarWidth: document.querySelector('.profile-avatar, .profile-avatar--placeholder')?.getBoundingClientRect().width ?? null,
               dialog: (() => { const node = document.querySelector('.p-dialog'); if (!node) return null; const box = node.getBoundingClientRect();
                 const close = node.querySelector('.p-dialog-header-close'); const rect = close.getBoundingClientRect();
                 return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, closeUnobscured: close.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2)) }; })() })`);
+            layout.target = target;
             result.lastLayout = layout;
             const serialized = JSON.stringify(layout);
             const stable = previous === serialized;
             previous = serialized;
-            return stable && layout.width === width && layout.theme === theme;
+            return stable && layout.width === width && layout.theme === theme && layout.target.visible;
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
+          if (layout.target.x < -1 || layout.target.right > width + 1) issues.push('captured target horizontal bounds');
           if ([390, 1366].includes(width)) {
             layout.contrast = await evaluate(`(${collectContrastCandidates.toString()})({ includeCoverage: true })`);
             if (!layout.contrast.checked) issues.push('no measurable visible flat text for the account contrast probe');
@@ -238,7 +241,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
     result.passed = false;
     result.error = error.message;
     try {
-      result.lastDocument = await evaluate(`({ path: location.pathname, query: location.search, hasLogin: !!document.querySelector('app-auth-modal'), hasProfile: !!document.querySelector('.profile-hero') })`);
+      result.lastDocument = await evaluate(`({ path: location.pathname, query: location.search, hasLogin: !!document.querySelector('app-auth-modal'), hasProfile: !!document.querySelector('.profile-hero'), occurrenceCount: document.querySelectorAll('.passport-occurrence').length, hasMoreOccurrences: !!document.querySelector('.passport-timeline__more') })`);
       const pixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
       result.failureScreenshot = `${label}_${fixture.kind}_${language}_account-failure.webp`;
       await writeFile(join(outputRoot, result.failureScreenshot), Buffer.from(pixels.data, 'base64'));

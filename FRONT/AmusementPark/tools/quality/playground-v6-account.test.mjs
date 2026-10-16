@@ -21,9 +21,39 @@ import { historyLayoutDocuments, historyLayoutParkId, historyLayoutSubjectId } f
 import { exerciseIsolatedHistoryPages } from '../design-v6/exercise-isolated-history-pages.mjs';
 import { isolatedLayoutPreflightPlan } from '../design-v6/isolated-layout-preflight.mjs';
 import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from '../design-v6/account-layout-acceptance.mjs';
+import { positionAccountCaptureTarget } from '../design-v6/browser-account-target.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('account captures re-anchor the measured target after reflow and clear sticky navigation', () => {
+  let top = -300;
+  let scrolls = 0;
+  const target = { scrollIntoView: () => { scrolls++; top = 0; },
+    getBoundingClientRect: () => ({ x: 20, y: top, top, right: 355, bottom: top + 400, width: 335, height: 400 }) };
+  const sandbox = { innerWidth: 390, innerHeight: 1200,
+    document: { querySelector: selector => selector === '.target' ? target : selector === '.app-public-nav'
+      ? { getBoundingClientRect: () => ({ bottom: 80 }) } : { getBoundingClientRect: () => ({ top: 1120, height: 80 }) } },
+    window: { scrollBy: options => { top -= options.top; } } };
+  const measure = () => runInNewContext(`(${positionAccountCaptureTarget.toString()})('.target')`, sandbox);
+  assert.equal(measure().y, 92);
+  top = 1500; // A different viewport has moved the target again.
+  assert.equal(measure().visible, true);
+  assert.equal(top, 92);
+  assert.equal(scrolls, 2);
+  const capture = read('tools/design-v6/capture-account-layout.mjs');
+  assert.match(capture, /layout\.target = target/);
+  assert.match(capture, /layout\.theme === theme && layout\.target\.visible/);
+  assert.match(capture, /layout\.target\.right > width \+ 1/);
+});
+
+test('an absent or hidden capture target cannot be accepted as a screenshot of its page', () => {
+  const hidden = { scrollIntoView: () => {}, getBoundingClientRect: () => ({ x: 0, y: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0 }) };
+  const sandbox = { innerWidth: 390, innerHeight: 1200, document: { querySelector: () => null }, window: { scrollBy: () => {} } };
+  assert.throws(() => runInNewContext(`(${positionAccountCaptureTarget.toString()})('.missing')`, sandbox), /target is missing/);
+  sandbox.document.querySelector = selector => selector === '.hidden' ? hidden : null;
+  assert.equal(runInNewContext(`(${positionAccountCaptureTarget.toString()})('.hidden')`, sandbox).visible, false);
+});
 
 test('diagnostic contrast collection cannot accept a failed fixture or defer geometry and missing coverage', () => {
   assert.equal(accountLayoutMustStop('v6', [accountContrastIssue]), true);
@@ -180,8 +210,9 @@ test('visit editor input keeps exact draft/completed/archived states, cursor and
       assert.equal(get(`${prefix}/occurrences?limit=50`).body.items.length, kind === 'standard' ? 2 : 0);
       const next = get(`${prefix}/occurrences?limit=50&cursor=apf-editor-next`);
       if (kind === 'standard') {
-        assert.equal(next.body.items.length, 2);
-        assert.equal(next.body.items[0].id, data.occurrences[0].id);
+        assert.equal(next.body.items.length, 1);
+        assert.equal(next.body.items[0].id, data.occurrences[2].id);
+        assert.ok(!get(`${prefix}/occurrences?limit=50`).body.items.some(item => item.id === next.body.items[0].id));
         assert.equal(next.body.nextCursor, null);
       } else assert.equal(next, null);
       assert.equal(get(`${prefix}/historical-ride-targets?page=1&pageSize=24&scope=KnownOpen`).body.items.length, data.targets.length);
