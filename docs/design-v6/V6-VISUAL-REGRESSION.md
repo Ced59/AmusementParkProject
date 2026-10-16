@@ -8,6 +8,8 @@ Le texte rejoint l'alias existant `--app-primary-strong` dans le SCSS footer, sa
 
 La même capture révèle des libellés bottom-nav inutilement fragmentés : six colonnes partagent des gaps de 0,35rem et deux paddings latéraux de 0,25rem par lien. Les gaps sont supprimés et le padding latéral ramené à 0,125rem ; police, hauteur tactile, liens et condition admin sont conservés. Aucune ellipse, réduction de texte ou information masquée. Le garde de structure protège ce gain de largeur ; la lisibilité des nouveaux rendus, notamment à 320 px et en allemand/polonais, reste à inspecter en CI.
 
+L'audit de la même couleur décorative repère trois autres petits textes : priorité « incontournable » du voyage, date du jour dans l'export et date de transition passeport. Seule leur propriété `color` rejoint `--app-primary-strong`, sans modification des fonds, icônes, valeurs, handlers ou exports. Le test vérifie leur liaison et un ratio d'au moins 4,5:1 sur fond général/deux surfaces dans les deux thèmes ; **leurs rendus navigateur restent à attester**, cette preuve numérique ne remplace pas les compositions réelles.
+
 ## Mini-fiches des familles non dessinées — validation finale ouverte
 
 Ces transpositions réutilisent uniquement tokens, primitives et composants existants. Ce tableau n'est **ni une approbation propriétaire ni une preuve de rendu**. Les noms de captures ci-dessous désignent les états attendus dans les prochains artefacts ; aucun lien vers un fichier inexistant n'est présenté comme preuve.

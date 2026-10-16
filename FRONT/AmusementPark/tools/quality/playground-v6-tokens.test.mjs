@@ -43,6 +43,25 @@ function resolveThemeColor(theme, name) {
   return alias ? resolveThemeColor(theme, alias[1]) : value;
 }
 
+test('small trip priority and date text uses AA semantic ink, not decorative orange', () => {
+  for (const [page, selector] of [
+    ['trip-preferences-page', 'preference-card__current--mustdo'],
+    ['trip-export-page', 'trip-export-day__heading time'],
+    ['trip-passport-transition-page', 'trip-passport-day__header time'],
+  ]) {
+    const source = readFileSync(resolve(styles, `../app/features/profile/trips/pages/${page}/${page}.component.scss`), 'utf8');
+    const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    assert.match(source, new RegExp(`\\.${escaped}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
+  }
+  for (const source of [light, dark]) {
+    const theme = variables(source);
+    const text = resolveThemeColor(theme, '--app-primary-strong');
+    for (const surface of ['--app-bg', '--app-surface', '--app-surface-2']) {
+      assert.ok(contrast(text, resolveThemeColor(theme, surface)) >= 4.5, `${surface}: trip text must meet 4.5:1`);
+    }
+  }
+});
+
 test('editorial fonts match the V6 reference without changing the protected wordmark', () => {
   const tokens = variables(designTokens);
   assert.equal(tokens.get('--font-heading'), 'Arial, Helvetica, sans-serif');
