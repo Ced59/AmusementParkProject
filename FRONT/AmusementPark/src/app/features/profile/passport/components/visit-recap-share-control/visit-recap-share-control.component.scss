@@ -34,7 +34,7 @@
 }
 
 .visit-share__kicker {
-  color: var(--c-gold);
+  color: var(--app-accent-gold);
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.09em;
@@ -90,7 +90,7 @@
   gap: 0.7rem;
   padding: 0.85rem;
   border-radius: var(--app-radius-sm);
-  color: var(--c-lime);
+  color: var(--app-accent-lime);
   background: color-mix(in srgb, var(--c-lime) 9%, var(--app-surface-2));
 }
 

@@ -1,6 +1,15 @@
 import { accountLayoutFixtureOrigin } from './account-layout-fixtures.mjs';
 import { createAnonymousDraftFixtures, anonymousDraftIds, seedAnonymousDraftBrowser } from './account-anonymous-draft-fixtures.mjs';
 
+export function openUnlockedAnonymousDraft() {
+  const unlocked = Array.from(document.querySelectorAll('.anonymous-draft-card'))
+    .filter(card => card.querySelector('.anonymous-draft-card__actions button:last-child')?.disabled === false);
+  if (unlocked.length !== 1) throw new Error('The isolated draft list must contain exactly one unlocked draft.');
+  const button = unlocked[0].querySelector('.anonymous-draft-card__actions button:first-child');
+  if (!button || button.disabled) throw new Error('The unlocked draft has no enabled continue control.');
+  button.click();
+}
+
 // Local IndexedDB only, in the isolated CI origin. No import, export, confirmed
 // deletion, account creation or persisted remote write.
 export async function exerciseAnonymousDraftPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language }) {
@@ -18,7 +27,7 @@ export async function exerciseAnonymousDraftPages({ evaluate, waitUntil, capture
       await navigateDocument(prefix);
       await waitUntil(`document.querySelectorAll('.anonymous-draft-card').length === 2 && document.querySelector('.anonymous-passport__heading button').disabled`, 'real IndexedDB reader accepts both exact local draft schemas and protects the import-locked draft');
       await captureLayouts('.anonymous-passport__content', 'account-anonymous-passport-list');
-      await evaluate(`document.querySelector('.anonymous-draft-card__actions button').click()`);
+      await evaluate(`(${openUnlockedAnonymousDraft.toString()})()`);
       await waitUntil(`location.pathname === ${JSON.stringify(`${prefix}/${anonymousDraftIds[0]}`)} && document.querySelectorAll('.anonymous-attraction').length === 1 && !!document.querySelector('.anonymous-editor__rides') && !document.querySelector('.anonymous-editor__error')`, 'anonymous draft detail opens the existing route and preserves local rides without an account import');
       await captureLayouts('.anonymous-editor__hero', 'account-anonymous-editor');
       await captureLayouts('.anonymous-editor__timeline', 'account-anonymous-editor-timeline');

@@ -15,7 +15,7 @@ import { exerciseAccountTripPages } from '../design-v6/exercise-account-trip-pag
 import { exerciseAccountPassportStatistics } from '../design-v6/exercise-account-passport-statistics.mjs';
 import { accountComparisonFixtureToken } from '../design-v6/account-passport-statistics-fixtures.mjs';
 import { exerciseAccountVisitEditor } from '../design-v6/exercise-account-visit-editor.mjs';
-import { exerciseAnonymousDraftPages } from '../design-v6/exercise-anonymous-draft-pages.mjs';
+import { exerciseAnonymousDraftPages, openUnlockedAnonymousDraft } from '../design-v6/exercise-anonymous-draft-pages.mjs';
 import { createAnonymousDraftFixtures, seedAnonymousDraftBrowser, anonymousDraftParkId } from '../design-v6/account-anonymous-draft-fixtures.mjs';
 import { historyLayoutDocuments, historyLayoutParkId, historyLayoutSubjectId } from '../design-v6/public-history-layout-fixtures.mjs';
 import { exerciseIsolatedHistoryPages } from '../design-v6/exercise-isolated-history-pages.mjs';
@@ -25,6 +25,31 @@ import { positionAccountCaptureTarget } from '../design-v6/browser-account-targe
 
 const projectRoot = resolve(import.meta.dirname, '../..');
 const read = (relativePath) => readFileSync(resolve(projectRoot, relativePath), 'utf8');
+
+test('the participant header does not stretch a compact count chip to paragraph height on mobile', () => {
+  const source = read('src/app/features/profile/trips/components/trip-participant-panel/trip-participant-panel.component.scss');
+  assert.match(source, /\.participant-panel__heading\s*\{[^}]*align-items:\s*flex-start/);
+  assert.match(source, /\.participant-panel__heading > div\s*\{[^}]*min-width:\s*0;[^}]*flex:\s*1/);
+  const tablet = source.split('@media (max-width: 42rem)')[1].split('@media')[0];
+  assert.doesNotMatch(tablet, /\.participant-panel__heading/);
+  assert.match(source, /\.participant-panel__message--error\s*\{[^}]*color:\s*var\(--app-danger\)/);
+});
+
+test('anonymous continue selects the unlocked card regardless of IndexedDB list ordering, never deletion', () => {
+  const clicked = [];
+  const card = (id, locked) => ({ querySelector: selector => selector.endsWith('last-child')
+    ? { disabled: locked, click: () => { throw new Error('Never delete a draft.'); } }
+    : { disabled: false, click: () => clicked.push(id) } });
+  const normal = card('normal', false);
+  const locked = card('locked', true);
+  for (const cards of [[normal, locked], [locked, normal]]) {
+    runInNewContext(`(${openUnlockedAnonymousDraft.toString()})()`, { document: { querySelectorAll: () => cards } });
+  }
+  assert.deepEqual(clicked, ['normal', 'normal']);
+  for (const cards of [[], [locked], [normal, card('ambiguous', false)]]) {
+    assert.throws(() => runInNewContext(`(${openUnlockedAnonymousDraft.toString()})()`, { document: { querySelectorAll: () => cards } }), /exactly one unlocked/);
+  }
+});
 
 test('account captures re-anchor the measured target after reflow and clear sticky navigation', () => {
   let top = -300;

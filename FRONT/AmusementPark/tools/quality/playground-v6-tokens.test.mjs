@@ -48,6 +48,7 @@ test('account notification, passport and trip labels keep AA ink on CI-observed 
     [light, '--app-accent-cyan', [0.8092548986666667, 0.8829020156862745, 0.8719216125490197]],
     [light, '--app-text-muted', '#eeefe8'],
     [light, '--app-accent-gold', '#eeefe8'],
+    [light, '--app-accent-lime', '#f7f6f0'],
     [light, '--app-primary-strong', [0.928392, 0.847216, 0.804392]],
     [dark, '--app-primary-strong', [0.264784, 0.212627, 0.172627]],
     [light, '--app-primary-strong', [0.950784, 0.920784, 0.907255]],
@@ -61,6 +62,7 @@ test('account notification, passport and trip labels keep AA ink on CI-observed 
     for (const fill of ['--app-primary', '--c-sky']) {
       assert.ok(contrast(resolveThemeColor(theme, '--app-on-accent'), resolveThemeColor(theme, fill)) >= 4.5);
     }
+    assert.ok(contrast(resolveThemeColor(theme, '--app-accent-lime'), mix(resolveThemeColor(theme, '--c-lime'), resolveThemeColor(theme, '--app-surface-2'), 0.09)) >= 4.5);
   }
   for (const [file, selector, token] of [
     ['watchlists/pages/user-notifications-page.component.scss', 'notifications-page__counter strong', '--app-accent-cyan'],
@@ -69,6 +71,9 @@ test('account notification, passport and trip labels keep AA ink on CI-observed 
     ['profile/trips/components/trip-participant-panel/trip-participant-panel.component.scss', 'participant-card__identity small', '--app-text-muted'],
     ['profile/trips/components/trip-invitation-panel/trip-invitation-panel.component.scss', 'invitation-panel__step', '--app-on-accent'],
     ['profile/passport/components/year-recap-share-control/year-recap-share-control.component.scss', 'year-recap-card > header span', '--app-accent-gold'],
+    ['profile/passport/components/visit-recap-share-control/visit-recap-share-control.component.scss', 'visit-share__kicker', '--app-accent-gold'],
+    ['profile/passport/components/visit-recap-share-control/visit-recap-share-control.component.scss', 'visit-share-editor__privacy', '--app-accent-lime'],
+    ['profile/trips/components/trip-invitation-panel/trip-invitation-panel.component.scss', 'invitation-preview > p', '--app-accent-lime'],
     ['profile/passport/components/passport-historical-existence-report/passport-historical-existence-report.component.scss', 'history-report__kicker', '--app-accent-gold'],
     ['profile/passport/pages/passport-visits-overview-page/passport-visits-overview-page.component.scss', 'passport-overview__privacy', '--app-accent-gold'],
     ['profile/passport/pages/passport-visit-editor-page/passport-visit-editor-page.component.scss', 'passport-visit__eyebrow', '--app-primary-strong'],

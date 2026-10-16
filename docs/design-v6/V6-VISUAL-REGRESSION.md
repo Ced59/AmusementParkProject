@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Diagnostic `e7ee95546` — cible visible, deux contrastes supplémentaires
+
+L'[artefact `12074465539`](https://github.com/Ced59/AmusementParkProject/actions/runs/38962998793/artifacts/12074465539) contient 308 captures V6 standard FR avec bounds de cible. Les dix-sept combinaisons du run précédent ne réapparaissent plus ; deux nouveaux textes sont refusés : confidentialité d'invitation lime sur `#f7f6f0` à **1,20:1**, puis kicker de partage d'une visite Completed or sur `#eeefe8` à **4,28:1**. Ils rejoignent `--app-accent-lime` / `--app-accent-gold` ; le texte de privacy de l'éditeur de partage utilise aussi le lime sémantique. Tests sur les fonds mesurés/composés et liaison CSS, aucun changement de contenu ou d'action.
+
+`isolated-preflight/v6_standard_fr_account-trip-participants_390_light.webp` est inspecté : le panneau est désormais dans le cadre, contrairement au run précédent. Le badge du nombre de participants est néanmoins étiré sur la hauteur de la description par une règle mobile `align-items:stretch`. L'en-tête conserve désormais l'alignement haut, avec une zone texte flexible `min-width:0`, sans changer la carte/actions qui doivent rester étirées. Le message d'erreur rejoint `--app-danger` au lieu de son fallback pastel hérité. Test responsive ciblé ajouté. **Nouveau rendu requis ; ni les rôles incomplets ni la campagne intégrale ne sont encore attestés.**
+
 ## Diagnostic `6e8a908f6` — contrastes regroupés et preuve de cadrage renforcée
 
 L'[artefact `12072059746`](https://github.com/Ced59/AmusementParkProject/actions/runs/38960232576/artifacts/12072059746) contient 240 captures et dix-sept combinaisons défaillantes conservées dans `isolated-preflight/v6_standard_fr_account-report.json` :

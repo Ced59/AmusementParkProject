@@ -20,6 +20,11 @@
   gap: 1rem;
 }
 
+.participant-panel__heading > div {
+  min-width: 0;
+  flex: 1;
+}
+
 .participant-panel__heading h2,
 .participant-panel__heading p,
 .participant-card strong,
@@ -109,11 +114,10 @@
 }
 
 .participant-panel__message--error {
-  color: var(--color-danger-300, #ff8da1);
+  color: var(--app-danger);
 }
 
 @media (max-width: 42rem) {
-  .participant-panel__heading,
   .participant-card,
   .participant-card__actions {
     align-items: stretch;

@@ -1,5 +1,15 @@
 # V6 — non-régression fonctionnelle
 
+## Diagnostic `e7ee95546` — liste locale triée, clic de recette non identifié
+
+Le [run `38962998793`](https://github.com/Ced59/AmusementParkProject/actions/runs/38962998793) passe 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité, puis atteint **569 contrôles / 308 captures V6 standard FR**. Les éditeurs Draft/Completed et pages auth sont franchis. L'ouverture du brouillon anonyme échoue parce que le test clique le premier bouton d'une liste triée : l'URL réelle mène au brouillon **verrouillé**, pas à l'identifiant normal attendu. Zéro erreur fixture/exception. Le produit et son tri ne sont pas corrigés : le test repère l'unique carte non verrouillée, active uniquement Continuer et conserve l'assertion d'URL exacte. Un test en ordre normal/inversé et cas ambigu protège ce choix ; aucune suppression/import/export n'est activé.
+
+Le rapport ne retrouve plus les dix-sept combinaisons précédentes, mais révèle deux textes supplémentaires (lime invitation, or visite terminée) ; corrigés via les alias existants. Les 74 tests Node ciblés compte/tokens/shell/footer passent après correction, sans prétendre au PASS des scénarios anonymes/histoire restants. Le cadrage corrigé montre maintenant réellement les participants à 390 px ; une puce de compteur étirée y est rectifiée en gardant l'alignement haut. Nouveaux rendus CI obligatoires.
+
+## Quatre constats a11y hérités — revue de source, règles conservées
+
+Les deux constats standalone portent sur la sélection de ligne et sa propagation ; le bouton natif nommé dans la cellule et la checkbox native donnent les accès clavier, avec sélection exactement une fois testée. La ligne utilisateurs conserve un bouton Modifier nommé qui appelle le même `openUserProfile(user.id)` en stoppant la propagation. Le wrapper de table délègue le clic aux colonnes triables : `SortableColumn` fournit tabindex, Enter/Espace et exclut les touches d'un champ imbriqué. Ses deux tests Angular vérifient mêmes sorties tri/pagination pour clavier et souris. Cette lecture explique les accès alternatifs, mais ne remplace pas une revue lecteur d'écran. **Aucune règle ni entrée de baseline n'est supprimée ou requalifiée silencieusement.**
+
 ## Diagnostic `6e8a908f6` — hypothèse de curseur rectifiée
 
 Le [run `38960232576`](https://github.com/Ced59/AmusementParkProject/actions/runs/38960232576) valide 2 777 tests Angular / 583 fichiers, build/budgets/backend/sécurité. Le diagnostic V6 standard FR atteint **445 contrôles / 240 captures**, zéro erreur fixture/exception, puis attend à tort trois lignes de journal après une réponse synthétique avec doublon. La façade existante concatène les pages (`loadMoreTimeline` puis `setTimelineOccurrences`/`setOccurrences`) sans dédoublonnage ; la refonte n'a pas modifié ce code. La fixture et le test sont corrigés vers une vraie page suivante sans chevauchement (deux lignes puis la troisième), curseur final null. Aucun correctif métier n'est introduit pour satisfaire un scénario inventé.
