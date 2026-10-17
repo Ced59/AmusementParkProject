@@ -52,6 +52,8 @@
   --content-wide-max-width: 1480px;
   --topbar-height: 76px;
   --bottom-nav-height: 72px;
+  --app-admin-toolbar-height: 0px;
+  --app-floating-control-gap: clamp(8px, calc(32px - 1rem), 16px);
   --sidebar-width: 260px;
   --sidebar-collapsed-width: 76px;
 

@@ -25,10 +25,32 @@ test('enlarged text reflows shell tracks and preserves measured fixed-control cl
   assert.match(profile, /font-size: min\(clamp\(2\.4rem, 5vw, 4\.35rem\), 14vw\)/);
   assert.match(profile, /width: 120px;[\s\S]*?max-width: 100%/);
   assert.match(profile, /repeat\(auto-fit, minmax\(min\(100%, max\(8rem,/);
-  assert.match(jump, /querySelector<HTMLElement>\('\.app-mobile-bottom-nav'\)\?\.offsetHeight/);
-  assert.match(jump, /rootStyle\.getPropertyValue\('--bottom-nav-height'\) !== navHeightValue/);
-  assert.match(jump, /style\.removeProperty\('--bottom-nav-height'\)/);
+  assert.match(jump, /\['\.app-mobile-bottom-nav', '--bottom-nav-height'\]/);
+  assert.match(jump, /\['app-admin-public-view-toolbar', '--app-admin-toolbar-height'\]/);
+  assert.match(jump, /rootStyle\.getPropertyValue\(token\) !== value/);
+  assert.match(jump, /style\.removeProperty\(token\)/);
+  assert.match(jump, /resizeObserver\?\.unobserve\(previous\)/);
+  assert.match(jump, /measuredControls\.clear\(\)/);
   for (const source of [footer, nav, profile]) assert.doesNotMatch(source, /overflow-x:\s*(?:hidden|clip)/);
+});
+
+test('fixed toolbar and jump control reserve their real stack and short screens keep locally scrollable controls', async () => {
+  const read = path => readFile(new URL(`../../src/${path}`, import.meta.url), 'utf8');
+  const toolbar = await read('app/features/admin/contextual-editing/ui/admin-public-view-toolbar/admin-public-view-toolbar.component.scss');
+  const jump = await read('app/shared/components/page-jump-button/page-jump-button.component.scss');
+  const tokens = await read('styles/_design-tokens.scss');
+  const privacy = await read('app/features/public/legal/pages/privacy-policy-page.component.scss');
+  assert.match(tokens, /--app-admin-toolbar-height: 0px/);
+  assert.match(tokens, /--app-floating-control-gap: clamp\(8px, calc\(32px - 1rem\), 16px\)/);
+  assert.match(jump, /width: 44px;\s+height: 44px/);
+  assert.match(jump, /bottom: calc\(var\(--bottom-nav-height\) \+ var\(--app-admin-toolbar-height\) \+ 2 \* var\(--app-floating-control-gap\)\)/);
+  assert.doesNotMatch(jump, /rgba\(56, 197, 245/);
+  assert.match(toolbar, /@media \(max-width: 680px\) and \(max-height: 680px\)/);
+  assert.match(toolbar, /flex-direction: row;[\s\S]*?overflow-x: scroll;[\s\S]*?scrollbar-color:/);
+  assert.doesNotMatch(toolbar, /overflow-x:\s*(?:hidden|clip)/);
+  assert.match(privacy, /max-width: 24ch/);
+  assert.match(privacy, /font-size: clamp\(1\.75rem, 4\.5vw, 3\.6rem\)/);
+  assert.match(privacy, /text-wrap: balance/);
 });
 
 test('overflow diagnostics retain bounded geometry only without concealing offending content', () => {

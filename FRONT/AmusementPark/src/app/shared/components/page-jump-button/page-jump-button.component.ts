@@ -15,6 +15,10 @@ import { filter } from 'rxjs/operators';
 export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
   private static readonly scrollableThresholdPixels: number = 160;
   private static readonly nearBottomThresholdPixels: number = 140;
+  private static readonly measuredControlTokens: ReadonlyArray<readonly [string, string]> = [
+    ['.app-mobile-bottom-nav', '--bottom-nav-height'],
+    ['app-admin-public-view-toolbar', '--app-admin-toolbar-height'],
+  ];
 
   protected isVisible: boolean = false;
   protected isNearPageBottom: boolean = false;
@@ -24,6 +28,7 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
 
   private animationFrameId: number | null = null;
   private resizeObserver: ResizeObserver | null = null;
+  private readonly measuredControls: Map<string, HTMLElement> = new Map();
 
   constructor(
     private readonly router: Router,
@@ -71,7 +76,10 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
 
     this.resizeObserver?.disconnect();
     this.resizeObserver = null;
-    this.document.documentElement.style.removeProperty('--bottom-nav-height');
+    this.measuredControls.clear();
+    for (const [, token] of PageJumpButtonComponent.measuredControlTokens) {
+      this.document.documentElement.style.removeProperty(token);
+    }
   }
 
   protected get labelKey(): string {
@@ -115,6 +123,9 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
     const resizeObserver: ResizeObserver = new ResizeObserver((): void => this.scheduleStateUpdate());
     resizeObserver.observe(this.document.documentElement);
     resizeObserver.observe(this.document.body);
+    for (const element of this.measuredControls.values()) {
+      resizeObserver.observe(element);
+    }
     this.resizeObserver = resizeObserver;
   }
 
@@ -147,13 +158,7 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
     const nextIsVisible: boolean = scrollHeight - viewportHeight > PageJumpButtonComponent.scrollableThresholdPixels;
     const nextIsNearPageBottom: boolean = scrollHeight - viewportBottom < PageJumpButtonComponent.nearBottomThresholdPixels;
 
-    // Reuse this coalesced resize/route pass for fixed-control clearance.
-    const navHeight: number = this.document.querySelector<HTMLElement>('.app-mobile-bottom-nav')?.offsetHeight ?? 0;
-    const navHeightValue: string = navHeight ? `${navHeight}px` : '';
-    const rootStyle: CSSStyleDeclaration = this.document.documentElement.style;
-    if (rootStyle.getPropertyValue('--bottom-nav-height') !== navHeightValue) {
-      rootStyle.setProperty('--bottom-nav-height', navHeightValue);
-    }
+    this.updateFixedControlClearance();
 
     if (nextIsVisible === this.isVisible && nextIsNearPageBottom === this.isNearPageBottom) {
       return;
@@ -173,6 +178,30 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
     }
 
     return this.document.documentElement;
+  }
+
+  private updateFixedControlClearance(): void {
+    const rootStyle: CSSStyleDeclaration = this.document.documentElement.style;
+    for (const [selector, token] of PageJumpButtonComponent.measuredControlTokens) {
+      const element: HTMLElement | null = this.document.querySelector<HTMLElement>(selector);
+      const previous: HTMLElement | undefined = this.measuredControls.get(selector);
+      if (previous !== element) {
+        if (previous) {
+          this.resizeObserver?.unobserve(previous);
+        }
+        if (element) {
+          this.resizeObserver?.observe(element);
+          this.measuredControls.set(selector, element);
+        } else {
+          this.measuredControls.delete(selector);
+        }
+      }
+      const height: number = element?.offsetHeight ?? 0;
+      const value: string = height ? `${height}px` : '';
+      if (rootStyle.getPropertyValue(token) !== value) {
+        rootStyle.setProperty(token, value);
+      }
+    }
   }
 
   private canUseDom(): boolean {

@@ -45,7 +45,7 @@ html:has(.app-public-nav) {
   gap: 0;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 28.8px;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -201,6 +201,10 @@ button.app-mobile-bottom-nav__item {
 }
 
 @media (max-width: 680px) {
+  html:has(.app-mobile-bottom-nav) {
+    scroll-padding-bottom: calc(var(--bottom-nav-height) + var(--app-admin-toolbar-height) + 2 * var(--app-floating-control-gap));
+  }
+
   body {
     --topbar-height: 104px;
 
@@ -367,7 +371,7 @@ button.app-mobile-bottom-nav__item {
 
 @media (max-width: 680px) {
   .app-public-nav {
-    padding: 0.6rem 15px;
+    padding: min(0.6rem, 9.6px) 15px;
   }
 
   .app-public-nav__inner {
@@ -452,7 +456,7 @@ button.app-mobile-bottom-nav__item {
     min-width: 0;
   }
 
-  .app-public-nav__inner { gap: 0.45rem; }
+  .app-public-nav__inner { gap: min(0.45rem, 7.2px); }
 }
 
 @media (max-width: 390px) {
@@ -653,6 +657,16 @@ button.app-mobile-bottom-nav__item {
     min-width: 42px;
     height: 42px;
     min-height: 42px;
+  }
+}
+
+body:has(app-admin-public-view-toolbar) {
+  padding-bottom: calc(var(--app-admin-toolbar-height) + 2 * var(--app-floating-control-gap));
+}
+
+@media (max-width: 680px) {
+  body:has(app-admin-public-view-toolbar) {
+    padding-bottom: max(5.8rem, calc(var(--bottom-nav-height) + var(--app-admin-toolbar-height) + 2 * var(--app-floating-control-gap)));
   }
 }
 

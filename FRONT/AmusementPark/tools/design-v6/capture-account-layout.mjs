@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { collectAdminShellLayout, adminShellLayoutIssues } from './browser-admin-shell.mjs';
 import { collectLayoutOverflow } from './browser-layout-overflow.mjs';
+import { exerciseAdminToolbarFocus } from './exercise-admin-toolbar-focus.mjs';
 import { exercisePublicFitForm } from './exercise-public-fit-form.mjs';
 import { settleAccountDocument } from './settle-account-document.mjs';
 import { withDoubledRootFont } from './account-layout-stress.mjs';
@@ -177,7 +178,8 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       await evaluate(`document.querySelector('.profile-actions--editing button:last-child').click()`);
       await waitUntil(`!document.querySelector('.profile-identity-editor') && document.querySelector('.profile-hero__title').textContent.trim() === ${JSON.stringify(displayName)}`, 'identity cancellation restores the same visible account');
     }
-    const captureLayouts = async (selector, page) => {
+    const captureLayouts = async (selector, page, { height = 1200 } = {}) => {
+      if (![568, 600, 1200].includes(height)) throw new Error('Unbounded account capture height.');
       for (const theme of ['dark', 'light']) {
         if (!(await evaluate(`document.body.classList.contains('${theme}-mode')`))) {
           if (fixture.kind === 'expired') {
@@ -193,7 +195,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         await waitUntil(`document.body.classList.contains('${theme}-mode')`, `account fixture uses the existing ${theme} theme control`);
         await settleAccountDocument({ evaluate, pending });
         for (const width of widths) {
-          await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1200, deviceScaleFactor: 1, mobile: false });
+          await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
           let layout;
           let previous;
           await waitUntil(async () => {
@@ -209,7 +211,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
             const serialized = JSON.stringify(layout);
             const stable = previous === serialized;
             previous = serialized;
-            return stable && layout.width === width && layout.theme === theme && layout.target.visible;
+            return stable && layout.width === width && layout.height === height && layout.theme === theme && layout.target.visible;
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
           if (issues.length) layout.overflowElements = await evaluate(`(${collectLayoutOverflow.toString()})()`);
@@ -234,6 +236,13 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           await writeFile(join(outputRoot, screenshot), Buffer.from(pixels.data, 'base64'));
           result.layouts.push({ ...layout, page, screenshot, issues });
           if (accountLayoutMustStop(label, issues, deferContrastFailure)) throw new Error(`Account ${page} layout requires correction: ${width}px ${theme}`);
+          if (fixture.kind === 'admin-shell' && height < 1200) {
+            await exerciseAdminToolbarFocus({ evaluate, waitUntil, result });
+            const focusScreenshot = screenshot.replace('.webp', '_toolbar-focus.webp');
+            const focusPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+            await writeFile(join(outputRoot, focusScreenshot), Buffer.from(focusPixels.data, 'base64'));
+            result.toolbarFocusResults.at(-1).screenshot = focusScreenshot;
+          }
         }
       }
     };
@@ -268,6 +277,10 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         'the existing public layout, unlike the account layout, mounts the lazy admin toolbar');
       await captureLayouts('.app-public-layout__content', 'public-admin-shell');
       await captureLargeFont('.app-public-layout__content', 'public-admin-shell-large-font');
+      for (const height of [568, 600]) {
+        await captureLayouts('.app-public-layout__content', `public-admin-shell-height-${height}`, { height });
+        await withDoubledRootFont({ evaluate, capture: () => captureLayouts('.app-public-layout__content', `public-admin-shell-large-font-height-${height}`, { height }) });
+      }
       if (result.apiReads.some(read => read.path.startsWith('/api/admin/'))) throw new Error('Admin shell presentation unexpectedly requested an administration API.');
       result.adminShell = { presentationRoleOnly: true, serverAuthorizationExercised: false, adminWorkflowsExercised: false };
     } else {

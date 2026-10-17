@@ -68,6 +68,8 @@ app-admin-public-view-toolbar {
   font-size: 0.82rem;
   font-weight: 900;
   cursor: pointer;
+  overflow-wrap: anywhere;
+  white-space: normal;
   transition:
     border-color var(--transition),
     background-color var(--transition),
@@ -145,7 +147,7 @@ app-admin-public-view-toolbar {
 @media (max-width: 680px) {
   app-admin-public-view-toolbar {
     right: 0.75rem;
-    bottom: calc(var(--bottom-nav-height) + max(1rem, env(safe-area-inset-bottom)));
+    bottom: calc(var(--bottom-nav-height) + var(--app-floating-control-gap));
     left: 0.75rem;
     width: auto;
   }
@@ -177,6 +179,47 @@ app-admin-public-view-toolbar {
 
   .admin-public-view-toolbar__restore {
     margin-right: 0.15rem;
+  }
+}
+
+// Preserve the fixed editing controls on short screens, with an explicit local
+// scrollbar and keyboard-reachable buttons rather than a tall viewport overlay.
+@media (max-width: 680px) and (max-height: 680px) {
+  .admin-public-view-toolbar {
+    flex-direction: row;
+    align-items: center;
+    max-height: none;
+    padding: 4px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-padding-inline: 4px;
+    scrollbar-color: var(--app-text-muted) var(--app-surface-2);
+  }
+
+  .admin-public-view-toolbar__view-group,
+  .admin-public-view-toolbar__modes,
+  .admin-public-view-toolbar__actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .admin-public-view-toolbar__label {
+    white-space: nowrap;
+  }
+
+  .admin-public-view-toolbar__mode,
+  .admin-public-view-toolbar__edition {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: calc(100vw - 3rem);
+    padding-block: 4px;
+    line-height: 1.2;
+  }
+
+  .admin-public-view-toolbar__mode {
+    min-width: 5.15rem;
   }
 }
 

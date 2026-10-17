@@ -14,14 +14,15 @@
 }
 
 .privacy-hero__title {
-  max-width: 11ch;
+  max-width: 24ch;
   margin: 0;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: clamp(3.4rem, 9vw, 6.8rem);
+  font-size: clamp(1.75rem, 4.5vw, 3.6rem);
   line-height: 1.06;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .privacy-hero__lead {
@@ -135,5 +136,11 @@
 
   .privacy-consent__actions {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 680px) {
+  .privacy-hero {
+    padding: min(clamp(1.25rem, 3vw, 2rem), 32px);
   }
 }

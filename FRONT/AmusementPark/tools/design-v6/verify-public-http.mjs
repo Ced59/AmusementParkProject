@@ -149,7 +149,7 @@ try {
       check(!/<script\b(?![^>]*\btype=["']application\/ld\+json["'])/i.test(html), 'Bing cache remains script-free after Google');
     }
   }
-  for (const path of ['/fr/admin', '/fr/profile', '/fr/park-fit', '/fr/forgot-password']) {
+  for (const path of ['/fr/admin', '/fr/profile', '/fr/park-fit', '/fr/park-fit/results', '/fr/park-fit/compare', '/fr/forgot-password']) {
     const { response, html } = await get(path, 'browser');
     check(response.status === 200, `${path}: existing CSR HTTP status`);
     check(/noindex/i.test(`${response.headers.get('x-robots-tag')} ${meta(html, 'robots')}`), `${path}: private/CSR noindex`);

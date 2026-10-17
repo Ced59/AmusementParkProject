@@ -26,6 +26,7 @@ import { collectAdminShellLayout, adminShellLayoutIssues } from '../design-v6/br
 import { exercisePublicFitForm } from '../design-v6/exercise-public-fit-form.mjs';
 import { settleAccountDocument } from '../design-v6/settle-account-document.mjs';
 import { withDoubledRootFont } from '../design-v6/account-layout-stress.mjs';
+import { exerciseAdminToolbarFocus } from '../design-v6/exercise-admin-toolbar-focus.mjs';
 import { advanceMainDocument, forgetRetiredDocumentOwners, isRetiredDocumentInterceptionError } from '../design-v6/browser-interception-errors.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '../..');
@@ -118,7 +119,14 @@ test('public Park Fit recipe covers local participant and validation states with
   assert.ok(checks.findIndex(check => check.label.includes('deliberately empty date')) >= 0);
   const capture = read('tools/design-v6/capture-account-layout.mjs');
   assert.ok(capture.includes('...anonymousDocuments, ...publicFitDocuments'));
-  assert.ok(read('tools/design-v6/capture-public-ssr.mjs').includes("'/fr/park-fit', '/fr/park-fit/results', '/fr/park-fit/compare'"));
+  const serverRoutes = read('src/app/app.routes.server.ts');
+  const http = read('tools/design-v6/verify-public-http.mjs');
+  const ssr = read('tools/design-v6/capture-public-ssr.mjs');
+  for (const suffix of ['', '/results', '/compare']) {
+    assert.ok(serverRoutes.includes(`{ path: ':lang/park-fit${suffix}', renderMode: RenderMode.Client }`));
+    assert.ok(http.includes(`'/fr/park-fit${suffix}'`));
+    assert.ok(!ssr.includes(`'/fr/park-fit${suffix}'`), 'client-only document must not be falsely asserted to contain initial entity SSR');
+  }
 });
 
 test('public Park Fit local-only recipe refuses any unexpected API request', async () => {
@@ -187,7 +195,7 @@ test('the unencapsulated public admin toolbar targets its real host, including t
   const source = read(root + '.scss');
   assert.doesNotMatch(source, /:host\b/);
   assert.match(source, /app-admin-public-view-toolbar\s*\{\s*position:\s*fixed/);
-  assert.match(source, /@media \(max-width: 680px\)\s*\{\s*app-admin-public-view-toolbar\s*\{[^}]*bottom:\s*calc\(var\(--bottom-nav-height\) \+ max\(1rem, env\(safe-area-inset-bottom\)\)\)/);
+  assert.match(source, /@media \(max-width: 680px\)\s*\{\s*app-admin-public-view-toolbar\s*\{[^}]*bottom:\s*calc\(var\(--bottom-nav-height\) \+ var\(--app-floating-control-gap\)\)/);
 });
 
 test('admin shell recipe preserves the actual distinct account and public layout composition', () => {
@@ -910,6 +918,33 @@ test('admin shell geometry rejects floating controls over its toolbar or mobile 
   assert.ok(adminShellLayoutIssues(layout).includes('page jump action outside the viewport'));
   layout.jumpAction = rect(330, 900, 44, 44);
   assert.deepEqual(adminShellLayoutIssues(layout), []);
+});
+
+test('short toolbar focus checks compile every expression without invoking a view mode or editing action', async () => {
+  const result = {};
+  let checked = 0;
+  const evaluate = async expression => {
+    assert.doesNotThrow(() => new Script(expression));
+    if (expression.includes('indexes:')) return { width: 320, height: 568, rootFontSizePx: 32, modes: 4, indexes: [0, 1, 2, 3, 5] };
+    checked++;
+    return { focused: true, visible: true, unobscured: true, width: 44, height: 44 };
+  };
+  await exerciseAdminToolbarFocus({ evaluate, result, waitUntil: async predicate => assert.equal(await predicate(), true) });
+  assert.equal(checked, 5);
+  assert.equal(result.toolbarFocusResults[0].measurements.length, 5);
+  assert.equal(result.toolbarFocusResults[0].actionsInvoked, false);
+  assert.doesNotMatch(read('tools/design-v6/exercise-admin-toolbar-focus.mjs'), /\.click\(|\.submit\(|fetch\(|\/api\//);
+  await assert.rejects(() => exerciseAdminToolbarFocus({ evaluate: async () => ({ modes: 3, indexes: [] }), result, waitUntil: () => assert.fail('incomplete toolbar must fail') }), /incomplete/);
+});
+
+test('admin shell capture retains both short heights, both font sizes and focused visual evidence', () => {
+  const source = read('tools/design-v6/capture-account-layout.mjs');
+  assert.match(source, /\[568, 600, 1200\]\.includes\(height\)/);
+  assert.match(source, /layout\.height === height/);
+  assert.match(source, /for \(const height of \[568, 600\]\)/);
+  assert.match(source, /public-admin-shell-large-font-height-\$\{height\}/);
+  assert.match(source, /height < 1200\) \{\s+await exerciseAdminToolbarFocus/);
+  assert.match(source, /_toolbar-focus\.webp/);
 });
 
 test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {
