@@ -170,6 +170,12 @@ def main() -> None:
     os.environ["DEPLOY_LOCK_FILE"] = str(lock_path)
     os.environ["DEPLOY_LOCK_INHERITED"] = "true"
     target = args.target.resolve()
+    rollback_checkpoint = target / "nginx/runtime/application-rollback.json"
+    if rollback_checkpoint.exists():
+        if rollback_checkpoint.is_symlink() or rollback_checkpoint.stat().st_size > 16384:
+            raise RuntimeError("Invalid application rollback checkpoint")
+        if json.loads(rollback_checkpoint.read_text(encoding="utf-8")).get("phase") == "restoring":
+            raise RuntimeError("Resume the exact application rollback before installing a new deployment bundle")
     installation = target / ".installation-pending.json"
     if installation.exists():
         pending = json.loads(installation.read_text(encoding="utf-8"))

@@ -12,10 +12,15 @@ on:
   workflow_dispatch:
     inputs:
       deploy:
-        description: Deploy to the production VPS after building images
+        description: Deploy to the production VPS (or restore the exact rollback checkpoint below)
         type: boolean
         required: true
         default: false
+      application_rollback_checkpoint:
+        description: Optional exact SHA-256 from the previous production checkpoint; restores both application images only
+        type: string
+        required: false
+        default: ''
       shared_infrastructure_maintenance:
         description: Explicitly recreate one backed-up shared service before the rolling application deployment
         type: choice
@@ -772,18 +777,26 @@ jobs:
 
       - name: Confirm deployment context
         if: steps.deployment-freshness.outputs.should_deploy == 'true'
+        env:
+          APPLICATION_ROLLBACK_CHECKPOINT: ${{ inputs.application_rollback_checkpoint || '' }}
+          REQUESTED_SHARED_MAINTENANCE: ${{ inputs.shared_infrastructure_maintenance || 'none' }}
         run: |
+          set -euo pipefail
+          if [ -n "${APPLICATION_ROLLBACK_CHECKPOINT}" ]; then
+            [[ "${APPLICATION_ROLLBACK_CHECKPOINT}" =~ ^[0-9a-f]{64}$ ]] || { echo "Invalid rollback checkpoint." >&2; exit 1; }
+            [ "${REQUESTED_SHARED_MAINTENANCE}" = "none" ] || { echo "Application rollback cannot maintain shared infrastructure." >&2; exit 1; }
+          fi
           echo "Deployment authorized for event=${{ github.event_name }} ref=${{ github.ref_name }}"
 
       - name: Generate production .env
-        if: steps.deployment-freshness.outputs.should_deploy == 'true'
+        if: steps.deployment-freshness.outputs.should_deploy == 'true' && (inputs.application_rollback_checkpoint || '') == ''
         run: |
           chmod +x deploy/scripts/write-production-env.sh deploy/scripts/validate-production-env.sh deploy/scripts/env-loader.sh
           deploy/scripts/write-production-env.sh deploy/.env
           deploy/scripts/validate-production-env.sh deploy/.env
 
       - name: Prepare deployment bundle
-        if: steps.deployment-freshness.outputs.should_deploy == 'true'
+        if: steps.deployment-freshness.outputs.should_deploy == 'true' && (inputs.application_rollback_checkpoint || '') == ''
         run: |
           umask 077
           tar --exclude=nginx/runtime -czf amusementpark-deploy.tgz \
@@ -834,7 +847,7 @@ jobs:
           fi
 
       - name: Upload deployment bundle
-        if: steps.deployment-freshness.outputs.should_deploy == 'true'
+        if: steps.deployment-freshness.outputs.should_deploy == 'true' && (inputs.application_rollback_checkpoint || '') == ''
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_SSH_USER: ${{ secrets.VPS_SSH_USER }}
@@ -855,8 +868,23 @@ jobs:
           VPS_DEPLOY_PATH: ${{ vars.VPS_DEPLOY_PATH || '/opt/amusementpark' }}
           GHCR_USERNAME: ${{ secrets.GHCR_USERNAME }}
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+          APPLICATION_ROLLBACK_CHECKPOINT: ${{ inputs.application_rollback_checkpoint || '' }}
         run: |
           set -euo pipefail
+          if [ -n "${APPLICATION_ROLLBACK_CHECKPOINT}" ]; then
+            [[ "${APPLICATION_ROLLBACK_CHECKPOINT}" =~ ^[0-9a-f]{64}$ ]] || exit 1
+            {
+              printf '%s\n' "${GHCR_USERNAME}"
+              printf '%s\n' "${GHCR_TOKEN}"
+            } | ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
+              "set -euo pipefail; \
+               read -r GHCR_USERNAME; read -r GHCR_TOKEN; \
+               if [ -n \"\${GHCR_USERNAME}\" ] && [ -n \"\${GHCR_TOKEN}\" ]; then echo \"\${GHCR_TOKEN}\" | docker login ghcr.io -u \"\${GHCR_USERNAME}\" --password-stdin; fi; \
+               unset GHCR_USERNAME GHCR_TOKEN; \
+               python3 '${VPS_DEPLOY_PATH}/scripts/application_rollback.py' restore --expect '${APPLICATION_ROLLBACK_CHECKPOINT}'; \
+               bash '${VPS_DEPLOY_PATH}/scripts/verify-public-response-integrity.sh' '${PUBLIC_BASE_URL%/}/fr/home'"
+            exit 0
+          fi
           {
             printf '%s\n' "${GHCR_USERNAME}"
             printf '%s\n' "${GHCR_TOKEN}"
