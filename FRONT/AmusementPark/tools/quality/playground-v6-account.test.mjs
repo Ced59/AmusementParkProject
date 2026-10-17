@@ -861,6 +861,14 @@ test('expired account UI can replay only exact bounded anonymous home data on it
   assert.ok(capture.includes('result.fixtureFailures.length || result.exceptions.length'));
 });
 
+test('CSR expired redirect replays the coherent SSR hero and featured population without changing the network comparison', () => {
+  const source = read('tools/design-v6/capture-public-ssr.mjs');
+  assert.match(source, /captureAccountLayout\(\{[^}]*homeFixtures: homeSsrFixtures/);
+  assert.doesNotMatch(source, /captureAccountLayout\(\{[^}]*homeFixtures: homeClientFixtures/);
+  assert.match(source, /const homeClientFixtures = homeFixtureDocument \? readHomeEvidenceFixtures\(homeFixtureDocument.client\)/);
+  assert.match(source, /const homeSsrFixtures = homeFixtureDocument \? readHomeEvidenceFixtures\(homeFixtureDocument.ssr\)/);
+});
+
 test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {
   const result = {};
   const captures = [];

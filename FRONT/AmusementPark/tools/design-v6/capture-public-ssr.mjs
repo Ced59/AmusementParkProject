@@ -1112,7 +1112,9 @@ try {
         const fixture = createAccountLayoutFixture(kind, fixtureTime, language);
         for (const label of ['master', 'v6']) {
           try {
-            report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label, homeFixtures: homeClientFixtures,
+            // The CSR expired-session redirect has no TransferState: replay the
+            // coherent SSR population, not the client set whose random hero differs.
+            report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label, homeFixtures: homeSsrFixtures,
               browserRoot: label === 'master' ? resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') : browserRoot }));
           } catch (error) {
             report.accountLayoutFailure = { label, kind, language, error: error.message };
