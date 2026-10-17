@@ -389,6 +389,14 @@ jobs:
           node tools/design-v6/verify-public-http.mjs
           node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
 
+      - name: Upload compact V6 diagnostic reports before the image archive
+        if: always() && (steps.v6-preflight.outcome != 'skipped' || steps.v6-review.outcome != 'skipped') && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        uses: actions/upload-artifact@v7
+        with:
+          name: v6-diagnostic-reports
+          path: ${{ runner.temp }}/v6-public-ssr/**/*.json
+          if-no-files-found: error
+
       - name: Upload initial V6 public SSR evidence
         if: always() && (steps.v6-preflight.outcome != 'skipped' || steps.v6-review.outcome != 'skipped') && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
         uses: actions/upload-artifact@v7

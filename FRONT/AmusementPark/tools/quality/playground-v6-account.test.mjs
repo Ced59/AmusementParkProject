@@ -353,7 +353,7 @@ test('CI keeps full visual capture mandatory after preflight and retains failure
   const upload = workflow.indexOf('name: Upload initial V6 public SSR evidence');
   assert.ok(preflight > 0 && full > preflight && upload > full);
   const diagnosticStep = workflow.slice(preflight, full);
-  const fullStep = workflow.slice(full, upload);
+  const fullStep = workflow.slice(full, workflow.indexOf('\n      - name:', full));
   assert.match(diagnosticStep, /V6_ISOLATED_PREFLIGHT: 'true'/);
   assert.doesNotMatch(diagnosticStep + fullStep, /continue-on-error:/);
   assert.doesNotMatch(fullStep, /V6_ISOLATED_PREFLIGHT|steps\.v6-preflight/);

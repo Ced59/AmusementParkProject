@@ -4,6 +4,23 @@ import { resolve } from 'node:path';
 import test from 'node:test';
 import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeNetworkAcceptance, homeBrandImageRequestSaving } from '../design-v6/home-network-evidence.mjs';
 
+test('small CI JSON reports precede the complete image archive without replacing evidence or gates', () => {
+  const workflow = readFileSync(resolve(import.meta.dirname, '../../../../.github/workflows/production.yml'), 'utf8');
+  const compact = workflow.match(/- name: Upload compact V6 diagnostic reports[\s\S]*?(?=\n      - name: Upload initial V6)/)?.[0];
+  assert.ok(compact);
+  assert.ok(compact.includes("if: always() && (steps.v6-preflight.outcome != 'skipped' || steps.v6-review.outcome != 'skipped')"));
+  assert.ok(compact.includes("github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'"));
+  assert.ok(compact.includes('name: v6-diagnostic-reports'));
+  assert.ok(compact.includes('path: ${{ runner.temp }}/v6-public-ssr/**/*.json'));
+  assert.ok(compact.includes('if-no-files-found: error'));
+  assert.doesNotMatch(compact, /continue-on-error/);
+  const complete = workflow.match(/- name: Upload initial V6 public SSR evidence[\s\S]*?(?=\n      - name: Upload frontend coverage)/)?.[0];
+  assert.ok(complete?.includes('name: v6-public-ssr-initial'));
+  assert.ok(complete?.includes('path: ${{ runner.temp }}/v6-public-ssr'));
+  const capture = readFileSync(resolve(import.meta.dirname, '../design-v6/capture-public-ssr.mjs'), 'utf8');
+  assert.ok(capture.includes("throw new Error('P04.6: initial requests exceed the exact owner-approved focus exception; inspect acceptance.failures.')"));
+});
+
 test('owner exception accepts only the measured two focus scripts and never other resource types or a new baseline', () => {
   const approval = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../../docs/design-v6/V6-PERFORMANCE-EXCEPTION.json'), 'utf8'));
   const before = { requests: 105, byType: { Script: { requests: 84, decodedBytes: 936317 }, XHR: { requests: 2 }, Image: { requests: 12 } } };

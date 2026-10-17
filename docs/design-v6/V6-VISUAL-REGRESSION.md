@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Sizing natif `c076b3f04` validé
+
+[Artefact `12086458487`](https://github.com/Ced59/AmusementParkProject/actions/runs/38995454506/artifacts/12086458487) : Chrome **155.0.8059.39**, méthode `Browser.setContentsSize`, DPR=2, visualViewport.scale=1, zéro réparation post-scroll. V6 **206 contrôles / 60 layouts**, aucune issue/fixture/exception ; master termine **86 / 60** avec ses **58 constats baseline**, sans erreur fixture/browser. Deux échantillons exacts consécutifs et dimensions CSS strictes conservés. Les JSON peuvent désormais être collectés séparément de l'archive images complète, pour respecter la RAM du PC sans perdre les captures ; **287 tests Node PASS**, nouvelle CI de collecte requise. Cette preuve reste limitée aux cas natifs FR décrits, pas à toutes les routes/langues ni à une revue SR.
+
 ## Resize natif — correction de protocole après `104d57b6d`
 
 Le V6 compacté conserve **206 contrôles / 60 layouts natifs PASS**, ainsi que 282/72 à 100 %. Master échoue ensuite au resize après 37 contrôles / 23 layouts ; sa dernière capture aboutie est 683 CSS, root 32, avec ses débordements legacy conservés. Le prochain protocole utilise la commande officielle [Browser.setContentsSize](https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/pdl/domains/Browser.pdl), qui règle le contenu réel en DIP en adaptant la fenêtre : width/height CSS ×2 à scale matériel 1 et zoom natif 2. Deux mesures exactes consécutives sont exigées, cinq essais au maximum ; les deux réparations post-scroll restent bornées. Indisponibilité de commande, faux zoom ou dimensions incorrectes bloquent, aucune substitution par CSS/pinch/device-metrics. La version navigateur et l'historique géométrique du refus sont enregistrés. **286 tests Node PASS ; nouveau rendu requis.**
