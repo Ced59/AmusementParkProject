@@ -4,7 +4,7 @@ import { collectLayoutOverflow } from './browser-layout-overflow.mjs';
 import { exerciseAdminToolbarFocus } from './exercise-admin-toolbar-focus.mjs';
 import { exercisePublicFitForm } from './exercise-public-fit-form.mjs';
 import { settleAccountDocument } from './settle-account-document.mjs';
-import { withDoubledRootFont } from './account-layout-stress.mjs';
+import { withDoubledRootFont, withBottomSafeArea } from './account-layout-stress.mjs';
 import { extname, join, resolve, sep } from 'node:path';
 import { accountLayoutFixtureOrigin, accountLayoutRefreshMarker, accountLayoutFixtureResponse, accountLayoutResetQuery } from './account-layout-fixtures.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument, forgetRetiredDocumentOwners } from './browser-interception-errors.mjs';
@@ -178,8 +178,9 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       await evaluate(`document.querySelector('.profile-actions--editing button:last-child').click()`);
       await waitUntil(`!document.querySelector('.profile-identity-editor') && document.querySelector('.profile-hero__title').textContent.trim() === ${JSON.stringify(displayName)}`, 'identity cancellation restores the same visible account');
     }
-    const captureLayouts = async (selector, page, { height = 1200 } = {}) => {
+    const captureLayouts = async (selector, page, { height = 1200, safeAreaBottomPx = 0 } = {}) => {
       if (![568, 600, 1200].includes(height)) throw new Error('Unbounded account capture height.');
+      if (![0, 34].includes(safeAreaBottomPx)) throw new Error('Unbounded safe-area capture inset.');
       for (const theme of ['dark', 'light']) {
         if (!(await evaluate(`document.body.classList.contains('${theme}-mode')`))) {
           if (fixture.kind === 'expired') {
@@ -214,6 +215,11 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
             return stable && layout.width === width && layout.height === height && layout.theme === theme && layout.target.visible;
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
+          if (safeAreaBottomPx) {
+            layout.safeArea = await evaluate(`(() => { const nav = document.querySelector('.app-mobile-bottom-nav'); return { expectedBottomPx: ${safeAreaBottomPx},
+              navVisible: !!nav?.offsetHeight, measuredPaddingBottomPx: nav ? parseFloat(getComputedStyle(nav).paddingBottom) : null }; })()`);
+            if (layout.safeArea.navVisible && !(layout.safeArea.measuredPaddingBottomPx >= safeAreaBottomPx)) issues.push('mobile navigation lost its emulated bottom safe area');
+          }
           if (issues.length) layout.overflowElements = await evaluate(`(${collectLayoutOverflow.toString()})()`);
           if (fixture.kind === 'admin-shell') {
             layout.adminShell = await evaluate(`(${collectAdminShellLayout.toString()})()`);
@@ -237,7 +243,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           result.layouts.push({ ...layout, page, screenshot, issues });
           if (accountLayoutMustStop(label, issues, deferContrastFailure)) throw new Error(`Account ${page} layout requires correction: ${width}px ${theme}`);
           if (fixture.kind === 'admin-shell' && height < 1200) {
-            await exerciseAdminToolbarFocus({ evaluate, waitUntil, result });
+            await exerciseAdminToolbarFocus({ evaluate, waitUntil, result, label });
             const focusScreenshot = screenshot.replace('.webp', '_toolbar-focus.webp');
             const focusPixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
             await writeFile(join(outputRoot, focusScreenshot), Buffer.from(focusPixels.data, 'base64'));
@@ -281,6 +287,11 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         await captureLayouts('.app-public-layout__content', `public-admin-shell-height-${height}`, { height });
         await withDoubledRootFont({ evaluate, capture: () => captureLayouts('.app-public-layout__content', `public-admin-shell-large-font-height-${height}`, { height }) });
       }
+      await withBottomSafeArea({ cdp, capture: async ({ safeAreaBottomPx }) => {
+        const options = { height: 568, safeAreaBottomPx };
+        await captureLayouts('.app-public-layout__content', 'public-admin-shell-safe-area-34', options);
+        await withDoubledRootFont({ evaluate, capture: () => captureLayouts('.app-public-layout__content', 'public-admin-shell-large-font-safe-area-34', options) });
+      } });
       if (result.apiReads.some(read => read.path.startsWith('/api/admin/'))) throw new Error('Admin shell presentation unexpectedly requested an administration API.');
       result.adminShell = { presentationRoleOnly: true, serverAuthorizationExercised: false, adminWorkflowsExercised: false };
     } else {

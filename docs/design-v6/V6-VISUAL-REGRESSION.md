@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Safe-area — protocole suivant
+
+Le dernier contrôle statique révèle l'override `padding:0.4rem` à ≤390 px, qui écrasait l'inset inférieur du menu. Son padding inférieur conserve maintenant le max entre rem et env ; l'offset des autres contrôles utilise sa **hauteur réelle complète**, sans compter deux fois l'inset. La recette émule 34 px par [le protocole CDP officiel](https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/pdl/domains/Emulation.pdl), vérifie le padding calculé, répète les captures/focus à 568 px et restaure explicitement tous les insets à zéro (une valeur CDP omise deviendrait undefined). C'est une émulation mesurée, **pas un test d'appareil physique ni de zoom natif**. Nouveaux artefacts requis ; aucun inset non appliqué n'est accepté comme PASS.
+
 ## Diagnostic `b75c01c21` — toolbar réellement recouverte
 
 La capture `v6_admin-shell_fr_account-failure.webp` de l'[artefact `12083053679`](https://github.com/Ced59/AmusementParkProject/actions/runs/38986477062/artifacts/12083053679) est inspectée. À 320 px sombre / root 16 px : largeur document 305 px (scrollbar native, aucun débordement), navigation Admin dégagée, mais bouton de saut exactement sur le bas de la toolbar. Le probe le refuse après 24 contrôles / 13 captures ; aucune erreur fixture/exception. La correction ajoute la hauteur réelle de la toolbar à l'espacement, ramène l'icône flottante à une cible de 44 px et remplace ses derniers RGBA historiques par les encres/surfaces canoniques. Les captures suivantes doivent prouver le résultat.

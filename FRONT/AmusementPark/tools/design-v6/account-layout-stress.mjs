@@ -21,3 +21,15 @@ export async function withDoubledRootFont({ evaluate, capture }) {
     await evaluate(`document.documentElement.style.fontSize = ${JSON.stringify(initial.inline)}`);
   }
 }
+
+// Native CDP environment override, not a physical-device or browser-zoom claim.
+export async function withBottomSafeArea({ cdp, capture }) {
+  const zeroInsets = { top: 0, left: 0, bottom: 0, right: 0, topMax: 0, leftMax: 0, bottomMax: 0, rightMax: 0 };
+  await cdp.send('Emulation.setSafeAreaInsetsOverride', { insets: { ...zeroInsets, bottom: 34, bottomMax: 34 } });
+  try {
+    await capture({ safeAreaBottomPx: 34 });
+  } finally {
+    // Unset CDP values become undefined; explicit zeros restore this CI baseline.
+    await cdp.send('Emulation.setSafeAreaInsetsOverride', { insets: zeroInsets });
+  }
+}

@@ -462,6 +462,7 @@ button.app-mobile-bottom-nav__item {
 @media (max-width: 390px) {
   .app-mobile-bottom-nav {
     padding: 0.4rem;
+    padding-bottom: max(0.4rem, env(safe-area-inset-bottom));
   }
 }
 

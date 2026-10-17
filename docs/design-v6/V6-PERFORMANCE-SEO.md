@@ -4,9 +4,9 @@ Le correctif de dégagement toolbar/navigation réutilise le RAF et l'unique Res
 
 Le refus `/fr/park-fit` des runs `38985040819` / `38985861611` est une mauvaise attente du protocole : ses trois déclarations serveur restent volontairement `RenderMode.Client`. Couverture corrigée : **40 chemins SSR** avec contenu initial strict, **trois documents Parc Fit CSR** avec HTTP/noindex et recette hydratée. Aucun moteur de rendu/route/SEO de production modifié pour faire passer un test. Les sorties HTTP des prochains runs restent obligatoires.
 
-## Complément SSR Parc Fit en attente
+## Couverture Parc Fit CSR en attente
 
-Les chemins `/fr/park-fit`, `/fr/park-fit/results` et `/fr/park-fit/compare` étendent la prochaine recette initiale de 40 à 43 chemins, sans publication de données ni nouveau serveur. Le questionnaire client est testé sans recherche API ni géolocalisation, résultats/comparaison uniquement dans leur état sans donnée. Les premiers plans SCSS rejoignent les encres existantes ; le coût CSS et le rendu après ce lot restent à mesurer. Aucun budget, seuil de contraste, garde SSR ou plafond P04.6 n'est assoupli ; aucun nouveau PASS de performance/SEO n'est inféré des tests Node.
+Les chemins `/fr/park-fit`, `/fr/park-fit/results` et `/fr/park-fit/compare` complètent les 40 chemins SSR par trois documents volontairement CSR, sans publication de données ni nouveau serveur. Leur classement initial en SSR était erroné et corrigé après lecture des déclarations Client inchangées. Le questionnaire client est testé sans recherche API ni géolocalisation, résultats/comparaison uniquement dans leur état sans donnée. Les premiers plans SCSS rejoignent les encres existantes ; le coût CSS et le rendu après ce lot restent à mesurer. Aucun budget, seuil de contraste, garde SSR ou plafond P04.6 n'est assoupli ; aucun nouveau PASS de performance/SEO n'est inféré des tests Node.
 
 ## Refus de compteur diagnostiqué — `136a9b8e2`
 

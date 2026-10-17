@@ -27,6 +27,8 @@ const ownerUpload = read('src/app/shared/components/owner-image-upload-dialog/ow
 const quickCreateStyles = read('src/app/components/admin/park-items/workbench/admin-park-item-quick-create-drawer.component.scss');
 const pageJump = read('src/app/shared/components/page-jump-button/page-jump-button.component.html');
 const pageJumpStyles = read('src/app/shared/components/page-jump-button/page-jump-button.component.scss');
+const pageJumpState = read('src/app/shared/components/page-jump-button/page-jump-button.component.ts');
+const navigationStyles = read('src/styles/_navigation.scss');
 const accessibilityStyles = read('src/styles/_accessibility-polish.scss');
 const cardMixins = read('src/styles/_mixins.scss');
 const contentSummaryStyles = read('src/app/features/public/parks/ui/park-content-summary.component.scss');
@@ -114,7 +116,11 @@ test('uploads and floating controls retain disabled, focus and safe-area states'
   assert.ok(ownerUpload.includes('(click)="cancel()"'));
   assert.ok(pageJump.includes('[attr.aria-label]="labelKey | translate"'));
   assert.ok(pageJump.includes('(click)="togglePageScroll()"'));
-  assert.ok(pageJumpStyles.includes('safe-area-inset-bottom'));
+  assert.ok(pageJumpStyles.includes('var(--bottom-nav-height)'));
+  assert.ok(pageJumpState.includes("['.app-mobile-bottom-nav', '--bottom-nav-height']"));
+  assert.ok(pageJumpState.includes('element?.offsetHeight'));
+  assert.match(navigationStyles, /padding: 0\.35rem 0\.5rem max\(0\.35rem, env\(safe-area-inset-bottom\)\)/);
+  assert.match(navigationStyles, /@media \(max-width: 390px\)\s*\{\s*\.app-mobile-bottom-nav\s*\{[^}]*padding-bottom: max\(0\.4rem, env\(safe-area-inset-bottom\)\)/);
 });
 
 test('rare and previously missed surfaces use flat Playground styling', () => {

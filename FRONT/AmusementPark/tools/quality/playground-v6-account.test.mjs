@@ -25,7 +25,7 @@ import { positionAccountCaptureTarget } from '../design-v6/browser-account-targe
 import { collectAdminShellLayout, adminShellLayoutIssues } from '../design-v6/browser-admin-shell.mjs';
 import { exercisePublicFitForm } from '../design-v6/exercise-public-fit-form.mjs';
 import { settleAccountDocument } from '../design-v6/settle-account-document.mjs';
-import { withDoubledRootFont } from '../design-v6/account-layout-stress.mjs';
+import { withDoubledRootFont, withBottomSafeArea } from '../design-v6/account-layout-stress.mjs';
 import { exerciseAdminToolbarFocus } from '../design-v6/exercise-admin-toolbar-focus.mjs';
 import { advanceMainDocument, forgetRetiredDocumentOwners, isRetiredDocumentInterceptionError } from '../design-v6/browser-interception-errors.mjs';
 
@@ -945,6 +945,39 @@ test('admin shell capture retains both short heights, both font sizes and focuse
   assert.match(source, /public-admin-shell-large-font-height-\$\{height\}/);
   assert.match(source, /height < 1200\) \{\s+await exerciseAdminToolbarFocus/);
   assert.match(source, /_toolbar-focus\.webp/);
+});
+
+test('native safe-area override uses 34px, restores explicit zeros after failure and requires measured padding', async () => {
+  for (const fail of [false, true]) {
+    const calls = [];
+    const operation = () => withBottomSafeArea({ cdp: { send: async (method, params) => calls.push({ method, params }) }, capture: async ({ safeAreaBottomPx }) => {
+      assert.equal(safeAreaBottomPx, 34);
+      if (fail) throw new Error('capture refused');
+    } });
+    if (fail) await assert.rejects(operation, /capture refused/);
+    else await operation();
+    assert.deepEqual(calls.map(call => call.method), Array(2).fill('Emulation.setSafeAreaInsetsOverride'));
+    assert.equal(calls[0].params.insets.bottom, 34);
+    assert.equal(calls[0].params.insets.bottomMax, 34);
+    assert.ok(Object.values(calls.at(-1).params.insets).every(value => value === 0));
+  }
+  const source = read('tools/design-v6/capture-account-layout.mjs');
+  assert.match(source, /layout.safeArea.measuredPaddingBottomPx >= safeAreaBottomPx/);
+  assert.match(source, /public-admin-shell-large-font-safe-area-34/);
+});
+
+test('legacy toolbar focus geometry is recorded as failed baseline evidence but remains blocking for V6', async () => {
+  const evaluate = async expression => expression.includes('indexes:')
+    ? { modes: 4, indexes: [0, 1, 2, 3, 5] }
+    : { focused: true, visible: false, unobscured: false, width: 44, height: 44 };
+  const result = {};
+  await exerciseAdminToolbarFocus({ label: 'master', evaluate, result, waitUntil: () => assert.fail('baseline geometry must be recorded, not falsely passed') });
+  assert.equal(result.toolbarFocusResults[0].label, 'master');
+  assert.equal(result.toolbarFocusResults[0].layoutPass, false);
+  await assert.rejects(() => exerciseAdminToolbarFocus({ label: 'v6', evaluate, result: {}, waitUntil: async predicate => {
+    if (!await predicate()) throw new Error('layout blocked');
+  } }), /layout blocked/);
+  await assert.rejects(() => exerciseAdminToolbarFocus({ label: 'skip', evaluate, result: {}, waitUntil: () => {} }), /Unknown/);
 });
 
 test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {
