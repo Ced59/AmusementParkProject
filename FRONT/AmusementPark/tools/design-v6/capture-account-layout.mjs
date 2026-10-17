@@ -224,6 +224,19 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
           if (fixture.kind === 'admin-shell') {
             layout.adminShell = await evaluate(`(${collectAdminShellLayout.toString()})()`);
             issues.push(...adminShellLayoutIssues(layout.adminShell));
+            layout.headerIdentity = await evaluate(`(() => { const copy = document.querySelector('.app-public-nav__profile-copy'); const button = copy?.closest('.app-public-nav__profile');
+              if (!copy?.offsetWidth || !button) return null; const box = copy.getBoundingClientRect(); const parent = button.getBoundingClientRect();
+              return { top: box.top, bottom: box.bottom, buttonTop: parent.top, buttonBottom: parent.bottom, clipped: box.top < parent.top - 1 || box.bottom > parent.bottom + 1 }; })()`);
+            if (layout.headerIdentity?.clipped) issues.push('header account identity vertically clipped');
+          }
+          if (selector === '.privacy-consent') {
+            layout.consent = await evaluate(`(() => { const parent = document.querySelector('.privacy-consent'); const style = getComputedStyle(parent);
+              const innerWidth = parent.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+              return { copyWidth: parent.querySelector('.privacy-consent__copy').getBoundingClientRect().width,
+                minimumCopyWidth: Math.min(innerWidth, 26 * parseFloat(getComputedStyle(document.documentElement).fontSize)),
+                actions: [...parent.querySelectorAll('button')].map(button => { const box = button.getBoundingClientRect(); return { x: box.x, right: box.right,
+                  clipped: button.scrollWidth > button.clientWidth + 1 || button.scrollHeight > button.clientHeight + 1 }; }) }; })()`);
+            if (layout.consent.copyWidth + 1 < layout.consent.minimumCopyWidth || layout.consent.actions.some(action => action.clipped || action.x < -1 || action.right > width + 1)) issues.push('privacy consent copy or actions compressed or clipped');
           }
           if (layout.target.x < -1 || layout.target.right > width + 1) issues.push('captured target horizontal bounds');
           if (page === 'isolated-history-comparison' && width > 520) {
@@ -283,6 +296,8 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         'the existing public layout, unlike the account layout, mounts the lazy admin toolbar');
       await captureLayouts('.app-public-layout__content', 'public-admin-shell');
       await captureLargeFont('.app-public-layout__content', 'public-admin-shell-large-font');
+      await captureLayouts('.privacy-consent', 'public-admin-consent');
+      await captureLargeFont('.privacy-consent', 'public-admin-consent-large-font');
       for (const height of [568, 600]) {
         await captureLayouts('.app-public-layout__content', `public-admin-shell-height-${height}`, { height });
         await withDoubledRootFont({ evaluate, capture: () => captureLayouts('.app-public-layout__content', `public-admin-shell-large-font-height-${height}`, { height }) });

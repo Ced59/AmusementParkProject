@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Diagnostic `afb443a68` — texte doublé desktop
+
+La capture `v6_admin-shell_fr_public-admin-shell-large-font-failure.webp` de l'[artefact `12083838992`](https://github.com/Ced59/AmusementParkProject/actions/runs/38989200890/artifacts/12083838992) est inspectée : titre légal désormais lisible et liens admin dégagés, mais 16 px de recouvrement subsistent entre le bouton flottant et la toolbar desktop. Son décalage inférieur propre `1rem` doit être ajouté à la hauteur mesurée et au gap ; le calcul mobile reste distinct. La même image prouve le texte d'identité navbar rogné par sa hauteur de 44 px et le kicker de consentement comprimé par une colonne actions auto : hauteur intrinsèque au-dessus de 680 px et reflow fondé sur le contenu, sans plafonner la taille du texte. Les nouveaux rendus doivent confirmer ces trois corrections ; ni la faible hauteur ni l'inset ne sont déduits de ce run arrêté.
+
 ## Safe-area — protocole suivant
 
 Le dernier contrôle statique révèle l'override `padding:0.4rem` à ≤390 px, qui écrasait l'inset inférieur du menu. Son padding inférieur conserve maintenant le max entre rem et env ; l'offset des autres contrôles utilise sa **hauteur réelle complète**, sans compter deux fois l'inset. La recette émule 34 px par [le protocole CDP officiel](https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/pdl/domains/Emulation.pdl), vérifie le padding calculé, répète les captures/focus à 568 px et restaure explicitement tous les insets à zéro (une valeur CDP omise deviendrait undefined). C'est une émulation mesurée, **pas un test d'appareil physique ni de zoom natif**. Nouveaux artefacts requis ; aucun inset non appliqué n'est accepté comme PASS.

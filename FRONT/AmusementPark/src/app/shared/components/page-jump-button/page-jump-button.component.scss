@@ -33,7 +33,7 @@
 }
 
 :host-context(body:has(app-admin-public-view-toolbar)) .page-jump-button {
-  bottom: calc(var(--app-admin-toolbar-height) + 2 * var(--app-floating-control-gap));
+  bottom: calc(var(--app-admin-toolbar-height) + 1rem + var(--app-floating-control-gap));
 }
 
 @media (max-width: 680px) {

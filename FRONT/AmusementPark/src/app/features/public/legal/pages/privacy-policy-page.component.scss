@@ -42,14 +42,16 @@
 }
 
 .privacy-consent {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
 }
 
 .privacy-consent__copy {
   display: grid;
+  flex: 1 1 26rem;
+  min-width: 0;
   gap: 0.65rem;
 }
 
@@ -80,7 +82,17 @@
 }
 
 .privacy-consent__actions {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
   justify-content: flex-end;
+}
+
+.privacy-consent__actions button {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .privacy-sections {
@@ -129,7 +141,6 @@
 }
 
 @media (max-width: 880px) {
-  .privacy-consent,
   .privacy-sections {
     grid-template-columns: 1fr;
   }
@@ -140,7 +151,8 @@
 }
 
 @media (max-width: 680px) {
-  .privacy-hero {
+  .privacy-hero,
+  .privacy-consent {
     padding: min(clamp(1.25rem, 3vw, 2rem), 32px);
   }
 }

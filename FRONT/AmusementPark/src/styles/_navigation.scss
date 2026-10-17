@@ -466,6 +466,30 @@ button.app-mobile-bottom-nav__item {
   }
 }
 
+@media (max-width: 680px) and (max-height: 680px) {
+  .app-mobile-bottom-nav {
+    padding-block: min(0.35rem, 5.6px);
+    padding-bottom: max(min(0.35rem, 5.6px), env(safe-area-inset-bottom));
+  }
+
+  .app-mobile-bottom-nav__item {
+    min-height: min(3.9rem, 72px);
+    gap: min(0.22rem, 3.52px);
+    padding-block: min(0.5rem, 8px);
+  }
+
+  .app-mobile-bottom-nav__icon {
+    font-size: min(1rem, 24px);
+  }
+}
+
+@media (max-width: 390px) and (max-height: 680px) {
+  .app-mobile-bottom-nav {
+    padding-block: min(0.4rem, 6.4px);
+    padding-bottom: max(min(0.4rem, 6.4px), env(safe-area-inset-bottom));
+  }
+}
+
 .app-public-nav__parks-node {
   position: relative;
 }
@@ -748,6 +772,12 @@ body:has(app-admin-public-view-toolbar) {
 }
 
 /* M13 cohesive language modal. */
+@media (min-width: 681px) {
+  .app-public-nav__profile {
+    height: auto;
+  }
+}
+
 .app-language-dialog .p-dialog-content {
   padding: 0;
   border-radius: var(--radius-md);

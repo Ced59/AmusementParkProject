@@ -945,6 +945,9 @@ test('admin shell capture retains both short heights, both font sizes and focuse
   assert.match(source, /public-admin-shell-large-font-height-\$\{height\}/);
   assert.match(source, /height < 1200\) \{\s+await exerciseAdminToolbarFocus/);
   assert.match(source, /_toolbar-focus\.webp/);
+  assert.match(source, /public-admin-consent-large-font/);
+  assert.match(source, /header account identity vertically clipped/);
+  assert.match(source, /privacy consent copy or actions compressed or clipped/);
 });
 
 test('native safe-area override uses 34px, restores explicit zeros after failure and requires measured padding', async () => {

@@ -44,6 +44,7 @@ test('fixed toolbar and jump control reserve their real stack and short screens 
   assert.match(tokens, /--app-floating-control-gap: clamp\(8px, calc\(32px - 1rem\), 16px\)/);
   assert.match(jump, /width: 44px;\s+height: 44px/);
   assert.match(jump, /bottom: calc\(var\(--bottom-nav-height\) \+ var\(--app-admin-toolbar-height\) \+ 2 \* var\(--app-floating-control-gap\)\)/);
+  assert.match(jump, /bottom: calc\(var\(--app-admin-toolbar-height\) \+ 1rem \+ var\(--app-floating-control-gap\)\)/);
   assert.doesNotMatch(jump, /rgba\(56, 197, 245/);
   assert.match(toolbar, /@media \(max-width: 680px\) and \(max-height: 680px\)/);
   assert.match(toolbar, /flex-direction: row;[\s\S]*?overflow-x: scroll;[\s\S]*?scrollbar-color:/);
@@ -51,6 +52,18 @@ test('fixed toolbar and jump control reserve their real stack and short screens 
   assert.match(privacy, /max-width: 24ch/);
   assert.match(privacy, /font-size: clamp\(1\.75rem, 4\.5vw, 3\.6rem\)/);
   assert.match(privacy, /text-wrap: balance/);
+});
+
+test('enlarged legal copy and header identity reflow instead of being clipped into narrow fixed rows', async () => {
+  const privacy = await readFile(new URL('../../src/app/features/public/legal/pages/privacy-policy-page.component.scss', import.meta.url), 'utf8');
+  const nav = await readFile(new URL('../../src/styles/_navigation.scss', import.meta.url), 'utf8');
+  assert.match(privacy, /\.privacy-consent\s*\{\s*display: flex;\s*flex-wrap: wrap;/);
+  assert.match(privacy, /\.privacy-consent__copy\s*\{[^}]*flex: 1 1 26rem;[^}]*min-width: 0;/);
+  assert.match(privacy, /\.privacy-consent__actions button\s*\{[^}]*max-width: 100%;[^}]*white-space: normal;[^}]*overflow-wrap: anywhere;/);
+  assert.match(nav, /@media \(min-width: 681px\)\s*\{\s*\.app-public-nav__profile\s*\{\s*height: auto;/);
+  assert.match(nav, /min-height: min\(3\.9rem, 72px\)/);
+  assert.match(nav, /font-size: min\(1rem, 24px\)/);
+  assert.match(nav, /padding-bottom: max\(min\(0\.4rem, 6\.4px\), env\(safe-area-inset-bottom\)\)/);
 });
 
 test('overflow diagnostics retain bounded geometry only without concealing offending content', () => {
