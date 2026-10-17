@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { completedIconAliases, completedIconStyles, missingIconAliases } from '../design-v6/lucide-compat-completion.mjs';
+import { createHash } from 'node:crypto';
+import { completedIconAliases, completedIconStyles, missingIconAliases, encodeIconSvg } from '../design-v6/lucide-compat-completion.mjs';
 
 const root = resolve(import.meta.dirname, '../..');
 const read = path => readFileSync(resolve(root, path), 'utf8').replaceAll('\r\n', '\n');
@@ -23,7 +24,7 @@ test('completed masks reproduce literal SVG data from the locked existing Lucide
   const generated = completedIconStyles(read('node_modules/@lucide/angular/fesm2022/lucide-angular.mjs'));
   assert.equal(Object.keys(completedIconAliases).length, 43);
   for (const block of generated.trim().split('\n\n')) assert.ok(styles.includes(block), 'checked-in mask differs from its installed source');
-  assert.doesNotMatch(generated, /https?:\/\/|<script|foreignObject|onload/);
+  assert.doesNotMatch(generated, /url\("https?:\/\/|<script|foreignObject|onload/);
   assert.equal(read('src/assets/licenses/lucide.txt'), read('node_modules/@lucide/angular/LICENSE'));
 });
 
@@ -32,9 +33,28 @@ test('filled watch and collection states remain visually distinct without changi
     const filled = styles.match(new RegExp(`\\.pi\\.pi-${name}-fill \\{([^}]+)\\}`))?.[1];
     const outline = styles.match(new RegExp(`\\.pi\\.pi-${name} \\{([^}]+)\\}`))?.[1];
     assert.ok(filled && outline && filled !== outline);
-    assert.ok(decodeURIComponent(filled).includes('fill="black"'));
-    assert.ok(decodeURIComponent(outline).includes('fill="none"'));
+    assert.ok(decodeURIComponent(filled).includes("fill='black'"));
+    assert.ok(decodeURIComponent(outline).includes("fill='none'"));
   }
+});
+
+test('compact data URLs preserve the geometry of all 144 original masks and escape CSS-sensitive bytes', () => {
+  const original = [...styles.matchAll(/\.pi\.(pi-[a-z0-9-]+)\s*\{\s*--app-icon-mask: url\("data:image\/svg\+xml,([^"\r\n]+)"\);\s*\}/g)]
+    .filter(match => !Object.hasOwn(completedIconAliases, match[1]))
+    .map(match => [match[1], decodeURIComponent(match[2]).replaceAll('"', "'")])
+    .sort(([left], [right]) => left.localeCompare(right));
+  assert.equal(original.length, 144);
+  // Captured before lossless re-encoding; drawings and names must not drift.
+  assert.equal(createHash('sha256').update(JSON.stringify(original)).digest('hex'),
+    '3df4e51789726c0966c425b340676e3d540cb76a7f1299513827d1f71cfe12ba');
+  const mask = selector => styles.match(new RegExp(`${selector}\\s*\\{\\s*--app-icon-mask: url\\("data:image/svg\\+xml,([^"\\r\\n]+)"\\);`))?.[1];
+  assert.equal(decodeURIComponent(mask('\\.pi-chip-remove-icon')), decodeURIComponent(mask('\\.pi\\.pi-times')),
+    'the extra chip-close mask must retain its original X geometry too');
+  const source = '<svg xmlns="http://www.w3.org/2000/svg"><path d="M1 1h2" fill="#fff" /></svg>';
+  const compact = encodeIconSvg(source);
+  assert.equal(decodeURIComponent(compact), source.replaceAll('"', "'"));
+  assert.doesNotMatch(compact, /["<>#\r\n]/);
+  assert.ok(compact.length < encodeURIComponent(source).length);
 });
 
 test('icon conversion rejects executable data instead of evaluating a package module', () => {

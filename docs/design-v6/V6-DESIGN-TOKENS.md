@@ -2,6 +2,8 @@
 
 ## Principes
 
+Les masques SVG conservent le même token et les mêmes attributs/tracés après compactage de leur URL double-quotée. Ce changement mécanique n'ajoute ni asset externe ni police ; les 144 glyphes PI initiaux sont protégés par hash, le glyph de fermeture chip reste le X existant et les 43 nouveaux alias reproduisent le package licencié/verrouillé. Aucun dessin de wordmark, texte, thème ou contrat ne change.
+
 Le dégagement calculé `--app-page-jump-bottom` réutilise les mêmes hauteurs, gap et paliers : défaut clamp, navigation mobile ≤780 px, toolbar desktop +1rem, stack mobile ≤680 px. Les contextes body sont déjà possédés par `_navigation.scss` ; le composant consomme une seule dimension héritée au lieu de répéter ces contextes dans les sélecteurs générés Angular. Aucun nouveau moteur/contrat ni modification du scroll. Les 43 masques d'icônes complétés utilisent toujours `--app-icon-mask` et currentColor ; pas de police, library ou requête supplémentaire. Poids CSS et alignement à mesurer en CI.
 
 Complément du 17 octobre : les derniers coins numériques en `rem` des champs, badges, barres de statistiques, liens historiques, durée vidéo et toolbar sont raccordés à `--app-radius-sm` / `--radius-sm`. Les cercles/pills utiles sont préservés. La vignette passeport abandonne un `calc()` devenu négatif avec le rayon V6. Le garde couvre désormais aussi les styles globaux, les valeurs multiples et les petits rayons rem ; il ne se limite plus aux coins ≥0,65 rem. Les petits textes de l'import/comparaison Captain Coaster utilisent les encres lime/pink/cyan existantes sur leurs teintes canoniques ; AA vérifié sur quatre surfaces et deux thèmes. Aucun champ, valeur, action ou contrat modifié ; nouvelles captures CI requises.

@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Diagnostic natif `67723fa91` confirmé
+
+[Artefact `12086441223`](https://github.com/Ced59/AmusementParkProject/actions/runs/38993942862/artifacts/12086441223) : V6 **206 contrôles / 60 layouts**, DPR=2, scale visuel=1, zéro issue/fixture/exception, aucun réajustement nécessaire. Master termine sa collecte **86 contrôles / 60 layouts**, zéro fixture/exception et un réajustement maximum ; ses **58 constats géométrie/contraste restent baseline**, pas un PASS visuel. L'image profil 960 CSS / 1 920 physiques claire est inspectée : cloches et favoris ont désormais leur dessin, textes/actions intacts. Le calcul de positionnement hérité passe ces mêmes contrôles.
+
+Complément de poids préparé : encodage compact des 188 URLs SVG (144 alias initiaux, fermeture de chip et 43 alias complétés), sans modification des tracés/attributs après normalisation des guillemets XML. SHA-256 des 144 dessins initiaux et égalité de la fermeture chip avec le X d'origine testés ; glyphes pleins/contours toujours distincts. Les URLs restent double-quotées selon [la syntaxe CSS officielle](https://www.w3.org/TR/css-values-4/#url-syntax), caractères sensibles échappés. **285 tests Node PASS**, nouveau rendu CI requis ; les captures ci-dessus portent encore sur l'encodage précédent.
+
 ## Zoom natif obtenu et revue compte complémentaire
 
 [Artefact `12086405551`, HEAD `f04ddf43c`](https://github.com/Ced59/AmusementParkProject/actions/runs/38992936709/artifacts/12086405551) : V6 **206 contrôles / 60 captures**, largeurs CSS 320/683/960, root 16/32, DPR toujours 2 et visualViewport.scale toujours 1, zéro issue/fixture/exception. Capture publique claire 683 CSS (1 366 physiques) inspectée : titres, navbar et toolbar refluants. Le run reste FAIL après une dérive de hauteur native master de 1 200→1 222 après défilement ; deux réparations de fenêtre bornées sont prévues, dimensions exactes toujours obligatoires. Ni le test de police agrandie ni l'inset séparé n'est présenté comme un autre zoom natif.

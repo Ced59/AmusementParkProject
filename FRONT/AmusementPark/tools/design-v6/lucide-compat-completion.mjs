@@ -42,6 +42,13 @@ function installedIcon(source, name) {
 
 const escapeXml = value => String(value).replace(/[&"<>]/g, character => ({ '&': '&amp;', '"': '&quot;', '<': '&lt;', '>': '&gt;' })[character]);
 
+export function encodeIconSvg(svg) {
+  // CSS url() stays double-quoted; SVG attribute quotes can be single quotes.
+  // Keep <, >, #, %, controls and other unsafe bytes percent-encoded.
+  return encodeURIComponent(svg).replaceAll('%20', ' ').replaceAll('%3D', '=')
+    .replaceAll('%3A', ':').replaceAll('%2F', '/').replaceAll('%22', "'");
+}
+
 export function completedIconStyles(packageSource) {
   const svg = (name, filled = false) => {
     const icon = installedIcon(packageSource, name);
@@ -56,7 +63,7 @@ export function completedIconStyles(packageSource) {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="${filled ? 'black' : 'none'}" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${nodes}</svg>`;
   };
   return Object.entries(completedIconAliases).sort(([left], [right]) => left.localeCompare(right))
-    .map(([alias, [name, filled]]) => `.pi.${alias} {\n  --app-icon-mask: url("data:image/svg+xml,${encodeURIComponent(svg(name, filled))}");\n}`).join('\n\n') + '\n';
+    .map(([alias, [name, filled]]) => `.pi.${alias} {\n  --app-icon-mask: url("data:image/svg+xml,${encodeIconSvg(svg(name, filled))}");\n}`).join('\n\n') + '\n';
 }
 
 export function missingIconAliases(documents, compatibilityStyles) {

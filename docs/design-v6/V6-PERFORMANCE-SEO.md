@@ -1,5 +1,11 @@
 # V6 — performance, SEO et SSR
 
+## Optimisation sans perte des masques — mesure source, pas verdict réseau
+
+Encodage double-quoté compact des 188 URLs : feuille SCSS **111 330→78 250 octets**, gzip local **10 088→9 017**, Brotli **8 098→7 446**. Les 144 tracés PI d'origine sont protégés par hash normalisé, ainsi que la fermeture chip ; 43 compléments reproduisent les données littérales du package verrouillé. Ce sont des tailles de **source avant Sass**, pas des mesures réseau/SSR. La variante base64 testée est écartée car plus lourde une fois compressée. **285 tests qualité Node PASS** ; build/budgets et comparaison appariée doivent attester le prochain code.
+
+Une extension bornée du plafond JS à +4 565 a été **demandée**, pas présumée acceptée. Tant qu'une réponse explicite n'est pas enregistrée, l'exception et le garde restent exactement à +3 302. Aucune dispense des autres types de requêtes, budgets ou gates.
+
 ## Mesure `3fe1ec4f0` — FAIL conservé
 
 [Artefact `12085867382`](https://github.com/Ced59/AmusementParkProject/actions/runs/38991107750/artifacts/12085867382) : six paires 390/1 366, deux scripts supplémentaires, **+4 565 octets JS décodés**, soit 1 263 au-dessus du plafond propriétaire +3 302. Exception non élargie. Le CSS SSR réel du bouton flottant contient 1 524 caractères, dont deux contextes body dupliqués par l'encapsulation Angular. La dimension cross-layout est désormais héritée depuis le module navigation existant, avec exactement les mêmes formules et breakpoints, pour supprimer cette duplication. Il faut mesurer **le JS, le CSS et le total**, sans présenter un simple déplacement d'octets comme une économie.
