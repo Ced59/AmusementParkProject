@@ -685,12 +685,20 @@ button.app-mobile-bottom-nav__item {
   }
 }
 
+@media (max-width: 780px) {
+  body {
+    --app-page-jump-bottom: calc(var(--bottom-nav-height) + var(--app-floating-control-gap));
+  }
+}
+
 body:has(app-admin-public-view-toolbar) {
+  --app-page-jump-bottom: calc(var(--app-admin-toolbar-height) + 1rem + var(--app-floating-control-gap));
   padding-bottom: calc(var(--app-admin-toolbar-height) + 2 * var(--app-floating-control-gap));
 }
 
 @media (max-width: 680px) {
   body:has(app-admin-public-view-toolbar) {
+    --app-page-jump-bottom: calc(var(--bottom-nav-height) + var(--app-admin-toolbar-height) + 2 * var(--app-floating-control-gap));
     padding-bottom: max(5.8rem, calc(var(--bottom-nav-height) + var(--app-admin-toolbar-height) + 2 * var(--app-floating-control-gap)));
   }
 }

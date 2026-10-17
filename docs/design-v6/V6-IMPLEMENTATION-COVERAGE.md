@@ -1,5 +1,7 @@
 # V6 — couverture d’implémentation
 
+Derniers résultats : `3fe1ec4f0` **FAIL P04.6 +4 565 octets JS** (six paires), `f04ddf43c` **PASS V6 zoom natif 206 contrôles / 60 captures puis FAIL de fenêtre master**. Aucun PASS complet ajouté. Simplification CSS des contextes de positionnement et 43 masques PI manquants complétés, sans nouvelle dépendance ou changement de comportement. **284 tests Node qualité PASS** ; le prochain inventaire et la CI rendent ces compléments traçables. Revue visuelle propriétaire et gate final ouverts.
+
 Point de contrôle `3fe1ec4f0` : diagnostic admin-shell V6 **282 contrôles / 72 layouts**, 36 focus et huit insets réussis ; diagnostic standard FR **736 / 392** et incomplet **492 / 260** sans issue/fixture/exception. [Preuves](https://github.com/Ced59/AmusementParkProject/actions/runs/38991107750/artifacts/12085905411). Ce n'est ni le scénario de 58 écrans admin ni un PASS complet de toutes les gates. Coins/encres complémentaires `592159c34` et nouveau zoom natif doivent repasser la CI ; inventaire UI régénéré sur ce commit. **280 tests Node qualité PASS**, aucune route/action/donnée modifiée par ces compléments. NO-GO tant que la recette complète et la revue finale ne sont pas soldées.
 
 ## Point de contrôle du 17 octobre — standard V6/master

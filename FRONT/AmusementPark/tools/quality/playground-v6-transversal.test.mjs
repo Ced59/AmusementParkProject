@@ -116,7 +116,8 @@ test('uploads and floating controls retain disabled, focus and safe-area states'
   assert.ok(ownerUpload.includes('(click)="cancel()"'));
   assert.ok(pageJump.includes('[attr.aria-label]="labelKey | translate"'));
   assert.ok(pageJump.includes('(click)="togglePageScroll()"'));
-  assert.ok(pageJumpStyles.includes('var(--bottom-nav-height)'));
+  assert.ok(pageJumpStyles.includes('var(--app-page-jump-bottom)'));
+  assert.match(navigationStyles, /--app-page-jump-bottom:\s*calc\(var\(--bottom-nav-height\) \+ var\(--app-floating-control-gap\)\)/);
   assert.ok(pageJumpState.includes("['.app-mobile-bottom-nav', '--bottom-nav-height']"));
   assert.ok(pageJumpState.includes('element?.offsetHeight'));
   assert.match(navigationStyles, /padding: 0\.35rem 0\.5rem max\(0\.35rem, env\(safe-area-inset-bottom\)\)/);

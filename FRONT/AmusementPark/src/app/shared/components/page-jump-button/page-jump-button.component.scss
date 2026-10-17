@@ -1,7 +1,7 @@
 .page-jump-button {
   position: fixed;
   right: clamp(1rem, 2vw, 1.5rem);
-  bottom: clamp(1rem, 2vw, 1.5rem);
+  bottom: var(--app-page-jump-bottom);
   z-index: 900;
   display: inline-grid;
   width: 44px;
@@ -23,21 +23,5 @@
   &:focus-visible {
     outline: 3px solid var(--app-accent-cyan);
     outline-offset: 3px;
-  }
-}
-
-@media (max-width: 780px) {
-  .page-jump-button {
-    bottom: calc(var(--bottom-nav-height) + var(--app-floating-control-gap));
-  }
-}
-
-:host-context(body:has(app-admin-public-view-toolbar)) .page-jump-button {
-  bottom: calc(var(--app-admin-toolbar-height) + 1rem + var(--app-floating-control-gap));
-}
-
-@media (max-width: 680px) {
-  :host-context(body:has(app-admin-public-view-toolbar)) .page-jump-button {
-    bottom: calc(var(--bottom-nav-height) + var(--app-admin-toolbar-height) + 2 * var(--app-floating-control-gap));
   }
 }

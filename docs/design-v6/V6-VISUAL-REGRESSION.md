@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Zoom natif obtenu et revue compte complémentaire
+
+[Artefact `12086405551`, HEAD `f04ddf43c`](https://github.com/Ced59/AmusementParkProject/actions/runs/38992936709/artifacts/12086405551) : V6 **206 contrôles / 60 captures**, largeurs CSS 320/683/960, root 16/32, DPR toujours 2 et visualViewport.scale toujours 1, zéro issue/fixture/exception. Capture publique claire 683 CSS (1 366 physiques) inspectée : titres, navbar et toolbar refluants. Le run reste FAIL après une dérive de hauteur native master de 1 200→1 222 après défilement ; deux réparations de fenêtre bornées sont prévues, dimensions exactes toujours obligatoires. Ni le test de police agrandie ni l'inset séparé n'est présenté comme un autre zoom natif.
+
+Revue de l'artefact `12085905411` : profil 1 366 clair / 390 sombre, snapshot historique 1 366 clair et huitième participant Parc Fit 390 sombre inspectés ; champs, statuts d'incertitude et actions restent visibles. Le profil révèle des carrés pleins à la place de cloches/favoris : **43 références PI sans masque**, corrigées dans le mapping Lucide existant avec les SVG du package verrouillé (licence copiée). Les variantes pleines restent distinctes des contours. Le prochain rendu doit confirmer les pictogrammes ; aucune validation propriétaire n'est déduite de cette revue technique.
+
 ## Diagnostic `3fe1ec4f0` — preuve obtenue
 
 [Artefact admin `12085162911`](https://github.com/Ced59/AmusementParkProject/actions/runs/38991107750/artifacts/12085162911) : V6 **72 layouts / 282 contrôles**, zéro issue, 36 parcours de focus réussis (images dédiées conservées), huit navbars visibles avec padding d'inset exactement 34 px. L'image sombre 320×568 / root 32 / safe-area est inspectée : tous les accès restent présents, toolbar à défilement horizontal local et bouton flottant séparés. Les 70 constats layout et 36 échecs focus master sont baseline uniquement. [Diagnostic compte `12085905411`](https://github.com/Ced59/AmusementParkProject/actions/runs/38991107750/artifacts/12085905411) : V6 standard FR 392 captures, incomplet FR 260, aucune issue ; ce sous-ensemble n'est pas la campagne finale.

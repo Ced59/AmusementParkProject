@@ -198,7 +198,8 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         await waitUntil(`document.body.classList.contains('${theme}-mode')`, `account fixture uses the existing ${theme} theme control`);
         await settleAccountDocument({ evaluate, pending });
         for (const width of widths) {
-          const zoomEvidence = nativeZoom ? await resizeNativeZoomViewport({ cdp, evaluate, width, height }) : null;
+          let zoomEvidence = nativeZoom ? await resizeNativeZoomViewport({ cdp, evaluate, width, height }) : null;
+          let nativeViewportRepairs = 0;
           if (!nativeZoom) await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
           let layout;
           let previous;
@@ -212,6 +213,15 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
                 return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, closeUnobscured: close.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2)) }; })() })`);
             layout.target = target;
             if (zoomEvidence) layout.nativeZoom = zoomEvidence;
+            if (nativeZoom && (layout.width !== width || layout.height !== height) && nativeViewportRepairs < 2) {
+              // Native window chrome may finish resizing after document scroll
+              // or theme paint. Re-measure; never accept the wrong dimensions.
+              nativeViewportRepairs++;
+              zoomEvidence = await resizeNativeZoomViewport({ cdp, evaluate, width, height });
+              previous = undefined;
+              return false;
+            }
+            if (nativeZoom) layout.nativeViewportRepairs = nativeViewportRepairs;
             result.lastLayout = layout;
             const serialized = JSON.stringify(layout);
             const stable = previous === serialized;

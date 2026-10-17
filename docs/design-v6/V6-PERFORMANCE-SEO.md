@@ -1,5 +1,11 @@
 # V6 — performance, SEO et SSR
 
+## Mesure `3fe1ec4f0` — FAIL conservé
+
+[Artefact `12085867382`](https://github.com/Ced59/AmusementParkProject/actions/runs/38991107750/artifacts/12085867382) : six paires 390/1 366, deux scripts supplémentaires, **+4 565 octets JS décodés**, soit 1 263 au-dessus du plafond propriétaire +3 302. Exception non élargie. Le CSS SSR réel du bouton flottant contient 1 524 caractères, dont deux contextes body dupliqués par l'encapsulation Angular. La dimension cross-layout est désormais héritée depuis le module navigation existant, avec exactement les mêmes formules et breakpoints, pour supprimer cette duplication. Il faut mesurer **le JS, le CSS et le total**, sans présenter un simple déplacement d'octets comme une économie.
+
+La revue visuelle ajoute 43 masques manquants issus du Lucide déjà installé : **25 131 octets SCSS générés** avant compilation/compression, aucune nouvelle requête/font/dépendance/runtime. Ce nombre n'est pas le poids réseau. Nouveaux budgets et comparaison appariée obligatoires ; la CI verte de `f04ddf43c` sur build/budgets ne couvre pas encore ces masques. Les outils de zoom natif, conversion AST et tests ne sont pas importés par l'application.
+
 Le diagnostic `3fe1ec4f0` passe build SSR, budgets, 2 780 tests Angular et sous-ensembles admin/compte ; **la mesure réseau P04.6 complète du dernier code est encore en cours**. Le plafond +3 302 octets et les deux seules requêtes JS de focus-trap restent inchangés. Les compléments coins/encres sont uniquement SCSS ; le protocole de zoom natif est un outil CI, non importé dans l'application. Aucun résultat du navigateur de diagnostic (fixtures `.invalid`) n'est substitué aux mesures réseau/SEO publiques de la campagne complète.
 
 Le correctif de dégagement toolbar/navigation réutilise le RAF et l'unique ResizeObserver, avec deux cibles DOM au plus et écritures de hauteur seulement si changée. Aucun nouvel import, listener ou appel API ; **son delta JS initial doit néanmoins être mesuré en CI**, sous le plafond +3 302 existant, non élargi par anticipation. Aucun build local exécuté.

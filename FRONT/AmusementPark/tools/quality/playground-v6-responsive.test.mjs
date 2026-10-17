@@ -40,11 +40,15 @@ test('fixed toolbar and jump control reserve their real stack and short screens 
   const jump = await read('app/shared/components/page-jump-button/page-jump-button.component.scss');
   const tokens = await read('styles/_design-tokens.scss');
   const privacy = await read('app/features/public/legal/pages/privacy-policy-page.component.scss');
+  const navigation = await read('styles/_navigation.scss');
   assert.match(tokens, /--app-admin-toolbar-height: 0px/);
   assert.match(tokens, /--app-floating-control-gap: clamp\(8px, calc\(32px - 1rem\), 16px\)/);
   assert.match(jump, /width: 44px;\s+height: 44px/);
-  assert.match(jump, /bottom: calc\(var\(--bottom-nav-height\) \+ var\(--app-admin-toolbar-height\) \+ 2 \* var\(--app-floating-control-gap\)\)/);
-  assert.match(jump, /bottom: calc\(var\(--app-admin-toolbar-height\) \+ 1rem \+ var\(--app-floating-control-gap\)\)/);
+  assert.match(jump, /bottom: var\(--app-page-jump-bottom\)/);
+  assert.doesNotMatch(jump, /:host-context/);
+  assert.match(navigation, /--app-page-jump-bottom: calc\(var\(--bottom-nav-height\) \+ var\(--app-admin-toolbar-height\) \+ 2 \* var\(--app-floating-control-gap\)\)/);
+  assert.match(navigation, /--app-page-jump-bottom: calc\(var\(--app-admin-toolbar-height\) \+ 1rem \+ var\(--app-floating-control-gap\)\)/);
+  assert.match(tokens, /--app-page-jump-bottom: clamp\(1rem, 2vw, 1\.5rem\)/);
   assert.doesNotMatch(jump, /rgba\(56, 197, 245/);
   assert.match(toolbar, /@media \(max-width: 680px\) and \(max-height: 680px\)/);
   assert.match(toolbar, /flex-direction: row;[\s\S]*?overflow-x: scroll;[\s\S]*?scrollbar-color:/);

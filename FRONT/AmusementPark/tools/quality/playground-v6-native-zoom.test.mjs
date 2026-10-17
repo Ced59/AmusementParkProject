@@ -55,6 +55,8 @@ test('native zoom evidence is attached to each layout and never substitutes for 
   const main = read('../design-v6/capture-public-ssr.mjs');
   const workflow = read('../../../../.github/workflows/production.yml');
   assert.ok(capture.includes('if (zoomEvidence) layout.nativeZoom = zoomEvidence'));
+  assert.ok(capture.includes('nativeViewportRepairs < 2'));
+  assert.ok(capture.includes('layout.width === width && layout.height === height'));
   assert.ok(capture.includes('if (!nativeZoom) await withBottomSafeArea'));
   assert.ok(main.includes("join(tempRoot, 'Default/Preferences')"));
   assert.ok(main.includes('report.fullCampaignRequired = preflightPlan.fullCampaignRequired'));
