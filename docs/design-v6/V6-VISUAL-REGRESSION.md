@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Diagnostic `6b5710647` — cible sous la ligne de flottaison
+
+Les 24 captures profil/public normal/texte doublé passent ; la 27e capture de consentement 1 366 px sombre refuse seulement le lien d'admin desktop : son header entier est à y<0 après le défilement vers la section. Copie 1 094 px ≥minimum 416, trois boutons sans clipping, identité verticale intacte, gap bouton/toolbar correct. Le probe conserve les dimensions, scroll et rect du header, accepte seulement son défilement **complet** au-dessus de l'écran ; aucune navigation manquante/cachée ou partiellement masquée n'est acceptée. Le comportement existant du header reste inchangé. Les cas de refus sont testés ; nouveaux artefacts obligatoires, aucune validation anticipée de faible hauteur/inset.
+
 ## Diagnostic `afb443a68` — texte doublé desktop
 
 La capture `v6_admin-shell_fr_public-admin-shell-large-font-failure.webp` de l'[artefact `12083838992`](https://github.com/Ced59/AmusementParkProject/actions/runs/38989200890/artifacts/12083838992) est inspectée : titre légal désormais lisible et liens admin dégagés, mais 16 px de recouvrement subsistent entre le bouton flottant et la toolbar desktop. Son décalage inférieur propre `1rem` doit être ajouté à la hauteur mesurée et au gap ; le calcul mobile reste distinct. La même image prouve le texte d'identité navbar rogné par sa hauteur de 44 px et le kicker de consentement comprimé par une colonne actions auto : hauteur intrinsèque au-dessus de 680 px et reflow fondé sur le contenu, sans plafonner la taille du texte. Les nouveaux rendus doivent confirmer ces trois corrections ; ni la faible hauteur ni l'inset ne sont déduits de ce run arrêté.

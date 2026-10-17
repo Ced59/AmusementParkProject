@@ -920,6 +920,20 @@ test('admin shell geometry rejects floating controls over its toolbar or mobile 
   assert.deepEqual(adminShellLayoutIssues(layout), []);
 });
 
+test('below-fold capture distinguishes a whole scrolled masthead from hidden, clipped or missing admin navigation', () => {
+  const rect = (x, y, width, height) => ({ x, y, width, height, right: x + width, bottom: y + height });
+  const adminPath = '/fr/admin';
+  const layout = { adminPath, width: 1366, height: 1200, publicLayout: true, bottomItemCount: 7, scrollY: 414,
+    headerNavigation: rect(0, -414, 1351, 134),
+    entries: [{ scope: 'header', href: adminPath, visible: true, unobscured: false, ...rect(884, -327, 100, 44) },
+      { scope: 'mobile', href: adminPath, visible: false }], toolbar: rect(567, 1102, 768, 82), bottomNavigation: rect(0, 0, 0, 0), jumpAction: rect(1283, 1042, 44, 44) };
+  assert.deepEqual(adminShellLayoutIssues(layout), []);
+  assert.ok(adminShellLayoutIssues({ ...layout, scrollY: 0 }).includes('conditional admin navigation hidden, clipped or obscured'));
+  assert.ok(adminShellLayoutIssues({ ...layout, headerNavigation: rect(0, -100, 1351, 134) }).includes('conditional admin navigation hidden, clipped or obscured'));
+  assert.ok(adminShellLayoutIssues({ ...layout, entries: layout.entries.map(entry => ({ ...entry, visible: false })) }).includes('conditional admin navigation hidden, clipped or obscured'));
+  assert.ok(adminShellLayoutIssues({ ...layout, entries: layout.entries.slice(1) }).includes('conditional admin navigation missing or duplicated'));
+});
+
 test('short toolbar focus checks compile every expression without invoking a view mode or editing action', async () => {
   const result = {};
   let checked = 0;

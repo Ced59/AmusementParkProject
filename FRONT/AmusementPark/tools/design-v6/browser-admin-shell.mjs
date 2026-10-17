@@ -17,7 +17,8 @@ export function collectAdminShellLayout() {
     const box = node.getBoundingClientRect();
     return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, width: box.width, height: box.height };
   };
-  return { adminPath, width: innerWidth, height: innerHeight, publicLayout: !!document.querySelector('.app-public-layout'), entries,
+  return { adminPath, width: innerWidth, height: innerHeight, scrollY: globalThis.scrollY ?? 0,
+    headerNavigation: rect('.app-public-nav'), publicLayout: !!document.querySelector('.app-public-layout'), entries,
     bottomItemCount: document.querySelectorAll('.app-mobile-bottom-nav__item').length,
     toolbar: rect('.admin-public-view-toolbar'), bottomNavigation: rect('.app-mobile-bottom-nav'), jumpAction: rect('.page-jump-button') };
 }
@@ -30,8 +31,13 @@ export function adminShellLayoutIssues(layout) {
   }
   if (layout.bottomItemCount !== 7) issues.push('admin mobile navigation must preserve all seven entries');
   const visible = layout.entries.filter(entry => entry.visible);
-  if (!visible.length || visible.some(entry => !entry.unobscured || entry.width < 24 || entry.height < 40
-    || entry.x < -1 || entry.y < -1 || entry.right > layout.width + 1 || entry.bottom > layout.height + 1)) {
+  // A below-the-fold target may naturally scroll the whole existing masthead
+  // above the viewport. Never confuse that with a hidden/missing entry at top.
+  const scrolledHeader = Number.isFinite(layout.scrollY) && layout.scrollY > 0
+    && layout.headerNavigation?.height > 0 && layout.headerNavigation.bottom <= 0;
+  if (!visible.length || visible.some(entry => entry.width < 24 || entry.height < 40 || entry.x < -1 || entry.right > layout.width + 1
+    || (!(scrolledHeader && entry.scope === 'header' && entry.bottom <= 0)
+      && (!entry.unobscured || entry.y < -1 || entry.bottom > layout.height + 1)))) {
     issues.push('conditional admin navigation hidden, clipped or obscured');
   }
   const toolbar = layout.toolbar;
