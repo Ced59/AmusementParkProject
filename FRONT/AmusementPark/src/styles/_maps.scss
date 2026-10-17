@@ -6,11 +6,8 @@
   overflow: hidden;
   min-height: 18rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 20% 20%, rgba(56, 197, 245, 0.12), transparent 30%),
-    radial-gradient(circle at 80% 30%, rgba(196, 255, 39, 0.1), transparent 32%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-radius: var(--radius-md);
+  background: var(--app-map);
   box-shadow: var(--shadow-card);
 }
 
@@ -38,9 +35,9 @@
 
 .distance-panel,
 .app-distance-panel {
-  border: 1px solid rgba(56, 197, 245, 0.2);
-  border-radius: var(--radius-lg);
-  background: rgba(56, 197, 245, 0.075);
+  border: 1px solid color-mix(in srgb, var(--c-sky) 42%, var(--app-border));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--c-sky) 10%, var(--app-surface));
   padding: 1rem;
 }
 
@@ -117,8 +114,8 @@
   min-height: 18rem;
   overflow: hidden;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--app-surface-2) 96%, transparent);
+  border-radius: var(--radius-md);
+  background: var(--app-map);
 }
 
 .app-map-slot > *:not(.app-map-slot__placeholder) {
@@ -143,8 +140,8 @@
   width: 3.4rem;
   height: 3.4rem;
   place-items: center;
-  border-radius: 1.2rem;
-  background: rgba(56, 197, 245, 0.12);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
   color: var(--c-sky);
   font-size: 1.4rem;
 }
@@ -174,8 +171,8 @@
   width: 2.6rem;
   height: 2.6rem;
   place-items: center;
-  border-radius: 0.95rem;
-  background: rgba(56, 197, 245, 0.14);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
   color: var(--c-sky);
 }
 
@@ -255,13 +252,7 @@
 
 .parks-map .app-map-slot {
   min-height: 24rem;
-  background:
-    radial-gradient(circle at 18% 32%, rgba(56, 197, 245, 0.08), transparent 22%),
-    radial-gradient(circle at 72% 40%, rgba(196, 255, 39, 0.06), transparent 22%),
-    radial-gradient(circle at 48% 72%, rgba(255, 90, 31, 0.06), transparent 22%),
-    repeating-linear-gradient(0deg, transparent 0 30px, rgba(255, 255, 255, 0.04) 30px 31px),
-    repeating-linear-gradient(90deg, transparent 0 30px, rgba(255, 255, 255, 0.04) 30px 31px),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+  background: var(--app-map);
 }
 
 .parks-map app-leaflet-map,
@@ -271,7 +262,7 @@
   height: 100%;
   min-height: 24rem;
   border: 0;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   box-shadow: none;
 }
 
@@ -293,14 +284,14 @@
   width: 3.4rem;
   height: 3.4rem;
   place-items: center;
-  border-radius: 1.2rem;
-  background: rgba(56, 197, 245, 0.12);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
   color: var(--c-sky);
   font-size: 1.4rem;
 }
 
 .parks-map__state--error i {
-  background: rgba(255, 90, 31, 0.12);
+  background: color-mix(in srgb, var(--c-orange) 14%, var(--app-surface));
   color: var(--c-orange);
 }
 
@@ -333,8 +324,8 @@
 .parks-map__selected-card,
 .parks-map__entry {
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 210, 140, 0.035);
+  border-radius: var(--radius-sm);
+  background: var(--app-surface-2);
 }
 
 .parks-map__selected-card {
@@ -379,15 +370,13 @@
   text-align: left;
   transition:
     border-color var(--transition),
-    background-color var(--transition),
-    transform var(--transition);
+    background-color var(--transition);
 }
 
 .parks-map__entry:hover,
 .parks-map__entry--selected {
   border-color: color-mix(in srgb, var(--c-sky) 38%, var(--app-border));
-  background: rgba(56, 197, 245, 0.08);
-  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--c-sky) 10%, var(--app-surface));
 }
 
 .parks-map__entry small {
@@ -402,7 +391,7 @@
   margin-top: 0.35rem;
   border-radius: 50%;
   background: var(--c-sky);
-  box-shadow: 0 0 0 0.25rem rgba(56, 197, 245, 0.12);
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--c-sky) 14%, transparent);
 }
 
 @media (max-width: 1180px) {
@@ -423,16 +412,11 @@
 
 .app-leaflet-marker__pin {
   position: relative;
-  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.32));
-  transform-origin: 50% 100%;
-  transition:
-    transform var(--transition),
-    filter var(--transition);
 }
 
-.app-leaflet-marker__pin:hover {
-  transform: translateY(-3px) scale(1.06);
-  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.42));
+.app-leaflet-marker__pin:hover .app-leaflet-marker__head {
+  outline: 2px solid var(--app-primary-strong);
+  outline-offset: 2px;
 }
 
 .app-leaflet-marker__pin--park,
@@ -451,26 +435,23 @@
   inset: 0 0 auto;
   display: grid;
   place-items: center;
-  border: 3px solid #0f0b06;
-  background:
-    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.34), transparent 34%),
-    linear-gradient(145deg, var(--marker-color), color-mix(in srgb, var(--marker-color) 72%, #000 28%));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 0 0 2px rgba(255, 255, 255, 0.08);
+  border: 2px solid var(--app-heading);
+  border-top: 4px solid var(--marker-color);
+  background: var(--app-field);
+  box-shadow: 0 0 0 1px var(--app-field);
 }
 
 .app-leaflet-marker__pin--park .app-leaflet-marker__head,
 .app-leaflet-marker__pin--location .app-leaflet-marker__head {
   width: 46px;
   height: 46px;
-  border-radius: 16px 16px 18px 18px;
+  border-radius: var(--radius-sm);
 }
 
 .app-leaflet-marker__pin--item .app-leaflet-marker__head {
   width: 42px;
   height: 42px;
-  border-radius: 50%;
+  border-radius: var(--radius-sm);
 }
 
 .app-leaflet-marker__tip {
@@ -478,8 +459,8 @@
   left: 50%;
   z-index: -1;
   background: var(--marker-color);
-  border-right: 3px solid #0f0b06;
-  border-bottom: 3px solid #0f0b06;
+  border-right: 2px solid var(--app-heading);
+  border-bottom: 2px solid var(--app-heading);
   transform: translateX(-50%) rotate(45deg);
 }
 
@@ -488,49 +469,23 @@
   bottom: 3px;
   width: 20px;
   height: 20px;
-  border-radius: 0 0 6px 0;
+  border-radius: 0 0 var(--radius-sm) 0;
 }
 
 .app-leaflet-marker__pin--item .app-leaflet-marker__tip {
   bottom: 4px;
   width: 16px;
   height: 16px;
-  border-radius: 0 0 5px 0;
+  border-radius: 0 0 var(--radius-sm) 0;
 }
 
 .app-leaflet-marker__symbol {
   position: relative;
   z-index: 1;
-  color: #0f0b06;
+  color: var(--app-heading);
   font-size: 1.12rem;
   font-weight: 900;
   line-height: 1;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
-}
-
-.app-leaflet-marker__logo {
-  position: relative;
-  z-index: 1;
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  border-radius: 0.65rem;
-  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.24));
-}
-
-.app-leaflet-marker--park .app-leaflet-marker__head,
-.app-leaflet-marker--site .app-leaflet-marker__head {
-  border-radius: 14px;
-}
-
-.app-leaflet-marker--accessibleEntrance .app-leaflet-marker__symbol,
-.app-leaflet-marker--exit .app-leaflet-marker__symbol,
-.app-leaflet-marker--darkRide .app-leaflet-marker__symbol,
-.app-leaflet-marker--show .app-leaflet-marker__symbol,
-.app-leaflet-marker--thrillRide .app-leaflet-marker__symbol,
-.app-leaflet-marker--interactiveExperience .app-leaflet-marker__symbol,
-.app-leaflet-marker--firstAid .app-leaflet-marker__symbol {
-  color: #fff;
 }
 
 .app-leaflet-marker--information .app-leaflet-marker__symbol,
@@ -556,15 +511,12 @@
 .app-leaflet-marker-cluster {
   display: grid;
   place-items: center;
-  border: 0;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.42), transparent 30%),
-    linear-gradient(145deg, #38c5f5, #ff5a1f);
-  box-shadow:
-    0 0 0 4px rgba(15, 11, 6, 0.72),
-    0 12px 20px rgba(0, 0, 0, 0.28);
-  color: #0f0b06;
+  border: 2px solid var(--app-heading);
+  border-top: 4px solid var(--c-sky);
+  border-radius: var(--radius-sm);
+  background: var(--app-field);
+  box-shadow: 0 0 0 1px var(--app-field);
+  color: var(--app-heading);
   font-family: var(--font-heading, system-ui, sans-serif);
   font-weight: 900;
 }
@@ -574,8 +526,7 @@
   min-width: 2rem;
   min-height: 2rem;
   place-items: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.78);
+  background: transparent;
   font-size: 0.9rem;
   line-height: 1;
 }

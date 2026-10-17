@@ -44,8 +44,8 @@
 .shared-year__state,
 .shared-year__footer > aside {
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-lg);
-  background: color-mix(in srgb, var(--app-surface-2) 90%, transparent);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
 }
 
 .shared-year__story {
@@ -53,7 +53,8 @@
   gap: clamp(1rem, 3vw, 1.6rem);
   padding: clamp(1rem, 4vw, 2.4rem);
   overflow-x: clip;
-  background: radial-gradient(circle at 96% 1%, color-mix(in srgb, var(--c-gold) 19%, transparent), transparent 30%), radial-gradient(circle at 2% 70%, color-mix(in srgb, var(--c-sky) 10%, transparent), transparent 34%), var(--app-surface-2);
+  border-top: 4px solid var(--c-gold);
+  background: var(--app-surface);
 }
 
 .shared-year__hero {
@@ -87,7 +88,7 @@
   color: var(--app-heading);
   font-family: var(--font-display);
   font-size: clamp(4rem, 18vw, 10rem);
-  line-height: 0.78;
+  line-height: 0.9;
 }
 
 .shared-year__hero p {
@@ -156,7 +157,7 @@
 }
 
 .shared-year__highlights article {
-  background: linear-gradient(145deg, color-mix(in srgb, var(--c-gold) 12%, var(--app-surface)), var(--app-surface));
+  background: color-mix(in srgb, var(--c-gold) 10%, var(--app-surface));
 }
 
 .shared-year__highlights h2,

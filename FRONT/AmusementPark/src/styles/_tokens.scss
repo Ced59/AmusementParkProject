@@ -96,7 +96,7 @@
 
   --app-shadow-1: var(--shadow-card);
   --app-shadow-2: var(--shadow-lift);
-  --app-shadow-3: 0 28px 72px rgba(0, 0, 0, 0.28);
+  --app-shadow-3: 0 14px 36px rgba(25, 32, 29, 0.14);
   --app-shadow-soft-orange: var(--shadow-soft-orange);
   --app-shadow-soft-lime: var(--shadow-soft-lime);
 
@@ -176,6 +176,23 @@
   --ap-z-modal: 1050;
   --ap-z-popover: 1060;
   --ap-z-tooltip: 1070;
+}
+
+// Theme values live on body. Resolve their aliases at that same scope before
+// inheritance; resolving them on :root would leave their body values unavailable.
+body {
+  --app-surface-muted: var(--app-surface-2);
+  --app-field: var(--field);
+  --app-map: var(--map);
+  --app-line: var(--line);
+  --app-line-weak: var(--line-weak);
+  --app-on-accent: var(--on-accent);
+  --type-coaster: var(--c-orange);
+  --type-water: var(--c-sky);
+  --type-family: var(--c-lime);
+  --type-show: var(--c-purple);
+  --type-food: var(--c-gold);
+  --type-thrill: var(--c-rose);
 }
 
 @font-face {

@@ -1,7 +1,7 @@
 import { spawn, spawnSync } from 'node:child_process';
 import { once } from 'node:events';
 import { existsSync } from 'node:fs';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:net';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -9,11 +9,26 @@ import { pathToFileURL } from 'node:url';
 
 import { compile } from 'sass';
 
-const viewportWidths = [320, 360, 390, 768, 1024, 1280, 1680];
+const viewportWidths = [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920];
+const viewportCases = [
+  ...viewportWidths.map((width) => ({ height: 1200, label: `${width}px`, width })),
+  { height: 568, label: 'mobile-low-height', width: 390 },
+  { height: 600, label: 'tablet-landscape-low-height', width: 1024 }
+];
+const themes = ['light', 'dark'];
 const projectRoot = process.cwd();
+const evidenceDirectory = process.env.V6_RESPONSIVE_EVIDENCE_DIR
+  ? resolve(projectRoot, process.env.V6_RESPONSIVE_EVIDENCE_DIR)
+  : null;
 const componentStyles = [
+  'src/styles/_design-tokens.scss',
+  'src/styles/_tokens.scss',
+  'src/styles/_theme-dark.scss',
+  'src/styles/_theme-light.scss',
+  'src/styles/_buttons.scss',
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
+  'src/app/features/public/home/pages/home.component.scss',
   'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
   'src/app/features/public/parks/ui/park-location-section.component.scss',
   'src/app/features/public/parks/ui/park-detail-view.component.scss',
@@ -68,6 +83,17 @@ if (!chromeExecutable) {
 
 const fixtureMarkup = `
   <div class="responsive-fixture-host">
+    <main class="home-page" data-check-bound>
+      <div class="home-floating-stack">
+        <a class="home-hero-card home-hero-card--1 home-hero-card--primary" data-check-bound>
+          <span class="home-hero-card__media" aria-hidden="true">Photo du parc</span>
+          <span class="home-hero-card__icon" aria-hidden="true">↗</span>
+          <span class="home-hero-card__content" data-check-bound><strong>Un parc au nom particulièrement long</strong><span>Une localisation également très longue</span></span>
+          <span class="home-hero-card__tag">À découvrir</span>
+          <span class="home-hero-card__bar" aria-hidden="true"></span>
+        </a>
+      </div>
+    </main>
     <main class="app-admin-layout__main" data-responsive-root="admin-trip-pilot" data-check-bound>
       <div class="trip-pilot surface" data-check-bound>
         <header class="trip-pilot__header"><div><span>Pilotage des voyages privés</span><h2>Pilote collaboratif</h2><p>Des indicateurs agrégés avec des libellés volontairement longs pour éprouver l'affichage mobile.</p></div><button>Actualiser les indicateurs</button></header>
@@ -348,7 +374,12 @@ const fixtureMarkup = `
   <div class="app-public-layout" data-check-bound>
     <main class="app-layout-main app-public-layout__main">
       <section class="park-detail">
-        <section class="park-banner"><div class="park-banner__photo" data-hero-slot></div></section>
+        <section class="park-banner park-banner--has-photo"><div class="park-banner__content">
+          <div class="park-logo-frame" data-check-bound></div>
+          <div class="park-banner__info" data-check-bound><h1 class="park-banner__name">Ein besonders langer Freizeitparkname</h1></div>
+          <div class="park-banner__photo" data-hero-slot data-check-bound></div>
+          <div class="park-banner__actions" data-check-bound><button data-check-bound>Alle Attraktionen und Orte entdecken</button><a data-check-bound>Zurück zur Übersicht</a></div>
+        </div></section>
         <div class="park-detail__body">
           <main class="park-main">
             <section class="park-main-photo" data-check-bound>
@@ -378,10 +409,11 @@ const fixtureMarkup = `
   <nav class="test-mobile-navigation" aria-hidden="true">Navigation mobile</nav>`;
 
 const baseStyles = `
-  :root { --font-heading: sans-serif; --text-muted: #8a8175; --text-primary: #fff; --app-border: #655847; --app-surface: #17110c; --app-surface-2: #211810; --c-rose: #ff477e; --c-orange: #ff5b2d; --c-sky: #58c9ee; --c-gold: #d6a945; --c-lime: #b8e532; --c-purple: #a978ff; --radius-md: 0.75rem; --radius-lg: 1rem; --shadow-lg: 0 1rem 2rem #0008; --bottom-nav-height: 4.75rem; --content-max-width: 1200px; --content-wide-max-width: 1440px; --topbar-height: 4rem; }
+  :root { --font-heading: sans-serif; --text-muted: #bbc5bc; --text-primary: #f5f5ec; --app-border: #67716a; --app-surface: #252c26; --app-surface-2: #1c241e; --c-rose: #ff477e; --c-orange: #ff7551; --c-sky: #49c9df; --c-gold: #d6a945; --c-lime: #d1ec70; --c-purple: #a978ff; --radius-md: 0.25rem; --radius-lg: 0.375rem; --shadow-lg: none; --bottom-nav-height: 4.75rem; --content-max-width: 1160px; --content-wide-max-width: 1480px; --topbar-height: 4rem; }
   * { box-sizing: border-box; }
   html, body { width: 100%; max-width: 100%; margin: 0; overflow-x: clip; }
-  body { background: #0d0906; color: var(--text-primary); font: 16px/1.4 sans-serif; }
+  body { background: #151a17; color: var(--text-primary); font: 16px/1.4 sans-serif; }
+  body[data-theme="light"] { --text-muted: #57605a; --text-primary: #19201d; --app-border: #aeb7ae; --app-surface: #eeefe8; --app-surface-2: #fff; --c-orange: #e54b28; --c-sky: #0c8ca3; --c-lime: #d5ed60; background: #f7f6f0; }
   button, input, select, textarea, a { max-width: 100%; font: inherit; }
   button, a { overflow-wrap: anywhere; }
   .surface { padding: 1rem; border: 1px solid var(--app-border); border-radius: var(--radius-lg); background: var(--app-surface); }
@@ -391,10 +423,18 @@ const baseStyles = `
 
 const evaluationScript = `
   (() => {
+    document.body.dataset.theme = new URLSearchParams(window.location.search).get('theme') ?? 'dark';
+    document.body.classList.add(document.body.dataset.theme + '-mode');
     const viewportRight = document.documentElement.clientWidth;
     const checked = Array.from(document.querySelectorAll('[data-responsive-root], [data-check-bound], input, select, textarea, button, a'))
       .filter((element) => !element.closest('.wishlist-strip'));
     const violations = [];
+    const bodyStyle = getComputedStyle(document.body);
+    for (const alias of ['--app-field', '--app-map', '--app-line', '--app-line-weak', '--app-on-accent']) {
+      if (!bodyStyle.getPropertyValue(alias).trim()) {
+        violations.push({ reason: 'unresolved-theme-alias', alias });
+      }
+    }
     if (document.documentElement.scrollWidth > viewportRight + 1) {
       violations.push({ selector: 'document', reason: 'horizontal-overflow', right: document.documentElement.scrollWidth, viewportRight });
     }
@@ -403,6 +443,10 @@ const evaluationScript = `
       if (bounds.left < -1 || bounds.right > viewportRight + 1) {
         violations.push({ selector: element.tagName.toLowerCase() + (element.className ? '.' + String(element.className).trim().replaceAll(' ', '.') : ''), reason: 'out-of-bounds', left: bounds.left, right: bounds.right, viewportRight });
       }
+    }
+    const heroText = document.querySelector('.home-hero-card--1 .home-hero-card__content').getBoundingClientRect();
+    if (heroText.width < 112) {
+      violations.push({ selector: '.home-hero-card--1 .home-hero-card__content', reason: 'compressed-hero-title', width: heroText.width });
     }
     for (const target of document.querySelectorAll('.rating-stars__hit')) {
       const bounds = target.getBoundingClientRect();
@@ -494,7 +538,6 @@ const connectDevTools = async (webSocketUrl) => {
 
   let sequence = 0;
   const pending = new Map();
-  const eventWaiters = new Map();
   socket.addEventListener('message', (event) => {
     const message = JSON.parse(event.data);
     if (message.id) {
@@ -507,24 +550,21 @@ const connectDevTools = async (webSocketUrl) => {
       }
       return;
     }
-    const waiters = eventWaiters.get(message.method) ?? [];
-    eventWaiters.delete(message.method);
-    for (const resolveEvent of waiters) {
-      resolveEvent(message.params);
-    }
   });
 
   return {
     close: () => socket.close(),
     send: (method, params = {}) => new Promise((resolveRequest, rejectRequest) => {
       const id = ++sequence;
-      pending.set(id, { reject: rejectRequest, resolve: resolveRequest });
+      const timer = setTimeout(() => {
+        pending.delete(id);
+        rejectRequest(new Error(`Chromium request timed out: ${method}`));
+      }, 15000);
+      pending.set(id, {
+        reject: (error) => { clearTimeout(timer); rejectRequest(error); },
+        resolve: (value) => { clearTimeout(timer); resolveRequest(value); }
+      });
       socket.send(JSON.stringify({ id, method, params }));
-    }),
-    waitFor: (method) => new Promise((resolveEvent) => {
-      const waiters = eventWaiters.get(method) ?? [];
-      waiters.push(resolveEvent);
-      eventWaiters.set(method, waiters);
     })
   };
 };
@@ -532,6 +572,7 @@ const connectDevTools = async (webSocketUrl) => {
 const workingDirectory = await mkdtemp(join(tmpdir(), 'trip-responsive-'));
 let chromeProcess;
 let devTools;
+const evidenceResults = [];
 
 try {
   const htmlPath = join(workingDirectory, 'trip-responsive.html');
@@ -554,33 +595,79 @@ try {
   await devTools.send('Page.enable');
   await devTools.send('Runtime.enable');
 
-  for (const width of viewportWidths) {
-    await devTools.send('Emulation.setDeviceMetricsOverride', {
-      width,
-      height: 1200,
-      deviceScaleFactor: 1,
-      mobile: false,
-      screenWidth: width,
-      screenHeight: 1200
-    });
-    const pageLoaded = devTools.waitFor('Page.loadEventFired');
-    await devTools.send('Page.navigate', { url: `${pathToFileURL(htmlPath).href}?width=${width}` });
-    await pageLoaded;
-    const evaluation = await devTools.send('Runtime.evaluate', {
-      expression: "document.querySelector('#responsive-result')?.textContent",
-      returnByValue: true
-    });
-    if (!evaluation.result?.value) {
-      throw new Error(`Chrome did not return responsive measurements at ${width}px.`);
-    }
-    const result = JSON.parse(evaluation.result.value);
-    if (result.viewportRight !== width || result.violations.length > 0) {
-      throw new Error(`Trip responsive check failed at ${width}px: ${JSON.stringify(result)}`);
+  if (evidenceDirectory) {
+    await mkdir(evidenceDirectory, { recursive: true });
+  }
+
+  for (const viewport of viewportCases) {
+    for (const theme of themes) {
+      await devTools.send('Emulation.setDeviceMetricsOverride', {
+        width: viewport.width,
+        height: viewport.height,
+        deviceScaleFactor: 1,
+        mobile: false,
+        screenWidth: viewport.width,
+        screenHeight: viewport.height
+      });
+      const query = `?width=${viewport.width}&height=${viewport.height}&theme=${theme}`;
+      await devTools.send('Page.navigate', {
+        url: `${pathToFileURL(htmlPath).href}${query}`
+      });
+      let evaluation;
+      for (let attempt = 0; attempt < 100; attempt++) {
+        evaluation = await devTools.send('Runtime.evaluate', {
+          expression: `location.search === ${JSON.stringify(query)} && document.querySelector('#responsive-result')?.textContent`,
+          returnByValue: true
+        });
+        if (evaluation.result?.value) break;
+        await new Promise((resolveWait) => setTimeout(resolveWait, 100));
+      }
+      if (!evaluation.result?.value) {
+        throw new Error(`Chrome did not return responsive measurements at ${viewport.width}x${viewport.height}px in ${theme} theme.`);
+      }
+      const result = JSON.parse(evaluation.result.value);
+      if (result.viewportRight !== viewport.width || result.violations.length > 0) {
+        throw new Error(`Trip responsive check failed at ${viewport.width}x${viewport.height}px in ${theme} theme: ${JSON.stringify(result)}`);
+      }
+
+      const evidence = {
+        height: viewport.height,
+        label: viewport.label,
+        theme,
+        violations: result.violations,
+        viewportRight: result.viewportRight,
+        width: viewport.width
+      };
+      if (evidenceDirectory) {
+        const screenshotName = `v6-responsive-${viewport.width}x${viewport.height}-${theme}.webp`;
+        const screenshot = await devTools.send('Page.captureScreenshot', {
+          captureBeyondViewport: false,
+          format: 'webp',
+          fromSurface: true,
+          quality: 72
+        });
+        await writeFile(join(evidenceDirectory, screenshotName), Buffer.from(screenshot.data, 'base64'));
+        evidence.screenshot = screenshotName;
+      }
+      evidenceResults.push(evidence);
+      console.log(`PASS ${viewport.width}x${viewport.height} ${theme}`);
     }
   }
 
-  console.log(`Trip pages fit real Chromium viewports: ${viewportWidths.join(', ')}px.`);
+  if (evidenceDirectory) {
+    await writeFile(join(evidenceDirectory, 'responsive-report.json'), `${JSON.stringify({
+      generatedAt: new Date().toISOString(),
+      note: 'Static Chromium fixture: layout evidence only; final real-data Angular captures remain part of the owner review gate.',
+      results: evidenceResults,
+      themes,
+      viewportWidths,
+      zoom200ReflowProxyWidths: [320, 360, 390, 414, 480]
+    }, null, 2)}\n`, 'utf8');
+  }
+
+  console.log(`V6 responsive fixture fits ${viewportCases.length} real Chromium viewports in light and dark themes: ${viewportWidths.join(', ')}px.`);
 } finally {
+  try { await devTools?.send('Browser.close'); } catch { /* Chromium can close the socket before its reply. */ }
   devTools?.close();
   if (chromeProcess && chromeProcess.exitCode === null) {
     chromeProcess.kill();

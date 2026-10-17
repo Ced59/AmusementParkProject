@@ -27,6 +27,7 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
 import { resolveLocalizedPlural } from '@shared/utils/localization/localized-plural.helpers';
 import { getParkStatusPresentation, ParkStatusPresentation } from '@shared/utils/parks/park-status.presentation';
 import { HomeLatestContentComponent } from './home-latest-content.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 
 @Component({
   selector: 'app-home-view',
@@ -46,7 +47,8 @@ import { HomeLatestContentComponent } from './home-latest-content.component';
     UiSectionHeaderComponent,
     UiSurfaceDirective,
     PublicSharePanelComponent,
-    HomeLatestContentComponent
+    HomeLatestContentComponent,
+    ImageDisplayComponent
   ]
 })
 export class HomeViewComponent {

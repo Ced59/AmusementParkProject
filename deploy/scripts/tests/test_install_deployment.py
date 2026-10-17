@@ -273,6 +273,21 @@ cp completed-fixture.json nginx/runtime/deployment.json
         self.assertIn("installation is incomplete", result.stderr)
         self.assertNotIn("Missing .env", result.stderr)
 
+    @unittest.skipUnless(sys.platform == "linux", "Real installer lock is tested in CI")
+    def test_installer_refuses_pending_application_rollback_before_file_replacement(self):
+        installer.install_bundle(self.archive, self.target)
+        marker = self.target / "nginx/runtime/application-rollback.json"
+        marker.parent.mkdir(parents=True)
+        marker.write_text(json.dumps({"phase": "restoring"}))
+        original = (self.target / ".env").read_bytes()
+        result = subprocess.run([sys.executable, str(SCRIPTS / "install-deployment.py"), str(self.archive), str(self.target)],
+                                env={**os.environ, "DEPLOY_LOCK_FILE": str(self.directory / "lock")},
+                                capture_output=True, text=True, timeout=10)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Resume the exact application rollback", result.stderr)
+        self.assertEqual((self.target / ".env").read_bytes(), original)
+        self.assertFalse((self.target / "one.started").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

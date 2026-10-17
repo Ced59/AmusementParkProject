@@ -1,11 +1,12 @@
+@use "../../../../../styles/mixins" as m;
+
 :host {
   display: block;
 }
 
 .park-pricing-page {
-  width: min(1180px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: 1.25rem 0 3rem;
+  @include m.public-editorial-page;
+  display: block;
 }
 
 .park-pricing-breadcrumb {
@@ -18,7 +19,7 @@
 }
 
 .park-pricing-breadcrumb a {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   text-decoration: none;
 }
 
@@ -27,20 +28,12 @@
 }
 
 .park-pricing-hero {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid color-mix(in srgb, var(--app-primary) 30%, var(--app-border));
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--app-primary) 22%, transparent), transparent 36%),
-    linear-gradient(135deg, color-mix(in srgb, var(--app-primary) 9%, var(--app-surface)) 0%, var(--app-surface) 68%);
-  box-shadow: var(--shadow-lg);
+  @include m.public-editorial-header;
 }
 
 .park-pricing-hero__kicker {
   margin: 0 0 0.55rem;
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -51,7 +44,7 @@
   max-width: 820px;
   margin: 0;
   color: var(--app-heading);
-  font-size: clamp(2rem, 5vw, 3.65rem);
+  font-size: clamp(2.125rem, 5vw, 3.5625rem);
   line-height: 1.04;
 }
 
@@ -78,7 +71,7 @@
   margin-top: 1rem;
   padding: 0.45rem 0.7rem;
   border: 1px solid color-mix(in srgb, var(--app-primary) 28%, var(--app-border));
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
   color: var(--app-text-muted);
   background: color-mix(in srgb, var(--app-primary) 8%, var(--app-surface));
   font-size: 0.86rem;
@@ -140,9 +133,9 @@
   height: 3rem;
   flex: 0 0 auto;
   border-radius: var(--radius-md);
-  color: var(--app-primary-contrast);
+  color: var(--app-on-accent);
   background: var(--app-primary);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 .park-pricing-section__header h2,
@@ -172,9 +165,9 @@
   min-width: 0;
   padding: 1.15rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--app-surface);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 .park-price-card__header {
@@ -195,7 +188,7 @@
   margin-top: 0.45rem;
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   background: color-mix(in srgb, var(--app-primary) 12%, transparent);
   font-size: 0.76rem;
   font-weight: 700;
@@ -266,7 +259,7 @@
   gap: 0.6rem;
   margin-top: auto;
   padding-top: 1rem;
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-weight: 700;
   text-decoration: none;
 }
@@ -344,9 +337,9 @@
   min-width: 0;
   padding: 1.1rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--app-surface);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 .park-pricing-history-card > header {
@@ -492,16 +485,6 @@
 }
 
 @media (max-width: 640px) {
-  .park-pricing-page {
-    width: min(100% - 1rem, 1180px);
-    padding-top: 0.5rem;
-  }
-
-  .park-pricing-hero {
-    padding: 1.25rem;
-    border-radius: var(--radius-lg);
-  }
-
   .park-pricing-hero__actions {
     flex-direction: column;
     align-items: stretch;

@@ -29,9 +29,9 @@
 
 .admin-card {
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, var(--app-surface), var(--app-surface-2));
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
+  box-shadow: none;
   min-width: 0;
   padding: clamp(1rem, 2vw, 1.25rem);
 }
@@ -514,11 +514,11 @@
 }
 
 .change-status--created {
-  color: var(--color-success, #4ddf8a);
+  color: var(--app-success, #4ddf8a);
 }
 
 .change-status--updated {
-  color: var(--color-sky, #38c5f5);
+  color: var(--app-accent-cyan, #38c5f5);
 }
 
 .change-status--deleted {
@@ -526,7 +526,7 @@
 }
 
 .change-status--warning {
-  color: var(--color-warning, #ffb627);
+  color: var(--app-accent-gold, #ffb627);
 }
 
 .change-status--skipped {
@@ -562,7 +562,7 @@
   border: 1px solid rgba(56, 197, 245, 0.28);
   border-radius: 999px;
   background: rgba(56, 197, 245, 0.09);
-  color: var(--color-sky, #38c5f5);
+  color: var(--app-accent-cyan, #38c5f5);
   font-size: 0.78rem;
   font-weight: 900;
   overflow-wrap: anywhere;

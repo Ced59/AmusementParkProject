@@ -4,12 +4,8 @@
   padding: 1rem;
   border: 1px solid var(--app-border, rgba(255, 210, 140, 0.12));
   border-radius: var(--radius-md, 8px);
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--app-surface, #1a140f) 92%, transparent),
-    color-mix(in srgb, var(--app-surface-2, #211a13) 100%, transparent)
-  );
-  box-shadow: var(--shadow-card, 0 14px 30px rgba(15, 23, 42, 0.12));
+  background: var(--app-surface, #1a140f);
+  box-shadow: none;
   color: var(--app-text, #f6eed9);
 }
 
@@ -58,7 +54,7 @@
   min-height: 2rem;
   padding: 0.35rem 0.7rem;
   border: 1px solid color-mix(in srgb, var(--app-danger, #ff6b6b) 36%, transparent);
-  border-radius: var(--radius-pill, 999px);
+  border-radius: var(--radius-sm, 4px);
   background: color-mix(in srgb, var(--app-danger, #ff6b6b) 12%, transparent);
   color: var(--app-danger, #ff6b6b);
   font-size: 0.8rem;

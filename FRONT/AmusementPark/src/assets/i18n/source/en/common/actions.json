@@ -1,5 +1,9 @@
 {
   "actions": {
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
     "cancel": "Cancel",
     "close": "Close",
     "save": "Save",

@@ -1,14 +1,20 @@
 .app-public-layout {
-  --content-max-width: 92rem;
-  --content-wide-max-width: 100rem;
+  --content-max-width: 1160px;
+  --content-wide-max-width: 1480px;
 }
 
 .app-public-layout__main {
-  width: min(calc(100% - 1.5rem), var(--content-wide-max-width));
+  width: min(calc(100% - 48px), var(--content-max-width));
 }
 
 @media (max-width: 680px) {
   .app-public-layout__main {
-    width: min(calc(100% - 1rem), var(--content-max-width));
+    width: min(calc(100% - 30px), var(--content-max-width));
+  }
+}
+
+@media (max-width: 480px) {
+  .app-public-layout__main {
+    width: calc(100% - 28px);
   }
 }

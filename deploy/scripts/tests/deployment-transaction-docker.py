@@ -21,6 +21,7 @@ REPO = SCRIPTS.parents[1]
 sys.path.insert(0, str(SCRIPTS))
 from deployment_runtime import DeploymentError, DockerRuntime, GENERATION_LABEL
 from deployment_transaction import DeploymentTransaction
+from application_rollback import capture, restore
 from deployment_transition_observation import fixture_pair, matches_callback, matches_pair, wait_for_observation
 
 
@@ -42,7 +43,7 @@ def main():
         for name in ("control", "fixture", "scripts", "seo/current"):
             (directory / name).mkdir(parents=True)
         shutil.copytree(SCRIPTS.parent / "nginx", directory / "nginx", ignore=shutil.ignore_patterns("runtime"))
-        for name in ("deployment_transaction.py", "deployment_runtime.py"):
+        for name in ("deployment_transaction.py", "deployment_runtime.py", "application_rollback.py", "install-deployment.py"):
             shutil.copy2(SCRIPTS / name, directory / "scripts" / name)
         shutil.copy2(SCRIPTS / "tests/fixtures/deployment-compose.yml", directory / "compose.prod.yml")
         shutil.copy2(SCRIPTS / "tests/fixtures/deployment-server.mjs", directory / "fixture/deployment-server.mjs")
@@ -53,6 +54,14 @@ def main():
             reservation.bind(("127.0.0.1", 0))
             port = reservation.getsockname()[1]
         project = f"drain-test-{os.getpid()}"
+        fixture_images = {version: f"{project}-fixture:{version}" for version in ("old", "new")}
+        # Same server/runtime, two genuinely distinct immutable image IDs. The
+        # version is baked into each image, not switched by runtime mock data.
+        (directory / "fixture/Dockerfile").write_text(
+            "FROM node:24-alpine\nARG FIXTURE_VERSION\nENV FIXTURE_VERSION=$FIXTURE_VERSION\n")
+        for version, image in fixture_images.items():
+            subprocess.run(["docker", "build", "--build-arg", "FIXTURE_VERSION=" + version,
+                            "-t", image, str(directory / "fixture")], check=True)
         lock_path = directory / "deploy.lock"
         descriptor = os.open(lock_path, os.O_RDWR | os.O_CREAT, 0o600)
         os.dup2(descriptor, 9, inheritable=True)
@@ -60,7 +69,7 @@ def main():
             os.close(descriptor)
         fcntl.flock(9, fcntl.LOCK_EX)
         os.environ.update({"COMPOSE_PROJECT_NAME": project, "PUBLIC_HTTP_PORT": str(port),
-                           "PUBLIC_DOMAIN": "fixture.test", "FIXTURE_VERSION": "old",
+                           "PUBLIC_DOMAIN": "fixture.test", "API_IMAGE": fixture_images["old"], "FRONT_IMAGE": fixture_images["old"],
                            "FRONT_SSR_API_INTERNAL_URL": f"http://{project}-api:8080",
                            "SSR_INTERNAL_BASE_URL": f"http://{project}-edge:4000",
                            "ALLOWED_HOSTS": f"fixture.test;localhost;127.0.0.1;{project}-api", "DEPLOY_HEALTH_TIMEOUT_SECONDS": "90",
@@ -103,11 +112,17 @@ def main():
             assert original["front"]["version"] == original["api"]["version"] == "old"
             before_xml, before_headers = get("/sitemap.xml")
             assert before_xml == xml and before_headers.get("X-AmusementPark-SEO-Source") == "static"
-            os.environ["FIXTURE_VERSION"] = "new"
+            os.environ["API_IMAGE"] = fixture_images["new"]
+            os.environ["FRONT_IMAGE"] = fixture_images["new"]
+            (directory / ".env").write_text(
+                f"API_IMAGE={fixture_images['new']}\nFRONT_IMAGE={fixture_images['new']}\n")
             # Customized hosts intentionally omit the canonical internal name.
             # The runtime must add exactly that name, and the fixture enforces it.
             os.environ["ALLOWED_HOSTS"] = "fixture.test;localhost;127.0.0.1"
             runtime = DockerRuntime(directory)
+            shared_ids = {service: runtime.compose("ps", "-q", service) for service in ("mongodb", "minio", "edge")}
+            rollback_checkpoint = capture(runtime, directory)
+            assert rollback_checkpoint["phase"] == "ready"
             transaction = DeploymentTransaction(runtime, directory / "nginx/runtime")
             transaction.prepare()
             assert original == fixture_pair(transaction.read()["original"], "old")
@@ -196,6 +211,24 @@ def main():
             stopped = (directory / "control/stopped").read_text().splitlines()
             assert original["front"]["name"] in stopped and selected["front"]["name"] in stopped
 
+            # Completed exposure is not an abandon: restore both exact previous
+            # image IDs through the same transaction, without DB/infra helpers.
+            result = restore(runtime, directory, rollback_checkpoint["id"])
+            assert result["phase"] == "restored" and result["id"] == rollback_checkpoint["id"]
+            runtime = DockerRuntime(directory)
+            transaction = DeploymentTransaction(runtime, directory / "nginx/runtime")
+            state = transaction.read()
+            canonical = document("/pair")
+            assert canonical["front"]["version"] == canonical["api"]["version"] == "old"
+            assert state["phase"] == "complete" and not runtime.candidates()
+            for service in ("api", "front"):
+                assert runtime.inspect(state["canonical"][service]["id"])["Image"] == result["previous"][service]["id"]
+            assert shared_ids == {service: runtime.compose("ps", "-q", service) for service in shared_ids}
+            assert document("/api/callback") == {"status": 200, "api": canonical["api"], "callback": canonical["front"]}
+            rollback_xml, rollback_headers = get("/sitemap.xml")
+            assert rollback_xml == before_xml and rollback_headers.get("Content-Type") == before_headers.get("Content-Type")
+            assert len((directory / "control/writes").read_text().splitlines()) == 1
+
             # Separate proof: the actual Node shutdown helper also waits for a
             # direct HTTP request still active when SIGTERM is delivered.
             networks = runtime.inspect(state["canonical"]["front"]["id"])["NetworkSettings"]["Networks"]
@@ -217,7 +250,7 @@ def main():
             (directory / "control/release-directbody").touch()
             assert direct.result(timeout=20) == f"start:{canonical['front']['name']}\nend:{canonical['front']['name']}\n".encode()
             stopping.result(timeout=20)
-            print("Real Docker transaction passed: headers/body drained, two interruptions recovered, pairs/callbacks/XML preserved")
+            print("Real Docker transaction passed: headers/body drained, two interruptions recovered, full previous application images restored, shared IDs/callbacks/XML/write preserved")
         finally:
             # Release every fixture rendezvous before joining outstanding I/O.
             for key in ("headers", "body", "write", "candidatebody", "directbody"):
@@ -232,6 +265,7 @@ def main():
                 print(path.name, path.read_text())
             subprocess.run([*command, "logs", "--tail", "30"], cwd=directory, check=False)
             subprocess.run([*command, "down", "--remove-orphans", "--volumes"], cwd=directory, check=False)
+            subprocess.run(["docker", "image", "rm", *fixture_images.values()], check=False)
             os.close(9)
 
 

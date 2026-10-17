@@ -17,11 +17,11 @@
 }
 
 .invitation-page__message--success {
-  border-color: color-mix(in srgb, var(--color-lime-400, #b5f23d) 52%, transparent);
+  border-color: color-mix(in srgb, var(--c-lime, #b5f23d) 52%, transparent);
 }
 
 .invitation-card-public__decision-error {
-  color: var(--color-danger-300, #ff8da1);
+  color: var(--app-danger, #ff8da1);
   overflow-wrap: anywhere;
 }
 
@@ -55,6 +55,10 @@
   margin: 0 auto;
   padding: clamp(0.75rem, 4vw, 2rem);
   gap: 1rem;
+}
+
+.invitation-card-public {
+  border-top: 4px solid var(--c-sky);
 }
 
 .invitation-card-public,

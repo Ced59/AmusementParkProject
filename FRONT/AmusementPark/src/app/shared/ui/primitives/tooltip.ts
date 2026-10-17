@@ -81,7 +81,6 @@ export class Tooltip implements OnChanges, OnDestroy {
       tooltip.setAttribute('role', 'tooltip');
       tooltip.className = 'app-ui-tooltip';
       tooltip.textContent = this.text?.trim() ?? '';
-      this.applyTooltipStyles(tooltip);
       document.body.appendChild(tooltip);
       this.tooltipElement = tooltip;
       this.renderer.setAttribute(this.elementRef.nativeElement, 'aria-describedby', this.tooltipId);
@@ -104,28 +103,6 @@ export class Tooltip implements OnChanges, OnDestroy {
 
   private hasText(): boolean {
     return (this.text?.trim().length ?? 0) > 0;
-  }
-
-  private applyTooltipStyles(tooltip: HTMLElement): void {
-    const styles: Record<string, string> = {
-      position: 'fixed',
-      zIndex: '10000',
-      maxWidth: '280px',
-      padding: '0.45rem 0.6rem',
-      borderRadius: '6px',
-      background: '#111827',
-      color: '#f8fafc',
-      fontSize: '0.75rem',
-      fontWeight: '600',
-      lineHeight: '1.35',
-      boxShadow: '0 12px 30px rgba(15, 23, 42, 0.28)',
-      pointerEvents: 'none',
-      whiteSpace: 'normal'
-    };
-
-    for (const [name, value] of Object.entries(styles)) {
-      this.renderer.setStyle(tooltip, name, value);
-    }
   }
 
   private positionTooltip(): void {

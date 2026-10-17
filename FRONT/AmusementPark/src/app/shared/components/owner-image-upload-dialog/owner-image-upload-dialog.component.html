@@ -32,10 +32,17 @@
       class="drop-zone"
       [class.drop-zone--dragging]="isDragging"
       [class.drop-zone--disabled]="isUploading"
-      (click)="openFilePicker()"
       (dragover)="onDragOver($event)"
       (dragleave)="onDragLeave($event)"
       (drop)="onDrop($event)">
+      <button
+        type="button"
+        class="drop-zone__picker"
+        [attr.tabindex]="previewUrl ? 0 : -1"
+        [attr.aria-label]="chooseButtonKey | translate"
+        [disabled]="isUploading"
+        (click)="openFilePicker()">
+      </button>
       @if (!previewUrl) {
         <div class="drop-zone__placeholder">
           <i class="pi pi-image drop-zone__icon"></i>

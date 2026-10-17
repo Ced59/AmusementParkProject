@@ -1,5 +1,7 @@
 {
   "accountLayout": {
+    "introductionLabel": "Your account at a glance",
+    "featuresLabel": "Your account features",
     "kicker": "Personal space",
     "title": "Your park passport",
     "subtitle": "Manage your profile, language and access from a clear personal space.",

@@ -2,8 +2,8 @@
 .display-title {
   font-family: var(--font-display);
   color: var(--app-heading);
-  line-height: 1.06;
-  letter-spacing: 0.03em;
+  line-height: 1.08;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
 }
 
@@ -11,9 +11,9 @@
 .section-title {
   font-family: var(--font-display);
   color: var(--app-heading);
-  font-size: clamp(2.5rem, 6vw, 4.8rem);
-  line-height: 1.06;
-  letter-spacing: 0.03em;
+  font-size: clamp(27px, 3.2vw, 39px);
+  line-height: 1.08;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
 }
 
@@ -21,8 +21,8 @@
 .public-lead {
   margin: 0;
   color: var(--app-text-muted);
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  line-height: 1.7;
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
+  line-height: 1.68;
 }
 
 .app-muted,
@@ -34,7 +34,7 @@
   color: var(--app-text-muted);
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
 }
 

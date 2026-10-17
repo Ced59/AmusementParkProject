@@ -89,14 +89,14 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem;
   padding: 0.8rem;
-  border-radius: 0.8rem;
-  background: color-mix(in srgb, var(--color-danger, #ff4f87) 8%, transparent);
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-danger, #ff4f87) 8%, transparent);
 }
 .comparison-management__confirm p {
   grid-column: 1 / -1;
 }
 .comparison-management__error {
-  color: var(--color-danger, #ff4f87);
+  color: var(--app-danger);
 }
 @media (max-width: 420px) {
   .comparison-management__actions,

@@ -242,9 +242,15 @@
   *ngIf="lightboxOpen && activePhoto as fullscreenPhoto"
   role="dialog"
   aria-modal="true"
-  [attr.aria-label]="lightboxTitleKey | translate"
-  (click)="closeLightbox()">
-  <div class="photo-lightbox__dialog" (click)="$event.stopPropagation()">
+  [attr.aria-label]="lightboxTitleKey | translate">
+  <button
+    class="photo-lightbox__backdrop"
+    type="button"
+    tabindex="-1"
+    [attr.aria-label]="closeFullscreenLabelKey | translate"
+    (click)="closeLightbox()">
+  </button>
+  <div class="photo-lightbox__dialog" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
     <header class="photo-lightbox__header">
       <div>
         <span class="photo-lightbox__kicker">
@@ -258,6 +264,7 @@
       <button
         type="button"
         class="photo-lightbox__close"
+        cdkFocusInitial
         (click)="closeLightbox()"
         [attr.aria-label]="closeFullscreenLabelKey | translate">
         <i class="pi pi-times" aria-hidden="true"></i>

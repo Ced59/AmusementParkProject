@@ -1,30 +1,20 @@
+@use "../../../../../styles/mixins" as m;
+
 :host {
   display: block;
 }
 
 .park-images-page,
 .park-map-page {
-  width: min(100% - 2rem, var(--content-wide-max-width, 1480px));
-  margin: 0 auto;
-  padding: clamp(1rem, 3vw, 1.6rem) 0 clamp(2rem, 4vw, 3rem);
-  display: grid;
-  gap: clamp(1.1rem, 3vw, 1.8rem);
+  @include m.public-editorial-page;
 }
 
 .park-subpage-hero {
-  display: block;
-  border-color: color-mix(in srgb, var(--app-primary) 22%, var(--app-border));
+  @include m.public-editorial-header;
 }
 
 .park-subpage-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.06;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, currentColor 39px, currentColor 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, currentColor 39px, currentColor 40px);
+  content: none;
 }
 
 .park-subpage-hero__content {
@@ -118,11 +108,6 @@
 }
 
 @media (max-width: 700px) {
-  .park-images-page,
-  .park-map-page {
-    width: min(100% - 1rem, var(--content-wide-max-width, 1480px));
-  }
-
   .park-subpage-hero__actions a,
   .park-subpage-hero__actions button,
   .park-map-page__closed-filter,

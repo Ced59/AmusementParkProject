@@ -28,7 +28,7 @@
 .admin-rating-ranking-header p,
 .admin-rating-ranking__section header p,
 .admin-rating-ranking__methodology p {
-  color: var(--text-color-secondary);
+  color: var(--app-text-muted);
   margin: 0.35rem 0 0;
 }
 
@@ -48,8 +48,8 @@
 }
 
 .admin-rating-ranking__diff-grid article {
-  border: 1px solid var(--surface-border);
-  border-radius: 0.65rem;
+  border: 1px solid var(--app-border-stronger);
+  border-radius: var(--app-radius-md);
   min-width: 0;
   padding: 0.85rem;
 }
@@ -97,9 +97,9 @@
 .admin-rating-ranking__methodology > div,
 .admin-rating-ranking__stats article,
 .admin-rating-ranking__impact-summary article {
-  background: color-mix(in srgb, var(--surface-card) 88%, var(--primary-color) 12%);
-  border: 1px solid var(--surface-border);
-  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--app-surface) 88%, var(--app-primary) 12%);
+  border: 1px solid var(--app-border-stronger);
+  border-radius: var(--app-radius-md);
   min-width: 0;
   padding: 1rem;
 }
@@ -107,7 +107,7 @@
 .admin-rating-ranking__methodology span,
 .admin-rating-ranking__stats span,
 .admin-rating-ranking__impact-summary span {
-  color: var(--text-color-secondary);
+  color: var(--app-text-muted);
   display: block;
   font-size: 0.82rem;
 }
@@ -126,8 +126,8 @@
 }
 
 .admin-rating-ranking__section {
-  border: 1px solid var(--surface-border);
-  border-radius: 0.85rem;
+  border: 1px solid var(--app-border-stronger);
+  border-radius: var(--app-radius-md);
   margin-top: 1rem;
   min-width: 0;
   padding: 1rem;
@@ -155,14 +155,14 @@ table {
 
 th,
 td {
-  border-bottom: 1px solid var(--surface-border);
+  border-bottom: 1px solid var(--app-border-stronger);
   padding: 0.7rem;
   text-align: left;
   vertical-align: top;
 }
 
 th {
-  color: var(--text-color-secondary);
+  color: var(--app-text-muted);
   font-size: 0.78rem;
   text-transform: uppercase;
 }
@@ -185,8 +185,8 @@ td code,
 .admin-rating-ranking__metric-list li,
 .admin-rating-ranking__target-list li {
   align-items: center;
-  background: var(--surface-ground);
-  border-radius: 0.65rem;
+  background: var(--app-bg);
+  border-radius: var(--app-radius-md);
   display: flex;
   gap: 0.75rem;
   justify-content: space-between;
@@ -216,15 +216,15 @@ td code,
 }
 
 .admin-rating-ranking__field span {
-  color: var(--text-color-secondary);
+  color: var(--app-text-muted);
   font-size: 0.82rem;
 }
 
 .admin-rating-ranking__field input {
-  background: var(--surface-ground);
-  border: 1px solid var(--surface-border);
-  border-radius: 0.45rem;
-  color: var(--text-color);
+  background: var(--app-bg);
+  border: 1px solid var(--app-border-stronger);
+  border-radius: var(--app-radius-sm);
+  color: var(--app-text);
   min-height: 2.7rem;
   min-width: 0;
   padding: 0.65rem;
@@ -246,7 +246,7 @@ td code,
 }
 
 .admin-rating-ranking__row--warning {
-  background: color-mix(in srgb, var(--yellow-100, #fef3c7) 55%, transparent);
+  background: color-mix(in srgb, var(--app-accent-gold, #fef3c7) 55%, transparent);
 }
 
 .admin-rating-ranking__rebuild {
@@ -263,9 +263,9 @@ td code,
 }
 
 .admin-rating-ranking__notice {
-  background: color-mix(in srgb, var(--primary-color) 10%, var(--surface-card));
-  border-left: 0.25rem solid var(--primary-color);
-  border-radius: 0.35rem;
+  background: color-mix(in srgb, var(--app-primary) 10%, var(--app-surface));
+  border-left: 0.25rem solid var(--app-primary);
+  border-radius: var(--app-radius-sm);
   margin: 1rem 0 0;
   overflow-wrap: anywhere;
   padding: 0.75rem 1rem;

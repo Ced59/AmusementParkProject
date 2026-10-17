@@ -6,6 +6,7 @@ import {
   Inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateService } from '@ngx-translate/core';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
 import {
@@ -32,7 +33,8 @@ export class ResetPasswordPageStateFacade {
   public readonly message: Signal<string> = computed(() => this.screenStateStore.data()?.message ?? '');
 
   constructor(@Inject(RESET_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT) private readonly authApiService: ResetPasswordPageStateAuthApiServicePort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly translateService: TranslateService
   ) {
     this.screenStateStore.setReady({
       token: '',
@@ -90,7 +92,7 @@ export class ResetPasswordPageStateFacade {
         this.screenStateStore.setReady({
           ...currentData,
           isSubmitted: true,
-          message: this.resolveErrorMessage(error, 'La réinitialisation du mot de passe a échoué.')
+          message: this.resolveErrorMessage(error, this.translateService.instant('auth.reset_password.fallbackError'))
         });
       }
     });

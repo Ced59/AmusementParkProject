@@ -241,6 +241,7 @@ describe('HomeViewComponent', () => {
     expect(card.textContent).toContain('Example Park');
     expect(card.textContent).toContain('Paris · France');
     expect(card.querySelector('.home-hero-card__tag')?.textContent?.trim()).toBeTruthy();
+    expect(card.querySelector('.home-hero-card__media')?.getAttribute('aria-hidden')).toBe('true');
   });
 });
 

@@ -2,52 +2,52 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
-import { compileString } from 'sass';
+
+const styles = resolve(import.meta.dirname, '../../src/styles');
+const allowedTransitionProperties = new Set([
+  'background-color',
+  'border-color',
+  'box-shadow',
+  'color',
+  'opacity',
+  'transform',
+]);
 
 for (const file of ['_buttons.scss', '_navigation.scss']) {
-  test(`${file}: public controls animate only compositor-compatible properties`, () => {
-    const source = readFileSync(resolve(import.meta.dirname, '../../src/styles', file), 'utf8');
-    const { css } = compileString(source, { silenceDeprecations: ['color-functions', 'global-builtin'] });
-    const transitions = file === '_buttons.scss'
-      ? [...css.matchAll(/\.app-public-(?:layout \.app-button|nav \.btn-nav)\s*\{\s*transition:\s*([^;]+);/g)]
-      : [...css.matchAll(/transition:\s*([^;]+);/g)];
+  test(`${file}: public controls avoid layout-changing transitions`, () => {
+    const source = readFileSync(resolve(styles, file), 'utf8');
+    const transitions = [...source.matchAll(/transition:\s*([^;]+);/g)];
+
     assert.ok(transitions.length > 0);
     for (const [, value] of transitions) {
       for (const part of value.split(',')) {
-        assert.match(part.trim(), /^(transform|opacity)\s+/, `Non-composited transition: ${value}`);
+        const property = part.trim().split(/\s+/)[0];
+        assert.ok(
+          allowedTransitionProperties.has(property),
+          `Layout or filter transition is forbidden: ${value}`,
+        );
       }
     }
-    // Keyboard focus and hover feedback must still be present when paint changes are immediate.
-    assert.match(css, /:focus-visible/);
-    assert.match(css, /:hover/);
-    if (file === '_buttons.scss') {
-      assert.equal(transitions.length, 2);
-      // Shared legacy controls retain their existing transitions in administration.
-      for (const selector of ['\\.btn,\\s*\\.app-button', '\\.btn-nav']) {
-        const sharedRule = css.match(new RegExp(`${selector}\\s*\\{([^}]+)\\}`))[1];
-        const transition = sharedRule.match(/transition:\s*([^;]+);/)[1];
-        for (const property of ['border-color', 'background-color', 'color', 'box-shadow']) {
-          assert.ok(transition.includes(`${property} var(--transition)`));
-        }
-      }
-    }
+
+    assert.doesNotMatch(source, /transition:\s*all\b/);
+    assert.match(source, /:focus-visible/);
+    assert.match(source, /:hover/);
   });
 }
 
-test('home hero cards preserve movement and focus without animating paint properties', () => {
-  const source = readFileSync(resolve(import.meta.dirname, '../../src/app/features/public/home/pages/home.component.scss'), 'utf8');
-  const { css } = compileString(source);
-  const cardRule = css.match(/\.home-hero-card\s*\{([^}]+)\}/)[1];
-  const transition = cardRule.match(/transition:\s*([^;]+);/)[1];
-  for (const part of transition.split(',')) {
-    assert.match(part.trim(), /^(transform|opacity)\s+/);
-  }
-  assert.match(cardRule, /animation:\s*home-hero-float linear infinite alternate/);
-  const frames = css.match(/@keyframes home-hero-float\s*\{\s*from\s*\{([^}]+)\}\s*to\s*\{([^}]+)\}/);
-  assert.ok(frames);
-  for (const frame of frames.slice(1)) {
-    assert.match(frame.trim(), /^transform:[^;]+;$/);
-  }
-  assert.match(css, /\.home-hero-card:hover\s*\{[^}]*border-color:[^}]*box-shadow:/);
-  assert.match(css, /\.home-hero-card:focus-visible\s*\{[^}]*box-shadow:\s*var\(--shadow-focus\)/);
+test('the Playground home hero is stable and respects direct feedback states', () => {
+  const source = readFileSync(
+    resolve(
+      import.meta.dirname,
+      '../../src/app/features/public/home/pages/home.component.scss',
+    ),
+    'utf8',
+  );
+
+  assert.doesNotMatch(source, /animation\s*:/);
+  assert.doesNotMatch(source, /(?:linear|radial|conic)-gradient\(/);
+  assert.doesNotMatch(source, /translate(?:X|Y|3d)?\(/);
+  assert.match(source, /\.home-hero-card:hover\s*\{/);
+  assert.match(source, /\.home-hero-card:focus-visible\s*\{/);
+  assert.match(source, /@media \(max-width:\s*680px\)/);
 });

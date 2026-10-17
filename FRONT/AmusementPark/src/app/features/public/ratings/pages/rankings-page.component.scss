@@ -5,7 +5,7 @@
 .rankings-page {
   display: grid;
   gap: 1.25rem;
-  width: min(100% - 2.5rem, var(--content-wide-max-width, 1320px));
+  width: min(100% - 2.5rem, var(--content-max-width, 1160px));
   margin: 0 auto;
   padding: 1.8rem 0 4rem;
 }
@@ -13,6 +13,8 @@
 .rankings-hero {
   display: grid;
   gap: 1rem;
+  padding-top: clamp(1rem, 3vw, 2rem);
+  border-top: 4px solid var(--app-primary);
 }
 
 .rankings-hero__note {
@@ -36,7 +38,7 @@
 }
 
 .rankings-hero__note a {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-weight: 900;
   white-space: nowrap;
   text-underline-offset: 0.18em;
@@ -48,7 +50,7 @@
   gap: 0.85rem;
   padding: clamp(0.9rem, 2vw, 1.2rem);
   border: 1px solid color-mix(in srgb, var(--app-primary) 34%, var(--app-border));
-  border-radius: var(--app-radius-lg);
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--app-primary) 6%, var(--app-surface));
 }
 
@@ -99,7 +101,7 @@
 }
 
 .rankings-evidence-summary__meta a {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-weight: 900;
   overflow-wrap: anywhere;
 }
@@ -116,7 +118,7 @@
 
 .rankings-filters__button--active {
   border-color: var(--app-primary);
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .rankings-type-filter {
@@ -144,7 +146,7 @@
   align-items: center;
   padding: 0.75rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-md);
+  border-radius: var(--app-radius-sm);
   background: var(--app-surface);
 }
 
@@ -171,7 +173,7 @@
   min-height: 12rem;
   place-items: center;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-md);
+  border-radius: var(--app-radius-sm);
   background: var(--app-surface);
   color: var(--app-text-muted);
 }

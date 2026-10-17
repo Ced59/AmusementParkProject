@@ -19,8 +19,8 @@
 .shared-user-rankings__cta {
   min-width: 0;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-lg);
-  background: color-mix(in srgb, var(--app-surface-2) 86%, transparent);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
 }
 
 .shared-user-rankings__hero {
@@ -29,9 +29,8 @@
   gap: 1.25rem;
   align-items: end;
   padding: clamp(1.15rem, 3vw, 2rem);
-  background:
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--c-gold) 18%, transparent), transparent 38%),
-    color-mix(in srgb, var(--app-surface-2) 88%, transparent);
+  border-top: 4px solid var(--c-gold);
+  background: var(--app-surface);
 }
 
 .shared-user-rankings__hero > div {
@@ -60,7 +59,7 @@
   margin-top: 0.35rem;
   color: var(--app-heading);
   font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 0.96;
+  line-height: 1.02;
   overflow-wrap: anywhere;
 }
 
@@ -162,7 +161,7 @@
   min-width: 2.4rem;
   height: 2.4rem;
   place-items: center;
-  border-radius: 999px;
+  border-radius: var(--app-radius-sm);
   background: color-mix(in srgb, var(--app-primary) 14%, transparent);
   color: var(--app-primary);
 }

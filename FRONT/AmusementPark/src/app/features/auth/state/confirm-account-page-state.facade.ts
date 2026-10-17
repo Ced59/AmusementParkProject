@@ -6,6 +6,7 @@ import {
   Inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateService } from '@ngx-translate/core';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
 import {
@@ -28,7 +29,8 @@ export class ConfirmAccountPageStateFacade {
   public readonly message: Signal<string> = computed(() => this.screenStateStore.data()?.message ?? '');
 
   constructor(@Inject(CONFIRM_ACCOUNT_PAGE_STATE_AUTH_API_SERVICE_PORT) private readonly authApiService: ConfirmAccountPageStateAuthApiServicePort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly translateService: TranslateService
   ) {
   }
 
@@ -43,7 +45,7 @@ export class ConfirmAccountPageStateFacade {
       this.screenStateStore.setReady({
         currentLanguage,
         isSuccess: false,
-        message: 'Le lien de confirmation est invalide.'
+        message: this.translateService.instant('auth.confirm.invalidLinkMessage')
       });
       return;
     }
@@ -82,6 +84,6 @@ export class ConfirmAccountPageStateFacade {
       }
     }
 
-    return 'La confirmation du compte a échoué.';
+    return this.translateService.instant('auth.confirm.fallbackError');
   }
 }

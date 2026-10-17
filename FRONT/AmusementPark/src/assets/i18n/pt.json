@@ -75,6 +75,8 @@
     }
   },
   "accountLayout": {
+    "introductionLabel": "Visão geral do teu espaço pessoal",
+    "featuresLabel": "Funcionalidades do teu espaço pessoal",
     "kicker": "Espaço pessoal",
     "title": "O teu passaporte de parques",
     "subtitle": "Gere o teu perfil, idioma e acessos num espaço pessoal claro.",
@@ -5980,6 +5982,8 @@
       "back_home": "Voltar ao início"
     },
     "confirm": {
+      "invalidLinkMessage": "A ligação de confirmação é inválida.",
+      "fallbackError": "Não foi possível confirmar a tua conta.",
       "title": "Confirmação da conta",
       "loading": "Confirmação da conta em curso...",
       "kicker": "Confirmação",
@@ -5988,6 +5992,7 @@
       "error_badge": "Falhou"
     },
     "forgot_password": {
+      "fallbackError": "O pedido falhou.",
       "title": "Palavra-passe esquecida",
       "description": "Introduz o teu endereço de email para receber um link de reposição.",
       "submit": "Enviar link de reposição",
@@ -5995,6 +6000,7 @@
       "sent_badge": "Enviado"
     },
     "reset_password": {
+      "fallbackError": "Não foi possível repor a tua palavra-passe.",
       "title": "Repor palavra-passe",
       "invalid_link": "Este link de reposição é inválido.",
       "submit": "Repor palavra-passe",
@@ -6011,6 +6017,10 @@
     }
   },
   "actions": {
+    "expand": "Expandir",
+    "collapse": "Recolher",
+    "moveUp": "Mover para cima",
+    "moveDown": "Mover para baixo",
     "cancel": "Cancelar",
     "close": "Fechar",
     "save": "Guardar",

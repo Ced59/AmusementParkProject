@@ -5,10 +5,7 @@
 
 .language-entry {
   align-items: center;
-  background:
-    radial-gradient(circle at 12% 14%, rgb(163 230 53 / 18%), transparent 34rem),
-    radial-gradient(circle at 88% 86%, rgb(56 189 248 / 15%), transparent 30rem),
-    var(--surface-ground, #07111f);
+  background: var(--app-bg);
   display: flex;
   justify-content: center;
   min-height: 100vh;
@@ -16,24 +13,45 @@
 }
 
 .language-entry__panel {
-  background: color-mix(in srgb, var(--surface-card, #101c2c) 92%, transparent);
-  border: 1px solid rgb(255 255 255 / 10%);
-  border-radius: 2rem;
-  box-shadow: 0 2rem 5rem rgb(0 0 0 / 28%);
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-top: 4px solid var(--c-orange);
+  border-radius: var(--radius-md);
+  box-shadow: none;
   max-width: 70rem;
   padding: clamp(1.5rem, 4vw, 3.5rem);
   text-align: center;
   width: 100%;
 }
 
-.language-entry__logo {
-  height: auto;
-  max-width: 8.5rem;
-  width: 32vw;
+.language-entry__playground-mark {
+  display: inline-grid;
+  width: 7.5rem;
+  min-height: 7.5rem;
+  margin-inline: auto;
+  place-content: center;
+  border: 1px solid var(--app-border-strong);
+  background: var(--c-lime);
+  color: #19201d;
+  text-transform: uppercase;
+}
+
+.language-entry__playground-mark span {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.language-entry__playground-mark small {
+  margin-top: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
 }
 
 .language-entry__eyebrow {
-  color: var(--primary-color, #a3e635);
+  color: var(--app-primary-strong);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -42,14 +60,14 @@
 }
 
 h1 {
-  color: var(--text-color, #f8fafc);
+  color: var(--app-heading);
   font-size: clamp(2rem, 6vw, 3.75rem);
   line-height: 1.05;
   margin: 0.45rem 0 0;
 }
 
 .language-entry__lead {
-  color: var(--text-color-secondary, #a8b3c4);
+  color: var(--app-text-muted);
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   margin: 0.85rem 0 2rem;
 }
@@ -62,10 +80,10 @@ h1 {
 
 .language-entry__choice {
   align-items: center;
-  background: rgb(255 255 255 / 5%);
-  border: 1px solid rgb(255 255 255 / 10%);
-  border-radius: 1rem;
-  color: var(--text-color, #f8fafc);
+  background: var(--app-surface-2);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-sm);
+  color: var(--app-text);
   cursor: pointer;
   display: grid;
   gap: 0.9rem;
@@ -73,24 +91,23 @@ h1 {
   padding: 1rem;
   text-decoration: none;
   text-align: left;
-  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  transition: background-color 160ms ease, border-color 160ms ease;
 }
 
 .language-entry__choice:hover,
 .language-entry__choice:focus-visible {
-  background: rgb(163 230 53 / 10%);
-  border-color: rgb(163 230 53 / 55%);
+  background: color-mix(in srgb, var(--c-lime) 12%, var(--app-surface));
+  border-color: var(--c-lime);
   outline: none;
-  transform: translateY(-2px);
 }
 
 .language-entry__choice:focus-visible {
-  box-shadow: 0 0 0 3px rgb(163 230 53 / 24%);
+  box-shadow: var(--shadow-focus);
 }
 
 .language-entry__flag {
-  border-radius: 0.35rem;
-  box-shadow: 0 0.2rem 0.6rem rgb(0 0 0 / 22%);
+  border-radius: var(--app-radius-sm);
+  box-shadow: none;
   object-fit: cover;
 }
 
@@ -105,13 +122,13 @@ h1 {
 }
 
 .language-entry__choice-copy span {
-  color: var(--text-color-secondary, #a8b3c4);
+  color: var(--app-text-muted);
   font-size: 0.82rem;
   line-height: 1.35;
 }
 
 .language-entry__arrow {
-  color: var(--primary-color, #a3e635);
+  color: var(--c-orange);
   font-size: 1.35rem;
 }
 
@@ -121,7 +138,7 @@ h1 {
   }
 
   .language-entry__panel {
-    border-radius: 1.4rem;
+    border-radius: var(--radius-md);
   }
 }
 

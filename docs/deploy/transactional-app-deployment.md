@@ -78,6 +78,64 @@ Une reprise ne répare pas automatiquement un journal corrompu, une image manqua
 
 ## Validation reproductible
 
+### Retour à la paire applicative précédente après exposition
+
+Ce parcours est distinct de l'abandon d'un candidat non exposé et du rollback
+Mongo du classement. Autorisé pour la V6 par le propriétaire le 17 octobre, il
+restaure **les deux images front/API réellement actives avant la livraison**,
+pas seulement du CSS et pas des fichiers déduits d'un tag Git. Il ne restaure
+aucune donnée, aucun ancien secret, script ou fichier Compose/Nginx.
+
+Avant `prepare`, `application_rollback.py checkpoint` conserve sous le même FD9
+`nginx/runtime/application-rollback.json` (0600, privé et exclu des bundles).
+Le checkpoint contient les IDs Docker, les digests GHCR récupérables des deux
+images précédentes, les identités de la génération cible et un hash de la
+configuration hors des deux champs `image`. Son `id` SHA-256 est imprimé dans
+les logs de livraison, sans configuration ni secret. Une reprise ne l'écrase
+pas avec les images déjà exposées. Une image GHCR sans digest précis ou dont le
+manifest est inaccessible dans le registre bloque avant exposition. La rétention des anciennes images dans GHCR est nécessaire ;
+le nettoyage Docker local existant n'est pas considéré comme une sauvegarde.
+
+En incident bloquant après une transaction terminée :
+
+1. Relever l'identifiant exact du checkpoint dans les logs du déploiement ou via
+   `python3 scripts/application_rollback.py status` dans le répertoire installé.
+   Vérifier qu'il désigne bien la paire/version précédente attendue et que ses
+   éventuelles vulnérabilités connues restent un risque explicite du retour à
+   cette ancienne release ; le rollback ne prétend pas les corriger.
+2. Lancer manuellement `Production CI/CD` **sur master à jour**, avec `deploy=true`,
+   `shared_infrastructure_maintenance=none` et
+   `application_rollback_checkpoint=<id complet, 64 hexadécimaux>`. Les checks,
+   la fraîcheur de master, l'environnement production et la sérialisation restent
+   obligatoires. Le bundle courant n'est ni généré, téléversé ni installé dans
+   ce mode ; les images éventuellement rebâties en CI ne sont pas exposées.
+   Un opérateur disposant déjà de l'accès VPS peut lancer directement
+   `python3 scripts/application_rollback.py restore --expect <id complet>`
+   depuis la génération installée, sous le même verrou et avec l'accès GHCR
+   existant, puis le contrôle d'intégrité public décrit ci-dessous.
+3. Le script refuse une configuration modifiée, une autre paire active, une
+   maintenance partagée, un checkpoint altéré ou une transaction forward encore
+   inachevée. Il récupère **uniquement** les deux digests applicatifs et vérifie
+   leurs IDs avant tout changement actif. Il persiste `restoring`, remplace les
+   deux seules valeurs `API_IMAGE`/`FRONT_IMAGE` atomiquement dans `.env`, puis
+   réutilise `DeploymentTransaction.prepare/execute` : deux paires maximum,
+   callbacks couplés, rôle du worker, santé, attestation et drainage inchangés.
+4. Le succès exige les deux IDs antérieurs, le canonique sain et la route
+   attestée ; le workflow exécute aussi `verify-public-response-integrity.sh`
+   sur `/fr/home`. Contrôler ensuite la version réellement servie, les assets
+   hashés, home/parc/item/compte/admin, SSR/SEO et les erreurs. Le numéro de
+   version de master ne prouve pas celui de la génération servie après rollback.
+5. En interruption, relancer **le même identifiant**. Le marqueur `restoring`
+   bloque une nouvelle installation ; aucun troisième couple ni nettoyage par
+   noms n'est autorisé. Une transaction étrangère, une image disparue du registre,
+   une dérive d'infrastructure, un OOM ou un journal corrompu impose un diagnostic,
+   pas un fallback destructif. Ne pas relancer un déploiement V6 non corrigé.
+
+Ce mode n'appelle pas `deploy.sh`, les migrations/rollback Mongo, les sauvegardes
+ou les helpers de maintenance. Il conserve la configuration et les conteneurs
+MongoDB/MinIO/edge ; seule la sélection d'application suit le protocole existant.
+Il ne garantit pas l'effacement immédiat du code d'un onglet déjà ouvert.
+
 Contrôles légers sans serveur :
 
 ```bash

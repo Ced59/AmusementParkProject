@@ -11,6 +11,7 @@ import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-ur
 import { resolveLocationMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { MapMarker } from '@app/models/map/map-marker';
 import { ParkItemDetailRowViewModel, ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
+import { PARK_ITEM_DETAIL_HERO_IMAGE_SIZES } from '../models/park-item-detail-image-layout';
 import { UiItemCardComponent } from '@ui/cards';
 import { UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
 import { SafeRichHtmlPipe } from '@shared/pipes';
@@ -96,7 +97,7 @@ export class ParkItemDetailViewComponent {
   @Input({ required: true }) state!: Signal<ScreenState<unknown, string>>;
   @Input({ required: true }) detail!: Signal<ParkItemDetailViewModel | null>;
   @Input() heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
-  @Input() heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
+  @Input() heroImageSizes: string = PARK_ITEM_DETAIL_HERO_IMAGE_SIZES;
   @Input() heroImageSrcWidth: number | null = 960;
   @Input() currentLang: string = 'en';
   @Input() liveState: PublicLiveViewState | null = null;

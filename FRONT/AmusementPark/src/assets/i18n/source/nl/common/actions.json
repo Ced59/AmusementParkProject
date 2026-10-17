@@ -1,5 +1,9 @@
 {
   "actions": {
+    "expand": "Uitklappen",
+    "collapse": "Inklappen",
+    "moveUp": "Omhoog verplaatsen",
+    "moveDown": "Omlaag verplaatsen",
     "cancel": "Annuleren",
     "close": "Sluiten",
     "save": "Opslaan",

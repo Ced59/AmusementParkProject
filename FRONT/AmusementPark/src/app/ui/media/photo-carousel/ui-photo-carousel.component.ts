@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocalizedPluralPipe } from '@shared/pipes';
@@ -25,6 +26,7 @@ import {
   imports: [
     NgIf,
     NgFor,
+    CdkTrapFocus,
     ImageDisplayComponent,
     LeafletMapComponent,
     TranslateModule,

@@ -1,0 +1,18 @@
+{
+  "id": "P04.6-modal-focus-fixed-controls-2026-10-17",
+  "approvedBy": "repository-owner",
+  "approvedOn": "2026-10-17",
+  "approval": "Oui et oui et continue jusqu'à merge",
+  "baselineSha": "7f6a9088cb20e1fa6e450b2e8f4bacb9e2019a22",
+  "maximumAdditionalScriptRequests": 2,
+  "maximumScriptDecodedBytesDelta": 4565,
+  "scope": "Extension explicitement approuvée du plafond initial +3 302 à +4 565 octets JS décodés : les deux scripts de confinement clavier déjà autorisés et l'accessibilité des contrôles fixes. Aucun appel API, image, police ou autre ressource supplémentaire ; aucune autre gate levée. Dernière mesure optimisée : +3 827 octets JS, total décodé -6 362 octets sur six paires.",
+  "evidenceRun": 38996825692,
+  "previousApproval": {
+    "id": "P04.6-modal-focus-2026-10-16",
+    "approvedOn": "2026-10-16",
+    "approval": "Oui, accepter cette exception ciblée",
+    "maximumScriptDecodedBytesDelta": 3302,
+    "evidenceRun": 38857089021
+  }
+}

@@ -30,11 +30,11 @@
   gap: .4rem;
 
   code {
-    background: rgba(196, 255, 39, 0.08);
-    border: 1px solid rgba(196, 255, 39, 0.16);
-    color: var(--c-lime, #c4ff27);
+    background: color-mix(in srgb, var(--c-lime) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c-lime) 16%, var(--app-border));
+    color: var(--app-accent-lime);
     padding: .1rem .4rem;
-    border-radius: .3rem;
+    border-radius: var(--app-radius-sm);
     font-size: .85em;
   }
 }
@@ -71,7 +71,7 @@
   flex: 1;
   padding: .65rem .85rem;
   border: 1px dashed var(--app-border-strong, rgba(255, 210, 140, 0.22));
-  border-radius: .75rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--app-bg, #0f0b06) 82%, transparent);
   color: var(--app-text, #f6eed9);
   cursor: pointer;
@@ -112,10 +112,10 @@
   min-height: 100%;
   padding: 1rem;
   border: 1px solid var(--app-border, rgba(255, 210, 140, 0.08));
-  border-radius: 1rem;
-  background: linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
+  border-radius: var(--radius-md);
+  background: var(--app-surface, #1a140f);
   color: var(--app-text, #f6eed9);
-  box-shadow: var(--shadow-card, 0 8px 24px rgba(0, 0, 0, 0.14));
+  box-shadow: none;
 }
 
 .status-card__label {
@@ -161,7 +161,7 @@
   min-height: 2.25rem;
   padding: .35rem .6rem;
   border: 1px solid var(--app-border-strong, rgba(255, 210, 140, 0.22));
-  border-radius: .45rem;
+  border-radius: var(--app-radius-sm);
   background: var(--app-bg, #0f0b06);
   color: var(--app-text, #f6eed9);
 }

@@ -12,11 +12,12 @@ test('mobile consent keeps a readable opaque panel without backdrop filtering', 
   const desktopPanel = css.slice(0, breakpoint).match(/\.app-cookie-consent__inner\s*\{([^}]+)\}/)[1];
   const mobile = css.slice(breakpoint);
   const mobilePanel = mobile.match(/\.app-cookie-consent__inner\s*\{([^}]+)\}/)[1];
-  assert.match(desktopPanel, /backdrop-filter: blur\(18px\);/);
+  assert.doesNotMatch(desktopPanel, /backdrop-filter:/);
   assert.match(desktopPanel, /pointer-events: auto;/);
-  assert.match(mobilePanel, /backdrop-filter: none;/);
-  assert.match(mobilePanel, /background: linear-gradient\(180deg, var\(--app-surface\), var\(--app-surface-2\)\);/);
-  assert.match(mobilePanel, /background-color: var\(--app-bg\);/);
+  assert.match(desktopPanel, /background: var\(--app-surface\);/);
+  assert.doesNotMatch(mobilePanel, /backdrop-filter:/);
+  assert.doesNotMatch(mobilePanel, /linear-gradient/);
+  assert.match(mobilePanel, /background: var\(--app-surface\);/);
   assert.match(mobilePanel, /grid-template-columns: 1fr;/);
   assert.doesNotMatch(mobile, /(?:display|visibility|content-visibility|opacity):\s*(?:none|hidden|0)\s*;/);
   assert.match(mobile, /bottom: calc\(var\(--bottom-nav-height\) \+ 0\.9rem\);/);

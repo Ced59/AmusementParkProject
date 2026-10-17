@@ -315,6 +315,11 @@ public sealed class MongoImageCurrentMutationLockTests
     [Fact]
     public async Task ExecuteAsync_WhenLeaseCannotBeConfirmedBeforeDeadline_ShouldCancelPromotion()
     {
+        DateTimeOffset initialUtc = new DateTimeOffset(2026, 10, 16, 12, 0, 0, TimeSpan.Zero);
+        TimeSpan leaseDuration = TimeSpan.FromMinutes(10);
+        TimeSpan heartbeatInterval = TimeSpan.FromMilliseconds(50);
+        TimeSpan writerDeadlineOffset = leaseDuration.Subtract(heartbeatInterval);
+        ImageMutationLockTestTimeProvider timeProvider = new ImageMutationLockTestTimeProvider(initialUtc);
         Mock<IMongoCollection<ImageCurrentMutationLockDocument>> collection =
             new Mock<IMongoCollection<ImageCurrentMutationLockDocument>>(MockBehavior.Strict);
         collection.Setup(value => value.FindOneAndUpdateAsync(
@@ -349,15 +354,18 @@ public sealed class MongoImageCurrentMutationLockTests
                         new UpdateResult.Acknowledged(1, 1, null));
                 }
 
+                // The failed renewal consumed the remaining logical lease. This
+                // tests its deadline, not a race between two real runner timers.
+                timeProvider.Advance(writerDeadlineOffset);
                 return Task.FromException<UpdateResult>(
                     new TimeoutException("MongoDB remains unavailable."));
             });
         MongoImageCurrentMutationLock mutationLock = new MongoImageCurrentMutationLock(
             collection.Object,
-            TimeProvider.System,
+            timeProvider,
             NullLogger<MongoImageCurrentMutationLock>.Instance,
-            TimeSpan.FromMilliseconds(500),
-            TimeSpan.FromMilliseconds(50));
+            leaseDuration,
+            heartbeatInterval);
 
         await Assert.ThrowsAnyAsync<OperationCanceledException>(
             () => mutationLock.ExecuteAsync(
@@ -372,8 +380,9 @@ public sealed class MongoImageCurrentMutationLockTests
                         return "stale-promotion";
                     },
                     CancellationToken.None)
-                .WaitAsync(TimeSpan.FromSeconds(2)));
+                .WaitAsync(TimeSpan.FromSeconds(10)));
 
+        Assert.Equal(initialUtc.Add(writerDeadlineOffset), timeProvider.GetUtcNow());
         collection.VerifyAll();
     }
 

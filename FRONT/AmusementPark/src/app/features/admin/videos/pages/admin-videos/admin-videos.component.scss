@@ -99,7 +99,7 @@
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-card-2) 88%, transparent), color-mix(in srgb, var(--bg-card) 96%, transparent));
+  background: var(--bg-card);
   transition: var(--transition);
 }
 

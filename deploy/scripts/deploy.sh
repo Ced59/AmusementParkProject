@@ -22,6 +22,8 @@ if [ -e .installation-pending.json ]; then
   exit 1
 fi
 
+python3 ./scripts/application_rollback.py assert-forward-safe
+
 if [ ! -f .env ]; then
   echo "Missing .env file in $(pwd)." >&2
   exit 1
@@ -453,6 +455,7 @@ case "${shared_infrastructure_maintenance}" in
 esac
 
 recover_interrupted_unexposed_deployment
+python3 ./scripts/application_rollback.py checkpoint
 python3 ./scripts/deployment_transaction.py prepare
 if python3 ./scripts/deployment_transaction.py rollback-safe; then
   prepare_personal_ranking_cutover

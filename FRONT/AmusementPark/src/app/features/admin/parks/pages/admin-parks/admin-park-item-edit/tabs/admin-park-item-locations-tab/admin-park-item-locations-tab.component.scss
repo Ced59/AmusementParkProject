@@ -75,8 +75,8 @@
   align-items: center;
   padding: 0.3rem 0.65rem;
   border-radius: 999px;
-  background: var(--surface-100);
-  color: var(--text-color-secondary);
+  background: var(--app-surface);
+  color: var(--app-text-muted);
   font-size: 0.85rem;
 }
 
@@ -94,7 +94,7 @@
 
 .section-actions {
   padding-top: 0.5rem;
-  border-top: 1px solid var(--surface-border);
+  border-top: 1px solid var(--app-border-stronger);
 }
 
 :host ::ng-deep .location-card .p-card-body,

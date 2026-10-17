@@ -1,28 +1,19 @@
+@use "../../../../../styles/mixins" as m;
+
 :host {
   display: block;
 }
 
 .public-video-list {
-  width: min(100% - 2rem, var(--content-wide-max-width, 1480px));
-  margin: 0 auto;
-  padding: clamp(1rem, 3vw, 1.6rem) 0 clamp(2rem, 4vw, 3rem);
-  display: grid;
-  gap: clamp(1.1rem, 3vw, 1.8rem);
+  @include m.public-editorial-page;
 }
 
 .public-video-list__hero {
-  border-color: color-mix(in srgb, var(--app-primary) 22%, var(--app-border));
+  @include m.public-editorial-header;
 }
 
 .public-video-list__hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.06;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, currentColor 39px, currentColor 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, currentColor 39px, currentColor 40px);
+  content: none;
 }
 
 .public-video-list__hero-content {
@@ -56,7 +47,7 @@
   padding: 0.25rem;
   gap: 0.25rem;
   border: 1px solid color-mix(in srgb, var(--app-primary) 18%, var(--app-border));
-  border-radius: 8px;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--app-surface) 88%, var(--app-primary) 12%);
 }
 
@@ -76,7 +67,7 @@
   font: inherit;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+  transition: background-color 160ms ease, color 160ms ease;
 }
 
 .public-video-list__tab strong {
@@ -92,7 +83,6 @@
 .public-video-list__tab.is-active {
   color: var(--app-heading);
   background: var(--app-surface);
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--app-primary) 12%, transparent);
 }
 
 .public-video-list__filters {
@@ -128,25 +118,21 @@
   width: 100%;
   min-height: 3rem;
   border: 1px solid color-mix(in srgb, var(--app-primary) 20%, var(--app-border-strong));
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--app-surface-2) 88%, var(--bg-card) 12%);
+  border-radius: var(--radius-sm);
+  background: var(--app-field);
   color: var(--app-text);
   padding: 0.8rem 0.95rem;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #ffffff 5%, transparent);
   font: inherit;
   transition:
     border-color var(--transition-fast),
-    box-shadow var(--transition-fast),
     background-color var(--transition-fast);
 }
 
 .public-video-list__filter-field select:focus,
 .public-video-list__filter-field input:focus {
   border-color: color-mix(in srgb, var(--app-primary) 62%, var(--app-border));
-  box-shadow:
-    var(--shadow-focus),
-    inset 0 0 0 1px color-mix(in srgb, var(--app-primary) 18%, transparent);
-  outline: none;
+  outline: 3px solid color-mix(in srgb, var(--app-primary) 28%, transparent);
+  outline-offset: 2px;
 }
 
 .public-video-list__filter-actions {
@@ -165,18 +151,17 @@
   align-content: start;
   overflow: hidden;
   border: 1px solid var(--app-border);
-  border-radius: 0.7rem;
+  border-radius: var(--radius-md);
   background: var(--app-surface);
   color: inherit;
   text-decoration: none;
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  transition: border-color 160ms ease, background-color 160ms ease;
 }
 
 .public-video-card:hover,
 .public-video-card:focus-visible {
-  transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--app-primary) 38%, var(--app-border));
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  background: var(--app-surface-2);
   outline: none;
 }
 
@@ -185,7 +170,7 @@
   display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: color-mix(in srgb, var(--app-surface-alt) 82%, black 10%);
+  background: color-mix(in srgb, var(--app-surface-2) 82%, black 10%);
 }
 
 .public-video-card__thumbnail app-image-display {
@@ -212,14 +197,14 @@
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.78);
   color: white;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.24);
+  box-shadow: none;
 }
 
 .public-video-card__duration {
   position: absolute;
   right: 0.65rem;
   bottom: 0.65rem;
-  border-radius: 0.45rem;
+  border-radius: var(--app-radius-sm);
   background: rgba(15, 23, 42, 0.82);
   color: white;
   padding: 0.18rem 0.45rem;
@@ -271,7 +256,7 @@
 }
 
 .public-video-card__tags span {
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--app-primary) 9%, transparent);
   color: var(--app-text);
   padding: 0.18rem 0.5rem;
@@ -318,10 +303,6 @@
 }
 
 @media (max-width: 700px) {
-  .public-video-list {
-    width: min(100% - 1rem, var(--content-wide-max-width, 1480px));
-  }
-
   .public-video-list__filters {
     grid-template-columns: 1fr;
   }

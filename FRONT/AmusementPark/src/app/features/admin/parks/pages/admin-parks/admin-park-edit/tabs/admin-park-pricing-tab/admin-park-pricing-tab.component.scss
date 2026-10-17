@@ -22,7 +22,7 @@
 
   p {
     margin-top: 0.3rem;
-    color: var(--text-color-secondary);
+    color: var(--app-text-muted);
   }
 }
 
@@ -39,9 +39,9 @@
   gap: 1rem;
   margin: 0;
   padding: 1rem;
-  border: 1px solid var(--surface-border);
-  border-radius: 0.75rem;
-  background: var(--surface-ground);
+  border: 1px solid var(--app-border-stronger);
+  border-radius: var(--app-radius-md);
+  background: var(--app-bg);
 }
 
 .admin-pricing-editor__metadata legend {
@@ -60,7 +60,7 @@
   gap: 0.4rem;
 
   span {
-    color: var(--text-color-secondary);
+    color: var(--app-text-muted);
     font-size: 0.82rem;
     font-weight: 600;
   }
@@ -70,10 +70,10 @@
 .admin-pricing-editor textarea {
   width: 100%;
   padding: 0.6rem 0.7rem;
-  border: 1px solid var(--surface-border);
-  border-radius: 0.45rem;
-  background: var(--surface-card);
-  color: var(--text-color);
+  border: 1px solid var(--app-border-stronger);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface);
+  color: var(--app-text);
 }
 
 .admin-pricing-editor__wide {
@@ -85,7 +85,7 @@
 .admin-pricing-editor__error {
   margin: 0;
   padding: 0.75rem;
-  border-radius: 0.5rem;
+  border-radius: var(--app-radius-sm);
 }
 
 .admin-pricing-editor__history-note {
@@ -94,26 +94,26 @@
   gap: 0.5rem;
   margin: 0;
   padding: 0.75rem;
-  border-radius: 0.5rem;
-  color: var(--text-color-secondary);
-  background: var(--surface-card);
+  border-radius: var(--app-radius-sm);
+  color: var(--app-text-muted);
+  background: var(--app-surface);
   line-height: 1.45;
 }
 
 .admin-pricing-editor__history-note i {
   margin-top: 0.15rem;
-  color: var(--primary-color);
+  color: var(--app-primary-strong);
 }
 
 .admin-pricing-editor__empty,
 .admin-pricing-editor__status {
-  color: var(--text-color-secondary);
-  background: var(--surface-card);
+  color: var(--app-text-muted);
+  background: var(--app-surface);
 }
 
 .admin-pricing-editor__error {
-  color: var(--red-700);
-  background: var(--red-50);
+  color: var(--app-danger);
+  background: color-mix(in srgb, var(--app-danger) 8%, var(--app-surface));
   font-weight: 600;
 }
 

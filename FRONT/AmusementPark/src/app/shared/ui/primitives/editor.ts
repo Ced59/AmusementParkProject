@@ -94,6 +94,9 @@ export type ManagedImagePreviewResolver = (imageId: string) => string | null;
       width: .8rem;
     }
     @keyframes p-editor-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      .p-editor-upload-status::before { animation: none; }
+    }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
