@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { collectAdminShellLayout, adminShellLayoutIssues } from './browser-admin-shell.mjs';
+import { collectLayoutOverflow } from './browser-layout-overflow.mjs';
 import { exercisePublicFitForm } from './exercise-public-fit-form.mjs';
 import { settleAccountDocument } from './settle-account-document.mjs';
 import { withDoubledRootFont } from './account-layout-stress.mjs';
@@ -211,6 +212,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
             return stable && layout.width === width && layout.theme === theme && layout.target.visible;
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
+          if (issues.length) layout.overflowElements = await evaluate(`(${collectLayoutOverflow.toString()})()`);
           if (fixture.kind === 'admin-shell') {
             layout.adminShell = await evaluate(`(${collectAdminShellLayout.toString()})()`);
             issues.push(...adminShellLayoutIssues(layout.adminShell));

@@ -31,9 +31,10 @@ const protectedWordmarkParts = [
   '>fun<',
 ];
 
-test('mobile navigation gives long localized labels the full equal-width column without shrinking text', () => {
+test('mobile navigation keeps equal columns and reflows enlarged labels without shrinking text', () => {
   assert.match(navigationStyles, /\.app-mobile-bottom-nav\s*\{[^}]*gap:\s*0;/);
-  assert.match(navigationStyles, /\.app-mobile-bottom-nav__item\s*\{[^}]*min-width:\s*0;[^}]*min-height:\s*3\.9rem;[^}]*flex:\s*1 1 0;[^}]*padding:\s*0\.5rem 0\.125rem;/);
+  assert.match(navigationStyles, /\.app-mobile-bottom-nav\s*\{[^}]*flex-wrap:\s*wrap;/);
+  assert.match(navigationStyles, /\.app-mobile-bottom-nav__item\s*\{[^}]*font-size:\s*0\.68rem;[^}]*min-width:\s*min\(100%, 5ch\);[^}]*min-height:\s*3\.9rem;[^}]*flex:\s*1 1 0;[^}]*padding:\s*0\.5rem 0\.125rem;/);
   assert.match(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*font-size:\s*0\.68rem;[^}]*overflow-wrap:\s*anywhere;[^}]*white-space:\s*normal;/);
   assert.doesNotMatch(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*(?:text-overflow:\s*ellipsis|overflow:\s*hidden|line-clamp)/);
   for (const [, rule] of navigationStyles.matchAll(/\.app-mobile-bottom-nav\s*\{([^}]*)\}/g)) {
@@ -161,7 +162,7 @@ test('the Playground shell uses editorial width, flat navigation and safe mobile
 test('the footer and account/admin shells share the flat Playground composition', () => {
   assert.match(
     footerStyles,
-    /grid-template-columns:\s*minmax\(15rem, 1\.35fr\) repeat\(3, minmax\(8rem, 0\.75fr\)\)/,
+    /grid-template-columns:\s*minmax\(0, 1\.35fr\) repeat\(3, minmax\(0, 0\.75fr\)\)/,
   );
   assert.match(footerStyles, /border-top:\s*4px solid var\(--c-orange\)/);
   assert.doesNotMatch(footerStyles, /(?:linear|radial|conic)-gradient\(/);

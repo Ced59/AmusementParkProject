@@ -3,12 +3,46 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { runInNewContext } from 'node:vm';
 import { collectContrastCandidates } from '../design-v6/browser-text-contrast.mjs';
+import { collectLayoutOverflow } from '../design-v6/browser-layout-overflow.mjs';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from '../design-v6/browser-interception-errors.mjs';
 
 const responsiveScript = await readFile(new URL('../responsive/trip-pages-browser-check.mjs', import.meta.url), 'utf8');
 const designTokens = await readFile(new URL('../../../../docs/design-v6/V6-DESIGN-TOKENS.md', import.meta.url), 'utf8');
 const httpScript = await readFile(new URL('../design-v6/verify-public-http.mjs', import.meta.url), 'utf8');
 const baseStyles = await readFile(new URL('../../src/styles/_base.scss', import.meta.url), 'utf8');
+
+test('enlarged text reflows shell tracks and preserves measured fixed-control clearance', async () => {
+  const read = path => readFile(new URL(`../../src/${path}`, import.meta.url), 'utf8');
+  const footer = await read('styles/_footer.scss');
+  const nav = await read('styles/_navigation.scss');
+  const profile = await read('app/features/profile/pages/profile-page/profile-page.component.scss');
+  const jump = await read('app/shared/components/page-jump-button/page-jump-button.component.ts');
+  assert.match(footer, /container-type: inline-size/);
+  assert.match(footer, /font-size: min\(28\.8px, 10\.8cqi\)/);
+  assert.doesNotMatch(footer, /minmax\((?:15|8)rem/);
+  assert.match(nav, /padding-bottom: max\(5\.8rem, calc\(var\(--bottom-nav-height\) \+ 1rem\)\)/);
+  assert.match(nav, /font-size: clamp\(20px, 7vw, 24\.8px\)/);
+  assert.match(profile, /font-size: min\(clamp\(2\.4rem, 5vw, 4\.35rem\), 14vw\)/);
+  assert.match(profile, /width: 120px;[\s\S]*?max-width: 100%/);
+  assert.match(profile, /repeat\(auto-fit, minmax\(min\(100%, max\(8rem,/);
+  assert.match(jump, /querySelector<HTMLElement>\('\.app-mobile-bottom-nav'\)\?\.offsetHeight/);
+  assert.match(jump, /rootStyle\.getPropertyValue\('--bottom-nav-height'\) !== navHeightValue/);
+  assert.match(jump, /style\.removeProperty\('--bottom-nav-height'\)/);
+  for (const source of [footer, nav, profile]) assert.doesNotMatch(source, /overflow-x:\s*(?:hidden|clip)/);
+});
+
+test('overflow diagnostics retain bounded geometry only without concealing offending content', () => {
+  const element = (right, display = 'block') => ({ tagName: 'DIV', id: '', classList: ['probe'], scrollWidth: right, clientWidth: right,
+    getBoundingClientRect: () => ({ x: 0, right, width: right, height: 20 }), style: { display, visibility: 'visible', fontSize: '32px', minWidth: 'auto', gridTemplateColumns: 'none' } });
+  const elements = [element(320), element(1000, 'none'), ...Array.from({ length: 20 }, (_, index) => element(400 + index))];
+  const result = JSON.parse(JSON.stringify(runInNewContext(`(${collectLayoutOverflow.toString()})()`, {
+    document: { body: { querySelectorAll: () => elements } }, innerWidth: 320, getComputedStyle: element => element.style,
+  })));
+  assert.equal(result.length, 12);
+  assert.equal(result[0].right, 419);
+  assert.equal(result[0].selector, 'div.probe');
+  assert.ok(result.every(entry => entry.right > 321 && entry.right < 1000 && !('text' in entry)));
+});
 
 test('the shared browser contrast probe measures composited text, distinguishes large text and reports unmeasured media honestly', () => {
   const probe = (foreground, { size = '16px', weight = '400', backgroundImage = 'none', opacity = '1' } = {}, includeCoverage = true) => {

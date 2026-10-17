@@ -22,8 +22,11 @@ describe('PageJumpButtonComponent', () => {
   let originalBodyScrollHeightDescriptor: PropertyDescriptor | undefined;
   let originalInnerHeightDescriptor: PropertyDescriptor | undefined;
   let originalScrollYDescriptor: PropertyDescriptor | undefined;
+  let mobileNav: HTMLElement | undefined;
+  let originalNavHeight: string;
 
   beforeEach(async () => {
+    originalNavHeight = document.documentElement.style.getPropertyValue('--bottom-nav-height');
     originalScrollHeightDescriptor = Object.getOwnPropertyDescriptor(
       document.documentElement,
       'scrollHeight',
@@ -48,6 +51,9 @@ describe('PageJumpButtonComponent', () => {
   });
 
   afterEach(() => {
+    mobileNav?.remove();
+    mobileNav = undefined;
+    document.documentElement.style.setProperty('--bottom-nav-height', originalNavHeight);
     restoreProperty(
       document.documentElement,
       'scrollHeight',
@@ -125,6 +131,36 @@ describe('PageJumpButtonComponent', () => {
       top: 0,
       behavior: 'smooth',
     } as ScrollToOptions);
+  });
+
+  it('tracks the actual wrapped mobile navigation without repeated style writes', () => {
+    const context = createComponent();
+    mobileNav = document.createElement('nav');
+    mobileNav.className = 'app-mobile-bottom-nav';
+    document.body.append(mobileNav);
+    const height = vi.spyOn(mobileNav, 'offsetHeight', 'get').mockReturnValue(262);
+    const style = document.documentElement.style;
+    const setProperty = vi.spyOn(style, 'setProperty');
+
+    context.exposed.updatePageScrollState();
+    expect(style.getPropertyValue('--bottom-nav-height')).toBe('262px');
+    setProperty.mockClear();
+    context.exposed.updatePageScrollState();
+    expect(setProperty).not.toHaveBeenCalled();
+
+    height.mockReturnValue(144);
+    context.exposed.updatePageScrollState();
+    expect(style.getPropertyValue('--bottom-nav-height')).toBe('144px');
+    height.mockReturnValue(0);
+    context.exposed.updatePageScrollState();
+    expect(style.getPropertyValue('--bottom-nav-height')).toBe('');
+  });
+
+  it('removes its measured navigation height when destroyed', () => {
+    const context = createComponent();
+    document.documentElement.style.setProperty('--bottom-nav-height', '262px');
+    context.fixture.destroy();
+    expect(document.documentElement.style.getPropertyValue('--bottom-nav-height')).toBe('');
   });
 
   it('registers passive viewport listeners outside Angular and cleans them up', () => {

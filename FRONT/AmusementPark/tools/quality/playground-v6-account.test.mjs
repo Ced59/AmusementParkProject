@@ -641,7 +641,7 @@ test('account layout fixtures distinguish complete, incomplete and expired UI se
   assert.equal(accountLayoutFixtureResponse(request, expired).status, 401);
   const claims = JSON.parse(Buffer.from(standard.accessToken.split('.')[1], 'base64url').toString());
   assert.deepEqual(claims.roles, ['USER']);
-  assert.equal(claims.exp, now + 3600);
+  assert.equal(claims.exp, now + 6 * 60 * 60);
   assert.equal(claims.aud, 'apf-ci-layout-only');
   assert.equal(incomplete.user.firstName, '');
   assert.equal(incomplete.user.isActivated, true);

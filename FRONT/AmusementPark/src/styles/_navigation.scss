@@ -113,6 +113,7 @@ html:has(.app-public-nav) {
   bottom: 0;
   z-index: 220;
   display: none;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0;
@@ -126,7 +127,9 @@ html:has(.app-public-nav) {
 
 .mobile-bottom-nav__item,
 .app-mobile-bottom-nav__item {
-  min-width: 0;
+  // Keep normal seven-entry geometry; enlarged labels may form a second row.
+  font-size: 0.68rem;
+  min-width: min(100%, 5ch);
   min-height: 3.9rem;
   flex: 1 1 0;
   display: flex;
@@ -201,7 +204,7 @@ button.app-mobile-bottom-nav__item {
   body {
     --topbar-height: 104px;
 
-    padding-bottom: 5.8rem;
+    padding-bottom: max(5.8rem, calc(var(--bottom-nav-height) + 1rem));
   }
 
   .nav__links,
@@ -389,7 +392,7 @@ button.app-mobile-bottom-nav__item {
 
   .app-public-nav__logo {
     min-width: 0;
-    font-size: clamp(1.25rem, 7vw, 1.55rem);
+    font-size: clamp(20px, 7vw, 24.8px);
   }
 
   .app-public-nav__logo-text {

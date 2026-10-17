@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Diagnostic `0b7570fb6` — débordement prouvé en texte agrandi
+
+L'[artefact `12081381360`](https://github.com/Ced59/AmusementParkProject/actions/runs/38981470665/artifacts/12081381360) contient six captures normales PASS et le refus à **320 px / sombre / root 32 px** : document 520 px, avatar 240 px, titre comprimé, sept entrées trop étroites, hit-test Admin négatif sous le bouton flottant. Capture `v6_admin-shell_fr_account-admin-shell-large-font-failure.webp` inspectée. Aucun échec fixture/exception. Ce stress n'est toujours pas une preuve de zoom natif 200 %.
+
+La correction conserve la géométrie normale visée et les glyphes/couleurs/proportions protégés du wordmark : seul son conteneur s'ajuste en largeur. Les colonnes footer deviennent réductibles, les entrées mobiles se redistribuent quand leurs unités `ch` grandissent et leur hauteur mesurée alimente l'offset existant des contrôles fixes. Le profil réserve 120 px d'avatar comme ses `sizes`/sources, adapte le grand titre, le padding et les onglets. Pas de `overflow-x:hidden`, pas de suppression de lien. **175 tests Node ciblés PASS ; captures et comparaison normales/agrandies encore requises.** Les futurs refus consignent au plus douze éléments débordants avec géométrie/CSS, sans texte privé et sans changer l'acceptation.
+
 ## Diagnostic `acbbf19f6` — six rendus compte, stress non appliqué
 
 L'[artefact `12081170571`](https://github.com/Ced59/AmusementParkProject/actions/runs/38979892609/artifacts/12081170571) conserve six captures normales du compte admin : trois largeurs, deux thèmes, root 16 px et zéro issue. Après 13 contrôles, l'override de police échoue à sa vérification immédiate, avant toute capture agrandie ou page publique. La recette attend maintenant au plus 30 frames, sans tolérer une taille différente de celle demandée ; si elle ne s'applique toujours pas, valeurs inline/calculées/priorité/transition sont enregistrées avant restauration. **173 tests Node ciblés PASS**, preuve suivante requise. Aucun diagnostic de clipping ou succès 200 % n'est inventé à partir de cet arrêt.

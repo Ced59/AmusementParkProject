@@ -11,6 +11,8 @@ export const accountLayoutRefreshMarker = 'amusementpark.hasRefreshSession';
 export const accountLayoutResetQuery = '?token=APF-CI-UI-NOT-A-REAL-RESET-TOKEN';
 const userId = '00000000-0000-4000-8000-000000000017';
 const languages = ['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'];
+// Match the bounded CI job window, not the production authentication lifetime.
+const layoutFixtureLifetimeSeconds = 6 * 60 * 60;
 
 export function accountLayoutCases(widths) {
   if (!Array.isArray(widths) || !widths.includes(390) || !widths.includes(1366) || widths.length > 13
@@ -34,7 +36,7 @@ export function createAccountLayoutFixture(kind, nowSeconds, language = 'fr') {
     preferredLanguage: language.toUpperCase(), preferredMeasurementSystem: 'Metric', avatarUrl: '', createdAt: date, updatedAt: date };
   const claims = { sub: user.id, nameidentifier: user.id, email: user.email, firstname: user.firstName,
     lastname: user.lastName, avatar: '', lastlogin: date, roles: [...user.roles], jti: 'apf-ci-layout-only',
-    exp: nowSeconds + 3600, iss: 'urn:apf-ci-layout-fixture', aud: 'apf-ci-layout-only' };
+    exp: nowSeconds + layoutFixtureLifetimeSeconds, iss: 'urn:apf-ci-layout-fixture', aud: 'apf-ci-layout-only' };
   const encode = value => Buffer.from(JSON.stringify(value)).toString('base64url');
   // Deliberately unsigned, local-only UI input. This is not authentication proof.
   const accessToken = `${encode({ alg: 'none', typ: 'JWT' })}.${encode(claims)}.ci-layout-only`;

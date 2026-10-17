@@ -6,12 +6,12 @@
 :host ::ng-deep .profile-avatar {
   aspect-ratio: 1;
   display: block;
-  width: 7.5rem;
-  min-width: 7.5rem;
-  max-width: 7.5rem;
-  height: 7.5rem;
-  min-height: 7.5rem;
-  max-height: 7.5rem;
+  width: 120px;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
   overflow: hidden;
   border-radius: 50%;
   object-fit: cover;
@@ -50,7 +50,7 @@
 }
 
 .profile-hero__title {
-  font-size: clamp(2.4rem, 5vw, 4.35rem);
+  font-size: min(clamp(2.4rem, 5vw, 4.35rem), 14vw);
 }
 
 .profile-workspace {
@@ -303,7 +303,7 @@
   }
 
   .profile-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, max(8rem, calc((100% - 0.45rem) / 2))), 1fr));
   }
 
   .profile-tabs__button {
@@ -317,6 +317,7 @@
 
 @media (max-width: 760px) {
   .profile-hero {
+    padding: min(clamp(1.25rem, 3vw, 2rem), 32px);
     grid-template-columns: 1fr;
     justify-items: center;
     min-height: 0;
@@ -325,6 +326,9 @@
 
   .profile-hero__avatar {
     min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .profile-hero__content {

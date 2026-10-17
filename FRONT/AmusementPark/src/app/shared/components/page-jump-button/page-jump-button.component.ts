@@ -71,6 +71,7 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
 
     this.resizeObserver?.disconnect();
     this.resizeObserver = null;
+    this.document.documentElement.style.removeProperty('--bottom-nav-height');
   }
 
   protected get labelKey(): string {
@@ -145,6 +146,14 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
     const viewportBottom: number = defaultView.scrollY + viewportHeight;
     const nextIsVisible: boolean = scrollHeight - viewportHeight > PageJumpButtonComponent.scrollableThresholdPixels;
     const nextIsNearPageBottom: boolean = scrollHeight - viewportBottom < PageJumpButtonComponent.nearBottomThresholdPixels;
+
+    // Reuse this coalesced resize/route pass for fixed-control clearance.
+    const navHeight: number = this.document.querySelector<HTMLElement>('.app-mobile-bottom-nav')?.offsetHeight ?? 0;
+    const navHeightValue: string = navHeight ? `${navHeight}px` : '';
+    const rootStyle: CSSStyleDeclaration = this.document.documentElement.style;
+    if (rootStyle.getPropertyValue('--bottom-nav-height') !== navHeightValue) {
+      rootStyle.setProperty('--bottom-nav-height', navHeightValue);
+    }
 
     if (nextIsVisible === this.isVisible && nextIsNearPageBottom === this.isNearPageBottom) {
       return;

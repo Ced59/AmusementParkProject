@@ -13,12 +13,13 @@
   width: min(100% - 2.5rem, var(--content-max-width));
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(15rem, 1.35fr) repeat(3, minmax(8rem, 0.75fr));
+  grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 0.75fr));
   gap: 2rem clamp(1.5rem, 4vw, 4rem);
   align-items: start;
 }
 
 .app-public-footer__brand {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -32,9 +33,11 @@
   align-items: center;
   gap: 0;
   width: fit-content;
+  max-width: 100%;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  // The protected lettering is a graphic: fit its wrapper, not the glyph styles.
+  font-size: min(28.8px, 10.8cqi);
   letter-spacing: 0.04em;
   overflow: visible;
   white-space: nowrap;
@@ -44,7 +47,8 @@
   display: grid;
   gap: 0.15rem;
   width: fit-content;
-  max-width: 30ch;
+  min-width: 0;
+  max-width: min(100%, 30ch);
   margin: 0;
   color: var(--app-text-muted);
   overflow: visible;
@@ -60,6 +64,7 @@
   letter-spacing: 0.04em;
   line-height: 1.05;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .app-public-footer__slogan-fun {
@@ -79,6 +84,7 @@
 }
 
 .app-public-footer__col-title {
+  overflow-wrap: anywhere;
   margin: 0 0 0.9rem;
   color: var(--app-text-muted);
   font-family: var(--font-heading);
@@ -102,6 +108,8 @@
   align-items: center;
   gap: 0.45rem;
   width: fit-content;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   color: var(--app-text-muted);
   font-size: 0.88rem;
   font-weight: 700;
@@ -146,6 +154,8 @@
 }
 
 .app-public-footer__copy {
+  min-width: 0;
+  overflow-wrap: anywhere;
   color: var(--app-text-muted);
   font-size: 0.8rem;
 }
@@ -183,7 +193,7 @@
   }
 
   .app-public-footer__inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.7rem;
   }
 
@@ -197,7 +207,7 @@
     gap: 0.36rem;
     row-gap: 0.14rem;
     width: 100%;
-    max-width: 30ch;
+    max-width: min(100%, 30ch);
     white-space: normal;
   }
 
