@@ -349,6 +349,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   } catch (error) {
     result.passed = false;
     result.error = error.message;
+    if (error.nativeZoomEvidence) result.nativeZoomFailure = error.nativeZoomEvidence;
     if (error.fontOverrideEvidence) result.enlargedFontFailure = error.fontOverrideEvidence;
     try {
       result.lastDocument = await evaluate(`({ path: location.pathname, query: location.search, hasLogin: !!document.querySelector('app-auth-modal'), hasProfile: !!document.querySelector('.profile-hero'), occurrenceCount: document.querySelectorAll('.passport-occurrence').length, hasMoreOccurrences: !!document.querySelector('.passport-timeline__more') })`);

@@ -26,7 +26,7 @@ test('native zoom rejects missing zoom, pinch scaling, CSS zoom and nonfinite me
   assert.ok(nativeZoomIssues(null).length);
 });
 
-test('native zoom resizes the real window and accounts for measured browser chrome without metrics emulation', async () => {
+test('native zoom resizes real browser contents and requires two exact samples without metrics emulation', async () => {
   const calls = [];
   const cdp = { send: async (method, parameters) => { calls.push({ method, parameters }); return { windowId: 17 }; } };
   let count = 0;
@@ -34,19 +34,33 @@ test('native zoom resizes the real window and accounts for measured browser chro
     assert.doesNotThrow(() => new Function(`return (${expression});`));
     return { ...validMetrics, height: count++ ? 600 : 606 };
   }, width: 683, height: 600 });
-  assert.equal(result.resizeAttempts, 2);
+  assert.equal(result.resizeAttempts, 3);
   assert.equal(result.factor, 2);
-  assert.deepEqual(calls.map(call => call.method), ['Emulation.clearDeviceMetricsOverride', 'Browser.getWindowForTarget', 'Browser.setWindowBounds', 'Browser.setWindowBounds']);
-  assert.deepEqual(calls.at(-1).parameters, { windowId: 17, bounds: { width: 1366, height: 1288 } });
+  assert.deepEqual(calls.map(call => call.method), ['Emulation.clearDeviceMetricsOverride', 'Browser.getWindowForTarget', 'Browser.setContentsSize', 'Browser.setContentsSize', 'Browser.setContentsSize']);
+  assert.deepEqual(calls.at(-1).parameters, { windowId: 17, width: 1366, height: 1200 });
+  assert.equal(result.sizingMethod, 'Browser.setContentsSize');
 });
 
 test('native zoom refuses a wrong factor immediately and an unstable viewport after five attempts', async () => {
   const cdp = { send: async () => ({ windowId: 1 }) };
   await assert.rejects(resizeNativeZoomViewport({ cdp, evaluate: async () => ({ ...validMetrics, devicePixelRatio: 1 }), width: 683, height: 600 }), /not 200%/);
   let evaluations = 0;
-  await assert.rejects(resizeNativeZoomViewport({ cdp, evaluate: async () => { evaluations++; return { ...validMetrics, width: 684 }; }, width: 683, height: 600 }), /did not settle/);
+  await assert.rejects(resizeNativeZoomViewport({ cdp, evaluate: async () => { evaluations++; return { ...validMetrics, width: 684 }; }, width: 683, height: 600 }), error => {
+    assert.match(error.message, /did not settle/);
+    assert.equal(error.nativeZoomEvidence.measurements.length, 5);
+    assert.equal(error.nativeZoomEvidence.width, 683);
+    return true;
+  });
   assert.equal(evaluations, 5);
   await assert.rejects(resizeNativeZoomViewport({ cdp, evaluate: async () => validMetrics, width: 390, height: 600 }), /Unbounded/);
+});
+
+test('unsupported native content sizing is a refusal, never a fallback to outer bounds or emulation', async () => {
+  const cdp = { send: async method => {
+    if (method === 'Browser.setContentsSize') throw new Error('Method not found');
+    return { windowId: 17 };
+  } };
+  await assert.rejects(resizeNativeZoomViewport({ cdp, evaluate: async () => validMetrics, width: 683, height: 600 }), /resize unavailable/);
 });
 
 test('native zoom evidence is attached to each layout and never substitutes for the complete campaign or inset test', () => {

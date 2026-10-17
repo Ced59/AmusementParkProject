@@ -1,5 +1,7 @@
 # V6 — performance, SEO et SSR
 
+Compilation `104d57b6d` / run `38994814203` : initial V6 **821,59 kB brut / 193,20 kB estimés transférés**, baseline master **831,90 / 192,85 kB**. Budgets Angular PASS, 2 780 tests Angular PASS. Le brut baisse de 10,31 kB avec les compléments d'icônes ; l'estimation de transfert reste +0,35 kB. Ce sont les sorties build, pas la mesure réseau P04.6 ni un PASS LCP/CLS. Le diagnostic natif master bloque ce run avant la comparaison appariée. Les corrections de protocole suivantes n'affectent pas le produit.
+
 ## Optimisation sans perte des masques — mesure source, pas verdict réseau
 
 Encodage double-quoté compact des 188 URLs : feuille SCSS **111 330→78 250 octets**, gzip local **10 088→9 017**, Brotli **8 098→7 446**. Les 144 tracés PI d'origine sont protégés par hash normalisé, ainsi que la fermeture chip ; 43 compléments reproduisent les données littérales du package verrouillé. Ce sont des tailles de **source avant Sass**, pas des mesures réseau/SSR. La variante base64 testée est écartée car plus lourde une fois compressée. **285 tests qualité Node PASS** ; build/budgets et comparaison appariée doivent attester le prochain code.

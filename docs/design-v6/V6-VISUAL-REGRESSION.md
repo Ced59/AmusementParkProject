@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Resize natif — correction de protocole après `104d57b6d`
+
+Le V6 compacté conserve **206 contrôles / 60 layouts natifs PASS**, ainsi que 282/72 à 100 %. Master échoue ensuite au resize après 37 contrôles / 23 layouts ; sa dernière capture aboutie est 683 CSS, root 32, avec ses débordements legacy conservés. Le prochain protocole utilise la commande officielle [Browser.setContentsSize](https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/pdl/domains/Browser.pdl), qui règle le contenu réel en DIP en adaptant la fenêtre : width/height CSS ×2 à scale matériel 1 et zoom natif 2. Deux mesures exactes consécutives sont exigées, cinq essais au maximum ; les deux réparations post-scroll restent bornées. Indisponibilité de commande, faux zoom ou dimensions incorrectes bloquent, aucune substitution par CSS/pinch/device-metrics. La version navigateur et l'historique géométrique du refus sont enregistrés. **286 tests Node PASS ; nouveau rendu requis.**
+
 ## Diagnostic natif `67723fa91` confirmé
 
 [Artefact `12086441223`](https://github.com/Ced59/AmusementParkProject/actions/runs/38993942862/artifacts/12086441223) : V6 **206 contrôles / 60 layouts**, DPR=2, scale visuel=1, zéro issue/fixture/exception, aucun réajustement nécessaire. Master termine sa collecte **86 contrôles / 60 layouts**, zéro fixture/exception et un réajustement maximum ; ses **58 constats géométrie/contraste restent baseline**, pas un PASS visuel. L'image profil 960 CSS / 1 920 physiques claire est inspectée : cloches et favoris ont désormais leur dessin, textes/actions intacts. Le calcul de positionnement hérité passe ces mêmes contrôles.

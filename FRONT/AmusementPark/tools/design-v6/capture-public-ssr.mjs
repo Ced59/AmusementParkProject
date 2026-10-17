@@ -804,6 +804,7 @@ try {
   if (!port) throw new Error('Chromium did not start.');
   const targets = await (await nativeFetch(`http://127.0.0.1:${port}/json/list`)).json();
   cdp = await connect(targets.find((target) => target.type === 'page').webSocketDebuggerUrl);
+  if (nativeZoomPlan) report.nativeZoom.browser = await cdp.send('Browser.getVersion');
   await cdp.send('Page.enable');
   await cdp.send('Runtime.enable');
   await cdp.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
