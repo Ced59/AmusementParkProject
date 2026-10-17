@@ -24,13 +24,13 @@ test('small CI JSON reports precede the complete image archive without replacing
 test('owner exception accepts only the measured two focus scripts and never other resource types or a new baseline', () => {
   const approval = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../../docs/design-v6/V6-PERFORMANCE-EXCEPTION.json'), 'utf8'));
   const before = { requests: 105, byType: { Script: { requests: 84, decodedBytes: 936317 }, XHR: { requests: 2 }, Image: { requests: 12 } } };
-  const after = { requests: 107, byType: { Script: { requests: 86, decodedBytes: 939619 }, XHR: { requests: 2 }, Image: { requests: 12 } } };
+  const after = { requests: 107, byType: { Script: { requests: 86, decodedBytes: 936317 + 4565 }, XHR: { requests: 2 }, Image: { requests: 12 } } };
   const report = { baseSha: approval.baselineSha, comparisons: [{ width: 390, sampleNumber: 1, before, after, additionalRequests: 2 }] };
   assert.equal(homeNetworkAcceptance(report).status, 'FAIL');
   assert.equal(homeNetworkAcceptance(report, approval).status, 'PASS_WITH_OWNER_EXCEPTION');
   assert.equal(homeNetworkAcceptance({ ...report, baseSha: 'another-master' }, approval).status, 'FAIL');
   for (const changed of [
-    { ...after, byType: { ...after.byType, Script: { requests: 86, decodedBytes: 939620 } } },
+    { ...after, byType: { ...after.byType, Script: { requests: 86, decodedBytes: 936317 + 4566 } } },
     { ...after, byType: { ...after.byType, XHR: { requests: 3 } } },
     { ...after, byType: { ...after.byType, Image: { requests: 13 } } },
     { ...after, byType: { ...after.byType, Font: { requests: 1 } } },
@@ -38,7 +38,21 @@ test('owner exception accepts only the measured two focus scripts and never othe
   ]) assert.equal(homeNetworkAcceptance({ ...report, comparisons: [{ ...report.comparisons[0], after: changed }] }, approval).status, 'FAIL');
   assert.equal(homeNetworkAcceptance({ ...report, comparisons: [{ ...report.comparisons[0], after: before, additionalRequests: 0 }] }).status, 'PASS');
   assert.equal(homeNetworkAcceptance(report, { ...approval, maximumAdditionalScriptRequests: 3 }).status, 'FAIL');
+  assert.equal(homeNetworkAcceptance(report, { ...approval, maximumScriptDecodedBytesDelta: 4566 }).status, 'FAIL');
+  assert.equal(homeNetworkAcceptance(report, { ...approval, approval: 'general approval' }).status, 'FAIL');
   assert.equal(homeNetworkAcceptance({ ...report, comparisons: [] }, approval).status, 'FAIL');
+});
+
+test('the earlier approval stays capped at 3302 bytes; the extension cannot be inferred from it', () => {
+  const current = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../../docs/design-v6/V6-PERFORMANCE-EXCEPTION.json'), 'utf8'));
+  const legacy = { ...current, ...current.previousApproval };
+  const before = { requests: 10, byType: { Script: { requests: 10, decodedBytes: 10000 } } };
+  for (const [delta, legacyStatus] of [[3302, 'PASS_WITH_OWNER_EXCEPTION'], [3303, 'FAIL'], [3827, 'FAIL'], [4565, 'FAIL']]) {
+    const after = { requests: 12, byType: { Script: { requests: 12, decodedBytes: 10000 + delta } } };
+    const report = { baseSha: current.baselineSha, comparisons: [{ width: 390, sampleNumber: 1, before, after, additionalRequests: 2 }] };
+    assert.equal(homeNetworkAcceptance(report, legacy).status, legacyStatus);
+    assert.equal(homeNetworkAcceptance(report, current).status, 'PASS_WITH_OWNER_EXCEPTION');
+  }
 });
 
 test('removing only the approved separate brand pictogram is a proven saving, not an additional resource or a missing hero allowance', () => {

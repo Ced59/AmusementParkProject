@@ -1,5 +1,11 @@
 # V6 — performance, SEO et SSR
 
+## Mesure réseau courante et décision bornée du propriétaire — 17 octobre
+
+Le [run `a7618e44d / 38996825692`](https://github.com/Ced59/AmusementParkProject/actions/runs/38996825692) refuse l'ancien plafond +3 302, sans autre échec dans le sous-ensemble exécuté. [JSON vérifiés](https://github.com/Ced59/AmusementParkProject/actions/runs/38996825692/artifacts/12088670201) : six comparaisons appariées, 390/1 366 px, **deux scripts supplémentaires, +3 827 octets JS décodés, -6 362 octets décodés toutes ressources**, aucune requête additionnelle d'un autre type. Les optimisations réduisent le supplément JS de 4 565 à 3 827 octets ; les tailles décodées ne sont ni des tailles compressées sur le réseau ni un verdict CWV.
+
+L'accord explicite « Oui et oui et continue jusqu'à merge » autorise l'extension strictement bornée à **+4 565 octets JS / deux scripts**, avec les autres contrôles inchangés. Décision exacte, baseline SHA et historique versionnés dans `V6-PERFORMANCE-EXCEPTION.json`. **288 tests Node qualité PASS**, y compris refus à 4 566, ancien accord refusé à 3 303, nouvelle baseline, approbation générique ou requête API/image/font additionnelle. Nouvelle campagne intégrale requise : le run historique reste FAIL.
+
 Compilation `104d57b6d` / run `38994814203` : initial V6 **821,59 kB brut / 193,20 kB estimés transférés**, baseline master **831,90 / 192,85 kB**. Budgets Angular PASS, 2 780 tests Angular PASS. Le brut baisse de 10,31 kB avec les compléments d'icônes ; l'estimation de transfert reste +0,35 kB. Ce sont les sorties build, pas la mesure réseau P04.6 ni un PASS LCP/CLS. Le diagnostic natif master bloque ce run avant la comparaison appariée. Les corrections de protocole suivantes n'affectent pas le produit.
 
 ## Optimisation sans perte des masques — mesure source, pas verdict réseau

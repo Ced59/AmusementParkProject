@@ -99,10 +99,15 @@ export function homeNetworkAcceptance(report, approval = null) {
       continue;
     }
     if (additionalRequests <= 0) continue;
-    const approved = approval?.id === 'P04.6-modal-focus-2026-10-16'
-      && approval.approvedBy === 'repository-owner' && approval.approval === 'Oui, accepter cette exception ciblée'
+    // Only these two exact, recorded owner decisions are accepted. An arbitrary
+    // larger value in the JSON file cannot silently relax the performance gate.
+    const approvedCap = approval?.id === 'P04.6-modal-focus-2026-10-16'
+      && approval.approval === 'Oui, accepter cette exception ciblée' ? 3302
+      : approval?.id === 'P04.6-modal-focus-fixed-controls-2026-10-17'
+        && approval.approval === "Oui et oui et continue jusqu'à merge" ? 4565 : null;
+    const approved = approvedCap !== null && approval.approvedBy === 'repository-owner'
       && approval.baselineSha === report.baseSha
-      && approval.maximumAdditionalScriptRequests === 2 && approval.maximumScriptDecodedBytesDelta === 3302;
+      && approval.maximumAdditionalScriptRequests === 2 && approval.maximumScriptDecodedBytesDelta === approvedCap;
     if (!approved) {
       failures.push({ width, sampleNumber, reason: 'no-matching-owner-approval' });
       continue;
@@ -118,7 +123,7 @@ export function homeNetworkAcceptance(report, approval = null) {
     const scriptRequests = (after.byType?.Script?.requests ?? 0) - (before.byType?.Script?.requests ?? 0);
     const scriptBytes = after.byType?.Script?.decodedBytes - before.byType?.Script?.decodedBytes;
     if (extraOtherType || scriptRequests - (knownBrandSaving ? 1 : 0) !== additionalRequests || scriptRequests !== 2
-      || !Number.isInteger(scriptBytes) || scriptBytes > 3302) {
+      || !Number.isInteger(scriptBytes) || scriptBytes > approvedCap) {
       failures.push({ width, sampleNumber, reason: 'outside-approved-modal-focus-bounds', scriptRequests, scriptBytes });
       continue;
     }
