@@ -1,5 +1,7 @@
 # V6 — couverture d’implémentation
 
+Point de contrôle `3fe1ec4f0` : diagnostic admin-shell V6 **282 contrôles / 72 layouts**, 36 focus et huit insets réussis ; diagnostic standard FR **736 / 392** et incomplet **492 / 260** sans issue/fixture/exception. [Preuves](https://github.com/Ced59/AmusementParkProject/actions/runs/38991107750/artifacts/12085905411). Ce n'est ni le scénario de 58 écrans admin ni un PASS complet de toutes les gates. Coins/encres complémentaires `592159c34` et nouveau zoom natif doivent repasser la CI ; inventaire UI régénéré sur ce commit. **280 tests Node qualité PASS**, aucune route/action/donnée modifiée par ces compléments. NO-GO tant que la recette complète et la revue finale ne sont pas soldées.
+
 ## Point de contrôle du 17 octobre — standard V6/master
 
 Les quatre rapports intégraux standard/incomplet FR du run `db82d71eb / 38973483962` sont désormais lus : **2 672 contrôles / 2 366 captures standard**, **1 702 / 1 508 incomplet**, pour **chacun** de master et V6, zéro fixture/exception. La session expirée échoue ensuite sur l'incohérence héros client / exclusions featured SSR de la fixture, corrigée dans `10f3de113` par le rejeu exact du jeu SSR cohérent. Les huit langues et variantes suivantes ne sont pas déduites de ces PASS.

@@ -27,10 +27,12 @@ import { createAccountLayoutFixture, accountLayoutCases } from './account-layout
 import { captureAccountLayout } from './capture-account-layout.mjs';
 import { collectContrastCandidates } from './browser-text-contrast.mjs';
 import { isolatedLayoutPreflightPlan } from './isolated-layout-preflight.mjs';
+import { nativeBrowserZoomPlan } from './native-browser-zoom.mjs';
 
 // Initial public SSR/hydration plus network-denied, synthetic account UI in CI.
 // Never starts a server, authenticates remotely, performs writes or replaces full acceptance.
 const preflightPlan = isolatedLayoutPreflightPlan(process.env, process.platform);
+const nativeZoomPlan = nativeBrowserZoomPlan(process.env, process.platform, preflightPlan);
 const publicOrigin = 'https://amusement-parks.fun';
 const browserRoot = resolve('dist/amusement-park/browser');
 const outputRoot = resolve(process.env.V6_SSR_EVIDENCE_DIR ?? '../../docs/design-v6/evidence/public-ssr');
@@ -786,8 +788,15 @@ const report = {
 };
 try {
   await mkdir(outputRoot, { recursive: true });
+  if (nativeZoomPlan) {
+    await mkdir(join(tempRoot, 'Default'), { recursive: true });
+    await writeFile(join(tempRoot, 'Default/Preferences'), JSON.stringify(nativeZoomPlan.preferences));
+    report.nativeZoom = { factor: 2, physicalDeviceScale: 1, cssWidths: nativeZoomPlan.cssWidths,
+      scope: 'Native Chromium page zoom in a disposable CI profile; not CSS/pinch/font scaling or real-device certification' };
+  }
   chrome = spawn(chromeExecutable, ['--headless=new', '--disable-gpu', '--disable-dev-shm-usage', '--no-sandbox',
-    '--allow-file-access-from-files', '--remote-debugging-port=0', `--user-data-dir=${tempRoot}`, 'about:blank'], { stdio: 'ignore' });
+    '--allow-file-access-from-files', '--remote-debugging-port=0', `--user-data-dir=${tempRoot}`,
+    ...(nativeZoomPlan?.browserArguments ?? []), 'about:blank'], { stdio: 'ignore' });
   let port;
   for (let attempt = 0; attempt < 100; attempt++) {
     try { port = Number((await readFile(join(tempRoot, 'DevToolsActivePort'), 'utf8')).split('\n')[0]); break; } catch { await new Promise((yes) => setTimeout(yes, 100)); }
@@ -809,7 +818,8 @@ try {
       const fixture = createAccountLayoutFixture(kind, fixtureTime, language);
       for (const label of ['v6', 'master']) {
         try {
-          report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label, deferContrastFailure: true,
+          report.accountLayouts.push(await captureAccountLayout({ cdp, widths: nativeZoomPlan?.cssWidths ?? accountWidths, outputRoot, fixture, label, deferContrastFailure: true,
+            nativeZoom: !!nativeZoomPlan,
             browserRoot: label === 'master' ? resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') : browserRoot }));
         } catch (error) {
           report.accountLayoutFailure = { label, kind, language, error: error.message };

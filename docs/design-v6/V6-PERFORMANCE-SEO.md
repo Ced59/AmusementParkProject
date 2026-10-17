@@ -1,5 +1,7 @@
 # V6 — performance, SEO et SSR
 
+Le diagnostic `3fe1ec4f0` passe build SSR, budgets, 2 780 tests Angular et sous-ensembles admin/compte ; **la mesure réseau P04.6 complète du dernier code est encore en cours**. Le plafond +3 302 octets et les deux seules requêtes JS de focus-trap restent inchangés. Les compléments coins/encres sont uniquement SCSS ; le protocole de zoom natif est un outil CI, non importé dans l'application. Aucun résultat du navigateur de diagnostic (fixtures `.invalid`) n'est substitué aux mesures réseau/SEO publiques de la campagne complète.
+
 Le correctif de dégagement toolbar/navigation réutilise le RAF et l'unique ResizeObserver, avec deux cibles DOM au plus et écritures de hauteur seulement si changée. Aucun nouvel import, listener ou appel API ; **son delta JS initial doit néanmoins être mesuré en CI**, sous le plafond +3 302 existant, non élargi par anticipation. Aucun build local exécuté.
 
 Le refus `/fr/park-fit` des runs `38985040819` / `38985861611` est une mauvaise attente du protocole : ses trois déclarations serveur restent volontairement `RenderMode.Client`. Couverture corrigée : **40 chemins SSR** avec contenu initial strict, **trois documents Parc Fit CSR** avec HTTP/noindex et recette hydratée. Aucun moteur de rendu/route/SEO de production modifié pour faire passer un test. Les sorties HTTP des prochains runs restent obligatoires.

@@ -331,6 +331,27 @@ jobs:
           path: ${{ runner.temp }}/v6-public-ssr/isolated-preflight/admin
           if-no-files-found: error
 
+      - name: Check native browser zoom at 200 percent in isolated UI
+        id: v6-native-zoom
+        if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        env:
+          V6_ISOLATED_PREFLIGHT: 'true'
+          V6_PREFLIGHT_PHASE: admin
+          V6_NATIVE_ZOOM: '200'
+          V6_SSR_EVIDENCE_DIR: ${{ runner.temp }}/v6-public-ssr/isolated-preflight/native-zoom-200
+          V6_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          V6_BASELINE_SHA: ${{ github.event.pull_request.base.sha }}
+          V6_BASELINE_DIST_DIR: ${{ runner.temp }}/v6-baseline-dist
+        run: node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
+
+      - name: Upload native browser zoom evidence
+        if: always() && steps.v6-native-zoom.outcome != 'skipped' && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        uses: actions/upload-artifact@v7
+        with:
+          name: v6-native-zoom-200
+          path: ${{ runner.temp }}/v6-public-ssr/isolated-preflight/native-zoom-200
+          if-no-files-found: error
+
       - name: Diagnose standard and incomplete accounts before the full campaign
         id: v6-core-preflight
         if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'

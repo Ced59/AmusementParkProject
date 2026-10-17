@@ -24,6 +24,7 @@ import { historyLayoutDocuments } from './public-history-layout-fixtures.mjs';
 import { exerciseIsolatedHistoryPages } from './exercise-isolated-history-pages.mjs';
 import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from './account-layout-acceptance.mjs';
 import { positionAccountCaptureTarget } from './browser-account-target.mjs';
+import { nativeBrowserZoomPlan, resizeNativeZoomViewport } from './native-browser-zoom.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -31,9 +32,10 @@ export function accountLayoutCaptureAllowed(ci, platform) {
 
 // Compiled application, existing guards/services, synthetic HTTP input only.
 // This is UI acceptance, never proof of authentication or a private API call.
-export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label, homeFixtures = new Map(), deferContrastFailure = false }) {
+export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label, homeFixtures = new Map(), deferContrastFailure = false, nativeZoom = false }) {
   if (!accountLayoutCaptureAllowed(process.env.CI, process.platform)) throw new Error('Account layout capture requires isolated Linux CI.');
   if (typeof deferContrastFailure !== 'boolean' || (deferContrastFailure && process.env.V6_ISOLATED_PREFLIGHT !== 'true')) throw new Error('Deferred contrast findings are restricted to the explicit diagnostic preflight.');
+  if (typeof nativeZoom !== 'boolean' || (nativeZoom && (!nativeBrowserZoomPlan(process.env, process.platform, { phase: process.env.V6_PREFLIGHT_PHASE }) || fixture.kind !== 'admin-shell'))) throw new Error('Native zoom capture requires its bounded admin-shell diagnostic.');
   if (!['master', 'v6'].includes(label) || !['standard', 'incomplete', 'expired', 'admin-shell'].includes(fixture.kind)) throw new Error('Unsupported account layout capture case.');
   const language = fixture.language;
   if (!['fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl'].includes(language)) throw new Error('Unsupported account fixture language.');
@@ -61,7 +63,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
   const root = resolve(browserRoot);
   const rawHtml = await readFile(join(root, 'index.csr.html'), 'utf8');
   const result = { scope: 'compiled public/account UI with CI-only synthetic input; not authentication/API/HTTP-SEO acceptance', label,
-    kind: fixture.kind, language, deferContrastFailure, checks: [], layouts: [], apiReads: [], blockedRequests: [], fixtureFailures: [], exceptions: [] };
+    kind: fixture.kind, language, deferContrastFailure, nativeZoom, checks: [], layouts: [], apiReads: [], blockedRequests: [], fixtureFailures: [], exceptions: [] };
   console.log(`Isolated UI ${label}/${fixture.kind}/${language}: starting ${widths.length} widths and both themes.`);
   const pending = new Set();
   const canceled = new Set();
@@ -196,7 +198,8 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         await waitUntil(`document.body.classList.contains('${theme}-mode')`, `account fixture uses the existing ${theme} theme control`);
         await settleAccountDocument({ evaluate, pending });
         for (const width of widths) {
-          await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
+          const zoomEvidence = nativeZoom ? await resizeNativeZoomViewport({ cdp, evaluate, width, height }) : null;
+          if (!nativeZoom) await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
           let layout;
           let previous;
           await waitUntil(async () => {
@@ -208,6 +211,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
                 const close = node.querySelector('.p-dialog-header-close'); const rect = close.getBoundingClientRect();
                 return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, closeUnobscured: close.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2)) }; })() })`);
             layout.target = target;
+            if (zoomEvidence) layout.nativeZoom = zoomEvidence;
             result.lastLayout = layout;
             const serialized = JSON.stringify(layout);
             const stable = previous === serialized;
@@ -302,7 +306,9 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
         await captureLayouts('.app-public-layout__content', `public-admin-shell-height-${height}`, { height });
         await withDoubledRootFont({ evaluate, capture: () => captureLayouts('.app-public-layout__content', `public-admin-shell-large-font-height-${height}`, { height }) });
       }
-      await withBottomSafeArea({ cdp, capture: async ({ safeAreaBottomPx }) => {
+      // Safe-area emulation is tested in its separate 100% campaign. Do not
+      // conflate protocol inset units with the native page zoom evidence.
+      if (!nativeZoom) await withBottomSafeArea({ cdp, capture: async ({ safeAreaBottomPx }) => {
         const options = { height: 568, safeAreaBottomPx };
         await captureLayouts('.app-public-layout__content', 'public-admin-shell-safe-area-34', options);
         await withDoubledRootFont({ evaluate, capture: () => captureLayouts('.app-public-layout__content', 'public-admin-shell-large-font-safe-area-34', options) });
