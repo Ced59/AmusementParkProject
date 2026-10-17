@@ -205,7 +205,7 @@
     &::before {
       width: 0.75rem;
       height: 0.75rem;
-      border-radius: 0.2rem;
+      border-radius: var(--app-radius-sm);
       content: '';
     }
   }
@@ -254,7 +254,7 @@
   display: block;
   width: 42%;
   height: var(--bar-height);
-  border-radius: 0.35rem 0.35rem 0.1rem 0.1rem;
+  border-radius: var(--app-radius-sm) var(--app-radius-sm) 0 0;
 }
 
 .admin-passport-beta-bar__fill--completed {

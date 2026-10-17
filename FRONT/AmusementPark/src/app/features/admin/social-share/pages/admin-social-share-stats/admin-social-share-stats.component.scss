@@ -120,7 +120,7 @@
   width: 100%;
   height: var(--bar-height);
   min-height: 0.35rem;
-  border-radius: 0.45rem 0.45rem 0.15rem 0.15rem;
+  border-radius: var(--app-radius-sm) var(--app-radius-sm) 0 0;
   background: var(--app-success);
 }
 

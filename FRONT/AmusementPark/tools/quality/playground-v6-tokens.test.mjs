@@ -89,6 +89,27 @@ test('incomplete-account email warnings retain AA on the exact card observed in 
   }
 });
 
+test('admin import and comparison small labels use AA semantic ink, not fixed pastel text', () => {
+  const importer = readFileSync(resolve(styles, '../app/features/admin/data/ui/captain-coaster-import-tab.component.scss'), 'utf8');
+  const comparison = readFileSync(resolve(styles, '../app/features/admin/data/ui/captain-coaster-comparison-analysis.component.scss'), 'utf8');
+  assert.match(importer, /code\s*\{[^}]*color:\s*var\(--app-accent-lime\)/);
+  for (const [selector, token] of [['local', 'pink'], ['ext', 'lime']]) {
+    assert.match(comparison, new RegExp(`\\.change-item__${selector}\\s*\\{[^}]*color:\\s*var\\(--app-accent-${token}\\)`));
+  }
+  assert.match(comparison, /\.duplicate-variant-card__badge\s*\{[^}]*color:\s*var\(--app-accent-cyan\)/);
+  assert.doesNotMatch(comparison, /color:\s*#(?:fda4af|86efac|93c5fd)/i);
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(source)]);
+    for (const [ink, accent, weight] of [['lime', 'lime', 0.08], ['lime', 'lime', 0.16], ['pink', 'rose', 0.16], ['cyan', 'sky', 0.18]]) {
+      for (const surface of ['--app-bg', '--app-surface', '--app-surface-2', '--field']) {
+        assert.ok(contrast(resolveThemeColor(theme, `--app-accent-${ink}`),
+          mix(resolveThemeColor(theme, `--c-${accent}`), resolveThemeColor(theme, surface), weight)) >= 4.5,
+        `${ink} text on ${surface} at ${weight}`);
+      }
+    }
+  }
+});
+
 test('the dense admin button skin does not override the primary label with unreadable fixed white', () => {
   const source = readFileSync(resolve(styles, '_admin-skin.scss'), 'utf8');
   assert.match(source, /\.admin-shell \.p-button,\s*\.admin-button\s*\{[^}]*background:\s*var\(--app-primary\);\s*color:\s*var\(--app-on-accent\)/);

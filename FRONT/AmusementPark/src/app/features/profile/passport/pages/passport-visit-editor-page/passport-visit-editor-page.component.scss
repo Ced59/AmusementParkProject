@@ -624,7 +624,7 @@
   width: 3.75rem;
   height: 3.75rem;
   overflow: hidden;
-  border-radius: calc(var(--app-radius-md) - 0.2rem);
+  border-radius: var(--app-radius-sm);
   background: var(--app-surface-2);
 }
 

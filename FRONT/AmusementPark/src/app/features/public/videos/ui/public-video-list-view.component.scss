@@ -204,7 +204,7 @@
   position: absolute;
   right: 0.65rem;
   bottom: 0.65rem;
-  border-radius: 0.45rem;
+  border-radius: var(--app-radius-sm);
   background: rgba(15, 23, 42, 0.82);
   color: white;
   padding: 0.18rem 0.45rem;

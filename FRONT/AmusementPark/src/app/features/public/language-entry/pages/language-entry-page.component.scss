@@ -106,7 +106,7 @@ h1 {
 }
 
 .language-entry__flag {
-  border-radius: 0.35rem;
+  border-radius: var(--app-radius-sm);
   box-shadow: none;
   object-fit: cover;
 }

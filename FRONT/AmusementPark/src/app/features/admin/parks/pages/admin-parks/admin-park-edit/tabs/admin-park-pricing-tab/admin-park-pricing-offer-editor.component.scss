@@ -59,7 +59,7 @@
   min-height: 2.6rem;
   padding: 0.55rem 0.7rem;
   border: 1px solid var(--app-border-stronger);
-  border-radius: 0.45rem;
+  border-radius: var(--app-radius-sm);
   background: var(--app-bg);
   color: var(--app-text);
 }
@@ -72,7 +72,7 @@
   margin: 0;
   padding: 0.85rem;
   border: 1px solid var(--app-border-stronger);
-  border-radius: 0.6rem;
+  border-radius: var(--app-radius-sm);
 
   legend {
     padding: 0 0.35rem;

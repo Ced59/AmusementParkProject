@@ -112,7 +112,7 @@
 }
 
 .canonical-history-event__header a {
-  border-radius: 0.5rem;
+  border-radius: var(--app-radius-sm);
   display: inline-flex;
   max-width: 100%;
   text-decoration-color: color-mix(in srgb, var(--app-primary) 70%, transparent);

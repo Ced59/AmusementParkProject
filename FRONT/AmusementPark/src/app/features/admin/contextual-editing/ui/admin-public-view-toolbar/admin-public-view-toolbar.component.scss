@@ -61,7 +61,7 @@ app-admin-public-view-toolbar {
   justify-content: center;
   gap: 0.45rem;
   border: 1px solid var(--app-border);
-  border-radius: 0.5rem;
+  border-radius: var(--app-radius-sm);
   color: var(--app-text-muted);
   background: color-mix(in srgb, var(--app-surface-2) 88%, transparent);
   font: inherit;

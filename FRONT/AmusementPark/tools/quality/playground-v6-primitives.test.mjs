@@ -21,17 +21,35 @@ test('Playground shared surfaces and cards are flat editorial panels', () => {
   assert.match(cards, /\.ui-park-card[\s\S]*?border-radius:\s*var\(--radius-md\)/);
 });
 
-test('local surfaces use existing V6 radius tokens instead of fixed legacy large corners', () => {
+function fixedLegacyCorners(source) {
+  return [...source.matchAll(/border-(?:(?:top|bottom)-(?:left|right)-)?radius:\s*([^;]+);/g)]
+    .filter(match => {
+      let value = match[1];
+      // Token fallbacks are not rendered corners when the declared token exists.
+      while (/var\([^()]*\)/.test(value)) value = value.replace(/var\([^()]*\)/g, '');
+      return /[\d.]rem\b/.test(value) || [...value.matchAll(/(\d*\.?\d+)px\b/g)]
+        .some(([, number]) => Number(number) > 7 && ![999, 9999].includes(Number(number)));
+    }).map(match => match[0]);
+}
+
+test('the corner audit catches small rem and multi-value legacy corners without rejecting circles or tokens', () => {
+  assert.deepEqual(fixedLegacyCorners('.a{border-radius:.3rem;} .b{border-radius:.35rem .35rem .1rem .1rem;}'),
+    ['border-radius:.3rem;', 'border-radius:.35rem .35rem .1rem .1rem;']);
+  assert.deepEqual(fixedLegacyCorners('.a{border-top-left-radius:12px;}'), ['border-top-left-radius:12px;']);
+  assert.deepEqual(fixedLegacyCorners('.a{border-radius:50%;} .b{border-radius:var(--radius-sm,.5rem);} .c{border-radius:999px;}'), []);
+});
+
+test('all local and global surfaces use existing V6 radius tokens instead of fixed legacy corners', () => {
   const appRoot = resolve(styles, '../app');
   const violations = [];
   for (const path of readdirSync(appRoot, { recursive: true }).filter(path => path.endsWith('.scss') || isProductionPresentationFile(path))) {
     const source = readFileSync(resolve(appRoot, path), 'utf8');
     const styles = path.endsWith('.scss') ? source : /@Component\s*\(/.test(source)
       ? componentPresentations(source, path).flatMap(component => component.inlineStyles).join('\n') : '';
-    for (const match of styles.matchAll(/border-radius:\s*(\d*\.?\d+)(rem|px)\s*;/g)) {
-      const value = Number(match[1]);
-      if (match[2] === 'rem' ? value >= 0.65 : value > 7 && ![999, 9999].includes(value)) violations.push({ path, radius: match[0] });
-    }
+    for (const radius of fixedLegacyCorners(styles)) violations.push({ path, radius });
+  }
+  for (const path of readdirSync(styles).filter(path => path.endsWith('.scss'))) {
+    for (const radius of fixedLegacyCorners(read(path))) violations.push({ path, radius });
   }
   assert.deepEqual(violations, []);
   for (const name of ['comparison-tab', 'admin-provider']) {
