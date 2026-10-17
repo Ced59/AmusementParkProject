@@ -2,6 +2,10 @@
 
 ## Point de contrôle du 17 octobre — standard V6/master
 
+Les quatre rapports intégraux standard/incomplet FR du run `db82d71eb / 38973483962` sont désormais lus : **2 672 contrôles / 2 366 captures standard**, **1 702 / 1 508 incomplet**, pour **chacun** de master et V6, zéro fixture/exception. La session expirée échoue ensuite sur l'incohérence héros client / exclusions featured SSR de la fixture, corrigée dans `10f3de113` par le rejeu exact du jeu SSR cohérent. Les huit langues et variantes suivantes ne sont pas déduites de ces PASS.
+
+Le nouveau stress admin de `0b7570fb6` révèle un document de 520 px à viewport 320 px / root 32 px et un accès Admin masqué ; correction de rendu `a732fb2b1`, inventaire réconcilié sur ce SHA exact, mêmes 148 routes / 293 composants / 2 057 interactions. **175 tests Node ciblés PASS**, puis **55 tests compte PASS** après ajout du garde de population SSR. CI `1f603739c` : deux nouveaux tests Angular du bouton flottant PASS, 2 778 PASS et une assertion CSS avatar périmée actualisée ; nouveau build et nouvelles captures requis. La nouvelle campagne `10f3de113` est en cours, pas déclarée intégralement PASS.
+
 Le diagnostic `a31f12c25` révèle une mauvaise attente du test, pas une toolbar manquante du produit : le compte n'utilise pas le shell public. La recette distingue maintenant profil et confidentialité publique avant de contrôler la toolbar, sans changer les layouts/routage du site. **172 tests Node ciblés PASS** après correction et CTA ; captures de stress encore à exécuter, anciens FAIL conservés.
 
 Le dernier complément est uniquement de recette : shell admin normal/police doublée réellement mesurée, dès le diagnostic à 320/390/1 366 px ; matrice intégrale et huit langues conservées. Les 170 tests Node ciblés passent, mais aucun nouveau rendu n'est déclaré acquis. L'inventaire de source UI pointe maintenant exactement sur `2d93b5e68abfa552b388bd83a133d82c6661e588` ; outils/docs ultérieurs ne changent pas ses composants/routes/styles.
@@ -62,7 +66,7 @@ Les cibles recensées passent de **2 057 à 2 056** : upload **+1** (bouton nati
 
 Le script `FRONT/AmusementPark/tools/design-v6/generate-p00-inventory.mjs` analyse `app.routes.ts`, les enfants `loadChildren`, les métadonnées des composants, leurs templates et leurs styles. Il doit être rejoué après chaque intégration de `origin/master` et avant P22.
 
-| Élément | Base master | V6 `db82d71eb` |
+| Élément | Base master | V6 `a732fb2b1` |
 |---|---:|---:|
 | Routes terminales, redirections et écrans développés | 148 | 148 |
 | Composants Angular de production | 293 | 293 |

@@ -869,6 +869,21 @@ test('CSR expired redirect replays the coherent SSR hero and featured population
   assert.match(source, /const homeSsrFixtures = homeFixtureDocument \? readHomeEvidenceFixtures\(homeFixtureDocument.ssr\)/);
 });
 
+test('CI publishes the bounded diagnostic before the mandatory full campaign without changing deployment conditions', () => {
+  const workflow = read('../../.github/workflows/production.yml');
+  const diagnostic = workflow.indexOf('- name: Diagnose isolated V6 UI');
+  const upload = workflow.indexOf('- name: Upload isolated V6 preflight evidence');
+  const full = workflow.indexOf('- name: Capture initial Angular SSR');
+  assert.ok(diagnostic >= 0 && upload > diagnostic && full > upload);
+  const step = workflow.slice(upload, full);
+  assert.match(step, /always\(\) && steps.v6-preflight.outcome != 'skipped'/);
+  assert.match(step, /github.event_name == 'pull_request' && github.head_ref == 'feat\/ui-v6-playground-redesign'/);
+  assert.match(step, /name: v6-isolated-preflight/);
+  assert.match(step, /path: \$\{\{ runner.temp \}\}\/v6-public-ssr\/isolated-preflight/);
+  assert.match(step, /if-no-files-found: error/);
+  assert.doesNotMatch(step, /continue-on-error|timeout-minutes|pull_request_target|secrets\.|deploy|npm|node /);
+});
+
 test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {
   const result = {};
   const captures = [];

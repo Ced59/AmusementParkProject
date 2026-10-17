@@ -322,6 +322,14 @@ jobs:
           V6_BASELINE_DIST_DIR: ${{ runner.temp }}/v6-baseline-dist
         run: node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
 
+      - name: Upload isolated V6 preflight evidence before the full campaign
+        if: always() && steps.v6-preflight.outcome != 'skipped' && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        uses: actions/upload-artifact@v7
+        with:
+          name: v6-isolated-preflight
+          path: ${{ runner.temp }}/v6-public-ssr/isolated-preflight
+          if-no-files-found: error
+
       - name: Capture initial Angular SSR for the V6 visual review
         id: v6-review
         if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'

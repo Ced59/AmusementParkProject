@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Relecture comparative accueil — artefact intégral `db82d71eb`
+
+Les deux PNG fournis `V6_home_1366.png` / `V6_home_390.png` et les captures Angular `fr_home_1366_light_consent-hidden.webp` / `fr_home_390_light_consent-hidden.webp` de l'[artefact `12080924759`](https://github.com/Ced59/AmusementParkProject/actions/runs/38973483962/artifacts/12080924759) sont inspectés : titre manifeste, orange/contour, split desktop, empilement mobile, trois statistiques et quatre emplacements dynamiques, filets et recherche restent présents. Les nombres/parcs/logos réels de cette population ne deviennent pas du code figé. Le cadre de logo plutôt qu'une photo de démonstration est l'écart de modèle déjà documenté ; aucun nouveau champ/API n'est inventé. Le wordmark protégé diffère volontairement du faux lettrage du prototype. La cible tactile et son encre AA gardent l'exception documentée ; bandeaux de cadrage/démonstration du prototype ne deviennent pas du contenu public. L'écart de centrage lié à la scrollbar native de 15 px doit être normalisé dans les mesures, pas compensé par une gouttière arbitraire. **Revue ciblée de cet ancien build, pas approbation pixel-perfect globale ni validation du correctif agrandi suivant.**
+
 ## Diagnostic `0b7570fb6` — débordement prouvé en texte agrandi
 
 L'[artefact `12081381360`](https://github.com/Ced59/AmusementParkProject/actions/runs/38981470665/artifacts/12081381360) contient six captures normales PASS et le refus à **320 px / sombre / root 32 px** : document 520 px, avatar 240 px, titre comprimé, sept entrées trop étroites, hit-test Admin négatif sous le bouton flottant. Capture `v6_admin-shell_fr_account-admin-shell-large-font-failure.webp` inspectée. Aucun échec fixture/exception. Ce stress n'est toujours pas une preuve de zoom natif 200 %.
