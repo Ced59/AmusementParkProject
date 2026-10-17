@@ -800,6 +800,7 @@ try {
   if (preflightPlan) {
     report.scope = 'Diagnostic isolated UI subset only; not full acceptance, real authentication or public SSR/SEO evidence';
     report.preflightOnly = true;
+    report.preflightPhase = preflightPlan.phase;
     report.fullCampaignRequired = preflightPlan.fullCampaignRequired;
     report.accountLayouts = [];
     const fixtureTime = Math.floor(Date.now() / 1000);

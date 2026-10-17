@@ -316,14 +316,35 @@ jobs:
         if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
         env:
           V6_ISOLATED_PREFLIGHT: 'true'
-          V6_SSR_EVIDENCE_DIR: ${{ runner.temp }}/v6-public-ssr/isolated-preflight
+          V6_PREFLIGHT_PHASE: admin
+          V6_SSR_EVIDENCE_DIR: ${{ runner.temp }}/v6-public-ssr/isolated-preflight/admin
+          V6_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          V6_BASELINE_SHA: ${{ github.event.pull_request.base.sha }}
+          V6_BASELINE_DIST_DIR: ${{ runner.temp }}/v6-baseline-dist
+        run: node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
+
+      - name: Upload admin-shell evidence before the longer account diagnostics
+        if: always() && steps.v6-preflight.outcome != 'skipped' && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        uses: actions/upload-artifact@v7
+        with:
+          name: v6-admin-preflight
+          path: ${{ runner.temp }}/v6-public-ssr/isolated-preflight/admin
+          if-no-files-found: error
+
+      - name: Diagnose standard and incomplete accounts before the full campaign
+        id: v6-core-preflight
+        if: github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        env:
+          V6_ISOLATED_PREFLIGHT: 'true'
+          V6_PREFLIGHT_PHASE: core
+          V6_SSR_EVIDENCE_DIR: ${{ runner.temp }}/v6-public-ssr/isolated-preflight/core
           V6_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           V6_BASELINE_SHA: ${{ github.event.pull_request.base.sha }}
           V6_BASELINE_DIST_DIR: ${{ runner.temp }}/v6-baseline-dist
         run: node --max-old-space-size=768 tools/design-v6/capture-public-ssr.mjs
 
       - name: Upload isolated V6 preflight evidence before the full campaign
-        if: always() && steps.v6-preflight.outcome != 'skipped' && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
+        if: always() && steps.v6-core-preflight.outcome != 'skipped' && github.event_name == 'pull_request' && github.head_ref == 'feat/ui-v6-playground-redesign'
         uses: actions/upload-artifact@v7
         with:
           name: v6-isolated-preflight

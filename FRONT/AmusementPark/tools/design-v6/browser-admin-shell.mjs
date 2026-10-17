@@ -19,7 +19,7 @@ export function collectAdminShellLayout() {
   };
   return { adminPath, width: innerWidth, height: innerHeight, publicLayout: !!document.querySelector('.app-public-layout'), entries,
     bottomItemCount: document.querySelectorAll('.app-mobile-bottom-nav__item').length,
-    toolbar: rect('.admin-public-view-toolbar'), bottomNavigation: rect('.app-mobile-bottom-nav') };
+    toolbar: rect('.admin-public-view-toolbar'), bottomNavigation: rect('.app-mobile-bottom-nav'), jumpAction: rect('.page-jump-button') };
 }
 
 export function adminShellLayoutIssues(layout) {
@@ -44,5 +44,13 @@ export function adminShellLayoutIssues(layout) {
   const nav = layout.bottomNavigation;
   if (toolbar && nav?.height > 0 && toolbar.x < nav.right && toolbar.right > nav.x
     && toolbar.y < nav.bottom && toolbar.bottom > nav.y) issues.push('admin toolbar overlaps the mobile navigation');
+  const jump = layout.jumpAction;
+  if (jump?.height > 0) {
+    if (jump.x < -1 || jump.y < -1 || jump.right > layout.width + 1 || jump.bottom > layout.height + 1) issues.push('page jump action outside the viewport');
+    if (toolbar && jump.x < toolbar.right && jump.right > toolbar.x
+      && jump.y < toolbar.bottom && jump.bottom > toolbar.y) issues.push('page jump action overlaps the admin toolbar');
+    if (nav?.height > 0 && jump.x < nav.right && jump.right > nav.x
+      && jump.y < nav.bottom && jump.bottom > nav.y) issues.push('page jump action overlaps the mobile navigation');
+  }
   return issues;
 }

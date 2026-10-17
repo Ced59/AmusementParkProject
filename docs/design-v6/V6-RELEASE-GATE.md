@@ -2,6 +2,8 @@
 
 ## Décision actuelle
 
+Le diagnostic CI est séparé en deux phases **toutes deux obligatoires** : shell admin, publication immédiate `v6-admin-preflight`, puis compte standard/incomplet, puis campagne intégrale inchangée. Sans phase explicite, le CLI conserve tous les cas ; valeurs inconnues ou phase sans garde Linux CI refusées. Leur réunion est testée égale au diagnostic original. Le rapport nomme la phase et conserve `fullCampaignRequired:true`. Le probe mesure désormais aussi le bouton de saut et refuse son recouvrement de la toolbar/menu ou sa sortie du viewport ; aucun défaut produit n'est accepté par cette séparation. Nouveaux rendus requis.
+
 La publication d'artefact du diagnostic est placée **avant** la longue campagne intégrale, sous la même condition PR/branche V6 et `always()`, pour permettre sa revue sans attendre plusieurs milliers d'autres captures. Le diagnostic et la campagne restent tous deux obligatoires ; aucun `continue-on-error`, nouvelle permission, secret, serveur, condition de production ou seuil n'est ajouté/modifié. L'artefact intégral existant reste conservé. Changement d'outillage CI seulement, test d'ordre/portée ajouté ; nouvelle CI à obtenir.
 
 Le [run `1f603739c / 38984534106`](https://github.com/Ced59/AmusementParkProject/actions/runs/38984534106) valide **2 778 tests Angular**, dont les deux nouveaux tests de hauteur/nettoyage du bouton flottant ; un ancien test de style avatar échoue encore car il exige `7.5rem`. Assertion actualisée pour conserver carré/rond/cover et vérifier 120 px, max-width 100 %, hauteur auto. Pas de build/capture acquis sur ce run, nouveau passage requis.

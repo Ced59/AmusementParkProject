@@ -139,7 +139,7 @@ test('admin shell measurement reads the real links and toolbar without navigatio
   const links = [link(false, rect(0, 0, 0, 0)), link(true, rect(330, 1128, 53, 72))];
   const sandbox = { innerWidth: 390, innerHeight: 1200, location: { pathname: '/fr/profile' }, document: {
     querySelectorAll: selector => selector === '.app-mobile-bottom-nav__item' ? Array(7).fill({}) : links,
-    querySelector: selector => ({ getBoundingClientRect: () => selector === '.admin-public-view-toolbar'
+    querySelector: selector => selector === '.page-jump-button' ? null : ({ getBoundingClientRect: () => selector === '.admin-public-view-toolbar'
       ? rect(8, 960, 374, 150) : rect(0, 1128, 390, 72) }), elementFromPoint: () => icon } };
   const layout = JSON.parse(JSON.stringify(runInNewContext(`(${collectAdminShellLayout.toString()})()`, sandbox)));
   assert.deepEqual(adminShellLayoutIssues(layout), []);
@@ -308,6 +308,7 @@ test('isolated preflight is an explicit Linux CI subset, never a replacement for
   assert.equal(isolatedLayoutPreflightPlan({}, 'win32'), null);
   assert.deepEqual(isolatedLayoutPreflightPlan(environment, 'linux'), {
     fullCampaignRequired: true,
+    phase: 'all',
     cases: [{ kind: 'admin-shell', language: 'fr', widths: [320, 390, 1366] },
       ...['standard', 'incomplete'].map(kind => ({ kind, language: 'fr', widths: [390, 1366] }))],
   });
@@ -316,6 +317,12 @@ test('isolated preflight is an explicit Linux CI subset, never a replacement for
   }
   assert.throws(() => isolatedLayoutPreflightPlan(environment, 'win32'), /Linux CI/);
   assert.throws(() => isolatedLayoutPreflightPlan(environment, 'darwin'), /Linux CI/);
+  const admin = isolatedLayoutPreflightPlan({ ...environment, V6_PREFLIGHT_PHASE: 'admin' }, 'linux');
+  const core = isolatedLayoutPreflightPlan({ ...environment, V6_PREFLIGHT_PHASE: 'core' }, 'linux');
+  assert.deepEqual([...admin.cases, ...core.cases], isolatedLayoutPreflightPlan(environment, 'linux').cases);
+  assert.equal(admin.fullCampaignRequired && core.fullCampaignRequired, true);
+  for (const phase of ['', 'skip', 'standard', true]) assert.throws(() => isolatedLayoutPreflightPlan({ ...environment, V6_PREFLIGHT_PHASE: phase }, 'linux'), /phase/);
+  assert.throws(() => isolatedLayoutPreflightPlan({ V6_PREFLIGHT_PHASE: 'admin' }, 'linux'), /explicit/);
 });
 
 test('preflight rejects local execution before Chromium and does not load public fixtures or SSR', () => {
@@ -876,12 +883,33 @@ test('CI publishes the bounded diagnostic before the mandatory full campaign wit
   const full = workflow.indexOf('- name: Capture initial Angular SSR');
   assert.ok(diagnostic >= 0 && upload > diagnostic && full > upload);
   const step = workflow.slice(upload, full);
-  assert.match(step, /always\(\) && steps.v6-preflight.outcome != 'skipped'/);
+  assert.match(step, /always\(\) && steps.v6-core-preflight.outcome != 'skipped'/);
   assert.match(step, /github.event_name == 'pull_request' && github.head_ref == 'feat\/ui-v6-playground-redesign'/);
   assert.match(step, /name: v6-isolated-preflight/);
   assert.match(step, /path: \$\{\{ runner.temp \}\}\/v6-public-ssr\/isolated-preflight/);
   assert.match(step, /if-no-files-found: error/);
   assert.doesNotMatch(step, /continue-on-error|timeout-minutes|pull_request_target|secrets\.|deploy|npm|node /);
+  const adminUpload = workflow.indexOf('- name: Upload admin-shell evidence');
+  const core = workflow.indexOf('- name: Diagnose standard and incomplete accounts');
+  assert.ok(adminUpload > diagnostic && core > adminUpload && core < upload);
+  assert.match(workflow.slice(diagnostic, adminUpload), /V6_PREFLIGHT_PHASE: admin/);
+  assert.match(workflow.slice(core, upload), /V6_PREFLIGHT_PHASE: core/);
+  assert.match(workflow.slice(adminUpload, core), /steps.v6-preflight.outcome != 'skipped'/);
+});
+
+test('admin shell geometry rejects floating controls over its toolbar or mobile navigation', () => {
+  const rect = (x, y, width, height) => ({ x, y, width, height, right: x + width, bottom: y + height });
+  const adminPath = '/fr/admin';
+  const layout = { adminPath, width: 390, height: 1200, publicLayout: true, bottomItemCount: 7,
+    entries: [{ scope: 'header', href: adminPath, visible: false }, { scope: 'mobile', href: adminPath, visible: true, unobscured: true, ...rect(330, 1128, 53, 72) }],
+    toolbar: rect(8, 960, 374, 150), bottomNavigation: rect(0, 1128, 390, 72), jumpAction: rect(330, 1060, 44, 44) };
+  assert.ok(adminShellLayoutIssues(layout).includes('page jump action overlaps the admin toolbar'));
+  layout.jumpAction = rect(330, 1120, 44, 44);
+  assert.ok(adminShellLayoutIssues(layout).includes('page jump action overlaps the mobile navigation'));
+  layout.jumpAction = rect(330, -10, 44, 44);
+  assert.ok(adminShellLayoutIssues(layout).includes('page jump action outside the viewport'));
+  layout.jumpAction = rect(330, 900, 44, 44);
+  assert.deepEqual(adminShellLayoutIssues(layout), []);
 });
 
 test('anonymous auth recipe compiles every exact browser expression and never submits credentials or sends recovery email', async () => {
