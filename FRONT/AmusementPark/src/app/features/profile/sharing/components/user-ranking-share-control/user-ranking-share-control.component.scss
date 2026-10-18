@@ -12,9 +12,8 @@
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--app-primary) 36%, var(--app-border));
   border-radius: var(--app-radius-md);
-  background:
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--c-gold) 14%, transparent), transparent 42%),
-    color-mix(in srgb, var(--app-surface-2) 84%, transparent);
+  border-top: 4px solid var(--c-gold);
+  background: var(--app-surface);
 }
 
 .ranking-share__heading {
@@ -227,7 +226,7 @@
   padding: 1rem;
   border: 1px solid color-mix(in srgb, var(--c-gold) 44%, var(--app-border));
   border-radius: var(--app-radius-md);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--c-gold) 9%, var(--app-surface)), var(--app-surface));
+  background: color-mix(in srgb, var(--c-gold) 8%, var(--app-surface));
 }
 
 .ranking-share-preview h5 {

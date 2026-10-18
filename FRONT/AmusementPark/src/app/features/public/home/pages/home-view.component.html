@@ -1,6 +1,5 @@
 <section class="public-page home-page">
   <section class="home-hero">
-    <div class="home-hero__backdrop" aria-hidden="true"></div>
     <div class="home-hero__inner">
       <div class="home-hero__content">
         <div class="home-hero__kicker">
@@ -58,6 +57,20 @@
                 <a
                   [class]="getHeroCardClass(index)"
                   [routerLink]="parkLink">
+                  <span class="home-hero-card__media" aria-hidden="true">
+                    <app-image-display
+                      [imageId]="park.logoImageId"
+                      [alt]="park.name"
+                      imgClass="home-hero-card__image"
+                      placeholderClass="home-hero-card__image-placeholder"
+                      placeholderKind="park"
+                      [loading]="index === 0 ? 'eager' : 'lazy'"
+                      [fetchPriority]="index === 0 ? 'high' : 'low'"
+                      sizes="(max-width: 428px) calc(72vw - 20.16px), 18rem"
+                      [srcWidth]="640"
+                      [responsiveWidths]="[320, 480, 640, 800]">
+                    </app-image-display>
+                  </span>
                   <span class="home-hero-card__icon">
                     <i [class]="getHeroCardStyle(index).iconClass" aria-hidden="true"></i>
                   </span>

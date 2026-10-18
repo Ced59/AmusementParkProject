@@ -1,19 +1,17 @@
-﻿:host {
+@use "../../../../../styles/mixins" as m;
+
+:host {
   display: block;
 }
 
 .park-weather-page {
-  display: grid;
-  gap: clamp(1.25rem, 3vw, 2rem);
-  width: min(1120px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  @include m.public-editorial-page;
 }
 
 .park-weather-hero {
+  @include m.public-editorial-header;
   display: grid;
   gap: 0.8rem;
-  padding-bottom: 0.25rem;
 }
 
 .park-weather-hero__kicker {
@@ -29,7 +27,7 @@
   margin: 0;
   color: var(--app-heading, #ffffff);
   font-family: var(--font-heading, inherit);
-  font-size: clamp(2.1rem, 5vw, 4.1rem);
+  font-size: clamp(2.125rem, 5vw, 3.5625rem);
   font-weight: 900;
   line-height: 1.06;
   letter-spacing: 0;
@@ -56,9 +54,7 @@
   --weather-axis-width: 4.6rem;
   --weather-day-width: minmax(5.8rem, 1fr);
   --weather-chart-min-width: 47.5rem;
-  --weather-panel-bg: linear-gradient(160deg,
-    color-mix(in srgb, var(--app-surface-2, #211a13) 92%, var(--app-accent-cyan, #38c5f5) 8%),
-    color-mix(in srgb, var(--app-surface, #1a140f) 96%, transparent));
+  --weather-panel-bg: var(--app-surface, #1a140f);
   --weather-panel-border: color-mix(in srgb, var(--app-accent-cyan, #38c5f5) 20%, var(--app-border, rgba(255, 210, 140, 0.12)));
   --weather-grid-line: color-mix(in srgb, var(--app-border, rgba(255, 210, 140, 0.12)) 78%, var(--app-text-muted, #b09d7a));
   --weather-max: var(--app-primary, #ff5a1f);
@@ -69,9 +65,9 @@
   padding: clamp(1rem, 2.5vw, 1.35rem);
   overflow: hidden;
   border: 1px solid var(--weather-panel-border);
-  border-radius: var(--radius-xl, 1.4rem);
+  border-radius: var(--radius-md, 8px);
   background: var(--weather-panel-bg);
-  box-shadow: var(--shadow-card, 0 18px 38px rgba(0, 0, 0, 0.18));
+  box-shadow: none;
   color: var(--app-text, #f6eed9);
 }
 
@@ -170,12 +166,16 @@
   content: '';
   width: 0.9rem;
   height: 0.2rem;
-  border-radius: 999px;
+  border-radius: var(--radius-sm, 4px);
   background: currentColor;
 }
 
 .park-weather-board__legend-item--max {
-  color: var(--weather-max);
+  color: var(--app-primary-strong);
+}
+
+.park-weather-board__legend-item--max::before {
+  background: var(--weather-max);
 }
 
 .park-weather-board__legend-item--min {
@@ -506,7 +506,6 @@
 
 @media (max-width: 720px) {
   .park-weather-page {
-    width: min(100% - 1.5rem, 1120px);
     padding-bottom: 5.5rem;
   }
 

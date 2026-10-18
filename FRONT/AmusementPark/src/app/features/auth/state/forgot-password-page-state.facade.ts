@@ -6,6 +6,7 @@ import {
   Inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateService } from '@ngx-translate/core';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
 import {
@@ -28,7 +29,8 @@ export class ForgotPasswordPageStateFacade {
   public readonly message: Signal<string> = computed(() => this.screenStateStore.data()?.message ?? '');
 
   constructor(@Inject(FORGOT_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT) private readonly authApiService: ForgotPasswordPageStateAuthApiServicePort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly translateService: TranslateService
   ) {
     this.screenStateStore.setReady({
       email: '',
@@ -76,7 +78,7 @@ export class ForgotPasswordPageStateFacade {
         this.screenStateStore.setReady({
           email,
           isSubmitted: true,
-          message: this.resolveErrorMessage(error, 'La demande a échoué.')
+          message: this.resolveErrorMessage(error, this.translateService.instant('auth.forgot_password.fallbackError'))
         });
       }
     });

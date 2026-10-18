@@ -177,12 +177,14 @@
                     <div class="flex gap-2">
                       <button appUiButton type="button"
                         icon="pi pi-check"
+                        [attr.aria-label]="'admin.images.batch.setAsCurrent' | translate"
                         class="p-button-sm p-button-success"
                         (click)="setCurrentLogo.emit(logo)"
                         [disabled]="logo.isCurrent">
                       </button>
                       <button appUiButton type="button"
                         icon="pi pi-trash"
+                        [attr.aria-label]="'actions.delete' | translate"
                         class="p-button-sm p-button-danger"
                         (click)="deleteLogo.emit(logo)">
                       </button>

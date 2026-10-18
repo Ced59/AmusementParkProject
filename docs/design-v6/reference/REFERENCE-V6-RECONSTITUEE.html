@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Playground 6.0.0 — référence de revue reconstituée</title>
+  <style>
+    :root{font-family:system-ui,sans-serif;color:#19201d;background:#f7f6f0;line-height:1.6}
+    *{box-sizing:border-box}body{margin:0}main{max-width:1160px;margin:auto;padding:32px 20px 64px}
+    header{border-block:2px solid #19201d;padding-block:24px}h1{font-size:clamp(28px,5vw,56px);line-height:1.1;margin:0 0 20px}
+    h2{font-size:28px;line-height:1.2;margin:40px 0 16px}h3{font-size:18px;margin:0 0 8px}
+    p{max-width:78ch}a{color:#933618;text-underline-offset:3px}a:focus-visible{outline:3px solid #075f6e;outline-offset:4px}
+    .notice{border-left:4px solid #e54b28;padding:16px;background:#eeefe8}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px}
+    .card{margin:0;border:1px solid #aeb7ae;border-radius:2px;background:#eeefe8;padding:16px;min-width:0}
+    .card img{display:block;width:100%;height:340px;object-fit:contain;object-position:top;background:#fff}
+    figcaption{margin-top:12px}small{display:block;color:#57605a}code{overflow-wrap:anywhere}
+    .palette{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.swatch{display:block;height:44px;border:1px solid #aeb7ae;margin-bottom:8px}
+    .dark{padding:20px;color:#f5f5ec;background:#151a17;border-radius:2px}.dark .card{background:#252c26;border-color:#67716a}.dark small{color:#bbc5bc}
+    ul{padding-left:24px}li{margin-block:10px}footer{margin-top:40px;border-top:2px solid #19201d;padding-top:20px}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p>AMUSEMENT-PARKS.fun · Playground 6.0.0 · 18 octobre 2026</p>
+    <h1>Référence de revue reconstituée</h1>
+    <p class="notice">Le pack HTML/PNG original du 14 octobre est indisponible. Cette planche rassemble le contrat graphique versionné et les captures conservées, conformément à la demande de reconstitution. Elle ne constitue pas une copie du prototype perdu ni une certification pixel à pixel de celui-ci.</p>
+    <p><a href="../V6-DESIGN-TOKENS.md">Contrat des tokens</a> · <a href="../V6-VISUAL-REGRESSION.md">Matrice de revue visuelle</a> · <a href="../V6-RELEASE-GATE.md">Critères de livraison</a></p>
+  </header>
+
+  <h2>Repères contractuels</h2>
+  <div class="grid">
+    <section class="card"><h3>Composition</h3><p>Largeur éditoriale de 1 160 px, surfaces opaques, filets visibles et rayons de 2 px. La photographie et les titres structurent les pages ; les contrôles et contenus existants restent présents.</p></section>
+    <section class="card"><h3>Identité</h3><p>Wordmark réel et slogans dans les huit langues préservés. Les variantes clair/sombre, la préférence de thème et les données métier restent celles de l’application.</p></section>
+    <section class="card"><h3>Lisibilité</h3><p>Texte courant contrasté à 4,5:1 minimum, focus visible et cibles accessibles. Les libellés reviennent à la ligne sans être rognés ou comprimés dans des colonnes étroites.</p></section>
+  </div>
+
+  <h2>Palette conservée</h2>
+  <div class="palette">
+    <div class="card"><span class="swatch" style="background:#f7f6f0"></span>Papier clair<small>#f7f6f0</small></div>
+    <div class="card"><span class="swatch" style="background:#19201d"></span>Encre claire<small>#19201d</small></div>
+    <div class="card"><span class="swatch" style="background:#eeefe8"></span>Surface claire<small>#eeefe8</small></div>
+    <div class="card"><span class="swatch" style="background:#e54b28"></span>Accent orange<small>#e54b28 — aplat décoratif</small></div>
+    <div class="card"><span class="swatch" style="background:#d5ed60"></span>Accent lime<small>#d5ed60</small></div>
+    <div class="card"><span class="swatch" style="background:#0c8ca3"></span>Accent bleu<small>#0c8ca3</small></div>
+  </div>
+  <section class="dark">
+    <h3>Variante sombre</h3>
+    <p>Papier #151a17, encre #f5f5ec, surface #252c26, orange #ff7551, lime #d1ec70 et bleu #49c9df. Les encres sémantiques contrastées du contrat remplacent les accents décoratifs dans les petits textes.</p>
+  </section>
+
+  <h2>Cible de présentation conservée</h2>
+  <p>Ces images sont les fixtures responsive versionnées avant la reprise cloud. Elles donnent des repères de composition ; les résultats de l’application compilée sont contrôlés séparément en CI.</p>
+  <div class="grid">
+    <figure class="card"><a href="../evidence/responsive-v6/v6-responsive-1366x1200-light.webp"><img src="../evidence/responsive-v6/v6-responsive-1366x1200-light.webp" alt="Fixture V6 claire, écran de 1 366 pixels" loading="lazy"></a><figcaption>Desktop · 1 366 px · clair<small>Fixture de présentation conservée</small></figcaption></figure>
+    <figure class="card"><a href="../evidence/responsive-v6/v6-responsive-390x1200-light.webp"><img src="../evidence/responsive-v6/v6-responsive-390x1200-light.webp" alt="Fixture V6 claire, écran mobile de 390 pixels" loading="lazy"></a><figcaption>Mobile · 390 px · clair<small>Fixture de présentation conservée</small></figcaption></figure>
+    <figure class="card"><a href="../evidence/responsive-v6/v6-responsive-320x1200-dark.webp"><img src="../evidence/responsive-v6/v6-responsive-320x1200-dark.webp" alt="Fixture V6 sombre, écran mobile de 320 pixels" loading="lazy"></a><figcaption>Mobile étroit · 320 px · sombre<small>Fixture de présentation conservée</small></figcaption></figure>
+    <figure class="card"><a href="../evidence/responsive-v6/v6-responsive-768x1200-dark.webp"><img src="../evidence/responsive-v6/v6-responsive-768x1200-dark.webp" alt="Fixture V6 sombre, écran tablette de 768 pixels" loading="lazy"></a><figcaption>Tablette · 768 px · sombre<small>Fixture de présentation conservée</small></figcaption></figure>
+  </div>
+
+  <h2>Avant : application V5.4.101</h2>
+  <div class="grid">
+    <figure class="card"><a href="../evidence/baseline-v5/home-fr-light-1366.png"><img src="../evidence/baseline-v5/home-fr-light-1366.png" alt="Accueil français de la V5 en clair sur desktop" loading="lazy"></a><figcaption>Accueil V5 · desktop · clair</figcaption></figure>
+    <figure class="card"><a href="../evidence/baseline-v5/fleury-fr-dark-390.png"><img src="../evidence/baseline-v5/fleury-fr-dark-390.png" alt="Fiche du Fleury dans la V5 en sombre sur mobile" loading="lazy"></a><figcaption>Fiche parc V5 · mobile · sombre</figcaption></figure>
+  </div>
+
+  <h2>Après : vérification ciblée de la session expirée</h2>
+  <p>Captures du bundle Angular corrigé, à partir d’entrées synthétiques isolées : session refusée, redirection réelle et modale de connexion. Huit langues, trois largeurs et deux thèmes donnent 48 captures sans défaut détecté. Ces preuves ne certifient ni OAuth réel, ni API privée, ni la campagne complète.</p>
+  <div class="grid">
+    <figure class="card"><a href="../evidence/reprise-cloud/v6-expired-fr-1366-light.webp"><img src="../evidence/reprise-cloud/v6-expired-fr-1366-light.webp" alt="Session expirée française avec le lien de récupération contrasté, desktop clair" loading="lazy"></a><figcaption>Français · 1 366 px · clair<small>Après correction du contraste du lien de récupération</small></figcaption></figure>
+    <figure class="card"><a href="../evidence/reprise-cloud/v6-expired-de-390-dark.webp"><img src="../evidence/reprise-cloud/v6-expired-de-390-dark.webp" alt="Session expirée allemande avec les contrôles localisés, mobile sombre" loading="lazy"></a><figcaption>Allemand · 390 px · sombre<small>État réel du composant sur fixture isolée</small></figcaption></figure>
+  </div>
+  <p><a href="../evidence/reprise-cloud/expired-session-summary.json">Provenance, empreintes et résultats ciblés</a></p>
+
+  <h2>Après : barre de vue admin et texte agrandi</h2>
+  <p>La revue du bundle a révélé des mots coupés dans les boutons de mode à 320 px et root 32 px. Après reflow, les scénarios FR/DE passent 564 contrôles et 144 captures, dont faible hauteur, safe-area et navigation clavier dans le défilement local. Les huit langues passent aussi 128 cas CSS ciblés. Il s’agit du shell synthétique isolé, sans opération d’administration réelle.</p>
+  <div class="grid">
+    <figure class="card"><a href="../evidence/reprise-cloud/v6-admin-fr-320-large-light.webp"><img src="../evidence/reprise-cloud/v6-admin-fr-320-large-light.webp" alt="Barre admin française avec les libellés entiers à texte agrandi sur mobile clair" loading="lazy"></a><figcaption>FR · 320 px · clair · texte agrandi</figcaption></figure>
+    <figure class="card"><a href="../evidence/reprise-cloud/v6-admin-de-320-short-large-dark.webp"><img src="../evidence/reprise-cloud/v6-admin-de-320-short-large-dark.webp" alt="Barre admin allemande à faible hauteur avec le bouton d’édition atteint au clavier" loading="lazy"></a><figcaption>DE · 320 × 568 px · sombre · texte agrandi</figcaption></figure>
+  </div>
+  <p><a href="../evidence/reprise-cloud/admin-shell-summary.json">Provenance et résultats du shell admin</a></p>
+
+  <h2>Après : panneau de récupération et titre contenu</h2>
+  <p>La police V6 révélait un rognage du titre introductif sur desktop. Le titre suit maintenant la largeur de son panneau ; les espacements laissent de la place au texte agrandi. Les huit langues passent 208 cas CSS et 96 dispositions de pages anonymes du bundle compilé, sans appel API ni envoi d’email.</p>
+  <div class="grid">
+    <figure class="card"><a href="../evidence/reprise-cloud/v6-auth-heading-fr-1366-light.webp"><img src="../evidence/reprise-cloud/v6-auth-heading-fr-1366-light.webp" alt="Panneau de récupération français sur desktop clair avec le titre complet" loading="lazy"></a><figcaption>FR · 1 366 px · clair · titre complet</figcaption></figure>
+    <figure class="card"><a href="../evidence/reprise-cloud/v6-auth-heading-fr-320-large-dark.webp"><img src="../evidence/reprise-cloud/v6-auth-heading-fr-320-large-dark.webp" alt="Panneau introductif français avec texte agrandi revenant à la ligne sur mobile sombre" loading="lazy"></a><figcaption>FR · 320 px · sombre · texte agrandi</figcaption></figure>
+  </div>
+  <p><a href="../evidence/reprise-cloud/auth-heading-summary.json">Provenance et résultats du titre auth</a></p>
+
+  <h2>Accessibilité des dialogues</h2>
+  <p>Le titre existant du choix de langue fournit désormais aussi son nom accessible, même avec son header visuellement masqué. Dix états du bundle ont été examinés dans l’arbre Chromium : récupération, connexion et choix de langue dans les huit langues. Les contrôles sont nommés ; Tab/Maj+Tab restent contenus dans les dialogues de connexion et de langue vérifiés en français. Il s’agit d’une revue d’arbre et de focus, sans certification par lecteur d’écran ni réussite OAuth.</p>
+  <p><a href="../evidence/reprise-cloud/dialog-accessibility-summary.json">Résultats d’accessibilité et empreintes</a></p>
+
+  <h2>Acceptation finale</h2>
+  <ul>
+    <li>Comparer les captures Angular du dernier code aux repères conservés et aux mini-fiches des familles, en clair/sombre et sur les tailles prévues.</li>
+    <li>Vérifier contenus, navigation, formulaires, erreurs, médias, clavier, zoom, textes longs et réservations des contrôles fixes ; préserver les constats legacy identifiés.</li>
+    <li>Exiger les tests backend/frontend, les contrôles d’architecture, traductions, sécurité, performances, SSR/SEO et retour arrière de la campagne complète.</li>
+    <li>Lire les commentaires et revues de la PR, puis contrôler version, empreinte, santé et intégrité des réponses après la livraison atomique.</li>
+  </ul>
+  <footer><p>La décision de livraison repose sur les résultats du dernier HEAD de la <a href="https://github.com/Ced59/AmusementParkProject/pull/917">PR #917</a>. Cette planche ne transforme aucun ancien échec ou sous-ensemble en validation globale.</p></footer>
+</main>
+</body>
+</html>

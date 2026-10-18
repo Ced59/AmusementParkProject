@@ -227,7 +227,7 @@
     max-width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, var(--app-primary), var(--app-success));
+    background: var(--app-primary);
   }
 }
 
@@ -242,7 +242,7 @@
     min-width: 0;
     padding: 0.7rem;
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--app-surface-card) 86%, transparent);
+    background: color-mix(in srgb, var(--app-surface) 86%, transparent);
   }
 
   dt,

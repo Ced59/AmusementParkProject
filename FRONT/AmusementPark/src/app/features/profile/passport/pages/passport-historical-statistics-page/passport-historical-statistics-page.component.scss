@@ -25,7 +25,7 @@
 
 :host { display: block; padding-bottom: 1rem; }
 .passport-history-stats { display: grid; width: 100%; gap: clamp(1rem, 2.5vw, 1.5rem); overflow-x: clip; }
-.passport-history-stats__hero { display: grid; width: 100%; gap: .8rem; border-color: color-mix(in srgb, var(--c-gold) 35%, var(--app-border)); background: radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--c-gold) 18%, transparent), transparent 34%), var(--app-surface); }
+.passport-history-stats__hero { display: grid; width: 100%; gap: .8rem; border-color: color-mix(in srgb, var(--c-gold) 35%, var(--app-border)); border-top: 4px solid var(--c-gold); background: var(--app-surface); }
 .passport-history-stats__back { width: fit-content; max-width: 100%; }
 .passport-history-stats__heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
 h1, h2, h3, p { margin: 0; overflow-wrap: anywhere; }

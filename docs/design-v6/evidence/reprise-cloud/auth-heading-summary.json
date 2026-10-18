@@ -1,0 +1,76 @@
+{
+  "scope": "anonymous compiled recovery CSR; no authentication or API success claimed",
+  "sourceCommit": "b8f339746e1dd19dbbb7803c69bf275a0ee71f69",
+  "browser": "Chromium 154.0.8037.57 (Debian)",
+  "layouts": 96,
+  "languages": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pt",
+    "pl"
+  ],
+  "widths": [
+    320,
+    390,
+    1366
+  ],
+  "rootFontSizesPx": [
+    16,
+    32
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "exceptions": 0,
+  "blockedRequests": 0,
+  "clippedCases": 0,
+  "cssFixture": {
+    "cases": 208,
+    "widths": [
+      320,
+      360,
+      390,
+      414,
+      480,
+      680,
+      768,
+      960,
+      1024,
+      1180,
+      1366,
+      1440,
+      1920
+    ],
+    "clippedCasesBefore": 79,
+    "clippedCasesAfter": 0,
+    "documentOverflowCases": 0
+  },
+  "images": [
+    {
+      "file": "v6-auth-heading-fr-1366-light.webp",
+      "sha256": "0d9f42bdbeb45ae548eb216145cda7839b8e75df95a78c9b194bc33cccaec76f"
+    },
+    {
+      "file": "v6-auth-heading-fr-320-large-dark.webp",
+      "sha256": "3fce5f3528657a3d65dde7b5c9b66bc2b36eb3639bf703bd86bfcf3e5553bf5e"
+    }
+  ],
+  "compiledAssets": [
+    {
+      "file": "main-ZYLFPFDZ.js",
+      "bytes": 52676,
+      "sha256": "3cffbfb166c9b605f1b94ca643217d7af6a54faacf3af285002b8544822293de"
+    },
+    {
+      "file": "styles-7OKSL44T.css",
+      "bytes": 207541,
+      "sha256": "b38591eb00b7a23db4660992daa64cf53716db3f1b0998d65ef2e5c6e9ccd071"
+    }
+  ],
+  "fullCiRequired": true
+}

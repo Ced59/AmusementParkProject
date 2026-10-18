@@ -1,0 +1,59 @@
+{
+  "scope": "Focused cloud admin shell UI; not full CI or real admin operations",
+  "results": [
+    {
+      "language": "fr",
+      "passed": true,
+      "checks": 282,
+      "layouts": 72,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    },
+    {
+      "language": "de",
+      "passed": true,
+      "checks": 282,
+      "layouts": 72,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    }
+  ],
+  "sourceCommit": "78ca492370f459af385a01d7128d5fffb4dd4ae8",
+  "browser": "Chromium 154.0.8037.57 (Debian)",
+  "widths": [
+    320,
+    390,
+    1366
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "fontSizesPx": [
+    16,
+    32
+  ],
+  "heights": [
+    568,
+    600,
+    1200
+  ],
+  "cssFixture": {
+    "cases": 128,
+    "languages": 8,
+    "brokenWordCasesBefore": 9,
+    "brokenWordCasesAfter": 0,
+    "documentOverflowCases": 0
+  },
+  "fullCiRequired": true,
+  "images": [
+    {
+      "file": "v6-admin-fr-320-large-light.webp",
+      "sha256": "cf22916a232186463d840a0b0e87d51cebf2be9bb8ee31d81728fc3f59d1f498"
+    },
+    {
+      "file": "v6-admin-de-320-short-large-dark.webp",
+      "sha256": "8039e553aa6a5212c69757a2e7b3307a22078b4f20fdcec1009b68912341aca7"
+    }
+  ]
+}

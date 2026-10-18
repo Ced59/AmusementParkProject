@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 
 import { MapMarker } from '@app/models/map/map-marker';
 import { MapMarkerPopupContentService } from '@shared/services/maps/map-marker-popup-content.service';
-import { createLeafletMarkerIcon } from '@ui/maps/leaflet';
+import { createLeafletMapDisposer } from '@shared/utils/maps/leaflet-map-disposer';
+import { createLeafletMarkerIcon, createLeafletPopupLayoutOptions } from '@ui/maps/leaflet';
 import type { TileLayerOptions } from 'leaflet';
 
 type LeafletNamespace = typeof import('leaflet');
@@ -27,6 +28,8 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
 
   private resizeObserver: ResizeObserver | null = null;
   private mapSizeRefreshTimeoutIds: number[] = [];
+  private destroyed = false;
+  private disposeMap: (() => void) | null = null;
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
@@ -59,17 +62,24 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
   }
 
   async ngAfterViewInit(): Promise<void> {
-    if (!this.isBrowser) {
+    if (!this.isBrowser || this.destroyed) {
       return;
     }
 
     try {
       const leafletModule: LeafletModule = await import('leaflet') as LeafletModule;
+      if (this.destroyed) {
+        return;
+      }
       this.L = this.resolveLeafletNamespace(leafletModule);
 
       await new Promise<void>((resolve: () => void): void => {
         window.setTimeout(resolve, 0);
       });
+
+      if (this.destroyed) {
+        return;
+      }
 
       this.configureDefaultMarkerIcon();
       this.initMap();
@@ -102,6 +112,7 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
   }
 
   ngOnDestroy(): void {
+    this.destroyed = true;
     this.clearMapSizeRefreshTimers();
 
     if (this.resizeObserver) {
@@ -110,8 +121,14 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
     }
 
     if (this.map) {
-      this.map.remove();
+      const map: import('leaflet').Map = this.map;
       this.map = null;
+      if (this.disposeMap) {
+        this.disposeMap();
+      } else {
+        map.remove();
+      }
+      this.disposeMap = null;
     }
 
     this.tileLayer = null;
@@ -161,6 +178,7 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
       center: this.toMutableLatLng(this.center),
       zoom: this.zoom
     });
+    this.disposeMap = createLeafletMapDisposer(this.map);
 
     this.tileLayer = this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', this.buildTileLayerOptions()).addTo(this.map);
     this.markerLayer = this.L.layerGroup().addTo(this.map);
@@ -282,7 +300,7 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
     const popupContent: string = this.mapMarkerPopupContentService.buildPopupContent(markerModel);
 
     if (popupContent.length > 0) {
-      marker.bindPopup(popupContent);
+      marker.bindPopup(popupContent, createLeafletPopupLayoutOptions());
       marker.on('popupopen', (): void => this.handleMarkerPopupOpen(markerModel.id));
       marker.on('popupclose', (): void => this.handleMarkerPopupClose(markerModel.id));
     }

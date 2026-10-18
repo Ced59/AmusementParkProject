@@ -8,6 +8,9 @@
 }
 
 .app-brand-wordmark {
+  // Protected production lettering: do not inherit the new editorial ink.
+  --font-display: "Bebas Neue", "Syne", "Plus Jakarta Sans", sans-serif;
+  --brand-wordmark-base-ink: #ffffff;
   --brand-wordmark-fun-size: 1.18em;
   --brand-wordmark-fun-lift: -0.17em;
   --brand-wordmark-fun-rotation: -6deg;
@@ -47,7 +50,7 @@
   align-items: baseline;
   min-width: 0;
   max-width: 100%;
-  color: var(--app-heading);
+  color: var(--brand-wordmark-base-ink);
   font-family: var(--font-display);
   font-size: 1em;
   letter-spacing: 0.04em;
@@ -56,6 +59,7 @@
 }
 
 body.light-mode .app-brand-wordmark {
+  --brand-wordmark-base-ink: #160a00;
   --brand-wordmark-fun-filter: saturate(1.58) contrast(1.18) brightness(1.03);
   --brand-wordmark-fun-shadow-opacity: 0.46;
   --brand-wordmark-fun-shadow-offset-x: 0.04em;
@@ -199,7 +203,7 @@ body.light-mode .app-brand-wordmark {
     display: inline-flex;
     flex: 1 1 auto;
     min-width: 0;
-    max-width: clamp(6.8rem, 35vw, 9.2rem);
+    max-width: 100%;
     overflow: visible;
     letter-spacing: 0.008em;
   }
@@ -224,8 +228,8 @@ body.light-mode .app-brand-wordmark {
   }
 
   .app-public-nav__logo-text.app-brand-wordmark {
-    max-width: clamp(0rem, calc(100vw - 16.45rem), 6.8rem);
-    overflow: hidden;
+    max-width: 100%;
+    overflow: visible;
     letter-spacing: 0;
   }
 

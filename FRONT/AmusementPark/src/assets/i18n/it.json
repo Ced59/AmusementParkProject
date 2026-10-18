@@ -75,6 +75,8 @@
     }
   },
   "accountLayout": {
+    "introductionLabel": "Panoramica del tuo spazio personale",
+    "featuresLabel": "Funzioni del tuo spazio personale",
     "kicker": "Spazio personale",
     "title": "Il tuo pass parchi",
     "subtitle": "Gestisci profilo, lingua e accessi da uno spazio personale chiaro.",
@@ -5980,6 +5982,8 @@
       "back_home": "Torna alla home"
     },
     "confirm": {
+      "invalidLinkMessage": "Il link di conferma non è valido.",
+      "fallbackError": "Non è stato possibile confermare il tuo account.",
       "title": "Conferma dell’account",
       "loading": "Conferma dell’account in corso...",
       "kicker": "Conferma",
@@ -5988,6 +5992,7 @@
       "error_badge": "Errore"
     },
     "forgot_password": {
+      "fallbackError": "La richiesta non è riuscita.",
       "title": "Password dimenticata",
       "description": "Inserisci il tuo indirizzo email per ricevere un link di reimpostazione.",
       "submit": "Invia link di reimpostazione",
@@ -5995,6 +6000,7 @@
       "sent_badge": "Inviato"
     },
     "reset_password": {
+      "fallbackError": "Non è stato possibile reimpostare la tua password.",
       "title": "Reimposta password",
       "invalid_link": "Questo link di reimpostazione non è valido.",
       "submit": "Reimposta password",
@@ -6011,6 +6017,10 @@
     }
   },
   "actions": {
+    "expand": "Espandi",
+    "collapse": "Comprimi",
+    "moveUp": "Sposta su",
+    "moveDown": "Sposta giù",
     "cancel": "Annulla",
     "close": "Chiudi",
     "save": "Salva",

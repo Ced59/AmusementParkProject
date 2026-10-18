@@ -75,6 +75,8 @@
     }
   },
   "accountLayout": {
+    "introductionLabel": "Dein persönlicher Bereich im Überblick",
+    "featuresLabel": "Funktionen deines persönlichen Bereichs",
     "kicker": "Persönlicher Bereich",
     "title": "Dein Park-Pass",
     "subtitle": "Verwalte Profil, Sprache und Zugriff in einem klaren persönlichen Bereich.",
@@ -5980,6 +5982,8 @@
       "back_home": "Zur Startseite"
     },
     "confirm": {
+      "invalidLinkMessage": "Der Bestätigungslink ist ungültig.",
+      "fallbackError": "Dein Konto konnte nicht bestätigt werden.",
       "title": "Kontobestätigung",
       "loading": "Kontobestätigung läuft...",
       "kicker": "Bestätigung",
@@ -5988,6 +5992,7 @@
       "error_badge": "Fehlgeschlagen"
     },
     "forgot_password": {
+      "fallbackError": "Die Anfrage ist fehlgeschlagen.",
       "title": "Passwort vergessen",
       "description": "Gib deine E-Mail-Adresse ein, um einen Link zum Zurücksetzen zu erhalten.",
       "submit": "Link zum Zurücksetzen senden",
@@ -5995,6 +6000,7 @@
       "sent_badge": "Gesendet"
     },
     "reset_password": {
+      "fallbackError": "Dein Passwort konnte nicht zurückgesetzt werden.",
       "title": "Passwort zurücksetzen",
       "invalid_link": "Dieser Link zum Zurücksetzen ist ungültig.",
       "submit": "Passwort zurücksetzen",
@@ -6011,6 +6017,10 @@
     }
   },
   "actions": {
+    "expand": "Aufklappen",
+    "collapse": "Zuklappen",
+    "moveUp": "Nach oben verschieben",
+    "moveDown": "Nach unten verschieben",
     "cancel": "Abbrechen",
     "close": "Schließen",
     "save": "Speichern",

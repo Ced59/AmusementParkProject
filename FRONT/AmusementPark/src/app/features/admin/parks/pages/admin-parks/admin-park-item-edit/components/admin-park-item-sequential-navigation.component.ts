@@ -59,9 +59,9 @@ import {
       gap: 0.75rem;
       margin-top: 0.85rem;
       padding: 0.75rem;
-      border: 1px solid var(--surface-border);
-      border-radius: 14px;
-      background: var(--surface-50);
+      border: 1px solid var(--app-border-stronger);
+      border-radius: var(--app-radius-md);
+      background: var(--app-surface-2);
     }
 
     .admin-park-item-sequential-navigation__position {
@@ -71,18 +71,18 @@ import {
       gap: 0.45rem;
       min-width: 7rem;
       padding: 0.5rem 0.75rem;
-      border-radius: 999px;
-      background: var(--surface-0);
-      color: var(--text-color-secondary);
+      border-radius: var(--app-radius-pill);
+      background: var(--field);
+      color: var(--app-text-muted);
       font-weight: 700;
     }
 
     .admin-park-item-sequential-navigation__position strong {
-      color: var(--text-color);
+      color: var(--app-text);
     }
 
     .admin-park-item-sequential-navigation__position small {
-      color: var(--text-color-secondary);
+      color: var(--app-text-muted);
       font-weight: 600;
     }
 

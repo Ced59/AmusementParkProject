@@ -20,6 +20,11 @@
   gap: 1rem;
 }
 
+.participant-panel__heading > div {
+  min-width: 0;
+  flex: 1;
+}
+
 .participant-panel__heading h2,
 .participant-panel__heading p,
 .participant-card strong,
@@ -40,12 +45,12 @@
   align-items: center;
   gap: .8rem;
   padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-border, #786b58) 48%, transparent);
-  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--app-border-stronger, #786b58) 48%, transparent);
+  border-radius: var(--app-radius-md);
 }
 
 .participant-card--self {
-  border-color: color-mix(in srgb, var(--color-sky-400, #54d7ff) 55%, transparent);
+  border-color: color-mix(in srgb, var(--c-sky, #54d7ff) 55%, transparent);
 }
 
 .participant-card__avatar {
@@ -54,7 +59,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--color-sky-400, #54d7ff) 18%, transparent);
+  background: color-mix(in srgb, var(--c-sky, #54d7ff) 18%, transparent);
   font-weight: 800;
 }
 
@@ -65,7 +70,7 @@
 
 .participant-card__identity span,
 .participant-card__identity small {
-  color: var(--color-text-muted, #b7aa96);
+  color: var(--app-text-muted);
 }
 
 .participant-card__actions {
@@ -91,8 +96,8 @@
   display: grid;
   gap: .75rem;
   padding: 1rem;
-  border-radius: .9rem;
-  background: color-mix(in srgb, var(--color-gold-400, #f6c84a) 10%, transparent);
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--c-gold, #f6c84a) 10%, transparent);
 }
 
 .participant-card__confirmation > div,
@@ -105,15 +110,14 @@
 .participant-panel__leave {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-border, #786b58) 38%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--app-border-stronger, #786b58) 38%, transparent);
 }
 
 .participant-panel__message--error {
-  color: var(--color-danger-300, #ff8da1);
+  color: var(--app-danger);
 }
 
 @media (max-width: 42rem) {
-  .participant-panel__heading,
   .participant-card,
   .participant-card__actions {
     align-items: stretch;

@@ -19,7 +19,7 @@
   gap: .6rem;
   padding: 1.5rem;
   border: 1px dashed var(--app-border-strong, rgba(255, 210, 140, .22));
-  border-radius: .9rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--app-surface-2, #211a13) 86%, transparent);
   color: var(--app-text-muted, #b09d7a);
   font-size: .9rem;
@@ -42,7 +42,7 @@
   align-items: center;
   gap: .4rem;
   padding: .34rem .8rem;
-  border-radius: 2rem;
+  border-radius: var(--app-radius-pill);
   font-size: .8rem;
   font-weight: 700;
   background: color-mix(in srgb, var(--app-surface-2, #211a13) 90%, transparent);
@@ -100,8 +100,8 @@
   flex-wrap: wrap;
   margin-bottom: .75rem;
   padding: .8rem 1rem;
-  background: linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
-  border-radius: .85rem;
+  background: var(--app-surface, #1a140f);
+  border-radius: var(--radius-md);
   border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
 }
 
@@ -122,14 +122,14 @@
 .selected-count {
   font-size: .82rem;
   font-weight: 700;
-  color: var(--app-accent-cyan, var(--primary-color, #3b82f6));
+  color: var(--app-accent-cyan, var(--app-primary-strong, #3b82f6));
 }
 
 .table-wrapper {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
-  border-radius: .85rem;
+  border-radius: var(--app-radius-md);
   background: var(--app-surface, #1a140f);
 }
 

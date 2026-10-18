@@ -13,7 +13,7 @@
 .p-card {
   display: block;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-lg);
+  border-radius: var(--app-radius-md);
   background: var(--app-surface);
   box-shadow: var(--app-shadow-1);
   overflow: hidden;
@@ -38,7 +38,8 @@
 .p-button {
   --button-bg: var(--app-primary);
   --button-border: var(--app-primary);
-  --button-color: #fff;
+  --button-color: var(--app-on-accent);
+  --button-ink: var(--app-primary-strong);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -46,24 +47,19 @@
   min-height: 2.5rem;
   padding: 0.65rem 1rem;
   border: 1px solid var(--button-border);
-  border-radius: var(--app-radius-pill);
+  border-radius: var(--app-radius-sm);
   background: var(--button-bg);
   color: var(--button-color);
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
   transition:
-    transform var(--app-transition-base),
     box-shadow var(--app-transition-base),
     background-color var(--app-transition-base),
     border-color var(--app-transition-base),
     color var(--app-transition-base);
-}
-
-.p-button:hover:not(:disabled) {
-  transform: translateY(-1px);
 }
 
 .p-button:disabled,
@@ -77,38 +73,48 @@
   --button-bg: var(--app-surface-2);
   --button-border: var(--app-border);
   --button-color: var(--app-text);
+  --button-ink: var(--app-text);
 }
 
 .p-button-success {
-  --button-bg: var(--app-success, #16a34a);
-  --button-border: var(--app-success, #16a34a);
+  --button-bg: var(--c-lime);
+  --button-border: var(--c-lime);
+  --button-ink: var(--app-accent-lime);
 }
 
 .p-button-info {
-  --button-bg: var(--app-info, #0284c7);
-  --button-border: var(--app-info, #0284c7);
+  --button-bg: var(--c-sky, #0284c7);
+  --button-border: var(--c-sky, #0284c7);
+  --button-ink: var(--app-accent-cyan);
 }
 
 .p-button-warning {
-  --button-bg: var(--app-warning, #d97706);
-  --button-border: var(--app-warning, #d97706);
+  --button-bg: var(--c-gold);
+  --button-border: var(--c-gold);
+  --button-color: var(--app-on-gold);
+  --button-ink: var(--app-accent-gold);
 }
 
 .p-button-danger {
-  --button-bg: var(--app-danger, #dc2626);
-  --button-border: var(--app-danger, #dc2626);
+  --button-bg: var(--c-rose);
+  --button-border: var(--c-rose);
+  --button-color: var(--app-on-rose);
+  --button-ink: var(--app-accent-pink);
 }
 
 .p-button-help {
-  --button-bg: #7c3aed;
-  --button-border: #7c3aed;
+  --button-bg: var(--c-purple);
+  --button-border: var(--c-purple);
+  --button-color: var(--app-on-purple);
+  --button-ink: var(--app-accent-purple);
 }
 
 .p-button-outlined,
 .p-button-text,
 .p-button-link {
   background: transparent;
-  color: var(--button-border);
+  border-color: var(--button-ink);
+  color: var(--button-ink);
   box-shadow: none;
 }
 
@@ -152,8 +158,8 @@
   width: 100%;
   min-height: 2.65rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-pill);
-  background: var(--app-surface-2);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-field);
   color: var(--app-text);
   padding: 0.65rem 0.9rem;
   line-height: 1.25;
@@ -260,8 +266,8 @@
 }
 
 .p-tag-info {
-  background: color-mix(in srgb, var(--app-info, #0284c7) 18%, transparent);
-  color: var(--app-info, #0369a1);
+  background: color-mix(in srgb, var(--c-sky, #0284c7) 18%, transparent);
+  color: var(--app-accent-cyan, #0369a1);
 }
 
 .p-tag-warn,
@@ -292,7 +298,7 @@
 .p-progressbar-value {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--app-primary), var(--app-accent, var(--app-primary)));
+  background: var(--app-primary);
   transition: width var(--app-transition-base);
 }
 
@@ -308,7 +314,7 @@
 .p-panel {
   display: block;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-lg);
+  border-radius: var(--app-radius-md);
   background: var(--app-surface);
   overflow: hidden;
 }
@@ -325,19 +331,36 @@
 }
 
 .p-panel-header--toggleable {
-  cursor: pointer;
+  padding: 0;
 }
 
 .p-panel-toggle {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.9rem 1rem;
   border: 0;
-  border-radius: 999px;
+  border-radius: 0;
   background: transparent;
   color: inherit;
+  font: inherit;
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.p-panel-toggle .pi {
+  flex: 0 0 auto;
+}
+
+.p-panel-toggle:focus-visible,
+.p-dialog-header-close:focus-visible,
+.p-sortable-column:focus-visible {
+  outline: 3px solid var(--app-primary-strong);
+  outline-offset: -3px;
 }
 
 .p-panel-content {
@@ -410,7 +433,7 @@
   min-width: 2.25rem;
   height: 2.25rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-pill);
+  border-radius: var(--app-radius-xs);
   background: var(--app-surface-2);
   color: var(--app-text);
   cursor: pointer;
@@ -424,14 +447,14 @@
 .p-paginator-page.p-highlight {
   border-color: var(--app-primary);
   background: var(--app-primary);
-  color: #fff;
+  color: var(--app-on-accent);
 }
 
 .p-paginator-rpp-options {
   min-height: 2.25rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-pill);
-  background: var(--app-surface-2);
+  border-radius: var(--app-radius-xs);
+  background: var(--app-field);
   color: var(--app-text);
   padding-inline: 0.45rem;
 }
@@ -494,16 +517,30 @@
 }
 
 .p-dialog {
+  position: relative;
+  z-index: 1;
   width: min(42rem, calc(100vw - 2rem));
   max-height: calc(100vh - 2rem);
   display: flex;
   flex-direction: column;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-lg);
+  border-radius: var(--app-radius-md);
   background: var(--app-surface);
   color: var(--app-text);
-  box-shadow: var(--app-shadow-3);
+  box-shadow: var(--app-shadow-1);
   overflow: hidden;
+}
+
+.p-dialog-mask__backdrop {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 .p-dialog-header,
@@ -526,10 +563,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--app-radius-sm);
   background: transparent;
   color: var(--app-text);
   cursor: pointer;
@@ -564,10 +602,9 @@
   border: 1px solid var(--app-border);
   border-left: 0.3rem solid var(--toast-accent, var(--app-primary));
   border-radius: var(--app-radius-md);
-  background: color-mix(in srgb, var(--app-surface) 92%, transparent);
+  background: var(--app-surface);
   color: var(--app-text);
-  box-shadow: var(--app-shadow-2);
-  backdrop-filter: blur(10px);
+  box-shadow: none;
   pointer-events: auto;
 }
 
@@ -589,7 +626,7 @@
   width: 1.75rem;
   height: 1.75rem;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--app-radius-sm);
   background: transparent;
   color: inherit;
   font-size: 1.35rem;
@@ -602,7 +639,7 @@
 }
 
 .p-toast-message-info {
-  --toast-accent: var(--app-info, #0284c7);
+  --toast-accent: var(--app-accent-cyan, #0284c7);
 }
 
 .p-toast-message-warn {
@@ -611,6 +648,22 @@
 
 .p-toast-message-error {
   --toast-accent: var(--app-danger, #dc2626);
+}
+
+.app-ui-tooltip {
+  position: fixed;
+  z-index: 10000;
+  max-width: 17.5rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--app-border-strong);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-heading);
+  color: var(--app-bg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.35;
+  pointer-events: none;
+  white-space: normal;
 }
 
 .p-editor-container {
@@ -637,8 +690,8 @@
   }
 
   .p-dialog {
-    width: calc(100vw - 1rem) !important;
-    max-width: calc(100vw - 1rem) !important;
+    width: calc(100vw - 1rem);
+    max-width: calc(100vw - 1rem);
   }
 
   .p-paginator {

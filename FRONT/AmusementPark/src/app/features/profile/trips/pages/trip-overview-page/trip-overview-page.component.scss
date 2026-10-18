@@ -82,8 +82,8 @@ h1 {
   height: 3rem;
   place-items: center;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--c-orange), var(--c-rose));
-  color: #fff;
+  background: var(--c-orange);
+  color: var(--app-on-accent);
   font-size: 1.25rem;
   font-weight: 900;
 }
@@ -152,7 +152,7 @@ textarea {
   border: 1px solid var(--app-border);
   border-radius: var(--radius-md);
   background: var(--app-surface-2);
-  color: var(--text-primary);
+  color: var(--app-text);
   font: inherit;
 }
 
@@ -186,7 +186,7 @@ textarea {
   border: 1px solid var(--app-border);
   border-radius: var(--radius-lg);
   background: var(--app-surface-2);
-  color: var(--text-primary);
+  color: var(--app-text);
   text-align: left;
   cursor: pointer;
 }
@@ -235,7 +235,7 @@ textarea {
 
 app-trip-candidate-card.cdk-drag-preview {
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--app-shadow-2);
 }
 
 app-trip-candidate-card.cdk-drag-placeholder {

@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Observable, of, throwError } from 'rxjs';
 
 import {
@@ -16,6 +17,7 @@ describe('ConfirmAccountPageStateFacade', () => {
     port = new FakeAuthPort();
 
     TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
       providers: [
         ConfirmAccountPageStateFacade,
         {
@@ -25,6 +27,14 @@ describe('ConfirmAccountPageStateFacade', () => {
       ],
     });
 
+    const translateService: TranslateService = TestBed.inject(TranslateService);
+    translateService.setTranslation('fr', { auth: { confirm: {
+      invalidLinkMessage: 'Le lien de confirmation est invalide.', fallbackError: 'La confirmation du compte a échoué.'
+    } } });
+    translateService.setTranslation('en', { auth: { confirm: {
+      invalidLinkMessage: 'The confirmation link is invalid.', fallbackError: 'Your account could not be confirmed.'
+    } } });
+    translateService.use('fr');
     facade = TestBed.inject(ConfirmAccountPageStateFacade);
   });
 
@@ -43,6 +53,26 @@ describe('ConfirmAccountPageStateFacade', () => {
     expect(port.calls).toEqual(['token-1']);
     expect(facade.isSuccess()).toBe(true);
     expect(facade.message()).toBe('Compte confirmé.');
+  });
+
+  it('localizes an invalid confirmation link without making an auth request', () => {
+    TestBed.inject(TranslateService).use('en');
+    facade.confirmEmail('', 'en');
+    expect(port.calls).toEqual([]);
+    expect(facade.currentLanguage()).toBe('en');
+    expect(facade.message()).toBe('The confirmation link is invalid.');
+  });
+
+  it.each([
+    ['fr', 'La confirmation du compte a échoué.'],
+    ['en', 'Your account could not be confirmed.']
+  ])('uses the localized %s fallback only when the server supplies no message', (language: string, message: string) => {
+    TestBed.inject(TranslateService).use(language);
+    port.response$ = throwError(() => new Error('offline'));
+    facade.confirmEmail('token-1', language);
+    expect(port.calls).toEqual(['token-1']);
+    expect(facade.isSuccess()).toBe(false);
+    expect(facade.message()).toBe(message);
   });
 
   it('uses the backend error message when confirmation fails', () => {

@@ -75,6 +75,8 @@
     }
   },
   "accountLayout": {
+    "introductionLabel": "Overzicht van je persoonlijke ruimte",
+    "featuresLabel": "Functies van je persoonlijke ruimte",
     "kicker": "Persoonlijke ruimte",
     "title": "Jouw parkpas",
     "subtitle": "Beheer je profiel, taal en toegang vanuit een duidelijke persoonlijke ruimte.",
@@ -5980,6 +5982,8 @@
       "back_home": "Terug naar home"
     },
     "confirm": {
+      "invalidLinkMessage": "De bevestigingslink is ongeldig.",
+      "fallbackError": "Je account kon niet worden bevestigd.",
       "title": "Accountbevestiging",
       "loading": "Accountbevestiging bezig...",
       "kicker": "Bevestiging",
@@ -5988,6 +5992,7 @@
       "error_badge": "Mislukt"
     },
     "forgot_password": {
+      "fallbackError": "Het verzoek is mislukt.",
       "title": "Wachtwoord vergeten",
       "description": "Voer je e-mailadres in om een resetlink te ontvangen.",
       "submit": "Resetlink sturen",
@@ -5995,6 +6000,7 @@
       "sent_badge": "Verzonden"
     },
     "reset_password": {
+      "fallbackError": "Je wachtwoord kon niet opnieuw worden ingesteld.",
       "title": "Wachtwoord resetten",
       "invalid_link": "Deze resetlink is ongeldig.",
       "submit": "Wachtwoord resetten",
@@ -6011,6 +6017,10 @@
     }
   },
   "actions": {
+    "expand": "Uitklappen",
+    "collapse": "Inklappen",
+    "moveUp": "Omhoog verplaatsen",
+    "moveDown": "Omlaag verplaatsen",
     "cancel": "Annuleren",
     "close": "Sluiten",
     "save": "Opslaan",

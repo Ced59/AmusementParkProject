@@ -22,7 +22,7 @@
 
 .rating-evidence--provisional,
 .rating-evidence__badge--provisional {
-  --evidence-tone: #9a6700;
+  --evidence-tone: var(--app-warning);
 }
 
 .rating-evidence--eligible,
@@ -34,7 +34,7 @@
 
 .rating-evidence--strong-evidence,
 .rating-evidence__badge--strong-evidence {
-  --evidence-tone: var(--app-primary);
+  --evidence-tone: var(--app-primary-strong);
 }
 
 .rating-evidence__summary {
@@ -74,7 +74,7 @@
 }
 
 .rating-evidence__action {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-size: 0.78rem;
   font-weight: 800;
   text-decoration: underline;

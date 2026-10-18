@@ -39,8 +39,8 @@
   min-width: 0;
   max-width: 100%;
   border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-lg);
-  background: color-mix(in srgb, var(--app-surface-2) 88%, transparent);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
 }
 
 .shared-visit__story {
@@ -48,10 +48,8 @@
   gap: clamp(1rem, 2vw, 1.5rem);
   padding: clamp(1rem, 4vw, 2.2rem);
   overflow: hidden;
-  background:
-    radial-gradient(circle at 95% 2%, color-mix(in srgb, var(--app-primary) 20%, transparent), transparent 31%),
-    radial-gradient(circle at 0% 65%, color-mix(in srgb, var(--c-gold) 10%, transparent), transparent 33%),
-    color-mix(in srgb, var(--app-surface-2) 91%, transparent);
+  border-top: 4px solid var(--app-primary);
+  background: var(--app-surface);
 }
 
 .shared-visit__hero {
@@ -86,7 +84,7 @@
   margin-top: 0.35rem;
   color: var(--app-heading);
   font-size: clamp(2.2rem, 7vw, 5.2rem);
-  line-height: 0.94;
+  line-height: 1;
 }
 
 .shared-visit__hero p {
@@ -163,7 +161,7 @@
   min-width: 0;
   padding: 1rem;
   border-radius: var(--app-radius-md);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--c-gold) 13%, var(--app-surface)), var(--app-surface));
+  background: color-mix(in srgb, var(--c-gold) 10%, var(--app-surface));
 }
 
 .shared-visit__highlights h2 {

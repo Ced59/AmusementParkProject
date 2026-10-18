@@ -1,45 +1,41 @@
 :root {
-  /* Canonical MVP design tokens extracted from the validated mockup. */
-  --font-display: "Bebas Neue", "Syne", "Plus Jakarta Sans", sans-serif;
-  --font-heading: "Plus Jakarta Sans", "Syne", system-ui, sans-serif;
-  --font-body: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  /* Playground Edition V6 tokens. Theme files provide their light/dark values. */
+  --font-display: Arial, Helvetica, sans-serif;
+  --font-heading: Arial, Helvetica, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  // Transparent entity logos keep their authored dark ink in both themes.
+  // This matte is not a page/card surface and never recolors image pixels.
+  --app-logo-surface: #f7f6f0;
 
-  --radius-xs: 0.45rem;
-  --radius-sm: 0.65rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.5rem;
-  --radius-xl: 2rem;
-  --radius-2xl: 2.5rem;
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.125rem;
+  --radius-lg: 0.125rem;
+  --radius-xl: 0.125rem;
+  --radius-2xl: 0.125rem;
   --radius-pill: 999px;
 
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.14);
-  --shadow-lift: 0 18px 44px rgba(0, 0, 0, 0.22);
-  --shadow-soft-orange: 0 0 18px rgba(255, 90, 31, 0.16);
-  --shadow-soft-lime: 0 0 16px rgba(196, 255, 39, 0.12);
-  --shadow-soft-sky: 0 0 16px rgba(56, 197, 245, 0.12);
-  --shadow-focus: 0 0 0 3px rgba(255, 90, 31, 0.18);
+  --shadow-card: 0 1px 0 rgba(25, 32, 29, 0.08);
+  --shadow-lift: 0 8px 24px rgba(25, 32, 29, 0.1);
+  --shadow-soft-orange: none;
+  --shadow-soft-lime: none;
+  --shadow-soft-sky: none;
+  --shadow-focus: 0 0 0 3px rgba(12, 140, 163, 0.3);
 
-  --transition-fast: 160ms cubic-bezier(0.22, 1, 0.36, 1);
-  --transition: 220ms cubic-bezier(0.22, 1, 0.36, 1);
-  --transition-slow: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 120ms ease-out;
+  --transition: 180ms ease-out;
+  --transition-slow: 240ms ease-out;
 
-  --c-orange: #ff5a1f;
-  --c-orange-2: #ff7a45;
-  --c-lime: #c4ff27;
-  --c-lime-2: #d9ff6b;
-  --c-sky: #38c5f5;
-  --c-sky-2: #7ddcff;
-  --c-rose: #ff4d8b;
-  --c-gold: #ffb627;
-  --c-purple: #9b5de5;
-
-  --type-coaster: var(--c-orange);
-  --type-water: var(--c-sky);
-  --type-family: var(--c-lime);
-  --type-show: var(--c-purple);
-  --type-food: var(--c-gold);
-  --type-thrill: var(--c-rose);
+  --c-orange: #e54b28;
+  --c-orange-2: #bd3518;
+  --c-lime: #d5ed60;
+  --c-lime-2: #bed643;
+  --c-sky: #0c8ca3;
+  --c-sky-2: #087286;
+  --c-rose: #bd315d;
+  --c-gold: #9a6500;
+  --c-purple: #7250a8;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -52,10 +48,13 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
-  --content-max-width: 1340px;
+  --content-max-width: 1160px;
   --content-wide-max-width: 1480px;
-  --topbar-height: 84px;
-  --bottom-nav-height: 84px;
+  --topbar-height: 76px;
+  --bottom-nav-height: 72px;
+  --app-admin-toolbar-height: 0px;
+  --app-floating-control-gap: clamp(8px, calc(32px - 1rem), 16px);
+  --app-page-jump-bottom: clamp(1rem, 2vw, 1.5rem);
   --sidebar-width: 260px;
   --sidebar-collapsed-width: 76px;
 

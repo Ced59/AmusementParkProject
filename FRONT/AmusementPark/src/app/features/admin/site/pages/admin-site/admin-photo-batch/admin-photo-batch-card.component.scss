@@ -8,7 +8,7 @@
   overflow: hidden;
   min-height: 100%;
   border: 1px solid rgba(168, 134, 92, 0.22);
-  border-radius: 8px;
+  border-radius: var(--app-radius-md);
   background: rgba(18, 12, 8, 0.72);
 }
 

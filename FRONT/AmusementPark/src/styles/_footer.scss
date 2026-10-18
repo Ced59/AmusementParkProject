@@ -4,8 +4,8 @@
   position: relative;
   z-index: 2;
   flex: 0 0 auto;
-  padding: 3.4rem 0 2rem;
-  border-top: 1px solid var(--app-border);
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 1.5rem;
+  border-top: 4px solid var(--c-orange);
   background: var(--bg-2);
 }
 
@@ -13,19 +13,16 @@
   width: min(100% - 2.5rem, var(--content-max-width));
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.35rem 4rem;
+  grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 0.75fr));
+  gap: 2rem clamp(1.5rem, 4vw, 4rem);
   align-items: start;
 }
 
 .app-public-footer__brand {
-  --app-public-footer-logo-icon-size: 36px;
-  --app-public-footer-logo-gap: 0.6rem;
-
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
-  grid-column: 1 / -1;
-  gap: 0.82rem;
+  gap: 1rem;
   width: 100%;
   min-width: 0;
   overflow: visible;
@@ -34,75 +31,52 @@
 .app-public-footer__logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--app-public-footer-logo-gap);
+  gap: 0;
   width: fit-content;
+  max-width: 100%;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  // The protected lettering is a graphic: fit its wrapper, not the glyph styles.
+  font-size: min(28.8px, 10.8cqi);
   letter-spacing: 0.04em;
   overflow: visible;
   white-space: nowrap;
 }
 
-.app-public-footer__logo-icon {
-  width: var(--app-public-footer-logo-icon-size);
-  height: var(--app-public-footer-logo-icon-size);
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  color: #000000;
-  background: var(--c-orange);
-  box-shadow: var(--shadow-soft-orange);
-}
-
-.app-public-footer__logo-mark {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  object-fit: cover;
-}
-
 .app-public-footer__slogan {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.48rem;
+  display: grid;
+  gap: 0.15rem;
   width: fit-content;
-  max-width: calc(100% - var(--app-public-footer-logo-icon-size) - var(--app-public-footer-logo-gap));
-  margin: -0.04rem 0 0 calc(var(--app-public-footer-logo-icon-size) + var(--app-public-footer-logo-gap));
+  min-width: 0;
+  max-width: min(100%, 30ch);
+  margin: 0;
   color: var(--app-text-muted);
   overflow: visible;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .app-public-footer__slogan-base {
   display: inline-block;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: clamp(1.12rem, 1.45vw, 1.42rem);
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
   font-weight: 700;
   letter-spacing: 0.04em;
-  line-height: 0.95;
+  line-height: 1.05;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .app-public-footer__slogan-fun {
   display: inline-block;
-  padding: 0.08em 0.1em 0.18em 0.26em;
-  background: linear-gradient(102deg, #ff4a00 0%, #dfff00 48%, #008dff 100%);
-  background-clip: text;
-  color: var(--c-orange);
-  font-family: "Segoe Script", "Brush Script MT", cursive;
-  font-size: clamp(1.28rem, 1.7vw, 1.62rem);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
+  padding: 0;
+  color: var(--app-primary-strong);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   overflow: visible;
-  text-shadow: 0 0.035em 0 rgba(0, 0, 0, 0.16);
-  transform: rotate(-5deg);
-  transform-origin: left bottom;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .app-public-footer__column {
@@ -110,6 +84,7 @@
 }
 
 .app-public-footer__col-title {
+  overflow-wrap: anywhere;
   margin: 0 0 0.9rem;
   color: var(--app-text-muted);
   font-family: var(--font-heading);
@@ -133,23 +108,21 @@
   align-items: center;
   gap: 0.45rem;
   width: fit-content;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   color: var(--app-text-muted);
   font-size: 0.88rem;
   font-weight: 700;
-  transition: color var(--transition), transform var(--transition);
+  transition: color var(--transition);
 }
 
 .app-public-footer__links a:hover,
-.app-public-footer__language-link--active {
-  color: var(--app-heading) !important;
+.app-public-footer__links .app-public-footer__language-link--active {
+  color: var(--app-heading);
   text-decoration: underline;
   text-decoration-color: var(--c-orange);
   text-decoration-thickness: 0.12em;
   text-underline-offset: 0.24em;
-}
-
-.app-public-footer__links a:hover {
-  transform: translateX(3px);
 }
 
 .app-public-footer__language-link--active .app-public-footer__flag {
@@ -181,6 +154,8 @@
 }
 
 .app-public-footer__copy {
+  min-width: 0;
+  overflow-wrap: anywhere;
   color: var(--app-text-muted);
   font-size: 0.8rem;
 }
@@ -199,7 +174,11 @@
 
 @media (max-width: 960px) {
   .app-public-footer__inner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .app-public-footer__brand {
+    grid-column: 1 / -1;
   }
 }
 
@@ -214,7 +193,7 @@
   }
 
   .app-public-footer__inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.7rem;
   }
 
@@ -227,8 +206,8 @@
     flex-wrap: wrap;
     gap: 0.36rem;
     row-gap: 0.14rem;
-    width: calc(100% - var(--app-public-footer-logo-icon-size) - var(--app-public-footer-logo-gap));
-    max-width: calc(100% - var(--app-public-footer-logo-icon-size) - var(--app-public-footer-logo-gap));
+    width: 100%;
+    max-width: min(100%, 30ch);
     white-space: normal;
   }
 
@@ -242,7 +221,7 @@
   .app-public-footer__slogan-fun {
     min-width: 0;
     max-width: 100%;
-    font-size: clamp(1.12rem, 4.7vw, 1.3rem);
+    font-size: clamp(0.9rem, 4vw, 1rem);
     overflow-wrap: anywhere;
   }
 }

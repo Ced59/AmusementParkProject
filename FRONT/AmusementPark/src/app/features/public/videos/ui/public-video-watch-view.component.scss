@@ -15,6 +15,7 @@
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem;
   align-items: end;
+  border-top: 4px solid var(--app-primary);
   border-color: color-mix(in srgb, var(--app-primary) 22%, var(--app-border));
 }
 
@@ -56,9 +57,9 @@
 .public-video-watch__player {
   position: relative;
   overflow: hidden;
-  border-radius: 0.7rem;
+  border-radius: var(--radius-md);
   background: #050505;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+  box-shadow: none;
   aspect-ratio: 16 / 9;
 }
 
@@ -112,19 +113,19 @@
   justify-items: center;
   gap: 0.35rem;
   border: 1px solid var(--app-border);
-  border-radius: 0.7rem;
+  border-radius: var(--radius-md);
   background: var(--app-surface);
   color: var(--app-text);
   text-align: center;
   text-decoration: none;
   padding: 0.9rem 0.65rem;
-  transition: transform 160ms ease, border-color 160ms ease;
+  transition: border-color 160ms ease, background-color 160ms ease;
 }
 
 .public-video-watch__nav:hover,
 .public-video-watch__nav:focus-visible {
-  transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--app-primary) 38%, var(--app-border));
+  background: var(--app-surface-2);
   outline: none;
 }
 
@@ -202,7 +203,7 @@
 }
 
 .public-video-watch__tags span {
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--app-primary) 9%, transparent);
   color: var(--app-text);
   padding: 0.18rem 0.5rem;

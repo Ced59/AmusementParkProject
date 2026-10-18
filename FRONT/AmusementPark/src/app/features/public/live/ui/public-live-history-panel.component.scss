@@ -9,7 +9,7 @@
   padding: clamp(0.95rem, 2.5vw, 1.35rem);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 24%, var(--app-border));
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--app-surface-2) 90%, transparent);
 }
 
@@ -62,7 +62,7 @@
   padding: 0.4rem 0.65rem;
   overflow-wrap: anywhere;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   color: var(--app-text-muted);
   font-size: 0.78rem;
   font-weight: 850;

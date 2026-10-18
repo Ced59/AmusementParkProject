@@ -1,34 +1,27 @@
 .page-jump-button {
   position: fixed;
   right: clamp(1rem, 2vw, 1.5rem);
-  bottom: clamp(1rem, 2vw, 1.5rem);
+  bottom: var(--app-page-jump-bottom);
   z-index: 900;
   display: inline-grid;
-  width: 2.85rem;
-  height: 2.85rem;
+  width: 44px;
+  height: 44px;
   place-items: center;
-  border: 1px solid rgba(56, 197, 245, 0.34);
-  border-radius: 999px;
-  background: rgba(15, 11, 6, 0.82);
-  color: var(--color-sky, #38c5f5);
-  box-shadow: var(--shadow-card);
+  border: 1px solid var(--app-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--app-surface);
+  color: var(--app-accent-cyan);
+  box-shadow: none;
   cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 
   &:hover {
-    border-color: rgba(56, 197, 245, 0.56);
-    background: rgba(56, 197, 245, 0.14);
-    transform: translateY(-1px);
+    border-color: var(--app-accent-cyan);
+    background: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
   }
 
   &:focus-visible {
-    outline: 3px solid rgba(56, 197, 245, 0.42);
+    outline: 3px solid var(--app-accent-cyan);
     outline-offset: 3px;
-  }
-}
-
-@media (max-width: 780px) {
-  .page-jump-button {
-    bottom: calc(var(--bottom-nav-height) + max(1rem, env(safe-area-inset-bottom)));
   }
 }

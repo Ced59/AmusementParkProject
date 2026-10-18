@@ -11,7 +11,7 @@
   min-height: 44px;
   padding: 0;
   border: 1px solid var(--app-border);
-  border-radius: 50%;
+  border-radius: var(--radius-sm);
   color: var(--app-heading);
   background: var(--app-surface-2);
   cursor: pointer;
@@ -21,14 +21,12 @@
   justify-content: center;
 
   transition:
-    transform var(--transition),
     border-color var(--transition),
     background-color var(--transition),
     color var(--transition);
 }
 
 .theme-icon-button:hover {
-  transform: translateY(-1px);
   border-color: var(--app-border-stronger);
   color: var(--c-orange);
   background: color-mix(in srgb, var(--app-surface-2) 94%, var(--c-orange) 6%);

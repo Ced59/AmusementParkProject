@@ -10,17 +10,19 @@
 .privacy-hero {
   display: grid;
   gap: 1rem;
+  border-top: 4px solid var(--app-primary);
 }
 
 .privacy-hero__title {
-  max-width: 11ch;
+  max-width: 24ch;
   margin: 0;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: clamp(3.4rem, 9vw, 6.8rem);
+  font-size: clamp(1.75rem, 4.5vw, 3.6rem);
   line-height: 1.06;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .privacy-hero__lead {
@@ -40,14 +42,16 @@
 }
 
 .privacy-consent {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
 }
 
 .privacy-consent__copy {
   display: grid;
+  flex: 1 1 26rem;
+  min-width: 0;
   gap: 0.65rem;
 }
 
@@ -78,7 +82,17 @@
 }
 
 .privacy-consent__actions {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
   justify-content: flex-end;
+}
+
+.privacy-consent__actions button {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .privacy-sections {
@@ -127,12 +141,18 @@
 }
 
 @media (max-width: 880px) {
-  .privacy-consent,
   .privacy-sections {
     grid-template-columns: 1fr;
   }
 
   .privacy-consent__actions {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 680px) {
+  .privacy-hero,
+  .privacy-consent {
+    padding: min(clamp(1.25rem, 3vw, 2rem), 32px);
   }
 }

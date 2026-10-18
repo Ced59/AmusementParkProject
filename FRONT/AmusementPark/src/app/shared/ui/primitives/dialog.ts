@@ -24,20 +24,25 @@ import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/f
 
 import { NgClass, NgFor, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
 
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { CdkTrapFocus } from '@angular/cdk/a11y';
 
 import { UiTemplate } from './ui-template';
 
 @Component({
   selector: 'app-ui-dialog',
   standalone: true,
-  imports: [NgIf, NgStyle, NgClass, NgTemplateOutlet],
+  imports: [NgIf, NgStyle, NgClass, NgTemplateOutlet, TranslateModule, CdkTrapFocus],
   template: `
-    <div *ngIf="visible" class="p-dialog-mask" [class.p-dialog-mask--modal]="modal" (click)="onMaskClick($event)">
-      <section class="p-dialog" [ngClass]="styleClass" [ngStyle]="style" role="dialog" aria-modal="true">
+    <div *ngIf="visible" class="p-dialog-mask" [class.p-dialog-mask--modal]="modal">
+      <button *ngIf="dismissableMask" type="button" tabindex="-1" class="p-dialog-mask p-dialog-mask__backdrop"
+        [attr.aria-label]="'actions.close' | translate" (click)="onMaskClick($event)"></button>
+      <section class="p-dialog" [ngClass]="styleClass" [ngStyle]="style" role="dialog"
+        [attr.aria-modal]="modal ? 'true' : null" [attr.aria-label]="header"
+        [cdkTrapFocus]="modal" [cdkTrapFocusAutoCapture]="modal">
         <header *ngIf="showHeader" class="p-dialog-header">
           <span class="p-dialog-title">{{ header }}</span>
-          <button *ngIf="closable" type="button" class="p-dialog-header-close" (click)="hide()"><span class="pi pi-times" aria-hidden="true"></span></button>
+          <button *ngIf="closable" type="button" class="p-dialog-header-close" [attr.aria-label]="'actions.close' | translate" (click)="hide()"><span class="pi pi-times" aria-hidden="true"></span></button>
         </header>
         <div class="p-dialog-content"><ng-content></ng-content></div>
         <ng-container *ngIf="template('footer') as footerTemplate">

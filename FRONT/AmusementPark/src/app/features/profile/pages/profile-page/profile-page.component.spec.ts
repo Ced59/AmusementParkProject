@@ -36,8 +36,10 @@ describe('ProfilePageComponent', () => {
 
     expect(styles).toContain('.profile-avatar');
     expect(styles).toContain('border-radius: 50%');
-    expect(styles).toContain('height: 7.5rem');
-    expect(styles).toContain('width: 7.5rem');
+    expect(styles).toContain('aspect-ratio: 1');
+    expect(styles).toContain('width: 120px');
+    expect(styles).toContain('max-width: 100%');
+    expect(styles).toContain('height: auto');
     expect(styles).toContain('object-fit: cover');
   });
 

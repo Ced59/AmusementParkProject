@@ -5,13 +5,9 @@
   overflow: hidden;
   padding: clamp(1rem, 2.4vw, 1.4rem);
   border: 1px solid color-mix(in srgb, var(--app-primary) 34%, var(--app-border-strong));
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(ellipse 36% 130% at 0% 0%, color-mix(in srgb, var(--app-primary) 14%, transparent), transparent 66%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 94%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
-  box-shadow:
-    var(--shadow-card),
-    inset 0 1px 0 color-mix(in srgb, #ffffff 8%, transparent);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
+  box-shadow: var(--shadow-card);
 }
 
 .search-panel::before,
@@ -20,9 +16,9 @@
   content: "";
   position: absolute;
   inset: 0 0 auto;
-  height: 4px;
+  height: 3px;
   pointer-events: none;
-  background: linear-gradient(90deg, var(--app-primary), var(--c-gold), var(--c-sky));
+  background: var(--app-primary);
 }
 
 .public-filter-grid,
@@ -53,11 +49,11 @@
   width: 100%;
   min-height: 3rem;
   border: 1px solid color-mix(in srgb, var(--app-primary) 20%, var(--app-border-strong));
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--app-surface-2) 88%, var(--bg-card) 12%);
+  border-radius: var(--radius-sm);
+  background: var(--app-field);
   color: var(--app-text);
   padding: 0.8rem 0.95rem;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #ffffff 5%, transparent);
+  box-shadow: none;
   transition:
     border-color var(--transition-fast),
     box-shadow var(--transition-fast),
@@ -168,8 +164,8 @@
   min-height: 2.2rem;
   padding: 0.33rem 0.75rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-pill);
-  background: rgba(255, 210, 140, 0.06);
+  border-radius: var(--radius-sm);
+  background: var(--app-surface-2);
   color: var(--app-text-muted);
   font-size: 0.74rem;
   font-weight: 900;
@@ -178,8 +174,7 @@
   transition:
     background-color var(--transition-fast),
     border-color var(--transition-fast),
-    color var(--transition-fast),
-    transform var(--transition-fast);
+    color var(--transition-fast);
 }
 
 .app-category-chip__button:hover,
@@ -187,7 +182,6 @@
   border-color: color-mix(in srgb, var(--app-primary) 42%, var(--app-border));
   background: var(--app-primary-soft);
   color: var(--app-heading);
-  transform: translateY(-1px);
 }
 
 .app-category-chip--disabled .app-category-chip__button {
@@ -267,6 +261,138 @@
   }
 }
 
+// Home composition follows the V6 search bar; catalogue/admin search panels
+// keep their independent, variable filter grids and existing component API.
+.home-command-center .app-search-panel {
+  gap: 18px;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-command-center .app-search-panel::before { content: none; }
+
+.home-command-center .app-search-panel__heading { gap: 12px; }
+
+.home-command-center .app-kicker {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.13em;
+}
+
+.home-command-center .app-search-panel__title {
+  font-size: clamp(27px, 3.2vw, 39px);
+  line-height: 1.13;
+}
+
+.home-command-center .app-search-panel__grid {
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 0.42fr) auto;
+  gap: 0;
+  align-items: stretch;
+}
+
+.home-command-center .app-search-panel__search-field,
+.home-command-center .app-search-panel__select-field {
+  grid-column: auto;
+  min-width: 0;
+  padding: 13px 16px;
+  border: 2px solid var(--app-heading);
+  border-inline-end: 0;
+  background: var(--app-field);
+}
+
+.home-command-center .app-search-panel__select-field {
+  border-inline-start: 1px solid var(--app-line);
+}
+
+.home-command-center .app-field { gap: 5px; }
+
+.home-command-center .app-field__label {
+  color: var(--app-text-muted);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}
+
+.home-command-center .app-input,
+.home-command-center .app-select {
+  min-width: 0;
+  min-height: 32px;
+  padding: 4px 0 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 15px;
+}
+
+.home-command-center .ui-field-input--with-icon .app-input { padding-inline-start: 23px; }
+.home-command-center .ui-field-input__control > i { left: 0; }
+
+.home-command-center .app-search-panel__submit .app-button {
+  height: 100%;
+  padding: 10px 20px;
+  border: 2px solid var(--app-heading);
+  border-radius: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.home-command-center .app-search-panel__clear {
+  grid-column: 1 / -1;
+  justify-self: start;
+  width: auto;
+  min-height: 44px;
+  margin-top: 10px;
+}
+
+.home-command-center .app-search-panel__clear .app-button {
+  width: auto;
+  min-height: 44px;
+  padding-inline: 0;
+  border: 0;
+  background: transparent;
+  color: var(--app-text-muted);
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+@media (max-width: 680px) {
+  .home-command-center .app-search-panel__title { font-size: clamp(24px, 7vw, 31px); }
+
+  .home-command-center .app-search-panel__grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .home-command-center .app-search-panel__search-field {
+    grid-column: 1 / -1;
+    padding: 10px 13px;
+    border-inline-end: 2px solid var(--app-heading);
+    border-bottom: 1px solid var(--app-line);
+  }
+
+  .home-command-center .app-search-panel__search { grid-column: auto; }
+
+  .home-command-center .app-search-panel__select-field {
+    padding: 10px 13px;
+    border-top: 0;
+    border-inline-start: 2px solid var(--app-heading);
+  }
+
+  .home-command-center .app-search-panel__submit .app-button {
+    padding: 10px 12px;
+    border-top: 0;
+    font-size: 11px;
+  }
+}
+
 /* M13 account/auth/profile design extension. */
 .auth-page,
 .profile-page {
@@ -296,17 +422,18 @@
   min-height: 100%;
   padding: clamp(1rem, 2.4vw, 1.25rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
 }
 
 .auth-form-card--login {
   border-color: color-mix(in srgb, var(--c-sky) 20%, var(--app-border));
+  border-top: 4px solid var(--c-sky);
 }
 
 .auth-form-card--register {
   border-color: color-mix(in srgb, var(--c-lime) 18%, var(--app-border));
+  border-top: 4px solid var(--c-lime);
 }
 
 .auth-form {
@@ -322,14 +449,14 @@
   justify-self: start;
   padding: 0;
   border: 0;
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
   background: transparent;
   font-weight: 800;
   cursor: pointer;
 }
 
 .auth-form__link:hover {
-  color: var(--c-orange-2);
+  color: var(--app-primary-strong);
   text-decoration: underline;
 }
 
@@ -345,8 +472,8 @@
   gap: 0.85rem;
   padding: 1rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 210, 140, 0.04);
+  border-radius: var(--radius-sm);
+  background: var(--app-surface-2);
 }
 
 .auth-feedback p,
@@ -359,12 +486,12 @@
 .auth-feedback--success,
 .auth-success-panel {
   border-color: color-mix(in srgb, var(--c-lime) 24%, var(--app-border));
-  background: rgba(196, 255, 39, 0.055);
+  background: color-mix(in srgb, var(--c-lime) 10%, var(--app-surface));
 }
 
 .auth-feedback--error {
   border-color: color-mix(in srgb, var(--c-rose) 24%, var(--app-border));
-  background: rgba(255, 77, 139, 0.06);
+  background: color-mix(in srgb, var(--c-rose) 10%, var(--app-surface));
 }
 
 .auth-modal-shell {
@@ -477,9 +604,9 @@
   margin: 0;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 6vw, 4.8rem);
-  line-height: 1.06;
-  letter-spacing: 0.03em;
+  font-size: clamp(2.35rem, 5.25vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
   overflow-wrap: anywhere;
 }
@@ -513,8 +640,8 @@
   align-items: center;
   padding: 1rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 210, 140, 0.035);
+  border-radius: var(--radius-sm);
+  background: var(--app-surface-2);
 }
 
 .profile-row--identity {

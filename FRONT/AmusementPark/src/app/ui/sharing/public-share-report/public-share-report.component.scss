@@ -5,10 +5,10 @@
 }
 
 .public-share-report {
-  background: color-mix(in srgb, var(--surface-card, #17130f) 92%, transparent);
-  border: 1px solid color-mix(in srgb, var(--text-color, #fff) 14%, transparent);
-  border-radius: 1.25rem;
-  color: var(--text-color, #fff);
+  background: color-mix(in srgb, var(--app-surface, #17130f) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--app-text, #fff) 14%, transparent);
+  border-radius: var(--app-radius-md);
+  color: var(--app-text, #fff);
   max-width: 100%;
   overflow: hidden;
   padding: 1rem;
@@ -38,9 +38,9 @@ label {
 
 select,
 textarea {
-  background: var(--surface-ground, #0d0b09);
-  border: 1px solid color-mix(in srgb, var(--text-color, #fff) 22%, transparent);
-  border-radius: .9rem;
+  background: var(--app-bg, #0d0b09);
+  border: 1px solid color-mix(in srgb, var(--app-text, #fff) 22%, transparent);
+  border-radius: var(--app-radius-md);
   box-sizing: border-box;
   color: inherit;
   font: inherit;
@@ -57,13 +57,13 @@ textarea {
 small,
 .public-share-report__hint,
 .public-share-report__form > p {
-  color: var(--text-color-secondary, #bdb2a4);
+  color: var(--app-text-muted, #bdb2a4);
   margin: 0;
   overflow-wrap: anywhere;
 }
 
 .public-share-report__error {
-  color: var(--pink-300, #ff6f9f) !important;
+  color: var(--app-accent-pink, #ff6f9f) !important;
 }
 
 .public-share-report__confirmation {
@@ -73,13 +73,13 @@ small,
 }
 
 .public-share-report__confirmation p {
-  color: var(--text-color-secondary, #bdb2a4);
+  color: var(--app-text-muted, #bdb2a4);
   margin: .25rem 0 0;
 }
 
 @media (max-width: 35rem) {
   .public-share-report {
-    border-radius: 1rem;
+    border-radius: var(--app-radius-md);
     padding: .9rem;
   }
 }

@@ -62,7 +62,7 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   padding-top: 0.5rem;
-  border-top: 1px solid var(--surface-border);
+  border-top: 1px solid var(--app-border-stronger);
 }
 
 :host ::ng-deep .inner-card .p-card-body {
@@ -94,7 +94,7 @@
 .access-height-card__header small,
 .access-advanced-head small,
 .height-requirement-field small {
-  color: var(--text-color-secondary);
+  color: var(--app-text-muted);
 }
 
 .access-height-card__icon,
@@ -102,9 +102,9 @@
   display: inline-grid;
   place-items: center;
   flex: 0 0 auto;
-  border-radius: 0.85rem;
-  color: var(--primary-color);
-  background: color-mix(in srgb, var(--primary-color) 12%, transparent);
+  border-radius: var(--app-radius-md);
+  color: var(--app-primary-strong);
+  background: color-mix(in srgb, var(--app-primary) 12%, transparent);
 }
 
 .access-height-card__icon {
@@ -123,9 +123,9 @@
   display: grid;
   gap: 0.65rem;
   padding: 1rem;
-  border: 1px solid var(--surface-border);
-  border-radius: 1rem;
-  background: color-mix(in srgb, var(--surface-card) 92%, transparent);
+  border: 1px solid var(--app-border-stronger);
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-surface) 92%, transparent);
 }
 
 .height-requirement-field__label {
@@ -156,10 +156,10 @@
   min-width: 2.6rem;
   padding: 0.65rem 0.7rem;
   text-align: center;
-  border: 1px solid var(--surface-border);
-  border-radius: 0.75rem;
-  color: var(--text-color-secondary);
-  background: var(--surface-ground);
+  border: 1px solid var(--app-border-stronger);
+  border-radius: var(--app-radius-md);
+  color: var(--app-text-muted);
+  background: var(--app-bg);
   font-weight: 800;
 }
 

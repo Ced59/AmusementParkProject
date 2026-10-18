@@ -10,10 +10,10 @@
   min-height: 2rem;
   height: auto;
   padding: 0.38rem 0.9rem;
-  border: 1px solid rgba(255, 90, 31, 0.2);
-  border-radius: var(--radius-pill);
-  color: var(--c-orange);
-  background: rgba(255, 90, 31, 0.12);
+  border: 1px solid color-mix(in srgb, var(--c-orange) 42%, var(--app-border));
+  border-radius: var(--radius-xs);
+  color: var(--app-primary-strong);
+  background: color-mix(in srgb, var(--c-orange) 10%, var(--app-surface));
   font-size: 0.72rem;
   font-weight: 900;
   line-height: 1.25;
@@ -26,36 +26,36 @@
 .kicker--lime,
 .app-kicker--lime {
   color: var(--c-lime);
-  border-color: rgba(196, 255, 39, 0.18);
-  background: rgba(196, 255, 39, 0.1);
+  border-color: color-mix(in srgb, var(--c-lime) 48%, var(--app-border));
+  background: color-mix(in srgb, var(--c-lime) 12%, var(--app-surface));
 }
 
 .kicker--sky,
 .app-kicker--sky {
   color: var(--c-sky);
-  border-color: rgba(56, 197, 245, 0.18);
-  background: rgba(56, 197, 245, 0.1);
+  border-color: color-mix(in srgb, var(--c-sky) 48%, var(--app-border));
+  background: color-mix(in srgb, var(--c-sky) 12%, var(--app-surface));
 }
 
 .kicker--rose,
 .app-kicker--rose {
   color: var(--c-rose);
-  border-color: rgba(255, 77, 139, 0.18);
-  background: rgba(255, 77, 139, 0.12);
+  border-color: color-mix(in srgb, var(--c-rose) 48%, var(--app-border));
+  background: color-mix(in srgb, var(--c-rose) 12%, var(--app-surface));
 }
 
 .kicker--gold,
 .app-kicker--gold {
   color: var(--c-gold);
-  border-color: rgba(255, 182, 39, 0.2);
-  background: rgba(255, 182, 39, 0.1);
+  border-color: color-mix(in srgb, var(--c-gold) 48%, var(--app-border));
+  background: color-mix(in srgb, var(--c-gold) 12%, var(--app-surface));
 }
 
 .kicker--purple,
 .app-kicker--purple {
   color: var(--c-purple);
-  border-color: rgba(155, 93, 229, 0.2);
-  background: rgba(155, 93, 229, 0.1);
+  border-color: color-mix(in srgb, var(--c-purple) 48%, var(--app-border));
+  background: color-mix(in srgb, var(--c-purple) 12%, var(--app-surface));
 }
 
 .kicker--ghost,
@@ -64,7 +64,7 @@
 .app-kicker--soft {
   color: var(--app-text-muted);
   border-color: var(--app-border);
-  background: rgba(255, 210, 140, 0.06);
+  background: var(--app-surface);
 }
 
 .chips,
@@ -99,15 +99,15 @@
 
 .chip--orange,
 .app-chip--orange {
-  color: var(--c-orange-2);
-  background: rgba(255, 90, 31, 0.14);
+  color: var(--app-primary-strong);
+  background: color-mix(in srgb, var(--c-orange) 14%, var(--app-surface));
 }
 
 .chip--primary,
 .app-chip--primary,
 .public-pill {
-  color: var(--c-orange-2);
-  background: rgba(255, 90, 31, 0.14);
+  color: var(--app-primary-strong);
+  background: color-mix(in srgb, var(--c-orange) 14%, var(--app-surface));
 }
 
 .chip--ghost,
@@ -120,33 +120,33 @@
 .chip--lime,
 .app-chip--lime {
   color: var(--c-lime);
-  background: rgba(196, 255, 39, 0.12);
+  background: color-mix(in srgb, var(--c-lime) 14%, var(--app-surface));
 }
 
 .chip--sky,
 .app-chip--sky,
 .public-pill--cyan {
   color: var(--c-sky);
-  background: rgba(56, 197, 245, 0.12);
+  background: color-mix(in srgb, var(--c-sky) 14%, var(--app-surface));
 }
 
 .chip--rose,
 .app-chip--rose {
   color: var(--c-rose);
-  background: rgba(255, 77, 139, 0.12);
+  background: color-mix(in srgb, var(--c-rose) 14%, var(--app-surface));
 }
 
 .chip--gold,
 .app-chip--gold,
 .public-pill--gold {
   color: var(--c-gold);
-  background: rgba(255, 182, 39, 0.12);
+  background: color-mix(in srgb, var(--c-gold) 14%, var(--app-surface));
 }
 
 .chip--purple,
 .app-chip--purple {
   color: var(--c-purple);
-  background: rgba(155, 93, 229, 0.12);
+  background: color-mix(in srgb, var(--c-purple) 14%, var(--app-surface));
 }
 
 .app-chip i,
@@ -163,5 +163,5 @@
 .public-pill--soft {
   color: var(--app-text-muted);
   border: 1px solid var(--app-border);
-  background: rgba(255, 210, 140, 0.06);
+  background: var(--app-surface);
 }

@@ -3,7 +3,7 @@
 }
 
 .sitemap-page {
-  width: min(100% - 2.5rem, var(--content-wide-max-width, 1320px));
+  width: min(100% - 2.5rem, var(--content-max-width, 1160px));
   margin: 0 auto;
   padding: 1.8rem 0 4rem;
 }
@@ -13,6 +13,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.38fr);
   gap: clamp(1rem, 3vw, 2rem);
   align-items: center;
+  border-top: 4px solid var(--app-primary);
 }
 
 .sitemap-hero__content {
@@ -26,7 +27,7 @@
   color: var(--app-heading);
   font-family: var(--font-display);
   font-size: clamp(3rem, 7vw, 5.9rem);
-  line-height: 0.98;
+  line-height: 1;
   letter-spacing: 0;
 }
 
@@ -55,7 +56,6 @@
   border: 1px solid var(--app-border);
   border-radius: var(--app-radius-md);
   background: var(--app-surface);
-  box-shadow: var(--app-shadow-1);
 }
 
 .sitemap-hero__node--main {
@@ -91,7 +91,7 @@
 
 .sitemap-hero__line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--app-border-strong), transparent);
+  background: var(--app-border-strong);
   transform-origin: center;
 }
 

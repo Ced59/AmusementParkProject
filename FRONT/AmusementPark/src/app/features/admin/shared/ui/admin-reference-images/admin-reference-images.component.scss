@@ -4,9 +4,9 @@
   gap: 1rem;
   margin-top: 1.5rem;
   padding: 1rem;
-  border: 1px solid var(--app-border, var(--surface-border, rgba(255, 210, 140, .16)));
-  border-radius: 1rem;
-  background: color-mix(in srgb, var(--app-surface, var(--surface-card, #1a140f)) 92%, transparent);
+  border: 1px solid var(--app-border, var(--app-border-stronger, rgba(255, 210, 140, .16)));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-surface, var(--app-surface, #1a140f)) 92%, transparent);
 }
 
 .admin-reference-images__header {
@@ -18,24 +18,24 @@
 
   h3 {
     margin: 0;
-    color: var(--app-heading, var(--text-color));
+    color: var(--app-heading, var(--app-text));
     font-size: 1rem;
     font-weight: 800;
   }
 
   p {
     margin: .25rem 0 0;
-    color: var(--app-text-muted, var(--text-color-secondary));
+    color: var(--app-text-muted, var(--app-text-muted));
     font-size: .85rem;
   }
 }
 
 .admin-reference-images__empty {
   padding: 1rem;
-  border: 1px dashed var(--app-border, var(--surface-border));
-  border-radius: .85rem;
-  color: var(--app-text-muted, var(--text-color-secondary));
-  background: color-mix(in srgb, var(--app-bg, var(--surface-ground, #111)) 65%, transparent);
+  border: 1px dashed var(--app-border, var(--app-border-stronger));
+  border-radius: var(--app-radius-md);
+  color: var(--app-text-muted, var(--app-text-muted));
+  background: color-mix(in srgb, var(--app-bg, var(--app-bg, #111)) 65%, transparent);
 }
 
 .admin-reference-images__grid {
@@ -46,9 +46,9 @@
 
 .admin-reference-images__card {
   overflow: hidden;
-  border: 1px solid var(--app-border, var(--surface-border));
-  border-radius: .95rem;
-  background: var(--app-surface-2, var(--surface-card));
+  border: 1px solid var(--app-border, var(--app-border-stronger));
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface-2, var(--app-surface));
 }
 
 :host ::ng-deep .admin-reference-images__image {
@@ -68,7 +68,7 @@
   strong {
     grid-column: 1;
     min-width: 0;
-    color: var(--app-text, var(--text-color));
+    color: var(--app-text, var(--app-text));
     font-size: .82rem;
     white-space: nowrap;
     overflow: hidden;
@@ -87,9 +87,9 @@
   width: fit-content;
   max-width: 100%;
   padding: .18rem .48rem;
-  border: 1px solid color-mix(in srgb, var(--app-primary, #ff5a1f) 24%, var(--app-border, var(--surface-border)));
-  border-radius: .65rem;
-  color: var(--app-text-muted, var(--text-color-secondary));
+  border: 1px solid color-mix(in srgb, var(--app-primary, #ff5a1f) 24%, var(--app-border, var(--app-border-stronger)));
+  border-radius: var(--app-radius-md);
+  color: var(--app-text-muted, var(--app-text-muted));
   font-size: .68rem;
   font-weight: 800;
   text-transform: uppercase;

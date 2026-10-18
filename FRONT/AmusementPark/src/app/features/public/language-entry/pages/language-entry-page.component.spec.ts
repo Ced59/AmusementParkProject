@@ -57,14 +57,13 @@ describe('LanguageEntryPageComponent', () => {
     expect(fixture.nativeElement.querySelector('[role="list"]')).toBeNull();
   });
 
-  it('provides a high density logo without changing its reserved aspect ratio', () => {
-    const logo: HTMLImageElement = fixture.nativeElement.querySelector('.language-entry__logo');
+  it('uses the distinct Playground mark without restoring the legacy standalone logo', () => {
+    const mark: HTMLElement = fixture.nativeElement.querySelector('.language-entry__playground-mark');
 
-    expect(logo.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark-language-136.webp');
-    expect(logo.getAttribute('srcset')).toBe(
-      '/assets/general-icon/logo-amusementpark-language-136.webp 1x, /assets/general-icon/logo-amusementpark-language-272.webp 2x, /assets/general-icon/logo-amusementpark-language-408.webp 3x',
-    );
-    expect(logo.getAttribute('width')).toBe('184');
-    expect(logo.getAttribute('height')).toBe('184');
+    expect(mark).toBeTruthy();
+    expect(mark.getAttribute('aria-hidden')).toBe('true');
+    expect(mark.textContent).toContain('APF');
+    expect(mark.textContent).toContain('Playground');
+    expect(fixture.nativeElement.querySelector('.language-entry__logo')).toBeNull();
   });
 });

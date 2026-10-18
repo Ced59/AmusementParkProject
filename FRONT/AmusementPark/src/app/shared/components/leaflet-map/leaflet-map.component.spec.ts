@@ -1,6 +1,7 @@
 import type { Mock } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SimpleChange, ViewEncapsulation } from '@angular/core';
+import { ElementRef, SimpleChange, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LeafletMapComponent } from './leaflet-map.component';
 import {
@@ -8,6 +9,8 @@ import {
   provideCommonTestDependencies,
 } from '@app/testing/common-test-providers';
 import { MapMarker } from '@app/models/map/map-marker';
+import type { Map as LeafletMap } from 'leaflet';
+import { createLeafletMapDisposer } from '@shared/utils/maps/leaflet-map-disposer';
 
 type LeafletTestMap = {
   fitBounds: Mock;
@@ -34,9 +37,12 @@ type LeafletMapComponentInternals = {
   scheduleViewportUpdate: () => void;
   scheduleMapSizeStabilization: () => void;
   applyDefaultViewport: () => void;
+  initMap: () => void;
+  disposeMap: (() => void) | null;
   fitMapToMarkersIfNeeded: () => boolean;
   ensureFitBoundsMinimumZoom: () => void;
   refreshMarkers: () => void;
+  refreshOpenPopupLayout: () => void;
   L: {
     latLngBounds: Mock;
   } | null;
@@ -51,6 +57,7 @@ type LeafletMapComponentInternals = {
     string,
     {
       getLatLng: Mock;
+      getPopup: Mock;
       openPopup: Mock;
     }
   >;
@@ -88,7 +95,7 @@ function createLeafletMarkerTestDouble(): {
   marker.addTo.mockReturnValue(marker);
   marker.bindPopup.mockReturnValue(marker);
   marker.getLatLng.mockReturnValue({ lat: 48.85, lng: 2.35 });
-  marker.getPopup.mockReturnValue({});
+  marker.getPopup.mockReturnValue({ isOpen: vi.fn().mockReturnValue(false), update: vi.fn() });
   marker.on.mockImplementation(
     (
       eventName: string,
@@ -133,6 +140,135 @@ describe('LeafletMapComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('reflows only open popup content after resizing and rebinds the same internal link without reopening closed markers', () => {
+    const internals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = { fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(), setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn() };
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    component.mapContainer = new ElementRef(container);
+    internals.map = map;
+    const open = { isOpen: vi.fn().mockReturnValue(true), update: vi.fn(() => { container.innerHTML = '<div class="leaflet-popup-content"><a data-app-map-popup-internal-link="true" href="/fr/parks">Open</a></div>'; }) };
+    const closed = { isOpen: vi.fn().mockReturnValue(false), update: vi.fn() };
+    const openMarker = { getLatLng: vi.fn(), getPopup: vi.fn().mockReturnValue(open), openPopup: vi.fn() };
+    const closedMarker = { getLatLng: vi.fn(), getPopup: vi.fn().mockReturnValue(closed), openPopup: vi.fn() };
+    const noPopupMarker = { getLatLng: vi.fn(), getPopup: vi.fn(), openPopup: vi.fn() };
+    internals.leafletMarkers.set('open', openMarker);
+    internals.leafletMarkers.set('closed', closedMarker);
+    internals.leafletMarkers.set('none', noPopupMarker);
+    const navigate = vi.spyOn(TestBed.inject(Router), 'navigateByUrl').mockResolvedValue(true);
+    vi.useFakeTimers();
+    try {
+      for (let index = 0; index < 2; index++) {
+        component.refreshMapSize();
+        vi.advanceTimersByTime(50);
+        if (index === 0) container.querySelector('a')!.focus();
+        expect(document.activeElement).toBe(container.querySelector('a'));
+        container.querySelector('a')!.click();
+      }
+      expect(open.update).toHaveBeenCalledTimes(2);
+      expect(closed.update).not.toHaveBeenCalled();
+      expect(openMarker.openPopup).not.toHaveBeenCalled();
+      expect(closedMarker.openPopup).not.toHaveBeenCalled();
+      expect(navigate).toHaveBeenCalledTimes(2);
+      expect(navigate).toHaveBeenCalledWith('/fr/parks');
+      expect(map.invalidateSize).toHaveBeenCalledWith({ pan: false, debounceMoveend: true });
+      expect(map.fitBounds).not.toHaveBeenCalled();
+      expect(map.setZoom).not.toHaveBeenCalled();
+      expect(map.setView).not.toHaveBeenCalled();
+    } finally {
+      vi.useRealTimers();
+      container.remove();
+    }
+  });
+
+  it('removes an idle map immediately and only once', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap & { once: Mock } = {
+      fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(),
+      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), once: vi.fn(),
+    };
+    component.mapContainer = new ElementRef(document.createElement('div'));
+    internals.map = map;
+
+    component.ngOnDestroy();
+    component.ngOnDestroy();
+
+    expect(internals.map).toBeNull();
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    expect(map.once).not.toHaveBeenCalled();
+  });
+
+  it('keeps the pane alive until zoomend dispatch finishes when destroyed during a zoom', async () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap & { on: Mock; getPane: Mock } = {
+      fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(),
+      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), on: vi.fn(), getPane: vi.fn(),
+    };
+    const container: HTMLDivElement = document.createElement('div');
+    const pane: HTMLDivElement = document.createElement('div');
+    pane.classList.add('leaflet-zoom-anim');
+    container.append(pane);
+    component.mapContainer = new ElementRef(container);
+    internals.map = map;
+    map.getPane.mockReturnValue(pane);
+    internals.disposeMap = createLeafletMapDisposer(map as unknown as LeafletMap);
+
+    component.ngOnDestroy();
+    component.ngOnDestroy();
+
+    expect(internals.map).toBeNull();
+    expect(map.remove).not.toHaveBeenCalled();
+    const completeZoom: () => void = map.on.mock.calls.find((call) => call[0] === 'zoomend')?.[1] as () => void;
+    completeZoom();
+    expect(map.remove).not.toHaveBeenCalled();
+    await Promise.resolve();
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    expect(map.setView).not.toHaveBeenCalled();
+    expect(map.setZoom).not.toHaveBeenCalled();
+  });
+
+  it.each(['before the animation class appears', 'during zoomend dispatch'])('defers destruction %s using the public zoom lifecycle', async (phase: string) => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const handlers: Map<string, () => void> = new Map<string, () => void>();
+    const map: LeafletTestMap & { getPane: Mock; on: Mock } = {
+      fitBounds: vi.fn(), getZoom: vi.fn(), invalidateSize: vi.fn(),
+      setView: vi.fn(), setZoom: vi.fn(), remove: vi.fn(), getPane: vi.fn(),
+      on: vi.fn().mockImplementation((event: string, handler: () => void): void => {
+        handlers.set(event, handler);
+      }),
+    };
+    component.mapContainer = new ElementRef(document.createElement('div'));
+    internals.map = map;
+    const dispose: () => void = createLeafletMapDisposer(map as unknown as LeafletMap);
+    internals.disposeMap = dispose;
+    handlers.get('zoomstart')?.();
+    if (phase === 'during zoomend dispatch') {
+      handlers.get('zoomend')?.();
+    }
+
+    component.ngOnDestroy();
+    expect(internals.map).toBeNull();
+    expect(map.remove).not.toHaveBeenCalled();
+    if (phase !== 'during zoomend dispatch') {
+      handlers.get('zoomend')?.();
+    }
+    await Promise.resolve();
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    dispose();
+    await Promise.resolve();
+    expect(map.remove).toHaveBeenCalledTimes(1);
+    expect(map.setView).not.toHaveBeenCalled();
+    expect(map.setZoom).not.toHaveBeenCalled();
+  });
+
+  it('does not initialize a detached map when destroyed while Leaflet loads', async () => {
+    const initialize = vi.spyOn(component as unknown as LeafletMapComponentInternals, 'initMap');
+    const pendingInitialization: Promise<void> = component.ngAfterViewInit();
+    component.ngOnDestroy();
+    await pendingInitialization;
+    expect(initialize).not.toHaveBeenCalled();
+  });
+
   it('uses unscoped component styles so Leaflet CSS can stay out of the initial global bundle', () => {
     expect(
       (
@@ -150,9 +286,11 @@ describe('LeafletMapComponent', () => {
       component as unknown as LeafletMapComponentInternals;
     const marker: {
       getLatLng: Mock;
+      getPopup: Mock;
       openPopup: Mock;
     } = {
       getLatLng: vi.fn().mockName('marker.getLatLng'),
+      getPopup: vi.fn().mockName('marker.getPopup'),
       openPopup: vi.fn().mockName('marker.openPopup'),
     };
     const map: {
@@ -180,6 +318,7 @@ describe('LeafletMapComponent', () => {
       string,
       {
         getLatLng: Mock;
+        getPopup: Mock;
         openPopup: Mock;
       }
     >([['entrance', marker]]);
@@ -197,9 +336,11 @@ describe('LeafletMapComponent', () => {
       component as unknown as LeafletMapComponentInternals;
     const marker: {
       getLatLng: Mock;
+      getPopup: Mock;
       openPopup: Mock;
     } = {
       getLatLng: vi.fn().mockName('marker.getLatLng'),
+      getPopup: vi.fn().mockName('marker.getPopup'),
       openPopup: vi.fn().mockName('marker.openPopup'),
     };
 
@@ -208,6 +349,7 @@ describe('LeafletMapComponent', () => {
       string,
       {
         getLatLng: Mock;
+        getPopup: Mock;
         openPopup: Mock;
       }
     >([['entrance', marker]]);
@@ -245,6 +387,7 @@ describe('LeafletMapComponent', () => {
     expect(testDouble.marker.bindPopup).toHaveBeenCalled();
     const popupContent: string = vi.mocked(testDouble.marker.bindPopup).mock
       .lastCall![0] as string;
+    expect(testDouble.marker.bindPopup).toHaveBeenCalledWith(popupContent, { autoPanPaddingTopLeft: [5, 80] });
     expect(popupContent).toContain('leaflet-map-popup__action--directions');
     expect(popupContent).toContain('Y aller');
     expect(popupContent).not.toContain('<strong></strong>');
@@ -404,9 +547,11 @@ describe('LeafletMapComponent', () => {
     };
     const marker: {
       getLatLng: Mock;
+      getPopup: Mock;
       openPopup: Mock;
     } = {
       getLatLng: vi.fn().mockName('marker.getLatLng'),
+      getPopup: vi.fn().mockName('marker.getPopup'),
       openPopup: vi.fn().mockName('marker.openPopup'),
     };
 
@@ -420,6 +565,7 @@ describe('LeafletMapComponent', () => {
       string,
       {
         getLatLng: Mock;
+        getPopup: Mock;
         openPopup: Mock;
       }
     >([['old', marker]]);

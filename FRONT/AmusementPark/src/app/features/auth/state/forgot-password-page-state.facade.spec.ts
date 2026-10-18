@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Observable, of, throwError } from 'rxjs';
 
 import {
@@ -16,6 +17,7 @@ describe('ForgotPasswordPageStateFacade', () => {
     port = new FakeAuthPort();
 
     TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
       providers: [
         ForgotPasswordPageStateFacade,
         {
@@ -25,6 +27,10 @@ describe('ForgotPasswordPageStateFacade', () => {
       ],
     });
 
+    const translateService: TranslateService = TestBed.inject(TranslateService);
+    translateService.setTranslation('fr', { auth: { forgot_password: { fallbackError: 'La demande a échoué.' } } });
+    translateService.setTranslation('en', { auth: { forgot_password: { fallbackError: 'The request failed.' } } });
+    translateService.use('fr');
     facade = TestBed.inject(ForgotPasswordPageStateFacade);
   });
 
@@ -64,5 +70,18 @@ describe('ForgotPasswordPageStateFacade', () => {
 
     expect(facade.isSubmitted()).toBe(true);
     expect(facade.message()).toBe('Adresse inconnue.');
+  });
+
+  it.each([
+    ['fr', 'La demande a échoué.'],
+    ['en', 'The request failed.']
+  ])('uses the localized %s fallback only when a server message is absent', (language: string, message: string) => {
+    TestBed.inject(TranslateService).use(language);
+    port.response$ = throwError(() => new Error('offline'));
+    facade.setEmail(' ced@example.test ');
+    facade.submit();
+    expect(port.calls).toEqual(['ced@example.test']);
+    expect(facade.isSubmitted()).toBe(true);
+    expect(facade.message()).toBe(message);
   });
 });

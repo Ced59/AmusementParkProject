@@ -3,9 +3,9 @@
   gap: 1rem;
   padding: clamp(1.2rem, 3vw, 1.5rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
+  box-shadow: none;
 }
 
 .park-items-map__header {
@@ -51,9 +51,9 @@
 }
 
 .park-items-map__zone-filter--active {
-  color: var(--app-primary) !important;
-  border-color: color-mix(in srgb, var(--app-primary) 36%, transparent) !important;
-  background: color-mix(in srgb, var(--app-primary-soft) 64%, transparent) !important;
+  color: var(--app-primary);
+  border-color: color-mix(in srgb, var(--app-primary) 36%, transparent);
+  background: color-mix(in srgb, var(--app-primary-soft) 64%, transparent);
 }
 
 .park-items-map__body {
@@ -72,8 +72,8 @@
   gap: 0.55rem;
   padding: 0.9rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--app-bg) 42%, transparent);
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
 }
 
 .park-items-map__categories-title {
@@ -92,13 +92,13 @@
   width: 100%;
   padding: 0.72rem 0.8rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--app-surface) 82%, transparent);
   color: var(--app-text-muted);
   font-size: 0.82rem;
   font-weight: 850;
   text-align: left;
-  transition: color var(--app-transition-base), border-color var(--app-transition-base), background var(--app-transition-base), transform var(--app-transition-base);
+  transition: color var(--app-transition-base), border-color var(--app-transition-base), background-color var(--app-transition-base);
 }
 
 .park-items-map__category-button:hover,
@@ -106,7 +106,6 @@
   color: var(--app-heading);
   border-color: color-mix(in srgb, var(--app-accent-cyan) 34%, transparent);
   background: color-mix(in srgb, var(--app-accent-cyan) 9%, var(--app-surface));
-  transform: translateY(-1px);
 }
 
 .park-items-map__category-icon {
@@ -125,11 +124,11 @@
 
 :host ::ng-deep .park-items-map__slot .leaflet-map-container {
   height: 28rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
 }
 
 :host ::ng-deep .leaflet-popup-content .leaflet-map-popup__lines span:first-child {
-  color: #6a4424;
+  color: var(--app-primary-strong);
   font-weight: 700;
 }
 

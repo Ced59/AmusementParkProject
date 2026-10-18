@@ -1,5 +1,9 @@
 {
   "actions": {
+    "expand": "Aufklappen",
+    "collapse": "Zuklappen",
+    "moveUp": "Nach oben verschieben",
+    "moveDown": "Nach unten verschieben",
     "cancel": "Abbrechen",
     "close": "Schließen",
     "save": "Speichern",

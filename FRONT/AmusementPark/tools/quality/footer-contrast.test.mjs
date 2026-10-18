@@ -18,10 +18,15 @@ for (const theme of ['dark', 'light']) {
       return value.startsWith('var(') ? color(variables.get(value.slice(4, -1))) : value.slice(1);
     }
     const background = color(footer.match(/\.app-public-footer\s*\{[^}]*background:\s*([^;]+)/)[1]);
-    for (const selector of ['col-title', 'copy']) {
+    for (const selector of ['col-title', 'copy', 'slogan-base', 'slogan-fun']) {
       const foreground = color(footer.match(new RegExp(`\\.app-public-footer__${selector}\\s*\\{[^}]*color:\\s*([^;]+)`))[1]);
       const values = [luminance(background), luminance(foreground)].sort((a, b) => b - a);
       assert.ok((values[0] + 0.05) / (values[1] + 0.05) >= 4.5, `${selector} contrast must be at least 4.5:1`);
     }
   });
 }
+
+test('the footer slogan uses a semantic AA text accent rather than the raw decorative orange', () => {
+  assert.match(footer, /\.app-public-footer__slogan-fun\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
+  assert.doesNotMatch(footer, /\.app-public-footer__slogan-fun\s*\{[^}]*color:\s*var\(--c-orange\)/);
+});

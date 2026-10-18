@@ -1,13 +1,12 @@
 services:
   front:
-    image: node:24-alpine
+    image: ${FRONT_IMAGE:-node:24-alpine}
     container_name: ${COMPOSE_PROJECT_NAME}-front
     command: ["node", "/fixture/deployment-server.mjs"]
     labels:
       fun.amusement-parks.deployment-generation: ${DEPLOYMENT_GENERATION:-unmanaged}
     environment:
       KIND: front
-      FIXTURE_VERSION: ${FIXTURE_VERSION}
       SSR_API_INTERNAL_URL: ${FRONT_SSR_API_INTERNAL_URL}
     volumes: ["./fixture:/fixture:ro", "./control:/control"]
     networks:
@@ -19,14 +18,13 @@ services:
       timeout: 2s
       retries: 30
   api:
-    image: node:24-alpine
+    image: ${API_IMAGE:-node:24-alpine}
     container_name: ${COMPOSE_PROJECT_NAME}-api
     command: ["node", "/fixture/deployment-server.mjs"]
     labels:
       fun.amusement-parks.deployment-generation: ${DEPLOYMENT_GENERATION:-unmanaged}
     environment:
       KIND: api
-      FIXTURE_VERSION: ${FIXTURE_VERSION}
       DEPLOYMENT_GENERATION: ${DEPLOYMENT_GENERATION:-unmanaged}
       AllowedHosts: ${ALLOWED_HOSTS}
       Ssr__InternalBaseUrl: ${SSR_INTERNAL_BASE_URL}

@@ -21,17 +21,12 @@
 }
 
 .park-reference-hero__bg {
-  background:
-    radial-gradient(ellipse 72% 60% at 16% 35%, color-mix(in srgb, var(--reference-accent, var(--app-primary)) 18%, transparent), transparent 64%),
-    radial-gradient(ellipse 44% 48% at 82% 78%, color-mix(in srgb, var(--app-accent-cyan) 10%, transparent), transparent 58%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface-2) 94%, transparent), var(--app-bg));
+  border-top: 4px solid var(--reference-accent, var(--app-primary));
+  background: var(--app-surface);
 }
 
 .park-reference-hero__pattern {
-  opacity: 0.04;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.55) 39px, rgba(255, 255, 255, 0.55) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.55) 39px, rgba(255, 255, 255, 0.55) 40px);
+  display: none;
 }
 
 .park-reference-detail[data-reference-kind='operator'] {
@@ -63,20 +58,15 @@
   display: grid;
   place-items: center;
   border: 2px solid color-mix(in srgb, var(--reference-accent, var(--app-primary)) 38%, var(--app-border-strong));
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--reference-accent, var(--app-primary)) 20%, transparent), transparent 48%),
-    linear-gradient(180deg, var(--app-surface), var(--app-surface-2));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 10%, var(--app-surface));
   color: var(--reference-accent, var(--app-primary));
   font-size: 2rem;
-  box-shadow: var(--shadow-lift);
 }
 
 .park-reference-hero__icon--logo {
   padding: 0.75rem;
-  background:
-    radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--reference-accent, var(--app-primary)) 10%, transparent), transparent 54%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 94%, white 6%), var(--app-surface));
+  background: var(--app-surface);
   color: var(--app-text-muted);
 }
 
@@ -89,7 +79,7 @@
 
 :host ::ng-deep .park-reference-hero__logo-placeholder {
   min-height: 0;
-  border-radius: calc(var(--radius-xl) - 0.75rem);
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--reference-accent, var(--app-primary));
 }
@@ -147,11 +137,8 @@
   gap: 1rem;
   padding: clamp(1.25rem, 3vw, 1.8rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--reference-accent, var(--app-primary)) 7%, transparent), transparent 40%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
 }
 
 .park-reference-card--description {
@@ -195,7 +182,7 @@
   height: 2.1rem;
   display: grid;
   place-items: center;
-  border-radius: 0.75rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 13%, transparent);
   color: var(--reference-accent, var(--app-primary));
 }
@@ -283,7 +270,7 @@ a.reference-fact__value:hover {
   height: 2.4rem;
   display: grid;
   place-items: center;
-  border-radius: .9rem;
+  border-radius: var(--app-radius-md);
   background: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 14%, transparent);
   color: var(--reference-accent, var(--app-primary));
 }

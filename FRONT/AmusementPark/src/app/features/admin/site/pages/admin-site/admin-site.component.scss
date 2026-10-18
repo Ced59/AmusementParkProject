@@ -132,7 +132,7 @@
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-card-2) 88%, transparent), color-mix(in srgb, var(--bg-card) 96%, transparent));
+  background: var(--bg-card);
   transition: var(--transition);
 }
 
@@ -165,9 +165,8 @@
   place-items: center;
   width: 1.8rem;
   height: 1.8rem;
-  border-radius: 0.65rem;
+  border-radius: var(--app-radius-md);
   background: rgba(15, 11, 6, 0.72);
-  backdrop-filter: blur(12px);
 }
 
 .admin-image-card__delete {
@@ -180,11 +179,10 @@
   width: 1.8rem;
   height: 1.8rem;
   border: 1px solid rgba(255, 77, 139, 0.34);
-  border-radius: 0.65rem;
+  border-radius: var(--app-radius-md);
   background: rgba(15, 11, 6, 0.72);
   color: var(--c-rose);
   cursor: pointer;
-  backdrop-filter: blur(12px);
 }
 
 .admin-image-card__delete:hover {

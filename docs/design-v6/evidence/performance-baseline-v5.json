@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "measuredAtUtc": "2026-10-14T21:25:14.454Z",
+  "baseUrl": "https://amusement-parks.fun",
+  "method": {
+    "samples": 5,
+    "warmupSamples": 1,
+    "pauseMilliseconds": 150,
+    "timeoutMilliseconds": 10000,
+    "percentile": "nearest-rank",
+    "cache": "public behavior preserved"
+  },
+  "results": [
+    {
+      "key": "home-fr",
+      "path": "/fr/home",
+      "kind": "ssr-page",
+      "sampleCount": 5,
+      "p50Milliseconds": 38.77,
+      "p95Milliseconds": 46.58,
+      "maximumBytes": 232621,
+      "statuses": {
+        "200": 5
+      },
+      "outcomes": {
+        "success": 5
+      },
+      "buildVersions": [
+        "5.4.101"
+      ],
+      "ssrModes": [
+        "SSR_CACHE_HIT"
+      ],
+      "missingSsrModeCount": 0,
+      "seoReadiness": [
+        "true"
+      ],
+      "missingSeoReadyCount": 0,
+      "failures": []
+    },
+    {
+      "key": "parks-fr",
+      "path": "/fr/parks",
+      "kind": "ssr-page",
+      "sampleCount": 5,
+      "p50Milliseconds": 50.61,
+      "p95Milliseconds": 77.63,
+      "maximumBytes": 378139,
+      "statuses": {
+        "200": 5
+      },
+      "outcomes": {
+        "success": 5
+      },
+      "buildVersions": [
+        "5.4.101"
+      ],
+      "ssrModes": [
+        "SSR_CACHE_HIT"
+      ],
+      "missingSsrModeCount": 0,
+      "seoReadiness": [
+        "true"
+      ],
+      "missingSeoReadyCount": 0,
+      "failures": []
+    },
+    {
+      "key": "rankings-fr",
+      "path": "/fr/rankings",
+      "kind": "ssr-page",
+      "sampleCount": 5,
+      "p50Milliseconds": 27.37,
+      "p95Milliseconds": 36.83,
+      "maximumBytes": 82498,
+      "statuses": {
+        "200": 5
+      },
+      "outcomes": {
+        "success": 5
+      },
+      "buildVersions": [
+        "5.4.101"
+      ],
+      "ssrModes": [
+        "SSR_CACHE_HIT"
+      ],
+      "missingSsrModeCount": 0,
+      "seoReadiness": [
+        "true"
+      ],
+      "missingSeoReadyCount": 0,
+      "failures": []
+    },
+    {
+      "key": "park-fit-fr",
+      "path": "/fr/park-fit",
+      "kind": "ssr-page",
+      "sampleCount": 5,
+      "p50Milliseconds": 17.45,
+      "p95Milliseconds": 37.21,
+      "maximumBytes": 2889,
+      "statuses": {
+        "200": 5
+      },
+      "outcomes": {
+        "success": 5
+      },
+      "buildVersions": [
+        "5.4.101"
+      ],
+      "ssrModes": [
+        "CSR_FALLBACK"
+      ],
+      "missingSsrModeCount": 0,
+      "seoReadiness": [
+        "false"
+      ],
+      "missingSeoReadyCount": 0,
+      "failures": []
+    },
+    {
+      "key": "api-health",
+      "path": "/api/health",
+      "kind": "api",
+      "sampleCount": 5,
+      "p50Milliseconds": 22.48,
+      "p95Milliseconds": 24.7,
+      "maximumBytes": 2989,
+      "statuses": {
+        "200": 5
+      },
+      "outcomes": {
+        "success": 5
+      },
+      "buildVersions": [],
+      "ssrModes": [],
+      "missingSsrModeCount": 5,
+      "seoReadiness": [],
+      "missingSeoReadyCount": 5,
+      "failures": []
+    },
+    {
+      "key": "public-capabilities",
+      "path": "/api/public/capabilities",
+      "kind": "api",
+      "sampleCount": 5,
+      "p50Milliseconds": 18.91,
+      "p95Milliseconds": 31.53,
+      "maximumBytes": 52,
+      "statuses": {
+        "200": 5
+      },
+      "outcomes": {
+        "success": 5
+      },
+      "buildVersions": [],
+      "ssrModes": [],
+      "missingSsrModeCount": 5,
+      "seoReadiness": [],
+      "missingSeoReadyCount": 5,
+      "failures": []
+    }
+  ]
+}

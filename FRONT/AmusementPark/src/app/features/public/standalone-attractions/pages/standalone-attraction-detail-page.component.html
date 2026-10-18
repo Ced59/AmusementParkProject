@@ -6,31 +6,17 @@
   errorMessageKey="common.errorMessage">
   <section class="standalone-attraction-page public-page" *ngIf="attraction() as current">
     <section class="standalone-hero">
-      <div class="standalone-hero__backdrop" aria-hidden="true"></div>
-      <div class="standalone-hero__pattern" aria-hidden="true"></div>
-      <div class="standalone-hero__media" *ngIf="heroImage() as image">
-        <app-image-display
-          [imageId]="image.id"
-          [alt]="current.name"
-          loading="eager"
-          fetchPriority="high"
-          imgClass="standalone-hero__image"
-          placeholderClass="standalone-hero__placeholder"
-          placeholderKind="photo">
-        </app-image-display>
-      </div>
-
       <div class="standalone-hero__content">
         <div class="standalone-hero__info">
+          <app-ui-kicker iconClass="pi pi-bolt">{{ t('standalone') }}</app-ui-kicker>
+          <h1>{{ current.name }}</h1>
           <div class="standalone-hero__chips">
-            <app-ui-kicker iconClass="pi pi-bolt">{{ t('standalone') }}</app-ui-kicker>
             <app-ui-chip tone="soft" iconClass="pi pi-map-marker" *ngIf="getHeroLocation(current)">{{ getHeroLocation(current) }}</app-ui-chip>
             <app-ui-chip tone="gold" iconClass="pi pi-tag">{{ typeTranslationKey(current) | translate }}</app-ui-chip>
             <app-ui-chip tone="sky" iconClass="pi pi-sparkles" *ngIf="current.subtype">{{ subtypeLabel(current) }}</app-ui-chip>
             <app-ui-chip tone="lime" iconClass="pi pi-circle-fill" *ngIf="statusTranslationKey(current) as statusKey">{{ statusKey | translate }}</app-ui-chip>
           </div>
 
-          <h1>{{ current.name }}</h1>
           <p>{{ t('visibleDataOnly') }}</p>
         </div>
 
@@ -53,6 +39,18 @@
 
     <div class="standalone-body">
       <main class="standalone-main">
+        <div class="standalone-main__media" *ngIf="heroImage() as image">
+          <app-image-display
+            [imageId]="image.id"
+            [alt]="current.name"
+            loading="eager"
+            fetchPriority="high"
+            sizes="(max-width: 480px) calc(100vw - 30px), (max-width: 680px) calc(100vw - 32px), (max-width: 959px) calc(100vw - 50px), (max-width: 1208px) calc(64.444444vw - 49.688889px), 729px"
+            imgClass="standalone-hero__image"
+            placeholderClass="standalone-hero__placeholder"
+            placeholderKind="photo">
+          </app-image-display>
+        </div>
         <section class="standalone-panel" *ngIf="description(); else noDescription">
           <span class="standalone-kicker">{{ t('description') }}</span>
           <div class="standalone-rich-text app-editorial-copy" [innerHTML]="description() | safeRichHtml"></div>
@@ -64,6 +62,9 @@
           </section>
         </ng-template>
 
+      </main>
+
+      <aside class="standalone-sidebar">
         <section class="standalone-panel" *ngIf="detailsRows().length > 0">
           <span class="standalone-kicker">{{ t('details') }}</span>
           <div class="standalone-data-grid">
@@ -73,9 +74,6 @@
             </div>
           </div>
         </section>
-      </main>
-
-      <aside class="standalone-sidebar">
         <app-standalone-attraction-pricing-card
           [pricing]="pricing()"
           [state]="pricingState()"

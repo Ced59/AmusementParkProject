@@ -1,0 +1,103 @@
+{
+  "scope": "Focused cloud expired-session UI; not full CI or real authentication acceptance",
+  "results": [
+    {
+      "language": "fr",
+      "passed": true,
+      "checks": 12,
+      "layouts": 6,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    },
+    {
+      "language": "en",
+      "passed": true,
+      "checks": 14,
+      "layouts": 6,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    },
+    {
+      "language": "de",
+      "passed": true,
+      "checks": 14,
+      "layouts": 6,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    },
+    {
+      "language": "nl",
+      "passed": true,
+      "checks": 14,
+      "layouts": 6,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    },
+    {
+      "language": "it",
+      "passed": true,
+      "checks": 14,
+      "layouts": 6,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    },
+    {
+      "language": "es",
+      "passed": true,
+      "checks": 14,
+      "layouts": 6,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    },
+    {
+      "language": "pt",
+      "passed": true,
+      "checks": 14,
+      "layouts": 6,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    },
+    {
+      "language": "pl",
+      "passed": true,
+      "checks": 14,
+      "layouts": 6,
+      "exceptions": 0,
+      "fixtureFailures": 0
+    }
+  ],
+  "sourceCommit": "8871d3b496b1efc0aa58e12fe7c8ddaa04378c69",
+  "browser": "Chromium 154.0.8037.57 (Debian)",
+  "widths": [
+    320,
+    390,
+    1366
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "images": [
+    {
+      "file": "v6-expired-fr-1366-light.webp",
+      "sha256": "5003a4bf93545a08055183893c671cfa9a289bf90281aa43b670129d2ebc494c"
+    },
+    {
+      "file": "v6-expired-de-390-dark.webp",
+      "sha256": "dc09af62aaceb2b1f07e77810d253939aebf502acff52f3536cf74804225e93f"
+    }
+  ],
+  "fullCiRequired": true,
+  "compiledAssets": [
+    {
+      "file": "main-SSH7PVXU.js",
+      "bytes": 52676,
+      "sha256": "51de30a75f14bd3ff0bc23a5715f240b1d3ba72815f9f2d04467b73788f08a81"
+    },
+    {
+      "file": "styles-Z7E3ROF5.css",
+      "bytes": 207426,
+      "sha256": "b1c0412f6bb15e51f0003071ceb74dd418daaacbcc05060356237e73e8da3717"
+    }
+  ]
+}

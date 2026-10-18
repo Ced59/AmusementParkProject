@@ -90,11 +90,11 @@ h2 {
 }
 
 .email-preferences__feedback--warning {
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
 }
 
 .email-preferences__feedback--error {
-  color: var(--c-rose);
+  color: var(--app-danger);
 }
 
 @media (max-width: 36rem) {

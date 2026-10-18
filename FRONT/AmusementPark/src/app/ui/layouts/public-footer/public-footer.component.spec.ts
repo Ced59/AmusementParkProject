@@ -86,8 +86,6 @@ describe('PublicFooterComponent', () => {
     const brandLink: HTMLAnchorElement | null = (
       fixture.nativeElement as HTMLElement
     ).querySelector('.app-public-footer__logo');
-    const logoImage: HTMLImageElement | null =
-      brandLink?.querySelector('.app-public-footer__logo-mark') ?? null;
     const wordmark: HTMLElement | null =
       brandLink?.querySelector('.app-brand-wordmark') ?? null;
     const base: HTMLElement | null =
@@ -98,16 +96,7 @@ describe('PublicFooterComponent', () => {
       wordmark?.querySelector('.app-brand-wordmark__fun-text') ?? null;
 
     expect(brandLink?.getAttribute('aria-label')).toBe('AMUSEMENT-PARKS.fun');
-    expect(logoImage?.getAttribute('src')).toBe(
-      '/assets/general-icon/logo-amusementpark-ui-36.webp',
-    );
-    expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
-    expect(logoImage?.getAttribute('srcset')).toBe(
-      '/assets/general-icon/logo-amusementpark-ui-36.webp 36w, /assets/general-icon/logo-amusementpark-ui-72.webp 72w, /assets/general-icon/logo-amusementpark-ui.webp 96w',
-    );
-    expect(logoImage?.getAttribute('sizes')).toBe('36px');
-    expect(logoImage?.getAttribute('width')).toBe('36');
-    expect(logoImage?.getAttribute('height')).toBe('36');
+    expect(brandLink?.querySelector('.app-public-footer__logo-mark')).toBeNull();
     expect(base?.textContent).toBe('AMUSEMENT-PARKS');
     expect(dot?.textContent).toBe('.');
     expect(fun?.textContent).toBe('fun');
@@ -126,7 +115,7 @@ describe('PublicFooterComponent', () => {
     expect(funLine?.textContent?.trim()).toBe('for even more fun');
   });
 
-  it('keeps the footer link columns after the full-width brand block', () => {
+  it('keeps the footer link columns after the brand block', () => {
     const layout: HTMLElement | null = (
       fixture.nativeElement as HTMLElement
     ).querySelector('.app-public-footer__inner');

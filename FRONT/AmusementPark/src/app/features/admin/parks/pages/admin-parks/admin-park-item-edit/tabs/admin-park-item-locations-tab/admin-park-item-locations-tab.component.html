@@ -27,6 +27,7 @@
                   type="button"
                   class="p-button-text p-button-sm"
                   icon="pi pi-map-marker"
+                  [attr.aria-label]="('actions.edit' | translate) + ' — ' + (locationOption.labelKey | translate)"
                   (click)="selectedLocationKeyChange.emit(locationOption.key)">
                 </button>
                 <button
@@ -34,6 +35,7 @@
                   type="button"
                   class="p-button-text p-button-danger p-button-sm"
                   icon="pi pi-times"
+                  [attr.aria-label]="('actions.clear' | translate) + ' — ' + (locationOption.labelKey | translate)"
                   [disabled]="!hasLocationPoint(locationOption.key)"
                   (click)="clearLocationPoint.emit(locationOption.key)">
                 </button>

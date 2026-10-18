@@ -2,8 +2,9 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmi
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { MapMarker } from '@app/models/map/map-marker';
-import { createLeafletMarkerClusterIcon, createLeafletMarkerIcon } from '@ui/maps/leaflet';
+import { createLeafletMarkerClusterIcon, createLeafletMarkerIcon, createLeafletPopupLayoutOptions } from '@ui/maps/leaflet';
 import { MapMarkerPopupContentService } from '@shared/services/maps/map-marker-popup-content.service';
+import { createLeafletMapDisposer } from '@shared/utils/maps/leaflet-map-disposer';
 import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker, TileLayerOptions } from 'leaflet';
 import { buildMarkerClusters, MarkerCluster, MarkerClusterPoint } from './leaflet-marker-cluster.builder';
 
@@ -35,6 +36,8 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   private markerRefreshTimeoutId: number | null = null;
   private mapSizeRefreshTimeoutIds: number[] = [];
   private pendingPopupMarkerId: string | null = null;
+  private destroyed = false;
+  private disposeMap: (() => void) | null = null;
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
@@ -99,17 +102,24 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   }
 
   async ngAfterViewInit(): Promise<void> {
-    if (!this.isBrowser) {
+    if (!this.isBrowser || this.destroyed) {
       return;
     }
 
     try {
       const leafletModule: LeafletModule = await import('leaflet') as LeafletModule;
+      if (this.destroyed) {
+        return;
+      }
       this.L = this.resolveLeafletNamespace(leafletModule);
 
       await new Promise<void>((resolve: () => void): void => {
         window.setTimeout(resolve, 0);
       });
+
+      if (this.destroyed) {
+        return;
+      }
 
       this.configureDefaultMarkerIcon();
       this.initMap();
@@ -151,6 +161,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   }
 
   ngOnDestroy(): void {
+    this.destroyed = true;
     this.clearViewportUpdateTimers();
     this.clearMarkerRefreshTimer();
     this.clearMapSizeRefreshTimers();
@@ -162,8 +173,14 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     if (this.map) {
-      this.map.remove();
+      const map: import('leaflet').Map = this.map;
       this.map = null;
+      if (this.disposeMap) {
+        this.disposeMap();
+      } else {
+        map.remove();
+      }
+      this.disposeMap = null;
     }
 
     this.tileLayer = null;
@@ -231,6 +248,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       center: this.toMutableLatLng(this.center),
       zoom: this.zoom
     });
+    this.disposeMap = createLeafletMapDisposer(this.map);
 
     this.tileLayer = this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', this.buildTileLayerOptions()).addTo(this.map);
 
@@ -393,6 +411,8 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       if (options.redrawTiles === true) {
         this.tileLayer?.redraw();
       }
+
+      this.refreshOpenPopupLayout();
     }, delayMs);
 
     this.mapSizeRefreshTimeoutIds.push(timeoutId);
@@ -404,6 +424,33 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     this.mapSizeRefreshTimeoutIds = [];
+  }
+
+  private refreshOpenPopupLayout(): void {
+    let updated: boolean = false;
+    let focusedHref: string | null = null;
+    for (const marker of this.leafletMarkers.values()) {
+      const popup: import('leaflet').Popup | undefined = marker.getPopup();
+      if (popup?.isOpen()) {
+        if (!updated) {
+          const activeElement: Element | null = this.mapContainer.nativeElement.ownerDocument.activeElement;
+          if (activeElement instanceof HTMLAnchorElement
+            && this.mapContainer.nativeElement.contains(activeElement)
+            && activeElement.closest('.leaflet-popup-content')) {
+            focusedHref = activeElement.getAttribute('href');
+          }
+        }
+        popup.update();
+        updated = true;
+      }
+    }
+    if (updated) {
+      this.bindInternalPopupNavigationLinks();
+      if (focusedHref) {
+        Array.from(this.mapContainer.nativeElement.querySelectorAll<HTMLAnchorElement>('.leaflet-popup-content a[href]'))
+          .find((link: HTMLAnchorElement): boolean => link.getAttribute('href') === focusedHref)?.focus();
+      }
+    }
   }
 
   private bindViewportChangeListeners(): void {
@@ -604,7 +651,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     const popupContent: string = this.mapMarkerPopupContentService.buildPopupContent(markerModel);
 
     if (popupContent.length > 0) {
-      marker.bindPopup(popupContent);
+      marker.bindPopup(popupContent, createLeafletPopupLayoutOptions());
       marker.on('popupopen', (): void => this.bindInternalPopupNavigationLinks());
     }
 

@@ -3,17 +3,50 @@
 .leaflet-map-container {
   width: 100%;
   height: 420px;
-  border-radius: var(--app-radius-xl);
+  border-radius: var(--app-radius-md);
   overflow: hidden;
   border: 1px solid var(--app-border);
-  box-shadow: var(--app-shadow-1);
+  box-shadow: none;
+}
+
+app-leaflet-map,
+app-leaflet-static-map {
+  .leaflet-popup-content-wrapper {
+    border: 1px solid var(--app-heading);
+    border-radius: var(--app-radius-sm);
+    background: var(--app-field);
+    color: var(--app-text);
+    box-shadow: none;
+  }
+
+  .leaflet-popup-content {
+    max-width: min(16rem, calc(100vw - 7rem));
+    max-height: min(14rem, 224px);
+    margin: 12px;
+    overflow: auto;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .leaflet-popup-tip {
+    background: var(--app-field);
+    box-shadow: none;
+  }
+
+  .leaflet-container a.leaflet-popup-close-button {
+    width: 2rem;
+    height: 2rem;
+    color: var(--app-heading);
+  }
 }
 
 app-leaflet-map .leaflet-popup-content strong,
 app-leaflet-static-map .leaflet-popup-content strong {
   display: block;
   margin-bottom: 0.25rem;
-  color: #1a140f;
+  padding-right: 1.5rem;
+  color: var(--app-heading);
   font-weight: 800;
 }
 
@@ -21,7 +54,7 @@ app-leaflet-map .leaflet-map-popup__lines,
 app-leaflet-static-map .leaflet-map-popup__lines {
   display: grid;
   gap: 0.16rem;
-  color: #3a3026;
+  color: var(--app-text-muted);
   font-size: 0.82rem;
   line-height: 1.35;
 }
@@ -31,11 +64,12 @@ app-leaflet-static-map .leaflet-map-popup__action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 2.75rem;
   margin-top: 0.65rem;
   padding: 0.45rem 0.75rem;
-  border-radius: 999px;
-  background: #ff5a1f;
-  color: #000;
+  border-radius: var(--app-radius-sm);
+  background: var(--c-orange);
+  color: var(--app-on-accent);
   font-size: 0.78rem;
   font-weight: 800;
   text-decoration: none;
@@ -43,7 +77,8 @@ app-leaflet-static-map .leaflet-map-popup__action {
 
 app-leaflet-map .leaflet-map-popup__action:hover,
 app-leaflet-static-map .leaflet-map-popup__action:hover {
-  background: #ff7a45;
+  background: var(--c-orange-2);
+  color: var(--app-on-accent-hover);
 }
 
 app-leaflet-map .leaflet-map-popup__actions,
@@ -61,11 +96,12 @@ app-leaflet-static-map .leaflet-map-popup__actions .leaflet-map-popup__action {
 
 app-leaflet-map .leaflet-map-popup__action--detail,
 app-leaflet-static-map .leaflet-map-popup__action--detail {
-  background: #c4ff27;
-  color: #111;
+  background: var(--c-lime);
+  color: var(--app-on-accent);
 }
 
 app-leaflet-map .leaflet-map-popup__action--detail:hover,
 app-leaflet-static-map .leaflet-map-popup__action--detail:hover {
-  background: #d9ff6b;
+  background: var(--c-lime-2);
+  color: var(--app-on-accent);
 }

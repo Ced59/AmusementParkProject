@@ -1,5 +1,9 @@
 {
   "actions": {
+    "expand": "Rozwiń",
+    "collapse": "Zwiń",
+    "moveUp": "Przesuń w górę",
+    "moveDown": "Przesuń w dół",
     "cancel": "Anuluj",
     "close": "Zamknij",
     "save": "Zapisz",

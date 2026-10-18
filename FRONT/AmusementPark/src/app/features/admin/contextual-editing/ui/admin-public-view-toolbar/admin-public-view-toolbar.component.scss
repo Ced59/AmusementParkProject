@@ -1,6 +1,6 @@
 @use "../../../../../../styles/admin-contextual-blocks";
 
-:host {
+app-admin-public-view-toolbar {
   position: fixed;
   right: 1rem;
   bottom: 1rem;
@@ -17,10 +17,9 @@
   gap: 0.7rem;
   padding: 0.55rem;
   border: 1px solid var(--app-border-strong);
-  border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--app-surface) 94%, transparent);
-  box-shadow: var(--shadow-lift);
-  backdrop-filter: blur(18px) saturate(150%);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
+  box-shadow: none;
   pointer-events: auto;
 }
 
@@ -62,13 +61,15 @@
   justify-content: center;
   gap: 0.45rem;
   border: 1px solid var(--app-border);
-  border-radius: 0.5rem;
+  border-radius: var(--app-radius-sm);
   color: var(--app-text-muted);
   background: color-mix(in srgb, var(--app-surface-2) 88%, transparent);
   font: inherit;
   font-size: 0.82rem;
   font-weight: 900;
   cursor: pointer;
+  overflow-wrap: normal;
+  white-space: normal;
   transition:
     border-color var(--transition),
     background-color var(--transition),
@@ -97,10 +98,9 @@
   margin-left: auto;
   border-color: color-mix(in srgb, var(--c-orange) 38%, var(--app-border));
   border-radius: 999px;
-  background: color-mix(in srgb, var(--app-surface) 94%, transparent);
+  background: var(--app-surface);
   color: var(--c-orange);
-  box-shadow: var(--shadow-lift);
-  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow: none;
   pointer-events: auto;
 }
 
@@ -127,8 +127,8 @@
 .admin-public-view-toolbar__mode--active,
 .admin-public-view-toolbar__edition--active {
   border-color: color-mix(in srgb, var(--c-orange) 45%, var(--app-border));
-  color: var(--c-orange);
-  background: rgba(255, 90, 31, 0.12);
+  color: var(--app-primary-strong);
+  background: color-mix(in srgb, var(--c-orange) 12%, transparent);
 }
 
 .admin-public-view-toolbar__edition:disabled {
@@ -145,9 +145,9 @@
 }
 
 @media (max-width: 680px) {
-  :host {
+  app-admin-public-view-toolbar {
     right: 0.75rem;
-    bottom: calc(var(--bottom-nav-height) + max(1rem, env(safe-area-inset-bottom)));
+    bottom: calc(var(--bottom-nav-height) + var(--app-floating-control-gap));
     left: 0.75rem;
     width: auto;
   }
@@ -157,24 +157,28 @@
     flex-direction: column;
     max-height: min(34vh, 15rem);
     overflow-y: auto;
-    border-radius: 0.85rem;
+    border-radius: var(--app-radius-md);
     -webkit-overflow-scrolling: touch;
   }
 
   .admin-public-view-toolbar__actions {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 44px;
+    flex-wrap: wrap;
   }
 
   .admin-public-view-toolbar__modes {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
   }
 
   .admin-public-view-toolbar__mode,
   .admin-public-view-toolbar__edition {
-    width: 100%;
-    min-width: 0;
+    flex: 1 1 8rem;
+    width: auto;
+    min-width: min-content;
+    max-width: 100%;
+  }
+
+  .admin-public-view-toolbar__collapse {
+    flex: 0 0 44px;
   }
 
   .admin-public-view-toolbar__restore {
@@ -182,8 +186,49 @@
   }
 }
 
+// Preserve the fixed editing controls on short screens, with an explicit local
+// scrollbar and keyboard-reachable buttons rather than a tall viewport overlay.
+@media (max-width: 680px) and (max-height: 680px) {
+  .admin-public-view-toolbar {
+    flex-direction: row;
+    align-items: center;
+    max-height: none;
+    padding: 4px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-padding-inline: 4px;
+    scrollbar-color: var(--app-text-muted) var(--app-surface-2);
+  }
+
+  .admin-public-view-toolbar__view-group,
+  .admin-public-view-toolbar__modes,
+  .admin-public-view-toolbar__actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .admin-public-view-toolbar__label {
+    white-space: nowrap;
+  }
+
+  .admin-public-view-toolbar__mode,
+  .admin-public-view-toolbar__edition {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: calc(100vw - 3rem);
+    padding-block: 4px;
+    line-height: 1.2;
+  }
+
+  .admin-public-view-toolbar__mode {
+    min-width: 5.15rem;
+  }
+}
+
 @media (max-width: 390px) {
-  :host {
+  app-admin-public-view-toolbar {
     right: 0.5rem;
     left: 0.5rem;
   }

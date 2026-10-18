@@ -21,12 +21,11 @@
 }
 
 .page-shell {
-  border-radius: var(--app-radius-xl);
+  border-radius: var(--app-radius-md);
   border: var(--app-border-width) solid var(--app-border);
   background: var(--app-page-surface);
   box-shadow: var(--app-shadow-1);
   padding: 1.25rem;
-  backdrop-filter: blur(14px);
 }
 
 .page-section {
@@ -54,12 +53,11 @@
 }
 
 @mixin page-shell-reset {
-  border-radius: var(--app-radius-xl);
+  border-radius: var(--app-radius-md);
   border: var(--app-border-width) solid var(--app-border);
   background: var(--app-page-surface);
   box-shadow: var(--app-shadow-1);
   padding: 1.25rem;
-  backdrop-filter: blur(14px);
 }
 
 @include m.tablet {
@@ -77,7 +75,7 @@
 @include m.mobile {
   .page-shell {
     padding: 1rem;
-    border-radius: var(--app-radius-lg);
+    border-radius: var(--app-radius-md);
   }
 
   .layout-main {
@@ -102,7 +100,8 @@
   flex: 1 0 auto;
 }
 
-.app-layout-main.app-layout-main--modal-open {
+.app-layout-main.app-layout-main--modal-open,
+.app-layout-main:has(.photo-lightbox) {
   // Keep an in-content dialog above every fixed navigation, admin toolbar and
   // contextual drawer, while leaving the global dialog/toast layers (12000+)
   // available for authentication and notifications.
@@ -133,7 +132,6 @@
   padding: 0.85rem max(1.25rem, calc((100vw - var(--content-wide-max-width)) / 2));
   border-bottom: 1px solid var(--app-border);
   background: var(--app-topbar-bg);
-  backdrop-filter: blur(18px) saturate(150%);
 }
 
 .app-admin-layout__brand {
@@ -152,8 +150,8 @@
   height: 36px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
-  color: #000000;
+  border-radius: var(--radius-sm);
+  color: var(--app-on-accent);
   background: var(--c-orange);
   box-shadow: var(--shadow-soft-orange);
 }
@@ -245,43 +243,39 @@
   position: relative;
   overflow: hidden;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
   box-shadow: var(--shadow-card);
 }
 
 .app-account-layout__aside {
   display: grid;
+  container-type: inline-size;
   align-content: center;
   gap: 1rem;
   min-height: 34rem;
-  padding: clamp(1.25rem, 3vw, 2rem);
-  background:
-    radial-gradient(ellipse 72% 48% at 16% 16%, rgba(255, 90, 31, 0.16), transparent 70%),
-    radial-gradient(ellipse 58% 42% at 84% 84%, rgba(196, 255, 39, 0.08), transparent 68%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  padding: clamp(20px, 3vw, 32px);
+  border-top: 4px solid var(--c-orange);
+  background: var(--app-surface-2);
 }
 
-.app-account-layout__aside::after {
-  content: "";
-  position: absolute;
-  inset: auto -20% -35% -20%;
-  height: 44%;
-  background: radial-gradient(ellipse at center, rgba(255, 90, 31, 0.14), transparent 68%);
-  pointer-events: none;
+.app-account-layout__aside .app-kicker {
+  flex-wrap: wrap;
 }
 
 .app-account-layout__title {
   position: relative;
   z-index: 1;
   margin: 0;
-  max-width: 10ch;
+  min-width: 0;
+  max-width: 100%;
   color: var(--app-heading);
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 7vw, 5.8rem);
-  line-height: 1.06;
-  letter-spacing: 0.03em;
+  font-size: clamp(1.75rem, 14cqi, 5rem);
+  line-height: 1.08;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .app-account-layout__lead {
@@ -363,7 +357,7 @@
   top: calc(var(--topbar-height) + 1rem);
   border: 1px solid var(--app-border);
   border-radius: var(--admin-radius, 0.5rem);
-  background: linear-gradient(180deg, var(--app-surface), var(--app-surface-2));
+  background: var(--app-surface);
   box-shadow: var(--shadow-card);
   overflow: hidden;
 }
@@ -412,7 +406,7 @@
 .app-admin-layout__nav a:hover,
 .app-admin-layout__nav a.active {
   color: var(--app-heading);
-  background: rgba(255, 90, 31, 0.1);
+  background: var(--app-surface-2);
 }
 
 .app-admin-layout__nav a.active {
@@ -483,7 +477,7 @@
     flex: 0 0 auto;
     scroll-snap-align: start;
     border: 1px solid var(--app-border);
-    background: rgba(255, 210, 140, 0.035);
+    background: var(--app-surface-2);
   }
 }
 

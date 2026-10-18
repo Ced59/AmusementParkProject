@@ -35,11 +35,10 @@
   min-width: 0;
   padding: clamp(1.25rem, 5vw, 3rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 10% 15%, color-mix(in srgb, var(--app-primary) 18%, transparent), transparent 38%),
-    linear-gradient(145deg, color-mix(in srgb, var(--app-surface) 96%, transparent), var(--app-surface-2));
-  box-shadow: var(--shadow-card);
+  border-top: 4px solid var(--app-primary);
+  border-radius: var(--radius-md);
+  background: var(--app-surface);
+  box-shadow: none;
 }
 
 .historical-lineage-kicker {
@@ -84,7 +83,7 @@
   align-items: baseline;
   min-width: 0;
   padding: 0.65rem 0.8rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--app-bg) 72%, transparent);
   overflow-wrap: anywhere;
 }
@@ -102,7 +101,7 @@
   margin-top: 1rem;
   padding: 1rem;
   border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 45%, var(--app-border));
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--app-accent-cyan) 8%, var(--app-surface));
 }
 
@@ -128,7 +127,7 @@
   margin: 3rem auto;
   padding: clamp(1.25rem, 5vw, 2.5rem);
   border: 1px dashed var(--app-border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   text-align: center;
 }
 
@@ -153,9 +152,9 @@
   min-width: 0;
   padding: clamp(1rem, 4vw, 1.5rem);
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   background: var(--app-surface);
-  box-shadow: var(--shadow-card);
+  box-shadow: none;
 }
 
 .historical-lineage-card__connection {
@@ -169,7 +168,7 @@
 .historical-lineage-subject {
   min-width: 0;
   padding: 1rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--app-surface-2);
 }
 
@@ -224,13 +223,13 @@
   max-width: 100%;
   padding: 0.45rem 0.65rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   overflow-wrap: anywhere;
 }
 
 .historical-lineage-card__facts .historical-lineage-type {
   border-color: color-mix(in srgb, var(--app-primary) 48%, var(--app-border));
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
   font-weight: 900;
 }
 
@@ -272,7 +271,7 @@
 }
 
 .historical-lineage-sources a {
-  color: var(--app-primary);
+  color: var(--app-primary-strong);
 }
 
 .historical-lineage-sources small {

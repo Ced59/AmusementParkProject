@@ -59,7 +59,7 @@ h1 {
 .trip-passport-intro p,
 .trip-passport-day > p,
 .trip-passport-day__neutral,
-.trip-passport-day__confirm span {
+.trip-passport-day__confirm > span {
   color: var(--text-muted);
   line-height: 1.5;
 }
@@ -125,7 +125,7 @@ h1 {
 }
 
 .trip-passport-day__header time {
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.05em;

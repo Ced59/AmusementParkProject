@@ -1,5 +1,7 @@
 {
   "accountLayout": {
+    "introductionLabel": "Przegląd twojej strefy osobistej",
+    "featuresLabel": "Funkcje twojej strefy osobistej",
     "kicker": "Strefa osobista",
     "title": "Twój paszport parków",
     "subtitle": "Zarządzaj profilem, językiem i dostępem w przejrzystej przestrzeni osobistej.",

@@ -14,16 +14,10 @@
 .public-shell-card {
   position: relative;
   overflow: hidden;
-  border-radius: var(--app-radius-xl);
+  border-radius: var(--app-radius-md);
   border: 1px solid var(--app-border);
   background: var(--app-surface);
   box-shadow: var(--app-shadow-1);
-}
-
-.public-hero,
-.public-panel,
-.public-filter-panel {
-  backdrop-filter: blur(16px);
 }
 
 .public-hero {
@@ -54,15 +48,14 @@
   align-items: center;
   gap: 0.45rem;
   width: fit-content;
-  min-height: 2rem;
-  padding: 0.45rem 0.8rem;
-  border-radius: var(--app-radius-pill);
-  border: 1px solid color-mix(in srgb, var(--app-primary-soft) 82%, var(--app-border));
-  background: color-mix(in srgb, var(--app-primary-soft) 72%, transparent);
-  color: var(--app-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  min-height: 1.5rem;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--app-primary);
+  color: var(--app-primary-strong);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .public-lead {
@@ -90,11 +83,13 @@
 
 .public-stat-card {
   padding: 1rem 1.05rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+  border-top: 3px solid var(--app-line);
+  background: var(--app-surface);
 }
 
 .public-stat-card--accent {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--app-primary) 10%, var(--app-surface)), color-mix(in srgb, var(--app-accent-cyan) 8%, var(--app-surface-2)));
+  border-top-color: var(--app-primary);
+  background: var(--app-surface-2);
 }
 
 .public-stat-card__label {
@@ -131,7 +126,7 @@
 .public-feature-card,
 .public-shell-card {
   padding: 1rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  background: var(--app-surface);
 }
 
 .public-feature-card__eyebrow {
@@ -177,7 +172,8 @@
 
 .public-filter-panel {
   padding: 1rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 86%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+  border-top: 3px solid var(--app-heading);
+  background: var(--app-surface-2);
 }
 
 .public-filter-grid {
@@ -202,9 +198,9 @@
 .public-select {
   width: 100%;
   min-height: 3rem;
-  border-radius: var(--app-radius-lg);
+  border-radius: var(--app-radius-sm);
   border: 1px solid var(--app-border);
-  background: color-mix(in srgb, var(--app-surface-2) 96%, transparent);
+  background: var(--app-field);
   color: var(--app-text);
   padding: 0.8rem 0.95rem;
   transition: border-color var(--app-transition-fast), box-shadow var(--app-transition-fast), background-color var(--app-transition-fast);
@@ -235,7 +231,7 @@
   gap: 0.4rem;
   min-height: 2rem;
   padding: 0.42rem 0.78rem;
-  border-radius: var(--app-radius-pill);
+  border-radius: var(--app-radius-sm);
   border: 1px solid color-mix(in srgb, var(--app-primary-soft) 70%, var(--app-border));
   background: color-mix(in srgb, var(--app-primary-soft) 72%, transparent);
   color: var(--app-heading);
@@ -266,9 +262,9 @@
 }
 
 .public-empty-state {
-  border-radius: var(--app-radius-xl);
+  border-radius: var(--app-radius-md);
   border: 1px dashed var(--app-border-strong);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+  background: var(--app-surface-2);
   padding: 1.5rem;
   text-align: center;
 }
@@ -346,9 +342,10 @@
   overflow: hidden;
   padding: clamp(2.35rem, 5.5vw, 4.4rem) clamp(1.35rem, 4vw, 2.25rem) clamp(1.8rem, 3.8vw, 3rem);
   border: 0;
-  background:
-    radial-gradient(ellipse 60% 78% at 0% 50%, rgba(56, 197, 245, 0.07), transparent 65%),
-    radial-gradient(ellipse 40% 55% at 100% 0%, rgba(196, 255, 39, 0.05), transparent 60%);
+  border-top: 4px solid var(--c-orange);
+  border-bottom: 3px solid var(--app-heading);
+  border-radius: 0;
+  background: transparent;
   box-shadow: none;
 }
 
@@ -374,15 +371,15 @@
 .parks-page-title {
   margin: 0;
   color: var(--app-heading);
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 6.4rem);
-  line-height: 1.06;
-  letter-spacing: 0.03em;
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: 0;
 }
 
 .parks-page-title span {
-  color: var(--c-sky);
-  text-shadow: 0 0 14px rgba(56, 197, 245, 0.18);
+  color: var(--c-orange);
 }
 
 .parks-hero__lead {
@@ -410,6 +407,7 @@
   width: calc(100% - 2rem);
   margin: 0 auto;
   padding: clamp(1rem, 2.5vw, 1.35rem);
+  border-top: 3px solid var(--app-heading);
 }
 
 .parks-results__head {
@@ -431,14 +429,15 @@
 .parks-results__card-target {
   display: block;
   min-width: 0;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   cursor: pointer;
   outline: none;
 }
 
 .parks-results__card-target:focus-visible,
 .parks-results__card-target--selected {
-  box-shadow: 0 0 0 3px rgba(56, 197, 245, 0.22);
+  outline: 3px solid var(--app-focus-ring);
+  outline-offset: 2px;
 }
 
 .parks-results__card-target--selected .ui-park-card {
@@ -526,7 +525,7 @@ app-pagination {
   .public-panel,
   .public-filter-panel,
   .public-shell-card {
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-md);
   }
 
   .public-cta-row .app-button,

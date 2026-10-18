@@ -14,7 +14,7 @@
   gap: .6rem;
 
   i {
-    color: var(--app-accent-cyan, var(--primary-color, #3b82f6));
+    color: var(--app-accent-cyan, var(--app-primary-strong, #3b82f6));
   }
 }
 
@@ -27,7 +27,7 @@
 .message {
   margin: 0;
   padding: .75rem 1rem;
-  border-radius: .75rem;
+  border-radius: var(--app-radius-md);
   border: 1px solid transparent;
   font-weight: 600;
 }
@@ -51,9 +51,9 @@
 }
 
 .tab-badge {
-  background: var(--app-primary, var(--primary-color, #3b82f6));
+  background: var(--app-primary, var(--app-primary, #3b82f6));
   color: #000;
-  border-radius: 2rem;
+  border-radius: var(--app-radius-pill);
   font-size: .7rem;
   font-weight: 800;
   padding: 0 .35rem;
