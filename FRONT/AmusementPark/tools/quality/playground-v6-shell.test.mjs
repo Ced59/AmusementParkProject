@@ -105,6 +105,14 @@ test('the complete public navigation contract remains represented', () => {
   }
 });
 
+test('the language dialog retains its translated accessible name when its visual header is hidden', () => {
+  const dialog = header.slice(header.indexOf('<app-ui-dialog'), header.indexOf('</app-ui-dialog>'));
+  assert.match(dialog, /\[header\]="'languageModal\.title' \| translate"/);
+  assert.match(dialog, /\[showHeader\]="false"/);
+  assert.match(browserReview, /language dialog has its translated visible title as an accessible name/);
+  assert.match(browserReview, /dialog\.getAttribute\('aria-label'\) === title/);
+});
+
 test('the isolated hydrated review exercises units, all language choices and the actual park tree without production writes', () => {
   for (const proof of [
     'anonymous unit preference restored',

@@ -76,6 +76,17 @@ describe('Dialog presentation', () => {
     expect(hidden).toHaveBeenCalledTimes(1);
   });
 
+  it('keeps the dialog named when a custom body replaces the visible header', () => {
+    const fixture = TestBed.createComponent(Dialog);
+    fixture.componentRef.setInput('visible', true);
+    fixture.componentRef.setInput('showHeader', false);
+    fixture.componentRef.setInput('header', 'Choisis ta langue');
+    fixture.detectChanges();
+    const root: HTMLElement = fixture.nativeElement;
+    expect(root.querySelector('.p-dialog-header')).toBeNull();
+    expect(root.querySelector('[role="dialog"]')!.getAttribute('aria-label')).toBe('Choisis ta langue');
+  });
+
   it('preserves non-dismissable and non-closable states without claiming modal semantics', () => {
     const fixture = TestBed.createComponent(Dialog);
     fixture.componentRef.setInput('visible', true);

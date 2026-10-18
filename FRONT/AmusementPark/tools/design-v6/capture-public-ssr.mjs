@@ -432,6 +432,10 @@ async function captureHydratedHome(rawHtml, options = {}) {
     await waitUntil(`document.querySelector('.app-public-nav__measurement-toggle').textContent.trim() === ${JSON.stringify(initialUnits)}`, 'anonymous unit preference restored');
     await evaluate(`document.querySelector('.app-public-nav__language').click()`);
     await waitUntil(`document.querySelectorAll('.app-language-dialog .language-option').length === 8`, 'language dialog exposes all eight existing choices');
+    await waitUntil(`(() => { const dialog = document.querySelector('.app-language-dialog[role="dialog"]');
+      const title = dialog?.querySelector('h2')?.textContent.trim();
+      return !!title && dialog.getAttribute('aria-label') === title; })()`, 'language dialog has its translated visible title as an accessible name');
+    result.languageDialogAccessibleName = await evaluate(`document.querySelector('.app-language-dialog[role="dialog"]').getAttribute('aria-label')`);
     const languageBounds = await evaluate(`(() => { const rect = document.querySelector('.app-language-dialog').getBoundingClientRect(); return { left: rect.left, right: rect.right, viewport: innerWidth }; })()`);
     if (languageBounds.left < -1 || languageBounds.right > languageBounds.viewport + 1) throw new Error('Language dialog overflows the mobile viewport.');
     result.languageDialogBounds = languageBounds;

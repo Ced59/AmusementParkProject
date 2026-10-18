@@ -158,6 +158,7 @@
 </header>
 
 <app-ui-dialog
+  [header]="'languageModal.title' | translate"
   [visible]="displayLanguageModal()"
   (visibleChange)="onLanguageDialogVisibleChanged($event)"
   [modal]="true"
