@@ -449,14 +449,14 @@
   justify-self: start;
   padding: 0;
   border: 0;
-  color: var(--c-orange);
+  color: var(--app-primary-strong);
   background: transparent;
   font-weight: 800;
   cursor: pointer;
 }
 
 .auth-form__link:hover {
-  color: var(--c-orange-2);
+  color: var(--app-primary-strong);
   text-decoration: underline;
 }
 

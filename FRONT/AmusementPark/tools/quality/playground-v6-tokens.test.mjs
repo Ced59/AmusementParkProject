@@ -89,6 +89,20 @@ test('incomplete-account email warnings retain AA on the exact card observed in 
   }
 });
 
+test('the expired-session password recovery link stays AA on the login card at rest and on hover', () => {
+  const forms = readFileSync(resolve(styles, '_forms.scss'), 'utf8');
+  for (const selector of ['\\.auth-form__link', '\\.auth-form__link:hover']) {
+    assert.match(forms, new RegExp(`${selector}\\s*\\{[^}]*color:\\s*var\\(--app-primary-strong\\)`));
+  }
+  assert.ok(contrast('#e54b28', '#eeefe8') < 4.5, 'run 39128601880 measured the old recovery link at 3.38:1');
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
+    for (const surface of ['--app-bg', '--app-surface', '--app-surface-2', '--field']) {
+      assert.ok(contrast(resolveThemeColor(theme, '--app-primary-strong'), resolveThemeColor(theme, surface)) >= 4.5);
+    }
+  }
+});
+
 test('admin import and comparison small labels use AA semantic ink, not fixed pastel text', () => {
   const importer = readFileSync(resolve(styles, '../app/features/admin/data/ui/captain-coaster-import-tab.component.scss'), 'utf8');
   const comparison = readFileSync(resolve(styles, '../app/features/admin/data/ui/captain-coaster-comparison-analysis.component.scss'), 'utf8');
