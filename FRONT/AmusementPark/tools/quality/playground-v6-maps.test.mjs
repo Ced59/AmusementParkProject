@@ -50,7 +50,8 @@ test('normal popup captures wait for actual category bounds and auto-pan without
   const recipe = readFileSync(resolve(import.meta.dirname, '../design-v6/exercise-public-map.mjs'), 'utf8');
   assert.ok(recipe.includes('paneTransform: document.querySelector'));
   assert.ok(recipe.includes('leaflet-pan-anim'));
-  assert.ok(recipe.indexOf('category reset finishes native bounds') < recipe.indexOf("document.querySelector('.park-items-map .leaflet-marker-icon').click()"));
+  assert.ok(recipe.indexOf('category reset finishes native bounds') < recipe.indexOf('await clickVisibleMapMarker('));
+  assert.doesNotMatch(recipe, /leaflet-marker-icon'\)\.click\(\)/);
   assert.ok(recipe.includes('normal popup auto-pan finishes before responsive geometry capture'));
 });
 

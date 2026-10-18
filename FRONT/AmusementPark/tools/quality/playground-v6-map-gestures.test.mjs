@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { Script } from 'node:vm';
-import { exerciseMapGestures, mapGesturePlan } from '../design-v6/browser-map-gestures.mjs';
+import { clickVisibleMapMarker, exerciseMapGestures, mapGesturePlan } from '../design-v6/browser-map-gestures.mjs';
 
 const target = { x: 150, y: 200, viewportWidth: 390, visibleBottom: 550, unobscured: true };
 test('map gesture input is bounded to a measured unobscured map interior', () => {
@@ -59,4 +59,43 @@ test('a refused touch move releases the contact and restores touch emulation eve
     assert.deepEqual(run.calls.at(-1), { method: 'Emulation.setTouchEmulationEnabled', params: { enabled: false } });
     assert.equal(run.result.mapScenarios.pointerDragNotExercised, true);
   }
+});
+
+test('a marker click after map dragging uses a complete native pointer sequence on a measured visible pin', async () => {
+  const calls = [], expressions = [], result = { mapScenarios: {} };
+  const measured = { x: 120, y: 180, viewportWidth: 390, viewportHeight: 640, unobscured: true };
+  await clickVisibleMapMarker({ result,
+    evaluate: async expression => { new Script(expression); expressions.push(expression); return measured; },
+    cdp: { send: async (method, params) => { calls.push({ method, params }); } },
+  });
+  assert.deepEqual(calls.map(call => call.params.type), ['mouseMoved', 'mousePressed', 'mouseReleased']);
+  assert.ok(calls.every(call => call.method === 'Input.dispatchMouseEvent' && call.params.x === 120 && call.params.y === 180));
+  assert.equal(calls[1].params.buttons, 1);
+  assert.equal(calls[2].params.buttons, 0);
+  assert.equal(result.mapScenarios.markerClick.unobscured, true);
+  assert.ok(expressions[0].includes('document.elementFromPoint'));
+  assert.ok(expressions[0].includes(':not(.app-leaflet-marker-cluster)'));
+  assert.doesNotMatch(expressions[0], /\.click\(|\.fire\(|_leaflet|setView|openPopup/);
+});
+
+test('marker pointer acceptance refuses missing, covered, nonfinite and offscreen targets before sending input', async () => {
+  const target = { x: 120, y: 180, viewportWidth: 390, viewportHeight: 640, unobscured: true };
+  for (const value of [null, {}, { ...target, unobscured: false }, { ...target, x: 0 }, { ...target, x: 390 },
+    { ...target, y: 640 }, { ...target, y: -1 }, { ...target, x: NaN }]) {
+    let sent = false;
+    await assert.rejects(clickVisibleMapMarker({ result: { mapScenarios: {} }, evaluate: async () => value,
+      cdp: { send: async () => { sent = true; } },
+    }), /visible unobscured map marker/);
+    assert.equal(sent, false);
+  }
+});
+
+test('a rejected marker press still releases native pointer input and does not record a successful click', async () => {
+  const calls = [], result = { mapScenarios: {} };
+  await assert.rejects(clickVisibleMapMarker({ result,
+    evaluate: async () => ({ x: 120, y: 180, viewportWidth: 390, viewportHeight: 640, unobscured: true }),
+    cdp: { send: async (_, params) => { calls.push(params.type); if (params.type === 'mousePressed') throw new Error('press rejected'); } },
+  }), /press rejected/);
+  assert.deepEqual(calls, ['mouseMoved', 'mousePressed', 'mouseReleased']);
+  assert.equal(result.mapScenarios.markerClick, undefined);
 });

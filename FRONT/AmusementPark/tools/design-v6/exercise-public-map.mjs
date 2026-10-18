@@ -1,6 +1,6 @@
 // Existing Leaflet DOM controls only. No synthetic coordinates or private map
 // fields; external tiles/directions remain outside this read-only CI sandbox.
-import { exerciseMapGestures } from './browser-map-gestures.mjs';
+import { clickVisibleMapMarker, exerciseMapGestures } from './browser-map-gestures.mjs';
 export function mapViewportSettled(samples) {
   const recent = samples.slice(-3);
   return recent.length === 3 && recent.every(sample => sample.transform
@@ -52,7 +52,9 @@ export async function exercisePublicMap({ cdp, evaluate, waitUntil, capturePage,
   await waitUntil(`document.querySelector('.park-items-map__category-button').classList.contains('park-items-map__category-button--active') && document.querySelectorAll('.park-items-map .leaflet-marker-icon').length === ${category.total}`, 'all map categories restore their actual markers');
   result.mapScenarios.resetViewportSamples = [];
   await settleViewport(result.mapScenarios.resetViewportSamples, 'category reset finishes native bounds and pan before opening the normal popup');
-  await evaluate(`document.querySelector('.park-items-map .leaflet-marker-icon').click()`);
+  // Leaflet suppresses click-only events after dragging. Use a real pointer
+  // sequence on a measured visible pin, as a visitor does after moving the map.
+  await clickVisibleMapMarker({ cdp, evaluate, result });
   await waitUntil(`!!document.querySelector('.leaflet-popup .leaflet-map-popup__action--detail')`, 'real marker opens its detail popup');
   const detail = await evaluate(`({ path: document.querySelector('.leaflet-popup .leaflet-map-popup__action--detail').getAttribute('href'), directionsAvailable: !!document.querySelector('.leaflet-popup .leaflet-map-popup__action--directions') })`);
   result.mapScenarios.detail = detail;

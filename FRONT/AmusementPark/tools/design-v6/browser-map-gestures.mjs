@@ -7,6 +7,35 @@ export function mapGesturePlan(target) {
   return { start: { x: target.x, y: target.y }, end: { x: target.x + 60, y: target.y + 24 } };
 }
 
+export async function clickVisibleMapMarker({ cdp, evaluate, result }) {
+  if (!cdp || typeof cdp.send !== 'function') throw new Error('Map marker acceptance requires native browser input.');
+  const target = await evaluate(`(() => {
+    const map = document.querySelector('.park-items-map .leaflet-container');
+    const bounds = map.getBoundingClientRect();
+    for (const marker of map.querySelectorAll('.leaflet-marker-icon:not(.app-leaflet-marker-cluster)')) {
+      const rect = (marker.querySelector('.app-leaflet-marker__head') ?? marker).getBoundingClientRect();
+      const x = rect.left + rect.width / 2, y = rect.top + rect.height / 2;
+      const hit = document.elementFromPoint(x, y);
+      if (x > Math.max(0, bounds.left) && x < Math.min(innerWidth, bounds.right)
+        && y > Math.max(0, bounds.top) && y < Math.min(innerHeight, bounds.bottom) && hit && marker.contains(hit)) {
+        return { x, y, viewportWidth: innerWidth, viewportHeight: innerHeight, unobscured: true };
+      }
+    }
+    return null;
+  })()`);
+  if (!target || !['x', 'y', 'viewportWidth', 'viewportHeight'].every(key => Number.isFinite(target[key]))
+    || target.unobscured !== true || target.x <= 0 || target.x >= target.viewportWidth
+    || target.y <= 0 || target.y >= target.viewportHeight) throw new Error('No visible unobscured map marker for native pointer acceptance.');
+  const point = { x: target.x, y: target.y };
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...point, button: 'none' });
+  try {
+    await cdp.send('Input.dispatchMouseEvent', { type: 'mousePressed', ...point, button: 'left', buttons: 1, clickCount: 1 });
+  } finally {
+    await cdp.send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...point, button: 'left', buttons: 0, clickCount: 1 });
+  }
+  result.mapScenarios.markerClick = { ...target, source: 'trusted CDP pointer input on an actual rendered marker' };
+}
+
 export async function exerciseMapGestures({ cdp, evaluate, waitUntil, result }) {
   if (!cdp || typeof cdp.send !== 'function') throw new Error('Map gesture acceptance requires native browser input.');
   const getPlan = async () => mapGesturePlan(await evaluate(`(() => {
