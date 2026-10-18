@@ -178,10 +178,22 @@
 .park-fit-results__hero p,
 .park-fit-results__reading span,
 .park-fit-result-card p,
-.park-fit-result-card span,
+.park-fit-result-card__metrics article > span,
+.park-fit-result-card__practical-grid article > div > span,
+.park-fit-result-card__unknowns > div > span,
+.park-fit-result-card__members article > span,
+.park-fit-result-card__score-value > span,
+.park-fit-result-card__components article > div > span,
+.park-fit-result-card__sources li > div > span,
+.park-fit-result-card__footer > span,
 .park-fit-result-card small,
 .park-fit-results__empty p {
   color: var(--text-muted);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-result-card span {
   line-height: 1.5;
   overflow-wrap: anywhere;
 }

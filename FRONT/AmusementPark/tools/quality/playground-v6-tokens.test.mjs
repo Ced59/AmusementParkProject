@@ -131,6 +131,26 @@ test('the conditional public admin toolbar uses AA text on its canonical orange-
   }
 });
 
+test('Park Fit result copy cannot override rank ink or button labels with muted text', () => {
+  const source = readFileSync(resolve(styles, '../app/features/public/park-fit/pages/park-fit-results-page.component.scss'), 'utf8');
+  const genericSpan = source.match(/\.park-fit-result-card span\s*\{([^}]+)\}/)?.[1];
+  assert.ok(genericSpan);
+  assert.doesNotMatch(genericSpan, /color:/);
+  assert.doesNotMatch(source, /\.park-fit-result-card span,/);
+  assert.match(source, /\.park-fit-result-card__rank\s*\{[^}]*color:\s*var\(--app-primary-strong\)/);
+  assert.match(source, /\.park-fit-result-card__footer > span,/);
+  const measuredRankBackground = [0.925569, 0.795765, 0.744157];
+  assert.ok(contrast('#57605a', measuredRankBackground) < 4.5, 'the measured 4.29:1 rank remains a regression case');
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
+    assert.ok(contrast(resolveThemeColor(theme, '--app-primary-strong'),
+      mix(resolveThemeColor(theme, '--c-orange'), resolveThemeColor(theme, '--app-surface'), 0.22)) >= 4.5);
+    const buttonFill = resolveThemeColor(theme, '--c-orange');
+    assert.ok(contrast(resolveThemeColor(theme, '--app-text-muted'), buttonFill) < 4.5, 'the measured 1.49/1.66:1 button remains a regression case');
+    assert.ok(contrast(resolveThemeColor(theme, '--app-on-accent'), buttonFill) >= 4.5);
+  }
+});
+
 test('Park Fit foregrounds use semantic ink while their decorative fills keep the V6 palette', () => {
   const root = '../app/features/public/park-fit/';
   for (const file of ['pages/park-fit-start-page.component.scss', 'pages/park-fit-results-page.component.scss',

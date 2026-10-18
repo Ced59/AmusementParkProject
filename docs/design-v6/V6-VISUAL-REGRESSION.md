@@ -1,5 +1,11 @@
 # V6 — régression visuelle
 
+## Résultats Parc Fit remplis — diagnostic du 18 octobre
+
+[Artefact `12135300427`](https://github.com/Ced59/AmusementParkProject/actions/runs/39122333373/artifacts/12135300427), HEAD `724f539c5` : 826 contrôles / 440 captures V6 standard FR, zéro fixture/exception, **FAIL global pour 14 layouts**. Deux causes observées : `.park-fit-result-card span` écrase l'encre du rang (4,29:1 clair) et celle du CTA « Découvrir ce parc » (1,49:1 sombre / 1,66:1 clair). L'image preuves 390 sombre confirme le bouton peu lisible ; les matrices comparaison 4 desktop claire et cartes comparaison 2 mobile sombre sont aussi inspectées, sans nouvelle perte de contenu constatée dans ces captures. Il s'agit de fixtures synthétiques clairement marquées CI, pas de données ou scores publics.
+
+La couleur secondaire vise désormais explicitement descriptions/métriques/sources/footer, pas les spans de rang, boutons ou chips. L'espacement et le retour à la ligne communs restent identiques ; le rang conserve `--app-primary-strong` et le bouton son premier plan générique AA. Nouveau test sur les couleurs réellement mesurées et les deux thèmes ; aucune hausse de seuil ou ignorance du refus. **Le nouveau rendu reste obligatoire**, pas d'approbation visuelle finale déduite de cette correction.
+
 ## Sizing natif `c076b3f04` validé
 
 [Artefact `12086458487`](https://github.com/Ced59/AmusementParkProject/actions/runs/38995454506/artifacts/12086458487) : Chrome **155.0.8059.39**, méthode `Browser.setContentsSize`, DPR=2, visualViewport.scale=1, zéro réparation post-scroll. V6 **206 contrôles / 60 layouts**, aucune issue/fixture/exception ; master termine **86 / 60** avec ses **58 constats baseline**, sans erreur fixture/browser. Deux échantillons exacts consécutifs et dimensions CSS strictes conservés. Les JSON peuvent désormais être collectés séparément de l'archive images complète, pour respecter la RAM du PC sans perdre les captures ; **287 tests Node PASS**, nouvelle CI de collecte requise. Cette preuve reste limitée aux cas natifs FR décrits, pas à toutes les routes/langues ni à une revue SR.
