@@ -1,0 +1,123 @@
+{
+  "scope": "Browser accessibility tree and native dialog focus; not actual screen-reader or authentication certification",
+  "sourceCommit": "a695e48830173da73d280d167e2df31607c22516",
+  "browser": "Chromium 154.0.8037.57 (Debian)",
+  "states": [
+    {
+      "state": "recovery",
+      "namedControls": 31,
+      "dialogs": []
+    },
+    {
+      "state": "authentication-dialog",
+      "namedControls": 43,
+      "dialogs": [
+        {
+          "name": "Connexion / Inscription",
+          "modal": true
+        }
+      ]
+    },
+    {
+      "state": "language-dialog",
+      "namedControls": 42,
+      "dialogs": [
+        {
+          "name": "Choisis ta langue",
+          "modal": true
+        }
+      ]
+    },
+    {
+      "state": "language-dialog-en",
+      "namedControls": 41,
+      "dialogs": [
+        {
+          "name": "Choose your language",
+          "modal": true
+        }
+      ]
+    },
+    {
+      "state": "language-dialog-de",
+      "namedControls": 41,
+      "dialogs": [
+        {
+          "name": "Wähle deine Sprache",
+          "modal": true
+        }
+      ]
+    },
+    {
+      "state": "language-dialog-nl",
+      "namedControls": 41,
+      "dialogs": [
+        {
+          "name": "Kies je taal",
+          "modal": true
+        }
+      ]
+    },
+    {
+      "state": "language-dialog-it",
+      "namedControls": 41,
+      "dialogs": [
+        {
+          "name": "Scegli la lingua",
+          "modal": true
+        }
+      ]
+    },
+    {
+      "state": "language-dialog-es",
+      "namedControls": 41,
+      "dialogs": [
+        {
+          "name": "Elige tu idioma",
+          "modal": true
+        }
+      ]
+    },
+    {
+      "state": "language-dialog-pt",
+      "namedControls": 41,
+      "dialogs": [
+        {
+          "name": "Escolhe o teu idioma",
+          "modal": true
+        }
+      ]
+    },
+    {
+      "state": "language-dialog-pl",
+      "namedControls": 41,
+      "dialogs": [
+        {
+          "name": "Wybierz język",
+          "modal": true
+        }
+      ]
+    }
+  ],
+  "nativeTabAndShiftTabFocusConfined": [
+    "authentication-dialog/fr",
+    "language-dialog/fr"
+  ],
+  "exceptions": 0,
+  "blockedProviders": [
+    "accounts.google.com"
+  ],
+  "compiledAssets": [
+    {
+      "file": "main-2RBK4T5K.js",
+      "bytes": 52676,
+      "sha256": "c0fd8df72d23a0ca45deea71b90989905c8809e128af7719cb3af81ae6bbf2a7"
+    },
+    {
+      "file": "styles-7OKSL44T.css",
+      "bytes": 207541,
+      "sha256": "b38591eb00b7a23db4660992daa64cf53716db3f1b0998d65ef2e5c6e9ccd071"
+    }
+  ],
+  "fullCiRequired": true
+}

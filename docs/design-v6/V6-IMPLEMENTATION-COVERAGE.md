@@ -2,6 +2,8 @@
 
 ## Réception cloud — dernier code gelé du 18 octobre
 
+Gel `a695e48830173da73d280d167e2df31607c22516` : seul le nom accessible du dialogue de langue complète le gel précédent. Traduction existante, header toujours masqué, même sélection et mêmes événements. **320 tests qualité**, quatre tests Angular Dialog, build et budgets PASS ; dix états AX contrôlés, huit noms de dialogue localisés et focus natif FR vérifié. Même inventaire régénéré : 148 routes / 293 composants / 2 057 interactions, aucun template manquant. Le bilan global du dernier HEAD reste à établir dans la PR #917 après campagne complète.
+
 Gel final de réception `b8f339746e1dd19dbbb7803c69bf275a0ee71f69` : titre du panneau auth dimensionné selon sa propre largeur et mesuré dans la recette. **319 tests qualité, build et budgets PASS**, 208 cas CSS multilingues et 96 dispositions anonymes du bundle contrôlés ; contenus et logique d'authentification inchangés. L'inventaire est régénéré sur ce SHA, mêmes ensembles ci-dessous. La réception globale du dernier HEAD reste portée par la PR #917, après campagne et lecture des preuves.
 
 Gel `78ca492370f459af385a01d7128d5fffb4dd4ae8` : reflow supplémentaire des modes/actions de la barre admin après inspection réelle du texte agrandi. Mêmes ensembles **148 routes / 293 composants / 2 057 interactions / 268 SCSS et deux styles inline**, inventaire recalculé ; les six libellés de barre sont désormais mesurés en navigateur. **318 tests qualité**, compilation et budgets PASS, 128 cas CSS multilingues sans mot coupé ni débordement. Le bilan du HEAD final dans la PR #917 garde les diagnostics ciblés distincts de la campagne globale.
