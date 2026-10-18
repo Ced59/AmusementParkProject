@@ -1,5 +1,6 @@
 // Existing Leaflet DOM controls only. No synthetic coordinates or private map
 // fields; external tiles/directions remain outside this read-only CI sandbox.
+import { exerciseMapGestures } from './browser-map-gestures.mjs';
 export function mapViewportSettled(samples) {
   const recent = samples.slice(-3);
   return recent.length === 3 && recent.every(sample => sample.transform
@@ -7,7 +8,7 @@ export function mapViewportSettled(samples) {
     && sample.paneTransform === recent[0].paneTransform);
 }
 
-export async function exercisePublicMap({ evaluate, waitUntil, capturePage, result }) {
+export async function exercisePublicMap({ cdp, evaluate, waitUntil, capturePage, result }) {
   const parent = await evaluate(`({ path: location.pathname, key: navigation.currentEntry.key, index: navigation.currentEntry.index })`);
   const selector = `app-park-detail-page a[href="${parent.path}/map"]`;
   await waitUntil(`!!document.querySelector(${JSON.stringify(selector)})`, 'park exposes its actual map link');
@@ -41,6 +42,7 @@ export async function exercisePublicMap({ evaluate, waitUntil, capturePage, resu
   }, 'native zoom-in changes the real map transform and finishes');
   await evaluate(`document.querySelector('.park-items-map .leaflet-control-zoom-out').click()`);
   await waitUntil(`document.querySelector('${proxy}')?.style.transform === ${JSON.stringify(beforeZoom)} && !document.querySelector('.park-items-map .leaflet-zoom-anim')`, 'native zoom-out restores the original map transform');
+  await exerciseMapGestures({ cdp, evaluate, waitUntil, result });
   const category = await evaluate(`(() => { const buttons = [...document.querySelectorAll('.park-items-map__category-button')]; const total = Number(buttons[0]?.querySelector('strong')?.textContent.trim()); const button = buttons.slice(1).find(node => { const count = Number(node.querySelector('strong').textContent.trim()); return count > 0 && count < total; }); if (!button) return null; const index = buttons.indexOf(button); return { index, count: Number(button.querySelector('strong').textContent.trim()), total }; })()`);
   if (!category) throw new Error('No distinct nonempty public map category; this filter scenario is not covered.');
   await evaluate(`document.querySelectorAll('.park-items-map__category-button')[${category.index}].click()`);

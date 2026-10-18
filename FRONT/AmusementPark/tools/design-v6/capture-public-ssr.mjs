@@ -655,7 +655,7 @@ async function captureHydratedHome(rawHtml, options = {}) {
       }
     };
     await exercisePublicPractical({ evaluate, waitUntil, result, capturePractical: captureHydratedPage });
-    await exercisePublicMap({ evaluate, waitUntil, result, capturePage: captureHydratedPage });
+    await exercisePublicMap({ cdp, evaluate, waitUntil, result, capturePage: captureHydratedPage });
     await exercisePublicMediaHistory({ evaluate, waitUntil, result, capturePage: captureHydratedPage });
     await evaluate(`history.back()`);
     await waitUntil(`location.pathname === '/fr/home' && !!document.querySelector('#home-search-input')`, 'browser back returns to the home route');
