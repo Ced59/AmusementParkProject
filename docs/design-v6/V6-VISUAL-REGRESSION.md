@@ -12,7 +12,13 @@ Le propriétaire confirme le 18 octobre que le pack HTML/PNG original est resté
 | Mini-fiches des familles non dessinées, plus bas | Densité et états compte/auth/voyages/passeport/admin/overlays, avec les exceptions opérationnelles déjà documentées |
 | Captures du bundle Angular du dernier code gelé | Fidélité au contrat reconstitué, lisibilité, contrastes, navigation clavier, médias, erreurs et variantes ; résultat final attesté dans la PR #917 et ses artefacts CI |
 
-Le code produit est gelé sur `816db417fd5f9074be9e60f3a10093be1b90459d` pour cette réception. Aucun rendu issu d'un ancien code ni d'une fixture statique n'est présenté comme celui de ce gel. Les tolérances de géométrie plus bas portent sur les repères conservés et mesurables ; aucune tolérance n'est inventée pour le pack manquant.
+La [planche HTML reconstituée](reference/REFERENCE-V6-RECONSTITUEE.html) rassemble les références conservées et deux captures ciblées du bundle corrigé, avec leur provenance. Le code produit est gelé sur `8871d3b496b1efc0aa58e12fe7c8ddaa04378c69` pour cette réception. Aucun rendu issu d'un ancien code ni d'une fixture statique n'est présenté comme celui de ce gel. Les tolérances de géométrie plus bas portent sur les repères conservés et mesurables ; aucune tolérance n'est inventée pour le pack manquant.
+
+## Session expirée — récupération du mot de passe corrigée et recapturée
+
+Le run [39128601880](https://github.com/Ced59/AmusementParkProject/actions/runs/39128601880), source `e1ddf5698`, passe 40 pages SSR, les 38 détails Fleury, **309 contrôles publics hydratés** sans exception/interception et les six paires P04.6 (**+3 837 octets JS**, deux scripts, dans le plafond accepté). Il passe aussi les six thèmes initiaux et la session expirée master, puis refuse V6/expiré à 1 366 px clair : `button.auth-form__link`, « Mot de passe oublié ? », **3,38:1** sur `#eeefe8`. Les autres variantes non atteintes ne sont pas déduites de ces PASS.
+
+Le premier plan du lien, au repos et au survol, utilise maintenant `--app-primary-strong`. Même texte, événement et destination, aucune logique d'authentification changée. Le contre-exemple numérique et les quatre surfaces des deux thèmes sont protégés. **317 tests qualité PASS**, build production PASS, puis recette ciblée du vrai bundle dans Chromium cloud : **huit langues × trois largeurs (320/390/1 366) × deux thèmes = 48 captures PASS**, 110 contrôles de scénario, zéro exception ni fixture manquante. [Résumé et empreintes](evidence/reprise-cloud/expired-session-summary.json), [FR desktop clair](evidence/reprise-cloud/v6-expired-fr-1366-light.webp) et [DE mobile sombre](evidence/reprise-cloud/v6-expired-de-390-dark.webp). Cette recette ciblée ne remplace ni la campagne complète ni une preuve OAuth/API privée.
 
 ## Lisibilité réelle de la navigation et diagnostic calendrier — reprise cloud
 

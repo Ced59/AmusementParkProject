@@ -1,5 +1,9 @@
 # V6 — couverture d’implémentation
 
+## Réception cloud — dernier code gelé du 18 octobre
+
+Source produit `8871d3b496b1efc0aa58e12fe7c8ddaa04378c69` : inventaire final de **148 routes, 293 composants, 2 057 interactions, 268 SCSS et deux styles inline**, mêmes ensembles et zéro template manquant. Les derniers correctifs concernent le clic natif du scénario carte, la lisibilité des mots de navigation mobile, la mesure exacte du rognage du calendrier et les deux premiers plans du lien de récupération. **317 tests qualité PASS**, compilation production PASS et recette ciblée de session expirée **48 captures / huit langues PASS**, sans prétendre à la campagne complète. Les références perdues sont reconstituées à partir du contrat et des captures versionnées dans [la planche de revue](reference/REFERENCE-V6-RECONSTITUEE.html). La réception du dernier HEAD et la décision de livraison sont suivies dans la PR #917 ; les tables datées ci-dessous conservent leurs portées historiques.
+
 ## Point de contrôle du 18 octobre — preuves courantes
 
 Mise à jour après `ce6247957` : **301 tests Node qualité PASS**, inventaire recalculé sur ce SHA exact, mêmes 148 routes / 293 composants / 2 057 interactions / zéro template manquant. Le seul delta de source produit depuis le checkpoint est la portée du premier plan secondaire dans le SCSS des résultats Parc Fit ; taille de feuille mise à jour, aucun delta de template/action/route. `origin/master` fraîchement relu le 18 octobre reste `7f6a9088…`. Diagnostic `724f539c5` : nouveau parcours rempli exécuté, **826 contrôles / 440 captures**, sans fixture/exception, mais FAIL pour les deux contrastes corrigés ensuite. Recette de gestes CDP carte préparée ; ni elle ni les couleurs corrigées ne sont déclarées PASS navigateur avant la nouvelle CI. L'historique ci-dessous conserve les refus antérieurs.

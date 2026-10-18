@@ -1,6 +1,6 @@
 # Inventaire P00 généré
 
-- Source : 816db417fd5f9074be9e60f3a10093be1b90459d
+- Source : 8871d3b496b1efc0aa58e12fe7c8ddaa04378c69
 - Routes terminales, redirections et écrans développés : **148**
 - Composants Angular de présentation recensés : **293**
 - Interactions et champs explicitement recensés : **2057**
