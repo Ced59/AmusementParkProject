@@ -2,6 +2,8 @@
 
 ## Décision actuelle
 
+**18 octobre — dernier gel `b8f339746`.** La revue des captures `a042de20f` identifie un titre auth rogné malgré les PASS ciblés. Typographie relative au panneau, reflow et mesure des rectangles de texte ajoutés ; routes et logique auth conservées. **319 tests qualité, build production et budgets PASS**, inventaire régénéré sur ce gel : mêmes 148 routes / 293 composants / 2 057 interactions. Le diagnostic CSS couvre 208 cas multilingues sans rognage après correction ; les 96 dispositions ciblées des pages anonymes sont conservées avec provenance. **Campagne complète du dernier HEAD et revue de ses preuves toujours requises avant le merge 6.0.0 autorisé** ; aucun ancien PASS n'est extrapolé à ce gel.
+
 **18 octobre — gel corrigé `78ca49237`.** La revue des captures admin `cee8efdfe` révèle encore des mots comprimés dans les boutons de mode à texte agrandi. Reflow des modes/actions et mesure des six libellés réels ajoutés, sans changement de rôle ou d'action. Diagnostic CSS : 128 cas / huit langues, neuf cas refusés avant et zéro après ; aucun débordement du document. **318 tests qualité, build production et budgets PASS**. Inventaire régénéré sur ce dernier gel. Le dernier HEAD doit passer sa propre campagne complète et sa revue avant la fusion autorisée ; aucun PASS global n'est déduit des diagnostics précédents.
 
 **18 octobre — dernier gel de réception `8871d3b49`.** Le run `39128601880` franchit le blocage carte, les 40 pages SSR, les 38 détails Fleury, P04.6 (+3 837 octets JS dans l'exception bornée) et le thème initial, puis refuse le lien de récupération dans la session expirée V6 desktop clair (3,38:1). Ce refus est conservé. Seuls les premiers plans repos/survol du lien rejoignent l'encre AA existante. **317 tests qualité**, build production et **48 captures ciblées de session expirée dans les huit langues** passent dans le cloud, sans exception ni fixture manquante ; cela n'est pas la campagne complète. Inventaire régénéré sur ce gel, références visuelles reconstituées et preuves ciblées versionnées. **La CI du dernier HEAD, la revue complète et les contrôles de livraison restent obligatoires avant merge.** La décision finale est portée par la PR #917 avec les rapports exacts ; les paragraphes suivants sont l'historique des checkpoints.
@@ -224,4 +226,3 @@ Les corrections sauvegardées de recette vidéo et du popup Leaflet passent 35 c
 ## Rollback
 
 En cas d’échec après feu vert et fusion, appliquer la procédure transactionnelle existante de `docs/deploy/transactional-app-deployment.md` vers la génération complète antérieure. Aucun rollback CSS sélectif, aucune publication partielle et aucun mélange permanent V5/V6.
-

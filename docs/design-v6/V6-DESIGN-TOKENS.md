@@ -168,4 +168,3 @@ L'audit de dépendances confirme que la police display est identique à celle de
 - Footer : composition éditoriale marque + trois colonnes, repli 3 puis 1 colonne, slogan intact et contraste AA contrôlé.
 - Compte/admin : surfaces plates et denses ; les outlets, guards et comportements existants ne sont pas déplacés.
 - Le test `playground-v6-shell.test.mjs` protège la composition de marque, les contrôles de navigation, les dimensions et les invariants responsive.
-
