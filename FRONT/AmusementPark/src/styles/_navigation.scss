@@ -127,9 +127,10 @@ html:has(.app-public-nav) {
 
 .mobile-bottom-nav__item,
 .app-mobile-bottom-nav__item {
-  // Keep normal seven-entry geometry; enlarged labels may form a second row.
+  // Let complete localized words determine wrapping instead of narrow columns.
   font-size: 0.68rem;
-  min-width: min(100%, 5ch);
+  min-width: min-content;
+  max-width: 100%;
   min-height: 3.9rem;
   flex: 1 1 0;
   display: flex;
@@ -171,7 +172,7 @@ button.app-mobile-bottom-nav__item {
   font-weight: 900;
   letter-spacing: 0.02em;
   line-height: 1.05;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   text-align: center;
   white-space: normal;
 }

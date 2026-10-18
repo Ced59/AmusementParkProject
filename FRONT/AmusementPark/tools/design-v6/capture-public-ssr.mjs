@@ -614,7 +614,9 @@ async function captureHydratedHome(rawHtml, options = {}) {
                 return [...document.querySelectorAll('button.park-opening-hours-cell')].map(button => ({
                   bounds: rect(button.closest('td')), button: rect(button), labels: [...button.querySelectorAll('.park-opening-hours-cell__date, .park-opening-hours-cell__today, .park-opening-hours-cell__status, .park-opening-hours-cell__hours')].map(node => ({
                     bounds: rect(node), clientWidth: node.clientWidth, scrollWidth: node.scrollWidth, clientHeight: node.clientHeight, scrollHeight: node.scrollHeight,
-                    today: node.classList.contains('park-opening-hours-cell__today'), textOverflow: getComputedStyle(node).textOverflow, whiteSpace: getComputedStyle(node).whiteSpace
+                    today: node.classList.contains('park-opening-hours-cell__today'), textOverflow: getComputedStyle(node).textOverflow, whiteSpace: getComputedStyle(node).whiteSpace,
+                    overflowX: getComputedStyle(node).overflowX, overflowY: getComputedStyle(node).overflowY,
+                    textRects: (() => { const range = document.createRange(); range.selectNodeContents(node); return [...range.getClientRects()].filter(part => part.width > 0).map(part => ({ x: part.x, y: part.y, right: part.right, bottom: part.bottom })); })()
                   }))
                 }));
               })()`);
@@ -622,7 +624,12 @@ async function captureHydratedHome(rawHtml, options = {}) {
               layout.calendarCells = cells.length;
               layout.todayBadges = cells.flatMap(cell => cell.labels).filter(label => label.today).length;
               if (layout.todayBadges !== 1) throw new Error('The actual calendar month does not cover its today badge; this layout scenario is not exercised.');
-              if (issues.length) throw new Error(`Calendar content overlaps or clips at ${width}px (${theme}): ${issues.join(', ')}`);
+              if (issues.length) {
+                result.failedCalendarLayout = { width, height, theme, cells, issues };
+                const failurePixels = await cdp.send('Page.captureScreenshot', { format: 'webp', quality: 75, captureBeyondViewport: false });
+                await writeFile(join(outputRoot, 'failed-calendar-layout.webp'), Buffer.from(failurePixels.data, 'base64'));
+                throw new Error(`Calendar content overlaps or clips at ${width}px (${theme}): ${issues.join(', ')}`);
+              }
               layout.calendarScroll = await evaluate(`(() => {
                 const wrap = document.querySelector('.park-opening-hours-month__table-wrap');
                 const needsScroll = wrap.scrollWidth > wrap.clientWidth + 1;

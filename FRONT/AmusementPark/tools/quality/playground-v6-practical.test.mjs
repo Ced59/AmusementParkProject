@@ -64,14 +64,29 @@ test('calendar labels reflow inside fixed grid tracks without shrinking the toda
 
 test('calendar geometry rejects internal overlap even when document width passes', () => {
   const bounds = { x: 20, y: 100, right: 72, bottom: 200 };
-  const cell = { bounds, button: { ...bounds }, labels: [{ bounds: { x: 24, y: 120, right: 56, bottom: 160 }, clientWidth: 32, scrollWidth: 32, clientHeight: 40, scrollHeight: 40, today: true, textOverflow: 'clip', whiteSpace: 'normal' }] };
+  const cell = { bounds, button: { ...bounds }, labels: [{ bounds: { x: 24, y: 120, right: 56, bottom: 160 }, clientWidth: 32, scrollWidth: 32, clientHeight: 40, scrollHeight: 40, today: true, textOverflow: 'clip', whiteSpace: 'normal',
+    overflowX: 'visible', overflowY: 'visible', textRects: [{ x: 24, y: 120, right: 56, bottom: 160 }] }] };
   assert.deepEqual(openingCalendarLayoutIssues([cell, cell]), []);
   const overlap = structuredClone(cell);
   overlap.labels[0].bounds.right = 75;
   assert.ok(openingCalendarLayoutIssues([cell, overlap]).some(issue => issue.includes('outside button')));
   const clipped = structuredClone(cell);
   clipped.labels[0].scrollWidth = 52;
+  clipped.labels[0].overflowX = 'hidden';
   assert.ok(openingCalendarLayoutIssues([cell, clipped]).some(issue => issue.includes('clipped label')));
+  const glyphOverhang = structuredClone(cell);
+  Object.assign(glyphOverhang.labels[0], { bounds: { x: 24, y: 120, right: 56, bottom: 132.48 }, clientHeight: 12, scrollHeight: 14,
+    textRects: [{ x: 24, y: 117, right: 32, bottom: 134 }] });
+  assert.deepEqual(openingCalendarLayoutIssues([cell, glyphOverhang]), [], 'visible font overhang within its padded button is not clipped');
+  const hiddenGlyph = structuredClone(glyphOverhang);
+  hiddenGlyph.labels[0].overflowY = 'hidden';
+  assert.ok(openingCalendarLayoutIssues([cell, hiddenGlyph]).some(issue => issue.includes('clipped label')));
+  const escapedGlyph = structuredClone(glyphOverhang);
+  escapedGlyph.labels[0].textRects[0].right = 75;
+  assert.ok(openingCalendarLayoutIssues([cell, escapedGlyph]).some(issue => issue.includes('text outside day target')));
+  const missingMeasurement = structuredClone(cell);
+  delete missingMeasurement.labels[0].textRects;
+  assert.ok(openingCalendarLayoutIssues([cell, missingMeasurement]).some(issue => issue.includes('not measured')));
   const ellipsis = structuredClone(cell);
   ellipsis.labels[0].textOverflow = 'ellipsis';
   assert.ok(openingCalendarLayoutIssues([cell, ellipsis]).some(issue => issue.includes('cannot reflow')));

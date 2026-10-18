@@ -145,8 +145,12 @@ test('admin shell measurement reads the real links and toolbar without navigatio
   const link = (mobile, box) => ({ getAttribute: () => '/fr/admin', closest: () => mobile,
     getBoundingClientRect: () => box, contains: node => node === icon });
   const links = [link(false, rect(0, 0, 0, 0)), link(true, rect(330, 1128, 53, 72))];
+  const labels = Array.from({ length: 7 }, () => ({ firstChild: { nodeType: 3, textContent: 'Admin' },
+    textContent: 'Admin', getBoundingClientRect: () => rect(330, 1160, 53, 16) }));
   const sandbox = { innerWidth: 390, innerHeight: 1200, location: { pathname: '/fr/profile' }, document: {
-    querySelectorAll: selector => selector === '.app-mobile-bottom-nav__item' ? Array(7).fill({}) : links,
+    querySelectorAll: selector => selector === '.app-mobile-bottom-nav__item' ? Array(7).fill({})
+      : selector === '.app-mobile-bottom-nav__label' ? labels : links,
+    createRange: () => ({ setStart() {}, setEnd() {}, getClientRects: () => [{ width: 53, top: 1160 }] }),
     querySelector: selector => selector === '.page-jump-button' ? null : ({ getBoundingClientRect: () => selector === '.admin-public-view-toolbar'
       ? rect(8, 960, 374, 150) : rect(0, 1128, 390, 72) }), elementFromPoint: () => icon } };
   const layout = JSON.parse(JSON.stringify(runInNewContext(`(${collectAdminShellLayout.toString()})()`, sandbox)));
@@ -155,6 +159,8 @@ test('admin shell measurement reads the real links and toolbar without navigatio
   assert.deepEqual(layout.entries.map(entry => entry.scope), ['header', 'mobile']);
   assert.equal(layout.entries[1].unobscured, true);
   assert.equal(layout.adminPath, '/fr/admin');
+  assert.equal(layout.bottomLabels.length, 7);
+  assert.deepEqual(layout.bottomLabels[0].words, [{ word: 'Admin', lines: 1 }]);
   const capture = read('tools/design-v6/capture-account-layout.mjs');
   const branch = capture.split("} else if (fixture.kind === 'admin-shell') {")[1].split('} else {')[0];
   assert.match(branch, /await captureLayouts\('\.profile-hero', 'account-admin-shell'\)/);
@@ -166,6 +172,7 @@ test('admin shell measurement reads the real links and toolbar without navigatio
 
 test('admin shell acceptance refuses missing entries, obscured controls and toolbar overlap', () => {
   const layout = { adminPath: '/pl/admin', width: 390, height: 1200, publicLayout: true, bottomItemCount: 7,
+    bottomLabels: Array.from({ length: 7 }, () => ({ visible: true, measured: true, words: [{ word: 'Navigation', lines: 1 }] })),
     entries: [
       { scope: 'header', href: '/pl/admin', visible: false },
       { scope: 'mobile', href: '/pl/admin', visible: true, unobscured: true, x: 330, y: 1128,
@@ -182,11 +189,16 @@ test('admin shell acceptance refuses missing entries, obscured controls and tool
     value => { value.entries[1].right = 392; }, value => { value.entries[1].width = 10; },
     value => { value.entries[1].height = 20; }, value => { value.toolbar = null; },
     value => { value.toolbar.bottom = 1140; }, value => { value.toolbar.right = 400; },
+    value => { value.bottomLabels = undefined; }, value => { value.bottomLabels = []; },
+    value => { value.bottomLabels[0].words = []; }, value => { value.bottomLabels[0].visible = false; },
   ]) {
     const invalid = structuredClone(layout);
     change(invalid);
     assert.ok(adminShellLayoutIssues(invalid).length, 'every invalid layout must be refused');
   }
+  const compressed = structuredClone(layout);
+  compressed.bottomLabels[0].words[0].lines = 3;
+  assert.ok(adminShellLayoutIssues(compressed).includes('mobile navigation splits words into narrow columns'));
 });
 
 test('the unencapsulated public admin toolbar targets its real host, including the mobile safe-area rule', () => {
@@ -909,6 +921,7 @@ test('admin shell geometry rejects floating controls over its toolbar or mobile 
   const rect = (x, y, width, height) => ({ x, y, width, height, right: x + width, bottom: y + height });
   const adminPath = '/fr/admin';
   const layout = { adminPath, width: 390, height: 1200, publicLayout: true, bottomItemCount: 7,
+    bottomLabels: Array.from({ length: 7 }, () => ({ visible: true, measured: true, words: [{ word: 'Navigation', lines: 1 }] })),
     entries: [{ scope: 'header', href: adminPath, visible: false }, { scope: 'mobile', href: adminPath, visible: true, unobscured: true, ...rect(330, 1128, 53, 72) }],
     toolbar: rect(8, 960, 374, 150), bottomNavigation: rect(0, 1128, 390, 72), jumpAction: rect(330, 1060, 44, 44) };
   assert.ok(adminShellLayoutIssues(layout).includes('page jump action overlaps the admin toolbar'));

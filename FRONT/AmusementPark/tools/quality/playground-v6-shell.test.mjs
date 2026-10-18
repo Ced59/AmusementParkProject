@@ -31,11 +31,11 @@ const protectedWordmarkParts = [
   '>fun<',
 ];
 
-test('mobile navigation keeps equal columns and reflows enlarged labels without shrinking text', () => {
+test('mobile navigation reflows complete localized words without shrinking or clipping text', () => {
   assert.match(navigationStyles, /\.app-mobile-bottom-nav\s*\{[^}]*gap:\s*0;/);
   assert.match(navigationStyles, /\.app-mobile-bottom-nav\s*\{[^}]*flex-wrap:\s*wrap;/);
-  assert.match(navigationStyles, /\.app-mobile-bottom-nav__item\s*\{[^}]*font-size:\s*0\.68rem;[^}]*min-width:\s*min\(100%, 5ch\);[^}]*min-height:\s*3\.9rem;[^}]*flex:\s*1 1 0;[^}]*padding:\s*0\.5rem 0\.125rem;/);
-  assert.match(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*font-size:\s*0\.68rem;[^}]*overflow-wrap:\s*anywhere;[^}]*white-space:\s*normal;/);
+  assert.match(navigationStyles, /\.app-mobile-bottom-nav__item\s*\{[^}]*font-size:\s*0\.68rem;[^}]*min-width:\s*min-content;[^}]*max-width:\s*100%;[^}]*min-height:\s*3\.9rem;[^}]*flex:\s*1 1 0;[^}]*padding:\s*0\.5rem 0\.125rem;/);
+  assert.match(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*font-size:\s*0\.68rem;[^}]*overflow-wrap:\s*normal;[^}]*white-space:\s*normal;/);
   assert.doesNotMatch(navigationStyles, /\.app-mobile-bottom-nav__label\s*\{[^}]*(?:text-overflow:\s*ellipsis|overflow:\s*hidden|line-clamp)/);
   for (const [, rule] of navigationStyles.matchAll(/\.app-mobile-bottom-nav\s*\{([^}]*)\}/g)) {
     const gap = /\bgap:\s*([^;]+)/.exec(rule);

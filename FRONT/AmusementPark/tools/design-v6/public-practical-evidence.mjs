@@ -19,7 +19,19 @@ export function openingCalendarLayoutIssues(cells) {
     if (!cell.labels?.length) issues.push(`cell ${index}: missing day label`);
     for (const label of cell.labels ?? []) {
       if (!inside(label.bounds, cell.button)) issues.push(`cell ${index}: label outside button`);
-      if (label.scrollWidth > label.clientWidth + 1 || label.scrollHeight > label.clientHeight + 1) {
+      if (!['visible', 'hidden', 'clip', 'auto', 'scroll'].includes(label.overflowX)
+        || !['visible', 'hidden', 'clip', 'auto', 'scroll'].includes(label.overflowY)
+        || !Array.isArray(label.textRects) || !label.textRects.length) {
+        issues.push(`cell ${index}: text clipping not measured`);
+      }
+      if (label.textRects?.some(text => !inside(text, cell.button) || !inside(text, cell.bounds))) {
+        issues.push(`cell ${index}: text outside day target`);
+      }
+      // A font's glyph box may exceed a line-height:1 line box while remaining
+      // fully visible inside the padded day button. Scroll size alone does not
+      // establish clipping when that label actually has visible overflow.
+      if ((label.overflowX !== 'visible' && label.scrollWidth > label.clientWidth + 1)
+        || (label.overflowY !== 'visible' && label.scrollHeight > label.clientHeight + 1)) {
         issues.push(`cell ${index}: clipped label`);
       }
       if (label.today && (label.textOverflow === 'ellipsis' || label.whiteSpace === 'nowrap')) {

@@ -17,9 +17,22 @@ export function collectAdminShellLayout() {
     const box = node.getBoundingClientRect();
     return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, width: box.width, height: box.height };
   };
+  const bottomLabels = [...document.querySelectorAll('.app-mobile-bottom-nav__label')].map(label => {
+    const box = label.getBoundingClientRect();
+    const text = label.firstChild;
+    const measured = text?.nodeType === 3;
+    const words = measured ? [...text.textContent.matchAll(/\S+/gu)].map(match => {
+      const range = document.createRange();
+      range.setStart(text, match.index);
+      range.setEnd(text, match.index + match[0].length);
+      const lines = new Set([...range.getClientRects()].filter(part => part.width > 0).map(part => Math.round(part.top * 2) / 2)).size;
+      return { word: match[0], lines };
+    }) : [];
+    return { text: label.textContent, visible: box.width > 0 && box.height > 0, measured, words };
+  });
   return { adminPath, width: innerWidth, height: innerHeight, scrollY: globalThis.scrollY ?? 0,
     headerNavigation: rect('.app-public-nav'), publicLayout: !!document.querySelector('.app-public-layout'), entries,
-    bottomItemCount: document.querySelectorAll('.app-mobile-bottom-nav__item').length,
+    bottomItemCount: document.querySelectorAll('.app-mobile-bottom-nav__item').length, bottomLabels,
     toolbar: rect('.admin-public-view-toolbar'), bottomNavigation: rect('.app-mobile-bottom-nav'), jumpAction: rect('.page-jump-button') };
 }
 
@@ -48,6 +61,15 @@ export function adminShellLayoutIssues(layout) {
   }
   if (layout.publicLayout === false && toolbar) issues.push('unexpected public admin toolbar in the account layout');
   const nav = layout.bottomNavigation;
+  if (nav?.height > 0) {
+    if (!Array.isArray(layout.bottomLabels) || layout.bottomLabels.length !== layout.bottomItemCount
+      || layout.bottomLabels.some(label => !label.visible || !label.measured || !label.words?.length
+        || label.words.some(word => !Number.isInteger(word.lines) || word.lines < 1))) {
+      issues.push('mobile navigation label readability not measured');
+    } else if (layout.bottomLabels.some(label => label.words.some(word => word.lines > 1))) {
+      issues.push('mobile navigation splits words into narrow columns');
+    }
+  }
   if (toolbar && nav?.height > 0 && toolbar.x < nav.right && toolbar.right > nav.x
     && toolbar.y < nav.bottom && toolbar.bottom > nav.y) issues.push('admin toolbar overlaps the mobile navigation');
   const jump = layout.jumpAction;
