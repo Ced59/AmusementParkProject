@@ -3,6 +3,7 @@ import { collectAdminShellLayout, adminShellLayoutIssues } from './browser-admin
 import { collectLayoutOverflow } from './browser-layout-overflow.mjs';
 import { exerciseAdminToolbarFocus } from './exercise-admin-toolbar-focus.mjs';
 import { exercisePublicFitForm } from './exercise-public-fit-form.mjs';
+import { exercisePublicFitResults } from './exercise-public-fit-results.mjs';
 import { settleAccountDocument } from './settle-account-document.mjs';
 import { withDoubledRootFont, withBottomSafeArea } from './account-layout-stress.mjs';
 import { extname, join, resolve, sep } from 'node:path';
@@ -349,6 +350,7 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       }
       await exerciseAnonymousDraftPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
       await exercisePublicFitForm({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result });
+      await exercisePublicFitResults({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result });
       await exerciseIsolatedHistoryPages({ evaluate, waitUntil, captureLayouts, navigateDocument, fixture, result, language });
     }
     if (result.fixtureFailures.length || result.exceptions.length) throw new Error('Account layout accumulated an unexpected fixture or browser failure.');
