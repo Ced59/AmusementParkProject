@@ -1,5 +1,27 @@
 # V6 — régression visuelle
 
+## Référence de revue reconstituée — 18 octobre
+
+Le propriétaire confirme le 18 octobre que le pack HTML/PNG original est resté sur son PC et que son ancien lien n'est plus récupérable ; il demande de le récupérer ou de reconstituer les références. La revue finale utilise donc le contrat graphique versionné et les captures conservées ci-dessous. Elle ne certifie pas une égalité pixel à pixel avec le fichier original indisponible.
+
+| Référence conservée | Critères de la revue |
+|---|---|
+| [Tokens V6](V6-DESIGN-TOKENS.md) | Palette canonique clair/sombre, largeur éditoriale 1 160 px, surfaces opaques à filets, rayons de 2 px, photographie et hiérarchie typographique |
+| [Baseline V5](evidence/baseline-v5/) et inventaire immuable | Conservation des contenus, routes, actions, états, guards, traductions, wordmark et slogans ; les défauts legacy restent distingués des régressions V6 |
+| [Référence responsive conservée](evidence/responsive-v6/) | Reflow mobile/tablette/desktop, thèmes et faible hauteur ; ces fixtures de présentation ne remplacent pas le bundle Angular réel |
+| Mini-fiches des familles non dessinées, plus bas | Densité et états compte/auth/voyages/passeport/admin/overlays, avec les exceptions opérationnelles déjà documentées |
+| Captures du bundle Angular du dernier code gelé | Fidélité au contrat reconstitué, lisibilité, contrastes, navigation clavier, médias, erreurs et variantes ; résultat final attesté dans la PR #917 et ses artefacts CI |
+
+Le code produit est gelé sur `816db417fd5f9074be9e60f3a10093be1b90459d` pour cette réception. Aucun rendu issu d'un ancien code ni d'une fixture statique n'est présenté comme celui de ce gel. Les tolérances de géométrie plus bas portent sur les repères conservés et mesurables ; aucune tolérance n'est inventée pour le pack manquant.
+
+## Lisibilité réelle de la navigation et diagnostic calendrier — reprise cloud
+
+La revue des captures admin du run [39128601880](https://github.com/Ced59/AmusementParkProject/actions/runs/39128601880) révèle des mots fractionnés en colonnes trop étroites, malgré l'absence de débordement global. Une fixture CSS avec les vraies traductions et les styles compilés reproduit le défaut dans **32/48 cas**, huit langues, 320/390/768 px et racine 16/32 px. Les dimensions intrinsèques des mots gouvernent maintenant le retour à la ligne : **48/48 sans mot fractionné, sans overflow et sans perte de la zone de contenu contrôlée**. Aucune taille de texte, route, entrée ni action n'est supprimée. La recette Angular admin mesure aussi les lignes de chaque mot et refuse une mesure absente ou un mot comprimé ; le rendu final CI reste requis.
+
+Chromium cloud **154.0.8037.57** révèle aussi un faux positif du calendrier : date à `line-height:1`, hauteur de ligne 12,48 px et scrollHeight 14 px, mais `overflow:visible` et texte intégralement contenu dans le bouton. L'image et les rectangles de texte confirment l'absence de rognage. Le contrôle mesure désormais ces rectangles et l'overflow effectif ; il refuse toujours texte hors cible, overflow réellement rogné, données de mesure absentes, aujourd'hui tronqué et cible comprimée, avec les mêmes tolérances. Aucun style ou comportement du calendrier n'est modifié pour satisfaire le test.
+
+Le diagnostic public cloud sur trois largeurs passe ensuite **289 contrôles**, dont souris/toucher, popup et navigation fiche/retour, sans exception ni erreur d'interception. Sa phase statique ne termine pas : le navigateur géré refuse les URLs `file://` (`ERR_BLOCKED_BY_ADMINISTRATOR`). Ce sous-ensemble ne vaut ni campagne CI complète ni validation des huit langues. La compilation production et **316 tests qualité** passent ; la réception complète reste à obtenir sur le dernier HEAD de la PR.
+
 ## Session expirée — consentement à 390 px clair
 
 L'image `v6_expired_fr_account-expired_390_light.webp` de l'[artefact `12135895177`](https://github.com/Ced59/AmusementParkProject/actions/runs/39121758606/artifacts/12135895177) est inspectée : modale de connexion réelle après redirection, bandeau cookies conservé au-dessus comme dans le mécanisme actuel, toast Google indisponible attendu dans le bac isolé. Le lien « Lire la politique de confidentialité. » emploie l'accent décoratif sur la surface carte, **3,38:1**. Seul son premier plan rejoint l'encre primaire AA ; aucun texte, routage, z-index, consentement ou comportement d'auth n'est modifié. Test statique sur les deux thèmes et maintien du ratio historique en cas de régression. **302 tests Node qualité PASS**, rendu corrigé CI et autres tailles encore requis.
