@@ -1,5 +1,9 @@
 # V6 — régression visuelle
 
+## Session expirée — consentement à 390 px clair
+
+L'image `v6_expired_fr_account-expired_390_light.webp` de l'[artefact `12135895177`](https://github.com/Ced59/AmusementParkProject/actions/runs/39121758606/artifacts/12135895177) est inspectée : modale de connexion réelle après redirection, bandeau cookies conservé au-dessus comme dans le mécanisme actuel, toast Google indisponible attendu dans le bac isolé. Le lien « Lire la politique de confidentialité. » emploie l'accent décoratif sur la surface carte, **3,38:1**. Seul son premier plan rejoint l'encre primaire AA ; aucun texte, routage, z-index, consentement ou comportement d'auth n'est modifié. Test statique sur les deux thèmes et maintien du ratio historique en cas de régression. **302 tests Node qualité PASS**, rendu corrigé CI et autres tailles encore requis.
+
 ## Résultats Parc Fit remplis — diagnostic du 18 octobre
 
 [Artefact `12135300427`](https://github.com/Ced59/AmusementParkProject/actions/runs/39122333373/artifacts/12135300427), HEAD `724f539c5` : 826 contrôles / 440 captures V6 standard FR, zéro fixture/exception, **FAIL global pour 14 layouts**. Deux causes observées : `.park-fit-result-card span` écrase l'encre du rang (4,29:1 clair) et celle du CTA « Découvrir ce parc » (1,49:1 sombre / 1,66:1 clair). L'image preuves 390 sombre confirme le bouton peu lisible ; les matrices comparaison 4 desktop claire et cartes comparaison 2 mobile sombre sont aussi inspectées, sans nouvelle perte de contenu constatée dans ces captures. Il s'agit de fixtures synthétiques clairement marquées CI, pas de données ou scores publics.

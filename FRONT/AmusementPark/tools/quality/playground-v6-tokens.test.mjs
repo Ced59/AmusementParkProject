@@ -151,6 +151,16 @@ test('Park Fit result copy cannot override rank ink or button labels with muted 
   }
 });
 
+test('the consent privacy link keeps AA in the expired-session overlay and both themes', () => {
+  const source = readFileSync(resolve(styles, '../app/ui/layouts/cookie-consent-banner/cookie-consent-banner.component.scss'), 'utf8');
+  assert.match(source, /\.app-cookie-consent__text a\s*\{\s*color:\s*var\(--app-primary-strong\)/);
+  for (const source of [light, dark]) {
+    const theme = new Map([...variables(designTokens), ...variables(adapters), ...variables(source)]);
+    assert.ok(contrast(resolveThemeColor(theme, '--app-primary-strong'), resolveThemeColor(theme, '--app-surface')) >= 4.5);
+  }
+  assert.ok(contrast('#e54b28', '#eeefe8') < 4.5, 'run 39121758606 observed the decorative orange link at 3.38:1');
+});
+
 test('Park Fit foregrounds use semantic ink while their decorative fills keep the V6 palette', () => {
   const root = '../app/features/public/park-fit/';
   for (const file of ['pages/park-fit-start-page.component.scss', 'pages/park-fit-results-page.component.scss',
