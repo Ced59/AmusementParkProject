@@ -8,6 +8,7 @@ import { pathToFileURL } from 'node:url';
 import { isCanceledInterceptionError, isRetiredDocumentInterceptionError, advanceMainDocument } from './browser-interception-errors.mjs';
 import { publicDirectoryReadEvidence, publicParkItemsReadEvidence, publicRouteEvidenceName } from './public-directory-evidence.mjs';
 import { readHomeEvidenceFixtures, summarizeHomeResources, compareHomeNetworkSamples, homeNetworkAcceptance, homeVitalsObserver } from './home-network-evidence.mjs';
+import { captureHomeImageFixtures } from './home-image-fixtures.mjs';
 import { exercisePublicParkItems } from './exercise-public-park-items.mjs';
 import { initialThemeObserver, validateInitialTheme } from './initial-theme-evidence.mjs';
 import { publicPhotoReadEvidence } from './public-photo-evidence.mjs';
@@ -1120,14 +1121,19 @@ try {
         samples: report.initialThemeSamples.map(sample => ({ settings: sample.initialThemeSettings, verdict: sample.initialThemeVerdict, evidence: sample.initialThemeEvidence, captures: sample.captures })),
       }, null, 2));
       report.accountLayouts = [];
+      const homeImageFixtures = await captureHomeImageFixtures(homeSsrFixtures, nativeFetch);
+      report.expiredHomeImageEvidence = [...homeImageFixtures].map(([path, image]) => ({ path, bytes: image.bytes.length, sha256: image.sha256 }));
       const fixtureTime = Math.floor(Date.now() / 1000);
-      for (const { kind, language, widths: accountWidths } of accountLayoutCases(widths)) {
+      const accountCases = accountLayoutCases(widths);
+      // The last diagnosed failure must run before another hour of standard
+      // captures; every original case and width remains mandatory afterward.
+      for (const { kind, language, widths: accountWidths } of [...accountCases.filter(value => value.kind === 'expired'), ...accountCases.filter(value => value.kind !== 'expired')]) {
         const fixture = createAccountLayoutFixture(kind, fixtureTime, language);
         for (const label of ['master', 'v6']) {
           try {
             // The CSR expired-session redirect has no TransferState: replay the
             // coherent SSR population, not the client set whose random hero differs.
-            report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label, homeFixtures: homeSsrFixtures,
+            report.accountLayouts.push(await captureAccountLayout({ cdp, widths: accountWidths, outputRoot, fixture, label, homeFixtures: homeSsrFixtures, homeImageFixtures,
               browserRoot: label === 'master' ? resolve(process.env.V6_BASELINE_DIST_DIR, 'browser') : browserRoot }));
           } catch (error) {
             report.accountLayoutFailure = { label, kind, language, error: error.message };

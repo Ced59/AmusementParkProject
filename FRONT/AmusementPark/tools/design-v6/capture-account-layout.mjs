@@ -25,6 +25,7 @@ import { exerciseIsolatedHistoryPages } from './exercise-isolated-history-pages.
 import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from './account-layout-acceptance.mjs';
 import { positionAccountCaptureTarget } from './browser-account-target.mjs';
 import { nativeBrowserZoomPlan, resizeNativeZoomViewport } from './native-browser-zoom.mjs';
+import { homeImageFixtureResponse } from './home-image-fixtures.mjs';
 
 export function accountLayoutCaptureAllowed(ci, platform) {
   return ci === 'true' && platform === 'linux';
@@ -32,7 +33,7 @@ export function accountLayoutCaptureAllowed(ci, platform) {
 
 // Compiled application, existing guards/services, synthetic HTTP input only.
 // This is UI acceptance, never proof of authentication or a private API call.
-export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label, homeFixtures = new Map(), deferContrastFailure = false, nativeZoom = false }) {
+export async function captureAccountLayout({ cdp, browserRoot, outputRoot, widths, fixture, label, homeFixtures = new Map(), homeImageFixtures = new Map(), deferContrastFailure = false, nativeZoom = false }) {
   if (!accountLayoutCaptureAllowed(process.env.CI, process.platform)) throw new Error('Account layout capture requires isolated Linux CI.');
   if (typeof deferContrastFailure !== 'boolean' || (deferContrastFailure && process.env.V6_ISOLATED_PREFLIGHT !== 'true')) throw new Error('Deferred contrast findings are restricted to the explicit diagnostic preflight.');
   if (typeof nativeZoom !== 'boolean' || (nativeZoom && (!nativeBrowserZoomPlan(process.env, process.platform, { phase: process.env.V6_PREFLIGHT_PHASE }) || fixture.kind !== 'admin-shell'))) throw new Error('Native zoom capture requires its bounded admin-shell diagnostic.');
@@ -98,6 +99,13 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
       return;
     }
     if (url.pathname.startsWith('/api/')) {
+      const image = fixture.kind === 'expired' ? homeImageFixtureResponse(request, homeImageFixtures) : null;
+      if (image) {
+        (result.publicHomeImages ??= []).push({ path: url.pathname + url.search, bytes: image.bytes.length, sha256: image.sha256,
+          source: 'recorded anonymous public image, replayed locally; no forwarding' });
+        await fulfill(requestId, image.status, image.contentType, image.bytes);
+        return;
+      }
       const response = accountLayoutFixtureResponse(request, fixture, homeFixtures);
       if (!response) {
         result.fixtureFailures.push({ method: request.method, path: url.pathname, query: url.search, reason: 'no exact local fixture; never forwarded' });
