@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { collectAdminShellLayout, adminShellLayoutIssues } from './browser-admin-shell.mjs';
 import { collectLayoutOverflow } from './browser-layout-overflow.mjs';
+import { collectAccountAsideHeading, accountAsideHeadingIssues } from './browser-account-heading.mjs';
 import { exerciseAdminToolbarFocus } from './exercise-admin-toolbar-focus.mjs';
 import { exercisePublicFitForm } from './exercise-public-fit-form.mjs';
 import { exercisePublicFitResults } from './exercise-public-fit-results.mjs';
@@ -238,6 +239,8 @@ export async function captureAccountLayout({ cdp, browserRoot, outputRoot, width
             return stable && layout.width === width && layout.height === height && layout.theme === theme && layout.target.visible;
           }, `${label} ${fixture.kind} ${page} layout settles at ${width}px (${theme})`);
           const issues = layout.documentWidth > width + 1 ? ['document horizontal overflow'] : [];
+          layout.accountAsideHeading = await evaluate(`(${collectAccountAsideHeading.toString()})()`);
+          issues.push(...accountAsideHeadingIssues(layout.accountAsideHeading));
           if (safeAreaBottomPx) {
             layout.safeArea = await evaluate(`(() => { const nav = document.querySelector('.app-mobile-bottom-nav'); return { expectedBottomPx: ${safeAreaBottomPx},
               navVisible: !!nav?.offsetHeight, measuredPaddingBottomPx: nav ? parseFloat(getComputedStyle(nav).paddingBottom) : null }; })()`);

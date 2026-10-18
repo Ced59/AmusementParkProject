@@ -111,4 +111,3 @@ test('sortable headers keep native table semantics and route keyboard activation
   assert.doesNotMatch(sortable, /attr\.role|aria-sort|onSort\.emit|onLazyLoad\.emit/);
   assert.match(primitives, /\.p-sortable-column:focus-visible\s*\{[^}]*outline:\s*3px solid/);
 });
-

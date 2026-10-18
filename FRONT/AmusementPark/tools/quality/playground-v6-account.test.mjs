@@ -23,6 +23,7 @@ import { isolatedLayoutPreflightPlan } from '../design-v6/isolated-layout-prefli
 import { accountContrastIssue, accountLayoutMustStop, accountLayoutsHaveFailure } from '../design-v6/account-layout-acceptance.mjs';
 import { positionAccountCaptureTarget } from '../design-v6/browser-account-target.mjs';
 import { collectAdminShellLayout, adminShellLayoutIssues } from '../design-v6/browser-admin-shell.mjs';
+import { collectAccountAsideHeading, accountAsideHeadingIssues } from '../design-v6/browser-account-heading.mjs';
 import { exercisePublicFitForm } from '../design-v6/exercise-public-fit-form.mjs';
 import { settleAccountDocument } from '../design-v6/settle-account-document.mjs';
 import { withDoubledRootFont, withBottomSafeArea } from '../design-v6/account-layout-stress.mjs';
@@ -137,6 +138,32 @@ test('public Park Fit local-only recipe refuses any unexpected API request', asy
   /unexpectedly requested an API/);
   const fixture = createAccountLayoutFixture('standard', 1792144800);
   assert.equal(accountLayoutFixtureResponse({ method: 'POST', url: accountLayoutFixtureOrigin + '/api/public/park-fit/search', postData: '{}' }, fixture), null);
+});
+
+test('account introduction heading evidence measures actual text and refuses panel clipping', () => {
+  const rect = (x, y, width, height) => ({ x, y, width, height, right: x + width, bottom: y + height });
+  const title = { getBoundingClientRect: () => rect(130, 400, 388, 260) };
+  const aside = { getBoundingClientRect: () => rect(96, 125, 454, 920), querySelector: () => title };
+  const sandbox = { document: { querySelector: () => aside,
+    createRange: () => ({ selectNodeContents(node) { assert.equal(node, title); }, getClientRects: () => [rect(130, 400, 350, 86)] }) } };
+  const measured = JSON.parse(JSON.stringify(runInNewContext(`(${collectAccountAsideHeading.toString()})()`, sandbox)));
+  assert.deepEqual(accountAsideHeadingIssues(measured), []);
+  assert.equal(measured.textRects[0].right, 480);
+  assert.deepEqual(accountAsideHeadingIssues({ visible: false }), []);
+  assert.deepEqual(accountAsideHeadingIssues({ ...measured, aside: { ...measured.aside, x: 131 } }), []);
+  for (const delta of [
+    { textRects: [] }, { title: null }, { textRects: [{ x: NaN, y: 400, right: 480, bottom: 486 }] },
+  ]) assert.ok(accountAsideHeadingIssues({ ...measured, ...delta }).includes('account introduction heading geometry not measured'));
+  for (const textRect of [rect(130, 400, 440, 86), rect(94, 400, 350, 86), rect(130, 1000, 350, 86)]) {
+    assert.ok(accountAsideHeadingIssues({ ...measured, textRects: [textRect] }).includes('account introduction heading text clipped outside its panel'));
+  }
+  const source = read('tools/design-v6/capture-account-layout.mjs');
+  assert.match(source, /accountAsideHeadingIssues\(layout\.accountAsideHeading\)/);
+  const css = read('src/styles/_layout.scss');
+  assert.match(css, /\.app-account-layout__aside\s*\{[^}]*container-type: inline-size/);
+  assert.match(css, /\.app-account-layout__aside\s*\{[^}]*padding: clamp\(20px, 3vw, 32px\)/);
+  assert.match(css, /\.app-account-layout__aside \.app-kicker\s*\{\s*flex-wrap: wrap/);
+  assert.match(css, /\.app-account-layout__title\s*\{[^}]*max-width: 100%;[^}]*font-size: clamp\(1\.75rem, 14cqi, 5rem\);[^}]*overflow-wrap: anywhere/);
 });
 
 test('admin shell measurement reads the real links and toolbar without navigation or mutation', () => {

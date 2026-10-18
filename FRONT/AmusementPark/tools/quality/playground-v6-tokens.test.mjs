@@ -572,4 +572,3 @@ test('Playground V6 uses the editorial width, restrained geometry and flat page 
   assert.doesNotMatch(`${light}\n${dark}\n${base}`, /(?:linear|radial|conic)-gradient\(/);
   assert.doesNotMatch(base, /fractalNoise|data:image\/svg\+xml/);
 });
-
