@@ -2,6 +2,8 @@
 
 ## Réception cloud — dernier code gelé du 18 octobre
 
+Gel `78ca492370f459af385a01d7128d5fffb4dd4ae8` : reflow supplémentaire des modes/actions de la barre admin après inspection réelle du texte agrandi. Mêmes ensembles **148 routes / 293 composants / 2 057 interactions / 268 SCSS et deux styles inline**, inventaire recalculé ; les six libellés de barre sont désormais mesurés en navigateur. **318 tests qualité**, compilation et budgets PASS, 128 cas CSS multilingues sans mot coupé ni débordement. Le bilan du HEAD final dans la PR #917 garde les diagnostics ciblés distincts de la campagne globale.
+
 Source produit `8871d3b496b1efc0aa58e12fe7c8ddaa04378c69` : inventaire final de **148 routes, 293 composants, 2 057 interactions, 268 SCSS et deux styles inline**, mêmes ensembles et zéro template manquant. Les derniers correctifs concernent le clic natif du scénario carte, la lisibilité des mots de navigation mobile, la mesure exacte du rognage du calendrier et les deux premiers plans du lien de récupération. **317 tests qualité PASS**, compilation production PASS et recette ciblée de session expirée **48 captures / huit langues PASS**, sans prétendre à la campagne complète. Les références perdues sont reconstituées à partir du contrat et des captures versionnées dans [la planche de revue](reference/REFERENCE-V6-RECONSTITUEE.html). La réception du dernier HEAD et la décision de livraison sont suivies dans la PR #917 ; les tables datées ci-dessous conservent leurs portées historiques.
 
 ## Point de contrôle du 18 octobre — preuves courantes
