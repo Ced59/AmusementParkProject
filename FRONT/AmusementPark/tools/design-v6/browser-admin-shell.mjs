@@ -17,7 +17,7 @@ export function collectAdminShellLayout() {
     const box = node.getBoundingClientRect();
     return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, width: box.width, height: box.height };
   };
-  const bottomLabels = [...document.querySelectorAll('.app-mobile-bottom-nav__label')].map(label => {
+  const measureLabels = selector => [...document.querySelectorAll(selector)].map(label => {
     const box = label.getBoundingClientRect();
     const text = label.firstChild;
     const measured = text?.nodeType === 3;
@@ -30,9 +30,11 @@ export function collectAdminShellLayout() {
     }) : [];
     return { text: label.textContent, visible: box.width > 0 && box.height > 0, measured, words };
   });
+  const bottomLabels = measureLabels('.app-mobile-bottom-nav__label');
+  const toolbarLabels = measureLabels('.admin-public-view-toolbar__label, .admin-public-view-toolbar__mode > span:not(.app-visually-hidden), .admin-public-view-toolbar__edition > span');
   return { adminPath, width: innerWidth, height: innerHeight, scrollY: globalThis.scrollY ?? 0,
     headerNavigation: rect('.app-public-nav'), publicLayout: !!document.querySelector('.app-public-layout'), entries,
-    bottomItemCount: document.querySelectorAll('.app-mobile-bottom-nav__item').length, bottomLabels,
+    bottomItemCount: document.querySelectorAll('.app-mobile-bottom-nav__item').length, bottomLabels, toolbarLabels,
     toolbar: rect('.admin-public-view-toolbar'), bottomNavigation: rect('.app-mobile-bottom-nav'), jumpAction: rect('.page-jump-button') };
 }
 
@@ -60,6 +62,15 @@ export function adminShellLayoutIssues(layout) {
     issues.push('public admin toolbar missing or outside the viewport');
   }
   if (layout.publicLayout === false && toolbar) issues.push('unexpected public admin toolbar in the account layout');
+  if (layout.publicLayout) {
+    if (!Array.isArray(layout.toolbarLabels) || layout.toolbarLabels.length !== 6
+      || layout.toolbarLabels.some(label => !label.visible || !label.measured || !label.words?.length
+        || label.words.some(word => !Number.isInteger(word.lines) || word.lines < 1))) {
+      issues.push('admin toolbar label readability not measured');
+    } else if (layout.toolbarLabels.some(label => label.words.some(word => word.lines > 1))) {
+      issues.push('admin toolbar splits words into narrow columns');
+    }
+  }
   const nav = layout.bottomNavigation;
   if (nav?.height > 0) {
     if (!Array.isArray(layout.bottomLabels) || layout.bottomLabels.length !== layout.bottomItemCount

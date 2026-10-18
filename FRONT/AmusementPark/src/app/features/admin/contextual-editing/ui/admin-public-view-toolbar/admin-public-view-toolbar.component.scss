@@ -68,7 +68,7 @@ app-admin-public-view-toolbar {
   font-size: 0.82rem;
   font-weight: 900;
   cursor: pointer;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   white-space: normal;
   transition:
     border-color var(--transition),
@@ -162,19 +162,23 @@ app-admin-public-view-toolbar {
   }
 
   .admin-public-view-toolbar__actions {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 44px;
+    flex-wrap: wrap;
   }
 
   .admin-public-view-toolbar__modes {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
   }
 
   .admin-public-view-toolbar__mode,
   .admin-public-view-toolbar__edition {
-    width: 100%;
-    min-width: 0;
+    flex: 1 1 8rem;
+    width: auto;
+    min-width: min-content;
+    max-width: 100%;
+  }
+
+  .admin-public-view-toolbar__collapse {
+    flex: 0 0 44px;
   }
 
   .admin-public-view-toolbar__restore {

@@ -149,7 +149,8 @@ test('admin shell measurement reads the real links and toolbar without navigatio
     textContent: 'Admin', getBoundingClientRect: () => rect(330, 1160, 53, 16) }));
   const sandbox = { innerWidth: 390, innerHeight: 1200, location: { pathname: '/fr/profile' }, document: {
     querySelectorAll: selector => selector === '.app-mobile-bottom-nav__item' ? Array(7).fill({})
-      : selector === '.app-mobile-bottom-nav__label' ? labels : links,
+      : selector === '.app-mobile-bottom-nav__label' ? labels
+      : selector.startsWith('.admin-public-view-toolbar__label,') ? labels.slice(0, 6) : links,
     createRange: () => ({ setStart() {}, setEnd() {}, getClientRects: () => [{ width: 53, top: 1160 }] }),
     querySelector: selector => selector === '.page-jump-button' ? null : ({ getBoundingClientRect: () => selector === '.admin-public-view-toolbar'
       ? rect(8, 960, 374, 150) : rect(0, 1128, 390, 72) }), elementFromPoint: () => icon } };
@@ -161,6 +162,8 @@ test('admin shell measurement reads the real links and toolbar without navigatio
   assert.equal(layout.adminPath, '/fr/admin');
   assert.equal(layout.bottomLabels.length, 7);
   assert.deepEqual(layout.bottomLabels[0].words, [{ word: 'Admin', lines: 1 }]);
+  assert.equal(layout.toolbarLabels.length, 6);
+  assert.deepEqual(layout.toolbarLabels[0].words, [{ word: 'Admin', lines: 1 }]);
   const capture = read('tools/design-v6/capture-account-layout.mjs');
   const branch = capture.split("} else if (fixture.kind === 'admin-shell') {")[1].split('} else {')[0];
   assert.match(branch, /await captureLayouts\('\.profile-hero', 'account-admin-shell'\)/);
@@ -172,6 +175,7 @@ test('admin shell measurement reads the real links and toolbar without navigatio
 
 test('admin shell acceptance refuses missing entries, obscured controls and toolbar overlap', () => {
   const layout = { adminPath: '/pl/admin', width: 390, height: 1200, publicLayout: true, bottomItemCount: 7,
+    toolbarLabels: Array.from({ length: 6 }, () => ({ visible: true, measured: true, words: [{ word: 'Visiteur', lines: 1 }] })),
     bottomLabels: Array.from({ length: 7 }, () => ({ visible: true, measured: true, words: [{ word: 'Navigation', lines: 1 }] })),
     entries: [
       { scope: 'header', href: '/pl/admin', visible: false },
@@ -191,6 +195,8 @@ test('admin shell acceptance refuses missing entries, obscured controls and tool
     value => { value.toolbar.bottom = 1140; }, value => { value.toolbar.right = 400; },
     value => { value.bottomLabels = undefined; }, value => { value.bottomLabels = []; },
     value => { value.bottomLabels[0].words = []; }, value => { value.bottomLabels[0].visible = false; },
+    value => { value.toolbarLabels = undefined; }, value => { value.toolbarLabels = []; },
+    value => { value.toolbarLabels[0].words = []; }, value => { value.toolbarLabels[0].visible = false; },
   ]) {
     const invalid = structuredClone(layout);
     change(invalid);
@@ -199,6 +205,9 @@ test('admin shell acceptance refuses missing entries, obscured controls and tool
   const compressed = structuredClone(layout);
   compressed.bottomLabels[0].words[0].lines = 3;
   assert.ok(adminShellLayoutIssues(compressed).includes('mobile navigation splits words into narrow columns'));
+  const compressedToolbar = structuredClone(layout);
+  compressedToolbar.toolbarLabels[0].words[0].lines = 5;
+  assert.ok(adminShellLayoutIssues(compressedToolbar).includes('admin toolbar splits words into narrow columns'));
 });
 
 test('the unencapsulated public admin toolbar targets its real host, including the mobile safe-area rule', () => {
@@ -921,6 +930,7 @@ test('admin shell geometry rejects floating controls over its toolbar or mobile 
   const rect = (x, y, width, height) => ({ x, y, width, height, right: x + width, bottom: y + height });
   const adminPath = '/fr/admin';
   const layout = { adminPath, width: 390, height: 1200, publicLayout: true, bottomItemCount: 7,
+    toolbarLabels: Array.from({ length: 6 }, () => ({ visible: true, measured: true, words: [{ word: 'Visiteur', lines: 1 }] })),
     bottomLabels: Array.from({ length: 7 }, () => ({ visible: true, measured: true, words: [{ word: 'Navigation', lines: 1 }] })),
     entries: [{ scope: 'header', href: adminPath, visible: false }, { scope: 'mobile', href: adminPath, visible: true, unobscured: true, ...rect(330, 1128, 53, 72) }],
     toolbar: rect(8, 960, 374, 150), bottomNavigation: rect(0, 1128, 390, 72), jumpAction: rect(330, 1060, 44, 44) };
@@ -937,6 +947,7 @@ test('below-fold capture distinguishes a whole scrolled masthead from hidden, cl
   const rect = (x, y, width, height) => ({ x, y, width, height, right: x + width, bottom: y + height });
   const adminPath = '/fr/admin';
   const layout = { adminPath, width: 1366, height: 1200, publicLayout: true, bottomItemCount: 7, scrollY: 414,
+    toolbarLabels: Array.from({ length: 6 }, () => ({ visible: true, measured: true, words: [{ word: 'Visiteur', lines: 1 }] })),
     headerNavigation: rect(0, -414, 1351, 134),
     entries: [{ scope: 'header', href: adminPath, visible: true, unobscured: false, ...rect(884, -327, 100, 44) },
       { scope: 'mobile', href: adminPath, visible: false }], toolbar: rect(567, 1102, 768, 82), bottomNavigation: rect(0, 0, 0, 0), jumpAction: rect(1283, 1042, 44, 44) };

@@ -58,6 +58,15 @@ test('fixed toolbar and jump control reserve their real stack and short screens 
   assert.match(privacy, /text-wrap: balance/);
 });
 
+test('admin toolbar keeps whole words and reflows its modes and actions with enlarged text', async () => {
+  const toolbar = await readFile(new URL('../../src/app/features/admin/contextual-editing/ui/admin-public-view-toolbar/admin-public-view-toolbar.component.scss', import.meta.url), 'utf8');
+  assert.match(toolbar, /overflow-wrap: normal/);
+  assert.doesNotMatch(toolbar, /overflow-wrap: anywhere/);
+  assert.match(toolbar, /\.admin-public-view-toolbar__actions\s*\{\s*flex-wrap: wrap/);
+  assert.match(toolbar, /flex: 1 1 8rem;\s*width: auto;\s*min-width: min-content;\s*max-width: 100%/);
+  assert.match(toolbar, /\.admin-public-view-toolbar__collapse\s*\{\s*flex: 0 0 44px/);
+});
+
 test('enlarged legal copy and header identity reflow instead of being clipped into narrow fixed rows', async () => {
   const privacy = await readFile(new URL('../../src/app/features/public/legal/pages/privacy-policy-page.component.scss', import.meta.url), 'utf8');
   const nav = await readFile(new URL('../../src/styles/_navigation.scss', import.meta.url), 'utf8');
