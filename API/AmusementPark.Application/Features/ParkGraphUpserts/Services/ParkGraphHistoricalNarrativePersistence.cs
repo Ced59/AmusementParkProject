@@ -70,8 +70,10 @@ internal static class ParkGraphHistoricalNarrativePersistence
                 historyEvent,
                 cancellationToken);
         }
-        else if (narrativeChanged)
+        else if (narrativeChanged || canonicalRepairRequired)
         {
+            // Canonical identities include the persisted mutation timestamp. A repair
+            // must advance it too, rather than reuse incompatible existing revisions.
             historyEvent = await ParkGraphHistoricalNarrativeUpdater.UpdateAsync(
                 processorContext,
                 historyEvent,

@@ -393,13 +393,28 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
-    public async Task ApplyAsync_WhenArticleIsUnchangedButCanonicalFactIsMissing_ShouldRebuildCanonicalResources()
+    public async Task ApplyAsync_WhenUnchangedNarrativeNeedsCanonicalRepair_ShouldAdvanceMutationBeforeCanonicalizing()
     {
         HistoryEvent existing = BuildExistingEvent();
         existing.CanonicalFactId = Guid.NewGuid();
         existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
+        existing.UpdatedAtUtc = new DateTime(2026, 10, 18, 12, 0, 0, DateTimeKind.Utc);
+        DateTime repairedUpdatedAtUtc = existing.UpdatedAtUtc.AddMilliseconds(1);
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
         context.SetCanonicalRepairRequired(true);
+        context.HistoryEventRepository
+            .Setup(value => value.UpdateAsync(
+                "history-1",
+                It.IsAny<HistoryEvent>(),
+                existing.UpdatedAtUtc,
+                existing.CanonicalFactId,
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, HistoryEvent historyEvent, DateTime _, Guid? _, Guid _, CancellationToken _) =>
+            {
+                historyEvent.UpdatedAtUtc = repairedUpdatedAtUtc;
+                return historyEvent;
+            });
         string document = BuildDocument($$"""
         "article": {{BuildArticleJson(introText: "  Looping Star et Wild Water Slide arrivent en 1979.  ", includeBlockIds: false)}}
         """);
@@ -412,14 +427,15 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
             value => value.UpdateAsync(
                 It.IsAny<string>(),
                 It.IsAny<HistoryEvent>(),
-                It.IsAny<DateTime>(),
-                It.IsAny<Guid?>(),
+                existing.UpdatedAtUtc,
+                existing.CanonicalFactId,
                 It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()),
-            Times.Never);
+            Times.Once);
         context.HistoricalNarrativeCanonicalizer.Verify(
             value => value.CanonicalizeAsync(
-                It.Is<HistoryEvent>(historyEvent => historyEvent.Id == "history-1"),
+                It.Is<HistoryEvent>(historyEvent => historyEvent.Id == "history-1"
+                    && historyEvent.UpdatedAtUtc == repairedUpdatedAtUtc),
                 It.IsAny<CancellationToken>()),
             Times.Once);
         context.HistoricalFactRepository.Verify(
@@ -429,6 +445,43 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.IsAny<HistoricalReviewEvent>(),
                 It.IsAny<CancellationToken>()),
             Times.Once);
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenUnchangedNarrativeNeedsCanonicalRepair_ShouldNotMutateResources()
+    {
+        HistoryEvent existing = BuildExistingEvent();
+        existing.CanonicalFactId = Guid.NewGuid();
+        existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
+        context.SetCanonicalRepairRequired(true);
+        string document = BuildDocument($$"""
+        "article": {{BuildArticleJson(introText: "  Looping Star et Wild Water Slide arrivent en 1979.  ", includeBlockIds: false)}}
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> preview = await context.PreviewAsync(document);
+
+        Assert.True(preview.IsSuccess);
+        AssertHistoryChange(preview, "Updated", "canonicalHistory");
+        context.HistoryEventRepository.Verify(
+            value => value.UpdateAsync(
+                It.IsAny<string>(),
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<Guid?>(),
+                It.IsAny<Guid>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+        context.HistoricalNarrativeCanonicalizer.Verify(
+            value => value.CanonicalizeAsync(It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        context.HistoricalFactRepository.Verify(
+            value => value.AppendRevisionAsync(
+                It.IsAny<HistoricalFact>(),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+        Assert.Equal(existing.UpdatedAtUtc, context.ReadPersistedEvent().UpdatedAtUtc);
     }
 
     [Fact]
