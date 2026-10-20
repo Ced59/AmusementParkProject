@@ -1,6 +1,20 @@
 {
-  "version": "6.0.1",
+  "version": "6.0.2",
   "history": [
+    {
+      "version": "6.0.2",
+      "releasedAt": "2026-10-20",
+      "labels": {
+        "fr": "Suivi éditorial enrichi",
+        "en": "Improved editorial tracking",
+        "de": "Verbesserte redaktionelle Übersicht",
+        "nl": "Verbeterd redactioneel overzicht",
+        "it": "Monitoraggio editoriale migliorato",
+        "es": "Seguimiento editorial mejorado",
+        "pt": "Acompanhamento editorial melhorado",
+        "pl": "Usprawnione śledzenie prac redakcyjnych"
+      }
+    },
     {
       "version": "6.0.1",
       "releasedAt": "2026-10-20",
