@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 59 |
+| Fiches privées existantes à intégrer | 82 | 58 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **149** |
+| **Total** | **225** | **148** |
 
 ## 1. Fiches publiques à compléter
 
@@ -80,7 +80,6 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc d'attractions Odet Loisirs — `3274297f-e3c1-417a-a4fd-9408943c9dcd`
 - [ ] Parc de la Mignardière — `d431c493-5727-400c-9693-d22e1b99ae30` — cycle de vie à vérifier
 - [ ] Parc de la Vallée — `f24b9993-8768-4e36-b3cb-544401210007`
-- [ ] Parc des Dunes — `e3c53897-49e5-4036-a165-b0e2ef9ac448`
 - [ ] Parc des Naudières — `f7f8cba8-62b4-4a91-8732-70a1cbc02b42`
 - [ ] Parc du Bocasse — `79b3c038-bff1-4170-b51d-4c7ed76b1a2d`
 - [ ] Parc du Petit Prince — `b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f`
@@ -374,6 +373,8 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 
 
 Le Parc de loisirs du Hautacam (`c0434ae9-1778-47f4-90b1-d514abc37985`) est retiré le 20 octobre 2026 après publication et contrôles anonymes : **100/100** (107/107), aucun bloqueur, 52 lieux dont 28 attractions, trois secteurs et 448 descriptions dans les huit langues. Les 53 images propres au parc sont publiques, avec logo et six photos générales ; 14 attractions sur 28 sont illustrées, 12 lieux importants sur 35 ont trois photos, 12 lieux fixes sur 39 sont géolocalisés et 36 conditions d’accès sont sourcées. Les 35 faits historiques sont publiés et sourcés (neuf majeurs, 24 illustrés), avec deux articles en huit langues. Le lien Histoire est vérifié depuis la [fiche publique](https://amusement-parks.fun/fr/park/c0434ae9-1778-47f4-90b1-d514abc37985/parc-de-loisirs-du-hautacam), ainsi que les historiques de 23 lieux et les deux articles. Les sept plans (2009, 2011, 2013, 2014, 2016, 2018, 2024) s’ouvrent anonymement et correspondent aux fichiers audités ; 2024 est sélectionné par défaut. Le calendrier couvre les 16 jours du 17 octobre au 1er novembre 2026 aux heures confirmées ; les périodes futures sans horaires et avril–juin en préparation restent explicitement incomplets. Quatorze offres d’entrée, dix pass, deux offres de crédits et huit relevés historiques sont conservés. L’[annonce Facebook existante](https://www.facebook.com/1285475681307050/posts/122123914725424431), identifiant `8e653424d73449ff910ba8265113f46c`, est `Published`, sans nouvel envoi. Les contrôles mobiles de la fiche, des articles et de la Mountain-Luge passent dans les huit langues ; les noms Wiegand, MND Ropeways et Poma sont résolus. La Preview finale laisse 154 entités inchangées, sans erreur ni avertissement ; l’encodage est conforme. Lacunes documentées : images et positions individuelles non prouvées, dix installations historiques au statut actuel inconnu, réouverture de Tramassel seulement annoncée, édition du plan courant non datée, prix du parking et tarif saison étudiant inconnus. La biographie partagée validée de Wiegand est conservée ; deux libellés techniques libres hérités de la Mountain-Luge restent en français dans les autres langues.
+
+Le Parc des Dunes (`e3c53897-49e5-4036-a165-b0e2ef9ac448`) est retiré le 20 octobre 2026 après publication et contrôles anonymes : **98/100** (100/102), aucun bloqueur, 63 lieux dont 54 attractions et 512 descriptions dans les huit langues. Les 53 images sont publiques, avec logo et cinq vues générales ; 28 attractions sur 54 sont illustrées, huit lieux importants sur 29 ont trois photos, neuf lieux fixes sur 58 sont géolocalisés et 43 conditions d’accès sont sourcées. Les 16 faits historiques sont publiés et sourcés, dont sept majeurs et trois illustrés, avec un article développé dans les huit langues. Le lien Histoire est vérifié depuis la [fiche publique](https://amusement-parks.fun/fr/park/e3c53897-49e5-4036-a165-b0e2ef9ac448/parc-des-dunes), ainsi que l’article et les historiques de 13 attractions. Les six plans (2018, 2020, 2022, 2023, 2024, 2026) s’ouvrent anonymement, correspondent aux fichiers audités et affichent 2026 par défaut. Le calendrier du 1er janvier 2026 au 2 avril 2027 couvre 457 jours, dont 138 ouverts et 319 fermés, sans lacune ni chevauchement ; l’arbitrage des 66 divergences avec l’ancien flux calendrier reste documenté. Quatre offres d’entrée, le parking gratuit et les relevés 2018, 2022 et 2025 sont conservés. Les douze sources historiques sont accessibles, y compris la décision de Légifrance de 2015 ; sa portée procédurale reste distincte du jugement au fond. L’[annonce Facebook existante](https://www.facebook.com/1285475681307050/posts/122123917335424431), identifiant `7bb2f01faa0649f296d677e3c36354b5`, est `Published`, sans nouvel envoi. Les contrôles mobiles de la fiche, de l’article et de la grande piste de luge passent dans les huit langues ; l’ancienne luge affiche son statut de démontage et le constructeur Edsun. La Preview finale laisse 140 entités inchangées ; les contrôles d’encodage et de répétition sont conformes. Lacunes conservées : fondateur et date d’ouverture du parc non établis, onze installations au statut actuel inconnu dont Amazonia seulement annoncé, photos et positions individuelles non prouvées, plan 2025 non retrouvé, pass annuel et supplément des jeux d’arcade non confirmés. Aucun prix ni jalon n’est extrapolé pour les années historiques insuffisamment documentées.
 
 ### Inventaire historique à confirmer
 
