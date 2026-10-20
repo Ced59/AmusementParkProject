@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 62 |
+| Fiches privées existantes à intégrer | 82 | 61 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **152** |
+| **Total** | **225** | **151** |
 
 ## 1. Fiches publiques à compléter
 
@@ -82,7 +82,6 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc de la Vallée — `f24b9993-8768-4e36-b3cb-544401210007`
 - [ ] Parc de Loisirs de la Demi Lune — `0bfbbbf6-cc60-4a37-8d11-d7265299fefe`
 - [ ] Parc de loisirs du Hautacam — `c0434ae9-1778-47f4-90b1-d514abc37985` — parc de loisirs multi-activités confirmé, à conserver comme parc
-- [ ] Parc des Combes — `271602e3-28bb-42cc-966d-aca0e04269aa`
 - [ ] Parc des Dunes — `e3c53897-49e5-4036-a165-b0e2ef9ac448`
 - [ ] Parc des Naudières — `f7f8cba8-62b4-4a91-8732-70a1cbc02b42`
 - [ ] Parc du Bocasse — `79b3c038-bff1-4170-b51d-4c7ed76b1a2d`
@@ -371,6 +370,8 @@ Les 101 entrées françaises déjà classées `NotRelevant` ont été relues com
 - Family Park — la fiche canonique a été réconciliée avec l'implantation actuelle de Sorigny, publiée avec ses 45 éléments, son calendrier 2026, ses tarifs 2026, son plan officiel, 46 médias propres, neuf jalons historiques et un article développé. Seul le point de restauration Ô ti’snack reste sans photographie attribuable avec certitude. L'ancien doublon artificiel `Family Park Monts` et ses deux parkItems ont été supprimés après consolidation ; le logo constructeur ZIERER partagé a été conservé.
 - Amigoland — la galerie officielle ne permet pas d’attribuer avec certitude une photographie distincte à Beach Party, Bomber Maxxx ou Gravity ; aucune image générique n’a donc été associée arbitrairement. Les tarifs unitaires des manèges ne sont pas publiés en ligne : la fiche indique uniquement les faits vérifiables, à savoir l’entrée et le parking gratuits puis le paiement séparé de chaque attraction.
 - Bid’A Parc — le site et le plan officiels 2026 établissent l’inventaire courant, mais la galerie officielle ne fournit des photographies attribuables sans ambiguïté qu’au parc, au Carrousel, à Pomme, au Bateau Pirate, au Karting et au Palmito Resto. Les autres éléments restent donc sans image plutôt que de recevoir un visuel générique ou ancien. Aucun constructeur n’a été attribué sans source explicite. Le tarif du parking municipal varie selon les pages officielles consultées ; seule sa période payante est décrite, sans publier de grille contradictoire.
+
+- Parc des Combes — clôturé le 20 octobre 2026 après publication et contrôle anonyme : score réel **100/100**, aucun bloqueur, 45 lieux dont 23 attractions (22 ouvertes et Bis2Fly en construction), 368 descriptions localisées, 73 médias propres publiés et quatre médias partagés préservés. Vingt-deux attractions sur 23 et 27 lieux sur 45 possèdent une image ; 17 des 33 lieux importants disposent d’au moins trois vues, les autres écarts restant documentés. Les huit plans officiels 2019–2026 sont publics. Le calendrier couvre intégralement le 1er avril au 31 octobre 2026, soit 214 jours sans lacune ni chevauchement. Les tarifs vérifiés comprennent 25 offres d’entrée, deux passes et trois offres de stationnement, avec sept années de tarifs historiques conservées. Les 33 faits historiques canoniques sont publiés et sourcés, dont 29 illustrés ; trois articles ont été contrôlés dans les huit langues. Le lien « Histoire » de la [fiche normale](https://amusement-parks.fun/fr/park/271602e3-28bb-42cc-966d-aca0e04269aa/parc-des-combes) et sa destination ont été vérifiés le 20 octobre à 20 h 48 UTC après résorption de la réponse périmée. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122123897619424431), identifiant `fda518f7c57043c882ed6e9c61e2b4e2`, est `Published` ; aucune annonce supplémentaire n’a été créée. Lacunes conservées après recherche : photographie des Toucans, couverture de certains services, sept positions fixes non établies sur 43 (entrée/billetterie, gare du Creusot CFC, trois chalets, snack de la luge et Pizza Nuts), disponibilité des bornes de recharge, tarif du train à exactement 120 cm, crédits unitaires 2026, année de déplacement des Petites Chaises Volantes et portrait du fondateur. La Preview finale d’idempotence laisse 160 entités inchangées ; les contrôles d’encodage et de répétitions sont conformes.
 
 ### Inventaire historique à confirmer
 
