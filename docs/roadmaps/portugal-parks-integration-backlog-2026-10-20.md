@@ -42,12 +42,12 @@ Les horaires et tarifs courants ne sont applicables qu’aux entités Operating.
 | Parcs thématiques absents de la photographie PT | 8 | 8 |
 | Parcs aquatiques absents de la photographie PT | 22 | 22 |
 | Parcs animaliers et établissements aquatiques permanents à qualifier | 23 | 23 |
-| Parcs d’aventure à installations fixes | 21 | 21 |
+| Parcs d’aventure à installations fixes | 22 | 22 |
 | Parcs familiaux indoor et de plein air | 11 | 11 |
 | Parcs historiques absents de la photographie PT | 6 | 6 |
 | Projets annoncés ou historiques non réalisés | 4 | 4 |
 | Attractions autonomes à intégrer ou à qualifier | 3 | 3 |
-| **Total des lignes actives à traiter ou qualifier** | **109** | **109** |
+| **Total des lignes actives à traiter ou qualifier** | **110** | **110** |
 
 Les lignes d’établissements à qualifier ne sont pas comptées comme fiches déjà créées. Les pistes supplémentaires et exclusions de découverte restent hors de ce total.
 
@@ -135,6 +135,7 @@ Les lignes d’établissements à qualifier ne sont pas comptées comme fiches d
 
 ## 07. Parcs d’aventure à installations fixes
 
+- [ ] Adrenaline Adventures Madeira — Porto Moniz, Madère — identité applicative à résoudre — [AA](#sources-de-découverte). Site fixe avec tyroliennes et balançoire géante ; une identité de parc à résoudre, sans doublons standalone pour ses installations internes.
 - [ ] Campo Aventura — Óbidos — identité applicative à résoudre — [TP](#sources-de-découverte). Installations fixes et offre de loisirs nommée à vérifier.
 - [ ] Radical Park / Complexo Desportivo Príncipe Perfeito — Viseu — identité applicative à résoudre — [TP](#sources-de-découverte). Vérifier le périmètre de loisirs et le cycle de vie ; distinguer les seules activités sportives.
 - [ ] Vivapark — Localité à confirmer — identité applicative à résoudre — [TP](#sources-de-découverte). Identité et adresse à résoudre avant tout Apply.
@@ -257,6 +258,7 @@ Aucune. Le seuil reste strictement supérieur à 95 et l’audit sans bloqueur e
 - **PI** — [Picoto Park — site officiel](https://picotopark.pt/empresas/).
 - **RA** — [Rates Park — programme officiel des installations](https://www.ratespark.pt/wp-content/uploads/2023/03/ATLs.pdf).
 - **ZU** — [Azurara — inventaire officiel des activités](https://azurara-parque-aventura.com/atividades).
+- **AA** — [Adrenaline Adventures Madeira — parc fixe de Porto Moniz, tyroliennes et balançoire géante](https://adrenalineadventures.pt/pt).
 - **AL** — [Castro Marim — reconversion de l’ancien Aqualine](https://cm-castromarim.pt/site/noticia/antigo-parque-aquatico-abandonado-transformado-em-tres-pequenas-unidades-de-turismo-rural-de).
 - **ON** — [Ondaparque — site mémoriel, à recouper avec archives et presse](https://ondaparque.wixsite.com/ondaparque).
 - **RE** — [RTP/Lusa — fermeture du parc du Restelo et projet de reconversion](https://www.rtp.pt/noticias/pais/antigo-aquaparque-de-lisboa-abre-como-parque-infantil-no-inicio-de-2019_n1075871).

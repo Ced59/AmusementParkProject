@@ -1,8 +1,8 @@
 {
-  "version": "6.0.1",
+  "version": "6.0.2",
   "history": [
     {
-      "version": "6.0.1",
+      "version": "6.0.2",
       "releasedAt": "2026-10-20",
       "labels": {
         "fr": "Suivi éditorial enrichi",
@@ -13,6 +13,20 @@
         "es": "Seguimiento editorial mejorado",
         "pt": "Acompanhamento editorial melhorado",
         "pl": "Usprawnione śledzenie prac redakcyjnych"
+      }
+    },
+    {
+      "version": "6.0.1",
+      "releasedAt": "2026-10-20",
+      "labels": {
+        "fr": "Fiabilité et sécurité renforcées",
+        "en": "Improved reliability and security",
+        "de": "Mehr Zuverlässigkeit und Sicherheit",
+        "nl": "Verbeterde betrouwbaarheid en beveiliging",
+        "it": "Affidabilità e sicurezza migliorate",
+        "es": "Fiabilidad y seguridad mejoradas",
+        "pt": "Fiabilidade e segurança reforçadas",
+        "pl": "Większa niezawodność i bezpieczeństwo"
       }
     },
     {
