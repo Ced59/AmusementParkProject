@@ -7690,10 +7690,13 @@
         "sitDown": "Sentado"
       },
       "launch": {
-        "tireLift": "Lift por pneus"
+        "tireLift": "Lift por pneus",
+        "cableLift": "Subida por cabo",
+        "chainLift": "Subida por corrente"
       },
       "restraint": {
-        "sharedLapBar": "Barra de colo partilhada"
+        "sharedLapBar": "Barra de colo partilhada",
+        "seatBelt": "Cinto de segurança"
       }
     },
     "locations": {

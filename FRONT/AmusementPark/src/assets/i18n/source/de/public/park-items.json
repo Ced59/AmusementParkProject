@@ -115,10 +115,13 @@
         "sitDown": "Sitzend"
       },
       "launch": {
-        "tireLift": "Reibradlift"
+        "tireLift": "Reibradlift",
+        "cableLift": "Seillift",
+        "chainLift": "Kettenlift"
       },
       "restraint": {
-        "sharedLapBar": "Gemeinsamer Schoßbügel"
+        "sharedLapBar": "Gemeinsamer Schoßbügel",
+        "seatBelt": "Sicherheitsgurt"
       }
     },
     "locations": {

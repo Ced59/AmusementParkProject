@@ -115,10 +115,13 @@
         "sitDown": "Seduta"
       },
       "launch": {
-        "tireLift": "Lift a pneumatici"
+        "tireLift": "Lift a pneumatici",
+        "cableLift": "Risalita a cavo",
+        "chainLift": "Risalita a catena"
       },
       "restraint": {
-        "sharedLapBar": "Barra addominale condivisa"
+        "sharedLapBar": "Barra addominale condivisa",
+        "seatBelt": "Cintura di sicurezza"
       }
     },
     "locations": {

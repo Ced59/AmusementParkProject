@@ -115,10 +115,13 @@
         "sitDown": "Sit-down"
       },
       "launch": {
-        "tireLift": "Tire lift"
+        "tireLift": "Tire lift",
+        "cableLift": "Cable lift",
+        "chainLift": "Chain lift"
       },
       "restraint": {
-        "sharedLapBar": "Shared lap bar"
+        "sharedLapBar": "Shared lap bar",
+        "seatBelt": "Seat belt"
       }
     },
     "locations": {
