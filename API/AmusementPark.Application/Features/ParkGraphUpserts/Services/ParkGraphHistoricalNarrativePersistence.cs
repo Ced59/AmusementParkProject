@@ -70,8 +70,11 @@ internal static class ParkGraphHistoricalNarrativePersistence
                 historyEvent,
                 cancellationToken);
         }
-        else if (narrativeChanged)
+        else if (narrativeChanged || canonicalRepairRequired)
         {
+            // Publication repair can change the canonical subject and source revisions.
+            // Persist a fresh narrative version so their deterministic IDs cannot
+            // collide with the draft resources created while the park was hidden.
             historyEvent = await ParkGraphHistoricalNarrativeUpdater.UpdateAsync(
                 processorContext,
                 historyEvent,

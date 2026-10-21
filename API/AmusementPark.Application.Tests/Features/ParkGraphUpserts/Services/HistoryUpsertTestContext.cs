@@ -84,7 +84,8 @@ internal sealed class HistoryUpsertTestContext
                 }
 
                 this.persistedEvent = CloneHistoryEvent(historyEvent);
-                return Task.FromResult<HistoryEvent?>(CloneHistoryEvent(historyEvent));
+                this.persistedEvent.UpdatedAtUtc = historyEvent.UpdatedAtUtc.AddMilliseconds(1);
+                return Task.FromResult<HistoryEvent?>(CloneHistoryEvent(this.persistedEvent));
             });
         this.HistoryEventRepository
             .Setup(value => value.GetCommittedUpdateAsync(
