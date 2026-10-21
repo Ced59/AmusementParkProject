@@ -1,6 +1,20 @@
 {
-  "version": "6.0.4",
+  "version": "6.0.5",
   "history": [
+    {
+      "version": "6.0.5",
+      "releasedAt": "2026-10-21",
+      "labels": {
+        "fr": "Suivi des mises à jour amélioré",
+        "en": "Improved update monitoring",
+        "de": "Verbesserte Überwachung von Aktualisierungen",
+        "nl": "Verbeterde controle van updates",
+        "it": "Monitoraggio degli aggiornamenti migliorato",
+        "es": "Mejor seguimiento de las actualizaciones",
+        "pt": "Melhor acompanhamento das atualizações",
+        "pl": "Lepsze monitorowanie aktualizacji"
+      }
+    },
     {
       "version": "6.0.4",
       "releasedAt": "2026-10-21",
