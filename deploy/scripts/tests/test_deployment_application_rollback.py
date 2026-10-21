@@ -41,8 +41,9 @@ class ApplicationRollbackTests(unittest.TestCase):
                     service = next(key for images in [self.old, self.new] for key, value in images.items() if value == reference)
                     return json.dumps([{"Id": reference, "RepoDigests": ["ghcr.io/test/" + service + "@" + reference]}])
                 for service in rollback.SERVICES:
-                    if reference == "ghcr.io/test/" + service + "@" + self.old[service]:
-                        return json.dumps([{"Id": self.old[service]}])
+                    for images in (self.old, self.new):
+                        if reference == "ghcr.io/test/" + service + "@" + images[service]:
+                            return json.dumps([{"Id": images[service]}])
                     if reference == self.runtime.config["services"][service]["image"]:
                         return json.dumps([{"Id": self.new[service]}])
                 raise AssertionError("Unexpected image " + reference)
@@ -52,6 +53,7 @@ class ApplicationRollbackTests(unittest.TestCase):
                 return "{}"
             raise AssertionError(arguments)
 
+        self.set_up_image_run = run
         self.runtime.run.side_effect = run
         self.runtime.find.side_effect = lambda name: {"id": name, "name": name}
         self.runtime.inspect.side_effect = inspect
@@ -119,11 +121,9 @@ class ApplicationRollbackTests(unittest.TestCase):
         with self.assertRaisesRegex(DeploymentError, r"matching=0, recorded=0, repositories=none"):
             rollback.image_identity(self.runtime, self.old["api"], "ghcr.io/test/api:tag")
 
-    def test_digest_diagnostics_distinguish_ambiguity_and_repository_mismatch_without_mutation(self):
+    def test_digest_diagnostics_report_repository_mismatch_without_mutation(self):
         self.runtime.run.side_effect = None
         for digests, expected in [
-                (["ghcr.io/test/api@sha256:" + digit * 64 for digit in "12"],
-                 "matching=2, recorded=2, repositories=ghcr.io/test/api"),
                 (["ghcr.io/other/api@" + self.old["api"]],
                  "matching=0, recorded=1, repositories=ghcr.io/other/api")]:
             with self.subTest(expected=expected):
@@ -135,6 +135,47 @@ class ApplicationRollbackTests(unittest.TestCase):
                 self.assertIn(expected, str(caught.exception))
                 self.assertNotIn("never-log-this", str(caught.exception))
                 self.runtime.run.assert_called_once_with("docker", "image", "inspect", self.old["api"])
+
+    def test_equivalent_manifest_aliases_pin_the_same_running_image_deterministically(self):
+        aliases = ["ghcr.io/test/api@sha256:" + digit * 64 for digit in "654321"]
+        for order in (aliases, list(reversed(aliases))):
+            with self.subTest(order=order):
+                self.runtime.run.reset_mock()
+                self.runtime.run.side_effect = [
+                    json.dumps([{"Id": self.old["api"], "RepoDigests": order}]),
+                    json.dumps([{"Id": self.old["api"]}]), "{}"]
+                result = rollback.image_identity(self.runtime, self.old["api"], "ghcr.io/test/api:tag")
+                self.assertEqual(result, {"reference": min(aliases), "id": self.old["api"]})
+                self.assertEqual([call.args for call in self.runtime.run.call_args_list], [
+                    ("docker", "image", "inspect", self.old["api"]),
+                    ("docker", "image", "inspect", min(aliases)),
+                    ("docker", "manifest", "inspect", min(aliases))])
+
+    def test_mismatched_or_unavailable_digest_refuses_before_active_writes(self):
+        for fault in ("identity", "registry"):
+            with self.subTest(fault=fault):
+                self.runtime.run.reset_mock()
+                original_run = self.set_up_image_run
+                digest = "ghcr.io/test/api@" + self.old["api"]
+
+                def fail(*arguments):
+                    if fault == "identity" and arguments == ("docker", "image", "inspect", digest):
+                        return json.dumps([{"Id": self.new["api"]}])
+                    if fault == "registry" and arguments == ("docker", "manifest", "inspect", digest):
+                        raise DeploymentError("Registry unavailable")
+                    return original_run(*arguments)
+
+                self.runtime.run.side_effect = fail
+                original = self.env.read_bytes()
+                with self.assertRaises(DeploymentError):
+                    self.capture()
+                self.assertFalse(rollback.checkpoint_path(self.directory).exists())
+                self.assertEqual(self.env.read_bytes(), original)
+                self.transaction.prepare.assert_not_called()
+                self.transaction.execute.assert_not_called()
+                if fault == "identity":
+                    self.assertFalse(any(call.args[:3] == ("docker", "manifest", "inspect")
+                                         for call in self.runtime.run.call_args_list))
 
     def test_digest_diagnostics_are_bounded_and_reject_unsafe_repository_text(self):
         self.runtime.run.side_effect = None
