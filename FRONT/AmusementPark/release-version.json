@@ -1,6 +1,20 @@
 {
-  "version": "6.0.7",
+  "version": "6.0.8",
   "history": [
+    {
+      "version": "6.0.8",
+      "releasedAt": "2026-10-21",
+      "labels": {
+        "fr": "Fiches attractions mieux traduites",
+        "en": "Improved attraction detail translations",
+        "de": "Bessere Übersetzungen der Attraktionsdetails",
+        "nl": "Betere vertalingen van attractiegegevens",
+        "it": "Traduzioni migliorate delle schede attrazioni",
+        "es": "Mejores traducciones de las fichas de atracciones",
+        "pt": "Traduções melhoradas das fichas das atrações",
+        "pl": "Lepsze tłumaczenia informacji o atrakcjach"
+      }
+    },
     {
       "version": "6.0.7",
       "releasedAt": "2026-10-21",
