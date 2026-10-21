@@ -1,6 +1,20 @@
 {
-  "version": "6.0.2",
+  "version": "6.0.3",
   "history": [
+    {
+      "version": "6.0.3",
+      "releasedAt": "2026-10-21",
+      "labels": {
+        "fr": "Localisation des parcs plus lisible",
+        "en": "Clearer park locations",
+        "de": "Besser lesbare Parkstandorte",
+        "nl": "Duidelijkere parklocaties",
+        "it": "Località dei parchi più chiare",
+        "es": "Ubicación de los parques más clara",
+        "pt": "Localização dos parques mais clara",
+        "pl": "Czytelniejsze lokalizacje parków"
+      }
+    },
     {
       "version": "6.0.2",
       "releasedAt": "2026-10-20",

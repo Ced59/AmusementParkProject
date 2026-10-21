@@ -31,10 +31,6 @@
                 {{ 'parks.detail.heroBadge' | translate }}
               </app-ui-kicker>
 
-              @if (currentPark.countryCode) {
-                <app-ui-chip tone="primary" iconClass="pi pi-flag">{{ currentPark.countryCode }}</app-ui-chip>
-              }
-
               @if (currentPark.locationLine) {
                 <app-ui-chip tone="soft" iconClass="pi pi-map-marker">{{ currentPark.locationLine }}</app-ui-chip>
               }
