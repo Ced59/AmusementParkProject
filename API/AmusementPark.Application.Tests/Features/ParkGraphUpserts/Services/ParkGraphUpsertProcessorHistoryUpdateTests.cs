@@ -89,7 +89,11 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         HistoricalFact retraction = canonicalFact.CreateRetraction(
             canonicalFact.RecordedAtUtc.AddSeconds(1));
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
-        context.SetCanonicalRepairRequired(repairOnly);
+        context.HistoricalNarrativeCanonicalizer
+            .Setup(value => value.NeedsCanonicalRepairAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(repairOnly);
         context.HistoricalFactRepository
             .SetupSequence(repository => repository.GetLatestRevisionAsync(
                 factId,
