@@ -48,7 +48,11 @@
     "source-map-js": "1.2.2",
     "@angular/build": {
       "undici": "7.29.1",
-      "piscina": "5.3.2"
+      "piscina": "5.3.2",
+      "vite": "7.3.7"
+    },
+    "@angular/cli": {
+      "@modelcontextprotocol/sdk": "1.32.1"
     },
     "node-gyp": {
       "undici": "6.28.1"
