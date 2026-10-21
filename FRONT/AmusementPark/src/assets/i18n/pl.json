@@ -7690,10 +7690,13 @@
         "sitDown": "Siedzące"
       },
       "launch": {
-        "tireLift": "Wyciąg oponowy"
+        "tireLift": "Wyciąg oponowy",
+        "cableLift": "Wyciąg linowy",
+        "chainLift": "Wyciąg łańcuchowy"
       },
       "restraint": {
-        "sharedLapBar": "Wspólny pałąk biodrowy"
+        "sharedLapBar": "Wspólny pałąk biodrowy",
+        "seatBelt": "Pas bezpieczeństwa"
       }
     },
     "locations": {

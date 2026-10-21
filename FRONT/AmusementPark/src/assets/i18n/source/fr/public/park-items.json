@@ -115,10 +115,13 @@
         "sitDown": "Assis"
       },
       "launch": {
-        "tireLift": "Lift à pneus"
+        "tireLift": "Lift à pneus",
+        "cableLift": "Lift à câble",
+        "chainLift": "Lift à chaîne"
       },
       "restraint": {
-        "sharedLapBar": "Lap bar commune"
+        "sharedLapBar": "Lap bar commune",
+        "seatBelt": "Ceinture de sécurité"
       }
     },
     "locations": {
@@ -132,14 +135,14 @@
       "type": "Type",
       "value": "Valeur",
       "requiresAccompaniment": "Accompagnement requis",
-      "minimumCompanionAge": "ge minimum de l’accompagnant"
+      "minimumCompanionAge": "Âge minimum de l’accompagnant"
     },
     "accessConditionTypes": {
       "minHeight": "Taille minimale",
       "minHeightAccompanied": "Taille minimale accompagné",
       "maxHeight": "Taille maximale",
-      "minAge": "ge minimum",
-      "minAgeAccompanied": "ge minimum accompagné",
+      "minAge": "Âge minimum",
+      "minAgeAccompanied": "Âge minimum accompagné",
       "pregnancyRestriction": "Restriction grossesse",
       "heartRestriction": "Restriction cardiaque",
       "backNeckRestriction": "Restriction dos ou nuque",

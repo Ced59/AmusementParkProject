@@ -12,4 +12,18 @@ describe('park item detail presentation mapper', () => {
     expect(getAttractionTechnicalValueKey('material', 'Experimental alloy')).toBeNull();
     expect(getAttractionTechnicalValueKey('seating', null)).toBeNull();
   });
+
+  it('recognizes French lift and restraint values with accents and spacing', () => {
+    expect(getAttractionTechnicalValueKey('launch', '  Lift à câble  ')).toBe('parkItems.technicalValues.launch.cableLift');
+    expect(getAttractionTechnicalValueKey('launch', 'Lift à chaîne')).toBe('parkItems.technicalValues.launch.chainLift');
+    expect(getAttractionTechnicalValueKey('restraint', 'Ceinture')).toBe('parkItems.technicalValues.restraint.seatBelt');
+    expect(getAttractionTechnicalValueKey('restraint', 'Ceinture de sécurité')).toBe('parkItems.technicalValues.restraint.seatBelt');
+  });
+
+  it('uses the same localized labels for equivalent English values', () => {
+    expect(getAttractionTechnicalValueKey('launch', 'Cable lift')).toBe('parkItems.technicalValues.launch.cableLift');
+    expect(getAttractionTechnicalValueKey('launch', 'ChainLift')).toBe('parkItems.technicalValues.launch.chainLift');
+    expect(getAttractionTechnicalValueKey('restraint', 'Seat belt')).toBe('parkItems.technicalValues.restraint.seatBelt');
+    expect(getAttractionTechnicalValueKey('seating', 'Alpine')).toBeNull();
+  });
 });

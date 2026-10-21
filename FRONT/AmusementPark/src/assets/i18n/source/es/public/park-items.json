@@ -115,10 +115,13 @@
         "sitDown": "Sentado"
       },
       "launch": {
-        "tireLift": "Elevación por neumáticos"
+        "tireLift": "Elevación por neumáticos",
+        "cableLift": "Elevación por cable",
+        "chainLift": "Elevación por cadena"
       },
       "restraint": {
-        "sharedLapBar": "Barra de regazo compartida"
+        "sharedLapBar": "Barra de regazo compartida",
+        "seatBelt": "Cinturón de seguridad"
       }
     },
     "locations": {

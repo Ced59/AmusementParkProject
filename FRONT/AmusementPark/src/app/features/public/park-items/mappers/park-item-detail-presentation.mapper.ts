@@ -13,12 +13,22 @@ const ATTRACTION_TECHNICAL_VALUE_SEGMENTS: Record<AttractionTechnicalValueKind, 
     sitdown: 'sitDown'
   },
   launch: {
+    'lift a cable': 'cableLift',
+    'cable lift': 'cableLift',
+    cablelift: 'cableLift',
+    'lift a chaine': 'chainLift',
+    'chain lift': 'chainLift',
+    chainlift: 'chainLift',
     'lift a pneus': 'tireLift',
     'luft a pneus': 'tireLift',
     'tire lift': 'tireLift',
     'tyre lift': 'tireLift'
   },
   restraint: {
+    ceinture: 'seatBelt',
+    'ceinture de securite': 'seatBelt',
+    'seat belt': 'seatBelt',
+    seatbelt: 'seatBelt',
     'common lap bar': 'sharedLapBar',
     'lap bar commune': 'sharedLapBar',
     'lapbar commune': 'sharedLapBar',

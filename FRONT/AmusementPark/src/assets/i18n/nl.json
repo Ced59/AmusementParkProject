@@ -7690,10 +7690,13 @@
         "sitDown": "Zittend"
       },
       "launch": {
-        "tireLift": "Bandenlift"
+        "tireLift": "Bandenlift",
+        "cableLift": "Kabellift",
+        "chainLift": "Kettinglift"
       },
       "restraint": {
-        "sharedLapBar": "Gedeelde schootbeugel"
+        "sharedLapBar": "Gedeelde schootbeugel",
+        "seatBelt": "Veiligheidsgordel"
       }
     },
     "locations": {
