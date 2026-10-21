@@ -296,25 +296,28 @@ Pour un incident ou accident :
 
 - créer un article si l’événement est sourcé, durable et utile à l’histoire du parc ou du parkItem ;
 - tout incident ou accident trouvé sur un parkItem doit obligatoirement faire l’objet d’un article quand l’événement est sourcé et retenu dans la timeline ;
-- associer une photo contextualisée si une image acceptable est trouvable ;
+- appliquer la priorité aux photographies de l’événement définie ci-dessous, avec l’exception prévue pour les accidents corporels ;
 - utiliser le type `Accident` ou `Incident` selon les sources et les enums disponibles ;
 - distinguer les faits établis, les suites opérationnelles et les zones non établies sans transformer l’article en note d’audit ;
 - éviter les détails médicaux ou personnels non nécessaires ;
 - si un détail personnel public est central pour comprendre une décision d’exploitation ou d’accessibilité, le mentionner sobrement et uniquement avec source solide.
 
-Images d’incident ou accident :
+### Photographier l’événement raconté
 
-- chercher d’abord une photo réelle de l’événement, du lieu ou de l’intervention, si elle existe, si elle est non graphique et si ses droits permettent l’import ;
-- ne jamais utiliser d’image gore, humiliante, intrusive, sensationnaliste ou centrée sur une victime identifiable ;
-- si aucune photo réelle réutilisable n’existe, utiliser une image de contexte de l’attraction ou du lieu, mais la légende doit rester naturelle ;
-- ne pas écrire une légende défensive du type “aucune image de scène non graphique…” ;
-- écrire plutôt une légende factuelle : “El Loco dans Adventuredome. La vue permet de situer la montagne russe concernée par l’incident de 2019.”
+Cette règle concerne tous les articles et jalons : inauguration, chantier, fermeture, transformation, incendie ou autre événement. Rechercher et utiliser en priorité une photographie réelle de l’événement précis raconté, dès qu’une image acceptable et réutilisable existe. Une photographie générale de l’attraction ou du lieu ne remplit pas cette priorité lorsqu’une photographie de l’événement est disponible.
+
+- Pour un article sur un incendie, utiliser une vraie photographie de cet incendie si elle existe et respecte les règles d’import. Des flammes, de la fumée ou des dégâts matériels ne justifient pas à eux seuls de la remplacer par une vue ancienne du bâtiment. Une photographie de l’intervention ou des suites de ce même incendie vient ensuite ; une vue du lieu avant l’événement peut compléter l’article.
+- Pour un accident corporel, ne jamais utiliser d’image gore ni de photographie montrant la personne impactée au moment de l’accident, même si elle n’est pas identifiable. Exclure également les images humiliantes, intrusives ou centrées sur une victime identifiable. Privilégier une vue de l’intervention, des suites matérielles ou du lieu qui respecte ces exclusions ; l’exception ne bannit pas toute photographie de l’événement.
+- Vérifier visuellement le sujet et confirmer la correspondance avec le bon événement, le bon lieu et la bonne période. Ne jamais substituer un autre incendie, un accident similaire, une reconstitution ou une image générée à une photographie documentaire de l’événement.
+- Les exigences de droits de réutilisation, de crédit, de qualité et d’import de l’étape 5 restent applicables. Une image trouvée sur le Web n’est pas automatiquement réutilisable.
+- Si aucune photographie acceptable de l’événement n’est disponible après recherche réelle, utiliser une vue de contexte de l’attraction ou du lieu, ou conserver une lacune documentée si aucune vue pertinente n’est trouvable. Consigner les recherches et le motif du recours au contexte dans le registre interne.
+- La légende décrit naturellement ce qui est montré et sa période, sans faire passer une vue antérieure ou postérieure pour le moment de l’événement. Elle ne justifie pas le choix éditorial ni l’absence d’une autre photo : écrire par exemple « Le pavillon Era T-Rex avant l’incendie de septembre 2015 » uniquement si cette antériorité est vérifiée.
 
 ## Images créées ou utilisées dans un lot d’article
 
 Le propriétaire d’une image et la référence de cette image depuis un article sont deux résolutions indépendantes. Un événement, un article, `mainImageKey`, `imageKey` ou `imageKeys` ne renseigne jamais le propriétaire de l’objet `images[]`.
 
-Chaque jalon visible et chaque article doit recevoir une image contextualisée quand une image acceptable existe. Rechercher d’abord une image du fait, de l’attraction ou du lieu concerné à la bonne période ; une vue plus générale n’est acceptable que si elle situe honnêtement le sujet. Si aucune image n’est trouvable après recherche réelle, conserver l’exception dans l’audit au lieu d’utiliser une illustration trompeuse.
+Chaque jalon visible et chaque article doit recevoir une image quand une image acceptable existe, en suivant la priorité aux photographies de l’événement et l’exception pour les accidents corporels définies ci-dessus. Une vue de contexte doit situer honnêtement le sujet ; elle ne remplace pas par défaut une photographie disponible de l’événement. Si aucune image n’est trouvable après recherche réelle, conserver l’exception dans l’audit au lieu d’utiliser une illustration trompeuse.
 
 Les textes alternatifs et légendes suivent la charte de l’étape 4. Ils racontent naturellement ce que l’image montre et son lien avec le sujet ; ils ne mentionnent jamais l’import, la recherche, le choix par défaut, la faiblesse d’une source ou l’absence d’une autre photo.
 
@@ -541,6 +544,7 @@ Section principale : `history.events`.
 - Les titres, résumés et blocs d’articles ne contiennent aucune formulation d’audit interne ou justification documentaire mécanique.
 - Les images référencées existent déjà ou sont créées dans le même JSON.
 - Chaque jalon visible et chaque article possède une image contextualisée quand une image acceptable est trouvable, sinon l’exception de recherche est documentée.
+- La photographie représente en priorité l’événement précis ; une vue de contexte seule est justifiée dans le registre interne. Un incendie est illustré par une vraie photographie de cet incendie lorsqu’elle est disponible et acceptable. Pour un accident corporel, aucune image gore ni aucune personne impactée au moment de l’accident n’apparaît.
 - Chaque image créée possède un propriétaire résolu selon l’étape 5, indépendamment de l’article.
 - Chaque événement `ParkItem` contient `ownerId`, `parkItemId` et `itemId` explicites quand le parkItem existe déjà dans l’export.
 - Chaque article qui référence une image existante utilise `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` depuis l’état de référence.
