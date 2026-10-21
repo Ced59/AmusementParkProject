@@ -5,6 +5,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Models;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -72,8 +73,10 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
             Times.Once);
     }
 
-    [Fact]
-    public async Task ApplyAsync_WhenCanonicalNarrativeUpdateFails_ShouldRestoreCanonicalFact()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task ApplyAsync_WhenCanonicalNarrativeUpdateFails_ShouldRestoreCanonicalFact(bool repairOnly)
     {
         Guid factId = Guid.NewGuid();
         HistoryEvent existing = BuildExistingEvent();
@@ -86,6 +89,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         HistoricalFact retraction = canonicalFact.CreateRetraction(
             canonicalFact.RecordedAtUtc.AddSeconds(1));
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
+        context.SetCanonicalRepairRequired(repairOnly);
         context.HistoricalFactRepository
             .SetupSequence(repository => repository.GetLatestRevisionAsync(
                 factId,
@@ -110,7 +114,7 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
         context.FailNextHistoryUpdate(new TimeoutException("write failed before commit"));
-        string document = BuildDocument("""
+        string document = repairOnly ? BuildDocument("\"isVisible\": true") : BuildDocument("""
         "sources": [
           {
             "label": "Nouvelle archive",
@@ -393,13 +397,36 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
-    public async Task ApplyAsync_WhenArticleIsUnchangedButCanonicalFactIsMissing_ShouldRebuildCanonicalResources()
+    public async Task ApplyAsync_WhenArticleIsUnchangedButCanonicalFactNeedsRepair_ShouldUseFreshResourceIdentities()
     {
         HistoryEvent existing = BuildExistingEvent();
-        existing.CanonicalFactId = Guid.NewGuid();
+        existing.UpdatedAtUtc = new DateTime(2026, 10, 21, 9, 0, 0, DateTimeKind.Utc);
+        Guid previousFactId = HistoricalNarrativeCanonicalIdentity.CreateGuid(
+            HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+            "fact",
+            existing.Id,
+            existing.UpdatedAtUtc);
+        existing.CanonicalFactId = previousFactId;
         existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Canonicalized;
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
         context.SetCanonicalRepairRequired(true);
+        context.HistoricalNarrativeCanonicalizer
+            .Setup(value => value.CanonicalizeAsync(
+                It.IsAny<HistoryEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) =>
+            {
+                Guid nextFactId = HistoricalNarrativeCanonicalIdentity.CreateGuid(
+                    HistoricalNarrativeCanonicalizationService.CanonicalizationVersion,
+                    "fact",
+                    historyEvent.Id,
+                    historyEvent.UpdatedAtUtc);
+                Assert.NotEqual(previousFactId, nextFactId);
+                return new HistoricalNarrativeCanonicalizationResult(
+                    nextFactId,
+                    HistoricalNarrativeCanonicalizationState.Canonicalized,
+                    Array.Empty<string>());
+            });
         string document = BuildDocument($$"""
         "article": {{BuildArticleJson(introText: "  Looping Star et Wild Water Slide arrivent en 1979.  ", includeBlockIds: false)}}
         """);
@@ -416,12 +443,21 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 It.IsAny<Guid?>(),
                 It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()),
-            Times.Never);
+            Times.Once);
         context.HistoricalNarrativeCanonicalizer.Verify(
             value => value.CanonicalizeAsync(
                 It.Is<HistoryEvent>(historyEvent => historyEvent.Id == "history-1"),
                 It.IsAny<CancellationToken>()),
             Times.Once);
+        HistoryEvent repaired = context.ReadPersistedEvent();
+        Assert.True(repaired.UpdatedAtUtc > existing.UpdatedAtUtc);
+        Assert.NotEqual(previousFactId, repaired.CanonicalFactId);
+        Assert.Equal(existing.Article!.Slug, repaired.Article!.Slug);
+        Assert.Equal(existing.Sources[0].Url, repaired.Sources[0].Url);
+        context.SetCanonicalRepairRequired(false);
+        ApplicationResult<ParkGraphUpsertResult> idempotence = await context.PreviewAsync(document);
+        AssertHistoryChange(idempotence, "Unchanged");
+        Assert.Equal(repaired.UpdatedAtUtc, context.ReadPersistedEvent().UpdatedAtUtc);
         context.HistoricalFactRepository.Verify(
             repository => repository.AppendRevisionAsync(
                 It.Is<HistoricalFact>(fact => fact.Id == existing.CanonicalFactId
