@@ -247,6 +247,8 @@ Une absence d’archive n’est acceptable qu’avec les familles de sources off
 
 ### Audit images utilisées dans les articles
 
+Pour chaque article, contrôler la recherche d’une photographie de l’événement selon la [règle de l’étape 8](08-history-timelines-and-articles.md#photographier-lévénement-raconté), y compris lorsque seule une vue de contexte ou aucune image n’a été retenue. Une photographie acceptable de l’événement disponible mais écartée au profit d’une simple vue générale impose une correction avant publication. Conserver les recherches et les éventuelles exclusions dans le registre interne.
+
 Pour chaque article avec image :
 
 - l’image existe déjà dans l’export ou est créée dans le même JSON ;
@@ -257,7 +259,9 @@ Pour chaque article avec image :
 - un Preview sans avertissement n’est pas considéré comme une validation de ces clés d’images ;
 - la légende est localisée dans les langues du lot ;
 - la légende ne contient pas de justification technique, juridique ou documentaire ;
-- pour incident/accident, une photo réelle non graphique et juridiquement réutilisable doit être privilégiée si disponible ;
+- la photographie représente en priorité l’événement précis raconté, dont le lieu et la période ont été vérifiés ; pour un incendie, une vraie photographie de cet incendie est utilisée lorsqu’elle est disponible et acceptable selon l’étape 5 ;
+- pour un accident corporel, aucune image gore ni photographie montrant la personne impactée au moment de l’accident n’est utilisée, même si elle n’est pas identifiable ; une photographie de l’intervention, des suites matérielles ou du lieu respecte également les exclusions d’images humiliantes, intrusives ou centrées sur une victime identifiable ;
+- aucune photographie d’un autre événement, reconstitution ou image générée n’est présentée comme une photographie réelle du fait raconté ;
 - si l’image est seulement contextuelle, elle doit situer le lieu ou l’attraction sans faire croire qu’elle montre l’événement.
 
 ## Audit horaires et événements

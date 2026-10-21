@@ -1,6 +1,20 @@
 {
-  "version": "6.0.8",
+  "version": "6.0.9",
   "history": [
+    {
+      "version": "6.0.9",
+      "releasedAt": "2026-10-21",
+      "labels": {
+        "fr": "Illustrations des articles mieux contextualisées",
+        "en": "Better contextualized article images",
+        "de": "Passendere Bilder für Artikel",
+        "nl": "Passendere afbeeldingen bij artikelen",
+        "it": "Immagini degli articoli più pertinenti",
+        "es": "Imágenes de artículos mejor contextualizadas",
+        "pt": "Imagens dos artigos mais contextualizadas",
+        "pl": "Ilustracje artykułów lepiej dopasowane do wydarzeń"
+      }
+    },
     {
       "version": "6.0.8",
       "releasedAt": "2026-10-21",
