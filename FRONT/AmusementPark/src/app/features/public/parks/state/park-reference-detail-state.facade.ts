@@ -19,6 +19,7 @@ import { ParkOperator } from '@app/models/parks/park-operator';
 import { ApiResponse } from '@app/models/shared/api_reponse';
 import { PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
@@ -78,16 +79,19 @@ export class ParkReferenceDetailStateFacade {
 
     if (sourceData.kind === 'founder') {
       return mapNullable(sourceData.founder, (founder: ParkFounder) =>
-        mapParkFounderToReferenceDetailViewModel(founder, currentLanguage, sourceData.images));
+        mapParkFounderToReferenceDetailViewModel(founder, currentLanguage, sourceData.images,
+          this.resolveCountryName(founder.nationalityCountryCode, currentLanguage)));
     }
 
     if (sourceData.kind === 'manufacturer') {
       return mapNullable(sourceData.manufacturer, (manufacturer: AttractionManufacturer) =>
-        mapAttractionManufacturerToReferenceDetailViewModel(manufacturer, currentLanguage, sourceData.images, sourceData.attractions, sourceData.attractionsPagination));
+        mapAttractionManufacturerToReferenceDetailViewModel(manufacturer, currentLanguage, sourceData.images, sourceData.attractions, sourceData.attractionsPagination,
+          this.resolveCountryName(manufacturer.contactDetails?.countryCode, currentLanguage)));
     }
 
     return mapNullable(sourceData.operator, (operator: ParkOperator) =>
-      mapParkOperatorToReferenceDetailViewModel(operator, currentLanguage, sourceData.images));
+      mapParkOperatorToReferenceDetailViewModel(operator, currentLanguage, sourceData.images,
+        this.resolveCountryName(operator.contactDetails?.countryCode, currentLanguage)));
   });
 
   constructor(
@@ -97,12 +101,18 @@ export class ParkReferenceDetailStateFacade {
     @Inject(PARK_REFERENCE_DETAIL_STATE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: ParkReferenceDetailStateImagesApiServicePort,
     @Inject(PARK_REFERENCE_DETAIL_STATE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: ParkReferenceDetailStateParkItemsApiServicePort,
     private readonly destroyRef: DestroyRef,
-    private readonly ssrHttpStatusService: SsrHttpStatusService
+    private readonly ssrHttpStatusService: SsrHttpStatusService,
+    private readonly countryDisplayService: CountryDisplayService
   ) {
   }
 
   setCurrentLanguage(language: string): void {
     this.currentLanguageSignal.set(language || 'en');
+  }
+
+  private resolveCountryName(countryCode: string | null | undefined, language: string): string | null {
+    const name: string | null = this.countryDisplayService.resolveLocalizedCountryName(countryCode, language);
+    return name && name !== countryCode?.trim().toUpperCase() ? name : null;
   }
 
   loadReference(kind: ParkReferenceKind, id: string): void {

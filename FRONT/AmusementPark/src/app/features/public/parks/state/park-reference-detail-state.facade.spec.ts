@@ -8,6 +8,8 @@ import { AttractionManufacturer } from '@app/models/parks/attraction-manufacture
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ApiResponse } from '@app/models/shared/api_reponse';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { ParkReferenceKind } from '../models/park-reference-detail-view.model';
 import {
   PARK_REFERENCE_DETAIL_STATE_IMAGES_API_SERVICE_PORT,
   ParkReferenceDetailStateImagesApiServicePort,
@@ -26,6 +28,8 @@ describe('ParkReferenceDetailStateFacade', () => {
   let imagesApiService: MockedObject<ParkReferenceDetailStateImagesApiServicePort>;
   let manufacturersApiService: MockedObject<ParkReferenceDetailStateManufacturersApiServicePort>;
   let parkItemsApiService: MockedObject<ParkReferenceDetailStateParkItemsApiServicePort>;
+  let parkFoundersApiService: MockedObject<ParkReferenceDetailStateParkFoundersApiServicePort>;
+  let parkOperatorsApiService: MockedObject<ParkReferenceDetailStateParkOperatorsApiServicePort>;
   let facade: ParkReferenceDetailStateFacade;
 
   beforeEach(() => {
@@ -42,13 +46,13 @@ describe('ParkReferenceDetailStateFacade', () => {
         .fn()
         .mockName('ParkItemsApiService.getParkItemsPaginated'),
     } as unknown as MockedObject<ParkReferenceDetailStateParkItemsApiServicePort>;
-    const parkFoundersApiService: MockedObject<ParkReferenceDetailStateParkFoundersApiServicePort> =
+    parkFoundersApiService =
       {
         getParkFounderById: vi
           .fn()
           .mockName('ParkFoundersApiService.getParkFounderById'),
       } as unknown as MockedObject<ParkReferenceDetailStateParkFoundersApiServicePort>;
-    const parkOperatorsApiService: MockedObject<ParkReferenceDetailStateParkOperatorsApiServicePort> =
+    parkOperatorsApiService =
       {
         getParkOperatorById: vi
           .fn()
@@ -178,6 +182,55 @@ describe('ParkReferenceDetailStateFacade', () => {
     ).toEqual(['Ride 2']);
     expect(facade.reference()?.attractionsPagination?.currentPage).toBe(2);
   });
+
+  for (const kind of ['founder', 'operator', 'manufacturer'] as const) {
+    it(`localizes the ${kind} country in all supported languages without reloading`, () => {
+      loadCountryReference(kind, 'IT');
+      const expectedNames: Record<string, string> = {
+        fr: 'Italie', en: 'Italy', de: 'Italien', nl: 'Italië',
+        it: 'Italia', es: 'Italia', pt: 'Itália', pl: 'Włochy',
+      };
+
+      for (const [language, name] of Object.entries(expectedNames)) {
+        facade.setCurrentLanguage(language);
+        expect(countryFact(kind)).toMatchObject({ value: name, isMonospace: false });
+      }
+
+      const apiMethod = kind === 'founder' ? parkFoundersApiService.getParkFounderById
+        : kind === 'operator' ? parkOperatorsApiService.getParkOperatorById
+          : manufacturersApiService.getAttractionManufacturerById;
+      expect(apiMethod).toHaveBeenCalledTimes(1);
+    });
+
+    it.each([null, '', 'not-a-country', 'QX'])(`omits an unresolved ${kind} country: %s`, (code) => {
+      loadCountryReference(kind, code);
+      expect(countryFact(kind)).toBeUndefined();
+    });
+
+    it(`never displays the ${kind} raw code when country names are unavailable`, () => {
+      vi.spyOn(TestBed.inject(CountryDisplayService), 'resolveLocalizedCountryName').mockReturnValue('PT');
+      loadCountryReference(kind, ' pt ');
+      expect(countryFact(kind)).toBeUndefined();
+    });
+  }
+
+  function loadCountryReference(kind: ParkReferenceKind, countryCode: string | null): void {
+    parkFoundersApiService.getParkFounderById.mockReturnValue(of({
+      id: 'reference-1', name: 'Founder', nationalityCountryCode: countryCode,
+    }));
+    parkOperatorsApiService.getParkOperatorById.mockReturnValue(of({
+      id: 'reference-1', name: 'Operator', contactDetails: { countryCode },
+    }));
+    manufacturersApiService.getAttractionManufacturerById.mockReturnValue(of({
+      ...buildManufacturer(), contactDetails: { countryCode },
+    }));
+    facade.loadReference(kind, 'reference-1');
+  }
+
+  function countryFact(kind: ParkReferenceKind) {
+    const labelKey = kind === 'founder' ? 'parks.reference.facts.nationality' : 'parks.reference.facts.country';
+    return facade.reference()?.facts.find((fact) => fact.labelKey === labelKey);
+  }
 });
 
 function buildManufacturer(): AttractionManufacturer {
