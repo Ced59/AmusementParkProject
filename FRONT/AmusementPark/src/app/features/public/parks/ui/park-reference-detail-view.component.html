@@ -132,7 +132,7 @@
                         <strong>{{ attraction.name }}</strong>
                         <span>{{ attraction.parkName }}</span>
                       </span>
-                      <span class="attraction-card__meta">{{ attraction.type }}</span>
+                      <span class="attraction-card__meta">{{ attraction.typeLabelKey | translate }}</span>
                     </a>
                   } @else {
                     <article class="attraction-card">
@@ -141,7 +141,7 @@
                         <strong>{{ attraction.name }}</strong>
                         <span>{{ attraction.parkName }}</span>
                       </span>
-                      <span class="attraction-card__meta">{{ attraction.type }}</span>
+                      <span class="attraction-card__meta">{{ attraction.typeLabelKey | translate }}</span>
                     </article>
                   }
                 }

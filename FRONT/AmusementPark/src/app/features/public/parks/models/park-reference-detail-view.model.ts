@@ -17,7 +17,7 @@ export interface ParkReferenceAttractionViewModel {
   name: string;
   parkName: string;
   category: string;
-  type: string;
+  typeLabelKey: string;
   routerLink: string[] | null;
 }
 
