@@ -1031,30 +1031,38 @@ function Import-ParkPhoto {
     }
 
     Test-AllowedImageOwnership
-    $temporaryPath = Join-Path ([IO.Path]::GetTempPath()) ("amusementpark-codex-" + [Guid]::NewGuid().ToString('N') + '.image')
+    $temporaryPath = $null
+    $resolvedPath = $null
     $uploadedImageId = $null
     try {
-        & curl.exe --fail --location --max-redirs 5 --proto '=http,https' --proto-redir '=http,https' `
-            --connect-timeout 15 --max-time 90 --max-filesize $script:MaximumImageBytes `
-            --silent --show-error --output $temporaryPath -- $SourceUrl
-        if ($LASTEXITCODE -ne 0) {
-            throw "Image download failed with curl exit code $LASTEXITCODE."
+        if ([string]::IsNullOrWhiteSpace($FilePath)) {
+            $temporaryPath = Join-Path ([IO.Path]::GetTempPath()) ("amusementpark-codex-" + [Guid]::NewGuid().ToString('N') + '.image')
+            & curl.exe --fail --location --max-redirs 5 --proto '=http,https' --proto-redir '=http,https' `
+                --connect-timeout 15 --max-time 90 --max-filesize $script:MaximumImageBytes `
+                --silent --show-error --output $temporaryPath -- $SourceUrl
+            if ($LASTEXITCODE -ne 0) {
+                throw "Image download failed with curl exit code $LASTEXITCODE."
+            }
+            $resolvedPath = $temporaryPath
+        }
+        else {
+            $resolvedPath = Resolve-RequiredFile -Path $FilePath -ParameterName 'FilePath'
         }
 
-        $fileInfo = Get-Item -LiteralPath $temporaryPath
+        $fileInfo = Get-Item -LiteralPath $resolvedPath
         if ($fileInfo.Length -le 0 -or $fileInfo.Length -gt $script:MaximumImageBytes) {
-            throw 'The downloaded image must be between 1 byte and 10 MB.'
+            throw 'The image file must be between 1 byte and 10 MB.'
         }
         $apiHost = ([Uri](Get-NormalizedApiBaseUrl $ApiBaseUrl)).Host
         $isProductionHost = [string]::Equals($apiHost, 'amusement-parks.fun', [StringComparison]::OrdinalIgnoreCase) -or
             [string]::Equals($apiHost, 'www.amusement-parks.fun', [StringComparison]::OrdinalIgnoreCase)
         if ($isProductionHost -and
             $fileInfo.Length -gt $script:MaximumProductionImageUploadBytes) {
-            throw "The downloaded image is $($fileInfo.Length) bytes. The production ingress accepts source images up to $script:MaximumProductionImageUploadBytes bytes once the multipart envelope is included. Select an official optimized JPEG, PNG or WebP source instead."
+            throw "The image file is $($fileInfo.Length) bytes. The production ingress accepts source images up to $script:MaximumProductionImageUploadBytes bytes once the multipart envelope is included. Select an official optimized JPEG, PNG or WebP source instead."
         }
 
-        $contentType = Get-ImageContentType -Path $temporaryPath
-        $upload = Invoke-MultipartImageUpload -Path $temporaryPath -ContentType $contentType
+        $contentType = Get-ImageContentType -Path $resolvedPath
+        $upload = Invoke-MultipartImageUpload -Path $resolvedPath -ContentType $contentType
         $uploadedImageId = [string]$upload.id
         if ([string]::IsNullOrWhiteSpace($uploadedImageId)) {
             throw 'The upload response did not contain an image id.'
@@ -1108,7 +1116,7 @@ function Import-ParkPhoto {
         throw
     }
     finally {
-        if (Test-Path -LiteralPath $temporaryPath) {
+        if ($null -ne $temporaryPath -and (Test-Path -LiteralPath $temporaryPath -PathType Leaf)) {
             Remove-Item -LiteralPath $temporaryPath -Force
         }
     }

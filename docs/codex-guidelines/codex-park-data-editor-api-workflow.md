@@ -360,6 +360,8 @@ Le paramètre `SetAsCurrent` vaut `true` par défaut dans le client. Codex doit 
 
 Sur l’API publique de production, l’enveloppe multipart reste limitée à 1 Mio. Le client refuse donc avant l’upload toute image source dépassant 960 Kio et demande une variante officielle optimisée. Il ne faut ni compresser arbitrairement une œuvre, ni contourner la route officielle, ni réessayer le même fichier après un HTTP 413.
 
+`ImportPhoto` accepte aussi `-FilePath` pour un fichier local déjà téléchargé et inspecté, notamment une photographie extraite sans retouche d’un document officiel archivé. `-SourceUrl` reste obligatoire et désigne la source publique exacte de provenance, conservée dans les métadonnées. Le client applique les mêmes limites de taille, formats et propriétaires, puis le même upload, rattachement et enregistrement des métadonnées. Il ne supprime jamais le fichier fourni par l’opérateur. Ce mode ne dispense ni des droits de réutilisation, ni de l’inspection visuelle, ni de la traçabilité de l’extraction ; il ne doit pas servir à contourner un refus d’accès à la source.
+
 Exemple avec un fichier de métadonnées localisées :
 
 ```powershell
