@@ -158,3 +158,5 @@ if ($message -notlike "*ended with status 'Failed'*" -or $script:exportPollCount
 }
 
 Write-Output 'Park data editor completed-export recovery tests passed.'
+
+& (Join-Path $PSScriptRoot 'park-data-editor.photo-import.tests.ps1')
