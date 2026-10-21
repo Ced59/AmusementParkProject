@@ -11,6 +11,24 @@ import { ImageDisplayComponent } from '@shared/components/image-display/image-di
 import { PARK_DETAIL_HERO_IMAGE_SIZES, PARK_DETAIL_HERO_IMAGE_WIDTH, PARK_DETAIL_MAIN_PHOTO_SIZES } from '../models/park-detail-image-layout';
 
 describe('ParkDetailViewComponent gallery accessible name', () => {
+  it('shows the localized country in the hero location without a raw country-code badge', async () => {
+    await TestBed.configureTestingModule({
+      imports: [ParkDetailViewComponent], providers: provideCommonTestDependencies()
+    }).overrideComponent(ParkDetailViewComponent, {
+      set: { imports: [TranslateModule, RouterLink, SafeExternalUrlPipe, SafeRichHtmlPipe, ImageDisplayComponent], schemas: [NO_ERRORS_SCHEMA] }
+    }).compileComponents();
+    const fixture = TestBed.createComponent(ParkDetailViewComponent);
+    const park = mapParkToDetailViewModel({
+      id: 'park-1', name: 'Example Park', countryCode: 'PT', city: 'Quarteira',
+      status: 'Operating', latitude: 37, longitude: -8
+    }, 'pl');
+    fixture.componentRef.setInput('park', { ...park, countryName: 'Portugalia', locationLine: 'Quarteira · Portugalia' });
+    fixture.detectChanges();
+    const hero: HTMLElement = fixture.nativeElement.querySelector('.park-banner__meta');
+    expect(hero.textContent).toContain('Quarteira · Portugalia');
+    expect(hero.textContent).not.toMatch(/\bPT\b/);
+  });
+
   it('preserves the gallery name and distinguishes an actual hero photo from the logo fallback', async () => {
     await TestBed.configureTestingModule({
       imports: [ParkDetailViewComponent], providers: provideCommonTestDependencies()

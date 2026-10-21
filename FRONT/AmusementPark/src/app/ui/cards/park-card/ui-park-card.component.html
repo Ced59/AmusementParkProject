@@ -2,12 +2,6 @@
   <article class="ui-park-card" [class.ui-park-card--compact]="compact" [attr.aria-label]="currentPark.name">
     <div class="ui-park-card__visual" [class.ui-park-card__visual--placeholder]="!hasLogoImageId">
       <div class="ui-park-card__badges">
-        @if (currentPark.countryCode) {
-          <app-ui-chip tone="soft" iconClass="pi pi-map-marker">
-            {{ currentPark.countryCode }}
-          </app-ui-chip>
-        }
-
         @if (hasSecondaryLocation) {
           <app-ui-chip tone="sky" iconClass="pi pi-building">
             {{ currentPark.city }}
