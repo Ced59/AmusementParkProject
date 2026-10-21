@@ -100,10 +100,18 @@ def image_identity(runtime, reference, configured):
     image = json.loads(runtime.run("docker", "image", "inspect", reference))[0]
     if not IMAGE_ID.fullmatch(image["Id"]):
         raise DeploymentError("Invalid Docker image identity")
-    digests = [value for value in image.get("RepoDigests", [])
+    recorded = image.get("RepoDigests") or []
+    digests = [value for value in recorded
                if re.fullmatch(re.escape(repository(configured)) + r"@sha256:[0-9a-f]{64}", value)]
     if configured.startswith("ghcr.io/") and len(digests) != 1:
-        raise DeploymentError("Cannot capture one retrievable production image digest")
+        # Only report bounded registry names and counts. Docker inspection also
+        # contains application environment and labels, which must stay private.
+        repositories = sorted({value.split("@", 1)[0] for value in recorded
+                               if re.fullmatch(r"[a-z0-9][a-z0-9._/-]{0,199}@sha256:[0-9a-f]{64}", value)})
+        inventory = ",".join(repositories[:4]) or "none"
+        raise DeploymentError("Cannot capture one retrievable production image digest "
+                              f"(matching={len(digests)}, recorded={len(recorded)}, "
+                              f"repositories={inventory})")
     if configured.startswith("ghcr.io/"):
         runtime.run("docker", "manifest", "inspect", digests[0])
     return {"reference": digests[0] if len(digests) == 1 else image["Id"], "id": image["Id"]}
@@ -140,8 +148,13 @@ def capture(runtime, directory):
         raise DeploymentError("Unknown candidates prevent application rollback capture")
     pair = current_pair(runtime)
     runtime.verify_pair(pair, candidate=False)
-    previous = {service: image_identity(runtime, runtime.inspect(pair[service]["id"])["Image"],
-                                       forward[service]["reference"]) for service in SERVICES}
+    previous = {}
+    for service in SERVICES:
+        try:
+            previous[service] = image_identity(runtime, runtime.inspect(pair[service]["id"])["Image"],
+                                               forward[service]["reference"])
+        except DeploymentError as error:
+            raise DeploymentError(f"Application rollback capture for {service}: {error}") from error
     if all(previous[service]["id"] == forward[service]["id"] for service in SERVICES):
         return record  # Re-deploy of the same generation; preserve its checkpoint.
     record = {"version": 1, "phase": "ready", "project": runtime.project,

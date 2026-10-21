@@ -116,8 +116,50 @@ class ApplicationRollbackTests(unittest.TestCase):
     def test_production_images_without_matching_registry_digest_refuse(self):
         self.runtime.run.side_effect = None
         self.runtime.run.return_value = json.dumps([{"Id": self.old["api"], "RepoDigests": []}])
-        with self.assertRaisesRegex(DeploymentError, "retrievable production"):
+        with self.assertRaisesRegex(DeploymentError, r"matching=0, recorded=0, repositories=none"):
             rollback.image_identity(self.runtime, self.old["api"], "ghcr.io/test/api:tag")
+
+    def test_digest_diagnostics_distinguish_ambiguity_and_repository_mismatch_without_mutation(self):
+        self.runtime.run.side_effect = None
+        for digests, expected in [
+                (["ghcr.io/test/api@sha256:" + digit * 64 for digit in "12"],
+                 "matching=2, recorded=2, repositories=ghcr.io/test/api"),
+                (["ghcr.io/other/api@" + self.old["api"]],
+                 "matching=0, recorded=1, repositories=ghcr.io/other/api")]:
+            with self.subTest(expected=expected):
+                self.runtime.run.reset_mock()
+                self.runtime.run.return_value = json.dumps([{"Id": self.old["api"], "RepoDigests": digests,
+                                                            "Config": {"Env": ["SECRET=never-log-this"]}}])
+                with self.assertRaises(DeploymentError) as caught:
+                    rollback.image_identity(self.runtime, self.old["api"], "ghcr.io/test/api:tag")
+                self.assertIn(expected, str(caught.exception))
+                self.assertNotIn("never-log-this", str(caught.exception))
+                self.runtime.run.assert_called_once_with("docker", "image", "inspect", self.old["api"])
+
+    def test_digest_diagnostics_are_bounded_and_reject_unsafe_repository_text(self):
+        self.runtime.run.side_effect = None
+        digests = ["ghcr.io/other/repo" + str(number) + "@" + self.old["api"] for number in range(8)]
+        digests.extend(["SECRET=never-log-this\n@" + self.old["api"], "x" * 10000 + "@" + self.old["api"]])
+        self.runtime.run.return_value = json.dumps([{"Id": self.old["api"], "RepoDigests": digests}])
+        with self.assertRaises(DeploymentError) as caught:
+            rollback.image_identity(self.runtime, self.old["api"], "ghcr.io/test/api:tag")
+        message = str(caught.exception)
+        self.assertIn("matching=0, recorded=10", message)
+        self.assertIn("ghcr.io/other/repo3", message)
+        self.assertNotIn("ghcr.io/other/repo4", message)
+        self.assertNotIn("SECRET", message)
+        self.assertNotIn("\n", message)
+        self.assertLess(len(message), 1000)
+
+    def test_capture_failure_identifies_service_and_preserves_checkpoint_and_environment(self):
+        original = self.env.read_bytes()
+        with patch.object(rollback, "image_identity", side_effect=DeploymentError("matching=2")):
+            with self.assertRaisesRegex(DeploymentError, "capture for api: matching=2"):
+                self.capture()
+        self.assertFalse(rollback.checkpoint_path(self.directory).exists())
+        self.assertEqual(self.env.read_bytes(), original)
+        self.transaction.prepare.assert_not_called()
+        self.transaction.execute.assert_not_called()
 
     def test_exact_approval_and_unchanged_configuration_are_required_before_any_write(self):
         record = self.capture()
