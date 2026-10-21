@@ -1,6 +1,20 @@
 {
-  "version": "6.0.5",
+  "version": "6.0.6",
   "history": [
+    {
+      "version": "6.0.6",
+      "releasedAt": "2026-10-21",
+      "labels": {
+        "fr": "Fiabilité des mises à jour améliorée",
+        "en": "More reliable updates",
+        "de": "Zuverlässigere Aktualisierungen",
+        "nl": "Betrouwbaardere updates",
+        "it": "Aggiornamenti più affidabili",
+        "es": "Actualizaciones más fiables",
+        "pt": "Atualizações mais fiáveis",
+        "pl": "Bardziej niezawodne aktualizacje"
+      }
+    },
     {
       "version": "6.0.5",
       "releasedAt": "2026-10-21",

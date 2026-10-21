@@ -103,7 +103,7 @@ def image_identity(runtime, reference, configured):
     recorded = image.get("RepoDigests") or []
     digests = [value for value in recorded
                if re.fullmatch(re.escape(repository(configured)) + r"@sha256:[0-9a-f]{64}", value)]
-    if configured.startswith("ghcr.io/") and len(digests) != 1:
+    if configured.startswith("ghcr.io/") and not digests:
         # Only report bounded registry names and counts. Docker inspection also
         # contains application environment and labels, which must stay private.
         repositories = sorted({value.split("@", 1)[0] for value in recorded
@@ -113,7 +113,16 @@ def image_identity(runtime, reference, configured):
                               f"(matching={len(digests)}, recorded={len(recorded)}, "
                               f"repositories={inventory})")
     if configured.startswith("ghcr.io/"):
-        runtime.run("docker", "manifest", "inspect", digests[0])
+        # Rebuilding an unchanged image with new attestations can attach several
+        # immutable registry manifests to the same image configuration. Pin one
+        # deterministic alias only after proving its local image ID is exactly
+        # the running image and its immutable manifest is still retrievable.
+        digest = min(digests)
+        selected = json.loads(runtime.run("docker", "image", "inspect", digest))[0]
+        if selected["Id"] != image["Id"]:
+            raise DeploymentError("Rollback registry digest does not match the running image")
+        runtime.run("docker", "manifest", "inspect", digest)
+        return {"reference": digest, "id": image["Id"]}
     return {"reference": digests[0] if len(digests) == 1 else image["Id"], "id": image["Id"]}
 
 
