@@ -519,12 +519,16 @@ function Wait-ParkGraphExportJob {
 
     $snapshot = $InitialSnapshot
     $deadlineUtc = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
-    while ([string]$snapshot.status -in @('Queued', 'Running')) {
+    # The start response omits download credentials, even if the job has already completed.
+    $refreshInitialCompletedSnapshot = [string]$snapshot.status -eq 'Completed' -and
+        ([string]::IsNullOrWhiteSpace([string]$snapshot.downloadUrl) -or [long]$snapshot.contentLength -le 0)
+    while ([string]$snapshot.status -in @('Queued', 'Running') -or $refreshInitialCompletedSnapshot) {
         if ([DateTime]::UtcNow -ge $deadlineUtc) {
             throw "The park export job timed out after $TimeoutSeconds seconds."
         }
 
         Start-Sleep -Seconds 5
+        $refreshInitialCompletedSnapshot = $false
         $jobId = [Uri]::EscapeDataString([string]$snapshot.jobId)
         $snapshot = Invoke-ParkDataEditorJsonApi -Method GET `
             -RelativePath "admin/park-graph-upserts/bulk/export-jobs/$jobId" `
