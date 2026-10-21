@@ -20,7 +20,7 @@ Chaque parc suit les étapes 0 à 9 de [l’orchestrateur](../codex-guidelines/p
 
 ## Conditions de traitement et de sortie
 
-Une ligne active reste en place jusqu’au succès cumulé de l’intégration, de l’audit final, de la publication des données et de Facebook. Un score élevé, une Preview acceptée, la seule création de la fiche ou un classement de pertinence ne suffisent pas.
+Chaque ligne reste définitivement dans cet inventaire, y compris après intégration, conformément à l’instruction explicite du propriétaire du 20 octobre 2026. Sa case est cochée seulement après le succès cumulé de l’audit final, de la publication des données et de Facebook. Les dates, scores et liens de publication sont alors ajoutés à la ligne et au journal ci-dessous. Un score élevé, une Preview acceptée, la seule création de la fiche ou un classement de pertinence ne suffisent pas. Une identité non pertinente ou fusionnée reste également documentée avec sa décision et ses sources, sans être présentée comme publiée.
 
 1. Résoudre identité, doublons, pertinence et cycle de vie ; garder les sources, IDs et lacunes dans l’état consolidé. Une attraction située dans un vrai parc reste un parkItem. Aucun nettoyage destructif ou masquage d’une donnée publique n’est implicite.
 2. Rechercher offre actuelle, annonces confirmées et inventaire fermé ou déplacé ; inclure zones, attractions, restaurants, boutiques, services, hébergements et autres lieux visiteurs nommables et sourçables. Géolocaliser chaque lieu fixe identifiable sans point inventé.
@@ -28,26 +28,37 @@ Une ligne active reste en place jusqu’au succès cumulé de l’intégration, 
 4. Auditer logo officiel, vues générales, images par attraction, cartes officielles annuelles actuelles et archivées, références, histoire, articles durables, calendrier officiel complet et tarifs applicables. Les lacunes ne sont acceptables qu’après recherche documentée ; ne pas remplacer un sujet manquant par un visuel trompeur.
 5. Effectuer l’export complet frais avant l’audit final ; contrôler encodage UTF-8, profondeur, corpus transversal, sources et couverture chiffrée. Exiger un score projeté supérieur à 95 et zéro bloqueur, puis publier de façon ciblée les contenus et médias, les articles et enfin la fiche nouvelle. Recalculer le score réel après publication et vérifier les pages anonymes, historiques et contenus attendus.
 6. Résoudre le brouillon Facebook de l’URL canonique. Conserver une annonce existante Published ; sinon employer l’annonce par défaut et son chemin idempotent. Une annonce Failed se reprend seulement avec son ID exact et la commande officielle de reprise, après réconciliation ; jamais par un nouveau post manuel de secours. Pour une attraction autonome, vérifier l’historique exact de sa cible et ne pas supposer la présence d’une clé d’annonce de parc.
-7. Retirer la ligne seulement après publication et score réel supérieur à 95 sans bloqueur, puis annonce Facebook confirmée Published. Conserver les preuves, scores, URLs et lacunes factuelles dans le bilan de lot. Regrouper normalement dix retraits dans une PR documentaire cumulative avec un seul incrément de version.
+7. Marquer la ligne intégrée, sans jamais l’effacer, après publication et score réel supérieur à 95 sans bloqueur, puis annonce Facebook confirmée Published. Conserver les preuves, dates, scores, URLs et lacunes factuelles dans le bilan de lot. Regrouper normalement dix intégrations confirmées dans une PR documentaire cumulative avec un seul incrément de version.
+
+## Journal des intégrations
+
+| Entité | Avancement vérifié | Publication du site après audit | Facebook | Preuve et travail restant |
+| --- | --- | --- | --- | --- |
+| Aquashow Family Park | Intégration en cours : 56 lots appliqués, 76 parkItems dont onze historiques ; descriptions du parc, des trois zones et des 76 éléments rédigées dans les huit langues | Déjà visible avant ce chantier ; export complet de contrôle reçu ; audit final en cours | Aucune annonce envoyée dans ce chantier | 35 nouveaux éléments et trois nouvelles références de constructeurs conservés privés ; 640 descriptions localisées du parc, des zones et des éléments. Première ouverture indéterminée après découverte d’une archive RTP de 1994 contredisant 2001. Calendrier Indoor jusqu’au 30 avril 2027, soit 212 jours ; 42 offres d’entrée et parking gratuit ; 57 positions vérifiées. 122 images enregistrées, dont 84 nouveaux fichiers privés ; deux doublons privés exclus de la future publication. Trois rattachements de photos corrigés sans suppression. Exploitant Celoli et références utiles enrichis ; Technical Park et Fabbri existants reliés aux attractions. Quatorze événements historiques conservés, dont trois doublons masqués et quatre nouveaux brouillons ; deux articles dans les huit langues, celui de Flash Coaster encore privé. Trois photos historiques de Swim With Sea Lions ajoutées depuis le site de son ancien exploitant. Score projeté de 95 avec blocage éditorial à corriger ; biographies communes Fabbri et MACK préparées, en attente d’autorisation ciblée. Relecture complète des huit langues terminée, corrections ciblées enregistrées et rejouées sans modification restante ; 249 opérations de médias vérifiées, dont une réponse perdue rapprochée d’un export ciblé ; textes alternatifs de 121 images corrigés dans les huit langues. Aucun doublon de champs ni défaut d’encodage détecté après ces corrections. Correction de l’affichage des pays livrée en production 6.0.6 (PR #921) après résolution du blocage Docker par la PR #924 ; pages publiques du parc et de Watercoaster vérifiées sur mobile et ordinateur, sans débordement ni code pays brut. Contrôle final des sources, du score et de la publication encore requis avant Facebook. |
+| Magikland | Intégration en cours : 23 lots appliqués, six zones et 41 parkItems privés, dont 23 attractions actuelles et quatre anciennes | Parc, six zones, vingt-trois attractions actuelles, quatre historiques et quatorze services, restaurants ou boutique rédigés et relus dans les huit langues ; audit final à poursuivre | Aucune annonce envoyée | Ouverture du site de Penafiel confirmée au 13 mars 2010 ; réouverture sous le nom Magikland le 16 juin 2012. 40 nouvelles fiches privées, coaster existant conservé et fausse précision au 1er janvier supprimée. 14 emplacements précis vérifiés ; 104 conditions d’accès issues des 23 pages officielles, avec nuances entre recommandations et interdictions. Plans officiels 2017, 2019 et 2026 stockés ; huit photos privées créditées sous licence CC BY 2.0. Anciennes attractions Zambeze, Enterprise, Western Train et Carrossel Pirata intégrées. Exploitant Luso Parques créé et rattaché, quatre constructeurs existants réutilisés et leurs 32 biographies relues sans modification ; six mesures ou capacités vérifiées. Calendrier officiel complet du 1er mars au 30 septembre 2026 : 214 jours, sept dates complètes distinctes des fermetures ; aucun calendrier futur publié trouvé. Seize offres conservées uniquement dans le relevé historique 2026, billetterie officielle en maintenance. Six jalons historiques privés : quatre pour le parc, de l’ouverture en 2010 à la relance de juin 2012, et deux pour Montanha Mágica et Zambeze. Article sur la relance de 2012 intégré dans les huit langues. Logo officiel identifié ; utilisation du logo et des photos officielles restreinte par les conditions du détenteur, autorisation antérieure à vérifier. Score projeté 89/100 ; blocage API : logo manquant. Export complet rapproché des textes rédigés ; 1 672 champs localisés, aucun défaut d’encodage ni doublon de paragraphes détecté. Relecture transversale finale et couverture photographique encore à compléter avant publication. |
+| Pena Aventura Park | **Intégration terminée le 21 octobre 2026** ; ligne conservée dans l’inventaire | [Fiche publique](https://amusement-parks.fun/fr/park/55afb230-332d-40a4-8290-a17e8d52566c/pena-aventura-park), score réel **100/100**, aucun bloqueur | [Annonce confirmée Published](https://www.facebook.com/1285475681307050/posts/122123973321424431) | Quatre zones et 41 parkItems, dont quinze attractions actuelles et six historiques au statut actuel indéterminé ; 376 descriptions rédigées et relues dans huit langues. 73 images publiques liées, dont 72 imports audités, logo officiel et cinq vues générales ; dix-huit attractions et huit services illustrés, treize emplacements précis. Plans officiels 2014 et 2026, téléchargements publics vérifiés. 43 conditions d’accès ; 365 jours du 21 octobre 2026 au 20 octobre 2027 sans trou ni chevauchement ; 42 offres actuelles. Cinq jalons canoniques publiés et un article en huit langues, pages anonymes vérifiées. Export de publication rapproché sur 11 241 valeurs sans écart ; encodage et contrôle transversal sans anomalie après relecture. Frise réparée par la PR #925 ; traductions des caractéristiques corrigées par la PR #926, version 6.0.8 déployée et contrôlée dans huit langues et quatre largeurs d’écran. Rejouer la publication du parc et la réparation historique ne produit aucune modification. Images de l’hôtel exclues selon ses conditions de réutilisation ; lacunes photographiques, géographiques et descriptions courtes documentées individuellement après recherche. |
+| Porta do Mezio | Intégration en cours : cinq lots appliqués, deux zones et 31 parkItems dont trente nouveaux brouillons | Fiche et nouveaux contenus privés ; ouverture au public précisée à novembre 2009 | Aucune annonce envoyée | Sources officielles et plan non millésimé inspectés ; parcours aventure, village miniature, musées, ferme pédagogique, espaces animaliers, piscine, jeux et services inventoriés. Coaster existant conservé sous le libellé descriptif Mini Montanha Russa, ouverture précisée à 2023 sans faux jour ; cinq emplacements précis vérifiés. Recherche historique et géolocalisation en cours ; descriptions en huit langues, médias, calendrier, tarifs et audit final à réaliser. |
+
+**Bilan vérifié : 1 intégration terminée sur 112 entrées ; 111 entrées restent à traiter ou qualifier ; 1 nouvelle publication de parc et 1 annonce Facebook confirmée publiée.** Les 110 entrées initiales, Lusitanix et le parc d’aventure de Carvalhelhos restent présents dans les rubriques ci-dessous.
 
 Les horaires et tarifs courants ne sont applicables qu’aux entités Operating. Une fermeture de saison n’est pas une fermeture définitive. La météo est alimentée par batch : une prévision momentanément vide ne bloque pas la publication si l’affichage se comporte correctement.
 
 ## Compteurs actifs
 
-| Catégorie | Initial | Restant |
-| --- | ---: | ---: |
-| Fiche déjà publique à auditer | 1 | 1 |
-| Fiches privées existantes de parcs en activité | 4 | 4 |
-| Fiches existantes à reprendre historiquement | 6 | 6 |
-| Parcs thématiques absents de la photographie PT | 8 | 8 |
-| Parcs aquatiques absents de la photographie PT | 22 | 22 |
-| Parcs animaliers et établissements aquatiques permanents à qualifier | 23 | 23 |
-| Parcs d’aventure à installations fixes | 22 | 22 |
-| Parcs familiaux indoor et de plein air | 11 | 11 |
-| Parcs historiques absents de la photographie PT | 6 | 6 |
-| Projets annoncés ou historiques non réalisés | 4 | 4 |
-| Attractions autonomes à intégrer ou à qualifier | 3 | 3 |
-| **Total des lignes actives à traiter ou qualifier** | **110** | **110** |
+| Catégorie | Initial | Ajouts | Restant |
+| --- | ---: | ---: | ---: |
+| Fiche déjà publique à auditer | 1 | 0 | 1 |
+| Fiches privées existantes de parcs en activité | 4 | 0 | 3 |
+| Fiches existantes à reprendre historiquement | 6 | 0 | 6 |
+| Parcs thématiques absents de la photographie PT | 8 | 0 | 8 |
+| Parcs aquatiques absents de la photographie PT | 22 | 0 | 22 |
+| Parcs animaliers et établissements aquatiques permanents à qualifier | 23 | 0 | 23 |
+| Parcs d’aventure à installations fixes | 22 | 1 | 23 |
+| Parcs familiaux indoor et de plein air | 11 | 0 | 11 |
+| Parcs historiques absents de la photographie PT | 6 | 0 | 6 |
+| Projets annoncés, en construction ou historiques | 4 | 1 | 5 |
+| Attractions autonomes à intégrer ou à qualifier | 3 | 0 | 3 |
+| **Total des lignes actives à traiter ou qualifier** | **110** | **2** | **111** |
 
 Les lignes d’établissements à qualifier ne sont pas comptées comme fiches déjà créées. Les pistes supplémentaires et exclusions de découverte restent hors de ce total.
 
@@ -57,8 +68,8 @@ Les lignes d’établissements à qualifier ne sont pas comptées comme fiches d
 
 ## 02. Fiches privées existantes de parcs en activité
 
-- [ ] Magikland — À préciser — `f4b7fb8d-d2e0-4337-bd25-8f22cc652383` — score 49 — [RC](#sources-de-découverte). Inventaire et complétude éditoriale à reprendre intégralement.
-- [ ] Pena Aventura Park — À préciser — `55afb230-332d-40a4-8290-a17e8d52566c` — score 49 — [RC](#sources-de-découverte). Inventaire et complétude éditoriale à reprendre intégralement.
+- [ ] Magikland — Penafiel — `f4b7fb8d-d2e0-4337-bd25-8f22cc652383` — score 49 — [RC](#sources-de-découverte). Inventaire et complétude éditoriale à reprendre intégralement.
+- [x] Pena Aventura Park — Ribeira de Pena — `55afb230-332d-40a4-8290-a17e8d52566c` — **intégré le 21 octobre 2026, score réel 100/100** — [Site](https://amusement-parks.fun/fr/park/55afb230-332d-40a4-8290-a17e8d52566c/pena-aventura-park) · [Facebook Published](https://www.facebook.com/1285475681307050/posts/122123973321424431). Audit, frise, article, traductions et plans publics vérifiés ; lacunes factuelles documentées dans le journal. Ligne conservée.
 - [ ] Porta do Mezio — À préciser — `ebeea550-cb5a-4855-a67b-9b803faa81da` — score 43 — [RC](#sources-de-découverte). Inventaire et complétude éditoriale à reprendre intégralement. Auditer le site structuré avant de décider une migration ; la petite montagne russe n’est pas un alpine coaster.
 - [ ] Zoomarine Albufeira — À préciser — `360d3e08-ccdf-49b5-a2d0-cec0d746367b` — score 50 — [RC](#sources-de-découverte). Inventaire et complétude éditoriale à reprendre intégralement.
 
@@ -135,6 +146,7 @@ Les lignes d’établissements à qualifier ne sont pas comptées comme fiches d
 
 ## 07. Parcs d’aventure à installations fixes
 
+- [ ] Parque de Animação Turística e Aventura de Carvalhelhos — Carvalhelhos, Boticas — identité applicative à résoudre — [BC](#sources-de-découverte). Parc fixe documenté dès 2009 et utilisé pour un séjour jeunesse en 2022 ; distinct du Boticas Parque – Natureza e Biodiversidade. Concession Pena Aventura signée le 15 juillet 2011, résiliation décidée par la municipalité le 3 juin 2015. Vérifier l’accès public et le cycle de vie actuels ; ne pas déduire une fermeture de mentions isolées.
 - [ ] Adrenaline Adventures Madeira — Porto Moniz, Madère — identité applicative à résoudre — [AA](#sources-de-découverte). Site fixe avec tyroliennes et balançoire géante ; une identité de parc à résoudre, sans doublons standalone pour ses installations internes.
 - [ ] Campo Aventura — Óbidos — identité applicative à résoudre — [TP](#sources-de-découverte). Installations fixes et offre de loisirs nommée à vérifier.
 - [ ] Radical Park / Complexo Desportivo Príncipe Perfeito — Viseu — identité applicative à résoudre — [TP](#sources-de-découverte). Vérifier le périmètre de loisirs et le cycle de vie ; distinguer les seules activités sportives.
@@ -181,12 +193,14 @@ Les lignes d’établissements à qualifier ne sont pas comptées comme fiches d
 - [ ] Aquaparque Teimoso — Figueira da Foz — identité applicative à résoudre — [TE](#sources-de-découverte), [DF](#sources-de-découverte). Distinguer la fermeture du parc aquatique de celle du restaurant et de l’hôtel.
 - [ ] Atlântico Park — Loulé — identité applicative à résoudre — [DF](#sources-de-découverte). Piste historique à documenter : ne pas copier une date d’une liste secondaire dans le graphe.
 
-## 10. Projets annoncés ou historiques non réalisés
+## 10. Projets annoncés, en construction ou historiques
 
 - [ ] Viva Mundo — World of Football — Santarém — identité applicative à résoudre — [VM](#sources-de-découverte). Projet annoncé en 2026 ; ouverture cible 2030, ne pas présenter le chantier comme commencé sans preuve.
 - [ ] Parque Temático de São João da Mata — Castanheira de Pera — identité applicative à résoudre — [SJ](#sources-de-découverte). Projet annoncé en juin 2026 avec alpine coaster ; statut Planned tant qu’aucun début de chantier n’est vérifié.
 - [ ] Lusolândia — Azambuja / Alenquer — identité applicative à résoudre — [LS](#sources-de-découverte). Projet historique non réalisé ; distinguer projet dormant et annulation attestée.
 - [ ] Sistema de Teleféricos e Parque Aventura do Curral das Freiras — Madère — identité applicative à résoudre — [CF](#sources-de-découverte). Projet soumis à procédures environnementales ; vérifier décision et chantier, sans convertir les rendus en offre ouverte.
+
+- [ ] Lusitanix — Parque de Neve — Bustelo, Ribeira de Pena — identité applicative à résoudre — [LX](#sources-de-découverte). Projet distinct de Pena Aventura ; marché de construction publié en décembre 2021, chantier documenté par SPRAL en 2024 et investissement encore présenté comme projet en juin 2026. Vérifier le statut et l’ouverture actuels ; ne pas convertir les anciennes échéances 2019/2024 en dates d’ouverture réelles.
 
 ## 11. Attractions autonomes à intégrer ou à qualifier
 
@@ -196,8 +210,10 @@ Les lignes d’établissements à qualifier ne sont pas comptées comme fiches d
 
 ## Pistes de découverte à qualifier sans création automatique
 
+- AquaPark do Tâmega — Ribeira de Pena : projet de plage fluviale et d’ancoradouro présenté en juin 2026 dans la même visite que Pena Aventura et Lusitanix. Aucun équipement de parc d’attractions établi dans cette annonce ; qualification à poursuivre, sans le confondre avec le Parque Aquático de Amarante. Source [Canal N, 18 juin 2026](https://www.canaln.tv/presidente-do-turismo-do-porto-e-norte-visita-ribeira-de-pena-e-aponta-o-alto-tamega-a-novos-voos-no-turismo/).
+
 - Limitezero — Sanlúcar de Guadiana / Alcoutim : installation transfrontalière fixe ; le départ, la billetterie et l’exploitation sont en Espagne. Examiner une seule identité autonome avec son contexte portugais, sans créer une copie PT et une copie ES. Source LZ.
-- Alpine Coaster et Alpine Coaster Kids de Pena Aventura : recherchés explicitement ; ils appartiennent au parc et seront intégrés dans son inventaire. Ils ne justifient pas deux attractions autonomes supplémentaires. Source PA.
+- Alpine Coaster et Alpine Coaster Kids de Pena Aventura : pages officielles et plan 2026 rapprochés. « Kids » désigne le billet enfant accompagné sur la même installation ; une seule attraction interne au parc, sans doublon ni fiche autonome. Source PA.
 - Petite montagne russe de Porta do Mezio : existence spécialisée confirmée ; ne pas l’appeler alpine coaster ni convertir automatiquement tout le site en attraction isolée. Source PM.
 - Projet d’alpine coaster de São João da Mata : installation annoncée au sein du futur parc ; conserver le statut de projet et le rattachement correct. Source SJ.
 - Feijão Verde Alverca, Aveiro et Santarém Natura : présents dans une ancienne liste de l’exploitant, absents de la liste actuelle consultée. Rechercher une fermeture, un déménagement ou un changement de nom avant de les ajouter comme sites actifs ou historiques. Source FO.
@@ -275,3 +291,5 @@ Aucune. Le seuil reste strictement supérieur à 95 et l’audit sans bloqueur e
 - **LZ** — [Limitezero — départ espagnol et arrivée portugaise](https://www.limitezero.com/pt/the-zip-line/).
 - **PA** — [Pena Aventura — Alpine Coaster, installation interne au parc](https://penaaventura.com.pt/atividades.php?id=alpine_coaster).
 - **PM** — [Porta do Mezio — parc et petite montagne russe](https://rcdb.com/22099.htm).
+- **LX** — [Diário da República — marché Lusitanix, 24 décembre 2021](https://files.diariodarepublica.pt/cp_hora/2021/12/248/414840994.pdf) ; [Canal N — visite touristique et projet toujours annoncé, 18 juin 2026](https://www.canaln.tv/presidente-do-turismo-do-porto-e-norte-visita-ribeira-de-pena-e-aponta-o-alto-tamega-a-novos-voos-no-turismo/).
+- **BC** — [Município de Boticas — camp jeunesse au BNB et au parc d’aventure de Carvalhelhos, juillet 2022](https://www.cm-boticas.pt/noticias/default.php?id=AW) ; [Município de Boticas — équipements touristiques et parc d’aventure](https://www.cm-boticas.pt/noticias/default.php?id=S5) ; [Diário da República — construction du parc, marché de 2007](https://files.diariodarepublica.pt/gratuitos/2s/2007/08/2S154A0000S00.pdf) ; [Município de Boticas — résiliation de la concession, séance du 3 juin 2015](https://www.cm-boticas.pt/docs/1103jun2015.pdf).
