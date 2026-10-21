@@ -1,6 +1,20 @@
 {
-  "version": "6.0.9",
+  "version": "6.0.10",
   "history": [
+    {
+      "version": "6.0.10",
+      "releasedAt": "2026-10-21",
+      "labels": {
+        "fr": "Fiabilité des outils de gestion améliorée",
+        "en": "Improved management tool reliability",
+        "de": "Zuverlässigere Verwaltungswerkzeuge",
+        "nl": "Betrouwbaardere beheertools",
+        "it": "Maggiore affidabilità degli strumenti di gestione",
+        "es": "Herramientas de gestión más fiables",
+        "pt": "Ferramentas de gestão mais fiáveis",
+        "pl": "Bardziej niezawodne narzędzia zarządzania"
+      }
+    },
     {
       "version": "6.0.9",
       "releasedAt": "2026-10-21",
