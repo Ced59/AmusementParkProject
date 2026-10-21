@@ -5,6 +5,7 @@ import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkReferenceContactDetails } from '@app/models/parks/park-reference-contact-details';
 import { PaginationContract } from '@shared/models/contracts';
+import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import {
@@ -160,7 +161,7 @@ function mapAttraction(item: ParkItemAdminRow, currentLanguage: string): ParkRef
     name: item.name,
     parkName: item.parkName,
     category: String(item.category),
-    type: String(item.type),
+    typeLabelKey: getParkItemTypeTranslationKey(item.type),
     routerLink: buildPublicParkItemRouteCommands({
       language: currentLanguage,
       parkId: item.parkId,

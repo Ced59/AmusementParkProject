@@ -1,6 +1,20 @@
 {
-  "version": "6.0.10",
+  "version": "6.0.11",
   "history": [
+    {
+      "version": "6.0.11",
+      "releasedAt": "2026-10-21",
+      "labels": {
+        "fr": "Types d’attractions traduits sur les pages constructeurs",
+        "en": "Translated attraction types on manufacturer pages",
+        "de": "Übersetzte Attraktionstypen auf Herstellerseiten",
+        "nl": "Vertaalde attractietypen op fabrikantpagina’s",
+        "it": "Tipi di attrazioni tradotti nelle pagine dei costruttori",
+        "es": "Tipos de atracciones traducidos en las páginas de fabricantes",
+        "pt": "Tipos de atrações traduzidos nas páginas dos fabricantes",
+        "pl": "Przetłumaczone typy atrakcji na stronach producentów"
+      }
+    },
     {
       "version": "6.0.10",
       "releasedAt": "2026-10-21",
