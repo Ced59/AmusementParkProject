@@ -1,6 +1,20 @@
 {
-  "version": "6.0.12",
+  "version": "6.0.13",
   "history": [
+    {
+      "version": "6.0.13",
+      "releasedAt": "2026-10-21",
+      "labels": {
+        "fr": "Noms de pays traduits sur les fiches de référence",
+        "en": "Translated country names on reference pages",
+        "de": "Übersetzte Ländernamen auf Referenzseiten",
+        "nl": "Vertaalde landnamen op referentiepagina’s",
+        "it": "Nomi dei paesi tradotti nelle schede di riferimento",
+        "es": "Nombres de países traducidos en las fichas de referencia",
+        "pt": "Nomes dos países traduzidos nas fichas de referência",
+        "pl": "Przetłumaczone nazwy krajów na stronach informacyjnych"
+      }
+    },
     {
       "version": "6.0.12",
       "releasedAt": "2026-10-21",

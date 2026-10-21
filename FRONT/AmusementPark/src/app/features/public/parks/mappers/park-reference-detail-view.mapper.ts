@@ -29,14 +29,15 @@ import {
 export function mapParkFounderToReferenceDetailViewModel(
   founder: ParkFounder,
   currentLanguage: string,
-  photos: ImageDto[] = []
+  photos: ImageDto[] = [],
+  nationalityCountryName: string | null = null
 ): ParkReferenceDetailViewModel {
   const facts: ParkReferenceFactViewModel[] = [];
   addFact(facts, 'parks.reference.facts.occupation', founder.occupation, 'pi pi-id-card');
   addFact(facts, 'parks.reference.facts.birthDate', formatDate(founder.birthDate), 'pi pi-calendar');
   addFact(facts, 'parks.reference.facts.deathDate', formatDate(founder.deathDate), 'pi pi-calendar-times');
   addFact(facts, 'parks.reference.facts.birthPlace', founder.birthPlace, 'pi pi-map-marker');
-  addFact(facts, 'parks.reference.facts.nationality', founder.nationalityCountryCode, 'pi pi-flag', null, false, true);
+  addFact(facts, 'parks.reference.facts.nationality', nationalityCountryName, 'pi pi-flag');
   addFact(facts, 'parks.reference.facts.website', founder.websiteUrl, 'pi pi-globe', normalizeWebsiteUrl(founder.websiteUrl), true);
 
   const gallery: UiPhotoCarouselImage[] = mapPhotos(photos, currentLanguage, founder.name, 'founder');
@@ -66,9 +67,10 @@ export function mapParkFounderToReferenceDetailViewModel(
 export function mapParkOperatorToReferenceDetailViewModel(
   operator: ParkOperator,
   currentLanguage: string,
-  photos: ImageDto[] = []
+  photos: ImageDto[] = [],
+  countryName: string | null = null
 ): ParkReferenceDetailViewModel {
-  const facts: ParkReferenceFactViewModel[] = buildCompanyFacts(operator.legalName, operator.foundedYear, operator.closedYear, operator.contactDetails);
+  const facts: ParkReferenceFactViewModel[] = buildCompanyFacts(operator.legalName, operator.foundedYear, operator.closedYear, operator.contactDetails, countryName);
   const gallery: UiPhotoCarouselImage[] = mapPhotos(photos, currentLanguage, operator.name, 'operator');
 
   return {
@@ -98,13 +100,15 @@ export function mapAttractionManufacturerToReferenceDetailViewModel(
   currentLanguage: string,
   photos: ImageDto[] = [],
   attractions: ParkItemAdminRow[] = [],
-  attractionsPagination: PaginationContract | null = null
+  attractionsPagination: PaginationContract | null = null,
+  countryName: string | null = null
 ): ParkReferenceDetailViewModel {
   const facts: ParkReferenceFactViewModel[] = buildCompanyFacts(
     manufacturer.legalName,
     manufacturer.foundedYear,
     manufacturer.closedYear,
-    manufacturer.contactDetails
+    manufacturer.contactDetails,
+    countryName
   );
   const gallery: UiPhotoCarouselImage[] = mapPhotos(photos, currentLanguage, manufacturer.name, 'manufacturer');
 
@@ -134,7 +138,8 @@ function buildCompanyFacts(
   legalName: string | null | undefined,
   foundedYear: number | null | undefined,
   closedYear: number | null | undefined,
-  contactDetails: ParkReferenceContactDetails | null | undefined
+  contactDetails: ParkReferenceContactDetails | null | undefined,
+  countryName: string | null
 ): ParkReferenceFactViewModel[] {
   const facts: ParkReferenceFactViewModel[] = [];
   addFact(facts, 'parks.reference.facts.legalName', legalName, 'pi pi-building');
@@ -149,7 +154,7 @@ function buildCompanyFacts(
   addFact(facts, 'parks.reference.facts.email', contactDetails.email, 'pi pi-envelope', normalizeEmailHref(contactDetails.email));
   addFact(facts, 'parks.reference.facts.phone', contactDetails.phoneNumber, 'pi pi-phone', normalizePhoneHref(contactDetails.phoneNumber));
   addFact(facts, 'parks.reference.facts.address', buildAddressLine(contactDetails), 'pi pi-map-marker');
-  addFact(facts, 'parks.reference.facts.country', contactDetails.countryCode, 'pi pi-flag', null, false, true);
+  addFact(facts, 'parks.reference.facts.country', countryName, 'pi pi-flag');
   addFact(facts, 'parks.reference.facts.coordinates', buildCoordinatesLine(contactDetails), 'pi pi-compass', null, false, true);
 
   return facts;
