@@ -6,10 +6,12 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 26,
+  "sourceObservationCount": 30,
   "sourceFamilies": [
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=60246",
@@ -18,9 +20,106 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 4 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
+    {
+      "entryId": "RS-candidate-standalone-5d733920bcf554",
+      "name": "Alpine Coaster Wiegand — Kopaonik",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Kopaonik"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=233#location-id-1086",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Kopaonik",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=233#location-id-1086",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Kopaonik",
+            "referenceId": "location-id-1086"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "RS-candidate-standalone-93f5e309d74f14",
+      "name": "Alpine Coaster Wiegand — Zlatibor-Tornik",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Zlatibor-Tornik"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=233#location-id-1895",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Zlatibor-Tornik",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=233#location-id-1895",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Zlatibor-Tornik",
+            "referenceId": "location-id-1895"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
     {
       "entryId": "RS-candidate-b8a5e8ca9a5393",
       "name": "Amusement Park Vrnjačka Banja",
@@ -592,6 +691,37 @@
       "countryResolution": null
     },
     {
+      "entryId": "RS-candidate-e4971e28623078",
+      "name": "Luna Park Panoramski Točak",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Zlatibor , Zlatibor",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre RS-park-75e6a6fe-50bc-4969-bf2e-c34e198fa365. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20611.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "RS-park-75e6a6fe-50bc-4969-bf2e-c34e198fa365"
+    },
+    {
       "entryId": "RS-park-75e6a6fe-50bc-4969-bf2e-c34e198fa365",
       "name": "Luna Park Panoramski Točak",
       "entityKind": "Park",
@@ -640,37 +770,6 @@
       }
     },
     {
-      "entryId": "RS-candidate-e4971e28623078",
-      "name": "Luna Park Panoramski Točak",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Zlatibor , Zlatibor",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre RS-park-75e6a6fe-50bc-4969-bf2e-c34e198fa365. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/20611.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "RS-park-75e6a6fe-50bc-4969-bf2e-c34e198fa365"
-    },
-    {
       "entryId": "RS-candidate-68fd1ec971b4e5",
       "name": "Palić Zoo",
       "entityKind": "Park",
@@ -699,54 +798,6 @@
           "accessedAt": "2026-10-22"
         }
       ]
-    },
-    {
-      "entryId": "RS-park-16b23920-8e88-4681-9418-ee0789625f01",
-      "name": "Ski Centar Kopaonik",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "16b23920-8e88-4681-9418-ee0789625f01",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToReview",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/14819.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": null,
-      "countryResolution": {
-        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
-        "confidence": "À confirmer lors de la reprise de la fiche",
-        "score": 100,
-        "sources": [
-          {
-            "label": "RCDB",
-            "url": "https://rcdb.com/14819.htm",
-            "sourceName": "Ski Centar Kopaonik"
-          }
-        ]
-      }
     },
     {
       "entryId": "RS-candidate-353b5eeed197a6",
@@ -780,13 +831,13 @@
       "duplicateOf": "RS-park-16b23920-8e88-4681-9418-ee0789625f01"
     },
     {
-      "entryId": "RS-park-225d083f-a05b-4e15-a87d-720612f2c0d9",
-      "name": "Ski Centar Tornik",
+      "entryId": "RS-park-16b23920-8e88-4681-9418-ee0789625f01",
+      "name": "Ski Centar Kopaonik",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
-      "siteId": "225d083f-a05b-4e15-a87d-720612f2c0d9",
+      "siteId": "16b23920-8e88-4681-9418-ee0789625f01",
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
@@ -800,7 +851,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -809,7 +860,12 @@
         },
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/14821.htm",
+          "url": "https://rcdb.com/14819.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14820.htm",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -821,10 +877,27 @@
         "sources": [
           {
             "label": "RCDB",
-            "url": "https://rcdb.com/14821.htm",
-            "sourceName": "Ski Centar Tornik"
+            "url": "https://rcdb.com/14819.htm",
+            "sourceName": "Ski Centar Kopaonik"
           }
         ]
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bob na Šinama",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14820.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Ski Centar Kopaonik",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Brzeće , Rasina",
+            "sourceOpenedYear": "2013"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
       }
     },
     {
@@ -859,6 +932,76 @@
       "duplicateOf": "RS-park-225d083f-a05b-4e15-a87d-720612f2c0d9"
     },
     {
+      "entryId": "RS-park-225d083f-a05b-4e15-a87d-720612f2c0d9",
+      "name": "Ski Centar Tornik",
+      "entityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": null,
+      "locality": null,
+      "siteId": "225d083f-a05b-4e15-a87d-720612f2c0d9",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14821.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14822.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/14821.htm",
+            "sourceName": "Ski Centar Tornik"
+          }
+        ]
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bob na Šinama",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14822.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Ski Centar Tornik",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Jablanica , Zlatibor",
+            "sourceOpenedYear": "2014"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
+    },
+    {
       "entryId": "RS-candidate-56a325167e86cc",
       "name": "Skyview Vrnjačka Banja",
       "entityKind": "ToQualify",
@@ -879,14 +1022,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RS-candidate-4830ccea04f57c",

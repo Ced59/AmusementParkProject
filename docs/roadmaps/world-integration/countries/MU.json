@@ -6,9 +6,11 @@
   "geographicScope": "Afrique — périmètre national/territorial des sources",
   "geographicGroup": "Afrique",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 5,
+  "sourceObservationCount": 7,
   "sourceFamilies": [
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=62206",
@@ -17,9 +19,58 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
+    {
+      "entryId": "MU-candidate-standalone-183e2e0e1c73f1",
+      "name": "Alpine Coaster Wiegand — Casela",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Casela"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=271#location-id-1967",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Casela",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=271#location-id-1967",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Casela",
+            "referenceId": "location-id-1967"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
     {
       "entryId": "MU-candidate-33fb48541b804d",
       "name": "Casela Nature Park",
@@ -71,7 +122,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -86,6 +137,11 @@
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Africa#Mauritius",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/15558.htm",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -106,6 +162,23 @@
             "sourceName": "Casela World of Adventures"
           }
         ]
+      },
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Tulawaka",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/15558.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Casela World of Adventures",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Cascavelle , Rivière Noire",
+            "sourceOpenedYear": "2018"
+          }
+        ],
+        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
       }
     },
     {

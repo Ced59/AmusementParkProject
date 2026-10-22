@@ -9,6 +9,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+- Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -21,13 +22,15 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **37**. Sources : RCDB, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **38**. Sources : Aerophile — références constructeur, RCDB, Wikipédia (découverte).
 
-Pays proposé par rapprochement pour **15** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
+Pays proposé par rapprochement pour **15** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **0 publiés**, **14 masqués à intégrer**, **1 masqués NotRelevant à réexaminer**, **15 candidats sans fiche**.
 
 Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **4 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+
+Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -60,7 +63,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | MA-candidate-9b4a4d1af9c020 | Parc Sindibad | Casablanca | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Correspondance possible : Sindibad (cefba18e-0e04-4164-8985-f9c1ea830eb9). [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Africa#Morocco) |
 | MA-candidate-c6f369230864e3 | Parc Sindibad zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Morocco) |
 | MA-candidate-abe1550828e963 | Rabat Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Morocco) |
-| MA-park-cefba18e-0e04-4164-8985-f9c1ea830eb9 | Sindibad | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/6078.htm) |
+| MA-park-cefba18e-0e04-4164-8985-f9c1ea830eb9 | Sindibad | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : InsidePark. Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Installations référencées : Parc Sindibad Casablanca, Morocco. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/6078.htm) · [Aerophile — références constructeur](https://www.aerophile.com/en/clients/parc-sindibad/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
 | MA-park-562b754c-08fc-48b0-adfb-18f892d3eebd | Smile Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/23733.htm) |
 | MA-candidate-d572fa77316cdd | Smir AquaPark | M'diq | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Correspondance possible : Smir Park (44f52cd6-7ef6-4881-ade6-f246cbe2a6e4). [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Africa#Morocco) |
 | MA-park-44f52cd6-7ef6-4881-ade6-f246cbe2a6e4 | Smir Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/6440.htm) |

@@ -6,15 +6,20 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 438,
+  "sourceObservationCount": 459,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "AmusementForce",
     "BIAZA",
+    "Découverte complémentaire — site officiel",
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "Site officiel (attraction autonome)",
     "Source officielle complémentaire",
+    "Sunkid — archive de projets",
     "WAZA",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26828",
@@ -22,7 +27,10 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 18 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Contrôle supplémentaire alpine coasters : 1 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
   ],
   "entries": [
     {
@@ -409,6 +417,54 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "GB-candidate-standalone-e1ac3bd2b32736",
+      "name": "Alpine Coaster Wiegand — Snowdonia",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Snowdonia"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=199#location-id-1963",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Snowdonia",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=199#location-id-1963",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Snowdonia",
+            "referenceId": "location-id-1963"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "GB-park-ee5582f9-0de4-4906-923c-5e564df16c2a",
@@ -1727,14 +1783,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "GB-candidate-4fce1922bf4c75",
@@ -1757,14 +1819,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "GB-candidate-7aae1e66e12c5b",
@@ -2206,14 +2274,79 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-344c30564b4fab",
+      "name": "Bristol Bristol, United Kingdom",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Bristol Bristol, United Kingdom"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/bristol/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bristol Bristol, United Kingdom",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/bristol/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Bristol Bristol, United Kingdom",
+            "sourceLifecycleSignal": "Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-bristol"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
     },
     {
       "entryId": "GB-candidate-4caa8c9bc64318",
@@ -3464,7 +3597,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3475,10 +3608,46 @@
           "label": "RCDB",
           "url": "https://rcdb.com/17245.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/17246.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/first-mountain-coaster-in-ireland/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "GB",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Black Bull Run",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/17246.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Colin Glen Forest Park",
+            "sourceLifecycleSignal": "SBNO",
+            "sourceLocality": "Belfast , Antrim , Northern Ireland",
+            "sourceOpenedYear": "2021"
+          },
+          {
+            "name": "Mountain Coaster — Colin Glen Forest Park",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/first-mountain-coaster-in-ireland/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Colin Glen Forest Park",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "GB-candidate-a3f49cb3f117e6",
@@ -4422,11 +4591,52 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-7e76fa54908a06",
+      "name": "Edinburgh Zoo, Royal Zoological Society of Scotland",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Zoo / aquarium",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "WAZA",
+          "url": "https://www.waza.org/members/waza-members/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel référencé",
+          "url": "http://edinburghzoo.org.uk/",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -4462,41 +4672,6 @@
         {
           "label": "Site officiel référencé",
           "url": "https://www.edinburghzoo.org.uk",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "GB-candidate-7e76fa54908a06",
-      "name": "Edinburgh Zoo, Royal Zoological Society of Scotland",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Zoo / aquarium",
-      "locality": null,
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "WAZA",
-          "url": "https://www.waza.org/members/waza-members/",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Site officiel référencé",
-          "url": "http://edinburghzoo.org.uk/",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -5130,6 +5305,42 @@
       ]
     },
     {
+      "entryId": "GB-candidate-df72d1ccce0e19",
+      "name": "Fun Land",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Towyn , Conwy , Wales",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [
+        {
+          "siteId": "1399ad82-313f-41ba-8597-f9b86c018cb6",
+          "name": "Fun Land",
+          "similarity": 88
+        }
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5825.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "GB-park-1399ad82-313f-41ba-8597-f9b86c018cb6",
       "name": "Fun Land",
       "entityKind": "Park",
@@ -5167,42 +5378,6 @@
       ],
       "countryCodeAtInventory": "GB",
       "countryResolution": null
-    },
-    {
-      "entryId": "GB-candidate-df72d1ccce0e19",
-      "name": "Fun Land",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Towyn , Conwy , Wales",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
-        {
-          "siteId": "1399ad82-313f-41ba-8597-f9b86c018cb6",
-          "name": "Fun Land",
-          "similarity": 88
-        }
-      ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5825.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
     },
     {
       "entryId": "GB-candidate-d3fd30c3cd37bd",
@@ -5801,14 +5976,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "GB-park-627575c4-5c7c-4ecd-b402-cfd40864a2c4",
@@ -6363,6 +6544,61 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "GB-candidate-discovery-b19f183565d402",
+      "name": "Helix — ArcelorMittal Orbit",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Toboggan fixe",
+      "locality": "Londres",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "ArcelorMittal Orbit",
+        "The Slide at ArcelorMittal Orbit"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.zipworld.co.uk/adventures/helix",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Helix — ArcelorMittal Orbit",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.zipworld.co.uk/adventures/helix",
+            "family": "Toboggan fixe",
+            "sourceVenueName": "Helix — ArcelorMittal Orbit",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Londres"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "GB-park-109314d7-55a1-4754-92ae-ba1a2332ca49",
@@ -7690,7 +7926,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
@@ -7702,7 +7938,13 @@
           "url": "https://www.londoneye.com/",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "GB-candidate-14167424487bae",
@@ -7865,6 +8107,612 @@
       ],
       "countryCodeAtInventory": "GB",
       "countryResolution": null
+    },
+    {
+      "entryId": "GB-candidate-standalone-7fe2cfe1af8ee8",
+      "name": "Luge Wiegand — Chatham",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Chatham"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1414",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://jnlchatham.co.uk/tubing/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Chatham",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1414",
+            "family": "Luge d’été",
+            "sourceVenueName": "Chatham",
+            "referenceId": "location-id-1414"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-a2586d7e96e0ce",
+      "name": "Luge Wiegand — Duporth Holiday Camp",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Duporth Holiday Camp"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1413",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Duporth Holiday Camp",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1413",
+            "family": "Luge d’été",
+            "sourceVenueName": "Duporth Holiday Camp",
+            "referenceId": "location-id-1413"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-dc14031fdecb66",
+      "name": "Luge Wiegand — Ebbw Vale",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Ebbw Vale"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1412",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ebbw Vale",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1412",
+            "family": "Luge d’été",
+            "sourceVenueName": "Ebbw Vale",
+            "referenceId": "location-id-1412"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-037ecb5b381521",
+      "name": "Luge Wiegand — Harcourt Sands Holiday Village",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Harcourt Sands Holiday Village"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1411",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Harcourt Sands Holiday Village",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1411",
+            "family": "Luge d’été",
+            "sourceVenueName": "Harcourt Sands Holiday Village",
+            "referenceId": "location-id-1411"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-dd9a76b82b3d48",
+      "name": "Luge Wiegand — Llandudno",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Llandudno"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1410",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://jnlllandudno.co.uk/tubing/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Llandudno",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1410",
+            "family": "Luge d’été",
+            "sourceVenueName": "Llandudno",
+            "referenceId": "location-id-1410"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-3440c87741a83e",
+      "name": "Luge Wiegand — Oakwood-Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Oakwood-Park"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1409",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Oakwood-Park",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1409",
+            "family": "Luge d’été",
+            "sourceVenueName": "Oakwood-Park",
+            "referenceId": "location-id-1409"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-3e72e5d2307081",
+      "name": "Luge Wiegand — Pembrey",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Pembrey"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1408",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Pembrey",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1408",
+            "family": "Luge d’été",
+            "sourceVenueName": "Pembrey",
+            "referenceId": "location-id-1408"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-f587aae856acba",
+      "name": "Luge Wiegand — Plymouth",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Plymouth"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1407",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://jnlplymouth.co.uk/tubing/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Plymouth",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1407",
+            "family": "Luge d’été",
+            "sourceVenueName": "Plymouth",
+            "referenceId": "location-id-1407"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-17d0054027b39a",
+      "name": "Luge Wiegand — Robin Hill",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Robin Hill"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1406",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.robin-hill.com/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Robin Hill",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1406",
+            "family": "Luge d’été",
+            "sourceVenueName": "Robin Hill",
+            "referenceId": "location-id-1406"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-e4ddd36f243d9b",
+      "name": "Luge Wiegand — Swadlincote",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Swadlincote"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1405",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://jnlswadlincote.co.uk/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Swadlincote",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1405",
+            "family": "Luge d’été",
+            "sourceVenueName": "Swadlincote",
+            "referenceId": "location-id-1405"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-91f8a39ca1910b",
+      "name": "Luge Wiegand — Windsor Safari Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Windsor Safari Park"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1404",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.windsorsafaripark.org.uk",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Windsor Safari Park",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1404",
+            "family": "Luge d’été",
+            "sourceVenueName": "Windsor Safari Park",
+            "referenceId": "location-id-1404"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "GB-candidate-standalone-6e6bd42fe31ad7",
+      "name": "Luge Wiegand — Woodlands",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Woodlands"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1403",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Woodlands",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1403",
+            "family": "Luge d’été",
+            "sourceVenueName": "Woodlands",
+            "referenceId": "location-id-1403"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "GB-candidate-18211272e203d2",
@@ -8320,7 +9168,7 @@
       "entryId": "GB-park-e2f54f75-6265-4aea-8752-6efaefb12f79",
       "name": "Midlothian Snowsports Centre",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "e2f54f75-6265-4aea-8752-6efaefb12f79",
@@ -8337,7 +9185,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -8348,10 +9196,51 @@
           "label": "RCDB",
           "url": "https://rcdb.com/21754.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/21755.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=199#location-id-2199",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "https://www.midlothian.gov.uk/info/521/sport_and_leisure",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "GB",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/21755.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Midlothian Snowsports Centre",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Edinburgh , Edinburgh , Scotland",
+            "sourceOpenedYear": "2024"
+          },
+          {
+            "name": "Edinburgh",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=199#location-id-2199",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Edinburgh",
+            "referenceId": "location-id-2199",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "GB-candidate-7c0bd6f2f12ed3",
@@ -10888,12 +11777,12 @@
       ]
     },
     {
-      "entryId": "GB-candidate-ac7bcaef5516d6",
-      "name": "Splash World",
+      "entryId": "GB-candidate-ceee70837014ce",
+      "name": "Splash!",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Aquatique",
-      "locality": "Southport , Merseyside",
+      "locality": "Magherafelt , County Londonderry - has a floating obstacle course, paddleboarding, megaboarding, and kayaking.",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -10918,12 +11807,12 @@
       ]
     },
     {
-      "entryId": "GB-candidate-ceee70837014ce",
-      "name": "Splash!",
+      "entryId": "GB-candidate-ac7bcaef5516d6",
+      "name": "Splash World",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Aquatique",
-      "locality": "Magherafelt , County Londonderry - has a floating obstacle course, paddleboarding, megaboarding, and kayaking.",
+      "locality": "Southport , Merseyside",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -11137,8 +12026,8 @@
     {
       "entryId": "GB-candidate-47faf173321fb2",
       "name": "Stoke Ski Centre",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Stoke-on-Trent , Staffordshire , England",
       "siteId": null,
@@ -11155,14 +12044,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/14140.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14141.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14141.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Stoke Ski Centre",
+            "sourceLifecycleSignal": "-",
+            "sourceLocality": "Stoke-on-Trent , Staffordshire , England",
+            "sourceOpenedYear": "2003"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "GB-candidate-113cc96f37d1ae",
@@ -12724,36 +13635,6 @@
       "countryResolution": null
     },
     {
-      "entryId": "GB-candidate-3bd9d074fe31b8",
-      "name": "White City",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Manchester , Greater Manchester , England",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/12149.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "GB-candidate-2214f18dbc28f8",
       "name": "White City",
       "entityKind": "Park",
@@ -12779,6 +13660,36 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/14572.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "GB-candidate-3bd9d074fe31b8",
+      "name": "White City",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Manchester , Greater Manchester , England",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/12149.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -13551,7 +14462,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -13562,10 +14473,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/14125.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14126.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "GB",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Fforest Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14126.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Zip World Fforest",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Betws-y-Coed , Conwy , Wales",
+            "sourceOpenedYear": "2017"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "GB-park-78a63ad5-5fe9-4a57-a80c-eb86f1e78145",

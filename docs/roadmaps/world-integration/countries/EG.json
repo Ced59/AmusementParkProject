@@ -2304,12 +2304,12 @@
       ]
     },
     {
-      "entryId": "EG-candidate-c70a9b70855248",
+      "entryId": "EG-candidate-0d74d5616819c5",
       "name": "Pickalbatros Aqua Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Aquatique",
-      "locality": "Hurghada",
+      "locality": "Sharm El Sheikh",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -2334,12 +2334,12 @@
       ]
     },
     {
-      "entryId": "EG-candidate-0d74d5616819c5",
+      "entryId": "EG-candidate-c70a9b70855248",
       "name": "Pickalbatros Aqua Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Aquatique",
-      "locality": "Sharm El Sheikh",
+      "locality": "Hurghada",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",

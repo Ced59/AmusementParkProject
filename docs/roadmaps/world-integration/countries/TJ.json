@@ -6,9 +6,11 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 6,
+  "sourceObservationCount": 8,
   "sourceFamilies": [
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=58932",
@@ -16,7 +18,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -172,13 +175,13 @@
     {
       "entryId": "TJ-candidate-c604ec2ff61d83",
       "name": "Safed Dara",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Dehmalik , Districts of Republican Subordination",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -190,14 +193,49 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/23914.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23915.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=386#location-id-2230",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "unknown",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23915.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Safed Dara",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Dehmalik , Districts of Republican Subordination",
+            "sourceOpenedYear": "2025"
+          },
+          {
+            "name": "Safed Dara",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=386#location-id-2230",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Safed Dara",
+            "referenceId": "location-id-2230"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     }
   ]
 }

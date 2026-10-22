@@ -6,11 +6,15 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 63,
+  "sourceObservationCount": 95,
   "sourceFamilies": [
     "AmusementForce",
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Sunkid — archive de projets",
+    "Sunkid — projet constructeur",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=56808",
@@ -18,7 +22,9 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 29 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Contrôle supplémentaire alpine coasters : 3 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
   ],
   "entries": [
     {
@@ -80,6 +86,294 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "RO-candidate-standalone-751928e67cc270",
+      "name": "Alpine Coaster Wiegand — \"Baloo Coaster\" Schitul Straja",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "\"Baloo Coaster\" Schitul Straja"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2233",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "\"Baloo Coaster\" Schitul Straja",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2233",
+            "family": "Alpine coaster",
+            "sourceVenueName": "\"Baloo Coaster\" Schitul Straja",
+            "referenceId": "location-id-2233"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "RO-candidate-standalone-a8541562c083b5",
+      "name": "Alpine Coaster Wiegand — Lacu Rosu",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Lacu Rosu"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2166",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Lacu Rosu",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2166",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Lacu Rosu",
+            "referenceId": "location-id-2166"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "RO-candidate-standalone-550cf804028a4f",
+      "name": "Alpine Coaster Wiegand — Lobogo",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Lobogo"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2168",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Lobogo",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2168",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Lobogo",
+            "referenceId": "location-id-2168"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "RO-candidate-standalone-149c897d520022",
+      "name": "Alpine Coaster Wiegand — Oxygen",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Oxygen"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2204",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Oxygen",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2204",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Oxygen",
+            "referenceId": "location-id-2204"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "RO-candidate-standalone-9aca63d443d8a0",
+      "name": "Alpine Coaster Wiegand — Toplita",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Toplita"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2119",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Toplita",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2119",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Toplita",
+            "referenceId": "location-id-2119"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "RO-candidate-standalone-b32f0cd929f4c5",
+      "name": "Alpine Coaster Wiegand — Varsag",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Varsag"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2165",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Varsag",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2165",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Varsag",
+            "referenceId": "location-id-2165"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-candidate-31a7c243d71c15",
@@ -265,7 +559,7 @@
       "entryId": "RO-park-ed45d26c-b406-48c7-8652-552fbbdd357e",
       "name": "Bob Forest Coaster Voronet",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "ed45d26c-b406-48c7-8652-552fbbdd357e",
@@ -282,7 +576,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -293,10 +587,51 @@
           "label": "RCDB",
           "url": "https://rcdb.com/23177.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23178.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2212",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "https://www.forestcoaster.com/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Forest Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23178.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Bob Forest Coaster Voronet",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Gura Humorului , Suceava",
+            "sourceOpenedYear": "2025"
+          },
+          {
+            "name": "Gura Humorului",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2212",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Gura Humorului",
+            "referenceId": "location-id-2212",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "RO-park-bdf8de9f-de54-4f15-bcc8-bd3918e4b2a2",
@@ -319,7 +654,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -330,16 +665,38 @@
           "label": "RCDB",
           "url": "https://rcdb.com/21140.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/21141.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bob Lacu Roşu",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/21141.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Bob Lacu Roşu",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Lacu Roșu , Harghita",
+            "sourceOpenedYear": "2023"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-candidate-4ce5559d3fbeba",
       "name": "Bob Oxygen Resort",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Lacu Roșu , Harghita",
       "siteId": null,
@@ -362,14 +719,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/22051.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/22052.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Zeze Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/22052.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Bob Oxygen Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Lacu Roșu , Harghita",
+            "sourceOpenedYear": "2024"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "RO-candidate-607dd41df29db9",
@@ -514,7 +893,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -525,10 +904,45 @@
           "label": "RCDB",
           "url": "https://rcdb.com/20998.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20999.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2167",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20999.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Cheile Gradistei",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Fundata , Brașov",
+            "sourceOpenedYear": "2023"
+          },
+          {
+            "name": "Cheile Gradistei",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2167",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Cheile Gradistei",
+            "referenceId": "location-id-2167"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-candidate-1026c3677e0305",
@@ -708,7 +1122,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -719,10 +1133,46 @@
           "label": "RCDB",
           "url": "https://rcdb.com/20298.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20299.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-durau/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Sania de Vară",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20299.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Durau Park",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Ceahlău , Neamț",
+            "sourceOpenedYear": "2020"
+          },
+          {
+            "name": "Mountain Coaster — Durau Park",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-durau/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Durau Park",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-park-b6690aac-bfd3-45e9-bd64-e86253f8c3ee",
@@ -745,7 +1195,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -756,10 +1206,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/18139.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18140.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "unknown",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18140.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Fun Park Cluj",
+            "sourceLifecycleSignal": "In Storage",
+            "sourceLocality": "Feleacu , Cluj",
+            "sourceOpenedYear": "2014"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-candidate-1a7898318e2118",
@@ -824,8 +1296,8 @@
     {
       "entryId": "RO-candidate-fe63c049030687",
       "name": "Gondola Sinaia",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Sinaia , Prahova",
       "siteId": null,
@@ -842,14 +1314,50 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/24446.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/24447.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/romanias-longest-mountain-coaster-boosts-year-round-tourism-in-sinaia/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Sanie Alpină",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/24447.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Gondola Sinaia",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Sinaia , Prahova",
+            "sourceOpenedYear": "2025"
+          },
+          {
+            "name": "Mountain Coaster — Gondola Sinaia",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/romanias-longest-mountain-coaster-boosts-year-round-tourism-in-sinaia/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Gondola Sinaia",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "RO-candidate-21327640277d96",
@@ -902,7 +1410,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -913,10 +1421,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/9759.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/9760.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Bob",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/9760.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Happy Land Adventure",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Stana de Vale , Bihor",
+            "sourceOpenedYear": "2016"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-park-8aaceaca-b77a-4ff9-ab16-8f7803223a92",
@@ -959,7 +1489,7 @@
       "entryId": "RO-park-6fe51e0f-5226-4ea5-adf7-b3bfb7692c42",
       "name": "Lobogó Resort",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "6fe51e0f-5226-4ea5-adf7-b3bfb7692c42",
@@ -976,7 +1506,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -987,10 +1517,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/21138.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/21139.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Lobogó Bob",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/21139.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Lobogó Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Băile Homorod , Harghita",
+            "sourceOpenedYear": "2023"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "RO-candidate-45c3cb2e36e8c8",
@@ -1385,7 +1937,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1396,10 +1948,46 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13278.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13279.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-1081",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Tobogan",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13279.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Pârtia Kalinderu",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Buşteni , Prahova",
+            "sourceOpenedYear": "2010"
+          },
+          {
+            "name": "Busteni",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-1081",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Busteni",
+            "referenceId": "location-id-1081",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-park-5b8c5937-480a-46ae-b106-00ffcd4c181f",
@@ -1422,7 +2010,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1433,10 +2021,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/19872.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/19873.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/19873.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Pârtia Toplița",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Măgheruș , Harghita",
+            "sourceOpenedYear": "2021"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-park-cedb33da-a4fc-4e46-ac00-2190157415d4",
@@ -1459,7 +2069,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1470,10 +2080,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/21142.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/21143.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bob Vărșag",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/21143.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Partia Vărșag",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Vărșag , Harghita",
+            "sourceOpenedYear": "2023"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-candidate-033b9aa27c6b86",
@@ -1556,14 +2188,48 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/24282.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/24283.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — projet constructeur",
+          "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-20-in-romanias-highest-city/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Predeal Mountain Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/24283.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Predeal Mountain Coaster",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Predeal , Brașov",
+            "sourceOpenedYear": "2025"
+          },
+          {
+            "name": "Mountain Coaster — Predeal",
+            "source": "Sunkid — projet constructeur",
+            "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-20-in-romanias-highest-city/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Predeal Mountain Coaster"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "RO-park-92c16cb1-0398-4a63-95a1-ffef2ef0bb15",
@@ -1588,7 +2254,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1599,10 +2265,46 @@
           "label": "RCDB",
           "url": "https://rcdb.com/23926.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23927.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2216",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Sania Montană Domnești",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23927.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Sania Montană Domnești",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Domnești , Ilfov",
+            "sourceOpenedYear": "2025"
+          },
+          {
+            "name": "Domnesti",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2216",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Domnesti",
+            "referenceId": "location-id-2216",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-candidate-ec2902afb65c8b",
@@ -1638,7 +2340,7 @@
       "entryId": "RO-park-5d2449c6-802a-417d-95e4-417e7cdd99c2",
       "name": "Ski Gyimes",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "5d2449c6-802a-417d-95e4-417e7cdd99c2",
@@ -1655,7 +2357,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1666,48 +2368,52 @@
           "label": "RCDB",
           "url": "https://rcdb.com/18632.htm",
           "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": "RO",
-      "countryResolution": null
-    },
-    {
-      "entryId": "RO-park-44854a06-a429-4db4-b7a2-1fed6ce961cf",
-      "name": "Skrzyczne Ski Resort COS",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "44854a06-a429-4db4-b7a2-1fed6ce961cf",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToReview",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
-      "sources": [
+        },
         {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18633.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2048",
           "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bobpálya",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18633.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Ski Gyimes",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Lunca de Sus , Harghita",
+            "sourceOpenedYear": "2018"
+          },
+          {
+            "name": "Lunca de Sus",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=239#location-id-2048",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Lunca de Sus",
+            "referenceId": "location-id-2048",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "RO-park-ee4157f5-2e45-43c2-859d-415dd7dc94d4",
       "name": "Speranța Ski Complex",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "ee4157f5-2e45-43c2-859d-415dd7dc94d4",
@@ -1724,7 +2430,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1735,10 +2441,46 @@
           "label": "RCDB",
           "url": "https://rcdb.com/20300.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20301.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-borsec/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Borsec Bob",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20301.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Speranța Ski Complex",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Borsec , Harghita",
+            "sourceOpenedYear": "2020"
+          },
+          {
+            "name": "Mountain Coaster — Speranța Ski Complex",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-borsec/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Speranța Ski Complex",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "RO-park-dba8cc4e-32ae-4d1a-b4d8-0f50078dccbc",
@@ -1761,7 +2503,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1772,10 +2514,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/23924.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23925.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Baloo Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23925.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Stațiunea Straja",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Lupeni , Hunedoara",
+            "sourceOpenedYear": "2025"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "RO-candidate-3a3cde197c1622",

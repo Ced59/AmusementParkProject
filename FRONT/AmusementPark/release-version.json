@@ -1,6 +1,20 @@
 {
-  "version": "6.0.24",
+  "version": "6.0.25",
   "history": [
+    {
+      "version": "6.0.25",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Suivi des intégrations amélioré",
+        "en": "Improved integration tracking",
+        "de": "Verbesserte Nachverfolgung der Integrationen",
+        "nl": "Verbeterde opvolging van integraties",
+        "it": "Monitoraggio delle integrazioni migliorato",
+        "es": "Seguimiento de integraciones mejorado",
+        "pl": "Ulepszone śledzenie integracji",
+        "pt": "Acompanhamento de integrações melhorado"
+      }
+    },
     {
       "version": "6.0.24",
       "releasedAt": "2026-10-22",

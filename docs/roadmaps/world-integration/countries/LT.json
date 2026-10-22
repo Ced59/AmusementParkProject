@@ -6,10 +6,12 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 14,
+  "sourceObservationCount": 19,
   "sourceFamilies": [
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26368",
@@ -18,7 +20,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 5 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -52,54 +55,6 @@
       ]
     },
     {
-      "entryId": "LT-park-6f147184-3e39-4207-8423-35c88a400959",
-      "name": "Kalitos Kalnas",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "6f147184-3e39-4207-8423-35c88a400959",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToReview",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/13248.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": null,
-      "countryResolution": {
-        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
-        "confidence": "À confirmer lors de la reprise de la fiche",
-        "score": 100,
-        "sources": [
-          {
-            "label": "RCDB",
-            "url": "https://rcdb.com/13248.htm",
-            "sourceName": "Kalitos Kalnas"
-          }
-        ]
-      }
-    },
-    {
       "entryId": "LT-candidate-4c8afac788c344",
       "name": "Kalitos Kalnas",
       "entityKind": "Park",
@@ -131,18 +86,18 @@
       "duplicateOf": "LT-park-6f147184-3e39-4207-8423-35c88a400959"
     },
     {
-      "entryId": "LT-park-b7c63cbc-80c1-454e-afcd-ffd41a7bcb76",
-      "name": "Liepkalnis",
+      "entryId": "LT-park-6f147184-3e39-4207-8423-35c88a400959",
+      "name": "Kalitos Kalnas",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
-      "siteId": "b7c63cbc-80c1-454e-afcd-ffd41a7bcb76",
+      "siteId": "6f147184-3e39-4207-8423-35c88a400959",
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToProcessLater",
+      "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
@@ -151,7 +106,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -160,7 +115,22 @@
         },
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/20361.htm",
+          "url": "https://rcdb.com/13248.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13249.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=283#location-id-1067",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://vasara.kalitoskalnas.lt/",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -172,10 +142,36 @@
         "sources": [
           {
             "label": "RCDB",
-            "url": "https://rcdb.com/20361.htm",
-            "sourceName": "Liepkalnis"
+            "url": "https://rcdb.com/13248.htm",
+            "sourceName": "Kalitos Kalnas"
           }
         ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13249.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Kalitos Kalnas",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Anykščiai , Utena",
+            "sourceOpenedYear": "2009"
+          },
+          {
+            "name": "Anykščiai",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=283#location-id-1067",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Anykščiai",
+            "referenceId": "location-id-1067",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
       }
     },
     {
@@ -208,6 +204,76 @@
         }
       ],
       "duplicateOf": "LT-park-b7c63cbc-80c1-454e-afcd-ffd41a7bcb76"
+    },
+    {
+      "entryId": "LT-park-b7c63cbc-80c1-454e-afcd-ffd41a7bcb76",
+      "name": "Liepkalnis",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "b7c63cbc-80c1-454e-afcd-ffd41a7bcb76",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToProcessLater",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20361.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20362.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/20361.htm",
+            "sourceName": "Liepkalnis"
+          }
+        ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "unknown",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20362.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Liepkalnis",
+            "sourceLifecycleSignal": "-",
+            "sourceLocality": "Vilnius",
+            "sourceOpenedYear": "2015"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "LT-candidate-66488cda2270e7",
@@ -325,61 +391,19 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
-    },
-    {
-      "entryId": "LT-park-5e5eaeea-abe0-4c15-93bd-1c6ea8efd69a",
-      "name": "Pramogu Kalnas",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "5e5eaeea-abe0-4c15-93bd-1c6ea8efd69a",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToReview",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/20411.htm",
-          "accessedAt": "2026-10-22"
-        }
       ],
-      "countryCodeAtInventory": null,
-      "countryResolution": {
-        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
-        "confidence": "À confirmer lors de la reprise de la fiche",
-        "score": 100,
-        "sources": [
-          {
-            "label": "RCDB",
-            "url": "https://rcdb.com/20411.htm",
-            "sourceName": "Pramogu Kalnas"
-          }
-        ]
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
       }
     },
     {
@@ -412,6 +436,126 @@
         }
       ],
       "duplicateOf": "LT-park-5e5eaeea-abe0-4c15-93bd-1c6ea8efd69a"
+    },
+    {
+      "entryId": "LT-park-5e5eaeea-abe0-4c15-93bd-1c6ea8efd69a",
+      "name": "Pramogu Kalnas",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "5e5eaeea-abe0-4c15-93bd-1c6ea8efd69a",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20411.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20412.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=283#location-id-2155",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.pramogukalnas.lt/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/20411.htm",
+            "sourceName": "Pramogu Kalnas"
+          }
+        ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Vasaros Rogutės",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20412.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Pramogu Kalnas",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Birštonas , Kaunas",
+            "sourceOpenedYear": "2022"
+          },
+          {
+            "name": "Birštonas",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=283#location-id-2155",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Birštonas",
+            "referenceId": "location-id-2155",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "LT-candidate-16b8c90819553a",
+      "name": "Raubonių Pramogų Parkas",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Raubonys , Panevėžys",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre LT-park-9e86c6c3-c1cc-4091-962a-bbbb2ca917b1. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21535.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "LT-park-9e86c6c3-c1cc-4091-962a-bbbb2ca917b1"
     },
     {
       "entryId": "LT-park-9e86c6c3-c1cc-4091-962a-bbbb2ca917b1",
@@ -460,37 +604,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "LT-candidate-16b8c90819553a",
-      "name": "Raubonių Pramogų Parkas",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Raubonys , Panevėžys",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre LT-park-9e86c6c3-c1cc-4091-962a-bbbb2ca917b1. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/21535.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "LT-park-9e86c6c3-c1cc-4091-962a-bbbb2ca917b1"
     },
     {
       "entryId": "LT-candidate-e0b5b66b83418c",
@@ -583,6 +696,37 @@
       ]
     },
     {
+      "entryId": "LT-candidate-4926d758155066",
+      "name": "Vaikų Pasaulis",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Elektrenai , Vilnius",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "SBNO",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre LT-park-70b7a082-aac3-4f13-b32b-940d153bc2b9. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5645.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "LT-park-70b7a082-aac3-4f13-b32b-940d153bc2b9"
+    },
+    {
       "entryId": "LT-park-70b7a082-aac3-4f13-b32b-940d153bc2b9",
       "name": "Vaikų Pasaulis",
       "entityKind": "Park",
@@ -629,37 +773,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "LT-candidate-4926d758155066",
-      "name": "Vaikų Pasaulis",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Elektrenai , Vilnius",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "SBNO",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre LT-park-70b7a082-aac3-4f13-b32b-940d153bc2b9. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5645.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "LT-park-70b7a082-aac3-4f13-b32b-940d153bc2b9"
     },
     {
       "entryId": "LT-candidate-1583534a6ab51a",

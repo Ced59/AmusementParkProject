@@ -274,6 +274,37 @@
       ]
     },
     {
+      "entryId": "AM-candidate-f924daf7cbf6b2",
+      "name": "Yerevan Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Nor Kilikia , Yerevan",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre AM-park-ffdb5ca2-e2cc-47a2-8c3d-fd39c29ef310. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/17231.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "AM-park-ffdb5ca2-e2cc-47a2-8c3d-fd39c29ef310"
+    },
+    {
       "entryId": "AM-park-ffdb5ca2-e2cc-47a2-8c3d-fd39c29ef310",
       "name": "Yerevan Park",
       "entityKind": "Park",
@@ -320,37 +351,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "AM-candidate-f924daf7cbf6b2",
-      "name": "Yerevan Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Nor Kilikia , Yerevan",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre AM-park-ffdb5ca2-e2cc-47a2-8c3d-fd39c29ef310. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/17231.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "AM-park-ffdb5ca2-e2cc-47a2-8c3d-fd39c29ef310"
     },
     {
       "entryId": "AM-candidate-ea44ff59c034a5",

@@ -6,12 +6,16 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 141,
+  "sourceObservationCount": 149,
   "sourceFamilies": [
     "AmusementForce",
+    "Brogent — projet constructeur",
+    "Découverte complémentaire — site officiel",
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "WAZA",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=25963",
@@ -19,7 +23,9 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 6 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -1720,6 +1726,61 @@
       "countryResolution": null
     },
     {
+      "entryId": "NL-candidate-discovery-1825dcfb286f92",
+      "name": "Euroscoop — Euromast",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique rotative",
+      "locality": "Rotterdam",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Euromast",
+        "Euroscoop"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.magnicity.com/euroscoop/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Euroscoop — Euromast",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.magnicity.com/euroscoop/",
+            "family": "Tour panoramique rotative",
+            "sourceVenueName": "Euroscoop — Euromast",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Rotterdam"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "NL-park-2567c7b2-5312-4c6b-ad90-1c84330738ca",
       "name": "Familiepark Drievliet",
       "entityKind": "Park",
@@ -2573,14 +2634,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "NL-candidate-acae8d794eb098",
@@ -2673,6 +2740,133 @@
       ],
       "countryCodeAtInventory": "NL",
       "countryResolution": null
+    },
+    {
+      "entryId": "NL-candidate-standalone-6589923a6eac87",
+      "name": "Luge Wiegand — Duinrell I",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [
+        {
+          "siteId": "c9d5a7fc-770b-4f7f-a4c1-394edd79ef17",
+          "name": "Duinrell",
+          "similarity": null
+        }
+      ],
+      "possibleBacklogEntries": [
+        "NL-park-c9d5a7fc-770b-4f7f-a4c1-394edd79ef17"
+      ],
+      "aliases": [
+        "Duinrell I"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Références proches : NL-park-c9d5a7fc-770b-4f7f-a4c1-394edd79ef17. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=259#location-id-1357",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.duinrell.de",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=259#location-id-1356",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Duinrell I",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=259#location-id-1357",
+            "family": "Luge d’été",
+            "sourceVenueName": "Duinrell I",
+            "referenceId": "location-id-1357"
+          },
+          {
+            "name": "Duinrell II",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=259#location-id-1356",
+            "family": "Luge d’été",
+            "sourceVenueName": "Duinrell II",
+            "referenceId": "location-id-1356"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
+    },
+    {
+      "entryId": "NL-candidate-standalone-ecbec0884c1670",
+      "name": "Luge Wiegand — Kabelbaan Valkenburg",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Kabelbaan Valkenburg"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=259#location-id-1355",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.agogovalkenburg.nl",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Kabelbaan Valkenburg",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=259#location-id-1355",
+            "family": "Luge d’été",
+            "sourceVenueName": "Kabelbaan Valkenburg",
+            "referenceId": "location-id-1355"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "NL-park-6c490d91-26b0-4e3f-89a6-1caf146c4fd5",
@@ -3064,6 +3258,61 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "NL-candidate-discovery-80445428d4593e",
+      "name": "Over the Edge — A’DAM LOOKOUT",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire mécanique",
+      "locality": "Amsterdam",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Over the Edge",
+        "ADAM LOOKOUT"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.adamlookout.com/en/over-the-edge/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Over the Edge — A’DAM LOOKOUT",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.adamlookout.com/en/over-the-edge/",
+            "family": "Balançoire mécanique",
+            "sourceVenueName": "Over the Edge — A’DAM LOOKOUT",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Amsterdam"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "NL-park-f14f8115-0296-4a27-a59d-26803a021297",
@@ -3525,14 +3774,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "NL-candidate-7e8301aa1074bc",
@@ -3555,14 +3810,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "NL-park-80fdb66f-15bb-4dfb-ace8-9540e7c07977",
@@ -3585,7 +3846,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3596,10 +3857,51 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13250.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13251.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=259#location-id-1068",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.snowworld.com/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "NL",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13251.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "SnowWorld",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Landgraaf , Limburg",
+            "sourceOpenedYear": "2012"
+          },
+          {
+            "name": "Landgraaf",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=259#location-id-1068",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Landgraaf",
+            "referenceId": "location-id-1068",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "NL-park-d8cc84af-c492-4f89-8bb1-6edc431c8a0f",
@@ -4232,6 +4534,51 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "NL-candidate-standalone-d1328a7cf0c136",
+      "name": "THIS IS HOLLAND",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Flying theatre",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Brogent — projet constructeur",
+          "url": "https://www.brogent.com/EN/THIS-IS-HOLLAND-cv-5.html",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "THIS IS HOLLAND",
+            "source": "Brogent — projet constructeur",
+            "url": "https://www.brogent.com/EN/THIS-IS-HOLLAND-cv-5.html",
+            "family": "Flying theatre",
+            "sourceVenueName": "THIS IS HOLLAND"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "NL-candidate-3de3a73a301f40",

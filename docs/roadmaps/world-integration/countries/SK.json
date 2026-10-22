@@ -6,12 +6,14 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 29,
+  "sourceObservationCount": 36,
   "sourceFamilies": [
     "AmusementForce",
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "WAZA",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=60539",
@@ -19,9 +21,63 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 7 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
+    {
+      "entryId": "SK-candidate-standalone-330a01aec3cdbe",
+      "name": "Alpine Coaster Wiegand — Velká Rača",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Velká Rača"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=229#location-id-1087",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.snowparadise.sk",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Velká Rača",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=229#location-id-1087",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Velká Rača",
+            "referenceId": "location-id-1087"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
     {
       "entryId": "SK-candidate-350d997bb66ab0",
       "name": "Aquacity Poprad",
@@ -115,8 +171,8 @@
     {
       "entryId": "SK-candidate-37f6a177200aa3",
       "name": "Bachledka Ski & Sun",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Ždiar , Prešov",
       "siteId": null,
@@ -133,14 +189,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/13045.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13046.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bobová Dráha",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13046.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Bachledka Ski & Sun",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Ždiar , Prešov",
+            "sourceOpenedYear": "2011"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "SK-candidate-3f9cd881c105f5",
@@ -320,7 +398,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -331,10 +409,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13047.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13048.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "SK",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bobová dráha",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13048.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Fun Park Žiarce",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Pavčina Lehota , Žilina",
+            "sourceOpenedYear": "2007"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "SK-candidate-0208f39d20b911",
@@ -487,6 +587,112 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "SK-candidate-standalone-0843b4d097dc98",
+      "name": "Luge Wiegand — Donovaly",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Donovaly"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=229#location-id-1378",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.parksnow.sk",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Donovaly",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=229#location-id-1378",
+            "family": "Luge d’été",
+            "sourceVenueName": "Donovaly",
+            "referenceId": "location-id-1378"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "SK-candidate-standalone-04c8ea259b65a0",
+      "name": "Luge Wiegand — Kosice",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Kosice"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=229#location-id-1377",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.bobovadrahake.sk",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Kosice",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=229#location-id-1377",
+            "family": "Luge d’été",
+            "sourceVenueName": "Kosice",
+            "referenceId": "location-id-1377"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "SK-park-f1773984-6980-4f0e-891b-03607255505f",
@@ -799,7 +1005,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -810,10 +1016,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/14791.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14792.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "SK",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Tatrabob",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14792.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Tatrabob Tatranska Lomnica",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Vysoké Tatry , Prešov",
+            "sourceOpenedYear": "2004"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "SK-candidate-ea6bedc7032668",
@@ -1025,7 +1253,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1036,10 +1264,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13280.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13281.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "SK",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bobová Dráha",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13281.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Veľká Rača - Oščadnica",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Oščadnica , Žilina",
+            "sourceOpenedYear": "2005"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "SK-park-cd2becde-4037-495b-bae4-9159f9641c52",

@@ -6,6 +6,57 @@ const fixture = () => ({ schemaVersion: 1, countryCode: 'BE', countryName: 'Belg
 const options = () => ({ entry: 'BE-example', event: 'receipt-1', at: '2026-10-22T12:00:00Z', outcome: 'completed', entityId: 'park-1', kind: 'Park', evidence: 'receipt:verified-1', audit: 'audit:verified-1', summary: 'Inventaire et textes intégrés, audit final accepté.' });
 const now = new Date('2026-10-22T18:00:00Z');
 
+test('standalone investigations distinguish Park subsets, uncertain aliases and internal rides', () => {
+  const doc = fixture();
+  const base = doc.entries[0];
+  base.standaloneAssessment = { relation: 'ParentToResolve', attractions: [] };
+  doc.entries.push(
+    { ...base, entryId: 'published-parent', presence: 'Published' },
+    { ...base, entryId: 'uncertain-standalone', entityKind: 'ToQualify', siteId: null, presence: 'PossibleExisting', proposedEntityKind: 'StandaloneAttraction' },
+    { ...base, entryId: 'new-standalone', entityKind: 'ToQualify', siteId: null, presence: 'NotFound', proposedEntityKind: 'StandaloneAttraction', standaloneAssessment: { relation: 'IndependentCandidate', attractions: [] } },
+    { ...base, entryId: 'real-park', standaloneAssessment: { relation: 'InsidePark', attractions: [] } },
+  );
+  const counts = countryCounts(doc);
+  assert.equal(counts.standaloneLegacyHidden, 1);
+  assert.equal(counts.standaloneLegacyPublished, 1);
+  assert.equal(counts.standaloneUnresolved, 1);
+  assert.equal(counts.standaloneAbsent, 1);
+  assert.equal(counts.standaloneInsidePark, 1);
+  assert.equal(counts.parkHidden, 2);
+  assert.match(renderCountry(doc), /pistes dans des fiches Park masquées/);
+});
+
+test('resolving a standalone investigation updates classification and retains evidence', () => {
+  const doc = fixture();
+  doc.entries[0].standaloneAssessment = { relation: 'IndependentCandidate', attractions: [{ name: 'Luge', source: 'Constructeur', url: 'https://example.org/ride' }] };
+  const migrated = recordIntegration(doc, { ...options(), kind: 'StandaloneAttraction', entityId: 'standalone-1' }, now);
+  assert.equal(migrated.entries[0].standaloneAssessment.relation, 'AlreadyStandalone');
+  assert.equal(migrated.entries[0].standaloneAssessment.attractions.length, 1);
+  assert.equal(countryCounts(migrated).standaloneLegacyHidden, 0);
+  const confirmedPark = recordIntegration(doc, { ...options(), outcome: 'partial' }, now);
+  assert.equal(confirmedPark.entries[0].standaloneAssessment.relation, 'InsidePark');
+  assert.equal(countryCounts(confirmedPark).standaloneLegacyHidden, 0);
+});
+
+test('inconsistent standalone classifications cannot inflate creation counts', () => {
+  const doc = fixture();
+  doc.entries[0].standaloneAssessment = { relation: 'InsidePark', attractions: [] };
+  doc.entries[0].proposedEntityKind = 'StandaloneAttraction';
+  assert.throws(() => validateCountry(doc), /Attraction interne/);
+  doc.entries[0].proposedEntityKind = 'Park';
+  doc.entries[0].standaloneAssessment.relation = 'AlreadyStandalone';
+  assert.throws(() => validateCountry(doc), /incohérents/);
+});
+
+test('missing-country proposals remain distinct from corrections of populated country codes', () => {
+  const doc = fixture();
+  doc.entries[0].countryResolution = { countryCode: 'BE' };
+  doc.entries[0].countryCodeAtInventory = null;
+  doc.entries.push({ ...doc.entries[0], entryId: 'country-correction', countryCodeAtInventory: 'FR' });
+  assert.equal(countryCounts(doc).countryResolvedBySource, 1);
+  assert.equal(countryCounts(doc).countryCorrectedBySource, 1);
+});
+
 test('country correction preserves stable identity and integration history worldwide', () => {
   const unresolved = recordIntegration(fixture(), options(), now);
   unresolved.countryCode = 'ZZ';

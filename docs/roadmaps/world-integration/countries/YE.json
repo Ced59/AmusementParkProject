@@ -50,36 +50,6 @@
       ]
     },
     {
-      "entryId": "YE-candidate-aa82f0ad9c39c1",
-      "name": "Al Sabeen Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Sana'a , Capital",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/9459.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "YE-candidate-cb7bb6fbe11b57",
       "name": "Al-Kamasri Fun Park",
       "entityKind": "Park",
@@ -105,6 +75,36 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/9461.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "YE-candidate-aa82f0ad9c39c1",
+      "name": "Al Sabeen Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Sana'a , Capital",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/9459.htm",
           "accessedAt": "2026-10-22"
         }
       ]

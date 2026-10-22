@@ -1842,12 +1842,12 @@
       ]
     },
     {
-      "entryId": "DK-candidate-954bf571e74ae6",
+      "entryId": "DK-candidate-57605c13ad3456",
       "name": "The Lalandia Aquadome",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Aquatique",
-      "locality": "in Billund",
+      "locality": "in Rødby .",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -1872,12 +1872,12 @@
       ]
     },
     {
-      "entryId": "DK-candidate-57605c13ad3456",
+      "entryId": "DK-candidate-954bf571e74ae6",
       "name": "The Lalandia Aquadome",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Aquatique",
-      "locality": "in Rødby .",
+      "locality": "in Billund",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",

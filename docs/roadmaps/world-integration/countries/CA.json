@@ -6,21 +6,33 @@
   "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
   "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 154,
+  "sourceObservationCount": 180,
   "sourceFamilies": [
+    "ADG — ouverture annoncée le 20 mai 2026",
     "AZA",
     "AmusementForce",
+    "Brogent — projet constructeur",
+    "Découverte complémentaire — site officiel",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "Site officiel (attraction autonome)",
+    "Skyline — destinations officielles",
+    "Sunkid — archive de projets",
+    "Sunkid — projet constructeur",
     "WAZA",
-    "Wikipédia (découverte)"
+    "Wiegand — références constructeur",
+    "Wikipédia (découverte)",
+    "ZipRider — référence constructeur"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=18",
   "notes": [
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 22 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Contrôle supplémentaire alpine coasters : 3 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
   ],
   "entries": [
     {
@@ -57,6 +69,59 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CA-candidate-standalone-f308d275511a11",
+      "name": "Alpine Coaster Wiegand — Saint Sauveur",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Saint Sauveur"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=347#location-id-962",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.sommets.com",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Saint Sauveur",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=347#location-id-962",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Saint Sauveur",
+            "referenceId": "location-id-962"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-candidate-f935dec80d7920",
@@ -296,7 +361,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -307,10 +372,50 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13086.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13087.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=347#location-id-963",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.bluemountain.ca",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "CA",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ridge Runner Mountain Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13087.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Blue Mountain",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Blue Mountains , Ontario",
+            "sourceOpenedYear": "2010"
+          },
+          {
+            "name": "Blue Mountain",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=347#location-id-963",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Blue Mountain",
+            "referenceId": "location-id-963"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-candidate-1938549d45eb55",
@@ -543,13 +648,13 @@
     {
       "entryId": "CA-candidate-4b5edf478ced05",
       "name": "Camp Fortune",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB) / Attractions",
       "locality": "Chelsea , Québec",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -561,7 +666,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
@@ -572,8 +677,44 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/19375.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/sunkid-new-mountain-coaster-in-canada/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Mountain Pipe Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/19375.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Camp Fortune",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Chelsea , Québec",
+            "sourceOpenedYear": "2021"
+          },
+          {
+            "name": "Mountain Coaster — Camp Fortune",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/sunkid-new-mountain-coaster-in-canada/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Camp Fortune",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-park-09fbd03a-c6f6-410a-94ce-85295a084e57",
@@ -651,7 +792,7 @@
       "entryId": "CA-park-ac4da3fe-592f-45e0-a582-d03cea74f9f1",
       "name": "Canyon Ski Resort",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "ac4da3fe-592f-45e0-a582-d03cea74f9f1",
@@ -668,7 +809,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -684,10 +825,46 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20297.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/red-deers-canyon-ski-resort-gets-albertas-first-mountain-coaster/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "CA",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Canyon Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20297.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Canyon Ski Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Red Deer , Alberta",
+            "sourceOpenedYear": "2022"
+          },
+          {
+            "name": "Mountain Coaster — Canyon Ski Resort",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/red-deers-canyon-ski-resort-gets-albertas-first-mountain-coaster/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Canyon Ski Resort",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "CA-candidate-21b00e61c579bc",
@@ -1047,7 +1224,7 @@
       "entryId": "CA-park-7a79d037-14ae-4c40-ac44-eef801151dd9",
       "name": "Cypress Mountain",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "7a79d037-14ae-4c40-ac44-eef801151dd9",
@@ -1064,7 +1241,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1080,10 +1257,44 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18970.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — projet constructeur",
+          "url": "https://www.sunkidworld.com/en/projects/detail/eagle-coaster/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "CA",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Eagle Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18970.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Cypress Mountain",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "West Vancouver , British Columbia",
+            "sourceOpenedYear": "2021"
+          },
+          {
+            "name": "Mountain Coaster — West Vancouver",
+            "source": "Sunkid — projet constructeur",
+            "url": "https://www.sunkidworld.com/en/projects/detail/eagle-coaster/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Cypress Mountain"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "CA-candidate-645d99a06dd197",
@@ -1144,6 +1355,56 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CA-candidate-standalone-abf154c8e98f1e",
+      "name": "Downhill Karting Calgary",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge gravitaire",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Skyline — destinations officielles",
+          "url": "https://www.downhillkarting.ca/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Skyline — destinations officielles — liste",
+          "url": "https://www.skylineluge.com/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Downhill Karting Calgary",
+            "source": "Skyline — destinations officielles",
+            "url": "https://www.downhillkarting.ca/",
+            "family": "Luge gravitaire",
+            "sourceVenueName": "Downhill Karting Calgary"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "CA-candidate-148e7711b58444",
@@ -1321,14 +1582,43 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Site officiel (attraction autonome)",
           "url": "https://www.experienceflyover.com/vancouver/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Brogent — projet constructeur",
+          "url": "https://www.brogent.com/EN/Flyover-in-Vancouver-cv-2.html",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Flyover in Vancouver",
+            "source": "Brogent — projet constructeur",
+            "url": "https://www.brogent.com/EN/Flyover-in-Vancouver-cv-2.html",
+            "family": "Flying theatre",
+            "sourceVenueName": "Flyover Vancouver"
+          },
+          {
+            "name": "Flyover Vancouver",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.experienceflyover.com/vancouver/",
+            "family": "Flying theatre",
+            "sourceVenueName": "Flyover Vancouver",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Vancouver"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "CA-candidate-5635d8ecb7dafe",
@@ -1492,7 +1782,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1508,10 +1798,32 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20857.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "CA",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Railrider Mountain Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20857.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Golden Skybridge",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Golden , British Columbia",
+            "sourceOpenedYear": "2023"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-park-7bf1cffa-e9b5-4744-9fb2-35a16ce53290",
@@ -1648,8 +1960,8 @@
     {
       "entryId": "CA-candidate-76d2f7dbb42d9b",
       "name": "Grouse Mountain",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "North Vancouver , British Columbia",
       "siteId": null,
@@ -1672,14 +1984,50 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/22042.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/22043.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — ouverture annoncée le 20 mai 2026",
+          "url": "https://www.adgmountainsides.com/adg-mountainsides-brings-new-mountain-adventure-to-grouse-mountain/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Grouse Gravity Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/22043.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Grouse Mountain",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "North Vancouver , British Columbia",
+            "sourceOpenedYear": "2026"
+          },
+          {
+            "name": "Grouse Gravity Coaster",
+            "source": "ADG — ouverture annoncée le 20 mai 2026",
+            "url": "https://www.adgmountainsides.com/adg-mountainsides-brings-new-mountain-adventure-to-grouse-mountain/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Grouse Mountain",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-candidate-a3be981168ea59",
@@ -1949,14 +2297,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-park-1ffd0b47-b9e7-43ee-ac3a-5a9306083611",
@@ -2054,6 +2408,59 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CA-candidate-standalone-b5b1f3b7790b28",
+      "name": "Luge Wiegand — Whistler",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Whistler"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=347#location-id-1180",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.whistlerblackcomb.com",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Whistler",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=347#location-id-1180",
+            "family": "Luge d’été",
+            "sourceVenueName": "Whistler",
+            "referenceId": "location-id-1180"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-candidate-7568da280692fe",
@@ -2225,13 +2632,13 @@
     {
       "entryId": "CA-candidate-d611f59ca379fd",
       "name": "Martock",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Windsor Forks , Nova Scotia",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -2243,14 +2650,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/24553.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/24554.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Porcupine Express",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/24554.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Martock",
+            "sourceLifecycleSignal": "Under Construction",
+            "sourceLocality": "Windsor Forks , Nova Scotia",
+            "sourceOpenedYear": "2026"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-park-48dc421d-20c5-412f-96b6-23f51d51f7b3",
@@ -2389,14 +2818,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-candidate-5d46d12f079c76",
@@ -2431,8 +2866,8 @@
     {
       "entryId": "CA-candidate-05e7f7645eafbd",
       "name": "Panorama Mountain Resort",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Panorama , British Columbia",
       "siteId": null,
@@ -2449,14 +2884,48 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/22012.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/22013.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — projet constructeur",
+          "url": "https://www.sunkidworld.com/en/projects/detail/the-wild-rider-is-the-new-top-experience-in-panorama-canada/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Wild Rider",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/22013.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Panorama Mountain Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Panorama , British Columbia",
+            "sourceOpenedYear": "2024"
+          },
+          {
+            "name": "Mountain Coaster — Panorama B.C.",
+            "source": "Sunkid — projet constructeur",
+            "url": "https://www.sunkidworld.com/en/projects/detail/the-wild-rider-is-the-new-top-experience-in-panorama-canada/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Panorama Mountain Resort"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "CA-candidate-f15636a02d05d8",
@@ -2800,7 +3269,7 @@
       "entryId": "CA-park-7c7b6a59-b7b4-4d3b-a4bd-6a20aacacc86",
       "name": "Revelstoke Mountain Resort",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "7c7b6a59-b7b4-4d3b-a4bd-6a20aacacc86",
@@ -2817,7 +3286,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2833,10 +3302,59 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13443.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20885.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — projet constructeur",
+          "url": "https://www.sunkidworld.com/en/projects/detail/second-mountain-coaster-route-at-revelstoke-mountain-resort/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "CA",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Pipe - Track One",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13443.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Revelstoke Mountain Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Revelstoke , British Columbia",
+            "sourceOpenedYear": "2016"
+          },
+          {
+            "name": "Pipe - Track Two",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20885.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Revelstoke Mountain Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Revelstoke , British Columbia",
+            "sourceOpenedYear": "2023"
+          },
+          {
+            "name": "Mountain Coaster — Revelstoke",
+            "source": "Sunkid — projet constructeur",
+            "url": "https://www.sunkidworld.com/en/projects/detail/second-mountain-coaster-route-at-revelstoke-mountain-resort/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Revelstoke Mountain Resort"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "CA-candidate-8c0f1483465474",
@@ -3196,15 +3714,65 @@
       ]
     },
     {
+      "entryId": "CA-candidate-standalone-d4c5e1d103913c",
+      "name": "Skyline Luge Mont Tremblant",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge gravitaire",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Skyline — destinations officielles",
+          "url": "https://tremblant.skylineluge.com/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Skyline — destinations officielles — liste",
+          "url": "https://www.skylineluge.com/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Skyline Luge Mont Tremblant",
+            "source": "Skyline — destinations officielles",
+            "url": "https://tremblant.skylineluge.com/",
+            "family": "Luge gravitaire",
+            "sourceVenueName": "Skyline Luge Mont Tremblant"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
+    },
+    {
       "entryId": "CA-candidate-534923ad73742b",
       "name": "Sommet Saint-Sauveur",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Piedmont , Québec",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -3216,14 +3784,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/13088.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13089.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Viking",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13089.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Sommet Saint-Sauveur",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Piedmont , Québec",
+            "sourceOpenedYear": "2009"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-candidate-6aebe557b16480",
@@ -4065,6 +4655,96 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CA-candidate-standalone-52b944d77d3979",
+      "name": "ZipRider — Mt. Washington",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne fixe",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "ZipRider — référence constructeur",
+          "url": "https://ziprider.com/locations/mt-washington-bc/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "ZipRider — Mt. Washington",
+            "source": "ZipRider — référence constructeur",
+            "url": "https://ziprider.com/locations/mt-washington-bc/",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Mt. Washington"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
+    },
+    {
+      "entryId": "CA-candidate-standalone-8abe2e5d5d5cc0",
+      "name": "ZipRider — Scenic Caves",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne fixe",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "ZipRider — référence constructeur",
+          "url": "https://ziprider.com/locations/scenic-caves/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "ZipRider — Scenic Caves",
+            "source": "ZipRider — référence constructeur",
+            "url": "https://ziprider.com/locations/scenic-caves/",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Scenic Caves"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "CA-candidate-94595f5a19133b",

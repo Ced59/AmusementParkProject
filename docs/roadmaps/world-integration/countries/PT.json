@@ -6,13 +6,16 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 173,
+  "sourceObservationCount": 176,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "Backlog national existant",
     "EAZA",
     "Opérateur officiel Tempo Livre",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "WAZA",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26320",
@@ -26,7 +29,10 @@
     "La recherche officielle PT du 22 octobre 2026 à 19:30 UTC trouve 23 parcs et trois standalone, dont cinq parcs et deux standalone publiés. Ce résultat décrit la base à cet instant, pas le recensement exhaustif des attractions autonomes du pays.",
     "Le recensement mondial des standalone est en correction. Poursuivre les recherches locales même si aucun candidat standalone supplémentaire n’est actuellement compté ; distinguer lieu autonome, parc et attraction interne à un vrai parc.",
     "Quatre pistes conservées du backlog national ajoutées : Lusitanix, Carvalhelhos, Feira Popular à Palhavã et Ottieland à Vila Franca de Xira. Dates de données nulles car aucune intégration appliquée pour ces candidats.",
-    "Príncipe Perfeito / Radical Park / parc aquatique du complexe et Pelicanzoo / Zoo de Lagos restent des rapprochements à vérifier avant toute création. Les lignes ne sont pas supprimées ni fusionnées sur leur seul nom."
+    "Príncipe Perfeito / Radical Park / parc aquatique du complexe et Pelicanzoo / Zoo de Lagos restent des rapprochements à vérifier avant toute création. Les lignes ne sont pas supprimées ni fusionnées sur leur seul nom.",
+    "Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Création potentielle transfrontalière : Limite Zero (départ Sanlúcar de Guadiana, ES ; arrivée Alcoutim, PT) est suivie une seule fois sous ES-candidate-discovery-1182b2f2f1a8d3 dans ES.json. Coordonner la campagne PT avec ce dossier, sans seconde création.",
+    "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -491,6 +497,41 @@
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
       "sources": [
+        {
+          "label": "Backlog national existant",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "PT-candidate-2a496a2ccfe9b8",
+      "name": "Aquário Vasco da Gama",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquarium / Catégorie à qualifier",
+      "locality": "Algés",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_aquaria#Portugal",
+          "accessedAt": "2026-10-22"
+        },
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md",
@@ -3652,41 +3693,6 @@
       }
     },
     {
-      "entryId": "PT-candidate-2a496a2ccfe9b8",
-      "name": "Aquário Vasco da Gama",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Aquarium / Catégorie à qualifier",
-      "locality": "Algés",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_aquaria#Portugal",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Backlog national existant",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "PT-candidate-fd7f390167e9ce",
       "name": "Atlântico Park",
       "entityKind": "Park",
@@ -3810,6 +3816,66 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "PT-candidate-discovery-e1994e5c8e5628",
+      "name": "Balloonvision — ballon captif de Madère",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Madère",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Balloonvision Île de Madère, Portugal"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/balloonvision/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Balloonvision — ballon captif de Madère",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/balloonvision/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Balloonvision — ballon captif de Madère",
+            "sourceLifecycleSignal": "Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Madère",
+            "referenceId": "aerophile-balloonvision"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "PT-candidate-0f6905a6e7709c",
@@ -5144,6 +5210,12 @@
         "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122124189981424431",
         "facebookStatus": "Published",
         "auditEvidence": "docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json#completedAudits.2a207fda-7479-405a-b1ce-d93dc3a0acd8"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
       }
     },
     {
@@ -5409,6 +5481,12 @@
         "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122124189909424431",
         "facebookStatus": "Published",
         "auditEvidence": "docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json#completedAudits.22507909-9fab-4452-a87d-27fded8b2e3c"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
       }
     },
     {
@@ -7344,6 +7422,36 @@
       ]
     },
     {
+      "entryId": "PT-candidate-cf8ccc1ac514f8",
+      "name": "Oásis",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Catégorie à qualifier",
+      "locality": "Parque Aquático das Galveias",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Backlog national existant",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "PT-candidate-fbdbf570d63dee",
       "name": "Oceanário de Lisboa",
       "entityKind": "Park",
@@ -7471,36 +7579,6 @@
       ],
       "countryCodeAtInventory": "PT",
       "countryResolution": null
-    },
-    {
-      "entryId": "PT-candidate-cf8ccc1ac514f8",
-      "name": "Oásis",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
-      "locality": "Parque Aquático das Galveias",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "Backlog national existant",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md",
-          "accessedAt": "2026-10-22"
-        }
-      ]
     },
     {
       "entryId": "PT-candidate-ac8d4f8ce85921",
@@ -9593,6 +9671,21 @@
           "label": "Rapprochement de la campagne Portugal et recherches officielles",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13277.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=242#location-id-1892",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.penaaventura.com",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "PT",
@@ -9603,6 +9696,31 @@
         "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122123973321424431",
         "facebookStatus": "Published",
         "auditEvidence": "docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json#completedAudits.55afb230-332d-40a4-8290-a17e8d52566c"
+      },
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13277.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Pena Aventura",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Ribeira de Pena , Vila Real",
+            "sourceOpenedYear": "2014"
+          },
+          {
+            "name": "Pena Aventura",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=242#location-id-1892",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Pena Aventura",
+            "referenceId": "location-id-1892"
+          }
+        ],
+        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
       }
     },
     {
@@ -11814,7 +11932,13 @@
       ],
       "countryCodeAtInventory": "PT",
       "countryResolution": null,
-      "presenceEvidence": "docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json#observations"
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json#observations",
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "PT-candidate-9fd84f9007c26d",

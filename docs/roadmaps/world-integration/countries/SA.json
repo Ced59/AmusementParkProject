@@ -6,9 +6,12 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 159,
+  "sourceObservationCount": 166,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26648",
@@ -17,7 +20,9 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 6 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -76,36 +81,6 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/15825.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-96d01c8c34af9e",
-      "name": "Adventure World",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Jizan , Jizan",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/15832.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -171,36 +146,6 @@
       ]
     },
     {
-      "entryId": "SA-candidate-58552ab2218226",
-      "name": "Adventure World",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Arar , Northern Borders",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/18771.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "SA-candidate-462c185ed05a1a",
       "name": "Adventure World",
       "entityKind": "Park",
@@ -231,6 +176,36 @@
       ]
     },
     {
+      "entryId": "SA-candidate-58552ab2218226",
+      "name": "Adventure World",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Arar , Northern Borders",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/18771.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "SA-candidate-8f0a42b8bd202e",
       "name": "Adventure World",
       "entityKind": "Park",
@@ -256,6 +231,36 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/18779.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-96d01c8c34af9e",
+      "name": "Adventure World",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Jizan , Jizan",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/15832.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -392,6 +397,36 @@
       "countryResolution": null
     },
     {
+      "entryId": "SA-candidate-87d656c7d51119",
+      "name": "Al-Amuaj Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Tabuk , Tabuk",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/9789.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "SA-candidate-fa8cc2824bf7dd",
       "name": "Al Amwaj Amusement Park",
       "entityKind": "Park",
@@ -417,6 +452,96 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/5395.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-0d7f260eeb4ef2",
+      "name": "Al-Baijan Amusement Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Riyadh , Ar Riyadh",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/15850.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-bbd6cb17e13fd7",
+      "name": "Al-Baijan Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Medina , Al Madinah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/10916.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-d90ee4ccb9f5f0",
+      "name": "Al-Baijan Tourist Resort & Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Ta'if , Makkah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/15804.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -662,6 +787,36 @@
       ]
     },
     {
+      "entryId": "SA-candidate-22ac6f5df72917",
+      "name": "Al-Nawras Park and Restaurant",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Jeddah , Makkah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/11460.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "SA-candidate-d49b563e1ede75",
       "name": "Al Rawdah Amusement Park",
       "entityKind": "Park",
@@ -724,10 +879,62 @@
     {
       "entryId": "SA-candidate-36e9842691f571",
       "name": "Al Samraa Amusement Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Ha'il , Ha'il",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/18776.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23327.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "unknown",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23327.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Al Samraa Amusement Park",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Ha'il , Ha'il",
+            "sourceOpenedYear": "2025"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "SA-candidate-a3315ddd0d17d8",
+      "name": "Al-Shallal Theme Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB) / Attractions",
+      "locality": "Jeddah , Makkah",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -746,7 +953,12 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/18776.htm",
+          "url": "https://rcdb.com/5210.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Saudi_Arabia",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -824,191 +1036,6 @@
       "countryResolution": null
     },
     {
-      "entryId": "SA-candidate-87d656c7d51119",
-      "name": "Al-Amuaj Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Tabuk , Tabuk",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/9789.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-0d7f260eeb4ef2",
-      "name": "Al-Baijan Amusement Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Riyadh , Ar Riyadh",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/15850.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-bbd6cb17e13fd7",
-      "name": "Al-Baijan Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Medina , Al Madinah",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/10916.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-d90ee4ccb9f5f0",
-      "name": "Al-Baijan Tourist Resort & Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Ta'if , Makkah",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/15804.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-22ac6f5df72917",
-      "name": "Al-Nawras Park and Restaurant",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Jeddah , Makkah",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/11460.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-a3315ddd0d17d8",
-      "name": "Al-Shallal Theme Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Jeddah , Makkah",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5210.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Saudi_Arabia",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "SA-candidate-2125b9a1d31412",
       "name": "Alkhaimah Park",
       "entityKind": "Park",
@@ -1041,8 +1068,8 @@
     {
       "entryId": "SA-candidate-bd25dde110d9d6",
       "name": "Alkur Amusement Resort",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Al Hada , Makkah",
       "siteId": null,
@@ -1059,14 +1086,98 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/14734.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14735.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=235#location-id-1085",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Toboggan",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14735.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Alkur Amusement Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Al Hada , Makkah",
+            "sourceOpenedYear": "2001"
+          },
+          {
+            "name": "Al Hada",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=235#location-id-1085",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Al Hada",
+            "referenceId": "location-id-1085",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
+    },
+    {
+      "entryId": "SA-candidate-standalone-98d556ddceaa23",
+      "name": "Alpine Coaster Wiegand — Taif",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Taif"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=235#location-id-1084",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Taif",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=235#location-id-1084",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Taif",
+            "referenceId": "location-id-1084"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "SA-candidate-be0555ec8176b0",
@@ -1818,36 +1929,6 @@
       ]
     },
     {
-      "entryId": "SA-candidate-d8870751dd63e6",
-      "name": "Faby Land",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Abha , 'Asir",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/15828.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "SA-candidate-9ae244c421c677",
       "name": "Faby Land",
       "entityKind": "Park",
@@ -1873,6 +1954,36 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/17198.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-d8870751dd63e6",
+      "name": "Faby Land",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Abha , 'Asir",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/15828.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -1956,36 +2067,6 @@
       }
     },
     {
-      "entryId": "SA-candidate-bbea0a25043d9d",
-      "name": "Fantasy Factory",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Riyadh , Ar Riyadh",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/17751.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "SA-candidate-a23ba3ac069ae1",
       "name": "Fantasy Factory",
       "entityKind": "Park",
@@ -2011,6 +2092,36 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/17753.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-bbea0a25043d9d",
+      "name": "Fantasy Factory",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Riyadh , Ar Riyadh",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/17751.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -2096,36 +2207,6 @@
       }
     },
     {
-      "entryId": "SA-candidate-daf9afd0a80ee3",
-      "name": "Fun Time",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Jeddah , Makkah",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/15726.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "SA-candidate-723cc88f90905f",
       "name": "Fun Time",
       "entityKind": "Park",
@@ -2151,6 +2232,36 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/21262.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-daf9afd0a80ee3",
+      "name": "Fun Time",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Jeddah , Makkah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/15726.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -2388,8 +2499,8 @@
     {
       "entryId": "SA-candidate-d7765bff713f78",
       "name": "Green Mountain Resort",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Ta'if , Makkah",
       "siteId": null,
@@ -2406,14 +2517,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/14736.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14737.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Toboggan Green Mountain",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14737.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Green Mountain Resort",
+            "sourceLifecycleSignal": "SBNO",
+            "sourceLocality": "Ta'if , Makkah",
+            "sourceOpenedYear": "2002"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "SA-candidate-59f2a9c67b90ee",
@@ -2722,6 +2855,59 @@
       ]
     },
     {
+      "entryId": "SA-candidate-standalone-05f4cb4f388527",
+      "name": "Luge Wiegand — Al Habalah",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Al Habalah"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=235#location-id-1376",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.syahya.com.sa",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Al Habalah",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=235#location-id-1376",
+            "family": "Luge d’été",
+            "sourceVenueName": "Al Habalah",
+            "referenceId": "location-id-1376"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
       "entryId": "SA-candidate-b2b4ef8428d1c6",
       "name": "Luna Park",
       "entityKind": "Park",
@@ -2970,6 +3156,42 @@
       ]
     },
     {
+      "entryId": "SA-candidate-dddd2fb13cde07",
+      "name": "Octo!",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Jeddah , Makkah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [
+        {
+          "siteId": "93e8d71b-ccec-466f-bd42-18396df3b599",
+          "name": "Octo!",
+          "similarity": 90
+        }
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20409.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "SA-park-24375359-6b52-4533-ab30-d696fb8f434d",
       "name": "Octo City",
       "entityKind": "Park",
@@ -3016,42 +3238,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "SA-candidate-dddd2fb13cde07",
-      "name": "Octo!",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Jeddah , Makkah",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
-        {
-          "siteId": "93e8d71b-ccec-466f-bd42-18396df3b599",
-          "name": "Octo!",
-          "similarity": 90
-        }
-      ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/20409.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
     },
     {
       "entryId": "SA-candidate-5e4cbaa386c100",
@@ -3360,6 +3546,65 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "SA-candidate-discovery-ac1d84cfdfef0a",
+      "name": "Riyadh Balloon Riyadh, Saudi Arabia",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2022 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Riyadh Balloon Riyadh, Saudi Arabia"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/riyadh-balloon-2/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Riyadh Balloon Riyadh, Saudi Arabia",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/riyadh-balloon-2/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Riyadh Balloon Riyadh, Saudi Arabia",
+            "sourceLifecycleSignal": "Référence constructeur datée 2022 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-riyadh-balloon-2"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
     },
     {
       "entryId": "SA-park-54043e39-4728-4a92-a055-fe6940afcc63",
@@ -3706,42 +3951,6 @@
       ]
     },
     {
-      "entryId": "SA-candidate-dffa5370532efd",
-      "name": "Saffori Land",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Unaizah , Al Qassim",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
-        {
-          "siteId": "542ff61e-6a8f-4b6f-ab05-06b9a372874f",
-          "name": "Saffori Land Dammam",
-          "similarity": 78.6
-        }
-      ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/15836.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "SA-candidate-06007eb5ec0163",
       "name": "Saffori Land",
       "entityKind": "Park",
@@ -3773,6 +3982,42 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/20521.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-dffa5370532efd",
+      "name": "Saffori Land",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Unaizah , Al Qassim",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [
+        {
+          "siteId": "542ff61e-6a8f-4b6f-ab05-06b9a372874f",
+          "name": "Saffori Land Dammam",
+          "similarity": 78.6
+        }
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/15836.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -4279,7 +4524,7 @@
       "countryResolution": null
     },
     {
-      "entryId": "SA-candidate-f2b6b527a6fb54",
+      "entryId": "SA-candidate-037d20bbe32c3f",
       "name": "Sparky's",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
@@ -4309,18 +4554,18 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/14087.htm",
+          "url": "https://rcdb.com/16918.htm",
           "accessedAt": "2026-10-22"
         }
       ]
     },
     {
-      "entryId": "SA-candidate-76f2262ea2e053",
+      "entryId": "SA-candidate-0a751628cc7fd3",
       "name": "Sparky's",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Howtat Bani Tamim , Ar Riyadh",
+      "locality": "Al Mubarraz , Eastern Province",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
@@ -4328,7 +4573,7 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [
         {
@@ -4345,43 +4590,7 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/15724.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-b050178a5ecdb9",
-      "name": "Sparky's",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Mecca , Makkah",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
-        {
-          "siteId": "fe603607-6a1f-4d13-9f38-87c282b31738",
-          "name": "Sparky's Ta'if",
-          "similarity": 77.8
-        }
-      ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/15810.htm",
+          "url": "https://rcdb.com/16938.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -4495,12 +4704,12 @@
       ]
     },
     {
-      "entryId": "SA-candidate-037d20bbe32c3f",
+      "entryId": "SA-candidate-76f2262ea2e053",
       "name": "Sparky's",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Dammam , Eastern Province",
+      "locality": "Howtat Bani Tamim , Ar Riyadh",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
@@ -4525,43 +4734,7 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/16918.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-0a751628cc7fd3",
-      "name": "Sparky's",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Al Mubarraz , Eastern Province",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
-        {
-          "siteId": "fe603607-6a1f-4d13-9f38-87c282b31738",
-          "name": "Sparky's Ta'if",
-          "similarity": 77.8
-        }
-      ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/16938.htm",
+          "url": "https://rcdb.com/15724.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -4603,6 +4776,42 @@
       ]
     },
     {
+      "entryId": "SA-candidate-b050178a5ecdb9",
+      "name": "Sparky's",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Mecca , Makkah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [
+        {
+          "siteId": "fe603607-6a1f-4d13-9f38-87c282b31738",
+          "name": "Sparky's Ta'if",
+          "similarity": 77.8
+        }
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/15810.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "SA-candidate-d919db03807aff",
       "name": "Sparky's",
       "entityKind": "Park",
@@ -4634,6 +4843,42 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/18232.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-f2b6b527a6fb54",
+      "name": "Sparky's",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Dammam , Eastern Province",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [
+        {
+          "siteId": "fe603607-6a1f-4d13-9f38-87c282b31738",
+          "name": "Sparky's Ta'if",
+          "similarity": 77.8
+        }
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14087.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -5220,12 +5465,12 @@
       ]
     },
     {
-      "entryId": "SA-candidate-7ac61015e2e295",
+      "entryId": "SA-candidate-302f0cec1959d7",
       "name": "Toy Town",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Al Khobar , Eastern Province",
+      "locality": "Jeddah , Makkah",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -5244,37 +5489,7 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/14073.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "SA-candidate-537fa5fa90d751",
-      "name": "Toy Town",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Mecca , Makkah",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/14080.htm",
+          "url": "https://rcdb.com/16896.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -5310,12 +5525,42 @@
       ]
     },
     {
-      "entryId": "SA-candidate-302f0cec1959d7",
+      "entryId": "SA-candidate-537fa5fa90d751",
       "name": "Toy Town",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Jeddah , Makkah",
+      "locality": "Mecca , Makkah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14080.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SA-candidate-7ac61015e2e295",
+      "name": "Toy Town",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Al Khobar , Eastern Province",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -5334,7 +5579,7 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/16896.htm",
+          "url": "https://rcdb.com/14073.htm",
           "accessedAt": "2026-10-22"
         }
       ]

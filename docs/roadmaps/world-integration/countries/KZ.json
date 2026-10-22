@@ -6,10 +6,12 @@
   "geographicScope": "Extension nationale transcontinentale / Caucase",
   "geographicGroup": "Pays transcontinentaux et Caucase",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 51,
+  "sourceObservationCount": 55,
   "sourceFamilies": [
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26668",
@@ -19,7 +21,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Extension nationale transcontinentale/Caucase : les sources couvrent tout le pays, y compris des lieux hors d’Europe géographique. Totaux séparés dans le rapport.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 4 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -288,14 +291,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "KZ-candidate-d880b1a7d3d400",
@@ -358,6 +367,36 @@
       ]
     },
     {
+      "entryId": "KZ-candidate-1e5a32baaf4d84",
+      "name": "Central Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Shakhtinsk , Karaganda",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21099.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "KZ-candidate-4f47f3307d8bd7",
       "name": "Central Park",
       "entityKind": "Park",
@@ -413,36 +452,6 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/13601.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "KZ-candidate-1e5a32baaf4d84",
-      "name": "Central Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Shakhtinsk , Karaganda",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/21099.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -844,36 +853,6 @@
       ]
     },
     {
-      "entryId": "KZ-candidate-c7d1522f075102",
-      "name": "Funky Town",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Shymkent , South Kazakhstan",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/7165.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "KZ-candidate-04390dba11d31c",
       "name": "Funky Town",
       "entityKind": "Park",
@@ -899,6 +878,36 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/18424.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KZ-candidate-0b7f7d57138efe",
+      "name": "Funky Town",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Shymkent , South Kazakhstan",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/22530.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -934,7 +943,7 @@
       ]
     },
     {
-      "entryId": "KZ-candidate-0b7f7d57138efe",
+      "entryId": "KZ-candidate-c7d1522f075102",
       "name": "Funky Town",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
@@ -958,7 +967,7 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/22530.htm",
+          "url": "https://rcdb.com/7165.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -1146,13 +1155,13 @@
     {
       "entryId": "KZ-candidate-5512e17dd2c548",
       "name": "Kok Tobe",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Almaty , Almaty",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -1164,14 +1173,78 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/14746.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14747.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23718.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=293#location-id-1065",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=293#location-id-2214",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Fast Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14747.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Kok Tobe",
+            "sourceLifecycleSignal": "-",
+            "sourceLocality": "Almaty , Almaty",
+            "sourceOpenedYear": "2007"
+          },
+          {
+            "name": "Fast Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23718.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Kok Tobe",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Almaty , Almaty",
+            "sourceOpenedYear": "2024"
+          },
+          {
+            "name": "Almaty",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=293#location-id-1065",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Almaty",
+            "referenceId": "location-id-1065",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          },
+          {
+            "name": "Kok Tobe",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=293#location-id-2214",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Kok Tobe",
+            "referenceId": "location-id-2214"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "KZ-candidate-e8e4b496fb5ba7",
@@ -1419,6 +1492,37 @@
       ]
     },
     {
+      "entryId": "KZ-candidate-1469ae4a103fdd",
+      "name": "Tetysblu Theme Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Munaily District , Mangistau",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre KZ-park-ec518bd1-2c3b-428f-8e12-d949beba0917. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19454.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "KZ-park-ec518bd1-2c3b-428f-8e12-d949beba0917"
+    },
+    {
       "entryId": "KZ-park-ec518bd1-2c3b-428f-8e12-d949beba0917",
       "name": "Tetysblu Theme Park",
       "entityKind": "Park",
@@ -1475,37 +1579,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "KZ-candidate-1469ae4a103fdd",
-      "name": "Tetysblu Theme Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Munaily District , Mangistau",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre KZ-park-ec518bd1-2c3b-428f-8e12-d949beba0917. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/19454.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "KZ-park-ec518bd1-2c3b-428f-8e12-d949beba0917"
     },
     {
       "entryId": "KZ-candidate-090206ef3515e8",

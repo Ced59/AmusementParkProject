@@ -162,6 +162,37 @@
       "duplicateOf": "MD-park-365be5ed-0ee8-4304-b9ba-a61a9b8eaf27"
     },
     {
+      "entryId": "MD-candidate-c05c417e092aa0",
+      "name": "OrheiLand",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Orhei , Orhei",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "SBNO",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre MD-park-3d6adb39-cdd7-40d9-910a-f78b1fd53d05. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/17430.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "MD-park-3d6adb39-cdd7-40d9-910a-f78b1fd53d05"
+    },
+    {
       "entryId": "MD-park-3d6adb39-cdd7-40d9-910a-f78b1fd53d05",
       "name": "OrheiLand",
       "entityKind": "Park",
@@ -210,12 +241,12 @@
       }
     },
     {
-      "entryId": "MD-candidate-c05c417e092aa0",
-      "name": "OrheiLand",
+      "entryId": "MD-candidate-514d64fbbf21f5",
+      "name": "Parcul Central",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Orhei , Orhei",
+      "locality": "Comrat , Gagauzia",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -223,22 +254,22 @@
       "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "SBNO",
+      "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre MD-park-3d6adb39-cdd7-40d9-910a-f78b1fd53d05. Ne pas créer de doublon.",
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre MD-park-93eb0d63-3dfe-440a-8aea-f79d55042bec. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/17430.htm",
+          "url": "https://rcdb.com/14944.htm",
           "accessedAt": "2026-10-22"
         }
       ],
-      "duplicateOf": "MD-park-3d6adb39-cdd7-40d9-910a-f78b1fd53d05"
+      "duplicateOf": "MD-park-93eb0d63-3dfe-440a-8aea-f79d55042bec"
     },
     {
       "entryId": "MD-park-93eb0d63-3dfe-440a-8aea-f79d55042bec",
@@ -287,37 +318,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "MD-candidate-514d64fbbf21f5",
-      "name": "Parcul Central",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Comrat , Gagauzia",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre MD-park-93eb0d63-3dfe-440a-8aea-f79d55042bec. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/14944.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "MD-park-93eb0d63-3dfe-440a-8aea-f79d55042bec"
     },
     {
       "entryId": "MD-candidate-fb4ac2f59c3444",

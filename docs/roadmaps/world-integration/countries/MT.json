@@ -81,6 +81,42 @@
       ]
     },
     {
+      "entryId": "MT-candidate-d53328c8f36df5",
+      "name": "Popeye Village",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB) / Attractions",
+      "locality": "Mellieha , Northern",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre MT-park-3166b3ab-84e9-4c00-abcf-b96f24603340. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6172.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Malta",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "MT-park-3166b3ab-84e9-4c00-abcf-b96f24603340"
+    },
+    {
       "entryId": "MT-park-3166b3ab-84e9-4c00-abcf-b96f24603340",
       "name": "Popeye Village",
       "entityKind": "Park",
@@ -139,40 +175,34 @@
       }
     },
     {
-      "entryId": "MT-candidate-d53328c8f36df5",
-      "name": "Popeye Village",
+      "entryId": "MT-candidate-d65490a226a7c6",
+      "name": "Splash and Fun",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Mellieha , Northern",
+      "category": "Attractions",
+      "locality": "Bahar Ic-Caghaq",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
+      "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre MT-park-3166b3ab-84e9-4c00-abcf-b96f24603340. Ne pas créer de doublon.",
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
       "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/6172.htm",
-          "accessedAt": "2026-10-22"
-        },
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Malta",
           "accessedAt": "2026-10-22"
         }
-      ],
-      "duplicateOf": "MT-park-3166b3ab-84e9-4c00-abcf-b96f24603340"
+      ]
     },
     {
       "entryId": "MT-candidate-380f706cb416cc",
@@ -200,36 +230,6 @@
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Malta",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "MT-candidate-d65490a226a7c6",
-      "name": "Splash and Fun",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions",
-      "locality": "Bahar Ic-Caghaq",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Malta",
           "accessedAt": "2026-10-22"
         }
       ]

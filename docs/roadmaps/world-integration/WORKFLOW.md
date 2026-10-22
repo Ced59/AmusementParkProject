@@ -16,6 +16,16 @@ Ce registre situé dans le dépôt GitHub est la source de vérité de l’inven
 
 La date `lastDataIntegrationAt` est le maximum des dates réelles `integrationHistory[].appliedAt`. Elle ne change pas pour une recherche, un audit seul, une réservation, une modification de ce fichier ou une publication sans nouvelle donnée. Une intégration partielle réussie met déjà à jour cette date, sans déclarer le dossier achevé. Les anciennes dates inconnues restent nulles jusqu’à récupération d’une preuve ; ne pas leur attribuer le 22 octobre 2026.
 
+## Qualification des standalone
+
+Consulter aussi [STANDALONE-AUDIT.md](STANDALONE-AUDIT.md). Le compteur des candidates sans fiche ne couvre pas à lui seul le travail standalone : examiner les pistes présentes dans des fiches Park et les dossiers sans ID dont l’identité ou le rattachement reste à résoudre. Ces compteurs sont des sous-ensembles, pas de nouvelles lignes à additionner. Conserver les références `standaloneAssessment.attractions` ; une installation constructeur peut être un parkItem, une modernisation ou un alias. Réserver le dossier existant avant de créer une nouvelle identité.
+
+## Découverte de nouvelles fiches
+
+La [liste des créations candidates](CREATIONS-STANDALONE.md) isole les attractions sans correspondance trouvée, avec une section alpine / mountain coasters. Poursuivre la découverte hors du catalogue : annuaires spécialisés, références constructeurs, exploitants et tourisme local. Comparer les noms, alias, adresses, coordonnées et anciennes identités aux Park et StandaloneAttraction publics et masqués ; élargir la recherche au-delà du pays en cas de classement erroné.
+
+Créer une nouvelle entrée JSON seulement quand aucun dossier ne la représente déjà, avec un `entryId` permanent, les sources et la date du relevé, `siteId: null`, `lastDataIntegrationAt: null` et un historique vide. Utiliser `PossibleExisting` si l’identité ou le parent est incertain. Ne pas confondre référence historique et attraction actuellement ouverte. Enregistrer la première date réelle uniquement après l’Apply/import réussi. Pour une installation transfrontalière, conserver une seule identité et un renvoi dans l’autre pays.
+
 ## Prise en charge et coordination
 
 1. Se synchroniser avec `origin/master` et lire le JSON du pays, le backlog national historique et les règles API en vigueur.
@@ -56,6 +66,8 @@ Pour corriger un pays (notamment depuis `ZZ`), déplacer l’entrée entière ve
 En cas de conflit Git, réunir les entrées et les événements des deux branches par identifiant, puis régénérer les vues. Ne jamais choisir une version entière au prix de la perte d’une intégration concurrente. Regrouper les mises à jour documentaires selon la règle des lots du dépôt ; aucun nouveau déploiement n’est nécessaire à chaque Apply. Les compteurs « publiés/masqués » décrivent la dernière présence observée, et le compteur « intégrations avec audit » décrit l’avancement éditorial : ils mesurent deux choses différentes.
 
 ## Message à reprendre dans les conversations France et Portugal
+
+Deux [prompts complets, France et Portugal](PROMPTS-FR-PT.md), sont disponibles pour reprendre les campagnes avec le registre corrigé.
 
 > Le nouvel inventaire mondial inclut désormais la France et le Portugal. Avant le prochain lot, synchronise le dépôt et lis `docs/roadmaps/world-integration/README.md`, `WORKFLOW.md` et `countries/FR.json` ou `countries/PT.json`. Rapproche les intégrations réalisées depuis le relevé du 22 octobre 2026 et réserve les prochaines entrées pour éviter les doublons. Une fiche masquée nécessite une vraie intégration éditoriale. Après chaque intégration, conserve la ligne, ajoute sa preuve et sa date réelle dans l’historique ; ne l’efface plus du backlog. Les règles de publication propres au lot national restent applicables.
 

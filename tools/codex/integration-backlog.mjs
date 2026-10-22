@@ -6,6 +6,7 @@ const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const states = new Set(['ToIntegrate', 'ToQualify', 'InProgress', 'Blocked', 'Integrated', 'PublishedDateUnknown', 'Excluded', 'Duplicate']);
 const kinds = new Set(['Park', 'StandaloneAttraction', 'ToQualify']);
 const presences = new Set(['Published', 'Hidden', 'NotFound', 'PossibleExisting', 'ExistsVisibilityUnknown']);
+const standaloneRelations = new Set(['IndependentCandidate', 'ParentToResolve', 'InsidePark', 'AlreadyStandalone']);
 const isoUtc = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/;
 const labels = { ToIntegrate: 'À intégrer', ToQualify: 'À qualifier', InProgress: 'En cours', Blocked: 'Bloqué', Integrated: 'Intégration achevée', PublishedDateUnknown: 'Publié, date inconnue', Excluded: 'Hors périmètre enregistré', Duplicate: 'Doublon conservé' };
 
@@ -31,6 +32,11 @@ export function validateCountry(document) {
     requireText(entry.name, 'name');
     if (!states.has(entry.editorialStatus) || !kinds.has(entry.entityKind)) throw new Error(`État ou type invalide : ${entry.entryId}`);
     if (!presences.has(entry.presence) || !kinds.has(entry.proposedEntityKind)) throw new Error(`Présence ou type proposé invalide : ${entry.entryId}`);
+    if (entry.standaloneAssessment) {
+      if (!standaloneRelations.has(entry.standaloneAssessment.relation) || !Array.isArray(entry.standaloneAssessment.attractions)) throw new Error(`Qualification standalone invalide : ${entry.entryId}`);
+      if (entry.standaloneAssessment.relation === 'InsidePark' && entry.proposedEntityKind === 'StandaloneAttraction') throw new Error(`Attraction interne comptée comme standalone : ${entry.entryId}`);
+      if ((entry.standaloneAssessment.relation === 'AlreadyStandalone') !== (entry.entityKind === 'StandaloneAttraction')) throw new Error(`Qualification et type standalone incohérents : ${entry.entryId}`);
+    }
     const knownPresence = ['Published', 'Hidden', 'ExistsVisibilityUnknown'].includes(entry.presence);
     if (knownPresence !== Boolean(entry.siteId)) throw new Error(`Présence et identifiant du site incohérents : ${entry.entryId}`);
     if (!Array.isArray(entry.integrationHistory) || !Array.isArray(entry.sources)) throw new Error(`Historique ou sources invalides : ${entry.entryId}`);
@@ -102,6 +108,10 @@ export function recordIntegration(document, options, now = new Date()) {
   entry.lastDataIntegrationAt = options.at;
   entry.entityKind = options.kind;
   entry.proposedEntityKind = options.kind;
+  if (entry.standaloneAssessment) {
+    entry.standaloneAssessment.relation = options.kind === 'StandaloneAttraction' ? 'AlreadyStandalone' : 'InsidePark';
+    entry.standaloneAssessment.rationale = `Type ${options.kind} confirmé par le reçu d’intégration ${options.event} ; conserver les références de découverte.`;
+  }
   if (entry.siteId && entry.siteId !== options.entityId) entry.legacySiteIds = [...new Set([...(entry.legacySiteIds ?? []), entry.siteId])];
   entry.siteId = options.entityId;
   if (targetChanged || ['NotFound', 'PossibleExisting'].includes(entry.presence)) {
@@ -138,6 +148,7 @@ export function countryCounts(document) {
   const standalone = entry => entry.entityKind === 'StandaloneAttraction';
   const live = entry => !['Excluded', 'Duplicate'].includes(entry.editorialStatus);
   const absent = entry => !entry.siteId && entry.presence === 'NotFound';
+  const pendingStandalone = entry => live(entry) && entry.editorialStatus !== 'Integrated' && ['IndependentCandidate', 'ParentToResolve'].includes(entry.standaloneAssessment?.relation);
   const byId = new Map(document.entries.map(entry => [entry.entryId, entry]));
   return {
     parkPublished: count(entry => park(entry) && entry.presence === 'Published' && live(entry)),
@@ -147,13 +158,18 @@ export function countryCounts(document) {
     standalonePublished: count(entry => standalone(entry) && entry.presence === 'Published' && live(entry)),
     standaloneHidden: count(entry => standalone(entry) && entry.presence === 'Hidden' && entry.editorialStatus !== 'Integrated' && live(entry)),
     standaloneAbsent: count(entry => absent(entry) && entry.proposedEntityKind === 'StandaloneAttraction' && live(entry)),
+    standaloneLegacyHidden: count(entry => park(entry) && entry.presence === 'Hidden' && pendingStandalone(entry)),
+    standaloneLegacyPublished: count(entry => park(entry) && entry.presence === 'Published' && pendingStandalone(entry)),
+    standaloneUnresolved: count(entry => !entry.siteId && entry.presence === 'PossibleExisting' && entry.proposedEntityKind === 'StandaloneAttraction' && live(entry)),
+    standaloneInsidePark: count(entry => entry.standaloneAssessment?.relation === 'InsidePark' && live(entry)),
     kindUnknown: count(entry => absent(entry) && entry.proposedEntityKind === 'ToQualify' && live(entry)),
     possibleExisting: count(entry => entry.presence === 'PossibleExisting' && live(entry)),
     legacy: count(entry => entry.editorialStatus === 'Duplicate' && entry.siteId && park(entry) && byId.get(entry.duplicateOf)?.entityKind === 'StandaloneAttraction'),
     integratedWithAudit: count(entry => entry.editorialStatus === 'Integrated'),
     integratedHidden: count(entry => entry.editorialStatus === 'Integrated' && entry.presence === 'Hidden'),
     visibilityUnknown: count(entry => entry.siteId && entry.presence === 'ExistsVisibilityUnknown' && live(entry)),
-    countryResolvedBySource: count(entry => Boolean(entry.countryResolution)),
+    countryResolvedBySource: count(entry => Boolean(entry.countryResolution) && entry.countryCodeAtInventory == null),
+    countryCorrectedBySource: count(entry => Boolean(entry.countryResolution) && entry.countryCodeAtInventory != null),
     total: document.entries.length,
   };
 }
@@ -169,10 +185,12 @@ export function renderSummary(documents) {
     '**Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.', '',
     '**Sans fiche = candidats sans correspondance trouvée dans le relevé**, pas créations validées. Confirmer les alias, l’adresse, le périmètre et le type avant création. Les rapprochements incertains et les types non résolus restent séparés. Les anciennes fiches déjà liées à une standalone ne gonflent pas la file des parcs.', '',
     'Le recensement couvre les annuaires et sources décrits dans [la méthode et ses limites](METHODOLOGY.md). La couverture varie selon le pays : la colonne « observations externes » compte les références de découverte avant dédoublonnage, jamais des parcs supplémentaires. **Un zéro ne signifie ni absence de parcs ni pays terminé** ; les recherches locales restantes sont signalées dans chaque fiche. [Règles et commandes de suivi](WORKFLOW.md).', '',
-    `**Pays manquants dans la base :** ${grandTotal.countryResolvedBySource} fiches sont rattachées ici par rapprochement avec des sources, à confirmer pendant leur reprise. Ce classement documentaire ne modifie pas leur pays dans le site. Les cas non résolus restent dans [ZZ](countries/ZZ.md). Les compteurs européens corrigent donc la première photographie qui se limitait aux codes pays renseignés.`, '',
+    'Compléments datés du relevé : [créations standalone candidates](CREATIONS-STANDALONE.md), [couverture des alpine / mountain coasters](ALPINE-COASTER-COVERAGE.md), [contrôle de la découverte externe](DISCOVERY-COVERAGE.md) et [prompts France / Portugal](PROMPTS-FR-PT.md). Le nombre de créations candidates ne représente pas le nombre mondial d’installations. Les JSON et les compteurs régénérés ci-dessous prévalent après les intégrations ultérieures.', '',
+    `**Pays manquants dans la base :** ${grandTotal.countryResolvedBySource} fiches sont rattachées ici par rapprochement avec des sources, à confirmer pendant leur reprise. Ce classement documentaire ne modifie pas leur pays dans le site. ${grandTotal.countryCorrectedBySource} autre(s) fiche(s) ont un code pays renseigné mais corrigé ici sur source, avec leur identifiant stable conservé. Les cas non résolus restent dans [ZZ](countries/ZZ.md). Les compteurs européens corrigent donc la première photographie qui se limitait aux codes pays renseignés.`, '',
     '## Totaux mondiaux', '', '| Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |', '| --- | ---: | ---: | ---: |',
     `| Parcs | ${grandTotal.parkPublished} | ${grandTotal.parkHidden} | ${grandTotal.parkAbsent} |`,
     `| Standalone | ${grandTotal.standalonePublished} | ${grandTotal.standaloneHidden} | ${grandTotal.standaloneAbsent} |`, '',
+    `**Reprise standalone :** en plus des ${grandTotal.standaloneAbsent} candidates sans correspondance, **${grandTotal.standaloneLegacyHidden} fiches Park masquées** et **${grandTotal.standaloneLegacyPublished} fiches Park publiées** contiennent une piste standalone à requalifier ; **${grandTotal.standaloneUnresolved} dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **${grandTotal.standaloneInsidePark} dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).`, '',
     `À part : **${grandTotal.parkReview}** Park masqués NotRelevant, **${grandTotal.kindUnknown}** types à décider, **${grandTotal.possibleExisting}** rapprochements incertains et **${grandTotal.legacy}** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.`, ''];
   for (const groupName of groupNames) {
     const group = sorted.filter(document => groupOf(document) === groupName);
@@ -191,7 +209,10 @@ export function renderSummary(documents) {
       const counts = countryCounts(doc);
       lines.push(`- ${doc.countryName} : ${counts.integratedWithAudit} intégrations achevées et auditées, dont ${counts.integratedHidden} fiches encore masquées.`);
     }
-    lines.push('');
+    lines.push('### Pistes standalone à requalifier', '',
+      '| Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |', '| --- | ---: | ---: | ---: | ---: |');
+    for (const doc of group) { const c = countryCounts(doc); lines.push(`| [${doc.countryName}](countries/${doc.countryCode}.md) | ${c.standaloneLegacyHidden} | ${c.standaloneLegacyPublished} | ${c.standaloneUnresolved} | ${c.standaloneInsidePark} |`); }
+    lines.push(`| **Total** | **${totals.standaloneLegacyHidden}** | **${totals.standaloneLegacyPublished}** | **${totals.standaloneUnresolved}** | **${totals.standaloneInsidePark}** |`, '', 'Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.', '');
   }
   lines.push('¹ Publié ne signifie pas « audité et complet aujourd’hui ». Date historique inconnue tant qu’aucune preuve datée n’est retrouvée ; la date du recensement ne la remplace pas.', '',
     '² Ces dossiers peuvent désigner une fiche déjà présente ou un alias d’un candidat, notamment pour les noms japonais non encore rapprochés de leurs noms latins, ou une attraction dont le rattachement à un vrai parc reste à décider. Ils sont exclus des colonnes « sans fiche » pour éviter de présenter des doublons possibles comme de nouvelles créations.', '',
@@ -207,9 +228,10 @@ export function renderCountry(document) {
   for (const [state, label] of Object.entries(labels)) lines.push(`| ${label} | ${document.entries.filter(entry => entry.editorialStatus === state).length} |`);
   const c = countryCounts(document);
   lines.push('', `Couverture : **${escapeCell(document.coverageStatus ?? 'À documenter')}**. Observations externes : **${document.sourceObservationCount ?? 0}**. Sources : ${escapeCell((document.sourceFamilies ?? []).join(', ') || 'aucune liste nationale collectée')}.`, '',
-    `Pays proposé par rapprochement pour **${c.countryResolvedBySource}** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.`);
+    `Pays proposé par rapprochement pour **${c.countryResolvedBySource}** fiches du site sans code pays au relevé ; **${c.countryCorrectedBySource}** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.`);
   lines.push('', `Parcs : **${c.parkPublished} publiés**, **${c.parkHidden} masqués à intégrer**, **${c.parkReview} masqués NotRelevant à réexaminer**, **${c.parkAbsent} candidats sans fiche**.`, '',
     `Standalone : **${c.standalonePublished} publiées**, **${c.standaloneHidden} masquées**, **${c.standaloneAbsent} candidates sans fiche**. Autres dossiers : **${c.kindUnknown} types à décider**, **${c.possibleExisting} rapprochements incertains**, **${c.legacy} anciens parcs liés à une standalone**.`, '',
+    `Revue standalone : **${c.standaloneLegacyHidden} pistes dans des fiches Park masquées**, **${c.standaloneLegacyPublished} dans des fiches Park publiées**, **${c.standaloneUnresolved} dossiers sans ID dont l’identité ou le parent reste à résoudre**, **${c.standaloneInsidePark} dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.`, '',
     'Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.', '');
   const pages = renderCountryPages(document);
   if (Object.keys(pages).length) {
@@ -223,7 +245,8 @@ function entryTable(entries) {
   const lines = ['| ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |', '| --- | --- | --- | --- | --- | --- | --- | --- | --- |'];
   for (const entry of entries) {
     const sources = entry.sources.map(linkSource).join(' · ');
-    const details = [entry.nextAction, entry.sourceLifecycleSignal && entry.sourceLifecycleSignal !== 'Non vérifié' ? `Signal source : ${entry.sourceLifecycleSignal}.` : '', ...(entry.possibleMatches ?? []).map(match => `Correspondance possible : ${match.name} (${match.siteId}).`), entry.duplicateOf ? `Cible : ${entry.duplicateOf}.` : ''].filter(Boolean).join(' ');
+    const assessment = entry.standaloneAssessment;
+    const details = [entry.nextAction, assessment ? `Qualification standalone : ${assessment.relation}. ${assessment.rationale ?? ''}` : '', assessment?.attractions.length ? `Installations référencées : ${[...new Set(assessment.attractions.map(item => item.name))].join(' ; ')}.` : '', entry.sourceLifecycleSignal && entry.sourceLifecycleSignal !== 'Non vérifié' ? `Signal source : ${entry.sourceLifecycleSignal}.` : '', ...(entry.possibleMatches ?? []).map(match => `Correspondance possible : ${match.name} (${match.siteId}).`), entry.duplicateOf ? `Cible : ${entry.duplicateOf}.` : ''].filter(Boolean).join(' ');
     lines.push(`| ${escapeCell(entry.entryId)} | ${escapeCell(entry.name)} | ${escapeCell(entry.locality)} | ${escapeCell(entry.entityKind === 'ToQualify' ? `À qualifier ; proposé : ${entry.proposedEntityKind}` : entry.entityKind)} | ${escapeCell(entry.presence)} | ${labels[entry.editorialStatus]} | ${entry.lastDataIntegrationAt ?? 'Inconnue — non inventée'} | ${escapeCell(entry.assignedTo)} | ${escapeCell(details)} ${sources} |`);
   }
   return `${lines.join('\n')}\n`;

@@ -6,12 +6,15 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 79,
+  "sourceObservationCount": 102,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "AmusementForce",
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "WAZA",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26035",
@@ -19,9 +22,182 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 22 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
+    {
+      "entryId": "HU-candidate-standalone-c96a9788869b7b",
+      "name": "Alpine Coaster Wiegand — Balatonalmadi",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [
+        {
+          "siteId": "eb2e46b1-7970-4eb5-b648-30a6d8ac290b",
+          "name": "BalatoniBob Szabadidőpark",
+          "similarity": null
+        }
+      ],
+      "possibleBacklogEntries": [
+        "HU-park-eb2e46b1-7970-4eb5-b648-30a6d8ac290b"
+      ],
+      "aliases": [
+        "Balatonalmadi"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : HU-park-eb2e46b1-7970-4eb5-b648-30a6d8ac290b. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1046",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.balatonibob.hu",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Balatonalmadi",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1046",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Balatonalmadi",
+            "referenceId": "location-id-1046"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "HU-candidate-standalone-56e509b5d413d7",
+      "name": "Alpine Coaster Wiegand — Balatonalmadi II",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [
+        {
+          "siteId": "eb2e46b1-7970-4eb5-b648-30a6d8ac290b",
+          "name": "BalatoniBob Szabadidőpark",
+          "similarity": null
+        }
+      ],
+      "possibleBacklogEntries": [
+        "HU-park-eb2e46b1-7970-4eb5-b648-30a6d8ac290b",
+        "HU-candidate-standalone-c96a9788869b7b"
+      ],
+      "aliases": [
+        "Balatonalmadi II"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : HU-park-eb2e46b1-7970-4eb5-b648-30a6d8ac290b, HU-candidate-standalone-c96a9788869b7b. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1045",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.balatonibob.hu",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Balatonalmadi II",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1045",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Balatonalmadi II",
+            "referenceId": "location-id-1045"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "HU-candidate-standalone-3e35e101085ac5",
+      "name": "Alpine Coaster Wiegand — Sasto",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Sasto"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1041",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Sasto",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1041",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Sasto",
+            "referenceId": "location-id-1041"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
     {
       "entryId": "HU-park-9a1c051c-585a-445f-9310-708c920711d9",
       "name": "America Vidampark",
@@ -563,7 +739,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -579,10 +755,51 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.balatonboglarbob.hu/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13365.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1044",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.balatonboglar.hu",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bobpálya",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13365.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Balatonboglár Kalandpark",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Balatonboglár , Somogy",
+            "sourceOpenedYear": "2013"
+          },
+          {
+            "name": "Balatonboglar",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1044",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Balatonboglar",
+            "referenceId": "location-id-1044",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-park-eb2e46b1-7970-4eb5-b648-30a6d8ac290b",
@@ -607,7 +824,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -623,10 +840,47 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.balatonibob.hu/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13366.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13209.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Panorama Track",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13366.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Balatonibob Szabadidőpark",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Balatonfűzfő , Veszprém",
+            "sourceOpenedYear": "2013"
+          },
+          {
+            "name": "Tunnel Track",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13209.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Balatonibob Szabadidőpark",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Balatonfűzfő , Veszprém",
+            "sourceOpenedYear": "2001"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-candidate-41b5fafdd4b27a",
@@ -657,6 +911,66 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "HU-candidate-discovery-556b397ac50f58",
+      "name": "BalloonFly Budapest",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Budapest",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2022 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "BalloonFly Budapest Budapest, Hungary"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/ballon-de-budapest/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "BalloonFly Budapest",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/ballon-de-budapest/",
+            "family": "Ballon captif",
+            "sourceVenueName": "BalloonFly Budapest",
+            "sourceLifecycleSignal": "Référence constructeur datée 2022 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Budapest",
+            "referenceId": "aerophile-ballon-de-budapest"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "HU-candidate-f2eecfc6b938e6",
@@ -739,14 +1053,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-candidate-bafee79bb33ff8",
@@ -1428,6 +1748,192 @@
       ]
     },
     {
+      "entryId": "HU-candidate-standalone-a9ea5b5f750bd9",
+      "name": "Luge Wiegand — Dobogodomb",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [
+        {
+          "siteId": "d28e9969-89aa-45d8-a297-49eefe8cacf6",
+          "name": "Visegrádi Bobpálya",
+          "similarity": null
+        }
+      ],
+      "possibleBacklogEntries": [
+        "HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6"
+      ],
+      "aliases": [
+        "Dobogodomb"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=305#location-id-1296",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.bobozas.hu/visegrad",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Dobogodomb",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=305#location-id-1296",
+            "family": "Luge d’été",
+            "sourceVenueName": "Dobogodomb",
+            "referenceId": "location-id-1296"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "HU-candidate-standalone-edb60b82f0b0f0",
+      "name": "Luge Wiegand — Sopron",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [
+        {
+          "siteId": "d28e9969-89aa-45d8-a297-49eefe8cacf6",
+          "name": "Visegrádi Bobpálya",
+          "similarity": null
+        }
+      ],
+      "possibleBacklogEntries": [
+        "HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6",
+        "HU-candidate-standalone-a9ea5b5f750bd9"
+      ],
+      "aliases": [
+        "Sopron"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6, HU-candidate-standalone-a9ea5b5f750bd9. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=305#location-id-1295",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://bobozas.hu/sopron",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Sopron",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=305#location-id-1295",
+            "family": "Luge d’été",
+            "sourceVenueName": "Sopron",
+            "referenceId": "location-id-1295"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "HU-candidate-standalone-1ab0eeb1f35da8",
+      "name": "Luge Wiegand — Visegrad",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [
+        {
+          "siteId": "d28e9969-89aa-45d8-a297-49eefe8cacf6",
+          "name": "Visegrádi Bobpálya",
+          "similarity": null
+        }
+      ],
+      "possibleBacklogEntries": [
+        "HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6",
+        "HU-candidate-standalone-a9ea5b5f750bd9",
+        "HU-candidate-standalone-edb60b82f0b0f0"
+      ],
+      "aliases": [
+        "Visegrad"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6, HU-candidate-standalone-a9ea5b5f750bd9, HU-candidate-standalone-edb60b82f0b0f0. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=305#location-id-1294",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.bobozas.hu/visegrad",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Visegrad",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=305#location-id-1294",
+            "family": "Luge d’été",
+            "sourceVenueName": "Visegrad",
+            "referenceId": "location-id-1294"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
       "entryId": "HU-park-2abc21b4-f377-44a1-8a90-e0a7f8f23a0c",
       "name": "Mecsextrém Park",
       "entityKind": "Park",
@@ -1448,7 +1954,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1459,10 +1965,51 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13214.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13215.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1042",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.mecsextrem.hu",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Erdei Bob",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13215.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Mecsextrém Park",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Pécs , Baranya",
+            "sourceOpenedYear": "2007"
+          },
+          {
+            "name": "Pécs",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1042",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Pécs",
+            "referenceId": "location-id-1042",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-park-be9d93ed-e018-47a8-a7cd-0754fce445d0",
@@ -1485,7 +2032,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1496,10 +2043,46 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13212.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13213.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1043",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bob Pálya",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13213.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Mibob",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Miskolc , Borsod-Abaúj-Zemplén",
+            "sourceOpenedYear": "2007"
+          },
+          {
+            "name": "Miskolc",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1043",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Miskolc",
+            "referenceId": "location-id-1043",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-park-7bd59126-f19d-439d-8dc3-f19077dae08e",
@@ -1832,7 +2415,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1843,10 +2426,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13216.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13217.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Mátra Bob",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13217.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Oxygen Adrenalin Park",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Gyöngyös , Heves",
+            "sourceOpenedYear": "2006"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-candidate-f17f788690219e",
@@ -2125,7 +2730,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2136,10 +2741,51 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13210.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13211.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1891",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.bakonyikalandpark.hu",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bob Pálya",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13211.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Sobri Jóska Élménypark",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Kislőd , Veszprém",
+            "sourceOpenedYear": "2014"
+          },
+          {
+            "name": "Kislöd",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1891",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Kislöd",
+            "referenceId": "location-id-1891",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-candidate-cb2e82873fe3f4",
@@ -2513,7 +3159,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2524,10 +3170,51 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13220.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13221.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1039",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.bobozas.hu/visegrad",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpesibob",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13221.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Visegrádi Bobpálya",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Visegrád , Pest",
+            "sourceOpenedYear": "2002"
+          },
+          {
+            "name": "Visegrád",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1039",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Visegrád",
+            "referenceId": "location-id-1039",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-park-8c51d749-cdf3-46de-9d73-6d63037eec09",
@@ -2550,7 +3237,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2561,10 +3248,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/18531.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18532.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "X-Trém Bob",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18532.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "X-Trém Bob",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Szilvásvárad , Heves",
+            "sourceOpenedYear": "2008"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-candidate-87b515be53f89d",
@@ -2647,7 +3356,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2658,10 +3367,51 @@
           "label": "RCDB",
           "url": "https://rcdb.com/13218.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13219.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1040",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.zemplenkalandpark.hu",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "HU",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bob Pálya",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13219.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Zemplén Kalandpark",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Sátoraljaújhely , Borsod-Abaúj-Zemplén",
+            "sourceOpenedYear": "2008"
+          },
+          {
+            "name": "Sátoraljaújhely",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1040",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Sátoraljaújhely",
+            "referenceId": "location-id-1040",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "HU-park-a6113073-c8a9-4ad7-8d51-bda5337b5fc2",

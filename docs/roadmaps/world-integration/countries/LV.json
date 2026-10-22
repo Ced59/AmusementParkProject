@@ -6,10 +6,12 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 13,
+  "sourceObservationCount": 19,
   "sourceFamilies": [
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=60535",
@@ -18,7 +20,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 6 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -67,6 +70,54 @@
       ],
       "countryCodeAtInventory": "LV",
       "countryResolution": null
+    },
+    {
+      "entryId": "LV-candidate-standalone-3189752d034966",
+      "name": "Alpine Coaster Wiegand — Ventspils",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Ventspils"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=287#location-id-2170",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ventspils",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=287#location-id-2170",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Ventspils",
+            "referenceId": "location-id-2170"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "LV-candidate-14050c0382baca",
@@ -129,6 +180,107 @@
       ]
     },
     {
+      "entryId": "LV-candidate-standalone-ca8eeb0570b836",
+      "name": "Luge Wiegand — Incukalns",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Incukalns"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=287#location-id-1354",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Incukalns",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=287#location-id-1354",
+            "family": "Luge d’été",
+            "sourceVenueName": "Incukalns",
+            "referenceId": "location-id-1354"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "LV-candidate-standalone-cf864677b894eb",
+      "name": "Luge Wiegand — Tukuma",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Tukuma"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=287#location-id-1353",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.zviedrucepure.lv",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Tukuma",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=287#location-id-1353",
+            "family": "Luge d’été",
+            "sourceVenueName": "Tukuma",
+            "referenceId": "location-id-1353"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
       "entryId": "LV-candidate-2ba053e3f3760b",
       "name": "Minizoo \"Dobuļi\"",
       "entityKind": "Park",
@@ -157,54 +309,6 @@
           "accessedAt": "2026-10-22"
         }
       ]
-    },
-    {
-      "entryId": "LV-park-1e6daf38-d885-4b4e-be49-9edc1a27a410",
-      "name": "Piedzīvojumu parks Tarzāns",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "1e6daf38-d885-4b4e-be49-9edc1a27a410",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToReview",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/13043.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": null,
-      "countryResolution": {
-        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
-        "confidence": "À confirmer lors de la reprise de la fiche",
-        "score": 100,
-        "sources": [
-          {
-            "label": "RCDB",
-            "url": "https://rcdb.com/13043.htm",
-            "sourceName": "Piedzīvojumu parks Tarzāns"
-          }
-        ]
-      }
     },
     {
       "entryId": "LV-candidate-34a84290f68c9a",
@@ -238,18 +342,18 @@
       "duplicateOf": "LV-park-1e6daf38-d885-4b4e-be49-9edc1a27a410"
     },
     {
-      "entryId": "LV-park-6d91ae9f-2a42-4dde-b23b-82f10028d869",
-      "name": "Riekstukalns",
+      "entryId": "LV-park-1e6daf38-d885-4b4e-be49-9edc1a27a410",
+      "name": "Piedzīvojumu parks Tarzāns",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
-      "siteId": "6d91ae9f-2a42-4dde-b23b-82f10028d869",
+      "siteId": "1e6daf38-d885-4b4e-be49-9edc1a27a410",
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToProcessLater",
+      "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
@@ -258,7 +362,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -267,7 +371,12 @@
         },
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/19167.htm",
+          "url": "https://rcdb.com/13043.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13044.htm",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -279,10 +388,27 @@
         "sources": [
           {
             "label": "RCDB",
-            "url": "https://rcdb.com/19167.htm",
-            "sourceName": "Riekstukalns"
+            "url": "https://rcdb.com/13043.htm",
+            "sourceName": "Piedzīvojumu parks Tarzāns"
           }
         ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Rodeļu trase",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13044.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Piedzīvojumu parks Tarzāns",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Sigulda , Sigulda",
+            "sourceOpenedYear": "2007"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
       }
     },
     {
@@ -315,6 +441,76 @@
         }
       ],
       "duplicateOf": "LV-park-6d91ae9f-2a42-4dde-b23b-82f10028d869"
+    },
+    {
+      "entryId": "LV-park-6d91ae9f-2a42-4dde-b23b-82f10028d869",
+      "name": "Riekstukalns",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "6d91ae9f-2a42-4dde-b23b-82f10028d869",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToProcessLater",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19167.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/19168.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/19167.htm",
+            "sourceName": "Riekstukalns"
+          }
+        ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Rodeļi",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/19168.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Riekstukalns",
+            "sourceLifecycleSignal": "-",
+            "sourceLocality": "Riekstukalns , Baldone",
+            "sourceOpenedYear": "2017"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "LV-candidate-dfb8e9ea644292",
@@ -377,14 +573,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "LV-candidate-4379c458fe280f",
@@ -417,54 +619,6 @@
       ]
     },
     {
-      "entryId": "LV-park-7a718fce-9537-4166-a200-cd4b6d13ea9a",
-      "name": "Ventspils Piedzīvojumu",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "7a718fce-9537-4166-a200-cd4b6d13ea9a",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToReview",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/21531.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": null,
-      "countryResolution": {
-        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
-        "confidence": "À confirmer lors de la reprise de la fiche",
-        "score": 100,
-        "sources": [
-          {
-            "label": "RCDB",
-            "url": "https://rcdb.com/21531.htm",
-            "sourceName": "Ventspils Piedzīvojumu"
-          }
-        ]
-      }
-    },
-    {
       "entryId": "LV-candidate-a8c6ff7a0e6fd1",
       "name": "Ventspils Piedzīvojumu",
       "entityKind": "Park",
@@ -494,6 +648,76 @@
         }
       ],
       "duplicateOf": "LV-park-7a718fce-9537-4166-a200-cd4b6d13ea9a"
+    },
+    {
+      "entryId": "LV-park-7a718fce-9537-4166-a200-cd4b6d13ea9a",
+      "name": "Ventspils Piedzīvojumu",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "7a718fce-9537-4166-a200-cd4b6d13ea9a",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21531.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/21532.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/21531.htm",
+            "sourceName": "Ventspils Piedzīvojumu"
+          }
+        ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Rodeļu trase",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/21532.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Ventspils Piedzīvojumu",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Ventspils",
+            "sourceOpenedYear": "2023"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "LV-candidate-85d14a1a21c516",
