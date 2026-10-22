@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **11776 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **11780 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -14,7 +14,7 @@ Le recensement couvre les annuaires et sources décrits dans [la méthode et ses
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 307 | 1891 | 7703 |
+| Parcs | 307 | 1892 | 7706 |
 | Standalone | 61 | 1 | 46 |
 
 À part : **767** Park masqués NotRelevant, **69** types à décider, **848** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
@@ -65,7 +65,7 @@ Le recensement couvre les annuaires et sources décrits dans [la méthode et ses
 | [Norvège](countries/NO.md) | 0 | 8 | 4 | 18 | 33 |
 | [Pays-Bas](countries/NL.md) | 18 | 14 | 37 | 63 | 141 |
 | [Pologne](countries/PL.md) | 1 | 59 | 34 | 119 | 200 |
-| [Portugal](countries/PT.md) | 5 | 7 | 10 | 103 | 173 |
+| [Portugal](countries/PT.md) | 5 | 8 | 10 | 106 | 173 |
 | [Roumanie](countries/RO.md) | 1 | 24 | 2 | 37 | 63 |
 | [Royaume-Uni](countries/GB.md) | 9 | 91 | 26 | 253 | 438 |
 | [Saint-Marin](countries/SM.md) | 0 | 0 | 0 | 1 | 1 |
@@ -77,7 +77,7 @@ Le recensement couvre les annuaires et sources décrits dans [la méthode et ses
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 1 | 25 | 48 | 47 | 75 |
 | [Ukraine](countries/UA.md) | 1 | 33 | 1 | 42 | 70 |
-| **Total** | **209** | **787** | **672** | **1880** | **3875** |
+| **Total** | **209** | **788** | **672** | **1883** | **3875** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -137,8 +137,9 @@ Le recensement couvre les annuaires et sources décrits dans [la méthode et ses
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 3 | 0 |
 | **Total** | **61** | **1** | **26** | **64** | **85** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **0**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **7**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
+- Portugal : 7 intégrations achevées et auditées, dont 0 fiches encore masquées.
 
 ## Pays transcontinentaux et Caucase
 

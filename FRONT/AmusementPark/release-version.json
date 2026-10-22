@@ -1,6 +1,20 @@
 {
-  "version": "6.0.22",
+  "version": "6.0.23",
   "history": [
+    {
+      "version": "6.0.23",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Suivi des parcs portugais actualisé",
+        "en": "Updated tracking of Portuguese parks",
+        "de": "Aktualisierter Überblick zu portugiesischen Parks",
+        "nl": "Bijgewerkt overzicht van Portugese parken",
+        "it": "Monitoraggio aggiornato dei parchi portoghesi",
+        "es": "Seguimiento actualizado de los parques portugueses",
+        "pl": "Zaktualizowany przegląd portugalskich parków",
+        "pt": "Acompanhamento dos parques portugueses atualizado"
+      }
+    },
     {
       "version": "6.0.22",
       "releasedAt": "2026-10-22",
