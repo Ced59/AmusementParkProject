@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12292 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12296 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -16,7 +16,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 307 | 1891 | 7563 |
+| Parcs | 307 | 1892 | 7566 |
 | Standalone | 61 | 1 | 182 |
 
 **Reprise standalone :** en plus des 182 candidates sans correspondance, **239 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **658 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **50 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
@@ -69,7 +69,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Norvège](countries/NO.md) | 0 | 8 | 4 | 16 | 41 |
 | [Pays-Bas](countries/NL.md) | 18 | 14 | 37 | 63 | 149 |
 | [Pologne](countries/PL.md) | 1 | 60 | 34 | 116 | 251 |
-| [Portugal](countries/PT.md) | 5 | 7 | 10 | 103 | 176 |
+| [Portugal](countries/PT.md) | 5 | 8 | 10 | 106 | 176 |
 | [Roumanie](countries/RO.md) | 1 | 23 | 2 | 36 | 95 |
 | [Royaume-Uni](countries/GB.md) | 9 | 91 | 26 | 252 | 459 |
 | [Saint-Marin](countries/SM.md) | 0 | 0 | 0 | 1 | 1 |
@@ -81,7 +81,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 1 | 25 | 48 | 46 | 114 |
 | [Ukraine](countries/UA.md) | 1 | 33 | 1 | 42 | 72 |
-| **Total** | **209** | **787** | **672** | **1861** | **4604** |
+| **Total** | **209** | **788** | **672** | **1864** | **4604** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -141,8 +141,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
 | **Total** | **61** | **1** | **56** | **64** | **315** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **0**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **7**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
+- Portugal : 7 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |

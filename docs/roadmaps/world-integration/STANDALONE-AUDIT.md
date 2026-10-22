@@ -26,7 +26,7 @@ Le contrôle RCDB a trouvé **505 mountain coasters dans 491 lieux, répartis en
 
 Les quatre catégories de recherche standalone représentent **1099 dossiers à examiner**. **Ce n’est pas 1099 attractions autonomes distinctes à créer.** Les rapprochements peuvent encore réduire ce nombre ; certains dossiers seront conservés comme doublons ou rattachés à un parc. Les 259 fiches Park et les 658 dossiers incertains sont déjà inclus dans les compteurs généraux correspondants : ne pas les additionner une seconde fois au total mondial.
 
-Le registre mondial passe à **12 292 lignes conservées**, issues de **13 884 observations externes** au total. Il conserve toutes les 11 776 entrées de la première version, sans inventer de date d’intégration. La correction documentée de Skrzyczne de RO vers PL garde même son ancien `entryId` ; son candidat polonais devient un doublon conservé.
+Le registre mondial passe à **12 296 lignes conservées**, issues de **13 884 observations externes** au total. Il conserve toutes les 11 776 entrées de la première version, sans inventer de date d’intégration. La correction documentée de Skrzyczne de RO vers PL garde même son ancien `entryId` ; son candidat polonais devient un doublon conservé.
 
 ## Sources ajoutées et contrôle de couverture
 
@@ -148,3 +148,7 @@ Les tableaux complets de parcs et standalone restent dans [README.md](README.md)
 | [Viêt Nam](countries/VN.md) | 0 | 0 | 4 | 1 | 0 | 16 | 4 |
 | [Émirats arabes unis](countries/AE.md) | 0 | 0 | 4 | 1 | 0 | 6 | 0 |
 | [États-Unis](countries/US.md) | 0 | 0 | 44 | 29 | 3 | 76 | 5 |
+
+## Rapprochement de la campagne Portugal
+
+La mise à jour nationale [#941](https://github.com/Ced59/AmusementParkProject/pull/941), publiée pendant cette recherche, est conservée : quatre dossiers supplémentaires, 837 événements de suivi, 12 dates réelles de dernière intégration et sept clôtures auditées. Le recensement lui-même n’a réalisé aucun Apply. Les dates inconnues des autres dossiers restent inconnues. Le registre consolidé contient 12 296 lignes.
