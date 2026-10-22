@@ -8158,25 +8158,166 @@
     {
       "entryId": "US-candidate-6259ed7a4dceb9",
       "name": "Brush Creek Falls Resort",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Princeton , West Virginia",
-      "siteId": null,
+      "siteId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22T22:18:17.243Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-22T22:16:39.894Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4ea5115e-c9e5-4ed3-a6f3-b1c03b1e8aa8",
+          "appliedAt": "2026-10-22T22:00:30.169Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:4ea5115e-c9e5-4ed3-a6f3-b1c03b1e8aa8",
+          "auditEvidence": null,
+          "summary": "Fiche Brush Creek Holl’r créée : identité, localisation, constructeur et descriptions originales dans huit langues."
+        },
+        {
+          "eventId": "apply-8bb6d9f2-c7a8-4952-bd63-9cae8a3da8e1",
+          "appliedAt": "2026-10-22T22:04:28.103Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:8bb6d9f2-c7a8-4952-bd63-9cae8a3da8e1",
+          "auditEvidence": null,
+          "summary": "Dix conditions d’accès sourcées : âges, tailles, accompagnement, poids, santé et objets pendant le parcours."
+        },
+        {
+          "eventId": "apply-b2de3e3a-a9a2-4da3-b1eb-90f282ef4968",
+          "appliedAt": "2026-10-22T22:06:40.759Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:b2de3e3a-a9a2-4da3-b1eb-90f282ef4968",
+          "auditEvidence": null,
+          "summary": "Horaires Halloween octobre 2026 vérifiés sur le site officiel"
+        },
+        {
+          "eventId": "apply-a22a759f-d74f-4fdb-b0b5-7190ac3cad24",
+          "appliedAt": "2026-10-22T22:07:17.906Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:a22a759f-d74f-4fdb-b0b5-7190ac3cad24",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels actuels : 16 offres documentées"
+        },
+        {
+          "eventId": "image-dea4c03593de40abb844dbe2b4ceb35f",
+          "appliedAt": "2026-10-22T22:08:18.893Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:image:dea4c03593de40abb844dbe2b4ceb35f",
+          "auditEvidence": null,
+          "summary": "Photo officielle Brush Creek Holl'r 1 intégrée"
+        },
+        {
+          "eventId": "image-ae35b9d828c74f4791cbbaab6b335b32",
+          "appliedAt": "2026-10-22T22:09:11.901Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:image:ae35b9d828c74f4791cbbaab6b335b32",
+          "auditEvidence": null,
+          "summary": "Photo officielle Brush Creek Holl'r 2 intégrée"
+        },
+        {
+          "eventId": "image-454bd2e33bce4dcb8533551e70576d0d",
+          "appliedAt": "2026-10-22T22:09:31.178Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:image:454bd2e33bce4dcb8533551e70576d0d",
+          "auditEvidence": null,
+          "summary": "Photo officielle Brush Creek Holl'r 3 intégrée"
+        },
+        {
+          "eventId": "apply-cf3c767a-e306-4951-a04c-b28e63ca9bc8",
+          "appliedAt": "2026-10-22T22:10:27.214Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:cf3c767a-e306-4951-a04c-b28e63ca9bc8",
+          "auditEvidence": null,
+          "summary": "Ouverture 2025 et premier Halloween documentés ; article historique multilingue"
+        },
+        {
+          "eventId": "apply-3ec1dc15-379e-458a-9fa5-64c6855702c4",
+          "appliedAt": "2026-10-22T22:12:00.253Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:3ec1dc15-379e-458a-9fa5-64c6855702c4",
+          "auditEvidence": null,
+          "summary": "Résumés événement/article différenciés dans huit langues"
+        },
+        {
+          "eventId": "apply-64f733fd-1726-4273-b331-5d0016812e20",
+          "appliedAt": "2026-10-22T22:13:54.670Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:64f733fd-1726-4273-b331-5d0016812e20",
+          "auditEvidence": null,
+          "summary": "Sources journalistiques et officielles reliées directement à l’article historique"
+        },
+        {
+          "eventId": "apply-a2d16d67-b143-4761-911d-fb4a71926f4f",
+          "appliedAt": "2026-10-22T22:15:26.570Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:a2d16d67-b143-4761-911d-fb4a71926f4f",
+          "auditEvidence": null,
+          "summary": "Publication 06-publish-images après audit 100/100"
+        },
+        {
+          "eventId": "apply-92df72e7-466b-4475-9bbc-08ad27361332",
+          "appliedAt": "2026-10-22T22:16:05.874Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:92df72e7-466b-4475-9bbc-08ad27361332",
+          "auditEvidence": null,
+          "summary": "Publication 07-publish-history après audit 100/100"
+        },
+        {
+          "eventId": "apply-5d8826df-0f03-4685-8afa-193ad5dbddfb",
+          "appliedAt": "2026-10-22T22:16:39.894Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:5d8826df-0f03-4685-8afa-193ad5dbddfb",
+          "auditEvidence": null,
+          "summary": "Publication 08-publish-attraction après audit 100/100"
+        },
+        {
+          "eventId": "closure-apply-5d8826df-0f03-4685-8afa-193ad5dbddfb",
+          "appliedAt": "2026-10-22T22:16:39.894Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+          "evidence": "PARK_DATA_EDITOR:apply:5d8826df-0f03-4685-8afa-193ad5dbddfb",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261022/brushcreek-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 100/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "RCDB",
@@ -8187,10 +8328,60 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/21710.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://brushcreekhollr.com/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://brushcreekhollr.com/faqs/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://brushcreekhollr.com/hours-and-directions/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://brushcreekhollr.com/gallery/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://brushcreekhollr.com/haunted-hollr-info/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.gladesprings.com/adventures/brushcreek-hollr-mountain-coaster/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wvva.com/2025/07/03/west-virginias-only-mountain-coaster-set-open-july-4/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wvva.com/2024/11/15/work-mountain-coaster-continues-down-right-track/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wtap.com/2025/11/05/one-tank-trip-west-virginias-first-mountain-coaster/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -8204,7 +8395,30 @@
             "sourceOpenedYear": "2025"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-5d8826df-0f03-4685-8afa-193ad5dbddfb ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r",
+          "publishedAtUtc": "2026-10-22T22:16:39.8948371Z",
+          "verifiedAtUtc": "2026-10-22T22:18:17.243Z",
+          "evidence": "PARK_DATA_EDITOR:apply:5d8826df-0f03-4685-8afa-193ad5dbddfb"
+        },
+        "facebook": {
+          "id": "c7e8694ce8eb459da87672fd8565985b",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-22T22:19:26.2611572Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124212103424431",
+          "externalPostId": "1285475681307050_122124212103424431",
+          "url": "https://amusement-parks.fun/fr/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261022/brushcreek-audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 6
       }
     },
     {
