@@ -1,6 +1,20 @@
 {
-  "version": "6.0.18",
+  "version": "6.0.19",
   "history": [
+    {
+      "version": "6.0.19",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Articles sur l’histoire des attractions isolées",
+        "en": "History articles for standalone attractions",
+        "de": "Geschichtsartikel zu eigenständigen Attraktionen",
+        "nl": "Geschiedenisartikelen voor zelfstandige attracties",
+        "it": "Articoli sulla storia delle attrazioni autonome",
+        "es": "Artículos sobre la historia de atracciones independientes",
+        "pl": "Artykuły o historii samodzielnych atrakcji",
+        "pt": "Artigos sobre a história das atrações autónomas"
+      }
+    },
     {
       "version": "6.0.18",
       "releasedAt": "2026-10-22",

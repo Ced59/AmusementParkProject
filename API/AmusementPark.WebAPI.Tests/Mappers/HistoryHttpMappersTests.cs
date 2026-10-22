@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Core.Domain.History;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.History;
 using AmusementPark.WebAPI.Mappers;
 using Xunit;
@@ -8,6 +9,26 @@ namespace AmusementPark.WebAPI.Tests.Mappers;
 
 public sealed class HistoryHttpMappersTests
 {
+    [Fact]
+    public void ToHttp_WhenMappingStandaloneArticle_ShouldIncludeOwnerAndFullArticle()
+    {
+        HistoryArticleResult result = new HistoryArticleResult
+        {
+            Event = CreateHistoryEventWithArticle(),
+            StandaloneAttraction = new StandaloneAttraction { Id = "standalone-1", Name = "DreamFly Porto" },
+        };
+        result.Event.EntityType = HistoryEntityType.StandaloneAttraction;
+        result.Event.OwnerId = "standalone-1";
+        result.Event.ParkId = null;
+
+        HistoryArticleDto dto = result.ToHttp();
+
+        Assert.Equal("DreamFly Porto", dto.StandaloneAttraction?.Name);
+        Assert.Null(dto.Park);
+        Assert.Single(dto.Event.Article!.Blocks);
+        Assert.Single(dto.Event.Article.Sources);
+    }
+
     [Fact]
     public void ToHttp_WhenMappingPublicTimeline_ShouldOmitArticleBlocks()
     {

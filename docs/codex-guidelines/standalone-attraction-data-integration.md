@@ -137,6 +137,8 @@ Historique :
 }
 ```
 
+Les articles majeurs publiés d’une attraction autonome disposent de la route publique `/:lang/attraction/:standaloneAttractionId/:slug/history/:eventId/:eventSlug`. Vérifier le lien depuis la frise, le retour vers l’attraction, les huit langues et le contenu complet fourni par `history/articles/{eventId}`. La visibilité de l’attraction propriétaire reste obligatoire ; aucun parc parent artificiel n’est nécessaire.
+
 L’export doit conserver l’article complet, notamment ses `blocks` et ses `sources`. Une réapplication en mode merge ne doit ni vider ces contenus ni rattacher l’événement à un parc artificiel.
 
 Images :

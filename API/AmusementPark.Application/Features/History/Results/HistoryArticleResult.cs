@@ -15,5 +15,7 @@ public sealed class HistoryArticleResult
 
     public Park? ContextPark { get; init; }
 
+    public StandaloneAttraction? StandaloneAttraction { get; init; }
+
     public Image? MainImage { get; init; }
 }

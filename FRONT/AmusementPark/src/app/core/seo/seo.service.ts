@@ -3403,6 +3403,16 @@ export class SeoService {
     const parkDetailPath: string = segments.length >= 4
       ? `/${segments.slice(0, 4).join('/')}`
       : `/${language}/parks`;
+    if (article.standaloneAttraction) {
+      const historyPath: string = `${parkDetailPath}/history`;
+      return this.buildBreadcrumbJsonLd([
+        { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+        { name: article.standaloneAttraction.name, url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
+        { name: this.resolveHistoryBreadcrumbLabel(language, article.ownerName), url: this.canonicalUrlService.buildAbsoluteUrl(historyPath) },
+        { name: article.title, url: canonicalUrl }
+      ]);
+    }
+
     const isItemArticle: boolean = !!article.parkItem;
     const itemDetailPath: string = isItemArticle && segments.length >= 7
       ? `/${segments.slice(0, 7).join('/')}`

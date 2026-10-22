@@ -2,6 +2,7 @@ using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Images;
 using AmusementPark.WebAPI.Contracts.ParkItems;
 using AmusementPark.WebAPI.Contracts.Parks;
+using AmusementPark.WebAPI.Contracts.StandaloneAttractions;
 
 namespace AmusementPark.WebAPI.Contracts.History;
 
@@ -14,6 +15,8 @@ public sealed class HistoryArticleDto
     public ParkItemDto? ParkItem { get; set; }
 
     public ParkDto? ContextPark { get; set; }
+
+    public StandaloneAttractionDto? StandaloneAttraction { get; set; }
 
     public ImageDto? MainImage { get; set; }
 }

@@ -3,6 +3,14 @@ import { RenderMode, ServerRoute } from '@angular/ssr';
 import { serverRoutes } from './app.routes.server';
 
 describe('Server routes', () => {
+  it('server-renders standalone history articles after the specific pagination route', () => {
+    const path = ':lang/attraction/:standaloneAttractionId/:slug/history/:eventId/:eventSlug';
+    const articleIndex = serverRoutes.findIndex(route => route.path === path);
+    const pageIndex = serverRoutes.findIndex(route => route.path === ':lang/attraction/:standaloneAttractionId/:slug/history/page/:page');
+    expect(articleIndex).toBeGreaterThan(pageIndex);
+    expect(serverRoutes[articleIndex].renderMode).toBe(RenderMode.Server);
+  });
+
   it('keeps every nested administration route client-rendered', () => {
     const adminRoute: ServerRoute | undefined = serverRoutes.find(
       (route: ServerRoute): boolean => route.path === ':lang/admin'

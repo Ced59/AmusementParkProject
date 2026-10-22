@@ -271,6 +271,11 @@ export const routes: Routes = [
             loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent)
           },
           {
+            path: 'attraction/:standaloneAttractionId/:slug/history/:eventId/:eventSlug',
+            resolve: { [HISTORY_ARTICLE_ROUTE_DATA_KEY]: historyArticleResolver },
+            loadComponent: () => import('./features/public/history/pages/history-article-page.component').then((m) => m.HistoryArticlePageComponent)
+          },
+          {
             path: 'attraction/:standaloneAttractionId/:slug/history',
             resolve: { [HISTORY_TIMELINE_ROUTE_DATA_KEY]: historyTimelineResolver },
             runGuardsAndResolvers: 'paramsOrQueryParamsChange',

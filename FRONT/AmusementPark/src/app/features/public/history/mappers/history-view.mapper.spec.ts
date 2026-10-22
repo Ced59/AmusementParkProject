@@ -3,6 +3,7 @@ import {
   HistoryEvent,
   HistoryTimeline,
 } from '@app/models/history/history.models';
+import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { Park } from '@app/models/parks/park';
 import {
   mapHistoryArticleToViewModel,
@@ -10,6 +11,44 @@ import {
 } from './history-view.mapper';
 
 describe('history-view.mapper', () => {
+  for (const language of ['fr', 'en', 'de', 'nl', 'it', 'es', 'pl', 'pt']) {
+    it(`links standalone history articles and their canonical parent in ${language}`, () => {
+      const article = createStandaloneArticle();
+      const timeline: HistoryTimeline = {
+        entityType: 'StandaloneAttraction', park: null, parkItem: null,
+        standaloneAttraction: article.standaloneAttraction,
+        includedParkItems: [], hasParkItemTimelineEvents: false,
+        events: [{ event: article.event, contextPark: null, parkItem: null, mainImage: null }]
+      };
+      const view = mapHistoryArticleToViewModel(article, language)!;
+      const expected = ['/', language, 'attraction', 'standalone-1', 'dreamfly-porto', 'history', 'event-1', 'opening-article'];
+      expect(mapHistoryTimelineToViewModel(timeline, language).events[0].articleLink).toEqual(expected);
+      expect(view.canonicalPath).toBe(`/${language}/attraction/standalone-1/dreamfly-porto/history/event-1/opening-article`);
+      expect(view.timelineLink).toEqual(expected.slice(0, 6));
+      expect(view.standaloneAttraction?.name).toBe('DreamFly Porto');
+    });
+  }
+
+  it('does not manufacture a standalone article route without a resolved owner name', () => {
+    const article = createStandaloneArticle();
+    article.standaloneAttraction = null;
+    const view = mapHistoryArticleToViewModel(article, 'fr')!;
+    expect(view.canonicalPath).toBeNull();
+    expect(view.timelineLink).toBeNull();
+  });
+
+  it('does not link an unpublished standalone article from its timeline', () => {
+    const article = createStandaloneArticle();
+    article.event.article!.isPublished = false;
+    const timeline: HistoryTimeline = {
+      entityType: 'StandaloneAttraction', park: null, parkItem: null,
+      standaloneAttraction: article.standaloneAttraction,
+      includedParkItems: [], hasParkItemTimelineEvents: false,
+      events: [{ event: article.event, contextPark: null, parkItem: null, mainImage: null }]
+    };
+    expect(mapHistoryTimelineToViewModel(timeline, 'fr').events[0].articleLink).toBeNull();
+  });
+
   it('uses a readable timeline title fallback instead of the technical key', () => {
     const timeline: HistoryTimeline = {
       entityType: 'Park',
@@ -315,5 +354,15 @@ function createHistoryEvent(
     createdAtUtc: '2026-06-30T00:00:00Z',
     updatedAtUtc: '2026-06-30T00:00:00Z',
     ...overrides,
+  };
+}
+
+function createStandaloneArticle(): HistoryArticle {
+  return {
+    event: createHistoryEvent({ entityType: 'StandaloneAttraction', ownerId: 'standalone-1', parkId: null,
+      article: { slug: 'opening-article', titles: [], subtitles: [], summaries: [], mainImageId: null,
+        isPublished: true, sources: [], blocks: [] } }),
+    standaloneAttraction: { id: 'standalone-1', name: 'DreamFly Porto' } as StandaloneAttraction,
+    park: null, parkItem: null, contextPark: null, mainImage: null
   };
 }

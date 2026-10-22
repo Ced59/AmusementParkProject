@@ -8,6 +8,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import { buildPublicStandaloneAttractionRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { UiChipComponent } from '@ui/primitives';
@@ -18,23 +19,26 @@ import { HistoryArticleStateFacade } from '../state/history-article-state.facade
 interface HistoryArticlePageCopy {
   back: string;
   sources: string;
+  home: string;
+  navigation: string;
+  history: string;
 }
 
 const HISTORY_ARTICLE_PAGE_COPY: Record<string, HistoryArticlePageCopy> = {
-  fr: { back: 'Retour à la timeline', sources: 'Sources' },
-  en: { back: 'Back to timeline', sources: 'Sources' },
-  de: { back: 'Zurück zur Zeitleiste', sources: 'Quellen' },
-  nl: { back: 'Terug naar de tijdlijn', sources: 'Bronnen' },
-  it: { back: 'Torna alla timeline', sources: 'Fonti' },
-  es: { back: 'Volver a la cronología', sources: 'Fuentes' },
-  pl: { back: 'Wróć do osi czasu', sources: 'Źródła' },
-  pt: { back: 'Voltar à linha do tempo', sources: 'Fontes' }
+  fr: { back: 'Retour à la timeline', sources: 'Sources', home: 'Accueil', navigation: 'Fil d’Ariane', history: 'Histoire' },
+  en: { back: 'Back to timeline', sources: 'Sources', home: 'Home', navigation: 'Breadcrumb', history: 'History' },
+  de: { back: 'Zurück zur Zeitleiste', sources: 'Quellen', home: 'Startseite', navigation: 'Brotkrumennavigation', history: 'Geschichte' },
+  nl: { back: 'Terug naar de tijdlijn', sources: 'Bronnen', home: 'Home', navigation: 'Kruimelpad', history: 'Geschiedenis' },
+  it: { back: 'Torna alla timeline', sources: 'Fonti', home: 'Home', navigation: 'Percorso di navigazione', history: 'Storia' },
+  es: { back: 'Volver a la cronología', sources: 'Fuentes', home: 'Inicio', navigation: 'Ruta de navegación', history: 'Historia' },
+  pl: { back: 'Wróć do osi czasu', sources: 'Źródła', home: 'Strona główna', navigation: 'Ścieżka nawigacji', history: 'Historia' },
+  pt: { back: 'Voltar à linha do tempo', sources: 'Fontes', home: 'Início', navigation: 'Caminho de navegação', history: 'História' }
 };
 
 @Component({
   selector: 'app-history-article-page',
   templateUrl: './history-article-page.component.html',
-  styleUrls: ['./history-article-page.component.scss'],
+  styleUrls: ['./history-article-page.component.scss', './history-timeline-breadcrumb.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HistoryArticleStateFacade],
   imports: [PageStateComponent, ImageDisplayComponent, PublicSharePanelComponent, RouterLink, UiChipComponent]
@@ -123,6 +127,18 @@ export class HistoryArticlePageComponent implements OnInit {
     }
 
     return imageIds;
+  }
+
+  protected breadcrumbCopy(): HistoryArticlePageCopy {
+    return this.resolveCopy();
+  }
+
+  protected attractionLink(article: HistoryArticlePageViewModel): string[] | null {
+    return buildPublicStandaloneAttractionRouteCommands({
+      language: this.currentLanguage(),
+      attractionId: article.standaloneAttraction?.id,
+      attractionName: article.standaloneAttraction?.name
+    });
   }
 
   protected backLabel(): string {
