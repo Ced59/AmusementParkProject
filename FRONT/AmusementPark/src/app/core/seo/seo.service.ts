@@ -1499,49 +1499,49 @@ const STANDALONE_ATTRACTION_SEO_COPY: Record<string, StandaloneAttractionSeoCopy
     fallbackName: 'Standalone attraction',
     title: (attractionName: string, locationLabel: string): string => `Attraction guide: ${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}`,
     description: (attractionName: string, locationLabel: string): string =>
-      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: standalone fixed attraction profile with public details, location and technical information.`
+      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: standalone fixed attraction profile with location and technical information.`
   },
   fr: {
     fallbackName: 'Attraction isolée',
     title: (attractionName: string, locationLabel: string): string => `Guide de ${attractionName}${locationLabel ? ` à ${locationLabel}` : ''}`,
     description: (attractionName: string, locationLabel: string): string =>
-      `${attractionName}${locationLabel ? ` à ${locationLabel}` : ''} : fiche d’attraction fixe isolée avec infos publiques, localisation et données techniques.`
+      `${attractionName}${locationLabel ? ` à ${locationLabel}` : ''} : fiche d’attraction fixe isolée avec localisation et données techniques.`
   },
   es: {
     fallbackName: 'Atracción aislada',
     title: (attractionName: string, locationLabel: string): string => `Ficha de ${attractionName}${locationLabel ? ` en ${locationLabel}` : ''}`,
     description: (attractionName: string, locationLabel: string): string =>
-      `${attractionName}${locationLabel ? ` en ${locationLabel}` : ''}: ficha de atracción fija aislada con datos públicos, ubicación e información técnica.`
+      `${attractionName}${locationLabel ? ` en ${locationLabel}` : ''}: ficha de atracción fija aislada con ubicación e información técnica.`
   },
   de: {
     fallbackName: 'Eigenständige Attraktion',
     title: (attractionName: string, locationLabel: string): string => `Attraktionsprofil ${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}`,
     description: (attractionName: string, locationLabel: string): string =>
-      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: eigenständige feste Attraktion mit öffentlichen Details, Standort und technischen Daten.`
+      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: eigenständige feste Attraktion mit Standort und technischen Daten.`
   },
   it: {
     fallbackName: 'Attrazione isolata',
     title: (attractionName: string, locationLabel: string): string => `Scheda di ${attractionName}${locationLabel ? ` a ${locationLabel}` : ''}`,
     description: (attractionName: string, locationLabel: string): string =>
-      `${attractionName}${locationLabel ? ` a ${locationLabel}` : ''}: attrazione fissa isolata con dati pubblici, posizione e informazioni tecniche.`
+      `${attractionName}${locationLabel ? ` a ${locationLabel}` : ''}: attrazione fissa isolata con posizione e informazioni tecniche.`
   },
   pl: {
     fallbackName: 'Samodzielna atrakcja',
     title: (attractionName: string, locationLabel: string): string => `Przewodnik po ${attractionName}${locationLabel ? ` w ${locationLabel}` : ''}`,
     description: (attractionName: string, locationLabel: string): string =>
-      `${attractionName}${locationLabel ? ` w ${locationLabel}` : ''}: samodzielna stała atrakcja z publicznymi danymi, lokalizacją i informacjami technicznymi.`
+      `${attractionName}${locationLabel ? ` w ${locationLabel}` : ''}: samodzielna stała atrakcja z lokalizacją i informacjami technicznymi.`
   },
   nl: {
     fallbackName: 'Losstaande attractie',
     title: (attractionName: string, locationLabel: string): string => `Gids voor ${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}`,
     description: (attractionName: string, locationLabel: string): string =>
-      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: losstaande vaste attractie met openbare details, locatie en technische gegevens.`
+      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: losstaande vaste attractie met locatie en technische gegevens.`
   },
   pt: {
     fallbackName: 'Atração isolada',
     title: (attractionName: string, locationLabel: string): string => `Perfil de ${attractionName}${locationLabel ? ` em ${locationLabel}` : ''}`,
     description: (attractionName: string, locationLabel: string): string =>
-      `${attractionName}${locationLabel ? ` em ${locationLabel}` : ''}: atração fixa isolada com dados públicos, localização e informação técnica.`
+      `${attractionName}${locationLabel ? ` em ${locationLabel}` : ''}: atração fixa isolada com localização e informação técnica.`
   }
 };
 

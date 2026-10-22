@@ -16,8 +16,6 @@
             <app-ui-chip tone="sky" iconClass="pi pi-sparkles" *ngIf="current.subtype">{{ subtypeLabel(current) }}</app-ui-chip>
             <app-ui-chip tone="lime" iconClass="pi pi-circle-fill" *ngIf="statusTranslationKey(current) as statusKey">{{ statusKey | translate }}</app-ui-chip>
           </div>
-
-          <p>{{ t('visibleDataOnly') }}</p>
         </div>
 
         <div class="standalone-hero__actions">
