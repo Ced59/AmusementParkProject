@@ -63,11 +63,34 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
                 : processorContext.standalonePricingRepository.GetByStandaloneAttractionIdAsync(
                     attraction.Id,
                     cancellationToken);
-        await Task.WhenAll(imagesTask, historyEventsTask, openingHoursTask, pricingTask);
+        string? operatorId = attraction.OperatorId;
+        string? manufacturerId = attraction.AttractionDetails?.ManufacturerId;
+        Task<ParkOperator?> operatorTask = string.IsNullOrWhiteSpace(operatorId)
+            ? Task.FromResult<ParkOperator?>(null)
+            : processorContext.parkOperatorRepository.GetByIdAsync(operatorId, cancellationToken);
+        Task<AttractionManufacturer?> manufacturerTask = string.IsNullOrWhiteSpace(manufacturerId)
+            ? Task.FromResult<AttractionManufacturer?>(null)
+            : processorContext.attractionManufacturerRepository.GetByIdAsync(manufacturerId, cancellationToken);
+        Task<IReadOnlyCollection<Image>> operatorImagesTask = string.IsNullOrWhiteSpace(operatorId)
+            ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>())
+            : processorContext.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkOperator, new[] { operatorId }, null, cancellationToken);
+        Task<IReadOnlyCollection<Image>> manufacturerImagesTask = string.IsNullOrWhiteSpace(manufacturerId)
+            ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>())
+            : processorContext.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, new[] { manufacturerId }, null, cancellationToken);
+        await Task.WhenAll(imagesTask, historyEventsTask, openingHoursTask, pricingTask,
+            operatorTask, manufacturerTask, operatorImagesTask, manufacturerImagesTask);
         IReadOnlyCollection<Image> images = await imagesTask;
         IReadOnlyCollection<HistoryEvent> historyEvents = await historyEventsTask;
         ParkOpeningHoursSchedule? openingHours = await openingHoursTask;
         ParkPricingEntity? pricing = await pricingTask;
+        ParkOperator? parkOperator = await operatorTask;
+        AttractionManufacturer? manufacturer = await manufacturerTask;
+        List<object> exportedImages = images.OrderBy(static image => image.IsCurrent ? 0 : 1)
+            .ThenBy(static image => image.OriginalFileName, StringComparer.OrdinalIgnoreCase)
+            .Select(MapStandaloneAttractionImage).ToList();
+        exportedImages.AddRange((await operatorImagesTask).Concat(await manufacturerImagesTask)
+            .OrderBy(static image => image.OwnerType).ThenBy(static image => image.Id, StringComparer.Ordinal)
+            .Select(static image => ExportParkGraphJsonQueryHandler.MapImage(image, string.Empty)));
         DateTime exportedAtUtc = DateTime.UtcNow;
         Dictionary<string, object?> document = new Dictionary<string, object?>
         {
@@ -84,7 +107,12 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
                 legacyParkItemId = attraction.LegacyParkItemId,
             },
             ["standaloneAttraction"] = ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandaloneAttraction(attraction),
-            ["images"] = images.OrderBy(static image => image.IsCurrent ? 0 : 1).ThenBy(static image => image.OriginalFileName, StringComparer.OrdinalIgnoreCase).Select(ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.MapStandaloneAttractionImage).ToList(),
+            ["references"] = new ParkGraphExportReferences
+            {
+                Operators = parkOperator is null ? new() : new() { ExportParkGraphJsonQueryHandlerMappingExtensions.MapOperator(parkOperator) },
+                Manufacturers = manufacturer is null ? new() : new() { ExportParkGraphJsonQueryHandlerMappingExtensions.MapManufacturer(manufacturer) },
+            },
+            ["images"] = exportedImages,
             ["history"] = ExportParkGraphJsonQueryHandlerHistoryMappingExtensions.MapHistory(historyEvents),
             ["metadata"] = new
             {

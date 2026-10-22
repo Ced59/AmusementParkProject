@@ -21,7 +21,7 @@ namespace AmusementPark.WebAPI.Tests.Authorization;
 public sealed class ParkDataEditorEndpointScopeTests
 {
     [Fact]
-    public void StandaloneDiscovery_ShouldRemainScopedAuthenticatedAndUncached()
+    public void StandaloneDiscoveryAndCompleteness_ShouldRemainScopedAuthenticatedAndUncached()
     {
         Type controller = typeof(ParkDataEditorStandaloneAttractionsController);
         IReadOnlyCollection<string?> policies = controller.GetCustomAttributes<AuthorizeAttribute>()
@@ -33,6 +33,9 @@ public sealed class ParkDataEditorEndpointScopeTests
         Assert.Null(controller.GetCustomAttribute<AllowAnonymousAttribute>());
         Assert.Equal("park-data-editor/standalone-attractions", controller.GetCustomAttribute<RouteAttribute>()?.Template);
         Assert.True(controller.GetCustomAttribute<ResponseCacheAttribute>()?.NoStore);
+        MethodInfo completeness = controller.GetMethod(nameof(ParkDataEditorStandaloneAttractionsController.GetDataCompletenessAsync))!;
+        Assert.Null(completeness.GetCustomAttribute<AllowAnonymousAttribute>());
+        Assert.Equal("{standaloneAttractionId}/data-completeness", completeness.GetCustomAttribute<HttpGetAttribute>()?.Template);
         Assert.Null(typeof(StandaloneAttractionsController).GetCustomAttribute<AllowParkDataEditorTokenAttribute>());
     }
 

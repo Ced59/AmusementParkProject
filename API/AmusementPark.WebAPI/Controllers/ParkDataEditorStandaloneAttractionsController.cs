@@ -25,11 +25,14 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class ParkDataEditorStandaloneAttractionsController : ControllerBase
 {
     private readonly IQueryHandler<GetStandaloneAttractionsPageQuery, ApplicationResult<PagedResult<StandaloneAttraction>>> searchHandler;
+    private readonly IQueryHandler<GetStandaloneAttractionDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler;
 
     public ParkDataEditorStandaloneAttractionsController(
-        IQueryHandler<GetStandaloneAttractionsPageQuery, ApplicationResult<PagedResult<StandaloneAttraction>>> searchHandler)
+        IQueryHandler<GetStandaloneAttractionsPageQuery, ApplicationResult<PagedResult<StandaloneAttraction>>> searchHandler,
+        IQueryHandler<GetStandaloneAttractionDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler)
     {
         this.searchHandler = searchHandler;
+        this.completenessHandler = completenessHandler;
     }
 
     [HttpGet]
@@ -60,5 +63,25 @@ public sealed class ParkDataEditorStandaloneAttractionsController : ControllerBa
         }
 
         return this.Ok(result.Value.ToPagedResponse(static attraction => attraction.ToHttp()));
+    }
+
+    [HttpGet("{standaloneAttractionId}/data-completeness")]
+    [AdminAudit("park-data-editor.standalone-attraction-data-completeness", "StandaloneAttraction", TargetIdRouteKey = "standaloneAttractionId")]
+    [ProducesResponseType(typeof(DataCompletenessScoreDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetDataCompletenessAsync(
+        [FromRoute] string standaloneAttractionId,
+        [FromQuery] bool projectForPublication = false,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<DataCompletenessScore> result = await this.completenessHandler.HandleAsync(
+            new GetStandaloneAttractionDataCompletenessScoreQuery(
+                standaloneAttractionId, IncludeHidden: true, ProjectForPublication: projectForPublication),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
     }
 }

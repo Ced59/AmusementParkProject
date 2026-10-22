@@ -40,6 +40,13 @@ public sealed class StandaloneAttraction : GeolocatedEntityBase
 
     public string? LegacyParkItemId { get; set; }
 
+    public DataCompletenessScore CalculateDataCompletenessScore(StandaloneAttractionDataCompletenessContext? context = null)
+    {
+        return StandaloneAttractionDataCompletenessScoring.Calculate(
+            this,
+            context ?? new StandaloneAttractionDataCompletenessContext());
+    }
+
     public bool IsPubliclyPublishable()
     {
         return !string.IsNullOrWhiteSpace(this.Id)

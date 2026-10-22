@@ -40,7 +40,9 @@ public sealed class ParkDataEditorStandaloneAttractionsControllerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(ApplicationResult<PagedResult<StandaloneAttraction>>.Success(
                 new PagedResult<StandaloneAttraction>(new[] { existing }, 2, 25, 26)));
-        ParkDataEditorStandaloneAttractionsController controller = new ParkDataEditorStandaloneAttractionsController(handler.Object);
+        ParkDataEditorStandaloneAttractionsController controller = new ParkDataEditorStandaloneAttractionsController(
+            handler.Object,
+            Mock.Of<IQueryHandler<GetStandaloneAttractionDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>>(MockBehavior.Strict));
 
         IActionResult result = await controller.SearchAsync(new PaginationRequestDto { Page = 2, Size = 25 }, query, countryCode);
 
@@ -52,6 +54,28 @@ public sealed class ParkDataEditorStandaloneAttractionsControllerTests
         Assert.NotNull(response.Pagination);
         Assert.Equal(26, response.Pagination.TotalItems);
         Assert.Equal(2, response.Pagination.CurrentPage);
+        handler.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task Completeness_ShouldForwardExactTargetAndProjectionWithHiddenAccess(bool projected)
+    {
+        Mock<IQueryHandler<GetStandaloneAttractionDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>> handler = new(MockBehavior.Strict);
+        handler.Setup(candidate => candidate.HandleAsync(
+                new GetStandaloneAttractionDataCompletenessScoreQuery("standalone-1", true, projected), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<DataCompletenessScore>.Success(DataCompletenessScore.FromPoints(100, 100,
+                DataCompletenessScoringRules.ForbiddenPublicTextPublicationBlocker)));
+        ParkDataEditorStandaloneAttractionsController controller = new(
+            Mock.Of<IQueryHandler<GetStandaloneAttractionsPageQuery, ApplicationResult<PagedResult<StandaloneAttraction>>>>(MockBehavior.Strict),
+            handler.Object);
+
+        OkObjectResult result = Assert.IsType<OkObjectResult>(await controller.GetDataCompletenessAsync("standalone-1", projected));
+        DataCompletenessScoreDto score = Assert.IsType<DataCompletenessScoreDto>(result.Value);
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal(DataCompletenessScoringRules.ForbiddenPublicTextPublicationBlocker, Assert.Single(score.PublicationBlockers));
         handler.VerifyAll();
     }
 }

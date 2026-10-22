@@ -135,13 +135,29 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(pricing);
 
+        Mock<IParkOperatorRepository> operatorRepository = new(MockBehavior.Strict);
+        operatorRepository.Setup(repository => repository.GetByIdAsync("operator-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkOperator { Id = "operator-1", Name = "Mountain Leisure",
+                Description = new() { new("fr", "L'exploitant des installations de la station.") } });
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new(MockBehavior.Strict);
+        manufacturerRepository.Setup(repository => repository.GetByIdAsync("manufacturer-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new AttractionManufacturer { Id = "manufacturer-1", Name = "Alpine Workshop", IsVisible = false,
+                Biography = new() { new("fr", "L'atelier construit des luges de montagne.") } });
+        imageRepository.Setup(repository => repository.GetByOwnersAsync(ImageOwnerType.ParkOperator,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "operator-1" })), null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { new Image { Id = "operator-photo", OwnerType = ImageOwnerType.ParkOperator,
+                OwnerId = "operator-1", IsPublished = false, AltTexts = new() { new("fr", "Le bâtiment de la station") } } });
+        imageRepository.Setup(repository => repository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "manufacturer-1" })), null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+
         ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
             Mock.Of<IParkRepository>(MockBehavior.Strict),
             Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
             Mock.Of<IParkItemRepository>(MockBehavior.Strict),
             Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
-            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
-            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            operatorRepository.Object,
+            manufacturerRepository.Object,
             imageRepository.Object,
             historyEventRepository: historyRepository.Object,
             standaloneAttractionRepository: standaloneRepository.Object,
@@ -177,6 +193,22 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
         Assert.Equal("standalone-1", exportedPricing.GetProperty("standaloneAttractionId").GetString());
         Assert.False(exportedPricing.TryGetProperty("parkId", out _));
         Assert.Equal("EUR", exportedPricing.GetProperty("currencyCode").GetString());
+        JsonElement references = document.RootElement.GetProperty("references");
+        JsonElement exportedOperator = Assert.Single(references.GetProperty("operators").EnumerateArray());
+        Assert.Equal("operator-1", exportedOperator.GetProperty("id").GetString());
+        Assert.Equal("L'exploitant des installations de la station.",
+            Assert.Single(exportedOperator.GetProperty("description").EnumerateArray()).GetProperty("value").GetString());
+        JsonElement exportedManufacturer = Assert.Single(references.GetProperty("manufacturers").EnumerateArray());
+        Assert.Equal("manufacturer-1", exportedManufacturer.GetProperty("id").GetString());
+        Assert.False(exportedManufacturer.GetProperty("isVisible").GetBoolean());
+        Assert.Single(exportedManufacturer.GetProperty("biography").EnumerateArray());
+        JsonElement exportedReferenceImage = Assert.Single(document.RootElement.GetProperty("images").EnumerateArray());
+        Assert.Equal("ParkOperator", exportedReferenceImage.GetProperty("ownerType").GetString());
+        Assert.Equal("operator-1", exportedReferenceImage.GetProperty("ownerId").GetString());
+        Assert.Equal("operator:operator-1", exportedReferenceImage.GetProperty("ownerKey").GetString());
+        Assert.False(exportedReferenceImage.GetProperty("isPublished").GetBoolean());
+        operatorRepository.VerifyAll();
+        manufacturerRepository.VerifyAll();
 
         standaloneRepository.VerifyAll();
         imageRepository.VerifyAll();

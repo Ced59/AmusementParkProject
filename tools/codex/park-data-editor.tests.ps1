@@ -194,3 +194,43 @@ if ($script:standaloneSearchRequests.Count -ne 2 -or
     throw 'Standalone discovery must preserve pagination, encode filters and omit empty optional parameters.'
 }
 Write-Output 'Park data editor standalone-discovery tests passed.'
+
+$completenessClause = @($actionSwitch.Clauses | Where-Object { $_.Item1.Value -eq 'Completeness' })
+if ($completenessClause.Count -ne 1) { throw 'Expected one completeness action.' }
+$completenessBody = $completenessClause[0].Item2.Extent.Text
+$completenessAction = [scriptblock]::Create($completenessBody.Substring(1, $completenessBody.Length - 2))
+$script:completenessRequests = [Collections.Generic.List[string]]::new()
+function Invoke-ParkDataEditorJsonApi {
+    param([string]$Method, [string]$RelativePath, [object]$Body)
+    if ($Method -ne 'GET' -or $null -ne $Body) { throw 'Completeness must be read-only.' }
+    $script:completenessRequests.Add($RelativePath)
+}
+foreach ($projected in @($false, $true)) {
+    $ProjectForPublication = $projected
+    $ParkId = ' park/1 '
+    $StandaloneAttractionId = ''
+    & $completenessAction
+    $ParkId = ''
+    $StandaloneAttractionId = ' attraction/1 '
+    & $completenessAction
+}
+$expectedPaths = @(
+    'park-data-editor/parks/park%2F1/data-completeness',
+    'park-data-editor/standalone-attractions/attraction%2F1/data-completeness',
+    'park-data-editor/parks/park%2F1/data-completeness?projectForPublication=true',
+    'park-data-editor/standalone-attractions/attraction%2F1/data-completeness?projectForPublication=true'
+)
+if (($script:completenessRequests -join '|') -ne ($expectedPaths -join '|')) {
+    throw 'Completeness must encode the exact target and preserve both projection modes.'
+}
+foreach ($ids in @(@(' ', ''), @('park-1', 'standalone-1'))) {
+    $ParkId = $ids[0]
+    $StandaloneAttractionId = $ids[1]
+    $message = ''
+    try { & $completenessAction } catch { $message = $_.Exception.Message }
+    if ($message -ne 'Exactly one of ParkId or StandaloneAttractionId is required for Completeness.') {
+        throw 'Missing or ambiguous completeness targets must fail before any request.'
+    }
+}
+if ($script:completenessRequests.Count -ne 4) { throw 'Invalid targets must not contact the API.' }
+Write-Output 'Park data editor standalone-completeness tests passed.'
