@@ -6,6 +6,15 @@ import {
 } from './ssr-route-status.helpers';
 
 describe('SSR route status helpers', () => {
+  it.each(['fr', 'en', 'de', 'nl', 'it', 'es', 'pl', 'pt'])('recognizes direct standalone article requests in %s', language => {
+    const url = `/${language}/attraction/standalone-123/dreamfly-porto/history/event-123/opening`;
+    expect(resolveSsrRouteStatusCode(url)).toBe(200);
+    expect(isSsrNotFoundRoute(url)).toBe(false);
+    expect(resolveXRobotsTagHeader(url)).toBeNull();
+    expect(resolveXRobotsTagHeader(url + '?source=test')).toBe('noindex, follow');
+    expect(resolveSsrRouteStatusCode(url + '/extra')).toBe(404);
+  });
+
   it.each(['/fr/parks', '/fr/parks?page=1', '/en/parks?page=2', '/pl/parks?page=99'])('defers valid parks page metadata to Angular: %s', url => {
     expect(resolveXRobotsTagHeader(url)).toBeNull();
     expect(resolveSsrRouteStatusCode(url)).toBe(200);

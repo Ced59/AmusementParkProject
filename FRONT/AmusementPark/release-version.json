@@ -1,6 +1,20 @@
 {
-  "version": "6.0.20",
+  "version": "6.0.21",
   "history": [
+    {
+      "version": "6.0.21",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Accès direct aux articles des attractions isolées",
+        "en": "Direct access to standalone attraction articles",
+        "de": "Direkter Zugriff auf Artikel über eigenständige Attraktionen",
+        "nl": "Directe toegang tot artikelen over zelfstandige attracties",
+        "it": "Accesso diretto agli articoli sulle attrazioni autonome",
+        "es": "Acceso directo a los artículos de atracciones independientes",
+        "pl": "Bezpośredni dostęp do artykułów o samodzielnych atrakcjach",
+        "pt": "Acesso direto aos artigos sobre atrações autónomas"
+      }
+    },
     {
       "version": "6.0.20",
       "releasedAt": "2026-10-22",

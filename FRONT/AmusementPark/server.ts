@@ -39,6 +39,7 @@ import {
 } from './src/server/ssr/robot-ssr-policy';
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { isPublicCommentSsrRoute } from './src/server/ssr/public-comment-ssr-route-policy';
+import { isPublicStandaloneAttractionArticleRoute } from './src/app/core/ssr/public-standalone-article-route-policy';
 import { isPublicSharedUserRankingSsrRoute } from './src/server/ssr/public-shared-user-rankings-ssr-route-policy';
 import { isPublicSharedVisitRecapSsrRoute } from './src/server/ssr/public-shared-visit-recap-ssr-route-policy';
 import { isPublicSharedYearRecapSsrRoute } from './src/server/ssr/public-shared-year-recap-ssr-route-policy';
@@ -2370,6 +2371,7 @@ function isPublicSsrCacheRoute(url: string): boolean {
     || isPublicParkItemVideoDetailRoute(path)
     || isPublicCommentSsrRoute(path)
     || isPublicStandaloneAttractionHistoryRoute(path)
+    || isPublicStandaloneAttractionArticleRoute(path)
     || isPublicStandaloneAttractionRoute(path)
     || isPublicReferenceRoute(path);
 }
@@ -2400,6 +2402,7 @@ function isCriticalPublicSsrRoute(url: string): boolean {
     || isPublicParkItemVideoDetailRoute(path)
     || isPublicCommentSsrRoute(path)
     || (isPublicStandaloneAttractionHistoryRoute(path) && !hasBlockingQuery)
+    || isPublicStandaloneAttractionArticleRoute(path)
     || isPublicStandaloneAttractionRoute(path)
     || isPublicReferenceRoute(path);
 }
