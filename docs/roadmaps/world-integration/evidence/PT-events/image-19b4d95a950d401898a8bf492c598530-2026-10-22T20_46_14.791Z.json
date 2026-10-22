@@ -1,0 +1,18 @@
+{
+  "eventId": "image-19b4d95a950d401898a8bf492c598530-2026-10-22T20:46:14.791Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:46:14.791Z",
+  "sourceAppliedAt": "2026-10-22T20:46:14.791Z",
+  "receiptFile": "slide-splash/media/quiosque-jardim-terrace-import-response.json",
+  "receiptSha256": "8d4bc8dc3d4d08ead6b3be53aa077336b8e1b0ef5fbb94f2cafc1a3f10756793",
+  "result": {
+    "imageId": "19b4d95a950d401898a8bf492c598530",
+    "ownerId": "47a1f714-23b9-4898-aec8-2ffe893262c0",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Quiosque Jardim intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

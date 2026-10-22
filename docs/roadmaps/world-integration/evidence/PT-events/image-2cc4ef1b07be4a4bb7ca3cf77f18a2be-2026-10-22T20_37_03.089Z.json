@@ -1,0 +1,18 @@
+{
+  "eventId": "image-2cc4ef1b07be4a4bb7ca3cf77f18a2be-2026-10-22T20:37:03.089Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:37:03.089Z",
+  "sourceAppliedAt": "2026-10-22T20:37:03.089Z",
+  "receiptFile": "slide-splash/media/historic-red-macaw-import-response.json",
+  "receiptSha256": "af929dd8a65f37637ac99b393cebe40596e510f0ad3a733afd227adf07b5820d",
+  "result": {
+    "imageId": "2cc4ef1b07be4a4bb7ca3cf77f18a2be",
+    "ownerId": "d671bd43-2524-4481-a212-5a74d97dca6c",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Araras e Papagaios — Wild Splash Show intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

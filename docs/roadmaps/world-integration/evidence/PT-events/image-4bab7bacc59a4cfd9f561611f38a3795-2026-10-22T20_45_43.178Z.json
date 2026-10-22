@@ -1,0 +1,18 @@
+{
+  "eventId": "image-4bab7bacc59a4cfd9f561611f38a3795-2026-10-22T20:45:43.178Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:45:43.178Z",
+  "sourceAppliedAt": "2026-10-22T20:45:43.178Z",
+  "receiptFile": "slide-splash/media/pizzaria-frontage-import-response.json",
+  "receiptSha256": "30534ebf58a6f28fe1561085adbc00e763275bc485b03e76f3a16434a085ea09",
+  "result": {
+    "imageId": "4bab7bacc59a4cfd9f561611f38a3795",
+    "ownerId": "a05b9cd7-157e-477f-a9be-75393e647c55",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Pizzaria intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-2af5cae2e1b54380b8d6dbd9b0299775-2026-10-22T20:52:18.892Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:52:18.892Z",
+  "sourceAppliedAt": "2026-10-22T20:52:18.892Z",
+  "receiptFile": "slide-splash/media/quick-silver-yellow-start-import-response.json",
+  "receiptSha256": "9c77a7d44168f4ffff285c4208db40c95ce6be893560fee8b4e3c7a093972823",
+  "result": {
+    "imageId": "2af5cae2e1b54380b8d6dbd9b0299775",
+    "ownerId": "e5c5ff3d-b032-478a-80d2-f2b6ec112cae",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Quick Silver intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

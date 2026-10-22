@@ -1,0 +1,18 @@
+{
+  "eventId": "image-a625b0dbc53747429e37e53e46b2832d-2026-10-22T20:34:24.736Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:34:24.736Z",
+  "sourceAppliedAt": "2026-10-22T20:34:24.736Z",
+  "receiptFile": "slide-splash/media/whizzer-blue-mascot-import-response.json",
+  "receiptSha256": "0ad242ca3720397ffd52c50631aec18eab5e4ac6310350f8b9c48a74bd177b3a",
+  "result": {
+    "imageId": "a625b0dbc53747429e37e53e46b2832d",
+    "ownerId": "325aa2be-edda-4269-b139-2b88b172e0b8",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Whizzer intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

@@ -10793,7 +10793,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "conversation-portugal / docs/portugal-world-backlog-sync-20261022",
-      "lastDataIntegrationAt": "2026-10-22T20:28:05.874Z",
+      "lastDataIntegrationAt": "2026-10-22T20:54:53.718Z",
       "integrationHistory": [
         {
           "eventId": "apply-d3c96f51-fa59-48a8-90ba-d0ca82fe4d2b",
@@ -11584,9 +11584,179 @@
           "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-28bd93be-addf-4057-b787-9392b1e4c824.json",
           "auditEvidence": null,
           "summary": "Accent officiel d’Estômbar rétabli dans l’adresse du parc et les coordonnées de son exploitant après contrôle des 240 champs publics scalaires. Autres coordonnées inchangées ; audit et médias encore en cours."
+        },
+        {
+          "eventId": "image-8be71d7e797c40b0911132768ac55f7c-2026-10-22T20:34:05.570Z",
+          "appliedAt": "2026-10-22T20:34:05.570Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-8be71d7e797c40b0911132768ac55f7c-2026-10-22T20_34_05.570Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Twister intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-a625b0dbc53747429e37e53e46b2832d-2026-10-22T20:34:24.736Z",
+          "appliedAt": "2026-10-22T20:34:24.736Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-a625b0dbc53747429e37e53e46b2832d-2026-10-22T20_34_24.736Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Whizzer intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-e62c14a0e9764e7791aec9f88c0887be-2026-10-22T20:34:40.464Z",
+          "appliedAt": "2026-10-22T20:34:40.464Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-e62c14a0e9764e7791aec9f88c0887be-2026-10-22T20_34_40.464Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Skimmer intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-c32ddb521a934e8dbe787af81d41f81f-2026-10-22T20:34:56.650Z",
+          "appliedAt": "2026-10-22T20:34:56.650Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-c32ddb521a934e8dbe787af81d41f81f-2026-10-22T20_34_56.650Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Cloud 9 intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-5f8088cf7ffc423ea2aeb1fd94773c35-2026-10-22T20:35:11.818Z",
+          "appliedAt": "2026-10-22T20:35:11.818Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-5f8088cf7ffc423ea2aeb1fd94773c35-2026-10-22T20_35_11.818Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Kamikaze intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-4bf23a2aa1d844c7a5e3d6a9dd545935-2026-10-22T20:36:40.511Z",
+          "appliedAt": "2026-10-22T20:36:40.511Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-4bf23a2aa1d844c7a5e3d6a9dd545935-2026-10-22T20_36_40.511Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Aves de Rapina — Wild Splash Show intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-2cc4ef1b07be4a4bb7ca3cf77f18a2be-2026-10-22T20:37:03.089Z",
+          "appliedAt": "2026-10-22T20:37:03.089Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-2cc4ef1b07be4a4bb7ca3cf77f18a2be-2026-10-22T20_37_03.089Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Araras e Papagaios — Wild Splash Show intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-0e449f461ac24901b24109d93cd218b7-2026-10-22T20:37:19.339Z",
+          "appliedAt": "2026-10-22T20:37:19.339Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-0e449f461ac24901b24109d93cd218b7-2026-10-22T20_37_19.339Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Répteis — Wild Splash Show intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-d18beaa3ca91482a948f7a52e4dcd9ee-2026-10-22T20:45:12.284Z",
+          "appliedAt": "2026-10-22T20:45:12.284Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-d18beaa3ca91482a948f7a52e4dcd9ee-2026-10-22T20_45_12.284Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Grill Splash intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-d3dbece6abb94ce9b796922c5bacee43-2026-10-22T20:45:28.051Z",
+          "appliedAt": "2026-10-22T20:45:28.051Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-d3dbece6abb94ce9b796922c5bacee43-2026-10-22T20_45_28.051Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Restaurante Splash intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-4bab7bacc59a4cfd9f561611f38a3795-2026-10-22T20:45:43.178Z",
+          "appliedAt": "2026-10-22T20:45:43.178Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-4bab7bacc59a4cfd9f561611f38a3795-2026-10-22T20_45_43.178Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Pizzaria intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-52783e5978ca468dbb73a73dc39650fd-2026-10-22T20:45:59.266Z",
+          "appliedAt": "2026-10-22T20:45:59.266Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-52783e5978ca468dbb73a73dc39650fd-2026-10-22T20_45_59.266Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Quiosque Rio intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-19b4d95a950d401898a8bf492c598530-2026-10-22T20:46:14.791Z",
+          "appliedAt": "2026-10-22T20:46:14.791Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-19b4d95a950d401898a8bf492c598530-2026-10-22T20_46_14.791Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Quiosque Jardim intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-487f23828bf94c5d8b4edc321afe320e-2026-10-22T20:51:57.302Z",
+          "appliedAt": "2026-10-22T20:51:57.302Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-487f23828bf94c5d8b4edc321afe320e-2026-10-22T20_51_57.302Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Torpedo intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-2af5cae2e1b54380b8d6dbd9b0299775-2026-10-22T20:52:18.892Z",
+          "appliedAt": "2026-10-22T20:52:18.892Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-2af5cae2e1b54380b8d6dbd9b0299775-2026-10-22T20_52_18.892Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Quick Silver intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-2b8b7175abee483499789b1a2dc7ca9d-2026-10-22T20:52:46.734Z",
+          "appliedAt": "2026-10-22T20:52:46.734Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-2b8b7175abee483499789b1a2dc7ca9d-2026-10-22T20_52_46.734Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Steeplechase intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "apply-a43f861b-2666-4328-ba6a-5f7ff49ed47b",
+          "appliedAt": "2026-10-22T20:54:53.718Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-a43f861b-2666-4328-ba6a-5f7ff49ed47b.json",
+          "auditEvidence": null,
+          "summary": "Dix-sept jalons existants illustrés par des photographies fidèles de leurs éléments. Vues historiques et ultérieures documentées comme contexte ; dates, textes et visibilité préservés. Audit final en cours."
         }
       ],
-      "nextAction": "53 lots de données vérifiés, 26 photos privées dont cinq vues générales et 21 vues de 20 parkItems ; relecture du corpus initial achevée dans huit langues et 240 champs scalaires contrôlés. Trois articles illustrés, dont l’extension 2022 avec des photos contemporaines. Poursuivre les médias des éléments, les plans, le logo officiel (source HTTP 503), puis export complet frais et audit final ; aucune publication ni clôture à ce stade.",
+      "nextAction": "54 lots de graphe et 42 photos privés vérifiés, dont cinq vues générales ; 32 jalons illustrés sur 51. Terminer couverture photographique, plans et logo officiel (HTTP 503), rapprocher un export complet frais, recalculer le score et conclure l’audit avant publication et Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11858,7 +12028,7 @@
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22T19:30:21.0577569Z",
-      "editorialStatus": "Blocked",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Non vérifié",
@@ -11866,7 +12036,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "conversation-portugal / docs/portugal-world-backlog-sync-20261022",
-      "lastDataIntegrationAt": "2026-10-22T19:00:12.375Z",
+      "lastDataIntegrationAt": "2026-10-22T20:47:10.762Z",
       "integrationHistory": [
         {
           "eventId": "apply-e208a4f3-d27a-4a64-9aba-d50386cbacd2",
@@ -11997,9 +12167,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json#apply-54fce05b-f764-4f99-9dde-527c5f7c53c3",
           "auditEvidence": null,
           "summary": "Lot step-05b-opening-image-20261022.apply.json : 0 création(s), 1 mise(s) à jour ; données conservées pour l’audit."
+        },
+        {
+          "eventId": "apply-b2fb9280-291a-4313-ae01-904b19dac9bc",
+          "appliedAt": "2026-10-22T20:47:10.762Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aae02d3a-717e-4390-897f-053fe9216850",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-b2fb9280-291a-4313-ae01-904b19dac9bc.json",
+          "auditEvidence": null,
+          "summary": "Réouverture précisée au 1er juillet 2021 grâce à une source contemporaine : date et huit résumés mis à jour, source ajoutée. Événement existant conservé ; visibilité inchangée, audit à actualiser."
         }
       ],
-      "nextAction": "Dix lots privés et trois photos autorisées ; audit précédent sans bloqueur, score exact 95/100. Attendre l’acceptation explicite de cette exception ou une preuve fiable du fabricant/modèle ; Cod Steaks est confirmé pour les décors seulement. Vérifier la nouvelle piste de décor 2018 avant de reprendre l’audit et les trois lots de publication préparés. Aucun Facebook envoyé.",
+      "nextAction": "11 lots privés et trois photos vérifiés. Réouverture précisée au 1er juillet 2021 ; actualiser l’export et l’audit final. Constructeur et modèle non confirmés ; exception exacte au dernier score de 95/100 toujours en attente. Aucune publication.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

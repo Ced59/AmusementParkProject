@@ -1,0 +1,18 @@
+{
+  "eventId": "image-d18beaa3ca91482a948f7a52e4dcd9ee-2026-10-22T20:45:12.284Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:45:12.284Z",
+  "sourceAppliedAt": "2026-10-22T20:45:12.284Z",
+  "receiptFile": "slide-splash/media/grill-timber-terrace-import-response.json",
+  "receiptSha256": "0ed75d602f68526a08160d9f923a0a97d59830ba7553f476c2836d723dda528b",
+  "result": {
+    "imageId": "d18beaa3ca91482a948f7a52e4dcd9ee",
+    "ownerId": "0941340f-dc29-44a2-b856-11ee9da54fde",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Grill Splash intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

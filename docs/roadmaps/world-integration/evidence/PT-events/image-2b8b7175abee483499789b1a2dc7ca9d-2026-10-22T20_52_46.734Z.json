@@ -1,0 +1,18 @@
+{
+  "eventId": "image-2b8b7175abee483499789b1a2dc7ca9d-2026-10-22T20:52:46.734Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:52:46.734Z",
+  "sourceAppliedAt": "2026-10-22T20:52:46.734Z",
+  "receiptFile": "slide-splash/media/steeplechase-blue-pool-front-import-response.json",
+  "receiptSha256": "eb4a6b054d5896e6879c94ee66530961fe0b02b5f55c04624fca683c67320a61",
+  "result": {
+    "imageId": "2b8b7175abee483499789b1a2dc7ca9d",
+    "ownerId": "51f57b91-8081-490c-b717-ce76727418d7",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Steeplechase intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

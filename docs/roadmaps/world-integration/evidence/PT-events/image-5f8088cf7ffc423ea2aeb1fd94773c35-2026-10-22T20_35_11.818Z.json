@@ -1,0 +1,18 @@
+{
+  "eventId": "image-5f8088cf7ffc423ea2aeb1fd94773c35-2026-10-22T20:35:11.818Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:35:11.818Z",
+  "sourceAppliedAt": "2026-10-22T20:35:11.818Z",
+  "receiptFile": "slide-splash/media/kamikaze-start-laguna-view-import-response.json",
+  "receiptSha256": "c42372742fe982ff811298b1f11c85d3897b7457061f0d61e73c44191931161d",
+  "result": {
+    "imageId": "5f8088cf7ffc423ea2aeb1fd94773c35",
+    "ownerId": "f36e1f75-6dbc-4292-bc91-f73fcc525e3b",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Kamikaze intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-0e449f461ac24901b24109d93cd218b7-2026-10-22T20:37:19.339Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:37:19.339Z",
+  "sourceAppliedAt": "2026-10-22T20:37:19.339Z",
+  "receiptFile": "slide-splash/media/historic-snake-on-grass-import-response.json",
+  "receiptSha256": "73f48863b540ab24c2932dbcf51182ea564ee1bea86a585f842c152b1d723a72",
+  "result": {
+    "imageId": "0e449f461ac24901b24109d93cd218b7",
+    "ownerId": "14b25515-57d6-4aaf-b8c4-d96d561b6cf4",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Répteis — Wild Splash Show intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

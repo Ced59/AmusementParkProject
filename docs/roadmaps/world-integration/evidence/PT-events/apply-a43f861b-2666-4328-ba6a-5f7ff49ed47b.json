@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-a43f861b-2666-4328-ba6a-5f7ff49ed47b",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T20:54:53.718Z",
+  "sourceAppliedAt": "2026-10-22T20:54:53.7180727Z",
+  "receiptFile": "slide-splash/step-09l-timeline-context-images-20261022.apply.json",
+  "receiptSha256": "64b82289602349c35ddc435b98b45e9a7f68bbce760b502fb979241579640c21",
+  "result": {
+    "operationId": "a43f861b-2666-4328-ba6a-5f7ff49ed47b",
+    "counts": {
+      "created": 0,
+      "updated": 17,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Dix-sept jalons existants illustrés par des photographies fidèles de leurs éléments. Vues historiques et ultérieures documentées comme contexte ; dates, textes et visibilité préservés. Audit final en cours."
+}

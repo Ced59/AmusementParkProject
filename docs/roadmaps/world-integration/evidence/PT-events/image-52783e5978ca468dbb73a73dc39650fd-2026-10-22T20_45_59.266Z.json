@@ -1,0 +1,18 @@
+{
+  "eventId": "image-52783e5978ca468dbb73a73dc39650fd-2026-10-22T20:45:59.266Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:45:59.266Z",
+  "sourceAppliedAt": "2026-10-22T20:45:59.266Z",
+  "receiptFile": "slide-splash/media/quiosque-rio-shade-sails-import-response.json",
+  "receiptSha256": "5c22f414601b2ff0b0655b54aad26de7bdbc5ab04f8c3ef711e9e401ae159e20",
+  "result": {
+    "imageId": "52783e5978ca468dbb73a73dc39650fd",
+    "ownerId": "9d018866-e9d8-4fde-9969-9218939487a9",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Quiosque Rio intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

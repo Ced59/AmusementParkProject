@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-b2fb9280-291a-4313-ae01-904b19dac9bc",
+  "entryId": "PT-standalone-aae02d3a-717e-4390-897f-053fe9216850",
+  "entityId": "aae02d3a-717e-4390-897f-053fe9216850",
+  "entityKind": "StandaloneAttraction",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T20:47:10.762Z",
+  "sourceAppliedAt": "2026-10-22T20:47:10.7628126Z",
+  "receiptFile": "world-of-discoveries/step-09b-reopening-day-20261022.apply.json",
+  "receiptSha256": "cf5e4e4e02d33db92796acec06f05789d066908761c6377725a8d2a6dd7bce56",
+  "result": {
+    "operationId": "b2fb9280-291a-4313-ae01-904b19dac9bc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Réouverture précisée au 1er juillet 2021 grâce à une source contemporaine : date et huit résumés mis à jour, source ajoutée. Événement existant conservé ; visibilité inchangée, audit à actualiser."
+}

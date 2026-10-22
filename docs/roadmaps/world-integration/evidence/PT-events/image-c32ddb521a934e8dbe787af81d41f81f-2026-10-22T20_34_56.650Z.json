@@ -1,0 +1,18 @@
+{
+  "eventId": "image-c32ddb521a934e8dbe787af81d41f81f-2026-10-22T20:34:56.650Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:34:56.650Z",
+  "sourceAppliedAt": "2026-10-22T20:34:56.65Z",
+  "receiptFile": "slide-splash/media/cloud9-yellow-orange-arrival-import-response.json",
+  "receiptSha256": "30d9f1e5a1f7df0e9f2c35c15474339d716b8b910c6d376785f35c151fe1bbdf",
+  "result": {
+    "imageId": "c32ddb521a934e8dbe787af81d41f81f",
+    "ownerId": "dd0ad65c-6763-4a06-9201-4a856f048f6a",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Cloud 9 intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

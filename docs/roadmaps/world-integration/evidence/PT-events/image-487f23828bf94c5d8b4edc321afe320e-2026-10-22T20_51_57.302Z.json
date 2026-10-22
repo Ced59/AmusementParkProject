@@ -1,0 +1,18 @@
+{
+  "eventId": "image-487f23828bf94c5d8b4edc321afe320e-2026-10-22T20:51:57.302Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:51:57.302Z",
+  "sourceAppliedAt": "2026-10-22T20:51:57.302Z",
+  "receiptFile": "slide-splash/media/torpedo-purple-start-import-response.json",
+  "receiptSha256": "1a4ce93d021c5c2444ac721fd3ee8df5e95f573ed2985bcae528bc9249fa8ef9",
+  "result": {
+    "imageId": "487f23828bf94c5d8b4edc321afe320e",
+    "ownerId": "788b7f23-9457-4f3d-9d4f-33f72fbf3e51",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Torpedo intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

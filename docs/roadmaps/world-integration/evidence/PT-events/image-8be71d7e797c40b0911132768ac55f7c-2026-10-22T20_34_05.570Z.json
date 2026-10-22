@@ -1,0 +1,18 @@
+{
+  "eventId": "image-8be71d7e797c40b0911132768ac55f7c-2026-10-22T20:34:05.570Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:34:05.570Z",
+  "sourceAppliedAt": "2026-10-22T20:34:05.57Z",
+  "receiptFile": "slide-splash/media/twister-pink-arrival-import-response.json",
+  "receiptSha256": "facab8575c2875562e6e6a4dd8d54d15299ad554b897242ff389e4654f4ae289",
+  "result": {
+    "imageId": "8be71d7e797c40b0911132768ac55f7c",
+    "ownerId": "2f460950-d10c-43f4-b6e8-455a7ef1d19f",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Twister intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

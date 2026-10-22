@@ -1,0 +1,18 @@
+{
+  "eventId": "image-d3dbece6abb94ce9b796922c5bacee43-2026-10-22T20:45:28.051Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:45:28.051Z",
+  "sourceAppliedAt": "2026-10-22T20:45:28.051Z",
+  "receiptFile": "slide-splash/media/restaurante-red-dining-room-import-response.json",
+  "receiptSha256": "d9aaa6bb8b3e75a45b7c2c2a0546de73a6bdbe1e98e7cf7fe047c676d0ed43f0",
+  "result": {
+    "imageId": "d3dbece6abb94ce9b796922c5bacee43",
+    "ownerId": "ce2a2ed7-4d34-4a95-a6cc-240f8cbddde6",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Restaurante Splash intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

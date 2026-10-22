@@ -1,0 +1,18 @@
+{
+  "eventId": "image-4bf23a2aa1d844c7a5e3d6a9dd545935-2026-10-22T20:36:40.511Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:36:40.511Z",
+  "sourceAppliedAt": "2026-10-22T20:36:40.511Z",
+  "receiptFile": "slide-splash/media/historic-falcon-rock-import-response.json",
+  "receiptSha256": "68d849e64b116ea564610fcdf0a53985845e7db42d7973ec16da845491affcf1",
+  "result": {
+    "imageId": "4bf23a2aa1d844c7a5e3d6a9dd545935",
+    "ownerId": "0fef2920-5bbc-4a52-9462-c93c4610fe35",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Aves de Rapina — Wild Splash Show intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}
