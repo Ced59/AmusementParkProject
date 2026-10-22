@@ -1,0 +1,315 @@
+{
+  "name": "Menara Taming Sari",
+  "standaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+  "qualification": "Tour panoramique mécanique fixe avec sa propre billetterie à Bandar Hilir. Le constructeur Intamin confirme Super Gyro Melaka ; recherches officielles Park/Standalone sous trois noms sans correspondance.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 98,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 5,
+    "accessConditions": 2,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 30
+  },
+  "gaps": [
+    "La date exacte ou l’année d’ouverture initiale n’a pas été vérifiée dans une source primaire accessible ; elle reste absente des champs de date. L’événement historique du 9 août 2026 concerne le prix touristique et non l’ouverture.",
+    "La grille officielle indique « below 12 » pour les enfants, « 13–54 » pour les adultes et « above 55 » pour les seniors : les âges de 12 et 55 ans ne sont pas classés sans ambiguïté.",
+    "La grille Night View indique jusqu’à 23 h même en semaine, alors que la bannière des horaires ferme la tour à 22 h du lundi au vendredi. L’horaire général est intégré et la divergence est consignée dans la note tarifaire.",
+    "La grille ne montre aucun tarif enfant international en soirée ; cette combinaison n’a pas été inventée.",
+    "Le plan intégré du site officiel fournit les coordonnées de Melaka mais son marqueur contient le libellé erroné « London Eye ». Les coordonnées concordent avec l’adresse de la tour ; le libellé n’a pas été repris.",
+    "La hauteur structurée correspond à la hauteur de vue de la cabine annoncée par l’exploitant, et non à une mesure indépendante du mât complet."
+  ],
+  "sources": [
+    "https://www.menaratamingsari.com/",
+    "https://www.menaratamingsari.com/about/",
+    "https://www.menaratamingsari.com/shop/",
+    "https://www.menaratamingsari.com/plan-your-visit/frequently-asked-questions/",
+    "https://www.menaratamingsari.com/plan-your-visit/getting-here/",
+    "https://www.menaratamingsari.com/gallery/menara-taming-sari-best-observation-tower-attraction/",
+    "https://www.intamin.com/project/super-gyro-melaka/"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-22T23:34:50.765984+00:00",
+    "exportSha256": "c30a8cb594a730d632d9c53d68ac3eb0a8d5bc03856f0054f73ed95b37bc67af",
+    "localizedStringsReviewed": 840,
+    "localizedGroups": 105,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": {
+    "operationId": "385bbac9-00c4-4240-b486-2494d0f608ec",
+    "previewedAtUtc": "2026-10-22T23:35:02.6930144Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 9,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-22T23:39:32.924823+00:00",
+  "facebook": {
+    "id": "1cf43d25dfb74bac935cd7509cfefa4a",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-22T23:40:30.173826Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124218745424431",
+    "externalPostId": "1285475681307050_122124218745424431",
+    "url": "https://amusement-parks.fun/fr/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari?facebook-image=d703d96226ff4344aaed82738c82410c"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-22T23:39:32.924823+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-22T23:39:41.485480+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history/b3fc6f61-75fa-442f-832d-6ae7e94695d2/taming-sari-prix-panorama-melaka-2026",
+            "status": 200,
+            "textLength": 2040,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 699
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history/b3fc6f61-75fa-442f-832d-6ae7e94695d2/taming-sari-prix-panorama-melaka-2026",
+            "status": 200,
+            "textLength": 1780,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 646
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history/b3fc6f61-75fa-442f-832d-6ae7e94695d2/taming-sari-prix-panorama-melaka-2026",
+            "status": 200,
+            "textLength": 1914,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 752
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history/b3fc6f61-75fa-442f-832d-6ae7e94695d2/taming-sari-prix-panorama-melaka-2026",
+            "status": 200,
+            "textLength": 1812,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 741
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history/b3fc6f61-75fa-442f-832d-6ae7e94695d2/taming-sari-prix-panorama-melaka-2026",
+            "status": 200,
+            "textLength": 1813,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 676
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history/b3fc6f61-75fa-442f-832d-6ae7e94695d2/taming-sari-prix-panorama-melaka-2026",
+            "status": 200,
+            "textLength": 1798,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 710
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history/b3fc6f61-75fa-442f-832d-6ae7e94695d2/taming-sari-prix-panorama-melaka-2026",
+            "status": 200,
+            "textLength": 1753,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 675
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari/history/b3fc6f61-75fa-442f-832d-6ae7e94695d2/taming-sari-prix-panorama-melaka-2026",
+            "status": 200,
+            "textLength": 1802,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 707
+      }
+    ]
+  }
+}
