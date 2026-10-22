@@ -135,17 +135,19 @@ public static class DataCompletenessScoringRules
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
         TimeSpan.FromMilliseconds(100));
 
+    // Avoid per-pattern dynamic compilation on the first score calculation; keep the
+    // same word boundaries and timeout with a linear-time matching engine.
     private static readonly Regex RawTechnicalMetricRegex = new Regex(
         @"\b\d+(?:[.,]\d+)?\s*(?:km\s*/?\s*h|mph|m\s*/\s*s|m|cm|met(?:er|re)s?|mètres?|feet|foot|ft|seconds?|secondes?|sekunden?|seconden?|secondi|segundos?|sekund(?:a|y)?|minutes?|minuten?|minuti|minutos?|riders?\s*(?:per|/)\s*hour|passagers?\s*(?:par|/)\s*heure|personas?\s*(?:por|/)\s*hora|personen?\s*(?:pro|per|/)\s*stunde)\b",
-        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+        RegexOptions.NonBacktracking | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
         TimeSpan.FromMilliseconds(100));
 
     private static readonly Regex[] TechnicalNarrativeCategoryRegexes =
     [
-        new Regex(@"\b(?:track|rails?|layout|structure|tracé|voies?|schienen?|strecke|konstruktion|tracciato|rotaie?|struttura|trazado|vías?|estructura|tory?|szyny?|konstrukcja|baan|rails?|constructie|percurso|trilhos?|estrutura)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
-        new Regex(@"\b(?:vehicles?|seats?|restraints?|harness|véhicules?|sièges?|retenues?|harnais|fahrzeuge?|sitze?|rückhaltesystem|veicoli?|sedili?|ritenute|vehículos?|asientos?|sujeciones?|pojazdy?|siedzenia?|zabezpieczenia|voertuigen?|zitplaatsen?|beugels?|veículos?|assentos?|retenções?)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
-        new Regex(@"\b(?:rotations?|accelerations?|accélérations?|inversions?|launch|propulsion|lift\s+hill|chain\s+lift|rotazioni?|accelerazioni?|lancio|rotaciones?|aceleraciones?|lanzamiento|rotationen?|beschleunigungen?|abschuss|obroty?|przyspieszeni|wystrzelen|rotaties?|versnellingen?|lancering|rotações?|acelerações?|lançamento)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
-        new Regex(@"\b(?:speed|duration|capacity|vitesse|durée|capacité|geschwindigkeit|dauer|kapazität|velocità|durata|capacità|velocidad|duración|capacidad|prędkość|czas\s+trwania|pojemność|snelheid|duur|capaciteit|velocidade|duração|capacidade)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"\b(?:track|rails?|layout|structure|tracé|voies?|schienen?|strecke|konstruktion|tracciato|rotaie?|struttura|trazado|vías?|estructura|tory?|szyny?|konstrukcja|baan|rails?|constructie|percurso|trilhos?|estrutura)\b", RegexOptions.NonBacktracking | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"\b(?:vehicles?|seats?|restraints?|harness|véhicules?|sièges?|retenues?|harnais|fahrzeuge?|sitze?|rückhaltesystem|veicoli?|sedili?|ritenute|vehículos?|asientos?|sujeciones?|pojazdy?|siedzenia?|zabezpieczenia|voertuigen?|zitplaatsen?|beugels?|veículos?|assentos?|retenções?)\b", RegexOptions.NonBacktracking | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"\b(?:rotations?|accelerations?|accélérations?|inversions?|launch|propulsion|lift\s+hill|chain\s+lift|rotazioni?|accelerazioni?|lancio|rotaciones?|aceleraciones?|lanzamiento|rotationen?|beschleunigungen?|abschuss|obroty?|przyspieszeni|wystrzelen|rotaties?|versnellingen?|lancering|rotações?|acelerações?|lançamento)\b", RegexOptions.NonBacktracking | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"\b(?:speed|duration|capacity|vitesse|durée|capacité|geschwindigkeit|dauer|kapazität|velocità|durata|capacità|velocidad|duración|capacidad|prędkość|czas\s+trwania|pojemność|snelheid|duur|capaciteit|velocidade|duração|capacidade)\b", RegexOptions.NonBacktracking | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
     ];
 
     public static bool HasText(string? value)
