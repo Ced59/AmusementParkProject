@@ -14,7 +14,6 @@ import {
   UiPhotoCarouselAxisOption,
   UiPhotoCarouselCategoryOption,
   UiPhotoCarouselImage,
-  UiPhotoCarouselMetadataRow,
   UiPhotoCarouselTagLabel
 } from '../models/ui-photo-carousel.model';
 
@@ -71,8 +70,6 @@ export class UiPhotoCarouselComponent implements OnChanges {
   @Input() tagAriaLabelKey: string = 'ui.photoCarousel.axes.tags';
   @Input() allYearsLabelKey: string = 'ui.photoCarousel.axes.allYears';
   @Input() allTagsLabelKey: string = 'ui.photoCarousel.axes.allTags';
-  @Input() metadataTitleKey: string = 'ui.photoCarousel.metadata.title';
-  @Input() metadataSubtitleKey: string = 'ui.photoCarousel.metadata.subtitle';
   @Input() mapTitleKey: string = 'ui.photoCarousel.map.title';
   @Input() mapSubtitleKey: string = 'ui.photoCarousel.map.subtitle';
   @Input() mapEmptyKey: string = 'ui.photoCarousel.map.empty';
@@ -101,7 +98,6 @@ export class UiPhotoCarouselComponent implements OnChanges {
   private filteredPhotosValue: UiPhotoCarouselImage[] = [];
   private displayedPhotosValue: UiPhotoCarouselImage[] = [];
   private activePhotoValue: UiPhotoCarouselImage | null = null;
-  private metadataRowsValue: UiPhotoCarouselMetadataRow[] = [];
   private mapMarkersValue: MapMarker[] = [];
   private mapCenterValue: [number, number] = UiPhotoCarouselComponent.DefaultMapCenter;
 
@@ -163,7 +159,7 @@ export class UiPhotoCarouselComponent implements OnChanges {
     this.activePhotoIndex = Math.max(0, photoIndex);
     this.clampActivePhotoIndex();
     this.refreshActivePhoto();
-    this.refreshMetadataAndMap();
+    this.refreshMap();
   }
 
   selectPhotoById(photoId: string | null | undefined): void {
@@ -204,7 +200,7 @@ export class UiPhotoCarouselComponent implements OnChanges {
       ? currentPhotos.length - 1
       : this.activePhotoIndex - 1;
     this.refreshActivePhoto();
-    this.refreshMetadataAndMap();
+    this.refreshMap();
   }
 
   nextPhoto(): void {
@@ -218,7 +214,7 @@ export class UiPhotoCarouselComponent implements OnChanges {
       ? 0
       : this.activePhotoIndex + 1;
     this.refreshActivePhoto();
-    this.refreshMetadataAndMap();
+    this.refreshMap();
   }
 
   hasSelectedYear(yearKey: string | null): boolean {
@@ -255,10 +251,6 @@ export class UiPhotoCarouselComponent implements OnChanges {
 
   get tagOptions(): UiPhotoCarouselAxisOption[] {
     return this.tagOptionsValue;
-  }
-
-  get metadataRows(): UiPhotoCarouselMetadataRow[] {
-    return this.metadataRowsValue;
   }
 
   get mapMarkers(): MapMarker[] {
@@ -323,10 +315,6 @@ export class UiPhotoCarouselComponent implements OnChanges {
     return tag.key;
   }
 
-  trackByMetadataRow(_index: number, row: UiPhotoCarouselMetadataRow): string {
-    return row.key;
-  }
-
   private refreshDerivedPhotos(): void {
     const previousActiveImageId: string | null = this.activePhotoValue?.imageId ?? null;
 
@@ -343,7 +331,7 @@ export class UiPhotoCarouselComponent implements OnChanges {
     this.restoreActivePhoto(previousActiveImageId);
     this.clampActivePhotoIndex();
     this.refreshActivePhoto();
-    this.refreshMetadataAndMap();
+    this.refreshMap();
   }
 
   private restoreActivePhoto(previousActiveImageId: string | null): void {
@@ -402,8 +390,7 @@ export class UiPhotoCarouselComponent implements OnChanges {
     this.activePhotoValue = this.displayedPhotosValue[Math.min(this.activePhotoIndex, this.displayedPhotosValue.length - 1)] ?? this.displayedPhotosValue[0];
   }
 
-  private refreshMetadataAndMap(): void {
-    this.metadataRowsValue = this.activePhotoValue ? this.buildMetadataRows(this.activePhotoValue) : [];
+  private refreshMap(): void {
     this.mapMarkersValue = this.buildPhotoMapMarkers();
     this.mapCenterValue = this.resolveMapCenter();
   }
@@ -461,42 +448,11 @@ export class UiPhotoCarouselComponent implements OnChanges {
     });
   }
 
-  private buildMetadataRows(photo: UiPhotoCarouselImage): UiPhotoCarouselMetadataRow[] {
-    const rows: UiPhotoCarouselMetadataRow[] = [];
-
-    this.addMetadataRow(rows, 'takenOn', 'ui.photoCarousel.metadata.takenOn', this.formatDateTime(photo.takenOn), 'pi pi-calendar');
-    this.addMetadataRow(rows, 'uploadedAt', 'ui.photoCarousel.metadata.uploadedAt', this.formatDateTime(photo.uploadedAt), 'pi pi-cloud-upload');
-    this.addMetadataRow(rows, 'location', 'ui.photoCarousel.metadata.location', this.formatCoordinates(photo), 'pi pi-map-marker');
-    this.addMetadataRow(rows, 'dimensions', 'ui.photoCarousel.metadata.dimensions', this.formatDimensions(photo), 'pi pi-expand');
-    this.addMetadataRow(rows, 'camera', 'ui.photoCarousel.metadata.camera', this.formatCamera(photo), 'pi pi-camera');
-    this.addMetadataRow(rows, 'settings', 'ui.photoCarousel.metadata.settings', this.formatCameraSettings(photo), 'pi pi-sliders-h');
-    this.addMetadataRow(rows, 'credit', 'ui.photoCarousel.metadata.credit', photo.credit ?? null, 'pi pi-user');
-    this.addMetadataRow(rows, 'file', 'ui.photoCarousel.metadata.file', this.formatFile(photo), 'pi pi-file');
-
-    return rows;
-  }
-
-  private addMetadataRow(rows: UiPhotoCarouselMetadataRow[], key: string, labelKey: string, value: string | null, iconClass: string): void {
-    if (!value) {
-      return;
-    }
-
-    rows.push({
-      key,
-      labelKey,
-      value,
-      iconClass
-    });
-  }
-
   private buildPhotoMapMarkers(): MapMarker[] {
     return this.displayedPhotosValue
       .filter((photo: UiPhotoCarouselImage) => this.hasUsableCoordinates(photo))
       .map((photo: UiPhotoCarouselImage): MapMarker => {
-        const rawDetails: string[] = [
-          this.formatDateTime(photo.takenOn),
-          this.formatDimensions(photo)
-        ].filter((value: string | null): value is string => !!value);
+        const credits: string[] = photo.credit ? [photo.credit] : [];
         const tagDetails: string[] = photo.tagLabels
           .filter((tag: UiPhotoCarouselTagLabel) => !tag.labelKey)
           .map((tag: UiPhotoCarouselTagLabel) => tag.label);
@@ -508,9 +464,9 @@ export class UiPhotoCarouselComponent implements OnChanges {
           id: photo.imageId,
           lat: photo.latitude as number,
           lng: photo.longitude as number,
-          title: photo.caption ?? photo.alt,
+          title: photo.caption ?? photo.description ?? photo.alt,
           subtitle: photo.sourceTitle ?? null,
-          details: [...rawDetails, ...tagDetails],
+          details: [...credits, ...tagDetails],
           detailTranslationKeys: tagTranslationKeys,
           iconKind: 'photo'
         };
@@ -538,115 +494,5 @@ export class UiPhotoCarouselComponent implements OnChanges {
       && latitude <= 90
       && longitude >= -180
       && longitude <= 180;
-  }
-
-  private formatDateTime(value: string | null | undefined): string | null {
-    const normalizedValue: string = value?.trim() ?? '';
-    if (!normalizedValue) {
-      return null;
-    }
-
-    const date: Date = new Date(normalizedValue);
-    if (Number.isNaN(date.getTime())) {
-      return normalizedValue;
-    }
-
-    try {
-      return new Intl.DateTimeFormat(this.language || 'en', { dateStyle: 'medium' }).format(date);
-    } catch {
-      return normalizedValue;
-    }
-  }
-
-  private formatCoordinates(photo: UiPhotoCarouselImage): string | null {
-    if (!this.hasUsableCoordinates(photo)) {
-      return null;
-    }
-
-    return `${(photo.latitude as number).toFixed(5)}, ${(photo.longitude as number).toFixed(5)}`;
-  }
-
-  private formatDimensions(photo: UiPhotoCarouselImage): string | null {
-    if (!photo.width || !photo.height) {
-      return null;
-    }
-
-    return `${photo.width} x ${photo.height}px`;
-  }
-
-  private formatCamera(photo: UiPhotoCarouselImage): string | null {
-    return [photo.cameraMaker, photo.cameraModel]
-      .map((value: string | null | undefined) => value?.trim() ?? '')
-      .filter((value: string) => value.length > 0)
-      .join(' ') || null;
-  }
-
-  private formatCameraSettings(photo: UiPhotoCarouselImage): string | null {
-    const settings: string[] = [];
-
-    if (typeof photo.focalLength === 'number') {
-      settings.push(`${this.formatNumber(photo.focalLength)}mm`);
-    }
-
-    if (typeof photo.aperture === 'number') {
-      settings.push(`f/${this.formatNumber(photo.aperture)}`);
-    }
-
-    if (typeof photo.exposureTime === 'number') {
-      settings.push(`${this.formatExposure(photo.exposureTime)}s`);
-    }
-
-    if (typeof photo.iso === 'number') {
-      settings.push(`ISO ${Math.round(photo.iso)}`);
-    }
-
-    return settings.join(' - ') || null;
-  }
-
-  private formatExposure(value: number): string {
-    if (value > 0 && value < 1) {
-      const denominator: number = Math.round(1 / value);
-      return `1/${denominator}`;
-    }
-
-    return this.formatNumber(value);
-  }
-
-  private formatFile(photo: UiPhotoCarouselImage): string | null {
-    const parts: string[] = [];
-
-    if (photo.originalFileName) {
-      parts.push(photo.originalFileName);
-    }
-
-    if (photo.contentType) {
-      parts.push(photo.contentType);
-    }
-
-    if (typeof photo.sizeInBytes === 'number') {
-      parts.push(this.formatFileSize(photo.sizeInBytes));
-    }
-
-    return parts.join(' - ') || null;
-  }
-
-  private formatFileSize(value: number): string {
-    if (value >= 1024 * 1024) {
-      return `${this.formatNumber(value / (1024 * 1024))} MB`;
-    }
-
-    if (value >= 1024) {
-      return `${this.formatNumber(value / 1024)} KB`;
-    }
-
-    return `${Math.round(value)} B`;
-  }
-
-  private formatNumber(value: number): string {
-    try {
-      return new Intl.NumberFormat(this.language || 'en', { maximumFractionDigits: 1 }).format(value);
-    } catch {
-      return String(Math.round(value * 10) / 10);
-    }
   }
 }

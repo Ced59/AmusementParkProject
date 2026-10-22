@@ -56,10 +56,3 @@ export interface UiPhotoCarouselAxisOption {
   labelKey?: string | null;
   count: number;
 }
-
-export interface UiPhotoCarouselMetadataRow {
-  key: string;
-  labelKey: string;
-  value: string;
-  iconClass: string;
-}

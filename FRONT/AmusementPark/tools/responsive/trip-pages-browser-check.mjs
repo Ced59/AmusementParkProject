@@ -28,6 +28,7 @@ const componentStyles = [
   'src/styles/_buttons.scss',
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
+  'src/app/ui/media/photo-carousel/ui-photo-carousel.component.scss',
   'src/app/features/public/home/pages/home.component.scss',
   'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
   'src/app/features/public/parks/ui/park-location-section.component.scss',
@@ -83,6 +84,24 @@ if (!chromeExecutable) {
 
 const fixtureMarkup = `
   <div class="responsive-fixture-host">
+    <section class="photo-carousel-panel" data-check-bound>
+      <div class="photo-carousel-explorer">
+        <aside class="photo-carousel-tags"><button class="photo-carousel-axis photo-carousel-axis--tag"><span>Photographies du château et des jardins</span><strong>24</strong></button></aside>
+        <main class="photo-carousel-main">
+          <div class="photo-carousel">
+            <button class="photo-carousel__nav photo-carousel__nav--prev" aria-label="Photo précédente">←</button>
+            <article class="photo-carousel__stage" data-check-bound>
+              <div class="photo-carousel__placeholder" role="img" aria-label="Le château au coucher du soleil"></div>
+              <div class="photo-carousel__caption" data-check-bound>
+                <p>Le château du parc, éclairé par les derniers rayons du soleil, se reflète dans le lac au milieu des jardins. Une description développée accompagne cette photographie pour vérifier la place conservée pour le texte et les crédits.</p>
+                <p class="photo-carousel__credit" data-check-bound><strong>Crédits :</strong> Camille — Association des photographes et des passionnés de parcs — ${'BildnachweisOhneLeerzeichen'.repeat(8)}</p>
+              </div>
+            </article>
+            <button class="photo-carousel__nav photo-carousel__nav--next" aria-label="Photo suivante">→</button>
+          </div>
+        </main>
+      </div>
+    </section>
     <main class="home-page" data-check-bound>
       <div class="home-floating-stack">
         <a class="home-hero-card home-hero-card--1 home-hero-card--primary" data-check-bound>
@@ -437,6 +456,20 @@ const evaluationScript = `
     }
     if (document.documentElement.scrollWidth > viewportRight + 1) {
       violations.push({ selector: 'document', reason: 'horizontal-overflow', right: document.documentElement.scrollWidth, viewportRight });
+    }
+    const photoCredit = document.querySelector('.photo-carousel__credit');
+    if (photoCredit.scrollWidth > photoCredit.clientWidth + 1) {
+      violations.push({ reason: 'photo-credit-overflow' });
+    }
+    if (matchMedia('(max-width: 960px)').matches) {
+      const photoCaption = document.querySelector('.photo-carousel__caption').getBoundingClientRect();
+      const photo = document.querySelector('.photo-carousel__placeholder').getBoundingClientRect();
+      for (const control of document.querySelectorAll('.photo-carousel__nav')) {
+        const bounds = control.getBoundingClientRect();
+        if (bounds.top < photo.top || bounds.bottom > photo.bottom || bounds.bottom > photoCaption.top) {
+          violations.push({ reason: 'photo-navigation-overlaps-caption' });
+        }
+      }
     }
     for (const element of checked) {
       const bounds = element.getBoundingClientRect();

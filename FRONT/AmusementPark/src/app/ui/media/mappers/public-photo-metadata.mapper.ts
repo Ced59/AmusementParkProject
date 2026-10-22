@@ -86,7 +86,6 @@ export function buildPublicPhotoMetadata(
   const credit: string | null = normalizeOptionalString(resolveLocalizedValue(photo.credits, options.currentLanguage) ?? null);
   const alt: string = normalizeOptionalString(resolveLocalizedValue(photo.altTexts, options.currentLanguage) ?? null)
     ?? caption
-    ?? normalizeOptionalString(photo.originalFileName)
     ?? options.fallbackAlt;
   const takenOn: string | null = normalizeOptionalString(photo.exifMetadata?.takenOnUtc);
   const year: string | null = resolveYear(takenOn);

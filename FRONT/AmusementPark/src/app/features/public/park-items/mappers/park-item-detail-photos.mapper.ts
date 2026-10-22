@@ -10,7 +10,6 @@ import {
   ParkItemPhotoCategoryOptionViewModel,
   ParkItemPhotoViewModel
 } from '../models/park-item-detail-view.model';
-import { trimOrNull } from './park-item-detail-formatters';
 
 export function buildPhotos(photos: ImageDto[], imageTags: ImageTagDto[], currentLanguage: string = 'en'): ParkItemPhotoViewModel[] {
   const tagLookup: PublicPhotoTagLookup = buildPublicPhotoTagLookup(imageTags, currentLanguage);
@@ -23,10 +22,9 @@ export function buildPhotos(photos: ImageDto[], imageTags: ImageTagDto[], curren
         .find((tagSlug: string) => !!tagSlug);
       const categoryKey: string = resolvePhotoCategoryKey(firstKnownTag);
       const categoryLabelKey: string = resolvePhotoCategoryLabelKey(categoryKey);
-      const fallbackAlt: string = trimOrNull(photo.description) ?? trimOrNull(photo.originalFileName) ?? 'Park item photo';
       const metadata: PublicPhotoMetadata = buildPublicPhotoMetadata(photo, tagLookup, {
         currentLanguage,
-        fallbackAlt,
+        fallbackAlt: 'Park item photo',
         fallbackTagKey: categoryKey,
         fallbackTagLabelKey: categoryLabelKey
       });

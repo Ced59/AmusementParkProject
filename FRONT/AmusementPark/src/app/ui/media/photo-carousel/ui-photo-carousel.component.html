@@ -82,7 +82,7 @@
               fetchPriority="high"
               [srcWidth]="1280"
               [responsiveWidths]="stageResponsiveWidths"
-              sizes="(max-width: 760px) 100vw, (max-width: 1180px) 82vw, 58vw"
+              sizes="(max-width: 960px) 100vw, 80vw"
               imgClass="photo-carousel__image"
               placeholderClass="photo-carousel__placeholder"
               placeholderKind="photo">
@@ -104,6 +104,9 @@
               </div>
 
               <p *ngIf="currentPhoto.caption || currentPhoto.description">{{ currentPhoto.caption ?? currentPhoto.description }}</p>
+              <p class="photo-carousel__credit" *ngIf="currentPhoto.credit">
+                <strong>{{ 'ui.photoCarousel.metadata.credit' | translate }} :</strong> {{ currentPhoto.credit }}
+              </p>
 
               <div class="photo-carousel__source" *ngIf="currentPhoto.sourceTitle || currentPhoto.externalSourceUrl">
                 <span class="photo-carousel__source-name" *ngIf="currentPhoto.sourceTitle">
@@ -177,33 +180,6 @@
         </div>
       </ng-template>
     </main>
-
-    <aside class="photo-carousel-metadata" *ngIf="activePhoto as selectedPhoto">
-      <header class="photo-carousel-metadata__header">
-        <span>{{ metadataTitleKey | translate }}</span>
-        <p>{{ metadataSubtitleKey | translate }}</p>
-      </header>
-
-      <dl class="photo-carousel-metadata__list">
-        <div
-          *ngFor="let row of metadataRows; trackBy: trackByMetadataRow"
-          class="photo-carousel-metadata__row">
-          <dt>
-            <i [class]="row.iconClass" aria-hidden="true"></i>
-            {{ row.labelKey | translate }}
-          </dt>
-          <dd>{{ row.value }}</dd>
-        </div>
-      </dl>
-
-      <div class="photo-carousel-metadata__tags" *ngIf="selectedPhoto.tagLabels.length > 0">
-        <app-ui-chip
-          *ngFor="let tag of selectedPhoto.tagLabels; trackBy: trackByTagLabel"
-          tone="soft">
-          {{ tag.labelKey ? (tag.labelKey | translate) : tag.label }}
-        </app-ui-chip>
-      </div>
-    </aside>
   </div>
 
   <section class="photo-carousel-map">
@@ -314,6 +290,9 @@
         </app-ui-chip>
         <app-ui-chip tone="soft" *ngIf="fullscreenPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
         <p *ngIf="fullscreenPhoto.caption || fullscreenPhoto.description">{{ fullscreenPhoto.caption ?? fullscreenPhoto.description }}</p>
+        <p class="photo-lightbox__credit" *ngIf="fullscreenPhoto.credit">
+          <strong>{{ 'ui.photoCarousel.metadata.credit' | translate }} :</strong> {{ fullscreenPhoto.credit }}
+        </p>
 
         <div class="photo-lightbox__source" *ngIf="fullscreenPhoto.sourceTitle || fullscreenPhoto.externalSourceUrl">
           <span class="photo-lightbox__source-name" *ngIf="fullscreenPhoto.sourceTitle">
