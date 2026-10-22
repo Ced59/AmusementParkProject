@@ -51,6 +51,7 @@ public sealed class ParkOpeningHoursCalendarBuilder
             FromDate = effectiveFromDate,
             ToDate = effectiveToDate,
             Days = days,
+            WeeklyRules = schedule.WeeklyRules.ToList(),
         };
     }
 

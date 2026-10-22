@@ -20,6 +20,16 @@ export interface ParkOpeningHoursRule {
   timeRanges: ParkOpeningHoursTimeRange[];
 }
 
+export interface ParkOpeningHoursWeeklyRule {
+  id?: string | null;
+  daysOfWeek: string[];
+  isClosed: boolean;
+  labels?: LocalizedItemDto<string>[] | null;
+  reasons?: LocalizedItemDto<string>[] | null;
+  sortOrder: number;
+  timeRanges: ParkOpeningHoursTimeRange[];
+}
+
 export interface ParkOpeningHoursDateOverride {
   localDate: string;
   isClosed: boolean;
@@ -37,6 +47,7 @@ export interface ParkOpeningHoursSchedule {
   createdAtUtc?: string | null;
   updatedAtUtc?: string | null;
   regularRules: ParkOpeningHoursRule[];
+  weeklyRules?: ParkOpeningHoursWeeklyRule[];
   dateOverrides: ParkOpeningHoursDateOverride[];
 }
 
@@ -62,6 +73,7 @@ export interface ParkOpeningHoursCalendar {
   fromDate: string;
   toDate: string;
   days: ParkOpeningHoursDay[];
+  weeklyRules?: ParkOpeningHoursWeeklyRule[];
 }
 
 export type ParkOpeningHoursAdminStatus = 'NotConfigured' | 'Expired' | 'NeedsUpdate' | 'UpToDate';

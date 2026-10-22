@@ -57,6 +57,10 @@
         <p>{{ 'parkOpeningHours.page.disclaimer' | translate:{ name: data.park.name } }}</p>
       </section>
 
+      @if (data.calendar.weeklyRules?.length) {
+        <app-park-opening-hours-card [calendar]="data.calendar" />
+      }
+
       <section class="park-opening-hours-calendar" [attr.aria-label]="'parkOpeningHours.page.calendarLabel' | translate:{ name: data.park.name }">
         <div class="park-opening-hours-calendar__legend" aria-hidden="true">
           <span><i class="park-opening-hours-legend-dot park-opening-hours-legend-dot--closed"></i>{{ 'parkOpeningHours.page.closed' | translate }}</span>

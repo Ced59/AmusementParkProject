@@ -7,6 +7,9 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHo
 [BsonIgnoreExtraElements]
 public sealed class ParkOpeningHoursScheduleDocument : MongoDocumentBase
 {
+    [BsonElement("weeklyRules")]
+    public List<ParkOpeningHoursWeeklyRuleDocument> WeeklyRules { get; set; } = new();
+
     [BsonElement("parkId")]
     public string ParkId { get; set; } = string.Empty;
 

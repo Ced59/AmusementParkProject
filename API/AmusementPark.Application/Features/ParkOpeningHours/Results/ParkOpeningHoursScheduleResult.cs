@@ -4,6 +4,8 @@ namespace AmusementPark.Application.Features.ParkOpeningHours.Results;
 
 public sealed class ParkOpeningHoursScheduleResult
 {
+    public IReadOnlyCollection<ParkOpeningHoursWeeklyRuleResult> WeeklyRules { get; init; } = Array.Empty<ParkOpeningHoursWeeklyRuleResult>();
+
     public string ParkId { get; init; } = string.Empty;
 
     public string TimeZoneId { get; init; } = string.Empty;

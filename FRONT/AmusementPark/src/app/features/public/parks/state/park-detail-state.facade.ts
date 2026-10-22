@@ -214,7 +214,7 @@ export class ParkDetailStateFacade {
           return;
         }
 
-        if (!this.hasCurrentOrFutureOpening(calendar)) {
+        if (!calendar.weeklyRules?.length && !this.hasCurrentOrFutureOpening(calendar)) {
           this.loadOpeningHoursNextOpeningWindow(parkId, calendar);
           return;
         }

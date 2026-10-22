@@ -128,7 +128,7 @@ internal static class StandaloneAttractionDataCompletenessScoring
             score.Add(pricing is not null && HasAdmissionPrice(pricing)
                 && pricing.AdmissionOffers.All(static offer => AllLanguages(offer.Labels))
                 && pricing.CreditOffers.All(static offer => AllLanguages(offer.Labels)), 2);
-            score.Add(hours is not null && HasFutureSchedule(hours, today), 4);
+            score.Add(hours is not null && HasUsableSchedule(hours, today, context.AsOfUtc), 4);
             score.Add(hours is not null && HasSource(hours.SourceUrl)
                 && DataCompletenessScoringRules.HasText(hours.TimeZoneId)
                 && IsRecentlyVerified(hours.LastVerifiedAtUtc, context.AsOfUtc), 2);
@@ -167,10 +167,14 @@ internal static class StandaloneAttractionDataCompletenessScoring
     private static bool HasValidPrice(ParkPriceValue? price) =>
         price is not null && ParkPriceValueRules.Normalize(price).Error is null;
 
-    private static bool HasFutureSchedule(ParkOpeningHoursSchedule hours, DateOnly today) =>
+    private static bool HasUsableSchedule(ParkOpeningHoursSchedule hours, DateOnly today, DateTime asOf) =>
         hours.RegularRules.Any(rule => rule.EndDate >= today && rule.StartDate <= rule.EndDate
             && HasFutureWeekday(rule, today) && (rule.IsClosed || rule.TimeRanges.Count > 0))
-        || hours.DateOverrides.Any(day => day.LocalDate >= today && (day.IsClosed || day.TimeRanges.Count > 0));
+        || hours.DateOverrides.Any(day => day.LocalDate >= today && (day.IsClosed || day.TimeRanges.Count > 0))
+        || (HasSource(hours.SourceUrl) && IsRecentlyVerified(hours.LastVerifiedAtUtc, asOf)
+            && hours.WeeklyRules.Any(static rule => rule.DaysOfWeek.Count > 0
+                && rule.DaysOfWeek.All(static day => Enum.IsDefined(day))
+                && (rule.IsClosed || rule.TimeRanges.Count > 0)));
 
     private static bool HasFutureWeekday(ParkOpeningHoursRule rule, DateOnly today)
     {

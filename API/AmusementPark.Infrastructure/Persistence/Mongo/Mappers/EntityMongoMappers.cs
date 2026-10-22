@@ -709,11 +709,12 @@ private const string OpeningHoursTimeFormat = "HH:mm";
             LastVerifiedAtUtc = schedule.LastVerifiedAtUtc,
             FirstDate = firstDate.HasValue ? FormatDate(firstDate.Value) : null,
             LastDate = lastDate.HasValue ? FormatDate(lastDate.Value) : null,
-            HasScheduleData = schedule.RegularRules.Count > 0 || schedule.DateOverrides.Count > 0,
+            HasScheduleData = schedule.RegularRules.Count > 0 || schedule.WeeklyRules.Count > 0 || schedule.DateOverrides.Count > 0,
             CoverageSegments = schedule.CoverageSegments.Select(static segment => segment.ToDocument()).ToList(),
             CreatedAt = schedule.CreatedAtUtc,
             UpdatedAt = schedule.UpdatedAtUtc,
             RegularRules = schedule.RegularRules.Select(static rule => rule.ToDocument()).ToList(),
+            WeeklyRules = schedule.WeeklyRules.Select(static rule => rule.ToDocument()).ToList(),
             DateOverrides = schedule.DateOverrides.Select(static dateOverride => dateOverride.ToDocument()).ToList(),
         };
     }
@@ -731,6 +732,7 @@ private const string OpeningHoursTimeFormat = "HH:mm";
             CreatedAtUtc = document.CreatedAt,
             UpdatedAtUtc = document.UpdatedAt,
             RegularRules = document.RegularRules.Select(static rule => rule.ToDomain()).ToList(),
+            WeeklyRules = document.WeeklyRules.Select(static rule => rule.ToDomain()).ToList(),
             DateOverrides = document.DateOverrides.Select(static dateOverride => dateOverride.ToDomain()).ToList(),
             CoverageSegments = document.CoverageSegments.Select(static segment => segment.ToDomain()).ToList(),
         };
@@ -777,6 +779,38 @@ private const string OpeningHoursTimeFormat = "HH:mm";
             Id = document.Id,
             StartDate = ParseDate(document.StartDate),
             EndDate = ParseDate(document.EndDate),
+            DaysOfWeek = document.DaysOfWeek
+                .Select(static value => Enum.TryParse(value, true, out DayOfWeek parsed) ? parsed : (DayOfWeek?)null)
+                .Where(static value => value.HasValue)
+                .Select(static value => value!.Value)
+                .ToList(),
+            IsClosed = document.IsClosed,
+            Labels = CommonMongoMappers.ToDomain(document.Labels),
+            Reasons = CommonMongoMappers.ToDomain(document.Reasons),
+            SortOrder = document.SortOrder,
+            TimeRanges = document.TimeRanges.Select(static timeRange => timeRange.ToDomain()).ToList(),
+        };
+    }
+
+    private static ParkOpeningHoursWeeklyRuleDocument ToDocument(this ParkOpeningHoursWeeklyRule rule)
+    {
+        return new ParkOpeningHoursWeeklyRuleDocument
+        {
+            Id = string.IsNullOrWhiteSpace(rule.Id) ? Guid.NewGuid().ToString("N") : rule.Id,
+            DaysOfWeek = rule.DaysOfWeek.Select(static day => day.ToString()).ToList(),
+            IsClosed = rule.IsClosed,
+            Labels = CommonMongoMappers.ToDocuments(rule.Labels),
+            Reasons = CommonMongoMappers.ToDocuments(rule.Reasons),
+            SortOrder = rule.SortOrder,
+            TimeRanges = rule.TimeRanges.Select(static timeRange => timeRange.ToDocument()).ToList(),
+        };
+    }
+
+    private static ParkOpeningHoursWeeklyRule ToDomain(this ParkOpeningHoursWeeklyRuleDocument document)
+    {
+        return new ParkOpeningHoursWeeklyRule
+        {
+            Id = document.Id,
             DaysOfWeek = document.DaysOfWeek
                 .Select(static value => Enum.TryParse(value, true, out DayOfWeek parsed) ? parsed : (DayOfWeek?)null)
                 .Where(static value => value.HasValue)

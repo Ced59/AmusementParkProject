@@ -13,7 +13,10 @@
       "parkTimeZone": "Parktijd",
       "visitorTimeZone": "Jouw tijdzone: {{ timeZone }}",
       "viewAll": "Bekijk alle data en tijden",
-      "loading": "Tijden laden"
+      "loading": "Tijden laden",
+      "weeklyTitle": "Gebruikelijke openingstijden",
+      "weeklyHint": "De gebruikelijke tijden kunnen op bepaalde datums afwijken.",
+      "viewSource": "Bron van de openingstijden bekijken"
     },
     "page": {
       "kicker": "Data en tijden",

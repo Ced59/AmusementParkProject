@@ -337,6 +337,19 @@ internal static class ParkGraphJsonExportDocumentFactory
                     TimeRanges = rule.TimeRanges.Select(static timeRange => MapOpeningHoursTimeRange(timeRange)).ToList(),
                 })
                 .ToList(),
+            WeeklyRules = schedule.WeeklyRules
+                .OrderBy(static rule => rule.SortOrder)
+                .Select(static rule => new ParkGraphExportOpeningHoursWeeklyRule
+                {
+                    Id = rule.Id,
+                    DaysOfWeek = rule.DaysOfWeek.Select(static day => day.ToString()).ToList(),
+                    IsClosed = rule.IsClosed,
+                    Labels = CopyLocalizedTexts(rule.Labels),
+                    Reasons = CopyLocalizedTexts(rule.Reasons),
+                    SortOrder = rule.SortOrder,
+                    TimeRanges = rule.TimeRanges.Select(static timeRange => MapOpeningHoursTimeRange(timeRange)).ToList(),
+                })
+                .ToList(),
             DateOverrides = schedule.DateOverrides
                 .OrderBy(static dateOverride => dateOverride.LocalDate)
                 .Select(static dateOverride => new ParkGraphExportOpeningHoursDateOverride

@@ -13,7 +13,10 @@
       "parkTimeZone": "Czas parku",
       "visitorTimeZone": "Twoja strefa: {{ timeZone }}",
       "viewAll": "Zobacz wszystkie daty i godziny",
-      "loading": "Ładowanie godzin"
+      "loading": "Ładowanie godzin",
+      "weeklyTitle": "Zwykłe godziny otwarcia",
+      "weeklyHint": "Zwykłe godziny otwarcia mogą się różnić w wybrane dni.",
+      "viewSource": "Zobacz źródło godzin otwarcia"
     },
     "page": {
       "kicker": "Daty i godziny",

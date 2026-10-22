@@ -7949,7 +7949,10 @@
       "parkTimeZone": "Hora del parque",
       "visitorTimeZone": "Tu zona horaria: {{ timeZone }}",
       "viewAll": "Ver todas las fechas y horarios",
-      "loading": "Cargando horarios"
+      "loading": "Cargando horarios",
+      "weeklyTitle": "Horarios habituales",
+      "weeklyHint": "Los horarios habituales pueden variar en determinadas fechas.",
+      "viewSource": "Consultar la fuente de los horarios"
     },
     "page": {
       "kicker": "Fechas y horarios",

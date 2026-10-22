@@ -158,7 +158,7 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
 
     internal static bool HasOpeningHoursScheduleData(JsonElement patch)
     {
-        return ParkGraphUpsertProcessorOpeningHoursExtensions.HasNonEmptyArrayValue(patch, "regularRules") || ParkGraphUpsertProcessorOpeningHoursExtensions.HasNonEmptyArrayValue(patch, "dateOverrides");
+        return ParkGraphUpsertProcessorOpeningHoursExtensions.HasNonEmptyArrayValue(patch, "regularRules") || ParkGraphUpsertProcessorOpeningHoursExtensions.HasNonEmptyArrayValue(patch, "weeklyRules") || ParkGraphUpsertProcessorOpeningHoursExtensions.HasNonEmptyArrayValue(patch, "dateOverrides");
     }
 
     internal static bool HasNonEmptyArrayValue(JsonElement patch, string propertyName)
@@ -181,6 +181,7 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
             Notes = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(patch, "notes"),
             LastVerifiedAtUtc = ParkGraphUpsertProcessorJsonReadingExtensions.ReadDate(patch, "lastVerifiedAtUtc"),
             RegularRules = ParkGraphUpsertProcessorOpeningHoursExtensions.ReadOpeningHoursRules(patch, errors),
+            WeeklyRules = ParkGraphUpsertProcessorOpeningHoursExtensions.ReadOpeningHoursWeeklyRules(patch, errors),
             DateOverrides = ParkGraphUpsertProcessorOpeningHoursExtensions.ReadOpeningHoursDateOverrides(patch, errors),
         };
         return schedule;
@@ -217,6 +218,54 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
                 Id = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(ruleElement, "id"),
                 StartDate = ParkGraphUpsertProcessorOpeningHoursExtensions.ReadDateOnly(ruleElement, "startDate", $"{prefix}.startDate", errors),
                 EndDate = ParkGraphUpsertProcessorOpeningHoursExtensions.ReadDateOnly(ruleElement, "endDate", $"{prefix}.endDate", errors),
+                DaysOfWeek = ParkGraphUpsertProcessorOpeningHoursExtensions.ReadDaysOfWeek(ruleElement, $"{prefix}.daysOfWeek", errors),
+                IsClosed = ParkGraphUpsertProcessorJsonReadingExtensions.ReadBool(ruleElement, "isClosed") ?? false,
+                Labels = ParkGraphUpsertProcessorLocalizedTextExtensions.ReadLocalizedTexts(ParkGraphUpsertProcessorJsonReadingExtensions.GetArray(ruleElement, "labels")),
+                Reasons = ParkGraphUpsertProcessorLocalizedTextExtensions.ReadLocalizedTexts(ParkGraphUpsertProcessorJsonReadingExtensions.GetArray(ruleElement, "reasons")),
+                SortOrder = ParkGraphUpsertProcessorJsonReadingExtensions.ReadInt(ruleElement, "sortOrder") ?? index + 1,
+                TimeRanges = ParkGraphUpsertProcessorOpeningHoursExtensions.ReadOpeningHoursTimeRanges(ruleElement, $"{prefix}.timeRanges", errors),
+            };
+            rules.Add(rule);
+            index += 1;
+        }
+
+        return rules;
+    }
+
+    internal static List<ParkOpeningHoursWeeklyRule> ReadOpeningHoursWeeklyRules(JsonElement patch, List<string> errors)
+    {
+        List<ParkOpeningHoursWeeklyRule> rules = new List<ParkOpeningHoursWeeklyRule>();
+        JsonElement? rulesArray = ParkGraphUpsertProcessorJsonReadingExtensions.GetArray(patch, "weeklyRules");
+        if (rulesArray is null)
+        {
+            if (ParkGraphUpsertProcessorJsonReadingExtensions.HasProperty(patch, "weeklyRules"))
+            {
+                errors.Add("openingHours.weeklyRules doit être un tableau.");
+            }
+
+            return rules;
+        }
+
+        int index = 0;
+        foreach (JsonElement ruleElement in rulesArray.Value.EnumerateArray())
+        {
+            string prefix = $"openingHours.weeklyRules[{index}]";
+            if (ruleElement.ValueKind != JsonValueKind.Object)
+            {
+                errors.Add($"{prefix} doit être un objet.");
+                index += 1;
+                continue;
+            }
+
+            if (ruleElement.TryGetProperty("startDate", out _) || ruleElement.TryGetProperty("endDate", out _))
+            {
+                errors.Add($"{prefix} ne doit pas contenir de dates ; utiliser regularRules pour une période datée.");
+            }
+
+            ParkGraphUpsertProcessorOpeningHoursExtensions.AddLegacyLocalizedOpeningHoursErrors(ruleElement, prefix, errors);
+            ParkOpeningHoursWeeklyRule rule = new ParkOpeningHoursWeeklyRule
+            {
+                Id = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(ruleElement, "id"),
                 DaysOfWeek = ParkGraphUpsertProcessorOpeningHoursExtensions.ReadDaysOfWeek(ruleElement, $"{prefix}.daysOfWeek", errors),
                 IsClosed = ParkGraphUpsertProcessorJsonReadingExtensions.ReadBool(ruleElement, "isClosed") ?? false,
                 Labels = ParkGraphUpsertProcessorLocalizedTextExtensions.ReadLocalizedTexts(ParkGraphUpsertProcessorJsonReadingExtensions.GetArray(ruleElement, "labels")),
@@ -416,12 +465,13 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
         ParkGraphUpsertProcessorResolutionExtensions.AddChange(change, "openingHours.notes", existingSchedule?.Notes, normalizedSchedule.Notes);
         ParkGraphUpsertProcessorResolutionExtensions.AddChange(change, "openingHours.lastVerifiedAtUtc", existingSchedule?.LastVerifiedAtUtc, normalizedSchedule.LastVerifiedAtUtc);
         ParkGraphUpsertProcessorResolutionExtensions.AddChange(change, "openingHours.regularRules", ParkGraphUpsertProcessorOpeningHoursExtensions.DescribeOpeningHoursRules(existingSchedule?.RegularRules), ParkGraphUpsertProcessorOpeningHoursExtensions.DescribeOpeningHoursRules(normalizedSchedule.RegularRules));
+        ParkGraphUpsertProcessorResolutionExtensions.AddChange(change, "openingHours.weeklyRules", ParkGraphUpsertProcessorOpeningHoursExtensions.DescribeOpeningHoursWeeklyRules(existingSchedule?.WeeklyRules), ParkGraphUpsertProcessorOpeningHoursExtensions.DescribeOpeningHoursWeeklyRules(normalizedSchedule.WeeklyRules));
         ParkGraphUpsertProcessorResolutionExtensions.AddChange(change, "openingHours.dateOverrides", ParkGraphUpsertProcessorOpeningHoursExtensions.DescribeOpeningHoursDateOverrides(existingSchedule?.DateOverrides), ParkGraphUpsertProcessorOpeningHoursExtensions.DescribeOpeningHoursDateOverrides(normalizedSchedule.DateOverrides));
     }
 
     internal static bool HasOpeningHoursData(ParkOpeningHoursSchedule schedule)
     {
-        return schedule.RegularRules.Count > 0 || schedule.DateOverrides.Count > 0;
+        return schedule.RegularRules.Count > 0 || schedule.WeeklyRules.Count > 0 || schedule.DateOverrides.Count > 0;
     }
 
     internal static string DescribeOpeningHoursRules(IReadOnlyCollection<ParkOpeningHoursRule>? rules)
@@ -435,6 +485,20 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
         {
             string days = string.Join(",", rule.DaysOfWeek.OrderBy(static day => day));
             return string.Join("|", new[] { rule.Id ?? string.Empty, ParkGraphUpsertProcessorOpeningHoursExtensions.FormatOpeningHoursDate(rule.StartDate), ParkGraphUpsertProcessorOpeningHoursExtensions.FormatOpeningHoursDate(rule.EndDate), days, ParkGraphUpsertProcessorLocalizedTextExtensions.FormatValue(rule.IsClosed) ?? string.Empty, ParkGraphUpsertProcessorPatchingExtensions.DescribeLocalizedTextsForDiff(rule.Labels), ParkGraphUpsertProcessorPatchingExtensions.DescribeLocalizedTextsForDiff(rule.Reasons), ParkGraphUpsertProcessorLocalizedTextExtensions.FormatValue(rule.SortOrder) ?? string.Empty, ParkGraphUpsertProcessorOpeningHoursExtensions.DescribeOpeningHoursTimeRanges(rule.TimeRanges), });
+        }));
+    }
+
+    internal static string DescribeOpeningHoursWeeklyRules(IReadOnlyCollection<ParkOpeningHoursWeeklyRule>? rules)
+    {
+        if (rules is null || rules.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        return string.Join(" || ", rules.OrderBy(static rule => rule.SortOrder).Select(static rule =>
+        {
+            string days = string.Join(",", rule.DaysOfWeek.OrderBy(static day => day));
+            return string.Join("|", new[] { rule.Id ?? string.Empty, days, ParkGraphUpsertProcessorLocalizedTextExtensions.FormatValue(rule.IsClosed) ?? string.Empty, ParkGraphUpsertProcessorPatchingExtensions.DescribeLocalizedTextsForDiff(rule.Labels), ParkGraphUpsertProcessorPatchingExtensions.DescribeLocalizedTextsForDiff(rule.Reasons), ParkGraphUpsertProcessorLocalizedTextExtensions.FormatValue(rule.SortOrder) ?? string.Empty, ParkGraphUpsertProcessorOpeningHoursExtensions.DescribeOpeningHoursTimeRanges(rule.TimeRanges), });
         }));
     }
 

@@ -43,6 +43,7 @@ internal static class StandaloneAttractionPublicTextQuality
                     || ForbiddenOffers(snapshot.AdmissionOffers, snapshot.AnnualPasses, snapshot.ParkingOffers, snapshot.CreditOffers))))
             || (hours is not null && (Structured(new[] { hours.Notes })
                 || hours.RegularRules.Any(static rule => Structured(rule.Labels.Concat(rule.Reasons)))
+                || hours.WeeklyRules.Any(static rule => Structured(rule.Labels.Concat(rule.Reasons)))
                 || hours.DateOverrides.Any(static day => Structured(day.Labels.Concat(day.Reasons)))));
     }
 

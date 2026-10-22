@@ -7949,7 +7949,10 @@
       "parkTimeZone": "Fuseau du parc",
       "visitorTimeZone": "Ton fuseau : {{ timeZone }}",
       "viewAll": "Voir toutes les dates et horaires",
-      "loading": "Chargement des horaires"
+      "loading": "Chargement des horaires",
+      "weeklyTitle": "Horaires habituels",
+      "weeklyHint": "Horaires habituels, susceptibles de varier selon la date.",
+      "viewSource": "Consulter la source des horaires"
     },
     "page": {
       "kicker": "Dates et horaires",

@@ -73,7 +73,7 @@ export class StandaloneAttractionVisitorInformationFacade {
             return;
           }
 
-          if (!this.hasCurrentOrFutureOpening(calendar)) {
+          if (!calendar.weeklyRules?.length && !this.hasCurrentOrFutureOpening(calendar)) {
             this.loadOpeningHoursNextOpeningWindow(attractionId, calendar);
             return;
           }

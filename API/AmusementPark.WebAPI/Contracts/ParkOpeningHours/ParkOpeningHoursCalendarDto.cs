@@ -4,6 +4,8 @@ namespace AmusementPark.WebAPI.Contracts.ParkOpeningHours;
 
 public sealed class ParkOpeningHoursCalendarDto
 {
+    public IReadOnlyCollection<ParkOpeningHoursWeeklyRuleDto> WeeklyRules { get; set; } = Array.Empty<ParkOpeningHoursWeeklyRuleDto>();
+
     public string ParkId { get; set; } = string.Empty;
 
     public string TimeZoneId { get; set; } = string.Empty;

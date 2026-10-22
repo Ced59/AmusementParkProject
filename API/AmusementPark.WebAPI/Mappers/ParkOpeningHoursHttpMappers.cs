@@ -37,6 +37,7 @@ internal static class ParkOpeningHoursHttpMappers
         Dictionary<string, List<string>> errors)
     {
         IReadOnlyCollection<ParkOpeningHoursRuleDto> regularRules = dto.RegularRules ?? Array.Empty<ParkOpeningHoursRuleDto>();
+        IReadOnlyCollection<ParkOpeningHoursWeeklyRuleDto> weeklyRules = dto.WeeklyRules ?? Array.Empty<ParkOpeningHoursWeeklyRuleDto>();
         IReadOnlyCollection<ParkOpeningHoursDateOverrideDto> dateOverrides = dto.DateOverrides ?? Array.Empty<ParkOpeningHoursDateOverrideDto>();
 
         return new ParkOpeningHoursSchedule
@@ -47,6 +48,7 @@ internal static class ParkOpeningHoursHttpMappers
             Notes = NormalizeOptionalString(dto.Notes),
             LastVerifiedAtUtc = dto.LastVerifiedAtUtc,
             RegularRules = regularRules.Select((rule, index) => rule.ToDomain(errors, $"regularRules[{index}]")).ToList(),
+            WeeklyRules = weeklyRules.Select((rule, index) => rule.ToDomain(errors, $"weeklyRules[{index}]")).ToList(),
             DateOverrides = dateOverrides.Select((dateOverride, index) => dateOverride.ToDomain(errors, $"dateOverrides[{index}]")).ToList(),
         };
     }
@@ -65,6 +67,7 @@ internal static class ParkOpeningHoursHttpMappers
             CreatedAtUtc = result.CreatedAtUtc,
             UpdatedAtUtc = result.UpdatedAtUtc,
             RegularRules = result.RegularRules.Select(static rule => rule.ToHttp()).ToList(),
+            WeeklyRules = result.WeeklyRules.Select(static rule => rule.ToHttp()).ToList(),
             DateOverrides = result.DateOverrides.Select(static dateOverride => dateOverride.ToHttp()).ToList(),
         };
     }
@@ -83,6 +86,7 @@ internal static class ParkOpeningHoursHttpMappers
             CreatedAtUtc = schedule.CreatedAtUtc,
             UpdatedAtUtc = schedule.UpdatedAtUtc,
             RegularRules = schedule.RegularRules.Select(static rule => rule.ToHttp()).ToList(),
+            WeeklyRules = schedule.WeeklyRules.Select(static rule => rule.ToHttp()).ToList(),
             DateOverrides = schedule.DateOverrides.Select(static dateOverride => dateOverride.ToHttp()).ToList(),
         };
     }
@@ -104,6 +108,7 @@ internal static class ParkOpeningHoursHttpMappers
             FromDate = FormatDate(result.FromDate),
             ToDate = FormatDate(result.ToDate),
             Days = result.Days.Select(static day => day.ToHttp()).ToList(),
+            WeeklyRules = result.WeeklyRules.Select(static rule => rule.ToHttp()).ToList(),
         };
     }
 
@@ -117,6 +122,25 @@ internal static class ParkOpeningHoursHttpMappers
             Id = NormalizeOptionalString(dto.Id),
             StartDate = ParseDateOrDefault(dto.StartDate),
             EndDate = ParseDateOrDefault(dto.EndDate),
+            DaysOfWeek = ParseDaysOfWeek(dto.DaysOfWeek, $"{fieldPrefix}.daysOfWeek", errors),
+            IsClosed = dto.IsClosed,
+            Labels = dto.Labels.ToDomain(),
+            Reasons = dto.Reasons.ToDomain(),
+            SortOrder = dto.SortOrder,
+            TimeRanges = (dto.TimeRanges ?? Array.Empty<ParkOpeningHoursTimeRangeDto>())
+                .Select((timeRange, index) => timeRange.ToDomain(errors, $"{fieldPrefix}.timeRanges[{index}]"))
+                .ToList(),
+        };
+    }
+
+    private static ParkOpeningHoursWeeklyRule ToDomain(
+        this ParkOpeningHoursWeeklyRuleDto dto,
+        Dictionary<string, List<string>> errors,
+        string fieldPrefix)
+    {
+        return new ParkOpeningHoursWeeklyRule
+        {
+            Id = NormalizeOptionalString(dto.Id),
             DaysOfWeek = ParseDaysOfWeek(dto.DaysOfWeek, $"{fieldPrefix}.daysOfWeek", errors),
             IsClosed = dto.IsClosed,
             Labels = dto.Labels.ToDomain(),
@@ -239,6 +263,20 @@ internal static class ParkOpeningHoursHttpMappers
         };
     }
 
+    private static ParkOpeningHoursWeeklyRuleDto ToHttp(this ParkOpeningHoursWeeklyRuleResult result)
+    {
+        return new ParkOpeningHoursWeeklyRuleDto
+        {
+            Id = result.Id,
+            DaysOfWeek = result.DaysOfWeek.Select(static day => day.ToString()).ToList(),
+            IsClosed = result.IsClosed,
+            Labels = result.Labels.ToHttp(),
+            Reasons = result.Reasons.ToHttp(),
+            SortOrder = result.SortOrder,
+            TimeRanges = result.TimeRanges.Select(static timeRange => timeRange.ToHttp()).ToList(),
+        };
+    }
+
     private static ParkOpeningHoursDateOverrideDto ToHttp(this ParkOpeningHoursDateOverrideResult result)
     {
         return new ParkOpeningHoursDateOverrideDto
@@ -258,6 +296,20 @@ internal static class ParkOpeningHoursHttpMappers
             Id = rule.Id,
             StartDate = FormatDate(rule.StartDate),
             EndDate = FormatDate(rule.EndDate),
+            DaysOfWeek = rule.DaysOfWeek.Select(static day => day.ToString()).ToList(),
+            IsClosed = rule.IsClosed,
+            Labels = rule.Labels.ToHttp(),
+            Reasons = rule.Reasons.ToHttp(),
+            SortOrder = rule.SortOrder,
+            TimeRanges = rule.TimeRanges.Select(static timeRange => timeRange.ToHttp()).ToList(),
+        };
+    }
+
+    private static ParkOpeningHoursWeeklyRuleDto ToHttp(this ParkOpeningHoursWeeklyRule rule)
+    {
+        return new ParkOpeningHoursWeeklyRuleDto
+        {
+            Id = rule.Id,
             DaysOfWeek = rule.DaysOfWeek.Select(static day => day.ToString()).ToList(),
             IsClosed = rule.IsClosed,
             Labels = rule.Labels.ToHttp(),

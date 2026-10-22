@@ -35,14 +35,57 @@ describe('ParkOpeningHoursCardComponent', () => {
           parkTimeZone: 'Fuseau du parc',
           visitorTimeZone: 'Ton fuseau : {{ timeZone }}',
           viewAll: 'Voir toutes les dates et horaires',
-          loading: 'Chargement des horaires'
-        }
+          loading: 'Chargement des horaires',
+          weeklyTitle: 'Horaires habituels',
+          weeklyHint: 'Horaires habituels, susceptibles de varier selon la date.',
+          viewSource: 'Consulter la source des horaires'
+        },
+        page: { notDefined: 'Non renseigné', closed: 'Fermé' }
       }
     });
     translateService.use('fr');
 
     fixture = TestBed.createComponent(ParkOpeningHoursCardComponent);
     component = fixture.componentInstance;
+  });
+
+  it('shows usual weekly hours without inventing today status or a missing Monday closure', () => {
+    const calendar: ParkOpeningHoursCalendar = createCalendar([]);
+    calendar.weeklyRules = [{
+      id: 'usual', daysOfWeek: ['Tuesday'], isClosed: false, sortOrder: 1,
+      timeRanges: [createRange('11:00', '20:00')]
+    }];
+    component.calendar = calendar;
+    component.openingHoursLink = ['/fr/park/park-1/hours'];
+    setNow(component, new Date('2026-10-27T12:00:00Z'));
+
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const rows: Element[] = Array.from(host.querySelectorAll('.park-opening-hours-card__weekly > div'));
+    expect(rows).toHaveLength(7);
+    expect(rows[0].textContent).toContain('lundi');
+    expect(rows[0].textContent).toContain('Non renseigné');
+    expect(rows[1].textContent).toContain('11:00 - 20:00');
+    expect(readText(fixture)).toContain('Horaires habituels');
+    expect(readText(fixture)).not.toContain('Ouvert en ce moment');
+    expect(readText(fixture)).not.toContain('Fermé en ce moment');
+    expect(host.querySelector('.park-opening-hours-card__status')).toBeNull();
+    expect(host.querySelector('a[ng-reflect-router-link]')).toBeNull();
+  });
+
+  it('keeps a dated closure authoritative beside usual weekly hours', () => {
+    setNow(component, new Date('2026-10-27T12:00:00Z'));
+    const closed: ParkOpeningHoursDay = { ...createOpenDay('2026-10-27', '11:00', '20:00'), isClosed: true, timeRanges: [] };
+    const calendar: ParkOpeningHoursCalendar = createCalendar([closed]);
+    calendar.weeklyRules = [{ daysOfWeek: ['Tuesday'], isClosed: false, sortOrder: 1, timeRanges: [createRange('11:00', '20:00')] }];
+    component.calendar = calendar;
+
+    fixture.detectChanges();
+
+    expect(readText(fixture)).toContain('Fermé en ce moment');
+    expect(readText(fixture)).toContain('11:00 - 20:00');
+    expect(readText(fixture)).toContain('Horaires habituels');
   });
 
   it('uses the park time zone to resolve today and open-now status', () => {

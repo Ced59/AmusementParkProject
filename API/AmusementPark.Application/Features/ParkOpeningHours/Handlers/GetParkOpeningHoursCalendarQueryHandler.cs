@@ -45,7 +45,7 @@ public sealed class GetParkOpeningHoursCalendarQueryHandler : IQueryHandler<GetP
         }
 
         ParkOpeningHoursSchedule? schedule = await this.openingHoursRepository.GetByParkIdAsync(parkId, cancellationToken);
-        if (schedule is null || (schedule.RegularRules.Count == 0 && schedule.DateOverrides.Count == 0))
+        if (schedule is null || (schedule.RegularRules.Count == 0 && schedule.WeeklyRules.Count == 0 && schedule.DateOverrides.Count == 0))
         {
             return ApplicationResult<ParkOpeningHoursCalendarResult>.Failure(ParkOpeningHoursApplicationErrors.ScheduleNotFound());
         }

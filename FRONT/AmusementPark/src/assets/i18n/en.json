@@ -7949,7 +7949,10 @@
       "parkTimeZone": "Park time",
       "visitorTimeZone": "Your time zone: {{ timeZone }}",
       "viewAll": "View all dates and hours",
-      "loading": "Loading hours"
+      "loading": "Loading hours",
+      "weeklyTitle": "Usual opening hours",
+      "weeklyHint": "Usual hours may vary on specific dates.",
+      "viewSource": "View the opening-hours source"
     },
     "page": {
       "kicker": "Dates and hours",

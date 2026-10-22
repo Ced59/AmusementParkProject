@@ -7949,7 +7949,10 @@
       "parkTimeZone": "Parkzeit",
       "visitorTimeZone": "Deine Zeitzone: {{ timeZone }}",
       "viewAll": "Alle Daten und Zeiten ansehen",
-      "loading": "Zeiten werden geladen"
+      "loading": "Zeiten werden geladen",
+      "weeklyTitle": "Übliche Öffnungszeiten",
+      "weeklyHint": "Die üblichen Öffnungszeiten können an einzelnen Tagen abweichen.",
+      "viewSource": "Quelle der Öffnungszeiten ansehen"
     },
     "page": {
       "kicker": "Daten und Zeiten",

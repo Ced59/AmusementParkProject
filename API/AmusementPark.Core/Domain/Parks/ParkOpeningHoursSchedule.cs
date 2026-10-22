@@ -20,6 +20,8 @@ public sealed class ParkOpeningHoursSchedule
 
     public List<ParkOpeningHoursRule> RegularRules { get; set; } = new();
 
+    public List<ParkOpeningHoursWeeklyRule> WeeklyRules { get; set; } = new();
+
     public List<ParkOpeningHoursDateOverride> DateOverrides { get; set; } = new();
 
     public List<ParkOpeningHoursCoverageSegment> CoverageSegments { get; set; } = new();

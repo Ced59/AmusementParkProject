@@ -72,6 +72,19 @@ describe('StandaloneAttractionVisitorInformationFacade', () => {
     expect(openingHoursRanges).toEqual([{ from: '2026-09-28', to: '2026-10-14' }]);
   });
 
+  it('keeps undated weekly hours without requesting an artificial future window', () => {
+    facade.load('standalone-1');
+    const calendar: ParkOpeningHoursCalendar = createOpeningHours([]);
+    calendar.weeklyRules = [{ daysOfWeek: ['Tuesday'], isClosed: false, sortOrder: 1, timeRanges: [{ opensAt: '11:00', closesAt: '20:00', closesNextDay: false, lastAdmissionNextDay: false }] }];
+
+    openingHoursResponses.get('standalone-1')?.next(calendar);
+
+    expect(openingHoursRanges).toHaveLength(1);
+    expect(facade.openingHours()).toEqual(calendar);
+    expect(facade.openingHoursState().kind).toBe('ready');
+    expect(facade.openingHours()?.days).toEqual([]);
+  });
+
   it('loads a separate bounded lookahead only when the preview has no opening', () => {
     facade.load('standalone-1');
     const previewResponse: Subject<ParkOpeningHoursCalendar> = openingHoursResponses.get('standalone-1')!;
