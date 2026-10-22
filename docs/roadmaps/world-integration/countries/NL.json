@@ -6,10 +6,11 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 147,
+  "sourceObservationCount": 149,
   "sourceFamilies": [
     "AmusementForce",
     "Brogent — projet constructeur",
+    "Découverte complémentaire — site officiel",
     "EAZA",
     "RCDB",
     "RCDB — Mountain Coaster",
@@ -23,7 +24,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 6 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 6 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -1724,6 +1726,61 @@
       "countryResolution": null
     },
     {
+      "entryId": "NL-candidate-discovery-1825dcfb286f92",
+      "name": "Euroscoop — Euromast",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique rotative",
+      "locality": "Rotterdam",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Euromast",
+        "Euroscoop"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.magnicity.com/euroscoop/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Euroscoop — Euromast",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.magnicity.com/euroscoop/",
+            "family": "Tour panoramique rotative",
+            "sourceVenueName": "Euroscoop — Euromast",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Rotterdam"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "NL-park-2567c7b2-5312-4c6b-ad90-1c84330738ca",
       "name": "Familiepark Drievliet",
       "entityKind": "Park",
@@ -3201,6 +3258,61 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "NL-candidate-discovery-80445428d4593e",
+      "name": "Over the Edge — A’DAM LOOKOUT",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire mécanique",
+      "locality": "Amsterdam",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Over the Edge",
+        "ADAM LOOKOUT"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.adamlookout.com/en/over-the-edge/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Over the Edge — A’DAM LOOKOUT",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.adamlookout.com/en/over-the-edge/",
+            "family": "Balançoire mécanique",
+            "sourceVenueName": "Over the Edge — A’DAM LOOKOUT",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Amsterdam"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "NL-park-f14f8115-0296-4a27-a59d-26803a021297",

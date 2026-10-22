@@ -6,10 +6,13 @@
   "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
   "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 2595,
+  "sourceObservationCount": 2621,
   "sourceFamilies": [
+    "ADG — Project Book",
     "AZA",
+    "Aerophile — références constructeur",
     "Brogent — projet constructeur",
+    "Découverte complémentaire — site officiel",
     "Intamin — référence constructeur",
     "RCDB",
     "RCDB — Mountain Coaster",
@@ -25,7 +28,9 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 17 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
   ],
   "entries": [
     {
@@ -929,6 +934,126 @@
           }
         ],
         "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-1c83a2f0c59e07",
+      "name": "Aérophare Branson",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aérophare",
+      "locality": "Branson, Missouri",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Aerophare Branson Branson, Missouri, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/aerophare-branson/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Aérophare Branson",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/aerophare-branson/",
+            "family": "Aérophare",
+            "sourceVenueName": "Aérophare Branson",
+            "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Branson, Missouri",
+            "referenceId": "aerophile-aerophare-branson"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-2f0e2b642d783e",
+      "name": "Aerophile — Disney Springs",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Lake Buena Vista, Floride",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Disney® Springs Orlando, Florida, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/disney-springs/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Aerophile — Disney Springs",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/disney-springs/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Aerophile — Disney Springs",
+            "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Lake Buena Vista, Floride",
+            "referenceId": "aerophile-disney-springs"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
       }
     },
     {
@@ -5612,6 +5737,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13332.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — Project Book",
+          "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "US",
@@ -5629,6 +5759,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Charlemont , Massachusetts",
             "sourceOpenedYear": "2014"
+          },
+          {
+            "name": "Thunderbolt Mountain Coaster",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Berkshire East",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
@@ -7095,6 +7234,65 @@
       }
     },
     {
+      "entryId": "US-candidate-discovery-55ed55ebafc04f",
+      "name": "Branson Missouri, USA",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Branson Missouri, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/branson/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Branson Missouri, USA",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/branson/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Branson Missouri, USA",
+            "sourceLifecycleSignal": "Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-branson"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "US-park-69cfb570-9e13-444e-b186-1832a35a4b0e",
       "name": "Branson Mountain Adventure Park",
       "entityKind": "Park",
@@ -7136,6 +7334,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13674.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — Project Book",
+          "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "US",
@@ -7153,6 +7356,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Branson , Missouri",
             "sourceOpenedYear": "2016"
+          },
+          {
+            "name": "Runaway Mountain Coaster",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Branson Mountain Adventure Park",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
@@ -8767,6 +8979,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13334.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — Project Book",
+          "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "US",
@@ -8784,6 +9001,24 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Tannersville , Pennsylvania",
             "sourceOpenedYear": "2012"
+          },
+          {
+            "name": "Appalachian Express Mountain Coaster",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Camelback Mountain Adventures",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          },
+          {
+            "name": "Mountain Slide",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Luge d’été",
+            "sourceVenueName": "Camelback Mountain Adventures",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
@@ -11799,6 +12034,66 @@
       "countryResolution": null
     },
     {
+      "entryId": "US-candidate-discovery-986050df229e5c",
+      "name": "Cloud Nine Balloon",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Las Vegas, Nevada",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Cloud Nine Las Vegas, Nevada, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/cloud-nine/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Cloud Nine Balloon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/cloud-nine/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Cloud Nine Balloon",
+            "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Las Vegas, Nevada",
+            "referenceId": "aerophile-cloud-nine"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "US-candidate-eef7527d52d0a2",
       "name": "Clown Town Kiddieland",
       "entityKind": "Park",
@@ -12857,6 +13152,65 @@
       ]
     },
     {
+      "entryId": "US-candidate-discovery-a5aab2233c3aa1",
+      "name": "Conner Prairie Fishers, Indiana, USA",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Conner Prairie Fishers, Indiana, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/conner-prairie/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Conner Prairie Fishers, Indiana, USA",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/conner-prairie/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Conner Prairie Fishers, Indiana, USA",
+            "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-conner-prairie"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "US-candidate-b45bcb832f0cd0",
       "name": "Cool Runnings Alpine Coaster",
       "entityKind": "ToQualify",
@@ -12994,6 +13348,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/15046.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — Project Book",
+          "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "US",
@@ -13011,6 +13370,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Frisco , Colorado",
             "sourceOpenedYear": "2017"
+          },
+          {
+            "name": "Rocky Mountain Coaster",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Copper Mountain",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
@@ -18984,7 +19352,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Site officiel (attraction autonome)",
@@ -18995,8 +19363,19 @@
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
         "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "attractions": [
+          {
+            "name": "Flyover Chicago",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.experienceflyover.com/chicago/",
+            "family": "Flying theatre",
+            "sourceVenueName": "Flyover Chicago",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Chicago, Illinois"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
       }
     },
     {
@@ -19020,7 +19399,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Site officiel (attraction autonome)",
@@ -19031,8 +19410,19 @@
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
         "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "attractions": [
+          {
+            "name": "Flyover Las Vegas",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.experienceflyover.com/lasvegas/",
+            "family": "Flying theatre",
+            "sourceVenueName": "Flyover Las Vegas",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Las Vegas, Nevada"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
       }
     },
     {
@@ -23671,6 +24061,66 @@
       ]
     },
     {
+      "entryId": "US-candidate-discovery-177cb9d986d45d",
+      "name": "Great Park Balloon",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Irvine, Californie",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Orange County Great Park Irvine, California, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/orange-county-great-park/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Great Park Balloon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/orange-county-great-park/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Great Park Balloon",
+            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Irvine, Californie",
+            "referenceId": "aerophile-orange-county-great-park"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "US-candidate-60eab4ca395e4e",
       "name": "Great Plains Zoo",
       "entityKind": "Park",
@@ -28144,7 +28594,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -28155,10 +28605,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/4750.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://skyfly.com/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "US",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "SkyFly: Soar America",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://skyfly.com/",
+            "family": "Flying theatre",
+            "sourceVenueName": "Island in Pigeon Forge",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Pigeon Forge, Tennessee"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "US-candidate-d1a763d3077ab3",
@@ -29199,6 +29671,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13314.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — Project Book",
+          "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
@@ -29214,6 +29691,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Hancock , Massachusetts",
             "sourceOpenedYear": "2006"
+          },
+          {
+            "name": "Mountain Slide",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Luge d’été",
+            "sourceVenueName": "Jiminy Peak Mountain Resort",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
@@ -31328,6 +31814,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13330.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — Project Book",
+          "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
@@ -31343,6 +31834,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Killington , Vermont",
             "sourceOpenedYear": "2015"
+          },
+          {
+            "name": "Beast Mountain Coaster",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Killington Resort",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
@@ -34173,6 +34673,66 @@
       ]
     },
     {
+      "entryId": "US-candidate-discovery-8d6a169eda0b6a",
+      "name": "LIFTOFF — AREA15",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aerobar / plateforme panoramique",
+      "locality": "Las Vegas, Nevada",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2022 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Liftoff Las Vegas Las Vegas, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/liftoff-las-vegas/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "LIFTOFF — AREA15",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/liftoff-las-vegas/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "LIFTOFF — AREA15",
+            "sourceLifecycleSignal": "Référence constructeur datée 2022 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Las Vegas, Nevada",
+            "referenceId": "aerophile-liftoff-las-vegas"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "US-candidate-9c80bedfcbe600",
       "name": "Lincoln Beach",
       "entityKind": "Park",
@@ -34545,6 +35105,66 @@
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null
+    },
+    {
+      "entryId": "US-candidate-discovery-102dc369dc0574",
+      "name": "Live on Air Fallsview Balloon",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Niagara Falls, New York",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2024 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Niagara Falls Niagara Falls, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/niagara-falls/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Live on Air Fallsview Balloon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/niagara-falls/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Live on Air Fallsview Balloon",
+            "sourceLifecycleSignal": "Référence constructeur datée 2024 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Niagara Falls, New York",
+            "referenceId": "aerophile-niagara-falls"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "US-candidate-33f0231a2c509d",
@@ -38934,6 +39554,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/17885.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — Project Book",
+          "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
@@ -38949,6 +39574,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Lake Placid , New York",
             "sourceOpenedYear": "2020"
+          },
+          {
+            "name": "Cliffside Coaster",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Mount Van Hoevenberg",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
@@ -43835,11 +44469,13 @@
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Margaritaville’s Paradise Pier Biloxi, Mississippi USA"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -43855,10 +44491,37 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#United_States",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/margaritavilles-paradise-pier-biloxi/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "US",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Margaritaville’s Paradise Pier Biloxi, Mississippi USA",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/margaritavilles-paradise-pier-biloxi/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "Paradise Pier",
+            "sourceLifecycleSignal": "Référence constructeur datée 2023 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-margaritavilles-paradise-pier-biloxi"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "US-candidate-472c24923c12e9",
@@ -45032,6 +45695,65 @@
           }
         ],
         "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-51a20a3e03f8b3",
+      "name": "Pigeon Forge Tennessee, USA",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2012 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Pigeon Forge Tennessee, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/pigeon-forge/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Pigeon Forge Tennessee, USA",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/pigeon-forge/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Pigeon Forge Tennessee, USA",
+            "sourceLifecycleSignal": "Référence constructeur datée 2012 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-pigeon-forge"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
       }
     },
     {
@@ -46710,6 +47432,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/16692.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "ADG — Project Book",
+          "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
@@ -46725,6 +47452,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Durango , Colorado",
             "sourceOpenedYear": "2018"
+          },
+          {
+            "name": "Inferno Mountain Coaster",
+            "source": "ADG — Project Book",
+            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Purgatory Resort",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
@@ -50376,11 +51112,13 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "San Diego Zoo Safari Park San Diego, California, USA"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "WAZA",
@@ -50396,8 +51134,35 @@
           "label": "AZA",
           "url": "https://www.aza.org/current-accreditation-list",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/san-diego-zoo-safari-park/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "San Diego Zoo Safari Park San Diego, California, USA",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/san-diego-zoo-safari-park/",
+            "family": "Ballon captif",
+            "sourceVenueName": "San Diego Zoo Safari Park",
+            "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-san-diego-zoo-safari-park"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "US-candidate-578b75a22c2f19",
@@ -60737,6 +61502,61 @@
       ]
     },
     {
+      "entryId": "US-candidate-discovery-15a41c387081bc",
+      "name": "TILT — 360 CHICAGO",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme mécanique inclinable",
+      "locality": "Chicago, Illinois",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "TILT Chicago",
+        "360 CHICAGO"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://360chicago.com/tilt-c",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "TILT — 360 CHICAGO",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://360chicago.com/tilt-c",
+            "family": "Plateforme mécanique inclinable",
+            "sourceVenueName": "TILT — 360 CHICAGO",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Chicago, Illinois"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "US-candidate-c11d93de9ad740",
       "name": "Tilt Studio",
       "entityKind": "Park",
@@ -63030,6 +63850,66 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "US-candidate-discovery-ac0d74ab9149c8",
+      "name": "Virgin Balloon — Birch Run",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Birch Run, Michigan",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 1998 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Virgin Birch Run, Michigan, USA"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/virgin/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Virgin Balloon — Birch Run",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/virgin/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Virgin Balloon — Birch Run",
+            "sourceLifecycleSignal": "Référence constructeur datée 1998 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Birch Run, Michigan",
+            "referenceId": "aerophile-virgin"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "US-candidate-7de0db5772b82a",
@@ -67087,6 +67967,58 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "US-candidate-discovery-ec2477b8468fba",
+      "name": "Wings Over Washington",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Flying theatre",
+      "locality": "Seattle, Washington",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.wingsoverwa.com/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Wings Over Washington",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.wingsoverwa.com/",
+            "family": "Flying theatre",
+            "sourceVenueName": "Wings Over Washington",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Seattle, Washington"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "US-candidate-147948ad08cd4b",

@@ -6,10 +6,12 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 111,
+  "sourceObservationCount": 117,
   "sourceFamilies": [
     "AZA",
+    "Aerophile — références constructeur",
     "AmusementForce",
+    "Découverte complémentaire — site officiel",
     "EAZA",
     "Intamin — référence constructeur",
     "RCDB",
@@ -25,7 +27,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 4 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 4 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -1121,6 +1124,125 @@
       "countryResolution": null
     },
     {
+      "entryId": "AE-candidate-discovery-77af89ca2a2cee",
+      "name": "Flying Cup – Colina Abu Dhabi, United Arab Emirates",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aerobar / plateforme panoramique",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2023 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Flying Cup – Colina Abu Dhabi, United Arab Emirates"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/colina-2/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Flying Cup – Colina Abu Dhabi, United Arab Emirates",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/colina-2/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "Flying Cup – Colina Abu Dhabi, United Arab Emirates",
+            "sourceLifecycleSignal": "Référence constructeur datée 2023 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-colina-2"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
+      "entryId": "AE-candidate-discovery-f48bb3ba7d5b9b",
+      "name": "Flying Cup Dubai",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aerobar / plateforme panoramique",
+      "locality": "Jumeirah Beach Residence, Dubaï",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2018 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Flying Cup – Colina Jumeirah Beach Resort, Dubaï"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/colina/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Flying Cup Dubai",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/colina/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "Flying Cup Dubai",
+            "sourceLifecycleSignal": "Référence constructeur datée 2018 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Jumeirah Beach Residence, Dubaï",
+            "referenceId": "aerophile-colina"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "AE-candidate-4aa904a955237c",
       "name": "Foton World",
       "entityKind": "Park",
@@ -1551,6 +1673,65 @@
       ]
     },
     {
+      "entryId": "AE-candidate-discovery-e111fc4e3b9a5f",
+      "name": "Ibn Battuta Mall Dubaï, United Arab Emirates",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Ibn Battuta Mall Dubaï, United Arab Emirates"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/ibn-battuta-mall/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ibn Battuta Mall Dubaï, United Arab Emirates",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/ibn-battuta-mall/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ibn Battuta Mall Dubaï, United Arab Emirates",
+            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-ibn-battuta-mall"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "AE-candidate-14d455dd226ec6",
       "name": "Iceland Water Park",
       "entityKind": "Park",
@@ -1715,7 +1896,7 @@
       "entryId": "AE-park-901b44bd-4e40-46b2-8a6a-afeaffee17d3",
       "name": "Jebel Jais",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "901b44bd-4e40-46b2-8a6a-afeaffee17d3",
@@ -1732,7 +1913,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1742,6 +1923,11 @@
         {
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=200#location-id-2120",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://visitjebeljais.com/blog/day-trips-dubai-jebel-jais-mountain-views",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -1758,9 +1944,19 @@
             "family": "Alpine coaster",
             "sourceVenueName": "Jebel Jais",
             "referenceId": "location-id-2120"
+          },
+          {
+            "name": "Jais Flight",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://visitjebeljais.com/blog/day-trips-dubai-jebel-jais-mountain-views",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Jebel Jais",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Jebel Jais, Ras al-Khaimah"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
       }
     },
     {
@@ -2924,6 +3120,65 @@
       ]
     },
     {
+      "entryId": "AE-candidate-discovery-2e3c4377ca5ef9",
+      "name": "The Dubai Balloon at Atlantis Dubai, United Arab Emirates",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2023 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "The Dubai Balloon at Atlantis Dubai, United Arab Emirates"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/the-dubai-balloon-at-atlantis/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "The Dubai Balloon at Atlantis Dubai, United Arab Emirates",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/the-dubai-balloon-at-atlantis/",
+            "family": "Ballon captif",
+            "sourceVenueName": "The Dubai Balloon at Atlantis Dubai, United Arab Emirates",
+            "sourceLifecycleSignal": "Référence constructeur datée 2023 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-the-dubai-balloon-at-atlantis"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "AE-candidate-dd07228f47bc25",
       "name": "The Green Planet",
       "entityKind": "Park",
@@ -3288,6 +3543,60 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "AE-candidate-discovery-fa74bdc4d250e2",
+      "name": "XLine Dubai Marina",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne fixe",
+      "locality": "Dubaï",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "XLine"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.xdubai.com/x-line",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "XLine Dubai Marina",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.xdubai.com/x-line",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "XLine Dubai Marina",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Dubaï"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "AE-park-b8c138df-fccd-4b76-8eed-ed687b94c1d3",

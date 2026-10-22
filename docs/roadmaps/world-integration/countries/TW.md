@@ -10,11 +10,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 3 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
+- Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 6 |
-| À qualifier | 46 |
+| À qualifier | 47 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -22,13 +23,13 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **64**. Sources : Brogent — projet constructeur, Intamin — référence constructeur, RCDB, Wiegand — références constructeur, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **65**. Sources : Aerophile — références constructeur, Brogent — projet constructeur, Intamin — référence constructeur, RCDB, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **6** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **0 publiés**, **6 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **36 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **8 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **8 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **6 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -53,6 +54,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | TW-candidate-b9ccfa86148e35 | Hsinchu Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Taiwan) |
 | TW-candidate-standalone-c86b2c13603ebd | i-Ride TAIPEI | — | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : IndependentCandidate. Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Installations référencées : i-Ride TAIPEI. [Brogent — projet constructeur](https://www.brogent.com/EN/i-Ride-TAIPEI-cv-7.html) |
 | TW-park-b7c167b6-0c1c-405b-94c7-67eed22b5f27 | Janfusun Fancyworld | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/5044.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Taiwan) |
+| TW-candidate-discovery-7d198137c42e9a | Jioujioufeng Helium Balloon | Nantou | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Jioujioufeng Helium Balloon. Signal source : Référence constructeur datée 2026 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/nantou-county-government/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
 | TW-candidate-d04f792843150d | Kaohsiung Eye | Dream Mall , Kaohsiung | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
 | TW-candidate-5e4f0d4c689c2f | Katoli's World | Dakeng , Taichung | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5948.htm) |
 | TW-candidate-67513e871dce34 | Leefoo Village Theme park and zoo | — | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Correspondance possible : Leofoo Village Theme Park (bfeb1a05-fbdb-4bf8-8be8-2efa692d283c). [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Taiwan) |

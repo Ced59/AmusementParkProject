@@ -6,12 +6,13 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 92,
+  "sourceObservationCount": 95,
   "sourceFamilies": [
     "AmusementForce",
     "EAZA",
     "RCDB",
     "RCDB — Mountain Coaster",
+    "Sunkid — archive de projets",
     "Sunkid — projet constructeur",
     "Wiegand — références constructeur",
     "Wikipédia (découverte)"
@@ -22,7 +23,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 29 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 29 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Contrôle supplémentaire alpine coasters : 3 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
   ],
   "entries": [
     {
@@ -1136,6 +1138,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/20299.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-durau/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
@@ -1153,6 +1160,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Ceahlău , Neamț",
             "sourceOpenedYear": "2020"
+          },
+          {
+            "name": "Mountain Coaster — Durau Park",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-durau/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Durau Park",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
@@ -1309,6 +1325,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/24447.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/romanias-longest-mountain-coaster-boosts-year-round-tourism-in-sinaia/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
@@ -1324,6 +1345,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Sinaia , Prahova",
             "sourceOpenedYear": "2025"
+          },
+          {
+            "name": "Mountain Coaster — Gondola Sinaia",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/romanias-longest-mountain-coaster-boosts-year-round-tourism-in-sinaia/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Gondola Sinaia",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
@@ -2416,6 +2446,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/20301.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-borsec/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "RO",
@@ -2433,6 +2468,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Borsec , Harghita",
             "sourceOpenedYear": "2020"
+          },
+          {
+            "name": "Mountain Coaster — Speranța Ski Complex",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-borsec/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Speranța Ski Complex",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."

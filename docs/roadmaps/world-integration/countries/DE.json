@@ -6,8 +6,9 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 1051,
+  "sourceObservationCount": 1057,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "AmusementForce",
     "Brogent — projet constructeur",
     "EAZA",
@@ -25,7 +26,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 177 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 177 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -3681,6 +3683,66 @@
       ]
     },
     {
+      "entryId": "DE-candidate-discovery-5c9495ab315cb9",
+      "name": "BallonPanorama — Bad Füssing",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Bad Füssing",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 1996 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "BallonPanorama Bad Füssing, Allemagne"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/ballonpanorama/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "BallonPanorama — Bad Füssing",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/ballonpanorama/",
+            "family": "Ballon captif",
+            "sourceVenueName": "BallonPanorama — Bad Füssing",
+            "sourceLifecycleSignal": "Référence constructeur datée 1996 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Bad Füssing",
+            "referenceId": "aerophile-ballonpanorama"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "DE-candidate-bf8708be248ed5",
       "name": "Bärenbob Grafenau",
       "entityKind": "ToQualify",
@@ -4981,6 +5043,65 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "DE-candidate-discovery-a311126d0d2707",
+      "name": "CargoLifter Brand, Germany",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2001 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "CargoLifter Brand, Germany"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/cargolifter/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "CargoLifter Brand, Germany",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/cargolifter/",
+            "family": "Ballon captif",
+            "sourceVenueName": "CargoLifter Brand, Germany",
+            "sourceLifecycleSignal": "Référence constructeur datée 2001 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-cargolifter"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
     },
     {
       "entryId": "DE-park-b42cd38a-e393-4d37-90c2-b39099529d3b",
@@ -11168,6 +11289,66 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "DE-candidate-discovery-abeb6c93e2f038",
+      "name": "HiFlyer Hamburg",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Hambourg",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Vladi Private Island Hambourg, Germany"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/vladi-private-island/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "HiFlyer Hamburg",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/vladi-private-island/",
+            "family": "Ballon captif",
+            "sourceVenueName": "HiFlyer Hamburg",
+            "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Hambourg",
+            "referenceId": "aerophile-vladi-private-island"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "DE-park-d591ce0d-84a2-470c-a30d-2bbe69d886d7",
@@ -27126,6 +27307,66 @@
       ]
     },
     {
+      "entryId": "DE-candidate-discovery-e2c02046534405",
+      "name": "Vogtlandballon",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Mylau",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2000 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Vogtlandballon und Touristik GmbH Mylau, Germany"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/vogtlandballon-und-touristik-gmbh/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Vogtlandballon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/vogtlandballon-und-touristik-gmbh/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Vogtlandballon",
+            "sourceLifecycleSignal": "Référence constructeur datée 2000 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Mylau",
+            "referenceId": "aerophile-vogtlandballon-und-touristik-gmbh"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "DE-candidate-2cab6ebca65138",
       "name": "Waldschenke Schömberg - Minidorf & Streichelzoo",
       "entityKind": "Park",
@@ -27439,6 +27680,83 @@
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null
+    },
+    {
+      "entryId": "DE-candidate-discovery-1f009f30180e49",
+      "name": "Weltballon — Air Service Berlin",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Berlin",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2006 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Air Service Berlin Berlin, Germany",
+        "Air service Berlin Berlin, Germany"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/air-service-berlin/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/air-service-berlin-2/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Weltballon — Air Service Berlin",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/air-service-berlin/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Weltballon — Air Service Berlin",
+            "sourceLifecycleSignal": "Référence constructeur datée 2006 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Berlin",
+            "referenceId": "aerophile-air-service-berlin"
+          },
+          {
+            "name": "SAT.1 Ballon — Sony Center",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/air-service-berlin-2/",
+            "family": "Ballon captif",
+            "sourceVenueName": "SAT.1 Ballon — Sony Center",
+            "sourceLifecycleSignal": "Référence constructeur datée 2000 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Berlin",
+            "referenceId": "aerophile-air-service-berlin-2"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "DE-candidate-cedfe9204bf4fb",

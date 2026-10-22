@@ -6,10 +6,12 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 596,
+  "sourceObservationCount": 616,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "AmusementForce",
     "Backlog national existant",
+    "Découverte complémentaire — site officiel",
     "EAZA",
     "Intamin — référence constructeur",
     "RCDB",
@@ -26,7 +28,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 97 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 97 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 20 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -130,6 +133,186 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "FR-candidate-discovery-5ccd37119c7eba",
+      "name": "Aérophare Évry 2",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aérophare",
+      "locality": "Évry",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Aerophare Evry Evry, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/aerophare-evry/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Aérophare Évry 2",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/aerophare-evry/",
+            "family": "Aérophare",
+            "sourceVenueName": "Aérophare Évry 2",
+            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Évry",
+            "referenceId": "aerophile-aerophare-evry"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
+      "entryId": "FR-candidate-discovery-da116225feb8fe",
+      "name": "Aérophare O’Parinor",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aérophare",
+      "locality": "Aulnay-sous-Bois",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2008 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Aerophare Parinor Aulnay-sous-Bois, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/aerophare-parinor/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Aérophare O’Parinor",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/aerophare-parinor/",
+            "family": "Aérophare",
+            "sourceVenueName": "Aérophare O’Parinor",
+            "sourceLifecycleSignal": "Référence constructeur datée 2008 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Aulnay-sous-Bois",
+            "referenceId": "aerophile-aerophare-parinor"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
+      "entryId": "FR-candidate-discovery-da45a0f8b01663",
+      "name": "Aérophare — Terre d’Estuaire",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aérophare",
+      "locality": "Cordemais",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Terre d’Estuaire Cordemais, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/terre-destuaire/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Aérophare — Terre d’Estuaire",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/terre-destuaire/",
+            "family": "Aérophare",
+            "sourceVenueName": "Aérophare — Terre d’Estuaire",
+            "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Cordemais",
+            "referenceId": "aerophile-terre-destuaire"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "FR-park-fd223f71-faf3-408a-a6a7-d9a9ca7f7892",
@@ -2377,6 +2560,400 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "FR-candidate-discovery-a706c58c0d92ac",
+      "name": "Ballon captif Air Escargot — Beaune",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Beaune",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 1998 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Air Escargot Beaune, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/air-escargot/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ballon captif Air Escargot — Beaune",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/air-escargot/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ballon captif Air Escargot — Beaune",
+            "sourceLifecycleSignal": "Référence constructeur datée 1998 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Beaune",
+            "referenceId": "aerophile-air-escargot"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
+      "entryId": "FR-candidate-discovery-18a6d33401b4a3",
+      "name": "Ballon captif d’Épernay",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Épernay",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2018 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "SPL du ballon captif – Epernay Epernay, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/epernay/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ballon captif d’Épernay",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/epernay/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ballon captif d’Épernay",
+            "sourceLifecycleSignal": "Référence constructeur datée 2018 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Épernay",
+            "referenceId": "aerophile-epernay"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
+      "entryId": "FR-candidate-discovery-82389f7fd70f1f",
+      "name": "Ballon captif de Bordeaux",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Bordeaux",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 1999 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Bordeaux Balloon Bordeaux, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/bordeaux-balloon/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ballon captif de Bordeaux",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/bordeaux-balloon/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ballon captif de Bordeaux",
+            "sourceLifecycleSignal": "Référence constructeur datée 1999 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Bordeaux",
+            "referenceId": "aerophile-bordeaux-balloon"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
+      "entryId": "FR-candidate-discovery-4be5322923242a",
+      "name": "Ballon captif de Chantilly",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Chantilly",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 1994 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Institut de France Chantilly, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/institut-de-france/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ballon captif de Chantilly",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/institut-de-france/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ballon captif de Chantilly",
+            "sourceLifecycleSignal": "Référence constructeur datée 1994 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Chantilly",
+            "referenceId": "aerophile-institut-de-france"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
+      "entryId": "FR-candidate-discovery-d7d83f0ed34fa2",
+      "name": "Ballon captif de Cheverny",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Cheverny",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 1995 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Cheverny Castle Cheverny, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/cheverny-castle/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ballon captif de Cheverny",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/cheverny-castle/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ballon captif de Cheverny",
+            "sourceLifecycleSignal": "Référence constructeur datée 1995 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Cheverny",
+            "referenceId": "aerophile-cheverny-castle"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
+      "entryId": "FR-candidate-discovery-91f1e3fca6cbc6",
+      "name": "Ballon de Paris — Aeroparis",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Paris",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2013 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Generali Paris, France",
+        "Eutelsat Paris, France",
+        "City of Paris Paris, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/generali/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/eutelsat/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/city-of-paris/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ballon de Paris — Aeroparis",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/generali/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ballon de Paris — Aeroparis",
+            "sourceLifecycleSignal": "Référence constructeur datée 2013 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Paris",
+            "referenceId": "aerophile-generali"
+          },
+          {
+            "name": "Ballon de Paris — Aeroparis",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/eutelsat/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ballon de Paris — Aeroparis",
+            "sourceLifecycleSignal": "Référence constructeur datée 2002 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Paris",
+            "referenceId": "aerophile-eutelsat"
+          },
+          {
+            "name": "Ballon de Paris — Aeroparis",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/city-of-paris/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ballon de Paris — Aeroparis",
+            "sourceLifecycleSignal": "Référence constructeur datée 1999 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Paris",
+            "referenceId": "aerophile-city-of-paris"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "FR-park-bb1605f3-58ca-45cd-bbca-6fdc811bee4c",
@@ -5016,11 +5593,13 @@
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Futuroscope – Colina Poitiers, France"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5046,6 +5625,16 @@
           "label": "Intamin — référence constructeur",
           "url": "https://www.intamin.com/project/la-gyrotour/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/futuroscope-colina/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
@@ -5060,9 +5649,19 @@
             "url": "https://www.intamin.com/project/la-gyrotour/",
             "family": "Tour panoramique mécanique",
             "sourceVenueName": "Futuroscope"
+          },
+          {
+            "name": "Futuroscope – Colina Poitiers, France",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/futuroscope-colina/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "Futuroscope",
+            "sourceLifecycleSignal": "Référence constructeur datée 2013 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-futuroscope-colina"
           }
         ],
-        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
       }
     },
     {
@@ -12721,6 +13320,66 @@
       ]
     },
     {
+      "entryId": "FR-candidate-discovery-8c603a6339cbd7",
+      "name": "PanoraMagique",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Disney Village, Marne-la-Vallée",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Disneyland® Paris Marne-La-Vallée, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/disneyland-paris/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "PanoraMagique",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/disneyland-paris/",
+            "family": "Ballon captif",
+            "sourceVenueName": "PanoraMagique",
+            "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Disney Village, Marne-la-Vallée",
+            "referenceId": "aerophile-disneyland-paris"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "FR-candidate-54d1a76a9d8f2e",
       "name": "Papea City",
       "entityKind": "Park",
@@ -13149,11 +13808,13 @@
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Parc Astérix Plailly, France"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -13174,10 +13835,37 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.parcasterix.fr/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/parc-asterix/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Parc Astérix Plailly, France",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/parc-asterix/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "Parc Astérix",
+            "sourceLifecycleSignal": "Référence constructeur datée 2018 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-parc-asterix"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "FR-park-5b0ef928-66ac-4d1b-b426-8c631a5d5b75",
@@ -14205,18 +14893,47 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Samara Park Samara, France"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/samara-park/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Samara Park Samara, France",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/samara-park/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Samara",
+            "sourceLifecycleSignal": "Référence constructeur datée 1999 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-samara-park"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "FR-park-271602e3-28bb-42cc-966d-aca0e04269aa",
@@ -14596,11 +15313,13 @@
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Little Prince Park Ungersheim, France"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -14621,10 +15340,52 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://parcdupetitprince.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/little-prince-park/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/parc-du-petit-prince/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Little Prince Park Ungersheim, France",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/little-prince-park/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "Parc du Petit Prince",
+            "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-little-prince-park"
+          },
+          {
+            "name": "Little Prince Park Ungersheim, France",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/parc-du-petit-prince/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Parc du Petit Prince",
+            "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-parc-du-petit-prince"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "FR-candidate-b3c7ffcb242c60",
@@ -17136,6 +17897,61 @@
       ]
     },
     {
+      "entryId": "FR-candidate-discovery-44e7343ea26f0b",
+      "name": "Skypark Normandie — installations du viaduc",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne / balançoire / saut fixe",
+      "locality": "Souleuvre-en-Bocage",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "L’opérateur Skypark est distinct de Normandie Luge. Qualifier les installations sans fusionner les deux exploitants.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Skypark Normandie",
+        "Viaduc de la Souleuvre"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://viaducdelasouleuvre.com/fr/activites/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Skypark Normandie — installations du viaduc",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://viaducdelasouleuvre.com/fr/activites/",
+            "family": "Tyrolienne / balançoire / saut fixe",
+            "sourceVenueName": "Skypark Normandie — installations du viaduc",
+            "sourceLifecycleSignal": "L’opérateur Skypark est distinct de Normandie Luge. Qualifier les installations sans fusionner les deux exploitants.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Souleuvre-en-Bocage"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "FR-standalone-ac34ddc0-9887-459b-ac11-6f3fe04920ca",
       "name": "Speed Dragoz",
       "entityKind": "StandaloneAttraction",
@@ -17421,18 +18237,47 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Terra Botanica Angers, France"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/terra-botanica/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Terra Botanica Angers, France",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/terra-botanica/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Terra Botanica",
+            "sourceLifecycleSignal": "Référence constructeur datée 2015 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-terra-botanica"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "FR-candidate-76c4111afc8791",
@@ -18080,11 +18925,13 @@
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Vulcania Saint-Ours-les-Roches, France"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -18105,10 +18952,37 @@
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/vulcania/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Vulcania Saint-Ours-les-Roches, France",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/vulcania/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Vulcania",
+            "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-vulcania"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "FR-candidate-b0cb19d410f14e",

@@ -10,11 +10,13 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
+- Création potentielle transfrontalière : Limite Zero (départ Sanlúcar de Guadiana, ES ; arrivée Alcoutim, PT) est suivie une seule fois sous ES-candidate-discovery-1182b2f2f1a8d3 dans ES.json. Coordonner la campagne PT avec ce dossier, sans seconde création.
+- Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 8 |
-| À qualifier | 103 |
+| À qualifier | 104 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -22,13 +24,13 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 10 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **175**. Sources : Backlog national existant, EAZA, Opérateur officiel Tempo Livre, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **176**. Sources : Aerophile — références constructeur, Backlog national existant, EAZA, Opérateur officiel Tempo Livre, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **5 publiés**, **7 masqués à intégrer**, **10 masqués NotRelevant à réexaminer**, **103 candidats sans fiche**.
 
-Standalone : **2 publiées**, **1 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **2 publiées**, **1 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -57,6 +59,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | PT-candidate-c00c96827121a1 | Azores Treetop Park | Furnas, São Miguel | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Backlog national existant](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md) |
 | PT-candidate-9d6309b2b55392 | Azurara Parque Aventura | Vila do Conde | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Backlog national existant](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md) |
 | PT-candidate-65003f38825a02 | Badoca Safari Park | Santiago do Cacém | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Portugal) · [Backlog national existant](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md) |
+| PT-candidate-discovery-e1994e5c8e5628 | Balloonvision — ballon captif de Madère | Madère | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Balloonvision — ballon captif de Madère. Signal source : Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/balloonvision/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
 | PT-candidate-0f6905a6e7709c | Beja Aquática | Nossa Senhora das Neves, Beja | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Backlog national existant](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md) |
 | PT-park-fa39635a-d689-43af-a243-ee43c537fa3b | Bracalândia | Braga | Park | Published | Publié, date inconnue | Inconnue — non inventée | — | Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/4665.htm) · [Backlog national existant](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md) · [Site officiel enregistré (à revérifier)](https://arquivo.pt/wayback/20060218125725/http://www.bracalandia.com/) |
 | PT-candidate-2b3dfd9da0753b | Campo Aventura | Óbidos | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Backlog national existant](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/portugal-parks-integration-backlog-2026-10-20.md) |

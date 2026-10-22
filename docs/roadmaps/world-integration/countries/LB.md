@@ -9,11 +9,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+- Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 3 |
-| À qualifier | 19 |
+| À qualifier | 20 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -21,13 +22,13 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **22**. Sources : RCDB, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **23**. Sources : Aerophile — références constructeur, RCDB, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **3** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **0 publiés**, **3 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **17 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -41,6 +42,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | LB-candidate-eb877b9fc3ed1a | All Stars Amusement Park | Mount Lebanon | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/23253.htm) |
 | LB-candidate-1bba509690d39a | Aquapark Watergate | Dbayeh | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Lebanon) |
 | LB-candidate-bb365d72d6a456 | Aquapark Waves | Mansourieh | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Lebanon) |
+| LB-candidate-discovery-04580e68c85c16 | Ballon Solidere — Beyrouth | Beyrouth | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Ballon Solidere — Beyrouth. Signal source : Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/solidere/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
 | LB-candidate-bb7319083ddf14 | Beirut Luna Park | Beirut , Beirut | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/6424.htm) |
 | LB-candidate-b1c870280ab16f | Birak Park | Barouk , Mount Lebanon | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/19624.htm) |
 | LB-candidate-d085af6e82eaad | City Park | Tyre , South | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. Correspondance possible : City Park (9254bc19-9de5-4f7f-9df9-50d4f0894681). [RCDB](https://rcdb.com/11327.htm) |

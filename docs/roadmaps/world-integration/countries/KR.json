@@ -6,9 +6,10 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 107,
+  "sourceObservationCount": 112,
   "sourceFamilies": [
     "AZA",
+    "Aerophile — références constructeur",
     "RCDB",
     "RCDB — Mountain Coaster",
     "Skyline — destinations officielles",
@@ -23,7 +24,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 12 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 12 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 5 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -890,6 +892,66 @@
       ]
     },
     {
+      "entryId": "KR-candidate-discovery-1ff4ac48854ae5",
+      "name": "Flying Suwon",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Suwon",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2016 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Flying Suwon Suwon, South Korea"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/flying-suwon/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Flying Suwon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/flying-suwon/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Flying Suwon",
+            "sourceLifecycleSignal": "Référence constructeur datée 2016 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Suwon",
+            "referenceId": "aerophile-flying-suwon"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "KR-candidate-e8c00765bdb961",
       "name": "Gaya Land",
       "entityKind": "Park",
@@ -1114,6 +1176,65 @@
       "countryResolution": null
     },
     {
+      "entryId": "KR-candidate-discovery-6fd758ddf13aa7",
+      "name": "Gyeongju South Korea",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Gyeongju South Korea"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/gyeongju/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Gyeongju South Korea",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/gyeongju/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Gyeongju South Korea",
+            "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-gyeongju"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "KR-park-539ab667-0bb2-440c-816f-c3502b00b419",
       "name": "Gyeongju World",
       "entityKind": "Park",
@@ -1328,6 +1449,65 @@
       ]
     },
     {
+      "entryId": "KR-candidate-discovery-bd6edefa308c8c",
+      "name": "Jeju South Korea",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2003 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Jeju South Korea"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/jeju/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Jeju South Korea",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/jeju/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Jeju South Korea",
+            "sourceLifecycleSignal": "Référence constructeur datée 2003 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-jeju"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "KR-candidate-65c055ccf116b5",
       "name": "Jeonju DreamLand",
       "entityKind": "Park",
@@ -1386,6 +1566,65 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "KR-candidate-discovery-88e5e0f5214482",
+      "name": "Kolon Icheon, South Korea",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aerobar / plateforme panoramique",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2017 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Kolon Icheon, South Korea"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/kolon/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Kolon Icheon, South Korea",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/kolon/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "Kolon Icheon, South Korea",
+            "sourceLifecycleSignal": "Référence constructeur datée 2017 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-kolon"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
     },
     {
       "entryId": "KR-park-cd276be9-e23a-4bf2-a7a2-c2ce694ed2ca",
@@ -2408,6 +2647,66 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "KR-candidate-discovery-220e0945c2e59e",
+      "name": "SEOULDAL — Seoul Moon",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Yeouido, Séoul",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2024 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "City of Seoul Seoul, South Korea"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/city-of-seoul/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "SEOULDAL — Seoul Moon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/city-of-seoul/",
+            "family": "Ballon captif",
+            "sourceVenueName": "SEOULDAL — Seoul Moon",
+            "sourceLifecycleSignal": "Référence constructeur datée 2024 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Yeouido, Séoul",
+            "referenceId": "aerophile-city-of-seoul"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "KR-park-fa55fe67-9703-4dc1-b8b2-3cc4b1a5ad2e",

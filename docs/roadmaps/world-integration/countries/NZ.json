@@ -6,8 +6,9 @@
   "geographicScope": "Océanie — périmètre national/territorial des sources",
   "geographicGroup": "Océanie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 32,
+  "sourceObservationCount": 33,
   "sourceFamilies": [
+    "Découverte complémentaire — site officiel",
     "RCDB",
     "Skyline — destinations officielles",
     "WAZA",
@@ -20,7 +21,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 3 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 3 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -682,7 +684,7 @@
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -695,7 +697,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -706,10 +708,15 @@
           "label": "Skyline — destinations officielles — liste",
           "url": "https://www.skylineluge.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://rotorua.skyline.co.nz/things-to-do/skyswing-rotorua/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "ParentToResolve",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -718,9 +725,19 @@
             "url": "https://rotorua.skyline.co.nz/",
             "family": "Luge gravitaire",
             "sourceVenueName": "Skyline Rotorua"
+          },
+          {
+            "name": "Skyswing Rotorua",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://rotorua.skyline.co.nz/things-to-do/skyswing-rotorua/",
+            "family": "Balançoire géante",
+            "sourceVenueName": "Skyline Luge Rotorua",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Rotorua"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
       }
     },
     {

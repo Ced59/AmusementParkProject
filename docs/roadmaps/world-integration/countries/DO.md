@@ -8,11 +8,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+- Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 0 |
-| À qualifier | 9 |
+| À qualifier | 10 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -20,15 +21,15 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **9**. Sources : RCDB, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **10**. Sources : Aerophile — références constructeur, RCDB, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **0 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **7 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **3 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -36,6 +37,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DO-candidate-7cd882594e3c92 | Arcadas | Santo Domingo , Distrito Nacional | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/6096.htm) |
 | DO-candidate-dc2963fa3d9f3c | Happyland | Santo Domingo , Distrito Nacional | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/17832.htm) |
+| DO-candidate-discovery-306bca3aa312c9 | Melia Punta Cana, Dominican Republic | — | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : ParentToResolve. Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Installations référencées : Melia Punta Cana, Dominican Republic. Signal source : Référence constructeur datée 2016 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/melia/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
 | DO-candidate-3f2da3f606176b | Memories Splash | Punta Cana | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Dominican_Republic) |
 | DO-candidate-5713d830f7c4dd | Olimpyc Park | Santo Domingo Este , Santo Domingo | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/21014.htm) |
 | DO-candidate-4e808b853184bf | Scream Land | Santiago de los Caballeros , Santiago | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. Correspondance possible : Dream Land (cb3f4bc8-921e-48be-a69b-2edfd4b142dd). [RCDB](https://rcdb.com/23160.htm) |

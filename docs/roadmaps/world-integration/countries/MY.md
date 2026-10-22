@@ -9,11 +9,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
+- Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 4 |
-| À qualifier | 67 |
+| À qualifier | 68 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -21,15 +22,15 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **85**. Sources : AmusementForce, Intamin — référence constructeur, RCDB, Skyline — destinations officielles, WAZA, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **86**. Sources : Aerophile — références constructeur, AmusementForce, Intamin — référence constructeur, RCDB, Skyline — destinations officielles, WAZA, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **0 publiés**, **4 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **64 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -54,6 +55,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | MY-candidate-bd4c8115f9347a | Desaru Coast Adventure Waterpark | Bandar Penawar , Johor | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/15270.htm) |
 | MY-candidate-f17ddb269dcf3a | Escape Penang | Tanjung Bungah , Penang | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/21766.htm) |
 | MY-candidate-04e1af37bb6624 | ESCAPE Waterplay | Penang | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Malaysia) |
+| MY-candidate-discovery-243c5c259897b3 | Gamuda Cove Kuala Lumpur, Malaysia | — | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : ParentToResolve. Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Installations référencées : Gamuda Cove Kuala Lumpur, Malaysia. Signal source : Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/gamuda-cove/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
 | MY-park-230e2cef-8049-4091-a0c9-fac3cfaccc4c | Genting SkyWorlds | Genting Highlands | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/4977.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Malaysia) · [Site officiel enregistré (à revérifier)](https://www.gentingskyworlds.com/) |
 | MY-candidate-a37457542d35fd | Gold Coast Morib Themes Water Park | Sepang | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Malaysia) |
 | MY-candidate-c53c23e6d985be | i-City | Shah Alam , Selangor | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/21764.htm) |

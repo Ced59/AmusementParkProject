@@ -6,10 +6,12 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 168,
+  "sourceObservationCount": 170,
   "sourceFamilies": [
     "AZA",
+    "Aerophile — références constructeur",
     "AmusementForce",
+    "Découverte complémentaire — site officiel",
     "EAZA",
     "RCDB",
     "RCDB — Mountain Coaster",
@@ -23,7 +25,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 8 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 8 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -3977,12 +3980,13 @@
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
-        "Isla Mágica"
+        "Isla Mágica",
+        "Isla Mágica Seville, Spain"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3998,10 +4002,37 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Spain",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/isla-magica/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "ES",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Isla Mágica Seville, Spain",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/isla-magica/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Isla Mágica",
+            "sourceLifecycleSignal": "Référence constructeur datée 2023 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-isla-magica"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "ES-park-fc8aa6a7-d6a0-4841-8430-9c6f08cdcce8",
@@ -4225,6 +4256,60 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "ES-candidate-discovery-1182b2f2f1a8d3",
+      "name": "Limite Zero",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne fixe",
+      "locality": "Sanlúcar de Guadiana → Alcoutim, Portugal",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Installation transfrontalière ES → PT : départ et exploitant en Espagne ; renvoi depuis PT, une seule identité mondiale.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "LIMITEZERO"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.limitezero.com/en/about-us/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Limite Zero",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.limitezero.com/en/about-us/",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Limite Zero",
+            "sourceLifecycleSignal": "Installation transfrontalière ES → PT : départ et exploitant en Espagne ; renvoi depuis PT, une seule identité mondiale.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Sanlúcar de Guadiana → Alcoutim, Portugal"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "ES-park-a865f765-4127-4cb8-9ba8-1df507445f78",

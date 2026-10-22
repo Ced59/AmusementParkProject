@@ -6,12 +6,13 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 113,
+  "sourceObservationCount": 114,
   "sourceFamilies": [
     "AmusementForce",
     "EAZA",
     "RCDB",
     "RCDB — Mountain Coaster",
+    "Sunkid — archive de projets",
     "WAZA",
     "Wiegand — références constructeur",
     "Wikipédia (découverte)"
@@ -22,7 +23,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 38 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 38 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Contrôle supplémentaire alpine coasters : 1 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
   ],
   "entries": [
     {
@@ -4468,6 +4470,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/17591.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-kliny/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "CZ",
@@ -4485,6 +4492,15 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Klíny , Ústí nad Labem",
             "sourceOpenedYear": "2018"
+          },
+          {
+            "name": "Mountain Coaster — Sport areál Klíny",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-kliny/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Sport areál Klíny",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."

@@ -9,11 +9,13 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
+- Recherche externe dédiée aux absences : 17 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
+- Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 233 |
-| À qualifier | 1751 |
+| À qualifier | 1763 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -21,15 +23,15 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 15 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **2595**. Sources : AZA, Brogent — projet constructeur, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte), ZipRider — référence constructeur.
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **2621**. Sources : ADG — Project Book, AZA, Aerophile — références constructeur, Brogent — projet constructeur, Découverte complémentaire — site officiel, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte), ZipRider — référence constructeur.
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **38 publiés**, **233 masqués à intégrer**, **21 masqués NotRelevant à réexaminer**, **1526 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **35 candidates sans fiche**. Autres dossiers : **2 types à décider**, **182 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **44 candidates sans fiche**. Autres dossiers : **2 types à décider**, **185 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **29 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **73 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **2 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **29 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **76 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **5 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -45,4 +47,4 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 - [Page 6 — lignes 1251 à 1500](US/006.md)
 - [Page 7 — lignes 1501 à 1750](US/007.md)
 - [Page 8 — lignes 1751 à 2000](US/008.md)
-- [Page 9 — lignes 2001 à 2037](US/009.md)
+- [Page 9 — lignes 2001 à 2049](US/009.md)

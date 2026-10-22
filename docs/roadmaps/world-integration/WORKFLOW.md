@@ -20,6 +20,12 @@ La date `lastDataIntegrationAt` est le maximum des dates réelles `integrationHi
 
 Consulter aussi [STANDALONE-AUDIT.md](STANDALONE-AUDIT.md). Le compteur des candidates sans fiche ne couvre pas à lui seul le travail standalone : examiner les pistes présentes dans des fiches Park et les dossiers sans ID dont l’identité ou le rattachement reste à résoudre. Ces compteurs sont des sous-ensembles, pas de nouvelles lignes à additionner. Conserver les références `standaloneAssessment.attractions` ; une installation constructeur peut être un parkItem, une modernisation ou un alias. Réserver le dossier existant avant de créer une nouvelle identité.
 
+## Découverte de nouvelles fiches
+
+La [liste des créations candidates](CREATIONS-STANDALONE.md) isole les attractions sans correspondance trouvée, avec une section alpine / mountain coasters. Poursuivre la découverte hors du catalogue : annuaires spécialisés, références constructeurs, exploitants et tourisme local. Comparer les noms, alias, adresses, coordonnées et anciennes identités aux Park et StandaloneAttraction publics et masqués ; élargir la recherche au-delà du pays en cas de classement erroné.
+
+Créer une nouvelle entrée JSON seulement quand aucun dossier ne la représente déjà, avec un `entryId` permanent, les sources et la date du relevé, `siteId: null`, `lastDataIntegrationAt: null` et un historique vide. Utiliser `PossibleExisting` si l’identité ou le parent est incertain. Ne pas confondre référence historique et attraction actuellement ouverte. Enregistrer la première date réelle uniquement après l’Apply/import réussi. Pour une installation transfrontalière, conserver une seule identité et un renvoi dans l’autre pays.
+
 ## Prise en charge et coordination
 
 1. Se synchroniser avec `origin/master` et lire le JSON du pays, le backlog national historique et les règles API en vigueur.

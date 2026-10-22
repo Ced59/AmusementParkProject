@@ -6,10 +6,11 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 8,
+  "sourceObservationCount": 10,
   "sourceFamilies": [
     "RCDB",
     "RCDB — Mountain Coaster",
+    "Sunkid — archive de projets",
     "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
@@ -20,7 +21,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 3 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 3 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Contrôle supplémentaire alpine coasters : 2 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
   ],
   "entries": [
     {
@@ -121,6 +123,16 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/18653.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/over-hill-and-dale-with-the-jahorina-mountain-coaster/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/sunkid-adrenaline-junkies-get-their-moneys-worth-at-the-olympic-center-jahorina/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": null,
@@ -149,6 +161,24 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Jahorina , Republika Srpska",
             "sourceOpenedYear": "2020"
+          },
+          {
+            "name": "Mountain Coaster — Olimpijski Centar Jahorina",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/over-hill-and-dale-with-the-jahorina-mountain-coaster/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Olimpijski Centar Jahorina",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+          },
+          {
+            "name": "Mountain Coaster — Olimpijski Centar Jahorina",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/sunkid-adrenaline-junkies-get-their-moneys-worth-at-the-olympic-center-jahorina/",
+            "family": "Mountain coaster / activités fixes du domaine",
+            "sourceVenueName": "Olimpijski Centar Jahorina",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."

@@ -6,8 +6,9 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 503,
+  "sourceObservationCount": 507,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "JAZA",
     "RCDB",
     "WAZA",
@@ -21,7 +22,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 39 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 39 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 4 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -4560,11 +4562,13 @@
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Huis Ten Bosch Nagasaki, Japon"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "RCDB",
@@ -4575,8 +4579,35 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Japan",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/huis-ten-bosch/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Huis Ten Bosch Nagasaki, Japon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/huis-ten-bosch/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Huis Ten Bosch",
+            "sourceLifecycleSignal": "Référence constructeur datée 2001 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-huis-ten-bosch"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "JP-candidate-07d3003fb22042",
@@ -5427,6 +5458,65 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "JP-candidate-discovery-2a42202a69ccb3",
+      "name": "Junglia Okinawa",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Parc structuré — attraction documentée",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2025 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Junglia Okinawa Okinawa, Japan"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/junglia-okinawa/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Junglia Okinawa Okinawa, Japan",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/junglia-okinawa/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Junglia Okinawa",
+            "sourceLifecycleSignal": "Référence constructeur datée 2025 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-junglia-okinawa"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "JP-candidate-a8e542d934f770",
@@ -10123,6 +10213,65 @@
       ]
     },
     {
+      "entryId": "JP-candidate-discovery-e051be16eefa8f",
+      "name": "Niigata Russian Village",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Parc structuré — attraction documentée",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 1999 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Niigata Russian Village Niigata, Japon"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/niigata-russian-village/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Niigata Russian Village Niigata, Japon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/niigata-russian-village/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Niigata Russian Village",
+            "sourceLifecycleSignal": "Référence constructeur datée 1999 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-niigata-russian-village"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
+    },
+    {
       "entryId": "JP-candidate-bea451bfc381af",
       "name": "Nio Sunshine Land",
       "entityKind": "Park",
@@ -10525,6 +10674,66 @@
       ],
       "countryCodeAtInventory": "JP",
       "countryResolution": null
+    },
+    {
+      "entryId": "JP-candidate-discovery-0c2e7732f201b4",
+      "name": "Osaka Sakai Balloon",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": "Sakai",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2025 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Osaka Sakai Sakai, Japan"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/osaka-sakai-balloon/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Osaka Sakai Balloon",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/osaka-sakai-balloon/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Osaka Sakai Balloon",
+            "sourceLifecycleSignal": "Référence constructeur datée 2025 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Sakai",
+            "referenceId": "aerophile-osaka-sakai-balloon"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "JP-candidate-400eb2aec74d2d",

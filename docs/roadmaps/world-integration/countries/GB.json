@@ -6,15 +6,18 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 456,
+  "sourceObservationCount": 459,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "AmusementForce",
     "BIAZA",
+    "Découverte complémentaire — site officiel",
     "EAZA",
     "RCDB",
     "RCDB — Mountain Coaster",
     "Site officiel (attraction autonome)",
     "Source officielle complémentaire",
+    "Sunkid — archive de projets",
     "WAZA",
     "Wiegand — références constructeur",
     "Wikipédia (découverte)"
@@ -25,7 +28,9 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 18 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 18 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Contrôle supplémentaire alpine coasters : 1 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
   ],
   "entries": [
     {
@@ -2285,6 +2290,65 @@
       }
     },
     {
+      "entryId": "GB-candidate-discovery-344c30564b4fab",
+      "name": "Bristol Bristol, United Kingdom",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Bristol Bristol, United Kingdom"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/bristol/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bristol Bristol, United Kingdom",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/bristol/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Bristol Bristol, United Kingdom",
+            "sourceLifecycleSignal": "Référence constructeur datée 2004 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-bristol"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "GB-candidate-4caa8c9bc64318",
       "name": "Bristol Zoo Project",
       "entityKind": "Park",
@@ -3549,6 +3613,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/17246.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — archive de projets",
+          "url": "https://www.sunkidworld.com/en/projects/detail/first-mountain-coaster-in-ireland/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "GB",
@@ -3566,6 +3635,15 @@
             "sourceLifecycleSignal": "SBNO",
             "sourceLocality": "Belfast , Antrim , Northern Ireland",
             "sourceOpenedYear": "2021"
+          },
+          {
+            "name": "Mountain Coaster — Colin Glen Forest Park",
+            "source": "Sunkid — archive de projets",
+            "url": "https://www.sunkidworld.com/en/projects/detail/first-mountain-coaster-in-ireland/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Colin Glen Forest Park",
+            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
+            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
@@ -6466,6 +6544,61 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "GB-candidate-discovery-b19f183565d402",
+      "name": "Helix — ArcelorMittal Orbit",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Toboggan fixe",
+      "locality": "Londres",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "ArcelorMittal Orbit",
+        "The Slide at ArcelorMittal Orbit"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Découverte complémentaire — site officiel",
+          "url": "https://www.zipworld.co.uk/adventures/helix",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Helix — ArcelorMittal Orbit",
+            "source": "Découverte complémentaire — site officiel",
+            "url": "https://www.zipworld.co.uk/adventures/helix",
+            "family": "Toboggan fixe",
+            "sourceVenueName": "Helix — ArcelorMittal Orbit",
+            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Londres"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
     },
     {
       "entryId": "GB-park-109314d7-55a1-4754-92ae-ba1a2332ca49",

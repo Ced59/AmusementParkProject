@@ -9,11 +9,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 3 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
+- Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 0 |
-| À qualifier | 44 |
+| À qualifier | 45 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -21,13 +22,13 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 11 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **83**. Sources : AmusementForce, EAZA, LAGO — opérateur officiel, RCDB, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **84**. Sources : Aerophile — références constructeur, AmusementForce, EAZA, LAGO — opérateur officiel, RCDB, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **27 publiés**, **0 masqués à intégrer**, **15 masqués NotRelevant à réexaminer**, **38 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **1 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **1 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **1 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -42,6 +43,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | BE-candidate-74117a08e443e0 | AquaMundo Center Parcs De Vossemeren Lommel | Lommel | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Belgium) |
 | BE-candidate-3f4965d02b7708 | AquaMundo Center Parcs Erperheide Peer | Peer | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Belgium) |
 | BE-candidate-60447361dff980 | Aquarium at the Antwerp Zoo | Antwerp | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Belgium) |
+| BE-candidate-discovery-ff2c57a3dab263 | Ballon Belgacom — Bruxelles | Bruxelles | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Ballon Belgacom — Bruxelles. Signal source : Référence constructeur datée 2003 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/belgacom/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
 | BE-park-c31436aa-3df2-42c1-b983-01d820ba1fa1 | Bellewaerde | Ieper | Park | Published | Publié, date inconnue | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Installations référencées : Bellewaerde. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/4848.htm) · [EAZA](https://www.eaza.net/membership/) · [Site officiel référencé](https://www.bellewaerdepark.be) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Belgium) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Belgium) · [Site officiel enregistré (à revérifier)](https://www.bellewaerde.be/park/fr/le-parc) · [Wiegand — références constructeur](https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=363#location-id-1964) · [Opérateur référencé par la source](http://www.bellewaerde.be) |
 | BE-park-44ae9029-6494-41be-aed2-0fc3e2d79a6a | Bellewaerde Aquapark | Ieper | Park | Published | Publié, date inconnue | Inconnue — non inventée | — | Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [Site officiel enregistré (à revérifier)](https://www.bellewaerde.be/aquapark/fr) |
 | BE-park-a2aae318-35a9-4ce8-a5ce-8151053524e1 | Bernard Amusement | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |

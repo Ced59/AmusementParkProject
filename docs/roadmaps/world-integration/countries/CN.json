@@ -6,8 +6,9 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 1893,
+  "sourceObservationCount": 1898,
   "sourceFamilies": [
+    "Aerophile — références constructeur",
     "RCDB",
     "RCDB — Mountain Coaster",
     "WAZA",
@@ -20,7 +21,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Recherche externe dédiée aux absences : 5 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
   ],
   "entries": [
     {
@@ -10363,6 +10365,65 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CN-candidate-discovery-fe2cb23deb6754",
+      "name": "Dalian Parkland Dalian, China",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aerobar / plateforme panoramique",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Dalian Parkland Dalian, China"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/dalian-parkland/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Dalian Parkland Dalian, China",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/dalian-parkland/",
+            "family": "Aerobar / plateforme panoramique",
+            "sourceVenueName": "Dalian Parkland Dalian, China",
+            "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-dalian-parkland"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
     },
     {
       "entryId": "CN-candidate-73889a1337f0f5",
@@ -34930,11 +34991,13 @@
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Ocean Park Hong Kong, China"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -34950,10 +35013,38 @@
           "label": "RCDB",
           "url": "https://rcdb.com/16857.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/ocean-park/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "CN",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ocean Park Hong Kong, China",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/ocean-park/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Ocean Park",
+            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-ocean-park",
+            "sourceCountryCode": "HK"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "CN-candidate-cfc7818d32a99d",
@@ -35002,18 +35093,47 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Piste secondaire seule",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "OCT EAST Shenzhen, China"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#China",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/oct-east/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "OCT EAST Shenzhen, China",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/oct-east/",
+            "family": "Ballon captif",
+            "sourceVenueName": "OCT East",
+            "sourceLifecycleSignal": "Référence constructeur datée 2008 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-oct-east"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "CN-candidate-775be60106adc4",
@@ -42888,6 +43008,65 @@
       "countryResolution": null
     },
     {
+      "entryId": "CN-candidate-discovery-57f67592978d11",
+      "name": "Shaoxing Shaoxing, China",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 1996 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Shaoxing Shaoxing, China"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/shaoxing/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Shaoxing Shaoxing, China",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/shaoxing/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Shaoxing Shaoxing, China",
+            "sourceLifecycleSignal": "Référence constructeur datée 1996 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-shaoxing"
+          }
+        ],
+        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+      }
+    },
+    {
       "entryId": "CN-candidate-79cb02c01dc457",
       "name": "Shaoyang Park",
       "entityKind": "Park",
@@ -46182,20 +46361,49 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Ferris Wheel Paradise Suzhou, China"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/ferris-wheel-paradise/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "CN",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Ferris Wheel Paradise Suzhou, China",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/ferris-wheel-paradise/",
+            "family": "Ballon captif",
+            "sourceVenueName": "Suzhou Ferris Wheel Park",
+            "sourceLifecycleSignal": "Référence constructeur datée 2012 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "referenceId": "aerophile-ferris-wheel-paradise"
+          }
+        ],
+        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+      }
     },
     {
       "entryId": "CN-candidate-580ff64dd6c9ad",
