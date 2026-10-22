@@ -113,8 +113,216 @@
         "pricing.lastVerifiedAtUtc"
       ],
       "summary": "Apply contrôlé : pricing.admissionOffers, pricing.annualPasses, pricing.historicalSnapshots, pricing.lastVerifiedAtUtc."
+    },
+    {
+      "eventId": "apply-2745283b-8ac9-436d-993f-0e5b9219999a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T19:47:50.1483534Z",
+      "appliedAt": "2026-10-22T19:47:50.148Z",
+      "receiptFile": "authorized-final-dinosaur-caption.apply.json",
+      "receiptSha256": "d2fffbb283c73710e00e94656c42e36e78b9d005a5c2e2e591dc0899c9235fbc",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "altTexts.de",
+        "altTexts.en",
+        "altTexts.es",
+        "altTexts.fr",
+        "altTexts.it",
+        "altTexts.nl",
+        "altTexts.pl",
+        "altTexts.pt",
+        "captions.de",
+        "captions.en",
+        "captions.es",
+        "captions.fr",
+        "captions.it",
+        "captions.nl",
+        "captions.pl",
+        "captions.pt",
+        "description"
+      ],
+      "summary": "Description, textes alternatifs et légendes du portrait avec le T. rex corrigés dans les huit langues après inspection de l’original."
+    },
+    {
+      "eventId": "import-photo-885821859c704f469afd81deaa59a2be-2026-10-22T194807.361Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-22T19:48:07.361Z",
+      "appliedAt": "2026-10-22T19:48:07.361Z",
+      "receiptFile": "authorized-final-media-kidiklik-7.receipt.json",
+      "receiptSha256": "db32f46dfb41f05f8aee4e372a31332e9717866c1464b091684425d29783f531",
+      "imageId": "885821859c704f469afd81deaa59a2be",
+      "ownerId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+      "createdAt": "2026-10-22T19:48:03.608Z",
+      "sourceUrl": "https://33.kidiklik.fr/sites/default/files/34_5efe3f31be21e_1.jpeg",
+      "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-kidiklik-7)."
+    },
+    {
+      "eventId": "import-photo-bc9d63184e2746a897f8fb4e8cb513d1-2026-10-22T194821.940Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-22T19:48:21.94Z",
+      "appliedAt": "2026-10-22T19:48:21.940Z",
+      "receiptFile": "authorized-final-media-kidiklik-8.receipt.json",
+      "receiptSha256": "25f2a27ff9e56f243e47f6fc4a33b70191fa966f3a2b960b23cf969f91a45351",
+      "imageId": "bc9d63184e2746a897f8fb4e8cb513d1",
+      "ownerId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+      "createdAt": "2026-10-22T19:48:18.523Z",
+      "sourceUrl": "https://33.kidiklik.fr/sites/default/files/34_5eff448860128_1.jpeg",
+      "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-kidiklik-8)."
+    },
+    {
+      "eventId": "import-photo-b6ff89b3164947eba636fb77e4ce586a-2026-10-22T194836.846Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-22T19:48:36.846Z",
+      "appliedAt": "2026-10-22T19:48:36.846Z",
+      "receiptFile": "authorized-final-media-tourism-1.receipt.json",
+      "receiptSha256": "459eb85d53d74c73a654bb30c699f75edcc6fc8daf2546e438eaeae978bbcf45",
+      "imageId": "b6ff89b3164947eba636fb77e4ce586a",
+      "ownerId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+      "createdAt": "2026-10-22T19:48:33.445Z",
+      "sourceUrl": "https://cdt24.media.tourinsoft.eu/upload/Kid-Parc--1---1-.jpg",
+      "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-tourism-1)."
+    },
+    {
+      "eventId": "import-photo-20d208844c7f4c7686b4e8e527ab51b8-2026-10-22T194850.887Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-22T19:48:50.887Z",
+      "appliedAt": "2026-10-22T19:48:50.887Z",
+      "receiptFile": "authorized-final-media-tourism-4.receipt.json",
+      "receiptSha256": "49ccb5a581777843ee91acd0c1399b1048a44c01c29e08c6472b9e8ba1c48bce",
+      "imageId": "20d208844c7f4c7686b4e8e527ab51b8",
+      "ownerId": "3af17b72-5e01-46ab-a727-2d85d414e3ce",
+      "createdAt": "2026-10-22T19:48:47.508Z",
+      "sourceUrl": "https://cdt24.media.tourinsoft.eu/upload/Kid-Parc--3---1-.jpg",
+      "summary": "Photographie privée importée et vérifiée : La Cascade Enchantée (authorized-final-media-tourism-4)."
+    },
+    {
+      "eventId": "import-photo-b2b83ceb441e4a4e833635084f61eac2-2026-10-22T194904.997Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-22T19:49:04.997Z",
+      "appliedAt": "2026-10-22T19:49:04.997Z",
+      "receiptFile": "authorized-final-media-kidiklik-10.receipt.json",
+      "receiptSha256": "80cdea47d7077e478a9a7fd3c495acf752cc04a8dd1baeb60d1e873999b9ac38",
+      "imageId": "b2b83ceb441e4a4e833635084f61eac2",
+      "ownerId": "3af17b72-5e01-46ab-a727-2d85d414e3ce",
+      "createdAt": "2026-10-22T19:49:01.539Z",
+      "sourceUrl": "https://33.kidiklik.fr/sites/default/files/34_5efe3f50328db_1.jpeg",
+      "summary": "Photographie privée importée et vérifiée : La Cascade Enchantée (authorized-final-media-kidiklik-10)."
+    },
+    {
+      "eventId": "import-photo-506ab16a9f7a408daa95f8e240450558-2026-10-22T194918.951Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-22T19:49:18.951Z",
+      "appliedAt": "2026-10-22T19:49:18.951Z",
+      "receiptFile": "authorized-final-media-tourism-7.receipt.json",
+      "receiptSha256": "39dcb1049e42c6744e346493e03a754a0fde092e6c70bd716f440bcae0ca609d",
+      "imageId": "506ab16a9f7a408daa95f8e240450558",
+      "ownerId": "1425b128-0e4a-4fa4-9fe2-24657a1a60be",
+      "createdAt": "2026-10-22T19:49:15.439Z",
+      "sourceUrl": "https://cdt24.media.tourinsoft.eu/upload/Kid-Parc--9-.JPG",
+      "summary": "Photographie privée importée et vérifiée : Le Rodéo (authorized-final-media-tourism-7)."
+    },
+    {
+      "eventId": "import-photo-15448332275f4e829c1e7ad80bd77627-2026-10-22T194933.523Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-22T19:49:33.523Z",
+      "appliedAt": "2026-10-22T19:49:33.523Z",
+      "receiptFile": "authorized-final-media-kidiklik-11.receipt.json",
+      "receiptSha256": "775c8eb3570f894b2a39552756527c381ec79293b3babf89b85ef38329fcee1a",
+      "imageId": "15448332275f4e829c1e7ad80bd77627",
+      "ownerId": "f9e7defd-d5be-4b2c-a433-564efac1100d",
+      "createdAt": "2026-10-22T19:49:29.963Z",
+      "sourceUrl": "https://33.kidiklik.fr/sites/default/files/34_5efe3f7c2a71a_1.jpeg",
+      "summary": "Photographie privée importée et vérifiée : Le Petit Train (authorized-final-media-kidiklik-11)."
+    },
+    {
+      "eventId": "import-photo-b97915f3ca794b7a8337e545ca0946ee-2026-10-22T194947.747Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-22T19:49:47.747Z",
+      "appliedAt": "2026-10-22T19:49:47.747Z",
+      "receiptFile": "authorized-final-media-kidiklik-15.receipt.json",
+      "receiptSha256": "600cf84b53f8910763fd122cdbf9e63718d1c325abbcae66cb6a0fac222aa85e",
+      "imageId": "b97915f3ca794b7a8337e545ca0946ee",
+      "ownerId": "567db7c4-2b18-463f-839e-94b65456db30",
+      "createdAt": "2026-10-22T19:49:44.155Z",
+      "sourceUrl": "https://33.kidiklik.fr/sites/default/files/34_5efe3ff42da44_1.jpeg",
+      "summary": "Photographie privée importée et vérifiée : Le Vaisseau Fantôme (authorized-final-media-kidiklik-15)."
+    },
+    {
+      "eventId": "apply-5ebb258c-7659-4a80-a449-e872fc6d1a56",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T19:56:19.5066408Z",
+      "appliedAt": "2026-10-22T19:56:19.506Z",
+      "receiptFile": "authorized-final-distinct-captions.apply.json",
+      "receiptSha256": "cff95a98330ee927dd7ef3cf420fb0520609f1838e4dbd00bb1a76ae9593bb38",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "captions.de",
+        "captions.en",
+        "captions.es",
+        "captions.fr",
+        "captions.it",
+        "captions.nl",
+        "captions.pl",
+        "captions.pt"
+      ],
+      "summary": "Neuf légendes photographiques réécrites dans les huit langues pour distinguer légende et texte alternatif."
+    },
+    {
+      "eventId": "apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T19:58:15.4808366Z",
+      "appliedAt": "2026-10-22T19:58:15.480Z",
+      "receiptFile": "authorized-publication-owner-history.apply.json",
+      "receiptSha256": "29cb195340d6ab5e4ebdd064bfee7bba6e03a22c987257a6f2c2d2e3f928f4ca",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "mainImageId"
+      ],
+      "summary": "Portrait sourcé de Jérôme Durieux rattaché au jalon Acquisition de 2020 ; légendes précisant le contexte du reportage de 2022."
     }
   ],
-  "publicationOrNoop": [],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-feaee391-25f0-47fd-9067-ad99fc232eaa",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T19:57:23.3722503Z",
+      "appliedAt": "2026-10-22T19:57:23.372Z",
+      "receiptFile": "authorized-publication-final-images-v2.apply.json",
+      "receiptSha256": "7cb64dc1d14d68a347e8aee3a901aeded05ab230eade676f4ca05cfaa2e23bbf",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication des neuf médias audités, sans nouveau contenu ni changement de date d’intégration."
+    }
+  ],
   "evidenceWithoutIntegrationInstant": []
 }

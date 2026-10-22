@@ -5864,7 +5864,7 @@
         "Kid Parc"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-22T19:22:21.377Z",
+      "lastDataIntegrationAt": "2026-10-22T19:58:15.480Z",
       "integrationHistory": [
         {
           "eventId": "import-photo-9b412f484c054b47b7c0fa476342ca79-2026-10-22T185941.131Z",
@@ -5915,9 +5915,119 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-b7d64d1d-6a49-4b35-a613-7c71ded633ed",
           "auditEvidence": null,
           "summary": "Apply contrôlé : pricing.admissionOffers, pricing.annualPasses, pricing.historicalSnapshots, pricing.lastVerifiedAtUtc."
+        },
+        {
+          "eventId": "apply-2745283b-8ac9-436d-993f-0e5b9219999a",
+          "appliedAt": "2026-10-22T19:47:50.148Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-2745283b-8ac9-436d-993f-0e5b9219999a",
+          "auditEvidence": null,
+          "summary": "Description, textes alternatifs et légendes du portrait avec le T. rex corrigés dans les huit langues après inspection de l’original."
+        },
+        {
+          "eventId": "import-photo-885821859c704f469afd81deaa59a2be-2026-10-22T194807.361Z",
+          "appliedAt": "2026-10-22T19:48:07.361Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-885821859c704f469afd81deaa59a2be-2026-10-22T194807.361Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-kidiklik-7)."
+        },
+        {
+          "eventId": "import-photo-bc9d63184e2746a897f8fb4e8cb513d1-2026-10-22T194821.940Z",
+          "appliedAt": "2026-10-22T19:48:21.940Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-bc9d63184e2746a897f8fb4e8cb513d1-2026-10-22T194821.940Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-kidiklik-8)."
+        },
+        {
+          "eventId": "import-photo-b6ff89b3164947eba636fb77e4ce586a-2026-10-22T194836.846Z",
+          "appliedAt": "2026-10-22T19:48:36.846Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-b6ff89b3164947eba636fb77e4ce586a-2026-10-22T194836.846Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-tourism-1)."
+        },
+        {
+          "eventId": "import-photo-20d208844c7f4c7686b4e8e527ab51b8-2026-10-22T194850.887Z",
+          "appliedAt": "2026-10-22T19:48:50.887Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-20d208844c7f4c7686b4e8e527ab51b8-2026-10-22T194850.887Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : La Cascade Enchantée (authorized-final-media-tourism-4)."
+        },
+        {
+          "eventId": "import-photo-b2b83ceb441e4a4e833635084f61eac2-2026-10-22T194904.997Z",
+          "appliedAt": "2026-10-22T19:49:04.997Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-b2b83ceb441e4a4e833635084f61eac2-2026-10-22T194904.997Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : La Cascade Enchantée (authorized-final-media-kidiklik-10)."
+        },
+        {
+          "eventId": "import-photo-506ab16a9f7a408daa95f8e240450558-2026-10-22T194918.951Z",
+          "appliedAt": "2026-10-22T19:49:18.951Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-506ab16a9f7a408daa95f8e240450558-2026-10-22T194918.951Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Le Rodéo (authorized-final-media-tourism-7)."
+        },
+        {
+          "eventId": "import-photo-15448332275f4e829c1e7ad80bd77627-2026-10-22T194933.523Z",
+          "appliedAt": "2026-10-22T19:49:33.523Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-15448332275f4e829c1e7ad80bd77627-2026-10-22T194933.523Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Le Petit Train (authorized-final-media-kidiklik-11)."
+        },
+        {
+          "eventId": "import-photo-b97915f3ca794b7a8337e545ca0946ee-2026-10-22T194947.747Z",
+          "appliedAt": "2026-10-22T19:49:47.747Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-b97915f3ca794b7a8337e545ca0946ee-2026-10-22T194947.747Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Le Vaisseau Fantôme (authorized-final-media-kidiklik-15)."
+        },
+        {
+          "eventId": "apply-5ebb258c-7659-4a80-a449-e872fc6d1a56",
+          "appliedAt": "2026-10-22T19:56:19.506Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-5ebb258c-7659-4a80-a449-e872fc6d1a56",
+          "auditEvidence": null,
+          "summary": "Neuf légendes photographiques réécrites dans les huit langues pour distinguer légende et texte alternatif."
+        },
+        {
+          "eventId": "apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+          "appliedAt": "2026-10-22T19:58:15.480Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+          "auditEvidence": null,
+          "summary": "Portrait sourcé de Jérôme Durieux rattaché au jalon Acquisition de 2020 ; légendes précisant le contexte du reportage de 2022."
         }
       ],
-      "nextAction": "Terminer l’audit final, publier le portrait validé et son rattachement historique, contrôler les pages publiques puis résoudre l’annonce Facebook existante sans doublon.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
