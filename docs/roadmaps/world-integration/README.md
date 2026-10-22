@@ -17,9 +17,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 307 | 1892 | 7566 |
-| Standalone | 68 | 1 | 175 |
+| Standalone | 69 | 1 | 174 |
 
-**Reprise standalone :** en plus des 175 candidates sans correspondance, **239 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **658 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **50 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 174 candidates sans correspondance, **239 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **658 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **50 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **69** types à décider, **1367** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -145,7 +145,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 
 - France : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Portugal : 7 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- Roumanie : 1 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Roumanie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
@@ -236,7 +236,7 @@ Périmètre national entier des sources. Cette rubrique conserve la distinction 
 
 Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **1**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
-- Azerbaïdjan : 1 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Azerbaïdjan : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
@@ -334,7 +334,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Koweït](countries/KW.md) | 0 | 0 | 0 | 0 | 2 | 0 |
 | [Laos](countries/LA.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Liban](countries/LB.md) | 0 | 0 | 1 | 0 | 2 | 0 |
-| [Malaisie](countries/MY.md) | 0 | 0 | 2 | 0 | 2 | 0 |
+| [Malaisie](countries/MY.md) | 1 | 0 | 1 | 0 | 2 | 0 |
 | [Maldives](countries/MV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Mongolie](countries/MN.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Myanmar (Birmanie)](countries/MM.md) | 0 | 0 | 0 | 0 | 2 | 0 |
@@ -357,10 +357,11 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Turkménistan](countries/TM.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Viêt Nam](countries/VN.md) | 0 | 0 | 4 | 0 | 22 | 0 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **0** | **0** | **65** | **2** | **715** | **0** |
+| **Total** | **1** | **0** | **64** | **2** | **715** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **0**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **1**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
+- Malaisie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
@@ -718,7 +719,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 
 Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **5**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
-- Canada : 1 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Canada : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - États-Unis : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 

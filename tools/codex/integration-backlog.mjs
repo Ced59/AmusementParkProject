@@ -207,7 +207,9 @@ export function renderSummary(documents) {
       `Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **${totals.integratedWithAudit}**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **${totals.visibilityUnknown}**.`, '');
     for (const doc of group.filter(item => countryCounts(item).integratedWithAudit)) {
       const counts = countryCounts(doc);
-      lines.push(`- ${doc.countryName} : ${counts.integratedWithAudit} intégrations achevées et auditées, dont ${counts.integratedHidden} fiches encore masquées.`);
+      const integrationLabel = counts.integratedWithAudit === 1 ? 'intégration achevée et auditée' : 'intégrations achevées et auditées';
+      const hiddenLabel = counts.integratedHidden === 1 ? 'fiche encore masquée' : 'fiches encore masquées';
+      lines.push(`- ${doc.countryName} : ${counts.integratedWithAudit} ${integrationLabel}, dont ${counts.integratedHidden} ${hiddenLabel}.`);
     }
     lines.push('### Pistes standalone à requalifier', '',
       '| Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |', '| --- | ---: | ---: | ---: | ---: |');
