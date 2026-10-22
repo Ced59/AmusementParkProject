@@ -47,7 +47,8 @@ internal sealed class HistoricalNarrativeCanonicalFactFactory
         string? requiredNextKey = mapping.AttributeKind.Value switch
         {
             HistoricalAttributeKind.Name or HistoricalAttributeKind.MarketPositioning
-                or HistoricalAttributeKind.Theme or HistoricalAttributeKind.Location => "next",
+                or HistoricalAttributeKind.Theme or HistoricalAttributeKind.Location
+                or HistoricalAttributeKind.Owner => "next",
             HistoricalAttributeKind.Logo => "nextImageId",
             HistoricalAttributeKind.Operator => "nextId",
             _ => null,
@@ -69,6 +70,11 @@ internal sealed class HistoricalNarrativeCanonicalFactFactory
                 {
                     ["previousId"] = historyEvent.PreviousOperatorId,
                     ["nextId"] = historyEvent.NewOperatorId,
+                },
+            HistoricalAttributeKind.Owner => new Dictionary<string, string?>
+                {
+                    ["previous"] = historyEvent.PreviousOwnerName,
+                    ["next"] = historyEvent.NewOwnerName,
                 },
             HistoricalAttributeKind.Location => new Dictionary<string, string?>
                 {

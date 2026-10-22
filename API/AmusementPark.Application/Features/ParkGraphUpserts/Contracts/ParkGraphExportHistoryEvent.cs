@@ -60,6 +60,10 @@ public sealed class ParkGraphExportHistoryEvent
 
     public string? NewOperatorId { get; init; }
 
+    public string? PreviousOwnerName { get; init; }
+
+    public string? NewOwnerName { get; init; }
+
     public string? LocationLabel { get; init; }
 
     public List<string> RelatedParkIds { get; init; } = new List<string>();

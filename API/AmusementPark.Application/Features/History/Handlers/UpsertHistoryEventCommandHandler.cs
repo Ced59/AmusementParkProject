@@ -224,6 +224,20 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         }
 
         HistoryEvent canonicalCandidate = new HistoryEvent();
+        if (mapping.AttributeKind == HistoricalAttributeKind.Owner && model.NewOwnerName is null)
+        {
+            // Older editors omit owner fields. Validate the same retained transition that will be saved.
+            HistoryEvent? existing = !string.IsNullOrWhiteSpace(model.Id)
+                ? await this.historyEventRepository.GetByIdAsync(model.Id.Trim(), true, cancellationToken)
+                : await this.historyEventRepository.GetByOwnerKeyAsync(
+                    model.EntityType,
+                    ownerId,
+                    NormalizeKey(model.Key) ?? BuildFallbackKey(model),
+                    cancellationToken);
+            canonicalCandidate.PreviousOwnerName = existing?.PreviousOwnerName;
+            canonicalCandidate.NewOwnerName = existing?.NewOwnerName;
+        }
+
         this.ApplyWriteModel(
             canonicalCandidate,
             model,
@@ -314,6 +328,16 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         historyEvent.NewLogoImageId = NormalizeId(model.NewLogoImageId);
         historyEvent.PreviousOperatorId = NormalizeId(model.PreviousOperatorId);
         historyEvent.NewOperatorId = NormalizeId(model.NewOperatorId);
+        if (model.PreviousOwnerName is not null)
+        {
+            historyEvent.PreviousOwnerName = NormalizeNullable(model.PreviousOwnerName);
+        }
+
+        if (model.NewOwnerName is not null)
+        {
+            historyEvent.NewOwnerName = NormalizeNullable(model.NewOwnerName);
+        }
+
         historyEvent.LocationLabel = NormalizeNullable(model.LocationLabel);
         historyEvent.RelatedParkIds = NormalizeIds(model.RelatedParkIds);
         historyEvent.RelatedParkItemIds = NormalizeIds(model.RelatedParkItemIds);

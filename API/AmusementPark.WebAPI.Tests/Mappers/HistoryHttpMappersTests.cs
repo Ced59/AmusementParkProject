@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.History.Contracts;
 using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
@@ -27,6 +28,34 @@ public sealed class HistoryHttpMappersTests
         Assert.Null(dto.Park);
         Assert.Single(dto.Event.Article!.Blocks);
         Assert.Single(dto.Event.Article.Sources);
+    }
+
+    [Fact]
+    public void OwnerNames_ShouldRoundTripWithoutUsingOperatorIds()
+    {
+        HistoryEvent historyEvent = new HistoryEvent
+        {
+            PreviousOwnerName = "Founding family",
+            NewOwnerName = "Purchasing group",
+            NewOperatorId = "operator-1",
+        };
+
+        HistoryEventWriteModel writeModel = historyEvent.ToHttp().ToApplication();
+
+        Assert.Equal(historyEvent.PreviousOwnerName, writeModel.PreviousOwnerName);
+        Assert.Equal(historyEvent.NewOwnerName, writeModel.NewOwnerName);
+        Assert.Equal(historyEvent.NewOperatorId, writeModel.NewOperatorId);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void ToApplication_ShouldDistinguishOmittedOwnerFromExplicitEmptyOwner(string? ownerName)
+    {
+        HistoryEventDto dto = new HistoryEventDto { NewOwnerName = ownerName };
+
+        Assert.Equal(ownerName, dto.ToApplication().NewOwnerName);
     }
 
     [Fact]

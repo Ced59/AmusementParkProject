@@ -448,8 +448,14 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
         parkItemRepository.VerifyNoOtherCalls();
     }
 
-    [Fact]
-    public async Task CanonicalizeAsync_WhenVisibleNarrativeHasSource_ShouldCreateOnlyCanonicalPublishedRevisions()
+    [Theory]
+    [InlineData("Opening", HistoricalFactType.Opening)]
+    [InlineData("OwnershipChange", HistoricalFactType.OwnerChange)]
+    [InlineData("Acquisition", HistoricalFactType.OwnerChange)]
+    [InlineData("Sale", HistoricalFactType.OwnerChange)]
+    public async Task CanonicalizeAsync_WhenVisibleNarrativeHasSource_ShouldCreateOnlyCanonicalPublishedRevisions(
+        string eventType,
+        HistoricalFactType expectedFactType)
     {
         Mock<IHistoricalFactRepository> factRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sourceRepository = new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
@@ -479,9 +485,12 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
             parkRepository.Object,
             parkItemRepository.Object);
 
-        HistoricalNarrativeCanonicalizationResult result = await service.CanonicalizeAsync(
-            CreateOpeningEvent(withSource: true),
-            CancellationToken.None);
+        HistoryEvent historyEvent = CreateOpeningEvent(withSource: true);
+        historyEvent.EventType = eventType;
+        historyEvent.PreviousOwnerName = "Founding family";
+        historyEvent.NewOwnerName = "Purchasing group";
+        historyEvent.NewOperatorId = "unrelated-operator";
+        HistoricalNarrativeCanonicalizationResult result = await service.CanonicalizeAsync(historyEvent, CancellationToken.None);
 
         Assert.Equal(HistoricalNarrativeCanonicalizationState.Canonicalized, result.State);
         Assert.All(writtenFacts, static fact => Assert.Equal(HistoricalRevisionOrigin.Ordinary, fact.RevisionOrigin));
@@ -490,6 +499,15 @@ public sealed class HistoricalNarrativeCanonicalizationServiceTests
             writtenFacts,
             static fact => fact.PublicationState == HistoricalPublicationState.Published);
         Assert.Equal(HistoricalFactState.Probable, publishedFact.State);
+        Assert.Equal(expectedFactType, publishedFact.Type);
+        if (expectedFactType == HistoricalFactType.OwnerChange)
+        {
+            Assert.Equal(HistoricalAttributeKind.Owner, publishedFact.AttributeKind);
+            Assert.True(HistoricalAttributeTransitionParser.TryParse(publishedFact, out string? previousOwner, out string? newOwner));
+            Assert.Equal("Founding family", previousOwner);
+            Assert.Equal("Purchasing group", newOwner);
+        }
+
         Assert.Equal(5, publishedFact.Revision);
         Assert.Equal(8, publishedFact.PublicUncertaintyExplanation.Count);
         HistoricalSourceReference publishedSource = Assert.Single(

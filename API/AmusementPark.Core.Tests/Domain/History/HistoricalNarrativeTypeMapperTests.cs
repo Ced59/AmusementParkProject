@@ -96,9 +96,6 @@ public sealed class HistoricalNarrativeTypeMapperTests
     }
 
     [Theory]
-    [InlineData(HistoryEntityType.Park, "OwnershipChange")]
-    [InlineData(HistoryEntityType.Park, "Acquisition")]
-    [InlineData(HistoryEntityType.Park, "Sale")]
     [InlineData(HistoryEntityType.ParkItem, "ManufacturerChange")]
     [InlineData(HistoryEntityType.StandaloneAttraction, "ManufacturerChange")]
     public void TryMap_WhenStructuredTransitionPayloadDoesNotExist_ShouldRequireManualClassification(
@@ -116,5 +113,19 @@ public sealed class HistoricalNarrativeTypeMapperTests
         Assert.True(requiresManualClassification);
         Assert.False(mapped);
         Assert.Null(mapping);
+    }
+
+    [Theory]
+    [InlineData("OwnershipChange")]
+    [InlineData("Acquisition")]
+    [InlineData("Sale")]
+    public void TryMap_WhenParkOwnershipChanges_ShouldKeepOwnerSeparateFromOperator(string eventType)
+    {
+        Assert.False(HistoricalNarrativeTypeMapper.RequiresManualClassification(HistoryEntityType.Park, eventType));
+        Assert.True(HistoricalNarrativeTypeMapper.TryMap(HistoryEntityType.Park, eventType, out HistoricalNarrativeTypeMapping? mapping));
+        Assert.Equal(HistoricalFactType.OwnerChange, mapping!.FactType);
+        Assert.Equal(HistoricalAttributeKind.Owner, mapping.AttributeKind);
+        Assert.Equal(AttributeBoundaryMeaning.Unspecified, mapping.AttributeBoundaryMeaning);
+        Assert.Null(mapping.LifecycleBoundaryMeaning);
     }
 }

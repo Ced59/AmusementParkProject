@@ -75,6 +75,8 @@ internal static class ExportParkGraphJsonQueryHandlerHistoryMappingExtensions
             NewLogoImageId = historyEvent.NewLogoImageId,
             PreviousOperatorId = historyEvent.PreviousOperatorId,
             NewOperatorId = historyEvent.NewOperatorId,
+            PreviousOwnerName = historyEvent.PreviousOwnerName,
+            NewOwnerName = historyEvent.NewOwnerName,
             LocationLabel = historyEvent.LocationLabel,
             RelatedParkIds = historyEvent.RelatedParkIds.ToList(),
             RelatedParkItemIds = historyEvent.RelatedParkItemIds.ToList(),

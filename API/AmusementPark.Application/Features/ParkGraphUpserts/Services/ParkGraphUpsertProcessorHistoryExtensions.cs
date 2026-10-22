@@ -297,6 +297,8 @@ internal static class ParkGraphUpsertProcessorHistoryExtensions
         ParkGraphUpsertProcessorPrimitivePatchingExtensions.PatchString(patch, "newLogoImageId", historyEvent.NewLogoImageId, value => historyEvent.NewLogoImageId = value, change);
         ParkGraphUpsertProcessorPrimitivePatchingExtensions.PatchString(patch, "previousOperatorId", historyEvent.PreviousOperatorId, value => historyEvent.PreviousOperatorId = value, change);
         ParkGraphUpsertProcessorPrimitivePatchingExtensions.PatchString(patch, "newOperatorId", historyEvent.NewOperatorId, value => historyEvent.NewOperatorId = value, change);
+        ParkGraphUpsertProcessorPrimitivePatchingExtensions.PatchString(patch, "previousOwnerName", historyEvent.PreviousOwnerName, value => historyEvent.PreviousOwnerName = value, change);
+        ParkGraphUpsertProcessorPrimitivePatchingExtensions.PatchString(patch, "newOwnerName", historyEvent.NewOwnerName, value => historyEvent.NewOwnerName = value, change);
         ParkGraphUpsertProcessorPrimitivePatchingExtensions.PatchString(patch, "locationLabel", historyEvent.LocationLabel, value => historyEvent.LocationLabel = value, change);
         List<LocalizedText> titles = ParkGraphUpsertProcessorHistoryExtensions.ReadLocalizedTextsFlexible(patch, "titles", "title");
         if (titles.Count > 0)

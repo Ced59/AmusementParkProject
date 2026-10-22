@@ -38,10 +38,7 @@ public static class HistoricalNarrativeTypeMapper
                     normalizedEventType,
                     true,
                     out ParkHistoryEventType parkEventType)
-                && parkEventType is ParkHistoryEventType.SeasonOpening
-                    or ParkHistoryEventType.OwnershipChange
-                    or ParkHistoryEventType.Acquisition
-                    or ParkHistoryEventType.Sale,
+                && parkEventType is ParkHistoryEventType.SeasonOpening,
             HistoryEntityType.ParkItem or HistoryEntityType.StandaloneAttraction => Enum.TryParse(
                     normalizedEventType,
                     true,
@@ -96,6 +93,11 @@ public static class HistoricalNarrativeTypeMapper
             ParkHistoryEventType.OperatorChange => Attribute(
                 HistoricalFactType.OperatorChange,
                 HistoricalAttributeKind.Operator),
+            ParkHistoryEventType.OwnershipChange
+                or ParkHistoryEventType.Acquisition
+                or ParkHistoryEventType.Sale => Attribute(
+                    HistoricalFactType.OwnerChange,
+                    HistoricalAttributeKind.Owner),
             ParkHistoryEventType.Expansion
                 or ParkHistoryEventType.ResortExpansion
                 or ParkHistoryEventType.Redevelopment => Simple(HistoricalFactType.Extension),
