@@ -2,6 +2,7 @@ import { LANGUAGES, LanguageOption } from '../../shared/models/localization';
 import { resolvePublicSitemapLocation } from '../../shared/utils/routing/public-sitemap-location';
 import { resolvePublicDirectoryLocation } from '../../shared/utils/routing/public-directory-location';
 import { isPublicTripInvitationRoute } from './public-trip-invitation-route-policy';
+import { isPublicStandaloneAttractionArticleRoute } from './public-standalone-article-route-policy';
 
 const SUPPORTED_ROUTE_LANGUAGES: ReadonlySet<string> = new Set<string>(
   LANGUAGES.map((language: LanguageOption): string => language.value)
@@ -73,6 +74,7 @@ function isKnownPublicPageRoute(path: string): boolean {
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
+    || isPublicStandaloneAttractionArticleRoute(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/images|\/videos|\/map|\/zones|\/weather|\/opening-hours|\/pricing|\/items|\/comments)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/history(?:(?:\/[^/]+\/[^/]+)|(?:\/\d{4}))?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path)
