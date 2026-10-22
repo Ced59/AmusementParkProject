@@ -73,6 +73,7 @@ export interface HistoryArticlePageViewModel {
   park: Park | null;
   parkItem: ParkItem | null;
   contextPark: Park | null;
+  standaloneAttraction?: StandaloneAttraction | null;
   mainImageId: string | null;
   mainImage: ImageDto | null;
   blocks: HistoryArticleBlockViewModel[];

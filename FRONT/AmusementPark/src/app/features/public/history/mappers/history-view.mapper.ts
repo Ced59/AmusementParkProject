@@ -5,6 +5,8 @@ import {
   buildPublicParkHistoryRouteCommands,
   buildPublicParkItemHistoryArticleRouteCommands,
   buildPublicParkItemHistoryRouteCommands,
+  buildPublicStandaloneAttractionHistoryArticleRouteCommands,
+  buildPublicStandaloneAttractionHistoryRouteCommands,
   buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { HistoryArticle, HistoryTimeline, HistoryTimelineEvent } from '@app/models/history/history.models';
@@ -180,6 +182,7 @@ export function mapHistoryArticleToViewModel(article: HistoryArticle, language: 
     park: article.park ?? null,
     parkItem: article.parkItem ?? null,
     contextPark: article.contextPark ?? null,
+    standaloneAttraction: article.standaloneAttraction ?? null,
     mainImageId: content.mainImageId ?? article.event.mainImageId ?? null,
     mainImage: article.mainImage ?? null,
     blocks: (content.blocks ?? [])
@@ -264,8 +267,18 @@ function buildTimelineArticleLink(
   entry: HistoryTimelineEvent,
   language: string
 ): string[] | null {
-  if (!eventId || !entry.event.isMajor || !entry.event.article || entry.event.entityType === 'StandaloneAttraction') {
+  if (!eventId || !entry.event.isMajor || !entry.event.article?.isPublished) {
     return null;
+  }
+
+  if (entry.event.entityType === 'StandaloneAttraction') {
+    return buildPublicStandaloneAttractionHistoryArticleRouteCommands({
+      language,
+      attractionId: timeline.standaloneAttraction?.id ?? entry.event.ownerId,
+      attractionName: timeline.standaloneAttraction?.name,
+      eventId,
+      eventTitle: entry.event.article.slug ?? entry.event.slug ?? eventTitle
+    });
   }
 
   if (entry.event.entityType === 'ParkItem') {
@@ -295,7 +308,11 @@ function buildTimelineArticleLink(
 
 function buildArticleTimelineLink(article: HistoryArticle, language: string): string[] | null {
   if (article.event.entityType === 'StandaloneAttraction') {
-    return null;
+    return buildPublicStandaloneAttractionHistoryRouteCommands({
+      language,
+      attractionId: article.standaloneAttraction?.id ?? article.event.ownerId,
+      attractionName: article.standaloneAttraction?.name
+    });
   }
 
   if (article.event.entityType === 'ParkItem') {
@@ -321,7 +338,13 @@ function buildArticleCanonicalPath(article: HistoryArticle, eventTitle: string, 
 
 function buildArticleCanonicalLink(article: HistoryArticle, eventTitle: string, language: string): string[] | null {
   if (article.event.entityType === 'StandaloneAttraction') {
-    return null;
+    return buildPublicStandaloneAttractionHistoryArticleRouteCommands({
+      language,
+      attractionId: article.standaloneAttraction?.id ?? article.event.ownerId,
+      attractionName: article.standaloneAttraction?.name,
+      eventId: article.event.id,
+      eventTitle: article.event.article?.slug ?? article.event.slug ?? eventTitle
+    });
   }
 
   const resolvedEventTitle: string = article.event.article?.slug ?? article.event.slug ?? eventTitle;

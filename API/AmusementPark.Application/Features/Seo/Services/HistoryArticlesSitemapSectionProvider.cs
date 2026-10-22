@@ -19,15 +19,18 @@ public sealed class HistoryArticlesSitemapSectionProvider : ISitemapSectionProvi
     private readonly IHistoryEventRepository historyEventRepository;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
 
     public HistoryArticlesSitemapSectionProvider(
         IHistoryEventRepository historyEventRepository,
         IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository)
+        IParkItemRepository parkItemRepository,
+        IStandaloneAttractionRepository? standaloneAttractionRepository = null)
     {
         this.historyEventRepository = historyEventRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
+        this.standaloneAttractionRepository = standaloneAttractionRepository;
     }
 
     public string Key => SitemapSectionKeys.HistoryArticles;
@@ -46,11 +49,18 @@ public sealed class HistoryArticlesSitemapSectionProvider : ISitemapSectionProvi
             context.SupportedLanguages,
             this.parkRepository,
             this.parkItemRepository,
-            cancellationToken);
+            cancellationToken,
+            this.standaloneAttractionRepository);
 
         Dictionary<string, SitemapUrlEntry> urlsByPath = new Dictionary<string, SitemapUrlEntry>(StringComparer.OrdinalIgnoreCase);
         foreach (HistoryEvent historyEvent in resolvedData.Events.Where(HistorySitemapCandidateResolver.IsPublicArticleEvent))
         {
+            if (historyEvent.EntityType == HistoryEntityType.StandaloneAttraction)
+            {
+                AddStandaloneArticleUrls(urlsByPath, resolvedData, historyEvent);
+                continue;
+            }
+
             if (historyEvent.EntityType == HistoryEntityType.Park)
             {
                 AddParkArticleUrls(urlsByPath, resolvedData, historyEvent);
@@ -61,6 +71,29 @@ public sealed class HistoryArticlesSitemapSectionProvider : ISitemapSectionProvi
         }
 
         return urlsByPath.Values.OrderBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase).ToList();
+    }
+
+    private static void AddStandaloneArticleUrls(
+        Dictionary<string, SitemapUrlEntry> urlsByPath,
+        HistorySitemapResolvedData resolvedData,
+        HistoryEvent historyEvent)
+    {
+        if (!resolvedData.PublicStandaloneAttractionById.TryGetValue(historyEvent.OwnerId, out StandaloneAttraction? attraction))
+        {
+            return;
+        }
+
+        string attractionSlug = SeoSlugService.ToSlug(attraction.Name, "attraction");
+        string eventSlug = HistorySitemapCandidateResolver.ResolveHistoryEventSlug(historyEvent);
+        foreach (string language in resolvedData.Languages)
+        {
+            HistorySitemapCandidateResolver.AddOrRefreshUrl(
+                urlsByPath,
+                $"/{language}/attraction/{attraction.Id}/{attractionSlug}/history/{historyEvent.Id}/{eventSlug}",
+                historyEvent.UpdatedAtUtc,
+                "monthly",
+                0.66m);
+        }
     }
 
     private static void AddParkArticleUrls(

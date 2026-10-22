@@ -9,6 +9,7 @@ import {
   HistoryArticlePageViewModel,
   HistoryTimelinePageViewModel,
 } from '@features/public/history/models/history-view.model';
+import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { Park } from '@app/models/parks/park';
 import { ParkStatus } from '@app/models/parks/park-status';
 import { ParkItem } from '@app/models/parks/park-item';
@@ -1211,6 +1212,21 @@ describe('SeoService', () => {
     );
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+  });
+
+  it('builds standalone article breadcrumbs without an artificial park', () => {
+    const path = '/fr/attraction/standalone-1/dreamfly-porto/history/event-1/premiers-vols';
+    service.applyHistoryArticleSeo(buildHistoryArticle({
+      title: 'Les premiers vols', ownerName: 'DreamFly Porto', park: null, parkItem: null, contextPark: null,
+      standaloneAttraction: { id: 'standalone-1', name: 'DreamFly Porto' } as StandaloneAttraction
+    }), 'fr', path, path);
+    const text = Array.from(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).map(node => node.textContent).join('');
+    expect(text).toContain('DreamFly Porto');
+    expect(text).toContain('Histoire de DreamFly Porto');
+    expect(text).not.toContain('/fr/parks');
+    expect(text).not.toContain('"name":"Park"');
+    expect(readCanonicalHref()).toBe('http://localhost:4200' + path);
+    expect(readMetaContent('meta[property="og:type"]')).toBe('article');
   });
 
   it('applies article Open Graph metadata to history articles and resets the type on regular pages', () => {

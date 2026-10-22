@@ -11,6 +11,17 @@
   }">
   @if (currentArticle) {
     <article class="history-article">
+      @if (currentArticle.standaloneAttraction) {
+        <nav class="history-breadcrumb" [attr.aria-label]="breadcrumbCopy().navigation">
+          <a [routerLink]="['/', currentLanguage(), 'home']">{{ breadcrumbCopy().home }}</a>
+          <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          <a [routerLink]="attractionLink(currentArticle)">{{ currentArticle.ownerName }}</a>
+          <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          <a [routerLink]="currentArticle.timelineLink">{{ breadcrumbCopy().history }}</a>
+          <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          <span aria-current="page">{{ currentArticle.title }}</span>
+        </nav>
+      }
       <header class="history-article__hero">
         <div class="history-article__hero-copy">
           @let currentParkItemName = contextParkItemName(currentArticle);

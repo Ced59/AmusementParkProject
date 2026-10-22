@@ -76,6 +76,7 @@ internal static class HistoryHttpMappers
             Park = result.Park?.ToHttp(),
             ParkItem = result.ParkItem?.ToHttp(),
             ContextPark = result.ContextPark?.ToHttp(),
+            StandaloneAttraction = result.StandaloneAttraction?.ToHttp(),
             MainImage = result.MainImage?.ToHttp(),
         };
     }

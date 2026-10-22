@@ -28,6 +28,11 @@ export interface PublicStandaloneAttractionRouteTarget {
   attractionName: string | null | undefined;
 }
 
+export interface PublicStandaloneAttractionHistoryArticleRouteTarget extends PublicStandaloneAttractionRouteTarget {
+  eventId: string | null | undefined;
+  eventTitle: string | null | undefined;
+}
+
 export interface PublicParkItemVideoRouteTarget extends PublicParkItemRouteTarget {
   videoId: string | null | undefined;
   videoTitle: string | null | undefined;
@@ -92,6 +97,22 @@ export function buildPublicStandaloneAttractionRouteCommands(target: PublicStand
     attractionId,
     buildEntitySlug(attractionName, 'attraction')
   ];
+}
+
+export function buildPublicStandaloneAttractionHistoryRouteCommands(target: PublicStandaloneAttractionRouteTarget): string[] | null {
+  const attractionRoute: string[] | null = buildPublicStandaloneAttractionRouteCommands(target);
+  return attractionRoute ? [...attractionRoute, 'history'] : null;
+}
+
+export function buildPublicStandaloneAttractionHistoryArticleRouteCommands(target: PublicStandaloneAttractionHistoryArticleRouteTarget): string[] | null {
+  const historyRoute: string[] | null = buildPublicStandaloneAttractionHistoryRouteCommands(target);
+  const eventId: string | null = normalizeRouteValue(target.eventId);
+  const eventTitle: string | null = normalizeRouteValue(target.eventTitle);
+  if (!historyRoute || !eventId || !eventTitle) {
+    return null;
+  }
+
+  return [...historyRoute, eventId, buildEntitySlug(eventTitle, 'history')];
 }
 
 export function buildPublicParkItemsRouteCommands(target: PublicParkRouteTarget): string[] | null {

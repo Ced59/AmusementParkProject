@@ -136,6 +136,7 @@ describe('App routes', () => {
       'history/lineages/:contextParkId/:subjectType/:subjectId/:subjectSlug',
       'attraction/:standaloneAttractionId/:slug/history',
       'attraction/:standaloneAttractionId/:slug/history/page/:page',
+      'attraction/:standaloneAttractionId/:slug/history/:eventId/:eventSlug',
       'park/:id/:slug/history',
       'park/:id/:slug/history/page/:page',
       'park/:id/:slug/history/compare/:fromYear/:toYear',

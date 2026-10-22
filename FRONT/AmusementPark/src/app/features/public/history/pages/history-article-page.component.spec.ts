@@ -15,6 +15,7 @@ import {
   HistoryArticle,
   HistoryTimeline,
 } from '@app/models/history/history.models';
+import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { TranslationService } from '@app/services/translation.service';
 import {
   COMMON_TEST_IMPORTS,
@@ -116,6 +117,26 @@ describe('HistoryArticlePageComponent', () => {
 
     fixture = TestBed.createComponent(HistoryArticlePageComponent);
     fixture.detectChanges();
+  });
+
+  it('renders clickable standalone owner and history breadcrumbs', () => {
+    const article = createHistoryArticle('Les premiers vols');
+    article.event.entityType = 'StandaloneAttraction';
+    article.event.ownerId = 'standalone-1';
+    article.event.parkId = null;
+    article.park = null;
+    article.parkItem = null;
+    article.contextPark = null;
+    article.standaloneAttraction = { id: 'standalone-1', name: 'DreamFly Porto' } as StandaloneAttraction;
+    routeData.next({ [HISTORY_ARTICLE_ROUTE_DATA_KEY]: article });
+    fixture.detectChanges();
+    const nav = (fixture.nativeElement as HTMLElement).querySelector('.history-breadcrumb')!;
+    const links = Array.from(nav.querySelectorAll('a'));
+    expect(links.map(link => link.getAttribute('href'))).toEqual([
+      '/fr/home', '/fr/attraction/standalone-1/dreamfly-porto', '/fr/attraction/standalone-1/dreamfly-porto/history'
+    ]);
+    expect(nav.querySelector('[aria-current="page"]')?.textContent).toContain('Les premiers vols');
+    expect(nav.textContent).toContain('DreamFly Porto');
   });
 
   it('renders the resolved article context without a late API load', () => {
