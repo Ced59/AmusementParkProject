@@ -1,0 +1,120 @@
+{
+  "parkId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+  "entryId": "FR-park-a48caf8e-871b-40cc-8b98-9faff4219e96",
+  "conversation": "Conversation France",
+  "timestampPolicy": "Apply : appliedAtUtc retourné par le serveur. ImportPhoto/UpdatePhotoMetadata : updatedAt du média, dernière écriture de métadonnées de cette opération. UTC normalisé à la milliseconde pour le CLI, valeur brute intégralement conservée. Aucun mtime, inventaire, audit ou commit substitué.",
+  "dataIntegrations": [
+    {
+      "eventId": "import-photo-9b412f484c054b47b7c0fa476342ca79-2026-10-22T185941.131Z",
+      "action": "ImportPhoto",
+      "imageId": "9b412f484c054b47b7c0fa476342ca79",
+      "createdAt": "2026-10-22T18:59:37.71Z",
+      "rawAppliedAtUtc": "2026-10-22T18:59:41.131Z",
+      "appliedAt": "2026-10-22T18:59:41.131Z",
+      "receiptFile": "authorized-recovery-owner-portrait.receipt.json",
+      "receiptSha256": "ce13273544be25b6e83868a50b4fe61fbe1ae0be5940c219c034106789b64f12",
+      "ownerId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+      "sourceUrl": "https://www.airzen.fr/wp-content/uploads/2022/06/Kid-Parc-1024x823.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 9b412f484c054b47b7c0fa476342ca79."
+    },
+    {
+      "eventId": "apply-f8ac2ffa-4540-482c-8cd8-5f86ddad6444",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T19:00:52.9797915Z",
+      "appliedAt": "2026-10-22T19:00:52.979Z",
+      "receiptFile": "authorized-recovery-acquisition-2020.apply.json",
+      "receiptSha256": "c8b5cdca0ffb89cc01b2153242bf604cddc4cff1f6a9971ee21995fa31d2d424",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "eventType",
+        "newOwnerName",
+        "previousOwnerName",
+        "sources",
+        "summaries",
+        "titles"
+      ],
+      "summary": "Apply contrôlé : eventType, newOwnerName, previousOwnerName, sources, summaries, titles."
+    },
+    {
+      "eventId": "apply-2ce3d600-56ae-4d96-a7b6-edfb016a7599",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T19:16:12.321956Z",
+      "appliedAt": "2026-10-22T19:16:12.321Z",
+      "receiptFile": "authorized-step9-editorial-corrections-v2.apply.json",
+      "receiptSha256": "6a538184e5228318bf6d55b59e5e130c5c3a651887f78548c82a5db104d63434",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "captions.de",
+        "captions.en",
+        "captions.es",
+        "captions.fr",
+        "captions.it",
+        "captions.nl",
+        "captions.pl",
+        "captions.pt",
+        "openingHours.lastVerifiedAtUtc",
+        "openingHours.notes"
+      ],
+      "summary": "Apply contrôlé : captions.de, captions.en, captions.es, captions.fr, captions.it, captions.nl, captions.pl, captions.pt, openingHours.lastVerifiedAtUtc, openingHours.notes."
+    },
+    {
+      "eventId": "apply-40e16161-2370-40fc-a2a3-72737b91de6a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T19:18:28.3474174Z",
+      "appliedAt": "2026-10-22T19:18:28.347Z",
+      "receiptFile": "authorized-step9-geolocation.apply.json",
+      "receiptSha256": "82914cbf41e80c3c5d6a243d765520a93d159a53e14f8ca23c1a0702025a88f6",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "position"
+      ],
+      "summary": "Apply contrôlé : position."
+    },
+    {
+      "eventId": "apply-b7d64d1d-6a49-4b35-a613-7c71ded633ed",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T19:22:21.3778616Z",
+      "appliedAt": "2026-10-22T19:22:21.377Z",
+      "receiptFile": "authorized-step9-historical-pricing.apply.json",
+      "receiptSha256": "5498e1a139edc2cce19672d5e49b35f767d344b88db8d2afdf507db15c411edd",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "pricing.admissionOffers",
+        "pricing.annualPasses",
+        "pricing.historicalSnapshots",
+        "pricing.lastVerifiedAtUtc"
+      ],
+      "summary": "Apply contrôlé : pricing.admissionOffers, pricing.annualPasses, pricing.historicalSnapshots, pricing.lastVerifiedAtUtc."
+    }
+  ],
+  "publicationOrNoop": [],
+  "evidenceWithoutIntegrationInstant": []
+}

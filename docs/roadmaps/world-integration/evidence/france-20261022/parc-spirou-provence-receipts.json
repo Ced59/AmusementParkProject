@@ -1,0 +1,884 @@
+{
+  "parkId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+  "entryId": "FR-park-fa6698dd-950b-4c78-b351-cd7deb501967",
+  "conversation": "Conversation France",
+  "timestampPolicy": "Apply : appliedAtUtc retourné par le serveur. ImportPhoto/UpdatePhotoMetadata : updatedAt du média, dernière écriture de métadonnées de cette opération. UTC normalisé à la milliseconde pour le CLI, valeur brute intégralement conservée. Aucun mtime, inventaire, audit ou commit substitué.",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-1bb6ab2e-e6b6-4333-ad20-2d54ab05e3a7",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T05:30:12.4846726Z",
+      "appliedAt": "2026-10-22T05:30:12.484Z",
+      "receiptFile": "authorized-current-pricing.apply.json",
+      "receiptSha256": "f96b0785a0673a9621b4afdb5465a59ee8efab993dc034b5accd7dd0099d44c2",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "pricing.admissionOffers",
+        "pricing.annualPasses",
+        "pricing.creditOffers",
+        "pricing.currencyCode",
+        "pricing.historicalSnapshots",
+        "pricing.lastVerifiedAtUtc",
+        "pricing.notes",
+        "pricing.parkingOffers",
+        "pricing.purchaseUrl",
+        "pricing.sourceUrl"
+      ],
+      "summary": "Apply contrôlé : pricing.admissionOffers, pricing.annualPasses, pricing.creditOffers, pricing.currencyCode, pricing.historicalSnapshots, pricing.lastVerifiedAtUtc, pricing.notes, pricing.parkingOffers, pricing.purchaseUrl, pricing.sourceUrl."
+    },
+    {
+      "eventId": "import-photo-d915e4578da44a649cdbd82b326eec55-2026-10-22T053703.987Z",
+      "action": "ImportPhoto",
+      "imageId": "d915e4578da44a649cdbd82b326eec55",
+      "createdAt": "2026-10-22T05:36:59.543Z",
+      "rawAppliedAtUtc": "2026-10-22T05:37:03.987Z",
+      "appliedAt": "2026-10-22T05:37:03.987Z",
+      "receiptFile": "authorized-naruto-history-photo-01.receipt.json",
+      "receiptSha256": "296bdbcc5b99bb464a0ddca99b860661a276a9c21a4a42da42c4efdd8cee9dc5",
+      "ownerId": "17516362-52c3-4497-8b4a-79c9f4ea9388",
+      "sourceUrl": "https://prcdn.freetls.fastly.net/release_image/2734/2283/2734-2283-4b007d900333304577184bb800ad03b9-2449x1632.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "summary": "Photo importée et métadonnées enregistrées : d915e4578da44a649cdbd82b326eec55."
+    },
+    {
+      "eventId": "import-photo-97a837bfdeb745f6aa8cc7d2a9d06e13-2026-10-22T054328.307Z",
+      "action": "ImportPhoto",
+      "imageId": "97a837bfdeb745f6aa8cc7d2a9d06e13",
+      "createdAt": "2026-10-22T05:43:24.909Z",
+      "rawAppliedAtUtc": "2026-10-22T05:43:28.307Z",
+      "appliedAt": "2026-10-22T05:43:28.307Z",
+      "receiptFile": "authorized-naruto-history-photo-03.receipt.json",
+      "receiptSha256": "ce0c2b563ab34d575ed0417fa638b23e5bb41a5e28ccdfe82352336128e2f566",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://prcdn.freetls.fastly.net/release_image/183903/1/183903-1-ad4abd6a86c2a9958f79d01b94340e0a-3900x2194.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "summary": "Photo importée et métadonnées enregistrées : 97a837bfdeb745f6aa8cc7d2a9d06e13."
+    },
+    {
+      "eventId": "import-photo-f639189c40a54101b9b0163b35957486-2026-10-22T054345.798Z",
+      "action": "ImportPhoto",
+      "imageId": "f639189c40a54101b9b0163b35957486",
+      "createdAt": "2026-10-22T05:43:42.345Z",
+      "rawAppliedAtUtc": "2026-10-22T05:43:45.798Z",
+      "appliedAt": "2026-10-22T05:43:45.798Z",
+      "receiptFile": "authorized-naruto-history-photo-04.receipt.json",
+      "receiptSha256": "b42ff122cf9cdde0b4367e5b78fe679a0a5ecfa47ad595a36aac4e4bf64c807d",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://prcdn.freetls.fastly.net/release_image/183903/1/183903-1-7a9e385535a23995b9b77a82740963e8-3900x2600.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "summary": "Photo importée et métadonnées enregistrées : f639189c40a54101b9b0163b35957486."
+    },
+    {
+      "eventId": "import-photo-1d35d2e0cbb3462888426c3b377220e7-2026-10-22T054402.629Z",
+      "action": "ImportPhoto",
+      "imageId": "1d35d2e0cbb3462888426c3b377220e7",
+      "createdAt": "2026-10-22T05:43:59.221Z",
+      "rawAppliedAtUtc": "2026-10-22T05:44:02.629Z",
+      "appliedAt": "2026-10-22T05:44:02.629Z",
+      "receiptFile": "authorized-naruto-history-photo-05.receipt.json",
+      "receiptSha256": "dc24476745c8a8304833bbce7174545b2b56e819aff721afce906328c1d7a22a",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://prcdn.freetls.fastly.net/release_image/183903/1/183903-1-9085ab51c7b2c199476a2e99f339b844-3900x2600.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "summary": "Photo importée et métadonnées enregistrées : 1d35d2e0cbb3462888426c3b377220e7."
+    },
+    {
+      "eventId": "import-photo-0b915ab635ac43e79bc85ad4d1c4a659-2026-10-22T054416.960Z",
+      "action": "ImportPhoto",
+      "imageId": "0b915ab635ac43e79bc85ad4d1c4a659",
+      "createdAt": "2026-10-22T05:44:13.613Z",
+      "rawAppliedAtUtc": "2026-10-22T05:44:16.96Z",
+      "appliedAt": "2026-10-22T05:44:16.960Z",
+      "receiptFile": "authorized-naruto-history-photo-06.receipt.json",
+      "receiptSha256": "53519c7049fa174f46dbf757f1fe5111c4909175424259bbfc1cd7967db6d665",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://prcdn.freetls.fastly.net/release_image/2734/2283/2734-2283-1fd15fea9e72a82f1e721549dc25b7cb-2449x1632.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "summary": "Photo importée et métadonnées enregistrées : 0b915ab635ac43e79bc85ad4d1c4a659."
+    },
+    {
+      "eventId": "import-photo-8c026c7e285442f9882b2747bd661247-2026-10-22T054630.593Z",
+      "action": "ImportPhoto",
+      "imageId": "8c026c7e285442f9882b2747bd661247",
+      "createdAt": "2026-10-22T05:46:26.689Z",
+      "rawAppliedAtUtc": "2026-10-22T05:46:30.593Z",
+      "appliedAt": "2026-10-22T05:46:30.593Z",
+      "receiptFile": "authorized-foundation-photo-01.receipt.json",
+      "receiptSha256": "bbf707e26fef4121b87ea7336a7b3178056a0cb0c37dbf89051004875a4b9e00",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://www.parc-attraction-loisirs.fr/wp/files/2017/07/demarrage-parc-spirou.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 8c026c7e285442f9882b2747bd661247."
+    },
+    {
+      "eventId": "import-photo-980d14a47ccc4519b40556edd5704400-2026-10-22T054651.559Z",
+      "action": "ImportPhoto",
+      "imageId": "980d14a47ccc4519b40556edd5704400",
+      "createdAt": "2026-10-22T05:46:48.207Z",
+      "rawAppliedAtUtc": "2026-10-22T05:46:51.559Z",
+      "appliedAt": "2026-10-22T05:46:51.559Z",
+      "receiptFile": "authorized-foundation-photo-02.receipt.json",
+      "receiptSha256": "2d93d8e95fef15fe8f068530ec0e484a326cda1657b6051c09813b7bb34ba218",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://www.ventoux-magazine.com/wp-content/uploads/2018/06/spirouweb.png",
+      "summary": "Photo importée et métadonnées enregistrées : 980d14a47ccc4519b40556edd5704400."
+    },
+    {
+      "eventId": "apply-03cf8e00-1e24-49d6-91fa-f1e6c4efd376",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T05:51:40.6662278Z",
+      "appliedAt": "2026-10-22T05:51:40.666Z",
+      "receiptFile": "authorized-park-history-lot-1.apply.json",
+      "receiptSha256": "f6a39bcb1dd528d64814e43a3a32dea8712ca82ebed9440cc9299a9a3a319c20",
+      "counts": {
+        "created": 11,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Apply contrôlé : datePrecision, day, eventType, isMajor, key, mainImageId, month, ownerId, parkId, sources, summaries, titles, year."
+    },
+    {
+      "eventId": "apply-e900d32d-13b7-4dfc-bc66-ede60985c10f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T05:57:30.402347Z",
+      "appliedAt": "2026-10-22T05:57:30.402Z",
+      "receiptFile": "authorized-history-synthesis.apply.json",
+      "receiptSha256": "63c5b00f3780b8cea95a1c51de18a34954789ad9de17e9c23c50ca5f06092af0",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Apply contrôlé : article."
+    },
+    {
+      "eventId": "apply-8a760132-180c-405a-9df6-c9c689621405",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:03:49.8569794Z",
+      "appliedAt": "2026-10-22T06:03:49.856Z",
+      "receiptFile": "authorized-attraction-transformations.apply.json",
+      "receiptSha256": "9d9fc334cb21f4b94108c2342b06afae95ad9fae5ecc92f449e812c85f521111",
+      "counts": {
+        "created": 10,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "entityType",
+        "eventType",
+        "key",
+        "mainImageId",
+        "month",
+        "newName",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "previousName",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Apply contrôlé : contextParkId, datePrecision, day, entityType, eventType, key, mainImageId, month, newName, ownerId, parkId, parkItemId, previousName, sources, summaries, titles, year."
+    },
+    {
+      "eventId": "import-photo-32011af398b048df853b654ef18c3260-2026-10-22T060437.298Z",
+      "action": "ImportPhoto",
+      "imageId": "32011af398b048df853b654ef18c3260",
+      "createdAt": "2026-10-22T06:04:33.428Z",
+      "rawAppliedAtUtc": "2026-10-22T06:04:37.298Z",
+      "appliedAt": "2026-10-22T06:04:37.298Z",
+      "receiptFile": "authorized-areas-2021-photo-01.receipt.json",
+      "receiptSha256": "c28967991cad19d136057759d0a5adb829343b2ebbe1d81fcd5d7fb8a8b9026b",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://airtimenews.org/wp-content/uploads/2022/05/parmi-les-nouvelles-attractions-la-palombie-secrete-avec-son-parcours-decouverte-au-milieu-d-une-jungle-amenagee-et-le-splash-piranha-photo-le-dl-christophe-agostinis-1623598467.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 32011af398b048df853b654ef18c3260."
+    },
+    {
+      "eventId": "import-photo-07a4f54814b5465ba1de468338d55ec0-2026-10-22T060451.238Z",
+      "action": "ImportPhoto",
+      "imageId": "07a4f54814b5465ba1de468338d55ec0",
+      "createdAt": "2026-10-22T06:04:47.788Z",
+      "rawAppliedAtUtc": "2026-10-22T06:04:51.238Z",
+      "appliedAt": "2026-10-22T06:04:51.238Z",
+      "receiptFile": "authorized-areas-2021-photo-02.receipt.json",
+      "receiptSha256": "1a9a92059e827e6c9b77a65f74b8c5bbfef7e5535adb16cdb03df9eaf8d78dc6",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://airtimenews.org/wp-content/uploads/2022/05/la-zone-far-west-propose-des-espaces-de-restauration-et-diverses-activites-photo-le-dl-christophe-agostinis-1623598468-1.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 07a4f54814b5465ba1de468338d55ec0."
+    },
+    {
+      "eventId": "apply-4709dc87-b5ab-43a2-81da-eddcd5e08cca",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:09:03.9425051Z",
+      "appliedAt": "2026-10-22T06:09:03.942Z",
+      "receiptFile": "authorized-film-transformation-article.apply.json",
+      "receiptSha256": "5126a7d8b79a3fe41fbe9435de069b910d0d6ac0a264ba2f0d739d51eb54e0f1",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "isMajor"
+      ],
+      "summary": "Apply contrôlé : article, isMajor."
+    },
+    {
+      "eventId": "apply-c12f45ba-c969-451a-a1cd-74686feb150d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:16:06.5125443Z",
+      "appliedAt": "2026-10-22T06:16:06.512Z",
+      "receiptFile": "authorized-history-precision-correction.apply.json",
+      "receiptSha256": "a64d10db7582d83f538f440b95b5cc604d035b0b28de8f5c9567e521c562500b",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.openingDate",
+        "attractionDetails.openingDateText",
+        "mainImageId"
+      ],
+      "summary": "Apply contrôlé : attractionDetails.openingDate, attractionDetails.openingDateText, mainImageId."
+    },
+    {
+      "eventId": "import-photo-179d9673589640d98b5b92b7800869e4-2026-10-22T061829.741Z",
+      "action": "ImportPhoto",
+      "imageId": "179d9673589640d98b5b92b7800869e4",
+      "createdAt": "2026-10-22T06:18:25.947Z",
+      "rawAppliedAtUtc": "2026-10-22T06:18:29.741Z",
+      "appliedAt": "2026-10-22T06:18:29.741Z",
+      "receiptFile": "authorized-last-history-photo-01.receipt.json",
+      "receiptSha256": "0400306e06021f0c64e8bf1f5fb53fb9317055be37f0933a12bf5500e2d703e6",
+      "ownerId": "d971fcb2-4450-48b9-831b-fd968c327deb",
+      "sourceUrl": "https://themeparkfreaks.eu/wp-content/uploads/2020/02/Untitled-2-20.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 179d9673589640d98b5b92b7800869e4."
+    },
+    {
+      "eventId": "import-photo-9f3eff77a1a74db58e1a92fbb0b4d722-2026-10-22T061845.125Z",
+      "action": "ImportPhoto",
+      "imageId": "9f3eff77a1a74db58e1a92fbb0b4d722",
+      "createdAt": "2026-10-22T06:18:41.547Z",
+      "rawAppliedAtUtc": "2026-10-22T06:18:45.125Z",
+      "appliedAt": "2026-10-22T06:18:45.125Z",
+      "receiptFile": "authorized-last-history-photo-02.receipt.json",
+      "receiptSha256": "0a18d369a7c470c5bea462b6db435c998dc04645ba0aa236f7101f4a8f0c8790",
+      "ownerId": "d6b11b44-23ff-4b8c-ae6e-0faa92e762b0",
+      "sourceUrl": "https://airtimenews.org/wp-content/uploads/2022/05/frch5cgwyaav6yz.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 9f3eff77a1a74db58e1a92fbb0b4d722."
+    },
+    {
+      "eventId": "import-photo-2cb058164dd74a6989486d12279c8d4b-2026-10-22T061903.093Z",
+      "action": "ImportPhoto",
+      "imageId": "2cb058164dd74a6989486d12279c8d4b",
+      "createdAt": "2026-10-22T06:18:59.262Z",
+      "rawAppliedAtUtc": "2026-10-22T06:19:03.093Z",
+      "appliedAt": "2026-10-22T06:19:03.093Z",
+      "receiptFile": "authorized-last-history-photo-03.receipt.json",
+      "receiptSha256": "44f572a4c895387dddfc02f736740844580547cfa44a8c3ab2dd2f7bef6f7d9b",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://www.echodumardi.com/wp-content/uploads/2026/10/1791583209326-Large-750x375.jpeg",
+      "summary": "Photo importée et métadonnées enregistrées : 2cb058164dd74a6989486d12279c8d4b."
+    },
+    {
+      "eventId": "apply-11c8579b-12e8-47d6-925b-a2a3d783ea32",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:23:11.6857845Z",
+      "appliedAt": "2026-10-22T06:23:11.685Z",
+      "receiptFile": "authorized-item-openings-early.apply.json",
+      "receiptSha256": "d2c1ff27fc1d82ffeaa9400dddb5be22033539c25d93ef948028bfe4e519fa2f",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "entityType",
+        "eventType",
+        "key",
+        "mainImageId",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Apply contrôlé : contextParkId, entityType, eventType, key, mainImageId, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+    },
+    {
+      "eventId": "apply-1390cf0b-683b-43c5-9e09-81e316c366c7",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:27:47.2349648Z",
+      "appliedAt": "2026-10-22T06:27:47.234Z",
+      "receiptFile": "authorized-item-openings-recent.apply.json",
+      "receiptSha256": "91d9380124aa6e4a82c16f5c955d549f1ca2085d40f03c89ce90d82e404a4fd8",
+      "counts": {
+        "created": 7,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Apply contrôlé : contextParkId, datePrecision, day, entityType, eventType, isMajor, key, mainImageId, month, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+    },
+    {
+      "eventId": "apply-f83cc047-78c5-4bf3-9e4e-0bd6cd033d00",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:32:35.5881896Z",
+      "appliedAt": "2026-10-22T06:32:35.588Z",
+      "receiptFile": "authorized-konoha-article.apply.json",
+      "receiptSha256": "75acb58a409ecd4150063343a57f4f460e57ab401904d53e3b5b067441550d10",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Apply contrôlé : article."
+    },
+    {
+      "eventId": "apply-6bb54684-ab93-4cba-99ca-b787f86b7553",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:35:03.9697007Z",
+      "appliedAt": "2026-10-22T06:35:03.969Z",
+      "receiptFile": "authorized-early-transformation-article.apply.json",
+      "receiptSha256": "d0021e6e69c5b6c0706da36da10498b1871cde5333e974074cf6f226bb81caa6",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Apply contrôlé : article."
+    },
+    {
+      "eventId": "apply-bd755e30-7383-4049-b6dd-8474fc8212e0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:35:50.5759968Z",
+      "appliedAt": "2026-10-22T06:35:50.575Z",
+      "receiptFile": "authorized-final-history-milestones.apply.json",
+      "receiptSha256": "d2087a73e6056dbef9f947d038aa1fac80d71151383eeae2b04dc791889d1e74",
+      "counts": {
+        "created": 3,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.openingDateText",
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "entityType",
+        "eventType",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Apply contrôlé : attractionDetails.openingDateText, contextParkId, datePrecision, day, entityType, eventType, key, mainImageId, month, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+    },
+    {
+      "eventId": "apply-7ecdec7d-f395-4fb5-ac89-94842abc9fa3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T06:49:26.5358322Z",
+      "appliedAt": "2026-10-22T06:49:26.535Z",
+      "receiptFile": "authorized-step9-editorial-corrections.apply.json",
+      "receiptSha256": "30495057782b40ff5ecb42605cefd630fac17a70e820e76fa7e938a1fca42b1f",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt",
+        "summaries",
+        "titles"
+      ],
+      "summary": "Apply contrôlé : article, descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt, summaries, titles."
+    },
+    {
+      "eventId": "import-photo-1651648136974619a5ebc4e2cd698f5e-2026-10-22T065234.692Z",
+      "action": "ImportPhoto",
+      "imageId": "1651648136974619a5ebc4e2cd698f5e",
+      "createdAt": "2026-10-22T06:52:30.673Z",
+      "rawAppliedAtUtc": "2026-10-22T06:52:34.692Z",
+      "appliedAt": "2026-10-22T06:52:34.692Z",
+      "receiptFile": "authorized-step9-gap-photo-01.receipt.json",
+      "receiptSha256": "eaad27d15f1c55133c661a6723f7ff25a81b1f9eadecb97c4b3f8d6c95c1911a",
+      "ownerId": "749fe76b-dbcd-4240-a5f7-a78d78390d46",
+      "sourceUrl": "https://application.parc-spirou.com/uploads/images/game_room/shooting-game_banniere.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 1651648136974619a5ebc4e2cd698f5e."
+    },
+    {
+      "eventId": "import-photo-4ceb77b49b5f4c3bb57520c7cc2c745a-2026-10-22T065254.243Z",
+      "action": "ImportPhoto",
+      "imageId": "4ceb77b49b5f4c3bb57520c7cc2c745a",
+      "createdAt": "2026-10-22T06:52:50.771Z",
+      "rawAppliedAtUtc": "2026-10-22T06:52:54.243Z",
+      "appliedAt": "2026-10-22T06:52:54.243Z",
+      "receiptFile": "authorized-step9-gap-photo-02.receipt.json",
+      "receiptSha256": "f6bba7288a346c7e8c4ead4f9a2375f604af81220ca2e0fc4a6c0fdd0aacdeb1",
+      "ownerId": "cc8f89a6-4287-48d6-93f5-18e624c62c66",
+      "sourceUrl": "https://www.parc-spirou.com/wp-content/uploads/2026/09/banniere-article-site-internet-5-1024x412.png",
+      "summary": "Photo importée et métadonnées enregistrées : 4ceb77b49b5f4c3bb57520c7cc2c745a."
+    },
+    {
+      "eventId": "apply-adf0e426-2da5-4d51-b404-93d308716c47",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T07:02:30.0745887Z",
+      "appliedAt": "2026-10-22T07:02:30.074Z",
+      "receiptFile": "authorized-step9-article-captions.apply.json",
+      "receiptSha256": "7e69ce5076d65271de020e62ef16eca3205309fe7743b6d0061da2e5a9dd587c",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Apply contrôlé : article."
+    },
+    {
+      "eventId": "apply-37fcfdd4-3327-4bef-a130-9457af63bdb5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T07:05:25.1957358Z",
+      "appliedAt": "2026-10-22T07:05:25.195Z",
+      "receiptFile": "authorized-step9-german-storage.apply.json",
+      "receiptSha256": "00ae7d31e706bf4a2d1af510c27f5d0e4e16dbad13cdd8ac02b66ae709878990",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de"
+      ],
+      "summary": "Apply contrôlé : descriptions.de."
+    },
+    {
+      "eventId": "update-photo-2cb058164dd74a6989486d12279c8d4b-2026-10-22T070557.206Z",
+      "action": "UpdatePhotoMetadata",
+      "imageId": "2cb058164dd74a6989486d12279c8d4b",
+      "createdAt": "2026-10-22T06:18:59.262Z",
+      "rawAppliedAtUtc": "2026-10-22T07:05:57.206Z",
+      "appliedAt": "2026-10-22T07:05:57.206Z",
+      "receiptFile": "authorized-step9-media-caption-1.receipt.json",
+      "receiptSha256": "8e8e987029d987e9b167a83f5c414307912960175358c5ea5d820fac93580c1b",
+      "ownerId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+      "sourceUrl": "https://www.echodumardi.com/wp-content/uploads/2026/10/1791583209326-Large-750x375.jpeg",
+      "summary": "Métadonnées et localisations éditoriales du média corrigées : 2cb058164dd74a6989486d12279c8d4b."
+    },
+    {
+      "eventId": "update-photo-88d6591d61c946ada2969904b85692bf-2026-10-22T070656.765Z",
+      "action": "UpdatePhotoMetadata",
+      "imageId": "88d6591d61c946ada2969904b85692bf",
+      "createdAt": "2026-10-22T00:59:59.68Z",
+      "rawAppliedAtUtc": "2026-10-22T07:06:56.765Z",
+      "appliedAt": "2026-10-22T07:06:56.765Z",
+      "receiptFile": "authorized-step9-media-caption-2.receipt.json",
+      "receiptSha256": "ed1e3bb1a383dd3a3dc57615ad91de65e0ae857361dbeefdffa6257d9a9606a1",
+      "ownerId": "c7229e13-66b3-4806-8e74-b592d55f41b6",
+      "sourceUrl": "https://www.bandedessinee.info/IMG/jpg/3/1/f/parc-spirou-librairie.jpg",
+      "summary": "Métadonnées et localisations éditoriales du média corrigées : 88d6591d61c946ada2969904b85692bf."
+    },
+    {
+      "eventId": "apply-41e99be0-a294-4262-ab71-f58261f17e6d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T07:07:45.9882134Z",
+      "appliedAt": "2026-10-22T07:07:45.988Z",
+      "receiptFile": "authorized-step9-verified-lockers.apply.json",
+      "receiptSha256": "3a94dedc8ec208c29f6be87387839592a917a649aef8733720204c2bfd5784ee",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de"
+      ],
+      "summary": "Apply contrôlé : descriptions.de."
+    },
+    {
+      "eventId": "apply-44423fe0-ad57-4d90-9b5e-421982c4b575",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T07:27:47.9058728Z",
+      "appliedAt": "2026-10-22T07:27:47.905Z",
+      "receiptFile": "authorized-transversal-res-biography-v2.apply.json",
+      "receiptSha256": "6cf8b794abc1935637dc24da0c79b7e03ad2457bf4112cc85a243e6005a54402",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt",
+        "foundedYear"
+      ],
+      "summary": "Apply contrôlé : biography.de, biography.en, biography.es, biography.fr, biography.it, biography.nl, biography.pl, biography.pt, foundedYear."
+    },
+    {
+      "eventId": "import-photo-d0d42247f3444185b1708fc595f31076-2026-10-22T073655.077Z",
+      "action": "ImportPhoto",
+      "imageId": "d0d42247f3444185b1708fc595f31076",
+      "createdAt": "2026-10-22T07:36:51.448Z",
+      "rawAppliedAtUtc": "2026-10-22T07:36:55.077Z",
+      "appliedAt": "2026-10-22T07:36:55.077Z",
+      "receiptFile": "authorized-final-gallery-photo-01.receipt.json",
+      "receiptSha256": "2fcefe6ad5d975e3ff5b582489ba4360f2fadf3d3e4d7d4b20d292c6bc2452f8",
+      "ownerId": "6ddc2a54-aa96-454d-a362-b27e7f70bb54",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/7ABEB355-933E-4D63-B884-4517F9701D26/NW_detail/zombillenium-tower-attraction-a-mega-sensations-de-90-m-de-hauteur-photo-laure-neron-devoureix-1776427487.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : d0d42247f3444185b1708fc595f31076."
+    },
+    {
+      "eventId": "import-photo-fc369594412144f4a9885d5d47358c9e-2026-10-22T073708.686Z",
+      "action": "ImportPhoto",
+      "imageId": "fc369594412144f4a9885d5d47358c9e",
+      "createdAt": "2026-10-22T07:37:05.297Z",
+      "rawAppliedAtUtc": "2026-10-22T07:37:08.686Z",
+      "appliedAt": "2026-10-22T07:37:08.686Z",
+      "receiptFile": "authorized-final-gallery-photo-02.receipt.json",
+      "receiptSha256": "2ec723ca54c3d7d993c5bd9d8fc2e7b453c6fede3676bec33f15fcd7bb619c10",
+      "ownerId": "ece6ad74-d08c-4d14-b27a-aa62b0b1f33b",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/5F5D339A-A522-4CAA-A04C-0F557D90B1DB/NW_detail/le-z-ca-secoue-pas-mal-photo-laure-neron-devoureix-1776427487.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : fc369594412144f4a9885d5d47358c9e."
+    },
+    {
+      "eventId": "import-photo-4258730afa6b4ae3945caf28edc2404d-2026-10-22T073722.545Z",
+      "action": "ImportPhoto",
+      "imageId": "4258730afa6b4ae3945caf28edc2404d",
+      "createdAt": "2026-10-22T07:37:19.158Z",
+      "rawAppliedAtUtc": "2026-10-22T07:37:22.545Z",
+      "appliedAt": "2026-10-22T07:37:22.545Z",
+      "receiptFile": "authorized-final-gallery-photo-03.receipt.json",
+      "receiptSha256": "eff4f8f5b0e082df2c3e4c627973de53ba32565b245d23e422eec01b1dbb2621",
+      "ownerId": "de9c937c-d175-49b4-93d7-55d7df751020",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/940CCFA1-76B3-4E49-9070-9AC7C811B3CA/NW_detail/est-ce-que-l-on-ressort-mouille-de-la-lucky-river-photo-laure-neron-devoureix-1776427487.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 4258730afa6b4ae3945caf28edc2404d."
+    },
+    {
+      "eventId": "import-photo-49a6fc417f7f48b5a722eac1a6328665-2026-10-22T073736.131Z",
+      "action": "ImportPhoto",
+      "imageId": "49a6fc417f7f48b5a722eac1a6328665",
+      "createdAt": "2026-10-22T07:37:32.66Z",
+      "rawAppliedAtUtc": "2026-10-22T07:37:36.131Z",
+      "appliedAt": "2026-10-22T07:37:36.131Z",
+      "receiptFile": "authorized-final-gallery-photo-04.receipt.json",
+      "receiptSha256": "9a0118b6e2d219273425a5fd6d9d696f4345ce9ea4af987b70aab172cd9f06bf",
+      "ownerId": "a253b8c0-aaf5-42f4-ab20-7fb7c3f06f8b",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/65F88CE0-EB16-4DFD-AA5F-E17B9508FCFB/NW_detail/et-c-est-parti-photo-laure-neron-devoureix-1776427487.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 49a6fc417f7f48b5a722eac1a6328665."
+    },
+    {
+      "eventId": "import-photo-02cb8dede76549c787fda4c76c8cbb58-2026-10-22T073749.658Z",
+      "action": "ImportPhoto",
+      "imageId": "02cb8dede76549c787fda4c76c8cbb58",
+      "createdAt": "2026-10-22T07:37:46.298Z",
+      "rawAppliedAtUtc": "2026-10-22T07:37:49.658Z",
+      "appliedAt": "2026-10-22T07:37:49.658Z",
+      "receiptFile": "authorized-final-gallery-photo-05.receipt.json",
+      "receiptSha256": "cdd2b105ad6881e694aad10e8b428e0b366908e53f77bfcfe31a9f12f2c24e9f",
+      "ownerId": "17516362-52c3-4497-8b4a-79c9f4ea9388",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/4A4F413B-C389-4215-A5D2-7D606FA010C3/NW_detail/kyubi-unchained-le-dernier-roller-coaster-du-parc-photo-laure-neron-devoureix-1776427487.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 02cb8dede76549c787fda4c76c8cbb58."
+    },
+    {
+      "eventId": "import-photo-3178f6f6dbc94276ae6ca2e15859f439-2026-10-22T073804.011Z",
+      "action": "ImportPhoto",
+      "imageId": "3178f6f6dbc94276ae6ca2e15859f439",
+      "createdAt": "2026-10-22T07:38:00.443Z",
+      "rawAppliedAtUtc": "2026-10-22T07:38:04.011Z",
+      "appliedAt": "2026-10-22T07:38:04.011Z",
+      "receiptFile": "authorized-final-gallery-photo-06.receipt.json",
+      "receiptSha256": "597e3466c50b45c8205634b97a89887f035caa89f4d8548dddcd6d71e3ce3355",
+      "ownerId": "f642f876-a02c-4a68-a0e0-c1245bb65b8b",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/E3FAE424-6359-4D1E-8E5E-A8998226C4F9/NW_detail/un-joli-carrousel-photo-laure-neron-devoureix-1776427487.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 3178f6f6dbc94276ae6ca2e15859f439."
+    },
+    {
+      "eventId": "import-photo-9fd1019447dd4073b1129320985a9e92-2026-10-22T073818.636Z",
+      "action": "ImportPhoto",
+      "imageId": "9fd1019447dd4073b1129320985a9e92",
+      "createdAt": "2026-10-22T07:38:15.069Z",
+      "rawAppliedAtUtc": "2026-10-22T07:38:18.636Z",
+      "appliedAt": "2026-10-22T07:38:18.636Z",
+      "receiptFile": "authorized-final-gallery-photo-07.receipt.json",
+      "receiptSha256": "dafa65cc03105f6a9475b4134b1958bfc8f4f8ba305bd5505f3505bd50d0a134",
+      "ownerId": "ece6ad74-d08c-4d14-b27a-aa62b0b1f33b",
+      "sourceUrl": "https://parcsathemes.fr/wp-content/uploads/2024/05/maxresdefault.jpg?auto=format%2Ccompress",
+      "summary": "Photo importée et métadonnées enregistrées : 9fd1019447dd4073b1129320985a9e92."
+    },
+    {
+      "eventId": "import-photo-162bef49528b4ee281786450fba5ebe9-2026-10-22T073833.031Z",
+      "action": "ImportPhoto",
+      "imageId": "162bef49528b4ee281786450fba5ebe9",
+      "createdAt": "2026-10-22T07:38:29.241Z",
+      "rawAppliedAtUtc": "2026-10-22T07:38:33.031Z",
+      "appliedAt": "2026-10-22T07:38:33.031Z",
+      "receiptFile": "authorized-final-gallery-photo-08.receipt.json",
+      "receiptSha256": "dc004e80dfbc3debd3ac8097d10c89468d1323cef7ac5209a5305747837d1c2d",
+      "ownerId": "49d4c379-ef89-4902-8b00-9cc29292268f",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/F82E5A7D-F13F-49E2-BAB8-F95EFECD10E3/NW_detail/parmi-les-nouvelles-attractions-la-palombie-secrete-avec-son-parcours-decouverte-au-milieu-d-une-jungle-amenagee-et-le-splash-piranha-photo-le-dl-christophe-agostinis-1623598469.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 162bef49528b4ee281786450fba5ebe9."
+    },
+    {
+      "eventId": "import-photo-9db1a865a9444c9ea7d215509aec0f8e-2026-10-22T073847.155Z",
+      "action": "ImportPhoto",
+      "imageId": "9db1a865a9444c9ea7d215509aec0f8e",
+      "createdAt": "2026-10-22T07:38:43.609Z",
+      "rawAppliedAtUtc": "2026-10-22T07:38:47.155Z",
+      "appliedAt": "2026-10-22T07:38:47.155Z",
+      "receiptFile": "authorized-final-gallery-photo-09.receipt.json",
+      "receiptSha256": "5dded766a7096e4c8e391f027874ac33aec2dabf56adf62c7686e08bb99daabe",
+      "ownerId": "fe267e22-4a52-466a-ad99-8c25034bcb6f",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/4CCDE1EC-2626-4E72-BA46-B28DA4FA6855/NW_detail/parmi-les-nouvelles-attractions-la-palombie-secrete-avec-son-parcours-decouverte-au-milieu-d-une-jungle-amenagee-et-le-splash-piranha-photo-le-dl-christophe-agostinis-1623598469.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 9db1a865a9444c9ea7d215509aec0f8e."
+    },
+    {
+      "eventId": "import-photo-0cdfedb10d7c4d3295f6dde47f728f41-2026-10-22T073901.040Z",
+      "action": "ImportPhoto",
+      "imageId": "0cdfedb10d7c4d3295f6dde47f728f41",
+      "createdAt": "2026-10-22T07:38:57.365Z",
+      "rawAppliedAtUtc": "2026-10-22T07:39:01.04Z",
+      "appliedAt": "2026-10-22T07:39:01.040Z",
+      "receiptFile": "authorized-final-gallery-photo-10.receipt.json",
+      "receiptSha256": "0206c743b4ccfbb8baa9ce6cf3f4a7bd6d0540e30ddd4c18d14a4fc52694088a",
+      "ownerId": "aabd5bc9-ad08-489f-960f-390b16a5c4b9",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/708F29F2-6C36-4A63-BF23-816B4D72427F/NW_detail/parmi-les-nouvelles-attractions-la-palombie-secrete-avec-son-parcours-decouverte-au-milieu-d-une-jungle-amenagee-et-le-splash-piranha-photo-le-dl-christophe-agostinis-1623598467.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 0cdfedb10d7c4d3295f6dde47f728f41."
+    },
+    {
+      "eventId": "import-photo-7845b7711987462997a7f681249524cb-2026-10-22T073915.935Z",
+      "action": "ImportPhoto",
+      "imageId": "7845b7711987462997a7f681249524cb",
+      "createdAt": "2026-10-22T07:39:12.549Z",
+      "rawAppliedAtUtc": "2026-10-22T07:39:15.935Z",
+      "appliedAt": "2026-10-22T07:39:15.935Z",
+      "receiptFile": "authorized-final-gallery-photo-11.receipt.json",
+      "receiptSha256": "b25aa83d85338e7b88aa2f103b63726b4c3117b8a9e68b0932815987791cf20e",
+      "ownerId": "1cdfc07d-eb37-419b-a520-3e1e14ee2b66",
+      "sourceUrl": "https://parcsathemes.fr/wp-content/uploads/2024/05/Nid-des-Marsus-1536x1025.jpg",
+      "summary": "Photo importée et métadonnées enregistrées : 7845b7711987462997a7f681249524cb."
+    },
+    {
+      "eventId": "apply-bc3acc17-9e1c-449b-8bf7-881187fd2fb9",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T08:00:28.2676157Z",
+      "appliedAt": "2026-10-22T08:00:28.267Z",
+      "receiptFile": "authorized-publication-history-repair.apply.json",
+      "receiptSha256": "2dbcd4c1e952401cd2dee4fe2b22a57ed4c8fd1d1ef56e0792ed725255a3eabb",
+      "counts": {
+        "created": 0,
+        "updated": 37,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Apply contrôlé : canonicalHistory."
+    }
+  ],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-5d06a8bf-387b-4458-b940-4b43dfca04e5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T07:56:43.7676289Z",
+      "appliedAt": "2026-10-22T07:56:43.767Z",
+      "receiptFile": "authorized-publication-articles.apply.json",
+      "receiptSha256": "fe478b3367511743990367e311b04b5e998a4cf8e9c822c0cb48b1daf1397f62",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "classification": "visibility-only"
+    },
+    {
+      "eventId": "apply-29ea04c7-1016-492e-ac6b-b4b620f2bc3b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T07:55:31.2274837Z",
+      "appliedAt": "2026-10-22T07:55:31.227Z",
+      "receiptFile": "authorized-publication-content.apply.json",
+      "receiptSha256": "2259ae24de66a27d6572235e9f820b637bdbdaff9aaa46ae66662066b8079882",
+      "counts": {
+        "created": 0,
+        "updated": 106,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "classification": "visibility-only"
+    },
+    {
+      "eventId": "apply-26f100ce-33ca-43d9-90dd-7549cfd6c9bc",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T07:54:16.8077576Z",
+      "appliedAt": "2026-10-22T07:54:16.807Z",
+      "receiptFile": "authorized-publication-images.apply.json",
+      "receiptSha256": "ea38eccb3c2f3809951def9f8be33c11d5be7f89f449f1e6080835cfb4a6b8c0",
+      "counts": {
+        "created": 0,
+        "updated": 116,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isCurrent",
+        "isPublished"
+      ],
+      "classification": "visibility-only"
+    },
+    {
+      "eventId": "apply-395aabe0-9c4e-4700-a1dd-f05de38ba283",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-22T07:58:23.7588795Z",
+      "appliedAt": "2026-10-22T07:58:23.758Z",
+      "receiptFile": "authorized-publication-parent.apply.json",
+      "receiptSha256": "10938b13320b4ea2a67e3408d762e4f9c8100521c8f5cfe1444b05fa90ba7fa1",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "classification": "visibility-only"
+    }
+  ],
+  "evidenceWithoutIntegrationInstant": []
+}
