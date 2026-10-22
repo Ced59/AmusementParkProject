@@ -1,0 +1,18 @@
+{
+  "eventId": "image-3b2f2787302b42debcea3956051bb67a-2026-10-22T21:11:10.917Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:11:10.917Z",
+  "sourceAppliedAt": "2026-10-22T21:11:10.917Z",
+  "receiptFile": "slide-splash/media/disco-river-orange-arrival-import-response.json",
+  "receiptSha256": "c601f773237a0745c0e12b8720b221554ed28ac8e80f38495686c20741421ccb",
+  "result": {
+    "imageId": "3b2f2787302b42debcea3956051bb67a",
+    "ownerId": "ca9bc635-aa6e-4ba0-b092-5cd764e676c9",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Disco River intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-b4ef0a207a0a41efb906af34e1ff9d4e-2026-10-22T21:34:29.356Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:34:29.356Z",
+  "sourceAppliedAt": "2026-10-22T21:34:29.356Z",
+  "receiptFile": "slide-splash/media/boomerang-green-double-ring-import-response.json",
+  "receiptSha256": "ae836dc550d455a0540d6f1713a1789b20877ebeab9d8c5c0045f3efa52b280e",
+  "result": {
+    "imageId": "b4ef0a207a0a41efb906af34e1ff9d4e",
+    "ownerId": "a764ea06-905e-440c-922d-4cb0098df6cf",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de Boomerang intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

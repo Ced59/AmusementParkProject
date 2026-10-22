@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-951e40fd-26df-4319-87fa-0e582440c747",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T21:20:51.521Z",
+  "sourceAppliedAt": "2026-10-22T21:20:51.521938Z",
+  "receiptFile": "slide-splash/step-09m-polin-installation-identities-20261022.apply.json",
+  "receiptSha256": "2a1de9ed85b6f23ffaf2ba29ffa36280684a7798dcb3a14f9f4a05a621f2bc0c",
+  "result": {
+    "operationId": "951e40fd-26df-4319-87fa-0e582440c747",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Slide & Splash : rattachement de Disco River et du Corkscrew actuel au constructeur Polin Waterparks existant ; modèle Flying Saw confirmé pour Disco River par le catalogue officiel 2020. Aucun constructeur créé ou modifié. Lot privé ; audit final restant."
+}

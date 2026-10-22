@@ -10793,7 +10793,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "conversation-portugal / docs/portugal-world-backlog-sync-20261022",
-      "lastDataIntegrationAt": "2026-10-22T20:54:53.718Z",
+      "lastDataIntegrationAt": "2026-10-22T21:46:28.448Z",
       "integrationHistory": [
         {
           "eventId": "apply-d3c96f51-fa59-48a8-90ba-d0ca82fe4d2b",
@@ -11754,9 +11754,209 @@
           "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-a43f861b-2666-4328-ba6a-5f7ff49ed47b.json",
           "auditEvidence": null,
           "summary": "Dix-sept jalons existants illustrés par des photographies fidèles de leurs éléments. Vues historiques et ultérieures documentées comme contexte ; dates, textes et visibilité préservés. Audit final en cours."
+        },
+        {
+          "eventId": "image-b84429d4547e42b7857ca35e4eebc6bc-2026-10-22T21:02:37.127Z",
+          "appliedAt": "2026-10-22T21:02:37.127Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-b84429d4547e42b7857ca35e4eebc6bc-2026-10-22T21_02_37.127Z.json",
+          "auditEvidence": null,
+          "summary": "Logo officiel natif de la visite virtuelle du parc intégré en privé, sans retouche et avec textes dans huit langues. Autorisation écrite déjà attestée ; couverture du logo rétablie, audit et score à actualiser."
+        },
+        {
+          "eventId": "image-6559093514364b7c8dd974e8f118975d-2026-10-22T21:05:53.512Z",
+          "appliedAt": "2026-10-22T21:05:53.512Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-6559093514364b7c8dd974e8f118975d-2026-10-22T21_05_53.512Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Foam Slides intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-97efb0255add40b9905d1457c8a194d0-2026-10-22T21:06:10.596Z",
+          "appliedAt": "2026-10-22T21:06:10.596Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-97efb0255add40b9905d1457c8a194d0-2026-10-22T21_06_10.596Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Tropical Paradise intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-b1a86fd5908d427589e2e11fc5f36be7-2026-10-22T21:06:31.184Z",
+          "appliedAt": "2026-10-22T21:06:31.184Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-b1a86fd5908d427589e2e11fc5f36be7-2026-10-22T21_06_31.184Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Tropical Paradise intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-3b2f2787302b42debcea3956051bb67a-2026-10-22T21:11:10.917Z",
+          "appliedAt": "2026-10-22T21:11:10.917Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-3b2f2787302b42debcea3956051bb67a-2026-10-22T21_11_10.917Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Disco River intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "apply-951e40fd-26df-4319-87fa-0e582440c747",
+          "appliedAt": "2026-10-22T21:20:51.521Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-951e40fd-26df-4319-87fa-0e582440c747.json",
+          "auditEvidence": null,
+          "summary": "Slide & Splash : rattachement de Disco River et du Corkscrew actuel au constructeur Polin Waterparks existant ; modèle Flying Saw confirmé pour Disco River par le catalogue officiel 2020. Aucun constructeur créé ou modifié. Lot privé ; audit final restant."
+        },
+        {
+          "eventId": "image-9771b554300345b481b452b255eaffc3-2026-10-22T21:23:58.334Z",
+          "appliedAt": "2026-10-22T21:23:58.334Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-9771b554300345b481b452b255eaffc3-2026-10-22T21_23_58.334Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de The Big Wave intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-089966dd1f6443ad845fdaf927f9ee57-2026-10-22T21:24:35.106Z",
+          "appliedAt": "2026-10-22T21:24:35.106Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-089966dd1f6443ad845fdaf927f9ee57-2026-10-22T21_24_35.106Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Black Hole intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-5832c6080d7340b8b2b902d8a4eee3ee-2026-10-22T21:25:30.191Z",
+          "appliedAt": "2026-10-22T21:25:30.191Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-5832c6080d7340b8b2b902d8a4eee3ee-2026-10-22T21_25_30.191Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Laguna intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-7dcd35890ec24276a5fc069a4a09fd58-2026-10-22T21:25:58.016Z",
+          "appliedAt": "2026-10-22T21:25:58.016Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-7dcd35890ec24276a5fc069a4a09fd58-2026-10-22T21_25_58.016Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Tornado intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-7b9e4fd09bb64f37aea7271dacf70cb4-2026-10-22T21:26:30.075Z",
+          "appliedAt": "2026-10-22T21:26:30.075Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-7b9e4fd09bb64f37aea7271dacf70cb4-2026-10-22T21_26_30.075Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Jacuzzi intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-3d87cbe935fa453aac74efc8ba8713c1-2026-10-22T21:27:22.091Z",
+          "appliedAt": "2026-10-22T21:27:22.091Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-3d87cbe935fa453aac74efc8ba8713c1-2026-10-22T21_27_22.091Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Corkscrew intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-2c9b096223bd4adb9a74f1ea1d65281c-2026-10-22T21:27:49.423Z",
+          "appliedAt": "2026-10-22T21:27:49.423Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-2c9b096223bd4adb9a74f1ea1d65281c-2026-10-22T21_27_49.423Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Kamikaze intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-3461c332fb0e442085a9e87a0a1203c5-2026-10-22T21:28:11.764Z",
+          "appliedAt": "2026-10-22T21:28:11.764Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-3461c332fb0e442085a9e87a0a1203c5-2026-10-22T21_28_11.764Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de The Tunnel intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-becfa104f475440793c2ba86fdda6f1f-2026-10-22T21:28:35.022Z",
+          "appliedAt": "2026-10-22T21:28:35.022Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-becfa104f475440793c2ba86fdda6f1f-2026-10-22T21_28_35.022Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Skimmer intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "official-map-upload-ec207111d6188eec3f0101b8",
+          "appliedAt": "2026-10-22T21:29:23.099Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/official-map-upload-ec207111d6188eec3f0101b8.json",
+          "auditEvidence": null,
+          "summary": "Plan officiel 2026 importé sans modification du fichier natif, dans le stockage documentaire dédié. Reçu réussi horodaté en UTC à sa réception ; le client ne fournit pas de date serveur. Carte encore privée, rattachement au parc par Apply restant."
+        },
+        {
+          "eventId": "apply-27844b38-6ca7-46c0-a756-c87c2d894280",
+          "appliedAt": "2026-10-22T21:31:25.153Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-27844b38-6ca7-46c0-a756-c87c2d894280.json",
+          "auditEvidence": null,
+          "summary": "Plan officiel 2026 de Slide & Splash rattaché au parc, fichier natif conservé dans MinIO et textes relus dans huit langues. Année justifiée par le nom de fichier officiel, sans année historique inventée. Carte privée ; audit final restant."
+        },
+        {
+          "eventId": "image-b4ef0a207a0a41efb906af34e1ff9d4e-2026-10-22T21:34:29.356Z",
+          "appliedAt": "2026-10-22T21:34:29.356Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-b4ef0a207a0a41efb906af34e1ff9d4e-2026-10-22T21_34_29.356Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Boomerang intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-77e2c250785542ae85a8561e30ec237c-2026-10-22T21:34:44.513Z",
+          "appliedAt": "2026-10-22T21:34:44.513Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-77e2c250785542ae85a8561e30ec237c-2026-10-22T21_34_44.513Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Boomerang intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "apply-f4f3629d-842e-49be-8455-0c54b27576ca",
+          "appliedAt": "2026-10-22T21:46:28.448Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-f4f3629d-842e-49be-8455-0c54b27576ca.json",
+          "auditEvidence": null,
+          "summary": "Correction sourcée des huit biographies communes de Polin Waterparks, explicitement autorisée par l’utilisateur ; seuls ces huit textes ont changé. Audit de Slide & Splash encore en cours."
         }
       ],
-      "nextAction": "54 lots de graphe et 42 photos privés vérifiés, dont cinq vues générales ; 32 jalons illustrés sur 51. Terminer couverture photographique, plans et logo officiel (HTTP 503), rapprocher un export complet frais, recalculer le score et conclure l’audit avant publication et Facebook.",
+      "nextAction": "57 lots appliqués et vérifiés ; 57 photos, logo et plan 2026. Correction des huit biographies communes de Polin explicitement autorisée puis appliquée le 22 octobre à 21:46:28 UTC. Nouvel export rapproché sur 9 206 valeurs sans écart ; score projeté 94/100. Finaliser les lacunes photographiques et géographiques et la disponibilité directe de trois sources officielles avant publication.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11786,6 +11986,16 @@
         {
           "label": "Rapprochement de la campagne Portugal et recherches officielles",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Avancement éditorial et nouvel export rapproché de Slide & Splash",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/docs/portugal-integration-progress-20261022/docs/roadmaps/world-integration/evidence/PT-20261022-slide-splash-audit-progress-214510.json",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Correction commune de Polin autorisée, appliquée et contrôlée dans le nouvel export",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/docs/portugal-integration-progress-20261022/docs/roadmaps/world-integration/evidence/PT-20261022-slide-splash-polin-approved-2152.json",
           "accessedAt": "2026-10-22"
         }
       ],

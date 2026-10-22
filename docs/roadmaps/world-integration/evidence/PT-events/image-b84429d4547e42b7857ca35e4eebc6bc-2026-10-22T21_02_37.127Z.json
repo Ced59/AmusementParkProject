@@ -1,0 +1,18 @@
+{
+  "eventId": "image-b84429d4547e42b7857ca35e4eebc6bc-2026-10-22T21:02:37.127Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:02:37.127Z",
+  "sourceAppliedAt": "2026-10-22T21:02:37.127Z",
+  "receiptFile": "slide-splash/media/current-official-tour-logo-import-response.json",
+  "receiptSha256": "750bc93a904a42183f97d491efca36affd88393a79d9bbc306c987f9cf5ea043",
+  "result": {
+    "imageId": "b84429d4547e42b7857ca35e4eebc6bc",
+    "ownerId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Logo officiel natif de la visite virtuelle du parc intégré en privé, sans retouche et avec textes dans huit langues. Autorisation écrite déjà attestée ; couverture du logo rétablie, audit et score à actualiser."
+}

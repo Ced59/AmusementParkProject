@@ -1,0 +1,18 @@
+{
+  "eventId": "image-9771b554300345b481b452b255eaffc3-2026-10-22T21:23:58.334Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:23:58.334Z",
+  "sourceAppliedAt": "2026-10-22T21:23:58.334Z",
+  "receiptFile": "slide-splash/media/big-wave-landscape-import-response.json",
+  "receiptSha256": "ca3a7604b8180d68430a447926c24f1c813bf4ac9a99f6d1a881a4eec1967ecb",
+  "result": {
+    "imageId": "9771b554300345b481b452b255eaffc3",
+    "ownerId": "8cb34501-7ca8-4fd2-a7f0-764182af32b3",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de The Big Wave intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

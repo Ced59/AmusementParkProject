@@ -1,0 +1,18 @@
+{
+  "eventId": "image-97efb0255add40b9905d1457c8a194d0-2026-10-22T21:06:10.596Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:06:10.596Z",
+  "sourceAppliedAt": "2026-10-22T21:06:10.596Z",
+  "receiptFile": "slide-splash/media/tropical-play-structure-import-response.json",
+  "receiptSha256": "183cede8e276bc71c8ec7bf59318c03f806e50f363b6598e1e787c4cc0b56e4c",
+  "result": {
+    "imageId": "97efb0255add40b9905d1457c8a194d0",
+    "ownerId": "b8499342-5a05-4362-b672-e4d755d17875",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Tropical Paradise intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

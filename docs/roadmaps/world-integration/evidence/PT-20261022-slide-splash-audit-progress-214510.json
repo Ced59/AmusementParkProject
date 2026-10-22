@@ -1,0 +1,89 @@
+{
+  "country": "PT",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "reviewedAtUtc": "2026-10-22T21:45:10.692192+00:00",
+  "notACompletionAudit": true,
+  "previousProgressEvidence": "PT-20261022-slide-splash-editorial-progress-2058.json",
+  "graphLotsAppliedAndVerified": 56,
+  "privateImageAssets": 58,
+  "photographs": 57,
+  "officialCurrentLogos": 1,
+  "generalPhotographs": 5,
+  "itemPhotographs": 52,
+  "distinctItemsWithPhotographs": 37,
+  "currentAttractionsWithPhotographs": 26,
+  "currentAttractions": 26,
+  "importantItemsWithThreePhotographs": 2,
+  "importantItems": 39,
+  "officialMapYears": [
+    2026
+  ],
+  "mapEditionEvidence": "Current official map file named Mapa-2026-2.png; no year inferred from the upload directory or archive capture date.",
+  "mapUploadTimestampBasis": "UTC observed immediately after successful official client return; client response provides no server timestamp. Separate graph Apply uses its real server appliedAtUtc.",
+  "lastDataIntegrationAt": "2026-10-22T21:34:44.513Z",
+  "historyEvents": 51,
+  "historyEventsWithImage": 32,
+  "articles": 3,
+  "articlesWithMainImage": 3,
+  "baselineLanguagesPersonallyRead": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "newAuthoredMediaAndMapLocalizationsPersonallyReviewed": true,
+  "publicScalarFieldsPreviouslyReviewed": 240,
+  "freshExportSha256": "eec78ab8d8094a493c5c94a74cdd6c75b6e525d19ecc9fc54e5099d0f5ec7fce",
+  "comparedValues": 9198,
+  "unexplainedDifferences": 0,
+  "localizedAndMediaValuesScanned": 4810,
+  "encodingAnomalies": 0,
+  "duplicateParagraphGroups": 0,
+  "lastProjectedScore": 94,
+  "earnedPoints": 97,
+  "applicablePoints": 103,
+  "apiPublicationBlockers": [],
+  "manualBlockers": [
+    "Existing shared validated Polin biography has generic copy. Eight-language sourced correction prepared and Preview verified; explicit user decision requested, no Apply.",
+    "Three original official historical source URLs return upstream 503 via direct HTTP/browser; content remains available through web reader captures. Live availability not treated as established."
+  ],
+  "remainingWork": [
+    "Finalize named photographic and geographic gaps from exact-owner research",
+    "Refresh complete audit after any approved correction",
+    "Verify eligibility and publish dependencies/park in documented order; confirm actual score before Facebook"
+  ],
+  "sitePublished": false,
+  "facebookPublished": false,
+  "dataHistoryEventsForEntry": 115,
+  "localProofDigests": [
+    {
+      "file": "final-audit/refreshed-2138/fresh-export-comparison.json",
+      "sha256": "13533c9a0cf10c17c957e1b8ff62f62cfe860a76d4c332134eed91755cdefdf6"
+    },
+    {
+      "file": "final-audit/refreshed-2138/fresh-raw-encoding-scan-20261022.json",
+      "sha256": "d0b2d2922b29610795f9d3b3717fbcc0253ff3458984695d88e48fa2dedaa432"
+    },
+    {
+      "file": "final-audit/refreshed-2138/narrative-overlap-review.json",
+      "sha256": "0abff8e8fa5f89bceae4144243d0215141609b9c9cdd040133d0415b7fdb54e0"
+    },
+    {
+      "file": "final-audit/polin-biography-proposal-preview-verification.json",
+      "sha256": "84fe6fbca2adf8454bedc0335bf4c032cf53e53bb58c97beeb643ac06169663e"
+    },
+    {
+      "file": "maps/official-map-2026-review.json",
+      "sha256": "080c900b5ce8db207df83f42445e9b449cd3f11c4c77c380527301225212bd1f"
+    },
+    {
+      "file": "media/complementary-gallery-review-20261022.json",
+      "sha256": "93595d48044e0181f6e304d1362dc98a64b16c8ca461b42834b9ce991544cd13"
+    }
+  ]
+}

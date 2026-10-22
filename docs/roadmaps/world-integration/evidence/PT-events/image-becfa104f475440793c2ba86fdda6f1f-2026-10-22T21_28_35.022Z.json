@@ -1,0 +1,18 @@
+{
+  "eventId": "image-becfa104f475440793c2ba86fdda6f1f-2026-10-22T21:28:35.022Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:28:35.022Z",
+  "sourceAppliedAt": "2026-10-22T21:28:35.022Z",
+  "receiptFile": "slide-splash/media/skimmer-neighbouring-slides-import-response.json",
+  "receiptSha256": "223321043b21ceb18b3a358023d43d0b869e3c6a797e561cff673504b7bc0dfd",
+  "result": {
+    "imageId": "becfa104f475440793c2ba86fdda6f1f",
+    "ownerId": "24f9ca5e-bf00-43c0-8590-3f338d432147",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de Skimmer intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

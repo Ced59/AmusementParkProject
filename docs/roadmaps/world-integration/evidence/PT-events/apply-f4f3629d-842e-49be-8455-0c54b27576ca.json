@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-f4f3629d-842e-49be-8455-0c54b27576ca",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T21:46:28.448Z",
+  "sourceAppliedAt": "2026-10-22T21:46:28.4489223Z",
+  "receiptFile": "slide-splash/step-09o-polin-shared-biography-proposal-20261022.apply.json",
+  "receiptSha256": "ca860d2272280e4b707ed106a6bbaeb84ecc60c10155ae8f5b9378a63e780d8e",
+  "result": {
+    "operationId": "f4f3629d-842e-49be-8455-0c54b27576ca",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Correction sourcée des huit biographies communes de Polin Waterparks, explicitement autorisée par l’utilisateur ; seuls ces huit textes ont changé. Audit de Slide & Splash encore en cours."
+}

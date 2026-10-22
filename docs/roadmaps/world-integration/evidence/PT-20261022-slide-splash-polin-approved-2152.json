@@ -1,0 +1,63 @@
+{
+  "country": "PT",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "reviewedAtUtc": "2026-10-22T21:52:37.777535+00:00",
+  "notACompletionAudit": true,
+  "previousProgressEvidence": "PT-20261022-slide-splash-audit-progress-214510.json",
+  "graphLotsAppliedAndVerified": 57,
+  "polinManufacturerId": "6a94fe3a-7a1b-498f-bbd2-34e99ea1d9b4",
+  "userAuthorizedSharedCorrection": true,
+  "authorizationVerbatim": "Oui, appliquer cette correction commune",
+  "applyEvidence": "PT-events/apply-f4f3629d-842e-49be-8455-0c54b27576ca.json",
+  "lastDataIntegrationAt": "2026-10-22T21:46:28.448Z",
+  "changedFields": [
+    "biography.de",
+    "biography.en",
+    "biography.es",
+    "biography.fr",
+    "biography.it",
+    "biography.nl",
+    "biography.pl",
+    "biography.pt"
+  ],
+  "freshExportSha256": "ac5c798d132f27107889852fd7213c85b7e535326a3a800d08d5f3a9c7b161ca",
+  "comparedValues": 9206,
+  "unexplainedDifferences": 0,
+  "localizedAndMediaValuesScanned": 4810,
+  "encodingAnomalies": 0,
+  "duplicateParagraphGroups": 0,
+  "overlapReviewUnchanged": true,
+  "lastProjectedScore": 94,
+  "earnedPoints": 97,
+  "applicablePoints": 103,
+  "apiPublicationBlockers": [],
+  "sitePublished": false,
+  "facebookPublished": false,
+  "remainingWork": [
+    "Live availability of three official source URLs: proxy upstream connection timeout, with content accessible through web reader captures. No claim that sources have disappeared.",
+    "Finalize exact-owner photographic and geographic gaps.",
+    "Complete final audit and publish in documented order only after eligibility checks."
+  ],
+  "localProofDigests": [
+    {
+      "file": "polin-biography-user-authorization-20261022.json",
+      "sha256": "994f91cc3166ea503c217196b72bf06556cffde64304e4340d74399483a803c2"
+    },
+    {
+      "file": "polin-biography-apply-verification-20261022.json",
+      "sha256": "2cb8ff4b6f4fc0fb8e169dfdedd93ac408d6ad46a6223a62e44939558488781e"
+    },
+    {
+      "file": "refreshed-after-polin-2152/fresh-export-comparison.json",
+      "sha256": "a8334f488942a24603aa61ce3993069b19fd53d11c65f56dad7b1b2e1fcf7cd4"
+    },
+    {
+      "file": "refreshed-after-polin-2152/fresh-raw-encoding-scan-20261022.json",
+      "sha256": "11f2f63be0fdb5e07f9bff0391e04881d1ef783c9860c111f0d77f59894ba5e1"
+    },
+    {
+      "file": "refreshed-after-polin-2152/delta-and-overlap-review.json",
+      "sha256": "205f16da2bc34c3672d15a7bec578faef3fadb4c2b521b350e1a387d44924564"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-5832c6080d7340b8b2b902d8a4eee3ee-2026-10-22T21:25:30.191Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:25:30.191Z",
+  "sourceAppliedAt": "2026-10-22T21:25:30.191Z",
+  "receiptFile": "slide-splash/media/laguna-waterline-palms-import-response.json",
+  "receiptSha256": "3c48cb65f2730b1882d66abad2a27ba75b8f3f9add125c73e0f35352715a7646",
+  "result": {
+    "imageId": "5832c6080d7340b8b2b902d8a4eee3ee",
+    "ownerId": "89121c72-4324-4fd2-b3a1-bbab1d861109",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de Laguna intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-77e2c250785542ae85a8561e30ec237c-2026-10-22T21:34:44.513Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:34:44.513Z",
+  "sourceAppliedAt": "2026-10-22T21:34:44.513Z",
+  "receiptFile": "slide-splash/media/boomerang-coloured-wall-import-response.json",
+  "receiptSha256": "2a3aefc8148dc4a7ef7a3e32fe017212f8a89ba6391a3f63e6d2c42c3479e273",
+  "result": {
+    "imageId": "77e2c250785542ae85a8561e30ec237c",
+    "ownerId": "a764ea06-905e-440c-922d-4cb0098df6cf",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de Boomerang intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-6559093514364b7c8dd974e8f118975d-2026-10-22T21:05:53.512Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:05:53.512Z",
+  "sourceAppliedAt": "2026-10-22T21:05:53.512Z",
+  "receiptFile": "slide-splash/media/foam-five-blue-lanes-import-response.json",
+  "receiptSha256": "516596483433bf2bc7b87dfedf8b219f81b7367dbe46f622dbef9dcceac4b51b",
+  "result": {
+    "imageId": "6559093514364b7c8dd974e8f118975d",
+    "ownerId": "4a83c7b1-eb0b-46e8-b8c0-49fb8ba40fa9",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Foam Slides intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

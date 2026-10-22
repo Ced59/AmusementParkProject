@@ -1,0 +1,18 @@
+{
+  "eventId": "image-2c9b096223bd4adb9a74f1ea1d65281c-2026-10-22T21:27:49.423Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:27:49.423Z",
+  "sourceAppliedAt": "2026-10-22T21:27:49.423Z",
+  "receiptFile": "slide-splash/media/kamikaze-central-aerial-import-response.json",
+  "receiptSha256": "b40a6dbe03a8bf0b7180b3eec8496aa12aad5c29ac8a91c29d9ac090bbaf8706",
+  "result": {
+    "imageId": "2c9b096223bd4adb9a74f1ea1d65281c",
+    "ownerId": "f36e1f75-6dbc-4292-bc91-f73fcc525e3b",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de Kamikaze intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-3461c332fb0e442085a9e87a0a1203c5-2026-10-22T21:28:11.764Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:28:11.764Z",
+  "sourceAppliedAt": "2026-10-22T21:28:11.764Z",
+  "receiptFile": "slide-splash/media/tunnel-pool-arrival-import-response.json",
+  "receiptSha256": "86c2281d8e4e1f0c1ddb598b6c0724ab0cb7226dff8e6f86a96e458dc1dea3cd",
+  "result": {
+    "imageId": "3461c332fb0e442085a9e87a0a1203c5",
+    "ownerId": "c6214933-59c3-474b-877f-a0f1da762e73",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de The Tunnel intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

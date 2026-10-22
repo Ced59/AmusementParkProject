@@ -1,0 +1,18 @@
+{
+  "eventId": "image-089966dd1f6443ad845fdaf927f9ee57-2026-10-22T21:24:35.106Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:24:35.106Z",
+  "sourceAppliedAt": "2026-10-22T21:24:35.106Z",
+  "receiptFile": "slide-splash/media/black-hole-front-pool-import-response.json",
+  "receiptSha256": "335877bc9e1c3dff57b5e195092c5bd4db21bf849189cf04f713adaeb990ff0e",
+  "result": {
+    "imageId": "089966dd1f6443ad845fdaf927f9ee57",
+    "ownerId": "f43436ed-f7aa-44ac-97ff-6daf7cb34657",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de Black Hole intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

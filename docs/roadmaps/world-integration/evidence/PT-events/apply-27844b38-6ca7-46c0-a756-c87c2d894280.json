@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-27844b38-6ca7-46c0-a756-c87c2d894280",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T21:31:25.153Z",
+  "sourceAppliedAt": "2026-10-22T21:31:25.1534222Z",
+  "receiptFile": "slide-splash/step-09n-official-map-2026.apply.json",
+  "receiptSha256": "d943f7ad4924423693e19c68e0c81d261fef7c416ad4d3601b4e3540aa9c3b77",
+  "result": {
+    "operationId": "27844b38-6ca7-46c0-a756-c87c2d894280",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Plan officiel 2026 de Slide & Splash rattaché au parc, fichier natif conservé dans MinIO et textes relus dans huit langues. Année justifiée par le nom de fichier officiel, sans année historique inventée. Carte privée ; audit final restant."
+}

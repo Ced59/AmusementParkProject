@@ -1,0 +1,22 @@
+{
+  "eventId": "official-map-upload-ec207111d6188eec3f0101b8",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "OfficialMapImport",
+  "appliedAt": "2026-10-22T21:29:23.099Z",
+  "sourceAppliedAt": "2026-10-22T21:29:23.0992137Z",
+  "receiptFile": "slide-splash/maps/official-map-2026-import-response.json",
+  "receiptSha256": "df982b593925aae91f0097386db00c5d5817c0640529678dda659664d407e43c",
+  "result": {
+    "officialMapId": "slide-splash-map-2026-international",
+    "year": 2026,
+    "format": "Image",
+    "sizeInBytes": 2598273,
+    "isVisible": false,
+    "timestampBasis": "client-observed-successful-return",
+    "serverTimestampAvailable": false,
+    "startedAtUtc": "2026-10-22T21:28:58.4474421Z"
+  },
+  "summary": "Plan officiel 2026 importé sans modification du fichier natif, dans le stockage documentaire dédié. Reçu réussi horodaté en UTC à sa réception ; le client ne fournit pas de date serveur. Carte encore privée, rattachement au parc par Apply restant."
+}

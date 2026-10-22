@@ -1,0 +1,18 @@
+{
+  "eventId": "image-7dcd35890ec24276a5fc069a4a09fd58-2026-10-22T21:25:58.016Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T21:25:58.016Z",
+  "sourceAppliedAt": "2026-10-22T21:25:58.016Z",
+  "receiptFile": "slide-splash/media/tornado-coloured-bowl-import-response.json",
+  "receiptSha256": "b3b90a58650a75c654def26403438255f54515f4ab64d71aff83eb1f2956362c",
+  "result": {
+    "imageId": "7dcd35890ec24276a5fc069a4a09fd58",
+    "ownerId": "81c5916b-9b89-4652-b93d-dfe82b504039",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Photo officielle de Tornado intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}
