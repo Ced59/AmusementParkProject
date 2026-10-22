@@ -1,5 +1,7 @@
 # AmusementPark - StandaloneAttraction Data Integration
 
+> **Suivi permanent par pays :** consulter le [registre européen](../roadmaps/europe-integration/README.md) et ses [règles de suivi](../roadmaps/europe-integration/WORKFLOW.md) avant le prochain lot, France et Portugal compris. Toute intégration réussie ajoute sa date réelle et sa preuve ; conserver la ligne et tout son historique après achèvement.
+
 Version : **2026-09-30**
 
 Ce guide remplace le parcours parc 1 à 8 quand l’entité pertinente est une attraction fixe isolée : alpine coaster hors parc, luge sur rail durable, grande roue permanente, attraction mécanique exploitée seule, ou installation similaire.

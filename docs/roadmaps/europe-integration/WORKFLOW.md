@@ -1,0 +1,60 @@
+# Suivi permanent des intégrations
+
+Ce registre situé dans le dépôt GitHub est la source de vérité de l’inventaire et du suivi par pays. Les JSON `countries/XX.json` portent les données ; les Markdown et le résumé sont des vues générées. L’Excel remis avec le rapport est une photographie de consultation, pas une seconde source à maintenir.
+
+## Règle permanente
+
+**Ne jamais effacer une entrée parce que le parc ou la standalone a été intégré.** Conserver son `entryId`, ses identifiants présents et anciens, ses sources, son état, la date UTC de la dernière intégration réellement appliquée et tout l’historique des intégrations. Conserver également les doublons et exclusions avec leur justification ; cela évite leur redécouverte comme nouvelles créations.
+
+- `PublishedDateUnknown` : fiche déjà visible au relevé ; date d’intégration inconnue, qualité non réauditée ici.
+- `ToIntegrate` : fiche masquée existante nécessitant une intégration éditoriale complète.
+- `ToQualify` : identité, type, pertinence, existence ou rattachement à un parc à décider avant intégration.
+- `InProgress` : dossier réservé ou intégration partielle.
+- `Blocked` : obstacle précis documenté dans `nextAction`.
+- `Integrated` : intégration terminée avec preuve d’Apply/import et audit final. La publication et Facebook suivent leurs propres autorisations.
+- `Excluded` / `Duplicate` : trace conservée ; justifier le motif et renseigner `duplicateOf` pour une fusion.
+
+La date `lastDataIntegrationAt` est le maximum des dates réelles `integrationHistory[].appliedAt`. Elle ne change pas pour une recherche, un audit seul, une réservation, une modification de ce fichier ou une publication sans nouvelle donnée. Une intégration partielle réussie met déjà à jour cette date, sans déclarer le dossier achevé. Les anciennes dates inconnues restent nulles jusqu’à récupération d’une preuve ; ne pas leur attribuer le 22 octobre 2026.
+
+## Prise en charge et coordination
+
+1. Se synchroniser avec `origin/master` et lire le JSON du pays, le backlog national historique et les règles API en vigueur.
+2. Rechercher à nouveau l’entité via le client officiel dans les parcs et les standalone. Réconcilier les travaux intervenus depuis le relevé, les homonymes, les anciennes identités et les migrations.
+3. Réserver la ligne avec un nom de conversation ou de branche explicite. La réservation locale détecte un propriétaire différent ; entre deux clones, publier la réservation sur une branche partagée et vérifier les autres branches/campagnes. Le verrou local n’est pas un verrou distribué d’API.
+4. Pour France et Portugal, les campagnes déjà en cours restent responsables de leur lot : consulter leurs résultats avant de démarrer une intégration concurrente. Les autorisations de publication propres à ces campagnes ne sont pas étendues à d’autres pays.
+
+```bash
+node tools/codex/integration-backlog.mjs claim --country PT --entry PT-candidate-identifiant --owner conversation-portugal
+```
+
+Remplacer l’identifiant d’exemple par un `entryId` réel du JSON. Une réservation n’invente aucune date d’intégration.
+
+## Consigner une intégration réelle
+
+Après chaque lot de données effectivement appliqué, utiliser son reçu ou identifiant de lot comme `eventId`. Conserver une référence de preuve non sensible ; les jetons, exports complets et données privées restent hors du dépôt.
+
+```bash
+node tools/codex/integration-backlog.mjs record --country PT --entry PT-candidate-identifiant --event apply-identifiant --at 2026-10-22T18:00:00Z --outcome partial --kind Park --entity-id UUID_REEL --evidence reference-recu --summary "Descriptions et histoire intégrées"
+```
+
+Pour terminer : `--outcome completed --audit reference-audit-final`, avec la date du dernier Apply/import réel et sa preuve, pas la date de l’audit. Si le dernier reçu a déjà été enregistré partiellement, ajouter un événement de clôture distinct à la même date réelle, avec la même preuve et la référence d’audit ; ne pas réécrire le reçu antérieur. Utiliser `--kind StandaloneAttraction` pour une attraction autonome.
+
+Le script refuse les dates futures/invalides, les dates antérieures au dernier événement, les preuves manquantes et la réutilisation contradictoire d’un événement. Il conserve l’ancien UUID lors d’une migration, met à jour la date et régénère la vue nationale et le résumé. Une création passe en présence connue mais visibilité à vérifier ; consigner ensuite la visibilité réellement retournée par la recherche officielle, sans la déduire du seul statut Integrated. Pour actualiser la visibilité ou rouvrir une qualification, modifier le JSON avec une preuve datée, puis régénérer les vues.
+
+## Vérification et livraison
+
+```bash
+node --test tools/codex/integration-backlog.test.mjs
+node tools/codex/integration-backlog.mjs render
+node tools/codex/integration-backlog.mjs validate
+```
+
+`validate --baseline CHEMIN_DU_REGISTRE_PRECEDENT` interdit la disparition d’un pays, d’une entrée ou d’un événement antérieur et la réécriture de l’historique. La CI applique cette comparaison à la base de la PR. Le résumé et les vues doivent correspondre aux JSON.
+
+En cas de conflit Git, réunir les entrées et les événements des deux branches par identifiant, puis régénérer les vues. Ne jamais choisir une version entière au prix de la perte d’une intégration concurrente. Regrouper les mises à jour documentaires selon la règle des lots du dépôt ; aucun nouveau déploiement n’est nécessaire à chaque Apply. Les compteurs « publiés/masqués » décrivent la dernière présence observée, et le compteur « intégrations avec audit » décrit l’avancement éditorial : ils mesurent deux choses différentes.
+
+## Message à reprendre dans les conversations France et Portugal
+
+> Le nouvel inventaire européen inclut désormais la France et le Portugal. Avant le prochain lot, synchronise le dépôt et lis `docs/roadmaps/europe-integration/README.md`, `WORKFLOW.md` et `countries/FR.json` ou `countries/PT.json`. Rapproche les intégrations réalisées depuis le relevé du 22 octobre 2026 et réserve les prochaines entrées pour éviter les doublons. Une fiche masquée nécessite une vraie intégration éditoriale. Après chaque intégration, conserve la ligne, ajoute sa preuve et sa date réelle dans l’historique ; ne l’efface plus du backlog. Les règles de publication propres au lot national restent applicables.
+
+Ce message est un relais versionné. La présente session ne dispose pas d’un outil permettant de l’envoyer directement dans une autre conversation ChatGPT.
