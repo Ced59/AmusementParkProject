@@ -1,0 +1,141 @@
+{
+  "checkedAtUtc": "2026-10-22T21:37:21.532405+00:00",
+  "page": "https://amusement-parks.fun/fr",
+  "checks": [
+    {
+      "entry": "smoky",
+      "mode": "all",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+          "text": "Smoky Mountain Alpine CoasterPigeon ForgeÉtats-UnisPigeon Forge - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    },
+    {
+      "entry": "smoky",
+      "mode": "standaloneAttractions",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+          "text": "Smoky Mountain Alpine CoasterPigeon ForgeÉtats-UnisPigeon Forge - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    },
+    {
+      "entry": "smoky",
+      "mode": "attractionsWithStandalone",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+          "text": "Smoky Mountain Alpine CoasterPigeon ForgeÉtats-UnisPigeon Forge - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    },
+    {
+      "entry": "flathead",
+      "mode": "all",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+          "text": "Flathead Lake Alpine CoasterLakesideÉtats-UnisLakeside - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    },
+    {
+      "entry": "flathead",
+      "mode": "standaloneAttractions",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+          "text": "Flathead Lake Alpine CoasterLakesideÉtats-UnisLakeside - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    },
+    {
+      "entry": "flathead",
+      "mode": "attractionsWithStandalone",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+          "text": "Flathead Lake Alpine CoasterLakesideÉtats-UnisLakeside - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    },
+    {
+      "entry": "branson",
+      "mode": "all",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+          "text": "The Branson CoasterBransonÉtats-UnisBranson - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    },
+    {
+      "entry": "branson",
+      "mode": "standaloneAttractions",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+          "text": "The Branson CoasterBransonÉtats-UnisBranson - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    },
+    {
+      "entry": "branson",
+      "mode": "attractionsWithStandalone",
+      "found": true,
+      "links": [
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+          "text": "The Branson CoasterBransonÉtats-UnisBranson - USAttractions isolées seules"
+        },
+        {
+          "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+          "text": "Ouvrir"
+        }
+      ]
+    }
+  ]
+}

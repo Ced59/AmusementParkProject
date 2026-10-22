@@ -1,0 +1,352 @@
+{
+  "name": "Smoky Mountain Alpine Coaster",
+  "standaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+  "qualification": "Site fixe dédié à un coaster, sans parc structuré ; aucune migration legacy. Recherches Park/Standalone Smoky Mountain et Smokey Mountain sans résultat avant création.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 2,
+    "accessConditions": 10,
+    "historyEvents": 3,
+    "articles": 1,
+    "weeklyDays": 7,
+    "datedCalendarDays": 0,
+    "admissionOffers": 0
+  },
+  "gaps": [
+    "Tarifs actuels absents des sources officielles accessibles : site, FAQ, office de tourisme et brochure. Prix 2013 expirés et tarifs secondaires non datés écartés.",
+    "Deux photographies distinctes disponibles dans la galerie officielle. Aucun troisième média approprié établi ; pas de duplication artificielle.",
+    "Photographie actuelle du site pour le jalon d’ouverture et l’article sur 2016 ; aucune photo appropriée et réutilisable de cet accident identifiée. Le jalon nocturne 2014 reste sans image.",
+    "Longueur (descente/circuit) contradictoire et durée approximative non intégrées. Personne morale de l’exploitant actuel non confirmée ; aucune référence globale inventée.",
+    "Horaires hebdomadaires seuls publiés, sans horizon de dates : aucun statut ouvert maintenant déduit.",
+    "Les conditions sont stockées et auditées dans le graphe ; la page standalone actuelle ne possède pas de panneau public pour les afficher.",
+    "Météo encore vide avant le premier batch ; le composant reste masqué correctement."
+  ],
+  "sources": [
+    "https://www.smokymountainalpinecoaster.com/",
+    "https://www.smokymountainalpinecoaster.com/faq.html",
+    "https://www.smokymountainalpinecoaster.com/guidelines.html",
+    "https://www.smokymountainalpinecoaster.com/the-ride.html",
+    "https://www.mypigeonforge.com/business/smoky-mountain-alpine-coaster/",
+    "https://rcdb.com/13322.htm",
+    "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198",
+    "https://amusementtoday.com/backissues/April-2015-Dig.pdf",
+    "https://www.wvlt.tv/content/news/Smoky-Mountain-Alpine-Coaster-shut-down-after-rider-was-hurt-388961532.html/business/closed-captioningaudio-description/",
+    "https://www.wiegandslide.com/en/company-profile.html"
+  ],
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-22T21:04:50.056693+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": []
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": []
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": []
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": []
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": []
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": []
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": []
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": []
+      }
+    ]
+  },
+  "articleException": "Récit court limité aux faits de deux sources, deux sections et trois paragraphes ; pas de remplissage.",
+  "corpus": {
+    "auditedAtUtc": "2026-10-22T21:26:55.946456+00:00",
+    "exportSha256": "242976432aaa5eab98c4cdaaa5accbed5c73aeacc7505200ed65169571865c42",
+    "localizedStringsReviewed": 384,
+    "localizedGroups": 48,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "facebook": {
+    "id": "0ad10ccb2dd34661a34e26f67cd3acd4",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-22T21:07:50.1322493Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124208023424431",
+    "externalPostId": "1285475681307050_122124208023424431",
+    "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster"
+  },
+  "publicationNotes": [
+    "Images, histoire et fiche publiées après audit ; historique canonique resynchronisé après visibilité. Cette synchronisation ne constitue pas une nouvelle intégration de données.",
+    "Pages de l’attraction, de son historique et de ses articles contrôlées publiquement dans les huit langues. Le libellé anglais Operating est une traduction valide du statut."
+  ],
+  "idempotenceCheck": {
+    "operationId": "6e26e654-64bd-4778-bd83-0c268bbc960f",
+    "previewedAtUtc": "2026-10-22T21:27:01.6943258Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 7,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-22T21:41:08.205Z",
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-22T21:05:45.989588+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history/994856e3-00e5-45e9-a5af-4dbb9fd87bfa/collision-controle-securite-juillet-2016",
+            "status": 200,
+            "textLength": 1538,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1390
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history/994856e3-00e5-45e9-a5af-4dbb9fd87bfa/collision-controle-securite-juillet-2016",
+            "status": 200,
+            "textLength": 1406,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1257
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history/994856e3-00e5-45e9-a5af-4dbb9fd87bfa/collision-controle-securite-juillet-2016",
+            "status": 200,
+            "textLength": 1520,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1400
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history/994856e3-00e5-45e9-a5af-4dbb9fd87bfa/collision-controle-securite-juillet-2016",
+            "status": 200,
+            "textLength": 1464,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1358
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history/994856e3-00e5-45e9-a5af-4dbb9fd87bfa/collision-controle-securite-juillet-2016",
+            "status": 200,
+            "textLength": 1508,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1341
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history/994856e3-00e5-45e9-a5af-4dbb9fd87bfa/collision-controle-securite-juillet-2016",
+            "status": 200,
+            "textLength": 1505,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1342
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history/994856e3-00e5-45e9-a5af-4dbb9fd87bfa/collision-controle-securite-juillet-2016",
+            "status": 200,
+            "textLength": 1434,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1303
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster/history/994856e3-00e5-45e9-a5af-4dbb9fd87bfa/collision-controle-securite-juillet-2016",
+            "status": 200,
+            "textLength": 1433,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1333
+      }
+    ]
+  },
+  "discoveryChecks": {
+    "checkedAtUtc": "2026-10-22T21:37:21.532405+00:00",
+    "evidence": "discovery-checks.json",
+    "checks": [
+      {
+        "entry": "smoky",
+        "mode": "all",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+            "text": "Smoky Mountain Alpine CoasterPigeon ForgeÉtats-UnisPigeon Forge - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      },
+      {
+        "entry": "smoky",
+        "mode": "standaloneAttractions",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+            "text": "Smoky Mountain Alpine CoasterPigeon ForgeÉtats-UnisPigeon Forge - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      },
+      {
+        "entry": "smoky",
+        "mode": "attractionsWithStandalone",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+            "text": "Smoky Mountain Alpine CoasterPigeon ForgeÉtats-UnisPigeon Forge - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      }
+    ]
+  }
+}
