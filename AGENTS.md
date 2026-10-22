@@ -56,7 +56,7 @@ The project must preserve its current architecture, SOLID principles, separation
 
 ## Park data completion requests
 
-- Before selecting any European park or standalone integration, read `docs/roadmaps/europe-integration/README.md`, `WORKFLOW.md` and the relevant country JSON. France and Portugal are included: ongoing national campaigns must reconcile their recent work with this inventory before their next batch and coordinate ownership by entry ID.
+- Before selecting any park worldwide or standalone integration, read `docs/roadmaps/world-integration/README.md`, `WORKFLOW.md` and the relevant country JSON. France and Portugal are included: ongoing national campaigns must reconcile their recent work with this inventory before their next batch and coordinate ownership by entry ID.
 - Permanently retain every backlog entry, including completed, excluded and duplicate entries. After each successful data integration, append its real UTC Apply/import date, evidence and outcome; record final audit evidence for completion. Preserve the stable entry ID and all earlier events, and update `lastDataIntegrationAt` to the latest actual integration date. Never substitute an inventory, review, publication or commit date. Existing unknown dates remain null. This rule supersedes older instructions to remove completed backlog rows; publication authorizations and gates are unchanged.
 
 - Treat a request such as `Complète le parc <nom>`, `Intègre le parc <nom>` or an equivalent formulation as a data-integration operation, not as a request to change application code or to work directly in the administration UI.

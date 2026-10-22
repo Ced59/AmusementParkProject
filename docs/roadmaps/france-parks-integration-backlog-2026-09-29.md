@@ -1,6 +1,6 @@
 # Backlog d'intégration des parcs français — 2026-09-29
 
-> **Mise à jour de coordination — 22 octobre 2026.** Cette campagne doit désormais consulter le [résumé européen](europe-integration/README.md), le [registre FR](europe-integration/countries/FR.md) et les [règles de suivi permanent](europe-integration/WORKFLOW.md) avant son prochain lot. Réconcilier les travaux déjà appliqués depuis le relevé ; les chiffres historiques ci-dessous ne remplacent pas le nouveau résumé. Conserver chaque ligne achevée, sa date réelle de dernière intégration et son historique : aucune clôture ne supprime désormais une entrée du backlog. Les autorisations et critères de publication propres à cette campagne restent applicables.
+> **Mise à jour de coordination — 22 octobre 2026.** Cette campagne doit désormais consulter le [résumé mondial](world-integration/README.md), le [registre FR](world-integration/countries/FR.md) et les [règles de suivi permanent](world-integration/WORKFLOW.md) avant son prochain lot. Réconcilier les travaux déjà appliqués depuis le relevé ; les chiffres historiques ci-dessous ne remplacent pas le nouveau résumé. Conserver chaque ligne achevée, sa date réelle de dernière intégration et son historique : aucune clôture ne supprime désormais une entrée du backlog. Les autorisations et critères de publication propres à cette campagne restent applicables.
 
 ## Objectif
 

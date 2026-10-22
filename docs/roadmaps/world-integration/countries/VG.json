@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "VG",
+  "countryName": "Îles Vierges britanniques",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
+  "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
+  "coverageStatus": "Recherche nationale ou locale à compléter",
+  "sourceObservationCount": 0,
+  "sourceFamilies": [],
+  "rcdbCountryDirectory": null,
+  "notes": [
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Recherche nationale ou locale à compléter. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": []
+}

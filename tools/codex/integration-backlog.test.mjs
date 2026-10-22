@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { claimEntry, countryCounts, preserveHistory, recordIntegration, renderCountry, renderSummary, validateCountry } from './integration-backlog.mjs';
+import { claimEntry, countryCounts, preserveHistory, recordIntegration, renderCountry, renderCountryPages, renderSummary, validateCountry } from './integration-backlog.mjs';
 
 const fixture = () => ({ schemaVersion: 1, countryCode: 'BE', countryName: 'Belgique', inventoryDate: '2026-10-22', geographicScope: 'Europe', entries: [{ entryId: 'BE-example', name: 'Parc exemple', locality: 'Ville', entityKind: 'Park', proposedEntityKind: 'Park', siteId: 'park-1', editorialStatus: 'ToIntegrate', presence: 'Hidden', assignedTo: null, lastDataIntegrationAt: null, integrationHistory: [], sources: [], nextAction: 'Intégrer.' }] });
 const options = () => ({ entry: 'BE-example', event: 'receipt-1', at: '2026-10-22T12:00:00Z', outcome: 'completed', entityId: 'park-1', kind: 'Park', evidence: 'receipt:verified-1', audit: 'audit:verified-1', summary: 'Inventaire et textes intégrés, audit final accepté.' });
@@ -160,4 +160,27 @@ test('invalid presence or missing classification cannot silently disappear from 
   doc.entries[0].siteId = null;
   delete doc.entries[0].proposedEntityKind;
   assert.throws(() => validateCountry(doc), /type proposé/);
+});
+
+test('large national views paginate without losing or repeating any entry', () => {
+  const doc = fixture();
+  const base = doc.entries[0];
+  doc.entries = Array.from({ length: 501 }, (_, index) => ({ ...base, entryId: `BE-entry-${String(index).padStart(3, '0')}` }));
+  const pages = renderCountryPages(doc);
+  assert.deepEqual(Object.keys(pages), ['001.md', '002.md', '003.md']);
+  const renderedIds = Object.values(pages).join('\n').match(/BE-entry-\d{3}/g);
+  assert.equal(renderedIds.length, 501);
+  assert.equal(new Set(renderedIds).size, 501);
+  assert.match(renderCountry(doc), /BE\/003\.md/);
+});
+
+test('world summary separates geographic groups and the unresolved-country queue', () => {
+  const europe = fixture();
+  europe.geographicGroup = 'Europe';
+  const asia = { ...fixture(), countryCode: 'JP', countryName: 'Japon', geographicGroup: 'Asie' };
+  const unknown = { ...fixture(), countryCode: 'ZZ', countryName: 'Pays à déterminer', geographicGroup: 'Pays à déterminer' };
+  const summary = renderSummary([europe, asia, unknown]);
+  assert.match(summary, /2 pays et territoires/);
+  assert.match(summary, /## Asie/);
+  assert.match(summary, /## Pays à déterminer/);
 });

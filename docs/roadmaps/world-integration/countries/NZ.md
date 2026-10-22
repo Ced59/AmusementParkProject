@@ -1,0 +1,59 @@
+# Nouvelle-Zélande — backlog permanent
+
+Relevé initial : 2026-10-22. Périmètre : Océanie — périmètre national/territorial des sources.
+
+Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entrée achevée ; utiliser le script de suivi pour enregistrer les intégrations et régénérer cette vue.
+
+- Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.
+- Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
+- NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
+- Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+
+| État éditorial | Nombre |
+| --- | ---: |
+| À intégrer | 1 |
+| À qualifier | 24 |
+| En cours | 0 |
+| Bloqué | 0 |
+| Intégration achevée | 0 |
+| Publié, date inconnue | 0 |
+| Hors périmètre enregistré | 0 |
+| Doublon conservé | 0 |
+
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **29**. Sources : RCDB, WAZA, Wikipédia (découverte).
+
+Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
+
+Parcs : **0 publiés**, **1 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **24 candidats sans fiche**.
+
+Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+
+Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
+
+| ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| NZ-candidate-85e87d2eaf9c32 | Aquatic Park Parakai Springs | Auckland | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Oceania#New_Zealand) |
+| NZ-candidate-1f04472a75094d | Auckland Adventure Park | Stillwater , Auckland | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Oceania#New_Zealand) |
+| NZ-candidate-133d544f832f7d | Auckland Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) · [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](https://www.aucklandzoo.co.nz/) |
+| NZ-candidate-2f96cf73c87a61 | Brooklands Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) |
+| NZ-candidate-c6c2e7ca4d9add | Crystal Mountain | Henderson Valley , Auckland | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/9914.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Oceania#New_Zealand) |
+| NZ-candidate-483f9aa2a684de | Footrot Flats Leisure Park | Auckland , Auckland | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/12570.htm) |
+| NZ-candidate-f87597a7435ef2 | Hamilton Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) · [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](https://hamiltonzoo.co.nz/) |
+| NZ-candidate-d51e9fd214a97b | Kelly Tarlton's Sea Life Aquarium | Auckland | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#New_Zealand) |
+| NZ-candidate-f84ef5392719f6 | Kiwi Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) |
+| NZ-candidate-0d7e81106fd2bb | Luna Park | Auckland , Auckland | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/12965.htm) |
+| NZ-candidate-8940fde854f854 | National Aquarium of New Zealand | Napier | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#New_Zealand) |
+| NZ-candidate-5b80ca3f3385e9 | Natureland Wildlife Trust | Nelson | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) |
+| NZ-candidate-a19d3794d8625a | New Zealand Exhibition | Wellington , Wellington | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/10278.htm) |
+| NZ-candidate-5f59de0c7d6dd4 | Orana Wildlife Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) |
+| NZ-candidate-47fe4482b56d5f | Orana Wildlife Trust | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.oranawildlifepark.co.nz) |
+| NZ-candidate-418a0a5bf130d1 | QEII Fun Park | Christchurch , Canterbury | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/21010.htm) |
+| NZ-park-73e613a1-5b95-4f6c-8032-d752448293a4 | Rainbow's End | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/4940.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Oceania#New_Zealand) |
+| NZ-candidate-b9df3d22889cab | South Seas Exposition | Dunedin , Otago | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/12963.htm) |
+| NZ-candidate-89986e6bf00040 | Splash Planet | Hastings | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Oceania#New_Zealand) |
+| NZ-candidate-479931fbcddc38 | Taupo DeBretts Hot Springs | Taupō | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Oceania#New_Zealand) |
+| NZ-candidate-e5e53622dcd38a | Te Nukuao Wellington Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.wellingtonzoo.com) |
+| NZ-candidate-5d1a0a7186ee51 | Waiwera Hot Pools | Auckland, closed in 2018 | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Oceania#New_Zealand) |
+| NZ-candidate-9ccd6ce81d59f7 | Waterworld | Hamilton | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Oceania#New_Zealand) |
+| NZ-candidate-6c849b9254fb19 | Wellington Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) |
+| NZ-candidate-1b144d29d9234c | Willowbank Wildlife Reserve | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) |

@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-> **Suivi permanent par pays :** consulter le [registre européen](../roadmaps/europe-integration/README.md) et ses [règles de suivi](../roadmaps/europe-integration/WORKFLOW.md) avant le prochain lot, France et Portugal compris. Toute intégration réussie ajoute sa date réelle et sa preuve ; conserver la ligne et tout son historique après achèvement.
+> **Suivi permanent par pays :** consulter le [registre mondial](../roadmaps/world-integration/README.md) et ses [règles de suivi](../roadmaps/world-integration/WORKFLOW.md) avant le prochain lot, France et Portugal compris. Toute intégration réussie ajoute sa date réelle et sa preuve ; conserver la ligne et tout son historique après achèvement.
 
 Version : **2026-08-09-r4**
 Projet : **amusement-parks.fun**  

@@ -32,7 +32,7 @@ Le statut du parc (`Operating`, fermeture temporaire ou définitive, projet, etc
 
 Une fiche visible dont le score est strictement supérieur à 95 n’entre pas. Si la recherche, la pagination ou le calcul individuel échoue, le relevé n’est pas déclaré complet : l’identifiant concerné est ajouté à une section `Anomalies à vérifier` et aucune omission silencieuse n’est autorisée.
 
-Un rafraîchissement ajoute les nouveaux parcs éligibles et actualise les valeurs des lignes existantes. Il ne retire jamais silencieusement une ligne devenue introuvable ou masquée : cette anomalie reste signalée jusqu’à vérification. La clôture suit la procédure ci-dessous, sans suppression de la ligne. Le [registre permanent](../roadmaps/europe-integration/WORKFLOW.md) conserve la date réelle de dernière intégration et son historique.
+Un rafraîchissement ajoute les nouveaux parcs éligibles et actualise les valeurs des lignes existantes. Il ne retire jamais silencieusement une ligne devenue introuvable ou masquée : cette anomalie reste signalée jusqu’à vérification. La clôture suit la procédure ci-dessous, sans suppression de la ligne. Le [registre permanent](../roadmaps/world-integration/WORKFLOW.md) conserve la date réelle de dernière intégration et son historique.
 
 ## Reprise complète d’une ligne
 

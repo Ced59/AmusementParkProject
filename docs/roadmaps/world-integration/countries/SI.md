@@ -1,0 +1,53 @@
+# Slovénie — backlog permanent
+
+Relevé initial : 2026-10-22. Périmètre : Europe — périmètre national/territorial des sources.
+
+Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entrée achevée ; utiliser le script de suivi pour enregistrer les intégrations et régénérer cette vue.
+
+- Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.
+- Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
+- NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
+- Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+
+| État éditorial | Nombre |
+| --- | ---: |
+| À intégrer | 4 |
+| À qualifier | 14 |
+| En cours | 0 |
+| Bloqué | 0 |
+| Intégration achevée | 0 |
+| Publié, date inconnue | 0 |
+| Hors périmètre enregistré | 1 |
+| Doublon conservé | 0 |
+
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **19**. Sources : AmusementForce, EAZA, RCDB, WAZA, Wikipédia (découverte).
+
+Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
+
+Parcs : **0 publiés**, **4 masqués à intégrer**, **1 masqués NotRelevant à réexaminer**, **14 candidats sans fiche**.
+
+Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+
+Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
+
+| ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| SI-candidate-b2224e4366c778 | Adventure Park Postojna | Postojna | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Slovenia) |
+| SI-candidate-313e9317a5f97b | Akvarij | terarij Maribor - Maribor | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Slovenia) |
+| SI-candidate-4d1db311732233 | Akvarij Piran | Piran | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Slovenia) |
+| SI-candidate-db091cf099a802 | Aqualuna Terme Olimia | Podčetrtek, Slovenia | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/aqualuna-terme-olimia-podcetrtek-slovenia) |
+| SI-candidate-d92bbbac0a93e4 | Aquapark Atlantis | Ljubljana | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Slovenia) |
+| SI-candidate-b864d09cc68911 | Aquapark Bohinj | Bohinjska Bistrica | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Slovenia) |
+| SI-park-2f6460c6-64e9-476e-882f-f50c3c195d58 | Kranjska Gora | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/13035.htm) |
+| SI-candidate-d7f25c2551a584 | Ljubljana Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Slovenia) · [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.zoo.si) |
+| SI-park-81a4c993-dbe0-4e6e-996e-dc4a01afce82 | Lunapark Müller | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
+| SI-park-a8658b25-e658-4e1f-8ecf-2847a9fec57a | Rogla | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/13338.htm) |
+| SI-park-998f83ff-8e77-4256-8ef1-45da5c188afc | Športni Center Pohorje | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/13037.htm) |
+| SI-park-5e67d69e-de52-485f-9fd6-0db3b8b859df | Straža Bled | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/13033.htm) |
+| SI-candidate-0491e0b0f325c7 | Terme 3000 | Moravske Toplice | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Slovenia) |
+| SI-candidate-2868849067d02c | Terme Čatež | Čatež ob Savi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Slovenia) |
+| SI-candidate-cd28f67fb8a2ce | Terme Krka | Dolenjske Toplice | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Slovenia) |
+| SI-candidate-70df4656be6949 | Terme Olimia | Podčetrtek | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Slovenia) |
+| SI-candidate-3c46e31f7f67da | Terme Ptuj | Ptuj | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Slovenia) |
+| SI-candidate-11636ed2eec5a0 | Zivalski vrt Ljubljana | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [EAZA](https://www.eaza.net/membership/) · [Site officiel référencé](https://www.zoo-ljubljana.si) |
+| SI-candidate-698dee1710910c | Zoo Park Ranč Aladin | Mirna , Southeast Slovenia | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/24388.htm) |
