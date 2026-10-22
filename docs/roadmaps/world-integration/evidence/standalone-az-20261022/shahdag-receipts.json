@@ -1,0 +1,194 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "f8b2b126-b002-4638-a4d7-8aefa0c44a3a",
+    "appliedAtUtc": "2026-10-22T22:43:06.2380621Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-access.apply",
+    "operationId": "eb7e074a-fd1c-42f2-92a2-83e9ef40fdcc",
+    "appliedAtUtc": "2026-10-22T22:44:34.5299986Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-hours.apply",
+    "operationId": "984356bf-a5ac-41a3-86b2-7fd5008859b1",
+    "appliedAtUtc": "2026-10-22T22:45:20.6230666Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-pricing.apply",
+    "operationId": "1624d6fe-f124-4701-bcaa-54700b0a5e68",
+    "appliedAtUtc": "2026-10-22T22:45:45.9732282Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-corrected.apply",
+    "operationId": "4146c944-2f2c-4712-ab58-c669a34d321b",
+    "appliedAtUtc": "2026-10-22T22:51:03.166002Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-final.apply",
+    "operationId": "9ccb262c-0137-4f37-8997-5f0fb741b666",
+    "appliedAtUtc": "2026-10-22T22:52:05.8502441Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "a58b88e6-5ed8-4442-96d0-bc36b4a4c6c2",
+    "appliedAtUtc": "2026-10-22T22:49:07.4801877Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "d6fc44fb-c97c-4e56-947c-853e64c84889",
+    "appliedAtUtc": "2026-10-22T22:53:13.6393697Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "f8047694-9f90-4415-9ace-389dd5d0bb54",
+    "appliedAtUtc": "2026-10-22T22:53:50.1196023Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "6d7a16b2-5659-4806-a537-763409496222",
+    "appliedAtUtc": "2026-10-22T22:54:15.115105Z",
+    "targetStandaloneAttractionId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "e12cdc19cd4048b3aa36e56fdb99689d",
+    "ownerId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "sourceUrl": "https://www.shahdag.az/storage/app/media/Activities/Summer%20activities/Shahdag%20Coaster/shahdag-alpine-coaster.webp",
+    "updatedAt": "2026-10-22T22:47:01.879Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "c62bb174d1b84217a26bc7cce43b872c",
+    "ownerId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "sourceUrl": "https://www.wiegandslide.com/fileadmin/_processed_/f/d/csm_2022-02-25-WS-Bilder_Shahdaq_demo1_7bf828286c.jpg",
+    "updatedAt": "2026-10-22T22:47:20.837Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "3050f65af4e14049a6763a7a7379c594",
+    "ownerId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "sourceUrl": "https://www.wiegandslide.com/fileadmin/_processed_/d/6/csm_2022-02-25-WS-Bilder_Shahdaq_demo3_cdec048b0c.jpg",
+    "updatedAt": "2026-10-22T22:47:37.69Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-4-result",
+    "id": "4467e7d5c8094103bd1c30267e201dc6",
+    "ownerId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+    "sourceUrl": "https://www.wiegandslide.com/fileadmin/_processed_/5/e/csm_2022-02-25-WS-Bilder_Shahdaq_demo2_b928a60ebe.jpg",
+    "updatedAt": "2026-10-22T22:47:53.121Z",
+    "isPublished": false
+  }
+]
