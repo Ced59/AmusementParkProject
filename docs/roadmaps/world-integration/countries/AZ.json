@@ -511,25 +511,176 @@
     {
       "entryId": "AZ-candidate-56998578936897",
       "name": "Shahdag Mountain Resort",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Gusar , Guba-Khachmaz",
-      "siteId": null,
+      "siteId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22T22:55:25.241Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-22T22:54:15.115Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f8b2b126-b002-4638-a4d7-8aefa0c44a3a",
+          "appliedAt": "2026-10-22T22:43:06.238Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:f8b2b126-b002-4638-a4d7-8aefa0c44a3a",
+          "auditEvidence": null,
+          "summary": "Création de Shahdag Coaster avec huit descriptions et caractéristiques vérifiées"
+        },
+        {
+          "eventId": "apply-eb7e074a-fd1c-42f2-92a2-83e9ef40fdcc",
+          "appliedAt": "2026-10-22T22:44:34.529Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:eb7e074a-fd1c-42f2-92a2-83e9ef40fdcc",
+          "auditEvidence": null,
+          "summary": "Âge minimum sourcé sur la page officielle"
+        },
+        {
+          "eventId": "apply-984356bf-a5ac-41a3-86b2-7fd5008859b1",
+          "appliedAt": "2026-10-22T22:45:20.623Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:984356bf-a5ac-41a3-86b2-7fd5008859b1",
+          "auditEvidence": null,
+          "summary": "Horaires officiels 09 h 30–17 h et fuseau Asia/Baku"
+        },
+        {
+          "eventId": "apply-1624d6fe-f124-4701-bcaa-54700b0a5e68",
+          "appliedAt": "2026-10-22T22:45:45.973Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:1624d6fe-f124-4701-bcaa-54700b0a5e68",
+          "auditEvidence": null,
+          "summary": "Cinq offres Bronze, Silver et Gold vérifiées sur le site du resort"
+        },
+        {
+          "eventId": "image-e12cdc19cd4048b3aa36e56fdb99689d",
+          "appliedAt": "2026-10-22T22:47:01.879Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:image:e12cdc19cd4048b3aa36e56fdb99689d",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-c62bb174d1b84217a26bc7cce43b872c",
+          "appliedAt": "2026-10-22T22:47:20.837Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:image:c62bb174d1b84217a26bc7cce43b872c",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-3050f65af4e14049a6763a7a7379c594",
+          "appliedAt": "2026-10-22T22:47:37.690Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:image:3050f65af4e14049a6763a7a7379c594",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-4467e7d5c8094103bd1c30267e201dc6",
+          "appliedAt": "2026-10-22T22:47:53.121Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:image:4467e7d5c8094103bd1c30267e201dc6",
+          "auditEvidence": null,
+          "summary": "Photo officielle 4 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-a58b88e6-5ed8-4442-96d0-bc36b4a4c6c2",
+          "appliedAt": "2026-10-22T22:49:07.480Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:a58b88e6-5ed8-4442-96d0-bc36b4a4c6c2",
+          "auditEvidence": null,
+          "summary": "Historique du lancement 2022 et article sourcé en huit langues"
+        },
+        {
+          "eventId": "apply-4146c944-2f2c-4712-ab58-c669a34d321b",
+          "appliedAt": "2026-10-22T22:51:03.166Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:4146c944-2f2c-4712-ab58-c669a34d321b",
+          "auditEvidence": null,
+          "summary": "Révision de l’historique pour une lecture éditoriale claire"
+        },
+        {
+          "eventId": "apply-9ccb262c-0137-4f37-8997-5f0fb741b666",
+          "appliedAt": "2026-10-22T22:52:05.850Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:9ccb262c-0137-4f37-8997-5f0fb741b666",
+          "auditEvidence": null,
+          "summary": "Troisième paragraphe historique et contexte des offres actuelles"
+        },
+        {
+          "eventId": "apply-d6fc44fb-c97c-4e56-947c-853e64c84889",
+          "appliedAt": "2026-10-22T22:53:13.639Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:d6fc44fb-c97c-4e56-947c-853e64c84889",
+          "auditEvidence": null,
+          "summary": "Publication de quatre photos attribuées"
+        },
+        {
+          "eventId": "apply-f8047694-9f90-4415-9ace-389dd5d0bb54",
+          "appliedAt": "2026-10-22T22:53:50.119Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:f8047694-9f90-4415-9ace-389dd5d0bb54",
+          "auditEvidence": null,
+          "summary": "Publication de l’événement et de l’article historique"
+        },
+        {
+          "eventId": "apply-6d7a16b2-5659-4806-a537-763409496222",
+          "appliedAt": "2026-10-22T22:54:15.115Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:6d7a16b2-5659-4806-a537-763409496222",
+          "auditEvidence": null,
+          "summary": "Publication de la fiche Shahdag Coaster validée"
+        },
+        {
+          "eventId": "closure-apply-6d7a16b2-5659-4806-a537-763409496222",
+          "appliedAt": "2026-10-22T22:54:15.115Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+          "evidence": "PARK_DATA_EDITOR:apply:6d7a16b2-5659-4806-a537-763409496222",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-az-20261022/shahdag-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 100/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "RCDB",
@@ -540,10 +691,30 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/19871.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.shahdag.az/en/activity/shahdag-coaster-2",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wiegandslide.com/en/news/news-archiv/news-archiv/premiere-of-our-alpine-coaster-in-azerbaijan-768.html",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://api.openstreetmap.org/api/0.6/node/12899498503",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/ca5993d8-9074-4be2-ab6b-f62bb3bbf786/shahdag-coaster",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -557,7 +728,30 @@
             "sourceOpenedYear": "2021"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-6d7a16b2-5659-4806-a537-763409496222 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ca5993d8-9074-4be2-ab6b-f62bb3bbf786/shahdag-coaster",
+          "publishedAtUtc": "2026-10-22T22:54:15.115105Z",
+          "verifiedAtUtc": "2026-10-22T22:55:25.241Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6d7a16b2-5659-4806-a537-763409496222"
+        },
+        "facebook": {
+          "id": "cf0f5bdf35774da383f864bda91679d6",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-22T22:56:06.7252964Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124214875424431",
+          "externalPostId": "1285475681307050_122124214875424431",
+          "url": "https://amusement-parks.fun/fr/attraction/ca5993d8-9074-4be2-ab6b-f62bb3bbf786/shahdag-coaster?facebook-image=e12cdc19cd4048b3aa36e56fdb99689d"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-az-20261022/shahdag-audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 5
       }
     },
     {
