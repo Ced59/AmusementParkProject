@@ -1,6 +1,20 @@
 {
-  "version": "6.0.16",
+  "version": "6.0.17",
   "history": [
+    {
+      "version": "6.0.17",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Amélioration des outils de gestion",
+        "en": "Improved management tools",
+        "de": "Verbesserte Verwaltungswerkzeuge",
+        "nl": "Verbeterde beheertools",
+        "it": "Strumenti di gestione migliorati",
+        "es": "Herramientas de gestión mejoradas",
+        "pt": "Ferramentas de gestão melhoradas",
+        "pl": "Ulepszone narzędzia zarządzania"
+      }
+    },
     {
       "version": "6.0.16",
       "releasedAt": "2026-10-22",
