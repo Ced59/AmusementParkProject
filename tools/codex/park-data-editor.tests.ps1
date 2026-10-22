@@ -160,3 +160,37 @@ if ($message -notlike "*ended with status 'Failed'*" -or $script:exportPollCount
 Write-Output 'Park data editor completed-export recovery tests passed.'
 
 & (Join-Path $PSScriptRoot 'park-data-editor.photo-import.tests.ps1')
+
+$actionSwitch = $ast.Find({
+    param($node)
+    return $node -is [Management.Automation.Language.SwitchStatementAst] -and
+        $node.Condition.Extent.Text -eq '$Action'
+}, $true)
+$searchClause = @($actionSwitch.Clauses | Where-Object { $_.Item1.Value -eq 'SearchStandaloneAttractions' })
+if ($searchClause.Count -ne 1) {
+    throw 'Expected one standalone-attraction search action.'
+}
+$searchBody = $searchClause[0].Item2.Extent.Text
+$searchAction = [scriptblock]::Create($searchBody.Substring(1, $searchBody.Length - 2))
+$script:standaloneSearchRequests = [Collections.Generic.List[string]]::new()
+function Invoke-ParkDataEditorJsonApi {
+    param([string]$Method, [string]$RelativePath, [object]$Body)
+    if ($Method -ne 'GET' -or $null -ne $Body) {
+        throw 'Standalone discovery must be read-only.'
+    }
+    $script:standaloneSearchRequests.Add($RelativePath)
+}
+$Page = 2
+$PageSize = 25
+$Query = 'DreamFly & Porto'
+$CountryCode = ' pt '
+& $searchAction
+$Query = ' '
+$CountryCode = ''
+& $searchAction
+if ($script:standaloneSearchRequests.Count -ne 2 -or
+    $script:standaloneSearchRequests[0] -ne 'park-data-editor/standalone-attractions?page=2&size=25&query=DreamFly%20%26%20Porto&countryCode=PT' -or
+    $script:standaloneSearchRequests[1] -ne 'park-data-editor/standalone-attractions?page=2&size=25') {
+    throw 'Standalone discovery must preserve pagination, encode filters and omit empty optional parameters.'
+}
+Write-Output 'Park data editor standalone-discovery tests passed.'

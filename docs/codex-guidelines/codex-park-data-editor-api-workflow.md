@@ -98,6 +98,7 @@ Pour couper l’accès depuis Codex :
 |---|---|
 | Vérifier l’activité globale avant une opération coûteuse | `GET park-data-editor/operations/status` |
 | Rechercher un parc, y compris masqué ou fermé | `GET park-data-editor/parks` |
+| Rechercher une attraction autonome, y compris masquée, par nom et pays | `GET park-data-editor/standalone-attractions` |
 | Exporter le graphe courant | job `POST admin/park-graph-upserts/bulk/export-jobs`, suivi puis téléchargement reprenable |
 | Prévisualiser/appliquer un lot borné | `POST admin/park-graph-upserts/preview` puis `apply` |
 | Prévisualiser/appliquer une suppression contrôlée explicitement autorisée | mêmes routes via `PreviewDeletion` puis `ApplyDeletion` |
@@ -111,6 +112,13 @@ Pour couper l’accès depuis Codex :
 Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, une route générale de suppression ou les autres fonctions d’administration. La seule suppression disponible est le lot contrôlé `suppr` d’un parc, limité aux images, parkItems, zones et au parc cible lui-même lorsqu’ils sont explicitement identifiés et autorisés. La suppression du parc parent est refusée tant qu’il est visible, qu’il n’est pas classé `NotRelevant` ou qu’une dépendance contrôlée subsiste.
 
 `SearchParks` accepte `-Page` et `-PageSize` pour parcourir séquentiellement l’inventaire complet sans contourner le client officiel. La taille de page est limitée à 50 et chaque page doit être traitée avant d’appeler la suivante.
+
+`SearchStandaloneAttractions` recherche également les brouillons et les fiches classées `NotRelevant`. Utiliser `-Query` pour le nom, éventuellement `-CountryCode PT`, puis parcourir toutes les pages avec `-Page` et `-PageSize`. Une recherche publique vide ou un résultat vide de `SearchParks` ne prouve pas l’absence d’une attraction autonome masquée. Avant une création, rechercher ses variantes de nom et résoudre les IDs existants ; `Preview` ne déduplique pas ces fiches par leur seul nom.
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action SearchStandaloneAttractions `
+  -Query 'DreamFly' -CountryCode PT -Page 1 -PageSize 50
+```
 
 `Completeness` renvoie le score de l’état réellement publié par défaut. Pour la reprise d’un parc déjà visible sélectionné dans le backlog, `-ProjectForPublication` simule le score obtenu après validation du parc et publication des médias et articles déjà intégrés :
 

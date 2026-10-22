@@ -15,6 +15,8 @@ Utiliser `StandaloneAttraction` si toutes ces conditions sont vraies :
 
 Ne pas utiliser ce flux pour une attraction foraine itinérante, un événement temporaire, un parcours saisonnier démonté, ou une attraction clairement située dans un vrai parc existant.
 
+Avant toute création, utiliser `SearchStandaloneAttractions` du client `PARK_DATA_EDITOR` pour rechercher le nom et ses variantes, y compris parmi les fiches masquées, puis `SearchParks` pour les éventuels parents legacy. Le filtre facultatif `CountryCode` permet une première recherche nationale ; le retirer si un classement de pays incorrect est possible. Parcourir les pages séquentiellement et réutiliser les IDs trouvés. La liste publique et une Preview de création ne suffisent pas à exclure un doublon : la résolution d’une attraction autonome s’appuie sur son ID ou ses liens legacy, pas sur une fusion automatique par nom.
+
 ## Migration Legacy
 
 Si une attraction isolée existe déjà comme parc mono-attraction :
