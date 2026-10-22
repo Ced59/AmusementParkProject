@@ -4851,7 +4851,7 @@
         {
           "siteId": "609bc227-f66f-4e83-8341-77d78975c259",
           "name": "Paradise Amusements",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -5246,7 +5246,7 @@
         {
           "siteId": "0683326e-9eaa-4864-9a9f-3cde1ea54c06",
           "name": "Helm & Sons Amusements",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -5403,7 +5403,7 @@
         {
           "siteId": "a5ccbf9a-579c-49d5-b651-57291c0b871e",
           "name": "Kiddieland",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -7135,7 +7135,7 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
@@ -7144,7 +7144,7 @@
       "aliases": [
         "The Branson Coaster"
       ],
-      "assignedTo": null,
+      "assignedTo": "conversation-standalone-world-2026-10-22",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
@@ -9044,7 +9044,7 @@
         {
           "siteId": "40d9ae0a-ef5b-4cd2-9e6e-f725014a7d22",
           "name": "Camelback Mountain Adventures",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -11413,7 +11413,7 @@
         {
           "siteId": "a5ccbf9a-579c-49d5-b651-57291c0b871e",
           "name": "Kiddieland",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -18661,7 +18661,7 @@
         {
           "siteId": "fffc331c-82a2-4fa8-8ca5-b00baa68551e",
           "name": "Fantasy Island Amusement Park",
-          "similarity": 84.0
+          "similarity": 84
         }
       ],
       "aliases": [],
@@ -19161,14 +19161,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "conversation-standalone-world-2026-10-22",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
@@ -19505,7 +19505,7 @@
         {
           "siteId": "5cb35fce-d655-442b-8f1f-27e9e7ecde53",
           "name": "Forest Park Jijel",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -19577,7 +19577,7 @@
         {
           "siteId": "5cb35fce-d655-442b-8f1f-27e9e7ecde53",
           "name": "Forest Park Jijel",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -19613,7 +19613,7 @@
         {
           "siteId": "5cb35fce-d655-442b-8f1f-27e9e7ecde53",
           "name": "Forest Park Jijel",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -19649,7 +19649,7 @@
         {
           "siteId": "5cb35fce-d655-442b-8f1f-27e9e7ecde53",
           "name": "Forest Park Jijel",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -19685,7 +19685,7 @@
         {
           "siteId": "5cb35fce-d655-442b-8f1f-27e9e7ecde53",
           "name": "Forest Park Jijel",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -21835,7 +21835,7 @@
         {
           "siteId": "082e3270-f712-4e99-91c8-5cd88beaeca2",
           "name": "Track Family Fun Park",
-          "similarity": 81.0
+          "similarity": 81
         }
       ],
       "aliases": [],
@@ -26680,7 +26680,7 @@
         {
           "siteId": "a7e1b740-813e-4fae-a6d9-5de27507897d",
           "name": "Wisconsin Dells Mountain Coaster",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -26828,7 +26828,7 @@
         {
           "siteId": "7645a3d1-3469-4d65-8667-cfe544f49289",
           "name": "Holiday Valley",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -27545,7 +27545,7 @@
         {
           "siteId": "a5ccbf9a-579c-49d5-b651-57291c0b871e",
           "name": "Kiddieland",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -28105,7 +28105,7 @@
         {
           "siteId": "73e789fc-884a-48c5-b8ec-a272a0b56dd7",
           "name": "Palace Playland",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -30273,7 +30273,7 @@
         {
           "siteId": "32a10af8-67d6-459b-ad6d-89aac9f09425",
           "name": "Sir Gooney's Family Fun Center",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -35861,7 +35861,7 @@
         {
           "siteId": "a5ccbf9a-579c-49d5-b651-57291c0b871e",
           "name": "Kiddieland",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -42189,7 +42189,7 @@
         {
           "siteId": "0c6d94fd-dc54-4666-bd9f-292a6b63d1fb",
           "name": "Ocean Beach Park",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -49661,7 +49661,7 @@
         {
           "siteId": "78730835-cfbe-4a3b-a20b-ab9803f0d1e2",
           "name": "Rocky Point Park",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -54145,7 +54145,7 @@
         {
           "siteId": "e350f973-2042-4af6-ab94-b6b33bbb6226",
           "name": "Sandy Lake Amusement Park",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -55895,14 +55895,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "conversation-standalone-world-2026-10-22",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
@@ -57677,7 +57677,7 @@
         {
           "siteId": "ac51aac1-9008-4f56-88bc-c9973eaab38d",
           "name": "Splash Kingdom Waterpark",
-          "similarity": 78.0
+          "similarity": 78
         }
       ],
       "aliases": [],
@@ -60858,7 +60858,7 @@
         {
           "siteId": "66346443-93d2-4f38-9c28-1a47ec8ce539",
           "name": "Zao Island",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -62845,7 +62845,7 @@
         {
           "siteId": "fffc331c-82a2-4fa8-8ca5-b00baa68551e",
           "name": "Fantasy Island Amusement Park",
-          "similarity": 84.0
+          "similarity": 84
         }
       ],
       "aliases": [],
@@ -65058,7 +65058,7 @@
         {
           "siteId": "dcaad446-c1ab-4057-8dfd-fd0090989c0b",
           "name": "Waterville",
-          "similarity": 87.0
+          "similarity": 87
         }
       ],
       "aliases": [],
