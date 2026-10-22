@@ -1199,7 +1199,7 @@
         {
           "siteId": "3cf6872e-5c96-4357-a967-2be1a9c1965a",
           "name": "Cultus Lake Adventure Park",
-          "similarity": 81.0
+          "similarity": 81
         }
       ],
       "aliases": [],
@@ -2874,14 +2874,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "conversation-standalone-world-continuation-2026-10-22",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
@@ -3985,7 +3985,7 @@
         {
           "siteId": "c1422cdd-1315-4b2c-b619-1cd407f13523",
           "name": "Crystal Beach",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
