@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'HistoryDiagnostics', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'SearchStandaloneAttractions', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'HistoryDiagnostics', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -22,6 +22,8 @@ param(
     [string]$StandaloneAttractionId,
 
     [string]$Query,
+
+    [string]$CountryCode,
 
     [ValidateRange(1, 1000000)]
     [int]$Page = 1,
@@ -1346,6 +1348,16 @@ switch ($Action) {
         $relativePath = "park-data-editor/parks?page=$Page&size=$PageSize"
         if (-not [string]::IsNullOrWhiteSpace($Query)) {
             $relativePath += '&query=' + [Uri]::EscapeDataString($Query)
+        }
+        Invoke-ParkDataEditorJsonApi -Method GET -RelativePath $relativePath -Body $null
+    }
+    'SearchStandaloneAttractions' {
+        $relativePath = "park-data-editor/standalone-attractions?page=$Page&size=$PageSize"
+        if (-not [string]::IsNullOrWhiteSpace($Query)) {
+            $relativePath += '&query=' + [Uri]::EscapeDataString($Query)
+        }
+        if (-not [string]::IsNullOrWhiteSpace($CountryCode)) {
+            $relativePath += '&countryCode=' + [Uri]::EscapeDataString($CountryCode.Trim().ToUpperInvariant())
         }
         Invoke-ParkDataEditorJsonApi -Method GET -RelativePath $relativePath -Body $null
     }

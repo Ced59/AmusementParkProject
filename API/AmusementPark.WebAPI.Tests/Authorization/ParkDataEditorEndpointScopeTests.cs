@@ -21,6 +21,19 @@ namespace AmusementPark.WebAPI.Tests.Authorization;
 public sealed class ParkDataEditorEndpointScopeTests
 {
     [Fact]
+    public void StandaloneDiscovery_ShouldRemainScopedAuthenticatedAndUncached()
+    {
+        Type controller = typeof(ParkDataEditorStandaloneAttractionsController);
+        Assert.Equal(AuthorizationPolicyNames.AdminOrParkDataEditorToken,
+            Assert.Single(controller.GetCustomAttributes<AuthorizeAttribute>()).Policy);
+        Assert.NotNull(controller.GetCustomAttribute<AllowParkDataEditorTokenAttribute>());
+        Assert.Null(controller.GetCustomAttribute<AllowAnonymousAttribute>());
+        Assert.Equal("park-data-editor/standalone-attractions", controller.GetCustomAttribute<RouteAttribute>()?.Template);
+        Assert.True(controller.GetCustomAttribute<ResponseCacheAttribute>()?.NoStore);
+        Assert.Null(typeof(StandaloneAttractionsController).GetCustomAttribute<AllowParkDataEditorTokenAttribute>());
+    }
+
+    [Fact]
     public void ParkGraphUpsertsController_ShouldRequireAdminOrDedicatedTokenAndExplicitMarker()
     {
         AuthorizeAttribute authorize = typeof(ParkGraphUpsertsController)
