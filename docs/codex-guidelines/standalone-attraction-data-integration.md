@@ -211,6 +211,32 @@ Elle doit apparaître :
 
 Ne pas créer un parc parent artificiel pour rendre l’attraction découvrable. Si l’attraction ne sort pas dans la recherche après application, contrôler la projection de recherche plutôt que de réintroduire un lien parc factice.
 
+## Contrôle de complétude
+
+Utiliser l’action officielle `Completeness -StandaloneAttractionId '<id>'`, avec `-ProjectForPublication` pour évaluer le brouillon destiné à la publication. Le calcul est individuel, en lecture seule et sans parc synthétique. Après publication autorisée, recalculer le score sans cette option et vérifier le contenu public effectif.
+
+Les points sont normalisés sur les critères applicables :
+
+| Domaine | Points possibles | Vérifications |
+|---|---:|---|
+| Identité et localisation | 16 | Nom renseigné sans placeholder, pays, ville, coordonnées, statut de revue et visibilité réelle ou projetée |
+| Classification et sources | 8 à 10 | Type précis ou sous-type, statut reconnu, date d’ouverture, source ; date de fermeture pour une installation retirée ou fermée définitivement ; site officiel pour une installation en activité |
+| Description | 12 | Huit langues, avec un minimum de contenu dans chacune |
+| Construction mécanique | 4 si applicable | Constructeur résolu et modèle pour les types mécaniques explicites |
+| Références liées | 4 par référence | Exploitant ou constructeur résolu et biographie dans les huit langues lorsqu’un ID est renseigné |
+| Accès | Jusqu’à 6 | Conditions pour une installation en activité, libellés et descriptions présentes traduits, provenance et résumé de source vérifiés ; aucun minimum de taille imposé artificiellement |
+| Images | Jusqu’à 8 | Image courante de cette attraction, textes alternatifs et légendes traduits, source et crédit |
+| Historique | Jusqu’à 8 | Présence d’une frise, dates, titres, résumés et sources de tous ses événements ; références d’images résolues |
+| Articles intégrés | 4 si présents | Titres, résumés, sources, au moins deux sections et trois paragraphes traduits |
+| Tarifs actuels | 8 pour `Operating` | Offre d’entrée ou de crédits valide à la date du calcul, devise, source, vérification datant de 90 jours au plus et libellés traduits |
+| Horaires | 6 pour `Operating` | Au moins une règle datée ou exception non périmée, source, fuseau et vérification datant de 90 jours au plus |
+
+Les images et faits d’un autre propriétaire ne rapportent aucun point. Les données visiteurs d’une attraction qui n’est plus `Operating` ne sont pas évaluées comme actuelles. Une date de vérification future ne vaut pas vérification. Les références renseignées mais introuvables ou non publiables, les images d’article introuvables et le statut `NotRelevant` constituent des bloqueurs ; les textes interdits et les répétitions narratives utilisent les mêmes détecteurs que les parcs. Tout bloqueur plafonne le score à 95. Les conditions tarifaires ou d’accès répétées légitimement restent contrôlées pour leur contenu mais ne sont pas assimilées à des paragraphes narratifs.
+
+Ce score ne prouve ni l’exhaustivité des sources, ni la qualité des traductions, ni l’adéquation d’une photographie à un événement. Il ne mesure pas toute la période disponible sur un calendrier officiel. L’export frais final et l’audit intégral de l’étape 9 restent obligatoires, notamment pour vérifier les huit langues, les phrases génériques, les événements et photographies manquants, la réutilisation des médias, la couverture complète des horaires officiels et les lacunes factuelles documentées. Ne jamais inventer des dates de calendrier pour gagner des points : les horaires hebdomadaires sans période publiée nécessitent une représentation adaptée, pas une année ou une semaine arbitraire.
+
+L’export autonome contient `references.operators`, `references.manufacturers` et les images de ces références avec leurs véritables propriétaires. Relire ces textes dans l’audit ; ne pas réappliquer tout l’export pour une simple publication, ni modifier une référence partagée sans périmètre factuel justifié.
+
 ## Sortie Attendue
 
 Chaque livraison doit indiquer :

@@ -104,6 +104,7 @@ Pour couper l’accès depuis Codex :
 | Prévisualiser/appliquer une suppression contrôlée explicitement autorisée | mêmes routes via `PreviewDeletion` puis `ApplyDeletion` |
 | Lire l’historique d’intégration | `GET admin/park-graph-upserts/history` |
 | Contrôler la complétude courante ou projetée pour publication | `GET park-data-editor/parks/{id}/data-completeness` |
+| Contrôler la complétude propre d’une attraction autonome | `GET park-data-editor/standalone-attractions/{id}/data-completeness` |
 | Diagnostiquer l'éligibilité publique de l'historique d'un parc | `GET park-data-editor/parks/{id}/history-diagnostics` |
 | Téléverser/rattacher/documenter une image de parc | `park-data-editor/images/*` |
 | Préparer puis publier explicitement un lien Facebook | `GET park-data-editor/social-publications/facebook/draft`, puis `POST park-data-editor/social-publications/facebook` |
@@ -125,6 +126,15 @@ Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, le
 ```powershell
 .\tools\codex\park-data-editor.ps1 -Action Completeness -ParkId '<park-id>' -ProjectForPublication
 ```
+
+Pour une attraction autonome, remplacer `-ParkId` par `-StandaloneAttractionId`. Fournir exactement un de ces deux identifiants ; le client refuse une cible absente ou ambiguë avant tout appel. Le calcul utilise les données natives de cette attraction, sans parc parent ni données du parc legacy :
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action Completeness `
+  -StandaloneAttractionId '<standalone-attraction-id>' -ProjectForPublication
+```
+
+La projection autonome prend en compte les médias, événements, articles et constructeur masqués déjà rattachés à cette cible, sans les publier. L’export autonome complet comprend aussi les références liées et leurs métadonnées d’images afin de permettre l’audit du corpus actuel. Les [critères et limites du score autonome](standalone-attraction-data-integration.md#contrôle-de-complétude) restent distincts de la vérification éditoriale manuelle.
 
 `HistoryDiagnostics` expose, par le même jeton technique borné, les compteurs de faits publiés, sourcés et majeurs ainsi que le verdict de publication de la frise. Utilise-le lorsqu'un parc possède des événements HIST mais que son lien public reste absent :
 

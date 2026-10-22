@@ -1526,12 +1526,16 @@ switch ($Action) {
         [PSCustomObject]@{ ApplyPath = $applyOutputPath; Result = $apply }
     }
     'Completeness' {
-        if ([string]::IsNullOrWhiteSpace($ParkId)) {
-            throw 'ParkId is required for Completeness.'
+        $hasParkId = -not [string]::IsNullOrWhiteSpace($ParkId)
+        $hasStandaloneId = -not [string]::IsNullOrWhiteSpace($StandaloneAttractionId)
+        if ($hasParkId -eq $hasStandaloneId) {
+            throw 'Exactly one of ParkId or StandaloneAttractionId is required for Completeness.'
         }
+        $targetPath = if ($hasParkId) { "parks/$([Uri]::EscapeDataString($ParkId.Trim()))" }
+            else { "standalone-attractions/$([Uri]::EscapeDataString($StandaloneAttractionId.Trim()))" }
         $projectionQuery = if ($ProjectForPublication) { '?projectForPublication=true' } else { '' }
         Invoke-ParkDataEditorJsonApi -Method GET `
-            -RelativePath "park-data-editor/parks/$([Uri]::EscapeDataString($ParkId))/data-completeness$projectionQuery" `
+            -RelativePath "park-data-editor/$targetPath/data-completeness$projectionQuery" `
             -Body $null
     }
     'HistoryDiagnostics' {
