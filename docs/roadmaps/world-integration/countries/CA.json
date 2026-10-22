@@ -1199,7 +1199,7 @@
         {
           "siteId": "3cf6872e-5c96-4357-a967-2be1a9c1965a",
           "name": "Cultus Lake Adventure Park",
-          "similarity": 81.0
+          "similarity": 81
         }
       ],
       "aliases": [],
@@ -2866,25 +2866,166 @@
     {
       "entryId": "CA-candidate-05e7f7645eafbd",
       "name": "Panorama Mountain Resort",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Panorama , British Columbia",
-      "siteId": null,
+      "siteId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22T23:12:37.255Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-22T23:11:32.243Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-9f9f85ca-2604-4974-a9b5-08a06e747fb4",
+          "appliedAt": "2026-10-22T23:02:36.420Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:9f9f85ca-2604-4974-a9b5-08a06e747fb4",
+          "auditEvidence": null,
+          "summary": "Création de Wild Rider avec date d’ouverture, huit récits et constructeur Sunkid"
+        },
+        {
+          "eventId": "apply-33f5e50e-d9e4-4403-ac42-057b7c94da4a",
+          "appliedAt": "2026-10-22T23:03:33.511Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:33f5e50e-d9e4-4403-ac42-057b7c94da4a",
+          "auditEvidence": null,
+          "summary": "Cinq règles d’accès vérifiées sur le site du resort"
+        },
+        {
+          "eventId": "apply-843550d2-4795-45e6-97f7-2fd49a6617c7",
+          "appliedAt": "2026-10-22T23:03:58.178Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:843550d2-4795-45e6-97f7-2fd49a6617c7",
+          "auditEvidence": null,
+          "summary": "Fermeture saisonnière confirmée et fuseau horaire local"
+        },
+        {
+          "eventId": "apply-31b6ab56-bebb-4b14-acbe-5c8b27b87aa9",
+          "appliedAt": "2026-10-22T23:04:25.338Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:31b6ab56-bebb-4b14-acbe-5c8b27b87aa9",
+          "auditEvidence": null,
+          "summary": "Tarif 2026 archivé sans inventer de prix 2027"
+        },
+        {
+          "eventId": "image-af286dc9a7b3405d98e41d93258cc213",
+          "appliedAt": "2026-10-22T23:05:35.509Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:image:af286dc9a7b3405d98e41d93258cc213",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-07356894ef324a888d48c80cc1f40b65",
+          "appliedAt": "2026-10-22T23:06:03.341Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:image:07356894ef324a888d48c80cc1f40b65",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-9a75be9ef39540658424256fa1719483",
+          "appliedAt": "2026-10-22T23:06:34.646Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:image:9a75be9ef39540658424256fa1719483",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-61691bd799224f359d54523e1fdfc967",
+          "appliedAt": "2026-10-22T23:06:54.431Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:image:61691bd799224f359d54523e1fdfc967",
+          "auditEvidence": null,
+          "summary": "Photo officielle 4 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-e8792ce2-800b-4ad6-8155-ca85cc117eda",
+          "appliedAt": "2026-10-22T23:08:02.640Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:e8792ce2-800b-4ad6-8155-ca85cc117eda",
+          "auditEvidence": null,
+          "summary": "Ouverture du 11 juillet 2024 et article historique en huit langues"
+        },
+        {
+          "eventId": "apply-05d1e41b-0c43-46d6-b036-5d15cf098f35",
+          "appliedAt": "2026-10-22T23:09:18.627Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:05d1e41b-0c43-46d6-b036-5d15cf098f35",
+          "auditEvidence": null,
+          "summary": "Révision de l’article pour éviter une répétition avec le résumé historique"
+        },
+        {
+          "eventId": "apply-842b5470-9f4a-4f97-9a1a-24537c8f7297",
+          "appliedAt": "2026-10-22T23:10:42.710Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:842b5470-9f4a-4f97-9a1a-24537c8f7297",
+          "auditEvidence": null,
+          "summary": "Publication des quatre photographies officielles Wild Rider"
+        },
+        {
+          "eventId": "apply-374c20d6-9291-4342-a457-a5d4d780d512",
+          "appliedAt": "2026-10-22T23:11:08.849Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:374c20d6-9291-4342-a457-a5d4d780d512",
+          "auditEvidence": null,
+          "summary": "Publication de l’ouverture 2024 et de son article historique"
+        },
+        {
+          "eventId": "apply-72270453-fe19-439d-aea9-d7e3c301840e",
+          "appliedAt": "2026-10-22T23:11:32.243Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:72270453-fe19-439d-aea9-d7e3c301840e",
+          "auditEvidence": null,
+          "summary": "Publication de la fiche Wild Rider avec statut saisonnier contrôlé"
+        },
+        {
+          "eventId": "closure-apply-72270453-fe19-439d-aea9-d7e3c301840e",
+          "appliedAt": "2026-10-22T23:11:32.243Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+          "evidence": "PARK_DATA_EDITOR:apply:72270453-fe19-439d-aea9-d7e3c301840e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-20261022/panorama-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 91/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "RCDB",
@@ -2900,10 +3041,30 @@
           "label": "Sunkid — projet constructeur",
           "url": "https://www.sunkidworld.com/en/projects/detail/the-wild-rider-is-the-new-top-experience-in-panorama-canada/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.panoramaresort.com/explore/mountain-coaster",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.panoramaresort.com/planning/tickets-and-passes/mountain-coaster-tickets",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.panoramaresort.com/public/panorama-today/news/panorama-opens-new-mountain-coaster",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -2924,7 +3085,30 @@
             "sourceVenueName": "Panorama Mountain Resort"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-72270453-fe19-439d-aea9-d7e3c301840e ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+          "publishedAtUtc": "2026-10-22T23:11:32.2434087Z",
+          "verifiedAtUtc": "2026-10-22T23:12:37.255Z",
+          "evidence": "PARK_DATA_EDITOR:apply:72270453-fe19-439d-aea9-d7e3c301840e"
+        },
+        "facebook": {
+          "id": "022f6296106143a19fe1d2ffd5265db1",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-22T23:13:35.7316128Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124216171424431",
+          "externalPostId": "1285475681307050_122124216171424431",
+          "url": "https://amusement-parks.fun/fr/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster?facebook-image=af286dc9a7b3405d98e41d93258cc213"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-20261022/panorama-audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 6
       }
     },
     {
@@ -3985,7 +4169,7 @@
         {
           "siteId": "c1422cdd-1315-4b2c-b619-1cd407f13523",
           "name": "Crystal Beach",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
