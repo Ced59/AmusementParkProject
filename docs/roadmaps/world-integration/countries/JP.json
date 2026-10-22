@@ -4037,7 +4037,8 @@
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
-        "Nagoya Higashiyama Zoo"
+        "Nagoya Higashiyama Zoo",
+        "Higashiyama Zoo and Botanical Gardens"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
@@ -4058,6 +4059,11 @@
           "label": "Site officiel référencé",
           "url": "http://www.higashiyama.city.nagoya.jp/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5179.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "JP",
@@ -4074,7 +4080,7 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
@@ -4084,14 +4090,15 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Même lieu à Nagoya : RCDB et WAZA rapprochés du site officiel Higashiyama. Conserver cette trace et intégrer la fiche masquée JP-park-18215c26-22be-4255-9202-4f6140108f14.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/5179.htm",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "duplicateOf": "JP-park-18215c26-22be-4255-9202-4f6140108f14"
     },
     {
       "entryId": "JP-park-8b150bd1-9802-4537-bd34-f1a7bc31fb3a",

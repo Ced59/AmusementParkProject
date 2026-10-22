@@ -14,7 +14,7 @@ Le recensement couvre les annuaires et sources décrits dans [la méthode et ses
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 307 | 1891 | 7704 |
+| Parcs | 307 | 1891 | 7703 |
 | Standalone | 61 | 1 | 46 |
 
 À part : **767** Park masqués NotRelevant, **69** types à décider, **848** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
@@ -195,7 +195,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Irak](countries/IQ.md) | 1 | 3 | 0 | 58 | 68 |
 | [Iran](countries/IR.md) | 0 | 3 | 0 | 97 | 105 |
 | [Israël](countries/IL.md) | 0 | 3 | 1 | 47 | 56 |
-| [Japon](countries/JP.md) | 7 | 66 | 1 | 199 | 464 |
+| [Japon](countries/JP.md) | 7 | 66 | 1 | 198 | 464 |
 | [Jordanie](countries/JO.md) | 0 | 0 | 0 | 30 | 30 |
 | [Kirghizstan](countries/KG.md) | 0 | 0 | 0 | 12 | 12 |
 | [Koweït](countries/KW.md) | 0 | 8 | 0 | 15 | 26 |
@@ -224,7 +224,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Turkménistan](countries/TM.md) | 0 | 0 | 0 | 11 | 12 |
 | [Viêt Nam](countries/VN.md) | 3 | 16 | 2 | 77 | 111 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 9 | 13 |
-| **Total** | **34** | **425** | **12** | **2983** | **4197** |
+| **Total** | **34** | **425** | **12** | **2982** | **4197** |
 
 ### Attractions standalone et dossiers à trancher
 

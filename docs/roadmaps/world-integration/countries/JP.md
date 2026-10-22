@@ -12,19 +12,19 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 66 |
-| À qualifier | 365 |
+| À qualifier | 364 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
 | Publié, date inconnue | 7 |
 | Hors périmètre enregistré | 1 |
-| Doublon conservé | 0 |
+| Doublon conservé | 1 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **464**. Sources : JAZA, RCDB, WAZA, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
 
-Parcs : **7 publiés**, **66 masqués à intégrer**, **1 masqués NotRelevant à réexaminer**, **199 candidats sans fiche**.
+Parcs : **7 publiés**, **66 masqués à intégrer**, **1 masqués NotRelevant à réexaminer**, **198 candidats sans fiche**.
 
 Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **166 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
