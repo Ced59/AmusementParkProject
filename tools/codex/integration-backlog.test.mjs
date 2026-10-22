@@ -1,10 +1,32 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { claimEntry, countryCounts, preserveHistory, recordIntegration, renderCountry, renderCountryPages, renderSummary, validateCountry } from './integration-backlog.mjs';
+import { claimEntry, countryCounts, preserveHistory, preserveRegistryHistory, recordIntegration, renderCountry, renderCountryPages, renderSummary, validateCountry } from './integration-backlog.mjs';
 
 const fixture = () => ({ schemaVersion: 1, countryCode: 'BE', countryName: 'Belgique', inventoryDate: '2026-10-22', geographicScope: 'Europe', entries: [{ entryId: 'BE-example', name: 'Parc exemple', locality: 'Ville', entityKind: 'Park', proposedEntityKind: 'Park', siteId: 'park-1', editorialStatus: 'ToIntegrate', presence: 'Hidden', assignedTo: null, lastDataIntegrationAt: null, integrationHistory: [], sources: [], nextAction: 'Intégrer.' }] });
 const options = () => ({ entry: 'BE-example', event: 'receipt-1', at: '2026-10-22T12:00:00Z', outcome: 'completed', entityId: 'park-1', kind: 'Park', evidence: 'receipt:verified-1', audit: 'audit:verified-1', summary: 'Inventaire et textes intégrés, audit final accepté.' });
 const now = new Date('2026-10-22T18:00:00Z');
+
+test('country correction preserves stable identity and integration history worldwide', () => {
+  const unresolved = recordIntegration(fixture(), options(), now);
+  unresolved.countryCode = 'ZZ';
+  unresolved.entries[0].entryId = 'ZZ-original-id';
+  const destination = { ...fixture(), entries: [] };
+  const previous = [unresolved, destination];
+  const next = [{ ...unresolved, entries: [] }, { ...destination, entries: structuredClone(unresolved.entries) }];
+  assert.doesNotThrow(() => preserveRegistryHistory(previous, next));
+  const rewrite = structuredClone(next);
+  rewrite[1].entries[0].integrationHistory[0].summary = 'Rewritten during move';
+  assert.throws(() => preserveRegistryHistory(previous, rewrite), /réécrit/);
+  const deletion = next.map(document => ({ ...document, entries: [] }));
+  assert.throws(() => preserveRegistryHistory(previous, deletion), /Suppression interdite/);
+});
+
+test('global retention rejects duplicated identities and lost country registries', () => {
+  const original = fixture();
+  const empty = { ...fixture(), countryCode: 'ZZ', entries: [] };
+  assert.throws(() => preserveRegistryHistory([original, empty], [original]), /Suppression de pays/);
+  assert.throws(() => preserveRegistryHistory([original, empty], [original, { ...empty, entries: structuredClone(original.entries) }]), /Identifiant dupliqué/);
+});
 
 test('completion retains the entry and records an auditable UTC integration date', () => {
   const original = fixture();

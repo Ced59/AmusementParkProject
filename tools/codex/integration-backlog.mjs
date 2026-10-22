@@ -68,6 +68,17 @@ export function preserveHistory(previous, next) {
   }
 }
 
+export function preserveRegistryHistory(previous, next) {
+  for (const document of [...previous, ...next]) validateCountry(document);
+  const countries = new Set(next.map(document => document.countryCode));
+  for (const document of previous) {
+    if (!countries.has(document.countryCode)) throw new Error(`Suppression de pays interdite : ${document.countryCode}`);
+  }
+  // Country corrections move an unchanged stable ID; retention applies worldwide.
+  const combined = documents => ({ schemaVersion: 1, countryCode: 'ZZ', entries: documents.flatMap(document => document.entries) });
+  preserveHistory(combined(previous), combined(next));
+}
+
 export function recordIntegration(document, options, now = new Date()) {
   validateCountry(document);
   const result = structuredClone(document);
@@ -289,10 +300,6 @@ export function run(args) {
       if (allIds.has(entry.entryId)) throw new Error(`Identifiant global dupliqué : ${entry.entryId}`);
       allIds.add(entry.entryId);
     }
-    if (options.baseline) {
-      const prior = path.join(options.baseline, 'countries', file);
-      if (fs.existsSync(prior)) preserveHistory(JSON.parse(fs.readFileSync(prior, 'utf8')), document);
-    }
     const rendered = renderCountry(document);
     if (command === 'render') writeCountryViews(filename, document);
     else if (fs.readFileSync(filename.replace(/\.json$/, '.md'), 'utf8') !== rendered) throw new Error(`Vue à régénérer : ${file}`);
@@ -303,8 +310,10 @@ export function run(args) {
   const summary = renderSummary(documents);
   if (command === 'render') atomicWrite(path.join(root, 'README.md'), summary);
   else if (fs.readFileSync(path.join(root, 'README.md'), 'utf8') !== summary) throw new Error('Résumé par pays à régénérer.');
-  if (options.baseline) for (const file of fs.readdirSync(path.join(options.baseline, 'countries')).filter(file => file.endsWith('.json'))) {
-    if (!files.includes(file)) throw new Error(`Suppression de pays interdite : ${file}`);
+  if (options.baseline) {
+    const directory = path.join(options.baseline, 'countries');
+    const previous = fs.readdirSync(directory).filter(file => file.endsWith('.json')).map(file => JSON.parse(fs.readFileSync(path.join(directory, file), 'utf8')));
+    preserveRegistryHistory(previous, documents);
   }
   console.log(`${files.length} pays, ${allIds.size} entrées : ${command} OK.`);
 }

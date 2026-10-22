@@ -51,6 +51,8 @@ node tools/codex/integration-backlog.mjs validate
 
 `validate --baseline CHEMIN_DU_REGISTRE_PRECEDENT` interdit la disparition d’un pays, d’une entrée ou d’un événement antérieur et la réécriture de l’historique. La CI applique cette comparaison à la base de la PR. Le résumé et les vues doivent correspondre aux JSON.
 
+Pour corriger un pays (notamment depuis `ZZ`), déplacer l’entrée entière vers le JSON du pays confirmé, sans changer son `entryId` ni son historique. Son préfixe peut donc conserver l’ancien code pays. Documenter la preuve dans les sources et `countryResolution`, conserver le pays initial dans `countryCodeAtInventory`, puis régénérer les vues. La conservation est vérifiée à l’échelle mondiale : le déplacement est permis, la disparition ou la duplication de l’identifiant ne l’est pas. Les commandes suivantes utilisent le nouveau `--country` et le même `--entry`.
+
 En cas de conflit Git, réunir les entrées et les événements des deux branches par identifiant, puis régénérer les vues. Ne jamais choisir une version entière au prix de la perte d’une intégration concurrente. Regrouper les mises à jour documentaires selon la règle des lots du dépôt ; aucun nouveau déploiement n’est nécessaire à chaque Apply. Les compteurs « publiés/masqués » décrivent la dernière présence observée, et le compteur « intégrations avec audit » décrit l’avancement éditorial : ils mesurent deux choses différentes.
 
 ## Message à reprendre dans les conversations France et Portugal
