@@ -35,10 +35,10 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 52 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
-| Fiches historiques privées existantes | 10 | 10 |
+| Fiches historiques privées existantes | 10 | 9 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **142** |
+| **Total** | **225** | **141** |
 
 ## 1. Fiches publiques à compléter
 
@@ -174,7 +174,7 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 4. Fiches historiques privées existantes
 
-- [ ] Fami P.A.R.C — `bafa7e08-9858-472d-8357-9c84aa7479b7`
+- [x] Fami P.A.R.C — `bafa7e08-9858-472d-8357-9c84aa7479b7` — clôture conservée le 22 octobre 2026 ; audit final à 96/100 et annonce Facebook Published confirmée.
 - [ ] Florida Parc — `b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5`
 - [ ] Holly Park — `1c5c0675-8d86-459c-9c7c-b2bc79c1dad4`
 - [ ] Luna Park Paris — `77106934-0f4c-4eb3-b075-4097ab6078cd`
@@ -427,3 +427,7 @@ Kingoland (`900ceb7b-7bb8-40c0-9e4a-6340d019a6d8`) est clôturé le 22 octobre 2
 Kid Parc Île d’Aventures (`a48caf8e-871b-40cc-8b98-9faff4219e96`) est clôturé le 22 octobre 2026 à **100/100** (102/102), sans bloqueur, après audit individuel et contrôle de 30 pages mobiles dans les huit langues. Les 37 lieux publics comprennent 26 attractions en activité et PiratʼExpress temporairement fermé ; les huit autres entrées restent privées faute de statut actuel établi. Le parc et les lieux publics totalisent 304 descriptions localisées. Les 71 médias propres sont publics : logo officiel courant, cinq véritables vues d’ambiance hors gros plans, portrait sourcé de Jérôme Durieux et photos des 27 attractions publiques. Onze attractions publiques sur 27 disposent de trois vues ; 25 lieux publics fixes sur 37 sont géolocalisés. Les trois plans officiels 2018, 2020 et 2025 sont publics et vérifiés octet pour octet ; la carte legacy étiquetée 2026 reste privée faute de millésime prouvé. Le calendrier couvre les dix jours futurs publiés du 22 au 31 octobre 2026, sans lacune ni chevauchement ; aucune date 2027 n’est inventée. Cinq offres d’entrée, un pass, le stationnement et cinq relevés officiels archivés de 2021 à 2025 sont vérifiés. Les 31 faits historiques canoniques publics sont sourcés, dont 13 majeurs ; deux articles sont contrôlés dans leurs huit versions. La reprise de 2020 par Jérôme Durieux est classée Acquisition, distincte de l’exploitant, et illustrée par le reportage de 2022. Le [lien Histoire de la fiche normale](https://amusement-parks.fun/fr/park/a48caf8e-871b-40cc-8b98-9faff4219e96/kid-parc-ile-d-aventures) est cliqué avec succès. L’[annonce Facebook existante](https://www.facebook.com/1285475681307050/posts/122120914677424431), identifiant `a1757a11ffd34c73874b752b50477455`, est confirmée `Published` ; aucun nouvel envoi. Les Previews d’idempotence sont sans mutation ; encodage et recherche de répétitions sont conformes après correction des légendes. Les douze positions publiques non prouvées, les séries photographiques incomplètes, la Soucoupe volante et le projet de roue sans photo, les années de plans manquantes, les dix dates passées non couvertes et l’absence d’instantané historique indexable restent nommés dans l’[audit](world-integration/evidence/france-20261022/kid-parc-audit.json).
 
 Après cette dixième clôture du lot cumulatif, le périmètre national historique compte **142 dossiers actifs : 112 principaux, 30 historiques, aucune standalone**. Les lignes terminées restent dans ce document et dans le registre mondial. Le Petit Prince, les Naudières et Fenestre restent réservés à « Conversation France ».
+
+### Fami P.A.R.C — clôture du 22 octobre 2026
+
+La [fiche historique](https://amusement-parks.fun/fr/park/bafa7e08-9858-472d-8357-9c84aa7479b7/fami-p-a-r-c) est publiée et auditée à **96/100**, sans bloqueur : 50 lieux dont 30 attractions, trois zones, 55 images propres dont le logo historique, 18 événements sourcés et un article développé dans les huit langues. Le plan officiel de 2012 est téléchargeable dans ses octets originaux. Les 22 contrôles de pages sur mobile passent ; le lien Histoire fonctionne depuis la fiche normale. L’[annonce Facebook existante](https://www.facebook.com/1285475681307050/posts/122124213591424431) est confirmée `Published` et conservée sans doublon. Les lacunes d’archives restent explicites : 31 lieux sur 50 sont illustrés, deux sont précisément géolocalisés ; aucun emplacement disparu ni cliché manquant n’a été inventé. La dernière intégration réelle est le **2026-10-22T22:44:51.062Z**, réparation canonique des 18 faits historiques. [Audit final](world-integration/evidence/france-historical-20261022/fami-parc-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/fami-parc-source-gaps.json).

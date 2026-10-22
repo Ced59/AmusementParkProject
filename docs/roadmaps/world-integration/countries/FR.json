@@ -5048,21 +5048,862 @@
       "locality": null,
       "siteId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22T22:54:57.925619Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "ClosedDefinitively — dernière saison 2012 ; réorientation ultérieure du domaine agricole sans réouverture du parc.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Fami Parc"
       ],
-      "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-22T22:44:51.062Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-60972cf7-ee73-41ee-aaf4-875286db1bf8",
+          "appliedAt": "2026-10-22T20:48:46.462Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-60972cf7-ee73-41ee-aaf4-875286db1bf8",
+          "auditEvidence": null,
+          "summary": "Socle historique Fami P.A.R.C : fermeture définitive, années 1997–2012 sans jour inventé, adresse et coordonnées sourcées ; fiche maintenue masquée en attente de l’intégration éditoriale."
+        },
+        {
+          "eventId": "apply-9cc36a3b-426f-4718-83a5-5c4b28168c82",
+          "appliedAt": "2026-10-22T20:49:50.824Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-9cc36a3b-426f-4718-83a5-5c4b28168c82",
+          "auditEvidence": null,
+          "summary": "Création des trois univers historiques officiels Fami Fête, Fami Liberté et Fami Nature, avec noms dans huit langues ; zones masquées en attente de l’audit."
+        },
+        {
+          "eventId": "apply-880315fd-8aad-4a7c-8632-9e61c2f61e78",
+          "appliedAt": "2026-10-22T20:54:42.091Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-880315fd-8aad-4a7c-8632-9e61c2f61e78",
+          "auditEvidence": null,
+          "summary": "Inventaire historique : correction sourcée des trois coasters existants et ajout de 21 attractions et jeux nommés dans les archives 2012 ; fermeture et précision des dates contrôlées, fiches encore masquées."
+        },
+        {
+          "eventId": "apply-d7d64846-6283-4f09-8a1f-447ae02fa640",
+          "appliedAt": "2026-10-22T20:55:55.840Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-d7d64846-6283-4f09-8a1f-447ae02fa640",
+          "auditEvidence": null,
+          "summary": "Ajout des 20 espaces nature, animaux, restaurants, boutique, spectacles et services historiques identifiés sur le plan et les pages officielles 2012 ; inventaire total porté à 44 fiches, toujours masquées."
+        },
+        {
+          "eventId": "apply-f35ff359-da15-42dc-842d-8d288e6da3d3",
+          "appliedAt": "2026-10-22T20:59:43.325Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-f35ff359-da15-42dc-842d-8d288e6da3d3",
+          "auditEvidence": null,
+          "summary": "Description éditoriale du parc rédigée et relue intégralement en huit langues : domaine, manèges, jeux, spectacles et nature ; passé et fermeture définitive explicites."
+        },
+        {
+          "eventId": "apply-435b6d63-f9f7-4c8a-aa0e-ad5ee7528e94",
+          "appliedAt": "2026-10-22T21:03:26.067Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-435b6d63-f9f7-4c8a-aa0e-ad5ee7528e94",
+          "auditEvidence": null,
+          "summary": "Descriptions propres aux trois univers historiques rédigées et relues dans les huit langues ; 24 textes intégrés sans changement de visibilité."
+        },
+        {
+          "eventId": "apply-46c9c832-bb85-4460-876d-cfa798cee13f",
+          "appliedAt": "2026-10-22T21:07:58.240Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-46c9c832-bb85-4460-876d-cfa798cee13f",
+          "auditEvidence": null,
+          "summary": "Descriptions historiques des trois coasters : scènes visuelles et vies antérieures distinctes, 24 textes rédigés et relus en huit langues, sans dates ou caractéristiques brutes dans le récit."
+        },
+        {
+          "eventId": "apply-46c673eb-cd3f-45fa-ab10-608876abeec0",
+          "appliedAt": "2026-10-22T21:11:32.826Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-46c673eb-cd3f-45fa-ab10-608876abeec0",
+          "auditEvidence": null,
+          "summary": "Complément historique antérieur à 2012 : Rivière Émeraude, Baby-foot géant et trois spectacles réguliers attestés par la presse ; cinq fiches distinctes, dates inconnues laissées inconnues."
+        },
+        {
+          "eventId": "apply-7cef8dba-5af4-4d7b-8513-2d7f99b080ef",
+          "appliedAt": "2026-10-22T21:17:31.243Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-7cef8dba-5af4-4d7b-8513-2d7f99b080ef",
+          "auditEvidence": null,
+          "summary": "Premier lot de six attractions historiques : 48 descriptions spécifiques rédigées et relues intégralement dans les huit langues, avec scènes vérifiées sur les photographies d’époque."
+        },
+        {
+          "eventId": "apply-22f52ffa-f0af-420f-894f-4a46b8f15d63",
+          "appliedAt": "2026-10-22T21:26:49.637Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-22f52ffa-f0af-420f-894f-4a46b8f15d63",
+          "auditEvidence": null,
+          "summary": "Descriptions historiques de sept manèges familiaux relues et intégrées dans les huit langues ; audit final restant."
+        },
+        {
+          "eventId": "apply-5bc40cf6-dfd6-44dc-8ab9-5933f9a7ab96",
+          "appliedAt": "2026-10-22T21:30:19.130Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-5bc40cf6-dfd6-44dc-8ab9-5933f9a7ab96",
+          "auditEvidence": null,
+          "summary": "Descriptions de huit jeux historiques de Fami Liberté dans les huit langues, limites documentaires consignées ; audit final restant."
+        },
+        {
+          "eventId": "apply-70a3c2be-95dd-4f55-94f7-b673ef0bd919",
+          "appliedAt": "2026-10-22T21:33:08.008Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-70a3c2be-95dd-4f55-94f7-b673ef0bd919",
+          "auditEvidence": null,
+          "summary": "Correction du point du parc après contrôle cartographique et géolocalisation sourcée de la Chenille et de Fami’Stéric ; audit final restant."
+        },
+        {
+          "eventId": "apply-44ec6aac-58e5-4b9c-b30b-29941fdc4d31",
+          "appliedAt": "2026-10-22T21:35:59.516Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-44ec6aac-58e5-4b9c-b30b-29941fdc4d31",
+          "auditEvidence": null,
+          "summary": "Descriptions de sept espaces naturels et animaliers historiques, huit langues relues ; audit final restant."
+        },
+        {
+          "eventId": "apply-be62185c-ce71-4328-ad98-6fa181570b95",
+          "appliedAt": "2026-10-22T21:39:07.881Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-be62185c-ce71-4328-ad98-6fa181570b95",
+          "auditEvidence": null,
+          "summary": "Descriptions des dix fiches de restauration, boutique et services, huit langues contrôlées sur le plan officiel de 2012 ; audit final restant."
+        },
+        {
+          "eventId": "apply-8082ffb0-d11b-47d1-80a2-e735c915d7c6",
+          "appliedAt": "2026-10-22T21:40:27.189Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-8082ffb0-d11b-47d1-80a2-e735c915d7c6",
+          "auditEvidence": null,
+          "summary": "Descriptions des huit dernières activités et spectacles historiques dans les huit langues ; corpus des 49 fiches complété, audit final restant."
+        },
+        {
+          "eventId": "import-photo-5966783a3f8a4a7592742227e610f515-2026-10-22T214217.838Z",
+          "appliedAt": "2026-10-22T21:42:17.838Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-5966783a3f8a4a7592742227e610f515-2026-10-22T214217.838Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2e9bb1cb60724db7b4ff23e302af295e-2026-10-22T214240.418Z",
+          "appliedAt": "2026-10-22T21:42:40.418Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-2e9bb1cb60724db7b4ff23e302af295e-2026-10-22T214240.418Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-lawn, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-30cd50e1fab14e719fd50f640c500231-2026-10-22T214256.608Z",
+          "appliedAt": "2026-10-22T21:42:56.608Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-30cd50e1fab14e719fd50f640c500231-2026-10-22T214256.608Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-water-lawn, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f4eb116b2ce345508773f5d399a87b43-2026-10-22T214313.043Z",
+          "appliedAt": "2026-10-22T21:43:13.043Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-f4eb116b2ce345508773f5d399a87b43-2026-10-22T214313.043Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-ride-path, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c5a8e4384d78434dba65f09e82139986-2026-10-22T214329.302Z",
+          "appliedAt": "2026-10-22T21:43:29.302Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-c5a8e4384d78434dba65f09e82139986-2026-10-22T214329.302Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-beach, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-94d59a67e9a04a69bb9ebacf1477a6f5-2026-10-22T214343.200Z",
+          "appliedAt": "2026-10-22T21:43:43.200Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-94d59a67e9a04a69bb9ebacf1477a6f5-2026-10-22T214343.200Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-chateau, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2880aeda8b7444abb1925422ed28444e-2026-10-22T214357.043Z",
+          "appliedAt": "2026-10-22T21:43:57.043Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-2880aeda8b7444abb1925422ed28444e-2026-10-22T214357.043Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-lake, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-df54556cb4cf4a45bd749e9798bc73c4-2026-10-22T214436.675Z",
+          "appliedAt": "2026-10-22T21:44:36.675Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-df54556cb4cf4a45bd749e9798bc73c4-2026-10-22T214436.675Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chenille-front, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-99165892961a46eca1c36fdba6a3bfdd-2026-10-22T214451.050Z",
+          "appliedAt": "2026-10-22T21:44:51.050Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-99165892961a46eca1c36fdba6a3bfdd-2026-10-22T214451.050Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chenille-onboard, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e53b48aae4534ea690332d5bf2d37dec-2026-10-22T214505.257Z",
+          "appliedAt": "2026-10-22T21:45:05.257Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-e53b48aae4534ea690332d5bf2d37dec-2026-10-22T214505.257Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chenille-trees, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-13ef1669a5264e41a9f309f44f20eb31-2026-10-22T214519.326Z",
+          "appliedAt": "2026-10-22T21:45:19.326Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-13ef1669a5264e41a9f309f44f20eb31-2026-10-22T214519.326Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-steric-front, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ac72987aa80c49c59279a901df6cce6e-2026-10-22T214533.598Z",
+          "appliedAt": "2026-10-22T21:45:33.598Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-ac72987aa80c49c59279a901df6cce6e-2026-10-22T214533.598Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-steric-sky, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bc5f677a2882444ea17854d7042b71f5-2026-10-22T214548.222Z",
+          "appliedAt": "2026-10-22T21:45:48.222Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-bc5f677a2882444ea17854d7042b71f5-2026-10-22T214548.222Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-steric-below, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c2a2f417c9754e609ce5d743c39bba0a-2026-10-22T214609.568Z",
+          "appliedAt": "2026-10-22T21:46:09.568Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-c2a2f417c9754e609ce5d743c39bba0a-2026-10-22T214609.568Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-splash-battle-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d28e68b6c31c4077924fb602558ce023-2026-10-22T214637.300Z",
+          "appliedAt": "2026-10-22T21:46:37.300Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-d28e68b6c31c4077924fb602558ce023-2026-10-22T214637.300Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-splash-battle-pool, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-db9284eaea7140fd9f1452b7d5dc2ab4-2026-10-22T214651.049Z",
+          "appliedAt": "2026-10-22T21:46:51.049Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-db9284eaea7140fd9f1452b7d5dc2ab4-2026-10-22T214651.049Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-energica-climb, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b10e4133e2df41509805066b202c8079-2026-10-22T214706.567Z",
+          "appliedAt": "2026-10-22T21:47:06.567Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-b10e4133e2df41509805066b202c8079-2026-10-22T214706.567Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-energica-garden, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-24b2cda197364b6f82c93b6310606075-2026-10-22T214723.090Z",
+          "appliedAt": "2026-10-22T21:47:23.090Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-24b2cda197364b6f82c93b6310606075-2026-10-22T214723.090Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-energica-beach, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7b502064fca44836ac146bb5c80c5b45-2026-10-22T214739.280Z",
+          "appliedAt": "2026-10-22T21:47:39.280Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-7b502064fca44836ac146bb5c80c5b45-2026-10-22T214739.280Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-grand-pirate-boat, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-cc64ea464e3e4920a37eefe6c029b7ff-2026-10-22T214803.348Z",
+          "appliedAt": "2026-10-22T21:48:03.348Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-cc64ea464e3e4920a37eefe6c029b7ff-2026-10-22T214803.348Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-grand-pirate-costumes, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fed74426875d46109bd79ff04c6e97f6-2026-10-22T214822.490Z",
+          "appliedAt": "2026-10-22T21:48:22.490Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-fed74426875d46109bd79ff04c6e97f6-2026-10-22T214822.490Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-petit-pirate, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-d0e1857b-4078-44bf-a146-fe45d06268f7",
+          "appliedAt": "2026-10-22T21:55:39.227Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-d0e1857b-4078-44bf-a146-fe45d06268f7",
+          "auditEvidence": null,
+          "summary": "Arctica 2011 ajouté : spectacle historique confirmé par brochure officielle et presse, huit descriptions rédigées, non publié."
+        },
+        {
+          "eventId": "import-photo-425a0fe3d469417ba6bcf28c156a05f7-2026-10-22T215557.950Z",
+          "appliedAt": "2026-10-22T21:55:57.950Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-425a0fe3d469417ba6bcf28c156a05f7-2026-10-22T215557.950Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chaises-action, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bd62743da1cf47c9b1c51704fc45fbbe-2026-10-22T215612.583Z",
+          "appliedAt": "2026-10-22T21:56:12.583Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-bd62743da1cf47c9b1c51704fc45fbbe-2026-10-22T215612.583Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chaises-path, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fde1dab36d7e4acea3a2cc57e670b9f3-2026-10-22T215626.251Z",
+          "appliedAt": "2026-10-22T21:56:26.251Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-fde1dab36d7e4acea3a2cc57e670b9f3-2026-10-22T215626.251Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chaises-chateau, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-960055c2234745d49837cc75bc1bd28d-2026-10-22T215642.775Z",
+          "appliedAt": "2026-10-22T21:56:42.775Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-960055c2234745d49837cc75bc1bd28d-2026-10-22T215642.775Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-carrousel, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-96ac2499d07945c4936d140fd31ae118-2026-10-22T215656.915Z",
+          "appliedAt": "2026-10-22T21:56:56.915Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-96ac2499d07945c4936d140fd31ae118-2026-10-22T215656.915Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-jolly-jumper, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-448c71fd2f9349bd9afe597376969899-2026-10-22T215710.676Z",
+          "appliedAt": "2026-10-22T21:57:10.676Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-448c71fd2f9349bd9afe597376969899-2026-10-22T215710.676Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mini-pedalos, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0530eff337404f6b83b2c574b8601f49-2026-10-22T215724.805Z",
+          "appliedAt": "2026-10-22T21:57:24.805Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-0530eff337404f6b83b2c574b8601f49-2026-10-22T215724.805Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mini-pedalos-brochure, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d2a06776f71b4d4a8d60562bc71347c1-2026-10-22T215738.354Z",
+          "appliedAt": "2026-10-22T21:57:38.354Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-d2a06776f71b4d4a8d60562bc71347c1-2026-10-22T215738.354Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mini-roue, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9ba229ec2e7445e0b1829cef757dd2b3-2026-10-22T215752.149Z",
+          "appliedAt": "2026-10-22T21:57:52.149Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-9ba229ec2e7445e0b1829cef757dd2b3-2026-10-22T215752.149Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-circuit-champignon, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5a41bd13c4a64932bdab6e9ff4ba4b17-2026-10-22T215806.954Z",
+          "appliedAt": "2026-10-22T21:58:06.954Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-5a41bd13c4a64932bdab6e9ff4ba4b17-2026-10-22T215806.954Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tasses, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4632d00a5e7044ea99a5afd71943a39f-2026-10-22T215821.171Z",
+          "appliedAt": "2026-10-22T21:58:21.171Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-4632d00a5e7044ea99a5afd71943a39f-2026-10-22T215821.171Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tacots, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2e24d48f49d94ae18dcb0596512c77db-2026-10-22T215841.950Z",
+          "appliedAt": "2026-10-22T21:58:41.950Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-2e24d48f49d94ae18dcb0596512c77db-2026-10-22T215841.950Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tonneau-close, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b013271077be4293838f5766c4a7e674-2026-10-22T215856.124Z",
+          "appliedAt": "2026-10-22T21:58:56.124Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-b013271077be4293838f5766c4a7e674-2026-10-22T215856.124Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tonneau-chateau, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9c1017de78e049d793ff4da58abfacd6-2026-10-22T215909.876Z",
+          "appliedAt": "2026-10-22T21:59:09.876Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-9c1017de78e049d793ff4da58abfacd6-2026-10-22T215909.876Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-balancoires, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d3fd91629d04423987189dbd7952fa0c-2026-10-22T215929.068Z",
+          "appliedAt": "2026-10-22T21:59:29.068Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-d3fd91629d04423987189dbd7952fa0c-2026-10-22T215929.068Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cage-ecureuil, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7439f53358a84dd5896522edcdf5b11f-2026-10-22T215951.074Z",
+          "appliedAt": "2026-10-22T21:59:51.074Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-7439f53358a84dd5896522edcdf5b11f-2026-10-22T215951.074Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-trampolines, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e56306e63e894c2bb81037f46be27769-2026-10-22T220005.776Z",
+          "appliedAt": "2026-10-22T22:00:05.776Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-e56306e63e894c2bb81037f46be27769-2026-10-22T220005.776Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bowling, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-73544cb86c1145249ca20c8cd1880ded-2026-10-22T220022.949Z",
+          "appliedAt": "2026-10-22T22:00:22.949Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-73544cb86c1145249ca20c8cd1880ded-2026-10-22T220022.949Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-gonflables, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3552f76bda064911a079f19ffd836064-2026-10-22T220045.570Z",
+          "appliedAt": "2026-10-22T22:00:45.570Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-3552f76bda064911a079f19ffd836064-2026-10-22T220045.570Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-baby-foot, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-68bc14c7d441469589b0731c34654c14-2026-10-22T220059.367Z",
+          "appliedAt": "2026-10-22T22:00:59.367Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-68bc14c7d441469589b0731c34654c14-2026-10-22T220059.367Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-lac-barques, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ec8feff4a9774f868ff01aff734af180-2026-10-22T220113.400Z",
+          "appliedAt": "2026-10-22T22:01:13.400Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-ec8feff4a9774f868ff01aff734af180-2026-10-22T220113.400Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-minigolf, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-80b4a324af124585b79fa66317513197-2026-10-22T220127.548Z",
+          "appliedAt": "2026-10-22T22:01:27.548Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-80b4a324af124585b79fa66317513197-2026-10-22T220127.548Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mini-animaux-chevre, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-602b72e644b2408cbc4911bcc4c40290-2026-10-22T220142.346Z",
+          "appliedAt": "2026-10-22T22:01:42.346Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-602b72e644b2408cbc4911bcc4c40290-2026-10-22T220142.346Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mini-animaux-ane, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-edaa04cec50244d8ba7077b2f236b37f-2026-10-22T220209.240Z",
+          "appliedAt": "2026-10-22T22:02:09.240Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-edaa04cec50244d8ba7077b2f236b37f-2026-10-22T220209.240Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-sentier-botanique, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a4344b902c304007b55c496067f49f4a-2026-10-22T220225.356Z",
+          "appliedAt": "2026-10-22T22:02:25.356Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-a4344b902c304007b55c496067f49f4a-2026-10-22T220225.356Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-labyrinthe-entree, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-89050c902bd24d85814abc1cb94490a1-2026-10-22T220239.646Z",
+          "appliedAt": "2026-10-22T22:02:39.646Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-89050c902bd24d85814abc1cb94490a1-2026-10-22T220239.646Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-labyrinthe-montage, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-21e48aa79b934f7ab162e1008ba9973b-2026-10-22T220253.249Z",
+          "appliedAt": "2026-10-22T22:02:53.249Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-21e48aa79b934f7ab162e1008ba9973b-2026-10-22T220253.249Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-espaces-paysagers, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b9dfa0c6b202451f98bfaf6120db1cd8-2026-10-22T220347.436Z",
+          "appliedAt": "2026-10-22T22:03:47.436Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-b9dfa0c6b202451f98bfaf6120db1cd8-2026-10-22T220347.436Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-arctica-brochure, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-45165fe58f0f4a8ba7a13b754460658b-2026-10-22T220419.761Z",
+          "appliedAt": "2026-10-22T22:04:19.761Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-45165fe58f0f4a8ba7a13b754460658b-2026-10-22T220419.761Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-guignol-portrait, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7df1a217574b4bc8af15a64afeca0033-2026-10-22T220442.616Z",
+          "appliedAt": "2026-10-22T22:04:42.616Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-7df1a217574b4bc8af15a64afeca0033-2026-10-22T220442.616Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-guignol-personnages, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-78d2f6239faa49b4a0fe433df5b0d307-2026-10-22T220500.309Z",
+          "appliedAt": "2026-10-22T22:05:00.309Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-78d2f6239faa49b4a0fe433df5b0d307-2026-10-22T220500.309Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-clown-affiche, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-209c403dc5e44a1fb5c50e6c9c389b21-2026-10-22T220513.696Z",
+          "appliedAt": "2026-10-22T22:05:13.696Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-209c403dc5e44a1fb5c50e6c9c389b21-2026-10-22T220513.696Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-boutique, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2e50fed2446d45e7a05ec1b77c589e9a-2026-10-22T220534.050Z",
+          "appliedAt": "2026-10-22T22:05:34.050Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-2e50fed2446d45e7a05ec1b77c589e9a-2026-10-22T220534.050Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-clos-reconversion, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-map-fami-parc-plan-2012-fr-b9e290d8d7b3db07",
+          "appliedAt": "2026-10-22T22:06:06.101Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-map-fami-parc-plan-2012-fr-b9e290d8d7b3db07",
+          "auditEvidence": null,
+          "summary": "Plan officiel 2012 : PDF original stocké via ImportOfficialMap ; métadonnées et publication encore à appliquer."
+        },
+        {
+          "eventId": "apply-4b61a14a-7c4c-4861-9406-37e66d8145a7",
+          "appliedAt": "2026-10-22T22:07:37.842Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-4b61a14a-7c4c-4861-9406-37e66d8145a7",
+          "auditEvidence": null,
+          "summary": "Exploitant historique FAMI PARC identifié par SIREN et lié au parc ; huit descriptions, sans confondre fermeture du parc et vie juridique de la société."
+        },
+        {
+          "eventId": "import-photo-df252c58ed1f471f8ba901f76eaaaa3a-2026-10-22T220900.388Z",
+          "appliedAt": "2026-10-22T22:09:00.388Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#import-photo-df252c58ed1f471f8ba901f76eaaaa3a-2026-10-22T220900.388Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-steric-delivery, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-b56adaaa-7766-4a25-a88e-ca28a8cd4f1c",
+          "appliedAt": "2026-10-22T22:09:45.351Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-b56adaaa-7766-4a25-a88e-ca28a8cd4f1c",
+          "auditEvidence": null,
+          "summary": "Plan officiel2012 rattaché : PDF original et métadonnées huit langues, édition encore masquée."
+        },
+        {
+          "eventId": "apply-cdc89871-563c-4dde-93aa-d6e3c6f862b3",
+          "appliedAt": "2026-10-22T22:10:01.983Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-cdc89871-563c-4dde-93aa-d6e3c6f862b3",
+          "auditEvidence": null,
+          "summary": "Cinq jalons historiques sourcés et illustrés intégrés en huit langues : ouverture1997, projet2009, fermeture2012, reconversion2016 et acquisition du domaine2021. Brouillons HIST."
+        },
+        {
+          "eventId": "apply-5c809db5-2284-45f0-b2e9-08aeead4764e",
+          "appliedAt": "2026-10-22T22:15:15.388Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-5c809db5-2284-45f0-b2e9-08aeead4764e",
+          "auditEvidence": null,
+          "summary": "Quatre jalons Fami’Stéric intégrés : préparation2007, ouverture2008, fermeture2009, retrait2010 ; huit langues et sources, brouillons."
+        },
+        {
+          "eventId": "apply-dc192784-af1b-447a-9003-2317efdbfe90",
+          "appliedAt": "2026-10-22T22:22:55.309Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-dc192784-af1b-447a-9003-2317efdbfe90",
+          "auditEvidence": null,
+          "summary": "Chenille et Speed Mouse : cinq jalons sourcés et localisés en huit langues, dont le transfert vers Kingoland."
+        },
+        {
+          "eventId": "apply-e2bdaf09-6507-4128-8827-2455c68c2f59",
+          "appliedAt": "2026-10-22T22:24:05.509Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-e2bdaf09-6507-4128-8827-2455c68c2f59",
+          "auditEvidence": null,
+          "summary": "Arctica, Splash Battle, Mini-Animaux et labyrinthe : quatre jalons des saisons 2011–2012, sourcés et localisés."
+        },
+        {
+          "eventId": "apply-f8fedce7-6c57-4ca9-83e4-51355a2d5ba4",
+          "appliedAt": "2026-10-22T22:26:03.121Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-f8fedce7-6c57-4ca9-83e4-51355a2d5ba4",
+          "auditEvidence": null,
+          "summary": "Article historique de synthèse en huit langues : fermeture en 2012, devenir des montagnes russes et reconversion agricole du domaine."
+        },
+        {
+          "eventId": "apply-bc881a49-876e-437f-8b7d-6a6025e4f044",
+          "appliedAt": "2026-10-22T22:30:18.784Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-bc881a49-876e-437f-8b7d-6a6025e4f044",
+          "auditEvidence": null,
+          "summary": "Audit éditorial : légendes spécifiques pour neuf images Fami et deux photographies du constructeur Soquet déjà lié."
+        },
+        {
+          "eventId": "apply-32577b80-d933-473f-9002-9223c8f31035",
+          "appliedAt": "2026-10-22T22:34:00.141Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-32577b80-d933-473f-9002-9223c8f31035",
+          "auditEvidence": null,
+          "summary": "Audit transversal : récits et légendes de l’article distingués des textes de galerie et de la frise, sans changement des faits."
+        },
+        {
+          "eventId": "apply-c3ad0cf0-cbd0-4a55-988d-7d655c717257",
+          "appliedAt": "2026-10-22T22:35:40.788Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-c3ad0cf0-cbd0-4a55-988d-7d655c717257",
+          "auditEvidence": null,
+          "summary": "Audit final des descriptions : suppression d’une phrase documentaire et cohérence du Petit Théâtre du Golf avec Fami Liberté."
+        },
+        {
+          "eventId": "apply-e1ad3249-e5a0-428b-930e-8faed6c886ce",
+          "appliedAt": "2026-10-22T22:44:51.062Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-e1ad3249-e5a0-428b-930e-8faed6c886ce",
+          "auditEvidence": null,
+          "summary": "Réparation officielle des 18 faits HIST canoniques après publication du parc, sans création de doublon narratif."
+        },
+        {
+          "eventId": "completion-e1ad3249-e5a0-428b-930e-8faed6c886ce",
+          "appliedAt": "2026-10-22T22:44:51.062Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-receipts.json#apply-e1ad3249-e5a0-428b-930e-8faed6c886ce",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-final-audit.json",
+          "summary": "Audit final achevé à 96/100 : 50 lieux, 18 faits historiques, un article en huit langues, plan officiel 2012, site public et annonce Facebook Published confirmés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5086,7 +5927,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-final-audit.json"
     },
     {
       "entryId": "FR-park-2f436a73-8a36-4adc-9723-f14d569ed4f8",

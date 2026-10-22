@@ -1,0 +1,811 @@
+{
+  "parkId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+  "entryId": "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
+  "conversation": "Conversation France",
+  "contentAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "auditAtUtc": "2026-10-22T22:39:20.999642Z",
+  "freshExportAtUtc": "2026-10-22T22:37:31.7427834Z",
+  "freshExportSha256": "0b502e05ce0c2d5cc69dce876a3bde93b9504b73c69420b25265319ac002eeb3",
+  "freshReconciliationDifferences": 0,
+  "coverage": {
+    "freshAtUtc": "2026-10-22T22:26:23.8346852Z",
+    "items": 50,
+    "zones": 3,
+    "attractions": 30,
+    "attractionStatuses": {
+      "ClosedDefinitively": 27,
+      "Removed": 3
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 30,
+    "attractionsWithImage": 25,
+    "attractionImageGaps": [
+      {
+        "id": "dd74b7f5-3dbd-4609-9b41-c7e562df1a4c",
+        "name": "Anneaux"
+      },
+      {
+        "id": "c0ed584f-aee6-40c4-b37c-ef97c25fab82",
+        "name": "Pas de Géant"
+      },
+      {
+        "id": "248c49ea-db25-4f46-b921-a5256735148c",
+        "name": "Rivière Émeraude"
+      },
+      {
+        "id": "fc875ec8-0c0f-4315-b159-ed296e40034e",
+        "name": "Speed Mouse"
+      },
+      {
+        "id": "a679188f-c7db-47f9-a3d6-5afec956a631",
+        "name": "Voitures Électriques"
+      }
+    ],
+    "ownedImages": 55,
+    "sharedImages": 3,
+    "itemImageCounts": [
+      {
+        "id": "e2cf6242-a284-4d4b-bc8c-19adca7ae45a",
+        "name": "Aires de pique-nique",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "dd74b7f5-3dbd-4609-9b41-c7e562df1a4c",
+        "name": "Anneaux",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "dc64764a-519b-4ed8-adaf-238c584279b5",
+        "name": "Arctica",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "f8db1961-1ffb-4a36-9d15-db6cb5dd12d8",
+        "name": "Baby-foot géant",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "bad77576-cde9-403f-bb66-c808ae6df5c9",
+        "name": "Balançoires Géantes",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8257d8f8-8852-4d16-a575-7b7e71537f3d",
+        "name": "Basse-cour",
+        "category": "Animal",
+        "images": 0
+      },
+      {
+        "id": "fe56ba4f-65de-4c04-a5f9-db65d5f39b10",
+        "name": "Boutique Souvenirs",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "5428a414-f510-4cc5-b934-00e798d86def",
+        "name": "Bowling de plein air",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4157f030-7c23-48e7-bcf8-e2922b0eea6a",
+        "name": "Cage Écureuil",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "878f6ca1-3945-40a9-a523-6ac70a80e8bc",
+        "name": "Caisses",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "ca099e57-66a5-4475-8f2a-8de119181132",
+        "name": "Carrousel",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4a9d4d4e-3da9-49d6-b4db-ca767908fe17",
+        "name": "Chaises Volantes",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "4421ecc4-9227-4c5b-ac5d-41ed75e60e6a",
+        "name": "Chenille",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "1a1b74de-12f8-4e1f-9472-cf9f4eeab43e",
+        "name": "Circuit Champignon",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "92e8c362-6b3f-49e2-87f0-cc6d7dc42b21",
+        "name": "Energica",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "06c64723-5eee-4929-b5f0-f1319b9b08df",
+        "name": "Espaces Paysagers",
+        "category": "Other",
+        "images": 1
+      },
+      {
+        "id": "c829ee37-5833-4698-8d5c-57adf807a526",
+        "name": "Fami'Stéric",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "0d9b51ec-f71a-47f8-a52e-8fa2e7e27748",
+        "name": "Grand Bateau Pirate",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "43a23f0b-0782-449a-a116-c7cc083aee42",
+        "name": "Jolly Jumper",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b38d6e32-9a62-41e6-87ac-3bc104f1fc41",
+        "name": "La Couronne du roi Dagobert",
+        "category": "Show",
+        "images": 2
+      },
+      {
+        "id": "02576a8f-f832-44f5-8adb-bec8ab374431",
+        "name": "Labyrinthe",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "ed16c18b-5ce7-4024-803e-04cb1e24b4e0",
+        "name": "Lac aux Barques",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "69e3dbc5-6262-45d4-9d26-c7cc8adfee45",
+        "name": "Le Chalet",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "71322dc0-bcf2-491b-b427-571b7087c2bb",
+        "name": "Le Clown Magicien",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "c5f64742-8dd7-413b-a380-a34b597049d6",
+        "name": "Le Sucrier",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "a31d37a7-f714-4b12-9915-55a0b0b22305",
+        "name": "Les Chevaliers de Nonville",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "76a9372c-c254-4a39-b722-6c52a5695704",
+        "name": "Les Mousquetaires du Parc",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "51fa0181-47d5-405a-86ee-4d2924803844",
+        "name": "Mini Pédalos",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "431658a5-bd20-4df2-9939-0f416a65eb62",
+        "name": "Mini Roue",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "c3125522-3b77-4690-a7d7-18392142073f",
+        "name": "Mini-Animaux",
+        "category": "Animal",
+        "images": 2
+      },
+      {
+        "id": "8b312594-9652-4ae4-ada7-8208477e3aab",
+        "name": "Mini-Golf",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d4aa7695-fc50-4f8e-9005-4d3f6defce39",
+        "name": "Parking",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "419ba32a-65c8-4410-ae01-a0eb62c32b71",
+        "name": "Parking autocars",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c0ed584f-aee6-40c4-b37c-ef97c25fab82",
+        "name": "Pas de Géant",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "7b960d8b-5c05-4ad4-8b16-6b17eb5b5363",
+        "name": "Petit Pirate",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "c4f4ac8c-5f9d-4f5e-a75b-bdbc7f201af9",
+        "name": "Petit Théâtre du Golf",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "451fdf14-3e81-4a56-ae09-b1c1d0984d01",
+        "name": "Poste de secours",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "248c49ea-db25-4f46-b921-a5256735148c",
+        "name": "Rivière Émeraude",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "397fdb83-8040-4f89-9e9f-621429ba1c45",
+        "name": "Sentier de Découverte Botanique",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "fc875ec8-0c0f-4315-b159-ed296e40034e",
+        "name": "Speed Mouse",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "afcc11cf-5028-4b31-abd2-db33870008c5",
+        "name": "Splash Battle",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "f4fd7def-4f38-4730-af91-0effc6131fd7",
+        "name": "Structures Gonflables",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "0a38118b-84c4-4a92-964f-10f71daa02d1",
+        "name": "Tacots 1900",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b20b9b86-d8a4-4afe-9ed1-575ed888809a",
+        "name": "Tasses",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "62bf16e9-7299-4913-ad53-f4376d863644",
+        "name": "Toilettes du golf",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "0a4aaadb-62d2-46ea-96de-2231351b15bf",
+        "name": "Toilettes et change-bébés",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "56f2f597-ad33-442f-9346-8ae5e2c9c490",
+        "name": "Tonneau",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "18deafb6-983b-4e46-a602-26252385450a",
+        "name": "Trampolines",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a679188f-c7db-47f9-a3d6-5afec956a631",
+        "name": "Voitures Électriques",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "b65f7a34-b4c8-4466-b258-a5fe4d3334da",
+        "name": "Vol libre de rapaces — Falconarius",
+        "category": "Show",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 2,
+    "geolocationGaps": [
+      {
+        "id": "e2cf6242-a284-4d4b-bc8c-19adca7ae45a",
+        "name": "Aires de pique-nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "dd74b7f5-3dbd-4609-9b41-c7e562df1a4c",
+        "name": "Anneaux",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "dc64764a-519b-4ed8-adaf-238c584279b5",
+        "name": "Arctica",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f8db1961-1ffb-4a36-9d15-db6cb5dd12d8",
+        "name": "Baby-foot géant",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "bad77576-cde9-403f-bb66-c808ae6df5c9",
+        "name": "Balançoires Géantes",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8257d8f8-8852-4d16-a575-7b7e71537f3d",
+        "name": "Basse-cour",
+        "category": "Animal",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "fe56ba4f-65de-4c04-a5f9-db65d5f39b10",
+        "name": "Boutique Souvenirs",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "5428a414-f510-4cc5-b934-00e798d86def",
+        "name": "Bowling de plein air",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4157f030-7c23-48e7-bcf8-e2922b0eea6a",
+        "name": "Cage Écureuil",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "878f6ca1-3945-40a9-a523-6ac70a80e8bc",
+        "name": "Caisses",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "ca099e57-66a5-4475-8f2a-8de119181132",
+        "name": "Carrousel",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4a9d4d4e-3da9-49d6-b4db-ca767908fe17",
+        "name": "Chaises Volantes",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "1a1b74de-12f8-4e1f-9472-cf9f4eeab43e",
+        "name": "Circuit Champignon",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "92e8c362-6b3f-49e2-87f0-cc6d7dc42b21",
+        "name": "Energica",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "06c64723-5eee-4929-b5f0-f1319b9b08df",
+        "name": "Espaces Paysagers",
+        "category": "Other",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "0d9b51ec-f71a-47f8-a52e-8fa2e7e27748",
+        "name": "Grand Bateau Pirate",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "43a23f0b-0782-449a-a116-c7cc083aee42",
+        "name": "Jolly Jumper",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "b38d6e32-9a62-41e6-87ac-3bc104f1fc41",
+        "name": "La Couronne du roi Dagobert",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "02576a8f-f832-44f5-8adb-bec8ab374431",
+        "name": "Labyrinthe",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ed16c18b-5ce7-4024-803e-04cb1e24b4e0",
+        "name": "Lac aux Barques",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "69e3dbc5-6262-45d4-9d26-c7cc8adfee45",
+        "name": "Le Chalet",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "71322dc0-bcf2-491b-b427-571b7087c2bb",
+        "name": "Le Clown Magicien",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c5f64742-8dd7-413b-a380-a34b597049d6",
+        "name": "Le Sucrier",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "a31d37a7-f714-4b12-9915-55a0b0b22305",
+        "name": "Les Chevaliers de Nonville",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "76a9372c-c254-4a39-b722-6c52a5695704",
+        "name": "Les Mousquetaires du Parc",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "51fa0181-47d5-405a-86ee-4d2924803844",
+        "name": "Mini Pédalos",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "431658a5-bd20-4df2-9939-0f416a65eb62",
+        "name": "Mini Roue",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c3125522-3b77-4690-a7d7-18392142073f",
+        "name": "Mini-Animaux",
+        "category": "Animal",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8b312594-9652-4ae4-ada7-8208477e3aab",
+        "name": "Mini-Golf",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d4aa7695-fc50-4f8e-9005-4d3f6defce39",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "419ba32a-65c8-4410-ae01-a0eb62c32b71",
+        "name": "Parking autocars",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "c0ed584f-aee6-40c4-b37c-ef97c25fab82",
+        "name": "Pas de Géant",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "7b960d8b-5c05-4ad4-8b16-6b17eb5b5363",
+        "name": "Petit Pirate",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c4f4ac8c-5f9d-4f5e-a75b-bdbc7f201af9",
+        "name": "Petit Théâtre du Golf",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "451fdf14-3e81-4a56-ae09-b1c1d0984d01",
+        "name": "Poste de secours",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "248c49ea-db25-4f46-b921-a5256735148c",
+        "name": "Rivière Émeraude",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "397fdb83-8040-4f89-9e9f-621429ba1c45",
+        "name": "Sentier de Découverte Botanique",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "fc875ec8-0c0f-4315-b159-ed296e40034e",
+        "name": "Speed Mouse",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "afcc11cf-5028-4b31-abd2-db33870008c5",
+        "name": "Splash Battle",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f4fd7def-4f38-4730-af91-0effc6131fd7",
+        "name": "Structures Gonflables",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "0a38118b-84c4-4a92-964f-10f71daa02d1",
+        "name": "Tacots 1900",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "b20b9b86-d8a4-4afe-9ed1-575ed888809a",
+        "name": "Tasses",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "62bf16e9-7299-4913-ad53-f4376d863644",
+        "name": "Toilettes du golf",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "0a4aaadb-62d2-46ea-96de-2231351b15bf",
+        "name": "Toilettes et change-bébés",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "56f2f597-ad33-442f-9346-8ae5e2c9c490",
+        "name": "Tonneau",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "18deafb6-983b-4e46-a602-26252385450a",
+        "name": "Trampolines",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a679188f-c7db-47f9-a3d6-5afec956a631",
+        "name": "Voitures Électriques",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "b65f7a34-b4c8-4466-b258-a5fe4d3334da",
+        "name": "Vol libre de rapaces — Falconarius",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 18,
+    "parkHistory": 5,
+    "itemHistory": 13,
+    "historyWithSource": 18,
+    "historyWithImage": 16,
+    "articles": 1,
+    "officialMaps": [
+      {
+        "year": 2012,
+        "format": "Pdf",
+        "language": "fr"
+      }
+    ],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true
+  },
+  "publicTextReview": {
+    "languages": [
+      "de",
+      "en",
+      "es",
+      "fr",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "method": "Complete public copy personally authored and read in each original Preview; actual full export texts compared to accepted copies with zero drift. Fresh manual French corpus review and eight-language source/structure/encoding/sequence review; all flagged captions and phrases corrected via personally read Preview/Apply. Shared manufacturer biographies reviewed; two Soquet image metadata corrections explicitly scoped.",
+    "sourceReviewFiles": [
+      "09-description-precision-personal-preview-review.json",
+      "01-core-personal-preview-review.json",
+      "03-items-b-personal-preview-review.json",
+      "04-park-description-personal-preview-review.json",
+      "02-zones-personal-preview-review.json",
+      "08-park-history-personal-preview-review.json",
+      "08-other-history-v2-personal-preview-review.json",
+      "04-coaster-descriptions-personal-preview-review.json",
+      "05-operator-personal-preview-review.json",
+      "03-arctica-personal-preview-review.json",
+      "03-geolocation-correction-personal-preview-review.json",
+      "04-zones-descriptions-personal-preview-review.json",
+      "04-items-lot3-personal-preview-review.json",
+      "04-items-lot5-personal-preview-review.json",
+      "04-items-lot4-personal-preview-review.json",
+      "04-items-lot6-personal-preview-review.json",
+      "09-media-editorial-corrections-v2-personal-preview-review.json",
+      "04-items-lot2-personal-preview-review.json",
+      "03-items-a-v2-personal-preview-review.json",
+      "08-closure-article-v2-personal-preview-review.json",
+      "03-historical-extra-personal-preview-review.json",
+      "05-map2012-metadata-personal-preview-review.json",
+      "08-coaster-history-b-personal-preview-review.json",
+      "08-coaster-history-a-v3-personal-preview-review.json",
+      "09-cross-corpus-history-personal-preview-review.json",
+      "04-items-lot1-personal-preview-review.json"
+    ],
+    "encodingIssues": 0,
+    "paragraphDuplicateGroups": 0,
+    "crossCorpusSequenceGroups": 0,
+    "mechanicalFlags": 0
+  },
+  "sourceGaps": "fami-parc-source-gaps.json",
+  "finalAuditPassed": true,
+  "finalAuditAtUtc": "2026-10-22T22:54:57.925619Z",
+  "lastDataIntegrationAtUtc": "2026-10-22T22:44:51.0624774Z",
+  "realPostPublicationScore": {
+    "completenessScore": 96,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 108,
+    "earnedPoints": 104,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/park/bafa7e08-9858-472d-8357-9c84aa7479b7/fami-p-a-r-c",
+  "publicationVerification": {
+    "officialSearchVisible": true,
+    "officialSearchProofSha256": "f39db3eeef4dbfae561e2905c852ee201a8e09cf0b7d8b66ff947322c6d7887b",
+    "mobilePagesChecked": 22,
+    "mobileLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "renderErrors": 0,
+    "technicalIdentifiersExposed": 0,
+    "brokenImages": 0,
+    "horizontalOverflowPages": 0,
+    "normalHistoryClick": {
+      "checkedAtUtc": "2026-10-22T22:47:49.812167+00:00",
+      "url": "https://amusement-parks.fun/fr/park/bafa7e08-9858-472d-8357-9c84aa7479b7/fami-p-a-r-c",
+      "apiResponses": [
+        {
+          "url": "https://amusement-parks.fun/api/parks/bafa7e08-9858-472d-8357-9c84aa7479b7/detail-summary",
+          "status": 200,
+          "hasPublicHistory": true,
+          "requestLanguage": "fr-FR",
+          "age": null
+        }
+      ],
+      "status": 200,
+      "historyLinkCount": 1,
+      "parkTitle": [
+        "Fami P.A.R.C"
+      ],
+      "historyHref": "/fr/park/bafa7e08-9858-472d-8357-9c84aa7479b7/fami-p-a-r-c/history",
+      "destination": "https://amusement-parks.fun/fr/park/bafa7e08-9858-472d-8357-9c84aa7479b7/fami-p-a-r-c/history",
+      "historyTitle": [
+        "L'histoire de Fami P.A.R.C"
+      ],
+      "historyBodyChars": 3444
+    },
+    "officialMapIntegrity": [
+      {
+        "id": "fami-parc-plan-2012-fr",
+        "year": 2012,
+        "sourceUrl": "https://fami-parc.com/telechargements/fami-parc-brochure-2012.pdf",
+        "status": 200,
+        "mime": "application/pdf",
+        "size": 9434880,
+        "exportedSizeMatches": true,
+        "sha256": "1e8060711017d40c75d1cbad87648db0677c55225f2ecf5c33f3d4bb95eb5659",
+        "sourceBytesMatch": true
+      }
+    ],
+    "historyPublishedFacts": 18,
+    "historySourcedFacts": 18,
+    "historyMajorFacts": 12,
+    "historyCanonicalRepairOperationId": "e1ad3249-e5a0-428b-930e-8faed6c886ce",
+    "historicalYearExplorerGap": "No indexable key year; the separate public timeline gate is satisfied. The real normal park page history link and all 18 public events have been verified.",
+    "idempotenceOperationId": "e063a502-488f-4511-97e3-59adccfdc67d",
+    "idempotenceCounts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 135,
+      "warnings": 0,
+      "errors": 0
+    },
+    "facebookPublicationId": "71da20f56b1e4347989066329e9363be",
+    "facebookStatus": "Published",
+    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122124213591424431",
+    "facebookAction": "Existing Published announcement retained; no duplicate sent."
+  },
+  "proofSha256": {
+    "09-content-audit.json": "b322000ffb97df2a4eccb11278bab80539eaa640979c08fb95a25c95fcb46068",
+    "09-publication-fresh-full-export.json": "0b502e05ce0c2d5cc69dce876a3bde93b9504b73c69420b25265319ac002eeb3",
+    "09-published-completeness.json": "ae8021b987a5c17fa00b64bf37c7364d42496616f28eb94c366c51998e46474e",
+    "09-final-idempotence-v2.preview.json": "08fa9efe2db65b62b16cb270f82c6084657f11bb1ad767d636cf1d0b77bcf987",
+    "09-history-diagnostics-after-repair.json": "c217d2cdbcd6da9b88669c9a0baad247014b1ce327c1780edcafa878b960150d",
+    "09-facebook-resolve.json": "91f76a2474fcfabdd4039ca411b0426023f8e99d80b641f021aba0212aac2d4a",
+    "09-history-canonical-repair-apply.receipt.json": "51bfc5f199c342e660a165d84657707f830e786a1272b8e0bdc50a089305cde6",
+    "public-verification/mobile-render-report-fr.json": "a1a38dbe39b057d65297aef9de8fd06e232ab0e303bb5f23d77e3aed0ac0c614",
+    "public-verification/mobile-render-report-en-de-nl-it-es-pl-pt.json": "a91cf9915372581a4da9280e7d66c2ac39c72cd67ced15f106b151f45d4b17b2",
+    "public-verification/maps-public-integrity.json": "22d5885d09ed20e1e6949fa612ce28c6852a60d73b1577b909755bd05fb5b04c",
+    "public-verification/api-report.json": "9a9aec66f55a563c346a38982673a9b75e5ede7db428687aa87e6fbe6458e98b"
+  }
+}
