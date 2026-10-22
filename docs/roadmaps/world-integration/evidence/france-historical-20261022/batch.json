@@ -1,0 +1,23 @@
+{
+  "conversation": "Conversation France",
+  "priority": "historical parks first",
+  "minimumCompletedParksPerDocumentationPullRequest": 10,
+  "bumpVersionForBacklogOnly": false,
+  "userRequestedOn": "2026-10-22",
+  "sitePublicationAuthorized": true,
+  "facebookPublicationAuthorized": true,
+  "completedInThisBatch": 0,
+  "assignedEntryIds": [
+    "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
+    "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+    "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+    "FR-park-77106934-0f4c-4eb3-b075-4097ab6078cd",
+    "FR-park-6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+    "FR-park-f019e441-aecf-487b-93db-2b0246dce185",
+    "FR-park-66653da2-93bb-499f-95df-15e240673e58",
+    "FR-park-8167f80c-db82-49d8-91a6-bf5a1f6a6f51",
+    "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+    "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27"
+  ],
+  "identityIssue": "Lillom and Parc de Lomme represent a possible duplicate; resolve their existing items before any canonical publication. A duplicate is not counted as another integrated park."
+}
