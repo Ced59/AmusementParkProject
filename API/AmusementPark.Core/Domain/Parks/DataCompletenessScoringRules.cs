@@ -135,13 +135,13 @@ public static class DataCompletenessScoringRules
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
         TimeSpan.FromMilliseconds(100));
 
-    private static readonly Regex RawTechnicalMetricRegex = new Regex(
-        @"\b\d+(?:[.,]\d+)?\s*(?:km\s*/?\s*h|mph|m\s*/\s*s|m|cm|met(?:er|re)s?|mètres?|feet|foot|ft|seconds?|secondes?|sekunden?|seconden?|secondi|segundos?|sekund(?:a|y)?|minutes?|minuten?|minuti|minutos?|riders?\s*(?:per|/)\s*hour|passagers?\s*(?:par|/)\s*heure|personas?\s*(?:por|/)\s*hora|personen?\s*(?:pro|per|/)\s*stunde)\b",
-        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
-        TimeSpan.FromMilliseconds(100));
-
     // Avoid per-pattern dynamic compilation on the first score calculation; keep the
     // same word boundaries and timeout with a linear-time matching engine.
+    private static readonly Regex RawTechnicalMetricRegex = new Regex(
+        @"\b\d+(?:[.,]\d+)?\s*(?:km\s*/?\s*h|mph|m\s*/\s*s|m|cm|met(?:er|re)s?|mètres?|feet|foot|ft|seconds?|secondes?|sekunden?|seconden?|secondi|segundos?|sekund(?:a|y)?|minutes?|minuten?|minuti|minutos?|riders?\s*(?:per|/)\s*hour|passagers?\s*(?:par|/)\s*heure|personas?\s*(?:por|/)\s*hora|personen?\s*(?:pro|per|/)\s*stunde)\b",
+        RegexOptions.NonBacktracking | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+        TimeSpan.FromMilliseconds(100));
+
     private static readonly Regex[] TechnicalNarrativeCategoryRegexes =
     [
         new Regex(@"\b(?:track|rails?|layout|structure|tracé|voies?|schienen?|strecke|konstruktion|tracciato|rotaie?|struttura|trazado|vías?|estructura|tory?|szyny?|konstrukcja|baan|rails?|constructie|percurso|trilhos?|estrutura)\b", RegexOptions.NonBacktracking | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),

@@ -6,6 +6,23 @@ namespace AmusementPark.Core.Tests.Domain.Parks;
 public sealed class TechnicalNarrativePublicTextTests
 {
     [Theory]
+    [InlineData("Une vitesse de 88 km/h.")]
+    [InlineData("A duration of 30 seconds.")]
+    [InlineData("Die Strecke ist 30 m hoch.")]
+    [InlineData("Een duur van 30 seconden.")]
+    [InlineData("Una durata di 30 secondi.")]
+    [InlineData("Una duración de 30 segundos.")]
+    [InlineData("Czas trwania wynosi 30 sekund.")]
+    [InlineData("Uma duração de 30 segundos.")]
+    [InlineData("Une fenêtre sur le vol à Alegro Sintra. Son installation représentait un investissement annoncé de 2,5 millions d’euros.", false)]
+    public void RawMetrics_PreserveNarrativeAndStructuredClassification(string value, bool expected = true)
+    {
+        Assert.Equal(expected, DataCompletenessScoringRules.HasForbiddenPlainPublicText(value));
+        Assert.Equal(expected, DataCompletenessScoringRules.HasForbiddenRichPublicText($"<p>{value}</p>"));
+        Assert.False(DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(value));
+    }
+
+    [Theory]
     [InlineData("Le tracé, les sièges et les accélérations déterminent le mouvement.")]
     [InlineData("The track, seats and acceleration determine the movement.")]
     [InlineData("Die Strecke, Sitze und Beschleunigungen bestimmen die Bewegung.")]
