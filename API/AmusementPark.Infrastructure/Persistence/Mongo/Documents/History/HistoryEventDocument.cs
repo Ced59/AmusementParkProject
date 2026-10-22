@@ -92,6 +92,14 @@ public sealed class HistoryEventDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? NewOperatorId { get; set; }
 
+    [BsonElement("previousOwnerName")]
+    [BsonIgnoreIfNull]
+    public string? PreviousOwnerName { get; set; }
+
+    [BsonElement("newOwnerName")]
+    [BsonIgnoreIfNull]
+    public string? NewOwnerName { get; set; }
+
     [BsonElement("locationLabel")]
     [BsonIgnoreIfNull]
     public string? LocationLabel { get; set; }

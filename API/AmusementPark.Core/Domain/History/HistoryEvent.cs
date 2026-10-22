@@ -51,6 +51,10 @@ public sealed class HistoryEvent : AuditableEntity
 
     public string? NewOperatorId { get; set; }
 
+    public string? PreviousOwnerName { get; set; }
+
+    public string? NewOwnerName { get; set; }
+
     public string? LocationLabel { get; set; }
 
     public List<string> RelatedParkIds { get; set; } = new();
