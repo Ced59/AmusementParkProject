@@ -46,8 +46,9 @@ describe('UiPhotoCarouselComponent', () => {
       expect(fixture.componentInstance.mapMarkers[0].title).toBe(photo.description);
       expect(fixture.componentInstance.mapMarkers[0].details).toEqual([photo.credit, 'coasters']);
 
-      fixture.componentInstance.openLightbox(0);
+      root.querySelector<HTMLElement>('.photo-carousel__stage')!.click();
       fixture.detectChanges();
+      await fixture.whenStable();
       expect(root.querySelector('.photo-lightbox__caption')?.textContent).toContain(photo.description);
       expect(root.querySelector('.photo-lightbox__credit')?.textContent).toContain(photo.credit);
       for (const technicalDetail of [photo.originalFileName, photo.contentType, photo.cameraMaker, photo.cameraModel,
@@ -55,7 +56,7 @@ describe('UiPhotoCarouselComponent', () => {
         expect(root.textContent).not.toContain(technicalDetail);
       }
 
-      fixture.componentInstance.nextPhoto();
+      root.querySelector<HTMLButtonElement>('.photo-lightbox__nav--next')!.click();
       fixture.detectChanges();
       expect(root.querySelector('.photo-carousel__credit')).toBeNull();
       expect(root.querySelector('.photo-lightbox__credit')).toBeNull();
