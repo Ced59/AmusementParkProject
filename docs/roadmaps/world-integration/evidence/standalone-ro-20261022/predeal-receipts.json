@@ -1,0 +1,162 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "dfdb400b-abba-4782-b337-7f7b926c0ccc",
+    "appliedAtUtc": "2026-10-22T22:25:52.1145182Z",
+    "targetStandaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-access.apply",
+    "operationId": "a7d5f8a6-dbc0-4519-87f9-16a2fde91508",
+    "appliedAtUtc": "2026-10-22T22:27:19.659412Z",
+    "targetStandaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-hours.apply",
+    "operationId": "4a4e8baf-9cba-4592-88c0-a80b3e953682",
+    "appliedAtUtc": "2026-10-22T22:27:52.3910871Z",
+    "targetStandaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-pricing.apply",
+    "operationId": "35e3e221-c609-4c03-8fce-a9646e2099f5",
+    "appliedAtUtc": "2026-10-22T22:28:23.0858163Z",
+    "targetStandaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "9c152068-9209-4abf-adbf-89e5eb43b985",
+    "appliedAtUtc": "2026-10-22T22:31:16.6044248Z",
+    "targetStandaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "a9e9e587-2b64-452a-be02-0a58fa6519db",
+    "appliedAtUtc": "2026-10-22T22:33:01.0444562Z",
+    "targetStandaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "848ef081-1717-4006-a2b3-a962861b765d",
+    "appliedAtUtc": "2026-10-22T22:33:24.2531027Z",
+    "targetStandaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "0a597d24-1b94-4e27-a423-ec0b72c6ac95",
+    "appliedAtUtc": "2026-10-22T22:33:48.1938282Z",
+    "targetStandaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "02ae7136e3bf49eba36b9cb9b8287c18",
+    "ownerId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "sourceUrl": "https://www.sunkidworld.com/fileadmin/_processed_/8/5/csm_2026-03_MOCO_Predeal__RO___c__Provid_22_S.R.L.__9__b6aabf7f9a.jpg",
+    "updatedAt": "2026-10-22T22:29:30.332Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "dadff1cfe80e4e8c8982094779b0b0b6",
+    "ownerId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "sourceUrl": "https://www.sunkidworld.com/fileadmin/_processed_/b/9/csm_2026-03_MOCO_Predeal__RO___c__Provid_22_S.R.L.__1__4cce3bdaca.jpg",
+    "updatedAt": "2026-10-22T22:29:46.797Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "d9b6723fa8f7446cb67ed8c3bebb7feb",
+    "ownerId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "sourceUrl": "https://www.sunkidworld.com/fileadmin/_processed_/f/d/csm_2026-03_MOCO_Predeal__RO___c__Provid_22_S.R.L.__16__f43c6701c0.jpg",
+    "updatedAt": "2026-10-22T22:30:13.176Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-4-result",
+    "id": "eab6c2c58244449aae52d4345dc850b1",
+    "ownerId": "d1b09350-8591-437e-82d7-2957573535b3",
+    "sourceUrl": "https://www.predeal.ro/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTM1Njk1LCJwdXIiOiJibG9iX2lkIn19--17375b5b5ca747b7552d7ff3cdac312231f4fb23/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpdCI6WzE0MDAsMTQwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--7cf04819a75bca128464c01137eb4f04b496c065/Predeal_Deschis.jpeg",
+    "updatedAt": "2026-10-22T22:30:42.615Z",
+    "isPublished": false
+  }
+]
