@@ -5520,7 +5520,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "conversation-portugal / docs/portugal-world-backlog-sync-20261022",
-      "lastDataIntegrationAt": "2026-10-22T18:53:19.340Z",
+      "lastDataIntegrationAt": "2026-10-22T22:24:44.700Z",
       "integrationHistory": [
         {
           "eventId": "apply-f4936f7c-b2a4-483c-8b23-93cb9c77f8a0",
@@ -5561,9 +5561,59 @@
           "evidence": "docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json#apply-508760fb-4962-45ba-bef0-1b301d1a262c",
           "auditEvidence": null,
           "summary": "Lot step-04-park-description-20261022.apply.json : 0 création(s), 1 mise(s) à jour ; données conservées pour l’audit."
+        },
+        {
+          "eventId": "apply-729ef22d-db7a-410a-8e7e-6dafec40d928",
+          "appliedAt": "2026-10-22T22:03:59.755Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-729ef22d-db7a-410a-8e7e-6dafec40d928.json",
+          "auditEvidence": null,
+          "summary": "Descriptions originales de Via Áppia, Via Lusitânia et Family Café intégrées et vérifiées dans les huit langues. Trois parkItems existants enrichis ; aucune modification de visibilité. Audit final restant."
+        },
+        {
+          "eventId": "apply-b789843e-6a4a-4cd9-899d-17fdb666c97d",
+          "appliedAt": "2026-10-22T22:13:31.953Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-b789843e-6a4a-4cd9-899d-17fdb666c97d.json",
+          "auditEvidence": null,
+          "summary": "Six offres tarifaires officielles intégrées : un ou deux parcours, adultes, juniors et enfants ; prix guichet et montants en ligne vérifiés séparément, conditions en huit langues. Aucune publication ; audit final restant."
+        },
+        {
+          "eventId": "apply-343acf22-6348-4953-844f-76209b7cffc0",
+          "appliedAt": "2026-10-22T22:17:13.793Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-343acf22-6348-4953-844f-76209b7cffc0.json",
+          "auditEvidence": null,
+          "summary": "32 descriptions originales intégrées et vérifiées dans les huit langues : Family Kids Club, salle de jeux, réception et halte du train touristique externe de Vilamoura. Les huit parkItems disposent désormais de descriptions ; aucune publication, audit final restant."
+        },
+        {
+          "eventId": "apply-3e9a4ef8-86ee-4fab-83b0-47c66ab2d151",
+          "appliedAt": "2026-10-22T22:21:55.963Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-3e9a4ef8-86ee-4fab-83b0-47c66ab2d151.json",
+          "auditEvidence": null,
+          "summary": "Quatre événements historiques sourcés intégrés dans les huit langues : ouverture au mois près en août 1997, étape 2017 sur Via Lusitânia, Open 2023 et finale mondiale 2025. Trois faits de parc dont deux majeurs, un fait de parkItem ; brouillons privés, audit et médias restant."
+        },
+        {
+          "eventId": "apply-b67d1fbe-72a7-4a99-bdb8-c7606b4a9b81",
+          "appliedAt": "2026-10-22T22:24:44.700Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-b67d1fbe-72a7-4a99-bdb8-c7606b4a9b81.json",
+          "auditEvidence": null,
+          "summary": "Conditions de la carte résidents de Loulé ajoutées aux notes tarifaires dans les huit langues, sur source officielle : justificatif de domicile, remise de 25 % au minigolf et de 15 % au Family Café. Six offres, prix, identifiants et visibilité conservés ; audit final restant."
         }
       ],
-      "nextAction": "Fiche privée existante 09c94403-ae33-4321-82cf-330dfe37428e retrouvée ; quatre lots appliqués, huit lieux inventoriés et description du parc dans huit langues. Poursuivre descriptions, références, médias autorisés, histoire, horaires, prix et audit. Ne pas recréer de parc ni transformer les trous du minigolf ou le train touristique extérieur en standalone.",
+      "nextAction": "Neuf lots privés appliqués et vérifiés : descriptions du parc et des huit parkItems dans huit langues, six offres et notes de carte résidents, quatre jalons historiques. Compléter médias, article, calendrier daté et audit final. Autorisation de réutilisation des médias officiels Sogolfe en attente ; plan officiel sans millésime vérifié. Aucune publication site ou Facebook.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -5573,6 +5623,11 @@
         {
           "label": "Rapprochement de la campagne Portugal et recherches officielles",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Progression de la campagne Portugal et audit du 22 octobre 2026",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/evidence/PT-20261022-family-golf-progress-2230.json",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -11956,7 +12011,7 @@
           "summary": "Correction sourcée des huit biographies communes de Polin Waterparks, explicitement autorisée par l’utilisateur ; seuls ces huit textes ont changé. Audit de Slide & Splash encore en cours."
         }
       ],
-      "nextAction": "57 lots appliqués et vérifiés ; 57 photos, logo et plan 2026. Correction des huit biographies communes de Polin explicitement autorisée puis appliquée le 22 octobre à 21:46:28 UTC. Nouvel export rapproché sur 9 206 valeurs sans écart ; score projeté 94/100. Finaliser les lacunes photographiques et géographiques et la disponibilité directe de trois sources officielles avant publication.",
+      "nextAction": "57 lots privés ; 57 photos, logo officiel et plan 2026 vérifiés. Correction commune des huit biographies Polin autorisée puis appliquée. Export rapproché sur 9 206 valeurs ; score projeté 94/100. Registre géographique : 32 points pour 56 lieux fixes identifiés, un cas restant à classer et trois services ou trajets distribués. Trois sources officielles restent en erreur technique 503 ; finaliser les lacunes nommées et l’audit avant publication.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11996,6 +12051,11 @@
         {
           "label": "Correction commune de Polin autorisée, appliquée et contrôlée dans le nouvel export",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/docs/portugal-integration-progress-20261022/docs/roadmaps/world-integration/evidence/PT-20261022-slide-splash-polin-approved-2152.json",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Progression de la campagne Portugal et audit du 22 octobre 2026",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/evidence/PT-20261022-slide-splash-source-and-geo-progress-2230.json",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -12389,7 +12449,7 @@
           "summary": "Réouverture précisée au 1er juillet 2021 grâce à une source contemporaine : date et huit résumés mis à jour, source ajoutée. Événement existant conservé ; visibilité inchangée, audit à actualiser."
         }
       ],
-      "nextAction": "11 lots privés et trois photos vérifiés. Réouverture précisée au 1er juillet 2021 ; actualiser l’export et l’audit final. Constructeur et modèle non confirmés ; exception exacte au dernier score de 95/100 toujours en attente. Aucune publication.",
+      "nextAction": "Audit actualisé après la précision de réouverture au 1er juillet 2021 : onze lots rapprochés sur 636 valeurs, aucun écart ; 400 champs localisés et 179 scalaires contrôlés. Score projeté 95/100, aucun bloqueur API. Constructeur et modèle non vérifiés ; exception exacte au seuil strict toujours en attente. Aucune publication site ou Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -12409,6 +12469,11 @@
         {
           "label": "Rapprochement de la campagne Portugal et recherches officielles",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Progression de la campagne Portugal et audit du 22 octobre 2026",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/evidence/PT-20261022-world-discoveries-refreshed-audit-2230.json",
           "accessedAt": "2026-10-22"
         }
       ],

@@ -1,0 +1,65 @@
+{
+  "entryId": "PT-candidate-fc3d650394a5d8",
+  "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+  "reviewedAtUtc": "2026-10-22T22:27:06.171346+00:00",
+  "notACompletionAudit": true,
+  "graphLotsAppliedAndVerified": 9,
+  "lastDataIntegrationAt": "2026-10-22T22:24:44.7001153Z",
+  "lastApplyEvidence": "PT-events/apply-b67d1fbe-72a7-4a99-bdb8-c7606b4a9b81.json",
+  "parkItems": 8,
+  "parkDescriptions": 8,
+  "itemDescriptions": 64,
+  "localizedLanguages": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "verifiedServicePositions": 3,
+  "admissionOffers": 6,
+  "residentDiscountNotesLanguages": 8,
+  "history": {
+    "parkEvents": 3,
+    "itemEvents": 1,
+    "majorParkMilestones": 2,
+    "private": true,
+    "openingPrecision": "1997-08; day unknown"
+  },
+  "importedImages": 0,
+  "importedAnnualMaps": 0,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "remainingWork": [
+    "Reviewable native official logo and photo lot awaits confirmation of the written Sogolfe reuse authorization required by its terms.",
+    "Finish media coverage, long historical article, dated opening calendar verification, historic pricing and final audit.",
+    "Official general and individual-course maps found; no verified annual edition year. Upload-directory year is not treated as the map year.",
+    "Course, playground, toilets and external train-stop coordinates remain to verify individually; no generic park centroid copied."
+  ],
+  "contractFinding": "parkItem names has no localized write contract. German draft spelling is corrected only locally; no claim that a German public name was applied.",
+  "verificationDigests": [
+    {
+      "file": "family-golf-park/course-and-cafe-apply-verification-20261022.json",
+      "sha256": "4b96d117e8cc605e1b402d46e290fdbdbdf8ee0fb2f7bca6fe1fb5d2a1625416"
+    },
+    {
+      "file": "family-golf-park/current-pricing-apply-verification-20261022.json",
+      "sha256": "44651288b5f6ed62ac701020598fb873da947c5447261f6318c5d51e2906710a"
+    },
+    {
+      "file": "family-golf-park/remaining-items-apply-verification-20261022.json",
+      "sha256": "c24279c66fb4a42561462026e9d1b439e62f1322980f1694f60fe8d75b0a714c"
+    },
+    {
+      "file": "family-golf-park/first-history-apply-verification-20261022.json",
+      "sha256": "7aa992784b52e39988d6fdd820bf4323f0d575b63fa62bdb88cb065bd8dd05a3"
+    },
+    {
+      "file": "family-golf-park/resident-card-apply-verification-20261022.json",
+      "sha256": "991c34255768001e413488ebce7584607fe5c92e0dfd3414ddf128cac23d97c9"
+    }
+  ]
+}

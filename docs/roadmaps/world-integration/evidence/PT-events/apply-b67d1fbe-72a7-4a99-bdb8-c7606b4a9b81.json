@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-b67d1fbe-72a7-4a99-bdb8-c7606b4a9b81",
+  "entryId": "PT-candidate-fc3d650394a5d8",
+  "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T22:24:44.700Z",
+  "sourceAppliedAt": "2026-10-22T22:24:44.7001153Z",
+  "receiptFile": "family-golf-park/step-07b-resident-card-20261022.apply.json",
+  "receiptSha256": "a3dd37766952053ff327a8f463a16547e9dde65dba0607ae0fbbf00e3fc34cf1",
+  "result": {
+    "operationId": "b67d1fbe-72a7-4a99-bdb8-c7606b4a9b81",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Conditions de la carte résidents de Loulé ajoutées aux notes tarifaires dans les huit langues, sur source officielle : justificatif de domicile, remise de 25 % au minigolf et de 15 % au Family Café. Six offres, prix, identifiants et visibilité conservés ; audit final restant."
+}

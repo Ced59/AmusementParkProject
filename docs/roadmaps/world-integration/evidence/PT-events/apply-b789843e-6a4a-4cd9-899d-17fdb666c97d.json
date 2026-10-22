@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-b789843e-6a4a-4cd9-899d-17fdb666c97d",
+  "entryId": "PT-candidate-fc3d650394a5d8",
+  "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T22:13:31.953Z",
+  "sourceAppliedAt": "2026-10-22T22:13:31.9531971Z",
+  "receiptFile": "family-golf-park/step-07-current-pricing-20261022.apply.json",
+  "receiptSha256": "5daa0a111001dd1ceb76ee97a356dfc66b114cd05d9814ef51b46d46f603d7c6",
+  "result": {
+    "operationId": "b789843e-6a4a-4cd9-899d-17fdb666c97d",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Six offres tarifaires officielles intégrées : un ou deux parcours, adultes, juniors et enfants ; prix guichet et montants en ligne vérifiés séparément, conditions en huit langues. Aucune publication ; audit final restant."
+}

@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-3e9a4ef8-86ee-4fab-83b0-47c66ab2d151",
+  "entryId": "PT-candidate-fc3d650394a5d8",
+  "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T22:21:55.963Z",
+  "sourceAppliedAt": "2026-10-22T22:21:55.9632622Z",
+  "receiptFile": "family-golf-park/step-08-first-history-20261022.apply.json",
+  "receiptSha256": "fca71dbcad60995a053bdd9c1e6d30f77ea3b537c7ecd652db16b20e5aa91edc",
+  "result": {
+    "operationId": "3e9a4ef8-86ee-4fab-83b0-47c66ab2d151",
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Quatre événements historiques sourcés intégrés dans les huit langues : ouverture au mois près en août 1997, étape 2017 sur Via Lusitânia, Open 2023 et finale mondiale 2025. Trois faits de parc dont deux majeurs, un fait de parkItem ; brouillons privés, audit et médias restant."
+}

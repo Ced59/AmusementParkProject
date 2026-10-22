@@ -1,0 +1,78 @@
+{
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "reviewedAtUtc": "2026-10-22T22:27:06.171346+00:00",
+  "notACompletionAudit": true,
+  "researchOnlyNoNewDataIntegrationDate": true,
+  "previousProgressEvidence": "PT-20261022-slide-splash-polin-approved-2152.json",
+  "graphLotsAppliedAndVerified": 57,
+  "photos": 57,
+  "logos": 1,
+  "officialMapYears": [
+    2026
+  ],
+  "allItems": 60,
+  "classificationCounts": {
+    "UnresolvedSpatialClassification": 1,
+    "CurrentFixedSite": 49,
+    "HistoricalFixedSite": 7,
+    "DistributedServiceOrRoute": 3
+  },
+  "fixedIdentifiedItems": 56,
+  "fixedItemsGeolocated": 32,
+  "allPotentialFixedItemsIncludingUnresolved": 57,
+  "geographicMethod": "Exact exported coordinates retained. Current official map, official service descriptions, named virtual-tour scenes, archived 2017 map and downloaded OSM features visually cross-checked. No arbitrary illustrated-map coordinate, centroid or successor coordinate added.",
+  "noCoordinateMutation": true,
+  "sourceChecks": [
+    {
+      "url": "https://www.slidesplash.com/o-parque/historia-do-slide-splash/",
+      "previousCheckAtUtc": "2026-10-22T21:27:21.745870+00:00",
+      "retryReason": "Single later normal request after a transient upstream connection timeout; no access-control bypass.",
+      "status": 503,
+      "error": "HTTP Error 503: Service Unavailable",
+      "checkedAtUtc": "2026-10-22T22:24:44.584183+00:00",
+      "sha256": "2f85832e31ca57711e6107af6b142363351ae516adb71c69afc643fac26be7f6",
+      "bytes": 91
+    },
+    {
+      "url": "https://www.slidesplash.com/wp-content/uploads/2025/12/pt2030.pdf",
+      "previousCheckAtUtc": "2026-10-22T21:27:40.662091+00:00",
+      "retryReason": "Single later normal request after a transient upstream connection timeout; no access-control bypass.",
+      "status": 503,
+      "error": "HTTP Error 503: Service Unavailable",
+      "checkedAtUtc": "2026-10-22T22:24:50.234696+00:00",
+      "sha256": "2f85832e31ca57711e6107af6b142363351ae516adb71c69afc643fac26be7f6",
+      "bytes": 91
+    },
+    {
+      "url": "https://www.slidesplash.com/novidades-slide-splash-2026-a-inovacao-do-servico-de-fotografia-splash-memories/",
+      "previousCheckAtUtc": "2026-10-22T21:28:04.611450+00:00",
+      "retryReason": "Single later normal request after a transient upstream connection timeout; no access-control bypass.",
+      "status": 503,
+      "error": "HTTP Error 503: Service Unavailable",
+      "checkedAtUtc": "2026-10-22T22:24:55.844066+00:00",
+      "sha256": "2f85832e31ca57711e6107af6b142363351ae516adb71c69afc643fac26be7f6",
+      "bytes": 91
+    }
+  ],
+  "mediaFollowup": "Nine advertised native source variants checked. Eight remained unavailable with technical 503 responses. The one returned Banzai photograph carries a third-party S.I. signature and was rejected without alteration or import.",
+  "sitePublished": false,
+  "facebookPublished": false,
+  "remainingWork": [
+    "Live source availability remains unresolved for three official URLs; no assertion that the sources disappeared.",
+    "Finalize named photographic and geographic gaps and the complete publication audit."
+  ],
+  "verificationDigests": [
+    {
+      "file": "slide-splash/final-audit/geographic-gap-register-20261022.json",
+      "sha256": "211bf1cffe3286c05810571ad30872ad68b65e0ea12442e3627aff83650f631a"
+    },
+    {
+      "file": "slide-splash/final-audit/source-audit-2225/results.json",
+      "sha256": "e8858ebb798c984921938aea5ad08da2ef72cc38cbd333226ced7cc60386f09a"
+    },
+    {
+      "file": "slide-splash/research/visual-observations/advertised-gallery-2200/visual-review.json",
+      "sha256": "5aba007fec38604c2e795e165f976f1e031f991506e6504413e1cb63e0818b8b"
+    }
+  ]
+}

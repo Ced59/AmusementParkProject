@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-343acf22-6348-4953-844f-76209b7cffc0",
+  "entryId": "PT-candidate-fc3d650394a5d8",
+  "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T22:17:13.793Z",
+  "sourceAppliedAt": "2026-10-22T22:17:13.7932985Z",
+  "receiptFile": "family-golf-park/step-04c-remaining-item-descriptions-20261022.apply.json",
+  "receiptSha256": "cf38296a64fa1d739a4cb5c2b062e7898ad9d6ec8dc317826384fb559886261b",
+  "result": {
+    "operationId": "343acf22-6348-4953-844f-76209b7cffc0",
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "32 descriptions originales intégrées et vérifiées dans les huit langues : Family Kids Club, salle de jeux, réception et halte du train touristique externe de Vilamoura. Les huit parkItems disposent désormais de descriptions ; aucune publication, audit final restant."
+}

@@ -1,0 +1,80 @@
+{
+  "entryId": "PT-standalone-aae02d3a-717e-4390-897f-053fe9216850",
+  "entityId": "aae02d3a-717e-4390-897f-053fe9216850",
+  "auditedAtUtc": "2026-10-22T21:54:57.570393+00:00",
+  "documentedAtUtc": "2026-10-22T22:27:06.171346+00:00",
+  "auditOnlyNoNewDataIntegrationDate": true,
+  "graphLotsAppliedAndVerified": 11,
+  "comparedValues": 636,
+  "unexplainedDifferences": 0,
+  "localizedFieldsReviewed": 400,
+  "scalarStringsReviewed": 179,
+  "languagesPersonallyRead": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "narrativeDocuments": 155,
+  "crossDocumentRepeatedSentences": 0,
+  "crossDocumentRepeatedNineWordSequences": 0,
+  "encodingPass": true,
+  "historyEvents": 3,
+  "articles": 1,
+  "articleHeadings": 3,
+  "articleParagraphs": 6,
+  "officialPhotos": 3,
+  "writtenMediaAuthorizationUserAttested": true,
+  "projectedScore": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 86,
+    "earnedPoints": 82,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "auditComplete": true,
+  "completed": false,
+  "publicationReady": false,
+  "publicationDecision": "Pending exact 95/100 exception; national backlog default is strictly greater than 95.",
+  "remainingGaps": [
+    "Ride hardware manufacturer and exact model remain unverified after official, specialist and trade searches; no unsupported attribution inserted.",
+    "No reusable actual 2014 inauguration photograph; opening article uses the accurately captioned facade. No verified pandemic-event photographs.",
+    "Official ticket categories leave age three unresolved; no invented tariff for that age."
+  ],
+  "sitePublished": false,
+  "facebookPublished": false,
+  "reopeningDate": "2021-07-01",
+  "supplierFollowup": {
+    "source": "https://blooloop.com/files/86247/55d46a3b0485f-petersham-group-credentials-august-2015-3.pdf",
+    "sourcePages": [
+      4,
+      16,
+      17
+    ],
+    "finding": "Petersham Group and Haley Sharpe Design undertook feasibility and concept design, not proof of ride-system manufacture. No unsupported manufacturer added.",
+    "conflict": "Document says May 2014 opening; contemporary April opening evidence remains authoritative. No date change."
+  },
+  "verificationDigests": [
+    {
+      "file": "world-of-discoveries/final-audit/after-reopening-day/editorial-audit-after-reopening-day.json",
+      "sha256": "3ff97986f68699fc7fccc8796bb422a02ee3a0cad0432856388465f524077cb7"
+    },
+    {
+      "file": "world-of-discoveries/final-audit/fresh-full-export-20261022-after-reopening-day.json",
+      "sha256": "c8c98c8178dc6871e9569887d609ed34d74787e0bc96c24234d43a79f5885a19"
+    },
+    {
+      "file": "world-of-discoveries/final-audit/after-reopening-day/local-export-comparison.json",
+      "sha256": "633b3fa329180fa50e5686cc07db2048cdf763be74bac3fb83bf3d60b6408993"
+    },
+    {
+      "file": "world-of-discoveries/final-audit/after-reopening-day/narrative-overlap-report.json",
+      "sha256": "7c0c8c6069c1b75d82739bc8505bb0d7f069a4fac94c5428a4fd64b76308dc44"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-729ef22d-db7a-410a-8e7e-6dafec40d928",
+  "entryId": "PT-candidate-fc3d650394a5d8",
+  "entityId": "09c94403-ae33-4321-82cf-330dfe37428e",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T22:03:59.755Z",
+  "sourceAppliedAt": "2026-10-22T22:03:59.7555972Z",
+  "receiptFile": "family-golf-park/step-04b-course-and-cafe-descriptions-20261022.apply.json",
+  "receiptSha256": "c36f1be824abeaa4a56e2c5031aeafe35bc5ac6e30b6d1e304eb807525f7e218",
+  "result": {
+    "operationId": "729ef22d-db7a-410a-8e7e-6dafec40d928",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Descriptions originales de Via Áppia, Via Lusitânia et Family Café intégrées et vérifiées dans les huit langues. Trois parkItems existants enrichis ; aucune modification de visibilité. Audit final restant."
+}
