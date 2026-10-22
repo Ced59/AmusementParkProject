@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../docs/roadmaps/europe-integration');
 const states = new Set(['ToIntegrate', 'ToQualify', 'InProgress', 'Blocked', 'Integrated', 'PublishedDateUnknown', 'Excluded', 'Duplicate']);
 const kinds = new Set(['Park', 'StandaloneAttraction', 'ToQualify']);
+const presences = new Set(['Published', 'Hidden', 'NotFound', 'PossibleExisting', 'ExistsVisibilityUnknown']);
 const isoUtc = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/;
 const labels = { ToIntegrate: 'À intégrer', ToQualify: 'À qualifier', InProgress: 'En cours', Blocked: 'Bloqué', Integrated: 'Intégration achevée', PublishedDateUnknown: 'Publié, date inconnue', Excluded: 'Hors périmètre enregistré', Duplicate: 'Doublon conservé' };
 
@@ -29,6 +30,9 @@ export function validateCountry(document) {
     ids.add(entry.entryId);
     requireText(entry.name, 'name');
     if (!states.has(entry.editorialStatus) || !kinds.has(entry.entityKind)) throw new Error(`État ou type invalide : ${entry.entryId}`);
+    if (!presences.has(entry.presence) || !kinds.has(entry.proposedEntityKind)) throw new Error(`Présence ou type proposé invalide : ${entry.entryId}`);
+    const knownPresence = ['Published', 'Hidden', 'ExistsVisibilityUnknown'].includes(entry.presence);
+    if (knownPresence !== Boolean(entry.siteId)) throw new Error(`Présence et identifiant du site incohérents : ${entry.entryId}`);
     if (!Array.isArray(entry.integrationHistory) || !Array.isArray(entry.sources)) throw new Error(`Historique ou sources invalides : ${entry.entryId}`);
     const eventIds = new Set();
     let latest = null;
@@ -121,17 +125,18 @@ export function countryCounts(document) {
   const standalone = entry => entry.entityKind === 'StandaloneAttraction';
   const live = entry => !['Excluded', 'Duplicate'].includes(entry.editorialStatus);
   const absent = entry => !entry.siteId && entry.presence === 'NotFound';
+  const byId = new Map(document.entries.map(entry => [entry.entryId, entry]));
   return {
     parkPublished: count(entry => park(entry) && entry.presence === 'Published' && live(entry)),
     parkHidden: count(entry => park(entry) && entry.presence === 'Hidden' && entry.siteReviewStatusAtInventory !== 'NotRelevant' && entry.editorialStatus !== 'Integrated' && live(entry)),
-    parkReview: count(entry => park(entry) && entry.presence === 'Hidden' && entry.siteReviewStatusAtInventory === 'NotRelevant' && entry.editorialStatus !== 'Duplicate'),
+    parkReview: count(entry => park(entry) && entry.presence === 'Hidden' && entry.siteReviewStatusAtInventory === 'NotRelevant' && !['Duplicate', 'Integrated'].includes(entry.editorialStatus)),
     parkAbsent: count(entry => absent(entry) && entry.proposedEntityKind === 'Park' && live(entry)),
     standalonePublished: count(entry => standalone(entry) && entry.presence === 'Published' && live(entry)),
     standaloneHidden: count(entry => standalone(entry) && entry.presence === 'Hidden' && entry.editorialStatus !== 'Integrated' && live(entry)),
     standaloneAbsent: count(entry => absent(entry) && entry.proposedEntityKind === 'StandaloneAttraction' && live(entry)),
     kindUnknown: count(entry => absent(entry) && entry.proposedEntityKind === 'ToQualify' && live(entry)),
     possibleExisting: count(entry => entry.presence === 'PossibleExisting' && live(entry)),
-    legacy: count(entry => entry.editorialStatus === 'Duplicate'),
+    legacy: count(entry => entry.editorialStatus === 'Duplicate' && entry.siteId && park(entry) && byId.get(entry.duplicateOf)?.entityKind === 'StandaloneAttraction'),
     integratedWithAudit: count(entry => entry.editorialStatus === 'Integrated'),
     integratedHidden: count(entry => entry.editorialStatus === 'Integrated' && entry.presence === 'Hidden'),
     visibilityUnknown: count(entry => entry.siteId && entry.presence === 'ExistsVisibilityUnknown' && live(entry)),

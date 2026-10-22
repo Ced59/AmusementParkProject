@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { claimEntry, countryCounts, preserveHistory, recordIntegration, renderCountry, renderSummary, validateCountry } from './integration-backlog.mjs';
 
-const fixture = () => ({ schemaVersion: 1, countryCode: 'BE', countryName: 'Belgique', inventoryDate: '2026-10-22', geographicScope: 'Europe', entries: [{ entryId: 'BE-example', name: 'Parc exemple', locality: 'Ville', entityKind: 'Park', siteId: 'park-1', editorialStatus: 'ToIntegrate', presence: 'Hidden', assignedTo: null, lastDataIntegrationAt: null, integrationHistory: [], sources: [], nextAction: 'Intégrer.' }] });
+const fixture = () => ({ schemaVersion: 1, countryCode: 'BE', countryName: 'Belgique', inventoryDate: '2026-10-22', geographicScope: 'Europe', entries: [{ entryId: 'BE-example', name: 'Parc exemple', locality: 'Ville', entityKind: 'Park', proposedEntityKind: 'Park', siteId: 'park-1', editorialStatus: 'ToIntegrate', presence: 'Hidden', assignedTo: null, lastDataIntegrationAt: null, integrationHistory: [], sources: [], nextAction: 'Intégrer.' }] });
 const options = () => ({ entry: 'BE-example', event: 'receipt-1', at: '2026-10-22T12:00:00Z', outcome: 'completed', entityId: 'park-1', kind: 'Park', evidence: 'receipt:verified-1', audit: 'audit:verified-1', summary: 'Inventaire et textes intégrés, audit final accepté.' });
 const now = new Date('2026-10-22T18:00:00Z');
 
@@ -73,7 +73,9 @@ test('counts separate hidden shells, migrated legacy, candidates and uncertain i
   const doc = fixture();
   const base = doc.entries[0];
   doc.entries.push(
-    { ...base, entryId: 'legacy', editorialStatus: 'Duplicate' },
+    { ...base, entryId: 'legacy', editorialStatus: 'Duplicate', duplicateOf: 'migrated-standalone' },
+    { ...base, entryId: 'migrated-standalone', entityKind: 'StandaloneAttraction', presence: 'Published', editorialStatus: 'PublishedDateUnknown' },
+    { ...base, entryId: 'duplicate-candidate', siteId: null, presence: 'NotFound', editorialStatus: 'Duplicate', duplicateOf: 'BE-example' },
     { ...base, entryId: 'review', editorialStatus: 'Excluded', siteReviewStatusAtInventory: 'NotRelevant' },
     { ...base, entryId: 'new-park', siteId: null, presence: 'NotFound', proposedEntityKind: 'Park', editorialStatus: 'ToQualify' },
     { ...base, entryId: 'new-standalone', siteId: null, presence: 'NotFound', entityKind: 'ToQualify', proposedEntityKind: 'StandaloneAttraction', editorialStatus: 'ToQualify' },
@@ -139,4 +141,23 @@ test('migrating a published park never assumes the replacement standalone is pub
   assert.equal(result.entries[0].presenceObservedAt, null);
   assert.equal(countryCounts(result).standalonePublished, 0);
   assert.equal(countryCounts(result).visibilityUnknown, 1);
+});
+
+test('completed NotRelevant work no longer appears in the unresolved review count', () => {
+  const doc = fixture();
+  doc.entries[0].siteReviewStatusAtInventory = 'NotRelevant';
+  const completed = recordIntegration(doc, options(), now);
+  assert.equal(countryCounts(completed).parkReview, 0);
+  assert.equal(countryCounts(completed).integratedHidden, 1);
+});
+
+test('invalid presence or missing classification cannot silently disappear from counts', () => {
+  const doc = fixture();
+  doc.entries[0].presence = 'Typo';
+  assert.throws(() => validateCountry(doc), /Présence/);
+  doc.entries[0].presence = 'NotFound';
+  assert.throws(() => validateCountry(doc), /incohérents/);
+  doc.entries[0].siteId = null;
+  delete doc.entries[0].proposedEntityKind;
+  assert.throws(() => validateCountry(doc), /type proposé/);
 });
