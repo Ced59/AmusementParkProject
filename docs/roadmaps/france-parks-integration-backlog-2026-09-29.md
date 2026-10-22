@@ -31,12 +31,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 55 |
+| Fiches privées existantes à intégrer | 82 | 54 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **145** |
+| **Total** | **225** | **144** |
 
 ## 1. Fiches publiques à compléter
 
@@ -81,7 +81,6 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc des Naudières — `f7f8cba8-62b4-4a91-8732-70a1cbc02b42`
 - [ ] Parc du Petit Prince — `b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f`
 - [ ] Parc Fenestre — `4af8f8f8-2be7-4438-a02f-0054b36cb25e`
-- [ ] Parc Spirou Provence — `fa6698dd-950b-4c78-b351-cd7deb501967`
 - [ ] Pirat' Parc — `fba6fd0b-56c2-4b46-b321-2f901bb363a7`
 - [ ] Piratland — `a2396980-0591-4ed6-8af2-ea683ef69503`
 - [ ] Piratland Kids — `ce238026-7156-4d70-99c1-2929b15ce6d9`
@@ -382,6 +381,8 @@ Le Parc du Bocasse (`79b3c038-bff1-4170-b51d-4c7ed76b1a2d`) est retiré le 21 oc
 Le Parc du Petit Prince (`b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f`) est publié le 21 octobre 2026 à **100/100** (102/102), sans bloqueur serveur. La [fiche publique](https://amusement-parks.fun/fr/park/b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f/parc-du-petit-prince) comporte 87 lieux validés sur 100, 84 médias propres publiés dont le logo, 35 événements historiques publics et six articles dans les huit langues. Treize entrées au cycle de vie non établi restent privées. Les quatre plans originaux 2014, 2019, 2020 et 2026 sont téléchargeables ; leur intégrité est vérifiée. Les 102 fiches et 48 pages d’articles contrôlées présentent les textes attendus sans débordement mobile ; le lien Histoire fonctionne depuis le parc et les quatre lieux porteurs d’articles. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124051249424431) est confirmée au statut Published, sans doublon. **La ligne active est conservée** : la reprise par Ptak du 3 mars 2025 est racontée et sourcée dans un article, mais le fait canonique Acquisition reste à classifier, sans substitution par un type inexact. Les lacunes photographiques et géographiques restent explicites : 22 attractions sur 35 illustrées, deux lieux importants sur 57 dotés d’au moins trois photos, 82 lieux fixes géolocalisés sur 93.
 
 Le Parc des Naudières (`f7f8cba8-62b4-4a91-8732-70a1cbc02b42`) est publié le 21 octobre et vérifié le 22 octobre 2026 à **100/100** (108/108), sans bloqueur serveur. La [fiche publique](https://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres) comporte 48 lieux validés, six zones et 440 descriptions dans les huit langues. Les 51 médias propres publiés comprennent le logo courant, cinq photographies générales, le visuel HollyWeen et 44 images de lieux. Huit plans originaux sont accessibles pour 2017 et 2020–2026, avec huit téléchargements publics identiques aux fichiers importés. Les 29 événements historiques publics sont sourcés, dont 23 illustrés, et quatre articles sont disponibles dans les huit langues. Le calendrier vérifié couvre les 244 jours du 1er avril au 30 novembre 2026 sans lacune ni chevauchement. Les contrôles portent sur 63 fiches et 32 pages d’articles ; le lien Histoire est cliqué depuis le parc, le Roller Coaster et Bungy Éjection. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124053079424431) est confirmée Published, sans doublon. **La ligne active est conservée** : l’acquisition de 2020 reste à classifier dans l’historique canonique, tandis que la Maison Ameco conserve des indications officielles contradictoires sur l’âge d’accès. Cette dernière et les 35 entrées au cycle de vie inconnu restent privées. Les lacunes de sources demeurent documentées, notamment 23 lieux fixes géolocalisés sur 64 et quatre lieux importants sur 25 disposant d’au moins trois photos.
+
+Le Parc Spirou Provence (`fa6698dd-950b-4c78-b351-cd7deb501967`) est retiré le 22 octobre 2026 après publication et contrôles anonymes : **100/100** (107/107), aucun bloqueur. Les 89 lieux, dont 37 attractions, et les six zones disposent de 768 descriptions localisées. Les 116 médias propres publiés comprennent le logo courant et huit vues générales ; 36 attractions sur 37 sont illustrées, et 13 lieux importants sur 19 disposent d’au moins trois photos complémentaires. Les six plans officiels 2018, 2019, 2022, 2024, 2025 et 2026 sont publics et vérifiés. Le calendrier couvre les 226 jours du 4 avril au 15 novembre 2026, avec 144 jours ouverts et 82 fermés, sans lacune ni chevauchement. Les tarifs comprennent 15 offres d’entrée, deux passes, trois offres de stationnement, trois offres de crédits et un relevé historique de 2022. Les 37 faits historiques canoniques sont publiés, sourcés et illustrés, dont 12 faits du parc et 25 faits de lieux ; quatre articles sont disponibles dans les huit langues. Les 137 pages contrôlées répondent correctement. Le lien « Histoire » a été cliqué avec succès depuis la [fiche française normale](https://amusement-parks.fun/fr/park/fa6698dd-950b-4c78-b351-cd7deb501967/parc-spirou-provence) sur mobile le 22 octobre à 16 h 06 UTC, après expiration de la réponse périmée ; les autres langues avaient déjà passé ce contrôle. L’[annonce Facebook existante](https://www.facebook.com/1285475681307050/posts/122124089547424431), identifiant `8ed55ad369614202babe490208d2c34c`, est confirmée `Published`, sans nouvel envoi. Les derniers diagnostics ne signalent aucun bloqueur et la Preview d’idempotence laisse 264 entités inchangées. Les limites documentées restent explicites : photo historique de Zombillénium Dark Ride, couverture de certains services et spectacles, quinze positions fixes non établies sur 72, plans 2020, 2021 et 2023 non retrouvés et absence d’instantané d’année clé indexable ; aucune coordonnée n’est inventée pour les animations itinérantes ou installations saisonnières.
 
 ### Inventaire historique à confirmer
 
