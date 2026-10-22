@@ -108,3 +108,35 @@ test('a later partial integration cannot be declared completed using an older au
   partial.entries[0].editorialStatus = 'Integrated';
   assert.throws(() => validateCountry(partial), /dernier audit/);
 });
+
+test('reordering history cannot use an older completion audit for newer partial data', () => {
+  const first = recordIntegration(fixture(), options(), now);
+  const later = recordIntegration(first, { ...options(), event: 'later', at: '2026-10-22T13:00:00Z', outcome: 'partial', audit: undefined }, now);
+  const reordered = structuredClone(later);
+  reordered.entries[0].integrationHistory.reverse();
+  reordered.entries[0].editorialStatus = 'Integrated';
+  assert.throws(() => validateCountry(reordered), /non chronologique/);
+  assert.throws(() => preserveHistory(later, reordered), /non chronologique/);
+});
+
+test('a same-date closure is allowed but existing same-date events cannot be reordered', () => {
+  const partial = recordIntegration(fixture(), { ...options(), outcome: 'partial', audit: undefined }, now);
+  const completed = recordIntegration(partial, { ...options(), event: 'closure' }, now);
+  assert.equal(completed.entries[0].editorialStatus, 'Integrated');
+  assert.equal(completed.entries[0].lastDataIntegrationAt, options().at);
+  const reordered = structuredClone(completed);
+  reordered.entries[0].integrationHistory.reverse();
+  reordered.entries[0].editorialStatus = 'InProgress';
+  assert.throws(() => preserveHistory(completed, reordered), /réécrit/);
+});
+
+test('migrating a published park never assumes the replacement standalone is published', () => {
+  const doc = fixture();
+  doc.entries[0].presence = 'Published';
+  doc.entries[0].presenceObservedAt = '2026-10-22';
+  const result = recordIntegration(doc, { ...options(), kind: 'StandaloneAttraction', entityId: 'standalone-1' }, now);
+  assert.equal(result.entries[0].presence, 'ExistsVisibilityUnknown');
+  assert.equal(result.entries[0].presenceObservedAt, null);
+  assert.equal(countryCounts(result).standalonePublished, 0);
+  assert.equal(countryCounts(result).visibilityUnknown, 1);
+});

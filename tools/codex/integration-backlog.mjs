@@ -38,7 +38,8 @@ export function validateCountry(document) {
       requireText(event.summary, 'résumé');
       if (eventIds.has(event.eventId)) throw new Error(`Événement dupliqué : ${event.eventId}`);
       eventIds.add(event.eventId);
-      instant(event.appliedAt, 'appliedAt');
+      const applied = instant(event.appliedAt, 'appliedAt');
+      if (latest && applied < Date.parse(latest)) throw new Error(`Historique non chronologique : ${entry.entryId}`);
       if (!['partial', 'completed'].includes(event.outcome)) throw new Error('Résultat d’intégration invalide.');
       if (event.outcome === 'completed') requireText(event.auditEvidence, 'preuve d’audit final');
       if (!latest || Date.parse(event.appliedAt) > Date.parse(latest)) latest = event.appliedAt;
@@ -56,8 +57,8 @@ export function preserveHistory(previous, next) {
   for (const old of previous.entries) {
     const current = entries.get(old.entryId);
     if (!current) throw new Error(`Suppression interdite : ${old.entryId}`);
-    for (const event of old.integrationHistory) {
-      const retained = current.integrationHistory.find(item => item.eventId === event.eventId);
+    for (const [index, event] of old.integrationHistory.entries()) {
+      const retained = current.integrationHistory[index];
       if (JSON.stringify(retained) !== JSON.stringify(event)) throw new Error(`Historique supprimé ou réécrit : ${old.entryId}/${event.eventId}`);
     }
   }
@@ -81,13 +82,17 @@ export function recordIntegration(document, options, now = new Date()) {
     return result;
   }
   if (entry.lastDataIntegrationAt && applied < Date.parse(entry.lastDataIntegrationAt)) throw new Error('Une date plus ancienne ne peut pas remplacer la dernière intégration.');
+  const targetChanged = entry.siteId !== options.entityId || entry.entityKind !== options.kind;
   entry.integrationHistory.push(event);
   entry.lastDataIntegrationAt = options.at;
   entry.entityKind = options.kind;
   entry.proposedEntityKind = options.kind;
   if (entry.siteId && entry.siteId !== options.entityId) entry.legacySiteIds = [...new Set([...(entry.legacySiteIds ?? []), entry.siteId])];
   entry.siteId = options.entityId;
-  if (['NotFound', 'PossibleExisting'].includes(entry.presence)) entry.presence = 'ExistsVisibilityUnknown';
+  if (targetChanged || ['NotFound', 'PossibleExisting'].includes(entry.presence)) {
+    entry.presence = 'ExistsVisibilityUnknown';
+    entry.presenceObservedAt = null;
+  }
   entry.editorialStatus = options.outcome === 'completed' ? 'Integrated' : 'InProgress';
   entry.nextAction = options.outcome === 'completed' ? 'Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.' : 'Poursuivre l’intégration et l’audit final.';
   if (options.outcome === 'completed') entry.assignedTo = null;
