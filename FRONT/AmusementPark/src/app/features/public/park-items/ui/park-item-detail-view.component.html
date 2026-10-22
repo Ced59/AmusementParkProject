@@ -329,54 +329,10 @@
           </div>
         </section>
 
-        <section class="detail-panel access-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="currentDetail.accessConditions.length > 0">
-          <app-ui-section-header
-            kickerIconClass="pi pi-lock"
-            kickerLabelKey="parkItems.detail.accessConditionsTitle"
-            titleKey="parkItems.detail.accessConditionsTitle"
-            subtitleKey="parkItems.detail.accessConditionsSubtitle">
-          </app-ui-section-header>
-
-          <div class="access-condition-grid">
-            <article
-              class="access-condition-card"
-              *ngFor="let condition of currentDetail.accessConditions"
-              [attr.data-access-kind]="condition.kind"
-              [attr.data-access-tone]="condition.tone">
-              <div class="access-condition-card__icon">
-                <i [class]="condition.iconClass" aria-hidden="true"></i>
-              </div>
-
-              <div class="access-condition-card__content">
-                <h3>{{ condition.title || (condition.titleKey | translate) }}</h3>
-                <p *ngIf="condition.description">{{ condition.description }}</p>
-
-                <div class="height-requirement-summary" *ngIf="condition.metrics.length > 0">
-                  <div class="height-requirement-summary__rail" aria-hidden="true"></div>
-
-                  <article class="height-requirement-summary__item" *ngFor="let metric of condition.metrics">
-                    <span class="height-requirement-summary__icon">
-                      <i [class]="metric.iconClass" aria-hidden="true"></i>
-                    </span>
-                    <span class="height-requirement-summary__label">{{ metric.labelKey | translate }}</span>
-                    <strong>{{ metric.value }}</strong>
-                    <small *ngIf="metric.helperKey">{{ metric.helperKey | translate }}</small>
-                  </article>
-                </div>
-
-                <div class="detail-row-grid detail-row-grid--compact" *ngIf="condition.rows.length > 0">
-                  <div class="detail-data-row" *ngFor="let row of condition.rows">
-                    <span class="detail-data-row__icon" *ngIf="row.iconClass">
-                      <i [class]="row.iconClass" aria-hidden="true"></i>
-                    </span>
-                    <span class="detail-data-row__label">{{ row.labelKey | translate }}</span>
-                    <strong class="detail-data-row__value">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</strong>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
+        <app-attraction-access-conditions
+          *ngIf="currentDetail.accessConditions.length > 0"
+          [conditions]="currentDetail.accessConditions">
+        </app-attraction-access-conditions>
 
         <section class="related-section" *ngIf="currentDetail.relatedItems.length > 0">
           <app-ui-section-header

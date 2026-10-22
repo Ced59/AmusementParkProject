@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { Observable, Subject, of, throwError } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
@@ -313,6 +314,30 @@ function configureFacade(): {
 describe('ParkItemDetailStateFacade', () => {
   beforeEach(() => {
     TestBed.resetTestingModule();
+  });
+
+  it('updates park attraction characteristics and access heights when measurement preferences change', () => {
+    const context = configureFacade();
+    const preferences = TestBed.inject(MeasurementPreferenceService);
+    preferences.setPreferredSystem('Metric');
+    context.itemsPort.itemResponse$ = of(createParkItem({ attractionDetails: {
+      heightInMeters: 60.96, lengthInMeters: 1609.344, speedInKmH: 96.56064, dropInMeters: 30.48,
+      accessConditions: [{ type: 'MinHeight', value: 121.92, unit: 'Centimeter' }]
+    } }));
+    context.facade.setCurrentLanguage('en');
+    context.facade.loadItem('item-1');
+    const metricRows = context.facade.detail()?.specGroups.flatMap(group => group.rows) ?? [];
+    expect(metricRows.find(row => row.labelKey === 'parkItems.fields.speedInKmH')?.value).toBe('96.6 km/h');
+
+    preferences.setPreferredSystem('Imperial');
+    const imperialRows = context.facade.detail()?.specGroups.flatMap(group => group.rows) ?? [];
+    expect(imperialRows.find(row => row.labelKey === 'parkItems.fields.heightInMeters')?.value).toBe('200 ft');
+    expect(imperialRows.find(row => row.labelKey === 'parkItems.fields.lengthInMeters')?.value).toBe('5,280 ft');
+    expect(imperialRows.find(row => row.labelKey === 'parkItems.fields.speedInKmH')?.value).toBe('60 mph');
+    expect(imperialRows.find(row => row.labelKey === 'parkItems.fields.dropInMeters')?.value).toBe('100 ft');
+    expect(context.facade.detail()?.accessConditions[0].metrics[0].value).toBe('4 ft');
+    expect(context.itemsPort.itemCalls).toEqual(['item-1']);
+    preferences.setPreferredSystem('Metric');
   });
 
   it.each([
