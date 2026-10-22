@@ -112,6 +112,37 @@
       ]
     },
     {
+      "entryId": "CY-candidate-a514590dad107e",
+      "name": "Cem Dana Lunapark",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Trikomo , Famagusta",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-2211f37e-54f1-4150-b7dc-021df7defe5c. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20124.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "CY-park-2211f37e-54f1-4150-b7dc-021df7defe5c"
+    },
+    {
       "entryId": "CY-park-2211f37e-54f1-4150-b7dc-021df7defe5c",
       "name": "Cem Dana Lunapark",
       "entityKind": "Park",
@@ -158,37 +189,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "CY-candidate-a514590dad107e",
-      "name": "Cem Dana Lunapark",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Trikomo , Famagusta",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-2211f37e-54f1-4150-b7dc-021df7defe5c. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/20124.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "CY-park-2211f37e-54f1-4150-b7dc-021df7defe5c"
     },
     {
       "entryId": "CY-candidate-94f8ab3194c13f",
@@ -262,6 +262,37 @@
       ]
     },
     {
+      "entryId": "CY-candidate-08454e3f537990",
+      "name": "Lesland Lunapark",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Beylerbeyi , Nicosia",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-d88d46d7-d7b0-43b5-bb5a-b25b14503909. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/22278.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "CY-park-d88d46d7-d7b0-43b5-bb5a-b25b14503909"
+    },
+    {
       "entryId": "CY-park-d88d46d7-d7b0-43b5-bb5a-b25b14503909",
       "name": "Lesland Lunapark",
       "entityKind": "Park",
@@ -310,37 +341,6 @@
       }
     },
     {
-      "entryId": "CY-candidate-08454e3f537990",
-      "name": "Lesland Lunapark",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Beylerbeyi , Nicosia",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-d88d46d7-d7b0-43b5-bb5a-b25b14503909. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/22278.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "CY-park-d88d46d7-d7b0-43b5-bb5a-b25b14503909"
-    },
-    {
       "entryId": "CY-candidate-65b6a5b2563409",
       "name": "Limassol Zoo",
       "entityKind": "Park",
@@ -369,6 +369,37 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CY-candidate-c5fb74abfb3ab9",
+      "name": "Lucky Star Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Aradippou , Larnaca",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "SBNO",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-c37970d9-81e3-4c5d-b4f3-9d81b8b7656e. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5020.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "CY-park-c37970d9-81e3-4c5d-b4f3-9d81b8b7656e"
     },
     {
       "entryId": "CY-park-c37970d9-81e3-4c5d-b4f3-9d81b8b7656e",
@@ -417,37 +448,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "CY-candidate-c5fb74abfb3ab9",
-      "name": "Lucky Star Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Aradippou , Larnaca",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "SBNO",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-c37970d9-81e3-4c5d-b4f3-9d81b8b7656e. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5020.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "CY-park-c37970d9-81e3-4c5d-b4f3-9d81b8b7656e"
     },
     {
       "entryId": "CY-candidate-08bd3a8be01a75",
@@ -540,6 +540,42 @@
       ]
     },
     {
+      "entryId": "CY-candidate-ccdc948bc3a1a1",
+      "name": "Pafos Luna Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB) / Attractions",
+      "locality": "Pafos , Paphos",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-bf296117-6158-4493-bf8f-b3527839782a. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/16195.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Cyprus",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "CY-park-bf296117-6158-4493-bf8f-b3527839782a"
+    },
+    {
       "entryId": "CY-park-bf296117-6158-4493-bf8f-b3527839782a",
       "name": "Pafos Luna Park",
       "entityKind": "Park",
@@ -596,42 +632,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "CY-candidate-ccdc948bc3a1a1",
-      "name": "Pafos Luna Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Pafos , Paphos",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-bf296117-6158-4493-bf8f-b3527839782a. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/16195.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Cyprus",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "CY-park-bf296117-6158-4493-bf8f-b3527839782a"
     },
     {
       "entryId": "CY-candidate-e7d6920aeb912c",
@@ -730,6 +730,37 @@
       ]
     },
     {
+      "entryId": "CY-candidate-5a4387b2c4556b",
+      "name": "Parko Paliatso Luna Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Ayia Napa , Famagusta",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-76b04a82-43a0-4b7e-a098-33cfa321b5cf. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6243.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "CY-park-76b04a82-43a0-4b7e-a098-33cfa321b5cf"
+    },
+    {
       "entryId": "CY-park-76b04a82-43a0-4b7e-a098-33cfa321b5cf",
       "name": "Parko Paliatso Luna Park",
       "entityKind": "Park",
@@ -778,12 +809,12 @@
       }
     },
     {
-      "entryId": "CY-candidate-5a4387b2c4556b",
-      "name": "Parko Paliatso Luna Park",
+      "entryId": "CY-candidate-76b3f057b09745",
+      "name": "Protaras Fun Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Ayia Napa , Famagusta",
+      "category": "Attractions (RCDB) / Attractions",
+      "locality": "Protaras , Famagusta",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -798,15 +829,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-76b04a82-43a0-4b7e-a098-33cfa321b5cf. Ne pas créer de doublon.",
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-d62fa220-e79d-4480-8e19-b24a6931d416. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/6243.htm",
+          "url": "https://rcdb.com/20126.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Cyprus",
           "accessedAt": "2026-10-22"
         }
       ],
-      "duplicateOf": "CY-park-76b04a82-43a0-4b7e-a098-33cfa321b5cf"
+      "duplicateOf": "CY-park-d62fa220-e79d-4480-8e19-b24a6931d416"
     },
     {
       "entryId": "CY-park-d62fa220-e79d-4480-8e19-b24a6931d416",
@@ -865,42 +901,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "CY-candidate-76b3f057b09745",
-      "name": "Protaras Fun Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Protaras , Famagusta",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre CY-park-d62fa220-e79d-4480-8e19-b24a6931d416. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/20126.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Cyprus",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "CY-park-d62fa220-e79d-4480-8e19-b24a6931d416"
     },
     {
       "entryId": "CY-candidate-8e68419b0f19ec",

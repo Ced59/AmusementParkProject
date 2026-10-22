@@ -143,6 +143,37 @@
       ]
     },
     {
+      "entryId": "EE-candidate-7ec76d1a701f5a",
+      "name": "Kadrioru Karussell",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Tallinn , Harju",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre EE-park-4168ff72-db39-4719-a38b-196f97dc86d6. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/16489.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "EE-park-4168ff72-db39-4719-a38b-196f97dc86d6"
+    },
+    {
       "entryId": "EE-park-4168ff72-db39-4719-a38b-196f97dc86d6",
       "name": "Kadrioru Karussell",
       "entityKind": "Park",
@@ -191,37 +222,6 @@
       }
     },
     {
-      "entryId": "EE-candidate-7ec76d1a701f5a",
-      "name": "Kadrioru Karussell",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Tallinn , Harju",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre EE-park-4168ff72-db39-4719-a38b-196f97dc86d6. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/16489.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "EE-park-4168ff72-db39-4719-a38b-196f97dc86d6"
-    },
-    {
       "entryId": "EE-candidate-86f960795372b5",
       "name": "Kalev Spa Water Park",
       "entityKind": "Park",
@@ -250,6 +250,37 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "EE-candidate-f88422f03168b9",
+      "name": "Liikluslinn",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Uhtjärve , Võru",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre EE-park-6c95ea67-592d-461c-95b5-181c4e59f798. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14924.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "EE-park-6c95ea67-592d-461c-95b5-181c4e59f798"
     },
     {
       "entryId": "EE-park-6c95ea67-592d-461c-95b5-181c4e59f798",
@@ -300,37 +331,6 @@
       }
     },
     {
-      "entryId": "EE-candidate-f88422f03168b9",
-      "name": "Liikluslinn",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Uhtjärve , Võru",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre EE-park-6c95ea67-592d-461c-95b5-181c4e59f798. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/14924.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "EE-park-6c95ea67-592d-461c-95b5-181c4e59f798"
-    },
-    {
       "entryId": "EE-candidate-06b658b99975bd",
       "name": "Noorus Veepark",
       "entityKind": "Park",
@@ -359,6 +359,37 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "EE-candidate-68c28c7515f58d",
+      "name": "Rocca al Mare Tivoli",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Tallinn , Harju",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre EE-park-58dfe3b2-2298-426a-8bd2-e93db346677b. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5467.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "EE-park-58dfe3b2-2298-426a-8bd2-e93db346677b"
     },
     {
       "entryId": "EE-park-58dfe3b2-2298-426a-8bd2-e93db346677b",
@@ -409,37 +440,6 @@
       }
     },
     {
-      "entryId": "EE-candidate-68c28c7515f58d",
-      "name": "Rocca al Mare Tivoli",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Tallinn , Harju",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre EE-park-58dfe3b2-2298-426a-8bd2-e93db346677b. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5467.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "EE-park-58dfe3b2-2298-426a-8bd2-e93db346677b"
-    },
-    {
       "entryId": "EE-candidate-847a9466f32c0b",
       "name": "Skywheel of Tallinn",
       "entityKind": "ToQualify",
@@ -460,14 +460,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "EE-candidate-7879729897662e",

@@ -6,13 +6,15 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 173,
+  "sourceObservationCount": 175,
   "sourceFamilies": [
     "Backlog national existant",
     "EAZA",
     "Opérateur officiel Tempo Livre",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "WAZA",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26320",
@@ -21,7 +23,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -1228,7 +1231,13 @@
         }
       ],
       "countryCodeAtInventory": "PT",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "PT-standalone-22507909-9fab-4452-a87d-27fded8b2e3c",
@@ -1270,7 +1279,13 @@
         }
       ],
       "countryCodeAtInventory": "PT",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "PT-candidate-7daaa5e7cd95dc",
@@ -3439,7 +3454,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3460,10 +3475,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://penaaventura.com.pt/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13277.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=242#location-id-1892",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.penaaventura.com",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "PT",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13277.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Pena Aventura",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Ribeira de Pena , Vila Real",
+            "sourceOpenedYear": "2014"
+          },
+          {
+            "name": "Pena Aventura",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=242#location-id-1892",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Pena Aventura",
+            "referenceId": "location-id-1892"
+          }
+        ],
+        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
+      }
     },
     {
       "entryId": "PT-candidate-ddfcd86c0a87a2",
@@ -4197,7 +4252,13 @@
         }
       ],
       "countryCodeAtInventory": "PT",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "PT-candidate-9fd84f9007c26d",

@@ -6,13 +6,17 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 499,
+  "sourceObservationCount": 596,
   "sourceFamilies": [
     "AmusementForce",
     "Backlog national existant",
     "EAZA",
+    "Intamin — référence constructeur",
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Sunkid — projet constructeur",
     "WAZA",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26056",
@@ -21,7 +25,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 97 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -187,6 +192,509 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "FR-candidate-standalone-db88de5b75cabb",
+      "name": "Alpine Coaster Wiegand — Col de la Schlucht",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Col de la Schlucht"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2195",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Col de la Schlucht",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2195",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Col de la Schlucht",
+            "referenceId": "location-id-2195"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-efc3df16ac0cdc",
+      "name": "Alpine Coaster Wiegand — Gréolières",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Gréolières"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2231",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Gréolières",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2231",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Gréolières",
+            "referenceId": "location-id-2231"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-390ae99778a093",
+      "name": "Alpine Coaster Wiegand — La Decouverte",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [
+        {
+          "siteId": "8a131482-e133-4535-aca2-21563c282f90",
+          "name": "Cap Découverte",
+          "similarity": null
+        }
+      ],
+      "possibleBacklogEntries": [
+        "FR-park-8a131482-e133-4535-aca2-21563c282f90"
+      ],
+      "aliases": [
+        "La Decouverte"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : FR-park-8a131482-e133-4535-aca2-21563c282f90. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-996",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.vert-marine.com/cap-decouverte-le-garric-81/glissez.php",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "La Decouverte",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-996",
+            "family": "Alpine coaster",
+            "sourceVenueName": "La Decouverte",
+            "referenceId": "location-id-996"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-1f13431b5b7a0a",
+      "name": "Alpine Coaster Wiegand — La Faucille",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "La Faucille"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-995",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.monts-jura.com/fr/activites/luge-sur-rails.html",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "La Faucille",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-995",
+            "family": "Alpine coaster",
+            "sourceVenueName": "La Faucille",
+            "referenceId": "location-id-995"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-165da4ccf353c7",
+      "name": "Alpine Coaster Wiegand — La Norma",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "La Norma"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2160",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "La Norma",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2160",
+            "family": "Alpine coaster",
+            "sourceVenueName": "La Norma",
+            "referenceId": "location-id-2160"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-4837e51a358596",
+      "name": "Alpine Coaster Wiegand — Lac Blanc",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Lac Blanc"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2087",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Lac Blanc",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2087",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Lac Blanc",
+            "referenceId": "location-id-2087"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-7507b5c20f4335",
+      "name": "Alpine Coaster Wiegand — Molines",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Molines"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2054",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Molines",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2054",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Molines",
+            "referenceId": "location-id-2054"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-c2f2b70318ae04",
+      "name": "Alpine Coaster Wiegand — P2000",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "P2000"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2207",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "P2000",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2207",
+            "family": "Alpine coaster",
+            "sourceVenueName": "P2000",
+            "referenceId": "location-id-2207"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-2cfcf4e3437aec",
+      "name": "Alpine Coaster Wiegand — Plan Incline",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Plan Incline"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-990",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.plan-incline.com/luge-alpine/luge-alpine.html",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Plan Incline",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-990",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Plan Incline",
+            "referenceId": "location-id-990"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-3e9f3829769d01",
+      "name": "Alpine Coaster Wiegand — Super Dévoluy",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Super Dévoluy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2208",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Super Dévoluy",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2208",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Super Dévoluy",
+            "referenceId": "location-id-2208"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-candidate-a7f2b59d48ade2",
@@ -696,12 +1204,12 @@
       ]
     },
     {
-      "entryId": "FR-candidate-adcb2e57e49701",
+      "entryId": "FR-candidate-0687fa064625e0",
       "name": "Aquafly",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Catégorie à qualifier",
-      "locality": "Chaillac",
+      "locality": "Saulxures-sur-Moselotte",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -726,12 +1234,12 @@
       ]
     },
     {
-      "entryId": "FR-candidate-0687fa064625e0",
+      "entryId": "FR-candidate-adcb2e57e49701",
       "name": "Aquafly",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Catégorie à qualifier",
-      "locality": "Saulxures-sur-Moselotte",
+      "locality": "Chaillac",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -2193,7 +2701,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2209,10 +2717,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://capdecouverte.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13119.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Sur Rail",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13119.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Cap'Découverte",
+            "sourceLifecycleSignal": "-",
+            "sourceLocality": "Le Garric , Occitanie",
+            "sourceOpenedYear": "2003"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-park-ac0fa053-191b-4442-a7ba-fcaab013d9c8",
@@ -2637,10 +3167,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://luge-en-normandie.fr/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/15513.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Clécy Gliss",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/15513.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Clécy Gliss",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Clécy , Normandy",
+            "sourceOpenedYear": "2006"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-candidate-77293a1f00268f",
@@ -3123,10 +3675,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.lelioran.com/hiver/devalluge/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14850.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Déval´luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14850.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Le Lioran",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Laveissière , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2006"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-5ba1d1f2-5e0e-4599-adab-386fb16b9728",
@@ -3169,10 +3743,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.ledevoluy.com/hiver/offres/devoluge-la-luge-4-saisons-superdevoluy-fr-hiver-5264813/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23315.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Devoluge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23315.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Devoluy",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Dévoluy , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2025"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-4653aba1-869f-42d3-9254-57417d71d72b",
@@ -3558,10 +4154,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://font-romeu-pyrenees-2000.altiservice.com/fr/activites/luge-sur-rail/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18854.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Draco´Snow",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18854.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Font-Romeu Pyrénées 2000",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Pyrénées-Orientales , Occitanie",
+            "sourceOpenedYear": "2025"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-fa6c0de8-1300-4253-a768-2e95c8023703",
@@ -4402,7 +5020,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -4423,10 +5041,29 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.futuroscope.com/fr/xperiences/futuroscope",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Intamin — référence constructeur",
+          "url": "https://www.intamin.com/project/la-gyrotour/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "La Gyrotour",
+            "source": "Intamin — référence constructeur",
+            "url": "https://www.intamin.com/project/la-gyrotour/",
+            "family": "Tour panoramique mécanique",
+            "sourceVenueName": "Futuroscope"
+          }
+        ],
+        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
+      }
     },
     {
       "entryId": "FR-park-c2c7a33a-4d8f-470c-a9a7-5d75446929b7",
@@ -4610,14 +5247,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-candidate-dbdc647fd4a5a5",
@@ -4640,14 +5283,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-candidate-e8225f8ae6e0e9",
@@ -4714,8 +5363,8 @@
     {
       "entryId": "FR-candidate-3d82cbebfcf60e",
       "name": "Gréolières Resort",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Gréolières , Provence-Alpes-Côte d'Azur",
       "siteId": null,
@@ -4732,14 +5381,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/24469.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/24470.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Gréo'Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/24470.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Gréolières Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Gréolières , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2026"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "FR-park-d5d59442-1fb4-4aca-a084-98029a6a9a58",
@@ -4920,21 +5591,43 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.guzet.ski/fr/luge-sur-rail",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18588.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Guzet Express",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18588.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Guzet",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Ustou , Occitanie",
+            "sourceOpenedYear": "2018"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-candidate-045dfbe490294c",
       "name": "Hautacam Parc de Loisirs",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Beaucens , Occitanie",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -4946,14 +5639,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/13114.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13115.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Mountain-Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13115.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Hautacam Parc de Loisirs",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Beaucens , Occitanie",
+            "sourceOpenedYear": "2007"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-candidate-38730e26395cd5",
@@ -5119,7 +5834,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5135,10 +5850,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://etampes.iledeloisirs.fr/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13113.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-999",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "https://etampes.iledeloisirs.fr/Session-Luge_35__282.html",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Toutes Saisons",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13113.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Ile de Loisirs d'Etampes",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Étampes , Île-de-France",
+            "sourceOpenedYear": "2007"
+          },
+          {
+            "name": "Etampes",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-999",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Etampes",
+            "referenceId": "location-id-999"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-park-62a3ecad-1320-4f4a-8f3f-f97a96936603",
@@ -6257,10 +7012,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.lesorres.com/activites-et-animations/activites-aux-orres/sensations-aventure-aux-orres/luge-sur-rail-l-orrian",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13126.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-992",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.lesorres.com/fr/equipement/luge-lorrian-express",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge L'Orrian Express",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13126.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Les Orres",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Les Orres , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2009"
+          },
+          {
+            "name": "Les Orres",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-992",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Les Orres",
+            "referenceId": "location-id-992"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-candidate-1745f99ff97bf8",
@@ -6417,10 +7212,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.saintfrancoislongchamp.com/activite/luge-sur-rails-la-comete-saint-francois-longchamp-hiver/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13773.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1924",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.saintfrancoislongchamp.com",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Comète",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13773.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Saint François Longchamp",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Saint-François-Longchamp , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2015"
+          },
+          {
+            "name": "St. Francois",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1924",
+            "family": "Alpine coaster",
+            "sourceVenueName": "St. Francois",
+            "referenceId": "location-id-1924"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-0dd99206-5ff2-4721-af07-da8cfce99b1f",
@@ -6463,10 +7298,51 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.risoul.com/la-luge-devale.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13136.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-989",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://risoul.labellemontagne.com/hiver/infos-pratiques/luge-devale/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Dévale",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13136.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Risoul Labellemontagne",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Risoul , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2010"
+          },
+          {
+            "name": "Risoul",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-989",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Risoul",
+            "referenceId": "location-id-989",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-01a421d6-35b8-4227-ae30-78bab25ca7e6",
@@ -6558,10 +7434,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://lesmenuires.com/fr/luge-rail",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14847.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Mine",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14847.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Les Menuires",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Les Belleville , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2013"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-9cebd5ae-dc2c-4c8c-a6a4-d2a2dda33d1c",
@@ -6584,7 +7482,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6605,10 +7503,30 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.larecredes3cures.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1220",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "La Récré des 3 Curés",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1220",
+            "family": "Luge d’été",
+            "sourceVenueName": "La Récré des 3 Curés",
+            "referenceId": "location-id-1220"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-candidate-b96b33e2bd92d5",
@@ -6911,12 +7829,12 @@
       "countryResolution": null
     },
     {
-      "entryId": "FR-candidate-a51e664d916f6e",
+      "entryId": "FR-candidate-42432ef14cd785",
       "name": "Le Château des Énigmes",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Catégorie à qualifier",
-      "locality": "Pons",
+      "locality": "Val de Loire",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -6941,12 +7859,12 @@
       ]
     },
     {
-      "entryId": "FR-candidate-42432ef14cd785",
+      "entryId": "FR-candidate-a51e664d916f6e",
       "name": "Le Château des Énigmes",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Catégorie à qualifier",
-      "locality": "Val de Loire",
+      "locality": "Pons",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -7753,10 +8671,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://loubacmountain.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/1763.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Lou Bac Mountain",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/1763.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Lou Bac Mountain",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Les Angles , Occitanie",
+            "sourceOpenedYear": "2021"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-23a08658-c1dd-452a-b3cf-35357e9fa583",
@@ -7883,6 +8823,93 @@
       ]
     },
     {
+      "entryId": "FR-standalone-3ca66a78-92be-4265-bebd-935b861fc9d9",
+      "name": "Luge 4 saisons",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "RollerCoaster",
+      "locality": "Megève",
+      "siteId": "3ca66a78-92be-4265-bebd-935b861fc9d9",
+      "legacySiteIds": [
+        "08c7b84d-7f31-41f9-8c42-11304e3f4af0"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "PublishedDateUnknown",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [
+        "Les Portes du Mont-Blanc"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5529.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel enregistré (à revérifier)",
+          "url": "https://www.megeve-tourisme.fr/equipements/luge-4-saisons/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13771.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1937",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.lesportesdumontblanc.fr/fr/2015/11/25/portes-ouvertes-pour-la-luge-4s/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "FR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge 4 Saisons",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13771.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Les Portes du Mont-Blanc",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Megève , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2015"
+          },
+          {
+            "name": "Megève",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1937",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Megève",
+            "referenceId": "location-id-1937",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
+    },
+    {
       "entryId": "FR-standalone-46847372-e37d-4804-9db5-86fd17f1b6e9",
       "name": "Luge 4 Saisons",
       "entityKind": "StandaloneAttraction",
@@ -7923,10 +8950,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.lesgets.com/les-activites-a-faire-aux-gets/luge-4-saisons/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20972.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2178",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "https://www.lesgets.com/en/4-season-sled/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge 4 Saisons",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20972.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Les Gets",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Les Gets , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2023"
+          },
+          {
+            "name": "Les Gets",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2178",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Les Gets",
+            "referenceId": "location-id-2178"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-530ffe49-3392-4aeb-9370-dd8cc0bd8817",
@@ -7969,56 +9036,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.lesstationsdeladrome.fr/activites/luge-sur-rail/?station=col_de_rousset",
           "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": "FR",
-      "countryResolution": null
-    },
-    {
-      "entryId": "FR-standalone-3ca66a78-92be-4265-bebd-935b861fc9d9",
-      "name": "Luge 4 saisons",
-      "entityKind": "StandaloneAttraction",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "RollerCoaster",
-      "locality": "Megève",
-      "siteId": "3ca66a78-92be-4265-bebd-935b861fc9d9",
-      "legacySiteIds": [
-        "08c7b84d-7f31-41f9-8c42-11304e3f4af0"
-      ],
-      "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
-      "siteReviewStatusAtInventory": "Validated",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [
-        "Les Portes du Mont-Blanc"
-      ],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
         },
         {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5529.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Site officiel enregistré (à revérifier)",
-          "url": "https://www.megeve-tourisme.fr/equipements/luge-4-saisons/",
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14816.htm",
           "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge 4 Saisons",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14816.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Station du Col de Rousset",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Saint-Agnan-en-Vercors , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2016"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-49853230-a1a6-4592-90b1-ad7e03374d31",
@@ -8061,10 +9104,44 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.bernexstation.fr/fr/activites-ete",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/22386.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — projet constructeur",
+          "url": "https://www.sunkidworld.com/en/projects/detail/year-round-tobogganing-fun-with-a-view-of-the-alps-in-auvergne-rhone-alpes-france/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge 4 Saisons",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/22386.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Bernex",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Bernex , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2024"
+          },
+          {
+            "name": "Mountain Coaster — Bernex",
+            "source": "Sunkid — projet constructeur",
+            "url": "https://www.sunkidworld.com/en/projects/detail/year-round-tobogganing-fun-with-a-view-of-the-alps-in-auvergne-rhone-alpes-france/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Luge 4 Saisons de Bernex"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-0b1678ed-01a3-4f48-9873-53ca8be2ddea",
@@ -8107,10 +9184,51 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.planards.fr/hiver/luge-sur-rails/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13111.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1000",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.chamonixparc.com",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Chamonix",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13111.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Domaine des Planards",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Chamonix , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2011"
+          },
+          {
+            "name": "Chamonix",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1000",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Chamonix",
+            "referenceId": "location-id-1000",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-0bfdfd47-8363-4f9d-959b-6fd331dca6e4",
@@ -8153,10 +9271,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://luge-plan-incline.com/informations-tarifs-__3__1__",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13132.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Alpine",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13132.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Luge Alpine du Plan Incliné",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Saint-Louis , Grand Est",
+            "sourceOpenedYear": "2006"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-2d446d1d-f3f3-4880-9fce-88e75997e9c5",
@@ -8199,10 +9339,44 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.chamrousse.com/luge-park-luge-coaster-luge-sur-rail.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/22384.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — projet constructeur",
+          "url": "https://www.sunkidworld.com/en/projects/detail/4-season-toboggan-run-from-sunkid-in-chamrousse-france/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/22384.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Luge Park Chamrousse",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Chamrousse , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2024"
+          },
+          {
+            "name": "Mountain Coaster — Chamrousse",
+            "source": "Sunkid — projet constructeur",
+            "url": "https://www.sunkidworld.com/en/projects/detail/4-season-toboggan-run-from-sunkid-in-chamrousse-france/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Luge Coaster Chamrousse"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-b3b096be-faf3-4477-b340-1ee12d0803b6",
@@ -8245,10 +9419,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://colmiane.com/activites-ete-sur-la-colmiane/luge-d-ete.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13024.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge d'été",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13024.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "La Colmiane",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Valdeblore , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2006"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-3e265e8c-6dff-49da-b3d2-4a76eb4f83d8",
@@ -8291,10 +9487,44 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://forfait.laclusaz.com/fr/luge-des-bois",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/24037.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sunkid — projet constructeur",
+          "url": "https://www.sunkidworld.com/en/projects/detail/la-clusaz-strengthens-year-round-profile-with-sunkid-mountain-coaster/",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge des Bois",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/24037.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Clusaz",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "La Clusaz , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2026"
+          },
+          {
+            "name": "Mountain Coaster — La Clusaz",
+            "source": "Sunkid — projet constructeur",
+            "url": "https://www.sunkidworld.com/en/projects/detail/la-clusaz-strengthens-year-round-profile-with-sunkid-mountain-coaster/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Clusaz"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-6af61037-c7eb-476f-86f3-3815bc9e4b53",
@@ -8337,10 +9567,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.station-metabief.com/fr/activites/luge-sur-rails",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/20320.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2152",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.station-metabief.com/fr/luge-sur-rails-metabief",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge des Cimes",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20320.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Station de Métabief",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Métabief , Bourgogne-Franche-Comté",
+            "sourceOpenedYear": "2022"
+          },
+          {
+            "name": "Métabief",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2152",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Métabief",
+            "referenceId": "location-id-2152"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-30dd9346-98af-47ac-9df9-fc137eb3ed94",
@@ -8383,10 +9653,45 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.vars.com/hiver/a-faire-sur-place/activites/luge-du-caribou/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18134.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2086",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge du Caribou",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18134.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Vars",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Vars , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2019"
+          },
+          {
+            "name": "Vars",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2086",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Vars",
+            "referenceId": "location-id-2086"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-d598ac25-f4fb-4085-b366-2371ca95d7d8",
@@ -8429,10 +9734,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://lequeyras.com/a-voir-a-faire/activites-autrement/luge-molines-sensation-molines-en-queyras-fr-3259580/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18274.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Molines Sensation",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18274.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Queyras Montagne",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Molines-en-Queyras , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2018"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-1ba2e17e-e7ea-4ef7-91dd-472e6011de40",
@@ -8475,10 +9802,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://skipass.montgenevre.com/fr/luge-monty-express",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13026.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Monty Express",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13026.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Montgenèvre",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Montgenèvre , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2010"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-7397a904-b8be-4077-9da2-32d71a4802ee",
@@ -8521,10 +9870,45 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://skipass.alpedhuez.com/ete/tous-les-forfaits/activites-et-animations/luge-sur-rail-4-saisons/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/15665.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1973",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge sur Rail",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/15665.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Alpe d'Huez",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Huez , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2017"
+          },
+          {
+            "name": "Alpe d'Huez",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1973",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Alpe d'Huez",
+            "referenceId": "location-id-1973"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-e579d256-0744-4f49-b887-6c3fa5b99031",
@@ -8567,56 +9951,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.lemarkstein.net/fr/tarifs-ete/",
           "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": "FR",
-      "countryResolution": null
-    },
-    {
-      "entryId": "FR-standalone-258c419a-5081-484e-a827-b7728ed6587d",
-      "name": "Luge sur rails : JIM La Sambuy",
-      "entityKind": "StandaloneAttraction",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "RollerCoaster",
-      "locality": "Faverges-Seythenex",
-      "siteId": "258c419a-5081-484e-a827-b7728ed6587d",
-      "legacySiteIds": [
-        "3ed514ff-1f6f-412e-ac68-2327b3b6d36a"
-      ],
-      "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
-      "siteReviewStatusAtInventory": "Validated",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [
-        "La Sambuy"
-      ],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
-      "sources": [
+        },
         {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13130.htm",
           "accessedAt": "2026-10-22"
         },
         {
-          "label": "RCDB",
-          "url": "https://rcdb.com/13133.htm",
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1889",
           "accessedAt": "2026-10-22"
         },
         {
-          "label": "Site officiel enregistré (à revérifier)",
-          "url": "https://www.sources-lac-annecy.com/equipement/luge-sur-rails-jim-la-sambuy/",
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.lemarkstein.net",
           "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Sur Rail",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13130.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Markstein Grand-Ballon",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Oderen , Grand Est",
+            "sourceOpenedYear": "2013"
+          },
+          {
+            "name": "Markstein",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1889",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Markstein",
+            "referenceId": "location-id-1889"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-eba6c813-59ed-4c60-9cea-14f0cc3ecb4c",
@@ -8659,10 +10037,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://laschlucht.labellemontagne.com/fr/luge-sur-rails/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/21842.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge sur Rails",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/21842.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Luges d'Éte La Schlucht",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Valtin , Grand Est",
+            "sourceOpenedYear": "2024"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-53f83007-496b-4e03-a8ec-2d33be9321ab",
@@ -8705,10 +10105,479 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.paysdegex-montsjura.com/equipements/luge-sur-rails/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13121.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge Sur Rails",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13121.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Syndicat Mixte des Monts Jura",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Mijoux , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2008"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
+    },
+    {
+      "entryId": "FR-standalone-258c419a-5081-484e-a827-b7728ed6587d",
+      "name": "Luge sur rails : JIM La Sambuy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "RollerCoaster",
+      "locality": "Faverges-Seythenex",
+      "siteId": "258c419a-5081-484e-a827-b7728ed6587d",
+      "legacySiteIds": [
+        "3ed514ff-1f6f-412e-ac68-2327b3b6d36a"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "PublishedDateUnknown",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [
+        "La Sambuy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/13133.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel enregistré (à revérifier)",
+          "url": "https://www.sources-lac-annecy.com/equipement/luge-sur-rails-jim-la-sambuy/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13134.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-988",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.lasambuy.com/activites-hiver/la-luge",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "FR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13134.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "La Sambuy",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Seythenex , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2011"
+          },
+          {
+            "name": "La Sambuy",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-988",
+            "family": "Alpine coaster",
+            "sourceVenueName": "La Sambuy",
+            "referenceId": "location-id-988"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-161ae150092baf",
+      "name": "Luge Wiegand — Chatel-Pre la Joux",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Chatel-Pre la Joux"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1226",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://info.chatel.com/la-piste-de-bob-luges-de-chatel.html",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Chatel-Pre la Joux",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1226",
+            "family": "Luge d’été",
+            "sourceVenueName": "Chatel-Pre la Joux",
+            "referenceId": "location-id-1226"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-be5b3954c92f06",
+      "name": "Luge Wiegand — La Clusaz",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "La Clusaz"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1225",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://en.laclusaz.com/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "La Clusaz",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1225",
+            "family": "Luge d’été",
+            "sourceVenueName": "La Clusaz",
+            "referenceId": "location-id-1225"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-25065a9bee80c6",
+      "name": "Luge Wiegand — Lac Caniel",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Lac Caniel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1224",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://lacdecaniel.com",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Lac Caniel",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1224",
+            "family": "Luge d’été",
+            "sourceVenueName": "Lac Caniel",
+            "referenceId": "location-id-1224"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-c85d12dca4fc8f",
+      "name": "Luge Wiegand — Le Maido",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Le Maido"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1223",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.parcdelaluge.re",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Le Maido",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1223",
+            "family": "Luge d’été",
+            "sourceVenueName": "Le Maido",
+            "referenceId": "location-id-1223"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-0aec1baa695398",
+      "name": "Luge Wiegand — Mont Dore",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Mont Dore"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1221",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Mont Dore",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1221",
+            "family": "Luge d’été",
+            "sourceVenueName": "Mont Dore",
+            "referenceId": "location-id-1221"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-1a7146e9652d1b",
+      "name": "Luge Wiegand — Semnoz",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Semnoz"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1218",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.semnoz.fr",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Semnoz",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1218",
+            "family": "Luge d’été",
+            "sourceVenueName": "Semnoz",
+            "referenceId": "location-id-1218"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "FR-candidate-standalone-8125a9cbdd8bab",
+      "name": "Luge Wiegand — Seythenex",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Seythenex"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1217",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Seythenex",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1217",
+            "family": "Luge d’été",
+            "sourceVenueName": "Seythenex",
+            "referenceId": "location-id-1217"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-standalone-0d88b893-b067-4368-8b1c-fd7a28440136",
@@ -8749,10 +10618,46 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.lugikparc.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/17157.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2081",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge 4 Saisons",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/17157.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Lugik Parc",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Les Estables , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2019"
+          },
+          {
+            "name": "Les Estables",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2081",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Les Estables",
+            "referenceId": "location-id-2081",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-29c89bcf-d733-42f1-982b-a8aa54aeeb09",
@@ -9831,10 +11736,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.lessaisies.com/offres/mountain-twister-les-saisies-fr-4069506/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13128.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-991",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.lessaisies.com/luge-neige.html",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Mountain Twister",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13128.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Régie des Saisies",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Hauteluce , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2009"
+          },
+          {
+            "name": "Les Saisies",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-991",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Les Saisies",
+            "referenceId": "location-id-991"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-candidate-79dce2e9262ed3",
@@ -10229,16 +12174,38 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.la-norma.fr/equipement/luge-4-saisons-norma-loops-la-norma/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/19902.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Norma Loops",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/19902.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "La Norma Ski Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Villarodin-Bourget , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2022"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-c344f253-61a0-4b07-b892-3783fd3ecea8",
       "name": "Normandie Luge",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "AmusementPark",
       "locality": "Souleuvre-en-Bocage",
       "siteId": "c344f253-61a0-4b07-b892-3783fd3ecea8",
@@ -10255,7 +12222,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -10276,57 +12243,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://normandie-luge.com/",
           "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": "FR",
-      "countryResolution": null
-    },
-    {
-      "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
-      "name": "Ô Parc",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "AmusementPark",
-      "locality": "Bannay",
-      "siteId": "6644b892-d03c-461e-855d-a61cadba76f4",
-      "legacySiteIds": [],
-      "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
-      "siteReviewStatusAtInventory": "Validated",
-      "lifecycleAtInventory": "ClosedDefinitively",
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
-      "sources": [
+        },
         {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13123.htm",
           "accessedAt": "2026-10-22"
         },
         {
-          "label": "RCDB",
-          "url": "https://rcdb.com/19308.htm",
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-994",
           "accessedAt": "2026-10-22"
         },
         {
-          "label": "Backlog national existant",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Site officiel enregistré (à revérifier)",
-          "url": "https://www.o-parc.fr/",
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.normandie-luge.com/",
           "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13123.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Normandie Luge",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "La Ferrière-Harang , Normandy",
+            "sourceOpenedYear": "2013"
+          },
+          {
+            "name": "La Souleuvre",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-994",
+            "family": "Alpine coaster",
+            "sourceVenueName": "La Souleuvre",
+            "referenceId": "location-id-994"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "FR-park-81f86001-3485-418e-9266-7977dff7f56a",
@@ -10421,6 +12381,53 @@
         {
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://oglisspark.fr/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "FR",
+      "countryResolution": null
+    },
+    {
+      "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+      "name": "Ô Parc",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "AmusementPark",
+      "locality": "Bannay",
+      "siteId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "PublishedDateUnknown",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "ClosedDefinitively",
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19308.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Backlog national existant",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel enregistré (à revérifier)",
+          "url": "https://www.o-parc.fr/",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -11501,7 +13508,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11517,10 +13524,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.parcdolhain.fr/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14060.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1942",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.parcdolhain.fr",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14060.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Parc d'Olhain",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Maisnil-lès Ruitz , Hauts-de-France",
+            "sourceOpenedYear": "2016"
+          },
+          {
+            "name": "Olhain",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1942",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Olhain",
+            "referenceId": "location-id-1942"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-candidate-0d4544822a5ca1",
@@ -11954,7 +14001,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11970,10 +14017,35 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://hautacam.com/fr/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-998",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.hautacam.com/hiver/mountain-luge-hiver",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Hautacam",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-998",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Hautacam",
+            "referenceId": "location-id-998"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
@@ -12167,7 +14239,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -12188,10 +14260,68 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://parcdescombes.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13124.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-993",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.parcdescombes.com/pdc/index.php/les-attractions/alpine-coaster.html",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1222",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.parcdescombes.com",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13124.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Parc des Combes",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Creusot , Bourgogne-Franche-Comté",
+            "sourceOpenedYear": "2007"
+          },
+          {
+            "name": "Chemin de Fer du Creusot",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-993",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Chemin de Fer du Creusot",
+            "referenceId": "location-id-993"
+          },
+          {
+            "name": "Les Combes",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1222",
+            "family": "Luge d’été",
+            "sourceVenueName": "Les Combes",
+            "referenceId": "location-id-1222"
+          }
+        ],
+        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
+      }
     },
     {
       "entryId": "FR-park-e3c53897-49e5-4036-a165-b0e2ef9ac448",
@@ -14105,10 +16235,45 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.praloops.fr/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18534.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2116",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Praloops",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18534.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Pra-Loup",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Uvernet-Fours , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2020"
+          },
+          {
+            "name": "Pra Loup",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2116",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Pra Loup",
+            "referenceId": "location-id-2116"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-0429bef4-cab7-4a2e-89ec-7dd5985bdb65",
@@ -14272,36 +16437,6 @@
       "countryResolution": null
     },
     {
-      "entryId": "FR-candidate-9869224d7fd457",
-      "name": "Réserve Africaine & Parc Zoologique et Botanique de Thoiry",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Animalier",
-      "locality": null,
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#France",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
       "entryId": "FR-candidate-4ca90b6fe9aa3b",
       "name": "Réserve Africaine de Sigean",
       "entityKind": "Park",
@@ -14334,6 +16469,36 @@
           "url": "https://www.reserveafricainesigean.fr",
           "accessedAt": "2026-10-22"
         },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#France",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "FR-candidate-9869224d7fd457",
+      "name": "Réserve Africaine & Parc Zoologique et Botanique de Thoiry",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#France",
@@ -14834,10 +16999,51 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://labresse.labellemontagne.com/fr/ete/luge-schlitte-mountain/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13117.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-997",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "https://www.labresse.net/schlitte-mountain-a-la-bresse.html",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Schlitte Mountain",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13117.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "La Bresse Hohneck",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "La Bresse , Grand Est",
+            "sourceOpenedYear": "2010"
+          },
+          {
+            "name": "La Bresse",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-997",
+            "family": "Alpine coaster",
+            "sourceVenueName": "La Bresse",
+            "referenceId": "location-id-997",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-candidate-a2e14dd5d5f406",
@@ -14970,10 +17176,45 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.lescarroz.com/activites/luge-sur-rail/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/17142.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2055",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Speed Dragoz: La Luge Des Carroz",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/17142.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Les Carroz",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Arâches-la-Frasse , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2018"
+          },
+          {
+            "name": "Les Carroz",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2055",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Les Carroz",
+            "referenceId": "location-id-2055"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-2be7c7a1-b10b-40b0-86ba-4df584faf181",
@@ -15014,10 +17255,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.speed-luge-vercors.fr/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13961.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1953",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://speed-luge-vercors.fr",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Speed Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13961.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Speed Luge Vercors",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Autrans-Méaudre-en-Vercors , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2016"
+          },
+          {
+            "name": "Autrans",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1953",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Autrans",
+            "referenceId": "location-id-1953"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-standalone-3283d263-279b-44a3-ba32-4dc04d7489d2",
@@ -15060,10 +17341,68 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://superbesse.com/activites/outdoor/luge-4-saisons/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/21822.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2190",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "https://www.sancy.com/fr/fiche/equipement/luge-sur-rails-super-coaster-super-besse_TFO6693197/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1216",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.sancy.com",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Super Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/21822.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Super Besse",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2024"
+          },
+          {
+            "name": "Super Besse",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-2190",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Super Besse",
+            "referenceId": "location-id-2190"
+          },
+          {
+            "name": "Super Besse",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=321#location-id-1216",
+            "family": "Luge d’été",
+            "sourceVenueName": "Super Besse",
+            "referenceId": "location-id-1216"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-candidate-d8cf87bce48653",
@@ -15411,10 +17750,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.tricky-track.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/18013.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Tricky Track",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/18013.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Tricky Track",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Le Bonhomme , Grand Est",
+            "sourceOpenedYear": "2019"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-cd98d817-a9d5-4d8c-8644-e85721616193",
@@ -15437,7 +17798,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15453,10 +17814,32 @@
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/21161.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bob Bask",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/21161.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Ttiki Leku",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Souraïde , Nouvelle-Aquitaine",
+            "sourceOpenedYear": "2022"
+          }
+        ],
+        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
+      }
     },
     {
       "entryId": "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
@@ -15573,10 +17956,50 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.valdallos.com/luge-multisaison-verdon-express-la-foux-dallos.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13109.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1001",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.valdallos.com/descente-luge.html",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Verdon Express",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13109.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Val d'Allos",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Allos , Provence-Alpes-Côte d'Azur",
+            "sourceOpenedYear": "2013"
+          },
+          {
+            "name": "Allos",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1001",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Allos",
+            "referenceId": "location-id-1001"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-candidate-2944bd4fd46f53",
@@ -16213,10 +18636,45 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.les7laux.com/hiver/activites/wiz-luge-luge-sur-rail/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/16147.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1972",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Wiz Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/16147.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Les 7 Laux",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Isère , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2017"
+          },
+          {
+            "name": "Les 7 Laux",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-1972",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Les 7 Laux",
+            "referenceId": "location-id-1972"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-candidate-a8029614b637d9",
@@ -16289,10 +18747,32 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.larosiere.net/activites-ete-hiver/xtreme-luge/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/17582.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Xtreme Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/17582.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Espace San Bernardo",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Montvalezan , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2019"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
     },
     {
       "entryId": "FR-park-cd0028d8-d6a9-4710-8482-6769a1d38ce5",

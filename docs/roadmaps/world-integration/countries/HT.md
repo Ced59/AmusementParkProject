@@ -8,6 +8,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+- Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -20,19 +21,21 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **3**. Sources : RCDB.
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **5**. Sources : RCDB, RCDB — Mountain Coaster, Wiegand — références constructeur.
 
-Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
+Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **1 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **3 candidats sans fiche**.
+Parcs : **1 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **2 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+
+Revue standalone : **0 pistes dans des fiches Park masquées**, **1 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
 | ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| HT-candidate-407184e78de2e2 | Adventure Ocean Oasis | Labadee , Nord | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/13206.htm) |
-| HT-park-6f64d243-7b8f-4495-a731-9faa76c0bb62 | Labadee | Labadee | Park | Published | Publié, date inconnue | Inconnue — non inventée | — | Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [Site officiel enregistré (à revérifier)](https://www.royalcaribbean.com/labadee-cruises) |
+| HT-candidate-407184e78de2e2 | Adventure Ocean Oasis | Labadee , Nord | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Installations référencées : Dragon's Tail Coaster. Signal source : Operating. [RCDB](https://rcdb.com/13206.htm) · [RCDB — Mountain Coaster](https://rcdb.com/13207.htm) |
+| HT-park-6f64d243-7b8f-4495-a731-9faa76c0bb62 | Labadee | Labadee | Park | Published | Publié, date inconnue | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Installations référencées : Labadee. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [Site officiel enregistré (à revérifier)](https://www.royalcaribbean.com/labadee-cruises) · [Wiegand — références constructeur](https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=308#location-id-1038) · [Opérateur référencé par la source](http://www.royalcaribbean.com) |
 | HT-candidate-1e20478951b267 | Lakay Fun world | Port-au-Prince , Ouest | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/24100.htm) |
 | HT-candidate-642510bbbb7a50 | Lakay Fun World | Cap-Haïtien , Nord | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/21462.htm) |

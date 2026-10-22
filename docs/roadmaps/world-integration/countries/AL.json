@@ -141,6 +141,37 @@
       ]
     },
     {
+      "entryId": "AL-candidate-e2aa0f97ca04d9",
+      "name": "Luna Park Tirana",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Tirana , Tiranë",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre AL-park-23a17f04-0213-4d53-b062-187f0c29ba4a. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/9793.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "AL-park-23a17f04-0213-4d53-b062-187f0c29ba4a"
+    },
+    {
       "entryId": "AL-park-23a17f04-0213-4d53-b062-187f0c29ba4a",
       "name": "Luna Park Tirana",
       "entityKind": "Park",
@@ -189,37 +220,6 @@
       }
     },
     {
-      "entryId": "AL-candidate-e2aa0f97ca04d9",
-      "name": "Luna Park Tirana",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Tirana , Tiranë",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre AL-park-23a17f04-0213-4d53-b062-187f0c29ba4a. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/9793.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "AL-park-23a17f04-0213-4d53-b062-187f0c29ba4a"
-    },
-    {
       "entryId": "AL-candidate-1ca4a0fc13f9c8",
       "name": "Lunapark",
       "entityKind": "Park",
@@ -254,6 +254,37 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "AL-candidate-a7400c86a659d4",
+      "name": "Parku 7 Xhuxhat",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Tirana , Tiranë",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre AL-park-a1422da4-375c-4f62-a450-24e092469e6b. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/11303.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "AL-park-a1422da4-375c-4f62-a450-24e092469e6b"
     },
     {
       "entryId": "AL-park-a1422da4-375c-4f62-a450-24e092469e6b",
@@ -302,37 +333,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "AL-candidate-a7400c86a659d4",
-      "name": "Parku 7 Xhuxhat",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Tirana , Tiranë",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre AL-park-a1422da4-375c-4f62-a450-24e092469e6b. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/11303.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "AL-park-a1422da4-375c-4f62-a450-24e092469e6b"
     },
     {
       "entryId": "AL-candidate-56a8160782217f",

@@ -6,10 +6,11 @@
   "geographicScope": "Amérique du Sud — périmètre national/territorial des sources",
   "geographicGroup": "Amérique du Sud",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 54,
+  "sourceObservationCount": 55,
   "sourceFamilies": [
     "AZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "WAZA",
     "Wikipédia (découverte)"
   ],
@@ -18,7 +19,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 1 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -634,13 +636,13 @@
     {
       "entryId": "AR-candidate-fa00bf8e7fdf04",
       "name": "Montaña Mágica",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Villa Carlos Paz , Córdoba",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -652,14 +654,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/14982.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14983.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Montaña Mágica",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14983.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Montaña Mágica",
+            "sourceLifecycleSignal": "-",
+            "sourceLocality": "Villa Carlos Paz , Córdoba",
+            "sourceOpenedYear": "2008"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "AR-candidate-95ca73722595be",
@@ -702,6 +726,36 @@
       ]
     },
     {
+      "entryId": "AR-candidate-20527ac22d4c50",
+      "name": "Neverland",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Rosario , Santa Fe",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21121.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "AR-candidate-3a28f5ad23d47c",
       "name": "Neverland",
       "entityKind": "Park",
@@ -732,12 +786,12 @@
       ]
     },
     {
-      "entryId": "AR-candidate-20527ac22d4c50",
-      "name": "Neverland",
+      "entryId": "AR-candidate-0167cd8c7548aa",
+      "name": "Neverland Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Rosario , Santa Fe",
+      "locality": "Boulogne , Buenos Aires",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -745,7 +799,7 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
@@ -756,7 +810,7 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/21121.htm",
+          "url": "https://rcdb.com/5811.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -822,12 +876,12 @@
       ]
     },
     {
-      "entryId": "AR-candidate-0167cd8c7548aa",
+      "entryId": "AR-candidate-a943dabaf5d6b1",
       "name": "Neverland Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Boulogne , Buenos Aires",
+      "locality": "Mendoza , Mendoza",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -835,7 +889,7 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
@@ -846,7 +900,7 @@
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/5811.htm",
+          "url": "https://rcdb.com/11977.htm",
           "accessedAt": "2026-10-22"
         }
       ]
@@ -877,36 +931,6 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/5816.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "AR-candidate-a943dabaf5d6b1",
-      "name": "Neverland Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Mendoza , Mendoza",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/11977.htm",
           "accessedAt": "2026-10-22"
         }
       ]

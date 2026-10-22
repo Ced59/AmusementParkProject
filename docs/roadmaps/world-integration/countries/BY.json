@@ -6,9 +6,11 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 19,
+  "sourceObservationCount": 25,
   "sourceFamilies": [
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=56904",
@@ -17,9 +19,106 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 6 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
+    {
+      "entryId": "BY-candidate-standalone-560ddc42a28edc",
+      "name": "Alpine Coaster Wiegand — Mozir",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Mozir"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=364#location-id-958",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Mozir",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=364#location-id-958",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Mozir",
+            "referenceId": "location-id-958"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "BY-candidate-standalone-914409d7136b5b",
+      "name": "Alpine Coaster Wiegand — Rechitsa",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Rechitsa"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=364#location-id-957",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Rechitsa",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=364#location-id-957",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Rechitsa",
+            "referenceId": "location-id-957"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
     {
       "entryId": "BY-candidate-fb14e734c3c183",
       "name": "Chelyuskinites Park",
@@ -49,6 +148,68 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "BY-candidate-39764fbd06b3a8",
+      "name": "Chelyuskintsev Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Mogilev , Mogilev",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14037.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094"
+    },
+    {
+      "entryId": "BY-candidate-84230aaea052d0",
+      "name": "Chelyuskintsev Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Minsk , Minsk",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6156.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094"
     },
     {
       "entryId": "BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094",
@@ -107,68 +268,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "BY-candidate-84230aaea052d0",
-      "name": "Chelyuskintsev Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Minsk , Minsk",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/6156.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094"
-    },
-    {
-      "entryId": "BY-candidate-39764fbd06b3a8",
-      "name": "Chelyuskintsev Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Mogilev , Mogilev",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/14037.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BY-park-d27d89e6-073c-4fc5-b17e-7721ffa70094"
     },
     {
       "entryId": "BY-park-9d1bf758-045c-46ce-8b9c-5c80821162e2",
@@ -353,7 +452,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -363,6 +462,11 @@
         {
           "label": "RCDB",
           "url": "https://rcdb.com/14725.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14726.htm",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -378,43 +482,24 @@
             "sourceName": "Children's Park"
           }
         ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Hills",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14726.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Children's Park",
+            "sourceLifecycleSignal": "SBNO",
+            "sourceLocality": "Rechytsa , Gomel",
+            "sourceOpenedYear": "2007"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
       }
-    },
-    {
-      "entryId": "BY-candidate-9a160f542802ec",
-      "name": "Dreamland",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions",
-      "locality": null,
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
-      "possibleMatches": [
-        {
-          "siteId": "cb3f4bc8-921e-48be-a69b-2edfd4b142dd",
-          "name": "Dream Land",
-          "similarity": 90
-        }
-      ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Belarus",
-          "accessedAt": "2026-10-22"
-        }
-      ]
     },
     {
       "entryId": "BY-candidate-33049055aca607",
@@ -451,6 +536,42 @@
         }
       ],
       "duplicateOf": "BY-park-fee9e0bf-f5b6-4d7b-9408-e9dbb545d98b"
+    },
+    {
+      "entryId": "BY-candidate-9a160f542802ec",
+      "name": "Dreamland",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [
+        {
+          "siteId": "cb3f4bc8-921e-48be-a69b-2edfd4b142dd",
+          "name": "Dream Land",
+          "similarity": 90
+        }
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Belarus",
+          "accessedAt": "2026-10-22"
+        }
+      ]
     },
     {
       "entryId": "BY-park-fee9e0bf-f5b6-4d7b-9408-e9dbb545d98b",
@@ -503,6 +624,37 @@
       }
     },
     {
+      "entryId": "BY-candidate-c4e1ebc85afd40",
+      "name": "Gomel Amusement Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Gomel , Gomel",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-ce895438-0102-4d51-8284-c14f36634377. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/13676.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BY-park-ce895438-0102-4d51-8284-c14f36634377"
+    },
+    {
       "entryId": "BY-park-ce895438-0102-4d51-8284-c14f36634377",
       "name": "Gomel Amusement Park",
       "entityKind": "Park",
@@ -551,12 +703,12 @@
       }
     },
     {
-      "entryId": "BY-candidate-c4e1ebc85afd40",
-      "name": "Gomel Amusement Park",
+      "entryId": "BY-candidate-24f99d99cb1fd5",
+      "name": "Gorky Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Gomel , Gomel",
+      "category": "Attractions (RCDB) / Attractions",
+      "locality": "Minsk , Minsk",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -571,15 +723,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-ce895438-0102-4d51-8284-c14f36634377. Ne pas créer de doublon.",
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-20d9f26e-152f-4d13-84c3-49a5e34f50c4. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/13676.htm",
+          "url": "https://rcdb.com/6149.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Belarus",
           "accessedAt": "2026-10-22"
         }
       ],
-      "duplicateOf": "BY-park-ce895438-0102-4d51-8284-c14f36634377"
+      "duplicateOf": "BY-park-20d9f26e-152f-4d13-84c3-49a5e34f50c4"
     },
     {
       "entryId": "BY-candidate-e5b1912bf8cd9a",
@@ -618,42 +775,6 @@
       ]
     },
     {
-      "entryId": "BY-candidate-24f99d99cb1fd5",
-      "name": "Gorky Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Minsk , Minsk",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-20d9f26e-152f-4d13-84c3-49a5e34f50c4. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/6149.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Belarus",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BY-park-20d9f26e-152f-4d13-84c3-49a5e34f50c4"
-    },
-    {
       "entryId": "BY-candidate-ad3de1394ee4a9",
       "name": "Gorky Park Ferris wheel",
       "entityKind": "ToQualify",
@@ -674,14 +795,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "BY-park-20d9f26e-152f-4d13-84c3-49a5e34f50c4",
@@ -794,6 +921,37 @@
       ]
     },
     {
+      "entryId": "BY-candidate-2ccee4b212b219",
+      "name": "Park Pobeditelei",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Vitebsk , Vitebsk",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-fbeb2ea2-a0ab-4003-9fdf-a65f3eb727bd. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/23145.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BY-park-fbeb2ea2-a0ab-4003-9fdf-a65f3eb727bd"
+    },
+    {
       "entryId": "BY-park-fbeb2ea2-a0ab-4003-9fdf-a65f3eb727bd",
       "name": "Park Pobeditelei",
       "entityKind": "Park",
@@ -842,85 +1000,6 @@
       }
     },
     {
-      "entryId": "BY-candidate-2ccee4b212b219",
-      "name": "Park Pobeditelei",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Vitebsk , Vitebsk",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-fbeb2ea2-a0ab-4003-9fdf-a65f3eb727bd. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/23145.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BY-park-fbeb2ea2-a0ab-4003-9fdf-a65f3eb727bd"
-    },
-    {
-      "entryId": "BY-park-e8a470d6-12a9-4efc-aabe-bfb0772a076c",
-      "name": "Ski complex Mazyr",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "e8a470d6-12a9-4efc-aabe-bfb0772a076c",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToReview",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/14727.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": null,
-      "countryResolution": {
-        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
-        "confidence": "À confirmer lors de la reprise de la fiche",
-        "score": 100,
-        "sources": [
-          {
-            "label": "RCDB",
-            "url": "https://rcdb.com/14727.htm",
-            "sourceName": "Ski complex Mazyr"
-          }
-        ]
-      }
-    },
-    {
       "entryId": "BY-candidate-ab716a2a32e224",
       "name": "Ski complex Mazyr",
       "entityKind": "Park",
@@ -952,13 +1031,13 @@
       "duplicateOf": "BY-park-e8a470d6-12a9-4efc-aabe-bfb0772a076c"
     },
     {
-      "entryId": "BY-park-6e3519b3-8189-4f23-95ce-a127ce912090",
-      "name": "Solnechnaya Dolina",
+      "entryId": "BY-park-e8a470d6-12a9-4efc-aabe-bfb0772a076c",
+      "name": "Ski complex Mazyr",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
-      "siteId": "6e3519b3-8189-4f23-95ce-a127ce912090",
+      "siteId": "e8a470d6-12a9-4efc-aabe-bfb0772a076c",
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
@@ -972,7 +1051,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -981,7 +1060,12 @@
         },
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/14729.htm",
+          "url": "https://rcdb.com/14727.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14728.htm",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -993,10 +1077,27 @@
         "sources": [
           {
             "label": "RCDB",
-            "url": "https://rcdb.com/14729.htm",
-            "sourceName": "Solnechnaya Dolina"
+            "url": "https://rcdb.com/14727.htm",
+            "sourceName": "Ski complex Mazyr"
           }
         ]
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14728.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Ski complex Mazyr",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Mazyr , Gomel",
+            "sourceOpenedYear": "2006"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
       }
     },
     {
@@ -1029,6 +1130,121 @@
         }
       ],
       "duplicateOf": "BY-park-6e3519b3-8189-4f23-95ce-a127ce912090"
+    },
+    {
+      "entryId": "BY-park-6e3519b3-8189-4f23-95ce-a127ce912090",
+      "name": "Solnechnaya Dolina",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "6e3519b3-8189-4f23-95ce-a127ce912090",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14729.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/14730.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=364#location-id-959",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/14729.htm",
+            "sourceName": "Solnechnaya Dolina"
+          }
+        ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Crazy Toboggan",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/14730.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Solnechnaya Dolina",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Minsk , Minsk",
+            "sourceOpenedYear": "2009"
+          },
+          {
+            "name": "Minsk",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=364#location-id-959",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Minsk",
+            "referenceId": "location-id-959",
+            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "BY-candidate-e281d40f53cfa7",
+      "name": "Suvorov Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Kobryn , Brest",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-897659c5-6459-4f0b-b963-71e06a9b194f. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14723.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BY-park-897659c5-6459-4f0b-b963-71e06a9b194f"
     },
     {
       "entryId": "BY-park-897659c5-6459-4f0b-b963-71e06a9b194f",
@@ -1077,37 +1293,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "BY-candidate-e281d40f53cfa7",
-      "name": "Suvorov Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Kobryn , Brest",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BY-park-897659c5-6459-4f0b-b963-71e06a9b194f. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/14723.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BY-park-897659c5-6459-4f0b-b963-71e06a9b194f"
     },
     {
       "entryId": "BY-candidate-1b70ae7bea25d0",

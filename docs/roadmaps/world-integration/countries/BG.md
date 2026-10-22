@@ -9,11 +9,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+- Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 6 |
-| À qualifier | 22 |
+| À qualifier | 23 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -21,19 +22,22 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 8 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **29**. Sources : EAZA, RCDB, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **31**. Sources : EAZA, RCDB, RCDB — Mountain Coaster, Wiegand — références constructeur, Wikipédia (découverte).
 
-Pays proposé par rapprochement pour **8** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
+Pays proposé par rapprochement pour **8** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **0 publiés**, **6 masqués à intégrer**, **2 masqués NotRelevant à réexaminer**, **19 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+
+Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
 | ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | BG-candidate-45f9fb8925aa89 | Action Aquapark | Sunny Beach | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Bulgaria) |
+| BG-candidate-standalone-35a7bde32ded2d | Alpine Coaster Wiegand — Rila | — | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Installations référencées : Rila. [Wiegand — références constructeur](https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=353#location-id-2082) |
 | BG-candidate-91ab98172cac2e | Aqua Planet | Primorsko | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Bulgaria) |
 | BG-candidate-44f00fddad8512 | Aquamania Albena | Albena | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Bulgaria) |
 | BG-candidate-5780c5bbe61e85 | Aquapark Grifid | Golden Sands | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Bulgaria) |
@@ -54,7 +58,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | BG-park-a0fbca4e-bb04-40ba-a9bb-c2c28c39ffd4 | Luna Park Sunny Beach | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/6710.htm) |
 | BG-candidate-fa17fcf43d6608 | Pleven Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Bulgaria) |
 | BG-candidate-a01c3408e06cba | RILA Fun Park | Belitsa , Blagoevgrad | Park | NotFound | Doublon conservé | Inconnue — non inventée | — | Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e. Ne pas créer de doublon. Signal source : Operating. Cible : BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e. [RCDB](https://rcdb.com/17823.htm) |
-| BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e | RILA Fun Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/17823.htm) |
+| BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e | RILA Fun Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Installations référencées : Alpine Roller Coaster. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/17823.htm) · [RCDB — Mountain Coaster](https://rcdb.com/17824.htm) |
 | BG-candidate-86607c06b4393f | Sea Garden | Burgas , Burgas | Park | NotFound | Doublon conservé | Inconnue — non inventée | — | Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-2c253c0a-847f-4cd4-954f-3338558fd18d. Ne pas créer de doublon. Signal source : Operating. Cible : BG-park-2c253c0a-847f-4cd4-954f-3338558fd18d. [RCDB](https://rcdb.com/6397.htm) |
 | BG-park-2c253c0a-847f-4cd4-954f-3338558fd18d | Sea Garden | — | Park | Hidden | À qualifier | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Une source de lieu contredit potentiellement NotRelevant : résoudre la pertinence et le type avant intégration. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/6397.htm) |
 | BG-candidate-f04fb47be09289 | SkyPark | Sofia , Grad Sofiya | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Correspondance possible : SkyPark (aa1d0d43-2163-462c-b9fd-c27b25fea395). [RCDB](https://rcdb.com/12006.htm) |

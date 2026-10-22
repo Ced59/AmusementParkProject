@@ -6,10 +6,12 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 29,
+  "sourceObservationCount": 31,
   "sourceFamilies": [
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26335",
@@ -18,7 +20,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -50,6 +53,54 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "BG-candidate-standalone-35a7bde32ded2d",
+      "name": "Alpine Coaster Wiegand — Rila",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Rila"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=353#location-id-2082",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Rila",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=353#location-id-2082",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Rila",
+            "referenceId": "location-id-2082"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "BG-candidate-91ab98172cac2e",
@@ -322,6 +373,37 @@
       ]
     },
     {
+      "entryId": "BG-candidate-fc1c1e5f68b55d",
+      "name": "Boby & Kelly",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Sofia , Grad Sofiya",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-98e1352f-1d31-4173-83e0-9c07295cb414. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19588.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BG-park-98e1352f-1d31-4173-83e0-9c07295cb414"
+    },
+    {
       "entryId": "BG-park-98e1352f-1d31-4173-83e0-9c07295cb414",
       "name": "Boby & Kelly",
       "entityKind": "Park",
@@ -370,12 +452,12 @@
       }
     },
     {
-      "entryId": "BG-candidate-fc1c1e5f68b55d",
-      "name": "Boby & Kelly",
+      "entryId": "BG-candidate-a1735a1383ed3f",
+      "name": "Fun Park Sunny Beach",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Sofia , Grad Sofiya",
+      "locality": "Sunny Beach , Burgas",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -390,15 +472,15 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-98e1352f-1d31-4173-83e0-9c07295cb414. Ne pas créer de doublon.",
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-e7667347-30a0-41eb-a27a-ccaad65a7b8b. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/19588.htm",
+          "url": "https://rcdb.com/12881.htm",
           "accessedAt": "2026-10-22"
         }
       ],
-      "duplicateOf": "BG-park-98e1352f-1d31-4173-83e0-9c07295cb414"
+      "duplicateOf": "BG-park-e7667347-30a0-41eb-a27a-ccaad65a7b8b"
     },
     {
       "entryId": "BG-park-e7667347-30a0-41eb-a27a-ccaad65a7b8b",
@@ -447,37 +529,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "BG-candidate-a1735a1383ed3f",
-      "name": "Fun Park Sunny Beach",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Sunny Beach , Burgas",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-e7667347-30a0-41eb-a27a-ccaad65a7b8b. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/12881.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BG-park-e7667347-30a0-41eb-a27a-ccaad65a7b8b"
     },
     {
       "entryId": "BG-candidate-705602f2fe63f0",
@@ -570,6 +621,37 @@
       ]
     },
     {
+      "entryId": "BG-candidate-06584ab1a525f2",
+      "name": "Luna Park Sunny Beach",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Sunny Beach , Burgas",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-a0fbca4e-bb04-40ba-a9bb-c2c28c39ffd4. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6710.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BG-park-a0fbca4e-bb04-40ba-a9bb-c2c28c39ffd4"
+    },
+    {
       "entryId": "BG-park-a0fbca4e-bb04-40ba-a9bb-c2c28c39ffd4",
       "name": "Luna Park Sunny Beach",
       "entityKind": "Park",
@@ -618,37 +700,6 @@
       }
     },
     {
-      "entryId": "BG-candidate-06584ab1a525f2",
-      "name": "Luna Park Sunny Beach",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Sunny Beach , Burgas",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-a0fbca4e-bb04-40ba-a9bb-c2c28c39ffd4. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/6710.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BG-park-a0fbca4e-bb04-40ba-a9bb-c2c28c39ffd4"
-    },
-    {
       "entryId": "BG-candidate-fa17fcf43d6608",
       "name": "Pleven Zoo",
       "entityKind": "Park",
@@ -677,54 +728,6 @@
           "accessedAt": "2026-10-22"
         }
       ]
-    },
-    {
-      "entryId": "BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e",
-      "name": "RILA Fun Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
-      "siteReviewStatusAtInventory": "ToReview",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/17823.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": null,
-      "countryResolution": {
-        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
-        "confidence": "À confirmer lors de la reprise de la fiche",
-        "score": 100,
-        "sources": [
-          {
-            "label": "RCDB",
-            "url": "https://rcdb.com/17823.htm",
-            "sourceName": "RILA Fun Park"
-          }
-        ]
-      }
     },
     {
       "entryId": "BG-candidate-a01c3408e06cba",
@@ -756,6 +759,107 @@
         }
       ],
       "duplicateOf": "BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e"
+    },
+    {
+      "entryId": "BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e",
+      "name": "RILA Fun Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/17823.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/17824.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/17823.htm",
+            "sourceName": "RILA Fun Park"
+          }
+        ]
+      },
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Alpine Roller Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/17824.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "RILA Fun Park",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Belitsa , Blagoevgrad",
+            "sourceOpenedYear": "2019"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "BG-candidate-86607c06b4393f",
+      "name": "Sea Garden",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Burgas , Burgas",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-2c253c0a-847f-4cd4-954f-3338558fd18d. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6397.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BG-park-2c253c0a-847f-4cd4-954f-3338558fd18d"
     },
     {
       "entryId": "BG-park-2c253c0a-847f-4cd4-954f-3338558fd18d",
@@ -806,37 +910,6 @@
       }
     },
     {
-      "entryId": "BG-candidate-86607c06b4393f",
-      "name": "Sea Garden",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Burgas , Burgas",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-2c253c0a-847f-4cd4-954f-3338558fd18d. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/6397.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BG-park-2c253c0a-847f-4cd4-954f-3338558fd18d"
-    },
-    {
       "entryId": "BG-candidate-f04fb47be09289",
       "name": "SkyPark",
       "entityKind": "Park",
@@ -871,6 +944,37 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "BG-candidate-abf3759aec3363",
+      "name": "Sofia Land",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Sofia , Grad Sofiya",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-fb8be44c-d688-4791-adae-41b61dd31c8d. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5264.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BG-park-fb8be44c-d688-4791-adae-41b61dd31c8d"
     },
     {
       "entryId": "BG-park-fb8be44c-d688-4791-adae-41b61dd31c8d",
@@ -919,37 +1023,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "BG-candidate-abf3759aec3363",
-      "name": "Sofia Land",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Sofia , Grad Sofiya",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-fb8be44c-d688-4791-adae-41b61dd31c8d. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5264.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BG-park-fb8be44c-d688-4791-adae-41b61dd31c8d"
     },
     {
       "entryId": "BG-candidate-89d37123994e4a",
@@ -1022,6 +1095,37 @@
       ]
     },
     {
+      "entryId": "BG-candidate-fced72d912a99f",
+      "name": "Sunny Beach Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Sunny Beach , Burgas",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "SBNO",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-30b5c235-492e-4013-a566-df9dfc7b6bbb. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14368.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BG-park-30b5c235-492e-4013-a566-df9dfc7b6bbb"
+    },
+    {
       "entryId": "BG-park-30b5c235-492e-4013-a566-df9dfc7b6bbb",
       "name": "Sunny Beach Park",
       "entityKind": "Park",
@@ -1070,37 +1174,6 @@
       }
     },
     {
-      "entryId": "BG-candidate-fced72d912a99f",
-      "name": "Sunny Beach Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Sunny Beach , Burgas",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "SBNO",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-30b5c235-492e-4013-a566-df9dfc7b6bbb. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/14368.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BG-park-30b5c235-492e-4013-a566-df9dfc7b6bbb"
-    },
-    {
       "entryId": "BG-candidate-b9726bd0fd0533",
       "name": "Varna Aquarium",
       "entityKind": "Park",
@@ -1129,6 +1202,37 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "BG-candidate-ff763310a2240e",
+      "name": "Varna Fun Port",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Varna , Varna",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-6e04301e-f2b8-4ddc-9f31-6bf4a6396513. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19591.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "BG-park-6e04301e-f2b8-4ddc-9f31-6bf4a6396513"
     },
     {
       "entryId": "BG-park-6e04301e-f2b8-4ddc-9f31-6bf4a6396513",
@@ -1177,37 +1281,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "BG-candidate-ff763310a2240e",
-      "name": "Varna Fun Port",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Varna , Varna",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre BG-park-6e04301e-f2b8-4ddc-9f31-6bf4a6396513. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/19591.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "BG-park-6e04301e-f2b8-4ddc-9f31-6bf4a6396513"
     },
     {
       "entryId": "BG-candidate-d2b193b4135831",

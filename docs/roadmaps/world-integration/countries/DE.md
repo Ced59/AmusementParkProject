@@ -8,11 +8,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+- Revue standalone du 22 octobre : 177 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 132 |
-| À qualifier | 444 |
+| À qualifier | 511 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -20,13 +21,15 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Hors périmètre enregistré | 86 |
 | Doublon conservé | 15 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **874**. Sources : AmusementForce, EAZA, Freizeitpark App, RCDB, WAZA, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **1051**. Sources : AmusementForce, Brogent — projet constructeur, EAZA, Freizeitpark App, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
-Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
+Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **36 publiés**, **132 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **354 candidats sans fiche**.
+Parcs : **36 publiés**, **132 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **352 candidats sans fiche**.
 
-Standalone : **16 publiées**, **0 masquées**, **20 candidates sans fiche**. Autres dossiers : **48 types à décider**, **16 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+Standalone : **16 publiées**, **0 masquées**, **20 candidates sans fiche**. Autres dossiers : **48 types à décider**, **85 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+
+Revue standalone : **31 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **77 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **10 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -36,4 +39,5 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 
 - [Page 1 — lignes 1 à 250](DE/001.md)
 - [Page 2 — lignes 251 à 500](DE/002.md)
-- [Page 3 — lignes 501 à 729](DE/003.md)
+- [Page 3 — lignes 501 à 750](DE/003.md)
+- [Page 4 — lignes 751 à 796](DE/004.md)

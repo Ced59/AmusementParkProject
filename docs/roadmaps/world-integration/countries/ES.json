@@ -6,13 +6,15 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 160,
+  "sourceObservationCount": 168,
   "sourceFamilies": [
     "AZA",
     "AmusementForce",
     "EAZA",
     "RCDB",
+    "RCDB — Mountain Coaster",
     "WAZA",
+    "Wiegand — références constructeur",
     "Wikipédia (découverte)"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=25940",
@@ -20,7 +22,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Revue standalone du 22 octobre : 8 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
   ],
   "entries": [
     {
@@ -212,6 +215,54 @@
       "countryResolution": null
     },
     {
+      "entryId": "ES-candidate-standalone-447035f3318486",
+      "name": "Alpine Coaster Wiegand — Navarra",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Navarra"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=225#location-id-1090",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Navarra",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=225#location-id-1090",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Navarra",
+            "referenceId": "location-id-1090"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
       "entryId": "ES-candidate-e1ade462483b9f",
       "name": "Aqua Center",
       "entityKind": "Park",
@@ -242,12 +293,12 @@
       ]
     },
     {
-      "entryId": "ES-candidate-791726332c353d",
+      "entryId": "ES-candidate-5e020af05538aa",
       "name": "Aqua Natura",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Aquatique",
-      "locality": "Benidorm , Alicante",
+      "locality": "Espiardo , Murcia",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -272,12 +323,12 @@
       ]
     },
     {
-      "entryId": "ES-candidate-5e020af05538aa",
+      "entryId": "ES-candidate-791726332c353d",
       "name": "Aqua Natura",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Aquatique",
-      "locality": "Espiardo , Murcia",
+      "locality": "Benidorm , Alicante",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -1682,13 +1733,13 @@
       "countryResolution": null
     },
     {
-      "entryId": "ES-park-14626751-c268-4282-ba93-6585c38f28bf",
-      "name": "Atracciones J. Carrion",
+      "entryId": "ES-park-2ffd8532-2e9c-4546-bd70-65b167182e1f",
+      "name": "Atracciones J.A. Sánchez",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
-      "siteId": "14626751-c268-4282-ba93-6585c38f28bf",
+      "siteId": "2ffd8532-2e9c-4546-bd70-65b167182e1f",
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
@@ -1714,13 +1765,13 @@
       "countryResolution": null
     },
     {
-      "entryId": "ES-park-2ffd8532-2e9c-4546-bd70-65b167182e1f",
-      "name": "Atracciones J.A. Sánchez",
+      "entryId": "ES-park-14626751-c268-4282-ba93-6585c38f28bf",
+      "name": "Atracciones J. Carrion",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
-      "siteId": "2ffd8532-2e9c-4546-bd70-65b167182e1f",
+      "siteId": "14626751-c268-4282-ba93-6585c38f28bf",
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
@@ -4240,6 +4291,112 @@
       "countryResolution": null
     },
     {
+      "entryId": "ES-candidate-standalone-d268abf2c677cf",
+      "name": "Luge Wiegand — Calafell",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Calafell"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=225#location-id-1383",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.calafellslide.com",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Calafell",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=225#location-id-1383",
+            "family": "Luge d’été",
+            "sourceVenueName": "Calafell",
+            "referenceId": "location-id-1383"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "ES-candidate-standalone-19b22ce9a91238",
+      "name": "Luge Wiegand — Teneriffa",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Teneriffa"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "sources": [
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=225#location-id-1382",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "https://www.junglepark.es/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Teneriffa",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=225#location-id-1382",
+            "family": "Luge d’été",
+            "sourceVenueName": "Teneriffa",
+            "referenceId": "location-id-1382"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
       "entryId": "ES-park-79ae58d8-1e59-46ae-bdeb-dafadb0e1ec1",
       "name": "Luis C. Collazo",
       "entityKind": "Park",
@@ -5121,13 +5278,13 @@
     {
       "entryId": "ES-candidate-5bdd3afbeaa3ea",
       "name": "Park Activities Mirlo Blanco",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Monachil , Granada , Andalusia",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
@@ -5139,14 +5296,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/13284.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13285.htm",
+          "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Trineo Ruso",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13285.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Park Activities Mirlo Blanco",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Monachil , Granada , Andalusia",
+            "sourceOpenedYear": "2007"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "ES-candidate-4fcfa70ad4bdcf",
@@ -5431,7 +5610,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5467,10 +5646,32 @@
           "label": "Site officiel référencé",
           "url": "https://www.parquedecabarceno.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23749.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "ES",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "unknown",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23749.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Parque de la Naturaleza de Cabárceno",
+            "sourceLifecycleSignal": "Under Construction",
+            "sourceLocality": "Cantabria , Cantabria",
+            "sourceOpenedYear": "2026"
+          }
+        ],
+        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
+      }
     },
     {
       "entryId": "ES-candidate-d735efe06b76ee",
@@ -6415,7 +6616,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6441,10 +6642,32 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Spain",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13283.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "ES",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Bobsleigh",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13283.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Sendaviva",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Arguedas , Navarre , Navarre",
+            "sourceOpenedYear": "2006"
+          }
+        ],
+        "rationale": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone."
+      }
     },
     {
       "entryId": "ES-candidate-b0897f92ed1103",
@@ -6527,16 +6750,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=225#location-id-1089",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "ES",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Sierra Nevada",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=225#location-id-1089",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Sierra Nevada",
+            "referenceId": "location-id-1089"
+          }
+        ],
+        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
     },
     {
       "entryId": "ES-park-76c517d5-c8e7-47a3-8b17-5c91a70c8d33",
@@ -6915,7 +7158,7 @@
       "entryId": "ES-park-2c32f2c4-691e-46a4-9e00-ed588337ae2b",
       "name": "Tobogán de Panticosa",
       "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
       "siteId": "2c32f2c4-691e-46a4-9e00-ed588337ae2b",
@@ -6932,7 +7175,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6943,10 +7186,32 @@
           "label": "RCDB",
           "url": "https://rcdb.com/23947.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/23948.htm",
+          "accessedAt": "2026-10-22"
         }
       ],
       "countryCodeAtInventory": "ES",
-      "countryResolution": null
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Tobogán de Panticosa",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/23948.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "Tobogán de Panticosa",
+            "sourceLifecycleSignal": "Under Construction",
+            "sourceLocality": "Panticosa , Huesca , Aragon",
+            "sourceOpenedYear": "2026"
+          }
+        ],
+        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+      }
     },
     {
       "entryId": "ES-park-7010ad4f-b0e2-49b2-8829-0f08ae25358d",

@@ -144,6 +144,37 @@
       ]
     },
     {
+      "entryId": "IE-candidate-785209fe9bc365",
+      "name": "Bundoran Adventure Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bundoran , Donegal",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-10f6c662-6406-415a-beda-ab6de01f7d5a. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/10593.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "IE-park-10f6c662-6406-415a-beda-ab6de01f7d5a"
+    },
+    {
       "entryId": "IE-park-10f6c662-6406-415a-beda-ab6de01f7d5a",
       "name": "Bundoran Adventure Park",
       "entityKind": "Park",
@@ -190,37 +221,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "IE-candidate-785209fe9bc365",
-      "name": "Bundoran Adventure Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Bundoran , Donegal",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-10f6c662-6406-415a-beda-ab6de01f7d5a. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/10593.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "IE-park-10f6c662-6406-415a-beda-ab6de01f7d5a"
     },
     {
       "entryId": "IE-candidate-3b3c8a8de48d0c",
@@ -288,6 +288,37 @@
       ]
     },
     {
+      "entryId": "IE-candidate-bef2aa907634f5",
+      "name": "Cork International Exhibition",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Mardyke , Cork",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-25cbfb72-7648-4e7c-b2bf-b1996e443350. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20920.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "IE-park-25cbfb72-7648-4e7c-b2bf-b1996e443350"
+    },
+    {
       "entryId": "IE-park-25cbfb72-7648-4e7c-b2bf-b1996e443350",
       "name": "Cork International Exhibition",
       "entityKind": "Park",
@@ -336,12 +367,12 @@
       }
     },
     {
-      "entryId": "IE-candidate-bef2aa907634f5",
-      "name": "Cork International Exhibition",
+      "entryId": "IE-candidate-14f76fbe35297c",
+      "name": "Curry's Fun Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Mardyke , Cork",
+      "locality": "Galway , Galway",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -349,22 +380,22 @@
       "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-25cbfb72-7648-4e7c-b2bf-b1996e443350. Ne pas créer de doublon.",
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-65ac3ea9-e606-413b-ab22-c9d202a4833c. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/20920.htm",
+          "url": "https://rcdb.com/5222.htm",
           "accessedAt": "2026-10-22"
         }
       ],
-      "duplicateOf": "IE-park-25cbfb72-7648-4e7c-b2bf-b1996e443350"
+      "duplicateOf": "IE-park-65ac3ea9-e606-413b-ab22-c9d202a4833c"
     },
     {
       "entryId": "IE-park-65ac3ea9-e606-413b-ab22-c9d202a4833c",
@@ -413,37 +444,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "IE-candidate-14f76fbe35297c",
-      "name": "Curry's Fun Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Galway , Galway",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-65ac3ea9-e606-413b-ab22-c9d202a4833c. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5222.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "IE-park-65ac3ea9-e606-413b-ab22-c9d202a4833c"
     },
     {
       "entryId": "IE-candidate-fc10634646fbb7",
@@ -533,6 +533,52 @@
       ]
     },
     {
+      "entryId": "IE-candidate-dfb9e7b13027a1",
+      "name": "Emerald Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB) / Zoo / aquarium / Attractions",
+      "locality": "Ashbourne , Meath",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-889c4b41-075f-44f0-b8c4-0f838a8a49dc. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/12363.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "EAZA",
+          "url": "https://www.eaza.net/membership/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel référencé",
+          "url": "https://www.emeraldpark.ie",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Ireland",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "IE-park-889c4b41-075f-44f0-b8c4-0f838a8a49dc"
+    },
+    {
       "entryId": "IE-park-889c4b41-075f-44f0-b8c4-0f838a8a49dc",
       "name": "Emerald Park",
       "entityKind": "Park",
@@ -604,52 +650,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "IE-candidate-dfb9e7b13027a1",
-      "name": "Emerald Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB) / Zoo / aquarium / Attractions",
-      "locality": "Ashbourne , Meath",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-889c4b41-075f-44f0-b8c4-0f838a8a49dc. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/12363.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "EAZA",
-          "url": "https://www.eaza.net/membership/",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Site officiel référencé",
-          "url": "https://www.emeraldpark.ie",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Ireland",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "IE-park-889c4b41-075f-44f0-b8c4-0f838a8a49dc"
     },
     {
       "entryId": "IE-candidate-83ad2bf403b8e3",
@@ -790,6 +790,42 @@
       ]
     },
     {
+      "entryId": "IE-candidate-34a23a6bd90af9",
+      "name": "Funtasia",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB) / Attractions",
+      "locality": "Bettystown , Meath",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-7440242f-d017-44c8-b741-fdb9d67e3b5a. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5899.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Ireland",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "IE-park-7440242f-d017-44c8-b741-fdb9d67e3b5a"
+    },
+    {
       "entryId": "IE-park-7440242f-d017-44c8-b741-fdb9d67e3b5a",
       "name": "Funtasia",
       "entityKind": "Park",
@@ -846,42 +882,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "IE-candidate-34a23a6bd90af9",
-      "name": "Funtasia",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Bettystown , Meath",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-7440242f-d017-44c8-b741-fdb9d67e3b5a. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5899.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Ireland",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "IE-park-7440242f-d017-44c8-b741-fdb9d67e3b5a"
     },
     {
       "entryId": "IE-candidate-4c520d9584e796",
@@ -954,6 +954,37 @@
       ]
     },
     {
+      "entryId": "IE-candidate-f9af4f904baa0f",
+      "name": "Irish International Exhibition",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Dublin , Dublin",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-a655994c-6a3a-42be-b62b-594b0a1afa4d. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20932.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "IE-park-a655994c-6a3a-42be-b62b-594b0a1afa4d"
+    },
+    {
       "entryId": "IE-park-a655994c-6a3a-42be-b62b-594b0a1afa4d",
       "name": "Irish International Exhibition",
       "entityKind": "Park",
@@ -1002,12 +1033,12 @@
       }
     },
     {
-      "entryId": "IE-candidate-f9af4f904baa0f",
-      "name": "Irish International Exhibition",
+      "entryId": "IE-candidate-400eaacdb89259",
+      "name": "Pipers Funfair",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
-      "locality": "Dublin , Dublin",
+      "locality": "Crosshaven , Cork",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -1015,22 +1046,22 @@
       "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-a655994c-6a3a-42be-b62b-594b0a1afa4d. Ne pas créer de doublon.",
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-9ef3356b-35c7-4524-9aba-39e5c67e806b. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/20932.htm",
+          "url": "https://rcdb.com/20594.htm",
           "accessedAt": "2026-10-22"
         }
       ],
-      "duplicateOf": "IE-park-a655994c-6a3a-42be-b62b-594b0a1afa4d"
+      "duplicateOf": "IE-park-9ef3356b-35c7-4524-9aba-39e5c67e806b"
     },
     {
       "entryId": "IE-park-9ef3356b-35c7-4524-9aba-39e5c67e806b",
@@ -1081,37 +1112,6 @@
       }
     },
     {
-      "entryId": "IE-candidate-400eaacdb89259",
-      "name": "Pipers Funfair",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Crosshaven , Cork",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-9ef3356b-35c7-4524-9aba-39e5c67e806b. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/20594.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "IE-park-9ef3356b-35c7-4524-9aba-39e5c67e806b"
-    },
-    {
       "entryId": "IE-candidate-851587ab622e5c",
       "name": "Splash World",
       "entityKind": "Park",
@@ -1140,6 +1140,42 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "IE-candidate-156ac53f6d1c83",
+      "name": "Tramore Amusement Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB) / Attractions",
+      "locality": "Tramore , Waterford",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-e34b3097-e3c7-4abc-9f39-13000761f4eb. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5282.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Ireland",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "IE-park-e34b3097-e3c7-4abc-9f39-13000761f4eb"
     },
     {
       "entryId": "IE-park-e34b3097-e3c7-4abc-9f39-13000761f4eb",
@@ -1198,42 +1234,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "IE-candidate-156ac53f6d1c83",
-      "name": "Tramore Amusement Park",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Tramore , Waterford",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre IE-park-e34b3097-e3c7-4abc-9f39-13000761f4eb. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/5282.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Ireland",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "IE-park-e34b3097-e3c7-4abc-9f39-13000761f4eb"
     },
     {
       "entryId": "IE-candidate-414bd982ca231f",

@@ -2,6 +2,12 @@
 
 Relevé du **22 octobre 2026**, construit en lecture seule. Aucun parc, contenu, média ou publication Facebook n’a été modifié par cet inventaire. Ce document remplace la première photographie européenne ; les identifiants déjà introduits sont conservés.
 
+## Correction standalone après la première version
+
+Le premier rapport sous-représentait les attractions autonomes. La [vérification dédiée](STANDALONE-AUDIT.md) ajoute **1 167 observations** de RCDB et de constructeurs/opérateurs, ainsi que des compteurs explicites pour les pistes encore rangées dans Park et les identités non résolues. Le registre courant contient **12 207 lignes** et **13 751 observations externes** ; **168 pays/territoires ont des entrées** et **82 restent sans observation externe retenue**. Les nombres de la première photographie ci-dessous sont conservés comme référence historique ; le résumé vivant et le rapport corrigé prévalent pour planifier le travail.
+
+La correction ajoute aussi un rattachement documentaire RO → PL pour Skrzyczne, vérifié dans la billetterie officielle. Le code initial et l’identifiant stable sont conservés ; aucune correction de production n’a été appliquée.
+
 ## Relevé du site
 
 Le client officiel `PARK_DATA_EDITOR` a parcouru séquentiellement **60 pages de SearchParks**, de 50 éléments au maximum : **2 983 identifiants Park uniques dans le monde**. Une erreur 500 sur la page 27 a été reprise après vérification du statut ; les 60 pages ont ensuite été contrôlées et le total annoncé est resté stable. `SearchStandaloneAttractions` a parcouru **2 pages : 62 identifiants uniques**. Les fiches masquées sont incluses, contrairement à une recherche publique.
@@ -21,7 +27,7 @@ Ces lectures constituent une photographie séquentielle, pas une transaction gel
 - Attractions fixes autonomes séparées des parcs : luges, grandes roues, simulateurs de vol et autres installations pertinentes. Une attraction située dans un vrai parc demeure un parkItem ; un nom de station ne prouve pas l’existence d’un parc autonome.
 - Forains, fabricants, événements temporaires, piscines sportives, musées sans offre de parc et simples jardins ne deviennent pas automatiquement des parcs. Les cas ambigus restent à qualifier.
 
-## Sources effectivement parcourues
+## Sources de la première photographie (compléments dans la vérification standalone)
 
 **12 584 observations externes** ont été recueillies avant rapprochement et dédoublonnage. Une observation n’est pas un nouvel établissement : plusieurs sources peuvent désigner le même lieu, et certains lieux sont déjà présents dans le site.
 

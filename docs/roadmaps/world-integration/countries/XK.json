@@ -111,6 +111,37 @@
       ]
     },
     {
+      "entryId": "XK-candidate-1526ae8371062a",
+      "name": "Prishtina Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Pristina , Pristina",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre XK-park-44200373-8121-4077-9415-6f6c16a389aa. Ne pas créer de doublon.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/22545.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "duplicateOf": "XK-park-44200373-8121-4077-9415-6f6c16a389aa"
+    },
+    {
       "entryId": "XK-park-44200373-8121-4077-9415-6f6c16a389aa",
       "name": "Prishtina Park",
       "entityKind": "Park",
@@ -159,8 +190,8 @@
       }
     },
     {
-      "entryId": "XK-candidate-1526ae8371062a",
-      "name": "Prishtina Park",
+      "entryId": "XK-candidate-f065eaabe75f2d",
+      "name": "Taukbashçe",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions (RCDB)",
@@ -172,22 +203,22 @@
       "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre XK-park-44200373-8121-4077-9415-6f6c16a389aa. Ne pas créer de doublon.",
+      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre XK-park-0ea76e1d-3e09-45bd-81bb-51eafb4adaf7. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "RCDB",
-          "url": "https://rcdb.com/22545.htm",
+          "url": "https://rcdb.com/12480.htm",
           "accessedAt": "2026-10-22"
         }
       ],
-      "duplicateOf": "XK-park-44200373-8121-4077-9415-6f6c16a389aa"
+      "duplicateOf": "XK-park-0ea76e1d-3e09-45bd-81bb-51eafb4adaf7"
     },
     {
       "entryId": "XK-park-0ea76e1d-3e09-45bd-81bb-51eafb4adaf7",
@@ -236,37 +267,6 @@
           }
         ]
       }
-    },
-    {
-      "entryId": "XK-candidate-f065eaabe75f2d",
-      "name": "Taukbashçe",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Attractions (RCDB)",
-      "locality": "Pristina , Pristina",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Duplicate",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre XK-park-0ea76e1d-3e09-45bd-81bb-51eafb4adaf7. Ne pas créer de doublon.",
-      "sources": [
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/12480.htm",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "duplicateOf": "XK-park-0ea76e1d-3e09-45bd-81bb-51eafb4adaf7"
     },
     {
       "entryId": "XK-candidate-d6833939549c49",
