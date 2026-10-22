@@ -1,6 +1,20 @@
 {
-  "version": "6.0.17",
+  "version": "6.0.18",
   "history": [
+    {
+      "version": "6.0.18",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Horaires habituels plus clairs",
+        "en": "Clearer usual opening hours",
+        "de": "Übersichtlichere übliche Öffnungszeiten",
+        "nl": "Duidelijkere gebruikelijke openingstijden",
+        "it": "Orari abituali più chiari",
+        "es": "Horarios habituales más claros",
+        "pl": "Czytelniejsze zwykłe godziny otwarcia",
+        "pt": "Horários habituais mais claros"
+      }
+    },
     {
       "version": "6.0.17",
       "releasedAt": "2026-10-22",

@@ -2,8 +2,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, Input, OnDestroy, PLATFORM_ID, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
+import { SafeExternalUrlPipe } from '@shared/pipes';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
-import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRange } from '@app/models/parks/park-opening-hours';
+import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRange, ParkOpeningHoursWeeklyRule } from '@app/models/parks/park-opening-hours';
 
 interface ParkOpeningHoursNow {
   localDate: string;
@@ -22,7 +24,7 @@ interface ParkOpeningHoursStatus {
   templateUrl: './park-opening-hours-card.component.html',
   styleUrls: ['./park-opening-hours-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule]
+  imports: [RouterLink, TranslateModule, SafeExternalUrlPipe]
 })
 export class ParkOpeningHoursCardComponent implements OnDestroy {
   private readonly calendarSignal = signal<ParkOpeningHoursCalendar | null>(null);
@@ -69,14 +71,34 @@ export class ParkOpeningHoursCardComponent implements OnDestroy {
   }
 
   get hasCalendar(): boolean {
-    return !!this.calendarSignal()?.days?.length;
+    return !!this.calendarSignal()?.days?.length || this.hasWeeklyHours;
+  }
+
+  get hasWeeklyHours(): boolean {
+    return !!this.calendarSignal()?.weeklyRules?.length;
+  }
+
+  protected get weeklyDays(): { name: string; rule: ParkOpeningHoursWeeklyRule | null }[] {
+    const rules: ParkOpeningHoursWeeklyRule[] = this.calendarSignal()?.weeklyRules ?? [];
+    const weekdays: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const language: string = this.translateService.currentLang || this.translateService.defaultLang || 'en';
+    const formatter: Intl.DateTimeFormat = new Intl.DateTimeFormat(language, { weekday: 'long', timeZone: 'UTC' });
+    return weekdays.map((day: string, index: number) => ({
+      name: formatter.format(new Date(Date.UTC(2024, 0, 1 + index))),
+      rule: rules.find((rule: ParkOpeningHoursWeeklyRule) => rule.daysOfWeek.some((value: string) => value.toLowerCase() === day.toLowerCase())) ?? null
+    }));
+  }
+
+  protected localizedText(values: LocalizedItemDto<string>[] | null | undefined): string {
+    const language: string = this.translateService.currentLang || this.translateService.defaultLang || 'en';
+    return values?.find((value: LocalizedItemDto<string>) => value.languageCode === language)?.value ?? '';
   }
 
   get isLoading(): boolean {
     return this.stateSignal()?.kind === 'loading';
   }
 
-  protected formatRanges(day: ParkOpeningHoursDay | null): string {
+  protected formatRanges(day: ParkOpeningHoursDay | ParkOpeningHoursWeeklyRule | null): string {
     if (!day || day.isClosed || day.timeRanges.length === 0) {
       return '';
     }

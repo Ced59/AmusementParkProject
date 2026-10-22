@@ -354,6 +354,7 @@ export class AdminParkEditComponent implements OnInit {
 
     payload.parkId = parkId;
     payload.regularRules = Array.isArray(payload.regularRules) ? payload.regularRules : [];
+    payload.weeklyRules = Array.isArray(payload.weeklyRules) ? payload.weeklyRules : [];
     payload.dateOverrides = Array.isArray(payload.dateOverrides) ? payload.dateOverrides : [];
 
     try {

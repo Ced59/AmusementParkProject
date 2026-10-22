@@ -20,6 +20,7 @@ internal static class ParkOpeningHoursResultMapper
             FromDate = calendar.FromDate,
             ToDate = calendar.ToDate,
             Days = calendar.Days.Select(static day => day.ToResult()).ToList(),
+            WeeklyRules = calendar.WeeklyRules.Select(static rule => rule.ToResult()).ToList(),
         };
     }
 
@@ -35,6 +36,7 @@ internal static class ParkOpeningHoursResultMapper
             CreatedAtUtc = schedule.CreatedAtUtc,
             UpdatedAtUtc = schedule.UpdatedAtUtc,
             RegularRules = schedule.RegularRules.Select(static rule => rule.ToResult()).ToList(),
+            WeeklyRules = schedule.WeeklyRules.Select(static rule => rule.ToResult()).ToList(),
             DateOverrides = schedule.DateOverrides.Select(static dateOverride => dateOverride.ToResult()).ToList(),
         };
     }
@@ -46,6 +48,20 @@ internal static class ParkOpeningHoursResultMapper
             Id = rule.Id ?? string.Empty,
             StartDate = rule.StartDate,
             EndDate = rule.EndDate,
+            DaysOfWeek = rule.DaysOfWeek.ToList(),
+            IsClosed = rule.IsClosed,
+            Labels = rule.Labels.ToList(),
+            Reasons = rule.Reasons.ToList(),
+            SortOrder = rule.SortOrder,
+            TimeRanges = rule.TimeRanges.Select(static timeRange => timeRange.ToResult()).ToList(),
+        };
+    }
+
+    public static ParkOpeningHoursWeeklyRuleResult ToResult(this ParkOpeningHoursWeeklyRule rule)
+    {
+        return new ParkOpeningHoursWeeklyRuleResult
+        {
+            Id = rule.Id ?? string.Empty,
             DaysOfWeek = rule.DaysOfWeek.ToList(),
             IsClosed = rule.IsClosed,
             Labels = rule.Labels.ToList(),

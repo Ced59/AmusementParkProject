@@ -53,7 +53,7 @@ public sealed class GetStandaloneAttractionOpeningHoursCalendarQueryHandler :
             await this.openingHoursRepository.GetByStandaloneAttractionIdAsync(
                 attractionId,
                 cancellationToken);
-        if (schedule is null || (schedule.RegularRules.Count == 0 && schedule.DateOverrides.Count == 0))
+        if (schedule is null || (schedule.RegularRules.Count == 0 && schedule.WeeklyRules.Count == 0 && schedule.DateOverrides.Count == 0))
         {
             return ApplicationResult<ParkOpeningHoursCalendarResult>.Failure(
                 StandaloneAttractionVisitorInformationApplicationErrors.OpeningHoursNotFound());

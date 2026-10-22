@@ -136,3 +136,24 @@
     text-align: left;
   }
 }
+
+.park-opening-hours-card__header > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.park-opening-hours-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.park-opening-hours-card__weekly-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-weight: 400;
+}
+
+.park-opening-hours-card__link {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

@@ -106,6 +106,14 @@ Cette règle n’autorise aucune extrapolation : si la source officielle ne publ
 
 Après génération, développer les règles en dates civiles dans le fuseau du parc et annoncer : première date, dernière date, nombre de jours inclus, dates sans règle et dates couvertes plusieurs fois. Zéro date manquante et zéro chevauchement sont requis à l’intérieur de l’horizon revendiqué, sauf exception datée explicitement représentée par le modèle.
 
+## Horaires habituels sans période datée
+
+Si la source publie uniquement des jours de semaine et des heures, utiliser `openingHours.weeklyRules`. Chaque règle contient `id`, `daysOfWeek`, `isClosed`, `timeRanges`, `sortOrder` et éventuellement `labels` et `reasons` localisés. Elle ne contient jamais `startDate` ni `endDate` ; les périodes réellement datées restent dans `regularRules` et les exceptions dans `dateOverrides`.
+
+Conserver le fuseau, la source et la vérification réelle. Un jour absent reste inconnu ; ne jamais le convertir en fermeture. Les plages d’un même jour sont réunies dans une seule règle hebdomadaire, sans chevauchement. Le calendrier public affiche séparément ces horaires habituels et les dates confirmées : aucune couverture future, date limite ou certitude « ouvert maintenant » n’est déduite du seul rythme hebdomadaire.
+
+Le lot `openingHours` représente le planning complet : conserver aussi les règles datées, hebdomadaires et exceptions existantes lorsqu’elles restent valides. Vérifier le round-trip dans l’export final. À l’audit, rapporter les jours de semaine renseignés et absents séparément de la couverture civile ; ne pas présenter des horaires habituels comme un calendrier annuel complet, ni les substituer à des dates officielles effectivement disponibles.
+
 ## Forme des horaires
 
 - `timeZoneId` obligatoire et cohérent avec le pays.

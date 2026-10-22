@@ -7,6 +7,7 @@ namespace AmusementPark.Application.Features.ParkOpeningHours.Services;
 public sealed class ParkOpeningHoursScheduleNormalizer
 {
     private const int MaximumRegularRuleCount = 250;
+    private const int MaximumWeeklyRuleCount = 7;
     private const int MaximumDateOverrideCount = 1500;
     private const int MaximumTimeRangeCount = 8;
     private readonly TimeProvider timeProvider;
@@ -69,7 +70,13 @@ public sealed class ParkOpeningHoursScheduleNormalizer
             errors[nameof(schedule.DateOverrides)] = new[] { "too-many-overrides" };
         }
 
+        if (schedule.WeeklyRules.Count > MaximumWeeklyRuleCount)
+        {
+            errors[nameof(schedule.WeeklyRules)] = new[] { "too-many-rules" };
+        }
+
         normalized.RegularRules = NormalizeRules(schedule.RegularRules, errors);
+        normalized.WeeklyRules = NormalizeWeeklyRules(schedule.WeeklyRules, errors);
         normalized.DateOverrides = NormalizeDateOverrides(schedule.DateOverrides, errors);
 
         if (errors.Count > 0)
@@ -78,6 +85,49 @@ public sealed class ParkOpeningHoursScheduleNormalizer
         }
 
         return ApplicationResult<ParkOpeningHoursSchedule>.Success(normalized);
+    }
+
+    private static List<ParkOpeningHoursWeeklyRule> NormalizeWeeklyRules(
+        IReadOnlyCollection<ParkOpeningHoursWeeklyRule> rules,
+        Dictionary<string, IReadOnlyCollection<string>> errors)
+    {
+        List<ParkOpeningHoursWeeklyRule> normalizedRules = new();
+        HashSet<DayOfWeek> assignedDays = new();
+        int index = 0;
+        foreach (ParkOpeningHoursWeeklyRule rule in rules)
+        {
+            string prefix = $"{nameof(ParkOpeningHoursSchedule.WeeklyRules)}[{index}]";
+            ParkOpeningHoursWeeklyRule normalized = new()
+            {
+                Id = NormalizeOptionalString(rule.Id) ?? Guid.NewGuid().ToString("N"),
+                DaysOfWeek = rule.DaysOfWeek.Distinct().OrderBy(static day => day).ToList(),
+                IsClosed = rule.IsClosed,
+                Labels = NormalizeLocalizedTexts(rule.Labels),
+                Reasons = NormalizeLocalizedTexts(rule.Reasons),
+                SortOrder = rule.SortOrder > 0 ? rule.SortOrder : index + 1,
+            };
+            if (normalized.DaysOfWeek.Count == 0 || normalized.DaysOfWeek.Any(static day => !Enum.IsDefined(day)))
+            {
+                errors[$"{prefix}.daysOfWeek"] = new[] { "invalid-days-of-week" };
+            }
+            else if (normalized.DaysOfWeek.Any(day => assignedDays.Contains(day)))
+            {
+                errors[$"{prefix}.daysOfWeek"] = new[] { "overlapping-weekly-rules" };
+            }
+
+            assignedDays.UnionWith(normalized.DaysOfWeek);
+            normalized.TimeRanges = normalized.IsClosed ? new()
+                : NormalizeTimeRanges(rule.TimeRanges, $"{prefix}.timeRanges", errors);
+            if (!normalized.IsClosed && normalized.TimeRanges.Count == 0)
+            {
+                errors[$"{prefix}.timeRanges"] = new[] { "required" };
+            }
+
+            normalizedRules.Add(normalized);
+            index++;
+        }
+
+        return normalizedRules;
     }
 
     private static List<ParkOpeningHoursRule> NormalizeRules(

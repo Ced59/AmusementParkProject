@@ -23,4 +23,6 @@ public sealed class ParkOpeningHoursCalendar
     public DateOnly ToDate { get; init; }
 
     public IReadOnlyCollection<ParkOpeningHoursDay> Days { get; init; } = Array.Empty<ParkOpeningHoursDay>();
+
+    public IReadOnlyCollection<ParkOpeningHoursWeeklyRule> WeeklyRules { get; init; } = Array.Empty<ParkOpeningHoursWeeklyRule>();
 }

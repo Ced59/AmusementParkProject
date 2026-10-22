@@ -565,6 +565,19 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.historyLink).toBeNull();
   });
 
+  it('uses weekly hours without requesting a dated lookahead', () => {
+    const context = configureFacade();
+    const calendar: ParkOpeningHoursCalendar = createOpeningHoursCalendar([]);
+    calendar.weeklyRules = [{ daysOfWeek: ['Tuesday'], isClosed: false, sortOrder: 1, timeRanges: [{ opensAt: '11:00', closesAt: '20:00', closesNextDay: false, lastAdmissionNextDay: false }] }];
+    context.parksPort.openingHoursResponses$ = [of(calendar)];
+
+    context.facade.loadPark('park-1');
+
+    expect(context.parksPort.openingHoursCalls.length).toBe(1);
+    expect(context.facade.openingHours()?.weeklyRules).toEqual(calendar.weeklyRules);
+    expect(context.facade.openingHoursState().kind).toBe('ready');
+  });
+
   it('loads a bounded future opening window when the preview has no upcoming opening', () => {
     const context = configureFacade();
     const today: string = formatUtcDate(new Date());

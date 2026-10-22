@@ -8,6 +8,8 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 
 public sealed class ParkGraphExportOpeningHours
 {
+    public List<ParkGraphExportOpeningHoursWeeklyRule> WeeklyRules { get; init; } = new();
+
     public string ParkId { get; init; } = string.Empty;
 
     public string TimeZoneId { get; init; } = string.Empty;

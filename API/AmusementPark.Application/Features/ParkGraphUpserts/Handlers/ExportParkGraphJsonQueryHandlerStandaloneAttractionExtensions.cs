@@ -218,6 +218,7 @@ internal static class ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensi
             mapped.Notes,
             mapped.LastVerifiedAtUtc,
             mapped.RegularRules,
+            mapped.WeeklyRules,
             mapped.DateOverrides,
         };
     }

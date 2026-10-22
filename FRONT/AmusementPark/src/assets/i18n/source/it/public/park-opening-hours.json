@@ -13,7 +13,10 @@
       "parkTimeZone": "Ora del parco",
       "visitorTimeZone": "Il tuo fuso: {{ timeZone }}",
       "viewAll": "Vedi tutte le date e gli orari",
-      "loading": "Caricamento orari"
+      "loading": "Caricamento orari",
+      "weeklyTitle": "Orari abituali",
+      "weeklyHint": "Gli orari abituali possono variare in alcune date.",
+      "viewSource": "Consulta la fonte degli orari"
     },
     "page": {
       "kicker": "Date e orari",

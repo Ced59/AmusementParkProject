@@ -191,6 +191,9 @@ internal static class DataCompletenessPublicTextEncoding
             && (schedule.RegularRules.Any(static rule =>
                     HasForbiddenLocalizedPlainPublicText(rule.Labels)
                     || HasForbiddenLocalizedPlainPublicText(rule.Reasons))
+                || schedule.WeeklyRules.Any(static rule =>
+                    HasForbiddenLocalizedPlainPublicText(rule.Labels)
+                    || HasForbiddenLocalizedPlainPublicText(rule.Reasons))
                 || schedule.DateOverrides.Any(static dateOverride =>
                     HasForbiddenLocalizedPlainPublicText(dateOverride.Labels)
                     || HasForbiddenLocalizedPlainPublicText(dateOverride.Reasons)));
