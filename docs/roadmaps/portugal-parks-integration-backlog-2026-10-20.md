@@ -209,11 +209,13 @@ Les lignes d’établissements à qualifier ne sont pas comptées comme fiches d
 
 ## 11. Attractions autonomes à intégrer ou à qualifier
 
-- [ ] DreamFly Porto — Maia — identité applicative à résoudre — [DP](#sources-de-découverte). Candidat StandaloneAttraction : installation de simulation de chute libre exploitée seule ; confirmer le contrat et les doublons cachés.
-- [ ] DreamFly Lisboa — Région de Lisboa — identité applicative à résoudre — [DL](#sources-de-découverte). Candidat StandaloneAttraction ; adresse et état courant à confirmer auprès de l’exploitant.
+- [ ] DreamFly Porto — Maia — StandaloneAttraction `22507909-9fab-4452-a87d-27fded8b2e3c` — **intégration en cours, brouillon créé** — [DP](#sources-de-découverte). Installation fixe de simulation de chute libre, ouverte en novembre 2019 auprès d’Auchan Maia. Recherche officielle du 22 octobre 2026 : aucun doublon pour DreamFly ou Dream Fly, y compris dans les attractions masquées et les parcs legacy. Exploitation actuelle et adresse vérifiées ; intégration, audit et publications à terminer.
+- [ ] DreamFly Lisboa — Rio de Mouro, Sintra — StandaloneAttraction `2a207fda-7479-405a-b1ce-d93dc3a0acd8` — **intégration en cours, brouillon créé** — [DL](#sources-de-découverte). Installation fixe auprès d’Alegro Sintra, ouverte en avril 2022 ; ne pas la situer à Odivelas ou dans la ville de Lisboa. Recherche officielle du 22 octobre 2026 sans doublon, y compris masqué. Exploitation actuelle et adresse vérifiées ; intégration, audit et publications à terminer.
 - [ ] World of Discoveries — Porto — identité applicative à résoudre — [TP](#sources-de-découverte). Arbitrer le modèle : parcours scénique autonome avec espaces muséaux ou véritable parc structuré ; aucun faux parc mono-attraction.
 
 ## Pistes de découverte à qualifier sans création automatique
+
+- AirFly — marina de Portimão, été 2019 : soufflerie Tornado exploitée par Paul Toussaint, documentée dans [Tomorrow Algarve, août 2019, page 62](https://www.tomorrowalgarve.com/wp-content/uploads/2026/02/Tomorrow-August-2019-Edition.pdf). L’original confirme l’installation à la marina mais pas sa permanence ; vérifier la durée et le caractère mobile avant toute création. Piste conservée hors des 114 entrées à intégrer.
 
 - AquaPark do Tâmega — Ribeira de Pena : projet de plage fluviale et d’ancoradouro présenté en juin 2026 dans la même visite que Pena Aventura et Lusitanix. Aucun équipement de parc d’attractions établi dans cette annonce ; qualification à poursuivre, sans le confondre avec le Parque Aquático de Amarante. Source [Canal N, 18 juin 2026](https://www.canaln.tv/presidente-do-turismo-do-porto-e-norte-visita-ribeira-de-pena-e-aponta-o-alto-tamega-a-novos-voos-no-turismo/).
 
