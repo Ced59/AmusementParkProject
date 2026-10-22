@@ -53,6 +53,10 @@ public sealed class HistoryEventWriteModel
 
     public string? NewOperatorId { get; init; }
 
+    public string? PreviousOwnerName { get; init; }
+
+    public string? NewOwnerName { get; init; }
+
     public string? LocationLabel { get; init; }
 
     public IReadOnlyCollection<string> RelatedParkIds { get; init; } = Array.Empty<string>();

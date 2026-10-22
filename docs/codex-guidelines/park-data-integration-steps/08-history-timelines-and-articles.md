@@ -28,6 +28,15 @@ n'existe plus de second moteur historique ni de lecture publique de secours.
   devient pas public par la seule publication du parc ou de l'article.
 - Un type inconnu, une date invalide ou une transition structurée incomplète
   bloque le lot au lieu de produire un fait approximatif.
+- Pour un parc, `OwnershipChange`, `Acquisition` et `Sale` deviennent des faits
+  canoniques `OwnerChange`. Renseigner `newOwnerName` avec le nom sourcé du nouveau
+  propriétaire ; `previousOwnerName` reste facultatif si l'ancien propriétaire
+  n'est pas établi. Ces noms sont distincts de `previousOperatorId` et
+  `newOperatorId` : un exploitant ne constitue jamais une preuve de propriété.
+  Sans nouveau propriétaire non vide, la transition est refusée, même en brouillon.
+  L'import conserve un champ omis et permet d'effacer explicitement l'ancien
+  propriétaire avec `null`. Les clients HTTP antérieurs qui omettent les nouveaux
+  champs conservent leurs valeurs ; une chaîne vide demande leur effacement.
 - La migration des événements déjà présents est unique et idempotente. Elle
   convertit leurs preuves et leur publication dans ce même modèle, puis retire
   les anciennes révisions actives ; aucune nouvelle donnée ne peut entrer dans
