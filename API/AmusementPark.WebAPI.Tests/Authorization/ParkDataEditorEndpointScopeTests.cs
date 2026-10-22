@@ -24,8 +24,11 @@ public sealed class ParkDataEditorEndpointScopeTests
     public void StandaloneDiscovery_ShouldRemainScopedAuthenticatedAndUncached()
     {
         Type controller = typeof(ParkDataEditorStandaloneAttractionsController);
-        Assert.Equal(AuthorizationPolicyNames.AdminOrParkDataEditorToken,
-            Assert.Single(controller.GetCustomAttributes<AuthorizeAttribute>()).Policy);
+        IReadOnlyCollection<string?> policies = controller.GetCustomAttributes<AuthorizeAttribute>()
+            .Select(static attribute => attribute.Policy).ToArray();
+        Assert.Equal(2, policies.Count);
+        Assert.Contains(AuthorizationPolicyNames.AdminOrParkDataEditorToken, policies);
+        Assert.Contains(AuthorizationPolicyNames.ActivatedUnblockedUser, policies);
         Assert.NotNull(controller.GetCustomAttribute<AllowParkDataEditorTokenAttribute>());
         Assert.Null(controller.GetCustomAttribute<AllowAnonymousAttribute>());
         Assert.Equal("park-data-editor/standalone-attractions", controller.GetCustomAttribute<RouteAttribute>()?.Template);
