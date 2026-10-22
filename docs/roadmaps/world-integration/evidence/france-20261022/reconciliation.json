@@ -283,5 +283,16 @@
     "Kangoo Park et Kangoo Park Safari : même UUID à La Grande-Motte.",
     "Bioscope : la recherche renvoie le Parc du Petit Prince à Ungersheim ; identité historique à qualifier pendant la reprise, aucune nouvelle création.",
     "Naudières : la recherche accentuée retrouve la fiche de Sautron ; la variante non accentuée vide ne prouve pas une absence."
-  ]
+  ],
+  "completionAfterReconciliation": {
+    "entryId": "FR-park-a48caf8e-871b-40cc-8b98-9faff4219e96",
+    "lastDataIntegrationAt": "2026-10-22T19:58:15.480Z",
+    "auditCompletedAt": "2026-10-22T20:06:01.845978+00:00",
+    "auditEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-audit.json",
+    "remainingReservedEntries": [
+      "FR-park-b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+      "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+      "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e"
+    ]
+  }
 }

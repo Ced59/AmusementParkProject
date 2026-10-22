@@ -5854,7 +5854,7 @@
       "legacySiteIds": [],
       "presence": "Published",
       "presenceObservedAt": "2026-10-22T19:35:21.052633+00:00",
-      "editorialStatus": "InProgress",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
@@ -5863,7 +5863,7 @@
       "aliases": [
         "Kid Parc"
       ],
-      "assignedTo": "Conversation France",
+      "assignedTo": null,
       "lastDataIntegrationAt": "2026-10-22T19:58:15.480Z",
       "integrationHistory": [
         {
@@ -6025,9 +6025,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
           "auditEvidence": null,
           "summary": "Portrait sourcé de Jérôme Durieux rattaché au jalon Acquisition de 2020 ; légendes précisant le contexte du reportage de 2022."
+        },
+        {
+          "eventId": "completed-apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+          "appliedAt": "2026-10-22T19:58:15.480Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-audit.json",
+          "summary": "Audit final achevé à 100/100, contrôles publics dans les huit langues conformes, annonce Facebook existante Published ; aucun doublon créé."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

@@ -1,0 +1,875 @@
+{
+  "auditedAtUtc": "2026-10-22T20:06:01.845978+00:00",
+  "parkId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+  "name": "Kid Parc Île dʼAventures",
+  "decision": "Intégration achevée, publiée et vérifiée anonymement ; annonce Facebook existante confirmée Published.",
+  "coverage": {
+    "freshAtUtc": "2026-10-22T19:51:05.9551825Z",
+    "items": 45,
+    "zones": 0,
+    "attractions": 34,
+    "attractionStatuses": {
+      "Operating": 26,
+      "Unknown": 7,
+      "TemporarilyClosed": 1
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 33,
+    "attractionsWithImage": 30,
+    "attractionImageGaps": [
+      {
+        "id": "0f82b970-5e77-42e1-a8db-f0cff3707424",
+        "name": "La Grande Roue des Pirates"
+      },
+      {
+        "id": "e05ea890-5eee-4309-863b-ddc74e72479a",
+        "name": "La Soucoupe volante"
+      },
+      {
+        "id": "b25567bd-a9c2-44b7-86fe-1afb82243ecb",
+        "name": "Le Kid’s Kart"
+      },
+      {
+        "id": "f0a25717-e26b-4506-979d-72ebc8bff159",
+        "name": "Le Labyrinthe des Pirates"
+      }
+    ],
+    "ownedImages": 71,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "869fdce0-915e-4ce8-b4d2-a921a5a9a6b1",
+        "name": "Accueil",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c60da040-5ed7-4e16-8a57-50d61a98b224",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "18490806-78cb-4a1b-be2c-2663e4a2ff2a",
+        "name": "Boutique Souvenir",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "073388d6-312f-4ab1-bdd5-0e569a6bda6e",
+        "name": "Dino Kidʼs",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "0dfe2a1a-5a0f-4efd-a517-ee56cbc3242d",
+        "name": "Espace Anniversaires",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "b92ce27c-e5cb-458d-8824-f076895f9090",
+        "name": "Espace Fumeurs",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "7b015a2f-2bde-402a-a67e-a6228c079881",
+        "name": "Espace Nursery",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "143e7eac-332e-41cd-84e8-69485bc50b51",
+        "name": "Kid Circus",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "1a479477-5bcc-4e5a-b469-adef365ab281",
+        "name": "La Baleine Surprise",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "3af17b72-5e01-46ab-a727-2d85d414e3ce",
+        "name": "La Cascade Enchantée",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "4fc49802-1ef8-455c-9190-5261e4455cd1",
+        "name": "La Chenille Pirate",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "a5dbaa91-b29e-4fab-8679-f7d6e07774df",
+        "name": "La Course de Tyrolienne",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8dab3115-d5c5-45ac-ab79-9e258f1d6b88",
+        "name": "La Gare en Délire",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "0f82b970-5e77-42e1-a8db-f0cff3707424",
+        "name": "La Grande Roue des Pirates",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "b1d7b911-e14d-4069-b669-6798f73c6414",
+        "name": "La Jungle Mystérieuse",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "77c5f338-0f9f-4ca5-a105-c81730324733",
+        "name": "La Piscine à balles",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8a41c9bc-007f-4345-b00e-cf260afb1af8",
+        "name": "La Promenade des Pirates",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "a5ca300b-98c9-4b8f-97bd-92ea38d5a8bb",
+        "name": "La Pêche aux canards",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e05ea890-5eee-4309-863b-ddc74e72479a",
+        "name": "La Soucoupe volante",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "4a1a2943-ab0a-4f03-8fb3-7a28ee5ef4b3",
+        "name": "La Tour de Chute",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "61800777-87ef-412f-b940-94a04ca552a5",
+        "name": "Le Boulet de Canon",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "9eda819c-fece-4f67-97cf-8a46d44593db",
+        "name": "Le Carrousel",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "bdc52fec-1a61-4bbb-9604-e9a389975a50",
+        "name": "Le Kidʼs Pearl",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "b25567bd-a9c2-44b7-86fe-1afb82243ecb",
+        "name": "Le Kid’s Kart",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f0a25717-e26b-4506-979d-72ebc8bff159",
+        "name": "Le Labyrinthe des Pirates",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "b3e9e443-c3fd-4a24-a773-de9f518ce45d",
+        "name": "Le Lagon des Pirates",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e62849b8-d372-4d82-baec-e1fda158351d",
+        "name": "Le Parcours des Pirates",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4621793b-dede-4bb8-a6ce-217891a02289",
+        "name": "Le Petit Bateau Pirate",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "f9e7defd-d5be-4b2c-a433-564efac1100d",
+        "name": "Le Petit Train",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "1425b128-0e4a-4fa4-9fe2-24657a1a60be",
+        "name": "Le Rodéo",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "e8290193-6202-41b7-8dcd-50395f02e91f",
+        "name": "Le Shooter Pirate",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b7dddb9a-0814-4817-b3da-5d1a409586fc",
+        "name": "Le Snack",
+        "category": "Restaurant",
+        "images": 1
+      },
+      {
+        "id": "fb22c30c-763a-4885-b6b8-5231a2e24160",
+        "name": "Le Tir Pompiers",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "567db7c4-2b18-463f-839e-94b65456db30",
+        "name": "Le Vaisseau Fantôme",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "c183df8b-9171-4fea-a30a-1a650df1c044",
+        "name": "Les Bulles",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "1fa4bcda-cc0f-43ca-a0fe-fe81aa6963b9",
+        "name": "Les Chaises Magiques",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "1646deb3-82de-43aa-b58e-c60a1893f7bb",
+        "name": "Les Pirates de lʼAir",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "027012f6-c098-46a3-b4aa-2509ab813757",
+        "name": "Les Tonneaux Ivres",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "88567754-d85b-4770-b032-6a76e7e1ddda",
+        "name": "Les Trampolines",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "94682135-eb47-4227-94e9-57c389a0309f",
+        "name": "LʼArbre Robinson",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "eac5e7ea-ed34-4a7f-a008-73dfbd473204",
+        "name": "LʼÎle Rebondissante",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "1ae519ee-af31-4c73-8daf-a15496b1e206",
+        "name": "Parking",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "914908ad-8f3f-477a-9b34-c81b89d098a1",
+        "name": "PiratʼExpress",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "e4267626-f196-425a-9f3e-2e71ddbd1c81",
+        "name": "Sanitaires",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c4b80b91-63cc-430e-820b-baeb0cb1b884",
+        "name": "Terrasse Ombragée",
+        "category": "Service",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 26,
+    "geolocationGaps": [
+      {
+        "id": "869fdce0-915e-4ce8-b4d2-a921a5a9a6b1",
+        "name": "Accueil",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "c60da040-5ed7-4e16-8a57-50d61a98b224",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "073388d6-312f-4ab1-bdd5-0e569a6bda6e",
+        "name": "Dino Kidʼs",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "0dfe2a1a-5a0f-4efd-a517-ee56cbc3242d",
+        "name": "Espace Anniversaires",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "b92ce27c-e5cb-458d-8824-f076895f9090",
+        "name": "Espace Fumeurs",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "143e7eac-332e-41cd-84e8-69485bc50b51",
+        "name": "Kid Circus",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "1a479477-5bcc-4e5a-b469-adef365ab281",
+        "name": "La Baleine Surprise",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "0f82b970-5e77-42e1-a8db-f0cff3707424",
+        "name": "La Grande Roue des Pirates",
+        "category": "Attraction",
+        "status": "Unknown"
+      },
+      {
+        "id": "e05ea890-5eee-4309-863b-ddc74e72479a",
+        "name": "La Soucoupe volante",
+        "category": "Attraction",
+        "status": "Unknown"
+      },
+      {
+        "id": "9eda819c-fece-4f67-97cf-8a46d44593db",
+        "name": "Le Carrousel",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "bdc52fec-1a61-4bbb-9604-e9a389975a50",
+        "name": "Le Kidʼs Pearl",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "b25567bd-a9c2-44b7-86fe-1afb82243ecb",
+        "name": "Le Kid’s Kart",
+        "category": "Attraction",
+        "status": "Unknown"
+      },
+      {
+        "id": "f0a25717-e26b-4506-979d-72ebc8bff159",
+        "name": "Le Labyrinthe des Pirates",
+        "category": "Attraction",
+        "status": "Unknown"
+      },
+      {
+        "id": "e62849b8-d372-4d82-baec-e1fda158351d",
+        "name": "Le Parcours des Pirates",
+        "category": "Attraction",
+        "status": "Unknown"
+      },
+      {
+        "id": "e8290193-6202-41b7-8dcd-50395f02e91f",
+        "name": "Le Shooter Pirate",
+        "category": "Attraction",
+        "status": "Unknown"
+      },
+      {
+        "id": "88567754-d85b-4770-b032-6a76e7e1ddda",
+        "name": "Les Trampolines",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "eac5e7ea-ed34-4a7f-a008-73dfbd473204",
+        "name": "LʼÎle Rebondissante",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "1ae519ee-af31-4c73-8daf-a15496b1e206",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "c4b80b91-63cc-430e-820b-baeb0cb1b884",
+        "name": "Terrasse Ombragée",
+        "category": "Service",
+        "status": null
+      }
+    ],
+    "history": 36,
+    "parkHistory": 8,
+    "itemHistory": 28,
+    "historyWithSource": 36,
+    "historyWithImage": 32,
+    "articles": 2,
+    "officialMaps": [
+      {
+        "year": 2026,
+        "format": "Image",
+        "language": "fr"
+      },
+      {
+        "year": 2025,
+        "format": "Image",
+        "language": "fr"
+      },
+      {
+        "year": 2020,
+        "format": "Image",
+        "language": "fr"
+      },
+      {
+        "year": 2018,
+        "format": "Image",
+        "language": "fr"
+      }
+    ],
+    "pricing": {
+      "admissionOffers": 5,
+      "annualPasses": 1,
+      "parkingOffers": 1,
+      "creditOffers": 0,
+      "historicalSnapshots": 5
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true
+  },
+  "publicCoverage": {
+    "items": 37,
+    "attractions": 27,
+    "operatingAttractions": 26,
+    "temporarilyClosedAttractions": 1,
+    "unknownAttractionsPrivate": 7,
+    "publicItemsWith8Descriptions": 37,
+    "publicDescriptionsIncludingPark": 304,
+    "publicAttractionsWithImage": 27,
+    "generalParkViews": 5,
+    "generalParkViewTarget": 5,
+    "generalParkViewsReason": "Entrée et terrasse déjà publiques, allée avec boutique/carrousel, animation dans le jardin près de PiratʼExpress et espace aquatique. Les trois gros plans de Jack et le portrait du propriétaire sont exclus du compteur.",
+    "majorItemsWith3Images": 11,
+    "majorItems": 27,
+    "fixedPublicItemsWithCoordinates": 25,
+    "fixedPublicItems": 37,
+    "publicMapYears": [
+      2025,
+      2020,
+      2018
+    ]
+  },
+  "personalReview": {
+    "units": 32,
+    "fieldsRead": 2175,
+    "manifestSha256": "7929a3af3c17667ff322cd6b80a289884f5b6ade6b2f733b5b0c2a32e9750cf3",
+    "additionalReview": "Huit notes de calendrier, titres/alt des quatre cartes, offres actuelles et cinq relevés tarifaires, crédits, trois corrections de légendes, huit nouveaux médias. Chaque localisation finale relue dans sa Preview ou son manifeste.",
+    "photoManifestSha256": "6871144304f36256d3cf06ec80a6bed36fa9203122d2d0d513a64816c9953336",
+    "crossCorpusSequenceGroups": 0,
+    "captionCorrectionEvidence": "authorized-final-distinct-captions.apply.json",
+    "captionCorrectionReview": "authorized-final-distinct-captions-personal-preview-review.json"
+  },
+  "calendarFuture": {
+    "from": "2026-10-22",
+    "through": "2026-10-31",
+    "inclusiveDays": 10,
+    "coveredDays": 10,
+    "missing": [],
+    "overlaps": [],
+    "unpublishedHorizonCheckedThrough": "2027-12-31"
+  },
+  "logo": {
+    "imageId": "4b8a06e53fd649d99e60b84b53763a80",
+    "current": true,
+    "officialOriginalVisuallyChecked": true,
+    "watermark": false
+  },
+  "contextualAccidentImage": {
+    "imageId": "b44ea39f2cfc4e19a495745c00c508d1",
+    "source": "https://rcdb.com/aaifnef",
+    "creditedTo": "Martyn Branford / RCDB",
+    "photographedAt": "2024-08-19",
+    "wholeOriginalVisuallyChecked": true,
+    "reason": "Attraction arrêtée, sans victime ; contexte postérieur explicitement distingué de la scène de l’accident."
+  },
+  "gaps": [
+    {
+      "topic": "Géolocalisation des lieux publics fixes",
+      "coverage": "25/37",
+      "entries": [
+        {
+          "id": "869fdce0-915e-4ce8-b4d2-a921a5a9a6b1",
+          "name": "Accueil",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "c60da040-5ed7-4e16-8a57-50d61a98b224",
+          "name": "Aire de pique-nique",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "073388d6-312f-4ab1-bdd5-0e569a6bda6e",
+          "name": "Dino Kidʼs",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "0dfe2a1a-5a0f-4efd-a517-ee56cbc3242d",
+          "name": "Espace Anniversaires",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "b92ce27c-e5cb-458d-8824-f076895f9090",
+          "name": "Espace Fumeurs",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "1a479477-5bcc-4e5a-b469-adef365ab281",
+          "name": "La Baleine Surprise",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "9eda819c-fece-4f67-97cf-8a46d44593db",
+          "name": "Le Carrousel",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "bdc52fec-1a61-4bbb-9604-e9a389975a50",
+          "name": "Le Kidʼs Pearl",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "88567754-d85b-4770-b032-6a76e7e1ddda",
+          "name": "Les Trampolines",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "eac5e7ea-ed34-4a7f-a008-73dfbd473204",
+          "name": "LʼÎle Rebondissante",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "1ae519ee-af31-4c73-8daf-a15496b1e206",
+          "name": "Parking",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        },
+        {
+          "id": "c4b80b91-63cc-430e-820b-baeb0cb1b884",
+          "name": "Terrasse Ombragée",
+          "reason": "Aucun point individuel assez précis retrouvé dans OpenStreetMap et les sources officielles ; le plan illustré non géoréférencé ne suffit pas à inventer des coordonnées."
+        }
+      ]
+    },
+    {
+      "topic": "Photographies des lieux importants",
+      "selection": "Toutes les attractions publiques, sans minorer le dénominateur.",
+      "coverage": "11/27",
+      "entries": [
+        {
+          "id": "073388d6-312f-4ab1-bdd5-0e569a6bda6e",
+          "name": "Dino Kidʼs",
+          "images": 2,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "1a479477-5bcc-4e5a-b469-adef365ab281",
+          "name": "La Baleine Surprise",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "a5dbaa91-b29e-4fab-8679-f7d6e07774df",
+          "name": "La Course de Tyrolienne",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "b1d7b911-e14d-4069-b669-6798f73c6414",
+          "name": "La Jungle Mystérieuse",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "77c5f338-0f9f-4ca5-a105-c81730324733",
+          "name": "La Piscine à balles",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "a5ca300b-98c9-4b8f-97bd-92ea38d5a8bb",
+          "name": "La Pêche aux canards",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "b3e9e443-c3fd-4a24-a773-de9f518ce45d",
+          "name": "Le Lagon des Pirates",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "4621793b-dede-4bb8-a6ce-217891a02289",
+          "name": "Le Petit Bateau Pirate",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "1425b128-0e4a-4fa4-9fe2-24657a1a60be",
+          "name": "Le Rodéo",
+          "images": 2,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "567db7c4-2b18-463f-839e-94b65456db30",
+          "name": "Le Vaisseau Fantôme",
+          "images": 2,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "c183df8b-9171-4fea-a30a-1a650df1c044",
+          "name": "Les Bulles",
+          "images": 2,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "1fa4bcda-cc0f-43ca-a0fe-fe81aa6963b9",
+          "name": "Les Chaises Magiques",
+          "images": 2,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "027012f6-c098-46a3-b4aa-2509ab813757",
+          "name": "Les Tonneaux Ivres",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "88567754-d85b-4770-b032-6a76e7e1ddda",
+          "name": "Les Trampolines",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "94682135-eb47-4227-94e9-57c389a0309f",
+          "name": "LʼArbre Robinson",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        },
+        {
+          "id": "eac5e7ea-ed34-4a7f-a008-73dfbd473204",
+          "name": "LʼÎle Rebondissante",
+          "images": 1,
+          "reason": "Galerie officielle, office de tourisme, reportage Kidiklik, presse et RCDB consultés ; seules les vues distinctes dont l’identité est établie sont conservées."
+        }
+      ]
+    },
+    {
+      "topic": "Lieux publics sans photographie propre",
+      "entries": [
+        {
+          "id": "869fdce0-915e-4ce8-b4d2-a921a5a9a6b1",
+          "name": "Accueil",
+          "reason": "Aucune vue attribuable avec certitude dans les pages officielles, le plan ou les reportages consultés ; pas de photo générale substituée."
+        },
+        {
+          "id": "c60da040-5ed7-4e16-8a57-50d61a98b224",
+          "name": "Aire de pique-nique",
+          "reason": "Aucune vue attribuable avec certitude dans les pages officielles, le plan ou les reportages consultés ; pas de photo générale substituée."
+        },
+        {
+          "id": "0dfe2a1a-5a0f-4efd-a517-ee56cbc3242d",
+          "name": "Espace Anniversaires",
+          "reason": "Aucune vue attribuable avec certitude dans les pages officielles, le plan ou les reportages consultés ; pas de photo générale substituée."
+        },
+        {
+          "id": "b92ce27c-e5cb-458d-8824-f076895f9090",
+          "name": "Espace Fumeurs",
+          "reason": "Aucune vue attribuable avec certitude dans les pages officielles, le plan ou les reportages consultés ; pas de photo générale substituée."
+        },
+        {
+          "id": "7b015a2f-2bde-402a-a67e-a6228c079881",
+          "name": "Espace Nursery",
+          "reason": "Aucune vue attribuable avec certitude dans les pages officielles, le plan ou les reportages consultés ; pas de photo générale substituée."
+        },
+        {
+          "id": "1ae519ee-af31-4c73-8daf-a15496b1e206",
+          "name": "Parking",
+          "reason": "Aucune vue attribuable avec certitude dans les pages officielles, le plan ou les reportages consultés ; pas de photo générale substituée."
+        },
+        {
+          "id": "e4267626-f196-425a-9f3e-2e71ddbd1c81",
+          "name": "Sanitaires",
+          "reason": "Aucune vue attribuable avec certitude dans les pages officielles, le plan ou les reportages consultés ; pas de photo générale substituée."
+        },
+        {
+          "id": "c4b80b91-63cc-430e-820b-baeb0cb1b884",
+          "name": "Terrasse Ombragée",
+          "reason": "Aucune vue attribuable avec certitude dans les pages officielles, le plan ou les reportages consultés ; pas de photo générale substituée."
+        }
+      ]
+    },
+    {
+      "topic": "Inventaire historique privé",
+      "entries": [
+        {
+          "id": "143e7eac-332e-41cd-84e8-69485bc50b51",
+          "name": "Kid Circus",
+          "reason": "Présence ancienne ou annonce conservée ; fonctionnement actuel non établi par le catalogue officiel 2026. Aucun cycle de vie inventé."
+        },
+        {
+          "id": "0f82b970-5e77-42e1-a8db-f0cff3707424",
+          "name": "La Grande Roue des Pirates",
+          "reason": "Présence ancienne ou annonce conservée ; fonctionnement actuel non établi par le catalogue officiel 2026. Aucun cycle de vie inventé."
+        },
+        {
+          "id": "e05ea890-5eee-4309-863b-ddc74e72479a",
+          "name": "La Soucoupe volante",
+          "reason": "Présence ancienne ou annonce conservée ; fonctionnement actuel non établi par le catalogue officiel 2026. Aucun cycle de vie inventé."
+        },
+        {
+          "id": "b25567bd-a9c2-44b7-86fe-1afb82243ecb",
+          "name": "Le Kid’s Kart",
+          "reason": "Présence ancienne ou annonce conservée ; fonctionnement actuel non établi par le catalogue officiel 2026. Aucun cycle de vie inventé."
+        },
+        {
+          "id": "f0a25717-e26b-4506-979d-72ebc8bff159",
+          "name": "Le Labyrinthe des Pirates",
+          "reason": "Présence ancienne ou annonce conservée ; fonctionnement actuel non établi par le catalogue officiel 2026. Aucun cycle de vie inventé."
+        },
+        {
+          "id": "e62849b8-d372-4d82-baec-e1fda158351d",
+          "name": "Le Parcours des Pirates",
+          "reason": "Présence ancienne ou annonce conservée ; fonctionnement actuel non établi par le catalogue officiel 2026. Aucun cycle de vie inventé."
+        },
+        {
+          "id": "e8290193-6202-41b7-8dcd-50395f02e91f",
+          "name": "Le Shooter Pirate",
+          "reason": "Présence ancienne ou annonce conservée ; fonctionnement actuel non établi par le catalogue officiel 2026. Aucun cycle de vie inventé."
+        },
+        {
+          "id": "fb22c30c-763a-4885-b6b8-5231a2e24160",
+          "name": "Le Tir Pompiers",
+          "reason": "Présence ancienne ou annonce conservée ; fonctionnement actuel non établi par le catalogue officiel 2026. Aucun cycle de vie inventé."
+        }
+      ]
+    },
+    {
+      "topic": "Jalons sans image propre",
+      "entries": [
+        {
+          "key": "kid-parc-opening-e05ea890-5eee-4309-863b-ddc74e72479a-2009",
+          "reason": "Pas de photo de la bonne installation ou du projet retrouvée dans les sources officielles, archives, tourisme et sources spécialisées. Forum CoastersWorld inaccessible et ancien blog demandant connexion : aucun contournement."
+        },
+        {
+          "key": "kid-parc-pirate-wheel-announced-2023",
+          "reason": "Pas de photo de la bonne installation ou du projet retrouvée dans les sources officielles, archives, tourisme et sources spécialisées. Forum CoastersWorld inaccessible et ancien blog demandant connexion : aucun contournement."
+        }
+      ]
+    },
+    {
+      "topic": "Plans",
+      "reason": "Éditions annuelles prouvées : 2018, 2020, 2025. L’image officielle archivée en 2013 ne porte pas de millésime prouvé ; la carte legacy étiquetée 2026 reste privée, son fichier étant daté 2025 sans preuve d’édition 2026. Archives CDX et site officiel parcourus ; aucune année fabriquée."
+    },
+    {
+      "topic": "Calendrier",
+      "reason": "Horizon futur officiellement publié : 22–31 octobre 2026, dix jours 10 h–18 h sans lacune ni chevauchement. Navigation réelle du calendrier de novembre 2026 à décembre 2027 : aucune date marquée. Dix jours de semaine passés du 3 au 16 octobre restent non couverts dans les règles héritées ; aucune fermeture déduite d’une case vide."
+    },
+    {
+      "topic": "Tarifs anciens",
+      "reason": "Relevés officiels archivés 2021–2025 ajoutés. Le relevé 2018 emploie des classes d’âge et un canal non établi ; il n’est pas confondu avec le produit actuel dès 85 cm. Le relevé de janvier 2022 affiche encore 2021 et n’est pas utilisé pour 2022."
+    },
+    {
+      "topic": "Profondeur éditoriale",
+      "reason": "Parc familial régional : descriptions courtes conservées lorsqu’elles épuisent les faits spécifiques disponibles sur les petites installations et services. Aucun paragraphe de remplissage. Les deux articles développent respectivement la création du parc et l’accident, avec contexte, conséquences durables et sources, sans déduire la cause de l’accident."
+    },
+    {
+      "topic": "Histoire canonique",
+      "reason": "31 faits publiés attendus, 13 majeurs ; les événements de propriétaires privés n’ouvrent pas leurs frises publiques. Aucun instantané de millésime clé indexable : limite signalée par rolloutGate, distincte des bloqueurs de publication (zéro)."
+    },
+    {
+      "topic": "Sources et biographies",
+      "reason": "RCommerce et AirZen lus intégralement lors de la reprise du 22 octobre ; le recontrôle technique a rencontré un timeout et un HTTP 403 respectivement, sans remplacer les preuves conservées par une date fictive. Diamond Rides reste lié sans biographie inventée. Le propriétaire Jérôme Durieux est distinct de l’exploitant KID PARC AQUITAINE."
+    }
+  ],
+  "publicationComplete": true,
+  "facebookResolved": true,
+  "postPublicationCompleteness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 102,
+    "earnedPoints": 102,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "canonicalHistory": {
+    "published": 31,
+    "sourced": 31,
+    "major": 13,
+    "blockingIssues": 0
+  },
+  "publicChecks": {
+    "mobilePages": 30,
+    "publicApiRequests": 26,
+    "articleLanguagesExact": 16,
+    "officialMapsExact": 3,
+    "normalHistoryClick": {
+      "checkedAtUtc": "2026-10-22T20:03:39.459161+00:00",
+      "source": "https://amusement-parks.fun/fr/park/a48caf8e-871b-40cc-8b98-9faff4219e96/kid-parc-ile-d-aventures",
+      "status": 200,
+      "linkText": "Histoire",
+      "target": "/fr/park/a48caf8e-871b-40cc-8b98-9faff4219e96/kid-parc-ile-d-aventures/history",
+      "destination": "https://amusement-parks.fun/fr/park/a48caf8e-871b-40cc-8b98-9faff4219e96/kid-parc-ile-d-aventures/history",
+      "h1": [
+        "L'histoire de Kid Parc Île dʼAventures"
+      ],
+      "bodyChars": 4493,
+      "horizontalOverflow": false,
+      "cacheBusterUsed": false,
+      "clickedFromParkPage": true
+    }
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "a1757a11ffd34c73874b752b50477455",
+    "url": "https://www.facebook.com/1285475681307050/posts/122120914677424431",
+    "newPostSent": false
+  },
+  "proofFiles": {
+    "publication-final-full-export.json": "2112c7d33de7f389f4c2d1da5473047c0449c6a0822393c1eb0c8a563d31f4a9",
+    "publication-final-export-reconciliation.json": "6cc24c209951f677dec64c4e490c6e9e6519060ffc3172b753cbd3e97b53c124",
+    "authorized-final-distinct-captions.apply.json": "cff95a98330ee927dd7ef3cf420fb0520609f1838e4dbd00bb1a76ae9593bb38",
+    "authorized-publication-owner-history.apply.json": "29cb195340d6ab5e4ebdd064bfee7bba6e03a22c987257a6f2c2d2e3f928f4ca",
+    "publication-current-completeness.json": "43a2a1ccc11efcf80b906f03f603aa3aeea1a70b45534e2201a112bef51a9d29",
+    "publication-history-diagnostics.json": "420dd0d3a65adb7d3999737aec4eae4683bcf36fb663d29d887377ccec5ccf13",
+    "facebook-resolve.json": "01dfcc59d6f495821ec3f96a0dfecdb41da381cb5efdcf406e0075b02c6cf3a1",
+    "step9-audit-current/encoding.json": "b1ace2ba6e4bd1df71459d2ca5bdb79926735f3cfea5b9636ef186f54146de52",
+    "step9-audit-current/cross-corpus-sequences.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  }
+}

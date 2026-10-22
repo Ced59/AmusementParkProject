@@ -1,6 +1,20 @@
 {
-  "version": "6.0.23",
+  "version": "6.0.24",
   "history": [
+    {
+      "version": "6.0.24",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Suivi des parcs français actualisé",
+        "en": "Updated tracking of French parks",
+        "de": "Aktualisierter Überblick zu französischen Parks",
+        "nl": "Bijgewerkt overzicht van Franse parken",
+        "it": "Monitoraggio aggiornato dei parchi francesi",
+        "es": "Seguimiento actualizado de los parques franceses",
+        "pl": "Zaktualizowany przegląd francuskich parków",
+        "pt": "Acompanhamento dos parques franceses atualizado"
+      }
+    },
     {
       "version": "6.0.23",
       "releasedAt": "2026-10-22",
