@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-1ff85b98-3937-4f20-ac75-5fa91e1a38d0",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T19:41:40.915Z",
+  "sourceAppliedAt": "2026-10-22T19:41:40.9154908Z",
+  "receiptFile": "slide-splash/step-09c-item-editorial-corrections-20261022.apply.json",
+  "receiptSha256": "d5400a17b267b77cf9b79899ff3322895775072ba6b94313cd14f1fadeb00d94",
+  "result": {
+    "operationId": "1ff85b98-3937-4f20-ac75-5fa91e1a38d0",
+    "counts": {
+      "created": 0,
+      "updated": 7,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "49 descriptions corrigées pour sept éléments : décors propres aux attractions, réduction des reprises et retrait des conditions commerciales de la notice du transport. Visibilité privée conservée ; audit final encore en cours."
+}

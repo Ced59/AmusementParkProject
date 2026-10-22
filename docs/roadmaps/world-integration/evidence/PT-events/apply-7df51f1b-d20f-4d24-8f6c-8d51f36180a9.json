@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-7df51f1b-d20f-4d24-8f6c-8d51f36180a9",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T19:54:57.511Z",
+  "sourceAppliedAt": "2026-10-22T19:54:57.5117163Z",
+  "receiptFile": "slide-splash/step-09e-history-presence-wording-20261022.apply.json",
+  "receiptSha256": "b3d4b812c7110cff0b0a854b241891c0c3bbe99a442c766d17a13d41889ec5de",
+  "result": {
+    "operationId": "7df51f1b-d20f-4d24-8f6c-8d51f36180a9",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Article historique de Big Slides Tower : formulation éditoriale corrigée dans huit langues, sans modifier les faits ni la visibilité. Audit final en cours."
+}

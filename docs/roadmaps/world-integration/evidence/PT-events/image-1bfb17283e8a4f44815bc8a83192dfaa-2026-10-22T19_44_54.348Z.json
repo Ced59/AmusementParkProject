@@ -1,0 +1,18 @@
+{
+  "eventId": "image-1bfb17283e8a4f44815bc8a83192dfaa-2026-10-22T19:44:54.348Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T19:44:54.348Z",
+  "sourceAppliedAt": "2026-10-22T19:44:54.348Z",
+  "receiptFile": "slide-splash/media/official-central-slides-aerial-import-response.json",
+  "receiptSha256": "3204535f6d23d9bdc17d226c8141cdb57579bfb223bc6e6077dcdbfea45397cc",
+  "result": {
+    "imageId": "1bfb17283e8a4f44815bc8a83192dfaa",
+    "ownerId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+    "isPublished": false,
+    "isCurrent": false
+  },
+  "summary": "Cinquième vue générale distincte importée en privé : massif des toboggans, Disco River, Kamikaze et Tornado. Autorisation écrite attestée ; image et huit langues vérifiées. Quinze images privées au total, aucun logo de substitution."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-deaf8f057eda4f4a9fe1cb5b67553a13-2026-10-22T19:56:15.723Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T19:56:15.723Z",
+  "sourceAppliedAt": "2026-10-22T19:56:15.723Z",
+  "receiptFile": "slide-splash/media/the-tunnel-green-exit-import-response.json",
+  "receiptSha256": "421dc85523be440f528b602f61c2b8955e7a5aa5bf37888ff8f048b35427ebb1",
+  "result": {
+    "imageId": "deaf8f057eda4f4a9fe1cb5b67553a13",
+    "ownerId": "c6214933-59c3-474b-877f-a0f1da762e73",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de The Tunnel intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

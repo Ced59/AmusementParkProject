@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-d4594c56-3a83-4dff-9494-5b238ebfba88",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T19:47:35.620Z",
+  "sourceAppliedAt": "2026-10-22T19:47:35.6208043Z",
+  "receiptFile": "slide-splash/step-09d-language-followup-20261022.apply.json",
+  "receiptSha256": "27f780b57df81178657207614c607333b7443e9b03dd7028fe86399c628dada5",
+  "result": {
+    "operationId": "d4594c56-3a83-4dff-9494-5b238ebfba88",
+    "counts": {
+      "created": 0,
+      "updated": 11,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "32 corrections linguistiques intégrées : notices des rapaces et reptiles dans huit langues, accords allemands de huit attractions et orthographe Estômbar dans les biographies de l’exploitant. Données privées ; audit final en cours."
+}

@@ -10793,7 +10793,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "conversation-portugal / docs/portugal-world-backlog-sync-20261022",
-      "lastDataIntegrationAt": "2026-10-22T19:25:51.822Z",
+      "lastDataIntegrationAt": "2026-10-22T19:57:58.407Z",
       "integrationHistory": [
         {
           "eventId": "apply-d3c96f51-fa59-48a8-90ba-d0ca82fe4d2b",
@@ -11374,9 +11374,89 @@
           "evidence": "docs/roadmaps/world-integration/evidence/PT-20261022-reconciliation.json#apply-279c03c2-b445-4870-a589-dc6194244420",
           "auditEvidence": null,
           "summary": "Lot step-09b-history-editorial-followup-20261022.apply.json : 0 création(s), 3 mise(s) à jour ; données conservées pour l’audit."
+        },
+        {
+          "eventId": "apply-1ff85b98-3937-4f20-ac75-5fa91e1a38d0",
+          "appliedAt": "2026-10-22T19:41:40.915Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-1ff85b98-3937-4f20-ac75-5fa91e1a38d0.json",
+          "auditEvidence": null,
+          "summary": "49 descriptions corrigées pour sept éléments : décors propres aux attractions, réduction des reprises et retrait des conditions commerciales de la notice du transport. Visibilité privée conservée ; audit final encore en cours."
+        },
+        {
+          "eventId": "image-1bfb17283e8a4f44815bc8a83192dfaa-2026-10-22T19:44:54.348Z",
+          "appliedAt": "2026-10-22T19:44:54.348Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-1bfb17283e8a4f44815bc8a83192dfaa-2026-10-22T19_44_54.348Z.json",
+          "auditEvidence": null,
+          "summary": "Cinquième vue générale distincte importée en privé : massif des toboggans, Disco River, Kamikaze et Tornado. Autorisation écrite attestée ; image et huit langues vérifiées. Quinze images privées au total, aucun logo de substitution."
+        },
+        {
+          "eventId": "apply-d4594c56-3a83-4dff-9494-5b238ebfba88",
+          "appliedAt": "2026-10-22T19:47:35.620Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-d4594c56-3a83-4dff-9494-5b238ebfba88.json",
+          "auditEvidence": null,
+          "summary": "32 corrections linguistiques intégrées : notices des rapaces et reptiles dans huit langues, accords allemands de huit attractions et orthographe Estômbar dans les biographies de l’exploitant. Données privées ; audit final en cours."
+        },
+        {
+          "eventId": "apply-7df51f1b-d20f-4d24-8f6c-8d51f36180a9",
+          "appliedAt": "2026-10-22T19:54:57.511Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-7df51f1b-d20f-4d24-8f6c-8d51f36180a9.json",
+          "auditEvidence": null,
+          "summary": "Article historique de Big Slides Tower : formulation éditoriale corrigée dans huit langues, sans modifier les faits ni la visibilité. Audit final en cours."
+        },
+        {
+          "eventId": "image-e7ddc47909ef480b88562f9988cf85ae-2026-10-22T19:55:39.866Z",
+          "appliedAt": "2026-10-22T19:55:39.866Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-e7ddc47909ef480b88562f9988cf85ae-2026-10-22T19_55_39.866Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Corkscrew intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-deaf8f057eda4f4a9fe1cb5b67553a13-2026-10-22T19:56:15.723Z",
+          "appliedAt": "2026-10-22T19:56:15.723Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-deaf8f057eda4f4a9fe1cb5b67553a13-2026-10-22T19_56_15.723Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de The Tunnel intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-94b3fa332e33453eb8e4f01972c9f4ef-2026-10-22T19:56:59.718Z",
+          "appliedAt": "2026-10-22T19:56:59.718Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-94b3fa332e33453eb8e4f01972c9f4ef-2026-10-22T19_56_59.718Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Drops intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-53ac485a6e634e52a8af80f9fcc7e214-2026-10-22T19:57:58.407Z",
+          "appliedAt": "2026-10-22T19:57:58.407Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-53ac485a6e634e52a8af80f9fcc7e214-2026-10-22T19_57_58.407Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de River Ride intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
         }
       ],
-      "nextAction": "44 lots appliqués et 14 images privées. Relecture FR/EN terminée ; 49 descriptions de sept éléments préparées mais non appliquées. Terminer les six autres langues, les médias/plans et le logo officiel dont la source renvoie HTTP 503. Autorisation écrite des médias confirmée par l’utilisateur. Audit final, score et publications site/Facebook encore requis.",
+      "nextAction": "Poursuivre sur docs/portugal-integration-progress-20261022 : 47 lots privés et 19 images vérifiés, dont cinq vues générales. Relire IT/ES/PL/PT, terminer les médias, les plans et l’audit frais ; logo officiel identifié mais URL source en erreur HTTP 503. Recalculer le score avant toute publication site/Facebook ; ne pas déclarer la clôture.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11789,7 +11869,7 @@
           "summary": "Lot step-05b-opening-image-20261022.apply.json : 0 création(s), 1 mise(s) à jour ; données conservées pour l’audit."
         }
       ],
-      "nextAction": "Dix lots et trois images privées autorisées ; audit complet dans huit langues, score projeté exact 95/100 sans bloqueur automatique. Constructeur et modèle non confirmés, âge de trois ans sans tarif explicite, photo d’ouverture de contexte. Réponse à l’exception de score demandée en attente ; aucune publication site/Facebook.",
+      "nextAction": "Dix lots privés et trois photos autorisées ; audit précédent sans bloqueur, score exact 95/100. Attendre l’acceptation explicite de cette exception ou une preuve fiable du fabricant/modèle ; Cod Steaks est confirmé pour les décors seulement. Vérifier la nouvelle piste de décor 2018 avant de reprendre l’audit et les trois lots de publication préparés. Aucun Facebook envoyé.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
