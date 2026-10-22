@@ -1,4 +1,5 @@
 import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 
 import {
   buildStandaloneAttractionDetailRows,
@@ -10,6 +11,7 @@ import {
 } from './standalone-attraction-presentation.helpers';
 
 describe('standalone attraction presentation helpers', () => {
+  const conversionService = new MeasurementConversionService();
   const labels: StandaloneAttractionDetailLabels = {
     type: 'Type',
     subtype: 'Sous-type',
@@ -54,13 +56,13 @@ describe('standalone attraction presentation helpers', () => {
       attraction,
       labels,
       'Wiegand',
-      (value: number | null | undefined, suffix: string): string => value == null ? '' : `${value} ${suffix}`
+      'fr', 'Metric', conversionService
     );
     const unresolvedRows: StandaloneAttractionDetailRow[] = buildStandaloneAttractionDetailRows(
       attraction,
       labels,
       null,
-      (value: number | null | undefined, suffix: string): string => value == null ? '' : `${value} ${suffix}`
+      'fr', 'Metric', conversionService
     );
 
     expect(resolvedRows.find((row: StandaloneAttractionDetailRow) => row.label === 'Constructeur')?.value).toBe('Wiegand');

@@ -60,6 +60,11 @@
           </section>
         </ng-template>
 
+        <app-attraction-access-conditions
+          *ngIf="accessConditions().length > 0"
+          [conditions]="accessConditions()">
+        </app-attraction-access-conditions>
+
       </main>
 
       <aside class="standalone-sidebar">

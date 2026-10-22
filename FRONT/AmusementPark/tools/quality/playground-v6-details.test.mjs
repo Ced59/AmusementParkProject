@@ -299,6 +299,8 @@ test('the standalone attraction remains autonomous and preserves every practical
     '[href]="websiteUrl"',
     '[innerHTML]="description() | safeRichHtml"',
     '<app-standalone-attraction-pricing-card',
+    '<app-attraction-access-conditions',
+    '[conditions]="accessConditions()"',
     '<app-park-opening-hours-card',
     '<app-park-weather-card',
     '*ngIf="hasCoordinates()"',

@@ -1,6 +1,20 @@
 {
-  "version": "6.0.26",
+  "version": "6.0.27",
   "history": [
+    {
+      "version": "6.0.27",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Conditions d’accès et unités des attractions améliorées",
+        "en": "Improved attraction access requirements and measurement units",
+        "de": "Verbesserte Zugangsbedingungen und Maßeinheiten für Attraktionen",
+        "nl": "Verbeterde toegangsvoorwaarden en meeteenheden voor attracties",
+        "it": "Condizioni di accesso e unità di misura delle attrazioni migliorate",
+        "es": "Condiciones de acceso y unidades de medida de las atracciones mejoradas",
+        "pl": "Ulepszone warunki dostępu i jednostki miary atrakcji",
+        "pt": "Condições de acesso e unidades de medida das atrações melhoradas"
+      }
+    },
     {
       "version": "6.0.26",
       "releasedAt": "2026-10-22",
