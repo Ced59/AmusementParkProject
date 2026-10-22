@@ -1,0 +1,178 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "9f9f85ca-2604-4974-a9b5-08a06e747fb4",
+    "appliedAtUtc": "2026-10-22T23:02:36.4205376Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-access.apply",
+    "operationId": "33f5e50e-d9e4-4403-ac42-057b7c94da4a",
+    "appliedAtUtc": "2026-10-22T23:03:33.5116571Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-hours.apply",
+    "operationId": "843550d2-4795-45e6-97f7-2fd49a6617c7",
+    "appliedAtUtc": "2026-10-22T23:03:58.1785812Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-pricing.apply",
+    "operationId": "31b6ab56-bebb-4b14-acbe-5c8b27b87aa9",
+    "appliedAtUtc": "2026-10-22T23:04:25.3389189Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-corrected.apply",
+    "operationId": "05d1e41b-0c43-46d6-b036-5d15cf098f35",
+    "appliedAtUtc": "2026-10-22T23:09:18.6272993Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "e8792ce2-800b-4ad6-8155-ca85cc117eda",
+    "appliedAtUtc": "2026-10-22T23:08:02.6400775Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "842b5470-9f4a-4f97-9a1a-24537c8f7297",
+    "appliedAtUtc": "2026-10-22T23:10:42.7101873Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "374c20d6-9291-4342-a457-a5d4d780d512",
+    "appliedAtUtc": "2026-10-22T23:11:08.849243Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "72270453-fe19-439d-aea9-d7e3c301840e",
+    "appliedAtUtc": "2026-10-22T23:11:32.2434087Z",
+    "targetStandaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "af286dc9a7b3405d98e41d93258cc213",
+    "ownerId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "sourceUrl": "https://www.panoramaresort.com/assets/Activities/Coaster/Wild-Rider-Mountain-Coaster-Radical-Productions-1__FocusFillWyItMC41NyIsIjAuNDgiLDE4MDAsMTA4MF0.jpg",
+    "updatedAt": "2026-10-22T23:05:35.509Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "07356894ef324a888d48c80cc1f40b65",
+    "ownerId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "sourceUrl": "https://www.panoramaresort.com/assets/Tourism-Operators/images/Coaster-1__FocusFillWyIwLjAwIiwiMC4wMCIsMTgwMCwxMDgwXQ.jpg",
+    "updatedAt": "2026-10-22T23:06:03.341Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "9a75be9ef39540658424256fa1719483",
+    "ownerId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "sourceUrl": "https://www.panoramaresort.com/assets/Images/Coaster_04503__FocusFillWyIwLjAwIiwiMC44MCIsMTgwMCwxNTAwXQ_ExtRewriteWyJqcGciLCJ3ZWJwIl0.webp",
+    "updatedAt": "2026-10-22T23:06:34.646Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-4-result",
+    "id": "61691bd799224f359d54523e1fdfc967",
+    "ownerId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+    "sourceUrl": "https://www.panoramaresort.com/assets/Images/Coaster_04677__FocusFillWyItMC4wNiIsIi0wLjA3IiwxODAwLDE1MDBd_ExtRewriteWyJqcGciLCJ3ZWJwIl0.webp",
+    "updatedAt": "2026-10-22T23:06:54.431Z",
+    "isPublished": false
+  }
+]
