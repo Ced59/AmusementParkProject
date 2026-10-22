@@ -70,14 +70,6 @@
   overflow-wrap: anywhere;
 }
 
-.standalone-hero p {
-  max-width: 72ch;
-  margin: 0;
-  color: var(--app-text-muted);
-  font-size: clamp(16px, 1.5vw, 19px);
-  line-height: 1.52;
-}
-
 .standalone-hero__chips,
 .standalone-hero__actions {
   display: flex;

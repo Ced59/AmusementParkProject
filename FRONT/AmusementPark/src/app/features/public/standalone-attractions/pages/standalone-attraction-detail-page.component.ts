@@ -49,7 +49,6 @@ interface StandaloneAttractionPublicCopy {
   location: string;
   details: string;
   description: string;
-  visibleDataOnly: string;
   country: string;
   city: string;
   address: string;
@@ -78,7 +77,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Localisation',
     details: 'Détails',
     description: 'Description',
-    visibleDataOnly: 'Données publiques disponibles',
     country: 'Pays',
     city: 'Ville',
     address: 'Adresse',
@@ -105,7 +103,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Location',
     details: 'Details',
     description: 'Description',
-    visibleDataOnly: 'Available public data',
     country: 'Country',
     city: 'City',
     address: 'Address',
@@ -132,7 +129,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Ubicación',
     details: 'Detalles',
     description: 'Descripción',
-    visibleDataOnly: 'Datos públicos disponibles',
     country: 'País',
     city: 'Ciudad',
     address: 'Dirección',
@@ -159,7 +155,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Standort',
     details: 'Details',
     description: 'Beschreibung',
-    visibleDataOnly: 'Verfügbare öffentliche Daten',
     country: 'Land',
     city: 'Stadt',
     address: 'Adresse',
@@ -186,7 +181,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Posizione',
     details: 'Dettagli',
     description: 'Descrizione',
-    visibleDataOnly: 'Dati pubblici disponibili',
     country: 'Paese',
     city: 'Città',
     address: 'Indirizzo',
@@ -213,7 +207,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Locatie',
     details: 'Details',
     description: 'Beschrijving',
-    visibleDataOnly: 'Beschikbare openbare gegevens',
     country: 'Land',
     city: 'Stad',
     address: 'Adres',
@@ -240,7 +233,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Lokalizacja',
     details: 'Szczegóły',
     description: 'Opis',
-    visibleDataOnly: 'Dostępne dane publiczne',
     country: 'Kraj',
     city: 'Miasto',
     address: 'Adres',
@@ -267,7 +259,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Localização',
     details: 'Detalhes',
     description: 'Descrição',
-    visibleDataOnly: 'Dados públicos disponíveis',
     country: 'País',
     city: 'Cidade',
     address: 'Endereço',
