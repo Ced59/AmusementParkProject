@@ -1,0 +1,415 @@
+{
+  "parkId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+  "entryId": "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+  "conversation": "Conversation France",
+  "contentAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "auditAtUtc": "2026-10-22T23:50:01.200559+00:00",
+  "freshExportAtUtc": "2026-10-22T23:38:00.7044953Z",
+  "freshExportSha256": "4e539f21b1e78ecddb4caa3ed95917d59991cdba58e32b78dc79bc8b2e5da6ed",
+  "freshReconciliationDifferences": 0,
+  "coverage": {
+    "freshAtUtc": "2026-10-22T23:38:00.7044953Z",
+    "items": 14,
+    "zones": 0,
+    "attractions": 8,
+    "attractionStatuses": {
+      "Removed": 1,
+      "ClosedDefinitively": 7
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 8,
+    "attractionsWithImage": 8,
+    "attractionImageGaps": [],
+    "ownedImages": 23,
+    "sharedImages": 3,
+    "itemImageCounts": [
+      {
+        "id": "a8c6dc78-4ac7-4c80-88fb-1d00d2f4d9c5",
+        "name": "Aire de Pique-Nique",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "2546a315-1530-4fed-abf6-19f1c34b3da8",
+        "name": "Enclos des Animaux",
+        "category": "Animal",
+        "images": 0
+      },
+      {
+        "id": "27b7d5ee-2731-4e62-9122-6761725cc4b0",
+        "name": "Entrée du Parc",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "b5ac93b5-483a-441d-8609-75c062f7c302",
+        "name": "Grand 8 TGV",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "6a682c97-4af5-4a18-9f28-3c12f12a49f0",
+        "name": "La Piste de Motos",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "7aa678bd-90a9-4af8-81f8-52b2a3b28827",
+        "name": "La Rivière aux Bûches",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "22f982a9-4816-438a-aa18-dddb4aa9cafc",
+        "name": "Le Petit Train Campagnard",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "994b3905-cded-4045-8e5a-3d183fc05122",
+        "name": "Les Bateaux Tamponneurs",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4e615c33-d4fe-448b-8e4d-e240b54b89d6",
+        "name": "Les Chaises Volantes",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "65bf5c5e-6a45-4fed-b2dd-2b7613e8b60a",
+        "name": "Mini-Golf",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a95d9f08-d5c7-4508-8aa7-18d449530c4d",
+        "name": "Parking",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "66417e59-1fe7-495a-b6b9-773897dcfb1a",
+        "name": "Petits Jeux",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "54e0b278-7b0e-4158-b854-8b8e3e0aa2b2",
+        "name": "Restaurant Le Florida",
+        "category": "Restaurant",
+        "images": 3
+      },
+      {
+        "id": "8d2e26ab-81ef-492b-a064-d7cc5f290ea2",
+        "name": "Volière",
+        "category": "Animal",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 2,
+    "geolocationGaps": [
+      {
+        "id": "a8c6dc78-4ac7-4c80-88fb-1d00d2f4d9c5",
+        "name": "Aire de Pique-Nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "2546a315-1530-4fed-abf6-19f1c34b3da8",
+        "name": "Enclos des Animaux",
+        "category": "Animal",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "27b7d5ee-2731-4e62-9122-6761725cc4b0",
+        "name": "Entrée du Parc",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "6a682c97-4af5-4a18-9f28-3c12f12a49f0",
+        "name": "La Piste de Motos",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "7aa678bd-90a9-4af8-81f8-52b2a3b28827",
+        "name": "La Rivière aux Bûches",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "22f982a9-4816-438a-aa18-dddb4aa9cafc",
+        "name": "Le Petit Train Campagnard",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "994b3905-cded-4045-8e5a-3d183fc05122",
+        "name": "Les Bateaux Tamponneurs",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4e615c33-d4fe-448b-8e4d-e240b54b89d6",
+        "name": "Les Chaises Volantes",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "65bf5c5e-6a45-4fed-b2dd-2b7613e8b60a",
+        "name": "Mini-Golf",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a95d9f08-d5c7-4508-8aa7-18d449530c4d",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "66417e59-1fe7-495a-b6b9-773897dcfb1a",
+        "name": "Petits Jeux",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8d2e26ab-81ef-492b-a064-d7cc5f290ea2",
+        "name": "Volière",
+        "category": "Animal",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 6,
+    "parkHistory": 4,
+    "itemHistory": 2,
+    "historyWithSource": 6,
+    "historyWithImage": 6,
+    "articles": 1,
+    "officialMaps": [
+      {
+        "year": 2016,
+        "format": "Image",
+        "language": "fr"
+      }
+    ],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true
+  },
+  "publicTextReview": {
+    "languages": [
+      "de",
+      "en",
+      "es",
+      "fr",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "method": "Everyfinaltext authored/readin8languages; fullactualPreviews read, freshfull-export324contentgroups exactmatchacceptedcopy, freshFrenchcorpusreadinfullandallsharedSoquettextsread8languages. Officialmapand16access-evidencesummariesincluded. Rawencoding, strippedparagraphs,14wordcross-corpussequences,andmanualsemanticreviewpass; no unresolvedformulaicwording. Accessprovenancecorrectionreceiptverifiedafterexport.",
+    "sourceReviewFiles": [
+      "01-core-personal-preview-review.json",
+      "04-park-description-personal-preview-review.json",
+      "09-access-provenance-personal-preview-review.json",
+      "04-items-services-personal-preview-review.json",
+      "03-items-personal-preview-review.json",
+      "04-items-garden-personal-preview-review.json",
+      "04-items-rail-personal-preview-review.json",
+      "08-complete-history-v2-personal-preview-review.json",
+      "05-reference-map-personal-preview-review.json",
+      "04-items-small-rides-personal-preview-review.json"
+    ],
+    "encodingIssues": 0,
+    "paragraphDuplicateGroups": 0,
+    "mechanicalFlags": 0,
+    "crossCorpusSequenceGroups": 0,
+    "personalReviewAtUtc": "2026-10-22T23:42:24.980611+00:00",
+    "reviewedActualCorpusRows": 818,
+    "freshComparedGroups": 324,
+    "accessAndMapTextIncluded": true
+  },
+  "sourceGaps": "florida-parc-source-gaps.json",
+  "prepublicationCompleteness": {
+    "completenessScore": 88,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 89,
+    "earnedPoints": 78,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "finalEditorialCorrections": {
+    "operationId": "d554eddf-962a-417b-b591-af5c8975f2ec",
+    "changedPublicTexts": 41,
+    "languagesReviewed": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "originalImagesViewedAgain": 4,
+    "fullCorpusRows": 818,
+    "crossCorpusSentenceOrNineWordMatches": 0,
+    "encodingIssues": 0,
+    "mechanicalFlags": 0,
+    "paragraphDuplicates": 0,
+    "allActualDiffRead": true
+  },
+  "finalAuditPassed": true,
+  "finalAuditAtUtc": "2026-10-22T23:57:38.925648Z",
+  "lastDataIntegrationAtUtc": "2026-10-22T23:52:31.1806907Z",
+  "realPostPublicationScore": {
+    "completenessScore": 98,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 101,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/park/b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5/florida-parc",
+  "publicationVerification": {
+    "officialSearchVisible": true,
+    "officialSearchStatus": "ClosedDefinitively",
+    "officialSearchReview": "Validated",
+    "mobilePagesChecked": 22,
+    "mobileLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "renderErrors": 0,
+    "technicalIdentifiersExposed": 0,
+    "brokenImages": 0,
+    "horizontalOverflowPages": 0,
+    "screenshotsPersonallyViewed": [
+      "park-fr",
+      "article-florida-closure-2016-fr",
+      "map-fr"
+    ],
+    "normalHistoryClick": {
+      "checkedAtUtc": "2026-10-22T23:57:23.828986+00:00",
+      "url": "https://amusement-parks.fun/fr/park/b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5/florida-parc",
+      "apiResponses": [
+        {
+          "url": "https://amusement-parks.fun/api/parks/b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5/detail-summary",
+          "status": 200,
+          "hasPublicHistory": true,
+          "requestLanguage": "fr-FR",
+          "age": "96"
+        }
+      ],
+      "status": 200,
+      "historyLinkCount": 1,
+      "parkTitle": [
+        "Florida Parc"
+      ],
+      "historyHref": "/fr/park/b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5/florida-parc/history",
+      "destination": "https://amusement-parks.fun/fr/park/b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5/florida-parc/history",
+      "historyTitle": [
+        "L'histoire de Florida Parc"
+      ],
+      "historyBodyChars": 1746
+    },
+    "officialMapIntegrity": [
+      {
+        "id": "florida-parc-plan-2016-fr",
+        "year": 2016,
+        "sourcePageUrl": "https://web.archive.org/web/20160424091639id_/http://www.floridaparc.com:80/informations/",
+        "matchingOriginalUrl": "https://web.archive.org/web/20160619192417id_/http://www.floridaparc.com/wp-content/uploads/2016/03/plan_parc.jpg",
+        "checkedAtUtc": "2026-10-22T23:51:01.585256+00:00",
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 115733,
+        "exportedSizeMatches": true,
+        "sha256": "072cad779d538ba93f1688a2ed47045a2f4bd9cb0134ab1fada6a4d887d47701",
+        "sourceBytesMatch": true
+      }
+    ],
+    "historyPublishedFacts": 6,
+    "historySourcedFacts": 6,
+    "historyMajorFacts": 5,
+    "historyCanonicalRepairOperationId": "564bc67d-39a0-4f4c-be51-57b8c35204a4",
+    "historicalYearExplorerGap": "Aucune année-clé indexable. Le lien Histoire de la fiche normale, la chronologie publique et l’article sont vérifiés séparément.",
+    "idempotenceOperationId": "78e4183d-36cd-47eb-a67a-8caafe8ce322",
+    "idempotenceCounts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 50,
+      "warnings": 0,
+      "errors": 0
+    },
+    "serverTimestampNormalization": {
+      "observedInPreview": "9ceb2e97-443c-4f78-affe-a7b30afe1e43",
+      "reason": "Persistence stores source retrieval/verification times at millisecond precision; align local replay to actual old values, no data Apply required.",
+      "fields": [
+        {
+          "itemId": "6a682c97-4af5-4a18-9f28-3c12f12a49f0",
+          "field": "collectedAtUtc",
+          "submitted": "2026-10-22T23:32:28.140661+00:00",
+          "serverPersisted": "2026-10-22T23:32:28.140Z"
+        },
+        {
+          "itemId": "6a682c97-4af5-4a18-9f28-3c12f12a49f0",
+          "field": "verifiedAtUtc",
+          "submitted": "2026-10-22T23:32:28.140661+00:00",
+          "serverPersisted": "2026-10-22T23:32:28.140Z"
+        },
+        {
+          "itemId": "994b3905-cded-4045-8e5a-3d183fc05122",
+          "field": "collectedAtUtc",
+          "submitted": "2026-10-22T23:32:28.140661+00:00",
+          "serverPersisted": "2026-10-22T23:32:28.140Z"
+        },
+        {
+          "itemId": "994b3905-cded-4045-8e5a-3d183fc05122",
+          "field": "verifiedAtUtc",
+          "submitted": "2026-10-22T23:32:28.140661+00:00",
+          "serverPersisted": "2026-10-22T23:32:28.140Z"
+        }
+      ]
+    },
+    "facebookPublicationId": "46a5488e02b6416f96a0144cc77cb5dd",
+    "facebookStatus": "Published",
+    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122124219921424431",
+    "facebookAction": "Annonce existante confirmée Published après publication du parc ; aucun doublon envoyé."
+  },
+  "proofSha256": {
+    "09-fresh-full-export.json": "26c8e9f237091fd4440bf76943d2959ff5760d8a64fc9a40306e7da7986716ad",
+    "09-content-audit.json": "ee4c47925cb751b2f91033033a5b24ddd2b391bd70468ccb7e40dea67f7d847f",
+    "09-consolidation-proof.json": "6a00805832524add5929c34fe0bf92fec4ea87bb134cdf53b7ae1228452e6c67",
+    "09-published-completeness.json": "8e7ab97257413d70a73dc2f94529c34fd4b0edf37d6d513dde21a660183e2f19",
+    "09-final-idempotence-v2.preview.json": "01a01138af379d700705cb69e11fb4ddd86d1a22c64586cec6eb08b290df9f94",
+    "09-history-diagnostics-after-repair.json": "63472a822c7dc01de067c876d8780ea8cf1f77ab7317a6038c808f7d1b40cd85",
+    "09-facebook-resolve.json": "7e30a7d34ee1f1bbde830f4e70511dfa6af8c7dc3af946e7cdd2f3c32b3752a7",
+    "09-history-canonical-repair-apply.receipt.json": "052ca5dcee702ea8c56db6f0ca9adab0cd81caef89c1ade56f4f05a60e211aa0",
+    "09-final-search-exact.json": "8c8f425b86d421c54a986c237d34bd5e7749efc2ae1c8820f1acec947b1dbcea",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "0ea9cdd2e6537664a8cab43264712b8a7c2e0cc3033ceded61393f9b0df72c97",
+    "public-verification/maps-public-integrity.json": "4ebb7a6432330bae7f9d55acc936e0889bc91c261ed3cbe7e9f46d587ca6fab3",
+    "public-verification/api-report.json": "37cd2fc42cf9eb8680dbe08195896abc88d3f21686ec0342716dbd91f5a8d91b",
+    "public-verification/normal-fr-history-click.json": "a9c265e795f9c1deba0523a9d27fdee48dd97041dbdb36188cd7492d0ab1a1be"
+  }
+}

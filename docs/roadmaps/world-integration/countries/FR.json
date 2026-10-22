@@ -6225,19 +6225,390 @@
       "locality": null,
       "siteId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22T23:57:38.925648Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "ClosedDefinitively — fermeture en octobre 2016 ; le restaurant demeure sur place sans réouverture du parc.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-22T23:52:31.180Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-52d3a9b2-2f16-43c1-bd9d-6f4a4fcb5e07",
+          "appliedAt": "2026-10-22T22:58:54.987Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-52d3a9b2-2f16-43c1-bd9d-6f4a4fcb5e07",
+          "auditEvidence": null,
+          "summary": "Florida Parc : identité historique, fermeture en octobre 2016, adresse et dernier exploitant vérifiés."
+        },
+        {
+          "eventId": "apply-1f2a73ae-8d26-417d-a789-0fec165fe0ed",
+          "appliedAt": "2026-10-22T23:02:57.400Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-1f2a73ae-8d26-417d-a789-0fec165fe0ed",
+          "auditEvidence": null,
+          "summary": "Florida Parc : inventaire historique de 14 lieux, alias rapprochés et dates du Grand 8 TGV corrigées sur sources."
+        },
+        {
+          "eventId": "apply-7abae0a7-00aa-42aa-9238-51f4ff636e89",
+          "appliedAt": "2026-10-22T23:06:11.405Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-7abae0a7-00aa-42aa-9238-51f4ff636e89",
+          "auditEvidence": null,
+          "summary": "Florida Parc : description historique du parc rédigée et relue dans les huit langues."
+        },
+        {
+          "eventId": "apply-e909c806-d3d0-4f79-b4bc-b79e6285ee14",
+          "appliedAt": "2026-10-22T23:13:17.501Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-e909c806-d3d0-4f79-b4bc-b79e6285ee14",
+          "auditEvidence": null,
+          "summary": "Grand 8 TGV et Petit Train : descriptions historiques relues dans les huit langues."
+        },
+        {
+          "eventId": "apply-7c20a321-1c06-430e-bfa8-690afa59282d",
+          "appliedAt": "2026-10-22T23:17:38.937Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-7c20a321-1c06-430e-bfa8-690afa59282d",
+          "auditEvidence": null,
+          "summary": "Motos, bateaux, rivière et chaises : 32 descriptions historiques sourcées et relues."
+        },
+        {
+          "eventId": "apply-308d72f8-0326-453b-b8f4-69c9d8369c06",
+          "appliedAt": "2026-10-22T23:19:33.271Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-308d72f8-0326-453b-b8f4-69c9d8369c06",
+          "auditEvidence": null,
+          "summary": "Mini-golf, jeux, enclos et volière : descriptions huit langues adaptées aux archives disponibles."
+        },
+        {
+          "eventId": "apply-b06a76c3-fa8c-410f-8d89-0ffc9e55d772",
+          "appliedAt": "2026-10-22T23:20:39.589Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-b06a76c3-fa8c-410f-8d89-0ffc9e55d772",
+          "auditEvidence": null,
+          "summary": "Restaurant et services : descriptions huit langues, distinction entre parc fermé et restaurant maintenu."
+        },
+        {
+          "eventId": "import-photo-608e019e21044a7dbd4597301368a717-2026-10-22T232240.060Z",
+          "appliedAt": "2026-10-22T23:22:40.060Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-608e019e21044a7dbd4597301368a717-2026-10-22T232240.060Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1cbd20d64c6e43a5b06106492ede2c8a-2026-10-22T232308.405Z",
+          "appliedAt": "2026-10-22T23:23:08.405Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-1cbd20d64c6e43a5b06106492ede2c8a-2026-10-22T232308.405Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-entrance, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-35d89870246942df86d8fd419a529d5b-2026-10-22T232343.108Z",
+          "appliedAt": "2026-10-22T23:23:43.108Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-35d89870246942df86d8fd419a529d5b-2026-10-22T232343.108Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-trains, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5b6541bdb25d427481ed489430afb756-2026-10-22T232409.160Z",
+          "appliedAt": "2026-10-22T23:24:09.160Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-5b6541bdb25d427481ed489430afb756-2026-10-22T232409.160Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-restaurant-day, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-30119e707cae4c4f91cff634e9ec824e-2026-10-22T232430.619Z",
+          "appliedAt": "2026-10-22T23:24:30.619Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-30119e707cae4c4f91cff634e9ec824e-2026-10-22T232430.619Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-restaurant-night, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6ac27d8ff7a44ce38dd784d4d532a566-2026-10-22T232445.291Z",
+          "appliedAt": "2026-10-22T23:24:45.291Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-6ac27d8ff7a44ce38dd784d4d532a566-2026-10-22T232445.291Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-anniversary, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9b6f3f37cb654134a7c921816c75f07c-2026-10-22T232552.583Z",
+          "appliedAt": "2026-10-22T23:25:52.583Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-9b6f3f37cb654134a7c921816c75f07c-2026-10-22T232552.583Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tgv-bench, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-81dd3ef8f3514cafa6a18a09f48a980e-2026-10-22T232607.454Z",
+          "appliedAt": "2026-10-22T23:26:07.454Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-81dd3ef8f3514cafa6a18a09f48a980e-2026-10-22T232607.454Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tgv-riders, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c86a63c10c7348e38ab9f3f8e2f7d265-2026-10-22T232623.168Z",
+          "appliedAt": "2026-10-22T23:26:23.168Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-c86a63c10c7348e38ab9f3f8e2f7d265-2026-10-22T232623.168Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-train-restaurant, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f8d6cd7e6c7240f5ac56f533c7365fa0-2026-10-22T232713.042Z",
+          "appliedAt": "2026-10-22T23:27:13.042Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-f8d6cd7e6c7240f5ac56f533c7365fa0-2026-10-22T232713.042Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-train-garden, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4a3b549539954cd3bc51abef1a02a1b7-2026-10-22T232735.473Z",
+          "appliedAt": "2026-10-22T23:27:35.473Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-4a3b549539954cd3bc51abef1a02a1b7-2026-10-22T232735.473Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-motorbikes, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ab4edcb0c36042daa8774af80c093743-2026-10-22T232818.855Z",
+          "appliedAt": "2026-10-22T23:28:18.855Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-ab4edcb0c36042daa8774af80c093743-2026-10-22T232818.855Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-animal-boats, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ca9e37f7c3584574ab3a3419d0f2a643-2026-10-22T232834.979Z",
+          "appliedAt": "2026-10-22T23:28:34.979Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-ca9e37f7c3584574ab3a3419d0f2a643-2026-10-22T232834.979Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-log-river, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3014dc0350254a14be4f9b3090418dc7-2026-10-22T232850.323Z",
+          "appliedAt": "2026-10-22T23:28:50.323Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-3014dc0350254a14be4f9b3090418dc7-2026-10-22T232850.323Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-circus-chairs, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6f275c7fe19042328e20fd73bbd7da3f-2026-10-22T232905.510Z",
+          "appliedAt": "2026-10-22T23:29:05.510Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-6f275c7fe19042328e20fd73bbd7da3f-2026-10-22T232905.510Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mini-golf, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1eba541f76aa4385a7be0a6492d1ec16-2026-10-22T232919.009Z",
+          "appliedAt": "2026-10-22T23:29:19.009Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-1eba541f76aa4385a7be0a6492d1ec16-2026-10-22T232919.009Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-playground, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a93c5119bcb34793b7add16c34ceddae-2026-10-22T232955.931Z",
+          "appliedAt": "2026-10-22T23:29:55.931Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-a93c5119bcb34793b7add16c34ceddae-2026-10-22T232955.931Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-restaurant-room, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e5b1ab6b9fd44e65955e8c62ebf59c6f-2026-10-22T233011.196Z",
+          "appliedAt": "2026-10-22T23:30:11.196Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-e5b1ab6b9fd44e65955e8c62ebf59c6f-2026-10-22T233011.196Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-restaurant-terrace, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b1e6839c38484f08b88ee029c64f6fab-2026-10-22T233026.862Z",
+          "appliedAt": "2026-10-22T23:30:26.862Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-b1e6839c38484f08b88ee029c64f6fab-2026-10-22T233026.862Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-restaurant-salad, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-44d1e8b40bcf45c3974b363390f711dd-2026-10-22T233047.367Z",
+          "appliedAt": "2026-10-22T23:30:47.367Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-44d1e8b40bcf45c3974b363390f711dd-2026-10-22T233047.367Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-parking-sign, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-95e85b8d5ea94f409c05aed0f0f4338f-2026-10-22T233108.588Z",
+          "appliedAt": "2026-10-22T23:31:08.588Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-95e85b8d5ea94f409c05aed0f0f4338f-2026-10-22T233108.588Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-entrance-arch, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-map-florida-parc-plan-2016-fr-cb0d03c7a441580b",
+          "appliedAt": "2026-10-22T23:31:55.456Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-map-florida-parc-plan-2016-fr-cb0d03c7a441580b",
+          "auditEvidence": null,
+          "summary": "Plan officiel 2016 : JPEG original stocké via ImportOfficialMap ; métadonnées et publication encore à appliquer."
+        },
+        {
+          "eventId": "apply-48e9aad6-1e1f-4431-8ae4-50b46fe591a9",
+          "appliedAt": "2026-10-22T23:32:56.840Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-48e9aad6-1e1f-4431-8ae4-50b46fe591a9",
+          "auditEvidence": null,
+          "summary": "Exploitant décrit dans huit langues ; plan officiel 2016 original rattaché avec titres et alternatives localisés."
+        },
+        {
+          "eventId": "apply-b4688e7d-9eab-420c-a229-24eee2db3768",
+          "appliedAt": "2026-10-22T23:35:25.161Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-b4688e7d-9eab-420c-a229-24eee2db3768",
+          "auditEvidence": null,
+          "summary": "Six jalons historiques sourcés et illustrés, avec article développé dans huit langues ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e7ec19d99db54fb5881a804448cb6872-2026-10-22T233637.470Z",
+          "appliedAt": "2026-10-22T23:36:37.470Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-e7ec19d99db54fb5881a804448cb6872-2026-10-22T233637.470Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-grand8-garden, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a7aca20bd3364f278e7fe75a28ffb978-2026-10-22T233657.213Z",
+          "appliedAt": "2026-10-22T23:36:57.213Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#import-photo-a7aca20bd3364f278e7fe75a28ffb978-2026-10-22T233657.213Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-petit-train-grand8, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-7b0ecd5d-8544-46d7-952b-2e3161db9477",
+          "appliedAt": "2026-10-22T23:40:34.857Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-7b0ecd5d-8544-46d7-952b-2e3161db9477",
+          "auditEvidence": null,
+          "summary": "Audit : provenance officielle et résumés huit langues des deux anciennes conditions d’âge ; valeurs inchangées."
+        },
+        {
+          "eventId": "apply-d554eddf-962a-417b-b591-af5c8975f2ec",
+          "appliedAt": "2026-10-22T23:49:39.685Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-d554eddf-962a-417b-b591-af5c8975f2ec",
+          "auditEvidence": null,
+          "summary": "Florida Parc : suppression des reprises entre descriptions, chronologie et légendes, relue dans les huit langues sur les photographies originales."
+        },
+        {
+          "eventId": "apply-564bc67d-39a0-4f4c-be51-57b8c35204a4",
+          "appliedAt": "2026-10-22T23:52:31.180Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-564bc67d-39a0-4f4c-be51-57b8c35204a4",
+          "auditEvidence": null,
+          "summary": "Florida Parc : réparation canonique des six faits historiques après publication du parc ; contenu exact de l’export officiel History conservé."
+        },
+        {
+          "eventId": "completion-564bc67d-39a0-4f4c-be51-57b8c35204a4",
+          "appliedAt": "2026-10-22T23:52:31.180Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-receipts.json#apply-564bc67d-39a0-4f4c-be51-57b8c35204a4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-final-audit.json",
+          "summary": "Audit final à 98/100 sans bloqueur : 14 lieux dont 8 attractions illustrées, 23 médias propres, six faits historiques, article en huit langues, plan officiel 2016, site public et annonce Facebook Published confirmés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6261,7 +6632,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-final-audit.json"
     },
     {
       "entryId": "FR-park-ea22716e-64d2-44ef-b068-6b26ba5cf9d7",
