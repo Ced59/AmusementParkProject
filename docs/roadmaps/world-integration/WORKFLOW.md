@@ -16,6 +16,10 @@ Ce registre situé dans le dépôt GitHub est la source de vérité de l’inven
 
 La date `lastDataIntegrationAt` est le maximum des dates réelles `integrationHistory[].appliedAt`. Elle ne change pas pour une recherche, un audit seul, une réservation, une modification de ce fichier ou une publication sans nouvelle donnée. Une intégration partielle réussie met déjà à jour cette date, sans déclarer le dossier achevé. Les anciennes dates inconnues restent nulles jusqu’à récupération d’une preuve ; ne pas leur attribuer le 22 octobre 2026.
 
+**Aucune montée de version pour une mise à jour du backlog seule**, y compris ses preuves d’intégration et ses règles de suivi. Regrouper ces changements dans une PR documentaire ; ne pas modifier `release-version.json`. Une modification distincte du code du site conserve son propre cycle de version.
+
+Lorsqu’elles sont autorisées, consigner séparément la publication du site et l’annonce Facebook : statut réel, date, URL publique et identifiant de preuve. Une annonce Facebook n’est réussie que lorsque le client officiel renvoie `Published` et son lien ; ne pas confondre un brouillon résolu avec un post publié. Ces dates restent distinctes de `lastDataIntegrationAt`, et la preuve existante doit être consultée avant tout nouvel envoi.
+
 ## Qualification des standalone
 
 Consulter aussi [STANDALONE-AUDIT.md](STANDALONE-AUDIT.md). Le compteur des candidates sans fiche ne couvre pas à lui seul le travail standalone : examiner les pistes présentes dans des fiches Park et les dossiers sans ID dont l’identité ou le rattachement reste à résoudre. Ces compteurs sont des sous-ensembles, pas de nouvelles lignes à additionner. Conserver les références `standaloneAssessment.attractions` ; une installation constructeur peut être un parkItem, une modernisation ou un alias. Réserver le dossier existant avant de créer une nouvelle identité.

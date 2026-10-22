@@ -1,0 +1,312 @@
+{
+  "name": "Flathead Lake Alpine Coaster",
+  "standaloneAttractionId": "1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213",
+  "qualification": "Attraction mécanique fixe, visitable avec son propre billet. Mini-golf, lavage de gemmes, souvenirs et combinaisons de ces activités exclus du graphe autonome. Pas de parc synthétique, aucun legacy trouvé.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 4,
+    "historyEvents": 1,
+    "articles": 0,
+    "weeklyDays": 7,
+    "datedCalendarDays": 0,
+    "admissionOffers": 6
+  },
+  "gaps": [
+    "Ouverture : 27 juin 2023 retenu d’après le reportage contemporain du Daily Inter Lake, contre 27 mai dans RCDB ; validation routière et accueil des visiteurs le mardi 27 juin concordants.",
+    "Historique limité au jalon d’ouverture vérifié ; aucune chronologie artificielle. Photo de contexte actuelle, pas une photo prétendue de l’inauguration.",
+    "Longueur et vitesse non renseignées : mesures circuit/descente non concordantes et absence de valeur primaire actuelle vérifiée.",
+    "Personne morale de l’exploitant non reliée à une nouvelle référence globale ; dénomination du site et références constructeur conservées dans les sources.",
+    "Horaires hebdomadaires seuls, sans période civile publiée. Formule une heure limitée à septembre–mai dans les conditions, aucune année inventée.",
+    "Billetterie dynamique sans montants accessibles dans le document consulté : tarifs du tableau officiel intégrés au guichet, aucun tarif en ligne recopié par supposition.",
+    "Les conditions d’accès sont stockées ; le panneau public standalone ne les affiche pas actuellement.",
+    "Le composant public affiche les libellés et montants sans les conditions détaillées : âges, saison de la formule une heure et frais carte exclus explicités dans les libellés avant Facebook. Réduction et autres notes détaillées restent dans les données et sur la billetterie officielle."
+  ],
+  "sources": [
+    "https://www.flatheadlakealpinecoaster.com/alpine-coaster",
+    "https://www.flatheadlakealpinecoaster.com/ride-requirements",
+    "https://www.flatheadlakealpinecoaster.com/pricing",
+    "https://www.flatheadlakealpinecoaster.com/buytickets",
+    "https://www.flatheadlakealpinecoaster.com/hours-location",
+    "https://data.visitmt.com/data/site/22192",
+    "https://dailyinterlake.com/news/2023/jun/28/alpine-coaster-near-lakeside-opens/",
+    "https://www.kpax.com/news/local-news/flathead-county/new-alpine-coaster-up-and-running-in-lakeside",
+    "https://rcdb.com/20714.htm",
+    "https://www.wiegandslide.com/en/company-profile.html"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-22T21:20:35.588327+00:00",
+    "exportSha256": "fe897d307d678a3581fdf88526aa04c0777538a89a03df5aecc3ed7f2bed80a1",
+    "localizedStringsReviewed": 320,
+    "localizedGroups": 40,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "publicationNotes": [
+    "Images, histoire et fiche publiées après audit ; historique canonique resynchronisé après visibilité. Cette synchronisation ne constitue pas une nouvelle intégration de données.",
+    "Pages de l’attraction, de son historique et de ses articles contrôlées publiquement dans les huit langues. Le libellé anglais Operating est une traduction valide du statut."
+  ],
+  "idempotenceCheck": {
+    "operationId": "887046a0-9e3d-45e7-813c-8a95f8c0d3ce",
+    "previewedAtUtc": "2026-10-22T21:24:10.0766527Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 7,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-22T21:21:16.800249+00:00",
+  "facebook": {
+    "id": "e8000974f0134d268cd46ef2885a0377",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-22T21:24:52.2115357Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124208893424431",
+    "externalPostId": "1285475681307050_122124208893424431",
+    "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-22T21:21:16.800249+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-22T21:18:19.239344+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history",
+        "articles": [],
+        "textLength": 695
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history",
+        "articles": [],
+        "textLength": 634
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history",
+        "articles": [],
+        "textLength": 721
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history",
+        "articles": [],
+        "textLength": 715
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history",
+        "articles": [],
+        "textLength": 686
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history",
+        "articles": [],
+        "textLength": 705
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history",
+        "articles": [],
+        "textLength": 673
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster/history",
+        "articles": [],
+        "textLength": 717
+      }
+    ]
+  },
+  "discoveryChecks": {
+    "checkedAtUtc": "2026-10-22T21:37:21.532405+00:00",
+    "evidence": "discovery-checks.json",
+    "checks": [
+      {
+        "entry": "flathead",
+        "mode": "all",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+            "text": "Flathead Lake Alpine CoasterLakesideÉtats-UnisLakeside - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      },
+      {
+        "entry": "flathead",
+        "mode": "standaloneAttractions",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+            "text": "Flathead Lake Alpine CoasterLakesideÉtats-UnisLakeside - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      },
+      {
+        "entry": "flathead",
+        "mode": "attractionsWithStandalone",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+            "text": "Flathead Lake Alpine CoasterLakesideÉtats-UnisLakeside - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213/flathead-lake-alpine-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      }
+    ]
+  }
+}

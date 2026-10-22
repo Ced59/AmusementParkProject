@@ -1,0 +1,162 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "d6a155bf-c0c2-4f39-ba52-35233484b6cf",
+    "appliedAtUtc": "2026-10-22T20:44:42.9553018Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-access.apply",
+    "operationId": "70d6226c-b210-4e60-b242-6135eca42097",
+    "appliedAtUtc": "2026-10-22T20:47:32.8756487Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-hours.apply",
+    "operationId": "0f349534-99d5-45a7-9d7d-4974d00810fc",
+    "appliedAtUtc": "2026-10-22T20:49:24.8106245Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-history.apply",
+    "operationId": "5fab63f9-7491-4c50-8007-41a47293da5a",
+    "appliedAtUtc": "2026-10-22T20:55:00.5231773Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 3,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-summary.apply",
+    "operationId": "ee40a995-91fd-43a7-bcd2-604e64ec4998",
+    "appliedAtUtc": "2026-10-22T20:56:38.5770631Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "8a2a4406-b040-4967-a8b6-8537226391dd",
+    "appliedAtUtc": "2026-10-22T20:58:59.4432807Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "e96f4d23-472d-4ef6-ae30-c48f7d010a3b",
+    "appliedAtUtc": "2026-10-22T21:00:33.910385Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "1862e2d6-d5e5-4d15-b52c-44f06f5aa133",
+    "appliedAtUtc": "2026-10-22T21:01:14.8096484Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "10-repair-history.apply",
+    "operationId": "f8b24823-546c-47d8-9e2e-a8deeddc52a8",
+    "appliedAtUtc": "2026-10-22T21:26:14.1773016Z",
+    "targetStandaloneAttractionId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "fbba7d31225e49189cf3df9421569f6d",
+    "ownerId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "sourceUrl": "https://www.smokymountainalpinecoaster.com/uploads/6/4/1/9/6419391/___4212326_orig.jpg",
+    "updatedAt": "2026-10-22T20:47:57.401Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "08b63464c9404e2aa4ae7b9c52601595",
+    "ownerId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+    "sourceUrl": "https://www.smokymountainalpinecoaster.com/uploads/6/4/1/9/6419391/___6775695_orig.jpg",
+    "updatedAt": "2026-10-22T20:48:28.766Z",
+    "isPublished": false
+  }
+]
