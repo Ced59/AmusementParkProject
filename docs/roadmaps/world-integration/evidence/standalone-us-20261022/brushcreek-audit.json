@@ -1,0 +1,322 @@
+{
+  "name": "Brush Creek Holl'r",
+  "standaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+  "qualification": "Mountain coaster mécanique fixe, site et billetterie propres, voisin de Glade Springs mais sans parc parent artificiel ; recherches Park et Standalone par variantes sans résultat.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 10,
+    "historyEvents": 2,
+    "articles": 1,
+    "weeklyDays": 0,
+    "datedCalendarDays": 10,
+    "admissionOffers": 16
+  },
+  "gaps": [
+    "Longueur non intégrée : FAQ officielle (3 200 pieds) et RCDB (3 400 pieds) divergent. La vitesse de 30 mph provient de la FAQ officielle.",
+    "Calendrier officiel vérifié uniquement du 22 au 31 octobre 2026. Les pages du site et du complexe associé ne concordent pas sur les horaires habituels ; aucune règle postérieure au 31 octobre n’a été extrapolée.",
+    "Exploitant juridique non relié à une référence mondiale : Brush Creek Hollr LLC figure dans un permis de mars 2025, mais son rôle exact comme opérateur en octobre 2026 reste à confirmer.",
+    "La photo de la station associée à l’ouverture a été prise en septembre 2025 et est explicitement présentée comme image de contexte ; l’image Haunted Holl’r montre octobre 2025.",
+    "Le panneau public standalone ne rend pas encore les conditions d’accès détaillées ; elles restent enregistrées dans le graphe et la FAQ officielle.",
+    "Le premier passage du lot météo après publication devra être observé ; une carte absente avant ce passage n’est pas une lacune du graphe."
+  ],
+  "sources": [
+    "https://brushcreekhollr.com/",
+    "https://brushcreekhollr.com/faqs/",
+    "https://brushcreekhollr.com/hours-and-directions/",
+    "https://brushcreekhollr.com/gallery/",
+    "https://brushcreekhollr.com/haunted-hollr-info/",
+    "https://www.gladesprings.com/adventures/brushcreek-hollr-mountain-coaster/",
+    "https://www.wvva.com/2025/07/03/west-virginias-only-mountain-coaster-set-open-july-4/",
+    "https://www.wvva.com/2024/11/15/work-mountain-coaster-continues-down-right-track/",
+    "https://www.wtap.com/2025/11/05/one-tank-trip-west-virginias-first-mountain-coaster/",
+    "https://rcdb.com/21710.htm"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-22T22:14:14.444537+00:00",
+    "exportSha256": "ea363351db5c832c1cd68a77bf5a15d105dda44cf4d55c3a28499101aa3cfe8c",
+    "localizedStringsReviewed": 688,
+    "localizedGroups": 86,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "publicationNotes": [
+    "Images, historique et fiche publiés après audit ; vérifier le rendu public dans huit langues et l’annonce Facebook distincte."
+  ],
+  "idempotenceCheck": {
+    "operationId": "f560107d-a500-486c-b4e4-1fe0fee0b75b",
+    "previewedAtUtc": "2026-10-22T22:14:26.1224415Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 8,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-22T22:18:17.243865+00:00",
+  "facebook": {
+    "id": "c7e8694ce8eb459da87672fd8565985b",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-22T22:19:26.2611572Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124212103424431",
+    "externalPostId": "1285475681307050_122124212103424431",
+    "url": "https://amusement-parks.fun/fr/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-22T22:18:17.243865+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-22T22:18:43.872816+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history/1112ca53-5443-40a9-8789-85f32ba4f6cf/ouverture-2025-premier-mountain-coaster-virginie-occidentale",
+            "status": 200,
+            "textLength": 1830,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1019
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history/1112ca53-5443-40a9-8789-85f32ba4f6cf/ouverture-2025-premier-mountain-coaster-virginie-occidentale",
+            "status": 200,
+            "textLength": 1572,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 896
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history/1112ca53-5443-40a9-8789-85f32ba4f6cf/ouverture-2025-premier-mountain-coaster-virginie-occidentale",
+            "status": 200,
+            "textLength": 1679,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1007
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history/1112ca53-5443-40a9-8789-85f32ba4f6cf/ouverture-2025-premier-mountain-coaster-virginie-occidentale",
+            "status": 200,
+            "textLength": 1630,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 975
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history/1112ca53-5443-40a9-8789-85f32ba4f6cf/ouverture-2025-premier-mountain-coaster-virginie-occidentale",
+            "status": 200,
+            "textLength": 1646,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 949
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history/1112ca53-5443-40a9-8789-85f32ba4f6cf/ouverture-2025-premier-mountain-coaster-virginie-occidentale",
+            "status": 200,
+            "textLength": 1710,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 986
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history/1112ca53-5443-40a9-8789-85f32ba4f6cf/ouverture-2025-premier-mountain-coaster-virginie-occidentale",
+            "status": 200,
+            "textLength": 1607,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 951
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-hollr/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/be71f169-aec6-4e9b-8984-6640d12c9c9f/brush-creek-holl-r/history/1112ca53-5443-40a9-8789-85f32ba4f6cf/ouverture-2025-premier-mountain-coaster-virginie-occidentale",
+            "status": 200,
+            "textLength": 1656,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 991
+      }
+    ]
+  }
+}

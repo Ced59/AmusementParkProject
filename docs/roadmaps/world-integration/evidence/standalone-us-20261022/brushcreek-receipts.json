@@ -1,0 +1,186 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "4ea5115e-c9e5-4ed3-a6f3-b1c03b1e8aa8",
+    "appliedAtUtc": "2026-10-22T22:00:30.1695167Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-access.apply",
+    "operationId": "8bb6d9f2-c7a8-4952-bd63-9cae8a3da8e1",
+    "appliedAtUtc": "2026-10-22T22:04:28.103456Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-hours.apply",
+    "operationId": "b2de3e3a-a9a2-4da3-b1eb-90f282ef4968",
+    "appliedAtUtc": "2026-10-22T22:06:40.7596278Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-pricing.apply",
+    "operationId": "a22a759f-d74f-4fdb-b0b5-7190ac3cad24",
+    "appliedAtUtc": "2026-10-22T22:07:17.9069144Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-fix.apply",
+    "operationId": "3ec1dc15-379e-458a-9fa5-64c6855702c4",
+    "appliedAtUtc": "2026-10-22T22:12:00.2539217Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-sources.apply",
+    "operationId": "64f733fd-1726-4273-b331-5d0016812e20",
+    "appliedAtUtc": "2026-10-22T22:13:54.6704684Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "64f733fd-1726-4273-b331-5d0016812e20",
+    "appliedAtUtc": "2026-10-22T22:13:54.6704684Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "a2d16d67-b143-4761-911d-fb4a71926f4f",
+    "appliedAtUtc": "2026-10-22T22:15:26.5706326Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "92df72e7-466b-4475-9bbc-08ad27361332",
+    "appliedAtUtc": "2026-10-22T22:16:05.8745728Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "5d8826df-0f03-4685-8afa-193ad5dbddfb",
+    "appliedAtUtc": "2026-10-22T22:16:39.8948371Z",
+    "targetStandaloneAttractionId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "dea4c03593de40abb844dbe2b4ceb35f",
+    "ownerId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "sourceUrl": "https://brushcreekhollr.com/wp-content/uploads/2025/11/20250925_174715-scaled.jpg",
+    "updatedAt": "2026-10-22T22:08:18.893Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "ae35b9d828c74f4791cbbaab6b335b32",
+    "ownerId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "sourceUrl": "https://brushcreekhollr.com/wp-content/uploads/2025/05/IMG_2374.jpg",
+    "updatedAt": "2026-10-22T22:09:11.901Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "454bd2e33bce4dcb8533551e70576d0d",
+    "ownerId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+    "sourceUrl": "https://brushcreekhollr.com/wp-content/uploads/2025/11/IMG-20251026-WA0040-scaled.jpg",
+    "updatedAt": "2026-10-22T22:09:31.178Z",
+    "isPublished": false
+  }
+]
