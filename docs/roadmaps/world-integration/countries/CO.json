@@ -1,0 +1,1733 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "CO",
+  "countryName": "Colombie",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Amérique du Sud — périmètre national/territorial des sources",
+  "geographicGroup": "Amérique du Sud",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 60,
+  "sourceFamilies": [
+    "AZA",
+    "RCDB",
+    "WAZA",
+    "Wikipédia (découverte)"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26758",
+  "notes": [
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "CO-candidate-491c324862f95a",
+      "name": "Acuaparque de la Caña",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Cali , Valle del Cauca",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6687.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-f39b9b2b845147",
+      "name": "Aeropark Juan Pablo II",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Medellín",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-8c36903b1b8026",
+      "name": "Barranquilla Zoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-017adc58c17604",
+      "name": "Bioparque Los Ocarros",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-3428018c8f4882",
+      "name": "Cable Wake Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Barrancabermeja",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-551599028e8d52",
+      "name": "Cali Zoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-d9e628eb54a67f",
+      "name": "Camelot Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bogotá , Cundinamarca",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5086.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-810d08800e07c4",
+      "name": "CiCi Aquapark",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Bogotá",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-d5779b75348dd2",
+      "name": "CODEMA Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Villeta",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-1839f9f55f0383",
+      "name": "Comfaventura",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Pasto , Nariño",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/11222.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-20f5d11e8c3630",
+      "name": "Cosmica Games",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Palmira , Valle del Cauca",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/11904.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-566884a3cac2d0",
+      "name": "De la Caña Aquapark",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Cali",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-e8eabb94810cfa",
+      "name": "Ditaires Complex",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Itagui",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-908d6d620503d1",
+      "name": "Divercity",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-e1d6b62417f24e",
+      "name": "Fantasiland",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Barranquilla , Atlántico",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/11711.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-5ee2e4526c2810",
+      "name": "Fundación Zoológica de Cali",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Zoo / aquarium",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "WAZA",
+          "url": "https://www.waza.org/members/waza-members/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel référencé",
+          "url": "http://www.zoologicodecali.com.co",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-432027a88147b8",
+      "name": "Hacienda Napoles",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB) / Animalier",
+      "locality": "Puerto Triunfo , Antioquia",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [
+        "Hacienda Nápoles"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21810.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-375326474015cf",
+      "name": "Happy City",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Soledad , Atlántico",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/9775.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-c7f5b566fe2f0a",
+      "name": "Happy City",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Envigado , Antioquia",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/23593.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-b429dc123a6666",
+      "name": "Inflaparque Ikarus",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Melgar",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-3da7e3bd90655a",
+      "name": "Jaime Duque Park Zoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-6842bdc9197da7",
+      "name": "Juegos Mecánicos Calima",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Cali , Valle del Cauca",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/11906.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-41c7af5f471c53",
+      "name": "Juegos Mecánicos Pereira",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Pereira , Risaralda",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/11918.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-1673a7a48c635b",
+      "name": "Juncal Beach",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Palermo, Huila",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-ea50027ff09c7d",
+      "name": "Kanaloa Water Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Santa Fe de Antioquia",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-178336c22b4809",
+      "name": "Karting Cross",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Pereira , Risaralda",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6394.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-47c84fdb482932",
+      "name": "Lagosol",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Melgar",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-66cd8431b5b89a",
+      "name": "Las Palmeras Vacay Center",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Villeta",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-0ef6a19c432573",
+      "name": "Mosquera Water Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Mosquera",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-22526cedf9094c",
+      "name": "Multiparque",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bogotá , Cundinamarca",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/13720.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-park-5e015fe2-1bc2-44b0-8f80-da28ec1cdff6",
+      "name": "Mundo Aventura",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "5e015fe2-1bc2-44b0-8f80-da28ec1cdff6",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5047.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "CO",
+      "countryResolution": null
+    },
+    {
+      "entryId": "CO-candidate-1819e5b16e54ea",
+      "name": "PANACA",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-d16f94cfd10003",
+      "name": "Parque Cacayal",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Castilla la Nueva",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-439527ca5c59f1",
+      "name": "Parque Comfama Aranjuez",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Medellín",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-c272ce5934f2a7",
+      "name": "Parque Comfama Arví",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Medellín",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-0acff4e2fec7b5",
+      "name": "Parque Comfama Barrio Perez",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Bello",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-67708a57f36061",
+      "name": "Parque Comfama Centro",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Bello",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-e675915a76c5de",
+      "name": "Parque Comfama Itagüi",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Itagui",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-dae7435cdc523d",
+      "name": "Parque Comfama La Estrella",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "La Estrella",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-d92df98ecd577a",
+      "name": "Parque Comfama Rionegro",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Rionegro",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-6dd7f5cd63da40",
+      "name": "Parque Comfama San Ignacio",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Medellín",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-park-6b954e95-6604-4799-a718-f140f1ad143f",
+      "name": "Parque del Café",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "6b954e95-6604-4799-a718-f140f1ad143f",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5034.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "CO",
+      "countryResolution": null
+    },
+    {
+      "entryId": "CO-candidate-a7be05c4afc2a8",
+      "name": "Parque Jaime Duque",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-c24794a05bef8b",
+      "name": "Parque Los Tamarindos",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "San Jerónimo",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-1a4fde9cdc5c33",
+      "name": "Parque Nacional del Agua",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Melgar",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-527e0c244cd557",
+      "name": "Parque Norte",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB) / Attractions",
+      "locality": "Medellín , Antioquia",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6205.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-5e26210e8536da",
+      "name": "Piscilago",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Melgar",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-c08c990a86d812",
+      "name": "Reserva Natural Bioparque Wakatá",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Zoo / aquarium",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "WAZA",
+          "url": "https://www.waza.org/members/waza-members/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel référencé",
+          "url": "https://parquejaimeduque.com/",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-6a7c0d6ed39c14",
+      "name": "Rodadero Sea Aquarium and Museum",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquarium",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_aquaria#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-park-d22a5de7-0c60-40d1-bed3-16f9ed07e777",
+      "name": "Salitre Magico",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "d22a5de7-0c60-40d1-bed3-16f9ed07e777",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5085.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "CO",
+      "countryResolution": null
+    },
+    {
+      "entryId": "CO-candidate-911ca0ffbdd406",
+      "name": "Santa Fe Zoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-c4d1f61c255df6",
+      "name": "Santacruz Zoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-d1200477826f66",
+      "name": "Takurika Recreational Center",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Cartagena",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-2464e6f2e52c1f",
+      "name": "Tesoro Encantado",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Medellín , Antioquia",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19851.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "CO-candidate-95d2637e8d56b1",
+      "name": "Zoológico de Cali",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Zoo / aquarium",
+      "locality": "Valle del Cauca",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "AZA",
+          "url": "https://www.aza.org/current-accreditation-list",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
+> **Suivi permanent par pays :** consulter le [registre mondial](../roadmaps/world-integration/README.md) et ses [règles de suivi](../roadmaps/world-integration/WORKFLOW.md) avant le prochain lot, France et Portugal compris. Toute intégration réussie ajoute sa date réelle et sa preuve ; conserver la ligne et tout son historique après achèvement.
+
 Version : **2026-08-09-r4**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.

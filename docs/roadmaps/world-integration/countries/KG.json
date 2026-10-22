@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "KG",
+  "countryName": "Kirghizstan",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Asie — périmètre national/territorial des sources",
+  "geographicGroup": "Asie",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 12,
+  "sourceFamilies": [
+    "RCDB",
+    "Wikipédia (découverte)"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=56947",
+  "notes": [
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "KG-candidate-55d98e1dcd9bac",
+      "name": "Alisher Navoi Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Osh City",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21227.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-bdc6215c4ed045",
+      "name": "Aqua Park Alatoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Bishkek",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Kyrgyzstan",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-71c4e76d028778",
+      "name": "Bishkek Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bishkek",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Under Construction",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/24259.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-292a63df0eddd6",
+      "name": "Dolphin de Luxe Hotel",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bosteri , Issyk Kul",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6779.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-59e1ce8f8de076",
+      "name": "Eurasia",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bishkek",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/23013.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-bc58383eeb8cbb",
+      "name": "Flamingo World",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bishkek",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6192.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-b1c80f7dd2018b",
+      "name": "Hippodrome Cholpon-Ata",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Progress , Issyk Kul",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/23033.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-c60ff996f22f35",
+      "name": "Panfilov Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bishkek",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/16338.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-00630b9470ce9c",
+      "name": "Pushkin Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Karakol , Issyk Kul",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/24308.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-f81d80a895ef47",
+      "name": "Sky Park Baytik",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bishkek",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/22337.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-76d6d7d37097a2",
+      "name": "Toktogul Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Jalal-Abad",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/22710.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KG-candidate-7d348716bdc1fa",
+      "name": "Turbaza",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Arslanbob , Jalal-Abad",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/23011.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

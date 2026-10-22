@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "OM",
+  "countryName": "Oman",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Asie — périmètre national/territorial des sources",
+  "geographicGroup": "Asie",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 17,
+  "sourceFamilies": [
+    "RCDB",
+    "Wikipédia (découverte)"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26702",
+  "notes": [
+    "1 fiches étaient sans pays dans le site : rattachement par sources, à confirmer, sans modification de production.",
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "OM-candidate-89c0448bde1308",
+      "name": "Al Naseem Salalah Water Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Salalah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Oman",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-fd68b3533a9c91",
+      "name": "Bahla Bahla Garden",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Bahla , Ad Dakhiliyah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/17978.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-cbe9a43eefc3f2",
+      "name": "Children's Playground",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Ibri , Ad Dhahirah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14292.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-31e299160b1de5",
+      "name": "Fabyland",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Muscat City , Muscat",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/17844.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-8d406c7c09e5b1",
+      "name": "Foton World Fantasia",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Muscat City , Muscat",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5806.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-9441c4dc731451",
+      "name": "Funtazmo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Nizwa , Ad Dakhiliyah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20061.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-b85cbb03e02045",
+      "name": "Funtazmo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Sohar , Al Batinah North",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/22177.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-park-c1fea605-1625-42a6-8083-dbc71dece776",
+      "name": "Funtazmo Muscat City",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "c1fea605-1625-42a6-8083-dbc71dece776",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [
+        "Funtazmo"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14673.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 97,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/14673.htm",
+            "sourceName": "Funtazmo"
+          }
+        ]
+      }
+    },
+    {
+      "entryId": "OM-candidate-fd480072e3ad26",
+      "name": "Hawana Aquapark",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Taqah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Oman",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-ffb0e8c55fb582",
+      "name": "Hayy Al Sharq Theme Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Murayjat , Al Batinah South",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21720.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-f5c1e183f71ad6",
+      "name": "Marah Land",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Muscat City , Muscat",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [
+        {
+          "siteId": "a55ff39f-4864-4a50-8f75-85617b9b998c",
+          "name": "Marah Land Muscat",
+          "similarity": 75.0
+        }
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5365.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-a5c3f009768cc5",
+      "name": "Megatouch Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Muscat City , Muscat",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20846.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-cf05239ad1d4d5",
+      "name": "Riyam Amusement Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Muscat City , Muscat",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20063.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-a10adcd0a6d96b",
+      "name": "Saham Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Saham , Al Batinah North",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6613.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-2135a69968968d",
+      "name": "Sindbad's Amusement Centre",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Muscat City , Muscat",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6362.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-0b29c6aafaf4d1",
+      "name": "Sohar Entertainment Centre",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Sohar , Al Batinah North",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6564.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "OM-candidate-27ab7797f2ef12",
+      "name": "Wadina Water Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Nizwa",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Oman",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

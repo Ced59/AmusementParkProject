@@ -1,5 +1,7 @@
 # Backlog d’intégration des parcs et attractions autonomes portugais — 2026-10-20
 
+> **Mise à jour de coordination — 22 octobre 2026.** Cette campagne doit désormais consulter le [résumé mondial](world-integration/README.md), le [registre PT](world-integration/countries/PT.md) et les [règles de suivi permanent](world-integration/WORKFLOW.md) avant son prochain lot. Réconcilier les travaux déjà appliqués depuis le relevé ; les chiffres historiques ci-dessous ne remplacent pas le nouveau résumé. Conserver chaque ligne achevée, sa date réelle de dernière intégration et son historique : aucune clôture ne supprime désormais une entrée du backlog. Les autorisations et critères de publication propres à cette campagne restent applicables.
+
 ## Objectif et autorisation
 
 Ce backlog fixe le périmètre national demandé le 20 octobre 2026 : Portugal continental, Madère et Açores ; parcs actuels, disparus, projets documentés et attractions fixes autonomes pertinentes. Il comprend les établissements absents du site et ne se limite ni aux montagnes russes ni aux onze fiches existantes à examiner.
@@ -20,7 +22,7 @@ Chaque parc suit les étapes 0 à 9 de [l’orchestrateur](../codex-guidelines/p
 
 ## Conditions de traitement et de sortie
 
-Une ligne active reste en place jusqu’au succès cumulé de l’intégration, de l’audit final, de la publication des données et de Facebook. Un score élevé, une Preview acceptée, la seule création de la fiche ou un classement de pertinence ne suffisent pas.
+Une ligne reste définitivement dans le registre. Sa clôture opérationnelle requiert le succès cumulé de l’intégration, de l’audit final, de la publication des données et de Facebook. Un score élevé, une Preview acceptée, la seule création de la fiche ou un classement de pertinence ne suffisent pas.
 
 1. Résoudre identité, doublons, pertinence et cycle de vie ; garder les sources, IDs et lacunes dans l’état consolidé. Une attraction située dans un vrai parc reste un parkItem. Aucun nettoyage destructif ou masquage d’une donnée publique n’est implicite.
 2. Rechercher offre actuelle, annonces confirmées et inventaire fermé ou déplacé ; inclure zones, attractions, restaurants, boutiques, services, hébergements et autres lieux visiteurs nommables et sourçables. Géolocaliser chaque lieu fixe identifiable sans point inventé.
@@ -28,7 +30,7 @@ Une ligne active reste en place jusqu’au succès cumulé de l’intégration, 
 4. Auditer logo officiel, vues générales, images par attraction, cartes officielles annuelles actuelles et archivées, références, histoire, articles durables, calendrier officiel complet et tarifs applicables. Les lacunes ne sont acceptables qu’après recherche documentée ; ne pas remplacer un sujet manquant par un visuel trompeur.
 5. Effectuer l’export complet frais avant l’audit final ; contrôler encodage UTF-8, profondeur, corpus transversal, sources et couverture chiffrée. Exiger un score projeté supérieur à 95 et zéro bloqueur, puis publier de façon ciblée les contenus et médias, les articles et enfin la fiche nouvelle. Recalculer le score réel après publication et vérifier les pages anonymes, historiques et contenus attendus.
 6. Résoudre le brouillon Facebook de l’URL canonique. Conserver une annonce existante Published ; sinon employer l’annonce par défaut et son chemin idempotent. Une annonce Failed se reprend seulement avec son ID exact et la commande officielle de reprise, après réconciliation ; jamais par un nouveau post manuel de secours. Pour une attraction autonome, vérifier l’historique exact de sa cible et ne pas supposer la présence d’une clé d’annonce de parc.
-7. Retirer la ligne seulement après publication et score réel supérieur à 95 sans bloqueur, puis annonce Facebook confirmée Published. Conserver les preuves, scores, URLs et lacunes factuelles dans le bilan de lot. Regrouper normalement dix retraits dans une PR documentaire cumulative avec un seul incrément de version.
+7. Marquer la ligne comme terminée sans l’effacer, avec sa dernière date réelle d’intégration et ses preuves, seulement après publication et score réel supérieur à 95 sans bloqueur, puis annonce Facebook confirmée Published. Conserver les preuves, scores, URLs et lacunes factuelles dans le bilan de lot. Regrouper normalement dix clôtures conservées dans une PR documentaire cumulative avec un seul incrément de version.
 
 Les horaires et tarifs courants ne sont applicables qu’aux entités Operating. Une fermeture de saison n’est pas une fermeture définitive. La météo est alimentée par batch : une prévision momentanément vide ne bloque pas la publication si l’affichage se comporte correctement.
 

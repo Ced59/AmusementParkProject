@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "MK",
+  "countryName": "Macédoine du Nord",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Europe — périmètre national/territorial des sources",
+  "geographicGroup": "Europe",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 5,
+  "sourceFamilies": [
+    "Wikipédia (découverte)"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=62112",
+  "notes": [
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "MK-candidate-9a75a019b1d008",
+      "name": "Aqua Park Macedonia",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Probištip",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#North_Macedonia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "MK-candidate-9246152ac1f37b",
+      "name": "Aqua Park Skopje",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Skopje",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#North_Macedonia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "MK-candidate-4fa727bee60a90",
+      "name": "Aquapark Izgrev",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Kalishta",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#North_Macedonia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "MK-candidate-8338a00fab3b0f",
+      "name": "Bitola Zoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#North_Macedonia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "MK-candidate-cd08d9e72f7c8b",
+      "name": "Skopje Zoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#North_Macedonia",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

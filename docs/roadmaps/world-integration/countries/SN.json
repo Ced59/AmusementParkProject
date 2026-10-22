@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "SN",
+  "countryName": "Sénégal",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Afrique — périmètre national/territorial des sources",
+  "geographicGroup": "Afrique",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 2,
+  "sourceFamilies": [
+    "RCDB",
+    "Wikipédia (découverte)"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=57145",
+  "notes": [
+    "1 fiches étaient sans pays dans le site : rattachement par sources, à confirmer, sans modification de production.",
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "SN-candidate-f742cdd5677d5c",
+      "name": "Hann Zoological Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Senegal",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "SN-park-9e1eb256-02e1-4750-9ca6-2adefed6d853",
+      "name": "Magic Land Dakar",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "9e1eb256-02e1-4750-9ca6-2adefed6d853",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [
+        "Magic Land"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/6400.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 97,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/6400.htm",
+            "sourceName": "Magic Land"
+          }
+        ]
+      }
+    }
+  ]
+}

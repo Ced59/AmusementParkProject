@@ -1,17 +1,19 @@
 # Backlog d'intégration des parcs français — 2026-09-29
 
+> **Mise à jour de coordination — 22 octobre 2026.** Cette campagne doit désormais consulter le [résumé mondial](world-integration/README.md), le [registre FR](world-integration/countries/FR.md) et les [règles de suivi permanent](world-integration/WORKFLOW.md) avant son prochain lot. Réconcilier les travaux déjà appliqués depuis le relevé ; les chiffres historiques ci-dessous ne remplacent pas le nouveau résumé. Conserver chaque ligne achevée, sa date réelle de dernière intégration et son historique : aucune clôture ne supprime désormais une entrée du backlog. Les autorisations et critères de publication propres à cette campagne restent applicables.
+
 ## Objectif
 
 Cette liste versionnée fixe le périmètre de l'intégration nationale demandée le 29 septembre 2026. Elle couvre les parcs d'attractions, parcs à thème, parcs aquatiques structurés, parcs familiaux à installations fixes et parcs hybrides comportant une offre de loisirs nommable. Elle inclut aussi les anciens parcs dont une page historique apporte une valeur éditoriale réelle.
 
-Chaque ligne active est traitée avec le workflow `PARK_DATA_EDITOR`, les étapes 0 à 9 et un audit final individuel. Une ligne ne peut être retirée qu'après les deux résultats suivants :
+Chaque ligne active est traitée avec le workflow `PARK_DATA_EDITOR`, les étapes 0 à 9 et un audit final individuel. Une ligne ne peut être marquée comme lot terminé, tout en restant dans le backlog, qu'après les deux résultats suivants :
 
 1. la fiche et ses contenus retenus sont réellement publics sur le site, le score post-publication est strictement supérieur à 95, aucun bloqueur ne subsiste et la page publique a été contrôlée anonymement ;
 2. l'annonce Facebook officielle de cette même fiche est au statut `Published`, sans recréer une publication existante.
 
-Une fusion de doublons ou un classement `NotRelevant` ne compte pas comme publication d'un parc et ne déclenche pas d'annonce Facebook artificielle. Une ligne d'attraction autonome suit en revanche sa propre fiche publique : elle ne peut être retirée qu'après publication et contrôle anonyme de la `StandaloneAttraction`, annonce Facebook `Published`, puis suppression effective de l'ancien parkItem et de l'ancien parc artificiel lorsqu'ils existent. Le simple masquage ou classement `NotRelevant` du legacy ne suffit pas.
+Une fusion de doublons ou un classement `NotRelevant` ne compte pas comme publication d'un parc et ne déclenche pas d'annonce Facebook artificielle. Une ligne d'attraction autonome suit en revanche sa propre fiche publique : elle ne peut être marquée comme lot terminé, tout en restant dans le backlog, qu'après publication et contrôle anonyme de la `StandaloneAttraction`, annonce Facebook `Published`, puis suppression effective de l'ancien parkItem et de l'ancien parc artificiel lorsqu'ils existent. Le simple masquage ou classement `NotRelevant` du legacy ne suffit pas.
 
-La météo est alimentée par le batch automatique. Une prévision momentanément absente ne bloque ni la complétude, ni la publication, ni le retrait d'une ligne du backlog ; seul le bon fonctionnement de l'affichage lorsque le batch fournit des données fait partie du contrôle applicatif.
+La météo est alimentée par le batch automatique. Une prévision momentanément absente ne bloque ni la complétude, ni la publication, ni la clôture conservée d'une ligne du backlog ; seul le bon fonctionnement de l'affichage lorsque le batch fournit des données fait partie du contrôle applicatif.
 
 La demande du 29 septembre 2026 autorise explicitement la publication Facebook de chaque fiche terminée. Cette autorisation sociale est propre à ce lot français et ne doit pas être déduite d'une future demande de complétude ordinaire.
 

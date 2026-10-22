@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "QA",
+  "countryName": "Qatar",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Asie — périmètre national/territorial des sources",
+  "geographicGroup": "Asie",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 17,
+  "sourceFamilies": [
+    "RCDB",
+    "Wikipédia (découverte)"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26414",
+  "notes": [
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "QA-candidate-519b442124a72a",
+      "name": "Al Dosari Zoo and Game Reserve",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Qatar",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-95092adc6f7330",
+      "name": "Al Khor Family Park and Zoo",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Qatar",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-98772df2e43f01",
+      "name": "Aladdin's Kingdom",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Doha , Doha",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5022.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-517a9a40c507ad",
+      "name": "Aquapark Qatar",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Abu Nakhla",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Qatar",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-87846d783476c2",
+      "name": "Doha Quest",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Qatar",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-3ce08d09e721bc",
+      "name": "Doha Toys Town",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Doha , Doha",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14260.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-6ef03fb9a60fc0",
+      "name": "Dream Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Doha , Doha",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/12687.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-c6ae346cffd977",
+      "name": "Farah In Qatar",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Doha , Doha",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19764.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-park-30a2c65c-4924-40b8-9f23-03ee8078ad25",
+      "name": "Gondolania Theme Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "30a2c65c-4924-40b8-9f23-03ee8078ad25",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/9111.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "QA",
+      "countryResolution": null
+    },
+    {
+      "entryId": "QA-candidate-fcf8c7c44003eb",
+      "name": "Jungle Zone",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Al Rayyan , Doha",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/14313.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-393e25428cb3da",
+      "name": "KidZania",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions",
+      "locality": "Aspire Park",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Qatar",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-e20e3cfa5e2989",
+      "name": "Lusail Winter Wonderland",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Lusail , Al Daayen",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/20388.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-candidate-f815f0b1e1d6d6",
+      "name": "Marah Land",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Al Wakrah , Al Wakrah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [
+        {
+          "siteId": "a55ff39f-4864-4a50-8f75-85617b9b998c",
+          "name": "Marah Land Muscat",
+          "similarity": 75.0
+        }
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/11747.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-park-6f3deca7-8157-4eaf-ae66-2ef4e6d89ab9",
+      "name": "Meryal",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "6f3deca7-8157-4eaf-ae66-2ef4e6d89ab9",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19061.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "QA",
+      "countryResolution": null
+    },
+    {
+      "entryId": "QA-candidate-23d65670799860",
+      "name": "Meryal Waterpark",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquatique",
+      "locality": "Lusail",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Qatar",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "QA-park-dd4daeae-204c-4389-b3ad-aff27173bf0a",
+      "name": "Quest",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "dd4daeae-204c-4389-b3ad-aff27173bf0a",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/12041.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "QA",
+      "countryResolution": null
+    },
+    {
+      "entryId": "QA-candidate-71f340461392a6",
+      "name": "Trocadéro",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Lusail , Al Daayen",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21471.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "HT",
+  "countryName": "Haïti",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
+  "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 3,
+  "sourceFamilies": [
+    "RCDB"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=60583",
+  "notes": [
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "HT-candidate-407184e78de2e2",
+      "name": "Adventure Ocean Oasis",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Labadee , Nord",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/13206.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "HT-park-6f64d243-7b8f-4495-a731-9faa76c0bb62",
+      "name": "Labadee",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Resort",
+      "locality": "Labadee",
+      "siteId": "6f64d243-7b8f-4495-a731-9faa76c0bb62",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "PublishedDateUnknown",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "TemporarilyClosed",
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel enregistré (à revérifier)",
+          "url": "https://www.royalcaribbean.com/labadee-cruises",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "HT",
+      "countryResolution": null
+    },
+    {
+      "entryId": "HT-candidate-642510bbbb7a50",
+      "name": "Lakay Fun World",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Cap-Haïtien , Nord",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/21462.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "HT-candidate-1e20478951b267",
+      "name": "Lakay Fun world",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Attractions (RCDB)",
+      "locality": "Port-au-Prince , Ouest",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/24100.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

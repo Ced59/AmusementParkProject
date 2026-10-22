@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "SD",
+  "countryName": "Soudan",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Afrique — périmètre national/territorial des sources",
+  "geographicGroup": "Afrique",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 5,
+  "sourceFamilies": [
+    "RCDB",
+    "Wikipédia (découverte)"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26788",
+  "notes": [
+    "4 fiches étaient sans pays dans le site : rattachement par sources, à confirmer, sans modification de production.",
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "SD-park-9e0d9e82-9cfd-4ab2-a3a6-f75263d54fd4",
+      "name": "Al Mogran Amusement Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "9e0d9e82-9cfd-4ab2-a3a6-f75263d54fd4",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToProcessLater",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/5097.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Africa#Sudan",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/5097.htm",
+            "sourceName": "Al Mogran Amusement Park"
+          },
+          {
+            "label": "Wikipédia (découverte)",
+            "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Africa#Sudan",
+            "sourceName": "Al Mogran Amusement Park"
+          }
+        ]
+      }
+    },
+    {
+      "entryId": "SD-park-725a913d-e033-4c29-bdcf-a616b4f1195e",
+      "name": "Bustan Family Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "725a913d-e033-4c29-bdcf-a616b4f1195e",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/9094.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/9094.htm",
+            "sourceName": "Bustan Family Park"
+          }
+        ]
+      }
+    },
+    {
+      "entryId": "SD-park-ec2a2cb4-d317-4fe2-a807-5882a0d4ed0d",
+      "name": "Childs City",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "ec2a2cb4-d317-4fe2-a807-5882a0d4ed0d",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/9113.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/9113.htm",
+            "sourceName": "Childs City"
+          }
+        ]
+      }
+    },
+    {
+      "entryId": "SD-park-b4d0ec22-0cc2-4e8d-9603-57b561859f80",
+      "name": "Nice Zone Family Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": null,
+      "siteId": "b4d0ec22-0cc2-4e8d-9603-57b561859f80",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19848.htm",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement de nom distinctif avec source externe, pays unique",
+        "confidence": "À confirmer lors de la reprise de la fiche",
+        "score": 100,
+        "sources": [
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/19848.htm",
+            "sourceName": "Nice Zone Family Park"
+          }
+        ]
+      }
+    }
+  ]
+}

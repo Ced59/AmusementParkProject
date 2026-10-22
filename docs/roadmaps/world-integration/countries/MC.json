@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "countryCode": "MC",
+  "countryName": "Monaco",
+  "inventoryDate": "2026-10-22",
+  "geographicScope": "Europe — périmètre national/territorial des sources",
+  "geographicGroup": "Europe",
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 4,
+  "sourceFamilies": [
+    "Source officielle complémentaire",
+    "Wikipédia (découverte)"
+  ],
+  "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=63911",
+  "notes": [
+    "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
+    "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
+    "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+  ],
+  "entries": [
+    {
+      "entryId": "MC-candidate-b99feabc0d4925",
+      "name": "Oceanographic Museum of Monaco",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Aquarium",
+      "locality": "Monaco City",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [
+        "Musée océanographique de Monaco"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_aquaria#Monaco",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source officielle complémentaire",
+          "url": "https://musee.oceano.org/aquariums/",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "MC-candidate-637af61a2df02e",
+      "name": "Zoological Garden of Monaco",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": "Monaco",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "possibleMatches": [],
+      "aliases": [
+        "Jardin Animalier Rainier III"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#Monaco",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source officielle complémentaire",
+          "url": "https://www.palais.mc/fr/musees-et-visites/jardin-animalier-rainier-iii-1-41.html",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

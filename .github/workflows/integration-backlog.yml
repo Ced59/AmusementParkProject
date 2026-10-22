@@ -1,0 +1,52 @@
+name: Permanent integration backlog
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - docs/roadmaps/world-integration/**
+      - docs/roadmaps/europe-integration/**
+      - tools/codex/integration-backlog*
+      - .github/workflows/integration-backlog.yml
+  push:
+    branches: [master]
+    paths:
+      - docs/roadmaps/world-integration/**
+      - docs/roadmaps/europe-integration/**
+      - tools/codex/integration-backlog*
+      - .github/workflows/integration-backlog.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate inventory and preserve integration history
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+      - name: Test integration tracking
+        run: node --test tools/codex/integration-backlog.test.mjs
+      - name: Read previous registry
+        uses: actions/checkout@v7
+        if: github.event_name == 'pull_request' || github.event.before != '0000000000000000000000000000000000000000'
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.event.before }}
+          path: .backlog-baseline
+          fetch-depth: 1
+          sparse-checkout: docs/roadmaps/world-integration/countries
+      - name: Validate counts, generated views and permanent history
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline=".backlog-baseline/docs/roadmaps/world-integration"
+          if [ -d "$baseline/countries" ]; then
+            node tools/codex/integration-backlog.mjs validate --baseline "$baseline"
+          else
+            node tools/codex/integration-backlog.mjs validate
+          fi

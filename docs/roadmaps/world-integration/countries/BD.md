@@ -1,0 +1,64 @@
+# Bangladesh — backlog permanent
+
+Relevé initial : 2026-10-22. Périmètre : Asie — périmètre national/territorial des sources.
+
+Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entrée achevée ; utiliser le script de suivi pour enregistrer les intégrations et régénérer cette vue.
+
+- Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.
+- Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
+- NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
+- Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+
+| État éditorial | Nombre |
+| --- | ---: |
+| À intégrer | 0 |
+| À qualifier | 30 |
+| En cours | 0 |
+| Bloqué | 0 |
+| Intégration achevée | 0 |
+| Publié, date inconnue | 0 |
+| Hors périmètre enregistré | 0 |
+| Doublon conservé | 0 |
+
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **33**. Sources : RCDB, Wikipédia (découverte).
+
+Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
+
+Parcs : **0 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **28 candidats sans fiche**.
+
+Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+
+Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
+
+| ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| BD-candidate-aa7ff0689efced | Bashundhara Central Park | Dhaka , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Under Construction. [RCDB](https://rcdb.com/24590.htm) |
+| BD-candidate-bc730080f1c6ca | Biwta Eco Park | Dhaka , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/22282.htm) |
+| BD-candidate-7d5a57031083e7 | Chowrangi Fantasy Park | Narayanganj , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/17013.htm) |
+| BD-candidate-7e9c00ba627817 | Dhaka Eye | Bashundhara Central Park, Purbachal Expressway , Bashundhara Residential Area , Dhaka | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Vérifier si cette grande roue est un parkItem dans un parc ou une attraction autonome ; ne pas la compter comme création indépendante avant résolution. Identifier l’attraction fixe et prouver son autonomie ; rechercher son ancien parc et ses parkItems avant création ou migration. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
+| BD-candidate-c68fc907cd6fa5 | Dino Park | Shalmanpur , Chittagong | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/17009.htm) |
+| BD-candidate-0a42024526178e | Dream Holiday | Narsingdi , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/13757.htm) |
+| BD-candidate-0c6d75e2a43789 | Dream Land | Chittagong , Chittagong | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. Correspondance possible : Dream Land (cb3f4bc8-921e-48be-a69b-2edfd4b142dd). [RCDB](https://rcdb.com/13753.htm) |
+| BD-candidate-baa8850ccc9604 | Dreamland Amusement & Water Park | Maijbagh , Sylhet | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/10620.htm) |
+| BD-candidate-0bd46708524872 | Fantasy Island | Dhaka , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/13718.htm) |
+| BD-candidate-bfc6cce1cf0b2c | Fantasy Kingdom | Jamgora , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/5188.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Bangladesh) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Bangladesh) |
+| BD-candidate-c1d17f71c773c2 | Foy's Lake Amusement World | Chittagong , Chittagong | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/6183.htm) |
+| BD-candidate-14a90f7b07c4fb | Foy's Lake Concord | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Bangladesh) |
+| BD-candidate-e79b1b71556ed1 | Green Valley Park | Rajshahi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/23183.htm) |
+| BD-candidate-2f03fe47654c0a | Heritage Park | Jamgora , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/6106.htm) |
+| BD-candidate-4af77cf563f9e4 | Jamuna Future Park | Dhaka , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/11954.htm) |
+| BD-candidate-173c61b8d02911 | MAG Osmani Amusement Park | Sylhet , Sylhet | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/21118.htm) |
+| BD-candidate-39269c4b2420fc | Magic Island | Keraniganj , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/17005.htm) |
+| BD-candidate-57308b9c7cdc05 | Magic Paradise Park | Shalmanpur , Chittagong | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/17011.htm) |
+| BD-candidate-baa0e477959d9f | Mana Bay | Munshiganj | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Bangladesh) |
+| BD-candidate-46af6a6c36f3d8 | Matador Baby Park | Dhaka , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/17007.htm) |
+| BD-candidate-1314d57645f078 | Nandan Park | Dhamrai , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/9802.htm) |
+| BD-candidate-c0eac04287a326 | Safina Park | Rajshahi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/23353.htm) |
+| BD-candidate-aab68aa5f36881 | Sea World | Chittagong | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Bangladesh) |
+| BD-candidate-3303eb8ae80364 | Shadhinota Park | Chittagong , Chittagong | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/10334.htm) |
+| BD-candidate-ff679c7e21a98a | Shishu Park | Chittagong , Chittagong | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/12343.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Bangladesh) |
+| BD-candidate-063bc15741d32f | Shopnopuri Artificial Amusement Park | Dinajpur , Rangpur | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/15634.htm) |
+| BD-candidate-6d6aaed19defd1 | Tamanna World Family Park | Dhaka , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/15632.htm) |
+| BD-candidate-b1654087fe16be | Toggi World | Dhaka , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/10624.htm) |
+| BD-candidate-1a4267bdd2ad63 | Wonderland Amusement Park | Khulna , Khulna | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/23136.htm) |
+| BD-candidate-6992df01f6d20e | Wonderland Park | Gulshan , Dhaka | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/13775.htm) |

@@ -1,0 +1,39 @@
+# Allemagne — backlog permanent
+
+Relevé initial : 2026-10-22. Périmètre : Europe — périmètre national/territorial des sources.
+
+Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entrée achevée ; utiliser le script de suivi pour enregistrer les intégrations et régénérer cette vue.
+
+- Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.
+- Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
+- NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
+- Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+
+| État éditorial | Nombre |
+| --- | ---: |
+| À intégrer | 132 |
+| À qualifier | 444 |
+| En cours | 0 |
+| Bloqué | 0 |
+| Intégration achevée | 0 |
+| Publié, date inconnue | 52 |
+| Hors périmètre enregistré | 86 |
+| Doublon conservé | 15 |
+
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **874**. Sources : AmusementForce, EAZA, Freizeitpark App, RCDB, WAZA, Wikipédia (découverte).
+
+Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; confirmation à effectuer avant modification de production.
+
+Parcs : **36 publiés**, **132 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **354 candidats sans fiche**.
+
+Standalone : **16 publiées**, **0 masquées**, **20 candidates sans fiche**. Autres dossiers : **48 types à décider**, **16 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+
+Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
+
+## Liste intégrale, par ordre alphabétique
+
+La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent dans le JSON national.
+
+- [Page 1 — lignes 1 à 250](DE/001.md)
+- [Page 2 — lignes 251 à 500](DE/002.md)
+- [Page 3 — lignes 501 à 729](DE/003.md)

@@ -32,7 +32,7 @@ Le statut du parc (`Operating`, fermeture temporaire ou définitive, projet, etc
 
 Une fiche visible dont le score est strictement supérieur à 95 n’entre pas. Si la recherche, la pagination ou le calcul individuel échoue, le relevé n’est pas déclaré complet : l’identifiant concerné est ajouté à une section `Anomalies à vérifier` et aucune omission silencieuse n’est autorisée.
 
-Un rafraîchissement ajoute les nouveaux parcs éligibles et actualise les valeurs des lignes existantes. Il ne retire jamais silencieusement une ligne devenue introuvable ou masquée : cette anomalie reste signalée jusqu’à vérification. La seule sortie normale du backlog est la procédure de validation ci-dessous.
+Un rafraîchissement ajoute les nouveaux parcs éligibles et actualise les valeurs des lignes existantes. Il ne retire jamais silencieusement une ligne devenue introuvable ou masquée : cette anomalie reste signalée jusqu’à vérification. La clôture suit la procédure ci-dessous, sans suppression de la ligne. Le [registre permanent](../roadmaps/world-integration/WORKFLOW.md) conserve la date réelle de dernière intégration et son historique.
 
 ## Reprise complète d’une ligne
 
@@ -64,23 +64,23 @@ La commande de reprise d’un parc visible du backlog autorise explicitement la 
 
 Cette autorisation Facebook est limitée au parc visible traité depuis ce backlog. Elle ne s’étend ni à ses parkItems, ni aux articles, ni aux commandes de complétude ordinaires.
 
-## Retrait et livraison cumulative
+## Clôture conservée et livraison cumulative
 
-La ligne active peut être supprimée du fichier versionné seulement lorsque les données ont été publiées avec succès, que le score courant post-publication est strictement supérieur à 95 — ou correspond exactement à une exception acceptée selon la section suivante — et que l’annonce Facebook est soit déjà publiée, soit publiée avec succès pendant le traitement.
+La ligne peut être marquée comme terminée, sans être supprimée du fichier versionné, seulement lorsque les données ont été publiées avec succès, que le score courant post-publication est strictement supérieur à 95 — ou correspond exactement à une exception acceptée selon la section suivante — et que l’annonce Facebook est soit déjà publiée, soit publiée avec succès pendant le traitement.
 
 ### Exception explicite et bornée
 
 Le seuil reste la règle normale. Une exception de score inférieur ou égal à 95 n’est possible que lorsque l’utilisateur nomme le parc et accepte explicitement son score projeté exact ainsi que ses lacunes factuelles, après un export complet frais et un audit final sans bloqueur. Cette décision autorise alors les publications de données et Facebook pour ce seul parc malgré le seuil, sans lever aucune autre condition. Elle ne peut jamais couvrir un texte public interdit, une duplication éditoriale, un audit incomplet, une publication de données en échec ou une annonce Facebook non confirmée.
 
-Après le succès des deux publications, l’exception doit être inscrite dans la section `Exceptions explicitement acceptées` du backlog avec l’identifiant exact, le score courant, la date de décision et les lacunes factuelles acceptées. Les rafraîchissements ultérieurs excluent uniquement ces identifiants enregistrés, jusqu’à ce que l’utilisateur demande explicitement de rouvrir l’exception. Cette trace remplace la ligne active sans masquer le score réel.
+Après le succès des deux publications, l’exception doit être inscrite dans la section `Exceptions explicitement acceptées` du backlog avec l’identifiant exact, le score courant, la date de décision et les lacunes factuelles acceptées. Les rafraîchissements ultérieurs excluent uniquement ces identifiants enregistrés, jusqu’à ce que l’utilisateur demande explicitement de rouvrir l’exception. Cette trace complète la ligne conservée sans masquer le score réel.
 
 Après validation :
 
-- supprimer uniquement la ligne du parc ;
-- recalculer les compteurs et conserver l’ordre du tableau ;
+- conserver la ligne, la marquer comme terminée et enregistrer la date réelle de dernière intégration, le reçu et l’audit dans le registre permanent ;
+- recalculer les compteurs actifs séparément des lignes terminées et conserver l’ordre du tableau ;
 - créer un commit documentaire dédié au parc sur une branche cumulative de maintenance du backlog ;
 - ne pas ouvrir de PR, ne pas incrémenter la version et ne pas déclencher de déploiement pour chaque ligne ;
-- regrouper normalement dix retraits, ou le lot explicitement demandé par l’utilisateur, dans une seule PR documentaire ;
+- regrouper normalement dix clôtures conservées, ou le lot explicitement demandé par l’utilisateur, dans une seule PR documentaire ;
 - incrémenter la version une seule fois pour cette PR groupée, conformément aux règles de livraison générales.
 
-Le premier lot qui introduit ce workflow peut regrouper sa documentation, le support technique anti-doublon et le premier retrait validé dans une seule version. Les lots suivants restent cumulatifs.
+Le premier lot qui introduit ce workflow peut regrouper sa documentation, le support technique anti-doublon et le première clôture conservée dans une seule version. Les lots suivants restent cumulatifs.
