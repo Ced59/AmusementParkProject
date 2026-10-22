@@ -1,6 +1,20 @@
 {
-  "version": "6.0.13",
+  "version": "6.0.14",
   "history": [
+    {
+      "version": "6.0.14",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Galeries photo simplifiées avec descriptions et crédits",
+        "en": "Simpler photo galleries with descriptions and credits",
+        "de": "Übersichtlichere Fotogalerien mit Beschreibungen und Bildnachweisen",
+        "nl": "Overzichtelijkere fotogalerijen met beschrijvingen en credits",
+        "it": "Gallerie fotografiche semplificate con descrizioni e crediti",
+        "es": "Galerías de fotos más sencillas con descripciones y créditos",
+        "pt": "Galerias de fotografias simplificadas com descrições e créditos",
+        "pl": "Prostsze galerie zdjęć z opisami i informacjami o autorach"
+      }
+    },
     {
       "version": "6.0.13",
       "releasedAt": "2026-10-21",

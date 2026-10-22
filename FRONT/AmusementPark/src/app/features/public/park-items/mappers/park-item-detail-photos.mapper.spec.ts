@@ -6,6 +6,16 @@ import { PARK_ITEM_PHOTO_CATEGORIES, ParkItemPhotoCategoryDefinition } from '@ap
 import { buildPhotoCategories, buildPhotos } from './park-item-detail-photos.mapper';
 
 describe('park item detail photos mapper', () => {
+  it('uses a visitor-facing fallback instead of the file name when alternative text and descriptions are missing', () => {
+    const photo: ImageDto = { ...createImage('image-1', []), description: undefined };
+
+    const [mappedPhoto] = buildPhotos([photo], [], 'fr');
+
+    expect(mappedPhoto.alt).toBe('Park item photo');
+    expect(mappedPhoto.alt).not.toContain(photo.originalFileName);
+    expect(photo.originalFileName).toBe('image-1.jpg');
+  });
+
   it('keeps every admin park item photo category visible on public item galleries', () => {
     const tags: ImageTagDto[] = PARK_ITEM_PHOTO_CATEGORIES.map((photoCategory: ParkItemPhotoCategoryDefinition, index: number) => {
       return createImageTag(`tag-${index}`, photoCategory.slug);

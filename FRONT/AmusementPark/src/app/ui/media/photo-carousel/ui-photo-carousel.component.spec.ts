@@ -1,12 +1,71 @@
-import { SimpleChange } from '@angular/core';
+import { NO_ERRORS_SCHEMA, SimpleChange } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { CdkTrapFocus, InteractivityChecker } from '@angular/cdk/a11y';
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 
 import { UiPhotoCarouselComponent } from './ui-photo-carousel.component';
 import { UiPhotoCarouselImage } from '../models/ui-photo-carousel.model';
 
 describe('UiPhotoCarouselComponent', () => {
+  it('shows descriptions and credits without technical details in the gallery, map and lightbox', async () => {
+    await TestBed.configureTestingModule({
+      imports: [UiPhotoCarouselComponent, TranslateModule.forRoot()],
+      providers: [provideRouter([])]
+    }).overrideComponent(UiPhotoCarouselComponent, {
+      remove: { imports: [ImageDisplayComponent, LeafletMapComponent] },
+      set: { schemas: [NO_ERRORS_SCHEMA] }
+    }).compileComponents();
+    const fixture = TestBed.createComponent(UiPhotoCarouselComponent);
+    const photo: UiPhotoCarouselImage = {
+      ...buildPhoto('photo-1', 'coasters', '2024', 50.1, 3.1),
+      description: 'Le château au coucher du soleil',
+      credit: 'Camille — Parc des merveilles',
+      originalFileName: 'DSC_1234_PRIVATE.jpg',
+      contentType: 'image/jpeg',
+      sizeInBytes: 1048576,
+      uploadedAt: '2025-02-03T04:05:06Z',
+      cameraMaker: 'Technical camera maker',
+      cameraModel: 'Technical camera model',
+      focalLength: 50,
+      aperture: 2.8,
+      exposureTime: 0.004,
+      iso: 400
+    };
+    try {
+      fixture.componentRef.setInput('photos', [photo, buildPhoto('photo-2', 'shows', '2024')]);
+      fixture.detectChanges();
+      const root: HTMLElement = fixture.nativeElement;
+      expect(root.querySelector('.photo-carousel__caption')?.textContent).toContain(photo.description);
+      expect(root.querySelector('.photo-carousel__credit')?.textContent).toContain(photo.credit);
+      expect(root.querySelector('.photo-carousel-metadata')).toBeNull();
+      expect(fixture.componentInstance.mapMarkers[0].title).toBe(photo.description);
+      expect(fixture.componentInstance.mapMarkers[0].details).toEqual([photo.credit, 'coasters']);
+
+      fixture.componentInstance.openLightbox(0);
+      fixture.detectChanges();
+      expect(root.querySelector('.photo-lightbox__caption')?.textContent).toContain(photo.description);
+      expect(root.querySelector('.photo-lightbox__credit')?.textContent).toContain(photo.credit);
+      for (const technicalDetail of [photo.originalFileName, photo.contentType, photo.cameraMaker, photo.cameraModel,
+        '1200 x 800px', 'ISO 400', 'f/2.8', '1/250s', '50.10000, 3.10000', photo.uploadedAt]) {
+        expect(root.textContent).not.toContain(technicalDetail);
+      }
+
+      fixture.componentInstance.nextPhoto();
+      fixture.detectChanges();
+      expect(root.querySelector('.photo-carousel__credit')).toBeNull();
+      expect(root.querySelector('.photo-lightbox__credit')).toBeNull();
+      expect(photo.originalFileName).toBe('DSC_1234_PRIVATE.jpg');
+      expect(photo.iso).toBe(400);
+    } finally {
+      fixture.destroy();
+    }
+  });
+
   it('captures, loops and restores modal keyboard focus using the existing CDK', async () => {
     await TestBed.configureTestingModule({
       imports: [UiPhotoCarouselComponent],
