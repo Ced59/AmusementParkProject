@@ -137,8 +137,9 @@ Le recensement couvre les annuaires et sources décrits dans [la méthode et ses
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 3 | 0 |
 | **Total** | **61** | **1** | **26** | **64** | **85** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **7**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **10**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
+- France : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Portugal : 7 intégrations achevées et auditées, dont 0 fiches encore masquées.
 
 ## Pays transcontinentaux et Caucase
