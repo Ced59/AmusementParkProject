@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-28bd93be-addf-4057-b787-9392b1e4c824",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T20:28:05.874Z",
+  "sourceAppliedAt": "2026-10-22T20:28:05.8741789Z",
+  "receiptFile": "slide-splash/step-09k-address-diacritics-20261022.apply.json",
+  "receiptSha256": "6492310440087a87b5ce2a2f021d6998e59db97525f2ada92993b966fe71a061",
+  "result": {
+    "operationId": "28bd93be-addf-4057-b787-9392b1e4c824",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Accent officiel d’Estômbar rétabli dans l’adresse du parc et les coordonnées de son exploitant après contrôle des 240 champs publics scalaires. Autres coordonnées inchangées ; audit et médias encore en cours."
+}

@@ -1,0 +1,65 @@
+{
+  "country": "PT",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "reviewedAtUtc": "2026-10-22T20:30:35.547272+00:00",
+  "notACompletionAudit": true,
+  "graphLotsAppliedAndVerified": 53,
+  "privateImages": 26,
+  "generalPhotographs": 5,
+  "itemPhotographs": 21,
+  "distinctItemsWithPhotographs": 20,
+  "baselineLanguagesPersonallyRead": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "localizedFieldsPerBaselineLanguage": 435,
+  "publicScalarFieldsPersonallyRead": 240,
+  "lastDataIntegrationAt": "2026-10-22T20:28:05.874Z",
+  "historyEvents": 51,
+  "articles": 3,
+  "articlesWithMainImage": 3,
+  "priorProjectedScore": 92,
+  "scoreRequiresRecalculationAfterNewMedia": true,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "remainingWork": [
+    "Complete exact-owner photographic coverage",
+    "Official current logo download unavailable with HTTP 503; written reuse permission confirmed",
+    "Genuine annual maps and reuse scope",
+    "Source checks and final fresh complete export reconciliation",
+    "Publication eligibility, public checks and Facebook"
+  ],
+  "localAuditProofDigests": [
+    {
+      "fileName": "manual-review-progress-20261022.json",
+      "sha256": "d9ac6e1970c0473a888c0456d556366380950f2715f90c374a8d28be3578d1ed"
+    },
+    {
+      "fileName": "narrative-overlap-review-20261022.json",
+      "sha256": "c75fa0fbec5061869d915523f1d3d348cf31ad60b2424d9bd9f4581cf79d9ca8"
+    },
+    {
+      "fileName": "expansion-illustrations-apply-verification.json",
+      "sha256": "e468c44ae6b03d512b8b7a9c4ac21816ed76e32d11b72a6688ecc91202c41467"
+    },
+    {
+      "fileName": "polish-phrasing-apply-verification.json",
+      "sha256": "6ffb94e09190e00590f8016af652bb4fdeec6c14b88196d7d0186d9c5c9129c6"
+    },
+    {
+      "fileName": "portuguese-phrasing-apply-verification.json",
+      "sha256": "8012964973453626bbf05034f260e19a1f8f71418583dfb8e3faac3f8e9d132c"
+    },
+    {
+      "fileName": "address-diacritics-apply-verification.json",
+      "sha256": "982778022c1368d3e4266856e015b04e12d427469b9765d9acbecdc328d26b63"
+    }
+  ]
+}

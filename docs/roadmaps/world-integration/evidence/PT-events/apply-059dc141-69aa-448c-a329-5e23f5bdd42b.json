@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-059dc141-69aa-448c-a329-5e23f5bdd42b",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T20:24:54.843Z",
+  "sourceAppliedAt": "2026-10-22T20:24:54.843282Z",
+  "receiptFile": "slide-splash/step-09j-portuguese-phrasing-20261022.apply.json",
+  "receiptSha256": "589fa549a2ac6165f8b800651eb0f66ff9b197d22be20deb26c21e87125e10a4",
+  "result": {
+    "operationId": "059dc141-69aa-448c-a329-5e23f5bdd42b",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Relecture portugaise complète : terme estacionamento corrigé et deux accords harmonisés dans le parc et ses éléments. Corpus initial désormais lu dans les huit langues ; audit transversal et médias encore ouverts, sans publication."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-cf928e789dda4742a8e8d0ee872ebcaa-2026-10-22T20:10:43.756Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:10:43.756Z",
+  "sourceAppliedAt": "2026-10-22T20:10:43.756Z",
+  "receiptFile": "slide-splash/media/race-opening-period-2022-import-response.json",
+  "receiptSha256": "267493d366725bd244e5cdc36020ffe227fa8d102ca975b43d64392d879fcf3c",
+  "result": {
+    "imageId": "cf928e789dda4742a8e8d0ee872ebcaa",
+    "ownerId": "1bbd254a-447a-40cc-9899-2008f09e99b6",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Race intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

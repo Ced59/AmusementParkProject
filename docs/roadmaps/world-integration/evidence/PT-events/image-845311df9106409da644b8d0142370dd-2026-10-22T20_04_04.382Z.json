@@ -1,0 +1,18 @@
+{
+  "eventId": "image-845311df9106409da644b8d0142370dd-2026-10-22T20:04:04.382Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:04:04.382Z",
+  "sourceAppliedAt": "2026-10-22T20:04:04.382Z",
+  "receiptFile": "slide-splash/media/cabanas-overhead-gardens-import-response.json",
+  "receiptSha256": "d04930d3be93a3b5c4b26715c7be94db9abc8cc870fdfcebe4ec1f03c3ad2af7",
+  "result": {
+    "imageId": "845311df9106409da644b8d0142370dd",
+    "ownerId": "c0075f00-e924-4b3d-8206-59e763c9d495",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Cabanas intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-9f576c1cf7ac485cbdfd8d5e7b17f2a6-2026-10-22T20:11:16.304Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:11:16.304Z",
+  "sourceAppliedAt": "2026-10-22T20:11:16.304Z",
+  "receiptFile": "slide-splash/media/boomerang-opening-period-2022-import-response.json",
+  "receiptSha256": "5f86d6f9e1742e6461fab1bf59c8862757220069c83afcf20c84db684f18dd90",
+  "result": {
+    "imageId": "9f576c1cf7ac485cbdfd8d5e7b17f2a6",
+    "ownerId": "a764ea06-905e-440c-922d-4cb0098df6cf",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Boomerang intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

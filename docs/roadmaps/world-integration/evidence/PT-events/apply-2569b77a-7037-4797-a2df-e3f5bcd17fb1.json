@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-2569b77a-7037-4797-a2df-e3f5bcd17fb1",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T20:22:51.674Z",
+  "sourceAppliedAt": "2026-10-22T20:22:51.6743652Z",
+  "receiptFile": "slide-splash/step-09i-polish-phrasing-20261022.apply.json",
+  "receiptSha256": "d5657113708a8a92d5e3e84f113ff53ec0bf2361a6079e04630f12468101ac3d",
+  "result": {
+    "operationId": "2569b77a-7037-4797-a2df-e3f5bcd17fb1",
+    "counts": {
+      "created": 0,
+      "updated": 6,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Sept corrections grammaticales et idiomatiques polonaises intégrées dans trois articles et trois titres historiques. Relecture polonaise complète ; images et autres langues préservées ; dossier privé, audit en cours."
+}

@@ -1,0 +1,18 @@
+{
+  "eventId": "image-8499a041b9af448298a314cec7fc7524-2026-10-22T20:02:48.366Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:02:48.366Z",
+  "sourceAppliedAt": "2026-10-22T20:02:48.366Z",
+  "receiptFile": "slide-splash/media/children-slides-blue-front-import-response.json",
+  "receiptSha256": "2cde0d7fe7cedf8966b3109d3a9a58cdfcade52d0107bb435d873b570b8df3df",
+  "result": {
+    "imageId": "8499a041b9af448298a314cec7fc7524",
+    "ownerId": "191c0969-dba6-456a-b2d3-3ba95395a71a",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Children Slides intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

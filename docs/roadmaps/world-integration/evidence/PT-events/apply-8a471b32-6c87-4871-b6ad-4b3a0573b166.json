@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-8a471b32-6c87-4871-b6ad-4b3a0573b166",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T20:08:20.665Z",
+  "sourceAppliedAt": "2026-10-22T20:08:20.6650567Z",
+  "receiptFile": "slide-splash/step-09f-italian-phrasing-20261022.apply.json",
+  "receiptSha256": "d3c0acb84f5f26e36c6b409cc11b4821f0f03ee165de64bf0ba0cdb178481232",
+  "result": {
+    "operationId": "8a471b32-6c87-4871-b6ad-4b3a0573b166",
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Relecture italienne complète : formulations des couleurs clarifiées dans quatre notices et désignation de la vasque Jacuzzi harmonisée. Cinq descriptions corrigées ; données toujours privées."
+}

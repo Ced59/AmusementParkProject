@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-a719ec9b-494f-4af7-ab0e-a8b046e7cde3",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T20:17:35.655Z",
+  "sourceAppliedAt": "2026-10-22T20:17:35.6557315Z",
+  "receiptFile": "slide-splash/step-09g-expansion-illustrations-20261022.apply.json",
+  "receiptSha256": "c36b11d4c4ed22faaa2d76826826df37f994c7663e04af99517d016cd2466131",
+  "result": {
+    "operationId": "a719ec9b-494f-4af7-ab0e-a8b046e7cde3",
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Cinq événements de l’extension 2022 illustrés et trois photographies ajoutées à l’article : Race, Big Fall et Boomerang issus de la couverture contemporaine ; vue des cabanas contextualisée. Textes préservés ; données privées, audit en cours."
+}

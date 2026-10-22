@@ -1,0 +1,18 @@
+{
+  "eventId": "image-5ed99c61503a42698208de5f4d0efea5-2026-10-22T20:11:00.322Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:11:00.322Z",
+  "sourceAppliedAt": "2026-10-22T20:11:00.322Z",
+  "receiptFile": "slide-splash/media/big-fall-opening-period-2022-import-response.json",
+  "receiptSha256": "0137b8b3a49a29759b1fa588323a320ac918a6eddf2d5ae6bdfcc7f29c70858a",
+  "result": {
+    "imageId": "5ed99c61503a42698208de5f4d0efea5",
+    "ownerId": "3b220617-c347-45c8-bccc-19a73cba4a43",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Big Fall intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

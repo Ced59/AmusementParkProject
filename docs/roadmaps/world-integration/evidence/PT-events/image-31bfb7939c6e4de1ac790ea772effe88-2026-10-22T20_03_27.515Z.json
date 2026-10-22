@@ -1,0 +1,18 @@
+{
+  "eventId": "image-31bfb7939c6e4de1ac790ea772effe88-2026-10-22T20:03:27.515Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:03:27.515Z",
+  "sourceAppliedAt": "2026-10-22T20:03:27.515Z",
+  "receiptFile": "slide-splash/media/laguna-pool-below-big-wave-import-response.json",
+  "receiptSha256": "6849c21e4b221eb7acba50da685c9cf6ba1ae68fc05a304e753c69053f5a8622",
+  "result": {
+    "imageId": "31bfb7939c6e4de1ac790ea772effe88",
+    "ownerId": "89121c72-4324-4fd2-b3a1-bbab1d861109",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Laguna intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

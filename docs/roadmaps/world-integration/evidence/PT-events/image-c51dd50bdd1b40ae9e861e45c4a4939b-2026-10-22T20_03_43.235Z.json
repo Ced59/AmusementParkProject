@@ -1,0 +1,18 @@
+{
+  "eventId": "image-c51dd50bdd1b40ae9e861e45c4a4939b-2026-10-22T20:03:43.235Z",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "ImageWrite",
+  "appliedAt": "2026-10-22T20:03:43.235Z",
+  "sourceAppliedAt": "2026-10-22T20:03:43.235Z",
+  "receiptFile": "slide-splash/media/jacuzzi-blue-mosaic-import-response.json",
+  "receiptSha256": "9ef8fb6bbf9af9f1558dcdc933971c0f2e0ab721098b0261fcbe1b75b278b354",
+  "result": {
+    "imageId": "c51dd50bdd1b40ae9e861e45c4a4939b",
+    "ownerId": "60ea0ee1-6b57-4445-8b25-86be7fd9a67f",
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "summary": "Photo officielle de Jacuzzi intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+}

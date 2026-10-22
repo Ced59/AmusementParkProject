@@ -10793,7 +10793,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "conversation-portugal / docs/portugal-world-backlog-sync-20261022",
-      "lastDataIntegrationAt": "2026-10-22T19:57:58.407Z",
+      "lastDataIntegrationAt": "2026-10-22T20:28:05.874Z",
       "integrationHistory": [
         {
           "eventId": "apply-d3c96f51-fa59-48a8-90ba-d0ca82fe4d2b",
@@ -11454,9 +11454,139 @@
           "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-53ac485a6e634e52a8af80f9fcc7e214-2026-10-22T19_57_58.407Z.json",
           "auditEvidence": null,
           "summary": "Photo officielle de River Ride intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-8499a041b9af448298a314cec7fc7524-2026-10-22T20:02:48.366Z",
+          "appliedAt": "2026-10-22T20:02:48.366Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-8499a041b9af448298a314cec7fc7524-2026-10-22T20_02_48.366Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Children Slides intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-31bfb7939c6e4de1ac790ea772effe88-2026-10-22T20:03:27.515Z",
+          "appliedAt": "2026-10-22T20:03:27.515Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-31bfb7939c6e4de1ac790ea772effe88-2026-10-22T20_03_27.515Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Laguna intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-c51dd50bdd1b40ae9e861e45c4a4939b-2026-10-22T20:03:43.235Z",
+          "appliedAt": "2026-10-22T20:03:43.235Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-c51dd50bdd1b40ae9e861e45c4a4939b-2026-10-22T20_03_43.235Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Jacuzzi intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-845311df9106409da644b8d0142370dd-2026-10-22T20:04:04.382Z",
+          "appliedAt": "2026-10-22T20:04:04.382Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-845311df9106409da644b8d0142370dd-2026-10-22T20_04_04.382Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Cabanas intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "apply-8a471b32-6c87-4871-b6ad-4b3a0573b166",
+          "appliedAt": "2026-10-22T20:08:20.665Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-8a471b32-6c87-4871-b6ad-4b3a0573b166.json",
+          "auditEvidence": null,
+          "summary": "Relecture italienne complète : formulations des couleurs clarifiées dans quatre notices et désignation de la vasque Jacuzzi harmonisée. Cinq descriptions corrigées ; données toujours privées."
+        },
+        {
+          "eventId": "image-cf928e789dda4742a8e8d0ee872ebcaa-2026-10-22T20:10:43.756Z",
+          "appliedAt": "2026-10-22T20:10:43.756Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-cf928e789dda4742a8e8d0ee872ebcaa-2026-10-22T20_10_43.756Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Race intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-5ed99c61503a42698208de5f4d0efea5-2026-10-22T20:11:00.322Z",
+          "appliedAt": "2026-10-22T20:11:00.322Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-5ed99c61503a42698208de5f4d0efea5-2026-10-22T20_11_00.322Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Big Fall intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "image-9f576c1cf7ac485cbdfd8d5e7b17f2a6-2026-10-22T20:11:16.304Z",
+          "appliedAt": "2026-10-22T20:11:16.304Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/image-9f576c1cf7ac485cbdfd8d5e7b17f2a6-2026-10-22T20_11_16.304Z.json",
+          "auditEvidence": null,
+          "summary": "Photo officielle de Boomerang intégrée et vérifiée avec textes dans huit langues. Autorisation écrite attestée par l’utilisateur ; média privé, audit final en cours."
+        },
+        {
+          "eventId": "apply-a719ec9b-494f-4af7-ab0e-a8b046e7cde3",
+          "appliedAt": "2026-10-22T20:17:35.655Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-a719ec9b-494f-4af7-ab0e-a8b046e7cde3.json",
+          "auditEvidence": null,
+          "summary": "Cinq événements de l’extension 2022 illustrés et trois photographies ajoutées à l’article : Race, Big Fall et Boomerang issus de la couverture contemporaine ; vue des cabanas contextualisée. Textes préservés ; données privées, audit en cours."
+        },
+        {
+          "eventId": "apply-ae478888-850b-4151-9d78-59dc24eb775d",
+          "appliedAt": "2026-10-22T20:20:04.770Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-ae478888-850b-4151-9d78-59dc24eb775d.json",
+          "auditEvidence": null,
+          "summary": "Relecture espagnole complète : références de couleurs clarifiées dans Cloud 9 et Skimmer ; deux descriptions corrigées, autres données préservées. Audit final encore en cours."
+        },
+        {
+          "eventId": "apply-2569b77a-7037-4797-a2df-e3f5bcd17fb1",
+          "appliedAt": "2026-10-22T20:22:51.674Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-2569b77a-7037-4797-a2df-e3f5bcd17fb1.json",
+          "auditEvidence": null,
+          "summary": "Sept corrections grammaticales et idiomatiques polonaises intégrées dans trois articles et trois titres historiques. Relecture polonaise complète ; images et autres langues préservées ; dossier privé, audit en cours."
+        },
+        {
+          "eventId": "apply-059dc141-69aa-448c-a329-5e23f5bdd42b",
+          "appliedAt": "2026-10-22T20:24:54.843Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-059dc141-69aa-448c-a329-5e23f5bdd42b.json",
+          "auditEvidence": null,
+          "summary": "Relecture portugaise complète : terme estacionamento corrigé et deux accords harmonisés dans le parc et ses éléments. Corpus initial désormais lu dans les huit langues ; audit transversal et médias encore ouverts, sans publication."
+        },
+        {
+          "eventId": "apply-28bd93be-addf-4057-b787-9392b1e4c824",
+          "appliedAt": "2026-10-22T20:28:05.874Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+          "evidence": "docs/roadmaps/world-integration/evidence/PT-events/apply-28bd93be-addf-4057-b787-9392b1e4c824.json",
+          "auditEvidence": null,
+          "summary": "Accent officiel d’Estômbar rétabli dans l’adresse du parc et les coordonnées de son exploitant après contrôle des 240 champs publics scalaires. Autres coordonnées inchangées ; audit et médias encore en cours."
         }
       ],
-      "nextAction": "Poursuivre sur docs/portugal-integration-progress-20261022 : 47 lots privés et 19 images vérifiés, dont cinq vues générales. Relire IT/ES/PL/PT, terminer les médias, les plans et l’audit frais ; logo officiel identifié mais URL source en erreur HTTP 503. Recalculer le score avant toute publication site/Facebook ; ne pas déclarer la clôture.",
+      "nextAction": "53 lots de données vérifiés, 26 photos privées dont cinq vues générales et 21 vues de 20 parkItems ; relecture du corpus initial achevée dans huit langues et 240 champs scalaires contrôlés. Trois articles illustrés, dont l’extension 2022 avec des photos contemporaines. Poursuivre les médias des éléments, les plans, le logo officiel (source HTTP 503), puis export complet frais et audit final ; aucune publication ni clôture à ce stade.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

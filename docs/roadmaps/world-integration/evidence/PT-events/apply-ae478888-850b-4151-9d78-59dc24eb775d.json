@@ -1,0 +1,23 @@
+{
+  "eventId": "apply-ae478888-850b-4151-9d78-59dc24eb775d",
+  "entryId": "PT-park-9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityId": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+  "entityKind": "Park",
+  "kind": "Apply",
+  "appliedAt": "2026-10-22T20:20:04.770Z",
+  "sourceAppliedAt": "2026-10-22T20:20:04.7705677Z",
+  "receiptFile": "slide-splash/step-09h-spanish-phrasing-20261022.apply.json",
+  "receiptSha256": "619797df8bb53b4d3e272c148d1a4f1f72f69579e77dc656151d7f3c2ff1d302",
+  "result": {
+    "operationId": "ae478888-850b-4151-9d78-59dc24eb775d",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "summary": "Relecture espagnole complète : références de couleurs clarifiées dans Cloud 9 et Skimmer ; deux descriptions corrigées, autres données préservées. Audit final encore en cours."
+}
