@@ -7383,7 +7383,8 @@
         "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261022/branson-audit.json",
         "score": 100,
         "publicationBlockers": [],
-        "gapCount": 7
+        "gapCount": 7,
+        "auditedAtUtc": "2026-10-22T21:41:08.205Z"
       }
     },
     {
@@ -19586,7 +19587,8 @@
         "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261022/flathead-audit.json",
         "score": 100,
         "publicationBlockers": [],
-        "gapCount": 8
+        "gapCount": 8,
+        "auditedAtUtc": "2026-10-22T21:41:08.205Z"
       }
     },
     {
@@ -56455,7 +56457,8 @@
         "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261022/smoky-audit.json",
         "score": 91,
         "publicationBlockers": [],
-        "gapCount": 7
+        "gapCount": 7,
+        "auditedAtUtc": "2026-10-22T21:41:08.205Z"
       }
     },
     {
