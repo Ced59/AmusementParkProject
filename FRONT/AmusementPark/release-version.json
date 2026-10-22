@@ -1,18 +1,32 @@
 {
-  "version": "6.0.24",
+  "version": "6.0.25",
   "history": [
+    {
+      "version": "6.0.25",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Suivi des intégrations amélioré",
+        "en": "Improved integration tracking",
+        "de": "Verbesserte Nachverfolgung der Integrationen",
+        "nl": "Verbeterde opvolging van integraties",
+        "it": "Monitoraggio delle integrazioni migliorato",
+        "es": "Seguimiento de integraciones mejorado",
+        "pl": "Ulepszone śledzenie integracji",
+        "pt": "Acompanhamento de integrações melhorado"
+      }
+    },
     {
       "version": "6.0.24",
       "releasedAt": "2026-10-22",
       "labels": {
-        "fr": "Suivi des parcs portugais actualisé",
-        "en": "Updated tracking of Portuguese parks",
-        "de": "Aktualisierter Überblick zu portugiesischen Parks",
-        "nl": "Bijgewerkt overzicht van Portugese parken",
-        "it": "Monitoraggio aggiornato dei parchi portoghesi",
-        "es": "Seguimiento actualizado de los parques portugueses",
-        "pl": "Zaktualizowany przegląd portugalskich parków",
-        "pt": "Acompanhamento dos parques portugueses atualizado"
+        "fr": "Suivi des parcs français actualisé",
+        "en": "Updated tracking of French parks",
+        "de": "Aktualisierter Überblick zu französischen Parks",
+        "nl": "Bijgewerkt overzicht van Franse parken",
+        "it": "Monitoraggio aggiornato dei parchi francesi",
+        "es": "Seguimiento actualizado de los parques franceses",
+        "pl": "Zaktualizowany przegląd francuskich parków",
+        "pt": "Acompanhamento dos parques franceses atualizado"
       }
     },
     {

@@ -71,3 +71,7 @@ Ajouter chaque découverte avec un identifiant stable et des sources datées. **
 ## Rapprochement de la campagne Portugal
 
 La mise à jour nationale [#941](https://github.com/Ced59/AmusementParkProject/pull/941), publiée pendant cette recherche, est conservée : quatre dossiers supplémentaires, 837 événements de suivi, 12 dates réelles de dernière intégration et sept clôtures auditées. Le recensement lui-même n’a réalisé aucun Apply. Les dates inconnues des autres dossiers restent inconnues. Le registre consolidé contient 12 296 lignes.
+
+## Rapprochement de la campagne France
+
+La mise à jour nationale [#942](https://github.com/Ced59/AmusementParkProject/pull/942) est également conservée : 234 événements, trois dates réelles et trois clôtures auditées, ainsi que les affectations des dossiers. Avec le Portugal, le registre contient donc **1 071 événements**, **15 dates de dernière intégration connues** et **10 clôtures auditées**. Le nombre de lignes et les compteurs de créations candidates restent inchangés.

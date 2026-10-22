@@ -135,6 +135,66 @@
       ]
     },
     {
+      "entryId": "FR-candidate-discovery-da45a0f8b01663",
+      "name": "Aérophare — Terre d’Estuaire",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aérophare",
+      "locality": "Cordemais",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
+      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Terre d’Estuaire Cordemais, France"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "sources": [
+        {
+          "label": "Aerophile — références constructeur",
+          "url": "https://www.aerophile.com/en/clients/terre-destuaire/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — références constructeur — annuaire",
+          "url": "https://www.aerophile.com/en/clients/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-22-independent-source-discovery",
+        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
+        "foundAt": "2026-10-22"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Aérophare — Terre d’Estuaire",
+            "source": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/terre-destuaire/",
+            "family": "Aérophare",
+            "sourceVenueName": "Aérophare — Terre d’Estuaire",
+            "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
+            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLocality": "Cordemais",
+            "referenceId": "aerophile-terre-destuaire"
+          }
+        ],
+        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+      }
+    },
+    {
       "entryId": "FR-candidate-discovery-5ccd37119c7eba",
       "name": "Aérophare Évry 2",
       "entityKind": "ToQualify",
@@ -249,66 +309,6 @@
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Aulnay-sous-Bois",
             "referenceId": "aerophile-aerophare-parinor"
-          }
-        ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
-      }
-    },
-    {
-      "entryId": "FR-candidate-discovery-da45a0f8b01663",
-      "name": "Aérophare — Terre d’Estuaire",
-      "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Aérophare",
-      "locality": "Cordemais",
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
-      "possibleMatches": [],
-      "aliases": [
-        "Terre d’Estuaire Cordemais, France"
-      ],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
-      "sources": [
-        {
-          "label": "Aerophile — références constructeur",
-          "url": "https://www.aerophile.com/en/clients/terre-destuaire/",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Aerophile — références constructeur — annuaire",
-          "url": "https://www.aerophile.com/en/clients/",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "discovery": {
-        "batch": "2026-10-22-independent-source-discovery",
-        "method": "Source constructeur ou exploitant indépendante du catalogue du site ; rapprochement mondial des noms, alias et parents.",
-        "foundAt": "2026-10-22"
-      },
-      "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [
-          {
-            "name": "Aérophare — Terre d’Estuaire",
-            "source": "Aerophile — références constructeur",
-            "url": "https://www.aerophile.com/en/clients/terre-destuaire/",
-            "family": "Aérophare",
-            "sourceVenueName": "Aérophare — Terre d’Estuaire",
-            "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Cordemais",
-            "referenceId": "aerophile-terre-destuaire"
           }
         ],
         "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
@@ -3156,7 +3156,7 @@
       "siteId": "fd97efd8-9ebb-4a76-94cb-9cfa95100314",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-10-22T19:33:36.898923+00:00",
       "editorialStatus": "PublishedDateUnknown",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "ClosedDefinitively",
@@ -3167,7 +3167,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Conserver la clôture nationale déjà documentée ; récupérer les anciens reçus Apply/import avant de renseigner lastDataIntegrationAt ou de déclarer Integrated dans le registre mondial.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3191,7 +3191,13 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json",
+      "previousCampaignCompletion": {
+        "status": "Clôture nationale déjà consignée, conservée sans inventer un instant d’Apply",
+        "evidence": "https://github.com/Ced59/AmusementParkProject/blob/9e496b57587cb5d6f75d2fa26255bb5b199a8e3e/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "integrationInstantRecovered": false
+      }
     },
     {
       "entryId": "FR-park-ecc5915e-e4b3-426e-85b0-f156b5ba20ab",
@@ -7082,7 +7088,7 @@
       "siteId": "bac6532e-ed3e-40dd-9c8f-2a9b50f3d980",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-10-22T19:33:42.251916+00:00",
       "editorialStatus": "PublishedDateUnknown",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
@@ -7095,7 +7101,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Conserver la clôture nationale déjà documentée ; récupérer les anciens reçus Apply/import avant de renseigner lastDataIntegrationAt ou de déclarer Integrated dans le registre mondial.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7119,7 +7125,13 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json",
+      "previousCampaignCompletion": {
+        "status": "Clôture nationale déjà consignée, conservée sans inventer un instant d’Apply",
+        "evidence": "https://github.com/Ced59/AmusementParkProject/blob/9e496b57587cb5d6f75d2fa26255bb5b199a8e3e/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "integrationInstantRecovered": false
+      }
     },
     {
       "entryId": "FR-park-bcd8e6f8-064f-4af9-b74f-0419a0e082a4",
@@ -7195,8 +7207,8 @@
       "siteId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-10-22T19:35:21.052633+00:00",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
@@ -7206,9 +7218,180 @@
         "Kid Parc"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-10-22T19:58:15.480Z",
+      "integrationHistory": [
+        {
+          "eventId": "import-photo-9b412f484c054b47b7c0fa476342ca79-2026-10-22T185941.131Z",
+          "appliedAt": "2026-10-22T18:59:41.131Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-9b412f484c054b47b7c0fa476342ca79-2026-10-22T185941.131Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 9b412f484c054b47b7c0fa476342ca79."
+        },
+        {
+          "eventId": "apply-f8ac2ffa-4540-482c-8cd8-5f86ddad6444",
+          "appliedAt": "2026-10-22T19:00:52.979Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-f8ac2ffa-4540-482c-8cd8-5f86ddad6444",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : eventType, newOwnerName, previousOwnerName, sources, summaries, titles."
+        },
+        {
+          "eventId": "apply-2ce3d600-56ae-4d96-a7b6-edfb016a7599",
+          "appliedAt": "2026-10-22T19:16:12.321Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-2ce3d600-56ae-4d96-a7b6-edfb016a7599",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : captions.de, captions.en, captions.es, captions.fr, captions.it, captions.nl, captions.pl, captions.pt, openingHours.lastVerifiedAtUtc, openingHours.notes."
+        },
+        {
+          "eventId": "apply-40e16161-2370-40fc-a2a3-72737b91de6a",
+          "appliedAt": "2026-10-22T19:18:28.347Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-40e16161-2370-40fc-a2a3-72737b91de6a",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : position."
+        },
+        {
+          "eventId": "apply-b7d64d1d-6a49-4b35-a613-7c71ded633ed",
+          "appliedAt": "2026-10-22T19:22:21.377Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-b7d64d1d-6a49-4b35-a613-7c71ded633ed",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : pricing.admissionOffers, pricing.annualPasses, pricing.historicalSnapshots, pricing.lastVerifiedAtUtc."
+        },
+        {
+          "eventId": "apply-2745283b-8ac9-436d-993f-0e5b9219999a",
+          "appliedAt": "2026-10-22T19:47:50.148Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-2745283b-8ac9-436d-993f-0e5b9219999a",
+          "auditEvidence": null,
+          "summary": "Description, textes alternatifs et légendes du portrait avec le T. rex corrigés dans les huit langues après inspection de l’original."
+        },
+        {
+          "eventId": "import-photo-885821859c704f469afd81deaa59a2be-2026-10-22T194807.361Z",
+          "appliedAt": "2026-10-22T19:48:07.361Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-885821859c704f469afd81deaa59a2be-2026-10-22T194807.361Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-kidiklik-7)."
+        },
+        {
+          "eventId": "import-photo-bc9d63184e2746a897f8fb4e8cb513d1-2026-10-22T194821.940Z",
+          "appliedAt": "2026-10-22T19:48:21.940Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-bc9d63184e2746a897f8fb4e8cb513d1-2026-10-22T194821.940Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-kidiklik-8)."
+        },
+        {
+          "eventId": "import-photo-b6ff89b3164947eba636fb77e4ce586a-2026-10-22T194836.846Z",
+          "appliedAt": "2026-10-22T19:48:36.846Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-b6ff89b3164947eba636fb77e4ce586a-2026-10-22T194836.846Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Kid Parc Île dʼAventures (authorized-final-media-tourism-1)."
+        },
+        {
+          "eventId": "import-photo-20d208844c7f4c7686b4e8e527ab51b8-2026-10-22T194850.887Z",
+          "appliedAt": "2026-10-22T19:48:50.887Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-20d208844c7f4c7686b4e8e527ab51b8-2026-10-22T194850.887Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : La Cascade Enchantée (authorized-final-media-tourism-4)."
+        },
+        {
+          "eventId": "import-photo-b2b83ceb441e4a4e833635084f61eac2-2026-10-22T194904.997Z",
+          "appliedAt": "2026-10-22T19:49:04.997Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-b2b83ceb441e4a4e833635084f61eac2-2026-10-22T194904.997Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : La Cascade Enchantée (authorized-final-media-kidiklik-10)."
+        },
+        {
+          "eventId": "import-photo-506ab16a9f7a408daa95f8e240450558-2026-10-22T194918.951Z",
+          "appliedAt": "2026-10-22T19:49:18.951Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-506ab16a9f7a408daa95f8e240450558-2026-10-22T194918.951Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Le Rodéo (authorized-final-media-tourism-7)."
+        },
+        {
+          "eventId": "import-photo-15448332275f4e829c1e7ad80bd77627-2026-10-22T194933.523Z",
+          "appliedAt": "2026-10-22T19:49:33.523Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-15448332275f4e829c1e7ad80bd77627-2026-10-22T194933.523Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Le Petit Train (authorized-final-media-kidiklik-11)."
+        },
+        {
+          "eventId": "import-photo-b97915f3ca794b7a8337e545ca0946ee-2026-10-22T194947.747Z",
+          "appliedAt": "2026-10-22T19:49:47.747Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#import-photo-b97915f3ca794b7a8337e545ca0946ee-2026-10-22T194947.747Z",
+          "auditEvidence": null,
+          "summary": "Photographie privée importée et vérifiée : Le Vaisseau Fantôme (authorized-final-media-kidiklik-15)."
+        },
+        {
+          "eventId": "apply-5ebb258c-7659-4a80-a449-e872fc6d1a56",
+          "appliedAt": "2026-10-22T19:56:19.506Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-5ebb258c-7659-4a80-a449-e872fc6d1a56",
+          "auditEvidence": null,
+          "summary": "Neuf légendes photographiques réécrites dans les huit langues pour distinguer légende et texte alternatif."
+        },
+        {
+          "eventId": "apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+          "appliedAt": "2026-10-22T19:58:15.480Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+          "auditEvidence": null,
+          "summary": "Portrait sourcé de Jérôme Durieux rattaché au jalon Acquisition de 2020 ; légendes précisant le contexte du reportage de 2022."
+        },
+        {
+          "eventId": "completed-apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+          "appliedAt": "2026-10-22T19:58:15.480Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-receipts.json#apply-dd28121d-b3e5-4838-a62e-8709e7b13eca",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/kid-parc-audit.json",
+          "summary": "Audit final achevé à 100/100, contrôles publics dans les huit langues conformes, annonce Facebook existante Published ; aucun doublon créé."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7237,7 +7420,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json"
     },
     {
       "entryId": "FR-park-900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
@@ -7249,8 +7433,8 @@
       "siteId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-10-22T19:33:05.789009+00:00",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
@@ -7258,9 +7442,1730 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-10-22T18:46:12.634Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-bf89cdd3-f54e-4bca-ad1e-874b6cd1b015",
+          "appliedAt": "2026-10-22T08:39:52.548Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-bf89cdd3-f54e-4bca-ad1e-874b6cd1b015",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : isVisible, names.de, names.en, names.es, names.fr, names.it, names.nl, names.pl, names.pt, sortOrder."
+        },
+        {
+          "eventId": "apply-37d88abf-bb8d-47be-9617-545c69438b9d",
+          "appliedAt": "2026-10-22T08:44:21.580Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-37d88abf-bb8d-47be-9617-545c69438b9d",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.accessConditions, attractionDetails.openingDate, attractionDetails.openingDateText, position, zoneId."
+        },
+        {
+          "eventId": "apply-e828e695-7599-459b-a6d2-3e29123a158c",
+          "appliedAt": "2026-10-22T08:45:51.445Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-e828e695-7599-459b-a6d2-3e29123a158c",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.accessConditions, attractionDetails.openingDate, attractionDetails.openingDateText, position, zoneId."
+        },
+        {
+          "eventId": "apply-597b265b-65fa-4ccf-b7a4-ff498dd2defd",
+          "appliedAt": "2026-10-22T08:48:08.578Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-597b265b-65fa-4ccf-b7a4-ff498dd2defd",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.externalId, attractionDetails.externalSource, attractionDetails.openingDateText, attractionDetails.sourceUrl, attractionDetails.status, category, position, type, zoneId."
+        },
+        {
+          "eventId": "apply-8412c48f-680e-4dab-bbf4-515cb46eaa1c",
+          "appliedAt": "2026-10-22T08:51:27.182Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-8412c48f-680e-4dab-bbf4-515cb46eaa1c",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.manufacturerId, attractionDetails.model, type."
+        },
+        {
+          "eventId": "apply-deafc956-0409-45f2-8201-4137f80ad1e6",
+          "appliedAt": "2026-10-22T09:03:43.027Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-deafc956-0409-45f2-8201-4137f80ad1e6",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.closingDateText, attractionDetails.openingDateText, attractionDetails.sourceUrl, attractionDetails.status, category, type, zoneId."
+        },
+        {
+          "eventId": "apply-a24cd4a1-4673-4825-b96e-f8a03e2a94ab",
+          "appliedAt": "2026-10-22T09:11:59.648Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-a24cd4a1-4673-4825-b96e-f8a03e2a94ab",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.closingDateText, attractionDetails.openingDateText, attractionDetails.sourceUrl, attractionDetails.status, category, position, type, zoneId."
+        },
+        {
+          "eventId": "apply-9bfeac76-0a88-4dff-91e4-d6d475129e16",
+          "appliedAt": "2026-10-22T09:20:56.378Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-9bfeac76-0a88-4dff-91e4-d6d475129e16",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.accessConditions, position, zoneId."
+        },
+        {
+          "eventId": "apply-a4e90bb3-b8cd-41de-97f4-76416237ccc8",
+          "appliedAt": "2026-10-22T09:25:13.565Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-a4e90bb3-b8cd-41de-97f4-76416237ccc8",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-951f2628-8ec6-49f8-bfdc-f697cae058c1",
+          "appliedAt": "2026-10-22T09:32:40.180Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-951f2628-8ec6-49f8-bfdc-f697cae058c1",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-ba7849dc-d8d0-445a-9660-0c3575bb924d",
+          "appliedAt": "2026-10-22T09:51:29.237Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-ba7849dc-d8d0-445a-9660-0c3575bb924d",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-a0d7ecc2-a249-4bdb-b29f-72874bf7aa97",
+          "appliedAt": "2026-10-22T10:08:53.029Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-a0d7ecc2-a249-4bdb-b29f-72874bf7aa97",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-dbe28ebf-e3c0-4d1c-9bfa-ad9c75a31f2c",
+          "appliedAt": "2026-10-22T10:34:30.075Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-dbe28ebf-e3c0-4d1c-9bfa-ad9c75a31f2c",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-cee4b6bb-7c7b-4684-952f-83eb8d2ed40b",
+          "appliedAt": "2026-10-22T10:50:24.743Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-cee4b6bb-7c7b-4684-952f-83eb8d2ed40b",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-f89d75ce-4f54-486a-8542-442a9ed6d165",
+          "appliedAt": "2026-10-22T11:15:26.351Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-f89d75ce-4f54-486a-8542-442a9ed6d165",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-b774d683-c04b-4e5f-b0e4-01a874ef4b4b",
+          "appliedAt": "2026-10-22T11:37:42.927Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-b774d683-c04b-4e5f-b0e4-01a874ef4b4b",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-e38af480-f255-4791-bfee-3b079511f4af",
+          "appliedAt": "2026-10-22T11:49:36.011Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-e38af480-f255-4791-bfee-3b079511f4af",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-ad397a6b-4175-4de8-a641-82434ce1baa9",
+          "appliedAt": "2026-10-22T11:53:58.831Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-ad397a6b-4175-4de8-a641-82434ce1baa9",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.externalId, attractionDetails.externalSource, attractionDetails.sourceUrl, attractionDetails.status, category, type, zoneId."
+        },
+        {
+          "eventId": "apply-c2827856-3e25-4238-84ae-da0feba7a84b",
+          "appliedAt": "2026-10-22T12:16:25.524Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-c2827856-3e25-4238-84ae-da0feba7a84b",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-1317c1be-20da-46fc-b7ef-45e92013017e",
+          "appliedAt": "2026-10-22T12:32:26.666Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-1317c1be-20da-46fc-b7ef-45e92013017e",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.closingDateText, descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-cf18ca06-78dc-4dc0-9673-2b0263c7c54f",
+          "appliedAt": "2026-10-22T12:45:14.634Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-cf18ca06-78dc-4dc0-9673-2b0263c7c54f",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.openingDateText, descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-0efe486b-3588-44ef-b502-203cfc8b11cb",
+          "appliedAt": "2026-10-22T12:59:55.125Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-0efe486b-3588-44ef-b502-203cfc8b11cb",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-77c8dbc5-63c3-4f16-a760-2c87bb4662bb",
+          "appliedAt": "2026-10-22T13:19:55.841Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-77c8dbc5-63c3-4f16-a760-2c87bb4662bb",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt."
+        },
+        {
+          "eventId": "apply-279fd50b-e9c3-446f-bb74-0241a9efaea7",
+          "appliedAt": "2026-10-22T13:24:45.374Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-279fd50b-e9c3-446f-bb74-0241a9efaea7",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : alternativeTexts.de, alternativeTexts.en, alternativeTexts.es, alternativeTexts.fr, alternativeTexts.it, alternativeTexts.nl, alternativeTexts.pl, alternativeTexts.pt, contentType, lastVerifiedAtUtc, originalFileName, sizeInBytes, sourcePageUrl, storageKey, titles.de, titles.en, titles.es, titles.fr, titles.it, titles.nl, titles.pl, titles.pt, year."
+        },
+        {
+          "eventId": "update-photo-fb037fff36bb4e068de875d565c1a2bb-2026-10-22T132946.274Z",
+          "appliedAt": "2026-10-22T13:29:46.274Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-fb037fff36bb4e068de875d565c1a2bb-2026-10-22T132946.274Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : fb037fff36bb4e068de875d565c1a2bb."
+        },
+        {
+          "eventId": "update-photo-31025418e6b345c58b83fe095c1c7164-2026-10-22T132957.451Z",
+          "appliedAt": "2026-10-22T13:29:57.451Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-31025418e6b345c58b83fe095c1c7164-2026-10-22T132957.451Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 31025418e6b345c58b83fe095c1c7164."
+        },
+        {
+          "eventId": "update-photo-0f6339bb64d2479fbda75cd2549d41de-2026-10-22T133009.643Z",
+          "appliedAt": "2026-10-22T13:30:09.643Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-0f6339bb64d2479fbda75cd2549d41de-2026-10-22T133009.643Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 0f6339bb64d2479fbda75cd2549d41de."
+        },
+        {
+          "eventId": "update-photo-07c572d6671d4715b7955aef69e94c2c-2026-10-22T133021.379Z",
+          "appliedAt": "2026-10-22T13:30:21.379Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-07c572d6671d4715b7955aef69e94c2c-2026-10-22T133021.379Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 07c572d6671d4715b7955aef69e94c2c."
+        },
+        {
+          "eventId": "update-photo-2dcc758483764d58ac38c57a0a79c338-2026-10-22T133033.435Z",
+          "appliedAt": "2026-10-22T13:30:33.435Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-2dcc758483764d58ac38c57a0a79c338-2026-10-22T133033.435Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 2dcc758483764d58ac38c57a0a79c338."
+        },
+        {
+          "eventId": "update-photo-3742d97d65964b008b3d5215b249fff1-2026-10-22T133044.291Z",
+          "appliedAt": "2026-10-22T13:30:44.291Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-3742d97d65964b008b3d5215b249fff1-2026-10-22T133044.291Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 3742d97d65964b008b3d5215b249fff1."
+        },
+        {
+          "eventId": "import-photo-b9a54ca007494519a71b3ff1561df3b6-2026-10-22T133517.474Z",
+          "appliedAt": "2026-10-22T13:35:17.474Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-b9a54ca007494519a71b3ff1561df3b6-2026-10-22T133517.474Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : b9a54ca007494519a71b3ff1561df3b6."
+        },
+        {
+          "eventId": "import-photo-3fd624f4f6ca44588ce8aa27a4b1c6ea-2026-10-22T133534.646Z",
+          "appliedAt": "2026-10-22T13:35:34.646Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-3fd624f4f6ca44588ce8aa27a4b1c6ea-2026-10-22T133534.646Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 3fd624f4f6ca44588ce8aa27a4b1c6ea."
+        },
+        {
+          "eventId": "import-photo-35599b26001546a28c94483fb44d7e66-2026-10-22T133549.655Z",
+          "appliedAt": "2026-10-22T13:35:49.655Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-35599b26001546a28c94483fb44d7e66-2026-10-22T133549.655Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 35599b26001546a28c94483fb44d7e66."
+        },
+        {
+          "eventId": "import-photo-d2a038e5ad2540cc891fc8b100deeb36-2026-10-22T133604.443Z",
+          "appliedAt": "2026-10-22T13:36:04.443Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-d2a038e5ad2540cc891fc8b100deeb36-2026-10-22T133604.443Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : d2a038e5ad2540cc891fc8b100deeb36."
+        },
+        {
+          "eventId": "import-photo-732633cac61f484bba8727e0da27b302-2026-10-22T133621.579Z",
+          "appliedAt": "2026-10-22T13:36:21.579Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-732633cac61f484bba8727e0da27b302-2026-10-22T133621.579Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 732633cac61f484bba8727e0da27b302."
+        },
+        {
+          "eventId": "import-photo-1d7901a16a0244f7b51af55a72d8ee07-2026-10-22T133637.803Z",
+          "appliedAt": "2026-10-22T13:36:37.803Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-1d7901a16a0244f7b51af55a72d8ee07-2026-10-22T133637.803Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 1d7901a16a0244f7b51af55a72d8ee07."
+        },
+        {
+          "eventId": "import-photo-83c8b875b50f41a3ba6f52bc161598ed-2026-10-22T133653.809Z",
+          "appliedAt": "2026-10-22T13:36:53.809Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-83c8b875b50f41a3ba6f52bc161598ed-2026-10-22T133653.809Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 83c8b875b50f41a3ba6f52bc161598ed."
+        },
+        {
+          "eventId": "import-photo-3f17510946154c4b8e8a04c045cb37aa-2026-10-22T133708.874Z",
+          "appliedAt": "2026-10-22T13:37:08.874Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-3f17510946154c4b8e8a04c045cb37aa-2026-10-22T133708.874Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 3f17510946154c4b8e8a04c045cb37aa."
+        },
+        {
+          "eventId": "import-photo-f745740008b7480bbf19aa4f609091d4-2026-10-22T133724.997Z",
+          "appliedAt": "2026-10-22T13:37:24.997Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-f745740008b7480bbf19aa4f609091d4-2026-10-22T133724.997Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : f745740008b7480bbf19aa4f609091d4."
+        },
+        {
+          "eventId": "apply-0c2e723e-1e55-4267-af3d-b52fb9db0bbe",
+          "appliedAt": "2026-10-22T13:53:12.360Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-0c2e723e-1e55-4267-af3d-b52fb9db0bbe",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : alternativeTexts.de, alternativeTexts.en, alternativeTexts.es, alternativeTexts.fr, alternativeTexts.it, alternativeTexts.nl, alternativeTexts.pl, alternativeTexts.pt, contentType, lastVerifiedAtUtc, originalFileName, sizeInBytes, sourcePageUrl, storageKey, titles.de, titles.en, titles.es, titles.fr, titles.it, titles.nl, titles.pl, titles.pt, year."
+        },
+        {
+          "eventId": "update-photo-c2c2cdf8ad8e4e7298174ae14b654c22-2026-10-22T135720.485Z",
+          "appliedAt": "2026-10-22T13:57:20.485Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-c2c2cdf8ad8e4e7298174ae14b654c22-2026-10-22T135720.485Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : c2c2cdf8ad8e4e7298174ae14b654c22."
+        },
+        {
+          "eventId": "update-photo-379f199f73994150a18dfbbd15cd80c0-2026-10-22T135731.764Z",
+          "appliedAt": "2026-10-22T13:57:31.764Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-379f199f73994150a18dfbbd15cd80c0-2026-10-22T135731.764Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 379f199f73994150a18dfbbd15cd80c0."
+        },
+        {
+          "eventId": "update-photo-dd0eeec8175440718cc1610872d3d88f-2026-10-22T135742.895Z",
+          "appliedAt": "2026-10-22T13:57:42.895Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-dd0eeec8175440718cc1610872d3d88f-2026-10-22T135742.895Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : dd0eeec8175440718cc1610872d3d88f."
+        },
+        {
+          "eventId": "update-photo-4f27f5c8998046edbb7e4ca329ab0a3c-2026-10-22T135754.662Z",
+          "appliedAt": "2026-10-22T13:57:54.662Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-4f27f5c8998046edbb7e4ca329ab0a3c-2026-10-22T135754.662Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 4f27f5c8998046edbb7e4ca329ab0a3c."
+        },
+        {
+          "eventId": "update-photo-e177ba69c83748ad929a4c9919d52ea8-2026-10-22T135806.980Z",
+          "appliedAt": "2026-10-22T13:58:06.980Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-e177ba69c83748ad929a4c9919d52ea8-2026-10-22T135806.980Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : e177ba69c83748ad929a4c9919d52ea8."
+        },
+        {
+          "eventId": "update-photo-be47015075d0437fa562096c75f2cf8c-2026-10-22T135819.345Z",
+          "appliedAt": "2026-10-22T13:58:19.345Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-be47015075d0437fa562096c75f2cf8c-2026-10-22T135819.345Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : be47015075d0437fa562096c75f2cf8c."
+        },
+        {
+          "eventId": "import-photo-3f32b8733e854b4fb9d0d5f3d93da61e-2026-10-22T141433.928Z",
+          "appliedAt": "2026-10-22T14:14:33.928Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-3f32b8733e854b4fb9d0d5f3d93da61e-2026-10-22T141433.928Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 3f32b8733e854b4fb9d0d5f3d93da61e."
+        },
+        {
+          "eventId": "import-photo-d0ecac19f29b4e509acf10f4297049e0-2026-10-22T141452.761Z",
+          "appliedAt": "2026-10-22T14:14:52.761Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-d0ecac19f29b4e509acf10f4297049e0-2026-10-22T141452.761Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : d0ecac19f29b4e509acf10f4297049e0."
+        },
+        {
+          "eventId": "import-photo-78f59277ff2f45f6948312579769c6e0-2026-10-22T141510.191Z",
+          "appliedAt": "2026-10-22T14:15:10.191Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-78f59277ff2f45f6948312579769c6e0-2026-10-22T141510.191Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 78f59277ff2f45f6948312579769c6e0."
+        },
+        {
+          "eventId": "import-photo-b2e57adaf62546479d2ab9aca2fb4689-2026-10-22T141525.257Z",
+          "appliedAt": "2026-10-22T14:15:25.257Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-b2e57adaf62546479d2ab9aca2fb4689-2026-10-22T141525.257Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : b2e57adaf62546479d2ab9aca2fb4689."
+        },
+        {
+          "eventId": "import-photo-35d17c2c383f45baa0d4cbce74ed5d8d-2026-10-22T141541.983Z",
+          "appliedAt": "2026-10-22T14:15:41.983Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-35d17c2c383f45baa0d4cbce74ed5d8d-2026-10-22T141541.983Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 35d17c2c383f45baa0d4cbce74ed5d8d."
+        },
+        {
+          "eventId": "import-photo-cfc55c9c787c4f52bdcbbeedfb71b669-2026-10-22T141600.069Z",
+          "appliedAt": "2026-10-22T14:16:00.069Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-cfc55c9c787c4f52bdcbbeedfb71b669-2026-10-22T141600.069Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : cfc55c9c787c4f52bdcbbeedfb71b669."
+        },
+        {
+          "eventId": "import-photo-b9370b7833fc447898af9c4df9503b5b-2026-10-22T141614.061Z",
+          "appliedAt": "2026-10-22T14:16:14.061Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-b9370b7833fc447898af9c4df9503b5b-2026-10-22T141614.061Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : b9370b7833fc447898af9c4df9503b5b."
+        },
+        {
+          "eventId": "import-photo-ed151c841a0f4f888d436f82d7e9af65-2026-10-22T141629.057Z",
+          "appliedAt": "2026-10-22T14:16:29.057Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-ed151c841a0f4f888d436f82d7e9af65-2026-10-22T141629.057Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : ed151c841a0f4f888d436f82d7e9af65."
+        },
+        {
+          "eventId": "update-photo-4e74a7afe3894d34bbc3c2df5fc9ed82-2026-10-22T142107.011Z",
+          "appliedAt": "2026-10-22T14:21:07.011Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-4e74a7afe3894d34bbc3c2df5fc9ed82-2026-10-22T142107.011Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 4e74a7afe3894d34bbc3c2df5fc9ed82."
+        },
+        {
+          "eventId": "update-photo-4b790cd103474d63bb1a0d6f23f7b19d-2026-10-22T142119.238Z",
+          "appliedAt": "2026-10-22T14:21:19.238Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-4b790cd103474d63bb1a0d6f23f7b19d-2026-10-22T142119.238Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 4b790cd103474d63bb1a0d6f23f7b19d."
+        },
+        {
+          "eventId": "update-photo-53432eb678714117ae5feb6673b0e7b6-2026-10-22T142130.548Z",
+          "appliedAt": "2026-10-22T14:21:30.548Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-53432eb678714117ae5feb6673b0e7b6-2026-10-22T142130.548Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 53432eb678714117ae5feb6673b0e7b6."
+        },
+        {
+          "eventId": "update-photo-64b35b8111c74fb4a9e91b85a269d947-2026-10-22T142142.367Z",
+          "appliedAt": "2026-10-22T14:21:42.367Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-64b35b8111c74fb4a9e91b85a269d947-2026-10-22T142142.367Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 64b35b8111c74fb4a9e91b85a269d947."
+        },
+        {
+          "eventId": "update-photo-f096b45d1ae44b899ff3192c260ded79-2026-10-22T142153.550Z",
+          "appliedAt": "2026-10-22T14:21:53.550Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-f096b45d1ae44b899ff3192c260ded79-2026-10-22T142153.550Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : f096b45d1ae44b899ff3192c260ded79."
+        },
+        {
+          "eventId": "update-photo-2565b846176c4ef68e5e975b31910bca-2026-10-22T142205.187Z",
+          "appliedAt": "2026-10-22T14:22:05.187Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-2565b846176c4ef68e5e975b31910bca-2026-10-22T142205.187Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 2565b846176c4ef68e5e975b31910bca."
+        },
+        {
+          "eventId": "update-photo-eef3d13cc4e24e47bd099b18e9f4fb58-2026-10-22T142216.409Z",
+          "appliedAt": "2026-10-22T14:22:16.409Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-eef3d13cc4e24e47bd099b18e9f4fb58-2026-10-22T142216.409Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : eef3d13cc4e24e47bd099b18e9f4fb58."
+        },
+        {
+          "eventId": "update-photo-7d95ebcb78a745309ac36103cb8041c8-2026-10-22T142228.120Z",
+          "appliedAt": "2026-10-22T14:22:28.120Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-7d95ebcb78a745309ac36103cb8041c8-2026-10-22T142228.120Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 7d95ebcb78a745309ac36103cb8041c8."
+        },
+        {
+          "eventId": "update-photo-0339adc99f804e988d24bc8004cfcea0-2026-10-22T142239.921Z",
+          "appliedAt": "2026-10-22T14:22:39.921Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-0339adc99f804e988d24bc8004cfcea0-2026-10-22T142239.921Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 0339adc99f804e988d24bc8004cfcea0."
+        },
+        {
+          "eventId": "import-photo-b99c0dd92b70451dae8913fd0f2b3772-2026-10-22T143328.142Z",
+          "appliedAt": "2026-10-22T14:33:28.142Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-b99c0dd92b70451dae8913fd0f2b3772-2026-10-22T143328.142Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : b99c0dd92b70451dae8913fd0f2b3772."
+        },
+        {
+          "eventId": "import-photo-369948a7d43449d7b4d4a9fc52862edf-2026-10-22T143345.488Z",
+          "appliedAt": "2026-10-22T14:33:45.488Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-369948a7d43449d7b4d4a9fc52862edf-2026-10-22T143345.488Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 369948a7d43449d7b4d4a9fc52862edf."
+        },
+        {
+          "eventId": "import-photo-458ef40641444561bb1bfd61c7bbd87c-2026-10-22T143400.728Z",
+          "appliedAt": "2026-10-22T14:34:00.728Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-458ef40641444561bb1bfd61c7bbd87c-2026-10-22T143400.728Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 458ef40641444561bb1bfd61c7bbd87c."
+        },
+        {
+          "eventId": "import-photo-fb118503fc504e3993e26ddbc442d77c-2026-10-22T143415.204Z",
+          "appliedAt": "2026-10-22T14:34:15.204Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-fb118503fc504e3993e26ddbc442d77c-2026-10-22T143415.204Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : fb118503fc504e3993e26ddbc442d77c."
+        },
+        {
+          "eventId": "import-photo-ef986217402247f3b2e3c55ce16be973-2026-10-22T143430.110Z",
+          "appliedAt": "2026-10-22T14:34:30.110Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-ef986217402247f3b2e3c55ce16be973-2026-10-22T143430.110Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : ef986217402247f3b2e3c55ce16be973."
+        },
+        {
+          "eventId": "import-photo-41c703c8872444c0b5663471627667e3-2026-10-22T143445.714Z",
+          "appliedAt": "2026-10-22T14:34:45.714Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-41c703c8872444c0b5663471627667e3-2026-10-22T143445.714Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 41c703c8872444c0b5663471627667e3."
+        },
+        {
+          "eventId": "import-photo-6768597d7ec24638b8c82f916fb64ce3-2026-10-22T143500.210Z",
+          "appliedAt": "2026-10-22T14:35:00.210Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-6768597d7ec24638b8c82f916fb64ce3-2026-10-22T143500.210Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 6768597d7ec24638b8c82f916fb64ce3."
+        },
+        {
+          "eventId": "import-photo-1f51be2e8baf43b49b46b70d496704cd-2026-10-22T143515.951Z",
+          "appliedAt": "2026-10-22T14:35:15.951Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-1f51be2e8baf43b49b46b70d496704cd-2026-10-22T143515.951Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 1f51be2e8baf43b49b46b70d496704cd."
+        },
+        {
+          "eventId": "import-photo-cc84af115bd942159bbd01b099022557-2026-10-22T143538.094Z",
+          "appliedAt": "2026-10-22T14:35:38.094Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-cc84af115bd942159bbd01b099022557-2026-10-22T143538.094Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : cc84af115bd942159bbd01b099022557."
+        },
+        {
+          "eventId": "import-photo-79d7db3a0c9e4ab0862f2af0d83c46cc-2026-10-22T144341.304Z",
+          "appliedAt": "2026-10-22T14:43:41.304Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-79d7db3a0c9e4ab0862f2af0d83c46cc-2026-10-22T144341.304Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 79d7db3a0c9e4ab0862f2af0d83c46cc."
+        },
+        {
+          "eventId": "import-photo-36003c6e9e15403cbe7a61584c2e36b2-2026-10-22T144400.658Z",
+          "appliedAt": "2026-10-22T14:44:00.658Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-36003c6e9e15403cbe7a61584c2e36b2-2026-10-22T144400.658Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 36003c6e9e15403cbe7a61584c2e36b2."
+        },
+        {
+          "eventId": "import-photo-f12ed40a8576487bb87d0d40c8bd2ae3-2026-10-22T144415.736Z",
+          "appliedAt": "2026-10-22T14:44:15.736Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-f12ed40a8576487bb87d0d40c8bd2ae3-2026-10-22T144415.736Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : f12ed40a8576487bb87d0d40c8bd2ae3."
+        },
+        {
+          "eventId": "import-photo-f3b3b8b7d8d047d39ab5d11814f382a3-2026-10-22T144430.638Z",
+          "appliedAt": "2026-10-22T14:44:30.638Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-f3b3b8b7d8d047d39ab5d11814f382a3-2026-10-22T144430.638Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : f3b3b8b7d8d047d39ab5d11814f382a3."
+        },
+        {
+          "eventId": "import-photo-42fb1d6d9cb34c27af64ee3a7805f15e-2026-10-22T144445.163Z",
+          "appliedAt": "2026-10-22T14:44:45.163Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-42fb1d6d9cb34c27af64ee3a7805f15e-2026-10-22T144445.163Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 42fb1d6d9cb34c27af64ee3a7805f15e."
+        },
+        {
+          "eventId": "import-photo-57acdcc698bf4960b775c8fca88aa97a-2026-10-22T144459.676Z",
+          "appliedAt": "2026-10-22T14:44:59.676Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-57acdcc698bf4960b775c8fca88aa97a-2026-10-22T144459.676Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 57acdcc698bf4960b775c8fca88aa97a."
+        },
+        {
+          "eventId": "import-photo-54bc4a67765d4ded927638a21e30f80e-2026-10-22T144516.735Z",
+          "appliedAt": "2026-10-22T14:45:16.735Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-54bc4a67765d4ded927638a21e30f80e-2026-10-22T144516.735Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 54bc4a67765d4ded927638a21e30f80e."
+        },
+        {
+          "eventId": "import-photo-313dda4265d14cae8eed91479a8643cf-2026-10-22T144531.480Z",
+          "appliedAt": "2026-10-22T14:45:31.480Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-313dda4265d14cae8eed91479a8643cf-2026-10-22T144531.480Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 313dda4265d14cae8eed91479a8643cf."
+        },
+        {
+          "eventId": "import-photo-d1ade75d64ae4ef1b7155e8368a1a63c-2026-10-22T144557.398Z",
+          "appliedAt": "2026-10-22T14:45:57.398Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-d1ade75d64ae4ef1b7155e8368a1a63c-2026-10-22T144557.398Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : d1ade75d64ae4ef1b7155e8368a1a63c."
+        },
+        {
+          "eventId": "import-photo-9ffaaeaf7f2e43b59206bba240c9795c-2026-10-22T144611.570Z",
+          "appliedAt": "2026-10-22T14:46:11.570Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-9ffaaeaf7f2e43b59206bba240c9795c-2026-10-22T144611.570Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 9ffaaeaf7f2e43b59206bba240c9795c."
+        },
+        {
+          "eventId": "update-photo-d9ac5c73eed4499294fea3b47192d06c-2026-10-22T144742.010Z",
+          "appliedAt": "2026-10-22T14:47:42.010Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-d9ac5c73eed4499294fea3b47192d06c-2026-10-22T144742.010Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : d9ac5c73eed4499294fea3b47192d06c."
+        },
+        {
+          "eventId": "update-photo-d3423efdb5a7463c92712757beca2874-2026-10-22T144753.569Z",
+          "appliedAt": "2026-10-22T14:47:53.569Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-d3423efdb5a7463c92712757beca2874-2026-10-22T144753.569Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : d3423efdb5a7463c92712757beca2874."
+        },
+        {
+          "eventId": "update-photo-b4c27492ea3c412c9b8592ea37a78be8-2026-10-22T144805.405Z",
+          "appliedAt": "2026-10-22T14:48:05.405Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-b4c27492ea3c412c9b8592ea37a78be8-2026-10-22T144805.405Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : b4c27492ea3c412c9b8592ea37a78be8."
+        },
+        {
+          "eventId": "update-photo-b89be210f68d41b1a0ec4e9b5632bab2-2026-10-22T144816.271Z",
+          "appliedAt": "2026-10-22T14:48:16.271Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-b89be210f68d41b1a0ec4e9b5632bab2-2026-10-22T144816.271Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : b89be210f68d41b1a0ec4e9b5632bab2."
+        },
+        {
+          "eventId": "update-photo-7121ea299ed5455081c58aac9c8760cf-2026-10-22T144827.773Z",
+          "appliedAt": "2026-10-22T14:48:27.773Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-7121ea299ed5455081c58aac9c8760cf-2026-10-22T144827.773Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 7121ea299ed5455081c58aac9c8760cf."
+        },
+        {
+          "eventId": "update-photo-2e6387c95ae54561aa496b6c7e1ed10c-2026-10-22T144839.601Z",
+          "appliedAt": "2026-10-22T14:48:39.601Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-2e6387c95ae54561aa496b6c7e1ed10c-2026-10-22T144839.601Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 2e6387c95ae54561aa496b6c7e1ed10c."
+        },
+        {
+          "eventId": "update-photo-56b2d6333aa541d3b527ba0c303870c0-2026-10-22T144851.467Z",
+          "appliedAt": "2026-10-22T14:48:51.467Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-56b2d6333aa541d3b527ba0c303870c0-2026-10-22T144851.467Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 56b2d6333aa541d3b527ba0c303870c0."
+        },
+        {
+          "eventId": "update-photo-e687fb9e6338436f9931300aa397bded-2026-10-22T144903.233Z",
+          "appliedAt": "2026-10-22T14:49:03.233Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-e687fb9e6338436f9931300aa397bded-2026-10-22T144903.233Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : e687fb9e6338436f9931300aa397bded."
+        },
+        {
+          "eventId": "import-photo-dd9d2dc2a3b545d6bda0c7e08a5b9fa8-2026-10-22T145524.092Z",
+          "appliedAt": "2026-10-22T14:55:24.092Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-dd9d2dc2a3b545d6bda0c7e08a5b9fa8-2026-10-22T145524.092Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : dd9d2dc2a3b545d6bda0c7e08a5b9fa8."
+        },
+        {
+          "eventId": "import-photo-32eb21ea361e49ca9cc46bfcacf18f43-2026-10-22T145538.704Z",
+          "appliedAt": "2026-10-22T14:55:38.704Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-32eb21ea361e49ca9cc46bfcacf18f43-2026-10-22T145538.704Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 32eb21ea361e49ca9cc46bfcacf18f43."
+        },
+        {
+          "eventId": "import-photo-4203479dd1014d24822d5ee340c4d08c-2026-10-22T145552.659Z",
+          "appliedAt": "2026-10-22T14:55:52.659Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-4203479dd1014d24822d5ee340c4d08c-2026-10-22T145552.659Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 4203479dd1014d24822d5ee340c4d08c."
+        },
+        {
+          "eventId": "import-photo-fcab791e9ad54affbc282b1730e6dd54-2026-10-22T145608.512Z",
+          "appliedAt": "2026-10-22T14:56:08.512Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-fcab791e9ad54affbc282b1730e6dd54-2026-10-22T145608.512Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : fcab791e9ad54affbc282b1730e6dd54."
+        },
+        {
+          "eventId": "import-photo-11ea5cea909143dc8283cc46c79211d4-2026-10-22T145622.714Z",
+          "appliedAt": "2026-10-22T14:56:22.714Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-11ea5cea909143dc8283cc46c79211d4-2026-10-22T145622.714Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 11ea5cea909143dc8283cc46c79211d4."
+        },
+        {
+          "eventId": "import-photo-fa2f521d2fa24dd48cfbaa69c64326fc-2026-10-22T145640.999Z",
+          "appliedAt": "2026-10-22T14:56:40.999Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-fa2f521d2fa24dd48cfbaa69c64326fc-2026-10-22T145640.999Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : fa2f521d2fa24dd48cfbaa69c64326fc."
+        },
+        {
+          "eventId": "import-photo-372cf581ac864be898697b277a6da71a-2026-10-22T145657.502Z",
+          "appliedAt": "2026-10-22T14:56:57.502Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-372cf581ac864be898697b277a6da71a-2026-10-22T145657.502Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 372cf581ac864be898697b277a6da71a."
+        },
+        {
+          "eventId": "import-photo-0e290d630e474c509daa864a6ba95b83-2026-10-22T145711.844Z",
+          "appliedAt": "2026-10-22T14:57:11.844Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-0e290d630e474c509daa864a6ba95b83-2026-10-22T145711.844Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 0e290d630e474c509daa864a6ba95b83."
+        },
+        {
+          "eventId": "import-photo-f9a154b85cef4c2893c98be180e70526-2026-10-22T145727.641Z",
+          "appliedAt": "2026-10-22T14:57:27.641Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-f9a154b85cef4c2893c98be180e70526-2026-10-22T145727.641Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : f9a154b85cef4c2893c98be180e70526."
+        },
+        {
+          "eventId": "import-photo-4d827734c25d4ce8be0add4523d08d63-2026-10-22T145744.569Z",
+          "appliedAt": "2026-10-22T14:57:44.569Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-4d827734c25d4ce8be0add4523d08d63-2026-10-22T145744.569Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 4d827734c25d4ce8be0add4523d08d63."
+        },
+        {
+          "eventId": "import-photo-312f8f62fb6d4f58b9b9c110582e525f-2026-10-22T145800.118Z",
+          "appliedAt": "2026-10-22T14:58:00.118Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-312f8f62fb6d4f58b9b9c110582e525f-2026-10-22T145800.118Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 312f8f62fb6d4f58b9b9c110582e525f."
+        },
+        {
+          "eventId": "import-photo-5f0ec03b88674bd08ed8e4f08c1c2059-2026-10-22T150457.065Z",
+          "appliedAt": "2026-10-22T15:04:57.065Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-5f0ec03b88674bd08ed8e4f08c1c2059-2026-10-22T150457.065Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 5f0ec03b88674bd08ed8e4f08c1c2059."
+        },
+        {
+          "eventId": "import-photo-2c0d2f83ded34bb397f3072397eb480d-2026-10-22T150513.978Z",
+          "appliedAt": "2026-10-22T15:05:13.978Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-2c0d2f83ded34bb397f3072397eb480d-2026-10-22T150513.978Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 2c0d2f83ded34bb397f3072397eb480d."
+        },
+        {
+          "eventId": "import-photo-879a534680b64c4da5b34cb307aa843c-2026-10-22T150536.348Z",
+          "appliedAt": "2026-10-22T15:05:36.348Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-879a534680b64c4da5b34cb307aa843c-2026-10-22T150536.348Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 879a534680b64c4da5b34cb307aa843c."
+        },
+        {
+          "eventId": "import-photo-c8209a0d0a454bb6b65fcc532ce1939c-2026-10-22T150603.095Z",
+          "appliedAt": "2026-10-22T15:06:03.095Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-c8209a0d0a454bb6b65fcc532ce1939c-2026-10-22T150603.095Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : c8209a0d0a454bb6b65fcc532ce1939c."
+        },
+        {
+          "eventId": "import-photo-10995f11bc864d89bc04b964c4619975-2026-10-22T150624.279Z",
+          "appliedAt": "2026-10-22T15:06:24.279Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-10995f11bc864d89bc04b964c4619975-2026-10-22T150624.279Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 10995f11bc864d89bc04b964c4619975."
+        },
+        {
+          "eventId": "import-photo-efcdc61d23b14cb1973338f82f99ed82-2026-10-22T150640.330Z",
+          "appliedAt": "2026-10-22T15:06:40.330Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-efcdc61d23b14cb1973338f82f99ed82-2026-10-22T150640.330Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : efcdc61d23b14cb1973338f82f99ed82."
+        },
+        {
+          "eventId": "import-photo-239850b4511841689f00e600030ed9c7-2026-10-22T150656.420Z",
+          "appliedAt": "2026-10-22T15:06:56.420Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-239850b4511841689f00e600030ed9c7-2026-10-22T150656.420Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 239850b4511841689f00e600030ed9c7."
+        },
+        {
+          "eventId": "update-photo-1e3698dff2554cfa8068ea034b34e68e-2026-10-22T151002.265Z",
+          "appliedAt": "2026-10-22T15:10:02.265Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-1e3698dff2554cfa8068ea034b34e68e-2026-10-22T151002.265Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 1e3698dff2554cfa8068ea034b34e68e."
+        },
+        {
+          "eventId": "update-photo-408d52cc642b4bef97d49e708c2a7496-2026-10-22T151015.273Z",
+          "appliedAt": "2026-10-22T15:10:15.273Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-408d52cc642b4bef97d49e708c2a7496-2026-10-22T151015.273Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 408d52cc642b4bef97d49e708c2a7496."
+        },
+        {
+          "eventId": "update-photo-9acc82a1deac4f9291230683bf94f022-2026-10-22T151027.553Z",
+          "appliedAt": "2026-10-22T15:10:27.553Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-9acc82a1deac4f9291230683bf94f022-2026-10-22T151027.553Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 9acc82a1deac4f9291230683bf94f022."
+        },
+        {
+          "eventId": "update-photo-f5ed379875ea496f8b8b340a82169796-2026-10-22T151039.762Z",
+          "appliedAt": "2026-10-22T15:10:39.762Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-f5ed379875ea496f8b8b340a82169796-2026-10-22T151039.762Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : f5ed379875ea496f8b8b340a82169796."
+        },
+        {
+          "eventId": "update-photo-6cf5fcf6260d48d5af8b25b7643b6437-2026-10-22T151050.720Z",
+          "appliedAt": "2026-10-22T15:10:50.720Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-6cf5fcf6260d48d5af8b25b7643b6437-2026-10-22T151050.720Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 6cf5fcf6260d48d5af8b25b7643b6437."
+        },
+        {
+          "eventId": "update-photo-6d1557b6351249d8ad814de4eb3b7d2f-2026-10-22T151102.833Z",
+          "appliedAt": "2026-10-22T15:11:02.833Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-6d1557b6351249d8ad814de4eb3b7d2f-2026-10-22T151102.833Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 6d1557b6351249d8ad814de4eb3b7d2f."
+        },
+        {
+          "eventId": "update-photo-10a974d382a04c5f8977326a192f5a43-2026-10-22T151113.987Z",
+          "appliedAt": "2026-10-22T15:11:13.987Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-10a974d382a04c5f8977326a192f5a43-2026-10-22T151113.987Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 10a974d382a04c5f8977326a192f5a43."
+        },
+        {
+          "eventId": "update-photo-85f6a80b68da4eb5aec9c5ac2cacad8e-2026-10-22T151125.800Z",
+          "appliedAt": "2026-10-22T15:11:25.800Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-85f6a80b68da4eb5aec9c5ac2cacad8e-2026-10-22T151125.800Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 85f6a80b68da4eb5aec9c5ac2cacad8e."
+        },
+        {
+          "eventId": "update-photo-079cd7df4f05460fabb0ba544f9a248f-2026-10-22T151137.906Z",
+          "appliedAt": "2026-10-22T15:11:37.906Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-079cd7df4f05460fabb0ba544f9a248f-2026-10-22T151137.906Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 079cd7df4f05460fabb0ba544f9a248f."
+        },
+        {
+          "eventId": "update-photo-bf041835c10e451b8cf140a5b075442b-2026-10-22T151148.861Z",
+          "appliedAt": "2026-10-22T15:11:48.861Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-bf041835c10e451b8cf140a5b075442b-2026-10-22T151148.861Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : bf041835c10e451b8cf140a5b075442b."
+        },
+        {
+          "eventId": "update-photo-4bc46bfb67384f0eabd16993151697cd-2026-10-22T151334.525Z",
+          "appliedAt": "2026-10-22T15:13:34.525Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-4bc46bfb67384f0eabd16993151697cd-2026-10-22T151334.525Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 4bc46bfb67384f0eabd16993151697cd."
+        },
+        {
+          "eventId": "update-photo-d1e20410bbab430fbbfa3f7400405fa8-2026-10-22T151345.993Z",
+          "appliedAt": "2026-10-22T15:13:45.993Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-d1e20410bbab430fbbfa3f7400405fa8-2026-10-22T151345.993Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : d1e20410bbab430fbbfa3f7400405fa8."
+        },
+        {
+          "eventId": "update-photo-1e2a9a77546247d4a14f6cd30eda1a20-2026-10-22T151357.065Z",
+          "appliedAt": "2026-10-22T15:13:57.065Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-1e2a9a77546247d4a14f6cd30eda1a20-2026-10-22T151357.065Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 1e2a9a77546247d4a14f6cd30eda1a20."
+        },
+        {
+          "eventId": "update-photo-fa1e6ad616ea4f5298bd99470abec0ac-2026-10-22T151409.250Z",
+          "appliedAt": "2026-10-22T15:14:09.250Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-fa1e6ad616ea4f5298bd99470abec0ac-2026-10-22T151409.250Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : fa1e6ad616ea4f5298bd99470abec0ac."
+        },
+        {
+          "eventId": "update-photo-a85e607066964430aa1a21456e983baa-2026-10-22T151932.332Z",
+          "appliedAt": "2026-10-22T15:19:32.332Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-a85e607066964430aa1a21456e983baa-2026-10-22T151932.332Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : a85e607066964430aa1a21456e983baa."
+        },
+        {
+          "eventId": "update-photo-b93b5faf93d74142ba71cf975ea38ca1-2026-10-22T151943.724Z",
+          "appliedAt": "2026-10-22T15:19:43.724Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-b93b5faf93d74142ba71cf975ea38ca1-2026-10-22T151943.724Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : b93b5faf93d74142ba71cf975ea38ca1."
+        },
+        {
+          "eventId": "update-photo-5b7ca4e8298a44d28e9fbfb34f3ec14e-2026-10-22T151955.083Z",
+          "appliedAt": "2026-10-22T15:19:55.083Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-5b7ca4e8298a44d28e9fbfb34f3ec14e-2026-10-22T151955.083Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 5b7ca4e8298a44d28e9fbfb34f3ec14e."
+        },
+        {
+          "eventId": "update-photo-b1240e057b224d039e3b767f9afa53e6-2026-10-22T152006.651Z",
+          "appliedAt": "2026-10-22T15:20:06.651Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-b1240e057b224d039e3b767f9afa53e6-2026-10-22T152006.651Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : b1240e057b224d039e3b767f9afa53e6."
+        },
+        {
+          "eventId": "update-photo-4576235f90d34777b08f9522244ec8d2-2026-10-22T152019.547Z",
+          "appliedAt": "2026-10-22T15:20:19.547Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-4576235f90d34777b08f9522244ec8d2-2026-10-22T152019.547Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 4576235f90d34777b08f9522244ec8d2."
+        },
+        {
+          "eventId": "import-photo-1c2873a7d64542f588adcfb0c75ad89e-2026-10-22T152130.160Z",
+          "appliedAt": "2026-10-22T15:21:30.160Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-1c2873a7d64542f588adcfb0c75ad89e-2026-10-22T152130.160Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 1c2873a7d64542f588adcfb0c75ad89e."
+        },
+        {
+          "eventId": "import-photo-5b02a1c067b44153ae1fceae12f0ef0d-2026-10-22T152548.404Z",
+          "appliedAt": "2026-10-22T15:25:48.404Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-5b02a1c067b44153ae1fceae12f0ef0d-2026-10-22T152548.404Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 5b02a1c067b44153ae1fceae12f0ef0d."
+        },
+        {
+          "eventId": "import-photo-a46a36b0957845ebb0f06f8a2f90514e-2026-10-22T152603.128Z",
+          "appliedAt": "2026-10-22T15:26:03.128Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-a46a36b0957845ebb0f06f8a2f90514e-2026-10-22T152603.128Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : a46a36b0957845ebb0f06f8a2f90514e."
+        },
+        {
+          "eventId": "import-photo-abb66c45d83f4182b6cc7c7f6acc1941-2026-10-22T152620.336Z",
+          "appliedAt": "2026-10-22T15:26:20.336Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-abb66c45d83f4182b6cc7c7f6acc1941-2026-10-22T152620.336Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : abb66c45d83f4182b6cc7c7f6acc1941."
+        },
+        {
+          "eventId": "import-photo-092c7011816244bf8b62f25190fa18ba-2026-10-22T152634.519Z",
+          "appliedAt": "2026-10-22T15:26:34.519Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-092c7011816244bf8b62f25190fa18ba-2026-10-22T152634.519Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 092c7011816244bf8b62f25190fa18ba."
+        },
+        {
+          "eventId": "import-photo-2929f0d2ba17408f9bb1cb4bffe5cdec-2026-10-22T152649.190Z",
+          "appliedAt": "2026-10-22T15:26:49.190Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-2929f0d2ba17408f9bb1cb4bffe5cdec-2026-10-22T152649.190Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 2929f0d2ba17408f9bb1cb4bffe5cdec."
+        },
+        {
+          "eventId": "import-photo-596679696bd6460a9468745a0ce7c08b-2026-10-22T152704.520Z",
+          "appliedAt": "2026-10-22T15:27:04.520Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-596679696bd6460a9468745a0ce7c08b-2026-10-22T152704.520Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 596679696bd6460a9468745a0ce7c08b."
+        },
+        {
+          "eventId": "import-photo-fa9f59af3fa749839a140c482a1e3987-2026-10-22T152719.399Z",
+          "appliedAt": "2026-10-22T15:27:19.399Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-fa9f59af3fa749839a140c482a1e3987-2026-10-22T152719.399Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : fa9f59af3fa749839a140c482a1e3987."
+        },
+        {
+          "eventId": "import-photo-33156b2076c647d4886a335b963961cc-2026-10-22T152734.751Z",
+          "appliedAt": "2026-10-22T15:27:34.751Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-33156b2076c647d4886a335b963961cc-2026-10-22T152734.751Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 33156b2076c647d4886a335b963961cc."
+        },
+        {
+          "eventId": "import-photo-9b68b76cd3584783bd7d6937118f80b7-2026-10-22T152749.752Z",
+          "appliedAt": "2026-10-22T15:27:49.752Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-9b68b76cd3584783bd7d6937118f80b7-2026-10-22T152749.752Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 9b68b76cd3584783bd7d6937118f80b7."
+        },
+        {
+          "eventId": "update-photo-85f6a80b68da4eb5aec9c5ac2cacad8e-2026-10-22T153424.920Z",
+          "appliedAt": "2026-10-22T15:34:24.920Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#update-photo-85f6a80b68da4eb5aec9c5ac2cacad8e-2026-10-22T153424.920Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 85f6a80b68da4eb5aec9c5ac2cacad8e."
+        },
+        {
+          "eventId": "apply-156cfc1f-be7a-4083-9ab0-1eeca92192db",
+          "appliedAt": "2026-10-22T15:35:53.937Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-156cfc1f-be7a-4083-9ab0-1eeca92192db",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.manufacturerId, attractionDetails.model, type."
+        },
+        {
+          "eventId": "import-photo-1c3c01778fa14759a3b60d6dce4628f6-2026-10-22T154401.042Z",
+          "appliedAt": "2026-10-22T15:44:01.042Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-1c3c01778fa14759a3b60d6dce4628f6-2026-10-22T154401.042Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 1c3c01778fa14759a3b60d6dce4628f6."
+        },
+        {
+          "eventId": "import-photo-42054c70ad53423d8e508593f4dc78d3-2026-10-22T154429.709Z",
+          "appliedAt": "2026-10-22T15:44:29.709Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-42054c70ad53423d8e508593f4dc78d3-2026-10-22T154429.709Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 42054c70ad53423d8e508593f4dc78d3."
+        },
+        {
+          "eventId": "import-photo-ddffe8669a5449edb531d0e1e3013f94-2026-10-22T154445.316Z",
+          "appliedAt": "2026-10-22T15:44:45.316Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-ddffe8669a5449edb531d0e1e3013f94-2026-10-22T154445.316Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : ddffe8669a5449edb531d0e1e3013f94."
+        },
+        {
+          "eventId": "import-photo-e8acbe9d6e0746b2928098944d1e31ca-2026-10-22T154500.535Z",
+          "appliedAt": "2026-10-22T15:45:00.535Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-e8acbe9d6e0746b2928098944d1e31ca-2026-10-22T154500.535Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : e8acbe9d6e0746b2928098944d1e31ca."
+        },
+        {
+          "eventId": "import-photo-7720ec08ed4145ad8b281556b978be42-2026-10-22T154516.018Z",
+          "appliedAt": "2026-10-22T15:45:16.018Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-7720ec08ed4145ad8b281556b978be42-2026-10-22T154516.018Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 7720ec08ed4145ad8b281556b978be42."
+        },
+        {
+          "eventId": "apply-4d466ded-179b-4624-8381-e5e9239cdc42",
+          "appliedAt": "2026-10-22T15:47:01.798Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-4d466ded-179b-4624-8381-e5e9239cdc42",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : alternativeTexts.de, alternativeTexts.en, alternativeTexts.es, alternativeTexts.fr, alternativeTexts.it, alternativeTexts.nl, alternativeTexts.pl, alternativeTexts.pt, contentType, originalFileName, sizeInBytes, sourcePageUrl, storageKey, titles.de, titles.en, titles.es, titles.fr, titles.it, titles.nl, titles.pl, titles.pt, year."
+        },
+        {
+          "eventId": "apply-2b21e81c-b0c5-4754-8748-8db88bc7b145",
+          "appliedAt": "2026-10-22T16:01:05.758Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-2b21e81c-b0c5-4754-8748-8db88bc7b145",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : biography.de, biography.en, biography.es, biography.fr, biography.it, biography.nl, biography.pl, biography.pt."
+        },
+        {
+          "eventId": "import-photo-5f003c591cad49a8b6c22f1358bfe26c-2026-10-22T160243.257Z",
+          "appliedAt": "2026-10-22T16:02:43.257Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-5f003c591cad49a8b6c22f1358bfe26c-2026-10-22T160243.257Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 5f003c591cad49a8b6c22f1358bfe26c."
+        },
+        {
+          "eventId": "apply-3b83ad1e-ec43-4a5a-9cf0-226956abe188",
+          "appliedAt": "2026-10-22T16:08:17.977Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-3b83ad1e-ec43-4a5a-9cf0-226956abe188",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : biography.de, biography.en, biography.es, biography.fr, biography.it, biography.nl, biography.pl, biography.pt."
+        },
+        {
+          "eventId": "apply-1489bab3-e6d7-46b9-9d1a-457586add217",
+          "appliedAt": "2026-10-22T16:11:40.680Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-1489bab3-e6d7-46b9-9d1a-457586add217",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : openingHours.dateOverrides, openingHours.lastVerifiedAtUtc."
+        },
+        {
+          "eventId": "apply-4f35c31f-2156-4494-a45b-fb4ace3e787a",
+          "appliedAt": "2026-10-22T16:20:03.375Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-4f35c31f-2156-4494-a45b-fb4ace3e787a",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : pricing.admissionOffers, pricing.annualPasses, pricing.historicalSnapshots, pricing.lastVerifiedAtUtc, pricing.notes, pricing.parkingOffers, pricing.purchaseUrl."
+        },
+        {
+          "eventId": "apply-63a8fde4-3e1a-48aa-987c-2e0e4f5d41d2",
+          "appliedAt": "2026-10-22T16:53:15.519Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-63a8fde4-3e1a-48aa-987c-2e0e4f5d41d2",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : eventType, isVisible, key, mainImageId, ownerId, parkId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-aa656c10-cb75-4af6-92a6-32caf3f96c37",
+          "appliedAt": "2026-10-22T17:03:59.720Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-aa656c10-cb75-4af6-92a6-32caf3f96c37",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : datePrecision, day, eventType, mainImageId, month, sources, summaries, titles."
+        },
+        {
+          "eventId": "apply-efce92f0-facd-4904-9ac4-dfbdd710fd37",
+          "appliedAt": "2026-10-22T17:08:52.059Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-efce92f0-facd-4904-9ac4-dfbdd710fd37",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : datePrecision, eventType, mainImageId, month, newOwnerName, sources, summaries, titles."
+        },
+        {
+          "eventId": "apply-9e6f3132-53d0-475b-8caa-54178f01f146",
+          "appliedAt": "2026-10-22T17:12:04.564Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-9e6f3132-53d0-475b-8caa-54178f01f146",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : datePrecision, day, isVisible, month, sources, summaries, titles."
+        },
+        {
+          "eventId": "apply-89c0f695-cf6d-488e-9c56-c89a3420a36d",
+          "appliedAt": "2026-10-22T17:34:03.249Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-89c0f695-cf6d-488e-9c56-c89a3420a36d",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "apply-88194452-e437-4384-b0a3-7f7c6ace38a3",
+          "appliedAt": "2026-10-22T17:38:20.096Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-88194452-e437-4384-b0a3-7f7c6ace38a3",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : contextParkId, entityType, eventType, isMajor, isVisible, key, mainImageId, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-035bff95-0379-4b5a-a0e3-1d5e0b387030",
+          "appliedAt": "2026-10-22T17:44:47.029Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-035bff95-0379-4b5a-a0e3-1d5e0b387030",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : contextParkId, datePrecision, day, entityType, eventType, isMajor, isVisible, key, mainImageId, month, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-3c02a42b-3ae1-4bd5-bac8-cc9a3db36561",
+          "appliedAt": "2026-10-22T17:49:19.556Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-3c02a42b-3ae1-4bd5-bac8-cc9a3db36561",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : contextParkId, entityType, eventType, isMajor, isVisible, key, mainImageId, newName, ownerId, parkId, parkItemId, previousName, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-2b528727-0220-40be-aa33-dfb67047899d",
+          "appliedAt": "2026-10-22T17:50:47.829Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-2b528727-0220-40be-aa33-dfb67047899d",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : datePrecision, day, eventType, isMajor, isVisible, key, mainImageId, month, ownerId, parkId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-570b0190-fa1b-45b0-9083-8e7f52f0bd00",
+          "appliedAt": "2026-10-22T17:53:44.564Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-570b0190-fa1b-45b0-9083-8e7f52f0bd00",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : contextParkId, entityType, eventType, isMajor, isVisible, key, mainImageId, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-2fce29f6-8ed8-4d53-b00f-da79bbb4d0e3",
+          "appliedAt": "2026-10-22T17:59:22.292Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-2fce29f6-8ed8-4d53-b00f-da79bbb4d0e3",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "import-photo-57521e0f1d444be1b2972f9c0ee835ce-2026-10-22T180222.561Z",
+          "appliedAt": "2026-10-22T18:02:22.561Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-57521e0f1d444be1b2972f9c0ee835ce-2026-10-22T180222.561Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 57521e0f1d444be1b2972f9c0ee835ce."
+        },
+        {
+          "eventId": "apply-ece26ffb-bad1-4fc1-bc60-e31781bb6382",
+          "appliedAt": "2026-10-22T18:06:09.705Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-ece26ffb-bad1-4fc1-bc60-e31781bb6382",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "import-photo-83bffbf383954fcf8b10c14da8c82012-2026-10-22T181253.801Z",
+          "appliedAt": "2026-10-22T18:12:53.801Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#import-photo-83bffbf383954fcf8b10c14da8c82012-2026-10-22T181253.801Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 83bffbf383954fcf8b10c14da8c82012."
+        },
+        {
+          "eventId": "apply-6c56f8c4-06b4-4993-b897-cd93dcc22878",
+          "appliedAt": "2026-10-22T18:15:58.796Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-6c56f8c4-06b4-4993-b897-cd93dcc22878",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "apply-0d9fdf8d-a236-4b84-bce0-5db656750cc1",
+          "appliedAt": "2026-10-22T18:17:30.262Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-0d9fdf8d-a236-4b84-bce0-5db656750cc1",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : pricing.historicalSnapshots, pricing.lastVerifiedAtUtc."
+        },
+        {
+          "eventId": "apply-6d48130e-4836-4032-9828-9e7e3ba57003",
+          "appliedAt": "2026-10-22T18:20:22.808Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-6d48130e-4836-4032-9828-9e7e3ba57003",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : contextParkId, entityType, eventType, isVisible, key, mainImageId, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-3877b992-c703-40ee-b444-e833c392d564",
+          "appliedAt": "2026-10-22T18:25:19.826Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-3877b992-c703-40ee-b444-e833c392d564",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : biography.de, biography.en, biography.es, biography.fr, biography.it, biography.nl, biography.pl, biography.pt."
+        },
+        {
+          "eventId": "apply-a487e0ce-6707-49dc-83fa-527664f55d6c",
+          "appliedAt": "2026-10-22T18:28:19.467Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-a487e0ce-6707-49dc-83fa-527664f55d6c",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "apply-ae9a9279-0fcc-4e99-b942-0daf879e9744",
+          "appliedAt": "2026-10-22T18:40:11.952Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-ae9a9279-0fcc-4e99-b942-0daf879e9744",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article, descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt, summaries."
+        },
+        {
+          "eventId": "apply-8c0df586-c2d1-4ea5-a0e6-7ec9d36de97c",
+          "appliedAt": "2026-10-22T18:46:12.634Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-8c0df586-c2d1-4ea5-a0e6-7ec9d36de97c",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article, isVisible, mainImageId."
+        },
+        {
+          "eventId": "completed-apply-8c0df586-c2d1-4ea5-a0e6-7ec9d36de97c",
+          "appliedAt": "2026-10-22T18:46:12.634Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-receipts.json#apply-8c0df586-c2d1-4ea5-a0e6-7ec9d36de97c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/kingoland-audit.md",
+          "summary": "Audit final clôturé ; site contrôlé et annonce Facebook déjà Published, sans nouvel envoi."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7284,7 +9189,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json"
     },
     {
       "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
@@ -10596,6 +12502,92 @@
       }
     },
     {
+      "entryId": "FR-standalone-258c419a-5081-484e-a827-b7728ed6587d",
+      "name": "Luge sur rails : JIM La Sambuy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "RollerCoaster",
+      "locality": "Faverges-Seythenex",
+      "siteId": "258c419a-5081-484e-a827-b7728ed6587d",
+      "legacySiteIds": [
+        "3ed514ff-1f6f-412e-ac68-2327b3b6d36a"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "PublishedDateUnknown",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [
+        "La Sambuy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/13133.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel enregistré (à revérifier)",
+          "url": "https://www.sources-lac-annecy.com/equipement/luge-sur-rails-jim-la-sambuy/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Mountain Coaster",
+          "url": "https://rcdb.com/13134.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wiegand — références constructeur",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-988",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur référencé par la source",
+          "url": "http://www.lasambuy.com/activites-hiver/la-luge",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "FR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-22",
+        "attractions": [
+          {
+            "name": "Luge",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/13134.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "La Sambuy",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Seythenex , Auvergne-Rhône-Alpes",
+            "sourceOpenedYear": "2011"
+          },
+          {
+            "name": "La Sambuy",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-988",
+            "family": "Alpine coaster",
+            "sourceVenueName": "La Sambuy",
+            "referenceId": "location-id-988"
+          }
+        ],
+        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      }
+    },
+    {
       "entryId": "FR-standalone-eba6c813-59ed-4c60-9cea-14f0cc3ecb4c",
       "name": "Luge sur rails de La Schlucht",
       "entityKind": "StandaloneAttraction",
@@ -10726,92 +12718,6 @@
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Mijoux , Auvergne-Rhône-Alpes",
             "sourceOpenedYear": "2008"
-          }
-        ],
-        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
-      }
-    },
-    {
-      "entryId": "FR-standalone-258c419a-5081-484e-a827-b7728ed6587d",
-      "name": "Luge sur rails : JIM La Sambuy",
-      "entityKind": "StandaloneAttraction",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "RollerCoaster",
-      "locality": "Faverges-Seythenex",
-      "siteId": "258c419a-5081-484e-a827-b7728ed6587d",
-      "legacySiteIds": [
-        "3ed514ff-1f6f-412e-ac68-2327b3b6d36a"
-      ],
-      "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
-      "siteReviewStatusAtInventory": "Validated",
-      "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [
-        "La Sambuy"
-      ],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/13133.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Site officiel enregistré (à revérifier)",
-          "url": "https://www.sources-lac-annecy.com/equipement/luge-sur-rails-jim-la-sambuy/",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB — Mountain Coaster",
-          "url": "https://rcdb.com/13134.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Wiegand — références constructeur",
-          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-988",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Opérateur référencé par la source",
-          "url": "http://www.lasambuy.com/activites-hiver/la-luge",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": "FR",
-      "countryResolution": null,
-      "standaloneAssessment": {
-        "relation": "AlreadyStandalone",
-        "reviewedAt": "2026-10-22",
-        "attractions": [
-          {
-            "name": "Luge",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13134.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "La Sambuy",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Seythenex , Auvergne-Rhône-Alpes",
-            "sourceOpenedYear": "2011"
-          },
-          {
-            "name": "La Sambuy",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=321#location-id-988",
-            "family": "Alpine coaster",
-            "sourceVenueName": "La Sambuy",
-            "referenceId": "location-id-988"
           }
         ],
         "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
@@ -12888,6 +14794,53 @@
       }
     },
     {
+      "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+      "name": "Ô Parc",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "AmusementPark",
+      "locality": "Bannay",
+      "siteId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "PublishedDateUnknown",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "ClosedDefinitively",
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB",
+          "url": "https://rcdb.com/19308.htm",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Backlog national existant",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel enregistré (à revérifier)",
+          "url": "https://www.o-parc.fr/",
+          "accessedAt": "2026-10-22"
+        }
+      ],
+      "countryCodeAtInventory": "FR",
+      "countryResolution": null
+    },
+    {
       "entryId": "FR-park-81f86001-3485-418e-9266-7977dff7f56a",
       "name": "O'Fun Park",
       "entityKind": "Park",
@@ -12980,53 +14933,6 @@
         {
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://oglisspark.fr/",
-          "accessedAt": "2026-10-22"
-        }
-      ],
-      "countryCodeAtInventory": "FR",
-      "countryResolution": null
-    },
-    {
-      "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
-      "name": "Ô Parc",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "AmusementPark",
-      "locality": "Bannay",
-      "siteId": "6644b892-d03c-461e-855d-a61cadba76f4",
-      "legacySiteIds": [],
-      "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
-      "siteReviewStatusAtInventory": "Validated",
-      "lifecycleAtInventory": "ClosedDefinitively",
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
-      "sources": [
-        {
-          "label": "Relevé du site — méthode",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "RCDB",
-          "url": "https://rcdb.com/19308.htm",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Backlog national existant",
-          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Site officiel enregistré (à revérifier)",
-          "url": "https://www.o-parc.fr/",
           "accessedAt": "2026-10-22"
         }
       ],
@@ -14399,7 +16305,7 @@
       "siteId": "0bfbbbf6-cc60-4a37-8d11-d7265299fefe",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-10-22T19:35:10.250581+00:00",
       "editorialStatus": "PublishedDateUnknown",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
@@ -14412,7 +16318,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Conserver la clôture nationale déjà documentée ; récupérer les anciens reçus Apply/import avant de renseigner lastDataIntegrationAt ou de déclarer Integrated dans le registre mondial.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -14431,7 +16337,13 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json",
+      "previousCampaignCompletion": {
+        "status": "Clôture nationale déjà consignée, conservée sans inventer un instant d’Apply",
+        "evidence": "https://github.com/Ced59/AmusementParkProject/blob/9e496b57587cb5d6f75d2fa26255bb5b199a8e3e/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "integrationInstantRecovered": false
+      }
     },
     {
       "entryId": "FR-park-d431c493-5727-400c-9693-d22e1b99ae30",
@@ -14678,7 +16590,7 @@
       "siteId": "c0434ae9-1778-47f4-90b1-d514abc37985",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-10-22T19:33:52.886839+00:00",
       "editorialStatus": "PublishedDateUnknown",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
@@ -14689,7 +16601,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la clôture nationale déjà documentée ; récupérer les anciens reçus Apply/import avant de renseigner lastDataIntegrationAt ou de déclarer Integrated dans le registre mondial.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -14719,6 +16631,12 @@
       ],
       "countryCodeAtInventory": "FR",
       "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json",
+      "previousCampaignCompletion": {
+        "status": "Clôture nationale déjà consignée, conservée sans inventer un instant d’Apply",
+        "evidence": "https://github.com/Ced59/AmusementParkProject/blob/9e496b57587cb5d6f75d2fa26255bb5b199a8e3e/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "integrationInstantRecovered": false
+      },
       "standaloneAssessment": {
         "relation": "ParentToResolve",
         "reviewedAt": "2026-10-22",
@@ -14945,7 +16863,7 @@
       "siteId": "271602e3-28bb-42cc-966d-aca0e04269aa",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-10-22T19:33:58.427037+00:00",
       "editorialStatus": "PublishedDateUnknown",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
@@ -14956,7 +16874,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Attraction rattachée à un parc structuré identifié ; compléter son parkItem dans le dossier du parc, sans créer une standalone. Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Conserver la clôture nationale déjà documentée ; récupérer les anciens reçus Apply/import avant de renseigner lastDataIntegrationAt ou de déclarer Integrated dans le registre mondial.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15006,6 +16924,12 @@
       ],
       "countryCodeAtInventory": "FR",
       "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json",
+      "previousCampaignCompletion": {
+        "status": "Clôture nationale déjà consignée, conservée sans inventer un instant d’Apply",
+        "evidence": "https://github.com/Ced59/AmusementParkProject/blob/9e496b57587cb5d6f75d2fa26255bb5b199a8e3e/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "integrationInstantRecovered": false
+      },
       "standaloneAssessment": {
         "relation": "InsidePark",
         "reviewedAt": "2026-10-22",
@@ -15050,7 +16974,7 @@
       "siteId": "e3c53897-49e5-4036-a165-b0e2ef9ac448",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-10-22T19:34:06.010049+00:00",
       "editorialStatus": "PublishedDateUnknown",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
@@ -15061,7 +16985,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Conserver la clôture nationale déjà documentée ; récupérer les anciens reçus Apply/import avant de renseigner lastDataIntegrationAt ou de déclarer Integrated dans le registre mondial.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15080,7 +17004,13 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json",
+      "previousCampaignCompletion": {
+        "status": "Clôture nationale déjà consignée, conservée sans inventer un instant d’Apply",
+        "evidence": "https://github.com/Ced59/AmusementParkProject/blob/9e496b57587cb5d6f75d2fa26255bb5b199a8e3e/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "integrationInstantRecovered": false
+      }
     },
     {
       "entryId": "FR-candidate-354220f1033d2e",
@@ -15157,18 +17087,18 @@
       "siteId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-10-22T19:33:25.757841+00:00",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Reprendre le fait Acquisition de 2020 et auditer le dossier ; conserver la Maison Ameco privée tant que les indications officielles d’accès restent contradictoires.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15192,7 +17122,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json"
     },
     {
       "entryId": "FR-candidate-086e4dd4586188",
@@ -15254,7 +17185,7 @@
       "siteId": "79b3c038-bff1-4170-b51d-4c7ed76b1a2d",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-10-22T19:34:09.747602+00:00",
       "editorialStatus": "PublishedDateUnknown",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
@@ -15265,7 +17196,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Conserver la clôture nationale déjà documentée ; récupérer les anciens reçus Apply/import avant de renseigner lastDataIntegrationAt ou de déclarer Integrated dans le registre mondial.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15294,7 +17225,13 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json",
+      "previousCampaignCompletion": {
+        "status": "Clôture nationale déjà consignée, conservée sans inventer un instant d’Apply",
+        "evidence": "https://github.com/Ced59/AmusementParkProject/blob/9e496b57587cb5d6f75d2fa26255bb5b199a8e3e/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "integrationInstantRecovered": false
+      }
     },
     {
       "entryId": "FR-park-b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
@@ -15306,8 +17243,8 @@
       "siteId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-10-22T19:35:16.532427+00:00",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
@@ -15316,10 +17253,10 @@
       "aliases": [
         "Little Prince Park Ungersheim, France"
       ],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Reprendre le fait Acquisition Ptak du 3 mars 2025, distinguer propriété et exploitation, puis audit final ; contrôler aussi l’ancienne identité Bioscope avant toute création.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15359,6 +17296,7 @@
       ],
       "countryCodeAtInventory": "FR",
       "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json",
       "standaloneAssessment": {
         "relation": "InsidePark",
         "reviewedAt": "2026-10-22",
@@ -15487,18 +17425,18 @@
       "siteId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-10-22T19:33:31.443624+00:00",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Reprendre l’acquisition ou gestion documentée sans confondre propriétaire et exploitant, vérifier l’horizon officiel des horaires puis audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15527,7 +17465,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json"
     },
     {
       "entryId": "FR-candidate-2580396917158e",
@@ -15766,8 +17705,8 @@
       "siteId": "fa6698dd-950b-4c78-b351-cd7deb501967",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-10-22T19:35:16.532427+00:00",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
@@ -15775,9 +17714,460 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-10-22T08:00:28.267Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1bb6ab2e-e6b6-4333-ad20-2d54ab05e3a7",
+          "appliedAt": "2026-10-22T05:30:12.484Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-1bb6ab2e-e6b6-4333-ad20-2d54ab05e3a7",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : pricing.admissionOffers, pricing.annualPasses, pricing.creditOffers, pricing.currencyCode, pricing.historicalSnapshots, pricing.lastVerifiedAtUtc, pricing.notes, pricing.parkingOffers, pricing.purchaseUrl, pricing.sourceUrl."
+        },
+        {
+          "eventId": "import-photo-d915e4578da44a649cdbd82b326eec55-2026-10-22T053703.987Z",
+          "appliedAt": "2026-10-22T05:37:03.987Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-d915e4578da44a649cdbd82b326eec55-2026-10-22T053703.987Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : d915e4578da44a649cdbd82b326eec55."
+        },
+        {
+          "eventId": "import-photo-97a837bfdeb745f6aa8cc7d2a9d06e13-2026-10-22T054328.307Z",
+          "appliedAt": "2026-10-22T05:43:28.307Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-97a837bfdeb745f6aa8cc7d2a9d06e13-2026-10-22T054328.307Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 97a837bfdeb745f6aa8cc7d2a9d06e13."
+        },
+        {
+          "eventId": "import-photo-f639189c40a54101b9b0163b35957486-2026-10-22T054345.798Z",
+          "appliedAt": "2026-10-22T05:43:45.798Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-f639189c40a54101b9b0163b35957486-2026-10-22T054345.798Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : f639189c40a54101b9b0163b35957486."
+        },
+        {
+          "eventId": "import-photo-1d35d2e0cbb3462888426c3b377220e7-2026-10-22T054402.629Z",
+          "appliedAt": "2026-10-22T05:44:02.629Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-1d35d2e0cbb3462888426c3b377220e7-2026-10-22T054402.629Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 1d35d2e0cbb3462888426c3b377220e7."
+        },
+        {
+          "eventId": "import-photo-0b915ab635ac43e79bc85ad4d1c4a659-2026-10-22T054416.960Z",
+          "appliedAt": "2026-10-22T05:44:16.960Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-0b915ab635ac43e79bc85ad4d1c4a659-2026-10-22T054416.960Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 0b915ab635ac43e79bc85ad4d1c4a659."
+        },
+        {
+          "eventId": "import-photo-8c026c7e285442f9882b2747bd661247-2026-10-22T054630.593Z",
+          "appliedAt": "2026-10-22T05:46:30.593Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-8c026c7e285442f9882b2747bd661247-2026-10-22T054630.593Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 8c026c7e285442f9882b2747bd661247."
+        },
+        {
+          "eventId": "import-photo-980d14a47ccc4519b40556edd5704400-2026-10-22T054651.559Z",
+          "appliedAt": "2026-10-22T05:46:51.559Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-980d14a47ccc4519b40556edd5704400-2026-10-22T054651.559Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 980d14a47ccc4519b40556edd5704400."
+        },
+        {
+          "eventId": "apply-03cf8e00-1e24-49d6-91fa-f1e6c4efd376",
+          "appliedAt": "2026-10-22T05:51:40.666Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-03cf8e00-1e24-49d6-91fa-f1e6c4efd376",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : datePrecision, day, eventType, isMajor, key, mainImageId, month, ownerId, parkId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-e900d32d-13b7-4dfc-bc66-ede60985c10f",
+          "appliedAt": "2026-10-22T05:57:30.402Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-e900d32d-13b7-4dfc-bc66-ede60985c10f",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "apply-8a760132-180c-405a-9df6-c9c689621405",
+          "appliedAt": "2026-10-22T06:03:49.856Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-8a760132-180c-405a-9df6-c9c689621405",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : contextParkId, datePrecision, day, entityType, eventType, key, mainImageId, month, newName, ownerId, parkId, parkItemId, previousName, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "import-photo-32011af398b048df853b654ef18c3260-2026-10-22T060437.298Z",
+          "appliedAt": "2026-10-22T06:04:37.298Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-32011af398b048df853b654ef18c3260-2026-10-22T060437.298Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 32011af398b048df853b654ef18c3260."
+        },
+        {
+          "eventId": "import-photo-07a4f54814b5465ba1de468338d55ec0-2026-10-22T060451.238Z",
+          "appliedAt": "2026-10-22T06:04:51.238Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-07a4f54814b5465ba1de468338d55ec0-2026-10-22T060451.238Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 07a4f54814b5465ba1de468338d55ec0."
+        },
+        {
+          "eventId": "apply-4709dc87-b5ab-43a2-81da-eddcd5e08cca",
+          "appliedAt": "2026-10-22T06:09:03.942Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-4709dc87-b5ab-43a2-81da-eddcd5e08cca",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article, isMajor."
+        },
+        {
+          "eventId": "apply-c12f45ba-c969-451a-a1cd-74686feb150d",
+          "appliedAt": "2026-10-22T06:16:06.512Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-c12f45ba-c969-451a-a1cd-74686feb150d",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.openingDate, attractionDetails.openingDateText, mainImageId."
+        },
+        {
+          "eventId": "import-photo-179d9673589640d98b5b92b7800869e4-2026-10-22T061829.741Z",
+          "appliedAt": "2026-10-22T06:18:29.741Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-179d9673589640d98b5b92b7800869e4-2026-10-22T061829.741Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 179d9673589640d98b5b92b7800869e4."
+        },
+        {
+          "eventId": "import-photo-9f3eff77a1a74db58e1a92fbb0b4d722-2026-10-22T061845.125Z",
+          "appliedAt": "2026-10-22T06:18:45.125Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-9f3eff77a1a74db58e1a92fbb0b4d722-2026-10-22T061845.125Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 9f3eff77a1a74db58e1a92fbb0b4d722."
+        },
+        {
+          "eventId": "import-photo-2cb058164dd74a6989486d12279c8d4b-2026-10-22T061903.093Z",
+          "appliedAt": "2026-10-22T06:19:03.093Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-2cb058164dd74a6989486d12279c8d4b-2026-10-22T061903.093Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 2cb058164dd74a6989486d12279c8d4b."
+        },
+        {
+          "eventId": "apply-11c8579b-12e8-47d6-925b-a2a3d783ea32",
+          "appliedAt": "2026-10-22T06:23:11.685Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-11c8579b-12e8-47d6-925b-a2a3d783ea32",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : contextParkId, entityType, eventType, key, mainImageId, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-1390cf0b-683b-43c5-9e09-81e316c366c7",
+          "appliedAt": "2026-10-22T06:27:47.234Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-1390cf0b-683b-43c5-9e09-81e316c366c7",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : contextParkId, datePrecision, day, entityType, eventType, isMajor, key, mainImageId, month, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-f83cc047-78c5-4bf3-9e4e-0bd6cd033d00",
+          "appliedAt": "2026-10-22T06:32:35.588Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-f83cc047-78c5-4bf3-9e4e-0bd6cd033d00",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "apply-6bb54684-ab93-4cba-99ca-b787f86b7553",
+          "appliedAt": "2026-10-22T06:35:03.969Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-6bb54684-ab93-4cba-99ca-b787f86b7553",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "apply-bd755e30-7383-4049-b6dd-8474fc8212e0",
+          "appliedAt": "2026-10-22T06:35:50.575Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-bd755e30-7383-4049-b6dd-8474fc8212e0",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : attractionDetails.openingDateText, contextParkId, datePrecision, day, entityType, eventType, key, mainImageId, month, ownerId, parkId, parkItemId, sources, summaries, titles, year."
+        },
+        {
+          "eventId": "apply-7ecdec7d-f395-4fb5-ac89-94842abc9fa3",
+          "appliedAt": "2026-10-22T06:49:26.535Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-7ecdec7d-f395-4fb5-ac89-94842abc9fa3",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article, descriptions.de, descriptions.en, descriptions.es, descriptions.fr, descriptions.it, descriptions.nl, descriptions.pl, descriptions.pt, summaries, titles."
+        },
+        {
+          "eventId": "import-photo-1651648136974619a5ebc4e2cd698f5e-2026-10-22T065234.692Z",
+          "appliedAt": "2026-10-22T06:52:34.692Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-1651648136974619a5ebc4e2cd698f5e-2026-10-22T065234.692Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 1651648136974619a5ebc4e2cd698f5e."
+        },
+        {
+          "eventId": "import-photo-4ceb77b49b5f4c3bb57520c7cc2c745a-2026-10-22T065254.243Z",
+          "appliedAt": "2026-10-22T06:52:54.243Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-4ceb77b49b5f4c3bb57520c7cc2c745a-2026-10-22T065254.243Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 4ceb77b49b5f4c3bb57520c7cc2c745a."
+        },
+        {
+          "eventId": "apply-adf0e426-2da5-4d51-b404-93d308716c47",
+          "appliedAt": "2026-10-22T07:02:30.074Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-adf0e426-2da5-4d51-b404-93d308716c47",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : article."
+        },
+        {
+          "eventId": "apply-37fcfdd4-3327-4bef-a130-9457af63bdb5",
+          "appliedAt": "2026-10-22T07:05:25.195Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-37fcfdd4-3327-4bef-a130-9457af63bdb5",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de."
+        },
+        {
+          "eventId": "update-photo-2cb058164dd74a6989486d12279c8d4b-2026-10-22T070557.206Z",
+          "appliedAt": "2026-10-22T07:05:57.206Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#update-photo-2cb058164dd74a6989486d12279c8d4b-2026-10-22T070557.206Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 2cb058164dd74a6989486d12279c8d4b."
+        },
+        {
+          "eventId": "update-photo-88d6591d61c946ada2969904b85692bf-2026-10-22T070656.765Z",
+          "appliedAt": "2026-10-22T07:06:56.765Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#update-photo-88d6591d61c946ada2969904b85692bf-2026-10-22T070656.765Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées et localisations éditoriales du média corrigées : 88d6591d61c946ada2969904b85692bf."
+        },
+        {
+          "eventId": "apply-41e99be0-a294-4262-ab71-f58261f17e6d",
+          "appliedAt": "2026-10-22T07:07:45.988Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-41e99be0-a294-4262-ab71-f58261f17e6d",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : descriptions.de."
+        },
+        {
+          "eventId": "apply-44423fe0-ad57-4d90-9b5e-421982c4b575",
+          "appliedAt": "2026-10-22T07:27:47.905Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-44423fe0-ad57-4d90-9b5e-421982c4b575",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : biography.de, biography.en, biography.es, biography.fr, biography.it, biography.nl, biography.pl, biography.pt, foundedYear."
+        },
+        {
+          "eventId": "import-photo-d0d42247f3444185b1708fc595f31076-2026-10-22T073655.077Z",
+          "appliedAt": "2026-10-22T07:36:55.077Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-d0d42247f3444185b1708fc595f31076-2026-10-22T073655.077Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : d0d42247f3444185b1708fc595f31076."
+        },
+        {
+          "eventId": "import-photo-fc369594412144f4a9885d5d47358c9e-2026-10-22T073708.686Z",
+          "appliedAt": "2026-10-22T07:37:08.686Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-fc369594412144f4a9885d5d47358c9e-2026-10-22T073708.686Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : fc369594412144f4a9885d5d47358c9e."
+        },
+        {
+          "eventId": "import-photo-4258730afa6b4ae3945caf28edc2404d-2026-10-22T073722.545Z",
+          "appliedAt": "2026-10-22T07:37:22.545Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-4258730afa6b4ae3945caf28edc2404d-2026-10-22T073722.545Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 4258730afa6b4ae3945caf28edc2404d."
+        },
+        {
+          "eventId": "import-photo-49a6fc417f7f48b5a722eac1a6328665-2026-10-22T073736.131Z",
+          "appliedAt": "2026-10-22T07:37:36.131Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-49a6fc417f7f48b5a722eac1a6328665-2026-10-22T073736.131Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 49a6fc417f7f48b5a722eac1a6328665."
+        },
+        {
+          "eventId": "import-photo-02cb8dede76549c787fda4c76c8cbb58-2026-10-22T073749.658Z",
+          "appliedAt": "2026-10-22T07:37:49.658Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-02cb8dede76549c787fda4c76c8cbb58-2026-10-22T073749.658Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 02cb8dede76549c787fda4c76c8cbb58."
+        },
+        {
+          "eventId": "import-photo-3178f6f6dbc94276ae6ca2e15859f439-2026-10-22T073804.011Z",
+          "appliedAt": "2026-10-22T07:38:04.011Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-3178f6f6dbc94276ae6ca2e15859f439-2026-10-22T073804.011Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 3178f6f6dbc94276ae6ca2e15859f439."
+        },
+        {
+          "eventId": "import-photo-9fd1019447dd4073b1129320985a9e92-2026-10-22T073818.636Z",
+          "appliedAt": "2026-10-22T07:38:18.636Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-9fd1019447dd4073b1129320985a9e92-2026-10-22T073818.636Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 9fd1019447dd4073b1129320985a9e92."
+        },
+        {
+          "eventId": "import-photo-162bef49528b4ee281786450fba5ebe9-2026-10-22T073833.031Z",
+          "appliedAt": "2026-10-22T07:38:33.031Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-162bef49528b4ee281786450fba5ebe9-2026-10-22T073833.031Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 162bef49528b4ee281786450fba5ebe9."
+        },
+        {
+          "eventId": "import-photo-9db1a865a9444c9ea7d215509aec0f8e-2026-10-22T073847.155Z",
+          "appliedAt": "2026-10-22T07:38:47.155Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-9db1a865a9444c9ea7d215509aec0f8e-2026-10-22T073847.155Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 9db1a865a9444c9ea7d215509aec0f8e."
+        },
+        {
+          "eventId": "import-photo-0cdfedb10d7c4d3295f6dde47f728f41-2026-10-22T073901.040Z",
+          "appliedAt": "2026-10-22T07:39:01.040Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-0cdfedb10d7c4d3295f6dde47f728f41-2026-10-22T073901.040Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 0cdfedb10d7c4d3295f6dde47f728f41."
+        },
+        {
+          "eventId": "import-photo-7845b7711987462997a7f681249524cb-2026-10-22T073915.935Z",
+          "appliedAt": "2026-10-22T07:39:15.935Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#import-photo-7845b7711987462997a7f681249524cb-2026-10-22T073915.935Z",
+          "auditEvidence": null,
+          "summary": "Photo importée et métadonnées enregistrées : 7845b7711987462997a7f681249524cb."
+        },
+        {
+          "eventId": "apply-bc3acc17-9e1c-449b-8bf7-881187fd2fb9",
+          "appliedAt": "2026-10-22T08:00:28.267Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-bc3acc17-9e1c-449b-8bf7-881187fd2fb9",
+          "auditEvidence": null,
+          "summary": "Apply contrôlé : canonicalHistory."
+        },
+        {
+          "eventId": "completed-apply-bc3acc17-9e1c-449b-8bf7-881187fd2fb9",
+          "appliedAt": "2026-10-22T08:00:28.267Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "fa6698dd-950b-4c78-b351-cd7deb501967",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-receipts.json#apply-bc3acc17-9e1c-449b-8bf7-881187fd2fb9",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/parc-spirou-provence-audit.md",
+          "summary": "Audit final clôturé ; site contrôlé et annonce Facebook déjà Published, sans nouvel envoi."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15801,7 +18191,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "presenceEvidence": "docs/roadmaps/world-integration/evidence/france-20261022/reconciliation.json"
     },
     {
       "entryId": "FR-candidate-d382c4c3ee198b",
@@ -17198,6 +19589,36 @@
       "countryResolution": null
     },
     {
+      "entryId": "FR-candidate-9869224d7fd457",
+      "name": "Réserve Africaine & Parc Zoologique et Botanique de Thoiry",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Animalier",
+      "locality": null,
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Piste secondaire seule",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "sources": [
+        {
+          "label": "Wikipédia (découverte)",
+          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#France",
+          "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
       "entryId": "FR-candidate-4ca90b6fe9aa3b",
       "name": "Réserve Africaine de Sigean",
       "entityKind": "Park",
@@ -17230,36 +19651,6 @@
           "url": "https://www.reserveafricainesigean.fr",
           "accessedAt": "2026-10-22"
         },
-        {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#France",
-          "accessedAt": "2026-10-22"
-        }
-      ]
-    },
-    {
-      "entryId": "FR-candidate-9869224d7fd457",
-      "name": "Réserve Africaine & Parc Zoologique et Botanique de Thoiry",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": "Animalier",
-      "locality": null,
-      "siteId": null,
-      "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
-      "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
-      "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#France",

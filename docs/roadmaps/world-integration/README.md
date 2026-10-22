@@ -141,8 +141,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
 | **Total** | **61** | **1** | **56** | **64** | **315** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **7**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **10**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
+- France : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Portugal : 7 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
