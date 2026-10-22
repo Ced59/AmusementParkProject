@@ -18,7 +18,7 @@ describe('UiPhotoCarouselComponent', () => {
       providers: [provideRouter([])]
     }).overrideComponent(UiPhotoCarouselComponent, {
       remove: { imports: [ImageDisplayComponent, LeafletMapComponent] },
-      set: { schemas: [NO_ERRORS_SCHEMA] }
+      add: { schemas: [NO_ERRORS_SCHEMA] }
     }).compileComponents();
     const fixture = TestBed.createComponent(UiPhotoCarouselComponent);
     const photo: UiPhotoCarouselImage = {
