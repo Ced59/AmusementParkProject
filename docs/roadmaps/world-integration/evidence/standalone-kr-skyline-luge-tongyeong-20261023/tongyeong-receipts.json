@@ -1,0 +1,98 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "f4966515-58e6-4fa9-8137-4dfcada654d7",
+    "appliedAtUtc": "2026-10-23T15:40:51.181961Z",
+    "targetStandaloneAttractionId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-pricing",
+    "operationId": "2022f921-1933-4759-8c1a-2f1b493e3bbf",
+    "appliedAtUtc": "2026-10-23T15:41:27.6453076Z",
+    "targetStandaloneAttractionId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-access",
+    "operationId": "97698fbf-790e-4a66-a53a-53b244235a2e",
+    "appliedAtUtc": "2026-10-23T15:41:50.717982Z",
+    "targetStandaloneAttractionId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-history",
+    "operationId": "dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+    "appliedAtUtc": "2026-10-23T15:42:13.9731571Z",
+    "targetStandaloneAttractionId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-publish-history",
+    "operationId": "a915996a-b639-460b-b670-6d38accabd7f",
+    "appliedAtUtc": "2026-10-23T15:43:06.1350124Z",
+    "targetStandaloneAttractionId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "06-publish-attraction",
+    "operationId": "c9d68dcb-397a-4b4e-b198-98a818db0da1",
+    "appliedAtUtc": "2026-10-23T15:43:30.1466311Z",
+    "targetStandaloneAttractionId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  }
+]
