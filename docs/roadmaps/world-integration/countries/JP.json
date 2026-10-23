@@ -5932,7 +5932,7 @@
         {
           "siteId": "295112ee-2eb0-480c-b0e9-bf4f616de7e4",
           "name": "Enakyo Wonderland",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -6328,7 +6328,7 @@
         {
           "siteId": "6522a294-3635-461f-afab-b0a04e15659c",
           "name": "Kodomo-no-Kuni Yokohama",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -6364,7 +6364,7 @@
         {
           "siteId": "6522a294-3635-461f-afab-b0a04e15659c",
           "name": "Kodomo-no-Kuni Yokohama",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -10678,27 +10678,168 @@
     {
       "entryId": "JP-candidate-discovery-0c2e7732f201b4",
       "name": "Osaka Sakai Balloon",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
       "locality": "Sakai",
-      "siteId": null,
+      "siteId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T08:07:36.833Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2025 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Site de l’exploitant et office du tourisme actifs en octobre 2026 ; horaires et tarifs actuels vérifiés, départs soumis à la météo.",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "aliases": [
         "Osaka Sakai Sakai, Japan"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T08:08:11.113Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b4ce7d77-a24a-4fcf-a5d3-93138e657dc8",
+          "appliedAt": "2026-10-23T08:00:57.482Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:b4ce7d77-a24a-4fcf-a5d3-93138e657dc8",
+          "auditEvidence": null,
+          "summary": "Création du ballon captif autonome de Sakai, identité, lieu et description en huit langues"
+        },
+        {
+          "eventId": "apply-43c09e54-87ff-4fd6-b2cf-fbb3e8995f66",
+          "appliedAt": "2026-10-23T08:01:24.564Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:43c09e54-87ff-4fd6-b2cf-fbb3e8995f66",
+          "auditEvidence": null,
+          "summary": "Horaires officiels quotidiens, dernière inscription et suspensions météo"
+        },
+        {
+          "eventId": "apply-41e8fe3d-8e4f-49b9-8d46-56a5b9dbdd25",
+          "appliedAt": "2026-10-23T08:01:48.111Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:41e8fe3d-8e4f-49b9-8d46-56a5b9dbdd25",
+          "auditEvidence": null,
+          "summary": "Six offres tarifaires vérifiées auprès de l’exploitant"
+        },
+        {
+          "eventId": "apply-35131f6d-3371-4462-8c39-fadc905b73d3",
+          "appliedAt": "2026-10-23T08:02:11.365Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:35131f6d-3371-4462-8c39-fadc905b73d3",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès sourcées et traduites en huit langues"
+        },
+        {
+          "eventId": "image-53a3050aa0fb457abcb450e413e307bf",
+          "appliedAt": "2026-10-23T08:02:54.912Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:image:53a3050aa0fb457abcb450e413e307bf",
+          "auditEvidence": null,
+          "summary": "Photo Wikimedia Commons CC0 importée avec source et crédits multilingues ; ballon ou vue prise depuis sa nacelle."
+        },
+        {
+          "eventId": "image-3c729f84c59c45a48d990a35150dfd03",
+          "appliedAt": "2026-10-23T08:03:10.210Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:image:3c729f84c59c45a48d990a35150dfd03",
+          "auditEvidence": null,
+          "summary": "Photo Wikimedia Commons CC0 importée avec source et crédits multilingues ; ballon ou vue prise depuis sa nacelle."
+        },
+        {
+          "eventId": "image-f94504e9bffc4ad9b04efcd69f7a1f51",
+          "appliedAt": "2026-10-23T08:03:28.171Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:image:f94504e9bffc4ad9b04efcd69f7a1f51",
+          "auditEvidence": null,
+          "summary": "Photo Wikimedia Commons CC0 importée avec source et crédits multilingues ; ballon ou vue prise depuis sa nacelle."
+        },
+        {
+          "eventId": "image-b40378160e2745598b5181b2f2f5353b",
+          "appliedAt": "2026-10-23T08:03:43.894Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:image:b40378160e2745598b5181b2f2f5353b",
+          "auditEvidence": null,
+          "summary": "Photo Wikimedia Commons CC0 importée avec source et crédits multilingues ; ballon ou vue prise depuis sa nacelle."
+        },
+        {
+          "eventId": "apply-399ac9fb-5618-403f-99f2-42475b1a61f8",
+          "appliedAt": "2026-10-23T08:04:17.248Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:399ac9fb-5618-403f-99f2-42475b1a61f8",
+          "auditEvidence": null,
+          "summary": "Ouverture en octobre 2025 et histoire des tumulus en huit langues"
+        },
+        {
+          "eventId": "apply-4b13e530-40b5-468d-8714-8e7ec7b1791a",
+          "appliedAt": "2026-10-23T08:05:39.849Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:4b13e530-40b5-468d-8714-8e7ec7b1791a",
+          "auditEvidence": null,
+          "summary": "Publication des quatre photos Commons CC0 et de leurs crédits"
+        },
+        {
+          "eventId": "apply-7760fb2e-c64c-4b53-8983-d8a57d15da6c",
+          "appliedAt": "2026-10-23T08:06:03.911Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:7760fb2e-c64c-4b53-8983-d8a57d15da6c",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie et de l’article historique en huit langues"
+        },
+        {
+          "eventId": "apply-557a14d5-9abf-4f12-bcdd-f60d64fd6120",
+          "appliedAt": "2026-10-23T08:06:27.036Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:557a14d5-9abf-4f12-bcdd-f60d64fd6120",
+          "auditEvidence": null,
+          "summary": "Publication de la fiche Osaka Sakai Balloon validée"
+        },
+        {
+          "eventId": "apply-167a2cf7-72c4-41c9-9647-f12713c5fa8f",
+          "appliedAt": "2026-10-23T08:08:11.113Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:167a2cf7-72c4-41c9-9647-f12713c5fa8f",
+          "auditEvidence": null,
+          "summary": "Réécriture du récit italien pour supprimer une répétition éditoriale"
+        },
+        {
+          "eventId": "closure-apply-167a2cf7-72c4-41c9-9647-f12713c5fa8f",
+          "appliedAt": "2026-10-23T08:08:11.113Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+          "evidence": "PARK_DATA_EDITOR:apply:167a2cf7-72c4-41c9-9647-f12713c5fa8f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-20261023/osaka-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 93/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -10709,6 +10850,66 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://osaka-sakai-balloon.com/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://osaka-sakai-balloon.com/faq.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://osaka-sakai-balloon.com/guidance.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.city.sakai.lg.jp/foreign-language/english/visitors/newsletter/december2025_January2026/osakasakaiballoon.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.sakai-tcb.or.jp/en/spot/detail/1248",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.sakai-tcb.or.jp/feature/detail/107",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://prtimes.jp/main/html/rd/p/000000015.000188268.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_01.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_02.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_03.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Daisenryo_Kofun_from_balloon.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -10717,7 +10918,7 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -10732,7 +10933,30 @@
             "referenceId": "aerophile-osaka-sakai-balloon"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-167a2cf7-72c4-41c9-9647-f12713c5fa8f ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+          "publishedAtUtc": "2026-10-23T08:06:27.0361167Z",
+          "verifiedAtUtc": "2026-10-23T08:07:36.833Z",
+          "evidence": "PARK_DATA_EDITOR:apply:557a14d5-9abf-4f12-bcdd-f60d64fd6120"
+        },
+        "facebook": {
+          "id": "fa8ecb06c2364c22a8dff85af7666a6c",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T08:10:02.6287387Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124260667424431",
+          "externalPostId": "1285475681307050_122124260667424431",
+          "url": "https://amusement-parks.fun/fr/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon?facebook-image=3c729f84c59c45a48d990a35150dfd03"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-20261023/osaka-audit.json",
+        "score": 93,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
@@ -14361,7 +14585,7 @@
         {
           "siteId": "633b7b8b-c30f-4579-a5be-0c1b63345e8e",
           "name": "Tochinoki Family Land",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -14761,7 +14985,7 @@
         {
           "siteId": "305ae321-02ae-4181-a9b0-e02e1d764710",
           "name": "Wonder Land Cairo",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
