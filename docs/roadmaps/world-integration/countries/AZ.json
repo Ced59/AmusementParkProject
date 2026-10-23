@@ -787,25 +787,176 @@
     {
       "entryId": "AZ-candidate-f296136777add0",
       "name": "Tufandağ Mountain Resort",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Attractions (RCDB)",
       "locality": "Gabala , Shaki-Zaqatala",
-      "siteId": null,
+      "siteId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T00:02:36.067Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": "conversation-standalone-world-continuation-2026-10-22",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-23T00:01:08.739Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-868c0b9c-66d1-449b-ab7d-d61c00c92053",
+          "appliedAt": "2026-10-22T23:48:32.344Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:868c0b9c-66d1-449b-ab7d-d61c00c92053",
+          "auditEvidence": null,
+          "summary": "Création de Tufandağ Mountain Coaster comme attraction autonome"
+        },
+        {
+          "eventId": "apply-8b2176f4-6c06-4ac9-8dbf-05a91ef579aa",
+          "appliedAt": "2026-10-22T23:49:46.271Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:8b2176f4-6c06-4ac9-8dbf-05a91ef579aa",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès et limites de Tufandağ Mountain Coaster"
+        },
+        {
+          "eventId": "apply-2fe93d63-60a5-427f-845f-63a7531634c8",
+          "appliedAt": "2026-10-22T23:50:25.713Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:2fe93d63-60a5-427f-845f-63a7531634c8",
+          "auditEvidence": null,
+          "summary": "Statut temporaire et absence d’horaire hebdomadaire vérifié"
+        },
+        {
+          "eventId": "apply-75425996-56f5-432c-845b-d8233ca7f721",
+          "appliedAt": "2026-10-22T23:51:18.325Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:75425996-56f5-432c-845b-d8233ca7f721",
+          "auditEvidence": null,
+          "summary": "Tarifs AZN officiels de Tufandağ Mountain Coaster"
+        },
+        {
+          "eventId": "image-dbf47594bb0b428391143bb51465efb0",
+          "appliedAt": "2026-10-22T23:52:13.470Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:image:dbf47594bb0b428391143bb51465efb0",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-4dc352c2c16b4df59ce293e03b691992",
+          "appliedAt": "2026-10-22T23:52:45.678Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:image:4dc352c2c16b4df59ce293e03b691992",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-e81d9de5-d6ff-4f4d-ab71-eea71fad86da",
+          "appliedAt": "2026-10-22T23:53:56.090Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:e81d9de5-d6ff-4f4d-ab71-eea71fad86da",
+          "auditEvidence": null,
+          "summary": "Article historique sur le camp YAŞAT de mars 2026"
+        },
+        {
+          "eventId": "apply-9cfb90f9-f15a-454a-835e-670cda49ff7b",
+          "appliedAt": "2026-10-22T23:55:29.143Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:9cfb90f9-f15a-454a-835e-670cda49ff7b",
+          "auditEvidence": null,
+          "summary": "Révision du récit public pour la clarté éditoriale"
+        },
+        {
+          "eventId": "apply-d9c2279d-a8e1-4e59-8798-050b4dd0a194",
+          "appliedAt": "2026-10-22T23:55:54.643Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:d9c2279d-a8e1-4e59-8798-050b4dd0a194",
+          "auditEvidence": null,
+          "summary": "Révision du résumé historique sans répétition"
+        },
+        {
+          "eventId": "apply-add80f56-0f71-4cf0-8271-b77734eba19b",
+          "appliedAt": "2026-10-22T23:58:08.521Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:add80f56-0f71-4cf0-8271-b77734eba19b",
+          "auditEvidence": null,
+          "summary": "Coordonnées et mois d’ouverture sourcés via RCDB"
+        },
+        {
+          "eventId": "apply-a7b566dd-7dab-45a7-bac2-e2535254d586",
+          "appliedAt": "2026-10-22T23:58:36.983Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:a7b566dd-7dab-45a7-bac2-e2535254d586",
+          "auditEvidence": null,
+          "summary": "Article historique enrichi sur le camp YAŞAT"
+        },
+        {
+          "eventId": "apply-8f714b8a-9205-4a05-bf18-4491fe9728e7",
+          "appliedAt": "2026-10-23T00:00:10.225Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:8f714b8a-9205-4a05-bf18-4491fe9728e7",
+          "auditEvidence": null,
+          "summary": "Publication des photos authentifiées de Tufandağ Mountain Coaster"
+        },
+        {
+          "eventId": "apply-a7223c54-7958-4a46-b324-add711539712",
+          "appliedAt": "2026-10-23T00:00:40.309Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:a7223c54-7958-4a46-b324-add711539712",
+          "auditEvidence": null,
+          "summary": "Publication de l’article historique du camp YAŞAT"
+        },
+        {
+          "eventId": "apply-aafe98bd-0969-4072-8558-585d0d5d408d",
+          "appliedAt": "2026-10-23T00:01:08.739Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:aafe98bd-0969-4072-8558-585d0d5d408d",
+          "auditEvidence": null,
+          "summary": "Publication de la fiche Tufandağ Mountain Coaster"
+        },
+        {
+          "eventId": "closure-apply-aafe98bd-0969-4072-8558-585d0d5d408d",
+          "appliedAt": "2026-10-23T00:01:08.739Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+          "evidence": "PARK_DATA_EDITOR:apply:aafe98bd-0969-4072-8558-585d0d5d408d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-az-20261022/tufandag-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 93/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "RCDB",
@@ -816,10 +967,30 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/24096.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tufandag.com/en/activity/dag-kosteri",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tufandag.com/en/activities",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tufandag.com/en/today/yasat-fondu-tufandagda-novbeti-qis-dusergesi-reallasdirib",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -833,7 +1004,30 @@
             "sourceOpenedYear": "2023"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-aafe98bd-0969-4072-8558-585d0d5d408d ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+          "publishedAtUtc": "2026-10-23T00:01:08.7395114Z",
+          "verifiedAtUtc": "2026-10-23T00:02:36.067Z",
+          "evidence": "PARK_DATA_EDITOR:apply:aafe98bd-0969-4072-8558-585d0d5d408d"
+        },
+        "facebook": {
+          "id": "fa8ae6da23b245a38d2c7b31096363f9",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T00:03:33.4794322Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124220749424431",
+          "externalPostId": "1285475681307050_122124220749424431",
+          "url": "https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster?facebook-image=dbf47594bb0b428391143bb51465efb0"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-az-20261022/tufandag-audit.json",
+        "score": 93,
+        "publicationBlockers": [],
+        "gapCount": 5
       }
     }
   ]
