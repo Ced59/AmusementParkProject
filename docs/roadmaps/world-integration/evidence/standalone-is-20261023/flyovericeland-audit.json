@@ -1,0 +1,299 @@
+{
+  "name": "FlyOver Iceland",
+  "standaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+  "qualification": "Site autonome à billet propre dans le quartier de Grandi, Reykjavík. SearchParks et SearchStandaloneAttractions pour IS et Flyover mondial : aucune correspondance islandaise. Exploitation actuelle confirmée par billetterie, horaires et FAQ officielles.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 87,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 2
+  },
+  "gaps": [
+    "La FAQ officielle exige une taille minimale de 102 cm tandis que les pages tarifs et expérience indiquent 100 cm. La valeur structurée retient le seuil prudent de la FAQ ; les visiteurs sont invités à confirmer auprès de l’exploitant.",
+    "Le communiqué primaire du 5 septembre 2019 dit que le lieu a ouvert au public, sans préciser le jour exact de la première séance. L’article date le communiqué, sans inventer la date d’ouverture.",
+    "Les photographies officielles de l’expérience et du bâtiment ne portent pas de date de prise de vue vérifiée ; elles ne servent pas de preuve visuelle de l’ouverture.",
+    "Adresse vérifiée à Fiskislóð 43, mais point GPS précis non vérifié ; horaires et prix sont un relevé susceptible de changer."
+  ],
+  "sources": [
+    "https://www.flyovericeland.com/",
+    "https://www.flyovericeland.com/experience/",
+    "https://www.flyovericeland.com/hours-pricing/",
+    "https://www.flyovericeland.com/experience/faqs/",
+    "https://www.flyovericeland.com/getting-here/",
+    "https://prod.pursuitcollection.com/Website/media/pursuit/Documents/Press-Release/Press-Release-FlyOver-Iceland-Launches-in-Reykjavik.pdf"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T03:01:31.526247+00:00",
+    "exportSha256": "c7ad35a8632cb51443a878e787f04809389775293e7dc5f18bfd614c5f169c41",
+    "localizedStringsReviewed": 256,
+    "localizedGroups": 32,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T03:04:23.162750+00:00",
+  "facebook": {
+    "id": "762f23708d134bad9c7e6d03c9375033",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T03:05:00.2369158Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124233541424431",
+    "externalPostId": "1285475681307050_122124233541424431",
+    "url": "https://amusement-parks.fun/fr/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland?facebook-image=244a46797081491898c6042008a55308"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T03:04:23.162750+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T03:04:30.052855+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history/334d8a27-9907-428d-a8dc-26c7ef764706/flyover-iceland-ouverture-reykjavik-2019",
+            "status": 200,
+            "textLength": 1798,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 542
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history/334d8a27-9907-428d-a8dc-26c7ef764706/flyover-iceland-ouverture-reykjavik-2019",
+            "status": 200,
+            "textLength": 1587,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 477
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history/334d8a27-9907-428d-a8dc-26c7ef764706/flyover-iceland-ouverture-reykjavik-2019",
+            "status": 200,
+            "textLength": 1564,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 576
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history/334d8a27-9907-428d-a8dc-26c7ef764706/flyover-iceland-ouverture-reykjavik-2019",
+            "status": 200,
+            "textLength": 1526,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 565
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history/334d8a27-9907-428d-a8dc-26c7ef764706/flyover-iceland-ouverture-reykjavik-2019",
+            "status": 200,
+            "textLength": 1524,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 526
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history/334d8a27-9907-428d-a8dc-26c7ef764706/flyover-iceland-ouverture-reykjavik-2019",
+            "status": 200,
+            "textLength": 1560,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 545
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history/334d8a27-9907-428d-a8dc-26c7ef764706/flyover-iceland-ouverture-reykjavik-2019",
+            "status": 200,
+            "textLength": 1421,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 514
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland/history/334d8a27-9907-428d-a8dc-26c7ef764706/flyover-iceland-ouverture-reykjavik-2019",
+            "status": 200,
+            "textLength": 1528,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 555
+      }
+    ]
+  }
+}

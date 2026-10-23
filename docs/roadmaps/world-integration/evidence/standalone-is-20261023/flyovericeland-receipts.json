@@ -1,0 +1,154 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "92882952-2eaf-488c-985e-569d1c7c5368",
+    "appliedAtUtc": "2026-10-23T02:56:23.6847727Z",
+    "targetStandaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "d804097b-4ccf-4d27-b9ca-9295342145c6",
+    "appliedAtUtc": "2026-10-23T02:57:18.2994111Z",
+    "targetStandaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "3c31f42f-a0c6-4899-96ee-44b1f2b3cc45",
+    "appliedAtUtc": "2026-10-23T02:57:42.0828767Z",
+    "targetStandaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "daa2ad79-b61a-4831-b4d4-2d7820441df0",
+    "appliedAtUtc": "2026-10-23T02:58:05.570281Z",
+    "targetStandaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "ae8d23e4-692c-47d4-aa7c-f43ca33d8bd6",
+    "appliedAtUtc": "2026-10-23T03:00:30.5231782Z",
+    "targetStandaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "b24203c4-a8a4-4b89-a77a-50256a0b2eaf",
+    "appliedAtUtc": "2026-10-23T03:02:27.9834786Z",
+    "targetStandaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "f87f6c77-f3e0-4e1a-94f8-2b2df6faaa8e",
+    "appliedAtUtc": "2026-10-23T03:02:51.7608387Z",
+    "targetStandaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "015f47ee-3fb8-420b-bb4b-f9baf8efc5ae",
+    "appliedAtUtc": "2026-10-23T03:03:15.6874964Z",
+    "targetStandaloneAttractionId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "244a46797081491898c6042008a55308",
+    "ownerId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "sourceUrl": "https://www.flyovericeland.com/FlyoverIceland/media/Images/Home/Gallery/GI-Ride-Image-Over-Ice-Flow.jpg",
+    "updatedAt": "2026-10-23T02:58:38.565Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "3a78b0f17c864bb4ae4074a40fd16446",
+    "ownerId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "sourceUrl": "https://www.flyovericeland.com/FlyoverIceland/media/Images/Home/Gallery/GI-Exterior-Building-Blue-Sky.jpg",
+    "updatedAt": "2026-10-23T02:58:54.166Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "1e64ebdb930845b4b6d8e952b2d18906",
+    "ownerId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+    "sourceUrl": "https://www.flyovericeland.com/FlyoverIceland/media/Images/Experience/FW-FOI-Ride-Lupins.jpg?ext=.jpg",
+    "updatedAt": "2026-10-23T02:59:08.858Z",
+    "isPublished": false
+  }
+]
