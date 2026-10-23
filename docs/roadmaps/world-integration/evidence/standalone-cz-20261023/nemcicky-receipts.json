@@ -1,0 +1,154 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "4e5fe22f-49c8-4922-b6a2-7a9380b9bed7",
+    "appliedAtUtc": "2026-10-23T05:05:06.6830812Z",
+    "targetStandaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "8f20a37f-ca8e-42a4-84f0-ddb1fe9102b0",
+    "appliedAtUtc": "2026-10-23T05:05:55.4000664Z",
+    "targetStandaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "7a6edb30-0e4e-4a38-b673-f5d3cb81550e",
+    "appliedAtUtc": "2026-10-23T05:06:26.6169063Z",
+    "targetStandaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "3236272e-4354-481a-8edf-f36828da1038",
+    "appliedAtUtc": "2026-10-23T05:06:59.3869095Z",
+    "targetStandaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "766701bc-6b43-49d1-a25e-2d5950e741fb",
+    "appliedAtUtc": "2026-10-23T05:10:32.5748271Z",
+    "targetStandaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "6fc51b3b-7524-49fa-8185-b68dcb8f29ba",
+    "appliedAtUtc": "2026-10-23T05:13:05.8965196Z",
+    "targetStandaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "f574782c-0c06-4bff-b169-b87e72cd040d",
+    "appliedAtUtc": "2026-10-23T05:13:33.184282Z",
+    "targetStandaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "2cc7b6ab-07b0-4b09-8cc2-26dc2f56b881",
+    "appliedAtUtc": "2026-10-23T05:14:06.6734154Z",
+    "targetStandaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "00f913caba2142cd88bac4f5787984c4",
+    "ownerId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "sourceUrl": "https://radiojih.cz/wp-content/uploads/2026/05/bc55cbcf-6ac4-4ea8-a0c5-85f221d6b46e-757x415.png",
+    "updatedAt": "2026-10-23T05:08:13.742Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "374d38a8ecb74ce2aad6d78dd004f0bf",
+    "ownerId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "sourceUrl": "https://www.bobovkanemcicky.cz/data/gallery_6/50-jizda-na-bobove-draze_thumbf.jpg",
+    "updatedAt": "2026-10-23T05:08:32.2Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "8f85ed97e05e44fb902dcc52ef7db5ca",
+    "ownerId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+    "sourceUrl": "https://www.bobovkanemcicky.cz/data/gallery_5/33-areal-bobovky-nemcicky_thumbf.jpg",
+    "updatedAt": "2026-10-23T05:08:51.524Z",
+    "isPublished": false
+  }
+]
