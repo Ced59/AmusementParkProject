@@ -1,0 +1,300 @@
+{
+  "name": "Nocky Flitzer",
+  "standaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+  "legacyParkId": "5c0e772c-7fcd-4081-b08b-7fb46f66c9f7",
+  "legacyParkItemId": "6b9437eb-dade-43db-90e1-30c17e297c99",
+  "historicalLegacyParkItemId": "c8f34cd7-4b77-4ad3-a55d-dfaf5eeb584e",
+  "qualification": "L’ancien Park masqué Turracher Höhe regroupe deux parkItems : l’Einschienenrodelbahn fermée et le Nocky Flitzer actuel. Seul ce dernier est migré vers une fiche StandaloneAttraction avec billet propre. L’ancien Park reste masqué et NotRelevant ; ses deux parkItems ne sont pas supprimés. Aucune fiche standalone homonyme n’a été trouvée par recherche officielle. La piste historique fermée reste à qualifier séparément.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 2,
+    "accessConditions": 4,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentAdmissionOffers": 6,
+    "openingHoursPeriod": "2026-10-23/2026-11-01",
+    "datedScheduleOverrides": 10
+  },
+  "gaps": [
+    "Les dates exactes de la saison d’hiver 2026–2027 ne sont pas publiées sur la grille consultée ; les horaires structurés s’arrêtent au 1er novembre 2026. La grille de tarifs d’hiver est connue mais n’est pas datée précisément pour une validité automatique.",
+    "La page estivale indique 1,35 m pour conduire seul à partir de 8 ans, la page hivernale 1,25 m ; la fiche retient la condition estivale conservatrice avec provenance et cette divergence devra être vérifiée auprès de l’exploitant.",
+    "Les deux photographies Commons datent de septembre 2021 ; aucune photographie libre de l’ouverture en 2007 n’a été trouvée.",
+    "La position héritée situe le domaine près de la piste ; le point précis de la gare de départ n’a pas été affirmé. L’ancienne Einschienenrodelbahn fermée demeure un parkItem masqué et un dossier historique à qualifier séparément."
+  ],
+  "sources": [
+    "https://www.turracherhoehe.at/de/sommer/nocky-flitzer",
+    "https://www.turracherhoehe.at/de/sommer/tarife",
+    "https://www.turracherhoehe.at/de/winter/nocky-flitzer",
+    "https://www.turracherhoehe.at/de/winter/tarife",
+    "https://captaincoaster.com/fr/coasters/4598/nocky-flitzer-turracher-hohe",
+    "https://captaincoaster.com/fr/coasters/4599/einschienenrodelbahn-turracher-hohe",
+    "https://rcdb.com/13072.htm",
+    "https://rcdb.com/15007.htm",
+    "https://commons.wikimedia.org/wiki/File:2021-09-21_Turrach_Nockyflitzer1.jpg",
+    "https://commons.wikimedia.org/wiki/File:2021-09-21_Turrach_Nockyflitzer2.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T10:14:28.954239+00:00",
+    "exportSha256": "ed3b0d21bb8d0fe3fc87fb58bee1c8589167149190d29b1d2d5a9fed6c068fa8",
+    "localizedStringsReviewed": 312,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": []
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+    "publishedAtUtc": "2026-10-23T10:16:03.8719937Z",
+    "operationId": "6ca42ce7-500a-4ce1-adf0-f4d48ea5c0ae"
+  },
+  "facebookPublication": {
+    "id": "7baa408b50c04e49bb81cd79550e92f9",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T10:17:18.4836381Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124273375424431",
+    "externalPostId": "1285475681307050_122124273375424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T10:16:46.658136+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T10:16:20.877996+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history/278aee9e-56ca-4efe-bcb3-c3d48fdec1a3/ouverture-nocky-flitzer-2007",
+            "status": 200,
+            "textLength": 1700,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 531
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history/278aee9e-56ca-4efe-bcb3-c3d48fdec1a3/ouverture-nocky-flitzer-2007",
+            "status": 200,
+            "textLength": 1561,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 468
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history/278aee9e-56ca-4efe-bcb3-c3d48fdec1a3/ouverture-nocky-flitzer-2007",
+            "status": 200,
+            "textLength": 1625,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 589
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history/278aee9e-56ca-4efe-bcb3-c3d48fdec1a3/ouverture-nocky-flitzer-2007",
+            "status": 200,
+            "textLength": 1637,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 551
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history/278aee9e-56ca-4efe-bcb3-c3d48fdec1a3/ouverture-nocky-flitzer-2007",
+            "status": 200,
+            "textLength": 1592,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 517
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history/278aee9e-56ca-4efe-bcb3-c3d48fdec1a3/ouverture-nocky-flitzer-2007",
+            "status": 200,
+            "textLength": 1576,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 507
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history/278aee9e-56ca-4efe-bcb3-c3d48fdec1a3/ouverture-nocky-flitzer-2007",
+            "status": 200,
+            "textLength": 1472,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 497
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/a3447c55-089a-4cf1-9531-223fbe763544/nocky-flitzer/history/278aee9e-56ca-4efe-bcb3-c3d48fdec1a3/ouverture-nocky-flitzer-2007",
+            "status": 200,
+            "textLength": 1532,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 520
+      }
+    ]
+  }
+}
