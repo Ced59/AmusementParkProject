@@ -14,10 +14,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 14 |
-| À qualifier | 74 |
+| À qualifier | 73 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 1 |
+| Intégration achevée | 2 |
 | Publié, date inconnue | 18 |
 | Hors périmètre enregistré | 34 |
 | Doublon conservé | 0 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **18 publiés**, **14 masqués à intégrer**, **37 masqués NotRelevant à réexaminer**, **63 candidats sans fiche**.
 
-Standalone : **1 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **6 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **2 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **6 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **5 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -123,7 +123,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | NL-park-14d906a7-772c-4396-aafc-2d3b8c57f16b | Mondo Verde | Landgraaf | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/6383.htm) · [Site officiel enregistré (à revérifier)](https://www.wereldtuinenmondoverde.nl/) |
 | NL-park-307189e0-ea98-4067-bdd8-cf9736d050ee | Nico Buwalda | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | NL-candidate-98e2bdfb6928a5 | Ouwehands Dierenpark | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [EAZA](https://www.eaza.net/membership/) · [Site officiel référencé](https://www.ouwehand.nl) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Netherlands) |
-| NL-candidate-discovery-80445428d4593e | Over the Edge — A’DAM LOOKOUT | Amsterdam | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Over the Edge — A’DAM LOOKOUT. Signal source : Offre documentée par le site officiel ; état actuel à revérifier avant intégration.. [Découverte complémentaire — site officiel](https://www.adamlookout.com/en/over-the-edge/) |
+| NL-candidate-discovery-80445428d4593e | Over the Edge — A’DAM LOOKOUT | Amsterdam | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T16:14:32.108Z | — | Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour. Qualification standalone : AlreadyStandalone. Balançoire sur le toit vendue en supplément avec créneau et conditions propres ; l’entrée de l’observatoire est également requise. Fiche standalone créée et publiée. Installations référencées : Over the Edge — A’DAM LOOKOUT. Signal source : Offre et réservation actives au 23 octobre 2026 sur le site officiel A’DAM LOOKOUT.. [Découverte complémentaire — site officiel](https://www.adamlookout.com/en/over-the-edge/) · [A’DAM LOOKOUT — tarifs](https://www.adamlookout.com/en/tickets/) · [A’DAM LOOKOUT — inauguration](https://www.prnewswire.com/news-releases/europes-highest-swings-opened-in-amsterdam-591263061.html) · [NL Times — ouverture publique](https://nltimes.nl/2016/08/26/video-europes-tallest-swing-opens-adam-tower) |
 | NL-park-f14f8115-0296-4a27-a59d-26803a021297 | P. Kieviets | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | NL-candidate-7771af9e398996 | Park Oikos | Ruinen | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Netherlands) |
 | NL-park-a4930f15-6c0a-4be7-ace4-ee8b2b7c9091 | Pierre Lemmerman | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
