@@ -1,0 +1,178 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "f8f058af-9bad-42e3-b962-9dbfd5fb1dfc",
+    "appliedAtUtc": "2026-10-23T03:28:15.1381018Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "885d0d0c-1197-4d9b-9abd-9ab816eb260c",
+    "appliedAtUtc": "2026-10-23T03:28:41.6573584Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "88f6ab7c-c902-4e03-a009-ca1c98cf66ef",
+    "appliedAtUtc": "2026-10-23T03:29:05.1756618Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "1bb7cee4-52cf-4424-a991-b6c56acb3203",
+    "appliedAtUtc": "2026-10-23T03:29:28.9044979Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-maker.apply",
+    "operationId": "d73dbeaf-dda4-4350-959e-64fa643ab3eb",
+    "appliedAtUtc": "2026-10-23T03:35:16.8390129Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history-copyfix.apply",
+    "operationId": "ac71a02a-0bbb-4f24-a710-c7c461c16099",
+    "appliedAtUtc": "2026-10-23T03:37:45.9273945Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "d50ce7b3-d155-45fc-8183-59b4f555a0ce",
+    "appliedAtUtc": "2026-10-23T03:36:19.1608953Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "3cc9715a-895b-45dd-8e3b-8d95375ac592",
+    "appliedAtUtc": "2026-10-23T03:31:42.4980999Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "4bba313d-c3dc-4499-8f68-36047a540238",
+    "appliedAtUtc": "2026-10-23T03:38:48.2941205Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "60f7a13f-63a0-40c7-b00c-92bc19342729",
+    "appliedAtUtc": "2026-10-23T03:32:11.6091144Z",
+    "targetStandaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "241ee56f69154638a1c97293e094ca54",
+    "ownerId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "sourceUrl": "https://sommerrodelbahn-oberwiesenthal.de/wp-content/uploads/2023/06/Summer-Toboggan-Run-Oberwiesenthal-4-scaled-1-1536x768.jpg",
+    "updatedAt": "2026-10-23T03:29:59.796Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "d96b5709edae400d81bdb16c6bdae8b8",
+    "ownerId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+    "sourceUrl": "https://sommerrodelbahn-oberwiesenthal.de/wp-content/uploads/2023/06/SoRoBa-Summer.jpg",
+    "updatedAt": "2026-10-23T03:30:15.058Z",
+    "isPublished": false
+  }
+]
