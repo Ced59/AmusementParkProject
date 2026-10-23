@@ -1,0 +1,299 @@
+{
+  "name": "Flyover Chicago",
+  "standaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+  "qualification": "Attraction de vol simulé à billet propre à l’intérieur de Navy Pier, Chicago, distincte des autres exploitants du lieu. Recherches officielles Standalone/Park Flyover Chicago US, FlyOver mondial et Park Navy Pier US : aucune correspondance. Adresse intérieure officielle mais coordonnées exactes non confirmées.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 90,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 1
+  },
+  "gaps": [
+    "Le tarif dépend du film, de la date et du canal. Le site affiche parfois un prix au guichet nul manifestement incohérent avec le tarif en ligne ; aucun prix fixe au guichet n’est retenu.",
+    "L’adresse officielle situe la salle à Navy Pier, en face du Chicago Children’s Museum. Le point géographique exact à l’intérieur du bâtiment n’a pas été confirmé ; aucune coordonnée approximative n’est publiée.",
+    "L’image d’en-tête est un visuel du film de vol simulé, pas une photographie d’un vol réel ni du jour d’ouverture."
+  ],
+  "sources": [
+    "https://www.experienceflyover.com/chicago/",
+    "https://www.experienceflyover.com/chicago/experience/",
+    "https://www.experienceflyover.com/chicago/plan-your-visit/location-parking/",
+    "https://www.experienceflyover.com/chicago/safety-accessibility/",
+    "https://www.experienceflyover.com/chicago/tickets-prices/",
+    "https://www.experienceflyover.com/stories/flyover-opens-in-chicago/",
+    "https://citizennewspapergroup.com/news/2024/mar/13/flyover-officially-opens-to-the-public/"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T02:13:46.095538+00:00",
+    "exportSha256": "950fda43ace302521621ce73499efd97e21b20de10fa5795c8f3f21d4671331d",
+    "localizedStringsReviewed": 240,
+    "localizedGroups": 30,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T02:16:17.326135+00:00",
+  "facebook": {
+    "id": "81f78f2796d34fe0bdb9df6577e9c0eb",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T02:17:00.9740822Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124229959424431",
+    "externalPostId": "1285475681307050_122124229959424431",
+    "url": "https://amusement-parks.fun/fr/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago?facebook-image=0fd5f7f198704cd68ade7b6c40616870"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T02:16:17.326135+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T02:16:21.601706+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history/fb2a7d47-39b0-416f-8625-f0f4ab5f9027/ouverture-flyover-chicago-2024",
+            "status": 200,
+            "textLength": 1497,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 521
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history/fb2a7d47-39b0-416f-8625-f0f4ab5f9027/ouverture-flyover-chicago-2024",
+            "status": 200,
+            "textLength": 1319,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 469
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history/fb2a7d47-39b0-416f-8625-f0f4ab5f9027/ouverture-flyover-chicago-2024",
+            "status": 200,
+            "textLength": 1339,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 555
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history/fb2a7d47-39b0-416f-8625-f0f4ab5f9027/ouverture-flyover-chicago-2024",
+            "status": 200,
+            "textLength": 1308,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 533
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history/fb2a7d47-39b0-416f-8625-f0f4ab5f9027/ouverture-flyover-chicago-2024",
+            "status": 200,
+            "textLength": 1294,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 502
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history/fb2a7d47-39b0-416f-8625-f0f4ab5f9027/ouverture-flyover-chicago-2024",
+            "status": 200,
+            "textLength": 1322,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 508
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history/fb2a7d47-39b0-416f-8625-f0f4ab5f9027/ouverture-flyover-chicago-2024",
+            "status": 200,
+            "textLength": 1227,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 504
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago/history/fb2a7d47-39b0-416f-8625-f0f4ab5f9027/ouverture-flyover-chicago-2024",
+            "status": 200,
+            "textLength": 1282,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 521
+      }
+    ]
+  }
+}
