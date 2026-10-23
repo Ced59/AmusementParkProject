@@ -3262,33 +3262,59 @@
     {
       "entryId": "NL-candidate-discovery-80445428d4593e",
       "name": "Over the Edge — A’DAM LOOKOUT",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Balançoire mécanique",
       "locality": "Amsterdam",
-      "siteId": null,
+      "siteId": "6361f910-9880-4454-beaf-e2f6877991e3",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Offre et réservation actives au 23 octobre 2026 sur le site officiel A’DAM LOOKOUT.",
+      "identityConfidence": "Recherche officielle NL SearchStandaloneAttractions et SearchParks sur Over the Edge et A’DAM LOOKOUT : aucun homonyme ; point exact OpenStreetMap node 5658730089.",
       "possibleMatches": [],
       "aliases": [
         "Over the Edge",
         "ADAM LOOKOUT"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T16:14:32.108Z",
+      "integrationHistory": [
+        {
+          "eventId": "NL-over-edge-20261023-data",
+          "appliedAt": "2026-10-23T16:14:32.108Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6361f910-9880-4454-beaf-e2f6877991e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nl-over-edge-20261023/over-edge-receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nl-over-edge-20261023/over-edge-audit.json",
+          "summary": "Over the Edge : fiche, huit langues, tarifs et accès, histoire et trois photos sous licence intégrés ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.adamlookout.com/en/over-the-edge/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "A’DAM LOOKOUT — tarifs",
+          "url": "https://www.adamlookout.com/en/tickets/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "A’DAM LOOKOUT — inauguration",
+          "url": "https://www.prnewswire.com/news-releases/europes-highest-swings-opened-in-amsterdam-591263061.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "NL Times — ouverture publique",
+          "url": "https://nltimes.nl/2016/08/26/video-europes-tallest-swing-opens-adam-tower",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -3297,8 +3323,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Over the Edge — A’DAM LOOKOUT",
@@ -3311,7 +3337,7 @@
             "sourceLocality": "Amsterdam"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Balançoire sur le toit vendue en supplément avec créneau et conditions propres ; l’entrée de l’observatoire est également requise. Fiche standalone créée et publiée."
       }
     },
     {
