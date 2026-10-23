@@ -1,0 +1,305 @@
+{
+  "name": "Bobová dráha Němčičky",
+  "standaloneAttractionId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+  "qualification": "Park masqué Bobovka Němčičky avec un seul ParkItem Bobovka et aucune zone, marque et billetterie autonome ; aucune fiche StandaloneAttraction Němčičky trouvée. Migration des identifiants hérités, sans création d’un doublon. Ouverture municipale précise en 2010 et remise en service documentée en juin 2026.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 4,
+    "historyEvents": 2,
+    "articles": 1,
+    "weeklyDays": 0,
+    "admissionOffers": 4
+  },
+  "gaps": [
+    "Les pages officielles consultées affichent des horaires génériques divergents selon leur mise à jour. La page tarifs du 23 octobre 2026 annonce des exceptions du 28 octobre au 1er novembre et fermeture météo ; aucun planning hebdomadaire structuré n’a été inventé.",
+    "Le site de l’exploitant annonce une longueur totale de 820 m ; l’ancien ParkItem CaptainCoaster indiquait 671 m, possiblement la descente seule. La longueur officielle totale a été retenue et cette différence reste à préciser.",
+    "L’ancienne fiche ParkItem portait une fermeture en 2014 sans source précise. Les reportages décrivent une fermeture peu après 2010 et une longue période d’abandon ; aucune date de fermeture exacte n’a été conservée.",
+    "La date d’ouverture originale du 1er mai 2010 vient du bulletin municipal. La presse confirme la reprise en juin 2026 sans jour précis validé ; la chronologie garde une précision au mois.",
+    "La page tarifs recommande un accompagnateur de plus de 12 ans pour les moins de huit ans, alors que le règlement de transport décrit un accompagnateur plus âgé de plus de huit ans sous responsabilité adulte. L’indication plus stricte de la billetterie est donnée aux visiteurs.",
+    "La photo de rénovation diffusée par Rádio Jih est attribuée à Bobovka Němčičky ; les deux autres viennent de la galerie de l’exploitant. Les photographes individuels ne sont pas nommés."
+  ],
+  "sources": [
+    "https://www.bobovkanemcicky.cz/cz",
+    "https://www.bobovkanemcicky.cz/cz/cenik",
+    "https://www.bobovkanemcicky.cz/cz/prepravni-podminky",
+    "https://www.bobovkanemcicky.cz/cz/jak-bobovat",
+    "https://www.bobovkanemcicky.cz/en/gallery",
+    "https://www.nemcicky.cz/obrazky-soubory/2010-2-41b29.pdf",
+    "https://radiojih.cz/z-jizni-moravy/bobova-draha-v-nemcickach-se-vrati-do-provozu/",
+    "https://www.irozhlas.cz/zpravy-domov/leta-sporu-chatrani-a-exekuce-bobova-draha-v-nemcickach-se-znovu-stane-mistem_2605060608_kch",
+    "https://www.regionbreclavsko.cz/zpravy/aktualne/33851--Adrenalin-za-80-korun-Bobova-draha-v-Nemcickach-je-znovu-otevrena.html",
+    "https://rcdb.com/13103.htm"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T05:11:04.279270+00:00",
+    "exportSha256": "5c1718bb47fc260c9a7611ead1a514e300477502ab5bdebfc3f63c76d5610843",
+    "localizedStringsReviewed": 336,
+    "localizedGroups": 42,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T05:15:26.205232+00:00",
+  "facebook": {
+    "id": "d5937d6efe9249139dc6d5b8eca0b0fb",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T05:16:15.6682799Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124244269424431",
+    "externalPostId": "1285475681307050_122124244269424431",
+    "url": "https://amusement-parks.fun/fr/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky?facebook-image=00f913caba2142cd88bac4f5787984c4"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T05:15:26.205232+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T05:15:35.542202+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history/c7e831ec-7166-4a19-8804-ed8915e5a5c1/bobova-draha-nemcicky-reopening-2026",
+            "status": 200,
+            "textLength": 2283,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 776
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history/c7e831ec-7166-4a19-8804-ed8915e5a5c1/bobova-draha-nemcicky-reopening-2026",
+            "status": 200,
+            "textLength": 2005,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 707
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history/c7e831ec-7166-4a19-8804-ed8915e5a5c1/bobova-draha-nemcicky-reopening-2026",
+            "status": 200,
+            "textLength": 2020,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 792
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history/c7e831ec-7166-4a19-8804-ed8915e5a5c1/bobova-draha-nemcicky-reopening-2026",
+            "status": 200,
+            "textLength": 2007,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 767
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history/c7e831ec-7166-4a19-8804-ed8915e5a5c1/bobova-draha-nemcicky-reopening-2026",
+            "status": 200,
+            "textLength": 2005,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 747
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history/c7e831ec-7166-4a19-8804-ed8915e5a5c1/bobova-draha-nemcicky-reopening-2026",
+            "status": 200,
+            "textLength": 2044,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 767
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history/c7e831ec-7166-4a19-8804-ed8915e5a5c1/bobova-draha-nemcicky-reopening-2026",
+            "status": 200,
+            "textLength": 1905,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 731
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky/history/c7e831ec-7166-4a19-8804-ed8915e5a5c1/bobova-draha-nemcicky-reopening-2026",
+            "status": 200,
+            "textLength": 2003,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 790
+      }
+    ]
+  }
+}

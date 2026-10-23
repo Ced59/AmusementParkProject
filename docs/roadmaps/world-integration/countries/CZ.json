@@ -1371,26 +1371,153 @@
     },
     {
       "entryId": "CZ-park-813ec867-ebb5-48a3-b07a-e61062364612",
-      "name": "Bobovka Němčičky",
-      "entityKind": "Park",
+      "name": "Bobová dráha Němčičky",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "813ec867-ebb5-48a3-b07a-e61062364612",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "Němčičky, Břeclav",
+      "siteId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+      "legacySiteIds": [
+        "813ec867-ebb5-48a3-b07a-e61062364612"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T05:15:26.205Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identité et autonomie confirmées ; migration appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Bobovka Němčičky",
+        "Alpine Coaster",
+        "Alpine Coaster Němčičky"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T05:14:06.673Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4e5fe22f-49c8-4922-b6a2-7a9380b9bed7",
+          "appliedAt": "2026-10-23T05:05:06.683Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:4e5fe22f-49c8-4922-b6a2-7a9380b9bed7",
+          "auditEvidence": null,
+          "summary": "Migration du Park masqué mono-attraction vers standalone ; ouverture municipale du 1er mai 2010 et reprise 2026 sans doublon"
+        },
+        {
+          "eventId": "apply-8f20a37f-ca8e-42a4-84f0-ddb1fe9102b0",
+          "appliedAt": "2026-10-23T05:05:55.400Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:8f20a37f-ca8e-42a4-84f0-ddb1fe9102b0",
+          "auditEvidence": null,
+          "summary": "Note multilingue sur les horaires officiels variables, dates particulières et fermetures météo"
+        },
+        {
+          "eventId": "apply-7a6edb30-0e4e-4a38-b673-f5d3cb81550e",
+          "appliedAt": "2026-10-23T05:06:26.616Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:7a6edb30-0e4e-4a38-b673-f5d3cb81550e",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels actuels 80/140/350/650 CZK par personne, billets valides 365 jours"
+        },
+        {
+          "eventId": "apply-3236272e-4354-481a-8edf-f36828da1038",
+          "appliedAt": "2026-10-23T05:06:59.386Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:3236272e-4354-481a-8edf-f36828da1038",
+          "auditEvidence": null,
+          "summary": "Règlement actuel : âge minimal, accompagnement, charge maximale, ceinture et freinage"
+        },
+        {
+          "eventId": "image-00f913caba2142cd88bac4f5787984c4",
+          "appliedAt": "2026-10-23T05:08:13.742Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:image:00f913caba2142cd88bac4f5787984c4",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-374d38a8ecb74ce2aad6d78dd004f0bf",
+          "appliedAt": "2026-10-23T05:08:32.200Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:image:374d38a8ecb74ce2aad6d78dd004f0bf",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-8f85ed97e05e44fb902dcc52ef7db5ca",
+          "appliedAt": "2026-10-23T05:08:51.524Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:image:8f85ed97e05e44fb902dcc52ef7db5ca",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-766701bc-6b43-49d1-a25e-2d5950e741fb",
+          "appliedAt": "2026-10-23T05:10:32.574Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:766701bc-6b43-49d1-a25e-2d5950e741fb",
+          "auditEvidence": null,
+          "summary": "Chronologie 2010-05-01 et juin 2026, avec article de réouverture sourcé en huit langues"
+        },
+        {
+          "eventId": "apply-6fc51b3b-7524-49fa-8185-b68dcb8f29ba",
+          "appliedAt": "2026-10-23T05:13:05.896Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:6fc51b3b-7524-49fa-8185-b68dcb8f29ba",
+          "auditEvidence": null,
+          "summary": "Publication des trois photographies attribuées, avec source et métadonnées multilingues"
+        },
+        {
+          "eventId": "apply-f574782c-0c06-4bff-b169-b87e72cd040d",
+          "appliedAt": "2026-10-23T05:13:33.184Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:f574782c-0c06-4bff-b169-b87e72cd040d",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie 2010 et 2026 et de l’article historique en huit langues"
+        },
+        {
+          "eventId": "apply-2cc7b6ab-07b0-4b09-8cc2-26dc2f56b881",
+          "appliedAt": "2026-10-23T05:14:06.673Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:2cc7b6ab-07b0-4b09-8cc2-26dc2f56b881",
+          "auditEvidence": null,
+          "summary": "Validation éditoriale et mise en visibilité de la fiche standalone Bobová dráha Němčičky"
+        },
+        {
+          "eventId": "closure-apply-2cc7b6ab-07b0-4b09-8cc2-26dc2f56b881",
+          "appliedAt": "2026-10-23T05:14:06.673Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+          "evidence": "PARK_DATA_EDITOR:apply:2cc7b6ab-07b0-4b09-8cc2-26dc2f56b881",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cz-20261023/nemcicky-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 91/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1416,13 +1543,63 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.bobovka.eu",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovkanemcicky.cz/cz",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovkanemcicky.cz/cz/cenik",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovkanemcicky.cz/cz/prepravni-podminky",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovkanemcicky.cz/cz/jak-bobovat",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovkanemcicky.cz/en/gallery",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.nemcicky.cz/obrazky-soubory/2010-2-41b29.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://radiojih.cz/z-jizni-moravy/bobova-draha-v-nemcickach-se-vrati-do-provozu/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.irozhlas.cz/zpravy-domov/leta-sporu-chatrani-a-exekuce-bobova-draha-v-nemcickach-se-znovu-stane-mistem_2605060608_kch",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.regionbreclavsko.cz/zpravy/aktualne/33851--Adrenalin-za-80-korun-Bobova-draha-v-Nemcickach-je-znovu-otevrena.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "CZ",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Bobovka",
@@ -1444,7 +1621,30 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Ancien Park masqué avec un seul ParkItem Bobovka, vendu comme attraction autonome. Ouverture 2010 et réouverture 2026 documentées ; migration des identifiants appliquée sans doublon."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky",
+          "publishedAtUtc": "2026-10-23T05:14:06.6734154Z",
+          "verifiedAtUtc": "2026-10-23T05:15:26.205Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2cc7b6ab-07b0-4b09-8cc2-26dc2f56b881"
+        },
+        "facebook": {
+          "id": "d5937d6efe9249139dc6d5b8eca0b0fb",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T05:16:15.6682799Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124244269424431",
+          "externalPostId": "1285475681307050_122124244269424431",
+          "url": "https://amusement-parks.fun/fr/attraction/7d5682a2-87f0-4c70-99c0-31b363488c6e/bobova-draha-nemcicky?facebook-image=00f913caba2142cd88bac4f5787984c4"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-20261023/nemcicky-audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 6
       }
     },
     {
