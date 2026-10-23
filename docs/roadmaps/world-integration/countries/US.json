@@ -25030,27 +25030,200 @@
     {
       "entryId": "US-candidate-discovery-177cb9d986d45d",
       "name": "Great Park Balloon",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Ballon captif",
-      "locality": "Irvine, Californie",
-      "siteId": null,
+      "category": "Ballon captif d’observation",
+      "locality": "Great Park, Irvine, Californie",
+      "siteId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T06:25:40.224Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Premier vol le 14 juillet 2007 ; exploitation en 2026 confirmée par la ville d’Irvine.",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "aliases": [
-        "Orange County Great Park Irvine, California, USA"
+        "Orange County Great Park Irvine, California, USA",
+        "Orange County Great Park Balloon",
+        "Great Park Orange Balloon"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T06:24:25.640Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d16f65bd-63e3-43e5-b957-3b6898dee4a8",
+          "appliedAt": "2026-10-23T06:13:23.523Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:d16f65bd-63e3-43e5-b957-3b6898dee4a8",
+          "auditEvidence": null,
+          "summary": "Ballon de Great Park qualifié et fiche standalone créée"
+        },
+        {
+          "eventId": "apply-058d5d51-0643-466e-bd17-49f7492b0361",
+          "appliedAt": "2026-10-23T06:13:55.953Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:058d5d51-0643-466e-bd17-49f7492b0361",
+          "auditEvidence": null,
+          "summary": "Horaires officiels des deux séances et jours de fermeture"
+        },
+        {
+          "eventId": "apply-3ae2470b-34d4-4f0f-90e1-a28b6f534982",
+          "appliedAt": "2026-10-23T06:14:25.183Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:3ae2470b-34d4-4f0f-90e1-a28b6f534982",
+          "auditEvidence": null,
+          "summary": "Tarifs adulte et enfant en vigueur à Irvine"
+        },
+        {
+          "eventId": "apply-c17cd262-3181-4e24-a6cb-b1361565e065",
+          "appliedAt": "2026-10-23T06:14:55.545Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:c17cd262-3181-4e24-a6cb-b1361565e065",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès au ballon selon la ville"
+        },
+        {
+          "eventId": "apply-db252ad2-87a0-4b62-8329-ef893f16b122",
+          "appliedAt": "2026-10-23T06:15:25.257Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:db252ad2-87a0-4b62-8329-ef893f16b122",
+          "auditEvidence": null,
+          "summary": "Exceptions de jours fériés annoncées pour fin 2026"
+        },
+        {
+          "eventId": "image-de326090475d4544b3fb8889638f65c3",
+          "appliedAt": "2026-10-23T06:15:47.422Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:image:de326090475d4544b3fb8889638f65c3",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-a120135870ca474e8405541623207dcf",
+          "appliedAt": "2026-10-23T06:16:05.437Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:image:a120135870ca474e8405541623207dcf",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-326308240c6a48b3ab4b992e90065a6b",
+          "appliedAt": "2026-10-23T06:16:26.829Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:image:326308240c6a48b3ab4b992e90065a6b",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-20e00718-5c15-4e3f-ae51-99d8391d2106",
+          "appliedAt": "2026-10-23T06:16:55.571Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:20e00718-5c15-4e3f-ae51-99d8391d2106",
+          "auditEvidence": null,
+          "summary": "Article historique sur le premier vol du 14 juillet 2007"
+        },
+        {
+          "eventId": "apply-29f11de9-e559-440a-9c30-4d2bb2ba0b19",
+          "appliedAt": "2026-10-23T06:18:08.602Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:29f11de9-e559-440a-9c30-4d2bb2ba0b19",
+          "auditEvidence": null,
+          "summary": "Crédits photographiques et licences localisés"
+        },
+        {
+          "eventId": "apply-8093ec27-0582-4788-9018-37d6c27ae490",
+          "appliedAt": "2026-10-23T06:19:36.042Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:8093ec27-0582-4788-9018-37d6c27ae490",
+          "auditEvidence": null,
+          "summary": "Durée structurée unique retirée : la ville publie une plage de 10 à 12 minutes"
+        },
+        {
+          "eventId": "apply-b28ebaaa-1207-4ede-a158-5e8ee50d4bd0",
+          "appliedAt": "2026-10-23T06:20:41.110Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:b28ebaaa-1207-4ede-a158-5e8ee50d4bd0",
+          "auditEvidence": null,
+          "summary": "Publication des photographies CC avec attribution du Great Park Balloon"
+        },
+        {
+          "eventId": "apply-27662d5a-148e-41d2-8ff3-05922ad45964",
+          "appliedAt": "2026-10-23T06:21:04.850Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:27662d5a-148e-41d2-8ff3-05922ad45964",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie et de l’article du ballon"
+        },
+        {
+          "eventId": "apply-4cd0ccfe-215d-42c2-a9e2-4071ccd2f4f2",
+          "appliedAt": "2026-10-23T06:21:28.606Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:4cd0ccfe-215d-42c2-a9e2-4071ccd2f4f2",
+          "auditEvidence": null,
+          "summary": "Publication de la fiche Great Park Balloon"
+        },
+        {
+          "eventId": "apply-7f0f3811-f7c2-48a3-8089-a3441574e178",
+          "appliedAt": "2026-10-23T06:22:57.204Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:7f0f3811-f7c2-48a3-8089-a3441574e178",
+          "auditEvidence": null,
+          "summary": "Textes alternatifs photographiques distincts des légendes en huit langues"
+        },
+        {
+          "eventId": "apply-a1d9ced0-eef6-44bc-b021-59a8b9a7163a",
+          "appliedAt": "2026-10-23T06:24:25.640Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:a1d9ced0-eef6-44bc-b021-59a8b9a7163a",
+          "auditEvidence": null,
+          "summary": "Récit historique reformulé pour éviter la répétition des descriptions"
+        },
+        {
+          "eventId": "closure-apply-a1d9ced0-eef6-44bc-b021-59a8b9a7163a",
+          "appliedAt": "2026-10-23T06:24:25.640Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+          "evidence": "PARK_DATA_EDITOR:apply:a1d9ced0-eef6-44bc-b021-59a8b9a7163a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/irvine-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 88/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -25061,6 +25234,51 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://cityofirvine.gov/great-park/great-park-balloon-carousel",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://cityofirvine.gov/great-park/hours-directions",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://online.flippingbook.com/view/802429622",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://storymaps.arcgis.com/stories/2143e3c753ec4a9486fc87b91153cca5",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://mapcarta.com/W106818650",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Orange_Balloon_at_Orange_County_Great_Park.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Ballon_orange.JPG",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:OC_Great_Park_Balloon_Ride_070714.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/7fbb68c5-178f-482b-bbfa-c94ce1a69239/great-park-balloon",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -25069,8 +25287,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Great Park Balloon",
@@ -25078,13 +25296,36 @@
             "url": "https://www.aerophile.com/en/clients/orange-county-great-park/",
             "family": "Ballon captif",
             "sourceVenueName": "Great Park Balloon",
-            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLifecycleSignal": "Premier vol le 14 juillet 2007 ; exploitation en 2026 confirmée par la ville d’Irvine.",
+            "matchingMethod": "Recherche fraîche Park et Standalone US pour Great Park Balloon et Orange County Great Park ; aucune fiche, création contrôlée.",
             "sourceLocality": "Irvine, Californie",
             "referenceId": "aerophile-orange-county-great-park"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Ballon à billet, file et horaires distincts dans un parc public ; création standalone sans doublon dans SearchParks et SearchStandaloneAttractions."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7fbb68c5-178f-482b-bbfa-c94ce1a69239/great-park-balloon",
+          "publishedAtUtc": "2026-10-23T06:21:28.606295Z",
+          "verifiedAtUtc": "2026-10-23T06:25:40.224Z",
+          "evidence": "PARK_DATA_EDITOR:apply:4cd0ccfe-215d-42c2-a9e2-4071ccd2f4f2"
+        },
+        "facebook": {
+          "id": "9ddc4a5b1bd54b8eac7c3c11d3b749b3",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T06:26:24.0689511Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124251055424431",
+          "externalPostId": "1285475681307050_122124251055424431",
+          "url": "https://amusement-parks.fun/fr/attraction/7fbb68c5-178f-482b-bbfa-c94ce1a69239/great-park-balloon?facebook-image=de326090475d4544b3fb8889638f65c3"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/irvine-audit.json",
+        "score": 88,
+        "publicationBlockers": [],
+        "gapCount": 5
       }
     },
     {
