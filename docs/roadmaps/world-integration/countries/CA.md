@@ -15,10 +15,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 25 |
-| À qualifier | 100 |
+| À qualifier | 99 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 1 |
+| Intégration achevée | 2 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 2 |
 | Doublon conservé | 0 |
@@ -29,7 +29,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **25 masqués à intégrer**, **2 masqués NotRelevant à réexaminer**, **84 candidats sans fiche**.
 
-Standalone : **1 publiées**, **0 masquées**, **4 candidates sans fiche**. Autres dossiers : **0 types à décider**, **12 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **2 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **12 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **5 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **9 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -76,7 +76,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CA-candidate-7ced61046ad304 | Expo '86 | Vancouver , British Columbia | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5674.htm) |
 | CA-candidate-dae526c0fb13b4 | F.U.N Park | Saint-Sauveur, Québec | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada) |
 | CA-candidate-22a10549c36ed3 | Fallsview Indoor Waterpark | Niagara Falls | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Canada) |
-| CA-candidate-ff82b206858b7c | Flyover Vancouver | Vancouver | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Flyover in Vancouver ; Flyover Vancouver. [Site officiel (attraction autonome)](https://www.experienceflyover.com/vancouver/) · [Brogent — projet constructeur](https://www.brogent.com/EN/Flyover-in-Vancouver-cv-2.html) |
+| CA-candidate-ff82b206858b7c | Flyover Vancouver | Canada Place, Vancouver | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T02:28:52.482Z | — | Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-6b96c1c1-198e-4ef6-b90b-5f470249c387 ; conserver les références de découverte. Installations référencées : Flyover in Vancouver ; Flyover Vancouver. Signal source : Operating. [Site officiel (attraction autonome)](https://www.experienceflyover.com/vancouver/) · [Brogent — projet constructeur](https://www.brogent.com/EN/Flyover-in-Vancouver-cv-2.html) · [Source vérifiée — intégration standalone](https://www.experienceflyover.com/vancouver/experience/) · [Source vérifiée — intégration standalone](https://www.experienceflyover.com/vancouver/plan-your-visit/location-parking/) · [Source vérifiée — intégration standalone](https://www.experienceflyover.com/vancouver/safety-accessibility/) · [Source vérifiée — intégration standalone](https://www.experienceflyover.com/vancouver/tickets-prices/) · [Source vérifiée — intégration standalone](https://www.flyovercanada.com/stories/10-facts-for-10-years-at-flyover-canada/) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver) |
 | CA-candidate-5635d8ecb7dafe | Fort Edmonton Park | Edmonton, Alberta | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada) |
 | CA-candidate-a70e2093b1dc9b | Frontier Amusement Park | Niagara Falls , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/14928.htm) |
 | CA-park-4183d148-4da7-4bbc-bdc6-bce56d7763f4 | Fun Haven | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/14432.htm) |
