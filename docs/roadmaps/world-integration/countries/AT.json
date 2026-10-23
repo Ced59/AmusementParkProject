@@ -2239,26 +2239,142 @@
     },
     {
       "entryId": "AT-park-0c8ab99d-d1a8-434f-8785-6be618039172",
-      "name": "Imster Bergbahnen",
-      "entityKind": "Park",
+      "name": "Alpine Coaster Imst",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "0c8ab99d-d1a8-434f-8785-6be618039172",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "Hoch-Imst, Imst",
+      "siteId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+      "legacySiteIds": [
+        "0c8ab99d-d1a8-434f-8785-6be618039172"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Confirmée par l’exploitant, la Ville d’Imst et la migration legacy contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Alpine Coaster",
+        "Imster Bergbahnen — Alpine Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T09:15:20.627Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4acd9d93-1b14-42e2-a0aa-1e2e73ade526",
+          "appliedAt": "2026-10-23T08:53:02.240Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:apply:4acd9d93-1b14-42e2-a0aa-1e2e73ade526",
+          "auditEvidence": null,
+          "summary": "Migration de la fiche mono-attraction masquée, identité, huit descriptions, constructeur et données techniques."
+        },
+        {
+          "eventId": "apply-50609c86-b30a-4e52-90c8-d64594b35b2d",
+          "appliedAt": "2026-10-23T08:58:00.795Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:apply:50609c86-b30a-4e52-90c8-d64594b35b2d",
+          "auditEvidence": null,
+          "summary": "Calendrier officiel automne 2026 et hiver 2026-2027 intégré."
+        },
+        {
+          "eventId": "apply-5ef6ec66-8b3b-4c8a-90f0-28c793050e95",
+          "appliedAt": "2026-10-23T08:58:45.950Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:apply:5ef6ec66-8b3b-4c8a-90f0-28c793050e95",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs été 2026 sourcés intégrés."
+        },
+        {
+          "eventId": "photo-944db7e1dd6f4048ae69f3a2efe98418",
+          "appliedAt": "2026-10-23T09:01:42.522Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:import-photo:944db7e1dd6f4048ae69f3a2efe98418",
+          "auditEvidence": null,
+          "summary": "Photographie libre et créditée 1/3 importée."
+        },
+        {
+          "eventId": "photo-fa2e5619f45d438dabe0d79b614a4218",
+          "appliedAt": "2026-10-23T09:02:16.776Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:import-photo:fa2e5619f45d438dabe0d79b614a4218",
+          "auditEvidence": null,
+          "summary": "Photographie libre et créditée 2/3 importée."
+        },
+        {
+          "eventId": "photo-10e1ffd74bef4f02923848a8e5e57024",
+          "appliedAt": "2026-10-23T09:02:39.022Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:import-photo:10e1ffd74bef4f02923848a8e5e57024",
+          "auditEvidence": null,
+          "summary": "Photographie libre et créditée 3/3 importée."
+        },
+        {
+          "eventId": "apply-2f6913a1-91eb-47d6-a96b-9ce09a36ef27",
+          "appliedAt": "2026-10-23T09:07:38.015Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:apply:2f6913a1-91eb-47d6-a96b-9ce09a36ef27",
+          "auditEvidence": null,
+          "summary": "Légendes des trois photos Commons relues et corrigées."
+        },
+        {
+          "eventId": "apply-7fd33842-04f6-4d6e-b669-04164cfd78bc",
+          "appliedAt": "2026-10-23T09:08:45.219Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:apply:7fd33842-04f6-4d6e-b669-04164cfd78bc",
+          "auditEvidence": null,
+          "summary": "Frise de 2003 et 2017 et article de l’ouverture intégrés et relus."
+        },
+        {
+          "eventId": "apply-888cdd55-4700-4901-bd49-563200d0a116",
+          "appliedAt": "2026-10-23T09:13:00.840Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:apply:888cdd55-4700-4901-bd49-563200d0a116",
+          "auditEvidence": null,
+          "summary": "Descriptions et article réécrits, sans répétition ni métrique dans le récit public."
+        },
+        {
+          "eventId": "apply-f224d7f5-280d-41af-a680-fe724d7e1925",
+          "appliedAt": "2026-10-23T09:15:20.627Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:apply:f224d7f5-280d-41af-a680-fe724d7e1925",
+          "auditEvidence": null,
+          "summary": "Cinq conditions d’accès avec provenance officielle localisée intégrées."
+        },
+        {
+          "eventId": "closure-apply-f224d7f5-280d-41af-a680-fe724d7e1925",
+          "appliedAt": "2026-10-23T09:15:20.627Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+          "evidence": "PARK_DATA_EDITOR:apply:f224d7f5-280d-41af-a680-fe724d7e1925",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-20261023/imst-audit.json",
+          "summary": "Intégration éditoriale achevée ; audit final 100/100 sans bloqueur, publication du site et Facebook vérifiées."
+        }
+      ],
+      "nextAction": "Conserver la ligne et ses reçus. Au début de la saison hivernale, revérifier les tarifs et le calendrier conditionné par la météo ; chercher des photos historiques de 2003 et 2017 et une position précise du départ.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2284,13 +2400,63 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.alpine-coaster.at",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.imster-bergbahnen.at/en/summer/alpine-coaster/fun-facts/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.imster-bergbahnen.at/en/summer/alpine-coaster/good-to-know/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.imster-bergbahnen.at/en/summer/alpine-coaster/prices-times/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.imster-bergbahnen.at/en/prices-times/opening-times/winter-operation/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.imster-bergbahnen.at/en/company/history/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.imst.gv.at/Wirtschaft_-_Alpine_Coaster_-_Bilanz_2007",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Imst_-_Alpine-Coaster_-_01.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Imst_-_Alpine_Coaster_09.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Imst_-_Alpine_Coaster_-_14.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/3bdc9128-855e-4b7d-9b61-961c420f35bc/alpine-coaster-imst",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "AT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Alpine Coaster",
@@ -2312,7 +2478,30 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Attraction fixe à billet propre dans un domaine de montagne non structuré en parc d’attractions ; migration contrôlée de la fiche Park masquée mono-attraction et de son parkItem. Legacy masqué et NotRelevant, conservé comme trace."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3bdc9128-855e-4b7d-9b61-961c420f35bc/alpine-coaster-imst",
+          "publishedAtUtc": "2026-10-23T09:18:41.8543668Z",
+          "verifiedAtUtc": "2026-10-23T09:20:53.313098+00:00",
+          "evidence": "PARK_DATA_EDITOR:apply:6d94dbf9-03cd-4e73-85f3-80f9d08f49a5"
+        },
+        "facebook": {
+          "id": "aea92b11a54948ffbbd64409cda70362",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T09:22:00.6693672Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124268581424431",
+          "externalPostId": "1285475681307050_122124268581424431",
+          "url": "https://amusement-parks.fun/fr/attraction/3bdc9128-855e-4b7d-9b61-961c420f35bc/alpine-coaster-imst?facebook-image=944db7e1dd6f4048ae69f3a2efe98418"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-20261023/imst-audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -5136,7 +5325,7 @@
       "entryId": "AT-candidate-261a26d312dd76",
       "name": "Wiener Riesenrad",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Prater , Leopoldstadt , Vienna",
       "siteId": null,
@@ -5147,25 +5336,35 @@
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "identityConfidence": "Rattachement au Wiener Prater confirmé par le répertoire officiel du Prater et la fiche Park du site ; statut parkItem à reprendre.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer de standalone : intégrer le Wiener Riesenrad comme attraction du Wiener Prater (Park masqué 2bce9465-50e6-4f1b-b3a4-06ffd4bb8470) lors de sa reprise éditoriale. Vérifier les autres noms et opérateurs dans son inventaire avant création du parkItem.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Répertoire officiel du Wiener Prater — attractions",
+          "url": "https://www.praterwien.com/en/attractions/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Wiener Riesenrad — histoire officielle",
+          "url": "https://wienerriesenrad.com/en/history/",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-23",
         "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Grande roue permanente située dans le Wiener Prater, véritable parc d’attractions existant dans le site. Le parc masqué possède déjà un inventaire de 37 attractions mais pas cette grande roue ; dossier à rattacher à ce parc, hors créations standalone."
       }
     },
     {
