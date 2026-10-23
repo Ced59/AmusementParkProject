@@ -1,0 +1,170 @@
+{
+  "dataApplyReceipts": [
+    {
+      "stage": "01-core",
+      "operationId": "818c1c01-803a-4472-a0ed-1d09239c4144",
+      "appliedAtUtc": "2026-10-23T15:57:46.6838969Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "02-hours",
+      "operationId": "debec381-60c7-4fa9-a31e-63f0cefb3c87",
+      "appliedAtUtc": "2026-10-23T15:59:59.8255341Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "03-pricing",
+      "operationId": "b5464006-6aac-4501-9026-f42692a2f9e9",
+      "appliedAtUtc": "2026-10-23T16:00:22.9925897Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "04-access",
+      "operationId": "1a2c3cfc-90e1-499a-86de-e577a74cae46",
+      "appliedAtUtc": "2026-10-23T16:01:02.7971413Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "05-history",
+      "operationId": "cf5cc63c-d6d0-4af7-9751-f1fb87a1fd82",
+      "appliedAtUtc": "2026-10-23T16:01:08.2246294Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "06-image-descriptions",
+      "operationId": "4547d6d8-5b8a-4496-a077-58bfaff763aa",
+      "appliedAtUtc": "2026-10-23T16:04:14.5718775Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "07-publish-images",
+      "operationId": "7022e652-4392-4d39-a546-ed6e7a061c89",
+      "appliedAtUtc": "2026-10-23T16:05:16.2058555Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "08-publish-history",
+      "operationId": "abed5e38-7b4f-438a-9b4c-d6be524ad225",
+      "appliedAtUtc": "2026-10-23T16:05:38.8121181Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "09-publish-attraction",
+      "operationId": "3e35e60f-fe9b-486a-831e-3cda4daeeb24",
+      "appliedAtUtc": "2026-10-23T16:06:04.1467881Z",
+      "targetStandaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "photoImportReceipts": [
+    {
+      "id": "61cf69c2280e465985ac7d8faff24da3",
+      "createdAt": "2026-10-23T16:02:20.058Z",
+      "updatedAt": "2026-10-23T16:02:24.982Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:20140802_29_Tilt_@_360_Chicago_(20641549770).jpg",
+      "width": 960,
+      "height": 720,
+      "isCurrent": true,
+      "credit": "David Wilson / Wikimedia Commons, CC BY 2.0, 2014"
+    },
+    {
+      "id": "eee5ffc6814f4279b2ee8f21ee01d67f",
+      "createdAt": "2026-10-23T16:02:55.072Z",
+      "updatedAt": "2026-10-23T16:02:59.054Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:TILT_(14993635707).jpg",
+      "width": 2000,
+      "height": 1500,
+      "isCurrent": false,
+      "credit": "Jan Pěček / Wikimedia Commons, CC BY 2.0, 2014"
+    }
+  ]
+}
