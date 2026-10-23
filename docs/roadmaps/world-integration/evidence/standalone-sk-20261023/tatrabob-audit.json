@@ -1,0 +1,303 @@
+{
+  "name": "Tatrabob",
+  "standaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+  "qualification": "Fiche Park masquée mono-attraction Tatrabob Tatranska Lomnica, avec un seul ParkItem Tatrabob et zéro zone. Vente directe par trajet sous la marque Tatrabob ; aucune fiche standalone préexistante SearchStandaloneAttractions Tatrabob SK. Migration des deux identifiants hérités vers une seule attraction autonome, sans doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 81,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 0,
+    "admissionOffers": 4
+  },
+  "gaps": [
+    "Les horaires dynamiques affichés le 23 octobre 2026 sur différentes pages du même site officiel se contredisent ; aucun créneau hebdomadaire inventé. Confirmer le jour de visite auprès de l’exploitant.",
+    "Les pages officielles donnent 482 m de piste et 203 m de remontée. L’ancienne fiche importée indiquait 650 m sans distinguer les segments ; la mesure officielle de piste a été retenue.",
+    "La page de spécifications indique « capacité 1 personne » tandis que la billetterie vend des trajets adulte + enfant et jeune + enfant ; le nombre de passagers par bob n’est donc pas structuré.",
+    "Visit Tatry et Prešov Region indiquent août 2004 sans date exacte. Le champ de date d’ouverture exacte reste vide ; l’événement historique garde la précision du mois.",
+    "Photographe individuel non identifié pour les trois images de la galerie officielle."
+  ],
+  "sources": [
+    "https://www.tatrabob.sk/",
+    "https://www.tatrabob.sk/specifications",
+    "https://www.tatrabob.sk/pricelist",
+    "https://www.tatrabob.sk/instructions",
+    "https://www.tatrabob.sk/contact",
+    "https://www.tatrabob.sk/gallery",
+    "https://www.tatry.sk/bobova-draha-tatrabob/",
+    "https://presovregion.travel/vylet/horska-draha-a-lukostrelba/",
+    "https://rcdb.com/14792.htm"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T04:35:29.069352+00:00",
+    "exportSha256": "d91ef11aef8023ffd3c971e0f63afa9d9f0fb261debe2fa88240018b396611ef",
+    "localizedStringsReviewed": 264,
+    "localizedGroups": 33,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T04:39:20.870603+00:00",
+  "facebook": {
+    "id": "a1cf823f725c4f908559f3a7c7385d1e",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T04:40:10.4185122Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124240831424431",
+    "externalPostId": "1285475681307050_122124240831424431",
+    "url": "https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob?facebook-image=f50eadc14f114fb2b7c1d7312bb131b4"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T04:39:20.870603+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T04:39:27.950947+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history/848f2d50-68c6-4691-b5b1-7451b8c24b55/tatrabob-opening-2004",
+            "status": 200,
+            "textLength": 1479,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 546
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history/848f2d50-68c6-4691-b5b1-7451b8c24b55/tatrabob-opening-2004",
+            "status": 200,
+            "textLength": 1242,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 470
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history/848f2d50-68c6-4691-b5b1-7451b8c24b55/tatrabob-opening-2004",
+            "status": 200,
+            "textLength": 1222,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 573
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history/848f2d50-68c6-4691-b5b1-7451b8c24b55/tatrabob-opening-2004",
+            "status": 200,
+            "textLength": 1146,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 547
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history/848f2d50-68c6-4691-b5b1-7451b8c24b55/tatrabob-opening-2004",
+            "status": 200,
+            "textLength": 1193,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 505
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history/848f2d50-68c6-4691-b5b1-7451b8c24b55/tatrabob-opening-2004",
+            "status": 200,
+            "textLength": 1203,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 516
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history/848f2d50-68c6-4691-b5b1-7451b8c24b55/tatrabob-opening-2004",
+            "status": 200,
+            "textLength": 1142,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 528
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob/history/848f2d50-68c6-4691-b5b1-7451b8c24b55/tatrabob-opening-2004",
+            "status": 200,
+            "textLength": 1180,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 540
+      }
+    ]
+  }
+}

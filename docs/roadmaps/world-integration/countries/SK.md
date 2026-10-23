@@ -12,11 +12,11 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 
 | État éditorial | Nombre |
 | --- | ---: |
-| À intégrer | 9 |
+| À intégrer | 8 |
 | À qualifier | 24 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 1 |
+| Intégration achevée | 2 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 5 |
 | Doublon conservé | 0 |
@@ -25,11 +25,11 @@ Couverture : **Pistes sourcées ; compléments locaux requis**. Observations ext
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **0 publiés**, **9 masqués à intégrer**, **5 masqués NotRelevant à réexaminer**, **21 candidats sans fiche**.
+Parcs : **0 publiés**, **8 masqués à intégrer**, **5 masqués NotRelevant à réexaminer**, **21 candidats sans fiche**.
 
-Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **3 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **2 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **3 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **3 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **3 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **2 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **3 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -62,7 +62,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | SK-park-65adf2a3-25b8-41e1-8886-62de562d00ae | Ski Bachledova | Ždiar, région de Prešov | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégrer éditorialement le domaine Bachledka Ski & Sun sur cette fiche Park masquée. Sa luge alpine Bobová dráha Bachledka est publiée séparément comme standalone (SK-candidate-37f6a177200aa3) : conserver le lien, éviter de recréer la même attraction. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [Exploitant — domaine et luge alpine](https://bachledka.sk/bobova-draha) |
 | SK-candidate-7c0ead34ac12fc | Spa & Aquapark Turčianske Teplice | Turčianske Teplice | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Slovakia) |
 | SK-candidate-4f9a89b9c3c950 | Spišská Nová Ves Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Slovakia) |
-| SK-park-c0d9c7fa-c8fa-435b-b24b-659217ab68be | Tatrabob Tatranska Lomnica | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Installations référencées : Tatrabob. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/14791.htm) · [RCDB — Mountain Coaster](https://rcdb.com/14792.htm) |
+| SK-park-c0d9c7fa-c8fa-435b-b24b-659217ab68be | Tatrabob | Tatranská Lomnica, Vysoké Tatry | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T04:37:41.481Z | — | Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Fiche Park masquée avec un seul ParkItem Tatrabob et aucune zone ; billetterie autonome et site officiel Tatrabob. Migration vers StandaloneAttraction appliquée sans doublon, Park et ParkItem hérités retirés. Installations référencées : Tatrabob. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/14791.htm) · [RCDB — Mountain Coaster](https://rcdb.com/14792.htm) · [Source vérifiée — intégration standalone](https://www.tatrabob.sk/) · [Source vérifiée — intégration standalone](https://www.tatrabob.sk/specifications) · [Source vérifiée — intégration standalone](https://www.tatrabob.sk/pricelist) · [Source vérifiée — intégration standalone](https://www.tatrabob.sk/instructions) · [Source vérifiée — intégration standalone](https://www.tatrabob.sk/contact) · [Source vérifiée — intégration standalone](https://www.tatrabob.sk/gallery) · [Source vérifiée — intégration standalone](https://www.tatry.sk/bobova-draha-tatrabob/) · [Source vérifiée — intégration standalone](https://presovregion.travel/vylet/horska-draha-a-lukostrelba/) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob) |
 | SK-candidate-ea6bedc7032668 | Tatralandia | Liptovský Mikuláš, Slovakia | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/tatralandia-liptovsky-mikulas-slovakia) |
 | SK-park-929ca84a-089e-42b0-b5c7-18a46d7114ef | Tatrapolis Ostrov Fantázie | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/18314.htm) |
 | SK-candidate-f57d054e8379f0 | Tatrapolis Svet Miniatúr | Liptovský Mikuláš | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Slovakia) |
