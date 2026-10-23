@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "0138b13d-c4fa-48bf-869b-5bfb9367daa0",
+    "appliedAtUtc": "2026-10-23T06:49:05.2996858Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "bcf94dd3-4fd7-45df-b4e1-4b7329f15c35",
+    "appliedAtUtc": "2026-10-23T06:51:04.4960859Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "e0ee6faf-70fb-4173-8fb6-20a9860d3f64",
+    "appliedAtUtc": "2026-10-23T06:51:33.2622321Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "fab0858f-ba32-4f55-bc53-ceb7ef24daa5",
+    "appliedAtUtc": "2026-10-23T06:51:56.8419436Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "dd96953e-b6ed-4244-8c5e-6987b3c08495",
+    "appliedAtUtc": "2026-10-23T06:52:27.0627832Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05b-image-credits.apply",
+    "operationId": "b3c32f9b-8d4d-466c-a1d8-158aa5a3e3a3",
+    "appliedAtUtc": "2026-10-23T06:53:55.114302Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "56bf5e81-9601-4bc5-beb3-cf32ed74bce9",
+    "appliedAtUtc": "2026-10-23T06:55:08.0974881Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "db3cf5ee-9695-4f5e-a11d-de2d894d4e5c",
+    "appliedAtUtc": "2026-10-23T06:55:43.0432102Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "23215d1e-87c0-4ce4-bcaa-3b4913fdb1df",
+    "appliedAtUtc": "2026-10-23T06:56:07.5212252Z",
+    "targetStandaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "1769084c6e5343a0a1f362df250af0a3",
+    "ownerId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb.jpg",
+    "updatedAt": "2026-10-23T06:49:41.342Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "679019e08b8a4d5d98bc0ec3255fa17e",
+    "ownerId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb,_2.jpg",
+    "updatedAt": "2026-10-23T06:50:02.836Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "5c1f2ef5a611458e91eaa2bd56c9bb21",
+    "ownerId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb,_5.jpg",
+    "updatedAt": "2026-10-23T06:50:19.525Z",
+    "isPublished": false
+  }
+]
