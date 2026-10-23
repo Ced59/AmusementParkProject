@@ -170,26 +170,190 @@
     },
     {
       "entryId": "SK-candidate-37f6a177200aa3",
-      "name": "Bachledka Ski & Sun",
-      "entityKind": "ToQualify",
+      "name": "Bobová dráha Bachledka",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB)",
-      "locality": "Ždiar , Prešov",
-      "siteId": null,
+      "category": "Luge alpine sur rails (mountain coaster)",
+      "locality": "Ždiar, région de Prešov",
+      "siteId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T04:01:11.306Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Attraction avec billet propre identifiée ; fiche Park cachée du domaine conservée séparément",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Bobová Dráha",
+        "Bachledka Ski & Sun"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T03:59:55.105Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-dfd0826e-c2b5-42bc-b231-9ab990dad97e",
+          "appliedAt": "2026-10-23T03:47:30.687Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:dfd0826e-c2b5-42bc-b231-9ab990dad97e",
+          "auditEvidence": null,
+          "summary": "Création source officielle de Bobová dráha Bachledka comme attraction standalone distincte du domaine skiable masqué."
+        },
+        {
+          "eventId": "apply-536d9b2e-a08e-46a3-b0f2-b6ada7a1a48f",
+          "appliedAt": "2026-10-23T03:48:41.110Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:536d9b2e-a08e-46a3-b0f2-b6ada7a1a48f",
+          "auditEvidence": null,
+          "summary": "Horaires du domaine distingués de la disponibilité réelle de la piste."
+        },
+        {
+          "eventId": "apply-5af39e67-bb4f-4383-a2c4-3c8ea5699abe",
+          "appliedAt": "2026-10-23T03:49:05.090Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:5af39e67-bb4f-4383-a2c4-3c8ea5699abe",
+          "auditEvidence": null,
+          "summary": "Billet spécifique de la piste, tarif variable et promotion matinale datée documentés."
+        },
+        {
+          "eventId": "apply-a11a778c-1cd9-4864-aac7-a5c5e110394b",
+          "appliedAt": "2026-10-23T03:49:37.127Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:a11a778c-1cd9-4864-aac7-a5c5e110394b",
+          "auditEvidence": null,
+          "summary": "Conditions officielles d’accès enfants, charge maximale et formulaire obligatoire."
+        },
+        {
+          "eventId": "image-cfbf80d32cc04ea48d4e60e43a7d90d0",
+          "appliedAt": "2026-10-23T03:50:09.450Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:image:cfbf80d32cc04ea48d4e60e43a7d90d0",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-df931aaead0e43bf935239200ef6dd46",
+          "appliedAt": "2026-10-23T03:50:26.302Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:image:df931aaead0e43bf935239200ef6dd46",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-50b0faab22c24921934d6e92ed4db924",
+          "appliedAt": "2026-10-23T03:50:42.541Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:image:50b0faab22c24921934d6e92ed4db924",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-569b25e0-a2c8-4ee6-ba4e-66b7dc443b2b",
+          "appliedAt": "2026-10-23T03:51:49.076Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:569b25e0-a2c8-4ee6-ba4e-66b7dc443b2b",
+          "auditEvidence": null,
+          "summary": "Historique sourcé de la réouverture du 8 août 2026 et article en huit langues."
+        },
+        {
+          "eventId": "apply-3399aea5-3cc1-4b02-a2b9-eea149b4b85f",
+          "appliedAt": "2026-10-23T03:53:44.826Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:3399aea5-3cc1-4b02-a2b9-eea149b4b85f",
+          "auditEvidence": null,
+          "summary": "Légendes photographiques distinctes des textes alternatifs, relues dans huit langues."
+        },
+        {
+          "eventId": "apply-dd542ebe-0dae-40ea-9267-67c2adb12e73",
+          "appliedAt": "2026-10-23T03:54:35.086Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:dd542ebe-0dae-40ea-9267-67c2adb12e73",
+          "auditEvidence": null,
+          "summary": "Crédits image individualisés pour distinguer les trois photographies du domaine."
+        },
+        {
+          "eventId": "apply-b1a23364-fe33-4ae0-a031-476b6a441aab",
+          "appliedAt": "2026-10-23T03:55:24.415Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:b1a23364-fe33-4ae0-a031-476b6a441aab",
+          "auditEvidence": null,
+          "summary": "Résumé d’article historique distinct de la chronologie et relu dans huit langues."
+        },
+        {
+          "eventId": "apply-1a0cbd36-5ed4-4b9b-9326-de062b503b95",
+          "appliedAt": "2026-10-23T03:57:16.890Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:1a0cbd36-5ed4-4b9b-9326-de062b503b95",
+          "auditEvidence": null,
+          "summary": "Publication des trois photographies officielles de la piste."
+        },
+        {
+          "eventId": "apply-5ddc14c0-cf17-44eb-b4ce-d60f443b09f9",
+          "appliedAt": "2026-10-23T03:57:44.467Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:5ddc14c0-cf17-44eb-b4ce-d60f443b09f9",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie et de l’article sourcé sur la réouverture."
+        },
+        {
+          "eventId": "apply-7bf50482-cffe-4cae-a38c-158df6fe00f8",
+          "appliedAt": "2026-10-23T03:58:08.580Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:7bf50482-cffe-4cae-a38c-158df6fe00f8",
+          "auditEvidence": null,
+          "summary": "Publication de Bobová dráha Bachledka après audit de complétude sans blocage."
+        },
+        {
+          "eventId": "apply-bb0de98e-33cc-46ee-bba0-2810f9219c76",
+          "appliedAt": "2026-10-23T03:59:55.105Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:bb0de98e-33cc-46ee-bba0-2810f9219c76",
+          "auditEvidence": null,
+          "summary": "Correction de l’association des légendes et crédits aux photos passagers et tracé."
+        },
+        {
+          "eventId": "closure-apply-bb0de98e-33cc-46ee-bba0-2810f9219c76",
+          "appliedAt": "2026-10-23T03:59:55.105Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:bb0de98e-33cc-46ee-bba0-2810f9219c76",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sk-20261023/bachledka-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 76/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "RCDB",
@@ -200,11 +364,41 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13046.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.sk/bobova-draha",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.sk/najdlhsia-bobova-draha-v-tatrach-je-spat-otvarame-zrekonstruovanu-adrenalinovu-atrakciu-a-uplne-novu-gulockovu-drahu",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.sk/formular-na-jazdu-bobovou-drahou",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.sk/wp-content/uploads/2015/12/Podmienky_pouzivania_bobovej_drahy_PREVADZKOVY_PORIADOK_SK.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.skiperformance.com/sk/product/vstupenky/bobova-draha/5709/34694",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Bobová Dráha",
@@ -217,7 +411,30 @@
             "sourceOpenedYear": "2011"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billet et page officiels propres à la piste. Parcours dans Bachledka Ski & Sun, dont la coquille Park masquée Ski Bachledova (65adf2a3-25b8-41e1-8886-62de562d00ae) reste dans le backlog pour intégration du domaine ; aucune migration ni fermeture de cette coquille. La date du 8 août 2026 est une réouverture après prolongation, non une ouverture initiale."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+          "publishedAtUtc": "2026-10-23T03:58:08.5800513Z",
+          "verifiedAtUtc": "2026-10-23T04:01:11.306Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7bf50482-cffe-4cae-a38c-158df6fe00f8"
+        },
+        "facebook": {
+          "id": "4398965538654f76927ad2410b316465",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T04:00:25.6815559Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124237021424431",
+          "externalPostId": "1285475681307050_122124237021424431",
+          "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka?facebook-image=cfbf80d32cc04ea48d4e60e43a7d90d0"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sk-20261023/bachledka-audit.json",
+        "score": 76,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -898,7 +1115,7 @@
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": null,
-      "locality": null,
+      "locality": "Ždiar, région de Prešov",
       "siteId": "65adf2a3-25b8-41e1-8886-62de562d00ae",
       "legacySiteIds": [],
       "presence": "Hidden",
@@ -909,16 +1126,23 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Bachledka Ski & Sun"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Intégrer éditorialement le domaine Bachledka Ski & Sun sur cette fiche Park masquée. Sa luge alpine Bobová dráha Bachledka est publiée séparément comme standalone (SK-candidate-37f6a177200aa3) : conserver le lien, éviter de recréer la même attraction.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — domaine et luge alpine",
+          "url": "https://bachledka.sk/bobova-draha",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "SK",
