@@ -1,0 +1,314 @@
+{
+  "name": "London Eye",
+  "standaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+  "qualification": "Grande roue panoramique autonome à billet propre sur South Bank. Recherches officielles dans Park et StandaloneAttraction pour London Eye en GB et Millennium Wheel sans pays : aucune correspondance. Coordonnées OpenStreetMap du contour de l’attraction, distinctes de l’arrêt de bus homonyme.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 88,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 2,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 0,
+    "admissionOffers": 3
+  },
+  "gaps": [
+    "L’exploitant publie un calendrier saisonnier et ferme pendant la maintenance annuelle de janvier. Aucune règle hebdomadaire permanente n’est structurée : les visiteurs doivent consulter le calendrier officiel pour leur date. Les horaires des 23 et 24 octobre 2026 sont une observation datée, pas une promesse annuelle.",
+    "Les prix en ligne sont dynamiques et les montants indiqués sont des minimums affichés le 23 octobre 2026. Les prix au guichet sont séparés ; le prix final et la disponibilité doivent être vérifiés avant achat.",
+    "Le fabricant industriel précis et le modèle des cabines ne sont pas attribués faute de source primaire ; Marks et Barfield sont les concepteurs, pas un fabricant inventé."
+  ],
+  "sources": [
+    "https://www.londoneye.com/",
+    "https://www.londoneye.com/about-us/history/",
+    "https://www.londoneye.com/25th-anniversary/timeline/",
+    "https://www.londoneye.com/tickets-and-prices/entry-tickets/",
+    "https://www.londoneye.com/plan-your-visit/before-you-visit/opening-hours/",
+    "https://www.londoneye.com/plan-your-visit/before-you-visit/directions/",
+    "https://www.londoneye.com/plan-your-visit/information-and-support/faqs/",
+    "https://www.londoneye.com/our-company/blog/london-eye-facts/",
+    "https://www.openstreetmap.org/way/204068874"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T01:22:55.154391+00:00",
+    "exportSha256": "0c7f15b0c879c53b4a76fdeb9748f1db4c66ce49151f9e8b0cbb8b82a97e99cd",
+    "localizedStringsReviewed": 256,
+    "localizedGroups": 32,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : récit du London Eye, dates distinctes de cérémonie et d’ouverture, tarifs variables, conditions d’accès et crédits des trois photographies. Aucun fabricant attribué sans preuve."
+  },
+  "idempotenceCheck": {
+    "operationId": "aa870ee6-aae6-4428-b386-4286b49d2f47",
+    "previewedAtUtc": "2026-10-23T01:23:20.1035036Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 6,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-23T01:26:06.647817+00:00",
+  "facebook": {
+    "id": "eba0bca372e547bb970116d0d0332210",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T01:27:16.4003863Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124226443424431",
+    "externalPostId": "1285475681307050_122124226443424431",
+    "url": "https://amusement-parks.fun/fr/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye?facebook-image=15187974c8a440c8828bbc4c36b50416"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T01:26:06.647817+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T01:25:31.477900+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history/75451517-291b-4f3f-b264-776fb9b42062/ouverture-london-eye-2000",
+            "status": 200,
+            "textLength": 1637,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 521
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history/75451517-291b-4f3f-b264-776fb9b42062/ouverture-london-eye-2000",
+            "status": 200,
+            "textLength": 1462,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 447
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history/75451517-291b-4f3f-b264-776fb9b42062/ouverture-london-eye-2000",
+            "status": 200,
+            "textLength": 1550,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 554
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history/75451517-291b-4f3f-b264-776fb9b42062/ouverture-london-eye-2000",
+            "status": 200,
+            "textLength": 1465,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 532
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history/75451517-291b-4f3f-b264-776fb9b42062/ouverture-london-eye-2000",
+            "status": 200,
+            "textLength": 1482,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 496
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history/75451517-291b-4f3f-b264-776fb9b42062/ouverture-london-eye-2000",
+            "status": 200,
+            "textLength": 1469,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 501
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history/75451517-291b-4f3f-b264-776fb9b42062/ouverture-london-eye-2000",
+            "status": 200,
+            "textLength": 1342,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 503
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye/history/75451517-291b-4f3f-b264-776fb9b42062/ouverture-london-eye-2000",
+            "status": 200,
+            "textLength": 1406,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 519
+      }
+    ]
+  }
+}

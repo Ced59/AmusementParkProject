@@ -7908,25 +7908,160 @@
     {
       "entryId": "GB-candidate-1846c28620b223",
       "name": "London Eye",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier / Standalone",
-      "locality": "South Bank , Lambeth , London",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "South Bank, Lambeth, London",
+      "siteId": "1950afc0-e443-4031-a325-707feda5a8e8",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T01:26:06.647Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Millennium Wheel",
+        "British Airways London Eye",
+        "Coca-Cola London Eye"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T01:25:18.938Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-29a2ec89-93b5-4440-9019-468ef6407f80",
+          "appliedAt": "2026-10-23T01:17:01.239Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:29a2ec89-93b5-4440-9019-468ef6407f80",
+          "auditEvidence": null,
+          "summary": "Création du London Eye comme attraction autonome, avec descriptions localisées et caractéristiques officielles"
+        },
+        {
+          "eventId": "apply-acbc0895-0f6d-48da-acc5-487347153ca0",
+          "appliedAt": "2026-10-23T01:18:30.438Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:acbc0895-0f6d-48da-acc5-487347153ca0",
+          "auditEvidence": null,
+          "summary": "Horaires saisonniers documentés sans inventer de semaine permanente"
+        },
+        {
+          "eventId": "apply-527d5010-5708-4361-8166-bc7df50b30c9",
+          "appliedAt": "2026-10-23T01:19:33.200Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:527d5010-5708-4361-8166-bc7df50b30c9",
+          "auditEvidence": null,
+          "summary": "Billets officiels : prix en ligne variables, tarifs au guichet et gratuité des moins de deux ans"
+        },
+        {
+          "eventId": "apply-1816c809-c3cd-40b0-9e34-1c875fca55b7",
+          "appliedAt": "2026-10-23T01:19:59.913Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:1816c809-c3cd-40b0-9e34-1c875fca55b7",
+          "auditEvidence": null,
+          "summary": "Conditions officielles : accompagnement des mineurs et accessibilité des cabines"
+        },
+        {
+          "eventId": "apply-71724553-48ce-4383-b4df-8bcced2e9e1c",
+          "appliedAt": "2026-10-23T01:20:24.541Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:71724553-48ce-4383-b4df-8bcced2e9e1c",
+          "auditEvidence": null,
+          "summary": "Date d’ouverture publique du 9 mars 2000 et durée de rotation officielle"
+        },
+        {
+          "eventId": "image-15187974c8a440c8828bbc4c36b50416",
+          "appliedAt": "2026-10-23T01:20:45.586Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:image:15187974c8a440c8828bbc4c36b50416",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-9f80fe037fe648bb84d765ef8d13f67e",
+          "appliedAt": "2026-10-23T01:21:02.850Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:image:9f80fe037fe648bb84d765ef8d13f67e",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-f297e3825c7146e79f3f114b72b265a5",
+          "appliedAt": "2026-10-23T01:21:21.568Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:image:f297e3825c7146e79f3f114b72b265a5",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-f5d07117-83f9-498d-9dfa-53e64909e439",
+          "appliedAt": "2026-10-23T01:22:12.611Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:f5d07117-83f9-498d-9dfa-53e64909e439",
+          "auditEvidence": null,
+          "summary": "Article historique en huit langues : concours, construction et ouverture au public"
+        },
+        {
+          "eventId": "apply-677983b0-a539-49bb-a1e2-0f884f5ed5fc",
+          "appliedAt": "2026-10-23T01:24:15.200Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:677983b0-a539-49bb-a1e2-0f884f5ed5fc",
+          "auditEvidence": null,
+          "summary": "Publication des trois photographies officielles, dont le chantier crédité Lisa Young"
+        },
+        {
+          "eventId": "apply-91ac9570-cc50-4be3-a4e0-a861679694dc",
+          "appliedAt": "2026-10-23T01:24:55.668Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:91ac9570-cc50-4be3-a4e0-a861679694dc",
+          "auditEvidence": null,
+          "summary": "Publication de l’histoire du London Eye et de son article dans huit langues"
+        },
+        {
+          "eventId": "apply-d2e6de29-1916-4ea8-9464-b387eff3b6c6",
+          "appliedAt": "2026-10-23T01:25:18.938Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:d2e6de29-1916-4ea8-9464-b387eff3b6c6",
+          "auditEvidence": null,
+          "summary": "Fiche London Eye validée et rendue publique"
+        },
+        {
+          "eventId": "closure-apply-d2e6de29-1916-4ea8-9464-b387eff3b6c6",
+          "appliedAt": "2026-10-23T01:25:18.938Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1950afc0-e443-4031-a325-707feda5a8e8",
+          "evidence": "PARK_DATA_EDITOR:apply:d2e6de29-1916-4ea8-9464-b387eff3b6c6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-20261023/londoneye-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 88/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
@@ -7937,13 +8072,91 @@
           "label": "Site officiel (attraction autonome)",
           "url": "https://www.londoneye.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.londoneye.com/about-us/history/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.londoneye.com/25th-anniversary/timeline/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.londoneye.com/tickets-and-prices/entry-tickets/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.londoneye.com/plan-your-visit/before-you-visit/opening-hours/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.londoneye.com/plan-your-visit/before-you-visit/directions/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.londoneye.com/plan-your-visit/information-and-support/faqs/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.londoneye.com/our-company/blog/london-eye-facts/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/204068874",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
+        "attractions": [
+          {
+            "name": "London Eye",
+            "source": "London Eye — History and Facts",
+            "url": "https://www.londoneye.com/about-us/history/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "London Eye",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "South Bank, London"
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-d2e6de29-1916-4ea8-9464-b387eff3b6c6 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye",
+          "publishedAtUtc": "2026-10-23T01:25:18.9380377Z",
+          "verifiedAtUtc": "2026-10-23T01:26:06.647Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d2e6de29-1916-4ea8-9464-b387eff3b6c6"
+        },
+        "facebook": {
+          "id": "eba0bca372e547bb970116d0d0332210",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T01:27:16.4003863Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124226443424431",
+          "externalPostId": "1285475681307050_122124226443424431",
+          "url": "https://amusement-parks.fun/fr/attraction/1950afc0-e443-4031-a325-707feda5a8e8/london-eye?facebook-image=15187974c8a440c8828bbc4c36b50416"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-20261023/londoneye-audit.json",
+        "score": 88,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
