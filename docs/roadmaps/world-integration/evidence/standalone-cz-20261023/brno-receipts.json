@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "99500c78-4cbb-46d1-a6b5-6c56eeef4092",
+    "appliedAtUtc": "2026-10-23T05:39:56.7128879Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "01b-copyfix.apply",
+    "operationId": "b5af657e-df5b-4c26-90fc-8afb14850ba6",
+    "appliedAtUtc": "2026-10-23T05:46:28.9267144Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "1737011d-a8e0-4c97-8a50-7fa230c7a197",
+    "appliedAtUtc": "2026-10-23T05:40:38.9798348Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "7c6a7396-b626-4727-8f70-b486c8f7fc41",
+    "appliedAtUtc": "2026-10-23T05:41:02.5468122Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "f8bf9243-5ee8-4c61-98b9-b0f98e7ea860",
+    "appliedAtUtc": "2026-10-23T05:41:37.515237Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "658f462a-4024-43ac-a4c3-33aaa48543b4",
+    "appliedAtUtc": "2026-10-23T05:44:10.2639218Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "5f05eeb3-bf39-422e-8c6c-fb34ba98d52e",
+    "appliedAtUtc": "2026-10-23T05:49:00.4006098Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "2c79ad95-8d07-4cad-8792-b5da10e9452a",
+    "appliedAtUtc": "2026-10-23T05:49:24.7033904Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "ccf2dc7a-645a-4a90-b2e4-197132fd7bc8",
+    "appliedAtUtc": "2026-10-23T05:49:48.6882568Z",
+    "targetStandaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "b1b00318b89d458f86662009757e344b",
+    "ownerId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "sourceUrl": "https://bobovkabrno.cz/wp-content/uploads/2026/05/bobovka-brno-2.jpeg",
+    "updatedAt": "2026-10-23T05:42:36.623Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "c2a2f10c14714bdbbbfd57e5d379b47d",
+    "ownerId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "sourceUrl": "https://bobovkabrno.cz/wp-content/uploads/2026/05/bobovka-brno-1.jpeg",
+    "updatedAt": "2026-10-23T05:43:21.548Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "19bd633fca0a47ffb735c85d43adaa5a",
+    "ownerId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+    "sourceUrl": "https://bobovkabrno.cz/wp-content/uploads/2026/05/bobovka-brno-3.jpeg",
+    "updatedAt": "2026-10-23T05:43:41.824Z",
+    "isPublished": false
+  }
+]

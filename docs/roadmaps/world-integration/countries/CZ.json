@@ -1861,25 +1861,164 @@
     {
       "entryId": "CZ-park-66243ab8-bdb3-43ae-8409-81fc0310c56f",
       "name": "Bobovka u mlýna",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "66243ab8-bdb3-43ae-8409-81fc0310c56f",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "Brno-Líšeň, Moravie du Sud",
+      "siteId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+      "legacySiteIds": [
+        "66243ab8-bdb3-43ae-8409-81fc0310c56f"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T05:50:54.649Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identité et autonomie confirmées ; migration appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Bobovka u mlýna",
+        "Alpine Coaster",
+        "Bobovka Brno",
+        "Bobová dráha Brno",
+        "Alpine Coaster Brno"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T05:49:48.688Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-99500c78-4cbb-46d1-a6b5-6c56eeef4092",
+          "appliedAt": "2026-10-23T05:39:56.712Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:99500c78-4cbb-46d1-a6b5-6c56eeef4092",
+          "auditEvidence": null,
+          "summary": "Migration du Park masqué de Brno-Líšeň et de son unique piste vers une fiche standalone sourcée."
+        },
+        {
+          "eventId": "apply-1737011d-a8e0-4c97-8a50-7fa230c7a197",
+          "appliedAt": "2026-10-23T05:40:38.979Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:1737011d-a8e0-4c97-8a50-7fa230c7a197",
+          "auditEvidence": null,
+          "summary": "Horaires actuels de Brno vérifiés sur la page contact officielle, avec réserve météo et rendez-vous."
+        },
+        {
+          "eventId": "apply-7c6a7396-b626-4727-8f70-b486c8f7fc41",
+          "appliedAt": "2026-10-23T05:41:02.546Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:7c6a7396-b626-4727-8f70-b486c8f7fc41",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels par personne et validité de trente jours intégrés."
+        },
+        {
+          "eventId": "apply-f8bf9243-5ee8-4c61-98b9-b0f98e7ea860",
+          "appliedAt": "2026-10-23T05:41:37.515Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:f8bf9243-5ee8-4c61-98b9-b0f98e7ea860",
+          "auditEvidence": null,
+          "summary": "Règles enfants, sobriété et sécurité de la piste intégrées."
+        },
+        {
+          "eventId": "image-b1b00318b89d458f86662009757e344b",
+          "appliedAt": "2026-10-23T05:42:36.623Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:image:b1b00318b89d458f86662009757e344b",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-c2a2f10c14714bdbbbfd57e5d379b47d",
+          "appliedAt": "2026-10-23T05:43:21.548Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:image:c2a2f10c14714bdbbbfd57e5d379b47d",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-19bd633fca0a47ffb735c85d43adaa5a",
+          "appliedAt": "2026-10-23T05:43:41.824Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:image:19bd633fca0a47ffb735c85d43adaa5a",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-658f462a-4024-43ac-a4c3-33aaa48543b4",
+          "appliedAt": "2026-10-23T05:44:10.263Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:658f462a-4024-43ac-a4c3-33aaa48543b4",
+          "auditEvidence": null,
+          "summary": "Chronologie de l’ouverture officielle du 26 décembre 2016 après essais gratuits, avec article en huit langues."
+        },
+        {
+          "eventId": "apply-b5af657e-df5b-4c26-90fc-8afb14850ba6",
+          "appliedAt": "2026-10-23T05:46:28.926Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:b5af657e-df5b-4c26-90fc-8afb14850ba6",
+          "auditEvidence": null,
+          "summary": "Révision des descriptions française et anglaise afin de garder une narration claire et publiable."
+        },
+        {
+          "eventId": "apply-5f05eeb3-bf39-422e-8c6c-fb34ba98d52e",
+          "appliedAt": "2026-10-23T05:49:00.400Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:5f05eeb3-bf39-422e-8c6c-fb34ba98d52e",
+          "auditEvidence": null,
+          "summary": "Publication des trois photographies officielles sourcées et créditées."
+        },
+        {
+          "eventId": "apply-2c79ad95-8d07-4cad-8792-b5da10e9452a",
+          "appliedAt": "2026-10-23T05:49:24.703Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:2c79ad95-8d07-4cad-8792-b5da10e9452a",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie et de l’article en huit langues."
+        },
+        {
+          "eventId": "apply-ccf2dc7a-645a-4a90-b2e4-197132fd7bc8",
+          "appliedAt": "2026-10-23T05:49:48.688Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:ccf2dc7a-645a-4a90-b2e4-197132fd7bc8",
+          "auditEvidence": null,
+          "summary": "Publication de la fiche standalone validée."
+        },
+        {
+          "eventId": "closure-apply-ccf2dc7a-645a-4a90-b2e4-197132fd7bc8",
+          "appliedAt": "2026-10-23T05:49:48.688Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+          "evidence": "PARK_DATA_EDITOR:apply:ccf2dc7a-645a-4a90-b2e4-197132fd7bc8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cz-20261023/brno-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 98/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1895,13 +2034,53 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14749.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bobovkabrno.cz/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bobovkabrno.cz/cenik/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bobovkabrno.cz/kontakt/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bobovkabrno.cz/galerie/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.idnes.cz/brno/zpravy/bobova-draha-brno-otevreni.A161218_181438_brno-zpravy_bur",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.turistika.cz/mista/bobovka-u-mlyna/detail",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.kadlcuvmlyn.cz/bobovka/bobovka-u-mlyna",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "CZ",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Bobovka",
@@ -1914,7 +2093,30 @@
             "sourceOpenedYear": "2016"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Ancien Park masqué avec un seul ParkItem Bobovka. Le site vend sa piste indépendamment ; le moulin voisin et la piste Němčičky du même exploitant ne sont pas la même destination. Essais le 17 décembre 2016 et ouverture au public le 26 décembre documentés ; migration appliquée sans doublon."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+          "publishedAtUtc": "2026-10-23T05:49:48.6882568Z",
+          "verifiedAtUtc": "2026-10-23T05:50:54.649Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ccf2dc7a-645a-4a90-b2e4-197132fd7bc8"
+        },
+        "facebook": {
+          "id": "fbc33829623f43128403b2e92f813e41",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T05:51:13.1487009Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124247287424431",
+          "externalPostId": "1285475681307050_122124247287424431",
+          "url": "https://amusement-parks.fun/fr/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna?facebook-image=b1b00318b89d458f86662009757e344b"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-20261023/brno-audit.json",
+        "score": 98,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
