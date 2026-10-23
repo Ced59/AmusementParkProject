@@ -1,0 +1,154 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "3c5d258b-387c-4acf-8350-44fb8ea690ac",
+    "appliedAtUtc": "2026-10-23T08:19:57.0575434Z",
+    "targetStandaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "4b28f746-47d6-4a14-8d0a-4845a4f23e9b",
+    "appliedAtUtc": "2026-10-23T08:20:37.7802001Z",
+    "targetStandaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "b27b5479-0e8c-4ef3-918c-c3f57c982e6e",
+    "appliedAtUtc": "2026-10-23T08:21:01.2364386Z",
+    "targetStandaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "0e1ba414-9a18-4b9f-a2f7-0343f386e2ed",
+    "appliedAtUtc": "2026-10-23T08:21:24.4537089Z",
+    "targetStandaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "754cb2da-f9e8-4ec2-851e-1d4c23c79736",
+    "appliedAtUtc": "2026-10-23T08:23:24.9381016Z",
+    "targetStandaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "f88dd41a-ba39-4409-b254-e13cc3150e74",
+    "appliedAtUtc": "2026-10-23T08:25:06.143816Z",
+    "targetStandaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "b8868e08-a6ea-4829-b4be-6274b6386a32",
+    "appliedAtUtc": "2026-10-23T08:25:31.5362859Z",
+    "targetStandaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "ed7bd039-6265-464b-a259-d3b65ddf829b",
+    "appliedAtUtc": "2026-10-23T08:26:00.4865223Z",
+    "targetStandaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "0e7b838ae4ee4326923bacb3500bccd4",
+    "ownerId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:This_is_Holland_20240509.jpg",
+    "updatedAt": "2026-10-23T08:21:58.474Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "a393c9e3ddf245bb97c763de3b53a86b",
+    "ownerId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2023_Overhoeksplein,_Asd-This_is_Holland.jpg",
+    "updatedAt": "2026-10-23T08:22:15.685Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "2fe6a1de322943af962ea7ae4a478e95",
+    "ownerId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:This_Is_Holland_21.JPG",
+    "updatedAt": "2026-10-23T08:22:41.387Z",
+    "isPublished": false
+  }
+]
