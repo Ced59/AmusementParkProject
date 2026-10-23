@@ -1,0 +1,85 @@
+{
+  "entryId": "FR-park-6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+  "parkId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+  "name": "Magic City Paris",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "import-photo-5e10699d443946e4bca9368d9f46e16d-2026-10-23T073427.446Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T07:34:27.446Z",
+      "appliedAt": "2026-10-23T07:34:27.446Z",
+      "receiptFile": "photo-01-cascade-descent-import-receipt.json",
+      "receiptSha256": "2152a66ac4c5b7d3e618b55d1724338f976e5c93ab495427f4c663dc7f86ff18",
+      "imageId": "5e10699d443946e4bca9368d9f46e16d",
+      "ownerId": "4249fc07-d0d5-49fa-a491-abc1e0eccbd6",
+      "createdAt": "2026-10-23T07:34:23.679Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/92/Magic_City%2C_Paris%2C_1913.jpeg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "summary": "Import privé du média historique photo-01-cascade-descent, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b98d7664caa449969b41470fb1490ad0-2026-10-23T073442.556Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T07:34:42.556Z",
+      "appliedAt": "2026-10-23T07:34:42.556Z",
+      "receiptFile": "photo-02-cascade-arrival-import-receipt.json",
+      "receiptSha256": "93a31e272a0b062c278e54fba2043690848c2e935bfbb1c449d6d3907daa0acf",
+      "imageId": "b98d7664caa449969b41470fb1490ad0",
+      "ownerId": "4249fc07-d0d5-49fa-a491-abc1e0eccbd6",
+      "createdAt": "2026-10-23T07:34:38.937Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Magic_City4%2C_Paris%2C_1913.jpeg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "summary": "Import privé du média historique photo-02-cascade-arrival, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e545f053ec3b4aa980d065859ec3f8e9-2026-10-23T073456.944Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T07:34:56.944Z",
+      "appliedAt": "2026-10-23T07:34:56.944Z",
+      "receiptFile": "photo-03-ballroom-tango-import-receipt.json",
+      "receiptSha256": "0640675be8ba12fc6fe03f9ca9fc7b5edfca22e4cc1fdfab196a35ca7f0e5b74",
+      "imageId": "e545f053ec3b4aa980d065859ec3f8e9",
+      "ownerId": "b759a602-71c6-4778-af30-92b32c95a769",
+      "createdAt": "2026-10-23T07:34:53.516Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Salle_de_bal_de_Magic_City.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "summary": "Import privé du média historique photo-03-ballroom-tango, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-9f68d226431a4a0999e20f59d6f8f89a-2026-10-23T073514.260Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T07:35:14.26Z",
+      "appliedAt": "2026-10-23T07:35:14.260Z",
+      "receiptFile": "photo-04-park-panorama-import-receipt.json",
+      "receiptSha256": "59e462542d631709b7c8ee0472f0cd28b68590a8b4e5a722c39ef4bd3be8be53",
+      "imageId": "9f68d226431a4a0999e20f59d6f8f89a",
+      "ownerId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+      "createdAt": "2026-10-23T07:35:10.617Z",
+      "sourceUrl": "https://www.bibletango.com/tangoiconographie/imaglieu/imalieu_m/basimalieu_m/magic_city/Magic-City.%20Vue%20g%C3%A9n%C3%A9rale_438%202.png",
+      "summary": "Import privé du média historique photo-04-park-panorama, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-87604a7b-dd62-45a0-a156-c9bb8d9cb444",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:43:55.4913644Z",
+      "appliedAt": "2026-10-23T07:43:55.491Z",
+      "receiptFile": "03-qualified-inventory-v2-apply.receipt.json",
+      "receiptSha256": "e3a2ad185b680363d6d0de070c122092bda6cd0a524ed875559a9b22999df0b5",
+      "counts": {
+        "created": 19,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.externalSource",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Inventaire historique : dix-neuf lieux qualifiés ajoutés en privé, cinq identifiants existants conservés. Descriptions, médias et audit final restent à terminer."
+    }
+  ],
+  "publicationOrNoop": []
+}

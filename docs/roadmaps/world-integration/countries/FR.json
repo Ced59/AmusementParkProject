@@ -15021,7 +15021,7 @@
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "ClosedDefinitively",
       "sourceLifecycleSignal": "Non vérifié",
@@ -15031,9 +15031,480 @@
         "Luna Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "lastDataIntegrationAt": "2026-10-23T03:31:47.835Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-265743c7-e9d0-46b6-9f7f-3cffff8d932e",
+          "appliedAt": "2026-10-23T01:36:49.924Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-265743c7-e9d0-46b6-9f7f-3cffff8d932e",
+          "auditEvidence": null,
+          "summary": "Luna Park Paris : référence du cofondateur Gaston Akoun vérifiée et rattachée, identité existante conservée ; intégration partielle."
+        },
+        {
+          "eventId": "apply-48f48e01-c73c-4325-b5bc-af2c8ea97192",
+          "appliedAt": "2026-10-23T01:43:27.914Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-48f48e01-c73c-4325-b5bc-af2c8ea97192",
+          "auditEvidence": null,
+          "summary": "Luna Park Paris : inventaire historique porté à 25 éléments ; 18 ajouts, sept fiches conservées, Flying Turn identifié et constructeur Bartlett rattaché ; intégration partielle."
+        },
+        {
+          "eventId": "apply-6ba4e472-3e50-44e5-83f4-2a456855a03d",
+          "appliedAt": "2026-10-23T01:48:38.276Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-6ba4e472-3e50-44e5-83f4-2a456855a03d",
+          "auditEvidence": null,
+          "summary": "Luna Park Paris : descriptions du parc enrichies et relues dans huit langues, avec fondateurs, lieux nommés et distinction entre fermeture et démolition ; intégration partielle."
+        },
+        {
+          "eventId": "apply-e4d08079-a6dc-4842-8019-21f34cd13773",
+          "appliedAt": "2026-10-23T01:54:01.485Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-e4d08079-a6dc-4842-8019-21f34cd13773",
+          "auditEvidence": null,
+          "summary": "Luna Park Paris : 24 descriptions originales en huit langues pour Roues diaboliques, Roulette humaine et Flying Turn ; intégration partielle."
+        },
+        {
+          "eventId": "apply-0eaa4b72-fde1-4119-aaab-c53a496918aa",
+          "appliedAt": "2026-10-23T02:09:01.973Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-0eaa4b72-fde1-4119-aaab-c53a496918aa",
+          "auditEvidence": null,
+          "summary": "Water Chute et Scenic Railway enrichis ; Rivière Mystérieuse et couveuses décrites dans les huit langues, sources historiques vérifiées ; audit final restant."
+        },
+        {
+          "eventId": "apply-f872b022-68fd-438c-86d5-2a77ebb6c7af",
+          "appliedAt": "2026-10-23T02:14:02.048Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-f872b022-68fd-438c-86d5-2a77ebb6c7af",
+          "auditEvidence": null,
+          "summary": "Palais du Rire, Théâtre Tanagra et Crypte des Pharaons : 24 descriptions historiques relues et appliquées ; audit final restant."
+        },
+        {
+          "eventId": "apply-966287cd-566c-4cfa-a358-ccce4d5b0588",
+          "appliedAt": "2026-10-23T02:17:25.452Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-966287cd-566c-4cfa-a358-ccce4d5b0588",
+          "auditEvidence": null,
+          "summary": "Rink de 1909, Vélodrome du Rire et dancing : descriptions en huit langues appliquées, images historiques vérifiées ; audit final restant."
+        },
+        {
+          "eventId": "apply-9c09c2ac-3c79-44c5-95df-3243885cd7a3",
+          "appliedAt": "2026-10-23T02:21:23.734Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-9c09c2ac-3c79-44c5-95df-3243885cd7a3",
+          "auditEvidence": null,
+          "summary": "Notices des Gaufres Plouvier Fils, de l’entrée et de La Destruction de Johnstown appliquées en huit langues ; audit final restant."
+        },
+        {
+          "eventId": "apply-6c98613c-17b8-4059-8137-3b7f88ee0fa2",
+          "appliedAt": "2026-10-23T02:25:37.057Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-6c98613c-17b8-4059-8137-3b7f88ee0fa2",
+          "auditEvidence": null,
+          "summary": "Autodrome, Avions Bolides, Canots Automobiles et Ghost Train : notices sourcées en huit langues appliquées ; audit final restant."
+        },
+        {
+          "eventId": "apply-467fd162-5ca4-41a2-ae2e-e652db973252",
+          "appliedAt": "2026-10-23T02:28:17.333Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-467fd162-5ca4-41a2-ae2e-e652db973252",
+          "auditEvidence": null,
+          "summary": "Skooter, Théâtre Hollywood et Ménagerie Jouviano : huit langues appliquées, documentation publicitaire circonscrite ; audit final restant."
+        },
+        {
+          "eventId": "apply-318e2be4-1d3b-4c72-a2ab-dc7c025c88ab",
+          "appliedAt": "2026-10-23T02:29:28.198Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-318e2be4-1d3b-4c72-a2ab-dc7c025c88ab",
+          "auditEvidence": null,
+          "summary": "Tickler et Witching Waves réécrits en huit langues avec détails historiques précis ; les 25 fiches ont leurs descriptions, audit final restant."
+        },
+        {
+          "eventId": "import-photo-746c5c4bcdf94777b6a6f3f497f1a2e4-2026-10-23T023132.284Z",
+          "appliedAt": "2026-10-23T02:31:32.284Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-746c5c4bcdf94777b6a6f3f497f1a2e4-2026-10-23T023132.284Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-01-overview, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d62676658e244ddfabca2a32d869a1cc-2026-10-23T023152.815Z",
+          "appliedAt": "2026-10-23T02:31:52.815Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-d62676658e244ddfabca2a32d869a1cc-2026-10-23T023152.815Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-02-street, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-866eacdc873241af81b3b6e2a87833b5-2026-10-23T023209.267Z",
+          "appliedAt": "2026-10-23T02:32:09.267Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-866eacdc873241af81b3b6e2a87833b5-2026-10-23T023209.267Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-03-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2a06f5f8068f4081b1ea34ee0fb9ec53-2026-10-23T023224.519Z",
+          "appliedAt": "2026-10-23T02:32:24.519Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-2a06f5f8068f4081b1ea34ee0fb9ec53-2026-10-23T023224.519Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-04-artdeco, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2a31fe84b515439a94f7e05d2e980b6c-2026-10-23T023408.597Z",
+          "appliedAt": "2026-10-23T02:34:08.597Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-2a31fe84b515439a94f7e05d2e980b6c-2026-10-23T023408.597Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-05-night, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-dbbec7c986f341c794813b8f19425e59-2026-10-23T023551.196Z",
+          "appliedAt": "2026-10-23T02:35:51.196Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-dbbec7c986f341c794813b8f19425e59-2026-10-23T023551.196Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-06-scenic-rocks, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3fecd2a66abe424799fd194a3add7b60-2026-10-23T023608.165Z",
+          "appliedAt": "2026-10-23T02:36:08.165Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-3fecd2a66abe424799fd194a3add7b60-2026-10-23T023608.165Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-07-scenic-station, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-817882c3a0074610a7ddae30939fd955-2026-10-23T023621.632Z",
+          "appliedAt": "2026-10-23T02:36:21.632Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-817882c3a0074610a7ddae30939fd955-2026-10-23T023621.632Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-08-tickler, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-071e774e85844ef3aff5a9bb522e0de6-2026-10-23T023639.687Z",
+          "appliedAt": "2026-10-23T02:36:39.687Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-071e774e85844ef3aff5a9bb522e0de6-2026-10-23T023639.687Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-09-flying-turn, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-38bceaf28ff443e6a8be7af8e0bec2c8-2026-10-23T023815.837Z",
+          "appliedAt": "2026-10-23T02:38:15.837Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-38bceaf28ff443e6a8be7af8e0bec2c8-2026-10-23T023815.837Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-10-water-pool, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-24e5200df19f4e869f7cbe2bfa7f8c96-2026-10-23T023836.683Z",
+          "appliedAt": "2026-10-23T02:38:36.683Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-24e5200df19f4e869f7cbe2bfa7f8c96-2026-10-23T023836.683Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-11-water-landing, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fc1965538dd24f79b613082d897aa02c-2026-10-23T023859.059Z",
+          "appliedAt": "2026-10-23T02:38:59.059Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-fc1965538dd24f79b613082d897aa02c-2026-10-23T023859.059Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-12-water-panorama, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-de9ca061052f438f8f44fe549b05caa8-2026-10-23T023920.247Z",
+          "appliedAt": "2026-10-23T02:39:20.247Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-de9ca061052f438f8f44fe549b05caa8-2026-10-23T023920.247Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-13-river, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-846da4a62f9045d98984f51de5206c9d-2026-10-23T024123.974Z",
+          "appliedAt": "2026-10-23T02:41:23.974Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-846da4a62f9045d98984f51de5206c9d-2026-10-23T024123.974Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-14-roues, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-dcb0d46e0c8247c89ea10a0275973bd3-2026-10-23T024145.971Z",
+          "appliedAt": "2026-10-23T02:41:45.971Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-dcb0d46e0c8247c89ea10a0275973bd3-2026-10-23T024145.971Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-15-roulette, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-385fc0ec0a864c2ab307651a7c898beb-2026-10-23T024218.590Z",
+          "appliedAt": "2026-10-23T02:42:18.590Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-385fc0ec0a864c2ab307651a7c898beb-2026-10-23T024218.590Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-16-palais-rire, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d28ad15a630f4c0e9afbab71545ec1d8-2026-10-23T024233.152Z",
+          "appliedAt": "2026-10-23T02:42:33.152Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-d28ad15a630f4c0e9afbab71545ec1d8-2026-10-23T024233.152Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-17-dancing, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2a76a6d4b19c462f8a53154375cf0f75-2026-10-23T024347.556Z",
+          "appliedAt": "2026-10-23T02:43:47.556Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-2a76a6d4b19c462f8a53154375cf0f75-2026-10-23T024347.556Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-18-skating, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-77bc3bd60e5e49e3b4e1afa2cd543e31-2026-10-23T024415.276Z",
+          "appliedAt": "2026-10-23T02:44:15.276Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-77bc3bd60e5e49e3b4e1afa2cd543e31-2026-10-23T024415.276Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-19-tumilet, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4533bb9df5854df6b65da2d638b63a47-2026-10-23T024437.559Z",
+          "appliedAt": "2026-10-23T02:44:37.559Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-4533bb9df5854df6b65da2d638b63a47-2026-10-23T024437.559Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-20-velodrome, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1477432784a245d1b59becd606cd5a32-2026-10-23T024458.775Z",
+          "appliedAt": "2026-10-23T02:44:58.775Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-1477432784a245d1b59becd606cd5a32-2026-10-23T024458.775Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-21-incubators, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-679619a1a4924eefb1b4d8faf76ac93a-2026-10-23T024545.485Z",
+          "appliedAt": "2026-10-23T02:45:45.485Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-679619a1a4924eefb1b4d8faf76ac93a-2026-10-23T024545.485Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-22-crypte, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7214d00c98b34577805788881eebd289-2026-10-23T024608.969Z",
+          "appliedAt": "2026-10-23T02:46:08.969Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-7214d00c98b34577805788881eebd289-2026-10-23T024608.969Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-23-tanagra, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-72401ea6492844b792aa71bc200f4c3f-2026-10-23T024637.192Z",
+          "appliedAt": "2026-10-23T02:46:37.192Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-72401ea6492844b792aa71bc200f4c3f-2026-10-23T024637.192Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-24-expropriation, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a3405c8a60fb4c0b9d1aa310172f139a-2026-10-23T024707.270Z",
+          "appliedAt": "2026-10-23T02:47:07.270Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-a3405c8a60fb4c0b9d1aa310172f139a-2026-10-23T024707.270Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-25-boxing, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0b36527f006b40ba8c9f55bd01bb44b8-2026-10-23T024732.849Z",
+          "appliedAt": "2026-10-23T02:47:32.849Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-0b36527f006b40ba8c9f55bd01bb44b8-2026-10-23T024732.849Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-26-advert, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-6a7bfbe2-cbd9-4dec-948d-dc110b661dc1",
+          "appliedAt": "2026-10-23T02:48:33.509Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-6a7bfbe2-cbd9-4dec-948d-dc110b661dc1",
+          "auditEvidence": null,
+          "summary": "Théâtre Tanagra précisé dans les huit langues à partir de la scène grecque retrouvée ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5123d3d15ee049f184122a9df89f1436-2026-10-23T030135.627Z",
+          "appliedAt": "2026-10-23T03:01:35.627Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-5123d3d15ee049f184122a9df89f1436-2026-10-23T030135.627Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-27-pulbaum-object, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-c15c50a4-8535-4fc7-9f5c-ea38860642da",
+          "appliedAt": "2026-10-23T03:01:59.689Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-c15c50a4-8535-4fc7-9f5c-ea38860642da",
+          "auditEvidence": null,
+          "summary": "Biographies Akoun et Bartlett enrichies et relues en huit langues, références privées conservées."
+        },
+        {
+          "eventId": "apply-b7f8c0ba-f966-46e8-a23e-70ef9960c924",
+          "appliedAt": "2026-10-23T03:05:10.953Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-b7f8c0ba-f966-46e8-a23e-70ef9960c924",
+          "auditEvidence": null,
+          "summary": "Six jalons historiques réécrits en huit langues, quatre images attribuées, dates et article existant préservés."
+        },
+        {
+          "eventId": "apply-7685f1dc-6e93-4a81-b54e-457763140f5b",
+          "appliedAt": "2026-10-23T03:09:34.830Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-7685f1dc-6e93-4a81-b54e-457763140f5b",
+          "auditEvidence": null,
+          "summary": "Article Pulbaum–Titanic existant enrichi, illustré et relu dans les huit langues, slug et blocs antérieurs conservés."
+        },
+        {
+          "eventId": "apply-3afe6eb2-339d-4e58-8977-cfd341c53482",
+          "appliedAt": "2026-10-23T03:11:45.198Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-3afe6eb2-339d-4e58-8977-cfd341c53482",
+          "auditEvidence": null,
+          "summary": "Ajout de deux jalons sourcés : construction Flying Turn en 1934 et fermeture skating en 1925, huit langues."
+        },
+        {
+          "eventId": "import-photo-e68c6ff3415941ca9b1be4de377a0fb1-2026-10-23T031407.985Z",
+          "appliedAt": "2026-10-23T03:14:07.985Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-e68c6ff3415941ca9b1be4de377a0fb1-2026-10-23T031407.985Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-28-scenic-bend, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-77d7368e6f6f4e8b976f8e1012636ffa-2026-10-23T031432.980Z",
+          "appliedAt": "2026-10-23T03:14:32.980Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#import-photo-77d7368e6f6f4e8b976f8e1012636ffa-2026-10-23T031432.980Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-29-coup-vent, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-7ec5bd00-e186-4c77-a665-10c526df1255",
+          "appliedAt": "2026-10-23T03:17:09.266Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-7ec5bd00-e186-4c77-a665-10c526df1255",
+          "auditEvidence": null,
+          "summary": "Relecture finale Witching Waves : phrase générique retirée en huit langues et répétition espagnole corrigée."
+        },
+        {
+          "eventId": "apply-b52a3d0c-9051-4c41-aa9b-676d5d667746",
+          "appliedAt": "2026-10-23T03:31:47.835Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-receipts.json#apply-b52a3d0c-9051-4c41-aa9b-676d5d667746",
+          "auditEvidence": null,
+          "summary": "Article de fermeture Luna Park–Porte Maillot ajouté en huit langues, sources primaires1946/1974 et image de1946, privé."
+        }
+      ],
+      "nextAction": "Audit du 23 octobre 2026 : 25 fiches,29 images,8 jalons,2 articles en8 langues. Projection officielle88/100, blocage media.logo-required. Résoudre le logo historique et les conditions de publication ; aucune publication site/Facebook ni clôture completed. Preuve : docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-audit-blocked.json",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15208,9 +15679,60 @@
         "Magic City"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "lastDataIntegrationAt": "2026-10-23T07:43:55.491Z",
+      "integrationHistory": [
+        {
+          "eventId": "import-photo-5e10699d443946e4bca9368d9f46e16d-2026-10-23T073427.446Z",
+          "appliedAt": "2026-10-23T07:34:27.446Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-5e10699d443946e4bca9368d9f46e16d-2026-10-23T073427.446Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-01-cascade-descent, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b98d7664caa449969b41470fb1490ad0-2026-10-23T073442.556Z",
+          "appliedAt": "2026-10-23T07:34:42.556Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-b98d7664caa449969b41470fb1490ad0-2026-10-23T073442.556Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-02-cascade-arrival, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e545f053ec3b4aa980d065859ec3f8e9-2026-10-23T073456.944Z",
+          "appliedAt": "2026-10-23T07:34:56.944Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-e545f053ec3b4aa980d065859ec3f8e9-2026-10-23T073456.944Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-03-ballroom-tango, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9f68d226431a4a0999e20f59d6f8f89a-2026-10-23T073514.260Z",
+          "appliedAt": "2026-10-23T07:35:14.260Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-9f68d226431a4a0999e20f59d6f8f89a-2026-10-23T073514.260Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-04-park-panorama, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-87604a7b-dd62-45a0-a156-c9bb8d9cb444",
+          "appliedAt": "2026-10-23T07:43:55.491Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-87604a7b-dd62-45a0-a156-c9bb8d9cb444",
+          "auditEvidence": null,
+          "summary": "Inventaire historique : dix-neuf lieux qualifiés ajoutés en privé, cinq identifiants existants conservés. Descriptions, médias et audit final restent à terminer."
+        }
+      ],
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -17382,19 +17904,760 @@
       "locality": null,
       "siteId": "f019e441-aecf-487b-93db-2b0246dce185",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T07:43:15.084942+00:00",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-23T07:12:18.486Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-74ce545b-7332-4a0e-8c1f-e59da5218f13",
+          "appliedAt": "2026-10-23T03:41:25.924Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-74ce545b-7332-4a0e-8c1f-e59da5218f13",
+          "auditEvidence": null,
+          "summary": "Parc Avenue/Aérocity : fiche existante corrigée en parc fermé2014, coordonnées Lanas et dates/lifecycle des cinq coasters vérifiés ; intégration partielle."
+        },
+        {
+          "eventId": "import-photo-2d02a360818b485fb7fcd906153f0777-2026-10-23T035101.839Z",
+          "appliedAt": "2026-10-23T03:51:01.839Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-2d02a360818b485fb7fcd906153f0777-2026-10-23T035101.839Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-01-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-map-aerocity-plan-1990-fr-8e3139aedb995099",
+          "appliedAt": "2026-10-23T03:52:36.430Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-map-aerocity-plan-1990-fr-8e3139aedb995099",
+          "auditEvidence": null,
+          "summary": "Plan officiel Aérocity 1990 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+        },
+        {
+          "eventId": "import-map-aerocity-plan-1991-fr-2efc048a188165a7",
+          "appliedAt": "2026-10-23T03:52:47.518Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-map-aerocity-plan-1991-fr-2efc048a188165a7",
+          "auditEvidence": null,
+          "summary": "Plan officiel Aérocity 1991 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+        },
+        {
+          "eventId": "import-map-aerocity-plan-1993-fr-47cb6cd54c9f07f4",
+          "appliedAt": "2026-10-23T03:53:00.396Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-map-aerocity-plan-1993-fr-47cb6cd54c9f07f4",
+          "auditEvidence": null,
+          "summary": "Plan officiel Aérocity 1993 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+        },
+        {
+          "eventId": "import-map-aerocity-plan-1996-fr-a4174e318c5b09af",
+          "appliedAt": "2026-10-23T03:53:16.870Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-map-aerocity-plan-1996-fr-a4174e318c5b09af",
+          "auditEvidence": null,
+          "summary": "Plan officiel Aérocity 1996 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+        },
+        {
+          "eventId": "import-map-aerocity-plan-1997-fr-098ed4767bb5b07b",
+          "appliedAt": "2026-10-23T03:53:33.058Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-map-aerocity-plan-1997-fr-098ed4767bb5b07b",
+          "auditEvidence": null,
+          "summary": "Plan officiel Aérocity 1997 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+        },
+        {
+          "eventId": "apply-fb67d5fe-130a-4978-bdef-f0d3d1d8b299",
+          "appliedAt": "2026-10-23T03:56:31.132Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-fb67d5fe-130a-4978-bdef-f0d3d1d8b299",
+          "auditEvidence": null,
+          "summary": "Parc Avenue/Aérocity : cinq plans officiels1990,1991,1993,1996,1997 intégrés avec titres et textes alternatifs relus dans huit langues, privés ; audit final restant."
+        },
+        {
+          "eventId": "apply-c454b63c-0ec2-4ace-a952-34e9ce368537",
+          "appliedAt": "2026-10-23T04:06:46.307Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-c454b63c-0ec2-4ace-a952-34e9ce368537",
+          "auditEvidence": null,
+          "summary": "Parc Avenue/Aérocity :25attractions historiques distinctes intégrées en privé depuis brochures officielles et sources photographiques ; dates inconnues conservées nulles, rédaction et audit final restants."
+        },
+        {
+          "eventId": "apply-bf390076-4b2a-446a-82a3-110df6c6a29b",
+          "appliedAt": "2026-10-23T04:12:38.067Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-bf390076-4b2a-446a-82a3-110df6c6a29b",
+          "auditEvidence": null,
+          "summary": "Parc Avenue/Aérocity : présentation éditoriale intégrée et relue personnellement dans huit langues, six paragraphes et trois sections spécifiques ; parc privé, audit final restant."
+        },
+        {
+          "eventId": "import-photo-e50a966edfb54e3eb40a3d2ba3165a0c-2026-10-23T041306.789Z",
+          "appliedAt": "2026-10-23T04:13:06.789Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-e50a966edfb54e3eb40a3d2ba3165a0c-2026-10-23T041306.789Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-02-entrance-2011, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-88b80dd6e7b54e8db7ba7278d227290a-2026-10-23T041329.793Z",
+          "appliedAt": "2026-10-23T04:13:29.793Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-88b80dd6e7b54e8db7ba7278d227290a-2026-10-23T041329.793Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-03-entrance-2002, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2c2bdf16a7874885937b88c61030b506-2026-10-23T041351.732Z",
+          "appliedAt": "2026-10-23T04:13:51.732Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-2c2bdf16a7874885937b88c61030b506-2026-10-23T041351.732Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-04-overlook-2002, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fb095f187c5d49448309c1599e1ebac4-2026-10-23T041406.994Z",
+          "appliedAt": "2026-10-23T04:14:06.994Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-fb095f187c5d49448309c1599e1ebac4-2026-10-23T041406.994Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-05-aeroplane-landscape, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4a21ee0a8ebe4137ad2d7e3a88333362-2026-10-23T041427.278Z",
+          "appliedAt": "2026-10-23T04:14:27.278Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-4a21ee0a8ebe4137ad2d7e3a88333362-2026-10-23T041427.278Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-06-aeroplane-riders, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-77b6c0ece49e4fea9827bc085a125e59-2026-10-23T041454.983Z",
+          "appliedAt": "2026-10-23T04:14:54.983Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-77b6c0ece49e4fea9827bc085a125e59-2026-10-23T041454.983Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-07-aeroplane-platform, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-62a939695d75492fa0b8411af8767e21-2026-10-23T041533.708Z",
+          "appliedAt": "2026-10-23T04:15:33.708Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-62a939695d75492fa0b8411af8767e21-2026-10-23T041533.708Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-08-starwars-overview, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5637482863b84115ae7c8183b17a8a21-2026-10-23T041601.711Z",
+          "appliedAt": "2026-10-23T04:16:01.711Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-5637482863b84115ae7c8183b17a8a21-2026-10-23T041601.711Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-09-starwars-car, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f44613892b5b4c6798da9d311492a9fe-2026-10-23T041624.221Z",
+          "appliedAt": "2026-10-23T04:16:24.221Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-f44613892b5b4c6798da9d311492a9fe-2026-10-23T041624.221Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-10-starwars-tower, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c31c786c53ed49b99db2f81b55a64fbb-2026-10-23T041646.615Z",
+          "appliedAt": "2026-10-23T04:16:46.615Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-c31c786c53ed49b99db2f81b55a64fbb-2026-10-23T041646.615Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-11-cityjet-train, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0aaddd4d88c947f79aeda178ab5a8d25-2026-10-23T041709.219Z",
+          "appliedAt": "2026-10-23T04:17:09.219Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-0aaddd4d88c947f79aeda178ab5a8d25-2026-10-23T041709.219Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-12-cityjet-course, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b12e8286075a4f9c93558bc77f632c19-2026-10-23T041733.584Z",
+          "appliedAt": "2026-10-23T04:17:33.584Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-b12e8286075a4f9c93558bc77f632c19-2026-10-23T041733.584Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-13-grand8-caterpillar, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4114ad6539c3489697e02c521e57b04a-2026-10-23T041755.553Z",
+          "appliedAt": "2026-10-23T04:17:55.553Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-4114ad6539c3489697e02c521e57b04a-2026-10-23T041755.553Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-14-grand8-setting, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c8085d49b55e4dd197b3b9ac0daf7b6b-2026-10-23T041814.293Z",
+          "appliedAt": "2026-10-23T04:18:14.293Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-c8085d49b55e4dd197b3b9ac0daf7b6b-2026-10-23T041814.293Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-15-grand8-platform, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-map-parc-avenue-plan-2013-fr-755aaa04c1f1672f",
+          "appliedAt": "2026-10-23T04:22:05.868Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-map-parc-avenue-plan-2013-fr-755aaa04c1f1672f",
+          "auditEvidence": null,
+          "summary": "Plan officiel Parc Avenue 2013 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+        },
+        {
+          "eventId": "apply-0d12f44e-4fb2-4834-bfe8-f44772f32a08",
+          "appliedAt": "2026-10-23T04:25:13.082Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-0d12f44e-4fb2-4834-bfe8-f44772f32a08",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : plan officiel2013 et16textes localisés ; rapprochement Grande Roue/Enterprise2 sansdoublon, troisGPS sourcés et retraitd’une contention nonprouvée."
+        },
+        {
+          "eventId": "apply-cecec35d-1dd3-414f-a4a5-14c92d554ce6",
+          "appliedAt": "2026-10-23T04:32:42.557Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-cecec35d-1dd3-414f-a4a5-14c92d554ce6",
+          "auditEvidence": null,
+          "summary": "Parc Avenue :24équipements historiques sourcés, dontrestaurants, services, spectacles etespacesanimaliers ; fichesprivées, rédactionàcompléter."
+        },
+        {
+          "eventId": "apply-330f006a-856d-4bfb-a764-ff6475b9829f",
+          "appliedAt": "2026-10-23T04:35:42.110Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-330f006a-856d-4bfb-a764-ff6475b9829f",
+          "auditEvidence": null,
+          "summary": "Parc Avenue :14équipements aquatiques, jeux etservices attestésen2013, plusdeuxzones ; intégrationprivée, textesetauditrestants."
+        },
+        {
+          "eventId": "apply-933b7c73-5522-4cd6-9fbf-bead29d60bc4",
+          "appliedAt": "2026-10-23T04:36:15.780Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-933b7c73-5522-4cd6-9fbf-bead29d60bc4",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : descriptionséditoriales des cinqmontagnesrusses, rédigéesetreluesdansleshuitlangues ; auditfinalencoreàfaire."
+        },
+        {
+          "eventId": "import-photo-5ec3d779ab1f48da993de337315be2e0-2026-10-23T043852.135Z",
+          "appliedAt": "2026-10-23T04:38:52.135Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-5ec3d779ab1f48da993de337315be2e0-2026-10-23T043852.135Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-16-tower-2002, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5674678cdeb9457b937cf117c652cec3-2026-10-23T043906.324Z",
+          "appliedAt": "2026-10-23T04:39:06.324Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-5674678cdeb9457b937cf117c652cec3-2026-10-23T043906.324Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-17-crazy-shake, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f15bfdbc92b145f3a763dd0451e865ef-2026-10-23T043922.639Z",
+          "appliedAt": "2026-10-23T04:39:22.639Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-f15bfdbc92b145f3a763dd0451e865ef-2026-10-23T043922.639Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-18-queen-air, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a7f2ac269cc644de852fcf62c15e5fc7-2026-10-23T043937.687Z",
+          "appliedAt": "2026-10-23T04:39:37.687Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-a7f2ac269cc644de852fcf62c15e5fc7-2026-10-23T043937.687Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-19-breguet-side, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3d44411e4e314be88e46e2571e2a2cf5-2026-10-23T043954.302Z",
+          "appliedAt": "2026-10-23T04:39:54.302Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-3d44411e4e314be88e46e2571e2a2cf5-2026-10-23T043954.302Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-20-breguet-front, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e80bcbe59c0244119a2c8b51a0112e16-2026-10-23T044021.996Z",
+          "appliedAt": "2026-10-23T04:40:21.996Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-e80bcbe59c0244119a2c8b51a0112e16-2026-10-23T044021.996Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-21-breguet-wing, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3371cab2bbb0419e9b48aa19c9b1c9bf-2026-10-23T044037.505Z",
+          "appliedAt": "2026-10-23T04:40:37.505Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-3371cab2bbb0419e9b48aa19c9b1c9bf-2026-10-23T044037.505Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-22-breguet-recovery, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2eba18c8895f49b5baa6a1c89ed60c2b-2026-10-23T044051.919Z",
+          "appliedAt": "2026-10-23T04:40:51.919Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-2eba18c8895f49b5baa6a1c89ed60c2b-2026-10-23T044051.919Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-23-tower-2011, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ae037460b0ae40e680477f189b63d6ed-2026-10-23T044106.135Z",
+          "appliedAt": "2026-10-23T04:41:06.135Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-ae037460b0ae40e680477f189b63d6ed-2026-10-23T044106.135Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-24-petit-train, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-48e1f64547b24331962de351678ba88c-2026-10-23T044120.055Z",
+          "appliedAt": "2026-10-23T04:41:20.055Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-48e1f64547b24331962de351678ba88c-2026-10-23T044120.055Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-25-enterprise, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bc4d4c34f22d4830bc66983eda53a7a5-2026-10-23T044133.673Z",
+          "appliedAt": "2026-10-23T04:41:33.673Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-bc4d4c34f22d4830bc66983eda53a7a5-2026-10-23T044133.673Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-26-tpacap, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-89678bb143104830a6e2165816f97864-2026-10-23T044147.642Z",
+          "appliedAt": "2026-10-23T04:41:47.642Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-89678bb143104830a6e2165816f97864-2026-10-23T044147.642Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-27-water-boats, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fd3c3050824d49cc8abc7445bfa646d0-2026-10-23T044201.657Z",
+          "appliedAt": "2026-10-23T04:42:01.657Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-fd3c3050824d49cc8abc7445bfa646d0-2026-10-23T044201.657Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-28-water-slides, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b42d170b373446cfbc0ca90a02f08b14-2026-10-23T044215.423Z",
+          "appliedAt": "2026-10-23T04:42:15.423Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-b42d170b373446cfbc0ca90a02f08b14-2026-10-23T044215.423Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-29-pentagliss-ruins, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e752eeb95c474c9a88a3913514fba25e-2026-10-23T044229.086Z",
+          "appliedAt": "2026-10-23T04:42:29.086Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-e752eeb95c474c9a88a3913514fba25e-2026-10-23T044229.086Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-30-entrance-abandoned, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e01134156baa4a7f8a3310d5a9f0d2a8-2026-10-23T044242.772Z",
+          "appliedAt": "2026-10-23T04:42:42.772Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#import-photo-e01134156baa4a7f8a3310d5a9f0d2a8-2026-10-23T044242.772Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-31-waterarea-abandoned, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-50198fae-6a99-4e9f-ad8b-35ea0501c3e3",
+          "appliedAt": "2026-10-23T04:45:33.447Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-50198fae-6a99-4e9f-ad8b-35ea0501c3e3",
+          "auditEvidence": null,
+          "summary": "Parc Avenue :32descriptions harmonisées aveclacharte ; chronologied’ouverture réservéeauxchampsstructurésetàl’histoire."
+        },
+        {
+          "eventId": "apply-909ed638-e284-41f8-9c0c-ea29700368ce",
+          "appliedAt": "2026-10-23T04:48:24.661Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-909ed638-e284-41f8-9c0c-ea29700368ce",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : exploitantFamilyLoisirs identifié etdocumenté ; biographieBigCountryMotioneering enrichie avecvérificationtransparcs, huitlanguesparréférence."
+        },
+        {
+          "eventId": "apply-2eed7e43-c291-4b80-88f0-c2c0bac24e9b",
+          "appliedAt": "2026-10-23T04:50:43.459Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-2eed7e43-c291-4b80-88f0-c2c0bac24e9b",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : descriptionsdeszonesAérosplashetdesjeuxenfantins en huitlangues, nomspropresconservés ; publicationtoujoursenattente d’audit."
+        },
+        {
+          "eventId": "apply-a346a761-b81e-40bc-a895-f4c6cb48f81e",
+          "appliedAt": "2026-10-23T04:57:22.332Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-a346a761-b81e-40bc-a895-f4c6cb48f81e",
+          "auditEvidence": null,
+          "summary": "Parc Avenue :24descriptions reluespourleBreguet941S, lePaysdel’exploitetPierrotlaLune ; sourcesetlimitesdocumentées."
+        },
+        {
+          "eventId": "apply-d57ea84c-9e7e-45f4-81a7-7c1e39d77ed0",
+          "appliedAt": "2026-10-23T05:10:14.398Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-d57ea84c-9e7e-45f4-81a7-7c1e39d77ed0",
+          "auditEvidence": null,
+          "summary": "Chance Rides: huit biographies factuelles vérifiées sur l’historique officiel, portée interparcs documentée."
+        },
+        {
+          "eventId": "apply-0f01a653-b42e-45b4-936a-bb217d3486a8",
+          "appliedAt": "2026-10-23T05:11:32.053Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-0f01a653-b42e-45b4-936a-bb217d3486a8",
+          "auditEvidence": null,
+          "summary": "Tour Chute Libre, Delta Junior, Jeunes Mermoz et Round Up : 32 textes historiques relus, limites documentaires individualisées."
+        },
+        {
+          "eventId": "apply-97fa7b97-5761-440a-978a-53e1455bc3b5",
+          "appliedAt": "2026-10-23T05:14:53.470Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-97fa7b97-5761-440a-978a-53e1455bc3b5",
+          "auditEvidence": null,
+          "summary": "Voltigeur, Turbo-Jet et Satellite : 24 descriptions historiques localisées, contrôlées sur les brochures originales."
+        },
+        {
+          "eventId": "apply-8b4ecdb6-3a3a-463c-9a26-6aa32ba6f804",
+          "appliedAt": "2026-10-23T05:19:14.255Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-8b4ecdb6-3a3a-463c-9a26-6aa32ba6f804",
+          "auditEvidence": null,
+          "summary": "Crazy Shake, Petit Train, Enterprise et T’PA CAP : 32 textes localisés relus avec photographies réelles et archives officielles."
+        },
+        {
+          "eventId": "apply-17977908-b376-4b9c-896a-03969b6570b3",
+          "appliedAt": "2026-10-23T05:25:23.814Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-17977908-b376-4b9c-896a-03969b6570b3",
+          "auditEvidence": null,
+          "summary": "Neuf services historiques de Parc Avenue : 72 textes localisés relus, emplacements distincts et limites de sources consignées."
+        },
+        {
+          "eventId": "apply-aaae1bdb-8514-4624-a872-d36902d400f6",
+          "appliedAt": "2026-10-23T05:30:07.118Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-aaae1bdb-8514-4624-a872-d36902d400f6",
+          "auditEvidence": null,
+          "summary": "Cinq restaurants et la boutique : 48 descriptions historiques localisées, continuité des lieux et offre sourcée vérifiées."
+        },
+        {
+          "eventId": "apply-90751a77-8409-47b4-852a-8f525c938bb7",
+          "appliedAt": "2026-10-23T05:34:18.187Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-90751a77-8409-47b4-852a-8f525c938bb7",
+          "auditEvidence": null,
+          "summary": "Géolocalisation vérifiée du parking et de Pentagliss : géométries OSM recoupées avec plans officiels et photographies."
+        },
+        {
+          "eventId": "apply-bdac1bc8-aa07-4068-864b-bb7a2a3b4953",
+          "appliedAt": "2026-10-23T05:41:14.101Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-bdac1bc8-aa07-4068-864b-bb7a2a3b4953",
+          "auditEvidence": null,
+          "summary": "Cinq promenades et jeux historiques : 40 textes localisés, identités et composants recoupés sur les plans officiels."
+        },
+        {
+          "eventId": "apply-4a290217-cd0d-44e5-8091-9a63b9e3b77e",
+          "appliedAt": "2026-10-23T05:55:22.612Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-4a290217-cd0d-44e5-8091-9a63b9e3b77e",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : descriptions en huit langues de sept espaces animaliers et appareils exposés, preuves originales et limites de sources conservées."
+        },
+        {
+          "eventId": "apply-10902f2a-d80d-4508-b3f1-e028f4edd6a5",
+          "appliedAt": "2026-10-23T06:02:43.848Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-10902f2a-d80d-4508-b3f1-e028f4edd6a5",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : sept espaces aquatiques décrits et relus en huit langues, identités historiques rapprochées et limites documentées."
+        },
+        {
+          "eventId": "apply-7fca3110-d220-491d-8be1-4256b7b5ffa3",
+          "appliedAt": "2026-10-23T06:06:49.979Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-7fca3110-d220-491d-8be1-4256b7b5ffa3",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : cinq jeux et attractions historiques décrits en huit langues, dont Mini Galaxy/Galaxy sans doublon."
+        },
+        {
+          "eventId": "apply-c63b4cc7-204d-4851-849a-edb86304ebcd",
+          "appliedAt": "2026-10-23T06:11:51.598Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-c63b4cc7-204d-4851-849a-edb86304ebcd",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : six jeux, aire enfantine et labyrinthe localisés en huit langues ; lacune éditoriale du Babyfoot conservée explicitement pour audit final."
+        },
+        {
+          "eventId": "apply-be91abc2-c345-4324-b5a2-b3cb31ffb3dc",
+          "appliedAt": "2026-10-23T06:16:31.714Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-be91abc2-c345-4324-b5a2-b3cb31ffb3dc",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : quatre lieux de spectacle et animation décrits en huit langues ; toutes les 68 fiches possèdent leurs textes localisés, audit final encore à faire."
+        },
+        {
+          "eventId": "apply-9901a2e0-8ee2-468b-8e31-92db7371093e",
+          "appliedAt": "2026-10-23T06:22:23.084Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-9901a2e0-8ee2-468b-8e31-92db7371093e",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : six jalons historiques du parc en huit langues, de l’ouverture d’Aérocity à la liquidation de Family Loisirs ; faits privés et sourcés en attente d’audit."
+        },
+        {
+          "eventId": "apply-fc70ccf0-52e0-453c-b1d2-6e6ceadfca3e",
+          "appliedAt": "2026-10-23T06:30:48.610Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-fc70ccf0-52e0-453c-b1d2-6e6ceadfca3e",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : six jalons propres au Breguet, à l’Enterprise et à l’Aéroplane, dont sauvetage à Toulouse et transfert à Kingoland ; huit langues, sources et photos."
+        },
+        {
+          "eventId": "apply-a0fdfbac-f72d-4208-bbbe-287c1466a165",
+          "appliedAt": "2026-10-23T06:36:18.020Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-a0fdfbac-f72d-4208-bbbe-287c1466a165",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : cinq jalons des montagnes russes, dont ouverture exacte du Grand 8 le 23 juin 2012 ; huit langues, preuves spécialisées et incertitude du contexte 2002–2003 conservées."
+        },
+        {
+          "eventId": "apply-e09c11ff-f556-4b75-9bea-4957f255e0be",
+          "appliedAt": "2026-10-23T06:43:27.628Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-e09c11ff-f556-4b75-9bea-4957f255e0be",
+          "auditEvidence": null,
+          "summary": "Parc Avenue : article développé en huit langues sur le sauvetage du Breguet, trois sections et six paragraphes, photographie réelle de l’opération et sources des Ailes Anciennes Toulouse."
+        },
+        {
+          "eventId": "apply-5ae3cb88-f99a-4dda-ade5-413f2ed38272",
+          "appliedAt": "2026-10-23T06:51:09.732Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-5ae3cb88-f99a-4dda-ade5-413f2ed38272",
+          "auditEvidence": null,
+          "summary": "Parc Avenue: synthèse historique Aérocity, reprise et fermeture dans huit langues; article sourcé et illustré conservé privé avant audit final."
+        },
+        {
+          "eventId": "apply-89a4735b-475b-4b83-ad8a-4c0b7ef3614b",
+          "appliedAt": "2026-10-23T06:53:48.692Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-89a4735b-475b-4b83-ad8a-4c0b7ef3614b",
+          "auditEvidence": null,
+          "summary": "Relecture transversale des huit langues: suppression des rappels techniques et chronologiques dans quatre descriptions de grands huit, sans modifier leurs données historiques."
+        },
+        {
+          "eventId": "apply-046bc430-06c5-4c30-8d75-12c262f7bd5a",
+          "appliedAt": "2026-10-23T06:56:34.486Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-046bc430-06c5-4c30-8d75-12c262f7bd5a",
+          "auditEvidence": null,
+          "summary": "Dernière reprise éditoriale du parc, de la zone enfantine et du point régional; ajout de la tranche 1–6 ans attestée par le plan officiel archivé, dans les conditions dédiées."
+        },
+        {
+          "eventId": "apply-5d1ceb3d-d959-44ac-8697-60019baf063f",
+          "appliedAt": "2026-10-23T07:00:23.516Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-5d1ceb3d-d959-44ac-8697-60019baf063f",
+          "auditEvidence": null,
+          "summary": "Audit final: correction ciblée des huit descriptions Aérosplash et de deux résumés du jalon CCI, sources et identifiants conservés."
+        },
+        {
+          "eventId": "apply-ce8afb09-9a01-4707-b1cb-a60bf2ad930c",
+          "appliedAt": "2026-10-23T07:06:51.036Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-ce8afb09-9a01-4707-b1cb-a60bf2ad930c",
+          "auditEvidence": null,
+          "summary": "Correction ciblée du doublon de formulation signalé par le contrôle serveur et des32légendes d’articles; faits et images conservés."
+        },
+        {
+          "eventId": "apply-04118cf1-27c2-4adc-8d45-f6f2ef4e5251",
+          "appliedAt": "2026-10-23T07:09:08.589Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-04118cf1-27c2-4adc-8d45-f6f2ef4e5251",
+          "auditEvidence": null,
+          "summary": "Article Breguet: retrait de la dimension de remorque dans les huit langues, récit du sauvetage et sources conservés."
+        },
+        {
+          "eventId": "apply-1f1983cd-c563-4e80-8c29-0a221fedf6de",
+          "appliedAt": "2026-10-23T07:12:18.486Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-1f1983cd-c563-4e80-8c29-0a221fedf6de",
+          "auditEvidence": null,
+          "summary": "Réparation officielle des17révisions historiques canoniques de Parc Avenue après sa publication, sans doublon ni modification éditoriale."
+        },
+        {
+          "eventId": "complete-1f1983cd-c563-4e80-8c29-0a221fedf6de",
+          "appliedAt": "2026-10-23T07:12:18.486Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "f019e441-aecf-487b-93db-2b0246dce185",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-receipts.json#apply-1f1983cd-c563-4e80-8c29-0a221fedf6de",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-final-audit.json",
+          "summary": "Audit final réussi:68lieux,41attractions,31images,6plans,17faits et2articles dans8langues; score97, lienHistoire normal vérifié, publication site et Facebook confirmées."
+        }
+      ],
+      "nextAction": "Intégration terminée, audit final à97/100 et publication site/Facebook confirmés. Lien Histoire cliqué depuis la fiche normale; lacunes photographiques, positions non prouvées et années de plans manquantes conservées dans les preuves.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

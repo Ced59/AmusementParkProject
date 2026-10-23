@@ -1,0 +1,736 @@
+{
+  "recordedAtUtc": "2026-10-23T03:18:33.121361+00:00",
+  "logo": {
+    "kind": "official-logo",
+    "attained": 0,
+    "required": true,
+    "blocking": true,
+    "sourceFamiliesChecked": [
+      "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+      "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+      "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+      "La Cité de la Mer / dossier Titanic 2023",
+      "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+      "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+      "Roller en ligne / Sam Nieswizski skating archives",
+      "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue",
+      "BnF BHVP Luna Park ephemera1910–14, 4-DEP-013-0136",
+      "Official1910 souvenir cover reproduced in specialistcatalogue"
+    ],
+    "reason": "No independently published authentic park logo file found. Crescents on entrance photograph, full Volterra advertisement, Sem promotional poster and souvenir-book cover are not standalone logos. No fabricated mark, no crop/recreation and no modern namesake logo. Named user exception not yet requested or granted."
+  },
+  "imagesAndCoordinates": [
+    {
+      "ownerId": "3aed408b-b4e3-43d6-91e2-d575a5b104f2",
+      "name": "Roues diaboliques",
+      "kind": "image-coverage",
+      "attained": 1,
+      "target": 3,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "0da662b6-8765-40bb-b07c-c26b8ff963e3",
+      "name": "Roulette humaine",
+      "kind": "image-coverage",
+      "attained": 1,
+      "target": 3,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "acaf6c9b-c308-4a70-855f-32eaec601648",
+      "name": "Tickler",
+      "kind": "image-coverage",
+      "attained": 1,
+      "target": 3,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "d430ce0b-11f8-4f38-9519-b8d482777c3f",
+      "name": "Flying Turn",
+      "kind": "image-coverage",
+      "attained": 1,
+      "target": 3,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "22e8854d-64a2-4103-ad92-7e327e82b2df",
+      "name": "Witching Waves",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 3,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "7f424333-f53e-414f-bfab-6dc7e6298b35",
+      "name": "Rivière Mystérieuse",
+      "kind": "image-coverage",
+      "attained": 1,
+      "target": 3,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "8f4d3f8d-d0ab-4935-9af3-4fa5765941a8",
+      "name": "La Destruction de Johnstown",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "52326ec6-5037-49f7-866b-bc866fa7f71c",
+      "name": "Roller Skating Rink",
+      "kind": "image-coverage",
+      "attained": 2,
+      "target": 3,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "3ab4744b-8920-4f36-b11f-1f1b8595a157",
+      "name": "Palais du Rire",
+      "kind": "image-coverage",
+      "attained": 2,
+      "target": 3,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "4821626a-6ebe-4ba2-b394-97744c6fc095",
+      "name": "Autodrome",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "914054f0-e6d3-4e69-b45b-f32354c98db8",
+      "name": "Skooter",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "b1eb0942-3b67-482e-b5e3-7b0ba330629d",
+      "name": "Avions Bolides",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "79979ee2-9fb6-46d6-b962-db57cd21c89a",
+      "name": "Canots Automobiles",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "4879e018-d10f-4dd8-aa1a-977e66a17bf4",
+      "name": "Ghost Train",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "8e6880e8-c23d-4a5a-a195-5f270297221b",
+      "name": "Théâtre Hollywood",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "8bb66908-e0d1-410f-b998-06cf403f3ac6",
+      "name": "Ménagerie Jouviano",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "49d2367a-0ce4-4fb8-9918-6dd608cb2234",
+      "name": "Gaufres Plouvier Fils",
+      "kind": "image-coverage",
+      "attained": 0,
+      "target": 1,
+      "sourceFamiliesChecked": [
+        "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+        "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+        "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+        "La Cité de la Mer / dossier Titanic 2023",
+        "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+        "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+        "Roller en ligne / Sam Nieswizski skating archives",
+        "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+      ],
+      "reason": "Only the distinct, correctly identified, clean original images in asset-manifest passed visual review. Museum/gallery access sometimes returned 503; wrong ride attribution, ambiguous mechanical lift, duplicate views, blurred bands and third-party marks were excluded. Full multi-attraction advertisement was not duplicated under every named item."
+    },
+    {
+      "ownerId": "3aed408b-b4e3-43d6-91e2-d575a5b104f2",
+      "name": "Roues diaboliques",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "0da662b6-8765-40bb-b07c-c26b8ff963e3",
+      "name": "Roulette humaine",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "314e4c40-6994-4ef8-a9b0-d9bc400882b5",
+      "name": "Scenic Railway",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "acaf6c9b-c308-4a70-855f-32eaec601648",
+      "name": "Tickler",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "d430ce0b-11f8-4f38-9519-b8d482777c3f",
+      "name": "Flying Turn",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "6e9f1cc5-9260-404a-bf86-2eb5706578c4",
+      "name": "Water Chute",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "22e8854d-64a2-4103-ad92-7e327e82b2df",
+      "name": "Witching Waves",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "7f424333-f53e-414f-bfab-6dc7e6298b35",
+      "name": "Rivière Mystérieuse",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "8f4d3f8d-d0ab-4935-9af3-4fa5765941a8",
+      "name": "La Destruction de Johnstown",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "52326ec6-5037-49f7-866b-bc866fa7f71c",
+      "name": "Roller Skating Rink",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "0c3f054d-a211-42b6-9087-4bfd0eb13ac6",
+      "name": "Dancing — Palais des Folies",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "3ab4744b-8920-4f36-b11f-1f1b8595a157",
+      "name": "Palais du Rire",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "4821626a-6ebe-4ba2-b394-97744c6fc095",
+      "name": "Autodrome",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "914054f0-e6d3-4e69-b45b-f32354c98db8",
+      "name": "Skooter",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "b1eb0942-3b67-482e-b5e3-7b0ba330629d",
+      "name": "Avions Bolides",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "79979ee2-9fb6-46d6-b962-db57cd21c89a",
+      "name": "Canots Automobiles",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "4879e018-d10f-4dd8-aa1a-977e66a17bf4",
+      "name": "Ghost Train",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "8e6880e8-c23d-4a5a-a195-5f270297221b",
+      "name": "Théâtre Hollywood",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "8bb66908-e0d1-410f-b998-06cf403f3ac6",
+      "name": "Ménagerie Jouviano",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "67f2f91f-41b8-414c-8eef-aeafb511a78c",
+      "name": "La Crypte des Pharaons",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "0a1910dd-4d90-4ea2-a760-fb7fe9b8aadf",
+      "name": "Théâtre Tanagra",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "8f3a6073-0c2a-4360-b381-c2fc47297677",
+      "name": "Baby Incubators — Couveuses d’Enfants",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "1e7e208a-29d3-42ed-a359-ea348e179550",
+      "name": "Vélodrome du Rire",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "49d2367a-0ce4-4fb8-9918-6dd608cb2234",
+      "name": "Gaufres Plouvier Fils",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    },
+    {
+      "ownerId": "44b1a269-afba-48c8-ad69-a8785e036ecd",
+      "name": "Entrée de la porte Maillot",
+      "kind": "coordinates",
+      "value": null,
+      "sourceFamiliesChecked": [
+        "RCDB individual pages 16215,16216,22886 and park16214",
+        "1909 La Nature plan",
+        "historical aerials published as1921/1933/1945, personally viewed",
+        "historic postcards / contemporary Porte Maillot reference"
+      ],
+      "reason": "Individual RCDB pages contain no per-item coordinates; only park page has 48.879862,2.283950. Historic aerials and engineering sketch identify broad footprints but lack a verified georeferenced control grid and primary dates. No park-centre coordinates copied onto rides, no fabricated modern exact point."
+    }
+  ],
+  "candidateQualifications": [
+    {
+      "names": [
+        "Le Coup de Vent"
+      ],
+      "decision": "Component/view of Palais du Rire, not a new fixed entity",
+      "evidence": "Neurdein31 Cartorum684774 and ND96 show the same pavilion, footbridge railings and giant figure; source images personally compared.",
+      "sourceUrl": "https://cartorum.fr/carte-postale/684774/paris-17e-luna-park-le-coup-de-vent"
+    },
+    {
+      "names": [
+        "Royal Indian Troupe"
+      ],
+      "decision": "Touring performance attested by ND80, no permanent venue/date proven; no invented fixed attraction or event date",
+      "evidence": "Original postcard viewed, performers with swords. Retain research, do not infer ethnographic exhibition or specific nationality from appearance.",
+      "sourceUrl": "https://cartorum.fr/carte-postale/719888/paris-17e-luna-park-royal-indian-troupe"
+    },
+    {
+      "names": [
+        "Rapides"
+      ],
+      "decision": "Likely Water Chute alias, retain under same provisional identity, no duplicate",
+      "evidence": "1909 opening press lists name, while postcards label Water Chute descent Les Rapides. No distinct owned venue proved."
+    },
+    {
+      "names": [
+        "Cake-Walk",
+        "Le Taquineur",
+        "Le Crieur"
+      ],
+      "decision": "Named historical candidates; exact relation to existing interactive attractions unresolved",
+      "evidence": "1910 official souvenir album described in 2022 bookseller catalogue p46 names Cake-Walk and Taquineur; Figaro23April1910 names Crieur/Taquineur without explaining content. No assumption that a dance name identifies a separate building or that Roubaix1911 Navire/Cake-Walk proves Paris identity."
+    },
+    {
+      "names": [
+        "Navire Diabolique",
+        "Cascade"
+      ],
+      "decision": "Secondary1926 names, primaryLaRampe31August1926 cited but not inspected; equipment identity unresolved",
+      "evidence": "Roller en ligne text, keyword follow-up returned only derivative sites. Distinguish from Roubaix1911 and do not import generic description of motion as Paris evidence."
+    },
+    {
+      "names": [
+        "Skating de Paris"
+      ],
+      "decision": "1938 skating site documented by specialist; precise boundary/replacement relation unresolved, never overwrite1909–1925 rink",
+      "evidence": "SamNieswizski photo MontFulgur and Roller en ligne identifynew1938 rink; no address/plan establishingexactownership/oldrinkreuse."
+    },
+    {
+      "names": [
+        "Hydravions lumineux",
+        "Bug",
+        "Gondoles vénitiennes",
+        "Star",
+        "Tourbillon",
+        "Monte-au-ciel",
+        "Voyage en aéroplane",
+        "Manoir du Tohu-Bohu",
+        "La Mise en Boîte"
+      ],
+      "decision": "Retained names, not confirmed distinct from existing ride identities",
+      "evidence": "Historical blog/advert/signage/auction references. Targeted searches and source inspection do not establish exact independent fixed attraction identities. Do not duplicate Avions Bolides, Palais du Rire, Skooter or Flying Turn on speculation."
+    }
+  ],
+  "officialMaps": {
+    "officialAnnualEditions": [],
+    "sourceFamiliesChecked": [
+      "Ville de Paris / Musée Carnavalet / Roger-Viollet",
+      "BnF RetroNews / Le Figaro 1910 / La Nature CNAM 1909",
+      "UCLA Caroline Luce / Sheffield National Fairground and Circus Archive",
+      "La Cité de la Mer / dossier Titanic 2023",
+      "RCDB / Captain Coaster / Amusement Today 2016 / The New Yorker 1934",
+      "Neurdein postcards via Cartorum, specialist collections and Paris historical blog",
+      "Roller en ligne / Sam Nieswizski skating archives",
+      "Commons Luna Park Paris / 1910 official souvenir book described in bookseller catalogue"
+    ],
+    "reason": "Park closed1946, no current map expected. 1909 La Nature engineering figure depicts track and river but is not an official dated visitor-map edition. Historical aerials are not official annual maps. No edition or year invented."
+  },
+  "shortDescriptionPolicy": "Names known only through period advertisements have concise eight-language entries naming only documented setting/offer. Long boilerplate, operating principles, invented scenery/dates and speculative experiences were excluded; per-item word counts assessed in final audit.",
+  "historicalClosureCoverage": "Scenic and Flying precise dismantling days unknown. Removed current status and upper-bound closure≤1946 preserved. Park closure/demolition timeline covers site fate; no same-day event manufactured for every item.",
+  "publication": "Pending final audit and official score. No Facebook for Luna Paris yet."
+}

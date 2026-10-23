@@ -6,7 +6,7 @@
   "userRequestedOn": "2026-10-22",
   "sitePublicationAuthorized": true,
   "facebookPublicationAuthorized": true,
-  "completedInThisBatch": 3,
+  "completedInThisBatch": 4,
   "assignedEntryIds": [
     "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
     "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
@@ -23,7 +23,18 @@
   "completedEntryIds": [
     "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
     "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
-    "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4"
+    "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+    "FR-park-f019e441-aecf-487b-93db-2b0246dce185"
   ],
-  "lastCompletedAtUtc": "2026-10-23T01:25:29.165149Z"
+  "lastCompletedAtUtc": "2026-10-23T07:43:15.084942+00:00",
+  "activeEntryId": "FR-park-6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+  "blockedEntries": [
+    {
+      "entryId": "FR-park-77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "projectedScore": 88,
+      "blocker": "media.logo-required",
+      "audit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/luna-park-paris-audit-blocked.json",
+      "sourceQuestionPending": true
+    }
+  ]
 }

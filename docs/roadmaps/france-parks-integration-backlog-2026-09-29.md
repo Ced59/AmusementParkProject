@@ -35,10 +35,10 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 52 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
-| Fiches historiques privées existantes | 10 | 7 |
+| Fiches historiques privées existantes | 10 | 6 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **139** |
+| **Total** | **225** | **138** |
 
 ## 1. Fiches publiques à compléter
 
@@ -179,7 +179,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [x] Holly Park — `1c5c0675-8d86-459c-9c7c-b2bc79c1dad4` — clôture conservée le 23 octobre 2026 ; audit final à 97/100 et annonce Facebook Published confirmée.
 - [ ] Luna Park Paris — `77106934-0f4c-4eb3-b075-4097ab6078cd`
 - [ ] Magic City Paris — `6cc196ad-27bc-444e-84e8-fb97c1baa9f0`
-- [ ] Parc Avenue — `f019e441-aecf-487b-93db-2b0246dce185`
+- [x] Parc Avenue — `f019e441-aecf-487b-93db-2b0246dce185` — clôture conservée le 23 octobre 2026 ; audit final à 97/100 et annonce Facebook Published confirmée.
 - [ ] Parc de la Toison d'Or — `66653da2-93bb-499f-95df-15e240673e58`
 - [ ] Parc de Lillom — `8167f80c-db82-49d8-91a6-bf5a1f6a6f51`
 - [ ] Parc de Lomme — `a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`
@@ -439,3 +439,8 @@ La [fiche historique](https://amusement-parks.fun/fr/park/b8ab1e68-5fe5-4bb9-898
 ### Holly Park — clôture du 23 octobre 2026
 
 La [fiche historique](https://amusement-parks.fun/fr/park/1c5c0675-8d86-459c-9c7c-b2bc79c1dad4/holly-park) est publiée et auditée à **97/100**, sans bloqueur : 19 éléments dont treize attractions, 18 médias propres avec le logo historique officiel, sept jalons sourcés et illustrés, ainsi qu’un article développé dans les huit langues. Les deux grands huit disposent chacun de trois photos distinctes. Les 22 contrôles mobiles passent et le lien Histoire fonctionne depuis la fiche normale. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124225309424431) est confirmée `Published`, sans doublon. Les lacunes restent explicites : six attractions et quatre services sans photo individuelle exploitable, seize positions précises non démontrées sur dix-neuf, deux vues générales photographiques sur cinq recherchées, aucun plan interne annuel retrouvé et aucun exploitant ou fondateur suffisamment établi. Les montages promotionnels ne sont pas comptés comme vues générales indépendantes. La dernière intégration réelle date du **2026-10-23T01:14:14.445Z**, restauration canonique des sept faits historiques. [Audit final](world-integration/evidence/france-historical-20261022/holly-park-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/holly-park-source-gaps.json). Le backlog national conserve **139 dossiers actifs : 112 principaux, 27 historiques et aucune standalone**.
+
+
+### Parc Avenue — clôture du 23 octobre 2026
+
+La [fiche historique](https://amusement-parks.fun/fr/park/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue) est publiée et auditée à **97/100**, sans bloqueur : 68 lieux dont 41 attractions fermées, deux zones, 31 médias propres avec le logo officiel, six plans annuels authentiques (1990, 1991, 1993, 1996, 1997, 2013), 17 faits sourcés et illustrés et deux articles développés dans les huit langues. Les 568 descriptions du parc, des zones et des lieux sont localisées. Les 32 pages mobiles contrôlées passent ; le lien Histoire est cliqué depuis la fiche française normale et ouvre les 17 faits. Les six fichiers de plans publics sont identiques aux originaux et 2013 est sélectionné par défaut. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124255363424431) est confirmée `Published`, sans doublon. Les lacunes restent nommées : douze attractions illustrées sur 41, quatre des douze lieux importants avec au moins trois photos, cinq lieux géolocalisés sur 68, anciennes conditions d’accès rarement conservées et millésimes de plans absents. Cinq véritables vues générales sont distinguées des gros plans. L’absence d’année-clé indexable ne bloque pas la chronologie publique. La dernière intégration réelle date du **2026-10-23T07:12:18.486Z**, restauration canonique des faits. [Audit final](world-integration/evidence/france-historical-20261022/parc-avenue-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/parc-avenue-source-gaps.json). Le backlog national conserve **138 dossiers actifs : 112 principaux, 26 historiques et aucune standalone**. Cette quatrième clôture reste sur la branche cumulative : aucune PR avant dix parcs terminés, aucune hausse de version pour ce suivi documentaire.

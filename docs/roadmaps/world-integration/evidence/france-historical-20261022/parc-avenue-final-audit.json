@@ -1,0 +1,1416 @@
+{
+  "parkId": "f019e441-aecf-487b-93db-2b0246dce185",
+  "entryId": "FR-park-f019e441-aecf-487b-93db-2b0246dce185",
+  "conversation": "Conversation France",
+  "contentAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "auditAtUtc": "2026-10-23T07:02:28.914104+00:00",
+  "freshExportAtUtc": "2026-10-23T06:58:03.3511591Z",
+  "freshExportSha256": "9ca6923e49c007ee8689a95e9bf59797925d6a5e1e029e06f1a413d13f0d5843",
+  "freshReconciliationComparisons": 907,
+  "freshReconciliationDifferences": 0,
+  "normalizations": [
+    "Date-only2012-06-23 serialized as2012-06-23T00:00:00Z, same verified opening day; no fabricated precision."
+  ],
+  "coverage": {
+    "freshAtUtc": "2026-10-23T06:58:03.3511591Z",
+    "items": 68,
+    "zones": 2,
+    "attractions": 41,
+    "attractionStatuses": {
+      "Removed": 7,
+      "ClosedDefinitively": 34
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 41,
+    "attractionsWithImage": 12,
+    "attractionImageGaps": [
+      {
+        "id": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+        "name": "Big Apple"
+      },
+      {
+        "id": "0499c83b-700b-45fe-8646-855c7d1e10a0",
+        "name": "Delta Junior"
+      },
+      {
+        "id": "1204b373-1a02-421a-b19b-912f657f8afe",
+        "name": "Galaxy"
+      },
+      {
+        "id": "073fd604-8d8d-4169-8e13-00c1cea409fd",
+        "name": "La Cité des jeux vidéo"
+      },
+      {
+        "id": "49c02c4d-8642-47d9-87ec-8da9caf5cef4",
+        "name": "La Pataugeoire"
+      },
+      {
+        "id": "b30155b6-31d9-4ab3-83ab-fb7a3851dc9b",
+        "name": "La Piscine"
+      },
+      {
+        "id": "40386015-53d4-412f-b55c-0eed078f6f6e",
+        "name": "La Piste VTT"
+      },
+      {
+        "id": "40d875a0-0126-48b0-85e2-f06cc071f105",
+        "name": "La Rivière des enfants"
+      },
+      {
+        "id": "4caa8b03-03ab-4621-aad9-5ac0f4647588",
+        "name": "La Route des héros"
+      },
+      {
+        "id": "23543439-4570-43b1-b75e-a8d445bebf0c",
+        "name": "Le Babyfoot géant"
+      },
+      {
+        "id": "3d19f21e-d0cb-4989-bed7-de669b76db6b",
+        "name": "Le Circuit Rad’eau"
+      },
+      {
+        "id": "5f2d3f6b-44a6-4e7a-a6b1-cca09fe6254c",
+        "name": "Le Circuit vélo-kangourou"
+      },
+      {
+        "id": "9877e1a1-31e1-4e24-a816-61405baba6bf",
+        "name": "Le Labyrinthe végétal"
+      },
+      {
+        "id": "522e5807-6329-4565-a610-4b4d2f02fc6b",
+        "name": "Le Manège enfantin"
+      },
+      {
+        "id": "2220f55c-4f41-41ab-b38d-5e1089bddff9",
+        "name": "Le Pays de l’exploit"
+      },
+      {
+        "id": "ba69dbd3-47b0-4b58-a1d2-cb200768523c",
+        "name": "Le Village des cabanes"
+      },
+      {
+        "id": "c1a0006f-67fe-4791-b365-dd983b9f517c",
+        "name": "Le Voltigeur"
+      },
+      {
+        "id": "07742203-c68f-4bc4-9bff-40cc5772a5a7",
+        "name": "Les Bateaux télécommandés"
+      },
+      {
+        "id": "7e6a3c09-7a94-4eb5-9a93-f990afd7dfe4",
+        "name": "Les Jeunes Mermoz"
+      },
+      {
+        "id": "01e0e2a0-8396-48d8-80c7-d5a08b212103",
+        "name": "Les Jeux d’adresse en bois"
+      },
+      {
+        "id": "41007839-6f45-46a0-aeac-a9d4dd91c147",
+        "name": "Les Petites Voitures télécommandées"
+      },
+      {
+        "id": "e6bb1def-a99d-483f-9c14-68ffc6394784",
+        "name": "Les Petits Lutins de l’espace"
+      },
+      {
+        "id": "cbab6a21-60c7-4bbd-a8c9-21b89955839d",
+        "name": "L’Échiquier géant"
+      },
+      {
+        "id": "9a8d00c6-136d-4ad1-b51a-7696a3067eb4",
+        "name": "Pierrot la Lune"
+      },
+      {
+        "id": "c16fb49a-2fde-4e91-8b70-8c7f48db7aef",
+        "name": "P’tits bouts Parc"
+      },
+      {
+        "id": "786398f3-0146-43ab-be6f-0b2582c5d883",
+        "name": "Round Up"
+      },
+      {
+        "id": "43b5cc2f-a420-4355-8b52-9fd4cad2f028",
+        "name": "Satellite"
+      },
+      {
+        "id": "07781f45-3c8e-4ee6-b010-23ed60907cdc",
+        "name": "Turbo-Jet"
+      },
+      {
+        "id": "ae651b31-fb40-4748-9081-bc0b60398c8f",
+        "name": "À la recherche de l’avion perdu"
+      }
+    ],
+    "ownedImages": 31,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "dc590d90-1f88-49bc-a278-b7ede5ccca6a",
+        "name": "Aire de pique-nique de l’entrée",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "f19782da-0f44-4a64-b2f6-37e08265f903",
+        "name": "Alouette II",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "a6f63467-512a-4a2f-b07f-9cb84bbcb304",
+        "name": "Amphithéâtre",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "d01e167a-825b-4d76-9b04-80c6737c187b",
+        "name": "Ardèche Info",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "3874568a-639f-4cda-9947-1b1dd18cabe1",
+        "name": "Aéro Gourmand",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "4705b380-1392-4f6a-ac61-8bf3751f2e48",
+        "name": "Aéronimo",
+        "category": "Animal",
+        "images": 0
+      },
+      {
+        "id": "8f46adb0-aa2d-4d85-8907-8ca5bf0f587d",
+        "name": "Aéroplane",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "db5414c1-4f09-4045-8e9a-6893f5ecb5f8",
+        "name": "Beechcraft Queen Air",
+        "category": "Other",
+        "images": 1
+      },
+      {
+        "id": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+        "name": "Big Apple",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "37cc630a-f420-4759-b6da-dff9029a88f3",
+        "name": "Breguet 941 S",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "1ff9de5d-6681-4d40-ab6d-e15fc99d3ec0",
+        "name": "City Jet",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "7f2ac9a9-56ce-44e5-8928-2cbd6a1bc58f",
+        "name": "Crazy Shake",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "0499c83b-700b-45fe-8646-855c7d1e10a0",
+        "name": "Delta Junior",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "e1a1b702-75df-46ef-9586-6345871aec7d",
+        "name": "Entrée et billetterie",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "8c305f40-9656-4155-8faf-5c80427685a5",
+        "name": "Fouga Magister",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "1204b373-1a02-421a-b19b-912f657f8afe",
+        "name": "Galaxy",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c54fb2d8-6bb5-4c44-a3b0-077557dabddd",
+        "name": "Grand 8 Familial",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "bf11803c-80c3-4d71-9a0b-6e267800b753",
+        "name": "Hélicoptère Panther",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "c172a91f-34fc-415b-b108-b4ee76f2df7a",
+        "name": "Infirmerie",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "d8944190-f965-4876-ab8a-366573a3a66d",
+        "name": "La Boutique Parc Avenue",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "073fd604-8d8d-4169-8e13-00c1cea409fd",
+        "name": "La Cité des jeux vidéo",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f8be8072-e294-4403-bd7a-2fa0f2a02457",
+        "name": "La Fontaine musicale",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "e4263e44-e0bd-4baa-bd9a-9c5c941c37a0",
+        "name": "La Mini-Ferme",
+        "category": "Animal",
+        "images": 0
+      },
+      {
+        "id": "49c02c4d-8642-47d9-87ec-8da9caf5cef4",
+        "name": "La Pataugeoire",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "b30155b6-31d9-4ab3-83ab-fb7a3851dc9b",
+        "name": "La Piscine",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "40386015-53d4-412f-b55c-0eed078f6f6e",
+        "name": "La Piste VTT",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "40d875a0-0126-48b0-85e2-f06cc071f105",
+        "name": "La Rivière des enfants",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "4caa8b03-03ab-4621-aad9-5ac0f4647588",
+        "name": "La Route des héros",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "e44eff71-c665-4b45-9126-500ff3b33203",
+        "name": "La Volière exotique",
+        "category": "Animal",
+        "images": 0
+      },
+      {
+        "id": "23543439-4570-43b1-b75e-a8d445bebf0c",
+        "name": "Le Babyfoot géant",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "372777cf-c40b-4ce0-bed2-08225da10bcd",
+        "name": "Le Bar des ailes",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "3d19f21e-d0cb-4989-bed7-de669b76db6b",
+        "name": "Le Circuit Rad’eau",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "5f2d3f6b-44a6-4e7a-a6b1-cca09fe6254c",
+        "name": "Le Circuit vélo-kangourou",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "6554004d-2b67-4bbc-8c27-491dfcf8e09d",
+        "name": "Le Cirque",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "9877e1a1-31e1-4e24-a816-61405baba6bf",
+        "name": "Le Labyrinthe végétal",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "522e5807-6329-4565-a610-4b4d2f02fc6b",
+        "name": "Le Manège enfantin",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "2220f55c-4f41-41ab-b38d-5e1089bddff9",
+        "name": "Le Pays de l’exploit",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "65739f3e-e24a-41f0-960c-d2047b4958f0",
+        "name": "Le Petit Train",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ba69dbd3-47b0-4b58-a1d2-cb200768523c",
+        "name": "Le Village des cabanes",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c1a0006f-67fe-4791-b365-dd983b9f517c",
+        "name": "Le Voltigeur",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "8f61eab7-686b-403b-82f2-0dd06ca6d50a",
+        "name": "Les Aires Aérostop",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "07742203-c68f-4bc4-9bff-40cc5772a5a7",
+        "name": "Les Bateaux télécommandés",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "7e6a3c09-7a94-4eb5-9a93-f990afd7dfe4",
+        "name": "Les Jeunes Mermoz",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "01e0e2a0-8396-48d8-80c7-d5a08b212103",
+        "name": "Les Jeux d’adresse en bois",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "41007839-6f45-46a0-aeac-a9d4dd91c147",
+        "name": "Les Petites Voitures télécommandées",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "e6bb1def-a99d-483f-9c14-68ffc6394784",
+        "name": "Les Petits Lutins de l’espace",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "fd351d9d-b887-49fe-8cc6-3f0c35a537a9",
+        "name": "Les Saveurs du Parc",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "a5cfbc05-6e4a-4fb8-aac6-d66cb8d3d83c",
+        "name": "Les Toboggans aquatiques",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "53bc502b-18f7-47a3-8abd-dcbccade31c9",
+        "name": "Looping-bar",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "d2d2c343-5198-46d7-817c-325b487d8892",
+        "name": "L’Enterprise 2",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "9f2ca1bf-5d2b-47cc-8ddc-796a7ade4e05",
+        "name": "L’Espace animations",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "cbab6a21-60c7-4bbd-a8c9-21b89955839d",
+        "name": "L’Échiquier géant",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "b4533d75-1b19-469d-adc7-45030e3ca5e1",
+        "name": "Parking",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "07e7b451-b460-416d-a23c-0be7709fd0ab",
+        "name": "Pentagliss",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "9a8d00c6-136d-4ad1-b51a-7696a3067eb4",
+        "name": "Pierrot la Lune",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c16fb49a-2fde-4e91-8b70-8c7f48db7aef",
+        "name": "P’tits bouts Parc",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "786398f3-0146-43ab-be6f-0b2582c5d883",
+        "name": "Round Up",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "9a821d16-c930-4697-a27a-6ea47d63a79c",
+        "name": "Sanitaires de Cosmos Terrasse",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "4f4c054a-2808-4769-a310-fbd91cc6b5e3",
+        "name": "Sanitaires de l’entrée",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "43b5cc2f-a420-4355-8b52-9fd4cad2f028",
+        "name": "Satellite",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "4cbde9b0-8c99-4c72-a9b5-716cb1b5a029",
+        "name": "Splash-bar",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+        "name": "Star Wars",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "829981e9-924d-464a-aa5d-5db1b3671bd9",
+        "name": "Tour Chute Libre",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "07781f45-3c8e-4ee6-b010-23ed60907cdc",
+        "name": "Turbo-Jet",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "3b719658-c3d6-480e-a216-cab10ede80fb",
+        "name": "T’PA CAP ?",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "bfd1c0ea-d7f7-427a-b7d1-6a1b19b1becd",
+        "name": "Vestiaires et douches de la piscine",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "89a025a3-5ba8-4326-8630-853b0f7c8536",
+        "name": "Vidéo Espace Voyages",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "ae651b31-fb40-4748-9081-bc0b60398c8f",
+        "name": "À la recherche de l’avion perdu",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 5,
+    "geolocationGaps": [
+      {
+        "id": "dc590d90-1f88-49bc-a278-b7ede5ccca6a",
+        "name": "Aire de pique-nique de l’entrée",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f19782da-0f44-4a64-b2f6-37e08265f903",
+        "name": "Alouette II",
+        "category": "Other",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a6f63467-512a-4a2f-b07f-9cb84bbcb304",
+        "name": "Amphithéâtre",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d01e167a-825b-4d76-9b04-80c6737c187b",
+        "name": "Ardèche Info",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "3874568a-639f-4cda-9947-1b1dd18cabe1",
+        "name": "Aéro Gourmand",
+        "category": "Restaurant",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4705b380-1392-4f6a-ac61-8bf3751f2e48",
+        "name": "Aéronimo",
+        "category": "Animal",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "db5414c1-4f09-4045-8e9a-6893f5ecb5f8",
+        "name": "Beechcraft Queen Air",
+        "category": "Other",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+        "name": "Big Apple",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "37cc630a-f420-4759-b6da-dff9029a88f3",
+        "name": "Breguet 941 S",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "7f2ac9a9-56ce-44e5-8928-2cbd6a1bc58f",
+        "name": "Crazy Shake",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "0499c83b-700b-45fe-8646-855c7d1e10a0",
+        "name": "Delta Junior",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "e1a1b702-75df-46ef-9586-6345871aec7d",
+        "name": "Entrée et billetterie",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8c305f40-9656-4155-8faf-5c80427685a5",
+        "name": "Fouga Magister",
+        "category": "Other",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "1204b373-1a02-421a-b19b-912f657f8afe",
+        "name": "Galaxy",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "bf11803c-80c3-4d71-9a0b-6e267800b753",
+        "name": "Hélicoptère Panther",
+        "category": "Other",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c172a91f-34fc-415b-b108-b4ee76f2df7a",
+        "name": "Infirmerie",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d8944190-f965-4876-ab8a-366573a3a66d",
+        "name": "La Boutique Parc Avenue",
+        "category": "Shop",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "073fd604-8d8d-4169-8e13-00c1cea409fd",
+        "name": "La Cité des jeux vidéo",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f8be8072-e294-4403-bd7a-2fa0f2a02457",
+        "name": "La Fontaine musicale",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "e4263e44-e0bd-4baa-bd9a-9c5c941c37a0",
+        "name": "La Mini-Ferme",
+        "category": "Animal",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "49c02c4d-8642-47d9-87ec-8da9caf5cef4",
+        "name": "La Pataugeoire",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "b30155b6-31d9-4ab3-83ab-fb7a3851dc9b",
+        "name": "La Piscine",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "40386015-53d4-412f-b55c-0eed078f6f6e",
+        "name": "La Piste VTT",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "40d875a0-0126-48b0-85e2-f06cc071f105",
+        "name": "La Rivière des enfants",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4caa8b03-03ab-4621-aad9-5ac0f4647588",
+        "name": "La Route des héros",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "e44eff71-c665-4b45-9126-500ff3b33203",
+        "name": "La Volière exotique",
+        "category": "Animal",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "23543439-4570-43b1-b75e-a8d445bebf0c",
+        "name": "Le Babyfoot géant",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "372777cf-c40b-4ce0-bed2-08225da10bcd",
+        "name": "Le Bar des ailes",
+        "category": "Restaurant",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "3d19f21e-d0cb-4989-bed7-de669b76db6b",
+        "name": "Le Circuit Rad’eau",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "5f2d3f6b-44a6-4e7a-a6b1-cca09fe6254c",
+        "name": "Le Circuit vélo-kangourou",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "6554004d-2b67-4bbc-8c27-491dfcf8e09d",
+        "name": "Le Cirque",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "9877e1a1-31e1-4e24-a816-61405baba6bf",
+        "name": "Le Labyrinthe végétal",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "522e5807-6329-4565-a610-4b4d2f02fc6b",
+        "name": "Le Manège enfantin",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "2220f55c-4f41-41ab-b38d-5e1089bddff9",
+        "name": "Le Pays de l’exploit",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "65739f3e-e24a-41f0-960c-d2047b4958f0",
+        "name": "Le Petit Train",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ba69dbd3-47b0-4b58-a1d2-cb200768523c",
+        "name": "Le Village des cabanes",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c1a0006f-67fe-4791-b365-dd983b9f517c",
+        "name": "Le Voltigeur",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8f61eab7-686b-403b-82f2-0dd06ca6d50a",
+        "name": "Les Aires Aérostop",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "07742203-c68f-4bc4-9bff-40cc5772a5a7",
+        "name": "Les Bateaux télécommandés",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "7e6a3c09-7a94-4eb5-9a93-f990afd7dfe4",
+        "name": "Les Jeunes Mermoz",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "01e0e2a0-8396-48d8-80c7-d5a08b212103",
+        "name": "Les Jeux d’adresse en bois",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "41007839-6f45-46a0-aeac-a9d4dd91c147",
+        "name": "Les Petites Voitures télécommandées",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "e6bb1def-a99d-483f-9c14-68ffc6394784",
+        "name": "Les Petits Lutins de l’espace",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "fd351d9d-b887-49fe-8cc6-3f0c35a537a9",
+        "name": "Les Saveurs du Parc",
+        "category": "Restaurant",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a5cfbc05-6e4a-4fb8-aac6-d66cb8d3d83c",
+        "name": "Les Toboggans aquatiques",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "53bc502b-18f7-47a3-8abd-dcbccade31c9",
+        "name": "Looping-bar",
+        "category": "Restaurant",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d2d2c343-5198-46d7-817c-325b487d8892",
+        "name": "L’Enterprise 2",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "9f2ca1bf-5d2b-47cc-8ddc-796a7ade4e05",
+        "name": "L’Espace animations",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "cbab6a21-60c7-4bbd-a8c9-21b89955839d",
+        "name": "L’Échiquier géant",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "9a8d00c6-136d-4ad1-b51a-7696a3067eb4",
+        "name": "Pierrot la Lune",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c16fb49a-2fde-4e91-8b70-8c7f48db7aef",
+        "name": "P’tits bouts Parc",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "786398f3-0146-43ab-be6f-0b2582c5d883",
+        "name": "Round Up",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "9a821d16-c930-4697-a27a-6ea47d63a79c",
+        "name": "Sanitaires de Cosmos Terrasse",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4f4c054a-2808-4769-a310-fbd91cc6b5e3",
+        "name": "Sanitaires de l’entrée",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "43b5cc2f-a420-4355-8b52-9fd4cad2f028",
+        "name": "Satellite",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4cbde9b0-8c99-4c72-a9b5-716cb1b5a029",
+        "name": "Splash-bar",
+        "category": "Restaurant",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+        "name": "Star Wars",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "829981e9-924d-464a-aa5d-5db1b3671bd9",
+        "name": "Tour Chute Libre",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "07781f45-3c8e-4ee6-b010-23ed60907cdc",
+        "name": "Turbo-Jet",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "3b719658-c3d6-480e-a216-cab10ede80fb",
+        "name": "T’PA CAP ?",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "bfd1c0ea-d7f7-427a-b7d1-6a1b19b1becd",
+        "name": "Vestiaires et douches de la piscine",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "89a025a3-5ba8-4326-8630-853b0f7c8536",
+        "name": "Vidéo Espace Voyages",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ae651b31-fb40-4748-9081-bc0b60398c8f",
+        "name": "À la recherche de l’avion perdu",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 17,
+    "parkHistory": 6,
+    "itemHistory": 11,
+    "historyWithSource": 17,
+    "historyWithImage": 17,
+    "articles": 2,
+    "officialMaps": [
+      {
+        "year": 2013,
+        "format": "Pdf",
+        "language": "fr"
+      },
+      {
+        "year": 1997,
+        "format": "Image",
+        "language": "fr"
+      },
+      {
+        "year": 1996,
+        "format": "Image",
+        "language": "fr"
+      },
+      {
+        "year": 1993,
+        "format": "Image",
+        "language": "fr"
+      },
+      {
+        "year": 1991,
+        "format": "Image",
+        "language": "fr"
+      },
+      {
+        "year": 1990,
+        "format": "Image",
+        "language": "fr"
+      }
+    ],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "parkDescriptions": 8,
+    "allItemsWith8Descriptions": 68,
+    "logo": {
+      "id": "2d02a360818b485fb7fcd906153f0777",
+      "category": "Logo",
+      "current": true,
+      "originalAuthentic": true
+    },
+    "parkMainImageId": "e50a966edfb54e3eb40a3d2ba3165a0c",
+    "generalParkPhotos": {
+      "count": 5,
+      "required": 5,
+      "imageIds": [
+        "e50a966edfb54e3eb40a3d2ba3165a0c",
+        "88b80dd6e7b54e8db7ba7278d227290a",
+        "2c2bdf16a7874885937b88c61030b506",
+        "e752eeb95c474c9a88a3913514fba25e",
+        "e01134156baa4a7f8a3310d5a9f0d2a8"
+      ],
+      "excludedPaddleboatCloseView": "89678bb143104830a6e2165816f97864"
+    },
+    "attractionsCurrent": 0,
+    "attractionsPlanned": 0,
+    "attractionsClosed": 41,
+    "accessConditionsRecorded": 1,
+    "accessConditionsChecked": 41,
+    "historyMajorFacts": 14,
+    "importantItemPhotos": {
+      "atLeastThree": 4,
+      "total": 12,
+      "items": [
+        {
+          "id": "8f46adb0-aa2d-4d85-8907-8ca5bf0f587d",
+          "name": "Aéroplane",
+          "photos": 3
+        },
+        {
+          "id": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+          "name": "Big Apple",
+          "photos": 0
+        },
+        {
+          "id": "37cc630a-f420-4759-b6da-dff9029a88f3",
+          "name": "Breguet 941 S",
+          "photos": 4
+        },
+        {
+          "id": "1ff9de5d-6681-4d40-ab6d-e15fc99d3ec0",
+          "name": "City Jet",
+          "photos": 2
+        },
+        {
+          "id": "c54fb2d8-6bb5-4c44-a3b0-077557dabddd",
+          "name": "Grand 8 Familial",
+          "photos": 3
+        },
+        {
+          "id": "2220f55c-4f41-41ab-b38d-5e1089bddff9",
+          "name": "Le Pays de l’exploit",
+          "photos": 0
+        },
+        {
+          "id": "a5cfbc05-6e4a-4fb8-aac6-d66cb8d3d83c",
+          "name": "Les Toboggans aquatiques",
+          "photos": 1
+        },
+        {
+          "id": "d2d2c343-5198-46d7-817c-325b487d8892",
+          "name": "L’Enterprise 2",
+          "photos": 1
+        },
+        {
+          "id": "07e7b451-b460-416d-a23c-0be7709fd0ab",
+          "name": "Pentagliss",
+          "photos": 1
+        },
+        {
+          "id": "9a8d00c6-136d-4ad1-b51a-7696a3067eb4",
+          "name": "Pierrot la Lune",
+          "photos": 0
+        },
+        {
+          "id": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+          "name": "Star Wars",
+          "photos": 3
+        },
+        {
+          "id": "829981e9-924d-464a-aa5d-5db1b3671bd9",
+          "name": "Tour Chute Libre",
+          "photos": 2
+        }
+      ]
+    }
+  },
+  "publicTextReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "method": "All authored bounded lots and actual Preview diffs personally read in all eight languages. Fresh full export reconciled with907working-statecomparisons and zero factual differences, then consolidated using verified subsequent Apply receipts. Final1775corpusrows and1592independentfields includingzones;32articlecaptions rewritten independently fromimagegallery. All source-limitedshorttexts have named evidence. No mechanical wording or repeated paragraphbody left after headings/entitynames stripped.",
+    "sourceReviewFiles": [
+      "01-core-lifecycle-personal-preview-review.json",
+      "03-inventory-rides-v2-personal-preview-review.json",
+      "03-inventory-services-v2-personal-preview-review.json",
+      "03-inventory-water-play-v2-personal-preview-review.json",
+      "03-reconcile-map2013-personal-preview-review.json",
+      "03-verified-geolocation-personal-preview-review.json",
+      "04-animals-aircraft-copy-v2-personal-preview-review.json",
+      "04-coaster-copy-personal-preview-review.json",
+      "04-coaster-copy-v2-personal-preview-review.json",
+      "04-final-copy-cleanup-personal-preview-review.json",
+      "04-food-shop-copy-personal-preview-review.json",
+      "04-historic-copy-1-v2-personal-preview-review.json",
+      "04-historic-copy-2-personal-preview-review.json",
+      "04-historic-copy-3-personal-preview-review.json",
+      "04-historic-copy-4-personal-preview-review.json",
+      "04-last-editorial-personal-preview-review.json",
+      "04-modern-games-copy-personal-preview-review.json",
+      "04-old-games-copy-personal-preview-review.json",
+      "04-park-copy-v2-personal-preview-review.json",
+      "04-service-copy-1-personal-preview-review.json",
+      "04-shows-copy-personal-preview-review.json",
+      "04-walking-copy-personal-preview-review.json",
+      "04-water-copy-v2-personal-preview-review.json",
+      "04-zone-copy-personal-preview-review.json",
+      "05-chance-biography-personal-preview-review.json",
+      "05-map-metadata-personal-preview-review.json",
+      "05-references-v2-personal-preview-review.json",
+      "08-breguet-article-personal-preview-review.json",
+      "08-item-history-a-personal-preview-review.json",
+      "08-item-history-b-personal-preview-review.json",
+      "08-park-article-personal-preview-review.json",
+      "08-park-history-personal-preview-review.json",
+      "09-article-captions-personal-preview-review.json",
+      "09-corpus-correction-personal-preview-review.json",
+      "09-history-canonical-repair-personal-preview-review.json",
+      "09-publish-dependent-content-personal-preview-review.json",
+      "09-publish-images-personal-preview-review.json",
+      "09-publish-items-personal-preview-review.json",
+      "09-publish-park-personal-preview-review.json",
+      "09-transport-copy-personal-preview-review.json"
+    ],
+    "encodingIssues": 0,
+    "paragraphDuplicateGroups": 0,
+    "mechanicalFlags": 0,
+    "remainingRepetitionBlockers": 0,
+    "articleCaptionCorrection": "09-article-captions-apply.receipt.json",
+    "transportNarrativeCorrection": "09-transport-copy-apply.receipt.json",
+    "canonicalCaptionAliases": 0,
+    "independentRows": 1592
+  },
+  "sourceGaps": "parc-avenue-source-gaps.json",
+  "depthExceptions": "parc-avenue-editorial-source-limits.json",
+  "nextGates": [],
+  "projectedPrevisibilityScore": {
+    "completenessScore": 98,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 99,
+    "earnedPoints": 97,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "finalPrevisibilityRecheckAtUtc": "2026-10-23T07:09:32.737113+00:00",
+  "auditedConsolidatedSha256": "093ee328775880e5412fa495bc48c1c7d318dbfd3ae65cbe9e8a83782b26b0f5",
+  "finalAuditPassed": true,
+  "finalAuditAtUtc": "2026-10-23T07:42:23.623470+00:00",
+  "lastDataIntegrationAtUtc": "2026-10-23T07:12:18.4860281Z",
+  "realPostPublicationScore": {
+    "completenessScore": 97,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 108,
+    "earnedPoints": 105,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/park/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue",
+  "publicationVerification": {
+    "officialSearchVisible": true,
+    "officialSearchStatus": "ClosedDefinitively",
+    "officialSearchReview": "Validated",
+    "mobilePagesChecked": 32,
+    "mobileLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "renderErrors": 0,
+    "technicalIdentifiersExposed": 0,
+    "brokenImages": 0,
+    "horizontalOverflowPages": 0,
+    "screenshotsPersonallyViewed": [
+      "park-fr",
+      "article-avenue-definitive-closure-2014-fr",
+      "map-fr",
+      "normal-fr-history-click",
+      "official-map-controls"
+    ],
+    "normalHistoryClick": {
+      "checkedAtUtc": "2026-10-23T07:39:43.144668+00:00",
+      "url": "https://amusement-parks.fun/fr/park/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue",
+      "apiResponses": [
+        {
+          "url": "https://amusement-parks.fun/api/parks/f019e441-aecf-487b-93db-2b0246dce185/detail-summary",
+          "status": 200,
+          "hasPublicHistory": true,
+          "requestLanguage": "fr-FR",
+          "age": "4"
+        }
+      ],
+      "status": 200,
+      "buttons": [
+        "Parcs",
+        "m",
+        "Connexion / Inscription",
+        "FR",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Ajouter une visite",
+        "Retour à la liste",
+        "Lieux du parc",
+        "Copier",
+        "Plus",
+        "Profil",
+        " Accepter les cookies optionnels ",
+        " Continuer avec les cookies nécessaires ",
+        ""
+      ],
+      "historyLinkCount": 1,
+      "parkTitle": [
+        "Parc Avenue"
+      ],
+      "historyHref": "/fr/park/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue/history",
+      "destination": "https://amusement-parks.fun/fr/park/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue/history",
+      "historyTitle": [
+        "L'histoire de Parc Avenue"
+      ],
+      "historyBodyChars": 3362
+    },
+    "historyPublishedFacts": 17,
+    "historySourcedFacts": 17,
+    "historyMajorFacts": 14,
+    "historyCanonicalRepairOperationId": "1f1983cd-c563-4e80-8c29-0a221fedf6de",
+    "historicalYearExplorerGap": "Aucune année-clé indexable dans le diagnostic. Le lien Histoire fonctionne depuis la fiche normale et ouvre17faits; les deuxarticles sont publics.",
+    "idempotenceOperationId": "ca96cda2-d72c-412c-bad2-080a5924d211",
+    "idempotenceCounts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 130,
+      "warnings": 0,
+      "errors": 0
+    },
+    "publicApiRequests": 11,
+    "officialMapsAnonymousIntegrity": [
+      {
+        "id": "parc-avenue-plan-2013-fr",
+        "year": 2013,
+        "checkedAtUtc": "2026-10-23T07:12:28.420153+00:00",
+        "status": 200,
+        "mime": "application/pdf",
+        "size": 2826958,
+        "exportedSizeMatches": true,
+        "sourceBytesMatch": true,
+        "sha256": "d3f304962013553d35d74fd2049b380db575241258d0d7413cb1b60d653ae926",
+        "url": "https://amusement-parks.fun/api/parks/f019e441-aecf-487b-93db-2b0246dce185/official-maps/parc-avenue-plan-2013-fr/file"
+      },
+      {
+        "id": "aerocity-plan-1997-fr",
+        "year": 1997,
+        "checkedAtUtc": "2026-10-23T07:12:29.348268+00:00",
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 311015,
+        "exportedSizeMatches": true,
+        "sourceBytesMatch": true,
+        "sha256": "bd6df8f4b93c9c4de750ee21e1ed2c7e5aba355864fe7b33c0d591439e74f153",
+        "url": "https://amusement-parks.fun/api/parks/f019e441-aecf-487b-93db-2b0246dce185/official-maps/aerocity-plan-1997-fr/file"
+      },
+      {
+        "id": "aerocity-plan-1996-fr",
+        "year": 1996,
+        "checkedAtUtc": "2026-10-23T07:12:29.828999+00:00",
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 341579,
+        "exportedSizeMatches": true,
+        "sourceBytesMatch": true,
+        "sha256": "7822340e91d82a739e61ebf8488e5ca5a52c099795a410029f9310ed38ff00c9",
+        "url": "https://amusement-parks.fun/api/parks/f019e441-aecf-487b-93db-2b0246dce185/official-maps/aerocity-plan-1996-fr/file"
+      },
+      {
+        "id": "aerocity-plan-1993-fr",
+        "year": 1993,
+        "checkedAtUtc": "2026-10-23T07:12:30.117075+00:00",
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 277763,
+        "exportedSizeMatches": true,
+        "sourceBytesMatch": true,
+        "sha256": "1ca00aff7049e9338db512946d439e39c2496d835384c36c01a42cb287eedf7c",
+        "url": "https://amusement-parks.fun/api/parks/f019e441-aecf-487b-93db-2b0246dce185/official-maps/aerocity-plan-1993-fr/file"
+      },
+      {
+        "id": "aerocity-plan-1991-fr",
+        "year": 1991,
+        "checkedAtUtc": "2026-10-23T07:12:30.366852+00:00",
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 306474,
+        "exportedSizeMatches": true,
+        "sourceBytesMatch": true,
+        "sha256": "f16afcc7dc6c18291e55964b4ef3d7b3c81f52e7485dbbe7ed8a78df46e452fb",
+        "url": "https://amusement-parks.fun/api/parks/f019e441-aecf-487b-93db-2b0246dce185/official-maps/aerocity-plan-1991-fr/file"
+      },
+      {
+        "id": "aerocity-plan-1990-fr",
+        "year": 1990,
+        "checkedAtUtc": "2026-10-23T07:12:30.532882+00:00",
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 366177,
+        "exportedSizeMatches": true,
+        "sourceBytesMatch": true,
+        "sha256": "17924071339f05463f84023209dd71eb43056dda3f89ce00bdf97681069ff133",
+        "url": "https://amusement-parks.fun/api/parks/f019e441-aecf-487b-93db-2b0246dce185/official-maps/aerocity-plan-1990-fr/file"
+      }
+    ],
+    "officialMapControls": {
+      "checkedAtUtc": "2026-10-23T07:27:03.972660+00:00",
+      "url": "https://amusement-parks.fun/fr/park/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue/map",
+      "status": 200,
+      "selects": [
+        {
+          "value": "2013",
+          "text": "2013",
+          "options": [
+            {
+              "value": "2013",
+              "text": "2013"
+            },
+            {
+              "value": "1997",
+              "text": "1997"
+            },
+            {
+              "value": "1996",
+              "text": "1996"
+            },
+            {
+              "value": "1993",
+              "text": "1993"
+            },
+            {
+              "value": "1991",
+              "text": "1991"
+            },
+            {
+              "value": "1990",
+              "text": "1990"
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        "Parcs",
+        "m",
+        "Connexion / Inscription",
+        "FR",
+        "",
+        "Carte interactive5",
+        "Cartes officielles6",
+        "Copier",
+        "Plus",
+        "Profil",
+        ""
+      ],
+      "links": [
+        {
+          "text": "Voir la carte",
+          "url": "https://amusement-parks.fun/api/parks/f019e441-aecf-487b-93db-2b0246dce185/official-maps/parc-avenue-plan-2013-fr/file"
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    "facebookPublicationId": "272764fac9444a9f8e25cf1ea97fce65",
+    "facebookStatus": "Published",
+    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122124255363424431",
+    "facebookAction": "Annonce automatique existante confirmée Published; aucun doublon envoyé.",
+    "cacheResolution": "Le premier HTML SSR contenait hasPublicHistory:false; après renouvellement normal, clic Histoire réussi sans paramètre de contournement ni mutation artificielle."
+  },
+  "proofSha256": {
+    "09-fresh-full-export.json": "9ca6923e49c007ee8689a95e9bf59797925d6a5e1e029e06f1a413d13f0d5843",
+    "09-text-reconciliation.json": "6c31ab1cbeedc6fab6bde5355a41527112684c203f3029abe42295fdea11d135",
+    "09-consolidation-proof.json": "e8ab23b3d8750645e0f5af95d4e33a1530471ab20b0a726c56b08ef0d5f972c6",
+    "09-consolidated-audit-graph.json": "093ee328775880e5412fa495bc48c1c7d318dbfd3ae65cbe9e8a83782b26b0f5",
+    "09-published-completeness.json": "7be356da6543b9392e74f3137c97aa77c58526bd3b37151786f38cd54eb8c718",
+    "09-final-idempotence.preview.json": "1a19b10530601dcf04ed4c5d7e5b942e450762042690933adbbf5f8c710898c1",
+    "09-history-diagnostics-after-repair.json": "7921c967022b1a59bd2723ade40ca6526c505a392cdd999ab5571c9ac7d29aaf",
+    "09-facebook-resolve.json": "c4007eaf52d592a53b05e167f963dada3b60aa394d8d8727fdace91313152936",
+    "09-history-canonical-repair-apply.receipt.json": "22ee6013d9166b7755cf1bfbead36a855be06c49c529befb2b1e1429ba94308c",
+    "09-final-search-exact.json": "2ccfad66327b79f194e98bd6dcfce39e7acaa32a6f08fa09ef19bc1bc40d5fe4",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "b8b4da6762596caf2c2efe74cce98665585c11c2bfc51b09792da30ed0c56648",
+    "public-verification/api-report.json": "d6f3a59c76750c22ed237069a51ad6846510fe6dcb921478ca83674401be8eaf",
+    "public-verification/normal-fr-history-click.json": "0f6a2e68f60fb1cabab9601d34955ab33b7047ab6a41e3b4c7b80bee52bb2501",
+    "public-verification/maps-public-integrity.json": "9eb41e21608fcc088f8e71b59b40220431719432299a747d1d46a9b21da1ff17",
+    "public-verification/official-map-controls.json": "a611bfe5a718cacec33715ef7ae9838ee48d3890853d2c321fa8337a0b4c27a7",
+    "09-final-repetitions.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  }
+}
