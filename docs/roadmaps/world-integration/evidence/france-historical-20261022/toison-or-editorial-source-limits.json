@@ -34,5 +34,101 @@
     "paragraphs": 3,
     "headings": 2,
     "reason": "Three paragraphs: individually inspected inauguration photo, period operator plan and independently sourced 1994 relocation to Nigloland. No mechanical operating sequence or unsupported exact relocation day."
+  },
+  "Manège ancien": {
+    "languages": 8,
+    "paragraphs": 3,
+    "headings": 2,
+    "reason": "Three paragraphs supported by personally inspected period postcard, undated period press photograph, specialist relocation report and Jeremy Thompson 2010 photo. No undocumented manufacturing date, original maker or later Corsica location asserted."
+  },
+  "Cinéma 3 Dimensions": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Two-paragraph source-limited notices: original 1989 plan, 2026 witness retrospective, operating-period photographs and specialist inventory. No film programme, diver names, manufactured exact dates or unsupported maze superlative added. Specific archive searches produced no deeper reliable programme or individual views of maze; factual limits retained."
+  },
+  "Plongeurs d’Acapulco": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Two-paragraph source-limited notices: original 1989 plan, 2026 witness retrospective, operating-period photographs and specialist inventory. No film programme, diver names, manufactured exact dates or unsupported maze superlative added. Specific archive searches produced no deeper reliable programme or individual views of maze; factual limits retained."
+  },
+  "Labyrinthe": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Two-paragraph source-limited notices: original 1989 plan, 2026 witness retrospective, operating-period photographs and specialist inventory. No film programme, diver names, manufactured exact dates or unsupported maze superlative added. Specific archive searches produced no deeper reliable programme or individual views of maze; factual limits retained."
+  },
+  "Théâtre d’Homère": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Named venue with surviving architecture and actual diving-show use, two specific paragraphs from operator plan and2020/2026photographs. No unsupported modern performance programme."
+  },
+  "Château des Enfants": {
+    "languages": 8,
+    "paragraphs": 1,
+    "reason": "Explicit very short archive notices. Named and positioned by original1989operatorplan, corroborated historical inventory; dedicated quoted-name searches, press, operator-bookletcatalogue and specialist records yielded no reliable individual scenes, game rules, machine list, age restrictions or exact operating dates. Preserve only documented identity, spelling and plan geography; no invented experience or padded paragraphs. Candidate FastFood is mentioned only as map landmark, not silently integrated as proven operating restaurant."
+  },
+  "Télé Rally": {
+    "languages": 8,
+    "paragraphs": 1,
+    "reason": "Explicit very short archive notices. Named and positioned by original1989operatorplan, corroborated historical inventory; dedicated quoted-name searches, press, operator-bookletcatalogue and specialist records yielded no reliable individual scenes, game rules, machine list, age restrictions or exact operating dates. Preserve only documented identity, spelling and plan geography; no invented experience or padded paragraphs. Candidate FastFood is mentioned only as map landmark, not silently integrated as proven operating restaurant."
+  },
+  "Tunnel d’illusion": {
+    "languages": 8,
+    "paragraphs": 1,
+    "reason": "Explicit very short archive notices. Named and positioned by original1989operatorplan, corroborated historical inventory; dedicated quoted-name searches, press, operator-bookletcatalogue and specialist records yielded no reliable individual scenes, game rules, machine list, age restrictions or exact operating dates. Preserve only documented identity, spelling and plan geography; no invented experience or padded paragraphs. Candidate FastFood is mentioned only as map landmark, not silently integrated as proven operating restaurant."
+  },
+  "Jeux d’arcade": {
+    "languages": 8,
+    "paragraphs": 1,
+    "reason": "Explicit very short archive notices. Named and positioned by original1989operatorplan, corroborated historical inventory; dedicated quoted-name searches, press, operator-bookletcatalogue and specialist records yielded no reliable individual scenes, game rules, machine list, age restrictions or exact operating dates. Preserve only documented identity, spelling and plan geography; no invented experience or padded paragraphs. Candidate FastFood is mentioned only as map landmark, not silently integrated as proven operating restaurant."
+  },
+  "Circuit de quads": {
+    "languages": 8,
+    "paragraphs": 1,
+    "reason": "One or two specific paragraphs per entity, bounded by authentic1989plan,2026witnessreport and current official Dijon tourism page. No quad model/age limit, golf hole count, remote-control boat rules or exact demolished position found after source searches; no filler added. Current municipal mini-golf continuity explicitly unproved."
+  },
+  "Mini-golf": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "One or two specific paragraphs per entity, bounded by authentic1989plan,2026witnessreport and current official Dijon tourism page. No quad model/age limit, golf hole count, remote-control boat rules or exact demolished position found after source searches; no filler added. Current municipal mini-golf continuity explicitly unproved."
+  },
+  "Bateaux radiocommandés": {
+    "languages": 8,
+    "paragraphs": 1,
+    "reason": "One or two specific paragraphs per entity, bounded by authentic1989plan,2026witnessreport and current official Dijon tourism page. No quad model/age limit, golf hole count, remote-control boat rules or exact demolished position found after source searches; no filler added. Current municipal mini-golf continuity explicitly unproved."
+  },
+  "Circuit des Tacots": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "One or two specific paragraphs per entity, bounded by authentic1989plan,2026witnessreport and current official Dijon tourism page. No quad model/age limit, golf hole count, remote-control boat rules or exact demolished position found after source searches; no filler added. Current municipal mini-golf continuity explicitly unproved."
+  },
+  "Pédalos": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Two specific paragraphs per entity from personally viewed historical photographs/postcard, operator1989plan and France3retrospective. Entrance only partly demolished in2010s; no invented exactyear. Argonef explicitly attributed to pre-openingplan, not asserted as proven operating-era commercialname. Pedal boat1991addition supported by contemporarypress and retrospective; no technical specs or fictional menu."
+  },
+  "Entrée du Parc de la Toison d’Or": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Two specific paragraphs per entity from personally viewed historical photographs/postcard, operator1989plan and France3retrospective. Entrance only partly demolished in2010s; no invented exactyear. Argonef explicitly attributed to pre-openingplan, not asserted as proven operating-era commercialname. Pedal boat1991addition supported by contemporarypress and retrospective; no technical specs or fictional menu."
+  },
+  "Crêperie de la galère grecque": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Two specific paragraphs per entity from personally viewed historical photographs/postcard, operator1989plan and France3retrospective. Entrance only partly demolished in2010s; no invented exactyear. Argonef explicitly attributed to pre-openingplan, not asserted as proven operating-era commercialname. Pedal boat1991addition supported by contemporarypress and retrospective; no technical specs or fictional menu."
+  },
+  "Manège de noix": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Two substantive paragraphs per relocated ride, limited to verified Dijon origin, Mack identity and primary1993Nigloland brochure. Original Dijon commercial names and exact scenery remain unproved. Later Nigloland appearance explicitly dated/contextualized; no Dijon technical specifications inferred from later configuration."
+  },
+  "Manège de bateaux": {
+    "languages": 8,
+    "paragraphs": 2,
+    "reason": "Two substantive paragraphs per relocated ride, limited to verified Dijon origin, Mack identity and primary1993Nigloland brochure. Original Dijon commercial names and exact scenery remain unproved. Later Nigloland appearance explicitly dated/contextualized; no Dijon technical specifications inferred from later configuration."
+  },
+  "Monde des Enfants": {
+    "languages": 8,
+    "paragraphs": 1,
+    "reason": "Only authentic1989map and corroborated inventory allow this sector description; no invented independent opening date, theming narrative or current activity."
   }
 }

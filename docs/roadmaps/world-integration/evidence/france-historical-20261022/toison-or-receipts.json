@@ -388,6 +388,724 @@
         "year"
       ],
       "summary": "Toison d’Or : plan officiel du projet de 1989 rattaché en privé, titres et textes alternatifs dans les huit langues ; audit final restant."
+    },
+    {
+      "eventId": "apply-219134d6-c978-43b6-ae3f-a5559a9b3ee0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T10:20:22.2475033Z",
+      "appliedAt": "2026-10-23T10:20:22.247Z",
+      "receiptFile": "04-montgolfieres-apply.receipt.json",
+      "receiptSha256": "b27b8fc96acd4e7065fd9c021dd263f3702d61add0c4c8c392ab51d88bda104c",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.manufacturerId",
+        "attractionDetails.model",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Toison d’Or : huit descriptions des Montgolfières et rattachement au constructeur Zamperla existant ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-27e62aa7e5824541a2984d10f4b9e57f-2026-10-23T102609.255Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T10:26:09.255Z",
+      "appliedAt": "2026-10-23T10:26:09.255Z",
+      "receiptFile": "photo-12-montgolfieres-dijon-import-receipt.json",
+      "receiptSha256": "45d411390c7b2db8eae25794964d731ada00eee4cefff79607748242382db28a",
+      "imageId": "27e62aa7e5824541a2984d10f4b9e57f",
+      "ownerId": "4d62f970-211e-4645-ac88-f9a359a2af2b",
+      "createdAt": "2026-10-23T10:26:05.306Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Les_montgolfi%C3%A8res.jpg",
+      "summary": "Import privé du média historique photo-12-montgolfieres-dijon, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e31f7946b3b840f2a2c22157f8934261-2026-10-23T102623.301Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T10:26:23.301Z",
+      "appliedAt": "2026-10-23T10:26:23.301Z",
+      "receiptFile": "photo-13-montgolfieres-inauguration-import-receipt.json",
+      "receiptSha256": "8d9a5b508434f86b91d3e589bb0045652fd546233fd0304f18a6c1c0219748d6",
+      "imageId": "e31f7946b3b840f2a2c22157f8934261",
+      "ownerId": "4d62f970-211e-4645-ac88-f9a359a2af2b",
+      "createdAt": "2026-10-23T10:26:19.865Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/CiRTxao6ALeXzSRy8x1AOP0YKsE/0x163:2532x1588/800x450/filters:format(webp)/regions/2026/03/27/69c670c86558c814875423.jpg",
+      "summary": "Import privé du média historique photo-13-montgolfieres-inauguration, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-7c261070830b4859a2548f0c3ffa3a8f-2026-10-23T102637.114Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T10:26:37.114Z",
+      "appliedAt": "2026-10-23T10:26:37.114Z",
+      "receiptFile": "photo-14-montgolfieres-nigloland-import-receipt.json",
+      "receiptSha256": "9f6f7af0d85f8b7f2956fd1e398eebd1e7c2d70e2d086df20a3485a85486c230",
+      "imageId": "7c261070830b4859a2548f0c3ffa3a8f",
+      "ownerId": "4d62f970-211e-4645-ac88-f9a359a2af2b",
+      "createdAt": "2026-10-23T10:26:33.687Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/hfLVoolbTQDKKEmpsrbvzC3SOSI/0x0:1920x1080/800x450/filters:format(webp)/regions/2026/03/24/sjt-parc-d-attraction-de-la-toison-d-or-edr-fc-fevrier-2026-00-13-05-15-69c3173e25da6587968602.jpg",
+      "summary": "Import privé du média historique photo-14-montgolfieres-nigloland, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4a67f62ff79a46e3a1811c4e62715bde-2026-10-23T102651.040Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T10:26:51.04Z",
+      "appliedAt": "2026-10-23T10:26:51.040Z",
+      "receiptFile": "photo-15-plongeurs-import-receipt.json",
+      "receiptSha256": "700b2466fd84bba01c96db2f7e08fc80a0130cbd71a6105077f3516a275c3d48",
+      "imageId": "4a67f62ff79a46e3a1811c4e62715bde",
+      "ownerId": "f602fba4-b3c5-4c1c-afb8-0e89878e5820",
+      "createdAt": "2026-10-23T10:26:47.647Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/tsbXxyzfEhyrBqOk7anisKnLmLY/94x0:3402x4961/400x600/filters:format(webp)/regions/2026/03/27/69c671ffdd2e1548357736.jpg",
+      "summary": "Import privé du média historique photo-15-plongeurs, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4d34e62dd7d346d5ba4aadf900c9c245-2026-10-23T102705.436Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T10:27:05.436Z",
+      "appliedAt": "2026-10-23T10:27:05.436Z",
+      "receiptFile": "photo-16-cinema-import-receipt.json",
+      "receiptSha256": "4511614c2ba568e294a24723cea7e9ed5e2091a46e6750761b14546abb60b003",
+      "imageId": "4d34e62dd7d346d5ba4aadf900c9c245",
+      "ownerId": "8c1ff248-a7be-44e7-b38b-939508bb5fd4",
+      "createdAt": "2026-10-23T10:27:01.851Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/D_pKoB7Htn1knW3w3N2bo1yyjRs/0x143:2500x1550/800x450/filters:format(webp)/regions/2026/03/27/69c6c1fc3c48d235951865.jpg",
+      "summary": "Import privé du média historique photo-16-cinema, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-1e6800fce27a482182cdb0d99e25f5e2-2026-10-23T102719.425Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T10:27:19.425Z",
+      "appliedAt": "2026-10-23T10:27:19.425Z",
+      "receiptFile": "photo-17-pedalos-import-receipt.json",
+      "receiptSha256": "5fb9d96e0425e15e9aaab1283c55478f7f55a72c738eb582f61b80499b748417",
+      "imageId": "1e6800fce27a482182cdb0d99e25f5e2",
+      "ownerId": "a20ea995-b172-45a1-b335-a7d01da5883a",
+      "createdAt": "2026-10-23T10:27:16.033Z",
+      "sourceUrl": "https://cdn-s-www.leprogres.fr/images/55BCCDF3-E349-4A56-B01A-2845E795A5E3/NW_detail/l-arrivee-des-pedalos-pour-la-deuxieme-saison-promet-d-agreables-moments-sur-le-lac-photo-lbp-philippe-maupetit-1607022380.jpg",
+      "summary": "Import privé du média historique photo-17-pedalos, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-39c1e316-04eb-44e6-acb4-caaa9f0da256",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T10:30:30.7976776Z",
+      "appliedAt": "2026-10-23T10:30:30.797Z",
+      "receiptFile": "04-carousel-apply.receipt.json",
+      "receiptSha256": "d7ebeb2e2b5a09fc2bdc899fce82044fe04b6bacff2a8eb387193f85df53a641",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Toison d’Or : huit descriptions du Manège ancien, avec son passage au Jardin d’Acclimatation ; audit final restant."
+    },
+    {
+      "eventId": "apply-3514c319-d590-4b9b-be5f-641a5e02b307",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T10:35:19.6675697Z",
+      "appliedAt": "2026-10-23T10:35:19.667Z",
+      "receiptFile": "04-shows-maze-apply.receipt.json",
+      "receiptSha256": "33bb984a30b58f90d5864e0c8657496d64c52da32151bac7ee6edc0dce02e277",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Toison d’Or : huit notices pour le cinéma 3D, les Plongeurs d’Acapulco et le Labyrinthe ; audit final restant."
+    },
+    {
+      "eventId": "update-photo-e8e4661c5f0e499a841d47366f8ebec6-2026-10-23T103751.259Z",
+      "action": "UpdatePhotoMetadata",
+      "rawAppliedAtUtc": "2026-10-23T10:37:51.259Z",
+      "appliedAt": "2026-10-23T10:37:51.259Z",
+      "receiptFile": "05-photo-03-pedalo-entree-owner-metadata-update-receipt.json",
+      "receiptSha256": "a235ba8adec3877c3328b5889c02c50c3c69b1acfa1d1007501d909617f30230",
+      "imageId": "e8e4661c5f0e499a841d47366f8ebec6",
+      "ownerId": "202685c3-653b-4a13-84d1-e0747cdd63b8",
+      "createdAt": "2026-10-23T10:01:31.851Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/tEGbnc7CcGf0e2g0KKLIapEeaA8/0x82:2488x1482/800x450/filters:format(webp)/regions/2026/03/27/69c68728362cb642169945.jpg",
+      "summary": "Toison d’Or : rattachement précis et légendes du média privé 05-photo-03-pedalo-entree-owner ; aucun nouvel upload, audit final restant."
+    },
+    {
+      "eventId": "update-photo-4469ab2562a440d6aa42a5d523010ee8-2026-10-23T103802.336Z",
+      "action": "UpdatePhotoMetadata",
+      "rawAppliedAtUtc": "2026-10-23T10:38:02.336Z",
+      "appliedAt": "2026-10-23T10:38:02.336Z",
+      "receiptFile": "05-photo-04-colonnade-owner-metadata-update-receipt.json",
+      "receiptSha256": "ed7ccc5311dcfcbd916f5dddcedbcf9ea08cbca9b0590c3b89e8a026dd44830f",
+      "imageId": "4469ab2562a440d6aa42a5d523010ee8",
+      "ownerId": "839ba236-e0b3-45c4-995e-56b6aa293f19",
+      "createdAt": "2026-10-23T10:01:46.108Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/HYhe53_CI9r7ebwMTUbkAbZQG34/0x0:1920x1080/800x450/filters:format(webp)/regions/2026/03/24/sjt-parc-d-attraction-de-la-toison-d-or-edr-fc-fevrier-2026-00-04-39-23-69c29e761acaa283915288.jpg",
+      "summary": "Toison d’Or : rattachement précis et légendes du média privé 05-photo-04-colonnade-owner ; aucun nouvel upload, audit final restant."
+    },
+    {
+      "eventId": "apply-1bbaf637-f48b-443b-8764-19767ba90928",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T10:44:06.3047705Z",
+      "appliedAt": "2026-10-23T10:44:06.304Z",
+      "receiptFile": "03-theatre-geolocation-apply.receipt.json",
+      "receiptSha256": "a75e6e5cc951df263956e6b3aae9a2fa9fd7b9b23afd5c48b0aa0324b394f57b",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "position"
+      ],
+      "summary": "Toison d’Or : géolocalisation du Théâtre d’Homère sur son emprise conservée, 21 lacunes géographiques nommées ; audit final restant."
+    },
+    {
+      "eventId": "apply-c383f9ef-6c12-4b5d-b7d5-3d8c92873556",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T10:46:31.5671867Z",
+      "appliedAt": "2026-10-23T10:46:31.567Z",
+      "receiptFile": "03-relocated-mack-rides-apply.receipt.json",
+      "receiptSha256": "596653495ca689f47b6e40c2a12f7fae2740c60e098c161753d48019947ed427",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.closingDateText",
+        "attractionDetails.externalSource",
+        "attractionDetails.manufacturerId",
+        "attractionDetails.model",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "type"
+      ],
+      "summary": "Toison d’Or : deux attractions Mack historiques qualifiées, devenues P’tit Poucet et Rivière Enchantée à Nigloland ; appellations dijonnaises inconnues, audit final restant."
+    },
+    {
+      "eventId": "apply-79363d58-38b6-49e5-b293-9a1f675184bf",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T10:55:41.435047Z",
+      "appliedAt": "2026-10-23T10:55:41.435Z",
+      "receiptFile": "04-theatre-show-context-apply.receipt.json",
+      "receiptSha256": "b450255e19b8d70cef3a2281f406368a913983633a567d8af9f44a153343d871",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt",
+        "position"
+      ],
+      "summary": "Toison d’Or : Théâtre d’Homère et spectacle des plongeurs explicitement rattachés au même lieu vérifié, descriptions en huit langues ; audit final restant."
+    },
+    {
+      "eventId": "apply-dcfc357f-f253-4aa7-a1d9-2c51a242c667",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:02:44.3156844Z",
+      "appliedAt": "2026-10-23T11:02:44.315Z",
+      "receiptFile": "04-small-archive-notices-apply.receipt.json",
+      "receiptSha256": "316693ea402c6d4bd7fa678cef51b4a3da3506c73a1827a5607b4cc18b038af1",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Toison d’Or : quatre notices historiques courtes dans les huit langues, limites documentaires explicites ; audit final restant."
+    },
+    {
+      "eventId": "apply-62256746-1b47-4bd3-9ec4-f519ffa74b4d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:10:32.8753681Z",
+      "appliedAt": "2026-10-23T11:10:32.875Z",
+      "receiptFile": "04-ground-games-apply.receipt.json",
+      "receiptSha256": "c7f9697fe03546bf91dd7a68d53b788c4c9a58a849f486d1fb7a82c9c4bc6f48",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Toison d’Or : quatre notices historiques de jeux et parcours, huit langues, sources et lacunes documentées."
+    },
+    {
+      "eventId": "apply-bc228b27-2af6-4894-91cd-7cae664722c1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:12:14.9132396Z",
+      "appliedAt": "2026-10-23T11:12:14.913Z",
+      "receiptFile": "04-lake-entrance-apply.receipt.json",
+      "receiptSha256": "9e8e2984d955abca112bded1c9676da7a7a74713786d4aef0d2b10f8225525e3",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Toison d’Or : pédalos, entrée et crêperie de la galère, notices historiques en huit langues."
+    },
+    {
+      "eventId": "apply-6c2ea2ee-aac8-4dd7-a80b-1269c9cc64ad",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:13:27.237516Z",
+      "appliedAt": "2026-10-23T11:13:27.237Z",
+      "receiptFile": "04-mack-legacy-apply.receipt.json",
+      "receiptSha256": "4122b1fbc275ccc00ecb21e2b885112e8a4bc61f3f314d70d4667cea829574f5",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Toison d’Or : histoire des deux manèges Mack transférés à Nigloland, huit langues."
+    },
+    {
+      "eventId": "apply-a53deed6-6a4a-4ba1-b3cb-50d5ab99530b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:14:47.4191695Z",
+      "appliedAt": "2026-10-23T11:14:47.419Z",
+      "receiptFile": "04-childrens-zone-apply.receipt.json",
+      "receiptSha256": "690700cbdf2ee829865c64c6a7393db0317a19200609e9d67ee6b5aea0b2a958",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Toison d’Or : description du Monde des Enfants en huit langues, périmètre historique sourcé."
+    },
+    {
+      "eventId": "import-photo-0549a891ae8f4ca8adfdb15673f1ce51-2026-10-23T111502.638Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:15:02.638Z",
+      "appliedAt": "2026-10-23T11:15:02.638Z",
+      "receiptFile": "photo-18-train-rails-import-receipt.json",
+      "receiptSha256": "c5cf94d1b3782499dfbfd78c318115711c3104a54e5580ea1427c6499c3a6d35",
+      "imageId": "0549a891ae8f4ca8adfdb15673f1ce51",
+      "ownerId": "885385dc-c7ba-4e62-b737-aa718ba2e223",
+      "createdAt": "2026-10-23T11:14:59.104Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/QuRDZd00PvK0cIdtQvyDB-oTaZE/0x0:1920x1080/800x450/filters:format(webp)/regions/2026/03/25/sjt-parc-d-attraction-de-la-toison-d-or-edr-fc-fevrier-2026-00-14-30-02-69c317b147fc6506560109.jpg",
+      "summary": "Import privé du média historique photo-18-train-rails, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-64a25419a02f48a78cde265cc04bfeb8-2026-10-23T111516.305Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:15:16.305Z",
+      "appliedAt": "2026-10-23T11:15:16.305Z",
+      "receiptFile": "photo-19-dismantling-import-receipt.json",
+      "receiptSha256": "246147e08cfca89caf3b5684006f5444b5ae12fbdb84ae86113238eb81c33748",
+      "imageId": "64a25419a02f48a78cde265cc04bfeb8",
+      "ownerId": "66653da2-93bb-499f-95df-15e240673e58",
+      "createdAt": "2026-10-23T11:15:12.928Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/gKMHEs7Gd_jjAptuyt1t2iLP3YM/0x0:1920x1080/800x450/filters:format(webp)/regions/2026/03/27/69c6993e6fe5c102252757.jpg",
+      "summary": "Import privé du média historique photo-19-dismantling, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-25238e8f7b104aedb29db211e28e44fb-2026-10-23T111530.221Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:15:30.221Z",
+      "appliedAt": "2026-10-23T11:15:30.221Z",
+      "receiptFile": "photo-20-public-garden-import-receipt.json",
+      "receiptSha256": "38f60e07fdaf32caee6ac1d6ecfd9740bdac218a3f36147175f6908a0ecd16d3",
+      "imageId": "25238e8f7b104aedb29db211e28e44fb",
+      "ownerId": "66653da2-93bb-499f-95df-15e240673e58",
+      "createdAt": "2026-10-23T11:15:26.813Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/baiNHbyy6LIiZgdmyb8FdkwHU7g/0x0:1920x1080/800x450/filters:format(webp)/regions/2026/03/25/sjt-parc-d-attraction-de-la-toison-d-or-edr-fc-fevrier-2026-00-13-39-06-69c31816b1010638306131.jpg",
+      "summary": "Import privé du média historique photo-20-public-garden, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-de0177c2806845ffa6ade7e1e73f2aa9-2026-10-23T111544.329Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:15:44.329Z",
+      "appliedAt": "2026-10-23T11:15:44.329Z",
+      "receiptFile": "photo-21-theatre-remains-import-receipt.json",
+      "receiptSha256": "5e3497711f2a1e97f1ecb271c46d6c77af8a6643e1de6ea697c8f3a96cc8b13d",
+      "imageId": "de0177c2806845ffa6ade7e1e73f2aa9",
+      "ownerId": "dd76aa69-5cb9-4a0b-a974-b48b7c69c5af",
+      "createdAt": "2026-10-23T11:15:40.929Z",
+      "sourceUrl": "https://cdn-s-www.leprogres.fr/images/4875F281-B9C0-4343-B3A5-726C291CBEDC/NW_detail/il-n-y-a-plus-de-spectacles-dans-l-amphitheatre-du-parc-de-la-toison-d-or-tout-juste-un-jet-d-eau-qui-profite-du-soleil-pour-parer-ses-gouttes-des-couleurs-de-l-arc-en-ciel-photo-lbp-mayalen-gauthier-1607022380.jpg",
+      "summary": "Import privé du média historique photo-21-theatre-remains, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3d6bd56d2b3d4febadc476c0db536400-2026-10-23T111644.598Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:16:44.598Z",
+      "appliedAt": "2026-10-23T11:16:44.598Z",
+      "receiptFile": "photo-22-nuts-nigloland-import-receipt.json",
+      "receiptSha256": "02758d893f28ec16e288de26fad36f00407210dd21276db9017326365cbc4768",
+      "imageId": "3d6bd56d2b3d4febadc476c0db536400",
+      "ownerId": "b1537290-6ff2-40c2-98df-e6ab34cb91e3",
+      "createdAt": "2026-10-23T11:16:41.131Z",
+      "sourceUrl": "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/PtitPoucet.jpg",
+      "summary": "Import privé du média historique photo-22-nuts-nigloland, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f7f12ed749d948bdaf8e9f498108013c-2026-10-23T111700.130Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:17:00.13Z",
+      "appliedAt": "2026-10-23T11:17:00.130Z",
+      "receiptFile": "photo-23-boats-nigloland-import-receipt.json",
+      "receiptSha256": "328114aad447b79e695a0bfd4449e9a47a4913d045112b846480c3404426f782",
+      "imageId": "f7f12ed749d948bdaf8e9f498108013c",
+      "ownerId": "83be1ade-a4b8-494a-8c74-84ec9701a359",
+      "createdAt": "2026-10-23T11:16:56.6Z",
+      "sourceUrl": "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/Tiny20170619_145931_DSC_3103-1200x801.jpg",
+      "summary": "Import privé du média historique photo-23-boats-nigloland, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-8035bf484e234e8caaff7a8fe22d773a-2026-10-23T111715.231Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:17:15.231Z",
+      "appliedAt": "2026-10-23T11:17:15.231Z",
+      "receiptFile": "photo-24-carousel-paris-import-receipt.json",
+      "receiptSha256": "787ab0b6bfab51dec8b6e95f1c1bdb056bdb3e2257c9e7c2347f631b4d90cda3",
+      "imageId": "8035bf484e234e8caaff7a8fe22d773a",
+      "ownerId": "202685c3-653b-4a13-84d1-e0747cdd63b8",
+      "createdAt": "2026-10-23T11:17:11.782Z",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Jardin_d%27Acclimatation_106.jpg/960px-Jardin_d%27Acclimatation_106.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20190517185846",
+      "summary": "Import privé du média historique photo-24-carousel-paris, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4abefae2213f474fa69f092a28858cdd-2026-10-23T111729.458Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:17:29.458Z",
+      "appliedAt": "2026-10-23T11:17:29.458Z",
+      "receiptFile": "photo-25-galley-postcard-import-receipt.json",
+      "receiptSha256": "43616a9ba174349dbf3ea18ae341e4b15e251092317bd8304d430b9da0e58f43",
+      "imageId": "4abefae2213f474fa69f092a28858cdd",
+      "ownerId": "a6083a6f-ee04-4faa-b88c-448336af3469",
+      "createdAt": "2026-10-23T11:17:25.758Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/RNRAkbZdjcUnjAXlHnpgJQVYMzg/0x108:1740x1087/800x450/filters:format(webp)/regions/2026/03/27/69c674c6c1ce8021535463.jpg",
+      "summary": "Import privé du média historique photo-25-galley-postcard, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-d277377f-5380-4500-ae56-982d8c8913f5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:23:50.6711918Z",
+      "appliedAt": "2026-10-23T11:23:50.671Z",
+      "receiptFile": "08-park-history-a-apply.receipt.json",
+      "receiptSha256": "b2c3370ec4a091f193c6cf57e02b0f3180dd1403f6d719970a59bc23d86973b8",
+      "counts": {
+        "created": 4,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Toison d’Or : quatre jalons sourcés de 1988 à 1991, huit langues, illustrations et dates qualifiées."
+    },
+    {
+      "eventId": "apply-f5a6de97-a8b8-4cf4-8c66-3db31cd60206",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:24:51.1649514Z",
+      "appliedAt": "2026-10-23T11:24:51.164Z",
+      "receiptFile": "05-park-references-v2-apply.receipt.json",
+      "receiptSha256": "359062e777574db891396e5d74b3ea9b08f980a917810a7cd519c7b29f949a23",
+      "counts": {
+        "created": 2,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt",
+        "description.de",
+        "description.en",
+        "description.es",
+        "description.fr",
+        "description.it",
+        "description.nl",
+        "description.pl",
+        "description.pt",
+        "foundedYear",
+        "founderId",
+        "operatorId"
+      ],
+      "summary": "Toison d’Or : fondateur politique et exploitant historique qualifiés, biographies en huit langues."
+    },
+    {
+      "eventId": "apply-2411ae81-62cb-4d4d-bc0d-20168ced98ae",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:26:53.1800199Z",
+      "appliedAt": "2026-10-23T11:26:53.180Z",
+      "receiptFile": "08-park-history-b-apply.receipt.json",
+      "receiptSha256": "6e3d5a154b5603cbed6776f7c7036fff14e55e6f9e0dbb49d9d180e30af3af24",
+      "counts": {
+        "created": 3,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Toison d’Or : redressement, fermeture et reconversion de 1993, jalons sourcés en huit langues."
+    },
+    {
+      "eventId": "apply-66260480-cdd8-4dc2-913e-64e95fb54f13",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:30:42.011304Z",
+      "appliedAt": "2026-10-23T11:30:42.011Z",
+      "receiptFile": "08-item-history-v2-apply.receipt.json",
+      "receiptSha256": "4c77944df29019d915050a683a8aad726d965fc268d86b66068621889be21603",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "locationLabel",
+        "mainImageId",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Toison d’Or : six jalons d’attractions, transferts structurés et sources, huit langues."
+    },
+    {
+      "eventId": "apply-81d9ef4c-409d-478a-a49b-6397158ddb0c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:34:43.1154341Z",
+      "appliedAt": "2026-10-23T11:34:43.115Z",
+      "receiptFile": "08-park-article-apply.receipt.json",
+      "receiptSha256": "f725e4662f88c60a90bdc6bb875ac22b9075997029a71e36673810a4559ca27e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Toison d’Or : article historique développé en huit langues, six sections, trois illustrations et cinq sources vérifiées."
+    },
+    {
+      "eventId": "import-photo-54fea9fb98a14dc1963783c2c475bc84-2026-10-23T113746.779Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:37:46.779Z",
+      "appliedAt": "2026-10-23T11:37:46.779Z",
+      "receiptFile": "photo-26-tacots-1991-import-receipt.json",
+      "receiptSha256": "2887475ca0d58ff6f380cc6c39b828f44c04d5b8014da205ba03d9e7e70c80e9",
+      "imageId": "54fea9fb98a14dc1963783c2c475bc84",
+      "ownerId": "e221a6c1-86b3-48ba-9175-36adfeb1f0fb",
+      "createdAt": "2026-10-23T11:37:43.295Z",
+      "sourceUrl": "https://cdn-s-www.leprogres.fr/images/017C6958-CE47-4FCD-A548-63DED2BF4CCC/NW_detail/07-08-1991-un-vieux-tacot-pour-faire-un-tour-pourquoi-pas-photo-lbp-philippe-maupetit-1607022380.jpg",
+      "summary": "Import privé du média historique photo-26-tacots-1991, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-7efa6e278ab2477cb3c98c001188d219-2026-10-23T113759.979Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:37:59.979Z",
+      "appliedAt": "2026-10-23T11:37:59.979Z",
+      "receiptFile": "photo-27-diving-tower-import-receipt.json",
+      "receiptSha256": "9f0bce9344c1200e7727c9bf7cb6ded48ed841b3f7f69c8b73ca9ab4b9b0a21b",
+      "imageId": "7efa6e278ab2477cb3c98c001188d219",
+      "ownerId": "f602fba4-b3c5-4c1c-afb8-0e89878e5820",
+      "createdAt": "2026-10-23T11:37:56.6Z",
+      "sourceUrl": "https://cdn-s-www.leprogres.fr/images/343D3538-831B-488B-9298-217763095586/NW_detail/les-spectacles-sont-des-attractions-et-les-plongeurs-montrent-leur-talent-et-leur-sang-froid-photo-lbp-philippe-maupetit-1607022380.jpg",
+      "summary": "Import privé du média historique photo-27-diving-tower, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-568aab3d9ab149e8919c3991d2493bbd-2026-10-23T113813.671Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T11:38:13.671Z",
+      "appliedAt": "2026-10-23T11:38:13.671Z",
+      "receiptFile": "photo-28-river-arrival-import-receipt.json",
+      "receiptSha256": "90cbbae6b0bde28df0a8d7859147fa2dd449813e591f8924ddda144d16067301",
+      "imageId": "568aab3d9ab149e8919c3991d2493bbd",
+      "ownerId": "4e3d1691-1010-400c-ae7f-999ffaea8d2d",
+      "createdAt": "2026-10-23T11:38:10.249Z",
+      "sourceUrl": "https://cdn-s-www.leprogres.fr/images/60BF3145-55E8-4310-8DF3-EB18C519DCA4/NW_detail/et-il-faut-voir-le-soulagement-sur-les-visages-apres-les-descentes-de-11-et-6-metres-photo-lbp-philippe-maupetit-1607022380.jpg",
+      "summary": "Import privé du média historique photo-28-river-arrival, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-125c7d03-9a1d-4212-abf7-5a00dfd15e82",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:40:30.4748958Z",
+      "appliedAt": "2026-10-23T11:40:30.474Z",
+      "receiptFile": "08-coaster-event-context-apply.receipt.json",
+      "receiptSha256": "14d298c2dd0c188814f2f03c32de4950634d0eb39c72e0a9f83a372406d39bad",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "mainImageId",
+        "summaries"
+      ],
+      "summary": "Toison d’Or : contexte photographique du démontage des deux coasters et récit du Mini Grand Huit clarifié."
     }
   ],
   "publicationOrNoop": []

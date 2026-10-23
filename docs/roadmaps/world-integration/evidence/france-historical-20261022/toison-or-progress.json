@@ -2,35 +2,62 @@
   "entryId": "FR-park-66653da2-93bb-499f-95df-15e240673e58",
   "owner": "Conversation France",
   "result": "partial",
-  "observedAtUtc": "2026-10-23T10:19:15.947858+00:00",
+  "observedAtUtc": "2026-10-23T11:40:31.197943+00:00",
   "counts": {
-    "parkItems": 22,
-    "attractions": 17,
+    "parkItems": 24,
+    "attractions": 19,
     "zones": 1,
     "parkDescriptionLanguages": 8,
-    "itemsWithEightDescriptions": 5,
-    "images": 11,
+    "itemsWithEightDescriptions": 24,
+    "images": 28,
     "officialMaps": 1,
-    "historyEvents": 2
+    "historyEvents": 15,
+    "parkHistoryEvents": 7,
+    "articles": 1
   },
   "publication": {
     "park": false,
     "facebook": false,
-    "reason": "Integration and full final audit still in progress."
+    "reason": "Finalcompleteexport/corpusreview/auditstillpending."
   },
   "fullFinalExportPerformed": false,
   "remaining": [
-    "Complete item and zone descriptions in all eight languages.",
-    "Resolve remaining historical candidates and aliases from named source gaps.",
-    "Complete item imagery, contextual history imagery and biographies/reference audit.",
-    "Author sourced park history and developed eight-language article.",
-    "Research geolocation of surviving fixed places; retain named gaps for unproved demolished positions.",
-    "Search further genuine annual maps; 1989 is a pre-opening plan, not a 1990 operating edition.",
-    "One fresh full export immediately before final audit; publication and Facebook only after passed audit."
+    "Onefreshfullexportimmediatelybeforestep9.",
+    "Completecorpuspersonalreview,evidencecomparison,coverageandsource-gapverification.",
+    "Dependencypublicationthenindividualprojectedscore>95/zeroblockersbeforeparkvisibility.",
+    "Actualpost-publicationscore,mobile/desktopnormalHistorynavigationandFacebookResolve/Publish."
   ],
-  "documentedBoundaries": [
-    "Separate Les Cyclades/Oxygène aquatic centre excluded from internal ride inventory.",
-    "No current municipal garden rides imported as historical 1990 park offer.",
-    "No invented exact opening day, unknown integration date, ride photo attribution or GPS."
-  ]
+  "documentedBoundaries": {
+    "reviewedAtUtc": "2026-10-23T11:40:31.197943+00:00",
+    "notApplicable": {
+      "currentHours": "Closedhistoricalamusementpark1993; currentmunicipalgardenhoursnotimported.",
+      "currentPricing": "No operatingpark admission/pass/parkingoffers; historic90F mentionedonly if usefulhistoricalcontext, notcurrentpricing.",
+      "confirmedFutureAttractions": 0
+    },
+    "maps": {
+      "acceptedYears": [
+        1989
+      ],
+      "nature": "Authenticpre-openingoperatorprojectplan, not fabricated1990operatingedition.",
+      "remainingYears": [
+        1990,
+        1991,
+        1992
+      ],
+      "research": [
+        "France3historicreportandpublishedarchivebrochure/map",
+        "Niglofansoriginaloperator1989mapand1993Niglobrochure",
+        "Dijonmunicipalarchives1992pedagogicalbookletcatalogue(noaccessiblefullscan)",
+        "Exactannualmapwebsearch1990/1991/1992; no additionalverifiedcompleteoperatorfile found."
+      ],
+      "decision": "Keep namedannualeditiongaps; no communitymap oryearinferredfromuploaddate."
+    },
+    "geolocation": "03-geolocation-final-proof.json",
+    "shortNotices": "04-editorial-source-limits.json",
+    "unprovenCandidates": "03-inventory-final-qualification.json",
+    "accessConditions": "No historicalheight/age/medicalrules reliably found for the19historicalattractions in operatorplan,periodphotographs,press,RCDB/Captainorrelocationrecords. Do notborrow currentNiglolandconditions. Existingverifiedtechnicalfieldsretained.",
+    "images": "Originalpublishedfilesretained; laterNigloland/Paris/currentgarden explicitlycaptioned. Unknownramcoasterviewnot assigned to eithercoaster. No identifiablehistoricalphotos found for remainingnamedimagegaps; fullauditwillenumerateIDs. Gallery17SHAduplicatephoto09excluded; croppedTapisWikiimageandNigloWorldwatermarkedbrochureexcluded.",
+    "references": "Newfounder/operatoridentitymatchedbyPreview;8languagebiography/descriptionreviewed, primarycourt+France3+officialSuezorigin. Sharedmanufacturersunchanged; exactdependencyIDs verified fromofficialexports.",
+    "historyImages": "Actualinaugurationanddismantlingphotosprioritized. No actualcontract/lease/judgementphoto found. Specificride transfers use correctlycaptionedlaterlocationorpreclosureview; no fictionaleventphoto."
+  }
 }

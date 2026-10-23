@@ -1,0 +1,53 @@
+{
+  "decision": "Qualified as two additional distinct internal historical rides. Descriptive labels, not asserted official historical names.",
+  "sources": [
+    "https://niglofans.richardcrete.fr/reportages/1993-rachat-du-parc-de-la-toison-dor/",
+    "https://www.pretparken.be/NL/Attraction.Asp?AttractieID=1830&ParkID=157",
+    "https://coasterpedia.net/wiki/P%27tit_Poucet",
+    "https://coasterpedia.net/wiki/Rivi%C3%A8re_Enchant%C3%A9e_%28Nigloland%29",
+    "https://fr-academic.com/dic.nsf/frwiki/2073407/1291284"
+  ],
+  "newItems": [
+    {
+      "key": "toison-noix",
+      "name": "Manège de noix",
+      "category": "Attraction",
+      "type": "FlatRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Removed",
+        "manufacturerId": "1aa72ad3-781e-4191-a092-31699a1353fb",
+        "manufacturerKey": "1aa72ad3-781e-4191-a092-31699a1353fb",
+        "closingDateText": "1993",
+        "externalSource": "HistoricalArchive",
+        "sourceUrl": "https://niglofans.richardcrete.fr/reportages/1993-rachat-du-parc-de-la-toison-dor/",
+        "accessConditions": [],
+        "model": "Dino Carousel"
+      }
+    },
+    {
+      "key": "toison-bateaux-promenade",
+      "name": "Manège de bateaux",
+      "category": "Attraction",
+      "type": "WaterRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Removed",
+        "manufacturerId": "1aa72ad3-781e-4191-a092-31699a1353fb",
+        "manufacturerKey": "1aa72ad3-781e-4191-a092-31699a1353fb",
+        "closingDateText": "1993",
+        "externalSource": "HistoricalArchive",
+        "sourceUrl": "https://niglofans.richardcrete.fr/reportages/1993-rachat-du-parc-de-la-toison-dor/",
+        "accessConditions": []
+      }
+    }
+  ],
+  "aliasesExcluded": [
+    "P’tit Poucet is later Nigloland name, not claimed Dijon name.",
+    "Rivière Enchantée is later Nigloland name, not Rivière Sauvage log flume.",
+    "Round Boat Ride vs Free-Flow Boat Ride terminology differs across sources; boat model left null."
+  ],
+  "dateConflict": "Resolved for Nigloland presence by personally read original1993 brochure reproduced in Niglofans: printed spring93 novelty labels and P’tit Poucet visible on same page. Supports Niglofans/ Pretparken1993, contrary to Coasterpedia1994. Brochure has Nigloland-World watermark, retained for research only, never imported or cropped."
+}

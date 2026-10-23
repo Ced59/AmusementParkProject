@@ -19698,7 +19698,7 @@
         "Parc Récréatif de la Toison d'or"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-23T10:16:50.620Z",
+      "lastDataIntegrationAt": "2026-10-23T11:40:30.474Z",
       "integrationHistory": [
         {
           "eventId": "apply-ff222116-7d52-409f-b08e-7de0153a5728",
@@ -19889,6 +19889,366 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-581720f6-decf-4377-864e-140534a6c986",
           "auditEvidence": null,
           "summary": "Toison d’Or : plan officiel du projet de 1989 rattaché en privé, titres et textes alternatifs dans les huit langues ; audit final restant."
+        },
+        {
+          "eventId": "apply-219134d6-c978-43b6-ae3f-a5559a9b3ee0",
+          "appliedAt": "2026-10-23T10:20:22.247Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-219134d6-c978-43b6-ae3f-a5559a9b3ee0",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : huit descriptions des Montgolfières et rattachement au constructeur Zamperla existant ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-27e62aa7e5824541a2984d10f4b9e57f-2026-10-23T102609.255Z",
+          "appliedAt": "2026-10-23T10:26:09.255Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-27e62aa7e5824541a2984d10f4b9e57f-2026-10-23T102609.255Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-12-montgolfieres-dijon, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e31f7946b3b840f2a2c22157f8934261-2026-10-23T102623.301Z",
+          "appliedAt": "2026-10-23T10:26:23.301Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-e31f7946b3b840f2a2c22157f8934261-2026-10-23T102623.301Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-13-montgolfieres-inauguration, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7c261070830b4859a2548f0c3ffa3a8f-2026-10-23T102637.114Z",
+          "appliedAt": "2026-10-23T10:26:37.114Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-7c261070830b4859a2548f0c3ffa3a8f-2026-10-23T102637.114Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-14-montgolfieres-nigloland, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4a67f62ff79a46e3a1811c4e62715bde-2026-10-23T102651.040Z",
+          "appliedAt": "2026-10-23T10:26:51.040Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-4a67f62ff79a46e3a1811c4e62715bde-2026-10-23T102651.040Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-15-plongeurs, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4d34e62dd7d346d5ba4aadf900c9c245-2026-10-23T102705.436Z",
+          "appliedAt": "2026-10-23T10:27:05.436Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-4d34e62dd7d346d5ba4aadf900c9c245-2026-10-23T102705.436Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-16-cinema, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1e6800fce27a482182cdb0d99e25f5e2-2026-10-23T102719.425Z",
+          "appliedAt": "2026-10-23T10:27:19.425Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-1e6800fce27a482182cdb0d99e25f5e2-2026-10-23T102719.425Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-17-pedalos, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-39c1e316-04eb-44e6-acb4-caaa9f0da256",
+          "appliedAt": "2026-10-23T10:30:30.797Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-39c1e316-04eb-44e6-acb4-caaa9f0da256",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : huit descriptions du Manège ancien, avec son passage au Jardin d’Acclimatation ; audit final restant."
+        },
+        {
+          "eventId": "apply-3514c319-d590-4b9b-be5f-641a5e02b307",
+          "appliedAt": "2026-10-23T10:35:19.667Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-3514c319-d590-4b9b-be5f-641a5e02b307",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : huit notices pour le cinéma 3D, les Plongeurs d’Acapulco et le Labyrinthe ; audit final restant."
+        },
+        {
+          "eventId": "update-photo-e8e4661c5f0e499a841d47366f8ebec6-2026-10-23T103751.259Z",
+          "appliedAt": "2026-10-23T10:37:51.259Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#update-photo-e8e4661c5f0e499a841d47366f8ebec6-2026-10-23T103751.259Z",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : rattachement précis et légendes du média privé 05-photo-03-pedalo-entree-owner ; aucun nouvel upload, audit final restant."
+        },
+        {
+          "eventId": "update-photo-4469ab2562a440d6aa42a5d523010ee8-2026-10-23T103802.336Z",
+          "appliedAt": "2026-10-23T10:38:02.336Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#update-photo-4469ab2562a440d6aa42a5d523010ee8-2026-10-23T103802.336Z",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : rattachement précis et légendes du média privé 05-photo-04-colonnade-owner ; aucun nouvel upload, audit final restant."
+        },
+        {
+          "eventId": "apply-1bbaf637-f48b-443b-8764-19767ba90928",
+          "appliedAt": "2026-10-23T10:44:06.304Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-1bbaf637-f48b-443b-8764-19767ba90928",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : géolocalisation du Théâtre d’Homère sur son emprise conservée, 21 lacunes géographiques nommées ; audit final restant."
+        },
+        {
+          "eventId": "apply-c383f9ef-6c12-4b5d-b7d5-3d8c92873556",
+          "appliedAt": "2026-10-23T10:46:31.567Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-c383f9ef-6c12-4b5d-b7d5-3d8c92873556",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : deux attractions Mack historiques qualifiées, devenues P’tit Poucet et Rivière Enchantée à Nigloland ; appellations dijonnaises inconnues, audit final restant."
+        },
+        {
+          "eventId": "apply-79363d58-38b6-49e5-b293-9a1f675184bf",
+          "appliedAt": "2026-10-23T10:55:41.435Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-79363d58-38b6-49e5-b293-9a1f675184bf",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : Théâtre d’Homère et spectacle des plongeurs explicitement rattachés au même lieu vérifié, descriptions en huit langues ; audit final restant."
+        },
+        {
+          "eventId": "apply-dcfc357f-f253-4aa7-a1d9-2c51a242c667",
+          "appliedAt": "2026-10-23T11:02:44.315Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-dcfc357f-f253-4aa7-a1d9-2c51a242c667",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : quatre notices historiques courtes dans les huit langues, limites documentaires explicites ; audit final restant."
+        },
+        {
+          "eventId": "apply-62256746-1b47-4bd3-9ec4-f519ffa74b4d",
+          "appliedAt": "2026-10-23T11:10:32.875Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-62256746-1b47-4bd3-9ec4-f519ffa74b4d",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : quatre notices historiques de jeux et parcours, huit langues, sources et lacunes documentées."
+        },
+        {
+          "eventId": "apply-bc228b27-2af6-4894-91cd-7cae664722c1",
+          "appliedAt": "2026-10-23T11:12:14.913Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-bc228b27-2af6-4894-91cd-7cae664722c1",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : pédalos, entrée et crêperie de la galère, notices historiques en huit langues."
+        },
+        {
+          "eventId": "apply-6c2ea2ee-aac8-4dd7-a80b-1269c9cc64ad",
+          "appliedAt": "2026-10-23T11:13:27.237Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-6c2ea2ee-aac8-4dd7-a80b-1269c9cc64ad",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : histoire des deux manèges Mack transférés à Nigloland, huit langues."
+        },
+        {
+          "eventId": "apply-a53deed6-6a4a-4ba1-b3cb-50d5ab99530b",
+          "appliedAt": "2026-10-23T11:14:47.419Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-a53deed6-6a4a-4ba1-b3cb-50d5ab99530b",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : description du Monde des Enfants en huit langues, périmètre historique sourcé."
+        },
+        {
+          "eventId": "import-photo-0549a891ae8f4ca8adfdb15673f1ce51-2026-10-23T111502.638Z",
+          "appliedAt": "2026-10-23T11:15:02.638Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-0549a891ae8f4ca8adfdb15673f1ce51-2026-10-23T111502.638Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-18-train-rails, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-64a25419a02f48a78cde265cc04bfeb8-2026-10-23T111516.305Z",
+          "appliedAt": "2026-10-23T11:15:16.305Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-64a25419a02f48a78cde265cc04bfeb8-2026-10-23T111516.305Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-19-dismantling, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-25238e8f7b104aedb29db211e28e44fb-2026-10-23T111530.221Z",
+          "appliedAt": "2026-10-23T11:15:30.221Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-25238e8f7b104aedb29db211e28e44fb-2026-10-23T111530.221Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-20-public-garden, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-de0177c2806845ffa6ade7e1e73f2aa9-2026-10-23T111544.329Z",
+          "appliedAt": "2026-10-23T11:15:44.329Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-de0177c2806845ffa6ade7e1e73f2aa9-2026-10-23T111544.329Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-21-theatre-remains, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3d6bd56d2b3d4febadc476c0db536400-2026-10-23T111644.598Z",
+          "appliedAt": "2026-10-23T11:16:44.598Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-3d6bd56d2b3d4febadc476c0db536400-2026-10-23T111644.598Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-22-nuts-nigloland, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f7f12ed749d948bdaf8e9f498108013c-2026-10-23T111700.130Z",
+          "appliedAt": "2026-10-23T11:17:00.130Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-f7f12ed749d948bdaf8e9f498108013c-2026-10-23T111700.130Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-23-boats-nigloland, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8035bf484e234e8caaff7a8fe22d773a-2026-10-23T111715.231Z",
+          "appliedAt": "2026-10-23T11:17:15.231Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-8035bf484e234e8caaff7a8fe22d773a-2026-10-23T111715.231Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-24-carousel-paris, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4abefae2213f474fa69f092a28858cdd-2026-10-23T111729.458Z",
+          "appliedAt": "2026-10-23T11:17:29.458Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-4abefae2213f474fa69f092a28858cdd-2026-10-23T111729.458Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-25-galley-postcard, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-d277377f-5380-4500-ae56-982d8c8913f5",
+          "appliedAt": "2026-10-23T11:23:50.671Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-d277377f-5380-4500-ae56-982d8c8913f5",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : quatre jalons sourcés de 1988 à 1991, huit langues, illustrations et dates qualifiées."
+        },
+        {
+          "eventId": "apply-f5a6de97-a8b8-4cf4-8c66-3db31cd60206",
+          "appliedAt": "2026-10-23T11:24:51.164Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-f5a6de97-a8b8-4cf4-8c66-3db31cd60206",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : fondateur politique et exploitant historique qualifiés, biographies en huit langues."
+        },
+        {
+          "eventId": "apply-2411ae81-62cb-4d4d-bc0d-20168ced98ae",
+          "appliedAt": "2026-10-23T11:26:53.180Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-2411ae81-62cb-4d4d-bc0d-20168ced98ae",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : redressement, fermeture et reconversion de 1993, jalons sourcés en huit langues."
+        },
+        {
+          "eventId": "apply-66260480-cdd8-4dc2-913e-64e95fb54f13",
+          "appliedAt": "2026-10-23T11:30:42.011Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-66260480-cdd8-4dc2-913e-64e95fb54f13",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : six jalons d’attractions, transferts structurés et sources, huit langues."
+        },
+        {
+          "eventId": "apply-81d9ef4c-409d-478a-a49b-6397158ddb0c",
+          "appliedAt": "2026-10-23T11:34:43.115Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-81d9ef4c-409d-478a-a49b-6397158ddb0c",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : article historique développé en huit langues, six sections, trois illustrations et cinq sources vérifiées."
+        },
+        {
+          "eventId": "import-photo-54fea9fb98a14dc1963783c2c475bc84-2026-10-23T113746.779Z",
+          "appliedAt": "2026-10-23T11:37:46.779Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-54fea9fb98a14dc1963783c2c475bc84-2026-10-23T113746.779Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-26-tacots-1991, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7efa6e278ab2477cb3c98c001188d219-2026-10-23T113759.979Z",
+          "appliedAt": "2026-10-23T11:37:59.979Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-7efa6e278ab2477cb3c98c001188d219-2026-10-23T113759.979Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-27-diving-tower, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-568aab3d9ab149e8919c3991d2493bbd-2026-10-23T113813.671Z",
+          "appliedAt": "2026-10-23T11:38:13.671Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-568aab3d9ab149e8919c3991d2493bbd-2026-10-23T113813.671Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-28-river-arrival, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-125c7d03-9a1d-4212-abf7-5a00dfd15e82",
+          "appliedAt": "2026-10-23T11:40:30.474Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-125c7d03-9a1d-4212-abf7-5a00dfd15e82",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : contexte photographique du démontage des deux coasters et récit du Mini Grand Huit clarifié."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

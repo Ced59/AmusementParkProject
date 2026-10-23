@@ -1,0 +1,12 @@
+{
+  "founder": [
+    "sources/france3-ouverture-article.txt"
+  ],
+  "operator": [
+    "sources/ccomptes.txt",
+    "sources/france3-ouverture-article.txt",
+    "https://www.suez.com/-/media/suez-global/files/regulated-information/fr/vie-de-l-entreprise/opa/note-d-information-suez-reponse-offre-publique-achat-visant-actions-societe-suez-initiee-par-societe-veolia-20-juillet-2021-fr.pdf"
+  ],
+  "identityPreview": "05-park-reference-match.preview.json",
+  "review": "No existing exact-name match; earlier official dependency exports contain no alias to these references. Suez formed1997not silently conflated with historic1880Lyonnaise. Existing Mack/Zamperla/Soquet untouched."
+}

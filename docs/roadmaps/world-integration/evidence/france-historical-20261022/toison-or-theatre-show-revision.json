@@ -1,0 +1,11 @@
+{
+  "observedAtUtc": "2026-10-23T10:53:13.663846+00:00",
+  "previousInterpretation": "Operator plan #7 and#8 treated as geographically distinct show/venue. This was overinterpreted and is corrected; existing entities remain useful as named programme and venue, no duplicate show added.",
+  "newEvidence": "End of France3 retrospective explicitly calls surviving antique theatre the diving-show theatre. Originalplan has#7pooland#8seating adjacent, coherent with currentcurvedstandsandformerpool. Press2020photo corroborates surviving lakesideamphitheatre.",
+  "sourcePage": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+  "decision": "Same fixed venue; retain named show and named theatre, explicitly link in all8descriptions and share provedvenuepoint.",
+  "coordinates": [
+    47.354545,
+    5.054757
+  ]
+}
