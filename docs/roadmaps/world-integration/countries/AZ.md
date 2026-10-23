@@ -14,10 +14,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 0 |
-| À qualifier | 17 |
+| À qualifier | 16 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 1 |
+| Intégration achevée | 2 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **14 candidats sans fiche**.
 
-Standalone : **1 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **2 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **2 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -53,4 +53,4 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | AZ-candidate-18c822e20e074f | Qəbələnd | Gabala , Shaki-Zaqatala | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/11340.htm) |
 | AZ-candidate-56998578936897 | Shahdag Mountain Resort | Gusar , Guba-Khachmaz | StandaloneAttraction | Published | Intégration achevée | 2026-10-22T22:54:15.115Z | — | Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-6d7a16b2-5659-4806-a537-763409496222 ; conserver les références de découverte. Installations référencées : Shahdag Coaster. Signal source : Operating. [RCDB](https://rcdb.com/19870.htm) · [RCDB — Mountain Coaster](https://rcdb.com/19871.htm) · [Source vérifiée — intégration standalone](https://www.shahdag.az/en/activity/shahdag-coaster-2) · [Source vérifiée — intégration standalone](https://www.wiegandslide.com/en/news/news-archiv/news-archiv/premiere-of-our-alpine-coaster-in-azerbaijan-768.html) · [Source vérifiée — intégration standalone](https://api.openstreetmap.org/api/0.6/node/12899498503) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/ca5993d8-9074-4be2-ab6b-f62bb3bbf786/shahdag-coaster) |
 | AZ-candidate-57a0cf67e1ef8a | Shamkir City Park | Shamkir , Ganja-Qazakh | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/16357.htm) |
-| AZ-candidate-f296136777add0 | Tufandağ Mountain Resort | Gabala , Shaki-Zaqatala | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : IndependentCandidate. Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Installations référencées : Mountain Coaster. Signal source : Operating. [RCDB](https://rcdb.com/24095.htm) · [RCDB — Mountain Coaster](https://rcdb.com/24096.htm) |
+| AZ-candidate-f296136777add0 | Tufandağ Mountain Resort | Gabala , Shaki-Zaqatala | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T00:01:08.739Z | — | Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-aafe98bd-0969-4072-8558-585d0d5d408d ; conserver les références de découverte. Installations référencées : Mountain Coaster. Signal source : Operating. [RCDB](https://rcdb.com/24095.htm) · [RCDB — Mountain Coaster](https://rcdb.com/24096.htm) · [Source vérifiée — intégration standalone](https://www.tufandag.com/en/activity/dag-kosteri) · [Source vérifiée — intégration standalone](https://www.tufandag.com/en/activities) · [Source vérifiée — intégration standalone](https://www.tufandag.com/en/today/yasat-fondu-tufandagda-novbeti-qis-dusergesi-reallasdirib) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster) |
