@@ -1,0 +1,178 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "b4ce7d77-a24a-4fcf-a5d3-93138e657dc8",
+    "appliedAtUtc": "2026-10-23T08:00:57.4825973Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "43c09e54-87ff-4fd6-b2cf-fbb3e8995f66",
+    "appliedAtUtc": "2026-10-23T08:01:24.5645318Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "41e8fe3d-8e4f-49b9-8d46-56a5b9dbdd25",
+    "appliedAtUtc": "2026-10-23T08:01:48.1119583Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "35131f6d-3371-4462-8c39-fadc905b73d3",
+    "appliedAtUtc": "2026-10-23T08:02:11.3654172Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "399ac9fb-5618-403f-99f2-42475b1a61f8",
+    "appliedAtUtc": "2026-10-23T08:04:17.2483888Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "4b13e530-40b5-468d-8714-8e7ec7b1791a",
+    "appliedAtUtc": "2026-10-23T08:05:39.8497413Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "7760fb2e-c64c-4b53-8983-d8a57d15da6c",
+    "appliedAtUtc": "2026-10-23T08:06:03.9118808Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "557a14d5-9abf-4f12-bcdd-f60d64fd6120",
+    "appliedAtUtc": "2026-10-23T08:06:27.0361167Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "09-fix-italian-history.apply",
+    "operationId": "167a2cf7-72c4-41c9-9647-f12713c5fa8f",
+    "appliedAtUtc": "2026-10-23T08:08:11.1134446Z",
+    "targetStandaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "53a3050aa0fb457abcb450e413e307bf",
+    "ownerId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_01.jpg",
+    "updatedAt": "2026-10-23T08:02:54.912Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "3c729f84c59c45a48d990a35150dfd03",
+    "ownerId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_02.jpg",
+    "updatedAt": "2026-10-23T08:03:10.21Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "f94504e9bffc4ad9b04efcd69f7a1f51",
+    "ownerId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_03.jpg",
+    "updatedAt": "2026-10-23T08:03:28.171Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-4-result",
+    "id": "b40378160e2745598b5181b2f2f5353b",
+    "ownerId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Daisenryo_Kofun_from_balloon.jpg",
+    "updatedAt": "2026-10-23T08:03:43.894Z",
+    "isPublished": false
+  }
+]

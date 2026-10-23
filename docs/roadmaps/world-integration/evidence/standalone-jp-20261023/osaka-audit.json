@@ -1,0 +1,303 @@
+{
+  "name": "Osaka Sakai Balloon",
+  "standaloneAttractionId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+  "qualification": "Ballon captif à billetterie propre dans le parc public Daisen. SearchParks et SearchStandaloneAttractions pour Osaka Sakai Balloon et おおさか堺バルーン en JP sans correspondance le 23 octobre 2026 ; recherche du parent Daisen Park sans doublon de cette installation. Site de l’exploitant, agence touristique de Sakai et ville confirment l’exploitation actuelle. Création autonome justifiée.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 93,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 4,
+    "accessConditions": 5,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 6
+  },
+  "gaps": [
+    "Le ballon est référencé comme équipement Aerophile par l’exploitant et le constructeur, mais son modèle précis et une identité constructeur vérifiée dans le référentiel du site ne sont pas encore établis. Aucun lien relationnel ni modèle supposé.",
+    "La rétrospective publiée par l’exploitant en 2026 date l’ouverture du 4 octobre 2025, date également cohérente avec l’annonce du premier anniversaire. Un communiqué contemporain donnait le 6 octobre 2025 comme début d’exploitation ; le registre retient le 4 octobre selon la source rétrospective de l’exploitant et signale cette divergence.",
+    "Les horaires habituels et les tarifs officiels ont été vérifiés le 23 octobre 2026. Les vols dépendent de la météo, les disponibilités et les réductions exigent une confirmation avant la visite."
+  ],
+  "sources": [
+    "https://osaka-sakai-balloon.com/",
+    "https://osaka-sakai-balloon.com/faq.html",
+    "https://osaka-sakai-balloon.com/guidance.html",
+    "https://www.city.sakai.lg.jp/foreign-language/english/visitors/newsletter/december2025_January2026/osakasakaiballoon.html",
+    "https://www.sakai-tcb.or.jp/en/spot/detail/1248",
+    "https://www.sakai-tcb.or.jp/feature/detail/107",
+    "https://prtimes.jp/main/html/rd/p/000000015.000188268.html",
+    "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_01.jpg",
+    "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_02.jpg",
+    "https://commons.wikimedia.org/wiki/File:Osaka_Sakai_Balloon_03.jpg",
+    "https://commons.wikimedia.org/wiki/File:Daisenryo_Kofun_from_balloon.jpg"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T08:08:57.270897+00:00",
+    "exportSha256": "d45753fa3e7aa08bbc6a44e7c8c01f70321ced6ac49e30ba853c255d5450b6bc",
+    "localizedStringsReviewed": 312,
+    "localizedGroups": 39,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence-after-fix.preview.json",
+  "finalAuditAtUtc": "2026-10-23T08:07:36.833135+00:00",
+  "facebook": {
+    "id": "fa8ecb06c2364c22a8dff85af7666a6c",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T08:10:02.6287387Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124260667424431",
+    "externalPostId": "1285475681307050_122124260667424431",
+    "url": "https://amusement-parks.fun/fr/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon?facebook-image=3c729f84c59c45a48d990a35150dfd03"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T08:07:36.833135+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T08:11:16.187325+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history/583ac7e1-1b92-45eb-8731-90ded57614df/osaka-sakai-balloon-ouverture-2025",
+            "status": 200,
+            "textLength": 1757,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 586
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history/583ac7e1-1b92-45eb-8731-90ded57614df/osaka-sakai-balloon-ouverture-2025",
+            "status": 200,
+            "textLength": 1563,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 526
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history/583ac7e1-1b92-45eb-8731-90ded57614df/osaka-sakai-balloon-ouverture-2025",
+            "status": 200,
+            "textLength": 1606,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 621
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history/583ac7e1-1b92-45eb-8731-90ded57614df/osaka-sakai-balloon-ouverture-2025",
+            "status": 200,
+            "textLength": 1529,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 611
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history/583ac7e1-1b92-45eb-8731-90ded57614df/osaka-sakai-balloon-ouverture-2025",
+            "status": 200,
+            "textLength": 1530,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 555
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history/583ac7e1-1b92-45eb-8731-90ded57614df/osaka-sakai-balloon-ouverture-2025",
+            "status": 200,
+            "textLength": 1557,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 574
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history/583ac7e1-1b92-45eb-8731-90ded57614df/osaka-sakai-balloon-ouverture-2025",
+            "status": 200,
+            "textLength": 1436,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 564
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/46389fcf-0e2c-411c-a01c-de0312afe1d5/osaka-sakai-balloon/history/583ac7e1-1b92-45eb-8731-90ded57614df/osaka-sakai-balloon-ouverture-2025",
+            "status": 200,
+            "textLength": 1501,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 583
+      }
+    ]
+  }
+}
