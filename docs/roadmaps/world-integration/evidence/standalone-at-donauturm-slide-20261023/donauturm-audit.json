@@ -1,0 +1,305 @@
+{
+  "name": "Donauturm-Rutsche",
+  "standaloneAttractionId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+  "backlogEntryId": "AT-candidate-discovery-5012808b5cf423",
+  "qualification": "La glissade de la Donauturm possède un billet propre, mais exige aussi le billet d’entrée et l’ascenseur de la tour. L’installation artistique de Carsten Höller, ouverte en 2023, est une attraction identifiée séparément. Recherches officielles AT SearchStandaloneAttractions et SearchParks sur Donauturm et Danube Tower sans homonyme.",
+  "deduplicationEvidence": {
+    "searchQueries": [
+      "Donauturm",
+      "Danube Tower"
+    ],
+    "standaloneExactMatches": 0,
+    "parkExactMatches": 0,
+    "parentVenue": "Donauturm"
+  },
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 81,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 0,
+    "accessConditions": 5,
+    "historyEvents": 1,
+    "articles": 1,
+    "pricingOffers": 3,
+    "openingDateConfirmed": "2023-11-15",
+    "locationFromOpenStreetMap": true
+  },
+  "gaps": [
+    "Aucune photographie représentant directement la glissade avec licence de réutilisation vérifiable n’a été trouvée dans Commons ; les images de presse ne sont pas reprises. Rechercher une image autorisée ultérieurement.",
+    "La FAQ de la Donauturm publie les horaires de la glissade au jour le jour ; la météo ou des raisons techniques peuvent la fermer. Aucune grille hebdomadaire fictive n’a été saisie.",
+    "Tarifs officiels observés le 23 octobre 2026. Le billet de glissade ne comprend pas l’entrée et l’ascenseur de la tour ; vérifier les deux tarifs avant achat."
+  ],
+  "sources": [
+    "https://www.donauturm.at/en/restaurants-and-shop/turm-slide/",
+    "https://www.donauturm.at/public/en/event-news-and-culinary/events/pure-adrenalin-rush-on-europes-highest-slide-donauturm-rutsche-officially-opened-today-2/",
+    "https://www.donauturm.at/en/about-us/faq/",
+    "https://shop.donauturm.at/en/Admission-Tickets/Slide-Tickets/",
+    "https://shop.donauturm.at/en/Admission-Tickets/Single-Tickets/",
+    "https://www.openstreetmap.org/way/46965660"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T15:49:53.696119+00:00",
+    "exportSha256": "8650e7caeb6a9e2c8981fb4c85b277523299b42f8cb4ce10a7c710ec2ca91ba7",
+    "localizedStringsReviewed": 248,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : distinction entre billet de glissade et entrée de la tour, œuvre de Carsten Höller, installation et ouverture de 2023, conditions et tarif. Aucune image spécifique avec licence de réutilisation vérifiable trouvée, les visuels de presse ne sont pas repris."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+    "publishedAtUtc": "2026-10-23T15:50:46.9170878Z",
+    "operationId": "47ef7908-44ad-40fa-86d4-bca8deb0407a"
+  },
+  "facebookPublication": {
+    "id": "31180d925c11475da79c7629b59b8bcf",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T15:51:41.7737483Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124314301424431",
+    "externalPostId": "1285475681307050_122124314301424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T15:53:42.635133+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T15:51:22.999397+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history/6abc1382-870b-4ea7-9986-4b3b54ac4060/ouverture-donauturm-rutsche-2023",
+            "status": 200,
+            "textLength": 1494,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 505
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history/6abc1382-870b-4ea7-9986-4b3b54ac4060/ouverture-donauturm-rutsche-2023",
+            "status": 200,
+            "textLength": 1320,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 458
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history/6abc1382-870b-4ea7-9986-4b3b54ac4060/ouverture-donauturm-rutsche-2023",
+            "status": 200,
+            "textLength": 1367,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 561
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history/6abc1382-870b-4ea7-9986-4b3b54ac4060/ouverture-donauturm-rutsche-2023",
+            "status": 200,
+            "textLength": 1304,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 540
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history/6abc1382-870b-4ea7-9986-4b3b54ac4060/ouverture-donauturm-rutsche-2023",
+            "status": 200,
+            "textLength": 1318,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 493
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history/6abc1382-870b-4ea7-9986-4b3b54ac4060/ouverture-donauturm-rutsche-2023",
+            "status": 200,
+            "textLength": 1351,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 509
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history/6abc1382-870b-4ea7-9986-4b3b54ac4060/ouverture-donauturm-rutsche-2023",
+            "status": 200,
+            "textLength": 1259,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 493
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche/history/6abc1382-870b-4ea7-9986-4b3b54ac4060/ouverture-donauturm-rutsche-2023",
+            "status": 200,
+            "textLength": 1323,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 520
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-slide-20261023/donauturm-receipts.json"
+}

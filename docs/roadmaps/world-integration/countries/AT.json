@@ -1140,34 +1140,115 @@
     },
     {
       "entryId": "AT-candidate-discovery-5012808b5cf423",
-      "name": "Donauturm Slide",
-      "entityKind": "ToQualify",
+      "name": "Donauturm-Rutsche",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Toboggan fixe",
-      "locality": "Vienne",
-      "siteId": null,
+      "locality": "Vienne, Donaupark",
+      "siteId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T15:53:42.635Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Billetterie de la glissade active le 23 octobre 2026.",
+      "identityConfidence": "Glissade Carsten Höller de la Donauturm avec billet séparé, entrée de la tour obligatoire, sans fiche homonyme AT.",
       "possibleMatches": [],
       "aliases": [
         "Danube Tower Slide",
         "Donaurutsche"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T15:49:21.994Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-9069f483-791f-4344-aad3-5b7fd05fe1f8",
+          "appliedAt": "2026-10-23T15:47:38.497Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+          "evidence": "PARK_DATA_EDITOR:apply:9069f483-791f-4344-aad3-5b7fd05fe1f8",
+          "auditEvidence": null,
+          "summary": "Fiche Donauturm-Rutsche et huit descriptions créées avec la condition d’entrée à la tour."
+        },
+        {
+          "eventId": "apply-bc3101e5-9499-4de3-913d-c8cd8250b533",
+          "appliedAt": "2026-10-23T15:48:28.314Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+          "evidence": "PARK_DATA_EDITOR:apply:bc3101e5-9499-4de3-913d-c8cd8250b533",
+          "auditEvidence": null,
+          "summary": "Billet de glissade simple et deux forfaits multi-passages intégrés avec supplément d’entrée à la tour explicite."
+        },
+        {
+          "eventId": "apply-4d3f33c5-a454-4571-89f0-93cc9ed472f3",
+          "appliedAt": "2026-10-23T15:48:57.414Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+          "evidence": "PARK_DATA_EDITOR:apply:4d3f33c5-a454-4571-89f0-93cc9ed472f3",
+          "auditEvidence": null,
+          "summary": "Cinq conditions officielles d’âge, taille, poids, billetterie et météo intégrées."
+        },
+        {
+          "eventId": "apply-c301319c-0167-4245-8138-5477c0ab3b2b",
+          "appliedAt": "2026-10-23T15:49:21.994Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+          "evidence": "PARK_DATA_EDITOR:apply:c301319c-0167-4245-8138-5477c0ab3b2b",
+          "auditEvidence": null,
+          "summary": "Installation de l’œuvre en octobre et ouverture de novembre 2023 racontées en huit langues."
+        },
+        {
+          "eventId": "closure-c301319c-0167-4245-8138-5477c0ab3b2b",
+          "appliedAt": "2026-10-23T15:49:21.994Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+          "evidence": "PARK_DATA_EDITOR:apply:c301319c-0167-4245-8138-5477c0ab3b2b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-slide-20261023/donauturm-audit.json",
+          "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; rechercher une photo autorisée de la glissade, puis recontrôler les tarifs de la tour et les horaires du jour.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://shop.donauturm.at/en/Admission-Tickets/Slide-Tickets/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.donauturm.at/en/restaurants-and-shop/turm-slide/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.donauturm.at/public/en/event-news-and-culinary/events/pure-adrenalin-rush-on-europes-highest-slide-donauturm-rutsche-officially-opened-today-2/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.donauturm.at/en/about-us/faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://shop.donauturm.at/en/Admission-Tickets/Single-Tickets/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/46965660",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -1176,8 +1257,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Donauturm Slide",
@@ -1190,7 +1271,29 @@
             "sourceLocality": "Vienne"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Glissade fixe avec ticket propre, ajoutée à la visite payante de la tour. La nécessité du billet d’entrée et d’ascenseur est affichée clairement."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
+          "publishedAtUtc": "2026-10-23T15:50:46.9170878Z",
+          "verifiedAtUtc": "2026-10-23T15:53:42.635Z",
+          "evidence": "PARK_DATA_EDITOR:apply:47ef7908-44ad-40fa-86d4-bca8deb0407a"
+        },
+        "facebook": {
+          "id": "31180d925c11475da79c7629b59b8bcf",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T15:51:41.7737483Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124314301424431",
+          "externalPostId": "1285475681307050_122124314301424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-slide-20261023/donauturm-audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
