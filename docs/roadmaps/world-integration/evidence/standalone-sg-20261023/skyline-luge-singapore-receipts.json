@@ -1,0 +1,215 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "552aee09-fb28-4095-961f-bc2956fdd2cb",
+    "appliedAtUtc": "2026-10-23T13:45:46.316703Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "241cbacc-d8ae-4814-8da5-702f7357d668",
+    "appliedAtUtc": "2026-10-23T13:47:21.9440144Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "2771b32b-fc18-4d8b-84a9-482557ba18b3",
+    "appliedAtUtc": "2026-10-23T13:47:45.4908271Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "6306e4ad-8195-4a4a-8503-2f39ea9b6bb1",
+    "appliedAtUtc": "2026-10-23T13:48:09.1344361Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-location",
+    "operationId": "a3b92671-84ba-43a7-a8cc-89ecf74005a7",
+    "appliedAtUtc": "2026-10-23T13:48:32.2618388Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "06-history",
+    "operationId": "602bfbc4-f74f-4e26-9f7e-d26fdd877499",
+    "appliedAtUtc": "2026-10-23T13:49:28.0315822Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "06-history-revision",
+    "operationId": "7d3df5cc-e174-47ba-a25d-09a35c2e8c47",
+    "appliedAtUtc": "2026-10-23T13:54:44.455146Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "07-publish-images",
+    "operationId": "bbc741a7-d222-44e0-8180-31b97102e39c",
+    "appliedAtUtc": "2026-10-23T13:55:40.3041414Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-history",
+    "operationId": "6c9f0b83-b82d-4712-8497-ad788fa85ee0",
+    "appliedAtUtc": "2026-10-23T13:56:03.3419953Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-attraction",
+    "operationId": "400d55fa-0ed2-448b-9f34-923914893b8c",
+    "appliedAtUtc": "2026-10-23T13:56:27.9077738Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing-revision",
+    "operationId": "03bafedc-ed16-4719-9cca-d69129c3d5dd",
+    "appliedAtUtc": "2026-10-23T13:56:50.7973715Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "10-opening-year",
+    "operationId": "483fcccd-e51a-4552-973d-a4923c091ba7",
+    "appliedAtUtc": "2026-10-23T13:58:18.0179751Z",
+    "targetStandaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "action": "ImportPhoto",
+    "imageId": "290c57b5382e40f49126cabdb1c907f7",
+    "updatedAtUtc": "2026-10-23T13:51:55.071Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Luge_ride_at_Sentosa_Luge_and_Skyride,_Singapore_-_20140213.jpg"
+  },
+  {
+    "stage": "photo-2",
+    "action": "ImportPhoto",
+    "imageId": "030fa54ab773481f982cb4e0b0addcc5",
+    "updatedAtUtc": "2026-10-23T13:52:14.064Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyride_at_Sentosa_Luge_and_Skyride,_Singapore_-_20140213-03.jpg"
+  },
+  {
+    "stage": "photo-3",
+    "action": "ImportPhoto",
+    "imageId": "a7456384749f49f0ba649b022d8c566c",
+    "updatedAtUtc": "2026-10-23T13:53:05.427Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sentosa_Luge_and_Skyride,_Singapore_-_20140213.jpg"
+  }
+]
