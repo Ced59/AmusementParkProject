@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "e5777ce7-7ca2-4363-8892-570d4f2064b1",
+    "appliedAtUtc": "2026-10-23T02:37:05.7170753Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "8d7e9644-70f8-458c-b618-bc35a6d90925",
+    "appliedAtUtc": "2026-10-23T02:37:53.1508793Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "e62ac120-b83d-484e-886d-12485c23014f",
+    "appliedAtUtc": "2026-10-23T02:39:05.703508Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "32aaf999-cdea-429d-9e85-238c8131b91e",
+    "appliedAtUtc": "2026-10-23T02:39:46.3566563Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-core.apply",
+    "operationId": "0909f042-f40e-4c97-b470-2d838855814c",
+    "appliedAtUtc": "2026-10-23T02:40:11.4252665Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "2062dbf5-82f3-4dac-bf13-5dc5ae8568a8",
+    "appliedAtUtc": "2026-10-23T02:43:28.2405213Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "09b55389-277b-4f0f-bb18-129dcd395be6",
+    "appliedAtUtc": "2026-10-23T02:46:44.1891499Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "e37b04b3-04fe-4f4e-9957-9561cabde645",
+    "appliedAtUtc": "2026-10-23T02:47:51.2306656Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "2c98a989-aa84-4fef-83c3-a45b803cdc21",
+    "appliedAtUtc": "2026-10-23T02:48:15.6312332Z",
+    "targetStandaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "c07bc337550444929ab609298adb6ed1",
+    "ownerId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/9893f623-6350-4508-aacb-8ce1b0643bb5/Sky-riders-over-green-landscape-desktop.jpg?width=1200&height=600&ext=.jpg",
+    "updatedAt": "2026-10-23T02:40:50.808Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "c00db05be89c4dc0a51940838bb798d6",
+    "ownerId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/766d4a72-66ee-428e-9756-8067ca55eb39/FlyOver-Commercial-Shoot-2021-130-(1)-(1).jpg?width=1200&height=800&ext=.jpg",
+    "updatedAt": "2026-10-23T02:41:14.132Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "607f7e4613dc46c0a37df97d23388d32",
+    "ownerId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/1cdcdbf5-62b9-47d0-868d-4f52de0ef830/PR-Chicago-American-West.jpg?width=1200&height=800&ext=.jpg",
+    "updatedAt": "2026-10-23T02:42:01.969Z",
+    "isPublished": false
+  }
+]
