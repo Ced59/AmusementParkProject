@@ -1,0 +1,302 @@
+{
+  "name": "Flying Suwon",
+  "standaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+  "qualification": "Ballon captif à billetterie et exploitant propres au pied de Changnyongmun. Aucune fiche Park ou StandaloneAttraction trouvée en KR sous Flying Suwon/플라잉수원. Exploitation actuelle vérifiée sur le site de l’exploitant ; ouverture publique le 11 août 2016 selon la ville et Yonhap. Création autonome sans doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 88,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 5
+  },
+  "gaps": [
+    "Le site actuel annonce des vols et tarifs en contradiction avec certaines pages produits historiques et le portail VisitSuwon : la fiche utilise le guide principal de l’exploitant et invite à vérifier l’état du jour.",
+    "L’exploitant indique une altitude variable et une capacité moderne de 30 personnes, contre 20 personnes dans les sources municipales de 2016. Seule l’altitude maximale de 150 m est structurée ; pas de capacité fixe.",
+    "La durée exacte du vol et les exceptions de jours fériés ne sont pas structurées : des pages plus anciennes donnent une durée incluant la montée et la descente ou une durée de vol différente.",
+    "Photographies extraites des galeries officielles de l’exploitant et du constructeur avec sources et crédits ; autorisation de republication spécifique non documentée, à vérifier lors du prochain audit des médias.",
+    "Constructeur Aerophile documenté par sa référence, sans créer une liaison de constructeur globale non vérifiée."
+  ],
+  "sources": [
+    "https://flyingsuwon.com/",
+    "https://flyingsuwon.com/app/guide",
+    "https://flyingsuwon.com/app/company",
+    "https://flyingsuwon.com/app/helium",
+    "https://news.suwon.go.kr/_Ext/news/viewPrint.php?reqIdx=147072735151731942",
+    "https://www.yna.co.kr/view/AKR20160819145300061",
+    "https://www.aerophile.com/en/clients/flying-suwon/",
+    "https://mapcarta.com/W1014566668"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T06:40:53.311644+00:00",
+    "exportSha256": "d98420c1329f8b1393dc8805c0557ff0d28b6eb4a004cf3f96d7d5359fe0907d",
+    "localizedStringsReviewed": 240,
+    "localizedGroups": 30,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T06:43:21.093097+00:00",
+  "facebook": {
+    "id": "1b3718ff92d04a849cd90544bea33dcd",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T06:43:40.4063265Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124252507424431",
+    "externalPostId": "1285475681307050_122124252507424431",
+    "url": "https://amusement-parks.fun/fr/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon?facebook-image=5681384349fa45eaa527c54d14134aaf"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T06:43:21.093097+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T06:43:28.798882+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history/b55ac56c-17c1-4096-9613-b993da06029e/flying-suwon-ouverture-2016",
+            "status": 200,
+            "textLength": 1710,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 511
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history/b55ac56c-17c1-4096-9613-b993da06029e/flying-suwon-ouverture-2016",
+            "status": 200,
+            "textLength": 1517,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 440
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history/b55ac56c-17c1-4096-9613-b993da06029e/flying-suwon-ouverture-2016",
+            "status": 200,
+            "textLength": 1489,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 541
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history/b55ac56c-17c1-4096-9613-b993da06029e/flying-suwon-ouverture-2016",
+            "status": 200,
+            "textLength": 1475,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 523
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history/b55ac56c-17c1-4096-9613-b993da06029e/flying-suwon-ouverture-2016",
+            "status": 200,
+            "textLength": 1439,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 486
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history/b55ac56c-17c1-4096-9613-b993da06029e/flying-suwon-ouverture-2016",
+            "status": 200,
+            "textLength": 1468,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 511
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history/b55ac56c-17c1-4096-9613-b993da06029e/flying-suwon-ouverture-2016",
+            "status": 200,
+            "textLength": 1367,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 484
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon/history/b55ac56c-17c1-4096-9613-b993da06029e/flying-suwon-ouverture-2016",
+            "status": 200,
+            "textLength": 1448,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 517
+      }
+    ]
+  }
+}

@@ -14,10 +14,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 12 |
-| À qualifier | 86 |
+| À qualifier | 85 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 1 |
+| Intégration achevée | 2 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **12 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **67 candidats sans fiche**.
 
-Standalone : **1 publiées**, **0 masquées**, **8 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **2 publiées**, **0 masquées**, **7 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **6 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -62,7 +62,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | KR-candidate-f63759dc69de08 | Everland Zoological Gardens | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.everland.com) |
 | KR-candidate-9a7c55bb256e32 | Fantasia | Jeju , Jeju | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5919.htm) |
 | KR-candidate-5eb1581b64e91f | Fill Land | Boryeong , Chungcheongnam-do | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/5884.htm) |
-| KR-candidate-discovery-1ff4ac48854ae5 | Flying Suwon | Suwon | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Flying Suwon. Signal source : Référence constructeur datée 2016 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/flying-suwon/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
+| KR-candidate-discovery-1ff4ac48854ae5 | Flying Suwon | Suwon | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T06:42:31.885Z | — | Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-016a9069-13e2-4224-91a3-0891c65f6f0e ; conserver les références de découverte. Installations référencées : Flying Suwon. Signal source : Référence constructeur datée 2016 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/flying-suwon/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) · [Source vérifiée — intégration standalone](https://flyingsuwon.com/) · [Source vérifiée — intégration standalone](https://flyingsuwon.com/app/guide) · [Source vérifiée — intégration standalone](https://flyingsuwon.com/app/company) · [Source vérifiée — intégration standalone](https://flyingsuwon.com/app/helium) · [Source vérifiée — intégration standalone](https://news.suwon.go.kr/_Ext/news/viewPrint.php?reqIdx=147072735151731942) · [Source vérifiée — intégration standalone](https://www.yna.co.kr/view/AKR20160819145300061) · [Source vérifiée — intégration standalone](https://mapcarta.com/W1014566668) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/d04426fe-8ec7-425d-9e7f-80ca7d20924b/flying-suwon) |
 | KR-candidate-e8c00765bdb961 | Gaya Land | Gimhae , Gyeongsangnam-do | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/5882.htm) |
 | KR-candidate-00fdeffebd605e | Geumgang Park | Busan | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/6026.htm) |
 | KR-candidate-a1bab7d8330a02 | Goldenwave Pension | Chungcheongnam-do | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/22364.htm) |

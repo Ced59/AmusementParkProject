@@ -1,0 +1,186 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "ecdb9160-18ae-4cc0-a432-6b70bad95e55",
+    "appliedAtUtc": "2026-10-23T06:34:37.0868057Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "01b-copyfix.apply",
+    "operationId": "24ad9909-db71-40d7-aa48-71fad7c814d2",
+    "appliedAtUtc": "2026-10-23T06:40:17.4499876Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "d10884af-7baa-49ed-b998-7feac9108436",
+    "appliedAtUtc": "2026-10-23T06:35:48.8869744Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "4a9873d1-076b-4c10-8950-0804ff023b91",
+    "appliedAtUtc": "2026-10-23T06:36:24.8389068Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "cecd544c-dfaa-4d4a-b74e-831126dde393",
+    "appliedAtUtc": "2026-10-23T06:36:49.5333413Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "63c3b869-f2ae-4dbd-ba32-3aa03ec68feb",
+    "appliedAtUtc": "2026-10-23T06:38:20.6766746Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05b-history-copyfix.apply",
+    "operationId": "1c542489-85a6-4b05-b2bc-d03f208fcb82",
+    "appliedAtUtc": "2026-10-23T06:40:40.5060378Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "530eee76-0640-40aa-8ffa-8e2c632fb157",
+    "appliedAtUtc": "2026-10-23T06:41:45.1469914Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "0aae6378-d587-41dc-9b6a-5e5dcc8f5f7a",
+    "appliedAtUtc": "2026-10-23T06:42:09.1271036Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "016a9069-13e2-4224-91a3-0891c65f6f0e",
+    "appliedAtUtc": "2026-10-23T06:42:31.8857591Z",
+    "targetStandaloneAttractionId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "5681384349fa45eaa527c54d14134aaf",
+    "ownerId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "sourceUrl": "https://octopus.gcdn.ntruss.com/OCTOPUS/upload/S000000000652/design_00380/1920xauto_1740474353634.webp",
+    "updatedAt": "2026-10-23T06:37:10.349Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "1ca8547a0c9a4486adb730c55e5f812f",
+    "ownerId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "sourceUrl": "https://octopus.gcdn.ntruss.com/OCTOPUS/upload/S000000000652/design_00380/750xauto_1740474360838.webp",
+    "updatedAt": "2026-10-23T06:37:25.108Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "151f9912a00b4d7cac6867125bfef850",
+    "ownerId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+    "sourceUrl": "https://www.aerophile.com/admin/wp-content/uploads/2023/01/82-2016-suwon-south-korea.png",
+    "updatedAt": "2026-10-23T06:37:53.614Z",
+    "isPublished": false
+  }
+]
