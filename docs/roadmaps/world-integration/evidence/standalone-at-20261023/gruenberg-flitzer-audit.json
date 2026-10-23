@@ -1,0 +1,306 @@
+{
+  "name": "Grünberg-Flitzer",
+  "standaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+  "legacyParkId": "4b096c01-c2d1-4f44-b8ab-f6b1cd362461",
+  "legacyParkItemId": "232e5295-b2c0-4dc4-a5a9-fe09d0be3dfb",
+  "qualification": "Ancien Park masqué contenant un seul parkItem Grünbergflitzer. L’exploitant vend un billet propre pour la luge ; la télécabine de Gmunden est indépendante. SearchParks et SearchStandaloneAttractions officiels confirment l’absence de doublon standalone avant migration. Le Park et son item historiques sont conservés masqués et classés hors publication.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": null,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedContextPhotos": 2,
+    "directRidePhotos": 0,
+    "accessConditions": 4,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentAdmissionOffers": 8,
+    "openingHoursPeriod": "2026-10-23/2026-11-15",
+    "datedScheduleOverrides": 24
+  },
+  "gaps": [
+    "Aucune photo de la piste avec droit de réutilisation vérifiable trouvée sur Wikimedia Commons (recherche par nom, variantes et géolocalisation), Openverse accessible ni dans les sources explorées. Les images officielles de l’exploitant ont des crédits mais aucune licence de réutilisation explicite ; elles ne sont pas copiées. Deux photographies Commons montrent seulement l’accès au sommet et le paysage, avec des légendes exactes.",
+    "Le jour d’ouverture du 19 juin 2014 provient de Captain Coaster ; la RCDB et l’ancien item confirment l’année et le fabricant sans confirmer ce jour.",
+    "Le point cartographique est celui de la voie OSM way/386752559 et situe le parcours, non la caisse exacte.",
+    "Le calendrier publié s’arrête au 15 novembre 2026 ; aucune date 2027 n’a été extrapolée. La piste ferme par temps pluvieux.",
+    "Le service officiel Completeness a renvoyé HTTP 500 pour les vues normale et projetée le 23 octobre 2026 ; aucun score automatique n’a été inventé. Pages et articles publics vérifiés directement en huit langues, sur mobile."
+  ],
+  "sources": [
+    "https://www.gruenberg.info/de/wandern-aktivitaeten/attraktionen/sommerrodelbahn-gruenberg-flitzer",
+    "https://www.gruenberg.info/de/impressum",
+    "https://captaincoaster.com/fr/coasters/4582/grunbergflitzer-grunbergflitzer-gmunden",
+    "https://rcdb.com/13006.htm",
+    "https://www.openstreetmap.org/way/386752559",
+    "https://commons.wikimedia.org/wiki/File:Gmunden_-_Gr%C3%BCnberg,_Seilbahnstation.JPG",
+    "https://commons.wikimedia.org/wiki/File:Gr%C3%BCnberg_Gmunden_Traunsee_20241011a.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T11:57:38.706268+00:00",
+    "exportSha256": "779d11db1be15252ad5c2fb5ac371f9c99c772f7ee31f559a86c748000deb336",
+    "localizedStringsReviewed": 296,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": []
+  },
+  "automaticCompleteness": {
+    "status": "Failed",
+    "httpStatus": 500,
+    "attempts": [
+      "normal",
+      "projected"
+    ]
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+    "publishedAtUtc": "2026-10-23T11:58:59.3728287Z",
+    "operationId": "0116f8f3-2472-495c-a2cd-151d850f3f97"
+  },
+  "facebookPublication": {
+    "id": "5f33fc4f906d414e9272d5df181ad5fa",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T12:00:54.3268995Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124284523424431",
+    "externalPostId": "1285475681307050_122124284523424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T12:00:00.455700+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T11:59:32.517424+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history/081787a5-bda5-4b81-9141-bafe117d0bcf/ouverture-gruenberg-flitzer-2014",
+            "status": 200,
+            "textLength": 1540,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 535
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history/081787a5-bda5-4b81-9141-bafe117d0bcf/ouverture-gruenberg-flitzer-2014",
+            "status": 200,
+            "textLength": 1364,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 450
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history/081787a5-bda5-4b81-9141-bafe117d0bcf/ouverture-gruenberg-flitzer-2014",
+            "status": 200,
+            "textLength": 1405,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 554
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history/081787a5-bda5-4b81-9141-bafe117d0bcf/ouverture-gruenberg-flitzer-2014",
+            "status": 200,
+            "textLength": 1371,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 524
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history/081787a5-bda5-4b81-9141-bafe117d0bcf/ouverture-gruenberg-flitzer-2014",
+            "status": 200,
+            "textLength": 1380,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 487
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history/081787a5-bda5-4b81-9141-bafe117d0bcf/ouverture-gruenberg-flitzer-2014",
+            "status": 200,
+            "textLength": 1392,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 505
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history/081787a5-bda5-4b81-9141-bafe117d0bcf/ouverture-gruenberg-flitzer-2014",
+            "status": 200,
+            "textLength": 1337,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 500
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/grunberg-flitzer/history/081787a5-bda5-4b81-9141-bafe117d0bcf/ouverture-gruenberg-flitzer-2014",
+            "status": 200,
+            "textLength": 1342,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 514
+      }
+    ]
+  }
+}

@@ -2141,26 +2141,122 @@
     },
     {
       "entryId": "AT-park-4b096c01-c2d1-4f44-b8ab-f6b1cd362461",
-      "name": "Grünbergflitzer Gmunden",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "name": "Grünberg-Flitzer",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
-      "locality": null,
-      "siteId": "4b096c01-c2d1-4f44-b8ab-f6b1cd362461",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "locality": "Gmunden, Haute-Autriche",
+      "siteId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+      "legacySiteIds": [
+        "4b096c01-c2d1-4f44-b8ab-f6b1cd362461"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T12:00:00.455Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identité, billet propre et migration legacy contrôlés ; page publique vérifiée en huit langues",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Grünbergflitzer Gmunden",
+        "Grünbergflitzer"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T11:59:29.282Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7803a046-1f7a-4f47-b2eb-03915f3bd526",
+          "appliedAt": "2026-10-23T11:53:24.816Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:apply:7803a046-1f7a-4f47-b2eb-03915f3bd526",
+          "auditEvidence": null,
+          "summary": "Migration de la fiche Park masquée et descriptions huit langues."
+        },
+        {
+          "eventId": "apply-ddde2726-bd2d-4cf6-ae5d-f734a25b0154",
+          "appliedAt": "2026-10-23T11:54:37.230Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:apply:ddde2726-bd2d-4cf6-ae5d-f734a25b0154",
+          "auditEvidence": null,
+          "summary": "Calendrier officiel du 23 octobre au 15 novembre 2026 intégré."
+        },
+        {
+          "eventId": "apply-87db6cac-39eb-4e58-8570-d732f44d9aa8",
+          "appliedAt": "2026-10-23T11:55:00.430Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:apply:87db6cac-39eb-4e58-8570-d732f44d9aa8",
+          "auditEvidence": null,
+          "summary": "Huit tarifs 2026 de luge intégrés."
+        },
+        {
+          "eventId": "apply-9bac3498-017f-4791-8b19-58c34631cb4c",
+          "appliedAt": "2026-10-23T11:55:34.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:apply:9bac3498-017f-4791-8b19-58c34631cb4c",
+          "auditEvidence": null,
+          "summary": "Quatre conditions officielles de visite et d’âge intégrées."
+        },
+        {
+          "eventId": "apply-b20ce614-0e3a-4c7b-a62c-00464485c704",
+          "appliedAt": "2026-10-23T11:56:04.829Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:apply:b20ce614-0e3a-4c7b-a62c-00464485c704",
+          "auditEvidence": null,
+          "summary": "Jalon d’ouverture de 2014 et article en huit langues intégrés."
+        },
+        {
+          "eventId": "photo-2d22047f9c984518a948b146e2544d79",
+          "appliedAt": "2026-10-23T11:56:56.201Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:import-photo:2d22047f9c984518a948b146e2544d79",
+          "auditEvidence": null,
+          "summary": "Photo Commons de contexte 1/2 importée avec crédit."
+        },
+        {
+          "eventId": "photo-c091dcc14e81402c9e3013a3fcedbb9b",
+          "appliedAt": "2026-10-23T11:57:11.794Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c091dcc14e81402c9e3013a3fcedbb9b",
+          "auditEvidence": null,
+          "summary": "Photo Commons de contexte 2/2 importée avec crédit."
+        },
+        {
+          "eventId": "apply-ae6f1cdc-3cc5-40d7-a6d1-adf5b5cd804e",
+          "appliedAt": "2026-10-23T11:59:29.282Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:apply:ae6f1cdc-3cc5-40d7-a6d1-adf5b5cd804e",
+          "auditEvidence": null,
+          "summary": "Position de la piste issue de la voie OSM identifiée intégrée."
+        },
+        {
+          "eventId": "closure-ae6f1cdc-3cc5-40d7-a6d1-adf5b5cd804e",
+          "appliedAt": "2026-10-23T11:59:29.282Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+          "evidence": "PARK_DATA_EDITOR:apply:ae6f1cdc-3cc5-40d7-a6d1-adf5b5cd804e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-20261023/gruenberg-flitzer-audit.json",
+          "summary": "Audit éditorial final avec limites documentées ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus ; obtenir une photographie réutilisable de la piste, vérifier la date d’ouverture auprès de l’exploitant et renouveler le calendrier après le 15 novembre 2026. Recontrôler le service Completeness (HTTP 500).",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2176,12 +2272,47 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13006.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.gruenberg.info/de/wandern-aktivitaeten/attraktionen/sommerrodelbahn-gruenberg-flitzer",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.gruenberg.info/de/impressum",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://captaincoaster.com/fr/coasters/4582/grunbergflitzer-grunbergflitzer-gmunden",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/386752559",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Gmunden_-_Gr%C3%BCnberg,_Seilbahnstation.JPG",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Gr%C3%BCnberg_Gmunden_Traunsee_20241011a.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "AT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -2195,7 +2326,30 @@
             "sourceOpenedYear": "2014"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Luge sur rails autonome avec billet à sa caisse ; la télécabine et les autres activités du domaine sont distinctes. Park mono-attraction masqué migré sans doublon."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1c4d259e-4c7e-43f8-9315-bd9108119bd3/gruenberg-flitzer",
+          "publishedAtUtc": "2026-10-23T11:58:59.3728287Z",
+          "verifiedAtUtc": "2026-10-23T12:00:00.455Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0116f8f3-2472-495c-a2cd-151d850f3f97"
+        },
+        "facebook": {
+          "id": "5f33fc4f906d414e9272d5df181ad5fa",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T12:00:54.3268995Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124284523424431",
+          "externalPostId": "1285475681307050_122124284523424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-20261023/gruenberg-flitzer-audit.json",
+        "score": null,
+        "publicationBlockers": [],
+        "gapCount": 5,
+        "automaticCompleteness": "HTTP 500"
       }
     },
     {
