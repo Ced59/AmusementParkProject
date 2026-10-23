@@ -27572,25 +27572,148 @@
     {
       "entryId": "US-candidate-9e33a8dae9d141",
       "name": "High Roller",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Standalone à qualifier / Standalone",
-      "locality": "Las Vegas , Nevada",
-      "siteId": null,
+      "locality": "Las Vegas, Nevada",
+      "siteId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T12:49:04.193Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Billet autonome confirmé ; absence de doublon Park et standalone vérifiée ; page publique contrôlée en huit langues",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "The LINQ High Roller"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T12:44:57.345Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7a26ea94-bc02-4217-a31d-0cfe9c38f3f7",
+          "appliedAt": "2026-10-23T12:27:04.221Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:7a26ea94-bc02-4217-a31d-0cfe9c38f3f7",
+          "auditEvidence": null,
+          "summary": "Fiche créée et descriptions éditoriales dans huit langues intégrées."
+        },
+        {
+          "eventId": "apply-29477bc4-5b08-4dc6-bfa4-6094a54acbb6",
+          "appliedAt": "2026-10-23T12:29:34.564Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:29477bc4-5b08-4dc6-bfa4-6094a54acbb6",
+          "auditEvidence": null,
+          "summary": "Quatorze dates de réservation 2026 intégrées avec fuseau horaire."
+        },
+        {
+          "eventId": "apply-e1d94912-8ba6-44a1-8dd1-f431c3ca9c53",
+          "appliedAt": "2026-10-23T12:29:57.742Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:e1d94912-8ba6-44a1-8dd1-f431c3ca9c53",
+          "auditEvidence": null,
+          "summary": "Billet revendeur dynamique et validité datée intégrés."
+        },
+        {
+          "eventId": "apply-0920974e-a04e-4b42-b60a-727ba09ece5b",
+          "appliedAt": "2026-10-23T12:30:20.640Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:0920974e-a04e-4b42-b60a-727ba09ece5b",
+          "auditEvidence": null,
+          "summary": "Trois conditions d’accès vérifiées intégrées."
+        },
+        {
+          "eventId": "apply-2b377b7c-5129-4eb1-bbcd-b4986ada681b",
+          "appliedAt": "2026-10-23T12:30:43.544Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:2b377b7c-5129-4eb1-bbcd-b4986ada681b",
+          "auditEvidence": null,
+          "summary": "Jalon du 31 mars 2014 et article dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-ecec96ba33c4403591a679a1fbee186b",
+          "appliedAt": "2026-10-23T12:31:33.210Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:ecec96ba33c4403591a679a1fbee186b",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-0aeaddbb5b134e0da50ed6cb1587a278",
+          "appliedAt": "2026-10-23T12:31:48.066Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:0aeaddbb5b134e0da50ed6cb1587a278",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-bf514d5ebcd8457389e61675f278d03c",
+          "appliedAt": "2026-10-23T12:32:02.784Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:bf514d5ebcd8457389e61675f278d03c",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-acc6503279f849858ccda02499c42c7e",
+          "appliedAt": "2026-10-23T12:32:18.951Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:acc6503279f849858ccda02499c42c7e",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "apply-8f2e8c4b-d4d8-4fb5-b3fe-f471b4551a10",
+          "appliedAt": "2026-10-23T12:33:39.764Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:8f2e8c4b-d4d8-4fb5-b3fe-f471b4551a10",
+          "auditEvidence": null,
+          "summary": "Coordonnées géographiques vérifiées intégrées."
+        },
+        {
+          "eventId": "image-371960490d5941968bf78024a519456e",
+          "appliedAt": "2026-10-23T12:44:57.345Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:371960490d5941968bf78024a519456e",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "closure-image-371960490d5941968bf78024a519456e",
+          "appliedAt": "2026-10-23T12:44:57.345Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:371960490d5941968bf78024a519456e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/high-roller-audit.json",
+          "summary": "Audit final 90/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; renouveler horaires et tarifs dès l’expiration du 5 novembre 2026, rechercher les tarifs officiels Caesars et vérifier de nouveau les conditions d’accès.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
@@ -27601,13 +27724,85 @@
           "label": "Site officiel (attraction autonome)",
           "url": "https://www.caesars.com/linq/things-to-do/attractions/high-roller",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.poma.net/en/work/the-high-roller-observation-wheel/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://vegasinc.lasvegassun.com/business/2014/mar/31/take-spin-high-roller-observation-wheel-opens-toda/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.vegas.com/attractions/on-the-strip/high-roller-las-vegas/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wikidata.org/wiki/Q892103",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:The_High_Roller_-_View_From_The_Linq_2.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:The_High_Roller_under_construction_in_January_2014.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:The_High_Roller-Cabin.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Las_Vegas_-_The_High_Roller-01.JPG",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:High_Roller_ferris_wheel_at_night.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Grande roue permanente à billet propre sur la promenade du LINQ ; aucun billet d’entrée commun à un parc ni ancienne fiche trouvée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+          "publishedAtUtc": "2026-10-23T12:35:42.9580969Z",
+          "verifiedAtUtc": "2026-10-23T12:49:04.193Z",
+          "evidence": "PARK_DATA_EDITOR:apply:bd0a8866-3885-421b-86f3-c743acb33a7d"
+        },
+        "facebook": {
+          "id": "dffd12d61b2c41a1bc4eb5e0bc1e8921",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T12:48:10.4600504Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124290913424431",
+          "externalPostId": "1285475681307050_122124290913424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/high-roller-audit.json",
+        "score": 90,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
