@@ -15,7 +15,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Quatre pistes conservées du backlog national ajoutées : Lusitanix, Carvalhelhos, Feira Popular à Palhavã et Ottieland à Vila Franca de Xira. Dates de données nulles car aucune intégration appliquée pour ces candidats.
 - Príncipe Perfeito / Radical Park / parc aquatique du complexe et Pelicanzoo / Zoo de Lagos restent des rapprochements à vérifier avant toute création. Les lignes ne sont pas supprimées ni fusionnées sur leur seul nom.
 - Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
-- Création potentielle transfrontalière : Limite Zero (départ Sanlúcar de Guadiana, ES ; arrivée Alcoutim, PT) est suivie une seule fois sous ES-candidate-discovery-1182b2f2f1a8d3 dans ES.json. Coordonner la campagne PT avec ce dossier, sans seconde création.
+- Attraction transfrontalière publiée le 23 octobre 2026 : Límite Zero part de Sanlúcar de Guadiana (ES) et arrive à Alcoutim (PT). Fiche unique 00946076-78d4-4db4-8841-2cf1d640094e et backlog ES-candidate-discovery-1182b2f2f1a8d3 dans ES.json ; dernière intégration de données 2026-10-23T16:49:08.420Z. La campagne PT doit utiliser cette fiche, sans doublon.
 - Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 
 | État éditorial | Nombre |
