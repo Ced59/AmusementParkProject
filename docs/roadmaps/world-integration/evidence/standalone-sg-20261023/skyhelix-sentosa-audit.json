@@ -1,0 +1,302 @@
+{
+  "name": "SkyHelix Sentosa",
+  "standaloneAttractionId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+  "backlogEntryId": "SG-candidate-discovery-b43f63a4dd05a4",
+  "qualification": "Mount Faber Leisure Group exploite une plateforme panoramique avec billet propre à Imbiah Lookout, 41 Imbiah Road. Les recherches officielles de Parks et StandaloneAttractions, par SkyHelix et Sentosa et sans filtre de visibilité, n’ont trouvé aucune fiche homonyme.",
+  "deduplicationEvidence": {
+    "standaloneExactNameMatches": 0,
+    "parkExactNameMatches": 0,
+    "searchQueries": [
+      "SkyHelix",
+      "Sentosa"
+    ]
+  },
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 85,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedRidePhotos": 0,
+    "accessConditions": 5,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentAdmissionOffers": 2,
+    "weeklyOpeningRules": 1,
+    "preciseCoordinates": true
+  },
+  "gaps": [
+    "Aucune photo de la plateforme avec licence de réutilisation vérifiable trouvée sur Wikimedia Commons ; les visuels commerciaux ne sont pas copiés.",
+    "La page officielle affiche 8 h 45–22 h dans son en-tête et 10 h–21 h 30 dans le bloc Imbiah Lookout ; ce dernier est corroboré par la FAQ et les offres partenaires, avec dernière montée à 21 h 15. Clarifier avec l’exploitant.",
+    "Tarifs en ligne et sur place observés le 23 octobre 2026 ; renouveler régulièrement les tarifs et conditions promotionnelles."
+  ],
+  "sources": [
+    "https://mountfaberleisure.com/attraction/skyhelix-sentosa/",
+    "https://mountfaberleisure.com/faq/",
+    "https://mountfaberleisure.com/wp-content/uploads/2025/05/Press-Release-SkyHelix-Sentosa-Singapores-highest-open-air-panoramic-ride-to-open-ahead-of-schedule-on-15-December-2021_.pdf",
+    "https://www.aerophile.com/en/clients/skyhelix-sentosa/",
+    "https://www.openstreetmap.org/way/176839464"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T13:37:37.311153+00:00",
+    "exportSha256": "86485a531a30505f425e07ccbeaf14fa229cdf6c01a381d3d6a779f5cb7fef57",
+    "localizedStringsReviewed": 232,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues : identité, description, tarifs, horaires, accès et article contrôlés. La hauteur de trente-cinq mètres depuis le sol est distinguée de l’altitude maximale de soixante-dix-neuf mètres. Aucune photographie sans licence vérifiée n’est copiée."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+    "publishedAtUtc": "2026-10-23T13:36:17.6542346Z",
+    "operationId": "97193119-f7e3-4f5f-a553-4ce0d9098bba"
+  },
+  "facebookPublication": {
+    "id": "8c556b1f8ca4494b9497b460abf43cee",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T13:36:55.6427005Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124296721424431",
+    "externalPostId": "1285475681307050_122124296721424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T13:37:11.766001+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T13:36:37.992830+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history/acb86d5c-b5e6-48a0-9c08-ac0ac065e51a/ouverture-skyhelix-sentosa-singapour-2021",
+            "status": 200,
+            "textLength": 1410,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 517
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history/acb86d5c-b5e6-48a0-9c08-ac0ac065e51a/ouverture-skyhelix-sentosa-singapour-2021",
+            "status": 200,
+            "textLength": 1287,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 457
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history/acb86d5c-b5e6-48a0-9c08-ac0ac065e51a/ouverture-skyhelix-sentosa-singapour-2021",
+            "status": 200,
+            "textLength": 1392,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 549
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history/acb86d5c-b5e6-48a0-9c08-ac0ac065e51a/ouverture-skyhelix-sentosa-singapour-2021",
+            "status": 200,
+            "textLength": 1379,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 544
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history/acb86d5c-b5e6-48a0-9c08-ac0ac065e51a/ouverture-skyhelix-sentosa-singapour-2021",
+            "status": 200,
+            "textLength": 1351,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 499
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history/acb86d5c-b5e6-48a0-9c08-ac0ac065e51a/ouverture-skyhelix-sentosa-singapour-2021",
+            "status": 200,
+            "textLength": 1375,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 520
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history/acb86d5c-b5e6-48a0-9c08-ac0ac065e51a/ouverture-skyhelix-sentosa-singapour-2021",
+            "status": 200,
+            "textLength": 1384,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 497
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa/history/acb86d5c-b5e6-48a0-9c08-ac0ac065e51a/ouverture-skyhelix-sentosa-singapour-2021",
+            "status": 200,
+            "textLength": 1358,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 526
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyhelix-sentosa-receipts.json"
+}

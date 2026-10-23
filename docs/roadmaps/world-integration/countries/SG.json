@@ -1042,27 +1042,118 @@
     {
       "entryId": "SG-candidate-discovery-b43f63a4dd05a4",
       "name": "SkyHelix Sentosa",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Aerobar / plateforme panoramique",
-      "locality": "Sentosa",
-      "siteId": null,
+      "locality": "Imbiah Lookout, Sentosa",
+      "siteId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T13:37:11.766Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2021 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Exploitation et billetterie actives sur le site Mount Faber Leisure Group au 23 octobre 2026.",
+      "identityConfidence": "Billet et exploitant propres confirmés ; aucune fiche homonyme dans les recherches officielles, page publique contrôlée en huit langues.",
       "possibleMatches": [],
       "aliases": [
         "SkyHelix Sentosa Sentosa, Singapour"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T13:35:20.256Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-beb0e1d8-e7a5-48e0-a07e-27efe49c1405",
+          "appliedAt": "2026-10-23T13:27:47.541Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:beb0e1d8-e7a5-48e0-a07e-27efe49c1405",
+          "auditEvidence": null,
+          "summary": "Fiche et descriptions spécifiques en huit langues créées."
+        },
+        {
+          "eventId": "apply-f493cd4d-b1a0-4139-a013-f29cd09bfdd8",
+          "appliedAt": "2026-10-23T13:31:39.470Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:f493cd4d-b1a0-4139-a013-f29cd09bfdd8",
+          "auditEvidence": null,
+          "summary": "Horaires officiels spécifiques intégrés ; conflit de l’en-tête documenté."
+        },
+        {
+          "eventId": "apply-7258a5a7-900a-4cb4-8bcc-17b5fb389248",
+          "appliedAt": "2026-10-23T13:32:02.316Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:7258a5a7-900a-4cb4-8bcc-17b5fb389248",
+          "auditEvidence": null,
+          "summary": "Billets adultes et enfants, tarifs sur place et en ligne intégrés."
+        },
+        {
+          "eventId": "apply-2f296149-3ac1-403b-852e-2499149381f6",
+          "appliedAt": "2026-10-23T13:32:25.148Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:2f296149-3ac1-403b-852e-2499149381f6",
+          "auditEvidence": null,
+          "summary": "Cinq conditions officielles de taille, accompagnement et sécurité intégrées."
+        },
+        {
+          "eventId": "apply-7952acd3-6709-4d23-9229-7bb7005fabbe",
+          "appliedAt": "2026-10-23T13:32:48.015Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:7952acd3-6709-4d23-9229-7bb7005fabbe",
+          "auditEvidence": null,
+          "summary": "Ouverture du 15 décembre 2021 et article en huit langues intégrés."
+        },
+        {
+          "eventId": "apply-0202211d-79d3-4069-a7dc-06dac850f985",
+          "appliedAt": "2026-10-23T13:33:10.825Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:0202211d-79d3-4069-a7dc-06dac850f985",
+          "auditEvidence": null,
+          "summary": "Emplacement précis du SkyHelix à Imbiah Lookout intégré."
+        },
+        {
+          "eventId": "apply-344730fa-09b4-4b44-bf68-e7f0b735fc35",
+          "appliedAt": "2026-10-23T13:34:16.706Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:344730fa-09b4-4b44-bf68-e7f0b735fc35",
+          "auditEvidence": null,
+          "summary": "Article corrigé après contrôle de répétition dans le texte français."
+        },
+        {
+          "eventId": "apply-91100d31-b454-4672-9711-25755d7b76c0",
+          "appliedAt": "2026-10-23T13:35:20.256Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:91100d31-b454-4672-9711-25755d7b76c0",
+          "auditEvidence": null,
+          "summary": "Article reformulé en plusieurs langues ; audit éditorial sans blocage."
+        },
+        {
+          "eventId": "closure-91100d31-b454-4672-9711-25755d7b76c0",
+          "appliedAt": "2026-10-23T13:35:20.256Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:91100d31-b454-4672-9711-25755d7b76c0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyhelix-sentosa-audit.json",
+          "summary": "Audit final 85/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; chercher une photo réutilisable, clarifier les deux plages horaires officielles et renouveler les prix en ligne.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -1073,6 +1164,31 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://mountfaberleisure.com/attraction/skyhelix-sentosa/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://mountfaberleisure.com/faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://mountfaberleisure.com/wp-content/uploads/2025/05/Press-Release-SkyHelix-Sentosa-Singapores-highest-open-air-panoramic-ride-to-open-ahead-of-schedule-on-15-December-2021_.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/176839464",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -1081,8 +1197,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "SkyHelix Sentosa",
@@ -1096,7 +1212,29 @@
             "referenceId": "aerophile-skyhelix-sentosa"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "SkyHelix possède un billet propre à Imbiah Lookout ; l’exploitant et Aerophile documentent l’attraction en service."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+          "publishedAtUtc": "2026-10-23T13:36:17.6542346Z",
+          "verifiedAtUtc": "2026-10-23T13:37:11.766Z",
+          "evidence": "PARK_DATA_EDITOR:apply:97193119-f7e3-4f5f-a553-4ce0d9098bba"
+        },
+        "facebook": {
+          "id": "8c556b1f8ca4494b9497b460abf43cee",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T13:36:55.6427005Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124296721424431",
+          "externalPostId": "1285475681307050_122124296721424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyhelix-sentosa-audit.json",
+        "score": 85,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
