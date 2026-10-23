@@ -999,27 +999,160 @@
     {
       "entryId": "US-candidate-discovery-2f0e2b642d783e",
       "name": "Aerophile — Disney Springs",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
-      "locality": "Lake Buena Vista, Floride",
-      "siteId": null,
+      "locality": "Disney Springs West Side, Lake Buena Vista, Floride",
+      "siteId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T14:55:27.646Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Attraction et tarifs actifs sur le site Disney au 23 octobre 2026 ; remplacement du ballon en février 2026.",
+      "identityConfidence": "Billet Disney propre, source Aerophile active et alias Characters in Flight documenté par D23 ; aucune fiche homonyme dans les recherches officielles US.",
       "possibleMatches": [],
       "aliases": [
-        "Disney® Springs Orlando, Florida, USA"
+        "Disney® Springs Orlando, Florida, USA",
+        "Characters in Flight",
+        "Aerophile — The World Leader in Balloon Flight"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T14:52:36.337Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-40bc173e-9f83-4ce0-b0a0-c1ff4da395ea",
+          "appliedAt": "2026-10-23T14:45:26.728Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:40bc173e-9f83-4ce0-b0a0-c1ff4da395ea",
+          "auditEvidence": null,
+          "summary": "Fiche Aerophile et descriptions en huit langues créées."
+        },
+        {
+          "eventId": "apply-3b085e9f-ede8-4b72-a360-0fd13c4d8003",
+          "appliedAt": "2026-10-23T14:46:48.941Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:3b085e9f-ede8-4b72-a360-0fd13c4d8003",
+          "auditEvidence": null,
+          "summary": "Deux tarifs officiels provisoirement intégrés."
+        },
+        {
+          "eventId": "apply-20527d98-2114-4c61-9c6b-11383be524a7",
+          "appliedAt": "2026-10-23T14:47:12.634Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:20527d98-2114-4c61-9c6b-11383be524a7",
+          "auditEvidence": null,
+          "summary": "Quatre règles officielles d’âge, météo et sécurité intégrées."
+        },
+        {
+          "eventId": "apply-3462c1be-4022-4387-b0e0-51f79771b7f6",
+          "appliedAt": "2026-10-23T14:47:36.035Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:3462c1be-4022-4387-b0e0-51f79771b7f6",
+          "auditEvidence": null,
+          "summary": "Ouverture en 2009 et article historique en huit langues intégrés."
+        },
+        {
+          "eventId": "apply-d078e573-4f08-4a21-89d1-eb63ea2601e2",
+          "appliedAt": "2026-10-23T14:47:59.209Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:d078e573-4f08-4a21-89d1-eb63ea2601e2",
+          "auditEvidence": null,
+          "summary": "Coordonnées du ballon intégrées à partir d’OpenStreetMap."
+        },
+        {
+          "eventId": "image-1bc604c04170442ab56de28a6aa258e2",
+          "appliedAt": "2026-10-23T14:48:18.552Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:1bc604c04170442ab56de28a6aa258e2",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous CC BY-SA datée et créditée, avec textes alternatifs."
+        },
+        {
+          "eventId": "image-2533c05a498b4107adeb8c79c00c9fad",
+          "appliedAt": "2026-10-23T14:48:33.261Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:2533c05a498b4107adeb8c79c00c9fad",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous CC BY-SA datée et créditée, avec textes alternatifs."
+        },
+        {
+          "eventId": "image-07ffdcf41ae14e61ae1dde9550e6b732",
+          "appliedAt": "2026-10-23T14:48:48.109Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:07ffdcf41ae14e61ae1dde9550e6b732",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous CC BY-SA datée et créditée, avec textes alternatifs."
+        },
+        {
+          "eventId": "apply-c683ca3e-2ab2-4851-bc2e-0ff15a201b21",
+          "appliedAt": "2026-10-23T14:49:44.172Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:c683ca3e-2ab2-4851-bc2e-0ff15a201b21",
+          "auditEvidence": null,
+          "summary": "Plage horaire indicative du jour ajoutée avec avertissement."
+        },
+        {
+          "eventId": "apply-341527c5-3985-41c4-9c02-3f0a5b5c903f",
+          "appliedAt": "2026-10-23T14:50:07.196Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:341527c5-3985-41c4-9c02-3f0a5b5c903f",
+          "auditEvidence": null,
+          "summary": "Tarifs corrigés en prix sur place, sans lien d’achat en ligne."
+        },
+        {
+          "eventId": "apply-1a1436c3-d4a2-48e0-ac96-646147890204",
+          "appliedAt": "2026-10-23T14:52:12.209Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:1a1436c3-d4a2-48e0-ac96-646147890204",
+          "auditEvidence": null,
+          "summary": "Mesures techniques réécrites en toutes lettres dans les descriptions."
+        },
+        {
+          "eventId": "apply-7cd0529e-7a5a-41ae-864c-5145cc3699dd",
+          "appliedAt": "2026-10-23T14:52:36.337Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:7cd0529e-7a5a-41ae-864c-5145cc3699dd",
+          "auditEvidence": null,
+          "summary": "Mesures techniques réécrites en toutes lettres dans l’article historique."
+        },
+        {
+          "eventId": "closure-7cd0529e-7a5a-41ae-864c-5145cc3699dd",
+          "appliedAt": "2026-10-23T14:52:36.337Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:7cd0529e-7a5a-41ae-864c-5145cc3699dd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-aerophile-20261023/aerophile-disney-springs-audit.json",
+          "summary": "Audit final 100/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; réviser tarif, horaire et météo, puis chercher une photo du ballon renouvelé en 2026 sous licence adaptée.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -1030,6 +1163,46 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://disneyworld.disney.go.com/en_CA/attractions/disney-springs/aerophile-balloon-flight/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://d23.com/a-to-z/characters-in-flight/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://wdwnt.com/2026/02/aerophile-experience-reopens-new-balloon-disney-springs/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/node/11028811186",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Disney_springs_balloon.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:DowntownDisney-Balloon-2092.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Dark_Disney_-_Flickr_-_Neillwphoto.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -1038,8 +1211,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Aerophile — Disney Springs",
@@ -1053,7 +1226,29 @@
             "referenceId": "aerophile-disney-springs"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Vol captif à billetterie distincte dans un quartier accessible sans billet d’entrée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+          "publishedAtUtc": "2026-10-23T14:54:25.4222934Z",
+          "verifiedAtUtc": "2026-10-23T14:55:27.646Z",
+          "evidence": "PARK_DATA_EDITOR:apply:fe7c61dd-f4d8-4b31-98e6-36816342487e"
+        },
+        "facebook": {
+          "id": "7d6c29d8433144f8bd456d78dacdfbc4",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T14:55:57.3484611Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124307617424431",
+          "externalPostId": "1285475681307050_122124307617424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-aerophile-20261023/aerophile-disney-springs-audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
