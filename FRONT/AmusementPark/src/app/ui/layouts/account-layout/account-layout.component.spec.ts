@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 import { AccountLayoutComponent } from './account-layout.component';
 
@@ -14,8 +15,10 @@ interface ActivatedRouteStub {
 describe('AccountLayoutComponent', () => {
   let activatedRoute: ActivatedRouteStub;
   let fixture: ComponentFixture<AccountLayoutComponent>;
+  let navigations: Subject<NavigationEnd>;
 
   beforeEach(async () => {
+    navigations = new Subject<NavigationEnd>();
     activatedRoute = {
       firstChild: {
         snapshot: {
@@ -28,7 +31,7 @@ describe('AccountLayoutComponent', () => {
       set: {
         imports: [],
         template: `
-          <main [class.app-account-layout__main--wide]="wideLayout"></main>
+          <main [class.app-account-layout__main--wide]="wideLayout()"></main>
         `
       }
     });
@@ -36,7 +39,8 @@ describe('AccountLayoutComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AccountLayoutComponent],
       providers: [
-        { provide: ActivatedRoute, useValue: activatedRoute }
+        { provide: ActivatedRoute, useValue: activatedRoute },
+        { provide: Router, useValue: { events: navigations } }
       ]
     }).compileComponents();
 
@@ -68,5 +72,24 @@ describe('AccountLayoutComponent', () => {
       fixture.detectChanges();
     }).not.toThrow();
     expect(fixture.nativeElement.querySelector('main').classList).not.toContain('app-account-layout__main--wide');
+  });
+
+  it('refreshes the OnPush shell when the lazy profile route finishes navigating', () => {
+    activatedRoute.firstChild = {};
+    fixture.destroy();
+    fixture = TestBed.createComponent(AccountLayoutComponent);
+    fixture.detectChanges();
+    const main: HTMLElement = fixture.nativeElement.querySelector('main');
+    expect(main.classList).not.toContain('app-account-layout__main--wide');
+
+    activatedRoute.firstChild = { snapshot: { data: { accountLayout: 'wide' } } };
+    navigations.next(new NavigationEnd(1, '/fr/profile', '/fr/profile'));
+    fixture.detectChanges();
+    expect(main.classList).toContain('app-account-layout__main--wide');
+
+    activatedRoute.firstChild = { snapshot: { data: {} } };
+    navigations.next(new NavigationEnd(2, '/fr/forgot-password', '/fr/forgot-password'));
+    fixture.detectChanges();
+    expect(main.classList).not.toContain('app-account-layout__main--wide');
   });
 });

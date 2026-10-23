@@ -9,7 +9,7 @@ import { pathToFileURL } from 'node:url';
 
 import { compile } from 'sass';
 
-const viewportWidths = [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920];
+const viewportWidths = [320, 360, 390, 414, 480, 680, 768, 960, 1024, 1180, 1366, 1440, 1920, 2560, 3840];
 const viewportCases = [
   ...viewportWidths.map((width) => ({ height: 1200, label: `${width}px`, width })),
   { height: 568, label: 'mobile-low-height', width: 390 },
@@ -28,6 +28,14 @@ const componentStyles = [
   'src/styles/_buttons.scss',
   'src/styles/_layout.scss',
   'src/styles/_cards.scss',
+  'src/styles/_navigation.scss',
+  'src/styles/_brand-wordmark.scss',
+  'src/styles/_chips.scss',
+  'src/styles/_surfaces.scss',
+  'src/styles/_forms.scss',
+  'src/styles/_maps.scss',
+  'src/app/features/profile/pages/profile-page/profile-page.component.scss',
+  'src/app/features/public/parks/ui/park-list-map.component.scss',
   'src/app/ui/media/photo-carousel/ui-photo-carousel.component.scss',
   'src/app/features/public/home/pages/home.component.scss',
   'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
@@ -87,6 +95,44 @@ if (!chromeExecutable) {
 
 const fixtureMarkup = `
   <div class="responsive-fixture-host">
+    <header class="app-public-nav" data-check-bound>
+      <div class="app-public-nav__inner">
+        <a class="app-public-nav__logo" href="#home"><span class="app-brand-wordmark app-public-nav__logo-text"><span class="app-brand-wordmark__base">AMUSEMENT-PARKS</span><span class="app-brand-wordmark__fun"><span class="app-brand-wordmark__dot">.</span><span class="app-brand-wordmark__fun-text">fun</span></span></span></a>
+        <div class="app-public-nav__right">
+          <button class="app-public-nav__profile"><span class="app-public-nav__profile-copy"><span class="app-public-nav__profile-kicker">Bonjour</span><span class="app-public-nav__profile-name">Alexandre</span></span><img class="app-public-nav__profile-avatar" width="44" height="44" alt="Avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='1500'%3E%3Crect width='2000' height='1500' fill='teal'/%3E%3C/svg%3E"></button>
+          <button class="app-public-nav__language">FR</button><button class="app-theme-toggle">☾</button>
+        </div>
+        <ul class="app-public-nav__links"><li><a href="#home">Accueil</a></li><li><a href="#parks">Parcs</a></li></ul>
+      </div>
+    </header>
+    <section class="parks-map app-map-shell" data-check-bound>
+      <div class="app-map-shell__header" data-check-bound>
+        <div class="app-map-shell__heading" data-check-readable data-check-bound>
+          <span class="app-kicker app-kicker--sky">Carte interactive</span>
+          <h2 class="app-map-shell__title">Carte des parcs</h2>
+          <p class="app-map-shell__subtitle">Explore les parcs sur la carte. Filtre par région, puis clique sur un marqueur ou une fiche pour retrouver le bon parc.</p>
+        </div>
+        <div class="app-map-shell__actions" data-check-bound><div class="parks-map__actions"><div class="parks-map__filters">${['Tous', 'Europe', 'Amérique du Nord', 'Amérique du Sud', 'Afrique', 'Asie', 'Océanie', 'Proche-Orient'].map(name => `<button class="parks-map__filter">${name}</button>`).join('')}</div><button>Me localiser sur la carte</button></div></div>
+      </div>
+    </section>
+    <main class="app-account-layout__main app-account-layout__main--wide" data-check-bound>
+      <div class="app-account-layout__shell app-account-layout__shell--wide">
+        <aside class="app-account-layout__aside">Introduction du compte</aside>
+        <section class="app-account-layout__content">
+          <div class="profile-page">
+            <article class="profile-hero app-surface app-surface--hero app-surface--padding-spacious" data-check-bound><div class="profile-hero__avatar"><img class="profile-avatar" alt="Avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3C/svg%3E"><button>Modifier</button></div><div class="profile-hero__content"><span class="app-kicker">Compte</span><h1 class="profile-hero__title">Alexandre</h1><p class="profile-hero__subtitle">Mets à jour ton identité publique, ton avatar et ta langue préférée.</p></div></article>
+            <div class="profile-workspace">
+              <aside class="profile-navigation app-surface app-surface--panel app-surface--padding-spacious" data-check-bound><nav class="profile-tabs"><button class="profile-tabs__button"><i>☆</i><span class="profile-tabs__copy"><strong>Profil</strong><small>Garde tes informations à jour.</small></span></button><button class="profile-tabs__button"><i>☆</i><span class="profile-tabs__copy"><strong>Mon classement</strong><small>Classe les lieux que tu connais.</small></span></button></nav><button class="profile-navigation__logout">Déconnexion</button></aside>
+              <div class="profile-workspace__content">
+                <article class="profile-panel app-surface app-surface--panel app-surface--padding-spacious" data-check-bound>
+                  ${['Ton radar de changements', 'Tes voyages dans les parcs', 'Tes collections de lieux', 'Ton passeport de visites'].map(title => `<section class="profile-passport-entry" data-check-bound><span class="profile-passport-entry__icon">☆</span><div class="profile-passport-entry__copy" data-check-readable data-check-bound><span class="app-kicker">Radar personnel</span><h2>${title}</h2><p>Consulte les nouveautés des lieux que tu suis et retrouve les informations de ton compte.</p></div><div class="profile-passport-entry__actions"><button class="app-button">Ouvrir mes notifications</button></div></section>`).join('')}
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
     <section class="standalone-attraction-page" data-check-bound data-access-fixture="standalone">
       <div class="standalone-body">
         <main class="standalone-main">
@@ -112,7 +158,7 @@ const fixtureMarkup = `
     <section class="park-nearby public-page" data-check-bound data-nearby-fixture="mixed">
       <h2>Parcs et attractions à découvrir à proximité</h2>
       <div class="park-nearby__grid">
-        ${['Parc de la vallée aux montagnes', 'Luge alpine panoramique des montagnes', 'Parc des grandes aventures en famille', 'Grande roue au bord du fleuve'].map((name, index) => `<article class="ui-park-card ui-park-card--compact" data-check-bound><div class="ui-park-card__body"><div class="ui-park-card__headline"><h3 class="ui-park-card__title">${name}</h3></div><p class="ui-park-card__description">Découvre ce lieu à proximité et les informations utiles pour ta visite.</p><div class="ui-park-card__details"><div class="ui-park-card__detail ui-park-card__detail--distance"><span class="ui-park-card__label">Distance</span><strong>${index + 1},6 mi</strong></div></div></div><div class="ui-park-card__footer"><a class="ui-park-card__cta" href="#nearby-${index}">Voir les informations de cette destination</a></div></article>`).join('')}
+        ${['Parc de la vallée aux montagnes', 'Luge alpine panoramique des montagnes', 'Parc des grandes aventures en famille', 'Grande roue au bord du fleuve'].map((name, index) => `<article class="ui-park-card ui-park-card--compact" data-check-bound><div class="ui-park-card__visual"><img class="ui-park-card__photo" alt="${name}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'%3E%3C/svg%3E"></div><div class="ui-park-card__body"><div class="ui-park-card__headline"><h3 class="ui-park-card__title">${name}</h3></div><p class="ui-park-card__description">Découvre ce lieu à proximité et les informations utiles pour ta visite.</p><div class="ui-park-card__details"><div class="ui-park-card__detail ui-park-card__detail--distance"><span class="ui-park-card__label">Distance</span><strong>${index + 1},6 mi</strong></div></div></div><div class="ui-park-card__footer"><a class="ui-park-card__cta" href="#nearby-${index}">Voir les informations de cette destination</a></div></article>`).join('')}
       </div>
     </section>
     <section class="photo-carousel-panel" data-check-bound>
@@ -506,6 +552,27 @@ const evaluationScript = `
       const bounds = element.getBoundingClientRect();
       if (bounds.left < -1 || bounds.right > viewportRight + 1) {
         violations.push({ selector: element.tagName.toLowerCase() + (element.className ? '.' + String(element.className).trim().replaceAll(' ', '.') : ''), reason: 'out-of-bounds', left: bounds.left, right: bounds.right, viewportRight });
+      }
+    }
+    for (const element of document.querySelectorAll('[data-check-readable]')) {
+      const bounds = element.getBoundingClientRect();
+      if (bounds.width < 150 || bounds.height > 450) {
+        violations.push({ selector: element.className, reason: 'compressed-readable-copy', width: bounds.width, height: bounds.height });
+      }
+    }
+    const avatar = document.querySelector('.app-public-nav__profile-avatar').getBoundingClientRect();
+    const expectedAvatarSize = viewportRight <= 680 ? 42 : 44;
+    if (avatar.width !== expectedAvatarSize || avatar.height !== expectedAvatarSize) {
+      violations.push({ reason: 'unbounded-header-avatar', width: avatar.width, height: avatar.height });
+    }
+    if (getComputedStyle(document.querySelector('.app-account-layout__shell--wide .app-account-layout__aside')).display !== 'none') {
+      violations.push({ reason: 'profile-introduction-steals-content-width' });
+    }
+    for (const photo of document.querySelectorAll('.ui-park-card__photo')) {
+      const bounds = photo.getBoundingClientRect();
+      const visual = photo.closest('.ui-park-card__visual').getBoundingClientRect();
+      if (Math.abs(bounds.width - visual.width) > 1 || bounds.height !== visual.height || bounds.height < 128) {
+        violations.push({ reason: 'unreserved-card-photo', photoWidth: bounds.width, visualWidth: visual.width, photoHeight: bounds.height });
       }
     }
     const heroText = document.querySelector('.home-hero-card--1 .home-hero-card__content').getBoundingClientRect();

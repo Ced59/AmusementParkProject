@@ -67,7 +67,7 @@
 
 .profile-passport-entry {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 1rem;
   align-items: center;
   min-width: 0;
@@ -112,6 +112,7 @@
 
 .profile-passport-entry__actions {
   display: grid;
+  grid-column: 1 / -1;
   min-width: 0;
   gap: 0.55rem;
 }
@@ -223,8 +224,19 @@
 
 .profile-panel {
   display: grid;
+  container: profile-panel / inline-size;
   gap: clamp(1.1rem, 2vw, 1.5rem);
   min-height: 100%;
+}
+
+@container profile-panel (min-width: 42rem) {
+  .profile-passport-entry {
+    grid-template-columns: auto minmax(0, 1fr) minmax(10rem, 14rem);
+  }
+
+  .profile-passport-entry__actions {
+    grid-column: auto;
+  }
 }
 
 .profile-panel--ratings {

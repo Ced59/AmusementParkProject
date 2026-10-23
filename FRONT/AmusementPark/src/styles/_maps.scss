@@ -61,15 +61,26 @@
 }
 
 .app-map-shell__header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   align-items: end;
 }
 
 .app-map-shell__heading {
   display: grid;
+  flex: 1 1 20rem;
+  min-width: 0;
   gap: 0.65rem;
+}
+
+.app-map-shell__actions {
+  flex: 1 1 28rem;
+  min-width: 0;
+}
+
+.app-map-shell__actions:empty {
+  display: none;
 }
 
 .app-map-shell__title {
@@ -228,12 +239,6 @@
 
 @media (max-width: 960px) {
   .app-map-shell__body {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 680px) {
-  .app-map-shell__header {
     grid-template-columns: 1fr;
   }
 }

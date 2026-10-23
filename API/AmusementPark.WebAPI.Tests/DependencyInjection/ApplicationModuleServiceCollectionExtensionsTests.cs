@@ -94,6 +94,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         }
         services.AddSingleton(parks.Object);
         services.AddSingleton(attractions.Object);
+        services.AddSingleton(Mock.Of<IImageRepository>());
         using ServiceProvider provider = services.BuildServiceProvider();
         using IServiceScope scope = provider.CreateScope();
         NearbyDestinationsController controller = ActivatorUtilities.CreateInstance<NearbyDestinationsController>(scope.ServiceProvider);

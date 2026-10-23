@@ -15,6 +15,7 @@ import { UiButtonDirective, UiChipComponent } from '@ui/primitives';
 })
 export class UiParkCardComponent {
   readonly logoResponsiveWidths: readonly number[] = [128, 192, 320];
+  readonly photoResponsiveWidths: readonly number[] = [320, 480, 640, 800];
   @Input() park: ParkCardModel | null = null;
   @Input() detailLink: string[] | null = null;
   @Input() compact: boolean = false;
@@ -22,8 +23,8 @@ export class UiParkCardComponent {
   @Input() showWebsiteAction: boolean = true;
   @Input() primaryActionLabelKey: string = 'parks.actions.viewDetails';
 
-  protected get hasLogoImageId(): boolean {
-    return !!this.park?.logoImageId?.trim();
+  protected get hasImageId(): boolean {
+    return !!(this.park?.photoImageId?.trim() || this.park?.logoImageId?.trim());
   }
 
   protected get hasSecondaryLocation(): boolean {

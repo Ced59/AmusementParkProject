@@ -648,6 +648,7 @@ button.app-mobile-bottom-nav__item {
 .app-public-nav__profile-avatar,
 .app-public-nav__profile-fallback {
   width: 44px;
+  flex: 0 0 44px;
   min-width: 44px;
   height: 44px;
   min-height: 44px;
@@ -655,11 +656,14 @@ button.app-mobile-bottom-nav__item {
 }
 
 .app-public-nav__profile .p-avatar img,
-.app-public-nav__profile-avatar,
 .app-public-nav__profile-avatar img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+img.app-public-nav__profile-avatar {
   object-fit: cover;
 }
 
@@ -680,6 +684,7 @@ button.app-mobile-bottom-nav__item {
   .app-public-nav__profile-avatar,
   .app-public-nav__profile-fallback {
     width: 42px;
+    flex-basis: 42px;
     min-width: 42px;
     height: 42px;
     min-height: 42px;

@@ -7,4 +7,5 @@ public sealed record NearbyDestinationResult(
     StandaloneAttraction? StandaloneAttraction,
     double DistanceKilometers,
     int EstimatedTravelDurationMinutes,
-    int ProximityRank);
+    int ProximityRank,
+    string? PhotoImageId = null);

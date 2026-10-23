@@ -36,6 +36,7 @@ export function mapNearbyDestinationToCard(
     descriptions: attraction!.descriptions
   }, language, countries, truncator);
   if (attraction) {
+    card.photoImageId = target.photoImageId?.trim() || null;
     card.statusLabelKey = getAttractionStatusValueKey(attraction.attractionDetails?.status);
     card.statusIconClass = null;
     card.statusTone = 'soft';

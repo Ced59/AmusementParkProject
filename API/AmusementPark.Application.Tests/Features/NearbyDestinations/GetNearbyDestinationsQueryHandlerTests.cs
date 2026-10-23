@@ -1,5 +1,7 @@
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Application.Features.NearbyDestinations.Results;
 using AmusementPark.Application.Features.NearbyDestinations.Handlers;
 using AmusementPark.Application.Features.NearbyDestinations.Queries;
@@ -27,7 +29,7 @@ public sealed class GetNearbyDestinationsQueryHandlerTests
         attractions.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 4, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { Attraction("source", 0), Attraction("attraction-near", 0.01), Attraction("attraction-far", 0.03) });
 
-        GetNearbyDestinationsQueryHandler handler = new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object);
+        GetNearbyDestinationsQueryHandler handler = new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object, EmptyImages());
         ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await handler.HandleAsync(new GetNearbyDestinationsQuery(sourceKind, "source", 3));
 
         Assert.True(result.IsSuccess);
@@ -51,7 +53,7 @@ public sealed class GetNearbyDestinationsQueryHandlerTests
         attractions.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 5, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { Attraction("a", 0.01), Attraction("b", 0.02), Attraction("c", 0.03), Attraction("d", 0.04), Attraction("e", 0.05) });
 
-        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object)
+        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object, EmptyImages())
             .HandleAsync(new GetNearbyDestinationsQuery(NearbyDestinationKind.Park, "source"));
 
         Assert.Equal(new[] { "a", "b", "c", "d" }, result.Value!.Select(target => target.StandaloneAttraction!.Id));
@@ -78,7 +80,7 @@ public sealed class GetNearbyDestinationsQueryHandlerTests
         attractions.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 5, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { hidden, excluded, closed, unlocated });
 
-        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object)
+        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object, EmptyImages())
             .HandleAsync(new GetNearbyDestinationsQuery(NearbyDestinationKind.StandaloneAttraction, "source"));
 
         Assert.Equal("visible", Assert.Single(result.Value!).Park!.Id);
@@ -93,7 +95,7 @@ public sealed class GetNearbyDestinationsQueryHandlerTests
         source.ClearPosition();
         parks.Setup(repository => repository.GetByIdAsync("source", false, It.IsAny<CancellationToken>())).ReturnsAsync(source);
 
-        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object)
+        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object, EmptyImages())
             .HandleAsync(new GetNearbyDestinationsQuery(NearbyDestinationKind.Park, "source"));
 
         Assert.True(result.IsSuccess);
@@ -116,10 +118,46 @@ public sealed class GetNearbyDestinationsQueryHandlerTests
             attractions.Setup(repository => repository.GetByIdAsync("missing", false, It.IsAny<CancellationToken>())).ReturnsAsync((StandaloneAttraction?)null);
         }
 
-        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object)
+        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object, EmptyImages())
             .HandleAsync(new GetNearbyDestinationsQuery(kind, "missing"));
 
         Assert.False(result.IsSuccess);
+    }
+
+    [Fact]
+    public async Task HandleAsync_LoadsOnlyPublishedPhotosForTheSelectedStandaloneOwnersInOneBatch()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IStandaloneAttractionRepository> attractions = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        SetupSource(parks, attractions, NearbyDestinationKind.Park);
+        parks.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 4, null, false, ClosedEntityFilter.OpenOnly, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { Park("source", 0), Park("near-park", 0.02) });
+        attractions.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 4, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { Attraction("photo-owner", 0.01), Attraction("without-photo", 0.03), Attraction("outside-limit", 1) });
+        images.Setup(repository => repository.GetMainImageIdsByOwnersAsync(
+            ImageOwnerType.StandaloneAttraction,
+            It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "photo-owner", "without-photo" })),
+            ImageCategory.StandaloneAttraction, true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, string> { ["photo-owner"] = "published-photo" });
+
+        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object, images.Object)
+            .HandleAsync(new GetNearbyDestinationsQuery(NearbyDestinationKind.Park, "source", 3));
+
+        Assert.Equal(new string?[] { "published-photo", null, null }, result.Value!.Select(target => target.PhotoImageId));
+        Assert.Equal(new[] { 1, 2, 3 }, result.Value!.Select(target => target.ProximityRank));
+        images.VerifyAll();
+        images.VerifyNoOtherCalls();
+    }
+
+    private static IImageRepository EmptyImages()
+    {
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(repository => repository.GetMainImageIdsByOwnersAsync(
+            ImageOwnerType.StandaloneAttraction, It.IsAny<IReadOnlyCollection<string>>(),
+            ImageCategory.StandaloneAttraction, true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, string>());
+        return images.Object;
     }
 
     private static void SetupSource(Mock<IParkRepository> parks, Mock<IStandaloneAttractionRepository> attractions, NearbyDestinationKind kind)
