@@ -2468,37 +2468,246 @@
     {
       "entryId": "CA-candidate-a9d972567fa851",
       "name": "La Grande Roue de Montréal",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "category": "Grande roue panoramique autonome",
       "locality": "Montreal, Quebec",
-      "siteId": null,
+      "siteId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T11:31:24.479Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Exploitant, adresse, billets propres et page publique vérifiés ; aucune fiche homonyme dans le client officiel",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T11:32:42.754Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d98a4cdd-48d1-48d7-9abb-027b06aef59c",
+          "appliedAt": "2026-10-23T11:21:46.976Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:apply:d98a4cdd-48d1-48d7-9abb-027b06aef59c",
+          "auditEvidence": null,
+          "summary": "Fiche autonome créée : identité, localisation, descriptions en huit langues et date d’ouverture."
+        },
+        {
+          "eventId": "apply-0c97bf35-5896-4f91-92d6-e01c00475d83",
+          "appliedAt": "2026-10-23T11:22:58.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:apply:0c97bf35-5896-4f91-92d6-e01c00475d83",
+          "auditEvidence": null,
+          "summary": "Ouverture quotidienne 10 h–23 h de l’exploitant intégrée."
+        },
+        {
+          "eventId": "apply-392aba47-4ddd-4859-83a9-859ebbb05fff",
+          "appliedAt": "2026-10-23T11:23:22.094Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:apply:392aba47-4ddd-4859-83a9-859ebbb05fff",
+          "auditEvidence": null,
+          "summary": "Cinq tarifs individuels actuels en CAD intégrés."
+        },
+        {
+          "eventId": "apply-5c00b648-c173-4e8e-b8be-79b575d32273",
+          "appliedAt": "2026-10-23T11:23:56.376Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:apply:5c00b648-c173-4e8e-b8be-79b575d32273",
+          "auditEvidence": null,
+          "summary": "Capacité des cabines et accès PMR officiels intégrés."
+        },
+        {
+          "eventId": "photo-cd5c12f079474d48911f24384b33415f",
+          "appliedAt": "2026-10-23T11:24:25.119Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:import-photo:cd5c12f079474d48911f24384b33415f",
+          "auditEvidence": null,
+          "summary": "Photographie Commons 1/4 importée avec auteur et licence CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-19e853b74cc34a27b3f0dcab6a76908b",
+          "appliedAt": "2026-10-23T11:24:46.966Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:import-photo:19e853b74cc34a27b3f0dcab6a76908b",
+          "auditEvidence": null,
+          "summary": "Photographie Commons 2/4 importée avec auteur et licence CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-5202620098474c399b1cb6ee52fd61a6",
+          "appliedAt": "2026-10-23T11:25:19.107Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:import-photo:5202620098474c399b1cb6ee52fd61a6",
+          "auditEvidence": null,
+          "summary": "Photographie Commons 3/4 importée avec auteur et licence CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-c9fd416c2cef4cdc926fe48346d9217c",
+          "appliedAt": "2026-10-23T11:25:34.262Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c9fd416c2cef4cdc926fe48346d9217c",
+          "auditEvidence": null,
+          "summary": "Photographie Commons 4/4 importée avec auteur et licence CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-47ed0ce2-ab1a-4799-a4da-5d729dfaf3dc",
+          "appliedAt": "2026-10-23T11:25:59.761Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:apply:47ed0ce2-ab1a-4799-a4da-5d729dfaf3dc",
+          "auditEvidence": null,
+          "summary": "Ouverture du 1er septembre 2017 et article sourcé intégrés en huit langues."
+        },
+        {
+          "eventId": "apply-02e9d77c-ce64-4244-b819-326669c1342b",
+          "appliedAt": "2026-10-23T11:27:27.293Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:apply:02e9d77c-ce64-4244-b819-326669c1342b",
+          "auditEvidence": null,
+          "summary": "Article corrigé : mesures techniques retirées des paragraphes narratifs."
+        },
+        {
+          "eventId": "apply-5ab4c93c-295a-4d40-bcb7-c03e83f742de",
+          "appliedAt": "2026-10-23T11:32:42.754Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:apply:5ab4c93c-295a-4d40-bcb7-c03e83f742de",
+          "auditEvidence": null,
+          "summary": "Formules VIP et famille de la billetterie officielle ajoutées."
+        },
+        {
+          "eventId": "closure-5ab4c93c-295a-4d40-bcb7-c03e83f742de",
+          "appliedAt": "2026-10-23T11:32:42.754Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+          "evidence": "PARK_DATA_EDITOR:apply:5ab4c93c-295a-4d40-bcb7-c03e83f742de",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-20261023/montreal-wheel-audit.json",
+          "summary": "Audit Excellent 95/100 sans bloqueur ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus ; rapprocher Dutch Wheels du catalogue constructeur sans doublon, puis réviser tarifs et exceptions horaires lors de leur mise à jour officielle.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://lagranderouedemontreal.com/about-us/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://lagranderouedemontreal.com/plan-your-visit/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://lagranderouedemontreal.com/tickets/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://lagranderouedemontreal.com/faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.dutchwheels.com/en/portfolio/la-grande-roue-de-montreal",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/1097403710",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Grande_Roue_de_Montr%C3%A9al_Automne.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:La_Grande_Roue_de_Montr%C3%A9al,_ArmAg.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:La_Grande_Roue_de_Montr%C3%A9al_la_nuit_(54619749987).jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Grande_Roue_de_Montr%C3%A9al_Construction.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
+        "attractions": [
+          {
+            "name": "La Grande Roue de Montréal",
+            "source": "La Grande Roue de Montréal — About us",
+            "url": "https://lagranderouedemontreal.com/about-us/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Vieux-Port de Montréal",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Montréal, Québec",
+            "sourceOpenedYear": "2017"
+          }
+        ],
+        "rationale": "Roue panoramique fixe à billet individuel au Vieux-Port, hors parc structuré ; identité et autonomie confirmées par l’exploitant et les recherches du client officiel."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+          "publishedAtUtc": "2026-10-23T11:30:30.856443Z",
+          "verifiedAtUtc": "2026-10-23T11:31:24.479Z",
+          "evidence": "PARK_DATA_EDITOR:apply:65898427-4449-4e86-b436-b9494617d62d"
+        },
+        "facebook": {
+          "id": "8bb7c41040f8474bac0e6e399f0e9d33",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T11:31:59.282394Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124281223424431",
+          "externalPostId": "1285475681307050_122124281223424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-20261023/montreal-wheel-audit.json",
+        "score": 95,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {

@@ -1,0 +1,296 @@
+{
+  "name": "La Grande Roue de Montréal",
+  "standaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+  "qualification": "Roue fixe au Vieux-Port, entrée et billets individuels propres, sans parc d’attractions fermé ou inventaire de parkItems parent. Recherches officielles Park et Standalone avec Montréal/Montreal, Grande Roue et Old Port : aucun doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 95,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 4,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentAdmissionOffers": 7,
+    "openingHours": "sept jours sur sept, 10 h–23 h, toute l’année selon l’exploitant"
+  },
+  "gaps": [
+    "Le constructeur Dutch Wheels est confirmé par sa fiche de référence, qui indique des cabines DW8S ; l’identifiant de référence constructeur du site et le modèle de la roue n’ont pas été établis sans risque de doublon ou de confusion avec le modèle des cabines. À rapprocher du catalogue constructeur avant ajout.",
+    "Le tarif famille est annoncé comme variable avec une économie maximale de 20 % ; la cabine VIP est annoncée à partir de 84 CAD pour deux personnes. Le prix final et les taxes sont à vérifier au paiement ; aucun montant fixe n’a été inventé pour ces formules.",
+    "Une photographie Commons montre la construction en juin 2017 avant l’ouverture du 1er septembre. Elle sert de contexte à l’article d’ouverture et ne prétend pas montrer la cérémonie ni les premières visites.",
+    "Les heures régulières peuvent varier lors des fêtes, événements spéciaux ou conditions météorologiques extrêmes ; aucune exception datée non annoncée n’a été fabriquée."
+  ],
+  "sources": [
+    "https://lagranderouedemontreal.com/about-us/",
+    "https://lagranderouedemontreal.com/plan-your-visit/",
+    "https://lagranderouedemontreal.com/tickets/",
+    "https://lagranderouedemontreal.com/faq/",
+    "https://www.dutchwheels.com/en/portfolio/la-grande-roue-de-montreal",
+    "https://www.openstreetmap.org/way/1097403710",
+    "https://commons.wikimedia.org/wiki/File:Grande_Roue_de_Montr%C3%A9al_Automne.jpg",
+    "https://commons.wikimedia.org/wiki/File:La_Grande_Roue_de_Montr%C3%A9al,_ArmAg.jpg",
+    "https://commons.wikimedia.org/wiki/File:La_Grande_Roue_de_Montr%C3%A9al_la_nuit_(54619749987).jpg",
+    "https://commons.wikimedia.org/wiki/File:Grande_Roue_de_Montr%C3%A9al_Construction.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T11:33:17.939753+00:00",
+    "exportSha256": "bd18b7aad2a78d15681eeab2c92fc523c1fcd86b0f9a80f5cc8cbd28b52e856d",
+    "localizedStringsReviewed": 368,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": []
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+    "publishedAtUtc": "2026-10-23T11:30:30.856443Z",
+    "operationId": "65898427-4449-4e86-b436-b9494617d62d"
+  },
+  "facebookPublication": {
+    "id": "8bb7c41040f8474bac0e6e399f0e9d33",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T11:31:59.282394Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124281223424431",
+    "externalPostId": "1285475681307050_122124281223424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T11:31:24.479751+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T11:30:54.158411+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history/617abef9-5c14-42bb-aa67-27f986b1e72b/ouverture-grande-roue-montreal-2017",
+            "status": 200,
+            "textLength": 1617,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 615
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history/617abef9-5c14-42bb-aa67-27f986b1e72b/ouverture-grande-roue-montreal-2017",
+            "status": 200,
+            "textLength": 1411,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 545
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history/617abef9-5c14-42bb-aa67-27f986b1e72b/ouverture-grande-roue-montreal-2017",
+            "status": 200,
+            "textLength": 1437,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 632
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history/617abef9-5c14-42bb-aa67-27f986b1e72b/ouverture-grande-roue-montreal-2017",
+            "status": 200,
+            "textLength": 1397,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 615
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history/617abef9-5c14-42bb-aa67-27f986b1e72b/ouverture-grande-roue-montreal-2017",
+            "status": 200,
+            "textLength": 1414,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 582
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history/617abef9-5c14-42bb-aa67-27f986b1e72b/ouverture-grande-roue-montreal-2017",
+            "status": 200,
+            "textLength": 1434,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 605
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history/617abef9-5c14-42bb-aa67-27f986b1e72b/ouverture-grande-roue-montreal-2017",
+            "status": 200,
+            "textLength": 1316,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 563
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal/history/617abef9-5c14-42bb-aa67-27f986b1e72b/ouverture-grande-roue-montreal-2017",
+            "status": 200,
+            "textLength": 1382,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 602
+      }
+    ]
+  }
+}
