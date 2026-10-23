@@ -1195,26 +1195,121 @@
     },
     {
       "entryId": "AT-park-d45c859f-7df4-4f80-8851-9646c9ceb7e7",
-      "name": "Eibl Jet Türnitz",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
+      "name": "EIBL Jet Türnitz",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
-      "siteId": "d45c859f-7df4-4f80-8851-9646c9ceb7e7",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "siteId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+      "legacySiteIds": [
+        "d45c859f-7df4-4f80-8851-9646c9ceb7e7"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T09:51:03.009Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identité et autonomie confirmées ; migration appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Eibl Jet Türnitz"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T09:47:23.932Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-12ab9336-c5b5-43a9-8575-ac6996542a68",
+          "appliedAt": "2026-10-23T09:38:33.979Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:apply:12ab9336-c5b5-43a9-8575-ac6996542a68",
+          "auditEvidence": null,
+          "summary": "Migration du Park masqué, identité, huit descriptions et données de la piste."
+        },
+        {
+          "eventId": "apply-ae1936f3-0e80-44df-9923-fbc02d0cade5",
+          "appliedAt": "2026-10-23T09:40:51.494Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:apply:ae1936f3-0e80-44df-9923-fbc02d0cade5",
+          "auditEvidence": null,
+          "summary": "Horaires officiels datés de fin de saison 2026 intégrés."
+        },
+        {
+          "eventId": "apply-51c96f45-bb51-45a9-aab7-2b1854aa6495",
+          "appliedAt": "2026-10-23T09:41:31.718Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:apply:51c96f45-bb51-45a9-aab7-2b1854aa6495",
+          "auditEvidence": null,
+          "summary": "Six tarifs officiels 2026 intégrés."
+        },
+        {
+          "eventId": "apply-0b650df3-1bd2-4efc-96eb-c0ca096c9f9f",
+          "appliedAt": "2026-10-23T09:42:12.580Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:apply:0b650df3-1bd2-4efc-96eb-c0ca096c9f9f",
+          "auditEvidence": null,
+          "summary": "Âges minimaux et accompagnement des enfants intégrés."
+        },
+        {
+          "eventId": "photo-c55ce027d30745dca556f7787cd8dd4e",
+          "appliedAt": "2026-10-23T09:46:11.578Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c55ce027d30745dca556f7787cd8dd4e",
+          "auditEvidence": null,
+          "summary": "Photographie Commons créditée 1/3 importée."
+        },
+        {
+          "eventId": "photo-f81872fdb2c042a99e64fc5243d5f08c",
+          "appliedAt": "2026-10-23T09:46:28.987Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:import-photo:f81872fdb2c042a99e64fc5243d5f08c",
+          "auditEvidence": null,
+          "summary": "Photographie Commons créditée 2/3 importée."
+        },
+        {
+          "eventId": "photo-f1432b68f9d74d1798792aab31d3cd4c",
+          "appliedAt": "2026-10-23T09:46:46.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:import-photo:f1432b68f9d74d1798792aab31d3cd4c",
+          "auditEvidence": null,
+          "summary": "Photographie Commons créditée 3/3 importée."
+        },
+        {
+          "eventId": "apply-730a4dba-e6ab-446a-b0cd-4f4776ba40cd",
+          "appliedAt": "2026-10-23T09:47:23.932Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:apply:730a4dba-e6ab-446a-b0cd-4f4776ba40cd",
+          "auditEvidence": null,
+          "summary": "Jalon historique 2004 et article en huit langues intégrés."
+        },
+        {
+          "eventId": "closure-730a4dba-e6ab-446a-b0cd-4f4776ba40cd",
+          "appliedAt": "2026-10-23T09:47:23.932Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+          "evidence": "PARK_DATA_EDITOR:apply:730a4dba-e6ab-446a-b0cd-4f4776ba40cd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-20261023/eibl-audit.json",
+          "summary": "Audit final 100/100, fiche publique et post Facebook vérifiés ; date de la dernière intégration de données."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; renouveler horaires et tarifs lorsque la prochaine saison est publiée, sans republier le même post Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1240,12 +1335,57 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.tuernitz.at/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tuernitz.at/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tuernitz.at/information.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tuernitz.at/preise-prices.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tuernitz.gv.at/Eibl_Jet_1",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.outdooractive.com/en/poi/mostviertel/alpine-all-weather-toboggan-run-eibl-jet-near-tuernitz/809502922/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Blick_von_der_Sommerrodelbahn_am_Türnitzer_Eybl.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Blick_von_der_Sommerrodelbahn_auf_Türnitz.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Türnitzer_Eybl.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "AT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -1268,7 +1408,29 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-730a4dba-e6ab-446a-b0cd-4f4776ba40cd ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+          "publishedAtUtc": "2026-10-23T09:50:08.4945507Z",
+          "verifiedAtUtc": "2026-10-23T09:51:03.009Z",
+          "evidence": "PARK_DATA_EDITOR:apply:b57db905-6d15-4f5e-8283-3352d0bf4f04"
+        },
+        "facebook": {
+          "id": "2bb3a7b7cb074de1906eed80221862c6",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T09:51:52.7507084Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124271287424431",
+          "externalPostId": "1285475681307050_122124271287424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-20261023/eibl-audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
