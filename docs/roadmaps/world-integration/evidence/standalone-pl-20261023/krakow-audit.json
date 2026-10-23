@@ -1,0 +1,303 @@
+{
+  "name": "Balon Widokowy Kraków",
+  "standaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+  "qualification": "Ballon d’observation captif sur le boulevard public Wołyński, avec billetterie, exploitant et accès propres. SearchParks et SearchStandaloneAttractions sans résultat pour Balon Widokowy/Kraków le 23 octobre 2026. Exploitation actuelle confirmée par site et billetterie de l’opérateur ; suspension du 22 octobre liée à la météo, pas à une fermeture permanente. Création sans doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 85,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 2,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 4
+  },
+  "gaps": [
+    "Date d’ouverture exacte du ballon actuel non établie. RMF24 annonce une première montée d’un ballon antérieur en 2009 ; Aerophile liste le matériel actuel sous 2019 et une photo le documente au 3 septembre 2019. Aucune date de 2009 ou du 1er janvier 2019 n’est attribuée à la fiche actuelle.",
+    "Vols tributaires de la météo ; le communiqué officiel du 22 octobre 2026 annonce une suspension temporaire. La règle hebdomadaire 9 h–20 h représente les heures habituelles d’information sur les vols, et non une garantie de départ.",
+    "Le site officiel et sa billetterie ont des définitions différentes du tarif réduit jeunes ; seule la billetterie en ligne du 23 octobre 2026 est retenue.",
+    "Trois photos Wikimedia Commons sous CC BY-SA 4.0, auteurs XEvansGambitx (2021) et Kgbo (2019), redimensionnées et attribuées dans huit langues."
+  ],
+  "sources": [
+    "https://balonwidokowy.pl/",
+    "https://balonwidokowy.pl/informacje-dla-pasazerow/",
+    "https://balonwidokowy.pl/komunikat/",
+    "https://balonwidokowy.pl/en/localization/",
+    "https://bilety.balonwidokowy.pl/",
+    "https://www.aerophile.com/en/clients/balon-widokowy-sp-z-o-o/",
+    "https://www.rmf24.pl/fakty/news-balon-widokowy-atrakcja-dla-turystow-i-utrapienie-dla-mieszk,nId,147595",
+    "https://commons.wikimedia.org/wiki/File:Balon_widokowy_Kraków.jpg",
+    "https://commons.wikimedia.org/wiki/File:Sightseeing_balloon_in_Kraków,_Poland,_2019,_01.jpg",
+    "https://commons.wikimedia.org/wiki/File:Sightseeing_balloon_in_Kraków,_Poland,_2019,_02.jpg"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T07:15:28.887066+00:00",
+    "exportSha256": "a79654ce3320040530b6032045cfcc6d357f9034be7fd443cca4f38d67cf3c71",
+    "localizedStringsReviewed": 216,
+    "localizedGroups": 27,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T07:18:43.636758+00:00",
+  "facebook": {
+    "id": "c09b4cac7b5e4413b5e1a1dcda9e2f06",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T07:17:57.2391336Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124255933424431",
+    "externalPostId": "1285475681307050_122124255933424431",
+    "url": "https://amusement-parks.fun/fr/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow?facebook-image=6cdebd6dfbcc4b8f93f84b35ca3571a7"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T07:18:43.636758+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T07:18:47.960750+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history/4c216021-03dc-4ca3-ba7e-14d7f06519d1/balon-widokowy-krakow-histoire-2009-2019",
+            "status": 200,
+            "textLength": 1579,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 620
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history/4c216021-03dc-4ca3-ba7e-14d7f06519d1/balon-widokowy-krakow-histoire-2009-2019",
+            "status": 200,
+            "textLength": 1460,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 545
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history/4c216021-03dc-4ca3-ba7e-14d7f06519d1/balon-widokowy-krakow-histoire-2009-2019",
+            "status": 200,
+            "textLength": 1491,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 619
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history/4c216021-03dc-4ca3-ba7e-14d7f06519d1/balon-widokowy-krakow-histoire-2009-2019",
+            "status": 200,
+            "textLength": 1475,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 617
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history/4c216021-03dc-4ca3-ba7e-14d7f06519d1/balon-widokowy-krakow-histoire-2009-2019",
+            "status": 200,
+            "textLength": 1435,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 571
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history/4c216021-03dc-4ca3-ba7e-14d7f06519d1/balon-widokowy-krakow-histoire-2009-2019",
+            "status": 200,
+            "textLength": 1440,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 588
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history/4c216021-03dc-4ca3-ba7e-14d7f06519d1/balon-widokowy-krakow-histoire-2009-2019",
+            "status": 200,
+            "textLength": 1454,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 567
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9/balon-widokowy-krakow/history/4c216021-03dc-4ca3-ba7e-14d7f06519d1/balon-widokowy-krakow-histoire-2009-2019",
+            "status": 200,
+            "textLength": 1429,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 594
+      }
+    ]
+  }
+}

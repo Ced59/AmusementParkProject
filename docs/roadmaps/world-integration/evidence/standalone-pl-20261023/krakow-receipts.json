@@ -1,0 +1,218 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "d2f4e491-9eb9-4ff7-a53b-f282e9c7e6c1",
+    "appliedAtUtc": "2026-10-23T07:07:25.6552857Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "01b-text.apply",
+    "operationId": "9d5f850d-55fc-478b-bcdc-810dc4d0b297",
+    "appliedAtUtc": "2026-10-23T07:13:23.023978Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "01c-text.apply",
+    "operationId": "bf1d91df-97d7-4b75-9eb3-eab5b7c0780f",
+    "appliedAtUtc": "2026-10-23T07:14:48.7989643Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "08e33fa3-3964-40d2-a821-31118db3f544",
+    "appliedAtUtc": "2026-10-23T07:07:56.1380464Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02b-hours.apply",
+    "operationId": "bbefd8e7-daf9-4c2f-a0b1-b92925bcb89d",
+    "appliedAtUtc": "2026-10-23T07:13:56.334697Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "a62d17eb-f83c-4c37-8f1c-39a64dfce3ac",
+    "appliedAtUtc": "2026-10-23T07:08:19.9660371Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "267ca8bc-bf25-4557-b379-d75d9342a47a",
+    "appliedAtUtc": "2026-10-23T07:08:54.2227133Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "f017a11c-3198-4102-947a-0c93bd2829c7",
+    "appliedAtUtc": "2026-10-23T07:11:31.1507113Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05b-history-text.apply",
+    "operationId": "dd1c7434-9d8f-4dd5-ba46-ee0405fe041a",
+    "appliedAtUtc": "2026-10-23T07:14:21.8095336Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "9aee9944-cfe6-4852-9f1e-344f2d4f8bf0",
+    "appliedAtUtc": "2026-10-23T07:16:13.0766846Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "d746ab03-9ee3-44bc-a33c-909b60bb678e",
+    "appliedAtUtc": "2026-10-23T07:16:36.7114681Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "6c80a02a-fbb9-4889-9049-fb22505b738b",
+    "appliedAtUtc": "2026-10-23T07:17:00.7348844Z",
+    "targetStandaloneAttractionId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "6cdebd6dfbcc4b8f93f84b35ca3571a7",
+    "ownerId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balon_widokowy_Kraków.jpg",
+    "updatedAt": "2026-10-23T07:09:55.863Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "03175a26ecb1416bbe1444dc00b1d80a",
+    "ownerId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sightseeing_balloon_in_Kraków,_Poland,_2019,_01.jpg",
+    "updatedAt": "2026-10-23T07:10:32.444Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "7a08649d7aa14c8588330607a0ef6b33",
+    "ownerId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sightseeing_balloon_in_Kraków,_Poland,_2019,_02.jpg",
+    "updatedAt": "2026-10-23T07:10:54.712Z",
+    "isPublished": false
+  }
+]
