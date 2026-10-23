@@ -672,25 +672,176 @@
     {
       "entryId": "SG-candidate-0b2ddef5675e0c",
       "name": "Singapore Flyer",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier / Standalone",
-      "locality": "Marina Centre , Downtown Core",
-      "siteId": null,
+      "category": "Roue panoramique autonome",
+      "locality": "Marina Centre, Downtown Core",
+      "siteId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T01:06:30.140Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T01:05:53.054Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6d916437-1ca5-4a3c-9216-3c972dd92f95",
+          "appliedAt": "2026-10-23T00:52:01.372Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:6d916437-1ca5-4a3c-9216-3c972dd92f95",
+          "auditEvidence": null,
+          "summary": "Création de la fiche Singapore Flyer, descriptions en huit langues et caractéristiques sourcées"
+        },
+        {
+          "eventId": "apply-96c9484a-a60b-4ff8-967b-c0320dc37e79",
+          "appliedAt": "2026-10-23T00:53:48.103Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:96c9484a-a60b-4ff8-967b-c0320dc37e79",
+          "auditEvidence": null,
+          "summary": "Horaires officiels et exceptions à vérifier avant visite"
+        },
+        {
+          "eventId": "apply-4d02a40f-f1cc-4bcc-8afa-70c3a4d50eee",
+          "appliedAt": "2026-10-23T00:54:51.369Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:4d02a40f-f1cc-4bcc-8afa-70c3a4d50eee",
+          "auditEvidence": null,
+          "summary": "Conditions officielles : capacité et surveillance des enfants"
+        },
+        {
+          "eventId": "apply-5a2a515b-0781-4f41-8d57-a4369a7cfd3e",
+          "appliedAt": "2026-10-23T00:55:15.130Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:5a2a515b-0781-4f41-8d57-a4369a7cfd3e",
+          "auditEvidence": null,
+          "summary": "Ouverture officielle du 15 avril 2008 et durée de rotation de 30 minutes"
+        },
+        {
+          "eventId": "apply-043038d4-d5a6-4c96-ad45-a6c5e6bffd17",
+          "appliedAt": "2026-10-23T00:56:04.556Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:043038d4-d5a6-4c96-ad45-a6c5e6bffd17",
+          "auditEvidence": null,
+          "summary": "Tarifs vérifiés dans la billetterie officielle : adultes, enfants, seniors et moins de trois ans"
+        },
+        {
+          "eventId": "apply-359e56b5-4d57-47e6-9563-90e454ff23e6",
+          "appliedAt": "2026-10-23T00:56:43.707Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:359e56b5-4d57-47e6-9563-90e454ff23e6",
+          "auditEvidence": null,
+          "summary": "Éligibilité officielle du tarif senior : 60 ans et citoyen ou résident permanent de Singapour"
+        },
+        {
+          "eventId": "image-8bf6f9316ea848db8a508b5311653e11",
+          "appliedAt": "2026-10-23T00:58:59.559Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:image:8bf6f9316ea848db8a508b5311653e11",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-973a82ab604f4c5dbc7a858aa3733dc7",
+          "appliedAt": "2026-10-23T00:59:26.859Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:image:973a82ab604f4c5dbc7a858aa3733dc7",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-6cdb83ec-9de9-437a-86d4-ae7e3dc85800",
+          "appliedAt": "2026-10-23T00:59:54.827Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:6cdb83ec-9de9-437a-86d4-ae7e3dc85800",
+          "auditEvidence": null,
+          "summary": "Article historique multilingue sourcé : chantier, ouverture officielle et reprise par Straco"
+        },
+        {
+          "eventId": "apply-b532ad9b-3693-419b-8d03-467a6b15ebf8",
+          "appliedAt": "2026-10-23T01:02:21.591Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:b532ad9b-3693-419b-8d03-467a6b15ebf8",
+          "auditEvidence": null,
+          "summary": "Révision éditoriale des descriptions : valeurs techniques formulées naturellement"
+        },
+        {
+          "eventId": "apply-9633782e-70da-4f75-ab20-f669524a87f0",
+          "appliedAt": "2026-10-23T01:02:52.076Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:9633782e-70da-4f75-ab20-f669524a87f0",
+          "auditEvidence": null,
+          "summary": "Révision éditoriale de l’article historique en huit langues"
+        },
+        {
+          "eventId": "apply-c2995a52-ff91-478b-977a-a37c504458ab",
+          "appliedAt": "2026-10-23T01:04:42.044Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:c2995a52-ff91-478b-977a-a37c504458ab",
+          "auditEvidence": null,
+          "summary": "Publication des deux photographies officielles créditées"
+        },
+        {
+          "eventId": "apply-b72a69bb-70e8-4f80-9b5f-b83f0d3d07c0",
+          "appliedAt": "2026-10-23T01:05:07.821Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:b72a69bb-70e8-4f80-9b5f-b83f0d3d07c0",
+          "auditEvidence": null,
+          "summary": "Publication de l’événement et de l’article historiques dans huit langues"
+        },
+        {
+          "eventId": "apply-c69a28c0-6fb6-4add-b1e7-252820cda218",
+          "appliedAt": "2026-10-23T01:05:53.054Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:c69a28c0-6fb6-4add-b1e7-252820cda218",
+          "auditEvidence": null,
+          "summary": "Fiche Singapore Flyer validée et rendue publique"
+        },
+        {
+          "eventId": "closure-apply-c69a28c0-6fb6-4add-b1e7-252820cda218",
+          "appliedAt": "2026-10-23T01:05:53.054Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+          "evidence": "PARK_DATA_EDITOR:apply:c69a28c0-6fb6-4add-b1e7-252820cda218",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/singaporeflyer-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 95/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
@@ -701,13 +852,86 @@
           "label": "Site officiel (attraction autonome)",
           "url": "https://www.singaporeflyer.com/en",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.singaporeflyer.com/en/about-singapore-flyer",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.singaporeflyer.com/en/history-and-milestones",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.singaporeflyer.com/en/ticket/singapore-flyer-ticket",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.singaporeflyer.com/en/plan-your-visit",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.singaporeflyer.com/en/terms-and-conditions",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://etickets.singaporeflyer.com/webstore/shop/viewItems.aspx?cg=B2CEN&c=SFTC",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/51761904",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
+        "attractions": [
+          {
+            "name": "Singapore Flyer",
+            "source": "Singapore Flyer — History and milestones",
+            "url": "https://www.singaporeflyer.com/en/history-and-milestones",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Singapore Flyer",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Marina Centre, Singapore"
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-c69a28c0-6fb6-4add-b1e7-252820cda218 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+          "publishedAtUtc": "2026-10-23T01:05:53.0545677Z",
+          "verifiedAtUtc": "2026-10-23T01:06:30.140Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c69a28c0-6fb6-4add-b1e7-252820cda218"
+        },
+        "facebook": {
+          "id": "10446311fd154392bca9ed739d21fbc7",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T01:07:31.387847Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124225003424431",
+          "externalPostId": "1285475681307050_122124225003424431",
+          "url": "https://amusement-parks.fun/fr/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer?facebook-image=8bf6f9316ea848db8a508b5311653e11"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/singaporeflyer-audit.json",
+        "score": 95,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {

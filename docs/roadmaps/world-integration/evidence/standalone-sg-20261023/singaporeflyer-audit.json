@@ -1,0 +1,313 @@
+{
+  "name": "Singapore Flyer",
+  "standaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+  "qualification": "Roue panoramique autonome à billet propre au 30 Raffles Avenue ; aucune fiche Park ou Standalone correspondante dans les recherches officielles Singapore Flyer/Flyer/Marina Bay à Singapour et sans filtre. Coordonnées du bâtiment contrôlées sur OpenStreetMap.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 95,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 2,
+    "accessConditions": 2,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 4
+  },
+  "gaps": [
+    "Les tarifs de la billetterie sont affichés avant sélection du créneau ; le montant final et les éventuelles promotions doivent être vérifiés au paiement. Le tarif senior est réservé aux citoyens et résidents permanents de Singapour de 60 ans ou plus.",
+    "Les horaires ordinaires peuvent être modifiés par les événements ; aucune exception future permanente n’a été inventée.",
+    "L’exploitant indique une capacité maximale de 28 personnes par cabine, sous réserve de modification. Le fabricant et le modèle des cabines ne sont pas renseignés faute de source primaire vérifiée.",
+    "Les coordonnées correspondent au bâtiment Singapore Flyer dans OpenStreetMap, pas au centre géométrique exact de la roue."
+  ],
+  "sources": [
+    "https://www.singaporeflyer.com/en/about-singapore-flyer",
+    "https://www.singaporeflyer.com/en/history-and-milestones",
+    "https://www.singaporeflyer.com/en/ticket/singapore-flyer-ticket",
+    "https://www.singaporeflyer.com/en/plan-your-visit",
+    "https://www.singaporeflyer.com/en/terms-and-conditions",
+    "https://etickets.singaporeflyer.com/webstore/shop/viewItems.aspx?cg=B2CEN&c=SFTC",
+    "https://www.openstreetmap.org/way/51761904"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T01:03:25.068408+00:00",
+    "exportSha256": "d27b1db4275824a7036b4924a5c69adc204734ed799fdd9c764446aafccafd6d",
+    "localizedStringsReviewed": 248,
+    "localizedGroups": 31,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : descriptions de la roue, chronologie distincte du lancement et de l’ouverture, tarifs officiels, condition du tarif senior, deux photographies de l’exploitant. Aucune donnée de fabricant inventée."
+  },
+  "idempotenceCheck": {
+    "operationId": "db5791b8-790d-4906-bf46-58ce0dc75887",
+    "previewedAtUtc": "2026-10-23T01:03:56.2667672Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 6,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-23T01:06:30.140192+00:00",
+  "facebook": {
+    "id": "10446311fd154392bca9ed739d21fbc7",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T01:07:31.387847Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124225003424431",
+    "externalPostId": "1285475681307050_122124225003424431",
+    "url": "https://amusement-parks.fun/fr/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer?facebook-image=8bf6f9316ea848db8a508b5311653e11"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T01:06:30.140192+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T01:06:12.120591+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history/acea2702-2af0-4147-ad5f-ea61ff3a414a/ouverture-singapore-flyer-2008",
+            "status": 200,
+            "textLength": 1477,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 530
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history/acea2702-2af0-4147-ad5f-ea61ff3a414a/ouverture-singapore-flyer-2008",
+            "status": 200,
+            "textLength": 1355,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 468
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history/acea2702-2af0-4147-ad5f-ea61ff3a414a/ouverture-singapore-flyer-2008",
+            "status": 200,
+            "textLength": 1371,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 566
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history/acea2702-2af0-4147-ad5f-ea61ff3a414a/ouverture-singapore-flyer-2008",
+            "status": 200,
+            "textLength": 1355,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 536
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history/acea2702-2af0-4147-ad5f-ea61ff3a414a/ouverture-singapore-flyer-2008",
+            "status": 200,
+            "textLength": 1333,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 514
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history/acea2702-2af0-4147-ad5f-ea61ff3a414a/ouverture-singapore-flyer-2008",
+            "status": 200,
+            "textLength": 1378,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 517
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history/acea2702-2af0-4147-ad5f-ea61ff3a414a/ouverture-singapore-flyer-2008",
+            "status": 200,
+            "textLength": 1331,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 512
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/4aa25a72-8a2d-4455-b932-1d151781bc42/singapore-flyer/history/acea2702-2af0-4147-ad5f-ea61ff3a414a/ouverture-singapore-flyer-2008",
+            "status": 200,
+            "textLength": 1375,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 544
+      }
+    ]
+  }
+}
