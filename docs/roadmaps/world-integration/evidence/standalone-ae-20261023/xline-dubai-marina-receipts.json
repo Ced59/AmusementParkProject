@@ -1,0 +1,183 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "00c5efd2-4124-4164-978e-8003eb119ec6",
+    "appliedAtUtc": "2026-10-23T14:21:34.4913434Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "0d605b75-c632-47ba-a36d-0dbd6bb395ba",
+    "appliedAtUtc": "2026-10-23T14:23:37.9164673Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "8655e81e-48ec-4c6d-9220-090ddef975d4",
+    "appliedAtUtc": "2026-10-23T14:24:01.0567767Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "b812f5e5-a831-4980-b83c-d6318cf67537",
+    "appliedAtUtc": "2026-10-23T14:24:23.8356261Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "5784e12e-0e88-442d-97ea-497f971148f2",
+    "appliedAtUtc": "2026-10-23T14:24:47.5004364Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "06-location",
+    "operationId": "9308dd5d-78fc-446e-892c-275978bc9dbc",
+    "appliedAtUtc": "2026-10-23T14:30:24.7932695Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history-revision",
+    "operationId": "4e2da218-de80-48d5-8790-89d489271913",
+    "appliedAtUtc": "2026-10-23T14:32:31.0179885Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "07-publish-images",
+    "operationId": "c9cc7a96-14dd-4382-bb82-4f5c5d580cf2",
+    "appliedAtUtc": "2026-10-23T14:33:44.4843304Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-history",
+    "operationId": "ac4b3e8d-29b4-451b-a463-a768f2ce4f9d",
+    "appliedAtUtc": "2026-10-23T14:34:13.0189971Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-attraction",
+    "operationId": "331639ee-f2de-4ec5-9bd3-e5a313a45558",
+    "appliedAtUtc": "2026-10-23T14:34:52.9021764Z",
+    "targetStandaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "action": "ImportPhoto",
+    "imageId": "1dfed3190993435bb67eb1e1d5a448c0",
+    "updatedAtUtc": "2026-10-23T14:28:16.706Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:XLine_Dubai-4.png"
+  },
+  {
+    "stage": "photo-2",
+    "action": "ImportPhoto",
+    "imageId": "03a41d5279a84488a901aed30a16e418",
+    "updatedAtUtc": "2026-10-23T14:28:45.959Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:XLine_Dubai-1.png"
+  },
+  {
+    "stage": "photo-3",
+    "action": "ImportPhoto",
+    "imageId": "c2e38a455ce44bb292773d6e60cb20dd",
+    "updatedAtUtc": "2026-10-23T14:29:12.211Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:XLine_Dubai-2.png"
+  }
+]
