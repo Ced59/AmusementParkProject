@@ -111,25 +111,170 @@
     {
       "entryId": "AE-candidate-bc470aaefff20d",
       "name": "Ain Dubai",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier / Standalone",
-      "locality": "Dubai , United Arab Emirates",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "Dubai — Bluewaters Island",
+      "siteId": "f70328d1-79bf-492f-955a-3db69b7cc730",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T03:21:59.502Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Dubai Eye",
+        "Dubai-I",
+        "عين دبي"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T03:21:18.145Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-fd1f1d95-6d6f-4fb2-83ea-699240ceac1c",
+          "appliedAt": "2026-10-23T03:11:23.607Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:fd1f1d95-6d6f-4fb2-83ea-699240ceac1c",
+          "auditEvidence": null,
+          "summary": "Création d’Ain Dubai, roue panoramique autonome sur Bluewaters"
+        },
+        {
+          "eventId": "apply-c564fc7b-bccd-4bc5-99ba-1fe7bc209b27",
+          "appliedAt": "2026-10-23T03:12:22.293Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:c564fc7b-bccd-4bc5-99ba-1fe7bc209b27",
+          "auditEvidence": null,
+          "summary": "Horaires officiels Ain Dubai, dernier accès et fuseau de Dubaï"
+        },
+        {
+          "eventId": "apply-311ccdca-39cd-488a-93ea-c5e7cf15b603",
+          "appliedAt": "2026-10-23T03:12:45.753Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:311ccdca-39cd-488a-93ea-c5e7cf15b603",
+          "auditEvidence": null,
+          "summary": "Tarif Ain Dubai variable avec anomalie des zéros documentée"
+        },
+        {
+          "eventId": "apply-36f272dd-2e27-49ad-b6fd-dc2c4691fbf7",
+          "appliedAt": "2026-10-23T03:13:09.823Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:36f272dd-2e27-49ad-b6fd-dc2c4691fbf7",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès officielles d’Ain Dubai"
+        },
+        {
+          "eventId": "image-05d42635d7d24b05aa6ba3e6e5dc5ede",
+          "appliedAt": "2026-10-23T03:13:46.307Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:image:05d42635d7d24b05aa6ba3e6e5dc5ede",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-6262c4eb095a4a7ca7f4b41518dba897",
+          "appliedAt": "2026-10-23T03:14:24.236Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:image:6262c4eb095a4a7ca7f4b41518dba897",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-cfffe28f5884407bbdeffd6fb312e6c1",
+          "appliedAt": "2026-10-23T03:14:51.311Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:image:cfffe28f5884407bbdeffd6fb312e6c1",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-9a01089f-1a89-4f37-a494-0af24d123d1d",
+          "appliedAt": "2026-10-23T03:16:01.574Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:9a01089f-1a89-4f37-a494-0af24d123d1d",
+          "auditEvidence": null,
+          "summary": "Ouverture publique d’Ain Dubai en octobre 2021 sourcée"
+        },
+        {
+          "eventId": "apply-558b61e3-a8a1-43ce-a3b1-07fc5b4fe1a3",
+          "appliedAt": "2026-10-23T03:17:35.968Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:558b61e3-a8a1-43ce-a3b1-07fc5b4fe1a3",
+          "auditEvidence": null,
+          "summary": "Chronologie Ain Dubai 2021 et réouverture 2024, article huit langues"
+        },
+        {
+          "eventId": "apply-614badde-b97c-4756-b55c-564a18d9ee45",
+          "appliedAt": "2026-10-23T03:19:06.611Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:614badde-b97c-4756-b55c-564a18d9ee45",
+          "auditEvidence": null,
+          "summary": "Descriptions visiteurs sans métrique technique redondante"
+        },
+        {
+          "eventId": "apply-2f9ea239-1f9a-48d8-a365-8b2c8287f46c",
+          "appliedAt": "2026-10-23T03:20:26.310Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:2f9ea239-1f9a-48d8-a365-8b2c8287f46c",
+          "auditEvidence": null,
+          "summary": "Publication des trois visuels officiels Ain Dubai"
+        },
+        {
+          "eventId": "apply-f8d35fed-655f-4642-976c-58fd0760808c",
+          "appliedAt": "2026-10-23T03:20:54.885Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:f8d35fed-655f-4642-976c-58fd0760808c",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie et de l’article Ain Dubai"
+        },
+        {
+          "eventId": "apply-41ec807c-3805-436b-ac6e-dc09ad91aefc",
+          "appliedAt": "2026-10-23T03:21:18.145Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:41ec807c-3805-436b-ac6e-dc09ad91aefc",
+          "auditEvidence": null,
+          "summary": "Validation éditoriale et publication Ain Dubai"
+        },
+        {
+          "eventId": "closure-apply-41ec807c-3805-436b-ac6e-dc09ad91aefc",
+          "appliedAt": "2026-10-23T03:21:18.145Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+          "evidence": "PARK_DATA_EDITOR:apply:41ec807c-3805-436b-ac6e-dc09ad91aefc",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ae-20261023/aindubai-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 85/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
@@ -140,13 +285,77 @@
           "label": "Site officiel (attraction autonome)",
           "url": "https://www.aindubai.com/en",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.aindubai.com/en/about-ain-dubai",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.aindubai.com/en/plan-your-visit",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.aindubai.com/en/faq",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.independent.co.uk/tv/lifestyle/dubai-eye-world-s-largest-ferris-wheel-opens-with-spectacular-drone-and-fireworks-show-b2180618.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.thenationalnews.com/lifestyle/things-to-do/2024/12/26/ain-dubai-reopens-tickets/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
+        "attractions": [
+          {
+            "name": "Ain Dubai",
+            "source": "Site officiel de l’exploitant",
+            "url": "https://www.aindubai.com/en",
+            "family": "Observation wheel",
+            "sourceVenueName": "Ain Dubai",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Bluewaters Island, Dubai",
+            "matchingMethod": "Recherche API Park et Standalone sous Ain Dubai aux Émirats et Dubai Eye au niveau mondial."
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-41ec807c-3805-436b-ac6e-dc09ad91aefc ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+          "publishedAtUtc": "2026-10-23T03:21:18.1453581Z",
+          "verifiedAtUtc": "2026-10-23T03:21:59.502Z",
+          "evidence": "PARK_DATA_EDITOR:apply:41ec807c-3805-436b-ac6e-dc09ad91aefc"
+        },
+        "facebook": {
+          "id": "4b784034b8f64e5db876aafb060c45fa",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T03:22:36.8233182Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124234903424431",
+          "externalPostId": "1285475681307050_122124234903424431",
+          "url": "https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai?facebook-image=05d42635d7d24b05aa6ba3e6e5dc5ede"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-20261023/aindubai-audit.json",
+        "score": 85,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -3037,7 +3246,7 @@
         {
           "siteId": "9a7e8247-9b08-45ed-95a8-c1e88411fbfa",
           "name": "Sparky's Family Entertainment",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -3073,7 +3282,7 @@
         {
           "siteId": "9a7e8247-9b08-45ed-95a8-c1e88411fbfa",
           "name": "Sparky's Family Entertainment",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
