@@ -1,0 +1,38 @@
+{
+  "Rivière Sauvage": {
+    "languages": 8,
+    "paragraphs": 3,
+    "headings": 2,
+    "reason": "Three developed paragraphs from individually inspected period photographs, operator plan, contemporary 1991 press photography, 2026 witness retrospectives and 2000 public audit. No ride-operation sequence, technical specifications, invented subjective sensations or uncertain relocation destination. Some languages are naturally shorter than 120 words; no padding."
+  },
+  "Petit Train": {
+    "languages": 8,
+    "paragraphs": 3,
+    "headings": 2,
+    "reason": "Three developed paragraphs from individually inspected period photographs, operator plan, contemporary 1991 press photography, 2026 witness retrospectives and 2000 public audit. No ride-operation sequence, technical specifications, invented subjective sensations or uncertain relocation destination. Some languages are naturally shorter than 120 words; no padding."
+  },
+  "Tapis de Jason": {
+    "languages": 8,
+    "paragraphs": 3,
+    "headings": 2,
+    "reason": "Three developed paragraphs from individually inspected period photographs, operator plan, contemporary 1991 press photography, 2026 witness retrospectives and 2000 public audit. No ride-operation sequence, technical specifications, invented subjective sensations or uncertain relocation destination. Some languages are naturally shorter than 120 words; no padding."
+  },
+  "Mini Grand Huit": {
+    "languages": 8,
+    "paragraphs": 2,
+    "headings": 2,
+    "reason": "Operator plan, RCDB, Captain Coaster, Coasterpedia, Niglofans and 2026 press searched. Exact Dijon ride scenes/photos not individually identified. Preserve sourced identity and relocation nuance without inventing scenery, sensations or importing later Malaysian operating conditions. Two-paragraph historical notice justified pending further evidence."
+  },
+  "Train de Mine": {
+    "languages": 8,
+    "paragraphs": 2,
+    "headings": 2,
+    "reason": "Operator plan, RCDB, Captain Coaster, Coasterpedia, Niglofans and 2026 press searched. Exact Dijon ride scenes/photos not individually identified. Preserve sourced identity and relocation nuance without inventing scenery, sensations or importing later Malaysian operating conditions. Two-paragraph historical notice justified pending further evidence."
+  },
+  "Les Montgolfières": {
+    "languages": 8,
+    "paragraphs": 3,
+    "headings": 2,
+    "reason": "Three paragraphs: individually inspected inauguration photo, period operator plan and independently sourced 1994 relocation to Nigloland. No mechanical operating sequence or unsupported exact relocation day."
+  }
+}
