@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "fab2cf05-e94b-4daf-a692-e195adcd9841",
+    "appliedAtUtc": "2026-10-23T01:48:24.0254906Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "82aaa366-fe60-45c8-8e5b-33044be7464e",
+    "appliedAtUtc": "2026-10-23T01:49:37.1668456Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "d0217b26-5757-4277-91a2-046c62b1c31e",
+    "appliedAtUtc": "2026-10-23T01:49:59.9937431Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "741bf2f9-8150-46d2-acb5-3ce653e5563a",
+    "appliedAtUtc": "2026-10-23T01:50:27.4958324Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-core.apply",
+    "operationId": "3fff58dd-9874-4b35-99d3-eee04ec91557",
+    "appliedAtUtc": "2026-10-23T01:50:50.4181281Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "fb2dfe90-4f7a-4660-a990-8dad1e0cbfd7",
+    "appliedAtUtc": "2026-10-23T01:54:19.3597049Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "618595d1-a6e7-4de1-961b-7e9a3d6c2534",
+    "appliedAtUtc": "2026-10-23T01:55:31.6445983Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "febd0980-2536-47f2-abca-3f6dbf83b8a3",
+    "appliedAtUtc": "2026-10-23T01:55:58.6306053Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "e0ad698f-6a4a-4b98-8b9c-a4d8d446920d",
+    "appliedAtUtc": "2026-10-23T01:56:22.1399355Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "7c92cfb94ed249d8b37b100dc7c6ce68",
+    "ownerId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "sourceUrl": "https://skywheelmb.com/wp-content/uploads/2022/07/SKWSR-37-scaled.jpg",
+    "updatedAt": "2026-10-23T01:52:24.955Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "14b215209c79495a81788d52aee29b94",
+    "ownerId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "sourceUrl": "https://skywheelmb.com/wp-content/uploads/2022/07/SkyWheel016-scaled.jpg",
+    "updatedAt": "2026-10-23T01:52:41.163Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "e32d041d58b64499b0603fe8ad777cd2",
+    "ownerId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "sourceUrl": "https://skywheelmb.com/wp-content/uploads/2022/07/SKWNOV-16-1-1-scaled.jpg",
+    "updatedAt": "2026-10-23T01:53:12.434Z",
+    "isPublished": false
+  }
+]
