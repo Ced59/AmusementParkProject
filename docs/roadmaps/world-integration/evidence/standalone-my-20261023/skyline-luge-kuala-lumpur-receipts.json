@@ -1,0 +1,135 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "be9f9e5d-c12f-4e95-8476-498e5b127a20",
+    "appliedAtUtc": "2026-10-23T14:06:26.7888193Z",
+    "targetStandaloneAttractionId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-pricing",
+    "operationId": "fe0823b8-74b4-4b1f-a278-704bdecea2e3",
+    "appliedAtUtc": "2026-10-23T14:08:03.0697893Z",
+    "targetStandaloneAttractionId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-access",
+    "operationId": "574b019a-0bee-4bc2-ae78-8576070f9f5a",
+    "appliedAtUtc": "2026-10-23T14:08:31.4278343Z",
+    "targetStandaloneAttractionId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-history",
+    "operationId": "c3b5f836-6942-4420-b368-794a40878633",
+    "appliedAtUtc": "2026-10-23T14:10:22.3812082Z",
+    "targetStandaloneAttractionId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-publish-images",
+    "operationId": "6479c001-a4df-4ea2-8e5c-2ef5450ffd81",
+    "appliedAtUtc": "2026-10-23T14:12:34.8548018Z",
+    "targetStandaloneAttractionId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "06-publish-history",
+    "operationId": "a684f516-24b9-4246-8a71-7b745c6a30ff",
+    "appliedAtUtc": "2026-10-23T14:13:09.959195Z",
+    "targetStandaloneAttractionId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "07-publish-attraction",
+    "operationId": "a34edb9b-7365-4d93-aa21-d86ae705396e",
+    "appliedAtUtc": "2026-10-23T14:13:33.1949589Z",
+    "targetStandaloneAttractionId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "action": "ImportPhoto",
+    "imageId": "8e09351d489e44dc818ab9a8bebf4b30",
+    "updatedAtUtc": "2026-10-23T14:10:55.604Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyline_Luge_Kuala_Lumpur_(231229)_05.jpg"
+  },
+  {
+    "stage": "photo-2",
+    "action": "ImportPhoto",
+    "imageId": "d3d1c755d87a476c9591369801779c53",
+    "updatedAtUtc": "2026-10-23T14:11:12.894Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyline_Luge_Kuala_Lumpur_(231229)_07.jpg"
+  },
+  {
+    "stage": "photo-3",
+    "action": "ImportPhoto",
+    "imageId": "83dac49a42564402b47f30b4cdcf1c8f",
+    "updatedAtUtc": "2026-10-23T14:11:29.89Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyline_Luge_Kuala_Lumpur_(231229)_01.jpg"
+  }
+]
