@@ -1,0 +1,186 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "4ce5ef24-8f40-4875-a71b-e0476cb9645a",
+    "appliedAtUtc": "2026-10-23T02:05:30.1620716Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "81e9bce0-1173-4643-8e9d-768c4a371b61",
+    "appliedAtUtc": "2026-10-23T02:06:33.6842471Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "f111d2f8-c66d-440b-adaf-5e46c11291f0",
+    "appliedAtUtc": "2026-10-23T02:06:57.1320639Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "4f412442-9e6d-4678-8eef-ae324d0100ca",
+    "appliedAtUtc": "2026-10-23T02:07:27.2076966Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-core.apply",
+    "operationId": "99d8e739-671b-43f0-9530-7136ad930610",
+    "appliedAtUtc": "2026-10-23T02:08:02.7523079Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "873c6238-460d-43ff-9d84-7bd129e418f4",
+    "appliedAtUtc": "2026-10-23T02:10:51.7927103Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-public-text-fix.apply",
+    "operationId": "04206264-b3c0-4fd8-93a2-3d6d8a8345c8",
+    "appliedAtUtc": "2026-10-23T02:13:20.6577721Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "ae6ecba6-9222-4171-b7d8-dba124c9f870",
+    "appliedAtUtc": "2026-10-23T02:14:43.2337471Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "22ce280b-3518-4198-b824-e1c37b563994",
+    "appliedAtUtc": "2026-10-23T02:15:07.3882372Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "269044ba-7fb7-458c-8b31-c296edf78a36",
+    "appliedAtUtc": "2026-10-23T02:15:32.0959751Z",
+    "targetStandaloneAttractionId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "0fd5f7f198704cd68ade7b6c40616870",
+    "ownerId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/d03be2e9-5e69-4435-91b2-30ee4f352140/HB-Chicago-Skyline-Riders-Feet.jpg?width=1200&height=650&ext=.jpg",
+    "updatedAt": "2026-10-23T02:08:42.076Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "56c8ff8fcf004d799a29e4080724b3fb",
+    "ownerId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/117d070a-7f0c-4a19-9275-091f152d3e1f/SC-Gallery-Space.jpg?width=1200&height=800&ext=.jpg",
+    "updatedAt": "2026-10-23T02:09:14.482Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "ee6102dbc5b24adaa3f4e552b81e483c",
+    "ownerId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/c5b38138-fbc9-450d-95b5-cc1d87e55c04/SC-Pre-Show-Experience.jpg?width=1200&height=800&ext=.jpg",
+    "updatedAt": "2026-10-23T02:09:31.472Z",
+    "isPublished": false
+  }
+]

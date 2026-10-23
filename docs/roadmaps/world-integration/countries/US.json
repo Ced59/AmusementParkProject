@@ -19913,48 +19913,249 @@
     {
       "entryId": "US-candidate-69a1a4b80393db",
       "name": "Flyover Chicago",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone",
-      "locality": "Chicago",
-      "siteId": null,
+      "category": "Cinéma de vol simulé autonome",
+      "locality": "Navy Pier, Chicago",
+      "siteId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T02:16:17.326Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "FlyOver Chicago",
+        "Flyover at Navy Pier"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T02:15:32.095Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4ce5ef24-8f40-4875-a71b-e0476cb9645a",
+          "appliedAt": "2026-10-23T02:05:30.162Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:4ce5ef24-8f40-4875-a71b-e0476cb9645a",
+          "auditEvidence": null,
+          "summary": "Création de Flyover Chicago, attraction autonome de cinéma volant"
+        },
+        {
+          "eventId": "apply-81e9bce0-1173-4643-8e9d-768c4a371b61",
+          "appliedAt": "2026-10-23T02:06:33.684Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:81e9bce0-1173-4643-8e9d-768c4a371b61",
+          "auditEvidence": null,
+          "summary": "Horaires officiels et réservations Flyover Chicago"
+        },
+        {
+          "eventId": "apply-f111d2f8-c66d-440b-adaf-5e46c11291f0",
+          "appliedAt": "2026-10-23T02:06:57.132Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:f111d2f8-c66d-440b-adaf-5e46c11291f0",
+          "auditEvidence": null,
+          "summary": "Prix variable et incohérence du tarif guichet documentés"
+        },
+        {
+          "eventId": "apply-4f412442-9e6d-4678-8eef-ae324d0100ca",
+          "appliedAt": "2026-10-23T02:07:27.207Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:4f412442-9e6d-4678-8eef-ae324d0100ca",
+          "auditEvidence": null,
+          "summary": "Taille minimale, transfert et contre-indications Flyover"
+        },
+        {
+          "eventId": "apply-99d8e739-671b-43f0-9530-7136ad930610",
+          "appliedAt": "2026-10-23T02:08:02.752Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:99d8e739-671b-43f0-9530-7136ad930610",
+          "auditEvidence": null,
+          "summary": "Ouverture officielle de Flyover Chicago le 1er mars 2024"
+        },
+        {
+          "eventId": "image-0fd5f7f198704cd68ade7b6c40616870",
+          "appliedAt": "2026-10-23T02:08:42.076Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:image:0fd5f7f198704cd68ade7b6c40616870",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-56c8ff8fcf004d799a29e4080724b3fb",
+          "appliedAt": "2026-10-23T02:09:14.482Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:image:56c8ff8fcf004d799a29e4080724b3fb",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-ee6102dbc5b24adaa3f4e552b81e483c",
+          "appliedAt": "2026-10-23T02:09:31.472Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:image:ee6102dbc5b24adaa3f4e552b81e483c",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-873c6238-460d-43ff-9d84-7bd129e418f4",
+          "appliedAt": "2026-10-23T02:10:51.792Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:873c6238-460d-43ff-9d84-7bd129e418f4",
+          "auditEvidence": null,
+          "summary": "Article historique Flyover Chicago 2024 en huit langues"
+        },
+        {
+          "eventId": "apply-04206264-b3c0-4fd8-93a2-3d6d8a8345c8",
+          "appliedAt": "2026-10-23T02:13:20.657Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:04206264-b3c0-4fd8-93a2-3d6d8a8345c8",
+          "auditEvidence": null,
+          "summary": "Corrections de langue publique et taille minimale structurée"
+        },
+        {
+          "eventId": "apply-ae6ecba6-9222-4171-b7d8-dba124c9f870",
+          "appliedAt": "2026-10-23T02:14:43.233Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:ae6ecba6-9222-4171-b7d8-dba124c9f870",
+          "auditEvidence": null,
+          "summary": "Publication des photographies officielles Flyover Chicago"
+        },
+        {
+          "eventId": "apply-22ce280b-3518-4198-b824-e1c37b563994",
+          "appliedAt": "2026-10-23T02:15:07.388Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:22ce280b-3518-4198-b824-e1c37b563994",
+          "auditEvidence": null,
+          "summary": "Publication de l’article historique Flyover Chicago"
+        },
+        {
+          "eventId": "apply-269044ba-7fb7-458c-8b31-c296edf78a36",
+          "appliedAt": "2026-10-23T02:15:32.095Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:269044ba-7fb7-458c-8b31-c296edf78a36",
+          "auditEvidence": null,
+          "summary": "Validation éditoriale et publication Flyover Chicago"
+        },
+        {
+          "eventId": "closure-apply-269044ba-7fb7-458c-8b31-c296edf78a36",
+          "appliedAt": "2026-10-23T02:15:32.095Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+          "evidence": "PARK_DATA_EDITOR:apply:269044ba-7fb7-458c-8b31-c296edf78a36",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/flyoverchicago-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 90/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Site officiel (attraction autonome)",
           "url": "https://www.experienceflyover.com/chicago/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/chicago/experience/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/chicago/plan-your-visit/location-parking/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/chicago/safety-accessibility/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/chicago/tickets-prices/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/stories/flyover-opens-in-chicago/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://citizennewspapergroup.com/news/2024/mar/13/flyover-officially-opens-to-the-public/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Flyover Chicago",
-            "source": "Découverte complémentaire — site officiel",
+            "source": "Flyover Chicago — Official website",
             "url": "https://www.experienceflyover.com/chicago/",
-            "family": "Flying theatre",
+            "family": "Cinéma de vol simulé",
             "sourceVenueName": "Flyover Chicago",
-            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Chicago, Illinois"
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Navy Pier, Chicago"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-269044ba-7fb7-458c-8b31-c296edf78a36 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago",
+          "publishedAtUtc": "2026-10-23T02:15:32.0959751Z",
+          "verifiedAtUtc": "2026-10-23T02:16:17.326Z",
+          "evidence": "PARK_DATA_EDITOR:apply:269044ba-7fb7-458c-8b31-c296edf78a36"
+        },
+        "facebook": {
+          "id": "81f78f2796d34fe0bdb9df6577e9c0eb",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T02:17:00.9740822Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124229959424431",
+          "externalPostId": "1285475681307050_122124229959424431",
+          "url": "https://amusement-parks.fun/fr/attraction/d79ef5a0-e922-44d1-98be-bfe364a31431/flyover-chicago?facebook-image=0fd5f7f198704cd68ade7b6c40616870"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/flyoverchicago-audit.json",
+        "score": 90,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
