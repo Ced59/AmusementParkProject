@@ -1,0 +1,194 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "d98a4cdd-48d1-48d7-9abb-027b06aef59c",
+    "appliedAtUtc": "2026-10-23T11:21:46.9761518Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "0c97bf35-5896-4f91-92d6-e01c00475d83",
+    "appliedAtUtc": "2026-10-23T11:22:58.7179899Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "392aba47-4ddd-4859-83a9-859ebbb05fff",
+    "appliedAtUtc": "2026-10-23T11:23:22.0942725Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "5c00b648-c173-4e8e-b8be-79b575d32273",
+    "appliedAtUtc": "2026-10-23T11:23:56.3762842Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "47ed0ce2-ab1a-4799-a4da-5d729dfaf3dc",
+    "appliedAtUtc": "2026-10-23T11:25:59.7611852Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history-fix",
+    "operationId": "02e9d77c-ce64-4244-b819-326669c1342b",
+    "appliedAtUtc": "2026-10-23T11:27:27.2936809Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing-addons",
+    "operationId": "5ab4c93c-295a-4d40-bcb7-c03e83f742de",
+    "appliedAtUtc": "2026-10-23T11:32:42.7545892Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-images",
+    "operationId": "7731c2f4-75d1-4197-8207-83a28f312a0b",
+    "appliedAtUtc": "2026-10-23T11:29:43.4012417Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-history",
+    "operationId": "82491388-c4bf-4c1f-8032-4c3057e9bfb1",
+    "appliedAtUtc": "2026-10-23T11:30:07.6844695Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "10-publish-attraction",
+    "operationId": "65898427-4449-4e86-b436-b9494617d62d",
+    "appliedAtUtc": "2026-10-23T11:30:30.856443Z",
+    "targetStandaloneAttractionId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "id": "cd5c12f079474d48911f24384b33415f",
+    "ownerId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grande_Roue_de_Montr%C3%A9al_Automne.jpg",
+    "updatedAt": "2026-10-23T11:24:25.119Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2",
+    "id": "19e853b74cc34a27b3f0dcab6a76908b",
+    "ownerId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:La_Grande_Roue_de_Montr%C3%A9al,_ArmAg.jpg",
+    "updatedAt": "2026-10-23T11:24:46.966Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3",
+    "id": "5202620098474c399b1cb6ee52fd61a6",
+    "ownerId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:La_Grande_Roue_de_Montr%C3%A9al_la_nuit_(54619749987).jpg",
+    "updatedAt": "2026-10-23T11:25:19.107Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-4",
+    "id": "c9fd416c2cef4cdc926fe48346d9217c",
+    "ownerId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grande_Roue_de_Montr%C3%A9al_Construction.jpg",
+    "updatedAt": "2026-10-23T11:25:34.262Z",
+    "isPublished": false
+  }
+]

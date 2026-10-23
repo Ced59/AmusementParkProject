@@ -15,10 +15,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 25 |
-| À qualifier | 99 |
+| À qualifier | 98 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 2 |
+| Intégration achevée | 3 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 2 |
 | Doublon conservé | 0 |
@@ -29,9 +29,9 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **25 masqués à intégrer**, **2 masqués NotRelevant à réexaminer**, **84 candidats sans fiche**.
 
-Standalone : **2 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **12 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **3 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **5 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **9 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **5 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **8 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -95,7 +95,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CA-candidate-89da33686556d2 | King Edward Amusement Park | Boucherville , Québec | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/12610.htm) |
 | CA-candidate-7c486f6514daeb | Kingston Family Fun World Park | Kingston , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5717.htm) |
 | CA-candidate-fa3fb5cc8968a4 | Kraay Family Farm | Lacombe , Alberta | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/23648.htm) |
-| CA-candidate-a9d972567fa851 | La Grande Roue de Montréal | Montreal, Quebec | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
+| CA-candidate-a9d972567fa851 | La Grande Roue de Montréal | Montreal, Quebec | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T11:32:42.754Z | — | Conserver cette ligne et ses reçus ; rapprocher Dutch Wheels du catalogue constructeur sans doublon, puis réviser tarifs et exceptions horaires lors de leur mise à jour officielle. Qualification standalone : AlreadyStandalone. Roue panoramique fixe à billet individuel au Vieux-Port, hors parc structuré ; identité et autonomie confirmées par l’exploitant et les recherches du client officiel. Installations référencées : La Grande Roue de Montréal. Signal source : Operating. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [Source vérifiée — intégration standalone](https://lagranderouedemontreal.com/about-us/) · [Source vérifiée — intégration standalone](https://lagranderouedemontreal.com/plan-your-visit/) · [Source vérifiée — intégration standalone](https://lagranderouedemontreal.com/tickets/) · [Source vérifiée — intégration standalone](https://lagranderouedemontreal.com/faq/) · [Source vérifiée — intégration standalone](https://www.dutchwheels.com/en/portfolio/la-grande-roue-de-montreal) · [Source vérifiée — intégration standalone](https://www.openstreetmap.org/way/1097403710) · [Source vérifiée — intégration standalone](https://commons.wikimedia.org/wiki/File:Grande_Roue_de_Montr%C3%A9al_Automne.jpg) · [Source vérifiée — intégration standalone](https://commons.wikimedia.org/wiki/File:La_Grande_Roue_de_Montr%C3%A9al,_ArmAg.jpg) · [Source vérifiée — intégration standalone](https://commons.wikimedia.org/wiki/File:La_Grande_Roue_de_Montr%C3%A9al_la_nuit_(54619749987).jpg) · [Source vérifiée — intégration standalone](https://commons.wikimedia.org/wiki/File:Grande_Roue_de_Montr%C3%A9al_Construction.jpg) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/64ce3cb3-ead2-4420-b5c8-92c4f1533abc/la-grande-roue-de-montreal) |
 | CA-park-1ffd0b47-b9e7-43ee-ac3a-5a9306083611 | La Ronde | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/4567.htm) |
 | CA-candidate-adcae3d321e470 | La Ronde: A Six Flags Park | Montréal, Québec | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada) |
 | CA-candidate-bc02e88f5ef921 | Lake Ontario Park | Kingston , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/4697.htm) |
