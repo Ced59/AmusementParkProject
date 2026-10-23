@@ -19868,36 +19868,142 @@
     {
       "entryId": "US-candidate-standalone-cc3caa2f6fca41",
       "name": "FlyOver America",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Flying theatre",
-      "locality": null,
-      "siteId": null,
+      "locality": "Bloomington, Minnesota",
+      "siteId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T13:21:49.246Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Billets et horaires actifs sur le site FlyOver America au 23 octobre 2026.",
+      "identityConfidence": "Opérateur et billet propres confirmés ; absence de doublon et cinq items du parc voisin vérifiés ; page publique contrôlée en huit langues",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T13:19:29.090Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b147fc52-029c-45d9-b3b6-4b59faddd655",
+          "appliedAt": "2026-10-23T13:15:04.008Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:b147fc52-029c-45d9-b3b6-4b59faddd655",
+          "auditEvidence": null,
+          "summary": "Fiche créée et descriptions éditoriales en huit langues intégrées."
+        },
+        {
+          "eventId": "apply-c106e9a3-dd53-4bee-bbc7-e0eae0b161d9",
+          "appliedAt": "2026-10-23T13:18:09.931Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:c106e9a3-dd53-4bee-bbc7-e0eae0b161d9",
+          "auditEvidence": null,
+          "summary": "Horaires officiels semaine et week-end intégrés avec conflit du samedi signalé."
+        },
+        {
+          "eventId": "apply-cfc96cda-1ad5-4cb8-a4b2-983acde4be8a",
+          "appliedAt": "2026-10-23T13:18:32.031Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:cfc96cda-1ad5-4cb8-a4b2-983acde4be8a",
+          "auditEvidence": null,
+          "summary": "Deux catégories de billets avec prix en ligne et sur place intégrées."
+        },
+        {
+          "eventId": "apply-73b458e3-a52d-417a-a941-36f1fe1f30fd",
+          "appliedAt": "2026-10-23T13:19:06.155Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:73b458e3-a52d-417a-a941-36f1fe1f30fd",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès et de sécurité officielles intégrées."
+        },
+        {
+          "eventId": "apply-cae18897-e7f2-4aa1-920b-10fc114401d6",
+          "appliedAt": "2026-10-23T13:19:29.090Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:cae18897-e7f2-4aa1-920b-10fc114401d6",
+          "auditEvidence": null,
+          "summary": "Ouverture du 19 avril 2016 et article historique en huit langues intégrés."
+        },
+        {
+          "eventId": "closure-cae18897-e7f2-4aa1-920b-10fc114401d6",
+          "appliedAt": "2026-10-23T13:19:29.090Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:cae18897-e7f2-4aa1-920b-10fc114401d6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/flyover-america-audit.json",
+          "summary": "Audit final 84/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; chercher une photo réutilisable, préciser la position intérieure, clarifier les horaires du samedi et renouveler les tarifs avec taxes.",
       "sources": [
         {
           "label": "Brogent — projet constructeur",
           "url": "https://www.brogent.com/EN/FlyOver-America-cv-1.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/visitor-info",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/tickets",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/safety",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/about",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.mallofamerica.com/directory/flyover-america",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.brogent.com/en/Copy%20%282%29%20of%20FlyOver-America-cv-1.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://dns.brogent.com/en/FlyOver-America-will-be-introduced-in-Minnesota-2016-bv-620.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/6256ae91-3f69-4198-b8e0-8170e21fe6e7/flyover-america",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "FlyOver America",
@@ -19907,7 +20013,29 @@
             "sourceVenueName": "FlyOver America"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Opérateur et billet propres dans le Mall of America ; l’export du parc Nickelodeon Universe voisin ne contient pas FlyOver America."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6256ae91-3f69-4198-b8e0-8170e21fe6e7/flyover-america",
+          "publishedAtUtc": "2026-10-23T13:21:01.2517322Z",
+          "verifiedAtUtc": "2026-10-23T13:21:49.246Z",
+          "evidence": "PARK_DATA_EDITOR:apply:5b82aba5-375b-4a1a-a3c9-8370065ffe88"
+        },
+        "facebook": {
+          "id": "efa3880a1ea14850896d3632976e444e",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T13:21:54.6950303Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124294471424431",
+          "externalPostId": "1285475681307050_122124294471424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/flyover-america-audit.json",
+        "score": 84,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
