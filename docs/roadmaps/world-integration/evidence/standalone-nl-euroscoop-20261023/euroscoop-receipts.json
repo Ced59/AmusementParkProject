@@ -1,0 +1,154 @@
+{
+  "dataApplyReceipts": [
+    {
+      "stage": "01-core",
+      "operationId": "3ae4540b-c889-48ca-a244-9ef0fa8137a9",
+      "appliedAtUtc": "2026-10-23T16:21:46.3704298Z",
+      "targetStandaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "02-hours",
+      "operationId": "c90f2aac-e6d6-4907-a293-f3965f425ce6",
+      "appliedAtUtc": "2026-10-23T16:22:27.1878507Z",
+      "targetStandaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "03-pricing",
+      "operationId": "1493fbd7-97d8-460b-9a77-d151137a27f7",
+      "appliedAtUtc": "2026-10-23T16:22:50.0290875Z",
+      "targetStandaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "04-access",
+      "operationId": "329fe5a2-f320-4c8e-bec8-33758e90d8d0",
+      "appliedAtUtc": "2026-10-23T16:23:12.9463132Z",
+      "targetStandaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "05-history",
+      "operationId": "3eeb5bf0-6d5e-4712-9308-a545affde490",
+      "appliedAtUtc": "2026-10-23T16:24:03.7614185Z",
+      "targetStandaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "07-publish-images",
+      "operationId": "0fdeea1a-ff59-4d01-83b0-20f3dd0311fb",
+      "appliedAtUtc": "2026-10-23T16:26:04.9154784Z",
+      "targetStandaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "08-publish-history",
+      "operationId": "8352c3d4-a9d6-4899-ab55-07ac9099f1ad",
+      "appliedAtUtc": "2026-10-23T16:26:32.9466631Z",
+      "targetStandaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "09-publish-attraction",
+      "operationId": "4e410188-c06d-42ba-af78-cf7689a61ab1",
+      "appliedAtUtc": "2026-10-23T16:26:56.5206524Z",
+      "targetStandaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "photoImportReceipts": [
+    {
+      "id": "74a17ee23b3344819fb244b3f1b508b0",
+      "createdAt": "2026-10-23T16:24:29.957Z",
+      "updatedAt": "2026-10-23T16:24:33.988Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Space_Tower_@_Observation_deck_@_Euromast_@_Rotterdam_(29972594024).jpg",
+      "width": 960,
+      "height": 1440,
+      "isCurrent": true,
+      "credit": "Guilhem Vellut / Wikimedia Commons, CC BY 2.0, 2016"
+    },
+    {
+      "id": "d3df8e517d8d419e8c3082a8c592b26e",
+      "createdAt": "2026-10-23T16:24:45.792Z",
+      "updatedAt": "2026-10-23T16:24:49.486Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Space_Tower_@_Observation_Deck_@_Euromast_@_Rotterdam_(30570510206).jpg",
+      "width": 960,
+      "height": 1440,
+      "isCurrent": false,
+      "credit": "Guilhem Vellut / Wikimedia Commons, CC BY 2.0, 2016"
+    }
+  ]
+}
