@@ -15669,7 +15669,7 @@
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "ClosedDefinitively",
       "sourceLifecycleSignal": "Non vérifié",
@@ -15679,7 +15679,7 @@
         "Magic City"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-23T07:43:55.491Z",
+      "lastDataIntegrationAt": "2026-10-23T09:24:30.186Z",
       "integrationHistory": [
         {
           "eventId": "import-photo-5e10699d443946e4bca9368d9f46e16d-2026-10-23T073427.446Z",
@@ -15730,9 +15730,419 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-87604a7b-dd62-45a0-a156-c9bb8d9cb444",
           "auditEvidence": null,
           "summary": "Inventaire historique : dix-neuf lieux qualifiés ajoutés en privé, cinq identifiants existants conservés. Descriptions, médias et audit final restent à terminer."
+        },
+        {
+          "eventId": "apply-8493787e-1cc6-4147-b3fa-b2f07c165e40",
+          "appliedAt": "2026-10-23T07:52:30.590Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-8493787e-1cc6-4147-b3fa-b2f07c165e40",
+          "auditEvidence": null,
+          "summary": "Descriptions de La Cascade, du Scénic Railway et du restaurant réécrites dans huit langues à partir des scènes photographiées ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-488d164ef99142d9b572d80b3a468043-2026-10-23T075455.141Z",
+          "appliedAt": "2026-10-23T07:54:55.141Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-488d164ef99142d9b572d80b3a468043-2026-10-23T075455.141Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-05-entrance-1914, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-759b3567d5c04d5182f882831de3c8f2-2026-10-23T075510.495Z",
+          "appliedAt": "2026-10-23T07:55:10.495Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-759b3567d5c04d5182f882831de3c8f2-2026-10-23T075510.495Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-06-scenic-crowd, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d8b4bb8c5b524cda88250610bb997539-2026-10-23T075524.156Z",
+          "appliedAt": "2026-10-23T07:55:24.156Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-d8b4bb8c5b524cda88250610bb997539-2026-10-23T075524.156Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-07-restaurant-interior, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fe959273f51d4b97bc2243f1f4b9b05e-2026-10-23T075538.037Z",
+          "appliedAt": "2026-10-23T07:55:38.037Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-fe959273f51d4b97bc2243f1f4b9b05e-2026-10-23T075538.037Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-08-creation-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-629ceec6832a4cbba1600202e8472d0e-2026-10-23T075551.763Z",
+          "appliedAt": "2026-10-23T07:55:51.763Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-629ceec6832a4cbba1600202e8472d0e-2026-10-23T075551.763Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-09-banquette, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3d6416e705a84088a2b9e9fdd0b5d892-2026-10-23T075605.695Z",
+          "appliedAt": "2026-10-23T07:56:05.695Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-3d6416e705a84088a2b9e9fdd0b5d892-2026-10-23T075605.695Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-10-cascade-postcard, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e44bb27373c14d5fbc6d8b907868f3aa-2026-10-23T080758.790Z",
+          "appliedAt": "2026-10-23T08:07:58.790Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-e44bb27373c14d5fbc6d8b907868f3aa-2026-10-23T080758.790Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-11-war-factory, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-18af94cf4e4c44a88cdd94ede6b57b91-2026-10-23T080822.364Z",
+          "appliedAt": "2026-10-23T08:08:22.364Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-18af94cf4e4c44a88cdd94ede6b57b91-2026-10-23T080822.364Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-12-demolition-1928, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-905f220fc8a0491785cd793c87788330-2026-10-23T080849.298Z",
+          "appliedAt": "2026-10-23T08:08:49.298Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-905f220fc8a0491785cd793c87788330-2026-10-23T080849.298Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-13-ballroom-1943, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9fce3ef0312441fd9945db2fc0669a55-2026-10-23T080911.211Z",
+          "appliedAt": "2026-10-23T08:09:11.211Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-9fce3ef0312441fd9945db2fc0669a55-2026-10-23T080911.211Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-14-television-1943, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-55298f8b5ee945fb9cd265c4ffb45a48-2026-10-23T080935.154Z",
+          "appliedAt": "2026-10-23T08:09:35.154Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-55298f8b5ee945fb9cd265c4ffb45a48-2026-10-23T080935.154Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-15-night-1934, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-b8a3d379-e97a-4000-9c4c-00c4b0a2c9cb",
+          "appliedAt": "2026-10-23T08:10:38.080Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-b8a3d379-e97a-4000-9c4c-00c4b0a2c9cb",
+          "auditEvidence": null,
+          "summary": "Descriptions originales de la Banquette magique et de La Création, huit langues personnellement relues ; intégration privée, audit restant."
+        },
+        {
+          "eventId": "apply-6a423339-6ac3-4efc-8bc3-ade484240cb8",
+          "appliedAt": "2026-10-23T08:14:23.124Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-6a423339-6ac3-4efc-8bc3-ade484240cb8",
+          "auditEvidence": null,
+          "summary": "Descriptions entrée monumentale et Roulette humaine en huit langues ; sources photographiques relues, données privées, audit final restant."
+        },
+        {
+          "eventId": "import-photo-5912f39a433540c6ab16c4311ff03305-2026-10-23T081741.870Z",
+          "appliedAt": "2026-10-23T08:17:41.870Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-5912f39a433540c6ab16c4311ff03305-2026-10-23T081741.870Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-16-gondoles, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-cf617e6a30fa4df8a17b92af86a10d2e-2026-10-23T081756.641Z",
+          "appliedAt": "2026-10-23T08:17:56.641Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-cf617e6a30fa4df8a17b92af86a10d2e-2026-10-23T081756.641Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-17-paquebot, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b6a28f8549c34747ab1309322ffe9ab3-2026-10-23T081811.308Z",
+          "appliedAt": "2026-10-23T08:18:11.308Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-b6a28f8549c34747ab1309322ffe9ab3-2026-10-23T081811.308Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-18-pont-folie, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-94714a4726ca4ae995560929542e1e84-2026-10-23T081825.604Z",
+          "appliedAt": "2026-10-23T08:18:25.604Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-94714a4726ca4ae995560929542e1e84-2026-10-23T081825.604Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-19-bobsleigh, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-cd982b4b-50ce-4f6d-8161-5a1effcb7d50",
+          "appliedAt": "2026-10-23T08:20:31.507Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-cd982b4b-50ce-4f6d-8161-5a1effcb7d50",
+          "auditEvidence": null,
+          "summary": "Descriptions Gondoles vénitiennes et Paquebot fantastique en huit langues, décors photographiques et noms historiques vérifiés ; privé, audit restant."
+        },
+        {
+          "eventId": "apply-7eb518ba-49c4-4776-b1a2-d08e6a3db203",
+          "appliedAt": "2026-10-23T08:23:46.731Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-7eb518ba-49c4-4776-b1a2-d08e6a3db203",
+          "auditEvidence": null,
+          "summary": "Descriptions Pont de la Folie et bobsleigh en huit langues, photos et presse vérifiées ; intégration privée partielle."
+        },
+        {
+          "eventId": "apply-c54827f5-8041-43b8-a75a-af783ea01e5b",
+          "appliedAt": "2026-10-23T08:27:35.653Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-c54827f5-8041-43b8-a75a-af783ea01e5b",
+          "auditEvidence": null,
+          "summary": "Historique : images pour quatre événements, fermeture1926 et conversionTV1943 ajoutées, article bals illustré avec deux photos et source vérifiée ; huit langues, privé, audit restant."
+        },
+        {
+          "eventId": "apply-af6be5c8-b3cc-496c-89c2-5ad256196881",
+          "appliedAt": "2026-10-23T08:34:23.563Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-af6be5c8-b3cc-496c-89c2-5ad256196881",
+          "auditEvidence": null,
+          "summary": "Palais persan et Magic-Cinéma-Palace décrits en huit langues depuis la presse1914, textes personnellement révisés ; privé, audit restant."
+        },
+        {
+          "eventId": "apply-9614d0a3-e0ac-4e1a-b413-f5d6f17593ee",
+          "appliedAt": "2026-10-23T08:37:36.828Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-9614d0a3-e0ac-4e1a-b413-f5d6f17593ee",
+          "auditEvidence": null,
+          "summary": "Skating et kiosque à musique : descriptions précises rédigées et relues dans les huit langues, sources historiques croisées ; privé, audit restant."
+        },
+        {
+          "eventId": "apply-528e1074-ab90-42b2-96d7-a37cb7d8880b",
+          "appliedAt": "2026-10-23T08:42:28.626Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-528e1074-ab90-42b2-96d7-a37cb7d8880b",
+          "auditEvidence": null,
+          "summary": "Quatre notices historiques factuelles en huit langues : Electra, Jardin enfants, Sirènes, Maison du Rire ; limites de sources conservées, données privées, audit restant."
+        },
+        {
+          "eventId": "apply-a0a36ca6-4b4f-4b28-8d35-245363e06508",
+          "appliedAt": "2026-10-23T08:46:03.538Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-a0a36ca6-4b4f-4b28-8d35-245363e06508",
+          "auditEvidence": null,
+          "summary": "Quatre dernières notices historiques de inventaire identifié, huit langues : Toboggan, Ânes sauvages, Théâtre japonais, Bowling ; lacunes sources documentées, privé, audit restant."
+        },
+        {
+          "eventId": "apply-12cb7bdd-3c8c-490a-98df-b2029851eb48",
+          "appliedAt": "2026-10-23T08:49:28.484Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-12cb7bdd-3c8c-490a-98df-b2029851eb48",
+          "auditEvidence": null,
+          "summary": "Présentation générale de Magic City réécrite personnellement dans les huit langues, sept paragraphes sourcés par langue ; dates et décors historiques recoupés, privé, audit final restant."
+        },
+        {
+          "eventId": "import-photo-466081a3064248aba29098e7de447ad5-2026-10-23T085202.872Z",
+          "appliedAt": "2026-10-23T08:52:02.872Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-466081a3064248aba29098e7de447ad5-2026-10-23T085202.872Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-20-gate-panorama, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f9f3999a15a34a62b2fec6023a42cbc8-2026-10-23T085222.800Z",
+          "appliedAt": "2026-10-23T08:52:22.800Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-f9f3999a15a34a62b2fec6023a42cbc8-2026-10-23T085222.800Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-21-view-toboggan, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b318c282247d47348eaeeb850bd89b8f-2026-10-23T085245.975Z",
+          "appliedAt": "2026-10-23T08:52:45.975Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-b318c282247d47348eaeeb850bd89b8f-2026-10-23T085245.975Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-22-view-ballroom, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6d5a59501df34274b51821ff0746c175-2026-10-23T085547.264Z",
+          "appliedAt": "2026-10-23T08:55:47.264Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-6d5a59501df34274b51821ff0746c175-2026-10-23T085547.264Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-23-restaurant-exterior, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-26a92192f8bf487c9e84c4b7cd412cf0-2026-10-23T085602.106Z",
+          "appliedAt": "2026-10-23T08:56:02.106Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-26a92192f8bf487c9e84c4b7cd412cf0-2026-10-23T085602.106Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-24-kiosque-pair, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-885b4e949c02494d96bf1fb56ffe810a-2026-10-23T085616.609Z",
+          "appliedAt": "2026-10-23T08:56:16.609Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-885b4e949c02494d96bf1fb56ffe810a-2026-10-23T085616.609Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-25-skating-entrance, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ce82ed8c29ae4e5686acdb0ac48a3905-2026-10-23T085630.757Z",
+          "appliedAt": "2026-10-23T08:56:30.757Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-ce82ed8c29ae4e5686acdb0ac48a3905-2026-10-23T085630.757Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-26-roulette-pair, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8859e9fbecf94e2fa7a8c7f3d75cb3dc-2026-10-23T085644.447Z",
+          "appliedAt": "2026-10-23T08:56:44.447Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-8859e9fbecf94e2fa7a8c7f3d75cb3dc-2026-10-23T085644.447Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-27-bowling-sign, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-09959882-844b-4df9-8261-c97ee08708ba",
+          "appliedAt": "2026-10-23T09:11:38.029Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-09959882-844b-4df9-8261-c97ee08708ba",
+          "auditEvidence": null,
+          "summary": "Deux notices historiques développées grâce aux cartes Publicitas, puis retrait de huit phrases générales sur la Banquette magique."
+        },
+        {
+          "eventId": "import-photo-2439ce8faead4c92bb44f0b95e2bc591-2026-10-23T091410.684Z",
+          "appliedAt": "2026-10-23T09:14:10.684Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-2439ce8faead4c92bb44f0b95e2bc591-2026-10-23T091410.684Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-28-anes, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3214893d3bdd4d69bab4d8226cf5a2b5-2026-10-23T091436.025Z",
+          "appliedAt": "2026-10-23T09:14:36.025Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-3214893d3bdd4d69bab4d8226cf5a2b5-2026-10-23T091436.025Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-29-toboggan, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-033141b5573242c6af70b1731e0b51b0-2026-10-23T091500.986Z",
+          "appliedAt": "2026-10-23T09:15:00.986Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#import-photo-033141b5573242c6af70b1731e0b51b0-2026-10-23T091500.986Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-30-cinema, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-0ef7cd31-235c-4357-87e2-e2735ee7cda9",
+          "appliedAt": "2026-10-23T09:16:30.325Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-0ef7cd31-235c-4357-87e2-e2735ee7cda9",
+          "auditEvidence": null,
+          "summary": "Compléments visuels du skating et du cinéma dans huit langues, source Chenoune accessible et image de contexte du jalon mémoriel de 2025."
+        },
+        {
+          "eventId": "update-photo-f9f3999a15a34a62b2fec6023a42cbc8-2026-10-23T091904.350Z",
+          "appliedAt": "2026-10-23T09:19:04.350Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#update-photo-f9f3999a15a34a62b2fec6023a42cbc8-2026-10-23T091904.350Z",
+          "auditEvidence": null,
+          "summary": "Texte alternatif du panorama depuis le Toboggan précisé dans huit langues après audit, sans nouvel import ni changement de visibilité."
+        },
+        {
+          "eventId": "apply-e57e0eb2-f591-44ae-855a-f2a6d150b6ec",
+          "appliedAt": "2026-10-23T09:24:30.186Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-receipts.json#apply-e57e0eb2-f591-44ae-855a-f2a6d150b6ec",
+          "auditEvidence": null,
+          "summary": "Audit éditorial : résumés de 1911 et 1914 précisés dans huit langues, sans changement des faits, dates ou images."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Magic City : 24 fiches / 192 descriptions, 30 images, 7 jalons, 1 article en huit langues ; audit partiel du 23 octobre 2026. Score projeté 80, logo historique authentifié absent (media.logo-required). Qualification de candidats/alias et visa éditorial global encore requis. Conserver privé ; aucun Facebook avant publication auditée.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15751,7 +16161,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-audit-blocked.json"
     },
     {
       "entryId": "FR-park-a6123932-ff0b-41a8-9812-71ee96c4c67a",
