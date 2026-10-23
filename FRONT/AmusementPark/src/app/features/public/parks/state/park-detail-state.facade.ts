@@ -7,7 +7,6 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
-import { ParkDistanceResponse, ParkDistanceTarget } from '@app/models/parks/park-distance';
 import { ParkDetailSummary, ParkDetailSummaryStats } from '@app/models/parks/park-detail-summary';
 import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRange } from '@app/models/parks/park-opening-hours';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
@@ -16,12 +15,8 @@ import { Park } from '@app/models/parks/park';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
-import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { PagedResult } from '@shared/models/contracts';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
-import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
-import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
-import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -36,7 +31,6 @@ import {
   resolveParkSocialImageId,
   resolveParkSummarySocialImageId
 } from '@shared/utils/images/park-social-image.helpers';
-import { mapParkDistanceTargetToCardModel } from '../mappers/park-distance-card.mapper';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
 import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
@@ -50,7 +44,6 @@ import {
   ParkDetailVideosPort
 } from './park-detail-data.ports';
 
-const NEARBY_PARKS_LIMIT = 4;
 const OPENING_HOURS_PREVIEW_PAST_DAYS = 2;
 const OPENING_HOURS_PREVIEW_FUTURE_DAYS = 14;
 const OPENING_HOURS_NEXT_OPENING_LOOKAHEAD_DAYS = 370;
@@ -58,7 +51,6 @@ const OPENING_HOURS_NEXT_OPENING_LOOKAHEAD_DAYS = 370;
 @Injectable()
 export class ParkDetailStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<ParkDetailSummary>();
-  private readonly nearbyStateStore = new SignalScreenStateStore<ParkDistanceTarget[]>();
   private readonly weatherStateStore = new SignalScreenStateStore<ParkWeatherForecast>();
   private readonly openingHoursStateStore = new SignalScreenStateStore<ParkOpeningHoursCalendar>();
   private readonly currentLanguageSignal = signal('en');
@@ -69,7 +61,6 @@ export class ParkDetailStateFacade {
   private parkLoadSequence: number = 0;
 
   public readonly state = this.screenStateStore.state;
-  public readonly nearbyState = this.nearbyStateStore.state;
   public readonly weatherState = this.weatherStateStore.state;
   public readonly openingHoursState = this.openingHoursStateStore.state;
   public readonly socialImageId: Signal<string | null> = this.socialImageIdSignal.asReadonly();
@@ -105,19 +96,6 @@ export class ParkDetailStateFacade {
   public readonly summary: Signal<ParkContentSummaryViewModel | null> = computed(() => {
     return mapParkContentSummaryViewModel(this.park(), this.toExplorerSummary(this.screenStateStore.data()));
   });
-  public readonly nearbyParks: Signal<ParkCardModel[]> = computed(() => {
-    const targets: ParkDistanceTarget[] = this.nearbyStateStore.data() ?? [];
-    const currentLanguage: string = this.currentLanguageSignal();
-
-    return targets.map((target: ParkDistanceTarget) => mapParkDistanceTargetToCardModel(
-      target,
-      currentLanguage,
-      this.countryDisplayService,
-      this.textTruncator,
-      this.measurementPreferenceService.preferredSystem(),
-      this.measurementConversionService
-    ));
-  });
   public readonly weather: Signal<ParkWeatherForecast | null> = computed(() => this.weatherStateStore.data() ?? null);
   public readonly openingHours: Signal<ParkOpeningHoursCalendar | null> = computed(() => this.openingHoursStateStore.data() ?? null);
 
@@ -126,9 +104,6 @@ export class ParkDetailStateFacade {
     @Inject(PARK_DETAIL_VIDEOS_PORT) private readonly videosApiService: ParkDetailVideosPort,
     @Inject(PARK_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkDetailImagesPort,
     private readonly countryDisplayService: CountryDisplayService,
-    private readonly textTruncator: NaturalTextTruncatorService,
-    private readonly measurementPreferenceService: MeasurementPreferenceService,
-    private readonly measurementConversionService: MeasurementConversionService,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
@@ -141,13 +116,11 @@ export class ParkDetailStateFacade {
   loadPark(id: string): void {
     const loadSequence: number = ++this.parkLoadSequence;
     const previousData: ParkDetailSummary | undefined = this.screenStateStore.data();
-    const previousNearbyData: ParkDistanceTarget[] | undefined = this.nearbyStateStore.data();
     const previousWeatherData: ParkWeatherForecast | undefined = this.weatherStateStore.data();
     const previousOpeningHoursData: ParkOpeningHoursCalendar | undefined = this.openingHoursStateStore.data();
     const targetParkId: string = id.trim();
     const isReloadingCurrentPark: boolean = !!targetParkId && previousData?.park.id?.trim() === targetParkId;
     this.screenStateStore.setLoading(previousData);
-    this.nearbyStateStore.setLoading(isReloadingCurrentPark ? previousNearbyData : undefined);
     this.weatherStateStore.setLoading(isReloadingCurrentPark ? previousWeatherData : undefined);
     this.openingHoursStateStore.setLoading(isReloadingCurrentPark ? previousOpeningHoursData : undefined);
     this.hasVideosSignal.set(false);
@@ -175,7 +148,6 @@ export class ParkDetailStateFacade {
         this.screenStateStore.setReady(summary);
         this.socialImageIdSignal.set(resolveParkSummarySocialImageId(summary));
         this.hasImagesSignal.set(this.hasKnownImage(summary));
-        this.loadNearbyParks(summary.park);
         this.loadWeather(summary.park);
         this.loadOpeningHours(summary.park);
         this.loadVideoAvailability(summary.park);
@@ -191,7 +163,6 @@ export class ParkDetailStateFacade {
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parks.detail.errorMessage', previousData);
-        this.nearbyStateStore.setError('parks.detail.nearby.errorMessage', previousNearbyData);
         this.weatherStateStore.setError('parkWeather.errorMessage', previousWeatherData);
         this.openingHoursStateStore.setError('parkOpeningHours.errorMessage', previousOpeningHoursData);
       }
@@ -505,34 +476,6 @@ export class ParkDetailStateFacade {
         }
 
         this.hasImagesSignal.set(this.hasKnownImage(summary));
-      }
-    });
-  }
-
-  private loadNearbyParks(park: Park): void {
-    const parkId: string | null = park.id?.trim() ?? null;
-
-    if (!parkId || !Number.isFinite(park.latitude) || !Number.isFinite(park.longitude)) {
-      this.nearbyStateStore.setEmpty([]);
-      return;
-    }
-
-    this.parksApiService.getNearestParks(parkId, NEARBY_PARKS_LIMIT, null, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (response: ParkDistanceResponse) => {
-        const targets: ParkDistanceTarget[] = response.targets
-          .filter((target: ParkDistanceTarget) => !!target.park?.id && target.park.id !== parkId)
-          .slice(0, NEARBY_PARKS_LIMIT);
-
-        if (targets.length === 0) {
-          this.nearbyStateStore.setEmpty([]);
-          return;
-        }
-
-        this.nearbyStateStore.setReady(targets);
-      },
-      error: (error: unknown) => {
-        console.error('Error loading nearby parks', error);
-        this.nearbyStateStore.setError('parks.detail.nearby.errorMessage', []);
       }
     });
   }

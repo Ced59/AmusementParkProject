@@ -341,7 +341,7 @@ describe('ParkDetailStateFacade', () => {
     TestBed.resetTestingModule();
   });
 
-  it('loads the optimized park detail summary and nearby parks', () => {
+  it('loads the optimized park detail summary and secondary visitor information', () => {
     const context = configureFacade();
     context.parksPort.summaryResponse$ = of(createSummary(3));
 
@@ -391,21 +391,11 @@ describe('ParkDetailStateFacade', () => {
     expect(context.videosPort.itemVideoCalls).toEqual([
       { parkId: 'park-1', query: { page: 1, size: 1 } },
     ]);
-    expect(context.parksPort.nearestCalls).toEqual([
-      { sourceParkId: 'park-1', limit: 4, maxDistanceKilometers: null },
-    ]);
     expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
     expect(context.parksPort.openingHoursCalls.length).toBe(1);
     expect(context.parksPort.openingHoursCalls[0].id).toBe('park-1');
-    expect(context.facade.nearbyState().kind).toBe('ready');
-    expect(context.facade.nearbyParks().map((park) => park.id)).toEqual([
-      'near-1',
-    ]);
     expect(context.facade.weatherState().kind).toBe('ready');
     expect(context.facade.weather()?.days.length).toBe(1);
-    expect(
-      context.facade.nearbyParks()[0].shortDescription?.length,
-    ).toBeLessThanOrEqual(140);
   });
 
   it('reloads the park detail summary with all items for definitively closed parks', () => {
@@ -450,9 +440,6 @@ describe('ParkDetailStateFacade', () => {
     const context = configureFacade();
     context.facade.loadPark('park-1');
 
-    expect(context.facade.nearbyParks().map((park) => park.id)).toEqual([
-      'near-1',
-    ]);
     expect(context.facade.weather()?.parkId).toBe('park-1');
     expect(context.facade.openingHours()?.parkId).toBe('park-1');
 
@@ -460,8 +447,6 @@ describe('ParkDetailStateFacade', () => {
 
     context.facade.loadPark('park-2');
 
-    expect(context.facade.nearbyState().kind).toBe('loading');
-    expect(context.facade.nearbyParks()).toEqual([]);
     expect(context.facade.weatherState().kind).toBe('loading');
     expect(context.facade.weather()).toBeNull();
     expect(context.facade.openingHoursState().kind).toBe('loading');
@@ -523,13 +508,12 @@ describe('ParkDetailStateFacade', () => {
 
     const capturedOptions: Array<AnonymousHttpOptions | undefined> = [
       ...context.parksPort.summaryOptions,
-      ...context.parksPort.nearestOptions,
       ...context.parksPort.weatherOptions,
       ...context.parksPort.openingHoursOptions,
       ...context.videosPort.options,
     ];
 
-    expect(capturedOptions.length).toBe(6);
+    expect(capturedOptions.length).toBe(5);
     expect(
       capturedOptions.every(
         (options: AnonymousHttpOptions | undefined) =>

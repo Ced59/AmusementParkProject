@@ -8243,18 +8243,19 @@
         "subtitle": "Sprawdź obecnie udokumentowaną lokalizację i współrzędne."
       },
       "nearby": {
-        "title": "Pobliskie parki",
-        "subtitle": "Odkryj inne otwarte parki w pobliżu tego miejsca.",
-        "alternativesTitle": "Otwarte alternatywy w pobliżu",
-        "alternativesSubtitle": "Odkryj obecnie otwarte parki w pobliżu tej udokumentowanej lokalizacji.",
-        "loadingTitle": "Ładowanie nearby parks",
-        "loadingMessage": "Pobliskie parki są ładowane.",
-        "errorTitle": "Nie można wczytać nearby parks",
-        "errorMessage": "Nearby parks nie udało się wczytać.",
-        "emptyTitle": "Brak nearby park",
-        "emptyMessage": "Nie znaleziono pobliskiego parku wokół tego miejsca.",
-        "closestTitle": "Najbliższy park",
-        "distanceNote": "Szacowana odległość w linii prostej od tego parku."
+        "title": "W pobliżu",
+        "subtitle": "Odkryj najbliższe parki i samodzielne atrakcje.",
+        "alternativesTitle": "Więcej do odkrycia w pobliżu",
+        "alternativesSubtitle": "Odkryj parki i samodzielne atrakcje w okolicy tego miejsca.",
+        "loadingTitle": "Wczytywanie miejsc w pobliżu",
+        "loadingMessage": "Trwa wczytywanie pobliskich miejsc.",
+        "errorTitle": "Nie można wczytać pobliskich miejsc",
+        "errorMessage": "Nie udało się wczytać pobliskich miejsc.",
+        "emptyTitle": "Brak miejsc w pobliżu",
+        "emptyMessage": "W pobliżu nie znaleziono parków ani samodzielnych atrakcji.",
+        "closestTitle": "Najbliższe miejsce",
+        "distanceNote": "Szacowana odległość w linii prostej od tego miejsca.",
+        "viewDestination": "Zobacz szczegóły"
       },
       "description": {
         "badge": "Opis",

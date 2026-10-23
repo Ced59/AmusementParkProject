@@ -122,5 +122,11 @@
         </section>
       </aside>
     </div>
+    <app-park-nearby-section
+      [sourceId]="hasCoordinates() ? current.id ?? null : null"
+      sourceKind="StandaloneAttraction"
+      [sourceName]="current.name"
+      [currentLang]="currentLanguage()">
+    </app-park-nearby-section>
   </section>
 </app-page-state>

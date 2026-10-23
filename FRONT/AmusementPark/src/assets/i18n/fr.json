@@ -8243,18 +8243,19 @@
         "subtitle": "Consulte la localisation et les coordonnées actuellement documentées."
       },
       "nearby": {
-        "title": "Parcs à proximité",
-        "subtitle": "Découvre les autres parcs ouverts autour de cette destination.",
-        "alternativesTitle": "Alternatives ouvertes à proximité",
-        "alternativesSubtitle": "Découvre les parcs actuellement ouverts autour de ce lieu documenté.",
-        "loadingTitle": "Chargement des parcs à proximité",
-        "loadingMessage": "Les parcs proches sont en cours de chargement.",
-        "errorTitle": "Impossible de charger les parcs proches",
-        "errorMessage": "Les parcs proches n’ont pas pu être chargés.",
-        "emptyTitle": "Aucun parc à proximité",
-        "emptyMessage": "Aucun parc proche n’a été trouvé autour de cette destination.",
-        "closestTitle": "Parc le plus proche",
-        "distanceNote": "Distance à vol d’oiseau estimée depuis ce parc."
+        "title": "À proximité",
+        "subtitle": "Découvre les parcs et attractions isolées les plus proches.",
+        "alternativesTitle": "À découvrir à proximité",
+        "alternativesSubtitle": "Découvre les parcs et attractions isolées autour de ce lieu.",
+        "loadingTitle": "Chargement des lieux à proximité",
+        "loadingMessage": "Les lieux proches sont en cours de chargement.",
+        "errorTitle": "Impossible de charger les lieux proches",
+        "errorMessage": "Les lieux proches n’ont pas pu être chargés.",
+        "emptyTitle": "Aucun lieu à proximité",
+        "emptyMessage": "Aucun parc ni attraction isolée n’a été trouvé à proximité.",
+        "closestTitle": "Lieu le plus proche",
+        "distanceNote": "Distance à vol d’oiseau estimée depuis ce lieu.",
+        "viewDestination": "Voir la fiche"
       },
       "description": {
         "badge": "Présentation",

@@ -8243,18 +8243,19 @@
         "subtitle": "Consulta a localização e as coordenadas atualmente documentadas."
       },
       "nearby": {
-        "title": "Nearby parques",
-        "subtitle": "Descobre outros parques abertos perto deste destino.",
-        "alternativesTitle": "Alternativas abertas nas proximidades",
-        "alternativesSubtitle": "Descobre parques atualmente abertos perto deste local documentado.",
-        "loadingTitle": "A carregar nearby parques",
-        "loadingMessage": "Nearby parques are being loaded.",
-        "errorTitle": "Não foi possível carregar nearby parques",
-        "errorMessage": "Nearby parques não foi possível carregar.",
-        "emptyTitle": "Nenhum nearby parque",
-        "emptyMessage": "Não foi encontrado nenhum parque próximo deste destino.",
-        "closestTitle": "Parque mais próximo",
-        "distanceNote": "Distância estimada em linha reta a partir deste parque."
+        "title": "Nas proximidades",
+        "subtitle": "Descobre os parques e as atrações independentes mais próximos.",
+        "alternativesTitle": "Mais para descobrir nas proximidades",
+        "alternativesSubtitle": "Descobre parques e atrações independentes à volta deste local.",
+        "loadingTitle": "A carregar locais próximos",
+        "loadingMessage": "Os locais próximos estão a ser carregados.",
+        "errorTitle": "Não foi possível carregar os locais próximos",
+        "errorMessage": "Não foi possível carregar os locais nas proximidades.",
+        "emptyTitle": "Nenhum local nas proximidades",
+        "emptyMessage": "Não foram encontrados parques nem atrações independentes nas proximidades.",
+        "closestTitle": "Local mais próximo",
+        "distanceNote": "Distância estimada em linha reta a partir deste local.",
+        "viewDestination": "Ver a ficha"
       },
       "description": {
         "badge": "Visão geral",

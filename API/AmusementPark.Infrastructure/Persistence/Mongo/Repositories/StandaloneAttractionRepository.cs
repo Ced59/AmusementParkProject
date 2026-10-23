@@ -9,6 +9,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.GeoJsonObjectModel;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
@@ -48,6 +49,31 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
             .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();
+    }
+
+    public async Task<IReadOnlyCollection<StandaloneAttraction>> GetNearestByLocationAsync(
+        double latitude, double longitude, int limit, CancellationToken cancellationToken)
+    {
+        if (limit <= 0)
+        {
+            return Array.Empty<StandaloneAttraction>();
+        }
+
+        List<StandaloneAttractionDocument> documents = await this.collection
+            .Find(BuildNearLocationFilter(latitude, longitude))
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
+    internal static FilterDefinition<StandaloneAttractionDocument> BuildNearLocationFilter(double latitude, double longitude)
+    {
+        GeoJsonPoint<GeoJson2DGeographicCoordinates> center = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
+            new GeoJson2DGeographicCoordinates(longitude, latitude));
+        return BuildPublicFilter()
+            & Builders<StandaloneAttractionDocument>.Filter.Ne(document => document.Latitude, null)
+            & Builders<StandaloneAttractionDocument>.Filter.Ne(document => document.Longitude, null)
+            & Builders<StandaloneAttractionDocument>.Filter.NearSphere(document => document.Location, center);
     }
 
     public async Task<StandaloneAttraction?> FindByLegacyAsync(string? legacyParkId, string? legacyParkItemId, CancellationToken cancellationToken)

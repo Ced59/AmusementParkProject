@@ -11,6 +11,21 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 
 public sealed class StandaloneAttractionPublicFilterTests
 {
+    [Fact]
+    public void BuildNearLocationFilter_UsesGeographicIndexAndPublicVisibilityFilters()
+    {
+        IBsonSerializer<StandaloneAttractionDocument> serializer = BsonSerializer.SerializerRegistry.GetSerializer<StandaloneAttractionDocument>();
+        BsonDocument filter = StandaloneAttractionRepository.BuildNearLocationFilter(49, -0.5)
+            .Render(new RenderArgs<StandaloneAttractionDocument>(serializer, BsonSerializer.SerializerRegistry));
+
+        Assert.True(filter["isVisible"].AsBoolean);
+        Assert.Equal(AdminReviewStatus.NotRelevant.ToString(), filter["adminReviewStatus"]["$ne"].AsString);
+        Assert.True(filter.Contains("attractionDetails.status"));
+        Assert.Equal(new BsonArray { -0.5, 49.0 }, filter["location"]["$nearSphere"]["$geometry"]["coordinates"]);
+        Assert.True(filter.Contains("latitude"));
+        Assert.True(filter.Contains("longitude"));
+    }
+
     [Theory]
     [InlineData("ClosedDefinitively")]
     [InlineData("closed-definitively")]
