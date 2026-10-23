@@ -16,9 +16,9 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | --- | ---: |
 | À intégrer | 21 |
 | À qualifier | 232 |
-| En cours | 7 |
+| En cours | 6 |
 | Bloqué | 2 |
-| Intégration achevée | 7 |
+| Intégration achevée | 8 |
 | Publié, date inconnue | 128 |
 | Hors périmètre enregistré | 99 |
 | Doublon conservé | 0 |
@@ -27,7 +27,7 @@ Couverture : **Pistes sourcées ; compléments locaux requis**. Observations ext
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **98 publiés**, **27 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **195 candidats sans fiche**.
+Parcs : **99 publiés**, **26 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **195 candidats sans fiche**.
 
 Standalone : **40 publiées**, **0 masquées**, **11 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 

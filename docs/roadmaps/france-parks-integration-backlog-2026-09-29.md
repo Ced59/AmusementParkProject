@@ -35,10 +35,10 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 52 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
-| Fiches historiques privées existantes | 10 | 6 |
+| Fiches historiques privées existantes | 10 | 5 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **138** |
+| **Total** | **225** | **137** |
 
 ## 1. Fiches publiques à compléter
 
@@ -180,7 +180,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Luna Park Paris — `77106934-0f4c-4eb3-b075-4097ab6078cd`
 - [ ] Magic City Paris — `6cc196ad-27bc-444e-84e8-fb97c1baa9f0`
 - [x] Parc Avenue — `f019e441-aecf-487b-93db-2b0246dce185` — clôture conservée le 23 octobre 2026 ; audit final à 97/100 et annonce Facebook Published confirmée.
-- [ ] Parc de la Toison d'Or — `66653da2-93bb-499f-95df-15e240673e58`
+- [x] Parc de la Toison d'Or — `66653da2-93bb-499f-95df-15e240673e58` — clôture conservée le 23 octobre 2026 ; audit final96/100 et Facebook Published.
 - [ ] Parc de Lillom — `8167f80c-db82-49d8-91a6-bf5a1f6a6f51`
 - [ ] Parc de Lomme — `a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`
 - [ ] Ty'Bamboo — `6919c77b-1865-444d-8c5c-964b255d9c27`
@@ -444,3 +444,10 @@ La [fiche historique](https://amusement-parks.fun/fr/park/1c5c0675-8d86-459c-9c7
 ### Parc Avenue — clôture du 23 octobre 2026
 
 La [fiche historique](https://amusement-parks.fun/fr/park/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue) est publiée et auditée à **97/100**, sans bloqueur : 68 lieux dont 41 attractions fermées, deux zones, 31 médias propres avec le logo officiel, six plans annuels authentiques (1990, 1991, 1993, 1996, 1997, 2013), 17 faits sourcés et illustrés et deux articles développés dans les huit langues. Les 568 descriptions du parc, des zones et des lieux sont localisées. Les 32 pages mobiles contrôlées passent ; le lien Histoire est cliqué depuis la fiche française normale et ouvre les 17 faits. Les six fichiers de plans publics sont identiques aux originaux et 2013 est sélectionné par défaut. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124255363424431) est confirmée `Published`, sans doublon. Les lacunes restent nommées : douze attractions illustrées sur 41, quatre des douze lieux importants avec au moins trois photos, cinq lieux géolocalisés sur 68, anciennes conditions d’accès rarement conservées et millésimes de plans absents. Cinq véritables vues générales sont distinguées des gros plans. L’absence d’année-clé indexable ne bloque pas la chronologie publique. La dernière intégration réelle date du **2026-10-23T07:12:18.486Z**, restauration canonique des faits. [Audit final](world-integration/evidence/france-historical-20261022/parc-avenue-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/parc-avenue-source-gaps.json). Le backlog national conserve **138 dossiers actifs : 112 principaux, 26 historiques et aucune standalone**. Cette quatrième clôture reste sur la branche cumulative : aucune PR avant dix parcs terminés, aucune hausse de version pour ce suivi documentaire.
+
+
+### Parc de la Toison d’Or — clôture du 23 octobre 2026
+
+La [fiche historique](https://amusement-parks.fun/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or) est publiée et auditée à **96/100**, sans bloqueur : **24 lieux dont 19attractions historiques**, une zone, **29 médias propres** dont le logo authentique, le plan officiel du projet de 1989, **15 faits sourcés** et un article développé en huit langues. Les 208descriptions du parc, de la zone et des lieux sont localisées. Les 24pages mobiles et deux pages de bureau contrôlées passent ; le clic normal sur Histoire ouvre les15 faits, et le fichier original du plan est accessible anonymement. Les 24légendes de l’article ont été réécrites pour éviter les répétitions avec la galerie. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124285243424431) est confirmée Published ; aucun second envoi.
+
+Les lacunes demeurent nommées : neuf attractions illustrées sur 19, deux lieux importants sur 11 avec au moins trois photos, deux lieux géolocalisés sur 24 (le théâtre et son spectacle au même emplacement), anciennes conditions d’accès non retrouvées et plans annuels 1990–1992 manquants. Cinq vues générales distinctes comprennent le chantier, les années d’activité et le jardin ultérieur ; la scène de démontage reste une illustration d’événement et ne gonfle pas ce compteur. La dernière intégration réelle date du **2026-10-23T12:15:37.500Z**, import de la vue du chantier. [Audit final](world-integration/evidence/france-historical-20261022/toison-or-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/toison-or-source-gaps.json). Le backlog national conserve **137 dossiers actifs : 112 principaux, 25 historiques et aucune standalone**. Cinquième clôture du lot : aucune PR avant dix parcs terminés, aucune montée de version pour ce suivi documentaire.

@@ -1106,7 +1106,236 @@
         "summaries"
       ],
       "summary": "Toison d’Or : contexte photographique du démontage des deux coasters et récit du Mini Grand Huit clarifié."
+    },
+    {
+      "eventId": "apply-f6123172-a86d-4d93-8a2a-dc025ddb14ee",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:50:13.033406Z",
+      "appliedAt": "2026-10-23T11:50:13.033Z",
+      "receiptFile": "09-editorial-corrections-apply.receipt.json",
+      "receiptSha256": "b1bd6aadb587305d80476d7ae854f5da7127cec7caf259e4165de2576ea2ce9c",
+      "counts": {
+        "created": 0,
+        "updated": 8,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "description.fr",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt",
+        "summaries"
+      ],
+      "summary": "Toison d’Or : corrections éditoriales de l’audit final, phrase vague supprimée et répétitions reformulées."
+    },
+    {
+      "eventId": "apply-645234cb-9088-47d7-a227-5cadf8878529",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T11:55:29.0601575Z",
+      "appliedAt": "2026-10-23T11:55:29.060Z",
+      "receiptFile": "09-last-audit-refinements-v2-apply.receipt.json",
+      "receiptSha256": "2de172a882c7e5915777302bd21b42c1473f80f8aa169dfc05919f8dfb9d8637",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "captions.nl",
+        "descriptions.fr",
+        "descriptions.nl",
+        "titles"
+      ],
+      "summary": "Toison d’Or : relecture finale des titres et légendes, précisions française et néerlandaise."
+    },
+    {
+      "eventId": "apply-e81edb64-c704-48ce-8f19-aaf2fb2e2006",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:08:22.2513229Z",
+      "appliedAt": "2026-10-23T12:08:22.251Z",
+      "receiptFile": "09-article-caption-corrections-apply.receipt.json",
+      "receiptSha256": "d0818691ee796f831af81083e3a1d27615dbd38b524fdb8901217859dba29743",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Correction éditoriale des24légendes de l’article pour éliminer la répétition avec la galerie; sources et images conservées."
+    },
+    {
+      "eventId": "apply-c96679bf-d67c-41f5-b194-d4fdd600ad6c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:12:46.7428803Z",
+      "appliedAt": "2026-10-23T12:12:46.742Z",
+      "receiptFile": "09-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "3dec6b041794061901a604044294183f285deb40d2728bf7d6d14435e344d70e",
+      "counts": {
+        "created": 0,
+        "updated": 15,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Reprise officielle étape8 : restauration des15révisions HIST publiées et sourcées après diagnostic; contenu éditorial conservé."
+    },
+    {
+      "eventId": "import-photo-38f394c24fc547319890fa9515ef9d9c-2026-10-23T121537.500Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T12:15:37.5Z",
+      "appliedAt": "2026-10-23T12:15:37.500Z",
+      "receiptFile": "photo-29-construction-overview-import-receipt.json",
+      "receiptSha256": "8da98e223551c8afa1a67a925e661d2dcccfd39665bacd3523b86f6189eff48c",
+      "imageId": "38f394c24fc547319890fa9515ef9d9c",
+      "ownerId": "66653da2-93bb-499f-95df-15e240673e58",
+      "createdAt": "2026-10-23T12:15:33.725Z",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/image/CKldxvvaZmBh6vsP9g7oReNkU98/0x0:1920x1080/800x450/filters:format(webp)/regions/2026/03/27/69c662be6a39d279862862.jpg",
+      "summary": "Import privé du média historique photo-29-construction-overview, fichier et huit langues relus ; audit final restant."
     }
   ],
-  "publicationOrNoop": []
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-13e2eff8-64c2-404a-b79a-25dea1ea22fd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:04:04.0292195Z",
+      "appliedAt": "2026-10-23T12:04:04.029Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "346b0377ea4d3261a70831d488fef38e66336090ca885320064561f052576a5c",
+      "counts": {
+        "created": 0,
+        "updated": 28,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication autorisée des28images relues et du logo historique, parc encoremasqué; auditfinalen cours."
+    },
+    {
+      "eventId": "apply-a7e92edc-53ad-4729-914e-d19a8a029a05",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:04:58.0011981Z",
+      "appliedAt": "2026-10-23T12:04:58.001Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "7b70bf86529749ec590ff5edb4dab4a073366c2fea0c30becbdb7b7263e41ddf",
+      "counts": {
+        "created": 0,
+        "updated": 17,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "isVisible"
+      ],
+      "summary": "Publication autorisée du plan1989, de la zone et des15jalons avec article8langues; fiches historiques et parc encoremasqués."
+    },
+    {
+      "eventId": "apply-900296a9-2ca3-4d36-af57-bd62c545837a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:05:37.6658733Z",
+      "appliedAt": "2026-10-23T12:05:37.665Z",
+      "receiptFile": "09-publish-items-apply.receipt.json",
+      "receiptSha256": "0159a240599439746403cf40a7c14b36490d1dd3d0934be97b926d0dcd04ed12",
+      "counts": {
+        "created": 0,
+        "updated": 24,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Publication autorisée des24fiches historiques qualifiées et relues8langues; parcencoremasqué."
+    },
+    {
+      "eventId": "apply-73c8d642-00d6-452d-9b04-0fed364bcb8e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:06:16.9757233Z",
+      "appliedAt": "2026-10-23T12:06:16.975Z",
+      "receiptFile": "09-validate-operator-apply.receipt.json",
+      "receiptSha256": "d79b1a4d32d730205536ef440f30c84b34b426c2528d88ac00d241d51d431316",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus"
+      ],
+      "summary": "Validation de la référence exploitant Lyonnaise des eaux après contrôle des sources et des8localisations."
+    },
+    {
+      "eventId": "apply-6194ac3f-37e2-4b70-b1c3-49ca277104f1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:10:03.7172179Z",
+      "appliedAt": "2026-10-23T12:10:03.717Z",
+      "receiptFile": "09-publish-park-apply.receipt.json",
+      "receiptSha256": "a1cb225db5f2da5d1f631ccaa95fa4dcada7846203bd381900f70321f623cfcd",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Publication autorisée du Parc de la Toison d’Or après audit8langues et scoreprojeté96sansbloqueur."
+    },
+    {
+      "eventId": "apply-18461295-1b44-4a19-a945-e63af00e8d0f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:17:14.9562261Z",
+      "appliedAt": "2026-10-23T12:17:14.956Z",
+      "receiptFile": "09-publish-construction-photo-apply.receipt.json",
+      "receiptSha256": "d423f2c71b3f6dac581925879997daab24db8d0edc5d655932c381f8fe26860a",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication autorisée de la vue générale du chantier, après contrôlevisuel et relecture8langues; cinq vues générales distinguées du démontage."
+    }
+  ]
 }

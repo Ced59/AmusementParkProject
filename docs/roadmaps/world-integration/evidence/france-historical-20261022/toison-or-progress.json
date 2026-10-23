@@ -1,32 +1,26 @@
 {
   "entryId": "FR-park-66653da2-93bb-499f-95df-15e240673e58",
   "owner": "Conversation France",
-  "result": "partial",
-  "observedAtUtc": "2026-10-23T11:40:31.197943+00:00",
+  "result": "completed",
+  "observedAtUtc": "2026-10-23T12:22:38.577110+00:00",
   "counts": {
     "parkItems": 24,
     "attractions": 19,
     "zones": 1,
     "parkDescriptionLanguages": 8,
     "itemsWithEightDescriptions": 24,
-    "images": 28,
+    "images": 29,
     "officialMaps": 1,
     "historyEvents": 15,
     "parkHistoryEvents": 7,
     "articles": 1
   },
   "publication": {
-    "park": false,
-    "facebook": false,
-    "reason": "Finalcompleteexport/corpusreview/auditstillpending."
+    "park": true,
+    "facebook": true
   },
-  "fullFinalExportPerformed": false,
-  "remaining": [
-    "Onefreshfullexportimmediatelybeforestep9.",
-    "Completecorpuspersonalreview,evidencecomparison,coverageandsource-gapverification.",
-    "Dependencypublicationthenindividualprojectedscore>95/zeroblockersbeforeparkvisibility.",
-    "Actualpost-publicationscore,mobile/desktopnormalHistorynavigationandFacebookResolve/Publish."
-  ],
+  "fullFinalExportPerformed": true,
+  "remaining": [],
   "documentedBoundaries": {
     "reviewedAtUtc": "2026-10-23T11:40:31.197943+00:00",
     "notApplicable": {
@@ -59,5 +53,7 @@
     "images": "Originalpublishedfilesretained; laterNigloland/Paris/currentgarden explicitlycaptioned. Unknownramcoasterviewnot assigned to eithercoaster. No identifiablehistoricalphotos found for remainingnamedimagegaps; fullauditwillenumerateIDs. Gallery17SHAduplicatephoto09excluded; croppedTapisWikiimageandNigloWorldwatermarkedbrochureexcluded.",
     "references": "Newfounder/operatoridentitymatchedbyPreview;8languagebiography/descriptionreviewed, primarycourt+France3+officialSuezorigin. Sharedmanufacturersunchanged; exactdependencyIDs verified fromofficialexports.",
     "historyImages": "Actualinaugurationanddismantlingphotosprioritized. No actualcontract/lease/judgementphoto found. Specificride transfers use correctlycaptionedlaterlocationorpreclosureview; no fictionaleventphoto."
-  }
+  },
+  "contentAuditPassed": true,
+  "finalAudit": "toison-or-final-audit.json"
 }

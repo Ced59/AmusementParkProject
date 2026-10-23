@@ -16,7 +16,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 311 | 1883 | 7566 |
+| Parcs | 312 | 1882 | 7566 |
 | Standalone | 98 | 1 | 152 |
 
 **Reprise standalone :** en plus des 152 candidates sans correspondance, **234 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **656 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **50 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
@@ -44,7 +44,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Estonie](countries/EE.md) | 0 | 3 | 0 | 9 | 14 |
 | [État de la Cité du Vatican](countries/VA.md) | 0 | 0 | 0 | 0 | 0 |
 | [Finlande](countries/FI.md) | 0 | 12 | 5 | 26 | 61 |
-| [France](countries/FR.md) | 98 | 27 | 101 | 195 | 616 |
+| [France](countries/FR.md) | 99 | 26 | 101 | 195 | 616 |
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 1 | 1 |
 | [Grèce](countries/GR.md) | 0 | 12 | 3 | 23 | 45 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 |
@@ -81,7 +81,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 1 | 22 | 48 | 46 | 114 |
 | [Ukraine](countries/UA.md) | 1 | 33 | 1 | 42 | 72 |
-| **Total** | **213** | **779** | **672** | **1864** | **4605** |
+| **Total** | **214** | **778** | **672** | **1864** | **4605** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -141,10 +141,10 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
 | **Total** | **77** | **1** | **47** | **64** | **313** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **30**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **31**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Allemagne : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
-- France : 7 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- France : 8 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Hongrie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Islande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Pays-Bas : 1 intégration achevée et auditée, dont 0 fiches encore masquées.

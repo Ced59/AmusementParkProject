@@ -19686,9 +19686,9 @@
       "locality": null,
       "siteId": "66653da2-93bb-499f-95df-15e240673e58",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T12:23:38.481227+00:00",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Non vérifié",
@@ -19697,8 +19697,8 @@
       "aliases": [
         "Parc Récréatif de la Toison d'or"
       ],
-      "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-23T11:40:30.474Z",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-23T12:15:37.500Z",
       "integrationHistory": [
         {
           "eventId": "apply-ff222116-7d52-409f-b08e-7de0153a5728",
@@ -20249,9 +20249,69 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-125c7d03-9a1d-4212-abf7-5a00dfd15e82",
           "auditEvidence": null,
           "summary": "Toison d’Or : contexte photographique du démontage des deux coasters et récit du Mini Grand Huit clarifié."
+        },
+        {
+          "eventId": "apply-f6123172-a86d-4d93-8a2a-dc025ddb14ee",
+          "appliedAt": "2026-10-23T11:50:13.033Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-f6123172-a86d-4d93-8a2a-dc025ddb14ee",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : corrections éditoriales de l’audit final, phrase vague supprimée et répétitions reformulées."
+        },
+        {
+          "eventId": "apply-645234cb-9088-47d7-a227-5cadf8878529",
+          "appliedAt": "2026-10-23T11:55:29.060Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-645234cb-9088-47d7-a227-5cadf8878529",
+          "auditEvidence": null,
+          "summary": "Toison d’Or : relecture finale des titres et légendes, précisions française et néerlandaise."
+        },
+        {
+          "eventId": "apply-e81edb64-c704-48ce-8f19-aaf2fb2e2006",
+          "appliedAt": "2026-10-23T12:08:22.251Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-e81edb64-c704-48ce-8f19-aaf2fb2e2006",
+          "auditEvidence": null,
+          "summary": "Correction éditoriale des24légendes de l’article pour éliminer la répétition avec la galerie; sources et images conservées."
+        },
+        {
+          "eventId": "apply-c96679bf-d67c-41f5-b194-d4fdd600ad6c",
+          "appliedAt": "2026-10-23T12:12:46.742Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#apply-c96679bf-d67c-41f5-b194-d4fdd600ad6c",
+          "auditEvidence": null,
+          "summary": "Reprise officielle étape8 : restauration des15révisions HIST publiées et sourcées après diagnostic; contenu éditorial conservé."
+        },
+        {
+          "eventId": "import-photo-38f394c24fc547319890fa9515ef9d9c-2026-10-23T121537.500Z",
+          "appliedAt": "2026-10-23T12:15:37.500Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-38f394c24fc547319890fa9515ef9d9c-2026-10-23T121537.500Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique photo-29-construction-overview, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "completed-toison-or-20261023",
+          "appliedAt": "2026-10-23T12:15:37.500Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "66653da2-93bb-499f-95df-15e240673e58",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-38f394c24fc547319890fa9515ef9d9c-2026-10-23T121537.500Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-final-audit.json",
+          "summary": "Audit final96/100 sans bloqueur :24fiches,29images,15faits,article8langues; site/Histoire/plan et Facebook Published vérifiés."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Intégration terminée, audit final96/100 sans bloqueur, site et Facebook Published confirmés. Accès Histoire cliqué depuis la fiche normale; lacunes de photos, positions et plans annuels documentées.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
