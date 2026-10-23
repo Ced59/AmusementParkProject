@@ -14,11 +14,11 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 
 | État éditorial | Nombre |
 | --- | ---: |
-| À intégrer | 91 |
+| À intégrer | 90 |
 | À qualifier | 293 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 9 |
 | Hors périmètre enregistré | 25 |
 | Doublon conservé | 0 |
@@ -27,11 +27,11 @@ Couverture : **Pistes sourcées ; compléments locaux requis**. Observations ext
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **9 publiés**, **91 masqués à intégrer**, **26 masqués NotRelevant à réexaminer**, **252 candidats sans fiche**.
+Parcs : **9 publiés**, **90 masqués à intégrer**, **26 masqués NotRelevant à réexaminer**, **252 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **6 types à décider**, **31 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **6 types à décider**, **31 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **3 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **19 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **2 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **19 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 

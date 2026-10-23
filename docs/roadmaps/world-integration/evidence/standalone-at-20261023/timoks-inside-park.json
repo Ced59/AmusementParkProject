@@ -1,0 +1,34 @@
+{
+  "candidateEntryId": "AT-candidate-f5939eaea34637",
+  "decision": "InsideParkDuplicate",
+  "checkedAtUtc": "2026-10-23T00:07:13.8983391Z",
+  "officialClient": {
+    "actions": [
+      "SearchParks Timok AT",
+      "SearchParks Fieberbrunn AT",
+      "SearchStandaloneAttractions Timok AT",
+      "SearchStandaloneAttractions Fieberbrunn AT",
+      "ExportPark 40bce3d1-0f94-4088-8dcc-83862810fc1f"
+    ],
+    "matchingPark": {
+      "id": "40bce3d1-0f94-4088-8dcc-83862810fc1f",
+      "name": "Timoks Wilde Welt",
+      "isVisible": true
+    },
+    "matchingParkItem": {
+      "id": "ce1af362-af48-44f5-937d-7adb1ca46115",
+      "name": "Timoks Alpine Coaster",
+      "type": "RollerCoaster",
+      "isVisible": true,
+      "adminReviewStatus": "Validated",
+      "sourceUrl": "https://www.fieberbrunn.com/alpinecoaster"
+    },
+    "standaloneSearchMatchCount": 0
+  },
+  "operatorSources": [
+    "https://www.fieberbrunn.com/en/alpinecoaster",
+    "https://www.fieberbrunn.com/en/summer/timoks-wild-world"
+  ],
+  "reason": "The operator places the ride in Timok’s Wild World and sells it separately; the official site export already represents that same ride as a visible park item in the structured parent park. A second standalone entity would duplicate this attraction. The candidate is retained and linked to the existing park and park item; no data Apply and no Facebook post were made for the candidate.",
+  "lastDataIntegrationAt": null
+}

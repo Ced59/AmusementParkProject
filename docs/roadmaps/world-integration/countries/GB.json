@@ -9166,26 +9166,172 @@
     },
     {
       "entryId": "GB-park-e2f54f75-6265-4aea-8752-6efaefb12f79",
-      "name": "Midlothian Snowsports Centre",
-      "entityKind": "Park",
+      "name": "Hillend Alpine Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": null,
       "locality": null,
-      "siteId": "e2f54f75-6265-4aea-8752-6efaefb12f79",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "siteId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+      "legacySiteIds": [
+        "e2f54f75-6265-4aea-8752-6efaefb12f79"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T00:24:04.360Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identité et autonomie confirmées ; migration appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Midlothian Snowsports Centre",
+        "Alpine Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T00:23:13.779Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-05c736af-9bdb-492d-81c0-99baae79a490",
+          "appliedAt": "2026-10-23T00:14:38.939Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:05c736af-9bdb-492d-81c0-99baae79a490",
+          "auditEvidence": null,
+          "summary": "Migration contrôlée de la fiche Park masquée et de son unique ParkItem vers une attraction autonome ; parc et item legacy classés NotRelevant, IDs conservés."
+        },
+        {
+          "eventId": "apply-b06ef5e3-1eab-49da-80ef-c5366006635d",
+          "appliedAt": "2026-10-23T00:15:49.703Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:b06ef5e3-1eab-49da-80ef-c5366006635d",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès sourcées et localisées"
+        },
+        {
+          "eventId": "apply-4107ff08-3a98-4c47-86d6-e1ad10c97840",
+          "appliedAt": "2026-10-23T00:16:23.467Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:4107ff08-3a98-4c47-86d6-e1ad10c97840",
+          "auditEvidence": null,
+          "summary": "Horaires documentés sans inventer une fermeture hebdomadaire"
+        },
+        {
+          "eventId": "apply-63c1b017-ee62-4b49-bd52-f490ced6f9db",
+          "appliedAt": "2026-10-23T00:16:52.080Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:63c1b017-ee62-4b49-bd52-f490ced6f9db",
+          "auditEvidence": null,
+          "summary": "Six offres tarifaires officielles 2026 ajoutées"
+        },
+        {
+          "eventId": "apply-77d28a49-98bb-42df-96f0-881ebec4aad3",
+          "appliedAt": "2026-10-23T00:17:43.440Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:77d28a49-98bb-42df-96f0-881ebec4aad3",
+          "auditEvidence": null,
+          "summary": "Clarification de la date de vérification des tarifs"
+        },
+        {
+          "eventId": "image-5ee7ee18ba394980935a31863fde96b9",
+          "appliedAt": "2026-10-23T00:18:02.865Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:image:5ee7ee18ba394980935a31863fde96b9",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-152ae7bbe77545718591e6d50cfdab2d",
+          "appliedAt": "2026-10-23T00:18:18.575Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:image:152ae7bbe77545718591e6d50cfdab2d",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-af9986e4-859c-4120-86a1-021a3c7efc70",
+          "appliedAt": "2026-10-23T00:18:44.310Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:af9986e4-859c-4120-86a1-021a3c7efc70",
+          "auditEvidence": null,
+          "summary": "Ouverture de septembre 2024 et premier anniversaire documentés en huit langues"
+        },
+        {
+          "eventId": "apply-06f387b7-3fcf-4409-8c69-eb1b505ec6a2",
+          "appliedAt": "2026-10-23T00:19:58.631Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:06f387b7-3fcf-4409-8c69-eb1b505ec6a2",
+          "auditEvidence": null,
+          "summary": "Légende propre à la seconde photographie et huit traductions"
+        },
+        {
+          "eventId": "apply-b161cfc3-704f-4c0e-b61e-f83eb2f24035",
+          "appliedAt": "2026-10-23T00:20:54.771Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:b161cfc3-704f-4c0e-b61e-f83eb2f24035",
+          "auditEvidence": null,
+          "summary": "Résumé de l’article différencié du résumé de l’événement historique"
+        },
+        {
+          "eventId": "apply-f6e96096-b87f-4fc0-befb-954db0ede450",
+          "appliedAt": "2026-10-23T00:22:16.361Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:f6e96096-b87f-4fc0-befb-954db0ede450",
+          "auditEvidence": null,
+          "summary": "Deux photographies officielles publiées"
+        },
+        {
+          "eventId": "apply-53430d56-a651-4f83-8003-02b7ba7c05cc",
+          "appliedAt": "2026-10-23T00:22:39.202Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:53430d56-a651-4f83-8003-02b7ba7c05cc",
+          "auditEvidence": null,
+          "summary": "Article historique localisé et événement publiés"
+        },
+        {
+          "eventId": "apply-2e86a0e7-24bf-4866-9e47-27fa72e804a7",
+          "appliedAt": "2026-10-23T00:23:13.779Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:2e86a0e7-24bf-4866-9e47-27fa72e804a7",
+          "auditEvidence": null,
+          "summary": "Fiche Hillend Alpine Coaster validée et publiée"
+        },
+        {
+          "eventId": "closure-apply-2e86a0e7-24bf-4866-9e47-27fa72e804a7",
+          "appliedAt": "2026-10-23T00:23:13.779Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+          "evidence": "PARK_DATA_EDITOR:apply:2e86a0e7-24bf-4866-9e47-27fa72e804a7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-20261023/hillend-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 93/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -9211,12 +9357,32 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.midlothian.gov.uk/info/521/sport_and_leisure",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.midlothian.gov.uk/coaster",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.midlothian.gov.uk/news/article/3969/much_to_celebrate_as_scotlands_first_alpine_coaster_turns_one",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wiegandslide.com/en/news/wiegand-news/scotlands-first-alpine-coaster-ready-to-run-1108.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/162bd718-f375-4d1b-a316-e4d50f1ad91b/hillend-alpine-coaster",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "GB",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -9239,7 +9405,30 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-2e86a0e7-24bf-4866-9e47-27fa72e804a7 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/162bd718-f375-4d1b-a316-e4d50f1ad91b/hillend-alpine-coaster",
+          "publishedAtUtc": "2026-10-23T00:23:13.7795302Z",
+          "verifiedAtUtc": "2026-10-23T00:24:04.360Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2e86a0e7-24bf-4866-9e47-27fa72e804a7"
+        },
+        "facebook": {
+          "id": "de88036528344c109e8bc30a0dc1d119",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T00:24:51.8490577Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124222021424431",
+          "externalPostId": "1285475681307050_122124222021424431",
+          "url": "https://amusement-parks.fun/fr/attraction/162bd718-f375-4d1b-a316-e4d50f1ad91b/hillend-alpine-coaster?facebook-image=5ee7ee18ba394980935a31863fde96b9"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-20261023/hillend-audit.json",
+        "score": 93,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -10094,7 +10283,7 @@
         {
           "siteId": "3834f43f-9e89-48d0-b511-78fa8880c84a",
           "name": "Botton's Pleasure Beach",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -10590,7 +10779,7 @@
         {
           "siteId": "ff10be16-88d4-4287-ac10-e7200fedb5b8",
           "name": "Pleasure Beach Resort",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [],
@@ -13351,7 +13540,7 @@
         {
           "siteId": "a73cdd8b-20c5-4072-abd7-824e5381ad29",
           "name": "Crealy Adventure Park",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
