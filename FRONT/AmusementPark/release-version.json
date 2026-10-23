@@ -1,6 +1,20 @@
 {
-  "version": "6.0.28",
+  "version": "6.0.29",
   "history": [
+    {
+      "version": "6.0.29",
+      "releasedAt": "2026-10-23",
+      "labels": {
+        "fr": "Suggestions à proximité améliorées",
+        "en": "Improved nearby suggestions",
+        "de": "Verbesserte Vorschläge in der Nähe",
+        "nl": "Verbeterde suggesties in de buurt",
+        "it": "Suggerimenti nelle vicinanze migliorati",
+        "es": "Mejoras en las sugerencias cercanas",
+        "pl": "Ulepszone propozycje miejsc w pobliżu",
+        "pt": "Sugestões de locais próximos melhoradas"
+      }
+    },
     {
       "version": "6.0.28",
       "releasedAt": "2026-10-23",
