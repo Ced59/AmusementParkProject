@@ -1,0 +1,18 @@
+[
+  {
+    "entryId": "AT-park-b9aa6f99-75c6-4e5d-80ba-869a1cabf6e3",
+    "name": "Lucky Flitzer Flachau",
+    "relation": "InsidePark",
+    "sourceUrl": "https://www.lucky-flitzer.at/",
+    "rationale": "Le site de l’exploitant décrit Lucky’s Freizeitpark avec trampolines, châteaux gonflables, tir à l’arc 3D et véhicules pour enfants autour de la luge : intégrer la piste comme attraction de ce parc.",
+    "reviewedAt": "2026-10-23"
+  },
+  {
+    "entryId": "AT-park-2389f039-5a67-41ae-a98a-d83b3dfa5fe0",
+    "name": "Steirarodl Modriach",
+    "relation": "InsidePark",
+    "sourceUrl": "https://steirarodl.at/de/",
+    "rationale": "Le site officiel annonce un Steirarodl Park comprenant plus de quarante attractions et jeux à côté de la luge : intégrer la piste dans le parc.",
+    "reviewedAt": "2026-10-23"
+  }
+]

@@ -1,0 +1,154 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "abc2ba31-5328-49fb-b703-7506b0f7f6a0",
+    "appliedAtUtc": "2026-10-23T10:05:53.4455377Z",
+    "targetStandaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "f5629cfa-38d3-453f-b2d6-fa54bb0a5a20",
+    "appliedAtUtc": "2026-10-23T10:07:41.6751963Z",
+    "targetStandaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "85e1031d-ade7-47d0-8f19-568d3ae383f9",
+    "appliedAtUtc": "2026-10-23T10:08:05.0518384Z",
+    "targetStandaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "f80a7d17-dbde-4316-8ca1-99606b0ec8b9",
+    "appliedAtUtc": "2026-10-23T10:08:29.8948899Z",
+    "targetStandaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "f5bfca16-313f-4b5f-a6a3-30a3ac00f7e5",
+    "appliedAtUtc": "2026-10-23T10:14:06.0091872Z",
+    "targetStandaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-images",
+    "operationId": "70e11953-ac1e-4f3b-b47b-72a344348157",
+    "appliedAtUtc": "2026-10-23T10:15:16.4677344Z",
+    "targetStandaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-history",
+    "operationId": "0944c9bd-85d5-4b7d-a531-52df4f76b0a7",
+    "appliedAtUtc": "2026-10-23T10:15:39.8221811Z",
+    "targetStandaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "10-publish-attraction",
+    "operationId": "6ca42ce7-500a-4ce1-adf0-f4d48ea5c0ae",
+    "appliedAtUtc": "2026-10-23T10:16:03.8719937Z",
+    "targetStandaloneAttractionId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "id": "d4157267d2cc45059837629249101cd7",
+    "ownerId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2021-09-21_Turrach_Nockyflitzer1.jpg",
+    "updatedAt": "2026-10-23T10:09:11.025Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2",
+    "id": "bea1a1d1beac4cfb976d8303b20104b9",
+    "ownerId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2021-09-21_Turrach_Nockyflitzer2.jpg",
+    "updatedAt": "2026-10-23T10:09:46.278Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-metadata-correction",
+    "id": "bea1a1d1beac4cfb976d8303b20104b9",
+    "ownerId": "a3447c55-089a-4cf1-9531-223fbe763544",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2021-09-21_Turrach_Nockyflitzer2.jpg",
+    "updatedAt": "2026-10-23T10:12:28.189Z",
+    "isPublished": false
+  }
+]
