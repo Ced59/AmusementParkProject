@@ -3332,26 +3332,77 @@
     {
       "entryId": "KR-candidate-standalone-5f91351dd67b29",
       "name": "Skyline Luge Tongyeong",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge gravitaire",
-      "locality": null,
-      "siteId": null,
+      "locality": "Tongyeong, Gyeongsangnam-do",
+      "siteId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T15:44:28.804Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Billetterie Luge/Skyride active le 23 octobre 2026.",
+      "identityConfidence": "Site de Tongyeong distinct du téléphérique de Mireuksan et de Skyline Luge Busan, avec billet propre et aucune fiche homonyme KR.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T15:42:13.973Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f4966515-58e6-4fa9-8137-4dfcada654d7",
+          "appliedAt": "2026-10-23T15:40:51.181Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:f4966515-58e6-4fa9-8137-4dfcada654d7",
+          "auditEvidence": null,
+          "summary": "Fiche Skyline Luge Tongyeong et huit descriptions créées après qualification distincte du téléphérique et du site Busan."
+        },
+        {
+          "eventId": "apply-2022f921-1933-4759-8c1a-2f1b493e3bbf",
+          "appliedAt": "2026-10-23T15:41:27.645Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:2022f921-1933-4759-8c1a-2f1b493e3bbf",
+          "auditEvidence": null,
+          "summary": "Trois forfaits Luge/Skyride avec photos numériques selon offre, et supplément tandem saisis."
+        },
+        {
+          "eventId": "apply-97698fbf-790e-4a66-a53a-53b244235a2e",
+          "appliedAt": "2026-10-23T15:41:50.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:97698fbf-790e-4a66-a53a-53b244235a2e",
+          "auditEvidence": null,
+          "summary": "Cinq conditions officielles de taille, âge, accompagnement, sécurité et météo intégrées."
+        },
+        {
+          "eventId": "apply-dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+          "appliedAt": "2026-10-23T15:42:13.973Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+          "auditEvidence": null,
+          "summary": "Histoire de l’ouverture au public le 10 février 2017 et de l’extension de 2020 intégrée en huit langues."
+        },
+        {
+          "eventId": "closure-dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+          "appliedAt": "2026-10-23T15:42:13.973Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-20261023/tongyeong-audit.json",
+          "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3362,11 +3413,61 @@
           "label": "Skyline — destinations officielles — liste",
           "url": "https://www.skylineluge.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/pricing-packages/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/visiting-us/open-hours/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/luge/safety-faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/luge/track-information/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://skylineenterprises.co.nz/what-we-do/tourism-operations/skyline-luge-tongyeong/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.kiwichamber.com/news/2021/03/the-kiwi-chamber-inspire-with-innovation-series-3/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/1054160303",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.yna.co.kr/view/AKR20170405060200052",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Skyline Luge Tongyeong",
@@ -3376,7 +3477,29 @@
             "sourceVenueName": "Skyline Luge Tongyeong"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Site de luge gravitaire avec billetterie propre ; le Skyride est inclus dans les forfaits, Eurobungy est proposé séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+          "publishedAtUtc": "2026-10-23T15:43:30.1466311Z",
+          "verifiedAtUtc": "2026-10-23T15:44:28.804Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c9d68dcb-397a-4b4e-b198-98a818db0da1"
+        },
+        "facebook": {
+          "id": "e88c9e6afe4445519acd7d8a0eae1e3d",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T15:44:25.6185569Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124313677424431",
+          "externalPostId": "1285475681307050_122124313677424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-20261023/tongyeong-audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {

@@ -1,0 +1,308 @@
+{
+  "name": "Skyline Luge Tongyeong",
+  "standaloneAttractionId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+  "backlogEntryId": "KR-candidate-standalone-5f91351dd67b29",
+  "qualification": "Le site de Tongyeong dispose de ses propres billets Luge/Skyride, distincts du téléphérique du mont Mireuk. Les recherches officielles KR SearchStandaloneAttractions (Skyline Luge, Tongyeong) et SearchParks (Skyline Luge, Tongyeong) ne trouvent aucune fiche homonyme ; Skyline Luge Busan est une autre installation.",
+  "deduplicationEvidence": {
+    "searchQueries": [
+      "Skyline Luge",
+      "Tongyeong"
+    ],
+    "standaloneExactMatches": 0,
+    "parkExactMatches": 0,
+    "differentStandaloneEntity": "Skyline Luge Busan"
+  },
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 81,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 0,
+    "accessConditions": 5,
+    "historyEvents": 1,
+    "articles": 1,
+    "pricingOffers": 4,
+    "openingDateConfirmed": "2017-02-10",
+    "locationFromOpenStreetMap": true
+  },
+  "gaps": [
+    "Aucune photographie représentant Skyline Luge Tongyeong avec licence de réutilisation vérifiable n’a été trouvée dans Commons ; les images officielles ne sont pas reprises. Rechercher une image autorisée ultérieurement.",
+    "Les horaires sont publiés semaine par semaine et peuvent changer selon météo et exploitation. Aucune grille annuelle fictive n’a été saisie ; consulter le calendrier officiel avant la visite.",
+    "Tarifs officiels observés le 23 octobre 2026 ; ils peuvent évoluer, notamment les promotions et forfaits combinés Eurobungy."
+  ],
+  "sources": [
+    "https://tongyeong.skylineluge.kr/en/",
+    "https://tongyeong.skylineluge.kr/en/pricing-packages/",
+    "https://tongyeong.skylineluge.kr/en/visiting-us/open-hours/",
+    "https://tongyeong.skylineluge.kr/en/luge/safety-faq/",
+    "https://tongyeong.skylineluge.kr/en/luge/track-information/",
+    "https://skylineenterprises.co.nz/what-we-do/tourism-operations/skyline-luge-tongyeong/",
+    "https://www.kiwichamber.com/news/2021/03/the-kiwi-chamber-inspire-with-innovation-series-3/",
+    "https://www.openstreetmap.org/way/1054160303",
+    "https://www.yna.co.kr/view/AKR20170405060200052"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T15:42:39.678500+00:00",
+    "exportSha256": "984756956b1256baf684c2227ea76b4fce49c4b7eb560d34f8a39df9180284ce",
+    "localizedStringsReviewed": 264,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : récit du premier site coréen, distinction entre ouverture au public et cérémonie, enrichissement des pistes en 2020, forfaits et règles. Aucune photographie spécifique avec licence de réutilisation vérifiable trouvée : les images officielles ne sont pas reprises."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+    "publishedAtUtc": "2026-10-23T15:43:30.1466311Z",
+    "operationId": "c9d68dcb-397a-4b4e-b198-98a818db0da1"
+  },
+  "facebookPublication": {
+    "id": "e88c9e6afe4445519acd7d8a0eae1e3d",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T15:44:25.6185569Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124313677424431",
+    "externalPostId": "1285475681307050_122124313677424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T15:44:28.804742+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T15:43:59.208569+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history/2d5ca5c4-7aea-4ca9-9585-dc0ab46a7e06/ouverture-skyline-luge-tongyeong-2017",
+            "status": 200,
+            "textLength": 1714,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 536
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history/2d5ca5c4-7aea-4ca9-9585-dc0ab46a7e06/ouverture-skyline-luge-tongyeong-2017",
+            "status": 200,
+            "textLength": 1537,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 485
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history/2d5ca5c4-7aea-4ca9-9585-dc0ab46a7e06/ouverture-skyline-luge-tongyeong-2017",
+            "status": 200,
+            "textLength": 1592,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 569
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history/2d5ca5c4-7aea-4ca9-9585-dc0ab46a7e06/ouverture-skyline-luge-tongyeong-2017",
+            "status": 200,
+            "textLength": 1563,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 569
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history/2d5ca5c4-7aea-4ca9-9585-dc0ab46a7e06/ouverture-skyline-luge-tongyeong-2017",
+            "status": 200,
+            "textLength": 1557,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 523
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history/2d5ca5c4-7aea-4ca9-9585-dc0ab46a7e06/ouverture-skyline-luge-tongyeong-2017",
+            "status": 200,
+            "textLength": 1568,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 535
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history/2d5ca5c4-7aea-4ca9-9585-dc0ab46a7e06/ouverture-skyline-luge-tongyeong-2017",
+            "status": 200,
+            "textLength": 1496,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 521
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong/history/2d5ca5c4-7aea-4ca9-9585-dc0ab46a7e06/ouverture-skyline-luge-tongyeong-2017",
+            "status": 200,
+            "textLength": 1546,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 554
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-20261023/tongyeong-receipts.json"
+}
