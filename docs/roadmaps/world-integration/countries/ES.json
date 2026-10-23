@@ -4259,33 +4259,66 @@
     },
     {
       "entryId": "ES-candidate-discovery-1182b2f2f1a8d3",
-      "name": "Limite Zero",
-      "entityKind": "ToQualify",
+      "name": "Límite Zero — tyrolienne Espagne–Portugal",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
       "locality": "Sanlúcar de Guadiana → Alcoutim, Portugal",
-      "siteId": null,
+      "siteId": "00946076-78d4-4db4-8841-2cf1d640094e",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Installation transfrontalière ES → PT : départ et exploitant en Espagne ; renvoi depuis PT, une seule identité mondiale.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Offre et réservation présentes au 23 octobre 2026 sur le site officiel ; horaire par créneau et météo, départ ES et arrivée PT.",
+      "identityConfidence": "Huit recherches officielles ES et PT dans SearchStandaloneAttractions et SearchParks, noms et localités : aucun doublon ; accueil corroboré par OpenStreetMap node 5110999323.",
       "possibleMatches": [],
       "aliases": [
-        "LIMITEZERO"
+        "LIMITEZERO",
+        "Límite Zero",
+        "Limite Zero"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T16:49:08.420Z",
+      "integrationHistory": [
+        {
+          "eventId": "ES-limite-zero-20261023-data",
+          "appliedAt": "2026-10-23T16:49:08.420Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "00946076-78d4-4db4-8841-2cf1d640094e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-limite-zero-20261023/limite-zero-receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-es-limite-zero-20261023/limite-zero-audit.json",
+          "summary": "Límite Zero : fiche, huit langues, tarif et accès, histoire et deux vues sous licence intégrés ; site et Facebook publiés ; identité unique ES avec renvoi PT."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.limitezero.com/en/about-us/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Límite Zero — parcours, conditions et prix",
+          "url": "https://www.limitezero.com/en/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Límite Zero — sécurité",
+          "url": "https://www.limitezero.com/en/safety/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Europa Press — inauguration en novembre 2013",
+          "url": "https://www.europapress.es/andalucia/huelva-00354/noticia-vuelve-abrir-primera-tirolina-transfronteriza-mundo-sanlucar-segunda-temporada-20140306165825.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "OpenStreetMap — accueil à Sanlúcar de Guadiana",
+          "url": "https://www.openstreetmap.org/node/5110999323",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -4294,8 +4327,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Limite Zero",
@@ -4308,7 +4341,7 @@
             "sourceLocality": "Sanlúcar de Guadiana → Alcoutim, Portugal"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Tyrolienne autonome transfrontalière publiée : accueil et départ en Espagne, arrivée au Portugal. Une seule fiche mondiale enregistrée sous ES ; renvoi PT sans seconde création."
       }
     },
     {

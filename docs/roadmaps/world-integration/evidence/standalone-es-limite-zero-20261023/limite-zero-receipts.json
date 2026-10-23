@@ -1,0 +1,307 @@
+{
+  "dataApplyReceipts": [
+    {
+      "stage": "01-core",
+      "operationId": "51af10cc-c3bb-411d-bad5-6413cd847cc7",
+      "appliedAtUtc": "2026-10-23T16:37:25.0748624Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "02-hours",
+      "operationId": "811f40c8-b19c-4759-acab-6b975ccf308c",
+      "appliedAtUtc": "2026-10-23T16:38:48.1153725Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "03-pricing",
+      "operationId": "4b9f20f4-3c9b-4a80-a641-1a79aa2d3c31",
+      "appliedAtUtc": "2026-10-23T16:39:12.1900245Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "04-access",
+      "operationId": "7080c1f5-8b31-4315-9a93-1f48f2e95aa9",
+      "appliedAtUtc": "2026-10-23T16:39:46.099085Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "05-history",
+      "operationId": "16a345ca-f933-4c7f-afcd-ecda6ca28701",
+      "appliedAtUtc": "2026-10-23T16:40:24.2386659Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "06-copy-core",
+      "operationId": "0f51b1c0-5193-4acc-a797-3bb44c40e1e7",
+      "appliedAtUtc": "2026-10-23T16:41:50.7233309Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "06-copy-history",
+      "operationId": "e7093f2c-9e44-4bce-aa82-66cccd0d5040",
+      "appliedAtUtc": "2026-10-23T16:42:35.0229219Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "07-technical-core",
+      "operationId": "de59807f-9668-4af3-aaf5-b2f297de406b",
+      "appliedAtUtc": "2026-10-23T16:45:38.9967851Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "07-history-rewrite",
+      "operationId": "cf9a1925-9c53-4f0f-9a5a-5ea4f70aaae2",
+      "appliedAtUtc": "2026-10-23T16:46:03.4672209Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "08-history-summary",
+      "operationId": "37f7d9ef-e2df-486e-b708-61994cb7836c",
+      "appliedAtUtc": "2026-10-23T16:46:45.0043103Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "09-schedule-copy",
+      "operationId": "f1dff60d-be58-4618-9f0d-16ddb32075c0",
+      "appliedAtUtc": "2026-10-23T16:49:08.4203297Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "10-publish-images",
+      "operationId": "b897ac85-2962-4004-a701-a1162b2b43f9",
+      "appliedAtUtc": "2026-10-23T16:50:01.1928193Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "11-publish-history",
+      "operationId": "c7cd83fd-5c2d-41d7-b870-53eea912b752",
+      "appliedAtUtc": "2026-10-23T16:50:25.1884668Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "12-publish-attraction",
+      "operationId": "79127948-5319-4093-9f53-9146d6077aa6",
+      "appliedAtUtc": "2026-10-23T16:50:48.390344Z",
+      "targetStandaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "photoImportReceipts": [
+    {
+      "id": "87fff980b6ba45a09e3fb280bca8067f",
+      "createdAt": "2026-10-23T16:40:48.065Z",
+      "updatedAt": "2026-10-23T16:40:52.714Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sanl%C3%BAcar_de_Guadiana_(Huelva)_(Spain)_(26529416381).jpg",
+      "width": 960,
+      "height": 720,
+      "isCurrent": true,
+      "credit": "Jose A. / Wikimedia Commons, CC BY 2.0, 2016"
+    },
+    {
+      "id": "0c1ce1eb88e4487a9f4614ab43e748dd",
+      "createdAt": "2026-10-23T16:41:05.837Z",
+      "updatedAt": "2026-10-23T16:41:09.705Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alcoutim_-_Portugal_(48036439033).jpg",
+      "width": 960,
+      "height": 640,
+      "isCurrent": false,
+      "credit": "Vitor Oliveira / Wikimedia Commons, CC BY-SA 2.0, 2019"
+    }
+  ],
+  "photoMetadataUpdate": {
+    "id": "0c1ce1eb88e4487a9f4614ab43e748dd",
+    "createdAt": "2026-10-23T16:41:05.837Z",
+    "updatedAt": "2026-10-23T16:47:40.996Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alcoutim_-_Portugal_(48036439033).jpg",
+    "isCurrent": false
+  },
+  "deduplicationSearches": [
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Limite Zero",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Límite Zero",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "LimiteZero",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Limite Zero",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Sanlúcar de Guadiana",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Limite Zero",
+      "countryCode": "PT",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Limite Zero",
+      "countryCode": "PT",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Alcoutim",
+      "countryCode": "PT",
+      "totalItems": 0
+    }
+  ]
+}
