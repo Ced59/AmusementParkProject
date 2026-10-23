@@ -17,11 +17,11 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 307 | 1891 | 7566 |
-| Standalone | 83 | 1 | 161 |
+| Standalone | 84 | 1 | 161 |
 
-**Reprise standalone :** en plus des 161 candidates sans correspondance, **238 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **658 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **50 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 161 candidates sans correspondance, **238 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **657 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **50 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **69** types à décider, **1367** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **69** types à décider, **1366** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -137,11 +137,11 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Suède](countries/SE.md) | 1 | 0 | 0 | 3 | 6 | 0 |
 | [Suisse](countries/CH.md) | 0 | 0 | 0 | 0 | 14 | 0 |
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Tchéquie](countries/CZ.md) | 0 | 0 | 0 | 0 | 13 | 0 |
+| [Tchéquie](countries/CZ.md) | 1 | 0 | 0 | 0 | 12 | 0 |
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **68** | **1** | **50** | **64** | **315** | **18** |
+| **Total** | **69** | **1** | **50** | **64** | **314** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **17**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **18**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Allemagne : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - France : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -151,6 +151,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - Royaume-Uni : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Slovaquie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Suède : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
+- Tchéquie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
@@ -205,9 +206,9 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Suède](countries/SE.md) | 3 | 0 | 4 | 0 |
 | [Suisse](countries/CH.md) | 16 | 0 | 14 | 0 |
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 |
-| [Tchéquie](countries/CZ.md) | 15 | 1 | 11 | 0 |
+| [Tchéquie](countries/CZ.md) | 15 | 1 | 10 | 0 |
 | [Ukraine](countries/UA.md) | 1 | 0 | 2 | 0 |
-| **Total** | **186** | **16** | **264** | **25** |
+| **Total** | **186** | **16** | **263** | **25** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 

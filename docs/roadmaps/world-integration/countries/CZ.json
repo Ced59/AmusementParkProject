@@ -315,29 +315,152 @@
     },
     {
       "entryId": "CZ-candidate-standalone-16eabf1e7c1f3f",
-      "name": "Alpine Coaster Wiegand — Prague Prosek",
-      "entityKind": "ToQualify",
+      "name": "Bobovka Prosek",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine coaster",
-      "locality": null,
-      "siteId": null,
+      "category": "Site de deux pistes de luge : Alpine Coaster et luge d’été classique",
+      "locality": "Praha 9 — Prosek",
+      "siteId": "7c0caa68-3971-4854-8033-6d24f9927389",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T04:17:56.677Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Une destination autonome, deux pistes et une billetterie commune confirmées par l’exploitant",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Prague Prosek"
+        "Alpine Coaster Wiegand — Prague Prosek",
+        "Prague Prosek",
+        "Bobová dráha Prosek"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T04:16:53.969Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-69982801-13e1-40d0-9f75-34e91d565619",
+          "appliedAt": "2026-10-23T04:08:17.416Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:69982801-13e1-40d0-9f75-34e91d565619",
+          "auditEvidence": null,
+          "summary": "Création de Bobovka Prosek comme destination standalone commune aux deux pistes."
+        },
+        {
+          "eventId": "apply-794332dd-7180-419f-99ee-aff3f990cac4",
+          "appliedAt": "2026-10-23T04:09:22.683Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:794332dd-7180-419f-99ee-aff3f990cac4",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires affichés et fuseau Europe/Prague vérifiés."
+        },
+        {
+          "eventId": "apply-0b463bdc-f434-4e00-85c9-8fbd64a196bd",
+          "appliedAt": "2026-10-23T04:09:45.835Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:0b463bdc-f434-4e00-85c9-8fbd64a196bd",
+          "auditEvidence": null,
+          "summary": "Billetterie commune aux deux pistes : cinq formules tarifaires datées."
+        },
+        {
+          "eventId": "apply-e7bcfa49-d1bc-4850-8403-871f8a35a650",
+          "appliedAt": "2026-10-23T04:10:10.091Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:e7bcfa49-d1bc-4850-8403-871f8a35a650",
+          "auditEvidence": null,
+          "summary": "Règles officielles propres à l’Alpine Coaster, dont âge, taille, charge et ceinture."
+        },
+        {
+          "eventId": "image-bad0c8b9b7c24f4d8470518c5209ce3c",
+          "appliedAt": "2026-10-23T04:10:33.512Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:image:bad0c8b9b7c24f4d8470518c5209ce3c",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-1b59d937ec2347cea80167f4a782bad0",
+          "appliedAt": "2026-10-23T04:10:48.837Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:image:1b59d937ec2347cea80167f4a782bad0",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-7e8d5d4efa6840ecace3271fd25549f9",
+          "appliedAt": "2026-10-23T04:11:17.342Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:image:7e8d5d4efa6840ecace3271fd25549f9",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-0e505769-3e3e-461c-a61a-3be01c3e6eaa",
+          "appliedAt": "2026-10-23T04:12:12.194Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:0e505769-3e3e-461c-a61a-3be01c3e6eaa",
+          "auditEvidence": null,
+          "summary": "Chronologie de la piste historique de 2003 et de la réouverture du 21 octobre 2026, avec article en huit langues."
+        },
+        {
+          "eventId": "apply-6bdd0ef6-a193-49c5-81a6-0d3414f9369a",
+          "appliedAt": "2026-10-23T04:15:02.526Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:6bdd0ef6-a193-49c5-81a6-0d3414f9369a",
+          "auditEvidence": null,
+          "summary": "Publication des deux vues récentes et de l’archive de chantier datée."
+        },
+        {
+          "eventId": "apply-d963b823-8478-4dca-b8fb-edc7eb613707",
+          "appliedAt": "2026-10-23T04:15:41.179Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:d963b823-8478-4dca-b8fb-edc7eb613707",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie 2003–2026 et de son article sourcé."
+        },
+        {
+          "eventId": "apply-6f5d2e34-f822-43ea-bf71-f3bd64ff8510",
+          "appliedAt": "2026-10-23T04:16:53.969Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:6f5d2e34-f822-43ea-bf71-f3bd64ff8510",
+          "auditEvidence": null,
+          "summary": "Publication de Bobovka Prosek et de ses deux pistes sous une identité unique."
+        },
+        {
+          "eventId": "closure-apply-6f5d2e34-f822-43ea-bf71-f3bd64ff8510",
+          "appliedAt": "2026-10-23T04:16:53.969Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7c0caa68-3971-4854-8033-6d24f9927389",
+          "evidence": "PARK_DATA_EDITOR:apply:6f5d2e34-f822-43ea-bf71-f3bd64ff8510",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cz-20261023/prosek-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 83/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la fiche publiée, les preuves, les deux pistes sous une identité unique et la date réelle ; revoir la divergence d’adresse et les horaires/tarifs lors d’une prochaine actualisation sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -358,11 +481,51 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.bobovadraha.cz",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadraha.cz/praha-ziskala-novy-adrenalinovy-hotspot/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadraha.cz/rekonstrukce-bobovky-miri-do-finale/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadraha.cz/foto-video/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadraha.cz/cenik/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadraha.cz/provozni-rad/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadraha.cz/faqs-cz/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadraha.cz/kontakt/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/7c0caa68-3971-4854-8033-6d24f9927389/bobovka-prosek",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Prague Prosek",
@@ -381,7 +544,30 @@
             "referenceId": "location-id-1207"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Bobovka Prosek exploite sur le même site une piste historique en rigole et un Alpine Coaster Wiegand ouvert avec la réouverture d’octobre 2026. Les mêmes billets donnent accès au choix à l’une des deux pistes : une seule fiche standalone pour le site évite deux établissements fictifs. Recherches Park/Standalone Prosek CZ et Bobová dráha CZ sans correspondance Prosek ; création vérifiée, sans migration."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7c0caa68-3971-4854-8033-6d24f9927389/bobovka-prosek",
+          "publishedAtUtc": "2026-10-23T04:16:53.9697442Z",
+          "verifiedAtUtc": "2026-10-23T04:17:56.677Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6f5d2e34-f822-43ea-bf71-f3bd64ff8510"
+        },
+        "facebook": {
+          "id": "94d7267a35bc47a3aaaefb13b0d80b59",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T04:19:02.6474792Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124239019424431",
+          "externalPostId": "1285475681307050_122124239019424431",
+          "url": "https://amusement-parks.fun/fr/attraction/7c0caa68-3971-4854-8033-6d24f9927389/bobovka-prosek?facebook-image=bad0c8b9b7c24f4d8470518c5209ce3c"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-20261023/prosek-audit.json",
+        "score": 83,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -2435,7 +2621,7 @@
         {
           "siteId": "3eecedb3-33fc-4b6a-a236-6f0a838408cf",
           "name": "Euro Lunapark",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
