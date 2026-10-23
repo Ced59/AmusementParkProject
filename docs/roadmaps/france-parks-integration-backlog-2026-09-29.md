@@ -35,10 +35,10 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 52 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
-| Fiches historiques privées existantes | 10 | 8 |
+| Fiches historiques privées existantes | 10 | 7 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **140** |
+| **Total** | **225** | **139** |
 
 ## 1. Fiches publiques à compléter
 
@@ -176,7 +176,7 @@ Aucune fiche ne reste dans cette catégorie.
 
 - [x] Fami P.A.R.C — `bafa7e08-9858-472d-8357-9c84aa7479b7` — clôture conservée le 22 octobre 2026 ; audit final à 96/100 et annonce Facebook Published confirmée.
 - [x] Florida Parc — `b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5` — clôture conservée le 22 octobre 2026 ; audit final à 98/100 et annonce Facebook Published confirmée.
-- [ ] Holly Park — `1c5c0675-8d86-459c-9c7c-b2bc79c1dad4`
+- [x] Holly Park — `1c5c0675-8d86-459c-9c7c-b2bc79c1dad4` — clôture conservée le 23 octobre 2026 ; audit final à 97/100 et annonce Facebook Published confirmée.
 - [ ] Luna Park Paris — `77106934-0f4c-4eb3-b075-4097ab6078cd`
 - [ ] Magic City Paris — `6cc196ad-27bc-444e-84e8-fb97c1baa9f0`
 - [ ] Parc Avenue — `f019e441-aecf-487b-93db-2b0246dce185`
@@ -435,3 +435,7 @@ La [fiche historique](https://amusement-parks.fun/fr/park/bafa7e08-9858-472d-835
 ### Florida Parc — clôture du 22 octobre 2026
 
 La [fiche historique](https://amusement-parks.fun/fr/park/b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5/florida-parc) est publiée et auditée à **98/100**, sans bloqueur : 14 lieux dont huit attractions, 23 médias propres avec le logo officiel, six jalons sourcés et illustrés, ainsi qu’un article développé dans les huit langues. Le plan officiel de 2016 est téléchargeable dans ses octets originaux. Les 22 contrôles mobiles passent et le lien Histoire fonctionne depuis la fiche normale. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124219921424431) est confirmée `Published`, sans doublon. Les lacunes restent explicites : photographies des enclos, de la volière et de l’aire de pique-nique ; douze positions précises non démontrées sur quatorze ; aucune cinquième vue générale originale utilisable. La dernière intégration réelle date du **2026-10-22T23:52:31.180Z**, réparation canonique des six faits historiques. [Audit final](world-integration/evidence/france-historical-20261022/florida-parc-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/florida-parc-source-gaps.json).
+
+### Holly Park — clôture du 23 octobre 2026
+
+La [fiche historique](https://amusement-parks.fun/fr/park/1c5c0675-8d86-459c-9c7c-b2bc79c1dad4/holly-park) est publiée et auditée à **97/100**, sans bloqueur : 19 éléments dont treize attractions, 18 médias propres avec le logo historique officiel, sept jalons sourcés et illustrés, ainsi qu’un article développé dans les huit langues. Les deux grands huit disposent chacun de trois photos distinctes. Les 22 contrôles mobiles passent et le lien Histoire fonctionne depuis la fiche normale. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124225309424431) est confirmée `Published`, sans doublon. Les lacunes restent explicites : six attractions et quatre services sans photo individuelle exploitable, seize positions précises non démontrées sur dix-neuf, deux vues générales photographiques sur cinq recherchées, aucun plan interne annuel retrouvé et aucun exploitant ou fondateur suffisamment établi. Les montages promotionnels ne sont pas comptés comme vues générales indépendantes. La dernière intégration réelle date du **2026-10-23T01:14:14.445Z**, restauration canonique des sept faits historiques. [Audit final](world-integration/evidence/france-historical-20261022/holly-park-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/holly-park-source-gaps.json). Le backlog national conserve **139 dossiers actifs : 112 principaux, 27 historiques et aucune standalone**.

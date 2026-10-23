@@ -7592,19 +7592,360 @@
       "locality": null,
       "siteId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T01:25:29.165149Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "ClosedDefinitively — dernière saison 2014, non-ouverture annoncée en 2015 ; le projet évoqué pour 2016 n’établit aucune reprise.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-23T01:14:14.445Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7ce8cf28-4b98-4708-b6e3-71f6a0315b61",
+          "appliedAt": "2026-10-23T00:02:45.509Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-7ce8cf28-4b98-4708-b6e3-71f6a0315b61",
+          "auditEvidence": null,
+          "summary": "Holly Park : identité historique du parc de la Grifferaie, exploitation 2001–2014, adresse et coordonnées sourcées ; site officiel archivé conservé."
+        },
+        {
+          "eventId": "apply-952b7ee9-15fc-400b-bf29-2745f67e53c0",
+          "appliedAt": "2026-10-23T00:16:57.384Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-952b7ee9-15fc-400b-bf29-2745f67e53c0",
+          "auditEvidence": null,
+          "summary": "Holly Park : inventaire historique de 19 lieux, dont 13 attractions ; correction des deux coasters existants, dates annuelles et trois géolocalisations sourcées."
+        },
+        {
+          "eventId": "apply-db8f23ad-01df-4d9c-b283-d18a5c848653",
+          "appliedAt": "2026-10-23T00:19:34.784Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-db8f23ad-01df-4d9c-b283-d18a5c848653",
+          "auditEvidence": null,
+          "summary": "Holly Park : description éditoriale du parc en huit langues, domaine de la Grifferaie et patrimoine des attractions."
+        },
+        {
+          "eventId": "apply-f51831a1-7fe8-4231-9191-ca503747b5e8",
+          "appliedAt": "2026-10-23T00:27:24.630Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-f51831a1-7fe8-4231-9191-ca503747b5e8",
+          "auditEvidence": null,
+          "summary": "Holly Park : descriptions des deux coasters en huit langues et conditions historiques d’Alpina Bobs vérifiées sur son panneau photographié."
+        },
+        {
+          "eventId": "apply-b2b3bf23-ea9e-4d0c-9ce5-5311444c163e",
+          "appliedAt": "2026-10-23T00:30:16.113Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-b2b3bf23-ea9e-4d0c-9ce5-5311444c163e",
+          "auditEvidence": null,
+          "summary": "Holly Park : tacots, petit train et chevaux galopants décrits en huit langues à partir des vues et récits d’époque."
+        },
+        {
+          "eventId": "apply-703cce5a-6af6-4e88-81b0-829f2e37499e",
+          "appliedAt": "2026-10-23T00:30:52.780Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-703cce5a-6af6-4e88-81b0-829f2e37499e",
+          "auditEvidence": null,
+          "summary": "Holly Park : Enterprise, bateaux tamponneurs, toboggan aquatique et petits bateaux décrits en huit langues."
+        },
+        {
+          "eventId": "apply-52415b32-ab83-4780-a263-5fe0a438049d",
+          "appliedAt": "2026-10-23T00:36:18.937Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-52415b32-ab83-4780-a263-5fe0a438049d",
+          "auditEvidence": null,
+          "summary": "Holly Park : autos tamponneuses, manège pour enfants, gonflables et cinéma historique renseignés en huit langues."
+        },
+        {
+          "eventId": "apply-82cb9a99-c019-44b5-941e-3ac384403c53",
+          "appliedAt": "2026-10-23T00:37:18.542Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-82cb9a99-c019-44b5-941e-3ac384403c53",
+          "auditEvidence": null,
+          "summary": "Holly Park : restauration, accès, parking, pique-nique, sanitaires et château décrits en huit langues ; corpus local contrôlé."
+        },
+        {
+          "eventId": "import-photo-0443b432f5e34deba02ce7a28c8f8fdf-2026-10-23T004415.602Z",
+          "appliedAt": "2026-10-23T00:44:15.602Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-0443b432f5e34deba02ce7a28c8f8fdf-2026-10-23T004415.602Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3b993d84243245cab60bca0522eee10f-2026-10-23T004443.309Z",
+          "appliedAt": "2026-10-23T00:44:43.309Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-3b993d84243245cab60bca0522eee10f-2026-10-23T004443.309Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-family-chateau, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d94df72819f54fcfab8a1cca20a67352-2026-10-23T004508.258Z",
+          "appliedAt": "2026-10-23T00:45:08.258Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-d94df72819f54fcfab8a1cca20a67352-2026-10-23T004508.258Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-overview, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-780b4058fff6404c91eb78332ba1eee4-2026-10-23T004522.333Z",
+          "appliedAt": "2026-10-23T00:45:22.333Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-780b4058fff6404c91eb78332ba1eee4-2026-10-23T004522.333Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-promo2005, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-00f8730f092e405b88373855d5f62ff3-2026-10-23T004536.338Z",
+          "appliedAt": "2026-10-23T00:45:36.338Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-00f8730f092e405b88373855d5f62ff3-2026-10-23T004536.338Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-promo2013, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0223ad78b00c4d6db850b709b8204c6c-2026-10-23T004550.540Z",
+          "appliedAt": "2026-10-23T00:45:50.540Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-0223ad78b00c4d6db850b709b8204c6c-2026-10-23T004550.540Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-entrance, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9fc7347f021b4aa0a3f03302d209c5be-2026-10-23T005031.587Z",
+          "appliedAt": "2026-10-23T00:50:31.587Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-9fc7347f021b4aa0a3f03302d209c5be-2026-10-23T005031.587Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-alpina-overall, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f15d42bc4786408c989c1e438b152103-2026-10-23T005045.982Z",
+          "appliedAt": "2026-10-23T00:50:45.982Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-f15d42bc4786408c989c1e438b152103-2026-10-23T005045.982Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-alpina-station, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4300c65585864678b91c2aadb7fe0469-2026-10-23T005103.109Z",
+          "appliedAt": "2026-10-23T00:51:03.109Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-4300c65585864678b91c2aadb7fe0469-2026-10-23T005103.109Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-alpina-sign, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bee6824052a943189560f7af3541c263-2026-10-23T005125.324Z",
+          "appliedAt": "2026-10-23T00:51:25.324Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-bee6824052a943189560f7af3541c263-2026-10-23T005125.324Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-family-overall, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fd2e565e8e7b4cdcb8c83c66bcef9236-2026-10-23T005154.058Z",
+          "appliedAt": "2026-10-23T00:51:54.058Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-fd2e565e8e7b4cdcb8c83c66bcef9236-2026-10-23T005154.058Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-family-flowers, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c5f3c62e87a24c7a95bc2e4111d4d978-2026-10-23T005217.733Z",
+          "appliedAt": "2026-10-23T00:52:17.733Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-c5f3c62e87a24c7a95bc2e4111d4d978-2026-10-23T005217.733Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-family-face, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0b84ef2d9b50405ea82a3838e392bb85-2026-10-23T005232.038Z",
+          "appliedAt": "2026-10-23T00:52:32.038Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-0b84ef2d9b50405ea82a3838e392bb85-2026-10-23T005232.038Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-ballade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1065d69865a145fb86ed6f6ba6393584-2026-10-23T005300.174Z",
+          "appliedAt": "2026-10-23T00:53:00.174Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-1065d69865a145fb86ed6f6ba6393584-2026-10-23T005300.174Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-autos, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e2185e7a949442febe9950a0a89e386e-2026-10-23T005318.750Z",
+          "appliedAt": "2026-10-23T00:53:18.750Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-e2185e7a949442febe9950a0a89e386e-2026-10-23T005318.750Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-manege, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-49a40cf1c66c4ca0a72b2d06827fa487-2026-10-23T005340.795Z",
+          "appliedAt": "2026-10-23T00:53:40.795Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-49a40cf1c66c4ca0a72b2d06827fa487-2026-10-23T005340.795Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-petits-bateaux, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-63d6fcfd18e041d8b8efdf29b540380d-2026-10-23T005404.421Z",
+          "appliedAt": "2026-10-23T00:54:04.421Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-63d6fcfd18e041d8b8efdf29b540380d-2026-10-23T005404.421Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-gonflables, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8537395a778846518f81a7212970b0ba-2026-10-23T005426.936Z",
+          "appliedAt": "2026-10-23T00:54:26.936Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#import-photo-8537395a778846518f81a7212970b0ba-2026-10-23T005426.936Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chateau, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-ff3cb7d6-ab2f-4b40-b521-09069ea8cdcb",
+          "appliedAt": "2026-10-23T00:57:34.841Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-ff3cb7d6-ab2f-4b40-b521-09069ea8cdcb",
+          "auditEvidence": null,
+          "summary": "Holly Park : biographie transversale D.P.V. en huit langues vérifiée sur les sources officielles ; intégration encore partielle."
+        },
+        {
+          "eventId": "apply-ab150a86-4ee2-4fab-b4f0-38640d752097",
+          "appliedAt": "2026-10-23T00:59:14.822Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-ab150a86-4ee2-4fab-b4f0-38640d752097",
+          "auditEvidence": null,
+          "summary": "Holly Park : ouverture et fermeture intégrées, sourcées et illustrées dans huit langues ; audit final à venir."
+        },
+        {
+          "eventId": "apply-9c07e7f6-5163-439b-94a3-19814f53204f",
+          "appliedAt": "2026-10-23T01:02:15.513Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-9c07e7f6-5163-439b-94a3-19814f53204f",
+          "auditEvidence": null,
+          "summary": "Holly Park : cinq jalons historiques des deux montagnes russes intégrés en huit langues ; audit final à venir."
+        },
+        {
+          "eventId": "apply-be4f8075-a396-480c-af2b-5832e8bb180b",
+          "appliedAt": "2026-10-23T01:03:25.152Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-be4f8075-a396-480c-af2b-5832e8bb180b",
+          "auditEvidence": null,
+          "summary": "Holly Park : légendes des vues générales clarifiées dans huit langues ; audit final à venir."
+        },
+        {
+          "eventId": "apply-b26b8360-1a10-424a-8968-b42d103db0d1",
+          "appliedAt": "2026-10-23T01:05:30.982Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-b26b8360-1a10-424a-8968-b42d103db0d1",
+          "auditEvidence": null,
+          "summary": "Holly Park : article historique développé en huit langues, six paragraphes et trois illustrations ; audit final à venir."
+        },
+        {
+          "eventId": "apply-9eb49056-17e1-4e42-bd75-49fa84c380d2",
+          "appliedAt": "2026-10-23T01:11:34.159Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-9eb49056-17e1-4e42-bd75-49fa84c380d2",
+          "auditEvidence": null,
+          "summary": "Holly Park : légendes propres à l’article dans les huit langues, après contrôle de répétition ; audit final actualisé."
+        },
+        {
+          "eventId": "apply-76fafd94-2707-4bf4-b7a7-6769175fcba1",
+          "appliedAt": "2026-10-23T01:14:14.445Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-76fafd94-2707-4bf4-b7a7-6769175fcba1",
+          "auditEvidence": null,
+          "summary": "Holly Park : restauration canonique des sept faits historiques après visibilité du parc ; preuve finale publique en cours."
+        },
+        {
+          "eventId": "completion-76fafd94-2707-4bf4-b7a7-6769175fcba1",
+          "appliedAt": "2026-10-23T01:14:14.445Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-receipts.json#apply-76fafd94-2707-4bf4-b7a7-6769175fcba1",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-final-audit.json",
+          "summary": "Audit final à 97/100 sans bloqueur : 19 éléments dont 13 attractions, 18 médias propres, sept faits historiques, article en huit langues, Histoire accessible depuis la fiche et annonce Facebook Published confirmés ; lacunes sourcées conservées."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7628,7 +7969,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-final-audit.json"
     },
     {
       "entryId": "FR-park-3b9abd45-167e-4b02-aeec-8d2904e58f0a",

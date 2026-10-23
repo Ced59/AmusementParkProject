@@ -6,7 +6,7 @@
   "userRequestedOn": "2026-10-22",
   "sitePublicationAuthorized": true,
   "facebookPublicationAuthorized": true,
-  "completedInThisBatch": 2,
+  "completedInThisBatch": 3,
   "assignedEntryIds": [
     "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
     "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
@@ -22,7 +22,8 @@
   "identityIssue": "Lillom and Parc de Lomme represent a possible duplicate; resolve their existing items before any canonical publication. A duplicate is not counted as another integrated park.",
   "completedEntryIds": [
     "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
-    "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5"
+    "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+    "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4"
   ],
-  "lastCompletedAtUtc": "2026-10-22T23:57:38.925648Z"
+  "lastCompletedAtUtc": "2026-10-23T01:25:29.165149Z"
 }
