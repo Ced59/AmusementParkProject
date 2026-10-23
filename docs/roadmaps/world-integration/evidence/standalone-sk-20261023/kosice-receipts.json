@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "5ef95934-00c3-4a05-a115-49417af1f321",
+    "appliedAtUtc": "2026-10-23T04:47:16.7385798Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "4bcf7028-f37d-4d43-a384-7004d9f644a1",
+    "appliedAtUtc": "2026-10-23T04:47:43.5161538Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "ed45a754-8733-4093-89fe-3be91411b0fd",
+    "appliedAtUtc": "2026-10-23T04:48:19.5004448Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "99f2e7b9-f3c0-4e96-a998-5addca8c63db",
+    "appliedAtUtc": "2026-10-23T04:49:00.6404252Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "b60d2598-8caf-4fed-b376-fde7278e8c12",
+    "appliedAtUtc": "2026-10-23T04:51:44.2977826Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05b-enrichment.apply",
+    "operationId": "515c5df4-0d18-4a74-985c-47085f3a78ff",
+    "appliedAtUtc": "2026-10-23T04:53:18.8150488Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "7b55937b-8f2a-4b64-80d2-9fc2fa4df67e",
+    "appliedAtUtc": "2026-10-23T04:55:06.3620276Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "599886ad-d881-4d3d-8d26-34c00b22ccfc",
+    "appliedAtUtc": "2026-10-23T04:55:34.1420916Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "4899dec7-05f9-486d-8263-d4e4a7b0373e",
+    "appliedAtUtc": "2026-10-23T04:56:15.8127589Z",
+    "targetStandaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "90d1ba4f9be94a2888252afeec67930c",
+    "ownerId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "sourceUrl": "https://www.bobovadrahake.sk/assets/bobova_draha_ke_sj1706_8056.jpg",
+    "updatedAt": "2026-10-23T04:49:47.246Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "a3f38a1ec7664484b893c4955f3588de",
+    "ownerId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "sourceUrl": "https://www.bobovadrahake.sk/assets/bobova_draha_air_ke_sj1706_0026.jpg",
+    "updatedAt": "2026-10-23T04:50:06.306Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "d4a3dd5cfcdb453ea218536ea0adf5d6",
+    "ownerId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+    "sourceUrl": "https://www.bobovadrahake.sk/assets/bobova_draha_ke_sj1706_7771.jpg",
+    "updatedAt": "2026-10-23T04:50:22.458Z",
+    "isPublished": false
+  }
+]
