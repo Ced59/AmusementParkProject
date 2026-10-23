@@ -35,6 +35,9 @@ using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.ParkPricing.Commands;
 using AmusementPark.Application.Features.ParkPricing.Queries;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
+using AmusementPark.WebAPI.Controllers;
+using Microsoft.AspNetCore.Mvc;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Results;
@@ -70,6 +73,38 @@ namespace AmusementPark.WebAPI.Tests.DependencyInjection;
 
 public sealed class ApplicationModuleServiceCollectionExtensionsTests
 {
+    [Theory]
+    [InlineData(NearbyDestinationKind.Park)]
+    [InlineData(NearbyDestinationKind.StandaloneAttraction)]
+    public async Task AddApplicationModules_ShouldResolveAndExecutePublicNearbyController(NearbyDestinationKind kind)
+    {
+        ServiceCollection services = new ServiceCollection();
+        services.AddApplicationModules(new ConfigurationBuilder().Build());
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IStandaloneAttractionRepository> attractions = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        if (kind == NearbyDestinationKind.Park)
+        {
+            parks.Setup(repository => repository.GetByIdAsync("source", false, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new Park { Id = "source", Name = "Park", IsVisible = true });
+        }
+        else
+        {
+            attractions.Setup(repository => repository.GetByIdAsync("source", false, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new StandaloneAttraction { Id = "source", Name = "Attraction", IsVisible = true });
+        }
+        services.AddSingleton(parks.Object);
+        services.AddSingleton(attractions.Object);
+        using ServiceProvider provider = services.BuildServiceProvider();
+        using IServiceScope scope = provider.CreateScope();
+        NearbyDestinationsController controller = ActivatorUtilities.CreateInstance<NearbyDestinationsController>(scope.ServiceProvider);
+
+        IActionResult result = await controller.GetAsync(kind, "source");
+
+        Assert.IsType<OkObjectResult>(result);
+        parks.VerifyAll();
+        attractions.VerifyAll();
+    }
+
     [Fact]
     public void AddApplicationModules_WhenCalled_ShouldRegisterApplicationHandlers()
     {
