@@ -50,6 +50,21 @@ describe('NearbyDestinationsFacade', () => {
     expect(getNearby).toHaveBeenCalledTimes(1);
   });
 
+  it('uses the published standalone photo while preserving park logos and missing-photo fallbacks', () => {
+    const targets = mixedNearbyDestinations();
+    targets[0].photoImageId = 'published-photo';
+    targets[1].park!.currentLogoImageId = 'park-logo';
+    getNearby.mockReturnValue(of(targets));
+    facade.load('Park', 'source');
+    expect(facade.cards()[0].card.photoImageId).toBe('published-photo');
+    expect(facade.cards()[1].card.logoImageId).toBe('park-logo');
+    expect(facade.cards()[1].card.photoImageId).toBeUndefined();
+
+    getNearby.mockReturnValue(of(mixedNearbyDestinations()));
+    facade.load('StandaloneAttraction', 'other');
+    expect(facade.cards()[0].card.photoImageId).toBeNull();
+  });
+
   it('cancels stale requests and clears cards when navigating to another source', () => {
     const first = new Subject<NearbyDestination[]>();
     const second = new Subject<NearbyDestination[]>();

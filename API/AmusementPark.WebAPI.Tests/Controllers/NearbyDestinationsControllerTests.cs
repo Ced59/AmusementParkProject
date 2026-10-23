@@ -22,7 +22,7 @@ public sealed class NearbyDestinationsControllerTests
             new Mock<IQueryHandler<GetNearbyDestinationsQuery, ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>>>(MockBehavior.Strict);
         NearbyDestinationResult[] targets =
         {
-            new NearbyDestinationResult(null, new StandaloneAttraction { Id = "attraction", Name = "Luge", IsVisible = true }, 1.5, 5, 1),
+            new NearbyDestinationResult(null, new StandaloneAttraction { Id = "attraction", Name = "Luge", IsVisible = true }, 1.5, 5, 1, "published-photo"),
             new NearbyDestinationResult(new Park { Id = "park", Name = "Park", IsVisible = true }, null, 2.5, 10, 2)
         };
         handler.Setup(queryHandler => queryHandler.HandleAsync(new GetNearbyDestinationsQuery(kind, "source", 4), It.IsAny<CancellationToken>()))
@@ -35,6 +35,8 @@ public sealed class NearbyDestinationsControllerTests
         Assert.Equal(new[] { "StandaloneAttraction", "Park" }, response.Select(target => target.Kind));
         Assert.Equal("attraction", response[0].StandaloneAttraction!.Id);
         Assert.Null(response[0].Park);
+        Assert.Equal("published-photo", response[0].PhotoImageId);
+        Assert.Null(response[1].PhotoImageId);
         Assert.Equal("park", response[1].Park!.Id);
         Assert.Null(response[1].StandaloneAttraction);
         Assert.Equal(new[] { 1, 2 }, response.Select(target => target.ProximityRank));

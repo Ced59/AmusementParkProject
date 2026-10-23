@@ -13,6 +13,7 @@ export interface ParkCardModel {
   latitude: number | null;
   longitude: number | null;
   logoImageId: string | null;
+  photoImageId?: string | null;
   websiteUrl: string | null;
   locationLine: string | null;
   addressLine: string | null;

@@ -212,6 +212,15 @@ a.public-feature-card:hover {
   filter: none;
 }
 
+.ui-park-card__photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .ui-park-card__body,
 .ui-item-card__body,
 .ui-result-card__body,

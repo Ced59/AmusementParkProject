@@ -3,10 +3,10 @@
 
   <main
     class="app-layout-main app-account-layout__main"
-    [class.app-account-layout__main--wide]="wideLayout">
+    [class.app-account-layout__main--wide]="wideLayout()">
     <div
       class="app-account-layout__shell"
-      [class.app-account-layout__shell--wide]="wideLayout">
+      [class.app-account-layout__shell--wide]="wideLayout()">
       <aside class="app-account-layout__aside" [attr.aria-label]="'accountLayout.introductionLabel' | translate">
         <app-ui-kicker tone="lime" iconClass="pi pi-sparkles">
           {{ 'accountLayout.kicker' | translate }}

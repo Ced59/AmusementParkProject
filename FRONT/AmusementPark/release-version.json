@@ -1,6 +1,20 @@
 {
-  "version": "6.0.29",
+  "version": "6.0.30",
   "history": [
+    {
+      "version": "6.0.30",
+      "releasedAt": "2026-10-23",
+      "labels": {
+        "fr": "Photos des lieux proches et affichage sur ordinateur améliorés",
+        "en": "Improved nearby photos and desktop layouts",
+        "de": "Verbesserte Fotos naher Ausflugsziele und Desktop-Darstellung",
+        "nl": "Verbeterde foto’s van nabije locaties en weergave op computers",
+        "it": "Foto dei luoghi vicini e visualizzazione su computer migliorate",
+        "es": "Mejoras en las fotos de lugares cercanos y la visualización en ordenador",
+        "pl": "Ulepszone zdjęcia pobliskich miejsc i wygląd na komputerach",
+        "pt": "Fotografias de locais próximos e apresentação no computador melhoradas"
+      }
+    },
     {
       "version": "6.0.29",
       "releasedAt": "2026-10-23",

@@ -1,6 +1,6 @@
 @if (park; as currentPark) {
   <article class="ui-park-card" [class.ui-park-card--compact]="compact" [attr.aria-label]="currentPark.name">
-    <div class="ui-park-card__visual" [class.ui-park-card__visual--placeholder]="!hasLogoImageId">
+    <div class="ui-park-card__visual" [class.ui-park-card__visual--placeholder]="!hasImageId">
       <div class="ui-park-card__badges">
         @if (hasSecondaryLocation) {
           <app-ui-chip tone="sky" iconClass="pi pi-building">
@@ -15,14 +15,26 @@
         }
       </div>
 
-      <app-image-display
-        [imageId]="currentPark.logoImageId"
-        [alt]="currentPark.name || 'Park logo'"
-        sizes="128px"
-        [srcWidth]="128"
-        [responsiveWidths]="logoResponsiveWidths"
-        imgClass="ui-park-card__logo">
-      </app-image-display>
+      @if (currentPark.photoImageId) {
+        <app-image-display
+          [imageId]="currentPark.photoImageId"
+          [alt]="currentPark.name"
+          sizes="(max-width: 680px) calc(100vw - 3rem), 400px"
+          [srcWidth]="480"
+          [responsiveWidths]="photoResponsiveWidths"
+          imgClass="ui-park-card__photo"
+          placeholderClass="ui-park-card__photo">
+        </app-image-display>
+      } @else {
+        <app-image-display
+          [imageId]="currentPark.logoImageId"
+          [alt]="currentPark.name || 'Park logo'"
+          sizes="128px"
+          [srcWidth]="128"
+          [responsiveWidths]="logoResponsiveWidths"
+          imgClass="ui-park-card__logo">
+        </app-image-display>
+      }
     </div>
 
     <div class="ui-park-card__body">

@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { PublicFooterComponent } from '@ui/layouts/public-footer/public-footer.component';
@@ -25,14 +27,18 @@ import { PublicParkNavigationTreeState } from '@features/public/navigation/state
   ]
 })
 export class AccountLayoutComponent {
-  protected wideLayout: boolean = false;
+  protected readonly wideLayout = signal(false);
 
-  constructor(private readonly activatedRoute: ActivatedRoute) {
-    this.wideLayout = this.hasWideLayoutRoute();
+  constructor(private readonly activatedRoute: ActivatedRoute, router: Router) {
+    this.syncLayoutMode();
+    router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      takeUntilDestroyed()
+    ).subscribe(() => this.syncLayoutMode());
   }
 
   protected syncLayoutMode(): void {
-    this.wideLayout = this.hasWideLayoutRoute();
+    this.wideLayout.set(this.hasWideLayoutRoute());
   }
 
   private hasWideLayoutRoute(): boolean {
