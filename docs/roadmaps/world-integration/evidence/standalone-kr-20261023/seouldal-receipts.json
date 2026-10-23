@@ -1,0 +1,154 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "e85e073e-aee2-49e6-ad2d-59da231b47f8",
+    "appliedAtUtc": "2026-10-23T05:59:59.6544881Z",
+    "targetStandaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "359945a8-2dd1-44e0-b36d-b8fa110bb1c8",
+    "appliedAtUtc": "2026-10-23T06:00:30.6227606Z",
+    "targetStandaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "017e00b0-2e82-426c-a44c-234fb8bcb3c9",
+    "appliedAtUtc": "2026-10-23T06:00:53.7279219Z",
+    "targetStandaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "d29af1ce-2941-46c1-8712-0b9a4aaab28d",
+    "appliedAtUtc": "2026-10-23T06:01:16.5237907Z",
+    "targetStandaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "03d8f1e3-1a30-4686-a59a-ee411b60d888",
+    "appliedAtUtc": "2026-10-23T06:02:49.5527498Z",
+    "targetStandaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "a1ac3ef4-9117-4b62-b054-22ff544e0b6c",
+    "appliedAtUtc": "2026-10-23T06:05:07.5500458Z",
+    "targetStandaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "692f316e-4cf0-4fd6-893b-14fe52b9fb06",
+    "appliedAtUtc": "2026-10-23T06:05:36.2635143Z",
+    "targetStandaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "d76d10ef-3107-46c7-9a80-d4b989c7b6a0",
+    "appliedAtUtc": "2026-10-23T06:06:04.733292Z",
+    "targetStandaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "db9c52d82acb427481de3930e9d89c60",
+    "ownerId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "sourceUrl": "https://english.seoul.go.kr/wp-content/uploads/2024/08/202408-seouldal-officially-launches-001.jpg",
+    "updatedAt": "2026-10-23T06:01:45.846Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "f4b2b58e2f4b406db82adc712845362d",
+    "ownerId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "sourceUrl": "https://english.seoul.go.kr/wp-content/uploads/2024/08/202408-seouldal-officially-launches-002.jpg",
+    "updatedAt": "2026-10-23T06:02:01.417Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "7f37cbc18f87405e97fc470ea9488ef1",
+    "ownerId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+    "sourceUrl": "https://world.seoul.go.kr/wp-content/uploads/2025/02/seoul-dal-3.jpg",
+    "updatedAt": "2026-10-23T06:02:17.173Z",
+    "isPublished": false
+  }
+]

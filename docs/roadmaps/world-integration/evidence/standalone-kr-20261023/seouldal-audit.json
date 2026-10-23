@@ -1,0 +1,298 @@
+{
+  "name": "SEOULDAL — Seoul Moon",
+  "standaloneAttractionId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+  "qualification": "Ballon captif à billet spécifique dans le parc public de Yeouido. Aucun Park ni StandaloneAttraction SEOULDAL/Seoul Moon/서울달 trouvé dans le site. Ouvert officiellement le 23 août 2024 et toujours exploité selon la ville de Séoul en 2026. Fabricant Aerophile documenté ; création sans doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 80,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 0,
+    "admissionOffers": 5
+  },
+  "gaps": [
+    "La page municipale coréenne du 31 mars 2026 annonce sept jours sur sept depuis avril, tandis que la page municipale anglaise conserve une fermeture du lundi. Cette dernière annonce une extension de soirée vendredi/samedi d’août à octobre, alors que la source coréenne donne aussi une avance à 10 h certains week-ends. Aucun horaire hebdomadaire structuré potentiellement trompeur ; les notes et la fiche dirigent vers le programme du jour.",
+    "Le fabricant Aerophile est confirmé par sa référence City of Seoul, mais aucune référence constructeur globale du site n’a été liée faute de fiche vérifiée dans le catalogue.",
+    "La mairie annonce une hauteur de vol de 130 m ; le constructeur indique une capacité pouvant aller jusqu’à 150 m. La hauteur en service de 130 m est retenue.",
+    "Le photographe et la date de prise de vue des photographies municipales ne sont pas indiqués. Les images associées au lancement illustrent le lieu mais ne sont pas attribuées au jour inaugural."
+  ],
+  "sources": [
+    "https://world.seoul.go.kr/service/amusement/seouldal/",
+    "https://mediahub.seoul.go.kr/archives/2017639",
+    "https://english.seoul.go.kr/seoul-nights-shine-brighter-in-yeouido-as-seouldal-officially-launches/",
+    "https://www.aerophile.com/en/clients/city-of-seoul/",
+    "https://maps.app.goo.gl/TpL7FiT8jmnztaax8"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T06:03:09.197269+00:00",
+    "exportSha256": "1d883c46712ba7773729a6dcb0d34cc8c6eb71d2fcc0b925cb6e5b4335aa6eca",
+    "localizedStringsReviewed": 280,
+    "localizedGroups": 35,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T06:07:03.890151+00:00",
+  "facebook": {
+    "id": "9b8dc0ab71c64b869b40c171b67e7726",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T06:07:30.3371496Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124249507424431",
+    "externalPostId": "1285475681307050_122124249507424431",
+    "url": "https://amusement-parks.fun/fr/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon?facebook-image=db9c52d82acb427481de3930e9d89c60"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T06:07:03.890151+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T06:06:32.652444+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history/faa655e1-6fe4-4215-9541-8b61ef0de54c/seouldal-ouverture-yeouido-2024",
+            "status": 200,
+            "textLength": 1760,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 532
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history/faa655e1-6fe4-4215-9541-8b61ef0de54c/seouldal-ouverture-yeouido-2024",
+            "status": 200,
+            "textLength": 1598,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 493
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history/faa655e1-6fe4-4215-9541-8b61ef0de54c/seouldal-ouverture-yeouido-2024",
+            "status": 200,
+            "textLength": 1620,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 561
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history/faa655e1-6fe4-4215-9541-8b61ef0de54c/seouldal-ouverture-yeouido-2024",
+            "status": 200,
+            "textLength": 1601,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 547
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history/faa655e1-6fe4-4215-9541-8b61ef0de54c/seouldal-ouverture-yeouido-2024",
+            "status": 200,
+            "textLength": 1585,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 505
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history/faa655e1-6fe4-4215-9541-8b61ef0de54c/seouldal-ouverture-yeouido-2024",
+            "status": 200,
+            "textLength": 1590,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 528
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history/faa655e1-6fe4-4215-9541-8b61ef0de54c/seouldal-ouverture-yeouido-2024",
+            "status": 200,
+            "textLength": 1550,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 496
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/1ee3a830-9cac-4c18-a1c5-27367ee860bd/seouldal-seoul-moon/history/faa655e1-6fe4-4215-9541-8b61ef0de54c/seouldal-ouverture-yeouido-2024",
+            "status": 200,
+            "textLength": 1565,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 532
+      }
+    ]
+  }
+}
