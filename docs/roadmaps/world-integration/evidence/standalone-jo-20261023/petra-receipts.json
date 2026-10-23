@@ -1,0 +1,146 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "750c4daf-df3d-4641-8ead-d2500eacb37b",
+    "appliedAtUtc": "2026-10-23T07:42:41.3270056Z",
+    "targetStandaloneAttractionId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "b6d49ed4-a3aa-4dbe-9464-1c5a70192292",
+    "appliedAtUtc": "2026-10-23T07:43:11.4404931Z",
+    "targetStandaloneAttractionId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "ad08efd6-eaf7-4a25-b328-3a63dac0dbd5",
+    "appliedAtUtc": "2026-10-23T07:43:34.2883497Z",
+    "targetStandaloneAttractionId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "601e6ca2-bd75-4678-bb34-cf22f189ec12",
+    "appliedAtUtc": "2026-10-23T07:46:28.0287912Z",
+    "targetStandaloneAttractionId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05b-history-enriched.apply",
+    "operationId": "9db38062-ee85-4fc7-b817-828fed73e676",
+    "appliedAtUtc": "2026-10-23T07:48:25.409009Z",
+    "targetStandaloneAttractionId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "332fad44-9883-49b1-b94e-e9d614a5b30c",
+    "appliedAtUtc": "2026-10-23T07:50:00.6692963Z",
+    "targetStandaloneAttractionId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "a5735065-c1ed-470f-b82c-53ed34caf934",
+    "appliedAtUtc": "2026-10-23T07:50:23.5595377Z",
+    "targetStandaloneAttractionId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "ddcc71bf-84ab-4c8e-9151-2162426fff17",
+    "appliedAtUtc": "2026-10-23T07:50:47.4047879Z",
+    "targetStandaloneAttractionId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "782618d142114ea583bf1907dbdeec2e",
+    "ownerId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Petra_Balloon.jpg",
+    "updatedAt": "2026-10-23T07:45:31.572Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "9f5309b7bac24f41ad4dd55bb80b3cec",
+    "ownerId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gas_balloon_in_Petra.jpg",
+    "updatedAt": "2026-10-23T07:45:50.754Z",
+    "isPublished": false
+  }
+]

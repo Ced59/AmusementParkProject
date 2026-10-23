@@ -1,0 +1,301 @@
+{
+  "name": "Bobovka u mlýna",
+  "standaloneAttractionId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+  "qualification": "Park masqué Brno-Líšeň à un seul ParkItem Bobovka et sans zone ni autre attraction. Ticket de luge autonome ; le moulin et les activités voisins ne forment pas son parc. Aucune fiche StandaloneAttraction Brno ou Bobovka u mlýna trouvée. Identité distincte de Němčičky, bien que Bobovka mlýn s.r.o. exploite les deux sites. Migration sans doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 98,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 4
+  },
+  "gaps": [
+    "L’exploitant décrit aujourd’hui une piste de plus d’un kilomètre ; le reportage touristique de 2017 donne 1 021 m avec la remontée, tandis que l’ancien ParkItem avait 775 m (probablement la descente). La longueur totale 1 021 m a été retenue avec la divergence documentée.",
+    "La page contact officielle du 23 octobre 2026 affiche 14 h–17 h en semaine et 10 h–17 h les week-ends ; jours fériés également 10 h–17 h, mais aucun calendrier d’exceptions datées n’est publié. La météo ou un accord téléphonique modifient les horaires.",
+    "Le reportage iDNES distingue les essais gratuits du samedi 17 décembre 2016 de l’ouverture officielle annoncée pour le 26 décembre, confirmée par le récit local du printemps 2017. Aucune photographie réutilisable du jour inaugural n’a été trouvée ; la galerie de l’exploitant illustre l’état récent sans prétendre documenter cet événement.",
+    "Le photographe individuel des images de la galerie de l’exploitant n’est pas indiqué."
+  ],
+  "sources": [
+    "https://bobovkabrno.cz/",
+    "https://bobovkabrno.cz/cenik/",
+    "https://bobovkabrno.cz/kontakt/",
+    "https://bobovkabrno.cz/galerie/",
+    "https://www.idnes.cz/brno/zpravy/bobova-draha-brno-otevreni.A161218_181438_brno-zpravy_bur",
+    "https://www.turistika.cz/mista/bobovka-u-mlyna/detail",
+    "https://www.kadlcuvmlyn.cz/bobovka/bobovka-u-mlyna",
+    "https://rcdb.com/14749.htm"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T05:47:59.640026+00:00",
+    "exportSha256": "68392fcb4aa91dc7bdddb272840c35c982338906507788a32f8caeb825b33ad0",
+    "localizedStringsReviewed": 304,
+    "localizedGroups": 38,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T05:50:54.649081+00:00",
+  "facebook": {
+    "id": "fbc33829623f43128403b2e92f813e41",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T05:51:13.1487009Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124247287424431",
+    "externalPostId": "1285475681307050_122124247287424431",
+    "url": "https://amusement-parks.fun/fr/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna?facebook-image=b1b00318b89d458f86662009757e344b"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T05:50:54.649081+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T05:50:35.869555+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history/6e4c4465-7399-40e6-8b42-c1ef2ff11b13/bobovka-u-mlyna-ouverture-2016",
+            "status": 200,
+            "textLength": 2002,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 536
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history/6e4c4465-7399-40e6-8b42-c1ef2ff11b13/bobovka-u-mlyna-ouverture-2016",
+            "status": 200,
+            "textLength": 1783,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 465
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history/6e4c4465-7399-40e6-8b42-c1ef2ff11b13/bobovka-u-mlyna-ouverture-2016",
+            "status": 200,
+            "textLength": 1809,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 577
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history/6e4c4465-7399-40e6-8b42-c1ef2ff11b13/bobovka-u-mlyna-ouverture-2016",
+            "status": 200,
+            "textLength": 1744,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 550
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history/6e4c4465-7399-40e6-8b42-c1ef2ff11b13/bobovka-u-mlyna-ouverture-2016",
+            "status": 200,
+            "textLength": 1770,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 510
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history/6e4c4465-7399-40e6-8b42-c1ef2ff11b13/bobovka-u-mlyna-ouverture-2016",
+            "status": 200,
+            "textLength": 1783,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 534
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history/6e4c4465-7399-40e6-8b42-c1ef2ff11b13/bobovka-u-mlyna-ouverture-2016",
+            "status": 200,
+            "textLength": 1605,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 505
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/d6bc9920-02da-4fb1-8801-4eeb8767a427/bobovka-u-mlyna/history/6e4c4465-7399-40e6-8b42-c1ef2ff11b13/bobovka-u-mlyna-ouverture-2016",
+            "status": 200,
+            "textLength": 1751,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 542
+      }
+    ]
+  }
+}

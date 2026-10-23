@@ -1483,26 +1483,187 @@
     {
       "entryId": "MY-candidate-standalone-75acc28180ff3b",
       "name": "Menara Taming Sari — Super Gyro Melaka",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tour panoramique mécanique",
       "locality": null,
-      "siteId": null,
+      "siteId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-22T23:39:32.924Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-22T23:38:17.608Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f797d6ae-1b94-4459-aa05-d0962e6313bd",
+          "appliedAt": "2026-10-22T23:21:03.481Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:f797d6ae-1b94-4459-aa05-d0962e6313bd",
+          "auditEvidence": null,
+          "summary": "Création de Menara Taming Sari avec huit descriptions et référence Intamin"
+        },
+        {
+          "eventId": "apply-30a93aca-4591-4c9a-a534-83fd16d27c9c",
+          "appliedAt": "2026-10-22T23:22:18.345Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:30a93aca-4591-4c9a-a534-83fd16d27c9c",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès officielles : animaux et fauteuil roulant"
+        },
+        {
+          "eventId": "apply-c958a5ad-43d8-454a-8455-ae32f5d999c0",
+          "appliedAt": "2026-10-22T23:23:13.396Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:c958a5ad-43d8-454a-8455-ae32f5d999c0",
+          "auditEvidence": null,
+          "summary": "Horaires officiels de semaine et week-end, fuseau Melaka"
+        },
+        {
+          "eventId": "apply-c1f4f521-f962-43ed-9f82-9b500f0e1b90",
+          "appliedAt": "2026-10-22T23:24:16.857Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:c1f4f521-f962-43ed-9f82-9b500f0e1b90",
+          "auditEvidence": null,
+          "summary": "Trente tarifs officiels par public, horaire et résidence, avec gratuité des moins de deux ans"
+        },
+        {
+          "eventId": "image-d703d96226ff4344aaed82738c82410c",
+          "appliedAt": "2026-10-22T23:25:33.069Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:image:d703d96226ff4344aaed82738c82410c",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-efd1f35f39fe468081826c9b87481eda",
+          "appliedAt": "2026-10-22T23:27:01.156Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:image:efd1f35f39fe468081826c9b87481eda",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-999fcfc5fd794223b459c00b174a24b6",
+          "appliedAt": "2026-10-22T23:27:49.051Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:image:999fcfc5fd794223b459c00b174a24b6",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-660c928d95bf45468eb9f263dc6b6e95",
+          "appliedAt": "2026-10-22T23:28:07.203Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:image:660c928d95bf45468eb9f263dc6b6e95",
+          "auditEvidence": null,
+          "summary": "Photo officielle 4 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-2216126be03a4d629c92a38fc910f83e",
+          "appliedAt": "2026-10-22T23:29:40.587Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:image:2216126be03a4d629c92a38fc910f83e",
+          "auditEvidence": null,
+          "summary": "Photo officielle 5 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-753f2bc5-a515-4c33-9b23-2a76cd381966",
+          "appliedAt": "2026-10-22T23:31:26.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:753f2bc5-a515-4c33-9b23-2a76cd381966",
+          "auditEvidence": null,
+          "summary": "Événement Tourism Industry Awards 2026 et article sourcé en huit langues"
+        },
+        {
+          "eventId": "apply-280a5228-3630-49d4-abb4-9059b8313a67",
+          "appliedAt": "2026-10-22T23:33:02.792Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:280a5228-3630-49d4-abb4-9059b8313a67",
+          "auditEvidence": null,
+          "summary": "Révision de l’article pour différencier la visite du récit principal"
+        },
+        {
+          "eventId": "apply-cac310ac-35d0-4fe1-bfb9-9eb694b09483",
+          "appliedAt": "2026-10-22T23:34:22.430Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:cac310ac-35d0-4fe1-bfb9-9eb694b09483",
+          "auditEvidence": null,
+          "summary": "Révision des formulations multilingues du prix 2026"
+        },
+        {
+          "eventId": "apply-53b6dc0a-4f8f-4b38-8c9f-356617d1e5b6",
+          "appliedAt": "2026-10-22T23:37:20.818Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:53b6dc0a-4f8f-4b38-8c9f-356617d1e5b6",
+          "auditEvidence": null,
+          "summary": "Publication des images de Menara Taming Sari"
+        },
+        {
+          "eventId": "apply-60ffe0ba-e2d5-4e08-88e3-69ae5a6df243",
+          "appliedAt": "2026-10-22T23:37:44.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:60ffe0ba-e2d5-4e08-88e3-69ae5a6df243",
+          "auditEvidence": null,
+          "summary": "Publication de l’article historique de Menara Taming Sari"
+        },
+        {
+          "eventId": "apply-54735682-dfcb-4b7a-ab29-10139c4df498",
+          "appliedAt": "2026-10-22T23:38:17.608Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:54735682-dfcb-4b7a-ab29-10139c4df498",
+          "auditEvidence": null,
+          "summary": "Publication de la fiche Menara Taming Sari"
+        },
+        {
+          "eventId": "closure-apply-54735682-dfcb-4b7a-ab29-10139c4df498",
+          "appliedAt": "2026-10-22T23:38:17.608Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+          "evidence": "PARK_DATA_EDITOR:apply:54735682-dfcb-4b7a-ab29-10139c4df498",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-my-20261022/tamingsari-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 98/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Intamin — référence constructeur",
@@ -1513,10 +1674,40 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.menaratamingsari.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.menaratamingsari.com/about/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.menaratamingsari.com/shop/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.menaratamingsari.com/plan-your-visit/frequently-asked-questions/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.menaratamingsari.com/plan-your-visit/getting-here/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.menaratamingsari.com/gallery/menara-taming-sari-best-observation-tower-attraction/",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+          "accessedAt": "2026-10-22"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -1527,7 +1718,30 @@
             "sourceVenueName": "Menara Taming Sari"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-54735682-dfcb-4b7a-ab29-10139c4df498 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari",
+          "publishedAtUtc": "2026-10-22T23:38:17.6089647Z",
+          "verifiedAtUtc": "2026-10-22T23:39:32.924Z",
+          "evidence": "PARK_DATA_EDITOR:apply:54735682-dfcb-4b7a-ab29-10139c4df498"
+        },
+        "facebook": {
+          "id": "1cf43d25dfb74bac935cd7509cfefa4a",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-22T23:40:30.173826Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124218745424431",
+          "externalPostId": "1285475681307050_122124218745424431",
+          "url": "https://amusement-parks.fun/fr/attraction/a19b5ecb-d608-4b0f-99d5-3a67e7969d88/menara-taming-sari?facebook-image=d703d96226ff4344aaed82738c82410c"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-20261022/tamingsari-audit.json",
+        "score": 98,
+        "publicationBlockers": [],
+        "gapCount": 6
       }
     },
     {

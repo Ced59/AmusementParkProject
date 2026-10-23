@@ -10,6 +10,9 @@ public interface IStandaloneAttractionRepository
 
     Task<IReadOnlyCollection<StandaloneAttraction>> GetByIdsAsync(IReadOnlyCollection<string> ids, CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<StandaloneAttraction>> GetNearestByLocationAsync(
+        double latitude, double longitude, int limit, CancellationToken cancellationToken);
+
     Task<StandaloneAttraction?> FindByLegacyAsync(string? legacyParkId, string? legacyParkItemId, CancellationToken cancellationToken);
 
     Task<PagedResult<StandaloneAttraction>> GetPageAsync(

@@ -18,7 +18,7 @@ import { getAccessConditionTypeLabelKey } from './park-item-detail-presentation.
 import { pushRow } from './park-item-detail-row.helpers';
 
 export function buildAccessConditions(
-  item: ParkItem,
+  item: Pick<ParkItem, 'attractionDetails'>,
   currentLanguage: string,
   measurementSystem: MeasurementSystem,
   measurementConversionService: MeasurementConversionService

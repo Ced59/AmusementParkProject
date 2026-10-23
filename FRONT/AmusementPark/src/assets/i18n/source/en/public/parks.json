@@ -54,18 +54,19 @@
         "subtitle": "Review the currently documented location and coordinates."
       },
       "nearby": {
-        "title": "Nearby parks",
-        "subtitle": "Discover other operating parks around this destination.",
-        "alternativesTitle": "Open alternatives nearby",
-        "alternativesSubtitle": "Discover parks that are currently operating near this documented location.",
-        "loadingTitle": "Loading nearby parks",
-        "loadingMessage": "Nearby parks are being loaded.",
-        "errorTitle": "Unable to load nearby parks",
-        "errorMessage": "Nearby parks could not be loaded.",
-        "emptyTitle": "No nearby park",
-        "emptyMessage": "No nearby park has been found around this destination.",
-        "closestTitle": "Closest park",
-        "distanceNote": "Distance estimated as the crow flies from this park."
+        "title": "Nearby",
+        "subtitle": "Discover the closest parks and standalone attractions.",
+        "alternativesTitle": "More to discover nearby",
+        "alternativesSubtitle": "Discover parks and standalone attractions around this place.",
+        "loadingTitle": "Loading nearby places",
+        "loadingMessage": "Nearby places are loading.",
+        "errorTitle": "Unable to load nearby places",
+        "errorMessage": "Nearby places could not be loaded.",
+        "emptyTitle": "No nearby places",
+        "emptyMessage": "No parks or standalone attractions were found nearby.",
+        "closestTitle": "Closest place",
+        "distanceNote": "Estimated straight-line distance from this place.",
+        "viewDestination": "View details"
       },
       "description": {
         "badge": "Overview",

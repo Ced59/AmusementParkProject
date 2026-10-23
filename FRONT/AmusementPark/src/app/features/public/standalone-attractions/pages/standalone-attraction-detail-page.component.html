@@ -16,8 +16,6 @@
             <app-ui-chip tone="sky" iconClass="pi pi-sparkles" *ngIf="current.subtype">{{ subtypeLabel(current) }}</app-ui-chip>
             <app-ui-chip tone="lime" iconClass="pi pi-circle-fill" *ngIf="statusTranslationKey(current) as statusKey">{{ statusKey | translate }}</app-ui-chip>
           </div>
-
-          <p>{{ t('visibleDataOnly') }}</p>
         </div>
 
         <div class="standalone-hero__actions">
@@ -61,6 +59,11 @@
             <p>{{ t('noDescription') }}</p>
           </section>
         </ng-template>
+
+        <app-attraction-access-conditions
+          *ngIf="accessConditions().length > 0"
+          [conditions]="accessConditions()">
+        </app-attraction-access-conditions>
 
       </main>
 
@@ -119,5 +122,11 @@
         </section>
       </aside>
     </div>
+    <app-park-nearby-section
+      [sourceId]="hasCoordinates() ? current.id ?? null : null"
+      sourceKind="StandaloneAttraction"
+      [sourceName]="current.name"
+      [currentLang]="currentLanguage()">
+    </app-park-nearby-section>
   </section>
 </app-page-state>

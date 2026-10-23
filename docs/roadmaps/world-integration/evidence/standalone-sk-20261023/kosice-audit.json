@@ -1,0 +1,303 @@
+{
+  "name": "Bobová dráha Košice–Kavečany",
+  "standaloneAttractionId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+  "qualification": "Piste de luge d’été à billet propre, située avant le zoo de Košice et exploitée par VYTEZA ; source municipale confirme la séparation. Recherche Park Bobová dráha/Kavečany et StandaloneAttraction Bobová dráha/Kavečany SK sans fiche du lieu. Une seule fiche standalone créée, sans dupliquer le zoo.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 88,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 4,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 0,
+    "admissionOffers": 4
+  },
+  "gaps": [
+    "Date d’ouverture exacte et année inconnues. La fiche touristique publiée le 27 juillet 2009 est une attestation de présence, pas la date d’inauguration.",
+    "L’exploitant renvoie aux horaires du jour sur Google et ferme par mauvais temps ; les portails touristiques donnent des horaires divergents. Aucun horaire hebdomadaire structuré.",
+    "Tarifs de la page officielle de l’exploitant consultés le 23 octobre 2026, mais page HTTP datée de 2023 ; la fraîcheur des montants doit être recontrôlée auprès du guichet.",
+    "Coordonnées du lieu 48.78126,21.20176 corroborées par deux annuaires locaux ; l’emplacement publié par Slovakia.travel est éloigné et n’a pas été retenu.",
+    "Trois images provenant de la galerie officielle portent la signature JES ; date de prise de vue non publiée."
+  ],
+  "sources": [
+    "https://www.bobovadrahake.sk/",
+    "https://www.bobovadrahake.sk/pravidla.html",
+    "https://kosicekavecany.sk/navstevnik/letna-bobova-draha/",
+    "https://visitkosice.org/vidiet-a-zazit/bobova-draha",
+    "https://slovakregion.sk/sport-0",
+    "https://www.keturist.sk/info/bobova-draha-kosice-kavecany-otvaracia-doba/",
+    "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=229#location-id-1377",
+    "https://www.krasneslovensko.eu/kosicky-kraj/bobova-draha-kosice-kavecany"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T04:53:47.628200+00:00",
+    "exportSha256": "15bae682a5b7f79f6fdc9ff71d1666e677e09fe97a76e1afdb646aba5d46c1b9",
+    "localizedStringsReviewed": 320,
+    "localizedGroups": 40,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T04:57:18.171591+00:00",
+  "facebook": {
+    "id": "6ccfe18538c04590b1895cb8aeb50b43",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T04:57:56.0736324Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124242967424431",
+    "externalPostId": "1285475681307050_122124242967424431",
+    "url": "https://amusement-parks.fun/fr/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany?facebook-image=90d1ba4f9be94a2888252afeec67930c"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T04:57:18.171591+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating",
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T04:57:27.043851+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history/9c415566-de57-4425-9f01-b5f965a9b287/bobova-draha-kosice-documented-2009",
+            "status": 200,
+            "textLength": 1879,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 588
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history/9c415566-de57-4425-9f01-b5f965a9b287/bobova-draha-kosice-documented-2009",
+            "status": 200,
+            "textLength": 1671,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 535
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history/9c415566-de57-4425-9f01-b5f965a9b287/bobova-draha-kosice-documented-2009",
+            "status": 200,
+            "textLength": 1658,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 625
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history/9c415566-de57-4425-9f01-b5f965a9b287/bobova-draha-kosice-documented-2009",
+            "status": 200,
+            "textLength": 1662,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 598
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history/9c415566-de57-4425-9f01-b5f965a9b287/bobova-draha-kosice-documented-2009",
+            "status": 200,
+            "textLength": 1615,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 554
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history/9c415566-de57-4425-9f01-b5f965a9b287/bobova-draha-kosice-documented-2009",
+            "status": 200,
+            "textLength": 1619,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 560
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history/9c415566-de57-4425-9f01-b5f965a9b287/bobova-draha-kosice-documented-2009",
+            "status": 200,
+            "textLength": 1497,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 546
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany/history/9c415566-de57-4425-9f01-b5f965a9b287/bobova-draha-kosice-documented-2009",
+            "status": 200,
+            "textLength": 1560,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 575
+      }
+    ]
+  }
+}

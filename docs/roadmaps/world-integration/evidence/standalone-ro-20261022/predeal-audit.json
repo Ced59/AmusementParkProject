@@ -1,0 +1,320 @@
+{
+  "name": "Predeal Mountain Coaster",
+  "standaloneAttractionId": "d1b09350-8591-437e-82d7-2957573535b3",
+  "qualification": "Mountain coaster fixe avec un tarif propre par descente au pied de Clăbucet ; indépendant comme fiche d’attraction, sans parc parent artificiel. Recherches Park et Standalone sur trois variantes sans résultat.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 4,
+    "accessConditions": 2,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "datedCalendarDays": 0,
+    "admissionOffers": 1
+  },
+  "gaps": [
+    "La page municipale publiée le 21 août 2025 annonce déjà le site ouvert ; Radio România situe l’inauguration officielle au 22 août. La date structurée et l’événement décrivent l’inauguration, pas un premier embarquement démontré.",
+    "Longueur omise : 822 m selon la ville et Radio România, contre 500 m de descente plus 392 m de remontée dans le dossier Sunkid. Ces sources ne décrivent pas exactement la même mesure.",
+    "Le projet de règlement municipal de juillet 2025 mentionne d’autres restrictions d’âge et consignes, mais sa version définitivement approuvée n’a pas été retrouvée. Seules les conditions corroborées par la présentation municipale et Radio România sont intégrées.",
+    "La grille municipale actuelle annonce 35 lei par descente et l’horaire hebdomadaire vendredi–dimanche, sans calendrier civil daté ni billetterie en ligne vérifiée. Les variations saisonnières ou météo restent inconnues.",
+    "Identité juridique de l’exploitant non reliée à une nouvelle référence globale, malgré la propriété municipale du projet ; aucun lien global partagé n’a été modifié.",
+    "L’image de l’article est le visuel d’annonce publié par la ville en août 2025, pas une photographie de l’inauguration. Les autres photos proviennent du dossier constructeur et montrent le site en hiver.",
+    "Le premier passage du lot météo après publication reste à observer ; une carte absente avant ce passage ne signifie pas que les coordonnées manquent."
+  ],
+  "sources": [
+    "https://www.predeal.ro/predeal-mountain-coaster",
+    "https://www.sunkidworld.com/en/projects/detail/mountain-coaster-20-in-romanias-highest-city/",
+    "https://www.radioromania.ro/stiri-locale/brasov-sania-de-vara-mountain-coaster-inaugurata-la-predeal-id102029.html",
+    "https://www.radiobrasovfm.ro/stiri-din-brasov/sania-de-vara-de-la-predeal-inaugurata-pana-la-sfarsitul-lunii-august-id209254.html",
+    "https://primaria-predeal.ro/wp-content/uploads/HCL-DEZBATERE/DP2025071812000.pdf",
+    "https://rcdb.com/24283.htm"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-22T22:31:38.880056+00:00",
+    "exportSha256": "c2ca8ddfbae226815433b1181bdb155780f9d6460f3b4c130578635d8e9feb7a",
+    "localizedStringsReviewed": 256,
+    "localizedGroups": 32,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "publicationNotes": [
+    "Images, historique et fiche publiés après audit ; contrôler ensuite les huit routes et l’annonce Facebook distincte.",
+    "Les deux conditions d’accès sont bien affichées sur la page publique, contrairement à l’ancienne version observée pour le premier lot américain."
+  ],
+  "idempotenceCheck": {
+    "operationId": "68d49623-910a-4fc4-8418-476b38c5860a",
+    "previewedAtUtc": "2026-10-22T22:32:01.8465222Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 8,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-22T22:35:09.732405+00:00",
+  "facebook": {
+    "id": "628fa055edbc4e4997d7473ab97005ef",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-22T22:36:08.5607276Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124213345424431",
+    "externalPostId": "1285475681307050_122124213345424431",
+    "url": "https://amusement-parks.fun/fr/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster?facebook-image=02ae7136e3bf49eba36b9cb9b8287c18"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-22T22:35:09.732405+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-22T22:35:14.592512+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history/262d3a4c-dc0f-427b-9c7d-454cb92abdd5/inauguration-clabucet-aout-2025",
+            "status": 200,
+            "textLength": 2117,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 732
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history/262d3a4c-dc0f-427b-9c7d-454cb92abdd5/inauguration-clabucet-aout-2025",
+            "status": 200,
+            "textLength": 1945,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 661
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history/262d3a4c-dc0f-427b-9c7d-454cb92abdd5/inauguration-clabucet-aout-2025",
+            "status": 200,
+            "textLength": 1977,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 751
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history/262d3a4c-dc0f-427b-9c7d-454cb92abdd5/inauguration-clabucet-aout-2025",
+            "status": 200,
+            "textLength": 1946,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 718
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history/262d3a4c-dc0f-427b-9c7d-454cb92abdd5/inauguration-clabucet-aout-2025",
+            "status": 200,
+            "textLength": 1974,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 701
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history/262d3a4c-dc0f-427b-9c7d-454cb92abdd5/inauguration-clabucet-aout-2025",
+            "status": 200,
+            "textLength": 1977,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 722
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history/262d3a4c-dc0f-427b-9c7d-454cb92abdd5/inauguration-clabucet-aout-2025",
+            "status": 200,
+            "textLength": 1821,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 650
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/d1b09350-8591-437e-82d7-2957573535b3/predeal-mountain-coaster/history/262d3a4c-dc0f-427b-9c7d-454cb92abdd5/inauguration-clabucet-aout-2025",
+            "status": 200,
+            "textLength": 1922,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 712
+      }
+    ]
+  }
+}

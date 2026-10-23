@@ -29,6 +29,7 @@ import { PublicLiveViewState } from '@features/public/live/models/public-live-vi
 import { PublicLiveHistoryViewState } from '@features/public/live/models/public-live-history-view-state.model';
 import { PublicLiveForecastViewState } from '@features/public/live/models/public-live-forecast-view-state.model';
 import { PublicLivePanelComponent } from '@features/public/live/ui/public-live-panel.component';
+import { AttractionAccessConditionsComponent } from './attraction-access-conditions.component';
 
 @Component({
   selector: 'app-park-item-detail-view',
@@ -59,7 +60,8 @@ import { PublicLivePanelComponent } from '@features/public/live/ui/public-live-p
     ParkItemPassportRidePanelComponent,
     UserCollectionActionsComponent,
     WatchSubscriptionActionComponent,
-    PublicLivePanelComponent
+    PublicLivePanelComponent,
+    AttractionAccessConditionsComponent
   ]
 })
 export class ParkItemDetailViewComponent {

@@ -1,0 +1,304 @@
+{
+  "name": "THIS IS HOLLAND",
+  "standaloneAttractionId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+  "qualification": "Théâtre volant et billetterie propres au 51 Overhoeksplein, Amsterdam-Noord ; le bâtiment accueille aussi des événements mais la visite permanente est une attraction autonome. SearchParks et SearchStandaloneAttractions sur THIS IS HOLLAND en NL sans correspondance le 23 octobre 2026. Site et billetterie officiels actifs ; ouverture 12 octobre 2017 corroborée par le constructeur et un reportage du jour. Création sans doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 93,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 5,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 2
+  },
+  "gaps": [
+    "La page néerlandaise officielle annonce 10:00–18:00 en semaine et 10:00–19:00 le week-end, avec extension pendant les vacances d’automne ; la page anglaise annonce 10:00–19:00 quotidiennement. Le calendrier du site suit la version néerlandaise détaillée, sans inventer les dates de vacances. Vérifier le créneau réservé.",
+    "La billetterie officielle affiche des prix de départ de 22 EUR en régulier, 19 EUR en avance et 53 EUR pour les familles, susceptibles de varier selon les dates et la composition. Ces valeurs sont enregistrées comme minima dynamiques, non tarifs fixes.",
+    "Le constructeur Brogent présente le projet et la date d’ouverture, tandis que d’autres références attribuent des éléments mécaniques à Vekoma ; la répartition précise des rôles et le modèle ne sont pas confirmés pour un lien relationnel unique. Aucun fabricant ni modèle supposé.",
+    "Les trois photographies libres sont une façade en 2024 par VynedJ (CC BY 4.0), une vue extérieure en 2023 par Ceescamel (CC0) et un foyer en 2018 par Ymnes (CC0). Elles n’illustrent pas le film projeté, où la prise de vue est interdite par l’exploitant."
+  ],
+  "sources": [
+    "https://www.thisisholland.com/en/",
+    "https://www.thisisholland.com/plan-je-bezoek/",
+    "https://www.thisisholland.com/en/plan-your-visit/",
+    "https://tickets.thisisholland.com/?lang=en",
+    "https://tickets.thisisholland.com/productDetail/97420?lang=en",
+    "https://www.thisisholland.com/en/contact/",
+    "https://www.brogent.com/en/this-is-holland-cv-5.html",
+    "https://www.looopings.nl/weblog/8723/Nieuwe-attractie-in-Amsterdam-spectaculaire-vliegsimulator-geopend.html",
+    "https://commons.wikimedia.org/wiki/File:This_is_Holland_20240509.jpg",
+    "https://commons.wikimedia.org/wiki/File:2023_Overhoeksplein,_Asd-This_is_Holland.jpg",
+    "https://commons.wikimedia.org/wiki/File:This_Is_Holland_21.JPG"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T08:24:06.719338+00:00",
+    "exportSha256": "05ccc4c6d388e4ccd3267d4afdd7b6b594c52d2555e52d905c3f057e94c15526",
+    "localizedStringsReviewed": 256,
+    "localizedGroups": 32,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T08:27:06.088425+00:00",
+  "facebook": {
+    "id": "598b5de383eb4edfb4cbbf3099e341fb",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T08:26:46.8204219Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124262335424431",
+    "externalPostId": "1285475681307050_122124262335424431",
+    "url": "https://amusement-parks.fun/fr/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland?facebook-image=0e7b838ae4ee4326923bacb3500bccd4"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T08:27:06.088425+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T08:26:33.315645+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history/802112d9-9741-4641-8b62-4e6f8ec3eeb3/this-is-holland-ouverture-2017",
+            "status": 200,
+            "textLength": 1738,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 549
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history/802112d9-9741-4641-8b62-4e6f8ec3eeb3/this-is-holland-ouverture-2017",
+            "status": 200,
+            "textLength": 1573,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 496
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history/802112d9-9741-4641-8b62-4e6f8ec3eeb3/this-is-holland-ouverture-2017",
+            "status": 200,
+            "textLength": 1680,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 589
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history/802112d9-9741-4641-8b62-4e6f8ec3eeb3/this-is-holland-ouverture-2017",
+            "status": 200,
+            "textLength": 1647,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 570
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history/802112d9-9741-4641-8b62-4e6f8ec3eeb3/this-is-holland-ouverture-2017",
+            "status": 200,
+            "textLength": 1637,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 529
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history/802112d9-9741-4641-8b62-4e6f8ec3eeb3/this-is-holland-ouverture-2017",
+            "status": 200,
+            "textLength": 1658,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 548
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history/802112d9-9741-4641-8b62-4e6f8ec3eeb3/this-is-holland-ouverture-2017",
+            "status": 200,
+            "textLength": 1492,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 527
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/6dee734e-796d-4ca0-9db6-ec2538b86405/this-is-holland/history/802112d9-9741-4641-8b62-4e6f8ec3eeb3/this-is-holland-ouverture-2017",
+            "status": 200,
+            "textLength": 1611,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 559
+      }
+    ]
+  }
+}

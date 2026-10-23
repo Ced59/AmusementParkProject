@@ -22,7 +22,7 @@
   }
 
   <app-page-state
-    [state]="state"
+    [state]="state()"
     [messages]="{
       loadingTitleKey: 'parks.detail.nearby.loadingTitle',
       loadingMessageKey: 'parks.detail.nearby.loadingMessage',
@@ -33,9 +33,10 @@
     }">
     <div class="park-nearby__grid">
       <app-ui-park-card
-        *ngFor="let park of parks"
-        [park]="park"
-        [detailLink]="buildParkLink(park)"
+        *ngFor="let destination of destinations()"
+        [park]="destination.card"
+        [detailLink]="destination.detailLink"
+        primaryActionLabelKey="parks.detail.nearby.viewDestination"
         [showDescriptionInCompact]="true"
         [compact]="true">
       </app-ui-park-card>

@@ -23,6 +23,7 @@ public static class UseCaseCatalog
             ["Videos"] = new[] { "CreateVideo", "UpdateVideo", "DeleteVideo", "GetVideoById", "GetVideosPage", "GetParkItemVideosByPark", "ResolveVideoMetadata", "ListVideoTags", "CreateVideoTag", "UpdateVideoTag" },
             ["Users"] = new[] { "RegisterLocalUser", "ProvisionExternalUser", "GetUserByEmail", "GetUserById", "UpdateUserProfile", "UpdatePreferredLanguage", "Login", "LoginExternal", "RefreshToken", "ConfirmEmail", "ResendConfirmationEmail", "ForgotPassword", "ResetPassword", "AssignRole", "RemoveRole", "LockUser", "UnlockUser", "GetUsersPage", "ChangePassword", "SynchronizeUserAvatar" },
             ["Search"] = new[] { "Search" },
+            ["NearbyDestinations"] = new[] { "GetNearbyDestinations" },
             ["DataSources"] = new[] { "ListDataSources", "GetDataSourceStatus", "GetDataSourceSettings", "UpdateDataSourceSettings", "GetLatestDataSourceSession", "GetDataSourceSession", "GetDataSourceComparisonResults", "StartDataSourceImport", "ApplyDataSourceComparison" },
             ["AdminAudit"] = new[] { "GetAdminAuditLogs" },
             ["Ratings"] = new[] { "UpsertUserRating", "GetRatingSummary", "GetRatingMethodology", "ListRatingMethodologies", "GetCurrentRatingMethodology", "GetUserRating", "ListUserRatings", "GetUserRatingStats", "GetRatingRankings", "GetParkItemRatingRankings", "GetUserParkRatingRankings", "GetUserParkItemRatingRankings", "GetSharedUserRankingProfile", "GetSharedUserParkRatingRankings", "GetSharedUserParkItemRatingRankings", "GetSharedUserRankingPreview" },

@@ -14,10 +14,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 0 |
-| À qualifier | 5 |
+| À qualifier | 4 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **2 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **2 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **2 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -36,7 +36,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 
 | ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| IS-candidate-631a8dcd6a53f2 | FlyOver Iceland | Reykjavík | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : FlyOver Iceland. [Source officielle complémentaire](https://www.visiticeland.com/things-to-do/capital/recreation/family-fun-parks/) · [Découverte complémentaire — site officiel](https://www.experienceflyover.com/) |
+| IS-candidate-631a8dcd6a53f2 | FlyOver Iceland | Reykjavík — Grandi | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T03:03:15.687Z | — | Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-015f47ee-3fb8-420b-bb4b-f9baf8efc5ae ; conserver les références de découverte. Installations référencées : FlyOver Iceland. Signal source : Operating. [Source officielle complémentaire](https://www.visiticeland.com/things-to-do/capital/recreation/family-fun-parks/) · [Découverte complémentaire — site officiel](https://www.experienceflyover.com/) · [Source vérifiée — intégration standalone](https://www.flyovericeland.com/) · [Source vérifiée — intégration standalone](https://www.flyovericeland.com/experience/) · [Source vérifiée — intégration standalone](https://www.flyovericeland.com/hours-pricing/) · [Source vérifiée — intégration standalone](https://www.flyovericeland.com/experience/faqs/) · [Source vérifiée — intégration standalone](https://www.flyovericeland.com/getting-here/) · [Source vérifiée — intégration standalone](https://prod.pursuitcollection.com/Website/media/pursuit/Documents/Press-Release/Press-Release-FlyOver-Iceland-Launches-in-Reykjavik.pdf) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/1df9651e-07f8-4878-b7d6-b62caf5e036f/flyover-iceland) |
 | IS-candidate-f47244e3eee31a | Reykjavík Family Park & Zoo | Reykjavík | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Source officielle complémentaire](https://reykjavik.is/en/reykjavik-family-park-and-zoo) |
 | IS-candidate-1f3e320a3c869a | Slakki Mini Zoo | Laugarás | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Source officielle complémentaire](https://www.visiticeland.com/things-to-do/recreation/family-fun-parks/) |
 | IS-candidate-5685f624b39e5d | Sundlaug Hornafjarðar | Höfn | À qualifier ; proposé : ToQualify | NotFound | À qualifier | Inconnue — non inventée | — | Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Iceland) |

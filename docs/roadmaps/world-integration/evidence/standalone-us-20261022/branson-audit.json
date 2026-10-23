@@ -1,0 +1,370 @@
+{
+  "name": "The Branson Coaster",
+  "standaloneAttractionId": "72b0aadb-436f-47f0-a978-15610e577f4c",
+  "qualification": "Coaster fixe exploité avec sa propre billetterie sur West 76 Country Boulevard ; activité annexe de lavage de gemmes et produits combinés exclus. Aucun parc ni standalone correspondant aux recherches Branson Coaster. Distinct de Runaway et Copperhead.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 8,
+    "historyEvents": 3,
+    "articles": 1,
+    "weeklyDays": 7,
+    "datedCalendarDays": 10,
+    "admissionOffers": 14
+  },
+  "gaps": [
+    "Longueur circuit/descente contradictoire et durée approximative omises. Coordonnées JSON-LD officiel, ouverture 18 juillet 2017 vérifiée dans Amusement Today ; vitesse actuelle FAQ 27 mph.",
+    "FACE Amusement est décrit comme exploitant à l’ouverture seulement ; personne morale actuelle non confirmée, aucune référence globale inventée.",
+    "Accident 2021 : âge exact contradictoire (11/12 ans) omis. Autorisation du 9 juillet distinguée de la date de reprise commerciale inconnue. Aucune responsabilité ni défaillance technique déduite.",
+    "Photographies officielles actuelles de contexte : station pour l’accident, jamais une image présentée comme celle du sinistre. Pas de photographie appropriée et réutilisable de l’événement établie.",
+    "Billetterie dynamique sans prix accessibles dans le document consulté : grille officielle au guichet intégrée, espèces et carte séparées ; aucun prix en ligne supposé.",
+    "Horaires hebdomadaires usuels et dix vendredis/samedis d’octobre 2026 couverts, dont quatre dates futures après le 22 octobre. Soirée Haunted Coaster à billet spécial ; son prix non trouvé dans les sources accessibles.",
+    "Conditions d’accès et notes tarifaires détaillées stockées mais non affichées par les composants publics actuels ; âges et forfaits non partageables explicités dans les libellés."
+  ],
+  "sources": [
+    "https://www.thebransoncoaster.com/",
+    "https://www.thebransoncoaster.com/faqs",
+    "https://www.thebransoncoaster.com/ride-requirements",
+    "https://www.thebransoncoaster.com/pricing",
+    "https://www.thebransoncoaster.com/buy-tickets",
+    "https://www.thebransoncoaster.com/halloween",
+    "https://rcdb.com/14962.htm",
+    "https://amusementtoday.com/backissues/AT-December-2017-Low.pdf",
+    "https://www.ky3.com/2021/07/09/missouri-state-fire-marshals-office-approves-reopening-branson-coaster/",
+    "https://dfs.dps.mo.gov/about/minutes/ars-11-10-21.pdf",
+    "https://www.wiegandslide.com/en/company-profile.html"
+  ],
+  "articleException": "Récit proportionné aux faits vérifiés de deux sources, deux sections et trois paragraphes ; aucun détail médical ou mécanisme non établi.",
+  "corpus": {
+    "auditedAtUtc": "2026-10-22T21:30:08.578767+00:00",
+    "exportSha256": "30d7b7cdaa6199b04e000e3e6a0c6c9431a60325e8376c1abc8d7a5234e8734b",
+    "localizedStringsReviewed": 632,
+    "localizedGroups": 79,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": {
+    "operationId": "09bf3d13-2b6c-405b-87b0-e552dafeafaa",
+    "previewedAtUtc": "2026-10-22T21:30:25.4507835Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 9,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "publicationNotes": [
+    "Images, histoire et fiche publiées après audit ; historique canonique resynchronisé après visibilité. Cette synchronisation ne constitue pas une nouvelle intégration de données.",
+    "Pages de l’attraction, de son historique et de ses articles contrôlées publiquement dans les huit langues. Le libellé anglais Operating est une traduction valide du statut.",
+    "Les dix règles calendaires Halloween sont enregistrées ; le bloc public contrôlé affiche les horaires habituels/du jour et ne constitue pas une vue du calendrier futur complet."
+  ],
+  "finalAuditAtUtc": "2026-10-22T21:41:08.205Z",
+  "facebook": {
+    "id": "6100888052104e2787d1ec9daa813eef",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-22T21:34:14.2529372Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124209451424431",
+    "externalPostId": "1285475681307050_122124209451424431",
+    "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-22T21:30:18.175446+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-22T21:30:12.485250+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history/271e88ea-2cc4-43e5-a2f5-c6462607df0b/fermeture-enquete-inspection-2021",
+            "status": 200,
+            "textLength": 1698,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1178
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history/271e88ea-2cc4-43e5-a2f5-c6462607df0b/fermeture-enquete-inspection-2021",
+            "status": 200,
+            "textLength": 1604,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1087
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history/271e88ea-2cc4-43e5-a2f5-c6462607df0b/fermeture-enquete-inspection-2021",
+            "status": 200,
+            "textLength": 1676,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1173
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history/271e88ea-2cc4-43e5-a2f5-c6462607df0b/fermeture-enquete-inspection-2021",
+            "status": 200,
+            "textLength": 1613,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1169
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history/271e88ea-2cc4-43e5-a2f5-c6462607df0b/fermeture-enquete-inspection-2021",
+            "status": 200,
+            "textLength": 1657,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1171
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history/271e88ea-2cc4-43e5-a2f5-c6462607df0b/fermeture-enquete-inspection-2021",
+            "status": 200,
+            "textLength": 1702,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1189
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history/271e88ea-2cc4-43e5-a2f5-c6462607df0b/fermeture-enquete-inspection-2021",
+            "status": 200,
+            "textLength": 1592,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1148
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster/history/271e88ea-2cc4-43e5-a2f5-c6462607df0b/fermeture-enquete-inspection-2021",
+            "status": 200,
+            "textLength": 1662,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 1199
+      }
+    ]
+  },
+  "discoveryChecks": {
+    "checkedAtUtc": "2026-10-22T21:37:21.532405+00:00",
+    "evidence": "discovery-checks.json",
+    "checks": [
+      {
+        "entry": "branson",
+        "mode": "all",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+            "text": "The Branson CoasterBransonÉtats-UnisBranson - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      },
+      {
+        "entry": "branson",
+        "mode": "standaloneAttractions",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+            "text": "The Branson CoasterBransonÉtats-UnisBranson - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      },
+      {
+        "entry": "branson",
+        "mode": "attractionsWithStandalone",
+        "found": true,
+        "links": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+            "text": "The Branson CoasterBransonÉtats-UnisBranson - USAttractions isolées seules"
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/72b0aadb-436f-47f0-a978-15610e577f4c/the-branson-coaster",
+            "text": "Ouvrir"
+          }
+        ]
+      }
+    ]
+  }
+}

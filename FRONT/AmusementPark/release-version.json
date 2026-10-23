@@ -1,6 +1,62 @@
 {
-  "version": "6.0.25",
+  "version": "6.0.29",
   "history": [
+    {
+      "version": "6.0.29",
+      "releasedAt": "2026-10-23",
+      "labels": {
+        "fr": "Suggestions à proximité améliorées",
+        "en": "Improved nearby suggestions",
+        "de": "Verbesserte Vorschläge in der Nähe",
+        "nl": "Verbeterde suggesties in de buurt",
+        "it": "Suggerimenti nelle vicinanze migliorati",
+        "es": "Mejoras en las sugerencias cercanas",
+        "pl": "Ulepszone propozycje miejsc w pobliżu",
+        "pt": "Sugestões de locais próximos melhoradas"
+      }
+    },
+    {
+      "version": "6.0.28",
+      "releasedAt": "2026-10-23",
+      "labels": {
+        "fr": "Parcs et attractions réunis dans les suggestions à proximité",
+        "en": "Nearby suggestions now include parks and standalone attractions",
+        "de": "Parks und eigenständige Attraktionen gemeinsam in der Nähe entdecken",
+        "nl": "Parken en losse attracties samen ontdekken in de buurt",
+        "it": "Parchi e attrazioni indipendenti insieme tra i luoghi vicini",
+        "es": "Parques y atracciones independientes juntos en las sugerencias cercanas",
+        "pl": "Parki i samodzielne atrakcje razem w propozycjach w pobliżu",
+        "pt": "Parques e atrações independentes juntos nas sugestões próximas"
+      }
+    },
+    {
+      "version": "6.0.27",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Conditions d’accès et unités des attractions améliorées",
+        "en": "Improved attraction access requirements and measurement units",
+        "de": "Verbesserte Zugangsbedingungen und Maßeinheiten für Attraktionen",
+        "nl": "Verbeterde toegangsvoorwaarden en meeteenheden voor attracties",
+        "it": "Condizioni di accesso e unità di misura delle attrazioni migliorate",
+        "es": "Condiciones de acceso y unidades de medida de las atracciones mejoradas",
+        "pl": "Ulepszone warunki dostępu i jednostki miary atrakcji",
+        "pt": "Condições de acesso e unidades de medida das atrações melhoradas"
+      }
+    },
+    {
+      "version": "6.0.26",
+      "releasedAt": "2026-10-22",
+      "labels": {
+        "fr": "Fiches des attractions isolées allégées",
+        "en": "Clearer standalone attraction pages",
+        "de": "Übersichtlichere Seiten für eigenständige Attraktionen",
+        "nl": "Overzichtelijkere pagina’s voor losstaande attracties",
+        "it": "Pagine delle attrazioni isolate più chiare",
+        "es": "Fichas de atracciones aisladas más claras",
+        "pl": "Czytelniejsze strony samodzielnych atrakcji",
+        "pt": "Páginas das atrações isoladas mais claras"
+      }
+    },
     {
       "version": "6.0.25",
       "releasedAt": "2026-10-22",

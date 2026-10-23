@@ -6,7 +6,7 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 110,
+  "sourceObservationCount": 111,
   "sourceFamilies": [
     "AmusementForce",
     "EAZA",
@@ -16,7 +16,8 @@
     "Sunkid — projet constructeur",
     "WAZA",
     "Wiegand — références constructeur",
-    "Wikipédia (découverte)"
+    "Wikipédia (découverte)",
+    "Stockholm Live — site officiel"
   ],
   "rcdbCountryDirectory": "https://rcdb.com/r.htm?ot=3&ol=26002",
   "notes": [
@@ -24,7 +25,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 9 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 9 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Découverte du 23 octobre 2026 : SkyView, Stockholm, attraction autonome sourcée directement auprès de Stockholm Live et absente du relevé initial."
   ],
   "entries": [
     {
@@ -1991,6 +1993,222 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "SE-candidate-discovery-5993148c7fe7c6",
+      "name": "SkyView Stockholm",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Cabines panoramiques fixes",
+      "locality": "Johanneshov, Stockholm",
+      "siteId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T00:41:48.836Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
+      "possibleMatches": [],
+      "aliases": [
+        "SkyView Stockholm",
+        "SkyView Avicii Arena",
+        "SkyView"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-23T00:40:15.711Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-0ceabdd4-3158-4fad-b2f7-cf0447a96a19",
+          "appliedAt": "2026-10-23T00:32:45.435Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:0ceabdd4-3158-4fad-b2f7-cf0447a96a19",
+          "auditEvidence": null,
+          "summary": "SkyView Stockholm créé depuis les sources de l’exploitant et la recherche anti-doublon"
+        },
+        {
+          "eventId": "apply-879c4e1d-057c-4b3a-974e-26f400fb0072",
+          "appliedAt": "2026-10-23T00:33:25.673Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:879c4e1d-057c-4b3a-974e-26f400fb0072",
+          "auditEvidence": null,
+          "summary": "Horaires réguliers SkyView avec pause déjeuner et fermeture dominicale"
+        },
+        {
+          "eventId": "apply-3ffa1c19-9a23-4e2c-bf4f-2894622d30c1",
+          "appliedAt": "2026-10-23T00:33:49.560Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:3ffa1c19-9a23-4e2c-bf4f-2894622d30c1",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs SkyView officiels et localisés"
+        },
+        {
+          "eventId": "image-1b4436e66be142c4a3d8850df1bc9192",
+          "appliedAt": "2026-10-23T00:34:10.388Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:image:1b4436e66be142c4a3d8850df1bc9192",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-a15cab9ba3a049e88e436451bb2c6f6d",
+          "appliedAt": "2026-10-23T00:34:27.718Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:image:a15cab9ba3a049e88e436451bb2c6f6d",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-a63828d5-8703-4c02-a216-2a4588cc95cd",
+          "appliedAt": "2026-10-23T00:35:34.180Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:a63828d5-8703-4c02-a216-2a4588cc95cd",
+          "auditEvidence": null,
+          "summary": "Capacité maximale par cabine sourcée et localisée"
+        },
+        {
+          "eventId": "apply-40b37737-b8ac-4d57-b128-d508a54c0e60",
+          "appliedAt": "2026-10-23T00:37:06.851Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:40b37737-b8ac-4d57-b128-d508a54c0e60",
+          "auditEvidence": null,
+          "summary": "Ouverture du 5 février 2010 et durée de trajet confirmées par le propriétaire"
+        },
+        {
+          "eventId": "apply-bac19859-12f2-40eb-9607-0a19abee1355",
+          "appliedAt": "2026-10-23T00:37:59.275Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:bac19859-12f2-40eb-9607-0a19abee1355",
+          "auditEvidence": null,
+          "summary": "Histoire de l’ouverture de SkyView en 2010 avec article et sources primaires en huit langues"
+        },
+        {
+          "eventId": "apply-ddc1fc09-3da3-4701-9023-8facfcb5ba7f",
+          "appliedAt": "2026-10-23T00:39:17.644Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:ddc1fc09-3da3-4701-9023-8facfcb5ba7f",
+          "auditEvidence": null,
+          "summary": "Deux photographies authentiques de SkyView publiées avec crédits"
+        },
+        {
+          "eventId": "apply-d36025a6-9515-485e-b61b-8bbcd63719c1",
+          "appliedAt": "2026-10-23T00:39:40.930Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:d36025a6-9515-485e-b61b-8bbcd63719c1",
+          "auditEvidence": null,
+          "summary": "Article historique de 2010 et événement publiés"
+        },
+        {
+          "eventId": "apply-25c74901-e585-41fb-8a82-fb1af20d0769",
+          "appliedAt": "2026-10-23T00:40:15.711Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:25c74901-e585-41fb-8a82-fb1af20d0769",
+          "auditEvidence": null,
+          "summary": "Fiche SkyView Stockholm validée et publiée"
+        },
+        {
+          "eventId": "closure-apply-25c74901-e585-41fb-8a82-fb1af20d0769",
+          "appliedAt": "2026-10-23T00:40:15.711Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+          "evidence": "PARK_DATA_EDITOR:apply:25c74901-e585-41fb-8a82-fb1af20d0769",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-se-20261023/skyview-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 95/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver cette ligne de création et les preuves ; vérifier périodiquement tarifs, créneaux et capacité actuelle, sans republier la même annonce Facebook. Compléter une référence constructeur partagée seulement après audit autonome.",
+      "sources": [
+        {
+          "label": "Stockholm Live — SkyView, tarifs et horaires",
+          "url": "https://aviciiarena.se/en/skyview/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Visit Stockholm — SkyView",
+          "url": "https://www.visitstockholm.com/o/skyview/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://sgafastigheter.se/vara-arenor-fastigheter/skyview/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.mynewsdesk.com/se/stockholm_globe_arena__globen/pressreleases/nu-oeppnar-skyview-en-ny-attraktion-och-ett-landmaerke-i-vaerldsklass-368087",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/84dfb09a-802e-4fe7-a631-f63d0cffeb41/skyview-stockholm",
+          "accessedAt": "2026-10-23"
+        }
+      ],
+      "countryCodeAtInventory": "SE",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
+        "attractions": [
+          {
+            "name": "SkyView",
+            "source": "Stockholm Live — SkyView",
+            "url": "https://aviciiarena.se/en/skyview/",
+            "family": "Cabines panoramiques sur rail",
+            "sourceVenueName": "Avicii Arena",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Johanneshov, Stockholm"
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-25c74901-e585-41fb-8a82-fb1af20d0769 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/84dfb09a-802e-4fe7-a631-f63d0cffeb41/skyview-stockholm",
+          "publishedAtUtc": "2026-10-23T00:40:15.7115507Z",
+          "verifiedAtUtc": "2026-10-23T00:41:48.836Z",
+          "evidence": "PARK_DATA_EDITOR:apply:25c74901-e585-41fb-8a82-fb1af20d0769"
+        },
+        "facebook": {
+          "id": "9e4f6460cb554cd6991cd0d36c457c44",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T00:42:34.3298291Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124223287424431",
+          "externalPostId": "1285475681307050_122124223287424431",
+          "url": "https://amusement-parks.fun/fr/attraction/84dfb09a-802e-4fe7-a631-f63d0cffeb41/skyview-stockholm?facebook-image=1b4436e66be142c4a3d8850df1bc9192"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-se-20261023/skyview-audit.json",
+        "score": 95,
+        "publicationBlockers": [],
+        "gapCount": 4
+      }
     },
     {
       "entryId": "SE-candidate-bef0515bb985d7",

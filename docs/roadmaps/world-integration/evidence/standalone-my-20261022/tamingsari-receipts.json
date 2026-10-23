@@ -1,0 +1,202 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "f797d6ae-1b94-4459-aa05-d0962e6313bd",
+    "appliedAtUtc": "2026-10-22T23:21:03.481052Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-access.apply",
+    "operationId": "30a93aca-4591-4c9a-a534-83fd16d27c9c",
+    "appliedAtUtc": "2026-10-22T23:22:18.3450236Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-hours.apply",
+    "operationId": "c958a5ad-43d8-454a-8455-ae32f5d999c0",
+    "appliedAtUtc": "2026-10-22T23:23:13.3968756Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-pricing.apply",
+    "operationId": "c1f4f521-f962-43ed-9f82-9b500f0e1b90",
+    "appliedAtUtc": "2026-10-22T23:24:16.857263Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-corrected.apply",
+    "operationId": "280a5228-3630-49d4-abb4-9059b8313a67",
+    "appliedAtUtc": "2026-10-22T23:33:02.7920105Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-final.apply",
+    "operationId": "cac310ac-35d0-4fe1-bfb9-9eb694b09483",
+    "appliedAtUtc": "2026-10-22T23:34:22.4306314Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "753f2bc5-a515-4c33-9b23-2a76cd381966",
+    "appliedAtUtc": "2026-10-22T23:31:26.3823002Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "53b6dc0a-4f8f-4b38-8c9f-356617d1e5b6",
+    "appliedAtUtc": "2026-10-22T23:37:20.8187228Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "60ffe0ba-e2d5-4e08-88e3-69ae5a6df243",
+    "appliedAtUtc": "2026-10-22T23:37:44.3826514Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "54735682-dfcb-4b7a-ab29-10139c4df498",
+    "appliedAtUtc": "2026-10-22T23:38:17.6089647Z",
+    "targetStandaloneAttractionId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "d703d96226ff4344aaed82738c82410c",
+    "ownerId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "sourceUrl": "https://www.menaratamingsari.com/wp-content/uploads/2022/12/home-overview-1.png",
+    "updatedAt": "2026-10-22T23:25:33.069Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "efd1f35f39fe468081826c9b87481eda",
+    "ownerId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "sourceUrl": "https://www.menaratamingsari.com/wp-content/uploads/2022/12/hometowei-1-576x1024.png",
+    "updatedAt": "2026-10-22T23:27:01.156Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "999fcfc5fd794223b459c00b174a24b6",
+    "ownerId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "sourceUrl": "https://www.intamin.com/wp-content/uploads/2019/11/dscn0558.jpg",
+    "updatedAt": "2026-10-22T23:27:49.051Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-4-result",
+    "id": "660c928d95bf45468eb9f263dc6b6e95",
+    "ownerId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "sourceUrl": "https://www.menaratamingsari.com/wp-content/uploads/2022/12/river.jpg",
+    "updatedAt": "2026-10-22T23:28:07.203Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-5-result",
+    "id": "2216126be03a4d629c92a38fc910f83e",
+    "ownerId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+    "sourceUrl": "https://www.menaratamingsari.com/wp-content/uploads/2026/09/Menara-Taming-Sari-Best-Observation-Tower-Attraction-FI.jpg",
+    "updatedAt": "2026-10-22T23:29:40.587Z",
+    "isPublished": false
+  }
+]

@@ -170,26 +170,190 @@
     },
     {
       "entryId": "SK-candidate-37f6a177200aa3",
-      "name": "Bachledka Ski & Sun",
-      "entityKind": "ToQualify",
+      "name": "Bobová dráha Bachledka",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB)",
-      "locality": "Ždiar , Prešov",
-      "siteId": null,
+      "category": "Luge alpine sur rails (mountain coaster)",
+      "locality": "Ždiar, région de Prešov",
+      "siteId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T04:01:11.306Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Attraction avec billet propre identifiée ; fiche Park cachée du domaine conservée séparément",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Bobová Dráha",
+        "Bachledka Ski & Sun"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T03:59:55.105Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-dfd0826e-c2b5-42bc-b231-9ab990dad97e",
+          "appliedAt": "2026-10-23T03:47:30.687Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:dfd0826e-c2b5-42bc-b231-9ab990dad97e",
+          "auditEvidence": null,
+          "summary": "Création source officielle de Bobová dráha Bachledka comme attraction standalone distincte du domaine skiable masqué."
+        },
+        {
+          "eventId": "apply-536d9b2e-a08e-46a3-b0f2-b6ada7a1a48f",
+          "appliedAt": "2026-10-23T03:48:41.110Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:536d9b2e-a08e-46a3-b0f2-b6ada7a1a48f",
+          "auditEvidence": null,
+          "summary": "Horaires du domaine distingués de la disponibilité réelle de la piste."
+        },
+        {
+          "eventId": "apply-5af39e67-bb4f-4383-a2c4-3c8ea5699abe",
+          "appliedAt": "2026-10-23T03:49:05.090Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:5af39e67-bb4f-4383-a2c4-3c8ea5699abe",
+          "auditEvidence": null,
+          "summary": "Billet spécifique de la piste, tarif variable et promotion matinale datée documentés."
+        },
+        {
+          "eventId": "apply-a11a778c-1cd9-4864-aac7-a5c5e110394b",
+          "appliedAt": "2026-10-23T03:49:37.127Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:a11a778c-1cd9-4864-aac7-a5c5e110394b",
+          "auditEvidence": null,
+          "summary": "Conditions officielles d’accès enfants, charge maximale et formulaire obligatoire."
+        },
+        {
+          "eventId": "image-cfbf80d32cc04ea48d4e60e43a7d90d0",
+          "appliedAt": "2026-10-23T03:50:09.450Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:image:cfbf80d32cc04ea48d4e60e43a7d90d0",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-df931aaead0e43bf935239200ef6dd46",
+          "appliedAt": "2026-10-23T03:50:26.302Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:image:df931aaead0e43bf935239200ef6dd46",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-50b0faab22c24921934d6e92ed4db924",
+          "appliedAt": "2026-10-23T03:50:42.541Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:image:50b0faab22c24921934d6e92ed4db924",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-569b25e0-a2c8-4ee6-ba4e-66b7dc443b2b",
+          "appliedAt": "2026-10-23T03:51:49.076Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:569b25e0-a2c8-4ee6-ba4e-66b7dc443b2b",
+          "auditEvidence": null,
+          "summary": "Historique sourcé de la réouverture du 8 août 2026 et article en huit langues."
+        },
+        {
+          "eventId": "apply-3399aea5-3cc1-4b02-a2b9-eea149b4b85f",
+          "appliedAt": "2026-10-23T03:53:44.826Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:3399aea5-3cc1-4b02-a2b9-eea149b4b85f",
+          "auditEvidence": null,
+          "summary": "Légendes photographiques distinctes des textes alternatifs, relues dans huit langues."
+        },
+        {
+          "eventId": "apply-dd542ebe-0dae-40ea-9267-67c2adb12e73",
+          "appliedAt": "2026-10-23T03:54:35.086Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:dd542ebe-0dae-40ea-9267-67c2adb12e73",
+          "auditEvidence": null,
+          "summary": "Crédits image individualisés pour distinguer les trois photographies du domaine."
+        },
+        {
+          "eventId": "apply-b1a23364-fe33-4ae0-a031-476b6a441aab",
+          "appliedAt": "2026-10-23T03:55:24.415Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:b1a23364-fe33-4ae0-a031-476b6a441aab",
+          "auditEvidence": null,
+          "summary": "Résumé d’article historique distinct de la chronologie et relu dans huit langues."
+        },
+        {
+          "eventId": "apply-1a0cbd36-5ed4-4b9b-9326-de062b503b95",
+          "appliedAt": "2026-10-23T03:57:16.890Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:1a0cbd36-5ed4-4b9b-9326-de062b503b95",
+          "auditEvidence": null,
+          "summary": "Publication des trois photographies officielles de la piste."
+        },
+        {
+          "eventId": "apply-5ddc14c0-cf17-44eb-b4ce-d60f443b09f9",
+          "appliedAt": "2026-10-23T03:57:44.467Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:5ddc14c0-cf17-44eb-b4ce-d60f443b09f9",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie et de l’article sourcé sur la réouverture."
+        },
+        {
+          "eventId": "apply-7bf50482-cffe-4cae-a38c-158df6fe00f8",
+          "appliedAt": "2026-10-23T03:58:08.580Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:7bf50482-cffe-4cae-a38c-158df6fe00f8",
+          "auditEvidence": null,
+          "summary": "Publication de Bobová dráha Bachledka après audit de complétude sans blocage."
+        },
+        {
+          "eventId": "apply-bb0de98e-33cc-46ee-bba0-2810f9219c76",
+          "appliedAt": "2026-10-23T03:59:55.105Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:bb0de98e-33cc-46ee-bba0-2810f9219c76",
+          "auditEvidence": null,
+          "summary": "Correction de l’association des légendes et crédits aux photos passagers et tracé."
+        },
+        {
+          "eventId": "closure-apply-bb0de98e-33cc-46ee-bba0-2810f9219c76",
+          "appliedAt": "2026-10-23T03:59:55.105Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+          "evidence": "PARK_DATA_EDITOR:apply:bb0de98e-33cc-46ee-bba0-2810f9219c76",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sk-20261023/bachledka-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 76/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "RCDB",
@@ -200,11 +364,41 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13046.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.sk/bobova-draha",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.sk/najdlhsia-bobova-draha-v-tatrach-je-spat-otvarame-zrekonstruovanu-adrenalinovu-atrakciu-a-uplne-novu-gulockovu-drahu",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.sk/formular-na-jazdu-bobovou-drahou",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.sk/wp-content/uploads/2015/12/Podmienky_pouzivania_bobovej_drahy_PREVADZKOVY_PORIADOK_SK.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://bachledka.skiperformance.com/sk/product/vstupenky/bobova-draha/5709/34694",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Bobová Dráha",
@@ -217,7 +411,30 @@
             "sourceOpenedYear": "2011"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billet et page officiels propres à la piste. Parcours dans Bachledka Ski & Sun, dont la coquille Park masquée Ski Bachledova (65adf2a3-25b8-41e1-8886-62de562d00ae) reste dans le backlog pour intégration du domaine ; aucune migration ni fermeture de cette coquille. La date du 8 août 2026 est une réouverture après prolongation, non une ouverture initiale."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+          "publishedAtUtc": "2026-10-23T03:58:08.5800513Z",
+          "verifiedAtUtc": "2026-10-23T04:01:11.306Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7bf50482-cffe-4cae-a38c-158df6fe00f8"
+        },
+        "facebook": {
+          "id": "4398965538654f76927ad2410b316465",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T04:00:25.6815559Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124237021424431",
+          "externalPostId": "1285475681307050_122124237021424431",
+          "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka?facebook-image=cfbf80d32cc04ea48d4e60e43a7d90d0"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sk-20261023/bachledka-audit.json",
+        "score": 76,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -644,28 +861,161 @@
     {
       "entryId": "SK-candidate-standalone-04c8ea259b65a0",
       "name": "Luge Wiegand — Kosice",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "category": "Summer toboggan run",
+      "locality": "Košice-Kavečany",
+      "siteId": "256948c2-8731-422e-bc5c-016970bbf5fe",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T04:57:18.171Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Kosice"
+        "Kosice",
+        "Bobovka Košice",
+        "Letná bobová dráha Kavečany"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T04:56:15.812Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-5ef95934-00c3-4a05-a115-49417af1f321",
+          "appliedAt": "2026-10-23T04:47:16.738Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:5ef95934-00c3-4a05-a115-49417af1f321",
+          "auditEvidence": null,
+          "summary": "Création de la luge autonome de Košice-Kavečany, distincte du zoo voisin, avec description en huit langues et dimensions sourcées"
+        },
+        {
+          "eventId": "apply-4bcf7028-f37d-4d43-a384-7004d9f644a1",
+          "appliedAt": "2026-10-23T04:47:43.516Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:4bcf7028-f37d-4d43-a384-7004d9f644a1",
+          "auditEvidence": null,
+          "summary": "Horaires variables : renvoi de l’exploitant à son statut du jour et fermeture par mauvais temps"
+        },
+        {
+          "eventId": "apply-ed45a754-8733-4093-89fe-3be91411b0fd",
+          "appliedAt": "2026-10-23T04:48:19.500Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:ed45a754-8733-4093-89fe-3be91411b0fd",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs par catégorie et carnet, avec réserve explicite sur la fraîcheur de la page exploitant"
+        },
+        {
+          "eventId": "apply-99f2e7b9-f3c0-4e96-a998-5addca8c63db",
+          "appliedAt": "2026-10-23T04:49:00.640Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:99f2e7b9-f3c0-4e96-a998-5addca8c63db",
+          "auditEvidence": null,
+          "summary": "Conditions opérateur : accompagnement des enfants, gratuité sous six ans, météo et freinage"
+        },
+        {
+          "eventId": "image-90d1ba4f9be94a2888252afeec67930c",
+          "appliedAt": "2026-10-23T04:49:47.246Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:image:90d1ba4f9be94a2888252afeec67930c",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-a3f38a1ec7664484b893c4955f3588de",
+          "appliedAt": "2026-10-23T04:50:06.306Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:image:a3f38a1ec7664484b893c4955f3588de",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-d4a3dd5cfcdb453ea218536ea0adf5d6",
+          "appliedAt": "2026-10-23T04:50:22.458Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:image:d4a3dd5cfcdb453ea218536ea0adf5d6",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-b60d2598-8caf-4fed-b376-fde7278e8c12",
+          "appliedAt": "2026-10-23T04:51:44.297Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:b60d2598-8caf-4fed-b376-fde7278e8c12",
+          "auditEvidence": null,
+          "summary": "Événement documentaire daté 2009, sans inventer l’ouverture, et article sur l’autonomie de la piste en huit langues"
+        },
+        {
+          "eventId": "apply-515c5df4-0d18-4a74-985c-47085f3a78ff",
+          "appliedAt": "2026-10-23T04:53:18.815Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:515c5df4-0d18-4a74-985c-47085f3a78ff",
+          "auditEvidence": null,
+          "summary": "Modèle et source constructeur renseignés ; article enrichi d’un troisième paragraphe distinct sur les règles actuelles"
+        },
+        {
+          "eventId": "apply-7b55937b-8f2a-4b64-80d2-9fc2fa4df67e",
+          "appliedAt": "2026-10-23T04:55:06.362Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:7b55937b-8f2a-4b64-80d2-9fc2fa4df67e",
+          "auditEvidence": null,
+          "summary": "Publication de trois images de la galerie officielle, avec signature JES, source, alt et légendes multilingues"
+        },
+        {
+          "eventId": "apply-599886ad-d881-4d3d-8d26-34c00b22ccfc",
+          "appliedAt": "2026-10-23T04:55:34.142Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:599886ad-d881-4d3d-8d26-34c00b22ccfc",
+          "auditEvidence": null,
+          "summary": "Publication de l’attestation historique de 2009 et de l’article en huit langues"
+        },
+        {
+          "eventId": "apply-4899dec7-05f9-486d-8263-d4e4a7b0373e",
+          "appliedAt": "2026-10-23T04:56:15.812Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:4899dec7-05f9-486d-8263-d4e4a7b0373e",
+          "auditEvidence": null,
+          "summary": "Validation éditoriale et publication de Bobová dráha Košice–Kavečany comme destination standalone"
+        },
+        {
+          "eventId": "closure-apply-4899dec7-05f9-486d-8263-d4e4a7b0373e",
+          "appliedAt": "2026-10-23T04:56:15.812Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+          "evidence": "PARK_DATA_EDITOR:apply:4899dec7-05f9-486d-8263-d4e4a7b0373e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sk-20261023/kosice-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 88/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -676,11 +1026,51 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.bobovadrahake.sk",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadrahake.sk/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.bobovadrahake.sk/pravidla.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://kosicekavecany.sk/navstevnik/letna-bobova-draha/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://visitkosice.org/vidiet-a-zazit/bobova-draha",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://slovakregion.sk/sport-0",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.keturist.sk/info/bobova-draha-kosice-kavecany-otvaracia-doba/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.krasneslovensko.eu/kosicky-kraj/bobova-draha-kosice-kavecany",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Kosice",
@@ -691,7 +1081,30 @@
             "referenceId": "location-id-1377"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Billetterie autonome de la piste avant l’entrée du zoo selon l’exploitant, la municipalité et Visit Košice ; aucune fiche Park/Standalone correspondante dans l’éditeur. Fiche standalone créée et publiée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany",
+          "publishedAtUtc": "2026-10-23T04:56:15.8127589Z",
+          "verifiedAtUtc": "2026-10-23T04:57:18.171Z",
+          "evidence": "PARK_DATA_EDITOR:apply:4899dec7-05f9-486d-8263-d4e4a7b0373e"
+        },
+        "facebook": {
+          "id": "6ccfe18538c04590b1895cb8aeb50b43",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T04:57:56.0736324Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124242967424431",
+          "externalPostId": "1285475681307050_122124242967424431",
+          "url": "https://amusement-parks.fun/fr/attraction/256948c2-8731-422e-bc5c-016970bbf5fe/bobova-draha-kosice-kavecany?facebook-image=90d1ba4f9be94a2888252afeec67930c"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sk-20261023/kosice-audit.json",
+        "score": 88,
+        "publicationBlockers": [],
+        "gapCount": 5
       }
     },
     {
@@ -898,7 +1311,7 @@
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": null,
-      "locality": null,
+      "locality": "Ždiar, région de Prešov",
       "siteId": "65adf2a3-25b8-41e1-8886-62de562d00ae",
       "legacySiteIds": [],
       "presence": "Hidden",
@@ -909,16 +1322,23 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Bachledka Ski & Sun"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Intégrer éditorialement le domaine Bachledka Ski & Sun sur cette fiche Park masquée. Sa luge alpine Bobová dráha Bachledka est publiée séparément comme standalone (SK-candidate-37f6a177200aa3) : conserver le lien, éviter de recréer la même attraction.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — domaine et luge alpine",
+          "url": "https://bachledka.sk/bobova-draha",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "SK",
@@ -986,26 +1406,164 @@
     },
     {
       "entryId": "SK-park-c0d9c7fa-c8fa-435b-b24b-659217ab68be",
-      "name": "Tatrabob Tatranska Lomnica",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "c0d9c7fa-c8fa-435b-b24b-659217ab68be",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "name": "Tatrabob",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": "Tatranská Lomnica, Vysoké Tatry",
+      "siteId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+      "legacySiteIds": [
+        "c0d9c7fa-c8fa-435b-b24b-659217ab68be"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T04:39:20.870Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identité et autonomie confirmées ; migration appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Tatrabob Tatranska Lomnica",
+        "Alpine Coaster",
+        "Horská dráha Tatrabob",
+        "Bobová dráha Tatrabob"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T04:37:41.481Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-07251296-3c29-4b69-be4b-26df47abb7e1",
+          "appliedAt": "2026-10-23T04:29:30.217Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:07251296-3c29-4b69-be4b-26df47abb7e1",
+          "auditEvidence": null,
+          "summary": "Conversion du Park masqué mono-attraction Tatrabob en standalone ; contenu éditorial, données exploitant et identité migrée sans doublon"
+        },
+        {
+          "eventId": "apply-a84ef185-9eca-44e5-aff9-696033d5c1da",
+          "appliedAt": "2026-10-23T04:29:58.867Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:a84ef185-9eca-44e5-aff9-696033d5c1da",
+          "auditEvidence": null,
+          "summary": "Note officielle sur les horaires variables et incohérents ; aucun horaire hebdomadaire inventé"
+        },
+        {
+          "eventId": "apply-9daf795e-1d01-4ebc-98e2-2ef9ce2851f6",
+          "appliedAt": "2026-10-23T04:30:22.698Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:9daf795e-1d01-4ebc-98e2-2ef9ce2851f6",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels actuels en euros pour quatre catégories de billet un trajet"
+        },
+        {
+          "eventId": "apply-a39addb6-aea8-489d-a87f-da4f0ffb86ad",
+          "appliedAt": "2026-10-23T04:30:54.706Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:a39addb6-aea8-489d-a87f-da4f0ffb86ad",
+          "auditEvidence": null,
+          "summary": "Conditions opérateur : moins de trois ans, charge maximale 120 kg et freinage manuel"
+        },
+        {
+          "eventId": "image-f50eadc14f114fb2b7c1d7312bb131b4",
+          "appliedAt": "2026-10-23T04:31:30.888Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:image:f50eadc14f114fb2b7c1d7312bb131b4",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-7ba781618f4b4b1a81400a7ef0260ee9",
+          "appliedAt": "2026-10-23T04:31:47.147Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:image:7ba781618f4b4b1a81400a7ef0260ee9",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-6d7aa9e78787460f8817744483436ce8",
+          "appliedAt": "2026-10-23T04:32:27.460Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:image:6d7aa9e78787460f8817744483436ce8",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-2978b269-bbe2-45c9-9c23-de4de9b1db6b",
+          "appliedAt": "2026-10-23T04:33:29.824Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:2978b269-bbe2-45c9-9c23-de4de9b1db6b",
+          "auditEvidence": null,
+          "summary": "Chronologie et article d’ouverture limitée à août 2004, sourcés par Visit Tatry et Prešov Region"
+        },
+        {
+          "eventId": "apply-51ed7a20-bf3e-47df-98ff-1a7dd0111b59",
+          "appliedAt": "2026-10-23T04:35:12.369Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:51ed7a20-bf3e-47df-98ff-1a7dd0111b59",
+          "auditEvidence": null,
+          "summary": "Texte public recentré sur le parcours ; longueur officielle conservée dans le champ technique structuré"
+        },
+        {
+          "eventId": "apply-a57a17c2-bdca-4cd9-a957-b4ce341952b6",
+          "appliedAt": "2026-10-23T04:36:52.438Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:a57a17c2-bdca-4cd9-a957-b4ce341952b6",
+          "auditEvidence": null,
+          "summary": "Publication des trois photographies officielles avec alt, légendes, crédits et source"
+        },
+        {
+          "eventId": "apply-b9c36b91-bfee-451e-8a73-1463fe5c8b5b",
+          "appliedAt": "2026-10-23T04:37:17.332Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:b9c36b91-bfee-451e-8a73-1463fe5c8b5b",
+          "auditEvidence": null,
+          "summary": "Publication de l’événement août 2004 et de son article historique en huit langues"
+        },
+        {
+          "eventId": "apply-03278609-7e9d-4dfc-81dc-2150825b91f6",
+          "appliedAt": "2026-10-23T04:37:41.481Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:03278609-7e9d-4dfc-81dc-2150825b91f6",
+          "auditEvidence": null,
+          "summary": "Validation éditoriale et publication de la fiche standalone Tatrabob"
+        },
+        {
+          "eventId": "closure-apply-03278609-7e9d-4dfc-81dc-2150825b91f6",
+          "appliedAt": "2026-10-23T04:37:41.481Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+          "evidence": "PARK_DATA_EDITOR:apply:03278609-7e9d-4dfc-81dc-2150825b91f6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sk-20261023/tatrabob-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 81/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1021,13 +1579,58 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14792.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tatrabob.sk/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tatrabob.sk/specifications",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tatrabob.sk/pricelist",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tatrabob.sk/instructions",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tatrabob.sk/contact",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tatrabob.sk/gallery",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.tatry.sk/bobova-draha-tatrabob/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://presovregion.travel/vylet/horska-draha-a-lukostrelba/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "SK",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Tatrabob",
@@ -1040,7 +1643,30 @@
             "sourceOpenedYear": "2004"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Fiche Park masquée avec un seul ParkItem Tatrabob et aucune zone ; billetterie autonome et site officiel Tatrabob. Migration vers StandaloneAttraction appliquée sans doublon, Park et ParkItem hérités retirés."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob",
+          "publishedAtUtc": "2026-10-23T04:37:41.4819236Z",
+          "verifiedAtUtc": "2026-10-23T04:39:20.870Z",
+          "evidence": "PARK_DATA_EDITOR:apply:03278609-7e9d-4dfc-81dc-2150825b91f6"
+        },
+        "facebook": {
+          "id": "a1cf823f725c4f908559f3a7c7385d1e",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T04:40:10.4185122Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124240831424431",
+          "externalPostId": "1285475681307050_122124240831424431",
+          "url": "https://amusement-parks.fun/fr/attraction/40a2ebdd-d891-4821-8305-1d4c88f5ec6d/tatrabob?facebook-image=f50eadc14f114fb2b7c1d7312bb131b4"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sk-20261023/tatrabob-audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 5
       }
     },
     {

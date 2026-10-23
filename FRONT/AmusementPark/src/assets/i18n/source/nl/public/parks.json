@@ -54,18 +54,19 @@
         "subtitle": "Bekijk de momenteel gedocumenteerde locatie en coördinaten."
       },
       "nearby": {
-        "title": "Nabijgelegen parken",
-        "subtitle": "Ontdek andere geopende parken rond deze bestemming.",
-        "alternativesTitle": "Geopende alternatieven in de buurt",
-        "alternativesSubtitle": "Ontdek parken die momenteel open zijn in de buurt van deze gedocumenteerde locatie.",
-        "loadingTitle": "Laden nearby parks",
-        "loadingMessage": "Nabijgelegen parken worden geladen.",
-        "errorTitle": "Kan niet laden nearby parks",
-        "errorMessage": "Nearby parks kon niet worden geladen.",
-        "emptyTitle": "Geen nearby park",
-        "emptyMessage": "Er is geen nabijgelegen park rond deze bestemming gevonden.",
-        "closestTitle": "Dichtstbijzijnde park",
-        "distanceNote": "Geschatte afstand in vogelvlucht vanaf dit park."
+        "title": "In de buurt",
+        "subtitle": "Ontdek de dichtstbijzijnde parken en losse attracties.",
+        "alternativesTitle": "Meer te ontdekken in de buurt",
+        "alternativesSubtitle": "Ontdek parken en losse attracties rond deze plek.",
+        "loadingTitle": "Plekken in de buurt laden",
+        "loadingMessage": "Plekken in de buurt worden geladen.",
+        "errorTitle": "Plekken in de buurt laden mislukt",
+        "errorMessage": "De plekken in de buurt konden niet worden geladen.",
+        "emptyTitle": "Geen plekken in de buurt",
+        "emptyMessage": "Er zijn geen parken of losse attracties in de buurt gevonden.",
+        "closestTitle": "Dichtstbijzijnde plek",
+        "distanceNote": "Geschatte afstand in vogelvlucht vanaf deze plek.",
+        "viewDestination": "Bekijk de details"
       },
       "description": {
         "badge": "Overzicht",

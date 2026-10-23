@@ -1,0 +1,162 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "0ceabdd4-3158-4fad-b2f7-cf0447a96a19",
+    "appliedAtUtc": "2026-10-23T00:32:45.4351171Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "879c4e1d-057c-4b3a-974e-26f400fb0072",
+    "appliedAtUtc": "2026-10-23T00:33:25.6731399Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "3ffa1c19-9a23-4e2c-bf4f-2894622d30c1",
+    "appliedAtUtc": "2026-10-23T00:33:49.5607911Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "a63828d5-8703-4c02-a216-2a4588cc95cd",
+    "appliedAtUtc": "2026-10-23T00:35:34.1806445Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-core.apply",
+    "operationId": "40b37737-b8ac-4d57-b128-d508a54c0e60",
+    "appliedAtUtc": "2026-10-23T00:37:06.8517896Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "bac19859-12f2-40eb-9607-0a19abee1355",
+    "appliedAtUtc": "2026-10-23T00:37:59.2758555Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "ddc1fc09-3da3-4701-9023-8facfcb5ba7f",
+    "appliedAtUtc": "2026-10-23T00:39:17.6440401Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "d36025a6-9515-485e-b61b-8bbcd63719c1",
+    "appliedAtUtc": "2026-10-23T00:39:40.9300227Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "25c74901-e585-41fb-8a82-fb1af20d0769",
+    "appliedAtUtc": "2026-10-23T00:40:15.7115507Z",
+    "targetStandaloneAttractionId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "1b4436e66be142c4a3d8850df1bc9192",
+    "ownerId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "sourceUrl": "https://img-src.cloud/145f87/uploads/2024/04/skyview-exterior-2050-1.jpg?w=1024&s=Fle6bS",
+    "updatedAt": "2026-10-23T00:34:10.388Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "a15cab9ba3a049e88e436451bb2c6f6d",
+    "ownerId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+    "sourceUrl": "https://www.visitstockholm.com/media/images/f066043cd5494f00a747522d73c3c61e.width-1280.jpg",
+    "updatedAt": "2026-10-23T00:34:27.718Z",
+    "isPublished": false
+  }
+]

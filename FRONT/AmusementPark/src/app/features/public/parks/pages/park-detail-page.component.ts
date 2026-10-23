@@ -28,13 +28,11 @@ export class ParkDetailPageComponent implements OnInit {
   protected readonly heroImageSizes: string = PARK_DETAIL_HERO_IMAGE_SIZES;
   protected readonly heroImageSrcWidth: number = PARK_DETAIL_HERO_IMAGE_WIDTH;
   protected readonly state = this.stateFacade.state;
-  protected readonly nearbyState = this.stateFacade.nearbyState;
   protected readonly weatherState = this.stateFacade.weatherState;
   protected readonly openingHoursState = this.stateFacade.openingHoursState;
   protected readonly park = this.stateFacade.park;
   protected readonly weather = this.stateFacade.weather;
   protected readonly openingHours = this.stateFacade.openingHours;
-  protected readonly nearbyParks = this.stateFacade.nearbyParks;
   protected readonly summary = this.stateFacade.summary;
   protected readonly socialImageId = this.stateFacade.socialImageId;
   protected readonly liveState = this.liveStateFacade.state;

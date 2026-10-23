@@ -299,10 +299,14 @@ test('the standalone attraction remains autonomous and preserves every practical
     '[href]="websiteUrl"',
     '[innerHTML]="description() | safeRichHtml"',
     '<app-standalone-attraction-pricing-card',
+    '<app-attraction-access-conditions',
+    '[conditions]="accessConditions()"',
     '<app-park-opening-hours-card',
     '<app-park-weather-card',
     '*ngIf="hasCoordinates()"',
     '<app-leaflet-map',
+    '<app-park-nearby-section',
+    'sourceKind="StandaloneAttraction"',
   ]) {
     assert.ok(standaloneTemplate.includes(contract), `${contract} must remain in the standalone attraction detail`);
   }

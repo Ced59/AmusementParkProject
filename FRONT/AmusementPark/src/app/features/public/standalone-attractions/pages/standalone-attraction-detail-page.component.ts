@@ -9,6 +9,12 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { TranslationService } from '@app/services/translation.service';
+import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
+import { buildAccessConditions } from '../../park-items/mappers/park-item-detail-access.mapper';
+import { ParkItemAccessConditionViewModel } from '../../park-items/models/park-item-detail-view.model';
+import { ParkNearbySectionComponent } from '../../parks/ui/park-nearby-section.component';
+import { AttractionAccessConditionsComponent } from '../../park-items/ui/attraction-access-conditions.component';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { StandaloneAttractionsApiService } from '@data-access/standalone-attractions/standalone-attractions-api.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
@@ -49,7 +55,6 @@ interface StandaloneAttractionPublicCopy {
   location: string;
   details: string;
   description: string;
-  visibleDataOnly: string;
   country: string;
   city: string;
   address: string;
@@ -78,7 +83,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Localisation',
     details: 'Détails',
     description: 'Description',
-    visibleDataOnly: 'Données publiques disponibles',
     country: 'Pays',
     city: 'Ville',
     address: 'Adresse',
@@ -105,7 +109,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Location',
     details: 'Details',
     description: 'Description',
-    visibleDataOnly: 'Available public data',
     country: 'Country',
     city: 'City',
     address: 'Address',
@@ -132,7 +135,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Ubicación',
     details: 'Detalles',
     description: 'Descripción',
-    visibleDataOnly: 'Datos públicos disponibles',
     country: 'País',
     city: 'Ciudad',
     address: 'Dirección',
@@ -159,7 +161,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Standort',
     details: 'Details',
     description: 'Beschreibung',
-    visibleDataOnly: 'Verfügbare öffentliche Daten',
     country: 'Land',
     city: 'Stadt',
     address: 'Adresse',
@@ -186,7 +187,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Posizione',
     details: 'Dettagli',
     description: 'Descrizione',
-    visibleDataOnly: 'Dati pubblici disponibili',
     country: 'Paese',
     city: 'Città',
     address: 'Indirizzo',
@@ -213,7 +213,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Locatie',
     details: 'Details',
     description: 'Beschrijving',
-    visibleDataOnly: 'Beschikbare openbare gegevens',
     country: 'Land',
     city: 'Stad',
     address: 'Adres',
@@ -240,7 +239,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Lokalizacja',
     details: 'Szczegóły',
     description: 'Opis',
-    visibleDataOnly: 'Dostępne dane publiczne',
     country: 'Kraj',
     city: 'Miasto',
     address: 'Adres',
@@ -267,7 +265,6 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Localização',
     details: 'Detalhes',
     description: 'Descrição',
-    visibleDataOnly: 'Dados públicos disponíveis',
     country: 'País',
     city: 'Cidade',
     address: 'Endereço',
@@ -290,13 +287,15 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
 @Component({
   selector: 'app-standalone-attraction-detail-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, TranslateModule, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent, ParkOpeningHoursCardComponent, ParkWeatherCardComponent, StandaloneAttractionPricingCardComponent],
+  imports: [CommonModule, RouterLink, TranslateModule, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent, ParkOpeningHoursCardComponent, ParkWeatherCardComponent, StandaloneAttractionPricingCardComponent, AttractionAccessConditionsComponent, ParkNearbySectionComponent],
   templateUrl: './standalone-attraction-detail-page.component.html',
   styleUrl: './standalone-attraction-detail-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [StandaloneAttractionDetailReferenceFacade, StandaloneAttractionVisitorInformationFacade]
 })
 export class StandaloneAttractionDetailPageComponent implements OnInit {
+  private readonly measurementPreferenceService = inject(MeasurementPreferenceService);
+  private readonly measurementConversionService = inject(MeasurementConversionService);
   private readonly referenceFacade: StandaloneAttractionDetailReferenceFacade = inject(StandaloneAttractionDetailReferenceFacade);
   private readonly visitorInformationFacade: StandaloneAttractionVisitorInformationFacade = inject(StandaloneAttractionVisitorInformationFacade);
   protected readonly state = signal<ScreenState<StandaloneAttraction, string>>({ kind: 'loading' });
@@ -310,6 +309,12 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
   protected readonly weather = this.visitorInformationFacade.weather;
   protected readonly weatherState = this.visitorInformationFacade.weatherState;
   protected readonly currentLanguage = signal<string>('en');
+  protected readonly accessConditions = computed<ParkItemAccessConditionViewModel[]>(() => {
+    const current: StandaloneAttraction | null = this.attraction();
+    return current
+      ? buildAccessConditions(current, this.currentLanguage(), this.measurementPreferenceService.preferredSystem(), this.measurementConversionService)
+      : [];
+  });
   protected readonly heroImage = computed<ImageDto | null>(() => this.photos()[0] ?? null);
   protected readonly hasCoordinates = computed<boolean>(() => {
     const current: StandaloneAttraction | null = this.attraction();
@@ -361,7 +366,9 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
         duration: this.t('duration')
       },
       this.manufacturerName(),
-      (value: number | null | undefined, suffix: string): string => this.formatMetric(value, suffix)
+      this.currentLanguage(),
+      this.measurementPreferenceService.preferredSystem(),
+      this.measurementConversionService
     );
   });
 
@@ -516,14 +523,6 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
       })),
       this.heroImage()?.id ?? null
     );
-  }
-
-  private formatMetric(value: number | null | undefined, suffix: string): string {
-    if (value === null || value === undefined || !Number.isFinite(value)) {
-      return '';
-    }
-
-    return `${new Intl.NumberFormat(this.currentLanguage()).format(value)} ${suffix}`;
   }
 
   private formatCoordinates(current: StandaloneAttraction): string {

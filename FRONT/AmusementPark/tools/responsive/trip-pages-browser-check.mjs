@@ -32,7 +32,10 @@ const componentStyles = [
   'src/app/features/public/home/pages/home.component.scss',
   'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
   'src/app/features/public/parks/ui/park-location-section.component.scss',
+  'src/app/features/public/parks/ui/park-nearby-section.component.scss',
   'src/app/features/public/parks/ui/park-detail-view.component.scss',
+  'src/app/features/public/standalone-attractions/pages/standalone-attraction-detail-page.component.scss',
+  'src/app/features/public/park-items/ui/attraction-access-conditions.component.scss',
   'src/app/features/public/ratings/ui/rating-stars.component.scss',
   'src/app/ui/layouts/cookie-consent-banner/cookie-consent-banner.component.scss',
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
@@ -84,6 +87,34 @@ if (!chromeExecutable) {
 
 const fixtureMarkup = `
   <div class="responsive-fixture-host">
+    <section class="standalone-attraction-page" data-check-bound data-access-fixture="standalone">
+      <div class="standalone-body">
+        <main class="standalone-main">
+          <section class="detail-panel access-panel" data-check-bound>
+            <h2>Conditions d’accès aux attractions isolées</h2>
+            <div class="access-condition-grid">
+              <article class="access-condition-card" data-access-kind="height" data-access-tone="height" data-check-bound>
+                <span class="access-condition-card__icon">↕</span>
+                <div class="access-condition-card__content">
+                  <h3>Tailles minimales et maximales autorisées</h3>
+                  <div class="height-requirement-summary">
+                    ${['Taille minimale sans accompagnateur', 'Taille minimale avec accompagnateur', 'Taille maximale autorisée'].map(label => `<article class="height-requirement-summary__item" data-check-bound><span class="height-requirement-summary__label">${label}</span><strong>4 ft 3 in</strong><small>Les conditions d’accompagnement doivent rester lisibles même avec un texte agrandi.</small></article>`).join('')}
+                  </div>
+                </div>
+              </article>
+              ${['Restriction médicale avec une description longue', 'Poids total maximal des occupants'].map(label => `<article class="access-condition-card" data-access-tone="restriction" data-check-bound><span class="access-condition-card__icon">!</span><div class="access-condition-card__content"><h3>${label}</h3><p>ConditionPersonnaliséeAvecUnLibelléTrèsLongSansEspacesPourVérifierLeRetourÀLaLigne</p><div class="detail-data-row" data-check-bound><span class="detail-data-row__icon">+</span><span class="detail-data-row__label">Âge minimum de l’accompagnateur</span><strong class="detail-data-row__value">16 ans</strong></div></div></article>`).join('')}
+            </div>
+          </section>
+        </main>
+        <aside class="standalone-sidebar"><section class="standalone-panel" data-check-bound><span>Vitesse</span><strong>60 mph</strong></section></aside>
+      </div>
+    </section>
+    <section class="park-nearby public-page" data-check-bound data-nearby-fixture="mixed">
+      <h2>Parcs et attractions à découvrir à proximité</h2>
+      <div class="park-nearby__grid">
+        ${['Parc de la vallée aux montagnes', 'Luge alpine panoramique des montagnes', 'Parc des grandes aventures en famille', 'Grande roue au bord du fleuve'].map((name, index) => `<article class="ui-park-card ui-park-card--compact" data-check-bound><div class="ui-park-card__body"><div class="ui-park-card__headline"><h3 class="ui-park-card__title">${name}</h3></div><p class="ui-park-card__description">Découvre ce lieu à proximité et les informations utiles pour ta visite.</p><div class="ui-park-card__details"><div class="ui-park-card__detail ui-park-card__detail--distance"><span class="ui-park-card__label">Distance</span><strong>${index + 1},6 mi</strong></div></div></div><div class="ui-park-card__footer"><a class="ui-park-card__cta" href="#nearby-${index}">Voir les informations de cette destination</a></div></article>`).join('')}
+      </div>
+    </section>
     <section class="photo-carousel-panel" data-check-bound>
       <div class="photo-carousel-explorer">
         <aside class="photo-carousel-tags"><button class="photo-carousel-axis photo-carousel-axis--tag"><span>Photographies du château et des jardins</span><strong>24</strong></button></aside>

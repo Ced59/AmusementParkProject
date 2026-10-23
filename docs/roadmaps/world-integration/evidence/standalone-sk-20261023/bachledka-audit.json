@@ -1,0 +1,299 @@
+{
+  "name": "Bobová dráha Bachledka",
+  "standaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+  "qualification": "Piste alpine à billet propre et page officielle dans le domaine Bachledka Ski & Sun, distincte du Park masqué Ski Bachledova 65adf2a3-25b8-41e1-8886-62de562d00ae. Recherches API Park/Standalone Bachledka SK et Bobová dráha mondiale : aucune fiche de cette piste. Création sans migration ni suppression de la fiche du domaine.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 76,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 4,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 0,
+    "admissionOffers": 1
+  },
+  "gaps": [
+    "Le domaine affiche ses horaires généraux sans garantir ceux de la piste chaque jour ; aucun horaire hebdomadaire propre à la luge n’a été inventé.",
+    "La promotion matinale de 9 € est limitée à une fenêtre commerciale en octobre 2026 ; prix structuré dynamique pour éviter une valeur périmée.",
+    "L’exploitant ne donne pas l’année initiale de la piste. Le 8 août 2026 est une réouverture après modernisation, pas une première inauguration.",
+    "Crédit des photos attribué au domaine, photographe individuel non identifié. Coordonnées GPS exactes de la piste non publiées dans une source opérateur vérifiée."
+  ],
+  "sources": [
+    "https://bachledka.sk/bobova-draha",
+    "https://bachledka.sk/najdlhsia-bobova-draha-v-tatrach-je-spat-otvarame-zrekonstruovanu-adrenalinovu-atrakciu-a-uplne-novu-gulockovu-drahu",
+    "https://bachledka.sk/formular-na-jazdu-bobovou-drahou",
+    "https://bachledka.sk/wp-content/uploads/2015/12/Podmienky_pouzivania_bobovej_drahy_PREVADZKOVY_PORIADOK_SK.pdf",
+    "https://bachledka.skiperformance.com/sk/product/vstupenky/bobova-draha/5709/34694",
+    "https://rcdb.com/13046.htm"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T04:00:51.872421+00:00",
+    "exportSha256": "51497501aa579ed914c4f3ffce5bde90c236b44efbc94056563967f6e35791ea",
+    "localizedStringsReviewed": 264,
+    "localizedGroups": 33,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T04:01:11.306996+00:00",
+  "facebook": {
+    "id": "4398965538654f76927ad2410b316465",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T04:00:25.6815559Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124237021424431",
+    "externalPostId": "1285475681307050_122124237021424431",
+    "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka?facebook-image=cfbf80d32cc04ea48d4e60e43a7d90d0"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T04:01:11.306996+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T03:58:46.967039+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history/eda1d1df-e58b-494f-9662-b107af71c96a/bobova-draha-bachledka-reopening-2026",
+            "status": 200,
+            "textLength": 1371,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 555
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history/eda1d1df-e58b-494f-9662-b107af71c96a/bobova-draha-bachledka-reopening-2026",
+            "status": 200,
+            "textLength": 1149,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 499
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history/eda1d1df-e58b-494f-9662-b107af71c96a/bobova-draha-bachledka-reopening-2026",
+            "status": 200,
+            "textLength": 1228,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 589
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history/eda1d1df-e58b-494f-9662-b107af71c96a/bobova-draha-bachledka-reopening-2026",
+            "status": 200,
+            "textLength": 1203,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 561
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history/eda1d1df-e58b-494f-9662-b107af71c96a/bobova-draha-bachledka-reopening-2026",
+            "status": 200,
+            "textLength": 1175,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 535
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history/eda1d1df-e58b-494f-9662-b107af71c96a/bobova-draha-bachledka-reopening-2026",
+            "status": 200,
+            "textLength": 1174,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 539
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history/eda1d1df-e58b-494f-9662-b107af71c96a/bobova-draha-bachledka-reopening-2026",
+            "status": 200,
+            "textLength": 1132,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 522
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/9e14b449-3216-4bd6-8625-239e5eb7c430/bobova-draha-bachledka/history/eda1d1df-e58b-494f-9662-b107af71c96a/bobova-draha-bachledka-reopening-2026",
+            "status": 200,
+            "textLength": 1127,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 543
+      }
+    ]
+  }
+}

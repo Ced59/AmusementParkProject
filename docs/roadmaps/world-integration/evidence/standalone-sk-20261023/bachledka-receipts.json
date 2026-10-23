@@ -1,0 +1,218 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "dfd0826e-c2b5-42bc-b231-9ab990dad97e",
+    "appliedAtUtc": "2026-10-23T03:47:30.6878721Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "536d9b2e-a08e-46a3-b0f2-b6ada7a1a48f",
+    "appliedAtUtc": "2026-10-23T03:48:41.1101008Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "5af39e67-bb4f-4383-a2c4-3c8ea5699abe",
+    "appliedAtUtc": "2026-10-23T03:49:05.0900458Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "a11a778c-1cd9-4864-aac7-a5c5e110394b",
+    "appliedAtUtc": "2026-10-23T03:49:37.1276064Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "569b25e0-a2c8-4ee6-ba4e-66b7dc443b2b",
+    "appliedAtUtc": "2026-10-23T03:51:49.0764723Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-photo-copyfix.apply",
+    "operationId": "3399aea5-3cc1-4b02-a2b9-eea149b4b85f",
+    "appliedAtUtc": "2026-10-23T03:53:44.8260948Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "1a0cbd36-5ed4-4b9b-9326-de062b503b95",
+    "appliedAtUtc": "2026-10-23T03:57:16.8907322Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-photo-credits.apply",
+    "operationId": "dd542ebe-0dae-40ea-9267-67c2adb12e73",
+    "appliedAtUtc": "2026-10-23T03:54:35.0869681Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "5ddc14c0-cf17-44eb-b4ce-d60f443b09f9",
+    "appliedAtUtc": "2026-10-23T03:57:44.4678481Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-history-copyfix.apply",
+    "operationId": "b1a23364-fe33-4ae0-a031-476b6a441aab",
+    "appliedAtUtc": "2026-10-23T03:55:24.4152586Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "7bf50482-cffe-4cae-a38c-158df6fe00f8",
+    "appliedAtUtc": "2026-10-23T03:58:08.5800513Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "09-photo-order-fix.apply",
+    "operationId": "bb0de98e-33cc-46ee-bba0-2810f9219c76",
+    "appliedAtUtc": "2026-10-23T03:59:55.1055683Z",
+    "targetStandaloneAttractionId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "cfbf80d32cc04ea48d4e60e43a7d90d0",
+    "ownerId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "sourceUrl": "https://bachledka.sk/wp-content/uploads/2026/08/DSC02581.jpg",
+    "updatedAt": "2026-10-23T03:50:09.45Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "df931aaead0e43bf935239200ef6dd46",
+    "ownerId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "sourceUrl": "https://bachledka.sk/wp-content/uploads/2026/08/DSC02548.jpg",
+    "updatedAt": "2026-10-23T03:50:26.302Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "50b0faab22c24921934d6e92ed4db924",
+    "ownerId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+    "sourceUrl": "https://bachledka.sk/wp-content/uploads/2026/08/DSC02576.jpg",
+    "updatedAt": "2026-10-23T03:50:42.541Z",
+    "isPublished": false
+  }
+]

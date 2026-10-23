@@ -1,0 +1,299 @@
+{
+  "name": "Ain Dubai",
+  "standaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+  "qualification": "Roue panoramique autonome avec billet propre sur Bluewaters Island, Dubai. SearchParks et SearchStandaloneAttractions Ain Dubai AE et Dubai Eye mondial : aucune correspondance. Ouverture actuelle confirmée par l’exploitant.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 85,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 2,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 1
+  },
+  "gaps": [
+    "Le site officiel annonce la formule Views à partir de 145 AED mais affiche des zéros dans des blocs d’offres payantes ; aucun prix nul n’est repris comme tarif réel. Valeur structurée dynamique.",
+    "Les trois visuels officiels contemporains ne portent pas de date vérifiée et ne prouvent ni la soirée d’ouverture de 2021 ni la réouverture de 2024.",
+    "Bluewaters Island et la roue sont confirmés, mais aucun point GPS précis de l’entrée n’a été vérifié.",
+    "Horaires et tarifs sont un relevé du 23 octobre 2026 ; l’exploitant indique des suspensions possibles pour météo ou raisons techniques."
+  ],
+  "sources": [
+    "https://www.aindubai.com/en",
+    "https://www.aindubai.com/en/about-ain-dubai",
+    "https://www.aindubai.com/en/plan-your-visit",
+    "https://www.aindubai.com/en/faq",
+    "https://www.independent.co.uk/tv/lifestyle/dubai-eye-world-s-largest-ferris-wheel-opens-with-spectacular-drone-and-fireworks-show-b2180618.html",
+    "https://www.thenationalnews.com/lifestyle/things-to-do/2024/12/26/ain-dubai-reopens-tickets/"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T03:19:42.528233+00:00",
+    "exportSha256": "14c6950a78df2369bc925a2637980def1f79ca222ffad8d51db153fbe4ef1b82",
+    "localizedStringsReviewed": 256,
+    "localizedGroups": 32,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T03:21:59.502541+00:00",
+  "facebook": {
+    "id": "4b784034b8f64e5db876aafb060c45fa",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T03:22:36.8233182Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124234903424431",
+    "externalPostId": "1285475681307050_122124234903424431",
+    "url": "https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai?facebook-image=05d42635d7d24b05aa6ba3e6e5dc5ede"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T03:21:59.502541+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T03:22:05.463609+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history/4a3112dd-4fda-4d3f-b89c-70e7f96f619a/ain-dubai-retour-bluewaters-2024",
+            "status": 200,
+            "textLength": 1420,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 660
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history/4a3112dd-4fda-4d3f-b89c-70e7f96f619a/ain-dubai-retour-bluewaters-2024",
+            "status": 200,
+            "textLength": 1207,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 570
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history/4a3112dd-4fda-4d3f-b89c-70e7f96f619a/ain-dubai-retour-bluewaters-2024",
+            "status": 200,
+            "textLength": 1272,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 678
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history/4a3112dd-4fda-4d3f-b89c-70e7f96f619a/ain-dubai-retour-bluewaters-2024",
+            "status": 200,
+            "textLength": 1220,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 655
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history/4a3112dd-4fda-4d3f-b89c-70e7f96f619a/ain-dubai-retour-bluewaters-2024",
+            "status": 200,
+            "textLength": 1204,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 630
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history/4a3112dd-4fda-4d3f-b89c-70e7f96f619a/ain-dubai-retour-bluewaters-2024",
+            "status": 200,
+            "textLength": 1222,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 652
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history/4a3112dd-4fda-4d3f-b89c-70e7f96f619a/ain-dubai-retour-bluewaters-2024",
+            "status": 200,
+            "textLength": 1176,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 625
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai/history/4a3112dd-4fda-4d3f-b89c-70e7f96f619a/ain-dubai-retour-bluewaters-2024",
+            "status": 200,
+            "textLength": 1212,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 654
+      }
+    ]
+  }
+}

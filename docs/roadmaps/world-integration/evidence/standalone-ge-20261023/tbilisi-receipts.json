@@ -1,0 +1,154 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "e0c68a35-3641-4a7a-ab8f-d7301f522a7e",
+    "appliedAtUtc": "2026-10-23T07:26:42.8405954Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "01b-source.apply",
+    "operationId": "251bc98e-e30e-4df6-a2e5-38228541b195",
+    "appliedAtUtc": "2026-10-23T07:31:41.8754168Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "035cb17e-2f7c-4ffd-89dc-34d2e24391a1",
+    "appliedAtUtc": "2026-10-23T07:27:34.9495199Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "a097feb0-d333-4c36-a55e-df99f2b31194",
+    "appliedAtUtc": "2026-10-23T07:27:58.3442495Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "1f93a2b1-d7b6-485d-8fdf-9b4fd124f8d5",
+    "appliedAtUtc": "2026-10-23T07:28:21.380568Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "0ef17328-6ff3-4cfa-8966-5531197c3a51",
+    "appliedAtUtc": "2026-10-23T07:29:41.2278676Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "af366f7e-7712-4794-8adc-d8bd40eee12b",
+    "appliedAtUtc": "2026-10-23T07:32:27.2073505Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "ad439da0-9016-4571-a0be-086aa9df2f99",
+    "appliedAtUtc": "2026-10-23T07:32:51.0983757Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "4e57cf48-925f-470f-8181-e8f8625b6a63",
+    "appliedAtUtc": "2026-10-23T07:33:14.3636125Z",
+    "targetStandaloneAttractionId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "41c306b5214c44ac96856acd74f43b33",
+    "ownerId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balloon,_Tbilisi,_Georgia.jpg",
+    "updatedAt": "2026-10-23T07:29:19.551Z",
+    "isPublished": false
+  }
+]

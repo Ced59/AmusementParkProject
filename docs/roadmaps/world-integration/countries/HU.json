@@ -915,27 +915,158 @@
     {
       "entryId": "HU-candidate-discovery-556b397ac50f58",
       "name": "BalloonFly Budapest",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
       "locality": "Budapest",
-      "siteId": null,
+      "siteId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T06:56:48.605Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Référence constructeur datée 2022 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
       "aliases": [
         "BalloonFly Budapest Budapest, Hungary"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T06:56:07.521Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-0138b13d-c4fa-48bf-869b-5bfb9367daa0",
+          "appliedAt": "2026-10-23T06:49:05.299Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:0138b13d-c4fa-48bf-869b-5bfb9367daa0",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : nouvelle fiche autonome et huit descriptions"
+        },
+        {
+          "eventId": "image-1769084c6e5343a0a1f362df250af0a3",
+          "appliedAt": "2026-10-23T06:49:41.342Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:image:1769084c6e5343a0a1f362df250af0a3",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-679019e08b8a4d5d98bc0ec3255fa17e",
+          "appliedAt": "2026-10-23T06:50:02.836Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:image:679019e08b8a4d5d98bc0ec3255fa17e",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-5c1f2ef5a611458e91eaa2bd56c9bb21",
+          "appliedAt": "2026-10-23T06:50:19.525Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:image:5c1f2ef5a611458e91eaa2bd56c9bb21",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-bcf94dd3-4fd7-45df-b4e1-4b7329f15c35",
+          "appliedAt": "2026-10-23T06:51:04.496Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:bcf94dd3-4fd7-45df-b4e1-4b7329f15c35",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : horaires quotidiens et météo"
+        },
+        {
+          "eventId": "apply-e0ee6faf-70fb-4173-8fb6-20a9860d3f64",
+          "appliedAt": "2026-10-23T06:51:33.262Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:e0ee6faf-70fb-4173-8fb6-20a9860d3f64",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : tarifs 2026 vérifiés"
+        },
+        {
+          "eventId": "apply-fab0858f-ba32-4f55-bc53-ceb7ef24daa5",
+          "appliedAt": "2026-10-23T06:51:56.841Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:fab0858f-ba32-4f55-bc53-ceb7ef24daa5",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : conditions d’accès officielles"
+        },
+        {
+          "eventId": "apply-dd96953e-b6ed-4244-8c5e-6987b3c08495",
+          "appliedAt": "2026-10-23T06:52:27.062Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:dd96953e-b6ed-4244-8c5e-6987b3c08495",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : inauguration de 2022 et histoire du parc"
+        },
+        {
+          "eventId": "apply-b3c32f9b-8d4d-466c-a1d8-158aa5a3e3a3",
+          "appliedAt": "2026-10-23T06:53:55.114Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:b3c32f9b-8d4d-466c-a1d8-158aa5a3e3a3",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : crédits CC BY-SA localisés"
+        },
+        {
+          "eventId": "apply-56bf5e81-9601-4bc5-beb3-cf32ed74bce9",
+          "appliedAt": "2026-10-23T06:55:08.097Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:56bf5e81-9601-4bc5-beb3-cf32ed74bce9",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : publier trois images CC BY-SA"
+        },
+        {
+          "eventId": "apply-db3cf5ee-9695-4f5e-a11d-de2d894d4e5c",
+          "appliedAt": "2026-10-23T06:55:43.043Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:db3cf5ee-9695-4f5e-a11d-de2d894d4e5c",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : publier historique et article"
+        },
+        {
+          "eventId": "apply-23215d1e-87c0-4ce4-bcaa-3b4913fdb1df",
+          "appliedAt": "2026-10-23T06:56:07.521Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:23215d1e-87c0-4ce4-bcaa-3b4913fdb1df",
+          "auditEvidence": null,
+          "summary": "BalloonFly Budapest : publier la fiche validée"
+        },
+        {
+          "eventId": "closure-apply-23215d1e-87c0-4ce4-bcaa-3b4913fdb1df",
+          "appliedAt": "2026-10-23T06:56:07.521Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+          "evidence": "PARK_DATA_EDITOR:apply:23215d1e-87c0-4ce4-bcaa-3b4913fdb1df",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hu-20261023/budapest-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 88/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -946,6 +1077,51 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://balloonfly.hu/en/home/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://balloonfly.hu/en/faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://ligetbudapest.hu/en/magazine/balloon-viewpoint-opens-in-the-city-park",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://ligetbudapest.hu/en/the-project/balloonfly",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://mapcarta.com/N9706674540",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb,_2.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb,_5.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -954,7 +1130,7 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -969,7 +1145,30 @@
             "referenceId": "aerophile-ballon-de-budapest"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-23215d1e-87c0-4ce4-bcaa-3b4913fdb1df ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+          "publishedAtUtc": "2026-10-23T06:56:07.5212252Z",
+          "verifiedAtUtc": "2026-10-23T06:56:48.605Z",
+          "evidence": "PARK_DATA_EDITOR:apply:23215d1e-87c0-4ce4-bcaa-3b4913fdb1df"
+        },
+        "facebook": {
+          "id": "945327c0c2944a919051ca5dd7dfce00",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T06:56:54.7636021Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124254025424431",
+          "externalPostId": "1285475681307050_122124254025424431",
+          "url": "https://amusement-parks.fun/fr/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest?facebook-image=1769084c6e5343a0a1f362df250af0a3"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-hu-20261023/budapest-audit.json",
+        "score": 88,
+        "publicationBlockers": [],
+        "gapCount": 5
       }
     },
     {

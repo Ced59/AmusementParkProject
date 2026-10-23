@@ -15,7 +15,7 @@ Pour les standalone, examine aussi les pistes encore rangées dans Park et les d
 
 Après chaque Apply/import réussi, utilise tools/codex/integration-backlog.mjs pour enregistrer la date UTC réelle, la preuve et le résultat partial ou completed. La clôture exige un audit final. Conserve la ligne, son identifiant, les références et tous les événements ; garde les dates historiques inconnues à null. Régénère et valide les vues.
 
-Poursuis avec les autorisations déjà accordées dans cette conversation et les règles API en vigueur. Le nouvel inventaire n’étend pas les autorisations de publication ou Facebook. Fais un bref bilan du rapprochement et des prochaines entrées prises en charge.
+Pour chaque standalone retenue, mène la recherche de pertinence et des données, l’intégration éditoriale, la publication sur le site et une annonce Facebook dédiée, puis mets le backlog à jour. L’utilisateur a explicitement demandé ce flux pour la campagne mondiale ; applique aussi les autorisations et contraintes déjà établies dans cette conversation. Ne monte pas la version pour une seule mise à jour du backlog. Vérifie la page et l’annonce publiques avant de clôturer la ligne. Fais un bref bilan du rapprochement et des prochaines entrées prises en charge.
 ```
 
 ## Conversation Portugal
@@ -31,5 +31,5 @@ Pour les standalone, examine aussi les pistes encore rangées dans Park et les d
 
 Après chaque Apply/import réussi, utilise tools/codex/integration-backlog.mjs pour enregistrer la date UTC réelle, la preuve et le résultat partial ou completed. La clôture exige un audit final. Conserve la ligne, son identifiant, les références et tous les événements ; garde les dates historiques inconnues à null. Régénère et valide les vues.
 
-Poursuis avec les autorisations déjà accordées dans cette conversation et les règles API en vigueur. Le nouvel inventaire n’étend pas les autorisations de publication ou Facebook. Fais un bref bilan du rapprochement et des prochaines entrées prises en charge.
+Pour chaque standalone retenue, mène la recherche de pertinence et des données, l’intégration éditoriale, la publication sur le site et une annonce Facebook dédiée, puis mets le backlog à jour. L’utilisateur a explicitement demandé ce flux pour la campagne mondiale ; applique aussi les autorisations et contraintes déjà établies dans cette conversation. Ne monte pas la version pour une seule mise à jour du backlog. Vérifie la page et l’annonce publiques avant de clôturer la ligne. Fais un bref bilan du rapprochement et des prochaines entrées prises en charge.
 ```

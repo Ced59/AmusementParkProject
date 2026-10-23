@@ -13,10 +13,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 0 |
-| À qualifier | 31 |
+| À qualifier | 30 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -27,7 +27,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **30 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -61,7 +61,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | JO-candidate-60c5386b72317a | Luna Park Wasfi Al Tal | Amman , Amman | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/12135.htm) |
 | JO-candidate-0241d8319faa1a | Magic Land | Amman , Amman | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/12141.htm) |
 | JO-candidate-ff8931794dcf4f | McMagic | Amman , Amman | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/15012.htm) |
-| JO-candidate-discovery-7db34fc67aae91 | Petra Balloon | Wadi Musa | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Petra Balloon. Signal source : Référence constructeur datée 2023 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/petra/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
+| JO-candidate-discovery-7db34fc67aae91 | Petra Balloon | Wadi Musa | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T07:50:47.404Z | — | Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-ddcc71bf-84ab-4c8e-9151-2162426fff17 ; conserver les références de découverte. Installations référencées : Petra Balloon. Signal source : L’office du tourisme de Pétra référence l’attraction et ses horaires au 23 octobre 2026 ; départs soumis à la météo.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/petra/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) · [Source vérifiée — intégration standalone](https://www.visitpetra.jo/en/Thingstodo/2) · [Source vérifiée — intégration standalone](https://petraballoon.com/) · [Source vérifiée — intégration standalone](https://en.royanews.tv/news/43391/Petra-launches-new-hot-air-balloon-project) · [Source vérifiée — intégration standalone](https://jordantimes.com/news/local/petras-%E2%80%98tethered-balloon%E2%80%99-attraction-open-wednesday) · [Source vérifiée — intégration standalone](https://commons.wikimedia.org/wiki/File:The_Petra_Balloon.jpg) · [Source vérifiée — intégration standalone](https://commons.wikimedia.org/wiki/File:Gas_balloon_in_Petra.jpg) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/1cf37536-fa7b-4a49-a989-8250cd19c3ef/petra-balloon) |
 | JO-candidate-c1232402ec8355 | Prince Mohammed Sports City | Zarqa , Zarqa | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/21056.htm) |
 | JO-candidate-d064dc39e2d773 | Saraya Aqaba Waterpark | Aqaba | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Jordan) |
 | JO-candidate-8e0e01c420ad15 | Wonderland Amusement Park | Zarqa , Zarqa | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/22280.htm) |

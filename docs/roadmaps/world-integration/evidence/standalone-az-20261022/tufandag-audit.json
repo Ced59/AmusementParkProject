@@ -1,0 +1,311 @@
+{
+  "name": "Tufandağ Mountain Coaster",
+  "standaloneAttractionId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+  "qualification": "Piste mécanique fixe de Sunkid à Gabala avec trois billets propres ; absence de correspondance dans les recherches officielles Park/Standalone. RCDB confirme le coaster et sa localisation.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 93,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 2,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 0,
+    "admissionOffers": 3
+  },
+  "gaps": [
+    "Aucun horaire hebdomadaire vérifié pour la période actuelle : le site de l’exploitant montre un statut en direct « Closed » au relevé du 22 octobre UTC (23 octobre heure locale), sans durée annoncée. Un ancien affichage de 10 h 30 à 17 h 20, observé dans un cache récent, ne suffit pas à affirmer une ouverture quotidienne.",
+    "RCDB fournit le mois de décembre 2023 pour l’ouverture et un point cartographique de la piste ; l’exploitant n’a pas confirmé ce mois ni la précision du point. Le jour exact n’est pas renseigné.",
+    "La page officielle précise 3–9 ans avec parent et conduite seule dès 14 ans, mais n’explicite pas les modalités pour les 10–13 ans.",
+    "Les images génériques présentées sur la page de l’activité montrent d’autres pistes européennes. Seules deux photos prises sur le coaster de Gabala et publiées dans le reportage officiel du camp YAŞAT ont été importées.",
+    "Le tarif photo/vidéo de 10 AZN est un service optionnel, pas un quatrième billet ; il est mentionné dans la note tarifaire, sans offre d’admission créée."
+  ],
+  "sources": [
+    "https://www.tufandag.com/en/activity/dag-kosteri",
+    "https://www.tufandag.com/en/activities",
+    "https://www.tufandag.com/en/today/yasat-fondu-tufandagda-novbeti-qis-dusergesi-reallasdirib",
+    "https://rcdb.com/24096.htm"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-22T23:59:04.625292+00:00",
+    "exportSha256": "0d7288d3fc508d8f78b157b25fa870dd42762e884cb4e7d6daf4681deaaa878f",
+    "localizedStringsReviewed": 264,
+    "localizedGroups": 33,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": {
+    "operationId": "4e5f7601-00d5-4faf-ac20-a7832b475f9c",
+    "previewedAtUtc": "2026-10-22T23:59:20.3224314Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-23T00:02:36.067896+00:00",
+  "facebook": {
+    "id": "fa8ae6da23b245a38d2c7b31096363f9",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T00:03:33.4794322Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124220749424431",
+    "externalPostId": "1285475681307050_122124220749424431",
+    "url": "https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster?facebook-image=dbf47594bb0b428391143bb51465efb0"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T00:02:36.067896+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T00:02:45.951381+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history/4678c754-1d06-4c2d-9f9e-6788a6fa7c23/tufandag-coaster-camp-hiver-yasat-2026",
+            "status": 200,
+            "textLength": 2034,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 705
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history/4678c754-1d06-4c2d-9f9e-6788a6fa7c23/tufandag-coaster-camp-hiver-yasat-2026",
+            "status": 200,
+            "textLength": 1796,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 645
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history/4678c754-1d06-4c2d-9f9e-6788a6fa7c23/tufandag-coaster-camp-hiver-yasat-2026",
+            "status": 200,
+            "textLength": 1788,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 733
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history/4678c754-1d06-4c2d-9f9e-6788a6fa7c23/tufandag-coaster-camp-hiver-yasat-2026",
+            "status": 200,
+            "textLength": 1701,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 711
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history/4678c754-1d06-4c2d-9f9e-6788a6fa7c23/tufandag-coaster-camp-hiver-yasat-2026",
+            "status": 200,
+            "textLength": 1797,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 674
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history/4678c754-1d06-4c2d-9f9e-6788a6fa7c23/tufandag-coaster-camp-hiver-yasat-2026",
+            "status": 200,
+            "textLength": 1812,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 709
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history/4678c754-1d06-4c2d-9f9e-6788a6fa7c23/tufandag-coaster-camp-hiver-yasat-2026",
+            "status": 200,
+            "textLength": 1642,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 658
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/2f9a5bee-a798-4591-b46b-5a61e4f2d1aa/tufandag-mountain-coaster/history/4678c754-1d06-4c2d-9f9e-6788a6fa7c23/tufandag-coaster-camp-hiver-yasat-2026",
+            "status": 200,
+            "textLength": 1755,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 705
+      }
+    ]
+  }
+}

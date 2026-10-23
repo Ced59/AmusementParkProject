@@ -1,0 +1,194 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "05c736af-9bdb-492d-81c0-99baae79a490",
+    "appliedAtUtc": "2026-10-23T00:14:38.9395787Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-access.apply",
+    "operationId": "b06ef5e3-1eab-49da-80ef-c5366006635d",
+    "appliedAtUtc": "2026-10-23T00:15:49.703924Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-hours.apply",
+    "operationId": "4107ff08-3a98-4c47-86d6-e1ad10c97840",
+    "appliedAtUtc": "2026-10-23T00:16:23.4674009Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-pricing.apply",
+    "operationId": "63c1b017-ee62-4b49-bd52-f490ced6f9db",
+    "appliedAtUtc": "2026-10-23T00:16:52.080099Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04b-pricing.apply",
+    "operationId": "77d28a49-98bb-42df-96f0-881ebec4aad3",
+    "appliedAtUtc": "2026-10-23T00:17:43.4404761Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "af9986e4-859c-4120-86a1-021a3c7efc70",
+    "appliedAtUtc": "2026-10-23T00:18:44.3103685Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05b-photo-caption.apply",
+    "operationId": "06f387b7-3fcf-4409-8c69-eb1b505ec6a2",
+    "appliedAtUtc": "2026-10-23T00:19:58.6313365Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05c-history.apply",
+    "operationId": "b161cfc3-704f-4c0e-b61e-f83eb2f24035",
+    "appliedAtUtc": "2026-10-23T00:20:54.7713395Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "f6e96096-b87f-4fc0-befb-954db0ede450",
+    "appliedAtUtc": "2026-10-23T00:22:16.3619685Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "53430d56-a651-4f83-8003-02b7ba7c05cc",
+    "appliedAtUtc": "2026-10-23T00:22:39.20236Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "2e86a0e7-24bf-4866-9e47-27fa72e804a7",
+    "appliedAtUtc": "2026-10-23T00:23:13.7795302Z",
+    "targetStandaloneAttractionId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "5ee7ee18ba394980935a31863fde96b9",
+    "ownerId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "sourceUrl": "https://www.wiegandslide.com/fileadmin/de/News/AlpineCoasterEdinburgh_1.jpeg",
+    "updatedAt": "2026-10-23T00:18:02.865Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "152ae7bbe77545718591e6d50cfdab2d",
+    "ownerId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+    "sourceUrl": "https://www.wiegandslide.com/fileadmin/de/News/AlpineCoasterEdinburgh_2.jpeg",
+    "updatedAt": "2026-10-23T00:18:18.575Z",
+    "isPublished": false
+  }
+]

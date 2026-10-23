@@ -1,0 +1,210 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "6d916437-1ca5-4a3c-9216-3c972dd92f95",
+    "appliedAtUtc": "2026-10-23T00:52:01.3724033Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "96c9484a-a60b-4ff8-967b-c0320dc37e79",
+    "appliedAtUtc": "2026-10-23T00:53:48.1039133Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-access.apply",
+    "operationId": "4d02a40f-f1cc-4bcc-8afa-70c3a4d50eee",
+    "appliedAtUtc": "2026-10-23T00:54:51.3692998Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-history-core.apply",
+    "operationId": "5a2a515b-0781-4f41-8d57-a4369a7cfd3e",
+    "appliedAtUtc": "2026-10-23T00:55:15.1304105Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-pricing.apply",
+    "operationId": "043038d4-d5a6-4c96-ad45-a6c5e6bffd17",
+    "appliedAtUtc": "2026-10-23T00:56:04.5560684Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05b-pricing-eligibility.apply",
+    "operationId": "359e56b5-4d57-47e6-9563-90e454ff23e6",
+    "appliedAtUtc": "2026-10-23T00:56:43.7073535Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "6cdb83ec-9de9-437a-86d4-ae7e3dc85800",
+    "appliedAtUtc": "2026-10-23T00:59:54.8271819Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "c2995a52-ff91-478b-977a-a37c504458ab",
+    "appliedAtUtc": "2026-10-23T01:04:42.0444986Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06b-descriptions-polish.apply",
+    "operationId": "b532ad9b-3693-419b-8d03-467a6b15ebf8",
+    "appliedAtUtc": "2026-10-23T01:02:21.5917781Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06c-history-polish.apply",
+    "operationId": "9633782e-70da-4f75-ab20-f669524a87f0",
+    "appliedAtUtc": "2026-10-23T01:02:52.0769899Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "b72a69bb-70e8-4f80-9b5f-b83f0d3d07c0",
+    "appliedAtUtc": "2026-10-23T01:05:07.8214203Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "c69a28c0-6fb6-4add-b1e7-252820cda218",
+    "appliedAtUtc": "2026-10-23T01:05:53.0545677Z",
+    "targetStandaloneAttractionId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "8bf6f9316ea848db8a508b5311653e11",
+    "ownerId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "sourceUrl": "https://www.singaporeflyer.com/storage/tickets/January2026/kqbwclaoSBkcsxdlMbQ8.png",
+    "updatedAt": "2026-10-23T00:58:59.559Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "973a82ab604f4c5dbc7a858aa3733dc7",
+    "ownerId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+    "sourceUrl": "https://www.singaporeflyer.com/storage/pages/December2019/kvKbKK7ngokfkhLbjNES.jpg",
+    "updatedAt": "2026-10-23T00:59:26.859Z",
+    "isPublished": false
+  }
+]

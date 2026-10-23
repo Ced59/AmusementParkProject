@@ -1,0 +1,313 @@
+{
+  "name": "Wild Rider Mountain Coaster",
+  "standaloneAttractionId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+  "qualification": "Piste fixe Sunkid avec billetterie propre sur le domaine de Panorama, montée par Discovery Quad. Recherches officielles Park/Standalone sur Wild Rider et Panorama : aucune fiche correspondante.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 4,
+    "accessConditions": 5,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 0
+  },
+  "gaps": [
+    "Le resort annonce la fermeture après l’été 2026 ; la date de réouverture et les horaires de 2027 ne sont pas encore publiés. Le calendrier affiche donc les sept jours fermés à la date de l’audit.",
+    "Seul un prix d’appel de 24 CAD pour l’été 2026 est publié. La saison est terminée et les billets 2027 sont annoncés comme non disponibles ; aucun tarif courant n’a été créé. Cela explique le score inférieur à 100.",
+    "La page de l’exploitant arrondit la longueur à 1 km ; le constructeur indique 1 022 m de descente et 800 m de montée en télésiège. La longueur structurée est celle de la piste de descente.",
+    "Le constructeur donne 165 m de dénivelé dans son tableau technique et 171 m dans le texte de présentation ; le dénivelé reste omis du champ structuré.",
+    "Le site du resort interdit l’exploitation sous la pluie et permet une suspension en cas d’orage ou vent fort. Une future ouverture annoncée ne garantit donc pas chaque jour de fonctionnement.",
+    "Les photographies actuellement diffusées par le resort illustrent la piste, sans preuve qu’elles aient été prises le jour de l’inauguration."
+  ],
+  "sources": [
+    "https://www.panoramaresort.com/explore/mountain-coaster",
+    "https://www.panoramaresort.com/planning/tickets-and-passes/mountain-coaster-tickets",
+    "https://www.panoramaresort.com/public/panorama-today/news/panorama-opens-new-mountain-coaster",
+    "https://www.sunkidworld.com/en/projects/detail/the-wild-rider-is-the-new-top-experience-in-panorama-canada/",
+    "https://rcdb.com/22013.htm"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-22T23:09:37.218378+00:00",
+    "exportSha256": "0f27f67ddce6cd7a6e940fcffa3243c5a507bd232c5908407ca161cab4eccca1",
+    "localizedStringsReviewed": 312,
+    "localizedGroups": 39,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": {
+    "operationId": "84b333f4-b776-4422-8019-a6d64ae81106",
+    "previewedAtUtc": "2026-10-22T23:09:50.0305354Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 7,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditAtUtc": "2026-10-22T23:12:37.255925+00:00",
+  "facebook": {
+    "id": "022f6296106143a19fe1d2ffd5265db1",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-22T23:13:35.7316128Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124216171424431",
+    "externalPostId": "1285475681307050_122124216171424431",
+    "url": "https://amusement-parks.fun/fr/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster?facebook-image=af286dc9a7b3405d98e41d93258cc213"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-22T23:12:37.255925+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-22T23:12:46.481822+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history/a07c18f2-a90c-4e38-85d0-0a69c4acbf0e/ouverture-wild-rider-panorama-2024",
+            "status": 200,
+            "textLength": 2058,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 732
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history/a07c18f2-a90c-4e38-85d0-0a69c4acbf0e/ouverture-wild-rider-panorama-2024",
+            "status": 200,
+            "textLength": 1818,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 679
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history/a07c18f2-a90c-4e38-85d0-0a69c4acbf0e/ouverture-wild-rider-panorama-2024",
+            "status": 200,
+            "textLength": 1851,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 739
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history/a07c18f2-a90c-4e38-85d0-0a69c4acbf0e/ouverture-wild-rider-panorama-2024",
+            "status": 200,
+            "textLength": 1847,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 741
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history/a07c18f2-a90c-4e38-85d0-0a69c4acbf0e/ouverture-wild-rider-panorama-2024",
+            "status": 200,
+            "textLength": 1835,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 694
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history/a07c18f2-a90c-4e38-85d0-0a69c4acbf0e/ouverture-wild-rider-panorama-2024",
+            "status": 200,
+            "textLength": 1863,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 716
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history/a07c18f2-a90c-4e38-85d0-0a69c4acbf0e/ouverture-wild-rider-panorama-2024",
+            "status": 200,
+            "textLength": 1722,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 671
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/f1ae87c0-93dc-4d1a-b303-97e228a549ca/wild-rider-mountain-coaster/history/a07c18f2-a90c-4e38-85d0-0a69c4acbf0e/ouverture-wild-rider-panorama-2024",
+            "status": 200,
+            "textLength": 1842,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 728
+      }
+    ]
+  }
+}

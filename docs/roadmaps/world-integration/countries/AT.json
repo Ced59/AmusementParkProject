@@ -878,24 +878,24 @@
       "entryId": "AT-candidate-f5939eaea34637",
       "name": "Bergbahnen Fieberbrunn",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Attractions (RCDB)",
       "locality": "Fieberbrunn , Tyrol",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité recoupée avec le parkItem publié Timoks Alpine Coaster (ce1af362-af48-44f5-937d-7adb1ca46115) dans Timoks Wilde Welt.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Dossier conservé comme doublon de lieu ; toute future mise à jour éditoriale doit viser le parkItem existant, sans création standalone ni seconde annonce Facebook.",
       "sources": [
         {
           "label": "RCDB",
@@ -916,11 +916,21 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.bergbahnen-fieberbrunn.at",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — Timok’s Alpine Coaster",
+          "url": "https://www.fieberbrunn.com/en/alpinecoaster",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Exploitant — Timok’s Wild World",
+          "url": "https://www.fieberbrunn.com/en/summer/timoks-wild-world",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Timoks Coaster",
@@ -942,8 +952,11 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "La piste existe déjà comme parkItem visible et validé du parc Timoks Wilde Welt ; ne pas créer de standalone concurrente."
+      },
+      "duplicateOf": "AT-park-40bce3d1-0f94-4088-8dcc-83862810fc1f",
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-20261023/timoks-inside-park.json",
+      "existingParkItemId": "ce1af362-af48-44f5-937d-7adb1ca46115"
     },
     {
       "entryId": "AT-park-d39bbdc7-76ad-43a2-a403-98b98b66f7c0",

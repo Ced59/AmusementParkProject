@@ -1,0 +1,303 @@
+{
+  "name": "BalloonFly Budapest",
+  "standaloneAttractionId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+  "qualification": "Ballon d’observation captif à billetterie et exploitant propres dans le parc public Városliget. Recherches Park et StandaloneAttraction sous BalloonFly Budapest/BalloonFly HU sans résultat. Site officiel encore actif et billets 2026 publiés ; ouverture le 1er mai 2022 selon Liget Budapest. Création sans doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 88,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 4,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 6
+  },
+  "gaps": [
+    "Les horaires habituels sont quotidiens de 9 h à 20 h, mais le planning météo de chaque jour peut modifier ou interrompre les vols ; aucune fermeture ponctuelle future n’est inventée.",
+    "Deux sections du portail Liget Budapest indiquent 15 puis 30 passagers. La capacité n’est pas structurée tant que le chiffre actuel n’est pas confirmé par l’exploitant.",
+    "L’exploitant indique une durée totale variable selon la météo ; aucune durée unique structurée retenue.",
+    "Le site officiel exclut actuellement les enfants de moins de six ans ou de moins de 120 cm et les personnes en fauteuil roulant ou nécessitant une assistance. Cette limitation est reportée explicitement dans la fiche, à revérifier lors d’une prochaine intégration.",
+    "Trois photos prises en mai 2023 par Random photos 1989 sur Wikimedia Commons, licence CC BY-SA 4.0 ; copies redimensionnées et crédits/licence indiqués dans les huit langues."
+  ],
+  "sources": [
+    "https://balloonfly.hu/en/home/",
+    "https://balloonfly.hu/en/faq/",
+    "https://ligetbudapest.hu/en/magazine/balloon-viewpoint-opens-in-the-city-park",
+    "https://ligetbudapest.hu/en/the-project/balloonfly",
+    "https://www.aerophile.com/en/clients/ballon-de-budapest/",
+    "https://mapcarta.com/N9706674540",
+    "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb.jpg",
+    "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb,_2.jpg",
+    "https://commons.wikimedia.org/wiki/File:Budapest,_Városliget,_BalloonFly,_léggömb,_5.jpg"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T06:54:23.809796+00:00",
+    "exportSha256": "0a9ae1ec0ddfb1f76dbedfd3f2c2eded61f75dbdd90643dfb0f243b56f184149",
+    "localizedStringsReviewed": 264,
+    "localizedGroups": 33,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T06:56:48.605200+00:00",
+  "facebook": {
+    "id": "945327c0c2944a919051ca5dd7dfce00",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T06:56:54.7636021Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124254025424431",
+    "externalPostId": "1285475681307050_122124254025424431",
+    "url": "https://amusement-parks.fun/fr/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest?facebook-image=1769084c6e5343a0a1f362df250af0a3"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T06:56:48.605200+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T06:56:21.287645+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history/9f5c41bf-ea45-4ed6-ab58-82abd4385d77/balloonfly-budapest-ouverture-2022",
+            "status": 200,
+            "textLength": 1718,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 535
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history/9f5c41bf-ea45-4ed6-ab58-82abd4385d77/balloonfly-budapest-ouverture-2022",
+            "status": 200,
+            "textLength": 1528,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 474
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history/9f5c41bf-ea45-4ed6-ab58-82abd4385d77/balloonfly-budapest-ouverture-2022",
+            "status": 200,
+            "textLength": 1557,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 560
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history/9f5c41bf-ea45-4ed6-ab58-82abd4385d77/balloonfly-budapest-ouverture-2022",
+            "status": 200,
+            "textLength": 1538,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 555
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history/9f5c41bf-ea45-4ed6-ab58-82abd4385d77/balloonfly-budapest-ouverture-2022",
+            "status": 200,
+            "textLength": 1474,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 526
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history/9f5c41bf-ea45-4ed6-ab58-82abd4385d77/balloonfly-budapest-ouverture-2022",
+            "status": 200,
+            "textLength": 1492,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 536
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history/9f5c41bf-ea45-4ed6-ab58-82abd4385d77/balloonfly-budapest-ouverture-2022",
+            "status": 200,
+            "textLength": 1402,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 515
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/dca37ef2-9626-41e8-8cd2-4c1b77feb6a7/balloonfly-budapest/history/9f5c41bf-ea45-4ed6-ab58-82abd4385d77/balloonfly-budapest-ouverture-2022",
+            "status": 200,
+            "textLength": 1493,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 540
+      }
+    ]
+  }
+}

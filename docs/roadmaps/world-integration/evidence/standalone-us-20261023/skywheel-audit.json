@@ -1,0 +1,299 @@
+{
+  "name": "SkyWheel Myrtle Beach",
+  "standaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+  "qualification": "Roue panoramique à billetterie indépendante sur la promenade publique de Myrtle Beach. Recherches officielles dans Park et StandaloneAttraction, SkyWheel Myrtle Beach US et SkyWheel mondial : aucune correspondance. Position de la roue vérifiée dans OpenStreetMap way/909403017.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 90,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 1
+  },
+  "gaps": [
+    "La page d’accueil affiche un billet adulte en ligne à 20,99 USD alors que la FAQ indique 19,99 USD hors taxes. Aucun montant fixe n’est attribué au billet structuré ; vérifier la billetterie au moment de l’achat.",
+    "La présentation annonce trois rotations alors que la FAQ et l’accueil évoquent quatre tours. La fiche n’affirme pas un nombre précis de rotations.",
+    "L’horaire 11 h–21 h est celui affiché le 23 octobre 2026 et peut varier ; fermetures habituelles de Thanksgiving et de Noël à vérifier auprès de l’exploitant.",
+    "Les photographies récentes de la galerie ne sont pas présentées comme des archives du jour de l’ouverture en 2011."
+  ],
+  "sources": [
+    "https://skywheelmb.com/",
+    "https://skywheelmb.com/skywheel-experience/",
+    "https://skywheelmb.com/skywheel-myrtle-beach/",
+    "https://skywheelmb.com/skywheel-myrtle-beach/frequently-asked-questions/",
+    "https://skywheelmb.com/skywheel-photos/",
+    "https://www.openstreetmap.org/way/909403017"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T01:54:45.955952+00:00",
+    "exportSha256": "9fa11f73e3d37b5f10648f5e9cfacc7a31d11e48f537947fe8d0e2cacf5acb60",
+    "localizedStringsReviewed": 240,
+    "localizedGroups": 30,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T01:57:15.351672+00:00",
+  "facebook": {
+    "id": "a21b3bf40e0c4f44bc4d7b1246ef429e",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T01:57:53.8418611Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124228687424431",
+    "externalPostId": "1285475681307050_122124228687424431",
+    "url": "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach?facebook-image=7c92cfb94ed249d8b37b100dc7c6ce68"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T01:57:15.351672+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T01:57:22.186178+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history/c5624659-09e0-4bd4-a65e-39c87cce1aa7/ouverture-skywheel-myrtle-beach-2011",
+            "status": 200,
+            "textLength": 1382,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 560
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history/c5624659-09e0-4bd4-a65e-39c87cce1aa7/ouverture-skywheel-myrtle-beach-2011",
+            "status": 200,
+            "textLength": 1252,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 504
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history/c5624659-09e0-4bd4-a65e-39c87cce1aa7/ouverture-skywheel-myrtle-beach-2011",
+            "status": 200,
+            "textLength": 1280,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 583
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history/c5624659-09e0-4bd4-a65e-39c87cce1aa7/ouverture-skywheel-myrtle-beach-2011",
+            "status": 200,
+            "textLength": 1254,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 568
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history/c5624659-09e0-4bd4-a65e-39c87cce1aa7/ouverture-skywheel-myrtle-beach-2011",
+            "status": 200,
+            "textLength": 1240,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 541
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history/c5624659-09e0-4bd4-a65e-39c87cce1aa7/ouverture-skywheel-myrtle-beach-2011",
+            "status": 200,
+            "textLength": 1241,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 548
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history/c5624659-09e0-4bd4-a65e-39c87cce1aa7/ouverture-skywheel-myrtle-beach-2011",
+            "status": 200,
+            "textLength": 1125,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 527
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach/history/c5624659-09e0-4bd4-a65e-39c87cce1aa7/ouverture-skywheel-myrtle-beach-2011",
+            "status": 200,
+            "textLength": 1242,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 559
+      }
+    ]
+  }
+}
