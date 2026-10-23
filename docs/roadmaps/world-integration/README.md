@@ -17,9 +17,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 307 | 1882 | 7566 |
-| Standalone | 106 | 1 | 151 |
+| Standalone | 107 | 1 | 150 |
 
-**Reprise standalone :** en plus des 151 candidates sans correspondance, **227 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **653 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **53 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 150 candidates sans correspondance, **227 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **653 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **53 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **69** types à décider, **1363** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -702,7 +702,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Cuba](countries/CU.md) | 0 | 0 | 0 | 0 | 2 | 0 |
 | [Curaçao](countries/CW.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Dominique](countries/DM.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [États-Unis](countries/US.md) | 9 | 0 | 35 | 2 | 185 | 0 |
+| [États-Unis](countries/US.md) | 10 | 0 | 34 | 2 | 185 | 0 |
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -731,12 +731,12 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **13** | **0** | **41** | **2** | **217** | **0** |
+| **Total** | **14** | **0** | **40** | **2** | **217** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **13**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **14**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Canada : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- États-Unis : 9 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- États-Unis : 10 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |

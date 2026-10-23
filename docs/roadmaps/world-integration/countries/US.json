@@ -69723,30 +69723,148 @@
     {
       "entryId": "US-candidate-discovery-ec2477b8468fba",
       "name": "Wings Over Washington",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Flying theatre",
       "locality": "Seattle, Washington",
-      "siteId": null,
+      "siteId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T13:08:35.073Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Billets et horaires actifs sur les deux sites de l’exploitant au 23 octobre 2026.",
+      "identityConfidence": "Billet autonome confirmé ; absence de doublon Park et standalone vérifiée ; page publique contrôlée en huit langues",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Wings over Washington"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T13:06:04.477Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4e91ebc7-73cd-4b68-8818-fb53350b7baf",
+          "appliedAt": "2026-10-23T13:01:06.707Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:4e91ebc7-73cd-4b68-8818-fb53350b7baf",
+          "auditEvidence": null,
+          "summary": "Fiche créée et descriptions éditoriales en huit langues intégrées."
+        },
+        {
+          "eventId": "apply-e5ef1b61-170c-4418-9291-ecd70b14502c",
+          "appliedAt": "2026-10-23T13:04:17.441Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:e5ef1b61-170c-4418-9291-ecd70b14502c",
+          "auditEvidence": null,
+          "summary": "Horaire quotidien officiel et conflit de fin de service signalé."
+        },
+        {
+          "eventId": "apply-7f038641-bf74-4678-95c3-26762157fb8b",
+          "appliedAt": "2026-10-23T13:04:52.807Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:7f038641-bf74-4678-95c3-26762157fb8b",
+          "auditEvidence": null,
+          "summary": "Trois prix de billets propres affichés par l’exploitant intégrés."
+        },
+        {
+          "eventId": "apply-a600b09b-ec0b-416d-9508-e4fc527dc904",
+          "appliedAt": "2026-10-23T13:05:16.283Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:a600b09b-ec0b-416d-9508-e4fc527dc904",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès officielles intégrées."
+        },
+        {
+          "eventId": "apply-05945d94-b3b6-4732-b1af-e23c5056282a",
+          "appliedAt": "2026-10-23T13:05:39.331Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:05945d94-b3b6-4732-b1af-e23c5056282a",
+          "auditEvidence": null,
+          "summary": "Ouverture du 25 août 2016 et article historique en huit langues intégrés."
+        },
+        {
+          "eventId": "apply-29c60263-c2e7-4dc8-8693-dd51f6444035",
+          "appliedAt": "2026-10-23T13:06:04.477Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:29c60263-c2e7-4dc8-8693-dd51f6444035",
+          "auditEvidence": null,
+          "summary": "Coordonnées OpenStreetMap de la salle intégrées."
+        },
+        {
+          "eventId": "closure-29c60263-c2e7-4dc8-8693-dd51f6444035",
+          "appliedAt": "2026-10-23T13:06:04.477Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:29c60263-c2e7-4dc8-8693-dd51f6444035",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/wings-over-washington-audit.json",
+          "summary": "Audit final 89/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; clarifier l’heure du dernier embarquement, les âges et frais des billets, la validité contradictoire de la FAQ et obtenir une photo réutilisable.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.wingsoverwa.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wingsoverwa.com/faq",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wingsoverwa.com/hours-directions",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.minerslanding.com/attractions/wings-over-washington",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tickets.minerslanding.com/WebStore/landingpage?CG=consumer&c=WH",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.super78.com/flying-theaters",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://dynamic-grp.com/2016/09/02/dynamic-attractions-takes-flight-in-seattle/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://blooloop.com/theme-park/news/dynamic-attractions-breaks-into-tourism-destination-market-with-seattles-newest-attraction/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/node/4622534789",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd/wings-over-washington",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -69755,8 +69873,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Wings Over Washington",
@@ -69764,12 +69882,34 @@
             "url": "https://www.wingsoverwa.com/",
             "family": "Flying theatre",
             "sourceVenueName": "Wings Over Washington",
-            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLifecycleSignal": "Billets et horaires actifs sur les deux sites de l’exploitant au 23 octobre 2026.",
+            "matchingMethod": "Recherches officielles Park et StandaloneAttraction par nom et Miner’s Landing, sans homonyme.",
             "sourceLocality": "Seattle, Washington"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Cinéma volant à billet propre dans une promenade de plusieurs activités ; Pier Pass facultatif, sans entrée commune imposée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd/wings-over-washington",
+          "publishedAtUtc": "2026-10-23T13:07:47.8531753Z",
+          "verifiedAtUtc": "2026-10-23T13:08:35.073Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0787bf67-b9e5-4fca-946c-71f674eb0160"
+        },
+        "facebook": {
+          "id": "31f8e769305d41fa88cf4e6898e496de",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T13:08:47.7238845Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124293379424431",
+          "externalPostId": "1285475681307050_122124293379424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/wings-over-washington-audit.json",
+        "score": 89,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
