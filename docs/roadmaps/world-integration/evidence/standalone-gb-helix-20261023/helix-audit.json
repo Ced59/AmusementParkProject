@@ -1,0 +1,313 @@
+{
+  "name": "Helix — ArcelorMittal Orbit",
+  "standaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+  "backlogEntryId": "GB-candidate-discovery-b19f183565d402",
+  "qualification": "Zip World et la FAQ actuelle de l’ArcelorMittal Orbit vendent un billet pour le seul toboggan, distinct du billet du panorama. Le toboggan The Slide ouvert en 2016 a été repris et présenté comme Helix en février 2025 ; il s’agit de la même installation. Recherches officielles GB Parks et StandaloneAttractions sans fiche homonyme ; Hillend Alpine Coaster et Atlas Resort ne correspondent pas.",
+  "deduplicationEvidence": {
+    "exactNameMatches": 0,
+    "searchQueries": [
+      "Helix",
+      "ArcelorMittal Orbit",
+      "The Slide"
+    ],
+    "nonMatchingResults": [
+      "Hillend Alpine Coaster",
+      "Atlas Resort"
+    ]
+  },
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 92,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 3,
+    "accessConditions": 5,
+    "historyEvents": 1,
+    "articles": 1,
+    "pricingOffers": 1,
+    "openingDateConfirmed": "2016-06-24",
+    "locationFromOpenStreetMap": true
+  },
+  "gaps": [
+    "Zip World ne publie pas de grille hebdomadaire stable pour Helix et renvoie au calendrier de réservation, avec jours variables hors saison. Aucun horaire quotidien fictif n’a été saisi ; vérifier le créneau avant le départ.",
+    "Le tarif annoncé au 23 octobre 2026 commence à 19 £, plus 5 £ de frais de réservation ; le prix réel dépend du créneau et des promotions. L’offre est donc marquée dynamique.",
+    "Les photos libres réutilisables datent de 2018, 2019 et 2025 ; elles montrent la même installation avant ou après la reprise Zip World, avec dates et crédits.",
+    "Une ancienne FAQ Digitickets imposait un billet combiné. Les sources officielles actuelles autorisent le billet Helix seul ; recontrôler si la politique de billetterie change."
+  ],
+  "sources": [
+    "https://www.zipworld.co.uk/adventures/helix",
+    "https://www.zipworld.co.uk/locations/london",
+    "https://arcelormittalorbit.com/visit/faqs/",
+    "https://arcelormittalorbit.com/content/uploads/2017/08/ArcelorMittal-Orbit-Press-Pack.pdf",
+    "https://arcelormittalorbit.com/about/art-design/",
+    "https://www.queenelizabetholympicpark.co.uk/whats-on/zip-world-london-arcelormittal-orbit-opening",
+    "https://www.openstreetmap.org/way/149637725",
+    "https://commons.wikimedia.org/wiki/File:ArcelorMittal_Orbit_08112025_(1).jpg",
+    "https://commons.wikimedia.org/wiki/File:Polaroid_of_ArcelorMittal_Orbit_Slide_at_Queen_Elizabeth_Olympic_Park,_London.jpg",
+    "https://commons.wikimedia.org/wiki/File:ArcelorMittal_Orbit_2018.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T15:23:29.237789+00:00",
+    "exportSha256": "743aa720dccfe554328f5d82f69e51a8decfdb56290cdaffd4a2f7385ec817ef",
+    "localizedStringsReviewed": 296,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité unique The Slide/Helix, récit de 2016 et 2025, conditions Zip World, légendes datées des photographies. Horaires variables explicités sans grille inventée."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+    "publishedAtUtc": "2026-10-23T15:25:18.2112271Z",
+    "operationId": "54e55389-2f06-4ec7-8b01-c2b3f17652c6"
+  },
+  "facebookPublication": {
+    "id": "dc7d5a5292984db4a57286f3ed375d66",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T15:26:52.3842513Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124311193424431",
+    "externalPostId": "1285475681307050_122124311193424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T15:26:44.010525+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating",
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T15:26:14.459643+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history/b285c527-b80c-4527-a873-d9a9dbdcaf12/ouverture-the-slide-orbit-2016",
+            "status": 200,
+            "textLength": 1831,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 576
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history/b285c527-b80c-4527-a873-d9a9dbdcaf12/ouverture-the-slide-orbit-2016",
+            "status": 200,
+            "textLength": 1609,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 517
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history/b285c527-b80c-4527-a873-d9a9dbdcaf12/ouverture-the-slide-orbit-2016",
+            "status": 200,
+            "textLength": 1752,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 595
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history/b285c527-b80c-4527-a873-d9a9dbdcaf12/ouverture-the-slide-orbit-2016",
+            "status": 200,
+            "textLength": 1688,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 574
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history/b285c527-b80c-4527-a873-d9a9dbdcaf12/ouverture-the-slide-orbit-2016",
+            "status": 200,
+            "textLength": 1651,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 532
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history/b285c527-b80c-4527-a873-d9a9dbdcaf12/ouverture-the-slide-orbit-2016",
+            "status": 200,
+            "textLength": 1672,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 544
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history/b285c527-b80c-4527-a873-d9a9dbdcaf12/ouverture-the-slide-orbit-2016",
+            "status": 200,
+            "textLength": 1620,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 550
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit/history/b285c527-b80c-4527-a873-d9a9dbdcaf12/ouverture-the-slide-orbit-2016",
+            "status": 200,
+            "textLength": 1656,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 558
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-gb-helix-20261023/helix-receipts.json"
+}

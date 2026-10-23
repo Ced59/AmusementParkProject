@@ -1,0 +1,183 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "2fd3ed6c-53bc-40f6-9f7a-0c5944799ed0",
+    "appliedAtUtc": "2026-10-23T15:17:17.2307398Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "0cc7fea3-6817-47ce-8952-0a1fc8b43f12",
+    "appliedAtUtc": "2026-10-23T15:18:33.4748808Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "550feb9f-abda-4845-a16c-e653f406bca8",
+    "appliedAtUtc": "2026-10-23T15:19:08.2712346Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "05d6fd84-b6a4-49e8-b6fb-e44cf33026df",
+    "appliedAtUtc": "2026-10-23T15:19:42.6485017Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "d42dd7c5-38a0-41ca-a18a-94c882060a22",
+    "appliedAtUtc": "2026-10-23T15:20:05.5366065Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "06-location",
+    "operationId": "ec58a3b9-3337-4511-87b4-cfdff2c80df7",
+    "appliedAtUtc": "2026-10-23T15:20:40.025247Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "01-core-hours-note",
+    "operationId": "9fbce30c-7f40-4891-befd-3fc18f942345",
+    "appliedAtUtc": "2026-10-23T15:23:05.3067884Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "07-publish-images",
+    "operationId": "abdaed30-d66f-44f6-bec2-6679e30d0676",
+    "appliedAtUtc": "2026-10-23T15:24:10.1999598Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-history",
+    "operationId": "f12f204e-741f-4ff4-97d7-e292ae3205c3",
+    "appliedAtUtc": "2026-10-23T15:24:33.3110167Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-attraction",
+    "operationId": "54e55389-2f06-4ec7-8b01-c2b3f17652c6",
+    "appliedAtUtc": "2026-10-23T15:25:18.2112271Z",
+    "targetStandaloneAttractionId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "action": "ImportPhoto",
+    "imageId": "b2b18b8daa1c4b5cb28da689989c07c3",
+    "updatedAtUtc": "2026-10-23T15:21:11.445Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:ArcelorMittal_Orbit_08112025_(1).jpg"
+  },
+  {
+    "stage": "photo-2",
+    "action": "ImportPhoto",
+    "imageId": "8c720011430e48c7a23906ed2b358cc7",
+    "updatedAtUtc": "2026-10-23T15:21:27.512Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:ArcelorMittal_Orbit_2018.jpg"
+  },
+  {
+    "stage": "photo-3",
+    "action": "ImportPhoto",
+    "imageId": "cc28270f4083471f86b6993d403285b5",
+    "updatedAtUtc": "2026-10-23T15:21:43.068Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Polaroid_of_ArcelorMittal_Orbit_Slide_at_Queen_Elizabeth_Olympic_Park,_London.jpg"
+  }
+]
