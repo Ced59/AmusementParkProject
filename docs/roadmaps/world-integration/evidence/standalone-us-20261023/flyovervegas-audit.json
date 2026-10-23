@@ -1,0 +1,298 @@
+{
+  "name": "Flyover Las Vegas",
+  "standaloneAttractionId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+  "qualification": "Cinéma de vol simulé à billets propres sur le Strip, à côté du Hard Rock Cafe et face à Park MGM. Recherches officielles Park/Standalone Flyover Las Vegas US et FlyOver mondial : aucune correspondance de Las Vegas.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 90,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 1
+  },
+  "gaps": [
+    "Le moteur de billetterie officielle affiche parfois zéro pour des offres payantes ; le site annonce des billets à partir de 32 USD. Le prix structuré demeure variable et doit être vérifié avant achat.",
+    "Le communiqué primaire d’août 2021 annonce une ouverture le 1er septembre. Les éléments photographiques utilisés sont promotionnels et postérieurs ; ils n’attestent pas visuellement la journée d’ouverture.",
+    "L’adresse et la suite sont confirmées, mais aucun point géographique précis de la salle n’a été vérifié."
+  ],
+  "sources": [
+    "https://www.experienceflyover.com/lasvegas/",
+    "https://www.experienceflyover.com/lasvegas/experience/",
+    "https://www.experienceflyover.com/lasvegas/plan-your-visit/location-parking/",
+    "https://www.experienceflyover.com/lasvegas/safety-accessibility/",
+    "https://www.experienceflyover.com/lasvegas/tickets-prices/",
+    "https://prod.pursuitcollection.com/Website/media/pursuit/Documents/Press-Release/Vegas-Strip-s-Newest-Attraction-FlyOver-to-Open-September-1.pdf"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T02:45:06.804714+00:00",
+    "exportSha256": "be2b38518d0bdf9b2d61418a5caa39b44a3b594ad1d49668243b718bde830e4d",
+    "localizedStringsReviewed": 240,
+    "localizedGroups": 30,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T02:49:03.818134+00:00",
+  "facebook": {
+    "id": "44849e4e7fe048d1b4fbb5095724c6e1",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T02:50:30.4648669Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124232587424431",
+    "externalPostId": "1285475681307050_122124232587424431",
+    "url": "https://amusement-parks.fun/fr/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas?facebook-image=c07bc337550444929ab609298adb6ed1"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T02:49:03.818134+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T02:49:08.546308+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history/bbf97d8c-0b5d-4ef5-904f-8b63485f57f8/ouverture-flyover-las-vegas-2021",
+            "status": 200,
+            "textLength": 1534,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 540
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history/bbf97d8c-0b5d-4ef5-904f-8b63485f57f8/ouverture-flyover-las-vegas-2021",
+            "status": 200,
+            "textLength": 1395,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 485
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history/bbf97d8c-0b5d-4ef5-904f-8b63485f57f8/ouverture-flyover-las-vegas-2021",
+            "status": 200,
+            "textLength": 1427,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 585
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history/bbf97d8c-0b5d-4ef5-904f-8b63485f57f8/ouverture-flyover-las-vegas-2021",
+            "status": 200,
+            "textLength": 1393,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 558
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history/bbf97d8c-0b5d-4ef5-904f-8b63485f57f8/ouverture-flyover-las-vegas-2021",
+            "status": 200,
+            "textLength": 1360,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 526
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history/bbf97d8c-0b5d-4ef5-904f-8b63485f57f8/ouverture-flyover-las-vegas-2021",
+            "status": 200,
+            "textLength": 1377,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 548
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history/bbf97d8c-0b5d-4ef5-904f-8b63485f57f8/ouverture-flyover-las-vegas-2021",
+            "status": 200,
+            "textLength": 1278,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 519
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/aa5209d3-2d30-4ef2-baf5-4ee4ff68c881/flyover-las-vegas/history/bbf97d8c-0b5d-4ef5-904f-8b63485f57f8/ouverture-flyover-las-vegas-2021",
+            "status": 200,
+            "textLength": 1329,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 542
+      }
+    ]
+  }
+}
