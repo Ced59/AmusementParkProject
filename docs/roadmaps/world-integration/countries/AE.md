@@ -14,10 +14,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 25 |
-| À qualifier | 68 |
+| À qualifier | 67 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 4 |
 | Hors périmètre enregistré | 3 |
 | Doublon conservé | 0 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **4 publiés**, **25 masqués à intégrer**, **3 masqués NotRelevant à réexaminer**, **53 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **4 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **6 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -38,7 +38,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | AE-candidate-99c32199d204ed | Action Zone | Al Ain , Abu Dhabi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/14780.htm) |
 | AE-park-b40d9c62-ee62-459d-abb2-03714523c462 | Adventureland | Sharjah | Park | Published | Publié, date inconnue | Inconnue — non inventée | — | Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/5360.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#United_Arab_Emirates) · [Site officiel enregistré (à revérifier)](https://www.adventurelanduae.com/) |
-| AE-candidate-bc470aaefff20d | Ain Dubai | Dubai , United Arab Emirates | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : IndependentCandidate. Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [Site officiel (attraction autonome)](https://www.aindubai.com/en) |
+| AE-candidate-bc470aaefff20d | Ain Dubai | Dubai — Bluewaters Island | StandaloneAttraction | Published | Intégration achevée | 2026-10-23T03:21:18.145Z | — | Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-41ec807c-3805-436b-ac6e-dc09ad91aefc ; conserver les références de découverte. Installations référencées : Ain Dubai. Signal source : Operating. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [Site officiel (attraction autonome)](https://www.aindubai.com/en) · [Source vérifiée — intégration standalone](https://www.aindubai.com/en/about-ain-dubai) · [Source vérifiée — intégration standalone](https://www.aindubai.com/en/plan-your-visit) · [Source vérifiée — intégration standalone](https://www.aindubai.com/en/faq) · [Source vérifiée — intégration standalone](https://www.independent.co.uk/tv/lifestyle/dubai-eye-world-s-largest-ferris-wheel-opens-with-spectacular-drone-and-fireworks-show-b2180618.html) · [Source vérifiée — intégration standalone](https://www.thenationalnews.com/lifestyle/things-to-do/2024/12/26/ain-dubai-reopens-tickets/) · [Source vérifiée — intégration standalone](https://amusement-parks.fun/fr/attraction/f70328d1-79bf-492f-955a-3db69b7cc730/ain-dubai) |
 | AE-candidate-b175ad8e17c694 | Ajman Market | Ajman , Ajman | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/14639.htm) |
 | AE-candidate-90daa7220fe640 | Al Ain Zoo | Al Ain | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#United_Arab_Emirates) · [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](https://www.alainzoo.com/) · [AZA](https://www.aza.org/current-accreditation-list) |
 | AE-candidate-76e1c4420b07b3 | Al Hefaiyah Conservation Centre | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#United_Arab_Emirates) |

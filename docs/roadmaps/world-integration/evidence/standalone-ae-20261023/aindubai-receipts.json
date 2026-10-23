@@ -1,0 +1,186 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "fd1f1d95-6d6f-4fb2-83ea-699240ceac1c",
+    "appliedAtUtc": "2026-10-23T03:11:23.6079735Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "c564fc7b-bccd-4bc5-99ba-1fe7bc209b27",
+    "appliedAtUtc": "2026-10-23T03:12:22.293376Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "311ccdca-39cd-488a-93ea-c5e7cf15b603",
+    "appliedAtUtc": "2026-10-23T03:12:45.7535558Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "36f272dd-2e27-49ad-b6fd-dc2c4691fbf7",
+    "appliedAtUtc": "2026-10-23T03:13:09.8232966Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-core.apply",
+    "operationId": "9a01089f-1a89-4f37-a494-0af24d123d1d",
+    "appliedAtUtc": "2026-10-23T03:16:01.5749644Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "558b61e3-a8a1-43ce-a3b1-07fc5b4fe1a3",
+    "appliedAtUtc": "2026-10-23T03:17:35.968463Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "2f9ea239-1f9a-48d8-a365-8b2c8287f46c",
+    "appliedAtUtc": "2026-10-23T03:20:26.3105932Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-copyfix.apply",
+    "operationId": "614badde-b97c-4756-b55c-564a18d9ee45",
+    "appliedAtUtc": "2026-10-23T03:19:06.6113796Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "f8d35fed-655f-4642-976c-58fd0760808c",
+    "appliedAtUtc": "2026-10-23T03:20:54.8855039Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "41ec807c-3805-436b-ac6e-dc09ad91aefc",
+    "appliedAtUtc": "2026-10-23T03:21:18.1453581Z",
+    "targetStandaloneAttractionId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "05d42635d7d24b05aa6ba3e6e5dc5ede",
+    "ownerId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "sourceUrl": "https://www.aindubai.com/sites/default/files/banner-desktop_1.webp",
+    "updatedAt": "2026-10-23T03:13:46.307Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "6262c4eb095a4a7ca7f4b41518dba897",
+    "ownerId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "sourceUrl": "https://www.aindubai.com/sites/default/files/Homepage%20Banner%20-%20Ain%20Dubai.webp",
+    "updatedAt": "2026-10-23T03:14:24.236Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "cfffe28f5884407bbdeffd6fb312e6c1",
+    "ownerId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+    "sourceUrl": "https://www.aindubai.com/sites/default/files/_Iconic-Landmark_Desktop.webp",
+    "updatedAt": "2026-10-23T03:14:51.311Z",
+    "isPublished": false
+  }
+]
