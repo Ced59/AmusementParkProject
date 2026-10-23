@@ -3154,26 +3154,87 @@
     {
       "entryId": "KR-candidate-standalone-0f95f79317187a",
       "name": "Skyline Luge Busan",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge gravitaire",
-      "locality": null,
-      "siteId": null,
+      "locality": "Gijang-gun, Busan",
+      "siteId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T15:37:06.887Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Billetterie Luge/Skyride active le 23 octobre 2026.",
+      "identityConfidence": "Site Skyline à Gijang distinct du Lotte World voisin, billet propre et aucune fiche homonyme KR.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T15:35:03.957Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-18be5cf1-7ce3-47e5-8eb2-6b1085fe878b",
+          "appliedAt": "2026-10-23T15:31:17.813Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:18be5cf1-7ce3-47e5-8eb2-6b1085fe878b",
+          "auditEvidence": null,
+          "summary": "Fiche Skyline Luge Busan et huit descriptions créées après qualification du site distinct de Lotte World."
+        },
+        {
+          "eventId": "apply-fc0c194e-a0f0-4ffa-b196-17d91b66adab",
+          "appliedAt": "2026-10-23T15:32:08.598Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:fc0c194e-a0f0-4ffa-b196-17d91b66adab",
+          "auditEvidence": null,
+          "summary": "Quatre forfaits Luge/Skyride et supplément tandem officiels saisis."
+        },
+        {
+          "eventId": "apply-f1a0bd90-4621-4524-b8e4-69c5c26164c2",
+          "appliedAt": "2026-10-23T15:32:31.825Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:f1a0bd90-4621-4524-b8e4-69c5c26164c2",
+          "auditEvidence": null,
+          "summary": "Cinq conditions officielles de taille, âge, accompagnement, sécurité et météo intégrées."
+        },
+        {
+          "eventId": "apply-9574b63e-ef64-4a4a-a9ed-62f6f1c59614",
+          "appliedAt": "2026-10-23T15:32:57.579Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:9574b63e-ef64-4a4a-a9ed-62f6f1c59614",
+          "auditEvidence": null,
+          "summary": "Histoire de l’ouverture du 3 juillet 2021 en huit langues intégrée."
+        },
+        {
+          "eventId": "apply-edc476f8-5b10-4e8b-86d6-3f721496228d",
+          "appliedAt": "2026-10-23T15:35:03.957Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:edc476f8-5b10-4e8b-86d6-3f721496228d",
+          "auditEvidence": null,
+          "summary": "Article historique réécrit pour retirer des métriques techniques du récit public."
+        },
+        {
+          "eventId": "closure-edc476f8-5b10-4e8b-86d6-3f721496228d",
+          "appliedAt": "2026-10-23T15:35:03.957Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:edc476f8-5b10-4e8b-86d6-3f721496228d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-20261023/busan-audit.json",
+          "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3184,11 +3245,56 @@
           "label": "Skyline — destinations officielles — liste",
           "url": "https://www.skylineluge.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/pricing-packages/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/visiting-us/open-hours/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/luge/safety-faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/luge/track-information/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://skylineenterprises.co.nz/what-we-do/tourism-operations/skyline-luge-busan/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.kiwichamber.com/news/2021/07/the-kiwi-chamber-inspire-with-innovation-series-3-4/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/1066897511",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Skyline Luge Busan",
@@ -3198,7 +3304,29 @@
             "sourceVenueName": "Skyline Luge Busan"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Site de luge gravitaire avec billetterie propre ; le Skyride est inclus dans les forfaits, la tyrolienne Hyfly est proposée séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+          "publishedAtUtc": "2026-10-23T15:36:27.9086731Z",
+          "verifiedAtUtc": "2026-10-23T15:37:06.887Z",
+          "evidence": "PARK_DATA_EDITOR:apply:28500886-4b4d-4cf2-b1be-ff9eea80f52e"
+        },
+        "facebook": {
+          "id": "c8cba48307fe41f29ff47e36c4cf8919",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T15:37:08.0840998Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124312549424431",
+          "externalPostId": "1285475681307050_122124312549424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-20261023/busan-audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
