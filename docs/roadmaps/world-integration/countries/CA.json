@@ -1564,25 +1564,159 @@
     {
       "entryId": "CA-candidate-ff82b206858b7c",
       "name": "Flyover Vancouver",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone",
-      "locality": "Vancouver",
-      "siteId": null,
+      "category": "Cinéma de vol simulé autonome",
+      "locality": "Canada Place, Vancouver",
+      "siteId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T02:29:58.462Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "FlyOver Canada",
+        "Flyover in Vancouver"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T02:28:52.482Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-0c92930d-80c4-4cd3-ac75-669acdbee42d",
+          "appliedAt": "2026-10-23T02:21:29.581Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:0c92930d-80c4-4cd3-ac75-669acdbee42d",
+          "auditEvidence": null,
+          "summary": "Création de Flyover Vancouver, cinéma volant autonome de Canada Place"
+        },
+        {
+          "eventId": "apply-3b4920ec-4b65-4002-be86-1099eff18784",
+          "appliedAt": "2026-10-23T02:22:50.562Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:3b4920ec-4b65-4002-be86-1099eff18784",
+          "auditEvidence": null,
+          "summary": "Horaires officiels Flyover Vancouver"
+        },
+        {
+          "eventId": "apply-70e1b75e-a6b6-4873-9d27-fe7911dd682b",
+          "appliedAt": "2026-10-23T02:23:14.108Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:70e1b75e-a6b6-4873-9d27-fe7911dd682b",
+          "auditEvidence": null,
+          "summary": "Billet variable en CAD et tarif guichet incohérent documenté"
+        },
+        {
+          "eventId": "apply-9ce64c78-7bd8-433a-8931-38bc5883280e",
+          "appliedAt": "2026-10-23T02:23:42.728Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:9ce64c78-7bd8-433a-8931-38bc5883280e",
+          "auditEvidence": null,
+          "summary": "Taille minimale structurée, transfert et contre-indications"
+        },
+        {
+          "eventId": "apply-d433016d-e7cb-45de-828b-1b7fdef0db9c",
+          "appliedAt": "2026-10-23T02:24:06.127Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:d433016d-e7cb-45de-828b-1b7fdef0db9c",
+          "auditEvidence": null,
+          "summary": "Ouverture de FlyOver Canada le 29 juin 2013 selon Brogent"
+        },
+        {
+          "eventId": "image-80779d80caec4527a4aaaf6ccefd2ea4",
+          "appliedAt": "2026-10-23T02:24:45.426Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:image:80779d80caec4527a4aaaf6ccefd2ea4",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-f20faa89c8544e29bebcdcabf50c96e1",
+          "appliedAt": "2026-10-23T02:25:09.525Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:image:f20faa89c8544e29bebcdcabf50c96e1",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-b8623ffd02c24a3e9ccebe531cec213d",
+          "appliedAt": "2026-10-23T02:25:24.982Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:image:b8623ffd02c24a3e9ccebe531cec213d",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-96589202-25f6-48a6-9783-db3786d86a13",
+          "appliedAt": "2026-10-23T02:26:24.621Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:96589202-25f6-48a6-9783-db3786d86a13",
+          "auditEvidence": null,
+          "summary": "Article historique FlyOver Canada 2013 en huit langues"
+        },
+        {
+          "eventId": "apply-648594a7-bc66-486c-aaf0-a73ec606c460",
+          "appliedAt": "2026-10-23T02:27:35.462Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:648594a7-bc66-486c-aaf0-a73ec606c460",
+          "auditEvidence": null,
+          "summary": "Publication des photographies officielles Flyover Vancouver"
+        },
+        {
+          "eventId": "apply-f689c72f-27a6-460b-a1d0-d5af32e5d3b7",
+          "appliedAt": "2026-10-23T02:28:11.878Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:f689c72f-27a6-460b-a1d0-d5af32e5d3b7",
+          "auditEvidence": null,
+          "summary": "Publication de l’article historique FlyOver Canada"
+        },
+        {
+          "eventId": "apply-6b96c1c1-198e-4ef6-b90b-5f470249c387",
+          "appliedAt": "2026-10-23T02:28:52.482Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:6b96c1c1-198e-4ef6-b90b-5f470249c387",
+          "auditEvidence": null,
+          "summary": "Validation éditoriale et publication Flyover Vancouver"
+        },
+        {
+          "eventId": "closure-apply-6b96c1c1-198e-4ef6-b90b-5f470249c387",
+          "appliedAt": "2026-10-23T02:28:52.482Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+          "evidence": "PARK_DATA_EDITOR:apply:6b96c1c1-198e-4ef6-b90b-5f470249c387",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-20261023/flyovervancouver-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 90/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Site officiel (attraction autonome)",
@@ -1593,18 +1727,50 @@
           "label": "Brogent — projet constructeur",
           "url": "https://www.brogent.com/EN/Flyover-in-Vancouver-cv-2.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/vancouver/experience/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/vancouver/plan-your-visit/location-parking/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/vancouver/safety-accessibility/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.experienceflyover.com/vancouver/tickets-prices/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyovercanada.com/stories/10-facts-for-10-years-at-flyover-canada/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Flyover in Vancouver",
             "source": "Brogent — projet constructeur",
             "url": "https://www.brogent.com/EN/Flyover-in-Vancouver-cv-2.html",
             "family": "Flying theatre",
-            "sourceVenueName": "Flyover Vancouver"
+            "sourceVenueName": "Flyover Vancouver",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Canada Place, Vancouver"
           },
           {
             "name": "Flyover Vancouver",
@@ -1612,12 +1778,35 @@
             "url": "https://www.experienceflyover.com/vancouver/",
             "family": "Flying theatre",
             "sourceVenueName": "Flyover Vancouver",
-            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Vancouver"
+            "sourceLifecycleSignal": "Operating",
+            "matchingMethod": "Recherche officielle Park et StandaloneAttraction effectuée sous les noms actuels et anciens avant création.",
+            "sourceLocality": "Canada Place, Vancouver"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-6b96c1c1-198e-4ef6-b90b-5f470249c387 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+          "publishedAtUtc": "2026-10-23T02:28:52.4824668Z",
+          "verifiedAtUtc": "2026-10-23T02:29:58.462Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6b96c1c1-198e-4ef6-b90b-5f470249c387"
+        },
+        "facebook": {
+          "id": "09a92eab8c1e465fa2eaf0b60678480f",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T02:30:56.278675Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124231135424431",
+          "externalPostId": "1285475681307050_122124231135424431",
+          "url": "https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver?facebook-image=80779d80caec4527a4aaaf6ccefd2ea4"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-20261023/flyovervancouver-audit.json",
+        "score": 90,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {

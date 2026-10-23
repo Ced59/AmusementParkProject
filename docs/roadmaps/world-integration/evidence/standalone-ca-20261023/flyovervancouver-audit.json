@@ -1,0 +1,299 @@
+{
+  "name": "Flyover Vancouver",
+  "standaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+  "qualification": "Cinéma de vol simulé à billet propre situé à Canada Place, anciennement FlyOver Canada. Recherches officielles Park/Standalone FlyOver Canada CA, Flyover Vancouver CA et FlyOver mondial : aucune autre correspondance canadienne. Point précis de la salle à l’intérieur du bâtiment non vérifié.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 90,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 1
+  },
+  "gaps": [
+    "Le site officiel affiche un billet en ligne à partir de 31 CAD mais un prix guichet nul incohérent. Le tarif varie selon le film et la date ; aucun prix fixe trompeur n’est publié.",
+    "Canada Place et l’adresse intérieure 201-999 sont vérifiés, mais la position exacte dans le bâtiment n’est pas confirmée. Aucune coordonnée approximative n’est intégrée.",
+    "Les photographies de la salle, du bâtiment et des films sont actuelles ou promotionnelles ; aucune n’est présentée comme datant du 29 juin 2013."
+  ],
+  "sources": [
+    "https://www.experienceflyover.com/vancouver/",
+    "https://www.experienceflyover.com/vancouver/experience/",
+    "https://www.experienceflyover.com/vancouver/plan-your-visit/location-parking/",
+    "https://www.experienceflyover.com/vancouver/safety-accessibility/",
+    "https://www.experienceflyover.com/vancouver/tickets-prices/",
+    "https://www.brogent.com/EN/Flyover-in-Vancouver-cv-2.html",
+    "https://www.flyovercanada.com/stories/10-facts-for-10-years-at-flyover-canada/"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T02:26:50.907977+00:00",
+    "exportSha256": "95e8ab2deccdd0b49d056529da1ea12de3fea132dc654626cd82dcc811be458f",
+    "localizedStringsReviewed": 240,
+    "localizedGroups": 30,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T02:29:58.462357+00:00",
+  "facebook": {
+    "id": "09a92eab8c1e465fa2eaf0b60678480f",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T02:30:56.278675Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124231135424431",
+    "externalPostId": "1285475681307050_122124231135424431",
+    "url": "https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver?facebook-image=80779d80caec4527a4aaaf6ccefd2ea4"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T02:29:58.462357+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T02:30:23.121875+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history/be9e3cce-6237-4ed3-b3cb-a82676a86330/ouverture-flyover-canada-vancouver-2013",
+            "status": 200,
+            "textLength": 1634,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 527
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history/be9e3cce-6237-4ed3-b3cb-a82676a86330/ouverture-flyover-canada-vancouver-2013",
+            "status": 200,
+            "textLength": 1443,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 483
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history/be9e3cce-6237-4ed3-b3cb-a82676a86330/ouverture-flyover-canada-vancouver-2013",
+            "status": 200,
+            "textLength": 1371,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 568
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history/be9e3cce-6237-4ed3-b3cb-a82676a86330/ouverture-flyover-canada-vancouver-2013",
+            "status": 200,
+            "textLength": 1381,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 555
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history/be9e3cce-6237-4ed3-b3cb-a82676a86330/ouverture-flyover-canada-vancouver-2013",
+            "status": 200,
+            "textLength": 1337,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 513
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history/be9e3cce-6237-4ed3-b3cb-a82676a86330/ouverture-flyover-canada-vancouver-2013",
+            "status": 200,
+            "textLength": 1389,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 530
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history/be9e3cce-6237-4ed3-b3cb-a82676a86330/ouverture-flyover-canada-vancouver-2013",
+            "status": 200,
+            "textLength": 1298,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 517
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/630398c2-13b3-4e4c-b7f4-6742b0e0324e/flyover-vancouver/history/be9e3cce-6237-4ed3-b3cb-a82676a86330/ouverture-flyover-canada-vancouver-2013",
+            "status": 200,
+            "textLength": 1369,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 542
+      }
+    ]
+  }
+}

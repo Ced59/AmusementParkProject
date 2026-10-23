@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "0c92930d-80c4-4cd3-ac75-669acdbee42d",
+    "appliedAtUtc": "2026-10-23T02:21:29.5817612Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "3b4920ec-4b65-4002-be86-1099eff18784",
+    "appliedAtUtc": "2026-10-23T02:22:50.5624334Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "70e1b75e-a6b6-4873-9d27-fe7911dd682b",
+    "appliedAtUtc": "2026-10-23T02:23:14.108739Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "9ce64c78-7bd8-433a-8931-38bc5883280e",
+    "appliedAtUtc": "2026-10-23T02:23:42.7285627Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-core.apply",
+    "operationId": "d433016d-e7cb-45de-828b-1b7fdef0db9c",
+    "appliedAtUtc": "2026-10-23T02:24:06.1277858Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "96589202-25f6-48a6-9783-db3786d86a13",
+    "appliedAtUtc": "2026-10-23T02:26:24.6211775Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "648594a7-bc66-486c-aaf0-a73ec606c460",
+    "appliedAtUtc": "2026-10-23T02:27:35.4624576Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "f689c72f-27a6-460b-a1d0-d5af32e5d3b7",
+    "appliedAtUtc": "2026-10-23T02:28:11.8783213Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "6b96c1c1-198e-4ef6-b90b-5f470249c387",
+    "appliedAtUtc": "2026-10-23T02:28:52.4824668Z",
+    "targetStandaloneAttractionId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "80779d80caec4527a4aaaf6ccefd2ea4",
+    "ownerId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/af31c396-4eab-4141-94b3-3cd388ba71d2/PR-Ice-Climbing-Riders-Feet.jpg?width=1200&height=780&ext=.jpg",
+    "updatedAt": "2026-10-23T02:24:45.426Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "f20faa89c8544e29bebcdcabf50c96e1",
+    "ownerId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/df3b23e2-6fd9-466c-baa0-57d49b4cdd5a/PR-Vancouver-Canada-Place-Aerial.jpg?width=1200&height=780&ext=.jpg",
+    "updatedAt": "2026-10-23T02:25:09.525Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "b8623ffd02c24a3e9ccebe531cec213d",
+    "ownerId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+    "sourceUrl": "https://www.experienceflyover.com/getmedia/82f35336-88fa-4eb5-8b6e-7263afcb2e22/20549_Flattend_Graded_v03-min.jpg?width=1200&height=800&ext=.jpg",
+    "updatedAt": "2026-10-23T02:25:24.982Z",
+    "isPublished": false
+  }
+]
