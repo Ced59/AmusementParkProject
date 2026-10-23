@@ -3092,25 +3092,158 @@
     {
       "entryId": "AU-candidate-61bc40d2c12cdc",
       "name": "Wheel of Brisbane",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier / Standalone",
-      "locality": "Brisbane",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "South Bank, Brisbane",
+      "siteId": "b62e8868-f6df-4728-9733-8b111469c42e",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T01:43:42.063Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Channel Seven Wheel of Brisbane"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T01:42:30.153Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b73e36e0-5016-461b-9570-5b4cd57dbfff",
+          "appliedAt": "2026-10-23T01:35:34.503Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:b73e36e0-5016-461b-9570-5b4cd57dbfff",
+          "auditEvidence": null,
+          "summary": "Création de Wheel of Brisbane comme attraction autonome, descriptions et données officielles"
+        },
+        {
+          "eventId": "apply-680be9df-e330-4008-a78a-98fa7034c9d3",
+          "appliedAt": "2026-10-23T01:36:29.034Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:680be9df-e330-4008-a78a-98fa7034c9d3",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires officiels et note sur les exceptions"
+        },
+        {
+          "eventId": "apply-0a7f5c3c-53fb-4e84-8071-106a94e4aeee",
+          "appliedAt": "2026-10-23T01:37:38.481Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:0a7f5c3c-53fb-4e84-8071-106a94e4aeee",
+          "auditEvidence": null,
+          "summary": "Billet standard à prix variable, avec lien vers la billetterie officielle sans montant inventé"
+        },
+        {
+          "eventId": "apply-020ea51e-fd55-4052-95c5-68699f45be35",
+          "appliedAt": "2026-10-23T01:38:09.189Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:020ea51e-fd55-4052-95c5-68699f45be35",
+          "auditEvidence": null,
+          "summary": "Conditions officielles des cabines, de l’accès fauteuil et des bagages"
+        },
+        {
+          "eventId": "apply-9915fe9b-cc25-4f28-9951-cbe1b06755f9",
+          "appliedAt": "2026-10-23T01:38:47.238Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:9915fe9b-cc25-4f28-9951-cbe1b06755f9",
+          "auditEvidence": null,
+          "summary": "Ouverture officielle du 31 août 2008 pendant Riverfire"
+        },
+        {
+          "eventId": "image-cf49c44cfb564eb1b310fd56bd4294ee",
+          "appliedAt": "2026-10-23T01:39:13.937Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:image:cf49c44cfb564eb1b310fd56bd4294ee",
+          "auditEvidence": null,
+          "summary": "Photo officielle 1 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-5eed670e1e5d42ffa97d36bc9563ec42",
+          "appliedAt": "2026-10-23T01:39:28.874Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:image:5eed670e1e5d42ffa97d36bc9563ec42",
+          "auditEvidence": null,
+          "summary": "Photo officielle 2 importée avec source et crédit"
+        },
+        {
+          "eventId": "image-be46c3b54f694e3ca1db3287c0634181",
+          "appliedAt": "2026-10-23T01:39:46.707Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:image:be46c3b54f694e3ca1db3287c0634181",
+          "auditEvidence": null,
+          "summary": "Photo officielle 3 importée avec source et crédit"
+        },
+        {
+          "eventId": "apply-85bc0f1c-c501-4324-be10-c6b2eb2da2fc",
+          "appliedAt": "2026-10-23T01:40:17.460Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:85bc0f1c-c501-4324-be10-c6b2eb2da2fc",
+          "auditEvidence": null,
+          "summary": "Article historique en huit langues : Expo 88, Riverfire et ouverture en 2008"
+        },
+        {
+          "eventId": "apply-ee53d530-0d84-4990-96af-0b7bb0bdd1fc",
+          "appliedAt": "2026-10-23T01:41:39.042Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:ee53d530-0d84-4990-96af-0b7bb0bdd1fc",
+          "auditEvidence": null,
+          "summary": "Publication des trois photographies officielles"
+        },
+        {
+          "eventId": "apply-b5127684-615f-4569-8840-7f7e0f1fcae1",
+          "appliedAt": "2026-10-23T01:42:04.111Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:b5127684-615f-4569-8840-7f7e0f1fcae1",
+          "auditEvidence": null,
+          "summary": "Publication de l’article historique et de la date d’ouverture"
+        },
+        {
+          "eventId": "apply-3cf06d4b-c47d-41a2-aa5c-be275ee54cd3",
+          "appliedAt": "2026-10-23T01:42:30.153Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:3cf06d4b-c47d-41a2-aa5c-be275ee54cd3",
+          "auditEvidence": null,
+          "summary": "Validation éditoriale et mise en visibilité publique"
+        },
+        {
+          "eventId": "closure-apply-3cf06d4b-c47d-41a2-aa5c-be275ee54cd3",
+          "appliedAt": "2026-10-23T01:42:30.153Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b62e8868-f6df-4728-9733-8b111469c42e",
+          "evidence": "PARK_DATA_EDITOR:apply:3cf06d4b-c47d-41a2-aa5c-be275ee54cd3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-au-20261023/brisbanewheel-audit.json",
+          "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 95/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
@@ -3121,13 +3254,76 @@
           "label": "Site officiel (attraction autonome)",
           "url": "https://thewheelofbrisbane.com.au/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://thewheelofbrisbane.com.au/history-interesting-facts/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://thewheelofbrisbane.com.au/visitors-information/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://thewheelofbrisbane.com.au/faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://ecom.roller.app/wheelofbrisbane/generaladmission/en/home",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/589533605",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/b62e8868-f6df-4728-9733-8b111469c42e/wheel-of-brisbane",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
+        "attractions": [
+          {
+            "name": "Wheel of Brisbane",
+            "source": "Wheel of Brisbane — History and Interesting Facts",
+            "url": "https://thewheelofbrisbane.com.au/history-interesting-facts/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Wheel of Brisbane",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "South Bank, Brisbane"
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-3cf06d4b-c47d-41a2-aa5c-be275ee54cd3 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b62e8868-f6df-4728-9733-8b111469c42e/wheel-of-brisbane",
+          "publishedAtUtc": "2026-10-23T01:42:30.1537807Z",
+          "verifiedAtUtc": "2026-10-23T01:43:42.063Z",
+          "evidence": "PARK_DATA_EDITOR:apply:3cf06d4b-c47d-41a2-aa5c-be275ee54cd3"
+        },
+        "facebook": {
+          "id": "6ebf4d430dd94fd5b602eebf130fab97",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T01:44:14.7125668Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124227895424431",
+          "externalPostId": "1285475681307050_122124227895424431",
+          "url": "https://amusement-parks.fun/fr/attraction/b62e8868-f6df-4728-9733-8b111469c42e/wheel-of-brisbane?facebook-image=cf49c44cfb564eb1b310fd56bd4294ee"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-au-20261023/brisbanewheel-audit.json",
+        "score": 95,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {

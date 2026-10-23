@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "b73e36e0-5016-461b-9570-5b4cd57dbfff",
+    "appliedAtUtc": "2026-10-23T01:35:34.5038961Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "680be9df-e330-4008-a78a-98fa7034c9d3",
+    "appliedAtUtc": "2026-10-23T01:36:29.0349774Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "0a7f5c3c-53fb-4e84-8071-106a94e4aeee",
+    "appliedAtUtc": "2026-10-23T01:37:38.4819698Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "020ea51e-fd55-4052-95c5-68699f45be35",
+    "appliedAtUtc": "2026-10-23T01:38:09.1894173Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-core.apply",
+    "operationId": "9915fe9b-cc25-4f28-9951-cbe1b06755f9",
+    "appliedAtUtc": "2026-10-23T01:38:47.2381181Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "85bc0f1c-c501-4324-be10-c6b2eb2da2fc",
+    "appliedAtUtc": "2026-10-23T01:40:17.460545Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "ee53d530-0d84-4990-96af-0b7bb0bdd1fc",
+    "appliedAtUtc": "2026-10-23T01:41:39.0424849Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "b5127684-615f-4569-8840-7f7e0f1fcae1",
+    "appliedAtUtc": "2026-10-23T01:42:04.1111961Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "3cf06d4b-c47d-41a2-aa5c-be275ee54cd3",
+    "appliedAtUtc": "2026-10-23T01:42:30.1537807Z",
+    "targetStandaloneAttractionId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "cf49c44cfb564eb1b310fd56bd4294ee",
+    "ownerId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "sourceUrl": "https://thewheelofbrisbane.com.au/wp-content/uploads/2023/02/FINAL-INFOPAGES-IMG2.webp",
+    "updatedAt": "2026-10-23T01:39:13.937Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "5eed670e1e5d42ffa97d36bc9563ec42",
+    "ownerId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "sourceUrl": "https://thewheelofbrisbane.com.au/wp-content/uploads/2023/02/HISTORY-IMG-768x512.webp",
+    "updatedAt": "2026-10-23T01:39:28.874Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "be46c3b54f694e3ca1db3287c0634181",
+    "ownerId": "b62e8868-f6df-4728-9733-8b111469c42e",
+    "sourceUrl": "https://thewheelofbrisbane.com.au/wp-content/uploads/2023/05/70120397_2367320973507760_2866478279436803941_n.jpg",
+    "updatedAt": "2026-10-23T01:39:46.707Z",
+    "isPublished": false
+  }
+]
