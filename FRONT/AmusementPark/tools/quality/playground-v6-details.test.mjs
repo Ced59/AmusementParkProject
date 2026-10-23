@@ -305,6 +305,8 @@ test('the standalone attraction remains autonomous and preserves every practical
     '<app-park-weather-card',
     '*ngIf="hasCoordinates()"',
     '<app-leaflet-map',
+    '<app-park-nearby-section',
+    'sourceKind="StandaloneAttraction"',
   ]) {
     assert.ok(standaloneTemplate.includes(contract), `${contract} must remain in the standalone attraction detail`);
   }

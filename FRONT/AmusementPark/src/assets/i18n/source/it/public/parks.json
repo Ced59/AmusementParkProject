@@ -54,18 +54,19 @@
         "subtitle": "Consulta la posizione e le coordinate attualmente documentate."
       },
       "nearby": {
-        "title": "Nearby parcos",
-        "subtitle": "Scopri altri parchi aperti nei dintorni di questa destinazione.",
-        "alternativesTitle": "Alternative aperte nelle vicinanze",
-        "alternativesSubtitle": "Scopri i parchi attualmente aperti vicino a questo luogo documentato.",
-        "loadingTitle": "Caricamento nearby parcos",
-        "loadingMessage": "Nearby parcos are being loaded.",
-        "errorTitle": "Impossibile caricare nearby parcos",
-        "errorMessage": "Nearby parcos non è stato possibile caricare.",
-        "emptyTitle": "Nessun nearby parco",
-        "emptyMessage": "Non è stato trovato nessun parco vicino a questa destinazione.",
-        "closestTitle": "Parco più vicino",
-        "distanceNote": "Distanza stimata in linea d'aria da questo parco."
+        "title": "Nelle vicinanze",
+        "subtitle": "Scopri i parchi e le attrazioni indipendenti più vicini.",
+        "alternativesTitle": "Altro da scoprire nelle vicinanze",
+        "alternativesSubtitle": "Scopri parchi e attrazioni indipendenti intorno a questo luogo.",
+        "loadingTitle": "Caricamento dei luoghi vicini",
+        "loadingMessage": "I luoghi vicini sono in fase di caricamento.",
+        "errorTitle": "Impossibile caricare i luoghi vicini",
+        "errorMessage": "Non è stato possibile caricare i luoghi vicini.",
+        "emptyTitle": "Nessun luogo nelle vicinanze",
+        "emptyMessage": "Non sono stati trovati parchi o attrazioni indipendenti nelle vicinanze.",
+        "closestTitle": "Luogo più vicino",
+        "distanceNote": "Distanza stimata in linea d’aria da questo luogo.",
+        "viewDestination": "Vedi la scheda"
       },
       "description": {
         "badge": "Panoramica",

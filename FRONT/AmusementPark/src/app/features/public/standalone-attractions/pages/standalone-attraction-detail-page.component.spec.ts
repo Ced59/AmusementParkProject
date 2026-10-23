@@ -1,3 +1,4 @@
+import { NEARBY_DESTINATIONS_PORT } from '@features/public/nearby-destinations/nearby-destinations.ports';
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, provideRouter } from '@angular/router';
@@ -31,6 +32,7 @@ describe('StandaloneAttractionDetailPageComponent access conditions', () => {
       imports: [StandaloneAttractionDetailPageComponent, TranslateModule.forRoot()],
       providers: [
         provideRouter([]),
+        { provide: NEARBY_DESTINATIONS_PORT, useValue: { getNearby: () => of([]) } },
         { provide: ActivatedRoute, useValue: {
           snapshot: { paramMap: convertToParamMap({ lang: 'fr', id: 'standalone-1' }) },
           paramMap: of(convertToParamMap({ id: 'standalone-1' })),

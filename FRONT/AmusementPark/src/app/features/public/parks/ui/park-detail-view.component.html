@@ -346,8 +346,7 @@
 
       <app-park-nearby-section
         class="park-nearby-block"
-        [parks]="nearbyParks"
-        [state]="nearbyState"
+        [sourceId]="currentPark.latitude != null && currentPark.longitude != null ? currentPark.id : null"
         [currentLang]="currentLang"
         [sourceName]="currentPark.name"
         [alternativesMode]="!currentPark.isOpenToVisitors">

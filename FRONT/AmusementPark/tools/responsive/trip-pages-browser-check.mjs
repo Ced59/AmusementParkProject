@@ -32,6 +32,7 @@ const componentStyles = [
   'src/app/features/public/home/pages/home.component.scss',
   'src/app/ui/layouts/public-app-layout/public-app-layout.component.scss',
   'src/app/features/public/parks/ui/park-location-section.component.scss',
+  'src/app/features/public/parks/ui/park-nearby-section.component.scss',
   'src/app/features/public/parks/ui/park-detail-view.component.scss',
   'src/app/features/public/standalone-attractions/pages/standalone-attraction-detail-page.component.scss',
   'src/app/features/public/park-items/ui/attraction-access-conditions.component.scss',
@@ -106,6 +107,12 @@ const fixtureMarkup = `
           </section>
         </main>
         <aside class="standalone-sidebar"><section class="standalone-panel" data-check-bound><span>Vitesse</span><strong>60 mph</strong></section></aside>
+      </div>
+    </section>
+    <section class="park-nearby public-page" data-check-bound data-nearby-fixture="mixed">
+      <h2>Parcs et attractions à découvrir à proximité</h2>
+      <div class="park-nearby__grid">
+        ${['Parc de la vallée aux montagnes', 'Luge alpine panoramique des montagnes', 'Parc des grandes aventures en famille', 'Grande roue au bord du fleuve'].map((name, index) => `<article class="ui-park-card ui-park-card--compact" data-check-bound><div class="ui-park-card__body"><div class="ui-park-card__headline"><h3 class="ui-park-card__title">${name}</h3></div><p class="ui-park-card__description">Découvre ce lieu à proximité et les informations utiles pour ta visite.</p><div class="ui-park-card__details"><div class="ui-park-card__detail ui-park-card__detail--distance"><span class="ui-park-card__label">Distance</span><strong>${index + 1},6 mi</strong></div></div></div><div class="ui-park-card__footer"><a class="ui-park-card__cta" href="#nearby-${index}">Voir les informations de cette destination</a></div></article>`).join('')}
       </div>
     </section>
     <section class="photo-carousel-panel" data-check-bound>

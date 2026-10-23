@@ -21,7 +21,7 @@ export function mapParkDistanceTargetToCardModel(
   };
 }
 
-function formatTravelDuration(minutes: number): string | null {
+export function formatTravelDuration(minutes: number): string | null {
   if (!Number.isFinite(minutes) || minutes <= 0) {
     return null;
   }

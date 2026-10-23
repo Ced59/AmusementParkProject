@@ -8243,18 +8243,19 @@
         "subtitle": "Sieh dir den derzeit dokumentierten Standort und die Koordinaten an."
       },
       "nearby": {
-        "title": "Parks in der Nähe",
-        "subtitle": "Entdecke weitere geöffnete Parks rund um dieses Ziel.",
-        "alternativesTitle": "Geöffnete Alternativen in der Nähe",
-        "alternativesSubtitle": "Entdecke derzeit geöffnete Parks in der Nähe dieses dokumentierten Ortes.",
-        "loadingTitle": "Parks in der Nähe werden geladen",
-        "loadingMessage": "Parks in der Nähe werden geladen.",
-        "errorTitle": "Parks in der Nähe können nicht geladen werden",
-        "errorMessage": "Parks in der Nähe konnten nicht geladen werden.",
-        "emptyTitle": "Kein Park in der Nähe",
-        "emptyMessage": "Rund um dieses Ziel wurde kein Park in der Nähe gefunden.",
-        "closestTitle": "Nächster Park",
-        "distanceNote": "Geschätzte Entfernung in Luftlinie von diesem Park."
+        "title": "In der Nähe",
+        "subtitle": "Entdecke die nächstgelegenen Parks und eigenständigen Attraktionen.",
+        "alternativesTitle": "Mehr in der Nähe entdecken",
+        "alternativesSubtitle": "Entdecke Parks und eigenständige Attraktionen rund um diesen Ort.",
+        "loadingTitle": "Orte in der Nähe werden geladen",
+        "loadingMessage": "Orte in der Nähe werden gerade geladen.",
+        "errorTitle": "Orte in der Nähe konnten nicht geladen werden",
+        "errorMessage": "Die Orte in der Nähe konnten nicht geladen werden.",
+        "emptyTitle": "Keine Orte in der Nähe",
+        "emptyMessage": "In der Nähe wurden keine Parks oder eigenständigen Attraktionen gefunden.",
+        "closestTitle": "Nächstgelegener Ort",
+        "distanceNote": "Geschätzte Entfernung in Luftlinie von diesem Ort.",
+        "viewDestination": "Details ansehen"
       },
       "description": {
         "badge": "Übersicht",

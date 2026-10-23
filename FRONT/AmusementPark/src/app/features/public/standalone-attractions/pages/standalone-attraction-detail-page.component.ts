@@ -13,6 +13,7 @@ import { MeasurementPreferenceService } from '@app/services/measurements/measure
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { buildAccessConditions } from '../../park-items/mappers/park-item-detail-access.mapper';
 import { ParkItemAccessConditionViewModel } from '../../park-items/models/park-item-detail-view.model';
+import { ParkNearbySectionComponent } from '../../parks/ui/park-nearby-section.component';
 import { AttractionAccessConditionsComponent } from '../../park-items/ui/attraction-access-conditions.component';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { StandaloneAttractionsApiService } from '@data-access/standalone-attractions/standalone-attractions-api.service';
@@ -286,7 +287,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
 @Component({
   selector: 'app-standalone-attraction-detail-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, TranslateModule, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent, ParkOpeningHoursCardComponent, ParkWeatherCardComponent, StandaloneAttractionPricingCardComponent, AttractionAccessConditionsComponent],
+  imports: [CommonModule, RouterLink, TranslateModule, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent, ParkOpeningHoursCardComponent, ParkWeatherCardComponent, StandaloneAttractionPricingCardComponent, AttractionAccessConditionsComponent, ParkNearbySectionComponent],
   templateUrl: './standalone-attraction-detail-page.component.html',
   styleUrl: './standalone-attraction-detail-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

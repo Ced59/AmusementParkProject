@@ -1,6 +1,20 @@
 {
-  "version": "6.0.27",
+  "version": "6.0.28",
   "history": [
+    {
+      "version": "6.0.28",
+      "releasedAt": "2026-10-23",
+      "labels": {
+        "fr": "Parcs et attractions réunis dans les suggestions à proximité",
+        "en": "Nearby suggestions now include parks and standalone attractions",
+        "de": "Parks und eigenständige Attraktionen gemeinsam in der Nähe entdecken",
+        "nl": "Parken en losse attracties samen ontdekken in de buurt",
+        "it": "Parchi e attrazioni indipendenti insieme tra i luoghi vicini",
+        "es": "Parques y atracciones independientes juntos en las sugerencias cercanas",
+        "pl": "Parki i samodzielne atrakcje razem w propozycjach w pobliżu",
+        "pt": "Parques e atrações independentes juntos nas sugestões próximas"
+      }
+    },
     {
       "version": "6.0.27",
       "releasedAt": "2026-10-22",

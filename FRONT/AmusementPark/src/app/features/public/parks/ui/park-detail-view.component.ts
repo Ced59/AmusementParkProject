@@ -11,7 +11,6 @@ import { PublicContextualBlockDirective } from '@features/public/contextual-edit
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
-import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent } from '@ui/primitives';
@@ -72,8 +71,6 @@ export class ParkDetailViewComponent {
   @Input() openingHours: ParkOpeningHoursCalendar | null = null;
   @Input() openingHoursState: ScreenState<unknown, string> | null = null;
   @Input() liveState: PublicLiveViewState | null = null;
-  @Input() nearbyParks: ParkCardModel[] = [];
-  @Input() nearbyState: ScreenState<unknown, string> | null = null;
   @Input() currentLang: string = 'en';
   @Input() heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
   @Input() heroImageSizes: string = PARK_DETAIL_HERO_IMAGE_SIZES;
