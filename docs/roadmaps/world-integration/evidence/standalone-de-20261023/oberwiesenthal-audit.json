@@ -1,0 +1,300 @@
+{
+  "name": "Sommerrodelbahn Oberwiesenthal",
+  "standaloneAttractionId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+  "qualification": "Luge d’été en rigole autonome, Vierenstraße 3c, Kurort Oberwiesenthal. Billetterie et exploitante propres ; pas un alpine coaster sur rails. Recherche API Park/Standalone Oberwiesenthal DE et Rodelbahn Oberwiesenthal mondiale : aucune correspondance.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 86,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 2,
+    "accessConditions": 3,
+    "historyEvents": 2,
+    "articles": 1,
+    "weeklyDays": 7,
+    "admissionOffers": 2
+  },
+  "gaps": [
+    "Le constructeur date la construction de 1992, l’entreprise familiale parle d’une ouverture en 1992 et la chronique municipale note une inauguration en 1993. La chronologie distingue ces faits sans inventer un jour précis.",
+    "Seules deux photographies distinctes de la piste ont été trouvées sur le site officiel ; le visuel SEO reprend la même scène avec texte superposé et a été écarté.",
+    "Les crédits généraux du site nomment Marcel Lohr et Philipp Heinrich, sans attribuer chaque image individuellement.",
+    "Les horaires sont soumis à une piste sèche et les prix peuvent évoluer. Aucun point GPS exact de l’entrée n’a été vérifié."
+  ],
+  "sources": [
+    "https://sommerrodelbahn-oberwiesenthal.de/",
+    "https://sommerrodelbahn-oberwiesenthal.de/kontakt/",
+    "https://sommerrodelbahn-oberwiesenthal.de/impressum/",
+    "https://www.freizeitparkapp.de/en/parks/deutschland/rodelbahn-oberwiesenthal/",
+    "https://stadtverwaltung.oberwiesenthal.de/chronik-oberwiesenthal.cfm",
+    "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316",
+    "https://prijut12.de/ueber-uns/"
+  ],
+  "corpus": {
+    "auditedAtUtc": "2026-10-23T03:38:07.001742+00:00",
+    "exportSha256": "1c583c46511c62a84d0c850b4870b6f17c09a783cadd03185be0c31d920543ad",
+    "localizedStringsReviewed": 280,
+    "localizedGroups": 35,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "idempotenceCheck": "idempotence.preview.json",
+  "finalAuditAtUtc": "2026-10-23T03:41:24.502737+00:00",
+  "facebook": {
+    "id": "3902d090ce1a446a9680099a216659ce",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T03:40:32.8619449Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124235773424431",
+    "externalPostId": "1285475681307050_122124235773424431",
+    "url": "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal?facebook-image=241ee56f69154638a1c97293e094ca54"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T03:41:24.502737+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T03:39:33.173508+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history/1f00ba07-0ca6-446a-a9df-0cebab45e5af/sommerrodelbahn-oberwiesenthal-construction-inauguration",
+            "status": 200,
+            "textLength": 1616,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 745
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history/1f00ba07-0ca6-446a-a9df-0cebab45e5af/sommerrodelbahn-oberwiesenthal-construction-inauguration",
+            "status": 200,
+            "textLength": 1396,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 684
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history/1f00ba07-0ca6-446a-a9df-0cebab45e5af/sommerrodelbahn-oberwiesenthal-construction-inauguration",
+            "status": 200,
+            "textLength": 1431,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 749
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history/1f00ba07-0ca6-446a-a9df-0cebab45e5af/sommerrodelbahn-oberwiesenthal-construction-inauguration",
+            "status": 200,
+            "textLength": 1350,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 720
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history/1f00ba07-0ca6-446a-a9df-0cebab45e5af/sommerrodelbahn-oberwiesenthal-construction-inauguration",
+            "status": 200,
+            "textLength": 1362,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 696
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history/1f00ba07-0ca6-446a-a9df-0cebab45e5af/sommerrodelbahn-oberwiesenthal-construction-inauguration",
+            "status": 200,
+            "textLength": 1364,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 701
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history/1f00ba07-0ca6-446a-a9df-0cebab45e5af/sommerrodelbahn-oberwiesenthal-construction-inauguration",
+            "status": 200,
+            "textLength": 1268,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 672
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal/history/1f00ba07-0ca6-446a-a9df-0cebab45e5af/sommerrodelbahn-oberwiesenthal-construction-inauguration",
+            "status": 200,
+            "textLength": 1352,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 711
+      }
+    ]
+  }
+}
