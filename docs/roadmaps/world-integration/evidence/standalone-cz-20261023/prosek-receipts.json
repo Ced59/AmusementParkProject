@@ -1,0 +1,154 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "69982801-13e1-40d0-9f75-34e91d565619",
+    "appliedAtUtc": "2026-10-23T04:08:17.4161757Z",
+    "targetStandaloneAttractionId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "794332dd-7180-419f-99ee-aff3f990cac4",
+    "appliedAtUtc": "2026-10-23T04:09:22.683484Z",
+    "targetStandaloneAttractionId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "0b463bdc-f434-4e00-85c9-8fbd64a196bd",
+    "appliedAtUtc": "2026-10-23T04:09:45.8356396Z",
+    "targetStandaloneAttractionId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "e7bcfa49-d1bc-4850-8403-871f8a35a650",
+    "appliedAtUtc": "2026-10-23T04:10:10.0913739Z",
+    "targetStandaloneAttractionId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "0e505769-3e3e-461c-a61a-3be01c3e6eaa",
+    "appliedAtUtc": "2026-10-23T04:12:12.1941853Z",
+    "targetStandaloneAttractionId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "6bdd0ef6-a193-49c5-81a6-0d3414f9369a",
+    "appliedAtUtc": "2026-10-23T04:15:02.5260079Z",
+    "targetStandaloneAttractionId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "d963b823-8478-4dca-b8fb-edc7eb613707",
+    "appliedAtUtc": "2026-10-23T04:15:41.1792403Z",
+    "targetStandaloneAttractionId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "6f5d2e34-f822-43ea-bf71-f3bd64ff8510",
+    "appliedAtUtc": "2026-10-23T04:16:53.9697442Z",
+    "targetStandaloneAttractionId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "bad0c8b9b7c24f4d8470518c5209ce3c",
+    "ownerId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "sourceUrl": "https://www.bobovadraha.cz/wp-content/uploads/2026/10/bobovka_tiskovka.webp",
+    "updatedAt": "2026-10-23T04:10:33.512Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "1b59d937ec2347cea80167f4a782bad0",
+    "ownerId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "sourceUrl": "https://www.bobovadraha.cz/wp-content/uploads/2026/10/bf6142de-7839-4d6f-b265-9dbc058e542c.jpg",
+    "updatedAt": "2026-10-23T04:10:48.837Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "7e8d5d4efa6840ecace3271fd25549f9",
+    "ownerId": "7c0caa68-3971-4854-8033-6d24f9927389",
+    "sourceUrl": "https://www.bobovadraha.cz/wp-content/uploads/cache/2026/02/1_29_26/3014047603.jpg",
+    "updatedAt": "2026-10-23T04:11:17.342Z",
+    "isPublished": false
+  }
+]
