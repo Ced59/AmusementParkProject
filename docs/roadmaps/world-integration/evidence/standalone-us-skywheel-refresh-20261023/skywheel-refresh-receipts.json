@@ -1,0 +1,71 @@
+[
+  {
+    "stage": "01-details",
+    "operationId": "d5ae3a72-a2b1-4e94-9c21-a5389629a2c5",
+    "appliedAtUtc": "2026-10-23T15:04:31.9643175Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-pricing",
+    "operationId": "23e89658-ecb9-4a02-8a35-24819eaab9d9",
+    "appliedAtUtc": "2026-10-23T15:04:55.1378339Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-history-enrichment",
+    "operationId": "556dae9e-9388-490d-a647-32ac39478629",
+    "appliedAtUtc": "2026-10-23T15:08:04.0317494Z",
+    "targetStandaloneAttractionId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "action": "ImportPhoto",
+    "imageId": "78c591a8ff8a42369ba3964c236cdc1d",
+    "updatedAtUtc": "2026-10-23T15:05:24.571Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:SkyWheel_Myrtle_Beach_in_August_2022.jpg"
+  },
+  {
+    "stage": "photo-2",
+    "action": "ImportPhoto",
+    "imageId": "1e6b0926a9664efe8140574efda5c386",
+    "updatedAtUtc": "2026-10-23T15:05:39.117Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Myrtle_Beach_ferris_wheel.jpg"
+  },
+  {
+    "stage": "photo-3",
+    "action": "ImportPhoto",
+    "imageId": "92382db66dc04d0abe3f691278210633",
+    "updatedAtUtc": "2026-10-23T15:05:53.999Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Myrtle_Beach_SkyWheel.jpg"
+  }
+]
