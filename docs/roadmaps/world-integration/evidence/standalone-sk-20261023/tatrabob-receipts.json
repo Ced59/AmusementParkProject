@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "07251296-3c29-4b69-be4b-26df47abb7e1",
+    "appliedAtUtc": "2026-10-23T04:29:30.2175355Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "a84ef185-9eca-44e5-aff9-696033d5c1da",
+    "appliedAtUtc": "2026-10-23T04:29:58.8675759Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "9daf795e-1d01-4ebc-98e2-2ef9ce2851f6",
+    "appliedAtUtc": "2026-10-23T04:30:22.6988559Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "a39addb6-aea8-489d-a87f-da4f0ffb86ad",
+    "appliedAtUtc": "2026-10-23T04:30:54.7067253Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history.apply",
+    "operationId": "2978b269-bbe2-45c9-9c23-de4de9b1db6b",
+    "appliedAtUtc": "2026-10-23T04:33:29.8248807Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05b-copyfix.apply",
+    "operationId": "51ed7a20-bf3e-47df-98ff-1a7dd0111b59",
+    "appliedAtUtc": "2026-10-23T04:35:12.369349Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "a57a17c2-bdca-4cd9-a957-b4ce341952b6",
+    "appliedAtUtc": "2026-10-23T04:36:52.4386265Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "b9c36b91-bfee-451e-8a73-1463fe5c8b5b",
+    "appliedAtUtc": "2026-10-23T04:37:17.3327535Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "03278609-7e9d-4dfc-81dc-2150825b91f6",
+    "appliedAtUtc": "2026-10-23T04:37:41.4819236Z",
+    "targetStandaloneAttractionId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "f50eadc14f114fb2b7c1d7312bb131b4",
+    "ownerId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "sourceUrl": "https://www.tatrabob.sk/015.jpg",
+    "updatedAt": "2026-10-23T04:31:30.888Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "7ba781618f4b4b1a81400a7ef0260ee9",
+    "ownerId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "sourceUrl": "https://www.tatrabob.sk/117.jpg",
+    "updatedAt": "2026-10-23T04:31:47.147Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "6d7aa9e78787460f8817744483436ce8",
+    "ownerId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+    "sourceUrl": "https://www.tatrabob.sk/newTatrabob2.jpg",
+    "updatedAt": "2026-10-23T04:32:27.46Z",
+    "isPublished": false
+  }
+]
