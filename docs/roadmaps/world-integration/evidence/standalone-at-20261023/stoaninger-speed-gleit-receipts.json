@@ -1,0 +1,162 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "234ccccc-9e34-4e75-983a-02bc80ea70e5",
+    "appliedAtUtc": "2026-10-23T12:08:44.9325471Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "e9cc6c30-6b48-45ef-a956-7baa2951179c",
+    "appliedAtUtc": "2026-10-23T12:10:20.7969493Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "2bae02a6-ff15-4e2a-aeb5-93a4dfdb8fee",
+    "appliedAtUtc": "2026-10-23T12:10:55.2536243Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "49efbb6d-b59e-4dd7-9763-10582a629b6a",
+    "appliedAtUtc": "2026-10-23T12:11:29.6190611Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "d4b40eb0-f1cd-4eaf-8947-148d7c4b1b37",
+    "appliedAtUtc": "2026-10-23T12:11:54.0379284Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05b-history-correction",
+    "operationId": "42d26e79-6e87-4326-bc6b-8c71b25e789b",
+    "appliedAtUtc": "2026-10-23T12:13:29.5879298Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "01b-core-style",
+    "operationId": "a11d2e09-da44-419d-b605-5e0e66b1dcb7",
+    "appliedAtUtc": "2026-10-23T12:15:10.9167747Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05c-history-style",
+    "operationId": "dba5cb68-c924-4b91-ab3a-1fe38360f593",
+    "appliedAtUtc": "2026-10-23T12:15:51.033514Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-history",
+    "operationId": "45a5208e-51af-4317-adf5-d090d94f15c0",
+    "appliedAtUtc": "2026-10-23T12:16:39.233111Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-attraction",
+    "operationId": "1fa3ea43-dc9d-4316-8a11-667f9c2726df",
+    "appliedAtUtc": "2026-10-23T12:17:03.9182896Z",
+    "targetStandaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  }
+]

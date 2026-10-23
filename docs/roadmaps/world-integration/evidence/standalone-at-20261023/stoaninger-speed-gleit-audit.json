@@ -1,0 +1,295 @@
+{
+  "name": "Speed-Gleit-Bahn",
+  "standaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+  "legacyParkId": "5400ddc6-e650-478c-88b5-aaa1a87f7dae",
+  "legacyParkItemId": "0a7ae530-4316-444f-9599-1fcd51da1a0c",
+  "qualification": "Stoaninger Alm est une ancienne fiche Park masquée à un seul parkItem. La piste possède ses propres billets et coexiste avec randonnée, restauration et aire de jeux sans admission commune de parc. SearchParks, SearchStandaloneAttractions et ExportPark officiels ont confirmé l’absence de doublon et les identifiants à migrer. Le Park et son item historiques restent masqués.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 88,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedRidePhotos": 0,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentAdmissionOffers": 10,
+    "openingHoursPeriod": "2026-10-23/2026-10-31",
+    "datedScheduleOverrides": 9
+  },
+  "gaps": [
+    "Aucune photographie de la Speed-Gleit-Bahn avec licence ou autorisation de réutilisation vérifiable trouvée après recherches Wikimedia Commons par nom, variantes et géolocalisation. Les photographies de l’exploitant sont visibles en ligne sans licence explicite et ne sont pas copiées. La fiche et le post Facebook sont publiés sans photo, ce qui explique une partie du score de 88/100.",
+    "Captain Coaster n’indique que l’année d’ouverture 2003 ; le 1er janvier 2003 de l’ancien item était une date artificielle et n’est pas repris.",
+    "L’annonce actuelle limite les ouvertures aux week-ends jusqu’au 31 octobre 2026, alors que la grille générale mentionne le vendredi. Les dates spécifiques actuelles sont retenues ; les horaires ultérieurs restent inconnus.",
+    "Le tarif enfant réduit lié à la carte famille et le tarif groupe/étudiant sont expliqués dans les notes ; les critères exacts des carnets multi-trajets ne sont pas détaillés par l’exploitant."
+  ],
+  "sources": [
+    "https://www.stoaninger-alm.at/sommer/",
+    "https://www.stoaninger-alm.at/sommer/speed-gleit-bahn/",
+    "https://www.stoaninger-alm.at/sommer/speed-gleit-bahn/offnungszeiten/",
+    "https://www.stoaninger-alm.at/sommer/speed-gleit-bahn/preise/",
+    "https://captaincoaster.com/fr/coasters/4595/speed-gleit-bahn-stoaninger-alm",
+    "https://rcdb.com/13020.htm"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T12:19:15.428805+00:00",
+    "exportSha256": "83bf7df120d4976508dd97fb9b74a43ac69809308273a55e2ced9e1d5dd66e1d",
+    "localizedStringsReviewed": 240,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": []
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+    "publishedAtUtc": "2026-10-23T12:17:03.9182896Z",
+    "operationId": "1fa3ea43-dc9d-4316-8a11-667f9c2726df"
+  },
+  "facebookPublication": {
+    "id": "7677da1a509c4a8f83705e5f7e0b1982",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T12:18:03.5473108Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124286749424431",
+    "externalPostId": "1285475681307050_122124286749424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T12:17:47.585487+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T12:17:18.291117+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history/7bdc7698-5cac-45f4-898c-480682e3f349/ouverture-speed-gleit-bahn-2003",
+            "status": 200,
+            "textLength": 1358,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 517
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history/7bdc7698-5cac-45f4-898c-480682e3f349/ouverture-speed-gleit-bahn-2003",
+            "status": 200,
+            "textLength": 1215,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 444
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history/7bdc7698-5cac-45f4-898c-480682e3f349/ouverture-speed-gleit-bahn-2003",
+            "status": 200,
+            "textLength": 1322,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 539
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history/7bdc7698-5cac-45f4-898c-480682e3f349/ouverture-speed-gleit-bahn-2003",
+            "status": 200,
+            "textLength": 1206,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 514
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history/7bdc7698-5cac-45f4-898c-480682e3f349/ouverture-speed-gleit-bahn-2003",
+            "status": 200,
+            "textLength": 1284,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 478
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history/7bdc7698-5cac-45f4-898c-480682e3f349/ouverture-speed-gleit-bahn-2003",
+            "status": 200,
+            "textLength": 1261,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 476
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history/7bdc7698-5cac-45f4-898c-480682e3f349/ouverture-speed-gleit-bahn-2003",
+            "status": 200,
+            "textLength": 1203,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 479
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn/history/7bdc7698-5cac-45f4-898c-480682e3f349/ouverture-speed-gleit-bahn-2003",
+            "status": 200,
+            "textLength": 1240,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 487
+      }
+    ]
+  }
+}
