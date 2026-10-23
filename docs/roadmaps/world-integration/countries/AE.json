@@ -3756,32 +3756,188 @@
     {
       "entryId": "AE-candidate-discovery-fa74bdc4d250e2",
       "name": "XLine Dubai Marina",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": "Dubaï",
-      "siteId": null,
+      "locality": "Dubai Marina Mall et Jumeirah Beach Residence, Dubaï",
+      "siteId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T14:35:44.066Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Réservation et tarifs actifs sur le site officiel XDubai au 23 octobre 2026.",
+      "identityConfidence": "Billet XDubai propre, parcours entre tours Amwaj et Dubai Marina Mall ; absence de fiche homonyme et page vérifiée en huit langues.",
       "possibleMatches": [],
       "aliases": [
         "XLine"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T14:32:31.017Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-00c5efd2-4124-4164-978e-8003eb119ec6",
+          "appliedAt": "2026-10-23T14:21:34.491Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:apply:00c5efd2-4124-4164-978e-8003eb119ec6",
+          "auditEvidence": null,
+          "summary": "Fiche XLine Dubai Marina et descriptions en huit langues créées."
+        },
+        {
+          "eventId": "apply-0d605b75-c632-47ba-a36d-0dbd6bb395ba",
+          "appliedAt": "2026-10-23T14:23:37.916Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:apply:0d605b75-c632-47ba-a36d-0dbd6bb395ba",
+          "auditEvidence": null,
+          "summary": "Deux plages de départ quotidiennes et avertissement saisonnier intégrés."
+        },
+        {
+          "eventId": "apply-8655e81e-48ec-4c6d-9220-090ddef975d4",
+          "appliedAt": "2026-10-23T14:24:01.056Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:apply:8655e81e-48ec-4c6d-9220-090ddef975d4",
+          "auditEvidence": null,
+          "summary": "Tarifs adulte et jeune officiels intégrés."
+        },
+        {
+          "eventId": "apply-b812f5e5-a831-4980-b83c-d6318cf67537",
+          "appliedAt": "2026-10-23T14:24:23.835Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:apply:b812f5e5-a831-4980-b83c-d6318cf67537",
+          "auditEvidence": null,
+          "summary": "Six conditions officielles d’âge, taille, poids, santé et équipement intégrées."
+        },
+        {
+          "eventId": "apply-5784e12e-0e88-442d-97ea-497f971148f2",
+          "appliedAt": "2026-10-23T14:24:47.500Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:apply:5784e12e-0e88-442d-97ea-497f971148f2",
+          "auditEvidence": null,
+          "summary": "Ouverture de 2017 et article historique en huit langues intégrés."
+        },
+        {
+          "eventId": "image-1dfed3190993435bb67eb1e1d5a448c0",
+          "appliedAt": "2026-10-23T14:28:16.706Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:1dfed3190993435bb67eb1e1d5a448c0",
+          "auditEvidence": null,
+          "summary": "Capture de vidéo Wikimedia Commons sous CC BY 3.0, crédit et textes alternatifs intégrés."
+        },
+        {
+          "eventId": "image-03a41d5279a84488a901aed30a16e418",
+          "appliedAt": "2026-10-23T14:28:45.959Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:03a41d5279a84488a901aed30a16e418",
+          "auditEvidence": null,
+          "summary": "Capture de vidéo Wikimedia Commons sous CC BY 3.0, crédit et textes alternatifs intégrés."
+        },
+        {
+          "eventId": "image-c2e38a455ce44bb292773d6e60cb20dd",
+          "appliedAt": "2026-10-23T14:29:12.211Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:c2e38a455ce44bb292773d6e60cb20dd",
+          "auditEvidence": null,
+          "summary": "Capture de vidéo Wikimedia Commons sous CC BY 3.0, crédit et textes alternatifs intégrés."
+        },
+        {
+          "eventId": "apply-9308dd5d-78fc-446e-892c-275978bc9dbc",
+          "appliedAt": "2026-10-23T14:30:24.793Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:apply:9308dd5d-78fc-446e-892c-275978bc9dbc",
+          "auditEvidence": null,
+          "summary": "Coordonnées de l’accueil issues du lien cartographique officiel intégrées."
+        },
+        {
+          "eventId": "apply-4e2da218-de80-48d5-8790-89d489271913",
+          "appliedAt": "2026-10-23T14:32:31.017Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:apply:4e2da218-de80-48d5-8790-89d489271913",
+          "auditEvidence": null,
+          "summary": "Formulation italienne de l’article affinée après audit du corpus."
+        },
+        {
+          "eventId": "closure-4e2da218-de80-48d5-8790-89d489271913",
+          "appliedAt": "2026-10-23T14:32:31.017Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+          "evidence": "PARK_DATA_EDITOR:apply:4e2da218-de80-48d5-8790-89d489271913",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ae-20261023/xline-dubai-marina-audit.json",
+          "summary": "Audit final 100/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; contrôler les horaires variables et tarifs, puis chercher des photographies plus récentes.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.xdubai.com/x-line",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.xdubai.com/faq",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.xdubai.com/contact-us",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.thenationalnews.com/uae/world-s-longest-urban-zipline-open-for-business-in-dubai-1.680969",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://dubaicityguide.com/site/news/news-details/News-Archive/64630/xdubai-unveils-the-xline-dubai-marina%2C-the-world%E2%80%99s-longest-urban-zipline",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.google.com/maps/place/XLine+Dubai+Marina/@25.0762927,55.1407242",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:XLine_Dubai-2.png",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:XLine_Dubai-1.png",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:XLine_Dubai-4.png",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -3790,8 +3946,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "XLine Dubai Marina",
@@ -3804,7 +3960,29 @@
             "sourceLocality": "Dubaï"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Tyrolienne urbaine à billetterie propre de XDubai, sans accès payant à une enceinte parente."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+          "publishedAtUtc": "2026-10-23T14:34:52.9021764Z",
+          "verifiedAtUtc": "2026-10-23T14:35:44.066Z",
+          "evidence": "PARK_DATA_EDITOR:apply:331639ee-f2de-4ec5-9bd3-e5a313a45558"
+        },
+        "facebook": {
+          "id": "ec37a1f484544dfbbfe5c87f6d2efa17",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T14:36:04.3642173Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124305499424431",
+          "externalPostId": "1285475681307050_122124305499424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-20261023/xline-dubai-marina-audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {

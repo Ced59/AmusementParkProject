@@ -1,0 +1,309 @@
+{
+  "name": "XLine Dubai Marina",
+  "standaloneAttractionId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+  "backlogEntryId": "AE-candidate-discovery-fa74bdc4d250e2",
+  "qualification": "XDubai vend la traversée de Dubai Marina sous un billet XLine propre, sans entrée au centre commercial ; elle est distincte de la première XLine de Dubai Fountain (2015) et des autres activités XDubai. Les recherches officielles AE dans Parks et StandaloneAttractions par XLine et Dubai Marina n’ont trouvé aucune fiche homonyme ; Ain Dubai est une autre installation.",
+  "deduplicationEvidence": {
+    "standaloneExactNameMatches": 0,
+    "parkExactNameMatches": 0,
+    "searchQueries": [
+      "XLine",
+      "Dubai Marina"
+    ],
+    "nearbyNonMatchingStandalone": "Ain Dubai"
+  },
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 3,
+    "accessConditions": 6,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentAdmissionOffers": 2,
+    "weeklyOpeningRules": 1,
+    "dailySessionRanges": 2,
+    "openingYearConfirmed": 2017,
+    "operatorLinkedMapCoordinates": true
+  },
+  "gaps": [
+    "Les deux plages horaires quotidiennes sont celles affichées par XDubai le 23 octobre 2026. L’exploitant précise qu’elles peuvent varier selon saison, météo et jours fériés : vérifier les créneaux de réservation.",
+    "Les trois images réutilisables sont des captures de vidéo de 2020 sous CC BY 3.0 ; chercher des photographies plus récentes et indépendantes à la prochaine révision.",
+    "Les tarifs de 699 et 499 AED observés le 23 octobre 2026 peuvent changer ; l’option vidéo 360° à 150 AED est indiquée séparément dans les notes."
+  ],
+  "sources": [
+    "https://www.xdubai.com/x-line",
+    "https://www.xdubai.com/faq",
+    "https://www.xdubai.com/contact-us",
+    "https://www.thenationalnews.com/uae/world-s-longest-urban-zipline-open-for-business-in-dubai-1.680969",
+    "https://dubaicityguide.com/site/news/news-details/News-Archive/64630/xdubai-unveils-the-xline-dubai-marina%2C-the-world%E2%80%99s-longest-urban-zipline",
+    "https://www.google.com/maps/place/XLine+Dubai+Marina/@25.0762927,55.1407242",
+    "https://commons.wikimedia.org/wiki/File:XLine_Dubai-2.png",
+    "https://commons.wikimedia.org/wiki/File:XLine_Dubai-1.png",
+    "https://commons.wikimedia.org/wiki/File:XLine_Dubai-4.png"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T14:36:33.556291+00:00",
+    "exportSha256": "3f5526db57637ac1d8ef2a31f6a247f1fc29383fae30a37aaed190d675f474dd",
+    "localizedStringsReviewed": 336,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+    "publishedAtUtc": "2026-10-23T14:34:52.9021764Z",
+    "operationId": "331639ee-f2de-4ec5-9bd3-e5a313a45558"
+  },
+  "facebookPublication": {
+    "id": "ec37a1f484544dfbbfe5c87f6d2efa17",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T14:36:04.3642173Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124305499424431",
+    "externalPostId": "1285475681307050_122124305499424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T14:35:44.066612+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T14:35:42.041719+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history/f233c597-1ab1-416b-ba7b-22fde220844f/ouverture-xline-dubai-marina-2017",
+            "status": 200,
+            "textLength": 1761,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 544
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history/f233c597-1ab1-416b-ba7b-22fde220844f/ouverture-xline-dubai-marina-2017",
+            "status": 200,
+            "textLength": 1515,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 489
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history/f233c597-1ab1-416b-ba7b-22fde220844f/ouverture-xline-dubai-marina-2017",
+            "status": 200,
+            "textLength": 1636,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 589
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history/f233c597-1ab1-416b-ba7b-22fde220844f/ouverture-xline-dubai-marina-2017",
+            "status": 200,
+            "textLength": 1579,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 566
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history/f233c597-1ab1-416b-ba7b-22fde220844f/ouverture-xline-dubai-marina-2017",
+            "status": 200,
+            "textLength": 1598,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 520
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history/f233c597-1ab1-416b-ba7b-22fde220844f/ouverture-xline-dubai-marina-2017",
+            "status": 200,
+            "textLength": 1577,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 530
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history/f233c597-1ab1-416b-ba7b-22fde220844f/ouverture-xline-dubai-marina-2017",
+            "status": 200,
+            "textLength": 1476,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 524
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/7dd2d678-1dce-45cf-9c6e-ae6e28eff077/xline-dubai-marina/history/f233c597-1ab1-416b-ba7b-22fde220844f/ouverture-xline-dubai-marina-2017",
+            "status": 200,
+            "textLength": 1533,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 546
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-ae-20261023/xline-dubai-marina-receipts.json"
+}
