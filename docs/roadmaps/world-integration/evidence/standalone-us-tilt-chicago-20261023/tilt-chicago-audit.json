@@ -1,0 +1,312 @@
+{
+  "name": "TILT — 360 CHICAGO",
+  "standaloneAttractionId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+  "backlogEntryId": "US-candidate-discovery-15a41c387081bc",
+  "qualification": "Plateforme vitrée basculante vendue comme option distincte dans l’observatoire 360 CHICAGO. Le billet d’entrée à l’observatoire reste obligatoire ; pertinence standalone confirmée par offre et restrictions propres.",
+  "deduplicationEvidence": {
+    "successfulSearches": [
+      "SearchStandaloneAttractions TILT US",
+      "SearchStandaloneAttractions 360 CHICAGO US",
+      "SearchParks 360 CHICAGO US",
+      "SearchParks TILT Chicago US"
+    ],
+    "exactMatches": 0,
+    "failedSearch": "SearchParks TILT US: HTTP 500 unexpected.error ; recherche ciblée TILT Chicago US réussie, zéro résultat"
+  },
+  "decision": "Published",
+  "score": 95,
+  "dataQualityLevel": "Excellent",
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 2,
+    "accessConditions": 2,
+    "historyEvents": 1,
+    "articles": 1,
+    "pricingOffers": 3,
+    "openingDateConfirmed": "2014-05",
+    "locationFromOpenStreetMap": true
+  },
+  "dataIntegrationAtUtc": "2026-10-23T16:04:14.5718775Z",
+  "photoLicenses": [
+    {
+      "credit": "David Wilson / Wikimedia Commons, CC BY 2.0, 2014",
+      "source": "https://commons.wikimedia.org/wiki/File:20140802_29_Tilt_@_360_Chicago_(20641549770).jpg"
+    },
+    {
+      "credit": "Jan Pěček / Wikimedia Commons, CC BY 2.0, 2014",
+      "source": "https://commons.wikimedia.org/wiki/File:TILT_(14993635707).jpg"
+    }
+  ],
+  "sources": [
+    "https://360chicago.com/tilt",
+    "https://360chicago.com/faqs/tilt",
+    "https://360chicago.com/tickets",
+    "https://360chicago.com/things-to-do/celebrating-12-years-of-tilt",
+    "https://www.openstreetmap.org/way/31064573"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T16:03:26.256036+00:00",
+    "exportSha256": "53d904e6961973634dd38b8022f01b33b7fd224c3a9400e9b28f59918e946173",
+    "localizedStringsReviewed": 224,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+    "publishedAtUtc": "2026-10-23T16:06:04.1467881Z",
+    "operationId": "3e35e60f-fe9b-486a-831e-3cda4daeeb24"
+  },
+  "facebookPublication": {
+    "id": "f8374a2343414effbb909ae5c4cfd4a5",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T16:06:58.2157222Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124315573424431",
+    "externalPostId": "1285475681307050_122124315573424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T16:07:20.216721+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T16:07:25.772365+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history/b8cd4929-fb4b-4540-b0f3-2f9ce43a8a68/ouverture-tilt-chicago-2014",
+            "status": 200,
+            "textLength": 1376,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 536
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history/b8cd4929-fb4b-4540-b0f3-2f9ce43a8a68/ouverture-tilt-chicago-2014",
+            "status": 200,
+            "textLength": 1166,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 471
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history/b8cd4929-fb4b-4540-b0f3-2f9ce43a8a68/ouverture-tilt-chicago-2014",
+            "status": 200,
+            "textLength": 1213,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 570
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history/b8cd4929-fb4b-4540-b0f3-2f9ce43a8a68/ouverture-tilt-chicago-2014",
+            "status": 200,
+            "textLength": 1158,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 545
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history/b8cd4929-fb4b-4540-b0f3-2f9ce43a8a68/ouverture-tilt-chicago-2014",
+            "status": 200,
+            "textLength": 1152,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 507
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history/b8cd4929-fb4b-4540-b0f3-2f9ce43a8a68/ouverture-tilt-chicago-2014",
+            "status": 200,
+            "textLength": 1167,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 509
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history/b8cd4929-fb4b-4540-b0f3-2f9ce43a8a68/ouverture-tilt-chicago-2014",
+            "status": 200,
+            "textLength": 1069,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 499
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/2c4f6433-1ae4-4eef-8471-8afbd7e58f83/tilt-360-chicago/history/b8cd4929-fb4b-4540-b0f3-2f9ce43a8a68/ouverture-tilt-chicago-2014",
+            "status": 200,
+            "textLength": 1151,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 523
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-us-tilt-chicago-20261023/tilt-chicago-receipts.json"
+}

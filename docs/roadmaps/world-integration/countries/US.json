@@ -63689,33 +63689,64 @@
     {
       "entryId": "US-candidate-discovery-15a41c387081bc",
       "name": "TILT — 360 CHICAGO",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Plateforme mécanique inclinable",
       "locality": "Chicago, Illinois",
-      "siteId": null,
+      "siteId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Exploitation et réservation actives au 23 octobre 2026 sur les pages officielles 360 CHICAGO.",
+      "identityConfidence": "Recherche officielle SearchStandaloneAttractions TILT et 360 CHICAGO, SearchParks 360 CHICAGO et TILT Chicago : zéro homonyme. La recherche large SearchParks TILT a renvoyé HTTP 500 ; recherche ciblée réussie.",
       "possibleMatches": [],
       "aliases": [
         "TILT Chicago",
         "360 CHICAGO"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T16:04:14.571Z",
+      "integrationHistory": [
+        {
+          "eventId": "US-tilt-chicago-20261023-data",
+          "appliedAt": "2026-10-23T16:04:14.571Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-tilt-chicago-20261023/tilt-chicago-receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-tilt-chicago-20261023/tilt-chicago-audit.json",
+          "summary": "TILT Chicago : fiche, huit langues, horaires, tarifs, accès, histoire et deux photos sous licence intégrés ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://360chicago.com/tilt-c",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "360 CHICAGO — TILT",
+          "url": "https://360chicago.com/tilt",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "360 CHICAGO — FAQ TILT",
+          "url": "https://360chicago.com/faqs/tilt",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "360 CHICAGO — tarifs",
+          "url": "https://360chicago.com/tickets",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "360 CHICAGO — anniversaire et ouverture",
+          "url": "https://360chicago.com/things-to-do/celebrating-12-years-of-tilt",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -63724,8 +63755,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "TILT — 360 CHICAGO",
@@ -63738,7 +63769,7 @@
             "sourceLocality": "Chicago, Illinois"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Option TILT vendue séparément avec son propre créneau et ses conditions, tout en exigeant le billet de l’observatoire. Fiche standalone distincte et publiée le 23 octobre 2026."
       }
     },
     {
