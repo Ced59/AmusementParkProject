@@ -1,0 +1,294 @@
+{
+  "name": "Niagara SkyWheel",
+  "standaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+  "qualification": "Roue fixe à billet propre sur la rue de loisirs ouverte Clifton Hill. Le Fun Pass regroupe plusieurs billets mais Clifton Hill n’est pas un parc fermé avec zones et parkItems. Recherches officielles Standalone Niagara SkyWheel/SkyWheel et Park Niagara SkyWheel/Clifton Hill : aucun doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 98,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 4,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentAdmissionOffers": 2,
+    "openingHours": "dimanche–jeudi 10 h–minuit ; vendredi–samedi 10 h–2 h le lendemain"
+  },
+  "gaps": [
+    "Chance Morgan est confirmé comme constructeur du R60 dans son communiqué d’époque. L’identifiant de référence constructeur global du site n’a pas été établi sans risque de doublon ; le modèle est intégré, la référence reste à rapprocher du catalogue.",
+    "Le point OpenStreetMap node/1892287106 désigne le guichet du SkyWheel, pas le centre géométrique démontré de la roue. Aucun code postal n’a été extrapolé.",
+    "La photographie historique libre est datée de juillet 2007 et montre la roue un an après l’ouverture de juin 2006 ; elle contextualise l’article sans être présentée comme une photo de l’inauguration.",
+    "Les horaires habituels sont publiés sans horizon daté ; l’exploitant annonce des changements possibles et des fermetures météo. Aucune exception non publiée n’a été inventée."
+  ],
+  "sources": [
+    "https://www.cliftonhill.com/attractions/niagara-skywheel",
+    "https://www.cliftonhill.com/skywheel-ticket",
+    "https://web.archive.org/web/20160409015822/http://www.chancerides.com/news/images/press_releases/niagara_falls_6_20_06.pdf",
+    "https://www.openstreetmap.org/node/1892287106",
+    "https://commons.wikimedia.org/wiki/File:Niagara_SkyWheel,_Niagara_Falls,_Ontario.jpg",
+    "https://commons.wikimedia.org/wiki/File:Niagara_Falls_Skywheel_by_night_03.jpg",
+    "https://commons.wikimedia.org/wiki/File:Niagara_SkyWheel_Clifton_Hill_Niagara_Falls_Ontario_Canada.jpg",
+    "https://commons.wikimedia.org/wiki/File:View_of_Clifton_Hill_and_Niagara_SkyWheel_from_Skylon_Tower,_Niagara_Falls,_Canada,_2007.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T11:44:42.865401+00:00",
+    "exportSha256": "24ea81e3be5faa6511e900b1e94c05225b9df082ab9feb2d945b5e048db95de7",
+    "localizedStringsReviewed": 272,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": []
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+    "publishedAtUtc": "2026-10-23T11:46:07.6045449Z",
+    "operationId": "107fc9a8-8938-49f7-92d3-637504a40e90"
+  },
+  "facebookPublication": {
+    "id": "583318a85cf947529c0f64573a8f2ebe",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T11:47:21.5227649Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124282843424431",
+    "externalPostId": "1285475681307050_122124282843424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T11:46:54.594760+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T11:46:24.628239+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history/4cafa25c-fd87-4b85-9e0d-7b69be341408/ouverture-niagara-skywheel-2006",
+            "status": 200,
+            "textLength": 1784,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 547
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history/4cafa25c-fd87-4b85-9e0d-7b69be341408/ouverture-niagara-skywheel-2006",
+            "status": 200,
+            "textLength": 1575,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 482
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history/4cafa25c-fd87-4b85-9e0d-7b69be341408/ouverture-niagara-skywheel-2006",
+            "status": 200,
+            "textLength": 1679,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 579
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history/4cafa25c-fd87-4b85-9e0d-7b69be341408/ouverture-niagara-skywheel-2006",
+            "status": 200,
+            "textLength": 1615,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 564
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history/4cafa25c-fd87-4b85-9e0d-7b69be341408/ouverture-niagara-skywheel-2006",
+            "status": 200,
+            "textLength": 1611,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 524
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history/4cafa25c-fd87-4b85-9e0d-7b69be341408/ouverture-niagara-skywheel-2006",
+            "status": 200,
+            "textLength": 1655,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 547
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history/4cafa25c-fd87-4b85-9e0d-7b69be341408/ouverture-niagara-skywheel-2006",
+            "status": 200,
+            "textLength": 1468,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 527
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel/history/4cafa25c-fd87-4b85-9e0d-7b69be341408/ouverture-niagara-skywheel-2006",
+            "status": 200,
+            "textLength": 1583,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 551
+      }
+    ]
+  }
+}

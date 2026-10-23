@@ -1,0 +1,162 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "e8f3fc76-902e-42be-9069-3880ed401349",
+    "appliedAtUtc": "2026-10-23T11:40:13.0199069Z",
+    "targetStandaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "791af1fe-e215-41f2-9660-bb6caa084e22",
+    "appliedAtUtc": "2026-10-23T11:41:16.9790672Z",
+    "targetStandaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "16e25622-8fc1-435c-92f8-08725f95ef41",
+    "appliedAtUtc": "2026-10-23T11:41:40.4726961Z",
+    "targetStandaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "64537dca-d28a-4312-9cca-6d0bf07290e5",
+    "appliedAtUtc": "2026-10-23T11:42:15.1600577Z",
+    "targetStandaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "0ced11f7-af96-4056-8344-31adca229074",
+    "appliedAtUtc": "2026-10-23T11:44:12.8834765Z",
+    "targetStandaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-images",
+    "operationId": "b1bb34ba-8887-42b5-8e30-d83beb5e09f2",
+    "appliedAtUtc": "2026-10-23T11:45:21.2440769Z",
+    "targetStandaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-history",
+    "operationId": "449eda49-5d89-4df4-bb39-0128aa2d0df3",
+    "appliedAtUtc": "2026-10-23T11:45:44.3707234Z",
+    "targetStandaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "10-publish-attraction",
+    "operationId": "107fc9a8-8938-49f7-92d3-637504a40e90",
+    "appliedAtUtc": "2026-10-23T11:46:07.6045449Z",
+    "targetStandaloneAttractionId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "id": "53c439edaadc4e9bbdba1e2cb0cdbd50",
+    "ownerId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Niagara_SkyWheel,_Niagara_Falls,_Ontario.jpg",
+    "updatedAt": "2026-10-23T11:42:38.168Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2",
+    "id": "802a4eaf3a87492f9083ab3c34bd5b31",
+    "ownerId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Niagara_Falls_Skywheel_by_night_03.jpg",
+    "updatedAt": "2026-10-23T11:43:07.664Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3",
+    "id": "efec7c4e4f58467c8074b5cfa372b18a",
+    "ownerId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Niagara_SkyWheel_Clifton_Hill_Niagara_Falls_Ontario_Canada.jpg",
+    "updatedAt": "2026-10-23T11:43:28.417Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-4",
+    "id": "7e43894c9d294d4ba993405f9e671862",
+    "ownerId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_Clifton_Hill_and_Niagara_SkyWheel_from_Skylon_Tower,_Niagara_Falls,_Canada,_2007.jpg",
+    "updatedAt": "2026-10-23T11:43:45.233Z",
+    "isPublished": false
+  }
+]

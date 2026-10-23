@@ -3198,37 +3198,216 @@
     {
       "entryId": "CA-candidate-6c82f89565e189",
       "name": "Niagara SkyWheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "category": "Grande roue panoramique autonome",
       "locality": "Clifton Hill, Niagara Falls , Ontario",
-      "siteId": null,
+      "siteId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T11:46:54.594Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating",
+      "identityConfidence": "Exploitant, billet propre, date constructeur et page publique vérifiés ; aucun homonyme dans le client officiel",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T11:44:12.883Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-e8f3fc76-902e-42be-9069-3880ed401349",
+          "appliedAt": "2026-10-23T11:40:13.019Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:apply:e8f3fc76-902e-42be-9069-3880ed401349",
+          "auditEvidence": null,
+          "summary": "Fiche autonome créée : identité, modèle R60, localisation et descriptions en huit langues."
+        },
+        {
+          "eventId": "apply-791af1fe-e215-41f2-9660-bb6caa084e22",
+          "appliedAt": "2026-10-23T11:41:16.979Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:apply:791af1fe-e215-41f2-9660-bb6caa084e22",
+          "auditEvidence": null,
+          "summary": "Horaires officiels de la roue jusqu’à 2 h le week-end intégrés."
+        },
+        {
+          "eventId": "apply-16e25622-8fc1-435c-92f8-08725f95ef41",
+          "appliedAt": "2026-10-23T11:41:40.472Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:apply:16e25622-8fc1-435c-92f8-08725f95ef41",
+          "auditEvidence": null,
+          "summary": "Billets adultes et enfants actuels en CAD intégrés, hors taxe."
+        },
+        {
+          "eventId": "apply-64537dca-d28a-4312-9cca-6d0bf07290e5",
+          "appliedAt": "2026-10-23T11:42:15.160Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:apply:64537dca-d28a-4312-9cca-6d0bf07290e5",
+          "auditEvidence": null,
+          "summary": "Cabine privée, taille minimale de conduite solo et accès fauteuil intégrés."
+        },
+        {
+          "eventId": "photo-53c439edaadc4e9bbdba1e2cb0cdbd50",
+          "appliedAt": "2026-10-23T11:42:38.168Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:import-photo:53c439edaadc4e9bbdba1e2cb0cdbd50",
+          "auditEvidence": null,
+          "summary": "Photographie Commons 1/4 importée avec auteur et licence."
+        },
+        {
+          "eventId": "photo-802a4eaf3a87492f9083ab3c34bd5b31",
+          "appliedAt": "2026-10-23T11:43:07.664Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:import-photo:802a4eaf3a87492f9083ab3c34bd5b31",
+          "auditEvidence": null,
+          "summary": "Photographie Commons 2/4 importée avec auteur et licence."
+        },
+        {
+          "eventId": "photo-efec7c4e4f58467c8074b5cfa372b18a",
+          "appliedAt": "2026-10-23T11:43:28.417Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:import-photo:efec7c4e4f58467c8074b5cfa372b18a",
+          "auditEvidence": null,
+          "summary": "Photographie Commons 3/4 importée avec auteur et licence."
+        },
+        {
+          "eventId": "photo-7e43894c9d294d4ba993405f9e671862",
+          "appliedAt": "2026-10-23T11:43:45.233Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:import-photo:7e43894c9d294d4ba993405f9e671862",
+          "auditEvidence": null,
+          "summary": "Photographie Commons 4/4 importée avec auteur et licence."
+        },
+        {
+          "eventId": "apply-0ced11f7-af96-4056-8344-31adca229074",
+          "appliedAt": "2026-10-23T11:44:12.883Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:apply:0ced11f7-af96-4056-8344-31adca229074",
+          "auditEvidence": null,
+          "summary": "Ouverture du 17 juin 2006 et article sourcé en huit langues intégrés."
+        },
+        {
+          "eventId": "closure-0ced11f7-af96-4056-8344-31adca229074",
+          "appliedAt": "2026-10-23T11:44:12.883Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+          "evidence": "PARK_DATA_EDITOR:apply:0ced11f7-af96-4056-8344-31adca229074",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-20261023/niagara-skywheel-audit.json",
+          "summary": "Audit Excellent 98/100 sans bloqueur ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus ; rapprocher Chance Morgan du catalogue constructeur sans doublon, puis réviser horaires et tarifs lors d’un changement officiel.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.cliftonhill.com/attractions/niagara-skywheel",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.cliftonhill.com/skywheel-ticket",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://web.archive.org/web/20160409015822/http://www.chancerides.com/news/images/press_releases/niagara_falls_6_20_06.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/node/1892287106",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Niagara_SkyWheel,_Niagara_Falls,_Ontario.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Niagara_Falls_Skywheel_by_night_03.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Niagara_SkyWheel_Clifton_Hill_Niagara_Falls_Ontario_Canada.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:View_of_Clifton_Hill_and_Niagara_SkyWheel_from_Skylon_Tower,_Niagara_Falls,_Canada,_2007.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
+        "attractions": [
+          {
+            "name": "Niagara SkyWheel",
+            "source": "Clifton Hill — Niagara SkyWheel",
+            "url": "https://www.cliftonhill.com/attractions/niagara-skywheel",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Clifton Hill",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Niagara Falls, Ontario",
+            "sourceOpenedYear": "2006"
+          }
+        ],
+        "rationale": "Roue fixe à billet propre sur la rue ouverte Clifton Hill, hors parc structuré ; autonomie vérifiée auprès de l’exploitant et par les recherches du client officiel."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a9836bee-4a11-4a31-870f-8b833efc3f46/niagara-skywheel",
+          "publishedAtUtc": "2026-10-23T11:46:07.6045449Z",
+          "verifiedAtUtc": "2026-10-23T11:46:54.594Z",
+          "evidence": "PARK_DATA_EDITOR:apply:107fc9a8-8938-49f7-92d3-637504a40e90"
+        },
+        "facebook": {
+          "id": "583318a85cf947529c0f64573a8f2ebe",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T11:47:21.5227649Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124282843424431",
+          "externalPostId": "1285475681307050_122124282843424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-20261023/niagara-skywheel-audit.json",
+        "score": 98,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
