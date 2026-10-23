@@ -1,0 +1,307 @@
+{
+  "name": "Skyline Luge Busan",
+  "standaloneAttractionId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+  "backlogEntryId": "KR-candidate-standalone-0f95f79317187a",
+  "qualification": "Le site Skyline de Gijang possède sa propre billetterie Luge/Skyride. Lotte World Adventure Busan est voisin mais distinct ; les recherches officielles KR SearchStandaloneAttractions (Skyline Luge, Busan) et SearchParks (Skyline Luge) ne trouvent aucune fiche homonyme. Le résultat SearchParks Busan pour Lotte n’est pas la luge.",
+  "deduplicationEvidence": {
+    "searchQueries": [
+      "Skyline Luge",
+      "Busan"
+    ],
+    "standaloneMatches": 0,
+    "parkExactMatches": 0,
+    "nearbyDifferentEntity": "Lotte World Adventure Busan"
+  },
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 81,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 0,
+    "accessConditions": 5,
+    "historyEvents": 1,
+    "articles": 1,
+    "pricingOffers": 5,
+    "openingDateConfirmed": "2021-07-03",
+    "locationFromOpenStreetMap": true
+  },
+  "gaps": [
+    "Aucune photographie représentant Skyline Luge Busan avec licence de réutilisation vérifiable n’a été trouvée dans Commons ni dans la recherche Flickr ; les images officielles et Flickr tous droits réservés n’ont pas été reprises. Rechercher une image autorisée ultérieurement.",
+    "Les horaires sont publiés semaine par semaine et peuvent changer selon météo et exploitation. Aucune grille annuelle fictive n’a été saisie ; consulter le calendrier officiel avant la visite.",
+    "Tarifs officiels observés le 23 octobre 2026 ; ils peuvent évoluer, notamment les promotions et forfaits combinés Hyfly."
+  ],
+  "sources": [
+    "https://busan.skylineluge.kr/en/",
+    "https://busan.skylineluge.kr/en/pricing-packages/",
+    "https://busan.skylineluge.kr/en/visiting-us/open-hours/",
+    "https://busan.skylineluge.kr/en/luge/safety-faq/",
+    "https://busan.skylineluge.kr/en/luge/track-information/",
+    "https://skylineenterprises.co.nz/what-we-do/tourism-operations/skyline-luge-busan/",
+    "https://www.kiwichamber.com/news/2021/07/the-kiwi-chamber-inspire-with-innovation-series-3-4/",
+    "https://www.openstreetmap.org/way/1066897511"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T15:35:30.304839+00:00",
+    "exportSha256": "0407cb49c325eb71d34cc72a5e3bfa8e5e51fe3ce59558c0ffd91160d9febe4e",
+    "localizedStringsReviewed": 280,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité du site de Gijang, récit de juillet 2021, tarif Luge/Skyride, conditions et traduction des termes locaux. Aucun cliché du site avec licence de réutilisation vérifiable trouvé lors de la recherche ; aucune photographie tierce importée."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+    "publishedAtUtc": "2026-10-23T15:36:27.9086731Z",
+    "operationId": "28500886-4b4d-4cf2-b1be-ff9eea80f52e"
+  },
+  "facebookPublication": {
+    "id": "c8cba48307fe41f29ff47e36c4cf8919",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T15:37:08.0840998Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124312549424431",
+    "externalPostId": "1285475681307050_122124312549424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T15:37:06.887283+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T15:36:37.103842+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history/9f13711d-dbfc-47ee-8aaf-371316057a27/ouverture-skyline-luge-busan-2021",
+            "status": 200,
+            "textLength": 1583,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 544
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history/9f13711d-dbfc-47ee-8aaf-371316057a27/ouverture-skyline-luge-busan-2021",
+            "status": 200,
+            "textLength": 1465,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 477
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history/9f13711d-dbfc-47ee-8aaf-371316057a27/ouverture-skyline-luge-busan-2021",
+            "status": 200,
+            "textLength": 1497,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 586
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history/9f13711d-dbfc-47ee-8aaf-371316057a27/ouverture-skyline-luge-busan-2021",
+            "status": 200,
+            "textLength": 1487,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 549
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history/9f13711d-dbfc-47ee-8aaf-371316057a27/ouverture-skyline-luge-busan-2021",
+            "status": 200,
+            "textLength": 1454,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 509
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history/9f13711d-dbfc-47ee-8aaf-371316057a27/ouverture-skyline-luge-busan-2021",
+            "status": 200,
+            "textLength": 1478,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 524
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history/9f13711d-dbfc-47ee-8aaf-371316057a27/ouverture-skyline-luge-busan-2021",
+            "status": 200,
+            "textLength": 1418,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 516
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan/history/9f13711d-dbfc-47ee-8aaf-371316057a27/ouverture-skyline-luge-busan-2021",
+            "status": 200,
+            "textLength": 1475,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 546
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-20261023/busan-receipts.json"
+}
