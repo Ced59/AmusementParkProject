@@ -1,0 +1,170 @@
+[
+  {
+    "stage": "01-core.apply",
+    "operationId": "29a2ec89-93b5-4440-9019-468ef6407f80",
+    "appliedAtUtc": "2026-10-23T01:17:01.2397265Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "02-hours.apply",
+    "operationId": "acbc0895-0f6d-48da-acc5-487347153ca0",
+    "appliedAtUtc": "2026-10-23T01:18:30.4383041Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "03-pricing.apply",
+    "operationId": "527d5010-5708-4361-8166-bc7df50b30c9",
+    "appliedAtUtc": "2026-10-23T01:19:33.2006085Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "04-access.apply",
+    "operationId": "1816c809-c3cd-40b0-9e34-1c875fca55b7",
+    "appliedAtUtc": "2026-10-23T01:19:59.9130968Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "05-history-core.apply",
+    "operationId": "71724553-48ce-4383-b4df-8bcced2e9e1c",
+    "appliedAtUtc": "2026-10-23T01:20:24.5411636Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-history.apply",
+    "operationId": "f5d07117-83f9-498d-9dfa-53e64909e439",
+    "appliedAtUtc": "2026-10-23T01:22:12.6113893Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "06-publish-images.apply",
+    "operationId": "677983b0-a539-49bb-a1e2-0f884f5ed5fc",
+    "appliedAtUtc": "2026-10-23T01:24:15.2009176Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "07-publish-history.apply",
+    "operationId": "91ac9570-cc50-4be3-a4e0-a861679694dc",
+    "appliedAtUtc": "2026-10-23T01:24:55.6682736Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "08-publish-attraction.apply",
+    "operationId": "d2e6de29-1916-4ea8-9464-b387eff3b6c6",
+    "appliedAtUtc": "2026-10-23T01:25:18.9380377Z",
+    "targetStandaloneAttractionId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "stage": "photo-1-result",
+    "id": "15187974c8a440c8828bbc4c36b50416",
+    "ownerId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "sourceUrl": "https://www.londoneye.com/media/kw4l1j03/london-eye-rebrand-drone-photography-37.jpg?format=webp&quality=82&width=1400",
+    "updatedAt": "2026-10-23T01:20:45.586Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2-result",
+    "id": "9f80fe037fe648bb84d765ef8d13f67e",
+    "ownerId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "sourceUrl": "https://www.londoneye.com/media/43yfe1dg/usf-le-core-experience-2949.jpg?format=jpg&quality=82&width=1400",
+    "updatedAt": "2026-10-23T01:21:02.85Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3-result",
+    "id": "f297e3825c7146e79f3f114b72b265a5",
+    "ownerId": "1950afc0-e443-4031-a325-707feda5a8e8",
+    "sourceUrl": "https://www.londoneye.com/media/q2ilf1ai/london-eye-lisa-young-embankment-1.jpg?format=webp&quality=82&width=1200",
+    "updatedAt": "2026-10-23T01:21:21.568Z",
+    "isPublished": false
+  }
+]
