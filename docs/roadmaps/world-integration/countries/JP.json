@@ -14771,8 +14771,8 @@
       "siteId": "6353f6a4-d951-4f0f-b99a-5a0804b642a9",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-10-27",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
@@ -14780,9 +14780,20 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "conversation-01a14eb0-usj-finalization",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-10-27T07:06:38.330Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f9d9b81a-a511-4734-85d3-7c7e3629c82a",
+          "appliedAt": "2026-10-27T07:06:38.330Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6353f6a4-d951-4f0f-b99a-5a0804b642a9",
+          "evidence": "PARK_DATA_EDITOR Apply f9d9b81a-a511-4734-85d3-7c7e3629c82a",
+          "auditEvidence": null,
+          "summary": "Reformulation espagnole de l’article consacré au final de Curious George ; dates conservées."
+        }
+      ],
+      "nextAction": "Données vérifiées : 98/100, 70 jalons publiés et 49 contrôles publics réussis. Contrôle visuel mobile interrompu par l’outil ; attendre une vérification manuelle ou une exception explicite avant les quatre annonces Facebook. Preuve : docs/roadmaps/world-integration/evidence/JP-usj-finalization-2026-10-27.md.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
