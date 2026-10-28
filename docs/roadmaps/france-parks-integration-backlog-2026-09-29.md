@@ -185,7 +185,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc de Lomme — `a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`
 - [x] Ty'Bamboo — `6919c77b-1865-444d-8c5c-964b255d9c27` — clôture conservée le 28 octobre 2026 ; audit final 98/100 et Facebook Published.
 
-- [ ] Zygo Park / Zygofolis — `b2dca918-9747-4623-a0c0-38e89634aaff` — Nice ; intégration en cours sur la fiche existante, deux montagnes russes historiques préservées ; 53 fiches internes et deux zones enregistrées, descriptions du parc, des zones et de huit fiches dans les huit langues. Parc encore masqué, audit final et Facebook à réaliser.
+- [ ] Zygo Park / Zygofolis — `b2dca918-9747-4623-a0c0-38e89634aaff` — Nice ; intégration en cours sur la fiche existante, deux montagnes russes historiques préservées ; 53 fiches internes et deux zones enregistrées, descriptions du parc, des zones et de 39 fiches dans les huit langues, dont les 24 attractions, le funiculaire, les quatre spectacles et les dix restaurants. Parc encore masqué, audit final et Facebook à réaliser.
 
 ## 5. Parcs historiques absents de la photographie FR
 

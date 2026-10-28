@@ -28532,7 +28532,7 @@
         "Zygo Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-28T19:20:11.830Z",
+      "lastDataIntegrationAt": "2026-10-28T20:02:56.483Z",
       "integrationHistory": [
         {
           "eventId": "apply-b07a5314-8a89-4fb3-8c35-c9da4d0c1c1d",
@@ -28653,9 +28653,139 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-d3439fc6-6820-4d6f-93c5-af481d2e4aea",
           "auditEvidence": null,
           "summary": "Zygofolis : descriptions du Swingo et du funiculaire dans les huit langues, points de vue historiques et alias final vérifiés."
+        },
+        {
+          "eventId": "apply-27bfc096-f73d-49cf-9152-0c07d2e50396",
+          "appliedAt": "2026-10-28T19:30:24.439Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-27bfc096-f73d-49cf-9152-0c07d2e50396",
+          "auditEvidence": null,
+          "summary": "Descriptions personnelles en huit langues de Crazy River, Speed Slides et Anacondas, après distinction des identités et revue photographique."
+        },
+        {
+          "eventId": "apply-f2039f5d-1c05-45d9-b64e-71be5cce43e1",
+          "appliedAt": "2026-10-28T19:34:00.658Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-f2039f5d-1c05-45d9-b64e-71be5cce43e1",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues des trois piscines historiques distinctes, exception courte sourcée pour le bassin enfants."
+        },
+        {
+          "eventId": "apply-a5da85c3-9a4b-41db-a735-f350dd7c6e01",
+          "appliedAt": "2026-10-28T19:35:55.732Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-a5da85c3-9a4b-41db-a735-f350dd7c6e01",
+          "auditEvidence": null,
+          "summary": "Descriptions historiques en huit langues de la rivière lente Anaconda devenue Le Nil."
+        },
+        {
+          "eventId": "apply-d1e054bc-635d-45db-8fa2-d0130adf6da7",
+          "appliedAt": "2026-10-28T19:37:49.775Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-d1e054bc-635d-45db-8fa2-d0130adf6da7",
+          "auditEvidence": null,
+          "summary": "Descriptions personnelles en huit langues des petits toboggans hélicoïdaux du solarium."
+        },
+        {
+          "eventId": "apply-e05ec3c8-c5a1-4989-8584-73c94d02c9f3",
+          "appliedAt": "2026-10-28T19:39:22.625Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-e05ec3c8-c5a1-4989-8584-73c94d02c9f3",
+          "auditEvidence": null,
+          "summary": "Descriptions personnelles en huit langues du Labyrinthe aquatique de miroirs."
+        },
+        {
+          "eventId": "apply-5a9a7a5b-54bc-44a8-8cce-c1ef917bda23",
+          "appliedAt": "2026-10-28T19:41:36.561Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-5a9a7a5b-54bc-44a8-8cce-c1ef917bda23",
+          "auditEvidence": null,
+          "summary": "Descriptions personnelles en huit langues des Orgues aquatiques."
+        },
+        {
+          "eventId": "apply-fdf9a1c9-cd45-4f83-8f4f-f1690ba501f5",
+          "appliedAt": "2026-10-28T19:44:30.557Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-fdf9a1c9-cd45-4f83-8f4f-f1690ba501f5",
+          "auditEvidence": null,
+          "summary": "Descriptions historiques en huit langues du Tir à la cible et de son décor western."
+        },
+        {
+          "eventId": "apply-d9bfe3b5-8569-4425-a72c-052b8af5e744",
+          "appliedAt": "2026-10-28T19:46:45.935Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-d9bfe3b5-8569-4425-a72c-052b8af5e744",
+          "auditEvidence": null,
+          "summary": "Descriptions historiques en huit langues du cinéma, des jeux télécommandés et des pédalos."
+        },
+        {
+          "eventId": "apply-d2ed5d6f-1845-417c-84b2-bf64e5cada40",
+          "appliedAt": "2026-10-28T19:49:16.529Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-d2ed5d6f-1845-417c-84b2-bf64e5cada40",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues des espaces enfants distincts et des autos-tamponneuses historiques."
+        },
+        {
+          "eventId": "apply-79780230-16f5-47fe-8dcf-f30fa768931d",
+          "appliedAt": "2026-10-28T19:53:09.921Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-79780230-16f5-47fe-8dcf-f30fa768931d",
+          "auditEvidence": null,
+          "summary": "Descriptions personnelles en huit langues des deux amphithéâtres et des gradins historiques conservés."
+        },
+        {
+          "eventId": "apply-04f0524b-1817-440f-9337-a8c19ba61133",
+          "appliedAt": "2026-10-28T19:57:31.503Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-04f0524b-1817-440f-9337-a8c19ba61133",
+          "auditEvidence": null,
+          "summary": "Descriptions personnelles en huit langues de Broadway Show et The Great American High Diving Show."
+        },
+        {
+          "eventId": "apply-e9d79b53-77b3-43fc-b525-79e3176b3521",
+          "appliedAt": "2026-10-28T20:00:27.991Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-e9d79b53-77b3-43fc-b525-79e3176b3521",
+          "auditEvidence": null,
+          "summary": "Descriptions sourcées en huit langues de cinq restaurants historiques."
+        },
+        {
+          "eventId": "apply-09677b39-1427-469b-baa6-f5ad09545adb",
+          "appliedAt": "2026-10-28T20:02:56.483Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-09677b39-1427-469b-baa6-f5ad09545adb",
+          "auditEvidence": null,
+          "summary": "Descriptions sourcées en huit langues des cinq autres lieux de restauration historiques."
         }
       ],
-      "nextAction": "Poursuivre les descriptions des 45 fiches internes restantes, les références, les médias et plans officiels, puis histoire et audit final. Parc et contenus encore masqués ; aucune publication Facebook à ce stade.",
+      "nextAction": "Poursuivre les descriptions des boutiques et services, rapprocher les commerces historiques, puis références, photos originales, plans officiels, histoire/article et audit final avant publication site/Facebook autorisée. 39/53 fiches décrites dans les huit langues ; dossier toujours partiel.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

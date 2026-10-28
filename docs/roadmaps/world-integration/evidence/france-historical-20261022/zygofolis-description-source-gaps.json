@@ -1,0 +1,242 @@
+[
+  {
+    "key": "zygo-piscine-enfants",
+    "exception": "Two specific paragraphs rather than padded long description; central island is explicitly attributed to the published map. No unsupported depth, age limit, toys or lifeguard promises.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-offshore-rallye",
+    "exception": "Two specific paragraphs; no further reliable experiential or interior detail found. Cinema film programme unknown; remote boat and car details unknown; pedal boat scenes limited to lake views.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php",
+      "https://fr.wikipedia.org/wiki/Zygofolis",
+      "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+    ]
+  },
+  {
+    "key": "zygo-cinema",
+    "exception": "Two specific paragraphs; no further reliable experiential or interior detail found. Cinema film programme unknown; remote boat and car details unknown; pedal boat scenes limited to lake views.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php",
+      "https://fr.wikipedia.org/wiki/Zygofolis",
+      "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+    ]
+  },
+  {
+    "key": "zygo-pedalos",
+    "exception": "Two specific paragraphs; no further reliable experiential or interior detail found. Cinema film programme unknown; remote boat and car details unknown; pedal boat scenes limited to lake views.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php",
+      "https://fr.wikipedia.org/wiki/Zygofolis",
+      "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+    ]
+  },
+  {
+    "key": "zygo-village-enfants",
+    "exception": "Two factual paragraphs after source search. Child equipment photographs are not assigned to a precise named subarea without matching proof; Zone limited to mapped context. Bumper-car original scenery unknown, relocation documented without overprecise dates.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/giochiperbambini.php",
+      "http://zygo.altervista.org/storia_oggi.php",
+      "https://fr.wikipedia.org/wiki/Zygofolis",
+      "https://fr.wikipedia.org/wiki/Walibi_Rhône-Alpes",
+      "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+    ]
+  },
+  {
+    "key": "zygo-zone-enfants",
+    "exception": "Two factual paragraphs after source search. Child equipment photographs are not assigned to a precise named subarea without matching proof; Zone limited to mapped context. Bumper-car original scenery unknown, relocation documented without overprecise dates.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/giochiperbambini.php",
+      "http://zygo.altervista.org/storia_oggi.php",
+      "https://fr.wikipedia.org/wiki/Zygofolis",
+      "https://fr.wikipedia.org/wiki/Walibi_Rhône-Alpes",
+      "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+    ]
+  },
+  {
+    "key": "zygo-autotamponneuses",
+    "exception": "Two factual paragraphs after source search. Child equipment photographs are not assigned to a precise named subarea without matching proof; Zone limited to mapped context. Bumper-car original scenery unknown, relocation documented without overprecise dates.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/giochiperbambini.php",
+      "http://zygo.altervista.org/storia_oggi.php",
+      "https://fr.wikipedia.org/wiki/Zygofolis",
+      "https://fr.wikipedia.org/wiki/Walibi_Rhône-Alpes",
+      "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+    ]
+  },
+  {
+    "key": "zygo-broadway",
+    "exception": "Compact factual copy based on actual performance photographs; Broadway shorter because troupe, running order, repertoire and exact venue unproved. Diving only two confirmed photographs, no height or exact performance date.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_4.php",
+      "http://zygo.altervista.org/anfiteatri.php"
+    ]
+  },
+  {
+    "key": "zygo-high-diving",
+    "exception": "Compact factual copy based on actual performance photographs; Broadway shorter because troupe, running order, repertoire and exact venue unproved. Diving only two confirmed photographs, no height or exact performance date.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_4.php",
+      "http://zygo.altervista.org/anfiteatri.php"
+    ]
+  },
+  {
+    "key": "zygo-la-piscine",
+    "exception": "One or two specific paragraphs according to available evidence; archival food category and location only where no matched photograph or menu exists. No generic restaurant filler.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-nautilus",
+    "exception": "One or two specific paragraphs according to available evidence; archival food category and location only where no matched photograph or menu exists. No generic restaurant filler.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-farigoule",
+    "exception": "One or two specific paragraphs according to available evidence; archival food category and location only where no matched photograph or menu exists. No generic restaurant filler.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-aquarium",
+    "exception": "One or two specific paragraphs according to available evidence; archival food category and location only where no matched photograph or menu exists. No generic restaurant filler.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-ptit-gourmand",
+    "exception": "One or two specific paragraphs according to available evidence; archival food category and location only where no matched photograph or menu exists. No generic restaurant filler.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-brochette",
+    "exception": "One specific paragraph: only historical name, explicit food category and mapped position verified. No padded menu, atmosphere or facade details.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-amphi-food",
+    "exception": "One specific paragraph: only historical name, explicit food category and mapped position verified. No padded menu, atmosphere or facade details.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-fontaine",
+    "exception": "One specific paragraph: only historical name, explicit food category and mapped position verified. No padded menu, atmosphere or facade details.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-farandole",
+    "exception": "One specific paragraph: only historical name, explicit food category and mapped position verified. No padded menu, atmosphere or facade details.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  },
+  {
+    "key": "zygo-lac-food",
+    "exception": "One specific paragraph: only historical name, explicit food category and mapped position verified. No padded menu, atmosphere or facade details.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php",
+      "http://zygo.altervista.org/storia_91.php"
+    ]
+  }
+]

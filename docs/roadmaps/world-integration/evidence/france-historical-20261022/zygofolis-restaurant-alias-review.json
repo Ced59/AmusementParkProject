@@ -1,0 +1,14 @@
+{
+  "status": "Unresolved, no new entity created",
+  "finding": "Actual 1987 photo 87_05_pizzalito shows PIZZALITO FAST FOOD sign below giant food/boat facade. 1988 gallery 882_15_piazza calls giant facade Le Bateau Fou and identifies a separate Pizzalito pizzeria next to it. 1991 map labels La Farigoule as pizzeria. Do not blindly merge three names or attach historical facade to La Farigoule without cross-year physical match.",
+  "sources": [
+    "http://zygo.altervista.org/storia_87.php",
+    "http://zygo.altervista.org/storia_88_2.php",
+    "http://zygo.altervista.org/deplizp.php"
+  ],
+  "exactSourceImages": [
+    "87_05_pizzalito.jpg",
+    "882_15_piazza.jpg",
+    "deplizp_front_grande.jpg"
+  ]
+}

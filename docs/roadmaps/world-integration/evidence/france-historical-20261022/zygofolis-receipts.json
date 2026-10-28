@@ -318,6 +318,357 @@
         "descriptions.pt"
       ],
       "summary": "Zygofolis : descriptions du Swingo et du funiculaire dans les huit langues, points de vue historiques et alias final vérifiés."
+    },
+    {
+      "eventId": "apply-27bfc096-f73d-49cf-9152-0c07d2e50396",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:30:24.4395057Z",
+      "appliedAt": "2026-10-28T19:30:24.439Z",
+      "receiptFile": "04-water-slopes-copy-apply.receipt.json",
+      "receiptSha256": "82a4a10e7f7eb7e114828545c6ca7fc715cda0703420e82618ce7cef472fa0b5",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions personnelles en huit langues de Crazy River, Speed Slides et Anacondas, après distinction des identités et revue photographique."
+    },
+    {
+      "eventId": "apply-f2039f5d-1c05-45d9-b64e-71be5cce43e1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:34:00.6580809Z",
+      "appliedAt": "2026-10-28T19:34:00.658Z",
+      "receiptFile": "04-pools-copy-apply.receipt.json",
+      "receiptSha256": "5162bb82feceec4e3ec61068e628b0ae840fbf05005b8f3c81ca985b01c88908",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions en huit langues des trois piscines historiques distinctes, exception courte sourcée pour le bassin enfants."
+    },
+    {
+      "eventId": "apply-a5da85c3-9a4b-41db-a735-f350dd7c6e01",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:35:55.7326626Z",
+      "appliedAt": "2026-10-28T19:35:55.732Z",
+      "receiptFile": "04-nil-copy-apply.receipt.json",
+      "receiptSha256": "c37eaed58899434ee6771d5ce738650299f6268fd23618b357eaa9a56f418d7a",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions historiques en huit langues de la rivière lente Anaconda devenue Le Nil."
+    },
+    {
+      "eventId": "apply-d1e054bc-635d-45db-8fa2-d0130adf6da7",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:37:49.7757945Z",
+      "appliedAt": "2026-10-28T19:37:49.775Z",
+      "receiptFile": "04-spirals-copy-v2-apply.receipt.json",
+      "receiptSha256": "9726cf1c18bd1756dc8b4112f4a97cbdfac129ffda5d38b6c1b6712d38df6651",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions personnelles en huit langues des petits toboggans hélicoïdaux du solarium."
+    },
+    {
+      "eventId": "apply-e05ec3c8-c5a1-4989-8584-73c94d02c9f3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:39:22.6258926Z",
+      "appliedAt": "2026-10-28T19:39:22.625Z",
+      "receiptFile": "04-mirrors-copy-apply.receipt.json",
+      "receiptSha256": "8feddc074ba941072f14ef00b20e1f87683563fc9051ecb740dd8b226834e94b",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions personnelles en huit langues du Labyrinthe aquatique de miroirs."
+    },
+    {
+      "eventId": "apply-5a9a7a5b-54bc-44a8-8cce-c1ef917bda23",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:41:36.5614989Z",
+      "appliedAt": "2026-10-28T19:41:36.561Z",
+      "receiptFile": "04-organs-copy-apply.receipt.json",
+      "receiptSha256": "573d98e48cfcde71cc02ea933ca6f37d65128765fb9a233c365e1aac37cd753c",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions personnelles en huit langues des Orgues aquatiques."
+    },
+    {
+      "eventId": "apply-fdf9a1c9-cd45-4f83-8f4f-f1690ba501f5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:44:30.5573271Z",
+      "appliedAt": "2026-10-28T19:44:30.557Z",
+      "receiptFile": "04-gallery-copy-apply.receipt.json",
+      "receiptSha256": "420e55cb6d7c981cb237ad5d8a5551eee8975e52b13b3390339e597027f38d87",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions historiques en huit langues du Tir à la cible et de son décor western."
+    },
+    {
+      "eventId": "apply-d9bfe3b5-8569-4425-a72c-052b8af5e744",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:46:45.9353688Z",
+      "appliedAt": "2026-10-28T19:46:45.935Z",
+      "receiptFile": "04-minor-lake-copy-apply.receipt.json",
+      "receiptSha256": "6781d0ceb8ce9b9104e7340f7016b01f6581101abcb30e252f99de2a55883733",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions historiques en huit langues du cinéma, des jeux télécommandés et des pédalos."
+    },
+    {
+      "eventId": "apply-d2ed5d6f-1845-417c-84b2-bf64e5cada40",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:49:16.5290267Z",
+      "appliedAt": "2026-10-28T19:49:16.529Z",
+      "receiptFile": "04-children-cars-copy-apply.receipt.json",
+      "receiptSha256": "59ae4f88b7a32acc70ff00ca4bfcad36716faf4145f9bbc92e5bcc7306537b2f",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions en huit langues des espaces enfants distincts et des autos-tamponneuses historiques."
+    },
+    {
+      "eventId": "apply-79780230-16f5-47fe-8dcf-f30fa768931d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:53:09.9213389Z",
+      "appliedAt": "2026-10-28T19:53:09.921Z",
+      "receiptFile": "04-amphi-copy-v2-apply.receipt.json",
+      "receiptSha256": "0af17894f743f23aad9c3b55324fbdd8056d24535e6abb8df008a6b88fdb04c1",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions personnelles en huit langues des deux amphithéâtres et des gradins historiques conservés."
+    },
+    {
+      "eventId": "apply-04f0524b-1817-440f-9337-a8c19ba61133",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:57:31.5035019Z",
+      "appliedAt": "2026-10-28T19:57:31.503Z",
+      "receiptFile": "04-named-shows-copy-apply.receipt.json",
+      "receiptSha256": "72b59c1c3d9e193c3392198362fc81ee4e274cd9a37da45981ee7ce1814d328c",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions personnelles en huit langues de Broadway Show et The Great American High Diving Show."
+    },
+    {
+      "eventId": "apply-e9d79b53-77b3-43fc-b525-79e3176b3521",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T20:00:27.9916401Z",
+      "appliedAt": "2026-10-28T20:00:27.991Z",
+      "receiptFile": "04-food-a-copy-apply.receipt.json",
+      "receiptSha256": "faa33c7bd6d8cbc1af2ff0be1802b10f5e405b50ce8f2eee212fcaa62c21d75f",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions sourcées en huit langues de cinq restaurants historiques."
+    },
+    {
+      "eventId": "apply-09677b39-1427-469b-baa6-f5ad09545adb",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T20:02:56.4835326Z",
+      "appliedAt": "2026-10-28T20:02:56.483Z",
+      "receiptFile": "04-food-b-copy-apply.receipt.json",
+      "receiptSha256": "52e9e616a12ee503a3250fb021235c530a0526a48dd632804d0e283075f623cd",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions sourcées en huit langues des cinq autres lieux de restauration historiques."
     }
   ],
   "publicationOrNoop": []

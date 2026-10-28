@@ -19,13 +19,13 @@
   "textCoverage": {
     "parkEightLanguages": true,
     "zonesEightLanguages": 2,
-    "itemsEightLanguages": 8
+    "itemsEightLanguages": 39
   },
   "lastMergedDataApply": {
-    "operationId": "d3439fc6-6820-4d6f-93c5-af481d2e4aea",
-    "appliedAtUtc": "2026-10-28T19:20:11.8304609Z"
+    "operationId": "09677b39-1427-469b-baa6-f5ad09545adb",
+    "appliedAtUtc": "2026-10-28T20:02:56.4835326Z"
   },
-  "nextAction": "Continue remaining item descriptions, structured reference enrichment, actual images and official1987/1991 maps, history/article, final full audit then authorized site/Facebook publication. No full export during steps0–8.",
+  "nextAction": "Finish remaining item descriptions, including restaurants and services; source-supported reference enrichment, actual photos, official 1987/1991 maps, history/article, fresh full final audit, then authorized site and Facebook publication. No full export during steps 0–8.",
   "pendingPublicationExceptionsElsewhere": [
     "Playmobil FunPark Fresnes exact92/100 awaiting answer",
     "Lillom exact95/100 awaiting earlier answer"
@@ -35,5 +35,5 @@
     "Bateau Ivre destination identity Bounty confirmed, but old archive gives1993 arrival and2003 dismantling; destination histories give1992 opening,2002 last operation and2006 dismantling.",
     "1989 closure and1990 reopening are supported by contemporary press/book; RCDB park narrative misdates bankruptcy1988 and SBNO1990."
   ],
-  "updatedAtUtc": "2026-10-28T19:20:36.229389+00:00"
+  "updatedAtUtc": "2026-10-28T20:04:39.784479+00:00"
 }

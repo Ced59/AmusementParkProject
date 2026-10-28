@@ -1,0 +1,9 @@
+{
+  "status": "Pending before final inventory audit",
+  "finding": "The 1987 primary legend lists shops at I7, G3, E3, E2, E5, E6, C4 and H2. Existing central-shop grouping cites E2/E3/E5/E6, but there are additional mapped locations. Photo 87_07_negozio visibly names Airport Boutique; 87_06_negozio shows another storefront with giant clothes pegs and Kodak signage. Need match physical identities and grouping before asserting exhaustive retail coverage. Do not invent distinct stores solely from entrances or count all shop markers as named businesses.",
+  "currentShopIds": [
+    "94629617-04df-4ed7-b932-72fd6fcacb42",
+    "26b7eda8-4a3e-4e2a-85cd-3d048aafd240"
+  ],
+  "source": "http://zygo.altervista.org/depliant.php"
+}
