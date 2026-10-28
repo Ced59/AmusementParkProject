@@ -111,6 +111,22 @@ run_backup
 [ ! -s "${TEST_DUMP_LOG}" ] || fail 'valid previous backup not reused'
 grep -q 'Ignoring incomplete' "${directory}/output" || fail 'corrupt legacy archive reused'
 
+new_case corrupt_newer_retention
+archive 1
+for day in 2 3 4; do printf 'truncated' > "${backups}/amusementpark-mongodb-2026010${day}T000000Z.archive.gz"; done
+echo BACKUP_RETENTION_COUNT=3 >> "${directory}/.env"
+run_backup
+[ -f "${backups}/amusementpark-mongodb-20260101T000000Z.archive.gz" ] || fail 'only verified restore point was deleted'
+[ "$(count)" -eq 1 ] || fail 'known-invalid archives counted as protected backups'
+gzip -t "${backups}/amusementpark-mongodb-20260101T000000Z.archive.gz"
+
+new_case no_valid_backup_failed_dump
+for day in 1 2 3 4; do printf 'truncated' > "${backups}/amusementpark-mongodb-2026010${day}T000000Z.archive.gz"; done
+echo BACKUP_RETENTION_COUNT=3 >> "${directory}/.env"
+export TEST_DUMP_BEHAVIOR=fail
+if run_backup; then fail 'failed dump without a valid backup accepted'; fi
+[ "$(count)" -eq 4 ] || fail 'known-invalid legacy files pruned before a successful backup'
+
 new_case changed_cached_archive
 archive 1
 run_backup

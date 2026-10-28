@@ -54,6 +54,8 @@ backup_dir="$(realpath -e "${backup_dir}")"
 marker="${backup_dir}/.last-success"
 partial=''
 marker_temporary=''
+protected_archive=''
+declare -A invalid_snapshots=()
 trap 'if [ -n "${partial}" ]; then rm -f -- "${partial}"; fi; if [ -n "${marker_temporary}" ]; then rm -f -- "${marker_temporary}"; fi' EXIT
 
 snapshot() {
@@ -75,8 +77,18 @@ list_archives() {
 }
 
 prune_archives() {
-  local total=0 remaining name size before index
+  local total=0 remaining name size before index invalid
   local -a names sizes snapshots
+  # Only prune after a usable backup has been established. Known-corrupt files
+  # are not restore points and must not displace valid copies in the minimum.
+  [ -n "${protected_archive}" ] && snapshot "${protected_archive}" >/dev/null
+  for invalid in "${!invalid_snapshots[@]}"; do
+    [ "${invalid}" != "${protected_archive}" ]
+    [ "$(snapshot "${invalid}")" = "${invalid_snapshots[${invalid}]}" ] \
+      || { echo 'Invalid backup changed during retention.' >&2; return 1; }
+    rm -- "${invalid}"
+    echo "Removed incomplete MongoDB backup: $(basename "${invalid}")"
+  done
   mapfile -t names < <(list_archives)
   remaining="${#names[@]}"
   for name in "${names[@]}"; do
@@ -88,6 +100,7 @@ prune_archives() {
   for ((index=0; index<${#names[@]}; index++)); do
     if (( remaining <= min_retained || (remaining <= retention_count && total <= max_total_mib * 1048576) )); then break; fi
     name="${names[index]}"
+    if [ "${backup_dir}/${name}" = "${protected_archive}" ]; then continue; fi
     before="$(snapshot "${backup_dir}/${name}")"
     [ "${before}" = "${snapshots[index]}" ] || { echo 'Backup changed during retention.' >&2; return 1; }
     rm -- "${backup_dir}/${name}"
@@ -112,12 +125,14 @@ if [ "${force}" != true ]; then
     if { [ -f "${marker}" ] && [ ! -L "${marker}" ] && [ "$(cat -- "${marker}")" = "${before}" ]; } \
       || gzip -t -- "${archive}"; then
       [ "${before}" = "$(snapshot "${archive}")" ] || { echo 'Backup changed during verification.' >&2; exit 1; }
+      protected_archive="${archive}"
       record_success "${archive}"
       echo "Recent valid MongoDB backup reused: ${archives[index]} (minimum interval: ${interval_hours} hours)."
       prune_archives
       exit 0
     fi
     echo "Ignoring incomplete MongoDB backup: ${archives[index]}" >&2
+    invalid_snapshots["${archive}"]="${before}"
   done
 fi
 
@@ -139,6 +154,7 @@ docker compose --project-name "${compose_project_name}" -f compose.prod.yml exec
 gzip -t -- "${partial}"
 mv -T -- "${partial}" "${destination}"
 partial=''
+protected_archive="${destination}"
 record_success "${destination}"
 
 echo "MongoDB backup written to ${destination}"
