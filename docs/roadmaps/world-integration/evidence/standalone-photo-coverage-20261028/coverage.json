@@ -1,0 +1,1161 @@
+{
+  "checkedAtUtc": "2026-10-28T17:21:42.585Z",
+  "method": "Public French attraction page HTTP 200; an attraction-owned binary og:image counts as a representative photo, generic site logo does not.",
+  "totalPublishedStandalone": 128,
+  "withRepresentativePhoto": 118,
+  "withoutRepresentativePhoto": 10,
+  "entries": [
+    {
+      "country": "AE",
+      "entryId": "AE-candidate-bc470aaefff20d",
+      "name": "Ain Dubai",
+      "siteId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/cfffe28f5884407bbdeffd6fb312e6c1/social-preview-v2"
+    },
+    {
+      "country": "AE",
+      "entryId": "AE-candidate-discovery-2e3c4377ca5ef9",
+      "name": "The Dubai Balloon at Atlantis",
+      "siteId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "AE",
+      "entryId": "AE-candidate-discovery-fa74bdc4d250e2",
+      "name": "XLine Dubai Marina",
+      "siteId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/c2e38a455ce44bb292773d6e60cb20dd/social-preview-v2"
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-0c8ab99d-d1a8-434f-8785-6be618039172",
+      "name": "Alpine Coaster Imst",
+      "siteId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/10e1ffd74bef4f02923848a8e5e57024/social-preview-v2"
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-candidate-discovery-5012808b5cf423",
+      "name": "Donauturm-Rutsche",
+      "siteId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/6e66a56de809450488a20e6ec7848c23/social-preview-v2"
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-d45c859f-7df4-4f80-8851-9646c9ceb7e7",
+      "name": "EIBL Jet Türnitz",
+      "siteId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/f1432b68f9d74d1798792aab31d3cd4c/social-preview-v2"
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-4b096c01-c2d1-4f44-b8ab-f6b1cd362461",
+      "name": "Grünberg-Flitzer",
+      "siteId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/c091dcc14e81402c9e3013a3fcedbb9b/social-preview-v2"
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-5c0e772c-7fcd-4081-b08b-7fb46f66c9f7",
+      "name": "Nocky Flitzer",
+      "siteId": "a3447c55-089a-4cf1-9531-223fbe763544",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/bea1a1d1beac4cfb976d8303b20104b9/social-preview-v2"
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-standalone-7ca75951-9be6-4705-9536-718759c7e0f0",
+      "name": "Pendolino",
+      "siteId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/c88dbe4a42974024ba8e1d90ad2b38b1/social-preview-v2"
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-5400ddc6-e650-478c-88b5-aaa1a87f7dae",
+      "name": "Speed-Gleit-Bahn",
+      "siteId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "AU",
+      "entryId": "AU-candidate-61bc40d2c12cdc",
+      "name": "Wheel of Brisbane",
+      "siteId": "b62e8868-f6df-4728-9733-8b111469c42e",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/be46c3b54f694e3ca1db3287c0634181/social-preview-v2"
+    },
+    {
+      "country": "AZ",
+      "entryId": "AZ-candidate-56998578936897",
+      "name": "Shahdag Mountain Resort",
+      "siteId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/4467e7d5c8094103bd1c30267e201dc6/social-preview-v2"
+    },
+    {
+      "country": "AZ",
+      "entryId": "AZ-candidate-f296136777add0",
+      "name": "Tufandağ Mountain Resort",
+      "siteId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/4dc352c2c16b4df59ce293e03b691992/social-preview-v2"
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-standalone-abf154c8e98f1e",
+      "name": "Downhill Karting Calgary",
+      "siteId": "b8390695-b97a-4e15-a45d-a2234703a779",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-standalone-52b944d77d3979",
+      "name": "Eagle’s Flight ZipTour — Mount Washington",
+      "siteId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-ff82b206858b7c",
+      "name": "Flyover Vancouver",
+      "siteId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/b8623ffd02c24a3e9ccebe531cec213d/social-preview-v2"
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-a9d972567fa851",
+      "name": "La Grande Roue de Montréal",
+      "siteId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/c9fd416c2cef4cdc926fe48346d9217c/social-preview-v2"
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-6c82f89565e189",
+      "name": "Niagara SkyWheel",
+      "siteId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/7e43894c9d294d4ba993405f9e671862/social-preview-v2"
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-05e7f7645eafbd",
+      "name": "Panorama Mountain Resort",
+      "siteId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/61691bd799224f359d54523e1fdfc967/social-preview-v2"
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-standalone-d4c5e1d103913c",
+      "name": "Skyline Luge Mont-Tremblant",
+      "siteId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "CZ",
+      "entryId": "CZ-candidate-standalone-16eabf1e7c1f3f",
+      "name": "Bobovka Prosek",
+      "siteId": "7c0caa68-3971-4854-8033-6d24f9927389",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/7e8d5d4efa6840ecace3271fd25549f9/social-preview-v2"
+    },
+    {
+      "country": "CZ",
+      "entryId": "CZ-park-66243ab8-bdb3-43ae-8409-81fc0310c56f",
+      "name": "Bobovka u mlýna",
+      "siteId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/19bd633fca0a47ffb735c85d43adaa5a/social-preview-v2"
+    },
+    {
+      "country": "CZ",
+      "entryId": "CZ-park-813ec867-ebb5-48a3-b07a-e61062364612",
+      "name": "Bobová dráha Němčičky",
+      "siteId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/8f85ed97e05e44fb902dcc52ef7db5ca/social-preview-v2"
+    },
+    {
+      "country": "CZ",
+      "entryId": "CZ-park-a582a121-a620-4403-b6b6-d19e153d3ed8",
+      "name": "Bobová dráha Pastviny",
+      "siteId": "22b6e012-2b8b-4d6f-aa62-080d8756bfda",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/f0d6292db37e459f976a60b4977c5fb7/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-80836e64-0911-4e37-aef1-39cd7499d4aa",
+      "name": "Allwetterrodelbahn Schöne Aussicht Weißenfels",
+      "siteId": "80836e64-0911-4e37-aef1-39cd7499d4aa",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/13fdba512aa64317a31bea7c326314ac/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+      "name": "Alpine Coaster Kolbensattel",
+      "siteId": "3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/8124723aac7b407792124379d25d48d3/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-b593d380-49b9-4c5d-b08c-00cc378182b3",
+      "name": "Alpsee Coaster",
+      "siteId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/42ed1dcbbcf3484a93cd9b524e177bbe/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+      "name": "AlpspitzCOASTER",
+      "siteId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/7d2fc1a72ef646b3af065dbf851e876b/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "name": "Blomberg Blitz",
+      "siteId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d1d3c161d2e8469ba9d85b9c35e30c2d/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+      "name": "Bobbahn Donnstetten",
+      "siteId": "ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/f200ee016b28481081317d8a5f5de410/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "name": "Brocken-Coaster",
+      "siteId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/c001e9c3141a423c865abe878668ced7/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-79535465-11be-4817-9e09-ca8fe376eb1f",
+      "name": "Chiemgau Coaster",
+      "siteId": "79535465-11be-4817-9e09-ca8fe376eb1f",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/f77dbba1543547489f184ad8382b062b/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+      "name": "Erlebnis-Rodelbahn Ruhla",
+      "siteId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/67398e1246b54104a7099d89311a4cca/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+      "name": "Fröschbrunna Coaster",
+      "siteId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/9da3ca151ad94f148578cbe590a71610/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-46a57823-75cd-4ff3-9fde-495ad0204b1b",
+      "name": "Hasenhorn Coaster",
+      "siteId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/a31c97be59a9415fb74c67e984ed3005/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+      "name": "Jaudenhangflitzer",
+      "siteId": "cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/6a1ce1455d2b44eabe7d235a8cbc996a/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+      "name": "LEITNER Natur-Bobbahn Berlin",
+      "siteId": "3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/e9894ef185ec40e59de4916d935ed038/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-8e2ee4e1-06a5-4805-bfd4-9898a9febd0c",
+      "name": "Rodelbahn Petersberg",
+      "siteId": "8e2ee4e1-06a5-4805-bfd4-9898a9febd0c",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/e90a31a0d25b4e39bacf1e5f172b781c/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "name": "Sommerrodelbahn Classic",
+      "siteId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/31457308234e4e4196a1195d6ad3be47/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-d727843f-43ec-40b1-8c0e-8f303232c715",
+      "name": "Sommerrodelbahn Erbeskopf",
+      "siteId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/c46ff55f1d2241aca8066d2e749ec553/social-preview-v2"
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-candidate-2ae1371b43102d",
+      "name": "Sommerrodelbahn Oberwiesenthal",
+      "siteId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d96b5709edae400d81bdb16c6bdae8b8/social-preview-v2"
+    },
+    {
+      "country": "ES",
+      "entryId": "ES-candidate-discovery-1182b2f2f1a8d3",
+      "name": "Límite Zero — tyrolienne Espagne–Portugal",
+      "siteId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/0c1ce1eb88e4487a9f4614ab43e748dd/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-9a7818e7-3539-4845-9957-ff7e97028497",
+      "name": "Clécy Gliss",
+      "siteId": "9a7818e7-3539-4845-9957-ff7e97028497",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d1f3809b899d40d4a5af1bd4395d6c03/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-1e5b7e2c-331f-435a-a5d7-9842c1532b28",
+      "name": "Draco’Snow",
+      "siteId": "1e5b7e2c-331f-435a-a5d7-9842c1532b28",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/c386aca710fc4d72b10ab4b08e7a110e/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-43a2af2a-30d5-4866-a3e3-47d069f902f9",
+      "name": "Déval’luge",
+      "siteId": "43a2af2a-30d5-4866-a3e3-47d069f902f9",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/73cc8f162580495d896cc87d0f285697/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-5ba1d1f2-5e0e-4599-adab-386fb16b9728",
+      "name": "Dévoluge",
+      "siteId": "5ba1d1f2-5e0e-4599-adab-386fb16b9728",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/13859a0cfb8e4376b1a609e7b496b45a/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-3e8cdb05-5ee8-4c0a-ad4f-34cd525240a9",
+      "name": "Guzet Express",
+      "siteId": "3e8cdb05-5ee8-4c0a-ad4f-34cd525240a9",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/4d5f64b071814d20b18e4d8ba777e268/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-9b2259ea-f82e-456c-a606-621b82f65b7f",
+      "name": "L'Orrian Express",
+      "siteId": "9b2259ea-f82e-456c-a606-621b82f65b7f",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/b312e2cf3a7c4daaaa9bac42dcb05f51/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-abb6cba3-8941-496a-adb4-831ab3c8fce0",
+      "name": "La Comète",
+      "siteId": "abb6cba3-8941-496a-adb4-831ab3c8fce0",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/de2a2cba0e5741a78fd972913d0d389e/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-0dd99206-5ff2-4721-af07-da8cfce99b1f",
+      "name": "La Luge Dévale",
+      "siteId": "0dd99206-5ff2-4721-af07-da8cfce99b1f",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/7335aa7ed04b433b861f5ab05c53b149/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-a8b462e8-1dbf-4862-9151-6840c17d9183",
+      "name": "La Mine",
+      "siteId": "a8b462e8-1dbf-4862-9151-6840c17d9183",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/90bc7db244204e82b713bda771ac8df9/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-ee2e2b60-e894-4cc5-b70b-82fe722ae5d4",
+      "name": "Lou Bac Mountain",
+      "siteId": "ee2e2b60-e894-4cc5-b70b-82fe722ae5d4",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/92bf4f527ea74bc284fce888d442428b/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-46847372-e37d-4804-9db5-86fd17f1b6e9",
+      "name": "Luge 4 Saisons",
+      "siteId": "46847372-e37d-4804-9db5-86fd17f1b6e9",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/f3cf67fd035048deb5d7025d51cafefc/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-530ffe49-3392-4aeb-9370-dd8cc0bd8817",
+      "name": "Luge 4 Saisons",
+      "siteId": "530ffe49-3392-4aeb-9370-dd8cc0bd8817",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/fba88187768149e6a70178c7ce3313ad/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-49853230-a1a6-4592-90b1-ad7e03374d31",
+      "name": "Luge 4 Saisons de Bernex",
+      "siteId": "49853230-a1a6-4592-90b1-ad7e03374d31",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/fae447195db44b279196ae1a709894c3/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-3ca66a78-92be-4265-bebd-935b861fc9d9",
+      "name": "Luge 4 saisons",
+      "siteId": "3ca66a78-92be-4265-bebd-935b861fc9d9",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/8183b7e09e224b86ac6712e08be09d86/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-0b1678ed-01a3-4f48-9873-53ca8be2ddea",
+      "name": "Luge Alpine Coaster de Chamonix",
+      "siteId": "0b1678ed-01a3-4f48-9873-53ca8be2ddea",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/eda5cecf6084494d97599671bbcba451/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-2d446d1d-f3f3-4880-9fce-88e75997e9c5",
+      "name": "Luge Coaster Chamrousse",
+      "siteId": "2d446d1d-f3f3-4880-9fce-88e75997e9c5",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/ab14d409c4e74a26b52ef442958a7494/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-d598ac25-f4fb-4085-b366-2371ca95d7d8",
+      "name": "Luge Molines Sensation",
+      "siteId": "d598ac25-f4fb-4085-b366-2371ca95d7d8",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/ec5a0ce5694b40bba847b5c66910d7e2/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-1ba2e17e-e7ea-4ef7-91dd-472e6011de40",
+      "name": "Luge Monty Express",
+      "siteId": "1ba2e17e-e7ea-4ef7-91dd-472e6011de40",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/8fdb2ac908b9490097a25bdd87d37167/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-0bfdfd47-8363-4f9d-959b-6fd331dca6e4",
+      "name": "Luge alpine du Plan Incliné",
+      "siteId": "0bfdfd47-8363-4f9d-959b-6fd331dca6e4",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d3d33419f4534ab585dd5bd8bf75101f/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-3e265e8c-6dff-49da-b3d2-4a76eb4f83d8",
+      "name": "Luge des Bois",
+      "siteId": "3e265e8c-6dff-49da-b3d2-4a76eb4f83d8",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/50d2e23a5a474578bc401f76a0dbfd5d/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-6af61037-c7eb-476f-86f3-3815bc9e4b53",
+      "name": "Luge des Cimes",
+      "siteId": "6af61037-c7eb-476f-86f3-3815bc9e4b53",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/a2dff62a3bbe41c19e6f94349f2ed740/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-30dd9346-98af-47ac-9df9-fc137eb3ed94",
+      "name": "Luge du Caribou",
+      "siteId": "30dd9346-98af-47ac-9df9-fc137eb3ed94",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/57d99410948044f08a5491452f8b94dc/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-b3b096be-faf3-4477-b340-1ee12d0803b6",
+      "name": "Luge d’été de La Colmiane",
+      "siteId": "b3b096be-faf3-4477-b340-1ee12d0803b6",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/e56b073954534d1c8519d6d2eee3fc1b/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-7397a904-b8be-4077-9da2-32d71a4802ee",
+      "name": "Luge sur Rail de l'Alpe d'Huez",
+      "siteId": "7397a904-b8be-4077-9da2-32d71a4802ee",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/00fe479de2a748ea81d73a4b332fdc9f/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-e579d256-0744-4f49-b887-6c3fa5b99031",
+      "name": "Luge sur rail du Markstein",
+      "siteId": "e579d256-0744-4f49-b887-6c3fa5b99031",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/81f72d81284e41d5ae0c7b1b259f2b2b/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-258c419a-5081-484e-a827-b7728ed6587d",
+      "name": "Luge sur rails : JIM La Sambuy",
+      "siteId": "258c419a-5081-484e-a827-b7728ed6587d",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/7f50e8ba0ccf45f5a51d181cce84c80f/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-eba6c813-59ed-4c60-9cea-14f0cc3ecb4c",
+      "name": "Luge sur rails de La Schlucht",
+      "siteId": "eba6c813-59ed-4c60-9cea-14f0cc3ecb4c",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/43ad78b9eb6348c9ae3b15ad9fe6d77f/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-53f83007-496b-4e03-a8ec-2d33be9321ab",
+      "name": "Luge sur rails du col de la Faucille",
+      "siteId": "53f83007-496b-4e03-a8ec-2d33be9321ab",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/9834fcbbfd1541a1bdafda3ae6a7c031/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-0d88b893-b067-4368-8b1c-fd7a28440136",
+      "name": "Lugik Parc",
+      "siteId": "0d88b893-b067-4368-8b1c-fd7a28440136",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/583a95ee86d74954b59a3e3439b6e5e3/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-c9110d54-f4dd-44a7-9817-7ffaf648101c",
+      "name": "Mountain Twister",
+      "siteId": "c9110d54-f4dd-44a7-9817-7ffaf648101c",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/f1d9888418c24e599c89cda250a9392b/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-e703f8cf-d6e7-4a2b-ac7c-f9b6665d4755",
+      "name": "Norma Loops",
+      "siteId": "e703f8cf-d6e7-4a2b-ac7c-f9b6665d4755",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/445da74c34cd4979934580ba4f91d735/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-88fc20bb-4927-42cf-a6c8-09ff966fee61",
+      "name": "Praloops",
+      "siteId": "88fc20bb-4927-42cf-a6c8-09ff966fee61",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/76fcc6130b8641d3920fc2dbbb19102e/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-2c2d7646-80e9-4685-b911-005afef3d93b",
+      "name": "Schlitte Mountain",
+      "siteId": "2c2d7646-80e9-4685-b911-005afef3d93b",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/edfd770e240849578f8ce79b6a0b63bd/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-ac34ddc0-9887-459b-ac11-6f3fe04920ca",
+      "name": "Speed Dragoz",
+      "siteId": "ac34ddc0-9887-459b-ac11-6f3fe04920ca",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/24e95b6979194da0851dad62bedddc38/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-2be7c7a1-b10b-40b0-86ba-4df584faf181",
+      "name": "Speed Luge Vercors",
+      "siteId": "2be7c7a1-b10b-40b0-86ba-4df584faf181",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/6676b354c1654793bf2e464ee8e4457d/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-3283d263-279b-44a3-ba32-4dc04d7489d2",
+      "name": "Super Coaster",
+      "siteId": "3283d263-279b-44a3-ba32-4dc04d7489d2",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/ae759d4e6a27495e9871e115a3a71d86/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-ce2e1fbf-374f-4730-a193-30bb8466f877",
+      "name": "Tricky Track",
+      "siteId": "ce2e1fbf-374f-4730-a193-30bb8466f877",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/3ebc8192db464362b415676ae1f2caa4/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-97cd7fcb-9e78-4d2a-83f0-34d4df044836",
+      "name": "Verdon Express",
+      "siteId": "97cd7fcb-9e78-4d2a-83f0-34d4df044836",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/f90c31371ed74d3a98c9039f9c2ed320/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-cdd41c34-e9c6-4d95-8220-909f8c308690",
+      "name": "Wiz Luge",
+      "siteId": "cdd41c34-e9c6-4d95-8220-909f8c308690",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d3009cf220464d98950aa46a2508e65c/social-preview-v2"
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-505a6507-0ee2-40b7-b127-56446ebc2ab7",
+      "name": "X’TREME Luge",
+      "siteId": "505a6507-0ee2-40b7-b127-56446ebc2ab7",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d9b175f0623c466a916b07c493da579b/social-preview-v2"
+    },
+    {
+      "country": "GB",
+      "entryId": "GB-candidate-discovery-b19f183565d402",
+      "name": "Helix — ArcelorMittal Orbit",
+      "siteId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/cc28270f4083471f86b6993d403285b5/social-preview-v2"
+    },
+    {
+      "country": "GB",
+      "entryId": "GB-park-e2f54f75-6265-4aea-8752-6efaefb12f79",
+      "name": "Hillend Alpine Coaster",
+      "siteId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/152ae7bbe77545718591e6d50cfdab2d/social-preview-v2"
+    },
+    {
+      "country": "GB",
+      "entryId": "GB-candidate-1846c28620b223",
+      "name": "London Eye",
+      "siteId": "1950afc0-e443-4031-a325-707feda5a8e8",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/f297e3825c7146e79f3f114b72b265a5/social-preview-v2"
+    },
+    {
+      "country": "GB",
+      "entryId": "GB-candidate-discovery-629e501ddf0c64",
+      "name": "Velocity — Zip World Penrhyn Quarry",
+      "siteId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d327924a986440f2927a646cfc2a2edc/social-preview-v2"
+    },
+    {
+      "country": "GE",
+      "entryId": "GE-candidate-discovery-e6d02474257cb3",
+      "name": "Tbilisi Balloon",
+      "siteId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/41c306b5214c44ac96856acd74f43b33/social-preview-v2"
+    },
+    {
+      "country": "HU",
+      "entryId": "HU-candidate-discovery-556b397ac50f58",
+      "name": "BalloonFly Budapest",
+      "siteId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/5c1f2ef5a611458e91eaa2bd56c9bb21/social-preview-v2"
+    },
+    {
+      "country": "IS",
+      "entryId": "IS-candidate-631a8dcd6a53f2",
+      "name": "FlyOver Iceland",
+      "siteId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/1e64ebdb930845b4b6d8e952b2d18906/social-preview-v2"
+    },
+    {
+      "country": "IT",
+      "entryId": "IT-standalone-e1af2dac-4f6c-404d-9844-47b4e6048783",
+      "name": "Bardonecchia Alpine Coaster",
+      "siteId": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d1b66bf0539348ac95b254d307e987aa/social-preview-v2"
+    },
+    {
+      "country": "IT",
+      "entryId": "IT-standalone-85aea3b3-6974-4213-870e-d91a484103a3",
+      "name": "Bob Su Rotaia",
+      "siteId": "85aea3b3-6974-4213-870e-d91a484103a3",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/73d3f6a93c434f1ebefa2b679e021b4c/social-preview-v2"
+    },
+    {
+      "country": "JO",
+      "entryId": "JO-candidate-discovery-7db34fc67aae91",
+      "name": "Petra Balloon",
+      "siteId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/9f5309b7bac24f41ad4dd55bb80b3cec/social-preview-v2"
+    },
+    {
+      "country": "JP",
+      "entryId": "JP-candidate-discovery-0c2e7732f201b4",
+      "name": "Osaka Sakai Balloon",
+      "siteId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/b40378160e2745598b5181b2f2f5353b/social-preview-v2"
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-standalone-83338432442c73",
+      "name": "Arii Hills Zipwire — Jeongseon",
+      "siteId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-discovery-1ff4ac48854ae5",
+      "name": "Flying Suwon",
+      "siteId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/151f9912a00b4d7cac6867125bfef850/social-preview-v2"
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-discovery-220e0945c2e59e",
+      "name": "SEOULDAL — Seoul Moon",
+      "siteId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/7f37cbc18f87405e97fc470ea9488ef1/social-preview-v2"
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-standalone-0f95f79317187a",
+      "name": "Skyline Luge Busan",
+      "siteId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-standalone-5f91351dd67b29",
+      "name": "Skyline Luge Tongyeong",
+      "siteId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-standalone-25023c9dd1cd28",
+      "name": "Skyline Zipwire — Nami Island",
+      "siteId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/c439e4ac6fcd424ab778b664b5ae5f4c/social-preview-v2"
+    },
+    {
+      "country": "MY",
+      "entryId": "MY-candidate-standalone-75acc28180ff3b",
+      "name": "Menara Taming Sari — Super Gyro Melaka",
+      "siteId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/2216126be03a4d629c92a38fc910f83e/social-preview-v2"
+    },
+    {
+      "country": "MY",
+      "entryId": "MY-candidate-standalone-346db9cd03d143",
+      "name": "Skyline Luge Kuala Lumpur",
+      "siteId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/83dac49a42564402b47f30b4cdcf1c8f/social-preview-v2"
+    },
+    {
+      "country": "NL",
+      "entryId": "NL-candidate-discovery-1825dcfb286f92",
+      "name": "Euroscoop — Euromast",
+      "siteId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d3df8e517d8d419e8c3082a8c592b26e/social-preview-v2"
+    },
+    {
+      "country": "NL",
+      "entryId": "NL-candidate-discovery-80445428d4593e",
+      "name": "Over the Edge — A’DAM LOOKOUT",
+      "siteId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/3a3f91cc44b947f1b1ace1b695f24558/social-preview-v2"
+    },
+    {
+      "country": "NL",
+      "entryId": "NL-candidate-standalone-d1328a7cf0c136",
+      "name": "THIS IS HOLLAND",
+      "siteId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/2fe6a1de322943af962ea7ae4a478e95/social-preview-v2"
+    },
+    {
+      "country": "PL",
+      "entryId": "PL-candidate-discovery-472b096ce8a2e8",
+      "name": "Balon Widokowy — Kraków",
+      "siteId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/7a08649d7aa14c8588330607a0ef6b33/social-preview-v2"
+    },
+    {
+      "country": "PT",
+      "entryId": "PT-standalone-2a207fda-7479-405a-b1ce-d93dc3a0acd8",
+      "name": "DreamFly Lisboa",
+      "siteId": "2a207fda-7479-405a-b1ce-d93dc3a0acd8",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/aaa346afead84ea0ae3fa5f606b65270/social-preview-v2"
+    },
+    {
+      "country": "PT",
+      "entryId": "PT-standalone-22507909-9fab-4452-a87d-27fded8b2e3c",
+      "name": "DreamFly Porto",
+      "siteId": "22507909-9fab-4452-a87d-27fded8b2e3c",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/8ed7e9f5d4c34102b4104be5cbd40414/social-preview-v2"
+    },
+    {
+      "country": "RO",
+      "entryId": "RO-candidate-6fa71332367544",
+      "name": "Predeal Mountain Coaster",
+      "siteId": "d1b09350-8591-437e-82d7-2957573535b3",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/eab6c2c58244449aae52d4345dc850b1/social-preview-v2"
+    },
+    {
+      "country": "SE",
+      "entryId": "SE-candidate-discovery-5993148c7fe7c6",
+      "name": "SkyView Stockholm",
+      "siteId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/a15cab9ba3a049e88e436451bb2c6f6d/social-preview-v2"
+    },
+    {
+      "country": "SG",
+      "entryId": "SG-candidate-0b2ddef5675e0c",
+      "name": "Singapore Flyer",
+      "siteId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/973a82ab604f4c5dbc7a858aa3733dc7/social-preview-v2"
+    },
+    {
+      "country": "SG",
+      "entryId": "SG-candidate-discovery-b43f63a4dd05a4",
+      "name": "SkyHelix Sentosa",
+      "siteId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    },
+    {
+      "country": "SG",
+      "entryId": "SG-candidate-standalone-864d87f292e0f6",
+      "name": "Skyline Luge Singapore",
+      "siteId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/a7456384749f49f0ba649b022d8c566c/social-preview-v2"
+    },
+    {
+      "country": "SK",
+      "entryId": "SK-candidate-37f6a177200aa3",
+      "name": "Bobová dráha Bachledka",
+      "siteId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/50b0faab22c24921934d6e92ed4db924/social-preview-v2"
+    },
+    {
+      "country": "SK",
+      "entryId": "SK-candidate-standalone-04c8ea259b65a0",
+      "name": "Luge Wiegand — Kosice",
+      "siteId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d4a3dd5cfcdb453ea218536ea0adf5d6/social-preview-v2"
+    },
+    {
+      "country": "SK",
+      "entryId": "SK-park-c0d9c7fa-c8fa-435b-b24b-659217ab68be",
+      "name": "Tatrabob",
+      "siteId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/6d7aa9e78787460f8817744483436ce8/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-2f0e2b642d783e",
+      "name": "Aerophile — Disney Springs",
+      "siteId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/07ffdcf41ae14e61ae1dde9550e6b732/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-c58b1d3f354f4f",
+      "name": "Branson Coaster",
+      "siteId": "72b0aadb-436f-47f0-a978-15610e577f4c",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/0ef2067766c648699284b6b9f7f2db8c/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-6259ed7a4dceb9",
+      "name": "Brush Creek Falls Resort",
+      "siteId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/454bd2e33bce4dcb8533551e70576d0d/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-508928b8731e77",
+      "name": "Flathead Lake Alpine Coaster",
+      "siteId": "1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/b396d814a59f4fd7aee0fdfc713972df/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-standalone-cc3caa2f6fca41",
+      "name": "FlyOver America",
+      "siteId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/d31e892b00ff4c788eb535400af9dd9d/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-69a1a4b80393db",
+      "name": "Flyover Chicago",
+      "siteId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/ee6102dbc5b24adaa3f4e552b81e483c/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-3005be6295777b",
+      "name": "Flyover Las Vegas",
+      "siteId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/607f7e4613dc46c0a37df97d23388d32/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-177cb9d986d45d",
+      "name": "Great Park Balloon",
+      "siteId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/326308240c6a48b3ab4b992e90065a6b/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-9e33a8dae9d141",
+      "name": "High Roller",
+      "siteId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/371960490d5941968bf78024a519456e/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-b580f555d9d1fb",
+      "name": "SkyWheel Myrtle Beach",
+      "siteId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/92382db66dc04d0abe3f691278210633/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-fe4e16c78ab379",
+      "name": "Smoky Mountain Alpine Coaster",
+      "siteId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/08b63464c9404e2aa4ae7b9c52601595/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-15a41c387081bc",
+      "name": "TILT — 360 CHICAGO",
+      "siteId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/eee5ffc6814f4279b2ee8f21ee01d67f/social-preview-v2"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-ec2477b8468fba",
+      "name": "Wings Over Washington",
+      "siteId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+      "pageStatus": 200,
+      "hasRepresentativePhoto": false,
+      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+    }
+  ]
+}

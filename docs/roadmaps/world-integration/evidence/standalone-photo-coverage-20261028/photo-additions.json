@@ -1,0 +1,55 @@
+{
+  "checkedAtUtc": "2026-10-28T17:22:46.164Z",
+  "items": [
+    {
+      "country": "US",
+      "entryId": "US-candidate-standalone-cc3caa2f6fca41",
+      "name": "FlyOver America",
+      "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+      "imageId": "d31e892b00ff4c788eb535400af9dd9d",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/28450240390/",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedOn": "2016-08-01",
+      "importedAtUtc": "2026-10-28T17:13:52.418Z",
+      "importEvidence": "PARK_DATA_EDITOR:ImportPhoto:d31e892b00ff4c788eb535400af9dd9d",
+      "publicationApplyOperationId": "d6566bc7-0e8f-49c8-a6f8-682ebcdd36a7",
+      "photoPublishedAtUtc": "2026-10-28T17:14:37.6602284Z",
+      "publicUrl": "https://amusement-parks.fun/fr/attraction/6256ae91-3f69-4198-b8e0-8170e21fe6e7/x",
+      "completenessScore": 90,
+      "publicationBlockers": [],
+      "localizedImageFields": {
+        "altTexts": 8,
+        "captions": 8,
+        "credits": 8
+      },
+      "exportSha256": "7bce2d9ecdd7fa45e28e9e43f9090879f9dad662b1cb51b3c79a4ccf42812eab"
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-candidate-discovery-5012808b5cf423",
+      "name": "Donauturm-Rutsche",
+      "entityId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+      "imageId": "6e66a56de809450488a20e6ec7848c23",
+      "sourceUrl": "https://www.flickr.com/photos/alfreddiem/53449033405",
+      "author": "Tauralbus",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedOn": "2023-12-03",
+      "importedAtUtc": "2026-10-28T17:19:47.892Z",
+      "importEvidence": "PARK_DATA_EDITOR:ImportPhoto:6e66a56de809450488a20e6ec7848c23",
+      "publicationApplyOperationId": "85f668dc-0119-4bb4-9103-577202d595cf",
+      "photoPublishedAtUtc": "2026-10-28T17:20:20.44207Z",
+      "publicUrl": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/x",
+      "completenessScore": 87,
+      "publicationBlockers": [],
+      "localizedImageFields": {
+        "altTexts": 8,
+        "captions": 8,
+        "credits": 8
+      },
+      "exportSha256": "e301961cb52e99228a5d7d40a8165560e81512f4d6802dd10ab33b0945980024"
+    }
+  ]
+}
