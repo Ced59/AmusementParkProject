@@ -1,0 +1,104 @@
+{
+  "name": "The Capital Wheel",
+  "entryId": "US-candidate-01cb30201aa0db",
+  "standaloneAttractionId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+  "qualification": "Grande roue fixe à billet propre au National Harbor, sans fiche Park ou Standalone correspondante dans les recherches officielles.",
+  "decision": "Published",
+  "score": 89,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "weeklyRules": 0,
+    "admissionOffers": 6,
+    "historyEvents": 1
+  },
+  "remainingGaps": [
+    "Le calendrier hebdomadaire de l’exploitant n’a pas pu être vérifié : seul l’horaire du jour était accessible ; ne pas publier de règle récurrente non confirmée.",
+    "Aucune photographie réutilisable du jour précis de l’ouverture n’a été établie pour illustrer l’événement historique."
+  ],
+  "sources": [
+    {
+      "label": "The Capital Wheel — site officiel et horaires du jour",
+      "url": "https://thecapitalwheel.com/"
+    },
+    {
+      "label": "The Capital Wheel — FAQ, tarifs et accessibilité",
+      "url": "https://thecapitalwheel.com/faq/"
+    },
+    {
+      "label": "The Capital Wheel — billetterie",
+      "url": "https://thecapitalwheel.com/tickets/"
+    },
+    {
+      "label": "National Harbor — présentation et adresse",
+      "url": "https://www.nationalharbor.com/directory/the-capital-wheel/"
+    },
+    {
+      "label": "National Harbor — ouverture en 2014",
+      "url": "https://www.nationalharbor.com/capital-wheel-national-harbor-names-theme-park-veteran-derek-lovato-vice-president-general-manager/"
+    },
+    {
+      "label": "NBC4 Washington — ouverture prévue le 23 mai 2014",
+      "url": "https://www.nbcwashington.com/news/local/capital-wheel-to-open-may-23-at-national-harbor/1968576/"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "a70362d25e014aba9c0e395bdc197227",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Capital_Wheel_by_Day_%2815003014884%29.jpg",
+      "author": "Johnny Silvercloud",
+      "date": "2014-10-24",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    },
+    {
+      "imageId": "5efaf5fdcf51469cb25278c2e80ecc85",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Capital_wheel_and_a_setting_sun.jpg",
+      "author": "Ramach30",
+      "date": "2016-07-17",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    },
+    {
+      "imageId": "dcb789168b1a44a5a7d1f7e304ae61dc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Capital_Wheel_at_National_Harbor.jpg",
+      "author": "Forsaken Fotos",
+      "date": "2014-07-19",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "6ac860584d8bb5ca8fb634f74150547fc110f142cfb2a8353fcc72773795acc7",
+    "projectedScore": 89,
+    "projectedBlockers": [],
+    "publicScore": 89,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T22:08:28.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/b0335449-d1b1-43b0-a39f-fed9b33742ff/the-capital-wheel",
+      "publishedAtUtc": "2026-10-28T22:06:50.039Z",
+      "applyOperationId": "b112c191-c248-41f3-865f-d81ce9eb4f7e"
+    },
+    "facebook": {
+      "id": "f72cc14144e942b8b4cc1b4b69701d64",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T22:07:54.143Z",
+      "externalPostId": "1285475681307050_122125096389424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125096389424431"
+    }
+  }
+}
