@@ -87,6 +87,22 @@
       "appliedAtUtc": "2026-10-28T06:59:53.9643732Z",
       "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
       "isApplied": true
+    },
+    {
+      "lot": "11-opening-date",
+      "action": "Apply",
+      "operationId": "5f5cc1c4-71fc-46b9-abd4-a15332ec1117",
+      "appliedAtUtc": "2026-10-28T07:12:52.2252596Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "12-republish-history",
+      "action": "Apply",
+      "operationId": "33f03891-846f-4163-af1f-3c1db98b2933",
+      "appliedAtUtc": "2026-10-28T07:14:05.199196Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
     }
   ],
   "facebookPublicationId": "9be82e94415d4de0a5ff58af46fb77b3",

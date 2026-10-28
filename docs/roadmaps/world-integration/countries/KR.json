@@ -4109,7 +4109,7 @@
         "남이섬 스카이라인 짚와이어"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-28T06:59:53.964Z",
+      "lastDataIntegrationAt": "2026-10-28T07:12:52.225Z",
       "integrationHistory": [
         {
           "eventId": "apply-ee84f2ab-4352-4448-8999-ce12bd9fc98d",
@@ -4190,6 +4190,16 @@
           "evidence": "PARK_DATA_EDITOR:apply:efb77890-0def-483d-8900-9a56eb350f37",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-audit.json",
           "summary": "Montants fixes 55 000 et 58 000 KRW intégrés ; audit final 95/100, sans blocage."
+        },
+        {
+          "eventId": "apply-5f5cc1c4-71fc-46b9-abd4-a15332ec1117",
+          "appliedAt": "2026-10-28T07:12:52.225Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:5f5cc1c4-71fc-46b9-abd4-a15332ec1117",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-audit.json",
+          "summary": "Date exacte d’ouverture du 5 novembre 2010 intégrée avec sources exploitant et presse contemporaine."
         }
       ],
       "nextAction": "Conserver la fiche et ses reçus ; revérifier prix, disponibilité Adventure, météo, minimum de poids et statut administratif ToReview lors de la prochaine mise à jour.",
@@ -4223,6 +4233,16 @@
           "label": "Wikimedia Commons — photographie d’archive de 2015, CC BY-SA 4.0",
           "url": "https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%9D%B4%EC%84%AC_(4).JPG",
           "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — cas constructeur, date exacte d’ouverture",
+          "url": "https://zipwire.co.kr/company2",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Yonhap — annonce contemporaine de l’ouverture",
+          "url": "https://www.yna.co.kr/view/AKR20101022169900060",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
@@ -4237,14 +4257,15 @@
             "sourceVenueName": "Nami Skyline"
           }
         ],
-        "rationale": "Attraction autonome confirmée : tour, billetterie et réservation gérées par JANA-Line sur la rive de Gapyeong ; le billet inclut ensuite l’entrée de Nami et le ferry retour. La référence ZipRider de découverte est conservée comme alias, sans créer de doublon."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration apply-5f5cc1c4-71fc-46b9-abd4-a15332ec1117 ; conserver les références de découverte."
       },
       "publicationEvidence": {
         "siteVisibleAtUtc": "2026-10-28T06:57:44.790Z",
         "siteUrl": "https://amusement-parks.fun/fr/attraction/f619573f-a2ca-43cf-8b4a-5efe080dfa8a/skyline-zipwire-nami-island",
         "facebookPublishedAtUtc": "2026-10-28T07:01:55.868Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125002243424431",
-        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-receipts.json"
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-receipts.json",
+        "historyRePublishedAtUtc": "2026-10-28T07:14:05.199Z"
       }
     },
     {
