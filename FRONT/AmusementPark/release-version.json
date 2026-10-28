@@ -1,6 +1,20 @@
 {
-  "version": "6.0.30",
+  "version": "6.0.31",
   "history": [
+    {
+      "version": "6.0.31",
+      "releasedAt": "2026-10-28",
+      "labels": {
+        "fr": "Sécurité des outils du site renforcée",
+        "en": "Improved security for site tools",
+        "de": "Sicherheit der Website-Werkzeuge verbessert",
+        "nl": "Beveiliging van websitehulpmiddelen verbeterd",
+        "it": "Sicurezza degli strumenti del sito migliorata",
+        "es": "Seguridad de las herramientas del sitio mejorada",
+        "pl": "Większe bezpieczeństwo narzędzi witryny",
+        "pt": "Segurança das ferramentas do site melhorada"
+      }
+    },
     {
       "version": "6.0.30",
       "releasedAt": "2026-10-23",
