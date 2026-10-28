@@ -14,13 +14,13 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 132 |
-| À qualifier | 514 |
+| À qualifier | 512 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 2 |
+| Intégration achevée | 3 |
 | Publié, date inconnue | 52 |
 | Hors périmètre enregistré | 86 |
-| Doublon conservé | 15 |
+| Doublon conservé | 16 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **1057**. Sources : Aerophile — références constructeur, AmusementForce, Brogent — projet constructeur, EAZA, Freizeitpark App, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
@@ -28,9 +28,9 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **36 publiés**, **132 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **352 candidats sans fiche**.
 
-Standalone : **18 publiées**, **0 masquées**, **22 candidates sans fiche**. Autres dossiers : **48 types à décider**, **86 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+Standalone : **19 publiées**, **0 masquées**, **21 candidates sans fiche**. Autres dossiers : **48 types à décider**, **85 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
 
-Revue standalone : **31 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **78 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **10 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **31 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **77 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **10 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
