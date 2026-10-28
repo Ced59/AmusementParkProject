@@ -1,0 +1,101 @@
+{
+  "name": "Sommerrodelbahn Tegelberg",
+  "entryId": "DE-candidate-634964be127c93",
+  "duplicateEntryId": "DE-candidate-standalone-df159ae1235bb4",
+  "standaloneAttractionId": "b226a5a1-72ad-4188-b483-2e622ef02b9f",
+  "qualification": "Piste de luge d’été à billets propres au pied du Tegelberg ; aucune fiche Park ou Standalone correspondante dans la recherche officielle. La référence Wiegand séparée désigne la même piste.",
+  "decision": "Published",
+  "score": 83,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "weeklyRules": 0,
+    "admissionOffers": 5,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "La piste a été déclarée fermée pour météo le 28 octobre 2026. Les horaires généraux de la télécabine ne prouvent pas un calendrier récurrent propre à la piste ; aucun horaire n’a donc été inventé.",
+    "Aucune date exacte d’ouverture vérifiée n’a été trouvée auprès de l’exploitant ou du constructeur."
+  ],
+  "sources": [
+    {
+      "label": "Tegelbergbahn — piste, tarifs, consignes et adresse",
+      "url": "https://www.tegelbergbahn.de/de/sommer/aktivitaeten/sommerrodelbahn"
+    },
+    {
+      "label": "Tegelbergbahn — bulletin des horaires du 28 octobre 2026, fermeture météo de la piste",
+      "url": "https://www.tegelbergbahn.de/pdf.php"
+    },
+    {
+      "label": "Tegelbergbahn — informations et tarifs du domaine",
+      "url": "https://www.tegelbergbahn.de/de/sommer/info-preise"
+    },
+    {
+      "label": "Wiegand — référence Tegelberg",
+      "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1243"
+    },
+    {
+      "label": "OpenStreetMap Nominatim — emplacement de la Sommerrodelbahn Tegelberg",
+      "url": "https://nominatim.openstreetmap.org/search?q=Sommerrodelbahn+Tegelberg&format=json"
+    },
+    {
+      "label": "Wikimedia Commons — piste et remontée, photo de qwesy qwesy",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_-_Tegelbergbahn_-_panoramio.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — tracé vu du Tegelberg, photo de Raimond Spekking",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Schwangau_-_Blick_vom_Tegelberg_(3226).jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "ea2058b49e3245ee8dfd0bea034a70e5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_-_Tegelbergbahn_-_panoramio.jpg",
+      "author": "qwesy qwesy",
+      "date": "2014-08-08",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "subject": "Piste et remontée de la Sommerrodelbahn Tegelberg",
+      "transformation": "vignette Wikimedia Commons optimisée, sans recadrage"
+    },
+    {
+      "imageId": "07b0691eec8c4ab1a0854c021f0998d8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Schwangau_-_Blick_vom_Tegelberg_(3226).jpg",
+      "author": "Raimond Spekking",
+      "date": "2010-04-03",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Vue du tracé depuis le Tegelberg",
+      "transformation": "vignette Wikimedia Commons optimisée, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "b14bc2c79bb2752f449b025a2df82cda6424277e0a42bb94bfa87ba090643d3d",
+    "projectedScore": 83,
+    "projectedBlockers": [],
+    "publicScore": 83,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T22:49:00.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/b226a5a1-72ad-4188-b483-2e622ef02b9f/sommerrodelbahn-tegelberg",
+      "publishedAtUtc": "2026-10-28T22:47:31.722Z",
+      "applyOperationId": "d21d25a2-9623-4940-bf4e-b7849e71be16"
+    },
+    "facebook": {
+      "id": "d43b3df8e7ba4b219c85b2db98508fdd",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T22:48:24.379Z",
+      "externalPostId": "1285475681307050_122125099179424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125099179424431"
+    }
+  }
+}

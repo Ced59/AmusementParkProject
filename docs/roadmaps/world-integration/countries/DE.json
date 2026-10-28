@@ -16517,11 +16517,11 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Même piste de luge d’été que Sommerrodelbahn Tegelberg, confirmée par l’exploitant et la référence Wiegand.",
+      "identityConfidence": "Référence constructeur Wiegand « Tegelberg » correspondant à l’unique Sommerrodelbahn du site officiel à Schwangau.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -16530,7 +16530,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Doublon de DE-candidate-634964be127c93 : conserver cette piste de découverte et son lien constructeur, ne créer aucune seconde fiche. La fiche intégrée et le post Facebook sont référencés sur la ligne principale.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16541,11 +16541,21 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.tegelbergbahn.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tegelbergbahn — piste, tarifs, consignes et adresse",
+          "url": "https://www.tegelbergbahn.de/de/sommer/aktivitaeten/sommerrodelbahn",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Tegelbergbahn — informations et tarifs du domaine",
+          "url": "https://www.tegelbergbahn.de/de/sommer/info-preise",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "Tegelberg",
@@ -16556,8 +16566,9 @@
             "referenceId": "location-id-1243"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Référence Wiegand du même lieu et de la même luge d’été que DE-candidate-634964be127c93 ; doublon de découverte conservé."
+      },
+      "duplicateOf": "DE-candidate-634964be127c93"
     },
     {
       "entryId": "DE-candidate-standalone-37690588e2327a",
@@ -23601,37 +23612,150 @@
     {
       "entryId": "DE-candidate-634964be127c93",
       "name": "Sommerrodelbahn Tegelberg",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Schwangau",
-      "siteId": null,
+      "category": "Luge d’été",
+      "locality": "Tegelbergstraße 33, Schwangau",
+      "siteId": "b226a5a1-72ad-4188-b483-2e622ef02b9f",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T22:49:00.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Piste saisonnière exploitée par Tegelbergbahn ; bulletin officiel du 28 octobre 2026 : fermeture due à la météo ce jour, sans fermeture définitive.",
+      "identityConfidence": "Billetterie distincte de la télécabine sur le site officiel ; recherches Park et Standalone sur Tegelberg sans correspondance.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn Schwangau",
+        "Luge Wiegand — Tegelberg"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T22:45:17.043Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-21cd1531-70b9-4f72-beca-74f73d747c46",
+          "appliedAt": "2026-10-28T22:42:56.017Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b226a5a1-72ad-4188-b483-2e622ef02b9f",
+          "evidence": "PARK_DATA_EDITOR:apply:21cd1531-70b9-4f72-beca-74f73d747c46",
+          "auditEvidence": null,
+          "summary": "Création privée de la piste autonome et descriptions éditoriales en huit langues"
+        },
+        {
+          "eventId": "apply-24459e2f-1db0-414f-83d1-812966d9876c",
+          "appliedAt": "2026-10-28T22:44:00.804Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b226a5a1-72ad-4188-b483-2e622ef02b9f",
+          "evidence": "PARK_DATA_EDITOR:apply:24459e2f-1db0-414f-83d1-812966d9876c",
+          "auditEvidence": null,
+          "summary": "Cinq tarifs vérifiés sur le site officiel, dont trajet accompagné gratuit et cartes de six trajets"
+        },
+        {
+          "eventId": "image-ea2058b49e3245ee8dfd0bea034a70e5",
+          "appliedAt": "2026-10-28T22:44:51.368Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b226a5a1-72ad-4188-b483-2e622ef02b9f",
+          "evidence": "PARK_DATA_EDITOR:image:ea2058b49e3245ee8dfd0bea034a70e5",
+          "auditEvidence": null,
+          "summary": "Photographie #1 de la piste importée depuis Wikimedia Commons avec auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-07b0691eec8c4ab1a0854c021f0998d8",
+          "appliedAt": "2026-10-28T22:45:17.043Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b226a5a1-72ad-4188-b483-2e622ef02b9f",
+          "evidence": "PARK_DATA_EDITOR:image:07b0691eec8c4ab1a0854c021f0998d8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-sommerrodelbahn-tegelberg-20261028/audit.json",
+          "summary": "Photographie #2 de la piste importée depuis Wikimedia Commons avec auteur, licence et textes en huit langues"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Rechercher un calendrier spécifique à la piste avant d’intégrer des horaires récurrents ; recontrôler prix et conditions à la prochaine saison. L’autre piste Tegelberg est rapprochée ici comme doublon, sans nouvelle fiche ni second post Facebook.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/sommerrodelbahn-tegelberg/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tegelbergbahn — piste, tarifs, consignes et adresse",
+          "url": "https://www.tegelbergbahn.de/de/sommer/aktivitaeten/sommerrodelbahn",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Tegelbergbahn — bulletin des horaires du 28 octobre 2026, fermeture météo de la piste",
+          "url": "https://www.tegelbergbahn.de/pdf.php",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Tegelbergbahn — informations et tarifs du domaine",
+          "url": "https://www.tegelbergbahn.de/de/sommer/info-preise",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wiegand — référence Tegelberg",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1243",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — emplacement de la Sommerrodelbahn Tegelberg",
+          "url": "https://nominatim.openstreetmap.org/search?q=Sommerrodelbahn+Tegelberg&format=json",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — piste et remontée, photo de qwesy qwesy",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_-_Tegelbergbahn_-_panoramio.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — tracé vu du Tegelberg, photo de Raimond Spekking",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Schwangau_-_Blick_vom_Tegelberg_(3226).jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Tegelberg",
+            "source": "Tegelbergbahn — exploitant",
+            "url": "https://www.tegelbergbahn.de/de/sommer/aktivitaeten/sommerrodelbahn",
+            "family": "Luge d’été",
+            "sourceVenueName": "Tegelbergbahn",
+            "sourceLifecycleSignal": "Activité saisonnière, fermeture météo le 28 octobre 2026",
+            "sourceLocality": "Schwangau",
+            "matchingMethod": "Billet séparé et identité localisée ; recherche officielle sans doublon"
+          }
+        ],
+        "rationale": "Piste à billet propre au pied d’un domaine de montagne, distincte de la télécabine. Deux photos du vrai tracé vérifiées ; audit public 83/100 sans bloqueur, calendrier spécifique non confirmé."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b226a5a1-72ad-4188-b483-2e622ef02b9f/sommerrodelbahn-tegelberg",
+          "publishedAtUtc": "2026-10-28T22:47:31.722Z",
+          "verifiedAtUtc": "2026-10-28T22:49:00.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d21d25a2-9623-4940-bf4e-b7849e71be16"
+        },
+        "facebook": {
+          "id": "d43b3df8e7ba4b219c85b2db98508fdd",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T22:48:24.379Z",
+          "externalPostId": "1285475681307050_122125099179424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125099179424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:d43b3df8e7ba4b219c85b2db98508fdd"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-sommerrodelbahn-tegelberg-20261028/audit.json",
+        "score": 83,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
