@@ -4087,37 +4087,147 @@
     },
     {
       "entryId": "KR-candidate-standalone-25023c9dd1cd28",
-      "name": "ZipRider — Nami Skyline",
-      "entityKind": "ToQualify",
+      "name": "Skyline Zipwire — Nami Island",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "Gapyeong, Gyeonggi-do",
+      "siteId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating (operator, 2026-10-28)",
+      "identityConfidence": "Exploitant JANA-Line et site officiel vérifiés ; accès et billet propres depuis la rive de Gapyeong.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "Nami Skyline",
+        "ZipRider — Nami Skyline",
+        "남이섬 스카이라인 짚와이어"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T06:59:53.964Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ee84f2ab-4352-4448-8999-ce12bd9fc98d",
+          "appliedAt": "2026-10-28T06:47:52.131Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:ee84f2ab-4352-4448-8999-ce12bd9fc98d",
+          "auditEvidence": null,
+          "summary": "Identité, localisation, statut et descriptions éditoriales dans huit langues intégrés."
+        },
+        {
+          "eventId": "apply-69a08ddf-f9f0-4764-9d64-f790143bcb3e",
+          "appliedAt": "2026-10-28T06:50:57.901Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:69a08ddf-f9f0-4764-9d64-f790143bcb3e",
+          "auditEvidence": null,
+          "summary": "Tarifs Family et Adventure, inclusions et réservations intégrés."
+        },
+        {
+          "eventId": "apply-ef018357-9977-43f6-9d8b-1b5c0841f1fa",
+          "appliedAt": "2026-10-28T06:51:21.894Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:ef018357-9977-43f6-9d8b-1b5c0841f1fa",
+          "auditEvidence": null,
+          "summary": "Horaires usuels et réserves météo intégrés."
+        },
+        {
+          "eventId": "apply-e0a5be2a-b36c-4daa-99ec-6ba72008a0f8",
+          "appliedAt": "2026-10-28T06:53:58.422Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:e0a5be2a-b36c-4daa-99ec-6ba72008a0f8",
+          "auditEvidence": null,
+          "summary": "Cinq conditions d’accès sourcées et traduites intégrées."
+        },
+        {
+          "eventId": "apply-1e7b1d2f-00cd-44c0-8352-aae5ac16e692",
+          "appliedAt": "2026-10-28T06:54:32.543Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:1e7b1d2f-00cd-44c0-8352-aae5ac16e692",
+          "auditEvidence": null,
+          "summary": "Ouverture de novembre 2010 et article historique intégrés."
+        },
+        {
+          "eventId": "importphoto-c439e4ac6fcd424ab778b664b5ae5f4c",
+          "appliedAt": "2026-10-28T06:54:54.549Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:c439e4ac6fcd424ab778b664b5ae5f4c",
+          "auditEvidence": null,
+          "summary": "Photographie d’archive 2015 importée avec attribution CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-d72cf251-6151-4a21-94fa-d32820643fd7",
+          "appliedAt": "2026-10-28T06:56:16.879Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:d72cf251-6151-4a21-94fa-d32820643fd7",
+          "auditEvidence": null,
+          "summary": "Résumé de l’article historique corrigé après contrôle de répétition."
+        },
+        {
+          "eventId": "apply-efb77890-0def-483d-8900-9a56eb350f37",
+          "appliedAt": "2026-10-28T06:59:53.964Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:efb77890-0def-483d-8900-9a56eb350f37",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-audit.json",
+          "summary": "Montants fixes 55 000 et 58 000 KRW intégrés ; audit final 95/100, sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la fiche et ses reçus ; revérifier prix, disponibilité Adventure, météo, minimum de poids et statut administratif ToReview lors de la prochaine mise à jour.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/nami-island/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Skyline Zipwire — exploitant, statut et réservation",
+          "url": "https://zipwire.co.kr/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — guide, prix et conditions",
+          "url": "https://zipwire.co.kr/guide",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — FAQ et parcours",
+          "url": "https://zipwire.co.kr/faq/4",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — histoire, ouverture novembre 2010",
+          "url": "https://zipwire.co.kr/company",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie d’archive de 2015, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%9D%B4%EC%84%AC_(4).JPG",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "ZipRider — Nami Skyline",
@@ -4127,7 +4237,14 @@
             "sourceVenueName": "Nami Skyline"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Attraction autonome confirmée : tour, billetterie et réservation gérées par JANA-Line sur la rive de Gapyeong ; le billet inclut ensuite l’entrée de Nami et le ferry retour. La référence ZipRider de découverte est conservée comme alias, sans créer de doublon."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-10-28T06:57:44.790Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/f619573f-a2ca-43cf-8b4a-5efe080dfa8a/skyline-zipwire-nami-island",
+        "facebookPublishedAtUtc": "2026-10-28T07:01:55.868Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125002243424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-receipts.json"
       }
     },
     {

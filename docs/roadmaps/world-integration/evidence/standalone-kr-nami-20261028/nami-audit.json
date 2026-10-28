@@ -1,0 +1,62 @@
+{
+  "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+  "entryId": "KR-candidate-standalone-25023c9dd1cd28",
+  "auditedAtUtc": "2026-10-28T07:05:27.803Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/f619573f-a2ca-43cf-8b4a-5efe080dfa8a/skyline-zipwire-nami-island",
+  "score": 95,
+  "dataQualityLevel": "Excellent",
+  "publicationBlockers": [],
+  "localization": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "localizedStringsReviewed": 248,
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "exportSha256": "8130aba37ce74f5d66bf999e11bff706de02fe07ae29ab40ef0428de74ec0ced"
+  },
+  "publicChecks": {
+    "attractionPages200": 8,
+    "mobilePagesWithoutHorizontalOverflow": 8,
+    "historyPages200": 8,
+    "historyArticles200": 8,
+    "allNamesVisible": true,
+    "allArticlePagesWithoutPlaceholders": true
+  },
+  "content": {
+    "historyEvents": 1,
+    "publishedImages": 1,
+    "accessConditions": 5,
+    "fixedPricesKrw": [
+      55000,
+      58000
+    ]
+  },
+  "facebook": {
+    "status": "Published",
+    "id": "9be82e94415d4de0a5ff58af46fb77b3",
+    "publishedAtUtc": "2026-10-28T07:01:55.8682587Z",
+    "externalPostId": "1285475681307050_122125002243424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125002243424431"
+  },
+  "limitations": [
+    "Les sources de l’exploitant datent l’ouverture au mois de novembre 2010 sans établir un jour précis.",
+    "Les pages de l’exploitant donnent des limites de poids minimal différentes ; seul le maximum de 120 kg est publié dans la fiche, avec invitation à confirmer.",
+    "Le calendrier de réservation consulté met surtout en avant Family ; la disponibilité d’Adventure est à confirmer.",
+    "La photo publiée est une archive de 2015, indiquée comme telle dans la légende ; elle ne documente pas l’état du matériel en 2026.",
+    "La fiche est visible mais le statut administratif exporté reste ToReview ; le client officiel a ignoré la valeur Approved envoyée au dernier Apply."
+  ]
+}
