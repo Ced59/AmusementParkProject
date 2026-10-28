@@ -23575,38 +23575,146 @@
     },
     {
       "entryId": "DE-candidate-c42faeedee8ee9",
-      "name": "Sommerrodelbahn St. Andreasberg",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Sankt Andreasberg",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "St. Andreasberg",
-      "siteId": null,
+      "category": "Luge d’été",
+      "locality": "Matthias-Schmidt-Berg 4, Sankt Andreasberg",
+      "siteId": "917763c5-4d81-4546-a8f2-f67779880a07",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T23:01:39.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Saison 2026 active du mercredi au dimanche jusqu’au 1er novembre inclus, sous réserve du vent et de la pluie, selon Albert-Lift GmbH.",
+      "identityConfidence": "Billet propre pour la descente ou combinaison avec télésiège ; site officiel et Office de tourisme Oberharz concordants ; recherches officielles Park et Standalone « Andreasberg » sans fiche.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn St. Andreasberg",
+        "Sommerrodelbahn Matthias-Schmidt-Berg"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T22:58:40.925Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-03d9a27a-43cb-4249-bb5f-8c2a01a804d6",
+          "appliedAt": "2026-10-28T22:54:54.378Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "917763c5-4d81-4546-a8f2-f67779880a07",
+          "evidence": "PARK_DATA_EDITOR:apply:03d9a27a-43cb-4249-bb5f-8c2a01a804d6",
+          "auditEvidence": null,
+          "summary": "Création privée de la piste autonome et descriptions éditoriales en huit langues"
+        },
+        {
+          "eventId": "apply-afe713f3-90f5-44e5-b784-5760cdbb2566",
+          "appliedAt": "2026-10-28T22:57:02.705Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "917763c5-4d81-4546-a8f2-f67779880a07",
+          "evidence": "PARK_DATA_EDITOR:apply:afe713f3-90f5-44e5-b784-5760cdbb2566",
+          "auditEvidence": null,
+          "summary": "Horaires datés de fin de saison et sept tarifs 2026 de l’exploitant intégrés"
+        },
+        {
+          "eventId": "image-dd41d9a759814765923dbf545bdaf0d3",
+          "appliedAt": "2026-10-28T22:58:24.028Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "917763c5-4d81-4546-a8f2-f67779880a07",
+          "evidence": "PARK_DATA_EDITOR:image:dd41d9a759814765923dbf545bdaf0d3",
+          "auditEvidence": null,
+          "summary": "Photographie #1 du parcours importée depuis Commons avec auteur, licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-ef3aef33047c47d49db505bf44a3bb96",
+          "appliedAt": "2026-10-28T22:58:40.925Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "917763c5-4d81-4546-a8f2-f67779880a07",
+          "evidence": "PARK_DATA_EDITOR:image:ef3aef33047c47d49db505bf44a3bb96",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-sommerrodelbahn-andreasberg-20261028/audit.json",
+          "summary": "Photographie #2 du parcours importée depuis Commons avec auteur, licence et légendes en huit langues"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Rechercher le calendrier de la prochaine saison avant d’étendre les horaires après le 1er novembre 2026 ; actualiser tarifs et photographies lorsque l’exploitant publiera de nouvelles données. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/sommerrodelbahn-st-andreasberg/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Albert-Lift GmbH — piste de Sankt Andreasberg et saison jusqu’au 1er novembre 2026",
+          "url": "http://www.matthias-schmidt-berg.de/index.php/main-soro",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Albert-Lift GmbH — tarifs et horaires 2026",
+          "url": "http://www.matthias-schmidt-berg.de/index.php/preise-soro",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Tourisme Oberharz — localisation et exploitant",
+          "url": "https://www.oberharz.de/aktivitaeten/ausflugsziele/in-der-umgebung/sommerrodelbahn-sankt-andreasberg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — Sommer-Rodelbahn",
+          "url": "https://nominatim.openstreetmap.org/search?q=Sommerrodelbahn+Sankt+Andreasberg&format=json",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — piste sur le versant, photo de a.froese",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Andreasberg.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue vers la ville, photo de Tine",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Andreasberg_2.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Sankt Andreasberg",
+            "source": "Albert-Lift GmbH — exploitant",
+            "url": "http://www.matthias-schmidt-berg.de/index.php/main-soro",
+            "family": "Luge d’été",
+            "sourceVenueName": "Matthias-Schmidt-Berg",
+            "sourceLifecycleSignal": "Saison 2026 ouverte jusqu’au 1er novembre inclus",
+            "sourceLocality": "Sankt Andreasberg",
+            "matchingMethod": "Billetterie propre et recherches officielles Park / Standalone sans correspondance"
+          }
+        ],
+        "rationale": "Luge d’été à billet de descente propre au sein d’un domaine de montagne, accessible par télésiège ou à pied. Deux photos libres du parcours ; audit public 85/100 sans bloqueur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/917763c5-4d81-4546-a8f2-f67779880a07/sommerrodelbahn-sankt-andreasberg",
+          "publishedAtUtc": "2026-10-28T23:00:43.007Z",
+          "verifiedAtUtc": "2026-10-28T23:01:39.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:1fc44a31-186a-443f-a8b4-e7c8334ea511"
+        },
+        "facebook": {
+          "id": "8cd32d97f05b4adda5bf9532525df90e",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T23:01:31.933Z",
+          "externalPostId": "1285475681307050_122125100109424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125100109424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:8cd32d97f05b4adda5bf9532525df90e"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-sommerrodelbahn-andreasberg-20261028/audit.json",
+        "score": 85,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
