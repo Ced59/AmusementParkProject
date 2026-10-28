@@ -1,0 +1,188 @@
+{
+  "sourcesChecked": [
+    "Originaloperatorplan",
+    "Archipop1985film catalogue and36sampledframes",
+    "Bottomcirclearchive",
+    "RCDB3441/5914",
+    "MELaerial",
+    "Wikipediahistoricalinventory"
+  ],
+  "closedPark": "Current access conditions not applicable to a park closed in1987. Do not invent present heightlimits orprices. Historicalconditions researched but not found in the availableoperatorplan orpublished archive records.",
+  "attractions": [
+    {
+      "id": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b",
+      "name": "Grand Huit",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+      "name": "Télécombat",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+      "name": "Rapides du Colorado",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+      "name": "Himalaya",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+      "name": "Bateau corsaire",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+      "name": "Auto-tamponneuses pour enfants",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+      "name": "Carrousel pour enfants",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+      "name": "Château gonflable",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+      "name": "Circuit tacots",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+      "name": "La Pieuvre",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+      "name": "Le Monde de la Préhistoire",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+      "name": "Explorer",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+      "name": "Petit train western",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+      "name": "Bateaux télécommandés",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+      "name": "La Rivière enchantée",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+      "name": "Pédalos",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+      "name": "Tir à la carabine",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+      "name": "Fort Apache",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+      "name": "Tir à l’arc",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+      "name": "Pulsar",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+      "name": "Cinéma 2000",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "61776169-668e-46a2-9272-e115371d439e",
+      "name": "Kodak Multivision",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+      "name": "Cosmovision",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "d02864fb-c418-4a16-bb66-f0c9f53c4d83",
+      "name": "L’Officine de Monstradamus",
+      "status": "Unknown",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    },
+    {
+      "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+      "name": "Piscine à boules",
+      "status": "Removed",
+      "historicalAccessConditionsKnown": false,
+      "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+    }
+  ]
+}

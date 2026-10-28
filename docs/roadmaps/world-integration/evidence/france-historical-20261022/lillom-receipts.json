@@ -1,0 +1,884 @@
+{
+  "entryId": "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+  "parkId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+  "name": "Parc de Lomme",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-d677911b-65ee-4b4a-a1eb-a6cde23827cb",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:42:16.5657001Z",
+      "appliedAt": "2026-10-23T12:42:16.565Z",
+      "receiptFile": "01-park-core-apply.receipt.json",
+      "receiptSha256": "1da445a427b139cdeebe01a76e067e347c8cd043098fe85827d090f9b65f3f22",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "founderId",
+        "openingDateText",
+        "position"
+      ],
+      "summary": "Lillom / Parc de Lomme : fondateur Arthur Notebart, ouverture précisée à juin 1985 et emplacement historique ; fiche canonique conservée masquée."
+    },
+    {
+      "eventId": "apply-37b70a51-2d03-42db-93b3-0627f5eb5efa",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:49:58.132252Z",
+      "appliedAt": "2026-10-23T12:49:58.132Z",
+      "receiptFile": "03-inventory-1-v2-apply.receipt.json",
+      "receiptSha256": "d86fb2b19f55a92899c5b6d78f3d75df9f5681a377da9af2f1aeb49d0e763eb7",
+      "counts": {
+        "created": 24,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Inventaire historique Lillom : 24 attractions ajoutées, Grand Huit conservé ; sources et incertitudes qualifiées, contenus privés à rédiger."
+    },
+    {
+      "eventId": "apply-59d3e0f8-3fb4-49eb-bc7b-93f11193747a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:51:06.3763818Z",
+      "appliedAt": "2026-10-23T12:51:06.376Z",
+      "receiptFile": "03-inventory-2-v2-apply.receipt.json",
+      "receiptSha256": "cdc0422c6c7f49cc64d0a204511747a96f2c38091a7b0d78136408ad0bcc0e85",
+      "counts": {
+        "created": 20,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "category",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Inventaire historique Lillom : cinq lieux de spectacle, neuf points de restauration et six services ajoutés avec leurs identités propres ; total 45 lieux privés."
+    },
+    {
+      "eventId": "apply-bb482e3a-ba3b-45d2-aea9-0fdeb6dc3daa",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T12:58:02.4830847Z",
+      "appliedAt": "2026-10-23T12:58:02.483Z",
+      "receiptFile": "03-final-identification-apply.receipt.json",
+      "receiptSha256": "02d203f3a83c3f883eb56d77714d817b2536412c3b9395d94f1cb90786f37a8c",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "category",
+        "position",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Inventaire Lillom complété à 46 lieux : théâtre du secteur futur identifié et château d’Isenghien précisément positionné ; autres coordonnées non inventées."
+    },
+    {
+      "eventId": "apply-f819a845-3c4d-4b3e-badc-dcfad69604aa",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T13:03:16.103283Z",
+      "appliedAt": "2026-10-23T13:03:16.103Z",
+      "receiptFile": "04-park-editorial-apply.receipt.json",
+      "receiptSha256": "d9a4d1fa30f1ad223d9653bd946342ff2d0261d0efe70b3bf8616b84a8f38ecc",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc de Lomme : description générale développée réécrite personnellement dans les huit langues, scènes et héritage sourcés."
+    },
+    {
+      "eventId": "apply-252bc2f1-8da9-4231-b326-338596e3efe3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T13:04:41.233698Z",
+      "appliedAt": "2026-10-23T13:04:41.233Z",
+      "receiptFile": "04-zones-editorial-apply.receipt.json",
+      "receiptSha256": "2751a3275855baef8f0e9edc529e72a656fdde5d092c0919f33d126441ed3984",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Quatre zones historiques de Lillom : 32 descriptions originales localisées ajoutées, identités et rattachements conservés."
+    },
+    {
+      "eventId": "apply-050f03bd-9bc3-4d0d-a2dd-34f34e7e76aa",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T13:18:59.8424171Z",
+      "appliedAt": "2026-10-23T13:18:59.842Z",
+      "receiptFile": "04-items-major-a-apply.receipt.json",
+      "receiptSha256": "b213806d6fe487cbf328e13da905f273fe3265875116cb4a99f5dd917667236d",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Cinq attractions majeures de Lillom : 40 descriptions localisées spécifiques, parc masqué et limites des archives documentées."
+    },
+    {
+      "eventId": "apply-ec4b66a8-ab96-49f5-98aa-2aaeafceb2c2",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T13:25:29.0361231Z",
+      "appliedAt": "2026-10-23T13:25:29.036Z",
+      "receiptFile": "04-items-children-apply.receipt.json",
+      "receiptSha256": "23945bc459f16d5a40e66088a3ee45e4e26d36a191d28482f8f39ba2be79291a",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Six jeux et attractions pour enfants de Lillom : 48 descriptions spécifiques dans les huit langues, illustrations du film utilisées seulement comme sources."
+    },
+    {
+      "eventId": "apply-20735b7c-c8dd-4d1f-b1ca-fe131a62d309",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T13:33:52.8015203Z",
+      "appliedAt": "2026-10-23T13:33:52.801Z",
+      "receiptFile": "04-items-lakeside-apply.receipt.json",
+      "receiptSha256": "7511c6e76a37f6e69a271c86b2bdc93f05f99af7b74cc027414799eee96d0d67",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Sept attractions des rives de Lillom : 56 descriptions localisées, emplacements et paysages sourcés, limites techniques explicites dans le dossier."
+    },
+    {
+      "eventId": "apply-f9f8ed51-9137-4eef-b31d-372a6169d133",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T13:44:32.2924487Z",
+      "appliedAt": "2026-10-23T13:44:32.292Z",
+      "receiptFile": "04-items-future-games-v2-apply.receipt.json",
+      "receiptSha256": "d320978bb0f17546f2e89a0b3f94077f365524d133339b7d77ff73c05396e96f",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Sept attractions et jeux de Lillom : 56 descriptions localisées ; Monstradamus conservé comme annonce historique, sans ouverture inventée."
+    },
+    {
+      "eventId": "apply-453429f7-c766-4ad6-a346-692ea1e80616",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T13:50:55.9359621Z",
+      "appliedAt": "2026-10-23T13:50:55.935Z",
+      "receiptFile": "04-items-shows-apply.receipt.json",
+      "receiptSha256": "e87464df6706d3c3a0b86fea1e57a2bea837809682fef44dcaa2a98cf52494bd",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Six lieux de spectacle de Lillom : 48 descriptions localisées ajoutées, arènes et deux théâtres de marionnettes distingués sans programme inventé."
+    },
+    {
+      "eventId": "apply-07088e9a-807a-4fca-9d0f-7f83eea3fcfc",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:04:52.078527Z",
+      "appliedAt": "2026-10-23T14:04:52.078Z",
+      "receiptFile": "04-items-food-apply.receipt.json",
+      "receiptSha256": "8ea19dec1d789fdb52fc62db18c36797fc02c58290a2cae95d4451dbea4de31e",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Neuf établissements de restauration : 72 descriptions historiques rédigées et revues, plan et archives, sans menus ou dates inventés."
+    },
+    {
+      "eventId": "apply-ca53297d-473e-48e7-ade1-1a2569085ad8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:08:37.3642615Z",
+      "appliedAt": "2026-10-23T14:08:37.364Z",
+      "receiptFile": "04-items-services-apply.receipt.json",
+      "receiptSha256": "63b4ce003d4761d57f434cc5cfa261c657e93ded5ac107d37878ca004d4ae384",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Cinq services historiques, 40 descriptions relues dans les huit langues, implantation documentée par le plan original."
+    },
+    {
+      "eventId": "apply-483c5610-d822-42c4-82a6-e06087ab0932",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:09:58.6566911Z",
+      "appliedAt": "2026-10-23T14:09:58.656Z",
+      "receiptFile": "04-chateau-apply.receipt.json",
+      "receiptSha256": "66aa37dc80dda2a21409993330ddd3b5f0c569550941d68b91c5d7459c9b344a",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Château d’Isenghien : huit descriptions développées, ancien domaine, réceptions et réemploi cinéma1996, sans confusion avec le décor médiéval."
+    },
+    {
+      "eventId": "apply-f16124f7-abb9-4bff-a330-065fa9182490",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:15:20.0436392Z",
+      "appliedAt": "2026-10-23T14:15:20.043Z",
+      "receiptFile": "05-founder-v2-apply.receipt.json",
+      "receiptSha256": "ba75e1bec32f3d6250e604a963c17b61ac2903b6b76ad30bc105ab8a9e34eac4",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt"
+      ],
+      "summary": "Arthur Notebart : biographie en huit langues, mandats vérifiés dans Sycomore et rôle dans le projet Lillom1983."
+    },
+    {
+      "eventId": "import-photo-e97755d6920e44c5985a2cc1f065da45-2026-10-23T141536.538Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:15:36.538Z",
+      "appliedAt": "2026-10-23T14:15:36.538Z",
+      "receiptFile": "05-logo-lommy-import-receipt.json",
+      "receiptSha256": "9f9acd9bd316055d949d0652bdcc0a478903afc32c335b4ff91a970b76424572",
+      "imageId": "e97755d6920e44c5985a2cc1f065da45",
+      "ownerId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+      "createdAt": "2026-10-23T14:15:32.574Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/fr/6/6f/Logo_de_Lillom.jpg",
+      "summary": "Import privé du média historique 05-logo-lommy, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f21bb8d17ce8400197d210aa48daefe7-2026-10-23T141550.536Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:15:50.536Z",
+      "appliedAt": "2026-10-23T14:15:50.536Z",
+      "receiptFile": "05-logo-clown-import-receipt.json",
+      "receiptSha256": "cf5c6a4450e55cd854610e08f95c30a7485f122dcfe1a8aed44001099c93d779",
+      "imageId": "f21bb8d17ce8400197d210aa48daefe7",
+      "ownerId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+      "createdAt": "2026-10-23T14:15:47.016Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/fr/b/bb/Lillom_old_logo.jpg",
+      "summary": "Import privé du média historique 05-logo-clown, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-66dd2ff8b84940e785cd9a4a236e5aa4-2026-10-23T141605.399Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:16:05.399Z",
+      "appliedAt": "2026-10-23T14:16:05.399Z",
+      "receiptFile": "05-park-aerial-import-receipt.json",
+      "receiptSha256": "3d0287bff62d6e03eb61f4c69304531ba78b2e7c3784048ba779ef484b817bf2",
+      "imageId": "66dd2ff8b84940e785cd9a4a236e5aa4",
+      "ownerId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+      "createdAt": "2026-10-23T14:16:01.716Z",
+      "sourceUrl": "https://lvdneng.rosselcdn.net/sites/default/files/dpistyles_v2/vdn_864w/2025/08/03/node_1612183/65033293/public/2025/08/03/45852986.jpeg?itok=ZcB_1ILN1754215259",
+      "summary": "Import privé du média historique 05-park-aerial, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-022fce25a9ac4fe2bc2f8f580c373d7e-2026-10-23T141619.949Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:16:19.949Z",
+      "appliedAt": "2026-10-23T14:16:19.949Z",
+      "receiptFile": "05-park-lake-1995-import-receipt.json",
+      "receiptSha256": "1a21b15c3e3dc8b92ff70550a19b2bb716598fda31b20d8b24f959a18f83a112",
+      "imageId": "022fce25a9ac4fe2bc2f8f580c373d7e",
+      "ownerId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+      "createdAt": "2026-10-23T14:16:16.506Z",
+      "sourceUrl": "https://fichier0.cirkwi.com/image/photo/poi/800x500/2950906/fr/0.jpg?1779673630",
+      "summary": "Import privé du média historique 05-park-lake-1995, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-8610403c63074e75aaca4af873695845-2026-10-23T141834.915Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:18:34.915Z",
+      "appliedAt": "2026-10-23T14:18:34.915Z",
+      "receiptFile": "05-grand-huit-import-receipt.json",
+      "receiptSha256": "9ff3623a5b25232f16b3f17991cc6839fbd13d7471aa15d93f1a73b030107b7f",
+      "imageId": "8610403c63074e75aaca4af873695845",
+      "ownerId": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b",
+      "createdAt": "2026-10-23T14:18:31.393Z",
+      "sourceUrl": "https://web.archive.org/web/20051023101952im_/http://pageperso.aol.fr/bottomcircle/images/lillomrollercoaster.jpg",
+      "summary": "Import privé du média historique 05-grand-huit, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-ee045ff4a1ef49f280497d58c6c5396a-2026-10-23T141848.712Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:18:48.712Z",
+      "appliedAt": "2026-10-23T14:18:48.712Z",
+      "receiptFile": "05-jousts-import-receipt.json",
+      "receiptSha256": "78fb1c75253072fafb785ad7a28b5e413a13c7a9652f7d4c8b25d35688258d2f",
+      "imageId": "ee045ff4a1ef49f280497d58c6c5396a",
+      "ownerId": "8fd47cc7-f997-454d-9796-682b78bafce4",
+      "createdAt": "2026-10-23T14:18:45.181Z",
+      "sourceUrl": "https://web.archive.org/web/20051023101952im_/http://pageperso.aol.fr/bottomcircle/images/lommejoutes.jpg",
+      "summary": "Import privé du média historique 05-jousts, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-587c3684e82c4569b18bef76b10d7ac9-2026-10-23T141902.602Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:19:02.602Z",
+      "appliedAt": "2026-10-23T14:19:02.602Z",
+      "receiptFile": "05-monstradamus-import-receipt.json",
+      "receiptSha256": "141296702f6958251d2971275c70e5286b6c0e44a7f6a23c0653d083f3ad2ea3",
+      "imageId": "587c3684e82c4569b18bef76b10d7ac9",
+      "ownerId": "d02864fb-c418-4a16-bb66-f0c9f53c4d83",
+      "createdAt": "2026-10-23T14:18:59.188Z",
+      "sourceUrl": "https://web.archive.org/web/20051023101952im_/http://pageperso.aol.fr/bottomcircle/images/lillom%20old%20nostradamus.jpg",
+      "summary": "Import privé du média historique 05-monstradamus, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-aed6a5e5f90641bb879c83b43ae4bab2-2026-10-23T141916.224Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:19:16.224Z",
+      "appliedAt": "2026-10-23T14:19:16.224Z",
+      "receiptFile": "05-prehistory-import-receipt.json",
+      "receiptSha256": "258cdb5f801217576f0119f03fd8e3300f32fc3b857268b11eb4afce0164f4fb",
+      "imageId": "aed6a5e5f90641bb879c83b43ae4bab2",
+      "ownerId": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+      "createdAt": "2026-10-23T14:19:12.832Z",
+      "sourceUrl": "https://web.archive.org/web/20051023101952im_/http://pageperso.aol.fr/bottomcircle/images/lillom%20prehistoire.jpg",
+      "summary": "Import privé du média historique 05-prehistory, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-7a61cf61af95475980fdabc9a4229096-2026-10-23T141935.247Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:19:35.247Z",
+      "appliedAt": "2026-10-23T14:19:35.247Z",
+      "receiptFile": "05-pieuvre-import-receipt.json",
+      "receiptSha256": "c2aa57b46672202613042fe996d816c8491c9848f39a2e3cff98a419d58c42b3",
+      "imageId": "7a61cf61af95475980fdabc9a4229096",
+      "ownerId": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+      "createdAt": "2026-10-23T14:19:31.8Z",
+      "sourceUrl": "https://web.archive.org/web/20051023101952im_/http://pageperso.aol.fr/bottomcircle/images/lillom%20old%20pieuvre.jpg",
+      "summary": "Import privé du média historique 05-pieuvre, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-2b07d0bfc65242b2abfdea626b3cf992-2026-10-23T141957.337Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:19:57.337Z",
+      "appliedAt": "2026-10-23T14:19:57.337Z",
+      "receiptFile": "05-tacots-import-receipt.json",
+      "receiptSha256": "27af7334fc26c95f869957b33d61d07d3ded8cf8d82ff353131e8df14cd8054a",
+      "imageId": "2b07d0bfc65242b2abfdea626b3cf992",
+      "ownerId": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+      "createdAt": "2026-10-23T14:19:53.859Z",
+      "sourceUrl": "https://web.archive.org/web/20051023101952im_/http://pageperso.aol.fr/bottomcircle/images/lillom%20tacots.jpg",
+      "summary": "Import privé du média historique 05-tacots, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-6ea249acbeba4e509706b8a674150d8a-2026-10-23T142025.695Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:20:25.695Z",
+      "appliedAt": "2026-10-23T14:20:25.695Z",
+      "receiptFile": "05-park-lake-2004-import-receipt.json",
+      "receiptSha256": "4d5b0fbc0ceffc683737476cab32c4bdcdd182f08aa3a88adf2e0f8cd7cc016b",
+      "imageId": "6ea249acbeba4e509706b8a674150d8a",
+      "ownerId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+      "createdAt": "2026-10-23T14:20:22.306Z",
+      "sourceUrl": "https://web.archive.org/web/20051028014601im_/http://pageperso.aol.fr/bottomcircle/images/lillom%201.jpg",
+      "summary": "Import privé du média historique 05-park-lake-2004, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-edae0812b8944e2c896c683b995d11f9-2026-10-23T142039.068Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:20:39.068Z",
+      "appliedAt": "2026-10-23T14:20:39.068Z",
+      "receiptFile": "05-park-medieval-lane-import-receipt.json",
+      "receiptSha256": "65e0b5da1d25aad4c5aa94bd3682d52e0cdc3ef9f7ca5197d1334903f4723c9c",
+      "imageId": "edae0812b8944e2c896c683b995d11f9",
+      "ownerId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+      "createdAt": "2026-10-23T14:20:35.71Z",
+      "sourceUrl": "https://web.archive.org/web/20051028014601im_/http://pageperso.aol.fr/bottomcircle/images/lillom%202.jpg",
+      "summary": "Import privé du média historique 05-park-medieval-lane, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-43d7574aa90a493ca6e16dbb3afbc228-2026-10-23T142052.496Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:20:52.496Z",
+      "appliedAt": "2026-10-23T14:20:52.496Z",
+      "receiptFile": "05-park-medieval-court-import-receipt.json",
+      "receiptSha256": "697d1e70cd5e48a84f35ea79948be2828547e2550b3b8c37fdb2182ae70b81d2",
+      "imageId": "43d7574aa90a493ca6e16dbb3afbc228",
+      "ownerId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+      "createdAt": "2026-10-23T14:20:49.128Z",
+      "sourceUrl": "https://web.archive.org/web/20051028014601im_/http://pageperso.aol.fr/bottomcircle/images/lillom%203.jpg",
+      "summary": "Import privé du média historique 05-park-medieval-court, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b5f0e79353434317ad7f5b15ab7e01ec-2026-10-23T142126.324Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:21:26.324Z",
+      "appliedAt": "2026-10-23T14:21:26.324Z",
+      "receiptFile": "05-chateau-abandoned-import-receipt.json",
+      "receiptSha256": "82c24adf18582067c25dde5940dc1a3a9b3116f3971c03f6e01322e5f86412f3",
+      "imageId": "b5f0e79353434317ad7f5b15ab7e01ec",
+      "ownerId": "f6ca4ea0-4ff5-4aec-a481-121426aeccb9",
+      "createdAt": "2026-10-23T14:21:22.735Z",
+      "sourceUrl": "https://web.archive.org/web/20051028014601im_/http://pageperso.aol.fr/bottomcircle/images/lommechateau.jpg",
+      "summary": "Import privé du média historique 05-chateau-abandoned, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-15ecaed5cb1945bd8cc17cab00ea0ab5-2026-10-23T142149.575Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:21:49.575Z",
+      "appliedAt": "2026-10-23T14:21:49.575Z",
+      "receiptFile": "05-chateau-construction-import-receipt.json",
+      "receiptSha256": "4efd82be411c3409508c66e2337dfb8876f56aec66d859be8fdf58fbaa8beb30",
+      "imageId": "15ecaed5cb1945bd8cc17cab00ea0ab5",
+      "ownerId": "f6ca4ea0-4ff5-4aec-a481-121426aeccb9",
+      "createdAt": "2026-10-23T14:21:46.061Z",
+      "sourceUrl": "https://web.archive.org/web/20051028014601im_/http://pageperso.aol.fr/bottomcircle/images/lommechantier.jpg",
+      "summary": "Import privé du média historique 05-chateau-construction, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f25cf09da8594f239bc60a1e064cb4a4-2026-10-23T142311.451Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T14:23:11.451Z",
+      "appliedAt": "2026-10-23T14:23:11.451Z",
+      "receiptFile": "05-chateau-postcard-import-receipt.json",
+      "receiptSha256": "79454f328b68189ecb3a1eb67aff1ce966fd9efad42515eabefa9669f22e7b8e",
+      "imageId": "f25cf09da8594f239bc60a1e064cb4a4",
+      "ownerId": "f6ca4ea0-4ff5-4aec-a481-121426aeccb9",
+      "createdAt": "2026-10-23T14:23:07.923Z",
+      "sourceUrl": "https://www.zoomsurlille.fr/wp-content/uploads/2026/10/art_kinepolis_40.jpg",
+      "summary": "Import privé du média historique 05-chateau-postcard, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-eb6fceba-749d-49af-84dc-f3e1bdb3f244",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:31:54.939531Z",
+      "appliedAt": "2026-10-23T14:31:54.939Z",
+      "receiptFile": "08-park-timeline-v2-apply.receipt.json",
+      "receiptSha256": "56cd17b859c58650bc01d98381f9b75a9bc1cf76bc290430f10410b52b5a3759",
+      "counts": {
+        "created": 1,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "datePrecision",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Frise du parc : quatre jalons historiques conservés et enrichis, projet1983 ajouté, sources et images, fermeture canonique corrigée."
+    },
+    {
+      "eventId": "apply-251cbfa8-2db3-48ec-b165-ce77ae1285a3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:36:47.7107229Z",
+      "appliedAt": "2026-10-23T14:36:47.710Z",
+      "receiptFile": "08-circus-article-apply.receipt.json",
+      "receiptSha256": "f8ad84cb5ce6c5574cbf11c9a464076ee2cefbaa575bb06364345ad2c98373d1",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article historique existant conservé et enrichi : huit langues relues, château distingué de la cité, faits CRAC contrôlés, trois illustrations ajoutées."
+    },
+    {
+      "eventId": "apply-0fd72eb9-ec93-4e1a-81c9-779c9d8a9d54",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:39:05.0665101Z",
+      "appliedAt": "2026-10-23T14:39:05.066Z",
+      "receiptFile": "08-items-timeline-v3-apply.receipt.json",
+      "receiptSha256": "00d0b8271ce21586d0b58f57c8a03e38b5697819feefd2674ce567fdb05ea042",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Histoire des attractions : Grand Huit1985–1987 avec interruption1986, annonceMonstradamus1987, cinq faits sourcés et illustrés."
+    },
+    {
+      "eventId": "apply-be741f67-f74e-4be0-8c5f-b2d9ee08e462",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:41:13.0708363Z",
+      "appliedAt": "2026-10-23T14:41:13.070Z",
+      "receiptFile": "08-preaudit-corrections-apply.receipt.json",
+      "receiptSha256": "51bbfb005348e331575cfd86fc28a6dc0c4e0fb881a26f65d59dcc9d6f401a92",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.pt",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Relecture transversale : implantation des restaurants précisée dans les huit langues et répétitions ciblées supprimées."
+    },
+    {
+      "eventId": "apply-c16677b5-9a00-46c3-8613-21ec99cbd54c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:44:45.5109309Z",
+      "appliedAt": "2026-10-23T14:44:45.510Z",
+      "receiptFile": "08-circus-final-polish-v2-apply.receipt.json",
+      "receiptSha256": "b3ec1ffe58054e6a2148ac0598e49d81f8eb362ecc3a86d881ef8c67c7656258",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Dernière relecture de l’article dans les huit langues : phrase générique supprimée et répétition portugaise corrigée, blocs conservés."
+    },
+    {
+      "eventId": "apply-ac56a0e3-3aa4-445b-976b-127a66544355",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T14:58:35.6869684Z",
+      "appliedAt": "2026-10-23T14:58:35.686Z",
+      "receiptFile": "09-references-enrichment-v2-apply.receipt.json",
+      "receiptSha256": "b8a3b9bafd43138ea4ab076b302b8928d9c4f1448013c4577a1210463a1eb633",
+      "counts": {
+        "created": 1,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.manufacturerId",
+        "attractionDetails.model",
+        "contactDetails",
+        "description.de",
+        "description.en",
+        "description.es",
+        "description.fr",
+        "description.it",
+        "description.nl",
+        "description.pl",
+        "description.pt",
+        "foundedYear",
+        "legalName",
+        "operatorId"
+      ],
+      "summary": "Qualification après audit : exploitant historique Nordland Park SARL créé en1986, huit descriptions, constructeur Zamperla existant rattaché au Télécombat sur sources."
+    },
+    {
+      "eventId": "apply-62b93874-92f4-45ea-8a65-e802231b928e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T15:10:51.9084573Z",
+      "appliedAt": "2026-10-23T15:10:51.908Z",
+      "receiptFile": "09-operator-history-v2-apply.receipt.json",
+      "receiptSha256": "057449cbb77115e0ad201da5a1d170556514933f078619bd7eacdaa719937aee",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "newOperatorId",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Lillom : reprise de l’exploitation par Nordland Park en 1986, événement sourcé en huit langues."
+    }
+  ],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-6417e012-7608-4896-bc7b-c07e1d92dc06",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T15:14:46.5480276Z",
+      "appliedAt": "2026-10-23T15:14:46.548Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "d0922f7fc337581abcd748c1886b586a064ec5d333f5f31c2ff10d319abe79ad",
+      "counts": {
+        "created": 0,
+        "updated": 16,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication ciblée des seize images auditées de Lillom, parc encore masqué."
+    },
+    {
+      "eventId": "apply-1405eaae-2ae6-4296-a721-3116b9d08c5c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T15:15:25.3789464Z",
+      "appliedAt": "2026-10-23T15:15:25.378Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "c8590c29b000f27ae5b7c788bc81892112d5007c1dae0051101c4b490a58c59a",
+      "counts": {
+        "created": 0,
+        "updated": 15,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "isVisible"
+      ],
+      "summary": "Publication des quatre zones et onze jalons audités, dont l’article sur le cirque ; parc encore masqué."
+    },
+    {
+      "eventId": "apply-1398f506-d8ae-4f88-acf8-acce57be670e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T15:15:56.775258Z",
+      "appliedAt": "2026-10-23T15:15:56.775Z",
+      "receiptFile": "09-validate-operator-apply.receipt.json",
+      "receiptSha256": "245a1a2769a768ac108e4ad866820751aaddc25c014e253457ecdd8bc493d47b",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus"
+      ],
+      "summary": "Validation de la référence historique Nordland Park SARL après rapprochement des registres."
+    },
+    {
+      "eventId": "apply-a5aef09e-494c-40bf-b586-99a428ead4b8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T15:16:45.4541435Z",
+      "appliedAt": "2026-10-23T15:16:45.454Z",
+      "receiptFile": "09-publish-items-apply.receipt.json",
+      "receiptSha256": "c5530464cc4db5e471538d622778990800e510da990bb58f76ed374c54eaa88f",
+      "counts": {
+        "created": 0,
+        "updated": 46,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Publication des 46 fiches qualifiées et auditées de Lillom, sans modifier leurs données historiques."
+    }
+  ]
+}

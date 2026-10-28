@@ -1,0 +1,172 @@
+{
+  "recordedAtUtc": "2026-10-23T14:40:09.806248+00:00",
+  "parkEvents": 5,
+  "itemEvents": 5,
+  "allSourcedAndIllustrated": true,
+  "rideDateGaps": [
+    {
+      "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+      "key": "telecombat",
+      "name": "Télécombat",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+      "key": "rapides-colorado",
+      "name": "Rapides du Colorado",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+      "key": "himalaya",
+      "name": "Himalaya",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+      "key": "bateau-corsaire",
+      "name": "Bateau corsaire",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+      "key": "auto-tamponneuses-enfants",
+      "name": "Auto-tamponneuses pour enfants",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+      "key": "carrousel-enfants",
+      "name": "Carrousel pour enfants",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+      "key": "chateau-gonflable",
+      "name": "Château gonflable",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+      "key": "circuit-tacots",
+      "name": "Circuit tacots",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+      "key": "pieuvre",
+      "name": "La Pieuvre",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+      "key": "monde-prehistoire",
+      "name": "Le Monde de la Préhistoire",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+      "key": "explorer",
+      "name": "Explorer",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+      "key": "petit-train-western",
+      "name": "Petit train western",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+      "key": "bateaux-telecommandes",
+      "name": "Bateaux télécommandés",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+      "key": "riviere-enchantee",
+      "name": "La Rivière enchantée",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+      "key": "pedalos",
+      "name": "Pédalos",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+      "key": "tir-carabine",
+      "name": "Tir à la carabine",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+      "key": "fort-apache",
+      "name": "Fort Apache",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+      "key": "tir-arc",
+      "name": "Tir à l’arc",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+      "key": "pulsar",
+      "name": "Pulsar",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+      "key": "cinema-2000",
+      "name": "Cinéma 2000",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "61776169-668e-46a2-9272-e115371d439e",
+      "key": "kodak-multivision",
+      "name": "Kodak Multivision",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+      "key": "cosmovision",
+      "name": "Cosmovision",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    },
+    {
+      "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+      "key": "piscine-boules",
+      "name": "Piscine à boules",
+      "lifecycle": "Removed",
+      "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+    }
+  ],
+  "boundary": "GrandHuit1986SBNO is item-specific; parkseason1986 sourcesconflict. Monstradamusonlyannouncementproven;Unknownlifecyclekept.",
+  "articles": "One developedexistingCRACarticle8,14blocks,originalslugand11textblocksretained. GrandHuit hasonlyboundedchronology; no artificiallongarticle paddedfrommodeldata.",
+  "closedParkSchedulesPricing": "Not applicable: parkClosedDefinitively1987, no current openingHours/pricing introduced."
+}

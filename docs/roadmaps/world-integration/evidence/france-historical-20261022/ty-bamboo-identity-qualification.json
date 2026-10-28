@@ -1,0 +1,38 @@
+{
+  "entryId": "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-10-23T15:30:56.636403+00:00",
+  "identity": {
+    "parkId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+    "id": "6919c77b-1865-444d-8c5c-964b255d9c27",
+    "name": "Ty'Bamboo",
+    "countryCode": "FR"
+  },
+  "searches": [
+    {
+      "file": "00-searchparks-bamboo.json",
+      "sha256": "556422afe8142514e3df5eb1dda2aa5b7dbde87ada8d6888e251109d552cd0d0"
+    },
+    {
+      "file": "00-searchstandaloneattractions-bamboo.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "file": "00-searchparks-dammarie.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "file": "00-searchstandaloneattractions-dammarie.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    }
+  ],
+  "decision": "One existing Ty Bamboo Park, no matching standalone. Unrelated Grinyland appears because description mentions bamboo; not duplicate. Existing sole coaster ID retained. Modern Cartonnerie leisure complex and its bowling/cinema/karting are outside formerpark scope.",
+  "dates": {
+    "opening": "2011-04-02",
+    "closure": "2013",
+    "proof": "RCDB9931/9932 timeattributes plus contemporary6April2011ParcPlaza and2013closure press; day/month inversion and fabricated1Januaryclosure corrected."
+  },
+  "officialSources": "Archived tybamboo.fr pages2011/2012/2013 linked from contemporary opening press; legal entity PARC ATTRACTIF DAMMARIE LES LYS SIREN513981217.",
+  "referenceMatch": "Official match-only Preview would create founderMarcelCampion andoperatorParcAttractifDammarie, no current matchingreference. NoApply on match-onlydraft. ExistingPinfari reference unchanged.",
+  "dataStatus": "partial"
+}

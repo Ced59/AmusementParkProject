@@ -1,0 +1,438 @@
+{
+  "recordedAt": "2026-10-23T13:17:03.356948+00:00",
+  "standard": "Historical entities with no extant operator website or complete technical archive. Write specific factual descriptions, never pad to reach a word count. Full manual eight-language corpus review remains mandatory.",
+  "park": {
+    "paragraphs": 7,
+    "headings": 4
+  },
+  "sourcesChecked": [
+    "Original operator visitor plan (undated, fifty-one numbered functions)",
+    "Bottomcircle archive two pages and all19 original assets",
+    "MEL aerial in LaVoixduNord2025",
+    "MissionLocaleRegardsJeunes6p20",
+    "RCDB5914and3441 including former status",
+    "ArchipopVictorGobert1985catalogue plus36sampledframes across8m59",
+    "Officialcircus-school history",
+    "OfficeoftourismMEL1995photo viaCirkwi",
+    "CurrentOSMfootprints compared withhistoric site"
+  ],
+  "exceptions": [
+    {
+      "name": "Grand Huit",
+      "key": "grand-huit",
+      "sources": [
+        "https://rcdb.com/3441.htm",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Reuse canonical coaster8eb7db06; duplicate private park contains same coaster. RCDB3441 confirms one steel seated coaster1985–1987. Existing model retained pending RCDBdetail.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Télécombat",
+      "key": "telecombat",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Separate from La Pieuvre: both are named in historical list; map23 is Télécombat. Model/manufacturer not inferred from pictogram.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Rapides du Colorado",
+      "key": "rapides-colorado",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Flume; archive describes abandoned remains, subsequently replaced by parking. Unknown later destination.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Himalaya",
+      "key": "himalaya",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named Himalaya; Music Express type reported by secondary history. No manufacturer guessed.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Bateau corsaire",
+      "key": "bateau-corsaire",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Large ship beside lake in original plan; not the remote-controlled boats.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Auto-tamponneuses pour enfants",
+      "key": "auto-tamponneuses-enfants",
+      "sources": [
+        "https://fr.wikipedia.org/wiki/Lillom",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Historical list distinguishes bumper cars and carousel under children rides; no extra duplicate group item.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Carrousel pour enfants",
+      "key": "carrousel-enfants",
+      "sources": [
+        "https://fr.wikipedia.org/wiki/Lillom",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Distinct from bumper cars; descriptive name rather than invented branded title.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Château gonflable",
+      "key": "chateau-gonflable",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named and numbered on operator plan, in children area.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Circuit tacots",
+      "key": "circuit-tacots",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Archive photo shows old-style cars and wooden departure shelter; alias Circuit des Vieux Tacots.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "La Pieuvre",
+      "key": "pieuvre",
+      "sources": [
+        "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+      ],
+      "limit": "Distinct attraction photographed on archive: red octopus, yellow cars, water setting; not the Télécombat.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Le Monde de la Préhistoire",
+      "key": "monde-prehistoire",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Walkthrough with prehistoric human and animal tableaux; archive original photo supplies exact scenery.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Explorer",
+      "key": "explorer",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Circular ride beside Grand Huit on plan; secondary source calls it a Trabant-Wipeout without proven manufacturer.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Petit train western",
+      "key": "petit-train-western",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Children railway shown with central circular route on original plan; no exact technical length asserted.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Bateaux télécommandés",
+      "key": "bateaux-telecommandes",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Small basin alongside prehistory path; distinct from lake pedal boats and enchanted river.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "La Rivière enchantée",
+      "key": "riviere-enchantee",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named in operator legend and secondary historical inventory; precise scenic content/boat mechanism unknown.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Pédalos",
+      "key": "pedalos",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Boating on central lake; landing point illustrated, not a demolished coordinate extrapolated today.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Tir à la carabine",
+      "key": "tir-carabine",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named shooting gallery on plan near tacot circuit; sporting game, no equipment details inferred.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Fort Apache",
+      "key": "fort-apache",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named play area in children section, not a separately operated park.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Tir à l’arc",
+      "key": "tir-arc",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named target game inside medieval area; corroborated archive text.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Pulsar",
+      "key": "pulsar",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Round attraction under Pulsar name in future section; ride mechanism/manufacturer unknown.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Cinéma 2000",
+      "key": "cinema-2000",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Separate domed cinema from Kodak Multivision and Cosmovision on operator plan.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Kodak Multivision",
+      "key": "kodak-multivision",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Operator map names Multivision Kodak; preserves brand and distinguishes from Cinéma2000.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Cosmovision",
+      "key": "cosmovision",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Original plan names Cosmovision; archive Cosmodrome label may be same experience or generic concept. Do not create second entity. Exact projection format unverified.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "L’Officine de Monstradamus",
+      "key": "officine-monstradamus",
+      "sources": [
+        "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+      ],
+      "limit": "Original promotional image explicitly says Nouveauté87 and names the attraction; no opening date, location or format proved. Retain announced historical candidate with Unknown lifecycle, not claim operation.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Piscine à boules",
+      "key": "piscine-boules",
+      "sources": [
+        "https://lesfilms.archipop.org/les-films-parc-de-lomme-570-4984-1-0.html"
+      ],
+      "limit": "Archipop catalogue of Victor Gobert1985 park film explicitly describes children playing in plastic-ball pool. Descriptive name; location/independence within children area not fixed.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Arènes médiévales",
+      "key": "arenes-medievales",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Knight tournament behind medieval city; original brochure photo of mounted knights; venue and show represented together.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Music Hall",
+      "key": "music-hall",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named MusicHall in entrance street on original operator plan; separate from BelleÉpoque theatre.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Théâtre de marionnettes pour enfants",
+      "key": "marionnettes-enfants",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named children puppet theatre near children rides; distinct from BelleÉpoque puppet theatre.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Théâtre de marionnettes Belle Époque",
+      "key": "marionnettes-belle-epoque",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named separately and positioned outside medieval city beside BelleÉpoque street.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Théâtre de la Belle Époque",
+      "key": "theatre-belle-epoque",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named performance theatre near lake; programme and individual show titles not found.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Pizzeria",
+      "key": "pizzeria",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named Pizzeria on entrance street plan; historical restaurant, no present menu or pricing invented.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Glacier",
+      "key": "glacier",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named ice cream outlet on entrance street, separate plan number from confectioner.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Confiseur",
+      "key": "confiseur",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named confectionery outlet on original plan; no product brands invented.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Restaurant du lac",
+      "key": "restaurant-lac",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named restaurant directly at lake end of main street on original plan.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Saloon",
+      "key": "saloon",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named Saloon beside children western section; no independent proprietary title inferred.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Lommy Burger",
+      "key": "lommy-burger",
+      "sources": [
+        "https://web.archive.org/web/20051028014601/http://pageperso.aol.fr/bottomcircle/Lillom-2.html",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Name printed on mapped building near lake/prehistory; archive identifies building reused by fishing association.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "La Fontaine des 4 Saisons",
+      "key": "fontaine-quatre-saisons",
+      "sources": [
+        "https://web.archive.org/web/20051028014601/http://pageperso.aol.fr/bottomcircle/Lillom-2.html",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named juice bar in medieval city; archive identifies fruit juices, not an ornamental fountain.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "La Taverne impériale",
+      "key": "taverne-imperiale",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Name legible in restaurant legend and separate medieval courtyard point on original plan.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "La Crêperie bretonne",
+      "key": "creperie-bretonne",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Name in restaurant legend; map41 beside BelleÉpoque theatre and pedal-boat landing. Archive also mentions a medieval crêperie; do not create uncertain second crêperie.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Entrée et caisses",
+      "key": "entree-caisses",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Historical grand gate marked Lillom and ticket offices on original plan. Current garden entrance is not silently equated with it.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Parking du parc",
+      "key": "parking",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Operator plan identifies peripheral parking by original entrance; no coordinates from current expanded commercial parking.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Aire de pique-nique",
+      "key": "aire-pique-nique",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Distinct marked area outside main gate on operator plan; current municipal garden facilities are not substituted.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Poste de secourisme",
+      "key": "poste-secourisme",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Medical assistance point on operator plan close to central lake; no current service implied.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Point d’information et de change",
+      "key": "information-change",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Named information/change facility near park entrance in services legend; no exchange rates or present service invented.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    },
+    {
+      "name": "Théâtre du Monde du Futur",
+      "key": "theatre-futur",
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "limit": "Theatre explicitly named in plan animations section and drawn in future area. Descriptive title records known function and setting, without pretending to transcribe illegible show title.",
+      "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+    }
+  ],
+  "reviewedAtUtc": "2026-10-23T14:31:49.676464+00:00",
+  "parkItemCounts": {
+    "withEightDescriptions": 46,
+    "total": 46,
+    "sourceLimitedShortDescriptions": 45,
+    "developedChateauDescriptions": 1
+  }
+}

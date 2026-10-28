@@ -20394,18 +20394,18 @@
       "siteId": "8167f80c-db82-49d8-91a6-bf5a1f6a6f51",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-10-23T12:41:36.925262+00:00",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identité rapprochée par recherches et exports officiels, archives et noms historiques",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Doublon confirmé de Parc de Lomme ; conserver la fiche masquée et son identifiant. Le Grand Huit fait lui aussi doublon. Aucune seconde création ou publication ; aucune date ancienne inventée.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -20416,10 +20416,31 @@
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Rapprochement Lillom / Parc de Lomme",
+          "url": "https://fr.wikipedia.org/wiki/Lillom",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Rapprochement Lillom / Parc de Lomme",
+          "url": "https://missionlocale-lille.fr/wp-content/uploads/2021/10/ML2020-Regards-Jeunes6.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Rapprochement Lillom / Parc de Lomme",
+          "url": "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "identityReconciliation": {
+        "observedAtUtc": "2026-10-23T12:41:36.925262+00:00",
+        "evidence": "evidence/france-historical-20261022/lillom-identity-reconciliation.json",
+        "canonicalEntryId": "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5"
+      },
+      "duplicateOf": "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5"
     },
     {
       "entryId": "FR-park-c0434ae9-1778-47f4-90b1-d514abc37985",
@@ -20504,18 +20525,402 @@
       "siteId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-10-23T12:41:36.925262+00:00",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "ClosedDefinitively",
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identité rapprochée par recherches et exports officiels, archives et noms historiques",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Lillom",
+        "Parc de Lillom"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "lastDataIntegrationAt": "2026-10-23T15:10:51.908Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d677911b-65ee-4b4a-a1eb-a6cde23827cb",
+          "appliedAt": "2026-10-23T12:42:16.565Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-d677911b-65ee-4b4a-a1eb-a6cde23827cb",
+          "auditEvidence": null,
+          "summary": "Lillom / Parc de Lomme : fondateur Arthur Notebart, ouverture précisée à juin 1985 et emplacement historique ; fiche canonique conservée masquée."
+        },
+        {
+          "eventId": "apply-37b70a51-2d03-42db-93b3-0627f5eb5efa",
+          "appliedAt": "2026-10-23T12:49:58.132Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-37b70a51-2d03-42db-93b3-0627f5eb5efa",
+          "auditEvidence": null,
+          "summary": "Inventaire historique Lillom : 24 attractions ajoutées, Grand Huit conservé ; sources et incertitudes qualifiées, contenus privés à rédiger."
+        },
+        {
+          "eventId": "apply-59d3e0f8-3fb4-49eb-bc7b-93f11193747a",
+          "appliedAt": "2026-10-23T12:51:06.376Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-59d3e0f8-3fb4-49eb-bc7b-93f11193747a",
+          "auditEvidence": null,
+          "summary": "Inventaire historique Lillom : cinq lieux de spectacle, neuf points de restauration et six services ajoutés avec leurs identités propres ; total 45 lieux privés."
+        },
+        {
+          "eventId": "apply-bb482e3a-ba3b-45d2-aea9-0fdeb6dc3daa",
+          "appliedAt": "2026-10-23T12:58:02.483Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-bb482e3a-ba3b-45d2-aea9-0fdeb6dc3daa",
+          "auditEvidence": null,
+          "summary": "Inventaire Lillom complété à 46 lieux : théâtre du secteur futur identifié et château d’Isenghien précisément positionné ; autres coordonnées non inventées."
+        },
+        {
+          "eventId": "apply-f819a845-3c4d-4b3e-badc-dcfad69604aa",
+          "appliedAt": "2026-10-23T13:03:16.103Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-f819a845-3c4d-4b3e-badc-dcfad69604aa",
+          "auditEvidence": null,
+          "summary": "Parc de Lomme : description générale développée réécrite personnellement dans les huit langues, scènes et héritage sourcés."
+        },
+        {
+          "eventId": "apply-252bc2f1-8da9-4231-b326-338596e3efe3",
+          "appliedAt": "2026-10-23T13:04:41.233Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-252bc2f1-8da9-4231-b326-338596e3efe3",
+          "auditEvidence": null,
+          "summary": "Quatre zones historiques de Lillom : 32 descriptions originales localisées ajoutées, identités et rattachements conservés."
+        },
+        {
+          "eventId": "apply-050f03bd-9bc3-4d0d-a2dd-34f34e7e76aa",
+          "appliedAt": "2026-10-23T13:18:59.842Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-050f03bd-9bc3-4d0d-a2dd-34f34e7e76aa",
+          "auditEvidence": null,
+          "summary": "Cinq attractions majeures de Lillom : 40 descriptions localisées spécifiques, parc masqué et limites des archives documentées."
+        },
+        {
+          "eventId": "apply-ec4b66a8-ab96-49f5-98aa-2aaeafceb2c2",
+          "appliedAt": "2026-10-23T13:25:29.036Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-ec4b66a8-ab96-49f5-98aa-2aaeafceb2c2",
+          "auditEvidence": null,
+          "summary": "Six jeux et attractions pour enfants de Lillom : 48 descriptions spécifiques dans les huit langues, illustrations du film utilisées seulement comme sources."
+        },
+        {
+          "eventId": "apply-20735b7c-c8dd-4d1f-b1ca-fe131a62d309",
+          "appliedAt": "2026-10-23T13:33:52.801Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-20735b7c-c8dd-4d1f-b1ca-fe131a62d309",
+          "auditEvidence": null,
+          "summary": "Sept attractions des rives de Lillom : 56 descriptions localisées, emplacements et paysages sourcés, limites techniques explicites dans le dossier."
+        },
+        {
+          "eventId": "apply-f9f8ed51-9137-4eef-b31d-372a6169d133",
+          "appliedAt": "2026-10-23T13:44:32.292Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-f9f8ed51-9137-4eef-b31d-372a6169d133",
+          "auditEvidence": null,
+          "summary": "Sept attractions et jeux de Lillom : 56 descriptions localisées ; Monstradamus conservé comme annonce historique, sans ouverture inventée."
+        },
+        {
+          "eventId": "apply-453429f7-c766-4ad6-a346-692ea1e80616",
+          "appliedAt": "2026-10-23T13:50:55.935Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-453429f7-c766-4ad6-a346-692ea1e80616",
+          "auditEvidence": null,
+          "summary": "Six lieux de spectacle de Lillom : 48 descriptions localisées ajoutées, arènes et deux théâtres de marionnettes distingués sans programme inventé."
+        },
+        {
+          "eventId": "apply-07088e9a-807a-4fca-9d0f-7f83eea3fcfc",
+          "appliedAt": "2026-10-23T14:04:52.078Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-07088e9a-807a-4fca-9d0f-7f83eea3fcfc",
+          "auditEvidence": null,
+          "summary": "Neuf établissements de restauration : 72 descriptions historiques rédigées et revues, plan et archives, sans menus ou dates inventés."
+        },
+        {
+          "eventId": "apply-ca53297d-473e-48e7-ade1-1a2569085ad8",
+          "appliedAt": "2026-10-23T14:08:37.364Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-ca53297d-473e-48e7-ade1-1a2569085ad8",
+          "auditEvidence": null,
+          "summary": "Cinq services historiques, 40 descriptions relues dans les huit langues, implantation documentée par le plan original."
+        },
+        {
+          "eventId": "apply-483c5610-d822-42c4-82a6-e06087ab0932",
+          "appliedAt": "2026-10-23T14:09:58.656Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-483c5610-d822-42c4-82a6-e06087ab0932",
+          "auditEvidence": null,
+          "summary": "Château d’Isenghien : huit descriptions développées, ancien domaine, réceptions et réemploi cinéma1996, sans confusion avec le décor médiéval."
+        },
+        {
+          "eventId": "apply-f16124f7-abb9-4bff-a330-065fa9182490",
+          "appliedAt": "2026-10-23T14:15:20.043Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-f16124f7-abb9-4bff-a330-065fa9182490",
+          "auditEvidence": null,
+          "summary": "Arthur Notebart : biographie en huit langues, mandats vérifiés dans Sycomore et rôle dans le projet Lillom1983."
+        },
+        {
+          "eventId": "import-photo-e97755d6920e44c5985a2cc1f065da45-2026-10-23T141536.538Z",
+          "appliedAt": "2026-10-23T14:15:36.538Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-e97755d6920e44c5985a2cc1f065da45-2026-10-23T141536.538Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo-lommy, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f21bb8d17ce8400197d210aa48daefe7-2026-10-23T141550.536Z",
+          "appliedAt": "2026-10-23T14:15:50.536Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-f21bb8d17ce8400197d210aa48daefe7-2026-10-23T141550.536Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo-clown, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-66dd2ff8b84940e785cd9a4a236e5aa4-2026-10-23T141605.399Z",
+          "appliedAt": "2026-10-23T14:16:05.399Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-66dd2ff8b84940e785cd9a4a236e5aa4-2026-10-23T141605.399Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-aerial, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-022fce25a9ac4fe2bc2f8f580c373d7e-2026-10-23T141619.949Z",
+          "appliedAt": "2026-10-23T14:16:19.949Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-022fce25a9ac4fe2bc2f8f580c373d7e-2026-10-23T141619.949Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-lake-1995, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8610403c63074e75aaca4af873695845-2026-10-23T141834.915Z",
+          "appliedAt": "2026-10-23T14:18:34.915Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-8610403c63074e75aaca4af873695845-2026-10-23T141834.915Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-grand-huit, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ee045ff4a1ef49f280497d58c6c5396a-2026-10-23T141848.712Z",
+          "appliedAt": "2026-10-23T14:18:48.712Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-ee045ff4a1ef49f280497d58c6c5396a-2026-10-23T141848.712Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-jousts, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-587c3684e82c4569b18bef76b10d7ac9-2026-10-23T141902.602Z",
+          "appliedAt": "2026-10-23T14:19:02.602Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-587c3684e82c4569b18bef76b10d7ac9-2026-10-23T141902.602Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-monstradamus, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-aed6a5e5f90641bb879c83b43ae4bab2-2026-10-23T141916.224Z",
+          "appliedAt": "2026-10-23T14:19:16.224Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-aed6a5e5f90641bb879c83b43ae4bab2-2026-10-23T141916.224Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-prehistory, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7a61cf61af95475980fdabc9a4229096-2026-10-23T141935.247Z",
+          "appliedAt": "2026-10-23T14:19:35.247Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-7a61cf61af95475980fdabc9a4229096-2026-10-23T141935.247Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pieuvre, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2b07d0bfc65242b2abfdea626b3cf992-2026-10-23T141957.337Z",
+          "appliedAt": "2026-10-23T14:19:57.337Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-2b07d0bfc65242b2abfdea626b3cf992-2026-10-23T141957.337Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tacots, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6ea249acbeba4e509706b8a674150d8a-2026-10-23T142025.695Z",
+          "appliedAt": "2026-10-23T14:20:25.695Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-6ea249acbeba4e509706b8a674150d8a-2026-10-23T142025.695Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-lake-2004, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-edae0812b8944e2c896c683b995d11f9-2026-10-23T142039.068Z",
+          "appliedAt": "2026-10-23T14:20:39.068Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-edae0812b8944e2c896c683b995d11f9-2026-10-23T142039.068Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-medieval-lane, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-43d7574aa90a493ca6e16dbb3afbc228-2026-10-23T142052.496Z",
+          "appliedAt": "2026-10-23T14:20:52.496Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-43d7574aa90a493ca6e16dbb3afbc228-2026-10-23T142052.496Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-medieval-court, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b5f0e79353434317ad7f5b15ab7e01ec-2026-10-23T142126.324Z",
+          "appliedAt": "2026-10-23T14:21:26.324Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-b5f0e79353434317ad7f5b15ab7e01ec-2026-10-23T142126.324Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chateau-abandoned, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-15ecaed5cb1945bd8cc17cab00ea0ab5-2026-10-23T142149.575Z",
+          "appliedAt": "2026-10-23T14:21:49.575Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-15ecaed5cb1945bd8cc17cab00ea0ab5-2026-10-23T142149.575Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chateau-construction, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f25cf09da8594f239bc60a1e064cb4a4-2026-10-23T142311.451Z",
+          "appliedAt": "2026-10-23T14:23:11.451Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#import-photo-f25cf09da8594f239bc60a1e064cb4a4-2026-10-23T142311.451Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chateau-postcard, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-eb6fceba-749d-49af-84dc-f3e1bdb3f244",
+          "appliedAt": "2026-10-23T14:31:54.939Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-eb6fceba-749d-49af-84dc-f3e1bdb3f244",
+          "auditEvidence": null,
+          "summary": "Frise du parc : quatre jalons historiques conservés et enrichis, projet1983 ajouté, sources et images, fermeture canonique corrigée."
+        },
+        {
+          "eventId": "apply-251cbfa8-2db3-48ec-b165-ce77ae1285a3",
+          "appliedAt": "2026-10-23T14:36:47.710Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-251cbfa8-2db3-48ec-b165-ce77ae1285a3",
+          "auditEvidence": null,
+          "summary": "Article historique existant conservé et enrichi : huit langues relues, château distingué de la cité, faits CRAC contrôlés, trois illustrations ajoutées."
+        },
+        {
+          "eventId": "apply-0fd72eb9-ec93-4e1a-81c9-779c9d8a9d54",
+          "appliedAt": "2026-10-23T14:39:05.066Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-0fd72eb9-ec93-4e1a-81c9-779c9d8a9d54",
+          "auditEvidence": null,
+          "summary": "Histoire des attractions : Grand Huit1985–1987 avec interruption1986, annonceMonstradamus1987, cinq faits sourcés et illustrés."
+        },
+        {
+          "eventId": "apply-be741f67-f74e-4be0-8c5f-b2d9ee08e462",
+          "appliedAt": "2026-10-23T14:41:13.070Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-be741f67-f74e-4be0-8c5f-b2d9ee08e462",
+          "auditEvidence": null,
+          "summary": "Relecture transversale : implantation des restaurants précisée dans les huit langues et répétitions ciblées supprimées."
+        },
+        {
+          "eventId": "apply-c16677b5-9a00-46c3-8613-21ec99cbd54c",
+          "appliedAt": "2026-10-23T14:44:45.510Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-c16677b5-9a00-46c3-8613-21ec99cbd54c",
+          "auditEvidence": null,
+          "summary": "Dernière relecture de l’article dans les huit langues : phrase générique supprimée et répétition portugaise corrigée, blocs conservés."
+        },
+        {
+          "eventId": "apply-ac56a0e3-3aa4-445b-976b-127a66544355",
+          "appliedAt": "2026-10-23T14:58:35.686Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-ac56a0e3-3aa4-445b-976b-127a66544355",
+          "auditEvidence": null,
+          "summary": "Qualification après audit : exploitant historique Nordland Park SARL créé en1986, huit descriptions, constructeur Zamperla existant rattaché au Télécombat sur sources."
+        },
+        {
+          "eventId": "apply-62b93874-92f4-45ea-8a65-e802231b928e",
+          "appliedAt": "2026-10-23T15:10:51.908Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-62b93874-92f4-45ea-8a65-e802231b928e",
+          "auditEvidence": null,
+          "summary": "Lillom : reprise de l’exploitation par Nordland Park en 1986, événement sourcé en huit langues."
+        }
+      ],
+      "nextAction": "Audit complet sans bloqueur, score projeté 95/100. Exception exacte proposée à l’utilisateur avec lacunes sourcées ; parc encore masqué, dépendances publiées. Continuer Ty’Bamboo pendant la réponse.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -20536,10 +20941,30 @@
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Rapprochement Lillom / Parc de Lomme",
+          "url": "https://fr.wikipedia.org/wiki/Lillom",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Rapprochement Lillom / Parc de Lomme",
+          "url": "https://missionlocale-lille.fr/wp-content/uploads/2021/10/ML2020-Regards-Jeunes6.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Rapprochement Lillom / Parc de Lomme",
+          "url": "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html",
+          "accessedAt": "2026-10-23"
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "identityReconciliation": {
+        "observedAtUtc": "2026-10-23T12:41:36.925262+00:00",
+        "evidence": "evidence/france-historical-20261022/lillom-identity-reconciliation.json",
+        "canonicalEntryId": "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5"
+      }
     },
     {
       "entryId": "FR-park-5c4ec94e-c4d8-4d38-bee9-9a97e7609dbf",
@@ -24924,22 +25349,907 @@
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": null,
-      "locality": null,
+      "locality": "Dammarie-les-Lys",
       "siteId": "6919c77b-1865-444d-8c5c-964b255d9c27",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T08:21:02.737015+00:00",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Même ID confirmé par recherches officielles Bamboo et Dammarie, ancien site opérateur, RCDB9931 et registre légal513981217 ; pas de standalone correspondante.",
       "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "aliases": [
+        "Le Jardin des Manèges",
+        "Ty Bamboo",
+        "Ty’Bamboo"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-28T08:12:12.086Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-69bced99-60a4-4cbe-8095-c961b774522e",
+          "appliedAt": "2026-10-23T15:24:55.514Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-69bced99-60a4-4cbe-8095-c961b774522e",
+          "auditEvidence": null,
+          "summary": "Ty’Bamboo : fermeture historique, ouverture au 2 avril 2011 et localisation sourcées ; dates et statut du Petit Grand Huit corrigés."
+        },
+        {
+          "eventId": "apply-de389267-c86b-4030-938b-b6082e0d1a0b",
+          "appliedAt": "2026-10-23T15:34:41.741Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-de389267-c86b-4030-938b-b6082e0d1a0b",
+          "auditEvidence": null,
+          "summary": "Ty’Bamboo : fondateur Marcel Campion et société exploitante qualifiés, biographies et descriptions intégrées dans huit langues."
+        },
+        {
+          "eventId": "apply-0cb79c2f-63a0-4c50-9d9c-3231e7f8698c",
+          "appliedAt": "2026-10-23T15:39:53.223Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-0cb79c2f-63a0-4c50-9d9c-3231e7f8698c",
+          "auditEvidence": null,
+          "summary": "Ty’Bamboo : espaces extérieur et intérieur rapprochés des rubriques officielles et créés masqués."
+        },
+        {
+          "eventId": "apply-f5b2038e-4c4a-4b73-bfd8-c05c5b9d1e84",
+          "appliedAt": "2026-10-23T15:51:58.372Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-f5b2038e-4c4a-4b73-bfd8-c05c5b9d1e84",
+          "auditEvidence": null,
+          "summary": "Ty’Bamboo : inventaire historique porté à 30 fiches, avec espaces sourcés et ancienne tranche d’âge documentée pour les tout-petits."
+        },
+        {
+          "eventId": "apply-ccac2527-5ec9-475c-a9c8-d12e04883205",
+          "appliedAt": "2026-10-23T15:54:35.625Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-ccac2527-5ec9-475c-a9c8-d12e04883205",
+          "auditEvidence": null,
+          "summary": "Ty’Bamboo : présentation historique développée du parc intégrée et relue dans les huit langues."
+        },
+        {
+          "eventId": "apply-2ae2002b-fc58-4a37-a394-d852979c65ae",
+          "appliedAt": "2026-10-23T16:11:00.091Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-2ae2002b-fc58-4a37-a394-d852979c65ae",
+          "auditEvidence": null,
+          "summary": "Deux zones historiques décrites dans les huit langues, après confrontation aux photographies originales."
+        },
+        {
+          "eventId": "apply-246e64aa-5b4a-44b0-9fe6-17b33813baf8",
+          "appliedAt": "2026-10-23T16:16:54.390Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-246e64aa-5b4a-44b0-9fe6-17b33813baf8",
+          "auditEvidence": null,
+          "summary": "Descriptions éditoriales en huit langues du Petit Grand Huit, de Jumbo Circus et du Carrousel 1900 ; dates et annonces distinguées."
+        },
+        {
+          "eventId": "apply-00a59dd8-c4bb-43b4-943c-bd197d60ee19",
+          "appliedAt": "2026-10-23T16:21:12.297Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-00a59dd8-c4bb-43b4-943c-bd197d60ee19",
+          "auditEvidence": null,
+          "summary": "Cinq attractions extérieures décrites en huit langues : Petite Roue, Chaises Volantes, Toboggan, train extérieur et Avions."
+        },
+        {
+          "eventId": "apply-e6258ac6-b09f-4b17-a8f4-a4dde5cdebfb",
+          "appliedAt": "2026-10-23T16:26:16.077Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-e6258ac6-b09f-4b17-a8f4-a4dde5cdebfb",
+          "auditEvidence": null,
+          "summary": "Descriptions multilingues des animaux, du Safari, du Bateau pirate et du circuit de voitures, après suppression de conclusions génériques."
+        },
+        {
+          "eventId": "apply-1a876ec8-4e84-4c26-9ab0-1602d0bd507e",
+          "appliedAt": "2026-10-23T16:29:30.550Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-1a876ec8-4e84-4c26-9ab0-1602d0bd507e",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues du labyrinthe, des trampolines, des piscines à boules et de l’espace des tout-petits."
+        },
+        {
+          "eventId": "apply-21376fb8-5d47-4dde-b330-d21ca007f36f",
+          "appliedAt": "2026-10-23T16:32:25.121Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-21376fb8-5d47-4dde-b330-d21ca007f36f",
+          "auditEvidence": null,
+          "summary": "Ajout du kiosque de restauration extérieur distinct, identifié sur les photographies originales62886 et62884 ; nom commercial inconnu."
+        },
+        {
+          "eventId": "apply-4eadc530-3f44-42de-9483-2545e19e6c7c",
+          "appliedAt": "2026-10-23T16:39:40.095Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-4eadc530-3f44-42de-9483-2545e19e6c7c",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues du gonflable, du parcours préhistorique et des miroirs déformants."
+        },
+        {
+          "eventId": "apply-ec870f04-bd5d-4d3e-a09a-7d100dadcf32",
+          "appliedAt": "2026-10-23T16:42:12.909Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-ec870f04-bd5d-4d3e-a09a-7d100dadcf32",
+          "auditEvidence": null,
+          "summary": "Qualification corrigée de la locomotive du hall, conservée masquée et non retenue comme train exploité ; ajout des toilettes attestées et correction des huit textes du train extérieur."
+        },
+        {
+          "eventId": "apply-9a00f3a3-bc6e-4fd9-876b-c4815d6cf06d",
+          "appliedAt": "2026-10-23T16:44:58.059Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-9a00f3a3-bc6e-4fd9-876b-c4815d6cf06d",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues du manège couvert de véhicules et du manège des tasses, distincts des autres manèges."
+        },
+        {
+          "eventId": "apply-f4b205be-aae9-4041-a2af-545f4519c7a9",
+          "appliedAt": "2026-10-23T16:48:21.171Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-f4b205be-aae9-4041-a2af-545f4519c7a9",
+          "auditEvidence": null,
+          "summary": "Textes courts sourcés dans les huit langues pour le Parcours des Fantômes, le musée forain et le terrain de football, avec limites documentaires explicites dans le dossier."
+        },
+        {
+          "eventId": "apply-a418dcb8-4f4e-4e03-980d-ba0065c2d392",
+          "appliedAt": "2026-10-23T16:51:08.871Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-a418dcb8-4f4e-4e03-980d-ba0065c2d392",
+          "auditEvidence": null,
+          "summary": "Deux points de restauration décrits dans les huit langues à partir des photographies et de la source du décorateur."
+        },
+        {
+          "eventId": "apply-6a366f0b-9c7c-49bc-9770-4b596c12ecf0",
+          "appliedAt": "2026-10-23T16:54:12.687Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-6a366f0b-9c7c-49bc-9770-4b596c12ecf0",
+          "auditEvidence": null,
+          "summary": "Stands de jeux ajoutés comme ensemble documenté par la brochure officielle ; type des toilettes précisé."
+        },
+        {
+          "eventId": "apply-920ef3f2-929d-4bc8-a8f7-196d76e6a432",
+          "appliedAt": "2026-10-23T16:55:33.404Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-920ef3f2-929d-4bc8-a8f7-196d76e6a432",
+          "auditEvidence": null,
+          "summary": "Cinq services historiques décrits dans les huit langues : entrée, parking, pique-nique, anniversaires et toilettes."
+        },
+        {
+          "eventId": "apply-cc7c8335-3ef6-46ae-bd69-475dd296de58",
+          "appliedAt": "2026-10-23T16:57:51.113Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-cc7c8335-3ef6-46ae-bd69-475dd296de58",
+          "auditEvidence": null,
+          "summary": "Présentation des stands de jeux dans les huit langues, avec les quatre jeux nommés par la brochure et les installations photographiées."
+        },
+        {
+          "eventId": "import-photo-bef8d5d19b6947f097c352baf594fd7b-2026-10-23T170650.502Z",
+          "appliedAt": "2026-10-23T17:06:50.502Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-bef8d5d19b6947f097c352baf594fd7b-2026-10-23T170650.502Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fae33d42632b42e29aef9227f7e62834-2026-10-23T170713.179Z",
+          "appliedAt": "2026-10-23T17:07:13.179Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-fae33d42632b42e29aef9227f7e62834-2026-10-23T170713.179Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d04ab3a55ebb40dd9ca094d2e8f54f8b-2026-10-23T170737.443Z",
+          "appliedAt": "2026-10-23T17:07:37.443Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-d04ab3a55ebb40dd9ca094d2e8f54f8b-2026-10-23T170737.443Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-174f172b1e15400bafc48fb794b7519e-2026-10-23T170804.584Z",
+          "appliedAt": "2026-10-23T17:08:04.584Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-174f172b1e15400bafc48fb794b7519e-2026-10-23T170804.584Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-hall, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a02add0c501c42a3a486a7dfa12cd0e8-2026-10-23T170827.187Z",
+          "appliedAt": "2026-10-23T17:08:27.187Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-a02add0c501c42a3a486a7dfa12cd0e8-2026-10-23T170827.187Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-overview, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2bf7b3cfc268402d9d6bb3ea5d709141-2026-10-23T170849.582Z",
+          "appliedAt": "2026-10-23T17:08:49.582Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-2bf7b3cfc268402d9d6bb3ea5d709141-2026-10-23T170849.582Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-path, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c5e340cd7f774f56a40337e1e8ec6c15-2026-10-23T171034.455Z",
+          "appliedAt": "2026-10-23T17:10:34.455Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-c5e340cd7f774f56a40337e1e8ec6c15-2026-10-23T171034.455Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-jumbo-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6fb6233961564bfeabfaaf9892dc878e-2026-10-23T171048.869Z",
+          "appliedAt": "2026-10-23T17:10:48.869Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-6fb6233961564bfeabfaaf9892dc878e-2026-10-23T171048.869Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-jumbo-ticket, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2c13a589eda64cc585f298dcc47afd17-2026-10-23T171102.809Z",
+          "appliedAt": "2026-10-23T17:11:02.809Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-2c13a589eda64cc585f298dcc47afd17-2026-10-23T171102.809Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-jumbo-walkway, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2a8c5094a3ae48e0914d37c5760df0d0-2026-10-23T171116.717Z",
+          "appliedAt": "2026-10-23T17:11:16.717Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-2a8c5094a3ae48e0914d37c5760df0d0-2026-10-23T171116.717Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-carousel-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1250301bd72a4feb973a0eed5f7ed41b-2026-10-23T171130.530Z",
+          "appliedAt": "2026-10-23T17:11:30.530Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-1250301bd72a4feb973a0eed5f7ed41b-2026-10-23T171130.530Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-carousel-plaque, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0e668bb97d384e228eeabff024a275ad-2026-10-23T171144.161Z",
+          "appliedAt": "2026-10-23T17:11:44.161Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-0e668bb97d384e228eeabff024a275ad-2026-10-23T171144.161Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-coaster-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7cfc7388952e41ad946732a7ace80b7d-2026-10-23T171157.905Z",
+          "appliedAt": "2026-10-23T17:11:57.905Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-7cfc7388952e41ad946732a7ace80b7d-2026-10-23T171157.905Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-coaster-view, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-848ed09cecd5439ea58064af960f07eb-2026-10-28T063034.616Z",
+          "appliedAt": "2026-10-28T06:30:34.616Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-848ed09cecd5439ea58064af960f07eb-2026-10-28T063034.616Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wheel-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4df1adf1de544f3cbc0905990759e42e-2026-10-28T063048.708Z",
+          "appliedAt": "2026-10-28T06:30:48.708Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-4df1adf1de544f3cbc0905990759e42e-2026-10-28T063048.708Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wheel-gondola, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d08c32527b3c4f03a3260fff715b67ea-2026-10-28T063102.380Z",
+          "appliedAt": "2026-10-28T06:31:02.380Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-d08c32527b3c4f03a3260fff715b67ea-2026-10-28T063102.380Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chairs-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4143c6be4151449981e47e23c93532a2-2026-10-28T063116.200Z",
+          "appliedAt": "2026-10-28T06:31:16.200Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-4143c6be4151449981e47e23c93532a2-2026-10-28T063116.200Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chairs-setting, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4c6afaa4984a45ab8cd8706af31beae0-2026-10-28T063130.258Z",
+          "appliedAt": "2026-10-28T06:31:30.258Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-4c6afaa4984a45ab8cd8706af31beae0-2026-10-28T063130.258Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-slide-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a5134830191543aaae26aebdc9706ef1-2026-10-28T063143.968Z",
+          "appliedAt": "2026-10-28T06:31:43.968Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-a5134830191543aaae26aebdc9706ef1-2026-10-28T063143.968Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-slide-front, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7431e8434e174261b2396da55b0e2d40-2026-10-28T063538.193Z",
+          "appliedAt": "2026-10-28T06:35:38.193Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-7431e8434e174261b2396da55b0e2d40-2026-10-28T063538.193Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-train-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1c2278e7c117427cb062385f4fea068e-2026-10-28T063551.969Z",
+          "appliedAt": "2026-10-28T06:35:51.969Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-1c2278e7c117427cb062385f4fea068e-2026-10-28T063551.969Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-planes-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b374b1569b5a4163bc2fcd5f1d915c4c-2026-10-28T063606.113Z",
+          "appliedAt": "2026-10-28T06:36:06.113Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-b374b1569b5a4163bc2fcd5f1d915c4c-2026-10-28T063606.113Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-animals-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-058c1705956a4b95934850910b5bbcac-2026-10-28T063620.084Z",
+          "appliedAt": "2026-10-28T06:36:20.084Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-058c1705956a4b95934850910b5bbcac-2026-10-28T063620.084Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-safari-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-11fd5d67157d4d09b60415f41ad88251-2026-10-28T063633.786Z",
+          "appliedAt": "2026-10-28T06:36:33.786Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-11fd5d67157d4d09b60415f41ad88251-2026-10-28T063633.786Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pirate-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-448aeede757f4de984d898bdabbd49b0-2026-10-28T063647.348Z",
+          "appliedAt": "2026-10-28T06:36:47.348Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-448aeede757f4de984d898bdabbd49b0-2026-10-28T063647.348Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cars-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2fbd3ac58c2e4e61aa5214c4d5dc44c6-2026-10-28T063700.992Z",
+          "appliedAt": "2026-10-28T06:37:00.992Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-2fbd3ac58c2e4e61aa5214c4d5dc44c6-2026-10-28T063700.992Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-games-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-cb0ee12d9620456a81ad79e51da4b573-2026-10-28T063714.951Z",
+          "appliedAt": "2026-10-28T06:37:14.951Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-cb0ee12d9620456a81ad79e51da4b573-2026-10-28T063714.951Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-ghosts-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1c645a355d264439a74bf50825de2525-2026-10-28T063728.792Z",
+          "appliedAt": "2026-10-28T06:37:28.792Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-1c645a355d264439a74bf50825de2525-2026-10-28T063728.792Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-labyrinth-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-56af87cdc2394d1aa9e7a865134b4ef2-2026-10-28T063742.554Z",
+          "appliedAt": "2026-10-28T06:37:42.554Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-56af87cdc2394d1aa9e7a865134b4ef2-2026-10-28T063742.554Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-trampolines-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-266fa7f1ab264589be7de67937e0d7f4-2026-10-28T063756.467Z",
+          "appliedAt": "2026-10-28T06:37:56.467Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-266fa7f1ab264589be7de67937e0d7f4-2026-10-28T063756.467Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-balls-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3cd870ac01484e2da20b85c8414ac656-2026-10-28T063812.032Z",
+          "appliedAt": "2026-10-28T06:38:12.032Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-3cd870ac01484e2da20b85c8414ac656-2026-10-28T063812.032Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-toddlers-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-64498214abfe4458bf10d541cdeef0b7-2026-10-28T063827.042Z",
+          "appliedAt": "2026-10-28T06:38:27.042Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-64498214abfe4458bf10d541cdeef0b7-2026-10-28T063827.042Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-inflatable-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4852c0cf7dd24961ace916d99e2ae5f6-2026-10-28T063840.945Z",
+          "appliedAt": "2026-10-28T06:38:40.945Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-4852c0cf7dd24961ace916d99e2ae5f6-2026-10-28T063840.945Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-prehistoric-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-58171f018c4e48999e8ae2b91bc6a2ac-2026-10-28T064129.766Z",
+          "appliedAt": "2026-10-28T06:41:29.766Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-58171f018c4e48999e8ae2b91bc6a2ac-2026-10-28T064129.766Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mirrors-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e36755723a7e4c7faa397831e5e3b6b1-2026-10-28T064143.535Z",
+          "appliedAt": "2026-10-28T06:41:43.535Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-e36755723a7e4c7faa397831e5e3b6b1-2026-10-28T064143.535Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-covered-vehicles-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4b757bd864224f749e08b1093941ef48-2026-10-28T064157.725Z",
+          "appliedAt": "2026-10-28T06:41:57.725Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-4b757bd864224f749e08b1093941ef48-2026-10-28T064157.725Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cups-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2e62316085294929af568cd831e71da4-2026-10-28T064216.014Z",
+          "appliedAt": "2026-10-28T06:42:16.014Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-2e62316085294929af568cd831e71da4-2026-10-28T064216.014Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cabane-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7e2a5e878505419889124a422a07d5da-2026-10-28T064238.145Z",
+          "appliedAt": "2026-10-28T06:42:38.145Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-7e2a5e878505419889124a422a07d5da-2026-10-28T064238.145Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cabane-terrace, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-12087224b98c45679d64d3dcbff01996-2026-10-28T064601.275Z",
+          "appliedAt": "2026-10-28T06:46:01.275Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-12087224b98c45679d64d3dcbff01996-2026-10-28T064601.275Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-kiosk-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f974e74a09a340e48243235de51bf451-2026-10-28T064615.250Z",
+          "appliedAt": "2026-10-28T06:46:15.250Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-f974e74a09a340e48243235de51bf451-2026-10-28T064615.250Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-entry-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5ec1c758f5e848bb822df43b3ae54173-2026-10-28T064643.482Z",
+          "appliedAt": "2026-10-28T06:46:43.482Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-5ec1c758f5e848bb822df43b3ae54173-2026-10-28T064643.482Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-picnic-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-27071cddcd344b71acecaef5653245fa-2026-10-28T064710.653Z",
+          "appliedAt": "2026-10-28T06:47:10.653Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-27071cddcd344b71acecaef5653245fa-2026-10-28T064710.653Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-birthday-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ea9b6c6c465546cc97432228078f16c5-2026-10-28T064744.567Z",
+          "appliedAt": "2026-10-28T06:47:44.567Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-ea9b6c6c465546cc97432228078f16c5-2026-10-28T064744.567Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-train-scenery, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-af0662861a044265a3cbff530fc0aed8-2026-10-28T064808.140Z",
+          "appliedAt": "2026-10-28T06:48:08.140Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-af0662861a044265a3cbff530fc0aed8-2026-10-28T064808.140Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-train-boarding, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7c109e3297204c0ab92ec0b55e5233ab-2026-10-28T064822.142Z",
+          "appliedAt": "2026-10-28T06:48:22.142Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-7c109e3297204c0ab92ec0b55e5233ab-2026-10-28T064822.142Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-safari-animals, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-75ba738cdacc478182e6f87105ccab71-2026-10-28T064836.109Z",
+          "appliedAt": "2026-10-28T06:48:36.109Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-75ba738cdacc478182e6f87105ccab71-2026-10-28T064836.109Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-safari-jeep, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7006a52738a8442387079d84447a1ff6-2026-10-28T064849.920Z",
+          "appliedAt": "2026-10-28T06:48:49.920Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-7006a52738a8442387079d84447a1ff6-2026-10-28T064849.920Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pirate-platform, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f073484dfb9743bfb67a69992f9d6154-2026-10-28T064903.642Z",
+          "appliedAt": "2026-10-28T06:49:03.642Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-f073484dfb9743bfb67a69992f9d6154-2026-10-28T064903.642Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-prehistoric-mammoth, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-27f1deaaf3434e53ba322a6c4de90dab-2026-10-28T064917.247Z",
+          "appliedAt": "2026-10-28T06:49:17.247Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-27f1deaaf3434e53ba322a6c4de90dab-2026-10-28T064917.247Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-prehistoric-gallery, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0b54ec1bb85e40dbbf6be2eeb4ef2314-2026-10-28T064931.978Z",
+          "appliedAt": "2026-10-28T06:49:31.978Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-0b54ec1bb85e40dbbf6be2eeb4ef2314-2026-10-28T064931.978Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cars-tower, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-ac742a4a-5716-4ea8-80b5-8be26df6d630",
+          "appliedAt": "2026-10-28T06:54:14.661Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-ac742a4a-5716-4ea8-80b5-8be26df6d630",
+          "auditEvidence": null,
+          "summary": "Ty’Bamboo : treize emplacements historiques confirmés sur orthophotographie IGN 2012 et photographies du parc ; couverture GPS portée à 14/32 équipements confirmés, audit final restant."
+        },
+        {
+          "eventId": "apply-042a3e1a-e2e9-440b-93d2-c83908c56b5f",
+          "appliedAt": "2026-10-28T07:05:32.721Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-042a3e1a-e2e9-440b-93d2-c83908c56b5f",
+          "auditEvidence": null,
+          "summary": "Ty’Bamboo : bulles sur l’eau confirmées par un billet de visite archivé du 11 novembre 2012 et deux photographies originales ; création privée et description relue dans les huit langues, audit final restant."
+        },
+        {
+          "eventId": "import-photo-dda4fc1a8d1c4477b68412c3a763d9bc-2026-10-28T070713.310Z",
+          "appliedAt": "2026-10-28T07:07:13.310Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-dda4fc1a8d1c4477b68412c3a763d9bc-2026-10-28T070713.310Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-waterballs-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-0abd39ee-a947-4148-a4ab-25db0175a242",
+          "appliedAt": "2026-10-28T07:23:05.340Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-0abd39ee-a947-4148-a4ab-25db0175a242",
+          "auditEvidence": null,
+          "summary": "Robot Toboggan confirmé par archive photographique et décrit en huit langues ; retrait de Jumbo Circus et des Chaises volantes confirmé, dates inconnues conservées."
+        },
+        {
+          "eventId": "import-photo-21e269553d494244954f5051a27b7576-2026-10-28T072515.024Z",
+          "appliedAt": "2026-10-28T07:25:15.024Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-21e269553d494244954f5051a27b7576-2026-10-28T072515.024Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-robot-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-02f41f6933cf4c37b4a96376676c0f28-2026-10-28T072531.846Z",
+          "appliedAt": "2026-10-28T07:25:31.846Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-02f41f6933cf4c37b4a96376676c0f28-2026-10-28T072531.846Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-carousel-palms, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f93e86d8233f4046994b6238051c89ad-2026-10-28T072552.823Z",
+          "appliedAt": "2026-10-28T07:25:52.823Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-f93e86d8233f4046994b6238051c89ad-2026-10-28T072552.823Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chairs-in-motion, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2cec261a117249dd9be3b98df2bfb809-2026-10-28T072622.679Z",
+          "appliedAt": "2026-10-28T07:26:22.679Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-2cec261a117249dd9be3b98df2bfb809-2026-10-28T072622.679Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cars-close, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2d7167aa44264f77806e04d77eac9350-2026-10-28T072639.421Z",
+          "appliedAt": "2026-10-28T07:26:39.421Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-2d7167aa44264f77806e04d77eac9350-2026-10-28T072639.421Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pirate-palms, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e76dbd6c34a44de2afd29aaf3f3e4f8a-2026-10-28T072702.970Z",
+          "appliedAt": "2026-10-28T07:27:02.970Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-e76dbd6c34a44de2afd29aaf3f3e4f8a-2026-10-28T072702.970Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-labyrinth-ballpit, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4e3bd97de31948de8d89a00dc2cb55dc-2026-10-28T072724.911Z",
+          "appliedAt": "2026-10-28T07:27:24.911Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-4e3bd97de31948de8d89a00dc2cb55dc-2026-10-28T072724.911Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-labyrinth-slides, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f9425c847351454e9c6f514f8a673a1a-2026-10-28T072746.064Z",
+          "appliedAt": "2026-10-28T07:27:46.064Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#import-photo-f9425c847351454e9c6f514f8a673a1a-2026-10-28T072746.064Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-parking-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-798ffcb3-b4cc-4ed9-9fec-efb364056715",
+          "appliedAt": "2026-10-28T07:33:09.074Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-798ffcb3-b4cc-4ed9-9fec-efb364056715",
+          "auditEvidence": null,
+          "summary": "Six jalons historiques du parc sourcés et rédigés en huit langues : projet, ouverture, hiver en intérieur, dernière saison, adaptations de sécurité et fermeture."
+        },
+        {
+          "eventId": "apply-77a03318-4628-47e4-bf84-e1dbd2f197c0",
+          "appliedAt": "2026-10-28T07:39:27.186Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-77a03318-4628-47e4-bf84-e1dbd2f197c0",
+          "auditEvidence": null,
+          "summary": "Article historique développé en huit langues (511 à 639 mots), avec 11 sources et deux photographies vérifiées, rattaché à la fermeture de 2013."
+        },
+        {
+          "eventId": "apply-974415ad-1c5e-4faf-9faa-df232b62a64e",
+          "appliedAt": "2026-10-28T07:42:43.758Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-974415ad-1c5e-4faf-9faa-df232b62a64e",
+          "auditEvidence": null,
+          "summary": "Cinq jalons de manèges en huit langues : ouverture et fin du Petit Grand Huit, patrimoine du Carrousel 1900, remplacement des Chaises volantes et retrait de Jumbo Circus."
+        },
+        {
+          "eventId": "apply-7dc80f81-ac1c-4f0a-af12-9ad770b316c3",
+          "appliedAt": "2026-10-28T07:51:57.288Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-7dc80f81-ac1c-4f0a-af12-9ad770b316c3",
+          "auditEvidence": null,
+          "summary": "Relecture finale : remplacement des Chaises volantes, suppression du texte documentaire des bulles, article précisé et ajout de l’arrêté municipal du 5 avril 2011 sans le confondre avec une fermeture effective."
+        },
+        {
+          "eventId": "apply-39b41024-8470-4327-9fbc-28c9c3d813d1",
+          "appliedAt": "2026-10-28T08:01:55.157Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-39b41024-8470-4327-9fbc-28c9c3d813d1",
+          "auditEvidence": null,
+          "summary": "Correction finale de l’article : superficie retirée du récit dans les huit langues, contenu historique et publication conservés."
+        },
+        {
+          "eventId": "apply-8f14a705-0902-447e-b48e-8a60018d0957",
+          "appliedAt": "2026-10-28T08:12:12.086Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-8f14a705-0902-447e-b48e-8a60018d0957",
+          "auditEvidence": null,
+          "summary": "Ty’Bamboo : restauration officielle de la publication canonique des douze faits historiques audités, sans modification du contenu."
+        },
+        {
+          "eventId": "completion-ty-bamboo-20261028-8f14a705",
+          "appliedAt": "2026-10-28T08:12:12.086Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-8f14a705-0902-447e-b48e-8a60018d0957",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-final-audit.json",
+          "summary": "Ty’Bamboo terminé : 34 lieux dont 27 attractions historiques, 59 images, 12 faits sourcés, un article en huit langues ; audit final réel 98/100, site et Facebook Published vérifiés."
+        }
+      ],
+      "nextAction": "Intégration terminée et auditée à 98/100, site et annonce Facebook Published vérifiés. Lien Histoire accessible depuis la fiche ; 12 faits sourcés et article en huit langues. Lacunes photographiques, positions et cartes anciennes nommées dans l’audit.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -24958,7 +26268,24 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-final-audit.json",
+      "publicationOutcomes": {
+        "site": {
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T08:03:25.7272968Z",
+          "url": "https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo",
+          "evidenceOperationId": "db60096e-7cc0-40b5-92ca-9dcb93238916"
+        },
+        "facebook": {
+          "status": "Published",
+          "publishedAtUtc": null,
+          "observedAtUtc": "2026-10-28T08:20:17.185059+00:00",
+          "url": "https://www.facebook.com/1285475681307050/posts/122125007451424431",
+          "publicationId": "bec94248df5042c3be1b0b929c6c2e0e",
+          "dateNote": "Resolve confirms Published but exposes no publication timestamp. Observation time is retained separately."
+        }
+      }
     },
     {
       "entryId": "FR-park-8e05ac0f-c8aa-4224-882f-354bc4fc7672",

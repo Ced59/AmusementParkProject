@@ -1,0 +1,118 @@
+{
+  "checkedAtUtc": "2026-10-28T07:51:53.123183+00:00",
+  "sources": [
+    {
+      "url": "https://rcdb.com/9931.htm",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/9931.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "checkedAtUtc": "2026-10-28T07:48:13.615329+00:00",
+      "sha256": "ac88660b6cbdf1bcda086e3e5d91b758fca81d1a94185b3e402676331fe58b9c",
+      "bytesRead": 61923
+    },
+    {
+      "url": "https://rcdb.com/9932.htm",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/9932.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "checkedAtUtc": "2026-10-28T07:48:13.592616+00:00",
+      "sha256": "f64f02bc2beca1d258c51ed2a2b55b23f7e21a5f20589dba57caff2f19c9012a",
+      "bytesRead": 63606
+    },
+    {
+      "url": "https://web.archive.org/web/20110903130205/http://www.tybamboo.fr:80/maneges-exterieurs",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20110903130205/http://www.tybamboo.fr:80/maneges-exterieurs",
+      "contentType": "text/html; charset=UTF-8",
+      "checkedAtUtc": "2026-10-28T07:48:14.776064+00:00",
+      "sha256": "dd5656b2e8e53e70b6791ce4c53d979a0c7ba083cd8f0d21d1cb1a81f91243b3",
+      "bytesRead": 25108
+    },
+    {
+      "url": "https://web.archive.org/web/20130414015459/http://www.tybamboo.fr:80/index.php",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20130414015459/http://www.tybamboo.fr:80/index.php",
+      "contentType": "text/html; charset=utf-8",
+      "checkedAtUtc": "2026-10-28T07:48:14.310759+00:00",
+      "sha256": "79745a86fcfd1bc52223c5d1b01b2abbde7532d30f49270fc680eba49a482a76",
+      "bytesRead": 38935
+    },
+    {
+      "url": "https://web.archive.org/web/20190118171329id_/http://sortiesenseineetmarne.blogspot.com:80/2013/12/autres-photos-parc-ty-bamboo.html",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20190118171329id_/http://sortiesenseineetmarne.blogspot.com:80/2013/12/autres-photos-parc-ty-bamboo.html",
+      "contentType": "text/html; charset=UTF-8",
+      "checkedAtUtc": "2026-10-28T07:48:14.411943+00:00",
+      "sha256": "79343ae8d2ea241ba87a9e1fdf1e4e44b8986d55d42ca02de45428710e52550b",
+      "bytesRead": 98327
+    },
+    {
+      "url": "https://web.archive.org/web/20190118171353id_/http://sortiesenseineetmarne.blogspot.com:80/2013/12/fermeture-definitive-du-parc-ty-bamboo.html",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20190118171353id_/http://sortiesenseineetmarne.blogspot.com:80/2013/12/fermeture-definitive-du-parc-ty-bamboo.html",
+      "contentType": "text/html; charset=UTF-8",
+      "checkedAtUtc": "2026-10-28T07:48:14.775385+00:00",
+      "sha256": "7bc9aa282ead01d191853eda682f5af6e2d1d4e77aa8cc80d0a2b677a7d43723",
+      "bytesRead": 133085
+    },
+    {
+      "url": "https://www.leparisien.fr/seine-et-marne-77/avon-77210/le-futur-parc-de-loisirs-inquiete-les-riverains-04-12-2010-1176897.php",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "checkedAtUtc": "2026-10-28T07:48:14.415890+00:00",
+      "webReaderVerified": true,
+      "webReaderEvidence": "sources/20261028-press-web-reader-proof.json",
+      "webReaderNote": "Public article body successfully opened and personally read through web connector; urllib proxy403 retained separately, not a source404."
+    },
+    {
+      "url": "https://www.leparisien.fr/seine-et-marne-77/dammarie-les-lys-77190/pour-les-petits-marcel-campion-voit-grand-02-04-2011-1389154.php",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "checkedAtUtc": "2026-10-28T07:48:14.418545+00:00",
+      "webReaderVerified": true,
+      "webReaderEvidence": "sources/20261028-press-web-reader-proof.json",
+      "webReaderNote": "Public article body successfully opened and personally read through web connector; urllib proxy403 retained separately, not a source404."
+    },
+    {
+      "url": "https://www.leparisien.fr/seine-et-marne-77/le-roi-des-forains-va-fermer-son-parc-de-loisirs-ty-bamboo-06-12-2013-3381033.php",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "checkedAtUtc": "2026-10-28T07:48:14.420953+00:00",
+      "webReaderVerified": true,
+      "webReaderEvidence": "sources/20261028-press-web-reader-proof.json",
+      "webReaderNote": "Public article body successfully opened and personally read through web connector; urllib proxy403 retained separately, not a source404."
+    },
+    {
+      "url": "https://www.leparisien.fr/seine-et-marne-77/les-riverains-du-parc-de-loisirs-vont-avoir-un-peu-de-repit-29-09-2012-2187551.php",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "checkedAtUtc": "2026-10-28T07:48:14.423348+00:00",
+      "webReaderVerified": true,
+      "webReaderEvidence": "sources/20261028-press-web-reader-proof.json",
+      "webReaderNote": "Public article body successfully opened and personally read through web connector; urllib proxy403 retained separately, not a source404."
+    },
+    {
+      "url": "https://www.leparisien.fr/seine-et-marne-77/ty-bamboo-restera-ouvert-17-07-2013-2986783.php",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "checkedAtUtc": "2026-10-28T07:48:14.426069+00:00",
+      "webReaderVerified": true,
+      "webReaderEvidence": "sources/20261028-press-web-reader-proof.json",
+      "webReaderNote": "Public article body successfully opened and personally read through web connector; urllib proxy403 retained separately, not a source404."
+    },
+    {
+      "url": "https://www.parcplaza.net/2013/12/3-ans-apres-avoir-ouvert-le-parc.html",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2013/12/3-ans-apres-avoir-ouvert-le-parc.html",
+      "contentType": "text/html; charset=UTF-8",
+      "checkedAtUtc": "2026-10-28T07:48:16.932825+00:00",
+      "sha256": "57906d7f70538c5c727fd89743bd71531dceb7bd5bfe5d3e897e27f57aea96f9",
+      "bytesRead": 131393
+    },
+    {
+      "url": "https://web.archive.org/web/20120627094627/http://www.tybamboo.fr:80/index.php/l-installation-interieure",
+      "status": 200,
+      "checkedAtUtc": "2026-10-28T07:51:53.122612+00:00",
+      "sha256": "59b6b02d2e0d6c7ae0f15c50c2f6a8074c6fe6d1b44e6d6640b5baa8a3d2a84d",
+      "bytesRead": 37379,
+      "articleOnlySource": true
+    }
+  ],
+  "allSourcesAccessible": true,
+  "sourceCount": 13
+}

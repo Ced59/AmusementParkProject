@@ -35,10 +35,10 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 52 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
-| Fiches historiques privées existantes | 10 | 5 |
+| Fiches historiques privées existantes | 10 | 3 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **137** |
+| **Total** | **225** | **135** |
 
 ## 1. Fiches publiques à compléter
 
@@ -181,9 +181,9 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Magic City Paris — `6cc196ad-27bc-444e-84e8-fb97c1baa9f0`
 - [x] Parc Avenue — `f019e441-aecf-487b-93db-2b0246dce185` — clôture conservée le 23 octobre 2026 ; audit final à 97/100 et annonce Facebook Published confirmée.
 - [x] Parc de la Toison d'Or — `66653da2-93bb-499f-95df-15e240673e58` — clôture conservée le 23 octobre 2026 ; audit final96/100 et Facebook Published.
-- [ ] Parc de Lillom — `8167f80c-db82-49d8-91a6-bf5a1f6a6f51`
+- [ ] Parc de Lillom — `8167f80c-db82-49d8-91a6-bf5a1f6a6f51` — **doublon conservé, hors dossiers actifs**, de Parc de Lomme (`a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`) ; rapprochement officiel du 23 octobre 2026, aucune clôture supplémentaire.
 - [ ] Parc de Lomme — `a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`
-- [ ] Ty'Bamboo — `6919c77b-1865-444d-8c5c-964b255d9c27`
+- [x] Ty'Bamboo — `6919c77b-1865-444d-8c5c-964b255d9c27` — clôture conservée le 28 octobre 2026 ; audit final 98/100 et Facebook Published.
 
 ## 5. Parcs historiques absents de la photographie FR
 
@@ -451,3 +451,17 @@ La [fiche historique](https://amusement-parks.fun/fr/park/f019e441-aecf-487b-93d
 La [fiche historique](https://amusement-parks.fun/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or) est publiée et auditée à **96/100**, sans bloqueur : **24 lieux dont 19attractions historiques**, une zone, **29 médias propres** dont le logo authentique, le plan officiel du projet de 1989, **15 faits sourcés** et un article développé en huit langues. Les 208descriptions du parc, de la zone et des lieux sont localisées. Les 24pages mobiles et deux pages de bureau contrôlées passent ; le clic normal sur Histoire ouvre les15 faits, et le fichier original du plan est accessible anonymement. Les 24légendes de l’article ont été réécrites pour éviter les répétitions avec la galerie. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122124285243424431) est confirmée Published ; aucun second envoi.
 
 Les lacunes demeurent nommées : neuf attractions illustrées sur 19, deux lieux importants sur 11 avec au moins trois photos, deux lieux géolocalisés sur 24 (le théâtre et son spectacle au même emplacement), anciennes conditions d’accès non retrouvées et plans annuels 1990–1992 manquants. Cinq vues générales distinctes comprennent le chantier, les années d’activité et le jardin ultérieur ; la scène de démontage reste une illustration d’événement et ne gonfle pas ce compteur. La dernière intégration réelle date du **2026-10-23T12:15:37.500Z**, import de la vue du chantier. [Audit final](world-integration/evidence/france-historical-20261022/toison-or-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/toison-or-source-gaps.json). Le backlog national conserve **137 dossiers actifs : 112 principaux, 25 historiques et aucune standalone**. Cinquième clôture du lot : aucune PR avant dix parcs terminés, aucune montée de version pour ce suivi documentaire.
+
+
+### Rapprochement Lillom / Parc de Lomme — 23 octobre 2026
+
+Les deux fiches et leurs deux Grand Huit représentent les mêmes identités historiques. La fiche Parc de Lomme, déjà enrichie, porte la suite de l’intégration. La ligne Lillom reste conservée comme doublon masqué, sans suppression et sans date ancienne inventée. [Preuve du rapprochement](world-integration/evidence/france-historical-20261022/lillom-identity-reconciliation.json). Ce rapprochement ne compte pas comme un parc terminé : le lot conserve cinq clôtures. Le périmètre national compte désormais **136 dossiers actifs : 112 principaux, 24 historiques et aucune standalone**.
+
+
+### Ty’Bamboo — clôture du 28 octobre 2026
+
+La [fiche historique](https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo) est publiée et auditée à **98/100**, sans bloqueur de publication : **34 lieux dont 27 attractions historiques**, deux zones, **59 images** dont le logo authentique, **12 faits sourcés** et un article développé en huit langues. Les descriptions des lieux et les métadonnées d’images sont localisées. Le clic normal sur « Histoire », l’article et les historiques des quatre attractions concernées sont vérifiés ; 24 pages mobiles et deux pages de bureau répondent sans image cassée ni débordement horizontal. L’[annonce Facebook](https://www.facebook.com/1285475681307050/posts/122125007451424431) est confirmée **Published** par le client officiel ; aucun second envoi.
+
+Les recherches couvrent les archives de l’exploitant, la presse, les photographies de visiteurs et l’orthophotographie IGN de 2012. **25 attractions sur 27 sont illustrées**, neuf lieux importants sur 13 ont au moins trois photos et **14 lieux sur 34 sont géolocalisés**. Les images du musée d’arts forains, du terrain de football et des toilettes, vingt positions précises et les plans annuels restent non retrouvés. La locomotive décorative est conservée masquée, sans la transformer en attraction. Les limites de rendu de l’interface historique et d’un libellé de zone sont également consignées dans l’audit.
+
+La dernière intégration réelle est la réparation canonique de l’histoire du **2026-10-28T08:12:12.086Z** ; les dates de publication restent séparées, et la date exacte du post Facebook reste inconnue plutôt qu’inventée. [Audit final et preuves](world-integration/evidence/france-historical-20261022/ty-bamboo-final-audit.json). Le périmètre national historique conserve **135 dossiers actifs : 112 principaux, 23 historiques et aucune standalone** ; ces compteurs ne remplacent pas le registre mondial fusionné. **Sixième clôture du lot**, sans PR avant dix parcs terminés et sans montée de version pour le suivi documentaire.

@@ -16,18 +16,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | --- | ---: |
 | À intégrer | 21 |
 | À qualifier | 232 |
-| En cours | 6 |
+| En cours | 4 |
 | Bloqué | 2 |
-| Intégration achevée | 8 |
+| Intégration achevée | 9 |
 | Publié, date inconnue | 128 |
 | Hors périmètre enregistré | 99 |
-| Doublon conservé | 0 |
+| Doublon conservé | 1 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **616**. Sources : Aerophile — références constructeur, AmusementForce, Backlog national existant, Découverte complémentaire — site officiel, EAZA, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Sunkid — projet constructeur, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **99 publiés**, **26 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **195 candidats sans fiche**.
+Parcs : **100 publiés**, **24 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **195 candidats sans fiche**.
 
 Standalone : **40 publiées**, **0 masquées**, **11 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 

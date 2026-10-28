@@ -1,0 +1,33 @@
+{
+  "excluded": [
+    {
+      "path": "source-assets/chateau-cinema-2026.jpg",
+      "reason": "Visible Zoom Sur Lille watermark, not removed; published1024variant already checked."
+    },
+    {
+      "path": "source-assets/archipop-poster.jpg",
+      "reason": "Visible ARCHIPOP watermark; filmresearchframes also not imported."
+    },
+    {
+      "path": "source-assets/first-6.jpg",
+      "reason": "Futuristic concept picture not proven to represent Lillom; no attribution to Cosmovision."
+    },
+    {
+      "path": "source-assets/operator-plan-undated.jpg",
+      "reason": "Authentic operator map but edition year unproven; not imported as photograph or assigned invented annual edition."
+    },
+    {
+      "path": "source-assets/aol-photo-2.jpg",
+      "reason": "Detail of operator plan, not an additional general photograph."
+    },
+    {
+      "paths": [
+        "source-assets/aol-photo-6.jpg",
+        "source-assets/aol-photo-7.jpg",
+        "source-assets/aol-photo-8.jpg",
+        "source-assets/aol-photo-9.jpg"
+      ],
+      "reason": "Verysmall104–159pixelviews, mainlyoverlappingacceptedcourtyard/lanephotographs; notusedtoinflatecoverage."
+    }
+  ]
+}

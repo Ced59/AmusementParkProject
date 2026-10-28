@@ -1,0 +1,498 @@
+{
+  "reviewedAtUtc": "2026-10-23T14:34:30.109285+00:00",
+  "imageCount": 16,
+  "parkLogoCount": 2,
+  "generalParkPhotos": 5,
+  "generalPhotoKeys": [
+    "05-park-aerial",
+    "05-park-lake-1995",
+    "05-park-lake-2004",
+    "05-park-medieval-lane",
+    "05-park-medieval-court"
+  ],
+  "attractionsIllustrated": 5,
+  "attractionsTotal": 25,
+  "majorItemKeys": [
+    "grand-huit",
+    "rapides-colorado",
+    "telecombat",
+    "himalaya",
+    "bateau-corsaire",
+    "explorer",
+    "pieuvre",
+    "monde-prehistoire",
+    "circuit-tacots",
+    "cosmovision",
+    "cinema-2000",
+    "arenes-medievales",
+    "chateau-isenghien"
+  ],
+  "majorItemsWithThreeImages": 1,
+  "missingItemImages": [
+    {
+      "id": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b",
+      "key": "grand-huit",
+      "name": "Grand Huit",
+      "foundImages": 1,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+      "key": "telecombat",
+      "name": "Télécombat",
+      "foundImages": 0,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+      "key": "rapides-colorado",
+      "name": "Rapides du Colorado",
+      "foundImages": 0,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+      "key": "himalaya",
+      "name": "Himalaya",
+      "foundImages": 0,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+      "key": "bateau-corsaire",
+      "name": "Bateau corsaire",
+      "foundImages": 0,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+      "key": "auto-tamponneuses-enfants",
+      "name": "Auto-tamponneuses pour enfants",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+      "key": "carrousel-enfants",
+      "name": "Carrousel pour enfants",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+      "key": "chateau-gonflable",
+      "name": "Château gonflable",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+      "key": "circuit-tacots",
+      "name": "Circuit tacots",
+      "foundImages": 1,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+      "key": "pieuvre",
+      "name": "La Pieuvre",
+      "foundImages": 1,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+      "key": "monde-prehistoire",
+      "name": "Le Monde de la Préhistoire",
+      "foundImages": 1,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+      "key": "explorer",
+      "name": "Explorer",
+      "foundImages": 0,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+      "key": "petit-train-western",
+      "name": "Petit train western",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+      "key": "bateaux-telecommandes",
+      "name": "Bateaux télécommandés",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+      "key": "riviere-enchantee",
+      "name": "La Rivière enchantée",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+      "key": "pedalos",
+      "name": "Pédalos",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+      "key": "tir-carabine",
+      "name": "Tir à la carabine",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+      "key": "fort-apache",
+      "name": "Fort Apache",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+      "key": "tir-arc",
+      "name": "Tir à l’arc",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+      "key": "pulsar",
+      "name": "Pulsar",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+      "key": "cinema-2000",
+      "name": "Cinéma 2000",
+      "foundImages": 0,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "61776169-668e-46a2-9272-e115371d439e",
+      "key": "kodak-multivision",
+      "name": "Kodak Multivision",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+      "key": "cosmovision",
+      "name": "Cosmovision",
+      "foundImages": 0,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+      "key": "piscine-boules",
+      "name": "Piscine à boules",
+      "foundImages": 0,
+      "searchedTarget": 1,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    },
+    {
+      "id": "8fd47cc7-f997-454d-9796-682b78bafce4",
+      "key": "arenes-medievales",
+      "name": "Arènes médiévales",
+      "foundImages": 1,
+      "searchedTarget": 3,
+      "sourceFamiliesChecked": [
+        "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+        "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+        "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+        "RCDB park5914/coaster3441 no photos",
+        "Official CRAC history",
+        "RegardsJeunes2020p20",
+        "ZoomSurLille/Kinepolis2026",
+        "Wikipedia file provenance for two authentic logos"
+      ],
+      "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+    }
+  ],
+  "officialMaps": {
+    "importedEditions": [],
+    "foundUndatedOriginal": "source-assets/operator-plan-undated.jpg",
+    "researchedYears": [
+      1985,
+      1986,
+      1987
+    ],
+    "gap": "No edition year on the authentic archived operator plan. Capture2005 is not mapyear. SecondarySkyrock/Mirapolis references, archivedAOLsource and MEL/press/web searches produced no datedannualedition. Closedparkhasnocurrent2026edition."
+  },
+  "founderPortrait": {
+    "name": "Arthur Notebart",
+    "gap": "Sycomore biography and Wikipedia checked; no actual portrait provided, Wikimedia default placeholder and citycoatofarms not imported."
+  },
+  "historicalDateGaps": "Most ride-specific opening/closure dates, dismantling dates and destinations not evidenced. Retain unknowns, do not infer all from park closure. RCDB supports GrandHuit own1985/1986/1987 sequence; Monstradamus has announcementonly."
+}
