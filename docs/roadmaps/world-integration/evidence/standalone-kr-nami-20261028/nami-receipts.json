@@ -1,0 +1,111 @@
+{
+  "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+  "receipts": [
+    {
+      "lot": "01-core",
+      "action": "Apply",
+      "operationId": "ee84f2ab-4352-4448-8999-ce12bd9fc98d",
+      "appliedAtUtc": "2026-10-28T06:47:52.1313631Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "02-pricing",
+      "action": "Apply",
+      "operationId": "69a08ddf-f9f0-4764-9d64-f790143bcb3e",
+      "appliedAtUtc": "2026-10-28T06:50:57.9019301Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "03-hours",
+      "action": "Apply",
+      "operationId": "ef018357-9977-43f6-9d8b-1b5c0841f1fa",
+      "appliedAtUtc": "2026-10-28T06:51:21.8943073Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "04-access",
+      "action": "Apply",
+      "operationId": "e0a5be2a-b36c-4daa-99ec-6ba72008a0f8",
+      "appliedAtUtc": "2026-10-28T06:53:58.4224265Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "05-history",
+      "action": "Apply",
+      "operationId": "1e7b1d2f-00cd-44c0-8352-aae5ac16e692",
+      "appliedAtUtc": "2026-10-28T06:54:32.5435708Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "image-1",
+      "action": "ImportPhoto",
+      "entityId": "c439e4ac6fcd424ab778b664b5ae5f4c",
+      "finishedAtUtc": "2026-10-28T06:54:54.549Z",
+      "ownerId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a"
+    },
+    {
+      "lot": "06-history-rewrite",
+      "action": "Apply",
+      "operationId": "d72cf251-6151-4a21-94fa-d32820643fd7",
+      "appliedAtUtc": "2026-10-28T06:56:16.8798367Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "07-publish-image",
+      "action": "Apply",
+      "operationId": "e3385be0-8b2c-40e1-a5ad-8b5c7543ce3a",
+      "appliedAtUtc": "2026-10-28T06:56:58.6087Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "08-publish-history",
+      "action": "Apply",
+      "operationId": "30da5032-e541-46e2-8cf4-c5c96e4d11ac",
+      "appliedAtUtc": "2026-10-28T06:57:21.7999389Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "09-publish-attraction",
+      "action": "Apply",
+      "operationId": "c57c248b-aa8e-48e5-9883-b3fe350d84a3",
+      "appliedAtUtc": "2026-10-28T06:57:44.7902137Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "10-pricing-fixed",
+      "action": "Apply",
+      "operationId": "efb77890-0def-483d-8900-9a56eb350f37",
+      "appliedAtUtc": "2026-10-28T06:59:53.9643732Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "11-opening-date",
+      "action": "Apply",
+      "operationId": "5f5cc1c4-71fc-46b9-abd4-a15332ec1117",
+      "appliedAtUtc": "2026-10-28T07:12:52.2252596Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    },
+    {
+      "lot": "12-republish-history",
+      "action": "Apply",
+      "operationId": "33f03891-846f-4163-af1f-3c1db98b2933",
+      "appliedAtUtc": "2026-10-28T07:14:05.199196Z",
+      "targetStandaloneAttractionId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "isApplied": true
+    }
+  ],
+  "facebookPublicationId": "9be82e94415d4de0a5ff58af46fb77b3",
+  "facebookPublishedAtUtc": "2026-10-28T07:01:55.8682587Z",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125002243424431"
+}
