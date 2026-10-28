@@ -1,0 +1,89 @@
+{
+  "name": "SkyWheel Helsinki",
+  "entryId": "FI-candidate-d94270eac2d1c8",
+  "standaloneAttractionId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+  "qualification": "Grande roue fixe indépendante sur le quai de Katajanokka, exploitée par SkyWheel Helsinki Oy avec sa propre billetterie. Finnair SkyWheel est l’ancien nom de parrainage de la même attraction. Recherches officielles Park et Standalone sur SkyWheel et Helsinki, aucune fiche avant création.",
+  "decision": "Published",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "weeklyRules": 3,
+    "dateOverrides": 2,
+    "admissionOffers": 4,
+    "accessConditions": 1,
+    "historyEvents": 1
+  },
+  "sources": [
+    {
+      "label": "SkyWheel Helsinki — site, adresse, horaires et tarifs",
+      "url": "https://skywheel.fi/en/home/"
+    },
+    {
+      "label": "SkyWheel Helsinki — FAQ et accessibilité",
+      "url": "https://skywheel.fi/en/faq/"
+    },
+    {
+      "label": "Finnair — annonce de l’ouverture le 3 juin 2014",
+      "url": "https://news.cision.com/finnair/r/finnair-skywheel-arrives-in-helsinki%2Cc9594886"
+    },
+    {
+      "label": "SuomiGuide — coordonnées du site",
+      "url": "https://suomiguide.fi/helsinki/nahtavyydet-ja-historialliset-kohteet/skywheel-helsinki/"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "bd0b36e782994df5a5dc4caa9d619a1b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SkyWheel_Helsinki_pimeällä.jpg",
+      "author": "Sadenäyttely",
+      "date": "2022-01-04",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "resized to 1200 px without crop"
+    },
+    {
+      "imageId": "0615e05ef3c64030b88ae4fec2f670b1",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Allas_Sea_Pool,_SkyWheel,_Helsinki_-_20251211_-_30.jpg",
+      "author": "AleWi",
+      "date": "2025-12-11",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "resized to 1200 px without crop"
+    },
+    {
+      "imageId": "ad501da5b22b42d398672ffa83ee223e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SkyWheel_Helsinki_seen_from_rooftop_terrace_at_Hotel_Pier_4_on_a_sunny_afternoon_in_October_2025.jpg",
+      "author": "JIP",
+      "date": "2025-10-11",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "resized to 1200 px without crop"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "230a75814a165de0e18ef3f4f7e122c48f27ffdee673a0ea5d3335d8cdf01e96",
+    "projectedScore": 100,
+    "projectedBlockers": [],
+    "publicScore": 100,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T20:35:42.774Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesThreeImages": true
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/ae6f1412-46ec-4202-a74b-78fb4c5cac63/skywheel-helsinki",
+      "publishedAtUtc": "2026-10-28T20:35:29.955Z",
+      "applyOperationId": "2002d521-5ab5-4996-90ef-e3898b86884b"
+    },
+    "facebook": {
+      "id": "53ac954dedfc4a688572e90f4e22fe3e",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T20:36:26.0593594Z",
+      "externalPostId": "1285475681307050_122125089393424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125089393424431"
+    }
+  }
+}

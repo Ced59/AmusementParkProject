@@ -1385,37 +1385,217 @@
     {
       "entryId": "FI-candidate-d94270eac2d1c8",
       "name": "SkyWheel Helsinki",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Helsinki , Finland",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "Helsinki",
+      "siteId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T20:35:42.774Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating — billetterie officielle, tarifs et horaires 2026 vérifiés le 28 octobre 2026.",
+      "identityConfidence": "SkyWheel Helsinki Oy exploite la roue et sa propre billetterie à Katajanokanlaituri 2. Finnair SkyWheel est l’ancien nom de parrainage. Recherches officielles Park et Standalone sur SkyWheel et Helsinki sans correspondance avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Finnair SkyWheel",
+        "Helsinki SkyWheel",
+        "Katajanokka Ferris wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T20:34:11.527Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ad48e23a-7160-4180-8c6a-2c4763784294",
+          "appliedAt": "2026-10-28T20:26:29.257Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:apply:ad48e23a-7160-4180-8c6a-2c4763784294",
+          "auditEvidence": null,
+          "summary": "Création privée, identité et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-2f1d56b2-6ff9-4d5b-839d-7a0f1094bdbe",
+          "appliedAt": "2026-10-28T20:27:59.679Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:apply:2f1d56b2-6ff9-4d5b-839d-7a0f1094bdbe",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires et exceptions des 3 et 17 novembre 2026"
+        },
+        {
+          "eventId": "apply-03c5e2b8-4a2f-4645-b550-67efce33b0f5",
+          "appliedAt": "2026-10-28T20:28:29.344Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:apply:03c5e2b8-4a2f-4645-b550-67efce33b0f5",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels à la billetterie pour quatre publics"
+        },
+        {
+          "eventId": "apply-be0e7e6b-dfcc-4920-bf87-306e7f7fb4a2",
+          "appliedAt": "2026-10-28T20:28:57.758Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:apply:be0e7e6b-dfcc-4920-bf87-306e7f7fb4a2",
+          "auditEvidence": null,
+          "summary": "Accès en fauteuil, rampe et capacité selon la FAQ officielle"
+        },
+        {
+          "eventId": "apply-8493a04b-e0da-40a6-8b7d-0b2bc8cf34ce",
+          "appliedAt": "2026-10-28T20:29:20.807Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:apply:8493a04b-e0da-40a6-8b7d-0b2bc8cf34ce",
+          "auditEvidence": null,
+          "summary": "Ouverture du 3 juin 2014 documentée par Finnair"
+        },
+        {
+          "eventId": "image-bd0b36e782994df5a5dc4caa9d619a1b",
+          "appliedAt": "2026-10-28T20:29:43.458Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:image:bd0b36e782994df5a5dc4caa9d619a1b",
+          "auditEvidence": null,
+          "summary": "Import de la vue nocturne spécifique, CC BY-SA 4.0"
+        },
+        {
+          "eventId": "image-0615e05ef3c64030b88ae4fec2f670b1",
+          "appliedAt": "2026-10-28T20:29:58.393Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:image:0615e05ef3c64030b88ae4fec2f670b1",
+          "auditEvidence": null,
+          "summary": "Import de la vue depuis l’eau, CC BY-SA 4.0"
+        },
+        {
+          "eventId": "image-ad501da5b22b42d398672ffa83ee223e",
+          "appliedAt": "2026-10-28T20:30:13.545Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:image:ad501da5b22b42d398672ffa83ee223e",
+          "auditEvidence": null,
+          "summary": "Import de la vue du port, CC BY-SA 4.0"
+        },
+        {
+          "eventId": "apply-3360c32f-5274-49c7-b87f-4a75d8dc9f96",
+          "appliedAt": "2026-10-28T20:30:43.032Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:apply:3360c32f-5274-49c7-b87f-4a75d8dc9f96",
+          "auditEvidence": null,
+          "summary": "Publication des trois photographies sur la fiche masquée"
+        },
+        {
+          "eventId": "apply-ce166922-fd88-4d66-9d42-fe6dd3da0c50",
+          "appliedAt": "2026-10-28T20:31:39.459Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:apply:ce166922-fd88-4d66-9d42-fe6dd3da0c50",
+          "auditEvidence": null,
+          "summary": "Publication de la chronologie sourcée"
+        },
+        {
+          "eventId": "apply-cfe33c55-d98f-41fe-be83-21b462320886",
+          "appliedAt": "2026-10-28T20:34:11.527Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+          "evidence": "PARK_DATA_EDITOR:apply:cfe33c55-d98f-41fe-be83-21b462320886",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-fi-skywheel-20261028/skywheel-audit.json",
+          "summary": "Réécriture du résumé historique sans mesure technique brute"
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus. Vérifier les mises à jour saisonnières des horaires et tarifs sur le site officiel ; ne pas republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "SkyWheel Helsinki — site officiel, adresse et tarifs",
+          "url": "https://skywheel.fi/en/home/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "SkyWheel Helsinki — FAQ, accès et durée",
+          "url": "https://skywheel.fi/en/faq/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Finnair — annonce de l’ouverture du 3 juin 2014",
+          "url": "https://news.cision.com/finnair/r/finnair-skywheel-arrives-in-helsinki%2Cc9594886",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue nocturne de SkyWheel",
+          "url": "https://commons.wikimedia.org/wiki/File:SkyWheel_Helsinki_pimeällä.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue depuis Allas Sea Pool",
+          "url": "https://commons.wikimedia.org/wiki/File:Allas_Sea_Pool,_SkyWheel,_Helsinki_-_20251211_-_30.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue depuis Hotel Pier 4",
+          "url": "https://commons.wikimedia.org/wiki/File:SkyWheel_Helsinki_seen_from_rooftop_terrace_at_Hotel_Pier_4_on_a_sunny_afternoon_in_October_2025.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "SkyWheel Helsinki",
+            "source": "SkyWheel Helsinki — site officiel",
+            "url": "https://skywheel.fi/en/home/",
+            "family": "Grande roue",
+            "sourceVenueName": "SkyWheel Helsinki",
+            "sourceLifecycleSignal": "Billetterie et horaires actifs en octobre 2026.",
+            "matchingMethod": "Recherche officielle Park et Standalone sans correspondance ; adresse et ancien nom rapprochés.",
+            "sourceLocality": "Helsinki",
+            "referenceId": "skywheel-helsinki-official"
+          }
+        ],
+        "rationale": "Grande roue fixe autonome, exploitant et billetterie propres ; créée et publiée après recherches de doublons. Trois photographies spécifiques CC BY-SA 4.0 et audit public à 100/100."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ae6f1412-46ec-4202-a74b-78fb4c5cac63/skywheel-helsinki",
+          "publishedAtUtc": "2026-10-28T20:35:29.955Z",
+          "verifiedAtUtc": "2026-10-28T20:35:42.774Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2002d521-5ab5-4996-90ef-e3898b86884b"
+        },
+        "facebook": {
+          "id": "53ac954dedfc4a688572e90f4e22fe3e",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T20:36:26.059Z",
+          "externalPostId": "1285475681307050_122125089393424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125089393424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:53ac954dedfc4a688572e90f4e22fe3e"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-fi-skywheel-20261028/skywheel-audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 0
       }
     },
     {
