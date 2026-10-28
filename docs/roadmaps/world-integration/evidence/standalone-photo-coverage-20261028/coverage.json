@@ -1,9 +1,9 @@
 {
-  "checkedAtUtc": "2026-10-28T17:21:42.585Z",
+  "checkedAtUtc": "2026-10-28T17:39:05.992Z",
   "method": "Public French attraction page HTTP 200; an attraction-owned binary og:image counts as a representative photo, generic site logo does not.",
   "totalPublishedStandalone": 128,
-  "withRepresentativePhoto": 118,
-  "withoutRepresentativePhoto": 10,
+  "withRepresentativePhoto": 119,
+  "withoutRepresentativePhoto": 9,
   "entries": [
     {
       "country": "AE",
@@ -1154,8 +1154,8 @@
       "name": "Wings Over Washington",
       "siteId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
       "pageStatus": 200,
-      "hasRepresentativePhoto": false,
-      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/5a44892b948a4e768a206c492bd04612/social-preview-v2"
     }
   ]
 }

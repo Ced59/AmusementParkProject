@@ -1,5 +1,5 @@
 {
-  "checkedAtUtc": "2026-10-28T17:22:46.164Z",
+  "checkedAtUtc": "2026-10-28T17:39:05.992Z",
   "items": [
     {
       "country": "US",
@@ -16,7 +16,7 @@
       "importEvidence": "PARK_DATA_EDITOR:ImportPhoto:d31e892b00ff4c788eb535400af9dd9d",
       "publicationApplyOperationId": "d6566bc7-0e8f-49c8-a6f8-682ebcdd36a7",
       "photoPublishedAtUtc": "2026-10-28T17:14:37.6602284Z",
-      "publicUrl": "https://amusement-parks.fun/fr/attraction/6256ae91-3f69-4198-b8e0-8170e21fe6e7/x",
+      "publicUrl": "https://amusement-parks.fun/fr/attraction/6256ae91-3f69-4198-b8e0-8170e21fe6e7/flyover-america",
       "completenessScore": 90,
       "publicationBlockers": [],
       "localizedImageFields": {
@@ -41,7 +41,7 @@
       "importEvidence": "PARK_DATA_EDITOR:ImportPhoto:6e66a56de809450488a20e6ec7848c23",
       "publicationApplyOperationId": "85f668dc-0119-4bb4-9103-577202d595cf",
       "photoPublishedAtUtc": "2026-10-28T17:20:20.44207Z",
-      "publicUrl": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/x",
+      "publicUrl": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
       "completenessScore": 87,
       "publicationBlockers": [],
       "localizedImageFields": {
@@ -50,6 +50,31 @@
         "credits": 8
       },
       "exportSha256": "e301961cb52e99228a5d7d40a8165560e81512f4d6802dd10ab33b0945980024"
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-ec2477b8468fba",
+      "name": "Wings Over Washington",
+      "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+      "imageId": "5a44892b948a4e768a206c492bd04612",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53023089932/",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedOn": "2023-07-02",
+      "importedAtUtc": "2026-10-28T17:35:53.263Z",
+      "importEvidence": "PARK_DATA_EDITOR:ImportPhoto:5a44892b948a4e768a206c492bd04612",
+      "publicationApplyOperationId": "054134f4-eea9-4bbd-a34d-2b4f1616d3b5",
+      "photoPublishedAtUtc": "2026-10-28T17:36:57.9434675Z",
+      "publicUrl": "https://amusement-parks.fun/fr/attraction/3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd/wings-over-washington",
+      "completenessScore": 95,
+      "publicationBlockers": [],
+      "localizedImageFields": {
+        "altTexts": 8,
+        "captions": 8,
+        "credits": 8
+      },
+      "exportSha256": "c5cb38fbba84faef7d30680de3bf242691a42bad523cf4a1efe798b9152864b6"
     }
   ]
 }

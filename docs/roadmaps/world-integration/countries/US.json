@@ -70229,7 +70229,7 @@
         "Wings over Washington"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T13:06:04.477Z",
+      "lastDataIntegrationAt": "2026-10-28T17:35:53.263Z",
       "integrationHistory": [
         {
           "eventId": "apply-4e91ebc7-73cd-4b68-8818-fb53350b7baf",
@@ -70300,9 +70300,19 @@
           "evidence": "PARK_DATA_EDITOR:apply:29c60263-c2e7-4dc8-8693-dd51f6444035",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/wings-over-washington-audit.json",
           "summary": "Audit final 89/100 sans blocage ; site et Facebook publiés."
+        },
+        {
+          "eventId": "import-photo-5a44892b948a4e768a206c492bd04612",
+          "appliedAt": "2026-10-28T17:35:53.263Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:5a44892b948a4e768a206c492bd04612",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261028/photo-additions.json",
+          "summary": "Photographie de l’enseigne de Wings Over Washington importée, créditée et localisée en huit langues."
         }
       ],
-      "nextAction": "Conserver la ligne ; clarifier l’heure du dernier embarquement, les âges et frais des billets, la validité contradictoire de la FAQ et obtenir une photo réutilisable.",
+      "nextAction": "Conserver la ligne ; clarifier l’heure du dernier embarquement, les âges et frais des billets ainsi que la validité contradictoire de la FAQ.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
