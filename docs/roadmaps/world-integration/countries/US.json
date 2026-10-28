@@ -10021,38 +10021,182 @@
     },
     {
       "entryId": "US-candidate-01cb30201aa0db",
-      "name": "Capital Wheel",
-      "entityKind": "ToQualify",
+      "name": "The Capital Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "National Harbor, Maryland",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "141 American Way, National Harbor, Maryland",
+      "siteId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T22:08:28.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating — billetterie et FAQ officielles actives en octobre 2026 ; horaires du jour affichés sur le site de l’exploitant.",
+      "identityConfidence": "Grande roue à billet propre sur le front de mer de National Harbor ; recherches officielles Park et Standalone sur Capital Wheel et National Harbor sans fiche correspondante.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Capital Wheel",
+        "National Harbor Capital Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T22:04:12.811Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-82bb3c86-acbb-4b3c-adc5-5522f59fff31",
+          "appliedAt": "2026-10-28T22:01:53.853Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:apply:82bb3c86-acbb-4b3c-adc5-5522f59fff31",
+          "auditEvidence": null,
+          "summary": "Création privée de The Capital Wheel et descriptions éditoriales en huit langues"
+        },
+        {
+          "eventId": "apply-fd6d37c0-0e85-47f5-a898-460bb8050b14",
+          "appliedAt": "2026-10-28T22:02:28.322Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:apply:fd6d37c0-0e85-47f5-a898-460bb8050b14",
+          "auditEvidence": null,
+          "summary": "Six tarifs vérifiés dans la FAQ officielle, taxes et conditions précisées"
+        },
+        {
+          "eventId": "apply-53d46998-c72e-4740-b49e-d931e5cee92a",
+          "appliedAt": "2026-10-28T22:03:02.266Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:apply:53d46998-c72e-4740-b49e-d931e5cee92a",
+          "auditEvidence": null,
+          "summary": "Ouverture de mai 2014 documentée dans huit langues"
+        },
+        {
+          "eventId": "image-a70362d25e014aba9c0e395bdc197227",
+          "appliedAt": "2026-10-28T22:03:27.867Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:image:a70362d25e014aba9c0e395bdc197227",
+          "auditEvidence": null,
+          "summary": "Photographie propre de The Capital Wheel #3 importée avec auteur, licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-5efaf5fdcf51469cb25278c2e80ecc85",
+          "appliedAt": "2026-10-28T22:03:57.754Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:image:5efaf5fdcf51469cb25278c2e80ecc85",
+          "auditEvidence": null,
+          "summary": "Photographie propre de The Capital Wheel #4 importée avec auteur, licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-dcb789168b1a44a5a7d1f7e304ae61dc",
+          "appliedAt": "2026-10-28T22:04:12.811Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:image:dcb789168b1a44a5a7d1f7e304ae61dc",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-capital-wheel-20261028/capital-wheel-audit.json",
+          "summary": "Photographie propre de The Capital Wheel #5 importée avec auteur, licence et légendes en huit langues"
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus. Renseigner les horaires seulement après vérification du calendrier hebdomadaire de l’exploitant ; recontrôler les tarifs et rechercher une photographie spécifique du jour d’ouverture. Ne pas republier le post Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The Capital Wheel — site officiel et horaires du jour",
+          "url": "https://thecapitalwheel.com/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "The Capital Wheel — FAQ, tarifs et accessibilité",
+          "url": "https://thecapitalwheel.com/faq/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "The Capital Wheel — billetterie",
+          "url": "https://thecapitalwheel.com/tickets/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "National Harbor — présentation et adresse",
+          "url": "https://www.nationalharbor.com/directory/the-capital-wheel/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "National Harbor — ouverture en 2014",
+          "url": "https://www.nationalharbor.com/capital-wheel-national-harbor-names-theme-park-veteran-derek-lovato-vice-president-general-manager/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "NBC4 Washington — ouverture prévue le 23 mai 2014",
+          "url": "https://www.nbcwashington.com/news/local/capital-wheel-to-open-may-23-at-national-harbor/1968576/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie The Capital Wheel #3",
+          "url": "https://commons.wikimedia.org/wiki/File:Capital_Wheel_by_Day_%2815003014884%29.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie The Capital Wheel #4",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Capital_wheel_and_a_setting_sun.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie The Capital Wheel #5",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Capital_Wheel_at_National_Harbor.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "The Capital Wheel",
+            "source": "The Capital Wheel — site officiel",
+            "url": "https://thecapitalwheel.com/",
+            "family": "Grande roue",
+            "sourceVenueName": "National Harbor waterfront",
+            "sourceLifecycleSignal": "Billetterie et horaires du jour actifs en octobre 2026.",
+            "matchingMethod": "Recherches Park et Standalone sans correspondance ; billet propre.",
+            "sourceLocality": "National Harbor",
+            "referenceId": "capital-wheel-official"
+          }
+        ],
+        "rationale": "Grande roue à billet propre sur une promenade avec commerces et autres activités, sans parc d’attractions parent catalogué. Trois photos propres vérifiées, audit public 89/100 sans bloqueur ; calendrier hebdomadaire à vérifier."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b0335449-d1b1-43b0-a39f-fed9b33742ff/the-capital-wheel",
+          "publishedAtUtc": "2026-10-28T22:06:50.039Z",
+          "verifiedAtUtc": "2026-10-28T22:08:28.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:b112c191-c248-41f3-865f-d81ce9eb4f7e"
+        },
+        "facebook": {
+          "id": "f72cc14144e942b8b4cc1b4b69701d64",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T22:07:54.143Z",
+          "externalPostId": "1285475681307050_122125096389424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125096389424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:f72cc14144e942b8b4cc1b4b69701d64"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-capital-wheel-20261028/capital-wheel-audit.json",
+        "score": 89,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
