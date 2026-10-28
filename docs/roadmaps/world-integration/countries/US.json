@@ -20153,7 +20153,7 @@
           "summary": "Photographie spécifique de FlyOver America importée, créditée et localisée en huit langues."
         }
       ],
-      "nextAction": "Conserver la ligne ; préciser la position intérieure, clarifier les horaires du samedi et renouveler les tarifs avec taxes.",
+      "nextAction": "Conserver la ligne ; préciser la position intérieure, clarifier les horaires du samedi et renouveler les tarifs avec taxes. Rechercher une seconde photo montrant cette attraction, avec droits de réutilisation et crédit vérifiés.",
       "sources": [
         {
           "label": "Brogent — projet constructeur",
@@ -70229,7 +70229,7 @@
         "Wings over Washington"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-28T17:35:53.263Z",
+      "lastDataIntegrationAt": "2026-10-28T18:05:03.115Z",
       "integrationHistory": [
         {
           "eventId": "apply-4e91ebc7-73cd-4b68-8818-fb53350b7baf",
@@ -70310,6 +70310,26 @@
           "evidence": "PARK_DATA_EDITOR:ImportPhoto:5a44892b948a4e768a206c492bd04612",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261028/photo-additions.json",
           "summary": "Photographie de l’enseigne de Wings Over Washington importée, créditée et localisée en huit langues."
+        },
+        {
+          "eventId": "import-photo-c7e62b999e0b4b91afed3adcf7501563",
+          "appliedAt": "2026-10-28T18:04:37.829Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:c7e62b999e0b4b91afed3adcf7501563",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-depth-20261028/SOURCES.md",
+          "summary": "Photo CC BY 2.0 de la salle d’attente importée ; publication vérifiée dans la galerie publique."
+        },
+        {
+          "eventId": "import-photo-2250eecd403b486992501ceb554e605f",
+          "appliedAt": "2026-10-28T18:05:03.115Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:2250eecd403b486992501ceb554e605f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-depth-20261028/SOURCES.md",
+          "summary": "Photo CC BY 2.0 du cinéma volant importée ; publication vérifiée dans la galerie publique."
         }
       ],
       "nextAction": "Conserver la ligne ; clarifier l’heure du dernier embarquement, les âges et frais des billets ainsi que la validité contradictoire de la FAQ.",

@@ -764,7 +764,7 @@
         "Attraction ltd. Tbilisi, Georgia"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T07:33:14.363Z",
+      "lastDataIntegrationAt": "2026-10-28T18:15:04.695Z",
       "integrationHistory": [
         {
           "eventId": "apply-e0c68a35-3641-4a7a-ab8f-d7301f522a7e",
@@ -875,6 +875,16 @@
           "evidence": "PARK_DATA_EDITOR:apply:4e57cf48-925f-470f-8181-e8f8625b6a63",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ge-20261023/tbilisi-audit.json",
           "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 80/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        },
+        {
+          "eventId": "import-photo-106f7ff5ef5244fc978495b302c1b7cd",
+          "appliedAt": "2026-10-28T18:15:04.695Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:106f7ff5ef5244fc978495b302c1b7cd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-depth-20261028/SOURCES.md",
+          "summary": "Photo CC BY-SA 4.0 du ballon de Tbilissi importée ; publication vérifiée dans la galerie publique."
         }
       ],
       "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",

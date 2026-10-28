@@ -5,6 +5,9 @@ import { ActivatedRoute, convertToParamMap, provideRouter } from '@angular/route
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of, Subject } from 'rxjs';
 
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { TranslationService } from '@app/services/translation.service';
@@ -21,13 +24,19 @@ import { StandaloneAttractionVisitorInformationFacade } from './standalone-attra
 describe('StandaloneAttractionDetailPageComponent access conditions', () => {
   let fixture: ComponentFixture<StandaloneAttractionDetailPageComponent>;
   let response: Subject<StandaloneAttraction>;
+  let imagesResponse: Subject<ImageDto[]>;
   let languageChanged: Subject<string>;
   let preferredSystem: ReturnType<typeof signal<MeasurementSystem>>;
+  let getImages: ReturnType<typeof vi.fn>;
+  let applySeo: ReturnType<typeof vi.fn>;
 
   beforeEach(async () => {
     response = new Subject<StandaloneAttraction>();
+    imagesResponse = new Subject<ImageDto[]>();
     languageChanged = new Subject<string>();
     preferredSystem = signal<MeasurementSystem>('Metric');
+    getImages = vi.fn().mockReturnValue(imagesResponse);
+    applySeo = vi.fn();
     await TestBed.configureTestingModule({
       imports: [StandaloneAttractionDetailPageComponent, TranslateModule.forRoot()],
       providers: [
@@ -39,11 +48,15 @@ describe('StandaloneAttractionDetailPageComponent access conditions', () => {
           parent: null
         } },
         { provide: StandaloneAttractionsApiService, useValue: { getById: () => response } },
-        { provide: ImagesApiService, useValue: { getImages: () => of([]) } },
+        { provide: ImagesApiService, useValue: {
+          getImages,
+          resolveImageUrl: (imageId: string) => `/images/${imageId}`,
+          buildImageSrcSet: () => null
+        } },
         { provide: TranslationService, useValue: { getCurrentLang: () => 'fr', languageChanged } },
         { provide: MeasurementPreferenceService, useValue: { preferredSystem } },
         { provide: CountryDisplayService, useValue: { resolveLocalizedCountryName: () => 'France' } },
-        { provide: SeoService, useValue: { applyStandaloneAttractionSeo: () => undefined } },
+        { provide: SeoService, useValue: { applyStandaloneAttractionSeo: applySeo } },
         { provide: MapMarkerPopupActionService, useValue: {} }
       ]
     }).overrideComponent(StandaloneAttractionDetailPageComponent, {
@@ -133,7 +146,60 @@ describe('StandaloneAttractionDetailPageComponent access conditions', () => {
       expect(fixture.nativeElement.querySelector('app-attraction-access-conditions')).toBeNull();
     }
   );
+
+  it('shows the full photo gallery, keeps the current photo as hero and lets visitors select another view', () => {
+    response.next(createAttraction());
+    imagesResponse.next([createPhoto('photo-latest', false), createPhoto('photo-current', true)]);
+    fixture.detectChanges();
+
+    expect(getImages).toHaveBeenCalledWith(
+      ImageOwnerType.STANDALONE_ATTRACTION,
+      'standalone-1',
+      ImageCategory.STANDALONE_ATTRACTION,
+      1,
+      50,
+      expect.anything()
+    );
+    expect(fixture.nativeElement.querySelector('.standalone-main__media img').getAttribute('src')).toContain('photo-current');
+    expect(fixture.nativeElement.querySelectorAll('.standalone-main__thumbnail').length).toBe(2);
+    expect(fixture.nativeElement.querySelector('.standalone-main__photo-details').textContent).toContain('Légende photo-current');
+    expect(applySeo.mock.lastCall?.[4]).toBe('photo-current');
+
+    const thumbnails: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll('.standalone-main__thumbnail');
+    thumbnails[0].click();
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.standalone-main__media img').getAttribute('src')).toContain('photo-latest');
+    expect(thumbnails[0].getAttribute('aria-pressed')).toBe('true');
+    expect(fixture.nativeElement.querySelector('.standalone-main__photo-details').textContent).toContain('Crédit photo : Auteur');
+    expect(applySeo.mock.lastCall?.[4]).toBe('photo-current');
+
+    languageChanged.next('en');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.standalone-main__media img').getAttribute('alt')).toBe('English photo-latest');
+  });
 });
+
+function createPhoto(id: string, isCurrent: boolean): ImageDto {
+  return {
+    id,
+    category: ImageCategory.STANDALONE_ATTRACTION,
+    ownerType: ImageOwnerType.STANDALONE_ATTRACTION,
+    ownerId: 'standalone-1',
+    isCurrent,
+    isPublished: true,
+    isWatermarked: false,
+    width: 1200,
+    height: 800,
+    sizeInBytes: 1000,
+    altTexts: [{ languageCode: 'fr', value: `Photo française ${id}` }, { languageCode: 'en', value: `English ${id}` }],
+    captions: [{ languageCode: 'fr', value: `Légende ${id}` }],
+    credits: [{ languageCode: 'fr', value: 'Auteur' }],
+    sourceUrl: 'https://example.com/photo',
+    tagIds: [],
+    createdAt: '2026-10-28T00:00:00Z',
+    updatedAt: '2026-10-28T00:00:00Z'
+  };
+}
 
 function createAttraction(): StandaloneAttraction {
   return {
