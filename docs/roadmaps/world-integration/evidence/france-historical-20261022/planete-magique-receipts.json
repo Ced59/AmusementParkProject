@@ -108,6 +108,249 @@
         "zoneId"
       ],
       "summary": "Inventaire historique :20lieux complémentaires, dont4espaces de restauration,3salles publiques,2boutiques et11services ; seule entrée Papin géolocalisée, tout reste masqué."
+    },
+    {
+      "eventId": "apply-9cde9c18-ed88-4e52-92ed-4c6e9d9a6a10",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:07:36.3356779Z",
+      "appliedAt": "2026-10-28T22:07:36.335Z",
+      "receiptFile": "04-park-apply.receipt.json",
+      "receiptSha256": "6c66a172cd86630dffde6db676eb79d427f9fe2c46df180c716fc44c0a752bab",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description éditoriale du parc rédigée et relue en huit langues, avec cinq paragraphes et trois sections ; difficultés des installations et reconversion2011 distinguées, parc masqué."
+    },
+    {
+      "eventId": "apply-92242e70-65db-4bce-b313-c9a35bd0a9d5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:19:22.7568492Z",
+      "appliedAt": "2026-10-28T22:19:22.756Z",
+      "receiptFile": "04-major-experiences-v2-apply.receipt.json",
+      "receiptSha256": "b6914620cc2613ac43c4394c70acaae00718e0350f937387bdf3e44bd35c2de9",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "48 descriptions des six expériences majeures intégrées en huit langues après relecture et comparaison du Preview ; limites de fonctionnement Navette/Apesantaria préservées ; parc masqué."
+    },
+    {
+      "eventId": "apply-c4e80f74-0bfc-4e59-9640-cb1504d3ffa2",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:25:34.3029482Z",
+      "appliedAt": "2026-10-28T22:25:34.302Z",
+      "receiptFile": "04-characters-apply.receipt.json",
+      "receiptSha256": "1047c26113a3a9b8d2ab40eaab40dfb9a041db4b17b650d313b8615128c17cdb",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "48 descriptions de BD Zap, Aladin, Maison de Barbie, Gadget, Entrechats et Vecteur beauté appliquées ; huit langues et inspection photographique ; exceptions de longueur documentées."
+    },
+    {
+      "eventId": "apply-24870585-7965-41f4-ae1b-11f7c10e41dd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:32:13.4227618Z",
+      "appliedAt": "2026-10-28T22:32:13.422Z",
+      "receiptFile": "04-games-apply.receipt.json",
+      "receiptSha256": "4aaa570a26a20e6eb7a4c0ad81dd15e2fad2965f65fbe2b0eaf6c70ea0f7a6f0",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "48 descriptions de Dragon bleu, Planète Roll, Triangle des Bermudes, Planète molle, Transistor et Bouquet intégrées en huit langues ; décors vérifiés et exceptions de longueur documentées."
+    },
+    {
+      "eventId": "apply-29f73de4-5c39-4741-a36d-f6cbcdadfe66",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:36:31.2404388Z",
+      "appliedAt": "2026-10-28T22:36:31.240Z",
+      "receiptFile": "04-minor-apply.receipt.json",
+      "receiptSha256": "65f979e7e8cee0ca0adcb76cef7bab0f51cf846dfc205c3458a71444f91a7fd0",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "56 descriptions courtes sourcées de sept espaces historiques intégrées en huit langues ; lacunes de scénario et images non identifiées documentées sans invention."
+    },
+    {
+      "eventId": "apply-cac10888-e50b-431c-a032-770a6c27320b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:40:01.1440888Z",
+      "appliedAt": "2026-10-28T22:40:01.144Z",
+      "receiptFile": "04-food-apply.receipt.json",
+      "receiptSha256": "82ed8bed1f3a6a3a995610c7c2262ef4aa28f3d3f26c064e26d03f6a6cee1faa",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "32 descriptions historiques des quatre espaces de restauration intégrées dans huit langues ; cartes et décors sourcés, deux salles du restaurant principal explicitement reliées."
+    },
+    {
+      "eventId": "apply-f1babd06-e5d4-4a17-9255-9ac51caa8ab3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:43:07.245876Z",
+      "appliedAt": "2026-10-28T22:43:07.245Z",
+      "receiptFile": "04-venues-apply.receipt.json",
+      "receiptSha256": "1851eeb825b8a40cff892a22f0b66b86f6766e6cee07878b6746f098b25b2496",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "40 descriptions des deux boutiques, Planet Ciné, Orphée Théâtre et Studio TV intégrées en huit langues ; programmes historiques et usages réels sourcés."
+    },
+    {
+      "eventId": "apply-3c0e3ef4-8f0f-407e-9555-a74e35cf4c75",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:45:19.7581953Z",
+      "appliedAt": "2026-10-28T22:45:19.758Z",
+      "receiptFile": "04-services-apply.receipt.json",
+      "receiptSha256": "f8aaa466e36d8f554f8f61925564f7729e519b68215874e27ee8d4593696ac57",
+      "counts": {
+        "created": 0,
+        "updated": 11,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "88 descriptions des onze services et de la promenade Comète intégrées en huit langues ; fonctions, décors et niveaux sourcés, lacunes courtes documentées, coordonnées non extrapolées."
+    },
+    {
+      "eventId": "apply-def3411e-f9a9-4027-a67b-3543e8a81c25",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:47:19.7478003Z",
+      "appliedAt": "2026-10-28T22:47:19.747Z",
+      "receiptFile": "04-zone-apply.receipt.json",
+      "receiptSha256": "904c022ccd08ac7ae0c446d402f37279fc77550a3134a8606621143ea8d265b3",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Huit descriptions du Village mexicain intégrées ; lumière, décors, accès Cités d’Or/Eldorado/El Gringo sourcés ; aucun changement de visibilité."
     }
   ],
   "publicationOrNoop": []

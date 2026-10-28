@@ -1,0 +1,1163 @@
+{
+  "entryId": "FR-candidate-ecdb81d09bead4",
+  "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+  "state": "partial",
+  "appliedDescriptions": [
+    {
+      "family": "items",
+      "key": "navette",
+      "id": "13d7e812-3d55-41a8-a5e9-6e99e9d5609c",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 134,
+        "en": 127,
+        "de": 128,
+        "nl": 128,
+        "it": 126,
+        "es": 135,
+        "pl": 100,
+        "pt": 128
+      }
+    },
+    {
+      "family": "items",
+      "key": "apesantaria",
+      "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 117,
+        "en": 113,
+        "de": 101,
+        "nl": 121,
+        "it": 106,
+        "es": 122,
+        "pl": 94,
+        "pt": 115
+      }
+    },
+    {
+      "family": "items",
+      "key": "talisman",
+      "id": "d9573431-d334-4da0-b62c-306d34750100",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 137,
+        "en": 118,
+        "de": 128,
+        "nl": 125,
+        "it": 132,
+        "es": 137,
+        "pl": 105,
+        "pt": 129
+      }
+    },
+    {
+      "family": "items",
+      "key": "ouragan",
+      "id": "e44e3831-9825-4ddf-a5ee-b3738f75a986",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 128,
+        "en": 115,
+        "de": 114,
+        "nl": 119,
+        "it": 118,
+        "es": 127,
+        "pl": 94,
+        "pt": 122
+      }
+    },
+    {
+      "family": "items",
+      "key": "voyage-temps",
+      "id": "d5d98cbf-0f6b-4f24-b5d8-83c215031ec9",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 145,
+        "en": 136,
+        "de": 132,
+        "nl": 141,
+        "it": 129,
+        "es": 144,
+        "pl": 115,
+        "pt": 140
+      }
+    },
+    {
+      "family": "items",
+      "key": "cites-or",
+      "id": "dd7ea24c-0480-49ec-9fdd-6358a51d977b",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 143,
+        "en": 128,
+        "de": 126,
+        "nl": 133,
+        "it": 129,
+        "es": 140,
+        "pl": 108,
+        "pt": 136
+      }
+    },
+    {
+      "family": "items",
+      "key": "dragon-bleu",
+      "id": "73973e4f-1358-4a2f-b005-ebad4e6da35a",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 102,
+        "en": 99,
+        "de": 95,
+        "nl": 96,
+        "it": 93,
+        "es": 102,
+        "pl": 78,
+        "pt": 102
+      }
+    },
+    {
+      "family": "items",
+      "key": "bd-zap",
+      "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 118,
+        "en": 102,
+        "de": 100,
+        "nl": 100,
+        "it": 104,
+        "es": 108,
+        "pl": 88,
+        "pt": 103
+      }
+    },
+    {
+      "family": "items",
+      "key": "aladin",
+      "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 96,
+        "en": 81,
+        "de": 86,
+        "nl": 80,
+        "it": 88,
+        "es": 96,
+        "pl": 75,
+        "pt": 89
+      }
+    },
+    {
+      "family": "items",
+      "key": "maison-barbie",
+      "id": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 111,
+        "en": 94,
+        "de": 92,
+        "nl": 93,
+        "it": 98,
+        "es": 110,
+        "pl": 79,
+        "pt": 108
+      }
+    },
+    {
+      "family": "items",
+      "key": "gadget",
+      "id": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 102,
+        "en": 86,
+        "de": 93,
+        "nl": 98,
+        "it": 95,
+        "es": 98,
+        "pl": 79,
+        "pt": 96
+      }
+    },
+    {
+      "family": "items",
+      "key": "entrechats",
+      "id": "d533ee04-5159-442f-82fb-3941d2ff4086",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 97,
+        "en": 89,
+        "de": 83,
+        "nl": 89,
+        "it": 89,
+        "es": 93,
+        "pl": 73,
+        "pt": 90
+      }
+    },
+    {
+      "family": "items",
+      "key": "vecteur-beaute",
+      "id": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 102,
+        "en": 85,
+        "de": 82,
+        "nl": 88,
+        "it": 93,
+        "es": 95,
+        "pl": 74,
+        "pt": 92
+      }
+    },
+    {
+      "family": "items",
+      "key": "cartoon-center",
+      "id": "f21c94e8-ce22-4cc1-ba57-0f841359df6e",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 39,
+        "en": 39,
+        "de": 34,
+        "nl": 38,
+        "it": 38,
+        "es": 39,
+        "pl": 32,
+        "pt": 38
+      }
+    },
+    {
+      "family": "items",
+      "key": "planete-roll",
+      "id": "63e345fc-1cd1-468e-80db-0fa62a1fd612",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 94,
+        "en": 79,
+        "de": 76,
+        "nl": 82,
+        "it": 81,
+        "es": 88,
+        "pl": 64,
+        "pt": 83
+      }
+    },
+    {
+      "family": "items",
+      "key": "triangle-bermudes",
+      "id": "56eb5fd1-d60f-4d37-9844-0e1df416963e",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 96,
+        "en": 82,
+        "de": 76,
+        "nl": 84,
+        "it": 84,
+        "es": 89,
+        "pl": 76,
+        "pt": 84
+      }
+    },
+    {
+      "family": "items",
+      "key": "transistor",
+      "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 101,
+        "en": 91,
+        "de": 84,
+        "nl": 88,
+        "it": 87,
+        "es": 100,
+        "pl": 70,
+        "pt": 93
+      }
+    },
+    {
+      "family": "items",
+      "key": "toboggan",
+      "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 29,
+        "en": 31,
+        "de": 30,
+        "nl": 29,
+        "it": 28,
+        "es": 29,
+        "pl": 25,
+        "pt": 29
+      }
+    },
+    {
+      "family": "items",
+      "key": "bouquet",
+      "id": "7bae4ee1-e114-45a6-8e03-79ee6c993b9b",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 96,
+        "en": 89,
+        "de": 81,
+        "nl": 90,
+        "it": 88,
+        "es": 91,
+        "pl": 73,
+        "pt": 91
+      }
+    },
+    {
+      "family": "items",
+      "key": "planete-molle",
+      "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 98,
+        "en": 93,
+        "de": 85,
+        "nl": 87,
+        "it": 87,
+        "es": 98,
+        "pl": 78,
+        "pt": 90
+      }
+    },
+    {
+      "family": "items",
+      "key": "arbre-parfum",
+      "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 32,
+        "en": 31,
+        "de": 32,
+        "nl": 34,
+        "it": 33,
+        "es": 33,
+        "pl": 30,
+        "pt": 31
+      }
+    },
+    {
+      "family": "items",
+      "key": "eldorado",
+      "id": "6485bef2-862a-4e33-9124-f6b6a2c32148",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 45,
+        "en": 43,
+        "de": 36,
+        "nl": 41,
+        "it": 43,
+        "es": 43,
+        "pl": 35,
+        "pt": 44
+      }
+    },
+    {
+      "family": "items",
+      "key": "nintendo",
+      "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 29,
+        "en": 28,
+        "de": 29,
+        "nl": 28,
+        "it": 27,
+        "es": 29,
+        "pl": 23,
+        "pt": 26
+      }
+    },
+    {
+      "family": "items",
+      "key": "jackpot",
+      "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 23,
+        "en": 21,
+        "de": 22,
+        "nl": 24,
+        "it": 23,
+        "es": 24,
+        "pl": 18,
+        "pt": 21
+      }
+    },
+    {
+      "family": "items",
+      "key": "musee-espace",
+      "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 24,
+        "en": 26,
+        "de": 27,
+        "nl": 26,
+        "it": 24,
+        "es": 26,
+        "pl": 24,
+        "pt": 24
+      }
+    },
+    {
+      "family": "items",
+      "key": "croq-planete",
+      "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 97,
+        "en": 89,
+        "de": 87,
+        "nl": 89,
+        "it": 91,
+        "es": 95,
+        "pl": 80,
+        "pt": 92
+      }
+    },
+    {
+      "family": "items",
+      "key": "el-gringo",
+      "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 112,
+        "en": 108,
+        "de": 93,
+        "nl": 100,
+        "it": 103,
+        "es": 113,
+        "pl": 80,
+        "pt": 106
+      }
+    },
+    {
+      "family": "items",
+      "key": "mirage-electrons",
+      "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 114,
+        "en": 100,
+        "de": 90,
+        "nl": 89,
+        "it": 98,
+        "es": 111,
+        "pl": 80,
+        "pt": 99
+      }
+    },
+    {
+      "family": "items",
+      "key": "belle-eugenie",
+      "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 112,
+        "en": 96,
+        "de": 93,
+        "nl": 97,
+        "it": 105,
+        "es": 105,
+        "pl": 86,
+        "pt": 104
+      }
+    },
+    {
+      "family": "items",
+      "key": "planet-cine",
+      "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 113,
+        "en": 97,
+        "de": 79,
+        "nl": 90,
+        "it": 94,
+        "es": 100,
+        "pl": 82,
+        "pt": 93
+      }
+    },
+    {
+      "family": "items",
+      "key": "orphee-theatre",
+      "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 106,
+        "en": 101,
+        "de": 91,
+        "nl": 98,
+        "it": 95,
+        "es": 106,
+        "pl": 83,
+        "pt": 99
+      }
+    },
+    {
+      "family": "items",
+      "key": "studio-tv",
+      "id": "dab88ec9-a998-4850-a908-f5c257121758",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 109,
+        "en": 88,
+        "de": 82,
+        "nl": 88,
+        "it": 90,
+        "es": 91,
+        "pl": 75,
+        "pt": 94
+      }
+    },
+    {
+      "family": "items",
+      "key": "boutique-principale",
+      "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 105,
+        "en": 102,
+        "de": 85,
+        "nl": 96,
+        "it": 89,
+        "es": 101,
+        "pl": 83,
+        "pt": 95
+      }
+    },
+    {
+      "family": "items",
+      "key": "boutique-partenaires",
+      "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 104,
+        "en": 86,
+        "de": 77,
+        "nl": 85,
+        "it": 90,
+        "es": 94,
+        "pl": 77,
+        "pt": 96
+      }
+    },
+    {
+      "family": "items",
+      "key": "comete",
+      "id": "a613df39-66f9-424b-b6c7-db925094045a",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 115,
+        "en": 98,
+        "de": 99,
+        "nl": 95,
+        "it": 99,
+        "es": 107,
+        "pl": 78,
+        "pt": 104
+      }
+    },
+    {
+      "family": "items",
+      "key": "entree-papin",
+      "id": "4a39d1bd-6380-4280-9e78-e4b2fceb011c",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 32,
+        "en": 27,
+        "de": 29,
+        "nl": 32,
+        "it": 25,
+        "es": 34,
+        "pl": 22,
+        "pt": 30
+      }
+    },
+    {
+      "family": "items",
+      "key": "wc-iles",
+      "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 31,
+        "en": 26,
+        "de": 20,
+        "nl": 22,
+        "it": 29,
+        "es": 29,
+        "pl": 22,
+        "pt": 28
+      }
+    },
+    {
+      "family": "items",
+      "key": "wc-stars",
+      "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 29,
+        "en": 28,
+        "de": 25,
+        "nl": 24,
+        "it": 29,
+        "es": 30,
+        "pl": 20,
+        "pt": 30
+      }
+    },
+    {
+      "family": "items",
+      "key": "wc-scooter",
+      "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 33,
+        "en": 33,
+        "de": 30,
+        "nl": 32,
+        "it": 29,
+        "es": 31,
+        "pl": 27,
+        "pt": 31
+      }
+    },
+    {
+      "family": "items",
+      "key": "wc-telephone",
+      "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 30,
+        "en": 28,
+        "de": 26,
+        "nl": 25,
+        "it": 28,
+        "es": 29,
+        "pl": 21,
+        "pt": 26
+      }
+    },
+    {
+      "family": "items",
+      "key": "accueil-groupes",
+      "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 31,
+        "en": 30,
+        "de": 25,
+        "nl": 27,
+        "it": 27,
+        "es": 32,
+        "pl": 23,
+        "pt": 31
+      }
+    },
+    {
+      "family": "items",
+      "key": "point-rencontre",
+      "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 29,
+        "en": 28,
+        "de": 23,
+        "nl": 23,
+        "it": 25,
+        "es": 29,
+        "pl": 20,
+        "pt": 27
+      }
+    },
+    {
+      "family": "items",
+      "key": "vestiaire",
+      "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 27,
+        "en": 22,
+        "de": 20,
+        "nl": 23,
+        "it": 24,
+        "es": 24,
+        "pl": 16,
+        "pt": 22
+      }
+    },
+    {
+      "family": "items",
+      "key": "point-information",
+      "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 21,
+        "en": 20,
+        "de": 20,
+        "nl": 22,
+        "it": 20,
+        "es": 24,
+        "pl": 16,
+        "pt": 22
+      }
+    },
+    {
+      "family": "items",
+      "key": "espace-bleu",
+      "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wordsByLanguage": {
+        "fr": 10,
+        "en": 12,
+        "de": 10,
+        "nl": 12,
+        "it": 10,
+        "es": 12,
+        "pl": 8,
+        "pt": 12
+      }
+    },
+    {
+      "family": "zones",
+      "key": "village-mexicain",
+      "id": "bb422bb7-7629-4b1a-afb3-cbdb2263f33e",
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "shorterExceptions": [
+    "04-characters-shorter-exceptions.json",
+    "04-games-coverage-and-gaps.json",
+    "04-minor-coverage-and-gaps.json",
+    "04-food-coverage-and-gaps.json",
+    "04-venues-coverage-and-gaps.json",
+    "04-services-coverage-and-gaps.json"
+  ],
+  "remaining": "Media, global references, history and final audit remain. No park publication or Facebook yet.",
+  "imageIdentificationWarnings": [
+    "Gallery31 is website screenshot, not BDZap photo.",
+    "Gallery68–70 labelledNintendo depicts unidentified automata/decor; do not attach toNintendo.",
+    "Gallery61 goldfigure labelledArbreParfum uncorroborated; do not attach.",
+    "ParcsPassion2004photo files have third-party watermark, excluded without editing."
+  ],
+  "unknownDates": "1991 final closure only; no invented day or month."
+}

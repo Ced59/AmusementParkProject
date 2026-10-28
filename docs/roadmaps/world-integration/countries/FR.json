@@ -23438,7 +23438,7 @@
         "Planete Magique"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-28T22:03:37.751Z",
+      "lastDataIntegrationAt": "2026-10-28T22:47:19.747Z",
       "integrationHistory": [
         {
           "eventId": "apply-d5983c1c-6f1c-4229-b4f5-d737e05b4aca",
@@ -23479,9 +23479,99 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-17c8ce9a-e920-4d19-b107-24d78dffd5b1",
           "auditEvidence": null,
           "summary": "Inventaire historique :20lieux complémentaires, dont4espaces de restauration,3salles publiques,2boutiques et11services ; seule entrée Papin géolocalisée, tout reste masqué."
+        },
+        {
+          "eventId": "apply-9cde9c18-ed88-4e52-92ed-4c6e9d9a6a10",
+          "appliedAt": "2026-10-28T22:07:36.335Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-9cde9c18-ed88-4e52-92ed-4c6e9d9a6a10",
+          "auditEvidence": null,
+          "summary": "Description éditoriale du parc rédigée et relue en huit langues, avec cinq paragraphes et trois sections ; difficultés des installations et reconversion2011 distinguées, parc masqué."
+        },
+        {
+          "eventId": "apply-92242e70-65db-4bce-b313-c9a35bd0a9d5",
+          "appliedAt": "2026-10-28T22:19:22.756Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-92242e70-65db-4bce-b313-c9a35bd0a9d5",
+          "auditEvidence": null,
+          "summary": "48 descriptions des six expériences majeures intégrées en huit langues après relecture et comparaison du Preview ; limites de fonctionnement Navette/Apesantaria préservées ; parc masqué."
+        },
+        {
+          "eventId": "apply-c4e80f74-0bfc-4e59-9640-cb1504d3ffa2",
+          "appliedAt": "2026-10-28T22:25:34.302Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-c4e80f74-0bfc-4e59-9640-cb1504d3ffa2",
+          "auditEvidence": null,
+          "summary": "48 descriptions de BD Zap, Aladin, Maison de Barbie, Gadget, Entrechats et Vecteur beauté appliquées ; huit langues et inspection photographique ; exceptions de longueur documentées."
+        },
+        {
+          "eventId": "apply-24870585-7965-41f4-ae1b-11f7c10e41dd",
+          "appliedAt": "2026-10-28T22:32:13.422Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-24870585-7965-41f4-ae1b-11f7c10e41dd",
+          "auditEvidence": null,
+          "summary": "48 descriptions de Dragon bleu, Planète Roll, Triangle des Bermudes, Planète molle, Transistor et Bouquet intégrées en huit langues ; décors vérifiés et exceptions de longueur documentées."
+        },
+        {
+          "eventId": "apply-29f73de4-5c39-4741-a36d-f6cbcdadfe66",
+          "appliedAt": "2026-10-28T22:36:31.240Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-29f73de4-5c39-4741-a36d-f6cbcdadfe66",
+          "auditEvidence": null,
+          "summary": "56 descriptions courtes sourcées de sept espaces historiques intégrées en huit langues ; lacunes de scénario et images non identifiées documentées sans invention."
+        },
+        {
+          "eventId": "apply-cac10888-e50b-431c-a032-770a6c27320b",
+          "appliedAt": "2026-10-28T22:40:01.144Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-cac10888-e50b-431c-a032-770a6c27320b",
+          "auditEvidence": null,
+          "summary": "32 descriptions historiques des quatre espaces de restauration intégrées dans huit langues ; cartes et décors sourcés, deux salles du restaurant principal explicitement reliées."
+        },
+        {
+          "eventId": "apply-f1babd06-e5d4-4a17-9255-9ac51caa8ab3",
+          "appliedAt": "2026-10-28T22:43:07.245Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-f1babd06-e5d4-4a17-9255-9ac51caa8ab3",
+          "auditEvidence": null,
+          "summary": "40 descriptions des deux boutiques, Planet Ciné, Orphée Théâtre et Studio TV intégrées en huit langues ; programmes historiques et usages réels sourcés."
+        },
+        {
+          "eventId": "apply-3c0e3ef4-8f0f-407e-9555-a74e35cf4c75",
+          "appliedAt": "2026-10-28T22:45:19.758Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-3c0e3ef4-8f0f-407e-9555-a74e35cf4c75",
+          "auditEvidence": null,
+          "summary": "88 descriptions des onze services et de la promenade Comète intégrées en huit langues ; fonctions, décors et niveaux sourcés, lacunes courtes documentées, coordonnées non extrapolées."
+        },
+        {
+          "eventId": "apply-def3411e-f9a9-4027-a67b-3543e8a81c25",
+          "appliedAt": "2026-10-28T22:47:19.747Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-def3411e-f9a9-4027-a67b-3543e8a81c25",
+          "auditEvidence": null,
+          "summary": "Huit descriptions du Village mexicain intégrées ; lumière, décors, accès Cités d’Or/Eldorado/El Gringo sourcés ; aucun changement de visibilité."
         }
       ],
-      "nextAction": "Socle, zone et45parkItems masqués intégrés. Poursuivre descriptions huit langues, photos originales et logo, cartes archivées, références et histoire, puis audit final. Aucune publication ni clôture annoncée.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Backlog national existant",
