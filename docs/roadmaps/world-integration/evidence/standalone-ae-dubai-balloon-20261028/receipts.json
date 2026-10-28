@@ -1,0 +1,65 @@
+{
+  "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+  "receipts": [
+    {
+      "lot": "01-core",
+      "operationId": "f898ab11-77cd-4000-9603-b782b5b67677",
+      "appliedAtUtc": "2026-10-28T16:52:11.960463Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    },
+    {
+      "lot": "02-pricing",
+      "operationId": "fceb5281-cf56-44e3-9a2e-f816fb33c3fa",
+      "appliedAtUtc": "2026-10-28T16:52:35.8378944Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    },
+    {
+      "lot": "03-hours",
+      "operationId": "11dbdeb1-6ab2-477b-8907-485fe7110848",
+      "appliedAtUtc": "2026-10-28T16:52:59.8339806Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    },
+    {
+      "lot": "04-history",
+      "operationId": "c3d8016d-2c6f-4a85-b12a-ad0c799903b6",
+      "appliedAtUtc": "2026-10-28T16:53:23.8188545Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    },
+    {
+      "lot": "05-core-correction",
+      "operationId": "84dae6a6-c57b-4653-b4ff-ec376ac47826",
+      "appliedAtUtc": "2026-10-28T16:55:00.670417Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    },
+    {
+      "lot": "06-hours-correction",
+      "operationId": "32e36216-d0d0-471c-8b41-564e48f11215",
+      "appliedAtUtc": "2026-10-28T16:55:36.4412685Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    },
+    {
+      "lot": "07-history-correction",
+      "operationId": "538a2ed5-901b-4841-9a1f-2a787a8d48a3",
+      "appliedAtUtc": "2026-10-28T16:55:59.1202377Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    },
+    {
+      "lot": "08-publish-history",
+      "operationId": "69fd2c45-b609-4b29-a75d-e2ee4353b858",
+      "appliedAtUtc": "2026-10-28T16:56:45.0917062Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    },
+    {
+      "lot": "09-publish-attraction",
+      "operationId": "82a97a1f-9eca-4ac4-9241-cc7fb9317c57",
+      "appliedAtUtc": "2026-10-28T16:57:51.9338918Z",
+      "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d"
+    }
+  ],
+  "facebook": {
+    "id": "70280852d1574f87aa24ae1af9159ef5",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-28T16:59:33.785522Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125066095424431"
+  }
+}

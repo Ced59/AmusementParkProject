@@ -23421,30 +23421,54 @@
       "name": "Planète magique",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "Parc à thème couvert historique",
       "locality": "Paris",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Parc ouvert en1989, définitivement fermé en1991",
+      "identityConfidence": "Identité qualifiée : lieu distinct, sept recherches officielles sans correspondance",
       "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
+      "aliases": [
+        "Planète Magique",
+        "Planete Magique"
+      ],
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Création du parc historique masqué après qualification ; inventaire des attractions intérieures, logo, photos, descriptions huit langues et histoire à intégrer.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Catalogue Bernard Deyriès",
+          "url": "https://lta.hypotheses.org/files/2018/12/Catalogue-Deyries-BD.pdf",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Histoire du bâtiment, archives institutionnelles",
+          "url": "https://archives.gaite-lyrique.net/fabrique-de-lepoque/history",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Adresse BAN",
+          "url": "https://api-adresse.data.gouv.fr/search/?q=3bis+rue+Papin+75003+Paris&limit=3",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Identité SEGL",
+          "url": "https://www.pappers.fr/entreprise/segl-societe-dexploitation-de-la-gaite-lyrique-338070915",
+          "accessedAt": "2026-10-28"
         }
-      ]
+      ],
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-intake.json"
     },
     {
       "entryId": "FR-candidate-b58e274629effc",

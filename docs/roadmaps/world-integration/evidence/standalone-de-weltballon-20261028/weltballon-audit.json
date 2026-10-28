@@ -1,0 +1,85 @@
+{
+  "name": "Weltballon Berlin",
+  "entryId": "DE-candidate-discovery-1f009f30180e49",
+  "standaloneAttractionId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+  "decision": "PublishedWithDocumentedGap",
+  "qualification": "Ballon captif autonome avec billetterie et site propres ; exploitation confirmée par Air Service Berlin. Hi-Flyer/SAT.1 Ballon (2000) et Weltballon à Zimmerstraße (depuis 2006) sont la même attraction, sans doublon à créer. Recherches officielles Park et Standalone sans correspondance avant création.",
+  "score": 92,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "historyEvents": 2,
+    "admissionOffers": 4,
+    "accessConditions": 1
+  },
+  "gaps": [
+    "Horaires : l’exploitant confirme le début des opérations à 10 h et une ouverture sous réserve de météo, mais les sources consultées divergent sur l’heure de fermeture ; aucun calendrier structuré n’a été inventé."
+  ],
+  "sources": [
+    {
+      "label": "Air Service Berlin — Weltballon",
+      "url": "https://berlinhelicopter.de/weltballon2/"
+    },
+    {
+      "label": "Air Service Berlin — histoire",
+      "url": "https://berlinhelicopter.de/geschichte/"
+    },
+    {
+      "label": "Air Service Berlin — détails techniques",
+      "url": "https://berlinhelicopter.de/weltballon-mehr-erfahren/"
+    },
+    {
+      "label": "EasyCityPass — accessibilité",
+      "url": "https://www.m.easycitypass.com/de/partner/weltballon-berlin"
+    },
+    {
+      "label": "Mapcarta / OSM way 1250081894 — emplacement",
+      "url": "https://mapcarta.com/W1250081894"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "f053968662d743ad8c914deecd83dd84",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berlin_HiFlyer_lub_2026-03-03_img01.jpg",
+      "author": "Lukas Beck",
+      "date": "2026-03-03",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "transformation": "1200 px, recadrage nul"
+    },
+    {
+      "imageId": "15400fa5be4e4f149b59ca6ce98ebb15",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berlin_HiFlyer_lub_2026-03-03_img02.jpg",
+      "author": "Lukas Beck",
+      "date": "2026-03-03",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "transformation": "1200 px, recadrage nul"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "95e7e8011b961cc7e57008310ecee284973ff6c34ce9ea8df6311ec5b9b5db03",
+    "projectedScore": 92,
+    "projectedBlockers": [],
+    "publicScore": 92,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T20:17:36.425702284Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesBothImages": true
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/ab7e541b-ec8c-41b9-88fa-2bd670ecbf99/weltballon-berlin",
+      "publishedAtUtc": "2026-10-28T20:17:25.2620695Z",
+      "applyOperationId": "9dc3e5f9-0ff8-4b1a-b4ef-70ff127bf665"
+    },
+    "facebook": {
+      "id": "97201f976dc94aecb5c1a6f060ede473",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T20:18:23.1202772Z",
+      "externalPostId": "1285475681307050_122125088199424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125088199424431"
+    }
+  }
+}

@@ -1160,7 +1160,7 @@
         "Donaurutsche"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T15:49:21.994Z",
+      "lastDataIntegrationAt": "2026-10-28T17:19:47.892Z",
       "integrationHistory": [
         {
           "eventId": "apply-9069f483-791f-4344-aad3-5b7fd05fe1f8",
@@ -1211,9 +1211,19 @@
           "evidence": "PARK_DATA_EDITOR:apply:c301319c-0167-4245-8138-5477c0ab3b2b",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-slide-20261023/donauturm-audit.json",
           "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
+        },
+        {
+          "eventId": "import-photo-6e66a56de809450488a20e6ec7848c23",
+          "appliedAt": "2026-10-28T17:19:47.892Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:6e66a56de809450488a20e6ec7848c23",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261028/photo-additions.json",
+          "summary": "Photographie spécifique de Donauturm-Rutsche importée, créditée et localisée en huit langues."
         }
       ],
-      "nextAction": "Conserver cette ligne ; rechercher une photo autorisée de la glissade, puis recontrôler les tarifs de la tour et les horaires du jour.",
+      "nextAction": "Conserver cette ligne ; recontrôler les tarifs de la tour et les horaires du jour. Rechercher une seconde photo montrant cette attraction, avec droits de réutilisation et crédit vérifiés.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
@@ -1249,6 +1259,11 @@
           "label": "Source vérifiée — intégration standalone",
           "url": "https://amusement-parks.fun/fr/attraction/e61aee72-db7f-4b37-832b-ac4d2061b6ad/donauturm-rutsche",
           "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Tauralbus — photographie Donauturm-Rutsche, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/alfreddiem/53449033405",
+          "accessedAt": "2026-10-28"
         }
       ],
       "discovery": {
@@ -1271,7 +1286,7 @@
             "sourceLocality": "Vienne"
           }
         ],
-        "rationale": "Glissade fixe avec ticket propre, ajoutée à la visite payante de la tour. La nécessité du billet d’entrée et d’ascenseur est affichée clairement."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration import-photo-6e66a56de809450488a20e6ec7848c23 ; conserver les références de découverte."
       },
       "publication": {
         "site": {
@@ -1294,6 +1309,15 @@
         "score": 81,
         "publicationBlockers": [],
         "gapCount": 3
+      },
+      "mediaEvidence": {
+        "representativePhotoId": "6e66a56de809450488a20e6ec7848c23",
+        "photoImportedAtUtc": "2026-10-28T17:19:47.892Z",
+        "photoPublishedAtUtc": "2026-10-28T17:20:20.44207Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:85f668dc-0119-4bb4-9103-577202d595cf",
+        "sourceUrl": "https://www.flickr.com/photos/alfreddiem/53449033405",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261028/photo-additions.json"
       }
     },
     {

@@ -1378,7 +1378,7 @@
         "Skyline Luge Calgary"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-28T07:59:03.567Z",
+      "lastDataIntegrationAt": "2026-10-28T17:43:21.118Z",
       "integrationHistory": [
         {
           "eventId": "apply-49f03c0d-803b-40fd-8a8e-c6867caafbda",
@@ -1449,9 +1449,19 @@
           "evidence": "PARK_DATA_EDITOR:apply:d5d9faf3-108c-4690-af5f-558bce2cc818",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-20261028/calgary-audit.json",
           "summary": "Formulations éditoriales corrigées ; audit final sans blocage."
+        },
+        {
+          "eventId": "import-photo-e1019ba4cfc84e30992b9020d58d32c5",
+          "appliedAt": "2026-10-28T17:43:21.118Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:e1019ba4cfc84e30992b9020d58d32c5",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261028/photo-additions.json",
+          "summary": "Photographie des karts de Downhill Karting Calgary importée, créditée et localisée en huit langues."
         }
       ],
-      "nextAction": "Conserver la fiche et les reçus ; vérifier date de reprise, horaires, prix des descentes 2027, statut administratif ToReview et photographie sous licence réutilisable.",
+      "nextAction": "Conserver la fiche et les reçus ; vérifier la date de reprise, les horaires, les prix des descentes 2027 et le statut administratif ToReview. Rechercher une seconde photo montrant cette attraction, avec droits de réutilisation et crédit vérifiés.",
       "sources": [
         {
           "label": "Skyline Enterprises — Calgary ouvert en 2013",

@@ -554,38 +554,153 @@
     },
     {
       "entryId": "LV-candidate-d5b78fdaef20b9",
-      "name": "Rīgas panorāmas rats",
-      "entityKind": "ToQualify",
+      "name": "Riga Rise",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Rīgas panorāmas rats , Riga",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "Raņķa dambis 2, Rīga",
+      "siteId": "fbc98591-3b14-426f-a3f1-af8d2c3344ca",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T21:19:05.911Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating — horaires et tarifs officiels vérifiés le 28 octobre 2026.",
+      "identityConfidence": "Riga Rise est une grande roue fixe avec billet propre dans le secteur de Raņķa dambis 2, à la lisière du parc Uzvaras. Recherches officielles Park et Standalone Riga/Rise/panorāmas rats sans correspondance avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rīgas panorāmas rats",
+        "Riga Rise Observation Wheel",
+        "Riga Ferris wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T21:14:28.423Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-cc49090d-4f44-489e-8b3a-73587eafacf8",
+          "appliedAt": "2026-10-28T21:12:03.639Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fbc98591-3b14-426f-a3f1-af8d2c3344ca",
+          "evidence": "PARK_DATA_EDITOR:apply:cc49090d-4f44-489e-8b3a-73587eafacf8",
+          "auditEvidence": null,
+          "summary": "Création privée et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-6928b818-c968-47b6-8e59-80851244f424",
+          "appliedAt": "2026-10-28T21:12:55.530Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fbc98591-3b14-426f-a3f1-af8d2c3344ca",
+          "evidence": "PARK_DATA_EDITOR:apply:6928b818-c968-47b6-8e59-80851244f424",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires vérifiés sur le site officiel"
+        },
+        {
+          "eventId": "apply-4a089c64-e50f-4929-b767-13ea6eac952a",
+          "appliedAt": "2026-10-28T21:13:18.976Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fbc98591-3b14-426f-a3f1-af8d2c3344ca",
+          "evidence": "PARK_DATA_EDITOR:apply:4a089c64-e50f-4929-b767-13ea6eac952a",
+          "auditEvidence": null,
+          "summary": "Sept tarifs officiels en euros"
+        },
+        {
+          "eventId": "apply-65bc5118-f13b-4a44-a4ec-bdb0ad15f39b",
+          "appliedAt": "2026-10-28T21:13:53.084Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fbc98591-3b14-426f-a3f1-af8d2c3344ca",
+          "evidence": "PARK_DATA_EDITOR:apply:65bc5118-f13b-4a44-a4ec-bdb0ad15f39b",
+          "auditEvidence": null,
+          "summary": "Ouverture du 17 avril 2025 sourcée par Zuzeum"
+        },
+        {
+          "eventId": "image-6bc86e0191f442c68a8e7d8ff4deff56",
+          "appliedAt": "2026-10-28T21:14:28.423Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fbc98591-3b14-426f-a3f1-af8d2c3344ca",
+          "evidence": "PARK_DATA_EDITOR:image:6bc86e0191f442c68a8e7d8ff4deff56",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-lv-riga-rise-20261028/riga-rise-audit.json",
+          "summary": "Import de la photographie spécifique de Riga Rise, CC0 1.0"
+        }
+      ],
+      "nextAction": "Conserver la fiche et ses reçus. Recontrôler horaires et tarifs sur le site officiel ; rechercher une deuxième photographie libre de droits montrant réellement la roue pour enrichir la galerie, sans republier le même post Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Riga Rise — site officiel, horaires et tarifs",
+          "url": "https://rigarise.lv/en/home",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "LiveRiga — présentation, hauteur et situation",
+          "url": "https://www.liveriga.com/en/visit/what-to-see/top-sights/riga-rise-observation-wheel",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Zuzeum — inauguration du 17 avril 2025 et projet artistique",
+          "url": "https://www.zuzeum.com/en/news/art-above-the-city-riga-rise-and-zuzeum",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Biļešu Serviss — billetterie et accès en fauteuil",
+          "url": "https://www.bilesuserviss.lv/biletes/HW2QKYJI3J/riga-rise-panoramas-rats",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie de Riga Rise",
+          "url": "https://commons.wikimedia.org/wiki/File:Panor%C4%81mas_rats_%22Riga_Rise%22.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "Riga Rise",
+            "source": "Riga Rise — site officiel",
+            "url": "https://rigarise.lv/en/home",
+            "family": "Grande roue",
+            "sourceVenueName": "Riga Rise panorama quarter",
+            "sourceLifecycleSignal": "Billetterie et horaires actifs en octobre 2026.",
+            "matchingMethod": "Recherches officielles Park et Standalone sans correspondance, y compris variantes de nom.",
+            "sourceLocality": "Rīga",
+            "referenceId": "riga-rise-official"
+          }
+        ],
+        "rationale": "Grande roue fixe à billet propre, exploitée sur un espace de promenade sans autre parc d’attractions du site. Créée après recherche des doublons ; photo propre CC0, audit public 97/100 sans bloqueur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/fbc98591-3b14-426f-a3f1-af8d2c3344ca/riga-rise",
+          "publishedAtUtc": "2026-10-28T21:16:45.977Z",
+          "verifiedAtUtc": "2026-10-28T21:19:05.911Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0a553d73-4f98-46ae-959b-4af460ed81be"
+        },
+        "facebook": {
+          "id": "ef45dcc1fe004fb89d5b5329e8fc5bd8",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T21:17:28.442Z",
+          "externalPostId": "1285475681307050_122125092435424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125092435424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:ef45dcc1fe004fb89d5b5329e8fc5bd8"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-lv-riga-rise-20261028/riga-rise-audit.json",
+        "score": 97,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
