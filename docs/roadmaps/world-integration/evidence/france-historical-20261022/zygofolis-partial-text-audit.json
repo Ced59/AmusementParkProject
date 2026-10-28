@@ -1,0 +1,626 @@
+{
+  "scope": "Partial step4 audit, not final completion audit",
+  "entityCountWithDescriptions": 11,
+  "localizedDescriptions": 88,
+  "duplicateParagraphBodiesAfterNameRemoval": [],
+  "encodingIssues": 0,
+  "rows": [
+    {
+      "key": "park",
+      "language": "fr",
+      "words": 357,
+      "paragraphs": 6,
+      "headings": 3
+    },
+    {
+      "key": "park",
+      "language": "en",
+      "words": 334,
+      "paragraphs": 6,
+      "headings": 3
+    },
+    {
+      "key": "park",
+      "language": "de",
+      "words": 310,
+      "paragraphs": 6,
+      "headings": 3
+    },
+    {
+      "key": "park",
+      "language": "nl",
+      "words": 335,
+      "paragraphs": 6,
+      "headings": 3
+    },
+    {
+      "key": "park",
+      "language": "it",
+      "words": 321,
+      "paragraphs": 6,
+      "headings": 3
+    },
+    {
+      "key": "park",
+      "language": "es",
+      "words": 347,
+      "paragraphs": 6,
+      "headings": 3
+    },
+    {
+      "key": "park",
+      "language": "pl",
+      "words": 289,
+      "paragraphs": 6,
+      "headings": 3
+    },
+    {
+      "key": "park",
+      "language": "pt",
+      "words": 342,
+      "paragraphs": 6,
+      "headings": 3
+    },
+    {
+      "key": "zygo-sec",
+      "language": "fr",
+      "words": 102,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-sec",
+      "language": "en",
+      "words": 92,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-sec",
+      "language": "de",
+      "words": 91,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-sec",
+      "language": "nl",
+      "words": 94,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-sec",
+      "language": "it",
+      "words": 92,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-sec",
+      "language": "es",
+      "words": 99,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-sec",
+      "language": "pl",
+      "words": 75,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-sec",
+      "language": "pt",
+      "words": 95,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-nautique",
+      "language": "fr",
+      "words": 102,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-nautique",
+      "language": "en",
+      "words": 92,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-nautique",
+      "language": "de",
+      "words": 85,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-nautique",
+      "language": "nl",
+      "words": 95,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-nautique",
+      "language": "it",
+      "words": 89,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-nautique",
+      "language": "es",
+      "words": 102,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-nautique",
+      "language": "pl",
+      "words": 80,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "zygo-nautique",
+      "language": "pt",
+      "words": 93,
+      "paragraphs": 2,
+      "headings": 0
+    },
+    {
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "language": "fr",
+      "words": 142,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "language": "en",
+      "words": 129,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "language": "de",
+      "words": 131,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "language": "nl",
+      "words": 139,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "language": "it",
+      "words": 138,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "language": "es",
+      "words": 139,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "language": "pl",
+      "words": 116,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "language": "pt",
+      "words": 139,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "language": "fr",
+      "words": 158,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "language": "en",
+      "words": 145,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "language": "de",
+      "words": 138,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "language": "nl",
+      "words": 145,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "language": "it",
+      "words": 149,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "language": "es",
+      "words": 161,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "language": "pl",
+      "words": 124,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "language": "pt",
+      "words": 155,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-monstre",
+      "language": "fr",
+      "words": 161,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-monstre",
+      "language": "en",
+      "words": 150,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-monstre",
+      "language": "de",
+      "words": 147,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-monstre",
+      "language": "nl",
+      "words": 149,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-monstre",
+      "language": "it",
+      "words": 146,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-monstre",
+      "language": "es",
+      "words": 162,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-monstre",
+      "language": "pl",
+      "words": 121,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-monstre",
+      "language": "pt",
+      "words": 154,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-swingo",
+      "language": "fr",
+      "words": 152,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-swingo",
+      "language": "en",
+      "words": 135,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-swingo",
+      "language": "de",
+      "words": 129,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-swingo",
+      "language": "nl",
+      "words": 140,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-swingo",
+      "language": "it",
+      "words": 137,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-swingo",
+      "language": "es",
+      "words": 143,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-swingo",
+      "language": "pl",
+      "words": 113,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-swingo",
+      "language": "pt",
+      "words": 142,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-bateau-ivre",
+      "language": "fr",
+      "words": 156,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-bateau-ivre",
+      "language": "en",
+      "words": 137,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-bateau-ivre",
+      "language": "de",
+      "words": 133,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-bateau-ivre",
+      "language": "nl",
+      "words": 140,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-bateau-ivre",
+      "language": "it",
+      "words": 139,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-bateau-ivre",
+      "language": "es",
+      "words": 147,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-bateau-ivre",
+      "language": "pl",
+      "words": 121,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-bateau-ivre",
+      "language": "pt",
+      "words": 141,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-carrousel",
+      "language": "fr",
+      "words": 157,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-carrousel",
+      "language": "en",
+      "words": 131,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-carrousel",
+      "language": "de",
+      "words": 131,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-carrousel",
+      "language": "nl",
+      "words": 140,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-carrousel",
+      "language": "it",
+      "words": 139,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-carrousel",
+      "language": "es",
+      "words": 152,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-carrousel",
+      "language": "pl",
+      "words": 115,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-carrousel",
+      "language": "pt",
+      "words": 143,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-cascade",
+      "language": "fr",
+      "words": 154,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-cascade",
+      "language": "en",
+      "words": 136,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-cascade",
+      "language": "de",
+      "words": 143,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-cascade",
+      "language": "nl",
+      "words": 146,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-cascade",
+      "language": "it",
+      "words": 147,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-cascade",
+      "language": "es",
+      "words": 160,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-cascade",
+      "language": "pl",
+      "words": 113,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-cascade",
+      "language": "pt",
+      "words": 143,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-funiculaire",
+      "language": "fr",
+      "words": 149,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-funiculaire",
+      "language": "en",
+      "words": 129,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-funiculaire",
+      "language": "de",
+      "words": 131,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-funiculaire",
+      "language": "nl",
+      "words": 140,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-funiculaire",
+      "language": "it",
+      "words": 128,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-funiculaire",
+      "language": "es",
+      "words": 149,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-funiculaire",
+      "language": "pl",
+      "words": 106,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "key": "zygo-funiculaire",
+      "language": "pt",
+      "words": 138,
+      "paragraphs": 3,
+      "headings": 2
+    }
+  ],
+  "lengthReview": "Park3h2/6p, major rides and transport2h2/3p. Polish uses fewer words while retaining every factual paragraph; two geographic zones intentionally shorter. All public translations authored and reviewed personally."
+}

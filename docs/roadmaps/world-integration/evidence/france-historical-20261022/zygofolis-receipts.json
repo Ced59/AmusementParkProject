@@ -1,0 +1,324 @@
+{
+  "entryId": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
+  "parkId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+  "name": "Zygofolis – Zygo Parc",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-b07a5314-8a89-4fb3-8c35-c9da4d0c1c1d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:36:01.6121944Z",
+      "appliedAt": "2026-10-28T18:36:01.612Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "ddc6cae046796ad9c7a019a493ec5239677cc13be19717c64455061567b7796f",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "name",
+        "openingDateText",
+        "position",
+        "status",
+        "type"
+      ],
+      "summary": "Rapprochement Zygofolis / Zygo Parc appliqué sur la fiche existante : identité, Nice, coordonnées, ouverture juillet1987 et fermeture1991 ; statut historique corrigé, parc conservé masqué."
+    },
+    {
+      "eventId": "apply-2f0e1de4-7d8d-4b7e-9c49-c504c4611f1b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:44:14.6801591Z",
+      "appliedAt": "2026-10-28T18:44:14.680Z",
+      "receiptFile": "02-zones-apply.receipt.json",
+      "receiptSha256": "aeefc88acd4c4d01d8a303a2658087cb1f5f486fb494471372d8552fe75af768",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isVisible",
+        "names.de",
+        "names.en",
+        "names.es",
+        "names.fr",
+        "names.it",
+        "names.nl",
+        "names.pl",
+        "names.pt",
+        "sortOrder"
+      ],
+      "summary": "Deux parties historiques du même parc créées et conservées privées : parc d’attractions et parc nautique, avec noms dans les huit langues."
+    },
+    {
+      "eventId": "apply-e8b07d9c-e2a4-4023-acd7-c97c623662d6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:47:19.1379313Z",
+      "appliedAt": "2026-10-28T18:47:19.137Z",
+      "receiptFile": "03-existing-coasters-apply.receipt.json",
+      "receiptSha256": "d88236be4de7e999aeb2c95a64622775729632e3f6ba8c62b30291d86031a851",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.closingDate",
+        "attractionDetails.closingDateText",
+        "attractionDetails.openingDate",
+        "attractionDetails.openingDateText",
+        "attractionDetails.status",
+        "zoneId"
+      ],
+      "summary": "Deux montagnes russes existantes corrigées : statut Removed, dates fiables à l’année1987/1991 sans jour inventé et rattachement à la partie sèche ; identifiants et références conservés."
+    },
+    {
+      "eventId": "apply-8118d7f9-4cad-4a38-b56a-fd1cfbe82cce",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:48:15.6879219Z",
+      "appliedAt": "2026-10-28T18:48:15.687Z",
+      "receiptFile": "03-inventory-a-apply.receipt.json",
+      "receiptSha256": "98654891ce6824faa80b3debc209f226f7f325b4691ec3c2cebe1b4b5e7078e3",
+      "counts": {
+        "created": 18,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Inventaire historique A :18 attractions internes ajoutées d’après les plans et archives, dont la distinction Anacondas/Le Nil ; toutes masquées, sans dates ni positions inventées."
+    },
+    {
+      "eventId": "apply-62a99e32-ff28-4544-a748-d5e1cef7596b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:54:49.6035092Z",
+      "appliedAt": "2026-10-28T18:54:49.603Z",
+      "receiptFile": "03-inventory-b-v2-apply.receipt.json",
+      "receiptSha256": "d28ebd700bc13ea79118167e361922baf553688296efd644eb31c0cc7c6b663f",
+      "counts": {
+        "created": 17,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Zygofolis : dix restaurants, trois spectacles ou salles et quatre attractions historiques qualifiés sur les brochures et photographies, intégration privée partielle."
+    },
+    {
+      "eventId": "apply-034d3596-215a-406c-9936-8b967b87d3b7",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:55:57.6326437Z",
+      "appliedAt": "2026-10-28T18:55:57.632Z",
+      "receiptFile": "03-inventory-c-v2-apply.receipt.json",
+      "receiptSha256": "9aa4a99489ebf8722dd52d0fd679f90fd8ecd0832b85bdd2414bb6c075077651",
+      "counts": {
+        "created": 16,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Zygofolis : funiculaire, boutiques, douze services et spectacle de plongeon de 1988 intégrés en privé à partir des plans et photographies historiques."
+    },
+    {
+      "eventId": "apply-6fcd197b-ed79-41ec-8cbf-6663ecdfb8b0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:59:28.6463211Z",
+      "appliedAt": "2026-10-28T18:59:28.646Z",
+      "receiptFile": "04-park-copy-apply.receipt.json",
+      "receiptSha256": "83c9aa43fed7262063d5e2c6856c295d591197e811baea18aa4012eb9ccec889",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Zygofolis : description éditoriale développée du parc rédigée et relue dans les huit langues, intégration privée partielle."
+    },
+    {
+      "eventId": "apply-3a70b8ab-602f-4b8b-98b1-2d90746076ca",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:02:00.5446713Z",
+      "appliedAt": "2026-10-28T19:02:00.544Z",
+      "receiptFile": "04-zone-copy-apply.receipt.json",
+      "receiptSha256": "b31e24b26a4536ac3a45457682c754a367d867e0617dc61ee35f2eade75ef8ba",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Zygofolis : descriptions spécifiques des deux zones géographiques rédigées et relues dans les huit langues."
+    },
+    {
+      "eventId": "apply-9c7fee45-8537-47c7-a436-cc161818d0e5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:06:42.365591Z",
+      "appliedAt": "2026-10-28T19:06:42.365Z",
+      "receiptFile": "04-coaster-copy-v2-apply.receipt.json",
+      "receiptSha256": "10fa11429142476c427ec195d7838b82e38a49845c58c368cb9492e24e12eb62",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Zygofolis : seize descriptions éditoriales des deux montagnes russes, avec décors niçois et destinations de réinstallation vérifiées."
+    },
+    {
+      "eventId": "apply-a5010822-6f77-47d3-8057-2211275fa224",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:12:19.7963856Z",
+      "appliedAt": "2026-10-28T19:12:19.796Z",
+      "receiptFile": "04-lakeside-copy-apply.receipt.json",
+      "receiptSha256": "19577fe44d10ca786b8ca0e5820e92efe2ff5e0a4a9851a9e40fd89b2c0220fc",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Zygofolis : vingt-quatre descriptions de La Cascade, du Bateau Ivre et du Monstre, décors historiques et transferts corroborés."
+    },
+    {
+      "eventId": "apply-de4de8a6-178b-4b41-b430-2c90e11a4dc7",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:16:08.6493361Z",
+      "appliedAt": "2026-10-28T19:16:08.649Z",
+      "receiptFile": "04-carousel-copy-apply.receipt.json",
+      "receiptSha256": "d47a4220dc47d1b80112ddef20c616c286256ef48cd5893e9c8168b7621870c4",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Zygofolis : Carrousel décrit dans les huit langues à partir des photographies originales de1988 et1991."
+    },
+    {
+      "eventId": "apply-d3439fc6-6820-4d6f-93c5-af481d2e4aea",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T19:20:11.8304609Z",
+      "appliedAt": "2026-10-28T19:20:11.830Z",
+      "receiptFile": "04-swing-funicular-copy-v2-apply.receipt.json",
+      "receiptSha256": "55ab9807a68ee78c5497c023b04113e7cbc584eb5598faf24405fcdea2c8d4a7",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Zygofolis : descriptions du Swingo et du funiculaire dans les huit langues, points de vue historiques et alias final vérifiés."
+    }
+  ],
+  "publicationOrNoop": []
+}

@@ -28511,7 +28511,7 @@
     },
     {
       "entryId": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
-      "name": "Zygo Park",
+      "name": "Zygofolis – Zygo Parc",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Parc historique d’attractions et aquatique",
@@ -28528,12 +28528,134 @@
       "possibleMatches": [],
       "aliases": [
         "Zygofolis",
-        "Zygo Parc"
+        "Zygo Parc",
+        "Zygo Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale historique sur la fiche existante : corriger dates et lifecycle, inventorier les archives officielles, huit langues, médias et histoire, puis audit/publications.",
+      "lastDataIntegrationAt": "2026-10-28T19:20:11.830Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b07a5314-8a89-4fb3-8c35-c9da4d0c1c1d",
+          "appliedAt": "2026-10-28T18:36:01.612Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-b07a5314-8a89-4fb3-8c35-c9da4d0c1c1d",
+          "auditEvidence": null,
+          "summary": "Rapprochement Zygofolis / Zygo Parc appliqué sur la fiche existante : identité, Nice, coordonnées, ouverture juillet1987 et fermeture1991 ; statut historique corrigé, parc conservé masqué."
+        },
+        {
+          "eventId": "apply-2f0e1de4-7d8d-4b7e-9c49-c504c4611f1b",
+          "appliedAt": "2026-10-28T18:44:14.680Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-2f0e1de4-7d8d-4b7e-9c49-c504c4611f1b",
+          "auditEvidence": null,
+          "summary": "Deux parties historiques du même parc créées et conservées privées : parc d’attractions et parc nautique, avec noms dans les huit langues."
+        },
+        {
+          "eventId": "apply-e8b07d9c-e2a4-4023-acd7-c97c623662d6",
+          "appliedAt": "2026-10-28T18:47:19.137Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-e8b07d9c-e2a4-4023-acd7-c97c623662d6",
+          "auditEvidence": null,
+          "summary": "Deux montagnes russes existantes corrigées : statut Removed, dates fiables à l’année1987/1991 sans jour inventé et rattachement à la partie sèche ; identifiants et références conservés."
+        },
+        {
+          "eventId": "apply-8118d7f9-4cad-4a38-b56a-fd1cfbe82cce",
+          "appliedAt": "2026-10-28T18:48:15.687Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-8118d7f9-4cad-4a38-b56a-fd1cfbe82cce",
+          "auditEvidence": null,
+          "summary": "Inventaire historique A :18 attractions internes ajoutées d’après les plans et archives, dont la distinction Anacondas/Le Nil ; toutes masquées, sans dates ni positions inventées."
+        },
+        {
+          "eventId": "apply-62a99e32-ff28-4544-a748-d5e1cef7596b",
+          "appliedAt": "2026-10-28T18:54:49.603Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-62a99e32-ff28-4544-a748-d5e1cef7596b",
+          "auditEvidence": null,
+          "summary": "Zygofolis : dix restaurants, trois spectacles ou salles et quatre attractions historiques qualifiés sur les brochures et photographies, intégration privée partielle."
+        },
+        {
+          "eventId": "apply-034d3596-215a-406c-9936-8b967b87d3b7",
+          "appliedAt": "2026-10-28T18:55:57.632Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-034d3596-215a-406c-9936-8b967b87d3b7",
+          "auditEvidence": null,
+          "summary": "Zygofolis : funiculaire, boutiques, douze services et spectacle de plongeon de 1988 intégrés en privé à partir des plans et photographies historiques."
+        },
+        {
+          "eventId": "apply-6fcd197b-ed79-41ec-8cbf-6663ecdfb8b0",
+          "appliedAt": "2026-10-28T18:59:28.646Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-6fcd197b-ed79-41ec-8cbf-6663ecdfb8b0",
+          "auditEvidence": null,
+          "summary": "Zygofolis : description éditoriale développée du parc rédigée et relue dans les huit langues, intégration privée partielle."
+        },
+        {
+          "eventId": "apply-3a70b8ab-602f-4b8b-98b1-2d90746076ca",
+          "appliedAt": "2026-10-28T19:02:00.544Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-3a70b8ab-602f-4b8b-98b1-2d90746076ca",
+          "auditEvidence": null,
+          "summary": "Zygofolis : descriptions spécifiques des deux zones géographiques rédigées et relues dans les huit langues."
+        },
+        {
+          "eventId": "apply-9c7fee45-8537-47c7-a436-cc161818d0e5",
+          "appliedAt": "2026-10-28T19:06:42.365Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-9c7fee45-8537-47c7-a436-cc161818d0e5",
+          "auditEvidence": null,
+          "summary": "Zygofolis : seize descriptions éditoriales des deux montagnes russes, avec décors niçois et destinations de réinstallation vérifiées."
+        },
+        {
+          "eventId": "apply-a5010822-6f77-47d3-8057-2211275fa224",
+          "appliedAt": "2026-10-28T19:12:19.796Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-a5010822-6f77-47d3-8057-2211275fa224",
+          "auditEvidence": null,
+          "summary": "Zygofolis : vingt-quatre descriptions de La Cascade, du Bateau Ivre et du Monstre, décors historiques et transferts corroborés."
+        },
+        {
+          "eventId": "apply-de4de8a6-178b-4b41-b430-2c90e11a4dc7",
+          "appliedAt": "2026-10-28T19:16:08.649Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-de4de8a6-178b-4b41-b430-2c90e11a4dc7",
+          "auditEvidence": null,
+          "summary": "Zygofolis : Carrousel décrit dans les huit langues à partir des photographies originales de1988 et1991."
+        },
+        {
+          "eventId": "apply-d3439fc6-6820-4d6f-93c5-af481d2e4aea",
+          "appliedAt": "2026-10-28T19:20:11.830Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-d3439fc6-6820-4d6f-93c5-af481d2e4aea",
+          "auditEvidence": null,
+          "summary": "Zygofolis : descriptions du Swingo et du funiculaire dans les huit langues, points de vue historiques et alias final vérifiés."
+        }
+      ],
+      "nextAction": "Poursuivre les descriptions des 45 fiches internes restantes, les références, les médias et plans officiels, puis histoire et audit final. Parc et contenus encore masqués ; aucune publication Facebook à ce stade.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -28554,6 +28676,16 @@
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Brochure officielle de1987 conservée dans les archives Zygofolis",
+          "url": "http://zygo.altervista.org/depliant.php",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Brochure officielle de1991 et plan de Zygo Parc",
+          "url": "http://zygo.altervista.org/deplizp.php",
+          "accessedAt": "2026-10-28"
         }
       ],
       "countryCodeAtInventory": "FR",

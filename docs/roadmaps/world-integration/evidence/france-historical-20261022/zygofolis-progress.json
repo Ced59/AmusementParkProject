@@ -1,0 +1,39 @@
+{
+  "parkId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+  "entryId": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
+  "name": "Zygofolis – Zygo Parc",
+  "owner": "Conversation France",
+  "status": "InProgress",
+  "sitePublished": false,
+  "facebookPublished": false,
+  "inventory": {
+    "Attraction": 24,
+    "Restaurant": 10,
+    "Show": 4,
+    "Transport": 1,
+    "Shop": 2,
+    "Service": 12
+  },
+  "totalItems": 53,
+  "zones": 2,
+  "textCoverage": {
+    "parkEightLanguages": true,
+    "zonesEightLanguages": 2,
+    "itemsEightLanguages": 8
+  },
+  "lastMergedDataApply": {
+    "operationId": "d3439fc6-6820-4d6f-93c5-af481d2e4aea",
+    "appliedAtUtc": "2026-10-28T19:20:11.8304609Z"
+  },
+  "nextAction": "Continue remaining item descriptions, structured reference enrichment, actual images and official1987/1991 maps, history/article, final full audit then authorized site/Facebook publication. No full export during steps0–8.",
+  "pendingPublicationExceptionsElsewhere": [
+    "Playmobil FunPark Fresnes exact92/100 awaiting answer",
+    "Lillom exact95/100 awaiting earlier answer"
+  ],
+  "knownSourceConflicts": [
+    "Swingo destination: old visitor archive says Fandango/Walibi Aquitaine, Dutch specialist records say Super Swing/Walibi Holland. Do not silently merge conflicting identities.",
+    "Bateau Ivre destination identity Bounty confirmed, but old archive gives1993 arrival and2003 dismantling; destination histories give1992 opening,2002 last operation and2006 dismantling.",
+    "1989 closure and1990 reopening are supported by contemporary press/book; RCDB park narrative misdates bankruptcy1988 and SBNO1990."
+  ],
+  "updatedAtUtc": "2026-10-28T19:20:36.229389+00:00"
+}
