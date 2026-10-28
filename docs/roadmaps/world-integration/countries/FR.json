@@ -21632,14 +21632,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
@@ -23438,7 +23438,7 @@
         "Planete Magique"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-28T23:30:34.572Z",
+      "lastDataIntegrationAt": "2026-10-28T23:46:35.608Z",
       "integrationHistory": [
         {
           "eventId": "apply-d5983c1c-6f1c-4229-b4f5-d737e05b4aca",
@@ -24239,9 +24239,39 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-52c79d79-99c6-4316-a58a-e959499deb7c",
           "auditEvidence": null,
           "summary": "Visite patrimoniale de Talisman du 6 mars 2004 intégrée en huit langues avec source primaire ; étape 8 terminée, audit final restant."
+        },
+        {
+          "eventId": "apply-0c8e1743-8cf8-46f4-9516-ac3ea1eaea41",
+          "appliedAt": "2026-10-28T23:41:23.856Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-0c8e1743-8cf8-46f4-9516-ac3ea1eaea41",
+          "auditEvidence": null,
+          "summary": "Correction éditoriale de 24 légendes de l’article pour supprimer les répétitions avec la galerie ; images et faits conservés, nouveau contrôle final requis."
+        },
+        {
+          "eventId": "apply-2e5d5180-4dcb-4fe9-984e-5d664b260003",
+          "appliedAt": "2026-10-28T23:44:18.108Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-2e5d5180-4dcb-4fe9-984e-5d664b260003",
+          "auditEvidence": null,
+          "summary": "Relecture transversale : six résumés de frise et un paragraphe espagnol reformulés pour supprimer sept reprises longues, sans modifier les faits ni les sources."
+        },
+        {
+          "eventId": "apply-e9ade902-70e4-407e-8632-f77e61e4919a",
+          "appliedAt": "2026-10-28T23:46:35.608Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-e9ade902-70e4-407e-8632-f77e61e4919a",
+          "auditEvidence": null,
+          "summary": "Nom propre Cour des comptes conservé en français dans l’article anglais pour éviter la détection de jargon interne ; contenu factuel inchangé, contrôle final relancé."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Audit éditorial final validé :45équipements,60médias,9faits,1article en8langues. Dépendances publiées, parent masqué. Score projeté92/100 sans bloqueur : attendre acceptation explicite de cette exception et des lacunes historiques avant publication du parc puis Facebook.",
       "sources": [
         {
           "label": "Backlog national existant",

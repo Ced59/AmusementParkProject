@@ -1299,7 +1299,111 @@
         "year"
       ],
       "summary": "Visite patrimoniale de Talisman du 6 mars 2004 intégrée en huit langues avec source primaire ; étape 8 terminée, audit final restant."
+    },
+    {
+      "eventId": "apply-0c8e1743-8cf8-46f4-9516-ac3ea1eaea41",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T23:41:23.8561104Z",
+      "appliedAt": "2026-10-28T23:41:23.856Z",
+      "receiptFile": "09-article-caption-correction-apply.receipt.json",
+      "receiptSha256": "51b0151e90c9fa577c8dcb000e78227c6ef07a4ec96732a87b322184cdbfbb17",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Correction éditoriale de 24 légendes de l’article pour supprimer les répétitions avec la galerie ; images et faits conservés, nouveau contrôle final requis."
+    },
+    {
+      "eventId": "apply-2e5d5180-4dcb-4fe9-984e-5d664b260003",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T23:44:18.1082683Z",
+      "appliedAt": "2026-10-28T23:44:18.108Z",
+      "receiptFile": "09-repetition-correction-apply.receipt.json",
+      "receiptSha256": "6665bf7bf9d751f59879106802254361b4aa0c343cd5985b5405129d8a494d38",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "summaries"
+      ],
+      "summary": "Relecture transversale : six résumés de frise et un paragraphe espagnol reformulés pour supprimer sept reprises longues, sans modifier les faits ni les sources."
+    },
+    {
+      "eventId": "apply-e9ade902-70e4-407e-8632-f77e61e4919a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T23:46:35.6088697Z",
+      "appliedAt": "2026-10-28T23:46:35.608Z",
+      "receiptFile": "09-institution-name-correction-apply.receipt.json",
+      "receiptSha256": "a7b00d1c0b77420265e333c4c5356fe91e766a0f2cce0cc282994d18d6343cdb",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Nom propre Cour des comptes conservé en français dans l’article anglais pour éviter la détection de jargon interne ; contenu factuel inchangé, contrôle final relancé."
     }
   ],
-  "publicationOrNoop": []
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-d8011bab-15e3-4812-8366-b61eb5ce0df5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T23:37:09.1487315Z",
+      "appliedAt": "2026-10-28T23:37:09.148Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "7e1605cd0da927c3c598689fe2af91bf0cc52f477084aa9693cc44098bd4beb5",
+      "counts": {
+        "created": 0,
+        "updated": 60,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication autorisée des 60 médias audités ; visibilité seule, parent encore masqué et contrôle final restant."
+    },
+    {
+      "eventId": "apply-0754bf5a-fa2c-47e3-8e02-cdf7a65f5ed7",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T23:38:09.1712648Z",
+      "appliedAt": "2026-10-28T23:38:09.171Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "4af738d1aa7c6c9e4804c4d52094ca079a539bd4aa2da9087b6f9f23087769af",
+      "counts": {
+        "created": 0,
+        "updated": 56,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "article",
+        "isVisible"
+      ],
+      "summary": "Mise en visibilité autorisée des 45 équipements, de la zone, des neuf faits et de l’article ; seules visibilités et validation éditoriale modifiées, parent encore masqué."
+    }
+  ]
 }
