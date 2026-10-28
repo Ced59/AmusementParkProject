@@ -1,0 +1,114 @@
+{
+  "entryId": "FR-candidate-ecdb81d09bead4",
+  "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+  "name": "Planète magique",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-d5983c1c-6f1c-4229-b4f5-d737e05b4aca",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T21:51:18.8071548Z",
+      "appliedAt": "2026-10-28T21:51:18.807Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "bc6c3da8a985dc1f87d39da89ac50e7abf84e2334b243f5aece73ecc381df5f2",
+      "counts": {
+        "created": 3,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "founderId",
+        "openingDate",
+        "openingDateText",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création qualifiée du parc historique Planète magique, masqué, avec adresse et coordonnées vérifiées, ouverture1989-12-19, fermeture1991, fondateur Jean Chalopin et exploitant SEGL."
+    },
+    {
+      "eventId": "apply-d9f310f0-0d16-42fc-95dd-1d3e53354450",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T21:59:22.8552279Z",
+      "appliedAt": "2026-10-28T21:59:22.855Z",
+      "receiptFile": "02-zone-apply.receipt.json",
+      "receiptSha256": "800e0710afe3d7f3738ce5772e75272defcf2fea02825045f820e98ba0478dbc",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isVisible",
+        "names.de",
+        "names.en",
+        "names.es",
+        "names.fr",
+        "names.it",
+        "names.nl",
+        "names.pl",
+        "names.pt",
+        "sortOrder"
+      ],
+      "summary": "Création de la zone historique Village mexicain, établie par les archives du parc ; zone masquée, sans coordonnées intérieures inventées."
+    },
+    {
+      "eventId": "apply-78282a27-8023-43e9-9145-1e26c9603c7f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:02:05.0914916Z",
+      "appliedAt": "2026-10-28T22:02:05.091Z",
+      "receiptFile": "03-items-experiences-apply.receipt.json",
+      "receiptSha256": "72e3333ca8fb86787476ade1c8eaa1f1edfb1e1da62583a5f17b30c3ed3bd3c1",
+      "counts": {
+        "created": 25,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.status",
+        "category",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Inventaire historique :25expériences et décors, dont21attractions Removed,3lieux de spectacle/jeux et le Dragon bleu ; détails incertains et dates laissés inconnus, contenus masqués."
+    },
+    {
+      "eventId": "apply-17c8ce9a-e920-4d19-b107-24d78dffd5b1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T22:03:37.7517942Z",
+      "appliedAt": "2026-10-28T22:03:37.751Z",
+      "receiptFile": "03-items-lieux-services-apply.receipt.json",
+      "receiptSha256": "ef68d12098c82c9969150e51723e93c7e86a973acf5de7997c3aeadeb5ad6704",
+      "counts": {
+        "created": 20,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "category",
+        "position",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Inventaire historique :20lieux complémentaires, dont4espaces de restauration,3salles publiques,2boutiques et11services ; seule entrée Papin géolocalisée, tout reste masqué."
+    }
+  ],
+  "publicationOrNoop": []
+}

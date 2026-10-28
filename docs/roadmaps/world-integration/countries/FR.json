@@ -23423,10 +23423,10 @@
       "proposedEntityKind": "Park",
       "category": "Parc à thème couvert historique",
       "locality": "Paris",
-      "siteId": null,
+      "siteId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-28T22:03:37.7517942Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -23438,9 +23438,50 @@
         "Planete Magique"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Création du parc historique masqué après qualification ; inventaire des attractions intérieures, logo, photos, descriptions huit langues et histoire à intégrer.",
+      "lastDataIntegrationAt": "2026-10-28T22:03:37.751Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d5983c1c-6f1c-4229-b4f5-d737e05b4aca",
+          "appliedAt": "2026-10-28T21:51:18.807Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-d5983c1c-6f1c-4229-b4f5-d737e05b4aca",
+          "auditEvidence": null,
+          "summary": "Création qualifiée du parc historique Planète magique, masqué, avec adresse et coordonnées vérifiées, ouverture1989-12-19, fermeture1991, fondateur Jean Chalopin et exploitant SEGL."
+        },
+        {
+          "eventId": "apply-d9f310f0-0d16-42fc-95dd-1d3e53354450",
+          "appliedAt": "2026-10-28T21:59:22.855Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-d9f310f0-0d16-42fc-95dd-1d3e53354450",
+          "auditEvidence": null,
+          "summary": "Création de la zone historique Village mexicain, établie par les archives du parc ; zone masquée, sans coordonnées intérieures inventées."
+        },
+        {
+          "eventId": "apply-78282a27-8023-43e9-9145-1e26c9603c7f",
+          "appliedAt": "2026-10-28T22:02:05.091Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-78282a27-8023-43e9-9145-1e26c9603c7f",
+          "auditEvidence": null,
+          "summary": "Inventaire historique :25expériences et décors, dont21attractions Removed,3lieux de spectacle/jeux et le Dragon bleu ; détails incertains et dates laissés inconnus, contenus masqués."
+        },
+        {
+          "eventId": "apply-17c8ce9a-e920-4d19-b107-24d78dffd5b1",
+          "appliedAt": "2026-10-28T22:03:37.751Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-17c8ce9a-e920-4d19-b107-24d78dffd5b1",
+          "auditEvidence": null,
+          "summary": "Inventaire historique :20lieux complémentaires, dont4espaces de restauration,3salles publiques,2boutiques et11services ; seule entrée Papin géolocalisée, tout reste masqué."
+        }
+      ],
+      "nextAction": "Socle, zone et45parkItems masqués intégrés. Poursuivre descriptions huit langues, photos originales et logo, cartes archivées, références et histoire, puis audit final. Aucune publication ni clôture annoncée.",
       "sources": [
         {
           "label": "Backlog national existant",
