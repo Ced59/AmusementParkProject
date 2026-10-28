@@ -1,0 +1,96 @@
+{
+  "name": "Skyline Luge Queenstown",
+  "entryId": "NZ-candidate-standalone-07dc2e49aee425",
+  "standaloneAttractionId": "6b9d4991-4049-47af-8082-bfe3eedaf7f6",
+  "qualification": "Luge avec forfaits de tours et identité propre sur Bob’s Peak ; activité 2026 confirmée par Skyline ; aucune fiche Park ou Standalone correspondante dans la recherche officielle.",
+  "decision": "Published",
+  "score": 81,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "regularRules": 0,
+    "admissionOffers": 8,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Horaires variables consultables seulement dans le calendrier dynamique de l’exploitant ; aucune règle hebdomadaire fiable à intégrer.",
+    "Date d’ouverture historique exacte non établie."
+  ],
+  "sources": [
+    {
+      "label": "Skyline Queenstown — luge, conditions de visite et forfaits 2026",
+      "url": "https://queenstown.skyline.co.nz/things-to-do/queenstown-luge/"
+    },
+    {
+      "label": "Skyline Queenstown — horaires quotidiens à consulter sur le calendrier",
+      "url": "https://queenstown.skyline.co.nz/opening-hours/"
+    },
+    {
+      "label": "Skyline Queenstown — accès par Brecon Street",
+      "url": "https://queenstown.skyline.co.nz/getting-here/"
+    },
+    {
+      "label": "OpenStreetMap Nominatim — Skyline Luge Queenstown",
+      "url": "https://nominatim.openstreetmap.org/search?q=Skyline+Luge+Queenstown&format=json"
+    },
+    {
+      "label": "Wikimedia Commons — Skyline Luge 670, -Herman.M-",
+      "url": "https://commons.wikimedia.org/wiki/File:Skyline_Luge_670.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — Queenstown Skyline Luge, April 2026, Danny William Wilson",
+      "url": "https://commons.wikimedia.org/wiki/File:Queenstown_Skyline_Luge,_April_2026.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "ac1f78472c474fa8b5c29912290f3f71",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyline_Luge_670.jpg",
+      "author": "-Herman.M-",
+      "date": "2013-11-10",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "subject": "Des visiteurs en luge sur le véritable parcours de Queenstown",
+      "transformation": "vignette Wikimedia Commons optimisée, sans recadrage"
+    },
+    {
+      "imageId": "94b818cf428e4cf5ba15a019ae34c729",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Queenstown_Skyline_Luge,_April_2026.jpg",
+      "author": "Danny William Wilson",
+      "date": "2026-04-11",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Secteur de la luge et lac Wakatipu en avril 2026",
+      "transformation": "vignette Wikimedia Commons optimisée, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "30970b968b6c5b90986989ec0506b43bba631e464991bc9d61a31cca660a0ade",
+    "projectedScore": 81,
+    "projectedBlockers": [],
+    "publicScore": 81,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T23:19:31.408Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/6b9d4991-4049-47af-8082-bfe3eedaf7f6/skyline-luge-queenstown",
+      "publishedAtUtc": "2026-10-28T23:19:05.512Z",
+      "applyOperationId": "ee748a28-b1ca-4736-b9a9-2e6c9496cf9f"
+    },
+    "facebook": {
+      "id": "93ad7bf4949843b798bde5cd5c72f184",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T23:20:16.762Z",
+      "externalPostId": "1285475681307050_122125101717424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125101717424431"
+    }
+  }
+}
