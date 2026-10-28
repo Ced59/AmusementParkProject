@@ -787,27 +787,91 @@
     },
     {
       "entryId": "NZ-candidate-standalone-7ec2f4b17a16c4",
-      "name": "Skyline Rotorua",
-      "entityKind": "ToQualify",
+      "name": "Skyline Luge Rotorua",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge gravitaire",
-      "locality": null,
-      "siteId": null,
+      "locality": "178 Fairy Springs Road, Rotorua",
+      "siteId": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T23:33:01.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Luge exploitée et forfaits de descente vendus en 2026 par Skyline Rotorua ; heures quotidiennes variables.",
+      "identityConfidence": "Billets propres pour la luge ; recherches officielles Park et Standalone « Rotorua » sans correspondance.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "Skyline Rotorua",
+        "Luge Rotorua"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-28T23:31:22.575Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2626c6eb-fa3a-40e5-aa34-36ba37cdae3d",
+          "appliedAt": "2026-10-28T23:26:41.836Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
+          "evidence": "PARK_DATA_EDITOR:apply:2626c6eb-fa3a-40e5-aa34-36ba37cdae3d",
+          "auditEvidence": null,
+          "summary": "Fiche privée et descriptions en huit langues créées"
+        },
+        {
+          "eventId": "apply-3e7a29f9-e85c-413b-9326-59ccdd60cf6e",
+          "appliedAt": "2026-10-28T23:27:40.522Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
+          "evidence": "PARK_DATA_EDITOR:apply:3e7a29f9-e85c-413b-9326-59ccdd60cf6e",
+          "auditEvidence": null,
+          "summary": "Six tarifs officiels de forfaits télécabine + luge intégrés"
+        },
+        {
+          "eventId": "image-c391efbd8eae4b78b91ae641c9753c86",
+          "appliedAt": "2026-10-28T23:28:03.270Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
+          "evidence": "PARK_DATA_EDITOR:image:c391efbd8eae4b78b91ae641c9753c86",
+          "auditEvidence": null,
+          "summary": "Photo historique #1 du parcours réel importée de Wikimedia Commons, avec auteur, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "image-f7206820b94346a39edd06c84720049a",
+          "appliedAt": "2026-10-28T23:28:33.638Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
+          "evidence": "PARK_DATA_EDITOR:image:f7206820b94346a39edd06c84720049a",
+          "auditEvidence": null,
+          "summary": "Photo historique #2 du parcours réel importée de Wikimedia Commons, avec auteur, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "apply-8177d2b6-24fd-4cd7-ae93-c537c02995a5",
+          "appliedAt": "2026-10-28T23:29:55.882Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
+          "evidence": "PARK_DATA_EDITOR:apply:8177d2b6-24fd-4cd7-ae93-c537c02995a5",
+          "auditEvidence": null,
+          "summary": "Légendes historiques corrigées et deux images rendues publiques"
+        },
+        {
+          "eventId": "apply-76c00475-2b7d-4c3a-b24c-456eefb77d5a",
+          "appliedAt": "2026-10-28T23:31:22.575Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
+          "evidence": "PARK_DATA_EDITOR:apply:76c00475-2b7d-4c3a-b24c-456eefb77d5a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-skyline-luge-rotorua-20261028/audit.json",
+          "summary": "Descriptions des huit langues révisées ; audit final 81/100 sans blocage"
+        }
+      ],
+      "nextAction": "Conserver la ligne et ses reçus. Chercher des photos libres plus récentes des pistes après leur extension, réviser les tarifs et consulter le calendrier avant toute règle horaire récurrente. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -823,31 +887,82 @@
           "label": "Découverte complémentaire — site officiel",
           "url": "https://rotorua.skyline.co.nz/things-to-do/skyswing-rotorua/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Skyline Rotorua — luge, pistes, âge et taille",
+          "url": "https://rotorua.skyline.co.nz/things-to-do/luge-rotorua/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Rotorua — forfaits télécabine et luge 2026",
+          "url": "https://rotorua.skyline.co.nz/pricing-and-packages/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Rotorua — calendrier quotidien",
+          "url": "https://rotorua.skyline.co.nz/opening-hours/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Rotorua — accès 178 Fairy Springs Road",
+          "url": "https://rotorua.skyline.co.nz/getting-here/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — Skyline Rotorua",
+          "url": "https://nominatim.openstreetmap.org/search?q=Skyline+Rotorua&format=json",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Luge Tunnel, Peter Harrison, 2006",
+          "url": "https://commons.wikimedia.org/wiki/File:Luge_Tunnel_(371122775).jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — The Luge track from the Gondala above1, Charlie Brewer, 2006",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Luge_track_from_the_Gondala_above1_-_Rotorua_(112996725).jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
-            "name": "Skyline Rotorua",
-            "source": "Skyline — destinations officielles",
-            "url": "https://rotorua.skyline.co.nz/",
+            "name": "Skyline Luge Rotorua",
+            "source": "Skyline Rotorua — exploitant",
+            "url": "https://rotorua.skyline.co.nz/things-to-do/luge-rotorua/",
             "family": "Luge gravitaire",
-            "sourceVenueName": "Skyline Rotorua"
-          },
-          {
-            "name": "Skyswing Rotorua",
-            "source": "Découverte complémentaire — site officiel",
-            "url": "https://rotorua.skyline.co.nz/things-to-do/skyswing-rotorua/",
-            "family": "Balançoire géante",
-            "sourceVenueName": "Skyline Luge Rotorua",
-            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Rotorua"
+            "sourceVenueName": "Skyline Rotorua",
+            "sourceLifecycleSignal": "Billets Gondola + Luge vendus en 2026",
+            "sourceLocality": "Rotorua",
+            "matchingMethod": "Billetterie propre et recherches officielles Park / Standalone sans correspondance"
           }
         ],
-        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+        "rationale": "La luge est une expérience avec forfaits propres dans le complexe Skyline. Deux photos libres de l’ancien parcours sont légendées avec leur date ; audit public 81/100 sans blocage."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4/skyline-luge-rotorua",
+          "publishedAtUtc": "2026-10-28T23:32:06.773Z",
+          "verifiedAtUtc": "2026-10-28T23:33:01.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:311c0d32-6074-47e0-8522-e455d7089760"
+        },
+        "facebook": {
+          "id": "3d302bf3fe764f029f400b028f3ddffd",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T23:32:55.185Z",
+          "externalPostId": "1285475681307050_122125102971424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125102971424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3d302bf3fe764f029f400b028f3ddffd"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-skyline-luge-rotorua-20261028/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
