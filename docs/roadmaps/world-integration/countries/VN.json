@@ -1730,8 +1730,8 @@
       "entryId": "VN-candidate-259c9fccda827e",
       "name": "Datanla Waterfall Park",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB)",
+      "proposedEntityKind": "Park",
+      "category": "Parc touristique de cascade",
       "locality": "Đà Lạt , Lâm Đồng",
       "siteId": null,
       "legacySiteIds": [],
@@ -1741,13 +1741,13 @@
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Dalattourist présente Datanla comme domaine touristique avec cascade, luge 1, luge 3, zipline et canyoning ; la luge 1 a une fiche standalone distincte.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Créer ou qualifier la fiche Park parent Datanla Waterfall Park séparément ; préserver la piste 1 déjà publiée comme standalone et vérifier l’identité de la nouvelle piste 3. Ne pas transformer cette ligne de parc en fiche de luge.",
       "sources": [
         {
           "label": "RCDB",
@@ -1763,33 +1763,33 @@
           "label": "Dalattourist — exploitant",
           "url": "https://dalattourist.com.vn/hoat-dong",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Dalattourist — domaine de Datanla et activités",
+          "url": "https://dalattourist.com.vn/diem-den/khu-du-lich-datanla",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
-            "name": "Alpine Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/14139.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Datanla Waterfall Park",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Đà Lạt , Lâm Đồng",
-            "sourceOpenedYear": "2006"
+            "name": "Datanla Alpine Coaster 1",
+            "source": "Dalattourist — activités",
+            "url": "https://dalattourist.com.vn/hoat-dong",
+            "family": "Luge alpine",
+            "sourceVenueName": "Khu du lịch Datanla"
           },
           {
-            "name": "Xe Trượt Thác 1",
-            "source": "Dalattourist — exploitant",
+            "name": "Datanla Alpine Coaster 3",
+            "source": "Dalattourist — activités",
             "url": "https://dalattourist.com.vn/hoat-dong",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Datanla Waterfall Park",
-            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
-            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+            "family": "Luge alpine",
+            "sourceVenueName": "Khu du lịch Datanla"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’entrée découverte « Datanla Waterfall Park » désigne un domaine multi-activités, donc un parc parent. Ses deux luges sont des expériences à billet propre à qualifier séparément."
       }
     },
     {
@@ -4498,6 +4498,159 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "VN-candidate-discovery-c8ee724635c18d6e",
+      "name": "Datanla Alpine Coaster 1",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge alpine",
+      "locality": "QL20, Prenn Pass, Đà Lạt",
+      "siteId": "42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T23:47:17.000Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Dalattourist vend des billets propres à la luge 1 en 2026 et publie les heures d’accueil.",
+      "identityConfidence": "Piste 1 distinguée par l’exploitant de la piste 3 et de l’entrée au parc ; recherches officielles Park et Standalone Datanla sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "Xe Trượt Thác 1",
+        "Alpine Coaster — Datanla Waterfall Park"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-28T23:44:01.197Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a94de27d-6396-45dc-bb5f-312e31f35a37",
+          "appliedAt": "2026-10-28T23:40:48.890Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6",
+          "evidence": "PARK_DATA_EDITOR:apply:a94de27d-6396-45dc-bb5f-312e31f35a37",
+          "auditEvidence": null,
+          "summary": "Fiche privée Datanla Alpine Coaster 1 et descriptions en huit langues créées"
+        },
+        {
+          "eventId": "apply-99abdb27-8afe-4f2d-8241-1455ff975632",
+          "appliedAt": "2026-10-28T23:41:42.367Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6",
+          "evidence": "PARK_DATA_EDITOR:apply:99abdb27-8afe-4f2d-8241-1455ff975632",
+          "auditEvidence": null,
+          "summary": "Deux tarifs aller-retour de l’exploitant intégrés"
+        },
+        {
+          "eventId": "image-04cb9b5cd9ef439f9dff3c750bc65b42",
+          "appliedAt": "2026-10-28T23:42:27.433Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6",
+          "evidence": "PARK_DATA_EDITOR:image:04cb9b5cd9ef439f9dff3c750bc65b42",
+          "auditEvidence": null,
+          "summary": "Photo historique #1 du coaster de Datanla importée de Commons avec auteur, licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-518099db5ac9489faea8b7356f75cf40",
+          "appliedAt": "2026-10-28T23:43:03.874Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6",
+          "evidence": "PARK_DATA_EDITOR:image:518099db5ac9489faea8b7356f75cf40",
+          "auditEvidence": null,
+          "summary": "Photo historique #2 du coaster de Datanla importée de Commons avec auteur, licence et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-94a3208c-f343-4821-9623-6c5755ed23bf",
+          "appliedAt": "2026-10-28T23:44:01.197Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6",
+          "evidence": "PARK_DATA_EDITOR:apply:94a3208c-f343-4821-9623-6c5755ed23bf",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla-alpine-coaster-1-20261028/audit.json",
+          "summary": "Deux photos historiques créditées rendues publiques ; audit projeté 81/100 sans blocage"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Chercher des photos plus récentes de la piste 1, vérifier les tarifs et horaires sur Dalattourist ; ne pas mélanger avec la piste 3 et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Dalattourist — piste 1, entrée séparée et conditions de visite",
+          "url": "https://dalattourist.com.vn/diem-den/khu-du-lich-datanla",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Dalattourist — tarifs et accueil du coaster 1",
+          "url": "https://dalattourist.com.vn/hoat-dong",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Dalattourist — billetterie piste 1 et piste 3",
+          "url": "https://dalattourist.com.vn/dat-ve/buoc1",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "RCDB — Alpine Coaster, Datanla Waterfall Park",
+          "url": "https://rcdb.com/14139.htm",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Alpine Sled, Datanla Waterfall, 01 (2007)",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpine_Sled,_Datanla_Waterfall,_01.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Alpine Sled, Datanla Waterfall (2007)",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpine_Sled,_Datanla_Waterfall.jpg",
+          "accessedAt": "2026-10-28"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "Datanla Alpine Coaster 1",
+            "source": "Dalattourist — billetterie officielle",
+            "url": "https://dalattourist.com.vn/dat-ve/buoc1",
+            "family": "Luge alpine",
+            "sourceVenueName": "Khu du lịch Datanla",
+            "sourceLifecycleSignal": "Billets aller et aller-retour distincts de l’entrée au domaine",
+            "sourceLocality": "Đà Lạt",
+            "matchingMethod": "Nom de piste 1 et billet propre confirmés par l’exploitant ; recherches officielles sans correspondance"
+          }
+        ],
+        "rationale": "La piste 1 est vendue séparément de l’entrée au domaine et de la piste 3. Deux photos libres du coaster photographié en 2007, présentées comme vues historiques ; audit public 81/100 sans blocage."
+      },
+      "possibleBacklogEntries": [
+        "VN-candidate-259c9fccda827e",
+        "VN-candidate-6957b2b48e4fb7"
+      ],
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6/datanla-alpine-coaster-1",
+          "publishedAtUtc": "2026-10-28T23:45:03.691Z",
+          "verifiedAtUtc": "2026-10-28T23:47:17.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:11b08352-51e0-48c9-9fdc-c5126a8697fd"
+        },
+        "facebook": {
+          "id": "1ff6b89943c1418c9fcdd95abf1beb98",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T23:45:58.382Z",
+          "externalPostId": "1285475681307050_122125103925424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125103925424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1ff6b89943c1418c9fcdd95abf1beb98"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla-alpine-coaster-1-20261028/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }
