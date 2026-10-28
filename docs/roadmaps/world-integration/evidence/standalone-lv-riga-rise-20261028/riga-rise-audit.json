@@ -1,0 +1,70 @@
+{
+  "name": "Riga Rise",
+  "entryId": "LV-candidate-d5b78fdaef20b9",
+  "standaloneAttractionId": "fbc98591-3b14-426f-a3f1-af8d2c3344ca",
+  "qualification": "Grande roue fixe à billet propre près du parc Uzvaras ; aucune fiche Park ou Standalone correspondante dans le catalogue après recherches de Riga, Rise et panorāmas rats. Le quartier panoramique comporte promenade et café mais pas de parc d’attractions catalogué à relier.",
+  "decision": "Published",
+  "score": 97,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 1,
+    "weeklyRules": 3,
+    "admissionOffers": 7,
+    "historyEvents": 1
+  },
+  "remainingGap": "Une seule photographie libre et spécifique trouvée dans Wikimedia Commons. Chercher des angles supplémentaires avec droits vérifiés pour enrichir la galerie lors d’un prochain lot.",
+  "sources": [
+    {
+      "label": "Riga Rise — site officiel, horaires et tarifs",
+      "url": "https://rigarise.lv/en/home"
+    },
+    {
+      "label": "LiveRiga — présentation, hauteur et situation",
+      "url": "https://www.liveriga.com/en/visit/what-to-see/top-sights/riga-rise-observation-wheel"
+    },
+    {
+      "label": "Zuzeum — inauguration du 17 avril 2025 et projet artistique",
+      "url": "https://www.zuzeum.com/en/news/art-above-the-city-riga-rise-and-zuzeum"
+    },
+    {
+      "label": "Biļešu Serviss — billetterie et accès en fauteuil",
+      "url": "https://www.bilesuserviss.lv/biletes/HW2QKYJI3J/riga-rise-panoramas-rats"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "6bc86e0191f442c68a8e7d8ff4deff56",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panor%C4%81mas_rats_%22Riga_Rise%22.jpg",
+      "author": "Cirkulis11",
+      "date": "2025-09-08",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "68dd2308d73c7d972275a0a6904a26c2d432c66e70a3650bcab99e2df2e081a3",
+    "projectedScore": 97,
+    "projectedBlockers": [],
+    "publicScore": 97,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T21:19:05.911Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhoto": true
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/fbc98591-3b14-426f-a3f1-af8d2c3344ca/riga-rise",
+      "publishedAtUtc": "2026-10-28T21:16:45.977Z",
+      "applyOperationId": "0a553d73-4f98-46ae-959b-4af460ed81be"
+    },
+    "facebook": {
+      "id": "ef45dcc1fe004fb89d5b5329e8fc5bd8",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T21:17:28.442941Z",
+      "externalPostId": "1285475681307050_122125092435424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125092435424431"
+    }
+  }
+}
