@@ -47,6 +47,22 @@ describe('UiParkCardComponent accessible website actions', () => {
     expect(image.responsiveWidths).toEqual([128, 192, 320]);
   });
 
+  it('renders a standalone photo with responsive variants and a reserved full-card visual', () => {
+    fixture.componentRef.setInput('park', { ...park, photoImageId: 'photo-1' });
+    fixture.detectChanges();
+    const image: ImageDisplayComponent = fixture.debugElement.query(By.directive(ImageDisplayComponent)).componentInstance;
+    expect(image.imageId).toBe('photo-1');
+    expect(image.alt).toBe(park.name);
+    expect(image.imgClass).toBe('ui-park-card__photo');
+    expect(image.placeholderClass).toBe('ui-park-card__photo');
+    expect(image.responsiveWidths).toEqual([320, 480, 640, 800]);
+    expect(fixture.nativeElement.querySelector('.ui-park-card__visual--placeholder')).toBeNull();
+
+    fixture.componentRef.setInput('park', park);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.ui-park-card__visual--placeholder')).not.toBeNull();
+  });
+
   it('keeps the localized location without exposing a country code in either card size', () => {
     fixture.componentRef.setInput('park', {
       ...park, countryCode: 'PT', city: 'Quarteira', locationLine: 'Quarteira · Portugalia'

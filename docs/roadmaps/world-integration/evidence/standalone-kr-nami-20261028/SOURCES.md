@@ -1,0 +1,16 @@
+# Skyline Zipwire — Nami Island : qualification et sources
+
+L’attraction part de la tour de Gapyeong, sur la rive continentale. JANA-Line exploite la tyrolienne avec une billetterie et une réservation propres. Le billet comprend ensuite l’accès à Nami et le ferry de retour ; ce lien commercial ne transforme pas l’installation en manège interne à l’île. La référence constructeur « ZipRider — Nami Skyline » du relevé initial est conservée comme alias de la fiche unique, sous l’ID stable `KR-candidate-standalone-25023c9dd1cd28`.
+
+Le client officiel `PARK_DATA_EDITOR` n’a trouvé aucune fiche homonyme dans les recherches coréennes StandaloneAttraction et Park sur « Nami », « ZipRider », « Skyline Zipwire », « Gapyeong », « 남이섬 » et « JANA-Line », sauf une recherche Park très courte « Nami » qui a retourné des résultats mondiaux sans rapport et n’a pas servi de preuve négative. La fiche créée est `f619573f-a2ca-43cf-8b4a-5efe080dfa8a`.
+
+| Sujet | Source et décision |
+| --- | --- |
+| Exploitant, statut, horaires du jour | [Site officiel Skyline Zipwire](https://zipwire.co.kr/), consulté le 28 octobre 2026. Le site annonçait une exploitation en cours ; la météo peut suspendre les départs. |
+| Prix, inclusions, horaires, sécurité | [Guide officiel](https://zipwire.co.kr/guide), consulté le 28 octobre 2026. Family : 55 000 KRW ; Adventure : 58 000 KRW ; entrée de Nami et ferry retour compris. 9 h–18 h annoncées, parfois jusqu’à 19 h l’été, avec variations selon lumière et météo. Taille 140–200 cm ; limite supérieure de poids 120 kg. |
+| Parcours et restrictions | [FAQ officielle](https://zipwire.co.kr/faq/4), consultée le 28 octobre 2026. Family rejoint Nami directement ; Adventure passe par Jara et un bateau. Les seuils de poids minimal publiés par l’exploitant ne sont pas suffisamment cohérents pour afficher un chiffre certain : confirmer avant réservation. |
+| Disponibilité de réservation | [Réservation officielle](https://zipwire.co.kr/web), consultée le 28 octobre 2026. Family est mis en avant ; la disponibilité d’Adventure doit être confirmée. |
+| Ouverture | [Histoire de l’exploitant](https://zipwire.co.kr/company), consultée le 28 octobre 2026. Ouverture le 5 novembre 2010, documentée dans [les cas de l’exploitant](https://zipwire.co.kr/company2) et [l’annonce contemporaine de Yonhap](https://www.yna.co.kr/view/AKR20101022169900060). L’événement du site est daté au jour près. |
+| Image | [Jocelyndurrey, Wikimedia Commons, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%9D%B4%EC%84%AC_(4).JPG), prise le 28 juin 2015. Elle montre la tour et les câbles depuis le ferry ; toutes les légendes la désignent comme archive de 2015. |
+
+La dernière intégration **de données** est le reçu `11-opening-date` du 28 octobre 2026 à 07:12:52.225 UTC. Les reçus de visibilité de l’image, de l’historique et de la fiche, dont la republication de l’historique corrigé, ainsi que la publication Facebook, figurent dans [nami-receipts.json](nami-receipts.json) et ne repoussent pas cette date. L’[audit](nami-audit.json) confirme une page et un article accessibles dans les huit langues, un score de 95/100 et aucun blocage de publication. Le statut administratif exporté reste `ToReview` malgré la valeur `Approved` demandée à l’Apply ; la fiche est bien visible publiquement.

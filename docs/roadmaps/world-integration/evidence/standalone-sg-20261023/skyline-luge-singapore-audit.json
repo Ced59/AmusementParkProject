@@ -1,0 +1,314 @@
+{
+  "name": "Skyline Luge Singapore",
+  "standaloneAttractionId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+  "backlogEntryId": "SG-candidate-standalone-864d87f292e0f6",
+  "qualification": "Skyline exploite à Sentosa une expérience de luge et Skyride avec sa propre billetterie pour deux, trois ou quatre descentes. Les quatre pistes sont des variantes d’une même installation. Les recherches officielles de Parks et StandaloneAttractions par Skyline Luge et Sentosa n’ont trouvé aucune fiche homonyme.",
+  "deduplicationEvidence": {
+    "standaloneExactNameMatches": 0,
+    "parkExactNameMatches": 0,
+    "searchQueries": [
+      "Skyline Luge",
+      "Sentosa"
+    ],
+    "nearbyNonMatchingStandalone": "SkyHelix Sentosa"
+  },
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 87,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 3,
+    "accessConditions": 5,
+    "historyEvents": 2,
+    "articles": 1,
+    "currentAdmissionOffers": 11,
+    "weeklyOpeningRules": 0,
+    "openingYearFromOperator": 2005,
+    "preciseBottomEntranceCoordinates": true
+  },
+  "gaps": [
+    "L’exploitant publie un calendrier dynamique dont les horaires varient selon la date et la météo ; aucune grille hebdomadaire fixe n’a été inventée. La page officielle et la règle de dernière entrée sont indiquées dans la description et le registre.",
+    "Les trois photos réutilisables datent de 2014. Renouveler les visuels lorsque des images plus récentes avec licence vérifiable seront disponibles.",
+    "Skyline Enterprises confirme l’année d’ouverture 2005, mais ne donne pas le jour exact : seule l’année est structurée.",
+    "Les onze prix et offres observés le 23 octobre 2026 peuvent changer selon les créneaux et promotions ; vérifier avant un nouveau cycle éditorial."
+  ],
+  "sources": [
+    "https://sentosa.skylineluge.com/",
+    "https://sentosa.skylineluge.com/pricing-packages/",
+    "https://sentosa.skylineluge.com/visiting-us/opening-hours/",
+    "https://sentosa.skylineluge.com/visiting-us/faqs/",
+    "https://sentosa.skylineluge.com/visiting-us/getting-here/",
+    "https://sentosa.skylineluge.com/luge/",
+    "https://sentosa.skylineluge.com/skyride/",
+    "https://sentosa.skylineluge.com/luge-3/luge-tracks/",
+    "https://skylineenterprises.co.nz/what-we-do/tourism-operations/skyline-luge-singapore/",
+    "https://www.straitstimes.com/singapore/skyline-luge-sentosa-unveils-new-tracks-and-chairlift-as-part-of-14m-upgrade",
+    "https://www.openstreetmap.org/way/260774258",
+    "https://commons.wikimedia.org/wiki/File:Sentosa_Luge_and_Skyride,_Singapore_-_20140213.jpg",
+    "https://commons.wikimedia.org/wiki/File:Skyride_at_Sentosa_Luge_and_Skyride,_Singapore_-_20140213-03.jpg",
+    "https://commons.wikimedia.org/wiki/File:Luge_ride_at_Sentosa_Luge_and_Skyride,_Singapore_-_20140213.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T13:58:55.874618+00:00",
+    "exportSha256": "11eff7a1d71d58ff05e4e559c040344ddff022fb181b6123fd5317cfde1311f2",
+    "localizedStringsReviewed": 464,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues contrôlées pour la fiche, les prix, les règles d’accès, les légendes des photos et l’article. La date exacte d’ouverture n’est pas inventée : Skyline Enterprises confirme seulement 2005. Les trois photos historiques sont identifiées comme prises en 2014."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+    "publishedAtUtc": "2026-10-23T13:56:27.9077738Z",
+    "operationId": "400d55fa-0ed2-448b-9f34-923914893b8c"
+  },
+  "facebookPublication": {
+    "id": "f9e1063d50854ca6901b79fd0d0c9709",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T13:57:33.4980269Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124299337424431",
+    "externalPostId": "1285475681307050_122124299337424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T13:57:40.463465+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T13:57:47.516602+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history/e9556620-ad71-4c00-a49f-502ed93d65a0/extension-skyline-luge-sentosa-2017",
+            "status": 200,
+            "textLength": 1632,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 701
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history/e9556620-ad71-4c00-a49f-502ed93d65a0/extension-skyline-luge-sentosa-2017",
+            "status": 200,
+            "textLength": 1372,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 619
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history/e9556620-ad71-4c00-a49f-502ed93d65a0/extension-skyline-luge-sentosa-2017",
+            "status": 200,
+            "textLength": 1517,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 740
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history/e9556620-ad71-4c00-a49f-502ed93d65a0/extension-skyline-luge-sentosa-2017",
+            "status": 200,
+            "textLength": 1468,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 723
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history/e9556620-ad71-4c00-a49f-502ed93d65a0/extension-skyline-luge-sentosa-2017",
+            "status": 200,
+            "textLength": 1428,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 671
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history/e9556620-ad71-4c00-a49f-502ed93d65a0/extension-skyline-luge-sentosa-2017",
+            "status": 200,
+            "textLength": 1456,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 681
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history/e9556620-ad71-4c00-a49f-502ed93d65a0/extension-skyline-luge-sentosa-2017",
+            "status": 200,
+            "textLength": 1386,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 687
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore/history/e9556620-ad71-4c00-a49f-502ed93d65a0/extension-skyline-luge-sentosa-2017",
+            "status": 200,
+            "textLength": 1448,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 701
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyline-luge-singapore-receipts.json"
+}

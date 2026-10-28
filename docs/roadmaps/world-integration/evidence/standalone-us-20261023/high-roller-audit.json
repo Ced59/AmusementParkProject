@@ -1,0 +1,300 @@
+{
+  "name": "High Roller",
+  "standaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+  "backlogEntryId": "US-candidate-9e33a8dae9d141",
+  "qualification": "Billet propre pour la grande roue de The LINQ Promenade, indépendamment des commerces et autres expériences. SearchParks et SearchStandaloneAttractions officiels ont renvoyé zéro identité homonyme à Las Vegas ; nouvelle fiche standalone créée.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 90,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 5,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "datedScheduleOverrides": 14,
+    "admissionOffers": 1,
+    "openingHoursPeriod": "2026-10-23/2026-11-05"
+  },
+  "gaps": [
+    "Le site de Caesars bloque la lecture automatisée (HTTP 403 Incapsula). Les créneaux et prix actuels proviennent de Vegas.com, sont explicitement présentés comme données de revendeur et expirent le 5 novembre 2026 ; revoir avant cette date.",
+    "Le billet à 22 $ est un minimum dynamique, taxes et frais inclus sur le revendeur, et ne représente pas un prix de caisse officiel.",
+    "POMA est uniquement identifié comme concepteur et fabricant des cabines ; le constructeur de la roue entière n’est pas attribué sans preuve.",
+    "Le reportage Vegas Inc de l’ouverture du 31 mars 2014 est indexé mais la page complète répond HTTP 402 depuis cet environnement."
+  ],
+  "sources": [
+    "https://www.caesars.com/linq/things-to-do/attractions/high-roller",
+    "https://www.poma.net/en/work/the-high-roller-observation-wheel/",
+    "https://vegasinc.lasvegassun.com/business/2014/mar/31/take-spin-high-roller-observation-wheel-opens-toda/",
+    "https://www.vegas.com/attractions/on-the-strip/high-roller-las-vegas/",
+    "https://www.wikidata.org/wiki/Q892103",
+    "https://commons.wikimedia.org/wiki/File:The_High_Roller_-_View_From_The_Linq_2.jpg",
+    "https://commons.wikimedia.org/wiki/File:The_High_Roller_under_construction_in_January_2014.jpg",
+    "https://commons.wikimedia.org/wiki/File:The_High_Roller-Cabin.jpg",
+    "https://commons.wikimedia.org/wiki/File:Las_Vegas_-_The_High_Roller-01.JPG",
+    "https://commons.wikimedia.org/wiki/File:High_Roller_ferris_wheel_at_night.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T12:49:16.263161+00:00",
+    "exportSha256": "9c681284fa687ca180fda827c9413ffc0d7bfa9768b1e6530c2f5ba422511a07",
+    "localizedStringsReviewed": 288,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues : identité, descriptions, article, horaires, billets, accès et légendes relus. POMA est crédité pour les cabines seulement ; aucune attribution du constructeur de la roue."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+    "publishedAtUtc": "2026-10-23T12:35:42.9580969Z",
+    "operationId": "bd0a8866-3885-421b-86f3-c743acb33a7d"
+  },
+  "facebookPublication": {
+    "id": "dffd12d61b2c41a1bc4eb5e0bc1e8921",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T12:48:10.4600504Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124290913424431",
+    "externalPostId": "1285475681307050_122124290913424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T12:49:04.193623+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T12:36:21.684754+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history/159d40df-5ef7-4267-a1a2-ed0fcca169fd/ouverture-high-roller-las-vegas-2014",
+            "status": 200,
+            "textLength": 1488,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 496
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history/159d40df-5ef7-4267-a1a2-ed0fcca169fd/ouverture-high-roller-las-vegas-2014",
+            "status": 200,
+            "textLength": 1323,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 444
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history/159d40df-5ef7-4267-a1a2-ed0fcca169fd/ouverture-high-roller-las-vegas-2014",
+            "status": 200,
+            "textLength": 1378,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 545
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history/159d40df-5ef7-4267-a1a2-ed0fcca169fd/ouverture-high-roller-las-vegas-2014",
+            "status": 200,
+            "textLength": 1304,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 522
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history/159d40df-5ef7-4267-a1a2-ed0fcca169fd/ouverture-high-roller-las-vegas-2014",
+            "status": 200,
+            "textLength": 1350,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 485
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history/159d40df-5ef7-4267-a1a2-ed0fcca169fd/ouverture-high-roller-las-vegas-2014",
+            "status": 200,
+            "textLength": 1331,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 493
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history/159d40df-5ef7-4267-a1a2-ed0fcca169fd/ouverture-high-roller-las-vegas-2014",
+            "status": 200,
+            "textLength": 1331,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 471
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller/history/159d40df-5ef7-4267-a1a2-ed0fcca169fd/ouverture-high-roller-las-vegas-2014",
+            "status": 200,
+            "textLength": 1357,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 503
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/high-roller-receipts.json"
+}

@@ -1,0 +1,59 @@
+{
+  "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+  "entryId": "KR-candidate-standalone-83338432442c73",
+  "auditedAtUtc": "2026-10-28T07:27:56.172Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/56b41750-e5a1-4721-b4bf-225aaf8c3409/arii-hills-zipwire-jeongseon",
+  "score": 89,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "localization": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "localizedStringsReviewed": 216,
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "exportSha256": "af730b699df1b1b23f2f46260e709c231eba89f6257fe573cc835cfd1fe2a587"
+  },
+  "publicChecks": {
+    "attractionPages200": 8,
+    "mobilePagesWithoutHorizontalOverflow": 8,
+    "historyPages200": 8,
+    "historyArticles200": 8,
+    "allNamesVisible": true,
+    "allArticlePagesWithoutPlaceholders": true
+  },
+  "content": {
+    "historyEvents": 1,
+    "publishedImages": 0,
+    "accessConditions": 5,
+    "fixedPriceKrw": 40000,
+    "openingDate": "2012-06-23"
+  },
+  "facebook": {
+    "status": "Published",
+    "id": "d935ec9d35eb4260ae2e019e8150ee3a",
+    "publishedAtUtc": "2026-10-28T07:26:12.585429Z",
+    "externalPostId": "1285475681307050_122125004031424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125004031424431"
+  },
+  "limitations": [
+    "Aucune photographie de la tyrolienne n’a été importée : les droits de réutilisation des images pertinentes trouvées ne sont pas établis.",
+    "Le point cartographique correspond aux abords du Skywalk voisin, proche du départ, et non à la plateforme ou au point d’arrivée exact.",
+    "Les horaires d’hiver et la fermeture d’inspection mensuelle ne sont pas représentés comme dates fixes : consulter le calendrier officiel.",
+    "La fiche est visible mais le statut administratif exporté reste ToReview ; le client officiel a ignoré la valeur Approved envoyée au dernier Apply."
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "dataApplyReceipts": [
+    {
+      "stage": "01-core",
+      "operationId": "b0b4c408-9bce-42eb-91e7-c8c452de5904",
+      "appliedAtUtc": "2026-10-23T16:10:47.6717787Z",
+      "targetStandaloneAttractionId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "02-hours",
+      "operationId": "c9d7b66f-266c-4251-9e00-9e959fdda241",
+      "appliedAtUtc": "2026-10-23T16:12:13.7152578Z",
+      "targetStandaloneAttractionId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "03-pricing",
+      "operationId": "bb7c9ac5-3115-420e-8777-d8fb2f10378c",
+      "appliedAtUtc": "2026-10-23T16:12:37.4861923Z",
+      "targetStandaloneAttractionId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "04-access",
+      "operationId": "36dfa4a2-b9b4-4cf7-a6fc-e64653dfed72",
+      "appliedAtUtc": "2026-10-23T16:13:02.6404172Z",
+      "targetStandaloneAttractionId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "05-history",
+      "operationId": "5baffd7b-13ac-4ec2-8e73-2bfa6773b828",
+      "appliedAtUtc": "2026-10-23T16:13:27.337543Z",
+      "targetStandaloneAttractionId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "07-publish-images",
+      "operationId": "9b00bd0c-2ab5-4fd9-9979-e39339cfee08",
+      "appliedAtUtc": "2026-10-23T16:15:26.2558208Z",
+      "targetStandaloneAttractionId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "08-publish-history",
+      "operationId": "ba944829-79c7-4752-a7e8-aec3d77088ad",
+      "appliedAtUtc": "2026-10-23T16:15:50.1597704Z",
+      "targetStandaloneAttractionId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "stage": "09-publish-attraction",
+      "operationId": "7eadaf30-a83b-45e7-8059-ff082d373184",
+      "appliedAtUtc": "2026-10-23T16:16:13.6075453Z",
+      "targetStandaloneAttractionId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "photoImportReceipts": [
+    {
+      "id": "9d5bf1eb9b434b34808299ad5ffc80fc",
+      "createdAt": "2026-10-23T16:13:51.485Z",
+      "updatedAt": "2026-10-23T16:13:56.371Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:A'DAM_Lookout-03-Swing.jpg",
+      "width": 960,
+      "height": 720,
+      "isCurrent": true,
+      "credit": "Muck / Wikimedia Commons, CC BY-SA 4.0, 2019"
+    },
+    {
+      "id": "dab92bdb483e491fbc9c54f9f0162889",
+      "createdAt": "2026-10-23T16:14:08.734Z",
+      "updatedAt": "2026-10-23T16:14:12.925Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:A'DAM_Lookout-04-Swing.jpg",
+      "width": 960,
+      "height": 720,
+      "isCurrent": false,
+      "credit": "Muck / Wikimedia Commons, CC BY-SA 4.0, 2019"
+    },
+    {
+      "id": "3a3f91cc44b947f1b1ace1b695f24558",
+      "createdAt": "2026-10-23T16:14:28.228Z",
+      "updatedAt": "2026-10-23T16:14:32.108Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:A'DAM_Tower_swinging.jpg",
+      "width": 2028,
+      "height": 1550,
+      "isCurrent": false,
+      "credit": "APK / Wikimedia Commons, CC BY-SA 4.0, 2023"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "7803a046-1f7a-4f47-b2eb-03915f3bd526",
+    "appliedAtUtc": "2026-10-23T11:53:24.8168898Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "ddde2726-bd2d-4cf6-ae5d-f734a25b0154",
+    "appliedAtUtc": "2026-10-23T11:54:37.2306405Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "87db6cac-39eb-4e58-8570-d732f44d9aa8",
+    "appliedAtUtc": "2026-10-23T11:55:00.4307377Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "9bac3498-017f-4791-8b19-58c34631cb4c",
+    "appliedAtUtc": "2026-10-23T11:55:34.6361747Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "b20ce614-0e3a-4c7b-a62c-00464485c704",
+    "appliedAtUtc": "2026-10-23T11:56:04.8290066Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-images",
+    "operationId": "43e0f63d-1a7d-4ed1-bfed-bbb3552d90eb",
+    "appliedAtUtc": "2026-10-23T11:58:12.2918234Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-history",
+    "operationId": "fa96bec0-2d24-416b-b2aa-a1997ee8231a",
+    "appliedAtUtc": "2026-10-23T11:58:35.2082524Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "10-publish-attraction",
+    "operationId": "0116f8f3-2472-495c-a2cd-151d850f3f97",
+    "appliedAtUtc": "2026-10-23T11:58:59.3728287Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "11-location",
+    "operationId": "ae6f1cdc-3cc5-40d7-a6d1-adf5b5cd804e",
+    "appliedAtUtc": "2026-10-23T11:59:29.2822394Z",
+    "targetStandaloneAttractionId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "id": "2d22047f9c984518a948b146e2544d79",
+    "ownerId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gmunden_-_Gr%C3%BCnberg,_Seilbahnstation.JPG",
+    "updatedAt": "2026-10-23T11:56:56.201Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2",
+    "id": "c091dcc14e81402c9e3013a3fcedbb9b",
+    "ownerId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gr%C3%BCnberg_Gmunden_Traunsee_20241011a.jpg",
+    "updatedAt": "2026-10-23T11:57:11.794Z",
+    "isPublished": false
+  }
+]

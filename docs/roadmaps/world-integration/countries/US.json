@@ -999,27 +999,160 @@
     {
       "entryId": "US-candidate-discovery-2f0e2b642d783e",
       "name": "Aerophile — Disney Springs",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
-      "locality": "Lake Buena Vista, Floride",
-      "siteId": null,
+      "locality": "Disney Springs West Side, Lake Buena Vista, Floride",
+      "siteId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T14:55:27.646Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Attraction et tarifs actifs sur le site Disney au 23 octobre 2026 ; remplacement du ballon en février 2026.",
+      "identityConfidence": "Billet Disney propre, source Aerophile active et alias Characters in Flight documenté par D23 ; aucune fiche homonyme dans les recherches officielles US.",
       "possibleMatches": [],
       "aliases": [
-        "Disney® Springs Orlando, Florida, USA"
+        "Disney® Springs Orlando, Florida, USA",
+        "Characters in Flight",
+        "Aerophile — The World Leader in Balloon Flight"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T14:52:36.337Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-40bc173e-9f83-4ce0-b0a0-c1ff4da395ea",
+          "appliedAt": "2026-10-23T14:45:26.728Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:40bc173e-9f83-4ce0-b0a0-c1ff4da395ea",
+          "auditEvidence": null,
+          "summary": "Fiche Aerophile et descriptions en huit langues créées."
+        },
+        {
+          "eventId": "apply-3b085e9f-ede8-4b72-a360-0fd13c4d8003",
+          "appliedAt": "2026-10-23T14:46:48.941Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:3b085e9f-ede8-4b72-a360-0fd13c4d8003",
+          "auditEvidence": null,
+          "summary": "Deux tarifs officiels provisoirement intégrés."
+        },
+        {
+          "eventId": "apply-20527d98-2114-4c61-9c6b-11383be524a7",
+          "appliedAt": "2026-10-23T14:47:12.634Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:20527d98-2114-4c61-9c6b-11383be524a7",
+          "auditEvidence": null,
+          "summary": "Quatre règles officielles d’âge, météo et sécurité intégrées."
+        },
+        {
+          "eventId": "apply-3462c1be-4022-4387-b0e0-51f79771b7f6",
+          "appliedAt": "2026-10-23T14:47:36.035Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:3462c1be-4022-4387-b0e0-51f79771b7f6",
+          "auditEvidence": null,
+          "summary": "Ouverture en 2009 et article historique en huit langues intégrés."
+        },
+        {
+          "eventId": "apply-d078e573-4f08-4a21-89d1-eb63ea2601e2",
+          "appliedAt": "2026-10-23T14:47:59.209Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:d078e573-4f08-4a21-89d1-eb63ea2601e2",
+          "auditEvidence": null,
+          "summary": "Coordonnées du ballon intégrées à partir d’OpenStreetMap."
+        },
+        {
+          "eventId": "image-1bc604c04170442ab56de28a6aa258e2",
+          "appliedAt": "2026-10-23T14:48:18.552Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:1bc604c04170442ab56de28a6aa258e2",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous CC BY-SA datée et créditée, avec textes alternatifs."
+        },
+        {
+          "eventId": "image-2533c05a498b4107adeb8c79c00c9fad",
+          "appliedAt": "2026-10-23T14:48:33.261Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:2533c05a498b4107adeb8c79c00c9fad",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous CC BY-SA datée et créditée, avec textes alternatifs."
+        },
+        {
+          "eventId": "image-07ffdcf41ae14e61ae1dde9550e6b732",
+          "appliedAt": "2026-10-23T14:48:48.109Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:07ffdcf41ae14e61ae1dde9550e6b732",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous CC BY-SA datée et créditée, avec textes alternatifs."
+        },
+        {
+          "eventId": "apply-c683ca3e-2ab2-4851-bc2e-0ff15a201b21",
+          "appliedAt": "2026-10-23T14:49:44.172Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:c683ca3e-2ab2-4851-bc2e-0ff15a201b21",
+          "auditEvidence": null,
+          "summary": "Plage horaire indicative du jour ajoutée avec avertissement."
+        },
+        {
+          "eventId": "apply-341527c5-3985-41c4-9c02-3f0a5b5c903f",
+          "appliedAt": "2026-10-23T14:50:07.196Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:341527c5-3985-41c4-9c02-3f0a5b5c903f",
+          "auditEvidence": null,
+          "summary": "Tarifs corrigés en prix sur place, sans lien d’achat en ligne."
+        },
+        {
+          "eventId": "apply-1a1436c3-d4a2-48e0-ac96-646147890204",
+          "appliedAt": "2026-10-23T14:52:12.209Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:1a1436c3-d4a2-48e0-ac96-646147890204",
+          "auditEvidence": null,
+          "summary": "Mesures techniques réécrites en toutes lettres dans les descriptions."
+        },
+        {
+          "eventId": "apply-7cd0529e-7a5a-41ae-864c-5145cc3699dd",
+          "appliedAt": "2026-10-23T14:52:36.337Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:7cd0529e-7a5a-41ae-864c-5145cc3699dd",
+          "auditEvidence": null,
+          "summary": "Mesures techniques réécrites en toutes lettres dans l’article historique."
+        },
+        {
+          "eventId": "closure-7cd0529e-7a5a-41ae-864c-5145cc3699dd",
+          "appliedAt": "2026-10-23T14:52:36.337Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+          "evidence": "PARK_DATA_EDITOR:apply:7cd0529e-7a5a-41ae-864c-5145cc3699dd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-aerophile-20261023/aerophile-disney-springs-audit.json",
+          "summary": "Audit final 100/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; réviser tarif, horaire et météo, puis chercher une photo du ballon renouvelé en 2026 sous licence adaptée.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -1030,6 +1163,46 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://disneyworld.disney.go.com/en_CA/attractions/disney-springs/aerophile-balloon-flight/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://d23.com/a-to-z/characters-in-flight/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://wdwnt.com/2026/02/aerophile-experience-reopens-new-balloon-disney-springs/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/node/11028811186",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Disney_springs_balloon.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:DowntownDisney-Balloon-2092.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Dark_Disney_-_Flickr_-_Neillwphoto.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -1038,8 +1211,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Aerophile — Disney Springs",
@@ -1053,7 +1226,29 @@
             "referenceId": "aerophile-disney-springs"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Vol captif à billetterie distincte dans un quartier accessible sans billet d’entrée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+          "publishedAtUtc": "2026-10-23T14:54:25.4222934Z",
+          "verifiedAtUtc": "2026-10-23T14:55:27.646Z",
+          "evidence": "PARK_DATA_EDITOR:apply:fe7c61dd-f4d8-4b31-98e6-36816342487e"
+        },
+        "facebook": {
+          "id": "7d6c29d8433144f8bd456d78dacdfbc4",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T14:55:57.3484611Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124307617424431",
+          "externalPostId": "1285475681307050_122124307617424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-aerophile-20261023/aerophile-disney-springs-audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
@@ -19868,36 +20063,142 @@
     {
       "entryId": "US-candidate-standalone-cc3caa2f6fca41",
       "name": "FlyOver America",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Flying theatre",
-      "locality": null,
-      "siteId": null,
+      "locality": "Bloomington, Minnesota",
+      "siteId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T13:21:49.246Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Billets et horaires actifs sur le site FlyOver America au 23 octobre 2026.",
+      "identityConfidence": "Opérateur et billet propres confirmés ; absence de doublon et cinq items du parc voisin vérifiés ; page publique contrôlée en huit langues",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T13:19:29.090Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b147fc52-029c-45d9-b3b6-4b59faddd655",
+          "appliedAt": "2026-10-23T13:15:04.008Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:b147fc52-029c-45d9-b3b6-4b59faddd655",
+          "auditEvidence": null,
+          "summary": "Fiche créée et descriptions éditoriales en huit langues intégrées."
+        },
+        {
+          "eventId": "apply-c106e9a3-dd53-4bee-bbc7-e0eae0b161d9",
+          "appliedAt": "2026-10-23T13:18:09.931Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:c106e9a3-dd53-4bee-bbc7-e0eae0b161d9",
+          "auditEvidence": null,
+          "summary": "Horaires officiels semaine et week-end intégrés avec conflit du samedi signalé."
+        },
+        {
+          "eventId": "apply-cfc96cda-1ad5-4cb8-a4b2-983acde4be8a",
+          "appliedAt": "2026-10-23T13:18:32.031Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:cfc96cda-1ad5-4cb8-a4b2-983acde4be8a",
+          "auditEvidence": null,
+          "summary": "Deux catégories de billets avec prix en ligne et sur place intégrées."
+        },
+        {
+          "eventId": "apply-73b458e3-a52d-417a-a941-36f1fe1f30fd",
+          "appliedAt": "2026-10-23T13:19:06.155Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:73b458e3-a52d-417a-a941-36f1fe1f30fd",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès et de sécurité officielles intégrées."
+        },
+        {
+          "eventId": "apply-cae18897-e7f2-4aa1-920b-10fc114401d6",
+          "appliedAt": "2026-10-23T13:19:29.090Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:cae18897-e7f2-4aa1-920b-10fc114401d6",
+          "auditEvidence": null,
+          "summary": "Ouverture du 19 avril 2016 et article historique en huit langues intégrés."
+        },
+        {
+          "eventId": "closure-cae18897-e7f2-4aa1-920b-10fc114401d6",
+          "appliedAt": "2026-10-23T13:19:29.090Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:apply:cae18897-e7f2-4aa1-920b-10fc114401d6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/flyover-america-audit.json",
+          "summary": "Audit final 84/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; chercher une photo réutilisable, préciser la position intérieure, clarifier les horaires du samedi et renouveler les tarifs avec taxes.",
       "sources": [
         {
           "label": "Brogent — projet constructeur",
           "url": "https://www.brogent.com/EN/FlyOver-America-cv-1.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/visitor-info",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/tickets",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/safety",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.flyover-america.com/about",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.mallofamerica.com/directory/flyover-america",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.brogent.com/en/Copy%20%282%29%20of%20FlyOver-America-cv-1.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://dns.brogent.com/en/FlyOver-America-will-be-introduced-in-Minnesota-2016-bv-620.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/6256ae91-3f69-4198-b8e0-8170e21fe6e7/flyover-america",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "FlyOver America",
@@ -19907,7 +20208,29 @@
             "sourceVenueName": "FlyOver America"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Opérateur et billet propres dans le Mall of America ; l’export du parc Nickelodeon Universe voisin ne contient pas FlyOver America."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6256ae91-3f69-4198-b8e0-8170e21fe6e7/flyover-america",
+          "publishedAtUtc": "2026-10-23T13:21:01.2517322Z",
+          "verifiedAtUtc": "2026-10-23T13:21:49.246Z",
+          "evidence": "PARK_DATA_EDITOR:apply:5b82aba5-375b-4a1a-a3c9-8370065ffe88"
+        },
+        "facebook": {
+          "id": "efa3880a1ea14850896d3632976e444e",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T13:21:54.6950303Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124294471424431",
+          "externalPostId": "1285475681307050_122124294471424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/flyover-america-audit.json",
+        "score": 84,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -27572,25 +27895,148 @@
     {
       "entryId": "US-candidate-9e33a8dae9d141",
       "name": "High Roller",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Standalone à qualifier / Standalone",
-      "locality": "Las Vegas , Nevada",
-      "siteId": null,
+      "locality": "Las Vegas, Nevada",
+      "siteId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T12:49:04.193Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Billet autonome confirmé ; absence de doublon Park et standalone vérifiée ; page publique contrôlée en huit langues",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "The LINQ High Roller"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T12:44:57.345Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7a26ea94-bc02-4217-a31d-0cfe9c38f3f7",
+          "appliedAt": "2026-10-23T12:27:04.221Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:7a26ea94-bc02-4217-a31d-0cfe9c38f3f7",
+          "auditEvidence": null,
+          "summary": "Fiche créée et descriptions éditoriales dans huit langues intégrées."
+        },
+        {
+          "eventId": "apply-29477bc4-5b08-4dc6-bfa4-6094a54acbb6",
+          "appliedAt": "2026-10-23T12:29:34.564Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:29477bc4-5b08-4dc6-bfa4-6094a54acbb6",
+          "auditEvidence": null,
+          "summary": "Quatorze dates de réservation 2026 intégrées avec fuseau horaire."
+        },
+        {
+          "eventId": "apply-e1d94912-8ba6-44a1-8dd1-f431c3ca9c53",
+          "appliedAt": "2026-10-23T12:29:57.742Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:e1d94912-8ba6-44a1-8dd1-f431c3ca9c53",
+          "auditEvidence": null,
+          "summary": "Billet revendeur dynamique et validité datée intégrés."
+        },
+        {
+          "eventId": "apply-0920974e-a04e-4b42-b60a-727ba09ece5b",
+          "appliedAt": "2026-10-23T12:30:20.640Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:0920974e-a04e-4b42-b60a-727ba09ece5b",
+          "auditEvidence": null,
+          "summary": "Trois conditions d’accès vérifiées intégrées."
+        },
+        {
+          "eventId": "apply-2b377b7c-5129-4eb1-bbcd-b4986ada681b",
+          "appliedAt": "2026-10-23T12:30:43.544Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:2b377b7c-5129-4eb1-bbcd-b4986ada681b",
+          "auditEvidence": null,
+          "summary": "Jalon du 31 mars 2014 et article dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-ecec96ba33c4403591a679a1fbee186b",
+          "appliedAt": "2026-10-23T12:31:33.210Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:ecec96ba33c4403591a679a1fbee186b",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-0aeaddbb5b134e0da50ed6cb1587a278",
+          "appliedAt": "2026-10-23T12:31:48.066Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:0aeaddbb5b134e0da50ed6cb1587a278",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-bf514d5ebcd8457389e61675f278d03c",
+          "appliedAt": "2026-10-23T12:32:02.784Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:bf514d5ebcd8457389e61675f278d03c",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-acc6503279f849858ccda02499c42c7e",
+          "appliedAt": "2026-10-23T12:32:18.951Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:acc6503279f849858ccda02499c42c7e",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "apply-8f2e8c4b-d4d8-4fb5-b3fe-f471b4551a10",
+          "appliedAt": "2026-10-23T12:33:39.764Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:apply:8f2e8c4b-d4d8-4fb5-b3fe-f471b4551a10",
+          "auditEvidence": null,
+          "summary": "Coordonnées géographiques vérifiées intégrées."
+        },
+        {
+          "eventId": "image-371960490d5941968bf78024a519456e",
+          "appliedAt": "2026-10-23T12:44:57.345Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:371960490d5941968bf78024a519456e",
+          "auditEvidence": null,
+          "summary": "Photographie sous licence vérifiée, crédits et légendes dans huit langues intégrés."
+        },
+        {
+          "eventId": "closure-image-371960490d5941968bf78024a519456e",
+          "appliedAt": "2026-10-23T12:44:57.345Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:371960490d5941968bf78024a519456e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/high-roller-audit.json",
+          "summary": "Audit final 90/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; renouveler horaires et tarifs dès l’expiration du 5 novembre 2026, rechercher les tarifs officiels Caesars et vérifier de nouveau les conditions d’accès.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
@@ -27601,13 +28047,85 @@
           "label": "Site officiel (attraction autonome)",
           "url": "https://www.caesars.com/linq/things-to-do/attractions/high-roller",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.poma.net/en/work/the-high-roller-observation-wheel/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://vegasinc.lasvegassun.com/business/2014/mar/31/take-spin-high-roller-observation-wheel-opens-toda/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.vegas.com/attractions/on-the-strip/high-roller-las-vegas/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wikidata.org/wiki/Q892103",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:The_High_Roller_-_View_From_The_Linq_2.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:The_High_Roller_under_construction_in_January_2014.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:The_High_Roller-Cabin.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Las_Vegas_-_The_High_Roller-01.JPG",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:High_Roller_ferris_wheel_at_night.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Grande roue permanente à billet propre sur la promenade du LINQ ; aucun billet d’entrée commun à un parc ni ancienne fiche trouvée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d987f074-7efc-47dd-bbf8-5ccec428538e/high-roller",
+          "publishedAtUtc": "2026-10-23T12:35:42.9580969Z",
+          "verifiedAtUtc": "2026-10-23T12:49:04.193Z",
+          "evidence": "PARK_DATA_EDITOR:apply:bd0a8866-3885-421b-86f3-c743acb33a7d"
+        },
+        "facebook": {
+          "id": "dffd12d61b2c41a1bc4eb5e0bc1e8921",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T12:48:10.4600504Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124290913424431",
+          "externalPostId": "1285475681307050_122124290913424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/high-roller-audit.json",
+        "score": 90,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -56849,16 +57367,16 @@
       "siteId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-23T01:57:15.351Z",
+      "presenceObservedAt": "2026-10-23T15:09:16.766Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identité et autonomie confirmées ; création appliquée et page publique contrôlée",
+      "sourceLifecycleSignal": "Roue en activité et tarifs publiés par SkyWheel le 23 octobre 2026.",
+      "identityConfidence": "Identité et autonomie déjà confirmées par la première intégration ; enrichissement de la même fiche sans doublon.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T01:56:22.139Z",
+      "lastDataIntegrationAt": "2026-10-23T15:08:04.031Z",
       "integrationHistory": [
         {
           "eventId": "apply-fab2cf05-e94b-4daf-a692-e195adcd9841",
@@ -56989,9 +57507,79 @@
           "evidence": "PARK_DATA_EDITOR:apply:e0ad698f-6a4a-4b98-8b9c-a4d8d446920d",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/skywheel-audit.json",
           "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 90/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        },
+        {
+          "eventId": "apply-d5ae3a72-a2b1-4e94-9c21-a5389629a2c5",
+          "appliedAt": "2026-10-23T15:04:31.964Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+          "evidence": "PARK_DATA_EDITOR:apply:d5ae3a72-a2b1-4e94-9c21-a5389629a2c5",
+          "auditEvidence": null,
+          "summary": "Hauteur officielle et accessibilité des cabines standard ajoutées."
+        },
+        {
+          "eventId": "apply-23e89658-ecb9-4a02-8a35-24819eaab9d9",
+          "appliedAt": "2026-10-23T15:04:55.137Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+          "evidence": "PARK_DATA_EDITOR:apply:23e89658-ecb9-4a02-8a35-24819eaab9d9",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels adulte, enfant, gratuité jeune enfant, cabine VIP et pass annuels intégrés."
+        },
+        {
+          "eventId": "image-78c591a8ff8a42369ba3964c236cdc1d",
+          "appliedAt": "2026-10-23T15:05:24.571Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:78c591a8ff8a42369ba3964c236cdc1d",
+          "auditEvidence": null,
+          "summary": "Photo Wikimedia Commons sous CC BY ou CC BY-SA, datée et créditée."
+        },
+        {
+          "eventId": "image-1e6b0926a9664efe8140574efda5c386",
+          "appliedAt": "2026-10-23T15:05:39.117Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:1e6b0926a9664efe8140574efda5c386",
+          "auditEvidence": null,
+          "summary": "Photo Wikimedia Commons sous CC BY ou CC BY-SA, datée et créditée."
+        },
+        {
+          "eventId": "image-92382db66dc04d0abe3f691278210633",
+          "appliedAt": "2026-10-23T15:05:53.999Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:92382db66dc04d0abe3f691278210633",
+          "auditEvidence": null,
+          "summary": "Photo Wikimedia Commons sous CC BY ou CC BY-SA, datée et créditée."
+        },
+        {
+          "eventId": "apply-556dae9e-9388-490d-a647-32ac39478629",
+          "appliedAt": "2026-10-23T15:08:04.031Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+          "evidence": "PARK_DATA_EDITOR:apply:556dae9e-9388-490d-a647-32ac39478629",
+          "auditEvidence": null,
+          "summary": "Article historique étoffé avec la cérémonie d’ouverture et le contexte du Boardwalk."
+        },
+        {
+          "eventId": "closure-556dae9e-9388-490d-a647-32ac39478629",
+          "appliedAt": "2026-10-23T15:08:04.031Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+          "evidence": "PARK_DATA_EDITOR:apply:556dae9e-9388-490d-a647-32ac39478629",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-skywheel-refresh-20261023/skywheel-refresh-audit.json",
+          "summary": "Fiche enrichie à 95/100 sans blocage ; site vérifié et publication Facebook de mise à jour confirmée."
         }
       ],
-      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
+      "nextAction": "Conserver l’historique et les deux publications Facebook ; confirmer le constructeur et le modèle, vérifier les droits des trois photos opérateur et actualiser les tarifs et horaires.",
       "sources": [
         {
           "label": "Site officiel (attraction autonome)",
@@ -57027,6 +57615,36 @@
           "label": "Source vérifiée — intégration standalone",
           "url": "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
           "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — enrichissement standalone",
+          "url": "https://skywheelmb.com/annual-pass/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — enrichissement standalone",
+          "url": "https://www.wmbfnews.com/story/14685142/skywheel-brings-high-hopes-to-myrtle-beach/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — enrichissement standalone",
+          "url": "https://web.myrtlebeachareachamber.com/external/wcpages/wcnews/newsarticledisplay.aspx?articleid=391",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — enrichissement standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:SkyWheel_Myrtle_Beach_in_August_2022.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — enrichissement standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Myrtle_Beach_SkyWheel.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — enrichissement standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Myrtle_Beach_ferris_wheel.jpg",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
@@ -57043,7 +57661,7 @@
             "sourceLocality": "Myrtle Beach, South Carolina"
           }
         ],
-        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-apply-e0ad698f-6a4a-4b98-8b9c-a4d8d446920d ; conserver les références de découverte."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration closure-556dae9e-9388-490d-a647-32ac39478629 ; conserver les références de découverte."
       },
       "publication": {
         "site": {
@@ -57060,11 +57678,21 @@
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124228687424431",
           "externalPostId": "1285475681307050_122124228687424431",
           "url": "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach?facebook-image=7c92cfb94ed249d8b37b100dc7c6ce68"
-        }
+        },
+        "facebookUpdates": [
+          {
+            "id": "a74bafe5de4940be984c9836c7a14e51",
+            "status": "Published",
+            "publishedAtUtc": "2026-10-23T15:09:23.507945Z",
+            "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124309111424431",
+            "externalPostId": "1285475681307050_122124309111424431",
+            "kind": "EditorialUpdate"
+          }
+        ]
       },
       "lastEditorialAudit": {
-        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/skywheel-audit.json",
-        "score": 90,
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skywheel-refresh-20261023/skywheel-refresh-audit.json",
+        "score": 95,
         "publicationBlockers": [],
         "gapCount": 4
       }
@@ -63061,33 +63689,64 @@
     {
       "entryId": "US-candidate-discovery-15a41c387081bc",
       "name": "TILT — 360 CHICAGO",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Plateforme mécanique inclinable",
       "locality": "Chicago, Illinois",
-      "siteId": null,
+      "siteId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Exploitation et réservation actives au 23 octobre 2026 sur les pages officielles 360 CHICAGO.",
+      "identityConfidence": "Recherche officielle SearchStandaloneAttractions TILT et 360 CHICAGO, SearchParks 360 CHICAGO et TILT Chicago : zéro homonyme. La recherche large SearchParks TILT a renvoyé HTTP 500 ; recherche ciblée réussie.",
       "possibleMatches": [],
       "aliases": [
         "TILT Chicago",
         "360 CHICAGO"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T16:04:14.571Z",
+      "integrationHistory": [
+        {
+          "eventId": "US-tilt-chicago-20261023-data",
+          "appliedAt": "2026-10-23T16:04:14.571Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-tilt-chicago-20261023/tilt-chicago-receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-tilt-chicago-20261023/tilt-chicago-audit.json",
+          "summary": "TILT Chicago : fiche, huit langues, horaires, tarifs, accès, histoire et deux photos sous licence intégrés ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://360chicago.com/tilt-c",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "360 CHICAGO — TILT",
+          "url": "https://360chicago.com/tilt",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "360 CHICAGO — FAQ TILT",
+          "url": "https://360chicago.com/faqs/tilt",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "360 CHICAGO — tarifs",
+          "url": "https://360chicago.com/tickets",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "360 CHICAGO — anniversaire et ouverture",
+          "url": "https://360chicago.com/things-to-do/celebrating-12-years-of-tilt",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -63096,8 +63755,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "TILT — 360 CHICAGO",
@@ -63110,7 +63769,7 @@
             "sourceLocality": "Chicago, Illinois"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Option TILT vendue séparément avec son propre créneau et ses conditions, tout en exigeant le billet de l’observatoire. Fiche standalone distincte et publiée le 23 octobre 2026."
       }
     },
     {
@@ -69528,30 +70187,148 @@
     {
       "entryId": "US-candidate-discovery-ec2477b8468fba",
       "name": "Wings Over Washington",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Flying theatre",
       "locality": "Seattle, Washington",
-      "siteId": null,
+      "siteId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T13:08:35.073Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Billets et horaires actifs sur les deux sites de l’exploitant au 23 octobre 2026.",
+      "identityConfidence": "Billet autonome confirmé ; absence de doublon Park et standalone vérifiée ; page publique contrôlée en huit langues",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Wings over Washington"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T13:06:04.477Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4e91ebc7-73cd-4b68-8818-fb53350b7baf",
+          "appliedAt": "2026-10-23T13:01:06.707Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:4e91ebc7-73cd-4b68-8818-fb53350b7baf",
+          "auditEvidence": null,
+          "summary": "Fiche créée et descriptions éditoriales en huit langues intégrées."
+        },
+        {
+          "eventId": "apply-e5ef1b61-170c-4418-9291-ecd70b14502c",
+          "appliedAt": "2026-10-23T13:04:17.441Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:e5ef1b61-170c-4418-9291-ecd70b14502c",
+          "auditEvidence": null,
+          "summary": "Horaire quotidien officiel et conflit de fin de service signalé."
+        },
+        {
+          "eventId": "apply-7f038641-bf74-4678-95c3-26762157fb8b",
+          "appliedAt": "2026-10-23T13:04:52.807Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:7f038641-bf74-4678-95c3-26762157fb8b",
+          "auditEvidence": null,
+          "summary": "Trois prix de billets propres affichés par l’exploitant intégrés."
+        },
+        {
+          "eventId": "apply-a600b09b-ec0b-416d-9508-e4fc527dc904",
+          "appliedAt": "2026-10-23T13:05:16.283Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:a600b09b-ec0b-416d-9508-e4fc527dc904",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès officielles intégrées."
+        },
+        {
+          "eventId": "apply-05945d94-b3b6-4732-b1af-e23c5056282a",
+          "appliedAt": "2026-10-23T13:05:39.331Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:05945d94-b3b6-4732-b1af-e23c5056282a",
+          "auditEvidence": null,
+          "summary": "Ouverture du 25 août 2016 et article historique en huit langues intégrés."
+        },
+        {
+          "eventId": "apply-29c60263-c2e7-4dc8-8693-dd51f6444035",
+          "appliedAt": "2026-10-23T13:06:04.477Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:29c60263-c2e7-4dc8-8693-dd51f6444035",
+          "auditEvidence": null,
+          "summary": "Coordonnées OpenStreetMap de la salle intégrées."
+        },
+        {
+          "eventId": "closure-29c60263-c2e7-4dc8-8693-dd51f6444035",
+          "appliedAt": "2026-10-23T13:06:04.477Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:apply:29c60263-c2e7-4dc8-8693-dd51f6444035",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/wings-over-washington-audit.json",
+          "summary": "Audit final 89/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; clarifier l’heure du dernier embarquement, les âges et frais des billets, la validité contradictoire de la FAQ et obtenir une photo réutilisable.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.wingsoverwa.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wingsoverwa.com/faq",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.wingsoverwa.com/hours-directions",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.minerslanding.com/attractions/wings-over-washington",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tickets.minerslanding.com/WebStore/landingpage?CG=consumer&c=WH",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.super78.com/flying-theaters",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://dynamic-grp.com/2016/09/02/dynamic-attractions-takes-flight-in-seattle/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://blooloop.com/theme-park/news/dynamic-attractions-breaks-into-tourism-destination-market-with-seattles-newest-attraction/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/node/4622534789",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd/wings-over-washington",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -69560,8 +70337,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Wings Over Washington",
@@ -69569,12 +70346,34 @@
             "url": "https://www.wingsoverwa.com/",
             "family": "Flying theatre",
             "sourceVenueName": "Wings Over Washington",
-            "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLifecycleSignal": "Billets et horaires actifs sur les deux sites de l’exploitant au 23 octobre 2026.",
+            "matchingMethod": "Recherches officielles Park et StandaloneAttraction par nom et Miner’s Landing, sans homonyme.",
             "sourceLocality": "Seattle, Washington"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Cinéma volant à billet propre dans une promenade de plusieurs activités ; Pier Pass facultatif, sans entrée commune imposée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd/wings-over-washington",
+          "publishedAtUtc": "2026-10-23T13:07:47.8531753Z",
+          "verifiedAtUtc": "2026-10-23T13:08:35.073Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0787bf67-b9e5-4fca-946c-71f674eb0160"
+        },
+        "facebook": {
+          "id": "31f8e769305d41fa88cf4e6898e496de",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T13:08:47.7238845Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124293379424431",
+          "externalPostId": "1285475681307050_122124293379424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/wings-over-washington-audit.json",
+        "score": 89,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {

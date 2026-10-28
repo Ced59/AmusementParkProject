@@ -1,0 +1,362 @@
+{
+  "name": "Límite Zero — tyrolienne Espagne–Portugal",
+  "standaloneAttractionId": "00946076-78d4-4db4-8841-2cf1d640094e",
+  "backlogEntryId": "ES-candidate-discovery-1182b2f2f1a8d3",
+  "qualification": "Tyrolienne fixe autonome : accueil, billet et départ à Sanlúcar de Guadiana (ES), arrivée à Alcoutim (PT). Une seule identité mondiale sous ES, avec renvoi PT.",
+  "deduplicationEvidence": [
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Limite Zero",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Límite Zero",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "LimiteZero",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Limite Zero",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Sanlúcar de Guadiana",
+      "countryCode": "ES",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Limite Zero",
+      "countryCode": "PT",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Limite Zero",
+      "countryCode": "PT",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Alcoutim",
+      "countryCode": "PT",
+      "totalItems": 0
+    }
+  ],
+  "decision": "Published",
+  "score": 90,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedContextPhotos": 2,
+    "accessConditions": 6,
+    "historyEvents": 1,
+    "articles": 1,
+    "lengthInMeters": 720,
+    "locationFromOpenStreetMap": true
+  },
+  "lastDataIntegrationAtUtc": "2026-10-23T16:49:08.420Z",
+  "photoLicenses": [
+    {
+      "credit": "Jose A. / Wikimedia Commons, CC BY 2.0, 2016",
+      "source": "https://commons.wikimedia.org/wiki/File:Sanl%C3%BAcar_de_Guadiana_(Huelva)_(Spain)_(26529416381).jpg"
+    },
+    {
+      "credit": "Vitor Oliveira / Wikimedia Commons, CC BY-SA 2.0, 2019",
+      "source": "https://commons.wikimedia.org/wiki/File:Alcoutim_-_Portugal_(48036439033).jpg"
+    }
+  ],
+  "sourceNuance": "L’exploitant indique actuellement un ferry de retour non compris, contrairement à certaines pages touristiques anciennes. Horaires variables dans le calendrier de réservation, sans grille fixe vérifiable ; le dossier décrit la fermeture annoncée les lundis et mardis hors haute saison. L’ouverture est documentée en novembre 2013 sans jour exact. Les deux photos libres représentent les rives, pas la tyrolienne elle-même ; les légendes le signalent.",
+  "sources": [
+    "https://www.limitezero.com/en/",
+    "https://www.limitezero.com/en/about-us/",
+    "https://www.limitezero.com/en/safety/",
+    "https://www.limitezero.com/en/shop/",
+    "https://www.europapress.es/andalucia/huelva-00354/noticia-vuelve-abrir-primera-tirolina-transfronteriza-mundo-sanlucar-segunda-temporada-20140306165825.html",
+    "https://www.openstreetmap.org/node/5110999323"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T16:49:27.760407+00:00",
+    "exportSha256": "a341e414674d9b8fe731f34d3b129b20c9eab19763810b39d59fd604bc637bf2",
+    "localizedStringsReviewed": 296,
+    "localizedGroups": 37,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : traversée ES–PT, heure espagnole, ferry séparé, saisonnalité, six conditions d’accès et histoire. Les deux photos sous licence montrent les rives, pas le câble ; leurs légendes sont explicites. Le calendrier de réservation variable n’a pas été transformé en horaires fixes."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+    "publishedAtUtc": "2026-10-23T16:50:48.390344Z",
+    "operationId": "79127948-5319-4093-9f53-9146d6077aa6"
+  },
+  "facebookPublication": {
+    "id": "6b50494545924a878ffa3b4ba88c11e3",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T16:51:55.5292205Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124318975424431",
+    "externalPostId": "1285475681307050_122124318975424431",
+    "url": "https://amusement-parks.fun/fr/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T16:51:45.778509+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T16:51:52.325488+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history/35ab3b6b-c24b-43db-a033-607a54e415fb/ouverture-limite-zero-2013",
+            "status": 200,
+            "textLength": 1991,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 681
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history/35ab3b6b-c24b-43db-a033-607a54e415fb/ouverture-limite-zero-2013",
+            "status": 200,
+            "textLength": 1724,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 643
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history/35ab3b6b-c24b-43db-a033-607a54e415fb/ouverture-limite-zero-2013",
+            "status": 200,
+            "textLength": 1863,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 741
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history/35ab3b6b-c24b-43db-a033-607a54e415fb/ouverture-limite-zero-2013",
+            "status": 200,
+            "textLength": 1780,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 686
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history/35ab3b6b-c24b-43db-a033-607a54e415fb/ouverture-limite-zero-2013",
+            "status": 200,
+            "textLength": 1773,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 655
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history/35ab3b6b-c24b-43db-a033-607a54e415fb/ouverture-limite-zero-2013",
+            "status": 200,
+            "textLength": 1804,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 658
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history/35ab3b6b-c24b-43db-a033-607a54e415fb/ouverture-limite-zero-2013",
+            "status": 200,
+            "textLength": 1724,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 650
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/00946076-78d4-4db4-8841-2cf1d640094e/limite-zero-tyrolienne-espagne-portugal/history/35ab3b6b-c24b-43db-a033-607a54e415fb/ouverture-limite-zero-2013",
+            "status": 200,
+            "textLength": 1758,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 674
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-es-limite-zero-20261023/limite-zero-receipts.json",
+  "lastDataReceiptAtUtc": "2026-10-23T16:49:08.4203297Z"
+}

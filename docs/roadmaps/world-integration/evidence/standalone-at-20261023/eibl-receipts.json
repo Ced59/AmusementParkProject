@@ -1,0 +1,154 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "12ab9336-c5b5-43a9-8575-ac6996542a68",
+    "appliedAtUtc": "2026-10-23T09:38:33.9792776Z",
+    "targetStandaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "ae1936f3-0e80-44df-9923-fbc02d0cade5",
+    "appliedAtUtc": "2026-10-23T09:40:51.4940028Z",
+    "targetStandaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "51c96f45-bb51-45a9-aab7-2b1854aa6495",
+    "appliedAtUtc": "2026-10-23T09:41:31.7185547Z",
+    "targetStandaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "0b650df3-1bd2-4efc-96eb-c0ca096c9f9f",
+    "appliedAtUtc": "2026-10-23T09:42:12.5804844Z",
+    "targetStandaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "730a4dba-e6ab-446a-b0cd-4f4776ba40cd",
+    "appliedAtUtc": "2026-10-23T09:47:23.932546Z",
+    "targetStandaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-images",
+    "operationId": "100c2969-dbe6-48ce-985d-727d5a6e326f",
+    "appliedAtUtc": "2026-10-23T09:49:05.745823Z",
+    "targetStandaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-history",
+    "operationId": "af7c912e-a0ab-4f57-b918-b6a6e9310a4c",
+    "appliedAtUtc": "2026-10-23T09:49:34.0627819Z",
+    "targetStandaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "10-publish-attraction",
+    "operationId": "b57db905-6d15-4f5e-8283-3352d0bf4f04",
+    "appliedAtUtc": "2026-10-23T09:50:08.4945507Z",
+    "targetStandaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "id": "c55ce027d30745dca556f7787cd8dd4e",
+    "ownerId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blick_von_der_Sommerrodelbahn_am_Türnitzer_Eybl.jpg",
+    "updatedAt": "2026-10-23T09:46:11.578Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-2",
+    "id": "f81872fdb2c042a99e64fc5243d5f08c",
+    "ownerId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blick_von_der_Sommerrodelbahn_auf_Türnitz.jpg",
+    "updatedAt": "2026-10-23T09:46:28.987Z",
+    "isPublished": false
+  },
+  {
+    "stage": "photo-3",
+    "id": "f1432b68f9d74d1798792aab31d3cd4c",
+    "ownerId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Türnitzer_Eybl.jpg",
+    "updatedAt": "2026-10-23T09:46:46.382Z",
+    "isPublished": false
+  }
+]

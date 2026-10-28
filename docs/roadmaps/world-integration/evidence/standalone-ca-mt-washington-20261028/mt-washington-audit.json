@@ -1,0 +1,60 @@
+{
+  "entityId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+  "entryId": "CA-candidate-standalone-52b944d77d3979",
+  "auditedAtUtc": "2026-10-28T08:15:46.750Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/1cb184a8-6579-4aae-88ba-365e15542a09/eagle-s-flight-ziptour-mount-washington",
+  "score": 86,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "localization": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "localizedStringsReviewed": 128,
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "exportSha256": "d16de4c9529e277d0d118497e0cfe811b4d86e963dccab5fffca0a850705a834"
+  },
+  "publicChecks": {
+    "attractionPages200": 8,
+    "mobilePagesWithoutHorizontalOverflow": 8,
+    "historyPages200": 8,
+    "historyArticles200": 8,
+    "allNamesVisible": true,
+    "allArticlePagesWithoutPlaceholders": true
+  },
+  "content": {
+    "historyEvents": 1,
+    "publishedImages": 0,
+    "accessConditions": 3,
+    "status": "TemporarilyClosed",
+    "openingDate": "2020-06-27",
+    "currentPrice": null
+  },
+  "facebook": {
+    "status": "Published",
+    "id": "e554da65d4b1403da17cd259ca6a04b7",
+    "publishedAtUtc": "2026-10-28T08:14:47.9911097Z",
+    "externalPostId": "1285475681307050_122125008891424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125008891424431"
+  },
+  "limitations": [
+    "Aucune photographie spécifique avec droits de réutilisation suffisamment établis n’a été importée.",
+    "Le point cartographique est le centre approximatif du domaine Mount Washington, non le guichet ni une plateforme précise.",
+    "La saison 2026 est terminée ; date de reprise et prix futurs non confirmés, anciennes offres non présentées comme actuelles.",
+    "La fiche est visible mais le statut administratif exporté reste ToReview ; le client officiel a ignoré la valeur Approved envoyée au dernier Apply."
+  ]
+}

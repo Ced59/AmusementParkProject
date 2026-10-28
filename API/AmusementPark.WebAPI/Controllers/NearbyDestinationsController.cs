@@ -45,6 +45,6 @@ public sealed class NearbyDestinationsController : ControllerBase
         return this.Ok(result.Value.Select(static target => new NearbyDestinationDto(
             (target.Park is not null ? NearbyDestinationKind.Park : NearbyDestinationKind.StandaloneAttraction).ToString(),
             target.Park?.ToHttp(), target.StandaloneAttraction?.ToHttp(), target.DistanceKilometers,
-            target.EstimatedTravelDurationMinutes, target.ProximityRank)).ToList());
+            target.EstimatedTravelDurationMinutes, target.ProximityRank, target.PhotoImageId)).ToList());
     }
 }

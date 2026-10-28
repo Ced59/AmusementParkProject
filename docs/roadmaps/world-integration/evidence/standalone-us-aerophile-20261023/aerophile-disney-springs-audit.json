@@ -1,0 +1,308 @@
+{
+  "name": "Aerophile — Disney Springs",
+  "standaloneAttractionId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+  "backlogEntryId": "US-candidate-discovery-2f0e2b642d783e",
+  "qualification": "Ballon captif à hélium exploité par Aerophile dans Disney Springs, quartier à accès libre ; Disney vend un billet propre au pied du ballon. D23 confirme que Characters in Flight (2009) est la même attraction renommée Aerophile en 2017. Recherches officielles US dans Parks et StandaloneAttractions par Aerophile, Characters in Flight et Disney Springs sans homonyme.",
+  "deduplicationEvidence": {
+    "standaloneExactNameMatches": 0,
+    "parkExactNameMatches": 0,
+    "searchQueries": [
+      "Aerophile",
+      "Characters in Flight",
+      "Disney Springs"
+    ],
+    "historicalAlias": "Characters in Flight"
+  },
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 3,
+    "accessConditions": 4,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentGateAdmissionOffers": 2,
+    "weeklyOpeningRules": 1,
+    "openingYearConfirmed": 2009,
+    "coordinatesFromOpenStreetMap": true
+  },
+  "gaps": [
+    "Horaires indicatifs de 9 h 30 à 23 h relevés sur Disney le 23 octobre 2026 : vérifier l’horaire du jour et le vent avant le déplacement ; les vols sont suspendus en cas d’orage ou de vent supérieur à 22 mph.",
+    "Photos sous CC BY-SA de 2009, 2017 et 2018 : le ballon a été remplacé en février 2026, malgré un motif bleu semblable. Chercher une photo actuelle sous licence adaptée.",
+    "Prix hors taxes relevés le 23 octobre 2026 ; vente uniquement sur place, premier arrivé, premier servi. Recontrôler à la prochaine révision."
+  ],
+  "sources": [
+    "https://disneyworld.disney.go.com/en_CA/attractions/disney-springs/aerophile-balloon-flight/",
+    "https://www.aerophile.com/en/clients/disney-springs/",
+    "https://d23.com/a-to-z/characters-in-flight/",
+    "https://wdwnt.com/2026/02/aerophile-experience-reopens-new-balloon-disney-springs/",
+    "https://www.openstreetmap.org/node/11028811186",
+    "https://commons.wikimedia.org/wiki/File:Disney_springs_balloon.jpg",
+    "https://commons.wikimedia.org/wiki/File:DowntownDisney-Balloon-2092.jpg",
+    "https://commons.wikimedia.org/wiki/File:Dark_Disney_-_Flickr_-_Neillwphoto.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T14:53:16.362911+00:00",
+    "exportSha256": "835c53297f93aaa8ee25b4a9305f7ef01e17abdf06d28346ebaa75f768e1e009",
+    "localizedStringsReviewed": 288,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+    "publishedAtUtc": "2026-10-23T14:54:25.4222934Z",
+    "operationId": "fe7c61dd-f4d8-4b31-98e6-36816342487e"
+  },
+  "facebookPublication": {
+    "id": "7d6c29d8433144f8bd456d78dacdfbc4",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T14:55:57.3484611Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124307617424431",
+    "externalPostId": "1285475681307050_122124307617424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T14:55:27.646674+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T14:55:31.491964+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history/bc961d80-293b-43f2-b161-11e180f71917/characters-in-flight-disney-springs-2009",
+            "status": 200,
+            "textLength": 1692,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 574
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history/bc961d80-293b-43f2-b161-11e180f71917/characters-in-flight-disney-springs-2009",
+            "status": 200,
+            "textLength": 1551,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 532
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history/bc961d80-293b-43f2-b161-11e180f71917/characters-in-flight-disney-springs-2009",
+            "status": 200,
+            "textLength": 1581,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 612
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history/bc961d80-293b-43f2-b161-11e180f71917/characters-in-flight-disney-springs-2009",
+            "status": 200,
+            "textLength": 1581,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 588
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history/bc961d80-293b-43f2-b161-11e180f71917/characters-in-flight-disney-springs-2009",
+            "status": 200,
+            "textLength": 1564,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 564
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history/bc961d80-293b-43f2-b161-11e180f71917/characters-in-flight-disney-springs-2009",
+            "status": 200,
+            "textLength": 1588,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 555
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history/bc961d80-293b-43f2-b161-11e180f71917/characters-in-flight-disney-springs-2009",
+            "status": 200,
+            "textLength": 1469,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 554
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/6a0a5bcc-555a-49a0-a528-1398901ca30d/aerophile-disney-springs/history/bc961d80-293b-43f2-b161-11e180f71917/characters-in-flight-disney-springs-2009",
+            "status": 200,
+            "textLength": 1547,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 562
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-us-aerophile-20261023/aerophile-disney-springs-receipts.json"
+}

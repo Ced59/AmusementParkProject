@@ -1,0 +1,82 @@
+{
+  "name": "Alpine Coaster Imst",
+  "standaloneAttractionId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+  "legacyParkId": "0c8ab99d-d1a8-434f-8785-6be618039172",
+  "legacyParkItemId": "e8da7574-de37-4079-9d61-f84c17fc945f",
+  "qualification": "La fiche Park masquée Imster Bergbahnen ne contenait que le parkItem Alpine Coaster. Le domaine comprend ski, remontées et randonnée, mais la piste a sa propre billetterie ; migration contrôlée vers StandaloneAttraction. Ancien Park désormais masqué et NotRelevant, item legacy non effacé. Recherche officielle Standalone Imst/Alpine Coaster sans doublon.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 5,
+    "historyEvents": 2,
+    "articles": 1,
+    "currentAdmissionOffers": 4,
+    "openingHoursPeriods": [
+      "2026-10-08/2026-11-01",
+      "2026-12-25/2027-01-03",
+      "2027-02-05/2027-02-28"
+    ]
+  },
+  "gaps": [
+    "Aucune photographie réutilisable trouvée de l’ouverture en 2003 ni de l’ajout de la spirale en 2017 ; les trois photos Commons datent de juin 2015 et illustrent la fiche, sans être présentées comme images de ces événements.",
+    "L’exploitant publie séparément une grille hivernale ; ses montants devront être revérifiés au début de la saison avant ajout de tarifs actuels structurés. Les quatre offres structurées présentes correspondent à l’été 2026 et expirent le 1er novembre.",
+    "Les coordonnées officielles situent la station de base à Hoch-Imst. Le point exact du départ à l’Untermarkter Alm n’est pas géolocalisé séparément ; aucune position déduite sans preuve.",
+    "Les horaires hivernaux sont soumis à la météo, notamment au gel après neige fraîche. Le planning indique les périodes officielles mais ne garantit pas l’exploitation le jour de visite."
+  ],
+  "sources": [
+    "https://www.imster-bergbahnen.at/en/summer/alpine-coaster/fun-facts/",
+    "https://www.imster-bergbahnen.at/en/summer/alpine-coaster/good-to-know/",
+    "https://www.imster-bergbahnen.at/en/summer/alpine-coaster/prices-times/",
+    "https://www.imster-bergbahnen.at/en/prices-times/opening-times/winter-operation/",
+    "https://www.imster-bergbahnen.at/en/company/history/",
+    "https://www.imst.gv.at/Wirtschaft_-_Alpine_Coaster_-_Bilanz_2007",
+    "https://commons.wikimedia.org/wiki/File:Imst_-_Alpine-Coaster_-_01.jpg",
+    "https://commons.wikimedia.org/wiki/File:Imst_-_Alpine_Coaster_09.jpg",
+    "https://commons.wikimedia.org/wiki/File:Imst_-_Alpine_Coaster_-_14.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T09:15:50.661565+00:00",
+    "exportSha256": "cf3164010a62ec4c066492c3cc201fb21074f5e0b845abe3a3a8799ab79cb70a",
+    "localizedStringsReviewed": 360,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": []
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T09:20:53.313098+00:00",
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "allPagesHttp200": true,
+    "allMobileWidthsFit": true,
+    "allHistoryAndArticlesHttp200": true,
+    "articleId": "36ffa65b-6e6e-4222-862f-d07c215cdac8"
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/3bdc9128-855e-4b7d-9b61-961c420f35bc/alpine-coaster-imst",
+    "publishedAtUtc": "2026-10-23T09:18:41.8543668Z",
+    "operationId": "6d94dbf9-03cd-4e73-85f3-80f9d08f49a5"
+  },
+  "facebookPublication": {
+    "id": "aea92b11a54948ffbbd64409cda70362",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T09:22:00.6693672Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124268581424431",
+    "externalPostId": "1285475681307050_122124268581424431"
+  }
+}

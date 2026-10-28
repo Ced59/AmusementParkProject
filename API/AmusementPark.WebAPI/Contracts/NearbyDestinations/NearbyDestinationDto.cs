@@ -9,4 +9,5 @@ public sealed record NearbyDestinationDto(
     StandaloneAttractionDto? StandaloneAttraction,
     double DistanceKilometers,
     int EstimatedTravelDurationMinutes,
-    int ProximityRank);
+    int ProximityRank,
+    string? PhotoImageId = null);

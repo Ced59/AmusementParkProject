@@ -1,11 +1,13 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.NearbyDestinations.Queries;
 using AmusementPark.Application.Features.NearbyDestinations.Results;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Geo;
 
 namespace AmusementPark.Application.Features.NearbyDestinations.Handlers;
@@ -15,11 +17,13 @@ public sealed class GetNearbyDestinationsQueryHandler
 {
     private readonly IParkRepository parks;
     private readonly IStandaloneAttractionRepository attractions;
+    private readonly IImageRepository images;
 
-    public GetNearbyDestinationsQueryHandler(IParkRepository parks, IStandaloneAttractionRepository attractions)
+    public GetNearbyDestinationsQueryHandler(IParkRepository parks, IStandaloneAttractionRepository attractions, IImageRepository images)
     {
         this.parks = parks;
         this.attractions = attractions;
+        this.images = images;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>> HandleAsync(
@@ -80,6 +84,22 @@ public sealed class GetNearbyDestinationsQueryHandler
                 ProximityRank = index + 1
             })
             .ToList();
+
+        List<string> attractionIds = targets
+            .Where(static target => target.StandaloneAttraction is not null)
+            .Select(static target => target.StandaloneAttraction!.Id)
+            .ToList();
+        if (attractionIds.Count > 0)
+        {
+            IReadOnlyDictionary<string, string> photoIds = await this.images.GetMainImageIdsByOwnersAsync(
+                ImageOwnerType.StandaloneAttraction, attractionIds, ImageCategory.StandaloneAttraction,
+                publishedOnly: true, cancellationToken);
+            targets = targets.Select(target => target with
+            {
+                PhotoImageId = target.StandaloneAttraction is not null &&
+                    photoIds.TryGetValue(target.StandaloneAttraction.Id, out string? photoId) ? photoId : null
+            }).ToList();
+        }
 
         return ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>.Success(targets);
     }

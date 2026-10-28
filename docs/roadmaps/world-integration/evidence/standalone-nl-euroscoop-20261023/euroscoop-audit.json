@@ -1,0 +1,320 @@
+{
+  "name": "Euroscoop — Euromast",
+  "standaloneAttractionId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+  "backlogEntryId": "NL-candidate-discovery-1825dcfb286f92",
+  "qualification": "Cabine panoramique rotative à expérience, identité et billet propres dans la tour Euromast ; une fiche standalone est pertinente.",
+  "deduplicationEvidence": {
+    "successfulSearches": [
+      "SearchStandaloneAttractions Euroscoop NL",
+      "SearchStandaloneAttractions Euromast NL",
+      "SearchParks Euroscoop NL",
+      "SearchParks Euromast NL"
+    ],
+    "exactMatches": 0
+  },
+  "decision": "Published",
+  "score": 92,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "licensedPhotos": 2,
+    "historyEvents": 1,
+    "articles": 1,
+    "locationFromOpenStreetMap": true
+  },
+  "lastDataIntegrationAtUtc": "2026-10-23T16:24:49.486Z",
+  "photoLicenses": [
+    {
+      "credit": "Guilhem Vellut / Wikimedia Commons, CC BY 2.0, 2016",
+      "source": "https://commons.wikimedia.org/wiki/File:Space_Tower_@_Observation_deck_@_Euromast_@_Rotterdam_(29972594024).jpg"
+    },
+    {
+      "credit": "Guilhem Vellut / Wikimedia Commons, CC BY 2.0, 2016",
+      "source": "https://commons.wikimedia.org/wiki/File:Space_Tower_@_Observation_Deck_@_Euromast_@_Rotterdam_(30570510206).jpg"
+    }
+  ],
+  "sourceNuance": "La source patrimoniale date la Space Tower et sa cabine rotative du 5 juin 1970 ; la page histoire de l’exploitant indique 1983 pour la Spacecabin. Aucune date précise d’ouverture de la cabine actuelle n’est affirmée. Les photographies datent de 2016, donc ne montrent pas le plancher vitré de 2023.",
+  "sources": [
+    "https://euromast.nl/en/euroscoop/",
+    "https://euromast.nl/en/tickets/",
+    "https://euromast.nl/en/frequently-asked-questions/",
+    "https://euromast.nl/en/contact/",
+    "https://euromast.nl/geschiedenis/",
+    "https://wederopbouwrotterdam.nl/en/articles/euromast",
+    "https://pressroom.misspublicity.nl/nieuw-spectaculaire-glazen-vloer-in-de-euroscoop-van-de-euromast/",
+    "https://www.openstreetmap.org/way/238220164"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T16:25:24.440335+00:00",
+    "exportSha256": "f213473056abf01bc4782bc3c78ce0761f351ceccdbaaea63ede585ec6ba737c",
+    "localizedStringsReviewed": 192,
+    "localizedGroups": 24,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "issues": {
+      "htmlEntities": [],
+      "replacement": [],
+      "mojibake": [],
+      "internalJargon": []
+    },
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "manualReview": "Huit langues relues : identité et récit spécifiques, diacritiques, titres, résumés, conditions, photographies et référence constructeur partagée. Aucune modification du constructeur global."
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+    "publishedAtUtc": "2026-10-23T16:26:56.5206524Z",
+    "operationId": "4e410188-c06d-42ba-af78-cf7689a61ab1"
+  },
+  "facebookPublication": {
+    "id": "1eb80950e0ba4583b41869e692a55dd9",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T16:28:02.3019408Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124317139424431",
+    "externalPostId": "1285475681307050_122124317139424431",
+    "url": "https://amusement-parks.fun/fr/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T16:27:58.885428+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T16:28:06.330339+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history/5a2bc791-3c1e-4c54-87cf-6fd75015587f/plancher-vitre-euroscoop-2023",
+            "status": 200,
+            "textLength": 1765,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 549
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history/5a2bc791-3c1e-4c54-87cf-6fd75015587f/plancher-vitre-euroscoop-2023",
+            "status": 200,
+            "textLength": 1558,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 490
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history/5a2bc791-3c1e-4c54-87cf-6fd75015587f/plancher-vitre-euroscoop-2023",
+            "status": 200,
+            "textLength": 1540,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 562
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history/5a2bc791-3c1e-4c54-87cf-6fd75015587f/plancher-vitre-euroscoop-2023",
+            "status": 200,
+            "textLength": 1565,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 581
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history/5a2bc791-3c1e-4c54-87cf-6fd75015587f/plancher-vitre-euroscoop-2023",
+            "status": 200,
+            "textLength": 1543,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 531
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history/5a2bc791-3c1e-4c54-87cf-6fd75015587f/plancher-vitre-euroscoop-2023",
+            "status": 200,
+            "textLength": 1527,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 533
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history/5a2bc791-3c1e-4c54-87cf-6fd75015587f/plancher-vitre-euroscoop-2023",
+            "status": 200,
+            "textLength": 1484,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 527
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/d18eea27-684d-4023-b451-1461a9e2ccec/euroscoop-euromast/history/5a2bc791-3c1e-4c54-87cf-6fd75015587f/plancher-vitre-euroscoop-2023",
+            "status": 200,
+            "textLength": 1478,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 547
+      }
+    ]
+  },
+  "integrationReceipts": "docs/roadmaps/world-integration/evidence/standalone-nl-euroscoop-20261023/euroscoop-receipts.json"
+}

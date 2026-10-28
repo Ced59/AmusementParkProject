@@ -1,6 +1,34 @@
 {
-  "version": "6.0.29",
+  "version": "6.0.31",
   "history": [
+    {
+      "version": "6.0.31",
+      "releasedAt": "2026-10-28",
+      "labels": {
+        "fr": "Sécurité des outils du site renforcée",
+        "en": "Improved security for site tools",
+        "de": "Sicherheit der Website-Werkzeuge verbessert",
+        "nl": "Beveiliging van websitehulpmiddelen verbeterd",
+        "it": "Sicurezza degli strumenti del sito migliorata",
+        "es": "Seguridad de las herramientas del sitio mejorada",
+        "pl": "Większe bezpieczeństwo narzędzi witryny",
+        "pt": "Segurança das ferramentas do site melhorada"
+      }
+    },
+    {
+      "version": "6.0.30",
+      "releasedAt": "2026-10-23",
+      "labels": {
+        "fr": "Photos des lieux proches et affichage sur ordinateur améliorés",
+        "en": "Improved nearby photos and desktop layouts",
+        "de": "Verbesserte Fotos naher Ausflugsziele und Desktop-Darstellung",
+        "nl": "Verbeterde foto’s van nabije locaties en weergave op computers",
+        "it": "Foto dei luoghi vicini e visualizzazione su computer migliorate",
+        "es": "Mejoras en las fotos de lugares cercanos y la visualización en ordenador",
+        "pl": "Ulepszone zdjęcia pobliskich miejsc i wygląd na komputerach",
+        "pt": "Fotografias de locais próximos e apresentação no computador melhoradas"
+      }
+    },
     {
       "version": "6.0.29",
       "releasedAt": "2026-10-23",

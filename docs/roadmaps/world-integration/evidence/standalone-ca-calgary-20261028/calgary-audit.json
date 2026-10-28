@@ -1,0 +1,60 @@
+{
+  "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+  "entryId": "CA-candidate-standalone-abf154c8e98f1e",
+  "auditedAtUtc": "2026-10-28T08:02:56.360Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/b8390695-b97a-4e15-a45d-a2234703a779/downhill-karting-calgary",
+  "score": 86,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "localization": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "localizedStringsReviewed": 152,
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "exportSha256": "3af7301d97a050a489bcd723ad6f07a9368791f119065d74fe2b31da56f00cb6"
+  },
+  "publicChecks": {
+    "attractionPages200": 8,
+    "mobilePagesWithoutHorizontalOverflow": 8,
+    "historyPages200": 8,
+    "historyArticles200": 8,
+    "allNamesVisible": true,
+    "allArticlePagesWithoutPlaceholders": true
+  },
+  "content": {
+    "historyEvents": 1,
+    "publishedImages": 0,
+    "accessConditions": 4,
+    "status": "TemporarilyClosed",
+    "openingYear": 2013,
+    "currentPrice": null
+  },
+  "facebook": {
+    "status": "Published",
+    "id": "41de89740c284f808623dc6450d78524",
+    "publishedAtUtc": "2026-10-28T08:01:50.2466448Z",
+    "externalPostId": "1285475681307050_122125007211424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125007211424431"
+  },
+  "limitations": [
+    "Aucune photographie spécifique avec droits de réutilisation suffisamment établis n’a été importée.",
+    "La coordonnée cartographique correspond au point OSM de l’attraction, approximatif pour le guichet ; l’adresse postale officielle est celle du site WinSport.",
+    "La date de reprise et les prix des descentes en 2027 ne sont pas encore confirmés. Les cartes cadeaux ne sont pas traitées comme des billets actuels.",
+    "La fiche est visible mais le statut administratif exporté reste ToReview ; le client officiel a ignoré la valeur Approved envoyée au dernier Apply."
+  ]
+}

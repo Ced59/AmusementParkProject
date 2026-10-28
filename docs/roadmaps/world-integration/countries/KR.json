@@ -3154,26 +3154,87 @@
     {
       "entryId": "KR-candidate-standalone-0f95f79317187a",
       "name": "Skyline Luge Busan",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge gravitaire",
-      "locality": null,
-      "siteId": null,
+      "locality": "Gijang-gun, Busan",
+      "siteId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T15:37:06.887Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Billetterie Luge/Skyride active le 23 octobre 2026.",
+      "identityConfidence": "Site Skyline à Gijang distinct du Lotte World voisin, billet propre et aucune fiche homonyme KR.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T15:35:03.957Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-18be5cf1-7ce3-47e5-8eb2-6b1085fe878b",
+          "appliedAt": "2026-10-23T15:31:17.813Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:18be5cf1-7ce3-47e5-8eb2-6b1085fe878b",
+          "auditEvidence": null,
+          "summary": "Fiche Skyline Luge Busan et huit descriptions créées après qualification du site distinct de Lotte World."
+        },
+        {
+          "eventId": "apply-fc0c194e-a0f0-4ffa-b196-17d91b66adab",
+          "appliedAt": "2026-10-23T15:32:08.598Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:fc0c194e-a0f0-4ffa-b196-17d91b66adab",
+          "auditEvidence": null,
+          "summary": "Quatre forfaits Luge/Skyride et supplément tandem officiels saisis."
+        },
+        {
+          "eventId": "apply-f1a0bd90-4621-4524-b8e4-69c5c26164c2",
+          "appliedAt": "2026-10-23T15:32:31.825Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:f1a0bd90-4621-4524-b8e4-69c5c26164c2",
+          "auditEvidence": null,
+          "summary": "Cinq conditions officielles de taille, âge, accompagnement, sécurité et météo intégrées."
+        },
+        {
+          "eventId": "apply-9574b63e-ef64-4a4a-a9ed-62f6f1c59614",
+          "appliedAt": "2026-10-23T15:32:57.579Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:9574b63e-ef64-4a4a-a9ed-62f6f1c59614",
+          "auditEvidence": null,
+          "summary": "Histoire de l’ouverture du 3 juillet 2021 en huit langues intégrée."
+        },
+        {
+          "eventId": "apply-edc476f8-5b10-4e8b-86d6-3f721496228d",
+          "appliedAt": "2026-10-23T15:35:03.957Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:edc476f8-5b10-4e8b-86d6-3f721496228d",
+          "auditEvidence": null,
+          "summary": "Article historique réécrit pour retirer des métriques techniques du récit public."
+        },
+        {
+          "eventId": "closure-edc476f8-5b10-4e8b-86d6-3f721496228d",
+          "appliedAt": "2026-10-23T15:35:03.957Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:apply:edc476f8-5b10-4e8b-86d6-3f721496228d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-20261023/busan-audit.json",
+          "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3184,11 +3245,56 @@
           "label": "Skyline — destinations officielles — liste",
           "url": "https://www.skylineluge.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/pricing-packages/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/visiting-us/open-hours/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/luge/safety-faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://busan.skylineluge.kr/en/luge/track-information/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://skylineenterprises.co.nz/what-we-do/tourism-operations/skyline-luge-busan/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.kiwichamber.com/news/2021/07/the-kiwi-chamber-inspire-with-innovation-series-3-4/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/1066897511",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Skyline Luge Busan",
@@ -3198,32 +3304,105 @@
             "sourceVenueName": "Skyline Luge Busan"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Site de luge gravitaire avec billetterie propre ; le Skyride est inclus dans les forfaits, la tyrolienne Hyfly est proposée séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+          "publishedAtUtc": "2026-10-23T15:36:27.9086731Z",
+          "verifiedAtUtc": "2026-10-23T15:37:06.887Z",
+          "evidence": "PARK_DATA_EDITOR:apply:28500886-4b4d-4cf2-b1be-ff9eea80f52e"
+        },
+        "facebook": {
+          "id": "c8cba48307fe41f29ff47e36c4cf8919",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T15:37:08.0840998Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124312549424431",
+          "externalPostId": "1285475681307050_122124312549424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-20261023/busan-audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
       "entryId": "KR-candidate-standalone-5f91351dd67b29",
       "name": "Skyline Luge Tongyeong",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge gravitaire",
-      "locality": null,
-      "siteId": null,
+      "locality": "Tongyeong, Gyeongsangnam-do",
+      "siteId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T15:44:28.804Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Billetterie Luge/Skyride active le 23 octobre 2026.",
+      "identityConfidence": "Site de Tongyeong distinct du téléphérique de Mireuksan et de Skyline Luge Busan, avec billet propre et aucune fiche homonyme KR.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T15:42:13.973Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f4966515-58e6-4fa9-8137-4dfcada654d7",
+          "appliedAt": "2026-10-23T15:40:51.181Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:f4966515-58e6-4fa9-8137-4dfcada654d7",
+          "auditEvidence": null,
+          "summary": "Fiche Skyline Luge Tongyeong et huit descriptions créées après qualification distincte du téléphérique et du site Busan."
+        },
+        {
+          "eventId": "apply-2022f921-1933-4759-8c1a-2f1b493e3bbf",
+          "appliedAt": "2026-10-23T15:41:27.645Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:2022f921-1933-4759-8c1a-2f1b493e3bbf",
+          "auditEvidence": null,
+          "summary": "Trois forfaits Luge/Skyride avec photos numériques selon offre, et supplément tandem saisis."
+        },
+        {
+          "eventId": "apply-97698fbf-790e-4a66-a53a-53b244235a2e",
+          "appliedAt": "2026-10-23T15:41:50.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:97698fbf-790e-4a66-a53a-53b244235a2e",
+          "auditEvidence": null,
+          "summary": "Cinq conditions officielles de taille, âge, accompagnement, sécurité et météo intégrées."
+        },
+        {
+          "eventId": "apply-dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+          "appliedAt": "2026-10-23T15:42:13.973Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+          "auditEvidence": null,
+          "summary": "Histoire de l’ouverture au public le 10 février 2017 et de l’extension de 2020 intégrée en huit langues."
+        },
+        {
+          "eventId": "closure-dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+          "appliedAt": "2026-10-23T15:42:13.973Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:apply:dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-20261023/tongyeong-audit.json",
+          "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3234,11 +3413,61 @@
           "label": "Skyline — destinations officielles — liste",
           "url": "https://www.skylineluge.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/pricing-packages/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/visiting-us/open-hours/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/luge/safety-faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://tongyeong.skylineluge.kr/en/luge/track-information/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://skylineenterprises.co.nz/what-we-do/tourism-operations/skyline-luge-tongyeong/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.kiwichamber.com/news/2021/03/the-kiwi-chamber-inspire-with-innovation-series-3/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/1054160303",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.yna.co.kr/view/AKR20170405060200052",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Skyline Luge Tongyeong",
@@ -3248,7 +3477,29 @@
             "sourceVenueName": "Skyline Luge Tongyeong"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Site de luge gravitaire avec billetterie propre ; le Skyride est inclus dans les forfaits, Eurobungy est proposé séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+          "publishedAtUtc": "2026-10-23T15:43:30.1466311Z",
+          "verifiedAtUtc": "2026-10-23T15:44:28.804Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c9d68dcb-397a-4b4e-b198-98a818db0da1"
+        },
+        "facebook": {
+          "id": "e88c9e6afe4445519acd7d8a0eae1e3d",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T15:44:25.6185569Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124313677424431",
+          "externalPostId": "1285475681307050_122124313677424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-20261023/tongyeong-audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
@@ -3791,37 +4042,138 @@
     },
     {
       "entryId": "KR-candidate-standalone-83338432442c73",
-      "name": "ZipRider — Jeongseon",
-      "entityKind": "ToQualify",
+      "name": "Arii Hills Zipwire — Jeongseon",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "Jeongseon, Gangwon-do",
+      "siteId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating (operator booking, 2026-10-28)",
+      "identityConfidence": "Exploitant Jeongseon Eco Resort et billetterie séparée vérifiés ; autre activités Arii Hills distinguées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "Byeongbangchi Zipwire",
+        "Jeongseon ZipWire",
+        "ZipRider — Jeongseon",
+        "정선 아리힐스 짚와이어"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T07:23:22.410Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6fc97a4d-edea-4026-9669-5d3b9b7672af",
+          "appliedAt": "2026-10-28T07:19:23.460Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:6fc97a4d-edea-4026-9669-5d3b9b7672af",
+          "auditEvidence": null,
+          "summary": "Identité, localisation et description de la Zipwire en huit langues intégrées."
+        },
+        {
+          "eventId": "apply-27817db6-d2e2-4ac0-9800-3d9e131e3aee",
+          "appliedAt": "2026-10-28T07:20:08.011Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:27817db6-d2e2-4ac0-9800-3d9e131e3aee",
+          "auditEvidence": null,
+          "summary": "Tarif de 40 000 KRW et réservation propre intégrés."
+        },
+        {
+          "eventId": "apply-b7469a5f-36e7-42c2-bff0-0e5686d75a69",
+          "appliedAt": "2026-10-28T07:20:32.024Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:b7469a5f-36e7-42c2-bff0-0e5686d75a69",
+          "auditEvidence": null,
+          "summary": "Horaires été/hiver et réserves météo intégrés."
+        },
+        {
+          "eventId": "apply-e10d44fd-9d49-423d-a0c9-15110d8cb156",
+          "appliedAt": "2026-10-28T07:20:55.222Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:e10d44fd-9d49-423d-a0c9-15110d8cb156",
+          "auditEvidence": null,
+          "summary": "Cinq conditions d’accès officielles et traduites intégrées."
+        },
+        {
+          "eventId": "apply-76a643cf-c420-4112-8e40-73a89a27efac",
+          "appliedAt": "2026-10-28T07:21:18.189Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:76a643cf-c420-4112-8e40-73a89a27efac",
+          "auditEvidence": null,
+          "summary": "Ouverture du 23 juin 2012 et récit historique intégrés."
+        },
+        {
+          "eventId": "apply-838799ff-b769-4e32-a2f9-0cdb3c02c443",
+          "appliedAt": "2026-10-28T07:21:54.187Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:838799ff-b769-4e32-a2f9-0cdb3c02c443",
+          "auditEvidence": null,
+          "summary": "Horaires habituels 9 h–18 h affichés, avec réserve pour l’hiver et les inspections."
+        },
+        {
+          "eventId": "apply-64b52cb8-bc1e-496a-8b86-a1ec5fb56bf5",
+          "appliedAt": "2026-10-28T07:23:22.410Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:64b52cb8-bc1e-496a-8b86-a1ec5fb56bf5",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-jeongseon-20261028/jeongseon-audit.json",
+          "summary": "Article historique approfondi et répétition éditoriale corrigée ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus ; revérifier calendrier hiver et inspection mensuelle, statut administratif ToReview et rechercher une photographie dont la licence précise permet la réutilisation.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/jeongseon/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Arii Hills — exploitant, tarif et restrictions",
+          "url": "https://www.ariihills.co.kr/zipwire",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Arii Hills — réservation et disponibilité",
+          "url": "https://www.ariihills.co.kr/booking",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "District de Jeongseon — fiche touristique Zipwire",
+          "url": "https://www.jeongseon.go.kr/tour/jeongseontour/attractions?contentSeq=634&mode=read",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — référence constructeur, ouverture 23 juin 2012",
+          "url": "https://zipwire.co.kr/company2",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Kyunghyang Shinmun — annonce contemporaine",
+          "url": "https://www.khan.co.kr/article/201206221444381",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "ZipRider — Jeongseon",
@@ -3831,42 +4183,179 @@
             "sourceVenueName": "Jeongseon"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Descente autonome confirmée : billet et réservation spécifiques chez Jeongseon Eco Resort, à distinguer du Skywalk et des autres activités Arii Hills. Référence ZipRider de découverte conservée comme alias, sans doublon."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-10-28T07:24:27.480Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/56b41750-e5a1-4721-b4bf-225aaf8c3409/arii-hills-zipwire-jeongseon",
+        "facebookPublishedAtUtc": "2026-10-28T07:26:12.585Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125004031424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-kr-jeongseon-20261028/jeongseon-receipts.json"
       }
     },
     {
       "entryId": "KR-candidate-standalone-25023c9dd1cd28",
-      "name": "ZipRider — Nami Skyline",
-      "entityKind": "ToQualify",
+      "name": "Skyline Zipwire — Nami Island",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "Gapyeong, Gyeonggi-do",
+      "siteId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating (operator, 2026-10-28)",
+      "identityConfidence": "Exploitant JANA-Line et site officiel vérifiés ; accès et billet propres depuis la rive de Gapyeong.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "Nami Skyline",
+        "ZipRider — Nami Skyline",
+        "남이섬 스카이라인 짚와이어"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T07:12:52.225Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ee84f2ab-4352-4448-8999-ce12bd9fc98d",
+          "appliedAt": "2026-10-28T06:47:52.131Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:ee84f2ab-4352-4448-8999-ce12bd9fc98d",
+          "auditEvidence": null,
+          "summary": "Identité, localisation, statut et descriptions éditoriales dans huit langues intégrés."
+        },
+        {
+          "eventId": "apply-69a08ddf-f9f0-4764-9d64-f790143bcb3e",
+          "appliedAt": "2026-10-28T06:50:57.901Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:69a08ddf-f9f0-4764-9d64-f790143bcb3e",
+          "auditEvidence": null,
+          "summary": "Tarifs Family et Adventure, inclusions et réservations intégrés."
+        },
+        {
+          "eventId": "apply-ef018357-9977-43f6-9d8b-1b5c0841f1fa",
+          "appliedAt": "2026-10-28T06:51:21.894Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:ef018357-9977-43f6-9d8b-1b5c0841f1fa",
+          "auditEvidence": null,
+          "summary": "Horaires usuels et réserves météo intégrés."
+        },
+        {
+          "eventId": "apply-e0a5be2a-b36c-4daa-99ec-6ba72008a0f8",
+          "appliedAt": "2026-10-28T06:53:58.422Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:e0a5be2a-b36c-4daa-99ec-6ba72008a0f8",
+          "auditEvidence": null,
+          "summary": "Cinq conditions d’accès sourcées et traduites intégrées."
+        },
+        {
+          "eventId": "apply-1e7b1d2f-00cd-44c0-8352-aae5ac16e692",
+          "appliedAt": "2026-10-28T06:54:32.543Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:1e7b1d2f-00cd-44c0-8352-aae5ac16e692",
+          "auditEvidence": null,
+          "summary": "Ouverture de novembre 2010 et article historique intégrés."
+        },
+        {
+          "eventId": "importphoto-c439e4ac6fcd424ab778b664b5ae5f4c",
+          "appliedAt": "2026-10-28T06:54:54.549Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:c439e4ac6fcd424ab778b664b5ae5f4c",
+          "auditEvidence": null,
+          "summary": "Photographie d’archive 2015 importée avec attribution CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-d72cf251-6151-4a21-94fa-d32820643fd7",
+          "appliedAt": "2026-10-28T06:56:16.879Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:d72cf251-6151-4a21-94fa-d32820643fd7",
+          "auditEvidence": null,
+          "summary": "Résumé de l’article historique corrigé après contrôle de répétition."
+        },
+        {
+          "eventId": "apply-efb77890-0def-483d-8900-9a56eb350f37",
+          "appliedAt": "2026-10-28T06:59:53.964Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:efb77890-0def-483d-8900-9a56eb350f37",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-audit.json",
+          "summary": "Montants fixes 55 000 et 58 000 KRW intégrés ; audit final 95/100, sans blocage."
+        },
+        {
+          "eventId": "apply-5f5cc1c4-71fc-46b9-abd4-a15332ec1117",
+          "appliedAt": "2026-10-28T07:12:52.225Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+          "evidence": "PARK_DATA_EDITOR:apply:5f5cc1c4-71fc-46b9-abd4-a15332ec1117",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-audit.json",
+          "summary": "Date exacte d’ouverture du 5 novembre 2010 intégrée avec sources exploitant et presse contemporaine."
+        }
+      ],
+      "nextAction": "Conserver la fiche et ses reçus ; revérifier prix, disponibilité Adventure, météo, minimum de poids et statut administratif ToReview lors de la prochaine mise à jour.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/nami-island/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Skyline Zipwire — exploitant, statut et réservation",
+          "url": "https://zipwire.co.kr/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — guide, prix et conditions",
+          "url": "https://zipwire.co.kr/guide",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — FAQ et parcours",
+          "url": "https://zipwire.co.kr/faq/4",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — histoire, ouverture novembre 2010",
+          "url": "https://zipwire.co.kr/company",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie d’archive de 2015, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%9D%B4%EC%84%AC_(4).JPG",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — cas constructeur, date exacte d’ouverture",
+          "url": "https://zipwire.co.kr/company2",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Yonhap — annonce contemporaine de l’ouverture",
+          "url": "https://www.yna.co.kr/view/AKR20101022169900060",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "ZipRider — Nami Skyline",
@@ -3876,7 +4365,15 @@
             "sourceVenueName": "Nami Skyline"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration apply-5f5cc1c4-71fc-46b9-abd4-a15332ec1117 ; conserver les références de découverte."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-10-28T06:57:44.790Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/f619573f-a2ca-43cf-8b4a-5efe080dfa8a/skyline-zipwire-nami-island",
+        "facebookPublishedAtUtc": "2026-10-28T07:01:55.868Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125002243424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-kr-nami-20261028/nami-receipts.json",
+        "historyRePublishedAtUtc": "2026-10-28T07:14:05.199Z"
       }
     },
     {

@@ -1042,27 +1042,118 @@
     {
       "entryId": "SG-candidate-discovery-b43f63a4dd05a4",
       "name": "SkyHelix Sentosa",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Aerobar / plateforme panoramique",
-      "locality": "Sentosa",
-      "siteId": null,
+      "locality": "Imbiah Lookout, Sentosa",
+      "siteId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T13:37:11.766Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2021 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Exploitation et billetterie actives sur le site Mount Faber Leisure Group au 23 octobre 2026.",
+      "identityConfidence": "Billet et exploitant propres confirmés ; aucune fiche homonyme dans les recherches officielles, page publique contrôlée en huit langues.",
       "possibleMatches": [],
       "aliases": [
         "SkyHelix Sentosa Sentosa, Singapour"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T13:35:20.256Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-beb0e1d8-e7a5-48e0-a07e-27efe49c1405",
+          "appliedAt": "2026-10-23T13:27:47.541Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:beb0e1d8-e7a5-48e0-a07e-27efe49c1405",
+          "auditEvidence": null,
+          "summary": "Fiche et descriptions spécifiques en huit langues créées."
+        },
+        {
+          "eventId": "apply-f493cd4d-b1a0-4139-a013-f29cd09bfdd8",
+          "appliedAt": "2026-10-23T13:31:39.470Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:f493cd4d-b1a0-4139-a013-f29cd09bfdd8",
+          "auditEvidence": null,
+          "summary": "Horaires officiels spécifiques intégrés ; conflit de l’en-tête documenté."
+        },
+        {
+          "eventId": "apply-7258a5a7-900a-4cb4-8bcc-17b5fb389248",
+          "appliedAt": "2026-10-23T13:32:02.316Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:7258a5a7-900a-4cb4-8bcc-17b5fb389248",
+          "auditEvidence": null,
+          "summary": "Billets adultes et enfants, tarifs sur place et en ligne intégrés."
+        },
+        {
+          "eventId": "apply-2f296149-3ac1-403b-852e-2499149381f6",
+          "appliedAt": "2026-10-23T13:32:25.148Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:2f296149-3ac1-403b-852e-2499149381f6",
+          "auditEvidence": null,
+          "summary": "Cinq conditions officielles de taille, accompagnement et sécurité intégrées."
+        },
+        {
+          "eventId": "apply-7952acd3-6709-4d23-9229-7bb7005fabbe",
+          "appliedAt": "2026-10-23T13:32:48.015Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:7952acd3-6709-4d23-9229-7bb7005fabbe",
+          "auditEvidence": null,
+          "summary": "Ouverture du 15 décembre 2021 et article en huit langues intégrés."
+        },
+        {
+          "eventId": "apply-0202211d-79d3-4069-a7dc-06dac850f985",
+          "appliedAt": "2026-10-23T13:33:10.825Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:0202211d-79d3-4069-a7dc-06dac850f985",
+          "auditEvidence": null,
+          "summary": "Emplacement précis du SkyHelix à Imbiah Lookout intégré."
+        },
+        {
+          "eventId": "apply-344730fa-09b4-4b44-bf68-e7f0b735fc35",
+          "appliedAt": "2026-10-23T13:34:16.706Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:344730fa-09b4-4b44-bf68-e7f0b735fc35",
+          "auditEvidence": null,
+          "summary": "Article corrigé après contrôle de répétition dans le texte français."
+        },
+        {
+          "eventId": "apply-91100d31-b454-4672-9711-25755d7b76c0",
+          "appliedAt": "2026-10-23T13:35:20.256Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:91100d31-b454-4672-9711-25755d7b76c0",
+          "auditEvidence": null,
+          "summary": "Article reformulé en plusieurs langues ; audit éditorial sans blocage."
+        },
+        {
+          "eventId": "closure-91100d31-b454-4672-9711-25755d7b76c0",
+          "appliedAt": "2026-10-23T13:35:20.256Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:apply:91100d31-b454-4672-9711-25755d7b76c0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyhelix-sentosa-audit.json",
+          "summary": "Audit final 85/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; chercher une photo réutilisable, clarifier les deux plages horaires officielles et renouveler les prix en ligne.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -1073,6 +1164,31 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://mountfaberleisure.com/attraction/skyhelix-sentosa/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://mountfaberleisure.com/faq/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://mountfaberleisure.com/wp-content/uploads/2025/05/Press-Release-SkyHelix-Sentosa-Singapores-highest-open-air-panoramic-ride-to-open-ahead-of-schedule-on-15-December-2021_.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/176839464",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -1081,8 +1197,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "SkyHelix Sentosa",
@@ -1096,32 +1212,177 @@
             "referenceId": "aerophile-skyhelix-sentosa"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "SkyHelix possède un billet propre à Imbiah Lookout ; l’exploitant et Aerophile documentent l’attraction en service."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+          "publishedAtUtc": "2026-10-23T13:36:17.6542346Z",
+          "verifiedAtUtc": "2026-10-23T13:37:11.766Z",
+          "evidence": "PARK_DATA_EDITOR:apply:97193119-f7e3-4f5f-a553-4ce0d9098bba"
+        },
+        "facebook": {
+          "id": "8c556b1f8ca4494b9497b460abf43cee",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T13:36:55.6427005Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124296721424431",
+          "externalPostId": "1285475681307050_122124296721424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyhelix-sentosa-audit.json",
+        "score": 85,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
       "entryId": "SG-candidate-standalone-864d87f292e0f6",
-      "name": "Skyline Luge Sentosa",
-      "entityKind": "ToQualify",
+      "name": "Skyline Luge Singapore",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge gravitaire",
-      "locality": null,
-      "siteId": null,
+      "locality": "Sentosa, Imbiah Lookout et Siloso Beach",
+      "siteId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T13:57:40.463Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Billets et exploitation actifs sur le site Skyline Luge Singapore au 23 octobre 2026.",
+      "identityConfidence": "Opérateur et billet propres confirmés ; quatre pistes d’une même expérience ; absence de fiche homonyme et page vérifiée en huit langues.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "Skyline Luge Sentosa"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-23T13:58:18.017Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-552aee09-fb28-4095-961f-bc2956fdd2cb",
+          "appliedAt": "2026-10-23T13:45:46.316Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:552aee09-fb28-4095-961f-bc2956fdd2cb",
+          "auditEvidence": null,
+          "summary": "Fiche Skyline Luge Singapore et descriptions en huit langues créées."
+        },
+        {
+          "eventId": "apply-2771b32b-fc18-4d8b-84a9-482557ba18b3",
+          "appliedAt": "2026-10-23T13:47:45.490Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:2771b32b-fc18-4d8b-84a9-482557ba18b3",
+          "auditEvidence": null,
+          "summary": "Dix catégories initiales de billets en ligne et forfaits intégrées."
+        },
+        {
+          "eventId": "apply-6306e4ad-8195-4a4a-8503-2f39ea9b6bb1",
+          "appliedAt": "2026-10-23T13:48:09.134Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:6306e4ad-8195-4a4a-8503-2f39ea9b6bb1",
+          "auditEvidence": null,
+          "summary": "Cinq règles officielles de taille, accompagnement et sécurité intégrées."
+        },
+        {
+          "eventId": "apply-a3b92671-84ba-43a7-a8cc-89ecf74005a7",
+          "appliedAt": "2026-10-23T13:48:32.261Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:a3b92671-84ba-43a7-a8cc-89ecf74005a7",
+          "auditEvidence": null,
+          "summary": "Position de l’accueil au 45 Siloso Beach Walk intégrée."
+        },
+        {
+          "eventId": "apply-602bfbc4-f74f-4e26-9f7e-d26fdd877499",
+          "appliedAt": "2026-10-23T13:49:28.031Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:602bfbc4-f74f-4e26-9f7e-d26fdd877499",
+          "auditEvidence": null,
+          "summary": "Ouverture en 2005 et extension de 2017 avec article en huit langues intégrées."
+        },
+        {
+          "eventId": "image-290c57b5382e40f49126cabdb1c907f7",
+          "appliedAt": "2026-10-23T13:51:55.071Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:290c57b5382e40f49126cabdb1c907f7",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous licence CC BY 2.0 avec crédits et textes alternatifs intégrée."
+        },
+        {
+          "eventId": "image-030fa54ab773481f982cb4e0b0addcc5",
+          "appliedAt": "2026-10-23T13:52:14.064Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:030fa54ab773481f982cb4e0b0addcc5",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous licence CC BY 2.0 avec crédits et textes alternatifs intégrée."
+        },
+        {
+          "eventId": "image-a7456384749f49f0ba649b022d8c566c",
+          "appliedAt": "2026-10-23T13:53:05.427Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:a7456384749f49f0ba649b022d8c566c",
+          "auditEvidence": null,
+          "summary": "Photographie Wikimedia Commons sous licence CC BY 2.0 avec crédits et textes alternatifs intégrée."
+        },
+        {
+          "eventId": "apply-7d3df5cc-e174-47ba-a25d-09a35c2e8c47",
+          "appliedAt": "2026-10-23T13:54:44.455Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:7d3df5cc-e174-47ba-a25d-09a35c2e8c47",
+          "auditEvidence": null,
+          "summary": "Mesures brutes reformulées dans l’article après contrôle éditorial."
+        },
+        {
+          "eventId": "apply-03bafedc-ed16-4719-9cca-d69129c3d5dd",
+          "appliedAt": "2026-10-23T13:56:50.797Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:03bafedc-ed16-4719-9cca-d69129c3d5dd",
+          "auditEvidence": null,
+          "summary": "Billet Night Luge ajouté aux offres, soit onze offres actuelles."
+        },
+        {
+          "eventId": "apply-483fcccd-e51a-4552-973d-a4923c091ba7",
+          "appliedAt": "2026-10-23T13:58:18.017Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:483fcccd-e51a-4552-973d-a4923c091ba7",
+          "auditEvidence": null,
+          "summary": "Année d’ouverture 2005 confirmée par Skyline Enterprises structurée."
+        },
+        {
+          "eventId": "closure-483fcccd-e51a-4552-973d-a4923c091ba7",
+          "appliedAt": "2026-10-23T13:58:18.017Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+          "evidence": "PARK_DATA_EDITOR:apply:483fcccd-e51a-4552-973d-a4923c091ba7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyline-luge-singapore-audit.json",
+          "summary": "Audit final 87/100 sans blocage ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; renouveler les horaires via le calendrier dynamique, les prix selon les créneaux et les photographies de 2014.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -1132,11 +1393,81 @@
           "label": "Skyline — destinations officielles — liste",
           "url": "https://www.skylineluge.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://sentosa.skylineluge.com/pricing-packages/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://sentosa.skylineluge.com/visiting-us/opening-hours/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://sentosa.skylineluge.com/visiting-us/faqs/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://sentosa.skylineluge.com/visiting-us/getting-here/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://sentosa.skylineluge.com/luge/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://sentosa.skylineluge.com/skyride/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://sentosa.skylineluge.com/luge-3/luge-tracks/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://skylineenterprises.co.nz/what-we-do/tourism-operations/skyline-luge-singapore/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.straitstimes.com/singapore/skyline-luge-sentosa-unveils-new-tracks-and-chairlift-as-part-of-14m-upgrade",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/260774258",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Sentosa_Luge_and_Skyride,_Singapore_-_20140213.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Skyride_at_Sentosa_Luge_and_Skyride,_Singapore_-_20140213-03.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Luge_ride_at_Sentosa_Luge_and_Skyride,_Singapore_-_20140213.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+          "accessedAt": "2026-10-23"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Skyline Luge Sentosa",
@@ -1146,7 +1477,29 @@
             "sourceVenueName": "Skyline Luge Sentosa"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Quatre pistes et Skyride exploités comme expérience autonome avec billetterie propre sur Sentosa."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/07e8d89b-1cc2-486a-9cf0-ff3100957bdc/skyline-luge-singapore",
+          "publishedAtUtc": "2026-10-23T13:56:27.9077738Z",
+          "verifiedAtUtc": "2026-10-23T13:57:40.463Z",
+          "evidence": "PARK_DATA_EDITOR:apply:400d55fa-0ed2-448b-9f34-923914893b8c"
+        },
+        "facebook": {
+          "id": "f9e1063d50854ca6901b79fd0d0c9709",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T13:57:33.4980269Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124299337424431",
+          "externalPostId": "1285475681307050_122124299337424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyline-luge-singapore-audit.json",
+        "score": 87,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {

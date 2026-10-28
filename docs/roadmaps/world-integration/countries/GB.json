@@ -6548,33 +6548,186 @@
     {
       "entryId": "GB-candidate-discovery-b19f183565d402",
       "name": "Helix — ArcelorMittal Orbit",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Toboggan fixe",
-      "locality": "Londres",
-      "siteId": null,
+      "locality": "Queen Elizabeth Olympic Park, Stratford, Londres",
+      "siteId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-23T15:26:44.010Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Réservation Helix active sur Zip World le 23 octobre 2026.",
+      "identityConfidence": "Billet Helix indépendant confirmé par la FAQ actuelle, identité The Slide/Helix documentée, aucune fiche homonyme GB.",
       "possibleMatches": [],
       "aliases": [
         "ArcelorMittal Orbit",
-        "The Slide at ArcelorMittal Orbit"
+        "The Slide at ArcelorMittal Orbit",
+        "The Slide",
+        "ArcelorMittal Orbit Slide"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-23T15:23:05.306Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2fd3ed6c-53bc-40f6-9f7a-0c5944799ed0",
+          "appliedAt": "2026-10-23T15:17:17.230Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:apply:2fd3ed6c-53bc-40f6-9f7a-0c5944799ed0",
+          "auditEvidence": null,
+          "summary": "Fiche Helix et huit descriptions créées avec identité The Slide conservée."
+        },
+        {
+          "eventId": "apply-550feb9f-abda-4845-a16c-e653f406bca8",
+          "appliedAt": "2026-10-23T15:19:08.271Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:apply:550feb9f-abda-4845-a16c-e653f406bca8",
+          "auditEvidence": null,
+          "summary": "Tarif Zip World variable et frais de réservation documentés."
+        },
+        {
+          "eventId": "apply-05d6fd84-b6a4-49e8-b6fb-e44cf33026df",
+          "appliedAt": "2026-10-23T15:19:42.648Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:apply:05d6fd84-b6a4-49e8-b6fb-e44cf33026df",
+          "auditEvidence": null,
+          "summary": "Cinq règles officielles d’âge, taille, poids, surveillance et tenue intégrées."
+        },
+        {
+          "eventId": "apply-d42dd7c5-38a0-41ca-a18a-94c882060a22",
+          "appliedAt": "2026-10-23T15:20:05.536Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:apply:d42dd7c5-38a0-41ca-a18a-94c882060a22",
+          "auditEvidence": null,
+          "summary": "Ouverture en 2016 et reprise Zip World en 2025 racontées en huit langues."
+        },
+        {
+          "eventId": "apply-ec58a3b9-3337-4511-87b4-cfdff2c80df7",
+          "appliedAt": "2026-10-23T15:20:40.025Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:apply:ec58a3b9-3337-4511-87b4-cfdff2c80df7",
+          "auditEvidence": null,
+          "summary": "Coordonnées de la tour Orbit issues d’OpenStreetMap intégrées."
+        },
+        {
+          "eventId": "image-b2b18b8daa1c4b5cb28da689989c07c3",
+          "appliedAt": "2026-10-23T15:21:11.445Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:b2b18b8daa1c4b5cb28da689989c07c3",
+          "auditEvidence": null,
+          "summary": "Photo datée de Wikimedia Commons sous CC0, CC BY ou CC BY-SA, avec crédit et légendes."
+        },
+        {
+          "eventId": "image-8c720011430e48c7a23906ed2b358cc7",
+          "appliedAt": "2026-10-23T15:21:27.512Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:8c720011430e48c7a23906ed2b358cc7",
+          "auditEvidence": null,
+          "summary": "Photo datée de Wikimedia Commons sous CC0, CC BY ou CC BY-SA, avec crédit et légendes."
+        },
+        {
+          "eventId": "image-cc28270f4083471f86b6993d403285b5",
+          "appliedAt": "2026-10-23T15:21:43.068Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:cc28270f4083471f86b6993d403285b5",
+          "auditEvidence": null,
+          "summary": "Photo datée de Wikimedia Commons sous CC0, CC BY ou CC BY-SA, avec crédit et légendes."
+        },
+        {
+          "eventId": "apply-9fbce30c-7f40-4891-befd-3fc18f942345",
+          "appliedAt": "2026-10-23T15:23:05.306Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:apply:9fbce30c-7f40-4891-befd-3fc18f942345",
+          "auditEvidence": null,
+          "summary": "Calendrier de réservation variable hors saison rendu visible aux visiteurs."
+        },
+        {
+          "eventId": "closure-9fbce30c-7f40-4891-befd-3fc18f942345",
+          "appliedAt": "2026-10-23T15:23:05.306Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+          "evidence": "PARK_DATA_EDITOR:apply:9fbce30c-7f40-4891-befd-3fc18f942345",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-helix-20261023/helix-audit.json",
+          "summary": "Audit 92/100 sans blocage ; horaires variables documentés, site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; ajouter une grille d’horaires seulement si Zip World en publie une, puis recontrôler frais et créneaux.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.zipworld.co.uk/adventures/helix",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.zipworld.co.uk/locations/london",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://arcelormittalorbit.com/visit/faqs/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://arcelormittalorbit.com/content/uploads/2017/08/ArcelorMittal-Orbit-Press-Pack.pdf",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://arcelormittalorbit.com/about/art-design/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.queenelizabetholympicpark.co.uk/whats-on/zip-world-london-arcelormittal-orbit-opening",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://www.openstreetmap.org/way/149637725",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:ArcelorMittal_Orbit_08112025_(1).jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:Polaroid_of_ArcelorMittal_Orbit_Slide_at_Queen_Elizabeth_Olympic_Park,_London.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://commons.wikimedia.org/wiki/File:ArcelorMittal_Orbit_2018.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Source vérifiée — intégration standalone",
+          "url": "https://amusement-parks.fun/fr/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+          "accessedAt": "2026-10-23"
         }
       ],
       "discovery": {
@@ -6583,8 +6736,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
         "attractions": [
           {
             "name": "Helix — ArcelorMittal Orbit",
@@ -6597,7 +6750,29 @@
             "sourceLocality": "Londres"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Toboggan fixe avec ticket Helix propre, distinct de l’accès à la plateforme panoramique."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd/helix-arcelormittal-orbit",
+          "publishedAtUtc": "2026-10-23T15:25:18.2112271Z",
+          "verifiedAtUtc": "2026-10-23T15:26:44.010Z",
+          "evidence": "PARK_DATA_EDITOR:apply:54e55389-2f06-4ec7-8b01-c2b3f17652c6"
+        },
+        "facebook": {
+          "id": "dc7d5a5292984db4a57286f3ed375d66",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-23T15:26:52.3842513Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124311193424431",
+          "externalPostId": "1285475681307050_122124311193424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-helix-20261023/helix-audit.json",
+        "score": 92,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -15042,6 +15217,244 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "GB-candidate-discovery-629e501ddf0c64",
+      "name": "Velocity — Zip World Penrhyn Quarry",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne autonome",
+      "locality": "Penrhyn Quarry, Bethesda, Gwynedd",
+      "siteId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T06:30:28.753Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et créneaux Velocity actifs sur le site officiel le 23 octobre 2026.",
+      "identityConfidence": "Billet et créneau propres à Velocity ; recherches officielles Park et StandaloneAttraction sur Velocity, Penrhyn Quarry et Bethesda sans correspondance ; Fforest et Tower sont d’autres sites Zip World.",
+      "possibleMatches": [],
+      "aliases": [
+        "Velocity 2",
+        "Zip World Velocity",
+        "Velocity+"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-10-23T17:05:57.300Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3d65385f-ec76-42c8-b578-b64ed5e016a1",
+          "appliedAt": "2026-10-23T17:00:21.994Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:apply:3d65385f-ec76-42c8-b578-b64ed5e016a1",
+          "auditEvidence": null,
+          "summary": "Fiche créée après dédoublonnage, avec identité, coordonnées de l’accueil et huit descriptions."
+        },
+        {
+          "eventId": "apply-bb396ba3-f4eb-4167-adee-07e2977cf7b5",
+          "appliedAt": "2026-10-23T17:02:12.474Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:apply:bb396ba3-f4eb-4167-adee-07e2977cf7b5",
+          "auditEvidence": null,
+          "summary": "Tarif promotionnel daté, frais de réservation et prix dynamique intégrés."
+        },
+        {
+          "eventId": "apply-f38d3893-6341-487d-bd03-e7752fed6176",
+          "appliedAt": "2026-10-23T17:02:35.334Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:apply:f38d3893-6341-487d-bd03-e7752fed6176",
+          "auditEvidence": null,
+          "summary": "Restrictions officielles de taille, poids, mineurs, santé et accès ajoutées."
+        },
+        {
+          "eventId": "apply-b1978aeb-465f-43f0-92fd-a5f3566f4326",
+          "appliedAt": "2026-10-23T17:02:58.168Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:apply:b1978aeb-465f-43f0-92fd-a5f3566f4326",
+          "auditEvidence": null,
+          "summary": "Ouverture de mars 2013 et refonte à quatre lignes de mars 2018 documentées en huit langues."
+        },
+        {
+          "eventId": "importphoto-9fadac94b54c4faba7688d8e19ffbb37-2026-10-23T170324",
+          "appliedAt": "2026-10-23T17:03:24.175Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:9fadac94b54c4faba7688d8e19ffbb37",
+          "auditEvidence": null,
+          "summary": "Photographie actuelle du départ de Velocity importée avec licence CC BY-SA 2.0."
+        },
+        {
+          "eventId": "importphoto-df4f2669470b465dbdade0e69123816e-2026-10-23T170339",
+          "appliedAt": "2026-10-23T17:03:39.308Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:df4f2669470b465dbdade0e69123816e",
+          "auditEvidence": null,
+          "summary": "Vue des câbles et de la carrière importée avec licence CC BY-SA 2.0."
+        },
+        {
+          "eventId": "importphoto-7ccab99bc216490cb9c3697a6e1fea5e-2026-10-23T170354",
+          "appliedAt": "2026-10-23T17:03:54.153Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:7ccab99bc216490cb9c3697a6e1fea5e",
+          "auditEvidence": null,
+          "summary": "Panorama du tracé actuel importé avec licence CC BY-SA 2.0."
+        },
+        {
+          "eventId": "importphoto-d327924a986440f2927a646cfc2a2edc-2026-10-23T170410",
+          "appliedAt": "2026-10-23T17:04:10.078Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:d327924a986440f2927a646cfc2a2edc",
+          "auditEvidence": null,
+          "summary": "Photographie d’archive de 2013 importée avec licence CC BY-SA 3.0."
+        },
+        {
+          "eventId": "updatephotometadata-7ccab99bc216490cb9c3697a6e1fea5e-2026-10-23T170503",
+          "appliedAt": "2026-10-23T17:05:03.236Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:UpdatePhotoMetadata:7ccab99bc216490cb9c3697a6e1fea5e",
+          "auditEvidence": null,
+          "summary": "Description de la vue panoramique corrigée après audit éditorial."
+        },
+        {
+          "eventId": "apply-92acc22c-eeb0-417a-9f3c-ac6f9a25fc1b",
+          "appliedAt": "2026-10-23T17:05:23.299Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:apply:92acc22c-eeb0-417a-9f3c-ac6f9a25fc1b",
+          "auditEvidence": null,
+          "summary": "Photo d’archive de mai 2013 liée à l’événement de la première installation."
+        },
+        {
+          "eventId": "updatephotometadata-df4f2669470b465dbdade0e69123816e-2026-10-23T170557",
+          "appliedAt": "2026-10-23T17:05:57.300Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+          "evidence": "PARK_DATA_EDITOR:UpdatePhotoMetadata:df4f2669470b465dbdade0e69123816e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-velocity-20261023/velocity-audit.json",
+          "summary": "Description de la vue des câbles corrigée après audit éditorial ; intégration des données achevée. Publication du site et de Facebook attestée séparément dans le dossier de preuves."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; contrôler les prix et créneaux variables, puis vérifier si le statut administratif ToReview est résolu sans toucher à la fiche publique.",
+      "sources": [
+        {
+          "label": "Zip World — Velocity et billetterie",
+          "url": "https://www.zipworld.co.uk/adventures/velocity%2B",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Zip World — restrictions",
+          "url": "https://www.zipworld.co.uk/restrictions",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Zip World — histoire de la société",
+          "url": "https://www.zipworld.co.uk/about-us",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "The Independent — ouverture mars 2013",
+          "url": "https://www.independent.co.uk/news/uk/home-news/milelong-zip-wire-opens-in-north-wales-offering-thrill-seekers-an-80mph-ride-700ft-above-the-ground-8544226.html",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "ISC Wales — refonte Velocity 2 en 2018",
+          "url": "https://www.iscwales.com/News/Blog/Zip-World-VELOCITY-2-Trolleys/",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "OpenStreetMap — accueil Penrhyn Quarry",
+          "url": "https://www.openstreetmap.org/node/2214903465",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Wikimedia Commons — photo de Velocity historique 2013",
+          "url": "https://commons.wikimedia.org/wiki/File:Zip_World,_Penrhyn_Quarry,_Bethesda,_Bangor_Gwynedd_-_panoramio_(2).jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Wikimedia Commons — photo de Velocity 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Llandygai_,_Zip_World_Penrhyn_Quarry_-_geograph.org.uk_-_7756942.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Wikimedia Commons — photo de Velocity 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Llandygai_,_Zip_World_Penrhyn_Quarry_-_geograph.org.uk_-_7756950.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Wikimedia Commons — photo de Velocity 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Llandygai_,_Zip_World_Penrhyn_Quarry_-_geograph.org.uk_-_7756958.jpg",
+          "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Fiche publique — Velocity",
+          "url": "https://amusement-parks.fun/fr/attraction/7b1438b1-f19d-4bbf-ab6c-98eb69db9b58/velocity-zip-world-penrhyn-quarry",
+          "accessedAt": "2026-10-28"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-10-23-zipline-operator-discovery",
+        "method": "Recherche sur le site de l’exploitant, dédoublonnage officiel Park et StandaloneAttraction, puis sources historiques indépendantes.",
+        "foundAt": "2026-10-23"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-23",
+        "attractions": [
+          {
+            "name": "Velocity",
+            "source": "Zip World — Velocity et billetterie",
+            "url": "https://www.zipworld.co.uk/adventures/velocity%2B",
+            "family": "Tyrolienne",
+            "sourceVenueName": "Penrhyn Quarry",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Bethesda, Gwynedd"
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration apply-12513683-5828-4c94-8982-165a75e42594 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7b1438b1-f19d-4bbf-ab6c-98eb69db9b58/velocity-zip-world-penrhyn-quarry",
+          "publishedAtUtc": "2026-10-23T17:09:33.3720992Z",
+          "verifiedAtUtc": "2026-10-28T06:30:28.753Z",
+          "evidence": "PARK_DATA_EDITOR:apply:12513683-5828-4c94-8982-165a75e42594"
+        },
+        "facebook": {
+          "id": "bff15f0ef4354fd9bed839bfef0635f2",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T06:28:49.3433255Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124999945424431",
+          "externalPostId": "1285475681307050_122124999945424431"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-velocity-20261023/velocity-audit.json",
+        "score": 92,
+        "publicationBlockers": [],
+        "gapCount": 5
+      }
     }
   ]
 }

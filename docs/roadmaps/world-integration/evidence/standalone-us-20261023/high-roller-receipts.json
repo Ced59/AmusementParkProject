@@ -1,0 +1,197 @@
+[
+  {
+    "stage": "01-core",
+    "operationId": "7a26ea94-bc02-4217-a31d-0cfe9c38f3f7",
+    "appliedAtUtc": "2026-10-23T12:27:04.221213Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "02-hours",
+    "operationId": "29477bc4-5b08-4dc6-bfa4-6094a54acbb6",
+    "appliedAtUtc": "2026-10-23T12:29:34.5641442Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "03-pricing",
+    "operationId": "e1d94912-8ba6-44a1-8dd1-f431c3ca9c53",
+    "appliedAtUtc": "2026-10-23T12:29:57.7421745Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "04-access",
+    "operationId": "0920974e-a04e-4b42-b60a-727ba09ece5b",
+    "appliedAtUtc": "2026-10-23T12:30:20.6400362Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "05-history",
+    "operationId": "2b377b7c-5129-4eb1-bbcd-b4986ada681b",
+    "appliedAtUtc": "2026-10-23T12:30:43.5442008Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "06-location",
+    "operationId": "8f2e8c4b-d4d8-4fb5-b3fe-f471b4551a10",
+    "appliedAtUtc": "2026-10-23T12:33:39.7640973Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "07-publish-images",
+    "operationId": "69350286-feb3-4656-bf53-baaf60cdd9c2",
+    "appliedAtUtc": "2026-10-23T12:34:56.5387323Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "08-publish-history",
+    "operationId": "651712ce-ebd4-4fac-9666-0ee02870f43a",
+    "appliedAtUtc": "2026-10-23T12:35:19.652128Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "09-publish-attraction",
+    "operationId": "bd0a8866-3885-421b-86f3-c743acb33a7d",
+    "appliedAtUtc": "2026-10-23T12:35:42.9580969Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "10-publish-photo",
+    "operationId": "c7f02e5f-cc35-4e86-b431-abcba8f33c21",
+    "appliedAtUtc": "2026-10-23T12:46:37.371556Z",
+    "targetStandaloneAttractionId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "stage": "photo-1",
+    "action": "ImportPhoto",
+    "imageId": "ecec96ba33c4403591a679a1fbee186b",
+    "updatedAtUtc": "2026-10-23T12:31:33.21Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:High_Roller_ferris_wheel_at_night.jpg"
+  },
+  {
+    "stage": "photo-2",
+    "action": "ImportPhoto",
+    "imageId": "0aeaddbb5b134e0da50ed6cb1587a278",
+    "updatedAtUtc": "2026-10-23T12:31:48.066Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Las_Vegas_-_The_High_Roller-01.JPG"
+  },
+  {
+    "stage": "photo-3",
+    "action": "ImportPhoto",
+    "imageId": "bf514d5ebcd8457389e61675f278d03c",
+    "updatedAtUtc": "2026-10-23T12:32:02.784Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_High_Roller-Cabin.jpg"
+  },
+  {
+    "stage": "photo-4",
+    "action": "ImportPhoto",
+    "imageId": "acc6503279f849858ccda02499c42c7e",
+    "updatedAtUtc": "2026-10-23T12:32:18.951Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_High_Roller_under_construction_in_January_2014.jpg"
+  },
+  {
+    "stage": "photo-5",
+    "action": "ImportPhoto",
+    "imageId": "371960490d5941968bf78024a519456e",
+    "updatedAtUtc": "2026-10-23T12:44:57.345Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_High_Roller_-_View_From_The_Linq_2.jpg"
+  }
+]

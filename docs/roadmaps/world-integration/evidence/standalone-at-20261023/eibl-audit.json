@@ -1,0 +1,297 @@
+{
+  "name": "EIBL Jet Türnitz",
+  "standaloneAttractionId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+  "legacyParkId": "d45c859f-7df4-4f80-8851-9646c9ceb7e7",
+  "legacyParkItemId": "c92d1d79-75e0-446d-ab8b-0ad70de78186",
+  "qualification": "La fiche Park masquée Eibl Jet Türnitz contenait un seul parkItem de luge alpine. L’installation a sa propre billetterie et son exploitant ; la recherche officielle standalone ne trouvait aucun doublon. Migration contrôlée vers StandaloneAttraction, ancien Park retiré des lieux pertinents mais conservé masqué avec son item legacy.",
+  "decision": "PublishedWithDocumentedGaps",
+  "score": 100,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "descriptions": 8,
+    "ownPhotos": 3,
+    "accessConditions": 3,
+    "historyEvents": 1,
+    "articles": 1,
+    "currentAdmissionOffers": 6,
+    "openingHoursPeriod": "2026-10-23/2026-11-01",
+    "datedScheduleOverrides": 10
+  },
+  "gaps": [
+    "La commune date la construction de 2004 sans jour précis ; le jalon historique conserve une précision à l’année.",
+    "Les photographies libres datent de 2010 ; aucune image sourcée de l’ouverture en 2004 n’a été trouvée et aucune photo actuelle n’est présentée comme historique.",
+    "Le calendrier de l’exploitant consulté couvre la fin de saison jusqu’au 1er novembre 2026 ; aucun horaire ultérieur n’est inventé. La météo et les fermetures exceptionnelles peuvent modifier l’exploitation.",
+    "Les tarifs structurés couvrent la saison 2026 jusqu’au 1er novembre et devront être renouvelés lorsque la grille suivante sera publiée."
+  ],
+  "sources": [
+    "https://www.tuernitz.at/",
+    "https://www.tuernitz.at/information.html",
+    "https://www.tuernitz.at/preise-prices.html",
+    "https://www.tuernitz.gv.at/Eibl_Jet_1",
+    "https://www.outdooractive.com/en/poi/mostviertel/alpine-all-weather-toboggan-run-eibl-jet-near-tuernitz/809502922/",
+    "https://commons.wikimedia.org/wiki/File:Blick_von_der_Sommerrodelbahn_am_Türnitzer_Eybl.jpg",
+    "https://commons.wikimedia.org/wiki/File:Blick_von_der_Sommerrodelbahn_auf_Türnitz.jpg",
+    "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Türnitzer_Eybl.jpg"
+  ],
+  "corpusAudit": {
+    "auditedAtUtc": "2026-10-23T09:48:13.589892+00:00",
+    "exportSha256": "f43963ec49ccc94fb0ae57d5c616f3dcea84b25cda0dd9f1570e55487d788159",
+    "localizedStringsReviewed": 312,
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "duplicateNarrativeParagraphs": []
+  },
+  "sitePublication": {
+    "url": "https://amusement-parks.fun/fr/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+    "publishedAtUtc": "2026-10-23T09:50:08.4945507Z",
+    "operationId": "b57db905-6d15-4f5e-8283-3352d0bf4f04"
+  },
+  "facebookPublication": {
+    "id": "2bb3a7b7cb074de1906eed80221862c6",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-23T09:51:52.7507084Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124271287424431",
+    "externalPostId": "1285475681307050_122124271287424431"
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-10-23T09:51:03.009850+00:00",
+    "checks": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/fr/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history"
+        ]
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [
+          "Operating"
+        ],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/en/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history"
+        ]
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/de/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history"
+        ]
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/nl/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history"
+        ]
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/it/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history"
+        ]
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/es/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history"
+        ]
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pl/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history"
+        ]
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz",
+        "nameVisible": true,
+        "width": 390,
+        "scrollWidth": 390,
+        "technicalValues": [],
+        "manufacturerNameVisible": true,
+        "historyLinks": [
+          "https://amusement-parks.fun/pt/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history"
+        ]
+      }
+    ]
+  },
+  "historyChecks": {
+    "checkedAtUtc": "2026-10-23T09:50:39.721330+00:00",
+    "results": [
+      {
+        "lang": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/fr/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history/5a83ca71-c2b2-400d-b493-4ec8bca16ce1/ouverture-eibl-jet-tuernitz-2004",
+            "status": 200,
+            "textLength": 1411,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 554
+      },
+      {
+        "lang": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/en/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history/5a83ca71-c2b2-400d-b493-4ec8bca16ce1/ouverture-eibl-jet-tuernitz-2004",
+            "status": 200,
+            "textLength": 1222,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 495
+      },
+      {
+        "lang": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/de/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history/5a83ca71-c2b2-400d-b493-4ec8bca16ce1/ouverture-eibl-jet-tuernitz-2004",
+            "status": 200,
+            "textLength": 1264,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 590
+      },
+      {
+        "lang": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/nl/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history/5a83ca71-c2b2-400d-b493-4ec8bca16ce1/ouverture-eibl-jet-tuernitz-2004",
+            "status": 200,
+            "textLength": 1166,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 551
+      },
+      {
+        "lang": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/it/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history/5a83ca71-c2b2-400d-b493-4ec8bca16ce1/ouverture-eibl-jet-tuernitz-2004",
+            "status": 200,
+            "textLength": 1206,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 540
+      },
+      {
+        "lang": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/es/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history/5a83ca71-c2b2-400d-b493-4ec8bca16ce1/ouverture-eibl-jet-tuernitz-2004",
+            "status": 200,
+            "textLength": 1213,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 549
+      },
+      {
+        "lang": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pl/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history/5a83ca71-c2b2-400d-b493-4ec8bca16ce1/ouverture-eibl-jet-tuernitz-2004",
+            "status": 200,
+            "textLength": 1104,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 514
+      },
+      {
+        "lang": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history",
+        "articles": [
+          {
+            "url": "https://amusement-parks.fun/pt/attraction/0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5/eibl-jet-turnitz/history/5a83ca71-c2b2-400d-b493-4ec8bca16ce1/ouverture-eibl-jet-tuernitz-2004",
+            "status": 200,
+            "textLength": 1191,
+            "containsWvlt": false,
+            "containsPlaceholder": false
+          }
+        ],
+        "textLength": 562
+      }
+    ]
+  }
+}

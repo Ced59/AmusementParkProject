@@ -15,10 +15,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 90 |
-| À qualifier | 292 |
+| À qualifier | 291 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 2 |
+| Intégration achevée | 4 |
 | Publié, date inconnue | 9 |
 | Hors périmètre enregistré | 25 |
 | Doublon conservé | 0 |
@@ -29,7 +29,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **9 publiés**, **90 masqués à intégrer**, **26 masqués NotRelevant à réexaminer**, **252 candidats sans fiche**.
 
-Standalone : **2 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **6 types à décider**, **31 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **4 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **6 types à décider**, **31 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **2 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **19 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -40,4 +40,4 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent dans le JSON national.
 
 - [Page 1 — lignes 1 à 250](GB/001.md)
-- [Page 2 — lignes 251 à 418](GB/002.md)
+- [Page 2 — lignes 251 à 419](GB/002.md)
