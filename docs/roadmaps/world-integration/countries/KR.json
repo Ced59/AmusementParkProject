@@ -4042,37 +4042,138 @@
     },
     {
       "entryId": "KR-candidate-standalone-83338432442c73",
-      "name": "ZipRider — Jeongseon",
-      "entityKind": "ToQualify",
+      "name": "Arii Hills Zipwire — Jeongseon",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "Jeongseon, Gangwon-do",
+      "siteId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating (operator booking, 2026-10-28)",
+      "identityConfidence": "Exploitant Jeongseon Eco Resort et billetterie séparée vérifiés ; autre activités Arii Hills distinguées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "Byeongbangchi Zipwire",
+        "Jeongseon ZipWire",
+        "ZipRider — Jeongseon",
+        "정선 아리힐스 짚와이어"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T07:23:22.410Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6fc97a4d-edea-4026-9669-5d3b9b7672af",
+          "appliedAt": "2026-10-28T07:19:23.460Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:6fc97a4d-edea-4026-9669-5d3b9b7672af",
+          "auditEvidence": null,
+          "summary": "Identité, localisation et description de la Zipwire en huit langues intégrées."
+        },
+        {
+          "eventId": "apply-27817db6-d2e2-4ac0-9800-3d9e131e3aee",
+          "appliedAt": "2026-10-28T07:20:08.011Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:27817db6-d2e2-4ac0-9800-3d9e131e3aee",
+          "auditEvidence": null,
+          "summary": "Tarif de 40 000 KRW et réservation propre intégrés."
+        },
+        {
+          "eventId": "apply-b7469a5f-36e7-42c2-bff0-0e5686d75a69",
+          "appliedAt": "2026-10-28T07:20:32.024Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:b7469a5f-36e7-42c2-bff0-0e5686d75a69",
+          "auditEvidence": null,
+          "summary": "Horaires été/hiver et réserves météo intégrés."
+        },
+        {
+          "eventId": "apply-e10d44fd-9d49-423d-a0c9-15110d8cb156",
+          "appliedAt": "2026-10-28T07:20:55.222Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:e10d44fd-9d49-423d-a0c9-15110d8cb156",
+          "auditEvidence": null,
+          "summary": "Cinq conditions d’accès officielles et traduites intégrées."
+        },
+        {
+          "eventId": "apply-76a643cf-c420-4112-8e40-73a89a27efac",
+          "appliedAt": "2026-10-28T07:21:18.189Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:76a643cf-c420-4112-8e40-73a89a27efac",
+          "auditEvidence": null,
+          "summary": "Ouverture du 23 juin 2012 et récit historique intégrés."
+        },
+        {
+          "eventId": "apply-838799ff-b769-4e32-a2f9-0cdb3c02c443",
+          "appliedAt": "2026-10-28T07:21:54.187Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:838799ff-b769-4e32-a2f9-0cdb3c02c443",
+          "auditEvidence": null,
+          "summary": "Horaires habituels 9 h–18 h affichés, avec réserve pour l’hiver et les inspections."
+        },
+        {
+          "eventId": "apply-64b52cb8-bc1e-496a-8b86-a1ec5fb56bf5",
+          "appliedAt": "2026-10-28T07:23:22.410Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+          "evidence": "PARK_DATA_EDITOR:apply:64b52cb8-bc1e-496a-8b86-a1ec5fb56bf5",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-jeongseon-20261028/jeongseon-audit.json",
+          "summary": "Article historique approfondi et répétition éditoriale corrigée ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus ; revérifier calendrier hiver et inspection mensuelle, statut administratif ToReview et rechercher une photographie dont la licence précise permet la réutilisation.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/jeongseon/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Arii Hills — exploitant, tarif et restrictions",
+          "url": "https://www.ariihills.co.kr/zipwire",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Arii Hills — réservation et disponibilité",
+          "url": "https://www.ariihills.co.kr/booking",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "District de Jeongseon — fiche touristique Zipwire",
+          "url": "https://www.jeongseon.go.kr/tour/jeongseontour/attractions?contentSeq=634&mode=read",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Zipwire — référence constructeur, ouverture 23 juin 2012",
+          "url": "https://zipwire.co.kr/company2",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Kyunghyang Shinmun — annonce contemporaine",
+          "url": "https://www.khan.co.kr/article/201206221444381",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "ZipRider — Jeongseon",
@@ -4082,7 +4183,14 @@
             "sourceVenueName": "Jeongseon"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Descente autonome confirmée : billet et réservation spécifiques chez Jeongseon Eco Resort, à distinguer du Skywalk et des autres activités Arii Hills. Référence ZipRider de découverte conservée comme alias, sans doublon."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-10-28T07:24:27.480Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/56b41750-e5a1-4721-b4bf-225aaf8c3409/arii-hills-zipwire-jeongseon",
+        "facebookPublishedAtUtc": "2026-10-28T07:26:12.585Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125004031424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-kr-jeongseon-20261028/jeongseon-receipts.json"
       }
     },
     {

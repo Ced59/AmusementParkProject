@@ -1,0 +1,80 @@
+{
+  "entityId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+  "receipts": [
+    {
+      "lot": "01-core",
+      "action": "Apply",
+      "operationId": "6fc97a4d-edea-4026-9669-5d3b9b7672af",
+      "appliedAtUtc": "2026-10-28T07:19:23.4601556Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    },
+    {
+      "lot": "02-pricing",
+      "action": "Apply",
+      "operationId": "27817db6-d2e2-4ac0-9800-3d9e131e3aee",
+      "appliedAtUtc": "2026-10-28T07:20:08.0116801Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    },
+    {
+      "lot": "03-hours",
+      "action": "Apply",
+      "operationId": "b7469a5f-36e7-42c2-bff0-0e5686d75a69",
+      "appliedAtUtc": "2026-10-28T07:20:32.024777Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    },
+    {
+      "lot": "04-access",
+      "action": "Apply",
+      "operationId": "e10d44fd-9d49-423d-a0c9-15110d8cb156",
+      "appliedAtUtc": "2026-10-28T07:20:55.2228935Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    },
+    {
+      "lot": "05-history",
+      "action": "Apply",
+      "operationId": "76a643cf-c420-4112-8e40-73a89a27efac",
+      "appliedAtUtc": "2026-10-28T07:21:18.1891543Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    },
+    {
+      "lot": "06-hours-current",
+      "action": "Apply",
+      "operationId": "838799ff-b769-4e32-a2f9-0cdb3c02c443",
+      "appliedAtUtc": "2026-10-28T07:21:54.1871342Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    },
+    {
+      "lot": "07-history-editorial",
+      "action": "Apply",
+      "operationId": "64b52cb8-bc1e-496a-8b86-a1ec5fb56bf5",
+      "appliedAtUtc": "2026-10-28T07:23:22.4100925Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    },
+    {
+      "lot": "08-publish-history",
+      "action": "Apply",
+      "operationId": "510ae36b-e388-4ae4-ad62-d4e6acac39ae",
+      "appliedAtUtc": "2026-10-28T07:24:03.7103681Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    },
+    {
+      "lot": "09-publish-attraction",
+      "action": "Apply",
+      "operationId": "5f37509e-3b9e-42f2-9c5b-272b7fd13ea4",
+      "appliedAtUtc": "2026-10-28T07:24:27.4805058Z",
+      "targetStandaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "isApplied": true
+    }
+  ],
+  "facebookPublicationId": "d935ec9d35eb4260ae2e019e8150ee3a",
+  "facebookPublishedAtUtc": "2026-10-28T07:26:12.585429Z",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125004031424431"
+}
