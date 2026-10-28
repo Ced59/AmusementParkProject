@@ -23487,17 +23487,21 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
+      "aliases": [
+        "Playmobil FunPark Paris",
+        "PLAYMOBIL FunPark",
+        "Playmobil Fun Park"
+      ],
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Qualification du parc couvert historique de Fresnes : recherches officielles Playmobil/Fresnes parmi parcs et standalone, puis création masquée si aucune correspondance. Fermeture du 31 juillet 2022 documentée ; ne pas confondre avec Zirndorf, Malte ou Athènes.",
       "sources": [
         {
           "label": "Backlog national existant",
