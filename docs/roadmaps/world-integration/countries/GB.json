@@ -15241,7 +15241,7 @@
         "Velocity+"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T17:09:33.372Z",
+      "lastDataIntegrationAt": "2026-10-23T17:05:57.300Z",
       "integrationHistory": [
         {
           "eventId": "apply-3d65385f-ec76-42c8-b578-b64ed5e016a1",
@@ -15346,42 +15346,12 @@
         {
           "eventId": "updatephotometadata-df4f2669470b465dbdade0e69123816e-2026-10-23T170557",
           "appliedAt": "2026-10-23T17:05:57.300Z",
-          "outcome": "partial",
-          "entityKind": "StandaloneAttraction",
-          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
-          "evidence": "PARK_DATA_EDITOR:UpdatePhotoMetadata:df4f2669470b465dbdade0e69123816e",
-          "auditEvidence": null,
-          "summary": "Description de la vue des câbles corrigée après audit éditorial."
-        },
-        {
-          "eventId": "apply-78be787f-191a-4d47-b9bd-80967c7e3a09",
-          "appliedAt": "2026-10-23T17:08:18.045Z",
-          "outcome": "partial",
-          "entityKind": "StandaloneAttraction",
-          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
-          "evidence": "PARK_DATA_EDITOR:apply:78be787f-191a-4d47-b9bd-80967c7e3a09",
-          "auditEvidence": null,
-          "summary": "Quatre images créditées publiées, dont une archive historique."
-        },
-        {
-          "eventId": "apply-0354e02a-2a0e-44f7-9d80-ef0c1212a193",
-          "appliedAt": "2026-10-23T17:09:08.655Z",
-          "outcome": "partial",
-          "entityKind": "StandaloneAttraction",
-          "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
-          "evidence": "PARK_DATA_EDITOR:apply:0354e02a-2a0e-44f7-9d80-ef0c1212a193",
-          "auditEvidence": null,
-          "summary": "Événements et article historique rendus visibles."
-        },
-        {
-          "eventId": "apply-12513683-5828-4c94-8982-165a75e42594",
-          "appliedAt": "2026-10-23T17:09:33.372Z",
           "outcome": "completed",
           "entityKind": "StandaloneAttraction",
           "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
-          "evidence": "PARK_DATA_EDITOR:apply:12513683-5828-4c94-8982-165a75e42594",
+          "evidence": "PARK_DATA_EDITOR:UpdatePhotoMetadata:df4f2669470b465dbdade0e69123816e",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-velocity-20261023/velocity-audit.json",
-          "summary": "Fiche Velocity rendue visible sur le site."
+          "summary": "Description de la vue des câbles corrigée après audit éditorial ; intégration des données achevée. Publication du site et de Facebook attestée séparément dans le dossier de preuves."
         }
       ],
       "nextAction": "Conserver la ligne ; contrôler les prix et créneaux variables, puis vérifier si le statut administratif ToReview est résolu sans toucher à la fiche publique.",
