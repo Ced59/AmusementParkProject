@@ -28520,7 +28520,7 @@
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-28T18:32:48.435478+00:00",
-      "editorialStatus": "InProgress",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Parc définitivement fermé depuis1991 ; ancien statut Operating du catalogue à corriger.",
@@ -28532,7 +28532,7 @@
         "Zygo Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-28T20:35:04.723Z",
+      "lastDataIntegrationAt": "2026-10-28T21:36:56.805Z",
       "integrationHistory": [
         {
           "eventId": "apply-b07a5314-8a89-4fb3-8c35-c9da4d0c1c1d",
@@ -29093,9 +29093,459 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-e57dca1c9fd04dd3aa57f67ce2b97b6e-2026-10-28T203504.723Z",
           "auditEvidence": null,
           "summary": "Import privé du média historique 05-swingo-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a7c9593880624b8fa5c365c35a87da79-2026-10-28T203749.970Z",
+          "appliedAt": "2026-10-28T20:37:49.970Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-a7c9593880624b8fa5c365c35a87da79-2026-10-28T203749.970Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-crazy-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7b9bd34a777a4987a8e5ce0193a44f47-2026-10-28T203805.734Z",
+          "appliedAt": "2026-10-28T20:38:05.734Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-7b9bd34a777a4987a8e5ce0193a44f47-2026-10-28T203805.734Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-crazy-arrival, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7fcba5f38f65444192c1dea6f5de2229-2026-10-28T203819.714Z",
+          "appliedAt": "2026-10-28T20:38:19.714Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-7fcba5f38f65444192c1dea6f5de2229-2026-10-28T203819.714Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-crazy-tunnel, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c576d3dc1b624504bb131c2790dfac21-2026-10-28T203833.724Z",
+          "appliedAt": "2026-10-28T20:38:33.724Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-c576d3dc1b624504bb131c2790dfac21-2026-10-28T203833.724Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-anacondas-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9e6b267aa99240e6ba4d4bafd35224ac-2026-10-28T203847.838Z",
+          "appliedAt": "2026-10-28T20:38:47.838Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-9e6b267aa99240e6ba4d4bafd35224ac-2026-10-28T203847.838Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-anacondas-arrival, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bce4512e02cd4abb94c1abc7978466df-2026-10-28T203906.477Z",
+          "appliedAt": "2026-10-28T20:39:06.477Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-bce4512e02cd4abb94c1abc7978466df-2026-10-28T203906.477Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-anacondas-side, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c80d636586ed487791a2afe927abc06d-2026-10-28T203928.306Z",
+          "appliedAt": "2026-10-28T20:39:28.306Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-c80d636586ed487791a2afe927abc06d-2026-10-28T203928.306Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-speed-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-cd35dd04effe41a9afffd7ab9f383906-2026-10-28T203950.185Z",
+          "appliedAt": "2026-10-28T20:39:50.185Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-cd35dd04effe41a9afffd7ab9f383906-2026-10-28T203950.185Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-speed-waterpark, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2f314284fa374806b5817219088285b7-2026-10-28T204012.135Z",
+          "appliedAt": "2026-10-28T20:40:12.135Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-2f314284fa374806b5817219088285b7-2026-10-28T204012.135Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-speed-top, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a226f438d55d4ebead9d3fea7af3c84f-2026-10-28T204035.372Z",
+          "appliedAt": "2026-10-28T20:40:35.372Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-a226f438d55d4ebead9d3fea7af3c84f-2026-10-28T204035.372Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wave-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-612b2c933d5c4e43bf9ce025acad4828-2026-10-28T204048.934Z",
+          "appliedAt": "2026-10-28T20:40:48.934Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-612b2c933d5c4e43bf9ce025acad4828-2026-10-28T204048.934Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wave-1991, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a8e223439e794174afdfd5d09119cb1c-2026-10-28T204102.487Z",
+          "appliedAt": "2026-10-28T20:41:02.487Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-a8e223439e794174afdfd5d09119cb1c-2026-10-28T204102.487Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wave-close, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7d7666493a8e4e0f8ab1f76451c7d85a-2026-10-28T204124.704Z",
+          "appliedAt": "2026-10-28T20:41:24.704Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-7d7666493a8e4e0f8ab1f76451c7d85a-2026-10-28T204124.704Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-adults-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a42d417537f8420aa4c2fd934a122dba-2026-10-28T204147.237Z",
+          "appliedAt": "2026-10-28T20:41:47.237Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-a42d417537f8420aa4c2fd934a122dba-2026-10-28T204147.237Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-adults-terraces, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f1ae9ac29922462faf20ce64078b6409-2026-10-28T204215.648Z",
+          "appliedAt": "2026-10-28T20:42:15.648Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-f1ae9ac29922462faf20ce64078b6409-2026-10-28T204215.648Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-adults-loungers, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c700adb77b3746a3946d7ab754a726d0-2026-10-28T204229.479Z",
+          "appliedAt": "2026-10-28T20:42:29.479Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-c700adb77b3746a3946d7ab754a726d0-2026-10-28T204229.479Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-nil-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-11d99c72430b4972adc087fcaf7471e3-2026-10-28T204243.351Z",
+          "appliedAt": "2026-10-28T20:42:43.351Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-11d99c72430b4972adc087fcaf7471e3-2026-10-28T204243.351Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-nil-gallery, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0914dd941f0b49db9b96d938e5491da3-2026-10-28T204257.380Z",
+          "appliedAt": "2026-10-28T20:42:57.380Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-0914dd941f0b49db9b96d938e5491da3-2026-10-28T204257.380Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-spirals-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-9676d1bc-2237-4b1d-b160-432c631cc6de",
+          "appliedAt": "2026-10-28T20:48:53.909Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-9676d1bc-2237-4b1d-b160-432c631cc6de",
+          "auditEvidence": null,
+          "summary": "Zygofolis : quatre premiers jalons historiques sourcés, huit langues, brouillons privés"
+        },
+        {
+          "eventId": "import-photo-50de0ebfc6c14b5cb9ba96571c8de841-2026-10-28T205056.044Z",
+          "appliedAt": "2026-10-28T20:50:56.044Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-50de0ebfc6c14b5cb9ba96571c8de841-2026-10-28T205056.044Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-funicular-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9dc0f8ebeb1d4c8ca484602fc56a2f42-2026-10-28T205122.616Z",
+          "appliedAt": "2026-10-28T20:51:22.616Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-9dc0f8ebeb1d4c8ca484602fc56a2f42-2026-10-28T205122.616Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-funicular-upper, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-98474926216e4edaa65cecb58cfe0c32-2026-10-28T205149.824Z",
+          "appliedAt": "2026-10-28T20:51:49.824Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-98474926216e4edaa65cecb58cfe0c32-2026-10-28T205149.824Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-funicular-snails, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4bbbba6bd2e448a4bc6c86e636fe71a3-2026-10-28T205218.278Z",
+          "appliedAt": "2026-10-28T20:52:18.278Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-4bbbba6bd2e448a4bc6c86e636fe71a3-2026-10-28T205218.278Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mirrors-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b8d77feafb004cabb1258e3180d6d90f-2026-10-28T205241.552Z",
+          "appliedAt": "2026-10-28T20:52:41.552Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-b8d77feafb004cabb1258e3180d6d90f-2026-10-28T205241.552Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-organs-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-04374dfd91ae4426804f3f626b84aca7-2026-10-28T205255.907Z",
+          "appliedAt": "2026-10-28T20:52:55.907Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-04374dfd91ae4426804f3f626b84aca7-2026-10-28T205255.907Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tir-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fa57509ec4ef40fbacdcf251c1484cce-2026-10-28T205309.929Z",
+          "appliedAt": "2026-10-28T20:53:09.929Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-fa57509ec4ef40fbacdcf251c1484cce-2026-10-28T205309.929Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-small-amphi-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-98865237868e438bacf5242d86f95eae-2026-10-28T205332.023Z",
+          "appliedAt": "2026-10-28T20:53:32.023Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-98865237868e438bacf5242d86f95eae-2026-10-28T205332.023Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-grand-amphi-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f8689c23e02142329fda9f2d6d876df7-2026-10-28T205355.876Z",
+          "appliedAt": "2026-10-28T20:53:55.876Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-f8689c23e02142329fda9f2d6d876df7-2026-10-28T205355.876Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-amphi-remains-2016, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d35df6342ebe46c1a0b43fa5693092ae-2026-10-28T205414.665Z",
+          "appliedAt": "2026-10-28T20:54:14.665Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-d35df6342ebe46c1a0b43fa5693092ae-2026-10-28T205414.665Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-diving-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5a06b8c99ea3411aa5494a7cf9f72b03-2026-10-28T205437.374Z",
+          "appliedAt": "2026-10-28T20:54:37.374Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-5a06b8c99ea3411aa5494a7cf9f72b03-2026-10-28T205437.374Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-diving-somersault, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-5b1b5467-8477-47a8-bf90-3fe4b2888bcc",
+          "appliedAt": "2026-10-28T20:57:50.669Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-5b1b5467-8477-47a8-bf90-3fe4b2888bcc",
+          "auditEvidence": null,
+          "summary": "Zygofolis : reprise1990, dernière saison1991, vente à la CCI et reconversion du site, huit langues"
+        },
+        {
+          "eventId": "import-photo-5382a34f2c2549c3b5b2c878d4a25c0c-2026-10-28T205806.224Z",
+          "appliedAt": "2026-10-28T20:58:06.224Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-5382a34f2c2549c3b5b2c878d4a25c0c-2026-10-28T205806.224Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-shop-pinces-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4199e3bebc16457ca487dc5872d3a61a-2026-10-28T205829.392Z",
+          "appliedAt": "2026-10-28T20:58:29.392Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-4199e3bebc16457ca487dc5872d3a61a-2026-10-28T205829.392Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-shop-airport-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2cadcdd6bebb4647925c54941fa10ff7-2026-10-28T205851.331Z",
+          "appliedAt": "2026-10-28T20:58:51.331Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-2cadcdd6bebb4647925c54941fa10ff7-2026-10-28T205851.331Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-food-piscine-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-50e7878363924ec6823b461202fdcb89-2026-10-28T205913.214Z",
+          "appliedAt": "2026-10-28T20:59:13.214Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-50e7878363924ec6823b461202fdcb89-2026-10-28T205913.214Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-food-aquarium-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0b1dc48212bc4cdcb54c10b8f43a3090-2026-10-28T205936.307Z",
+          "appliedAt": "2026-10-28T20:59:36.307Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-0b1dc48212bc4cdcb54c10b8f43a3090-2026-10-28T205936.307Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-entrance-statue-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-522ec934-6be8-454d-83fc-4d15687b732a",
+          "appliedAt": "2026-10-28T21:02:49.521Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-522ec934-6be8-454d-83fc-4d15687b732a",
+          "auditEvidence": null,
+          "summary": "Zygofolis : constructeurs existants et modèles vérifiés pour quatre attractions"
+        },
+        {
+          "eventId": "apply-61bb999f-de25-4813-b4ae-cd27ab5c4757",
+          "appliedAt": "2026-10-28T21:03:01.225Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-61bb999f-de25-4813-b4ae-cd27ab5c4757",
+          "auditEvidence": null,
+          "summary": "Zygofolis : article historique développé en huit langues sur le parc et le devenir des attractions"
+        },
+        {
+          "eventId": "apply-03e8228c-08b1-4ade-926e-4dc80a593033",
+          "appliedAt": "2026-10-28T21:10:20.828Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-03e8228c-08b1-4ade-926e-4dc80a593033",
+          "auditEvidence": null,
+          "summary": "Zygofolis : six faits historiques des coasters et transferts vers leurs parcs existants"
+        },
+        {
+          "eventId": "apply-bf3c2486-5b54-4f89-a01f-fec2e4bc65c1",
+          "appliedAt": "2026-10-28T21:10:32.542Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-bf3c2486-5b54-4f89-a01f-fec2e4bc65c1",
+          "auditEvidence": null,
+          "summary": "Zygofolis : cinq faits sur les grandes attractions fermées et le retour du Monstre en Bretagne"
+        },
+        {
+          "eventId": "import-photo-23fcb2d97385464488523a332f4d6f64-2026-10-28T211047.979Z",
+          "appliedAt": "2026-10-28T21:10:47.979Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#import-photo-23fcb2d97385464488523a332f4d6f64-2026-10-28T211047.979Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cinema-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-2f3883b2-44c5-41d0-84e8-92055f9283ac",
+          "appliedAt": "2026-10-28T21:15:01.327Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-2f3883b2-44c5-41d0-84e8-92055f9283ac",
+          "auditEvidence": null,
+          "summary": "Zygofolis : libellés des références historiques rendus lisibles, faits et textes préservés"
+        },
+        {
+          "eventId": "apply-80220926-c1b6-433a-b49d-def3dd05e3ab",
+          "appliedAt": "2026-10-28T21:27:06.498Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-80220926-c1b6-433a-b49d-def3dd05e3ab",
+          "auditEvidence": null,
+          "summary": "Correction éditoriale transversale sourcée des références partagées Intamin et Schwarzkopf dans huit langues et des métadonnées de cinq images existantes ; aucun nouveau média ni changement de visibilité."
+        },
+        {
+          "eventId": "apply-3c311f13-3c9d-4c55-b950-d7a61ccb157a",
+          "appliedAt": "2026-10-28T21:34:32.289Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-3c311f13-3c9d-4c55-b950-d7a61ccb157a",
+          "auditEvidence": null,
+          "summary": "Correction de la seule phrase française répétée entre l’article et le jalon de liquidation de 1989 ; sens, sources et sept autres langues conservés."
+        },
+        {
+          "eventId": "apply-12b9b757-bbf5-4a1a-855c-d6a0099cd3a0",
+          "appliedAt": "2026-10-28T21:36:56.805Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-12b9b757-bbf5-4a1a-855c-d6a0099cd3a0",
+          "auditEvidence": null,
+          "summary": "Reformulation de onze résumés localisés pour distinguer chronologie et article : vente à la CCI, création de la SPAN et arrivée de Tarzungle à Flevohof ; faits et sources conservés."
         }
       ],
-      "nextAction": "54 fiches décrites dans huit langues ; 23 images privées dont logo, plans officiels1987/1991 et références SPAN/Jacques Médecin intégrés. Compléter photos, données structurées, histoire/articles puis audit final avant publications site et Facebook autorisées. Conserver la fiche existante et les deux coasters.",
+      "nextAction": "Audit final du contenu validé : 54 éléments, 58 images propres, 19 événements, article en huit langues et plans 1987/1991. Score projeté 95/100, zéro bloqueur. Dépendances publiées, parc masqué. Attente d’acceptation explicite de Zygofolis à 95 avec les lacunes documentées ; contrôle public et Facebook à faire après publication.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -29129,7 +29579,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "finalContentAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-content-audit.json"
     },
     {
       "entryId": "FR-candidate-989aee8356c4ae",

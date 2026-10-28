@@ -22,10 +22,10 @@
     "itemsEightLanguages": 54
   },
   "lastMergedDataApply": {
-    "operationId": "fd205d7d-86e8-4a42-b080-1726e71d3585",
-    "appliedAtUtc": "2026-10-28T20:28:40.894171Z"
+    "operationId": "12b9b757-bbf5-4a1a-855c-d6a0099cd3a0",
+    "appliedAtUtc": "2026-10-28T21:36:56.8057674Z"
   },
-  "nextAction": "Finish attraction and contextual photo coverage, qualify remaining source gaps, complete source-supported ride references and technical data, history/article, fresh full final audit, then authorized site and Facebook publication. No full export during steps 0–8.",
+  "nextAction": "Await exact user95exception for Zygofolis; no further low-quality additions. After acceptance verify current state, publish parent last, check actual score, HistoryDiagnostics and ordinary history navigation in8languages/mobile, then ResolveFacebookPublication/PublishFacebook idempotently. Continue other historical candidates independently.",
   "pendingPublicationExceptionsElsewhere": [
     "Playmobil FunPark Fresnes exact92/100 awaiting answer",
     "Lillom exact95/100 awaiting earlier answer"
@@ -35,8 +35,8 @@
     "Bateau Ivre destination identity Bounty confirmed, but old archive gives1993 arrival and2003 dismantling; destination histories give1992 opening,2002 last operation and2006 dismantling.",
     "1989 closure and1990 reopening are supported by contemporary press/book; RCDB park narrative misdates bankruptcy1988 and SBNO1990."
   ],
-  "updatedAtUtc": "2026-10-28T20:37:11.962943+00:00",
-  "images": 23,
+  "updatedAtUtc": "2026-10-28T21:38:45.357375+00:00",
+  "images": 58,
   "officialMapYears": [
     1987,
     1991
@@ -44,6 +44,24 @@
   "references": {
     "founders": 1,
     "operators": 1,
-    "manufacturers": 2
+    "manufacturers": 4
+  },
+  "history": {
+    "parkFacts": 8,
+    "itemFacts": 11,
+    "articles": 1
+  },
+  "sharedReferenceImages": 6,
+  "contentAuditPassed": true,
+  "projectedScore": 95,
+  "publicationBlockers": [],
+  "parentPublished": false,
+  "dependencyPublication": {
+    "images": 58,
+    "items": 54,
+    "zones": 2,
+    "maps": 2,
+    "events": 19,
+    "articles": 1
   }
 }

@@ -1,0 +1,63 @@
+{
+  "checkedAtUtc": "2026-10-28T20:38:19.160279+00:00",
+  "operator": {
+    "name": "Société du parc d’attractions de Nice (SPAN)",
+    "siren": "331660696",
+    "created": "1985-01-17",
+    "deregistered": "2005-07-05",
+    "sources": [
+      "https://www.pappers.fr/entreprise/societe-du-parc-dattractions-de-nice-331660696",
+      "http://zygo.altervista.org/depliant88.php",
+      "https://www.lemonde.fr/archives/article/1987/03/22/rhone-alpes-zygofolis-pour-nice_4061396_1819218.html"
+    ],
+    "evidence": "Original1988 brochure prints SPAN Zygofolis, chemin de Crémat06200Nice. Register confirms legal society and dates; 2005 is deregistration, not park operating closure."
+  },
+  "founderCandidate": {
+    "name": "Jacques Médecin",
+    "status": "Applied and verified 2026-10-28: political initiator reference attached, no shared existing biography overwritten.",
+    "sources": [
+      "https://www.assemblee-nationale.fr/legislatures/11/pdf/rap-info/i2311-626.pdf",
+      "https://www2.assemblee-nationale.fr/sycomore/fiche?legislature=52&num_dept=5156",
+      "https://www.assemblee-nationale.fr/histoire/trombinoscope/Vrepublique/Legis06/medecin-jacques-05051928.asp"
+    ],
+    "evidence": "Etienne Ceccaldi hearing, printed82–84/PDF80–82: Jacques Médecin created SPAN; SPAN managed park. Parliamentary biography: born1928-05-05Nice, died1998-11-17Punta-del-Este; journalist and MP. Public PDF readable through web tool; local download proxy403, not bypassed. Do not repeat allegations from hearing as adjudicated facts."
+  },
+  "siteReuse": {
+    "sources": [
+      "https://www.paca.developpement-durable.gouv.fr/IMG/pdf/f09324p0085_piece_complementaire_1_gti_immobilier_complement_cas_par_cas_hub_c.pdf",
+      "https://annuaire-entreprises.data.gouv.fr/entreprise/chamb-commerc-industrie-nice-cote-d-azur-ccinca-180600017",
+      "https://www.webtimemedias.com/article/logistique-la-cci-cherche-creer-un-pal-bis"
+    ],
+    "evidence": "PAL entity created1994; first buildings inaugurated1996. Do not conflate registration and building inauguration. Modern hub study describes subparcel use, not whole former park parcel. Primary report page26 rechecked through searchable official PDF: first buildings inaugurated FROM1996. Old equipement domain temporarily maintenance; canonical paca.developpement-durable domain retained.",
+    "primaryRecheckedAtUtc": "2026-10-28T20:55:03.291392+00:00"
+  },
+  "relocationConflicts": {
+    "Swingo": {
+      "archive": "swingo.php says Fandango/Walibi Aquitaine",
+      "specialists": [
+        "https://www.pretparken.be/NL/Attractie/226/Super-Swing",
+        "https://walibi24.nl/parkinformatie/attracties/w-a-b-plaza/super-swing/",
+        "https://coasterpedia.net/wiki/Zygo_Park"
+      ],
+      "decision": "Dutch sources give Flevohof1992 then SuperSwing; dates of intermediate Piccolini name also conflict. Description restricts itself to Nice and1991officialWaveSwingeralias until final source decision."
+    },
+    "BateauIvre": {
+      "sources": [
+        "https://coasterpedia.net/wiki/Bounty_%28Six_Flags_Belgium%29",
+        "https://www.pretparken.be/NL/info/history/walibi_history.asp",
+        "https://themeparkfreaks.eu/pretparknostalgie-walibi-belgium/",
+        "https://pretparken.be/NL/Attractie/175/Bounty",
+        "https://www.freizeitpark-welt.de/freizeitparks/wabe/attraktionen/bounty-r782"
+      ],
+      "decision": "Manufacturer Intamin/Looping Starship and transfer to Walibi Belgium as Bounty corroborated; destination opening year unresolved: Pretparken and Freizeitpark-Welt give1993, Themeparkfreaks gives1992. Lastoperation2002vs2003 and removal2006 also differ bysource. Do not assign1992 as certain or copydatefromunsourcedwiki. Niceclosure1991 remains separate."
+    },
+    "Monstre": {
+      "sources": [
+        "https://coasterpedia.net/wiki/Pieuvre_%28La_R%C3%A9cr%C3%A9_des_3_Cur%C3%A9s%29",
+        "https://www.parcplaza.net/2012/05/la-recre-des-3-cures-ouvre-sa-pieuvre.html",
+        "https://walygazette.fr/forum/les-attractions/161-confier-la-renovation-de-krinoline-sudseewellen-et-walynosaure-a-soquet"
+      ],
+      "decision": "Nice→WalibiRhôneAlpes→Soquetrestoration→LaRécré2012 corroborated. Destination reopening actualMay2012 per contemporaneous article, plannedJune should not replace realopening; useyear2012 unless exactdayproved. Intermediate2003lastoperation/2004removal need distinction."
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "Explicit cross-park correction of two existing manufacturer biographies and five existing media descriptions; 3 media get eight-language alt/caption corrections.",
+  "sources": [
+    "https://www.intamin.com/company/about-us/",
+    "https://rcdb.com/6844.htm",
+    "https://rcdb.com/1115.htm",
+    "https://rcdb.com/13819.htm",
+    "https://www.gerstlauer-rides.de/en/company/history"
+  ],
+  "visualReview": "Original Zierer logo and three original Intamin blue-toned photos inspected; source bytes retained locally. Unknown park names not guessed. Existing Schwarzkopf image description shortened to its unchanged caption; no new claim or attribution.",
+  "preserved": "All identities, dates, attachment ownership, public visibility, credits, source URLs; six shared files neither reimported nor newly published.",
+  "checkedAtUtc": "2026-10-28T21:26:23.851048+00:00"
+}
