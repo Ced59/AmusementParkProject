@@ -1,0 +1,64 @@
+{
+  "entityId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+  "receipts": [
+    {
+      "lot": "01-core",
+      "action": "Apply",
+      "operationId": "3f061e8d-b315-40bc-beff-3ed7b153642f",
+      "appliedAtUtc": "2026-10-28T08:09:48.519256Z",
+      "targetStandaloneAttractionId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "isApplied": true
+    },
+    {
+      "lot": "02-pricing",
+      "action": "Apply",
+      "operationId": "ad5d551b-f90d-4c9c-a434-d86b274efb06",
+      "appliedAtUtc": "2026-10-28T08:10:20.4568181Z",
+      "targetStandaloneAttractionId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "isApplied": true
+    },
+    {
+      "lot": "03-hours",
+      "action": "Apply",
+      "operationId": "5c77c1cd-e38c-489b-8a57-10e9b380a09c",
+      "appliedAtUtc": "2026-10-28T08:10:54.2113486Z",
+      "targetStandaloneAttractionId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "isApplied": true
+    },
+    {
+      "lot": "04-access",
+      "action": "Apply",
+      "operationId": "f811c963-50d7-4986-9b51-06c235089d60",
+      "appliedAtUtc": "2026-10-28T08:11:24.7523176Z",
+      "targetStandaloneAttractionId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "isApplied": true
+    },
+    {
+      "lot": "05-history",
+      "action": "Apply",
+      "operationId": "69621308-d7ee-4d88-ae18-121084217ee6",
+      "appliedAtUtc": "2026-10-28T08:11:48.0268395Z",
+      "targetStandaloneAttractionId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "isApplied": true
+    },
+    {
+      "lot": "06-publish-history",
+      "action": "Apply",
+      "operationId": "6be7461b-eb7d-4c0d-8b65-1c746013b694",
+      "appliedAtUtc": "2026-10-28T08:12:46.278457Z",
+      "targetStandaloneAttractionId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "isApplied": true
+    },
+    {
+      "lot": "07-publish-attraction",
+      "action": "Apply",
+      "operationId": "b09eea08-53bb-462b-b8ed-c81a87765d08",
+      "appliedAtUtc": "2026-10-28T08:13:16.6703719Z",
+      "targetStandaloneAttractionId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "isApplied": true
+    }
+  ],
+  "facebookPublicationId": "e554da65d4b1403da17cd259ca6a04b7",
+  "facebookPublishedAtUtc": "2026-10-28T08:14:47.9911097Z",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125008891424431"
+}

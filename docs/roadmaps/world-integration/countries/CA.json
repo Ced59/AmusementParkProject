@@ -5619,37 +5619,117 @@
     },
     {
       "entryId": "CA-candidate-standalone-52b944d77d3979",
-      "name": "ZipRider — Mt. Washington",
-      "entityKind": "ToQualify",
+      "name": "Eagle’s Flight ZipTour — Mount Washington",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "Mount Washington, Colombie-Britannique",
+      "siteId": "1cb184a8-6579-4aae-88ba-365e15542a09",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "TemporarilyClosed (seasonal; operator, 2026-10-28)",
+      "identityConfidence": "Référence constructeur rapprochée du ZipTour actuel de Mount Washington ; billets propres et deux formules confirmés.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "ZipRider — Mt. Washington",
+        "Eagle’s Flight ZipTour",
+        "Hawk Flight"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T08:11:48.026Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3f061e8d-b315-40bc-beff-3ed7b153642f",
+          "appliedAt": "2026-10-28T08:09:48.519Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+          "evidence": "PARK_DATA_EDITOR:apply:3f061e8d-b315-40bc-beff-3ed7b153642f",
+          "auditEvidence": null,
+          "summary": "Identité Eagle’s Flight, localisation, fermeture saisonnière et descriptions en huit langues intégrées."
+        },
+        {
+          "eventId": "apply-ad5d551b-f90d-4c9c-a434-d86b274efb06",
+          "appliedAt": "2026-10-28T08:10:20.456Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+          "evidence": "PARK_DATA_EDITOR:apply:ad5d551b-f90d-4c9c-a434-d86b274efb06",
+          "auditEvidence": null,
+          "summary": "Anciens tarifs 2026 datés ; aucune offre actuelle de descente publiée."
+        },
+        {
+          "eventId": "apply-5c77c1cd-e38c-489b-8a57-10e9b380a09c",
+          "appliedAt": "2026-10-28T08:10:54.211Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+          "evidence": "PARK_DATA_EDITOR:apply:5c77c1cd-e38c-489b-8a57-10e9b380a09c",
+          "auditEvidence": null,
+          "summary": "Fermeture après l’automne 2026 et reprise non datée intégrées."
+        },
+        {
+          "eventId": "apply-f811c963-50d7-4986-9b51-06c235089d60",
+          "appliedAt": "2026-10-28T08:11:24.752Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+          "evidence": "PARK_DATA_EDITOR:apply:f811c963-50d7-4986-9b51-06c235089d60",
+          "auditEvidence": null,
+          "summary": "Âge, poids et taille admis intégrés avec sources officielles."
+        },
+        {
+          "eventId": "apply-69621308-d7ee-4d88-ae18-121084217ee6",
+          "appliedAt": "2026-10-28T08:11:48.026Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+          "evidence": "PARK_DATA_EDITOR:apply:69621308-d7ee-4d88-ae18-121084217ee6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-mt-washington-20261028/mt-washington-audit.json",
+          "summary": "Ouverture du parcours complet le 27 juin 2020 et histoire Hawk 2019 intégrées."
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus ; vérifier la reprise, les tarifs futurs, les conditions d’accès, le statut administratif ToReview et une photographie sous licence réutilisable.",
       "sources": [
         {
-          "label": "ZipRider — référence constructeur",
+          "label": "Mount Washington — ZipTour actuel, parcours, restrictions et prix 2026",
+          "url": "https://www.mountwashington.ca/play/ziptour/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Mount Washington — horaires et fermeture 2026",
+          "url": "https://www.mountwashington.ca/the-mountain/hours-of-operation/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Mount Washington — annonce archivée du 27 juin 2020",
+          "url": "https://mountwashington.ca/events/event/738-jilli-martini-trio-apres-at-teds.html",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Adventure Park Insider — inauguration contemporaine",
+          "url": "https://adventureparkinsider.com/zip-tour-opens-at-mount-washington-alpine-resort-b-c/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "ZipRider — référence constructeur et adresse",
           "url": "https://ziprider.com/locations/mt-washington-bc/",
-          "accessedAt": "2026-10-22"
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "OpenStreetMap — emprise du resort",
+          "url": "https://www.openstreetmap.org/relation/10664978",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "ZipRider — Mt. Washington",
@@ -5659,7 +5739,14 @@
             "sourceVenueName": "Mt. Washington"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Attraction autonome confirmée : billet et créneau propres au ZipTour dans le domaine Mount Washington ; Hawk est une formule de cette attraction, non un doublon. Cinq recherches officielles sans correspondance."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-10-28T08:13:16.670Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/1cb184a8-6579-4aae-88ba-365e15542a09/eagle-s-flight-ziptour-mount-washington",
+        "facebookPublishedAtUtc": "2026-10-28T08:14:47.9911097Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125008891424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ca-mt-washington-20261028/mt-washington-receipts.json"
       }
     },
     {
