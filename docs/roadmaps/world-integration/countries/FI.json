@@ -66,9 +66,9 @@
     },
     {
       "entryId": "FI-candidate-standalone-3cfd23091b2ae6",
-      "name": "Alpine Coaster Wiegand — Ruka",
+      "name": "Ruka Coaster",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
@@ -78,8 +78,8 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation saisonnière actuelle documentée par l’exploitant ; horaires à recontrôler lors de l’intégration du parkItem.",
+      "identityConfidence": "Attraction située dans Ruka Ski Resort & Ski Inn, fiche Park masquée du site ID 4e17bbab-3537-42e5-ae7c-9ad4206933bb, vérifiée par SearchParks ; aucune fiche standalone homonyme dans SearchStandaloneAttractions.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -88,7 +88,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la piste comme parkItem de Ruka Ski Resort & Ski Inn (Park ID 4e17bbab-3537-42e5-ae7c-9ad4206933bb) dans le chantier éditorial de ce parc. Réutiliser la piste constructeur et les informations de l’exploitant ; ne pas créer de standalone indépendante. Chercher une photo propre à la piste avant publication du parkItem.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -99,11 +99,21 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.ruka.fi/en/events/ruka-coaster",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste et exploitation actuelle",
+          "url": "https://www.ruka.fi/en/events/ruka-coaster",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Rukakeskus — inauguration du Ruka Coaster en 2025",
+          "url": "https://www.epressi.com/tiedotteet/matkailu/suomen-ensimmainen-tunturivuoristorata-avattiin-tanaan-rukalla.html",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "Ruka",
@@ -112,9 +122,19 @@
             "family": "Alpine coaster",
             "sourceVenueName": "Ruka",
             "referenceId": "location-id-2209"
+          },
+          {
+            "name": "Ruka Coaster",
+            "source": "Exploitant officiel",
+            "url": "https://www.ruka.fi/en/events/ruka-coaster",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Ruka Ski Resort & Ski Inn",
+            "sourceLifecycleSignal": "Exploitation saisonnière actuelle documentée en octobre 2026.",
+            "matchingMethod": "Recherche officielle Park : 4e17bbab-3537-42e5-ae7c-9ad4206933bb ; SearchStandaloneAttractions sans correspondance.",
+            "referenceId": "fi-operator-alpine-coaster"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste au sein de Ruka Ski Resort & Ski Inn, parc déjà présent mais masqué (Park ID 4e17bbab-3537-42e5-ae7c-9ad4206933bb). À traiter comme parkItem lors de la complétion du parc ; aucune création standalone ni date d’intégration de données à enregistrer ici."
       }
     },
     {
