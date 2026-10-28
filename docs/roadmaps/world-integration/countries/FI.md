@@ -13,10 +13,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 12 |
-| À qualifier | 34 |
+| À qualifier | 33 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 4 |
 | Doublon conservé | 0 |
@@ -27,9 +27,9 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **12 masqués à intégrer**, **5 masqués NotRelevant à réexaminer**, **26 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **7 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **6 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **7 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **6 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -71,7 +71,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | FI-candidate-98249d71cecfff | Scandic Eden Nokia - a waterpark/spa in Nokia | near Tampere | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Finland) |
 | FI-candidate-ce963fc5b74a0c | Sea Life Helsinki | near the Linnanmäki Amusement Park - Helsinki | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Finland) |
 | FI-candidate-59677bd13a8fad | Serena Waterpark | Espoo , near the Finnish capital Helsinki | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Finland) |
-| FI-candidate-d94270eac2d1c8 | SkyWheel Helsinki | Helsinki , Finland | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
+| FI-candidate-d94270eac2d1c8 | SkyWheel Helsinki | Helsinki | StandaloneAttraction | Published | Intégration achevée | 2026-10-28T20:34:11.527Z | — | Conserver la fiche et les reçus. Vérifier les mises à jour saisonnières des horaires et tarifs sur le site officiel ; ne pas republier la même annonce Facebook. Qualification standalone : AlreadyStandalone. Grande roue fixe autonome, exploitant et billetterie propres ; créée et publiée après recherches de doublons. Trois photographies spécifiques CC BY-SA 4.0 et audit public à 100/100. Installations référencées : SkyWheel Helsinki. Signal source : Operating — billetterie officielle, tarifs et horaires 2026 vérifiés le 28 octobre 2026.. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [SkyWheel Helsinki — site officiel, adresse et tarifs](https://skywheel.fi/en/home/) · [SkyWheel Helsinki — FAQ, accès et durée](https://skywheel.fi/en/faq/) · [Finnair — annonce de l’ouverture du 3 juin 2014](https://news.cision.com/finnair/r/finnair-skywheel-arrives-in-helsinki%2Cc9594886) · [Wikimedia Commons — vue nocturne de SkyWheel](https://commons.wikimedia.org/wiki/File:SkyWheel_Helsinki_pimeällä.jpg) · [Wikimedia Commons — vue depuis Allas Sea Pool](https://commons.wikimedia.org/wiki/File:Allas_Sea_Pool,_SkyWheel,_Helsinki_-_20251211_-_30.jpg) · [Wikimedia Commons — vue depuis Hotel Pier 4](https://commons.wikimedia.org/wiki/File:SkyWheel_Helsinki_seen_from_rooftop_terrace_at_Hotel_Pier_4_on_a_sunny_afternoon_in_October_2025.jpg) |
 | FI-park-433f91e4-a8fe-4911-b9d7-f4b84553eaea | Suomi Tivoli | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | FI-park-6b7c1e67-a18e-4354-83bf-691e03c0055e | Tivoli Mokia Finland | — | Park | Hidden | À qualifier | Inconnue — non inventée | — | Une source de lieu contredit potentiellement NotRelevant : résoudre la pertinence et le type avant intégration. Signal source : Under Construction. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/23564.htm) |
 | FI-park-ba819e0f-dde1-422d-a85f-7aa0050ef9a6 | Tivoli Sariola | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
