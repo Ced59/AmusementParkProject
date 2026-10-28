@@ -1,0 +1,111 @@
+{
+  "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+  "receipts": [
+    {
+      "lot": "01-core",
+      "action": "Apply",
+      "operationId": "3d65385f-ec76-42c8-b578-b64ed5e016a1",
+      "appliedAtUtc": "2026-10-23T17:00:21.9944577Z",
+      "targetStandaloneAttractionId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "isApplied": true
+    },
+    {
+      "lot": "02-pricing",
+      "action": "Apply",
+      "operationId": "bb396ba3-f4eb-4167-adee-07e2977cf7b5",
+      "appliedAtUtc": "2026-10-23T17:02:12.4749418Z",
+      "targetStandaloneAttractionId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "isApplied": true
+    },
+    {
+      "lot": "03-access",
+      "action": "Apply",
+      "operationId": "f38d3893-6341-487d-bd03-e7752fed6176",
+      "appliedAtUtc": "2026-10-23T17:02:35.334861Z",
+      "targetStandaloneAttractionId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "isApplied": true
+    },
+    {
+      "lot": "04-history",
+      "action": "Apply",
+      "operationId": "b1978aeb-465f-43f0-92fd-a5f3566f4326",
+      "appliedAtUtc": "2026-10-23T17:02:58.168702Z",
+      "targetStandaloneAttractionId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "isApplied": true
+    },
+    {
+      "lot": "image-7",
+      "action": "ImportPhoto",
+      "entityId": "9fadac94b54c4faba7688d8e19ffbb37",
+      "finishedAtUtc": "2026-10-23T17:03:24.1754692Z",
+      "ownerId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58"
+    },
+    {
+      "lot": "image-6",
+      "action": "ImportPhoto",
+      "entityId": "df4f2669470b465dbdade0e69123816e",
+      "finishedAtUtc": "2026-10-23T17:03:39.3088133Z",
+      "ownerId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58"
+    },
+    {
+      "lot": "image-5",
+      "action": "ImportPhoto",
+      "entityId": "7ccab99bc216490cb9c3697a6e1fea5e",
+      "finishedAtUtc": "2026-10-23T17:03:54.1538665Z",
+      "ownerId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58"
+    },
+    {
+      "lot": "image-4",
+      "action": "ImportPhoto",
+      "entityId": "d327924a986440f2927a646cfc2a2edc",
+      "finishedAtUtc": "2026-10-23T17:04:10.0783577Z",
+      "ownerId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58"
+    },
+    {
+      "lot": "image-5-update",
+      "action": "UpdatePhotoMetadata",
+      "entityId": "7ccab99bc216490cb9c3697a6e1fea5e",
+      "finishedAtUtc": "2026-10-23T17:05:03.2366615Z",
+      "ownerId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58"
+    },
+    {
+      "lot": "05-history-photo",
+      "action": "Apply",
+      "operationId": "92acc22c-eeb0-417a-9f3c-ac6f9a25fc1b",
+      "appliedAtUtc": "2026-10-23T17:05:23.2992238Z",
+      "targetStandaloneAttractionId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "isApplied": true
+    },
+    {
+      "lot": "image-6-update",
+      "action": "UpdatePhotoMetadata",
+      "entityId": "df4f2669470b465dbdade0e69123816e",
+      "finishedAtUtc": "2026-10-23T17:05:57.3001485Z",
+      "ownerId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58"
+    },
+    {
+      "lot": "06-publish-images",
+      "action": "Apply",
+      "operationId": "78be787f-191a-4d47-b9bd-80967c7e3a09",
+      "appliedAtUtc": "2026-10-23T17:08:18.0457Z",
+      "targetStandaloneAttractionId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "isApplied": true
+    },
+    {
+      "lot": "07-publish-history",
+      "action": "Apply",
+      "operationId": "0354e02a-2a0e-44f7-9d80-ef0c1212a193",
+      "appliedAtUtc": "2026-10-23T17:09:08.6556229Z",
+      "targetStandaloneAttractionId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "isApplied": true
+    },
+    {
+      "lot": "08-publish-attraction",
+      "action": "Apply",
+      "operationId": "12513683-5828-4c94-8982-165a75e42594",
+      "appliedAtUtc": "2026-10-23T17:09:33.3720992Z",
+      "targetStandaloneAttractionId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "isApplied": true
+    }
+  ]
+}
