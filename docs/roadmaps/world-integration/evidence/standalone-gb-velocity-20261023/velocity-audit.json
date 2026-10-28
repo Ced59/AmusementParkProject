@@ -1,0 +1,59 @@
+{
+  "entityId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+  "entryId": "GB-candidate-discovery-629e501ddf0c64",
+  "auditedAtUtc": "2026-10-28T06:30:28.753Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/7b1438b1-f19d-4bbf-ab6c-98eb69db9b58/velocity-zip-world-penrhyn-quarry",
+  "score": 92,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "localization": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "localizedStringsReviewed": 360,
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "exportSha256": "5c45ca6db6c92be488e8c97b0468552642f2bc4da7e32845d4371953e230a2e6"
+  },
+  "publicChecks": {
+    "attractionPages200": 8,
+    "mobilePagesWithoutHorizontalOverflow": 8,
+    "historyPages200": 8,
+    "historyArticles200": 8,
+    "allNamesVisible": true,
+    "allArticlePagesWithoutPlaceholders": true
+  },
+  "content": {
+    "historyEvents": 2,
+    "publishedImages": 4,
+    "accessConditions": 6,
+    "historicImageId": "d327924a986440f2927a646cfc2a2edc"
+  },
+  "facebook": {
+    "status": "Published",
+    "id": "bff15f0ef4354fd9bed839bfef0635f2",
+    "publishedAtUtc": "2026-10-28T06:28:49.3433255Z",
+    "externalPostId": "1285475681307050_122124999945424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124999945424431"
+  },
+  "limitations": [
+    "Le jour exact de l’ouverture en mars 2013 n’est pas établi par les sources consultées.",
+    "Les créneaux varient avec la réservation et la météo ; aucun horaire hebdomadaire fixe n’a été inventé.",
+    "Le prix promotionnel et les frais sont datés du 23 octobre 2026 et peuvent changer.",
+    "Le point cartographique désigne l’accueil public, non le départ en hauteur.",
+    "La fiche est publique mais le statut administratif exporté reste ToReview ; le client officiel n’a pas appliqué le champ Approved."
+  ]
+}
