@@ -23438,7 +23438,7 @@
         "Planete Magique"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-28T22:47:19.747Z",
+      "lastDataIntegrationAt": "2026-10-28T23:30:34.572Z",
       "integrationHistory": [
         {
           "eventId": "apply-d5983c1c-6f1c-4229-b4f5-d737e05b4aca",
@@ -23569,6 +23569,676 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-def3411e-f9a9-4027-a67b-3543e8a81c25",
           "auditEvidence": null,
           "summary": "Huit descriptions du Village mexicain intégrées ; lumière, décors, accès Cités d’Or/Eldorado/El Gringo sourcés ; aucun changement de visibilité."
+        },
+        {
+          "eventId": "apply-ab235a3a-e46e-449c-9d73-7e521b4f6988",
+          "appliedAt": "2026-10-28T22:51:57.006Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-ab235a3a-e46e-449c-9d73-7e521b4f6988",
+          "auditEvidence": null,
+          "summary": "Jean Chalopin et SEGL historique enrichis :16 biographies/descriptions en huit langues et cinq champs structurés sourcés ; dates juridiques distinguées de fermeture du parc."
+        },
+        {
+          "eventId": "import-photo-90169c9d95a7484ba2ff237d62f0db17-2026-10-28T225613.496Z",
+          "appliedAt": "2026-10-28T22:56:13.496Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-90169c9d95a7484ba2ff237d62f0db17-2026-10-28T225613.496Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-54bbe5114fa54ea7af3fbc9b8ad891e2-2026-10-28T225636.149Z",
+          "appliedAt": "2026-10-28T22:56:36.149Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-54bbe5114fa54ea7af3fbc9b8ad891e2-2026-10-28T225636.149Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-central, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-69090091d01649e78bd929c8bb30179b-2026-10-28T225654.867Z",
+          "appliedAt": "2026-10-28T22:56:54.867Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-69090091d01649e78bd929c8bb30179b-2026-10-28T225654.867Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-styx, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "update-photo-90169c9d95a7484ba2ff237d62f0db17-2026-10-28T225912.715Z",
+          "appliedAt": "2026-10-28T22:59:12.715Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#update-photo-90169c9d95a7484ba2ff237d62f0db17-2026-10-28T225912.715Z",
+          "auditEvidence": null,
+          "summary": "Description du média 05-logo complétée avec sa légende française déjà relue ; identifiant, source, propriétaire, huit langues et visibilité préservés."
+        },
+        {
+          "eventId": "update-photo-54bbe5114fa54ea7af3fbc9b8ad891e2-2026-10-28T225923.921Z",
+          "appliedAt": "2026-10-28T22:59:23.921Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#update-photo-54bbe5114fa54ea7af3fbc9b8ad891e2-2026-10-28T225923.921Z",
+          "auditEvidence": null,
+          "summary": "Description du média 05-park-central complétée avec sa légende française déjà relue ; identifiant, source, propriétaire, huit langues et visibilité préservés."
+        },
+        {
+          "eventId": "update-photo-69090091d01649e78bd929c8bb30179b-2026-10-28T225934.998Z",
+          "appliedAt": "2026-10-28T22:59:34.998Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#update-photo-69090091d01649e78bd929c8bb30179b-2026-10-28T225934.998Z",
+          "auditEvidence": null,
+          "summary": "Description du média 05-park-styx complétée avec sa légende française déjà relue ; identifiant, source, propriétaire, huit langues et visibilité préservés."
+        },
+        {
+          "eventId": "import-photo-4226aaff12174a05b083bb334c0d3820-2026-10-28T230211.972Z",
+          "appliedAt": "2026-10-28T23:02:11.972Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-4226aaff12174a05b083bb334c0d3820-2026-10-28T230211.972Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-navette-cabin, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b9367668361b4009aae0d37b49b69a07-2026-10-28T230225.962Z",
+          "appliedAt": "2026-10-28T23:02:25.962Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-b9367668361b4009aae0d37b49b69a07-2026-10-28T230225.962Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-navette-upper, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bcf4bd79d3cd493ba949bc9dc0335d1b-2026-10-28T230239.958Z",
+          "appliedAt": "2026-10-28T23:02:39.958Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-bcf4bd79d3cd493ba949bc9dc0335d1b-2026-10-28T230239.958Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-navette-lower, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b32f24365c97467fbf84ff2f9f98cf31-2026-10-28T230257.641Z",
+          "appliedAt": "2026-10-28T23:02:57.641Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-b32f24365c97467fbf84ff2f9f98cf31-2026-10-28T230257.641Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-talisman-columns, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e323b8bccd554e49b8cec3703424f3f1-2026-10-28T230313.338Z",
+          "appliedAt": "2026-10-28T23:03:13.338Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-e323b8bccd554e49b8cec3703424f3f1-2026-10-28T230313.338Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-talisman-mirrors, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2c05f4b754a345f7b46dc70044b1c46c-2026-10-28T230329.304Z",
+          "appliedAt": "2026-10-28T23:03:29.304Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-2c05f4b754a345f7b46dc70044b1c46c-2026-10-28T230329.304Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-talisman-symbols, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e884672fa8a94b2690e4f97dd485b2f0-2026-10-28T230343.409Z",
+          "appliedAt": "2026-10-28T23:03:43.409Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-e884672fa8a94b2690e4f97dd485b2f0-2026-10-28T230343.409Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-time-entrance, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-26b87f22907b4810a15a5528c5c3dd9a-2026-10-28T230357.256Z",
+          "appliedAt": "2026-10-28T23:03:57.256Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-26b87f22907b4810a15a5528c5c3dd9a-2026-10-28T230357.256Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-time-pirate, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2508350b31864b6b8e8a443748a34d1c-2026-10-28T230410.753Z",
+          "appliedAt": "2026-10-28T23:04:10.753Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-2508350b31864b6b8e8a443748a34d1c-2026-10-28T230410.753Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-time-busts, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d365470caffa411aaf76bb444529dd73-2026-10-28T230923.227Z",
+          "appliedAt": "2026-10-28T23:09:23.227Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-d365470caffa411aaf76bb444529dd73-2026-10-28T230923.227Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-ouragan-garden, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9f21b25a8b68479493aaae9ec5600618-2026-10-28T230937.520Z",
+          "appliedAt": "2026-10-28T23:09:37.520Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-9f21b25a8b68479493aaae9ec5600618-2026-10-28T230937.520Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-ouragan-seats, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-66d636efd92b453d84dbbf6e4b72ae44-2026-10-28T230951.586Z",
+          "appliedAt": "2026-10-28T23:09:51.586Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-66d636efd92b453d84dbbf6e4b72ae44-2026-10-28T230951.586Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-ouragan-corridor, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8d7ab662287944f289fcd0d428ed048b-2026-10-28T231009.080Z",
+          "appliedAt": "2026-10-28T23:10:09.080Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-8d7ab662287944f289fcd0d428ed048b-2026-10-28T231009.080Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cites-or-spheres, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6d83e2b7758145618d947e178b0babff-2026-10-28T231031.093Z",
+          "appliedAt": "2026-10-28T23:10:31.093Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-6d83e2b7758145618d947e178b0babff-2026-10-28T231031.093Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cites-or-temple, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-92f9e8ae9ec54ca1918825dde868bac2-2026-10-28T231054.178Z",
+          "appliedAt": "2026-10-28T23:10:54.178Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-92f9e8ae9ec54ca1918825dde868bac2-2026-10-28T231054.178Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cites-or-treasure, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ae5872cfb99143da9ae64f633ee9e421-2026-10-28T231113.508Z",
+          "appliedAt": "2026-10-28T23:11:13.508Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-ae5872cfb99143da9ae64f633ee9e421-2026-10-28T231113.508Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-dragon-overview, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-25f8170fd8eb4635bc282457a48b3acc-2026-10-28T231149.685Z",
+          "appliedAt": "2026-10-28T23:11:49.685Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-25f8170fd8eb4635bc282457a48b3acc-2026-10-28T231149.685Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-dragon-head, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4a529a50ec7e4cd3bdc09f238b62eb23-2026-10-28T231204.018Z",
+          "appliedAt": "2026-10-28T23:12:04.018Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-4a529a50ec7e4cd3bdc09f238b62eb23-2026-10-28T231204.018Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-dragon-glass, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6aedcb5773104fd3a43d6658296499f2-2026-10-28T231226.195Z",
+          "appliedAt": "2026-10-28T23:12:26.195Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-6aedcb5773104fd3a43d6658296499f2-2026-10-28T231226.195Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-gadget-dog, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-45d47c9168a643b2bbbf41677598f221-2026-10-28T231258.872Z",
+          "appliedAt": "2026-10-28T23:12:58.872Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-45d47c9168a643b2bbbf41677598f221-2026-10-28T231258.872Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-gadget-gears, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4377d07ca3064d47a5a1b035035b3407-2026-10-28T231326.350Z",
+          "appliedAt": "2026-10-28T23:13:26.350Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-4377d07ca3064d47a5a1b035035b3407-2026-10-28T231326.350Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-gadget-face, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d1577b99b8ed43a4bf289b63174a161e-2026-10-28T231340.742Z",
+          "appliedAt": "2026-10-28T23:13:40.742Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-d1577b99b8ed43a4bf289b63174a161e-2026-10-28T231340.742Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bdzap-yoko, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a3cca43c44f44ad5b3bcf3baeb589ba3-2026-10-28T231354.493Z",
+          "appliedAt": "2026-10-28T23:13:54.493Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-a3cca43c44f44ad5b3bcf3baeb589ba3-2026-10-28T231354.493Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bdzap-soldiers, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a42be33a3abc4bc49fd0a9a2234a64e1-2026-10-28T231416.593Z",
+          "appliedAt": "2026-10-28T23:14:16.593Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-a42be33a3abc4bc49fd0a9a2234a64e1-2026-10-28T231416.593Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-aladin-palace, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-671ec52fee7c491a8b46338a2f07fec2-2026-10-28T231444.983Z",
+          "appliedAt": "2026-10-28T23:14:44.983Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-671ec52fee7c491a8b46338a2f07fec2-2026-10-28T231444.983Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-aladin-cave, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a6413d77e908464fb94f71a9c30fe5ae-2026-10-28T231507.909Z",
+          "appliedAt": "2026-10-28T23:15:07.909Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-a6413d77e908464fb94f71a9c30fe5ae-2026-10-28T231507.909Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-barbie-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-89f03f913729430e8aa263141143f70c-2026-10-28T231530.004Z",
+          "appliedAt": "2026-10-28T23:15:30.004Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-89f03f913729430e8aa263141143f70c-2026-10-28T231530.004Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-barbie-counters, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d46835d698df4c308149058cc57fd83d-2026-10-28T231553.205Z",
+          "appliedAt": "2026-10-28T23:15:53.205Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-d46835d698df4c308149058cc57fd83d-2026-10-28T231553.205Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-barbie-organ, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-15413fe404c84040960dbf2da0d02fd8-2026-10-28T231638.485Z",
+          "appliedAt": "2026-10-28T23:16:38.485Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-15413fe404c84040960dbf2da0d02fd8-2026-10-28T231638.485Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-entrechats-street, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-00c11a8b84eb4772a36891dbf0916ef9-2026-10-28T231701.294Z",
+          "appliedAt": "2026-10-28T23:17:01.294Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-00c11a8b84eb4772a36891dbf0916ef9-2026-10-28T231701.294Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-entrechats-character, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-352efd2c4f3a4450b5667374b461a214-2026-10-28T231724.100Z",
+          "appliedAt": "2026-10-28T23:17:24.100Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-352efd2c4f3a4450b5667374b461a214-2026-10-28T231724.100Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-vecteur-room, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f15022467b31477881d28e47d952b64f-2026-10-28T231751.809Z",
+          "appliedAt": "2026-10-28T23:17:51.809Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-f15022467b31477881d28e47d952b64f-2026-10-28T231751.809Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-vecteur-flowers, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-da90d1ebf285447dbd1bf95bc95356f8-2026-10-28T231814.818Z",
+          "appliedAt": "2026-10-28T23:18:14.818Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-da90d1ebf285447dbd1bf95bc95356f8-2026-10-28T231814.818Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-vecteur-sign, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-717bccc5bf7843f0aefc40df0bc0a21c-2026-10-28T231838.319Z",
+          "appliedAt": "2026-10-28T23:18:38.319Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-717bccc5bf7843f0aefc40df0bc0a21c-2026-10-28T231838.319Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cartoon-sign, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ac23337dd9604b1e8035e5658a604e87-2026-10-28T231857.346Z",
+          "appliedAt": "2026-10-28T23:18:57.346Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-ac23337dd9604b1e8035e5658a604e87-2026-10-28T231857.346Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-roll-course, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7ba2edc0122547d0bcced2c5ed82699e-2026-10-28T231920.848Z",
+          "appliedAt": "2026-10-28T23:19:20.848Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-7ba2edc0122547d0bcced2c5ed82699e-2026-10-28T231920.848Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-roll-room, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-547f69750fd24f279501c60af445f140-2026-10-28T231941.965Z",
+          "appliedAt": "2026-10-28T23:19:41.965Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-547f69750fd24f279501c60af445f140-2026-10-28T231941.965Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-roll-grandstand, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-15641cd6f25849a1b95f1f0146ada7b9-2026-10-28T231958.283Z",
+          "appliedAt": "2026-10-28T23:19:58.283Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-15641cd6f25849a1b95f1f0146ada7b9-2026-10-28T231958.283Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bouquet-flower, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9e04062418364f49a279cfa483d38898-2026-10-28T232031.571Z",
+          "appliedAt": "2026-10-28T23:20:31.571Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-9e04062418364f49a279cfa483d38898-2026-10-28T232031.571Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bouquet-room, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9fa0c9ffa696403790e04de9e6c580d6-2026-10-28T232045.442Z",
+          "appliedAt": "2026-10-28T23:20:45.442Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-9fa0c9ffa696403790e04de9e6c580d6-2026-10-28T232045.442Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bouquet-caravan, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d689fb42b43a4fdcb68fb2eb3ea3fd3a-2026-10-28T232059.106Z",
+          "appliedAt": "2026-10-28T23:20:59.106Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-d689fb42b43a4fdcb68fb2eb3ea3fd3a-2026-10-28T232059.106Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bermudes-sonar, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0c47b8f1a8054974b1d239adc0238512-2026-10-28T232112.905Z",
+          "appliedAt": "2026-10-28T23:21:12.905Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-0c47b8f1a8054974b1d239adc0238512-2026-10-28T232112.905Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bermudes-panels, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-88a696e147da4dd1a12aaf8839f06d01-2026-10-28T232126.921Z",
+          "appliedAt": "2026-10-28T23:21:26.921Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-88a696e147da4dd1a12aaf8839f06d01-2026-10-28T232126.921Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-molle-net, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3951b46c92d24b4f92d49cd966379243-2026-10-28T232141.257Z",
+          "appliedAt": "2026-10-28T23:21:41.257Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-3951b46c92d24b4f92d49cd966379243-2026-10-28T232141.257Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-molle-boat, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ae210c41a1924468bbf50a20e2ebfa46-2026-10-28T232155.154Z",
+          "appliedAt": "2026-10-28T23:21:55.154Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-ae210c41a1924468bbf50a20e2ebfa46-2026-10-28T232155.154Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-transistor-room, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-dddcf00565b14244b9ee77e3663c7732-2026-10-28T232209.065Z",
+          "appliedAt": "2026-10-28T23:22:09.065Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-dddcf00565b14244b9ee77e3663c7732-2026-10-28T232209.065Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-transistor-components, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b9c2f1995ec54b378657510a7958bbd7-2026-10-28T232223.527Z",
+          "appliedAt": "2026-10-28T23:22:23.527Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-b9c2f1995ec54b378657510a7958bbd7-2026-10-28T232223.527Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-eldorado-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-89cd0b193a7148f1a7dfebfd03cec6b4-2026-10-28T232237.465Z",
+          "appliedAt": "2026-10-28T23:22:37.465Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-89cd0b193a7148f1a7dfebfd03cec6b4-2026-10-28T232237.465Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-apesantaria-base, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c3075ca05422418e8cff7e34f6eba2ae-2026-10-28T232253.865Z",
+          "appliedAt": "2026-10-28T23:22:53.865Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-c3075ca05422418e8cff7e34f6eba2ae-2026-10-28T232253.865Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-apesantaria-mission, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-166459573229401a8f1fa63c364206d2-2026-10-28T232307.854Z",
+          "appliedAt": "2026-10-28T23:23:07.854Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-166459573229401a8f1fa63c364206d2-2026-10-28T232307.854Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mirage-tables, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8e622dac4f004bb8bb987c5726984129-2026-10-28T232322.363Z",
+          "appliedAt": "2026-10-28T23:23:22.363Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-8e622dac4f004bb8bb987c5726984129-2026-10-28T232322.363Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-mirage-counter, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2a94f47209b144f9a649f6473fd12c81-2026-10-28T232341.266Z",
+          "appliedAt": "2026-10-28T23:23:41.266Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-2a94f47209b144f9a649f6473fd12c81-2026-10-28T232341.266Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-elgringo-glass, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-839462c3b4c34dd1b26fd3acbfeddcca-2026-10-28T232403.840Z",
+          "appliedAt": "2026-10-28T23:24:03.840Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-839462c3b4c34dd1b26fd3acbfeddcca-2026-10-28T232403.840Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-elgringo-face, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5147d1be28bf4e7186032b3f7ce9b0a9-2026-10-28T232417.561Z",
+          "appliedAt": "2026-10-28T23:24:17.561Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-5147d1be28bf4e7186032b3f7ce9b0a9-2026-10-28T232417.561Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-reconversion-open-building, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-81e33e9d98994ec58b45f91437dc1817-2026-10-28T232431.262Z",
+          "appliedAt": "2026-10-28T23:24:31.262Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-81e33e9d98994ec58b45f91437dc1817-2026-10-28T232431.262Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-demolition-interior, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4f6f21fd511c4992af831cf9ce0f2246-2026-10-28T232444.983Z",
+          "appliedAt": "2026-10-28T23:24:44.983Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-4f6f21fd511c4992af831cf9ce0f2246-2026-10-28T232444.983Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-gaite-facade-2011, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9ea05de2293b4a9ba3f9593ee71bddc9-2026-10-28T232458.733Z",
+          "appliedAt": "2026-10-28T23:24:58.733Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-9ea05de2293b4a9ba3f9593ee71bddc9-2026-10-28T232458.733Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-gaite-foyer-2011, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-4ae8201a-d16f-45b5-ac1e-cadeb0151a28",
+          "appliedAt": "2026-10-28T23:26:08.673Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-4ae8201a-d16f-45b5-ac1e-cadeb0151a28",
+          "auditEvidence": null,
+          "summary": "Huit jalons historiques du parc intégrés en huit langues, encore masqués ; sources et dates vérifiées, audit final restant."
+        },
+        {
+          "eventId": "apply-0ad741d6-76fa-485c-a54a-26eafd1c850d",
+          "appliedAt": "2026-10-28T23:28:40.458Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-0ad741d6-76fa-485c-a54a-26eafd1c850d",
+          "auditEvidence": null,
+          "summary": "Article historique développé en huit langues intégré avec trois blocs photographiques et dix sources ; encore masqué, audit final restant."
+        },
+        {
+          "eventId": "apply-52c79d79-99c6-4316-a58a-e959499deb7c",
+          "appliedAt": "2026-10-28T23:30:34.572Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-52c79d79-99c6-4316-a58a-e959499deb7c",
+          "auditEvidence": null,
+          "summary": "Visite patrimoniale de Talisman du 6 mars 2004 intégrée en huit langues avec source primaire ; étape 8 terminée, audit final restant."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

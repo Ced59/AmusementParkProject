@@ -204,7 +204,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc Eana — Gruchet-le-Valasse — 2008-2012
 - [ ] Parc océanique Cousteau — Paris — 1989-1992
 - [ ] Pira Park — Nice — fermeture à dater
-- [ ] Planète magique — Paris — 1989-1991 — fiche `305f6144-8dc2-4b24-a23d-d44749fe7d83` créée et masquée le 28 octobre 2026 ; une zone et 45 parkItems intégrés ; parc, zone et 45 équipements décrits dans les huit langues. Médias, références, histoire et audit en cours ; aucune clôture ni publication Facebook. [Inventaire et réserves](world-integration/evidence/france-historical-20261022/planete-magique-inventory.json).
+- [ ] Planète magique — Paris — 1989-1991 — fiche `305f6144-8dc2-4b24-a23d-d44749fe7d83` masquée ; une zone, 45 équipements, 60 médias, 9 jalons et un article historique en huit langues intégrés. Audit éditorial du 28 octobre passé ; contrôle de publication après mise en visibilité des dépendances en cours, aucune publication Facebook. [Audit et lacunes](world-integration/evidence/france-historical-20261022/planete-magique-content-audit.json).
 - [ ] Playmobil FunPark Fresnes — Fresnes — 1999-2022
 - [ ] Tivoli — Paris — 1730-1842
 - [ ] Village de la Droséra - Forez Miniature — Jeansagnière — 1992-2009

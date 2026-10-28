@@ -1,0 +1,486 @@
+{
+  "checkedAtUtc": "2026-10-28T23:31:27.842042+00:00",
+  "coverage": {
+    "checkedAtUtc": "2026-10-28T23:26:23.805569+00:00",
+    "totalImages": 60,
+    "privateImages": 60,
+    "parkLogo": 1,
+    "parkImages": 6,
+    "parkImagesContext": "Two historical park interior ensembles, two actual demolition/reconstruction views, two retained-building views from the 2011 cultural conversion. These are not six operating-park views.",
+    "itemsWithImages": 22,
+    "itemsTotal": 45,
+    "attractionsWithImages": 16,
+    "attractionsTotal": 21,
+    "majorWithThreeOrMore": 8,
+    "majorTotal": 18
+  },
+  "sourceFamilies": {
+    "officialArchive": "Archived historical park site, including each relevant life-space page, building floor plans, photo JavaScript and source files. Three representative full-size cinema/theatre/salon images retried from archived exact source URLs on 28 October: all 404.",
+    "specialist": "Dennis Cooper original gallery (70 downloadable images), Retro World original files, Paul Malairan Apesantaria investigation and first-person recollection, Parcs Passion January/March 2004 visit reports and images.",
+    "pressHeritage": "Deyriès exhibition catalogue; Gaîté Lyrique official building history; Batiactu March 2011 architect/photographer credits and actual works images.",
+    "targetedSearch": "Additional 28 October web queries for Planet Ciné, Belle Eugénie, 1989 plan/brochure return existing galleries/Wikipedia and Palliam. Palliam direct image source is blocked by proxy 403, no bypass or uninspected import."
+  },
+  "ownerGaps": [
+    {
+      "key": "apesantaria",
+      "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+      "name": "Apesantaria",
+      "images": 2,
+      "major": true,
+      "reason": "One distinct installation photo plus one photographed mission panel. Panel is useful documentary material but not a second view of visitors operating the attraction. Shared park overview remains owned by park, no duplicate import.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "bd-zap",
+      "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+      "name": "BD Zap",
+      "images": 2,
+      "major": true,
+      "reason": "Two actual scene photos accepted; purported third gallery entry is a website screenshot and rejected.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "aladin",
+      "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+      "name": "Aladin",
+      "images": 2,
+      "major": true,
+      "reason": "Two distinct interior scenes; no third faithful distinct source established.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "transistor",
+      "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+      "name": "Transistor",
+      "images": 2,
+      "major": true,
+      "reason": "Two complementary interior views. Archived disco page supplies description but no additional downloadable distinct original.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "toboggan",
+      "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+      "name": "Le Toboggan",
+      "images": 0,
+      "major": false,
+      "reason": "Gallery contains one missing original (404) and ambiguous tube/duct images. Cannot confidently distinguish play slide from building ventilation; rejected instead of forced attribution.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "planete-molle",
+      "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+      "name": "Planète Molle",
+      "images": 2,
+      "major": true,
+      "reason": "Two complementary play-area views; no third distinct reusable image established.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "arbre-parfum",
+      "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+      "name": "L’Arbre à parfum",
+      "images": 0,
+      "major": false,
+      "reason": "Two gallery candidates are a golden female automaton and an insufficiently identified artificial tree. Source mislabelling elsewhere prevents confident assignment.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "nintendo",
+      "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+      "name": "Espace Nintendo",
+      "images": 0,
+      "major": false,
+      "reason": "Gallery section shows musical automata/organ/Medusa rather than identifiable NES play stations. These are rejected; shop and game remain separate owners.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "jackpot",
+      "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+      "name": "Jackpot",
+      "images": 0,
+      "major": false,
+      "reason": "Named in historical inventory but no reliably attributable photograph located.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "musee-espace",
+      "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+      "name": "Musée de l’espace",
+      "images": 0,
+      "major": false,
+      "reason": "Historical name/location supported, but no reliable photograph of the named museum identified.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "croq-planete",
+      "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+      "name": "Croq’ Planète",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "el-gringo",
+      "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+      "name": "El Gringo",
+      "images": 2,
+      "major": true,
+      "reason": "Two original restaurant scenes in Retro World; remaining candidate views do not add a verified third scene.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "mirage-electrons",
+      "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+      "name": "Mirage d’électrons",
+      "images": 2,
+      "major": true,
+      "reason": "Two original restaurant views; no third distinct downloadable image established.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "belle-eugenie",
+      "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+      "name": "La Belle Eugénie",
+      "images": 0,
+      "major": true,
+      "reason": "Actual historic restaurant imagery unavailable; archived salon photo URL returns 404. 2011 foyer image used honestly for cultural conversion only, not represented as an operating-era restaurant photo.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "planet-cine",
+      "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+      "name": "Planet Ciné",
+      "images": 0,
+      "major": true,
+      "reason": "Archived dedicated cinema page identifies photographs, but full-size original probe returns 404; unrelated Cartoon Center sign is not used as a cinema-interior substitute.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "orphee-theatre",
+      "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+      "name": "Orphée Théâtre",
+      "images": 0,
+      "major": true,
+      "reason": "Dedicated archive describes theatre and programme, but original photographic probe returns 404. No current performance space substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "studio-tv",
+      "id": "dab88ec9-a998-4850-a908-f5c257121758",
+      "name": "Studio TV",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "boutique-principale",
+      "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+      "name": "Boutique principale",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "boutique-partenaires",
+      "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+      "name": "Boutique partenaires",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "comete",
+      "id": "a613df39-66f9-424b-b6c7-db925094045a",
+      "name": "La Comète",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "entree-papin",
+      "id": "4a39d1bd-6380-4280-9e78-e4b2fceb011c",
+      "name": "Entrée de la rue Papin",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "wc-iles",
+      "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+      "name": "Toilettes des îles",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "wc-stars",
+      "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+      "name": "WC des stars",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "wc-scooter",
+      "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+      "name": "WC Scooter",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "wc-telephone",
+      "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+      "name": "WC Téléphone",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "accueil-groupes",
+      "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+      "name": "Accueil groupes",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "point-rencontre",
+      "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+      "name": "Point rencontre",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "vestiaire",
+      "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+      "name": "Vestiaire groupes et individuel",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "point-information",
+      "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+      "name": "Point d’information",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    },
+    {
+      "key": "espace-bleu",
+      "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+      "name": "Espace bleu",
+      "images": 0,
+      "major": false,
+      "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+      "sourceFamiliesChecked": [
+        "officialArchive",
+        "specialist",
+        "pressHeritage",
+        "targetedSearch"
+      ]
+    }
+  ],
+  "generalParkCoverageGap": "Only two accepted old-park ensemble views. Two actual works and two 2011 preserved-building views bring historical context, not five contemporaneous operating-park views. Do not count logo, tight attraction details or near-duplicates as missing general views.",
+  "officialMaps": {
+    "importedYears": [],
+    "searched": "Historical official Batiment archive includes December 1989 floor-plan references, but image endpoints unavailable. Gallery plan too blurred/undated for annual official-map import. The Free.fr Flash brochure uses euros and is a later reconstruction, not an original 1989 annual edition; rejected. No current park map applies to this demolished closed park.",
+    "searchedOperatingYears": [
+      "1989",
+      "1990",
+      "1991"
+    ],
+    "noYearInvented": true
+  },
+  "references": {
+    "founder": {
+      "id": "1511cc92-7e2a-474a-b251-ec5b96bcb1fc",
+      "name": "Jean Chalopin",
+      "portraitLocated": true,
+      "source": "https://commons.wikimedia.org/wiki/File:Jean_Chalopin.jpg",
+      "author": "Nordine Zemrak",
+      "license": "CC BY-SA 4.0",
+      "bytes": 93461,
+      "visuallyInspected": true,
+      "imported": false,
+      "gap": "Official ImportPhoto client validates only PARK/PARK_ITEM/STANDALONE_ATTRACTION owners, bothcloud copy andrepo currentclientchecked. No reference-owner upload routeused, no improvised endpointorremoteJSONfallback. Portrait preserved locally pendingofficialsupportedflow."
+    },
+    "operator": {
+      "id": "504a5b5e-a0f3-481f-aa1d-48ccd273984c",
+      "name": "SEGLhistorique338070915",
+      "logoLocated": false,
+      "gap": "No historicalSEGLlogo established afterarchivedsite/perioddocs/legalregistry/websearch. ModernSEGL2016andGaiteculturebrand belongdifferentoperators andcannot be substituted."
+    }
+  },
+  "gps": {
+    "located": 1,
+    "total": 45,
+    "locatedKey": "entree-papin",
+    "gap": "Demolished interiors stacked on multiple floors. Historical descriptions establish vertical levels, not provable exact horizontal coordinates; no invented points for 44 interiors."
+  },
+  "hoursAndPricing": {
+    "applicable": false,
+    "reason": "Park permanently closed since 1991 and installations removed. No current calendar, tickets or named future events."
+  }
+}
