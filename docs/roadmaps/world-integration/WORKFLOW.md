@@ -24,6 +24,12 @@ Lorsqu’elles sont autorisées, consigner séparément la publication du site e
 
 Consulter aussi [STANDALONE-AUDIT.md](STANDALONE-AUDIT.md). Le compteur des candidates sans fiche ne couvre pas à lui seul le travail standalone : examiner les pistes présentes dans des fiches Park et les dossiers sans ID dont l’identité ou le rattachement reste à résoudre. Ces compteurs sont des sous-ensembles, pas de nouvelles lignes à additionner. Conserver les références `standaloneAssessment.attractions` ; une installation constructeur peut être un parkItem, une modernisation ou un alias. Réserver le dossier existant avant de créer une nouvelle identité.
 
+## Photographies des standalone
+
+Une nouvelle fiche standalone destinée à la publication doit comporter au moins une photographie qui montre réellement cette attraction. Vérifier la source primaire, la licence ou l’autorisation de réutilisation, l’auteur et la date avant `ImportPhoto` ; renseigner le lien source, les crédits, les textes alternatifs et les légendes dans les huit langues. Une photo d’un autre équipement du même site ou une image générique ne comble pas ce besoin. Si aucune photo utilisable n’est établie, conserver la fiche en travail dans le backlog, avec la recherche menée et la prochaine action, puis reprendre la publication après résolution.
+
+Les fiches déjà publiques sans photo restent visibles et prioritaires pour le rattrapage. Le [relevé du 28 octobre 2026](evidence/standalone-photo-coverage-20261028/SOURCES.md) distingue les photos propres aux attractions du logo générique, avec le détail par entrée. Un import photographique est une intégration de données datée par son reçu `ImportPhoto` ; la publication du média est consignée à part et ne remplace pas cette date.
+
 ## Découverte de nouvelles fiches
 
 La [liste des créations candidates](CREATIONS-STANDALONE.md) isole les attractions sans correspondance trouvée, avec une section alpine / mountain coasters. Poursuivre la découverte hors du catalogue : annuaires spécialisés, références constructeurs, exploitants et tourisme local. Comparer les noms, alias, adresses, coordonnées et anciennes identités aux Park et StandaloneAttraction publics et masqués ; élargir la recherche au-delà du pays en cas de classement erroné.

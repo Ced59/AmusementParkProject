@@ -20080,7 +20080,7 @@
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T13:19:29.090Z",
+      "lastDataIntegrationAt": "2026-10-28T17:13:52.418Z",
       "integrationHistory": [
         {
           "eventId": "apply-b147fc52-029c-45d9-b3b6-4b59faddd655",
@@ -20141,9 +20141,19 @@
           "evidence": "PARK_DATA_EDITOR:apply:cae18897-e7f2-4aa1-920b-10fc114401d6",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/flyover-america-audit.json",
           "summary": "Audit final 84/100 sans blocage ; site et Facebook publiés."
+        },
+        {
+          "eventId": "import-photo-d31e892b00ff4c788eb535400af9dd9d",
+          "appliedAt": "2026-10-28T17:13:52.418Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:d31e892b00ff4c788eb535400af9dd9d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261028/photo-additions.json",
+          "summary": "Photographie spécifique de FlyOver America importée, créditée et localisée en huit langues."
         }
       ],
-      "nextAction": "Conserver la ligne ; chercher une photo réutilisable, préciser la position intérieure, clarifier les horaires du samedi et renouveler les tarifs avec taxes.",
+      "nextAction": "Conserver la ligne ; préciser la position intérieure, clarifier les horaires du samedi et renouveler les tarifs avec taxes.",
       "sources": [
         {
           "label": "Brogent — projet constructeur",
@@ -20194,6 +20204,11 @@
           "label": "Source vérifiée — intégration standalone",
           "url": "https://amusement-parks.fun/fr/attraction/6256ae91-3f69-4198-b8e0-8170e21fe6e7/flyover-america",
           "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Jeremy Thompson — photographie FlyOver America, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/28450240390/",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
@@ -20208,7 +20223,7 @@
             "sourceVenueName": "FlyOver America"
           }
         ],
-        "rationale": "Opérateur et billet propres dans le Mall of America ; l’export du parc Nickelodeon Universe voisin ne contient pas FlyOver America."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration import-photo-d31e892b00ff4c788eb535400af9dd9d ; conserver les références de découverte."
       },
       "publication": {
         "site": {
@@ -20231,6 +20246,15 @@
         "score": 84,
         "publicationBlockers": [],
         "gapCount": 4
+      },
+      "mediaEvidence": {
+        "representativePhotoId": "d31e892b00ff4c788eb535400af9dd9d",
+        "photoImportedAtUtc": "2026-10-28T17:13:52.418Z",
+        "photoPublishedAtUtc": "2026-10-28T17:14:37.6602284Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:d6566bc7-0e8f-49c8-a6f8-682ebcdd36a7",
+        "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/28450240390/",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261028/photo-additions.json"
       }
     },
     {
@@ -70205,7 +70229,7 @@
         "Wings over Washington"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T13:06:04.477Z",
+      "lastDataIntegrationAt": "2026-10-28T17:35:53.263Z",
       "integrationHistory": [
         {
           "eventId": "apply-4e91ebc7-73cd-4b68-8818-fb53350b7baf",
@@ -70276,9 +70300,19 @@
           "evidence": "PARK_DATA_EDITOR:apply:29c60263-c2e7-4dc8-8693-dd51f6444035",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261023/wings-over-washington-audit.json",
           "summary": "Audit final 89/100 sans blocage ; site et Facebook publiés."
+        },
+        {
+          "eventId": "import-photo-5a44892b948a4e768a206c492bd04612",
+          "appliedAt": "2026-10-28T17:35:53.263Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+          "evidence": "PARK_DATA_EDITOR:ImportPhoto:5a44892b948a4e768a206c492bd04612",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261028/photo-additions.json",
+          "summary": "Photographie de l’enseigne de Wings Over Washington importée, créditée et localisée en huit langues."
         }
       ],
-      "nextAction": "Conserver la ligne ; clarifier l’heure du dernier embarquement, les âges et frais des billets, la validité contradictoire de la FAQ et obtenir une photo réutilisable.",
+      "nextAction": "Conserver la ligne ; clarifier l’heure du dernier embarquement, les âges et frais des billets ainsi que la validité contradictoire de la FAQ.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
