@@ -400,6 +400,28 @@ if [ "${SHARED_INFRASTRUCTURE_MAINTENANCE:-none}" = "mongodb" ] \
   errors=$((errors + 1))
 fi
 
+backup_interval_hours="${BACKUP_INTERVAL_HOURS:-24}"
+backup_retention_count="${BACKUP_RETENTION_COUNT:-14}"
+backup_max_total_mib="${BACKUP_MAX_TOTAL_MIB:-8192}"
+backup_min_retained="${BACKUP_MIN_RETAINED:-3}"
+backup_limits_valid=true
+for setting in backup_interval_hours backup_retention_count backup_max_total_mib backup_min_retained; do
+  if [[ ! "${!setting}" =~ ^(0|[1-9][0-9]{0,5})$ ]]; then
+    echo "ERROR: Invalid backup setting: ${setting}." >&2
+    errors=$((errors + 1))
+    backup_limits_valid=false
+  fi
+done
+if [ "${backup_limits_valid}" = true ] \
+  && (( backup_min_retained < 1 || backup_retention_count < backup_min_retained || backup_max_total_mib < 1 )); then
+  echo 'ERROR: Backup limits require count >= minimum >= 1 and a positive size budget.' >&2
+  errors=$((errors + 1))
+fi
+case "${BACKUP_SCHEDULE_ENABLED:-true}" in
+  true|false) ;;
+  *) echo 'ERROR: BACKUP_SCHEDULE_ENABLED must be true or false.' >&2; errors=$((errors + 1)) ;;
+esac
+
 if [ "${errors}" -gt 0 ]; then
   echo "Production environment validation failed with ${errors} error(s) and ${warnings} warning(s)." >&2
   exit 1
