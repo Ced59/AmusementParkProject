@@ -166,6 +166,7 @@ bash "${directory}/scripts/configure-backup-timer.sh" > "${directory}/output"
 grep -qx 'OnCalendar=hourly' "${TEST_UNIT_DIR}/amusementpark-mongodb-backup.timer" || fail 'timer cadence'
 grep -qx 'Persistent=true' "${TEST_UNIT_DIR}/amusementpark-mongodb-backup.timer" || fail 'missed timers not recovered'
 grep -Fqx "ExecStart=/bin/bash \"${directory}/scripts/backup-mongo.sh\"" "${TEST_UNIT_DIR}/amusementpark-mongodb-backup.service" || fail 'scheduled entrypoint'
+grep -Fqx "WorkingDirectory=${directory}" "${TEST_UNIT_DIR}/amusementpark-mongodb-backup.service" || fail 'systemd working-directory syntax'
 grep -qx 'enable --now amusementpark-mongodb-backup.timer' "${TEST_SYSTEMCTL_LOG}" || fail 'timer not activated'
 echo BACKUP_SCHEDULE_ENABLED=false >> "${directory}/.env"
 bash "${directory}/scripts/configure-backup-timer.sh"

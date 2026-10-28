@@ -37,7 +37,7 @@ Requires=docker.service
 
 [Service]
 Type=oneshot
-WorkingDirectory="${directory}"
+WorkingDirectory=${directory}
 ExecStart=/bin/bash "${directory}/scripts/backup-mongo.sh"
 TimeoutStartSec=30min
 UMask=0077
@@ -58,6 +58,8 @@ Unit=${service}
 [Install]
 WantedBy=timers.target
 EOF
+# Validate with systemd's native parser before replacing the installed units.
+systemd-analyze verify "${temporary}/${service}" "${temporary}/${timer}"
 install -m 0644 "${temporary}/${service}" "/etc/systemd/system/${service}"
 install -m 0644 "${temporary}/${timer}" "/etc/systemd/system/${timer}"
 systemctl daemon-reload
