@@ -23926,25 +23926,80 @@
     {
       "entryId": "US-park-1ea43ab2-e917-4420-bef8-386c3add4280",
       "name": "Georgia Mountain Coaster",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "1ea43ab2-e917-4420-bef8-386c3add4280",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "8409 S Main Street, Helen, Georgia",
+      "siteId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+      "legacySiteIds": [
+        "1ea43ab2-e917-4420-bef8-386c3add4280"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T22:33:30.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitation active : horaires, prix et consignes publiés par l’exploitant en octobre 2026.",
+      "identityConfidence": "Site officiel à la même adresse que la fiche Park masquée mono-attraction ; recherche officielle Standalone sans doublon, puis migration du Park et de son ParkItem.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Georgia Mountain Coaster — Helen"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T22:29:56.109Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-eb253f32-0be2-464f-aaec-9d0b5a4e623c",
+          "appliedAt": "2026-10-28T22:24:05.775Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:apply:eb253f32-0be2-464f-aaec-9d0b5a4e623c",
+          "auditEvidence": null,
+          "summary": "Migration contrôlée de la fiche Park masquée mono-attraction, données Wiegand et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-a455eddb-90d1-4750-b4e1-da1ce4f4334a",
+          "appliedAt": "2026-10-28T22:25:22.997Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:apply:a455eddb-90d1-4750-b4e1-da1ce4f4334a",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires et trois tarifs de l’exploitant intégrés"
+        },
+        {
+          "eventId": "image-e83c561d8824494499adfc8f9fce0597",
+          "appliedAt": "2026-10-28T22:26:42.566Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:image:e83c561d8824494499adfc8f9fce0597",
+          "auditEvidence": null,
+          "summary": "Photographie propre du lieu importée depuis Commons avec auteur, licence CC BY 4.0 et légendes en huit langues"
+        },
+        {
+          "eventId": "image-metadata-e83c561d8824494499adfc8f9fce0597-20261028",
+          "appliedAt": "2026-10-28T22:28:01.941Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:image-metadata:e83c561d8824494499adfc8f9fce0597",
+          "auditEvidence": null,
+          "summary": "Légendes de la photographie relues et distinguées des textes alternatifs"
+        },
+        {
+          "eventId": "apply-f52d3f37-0bad-4054-97d7-18523afb6490",
+          "appliedAt": "2026-10-28T22:29:56.109Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:apply:f52d3f37-0bad-4054-97d7-18523afb6490",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-georgia-mountain-coaster-20261028/audit.json",
+          "summary": "Descriptions en huit langues révisées après audit éditorial ; score projeté 94/100 sans bloqueur"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Rechercher une photographie réutilisable montrant le parcours lui-même ; revérifier les horaires et les tarifs à la prochaine saison. Ne pas créer une seconde fiche ni republier Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -23965,26 +24020,69 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14981.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Georgia Mountain Coaster — site officiel, tarifs, horaires, adresse et conditions",
+          "url": "https://www.georgiamountaincoaster.com/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "RCDB — Georgia Mountain Coaster, constructeur et longueur",
+          "url": "https://rcdb.com/14981.htm",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Georgia Mountain Coaster, Helen, photo de Mjrmtg",
+          "url": "https://commons.wikimedia.org/wiki/File:Georgia_Mountain_Coaster,_Helen.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "CC BY 4.0 — conditions de réutilisation",
+          "url": "https://creativecommons.org/licenses/by/4.0/",
+          "accessedAt": "2026-10-28"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "Georgia Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/14981.htm",
-            "family": "Mountain coaster",
+            "source": "Georgia Mountain Coaster — exploitant",
+            "url": "https://www.georgiamountaincoaster.com/",
+            "family": "Alpine coaster",
             "sourceVenueName": "Georgia Mountain Coaster",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Helen , Georgia",
-            "sourceOpenedYear": "2019"
+            "sourceLocality": "Helen, Georgia",
+            "matchingMethod": "Migration de la fiche Park masquée et de son unique ParkItem vers StandaloneAttraction"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Attraction autonome avec sa billetterie et son site propres ; migration contrôlée de la fiche Park masquée, sans doublon. Une photo propre et créditée ; audit public 94/100 sans bloqueur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6c3c5eae-402c-498d-9749-b96595c49f4a/georgia-mountain-coaster",
+          "publishedAtUtc": "2026-10-28T22:31:59.806Z",
+          "verifiedAtUtc": "2026-10-28T22:33:30.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:b859757d-619b-4c11-a66d-e1bb1767c7c7"
+        },
+        "facebook": {
+          "id": "bba073a0afc9432ebdcefa31a9d54f47",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T22:33:04.871Z",
+          "externalPostId": "1285475681307050_122125097919424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125097919424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:bba073a0afc9432ebdcefa31a9d54f47"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-georgia-mountain-coaster-20261028/audit.json",
+        "score": 94,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
