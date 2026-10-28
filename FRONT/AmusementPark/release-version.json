@@ -1,6 +1,20 @@
 {
-  "version": "6.0.32",
+  "version": "6.0.33",
   "history": [
+    {
+      "version": "6.0.33",
+      "releasedAt": "2026-10-28",
+      "labels": {
+        "fr": "Fiabilité de la maintenance améliorée",
+        "en": "Improved maintenance reliability",
+        "de": "Zuverlässigkeit der Wartung verbessert",
+        "nl": "Betrouwbaarheid van het onderhoud verbeterd",
+        "it": "Affidabilità della manutenzione migliorata",
+        "es": "Fiabilidad del mantenimiento mejorada",
+        "pl": "Większa niezawodność konserwacji",
+        "pt": "Fiabilidade da manutenção melhorada"
+      }
+    },
     {
       "version": "6.0.32",
       "releasedAt": "2026-10-28",
