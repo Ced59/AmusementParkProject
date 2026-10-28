@@ -37,18 +37,47 @@
 
     <div class="standalone-body">
       <main class="standalone-main">
-        <div class="standalone-main__media" *ngIf="heroImage() as image">
-          <app-image-display
-            [imageId]="image.id"
-            [alt]="current.name"
-            loading="eager"
-            fetchPriority="high"
-            sizes="(max-width: 480px) calc(100vw - 30px), (max-width: 680px) calc(100vw - 32px), (max-width: 959px) calc(100vw - 50px), (max-width: 1208px) calc(64.444444vw - 49.688889px), 729px"
-            imgClass="standalone-hero__image"
-            placeholderClass="standalone-hero__placeholder"
-            placeholderKind="photo">
-          </app-image-display>
-        </div>
+        <section class="standalone-main__gallery" *ngIf="selectedPhoto() as image" [attr.aria-label]="t('photos')">
+          <span class="standalone-kicker">{{ t('photos') }} · {{ photos().length }}</span>
+          <div class="standalone-main__media">
+            <app-image-display
+              [imageId]="image.id"
+              [alt]="photoAlt(image)"
+              loading="eager"
+              fetchPriority="high"
+              sizes="(max-width: 480px) calc(100vw - 30px), (max-width: 680px) calc(100vw - 32px), (max-width: 959px) calc(100vw - 50px), (max-width: 1208px) calc(64.444444vw - 49.688889px), 729px"
+              imgClass="standalone-hero__image"
+              placeholderClass="standalone-hero__placeholder"
+              placeholderKind="photo">
+            </app-image-display>
+          </div>
+          <div class="standalone-main__photo-details" *ngIf="photoCaption(image) || photoCredit(image) || photoSourceUrl(image)">
+            <p *ngIf="photoCaption(image)">{{ photoCaption(image) }}</p>
+            <small *ngIf="photoCredit(image)">{{ t('photoCredit') }} : {{ photoCredit(image) }}</small>
+            <a *ngIf="photoSourceUrl(image) as sourceUrl" [href]="sourceUrl" target="_blank" rel="noopener noreferrer">{{ t('photoSource') }}</a>
+          </div>
+          <div class="standalone-main__thumbnails" *ngIf="photos().length > 1" role="group" [attr.aria-label]="t('photos')">
+            <button
+              type="button"
+              class="standalone-main__thumbnail"
+              *ngFor="let photo of photos()"
+              [class.standalone-main__thumbnail--selected]="photo.id === image.id"
+              [attr.aria-label]="photoAlt(photo)"
+              [attr.aria-pressed]="photo.id === image.id"
+              (click)="selectPhoto(photo)">
+              <app-image-display
+                [imageId]="photo.id"
+                [alt]="''"
+                loading="lazy"
+                [srcWidth]="240"
+                sizes="120px"
+                imgClass="standalone-gallery__thumbnail-image"
+                placeholderClass="standalone-gallery__thumbnail-placeholder"
+                placeholderKind="photo">
+              </app-image-display>
+            </button>
+          </div>
+        </section>
         <section class="standalone-panel" *ngIf="description(); else noDescription">
           <span class="standalone-kicker">{{ t('description') }}</span>
           <div class="standalone-rich-text app-editorial-copy" [innerHTML]="description() | safeRichHtml"></div>

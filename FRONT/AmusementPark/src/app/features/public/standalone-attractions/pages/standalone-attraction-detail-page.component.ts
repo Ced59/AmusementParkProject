@@ -55,6 +55,9 @@ interface StandaloneAttractionPublicCopy {
   location: string;
   details: string;
   description: string;
+  photos: string;
+  photoCredit: string;
+  photoSource: string;
   country: string;
   city: string;
   address: string;
@@ -83,6 +86,9 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Localisation',
     details: 'Détails',
     description: 'Description',
+    photos: 'Photos',
+    photoCredit: 'Crédit photo',
+    photoSource: 'Source de la photo',
     country: 'Pays',
     city: 'Ville',
     address: 'Adresse',
@@ -109,6 +115,9 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Location',
     details: 'Details',
     description: 'Description',
+    photos: 'Photos',
+    photoCredit: 'Photo credit',
+    photoSource: 'Photo source',
     country: 'Country',
     city: 'City',
     address: 'Address',
@@ -135,6 +144,9 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Ubicación',
     details: 'Detalles',
     description: 'Descripción',
+    photos: 'Fotos',
+    photoCredit: 'Crédito de la foto',
+    photoSource: 'Fuente de la foto',
     country: 'País',
     city: 'Ciudad',
     address: 'Dirección',
@@ -161,6 +173,9 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Standort',
     details: 'Details',
     description: 'Beschreibung',
+    photos: 'Fotos',
+    photoCredit: 'Bildnachweis',
+    photoSource: 'Bildquelle',
     country: 'Land',
     city: 'Stadt',
     address: 'Adresse',
@@ -187,6 +202,9 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Posizione',
     details: 'Dettagli',
     description: 'Descrizione',
+    photos: 'Foto',
+    photoCredit: 'Credito fotografico',
+    photoSource: 'Fonte della foto',
     country: 'Paese',
     city: 'Città',
     address: 'Indirizzo',
@@ -213,6 +231,9 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Locatie',
     details: 'Details',
     description: 'Beschrijving',
+    photos: 'Foto’s',
+    photoCredit: 'Fotocredit',
+    photoSource: 'Fotobron',
     country: 'Land',
     city: 'Stad',
     address: 'Adres',
@@ -239,6 +260,9 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Lokalizacja',
     details: 'Szczegóły',
     description: 'Opis',
+    photos: 'Zdjęcia',
+    photoCredit: 'Autor zdjęcia',
+    photoSource: 'Źródło zdjęcia',
     country: 'Kraj',
     city: 'Miasto',
     address: 'Adres',
@@ -265,6 +289,9 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     location: 'Localização',
     details: 'Detalhes',
     description: 'Descrição',
+    photos: 'Fotografias',
+    photoCredit: 'Crédito da fotografia',
+    photoSource: 'Fonte da fotografia',
     country: 'País',
     city: 'Cidade',
     address: 'Endereço',
@@ -301,6 +328,7 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
   protected readonly state = signal<ScreenState<StandaloneAttraction, string>>({ kind: 'loading' });
   protected readonly attraction = signal<StandaloneAttraction | null>(null);
   protected readonly photos = signal<ImageDto[]>([]);
+  protected readonly selectedPhotoId = signal<string | null>(null);
   protected readonly manufacturerName = this.referenceFacade.manufacturerName;
   protected readonly openingHours = this.visitorInformationFacade.openingHours;
   protected readonly openingHoursState = this.visitorInformationFacade.openingHoursState;
@@ -315,7 +343,12 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
       ? buildAccessConditions(current, this.currentLanguage(), this.measurementPreferenceService.preferredSystem(), this.measurementConversionService)
       : [];
   });
-  protected readonly heroImage = computed<ImageDto | null>(() => this.photos()[0] ?? null);
+  protected readonly heroImage = computed<ImageDto | null>(() =>
+    this.photos().find((photo: ImageDto): boolean => photo.isCurrent) ?? this.photos()[0] ?? null
+  );
+  protected readonly selectedPhoto = computed<ImageDto | null>(() =>
+    this.photos().find((photo: ImageDto): boolean => photo.id === this.selectedPhotoId()) ?? this.heroImage()
+  );
   protected readonly hasCoordinates = computed<boolean>(() => {
     const current: StandaloneAttraction | null = this.attraction();
     return Number.isFinite(current?.latitude) && Number.isFinite(current?.longitude);
@@ -411,6 +444,27 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
     return PUBLIC_COPY[language][key];
   }
 
+  protected selectPhoto(photo: ImageDto): void {
+    this.selectedPhotoId.set(photo.id);
+  }
+
+  protected photoAlt(photo: ImageDto): string {
+    return resolveLocalizedText(photo.altTexts, this.currentLanguage(), this.attraction()?.name ?? '');
+  }
+
+  protected photoCaption(photo: ImageDto): string {
+    return resolveLocalizedText(photo.captions, this.currentLanguage(), '');
+  }
+
+  protected photoCredit(photo: ImageDto): string {
+    return resolveLocalizedText(photo.credits, this.currentLanguage(), '');
+  }
+
+  protected photoSourceUrl(photo: ImageDto): string | null {
+    const sourceUrl: string = photo.sourceUrl?.trim() ?? '';
+    return /^https?:\/\//i.test(sourceUrl) ? sourceUrl : null;
+  }
+
   protected getLocationRows(current: StandaloneAttraction): Array<{ label: string; value: string }> {
     return [
       { label: this.t('country'), value: this.countryDisplayService.resolveLocalizedCountryName(current.countryCode, this.currentLanguage()) ?? '' },
@@ -465,13 +519,15 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
 
   private load(id: string): void {
     this.state.set({ kind: 'loading', data: this.attraction() ?? undefined });
+    this.photos.set([]);
+    this.selectedPhotoId.set(null);
 
     this.apiService.getById(id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (attraction: StandaloneAttraction) => {
         this.attraction.set(attraction);
         this.state.set({ kind: 'ready', data: attraction });
         this.applySeo();
-        this.loadHeroImage(attraction);
+        this.loadPhotos(attraction);
         this.referenceFacade.loadManufacturer(attraction);
         this.visitorInformationFacade.load(attraction.id ?? id);
       },
@@ -482,7 +538,7 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
     });
   }
 
-  private loadHeroImage(attraction: StandaloneAttraction): void {
+  private loadPhotos(attraction: StandaloneAttraction): void {
     if (!attraction.id) {
       return;
     }
@@ -492,15 +548,19 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
       attraction.id,
       ImageCategory.STANDALONE_ATTRACTION,
       1,
-      1,
+      50,
       anonymousHttpOptions()
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (photos: ImageDto[]) => {
-        this.photos.set(photos);
-        this.applySeo();
+        if (this.attraction()?.id === attraction.id) {
+          this.photos.set(photos.filter((photo: ImageDto): boolean => photo.isPublished));
+          this.applySeo();
+        }
       },
       error: () => {
-        this.photos.set([]);
+        if (this.attraction()?.id === attraction.id) {
+          this.photos.set([]);
+        }
       }
     });
   }

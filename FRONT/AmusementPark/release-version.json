@@ -1,6 +1,20 @@
 {
-  "version": "6.0.33",
+  "version": "6.0.34",
   "history": [
+    {
+      "version": "6.0.34",
+      "releasedAt": "2026-10-28",
+      "labels": {
+        "fr": "Galerie photo des attractions isolées améliorée",
+        "en": "Improved standalone attraction photo galleries",
+        "de": "Verbesserte Fotogalerien eigenständiger Attraktionen",
+        "nl": "Verbeterde fotogalerijen van losstaande attracties",
+        "it": "Gallerie fotografiche delle attrazioni indipendenti migliorate",
+        "es": "Galerías de fotos de atracciones independientes mejoradas",
+        "pl": "Ulepszone galerie zdjęć samodzielnych atrakcji",
+        "pt": "Galerias de fotografias das atrações independentes melhoradas"
+      }
+    },
     {
       "version": "6.0.33",
       "releasedAt": "2026-10-28",
