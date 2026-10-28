@@ -1,0 +1,403 @@
+{
+  "parkId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+  "images": [
+    {
+      "key": "05-logo",
+      "imageId": "ce4c927489734f74a51108bd4ce5fd02",
+      "ownerId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+      "ownerType": "Park",
+      "sourceUrl": "https://data.inpi.fr/image/marques/FR4618398",
+      "isCurrent": true,
+      "isPublished": false
+    },
+    {
+      "key": "05-park-dry",
+      "imageId": "b71d3d1f18634fd8b759ae316b34cae3",
+      "ownerId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+      "ownerType": "Park",
+      "sourceUrl": "http://zygo.altervista.org/882_10_partesecca.jpg",
+      "isCurrent": true,
+      "isPublished": false
+    },
+    {
+      "key": "05-park-entrance",
+      "imageId": "ae6157f00bd546bb9772926133a4c0ce",
+      "ownerId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+      "ownerType": "Park",
+      "sourceUrl": "http://zygo.altervista.org/882_01_entrata.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-park-lakeside",
+      "imageId": "b13eabcc67be4a01b2069efb4a158bf2",
+      "ownerId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+      "ownerType": "Park",
+      "sourceUrl": "http://zygo.altervista.org/87_10_panoramica.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-park-square",
+      "imageId": "7ee91e6d269e4fc28cc21cbb9ff04327",
+      "ownerId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+      "ownerType": "Park",
+      "sourceUrl": "http://zygo.altervista.org/882_37_piazzacentrale.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-park-water",
+      "imageId": "1d53749b4264440b86ddd064b1812094",
+      "ownerId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+      "ownerType": "Park",
+      "sourceUrl": "http://zygo.altervista.org/882_11_partenautica.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-boomerang-inversion",
+      "imageId": "0443de32864648a9956bb4b11f65951d",
+      "ownerId": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/88_boomerang_04.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-boomerang-main",
+      "imageId": "b817bb14fcc248e2941a50437a33cf98",
+      "ownerId": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/882_09_boomerang.jpg",
+      "isCurrent": true,
+      "isPublished": false
+    },
+    {
+      "key": "05-boomerang-square",
+      "imageId": "b1c9acb95ca24c2a8632e76cafeff8f9",
+      "ownerId": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/882_04_boomerang.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-tarzungle-greenery",
+      "imageId": "58af9119412f4bf8ad4b1cce78f5b446",
+      "ownerId": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/88_tarzungle_02.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-tarzungle-hill",
+      "imageId": "7c876d06ac6648ca921eaaced1e44e74",
+      "ownerId": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/87_12_tarzungle.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-tarzungle-main",
+      "imageId": "dcf9e83f69c04863846271fabfe1f969",
+      "ownerId": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/87_13_tarzungle.jpg",
+      "isCurrent": true,
+      "isPublished": false
+    },
+    {
+      "key": "05-bateau-last-season",
+      "imageId": "415e111fff624928bc0979644734bc78",
+      "ownerId": "49b86e40-c113-4226-8f15-2fcb75dcd6f0",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/91_09_bateau_ivre_e_monstre.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-bateau-main",
+      "imageId": "d99be52efbcf45cda61ac3736261d0b4",
+      "ownerId": "49b86e40-c113-4226-8f15-2fcb75dcd6f0",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/882_12_bateauivre.jpg",
+      "isCurrent": true,
+      "isPublished": false
+    },
+    {
+      "key": "05-bateau-path",
+      "imageId": "600ef73b6b6b4c11b13f13ba45879a9f",
+      "ownerId": "49b86e40-c113-4226-8f15-2fcb75dcd6f0",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/87_17_nave.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-carousel-main",
+      "imageId": "8cd56fd633294164be16d5ee909e1f8e",
+      "ownerId": "b18f768e-234b-4129-a64e-d705e9c74302",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/882_08_carosello.jpg",
+      "isCurrent": true,
+      "isPublished": false
+    },
+    {
+      "key": "05-cascade-entry",
+      "imageId": "513ffe54d2e94014af5f4e14934cfd2a",
+      "ownerId": "804270fa-6489-421f-8f2d-a7989eb03602",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/882_05_cascade.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-cascade-log",
+      "imageId": "85f873d3900a405a94068a9bf918e0a5",
+      "ownerId": "804270fa-6489-421f-8f2d-a7989eb03602",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/88_cascade_sb.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-cascade-main",
+      "imageId": "aced1634e61e4f89ac5bfd91a9b1b884",
+      "ownerId": "804270fa-6489-421f-8f2d-a7989eb03602",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/91_03_cascade.jpg",
+      "isCurrent": true,
+      "isPublished": false
+    },
+    {
+      "key": "05-monstre-lake",
+      "imageId": "701a1404267e4be88d1c2d52976c9837",
+      "ownerId": "1a8bb753-3152-4309-81ef-7e1fe6120b31",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/87_11_monstre.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-monstre-main",
+      "imageId": "1431028ff07d4457bf1b821ac63a096f",
+      "ownerId": "1a8bb753-3152-4309-81ef-7e1fe6120b31",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/882_06_monstre.jpg",
+      "isCurrent": true,
+      "isPublished": false
+    },
+    {
+      "key": "05-monstre-marine",
+      "imageId": "346c396c877546788440c1a5b146fb8e",
+      "ownerId": "1a8bb753-3152-4309-81ef-7e1fe6120b31",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/91_10_monstre.jpg",
+      "isCurrent": false,
+      "isPublished": false
+    },
+    {
+      "key": "05-swingo-main",
+      "imageId": "e57dca1c9fd04dd3aa57f67ce2b97b6e",
+      "ownerId": "49082268-7ae3-4342-a32b-660853f26bb7",
+      "ownerType": "ParkItem",
+      "sourceUrl": "http://zygo.altervista.org/884-swingo.jpg",
+      "isCurrent": true,
+      "isPublished": false
+    }
+  ],
+  "officialMaps": [
+    {
+      "key": "zygo-plan-1987-it",
+      "id": "zygo-plan-1987-it",
+      "year": 1987,
+      "format": "Image",
+      "storageKey": "official-maps/b2dca918-9747-4623-a0c0-38e89634aaff/zygo-plan-1987-it.c774b77d8b784fbbab2903cd2cb64b5a.jpg",
+      "originalFileName": "depliant_retro_completo_big.jpg",
+      "contentType": "image/jpeg",
+      "sizeInBytes": 378568,
+      "sourcePageUrl": "http://zygo.altervista.org/depliant.php",
+      "languageCode": "it",
+      "isVisible": false,
+      "lastVerifiedAtUtc": "2026-10-28T20:22:13.643406+00:00",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Plan de Zygofolis — 1987"
+        },
+        {
+          "languageCode": "en",
+          "value": "Zygofolis map — 1987"
+        },
+        {
+          "languageCode": "de",
+          "value": "Plan von Zygofolis — 1987"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Plattegrond van Zygofolis — 1987"
+        },
+        {
+          "languageCode": "it",
+          "value": "Mappa di Zygofolis — 1987"
+        },
+        {
+          "languageCode": "es",
+          "value": "Plano de Zygofolis — 1987"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plan Zygofolis — 1987"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mapa do Zygofolis — 1987"
+        }
+      ],
+      "alternativeTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Plan quadrillé de Zygofolis, légende italienne et panorama dessiné dans le dépliant de juillet 1987."
+        },
+        {
+          "languageCode": "en",
+          "value": "Gridded Zygofolis map, Italian legend and illustrated panorama in the July 1987 leaflet."
+        },
+        {
+          "languageCode": "de",
+          "value": "Zygofolis-Plan mit Raster, italienischer Legende und gezeichnetem Panorama im Prospekt vom Juli 1987."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Plattegrond van Zygofolis met raster, Italiaanse legenda en getekend panorama in de folder van juli 1987."
+        },
+        {
+          "languageCode": "it",
+          "value": "Pianta a griglia di Zygofolis, legenda italiana e panorama disegnato nel dépliant del luglio 1987."
+        },
+        {
+          "languageCode": "es",
+          "value": "Plano cuadriculado de Zygofolis, leyenda italiana y panorama dibujado en el folleto de julio de 1987."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plan Zygofolis z siatką, włoską legendą i rysowaną panoramą w ulotce z lipca 1987 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mapa quadriculado do Zygofolis, legenda italiana e panorama desenhado no folheto de julho de 1987."
+        }
+      ]
+    },
+    {
+      "key": "zygo-plan-1991-fr",
+      "id": "zygo-plan-1991-fr",
+      "year": 1991,
+      "format": "Image",
+      "storageKey": "official-maps/b2dca918-9747-4623-a0c0-38e89634aaff/zygo-plan-1991-fr.f00571cf23064176a66c50b6ff7a96bb.jpg",
+      "originalFileName": "deplizp_front_grande.jpg",
+      "contentType": "image/jpeg",
+      "sizeInBytes": 231433,
+      "sourcePageUrl": "http://zygo.altervista.org/deplizp.php",
+      "languageCode": "fr",
+      "isVisible": false,
+      "lastVerifiedAtUtc": "2026-10-28T20:22:13.643477+00:00",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Plan de Zygo Parc — 1991"
+        },
+        {
+          "languageCode": "en",
+          "value": "Zygo Parc map — 1991"
+        },
+        {
+          "languageCode": "de",
+          "value": "Plan von Zygo Parc — 1991"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Plattegrond van Zygo Parc — 1991"
+        },
+        {
+          "languageCode": "it",
+          "value": "Mappa di Zygo Parc — 1991"
+        },
+        {
+          "languageCode": "es",
+          "value": "Plano de Zygo Parc — 1991"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plan Zygo Parc — 1991"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mapa do Zygo Parc — 1991"
+        }
+      ],
+      "alternativeTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Plan de Zygo Parc réparti sur les deux volets du dépliant de 1991, avec dix-neuf attractions et les restaurants."
+        },
+        {
+          "languageCode": "en",
+          "value": "Zygo Parc map across the two folds of the 1991 leaflet, showing nineteen attractions and the restaurants."
+        },
+        {
+          "languageCode": "de",
+          "value": "Plan von Zygo Parc auf den beiden Faltseiten des Prospekts von 1991 mit neunzehn Attraktionen und Restaurants."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Plattegrond van Zygo Parc op de twee vouwbladen van de folder uit 1991, met negentien attracties en de restaurants."
+        },
+        {
+          "languageCode": "it",
+          "value": "Mappa di Zygo Parc sui due lembi del dépliant del 1991, con diciannove attrazioni e i ristoranti."
+        },
+        {
+          "languageCode": "es",
+          "value": "Plano de Zygo Parc repartido en las dos solapas del folleto de 1991, con diecinueve atracciones y los restaurantes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plan Zygo Parc na dwóch skrzydłach ulotki z 1991 roku, z dziewiętnastoma atrakcjami i restauracjami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mapa do Zygo Parc repartido pelas duas abas do folheto de 1991, com dezanove atrações e os restaurantes."
+        }
+      ]
+    }
+  ],
+  "referenceIds": {
+    "founders": [
+      {
+        "id": "60959a55-dc0e-4c23-a84d-c2beba1d2ce6",
+        "name": "Jacques Médecin"
+      }
+    ],
+    "operators": [
+      {
+        "id": "bbe8b4c4-e378-46b4-829d-ed30ebad2628",
+        "name": "Société du parc d’attractions de Nice"
+      }
+    ],
+    "manufacturers": [
+      {
+        "id": "472bb510-935a-40ea-a443-7c14bfaed0a8",
+        "name": "Zierer"
+      },
+      {
+        "id": "9d1a1efe-fcd8-4e5f-882d-2567cc18ca8a",
+        "name": "Vekoma"
+      }
+    ]
+  },
+  "limits": "Partial integration, not final audit. No public park or Facebook announcement yet; ongoing per-item media coverage and historical work."
+}

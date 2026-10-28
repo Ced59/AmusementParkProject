@@ -11,21 +11,21 @@
     "Restaurant": 10,
     "Show": 4,
     "Transport": 1,
-    "Shop": 2,
+    "Shop": 3,
     "Service": 12
   },
-  "totalItems": 53,
+  "totalItems": 54,
   "zones": 2,
   "textCoverage": {
     "parkEightLanguages": true,
     "zonesEightLanguages": 2,
-    "itemsEightLanguages": 39
+    "itemsEightLanguages": 54
   },
   "lastMergedDataApply": {
-    "operationId": "09677b39-1427-469b-baa6-f5ad09545adb",
-    "appliedAtUtc": "2026-10-28T20:02:56.4835326Z"
+    "operationId": "fd205d7d-86e8-4a42-b080-1726e71d3585",
+    "appliedAtUtc": "2026-10-28T20:28:40.894171Z"
   },
-  "nextAction": "Finish remaining item descriptions, including restaurants and services; source-supported reference enrichment, actual photos, official 1987/1991 maps, history/article, fresh full final audit, then authorized site and Facebook publication. No full export during steps 0–8.",
+  "nextAction": "Finish attraction and contextual photo coverage, qualify remaining source gaps, complete source-supported ride references and technical data, history/article, fresh full final audit, then authorized site and Facebook publication. No full export during steps 0–8.",
   "pendingPublicationExceptionsElsewhere": [
     "Playmobil FunPark Fresnes exact92/100 awaiting answer",
     "Lillom exact95/100 awaiting earlier answer"
@@ -35,5 +35,15 @@
     "Bateau Ivre destination identity Bounty confirmed, but old archive gives1993 arrival and2003 dismantling; destination histories give1992 opening,2002 last operation and2006 dismantling.",
     "1989 closure and1990 reopening are supported by contemporary press/book; RCDB park narrative misdates bankruptcy1988 and SBNO1990."
   ],
-  "updatedAtUtc": "2026-10-28T20:04:39.784479+00:00"
+  "updatedAtUtc": "2026-10-28T20:37:11.962943+00:00",
+  "images": 23,
+  "officialMapYears": [
+    1987,
+    1991
+  ],
+  "references": {
+    "founders": 1,
+    "operators": 1,
+    "manufacturers": 2
+  }
 }

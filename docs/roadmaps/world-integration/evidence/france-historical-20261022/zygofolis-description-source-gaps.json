@@ -238,5 +238,149 @@
       "http://zygo.altervista.org/storia_88_2.php",
       "http://zygo.altervista.org/storia_91.php"
     ]
+  },
+  {
+    "key": "zygo-parking",
+    "exception": "Concise factual historical description; no detailed service terms or matched interior photographs after brochure/gallery search.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-information",
+    "exception": "Concise factual historical description; no detailed service terms or matched interior photographs after brochure/gallery search.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-infirmerie",
+    "exception": "Concise factual historical description; no detailed service terms or matched interior photographs after brochure/gallery search.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-garderie",
+    "exception": "Concise factual historical description; no detailed service terms or matched interior photographs after brochure/gallery search.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_88_1.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-wc-entree",
+    "exception": "One geographical paragraph only; primary map explicitly marks the toilet location, but brochures/gallery searches reveal no reliable interior or amenities. No generic comfort/service claims.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-wc-nautique",
+    "exception": "One geographical paragraph only; primary map explicitly marks the toilet location, but brochures/gallery searches reveal no reliable interior or amenities. No generic comfort/service claims.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-wc-infirmerie",
+    "exception": "One geographical paragraph only; primary map explicitly marks the toilet location, but brochures/gallery searches reveal no reliable interior or amenities. No generic comfort/service claims.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-wc-piscine-enfants",
+    "exception": "One geographical paragraph only; primary map explicitly marks the toilet location, but brochures/gallery searches reveal no reliable interior or amenities. No generic comfort/service claims.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-wc-riviere",
+    "exception": "One geographical paragraph only; primary map explicitly marks the toilet location, but brochures/gallery searches reveal no reliable interior or amenities. No generic comfort/service claims.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-wc-slides",
+    "exception": "One geographical paragraph only; primary map explicitly marks the toilet location, but brochures/gallery searches reveal no reliable interior or amenities. No generic comfort/service claims.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-wc-jeux-enfants",
+    "exception": "One geographical paragraph only; primary map explicitly marks the toilet location, but brochures/gallery searches reveal no reliable interior or amenities. No generic comfort/service claims.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/depliant88.php",
+      "http://zygo.altervista.org/deplizp.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-boutiques-place",
+    "exception": "One paragraph for map-only entrance shop; two paragraphs for each photographed façade. Interior, merchandise, opening/closure dates and further individual history unproven after brochure and archive-gallery research; no padded generic shopping copy.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-boutique-entree",
+    "exception": "One paragraph for map-only entrance shop; two paragraphs for each photographed façade. Interior, merchandise, opening/closure dates and further individual history unproven after brochure and archive-gallery research; no padded generic shopping copy.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
+  },
+  {
+    "key": "zygo-boutique-pinces",
+    "exception": "One paragraph for map-only entrance shop; two paragraphs for each photographed façade. Interior, merchandise, opening/closure dates and further individual history unproven after brochure and archive-gallery research; no padded generic shopping copy.",
+    "sourcesSearched": [
+      "http://zygo.altervista.org/depliant.php",
+      "http://zygo.altervista.org/storia_87.php",
+      "http://zygo.altervista.org/storia_88_2.php"
+    ]
   }
 ]

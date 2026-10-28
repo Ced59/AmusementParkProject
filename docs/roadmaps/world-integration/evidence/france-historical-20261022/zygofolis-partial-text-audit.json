@@ -1,18 +1,18 @@
 {
   "kind": "Partial editorial working-state check, not final audit",
-  "checkedAtUtc": "2026-10-28T20:04:39.784479+00:00",
+  "checkedAtUtc": "2026-10-28T20:37:11.962943+00:00",
   "lastVerifiedApply": {
-    "operationId": "09677b39-1427-469b-baa6-f5ad09545adb",
-    "appliedAtUtc": "2026-10-28T20:02:56.4835326Z"
+    "operationId": "fd205d7d-86e8-4a42-b080-1726e71d3585",
+    "appliedAtUtc": "2026-10-28T20:28:40.894171Z"
   },
-  "entitiesWithDescriptions": 42,
-  "localizedDescriptions": 336,
+  "entitiesWithDescriptions": 57,
+  "localizedDescriptions": 456,
   "exactDuplicateParagraphBodiesAfterRemovingEntityNames": [],
   "encodingIssues": [],
   "coverage": {
     "parkEightLanguages": true,
     "zonesEightLanguages": 2,
-    "itemsEightLanguages": 39
+    "itemsEightLanguages": 54
   },
   "rows": [
     {
@@ -2641,6 +2641,902 @@
     },
     {
       "entityType": "ParkItem",
+      "key": "zygo-boutiques-place",
+      "language": "fr",
+      "words": 83,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutiques-place",
+      "language": "en",
+      "words": 74,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutiques-place",
+      "language": "de",
+      "words": 72,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutiques-place",
+      "language": "nl",
+      "words": 76,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutiques-place",
+      "language": "it",
+      "words": 75,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutiques-place",
+      "language": "es",
+      "words": 80,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutiques-place",
+      "language": "pl",
+      "words": 58,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutiques-place",
+      "language": "pt",
+      "words": 79,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-entree",
+      "language": "fr",
+      "words": 43,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-entree",
+      "language": "en",
+      "words": 38,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-entree",
+      "language": "de",
+      "words": 36,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-entree",
+      "language": "nl",
+      "words": 40,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-entree",
+      "language": "it",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-entree",
+      "language": "es",
+      "words": 45,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-entree",
+      "language": "pl",
+      "words": 31,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-entree",
+      "language": "pt",
+      "words": 41,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-entree",
+      "language": "fr",
+      "words": 137,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-entree",
+      "language": "en",
+      "words": 119,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-entree",
+      "language": "de",
+      "words": 109,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-entree",
+      "language": "nl",
+      "words": 119,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-entree",
+      "language": "it",
+      "words": 121,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-entree",
+      "language": "es",
+      "words": 128,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-entree",
+      "language": "pl",
+      "words": 98,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-entree",
+      "language": "pt",
+      "words": 125,
+      "paragraphs": 3,
+      "headings": 2
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-information",
+      "language": "fr",
+      "words": 53,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-information",
+      "language": "en",
+      "words": 44,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-information",
+      "language": "de",
+      "words": 42,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-information",
+      "language": "nl",
+      "words": 45,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-information",
+      "language": "it",
+      "words": 43,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-information",
+      "language": "es",
+      "words": 49,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-information",
+      "language": "pl",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-information",
+      "language": "pt",
+      "words": 46,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-infirmerie",
+      "language": "fr",
+      "words": 52,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-infirmerie",
+      "language": "en",
+      "words": 48,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-infirmerie",
+      "language": "de",
+      "words": 44,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-infirmerie",
+      "language": "nl",
+      "words": 45,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-infirmerie",
+      "language": "it",
+      "words": 47,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-infirmerie",
+      "language": "es",
+      "words": 51,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-infirmerie",
+      "language": "pl",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-infirmerie",
+      "language": "pt",
+      "words": 47,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-garderie",
+      "language": "fr",
+      "words": 47,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-garderie",
+      "language": "en",
+      "words": 44,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-garderie",
+      "language": "de",
+      "words": 45,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-garderie",
+      "language": "nl",
+      "words": 46,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-garderie",
+      "language": "it",
+      "words": 42,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-garderie",
+      "language": "es",
+      "words": 48,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-garderie",
+      "language": "pl",
+      "words": 38,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-garderie",
+      "language": "pt",
+      "words": 47,
+      "paragraphs": 1,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-parking",
+      "language": "fr",
+      "words": 83,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-parking",
+      "language": "en",
+      "words": 75,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-parking",
+      "language": "de",
+      "words": 64,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-parking",
+      "language": "nl",
+      "words": 70,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-parking",
+      "language": "it",
+      "words": 76,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-parking",
+      "language": "es",
+      "words": 85,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-parking",
+      "language": "pl",
+      "words": 57,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-parking",
+      "language": "pt",
+      "words": 79,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-entree",
+      "language": "fr",
+      "words": 41,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-entree",
+      "language": "en",
+      "words": 36,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-entree",
+      "language": "de",
+      "words": 32,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-entree",
+      "language": "nl",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-entree",
+      "language": "it",
+      "words": 36,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-entree",
+      "language": "es",
+      "words": 43,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-entree",
+      "language": "pl",
+      "words": 30,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-entree",
+      "language": "pt",
+      "words": 38,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-nautique",
+      "language": "fr",
+      "words": 44,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-nautique",
+      "language": "en",
+      "words": 38,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-nautique",
+      "language": "de",
+      "words": 34,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-nautique",
+      "language": "nl",
+      "words": 41,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-nautique",
+      "language": "it",
+      "words": 40,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-nautique",
+      "language": "es",
+      "words": 43,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-nautique",
+      "language": "pl",
+      "words": 30,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-nautique",
+      "language": "pt",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-infirmerie",
+      "language": "fr",
+      "words": 42,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-infirmerie",
+      "language": "en",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-infirmerie",
+      "language": "de",
+      "words": 33,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-infirmerie",
+      "language": "nl",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-infirmerie",
+      "language": "it",
+      "words": 35,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-infirmerie",
+      "language": "es",
+      "words": 41,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-infirmerie",
+      "language": "pl",
+      "words": 33,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-infirmerie",
+      "language": "pt",
+      "words": 35,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-piscine-enfants",
+      "language": "fr",
+      "words": 43,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-piscine-enfants",
+      "language": "en",
+      "words": 38,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-piscine-enfants",
+      "language": "de",
+      "words": 29,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-piscine-enfants",
+      "language": "nl",
+      "words": 34,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-piscine-enfants",
+      "language": "it",
+      "words": 37,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-piscine-enfants",
+      "language": "es",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-piscine-enfants",
+      "language": "pl",
+      "words": 29,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-piscine-enfants",
+      "language": "pt",
+      "words": 36,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-riviere",
+      "language": "fr",
+      "words": 47,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-riviere",
+      "language": "en",
+      "words": 44,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-riviere",
+      "language": "de",
+      "words": 35,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-riviere",
+      "language": "nl",
+      "words": 37,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-riviere",
+      "language": "it",
+      "words": 40,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-riviere",
+      "language": "es",
+      "words": 47,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-riviere",
+      "language": "pl",
+      "words": 33,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-riviere",
+      "language": "pt",
+      "words": 42,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-slides",
+      "language": "fr",
+      "words": 43,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-slides",
+      "language": "en",
+      "words": 38,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-slides",
+      "language": "de",
+      "words": 38,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-slides",
+      "language": "nl",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-slides",
+      "language": "it",
+      "words": 40,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-slides",
+      "language": "es",
+      "words": 45,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-slides",
+      "language": "pl",
+      "words": 32,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-slides",
+      "language": "pt",
+      "words": 39,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-jeux-enfants",
+      "language": "fr",
+      "words": 46,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-jeux-enfants",
+      "language": "en",
+      "words": 38,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-jeux-enfants",
+      "language": "de",
+      "words": 29,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-jeux-enfants",
+      "language": "nl",
+      "words": 34,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-jeux-enfants",
+      "language": "it",
+      "words": 40,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-jeux-enfants",
+      "language": "es",
+      "words": 43,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-jeux-enfants",
+      "language": "pl",
+      "words": 30,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-wc-jeux-enfants",
+      "language": "pt",
+      "words": 40,
+      "paragraphs": 1,
+      "headings": 0
+    },
+    {
+      "entityType": "ParkItem",
       "key": "zygo-high-diving",
       "language": "fr",
       "words": 79,
@@ -2698,6 +3594,70 @@
     {
       "entityType": "ParkItem",
       "key": "zygo-high-diving",
+      "language": "pt",
+      "words": 69,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-pinces",
+      "language": "fr",
+      "words": 82,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-pinces",
+      "language": "en",
+      "words": 70,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-pinces",
+      "language": "de",
+      "words": 64,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-pinces",
+      "language": "nl",
+      "words": 67,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-pinces",
+      "language": "it",
+      "words": 64,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-pinces",
+      "language": "es",
+      "words": 74,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-pinces",
+      "language": "pl",
+      "words": 58,
+      "paragraphs": 2,
+      "headings": 1
+    },
+    {
+      "entityType": "ParkItem",
+      "key": "zygo-boutique-pinces",
       "language": "pt",
       "words": 69,
       "paragraphs": 2,
