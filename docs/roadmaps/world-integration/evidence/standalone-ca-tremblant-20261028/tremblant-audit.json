@@ -1,0 +1,60 @@
+{
+  "entityId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+  "entryId": "CA-candidate-standalone-d4c5e1d103913c",
+  "auditedAtUtc": "2026-10-28T07:47:42.294Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/ba136b99-e441-4569-be10-17c9a9b8ba8d/skyline-luge-mont-tremblant",
+  "score": 86,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "localization": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "localizedStringsReviewed": 176,
+    "missingOrDuplicateLanguages": [],
+    "duplicateNarrativeParagraphs": [],
+    "encodingAndJargonOccurrences": {
+      "htmlEntities": 0,
+      "replacement": 0,
+      "mojibake": 0,
+      "internalJargon": 0
+    },
+    "exportSha256": "5e61957f36533543c60b4c0c8377ee98c1932da3949709043bde125523264ef2"
+  },
+  "publicChecks": {
+    "attractionPages200": 8,
+    "mobilePagesWithoutHorizontalOverflow": 8,
+    "historyPages200": 8,
+    "historyArticles200": 8,
+    "allNamesVisible": true,
+    "allArticlePagesWithoutPlaceholders": true
+  },
+  "content": {
+    "historyEvents": 1,
+    "publishedImages": 0,
+    "accessConditions": 5,
+    "status": "TemporarilyClosed",
+    "openingYear": 2003,
+    "currentPrice": null
+  },
+  "facebook": {
+    "status": "Published",
+    "id": "cb5f139cf31a4ca683d08d04f6d50573",
+    "publishedAtUtc": "2026-10-28T07:45:25.0239476Z",
+    "externalPostId": "1285475681307050_122125005813424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125005813424431"
+  },
+  "limitations": [
+    "Aucune photographie spécifique avec droits de réutilisation suffisamment établis n’a été importée.",
+    "Le point cartographique est le centre de la piste OSM, et non le guichet de départ.",
+    "La date de reprise et les prix 2027 ne sont pas encore annoncés ; les anciens prix sont datés et aucune offre actuelle n’est affichée.",
+    "La fiche est visible mais le statut administratif exporté reste ToReview ; le client officiel a ignoré la valeur Approved envoyée au dernier Apply."
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "entityId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+  "receipts": [
+    {
+      "lot": "01-core",
+      "action": "Apply",
+      "operationId": "cb8f9dae-e3e5-44a6-920c-881699147ab2",
+      "appliedAtUtc": "2026-10-28T07:37:34.3340733Z",
+      "targetStandaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "isApplied": true
+    },
+    {
+      "lot": "02-pricing",
+      "action": "Apply",
+      "operationId": "b5983647-7b1c-41e1-8a6f-3137303ab54d",
+      "appliedAtUtc": "2026-10-28T07:38:47.1801217Z",
+      "targetStandaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "isApplied": true
+    },
+    {
+      "lot": "03-hours",
+      "action": "Apply",
+      "operationId": "339a5c28-64ce-40c1-8e6f-ed9a6166597e",
+      "appliedAtUtc": "2026-10-28T07:39:10.9201474Z",
+      "targetStandaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "isApplied": true
+    },
+    {
+      "lot": "04-access",
+      "action": "Apply",
+      "operationId": "511fc78c-51e3-4487-8c56-86ae6fea125b",
+      "appliedAtUtc": "2026-10-28T07:39:44.9437679Z",
+      "targetStandaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "isApplied": true
+    },
+    {
+      "lot": "05-history",
+      "action": "Apply",
+      "operationId": "4cbeb370-cd87-4f07-aa2d-936820953c07",
+      "appliedAtUtc": "2026-10-28T07:40:08.4851415Z",
+      "targetStandaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "isApplied": true
+    },
+    {
+      "lot": "06-publish-history",
+      "action": "Apply",
+      "operationId": "292d308c-ee12-4bf3-8d41-35f227685dc1",
+      "appliedAtUtc": "2026-10-28T07:41:03.9522209Z",
+      "targetStandaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "isApplied": true
+    },
+    {
+      "lot": "07-publish-attraction",
+      "action": "Apply",
+      "operationId": "8521c6d7-be1c-46e0-9d30-c0836f7725ba",
+      "appliedAtUtc": "2026-10-28T07:41:27.3817007Z",
+      "targetStandaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "isApplied": true
+    },
+    {
+      "lot": "08-access-labels",
+      "action": "Apply",
+      "operationId": "139a5cc6-b450-4926-a524-bab6d48861dd",
+      "appliedAtUtc": "2026-10-28T07:43:46.1785574Z",
+      "targetStandaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "isApplied": true
+    }
+  ],
+  "facebookPublicationId": "cb5f139cf31a4ca683d08d04f6d50573",
+  "facebookPublishedAtUtc": "2026-10-28T07:45:25.0239476Z",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125005813424431"
+}
