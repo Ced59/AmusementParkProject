@@ -1359,41 +1359,139 @@
     {
       "entryId": "CA-candidate-standalone-abf154c8e98f1e",
       "name": "Downhill Karting Calgary",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge gravitaire",
-      "locality": null,
-      "siteId": null,
+      "locality": "Calgary, Alberta",
+      "siteId": "b8390695-b97a-4e15-a45d-a2234703a779",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "TemporarilyClosed (seasonal; operator, 2026-10-28)",
+      "identityConfidence": "Exploitant Skyline, billets et créneaux propres dans le domaine WinSport confirmés.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "Skyline Luge Calgary"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
-      "sources": [
+      "lastDataIntegrationAt": "2026-10-28T07:59:03.567Z",
+      "integrationHistory": [
         {
-          "label": "Skyline — destinations officielles",
-          "url": "https://www.downhillkarting.ca/",
-          "accessedAt": "2026-10-22"
+          "eventId": "apply-49f03c0d-803b-40fd-8a8e-c6867caafbda",
+          "appliedAt": "2026-10-28T07:54:07.608Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+          "evidence": "PARK_DATA_EDITOR:apply:49f03c0d-803b-40fd-8a8e-c6867caafbda",
+          "auditEvidence": null,
+          "summary": "Identité, statut saisonnier, localisation et descriptions en huit langues intégrés."
         },
         {
-          "label": "Skyline — destinations officielles — liste",
-          "url": "https://www.skylineluge.com/",
-          "accessedAt": "2026-10-22"
+          "eventId": "apply-0c19780c-1cc7-416b-91cc-1ae4ef1cdef2",
+          "appliedAt": "2026-10-28T07:54:42.954Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+          "evidence": "PARK_DATA_EDITOR:apply:0c19780c-1cc7-416b-91cc-1ae4ef1cdef2",
+          "auditEvidence": null,
+          "summary": "Tarification 2027 non confirmée et cartes cadeaux distinguées des billets."
+        },
+        {
+          "eventId": "apply-ea379f66-31d5-408f-b243-547b5ba26bea",
+          "appliedAt": "2026-10-28T07:55:16.680Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+          "evidence": "PARK_DATA_EDITOR:apply:ea379f66-31d5-408f-b243-547b5ba26bea",
+          "auditEvidence": null,
+          "summary": "Fermeture hivernale et réouverture 2027 sans date intégrées."
+        },
+        {
+          "eventId": "apply-f8fa1abc-79ae-45a4-8d1b-3c04661ec8ae",
+          "appliedAt": "2026-10-28T07:55:39.909Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+          "evidence": "PARK_DATA_EDITOR:apply:f8fa1abc-79ae-45a4-8d1b-3c04661ec8ae",
+          "auditEvidence": null,
+          "summary": "Quatre conditions de sécurité officielles et traduites intégrées."
+        },
+        {
+          "eventId": "apply-fcedb610-5aa5-4c2f-8813-bdbc0e35abac",
+          "appliedAt": "2026-10-28T07:56:14.099Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+          "evidence": "PARK_DATA_EDITOR:apply:fcedb610-5aa5-4c2f-8813-bdbc0e35abac",
+          "auditEvidence": null,
+          "summary": "Ouverture en 2013 et article historique intégrés."
+        },
+        {
+          "eventId": "apply-9828360f-f571-4b5f-b433-299b3a5f72d1",
+          "appliedAt": "2026-10-28T07:57:24.791Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+          "evidence": "PARK_DATA_EDITOR:apply:9828360f-f571-4b5f-b433-299b3a5f72d1",
+          "auditEvidence": null,
+          "summary": "Répétition entre les résumés historiques supprimée."
+        },
+        {
+          "eventId": "apply-d5d9faf3-108c-4690-af5f-558bce2cc818",
+          "appliedAt": "2026-10-28T07:59:03.567Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+          "evidence": "PARK_DATA_EDITOR:apply:d5d9faf3-108c-4690-af5f-558bce2cc818",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-20261028/calgary-audit.json",
+          "summary": "Formulations éditoriales corrigées ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus ; vérifier date de reprise, horaires, prix des descentes 2027, statut administratif ToReview et photographie sous licence réutilisable.",
+      "sources": [
+        {
+          "label": "Skyline Enterprises — Calgary ouvert en 2013",
+          "url": "https://skylineenterprises.co.nz/what-we-do/tourism-operations/downhill-karting-calgary/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Downhill Karting — piste",
+          "url": "https://www.downhillkarting.ca/luge/track-information/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Downhill Karting — horaires 2027",
+          "url": "https://www.downhillkarting.ca/visiting-us/open-hours/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Downhill Karting — billets et cartes cadeaux",
+          "url": "https://www.downhillkarting.ca/pricing-packages/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Downhill Karting — sécurité",
+          "url": "https://www.downhillkarting.ca/luge/safety-faq/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "WinSport — adresse",
+          "url": "https://www.winsport.ca/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "OpenStreetMap — point de l’attraction",
+          "url": "https://www.openstreetmap.org/node/5274402478",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "Downhill Karting Calgary",
@@ -1403,7 +1501,14 @@
             "sourceVenueName": "Downhill Karting Calgary"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Attraction autonome confirmée : exploitation et billetterie Skyline spécifiques au sein du domaine WinSport ; aucun doublon Park ou StandaloneAttraction trouvé."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-10-28T08:00:13.352Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/b8390695-b97a-4e15-a45d-a2234703a779/downhill-karting-calgary",
+        "facebookPublishedAtUtc": "2026-10-28T08:01:50.2466448Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125007211424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-20261028/calgary-receipts.json"
       }
     },
     {
