@@ -1,0 +1,77 @@
+{
+  "name": "Georgia Mountain Coaster",
+  "entryId": "US-park-1ea43ab2-e917-4420-bef8-386c3add4280",
+  "standaloneAttractionId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+  "qualification": "Mountain coaster autonome avec sa billetterie propre ; l’ancienne fiche Park masquée ne contenait que cette attraction et a été retirée lors de la migration.",
+  "decision": "Published",
+  "score": 94,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 1,
+    "weeklyRules": 3,
+    "admissionOffers": 3,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "La seule photo libre trouvée montre l’entrée et la billetterie, pas un véhicule sur la piste ; poursuivre la recherche pour enrichir la galerie.",
+    "L’année 2019 est signalée par l’ancien relevé mais aucune date exacte d’ouverture n’a été établie : l’ancien 1er janvier était une date de substitution et n’a pas été repris."
+  ],
+  "sources": [
+    {
+      "label": "Georgia Mountain Coaster — site officiel, tarifs, horaires, adresse et conditions",
+      "url": "https://www.georgiamountaincoaster.com/"
+    },
+    {
+      "label": "RCDB — Georgia Mountain Coaster, constructeur et longueur",
+      "url": "https://rcdb.com/14981.htm"
+    },
+    {
+      "label": "Wikimedia Commons — Georgia Mountain Coaster, Helen, photo de Mjrmtg",
+      "url": "https://commons.wikimedia.org/wiki/File:Georgia_Mountain_Coaster,_Helen.jpg"
+    },
+    {
+      "label": "CC BY 4.0 — conditions de réutilisation",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "e83c561d8824494499adfc8f9fce0597",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Georgia_Mountain_Coaster,_Helen.jpg",
+      "author": "Mjrmtg",
+      "date": "2025-11-06",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "subject": "Entrée et billetterie de Georgia Mountain Coaster",
+      "transformation": "vignette Wikimedia Commons optimisée, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "b2da2717cb6e609a11181d9935b97e872ab8f086f8825b7cb84d3cd344f64a6e",
+    "projectedScore": 94,
+    "projectedBlockers": [],
+    "publicScore": 94,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T22:33:30.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/6c3c5eae-402c-498d-9749-b96595c49f4a/georgia-mountain-coaster",
+      "publishedAtUtc": "2026-10-28T22:31:59.806Z",
+      "applyOperationId": "b859757d-619b-4c11-a66d-e1bb1767c7c7"
+    },
+    "facebook": {
+      "id": "bba073a0afc9432ebdcefa31a9d54f47",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T22:33:04.871Z",
+      "externalPostId": "1285475681307050_122125097919424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125097919424431"
+    }
+  }
+}
