@@ -421,7 +421,7 @@ fi
 
 mongodb_backup_completed=false
 if [ "${BACKUP_BEFORE_DEPLOY:-true}" = "true" ] && compose ps --services --filter status=running | grep -qx 'mongodb'; then
-  echo "Running MongoDB backup before deployment..."
+  echo "Ensuring a recent MongoDB backup before deployment (fresh dump required for MongoDB maintenance)..."
   ./scripts/backup-mongo.sh || {
     echo "MongoDB backup failed. Deployment aborted." >&2
     exit 1
@@ -511,6 +511,7 @@ python3 ./scripts/deployment_transaction.py assert-complete
   "${PUBLIC_BASE_URL%/}/fr/home"
 
 reconcile_continuous_warmup_service
+./scripts/configure-backup-timer.sh
 
 if [ "${SSR_WARMUP_AFTER_DEPLOY:-false}" = "true" ]; then
   mkdir -p ./warmup
