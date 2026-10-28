@@ -1,0 +1,100 @@
+{
+  "name": "Skyline Luge Rotorua",
+  "entryId": "NZ-candidate-standalone-7ec2f4b17a16c4",
+  "standaloneAttractionId": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
+  "qualification": "Luge à forfaits propres dans le complexe Skyline ; exploitation et tarifs 2026 confirmés ; aucune fiche Park ni Standalone Rotorua dans la recherche officielle.",
+  "decision": "Published",
+  "score": 81,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "regularRules": 0,
+    "admissionOffers": 6,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Le calendrier quotidien de l’exploitant ne permet pas de définir une règle d’ouverture hebdomadaire stable.",
+    "Les deux photographies libres vérifiées représentent l’ancien parcours en 2006 ; rechercher des vues sous licence libre des pistes actuelles."
+  ],
+  "sources": [
+    {
+      "label": "Skyline Rotorua — luge, pistes, âge et taille",
+      "url": "https://rotorua.skyline.co.nz/things-to-do/luge-rotorua/"
+    },
+    {
+      "label": "Skyline Rotorua — forfaits télécabine et luge 2026",
+      "url": "https://rotorua.skyline.co.nz/pricing-and-packages/"
+    },
+    {
+      "label": "Skyline Rotorua — calendrier quotidien",
+      "url": "https://rotorua.skyline.co.nz/opening-hours/"
+    },
+    {
+      "label": "Skyline Rotorua — accès 178 Fairy Springs Road",
+      "url": "https://rotorua.skyline.co.nz/getting-here/"
+    },
+    {
+      "label": "OpenStreetMap Nominatim — Skyline Rotorua",
+      "url": "https://nominatim.openstreetmap.org/search?q=Skyline+Rotorua&format=json"
+    },
+    {
+      "label": "Wikimedia Commons — Luge Tunnel, Peter Harrison, 2006",
+      "url": "https://commons.wikimedia.org/wiki/File:Luge_Tunnel_(371122775).jpg"
+    },
+    {
+      "label": "Wikimedia Commons — The Luge track from the Gondala above1, Charlie Brewer, 2006",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Luge_track_from_the_Gondala_above1_-_Rotorua_(112996725).jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "c391efbd8eae4b78b91ae641c9753c86",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Luge_Tunnel_(371122775).jpg",
+      "author": "Peter Harrison",
+      "date": "2006-12-17",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "subject": "Pilote sortant du tunnel de la luge de Rotorua en 2006",
+      "transformation": "image originale Wikimedia Commons, sans recadrage"
+    },
+    {
+      "imageId": "f7206820b94346a39edd06c84720049a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Luge_track_from_the_Gondala_above1_-_Rotorua_(112996725).jpg",
+      "author": "Charlie Brewer",
+      "date": "2006-02-10",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "subject": "Ancien tracé de la luge vu de la télécabine en 2006",
+      "transformation": "vignette Wikimedia Commons optimisée, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "22832a8006c86685fd9b6cfaf7b0bfcc6b55d9a29b38a93e1f6f642d17682ab3",
+    "projectedScore": 81,
+    "projectedBlockers": [],
+    "publicScore": 81,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T23:33:01.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4/skyline-luge-rotorua",
+      "publishedAtUtc": "2026-10-28T23:32:06.773Z",
+      "applyOperationId": "311c0d32-6074-47e0-8522-e455d7089760"
+    },
+    "facebook": {
+      "id": "3d302bf3fe764f029f400b028f3ddffd",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T23:32:55.185Z",
+      "externalPostId": "1285475681307050_122125102971424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125102971424431"
+    }
+  }
+}
