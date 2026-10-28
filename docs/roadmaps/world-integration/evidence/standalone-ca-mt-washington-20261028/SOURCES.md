@@ -1,0 +1,13 @@
+# Eagle’s Flight ZipTour — Mount Washington : qualification et sources
+
+La référence constructeur « ZipRider — Mt. Washington » correspond à l’Eagle’s Flight ZipTour actuel, avec billets et réservations propres chez Mount Washington Alpine Resort. Le demi-parcours Hawk est une formule de la même installation, pas une deuxième fiche. Cinq recherches officielles `PARK_DATA_EDITOR` sur Mount Washington, ZipTour et Eagle’s Flight dans Park et StandaloneAttraction n’ont trouvé aucune fiche canadienne à rapprocher. Le backlog conserve l’ID stable `CA-candidate-standalone-52b944d77d3979` pour la fiche `1cb184a8-6579-4aae-88ba-365e15542a09`.
+
+| Sujet | Source et décision |
+| --- | --- |
+| Parcours, restrictions, billets | [Exploitant — ZipTour Adventure](https://www.mountwashington.ca/play/ziptour/), consulté le 28 octobre 2026 : Eagle’s Flight en quatre sections, environ 2,3 km ; Hawk en deux sections, âge minimal 10 ans, poids 50–260 livres et taille 4 pieds à 6 pieds 8 pouces. Les 10–15 ans sont accompagnés d’un adulte responsable de 19 ans ou plus. Les tarifs 2026 ne sont pas des tarifs futurs confirmés. |
+| Disponibilité | [Exploitant — horaires du mont Washington](https://www.mountwashington.ca/the-mountain/hours-of-operation/), consulté le 28 octobre 2026 : ZipTour fermé après la saison d’automne 2026. Aucune date de reprise n’est inventée. |
+| Date d’ouverture | [Annonce d’inauguration archivée de l’exploitant](https://mountwashington.ca/events/event/738-jilli-martini-trio-apres-at-teds.html) et [Adventure Park Insider — compte rendu contemporain](https://adventureparkinsider.com/zip-tour-opens-at-mount-washington-alpine-resort-b-c/) : parcours complet ouvert le 27 juin 2020, deux sections Hawk inaugurées en 2019. L’URL de l’archive de l’exploitant porte un ancien slug sans rapport avec son contenu ; le titre et la date de la page ont été vérifiés. |
+| Identité et adresse | [ZipRider — référence constructeur](https://ziprider.com/locations/mt-washington-bc/) : alias ZipRider, exploitation Mount Washington, 1 Strathcona Parkway. |
+| Carte | [OpenStreetMap — emprise du resort](https://www.openstreetmap.org/relation/10664978) : centre approximatif 49,7505049 N, 125,3021937 O. Cette coordonnée ne désigne pas le guichet ni une plateforme de tyrolienne. |
+
+Le [contrôle final](mt-washington-audit.json) et les [reçus](mt-washington-receipts.json) distinguent les cinq lots de données, dont le dernier à 08:11:48.026 UTC, des deux lots de visibilité et de la [publication Facebook](https://www.facebook.com/1285475681307050/posts/122125008891424431). L’audit atteint 86/100 sans blocage ; huit fiches, huit historiques et huit articles sont accessibles. Aucun visuel sans licence de réutilisation précise n’a été importé.
