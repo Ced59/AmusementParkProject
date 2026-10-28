@@ -285,6 +285,40 @@ Sur le VPS, dans le dossier de déploiement :
 ./scripts/backup-mongo.sh
 ```
 
+Une sauvegarde valide de moins de 24 heures est réutilisée lors des déploiements
+ordinaires. Le timer systemd `amusementpark-mongodb-backup.timer`, installé à chaque
+déploiement réussi, vérifie toutes les heures si une nouvelle copie est nécessaire.
+Cela donne une sauvegarde environ toutes les 24 à 25 heures, même sans déploiement.
+La maintenance explicite de MongoDB force toujours une sauvegarde fraîche ; une
+copie manuelle immédiate utilise `./scripts/backup-mongo.sh --force`.
+
+Les variables GitHub suivantes sont reportées dans le `.env` de production :
+
+| Variable | Défaut | Effet |
+| --- | --- | --- |
+| `BACKUP_SCHEDULE_ENABLED` | `true` | Active le timer indépendant des déploiements. |
+| `BACKUP_INTERVAL_HOURS` | `24` | Délai minimum entre deux copies ordinaires. |
+| `BACKUP_RETENTION_COUNT` | `14` | Nombre maximum de copies. |
+| `BACKUP_MAX_TOTAL_MIB` | `8192` | Plafond total de 8 Gio. |
+| `BACKUP_MIN_RETAINED` | `3` | Copies les plus récentes protégées de la purge. |
+
+La purge supprime les plus anciennes copies jusqu'au respect des deux plafonds,
+après création réussie ou réutilisation d'une archive valide. Si les trois copies
+protégées dépassent à elles seules le budget, elles sont conservées avec un warning
+dans le journal. Les autres dossiers de sauvegarde et les fichiers étrangers ne
+sont jamais concernés. Une archive partielle est supprimée en cas d'échec et ne
+déclenche aucune purge. L'intégrité gzip est vérifiée avant publication atomique ;
+la dernière validation est mémorisée avec la signature du fichier pour éviter de
+relire la même archive à chaque déploiement.
+
+Le job planifié partage le verrou de déploiement : il attend la fin d'une installation
+et ne concurrence pas une autre sauvegarde. Pour examiner la configuration :
+
+```bash
+systemctl list-timers amusementpark-mongodb-backup.timer
+journalctl -u amusementpark-mongodb-backup.service -n 30
+```
+
 
 ## Note MinIO
 

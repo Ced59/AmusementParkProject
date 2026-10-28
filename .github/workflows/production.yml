@@ -171,6 +171,7 @@ jobs:
           deploy/scripts/tests/static-seo-edge.test.sh
           deploy/scripts/tests/personal-ranking-cutover.test.sh
           deploy/scripts/tests/shared-infrastructure-maintenance-env.test.sh
+          bash deploy/scripts/tests/mongodb-backup.test.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh
           python3 -m unittest deploy/scripts/tests/test_ssr_warmup_support.py
@@ -673,6 +674,11 @@ jobs:
       ADMIN_USER_EMAIL: ${{ secrets.PROD_ADMIN_USER_EMAIL }}
       ADMIN_USER_PASSWORD: ${{ secrets.PROD_ADMIN_USER_PASSWORD }}
       BACKUP_BEFORE_DEPLOY: ${{ vars.BACKUP_BEFORE_DEPLOY || 'true' }}
+      BACKUP_SCHEDULE_ENABLED: ${{ vars.BACKUP_SCHEDULE_ENABLED || 'true' }}
+      BACKUP_INTERVAL_HOURS: ${{ vars.BACKUP_INTERVAL_HOURS || '24' }}
+      BACKUP_RETENTION_COUNT: ${{ vars.BACKUP_RETENTION_COUNT || '14' }}
+      BACKUP_MAX_TOTAL_MIB: ${{ vars.BACKUP_MAX_TOTAL_MIB || '8192' }}
+      BACKUP_MIN_RETAINED: ${{ vars.BACKUP_MIN_RETAINED || '3' }}
       DEPLOY_ZERO_DOWNTIME_ENABLED: ${{ vars.DEPLOY_ZERO_DOWNTIME_ENABLED || 'true' }}
       SHARED_INFRASTRUCTURE_MAINTENANCE: ${{ (github.event_name == 'workflow_dispatch' && github.run_attempt == 1 && inputs.shared_infrastructure_maintenance) || 'none' }}
       RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION: ${{ vars.RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION || 'true' }}

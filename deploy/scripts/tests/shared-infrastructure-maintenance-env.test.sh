@@ -56,6 +56,26 @@ default_env_file="${temp_dir}/default.env"
 grep -Fqx 'SHARED_INFRASTRUCTURE_MAINTENANCE=none' "${default_env_file}"
 "${deploy_scripts_dir}/validate-production-env.sh" "${default_env_file}"
 
+for setting in BACKUP_SCHEDULE_ENABLED=true BACKUP_INTERVAL_HOURS=24 BACKUP_RETENTION_COUNT=14 BACKUP_MAX_TOTAL_MIB=8192 BACKUP_MIN_RETAINED=3; do
+  grep -Fqx "${setting}" "${default_env_file}"
+done
+custom_backup_env_file="${temp_dir}/custom-backup.env"
+BACKUP_SCHEDULE_ENABLED=false BACKUP_INTERVAL_HOURS=48 BACKUP_RETENTION_COUNT=10 BACKUP_MAX_TOTAL_MIB=4096 BACKUP_MIN_RETAINED=2 \
+  "${deploy_scripts_dir}/write-production-env.sh" "${custom_backup_env_file}"
+for setting in BACKUP_SCHEDULE_ENABLED=false BACKUP_INTERVAL_HOURS=48 BACKUP_RETENTION_COUNT=10 BACKUP_MAX_TOTAL_MIB=4096 BACKUP_MIN_RETAINED=2; do
+  grep -Fqx "${setting}" "${custom_backup_env_file}"
+done
+"${deploy_scripts_dir}/validate-production-env.sh" "${custom_backup_env_file}"
+for setting in BACKUP_INTERVAL_HOURS=invalid BACKUP_RETENTION_COUNT=2 BACKUP_MAX_TOTAL_MIB=0 BACKUP_MIN_RETAINED=0 BACKUP_SCHEDULE_ENABLED=invalid; do
+  invalid_backup_env_file="${temp_dir}/invalid-backup.env"
+  cp "${default_env_file}" "${invalid_backup_env_file}"
+  printf '%s\n' "${setting}" >> "${invalid_backup_env_file}"
+  if "${deploy_scripts_dir}/validate-production-env.sh" "${invalid_backup_env_file}" >/dev/null 2>&1; then
+    echo "Invalid backup configuration was accepted: ${setting}" >&2
+    exit 1
+  fi
+done
+
 export SHARED_INFRASTRUCTURE_MAINTENANCE='mongodb'
 export BACKUP_BEFORE_DEPLOY='true'
 maintenance_env_file="${temp_dir}/maintenance.env"
