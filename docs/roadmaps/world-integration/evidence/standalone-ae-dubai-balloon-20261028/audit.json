@@ -1,0 +1,53 @@
+{
+  "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+  "entryId": "AE-candidate-discovery-2e3c4377ca5ef9",
+  "auditedAtUtc": "2026-10-28T17:01:09.111Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/b5460e06-51ba-4b52-81bd-445d3f144f8d/the-dubai-balloon-at-atlantis",
+  "score": 85,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "localizedStringsReviewed": 56,
+  "languages": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "encodingAndJargonOccurrences": {
+    "htmlEntities": 0,
+    "replacement": 0,
+    "mojibake": 0,
+    "internalJargon": 0
+  },
+  "duplicateNarrativeParagraphs": [],
+  "exportSha256": "64ec7f9457ce0777a54b10051489ce935b624ab9ecb6d2151dea3feed14ae614",
+  "publicPages200": 8,
+  "historyPages200": 8,
+  "historyArticles200": 8,
+  "mobilePagesWithoutOverflow": 8,
+  "content": {
+    "historyEvents": 1,
+    "publishedImages": 0,
+    "status": "TemporarilyClosed",
+    "openingYear": 2023,
+    "currentTickets": null
+  },
+  "facebook": {
+    "status": "Published",
+    "id": "70280852d1574f87aa24ae1af9159ef5",
+    "publishedAtUtc": "2026-10-28T16:59:33.785522Z",
+    "externalPostId": "1285475681307050_122125066095424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125066095424431"
+  },
+  "limitations": [
+    "L’exploitant annonce une pause des vols sans date de reprise ; les tarifs et horaires historiques encore affichés ne sont pas des offres actuelles.",
+    "Le constructeur indique 300 m dans sa fiche historique, mais l’exploitant annonce 225 m ; la fiche publique privilégie l’exploitant et évite un chiffre de hauteur non stable.",
+    "Le point OSM localise l’attraction ; l’entrée et la billetterie se trouvent à The Avenues.",
+    "Aucune photographie avec droits de réutilisation vérifiés n’a été importée.",
+    "Le statut administratif exporté reste ToReview après la demande Approved au client officiel."
+  ]
+}

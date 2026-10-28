@@ -3330,33 +3330,135 @@
     },
     {
       "entryId": "AE-candidate-discovery-2e3c4377ca5ef9",
-      "name": "The Dubai Balloon at Atlantis Dubai, United Arab Emirates",
-      "entityKind": "ToQualify",
+      "name": "The Dubai Balloon at Atlantis",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
-      "locality": null,
-      "siteId": null,
+      "locality": "Dubai, Palm Jumeirah",
+      "siteId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2023 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "TemporarilyClosed : flights paused without confirmed reopening (operator, 2026-10-28)",
+      "identityConfidence": "Billetterie propre et partenaires distincts dans Atlantis The Palm ; huit recherches officielles sans doublon.",
       "possibleMatches": [],
       "aliases": [
+        "Dubai Balloon Atlantis",
         "The Dubai Balloon at Atlantis Dubai, United Arab Emirates"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-28T16:55:59.120Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f898ab11-77cd-4000-9603-b782b5b67677",
+          "appliedAt": "2026-10-28T16:52:11.960Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+          "evidence": "PARK_DATA_EDITOR:apply:f898ab11-77cd-4000-9603-b782b5b67677",
+          "auditEvidence": null,
+          "summary": "Identité, statut suspendu, localisation et huit descriptions intégrés."
+        },
+        {
+          "eventId": "apply-fceb5281-cf56-44e3-9a2e-f816fb33c3fa",
+          "appliedAt": "2026-10-28T16:52:35.837Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+          "evidence": "PARK_DATA_EDITOR:apply:fceb5281-cf56-44e3-9a2e-f816fb33c3fa",
+          "auditEvidence": null,
+          "summary": "Tarification actuelle laissée vide pendant la pause."
+        },
+        {
+          "eventId": "apply-11dbdeb1-6ab2-477b-8907-485fe7110848",
+          "appliedAt": "2026-10-28T16:52:59.833Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+          "evidence": "PARK_DATA_EDITOR:apply:11dbdeb1-6ab2-477b-8907-485fe7110848",
+          "auditEvidence": null,
+          "summary": "Horaires actuels laissés vides pendant la pause."
+        },
+        {
+          "eventId": "apply-c3d8016d-2c6f-4a85-b12a-ad0c799903b6",
+          "appliedAt": "2026-10-28T16:53:23.818Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+          "evidence": "PARK_DATA_EDITOR:apply:c3d8016d-2c6f-4a85-b12a-ad0c799903b6",
+          "auditEvidence": null,
+          "summary": "Historique d’ouverture 2023 et article intégrés."
+        },
+        {
+          "eventId": "apply-84dae6a6-c57b-4653-b4ff-ec376ac47826",
+          "appliedAt": "2026-10-28T16:55:00.670Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+          "evidence": "PARK_DATA_EDITOR:apply:84dae6a6-c57b-4653-b4ff-ec376ac47826",
+          "auditEvidence": null,
+          "summary": "Mesures brutes retirées des textes publics après contrôle éditorial."
+        },
+        {
+          "eventId": "apply-32e36216-d0d0-471c-8b41-564e48f11215",
+          "appliedAt": "2026-10-28T16:55:36.441Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+          "evidence": "PARK_DATA_EDITOR:apply:32e36216-d0d0-471c-8b41-564e48f11215",
+          "auditEvidence": null,
+          "summary": "Note d’horaires distinguée de la note de prix."
+        },
+        {
+          "eventId": "apply-538a2ed5-901b-4841-9a1f-2a787a8d48a3",
+          "appliedAt": "2026-10-28T16:55:59.120Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+          "evidence": "PARK_DATA_EDITOR:apply:538a2ed5-901b-4841-9a1f-2a787a8d48a3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ae-dubai-balloon-20261028/audit.json",
+          "summary": "Résumés de l’article différenciés ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus ; surveiller la reprise officielle des vols, les nouveaux tarifs et horaires, et rechercher un visuel avec droits réutilisables.",
       "sources": [
         {
-          "label": "Aerophile — références constructeur",
+          "label": "Exploitant — pause des vols et expérience",
+          "url": "https://thedubaiballoon.com/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Exploitant — tarifs historiques encore affichés",
+          "url": "https://thedubaiballoon.com/pricing",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Exploitant — règles de vol",
+          "url": "https://thedubaiballoon.com/faq",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Exploitant — accès",
+          "url": "https://thedubaiballoon.com/plan-your-flight",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Exploitant — partenaires",
+          "url": "https://thedubaiballoon.com/about-us",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Aerophile — ouverture 2023",
           "url": "https://www.aerophile.com/en/clients/the-dubai-balloon-at-atlantis/",
-          "accessedAt": "2026-10-22"
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "OpenStreetMap — point de l’attraction",
+          "url": "https://www.openstreetmap.org/node/11919671087",
+          "accessedAt": "2026-10-28"
         },
         {
           "label": "Aerophile — références constructeur — annuaire",
@@ -3370,8 +3472,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "The Dubai Balloon at Atlantis Dubai, United Arab Emirates",
@@ -3384,7 +3486,14 @@
             "referenceId": "aerophile-the-dubai-balloon-at-atlantis"
           }
         ],
-        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+        "rationale": "Ballon captif à billetterie propre au sein du site Atlantis ; statut suspendu confirmé par l’exploitant et absence de doublon Park ou StandaloneAttraction."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-10-28T16:57:51.933Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/b5460e06-51ba-4b52-81bd-445d3f144f8d/the-dubai-balloon-at-atlantis",
+        "facebookPublishedAtUtc": "2026-10-28T16:59:33.785522Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125066095424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ae-dubai-balloon-20261028/receipts.json"
       }
     },
     {
