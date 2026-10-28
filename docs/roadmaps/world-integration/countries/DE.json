@@ -27886,29 +27886,134 @@
     },
     {
       "entryId": "DE-candidate-discovery-1f009f30180e49",
-      "name": "Weltballon — Air Service Berlin",
-      "entityKind": "ToQualify",
+      "name": "Weltballon Berlin",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
       "locality": "Berlin",
-      "siteId": null,
+      "siteId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T20:17:36.425Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2006 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Operating — vente active de billets et horaires météo-dépendants chez Air Service Berlin, vérifiés le 28 octobre 2026.",
+      "identityConfidence": "Hi-Flyer de 2000, ancien SAT.1 Ballon et Weltballon actuel reliés par l’histoire officielle de l’exploitant ; recherches Park et Standalone mondiales sans fiche correspondante avant création ; billetterie et emplacement propres à Zimmerstraße.",
       "possibleMatches": [],
       "aliases": [
         "Air Service Berlin Berlin, Germany",
-        "Air service Berlin Berlin, Germany"
+        "Air service Berlin Berlin, Germany",
+        "Hi-Flyer Berlin",
+        "SAT.1 Ballon",
+        "Weltballon",
+        "Air Service Berlin"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-10-28T20:16:28.724Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-75de45db-7f69-4d49-a872-ec3142628b9b",
+          "appliedAt": "2026-10-28T20:08:38.439Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:apply:75de45db-7f69-4d49-a872-ec3142628b9b",
+          "auditEvidence": null,
+          "summary": "Création privée, récit en huit langues et identité du ballon"
+        },
+        {
+          "eventId": "apply-2b89a2ba-59dd-4986-9230-aed5428101d9",
+          "appliedAt": "2026-10-28T20:11:18.753Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:apply:2b89a2ba-59dd-4986-9230-aed5428101d9",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels adulte, enfant, réduit et famille"
+        },
+        {
+          "eventId": "apply-d214b0c8-940c-4c12-8c26-257b9227c5aa",
+          "appliedAt": "2026-10-28T20:11:41.785Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:apply:d214b0c8-940c-4c12-8c26-257b9227c5aa",
+          "auditEvidence": null,
+          "summary": "Condition d’accès des fauteuils manuels standard"
+        },
+        {
+          "eventId": "apply-5cae46b3-5f2f-4d04-854f-9d20cf12fd57",
+          "appliedAt": "2026-10-28T20:12:32.997Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:apply:5cae46b3-5f2f-4d04-854f-9d20cf12fd57",
+          "auditEvidence": null,
+          "summary": "Chronologie sourcée : ouverture en 2000 et déplacement en 2006"
+        },
+        {
+          "eventId": "image-f053968662d743ad8c914deecd83dd84",
+          "appliedAt": "2026-10-28T20:12:55.067Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:image:f053968662d743ad8c914deecd83dd84",
+          "auditEvidence": null,
+          "summary": "Import de la première photographie spécifique, CC BY 4.0"
+        },
+        {
+          "eventId": "image-15400fa5be4e4f149b59ca6ce98ebb15",
+          "appliedAt": "2026-10-28T20:13:11.093Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:image:15400fa5be4e4f149b59ca6ce98ebb15",
+          "auditEvidence": null,
+          "summary": "Import de la deuxième photographie spécifique, CC BY 4.0"
+        },
+        {
+          "eventId": "apply-6455ddc0-e0e7-4935-b8b5-d586951da9d9",
+          "appliedAt": "2026-10-28T20:13:44.058Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:apply:6455ddc0-e0e7-4935-b8b5-d586951da9d9",
+          "auditEvidence": null,
+          "summary": "Publication des deux photographies sur la fiche masquée"
+        },
+        {
+          "eventId": "apply-2900937f-f3a1-41fc-b038-083a66dd7b2c",
+          "appliedAt": "2026-10-28T20:14:07.751Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:apply:2900937f-f3a1-41fc-b038-083a66dd7b2c",
+          "auditEvidence": null,
+          "summary": "Publication des deux jalons historiques"
+        },
+        {
+          "eventId": "apply-82fe2db3-72d6-4d9c-9f6d-333806eeaed1",
+          "appliedAt": "2026-10-28T20:15:27.163Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:apply:82fe2db3-72d6-4d9c-9f6d-333806eeaed1",
+          "auditEvidence": null,
+          "summary": "Légendes photographiques distinctes dans huit langues"
+        },
+        {
+          "eventId": "apply-25e90524-0406-4ac8-b80d-ff3464bc2bd5",
+          "appliedAt": "2026-10-28T20:16:28.724Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+          "evidence": "PARK_DATA_EDITOR:apply:25e90524-0406-4ac8-b80d-ff3464bc2bd5",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-weltballon-20261028/weltballon-audit.json",
+          "summary": "Description et crédit spécifiques de chaque photographie"
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus. Vérifier une heure de fermeture officielle cohérente et les éventuelles évolutions tarifaires avant de publier un calendrier ; ne pas republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -27924,6 +28029,36 @@
           "label": "Aerophile — références constructeur",
           "url": "https://www.aerophile.com/en/clients/air-service-berlin-2/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Air Service Berlin — Weltballon et billetterie",
+          "url": "https://berlinhelicopter.de/weltballon2/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Air Service Berlin — histoire du Hi-Flyer / Weltballon",
+          "url": "https://berlinhelicopter.de/geschichte/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Air Service Berlin — modèle et capacité",
+          "url": "https://berlinhelicopter.de/weltballon-mehr-erfahren/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "EasyCityPass — accessibilité",
+          "url": "https://www.m.easycitypass.com/de/partner/weltballon-berlin",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Weltballon 2026, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Berlin_HiFlyer_lub_2026-03-03_img01.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Weltballon 2026, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Berlin_HiFlyer_lub_2026-03-03_img02.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "discovery": {
@@ -27932,8 +28067,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "Weltballon — Air Service Berlin",
@@ -27958,7 +28093,30 @@
             "referenceId": "aerophile-air-service-berlin-2"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Ballon captif autonome à billet propre ; continuité historique entre Hi-Flyer/SAT.1 Ballon et le Weltballon actuel confirmée par Air Service Berlin. Création et publication vérifiées ; deux photos CC BY 4.0 spécifiques."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ab7e541b-ec8c-41b9-88fa-2bd670ecbf99/weltballon-berlin",
+          "publishedAtUtc": "2026-10-28T20:17:25.262Z",
+          "verifiedAtUtc": "2026-10-28T20:17:36.425Z",
+          "evidence": "PARK_DATA_EDITOR:apply:9dc3e5f9-0ff8-4b1a-b4ef-70ff127bf665"
+        },
+        "facebook": {
+          "id": "97201f976dc94aecb5c1a6f060ede473",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T20:18:23.120Z",
+          "externalPostId": "1285475681307050_122125088199424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125088199424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:97201f976dc94aecb5c1a6f060ede473"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-weltballon-20261028/weltballon-audit.json",
+        "score": 92,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
