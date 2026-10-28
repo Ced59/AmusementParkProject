@@ -33,12 +33,12 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 52 |
+| Fiches privées existantes à intégrer | 82 | 51 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
-| Fiches historiques privées existantes | 10 | 3 |
-| Parcs historiques absents de la photographie FR | 20 | 20 |
+| Fiches historiques privées existantes | 10 | 4 |
+| Parcs historiques absents de la photographie FR | 20 | 19 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **135** |
+| **Total** | **225** | **134** |
 
 ## 1. Fiches publiques à compléter
 
@@ -107,7 +107,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Winnoland — `31f07250-ec46-4660-84a1-62e7e6540b05`
 - [ ] Yaka-jouer — `51bd6d52-cd44-447a-b779-58ef47a55d04`
 - [ ] Youpiland — `578f9edc-e057-46d4-973c-0da3dc831364`
-- [ ] Zygo Park — `b2dca918-9747-4623-a0c0-38e89634aaff`
+- [ ] Zygo Park — `b2dca918-9747-4623-a0c0-38e89634aaff` — **reclassé historique, suivi en section 4**, identité Zygofolis / Zygo Parc confirmée le 28 octobre 2026 ; hors compteur des parcs actuels.
 
 ## 3. Parcs en activité absents de la photographie FR
 
@@ -185,6 +185,8 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc de Lomme — `a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`
 - [x] Ty'Bamboo — `6919c77b-1865-444d-8c5c-964b255d9c27` — clôture conservée le 28 octobre 2026 ; audit final 98/100 et Facebook Published.
 
+- [ ] Zygo Park / Zygofolis — `b2dca918-9747-4623-a0c0-38e89634aaff` — Nice ; intégration reprise sur la fiche existante, deux montagnes russes historiques préservées.
+
 ## 5. Parcs historiques absents de la photographie FR
 
 - [ ] American Park — Marseille — 1910-1914
@@ -206,7 +208,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Playmobil FunPark Fresnes — Fresnes — 1999-2022
 - [ ] Tivoli — Paris — 1730-1842
 - [ ] Village de la Droséra - Forez Miniature — Jeansagnière — 1992-2009
-- [ ] Zygofolis — Nice — 1987-1991
+- [ ] Zygofolis — Nice — 1987-1991 — **doublon de dossier conservé, hors dossiers actifs** : même parc que Zygo Park / Zygo Parc (`b2dca918-9747-4623-a0c0-38e89634aaff`), suivi en section 4.
 
 ## 6. Attractions autonomes à migrer ou intégrer
 
@@ -465,3 +467,10 @@ La [fiche historique](https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5
 Les recherches couvrent les archives de l’exploitant, la presse, les photographies de visiteurs et l’orthophotographie IGN de 2012. **25 attractions sur 27 sont illustrées**, neuf lieux importants sur 13 ont au moins trois photos et **14 lieux sur 34 sont géolocalisés**. Les images du musée d’arts forains, du terrain de football et des toilettes, vingt positions précises et les plans annuels restent non retrouvés. La locomotive décorative est conservée masquée, sans la transformer en attraction. Les limites de rendu de l’interface historique et d’un libellé de zone sont également consignées dans l’audit.
 
 La dernière intégration réelle est la réparation canonique de l’histoire du **2026-10-28T08:12:12.086Z** ; les dates de publication restent séparées, et la date exacte du post Facebook reste inconnue plutôt qu’inventée. [Audit final et preuves](world-integration/evidence/france-historical-20261022/ty-bamboo-final-audit.json). Le périmètre national historique conserve **135 dossiers actifs : 112 principaux, 23 historiques et aucune standalone** ; ces compteurs ne remplacent pas le registre mondial fusionné. **Sixième clôture du lot**, sans PR avant dix parcs terminés et sans montée de version pour le suivi documentaire.
+
+
+### Reprise du 28 octobre 2026 : Fresnes et Zygofolis
+
+Playmobil FunPark Fresnes a reçu 19 fiches internes en huit langues, 24 médias, six jalons et un article développé. L’audit éditorial corrigé ne renvoie aucun bloqueur API ; le score projeté reste 92/100. La fiche demeure masquée et aucune annonce Facebook n’a encore été envoyée : une exception nommée a été demandée pour les lacunes factuelles précisément documentées. [Audit de contenu](world-integration/evidence/france-historical-20261022/playmobil-fresnes-content-audit.json) et [lacunes](world-integration/evidence/france-historical-20261022/playmobil-fresnes-source-gaps.json). Aucune clôture ajoutée.
+
+Le rapprochement officiel confirme que le candidat Zygofolis correspond à la fiche masquée Zygo Park. Les deux lignes et leurs identifiants sont conservés, avec un seul dossier actif. La fiche existante est reclassée historique ; son ancien statut Operating sera corrigé pendant l’intégration. [Preuve de rapprochement](world-integration/evidence/france-historical-20261022/zygofolis-identity-reconciliation.json). Le périmètre national conserve **134 dossiers actifs : 111 principaux, 23 historiques et aucune standalone**. Le lot reste à **six clôtures** ; aucune PR avant dix parcs terminés et aucune hausse de version pour ce suivi.

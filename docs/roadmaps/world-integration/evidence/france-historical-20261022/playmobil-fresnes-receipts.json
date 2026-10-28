@@ -1,0 +1,718 @@
+{
+  "entryId": "FR-candidate-13b50050620a99",
+  "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+  "name": "Playmobil FunPark Fresnes",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-66d3d7a3-8744-4dc9-bcd7-5e3c99b2d9ec",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T16:55:11.5286251Z",
+      "appliedAt": "2026-10-28T16:55:11.528Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "c4c6284690c27ceaa334e67cab28ddc39482b012ad209d9900295d114d744355",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDate",
+        "closingDateText",
+        "openingDateText",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création masquée du parc historique Playmobil FunPark Fresnes et de son exploitant Jeux Jouets Services après quatre recherches officielles sans doublon ; dates sourcées 1999-08 et 2022-07-31, intégration éditoriale en cours."
+    },
+    {
+      "eventId": "apply-443a8a30-299f-4def-a937-3bdce122a94a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T17:03:32.5529399Z",
+      "appliedAt": "2026-10-28T17:03:32.552Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "e9746d6ef51e6b1a9b3ad5d90b1594e8d6512a1d13ae4a6671ae6eef01dfb9f9",
+      "counts": {
+        "created": 19,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.accessConditions",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "position",
+        "type"
+      ],
+      "summary": "Inventaire historique masqué : 19 lieux dont 12 aires de jeux, restaurant, boutique, accueil, entrée, deux sanitaires et chapiteau ; sources officielles archivées et reportages, GPS parc issu du lien de l’exploitant, dates individuelles inconnues préservées."
+    },
+    {
+      "eventId": "apply-6d6ff4d0-5777-485c-bccc-3ce0285833c6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T17:07:58.4158451Z",
+      "appliedAt": "2026-10-28T17:07:58.415Z",
+      "receiptFile": "04-park-apply.receipt.json",
+      "receiptSha256": "1d45b780b2675b94fa5e07e59a421bebf0b5fc292d29f3beca7de618a6d07ef5",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions éditoriales du parc ajoutées dans les huit langues publiques, six paragraphes et trois intertitres spécifiques ; corpus personnellement relu, parc toujours masqué."
+    },
+    {
+      "eventId": "apply-d831ea26-5ef5-4443-9e9a-179d173bbb5e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T17:18:09.9725064Z",
+      "appliedAt": "2026-10-28T17:18:09.972Z",
+      "receiptFile": "04-items-a-v2-apply.receipt.json",
+      "receiptSha256": "c9f40962c9a94ec0d320bd2d5babef7f49bf0b7143edbdd5cfee0186c0b5fa5c",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions en huit langues des châteaux des chevaliers et princesses, bateau pirate, ferme et aire des tout-petits ; scènes photographiques vérifiées, premières 5 fiches sur 19 rédigées."
+    },
+    {
+      "eventId": "apply-ccd3a806-5b98-4592-9cc4-e76d883395dc",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T17:22:18.905252Z",
+      "appliedAt": "2026-10-28T17:22:18.905Z",
+      "receiptFile": "04-items-b-apply.receipt.json",
+      "receiptSha256": "a92bc4647a39a7354efe6586ee545c10e335f25285f6d95ff55b30c9f714a921",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions en huit langues des univers police, pompiers, chantier, maisons/commerçants et cirque miniature ; 10 fiches historiques sur 19 rédigées."
+    },
+    {
+      "eventId": "apply-95fc44bf-0d6e-4fb4-8c1f-65cd3c68b4ac",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T17:25:58.6917162Z",
+      "appliedAt": "2026-10-28T17:25:58.691Z",
+      "receiptFile": "04-items-c-apply.receipt.json",
+      "receiptSha256": "fea5ae54475d23279bc0c308e98737a8db9aad25ad14936fd62642496c4a2479",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions en huit langues du zoo miniature, dinosaures, entrée du château, restauration et boutique ; 15 fiches historiques sur 19 rédigées, limites de détail des deux univers peu documentés conservées pour audit."
+    },
+    {
+      "eventId": "apply-32a1110a-44e7-4cac-a97d-889cdac51b15",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T17:29:24.535332Z",
+      "appliedAt": "2026-10-28T17:29:24.535Z",
+      "receiptFile": "04-items-d-v2-apply.receipt.json",
+      "receiptSha256": "2f47303d889897e2f9eb2c7bda06c0da0f4e953adfc99aeb0dd77a7cc515c917",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions en huit langues de l’accueil, des deux blocs sanitaires et du chapiteau ; 19 fiches sur 19 et parc rédigés, médias et histoire restant avant audit final."
+    },
+    {
+      "eventId": "import-photo-a7c9e2cf296d4474933308e23d1f96aa-2026-10-28T173153.362Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:31:53.362Z",
+      "appliedAt": "2026-10-28T17:31:53.362Z",
+      "receiptFile": "05-logo-import-receipt.json",
+      "receiptSha256": "9f1476873a581f45c96fd1ead47de0bfe5898b895b843f52242950bfa9d72b37",
+      "imageId": "a7c9e2cf296d4474933308e23d1f96aa",
+      "ownerId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "createdAt": "2026-10-28T17:31:49.82Z",
+      "sourceUrl": "https://web.archive.org/web/20171011053719id_/http://company.playmobil.com/Company/sites/default/files/2017-05/BAT01-PLAYMOBIL-CALENDRIER-ANIM%20GHOSTBUSTERS.pdf",
+      "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-a8ba40a1272e4e40b09a4cd0e3819b40-2026-10-28T173441.407Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:34:41.407Z",
+      "appliedAt": "2026-10-28T17:34:41.407Z",
+      "receiptFile": "05-park-hall-import-receipt.json",
+      "receiptSha256": "8cdeb589ac3022e59ccc16d615ee97324bef0d6d3dbbe57483ce6404f21bef10",
+      "imageId": "a8ba40a1272e4e40b09a4cd0e3819b40",
+      "ownerId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "createdAt": "2026-10-28T17:34:37.715Z",
+      "sourceUrl": "https://i0.wp.com/www.familyglobe-trotters.com/wp-content/uploads/2022/03/IMG_3379.jpg?resize=1024%2C683&ssl=1",
+      "summary": "Import privé du média historique 05-park-hall, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e39b6c660fd64c6dac0cab6a0a0cede7-2026-10-28T173458.171Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:34:58.171Z",
+      "appliedAt": "2026-10-28T17:34:58.171Z",
+      "receiptFile": "05-park-facade-import-receipt.json",
+      "receiptSha256": "793dc481a9bd2fca2b84fdcbcac9c480a5dc2cb626e322ca6d3b7b18ed6eb3a3",
+      "imageId": "e39b6c660fd64c6dac0cab6a0a0cede7",
+      "ownerId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "createdAt": "2026-10-28T17:34:54.672Z",
+      "sourceUrl": "https://i0.wp.com/www.familyglobe-trotters.com/wp-content/uploads/2022/03/IMG_3294.jpg?resize=1200%2C1800&ssl=1",
+      "summary": "Import privé du média historique 05-park-facade, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-1d182b49c0994558be9754d6f853ed19-2026-10-28T173513.746Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:35:13.746Z",
+      "appliedAt": "2026-10-28T17:35:13.746Z",
+      "receiptFile": "05-park-aircraft-import-receipt.json",
+      "receiptSha256": "190190474f3e978c8071fc6d744bea4cfe88daef5316c65cf20f7041ccc44938",
+      "imageId": "1d182b49c0994558be9754d6f853ed19",
+      "ownerId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "createdAt": "2026-10-28T17:35:10.266Z",
+      "sourceUrl": "https://i0.wp.com/www.familyglobe-trotters.com/wp-content/uploads/2022/03/IMG_3336.jpg?resize=1024%2C683&ssl=1",
+      "summary": "Import privé du média historique 05-park-aircraft, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-22a8dc6e0af248828f77a2deae49e305-2026-10-28T173531.684Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:35:31.684Z",
+      "appliedAt": "2026-10-28T17:35:31.684Z",
+      "receiptFile": "05-knights-main-import-receipt.json",
+      "receiptSha256": "19201b124ba303aa6e600ee5ce0bc870bcef63d4b9b5589a93f9bc9f168ae91c",
+      "imageId": "22a8dc6e0af248828f77a2deae49e305",
+      "ownerId": "8063ad83-ef24-438a-8e18-73447bcb3367",
+      "createdAt": "2026-10-28T17:35:28.183Z",
+      "sourceUrl": "https://web.archive.org/web/20171027161618id_/http://company.playmobil.com/Company/sites/default/files/inline-images/PLAYMOBIL_FunPark_Paris.jpg",
+      "summary": "Import privé du média historique 05-knights-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4b288d0e8336453880862c51d84be591-2026-10-28T173604.350Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:36:04.35Z",
+      "appliedAt": "2026-10-28T17:36:04.350Z",
+      "receiptFile": "05-firefighters-main-import-receipt.json",
+      "receiptSha256": "5769177c6f80c078c2bd551c8161db16e403c8fa8668d02dbd8f2b5b845774d5",
+      "imageId": "4b288d0e8336453880862c51d84be591",
+      "ownerId": "a370a43d-a4eb-485a-a6b6-701d9b91ae83",
+      "createdAt": "2026-10-28T17:36:00.614Z",
+      "sourceUrl": "https://web.archive.org/web/20171027160642id_/http://company.playmobil.com/Company/sites/default/files/inline-images/Jouer_en_famille_au_PLAYMOBIL_FunPark.jpg",
+      "summary": "Import privé du média historique 05-firefighters-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e34a98288fc748598c4cc29efb388221-2026-10-28T173619.114Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:36:19.114Z",
+      "appliedAt": "2026-10-28T17:36:19.114Z",
+      "receiptFile": "05-restaurant-main-import-receipt.json",
+      "receiptSha256": "63d4c50fca46b7ce791db5373c507c3a73f0c23bf42d2acdbe3ceeafb51de65a",
+      "imageId": "e34a98288fc748598c4cc29efb388221",
+      "ownerId": "3bfc608b-09cf-4063-8f09-1eac4fd091ed",
+      "createdAt": "2026-10-28T17:36:15.633Z",
+      "sourceUrl": "https://web.archive.org/web/20171027161236id_/http://company.playmobil.com/Company/sites/default/files/inline-images/Espace_restauration_PLAYMOBIL_FunPark.jpg",
+      "summary": "Import privé du média historique 05-restaurant-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b421ddc853224f5ab968b8e580afd2cd-2026-10-28T173638.430Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:36:38.43Z",
+      "appliedAt": "2026-10-28T17:36:38.430Z",
+      "receiptFile": "05-shop-main-import-receipt.json",
+      "receiptSha256": "81fe6e4fb7e6630b792824dead409831098d12f73ad87382972b6adcce150ccd",
+      "imageId": "b421ddc853224f5ab968b8e580afd2cd",
+      "ownerId": "edd7c8ac-d0b6-4bf4-88e3-bd5202641754",
+      "createdAt": "2026-10-28T17:36:35.025Z",
+      "sourceUrl": "https://web.archive.org/web/20171027161032id_/http://company.playmobil.com/Company/sites/default/files/inline-images/Boutique_PLAYMOBIL_FunPark.jpg",
+      "summary": "Import privé du média historique 05-shop-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-eb6dc1e6aff64aecbcadf60bd3f92373-2026-10-28T174525.478Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:45:25.478Z",
+      "appliedAt": "2026-10-28T17:45:25.478Z",
+      "receiptFile": "05-pirates-main-import-receipt.json",
+      "receiptSha256": "8c9e9694a07e9fe888391e9e8eb3c9598e2bab9bd9781b9e29ba0b9e5a067752",
+      "imageId": "eb6dc1e6aff64aecbcadf60bd3f92373",
+      "ownerId": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+      "createdAt": "2026-10-28T17:45:21.739Z",
+      "sourceUrl": "https://cdn.sortiraparis.com/images/80/1013/41445-bateau-pirates-playmobil-funpark.jpg",
+      "summary": "Import privé du média historique 05-pirates-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e67183f7626142dd9ed47b6bdfe50f36-2026-10-28T174539.992Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:45:39.992Z",
+      "appliedAt": "2026-10-28T17:45:39.992Z",
+      "receiptFile": "05-princesses-main-import-receipt.json",
+      "receiptSha256": "8d2b1394de4b7a042ef2807d9c627c7532688532ffd6a6f557b5e4f0b1a833ed",
+      "imageId": "e67183f7626142dd9ed47b6bdfe50f36",
+      "ownerId": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+      "createdAt": "2026-10-28T17:45:36.572Z",
+      "sourceUrl": "https://cdn.sortiraparis.com/images/80/1013/59066-playmobil-funpark.jpg",
+      "summary": "Import privé du média historique 05-princesses-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-2c593f08ae314058ba59770e1ad1b156-2026-10-28T174554.333Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:45:54.333Z",
+      "appliedAt": "2026-10-28T17:45:54.333Z",
+      "receiptFile": "05-farm-main-import-receipt.json",
+      "receiptSha256": "9c7a44bce52bc4c895818ee50ce144c40b35b34beec69fef4dc8938588852811",
+      "imageId": "2c593f08ae314058ba59770e1ad1b156",
+      "ownerId": "186b3503-feec-405b-a2e4-f3011daa4fc7",
+      "createdAt": "2026-10-28T17:45:50.755Z",
+      "sourceUrl": "https://cdn.sortiraparis.com/images/80/1013/41486-playmobil-funpark.jpg",
+      "summary": "Import privé du média historique 05-farm-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-8270e86e21414be8b0ac17ff6359538e-2026-10-28T174608.639Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:46:08.639Z",
+      "appliedAt": "2026-10-28T17:46:08.639Z",
+      "receiptFile": "05-toddlers-main-import-receipt.json",
+      "receiptSha256": "0c2d8de47b4b3617f81a721621ede124c9f9da1e75673af2323ab8d07211ec1d",
+      "imageId": "8270e86e21414be8b0ac17ff6359538e",
+      "ownerId": "19d1d54a-8f44-4218-af01-32146ee2c3ee",
+      "createdAt": "2026-10-28T17:46:05.186Z",
+      "sourceUrl": "https://cdn.sortiraparis.com/images/80/1013/41490-playmobil-funpark.jpg",
+      "summary": "Import privé du média historique 05-toddlers-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4af6c51df416438f945f85c326a8adc7-2026-10-28T174622.450Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:46:22.45Z",
+      "appliedAt": "2026-10-28T17:46:22.450Z",
+      "receiptFile": "05-construction-main-import-receipt.json",
+      "receiptSha256": "c2bccfefcb0aebadb08ccd62a5e36534a7dae2d73ba21d2a7d6e00846510d771",
+      "imageId": "4af6c51df416438f945f85c326a8adc7",
+      "ownerId": "ab96c94c-4fc8-4cb6-9c3c-b474a220af75",
+      "createdAt": "2026-10-28T17:46:19.031Z",
+      "sourceUrl": "https://cdn.sortiraparis.com/images/80/1013/41449-tracteurs-playmobil-funpark.jpg",
+      "summary": "Import privé du média historique 05-construction-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e816a0c924e640078421c1761e20cd94-2026-10-28T174636.457Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:46:36.457Z",
+      "appliedAt": "2026-10-28T17:46:36.457Z",
+      "receiptFile": "05-circus-main-import-receipt.json",
+      "receiptSha256": "a504523efed164e21bb998a1fbf432b9944c0c46f756607c6596e744bfc4a701",
+      "imageId": "e816a0c924e640078421c1761e20cd94",
+      "ownerId": "e544659f-fb7c-4a35-90b0-20822387ef2e",
+      "createdAt": "2026-10-28T17:46:33.083Z",
+      "sourceUrl": "https://i0.wp.com/www.familyglobe-trotters.com/wp-content/uploads/2022/03/IMG_3366-1.jpg?resize=1024%2C683&ssl=1",
+      "summary": "Import privé du média historique 05-circus-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-29cc6d5fd9404587b87639a005d0182f-2026-10-28T174650.519Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:46:50.519Z",
+      "appliedAt": "2026-10-28T17:46:50.519Z",
+      "receiptFile": "05-police-main-import-receipt.json",
+      "receiptSha256": "38f3166bc3ced199dabde72c2d6690081ccc6c33d79580b0cc8dc88d29810be0",
+      "imageId": "29cc6d5fd9404587b87639a005d0182f",
+      "ownerId": "ea9a2965-fd8c-47df-b5cd-ac45d45fd03c",
+      "createdAt": "2026-10-28T17:46:47.137Z",
+      "sourceUrl": "https://i0.wp.com/www.familyglobe-trotters.com/wp-content/uploads/2022/03/IMG_3342.jpg?resize=1024%2C902&ssl=1",
+      "summary": "Import privé du média historique 05-police-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b81330626851475b8c90ec66218057f0-2026-10-28T174705.086Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:47:05.086Z",
+      "appliedAt": "2026-10-28T17:47:05.086Z",
+      "receiptFile": "05-houses-main-import-receipt.json",
+      "receiptSha256": "70579a474af0aa5bbd825ac5f1d64fa201185e9396db104b27dafdf1033d57ab",
+      "imageId": "b81330626851475b8c90ec66218057f0",
+      "ownerId": "4be5431e-f824-4be0-b654-4a4df301f9b0",
+      "createdAt": "2026-10-28T17:47:01.584Z",
+      "sourceUrl": "https://i0.wp.com/www.familyglobe-trotters.com/wp-content/uploads/2022/03/IMG_3338.jpg?resize=1024%2C789&ssl=1",
+      "summary": "Import privé du média historique 05-houses-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-19d2a8aefb0e47f695922e2b36c4478a-2026-10-28T174718.937Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:47:18.937Z",
+      "appliedAt": "2026-10-28T17:47:18.937Z",
+      "receiptFile": "05-welcome-main-import-receipt.json",
+      "receiptSha256": "9fad2c0e827293b8b5f7ecfa0c3fdf8beebef896a1c5e6455211aaae151adf86",
+      "imageId": "19d2a8aefb0e47f695922e2b36c4478a",
+      "ownerId": "93bcec4b-5af6-4b68-9cba-222fb1367b67",
+      "createdAt": "2026-10-28T17:47:15.536Z",
+      "sourceUrl": "https://i0.wp.com/www.familyglobe-trotters.com/wp-content/uploads/2022/03/IMG_3352.jpg?resize=506%2C1024&ssl=1",
+      "summary": "Import privé du média historique 05-welcome-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b04ad77cf27b424191274c6a1b429646-2026-10-28T174734.883Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:47:34.883Z",
+      "appliedAt": "2026-10-28T17:47:34.883Z",
+      "receiptFile": "05-knights-guard-import-receipt.json",
+      "receiptSha256": "2622c55c989899e66bd5dd29cabf961d5fa39f8ee9a2860db29507da7a918c89",
+      "imageId": "b04ad77cf27b424191274c6a1b429646",
+      "ownerId": "8063ad83-ef24-438a-8e18-73447bcb3367",
+      "createdAt": "2026-10-28T17:47:30.785Z",
+      "sourceUrl": "https://i0.wp.com/www.familyglobe-trotters.com/wp-content/uploads/2022/03/IMG_3358.jpg?resize=1024%2C754&ssl=1",
+      "summary": "Import privé du média historique 05-knights-guard, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5b1f1449cc074671b9ce587fd81a92a0-2026-10-28T174922.430Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:49:22.43Z",
+      "appliedAt": "2026-10-28T17:49:22.430Z",
+      "receiptFile": "05-knights-ramparts-import-receipt.json",
+      "receiptSha256": "5544535c2dda8170534b07113fc1c2242fbc7896fec97ef5ab34c7c6eebebf9a",
+      "imageId": "5b1f1449cc074671b9ce587fd81a92a0",
+      "ownerId": "8063ad83-ef24-438a-8e18-73447bcb3367",
+      "createdAt": "2026-10-28T17:49:19.013Z",
+      "sourceUrl": "https://cdn.sortiraparis.com/images/80/1013/41444-playmobil-funpark.jpg",
+      "summary": "Import privé du média historique 05-knights-ramparts, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-6d73703b754b4998bfb5f56e5dffffd6-2026-10-28T174936.818Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:49:36.818Z",
+      "appliedAt": "2026-10-28T17:49:36.818Z",
+      "receiptFile": "05-princesses-palaces-import-receipt.json",
+      "receiptSha256": "dc5a7ce7f0f0d79c49455b20d8c0f23991f3cfedc2f81a67f6b9abc5222119db",
+      "imageId": "6d73703b754b4998bfb5f56e5dffffd6",
+      "ownerId": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+      "createdAt": "2026-10-28T17:49:33.389Z",
+      "sourceUrl": "https://cdn.sortiraparis.com/images/80/1013/41442-chateau-princesse-playmobil-funpark.jpg",
+      "summary": "Import privé du média historique 05-princesses-palaces, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-fdf3cf3268cd4d48b36c5f89d40f8077-2026-10-28T174950.936Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:49:50.936Z",
+      "appliedAt": "2026-10-28T17:49:50.936Z",
+      "receiptFile": "05-pirates-boats-import-receipt.json",
+      "receiptSha256": "5ec3d4ee6f5c6acc96ab347f4ded37e10d7b79bf91117b331649481ea4d2d3a4",
+      "imageId": "fdf3cf3268cd4d48b36c5f89d40f8077",
+      "ownerId": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+      "createdAt": "2026-10-28T17:49:47.542Z",
+      "sourceUrl": "https://cdn.sortiraparis.com/images/80/1013/41446-bateaux-pirates-playmobil-funpark.jpg",
+      "summary": "Import privé du média historique 05-pirates-boats, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-7f9ae834d90b4925b65164e83d465305-2026-10-28T175005.833Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:50:05.833Z",
+      "appliedAt": "2026-10-28T17:50:05.833Z",
+      "receiptFile": "05-entrance-main-import-receipt.json",
+      "receiptSha256": "8f33d332631a989671bc38f22a51dc65367de08ae38d9c7d39decd4ef1548f86",
+      "imageId": "7f9ae834d90b4925b65164e83d465305",
+      "ownerId": "dd0ff973-daeb-41f0-9f9a-69b17d55394e",
+      "createdAt": "2026-10-28T17:50:02.199Z",
+      "sourceUrl": "https://web.archive.org/web/20171027161353id_/http://company.playmobil.com/Company/sites/default/files/inline-images/Les_super_4_au_PLAYMOBIL_FunPark.jpg",
+      "summary": "Import privé du média historique 05-entrance-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-74fd8fd9-d1a9-4c7d-a60e-2317e23f79a9",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T17:50:58.5423415Z",
+      "appliedAt": "2026-10-28T17:50:58.542Z",
+      "receiptFile": "05-operator-apply.receipt.json",
+      "receiptSha256": "3543c86b44e2d103d95eb69d3e009769773ada892ddfd615d100c873a3941056",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "closedYear",
+        "description.de",
+        "description.en",
+        "description.es",
+        "description.fr",
+        "description.it",
+        "description.nl",
+        "description.pl",
+        "description.pt",
+        "foundedYear",
+        "legalName"
+      ],
+      "summary": "Exploitant Jeux Jouets Services enrichi en huit langues ; dates légales distinctes de celles du parc, audit final restant."
+    },
+    {
+      "eventId": "import-photo-5c358142a8fe41b68e220d18fb59b94f-2026-10-28T175327.733Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T17:53:27.733Z",
+      "appliedAt": "2026-10-28T17:53:27.733Z",
+      "receiptFile": "05-park-june2022-import-receipt.json",
+      "receiptSha256": "f01888fce3705ac6ee9397a1cc8e12318aa5cf02258a18d163e981357985b150",
+      "imageId": "5c358142a8fe41b68e220d18fb59b94f",
+      "ownerId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "createdAt": "2026-10-28T17:53:24.211Z",
+      "sourceUrl": "https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/C6OZFMSHFNE7ZB7RQT6ZKDQ3LM.jpg",
+      "summary": "Import privé du média historique 05-park-june2022, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-2cc02d1e-581c-48c5-94ba-f4376d1eb8d0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T17:56:31.8758279Z",
+      "appliedAt": "2026-10-28T17:56:31.875Z",
+      "receiptFile": "08-park-timeline-apply.receipt.json",
+      "receiptSha256": "b668e390d91fe013341220560bbabbe72a4d83b3562785775d65339709607788",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Cinq jalons historiques sourcés en huit langues intégrés en brouillon ; dates partielles respectées, article et audit final restants."
+    },
+    {
+      "eventId": "apply-af1b2127-289c-49b6-8c2d-16b407665a1f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:01:09.990621Z",
+      "appliedAt": "2026-10-28T18:01:09.990Z",
+      "receiptFile": "08-park-article-apply.receipt.json",
+      "receiptSha256": "721d97ea49ac145cc3ac72f5696a27d92dc52340b89dcafc6740a0f883a1958d",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article historique développé en huit langues, cinq sections et huit paragraphes par langue, intégré en privé ; audit final restant."
+    },
+    {
+      "eventId": "apply-10a9f000-a68c-4540-8838-e69e43c57d4c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:08:27.6972252Z",
+      "appliedAt": "2026-10-28T18:08:27.697Z",
+      "receiptFile": "09-editorial-corrections-apply.receipt.json",
+      "receiptSha256": "fef39cbed8da1bbe737e5c523a0511a60a67e975d0e9f83f4ff4ea227eb4dc0a",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "altTexts.de",
+        "altTexts.en",
+        "altTexts.es",
+        "altTexts.fr",
+        "altTexts.it",
+        "altTexts.nl",
+        "altTexts.pl",
+        "altTexts.pt",
+        "descriptions.en"
+      ],
+      "summary": "Audit éditorial : deux descriptions anglaises corrigées et huit textes alternatifs précisés ; contrôles finaux et publication restants."
+    },
+    {
+      "eventId": "import-photo-edc00f4de3874625bd87c285b72663e7-2026-10-28T181409.784Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-28T18:14:09.784Z",
+      "appliedAt": "2026-10-28T18:14:09.784Z",
+      "receiptFile": "05-auction-2026-import-receipt.json",
+      "receiptSha256": "c63ba25532ef4b1831d93c36939f34a1933dd934301cde1324d8346d5d0ae2c2",
+      "imageId": "edc00f4de3874625bd87c285b72663e7",
+      "ownerId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "createdAt": "2026-10-28T18:14:06.161Z",
+      "sourceUrl": "https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/EICLEFR7VFF6NOAQD2WXRFVLEQ.jpg",
+      "summary": "Import privé du média historique 05-auction-2026, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-41504c15-c766-4e8f-96a7-772524bf4162",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:17:11.8655096Z",
+      "appliedAt": "2026-10-28T18:17:11.865Z",
+      "receiptFile": "09-recent-heritage-apply.receipt.json",
+      "receiptSha256": "33508e0f6a39123adbcdae708093bf60feabd82c230329e34240c60e89beadc2",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Actualité historique vérifiée : vente caritative des archives Playmobil en septembre 2026, sixième jalon et article complété dans huit langues avec la photographie réelle de la vente."
+    },
+    {
+      "eventId": "apply-11506192-84c0-4290-b702-a632be2fe093",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:27:13.0960869Z",
+      "appliedAt": "2026-10-28T18:27:13.096Z",
+      "receiptFile": "09-article-caption-correction-apply.receipt.json",
+      "receiptSha256": "496098db5d02ec70f675f5ab9433373dfca10f35f40660f59f68e1d89bab9466",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Correction du bloqueur éditorial : deux légendes illustrées de l’article réécrites dans les huit langues pour supprimer leur duplication avec les galeries."
+    }
+  ],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-93dfc0d2-da2a-4ff9-a26b-fcd45c399ce1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:24:34.2864084Z",
+      "appliedAt": "2026-10-28T18:24:34.286Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "b0d332ce26a79d09b801b7a77237e4dddcabb9544d8d4699629f96c0ff79cf80",
+      "counts": {
+        "created": 0,
+        "updated": 24,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication des 24 médias audités de Fresnes ; fiche du parc encore masquée."
+    },
+    {
+      "eventId": "apply-5284e69d-70a6-4adc-bb3f-96c378fa6c58",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-28T18:25:13.8335351Z",
+      "appliedAt": "2026-10-28T18:25:13.833Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "07c950682c4e9a1fe6aa61f2c739e3fb98cf1834f9a8e23518ba49f87c309e54",
+      "counts": {
+        "created": 0,
+        "updated": 26,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "article",
+        "isVisible"
+      ],
+      "summary": "Publication ciblée des 19 fiches internes, six jalons et article ; exploitant validé, parc Fresnes encore masqué."
+    }
+  ]
+}

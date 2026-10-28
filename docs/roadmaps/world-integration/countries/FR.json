@@ -23481,17 +23481,17 @@
       "name": "Playmobil FunPark Fresnes",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "Parc à thème couvert historique",
       "locality": "Fresnes",
-      "siteId": null,
+      "siteId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "Blocked",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-28",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Fermeture définitive confirmée le 31 juillet 2022",
-      "identityConfidence": "Parc historique couvert multi-espaces identifié par sources municipales, écomusée et exploitant ; trois recherches officielles sans résultat, dernier contrôle standalone Fresnes encore requis.",
+      "identityConfidence": "Quatre recherches officielles parcs/standalone Playmobil/Fresnes négatives avant création, identité recoupée par archives officielles, mairie et écomusée ; fiche créée et exportée par le client officiel.",
       "possibleMatches": [],
       "aliases": [
         "Playmobil FunPark Paris",
@@ -23499,9 +23499,380 @@
         "Playmobil Fun Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Dossier et lot initial préparés, sans création. PARK_DATA_EDITOR Status renvoie HTTP500 ; dernier déploiement40656256404 interrompu par no space left on device pendant la sauvegarde MongoDB. Rétablir le service, achever la recherche standalone Fresnes et rafraîchir les identités avant Preview/Apply. Preuve : docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-intake-blocked.json",
+      "lastDataIntegrationAt": "2026-10-28T18:27:13.096Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-66d3d7a3-8744-4dc9-bcd7-5e3c99b2d9ec",
+          "appliedAt": "2026-10-28T16:55:11.528Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-66d3d7a3-8744-4dc9-bcd7-5e3c99b2d9ec",
+          "auditEvidence": null,
+          "summary": "Création masquée du parc historique Playmobil FunPark Fresnes et de son exploitant Jeux Jouets Services après quatre recherches officielles sans doublon ; dates sourcées 1999-08 et 2022-07-31, intégration éditoriale en cours."
+        },
+        {
+          "eventId": "apply-443a8a30-299f-4def-a937-3bdce122a94a",
+          "appliedAt": "2026-10-28T17:03:32.552Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-443a8a30-299f-4def-a937-3bdce122a94a",
+          "auditEvidence": null,
+          "summary": "Inventaire historique masqué : 19 lieux dont 12 aires de jeux, restaurant, boutique, accueil, entrée, deux sanitaires et chapiteau ; sources officielles archivées et reportages, GPS parc issu du lien de l’exploitant, dates individuelles inconnues préservées."
+        },
+        {
+          "eventId": "apply-6d6ff4d0-5777-485c-bccc-3ce0285833c6",
+          "appliedAt": "2026-10-28T17:07:58.415Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-6d6ff4d0-5777-485c-bccc-3ce0285833c6",
+          "auditEvidence": null,
+          "summary": "Descriptions éditoriales du parc ajoutées dans les huit langues publiques, six paragraphes et trois intertitres spécifiques ; corpus personnellement relu, parc toujours masqué."
+        },
+        {
+          "eventId": "apply-d831ea26-5ef5-4443-9e9a-179d173bbb5e",
+          "appliedAt": "2026-10-28T17:18:09.972Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-d831ea26-5ef5-4443-9e9a-179d173bbb5e",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues des châteaux des chevaliers et princesses, bateau pirate, ferme et aire des tout-petits ; scènes photographiques vérifiées, premières 5 fiches sur 19 rédigées."
+        },
+        {
+          "eventId": "apply-ccd3a806-5b98-4592-9cc4-e76d883395dc",
+          "appliedAt": "2026-10-28T17:22:18.905Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-ccd3a806-5b98-4592-9cc4-e76d883395dc",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues des univers police, pompiers, chantier, maisons/commerçants et cirque miniature ; 10 fiches historiques sur 19 rédigées."
+        },
+        {
+          "eventId": "apply-95fc44bf-0d6e-4fb4-8c1f-65cd3c68b4ac",
+          "appliedAt": "2026-10-28T17:25:58.691Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-95fc44bf-0d6e-4fb4-8c1f-65cd3c68b4ac",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues du zoo miniature, dinosaures, entrée du château, restauration et boutique ; 15 fiches historiques sur 19 rédigées, limites de détail des deux univers peu documentés conservées pour audit."
+        },
+        {
+          "eventId": "apply-32a1110a-44e7-4cac-a97d-889cdac51b15",
+          "appliedAt": "2026-10-28T17:29:24.535Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-32a1110a-44e7-4cac-a97d-889cdac51b15",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues de l’accueil, des deux blocs sanitaires et du chapiteau ; 19 fiches sur 19 et parc rédigés, médias et histoire restant avant audit final."
+        },
+        {
+          "eventId": "import-photo-a7c9e2cf296d4474933308e23d1f96aa-2026-10-28T173153.362Z",
+          "appliedAt": "2026-10-28T17:31:53.362Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-a7c9e2cf296d4474933308e23d1f96aa-2026-10-28T173153.362Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a8ba40a1272e4e40b09a4cd0e3819b40-2026-10-28T173441.407Z",
+          "appliedAt": "2026-10-28T17:34:41.407Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-a8ba40a1272e4e40b09a4cd0e3819b40-2026-10-28T173441.407Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-hall, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e39b6c660fd64c6dac0cab6a0a0cede7-2026-10-28T173458.171Z",
+          "appliedAt": "2026-10-28T17:34:58.171Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-e39b6c660fd64c6dac0cab6a0a0cede7-2026-10-28T173458.171Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1d182b49c0994558be9754d6f853ed19-2026-10-28T173513.746Z",
+          "appliedAt": "2026-10-28T17:35:13.746Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-1d182b49c0994558be9754d6f853ed19-2026-10-28T173513.746Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-aircraft, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-22a8dc6e0af248828f77a2deae49e305-2026-10-28T173531.684Z",
+          "appliedAt": "2026-10-28T17:35:31.684Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-22a8dc6e0af248828f77a2deae49e305-2026-10-28T173531.684Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-knights-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4b288d0e8336453880862c51d84be591-2026-10-28T173604.350Z",
+          "appliedAt": "2026-10-28T17:36:04.350Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-4b288d0e8336453880862c51d84be591-2026-10-28T173604.350Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-firefighters-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e34a98288fc748598c4cc29efb388221-2026-10-28T173619.114Z",
+          "appliedAt": "2026-10-28T17:36:19.114Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-e34a98288fc748598c4cc29efb388221-2026-10-28T173619.114Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-restaurant-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b421ddc853224f5ab968b8e580afd2cd-2026-10-28T173638.430Z",
+          "appliedAt": "2026-10-28T17:36:38.430Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-b421ddc853224f5ab968b8e580afd2cd-2026-10-28T173638.430Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-shop-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-eb6dc1e6aff64aecbcadf60bd3f92373-2026-10-28T174525.478Z",
+          "appliedAt": "2026-10-28T17:45:25.478Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-eb6dc1e6aff64aecbcadf60bd3f92373-2026-10-28T174525.478Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pirates-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e67183f7626142dd9ed47b6bdfe50f36-2026-10-28T174539.992Z",
+          "appliedAt": "2026-10-28T17:45:39.992Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-e67183f7626142dd9ed47b6bdfe50f36-2026-10-28T174539.992Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-princesses-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2c593f08ae314058ba59770e1ad1b156-2026-10-28T174554.333Z",
+          "appliedAt": "2026-10-28T17:45:54.333Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-2c593f08ae314058ba59770e1ad1b156-2026-10-28T174554.333Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-farm-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8270e86e21414be8b0ac17ff6359538e-2026-10-28T174608.639Z",
+          "appliedAt": "2026-10-28T17:46:08.639Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-8270e86e21414be8b0ac17ff6359538e-2026-10-28T174608.639Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-toddlers-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4af6c51df416438f945f85c326a8adc7-2026-10-28T174622.450Z",
+          "appliedAt": "2026-10-28T17:46:22.450Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-4af6c51df416438f945f85c326a8adc7-2026-10-28T174622.450Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-construction-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e816a0c924e640078421c1761e20cd94-2026-10-28T174636.457Z",
+          "appliedAt": "2026-10-28T17:46:36.457Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-e816a0c924e640078421c1761e20cd94-2026-10-28T174636.457Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-circus-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-29cc6d5fd9404587b87639a005d0182f-2026-10-28T174650.519Z",
+          "appliedAt": "2026-10-28T17:46:50.519Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-29cc6d5fd9404587b87639a005d0182f-2026-10-28T174650.519Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-police-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b81330626851475b8c90ec66218057f0-2026-10-28T174705.086Z",
+          "appliedAt": "2026-10-28T17:47:05.086Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-b81330626851475b8c90ec66218057f0-2026-10-28T174705.086Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-houses-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-19d2a8aefb0e47f695922e2b36c4478a-2026-10-28T174718.937Z",
+          "appliedAt": "2026-10-28T17:47:18.937Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-19d2a8aefb0e47f695922e2b36c4478a-2026-10-28T174718.937Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-welcome-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b04ad77cf27b424191274c6a1b429646-2026-10-28T174734.883Z",
+          "appliedAt": "2026-10-28T17:47:34.883Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-b04ad77cf27b424191274c6a1b429646-2026-10-28T174734.883Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-knights-guard, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5b1f1449cc074671b9ce587fd81a92a0-2026-10-28T174922.430Z",
+          "appliedAt": "2026-10-28T17:49:22.430Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-5b1f1449cc074671b9ce587fd81a92a0-2026-10-28T174922.430Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-knights-ramparts, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6d73703b754b4998bfb5f56e5dffffd6-2026-10-28T174936.818Z",
+          "appliedAt": "2026-10-28T17:49:36.818Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-6d73703b754b4998bfb5f56e5dffffd6-2026-10-28T174936.818Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-princesses-palaces, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fdf3cf3268cd4d48b36c5f89d40f8077-2026-10-28T174950.936Z",
+          "appliedAt": "2026-10-28T17:49:50.936Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-fdf3cf3268cd4d48b36c5f89d40f8077-2026-10-28T174950.936Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pirates-boats, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7f9ae834d90b4925b65164e83d465305-2026-10-28T175005.833Z",
+          "appliedAt": "2026-10-28T17:50:05.833Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-7f9ae834d90b4925b65164e83d465305-2026-10-28T175005.833Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-entrance-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-74fd8fd9-d1a9-4c7d-a60e-2317e23f79a9",
+          "appliedAt": "2026-10-28T17:50:58.542Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-74fd8fd9-d1a9-4c7d-a60e-2317e23f79a9",
+          "auditEvidence": null,
+          "summary": "Exploitant Jeux Jouets Services enrichi en huit langues ; dates légales distinctes de celles du parc, audit final restant."
+        },
+        {
+          "eventId": "import-photo-5c358142a8fe41b68e220d18fb59b94f-2026-10-28T175327.733Z",
+          "appliedAt": "2026-10-28T17:53:27.733Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-5c358142a8fe41b68e220d18fb59b94f-2026-10-28T175327.733Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-june2022, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-2cc02d1e-581c-48c5-94ba-f4376d1eb8d0",
+          "appliedAt": "2026-10-28T17:56:31.875Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-2cc02d1e-581c-48c5-94ba-f4376d1eb8d0",
+          "auditEvidence": null,
+          "summary": "Cinq jalons historiques sourcés en huit langues intégrés en brouillon ; dates partielles respectées, article et audit final restants."
+        },
+        {
+          "eventId": "apply-af1b2127-289c-49b6-8c2d-16b407665a1f",
+          "appliedAt": "2026-10-28T18:01:09.990Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-af1b2127-289c-49b6-8c2d-16b407665a1f",
+          "auditEvidence": null,
+          "summary": "Article historique développé en huit langues, cinq sections et huit paragraphes par langue, intégré en privé ; audit final restant."
+        },
+        {
+          "eventId": "apply-10a9f000-a68c-4540-8838-e69e43c57d4c",
+          "appliedAt": "2026-10-28T18:08:27.697Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-10a9f000-a68c-4540-8838-e69e43c57d4c",
+          "auditEvidence": null,
+          "summary": "Audit éditorial : deux descriptions anglaises corrigées et huit textes alternatifs précisés ; contrôles finaux et publication restants."
+        },
+        {
+          "eventId": "import-photo-edc00f4de3874625bd87c285b72663e7-2026-10-28T181409.784Z",
+          "appliedAt": "2026-10-28T18:14:09.784Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#import-photo-edc00f4de3874625bd87c285b72663e7-2026-10-28T181409.784Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-auction-2026, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-41504c15-c766-4e8f-96a7-772524bf4162",
+          "appliedAt": "2026-10-28T18:17:11.865Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-41504c15-c766-4e8f-96a7-772524bf4162",
+          "auditEvidence": null,
+          "summary": "Actualité historique vérifiée : vente caritative des archives Playmobil en septembre 2026, sixième jalon et article complété dans huit langues avec la photographie réelle de la vente."
+        },
+        {
+          "eventId": "apply-11506192-84c0-4290-b702-a632be2fe093",
+          "appliedAt": "2026-10-28T18:27:13.096Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-11506192-84c0-4290-b702-a632be2fe093",
+          "auditEvidence": null,
+          "summary": "Correction du bloqueur éditorial : deux légendes illustrées de l’article réécrites dans les huit langues pour supprimer leur duplication avec les galeries."
+        }
+      ],
+      "nextAction": "Audit éditorial réalisé ; score projeté92/100 sans bloqueur. Exception nommée requise avant visibilité du parc, puis diagnostic HIST, contrôle public huit langues et Facebook.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -28143,23 +28514,26 @@
       "name": "Zygo Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
+      "category": "Parc historique d’attractions et aquatique",
+      "locality": "Nice",
       "siteId": "b2dca918-9747-4623-a0c0-38e89634aaff",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "presenceObservedAt": "2026-10-28T18:32:48.435478+00:00",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Parc définitivement fermé depuis1991 ; ancien statut Operating du catalogue à corriger.",
+      "identityConfidence": "Identité rapprochée par export officiel des deux coasters et RCDB5223 ; le candidat Zygofolis est le même parc.",
       "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
+      "aliases": [
+        "Zygofolis",
+        "Zygo Parc"
+      ],
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Intégration éditoriale historique sur la fiche existante : corriger dates et lifecycle, inventorier les archives officielles, huit langues, médias et histoire, puis audit/publications.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -28192,28 +28566,34 @@
       "proposedEntityKind": "Park",
       "category": "Catégorie à qualifier",
       "locality": "Nice",
-      "siteId": null,
+      "siteId": "b2dca918-9747-4623-a0c0-38e89634aaff",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-28T18:32:48.435478+00:00",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Alias historique confirmé de Zygo Park / Zygo Parc, mêmes deux montagnes russes et sources.",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Doublon de dossier conservé ; intégration sous FR-park-b2dca918-9747-4623-a0c0-38e89634aaff. Aucune création, suppression ni date ancienne inventée.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "duplicateOf": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
+      "identityReconciliation": {
+        "observedAtUtc": "2026-10-28T18:32:48.435478+00:00",
+        "evidence": "evidence/france-historical-20261022/zygofolis-identity-reconciliation.json",
+        "canonicalEntryId": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff"
+      }
     }
   ]
 }
