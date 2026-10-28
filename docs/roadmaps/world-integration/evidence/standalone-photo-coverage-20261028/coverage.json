@@ -1,9 +1,9 @@
 {
-  "checkedAtUtc": "2026-10-28T17:39:05.992Z",
+  "checkedAtUtc": "2026-10-28T17:45:16.228Z",
   "method": "Public French attraction page HTTP 200; an attraction-owned binary og:image counts as a representative photo, generic site logo does not.",
   "totalPublishedStandalone": 128,
-  "withRepresentativePhoto": 119,
-  "withoutRepresentativePhoto": 9,
+  "withRepresentativePhoto": 120,
+  "withoutRepresentativePhoto": 8,
   "entries": [
     {
       "country": "AE",
@@ -128,8 +128,8 @@
       "name": "Downhill Karting Calgary",
       "siteId": "b8390695-b97a-4e15-a45d-a2234703a779",
       "pageStatus": 200,
-      "hasRepresentativePhoto": false,
-      "ogImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png"
+      "hasRepresentativePhoto": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/e1019ba4cfc84e30992b9020d58d32c5/social-preview-v2"
     },
     {
       "country": "CA",

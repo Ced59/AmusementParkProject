@@ -1,5 +1,5 @@
 {
-  "checkedAtUtc": "2026-10-28T17:39:05.992Z",
+  "checkedAtUtc": "2026-10-28T17:45:16.228Z",
   "items": [
     {
       "country": "US",
@@ -75,6 +75,31 @@
         "credits": 8
       },
       "exportSha256": "c5cb38fbba84faef7d30680de3bf242691a42bad523cf4a1efe798b9152864b6"
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-standalone-abf154c8e98f1e",
+      "name": "Downhill Karting Calgary",
+      "entityId": "b8390695-b97a-4e15-a45d-a2234703a779",
+      "imageId": "e1019ba4cfc84e30992b9020d58d32c5",
+      "sourceUrl": "https://www.flickr.com/photos/daveynin/37715444366/",
+      "author": "daveynin",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedOn": "2017-08-12",
+      "importedAtUtc": "2026-10-28T17:43:21.118Z",
+      "importEvidence": "PARK_DATA_EDITOR:ImportPhoto:e1019ba4cfc84e30992b9020d58d32c5",
+      "publicationApplyOperationId": "9da9b50b-74ea-4e81-9063-898825e4a675",
+      "photoPublishedAtUtc": "2026-10-28T17:44:12.4833462Z",
+      "publicUrl": "https://amusement-parks.fun/fr/attraction/b8390695-b97a-4e15-a45d-a2234703a779/downhill-karting-calgary",
+      "completenessScore": 93,
+      "publicationBlockers": [],
+      "localizedImageFields": {
+        "altTexts": 8,
+        "captions": 8,
+        "credits": 8
+      },
+      "exportSha256": "047d6ce1e96c598c8956823fd460054ef905d8ab2fae351817cd78e2563b4fd5"
     }
   ]
 }
