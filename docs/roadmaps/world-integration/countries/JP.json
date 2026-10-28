@@ -4002,38 +4002,178 @@
     },
     {
       "entryId": "JP-candidate-49204b461ffa56",
-      "name": "HEP Five Wheel",
-      "entityKind": "ToQualify",
+      "name": "HEP FIVE Ferris Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "HEP Five building, Osaka , Honshū",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "5-15 Kakudacho, Kita-ku, Osaka",
+      "siteId": "74c01914-71db-4158-affe-35bf4ceed79a",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T21:37:34.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating — horaires et tarifs de la grande roue confirmés par le site de l’exploitant et l’office du tourisme en octobre 2026.",
+      "identityConfidence": "Grande roue fixe à billet distinct au sein d’un centre commercial, non rattachée à un parc d’attractions ; recherches officielles Park et Standalone sur HEP et Umeda sans correspondance avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "HEP Five Wheel",
+        "HEP FIVE観覧車",
+        "Umeda HEP FIVE Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T21:34:14.358Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-cf15996a-9e47-4716-b401-b1a7b87c4d0f",
+          "appliedAt": "2026-10-28T21:27:12.464Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:apply:cf15996a-9e47-4716-b401-b1a7b87c4d0f",
+          "auditEvidence": null,
+          "summary": "Création privée de HEP FIVE Ferris Wheel, identité, lieu et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-a6b55e5c-6c7a-4232-bf8a-e088a8a0234a",
+          "appliedAt": "2026-10-28T21:27:52.862Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:apply:a6b55e5c-6c7a-4232-bf8a-e088a8a0234a",
+          "auditEvidence": null,
+          "summary": "Horaires quotidiens et dernière montée à bord vérifiés"
+        },
+        {
+          "eventId": "apply-2232e4f2-83ff-4771-b086-458b24a7979d",
+          "appliedAt": "2026-10-28T21:28:21.210Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:apply:2232e4f2-83ff-4771-b086-458b24a7979d",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels de la grande roue et gratuité jusqu’à 5 ans"
+        },
+        {
+          "eventId": "image-4d4eac5235684f879406e7339969d68a",
+          "appliedAt": "2026-10-28T21:29:27.019Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:image:4d4eac5235684f879406e7339969d68a",
+          "auditEvidence": null,
+          "summary": "Photographie spécifique de HEP FIVE #1, licence vérifiée et crédits multilingues"
+        },
+        {
+          "eventId": "image-1b2822a1903c439c88367727b01d7c17",
+          "appliedAt": "2026-10-28T21:29:47.918Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:image:1b2822a1903c439c88367727b01d7c17",
+          "auditEvidence": null,
+          "summary": "Photographie spécifique de HEP FIVE #2, licence vérifiée et crédits multilingues"
+        },
+        {
+          "eventId": "image-56c104eee16d4a3692864f20c653d189",
+          "appliedAt": "2026-10-28T21:30:13.936Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:image:56c104eee16d4a3692864f20c653d189",
+          "auditEvidence": null,
+          "summary": "Photographie spécifique de HEP FIVE #3, licence vérifiée et crédits multilingues"
+        },
+        {
+          "eventId": "apply-c5ccd448-2acc-48a8-8afb-71f02d340031",
+          "appliedAt": "2026-10-28T21:34:14.358Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:apply:c5ccd448-2acc-48a8-8afb-71f02d340031",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-hep-five-20261028/hep-five-audit.json",
+          "summary": "Retrait d’une indication d’accessibilité non confirmée avant audit final"
+        }
+      ],
+      "nextAction": "Conserver les reçus et la fiche. Confirmer auprès de l’exploitant la date d’ouverture historique et les modalités d’accès en fauteuil avant de renseigner ces champs ; recontrôler horaires, tarif et jour de fermeture. Ne pas republier l’annonce Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "HEP FIVE — grande roue, horaires et tarifs officiels",
+          "url": "https://www.hepfive.jp/ferriswheel",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "HEP FIVE — accès et adresse officiels",
+          "url": "https://www.hepfive.jp/access",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Osaka Convention & Tourism Bureau — HEP FIVE Ferris Wheel",
+          "url": "https://www.osaka-info.jp/en/spot/hep-five-ferris-wheel/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie HEP FIVE #1",
+          "url": "https://commons.wikimedia.org/wiki/File:HEP_FIVE_20260223.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie HEP FIVE #2",
+          "url": "https://commons.wikimedia.org/wiki/File:HEP_FIVE_on_26th_March_2025.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie HEP FIVE #3",
+          "url": "https://commons.wikimedia.org/wiki/File:HEP_at_Night_in_201408.JPG",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "HEP FIVE Ferris Wheel",
+            "source": "HEP FIVE — site officiel",
+            "url": "https://www.hepfive.jp/ferriswheel",
+            "family": "Grande roue",
+            "sourceVenueName": "HEP FIVE shopping complex",
+            "sourceLifecycleSignal": "Billetterie et horaires de la roue actifs en octobre 2026.",
+            "matchingMethod": "Recherches Park et Standalone HEP et Umeda sans correspondance.",
+            "sourceLocality": "Osaka",
+            "referenceId": "hep-five-wheel-official"
+          }
+        ],
+        "rationale": "Grande roue à accès et tarif propres dans un centre commercial, sans parc d’attractions parent. Trois photos propres vérifiées, audit public 91/100 sans bloqueur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/74c01914-71db-4158-affe-35bf4ceed79a/hep-five-ferris-wheel",
+          "publishedAtUtc": "2026-10-28T21:35:33.139Z",
+          "verifiedAtUtc": "2026-10-28T21:37:34.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:507ce563-1f88-48e6-9327-e79c2a6380ba"
+        },
+        "facebook": {
+          "id": "1b5228e3e1e049b490bf5cfdbba5b2c9",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T21:36:45.379Z",
+          "externalPostId": "1285475681307050_122125093899424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125093899424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1b5228e3e1e049b490bf5cfdbba5b2c9"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-hep-five-20261028/hep-five-audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
