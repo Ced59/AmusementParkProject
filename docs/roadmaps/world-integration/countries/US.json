@@ -54599,37 +54599,196 @@
     {
       "entryId": "US-candidate-cc60136c844ee4",
       "name": "Seattle Great Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Pier 57, Seattle , Washington",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "Pier 57, 1301 Alaskan Way, Seattle",
+      "siteId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T21:52:17.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating — horaires, billets et FAQ officiels consultés le 28 octobre 2026.",
+      "identityConfidence": "Grande roue fixe à billetterie propre sur le Pier 57 ; aucune fiche Park ou Standalone correspondante dans les recherches officielles Seattle Great Wheel, Great Wheel et Miners Landing.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "The Seattle Great Wheel",
+        "Pier 57 Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T21:48:33.595Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6f548197-4466-4216-88e1-c169e43d6b0c",
+          "appliedAt": "2026-10-28T21:45:53.591Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:apply:6f548197-4466-4216-88e1-c169e43d6b0c",
+          "auditEvidence": null,
+          "summary": "Création privée de la Seattle Great Wheel et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-e9ac65d0-aa21-4b8e-bff7-0a7bd8d97ea5",
+          "appliedAt": "2026-10-28T21:46:25.163Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:apply:e9ac65d0-aa21-4b8e-bff7-0a7bd8d97ea5",
+          "auditEvidence": null,
+          "summary": "Horaires quotidiens et possibilité de fermeture anticipée sourcés"
+        },
+        {
+          "eventId": "apply-768abc37-0f3b-4660-a9eb-0156cc6dce43",
+          "appliedAt": "2026-10-28T21:46:48.118Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:apply:768abc37-0f3b-4660-a9eb-0156cc6dce43",
+          "auditEvidence": null,
+          "summary": "Cinq catégories tarifaires lues sur la billetterie officielle"
+        },
+        {
+          "eventId": "apply-8e4cdb77-8d13-4ba6-8fe6-9723b2bcb506",
+          "appliedAt": "2026-10-28T21:47:11.813Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:apply:8e4cdb77-8d13-4ba6-8fe6-9723b2bcb506",
+          "auditEvidence": null,
+          "summary": "Ouverture du 29 juin 2012 sourcée dans la FAQ officielle"
+        },
+        {
+          "eventId": "image-51f9e9b82fea47c3b82908301f62f678",
+          "appliedAt": "2026-10-28T21:47:43.195Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:image:51f9e9b82fea47c3b82908301f62f678",
+          "auditEvidence": null,
+          "summary": "Photographie propre de la Seattle Great Wheel #1 importée avec licence, auteur et légendes en huit langues"
+        },
+        {
+          "eventId": "image-8c0b514fe6a841e39797abc737e36554",
+          "appliedAt": "2026-10-28T21:47:58.136Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:image:8c0b514fe6a841e39797abc737e36554",
+          "auditEvidence": null,
+          "summary": "Photographie propre de la Seattle Great Wheel #2 importée avec licence, auteur et légendes en huit langues"
+        },
+        {
+          "eventId": "image-e977a7d7c74a4ea3a377e7b1bc2e591b",
+          "appliedAt": "2026-10-28T21:48:16.352Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:image:e977a7d7c74a4ea3a377e7b1bc2e591b",
+          "auditEvidence": null,
+          "summary": "Photographie propre de la Seattle Great Wheel #4 importée avec licence, auteur et légendes en huit langues"
+        },
+        {
+          "eventId": "image-e975758683a5479eb2fc8529a65c11e2",
+          "appliedAt": "2026-10-28T21:48:33.595Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:image:e975758683a5479eb2fc8529a65c11e2",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-seattle-great-wheel-20261028/seattle-great-wheel-audit.json",
+          "summary": "Photographie propre de la Seattle Great Wheel #5 importée avec licence, auteur et légendes en huit langues"
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus. Recontrôler les horaires et prix sur les sites officiels ; chercher une photographie vérifiée du jour d’ouverture pour illustrer l’événement historique. Ne pas republier le post Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Seattle Great Wheel — site et promenade de Pier 57",
+          "url": "https://seattlegreatwheel.com/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Seattle Great Wheel — FAQ, ouverture, accessibilité et enfants",
+          "url": "https://seattlegreatwheel.com/faq",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Seattle Great Wheel — horaires et adresse officiels",
+          "url": "https://seattlegreatwheel.com/hours-directions",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Miners Landing — billetterie officielle de la roue",
+          "url": "https://tickets.minerslanding.com/webstore/shop/viewItems.aspx?cg=consumer&c=WH",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie Seattle Great Wheel #1",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_Great_Wheel%2C_Seattle%2C_Washington%2C_Estados_Unidos%2C_2017-09-02%2C_DD_13-15_HDR.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie Seattle Great Wheel #2",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_Great_Wheel_ferris_wheel_sunset.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie Seattle Great Wheel #4",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_-_Pier_57_from_the_water%2C_including_Seattle_Great_Wheel_01.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie Seattle Great Wheel #5",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_night.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "Seattle Great Wheel",
+            "source": "Seattle Great Wheel — site officiel",
+            "url": "https://seattlegreatwheel.com/",
+            "family": "Grande roue",
+            "sourceVenueName": "Pier 57 / Miners Landing",
+            "sourceLifecycleSignal": "Billetterie de la roue et horaires actifs en octobre 2026.",
+            "matchingMethod": "Recherches Park et Standalone sans correspondance ; billetterie distincte.",
+            "sourceLocality": "Seattle",
+            "referenceId": "seattle-great-wheel-official"
+          }
+        ],
+        "rationale": "Grande roue à billet individuel sur une jetée avec commerces et autres activités, sans parc d’attractions parent catalogué. Quatre photos propres vérifiées, audit public 97/100 sans bloqueur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d3b5033b-9520-4ab4-a5a8-96109a7784cf/seattle-great-wheel",
+          "publishedAtUtc": "2026-10-28T21:50:36.622Z",
+          "verifiedAtUtc": "2026-10-28T21:52:17.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:a7bd872b-30ab-4f56-b559-49797683f5f2"
+        },
+        "facebook": {
+          "id": "1a04d9dbc23b4d3e889d9ff1f68e4664",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T21:51:37.178Z",
+          "externalPostId": "1285475681307050_122125095147424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125095147424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1a04d9dbc23b4d3e889d9ff1f68e4664"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-seattle-great-wheel-20261028/seattle-great-wheel-audit.json",
+        "score": 97,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
