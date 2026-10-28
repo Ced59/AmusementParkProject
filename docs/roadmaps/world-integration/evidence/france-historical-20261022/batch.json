@@ -45,6 +45,12 @@
       "blocker": "media.logo-required",
       "audit": "/workspace/france-historical-20261022/magic-city-paris/09-final-audit.json",
       "otherPending": "Inventory aliases and final editorial release signoff."
+    },
+    {
+      "entryId": "FR-candidate-13b50050620a99",
+      "blocker": "PARK_DATA_EDITOR Status HTTP500; production deployment backup failed: no space left on device",
+      "audit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-intake-blocked.json",
+      "dataApplied": false
     }
   ],
   "identityEvidence": "evidence/france-historical-20261022/lillom-identity-reconciliation.json"

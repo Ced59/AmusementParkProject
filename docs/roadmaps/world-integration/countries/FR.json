@@ -23487,11 +23487,11 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Fermeture définitive confirmée le 31 juillet 2022",
+      "identityConfidence": "Parc historique couvert multi-espaces identifié par sources municipales, écomusée et exploitant ; trois recherches officielles sans résultat, dernier contrôle standalone Fresnes encore requis.",
       "possibleMatches": [],
       "aliases": [
         "Playmobil FunPark Paris",
@@ -23501,7 +23501,7 @@
       "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Qualification du parc couvert historique de Fresnes : recherches officielles Playmobil/Fresnes parmi parcs et standalone, puis création masquée si aucune correspondance. Fermeture du 31 juillet 2022 documentée ; ne pas confondre avec Zirndorf, Malte ou Athènes.",
+      "nextAction": "Dossier et lot initial préparés, sans création. PARK_DATA_EDITOR Status renvoie HTTP500 ; dernier déploiement40656256404 interrompu par no space left on device pendant la sauvegarde MongoDB. Rétablir le service, achever la recherche standalone Fresnes et rafraîchir les identités avant Preview/Apply. Preuve : docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-intake-blocked.json",
       "sources": [
         {
           "label": "Backlog national existant",
