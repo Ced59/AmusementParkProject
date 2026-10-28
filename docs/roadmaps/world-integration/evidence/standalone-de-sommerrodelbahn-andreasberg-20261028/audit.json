@@ -1,0 +1,96 @@
+{
+  "name": "Sommerrodelbahn Sankt Andreasberg",
+  "entryId": "DE-candidate-c42faeedee8ee9",
+  "standaloneAttractionId": "917763c5-4d81-4546-a8f2-f67779880a07",
+  "qualification": "Piste de luge d’été à billet propre pour la descente ; site d’exploitation actif pour la saison 2026, sans correspondance Park ou Standalone dans la recherche officielle.",
+  "decision": "Published",
+  "score": 85,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "regularRules": 2,
+    "admissionOffers": 7,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les horaires sont bornés au 1er novembre 2026, fin de saison annoncée. Aucun calendrier ultérieur n’a été publié par l’exploitant.",
+    "Aucune date d’ouverture historique exacte ni photographie récente de la piste n’a été établie ; les deux images libres vérifiées datent de 2009 et 2013."
+  ],
+  "sources": [
+    {
+      "label": "Albert-Lift GmbH — piste de Sankt Andreasberg et saison jusqu’au 1er novembre 2026",
+      "url": "http://www.matthias-schmidt-berg.de/index.php/main-soro"
+    },
+    {
+      "label": "Albert-Lift GmbH — tarifs et horaires 2026",
+      "url": "http://www.matthias-schmidt-berg.de/index.php/preise-soro"
+    },
+    {
+      "label": "Tourisme Oberharz — localisation et exploitant",
+      "url": "https://www.oberharz.de/aktivitaeten/ausflugsziele/in-der-umgebung/sommerrodelbahn-sankt-andreasberg"
+    },
+    {
+      "label": "OpenStreetMap Nominatim — Sommer-Rodelbahn",
+      "url": "https://nominatim.openstreetmap.org/search?q=Sommerrodelbahn+Sankt+Andreasberg&format=json"
+    },
+    {
+      "label": "Wikimedia Commons — piste sur le versant, photo de a.froese",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Andreasberg.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — vue vers la ville, photo de Tine",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Andreasberg_2.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "dd41d9a759814765923dbf545bdaf0d3",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Andreasberg.jpg",
+      "author": "a.froese",
+      "date": "2009-04-10",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "subject": "Parcours et télésiège sur le versant",
+      "transformation": "vignette Wikimedia Commons optimisée, sans recadrage"
+    },
+    {
+      "imageId": "ef3aef33047c47d49db505bf44a3bb96",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Andreasberg_2.jpg",
+      "author": "Tine",
+      "date": "2013-07-05",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "subject": "Haut de la piste avec vue vers Sankt Andreasberg",
+      "transformation": "vignette Wikimedia Commons optimisée, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "d4a4d7b2934bdbf31f5cc701917d016b6b8d83751f0b9178a9b64f6f42845f24",
+    "projectedScore": 85,
+    "projectedBlockers": [],
+    "publicScore": 85,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T23:01:39.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/917763c5-4d81-4546-a8f2-f67779880a07/sommerrodelbahn-sankt-andreasberg",
+      "publishedAtUtc": "2026-10-28T23:00:43.007Z",
+      "applyOperationId": "1fc44a31-186a-443f-a8b4-e7c8334ea511"
+    },
+    "facebook": {
+      "id": "8cd32d97f05b4adda5bf9532525df90e",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T23:01:31.933Z",
+      "externalPostId": "1285475681307050_122125100109424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125100109424431"
+    }
+  }
+}
