@@ -627,27 +627,81 @@
     },
     {
       "entryId": "NZ-candidate-standalone-07dc2e49aee425",
-      "name": "Skyline Queenstown",
-      "entityKind": "ToQualify",
+      "name": "Skyline Luge Queenstown",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge gravitaire",
-      "locality": null,
-      "siteId": null,
+      "locality": "Brecon Street, Queenstown",
+      "siteId": "6b9d4991-4049-47af-8082-bfe3eedaf7f6",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T23:19:31.408Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Attraction exploitée en 2026 ; l’exploitant publie les horaires jour par jour sur son calendrier.",
+      "identityConfidence": "Luge à forfaits de tours identifiée par l’exploitant ; recherches officielles Park et Standalone Queenstown sans fiche correspondante ; photographie du parcours vérifiée.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "Skyline Queenstown",
+        "Queenstown Luge"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T23:16:01.372Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-259576e6-0e05-45dc-ab89-ebd6d2dad495",
+          "appliedAt": "2026-10-28T23:08:50.396Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6b9d4991-4049-47af-8082-bfe3eedaf7f6",
+          "evidence": "PARK_DATA_EDITOR:apply:259576e6-0e05-45dc-ab89-ebd6d2dad495",
+          "auditEvidence": null,
+          "summary": "Création privée de la luge autonome et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-867e145b-416a-4930-81ad-0614354c4700",
+          "appliedAt": "2026-10-28T23:11:20.842Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6b9d4991-4049-47af-8082-bfe3eedaf7f6",
+          "evidence": "PARK_DATA_EDITOR:apply:867e145b-416a-4930-81ad-0614354c4700",
+          "auditEvidence": null,
+          "summary": "Huit offres 2026 Gondola + Luge de l’exploitant intégrées"
+        },
+        {
+          "eventId": "image-ac1f78472c474fa8b5c29912290f3f71",
+          "appliedAt": "2026-10-28T23:12:42.255Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6b9d4991-4049-47af-8082-bfe3eedaf7f6",
+          "evidence": "PARK_DATA_EDITOR:image:ac1f78472c474fa8b5c29912290f3f71",
+          "auditEvidence": null,
+          "summary": "Photographie #1 propre à la luge importée de Wikimedia Commons avec licence, auteur et légendes en huit langues"
+        },
+        {
+          "eventId": "image-94b818cf428e4cf5ba15a019ae34c729",
+          "appliedAt": "2026-10-28T23:13:14.819Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6b9d4991-4049-47af-8082-bfe3eedaf7f6",
+          "evidence": "PARK_DATA_EDITOR:image:94b818cf428e4cf5ba15a019ae34c729",
+          "auditEvidence": null,
+          "summary": "Photographie #2 propre à la luge importée de Wikimedia Commons avec licence, auteur et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-531ddb34-21c0-4b23-9afc-fb291a22b0c3",
+          "appliedAt": "2026-10-28T23:16:01.372Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6b9d4991-4049-47af-8082-bfe3eedaf7f6",
+          "evidence": "PARK_DATA_EDITOR:apply:531ddb34-21c0-4b23-9afc-fb291a22b0c3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-skyline-luge-queenstown-20261028/audit.json",
+          "summary": "Correction factuelle de la description française et audit avant publication ; les deux images propres sont déjà importées"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier le calendrier de l’exploitant avant toute règle horaire récurrente ; actualiser les tarifs et les photos quand de nouvelles données officielles paraîtront. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -658,21 +712,77 @@
           "label": "Skyline — destinations officielles — liste",
           "url": "https://www.skylineluge.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Skyline Queenstown — luge, conditions de visite et forfaits 2026",
+          "url": "https://queenstown.skyline.co.nz/things-to-do/queenstown-luge/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Queenstown — horaires quotidiens à consulter sur le calendrier",
+          "url": "https://queenstown.skyline.co.nz/opening-hours/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Skyline Queenstown — accès par Brecon Street",
+          "url": "https://queenstown.skyline.co.nz/getting-here/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — Skyline Luge Queenstown",
+          "url": "https://nominatim.openstreetmap.org/search?q=Skyline+Luge+Queenstown&format=json",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Skyline Luge 670, -Herman.M-",
+          "url": "https://commons.wikimedia.org/wiki/File:Skyline_Luge_670.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Queenstown Skyline Luge, April 2026, Danny William Wilson",
+          "url": "https://commons.wikimedia.org/wiki/File:Queenstown_Skyline_Luge,_April_2026.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
-            "name": "Skyline Queenstown",
-            "source": "Skyline — destinations officielles",
-            "url": "https://queenstown.skyline.co.nz/",
+            "name": "Skyline Luge Queenstown",
+            "source": "Skyline Queenstown — exploitant",
+            "url": "https://queenstown.skyline.co.nz/things-to-do/queenstown-luge/",
             "family": "Luge gravitaire",
-            "sourceVenueName": "Skyline Queenstown"
+            "sourceVenueName": "Skyline Queenstown",
+            "sourceLifecycleSignal": "Forfaits Gondola + Luge 2026 disponibles",
+            "sourceLocality": "Queenstown",
+            "matchingMethod": "Billetterie propre de la luge et recherches officielles Park / Standalone sans correspondance"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Luge à forfaits de descentes au sein du complexe Skyline. La piste a une identité et des billets propres ; deux photos libres sont rattachées à la luge. Audit public 81/100 sans blocage."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6b9d4991-4049-47af-8082-bfe3eedaf7f6/skyline-luge-queenstown",
+          "publishedAtUtc": "2026-10-28T23:19:05.512Z",
+          "verifiedAtUtc": "2026-10-28T23:19:31.408Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ee748a28-b1ca-4736-b9a9-2e6c9496cf9f"
+        },
+        "facebook": {
+          "id": "93ad7bf4949843b798bde5cd5c72f184",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T23:20:16.762Z",
+          "externalPostId": "1285475681307050_122125101717424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125101717424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:93ad7bf4949843b798bde5cd5c72f184"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-skyline-luge-queenstown-20261028/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
