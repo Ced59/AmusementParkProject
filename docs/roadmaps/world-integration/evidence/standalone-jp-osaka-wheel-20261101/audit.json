@@ -1,0 +1,136 @@
+{
+  "work": "OSAKA WHEEL, formerly Redhorse Osaka Wheel, a separately ticketed wheel at mixed-use EXPOCITY in Suita. Official editor returned no matching Park or Standalone. Created hidden with eight manually written descriptions, closure status, four exact freely licensed images; publication audit cleared after removing raw metrics from narrative; published site and Facebook with clear closure notice.",
+  "qualification": "EXPOCITY is a shopping and entertainment complex, not a structured amusement park in the editor. OSAKA WHEEL has a separate operator and ticketing; no Park or Standalone match.",
+  "sources": {
+    "operator": "https://osaka-wheel.com/",
+    "officialClosure": "https://mitsui-shopping-park.com/en/lalaport/expocity/info/3244856.html",
+    "tourismClosure": "https://www.e-pass.osaka-info.jp/en/facility/detail?id=133",
+    "osakaTourism": "https://osaka-info.jp/spot/osaka-wheel/",
+    "osakaExperience": "https://osaka-info.jp/experience/en/osaka/spot/418",
+    "coordinates": "https://mapcarta.com/W467729369"
+  },
+  "searchResults": {
+    "standaloneRedhorseOsakaWheel": 0,
+    "standaloneOsakaWheel": 0,
+    "parksExpocity": 0,
+    "parksRedhorseOsaka": 0
+  },
+  "closure": {
+    "status": "TemporarilyClosed",
+    "maintenanceClosureAnnouncedFor": "2025-11-26",
+    "reopeningDate": "unknown as of 2026-11-01",
+    "currentStructuredPricesAndHours": "not imported because operator display is stale"
+  },
+  "dataReceipts": [
+    {
+      "operationId": "a21d235f-1275-4dc7-a67a-356e1a4bb509",
+      "appliedAtUtc": "2026-11-01T16:59:08.996Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "e638e41c-0e9f-4f8a-924a-6df477d1df98",
+      "appliedAtUtc": "2026-11-01T17:03:13.471Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "371c4fda-bf87-4a05-aa4d-5824477101a6",
+      "appliedAtUtc": "2026-11-01T17:05:11.978Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "e8557d4baf7849b183bb0a3f7359f7b7",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Expo70_Park_(Suite_Osaka)_hdsr_S5_07.jpg",
+      "author": "Hyppolyte de Saint-Rambert",
+      "license": "CC BY 4.0",
+      "takenAt": "2024-06-12 02:41:57",
+      "ownerId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:03:45.251Z"
+    },
+    {
+      "imageId": "e4b85758b77f41358335ca59017c72ee",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Redhorse_OSAKA_WHEEL.jpg",
+      "author": "Tokumeigakarinoaoshima",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2018-08-25 12:47:30",
+      "ownerId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-01T17:03:56.571Z"
+    },
+    {
+      "imageId": "4a7514203aaf4f0982c7beefee859f1a",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:OSAKA_WHEEL_3.jpg",
+      "author": "もんじゃ",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2016-08-13 14:21:07",
+      "ownerId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:04:13.188Z"
+    },
+    {
+      "imageId": "6e71b6ce249c4ae0a2b9332b3c14ff7f",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Nifrel_and_Osaka_wheel_Feb_26,_2017.jpg",
+      "author": "pelican",
+      "license": "CC BY-SA 2.0",
+      "takenAt": "2017-02-26 11:28:35",
+      "ownerId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:04:30.938Z"
+    }
+  ],
+  "audit": {
+    "score": 96,
+    "earnedPoints": 44,
+    "applicableMaxPoints": 46,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 4
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/e42ee082-9559-5e1d-b7cf-e8b0170b39f7/osaka-wheel",
+    "sitePublishedAtUtc": "2026-11-01T17:05:11.978Z",
+    "siteHttpStatus": 200,
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "c710e93fe9ed4bd6a5827ed5fd8b01b5",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125630479424431",
+    "facebookPublishedAtUtc": "2026-11-01T17:06:20.340Z"
+  },
+  "lastDataIntegrationAt": "2026-11-01T17:05:11.978Z",
+  "remainingGaps": [
+    "Track the reopening announcement and update the temporary closure status, current hours and fares only after official confirmation.",
+    "Refresh photographic coverage when a newer exact photo becomes available."
+  ]
+}
