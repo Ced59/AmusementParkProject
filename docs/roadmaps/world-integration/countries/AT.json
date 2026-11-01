@@ -4047,31 +4047,105 @@
     },
     {
       "entryId": "AT-candidate-standalone-42f17ac205f210",
-      "name": "Luge Wiegand — Strobl am Wolfgangssee",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Strobl am Wolfgangsee",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Landauerstraße 15, 5350 Strobl",
+      "siteId": "e57823f1-4282-4a2d-893d-d5992504465c",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T10:04:10.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Saison 2026 terminée ; exploitant annonce une reprise en avril 2027 sans date précise. Fonctionnement uniquement par beau temps.",
+      "identityConfidence": "Billetterie unique pour deux pistes parallèles de 1 300 m ; recherches officielles Park et Standalone « Strobl » sans correspondance ; trois photographies du site vérifiées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [
-        "AT-candidate-standalone-bbc5d4f43cbecb"
+        "AT-candidate-standalone-124367ff240c23"
       ],
       "aliases": [
+        "Luge Wiegand — Strobl am Wolfgangssee",
+        "Sommerrodelbahn Wolfgangsee",
+        "Strobl-Gschwendt",
         "Strobl am Wolfgangssee"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : AT-candidate-standalone-bbc5d4f43cbecb. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T10:01:33.030Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-47286af9-b8f6-45e3-8226-aae8d9a21205",
+          "appliedAt": "2026-11-01T09:56:29.593Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:apply:47286af9-b8f6-45e3-8226-aae8d9a21205",
+          "auditEvidence": null,
+          "summary": "Fiche privée et descriptions en huit langues avec saison 2026 achevée et reprise annoncée pour avril 2027"
+        },
+        {
+          "eventId": "image-28c4112323f041bc9fb283b6d20b20c2",
+          "appliedAt": "2026-11-01T09:57:45.885Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:image:28c4112323f041bc9fb283b6d20b20c2",
+          "auditEvidence": null,
+          "summary": "Photo historique #1 propre à la piste importée de Wikimedia Commons, domaine public et légendes en huit langues"
+        },
+        {
+          "eventId": "image-bbe25ff62f6246f19cae70aa9b4a00b8",
+          "appliedAt": "2026-11-01T09:58:10.090Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:image:bbe25ff62f6246f19cae70aa9b4a00b8",
+          "auditEvidence": null,
+          "summary": "Photo historique #2 propre à la piste importée de Wikimedia Commons, domaine public et légendes en huit langues"
+        },
+        {
+          "eventId": "image-3cf93574365a4a139f04c99aa5b9f7ca",
+          "appliedAt": "2026-11-01T09:58:55.189Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:image:3cf93574365a4a139f04c99aa5b9f7ca",
+          "auditEvidence": null,
+          "summary": "Photo historique #3 propre à la piste importée de Wikimedia Commons, domaine public et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-941a8bd1-b95f-41aa-a4bb-17dd35f6d92d",
+          "appliedAt": "2026-11-01T09:59:26.739Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:apply:941a8bd1-b95f-41aa-a4bb-17dd35f6d92d",
+          "auditEvidence": null,
+          "summary": "Cinq offres historiques de la saison 2026 bornées, 2027 non annoncé"
+        },
+        {
+          "eventId": "apply-07700c54-df0e-433f-b0f7-c776829d4d68",
+          "appliedAt": "2026-11-01T10:01:33.030Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:apply:07700c54-df0e-433f-b0f7-c776829d4d68",
+          "auditEvidence": null,
+          "summary": "Descriptions visiteurs corrigées en huit langues après contrôle du texte public"
+        },
+        {
+          "eventId": "closure-07700c54-df0e-433f-b0f7-c776829d4d68",
+          "appliedAt": "2026-11-01T10:01:33.030Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:apply:07700c54-df0e-433f-b0f7-c776829d4d68",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-strobl-20261101/audit.json",
+          "summary": "Audit 72/100 sans blocage ; trois photos propres importées, fiche et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus ; vérifier la date exacte de reprise et les tarifs 2027. Les trois photos datent de 2008 : rechercher des vues récentes libres. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -4082,43 +4156,102 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.rodelbahnen.at",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sommerrodelbahn Strobl — exploitant, deux pistes, tarifs 2026 et fin de saison",
+          "url": "https://www.rodelnamsee.at/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Rodelwelten — adresse et coordonnées de l’accès",
+          "url": "https://www.rodelwelten.com/rodelbahnen/detail/sommerrodelbahn-strobl",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — remontée et Wolfgangsee en 2008",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_03.JPG",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — piste vers le lac en 2008",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_02.JPG",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — base de la remontée en 2008",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_01.JPG",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
-            "name": "Strobl am Wolfgangssee",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=369#location-id-1170",
+            "name": "Sommerrodelbahn Strobl am Wolfgangsee",
+            "source": "Exploitant rodelnamsee.at",
+            "url": "https://www.rodelnamsee.at/",
             "family": "Luge d’été",
-            "sourceVenueName": "Strobl am Wolfgangssee",
-            "referenceId": "location-id-1170"
+            "sourceVenueName": "Sommerrodelbahn Strobl",
+            "sourceLifecycleSignal": "Fin de saison 2026, reprise annoncée en avril 2027",
+            "sourceLocality": "Strobl-Gschwendt",
+            "matchingMethod": "Exploitant unique, billetterie commune aux deux pistes, photos du parcours et recherches officielles Park / Standalone sans correspondance"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Deux pistes physiques sous une seule enseigne et une même billetterie ; une seule fiche autonome. Les tarifs 2026 sont historiques ; les trois photos du parcours sont datées de 2008."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e57823f1-4282-4a2d-893d-d5992504465c/sommerrodelbahn-strobl-am-wolfgangsee",
+          "publishedAtUtc": "2026-11-01T10:03:40.453Z",
+          "verifiedAtUtc": "2026-11-01T10:04:10.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:31eacfba-756d-40ac-8c5f-7ac5eaa4eefd"
+        },
+        "facebook": {
+          "id": "9eb0cbf3f79248f39cabb95e71ffdab6",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T10:05:32.364Z",
+          "externalPostId": "1285475681307050_122125585161424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125585161424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:9eb0cbf3f79248f39cabb95e71ffdab6"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "28c4112323f041bc9fb283b6d20b20c2",
+          "bbe25ff62f6246f19cae70aa9b4a00b8",
+          "3cf93574365a4a139f04c99aa5b9f7ca"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T10:02:20.183Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:53ba1ace-30d9-4f07-80fa-c25319fedbb5",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-strobl-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-strobl-20261101/audit.json",
+        "score": 72,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
       "entryId": "AT-candidate-standalone-124367ff240c23",
       "name": "Luge Wiegand — Strobl II am Wolfgangssee",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-01",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Seconde piste physique de la même Sommerrodelbahn Strobl ; l’exploitant vend les deux parcours sous une enseigne et un billet commun. Saison 2026 terminée.",
+      "identityConfidence": "Référence constructeur Strobl II réconciliée avec la seconde piste parallèle du site ; pas une seconde fiche visiteur autonome.",
       "possibleMatches": [],
       "possibleBacklogEntries": [
-        "AT-candidate-standalone-bbc5d4f43cbecb",
         "AT-candidate-standalone-42f17ac205f210"
       ],
       "aliases": [
@@ -4127,7 +4260,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : AT-candidate-standalone-bbc5d4f43cbecb, AT-candidate-standalone-42f17ac205f210. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la référence Strobl II et son lien constructeur comme trace de la seconde piste ; la fiche visiteur et la publication Facebook sont rattachées à AT-candidate-standalone-42f17ac205f210. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -4138,23 +4271,32 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.rodelbahnen.at",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sommerrodelbahn Strobl — exploitant, deux pistes, tarifs 2026 et fin de saison",
+          "url": "https://www.rodelnamsee.at/",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
             "name": "Strobl II am Wolfgangssee",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=369#location-id-1169",
             "family": "Luge d’été",
-            "sourceVenueName": "Strobl II am Wolfgangssee",
-            "referenceId": "location-id-1169"
+            "sourceVenueName": "Sommerrodelbahn Strobl",
+            "sourceLifecycleSignal": "Piste parallèle du même site, saison 2026 terminée",
+            "sourceLocality": "Strobl-Gschwendt",
+            "matchingMethod": "Deux pistes annoncées par l’exploitant, billetterie commune et une seule enseigne"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Cette référence du constructeur désigne la deuxième piste de la même installation, déjà représentée par une unique fiche autonome. Pas de seconde création éditoriale."
+      },
+      "duplicateOf": "AT-candidate-standalone-42f17ac205f210",
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-strobl-20261101/audit.json"
     },
     {
       "entryId": "AT-candidate-standalone-d465e5bb59c809",
