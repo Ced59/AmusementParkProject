@@ -442,37 +442,174 @@
     {
       "entryId": "EE-candidate-847a9466f32c0b",
       "name": "Skywheel of Tallinn",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "T1 Mall of Tallinn , Tallinn",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Peterburi tee 2, 11415 Tallinn, Estonie",
+      "siteId": "651407c6-ba5d-4e08-86b8-07ae75b78149",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T10:57:49.898Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active sur le toit de T1 ; billetterie distincte, horaires 2026 et prix officiels publiés.",
+      "identityConfidence": "Billetterie propre à la roue, tarifs et horaires sur les sites officiels ; recherches officielles Park / Standalone par Skywheel, Tallinn et T1 sans fiche ; deux photographies exactes.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Skywheel Tallinn",
+        "Tallinna vaateratas"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T10:54:34.519Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-63dc16a7-26df-4a7d-8c5c-024f550e285f",
+          "appliedAt": "2026-11-01T10:52:07.035Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "651407c6-ba5d-4e08-86b8-07ae75b78149",
+          "evidence": "PARK_DATA_EDITOR:apply:63dc16a7-26df-4a7d-8c5c-024f550e285f",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée, identité et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-dc5e4d6fff5a4e819cf7dff3da36939d",
+          "appliedAt": "2026-11-01T10:53:19.767Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "651407c6-ba5d-4e08-86b8-07ae75b78149",
+          "evidence": "PARK_DATA_EDITOR:image:dc5e4d6fff5a4e819cf7dff3da36939d",
+          "auditEvidence": null,
+          "summary": "Photo #1 montrant la roue de Tallinn importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-1457d7f4cd0344fca3db0693a87d4de6",
+          "appliedAt": "2026-11-01T10:53:35.255Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "651407c6-ba5d-4e08-86b8-07ae75b78149",
+          "evidence": "PARK_DATA_EDITOR:image:1457d7f4cd0344fca3db0693a87d4de6",
+          "auditEvidence": null,
+          "summary": "Photo #2 montrant la roue de Tallinn importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-76497189-489c-407c-bdc3-2866052fd109",
+          "appliedAt": "2026-11-01T10:54:11.402Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "651407c6-ba5d-4e08-86b8-07ae75b78149",
+          "evidence": "PARK_DATA_EDITOR:apply:76497189-489c-407c-bdc3-2866052fd109",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels en EUR, cinq offres et variantes de jour intégrés"
+        },
+        {
+          "eventId": "apply-d75131aa-d22c-4604-b2b0-de39c8ee8bed",
+          "appliedAt": "2026-11-01T10:54:34.519Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "651407c6-ba5d-4e08-86b8-07ae75b78149",
+          "evidence": "PARK_DATA_EDITOR:apply:d75131aa-d22c-4604-b2b0-de39c8ee8bed",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires officiels et exception des jours fériés documentée"
+        },
+        {
+          "eventId": "closure-d75131aa-d22c-4604-b2b0-de39c8ee8bed",
+          "appliedAt": "2026-11-01T10:54:34.519Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "651407c6-ba5d-4e08-86b8-07ae75b78149",
+          "evidence": "PARK_DATA_EDITOR:apply:d75131aa-d22c-4604-b2b0-de39c8ee8bed",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ee-skywheel-tallinn-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier les exceptions des jours fériés 2026 et les changements des tarifs ou horaires. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "T1 Tallinn — Skywheel, autonomie, vente de billets et caractéristiques",
+          "url": "https://t1tallinn.com/en/entertainment/skywheel-of-tallinn-ferris-wheel/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "T1 Tallinn — horaires généraux et exceptions 2026",
+          "url": "https://t1tallinn.com/en/important-info/opening-hours/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Super Skypark — tarifs de la roue depuis le 4 novembre 2025",
+          "url": "https://superskypark.ee/en/prices/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — T1 keskus, Peterburi tee 2",
+          "url": "https://www.openstreetmap.org/search?query=Peterburi%20tee%202%20Tallinn",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Skywheel of Tallinn, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Mall_of_Tallinn.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Skywheel of Tallinn, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:T1-Kaubanduskeskus_T1_Mall_of_Tallinn.Okt.2022_2.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Skywheel of Tallinn",
+            "source": "T1 Tallinn — Skywheel",
+            "url": "https://t1tallinn.com/en/entertainment/skywheel-of-tallinn-ferris-wheel/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "T1 Mall of Tallinn",
+            "sourceLifecycleSignal": "Horaires et prix actuels publiés",
+            "sourceLocality": "Peterburi tee 2, Tallinn",
+            "matchingMethod": "Billetterie dédiée et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue est une activité identifiable avec son propre ticket, indépendante du centre commercial et des autres activités de Super Skypark."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/651407c6-ba5d-4e08-86b8-07ae75b78149/skywheel-of-tallinn",
+          "publishedAtUtc": "2026-11-01T10:56:11.609Z",
+          "verifiedAtUtc": "2026-11-01T10:57:49.898Z",
+          "evidence": "PARK_DATA_EDITOR:apply:f2332f9f-f7a5-4d2e-b1d9-cfb1aa7b6478"
+        },
+        "facebook": {
+          "id": "03b1f2ca8bf74f9789b0d19cd00f4590",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T10:56:55.956Z",
+          "externalPostId": "1285475681307050_122125590729424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125590729424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:03b1f2ca8bf74f9789b0d19cd00f4590"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "dc5e4d6fff5a4e819cf7dff3da36939d",
+          "1457d7f4cd0344fca3db0693a87d4de6"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T10:55:37.783Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:f3523725-df09-4cbc-86fb-c46d85b0e636",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-ee-skywheel-tallinn-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ee-skywheel-tallinn-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
