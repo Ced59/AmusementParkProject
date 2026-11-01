@@ -1,0 +1,103 @@
+{
+  "name": "SkyView de Pier",
+  "entryId": "NL-candidate-d11ee161bf385f",
+  "standaloneAttractionId": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
+  "qualification": "Grande roue à billetterie et société propres sur De Pier ; quatre recherches officielles Park/Standalone sans correspondance.",
+  "decision": "Published",
+  "score": 78,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "gateAdmissionOffers": 0,
+    "onlinePriceOffers": 0,
+    "weeklyRules": 3
+  },
+  "remainingGaps": [
+    "La page directe de SkyView affiche actuellement 12 h–20 h du lundi au jeudi, tandis que le site de la jetée indique 11 h–21 h. La règle structurée suit SkyView et les notes multilingues avertissent de vérifier un créneau.",
+    "Le prix du billet simple n’est pas lisible de façon fiable dans la billetterie directe ; les prix de revendeurs et anciens annuaires n’ont pas été attribués à l’exploitant."
+  ],
+  "sources": [
+    {
+      "label": "SkyView de Pier — site direct, expérience et billetterie",
+      "url": "https://skyviewdepier.nl/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "SkyView de Pier — horaires affichés par l’exploitant",
+      "url": "https://skyviewdepier.nl/products/opening-hours/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "De Pier — horaires différents en semaine et billet autonome",
+      "url": "https://pier.nl/reuzenrad-op-de-pier/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "OpenStreetMap — point de SkyView de Pier",
+      "url": "https://www.openstreetmap.org/node/4445667612",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — SkyView de Pier, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_de_Pier_Scheveningen.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — SkyView de Pier, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Reuzenrad_Scheveningen_P1290182.jpg",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "8eb8fa4d609a4bc18fb5b5c57a51cc71",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_de_Pier_Scheveningen.jpg",
+      "author": "PBrieux",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photographedAt": "2019-02-17",
+      "subject": "La grande roue SkyView de Pier au-dessus de la mer en février 2019.",
+      "transformation": "vignette Wikimedia Commons redimensionnée et optimisée en JPEG, sans recadrage"
+    },
+    {
+      "imageId": "efdbf6784fc046509754d306f25d79eb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Reuzenrad_Scheveningen_P1290182.jpg",
+      "author": "G.Lanting",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "photographedAt": "2018-08-22",
+      "subject": "La grande roue SkyView de Pier et sa jetée en août 2018.",
+      "transformation": "vignette Wikimedia Commons 1920 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "e770f1021619a78bcbe710d0e3a3dde078f849c0bdf32b08050236d59836e28b",
+    "projectedScore": 78,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T15:42:13.713Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T15:39:26.948Z",
+    "photosPublishedAtUtc": "2026-11-01T15:38:13.719Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:1b395993-0d69-4a03-acf7-7d19a43b6634"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/4b5cb5ae-319f-4bee-8020-d177ac79e440/skyview-de-pier",
+      "publishedAtUtc": "2026-11-01T15:40:14.962Z",
+      "applyOperationId": "ffac705b-5e5a-4253-859c-cf1adf161968"
+    },
+    "facebook": {
+      "id": "d0ca326859c34ca389084570561bcc0d",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T15:41:08.423Z",
+      "externalPostId": "1285475681307050_122125622703424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125622703424431"
+    }
+  }
+}
