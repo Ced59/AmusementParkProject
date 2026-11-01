@@ -185,7 +185,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc de Lomme — `a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`
 - [x] Ty'Bamboo — `6919c77b-1865-444d-8c5c-964b255d9c27` — clôture conservée le 28 octobre 2026 ; audit final 98/100 et Facebook Published.
 
-- [ ] Zygo Park / Zygofolis — `b2dca918-9747-4623-a0c0-38e89634aaff` — Nice ; audit éditorial final validé le 28 octobre 2026 : 54 éléments, 58 images propres, 19 faits, article dans huit langues et plans officiels 1987/1991. Dépendances publiées, parc encore masqué : score projeté **95/100 sans bloqueur**, attente d’acceptation explicite de cette exception avec les lacunes sourcées. Facebook à publier après mise en ligne et contrôle public.
+- [ ] Zygo Park / Zygofolis — `b2dca918-9747-4623-a0c0-38e89634aaff` ; fiche et contenus publiés le 1er novembre 2026, 19 faits historiques et article accessibles dans huit langues. **95/100 sans bloqueur API** : ligne conservée ouverte avec ses lacunes historiques, aucune exception de score acceptée. [Facebook Published](https://www.facebook.com/1285475681307050/posts/122125614645424431). [Audit de publication](world-integration/evidence/france-historical-20261022/zygofolis-publication-audit.json).
 
 ## 5. Parcs historiques absents de la photographie FR
 
@@ -204,7 +204,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc Eana — Gruchet-le-Valasse — 2008-2012 — `c30d2efd-a204-47ce-b8d3-f32a2e0c700f` ; intégration partielle : 31 éléments, 27 descriptions en huit langues, 21 images, plans 2008/2009, 9 jalons et article en huit langues. Quatre descriptions restent à étayer ; parc et annonce Facebook non publiés. [Contrôles et lacunes](world-integration/evidence/france-historical-20261022/eana-progress-audit.json).
 - [ ] Parc océanique Cousteau — Paris — 1989-1992 — `766cb7c7-bacf-4d74-8ada-ba9b9b8488a2` ; fiche et contenus publiés le 1er novembre 2026, onze faits historiques et article accessibles dans huit langues. **87/100 sans bloqueur** : ligne conservée ouverte pour les lacunes historiques, aucune exception de score acceptée. [Facebook Published](https://www.facebook.com/1285475681307050/posts/122125612269424431). [Audit de publication](world-integration/evidence/france-historical-20261022/parc-cousteau-publication-audit.json).
 - [ ] Pira Park — Nice — fermeture à dater
-- [ ] Planète magique — Paris — 1989-1991 — `305f6144-8dc2-4b24-a23d-d44749fe7d83` ; audit éditorial validé : 45 équipements, 60 médias, 9 faits et un article en huit langues. Dépendances publiées, parc masqué : **92/100 sans bloqueur**, attente d’acceptation explicite de cette exception avec les lacunes historiques. Facebook après publication et vérifications publiques. [Audit et lacunes](world-integration/evidence/france-historical-20261022/planete-magique-ready-audit.json).
+- [ ] Planète magique — Paris — 1989-1991 `305f6144-8dc2-4b24-a23d-d44749fe7d83` ; fiche et contenus publiés le 1er novembre 2026, 9 faits historiques et article accessibles dans huit langues. **93/100 sans bloqueur API** : ligne conservée ouverte avec ses lacunes historiques, aucune exception de score acceptée. [Facebook Published](https://www.facebook.com/1285475681307050/posts/122125615305424431). [Audit de publication](world-integration/evidence/france-historical-20261022/planete-magique-publication-audit.json).
 - [ ] Playmobil FunPark Fresnes — Fresnes — 1999-2022
 - [ ] Tivoli — Paris — 1730-1842
 - [ ] Village de la Droséra - Forez Miniature — Jeansagnière — 1992-2009

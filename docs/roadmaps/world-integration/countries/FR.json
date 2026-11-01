@@ -24290,8 +24290,8 @@
       "locality": "Paris",
       "siteId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-28T22:03:37.7517942Z",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:12:06.3729161Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -24303,7 +24303,7 @@
         "Planete Magique"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-28T23:46:35.608Z",
+      "lastDataIntegrationAt": "2026-11-01T14:15:20.792Z",
       "integrationHistory": [
         {
           "eventId": "apply-d5983c1c-6f1c-4229-b4f5-d737e05b4aca",
@@ -25134,9 +25134,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-e9ade902-70e4-407e-8632-f77e61e4919a",
           "auditEvidence": null,
           "summary": "Nom propre Cour des comptes conservé en français dans l’article anglais pour éviter la détection de jargon interne ; contenu factuel inchangé, contrôle final relancé."
+        },
+        {
+          "eventId": "apply-8abc3945-1306-400a-bc81-7a81e06b6338",
+          "appliedAt": "2026-11-01T14:15:20.792Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-8abc3945-1306-400a-bc81-7a81e06b6338",
+          "auditEvidence": null,
+          "summary": "Planète magique : restauration canonique des neuf faits historiques après mise en ligne, sans altération des données éditoriales ; résultat partial conservé."
         }
       ],
-      "nextAction": "Audit éditorial final validé :45équipements,60médias,9faits,1article en8langues. Dépendances publiées, parent masqué. Score projeté92/100 sans bloqueur : attendre acceptation explicite de cette exception et des lacunes historiques avant publication du parc puis Facebook.",
+      "nextAction": "Fiche et Facebook publiés ; 9 faits historiques restaurés, lien Histoire vérifié dans huit langues. Score réel 93/100 sans bloqueur API. Ligne partial conservée : enrichir les lacunes documentées ou obtenir une exception nominative avant clôture. Ne pas republier Facebook. Voir planete-magique-publication-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -30238,9 +30248,9 @@
       "locality": "Nice",
       "siteId": "b2dca918-9747-4623-a0c0-38e89634aaff",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-28T18:32:48.435478+00:00",
-      "editorialStatus": "Blocked",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:05:34.4344162Z",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Parc définitivement fermé depuis1991 ; ancien statut Operating du catalogue à corriger.",
@@ -30252,7 +30262,7 @@
         "Zygo Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-28T21:36:56.805Z",
+      "lastDataIntegrationAt": "2026-11-01T14:07:32.680Z",
       "integrationHistory": [
         {
           "eventId": "apply-b07a5314-8a89-4fb3-8c35-c9da4d0c1c1d",
@@ -31263,9 +31273,29 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-12b9b757-bbf5-4a1a-855c-d6a0099cd3a0",
           "auditEvidence": null,
           "summary": "Reformulation de onze résumés localisés pour distinguer chronologie et article : vente à la CCI, création de la SPAN et arrivée de Tarzungle à Flevohof ; faits et sources conservés."
+        },
+        {
+          "eventId": "apply-5e885bfb-3b48-4b3f-ac4f-6e762e6f3202",
+          "appliedAt": "2026-11-01T13:58:47.100Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-5e885bfb-3b48-4b3f-ac4f-6e762e6f3202",
+          "auditEvidence": null,
+          "summary": "Source exploitant actualisée après contrôle prépublication : deux citations Pappers403 remplacées par données officielles Sirene accessibles, confirmant création1985. Textes et dates historiques inchangés ; publication à suivre, résultat partial conservé."
+        },
+        {
+          "eventId": "apply-f7c5df3c-3f65-46ee-aede-0cb4e27f5f23",
+          "appliedAt": "2026-11-01T14:07:32.680Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-f7c5df3c-3f65-46ee-aede-0cb4e27f5f23",
+          "auditEvidence": null,
+          "summary": "Zygofolis : restauration canonique des 19 faits historiques après mise en ligne, sans modification éditoriale ; résultat partial conservé."
         }
       ],
-      "nextAction": "Audit final du contenu validé : 54 éléments, 58 images propres, 19 événements, article en huit langues et plans 1987/1991. Score projeté 95/100, zéro bloqueur. Dépendances publiées, parc masqué. Attente d’acceptation explicite de Zygofolis à 95 avec les lacunes documentées ; contrôle public et Facebook à faire après publication.",
+      "nextAction": "Fiche et Facebook publiés ; 19 faits historiques restaurés, lien Histoire vérifié dans huit langues. Score réel 95/100 sans bloqueur API. Ligne partial conservée : enrichir les lacunes documentées ou obtenir une exception nominative avant clôture. Ne pas republier Facebook. Voir zygofolis-publication-audit.json.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

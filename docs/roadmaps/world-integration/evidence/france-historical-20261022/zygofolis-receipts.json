@@ -1960,6 +1960,47 @@
         "summaries"
       ],
       "summary": "Reformulation de onze résumés localisés pour distinguer chronologie et article : vente à la CCI, création de la SPAN et arrivée de Tarzungle à Flevohof ; faits et sources conservés."
+    },
+    {
+      "eventId": "apply-5e885bfb-3b48-4b3f-ac4f-6e762e6f3202",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T13:58:47.1003986Z",
+      "appliedAt": "2026-11-01T13:58:47.100Z",
+      "receiptFile": "10-source-refresh-apply.receipt.json",
+      "receiptSha256": "1b174428d4d39216e401aaad09abc2419618839e080aa63a5f815db7e5cd7066",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "sources"
+      ],
+      "summary": "Source exploitant actualisée après contrôle prépublication : deux citations Pappers403 remplacées par données officielles Sirene accessibles, confirmant création1985. Textes et dates historiques inchangés ; publication à suivre, résultat partial conservé."
+    },
+    {
+      "eventId": "apply-f7c5df3c-3f65-46ee-aede-0cb4e27f5f23",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:07:32.6808411Z",
+      "appliedAt": "2026-11-01T14:07:32.680Z",
+      "receiptFile": "10-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "5c8bdc3fe169130ad113e60394a953e57745f4d55f18dfaa6e96c566ae30adf8",
+      "counts": {
+        "created": 0,
+        "updated": 19,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Zygofolis : restauration canonique des 19 faits historiques après mise en ligne, sans modification éditoriale ; résultat partial conservé."
     }
   ],
   "publicationOrNoop": [
@@ -2004,6 +2045,27 @@
         "isVisible"
       ],
       "summary": "Publication des 54 éléments, deux zones, deux plans officiels, 19 événements et de l’article audités de Zygofolis ; validation de la SPAN, fiche principale toujours masquée."
+    },
+    {
+      "eventId": "apply-bfe25133-ff1c-432a-9478-17ed7df4f8c8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:05:34.4344162Z",
+      "appliedAt": "2026-11-01T14:05:34.434Z",
+      "receiptFile": "10-publish-park-apply.receipt.json",
+      "receiptSha256": "9f76b7798d2cb602ee2f9a608ee0f6a2a312930f9dbd128fb64e38bb2a925f0d",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Publication initiale de Zygofolis explicitement autorisée ; visibilité seule, dossier partial conservé et vérifications publiques à suivre."
     }
   ]
 }

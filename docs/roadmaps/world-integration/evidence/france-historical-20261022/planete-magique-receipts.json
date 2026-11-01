@@ -1360,6 +1360,26 @@
         "article"
       ],
       "summary": "Nom propre Cour des comptes conservé en français dans l’article anglais pour éviter la détection de jargon interne ; contenu factuel inchangé, contrôle final relancé."
+    },
+    {
+      "eventId": "apply-8abc3945-1306-400a-bc81-7a81e06b6338",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:15:20.7925855Z",
+      "appliedAt": "2026-11-01T14:15:20.792Z",
+      "receiptFile": "10-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "ee17aa3a3a35fb4c06214f2a385024d3f6f0b97cb754cd95b2b08f4871c154c5",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Planète magique : restauration canonique des neuf faits historiques après mise en ligne, sans altération des données éditoriales ; résultat partial conservé."
     }
   ],
   "publicationOrNoop": [
@@ -1404,6 +1424,27 @@
         "isVisible"
       ],
       "summary": "Mise en visibilité autorisée des 45 équipements, de la zone, des neuf faits et de l’article ; seules visibilités et validation éditoriale modifiées, parent encore masqué."
+    },
+    {
+      "eventId": "apply-139b5fb9-02b5-40ca-bcb3-b308d35ecb4d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:12:06.3729161Z",
+      "appliedAt": "2026-11-01T14:12:06.372Z",
+      "receiptFile": "10-publish-park-apply.receipt.json",
+      "receiptSha256": "95f390badf7c2895ccedc8530f7ace44bb38414778848b244d9063fb0c9e34dc",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Planète magique : publication initiale explicitement autorisée, visibilité seule ; résultat partial conservé et contrôles publics à suivre."
     }
   ]
 }
