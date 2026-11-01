@@ -7583,6 +7583,169 @@
       }
     },
     {
+      "entryId": "US-candidate-discovery-5ce81bb6696419",
+      "name": "SkyView Atlanta",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "168 Luckie Street NW, Atlanta, Georgia, États-Unis",
+      "siteId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T13:09:25.995Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires hebdomadaires officiels actifs au 1er novembre 2026.",
+      "identityConfidence": "Découverte hors inventaire initial, roue individuelle à billet propre ; recherches Park et Standalone officielles sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Skyview Atlanta",
+        "Atlanta SkyView Ferris Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T13:05:33.188Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-fe210565-8ace-4b0d-b5b3-88210af11754",
+          "appliedAt": "2026-11-01T13:02:23.462Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:apply:fe210565-8ace-4b0d-b5b3-88210af11754",
+          "auditEvidence": null,
+          "summary": "Nouvelle fiche privée créée après découverte hors inventaire, descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-afcb3278-bd7c-4e97-b007-08549f5416d6",
+          "appliedAt": "2026-11-01T13:04:17.656Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:apply:afcb3278-bd7c-4e97-b007-08549f5416d6",
+          "auditEvidence": null,
+          "summary": "Cinq catégories de tarifs individuels en USD intégrées avec conditions et frais"
+        },
+        {
+          "eventId": "image-7ed4a60ce7564f08a075e6a5ea4485a9",
+          "appliedAt": "2026-11-01T13:04:41.682Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:image:7ed4a60ce7564f08a075e6a5ea4485a9",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue SkyView Atlanta importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-945e85d496ec4a468325e918a6c3b735",
+          "appliedAt": "2026-11-01T13:05:05.026Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:image:945e85d496ec4a468325e918a6c3b735",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue SkyView Atlanta importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-c6b8cf04-c0ff-48da-900a-a6a0c4f058ba",
+          "appliedAt": "2026-11-01T13:05:33.188Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:apply:c6b8cf04-c0ff-48da-900a-a6a0c4f058ba",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires officiels intégrés avec fuseau America/New_York"
+        },
+        {
+          "eventId": "closure-c6b8cf04-c0ff-48da-900a-a6a0c4f058ba",
+          "appliedAt": "2026-11-01T13:05:33.188Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:apply:c6b8cf04-c0ff-48da-900a-a6a0c4f058ba",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier régulièrement les tarifs hors taxes et frais, les jours fériés et les horaires officiels. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "SkyView Atlanta — billetterie, tarifs, adresse et horaires officiels",
+          "url": "https://www.skyviewatlanta.com/tickets/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "SkyView Atlanta — expérience, durée, nacelles et fonctionnement annuel",
+          "url": "https://www.skyviewatlanta.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise de la roue SkyView Atlanta",
+          "url": "https://www.openstreetmap.org/way/1292668916",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyView Atlanta, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Wheel_(259777543).jpeg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyView Atlanta, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Atlanta_Sky_Ferry.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "SkyView Atlanta",
+            "source": "SkyView Atlanta — billetterie officielle",
+            "url": "https://www.skyviewatlanta.com/tickets/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Centennial Olympic Park, voisinage",
+            "sourceLifecycleSignal": "Billet propre et horaires officiels au 1er novembre 2026",
+            "sourceLocality": "Atlanta, Georgia",
+            "matchingMethod": "Billetterie individuelle, source officielle et recherches Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue est une attraction autonome vendue à l’unité près du parc public Centennial Olympic Park, sans rattachement à un parc d’attractions structuré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3e968ae6-1ab4-436d-a16c-9ed19cef3b47/skyview-atlanta",
+          "publishedAtUtc": "2026-11-01T13:07:19.238Z",
+          "verifiedAtUtc": "2026-11-01T13:09:25.995Z",
+          "evidence": "PARK_DATA_EDITOR:apply:079cbd6f-a946-4425-b3fe-908de9c8a08d"
+        },
+        "facebook": {
+          "id": "001657245ec0455bab16889677f7d077",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:08:04.081Z",
+          "externalPostId": "1285475681307050_122125608873424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125608873424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:001657245ec0455bab16889677f7d077"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "7ed4a60ce7564f08a075e6a5ea4485a9",
+          "945e85d496ec4a468325e918a6c3b735"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:06:46.235Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c742e24a-6cc8-432b-a142-a703428eb654",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
       "entryId": "US-candidate-3b680ad27a9128",
       "name": "The Branson Ferris Wheel",
       "entityKind": "StandaloneAttraction",

@@ -1,0 +1,92 @@
+{
+  "name": "SkyView Atlanta",
+  "entryId": "US-candidate-discovery-5ce81bb6696419",
+  "standaloneAttractionId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+  "qualification": "Découverte hors backlog initial : roue à billet propre près de Centennial Olympic Park, confirmée par l’exploitant et sans fiche Park/Standalone homonyme.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 5,
+    "weeklyRules": 2,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les prix de groupe et le billet VIP sont décrits dans les notes mais pas encore détaillés comme offres distinctes."
+  ],
+  "sources": [
+    {
+      "label": "SkyView Atlanta — billetterie, tarifs, adresse et horaires officiels",
+      "url": "https://www.skyviewatlanta.com/tickets/"
+    },
+    {
+      "label": "SkyView Atlanta — expérience, durée, nacelles et fonctionnement annuel",
+      "url": "https://www.skyviewatlanta.com/"
+    },
+    {
+      "label": "OpenStreetMap — emprise de la roue SkyView Atlanta",
+      "url": "https://www.openstreetmap.org/way/1292668916"
+    },
+    {
+      "label": "Wikimedia Commons — SkyView Atlanta, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Wheel_(259777543).jpeg"
+    },
+    {
+      "label": "Wikimedia Commons — SkyView Atlanta, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Atlanta_Sky_Ferry.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "7ed4a60ce7564f08a075e6a5ea4485a9",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Wheel_(259777543).jpeg",
+      "author": "Kailash U",
+      "date": "before 28 May 2018, 04:57:35 (UTC)",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "subject": "La roue photographiée depuis le parc, de nuit",
+      "transformation": "vignette Wikimedia Commons, sans recadrage"
+    },
+    {
+      "imageId": "945e85d496ec4a468325e918a6c3b735",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Atlanta_Sky_Ferry.jpg",
+      "author": "Breoshni",
+      "date": "2013-08-27 11:24:42",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "subject": "Les nacelles et les rayons lumineux de SkyView Atlanta",
+      "transformation": "vignette Wikimedia Commons, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "b004f5a736087e400082c3a466894419f8602b9b398b9719c008812b3f31793e",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T13:09:25.995Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T13:05:33.188Z",
+    "photosPublishedAtUtc": "2026-11-01T13:06:46.235Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c742e24a-6cc8-432b-a142-a703428eb654"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/3e968ae6-1ab4-436d-a16c-9ed19cef3b47/skyview-atlanta",
+      "publishedAtUtc": "2026-11-01T13:07:19.238Z",
+      "applyOperationId": "079cbd6f-a946-4425-b3fe-908de9c8a08d"
+    },
+    "facebook": {
+      "id": "001657245ec0455bab16889677f7d077",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T13:08:04.081Z",
+      "externalPostId": "1285475681307050_122125608873424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125608873424431"
+    }
+  }
+}
