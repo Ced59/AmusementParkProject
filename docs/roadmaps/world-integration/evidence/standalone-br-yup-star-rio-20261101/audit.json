@@ -1,0 +1,163 @@
+{
+  "work": "Yup Star Rio, formerly Rio Star, separately ticketed observation wheel at Porto Maravilha, Rio de Janeiro. Official editor Park/Standalone searches for both names returned no match. Created hidden with eight authored descriptions, current daily hours from operator checkout, dynamic price without unsupported amount, public opening event and five exact freely licensed images (two historical December 2019 images clearly dated). Audited and published site and Facebook.",
+  "qualification": "Single independent ticketed wheel in the public port district; no structured amusement park parent.",
+  "operatorSources": [
+    "https://www.yupstar.com.br/as-rodas/yup-star-rio/",
+    "https://ingressos.rio.yupstar.com.br/index.php"
+  ],
+  "openingSource": "https://prefeitura.rio/cidade/maior-roda-gigante-da-america-latina-a-rio-star-e-inaugurada-no-porto-maravilha/",
+  "coordinatesSource": "https://mapcarta.com/W1050242513",
+  "sourceChecks": {
+    "standaloneRioStar": 0,
+    "standaloneYupStarRio": 0,
+    "parksRioStar": 0,
+    "parksYupStarRio": 0
+  },
+  "commercialData": {
+    "pricing": "Online ticketing selects a date before showing amounts; dynamic mode used without an invented amount.",
+    "openingHours": "Every day 10:00-18:00 on official ticketing on 2026-11-01; selected-date availability must be checked."
+  },
+  "dataReceipts": [
+    {
+      "operationId": "69ca9150-5f4c-4a3f-a365-a417a839d5d2",
+      "appliedAtUtc": "2026-11-01T17:31:02.675Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "8978b5cd-b81a-4f71-9f82-6e3ef2b4aa7c",
+      "appliedAtUtc": "2026-11-01T17:34:42.380Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "3fd802c7-a6b4-4c34-9920-09373bb01465",
+      "appliedAtUtc": "2026-11-01T17:35:06.562Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "4d38290c-2b38-499d-b946-912c016519e4",
+      "appliedAtUtc": "2026-11-01T17:37:37.418Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "63ba5a1d842e468cb35ac9778ce00eba",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Rueda_Yup_Star,_R%C3%ADo_de_Janeiro_A74241820241122.jpg",
+      "author": "Rjcastillo",
+      "license": "CC BY 4.0",
+      "takenAt": "2024-11-22 17:24:57",
+      "historical": false,
+      "ownerId": "6153ecff-f566-5dfa-83a5-a4e2df425ab5",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-01T17:36:11.738Z"
+    },
+    {
+      "imageId": "25e977e2af0348aa9c097392122ad08a",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Rio_Star,_the_ferris_wheel_of_Rio_de_Janeiro_(50241773013).jpg",
+      "author": "Just a Brazilian man from Brazil",
+      "license": "CC BY 2.0",
+      "takenAt": "2020-08-17 11:39",
+      "historical": false,
+      "ownerId": "6153ecff-f566-5dfa-83a5-a4e2df425ab5",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:36:23.310Z"
+    },
+    {
+      "imageId": "ebd1f1990d5e483a90c329ff9085a546",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Rio_Star.jpg",
+      "author": "Agent010",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2024-04-22",
+      "historical": false,
+      "ownerId": "6153ecff-f566-5dfa-83a5-a4e2df425ab5",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:36:36.058Z"
+    },
+    {
+      "imageId": "3f1b777cdbae4e46971b97dabf296dfb",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:RioStar_2019-12-22_1.jpg",
+      "author": "Mwaldeck",
+      "license": "Public domain",
+      "takenAt": "2019-12-22",
+      "historical": true,
+      "ownerId": "6153ecff-f566-5dfa-83a5-a4e2df425ab5",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:36:48.384Z"
+    },
+    {
+      "imageId": "8acb991f0dfd4e6e91bf98964ecbf750",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:RioStar_2019-12-22_2.jpg",
+      "author": "Mwaldeck",
+      "license": "Public domain",
+      "takenAt": "2019-12-22",
+      "historical": true,
+      "ownerId": "6153ecff-f566-5dfa-83a5-a4e2df425ab5",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:37:00.657Z"
+    }
+  ],
+  "audit": {
+    "score": 97,
+    "earnedPoints": 68,
+    "applicableMaxPoints": 70,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 5,
+    "visibleOpeningEvent": 1
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/6153ecff-f566-5dfa-83a5-a4e2df425ab5/yup-star-rio",
+    "sitePublishedAtUtc": "2026-11-01T17:38:22.940Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:2dd6903e-a554-4c0b-9a67-df524f4af439",
+    "siteHttpStatus": 200,
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "d09e23d66c49488687159eb024253c0e",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125632879424431",
+    "facebookPublishedAtUtc": "2026-11-01T17:39:56.442Z"
+  },
+  "lastDataIntegrationAt": "2026-11-01T17:37:37.418Z",
+  "remainingGaps": [
+    "Check exact current ticket amount for a selected date and update if a stable published fare is available.",
+    "Recheck schedule and booking availability regularly."
+  ]
+}
