@@ -74802,6 +74802,175 @@
         "publicationBlockers": [],
         "gapCount": 1
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-0cb8cee26bb3f2b9",
+      "name": "San Francisco Carousel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Carrousel",
+      "locality": "Pier 39, Beach Street & The Embarcadero, San Francisco, Californie 94133, États-Unis",
+      "siteId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T16:07:48.967Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site direct, billetterie et fiche PIER 39 actifs au 1er novembre 2026.",
+      "identityConfidence": "Nouvelle découverte hors inventaire ; identité, emplacement et billet propre vérifiés ; recherches officielles Park/Standalone San Francisco Carousel, Carousel et Pier 39 sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Pier 39 Carousel",
+        "Carousel at Pier 39"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T16:04:55.689Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-21af2e61-f194-4a4d-80c9-b9a5a8c81969",
+          "appliedAt": "2026-11-01T16:01:58.487Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:apply:21af2e61-f194-4a4d-80c9-b9a5a8c81969",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après découverte hors inventaire : identité et huit descriptions"
+        },
+        {
+          "eventId": "apply-4b02e42a-d7f4-4cdd-8b25-fd1e5d4c1af0",
+          "appliedAt": "2026-11-01T16:03:20.568Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:apply:4b02e42a-d7f4-4cdd-8b25-fd1e5d4c1af0",
+          "auditEvidence": null,
+          "summary": "Horaire officiel Pier 39 intégré avec réserve météo"
+        },
+        {
+          "eventId": "image-867b606be4e745af84161c8c74d5b96c",
+          "appliedAt": "2026-11-01T16:04:07.726Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:image:867b606be4e745af84161c8c74d5b96c",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte du San Francisco Carousel importée avec licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-260b05b3358b486086aa3c6e06f5b1ea",
+          "appliedAt": "2026-11-01T16:04:28.368Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:image:260b05b3358b486086aa3c6e06f5b1ea",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte du San Francisco Carousel importée avec licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-f65d734ef7604c17a712d41d12cb6167",
+          "appliedAt": "2026-11-01T16:04:55.689Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:image:f65d734ef7604c17a712d41d12cb6167",
+          "auditEvidence": null,
+          "summary": "Photo 3 exacte du San Francisco Carousel importée avec licence et textes en huit langues"
+        },
+        {
+          "eventId": "closure-f65d734ef7604c17a712d41d12cb6167",
+          "appliedAt": "2026-11-01T16:04:55.689Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:image:f65d734ef7604c17a712d41d12cb6167",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-san-francisco-carousel-20261101/audit.json",
+          "summary": "Audit final 78/100 sans blocage et trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Confirmer le prix courant sur l’affichage officiel ou la billetterie du carrousel avant de l’intégrer ; revérifier les horaires en cas de météo défavorable. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "San Francisco Carousel et Bay Plunge — site direct et conditions de billet",
+          "url": "https://www.sfcarousel.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "PIER 39 — carrousel, horaires et description",
+          "url": "https://www.pier39.com/attraction/san-francisco-carousel/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — point du San Francisco Carousel",
+          "url": "https://www.openstreetmap.org/node/128240118",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — San Francisco Carousel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:San_Francisco_Carousel_at_Pier_39.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — San Francisco Carousel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Pier_39_carousel_San_Francisco_2019.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — San Francisco Carousel, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Fisherman%E2%80%99s_Wharf_-_April_2018_%286232%29.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "San Francisco Carousel",
+            "source": "San Francisco Carousel — site direct",
+            "url": "https://www.sfcarousel.com/",
+            "family": "Carrousel",
+            "sourceVenueName": "Pier 39",
+            "sourceLifecycleSignal": "Billetterie et page directes actives au 1er novembre 2026",
+            "sourceLocality": "San Francisco",
+            "matchingMethod": "Billet propre sur promenade commerciale ouverte ; recherches officielles Park/Standalone négatives"
+          }
+        ],
+        "rationale": "Le carrousel dispose de sa caisse et de ses billets propres sur Pier 39, promenade commerciale ouverte et non parc à billet unique."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/da3367d0-cdca-4fbe-8790-364ac656da4c/san-francisco-carousel",
+          "publishedAtUtc": "2026-11-01T16:06:18.064Z",
+          "verifiedAtUtc": "2026-11-01T16:07:48.967Z",
+          "evidence": "PARK_DATA_EDITOR:apply:18edee89-d2bf-4b78-b2c3-8b509b0f2d28"
+        },
+        "facebook": {
+          "id": "febc2afd97ad4f44b707abe27ce9bdfb",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T16:07:06.282Z",
+          "externalPostId": "1285475681307050_122125625403424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125625403424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:febc2afd97ad4f44b707abe27ce9bdfb"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "867b606be4e745af84161c8c74d5b96c",
+          "260b05b3358b486086aa3c6e06f5b1ea",
+          "f65d734ef7604c17a712d41d12cb6167"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T16:05:38.257Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c182b724-d2df-4cef-82b5-8ee250055fdf",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-san-francisco-carousel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-san-francisco-carousel-20261101/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
     }
   ]
 }
