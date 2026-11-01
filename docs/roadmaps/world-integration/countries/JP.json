@@ -647,37 +647,180 @@
     {
       "entryId": "JP-candidate-2a1dae09eb87da",
       "name": "Amuran",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Kagoshima , Kyushu",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Amu Plaza Kagoshima, 1-1 Chuocho, Kagoshima",
+      "siteId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T13:50:22.491Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitation, horaires et tarifs courants publiés par JR Kagoshima City au 1er novembre 2026.",
+      "identityConfidence": "Grande roue à billet propre sur le toit du centre commercial ; recherches officielles sous Amuran, アミュラン et Amu Plaza sans fiche homonyme.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "アミュラン",
+        "Amuran Ferris Wheel",
+        "Amu Plaza Kagoshima Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T13:47:01.602Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-640b2649-3273-4520-8935-937bb23fbe0b",
+          "appliedAt": "2026-11-01T13:41:12.423Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:640b2649-3273-4520-8935-937bb23fbe0b",
+          "auditEvidence": null,
+          "summary": "Fiche Amuran créée en brouillon avec huit descriptions et position exacte de la roue"
+        },
+        {
+          "eventId": "apply-cc410a7e-da6a-40b7-b989-024919984e1d",
+          "appliedAt": "2026-11-01T13:43:00.814Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:cc410a7e-da6a-40b7-b989-024919984e1d",
+          "auditEvidence": null,
+          "summary": "Cinq tarifs officiels en JPY et conditions d’âge intégrés"
+        },
+        {
+          "eventId": "apply-e595d20f-243a-46a6-b7ae-2aa46d9473b3",
+          "appliedAt": "2026-11-01T13:43:35.137Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:e595d20f-243a-46a6-b7ae-2aa46d9473b3",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires et jours fériés de novembre 2026 intégrés, fuseau Asia/Tokyo"
+        },
+        {
+          "eventId": "image-1ced286e94b14cc7b8796c43aafe08a7",
+          "appliedAt": "2026-11-01T13:44:23.542Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:image:1ced286e94b14cc7b8796c43aafe08a7",
+          "auditEvidence": null,
+          "summary": "Photo 1 de la roue Amuran importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-66dc802f87ca43d182fa8030da0f8292",
+          "appliedAt": "2026-11-01T13:44:50.361Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:image:66dc802f87ca43d182fa8030da0f8292",
+          "auditEvidence": null,
+          "summary": "Photo 2 de la roue Amuran importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-91d364ab-0868-4154-9b50-d00bab373dcd",
+          "appliedAt": "2026-11-01T13:47:01.602Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:91d364ab-0868-4154-9b50-d00bab373dcd",
+          "auditEvidence": null,
+          "summary": "Légendes distinctes des textes alternatifs appliquées aux deux photos en huit langues"
+        },
+        {
+          "eventId": "closure-91d364ab-0868-4154-9b50-d00bab373dcd",
+          "appliedAt": "2026-11-01T13:47:01.602Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:91d364ab-0868-4154-9b50-d00bab373dcd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-amuran-20261101/audit.json",
+          "summary": "Audit final 91/100 sans blocage, deux photos propres ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Renouveler les tarifs et horaires officiels ; compléter les exceptions des prochains jours fériés japonais et les changements exceptionnels. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "JR Kagoshima City — Amuran, tarifs, horaires, caractéristiques et conditions",
+          "url": "https://www.jrkagoshimacity.com/amuran/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "JR Kagoshima City — accès et adresse",
+          "url": "https://www.jrkagoshimacity.com/access/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — nœud de la roue Amuran",
+          "url": "https://www.openstreetmap.org/node/2144219417",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Amuran, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_and_Amu_Plaza_Kagoshima.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Amuran, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_and_Amu_Plaza_Kagoshima_2.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Amuran",
+            "source": "JR Kagoshima City — site officiel",
+            "url": "https://www.jrkagoshimacity.com/amuran/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Amu Plaza Kagoshima",
+            "sourceLifecycleSignal": "Billet et horaires propres au 1er novembre 2026",
+            "sourceLocality": "Kagoshima",
+            "matchingMethod": "Billetterie individuelle, exploitant officiel et recherches Park / Standalone sans homonyme"
+          }
+        ],
+        "rationale": "Amuran dispose de son propre tarif et de ses horaires sur le toit d’un centre commercial ; il ne s’agit pas d’une attraction intérieure à un parc d’attractions structuré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/aacbd338-47e5-439b-ae61-6d5bcaa6449b/amuran",
+          "publishedAtUtc": "2026-11-01T13:48:08.499Z",
+          "verifiedAtUtc": "2026-11-01T13:50:22.491Z",
+          "evidence": "PARK_DATA_EDITOR:apply:a67395b1-6202-48a2-87e1-5a427cb5f65b"
+        },
+        "facebook": {
+          "id": "da24203102074bb68944c09eec67108b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:48:56.135Z",
+          "externalPostId": "1285475681307050_122125613145424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125613145424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:da24203102074bb68944c09eec67108b"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "1ced286e94b14cc7b8796c43aafe08a7",
+          "66dc802f87ca43d182fa8030da0f8292"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:45:59.863Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:442ddfb9-1ff6-425a-b224-7d92ad2c0760",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-amuran-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-amuran-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {

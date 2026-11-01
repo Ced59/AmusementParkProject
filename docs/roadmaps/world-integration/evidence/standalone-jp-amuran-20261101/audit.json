@@ -1,0 +1,97 @@
+{
+  "name": "Amuran",
+  "entryId": "JP-candidate-2a1dae09eb87da",
+  "standaloneAttractionId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+  "qualification": "Grande roue autonome du toit d’Amu Plaza Kagoshima, tarification et horaires propres confirmés par JR Kagoshima City ; aucune fiche homonyme dans les recherches officielles.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 5,
+    "weeklyRules": 2,
+    "holidayOverrides": 2
+  },
+  "remainingGaps": [
+    "Les exceptions des jours fériés après novembre 2026 et les changements ponctuels ne sont pas encore saisis individuellement."
+  ],
+  "sources": [
+    {
+      "label": "JR Kagoshima City — Amuran, tarifs, horaires, caractéristiques et conditions",
+      "url": "https://www.jrkagoshimacity.com/amuran/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "JR Kagoshima City — accès et adresse",
+      "url": "https://www.jrkagoshimacity.com/access/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "OpenStreetMap — nœud de la roue Amuran",
+      "url": "https://www.openstreetmap.org/node/2144219417",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Amuran, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_and_Amu_Plaza_Kagoshima.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Amuran, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_and_Amu_Plaza_Kagoshima_2.jpg",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "1ced286e94b14cc7b8796c43aafe08a7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_and_Amu_Plaza_Kagoshima.jpg",
+      "author": "そらみみ",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "photographedAt": "2017-03-20",
+      "subject": "La grande roue Amuran sur le toit d’Amu Plaza Kagoshima, photographiée en mars 2017.",
+      "transformation": "vignette Wikimedia Commons, sans recadrage"
+    },
+    {
+      "imageId": "66dc802f87ca43d182fa8030da0f8292",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_and_Amu_Plaza_Kagoshima_2.jpg",
+      "author": "そらみみ",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "photographedAt": "2018-05-04",
+      "subject": "Amuran vue depuis les abords de la gare de Kagoshima-Chūō en mai 2018.",
+      "transformation": "vignette Wikimedia Commons, sans recadrage"
+    }
+  ],
+  "audit": {
+    "finalPrepublicationExportSha256": "9e4a5b037800af47abaa882c08b4b7ecbd8975385a622f73d85e9520a2ad6a94",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T13:50:22.491Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T13:47:01.602Z",
+    "photosPublishedAtUtc": "2026-11-01T13:45:59.863Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:442ddfb9-1ff6-425a-b224-7d92ad2c0760"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/aacbd338-47e5-439b-ae61-6d5bcaa6449b/amuran",
+      "publishedAtUtc": "2026-11-01T13:48:08.499Z",
+      "applyOperationId": "a67395b1-6202-48a2-87e1-5a427cb5f65b"
+    },
+    "facebook": {
+      "id": "da24203102074bb68944c09eec67108b",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T13:48:56.135Z",
+      "externalPostId": "1285475681307050_122125613145424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125613145424431"
+    }
+  }
+}
