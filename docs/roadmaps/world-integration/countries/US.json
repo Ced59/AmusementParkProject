@@ -58442,37 +58442,190 @@
     {
       "entryId": "US-candidate-a2121bfa4df7d3",
       "name": "SkyStar Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Fisherman's Wharf, San Francisco , California",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "2860 Taylor Street, San Francisco, Californie 94133, États-Unis",
+      "siteId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:58:14.935Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Site et billetterie de l’exploitant actifs au 1er novembre 2026 à Fisherman’s Wharf.",
+      "identityConfidence": "Identité, emplacement actuel, billetterie et photos exactes vérifiés ; recherches officielles Park et Standalone sans doublon.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "SkyStar Observation Wheel",
+        "SkyStar Wheel Fisherman’s Wharf"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T15:54:32.995Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-5239e4d2-3c73-4bd1-86e7-2c2ac04a62cc",
+          "appliedAt": "2026-11-01T15:50:03.169Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:apply:5239e4d2-3c73-4bd1-86e7-2c2ac04a62cc",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée depuis la candidate conservée : identité, localisation et huit descriptions"
+        },
+        {
+          "eventId": "apply-3f1135e4-73b4-4fb0-bbb8-229e8d01226e",
+          "appliedAt": "2026-11-01T15:51:07.920Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:apply:3f1135e4-73b4-4fb0-bbb8-229e8d01226e",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels adultes, enfants et seniors intégrés avec la source datée"
+        },
+        {
+          "eventId": "apply-4be02fac-1a0b-4cba-ac89-2f13708e6c9a",
+          "appliedAt": "2026-11-01T15:51:33.888Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:apply:4be02fac-1a0b-4cba-ac89-2f13708e6c9a",
+          "auditEvidence": null,
+          "summary": "Horaires quotidiens officiels intégrés avec réserve météo et événements"
+        },
+        {
+          "eventId": "image-5eacdbce315341e4844cad3502ea8476",
+          "appliedAt": "2026-11-01T15:52:22.876Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:image:5eacdbce315341e4844cad3502ea8476",
+          "auditEvidence": null,
+          "summary": "Photo 1 de SkyStar Wheel à Fisherman’s Wharf importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-af585df4c7964a4db2e39a0411b11f43",
+          "appliedAt": "2026-11-01T15:53:23.905Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:image:af585df4c7964a4db2e39a0411b11f43",
+          "auditEvidence": null,
+          "summary": "Photo 2 de SkyStar Wheel à Fisherman’s Wharf importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-60dcc906ae124fb58fae0c06b8ce6a50",
+          "appliedAt": "2026-11-01T15:54:32.995Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:image:60dcc906ae124fb58fae0c06b8ce6a50",
+          "auditEvidence": null,
+          "summary": "Photo 3 de SkyStar Wheel à Fisherman’s Wharf importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-60dcc906ae124fb58fae0c06b8ce6a50",
+          "appliedAt": "2026-11-01T15:54:32.995Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:image:60dcc906ae124fb58fae0c06b8ce6a50",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-skystar-wheel-20261101/audit.json",
+          "summary": "Audit final 91/100 sans blocage, trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne, les sources et la date de dernière intégration. Revérifier périodiquement tarifs, horaires et emplacement d’une roue transportable. Le site de l’exploitant donne 94111 dans la FAQ et 94133 sur sa page Contact ; 94133 confirmé aussi par l’État de Californie. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "SkyStar Wheel — billets, tarifs et horaires",
+          "url": "https://www.skystarwheel.com/tickets/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "SkyStar Wheel — FAQ, durée, accès et météo",
+          "url": "https://www.skystarwheel.com/faq/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "SkyStar Wheel — contact, adresse et code postal",
+          "url": "https://www.skystarwheel.com/contact/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "État de Californie — exploitant et adresse de la roue (94133)",
+          "url": "https://www.dir.ca.gov/dosh/Reports/par-route-locations.pdf",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:SkyStar_Wheel_-_Fisherman%27s_Wharf_-_January_2024_%288774%29.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:SkyStar_Wheel_-_Fisherman%27s_Wharf_-_January_2024_%288775%29.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Fisherman%27s_Wharf,_San_Francisco_11-27-2025_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "SkyStar Wheel",
+            "source": "SkyStar Wheel — billetterie directe",
+            "url": "https://www.skystarwheel.com/tickets/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Fisherman’s Wharf",
+            "sourceLifecycleSignal": "Billetterie propre active au 1er novembre 2026",
+            "sourceLocality": "San Francisco",
+            "matchingMethod": "Adresse, marque et billetterie exactes ; recherches officielles Park/Standalone négatives"
+          }
+        ],
+        "rationale": "Roue exploitée avec billetterie propre dans un quartier ouvert ; elle a quitté Golden Gate Park pour Fisherman’s Wharf et ses images montrent exclusivement l’emplacement actuel."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/49ae82c6-f18c-48e0-bdbd-13fa3377a870/skystar-wheel",
+          "publishedAtUtc": "2026-11-01T15:56:10.871Z",
+          "verifiedAtUtc": "2026-11-01T15:58:14.935Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6fa59752-740c-42ce-9189-a27731b4119a"
+        },
+        "facebook": {
+          "id": "67d7bce9daa8402a96f5d0aa73ae0a1a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:57:22.814Z",
+          "externalPostId": "1285475681307050_122125624113424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125624113424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:67d7bce9daa8402a96f5d0aa73ae0a1a"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "5eacdbce315341e4844cad3502ea8476",
+          "af585df4c7964a4db2e39a0411b11f43",
+          "60dcc906ae124fb58fae0c06b8ce6a50"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T15:55:36.874Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:7c9d8584-7fa8-4e34-b19d-34fc88266af2",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-skystar-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skystar-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
