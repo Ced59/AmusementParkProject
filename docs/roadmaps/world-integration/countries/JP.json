@@ -17151,6 +17151,185 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "JP-candidate-discovery-d4cf8880da9b16",
+      "name": "nORIA",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "Norbesa, Minami 3-jō Nishi 5-chōme 1-1, Chūō-ku, Sapporo, Japon",
+      "siteId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:21:25.956Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Roue sur le toit de Norbesa, billetterie et horaires officiels actifs au 1er novembre 2026 ; fermeture pour inspection annoncée le 9 novembre.",
+      "identityConfidence": "Découverte hors inventaire confirmée par Norbesa et OpenStreetMap ; recherches officielles Park Norbesa/ノルベサ et Standalone nORIA/観覧車ノリア sans fiche homonyme.",
+      "possibleMatches": [],
+      "aliases": [
+        "観覧車ノリア",
+        "Norbesa Ferris Wheel",
+        "Noria Sapporo"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T14:17:12.439Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2a2ae1d2-ecb3-4892-84ff-2ecbed309270",
+          "appliedAt": "2026-11-01T14:11:55.569Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:apply:2a2ae1d2-ecb3-4892-84ff-2ecbed309270",
+          "auditEvidence": null,
+          "summary": "Fiche autonome créée après découverte hors inventaire, huit descriptions et localisation de la roue"
+        },
+        {
+          "eventId": "apply-f250859a-a001-40c3-959a-cebead9f2639",
+          "appliedAt": "2026-11-01T14:15:15.015Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:apply:f250859a-a001-40c3-959a-cebead9f2639",
+          "auditEvidence": null,
+          "summary": "Neuf offres tarifaires officielles en JPY et conditions associées intégrées"
+        },
+        {
+          "eventId": "apply-bddd15f0-0e3b-4b33-b907-1e005b6cfb36",
+          "appliedAt": "2026-11-01T14:15:51.947Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:apply:bddd15f0-0e3b-4b33-b907-1e005b6cfb36",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires et 19 exceptions datées, dont la fermeture du 9 novembre 2026, intégrés"
+        },
+        {
+          "eventId": "image-10b2f29e917a4d38b802a23e58c30bf4",
+          "appliedAt": "2026-11-01T14:16:35.434Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:image:10b2f29e917a4d38b802a23e58c30bf4",
+          "auditEvidence": null,
+          "summary": "Photo 1 de nORIA importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-e9ee54d8722341dc800e712481ea4dd6",
+          "appliedAt": "2026-11-01T14:17:12.439Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:image:e9ee54d8722341dc800e712481ea4dd6",
+          "auditEvidence": null,
+          "summary": "Photo 2 de nORIA importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-e9ee54d8722341dc800e712481ea4dd6",
+          "appliedAt": "2026-11-01T14:17:12.439Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:image:e9ee54d8722341dc800e712481ea4dd6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-noria-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos propres ; publication du site et de Facebook ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revérifier les tarifs, les horaires et les fermetures de maintenance ; prolonger les veilles de jours fériés après décembre 2027. Chercher une deuxième photo plus récente avec vue entière de la roue. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Norbesa — nORIA, horaires et tarifs officiels",
+          "url": "https://www.norbesa.jp/noria/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Norbesa — fiche de la roue",
+          "url": "https://www.norbesa.jp/shop/%E5%B1%8B%E4%B8%8A%E8%A6%B3%E8%A6%A7%E8%BB%8A%E3%83%8E%E3%83%AA%E3%82%A2/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Norbesa — fermeture pour inspection du 9 novembre 2026",
+          "url": "https://www.norbesa.jp/information/%e8%a6%b3%e8%a6%a7%e8%bb%8a%e3%83%8e%e3%83%aa%e3%82%a2%e7%82%b9%e6%a4%9c%e7%ad%89%e3%81%ab%e3%82%88%e3%82%8b%e4%bc%91%e6%a5%ad%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b-2/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Norbesa — adresse et accès",
+          "url": "https://www.norbesa.jp/access/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — roue nORIA",
+          "url": "https://www.openstreetmap.org/node/5628197721",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Cabinet du Japon — jours fériés 2026–2027",
+          "url": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — nORIA, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_in_Susukino_at_night_20250725.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — nORIA, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:NORBESA_01.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "nORIA",
+            "source": "Norbesa — site officiel",
+            "url": "https://www.norbesa.jp/noria/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Norbesa",
+            "sourceLifecycleSignal": "Billetterie et horaires propres au 1er novembre 2026",
+            "sourceLocality": "Sapporo, Hokkaidō",
+            "matchingMethod": "Roue à billets propres au centre commercial ; recherches officielles Park et Standalone sans fiche"
+          }
+        ],
+        "rationale": "nORIA dispose d’une entrée et de tarifs propres sur le toit du centre commercial Norbesa ; elle constitue une attraction autonome."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7aa68b76-331f-46ee-8b5c-95795629917a/noria",
+          "publishedAtUtc": "2026-11-01T14:19:01.681Z",
+          "verifiedAtUtc": "2026-11-01T14:21:25.956Z",
+          "evidence": "PARK_DATA_EDITOR:apply:747c3d68-90a9-4eaa-8ec5-002a1e40fc61"
+        },
+        "facebook": {
+          "id": "ad5dd844baab4a07afc0d54715b4dd11",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T14:19:58.696Z",
+          "externalPostId": "1285475681307050_122125616055424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125616055424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:ad5dd844baab4a07afc0d54715b4dd11"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "10b2f29e917a4d38b802a23e58c30bf4",
+          "e9ee54d8722341dc800e712481ea4dd6"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T14:18:00.249Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:7d71368f-121f-461a-a469-ccb82a587fa3",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-noria-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-noria-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
     }
   ]
 }
