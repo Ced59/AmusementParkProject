@@ -1233,38 +1233,198 @@
     },
     {
       "entryId": "HU-candidate-624c24722c02bd",
-      "name": "Budapest Eye",
-      "entityKind": "ToQualify",
+      "name": "Ferris Wheel of Budapest",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Erzsébet Square, Belváros-Lipótváros , Budapest",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Erzsébet tér, 1051 Budapest",
+      "siteId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T10:31:57.142Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitant annonce une ouverture 365 jours par an ; horaires hebdomadaires consultés le 1er novembre 2026, à vérifier pour les changements ponctuels.",
+      "identityConfidence": "Grande roue à billetterie autonome sur Erzsébet tér, site officiel oriaskerek.com ; recherche officielle Park et Standalone sous Budapest Eye et Ferris Wheel of Budapest sans correspondance ; quatre photographies de la roue vérifiées.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Budapest Eye",
+        "Budapest Óriáskereke",
+        "Sziget Eye"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T10:27:49.014Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-469c765f-e294-49d5-842c-daaa426555b4",
+          "appliedAt": "2026-11-01T10:24:54.806Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+          "evidence": "PARK_DATA_EDITOR:apply:469c765f-e294-49d5-842c-daaa426555b4",
+          "auditEvidence": null,
+          "summary": "Fiche privée et descriptions en huit langues, billetterie autonome, implantation et exploitation toute l’année"
+        },
+        {
+          "eventId": "image-7cb302375dd64d929d6b6c4c97dd69ef",
+          "appliedAt": "2026-11-01T10:25:37.922Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+          "evidence": "PARK_DATA_EDITOR:image:7cb302375dd64d929d6b6c4c97dd69ef",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-c9e6761b5a2f44579dc9575b80c0cb19",
+          "appliedAt": "2026-11-01T10:26:06.427Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+          "evidence": "PARK_DATA_EDITOR:image:c9e6761b5a2f44579dc9575b80c0cb19",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-f159a39278fe44ab83f8fd0047e25490",
+          "appliedAt": "2026-11-01T10:26:20.907Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+          "evidence": "PARK_DATA_EDITOR:image:f159a39278fe44ab83f8fd0047e25490",
+          "auditEvidence": null,
+          "summary": "Photo #3 de la roue importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-b73c6bd307d0441d99ac3d579f33b24b",
+          "appliedAt": "2026-11-01T10:26:35.383Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+          "evidence": "PARK_DATA_EDITOR:image:b73c6bd307d0441d99ac3d579f33b24b",
+          "auditEvidence": null,
+          "summary": "Photo #4 de la roue importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-82e9b46b-c31a-495f-b7d3-fbbfcaa3e640",
+          "appliedAt": "2026-11-01T10:27:20.884Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+          "evidence": "PARK_DATA_EDITOR:apply:82e9b46b-c31a-495f-b7d3-fbbfcaa3e640",
+          "auditEvidence": null,
+          "summary": "Quatre offres officielles en HUF intégrées sans dates de validité inventées"
+        },
+        {
+          "eventId": "apply-3a151403-fb88-4a16-86f4-9156a05614b4",
+          "appliedAt": "2026-11-01T10:27:49.014Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+          "evidence": "PARK_DATA_EDITOR:apply:3a151403-fb88-4a16-86f4-9156a05614b4",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires officiels intégrés, fermeture à minuit les vendredis et samedis"
+        },
+        {
+          "eventId": "closure-3a151403-fb88-4a16-86f4-9156a05614b4",
+          "appliedAt": "2026-11-01T10:27:49.014Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+          "evidence": "PARK_DATA_EDITOR:apply:3a151403-fb88-4a16-86f4-9156a05614b4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hu-budapest-eye-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et quatre photos propres importées ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Recontrôler périodiquement horaires et tarifs HUF, notamment les exceptions saisonnières ; rechercher les changements de l’installation mobile. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ferris Wheel of Budapest — exploitant, tarifs, horaires et localisation",
+          "url": "https://oriaskerek.com/en/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Mapcarta / OpenStreetMap — position de la roue sur Erzsébet tér",
+          "url": "https://mapcarta.com/W386319234",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — roue de Budapest, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Budapest_-_Budapest_Eye_2.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — roue de Budapest, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Erzsébet_Platz,_Skatepark,_Riesenrad,_2024_Lipótváros.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — roue de Budapest, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Budapest_Eye_at_night.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — roue de Budapest, photo 4",
+          "url": "https://commons.wikimedia.org/wiki/File:Budapest_-_Budapest_Eye_1.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Ferris Wheel of Budapest",
+            "source": "Ferris Wheel of Budapest — exploitant",
+            "url": "https://oriaskerek.com/en/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Ferris Wheel of Budapest",
+            "sourceLifecycleSignal": "Ouverture toute l’année annoncée par l’exploitant",
+            "sourceLocality": "Budapest, Erzsébet tér",
+            "matchingMethod": "Billetterie propre, localisation précise, photos de la roue et recherche officielle Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Roue autonome sur place publique avec billetterie propre ; horaires hebdomadaires et tarifs dans la devise locale vérifiés sur le site de l’exploitant."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f2c62e9b-bab0-430c-91d7-6b55aed8f7fc/ferris-wheel-of-budapest",
+          "publishedAtUtc": "2026-11-01T10:30:00.549Z",
+          "verifiedAtUtc": "2026-11-01T10:31:57.142Z",
+          "evidence": "PARK_DATA_EDITOR:apply:484fa01a-d9f1-42cf-b807-25ae96104e09"
+        },
+        "facebook": {
+          "id": "17603a6814704c5da277bd86d0bde009",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T10:30:56.638Z",
+          "externalPostId": "1285475681307050_122125587999424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125587999424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:17603a6814704c5da277bd86d0bde009"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "7cb302375dd64d929d6b6c4c97dd69ef",
+          "c9e6761b5a2f44579dc9575b80c0cb19",
+          "f159a39278fe44ab83f8fd0047e25490",
+          "b73c6bd307d0441d99ac3d579f33b24b"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T10:29:10.716Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:de0cf796-528a-4b07-aaf6-e62f32ad1ffc",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-hu-budapest-eye-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-hu-budapest-eye-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
