@@ -361,6 +361,26 @@
         "descriptions.es"
       ],
       "summary": "Suppression des reprises entre fiche, article et légendes dans huit langues ; une phrase de Jonas revue en espagnol. Lieux, périodes et sources conservés ; transfert au Futuroscope non daté arbitrairement."
+    },
+    {
+      "eventId": "apply-62f5c456-8e75-405c-b167-693856646619",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T13:40:27.375022Z",
+      "appliedAt": "2026-11-01T13:40:27.375Z",
+      "receiptFile": "10-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "1dd04453bbaf25cf8832b50601bdc3ae969fecf45bb6b943220efc4a453eca90",
+      "counts": {
+        "created": 0,
+        "updated": 11,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Restauration officielle des onze faits dans HIST après publication parent : onze champs canonicalHistory incomplete→restored, mêmes textes, dates, sources, propriétaires et médias. Fiche publique, contrôle du lien Histoire et Facebook à suivre ; backlog reste partial."
     }
   ],
   "publicationOrNoop": [
@@ -405,6 +425,27 @@
         "isVisible"
       ],
       "summary": "Dépendances auditées publiées : cinq fiches, onze faits et un article ; exploitant validé. Parc parent maintenu masqué pour le contrôle final du score."
+    },
+    {
+      "eventId": "apply-10f605ca-5bbb-4553-ad15-940846cb169f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T13:36:53.416272Z",
+      "appliedAt": "2026-11-01T13:36:53.416Z",
+      "receiptFile": "10-publish-park-apply.receipt.json",
+      "receiptSha256": "1c91aa1e239183469eee6fa0d452d55607bed2b5b78a4ff97920b1ddc92f6527",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Publication initiale explicitement autorisée de la fiche historique Cousteau après audit sans bloqueur ; parent visibleValidated. Score86 signalé, backlog conservé partial, vérifications publiques et Facebook à suivre. Aucune modification de données éditoriales."
     }
   ]
 }

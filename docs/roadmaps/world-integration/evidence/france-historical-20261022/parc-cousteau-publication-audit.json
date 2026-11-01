@@ -1,0 +1,319 @@
+{
+  "entryId": "FR-candidate-d81bd703cc53f0",
+  "parkId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+  "name": "Parc océanique Cousteau",
+  "checkedAtUtc": "2026-11-01T13:48:04.862158+00:00",
+  "outcome": "partial",
+  "editorialAuditPassed": true,
+  "publicationAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "backlogClosureEligible": false,
+  "acceptedScoreException": false,
+  "state": "Fiche et contenus publiés, histoire accessible dans huit langues, annonce Facebook Published confirmée. Backlog conservé ouvert à87/100 : aucune exception de score acceptée ni clôture artificielle.",
+  "publicationAuthorization": {
+    "reviewedAtUtc": "2026-11-01T13:35:46.173815+00:00",
+    "authorizationDate": null,
+    "userInstructions": [
+      "Continue jusqu’à avoir terminé l’intégration de tous les parcs du backlog français […] Avec publication fb pour chaque une fois intégrés et publies.",
+      "Tu avance et publue également les parcs bloqués. […] Si c’est question de droit sur les photos pas de soucis tu peux y aller."
+    ],
+    "scope": "Publication initiale du parc historique masqué et annonce officielle ; aucun effacement, aucune clôture du backlog sous96 sans exception acceptée.",
+    "nationalRequirement": "La section Objectif du backlog national lie le seuil strictement supérieur à95 à la clôture de la ligne. La ligne reste partial.",
+    "publishedBacklogScope": "Le workflow published-park-backlog-workflow.md exige une fiche présente dans ce backlog et déjà visible au début ; Cousteau a été créé masqué dans cette campagne et relève de la publication explicitement autorisée à l’étape9.",
+    "priorPendingQuestion": "Une acceptation du score86 reste nécessaire pour clôturer à ce score. Elle n’est pas déduite d’un Continue ; aucune exception de score n’est enregistrée comme acceptée.",
+    "qualityGatesPreserved": [
+      "audit complet frais",
+      "logo officiel",
+      "zéro bloqueur API",
+      "corpus8langues relu",
+      "contrôles publics avant Facebook",
+      "pas de falsification des lacunes"
+    ]
+  },
+  "siteUrl": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+  "publishedAtUtc": "2026-11-01T13:36:53.416272Z",
+  "publicationOperationId": "10f605ca-5bbb-4553-ad15-940846cb169f",
+  "historyRepair": {
+    "operationId": "62f5c456-8e75-405c-b167-693856646619",
+    "appliedAtUtc": "2026-11-01T13:40:27.375022Z",
+    "eventsRestored": 11,
+    "changedField": "canonicalHistory incomplete→restored",
+    "preserved": "Textes, dates, sources, propriétaires, images et articles inchangés."
+  },
+  "lastDataIntegrationAtUtc": "2026-11-01T13:40:27.375Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-receipts.json#apply-62f5c456-8e75-405c-b167-693856646619",
+  "actualCompleteness": {
+    "completenessScore": 87,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 99,
+    "earnedPoints": 86,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "projectedCompletenessBeforePublication": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 93,
+    "earnedPoints": 80,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "scoreDifference": "86 projeté avant visibilité,87 réel après visibilité ; 6pointsSEO deviennent applicables. Aucun nouveau bloqueur.",
+  "facebook": {
+    "status": "Published",
+    "publicationId": "e4d7fd71532b4eabaf66ef2951f7b4ec",
+    "externalUrl": "https://www.facebook.com/1285475681307050/posts/122125612269424431",
+    "source": "ResolveFacebookPublication officiel, annonce automatique existante. Aucun PublishFacebook supplémentaire ni doublon créé.",
+    "defaultBilingualMessagePreserved": true
+  },
+  "freshExport": {
+    "checkedAtUtc": "2026-11-01T13:35:07.980520+00:00",
+    "exportedAtUtc": "2026-11-01T13:33:51.2412364Z",
+    "sha256": "a214cc11dd557e82e4d8b628629a69194d610a71ba84d3ae03a30cb244eed11a",
+    "matchesAuditedPersistedData": true,
+    "normalizations": [
+      "Export metadata timestamps",
+      "itemId redundant request alias",
+      "Collection ordering",
+      "Founder adminReviewStatus is not an exported/persisted founder field; all biography, image and identity data preserved exactly."
+    ]
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-01T12:03:20.3312336Z",
+    "items": 5,
+    "zones": 0,
+    "attractions": 3,
+    "attractionStatuses": {
+      "Removed": 3
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 3,
+    "attractionsWithImage": 1,
+    "attractionImageGaps": [
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique"
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin"
+      }
+    ],
+    "ownedImages": 4,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "36ca3c7a-8fe4-4470-932f-654c635c7cb2",
+        "name": "Baleine Jonas",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b557fd2a-3525-47d3-9d21-c893564c8432",
+        "name": "Boutique du Parc océanique",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f0dc2a0c-f77b-42b5-82d8-ba05dc371002",
+        "name": "Entrée du Parc océanique",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "36ca3c7a-8fe4-4470-932f-654c635c7cb2",
+        "name": "Baleine Jonas",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b557fd2a-3525-47d3-9d21-c893564c8432",
+        "name": "Boutique du Parc océanique",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f0dc2a0c-f77b-42b5-82d8-ba05dc371002",
+        "name": "Entrée du Parc océanique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 11,
+    "parkHistory": 6,
+    "itemHistory": 5,
+    "historyWithSource": 11,
+    "historyWithImage": 3,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "itemsWith8Descriptions": 5,
+    "attractionsCurrent": 0,
+    "attractionsAnnounced": 0,
+    "attractionsHistorical": 3,
+    "logo": {
+      "present": true,
+      "current": true,
+      "watermark": false
+    },
+    "parkMainPhoto": false,
+    "generalParkPhotos": {
+      "actual": 0,
+      "target": 5
+    },
+    "importantItemsWith3Photos": {
+      "actual": 0,
+      "total": 3
+    },
+    "officialMapYears": [],
+    "historyMajor": 10,
+    "articlesWith8Languages": 1
+  },
+  "remainingGaps": [
+    {
+      "field": "Photographies générales et principale",
+      "coverage": "0/5 ; aucune photographie principale de parc",
+      "reason": "Aucune vue générale acceptable retrouvée après recherches institutionnelles, presse, photographes, archives d’architecte, collectionneurs, Wikimedia et Flickr. Les portraits filigranés ne sont pas réutilisés ; le logo, le disque et la vue UGC postérieure ne sont pas comptés comme photographies générales."
+    },
+    {
+      "field": "Photographies des attractions",
+      "coverage": "1/3 attractions ; 0/3 avec trois vues",
+      "reason": "Jonas : une vue de la baleine transférée à l’Aquaboulevard en 2018. Aucun intérieur fiable du parcours sous-marin ou du cinéma. La publicité INA montre un requin réel et non la salle ; rejetée. Le second cliché de Jonas, proche et moins net, n’a pas été ajouté artificiellement."
+    },
+    {
+      "field": "Géolocalisation des cinq équipements",
+      "coverage": "0/5",
+      "reason": "Installation historique souterraine à plusieurs niveaux ; aucune implantation intérieure suffisamment précise pour attribuer cinq points. Le plan du Forum situe l’accès, sans coordonnées prouvées de chaque entité."
+    },
+    {
+      "field": "Cartes officielles annuelles",
+      "coverage": "0 édition",
+      "reason": "Recherche des brochures et plans français/anglais, archives de Sérau, sources institutionnelles, revue Parcs Passion et collectionneurs. L’ancien plan du Forum retrouvé sur Flickr est une carte du centre commercial, sans millésime établi du parc ; il n’est pas importé comme plan annuel."
+    },
+    {
+      "field": "Constructeur et restrictions d’accès",
+      "coverage": "0/3 constructeur identifié ; 0/3 restrictions fiables",
+      "reason": "Dark Ride Database ne nomme pas le sous-traitant du système suspendu. Aucun fabricant prouvé pour Jonas ou le cinéma. Les tarifs enfants d’une publicité de 1989 ne sont pas des restrictions d’attraction."
+    },
+    {
+      "field": "Inventaire",
+      "coverage": "5 entités indépendantes prouvées",
+      "reason": "Les poissons à ressort et les conversations filmées cités dans Le Monde restent des composants de l’exposition ; autonomie, nom ou zone indépendante non établis. La piscine et le parking du Forum sont extérieurs au parc. Aucun équipement supplémentaire créé pour atteindre un seuil numérique."
+    },
+    {
+      "field": "Photographies des faits historiques",
+      "coverage": "3/11 faits avec image de contexte",
+      "reason": "Deux faits de Jonas utilisent sa vue datée de 2018 ; la reconversion utilise l’entrée UGC de 2010. Aucune photo acceptable des cérémonies, du dépôt de bilan, du colloque, de la fermeture ou des attractions en activité. L’article précise le contexte des trois images et conserve onze sources."
+    },
+    {
+      "field": "Textes courts",
+      "coverage": "3 exceptions de source : cinéma, boutique et entrée",
+      "reason": "Les descriptions restent développées en deux paragraphes sans inventer de décoration, de programmation, de catalogue commercial ni d’enseigne. La boutique et la vente du disque reposent sur une source spécialisée secondaire non officielle, recoupée pour les crédits par la pochette originale."
+    },
+    {
+      "field": "Site web actuel et exploitation",
+      "coverage": "Aucun site officiel actuel ; horaires et tarifs non applicables",
+      "reason": "Parc définitivement fermé en novembre 1992. Aucun site de loisirs actuel n’est substitué à son identité."
+    }
+  ],
+  "corpus": {
+    "fields": 484,
+    "languages": 8,
+    "encodingIssues": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "crossCorpusSequenceGroups": 0,
+    "personallyReviewed": true
+  },
+  "publicChecks": {
+    "mobilePages": 22,
+    "languages": 8,
+    "httpFailures": 0,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "detailTechnicalValueLeaks": 0,
+    "historyLinkVisibleInAllEightLanguages": true,
+    "frenchHistoryLinkActuallyClicked": true,
+    "hasPublicHistory": true,
+    "publicTimelineItems": 11,
+    "majorPublishedFacts": 10,
+    "desktopChecked": true
+  },
+  "idempotence": {
+    "operationId": "b5d463ab-436d-4667-acb4-5ee8b2876a0f",
+    "created": 0,
+    "updated": 0,
+    "deleted": 0,
+    "unchanged": 23,
+    "warnings": 0,
+    "errors": 0
+  },
+  "applicationObservations": [
+    {
+      "observation": "La frise canonique présente des libellés applicatifs OTHER et des indications génériques de confiance pour certains événements ; titres et résumés éditoriaux restent stockés dans les huit langues et l’article développé est public.",
+      "evidence": "public-verification/history-fr-render.txt",
+      "scope": "Limitation du rendu applicatif déjà observée sur les autres historiques ; aucun type de fait falsifié pour changer le libellé."
+    },
+    {
+      "observation": "Après réparationHIST, la fiche a conservé brièvement le résumé public en cache sans lienHistoire ; contrôles finaux sur URLs ordinaires, sans paramètre de contournement, confirment le lien dans les huit langues."
+    }
+  ],
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false,
+  "proofSha256": {
+    "10-publication-export.json": "a214cc11dd557e82e4d8b628629a69194d610a71ba84d3ae03a30cb244eed11a",
+    "10-publication-export-check.json": "131b0b2bb71c346294308e1c84bbe11a8f30501c151e0cf81015c6fe2646f4e8",
+    "10-publish-park-apply.receipt.json": "1c91aa1e239183469eee6fa0d452d55607bed2b5b78a4ff97920b1ddc92f6527",
+    "10-history-repair-export.json": "a6770f7eb353eeed5a4077956d63c50e12fffee69d135cc4b49e637dc4147259",
+    "10-history-repair-reconciliation.json": "a58c828cb50d159d02a17b00c7db46750ecd1e0c493bc06342ddf5f046550892",
+    "10-history-canonical-repair-apply.receipt.json": "1dd04453bbaf25cf8832b50601bdc3ae969fecf45bb6b943220efc4a453eca90",
+    "10-history-diagnostics-after-repair.json": "28c2cc6ec165da5ac612518abb23a31ace9e8182513e084c057b7a30b8180108",
+    "10-actual-completeness-after-repair.json": "8d19d83901ea736702422ff22b176d78fdf79a71283bd14a98c8c8a24e85c984",
+    "10-postpublication-idempotence.preview.json": "a830747c012e54abe6f90ad21f5f0b46c301a230af6ed466b075184928c53ed4",
+    "10-facebook-draft.json": "7317abd50f06613f4b9c4fda88323bed4ea5168b5dc5eb7548c641558cea9287",
+    "public-verification/api-report.json": "5dc803a40abce0e93f818e63f1cdbcc33eeb2aaebed91da7b337edca5064dfb7",
+    "public-verification/park-summary-final.json": "942124974c4456de07fe9884a3869cd880cbcb06f989f8a380be2860ff294a24",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "c7c2aeeb60cfd14fd0c46547a7ea832b8685fdcabc9669fc7482281c83b1bb86",
+    "public-verification/history-links-eight-languages.json": "d99a9bcc2cd93a12429591cbc9451d23e04b599f47f1ec3043803552b6416954",
+    "public-verification/desktop-report.json": "cb469c2bd76d6f979d6c3e0eb8850c9ce03653eef542daa0bb1997ebde7aacb1"
+  }
+}

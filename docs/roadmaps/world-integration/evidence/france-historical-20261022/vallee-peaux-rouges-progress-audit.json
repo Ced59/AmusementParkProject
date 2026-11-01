@@ -1,0 +1,1798 @@
+{
+  "entryId": "FR-candidate-b96b33e2bd92d5",
+  "parkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+  "name": "La Vallée des Peaux-Rouges",
+  "assignedTo": "Conversation France",
+  "checkedAtUtc": "2026-11-01T13:33:42.836272+00:00",
+  "outcome": "partial",
+  "contentReviewPassed": true,
+  "publicationReady": false,
+  "publicationComplete": false,
+  "facebookComplete": false,
+  "decision": "Non prêt pour publication : logo historique manquant, blocage officiel media.logo-required. Recherche prolongée, aucune photo ou affiche entière renommée logo pour contourner le contrôle.",
+  "projectedCompleteness": {
+    "completenessScore": 85,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 102,
+    "earnedPoints": 87,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "lastDataIntegrationAtUtc": "2026-11-01T13:29:01.652Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-5ecac672-f905-4ca6-8b25-98206188e99b",
+  "exportRoundtrip": {
+    "checkedAtUtc": "2026-11-01T13:27:36.275322+00:00",
+    "freshExportAtUtc": "2026-11-01T13:23:04.5778403Z",
+    "exportSha256": "66e3a4a10972481e79b5268e37585f8de00d061faff3bfb887c695d7293ad2d1",
+    "fieldComparisons": 1093,
+    "differences": [],
+    "differentFields": 0,
+    "technicalExportAliasesExcluded": [
+      "acceptedImportAtUtc",
+      "founderKey",
+      "itemId",
+      "key",
+      "operatorKey",
+      "owner",
+      "ownerKey",
+      "path",
+      "zoneKey"
+    ],
+    "unsupportedZoneField": "adminReviewStatus absent du contrat export de zone ; visibilité false vérifiée. Ce champ de payload n’est pas revendiqué comme état de revue enregistré."
+  },
+  "correctionsAfterExport": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "b88e019d30594bb2b2e2edba9d46b377",
+      "atUtc": "2026-11-01T13:26:27.015Z",
+      "receiptSha256": "3f83c013f1ba100a9ed10acfe75974c40392085e106d75cf1d7864b6bb0e43fd"
+    },
+    {
+      "kind": "Apply",
+      "operationId": "5ecac672-f905-4ca6-8b25-98206188e99b",
+      "atUtc": "2026-11-01T13:29:01.6528999Z",
+      "reviewedDiffMatch": true
+    }
+  ],
+  "idempotence": {
+    "operationId": "d741c5a8-f2d6-4401-9c69-6b0191324d66",
+    "created": 0,
+    "updated": 0,
+    "deleted": 0,
+    "unchanged": 33,
+    "warnings": 0,
+    "errors": 0
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-01T13:23:04.5778403Z",
+    "items": 8,
+    "zones": 2,
+    "attractions": 1,
+    "attractionStatuses": {
+      "Removed": 1
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 1,
+    "attractionsWithImage": 1,
+    "attractionImageGaps": [],
+    "ownedImages": 15,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "0a82fd7d-1fdf-4df8-8ddd-f3bbfa1ed21a",
+        "name": "Banque",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "3ed8fe01-57cc-4a02-b526-178f91f634a4",
+        "name": "Bureau du shérif",
+        "category": "Other",
+        "images": 1
+      },
+      {
+        "id": "5c32d182-ab5a-40aa-8c6b-9dbe7b487c8d",
+        "name": "Fort",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "e06a6ad3-d8db-4a8e-a9d7-42a32e39f80f",
+        "name": "Gare Fleurine Railways",
+        "category": "Transport",
+        "images": 0
+      },
+      {
+        "id": "ec93b373-bd50-437b-9b9c-5ca6eaa25373",
+        "name": "La Cantina",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "5b659d6e-4397-477a-8c87-a2507c9a7c3f",
+        "name": "Petit train",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d35a2afc-3384-4882-8ef9-fe415ad75584",
+        "name": "Saloon",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "66f8393f-de85-4c8c-9b2c-bed78e0546d9",
+        "name": "Spectacles équestres",
+        "category": "Show",
+        "images": 3
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "0a82fd7d-1fdf-4df8-8ddd-f3bbfa1ed21a",
+        "name": "Banque",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "3ed8fe01-57cc-4a02-b526-178f91f634a4",
+        "name": "Bureau du shérif",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "5c32d182-ab5a-40aa-8c6b-9dbe7b487c8d",
+        "name": "Fort",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "e06a6ad3-d8db-4a8e-a9d7-42a32e39f80f",
+        "name": "Gare Fleurine Railways",
+        "category": "Transport",
+        "status": null
+      },
+      {
+        "id": "ec93b373-bd50-437b-9b9c-5ca6eaa25373",
+        "name": "La Cantina",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "5b659d6e-4397-477a-8c87-a2507c9a7c3f",
+        "name": "Petit train",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d35a2afc-3384-4882-8ef9-fe415ad75584",
+        "name": "Saloon",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "66f8393f-de85-4c8c-9b2c-bed78e0546d9",
+        "name": "Spectacles équestres",
+        "category": "Show",
+        "status": null
+      }
+    ],
+    "history": 6,
+    "parkHistory": 4,
+    "itemHistory": 2,
+    "historyWithSource": 6,
+    "historyWithImage": 6,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "parkLanguages": 8,
+    "zoneDescriptionsEightLanguages": 2,
+    "itemDescriptionsEightLanguages": 8,
+    "allEntitiesDescribed": 11,
+    "logo": {
+      "present": false,
+      "publicationBlocker": "media.logo-required"
+    },
+    "mainParkImage": "3df5fe81073b4be9a5db9895c2801eb2",
+    "generalHistoricalParkViews": {
+      "count": 3,
+      "target": 5,
+      "basis": [
+        "05-camp",
+        "05-street-stunts",
+        "05-show-postcard"
+      ],
+      "excluded": [
+        "record sleeve",
+        "full leaflet",
+        "modern reuse photograph"
+      ]
+    },
+    "allItemsWithImages": {
+      "covered": 5,
+      "total": 8
+    },
+    "itemsWithThreeImages": {
+      "covered": 1,
+      "total": 8
+    },
+    "fixedItemCoordinates": {
+      "covered": 0,
+      "total": 7,
+      "notApplicable": [
+        "Spectacles équestres — scènes réparties dans le parc"
+      ]
+    },
+    "officialMapYears": [],
+    "foundersWithEightBiographies": 1
+  },
+  "publicTextReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "textFields": 711,
+    "rawEncodingFindings": 0,
+    "paragraphDuplicateGroups": 0,
+    "crossCorpusSequenceGroups": 0,
+    "automaticEditorialFlags": 0,
+    "personallyAuthoredAndReviewed": true,
+    "creditsExcludedFromStyleComparison": true,
+    "reviewNote": "Descriptions, faits, article, biographie et légendes relus ; corrections anglaise et légendes distinguées. Crédit source conservé sans variation artificielle pour masquer les répétitions. Copie courte des bâtiments secondaires fidèle aux preuves, pas de remplissage."
+  },
+  "depth": {
+    "fr": {
+      "articleParagraphs": 8,
+      "articleSections": 4,
+      "articleBodyWords": 460
+    },
+    "en": {
+      "articleParagraphs": 8,
+      "articleSections": 4,
+      "articleBodyWords": 398
+    },
+    "de": {
+      "articleParagraphs": 8,
+      "articleSections": 4,
+      "articleBodyWords": 375
+    },
+    "nl": {
+      "articleParagraphs": 8,
+      "articleSections": 4,
+      "articleBodyWords": 407
+    },
+    "it": {
+      "articleParagraphs": 8,
+      "articleSections": 4,
+      "articleBodyWords": 431
+    },
+    "es": {
+      "articleParagraphs": 8,
+      "articleSections": 4,
+      "articleBodyWords": 443
+    },
+    "pl": {
+      "articleParagraphs": 8,
+      "articleSections": 4,
+      "articleBodyWords": 346
+    },
+    "pt": {
+      "articleParagraphs": 8,
+      "articleSections": 4,
+      "articleBodyWords": 424
+    }
+  },
+  "wordDistributions": {
+    "fr": {
+      "park": {
+        "min": 215,
+        "p10": 215,
+        "median": 215,
+        "p90": 215,
+        "max": 215,
+        "n": 1
+      },
+      "zone": {
+        "min": 82,
+        "p10": 82,
+        "median": 83.5,
+        "p90": 82,
+        "max": 85,
+        "n": 2
+      },
+      "Other": {
+        "min": 29,
+        "p10": 29,
+        "median": 32,
+        "p90": 32,
+        "max": 75,
+        "n": 3
+      },
+      "Transport": {
+        "min": 75,
+        "p10": 75,
+        "median": 75,
+        "p90": 75,
+        "max": 75,
+        "n": 1
+      },
+      "Restaurant": {
+        "min": 68,
+        "p10": 68,
+        "median": 69.5,
+        "p90": 68,
+        "max": 71,
+        "n": 2
+      },
+      "Attraction": {
+        "min": 127,
+        "p10": 127,
+        "median": 127,
+        "p90": 127,
+        "max": 127,
+        "n": 1
+      },
+      "Show": {
+        "min": 84,
+        "p10": 84,
+        "median": 84,
+        "p90": 84,
+        "max": 84,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 5,
+        "median": 8.0,
+        "p90": 9,
+        "max": 9,
+        "n": 6
+      },
+      "timeline-summaries": {
+        "min": 33,
+        "p10": 33,
+        "median": 33.5,
+        "p90": 37,
+        "max": 38,
+        "n": 6
+      },
+      "article-titles": {
+        "min": 9,
+        "p10": 9,
+        "median": 9,
+        "p90": 9,
+        "max": 9,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 14,
+        "p10": 14,
+        "median": 14,
+        "p90": 14,
+        "max": 14,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 56,
+        "p10": 56,
+        "median": 56,
+        "p90": 56,
+        "max": 56,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 7,
+        "p10": 7,
+        "median": 8.0,
+        "p90": 9,
+        "max": 10,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 51,
+        "p10": 51,
+        "median": 57.5,
+        "p90": 59,
+        "max": 60,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 12,
+        "p10": 12,
+        "median": 12,
+        "p90": 12,
+        "max": 13,
+        "n": 3
+      },
+      "image-description": {
+        "min": 9,
+        "p10": 10,
+        "median": 12,
+        "p90": 15,
+        "max": 18,
+        "n": 15
+      },
+      "image-altTexts": {
+        "min": 9,
+        "p10": 9,
+        "median": 11,
+        "p90": 14,
+        "max": 14,
+        "n": 15
+      },
+      "image-captions": {
+        "min": 9,
+        "p10": 10,
+        "median": 12,
+        "p90": 15,
+        "max": 18,
+        "n": 15
+      },
+      "image-credits": {
+        "min": 10,
+        "p10": 16,
+        "median": 21,
+        "p90": 23,
+        "max": 26,
+        "n": 15
+      },
+      "reference-founders": {
+        "min": 80,
+        "p10": 80,
+        "median": 80,
+        "p90": 80,
+        "max": 80,
+        "n": 1
+      }
+    },
+    "en": {
+      "park": {
+        "min": 187,
+        "p10": 187,
+        "median": 187,
+        "p90": 187,
+        "max": 187,
+        "n": 1
+      },
+      "zone": {
+        "min": 70,
+        "p10": 70,
+        "median": 71.5,
+        "p90": 70,
+        "max": 73,
+        "n": 2
+      },
+      "Other": {
+        "min": 28,
+        "p10": 28,
+        "median": 29,
+        "p90": 29,
+        "max": 59,
+        "n": 3
+      },
+      "Transport": {
+        "min": 66,
+        "p10": 66,
+        "median": 66,
+        "p90": 66,
+        "max": 66,
+        "n": 1
+      },
+      "Restaurant": {
+        "min": 55,
+        "p10": 55,
+        "median": 60.0,
+        "p90": 55,
+        "max": 65,
+        "n": 2
+      },
+      "Attraction": {
+        "min": 106,
+        "p10": 106,
+        "median": 106,
+        "p90": 106,
+        "max": 106,
+        "n": 1
+      },
+      "Show": {
+        "min": 64,
+        "p10": 64,
+        "median": 64,
+        "p90": 64,
+        "max": 64,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 5,
+        "median": 5.5,
+        "p90": 7,
+        "max": 8,
+        "n": 6
+      },
+      "timeline-summaries": {
+        "min": 27,
+        "p10": 27,
+        "median": 32.5,
+        "p90": 34,
+        "max": 35,
+        "n": 6
+      },
+      "article-titles": {
+        "min": 11,
+        "p10": 11,
+        "median": 11,
+        "p90": 11,
+        "max": 11,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 15,
+        "p10": 15,
+        "median": 15,
+        "p90": 15,
+        "max": 15,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 48,
+        "p10": 48,
+        "median": 48,
+        "p90": 48,
+        "max": 48,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 6.5,
+        "p90": 7,
+        "max": 8,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 44,
+        "p10": 44,
+        "median": 48.0,
+        "p90": 52,
+        "max": 53,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 8,
+        "p10": 8,
+        "median": 9,
+        "p90": 9,
+        "max": 13,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 8,
+        "p10": 8,
+        "median": 10,
+        "p90": 12,
+        "max": 14,
+        "n": 15
+      },
+      "image-captions": {
+        "min": 7,
+        "p10": 7,
+        "median": 11,
+        "p90": 12,
+        "max": 16,
+        "n": 15
+      },
+      "image-credits": {
+        "min": 10,
+        "p10": 16,
+        "median": 21,
+        "p90": 23,
+        "max": 26,
+        "n": 15
+      },
+      "reference-founders": {
+        "min": 77,
+        "p10": 77,
+        "median": 77,
+        "p90": 77,
+        "max": 77,
+        "n": 1
+      }
+    },
+    "de": {
+      "park": {
+        "min": 170,
+        "p10": 170,
+        "median": 170,
+        "p90": 170,
+        "max": 170,
+        "n": 1
+      },
+      "zone": {
+        "min": 67,
+        "p10": 67,
+        "median": 67.5,
+        "p90": 67,
+        "max": 68,
+        "n": 2
+      },
+      "Other": {
+        "min": 26,
+        "p10": 26,
+        "median": 29,
+        "p90": 29,
+        "max": 58,
+        "n": 3
+      },
+      "Transport": {
+        "min": 59,
+        "p10": 59,
+        "median": 59,
+        "p90": 59,
+        "max": 59,
+        "n": 1
+      },
+      "Restaurant": {
+        "min": 56,
+        "p10": 56,
+        "median": 59.0,
+        "p90": 56,
+        "max": 62,
+        "n": 2
+      },
+      "Attraction": {
+        "min": 100,
+        "p10": 100,
+        "median": 100,
+        "p90": 100,
+        "max": 100,
+        "n": 1
+      },
+      "Show": {
+        "min": 67,
+        "p10": 67,
+        "median": 67,
+        "p90": 67,
+        "max": 67,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 5,
+        "median": 5.5,
+        "p90": 6,
+        "max": 7,
+        "n": 6
+      },
+      "timeline-summaries": {
+        "min": 29,
+        "p10": 29,
+        "median": 31.5,
+        "p90": 33,
+        "max": 34,
+        "n": 6
+      },
+      "article-titles": {
+        "min": 8,
+        "p10": 8,
+        "median": 8,
+        "p90": 8,
+        "max": 8,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 13,
+        "p10": 13,
+        "median": 13,
+        "p90": 13,
+        "max": 13,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 44,
+        "p10": 44,
+        "median": 44,
+        "p90": 44,
+        "max": 44,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 7.0,
+        "p90": 8,
+        "max": 11,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 43,
+        "p10": 43,
+        "median": 46.0,
+        "p90": 48,
+        "max": 52,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 7,
+        "p10": 7,
+        "median": 10,
+        "p90": 10,
+        "max": 12,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 6,
+        "p10": 6,
+        "median": 9,
+        "p90": 11,
+        "max": 12,
+        "n": 15
+      },
+      "image-captions": {
+        "min": 6,
+        "p10": 7,
+        "median": 9,
+        "p90": 12,
+        "max": 16,
+        "n": 15
+      },
+      "image-credits": {
+        "min": 10,
+        "p10": 17,
+        "median": 21,
+        "p90": 23,
+        "max": 24,
+        "n": 15
+      },
+      "reference-founders": {
+        "min": 71,
+        "p10": 71,
+        "median": 71,
+        "p90": 71,
+        "max": 71,
+        "n": 1
+      }
+    },
+    "nl": {
+      "park": {
+        "min": 192,
+        "p10": 192,
+        "median": 192,
+        "p90": 192,
+        "max": 192,
+        "n": 1
+      },
+      "zone": {
+        "min": 75,
+        "p10": 75,
+        "median": 75.0,
+        "p90": 75,
+        "max": 75,
+        "n": 2
+      },
+      "Other": {
+        "min": 27,
+        "p10": 27,
+        "median": 32,
+        "p90": 32,
+        "max": 64,
+        "n": 3
+      },
+      "Transport": {
+        "min": 63,
+        "p10": 63,
+        "median": 63,
+        "p90": 63,
+        "max": 63,
+        "n": 1
+      },
+      "Restaurant": {
+        "min": 57,
+        "p10": 57,
+        "median": 59.5,
+        "p90": 57,
+        "max": 62,
+        "n": 2
+      },
+      "Attraction": {
+        "min": 101,
+        "p10": 101,
+        "median": 101,
+        "p90": 101,
+        "max": 101,
+        "n": 1
+      },
+      "Show": {
+        "min": 67,
+        "p10": 67,
+        "median": 67,
+        "p90": 67,
+        "max": 67,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 5,
+        "median": 6.0,
+        "p90": 6,
+        "max": 6,
+        "n": 6
+      },
+      "timeline-summaries": {
+        "min": 30,
+        "p10": 30,
+        "median": 31.0,
+        "p90": 34,
+        "max": 35,
+        "n": 6
+      },
+      "article-titles": {
+        "min": 11,
+        "p10": 11,
+        "median": 11,
+        "p90": 11,
+        "max": 11,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 11,
+        "p10": 11,
+        "median": 11,
+        "p90": 11,
+        "max": 11,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 50,
+        "p10": 50,
+        "median": 50,
+        "p90": 50,
+        "max": 50,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 7.5,
+        "p90": 8,
+        "max": 9,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 45,
+        "p10": 45,
+        "median": 49.0,
+        "p90": 52,
+        "max": 57,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 9,
+        "p10": 9,
+        "median": 12,
+        "p90": 12,
+        "max": 12,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 7,
+        "p10": 8,
+        "median": 10,
+        "p90": 12,
+        "max": 13,
+        "n": 15
+      },
+      "image-captions": {
+        "min": 6,
+        "p10": 9,
+        "median": 11,
+        "p90": 13,
+        "max": 17,
+        "n": 15
+      },
+      "image-credits": {
+        "min": 10,
+        "p10": 16,
+        "median": 20,
+        "p90": 22,
+        "max": 23,
+        "n": 15
+      },
+      "reference-founders": {
+        "min": 71,
+        "p10": 71,
+        "median": 71,
+        "p90": 71,
+        "max": 71,
+        "n": 1
+      }
+    },
+    "it": {
+      "park": {
+        "min": 194,
+        "p10": 194,
+        "median": 194,
+        "p90": 194,
+        "max": 194,
+        "n": 1
+      },
+      "zone": {
+        "min": 69,
+        "p10": 69,
+        "median": 73.5,
+        "p90": 69,
+        "max": 78,
+        "n": 2
+      },
+      "Other": {
+        "min": 29,
+        "p10": 29,
+        "median": 31,
+        "p90": 31,
+        "max": 61,
+        "n": 3
+      },
+      "Transport": {
+        "min": 67,
+        "p10": 67,
+        "median": 67,
+        "p90": 67,
+        "max": 67,
+        "n": 1
+      },
+      "Restaurant": {
+        "min": 60,
+        "p10": 60,
+        "median": 65.0,
+        "p90": 60,
+        "max": 70,
+        "n": 2
+      },
+      "Attraction": {
+        "min": 114,
+        "p10": 114,
+        "median": 114,
+        "p90": 114,
+        "max": 114,
+        "n": 1
+      },
+      "Show": {
+        "min": 74,
+        "p10": 74,
+        "median": 74,
+        "p90": 74,
+        "max": 74,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 5,
+        "median": 6.0,
+        "p90": 7,
+        "max": 7,
+        "n": 6
+      },
+      "timeline-summaries": {
+        "min": 30,
+        "p10": 30,
+        "median": 31.5,
+        "p90": 33,
+        "max": 34,
+        "n": 6
+      },
+      "article-titles": {
+        "min": 10,
+        "p10": 10,
+        "median": 10,
+        "p90": 10,
+        "max": 10,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 12,
+        "p10": 12,
+        "median": 12,
+        "p90": 12,
+        "max": 12,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 51,
+        "p10": 51,
+        "median": 51,
+        "p90": 51,
+        "max": 51,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 7.0,
+        "p90": 8,
+        "max": 10,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 48,
+        "p10": 48,
+        "median": 52.5,
+        "p90": 54,
+        "max": 59,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 9,
+        "p10": 9,
+        "median": 11,
+        "p90": 11,
+        "max": 12,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 7,
+        "p10": 8,
+        "median": 10,
+        "p90": 14,
+        "max": 15,
+        "n": 15
+      },
+      "image-captions": {
+        "min": 6,
+        "p10": 8,
+        "median": 11,
+        "p90": 15,
+        "max": 16,
+        "n": 15
+      },
+      "image-credits": {
+        "min": 11,
+        "p10": 18,
+        "median": 22,
+        "p90": 24,
+        "max": 27,
+        "n": 15
+      },
+      "reference-founders": {
+        "min": 73,
+        "p10": 73,
+        "median": 73,
+        "p90": 73,
+        "max": 73,
+        "n": 1
+      }
+    },
+    "es": {
+      "park": {
+        "min": 210,
+        "p10": 210,
+        "median": 210,
+        "p90": 210,
+        "max": 210,
+        "n": 1
+      },
+      "zone": {
+        "min": 75,
+        "p10": 75,
+        "median": 80.0,
+        "p90": 75,
+        "max": 85,
+        "n": 2
+      },
+      "Other": {
+        "min": 30,
+        "p10": 30,
+        "median": 34,
+        "p90": 34,
+        "max": 69,
+        "n": 3
+      },
+      "Transport": {
+        "min": 68,
+        "p10": 68,
+        "median": 68,
+        "p90": 68,
+        "max": 68,
+        "n": 1
+      },
+      "Restaurant": {
+        "min": 67,
+        "p10": 67,
+        "median": 69.5,
+        "p90": 67,
+        "max": 72,
+        "n": 2
+      },
+      "Attraction": {
+        "min": 117,
+        "p10": 117,
+        "median": 117,
+        "p90": 117,
+        "max": 117,
+        "n": 1
+      },
+      "Show": {
+        "min": 77,
+        "p10": 77,
+        "median": 77,
+        "p90": 77,
+        "max": 77,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 5,
+        "median": 7.0,
+        "p90": 7,
+        "max": 8,
+        "n": 6
+      },
+      "timeline-summaries": {
+        "min": 33,
+        "p10": 33,
+        "median": 35.0,
+        "p90": 36,
+        "max": 38,
+        "n": 6
+      },
+      "article-titles": {
+        "min": 9,
+        "p10": 9,
+        "median": 9,
+        "p90": 9,
+        "max": 9,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 14,
+        "p10": 14,
+        "median": 14,
+        "p90": 14,
+        "max": 14,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 55,
+        "p10": 55,
+        "median": 55,
+        "p90": 55,
+        "max": 55,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 7.5,
+        "p90": 8,
+        "max": 9,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 52,
+        "p10": 52,
+        "median": 55.5,
+        "p90": 56,
+        "max": 57,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 11,
+        "p10": 11,
+        "median": 12,
+        "p90": 12,
+        "max": 13,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 9,
+        "p10": 9,
+        "median": 11,
+        "p90": 15,
+        "max": 15,
+        "n": 15
+      },
+      "image-captions": {
+        "min": 6,
+        "p10": 10,
+        "median": 13,
+        "p90": 14,
+        "max": 16,
+        "n": 15
+      },
+      "image-credits": {
+        "min": 11,
+        "p10": 18,
+        "median": 23,
+        "p90": 25,
+        "max": 28,
+        "n": 15
+      },
+      "reference-founders": {
+        "min": 79,
+        "p10": 79,
+        "median": 79,
+        "p90": 79,
+        "max": 79,
+        "n": 1
+      }
+    },
+    "pl": {
+      "park": {
+        "min": 165,
+        "p10": 165,
+        "median": 165,
+        "p90": 165,
+        "max": 165,
+        "n": 1
+      },
+      "zone": {
+        "min": 59,
+        "p10": 59,
+        "median": 61.5,
+        "p90": 59,
+        "max": 64,
+        "n": 2
+      },
+      "Other": {
+        "min": 24,
+        "p10": 24,
+        "median": 26,
+        "p90": 26,
+        "max": 47,
+        "n": 3
+      },
+      "Transport": {
+        "min": 54,
+        "p10": 54,
+        "median": 54,
+        "p90": 54,
+        "max": 54,
+        "n": 1
+      },
+      "Restaurant": {
+        "min": 51,
+        "p10": 51,
+        "median": 55.0,
+        "p90": 51,
+        "max": 59,
+        "n": 2
+      },
+      "Attraction": {
+        "min": 83,
+        "p10": 83,
+        "median": 83,
+        "p90": 83,
+        "max": 83,
+        "n": 1
+      },
+      "Show": {
+        "min": 60,
+        "p10": 60,
+        "median": 60,
+        "p90": 60,
+        "max": 60,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 4,
+        "median": 4.5,
+        "p90": 5,
+        "max": 6,
+        "n": 6
+      },
+      "timeline-summaries": {
+        "min": 26,
+        "p10": 26,
+        "median": 28.0,
+        "p90": 31,
+        "max": 33,
+        "n": 6
+      },
+      "article-titles": {
+        "min": 8,
+        "p10": 8,
+        "median": 8,
+        "p90": 8,
+        "max": 8,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 11,
+        "p10": 11,
+        "median": 11,
+        "p90": 11,
+        "max": 11,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 44,
+        "p10": 44,
+        "median": 44,
+        "p90": 44,
+        "max": 44,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 5.0,
+        "p90": 5,
+        "max": 7,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 39,
+        "p10": 39,
+        "median": 43.0,
+        "p90": 44,
+        "max": 47,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 8,
+        "p10": 8,
+        "median": 8,
+        "p90": 8,
+        "max": 8,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 7,
+        "p10": 7,
+        "median": 8,
+        "p90": 11,
+        "max": 12,
+        "n": 15
+      },
+      "image-captions": {
+        "min": 5,
+        "p10": 6,
+        "median": 8,
+        "p90": 12,
+        "max": 14,
+        "n": 15
+      },
+      "image-credits": {
+        "min": 10,
+        "p10": 15,
+        "median": 20,
+        "p90": 22,
+        "max": 24,
+        "n": 15
+      },
+      "reference-founders": {
+        "min": 65,
+        "p10": 65,
+        "median": 65,
+        "p90": 65,
+        "max": 65,
+        "n": 1
+      }
+    },
+    "pt": {
+      "park": {
+        "min": 205,
+        "p10": 205,
+        "median": 205,
+        "p90": 205,
+        "max": 205,
+        "n": 1
+      },
+      "zone": {
+        "min": 71,
+        "p10": 71,
+        "median": 75.5,
+        "p90": 71,
+        "max": 80,
+        "n": 2
+      },
+      "Other": {
+        "min": 30,
+        "p10": 30,
+        "median": 31,
+        "p90": 31,
+        "max": 63,
+        "n": 3
+      },
+      "Transport": {
+        "min": 69,
+        "p10": 69,
+        "median": 69,
+        "p90": 69,
+        "max": 69,
+        "n": 1
+      },
+      "Restaurant": {
+        "min": 63,
+        "p10": 63,
+        "median": 68.0,
+        "p90": 63,
+        "max": 73,
+        "n": 2
+      },
+      "Attraction": {
+        "min": 118,
+        "p10": 118,
+        "median": 118,
+        "p90": 118,
+        "max": 118,
+        "n": 1
+      },
+      "Show": {
+        "min": 75,
+        "p10": 75,
+        "median": 75,
+        "p90": 75,
+        "max": 75,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 5,
+        "median": 7.5,
+        "p90": 8,
+        "max": 8,
+        "n": 6
+      },
+      "timeline-summaries": {
+        "min": 32,
+        "p10": 32,
+        "median": 34.0,
+        "p90": 36,
+        "max": 37,
+        "n": 6
+      },
+      "article-titles": {
+        "min": 9,
+        "p10": 9,
+        "median": 9,
+        "p90": 9,
+        "max": 9,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 12,
+        "p10": 12,
+        "median": 12,
+        "p90": 12,
+        "max": 12,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 57,
+        "p10": 57,
+        "median": 57,
+        "p90": 57,
+        "max": 57,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 8.0,
+        "p90": 10,
+        "max": 10,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 50,
+        "p10": 50,
+        "median": 52.5,
+        "p90": 54,
+        "max": 57,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 10,
+        "p10": 10,
+        "median": 12,
+        "p90": 12,
+        "max": 12,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 8,
+        "p10": 9,
+        "median": 11,
+        "p90": 14,
+        "max": 15,
+        "n": 15
+      },
+      "image-captions": {
+        "min": 6,
+        "p10": 8,
+        "median": 12,
+        "p90": 16,
+        "max": 17,
+        "n": 15
+      },
+      "image-credits": {
+        "min": 11,
+        "p10": 18,
+        "median": 23,
+        "p90": 25,
+        "max": 27,
+        "n": 15
+      },
+      "reference-founders": {
+        "min": 74,
+        "p10": 74,
+        "median": 74,
+        "p90": 74,
+        "max": 74,
+        "n": 1
+      }
+    }
+  },
+  "historyImages": [
+    {
+      "key": "vallee-ouverture-1966",
+      "entityType": "Park",
+      "year": 1966,
+      "sources": 3,
+      "imageId": "3df5fe81073b4be9a5db9895c2801eb2",
+      "contextualImage": true
+    },
+    {
+      "key": "vallee-train-ouverture-1966",
+      "entityType": "ParkItem",
+      "year": 1966,
+      "sources": 1,
+      "imageId": "f56db475966c41aabb7f3f26080da886",
+      "contextualImage": true
+    },
+    {
+      "key": "vallee-rachat-1971",
+      "entityType": "Park",
+      "year": 1971,
+      "sources": 2,
+      "imageId": "f4118ed2b14346aa99d8c5b4002c0cf2",
+      "contextualImage": true
+    },
+    {
+      "key": "vallee-fermeture-1988",
+      "entityType": "Park",
+      "year": 1988,
+      "sources": 2,
+      "imageId": "aa77827f7e3f49fd9b8b884815111531",
+      "contextualImage": true
+    },
+    {
+      "key": "vallee-train-fermeture-1988",
+      "entityType": "ParkItem",
+      "year": 1988,
+      "sources": 1,
+      "imageId": "f56db475966c41aabb7f3f26080da886",
+      "contextualImage": true
+    },
+    {
+      "key": "vallee-reconversion-2012",
+      "entityType": "Park",
+      "year": 2012,
+      "sources": 2,
+      "imageId": "b88e019d30594bb2b2e2edba9d46b377",
+      "contextualImage": false
+    }
+  ],
+  "sourceChecks": [
+    {
+      "url": "https://cinememoire.net/notice?num_seq=13110",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:19:09.677557+00:00",
+      "finalUrl": "https://cinememoire.net/notice?num_seq=13110",
+      "bytes": 78010,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://fr.wikipedia.org/wiki/Jean_Richard_(acteur)",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:56:59.978140+00:00",
+      "finalUrl": "https://fr.wikipedia.org/wiki/Jean_Richard_(acteur)",
+      "bytes": 302719,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://fr.wikipedia.org/wiki/La_Vall%C3%A9e_des_Peaux-Rouges",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:15:17.621751+00:00",
+      "finalUrl": "https://fr.wikipedia.org/wiki/La_Vall%C3%A9e_des_Peaux-Rouges",
+      "bytes": 118605,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://parcoursaventure60.wordpress.com/2012/08/22/un-nouveau-parc-dattraction-dans-les-arbres-a-la-vallee-des-peaux-rouges-de-fleurines/",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:55:09.966088+00:00",
+      "finalUrl": "https://parcoursaventure60.wordpress.com/2012/08/22/un-nouveau-parc-dattraction-dans-les-arbres-a-la-vallee-des-peaux-rouges-de-fleurines/",
+      "bytes": 88619,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://podcast.ausha.co/culture-cirk/40-ans-de-reves-au-cirque-arlette-gruss-et-un-jongleur-en-mouvement-e04-s01",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:22:54.695147+00:00",
+      "finalUrl": "https://podcast.ausha.co/culture-cirk/40-ans-de-reves-au-cirque-arlette-gruss-et-un-jongleur-en-mouvement-e04-s01",
+      "bytes": 908307,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://scholar.lib.vt.edu/InterNews/LeMonde/issues/2000/monde.20000203.pdf",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T13:19:08.683075+00:00",
+      "finalUrl": "https://scholar.lib.vt.edu/InterNews/LeMonde/issues/2000/monde.20000203.pdf",
+      "bytes": 5212542,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://studiaethnologicapragensia.ff.cuni.cz/wp-content/uploads/sites/3/2017/12/Veronique_Campion-Vincent_13-29.pdf",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:22:53.393850+00:00",
+      "finalUrl": "https://studiaethnologicapragensia.ff.cuni.cz/wp-content/uploads/sites/3/2017/12/Veronique_Campion-Vincent_13-29.pdf",
+      "bytes": 677256,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://valleedespeauxrouges.over-blog.com/album-1066882.html",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:30:57.255589+00:00",
+      "finalUrl": "https://valleedespeauxrouges.over-blog.com/album-1066882.html",
+      "bytes": 107085,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://valleedespeauxrouges.over-blog.com/album-344786.html",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:30:56.379036+00:00",
+      "finalUrl": "https://valleedespeauxrouges.over-blog.com/album-344786.html",
+      "bytes": 87440,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://valleedespeauxrouges.over-blog.com/article-la-vallee-des-peaux-rouges-50985601.html",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:31:42.846089+00:00",
+      "finalUrl": "https://valleedespeauxrouges.over-blog.com/article-la-vallee-des-peaux-rouges-50985601.html",
+      "bytes": 102095,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.cinematheque-bretagne.bzh/voir-les-films-au-parc-d-attractions-426-25697-0-0.html",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:30:23.250598+00:00",
+      "finalUrl": "https://www.cinematheque-bretagne.bzh/voir-les-films-au-parc-d-attractions-426-25697-0-0.html",
+      "bytes": 96720,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.image-est.fr/fiche-documentaire-journee-a-la-vallee-des-peaux-rouges-1284-206-3-0.html",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:22:53.392589+00:00",
+      "finalUrl": "https://www.image-est.fr/fiche-documentaire-journee-a-la-vallee-des-peaux-rouges-1284-206-3-0.html",
+      "bytes": 54246,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.inventaires-ferroviaires.fr/kc60/60239.01N.pdf",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:21:04.546671+00:00",
+      "finalUrl": "https://www.inventaires-ferroviaires.fr/kc60/60239.01N.pdf",
+      "bytes": 472002,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.parc-oise-paysdefrance.fr/wp-content/uploads/2025/11/Decouvrons-villages-Fleurines-web.pdf",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T13:13:41.928184+00:00",
+      "finalUrl": "https://www.parc-oise-paysdefrance.fr/wp-content/uploads/2025/11/Decouvrons-villages-Fleurines-web.pdf",
+      "bytes": 3697170,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.parcoursaventure60.fr/",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:19:09.676179+00:00",
+      "finalUrl": "https://www.parcoursaventure60.fr/",
+      "bytes": 339409,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.spaghetti-western.net/index.php/Les_indiens",
+      "status": 200,
+      "checkedAtUtc": "2026-11-01T12:48:56.492719+00:00",
+      "finalUrl": "https://www.spaghetti-western.net/index.php/Les_indiens",
+      "bytes": 21406,
+      "contentType": "text/html; charset=UTF-8"
+    }
+  ],
+  "remainingGaps": [
+    {
+      "key": "logo",
+      "blocking": true,
+      "detail": "Logo historique autonome introuvable après recherche : prospectus complet avec marque America Park conservé comme document publicitaire, jamais substitué au logo. Logo du successeur et bouton Entrée rejetés. Aucune exemption pour très petit parc revendiquée."
+    },
+    {
+      "key": "official-maps",
+      "blocking": false,
+      "detail": "Aucune édition officielle visiteurs retrouvée. Dépliant collectors limité à couverture ; vue aérienne annotée1968 et cartes municipales/PNR ne sont pas des plans officiels du parc."
+    },
+    {
+      "key": "geolocation",
+      "blocking": false,
+      "detail": "Sept installations fixes sans point exact prouvé. GPS de parc et de viaduc connus, mais aucun transfert arbitraire aux bâtiments ou gare. Photographies, plans municipaux et vue aérienne1968 contrôlés."
+    },
+    {
+      "key": "photos",
+      "blocking": false,
+      "detail": "3/5 vues générales historiques. Gare, fort et banque sans photographie propre utilisable. Petit train1, spectacles3, saloon2, Cantina2, shérif1. Deux cartes Delcampe rejetées pour filigrane, poster Image’Est filigrané ; photos ferroviaires dans PDF non extraites ni recadrées. Images modernes du forum identifiées comme OKCorral et rejetées."
+    },
+    {
+      "key": "operator-manufacturer-access",
+      "blocking": false,
+      "detail": "Exploitant juridique ancien, constructeur du train et conditions d’accès historiques non attribuables. JeanRichard acheteur1971 n’est pas fondateur. Société moderne et locomotives industrielles des anciennes sablières non transférées au parc."
+    },
+    {
+      "key": "closing-year",
+      "blocking": false,
+      "detail": "1988 retenu selon inventaire ferroviaire et notice Cinémathèque ; PNR2025 et extrait étude2006 donnent1989. Divergence conservée sans inventer jour, mois, ni précision supérieure aux sources."
+    },
+    {
+      "key": "short-secondary-building-copy",
+      "blocking": false,
+      "detail": "Fort et banque : paragraphes brefs dans huit langues, seuls usages et survie du bâtiment établis ; sources PNR et reportage de terrain LeMonde2000. Aucune architecture, scène, date ou désignation commerciale inventée pour allonger."
+    }
+  ],
+  "excludedOrUnqualifiedInventory": [
+    {
+      "name": "Diligence",
+      "reason": "Photographiée, mais pas de promenade publique prouvée ; pas de manège inventé."
+    },
+    {
+      "name": "Bisons",
+      "reason": "Présence filmée ; pas d’installation distincte suffisamment qualifiée."
+    },
+    {
+      "name": "Cimetière",
+      "reason": "Photo avec accessoire de croix ne prouve pas un lieu fixe."
+    },
+    {
+      "name": "Gambling house / commerces",
+      "reason": "Mention secondaire non recoupée, pas de création artificielle."
+    },
+    {
+      "name": "Viaduc",
+      "reason": "Composante du petit train, pas attraction indépendante."
+    }
+  ],
+  "incidentResearch": {
+    "performed": true,
+    "queries": [
+      "Vallée des Peaux Rouges accident",
+      "Vallée des Peaux Rouges train incendie"
+    ],
+    "result": "Aucun accident de parc recoupé. Commentaire familial sur décès personnel1982 ne situe pas un accident au parc ; reportage2000 concerne occupation après fermeture, pas accident du parc en exploitation. Aucun jalon fabriqué."
+  },
+  "nonApplicable": {
+    "hours": "ClosedDefinitively",
+    "currentPricing": "ClosedDefinitively"
+  },
+  "prPolicy": "Aucune PR avant10clôtures complètes ; lot reste6. Aucun changement de version."
+}

@@ -11594,23 +11594,307 @@
       "name": "La Vallée des Peaux-Rouges",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "ThemePark",
       "locality": "Fleurines",
-      "siteId": null,
+      "siteId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-01T13:23:04.5778403Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité qualifiée par recherches officielles en série, sources patrimoniales et export complet. Parc western distinct du parcours aventure moderne.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Red Skin Valley",
+        "America Park"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-01T13:29:01.652Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-760394ca-4aef-4336-b48e-50af509de7c6",
+          "appliedAt": "2026-11-01T12:30:14.047Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-760394ca-4aef-4336-b48e-50af509de7c6",
+          "auditEvidence": null,
+          "summary": "Création privée de La Vallée des Peaux-Rouges après six recherches de rapprochement : identité, Fleurines, dates annuelles 1966–1988 et fondateur Robert Mottura ; intégration éditoriale à poursuivre."
+        },
+        {
+          "eventId": "apply-ac3139d8-ec10-4b75-a5b2-4fe4e78a04f2",
+          "appliedAt": "2026-11-01T12:35:31.915Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-ac3139d8-ec10-4b75-a5b2-4fe4e78a04f2",
+          "auditEvidence": null,
+          "summary": "Deux espaces historiques privés ajoutés, Ville des pionniers et Camp indien, avec noms dans les huit langues ; sources filmiques et albums des anciens."
+        },
+        {
+          "eventId": "apply-7ffda5b3-1ae0-4f30-8166-ca6d3d869f1b",
+          "appliedAt": "2026-11-01T12:37:39.802Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-7ffda5b3-1ae0-4f30-8166-ca6d3d869f1b",
+          "auditEvidence": null,
+          "summary": "Inventaire historique privé : petit train, spectacles équestres, saloon, La Cantina, gare Fleurine Railways et bureau du shérif. Couverture et cinq localisations précises non établies documentées."
+        },
+        {
+          "eventId": "apply-d0db4390-ab45-468e-9d9c-a2cc8ef9f34e",
+          "appliedAt": "2026-11-01T12:38:39.351Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-d0db4390-ab45-468e-9d9c-a2cc8ef9f34e",
+          "auditEvidence": null,
+          "summary": "Descriptions historiques du parc rédigées et intégrées dans les huit langues, avec cinq paragraphes et trois intertitres ; sources et contexte western vérifiés."
+        },
+        {
+          "eventId": "apply-c4fac4f0-2738-4899-bf00-8d09f579412f",
+          "appliedAt": "2026-11-01T12:44:09.327Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-c4fac4f0-2738-4899-bf00-8d09f579412f",
+          "auditEvidence": null,
+          "summary": "Descriptions des deux zones historiques intégrées dans les huit langues ; décors et spectacles contextualisés d’après les archives visuelles."
+        },
+        {
+          "eventId": "apply-f4be6ad6-3339-46e7-b320-1ede3d1fb596",
+          "appliedAt": "2026-11-01T12:47:47.652Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-f4be6ad6-3339-46e7-b320-1ede3d1fb596",
+          "auditEvidence": null,
+          "summary": "Quarante-huit descriptions historiques intégrées pour les six parkItems ; huit langues relues et contrôle de répétitions sur le corpus de 72 descriptions."
+        },
+        {
+          "eventId": "import-photo-f56db475966c41aabb7f3f26080da886-2026-11-01T124830.863Z",
+          "appliedAt": "2026-11-01T12:48:30.863Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-f56db475966c41aabb7f3f26080da886-2026-11-01T124830.863Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-train, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3df5fe81073b4be9a5db9895c2801eb2-2026-11-01T124849.394Z",
+          "appliedAt": "2026-11-01T12:48:49.394Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-3df5fe81073b4be9a5db9895c2801eb2-2026-11-01T124849.394Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-camp, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f183706f192b4519918938effd882844-2026-11-01T124911.263Z",
+          "appliedAt": "2026-11-01T12:49:11.263Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-f183706f192b4519918938effd882844-2026-11-01T124911.263Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-equestrian, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-aa77827f7e3f49fd9b8b884815111531-2026-11-01T124933.232Z",
+          "appliedAt": "2026-11-01T12:49:33.232Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-aa77827f7e3f49fd9b8b884815111531-2026-11-01T124933.232Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-street-stunts, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4dd9ca73c7e74ce8a697a64b80fc5723-2026-11-01T124956.534Z",
+          "appliedAt": "2026-11-01T12:49:56.534Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-4dd9ca73c7e74ce8a697a64b80fc5723-2026-11-01T124956.534Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-saloon-group, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-86088ccad68e45128751c09bea69ebb0-2026-11-01T125029.915Z",
+          "appliedAt": "2026-11-01T12:50:29.915Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-86088ccad68e45128751c09bea69ebb0-2026-11-01T125029.915Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cantina-front, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d0fd57e43d7145b7a627824c509e3725-2026-11-01T125053.348Z",
+          "appliedAt": "2026-11-01T12:50:53.348Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-d0fd57e43d7145b7a627824c509e3725-2026-11-01T125053.348Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cantina-room, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-83b3491da56b41b6a7661beb68d5f6d8-2026-11-01T125115.752Z",
+          "appliedAt": "2026-11-01T12:51:15.752Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-83b3491da56b41b6a7661beb68d5f6d8-2026-11-01T125115.752Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-sheriff, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-05c2880e48e24fe69c9d1228ae7d8651-2026-11-01T125134.476Z",
+          "appliedAt": "2026-11-01T12:51:34.476Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-05c2880e48e24fe69c9d1228ae7d8651-2026-11-01T125134.476Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-farwesters, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-6ee53c9a-a577-465a-8823-9748022bcad0",
+          "appliedAt": "2026-11-01T12:53:56.806Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-6ee53c9a-a577-465a-8823-9748022bcad0",
+          "auditEvidence": null,
+          "summary": "Biographie de Robert Mottura intégrée dans les huit langues, rôle télévisuel et cofondation avec Philippe Cart-Tanneur sourcés."
+        },
+        {
+          "eventId": "import-photo-eafbf568b96e48608dca22752b64fa5a-2026-11-01T125418.662Z",
+          "appliedAt": "2026-11-01T12:54:18.662Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-eafbf568b96e48608dca22752b64fa5a-2026-11-01T125418.662Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-riders, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1c835ef341bd40f191cadf1ec85433a9-2026-11-01T125432.371Z",
+          "appliedAt": "2026-11-01T12:54:32.371Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-1c835ef341bd40f191cadf1ec85433a9-2026-11-01T125432.371Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-rider-white-horse, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3fd78eaf06ef4725a9121ef8b21416a3-2026-11-01T125454.300Z",
+          "appliedAt": "2026-11-01T12:54:54.300Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-3fd78eaf06ef4725a9121ef8b21416a3-2026-11-01T125454.300Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-saloon-porch, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-d8d703c6-3b77-4242-a38f-1e68d8ae7e71",
+          "appliedAt": "2026-11-01T12:58:06.036Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-d8d703c6-3b77-4242-a38f-1e68d8ae7e71",
+          "auditEvidence": null,
+          "summary": "Quatre faits HIST privés et sourcés intégrés : ouverture1966, rachat1971, fermeture1988, reconversion du terrain2012 ; huit langues, années seules et propriétaire distinct de l’exploitant."
+        },
+        {
+          "eventId": "apply-1657faf3-0a1f-4062-a9b1-7c56f82b0129",
+          "appliedAt": "2026-11-01T13:11:05.417Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-1657faf3-0a1f-4062-a9b1-7c56f82b0129",
+          "auditEvidence": null,
+          "summary": "Article historique en huit langues : création1966, spectacles et musique, chemin de fer, rachat1971, fermeture1988 et reconversion2012 ; treize sources et quatre images contextuelles. Intégration privée, audit final restant."
+        },
+        {
+          "eventId": "apply-bd247ed4-295c-4398-9978-fc45f54ac441",
+          "appliedAt": "2026-11-01T13:13:06.237Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-bd247ed4-295c-4398-9978-fc45f54ac441",
+          "auditEvidence": null,
+          "summary": "Petit train : ouverture1966 et fin exploitation1988, deux faits privés localisés dans huit langues, source ferroviaire et photographie contextuelle. Années seules, retrait ultérieur des rails non antidaté. Audit final restant."
+        },
+        {
+          "eventId": "apply-ae032815-4c0f-4527-91e5-a234df7c60e8",
+          "appliedAt": "2026-11-01T13:17:59.269Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-ae032815-4c0f-4527-91e5-a234df7c60e8",
+          "auditEvidence": null,
+          "summary": "Fort ajouté à l’inventaire historique comme décor de spectacles Other/Other, sur source patrimoniale PNR. Huit descriptions courtes fidèles, sans dates ni emplacement inventés. Sept éléments intégrés ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4a9d3194007f43dda9b728eb0f7a30af-2026-11-01T131914.687Z",
+          "appliedAt": "2026-11-01T13:19:14.687Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-4a9d3194007f43dda9b728eb0f7a30af-2026-11-01T131914.687Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-poster-america-park, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f4118ed2b14346aa99d8c5b4002c0cf2-2026-11-01T131928.822Z",
+          "appliedAt": "2026-11-01T13:19:28.822Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-f4118ed2b14346aa99d8c5b4002c0cf2-2026-11-01T131928.822Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-show-postcard, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-605a72db-ca87-4215-b935-f5637b8d1210",
+          "appliedAt": "2026-11-01T13:21:21.921Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-605a72db-ca87-4215-b935-f5637b8d1210",
+          "auditEvidence": null,
+          "summary": "Banque du décor western ajoutée sur reportage LeMonde2000 consulté en archive publique, huit descriptions brèves, aucune date ni coordonnées inventées. Huit éléments historiques désormais identifiés ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b88e019d30594bb2b2e2edba9d46b377-2026-11-01T132627.015Z",
+          "appliedAt": "2026-11-01T13:26:27.015Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-b88e019d30594bb2b2e2edba9d46b377-2026-11-01T132627.015Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-reuse-2012, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-5ecac672-f905-4ca6-8b25-98206188e99b",
+          "appliedAt": "2026-11-01T13:29:01.652Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-5ecac672-f905-4ca6-8b25-98206188e99b",
+          "auditEvidence": null,
+          "summary": "Reprise audit : six jalons désormais illustrés, photographie contemporaine pour reconversion2012 ; une phrase anglaise article reformulée et quatre libellés de sources corrigés. Données privées, blocage logo historique restant."
+        }
+      ],
+      "nextAction": "Huit éléments, deux zones, quinze médias, six faits et article dans huit langues intégrés. Audit711champs et33entités inchangées. Parc privé : logo historique requis, score projeté85/100 ; rechercher un fichier officiel exploitable avant publication et Facebook. Voir vallee-peaux-rouges-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -22279,8 +22563,8 @@
       "locality": "Paris",
       "siteId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-11-01T12:09:22.1708103Z",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T13:36:53.416272Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -22293,7 +22577,7 @@
         "Parc océanographique Cousteau"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-01T12:15:06.710Z",
+      "lastDataIntegrationAt": "2026-11-01T13:40:27.375Z",
       "integrationHistory": [
         {
           "eventId": "apply-522d99c5-dd1c-4b31-9734-95fe2c4aa8ff",
@@ -22444,9 +22728,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-receipts.json#apply-092ff43e-25f1-4ccb-a514-df07571944ff",
           "auditEvidence": null,
           "summary": "Suppression des reprises entre fiche, article et légendes dans huit langues ; une phrase de Jonas revue en espagnol. Lieux, périodes et sources conservés ; transfert au Futuroscope non daté arbitrairement."
+        },
+        {
+          "eventId": "apply-62f5c456-8e75-405c-b167-693856646619",
+          "appliedAt": "2026-11-01T13:40:27.375Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-receipts.json#apply-62f5c456-8e75-405c-b167-693856646619",
+          "auditEvidence": null,
+          "summary": "Restauration officielle des onze faits dans HIST après publication parent : onze champs canonicalHistory incomplete→restored, mêmes textes, dates, sources, propriétaires et médias. Fiche publique, contrôle du lien Histoire et Facebook à suivre ; backlog reste partial."
         }
       ],
-      "nextAction": "Audit éditorial terminé : 5 équipements, 4 médias, 11 faits et article en huit langues. Dépendances publiées ; parent masqué, score projeté 86/100 sans bloqueur. Décision requise sur les lacunes historiques avant publication du parc et Facebook. Voir parc-cousteau-ready-audit.json.",
+      "nextAction": "Fiche Cousteau et Facebook publiés le1novembre2026 ; onze faitsHIST restaurés, lienHistoire vérifié dans huit langues. Score réel87/100 sans bloqueur. Ligne conservée partial : enrichir les lacunes historiques documentées ou obtenir une exception nominative avant clôture, pas de nouvelle annonce Facebook. Voir parc-cousteau-publication-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
