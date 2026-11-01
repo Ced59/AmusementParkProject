@@ -1,0 +1,77 @@
+{
+  "name": "Arena Coaster",
+  "entryId": "AT-candidate-discovery-75e6998d61e541",
+  "standaloneAttractionId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+  "qualification": "Luge à billet indépendant au pied de la Rosenalmbahn, distincte du domaine skiable Zillertal Arena dont la fiche Park reste masquée.",
+  "decision": "Published",
+  "score": 81,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 1,
+    "admissionOffers": 6,
+    "datedRegularRules": 1,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les dates et tarifs d’été 2027 ne sont pas encore publiés ; vérifier la prochaine saison."
+  ],
+  "sources": [
+    {
+      "label": "Zillertal Arena — Arena Coaster, horaires et tarifs hiver 2026–27",
+      "url": "https://www.zillertalarena.com/winter/abseits-der-pisten/arena-coaster/"
+    },
+    {
+      "label": "Zillertal Arena — Arena Coaster été, montée intégrée et billet propre",
+      "url": "https://www.zillertalarena.com/en/summer/sports-recreation/arena-coaster/"
+    },
+    {
+      "label": "OpenStreetMap — emprise du tracé Arena Coaster",
+      "url": "https://www.openstreetmap.org/way/230671364"
+    },
+    {
+      "label": "Wikimedia Commons — tracé de l’Arena Coaster",
+      "url": "https://commons.wikimedia.org/wiki/File:Arena_Coaster_Zillertal_-_toboggan_track.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "bfc226758d174163928e07685f5e072a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arena_Coaster_Zillertal_-_toboggan_track.jpg",
+      "author": "Лорд Бъмбъри",
+      "date": "2017-08-10",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Les virages du rail serpentent à travers la prairie",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "8045b2d0cc584faf80d8c230f52a33596345bc9db459c2516ae68df27d1c83bb",
+    "projectedScore": 81,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T13:21:09.517Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T13:17:13.883Z",
+    "photosPublishedAtUtc": "2026-11-01T13:18:25.975Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:fd15f025-28cf-414c-8b57-06e1c4a2ea6d"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/a5f1a001-a685-45a5-99c3-f147dff1ff4a/arena-coaster",
+      "publishedAtUtc": "2026-11-01T13:19:04.988Z",
+      "applyOperationId": "969b8745-560b-4cfe-8e19-db540a68d8a6"
+    },
+    "facebook": {
+      "id": "332b626c865a4e4f8e9edefb703f9383",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T13:20:00.622Z",
+      "externalPostId": "1285475681307050_122125610295424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125610295424431"
+    }
+  }
+}

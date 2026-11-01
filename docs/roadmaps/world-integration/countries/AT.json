@@ -897,6 +897,153 @@
       ]
     },
     {
+      "entryId": "AT-candidate-discovery-75e6998d61e541",
+      "name": "Arena Coaster",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster / luge sur rails",
+      "locality": "Rohr 23, Talstation Rosenalmbahn, Zell am Ziller, Tyrol, Autriche",
+      "siteId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T13:21:09.517Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant publiant billets et horaires pour la période du 1er février au 11 avril 2027 ; pas d’ouverture annoncée en novembre 2026.",
+      "identityConfidence": "Billet propre et montée intégrée confirmés, distincts du domaine skiable ; Park Zillertal Arena masqué 410a98d7-c142-4716-8946-d0e2c0bc2f7c à qualifier séparément.",
+      "possibleMatches": [],
+      "aliases": [
+        "Arena Coaster Zillertal",
+        "Alpine coaster Zell am Ziller"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T13:17:13.883Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-9d32984f-fa90-4257-9140-f30424d75689",
+          "appliedAt": "2026-11-01T13:14:00.675Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:apply:9d32984f-fa90-4257-9140-f30424d75689",
+          "auditEvidence": null,
+          "summary": "Fiche privée du coaster créée sans modifier le Park masqué Zillertal Arena"
+        },
+        {
+          "eventId": "apply-15d10b29-a401-4bc3-bec6-e2569dc19042",
+          "appliedAt": "2026-11-01T13:16:10.879Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:apply:15d10b29-a401-4bc3-bec6-e2569dc19042",
+          "auditEvidence": null,
+          "summary": "Six offres de trajets et carnets pour l’hiver 2027 intégrées avec dates de validité"
+        },
+        {
+          "eventId": "image-bfc226758d174163928e07685f5e072a",
+          "appliedAt": "2026-11-01T13:16:34.412Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:image:bfc226758d174163928e07685f5e072a",
+          "auditEvidence": null,
+          "summary": "Photo exacte du tracé Arena Coaster importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-497cec31-3839-4ad7-b1e0-45410629654d",
+          "appliedAt": "2026-11-01T13:17:13.883Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:apply:497cec31-3839-4ad7-b1e0-45410629654d",
+          "auditEvidence": null,
+          "summary": "Règle datée du 1er février au 11 avril 2027 intégrée ; dépendance à la météo documentée"
+        },
+        {
+          "eventId": "closure-497cec31-3839-4ad7-b1e0-45410629654d",
+          "appliedAt": "2026-11-01T13:17:13.883Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:apply:497cec31-3839-4ad7-b1e0-45410629654d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-arena-coaster-20261101/audit.json",
+          "summary": "Audit 81/100 sans blocage, photo exacte du parcours ; période d’hiver 2027 datée, site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Relever l’ouverture et les tarifs d’été 2027 quand ils seront publiés ; vérifier météo et horaires avant la saison d’hiver. Qualifier la fiche Park Zillertal Arena liée sans dupliquer le coaster. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Zillertal Arena — Arena Coaster, horaires et tarifs hiver 2026–27",
+          "url": "https://www.zillertalarena.com/winter/abseits-der-pisten/arena-coaster/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Zillertal Arena — Arena Coaster été, montée intégrée et billet propre",
+          "url": "https://www.zillertalarena.com/en/summer/sports-recreation/arena-coaster/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise du tracé Arena Coaster",
+          "url": "https://www.openstreetmap.org/way/230671364",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — tracé de l’Arena Coaster",
+          "url": "https://commons.wikimedia.org/wiki/File:Arena_Coaster_Zillertal_-_toboggan_track.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Arena Coaster",
+            "source": "Zillertal Arena — page officielle du coaster",
+            "url": "https://www.zillertalarena.com/winter/abseits-der-pisten/arena-coaster/",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Zillertal Arena, station inférieure Rosenalmbahn",
+            "sourceLifecycleSignal": "Billet propre et période hiver 2027 annoncée",
+            "sourceLocality": "Zell am Ziller, Tyrol",
+            "matchingMethod": "Billetterie propre, montée sans télécabine et recherche Standalone officielle sans fiche"
+          }
+        ],
+        "rationale": "Le domaine Zillertal Arena est plus large que cette luge à billet indépendant ; la fiche Park masquée est conservée pour qualification distincte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a5f1a001-a685-45a5-99c3-f147dff1ff4a/arena-coaster",
+          "publishedAtUtc": "2026-11-01T13:19:04.988Z",
+          "verifiedAtUtc": "2026-11-01T13:21:09.517Z",
+          "evidence": "PARK_DATA_EDITOR:apply:969b8745-560b-4cfe-8e19-db540a68d8a6"
+        },
+        "facebook": {
+          "id": "332b626c865a4e4f8e9edefb703f9383",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:20:00.622Z",
+          "externalPostId": "1285475681307050_122125610295424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125610295424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:332b626c865a4e4f8e9edefb703f9383"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "bfc226758d174163928e07685f5e072a"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:18:25.975Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:fd15f025-28cf-414c-8b57-06e1c4a2ea6d",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-at-arena-coaster-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-arena-coaster-20261101/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
       "entryId": "AT-candidate-6dd0cf3d9229b2",
       "name": "Armin Knittel",
       "entityKind": "ToQualify",
@@ -6798,13 +6945,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park du domaine existante et masquée, contenant un ParkItem ; coaster à billet propre publié séparément le 1er novembre 2026. Identité du domaine Park encore à qualifier.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Fiche Park masquée conservée. Son élément Arena Coaster possède désormais une fiche standalone publiée a5f1a001-a685-45a5-99c3-f147dff1ff4a (AT-candidate-discovery-75e6998d61e541). Qualifier séparément le domaine Zillertal Arena comme Park, puis décider du sort de son ParkItem masqué sans publier deux fois le coaster.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6830,6 +6977,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.zillertalarena.com",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Zillertal Arena — Arena Coaster et billet propre",
+          "url": "https://www.zillertalarena.com/winter/abseits-der-pisten/arena-coaster/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Fiche standalone Arena Coaster publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/a5f1a001-a685-45a5-99c3-f147dff1ff4a/arena-coaster",
+          "accessedAt": "2026-11-01"
         }
       ],
       "countryCodeAtInventory": "AT",
