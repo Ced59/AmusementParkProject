@@ -19,5 +19,107 @@
     "Official logo cannot be replaced by the complete advertising poster"
   ],
   "reservationOnly": true,
-  "note": "Reprise du candidat historique. Recherches officielles des alias en cours ; aucune création validée, aucune date d’intégration inventée."
+  "note": "Reprise du candidat historique. Recherches officielles des alias en cours ; aucune création validée, aucune date d’intégration inventée.",
+  "qualificationFollowup": {
+    "atUtc": "2026-11-01T15:28:39.453718+00:00",
+    "parkId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+    "entryId": "FR-candidate-a7f2b59d48ade2",
+    "qualified": true,
+    "matchingExistingEntity": null,
+    "searches": [
+      {
+        "file": "00-search-american-accent-parks.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-american-accent-standalone.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-american-parks.json",
+        "pagination": {
+          "totalItems": 35,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-american-standalone.json",
+        "pagination": {
+          "totalItems": 3,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-magic-city-parks.json",
+        "pagination": {
+          "totalItems": 1,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-magic-city-standalone.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-marseille-parks.json",
+        "pagination": {
+          "totalItems": 1,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-marseille-standalone.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-soupirs-parks.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      },
+      {
+        "file": "00-search-soupirs-standalone.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        }
+      }
+    ],
+    "aliasProof": "Primary Salle de skating postcard explicitly says American Park (Magic City de Marseille).",
+    "firstApplyEvidence": "american-park-marseille-receipts.json#apply-66122cf7-3020-4a11-b115-d9ab6551f3e5",
+    "latestAudit": "american-park-marseille-progress-audit.json"
+  }
 }

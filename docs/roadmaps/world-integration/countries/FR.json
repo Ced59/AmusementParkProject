@@ -884,28 +884,203 @@
       "name": "American Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "AmusementPark",
       "locality": "Marseille",
-      "siteId": null,
+      "siteId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-01",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité confirmée par dix recherches officielles globales, cartes postales de Marseille et audit de l’export. Magic City Marseille est un alias, distinct de Paris et Bordeaux.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "American Park Marseille",
+        "Magic City Marseille",
+        "Parc américain de Marseille"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Prise en charge par Conversation France : qualifier American Park de Marseille, alias Magic City Marseille, sans confusion avec Bordeaux ou Magic City Paris. Rapprochement officiel avant toute création ; ouverture1910 à préciser sur archives primaires. Voir american-park-marseille-intake.json.",
+      "lastDataIntegrationAt": "2026-11-01T15:23:52.220Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-66122cf7-3020-4a11-b115-d9ab6551f3e5",
+          "appliedAt": "2026-11-01T14:53:19.509Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-66122cf7-3020-4a11-b115-d9ab6551f3e5",
+          "auditEvidence": null,
+          "summary": "American Park Marseille : création historique privée après10recherches globales sanscorrespondance, années1910–1914, identité distincte deParis/Bordeaux, dateexacte etlogo non inventés."
+        },
+        {
+          "eventId": "apply-d8d4bbe6-a6ff-42a3-8103-6c096f665619",
+          "appliedAt": "2026-11-01T14:58:31.950Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-d8d4bbe6-a6ff-42a3-8103-6c096f665619",
+          "auditEvidence": null,
+          "summary": "American Park Marseille : inventaire historique12items, dont7attractionsRemoved, cinéma/théâtre/sallededanse et2restaurations; zones etGPSnoninventés, bowlingretenucandidatnonconfirmé."
+        },
+        {
+          "eventId": "apply-364a0898-48fc-43ee-91ab-1713625a14a9",
+          "appliedAt": "2026-11-01T15:02:17.745Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-364a0898-48fc-43ee-91ab-1713625a14a9",
+          "auditEvidence": null,
+          "summary": "American Park Marseille : descriptionduparc8langues,3sections5paragraphes fondéssurcartespostales etrécitshistoriques; aucunedateexacte, offreprésente outexte mécanique."
+        },
+        {
+          "eventId": "apply-0ab5ee0e-638b-49a3-82f3-2ec5dfbe1637",
+          "appliedAt": "2026-11-01T15:08:31.895Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-0ab5ee0e-638b-49a3-82f3-2ec5dfbe1637",
+          "auditEvidence": null,
+          "summary": "American Park Marseille : descriptions du Chatouilleur, du Château des soupirs et du skating dans les huit langues, fondées sur les cartes postales et relues intégralement."
+        },
+        {
+          "eventId": "apply-ffe7f53f-2ed5-4370-9ae9-f288555e2066",
+          "appliedAt": "2026-11-01T15:09:38.295Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-ffe7f53f-2ed5-4370-9ae9-f288555e2066",
+          "auditEvidence": null,
+          "summary": "American Park Marseille : descriptions huit langues de la Roulette humaine et du Water Toboggan; contexte de l’exposition coloniale conservé pour la photographie ancienne."
+        },
+        {
+          "eventId": "import-photo-8cc98b6563554d3ca9e59701a94337bc-2026-11-01T151213.854Z",
+          "appliedAt": "2026-11-01T15:12:13.854Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#import-photo-8cc98b6563554d3ca9e59701a94337bc-2026-11-01T151213.854Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chateau, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-df5211113cda4cc189942d15573c6269-2026-11-01T151236.112Z",
+          "appliedAt": "2026-11-01T15:12:36.112Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#import-photo-df5211113cda4cc189942d15573c6269-2026-11-01T151236.112Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-skating, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2a5184a14fb2497c824a3994ecb0d873-2026-11-01T151309.539Z",
+          "appliedAt": "2026-11-01T15:13:09.539Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#import-photo-2a5184a14fb2497c824a3994ecb0d873-2026-11-01T151309.539Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-water-exhibition, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f90865f725e94b89baab93747b7b0f69-2026-11-01T151334.316Z",
+          "appliedAt": "2026-11-01T15:13:34.316Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#import-photo-f90865f725e94b89baab93747b7b0f69-2026-11-01T151334.316Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chatouilleur, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6a6d73fb0b984bf5a9a310a38f8d6e08-2026-11-01T151351.011Z",
+          "appliedAt": "2026-11-01T15:13:51.011Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#import-photo-6a6d73fb0b984bf5a9a310a38f8d6e08-2026-11-01T151351.011Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-roulette, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b6d8275142dd40338e251d574a6e75a8-2026-11-01T151410.376Z",
+          "appliedAt": "2026-11-01T15:14:10.376Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#import-photo-b6d8275142dd40338e251d574a6e75a8-2026-11-01T151410.376Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-visitors, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c3acb56303764999b94bf773b489948c-2026-11-01T151432.900Z",
+          "appliedAt": "2026-11-01T15:14:32.900Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#import-photo-c3acb56303764999b94bf773b489948c-2026-11-01T151432.900Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-poster, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ea6c5889cf174d55bc6535765f07d7e2-2026-11-01T151446.706Z",
+          "appliedAt": "2026-11-01T15:14:46.706Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#import-photo-ea6c5889cf174d55bc6535765f07d7e2-2026-11-01T151446.706Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-company-share, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-8fd0a9b3-9223-4b1c-bc85-5b4c69bbff5a",
+          "appliedAt": "2026-11-01T15:21:12.273Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-8fd0a9b3-9223-4b1c-bc85-5b4c69bbff5a",
+          "auditEvidence": null,
+          "summary": "American Park Marseille : cinq faits historiques privés sourcés dans les huit langues; ouverture1910, incendieaoût1911, fermeture1914 et dégâts propres au château et au théâtre."
+        },
+        {
+          "eventId": "apply-26a338f1-7e88-4d2d-908f-fcea2c64c20b",
+          "appliedAt": "2026-11-01T15:23:02.250Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-26a338f1-7e88-4d2d-908f-fcea2c64c20b",
+          "auditEvidence": null,
+          "summary": "American Park Marseille : article historique privé dans les huit langues, quatre sections et sept paragraphes par langue, sources consultées et dates prudentes."
+        },
+        {
+          "eventId": "apply-5f281395-7bdf-4f54-94cb-7dabf9b09475",
+          "appliedAt": "2026-11-01T15:23:52.220Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-5f281395-7bdf-4f54-94cb-7dabf9b09475",
+          "auditEvidence": null,
+          "summary": "American Park Marseille : description huit langues de la salle de danse fondée sur sa carte postale d’entrée; format bref motivé, sans intérieur ni programme inventé."
+        }
+      ],
+      "nextAction": "12éléments,8médias,5faits et article8langues intégrés. Parc privé86/100:logo historique requis et6descriptions à documenter (Tourbillon,Cake-Walk,Cinéma,Tanagra,Brasserie,Buffet). Rechercher sources précises sans remplissage; puis audit/publication etFacebook autorisés. Voir american-park-marseille-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Cartes postales American Park Marseille et alias Magic City",
+          "url": "https://commons.wikimedia.org/wiki/Category:American_Park_(Marseille)",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Dominique Milherou — histoire et archives American Park Marseille",
+          "url": "https://tourisme-marseille.com/fiche/american-park-chateau-des-soupirs-rond-point-du-prado-marseille/",
+          "accessedAt": "2026-11-01"
         }
       ]
     },

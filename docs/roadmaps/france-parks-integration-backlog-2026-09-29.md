@@ -189,7 +189,7 @@ Aucune fiche ne reste dans cette catégorie.
 
 ## 5. Parcs historiques absents de la photographie FR
 
-- [ ] American Park — Marseille — 1910-1914
+- [ ] American Park — Marseille — 1910-1914 — `4ad5492e-7a08-4a3a-a397-8937b11a04c9` ; 12 éléments, 8 médias, 5 faits historiques et article en huit langues intégrés. Audit intermédiaire **86/100** : logo historique et six descriptions manquent encore. Fiche privée, aucune publication Facebook. [Audit et lacunes](world-integration/evidence/france-historical-20261022/american-park-marseille-progress-audit.json).
 - [ ] Aquagif — Gif-sur-Yvette — 1988-2002
 - [ ] Aquagliss — Porticcio — 1986-2014
 - [ ] Aqwaland Martinique — Le Carbet — 2004-2013
