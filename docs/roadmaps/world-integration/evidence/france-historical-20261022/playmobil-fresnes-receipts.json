@@ -669,6 +669,46 @@
         "article"
       ],
       "summary": "Correction du bloqueur éditorial : deux légendes illustrées de l’article réécrites dans les huit langues pour supprimer leur duplication avec les galeries."
+    },
+    {
+      "eventId": "apply-c1382b9b-7fc7-43bf-86a8-bf6bbe052e68",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:29:02.2169535Z",
+      "appliedAt": "2026-11-01T14:29:02.216Z",
+      "receiptFile": "10-source-refresh-apply.receipt.json",
+      "receiptSha256": "1bdc6b1930a3b512c9fc4c30fd0b68b335dfc03bfb7a9358b14e7b6c5ad8a52a",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Fresnes : référence bibliographique de Jeux Jouets Services actualisée vers Sirene ; contenu de l’article et dates factuelles inchangés, résultat partial."
+    },
+    {
+      "eventId": "apply-042d47b6-8540-48f0-9477-7c899f471f53",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:33:27.7791298Z",
+      "appliedAt": "2026-11-01T14:33:27.779Z",
+      "receiptFile": "10-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "b0ffbfb52a46ca815825a2d7da9063d291f071b2c4a2587b4b5ef055c5c05042",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Fresnes : restauration canonique des six faits historiques, textes et dates conservés ; résultat partial maintenu."
     }
   ],
   "publicationOrNoop": [
@@ -713,6 +753,27 @@
         "isVisible"
       ],
       "summary": "Publication ciblée des 19 fiches internes, six jalons et article ; exploitant validé, parc Fresnes encore masqué."
+    },
+    {
+      "eventId": "apply-29e91b45-d632-4f4e-ba74-0b9494aec809",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:31:00.4837675Z",
+      "appliedAt": "2026-11-01T14:31:00.483Z",
+      "receiptFile": "10-publish-park-apply.receipt.json",
+      "receiptSha256": "aec73081b96115d8782ac56b01691c3dd572e5e7b84969066640a70d2ca50121",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Fresnes : publication initiale de la fiche autorisée, visibilité seule ; résultat partial conservé et contrôles publics à suivre."
     }
   ]
 }

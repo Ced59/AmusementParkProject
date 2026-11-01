@@ -20808,8 +20808,8 @@
       "locality": "Lomme",
       "siteId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-23T12:41:36.925262+00:00",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:23:28.3853265Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "ClosedDefinitively",
@@ -20821,7 +20821,7 @@
         "Parc de Lillom"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-23T15:10:51.908Z",
+      "lastDataIntegrationAt": "2026-11-01T14:27:19.788Z",
       "integrationHistory": [
         {
           "eventId": "apply-d677911b-65ee-4b4a-a1eb-a6cde23827cb",
@@ -21202,9 +21202,29 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-62b93874-92f4-45ea-8a65-e802231b928e",
           "auditEvidence": null,
           "summary": "Lillom : reprise de l’exploitation par Nordland Park en 1986, événement sourcé en huit langues."
+        },
+        {
+          "eventId": "apply-6cc78cc5-9cf7-4674-bedf-12a899327334",
+          "appliedAt": "2026-11-01T14:22:20.256Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-6cc78cc5-9cf7-4674-bedf-12a899327334",
+          "auditEvidence": null,
+          "summary": "Parc de Lomme : actualisation des deux références de sociétés vers les données gouvernementales Sirene, fait de reprise et dates inchangés ; résultat partial."
+        },
+        {
+          "eventId": "apply-228054c2-f705-4134-9ca2-ce0752a8e950",
+          "appliedAt": "2026-11-01T14:27:19.788Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-receipts.json#apply-228054c2-f705-4134-9ca2-ce0752a8e950",
+          "auditEvidence": null,
+          "summary": "Parc de Lomme : restauration canonique des onze faits historiques, données éditoriales préservées ; résultat partial conservé."
         }
       ],
-      "nextAction": "Audit complet sans bloqueur, score projeté 95/100. Exception exacte proposée à l’utilisateur avec lacunes sourcées ; parc encore masqué, dépendances publiées. Continuer Ty’Bamboo pendant la réponse.",
+      "nextAction": "Fiche et Facebook publiés ; 11 faits historiques restaurés, lien Histoire vérifié dans huit langues. Score réel 95/100 sans bloqueur API. Ligne partial conservée : enrichir les lacunes documentées ou obtenir une exception nominative avant clôture. Ne pas republier Facebook. Voir lillom-publication-audit.json.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -25215,8 +25235,8 @@
       "locality": "Fresnes",
       "siteId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-28",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:31:00.4837675Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -25229,7 +25249,7 @@
         "Playmobil Fun Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-10-28T18:27:13.096Z",
+      "lastDataIntegrationAt": "2026-11-01T14:33:27.779Z",
       "integrationHistory": [
         {
           "eventId": "apply-66d3d7a3-8744-4dc9-bcd7-5e3c99b2d9ec",
@@ -25600,9 +25620,29 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-11506192-84c0-4290-b702-a632be2fe093",
           "auditEvidence": null,
           "summary": "Correction du bloqueur éditorial : deux légendes illustrées de l’article réécrites dans les huit langues pour supprimer leur duplication avec les galeries."
+        },
+        {
+          "eventId": "apply-c1382b9b-7fc7-43bf-86a8-bf6bbe052e68",
+          "appliedAt": "2026-11-01T14:29:02.216Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-c1382b9b-7fc7-43bf-86a8-bf6bbe052e68",
+          "auditEvidence": null,
+          "summary": "Fresnes : référence bibliographique de Jeux Jouets Services actualisée vers Sirene ; contenu de l’article et dates factuelles inchangés, résultat partial."
+        },
+        {
+          "eventId": "apply-042d47b6-8540-48f0-9477-7c899f471f53",
+          "appliedAt": "2026-11-01T14:33:27.779Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-042d47b6-8540-48f0-9477-7c899f471f53",
+          "auditEvidence": null,
+          "summary": "Fresnes : restauration canonique des six faits historiques, textes et dates conservés ; résultat partial maintenu."
         }
       ],
-      "nextAction": "Audit éditorial réalisé ; score projeté92/100 sans bloqueur. Exception nommée requise avant visibilité du parc, puis diagnostic HIST, contrôle public huit langues et Facebook.",
+      "nextAction": "Fiche et Facebook publiés ; 6 faits historiques restaurés, lien Histoire vérifié dans huit langues. Score réel 92/100 sans bloqueur API. Ligne partial conservée : enrichir les lacunes documentées ou obtenir une exception nominative avant clôture. Ne pas republier Facebook. Voir playmobil-fresnes-publication-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",

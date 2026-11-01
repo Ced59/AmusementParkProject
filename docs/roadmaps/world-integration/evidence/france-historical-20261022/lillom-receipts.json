@@ -795,6 +795,46 @@
         "year"
       ],
       "summary": "Lillom : reprise de l’exploitation par Nordland Park en 1986, événement sourcé en huit langues."
+    },
+    {
+      "eventId": "apply-6cc78cc5-9cf7-4674-bedf-12a899327334",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:22:20.256085Z",
+      "appliedAt": "2026-11-01T14:22:20.256Z",
+      "receiptFile": "10-source-refresh-apply.receipt.json",
+      "receiptSha256": "48377ef497585ea30aedcb5947be4ca1b4c98187dd0cdf9b26a4d310bf336cab",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "sources"
+      ],
+      "summary": "Parc de Lomme : actualisation des deux références de sociétés vers les données gouvernementales Sirene, fait de reprise et dates inchangés ; résultat partial."
+    },
+    {
+      "eventId": "apply-228054c2-f705-4134-9ca2-ce0752a8e950",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:27:19.7885401Z",
+      "appliedAt": "2026-11-01T14:27:19.788Z",
+      "receiptFile": "10-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "68321e31db3f7ae2c9fe3405324c8f6884ea40e798b6608f7cd46e7b5a4e18f7",
+      "counts": {
+        "created": 0,
+        "updated": 11,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Parc de Lomme : restauration canonique des onze faits historiques, données éditoriales préservées ; résultat partial conservé."
     }
   ],
   "publicationOrNoop": [
@@ -879,6 +919,27 @@
         "isVisible"
       ],
       "summary": "Publication des 46 fiches qualifiées et auditées de Lillom, sans modifier leurs données historiques."
+    },
+    {
+      "eventId": "apply-c1d25986-d89a-47d4-b8de-4dc2ca0f1c08",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T14:23:28.3853265Z",
+      "appliedAt": "2026-11-01T14:23:28.385Z",
+      "receiptFile": "10-publish-park-apply.receipt.json",
+      "receiptSha256": "8d2c198623b799cace427f4f4010fb53219d91bcdb70f0079a45033db45af487",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Parc de Lomme : publication initiale autorisée, fiche principale seule ; doublon conservé et résultat partial en attente des contrôles publics."
     }
   ]
 }
