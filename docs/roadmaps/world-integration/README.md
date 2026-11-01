@@ -17,11 +17,11 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 307 | 1881 | 7567 |
-| Standalone | 147 | 1 | 125 |
+| Standalone | 148 | 1 | 125 |
 
-**Reprise standalone :** en plus des 125 candidates sans correspondance, **226 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **634 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **56 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 125 candidates sans correspondance, **226 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **633 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **56 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **69** types à décider, **1346** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **69** types à décider, **1345** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -365,16 +365,16 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sri Lanka](countries/LK.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Syrie](countries/SY.md) | 0 | 0 | 1 | 0 | 0 | 0 |
 | [Tadjikistan](countries/TJ.md) | 0 | 0 | 0 | 0 | 1 | 0 |
-| [Taïwan](countries/TW.md) | 0 | 0 | 3 | 0 | 8 | 0 |
+| [Taïwan](countries/TW.md) | 1 | 0 | 3 | 0 | 7 | 0 |
 | [Territoires palestiniens](countries/PS.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Thaïlande](countries/TH.md) | 0 | 0 | 0 | 2 | 4 | 0 |
 | [Timor oriental](countries/TL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Turkménistan](countries/TM.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Viêt Nam](countries/VN.md) | 1 | 0 | 3 | 0 | 22 | 0 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **19** | **0** | **49** | **2** | **712** | **0** |
+| **Total** | **20** | **0** | **49** | **2** | **711** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **19**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **20**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Corée du Sud : 6 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Émirats arabes unis : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -383,6 +383,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - Malaisie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - R.A.S. chinoise de Hong Kong : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Singapour : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Taïwan : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Viêt Nam : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
@@ -428,14 +429,14 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Sri Lanka](countries/LK.md) | 0 | 0 | 0 | 0 |
 | [Syrie](countries/SY.md) | 0 | 0 | 0 | 0 |
 | [Tadjikistan](countries/TJ.md) | 0 | 0 | 1 | 0 |
-| [Taïwan](countries/TW.md) | 0 | 0 | 6 | 0 |
+| [Taïwan](countries/TW.md) | 0 | 0 | 5 | 0 |
 | [Territoires palestiniens](countries/PS.md) | 0 | 0 | 0 | 0 |
 | [Thaïlande](countries/TH.md) | 0 | 0 | 4 | 0 |
 | [Timor oriental](countries/TL.md) | 0 | 0 | 0 | 0 |
 | [Turkménistan](countries/TM.md) | 0 | 0 | 1 | 0 |
 | [Viêt Nam](countries/VN.md) | 1 | 0 | 16 | 5 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 0 |
-| **Total** | **3** | **0** | **239** | **14** |
+| **Total** | **3** | **0** | **238** | **14** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 
