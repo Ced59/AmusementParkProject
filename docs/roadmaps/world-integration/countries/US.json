@@ -11604,37 +11604,163 @@
     {
       "entryId": "US-candidate-9bbeeac20c9b5e",
       "name": "Centennial Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Navy Pier , Chicago, Illinois",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Navy Pier, 600 E Grand Ave, Chicago, Illinois, États-Unis",
+      "siteId": "9a31ef73-1334-46aa-9686-52e143739ae1",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:42:19.792Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Navy Pier confirme la roue ouverte tous les jours, sous réserve météo, au 1er novembre 2026.",
+      "identityConfidence": "Roue avec billet individuel dans Pier Park ; Park et Standalone officiels sans fiche correspondante. Distincte du site polyvalent Navy Pier et des autres manèges.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Navy Pier Centennial Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T12:38:51.786Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-5fcdf2aa-51c4-420d-bc48-712f608cd01e",
+          "appliedAt": "2026-11-01T12:36:04.082Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:apply:5fcdf2aa-51c4-420d-bc48-712f608cd01e",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée et descriptions en huit langues intégrées"
+        },
+        {
+          "eventId": "image-46ed9b1f32e44ad293e2c70e429ec65c",
+          "appliedAt": "2026-11-01T12:37:20.472Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:image:46ed9b1f32e44ad293e2c70e429ec65c",
+          "auditEvidence": null,
+          "summary": "Photo #1 exacte de la Centennial Wheel importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-54dcb23cf6464bd18aa900584637367e",
+          "appliedAt": "2026-11-01T12:38:12.149Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:image:54dcb23cf6464bd18aa900584637367e",
+          "auditEvidence": null,
+          "summary": "Photo #2 exacte de la Centennial Wheel importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-56293fc1-125e-4723-a9ea-24b334dc9d8c",
+          "appliedAt": "2026-11-01T12:38:51.786Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:apply:56293fc1-125e-4723-a9ea-24b334dc9d8c",
+          "auditEvidence": null,
+          "summary": "Horaires datés de septembre à décembre 2026, fermetures et exceptions des fêtes intégrés"
+        },
+        {
+          "eventId": "closure-56293fc1-125e-4723-a9ea-24b334dc9d8c",
+          "appliedAt": "2026-11-01T12:38:51.786Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:apply:56293fc1-125e-4723-a9ea-24b334dc9d8c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-centennial-wheel-20261101/audit.json",
+          "summary": "Audit 78/100 publiable sans blocage et deux photos exactes ; tarif courant non chiffré faute de prix officiel fixe ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Réviser les horaires après le 31 décembre 2026, vérifier les exceptions et relever un tarif officiel courant avant de chiffrer le billet. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Navy Pier — Centennial Wheel, nacelles, vente et fonctionnement",
+          "url": "https://navypier.org/pier-locations/centennial-wheel/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Navy Pier — horaires 2026 et jours fériés",
+          "url": "https://navypier.org/plan-your-visit/hours-and-admission/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Navy Pier — Pier Park Rides, autres attractions séparées",
+          "url": "https://navypier.org/pier-park-rides/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise de la Centennial Wheel",
+          "url": "https://www.openstreetmap.org/way/686996484",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Centennial Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Chicago_in_2022_Centennial_Wheel_(52059724068).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Centennial Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Centennial_Wheel_en_Navy_Pier_en_Chicago.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Centennial Wheel",
+            "source": "Navy Pier — page officielle de la roue",
+            "url": "https://navypier.org/pier-locations/centennial-wheel/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Pier Park, Navy Pier",
+            "sourceLifecycleSignal": "Billet propre et ouverture quotidienne sous réserve météo au 1er novembre 2026",
+            "sourceLocality": "Chicago, Illinois",
+            "matchingMethod": "Billetterie individuelle et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Le Pier Park regroupe plusieurs attractions, mais la roue possède un billet propre et des horaires annuels distincts des autres manèges ; fiche standalone pertinente."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9a31ef73-1334-46aa-9686-52e143739ae1/centennial-wheel",
+          "publishedAtUtc": "2026-11-01T12:40:47.058Z",
+          "verifiedAtUtc": "2026-11-01T12:42:19.792Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2280c2a1-1161-45b0-b04b-f238e37b59b9"
+        },
+        "facebook": {
+          "id": "bc12150cccc04263a1cd83ed1825c2c3",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T12:41:28.318Z",
+          "externalPostId": "1285475681307050_122125606335424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125606335424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:bc12150cccc04263a1cd83ed1825c2c3"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "46ed9b1f32e44ad293e2c70e429ec65c",
+          "54dcb23cf6464bd18aa900584637367e"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T12:40:08.282Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:b4c3f750-db03-45b5-b84e-c05889c92118",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-centennial-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-centennial-wheel-20261101/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
