@@ -1,0 +1,46 @@
+{
+  "entryId": "FR-candidate-33e1083778e134",
+  "owner": "Conversation France",
+  "reservedAtUtc": "2026-11-01T16:10:05.968334+00:00",
+  "masterChecked": "877e36d3",
+  "snapshot": {
+    "entryId": "FR-candidate-33e1083778e134",
+    "name": "Aquagliss",
+    "entityKind": "Park",
+    "proposedEntityKind": "Park",
+    "category": "Catégorie à qualifier",
+    "locality": "Porticcio",
+    "siteId": null,
+    "legacySiteIds": [],
+    "presence": "NotFound",
+    "presenceObservedAt": "2026-10-22",
+    "editorialStatus": "InProgress",
+    "siteReviewStatusAtInventory": null,
+    "lifecycleAtInventory": null,
+    "sourceLifecycleSignal": "Non vérifié",
+    "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+    "possibleMatches": [],
+    "aliases": [],
+    "assignedTo": "Conversation France",
+    "lastDataIntegrationAt": null,
+    "integrationHistory": [],
+    "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+    "sources": [
+      {
+        "label": "Backlog national existant",
+        "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "accessedAt": "2026-10-22"
+      }
+    ]
+  },
+  "stage": "identity-qualification",
+  "candidateAliases": [
+    "Aquagliss",
+    "Acqua Gliss",
+    "Acqua Cyrne Gliss"
+  ],
+  "siteId": null,
+  "lastDataIntegrationAt": null,
+  "reservationOnly": true,
+  "knownDisambiguation": "Porticcio/Grosseto-Prugna in Corse-du-Sud, not the active Aquagliss municipal pool in Freyming-Merlebach. Department and closure to verify independently of old lists."
+}
