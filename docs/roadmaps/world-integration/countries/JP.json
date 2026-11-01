@@ -17330,6 +17330,186 @@
         "publicationBlockers": [],
         "gapCount": 1
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-d0b93173cbf01d",
+      "name": "Sky-Boat",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "Sunshine Sakae, Nishiki 3-chōme 24-4, Naka-ku, Nagoya, Japon",
+      "siteId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:45:22.008Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Roue à billet propre au troisième étage de Sunshine Sakae ; tarif et horaire actifs sur la page officielle au 1er novembre 2026.",
+      "identityConfidence": "Découverte hors inventaire confirmée par Sunshine Sakae ; cinq recherches officielles Park/Standalone sous Sky-Boat, スカイボート et Sunshine Sakae sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "SUNSHINE SAKAE Sky-Boat",
+        "サンシャインサカエ スカイボート",
+        "Sunshine Sakae Ferris Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T14:41:22.186Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3bdc81e7-e1d0-45a6-909c-747e6400faa2",
+          "appliedAt": "2026-11-01T14:38:22.892Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:apply:3bdc81e7-e1d0-45a6-909c-747e6400faa2",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après découverte hors inventaire, localisation et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-e4b77f25-1f0d-49db-b069-b2893de8b2a4",
+          "appliedAt": "2026-11-01T14:39:44.161Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:apply:e4b77f25-1f0d-49db-b069-b2893de8b2a4",
+          "auditEvidence": null,
+          "summary": "Trois offres tarifaires officielles en JPY, dont gratuité et réduction handicap, intégrées"
+        },
+        {
+          "eventId": "apply-9a15039c-1df8-4415-937f-d8a4a8887d02",
+          "appliedAt": "2026-11-01T14:40:15.459Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:apply:9a15039c-1df8-4415-937f-d8a4a8887d02",
+          "auditEvidence": null,
+          "summary": "Horaire quotidien et dernier embarquement officiels intégrés, fermetures irrégulières signalées"
+        },
+        {
+          "eventId": "image-1991bacb233f45ebb2de4f5cba71e60e",
+          "appliedAt": "2026-11-01T14:40:43.500Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:image:1991bacb233f45ebb2de4f5cba71e60e",
+          "auditEvidence": null,
+          "summary": "Photo 1 de Sky-Boat importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-374916e9bcc24071a6b6d3148b4c3b5c",
+          "appliedAt": "2026-11-01T14:41:02.892Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:image:374916e9bcc24071a6b6d3148b4c3b5c",
+          "auditEvidence": null,
+          "summary": "Photo 2 de Sky-Boat importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-95ba792c354c4e9ebb20ed521b607726",
+          "appliedAt": "2026-11-01T14:41:22.186Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:image:95ba792c354c4e9ebb20ed521b607726",
+          "auditEvidence": null,
+          "summary": "Photo 3 de Sky-Boat importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-95ba792c354c4e9ebb20ed521b607726",
+          "appliedAt": "2026-11-01T14:41:22.186Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:image:95ba792c354c4e9ebb20ed521b607726",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sky-boat-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos propres ; publication du site et de Facebook ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revérifier les fermetures irrégulières et le tarif de l’exploitant ; rechercher à terme des photos plus récentes de la roue. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Sunshine Sakae — Sky-Boat, tarif, horaires et caractéristiques officiels",
+          "url": "https://www.sunshine-sakae.jp/floor/3f/01.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Sunshine Sakae — accès et adresse",
+          "url": "https://www.sunshine-sakae.jp/access/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — Sunshine Sakae",
+          "url": "https://www.openstreetmap.org/search?query=Sunshine%20Sakae%20Nagoya",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Sky-Boat, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_of_Sunshine_Sakae_at_night_20150124.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Sky-Boat, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Sunshine_Sakae_in_Nagoya.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Sky-Boat, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:SUNSHINE_SAKAE_Sky-Boat_-_panoramio_(2).jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Sky-Boat",
+            "source": "Sunshine Sakae — site officiel",
+            "url": "https://www.sunshine-sakae.jp/floor/3f/01.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Sunshine Sakae",
+            "sourceLifecycleSignal": "Billetterie et horaires propres au 1er novembre 2026",
+            "sourceLocality": "Naka-ku, Nagoya",
+            "matchingMethod": "Billet et horaire autonomes ; cinq recherches officielles Park/Standalone sans fiche"
+          }
+        ],
+        "rationale": "Sky-Boat possède son propre tarif et point d’embarquement au troisième étage d’un centre commercial, sans rattachement à un parc d’attractions."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/16c6f079-ecd3-4a18-bc2b-4e7a2c337886/sky-boat",
+          "publishedAtUtc": "2026-11-01T14:43:32.075Z",
+          "verifiedAtUtc": "2026-11-01T14:45:22.008Z",
+          "evidence": "PARK_DATA_EDITOR:apply:aa62352e-aba3-4115-aa68-b56c76c7dca9"
+        },
+        "facebook": {
+          "id": "dd57223935e74e858712a8aa62a4fe69",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T14:44:23.823Z",
+          "externalPostId": "1285475681307050_122125618557424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125618557424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:dd57223935e74e858712a8aa62a4fe69"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "1991bacb233f45ebb2de4f5cba71e60e",
+          "374916e9bcc24071a6b6d3148b4c3b5c",
+          "95ba792c354c4e9ebb20ed521b607726"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T14:42:06.828Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:d45531fa-3c08-44d0-83e7-9cde820712e5",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-sky-boat-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sky-boat-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }
