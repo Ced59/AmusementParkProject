@@ -1626,30 +1626,165 @@
       "name": "Aquagif",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "Parc aquatique",
       "locality": "Gif-sur-Yvette",
-      "siteId": null,
+      "siteId": "ce026109-5388-4bbd-8e11-c0266adcb514",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-01T16:02:43.6533819Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Confirmée : archives municipales, musée, registres Aqualand et SEMPA, presse historique et huit recherches officielles globales sans doublon.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Aqualand Gif-sur-Yvette",
+        "Aquagif-Cap Forme"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-01T16:06:29.248Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b333cf35-e92c-4114-ad03-7ed651b97343",
+          "appliedAt": "2026-11-01T15:40:27.277Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#apply-b333cf35-e92c-4114-ad03-7ed651b97343",
+          "auditEvidence": null,
+          "summary": "Création privée du parc aquatique historique Aquagif et de son dernier exploitant SEMPA ; identité, adresse et dates qualifiées."
+        },
+        {
+          "eventId": "apply-1d618559-d737-4e3c-b42e-0d014f374184",
+          "appliedAt": "2026-11-01T15:43:02.016Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#apply-1d618559-d737-4e3c-b42e-0d014f374184",
+          "auditEvidence": null,
+          "summary": "Inventaire historique Aquagif : quatre ensembles aquatiques et sept services attestés ; regroupements et lacunes de noms individuels conservés."
+        },
+        {
+          "eventId": "apply-f0f58e04-ff0f-4a08-b492-126a04c2c631",
+          "appliedAt": "2026-11-01T15:46:21.368Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#apply-f0f58e04-ff0f-4a08-b492-126a04c2c631",
+          "auditEvidence": null,
+          "summary": "Description éditoriale du parc Aquagif en huit langues ; cadre des Prés-Mouchards, espaces aquatiques, Cap Forme et mémoire du lieu."
+        },
+        {
+          "eventId": "apply-95da484f-2fa2-4894-a553-6859e5cd9380",
+          "appliedAt": "2026-11-01T15:49:57.233Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#apply-95da484f-2fa2-4894-a553-6859e5cd9380",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues du Pentagliss, des toboggans intérieurs et des bassins extérieurs ; scènes historiques documentées."
+        },
+        {
+          "eventId": "import-photo-dcb95d3080b54cbdb65aa9c65f8d9f8b-2026-11-01T155204.025Z",
+          "appliedAt": "2026-11-01T15:52:04.025Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#import-photo-dcb95d3080b54cbdb65aa9c65f8d9f8b-2026-11-01T155204.025Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-aerial-1988, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5b97db68ac8c4dcd919762ec75b3d2fe-2026-11-01T155232.368Z",
+          "appliedAt": "2026-11-01T15:52:32.368Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#import-photo-5b97db68ac8c4dcd919762ec75b3d2fe-2026-11-01T155232.368Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pentagliss, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5b0c2609bb604cc78bd99e89bfccbe6a-2026-11-01T155253.765Z",
+          "appliedAt": "2026-11-01T15:52:53.765Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#import-photo-5b0c2609bb604cc78bd99e89bfccbe6a-2026-11-01T155253.765Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-indoor-slides, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a5e5e307a78d46049cc237a3bd22b112-2026-11-01T155341.928Z",
+          "appliedAt": "2026-11-01T15:53:41.928Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#import-photo-a5e5e307a78d46049cc237a3bd22b112-2026-11-01T155341.928Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-outdoor-pool, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ee15fd9476d94d7da0e12e60e7bbee41-2026-11-01T155402.304Z",
+          "appliedAt": "2026-11-01T15:54:02.304Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#import-photo-ee15fd9476d94d7da0e12e60e7bbee41-2026-11-01T155402.304Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-rave-1993, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9761264195e047d68c206dc8dda2acfc-2026-11-01T155443.329Z",
+          "appliedAt": "2026-11-01T15:54:43.329Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#import-photo-9761264195e047d68c206dc8dda2acfc-2026-11-01T155443.329Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-rave-slides, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-9010b3c7-97b0-467e-a11a-c91689db8b97",
+          "appliedAt": "2026-11-01T16:00:26.005Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#apply-9010b3c7-97b0-467e-a11a-c91689db8b97",
+          "auditEvidence": null,
+          "summary": "Cinq faits historiques privés et sourcés : ouverture 1988, Absolute Humidity 1993, financement et fermeture 2002, début de démolition 2003."
+        },
+        {
+          "eventId": "apply-b39b4f23-98b2-4449-8d1e-3873a6391842",
+          "appliedAt": "2026-11-01T16:02:26.478Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#apply-b39b4f23-98b2-4449-8d1e-3873a6391842",
+          "auditEvidence": null,
+          "summary": "Article historique Aquagif en huit langues : projet municipal, Absolute Humidity, crise financière et devenir du site ; quatre sections et sept paragraphes."
+        },
+        {
+          "eventId": "update-photo-a5e5e307a78d46049cc237a3bd22b112-2026-11-01T160629.248Z",
+          "appliedAt": "2026-11-01T16:06:29.248Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-receipts.json#update-photo-a5e5e307a78d46049cc237a3bd22b112-2026-11-01T160629.248Z",
+          "auditEvidence": null,
+          "summary": "Relecture finale : légendes du bassin extérieur réécrites en huit langues autour de la composition photographiée ; crédits, propriétaire et visibilité conservés."
+        }
+      ],
+      "nextAction": "Recover a separate authentic historical logo; complete eight entity-specific descriptions and resolve slide/pool identities from original material. Continue photo, map and geolocation research without invented names, cropped logos or generic descriptions. Then refresh the audit before any site/Facebook publication.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "progressAuditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagif-progress-audit.json"
     },
     {
       "entryId": "FR-candidate-33e1083778e134",

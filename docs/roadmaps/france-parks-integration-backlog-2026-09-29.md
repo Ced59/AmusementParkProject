@@ -190,7 +190,7 @@ Aucune fiche ne reste dans cette catégorie.
 ## 5. Parcs historiques absents de la photographie FR
 
 - [ ] American Park — Marseille — 1910-1914 — `4ad5492e-7a08-4a3a-a397-8937b11a04c9` ; 12 éléments, 8 médias, 5 faits historiques et article en huit langues intégrés. Audit intermédiaire **86/100** : logo historique et six descriptions manquent encore. Fiche privée, aucune publication Facebook. [Audit et lacunes](world-integration/evidence/france-historical-20261022/american-park-marseille-progress-audit.json).
-- [ ] Aquagif — Gif-sur-Yvette — 1988-2002
+- [ ] Aquagif — Gif-sur-Yvette — 1988-2002 — `ce026109-5388-4bbd-8e11-c0266adcb514` ; onze éléments, six médias, cinq faits historiques et article en huit langues intégrés. Audit intermédiaire **78/100** : logo historique et huit descriptions manquent ; identités individuelles des toboggans et bassins à préciser. Fiche privée, aucune publication Facebook. [Audit et lacunes](world-integration/evidence/france-historical-20261022/aquagif-progress-audit.json).
 - [ ] Aquagliss — Porticcio — 1986-2014
 - [ ] Aqwaland Martinique — Le Carbet — 2004-2013
 - [ ] Canyon Park — Épretot — 1976-2004

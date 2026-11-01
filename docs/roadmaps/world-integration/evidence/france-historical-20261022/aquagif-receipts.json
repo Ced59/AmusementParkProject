@@ -1,0 +1,263 @@
+{
+  "entryId": "FR-candidate-d543949e4286d9",
+  "parkId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+  "name": "Aquagif",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-b333cf35-e92c-4114-ad03-7ed651b97343",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T15:40:27.2779626Z",
+      "appliedAt": "2026-11-01T15:40:27.277Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "36564c633e81951401d7c3b674cd765b16fc27e2e331002328d0807970bf6143",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDate",
+        "closingDateText",
+        "contactDetails",
+        "foundedYear",
+        "legalName",
+        "openingDate",
+        "openingDateText",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création privée du parc aquatique historique Aquagif et de son dernier exploitant SEMPA ; identité, adresse et dates qualifiées."
+    },
+    {
+      "eventId": "apply-1d618559-d737-4e3c-b42e-0d014f374184",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T15:43:02.0166008Z",
+      "appliedAt": "2026-11-01T15:43:02.016Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "7093cf145ed9bdff64eb7cb10cda23cfb690524066f5d09545b533913d8bb6ea",
+      "counts": {
+        "created": 11,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Inventaire historique Aquagif : quatre ensembles aquatiques et sept services attestés ; regroupements et lacunes de noms individuels conservés."
+    },
+    {
+      "eventId": "apply-f0f58e04-ff0f-4a08-b492-126a04c2c631",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T15:46:21.3682768Z",
+      "appliedAt": "2026-11-01T15:46:21.368Z",
+      "receiptFile": "04-park-description-apply.receipt.json",
+      "receiptSha256": "ca501aa17519fa80ef2d477160bdb384c4df0a84467d06d538dccf8f8bb22188",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description éditoriale du parc Aquagif en huit langues ; cadre des Prés-Mouchards, espaces aquatiques, Cap Forme et mémoire du lieu."
+    },
+    {
+      "eventId": "apply-95da484f-2fa2-4894-a553-6859e5cd9380",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T15:49:57.233226Z",
+      "appliedAt": "2026-11-01T15:49:57.233Z",
+      "receiptFile": "04-items-aquatic-apply.receipt.json",
+      "receiptSha256": "4eb0fdc38ec66f06706d4f840658f0b68b08a994f053fcf024929444f9b046a0",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions en huit langues du Pentagliss, des toboggans intérieurs et des bassins extérieurs ; scènes historiques documentées."
+    },
+    {
+      "eventId": "import-photo-dcb95d3080b54cbdb65aa9c65f8d9f8b-2026-11-01T155204.025Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T15:52:04.025Z",
+      "appliedAt": "2026-11-01T15:52:04.025Z",
+      "receiptFile": "05-aerial-1988-import-receipt.json",
+      "receiptSha256": "3661f0843c12503ccdc1973de723bdc253411b9f29d1407533a03f0af534d13c",
+      "imageId": "dcb95d3080b54cbdb65aa9c65f8d9f8b",
+      "ownerId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+      "createdAt": "2026-11-01T15:51:59.977Z",
+      "sourceUrl": "https://www.ville-gif.fr/fileadmin/_processed_/9/d/csm_quartier-Chevry05_1600_a95afc4623.jpg",
+      "summary": "Import privé du média historique 05-aerial-1988, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5b97db68ac8c4dcd919762ec75b3d2fe-2026-11-01T155232.368Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T15:52:32.368Z",
+      "appliedAt": "2026-11-01T15:52:32.368Z",
+      "receiptFile": "05-pentagliss-import-receipt.json",
+      "receiptSha256": "91188ace7bfb31c4de2c02495441bbe6c5b163c7d7d138d12ec338e75a289706",
+      "imageId": "5b97db68ac8c4dcd919762ec75b3d2fe",
+      "ownerId": "1e5b33cf-446a-4112-9848-446c528828d5",
+      "createdAt": "2026-11-01T15:52:28.606Z",
+      "sourceUrl": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf",
+      "summary": "Import privé du média historique 05-pentagliss, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5b0c2609bb604cc78bd99e89bfccbe6a-2026-11-01T155253.765Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T15:52:53.765Z",
+      "appliedAt": "2026-11-01T15:52:53.765Z",
+      "receiptFile": "05-indoor-slides-import-receipt.json",
+      "receiptSha256": "d59d74b969f84e64a9a1927c3e1a5959b5f22bd5fea95942530a997535c7135f",
+      "imageId": "5b0c2609bb604cc78bd99e89bfccbe6a",
+      "ownerId": "012f15b9-6059-464a-a0d1-d4f76af92289",
+      "createdAt": "2026-11-01T15:52:50.337Z",
+      "sourceUrl": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf",
+      "summary": "Import privé du média historique 05-indoor-slides, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-a5e5e307a78d46049cc237a3bd22b112-2026-11-01T155341.928Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T15:53:41.928Z",
+      "appliedAt": "2026-11-01T15:53:41.928Z",
+      "receiptFile": "05-outdoor-pool-import-receipt.json",
+      "receiptSha256": "f72b4998e556fef3f2d32dde537e11b681d19229e3090b425ba559134e1a1e72",
+      "imageId": "a5e5e307a78d46049cc237a3bd22b112",
+      "ownerId": "a75c7e97-96e6-47e0-b688-0de078052df6",
+      "createdAt": "2026-11-01T15:53:37.491Z",
+      "sourceUrl": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf",
+      "summary": "Import privé du média historique 05-outdoor-pool, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-ee15fd9476d94d7da0e12e60e7bbee41-2026-11-01T155402.304Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T15:54:02.304Z",
+      "appliedAt": "2026-11-01T15:54:02.304Z",
+      "receiptFile": "05-rave-1993-import-receipt.json",
+      "receiptSha256": "e20fe3de0bd560bbe2626da958dbfd60a86f4d4edb6243fbe2e11934ed9b562e",
+      "imageId": "ee15fd9476d94d7da0e12e60e7bbee41",
+      "ownerId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+      "createdAt": "2026-11-01T15:53:57.571Z",
+      "sourceUrl": "https://f4.bcbits.com/img/0035829913_10.jpg",
+      "summary": "Import privé du média historique 05-rave-1993, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-9761264195e047d68c206dc8dda2acfc-2026-11-01T155443.329Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T15:54:43.329Z",
+      "appliedAt": "2026-11-01T15:54:43.329Z",
+      "receiptFile": "05-rave-slides-import-receipt.json",
+      "receiptSha256": "b9b15a73a87b6f3d488014abc54ecaccf1cccd232f849d1cd17bdbff413387fe",
+      "imageId": "9761264195e047d68c206dc8dda2acfc",
+      "ownerId": "012f15b9-6059-464a-a0d1-d4f76af92289",
+      "createdAt": "2026-11-01T15:54:39.915Z",
+      "sourceUrl": "https://olivierdegorce.weebly.com/uploads/2/3/3/4/23346132/img-4991.jpg",
+      "summary": "Import privé du média historique 05-rave-slides, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-9010b3c7-97b0-467e-a11a-c91689db8b97",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:00:26.0053909Z",
+      "appliedAt": "2026-11-01T16:00:26.005Z",
+      "receiptFile": "08-timeline-apply.receipt.json",
+      "receiptSha256": "ed1795eb900aa8b702bab8deb2b295f007c10a1a77b0700f8da07472f538674e",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Cinq faits historiques privés et sourcés : ouverture 1988, Absolute Humidity 1993, financement et fermeture 2002, début de démolition 2003."
+    },
+    {
+      "eventId": "apply-b39b4f23-98b2-4449-8d1e-3873a6391842",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:02:26.4783891Z",
+      "appliedAt": "2026-11-01T16:02:26.478Z",
+      "receiptFile": "08-article-apply.receipt.json",
+      "receiptSha256": "94e2dd1c64381905614727dffb0ea644f5b3bdddb3b921f108b624b7df85e95b",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article historique Aquagif en huit langues : projet municipal, Absolute Humidity, crise financière et devenir du site ; quatre sections et sept paragraphes."
+    },
+    {
+      "eventId": "update-photo-a5e5e307a78d46049cc237a3bd22b112-2026-11-01T160629.248Z",
+      "action": "UpdatePhotoMetadata",
+      "rawAppliedAtUtc": "2026-11-01T16:06:29.248Z",
+      "appliedAt": "2026-11-01T16:06:29.248Z",
+      "receiptFile": "09-outdoor-caption-metadata-update-receipt.json",
+      "receiptSha256": "ee375f9ca594ef474df9f51881d2c6f9978c2ecb98782147e1ec9387705be2ac",
+      "imageId": "a5e5e307a78d46049cc237a3bd22b112",
+      "ownerId": "a75c7e97-96e6-47e0-b688-0de078052df6",
+      "createdAt": "2026-11-01T15:53:37.491Z",
+      "sourceUrl": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf",
+      "summary": "Relecture finale : légendes du bassin extérieur réécrites en huit langues autour de la composition photographiée ; crédits, propriétaire et visibilité conservés."
+    }
+  ],
+  "publicationOrNoop": []
+}
