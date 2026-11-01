@@ -1,0 +1,100 @@
+{
+  "name": "MOSAIC Big Ferris Wheel",
+  "entryId": "JP-candidate-discovery-87570422e6c85b",
+  "standaloneAttractionId": "f6742708-a40b-4b45-b726-f43daff2259d",
+  "qualification": "Découverte hors backlog initial : roue à billet propre dans Kobe Harborland umie, confirmée par la page officielle et sans fiche Park/Standalone homonyme.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 1,
+    "weeklyRules": 1,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les coordonnées correspondent au complexe MOSAIC ; relever le centre exact de la roue lors d’une prochaine mise à jour."
+  ],
+  "sources": [
+    {
+      "label": "Kobe Harborland umie — roue MOSAIC, tarif et trajet",
+      "url": "https://umie.jp/features/mosaickanransya"
+    },
+    {
+      "label": "Kobe Harborland umie — horaires de la roue distincts du centre",
+      "url": "https://umie.jp/static-pages/opening-hours"
+    },
+    {
+      "label": "Feel KOBE — passe touristique 2026 et roue MOSAIC",
+      "url": "https://www.feel-kobe.jp/en/smartpass/facility/"
+    },
+    {
+      "label": "Hyogo Tourism — adresse 1-6-1 Higashikawasakicho",
+      "url": "https://www.hyogo-tourism.jp/world/review/detail_234.html"
+    },
+    {
+      "label": "OpenStreetMap / Nominatim — complexe MOSAIC, coordonnées approchées",
+      "url": "https://www.openstreetmap.org/search?query=Kobe%20Harborland%20Mosaic"
+    },
+    {
+      "label": "Wikimedia Commons — MOSAIC Big Ferris Wheel, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Kobe_20210903185824_(51816719229).jpg"
+    },
+    {
+      "label": "Wikimedia Commons — MOSAIC Big Ferris Wheel, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Kobe%27s_Harborland,_Hyogo,_Japan_--_Night_View_of_Mosaic_Ferris_Wheel.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "a72b6db649494194a768508c9a53aa99",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kobe_20210903185824_(51816719229).jpg",
+      "author": "inunami",
+      "date": "2021-09-03",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "subject": "La grande roue et la tour de Kobe vues depuis Harborland",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "61da97cee6384787adf2d0a3464d0301",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kobe%27s_Harborland,_Hyogo,_Japan_--_Night_View_of_Mosaic_Ferris_Wheel.jpg",
+      "author": "Brett Fagan",
+      "date": "2017-05-21",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "subject": "Panorama nocturne du port de Kobe avec la roue MOSAIC",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "19ea19226b2544f65436eac4c7ece81c0533cb0f80ea6ee4699dd30988d465e1",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T11:43:00.676Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T11:39:25.449Z",
+    "photosPublishedAtUtc": "2026-11-01T11:40:19.318Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:6a51de83-0442-46a8-9cc0-52cd3b83c6dd"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/f6742708-a40b-4b45-b726-f43daff2259d/mosaic-big-ferris-wheel",
+      "publishedAtUtc": "2026-11-01T11:40:54.107Z",
+      "applyOperationId": "2e7a0802-9610-4f4b-8d1b-379670d51d6a"
+    },
+    "facebook": {
+      "id": "953eaff095974b31afaa0db00c16bd99",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T11:41:40.413Z",
+      "externalPostId": "1285475681307050_122125598733424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125598733424431"
+    }
+  }
+}
