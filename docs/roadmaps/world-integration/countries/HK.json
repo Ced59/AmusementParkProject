@@ -113,37 +113,196 @@
     {
       "entryId": "HK-candidate-558e4714d0a8c2",
       "name": "Hong Kong Observation Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Central, Hong Kong",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "33 Man Kwong Street, Central, Hong Kong",
+      "siteId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T10:45:37.070Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active sur le front de mer de Central ; horaires hebdomadaires et prix HKD affichés par l’exploitant au 1er novembre 2026.",
+      "identityConfidence": "Roue à billetterie propre distincte des activités voisines de l’AIA Vitality Park ; recherches officielles Park / Standalone « Hong Kong Observation Wheel » et Park « AIA Vitality » sans fiche ; trois photos exactes vérifiées.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "The Hong Kong Observation Wheel",
+        "香港摩天輪",
+        "AIA Vitality Observation Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T10:41:10.626Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a76f7df0-fc08-45d6-96c1-1091108ddcd3",
+          "appliedAt": "2026-11-01T10:36:36.371Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+          "evidence": "PARK_DATA_EDITOR:apply:a76f7df0-fc08-45d6-96c1-1091108ddcd3",
+          "auditEvidence": null,
+          "summary": "Fiche privée, descriptions en huit langues, billetterie propre et adresse de la roue"
+        },
+        {
+          "eventId": "image-86924294bbba4abeb53a7fae48eba4e7",
+          "appliedAt": "2026-11-01T10:37:13.244Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+          "evidence": "PARK_DATA_EDITOR:image:86924294bbba4abeb53a7fae48eba4e7",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-25c282e624734f5c8c17adc11750fb1e",
+          "appliedAt": "2026-11-01T10:37:28.244Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+          "evidence": "PARK_DATA_EDITOR:image:25c282e624734f5c8c17adc11750fb1e",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-fb7f80fd4d084e75966c27af115d8def",
+          "appliedAt": "2026-11-01T10:37:42.991Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+          "evidence": "PARK_DATA_EDITOR:image:fb7f80fd4d084e75966c27af115d8def",
+          "auditEvidence": null,
+          "summary": "Photo #3 de la roue importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-97db54e1-c5d5-407e-9e76-3fd4db637c73",
+          "appliedAt": "2026-11-01T10:38:34.707Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+          "evidence": "PARK_DATA_EDITOR:apply:97db54e1-c5d5-407e-9e76-3fd4db637c73",
+          "auditEvidence": null,
+          "summary": "Trois offres officielles intégrées en HKD ; critères du tarif réduit laissés à vérifier"
+        },
+        {
+          "eventId": "apply-cf71c7d2-1178-4ae9-8d3b-09de9ef450cb",
+          "appliedAt": "2026-11-01T10:39:29.563Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+          "evidence": "PARK_DATA_EDITOR:apply:cf71c7d2-1178-4ae9-8d3b-09de9ef450cb",
+          "auditEvidence": null,
+          "summary": "Deux règles hebdomadaires intégrées, avec exception des jours fériés documentée"
+        },
+        {
+          "eventId": "apply-0a15d492-6e10-4717-9c98-b065a25e6240",
+          "appliedAt": "2026-11-01T10:41:10.626Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+          "evidence": "PARK_DATA_EDITOR:apply:0a15d492-6e10-4717-9c98-b065a25e6240",
+          "auditEvidence": null,
+          "summary": "Légende nocturne différenciée en huit langues après audit du corpus public"
+        },
+        {
+          "eventId": "closure-0a15d492-6e10-4717-9c98-b065a25e6240",
+          "appliedAt": "2026-11-01T10:41:10.626Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+          "evidence": "PARK_DATA_EDITOR:apply:0a15d492-6e10-4717-9c98-b065a25e6240",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hk-observation-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos propres importées ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier les critères du tarif réduit, les exceptions de jours fériés et toute évolution des horaires ou tarifs. Requalifier séparément l’AIA Vitality Park si une fiche Park devient pertinente. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Hong Kong Observation Wheel — exploitant, tarifs, horaires et adresse",
+          "url": "https://www.hkow.hk/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Hong Kong Tourism Board — roue et AIA Vitality Park",
+          "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-the-hong-kong-observation-wheel.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — contour du lieu et centre de la roue",
+          "url": "https://www.openstreetmap.org/way/323202866",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — roue de Hong Kong, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:International_Finance_Centre,_Hong_Kong_and_Hong_Kong_Observation_Wheel_25-09-2024.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — roue de Hong Kong, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Observation_Wheel_Night_View.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — roue de Hong Kong, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Observation_Wheel_by_AIA_Vitality.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Hong Kong Observation Wheel",
+            "source": "Hong Kong Observation Wheel — exploitant",
+            "url": "https://www.hkow.hk/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Hong Kong Observation Wheel",
+            "sourceLifecycleSignal": "Horaires hebdomadaires actuels publiés par l’exploitant",
+            "sourceLocality": "Central, Hong Kong",
+            "matchingMethod": "Billetterie propre, adresse officielle et photos exactes ; recherche officielle Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue possède son tarif et son entrée propres ; l’AIA Vitality Park et le Hub voisins constituent des activités distinctes à qualifier séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b5b5127d-b1bc-49c5-a8cc-b2d73389934d/hong-kong-observation-wheel",
+          "publishedAtUtc": "2026-11-01T10:43:16.444Z",
+          "verifiedAtUtc": "2026-11-01T10:45:37.070Z",
+          "evidence": "PARK_DATA_EDITOR:apply:1ea086c9-c0ef-4b6b-9614-f14408f81136"
+        },
+        "facebook": {
+          "id": "d5e98f4969b44110b15c69fb292bc787",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T10:44:29.447Z",
+          "externalPostId": "1285475681307050_122125589217424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125589217424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:d5e98f4969b44110b15c69fb292bc787"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "86924294bbba4abeb53a7fae48eba4e7",
+          "25c282e624734f5c8c17adc11750fb1e",
+          "fb7f80fd4d084e75966c27af115d8def"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T10:41:59.466Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:5d76684e-f9a5-4514-bf24-01779dfb5706",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-hk-observation-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-hk-observation-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
