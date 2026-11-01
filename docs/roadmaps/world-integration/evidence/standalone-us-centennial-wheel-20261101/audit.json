@@ -1,0 +1,98 @@
+{
+  "name": "Centennial Wheel",
+  "entryId": "US-candidate-9bbeeac20c9b5e",
+  "standaloneAttractionId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+  "qualification": "Roue de Pier Park à billet propre, distincte des autres attractions de Navy Pier.",
+  "decision": "Published",
+  "score": 78,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 0,
+    "weeklyRules": 0,
+    "datedRegularRules": 2,
+    "holidayOverrides": 4,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Navy Pier ne publie pas de tarif fixe sur ses pages officielles : vérifier à la billetterie ou au calendrier avant de saisir un montant."
+  ],
+  "sources": [
+    {
+      "label": "Navy Pier — Centennial Wheel, nacelles, vente et fonctionnement",
+      "url": "https://navypier.org/pier-locations/centennial-wheel/"
+    },
+    {
+      "label": "Navy Pier — horaires 2026 et jours fériés",
+      "url": "https://navypier.org/plan-your-visit/hours-and-admission/"
+    },
+    {
+      "label": "Navy Pier — Pier Park Rides, autres attractions séparées",
+      "url": "https://navypier.org/pier-park-rides/"
+    },
+    {
+      "label": "OpenStreetMap — emprise de la Centennial Wheel",
+      "url": "https://www.openstreetmap.org/way/686996484"
+    },
+    {
+      "label": "Wikimedia Commons — Centennial Wheel, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Chicago_in_2022_Centennial_Wheel_(52059724068).jpg"
+    },
+    {
+      "label": "Wikimedia Commons — Centennial Wheel, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Centennial_Wheel_en_Navy_Pier_en_Chicago.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "46ed9b1f32e44ad293e2c70e429ec65c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chicago_in_2022_Centennial_Wheel_(52059724068).jpg",
+      "author": "Chris Rycroft from Madison, Wisconsin, United States",
+      "date": "2022-03-22 12:58",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "subject": "La grande roue photographiée depuis Pier Park",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "54dcb23cf6464bd18aa900584637367e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Centennial_Wheel_en_Navy_Pier_en_Chicago.jpg",
+      "author": "Javierleiva",
+      "date": "2018-06-27 19:10:24",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "subject": "Les nacelles bleues au-dessus de la promenade",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "a8849f07a885e7355d292fcd78d138c7ea51777dcfc2a469754a48cbf1f4d910",
+    "projectedScore": 78,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T12:42:19.792Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T12:38:51.786Z",
+    "photosPublishedAtUtc": "2026-11-01T12:40:08.282Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:b4c3f750-db03-45b5-b84e-c05889c92118"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/9a31ef73-1334-46aa-9686-52e143739ae1/centennial-wheel",
+      "publishedAtUtc": "2026-11-01T12:40:47.058Z",
+      "applyOperationId": "2280c2a1-1161-45b0-b04b-f238e37b59b9"
+    },
+    "facebook": {
+      "id": "bc12150cccc04263a1cd83ed1825c2c3",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T12:41:28.318Z",
+      "externalPostId": "1285475681307050_122125606335424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125606335424431"
+    }
+  }
+}
