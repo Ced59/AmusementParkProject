@@ -66,18 +66,6 @@
         "warnings": 0,
         "errors": 0
       }
-    },
-    {
-      "operationId": "a87ca893-9e28-46d5-8647-8c8ba855fb04",
-      "appliedAtUtc": "2026-11-01T17:23:35.947Z",
-      "counts": {
-        "created": 0,
-        "updated": 1,
-        "deleted": 0,
-        "unchanged": 0,
-        "warnings": 0,
-        "errors": 0
-      }
     }
   ],
   "photographs": [
@@ -172,9 +160,10 @@
     "facebookStatus": "Published",
     "facebookId": "5db622b58edf4b0a823343f1a7e4cf72",
     "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125632123424431",
-    "facebookPublishedAtUtc": "2026-11-01T17:24:33.744Z"
+    "facebookPublishedAtUtc": "2026-11-01T17:24:33.744Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:a87ca893-9e28-46d5-8647-8c8ba855fb04"
   },
-  "lastDataIntegrationAt": "2026-11-01T17:23:35.947Z",
+  "lastDataIntegrationAt": "2026-11-01T17:22:53.633Z",
   "remainingGaps": [
     "Check exact current fares directly in official ticketing when accessible and replace dynamic placeholders with supported amounts if stable.",
     "Recheck calendar exceptions and weekly operating schedule regularly."

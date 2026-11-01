@@ -6393,7 +6393,7 @@
         "Roda SP"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-01T17:23:35.947Z",
+      "lastDataIntegrationAt": "2026-11-01T17:22:53.633Z",
       "integrationHistory": [
         {
           "eventId": "apply-eda0273f-271a-4696-859c-87e2afa49b4e",
@@ -6488,22 +6488,12 @@
         {
           "eventId": "apply-3ddb05e9-4dd5-4917-80ae-861556709088",
           "appliedAt": "2026-11-01T17:22:53.633Z",
-          "outcome": "partial",
-          "entityKind": "StandaloneAttraction",
-          "entityId": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
-          "evidence": "PARK_DATA_EDITOR:apply:3ddb05e9-4dd5-4917-80ae-861556709088",
-          "auditEvidence": null,
-          "summary": "Événement d’ouverture de décembre 2022 intégré"
-        },
-        {
-          "eventId": "apply-a87ca893-9e28-46d5-8647-8c8ba855fb04",
-          "appliedAt": "2026-11-01T17:23:35.947Z",
           "outcome": "completed",
           "entityKind": "StandaloneAttraction",
           "entityId": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
-          "evidence": "PARK_DATA_EDITOR:apply:a87ca893-9e28-46d5-8647-8c8ba855fb04",
+          "evidence": "PARK_DATA_EDITOR:apply:3ddb05e9-4dd5-4917-80ae-861556709088",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-br-roda-rico-20261101/audit.json",
-          "summary": "Fiche et six photos rendues publiques après audit"
+          "summary": "Événement d’ouverture, horaires, tarifs variables et six photos exactes intégrés ; audit final 97/100 sans blocage"
         }
       ],
       "nextAction": "Conserver la ligne et les reçus. Vérifier régulièrement le calendrier et les prix dynamiques sur la billetterie officielle. Ne pas republier Facebook pour cette intégration.",
