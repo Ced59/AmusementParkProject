@@ -3824,7 +3824,7 @@
         "Luge Wiegand — Laterns"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-01T09:45:52.657Z",
+      "lastDataIntegrationAt": "2026-10-28T23:58:16.188Z",
       "integrationHistory": [
         {
           "eventId": "apply-e7f8ada3-4b3e-4f7a-b3a7-6f31077c7aad",
@@ -3887,14 +3887,14 @@
           "summary": "Trois périodes horaires 2026 bornées intégrées ; jours fériés supplémentaires et météo signalés"
         },
         {
-          "eventId": "apply-bfac2fdc-70dc-47b8-b597-c455f05bf3e9",
-          "appliedAt": "2026-11-01T09:45:52.657Z",
+          "eventId": "closure-16d56efd-6762-4460-aaaf-9d8eabbafb18",
+          "appliedAt": "2026-10-28T23:58:16.188Z",
           "outcome": "completed",
           "entityKind": "StandaloneAttraction",
           "entityId": "e530512a-1a28-4a74-b968-052fac792800",
-          "evidence": "PARK_DATA_EDITOR:apply:bfac2fdc-70dc-47b8-b597-c455f05bf3e9",
+          "evidence": "PARK_DATA_EDITOR:apply:16d56efd-6762-4460-aaaf-9d8eabbafb18",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-laterns-20261101/audit.json",
-          "summary": "Deux photographies propres rendues publiques ; audit final 75/100 sans blocage"
+          "summary": "Audit éditorial final 75/100 sans blocage ; deux photographies propres publiées ensuite, avec preuve distincte."
         }
       ],
       "nextAction": "Conserver cette ligne et ses reçus. Vérifier la date de réouverture et les nouveaux tarifs 2027 avant toute mise à jour des horaires ou du statut saisonnier ; ne pas republier Facebook.",
@@ -3979,6 +3979,15 @@
         "score": 75,
         "publicationBlockers": [],
         "gapCount": 2
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "abe0a404983e4d09987288a965bc8282",
+          "8ac64514610d4f7b9073a64b2f31fdff"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T09:45:52.657Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:bfac2fdc-70dc-47b8-b597-c455f05bf3e9",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-laterns-20261101/audit.json"
       }
     },
     {

@@ -77,7 +77,10 @@
     "publicImageHttpStatuses": [
       200,
       200
-    ]
+    ],
+    "photosPublishedAtUtc": "2026-11-01T09:45:52.657Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:bfac2fdc-70dc-47b8-b597-c455f05bf3e9",
+    "lastDataIntegrationAtUtc": "2026-10-28T23:58:16.188Z"
   },
   "publication": {
     "site": {
