@@ -1,0 +1,41 @@
+{
+  "candidateEntryId": "DE-candidate-standalone-5a542e7438a588",
+  "decision": "InsideParkDuplicate",
+  "checkedAtUtc": "2026-11-01T16:22:00Z",
+  "officialClient": {
+    "actions": [
+      "SearchParks Bocksberg DE",
+      "SearchStandaloneAttractions Bocksberg DE",
+      "ExportPark 815bb3f3-9fb9-4bfd-aac1-472af9e18700"
+    ],
+    "matchingPark": {
+      "id": "815bb3f3-9fb9-4bfd-aac1-472af9e18700",
+      "name": "ErlebnisBocksBerg",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview"
+    },
+    "matchingParkItems": [
+      {
+        "id": "5e38b880-dbe2-4f74-8742-9ab1e40917ee",
+        "name": "BocksBergBob",
+        "type": "RollerCoaster",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview"
+      },
+      {
+        "id": "76bef22f-565b-4eed-aa19-8d05a06d7ceb",
+        "name": "Drachenblitz",
+        "type": "RollerCoaster",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview"
+      }
+    ],
+    "standaloneSearchMatchCount": 0
+  },
+  "operatorSources": [
+    "https://www.erlebnisbocksberg.de/",
+    "https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/"
+  ],
+  "reason": "Le parc ErlebnisBocksBerg existe déjà dans le client officiel avec BocksBergBob et Drachenblitz comme deux parkItems masqués. Les deux pistes doivent recevoir leur intégration éditoriale dans ce parc. La création de standalones ferait des doublons. Le candidat est conservé dans le backlog ; aucune donnée n’a été appliquée et aucune publication Facebook n’a été faite pour ce candidat.",
+  "lastDataIntegrationAt": null
+}

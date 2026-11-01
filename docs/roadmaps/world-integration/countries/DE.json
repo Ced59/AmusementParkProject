@@ -1360,27 +1360,29 @@
       "entryId": "DE-candidate-standalone-5a542e7438a588",
       "name": "Alpine Coaster Wiegand — Hahnenklee \"Bocksbergbob\"",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "BocksBergBob et Drachenblitz sont deux parkItems du parc masqué ErlebnisBocksBerg, vérifiés par export officiel le 2026-11-01.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-park-815bb3f3-9fb9-4bfd-aac1-472af9e18700"
+      ],
       "aliases": [
         "Hahnenklee \"Bocksbergbob\""
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver ce candidat comme doublon de lieu. Compléter les parkItems BocksBergBob et Drachenblitz du parc ErlebnisBocksBerg ; ne créer aucune fiche standalone concurrente ni annonce Facebook de standalone.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -1404,8 +1406,8 @@
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
             "name": "Hahnenklee \"Bocksbergbob\"",
@@ -1424,8 +1426,11 @@
             "referenceId": "location-id-2205"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "L’export officiel du parc ErlebnisBocksBerg contient déjà BocksBergBob et Drachenblitz comme deux parkItems masqués. Leur intégration éditoriale relève du parc."
+      },
+      "duplicateOf": "DE-park-815bb3f3-9fb9-4bfd-aac1-472af9e18700",
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-20261101/bocksbergbob-inside-park.json",
+      "existingParkItemId": "5e38b880-dbe2-4f74-8742-9ab1e40917ee"
     },
     {
       "entryId": "DE-candidate-standalone-b8bc27bf1189a8",
@@ -6970,7 +6975,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Compléter la fiche Park masquée et ses parkItems BocksBergBob (5e38b880-dbe2-4f74-8742-9ab1e40917ee) et Drachenblitz (76bef22f-565b-4eed-aa19-8d05a06d7ceb), avec leurs photos et informations officielles. Ne pas migrer ces attractions vers des fiches standalone en doublon.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7001,8 +7006,8 @@
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
             "name": "BocksBergBob",
@@ -7025,7 +7030,7 @@
             "sourceOpenedYear": "2025"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’export officiel du parc confirme deux parkItems existants et masqués : BocksBergBob et Drachenblitz. Compléter le parc et ses attractions sans créer de standalone en doublon."
       }
     },
     {
