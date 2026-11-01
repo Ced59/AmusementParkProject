@@ -1,0 +1,371 @@
+{
+  "entryId": "FR-candidate-33e1083778e134",
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "name": "Acqua Gliss Porticcio",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-6e4cf8e8-6052-4566-b368-dc3bf0b3cb2e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:24:57.8975457Z",
+      "appliedAt": "2026-11-01T16:24:57.897Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "b12516b990a436711657aa92abfa6cda84c996c991e14b9f99c132e9d9f8c76b",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "contactDetails",
+        "foundedYear",
+        "legalName",
+        "openingDateText",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Acqua Gliss Porticcio : création privée de l’ancien parc 1986–2014 et de son dernier exploitant, identité et emplacement vérifiés."
+    },
+    {
+      "eventId": "apply-463f5d3b-b8df-4f88-b583-49416ee3ef78",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:28:04.9047508Z",
+      "appliedAt": "2026-11-01T16:28:04.904Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "928a34ba7f6f1ccf79c2e08a2cbf6955130c5f02e0375bd8759947968896eb04",
+      "counts": {
+        "created": 13,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "position",
+        "type"
+      ],
+      "summary": "Acqua Gliss : inventaire historique de 13 lieux, dont neuf attractions, et six positions aquatiques établies sur orthophotographie IGN."
+    },
+    {
+      "eventId": "apply-4e888862-5230-4c0f-a7a4-bfcb616b6c7c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:31:45.0860108Z",
+      "appliedAt": "2026-11-01T16:31:45.086Z",
+      "receiptFile": "04-park-description-apply.receipt.json",
+      "receiptSha256": "2ad89b8ed8364403bb01a01b4f451fca6f72c1f047530a22cc1fa305eb4753fd",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Acqua Gliss : description du parc historique rédigée et relue dans les huit langues, sur ses paysages, bassins, jeux et snack-bar."
+    },
+    {
+      "eventId": "apply-64698d87-33ca-49c2-8c01-4c40b651b29a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:33:58.5130517Z",
+      "appliedAt": "2026-11-01T16:33:58.513Z",
+      "receiptFile": "04-aquatic-descriptions-apply.receipt.json",
+      "receiptSha256": "11ebcd448b59037631141400709d63ebb1a1fac53e1e11482e980e68652b2f2e",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.lengthInFeet",
+        "attractionDetails.lengthInMeters",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Acqua Gliss : 48 descriptions des six ensembles aquatiques en huit langues et trois longueurs sourcées, sans dates ni fabricants inventés."
+    },
+    {
+      "eventId": "apply-24d9a401-ba09-4a0d-9982-ea3aa6763cd0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:36:58.3467834Z",
+      "appliedAt": "2026-11-01T16:36:58.346Z",
+      "receiptFile": "04-services-descriptions-apply.receipt.json",
+      "receiptSha256": "9aa880f6ce26674c5e9256ff5e66e132d32e213a9e6ee13bbce8f656d956483c",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Acqua Gliss : descriptions du snack-bar, des casiers gardés et du parking dans les huit langues ; quatre autres lieux restent sans description faute de matière spécifique."
+    },
+    {
+      "eventId": "import-photo-c3252e3246bd4a0c872d196b8da47bd6-2026-11-01T163722.674Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T16:37:22.674Z",
+      "appliedAt": "2026-11-01T16:37:22.674Z",
+      "receiptFile": "05-logo-import-receipt.json",
+      "receiptSha256": "aad5add435c34f29bbd09446e4b974aaf3485ede8bcc6676c52b322ffedbe01e",
+      "imageId": "c3252e3246bd4a0c872d196b8da47bd6",
+      "ownerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "createdAt": "2026-11-01T16:37:19.282Z",
+      "sourceUrl": "https://www.parcs-aquatiques.com/wp-content/uploads/acquagliss-porticcio.jpg",
+      "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-a5c6bdb968fd45e1bce242aa72f592c0-2026-11-01T163742.697Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T16:37:42.697Z",
+      "appliedAt": "2026-11-01T16:37:42.697Z",
+      "receiptFile": "05-aerial-import-receipt.json",
+      "receiptSha256": "b6e5ebae9a4699be1cdf98aa7e194630d2c1818d60cc6fcf914701f772e13a32",
+      "imageId": "a5c6bdb968fd45e1bce242aa72f592c0",
+      "ownerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "createdAt": "2026-11-01T16:37:39.063Z",
+      "sourceUrl": "https://web.archive.org/web/20110203024455id_/http://www.ville-infos.com/photos/20/548/gshjytjghjgyjh.jpg",
+      "summary": "Import privé du média historique 05-aerial, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-ed81a6625e6f46c585ea8bbf471713bd-2026-11-01T163815.935Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T16:38:15.935Z",
+      "appliedAt": "2026-11-01T16:38:15.935Z",
+      "receiptFile": "05-orange-poolside-import-receipt.json",
+      "receiptSha256": "7b7287cec2bda4d1ab868481654a161e56c851a8d7357a2624c35430dcae741f",
+      "imageId": "ed81a6625e6f46c585ea8bbf471713bd",
+      "ownerId": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+      "createdAt": "2026-11-01T16:38:12.478Z",
+      "sourceUrl": "https://www.gralon.net/tourisme/tourisme/tourisme-parc-de-loisirs-aquatiques-et-attractions-a-porticcio-en-corse-22724.jpg",
+      "summary": "Import privé du média historique 05-orange-poolside, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f54ddf5aaa6f496d84f0423675e30b7a-2026-11-01T163848.936Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T16:38:48.936Z",
+      "appliedAt": "2026-11-01T16:38:48.936Z",
+      "receiptFile": "05-ign-site-import-receipt.json",
+      "receiptSha256": "cecfad9b7a1810f8bf1465ae666637d529f4a66057553a3059e026041e58bfa8",
+      "imageId": "f54ddf5aaa6f496d84f0423675e30b7a",
+      "ownerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "createdAt": "2026-11-01T16:38:45.598Z",
+      "sourceUrl": "https://data.geopf.fr/wms-r/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=ORTHOIMAGERY.ORTHOPHOTOS2006-2010&STYLES=&CRS=CRS%3A84&BBOX=8.8134%2C41.9018%2C8.8157%2C41.9033&WIDTH=1100&HEIGHT=900&FORMAT=image%2Fjpeg",
+      "summary": "Import privé du média historique 05-ign-site, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-dab0dfe9879741a68368354d31fe5ade-2026-11-01T163912.170Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T16:39:12.17Z",
+      "appliedAt": "2026-11-01T16:39:12.170Z",
+      "receiptFile": "05-historical-banner-import-receipt.json",
+      "receiptSha256": "39eff3d924fffad583d224ee09692260b0c48a4bd0a172f39e377586b385b6ae",
+      "imageId": "dab0dfe9879741a68368354d31fe5ade",
+      "ownerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "createdAt": "2026-11-01T16:39:08.445Z",
+      "sourceUrl": "https://ekladata.com/iqkOq9-LVkbshhP4_Gbfg9S4FXc.jpg",
+      "summary": "Import privé du média historique 05-historical-banner, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-388d58c3-7d90-4e41-b6a2-27b8b63c1654",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:44:37.0320039Z",
+      "appliedAt": "2026-11-01T16:44:37.032Z",
+      "receiptFile": "08-timeline-apply.receipt.json",
+      "receiptSha256": "1d0dfa1ea80e629db7fc44b330f3d27783c9ffc5238137ae79a4ddf6fb10b73c",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "month",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Acqua Gliss : cinq faits historiques sourcés en huit langues, dont quatre faits de parc et la restitution du terrain de parking."
+    },
+    {
+      "eventId": "apply-d58a01bb-8d2f-4475-b621-a3e1683ee95c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:45:42.6272951Z",
+      "appliedAt": "2026-11-01T16:45:42.627Z",
+      "receiptFile": "08-article-apply.receipt.json",
+      "receiptSha256": "35f03f63ff599050348170cd8b6b740b6869878680547cbe1ac30f929c13aad2",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Acqua Gliss : article historique développé en huit langues, saisons, attentat et assurances, parking, projet immobilier et fermeture de 2014."
+    },
+    {
+      "eventId": "apply-33ff2f7c-911b-4c0b-9c6a-25dc8b622cec",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:53:20.1367984Z",
+      "appliedAt": "2026-11-01T16:53:20.136Z",
+      "receiptFile": "09-article-editorial-correction-apply.receipt.json",
+      "receiptSha256": "1103937a6378a7e783e76c78e302724ffa1b2d9fcc419e89cae3e0796597cc12",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Acqua Gliss : réécriture de trois paragraphes de l’article dans les huit langues pour résoudre le bloqueur transversal de répétitions ; faits et sources conservés."
+    },
+    {
+      "eventId": "apply-86f77423-c6f5-4362-a820-0fd05167da4a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T17:04:47.4840689Z",
+      "appliedAt": "2026-11-01T17:04:47.484Z",
+      "receiptFile": "10-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "6984d62e16c2c5f2eb89da93382b29aed8da888c1f30d6b34e3d14a5d431cd21",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Restauration canonique des cinq faits historiques après publication Acqua Gliss ; article corrigé et toutes les données éditoriales conservés."
+    }
+  ],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-f37c0968-9eaa-4b1e-9d3b-201716fc53e8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:48:56.9304892Z",
+      "appliedAt": "2026-11-01T16:48:56.930Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "9999e1488dc79045286687cc22b0bde62c9f226396bdd58b13fad49c0ad664b8",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Acqua Gliss : publication des cinq médias validés, sans modification factuelle ; parc encore privé."
+    },
+    {
+      "eventId": "apply-84473322-03c2-4595-b801-bef11d1ebbe0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T16:49:59.0807533Z",
+      "appliedAt": "2026-11-01T16:49:59.080Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "7d1ecb08e0dd2a46f906c3b758ae3a731953011c2d7151a8e699fd499e37c8f5",
+      "counts": {
+        "created": 0,
+        "updated": 15,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "article",
+        "isVisible"
+      ],
+      "summary": "Acqua Gliss : publication des neuf lieux décrits, des cinq faits et de l’article, validation de l’exploitant ; quatre lieux incomplets restent privés."
+    },
+    {
+      "eventId": "apply-e2d1db10-5a9c-41de-b5e3-4116b46929ec",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T17:02:34.7253894Z",
+      "appliedAt": "2026-11-01T17:02:34.725Z",
+      "receiptFile": "09-publish-park-apply.receipt.json",
+      "receiptSha256": "422493dc5d07577da2fd7d3afe3f9f74a1e544d347fcd390ac9c1a0f3fb09a2f",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Publication de la fiche Acqua Gliss Porticcio après correction éditoriale et contrôle sans bloqueur ; score 92/100, dossier conservé partial et quatre lieux privés."
+    }
+  ]
+}

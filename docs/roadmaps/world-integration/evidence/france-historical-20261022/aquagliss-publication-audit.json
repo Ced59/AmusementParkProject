@@ -1,0 +1,510 @@
+{
+  "entryId": "FR-candidate-33e1083778e134",
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "name": "Acqua Gliss Porticcio",
+  "checkedAtUtc": "2026-11-01T17:09:04.297361+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "publishedScopeEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false,
+  "publicationAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "backlogClosureEligible": false,
+  "acceptedScoreException": false,
+  "state": "Fiche, neuf lieux décrits, cinq médias, cinq faits historiques et article publiés. Quatre lieux incomplets privés ; score réel 92/100 sans exception acceptée.",
+  "siteUrl": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+  "publishedAtUtc": "2026-11-01T17:02:34.7253894Z",
+  "publicationOperationId": "e2d1db10-5a9c-41de-b5e3-4116b46929ec",
+  "lastDataIntegrationAtUtc": "2026-11-01T17:04:47.484Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-receipts.json#apply-86f77423-c6f5-4362-a820-0fd05167da4a",
+  "dataIntegrationCount": 14,
+  "actualCompleteness": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 95,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "projectedCompletenessBeforeParentPublication": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 97,
+    "earnedPoints": 89,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-01T16:48:10.3467563Z",
+    "items": 13,
+    "zones": 0,
+    "attractions": 9,
+    "attractionStatuses": {
+      "ClosedDefinitively": 9
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 6,
+    "attractionsWithImage": 1,
+    "attractionImageGaps": [
+      {
+        "id": "3419186e-37ba-4f58-9950-862c700a3dad",
+        "name": "Bassins pour enfants"
+      },
+      {
+        "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "name": "Jeu de dames géant"
+      },
+      {
+        "id": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+        "name": "Les trois couloirs bleus"
+      },
+      {
+        "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "name": "Ping-pong"
+      },
+      {
+        "id": "db4b67c7-8bbc-4b92-846d-6acb6575d2b8",
+        "name": "Toboggan bleu"
+      },
+      {
+        "id": "199638eb-e2e3-4e4b-9b3b-c0c84d5f7713",
+        "name": "Toboggan jaune"
+      },
+      {
+        "id": "6bce5108-6f61-4f49-991b-bd510243b0b8",
+        "name": "Toboggan vert"
+      },
+      {
+        "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "name": "Volley"
+      }
+    ],
+    "ownedImages": 5,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "3419186e-37ba-4f58-9950-862c700a3dad",
+        "name": "Bassins pour enfants",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "name": "Boutique",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "78d6eea0-82d2-40ef-ba95-337ef4d8f0b0",
+        "name": "Casiers gardés",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "name": "Jeu de dames géant",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+        "name": "Les trois couloirs bleus",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "7b9f8caf-bc31-4141-b690-8b0696162e1b",
+        "name": "Parking",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "name": "Ping-pong",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "cb357854-20d4-44db-8890-214338653ab1",
+        "name": "Snack-bar",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "db4b67c7-8bbc-4b92-846d-6acb6575d2b8",
+        "name": "Toboggan bleu",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "199638eb-e2e3-4e4b-9b3b-c0c84d5f7713",
+        "name": "Toboggan jaune",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "6bce5108-6f61-4f49-991b-bd510243b0b8",
+        "name": "Toboggan vert",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+        "name": "Toboggans oranges",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "name": "Volley",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 6,
+    "geolocationGaps": [
+      {
+        "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "name": "Boutique",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "78d6eea0-82d2-40ef-ba95-337ef4d8f0b0",
+        "name": "Casiers gardés",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "name": "Jeu de dames géant",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "7b9f8caf-bc31-4141-b690-8b0696162e1b",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "name": "Ping-pong",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "cb357854-20d4-44db-8890-214338653ab1",
+        "name": "Snack-bar",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "name": "Volley",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 5,
+    "parkHistory": 4,
+    "itemHistory": 1,
+    "historyWithSource": 5,
+    "historyWithImage": 0,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "corpusFields": 405,
+    "manualReviewBasis": "Corpus rédigé et relu ; correction personnelle de 24 paragraphes, diff strictement vérifié puis export History comparé. Les onze répétitions antérieures ont disparu ; aucune exception textuelle utilisée.",
+    "itemsPublished": 9,
+    "itemsPrivate": 4,
+    "itemsWithEightDescriptions": 9,
+    "generalPhotographs": 3,
+    "currentAuthenticLogo": true,
+    "officialMapEditions": 0
+  },
+  "privateItems": [
+    "Boutique",
+    "Jeu de dames géant",
+    "Ping-pong",
+    "Volley"
+  ],
+  "sourceGaps": {
+    "checkedAtUtc": "2026-11-01T16:49:32.363521+00:00",
+    "identity": "Aquagliss / Acqua Gliss / Acqua Cyrné Gliss, Porticcio (Grosseto-Prugna), Corse-du-Sud. Homonyme Moselle exclu.",
+    "dates": "1986 année du backlog secondaire cohérente avec société/assurance ; jour d’ouverture non établi. Fermeture fin été 2014 attestée par annuaire et contexte judiciaire, pas de jour précis. Événement de 1986 exprime la société et l’assurance, pas une cérémonie.",
+    "sourcesRead": "Archives officielles accueil, animation, règlement, organisation, renseignements, restauration, sensations et accès 2010 ; introduction 2011 ; tourisme Corse ; annuaire spécialisé ; Gralon ; Petit Futé ; blog 2012 ; Sirene ; décisions de cassation 1993 et 2016 ; IGN BD ORTHO.",
+    "failedAccess": [
+      {
+        "source": "Anciennes photos officielles",
+        "result": "28 fichiers non récupérés, HTTP404 ; 14 URL d’images conservées dans CDX, majoritairement menus et GIF.",
+        "fallback": "Véritable photographie aérienne officielle 800x600 retrouvée et importée."
+      },
+      {
+        "source": "Guide Ajaccio2014",
+        "result": "HTTP403 direct ; extrait indexé seulement, aucun contournement."
+      },
+      {
+        "source": "YouTube lié par annuaire",
+        "result": "Accès réseau refusé à la page source ; pas de téléchargement alternatif ni image extraite."
+      },
+      {
+        "source": "Cour de cassation1998",
+        "result": "Page JS/cookie challenge ; décision non lue directement."
+      },
+      {
+        "source": "Légifrance2005 fiscalité",
+        "result": "HTTP403 ; extrait indexé seulement, pas de certitude sur théâtre de l’eau/bibliothèque/écran avant1999."
+      }
+    ],
+    "inventory": "13 fiches dont9 attractions. Cinq ensembles de glissades représentent8 pistes, pas5 installations physiques : deux oranges et trois couloirs regroupés selon appellation officielle. Bassins enfants avec champignon regroupés, pas doublon.",
+    "missingDescriptions": [
+      {
+        "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "name": "Boutique",
+        "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+      },
+      {
+        "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "name": "Jeu de dames géant",
+        "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+      },
+      {
+        "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "name": "Ping-pong",
+        "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+      },
+      {
+        "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "name": "Volley",
+        "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+      }
+    ],
+    "shortDescriptions": "Six ensembles aquatiques :1h2/2p fondés sur observation ; snack-bar1h2/2p ; casiers1phrase strictement documentée ; parking1p judiciaire. Format historique local proportionné à la matière, pas du remplissage pour quotas.",
+    "photoCoverage": {
+      "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "owners": [
+        {
+          "key": "park",
+          "existingImages": 0,
+          "existingLogo": null
+        },
+        {
+          "key": "aquagliss-toboggan-jaune",
+          "id": "199638eb-e2e3-4e4b-9b3b-c0c84d5f7713",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-toboggan-vert",
+          "id": "6bce5108-6f61-4f49-991b-bd510243b0b8",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-toboggan-bleu",
+          "id": "db4b67c7-8bbc-4b92-846d-6acb6575d2b8",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-toboggans-oranges",
+          "id": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-trois-couloirs-bleus",
+          "id": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-bassins-enfants",
+          "id": "3419186e-37ba-4f58-9950-862c700a3dad",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-dames-geant",
+          "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-volley",
+          "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-ping-pong",
+          "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-snack-bar",
+          "id": "cb357854-20d4-44db-8890-214338653ab1",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-boutique",
+          "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-casiers",
+          "id": "78d6eea0-82d2-40ef-ba95-337ef4d8f0b0",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-parking",
+          "id": "7b9f8caf-bc31-4141-b690-8b0696162e1b",
+          "existingImages": 0
+        }
+      ],
+      "acceptedFiles": 5,
+      "logoFound": true,
+      "officialMapsFound": 0,
+      "generalPhotographs": 3,
+      "generalPhotoExplanation": "Official oblique aerial, poolside scene and IGN vertical aerial; banner and logo excluded. Poolside photo assigned to orange slides but also shows shared pool and visitors.",
+      "research": "Eight pages of official 2010 site, CDX all 14 surviving image URLs, primary tourism Corse, specialist directory, Gralon, Petit Futé, 2012 visitor blog, IGN, photographic web searches. Most official slide/restaurant/animation images return 404.",
+      "notImported": [
+        "Official GIF banner and animated entry button: unsupported format, no conversion",
+        "Two original official access-map files unavailable 404; they concern road access, no internal annual visitor map established",
+        "Gralon location map: third-party map, not official park plan; inaccurate point",
+        "Tourism guide 2014 direct 403; no bypass or claim of reading its images",
+        "YouTube video linked by directory: network access denied to source, no alternate extraction",
+        "Repeated views or arbitrary crops of official aerial to fabricate item photo coverage"
+      ],
+      "gaps": [
+        "Two additional distinct general photographs missing from the target of five",
+        "Only orange slide ensemble has its own assigned photo; other visible rides remain photo gaps in item galleries",
+        "No annual internal official map",
+        "No genuine photo identified for 1989 attack, parking restitution or 2014 closure",
+        "No founder, manufacturer or operator portrait/biography supported by more than corporate records"
+      ]
+    },
+    "geolocation": "Six ensembles aquatiques sur13 lieux ; correspondance entre photo officielle et orthophoto2006–2010, preuve géoréférencée. GPSduparc annuaire spécialisé confirmé, points tourisme,Gralon et siègeSirene divergents écartés. Sept positions de jeux/services non prouvées, parking variable selonépoque.",
+    "maps": "Aucun plan interne annuel retrouvé ; page plan d’accès ne prouve pas une édition interne. IGN et Gralon ne sont pas importés comme cartes officielles.",
+    "individualHistory": "Dates propres, constructeurs, modèles et relocalisations non établis ; pas de1986/2014 propagé aux items.",
+    "access": "Règlement2010 : accompagnement moinsde10ans auparc, brassards nonnageurs, nombre maximal d’utilisateurs parglissade ; pas de seuil de taille parattraction établi. Aucun minimum de taille ou constructeur supposé.",
+    "eventImages": "Aucune image réelle prouvée des cinq événements après recherches ciblées1989/2014/inauguration et archives. Photos duparc conservées comme contexte de l’article, pas comme photos de l’attentat ou dernierjour.",
+    "references": "Dernier exploitantAcquaCyrneGliss juridiquecréé1986, aucun fondateur/fabricant/portrait/biographie longue établis. Pas de logo inventé pour opérateur.",
+    "closureCausation": "Restitutionparking2013, permis35logements7mars2014, fermetureété2014. Aucune causalité forcée parking→fermeture ; tribunal souligne solutionalternative. Ni date ni réalisation de logements déduite dupermis.",
+    "publicationScope": "Neuf lieux décrits publiés ; Boutique, Jeu de dames géant, Ping-pong et Volley restent privés. Score réel 92/100 ; résultat partial sans exception acceptée."
+  },
+  "roundtrip": {
+    "fields": 713,
+    "unexplainedDifferences": 0,
+    "requestAliasNormalization": "itemId omitted by export; ownerId and parkItemId verified exactly"
+  },
+  "editorialCorrection": {
+    "operationId": "33ff2f7c-911b-4c0b-9c6a-25dc8b622cec",
+    "appliedAtUtc": "2026-11-01T16:53:20.1367984Z",
+    "paragraphVersionsChanged": 24,
+    "reason": "Article and timeline repeated factual sentences. Personally rewritten in eight languages; complete diff verified, fresh History export matched and zero corpus repetitions afterwards."
+  },
+  "historyRepair": {
+    "operationId": "86f77423-c6f5-4362-a820-0fd05167da4a",
+    "appliedAtUtc": "2026-11-01T17:04:47.4840689Z",
+    "eventsRestored": 5,
+    "publishedFacts": 5,
+    "majorFacts": 4,
+    "blockingIssues": 0,
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": true,
+      "hasCompleteSourceCoverage": true,
+      "hasMajorMilestone": true,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 5,
+      "sourcedFactCount": 5,
+      "majorFactCount": 4,
+      "indexableKeyYears": []
+    },
+    "note": "Canonical restoration only; corrected article, dates, sources and owner links unchanged. No indexable key-year count invented."
+  },
+  "corpus": {
+    "fields": 405,
+    "languages": 8,
+    "encodingIssues": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "crossCorpusSequenceGroups": 0,
+    "personalReviewComplete": true
+  },
+  "publicChecks": {
+    "mobilePages": 21,
+    "desktopPages": 2,
+    "languages": 8,
+    "httpFailures": 0,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "technicalValueLeaks": 0,
+    "historyLinkVisibleInAllEightLanguages": true,
+    "frenchHistoryLinkActuallyClicked": true,
+    "hasPublicHistory": true,
+    "publicTimelineItems": 5,
+    "screenshotsPersonallyInspected": [
+      "park-fr-viewport.png",
+      "article-aquagliss-closure-2014-fr-viewport.png",
+      "desktop-park.png",
+      "desktop-article.png"
+    ],
+    "initialTimingObservation": "Initial 800 ms check preceded some client-rendered links. Rechecked normal routes by waiting for the visible link, no cache-busting parameter or admin session."
+  },
+  "idempotence": {
+    "operationId": "8f70aac5-060b-4eff-8a2a-0f5d856ef492",
+    "created": 0,
+    "updated": 0,
+    "deleted": 0,
+    "unchanged": 25,
+    "warnings": 0,
+    "errors": 0,
+    "applyAttempted": false
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "8543f61911b545f29e4159e39351d2ae",
+    "externalUrl": "https://www.facebook.com/1285475681307050/posts/122125630275424431",
+    "publishedAtUtc": null,
+    "checkedAtUtc": "2026-11-01T17:09:04.297361+00:00",
+    "source": "Official ResolveFacebookPublication confirms existing automatic announcement; no duplicate PublishFacebook. Exact post publication time not returned by this contract.",
+    "defaultBilingualMessagePreserved": true
+  },
+  "authorization": "Existing user instructions authorize the validated site content and Facebook for the France campaign. No lower-score completion exception inferred.",
+  "proofSha256": {
+    "09-publication-export.json": "47584a9cf4ba3347e0317155b4d3195927deaef39499e2e313ef613dbdfa626d",
+    "09-publication-export-check.json": "290838db94cff76aa42876a57df520b4264befd8a6cf139cc7103678f740d1d8",
+    "09-export-roundtrip.json": "615e07696b258ab805ccf7dee0970bfbcc0615b949ea6e3c459cd8af4e61127b",
+    "09-article-editorial-correction-apply.receipt.json": "1103937a6378a7e783e76c78e302724ffa1b2d9fcc419e89cae3e0796597cc12",
+    "09-publish-images-apply.receipt.json": "9999e1488dc79045286687cc22b0bde62c9f226396bdd58b13fad49c0ad664b8",
+    "09-publish-dependent-content-apply.receipt.json": "7d1ecb08e0dd2a46f906c3b758ae3a731953011c2d7151a8e699fd499e37c8f5",
+    "09-publish-park-apply.receipt.json": "422493dc5d07577da2fd7d3afe3f9f74a1e544d347fcd390ac9c1a0f3fb09a2f",
+    "10-history-repair-export.json": "0493f9a076c5e1c5ae4d97dca3cb52743e20787c126590cf76a2e59495708743",
+    "10-history-repair-reconciliation.json": "e6d2786b2c69be59d738b9a1d29b388ef6ceeafc3f4cd62cee21a5a5dbf9e242",
+    "10-history-canonical-repair-apply.receipt.json": "6984d62e16c2c5f2eb89da93382b29aed8da888c1f30d6b34e3d14a5d431cd21",
+    "10-history-diagnostics-after-repair.json": "be4f89852aa185840bd42ef8e59588b20196f51be79c90cd0e86fd9b8413e40a",
+    "10-actual-completeness-after-repair.json": "0ca2c85297bf34641441f585f012d460b25379a701cb24f691bb2640c13492bb",
+    "10-postpublication-idempotence.preview.json": "466eb30a7d98645daccdacf8a336ace9c6b84c7e9c1b0e6fac5250d828ac89af",
+    "10-facebook-draft.json": "2dce3baacd85ff6e0653054a9c14be5c5d53fd168ae2e9ec432fec87bdee2e63",
+    "public-verification/api-report.json": "a3f14571354df564fa7965c961c4b098e958ad3e797bc59c055b16e401762f74",
+    "public-verification/park-summary.json": "5857a5a429e01db76887ebb1b73362d4aad3a301b0e91ea7ecdfaba21a6791f5",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "56a202e4657709a6cb11816fa11755e2c4d5ad99dffdcf6b75ef278ab0132a72",
+    "public-verification/history-links-eight-languages.json": "c75522d97c90f002e4df73e823b48f611cf5dc4a5b7251eaaa7a98855fb88721",
+    "public-verification/desktop-pages-report.json": "eca9df2841592339fec6af269f92966f9cc427becc9c2b3a796ef3733beb27a7"
+  },
+  "batchCompletedCount": 6,
+  "nationalRemaining": {
+    "principal": 111,
+    "historical": 23,
+    "standalone": 0,
+    "total": 134
+  },
+  "prCreated": false,
+  "versionChanged": false
+}
