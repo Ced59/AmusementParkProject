@@ -262,37 +262,195 @@
     {
       "entryId": "TW-candidate-a2cafea4bad92a",
       "name": "E-DA Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "E-DA Outlet Mall, Dashu , Kaohsiung",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "E-DA Outlet Mall, Zone A RF, No. 12 Section 1 Xuecheng Road, Dashu, Kaohsiung",
+      "siteId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:20:29.083Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active dans la galerie E-DA, billets et horaires officiels publiés ; fiche du parc voisin masquée.",
+      "identityConfidence": "Roue située sur le toit du centre commercial hors des portes du parc, billets autonomes confirmés par l’exploitant ; recherche Standalone sans fiche.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "義大摩天輪",
+        "E-Da Outlet Mall Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T11:17:04.343Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c1663721-b19d-4121-91c9-79f7c5804992",
+          "appliedAt": "2026-11-01T11:14:11.897Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:apply:c1663721-b19d-4121-91c9-79f7c5804992",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée, identité et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-e175173f8ca64990b21dcbb8ef6595e6",
+          "appliedAt": "2026-11-01T11:15:52.846Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:image:e175173f8ca64990b21dcbb8ef6595e6",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue E-DA importée de Wikimedia Commons, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "image-c47e6f21189e4c3d9f2ebb09210aec41",
+          "appliedAt": "2026-11-01T11:16:07.430Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:image:c47e6f21189e4c3d9f2ebb09210aec41",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue E-DA importée de Wikimedia Commons, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "image-bf218273be97446da9c26cfead0eb042",
+          "appliedAt": "2026-11-01T11:16:21.893Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:image:bf218273be97446da9c26cfead0eb042",
+          "auditEvidence": null,
+          "summary": "Photo #3 de la roue E-DA importée de Wikimedia Commons, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "apply-d58e574e-4936-465c-9e82-4a5dc716a5cf",
+          "appliedAt": "2026-11-01T11:16:39.931Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:apply:d58e574e-4936-465c-9e82-4a5dc716a5cf",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels propres à la roue en TWD, gratuité avec bracelet du parc du jour documentée"
+        },
+        {
+          "eventId": "apply-98bf1b6d-8581-43c8-9a6d-989f45591687",
+          "appliedAt": "2026-11-01T11:17:04.343Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:apply:98bf1b6d-8581-43c8-9a6d-989f45591687",
+          "auditEvidence": null,
+          "summary": "Horaires officiels 14–22 h et dernières vente et embarquement intégrés"
+        },
+        {
+          "eventId": "closure-98bf1b6d-8581-43c8-9a6d-989f45591687",
+          "appliedAt": "2026-11-01T11:17:04.343Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:apply:98bf1b6d-8581-43c8-9a6d-989f45591687",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-eda-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos propres ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier les fermetures de maintenance et éventuels changements de prix. La fiche Park E-DA Theme Park masquée (d06d2a59-a4a5-4576-958b-4d66dde743ab) reste à intégrer séparément. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "E-DA World — présentation officielle de la roue",
+          "url": "https://www.edaworld.com.tw/spots/ferriswheel",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "E-DA Theme Park — prix de la roue, bracelet et horaires",
+          "url": "https://www.edathemepark.com.tw/Info",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "E-DA Outlet Mall — roue sur le toit de la zone A",
+          "url": "https://www.edamall.com.tw/custom-page/page/4?lang=en",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "E-DA Outlet Mall — adresse de la galerie",
+          "url": "https://www.edamall.com.tw/?lang=en",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — galerie E-DA",
+          "url": "https://www.openstreetmap.org/search?query=E-DA%20Outlet%20Mall%20Kaohsiung",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:%E7%BE%A9%E5%A4%A7%E4%B8%96%E7%95%8C%E6%91%A9%E5%A4%A9%E8%BC%AA%E5%85%A7%E9%83%A8.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:E-Da_Outlet_Mall_ferris_wheel_20130228.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:EDOM_ferris_wheel_20140831_night.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "E-DA Ferris Wheel",
+            "source": "E-DA Theme Park — prix et horaires de la roue",
+            "url": "https://www.edathemepark.com.tw/Info",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "E-DA Outlet Mall",
+            "sourceLifecycleSignal": "Tarifs et horaires officiels au 1er novembre 2026",
+            "sourceLocality": "Dashu, Kaohsiung",
+            "matchingMethod": "Roue sur le toit de la galerie, billets propres et recherche Standalone officielle sans fiche"
+          }
+        ],
+        "rationale": "La roue est placée sur le toit de la galerie E-DA et vend ses propres billets ; le parc à thème voisin a une fiche Park masquée, distincte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/82c5548b-c0bd-4418-9aba-e567f15895b5/e-da-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T11:18:42.856Z",
+          "verifiedAtUtc": "2026-11-01T11:20:29.083Z",
+          "evidence": "PARK_DATA_EDITOR:apply:8a23f464-a10c-486f-b40c-4a374d061dbd"
+        },
+        "facebook": {
+          "id": "26681e095403423cbc583d8ede304e04",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:19:29.250Z",
+          "externalPostId": "1285475681307050_122125595481424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125595481424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:26681e095403423cbc583d8ede304e04"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "e175173f8ca64990b21dcbb8ef6595e6",
+          "c47e6f21189e4c3d9f2ebb09210aec41",
+          "bf218273be97446da9c26cfead0eb042"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:17:58.245Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:62906e78-976b-4c2b-86cd-b338dbcd6d4e",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-tw-eda-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-eda-ferris-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
