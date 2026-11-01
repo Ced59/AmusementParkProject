@@ -26406,37 +26406,169 @@
     {
       "entryId": "US-candidate-fd6fcdcb5fd85b",
       "name": "Great Smoky Mountain Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Pigeon Forge, Tennessee",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "131 The Island Drive, Pigeon Forge, Tennessee, États-Unis",
+      "siteId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:30:05.386Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Grande roue en exploitation avec billet propre et tarifs officiels vérifiés au 1er novembre 2026 ; entrée de The Island gratuite.",
+      "identityConfidence": "Identité, adresse et billet de la roue confirmés par l’exploitant ; recherches officielles Park/Standalone et site The Island sans fiche correspondante.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "The Great Smoky Mountain Wheel",
+        "Smoky Mountain Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T15:27:42.753Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ac62c352-3398-4b68-914d-3f4a448e1fb4",
+          "appliedAt": "2026-11-01T15:22:47.251Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:apply:ac62c352-3398-4b68-914d-3f4a448e1fb4",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée à partir de la candidate conservée : identité et huit descriptions"
+        },
+        {
+          "eventId": "apply-6c975c9a-dbb0-44bb-8ce2-1035c092dbce",
+          "appliedAt": "2026-11-01T15:24:38.075Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:apply:6c975c9a-dbb0-44bb-8ce2-1035c092dbce",
+          "auditEvidence": null,
+          "summary": "Sept offres tarifaires de l’exploitant intégrées en USD, avec conditions et catégories"
+        },
+        {
+          "eventId": "image-be363a7129ca496d9d4cbadf98f558af",
+          "appliedAt": "2026-11-01T15:25:35.007Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:image:be363a7129ca496d9d4cbadf98f558af",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte de la roue importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-5a0b4c6bc90942b88854d47594969add",
+          "appliedAt": "2026-11-01T15:25:57.084Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:image:5a0b4c6bc90942b88854d47594969add",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte de la roue importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-bc39d904-3514-4664-9043-695584b0db53",
+          "appliedAt": "2026-11-01T15:27:42.753Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:apply:bc39d904-3514-4664-9043-695584b0db53",
+          "auditEvidence": null,
+          "summary": "Légendes distinctes des textes alternatifs pour les deux photos dans huit langues, après audit éditorial"
+        },
+        {
+          "eventId": "closure-bc39d904-3514-4664-9043-695584b0db53",
+          "appliedAt": "2026-11-01T15:27:42.753Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:apply:bc39d904-3514-4664-9043-695584b0db53",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-smoky-mountain-wheel-20261101/audit.json",
+          "summary": "Audit final 81/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Consulter le calendrier de l’exploitant pour chaque date ; ne pas transformer les heures du jour en règle hebdomadaire. Revérifier prix et conditions périodiquement. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The Island — page officielle de la Great Smoky Mountain Wheel, expérience et tarifs",
+          "url": "https://islandinpigeonforge.com/poi/the-great-smoky-mountain-wheel",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "The Island — billetterie officielle et conditions des offres",
+          "url": "https://tickets.islandinpigeonforge.com/retail/items/g/wheelTickets",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "The Island — calendrier officiel des horaires variables",
+          "url": "https://islandinpigeonforge.com/hours-and-events-calendar",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Great Smoky Mountain Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Great_Smoky_Mountain_Wheel_-_October_2025_-_Sarah_Stierch.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Great Smoky Mountain Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Great_Smoky_Mountain_Wheel_-_October_2025_-_Sarah_Stierch_01.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Great Smoky Mountain Wheel",
+            "source": "The Island — page officielle de la roue",
+            "url": "https://islandinpigeonforge.com/poi/the-great-smoky-mountain-wheel",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "The Island in Pigeon Forge",
+            "sourceLifecycleSignal": "Billetterie propre et source officielle active au 1er novembre 2026",
+            "sourceLocality": "Pigeon Forge, Tennessee",
+            "matchingMethod": "Entrée de The Island gratuite ; billet propre à la roue, identité et adresse vérifiées"
+          }
+        ],
+        "rationale": "The Island est une zone de commerces et de loisirs à entrée gratuite ; la grande roue a son propre billet et une page d’exploitation distincte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3c3cf28e-e40c-493c-baba-4062874cad4d/great-smoky-mountain-wheel",
+          "publishedAtUtc": "2026-11-01T15:28:20.844Z",
+          "verifiedAtUtc": "2026-11-01T15:30:05.386Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c9c61a17-6a02-4280-a348-c0af73f9cae1"
+        },
+        "facebook": {
+          "id": "9695af84db424eaaa140659826e5759e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:29:11.562Z",
+          "externalPostId": "1285475681307050_122125621707424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125621707424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:9695af84db424eaaa140659826e5759e"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "be363a7129ca496d9d4cbadf98f558af",
+          "5a0b4c6bc90942b88854d47594969add"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T15:26:45.528Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:d9ecbb67-a1bb-43d5-94fa-163270f4a55b",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-smoky-mountain-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-smoky-mountain-wheel-20261101/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {

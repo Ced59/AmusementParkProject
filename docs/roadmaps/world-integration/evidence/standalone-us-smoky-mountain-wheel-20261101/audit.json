@@ -1,0 +1,97 @@
+{
+  "name": "Great Smoky Mountain Wheel",
+  "entryId": "US-candidate-fd6fcdcb5fd85b",
+  "standaloneAttractionId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+  "qualification": "Entrée The Island gratuite et billet propre à la roue ; quatre recherches officielles Park/Standalone sans correspondance.",
+  "decision": "Published",
+  "score": 81,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "gateAdmissionOffers": 7,
+    "onlinePriceOffers": 0,
+    "weeklyRules": 0
+  },
+  "remainingGaps": [
+    "Le calendrier officiel affiche des horaires de manèges par date ; une règle hebdomadaire ne peut pas en être déduite. La fiche renvoie le visiteur au calendrier avant sa visite."
+  ],
+  "sources": [
+    {
+      "label": "The Island — page officielle de la Great Smoky Mountain Wheel, expérience et tarifs",
+      "url": "https://islandinpigeonforge.com/poi/the-great-smoky-mountain-wheel",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "The Island — billetterie officielle et conditions des offres",
+      "url": "https://tickets.islandinpigeonforge.com/retail/items/g/wheelTickets",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "The Island — calendrier officiel des horaires variables",
+      "url": "https://islandinpigeonforge.com/hours-and-events-calendar",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Great Smoky Mountain Wheel, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Great_Smoky_Mountain_Wheel_-_October_2025_-_Sarah_Stierch.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Great Smoky Mountain Wheel, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Great_Smoky_Mountain_Wheel_-_October_2025_-_Sarah_Stierch_01.jpg",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "be363a7129ca496d9d4cbadf98f558af",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Great_Smoky_Mountain_Wheel_-_October_2025_-_Sarah_Stierch.jpg",
+      "author": "Sarah Stierch (Missvain)",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "photographedAt": "2025-10-22",
+      "subject": "La grande roue éclairée vue depuis son entrée en octobre 2025.",
+      "transformation": "vignette Wikimedia Commons 1920 px, sans recadrage"
+    },
+    {
+      "imageId": "5a0b4c6bc90942b88854d47594969add",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Great_Smoky_Mountain_Wheel_-_October_2025_-_Sarah_Stierch_01.jpg",
+      "author": "Sarah Stierch (Missvain)",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "photographedAt": "2025-10-22",
+      "subject": "La grande roue éclairée au-dessus des allées de The Island en octobre 2025.",
+      "transformation": "vignette Wikimedia Commons 1920 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "5512326978d35ce6953651bfd9072aa3b439808fc1d1c5c2bc96e19bf7b9a00a",
+    "projectedScore": 81,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T15:30:05.386Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T15:27:42.753Z",
+    "photosPublishedAtUtc": "2026-11-01T15:26:45.528Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:d9ecbb67-a1bb-43d5-94fa-163270f4a55b"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/3c3cf28e-e40c-493c-baba-4062874cad4d/great-smoky-mountain-wheel",
+      "publishedAtUtc": "2026-11-01T15:28:20.844Z",
+      "applyOperationId": "c9c61a17-6a02-4280-a348-c0af73f9cae1"
+    },
+    "facebook": {
+      "id": "9695af84db424eaaa140659826e5759e",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T15:29:11.562Z",
+      "externalPostId": "1285475681307050_122125621707424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125621707424431"
+    }
+  }
+}
