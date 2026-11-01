@@ -1,0 +1,166 @@
+{
+  "work": "Cape Wheel, Cape Town: new independent ticketed observation wheel at the V&A Waterfront; no Park or Standalone match in official editor. Created hidden, enriched, four licensed exact photographs imported, wrong preview-generated owner ID corrected to actual applied ID before publication, four image ownership/publication states verified in final export, site visible, Facebook published.",
+  "qualification": "V&A Waterfront is a mixed-use urban waterfront; Cape Wheel has its own operator, address and separate ticketing. It is an independent attraction rather than a park item.",
+  "identity": {
+    "previewProposedId": "1b9acb91-3575-4288-9bad-914b3cee1147",
+    "actualAppliedId": "add537b0-256c-4091-9e1d-eb63a23b6863",
+    "correction": "Preview-generated ID differed from Apply-generated ID. Four imported images were moved with UpdatePhotoMetadata to the actual ID; final ExportStandaloneAttraction shows all four on the actual owner, all published and exactly one current. No duplicate standalone was created."
+  },
+  "operatorSources": [
+    "https://capewheel.co.za/",
+    "https://capewheel.co.za/about-us/",
+    "https://capewheel.co.za/contact/",
+    "https://capewheel.co.za/tickets-prices/",
+    "https://www.waterfront.co.za/articles/the-cape-wheels-epic-comeback",
+    "https://www.waterfront.co.za/attractions/cape-wheel"
+  ],
+  "geolocationSource": "https://www.openstreetmap.org/way/422170709",
+  "sourceChecks": {
+    "searchStandaloneCapeWheel": 0,
+    "searchStandaloneCapeTownWheel": 0,
+    "searchParksCapeWheel": 0,
+    "searchParksCapeTown": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "b70de1d1-4405-4035-86ea-e6a2392337b5",
+      "appliedAtUtc": "2026-11-01T16:35:08.584Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "58faf5e6-c38a-410a-bbfc-d50380be71bf",
+      "appliedAtUtc": "2026-11-01T16:41:54.802Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "ea9c7f30-deaa-4158-9c06-c509074ab34d",
+      "appliedAtUtc": "2026-11-01T16:42:26.675Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "41d2fa9a-f472-4700-9d62-1b1020e7d1c3",
+      "appliedAtUtc": "2026-11-01T16:45:36.761Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "658e4038-b1b4-4331-88ac-9f46b21aa554",
+      "appliedAtUtc": "2026-11-01T16:48:52.202Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "0d735df798a74116a736105731b1a0f3",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:The_Cape_Wheel,_viewed_edge-on.jpg",
+      "author": "Chris Rycroft",
+      "license": "CC BY 2.0",
+      "takenAt": "2024-03-02 10:38:58",
+      "historicalLocation": false,
+      "finalOwnerId": "add537b0-256c-4091-9e1d-eb63a23b6863",
+      "published": true,
+      "isCurrent": true,
+      "relinkedAtUtc": "2026-11-01T16:40:44.885Z"
+    },
+    {
+      "imageId": "9939e8ed306d4b1594b60eb4f593c1b1",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Cape_Wheel_jeh.jpg",
+      "author": "Jim.henderson",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2018-07-14 04:44:27",
+      "historicalLocation": true,
+      "finalOwnerId": "add537b0-256c-4091-9e1d-eb63a23b6863",
+      "published": true,
+      "isCurrent": false,
+      "relinkedAtUtc": "2026-11-01T16:41:01.213Z"
+    },
+    {
+      "imageId": "c86234ae16fd44998b470b1f7abab224",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Cape_Wheel_loading_stairs_jeh.jpg",
+      "author": "Jim.henderson",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2018-07-25 12:51:03",
+      "historicalLocation": true,
+      "finalOwnerId": "add537b0-256c-4091-9e1d-eb63a23b6863",
+      "published": true,
+      "isCurrent": false,
+      "relinkedAtUtc": "2026-11-01T16:41:12.906Z"
+    },
+    {
+      "imageId": "bfe9d37187284de39398933642994527",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Cape_Wheel.jpg",
+      "author": "Ashleyflashley",
+      "license": "CC BY-SA 3.0",
+      "takenAt": "2013-09-14 13:12:26",
+      "historicalLocation": true,
+      "finalOwnerId": "add537b0-256c-4091-9e1d-eb63a23b6863",
+      "published": true,
+      "isCurrent": false,
+      "relinkedAtUtc": "2026-11-01T16:41:24.321Z"
+    }
+  ],
+  "audit": {
+    "score": 91,
+    "earnedPoints": 58,
+    "applicableMaxPoints": 64,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "officialFareOffers": 4,
+    "seasonalHoursRules": 1,
+    "publishedImages": 4
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/add537b0-256c-4091-9e1d-eb63a23b6863/cape-wheel",
+    "sitePublishedAtUtc": "2026-11-01T16:45:36.761Z",
+    "siteHttpStatus": 200,
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "e651d4875f2344f983fe7b4b3bc34d43",
+    "facebookPublishedAtUtc": "2026-11-01T16:46:45.607Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125628925424431"
+  },
+  "lastDataIntegrationAt": "2026-11-01T16:48:52.202Z",
+  "remainingGaps": [
+    "Continue looking for photographs from the current Breakwater Boulevard site; three of four published images are explicitly dated historical views.",
+    "Refresh operator fares and seasonal hours when they change."
+  ]
+}
