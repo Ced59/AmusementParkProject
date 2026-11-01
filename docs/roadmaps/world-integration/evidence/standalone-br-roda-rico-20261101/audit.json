@@ -1,0 +1,182 @@
+{
+  "work": "Roda Rico, separately ticketed observation wheel inside public urban Parque Cândido Portinari, São Paulo. Official editor searches Roda Rico/Roda SP Standalone and Roda Rico/Cândido Portinari Parks returned no match. Created hidden with eight manually written descriptions, current operator weekly footer schedule, dynamic untethered price categories, public opening chronology and six exact licensed photographs; audited, published site and Facebook.",
+  "qualification": "Cândido Portinari is a public urban park, not a structured amusement park parent; the wheel sells its own tickets.",
+  "operatorSources": [
+    "https://www.rodarico.com.br/",
+    "https://www.rodarico.com.br/informacoes",
+    "https://www.ticketmaster.com.br/event/roda-rico"
+  ],
+  "openingSource": "https://prefeitura.sp.gov.br/w/noticia/maior-roda-gigante-da-america-latina-gera-impactos-social-e-economico-na-cidade",
+  "coordinatesSource": "https://www.google.com/maps/place/Roda+Rico/",
+  "sourceChecks": {
+    "standaloneRodaRico": 0,
+    "standaloneRodaSP": 0,
+    "parksCandidoPortinari": 0,
+    "parksRodaRico": 0
+  },
+  "commercialData": {
+    "pricing": "Dynamic online offers without unsupported amounts; operator lists individual, social and private cabin tickets. Ticketmaster blocked pricing display from this region.",
+    "openingHours": "Weekly hours from operator footer verified 2026-11-01; October-specific schedule not copied as November rule, calendar exceptions flagged."
+  },
+  "dataReceipts": [
+    {
+      "operationId": "eda0273f-271a-4696-859c-87e2afa49b4e",
+      "appliedAtUtc": "2026-11-01T17:13:54.245Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "62d332f8-e65f-48b2-b6d2-81902c9b8ba1",
+      "appliedAtUtc": "2026-11-01T17:20:19.770Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "4864cc60-eca2-492d-962f-63215b14852b",
+      "appliedAtUtc": "2026-11-01T17:20:31.225Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "3ddb05e9-4dd5-4917-80ae-861556709088",
+      "appliedAtUtc": "2026-11-01T17:22:53.633Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "a87ca893-9e28-46d5-8647-8c8ba855fb04",
+      "appliedAtUtc": "2026-11-01T17:23:35.947Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "4489c7b2f6aa444893a9fff9d33ead7a",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Roda_Rico_(10).jpg",
+      "author": "Roda Rico",
+      "license": "CC BY 4.0",
+      "takenAt": "2024-05-18",
+      "ownerId": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:21:06.951Z"
+    },
+    {
+      "imageId": "396c4812be5a4b0e9f963198716776e3",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Roda_Rico_(3).jpg",
+      "author": "Roda Rico",
+      "license": "CC BY 4.0",
+      "takenAt": "2024-05-18",
+      "ownerId": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-01T17:21:18.588Z"
+    },
+    {
+      "imageId": "00d9ef8e19ac4c86b56efcb414865a34",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Roda_Rico_(4).jpg",
+      "author": "Roda Rico",
+      "license": "CC BY 4.0",
+      "takenAt": "2024-05-18",
+      "ownerId": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:21:30.292Z"
+    },
+    {
+      "imageId": "fbe6bff5ba9943fd9b4f8c89233183a3",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Roda_Rico_(9).jpg",
+      "author": "Roda Rico",
+      "license": "CC BY 4.0",
+      "takenAt": "2024-05-18",
+      "ownerId": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:21:41.871Z"
+    },
+    {
+      "imageId": "6127b669c89845d6aff0f7c043c08c52",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Roda_Rico,_em_S%C3%A3o_Paulo.jpg",
+      "author": "Agent010",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2025-05-01",
+      "ownerId": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:21:53.468Z"
+    },
+    {
+      "imageId": "6291a5f724b345858005814b49ef199c",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Roda_Rico.jpg",
+      "author": "Roda Rico",
+      "license": "CC BY 4.0",
+      "takenAt": "2024-05-18",
+      "ownerId": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T17:22:10.522Z"
+    }
+  ],
+  "audit": {
+    "score": 97,
+    "earnedPoints": 68,
+    "applicableMaxPoints": 70,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 6,
+    "visibleOpeningEvent": 1
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db/roda-rico",
+    "sitePublishedAtUtc": "2026-11-01T17:23:35.947Z",
+    "siteHttpStatus": 200,
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "5db622b58edf4b0a823343f1a7e4cf72",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125632123424431",
+    "facebookPublishedAtUtc": "2026-11-01T17:24:33.744Z"
+  },
+  "lastDataIntegrationAt": "2026-11-01T17:23:35.947Z",
+  "remainingGaps": [
+    "Check exact current fares directly in official ticketing when accessible and replace dynamic placeholders with supported amounts if stable.",
+    "Recheck calendar exceptions and weekly operating schedule regularly."
+  ]
+}
