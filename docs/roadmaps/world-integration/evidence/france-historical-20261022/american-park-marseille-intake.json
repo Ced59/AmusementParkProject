@@ -1,0 +1,23 @@
+{
+  "entryId": "FR-candidate-a7f2b59d48ade2",
+  "owner": "Conversation France",
+  "stage": "identity-qualification",
+  "updatedAtUtc": "2026-11-01T14:41:58.876245+00:00",
+  "masterChecked": "be653741",
+  "countryChangesSincePriorMaster": "None in FR JSON or national backlog; standalone-photo note updated in worldwide workflow.",
+  "siteId": null,
+  "lastDataIntegrationAt": null,
+  "sourceLeads": [
+    "Tourisme Marseille personal local-history blog",
+    "Wikimedia Commons contemporary postcard collection",
+    "La Vedette newspaper May/July1910 to consult",
+    "American Park Bordeaux is distinct"
+  ],
+  "unresolved": [
+    "Opening date June15 vs July1 1910; use no exact date until primary evidence",
+    "Magic City Marseille alias to compare with separate Magic City Paris",
+    "Official logo cannot be replaced by the complete advertising poster"
+  ],
+  "reservationOnly": true,
+  "note": "Reprise du candidat historique. Recherches officielles des alias en cours ; aucune création validée, aucune date d’intégration inventée."
+}
