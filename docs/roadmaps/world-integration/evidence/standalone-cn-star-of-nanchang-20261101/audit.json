@@ -1,0 +1,154 @@
+{
+  "work": "Independent ticketed observation wheel at Ganjiang Citizen Park, Honggutan, Nanchang. Park and standalone searches in English/Chinese and broad Nanchang search found no duplicate. Nanchang Sunac Land is a different distant park. Official government source dates opening to 2006-05-01 and gives 160 m. Operator announcement dated 2026-10-28 sets temporary closure from local 2026-11-02, reopening undated. Eight authored descriptions, two visible timeline events and three exact licensed Commons photos; no stale hours or price imported. Published on site and Facebook with closure notice.",
+  "qualification": "Separately ticketed city riverfront wheel, outside a structured amusement park.",
+  "identityChecks": {
+    "parkEnglish": 0,
+    "parkChinese": 0,
+    "standaloneEnglish": 0,
+    "standaloneChinese": 0,
+    "standaloneNanchang": 0,
+    "otherNanchangPark": "Nanchang Sunac Land at a distant location"
+  },
+  "sources": {
+    "governmentOpening": "https://hgt.nc.gov.cn/hgtqrmzf/hgtfm/202604/64b0ce1e49bd44f4afb01588d607af48.shtml",
+    "governmentAttraction": "https://hgt.nc.gov.cn/hgtqrmzf/mtjj/202512/c87863688858494aabd7f2d82c2f3c9a.shtml",
+    "operatorClosureNotice": "https://jx.ifeng.com/c/8xaVt47BkfG",
+    "closureCorroboration": "https://www.thepaper.cn/newsDetail_forward_34359791",
+    "coordinates": "https://www.wikidata.org/wiki/Q201422"
+  },
+  "status": {
+    "value": "TemporarilyClosed",
+    "closureBeginsLocalDate": "2026-11-02",
+    "reopeningDate": null,
+    "hoursAndFares": "Omitted because the announced closure supersedes earlier schedules and fares."
+  },
+  "dataReceipts": [
+    {
+      "operationId": "ac4b44b3-a8ee-4493-b0b0-8b1afe21cae4",
+      "appliedAtUtc": "2026-11-01T17:52:29.465Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "a536f2d6-63d7-4aec-8c3e-ce4ecfeace76",
+      "appliedAtUtc": "2026-11-01T17:57:54.193Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "c4b6086b-60b0-413a-8187-71ce129e8047",
+      "appliedAtUtc": "2026-11-01T17:59:45.330Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "8a74ea36-6229-492a-9bce-83422acbe43c",
+      "appliedAtUtc": "2026-11-01T18:01:07.667Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "0804cb91-fd89-49cc-becc-31f7b6e389b7",
+      "appliedAtUtc": "2026-11-01T18:03:00.721Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "4e4fce9a62ed49f682aa059a518f1b59",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Start_of_Nanchang_20241003.jpg",
+      "author": "Ddayzzz",
+      "license": "CC BY 4.0",
+      "takenAt": "2024-10-03 17:35:24",
+      "ownerId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-01T18:04:24.001Z",
+      "historical": false
+    },
+    {
+      "imageId": "6ade4dfda7674e8daaef7aed4fde2d30",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Star_of_Nanchang_20160211_180155.jpg",
+      "author": "Qa003qa003",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2016-02-11 18:01:55",
+      "ownerId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T18:04:35.444Z",
+      "historical": true
+    },
+    {
+      "imageId": "24e518938903493d8b0e344f73b7aa2a",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:StarOfNanchang20070718.jpg",
+      "author": "Saganaga",
+      "license": "Public domain",
+      "takenAt": "2007-07-18",
+      "ownerId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-01T18:04:47.721Z",
+      "historical": true
+    }
+  ],
+  "audit": {
+    "score": 100,
+    "earnedPoints": 52,
+    "applicableMaxPoints": 52,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "visibleHistoryEvents": 2,
+    "publishedImages": 3
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/69415b5a-ef3b-575b-83a0-17455d5ddeb0/star-of-nanchang",
+    "sitePublishedAtUtc": "2026-11-01T18:05:34.129Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:9bace5d8-e066-4e6c-a631-bf8dd9fb31bc",
+    "siteHttpStatus": 200,
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "caf0a4efb61349e781cfbf4deb853cc3",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125634811424431",
+    "facebookPublishedAtUtc": "2026-11-01T18:06:22.633Z"
+  },
+  "lastDataIntegrationAt": "2026-11-01T18:03:00.721Z",
+  "remainingGaps": [
+    "Monitor official reopening announcement before setting Operating, hours or fares.",
+    "Replace or complement historical photos with a post-renovation exact image when one can be licensed."
+  ]
+}

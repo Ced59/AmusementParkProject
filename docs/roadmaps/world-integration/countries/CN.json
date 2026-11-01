@@ -45664,37 +45664,185 @@
     {
       "entryId": "CN-candidate-64246c8ed83953",
       "name": "Star of Nanchang",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Nanchang , Jiangxi",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Ganjiang Citizen Park, Honggutan, Nanchang, Jiangxi",
+      "siteId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T18:09:14.482Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Fermeture temporaire pour rénovation dès le 2 novembre 2026, réouverture non annoncée.",
+      "identityConfidence": "Roue urbaine à billetterie propre, séparée du parc Nanchang Sunac Land ; aucun doublon Park/Standalone trouvé en anglais ou chinois ; trois photos exactes libres.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "南昌之星",
+        "南昌之星摩天轮",
+        "Nanchang Star"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T18:03:00.721Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ac4b44b3-a8ee-4493-b0b0-8b1afe21cae4",
+          "appliedAt": "2026-11-01T17:52:29.465Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:ac4b44b3-a8ee-4493-b0b0-8b1afe21cae4",
+          "auditEvidence": null,
+          "summary": "Création masquée de la fiche, identité et huit descriptions"
+        },
+        {
+          "eventId": "image-4e4fce9a62ed49f682aa059a518f1b59",
+          "appliedAt": "2026-11-01T17:53:54.263Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:image:4e4fce9a62ed49f682aa059a518f1b59",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée avec auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-6ade4dfda7674e8daaef7aed4fde2d30",
+          "appliedAt": "2026-11-01T17:54:26.875Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:image:6ade4dfda7674e8daaef7aed4fde2d30",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée avec auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-24e518938903493d8b0e344f73b7aa2a",
+          "appliedAt": "2026-11-01T17:54:49.218Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:image:24e518938903493d8b0e344f73b7aa2a",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 importée avec auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "apply-a536f2d6-63d7-4aec-8c3e-ce4ecfeace76",
+          "appliedAt": "2026-11-01T17:57:54.193Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:a536f2d6-63d7-4aec-8c3e-ce4ecfeace76",
+          "auditEvidence": null,
+          "summary": "Relecture des formulations de la chronologie multilingue"
+        },
+        {
+          "eventId": "apply-c4b6086b-60b0-413a-8187-71ce129e8047",
+          "appliedAt": "2026-11-01T17:59:45.330Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:c4b6086b-60b0-413a-8187-71ce129e8047",
+          "auditEvidence": null,
+          "summary": "Chronologie d’ouverture et annonce de suspension finalisées"
+        },
+        {
+          "eventId": "apply-8a74ea36-6229-492a-9bce-83422acbe43c",
+          "appliedAt": "2026-11-01T18:01:07.667Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:8a74ea36-6229-492a-9bce-83422acbe43c",
+          "auditEvidence": null,
+          "summary": "Description publique révisée en huit langues"
+        },
+        {
+          "eventId": "apply-0804cb91-fd89-49cc-becc-31f7b6e389b7",
+          "appliedAt": "2026-11-01T18:03:00.721Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:0804cb91-fd89-49cc-becc-31f7b6e389b7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-star-of-nanchang-20261101/audit.json",
+          "summary": "Descriptions finalisées ; données techniques conservées dans les champs structurés"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier régulièrement l’annonce officielle de réouverture, puis seulement actualiser statut, horaires et tarif. Ne pas répéter la publication Facebook de cette intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Gouvernement de Honggutan — ouverture le 1er mai 2006",
+          "url": "https://hgt.nc.gov.cn/hgtqrmzf/hgtfm/202604/64b0ce1e49bd44f4afb01588d607af48.shtml",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Gouvernement de Honggutan — hauteur et identité",
+          "url": "https://hgt.nc.gov.cn/hgtqrmzf/mtjj/202512/c87863688858494aabd7f2d82c2f3c9a.shtml",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Communiqué de l’exploitant — fermeture temporaire dès le 2 novembre 2026",
+          "url": "https://jx.ifeng.com/c/8xaVt47BkfG",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikidata — coordonnées de la roue",
+          "url": "https://www.wikidata.org/wiki/Q201422",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Start_of_Nanchang_20241003.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Star_of_Nanchang_20160211_180155.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:StarOfNanchang20070718.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Star of Nanchang",
+            "source": "Gouvernement de Honggutan — monument et billetterie distincts",
+            "url": "https://hgt.nc.gov.cn/hgtqrmzf/hgtfm/202604/64b0ce1e49bd44f4afb01588d607af48.shtml",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Ganjiang Citizen Park",
+            "sourceLifecycleSignal": "Fermeture temporaire annoncée dès le 2 novembre 2026",
+            "sourceLocality": "Nanchang",
+            "matchingMethod": "Roue à accès distinct au bord du fleuve ; pas de parc d’attractions structuré parent ni de correspondance dans l’éditeur officiel."
+          }
+        ],
+        "rationale": "Grande roue panoramique autonome sur la rive urbaine du Gan, distincte de Nanchang Sunac Land."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/69415b5a-ef3b-575b-83a0-17455d5ddeb0/star-of-nanchang",
+          "publishedAtUtc": "2026-11-01T18:05:34.129Z",
+          "verifiedAtUtc": "2026-11-01T18:09:14.482Z",
+          "evidence": "PARK_DATA_EDITOR:apply:9bace5d8-e066-4e6c-a631-bf8dd9fb31bc"
+        },
+        "facebook": {
+          "id": "caf0a4efb61349e781cfbf4deb853cc3",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T18:06:22.633Z",
+          "externalPostId": "1285475681307050_122125634811424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125634811424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:caf0a4efb61349e781cfbf4deb853cc3"
+        }
       }
     },
     {
