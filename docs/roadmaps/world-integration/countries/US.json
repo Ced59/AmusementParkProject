@@ -60999,38 +60999,181 @@
     },
     {
       "entryId": "US-candidate-7a55d8c10505e4",
-      "name": "St. Louis Wheel",
-      "entityKind": "ToQualify",
+      "name": "The St. Louis Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "St. Louis Union Station , St. Louis, MO",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "201 S 18th Street, St. Louis, Missouri, États-Unis",
+      "siteId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:56:13.556Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active toute l’année selon l’exploitant au 1er novembre 2026 ; billet individuel vendu.",
+      "identityConfidence": "Site et billetterie officiels ; recherches officielles Park / Standalone St. Louis Wheel et Union Station sans homonyme US ; point OSM de la roue.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "St. Louis Wheel",
+        "St Louis Wheel",
+        "The Wheel at St. Louis Union Station"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T11:53:03.888Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b9ee420a-858c-4932-83de-1b3027711727",
+          "appliedAt": "2026-11-01T11:49:11.656Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:b9ee420a-858c-4932-83de-1b3027711727",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après vérification de l’identité, descriptions en huit langues"
+        },
+        {
+          "eventId": "image-fb041c712f8e4944b105d769306a7fc2",
+          "appliedAt": "2026-11-01T11:50:11.560Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:image:fb041c712f8e4944b105d769306a7fc2",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la St. Louis Wheel importée de Wikimedia Commons avec crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-1acac94c4f6a41bfb9a8b62adf2bc1f8",
+          "appliedAt": "2026-11-01T11:50:31.551Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:image:1acac94c4f6a41bfb9a8b62adf2bc1f8",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la St. Louis Wheel importée de Wikimedia Commons avec crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-a99ef4c7-238c-4406-841f-faf9ff7826ea",
+          "appliedAt": "2026-11-01T11:50:55.378Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:a99ef4c7-238c-4406-841f-faf9ff7826ea",
+          "auditEvidence": null,
+          "summary": "Billets officiels adulte et enfant intégrés en USD"
+        },
+        {
+          "eventId": "apply-9c54b263-c1a7-434a-9f98-8285f75cf345",
+          "appliedAt": "2026-11-01T11:51:21.484Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:9c54b263-c1a7-434a-9f98-8285f75cf345",
+          "auditEvidence": null,
+          "summary": "Quatre règles horaires hebdomadaires officielles intégrées avec le fuseau America/Chicago"
+        },
+        {
+          "eventId": "apply-533bb966-2151-48ae-b453-8679fa3e56c8",
+          "appliedAt": "2026-11-01T11:53:03.888Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:533bb966-2151-48ae-b453-8679fa3e56c8",
+          "auditEvidence": null,
+          "summary": "Descriptions publiques réécrites pour supprimer les métriques techniques interdites"
+        },
+        {
+          "eventId": "closure-533bb966-2151-48ae-b453-8679fa3e56c8",
+          "appliedAt": "2026-11-01T11:53:03.888Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:533bb966-2151-48ae-b453-8679fa3e56c8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-st-louis-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Confirmer la tranche d’âge enfant et surveiller horaires, tarif et fermeture exceptionnelle. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The St. Louis Wheel — description et billetterie propre",
+          "url": "https://www.thestlouiswheel.com/st-louis-wheel",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "The St. Louis Wheel — prix, horaires et adresse officiels",
+          "url": "https://www.thestlouiswheel.com/plan-your-visit",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — point exact de la roue",
+          "url": "https://www.openstreetmap.org/node/7863293647",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — St. Louis Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:The_St._Louis_Wheel_at_Union_Station.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — St. Louis Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:St._Louis_Wheel,_St._Louis_Union_Station,_Market_Street,_St._Louis,_MO.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "The St. Louis Wheel",
+            "source": "The St. Louis Wheel — site officiel",
+            "url": "https://www.thestlouiswheel.com/plan-your-visit",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "St. Louis Union Station",
+            "sourceLifecycleSignal": "Prix et horaires officiels au 1er novembre 2026",
+            "sourceLocality": "St. Louis, Missouri",
+            "matchingMethod": "Billet propre et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Roue à billet individuel dans le complexe Union Station ; les autres activités ont leurs propres billets."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/794a53d9-847b-452c-8a46-ee74a42e0dd9/the-st-louis-wheel",
+          "publishedAtUtc": "2026-11-01T11:54:23.975Z",
+          "verifiedAtUtc": "2026-11-01T11:56:13.556Z",
+          "evidence": "PARK_DATA_EDITOR:apply:4bf52a15-95d3-42bd-9420-c6d921584324"
+        },
+        "facebook": {
+          "id": "01d76f0e2ed54863bddabe311af664c4",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:55:16.228Z",
+          "externalPostId": "1285475681307050_122125600143424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125600143424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:01d76f0e2ed54863bddabe311af664c4"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "fb041c712f8e4944b105d769306a7fc2",
+          "1acac94c4f6a41bfb9a8b62adf2bc1f8"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:53:48.558Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:eb207c51-ae9b-421a-bfc1-e42126b1c51e",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-st-louis-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-st-louis-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
