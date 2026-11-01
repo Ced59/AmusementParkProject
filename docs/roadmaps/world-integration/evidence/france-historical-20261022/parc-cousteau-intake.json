@@ -1,0 +1,130 @@
+{
+  "entryId": "FR-candidate-d81bd703cc53f0",
+  "name": "Parc océanique Cousteau",
+  "conversation": "Conversation France",
+  "checkedAtUtc": "2026-11-01T11:21:47.959522+00:00",
+  "decision": "Relevant historical indoor ThemePark at Forum des Halles, Paris. Multiple permanent experiences, including suspended scenic ride, cinema and walk-through whale; not an aquarium with live animals and not a standalone attraction.",
+  "searches": [
+    {
+      "query": "Cousteau",
+      "action": "SearchParks",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "query": "Forum des Halles",
+      "action": "SearchParks",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "query": "Oceanic",
+      "action": "SearchParks",
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": [
+        {
+          "id": "3bd3b77f-6a09-4240-96ee-25f51ee9b1a5",
+          "name": "Six Flags Discovery Kingdom",
+          "country": "US"
+        }
+      ]
+    },
+    {
+      "query": "océanique",
+      "action": "SearchParks",
+      "pagination": {
+        "totalItems": 2,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": [
+        {
+          "id": "ab37a8a5-e579-4908-a733-d7266eee53f7",
+          "name": "Boudewijn Seapark",
+          "country": "BE"
+        },
+        {
+          "id": "3bd3b77f-6a09-4240-96ee-25f51ee9b1a5",
+          "name": "Six Flags Discovery Kingdom",
+          "country": "US"
+        }
+      ]
+    },
+    {
+      "query": "océanographique",
+      "action": "SearchParks",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "query": "Cousteau",
+      "action": "SearchStandaloneAttractions",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    }
+  ],
+  "existingMatches": [],
+  "aliases": [
+    "Parc Cousteau",
+    "Cousteau Oceanic Park",
+    "Parc océanographique Cousteau"
+  ],
+  "formerIdentityCautions": [
+    "Cancelled Norfolk project is not the Paris park.",
+    "Whale later at Aquaboulevard and suspended transport later at Futuroscope are relocated parkItems, not duplicate parks.",
+    "Current UGC cinema uses former premises; not a current reincarnation of the theme park."
+  ],
+  "initialCoverage": {
+    "parks": 0,
+    "items": 0,
+    "zones": 0,
+    "images": 0,
+    "historyEvents": 0,
+    "articles": 0
+  },
+  "sources": {
+    "opening": "https://www.mediathequedelamer.com/jacques-yves-cousteau",
+    "periodPark": "https://www.deseret.com/1989/10/1/18826687/paris-has-waterless-fishless-aquarium/",
+    "operator": "https://www.pappers.fr/entreprise/spoc-soc-du-parc-oceanique-cousteau-339410359",
+    "logoDesigner": "https://margeryspielman.com/parcOceaniqueCousteau.html",
+    "secondaryResearchIndex": "https://fr.wikipedia.org/wiki/Parc_oc%C3%A9anique_Cousteau"
+  },
+  "dateDecisions": {
+    "opening": "1989-06-30 per La Cité de la Mer institutional biography; 11 July inauguration kept distinct.",
+    "closing": "1992-11 month only; exact last day unproved.",
+    "operator": "Company founded1986; park closure1992 does not equal legal RCS removal2008."
+  },
+  "gaps": [
+    "Detailed named experience and service inventory",
+    "Original annual maps and dated photographs",
+    "Independent primary confirmation of closure month and relocations",
+    "Coordinates initially from published historical DMS location; do not infer individual item points"
+  ],
+  "nextStep": "01-park-core"
+}

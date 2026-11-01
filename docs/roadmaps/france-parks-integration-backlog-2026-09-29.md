@@ -202,7 +202,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Parc de la Récréation — Monts/Sorigny — 1994-2018 — distinct du Family Park qui a repris le site
 - [ ] Parc des Miniatures de Nice — Nice — 1990-1995
 - [ ] Parc Eana — Gruchet-le-Valasse — 2008-2012 — `c30d2efd-a204-47ce-b8d3-f32a2e0c700f` ; intégration partielle : 31 éléments, 27 descriptions en huit langues, 21 images, plans 2008/2009, 9 jalons et article en huit langues. Quatre descriptions restent à étayer ; parc et annonce Facebook non publiés. [Contrôles et lacunes](world-integration/evidence/france-historical-20261022/eana-progress-audit.json).
-- [ ] Parc océanique Cousteau — Paris — 1989-1992
+- [ ] Parc océanique Cousteau — Paris — 1989-1992 — `766cb7c7-bacf-4d74-8ada-ba9b9b8488a2` ; audit éditorial terminé : cinq équipements, quatre médias, onze faits et article en huit langues. Dépendances publiées, parc masqué : **86/100 sans bloqueur** ; décision requise sur les lacunes historiques. Facebook après publication et contrôle public. [Audit et lacunes](world-integration/evidence/france-historical-20261022/parc-cousteau-ready-audit.json).
 - [ ] Pira Park — Nice — fermeture à dater
 - [ ] Planète magique — Paris — 1989-1991 — `305f6144-8dc2-4b24-a23d-d44749fe7d83` ; audit éditorial validé : 45 équipements, 60 médias, 9 faits et un article en huit langues. Dépendances publiées, parc masqué : **92/100 sans bloqueur**, attente d’acceptation explicite de cette exception avec les lacunes historiques. Facebook après publication et vérifications publiques. [Audit et lacunes](world-integration/evidence/france-historical-20261022/planete-magique-ready-audit.json).
 - [ ] Playmobil FunPark Fresnes — Fresnes — 1999-2022

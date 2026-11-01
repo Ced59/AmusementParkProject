@@ -1,0 +1,410 @@
+{
+  "entryId": "FR-candidate-d81bd703cc53f0",
+  "parkId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+  "name": "Parc océanique Cousteau",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-522d99c5-dd1c-4b31-9734-95fe2c4aa8ff",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T11:27:16.9211432Z",
+      "appliedAt": "2026-11-01T11:27:16.921Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "1ec921b8d3faee8553c4aefb16cffb33e842b6eb3b4f2761ff06936346dde470",
+      "counts": {
+        "created": 3,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "contactDetails",
+        "foundedYear",
+        "founderId",
+        "legalName",
+        "nationalityCountryCode",
+        "openingDate",
+        "openingDateText",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création privée du Parc océanique Cousteau après six recherches d’alias ; fondateur Jacques-Yves Cousteau et exploitant SPOC identifiés ; intégration éditoriale en cours, aucun achèvement ni publication."
+    },
+    {
+      "eventId": "apply-9b0d6a62-698b-4aba-825d-c7c77cefe65c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T11:32:56.6205095Z",
+      "appliedAt": "2026-11-01T11:32:56.620Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "6205d7331713edb86e6c83e2a81e67011dbdf56b620715c823cbb5f05b2f64c3",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.closingDateText",
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Premier inventaire historique privé : parcours sous-marin, baleine Jonas, cinéma, boutique et entrée ; trois attractions retirées du site reconverti, dates limitées aux années démontrées ; cinq positions intérieures restant à établir."
+    },
+    {
+      "eventId": "import-photo-6edf042871a3409388daebc568e22f68-2026-11-01T113333.603Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T11:33:33.603Z",
+      "appliedAt": "2026-11-01T11:33:33.603Z",
+      "receiptFile": "05-logo-import-receipt.json",
+      "receiptSha256": "3dcf9791a14e53152643e8087b5091be676a48c59200f57aedee9f5c6a8d2536",
+      "imageId": "6edf042871a3409388daebc568e22f68",
+      "ownerId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+      "createdAt": "2026-11-01T11:33:30.057Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/fr/5/58/Parc_oc%C3%A9anique_Cousteau_logo.jpg",
+      "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-d2f0037f-6693-4987-b498-5105005d5007",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T11:35:56.0683722Z",
+      "appliedAt": "2026-11-01T11:35:56.068Z",
+      "receiptFile": "04-park-apply.receipt.json",
+      "receiptSha256": "9ce2ca79b0ce4c5b530686d7069a0676649196d1edebcf97f09f48eda749b126",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Présentation historique du parc en huit langues, cinq paragraphes et trois intertitres : concept sans animaux vivants, expériences marines, musique et logo, fermeture et transferts ; fiche toujours privée."
+    },
+    {
+      "eventId": "apply-c6e8d097-0b10-4d95-b92d-38bcefd5631e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T11:38:44.9112716Z",
+      "appliedAt": "2026-11-01T11:38:44.911Z",
+      "receiptFile": "04-attractions-apply.receipt.json",
+      "receiptSha256": "42d3f3162c57c601aac953f3026f97ae4bab01d740c8f6da82f1aa2ee7c2f459",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions propres au parcours sous-marin et à Jonas dans les huit langues ; expérience historique et seconde vie au Futuroscope ou à l’Aquaboulevard, sans modification de visibilité."
+    },
+    {
+      "eventId": "apply-3c06f345-568f-472f-811d-f8d2632dbccf",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T11:42:00.5885246Z",
+      "appliedAt": "2026-11-01T11:42:00.588Z",
+      "receiptFile": "04-places-apply.receipt.json",
+      "receiptSha256": "6b4434845cf8a4f42085256f273f99384799572206771aa1a4d1e8abd2425f83",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Cinéma, boutique et entrée : vingt-quatre descriptions historiques localisées, formats courts justifiés par les limites documentaires ; aucune publication."
+    },
+    {
+      "eventId": "import-photo-724f3de398154b658fe09b55e3da4ffa-2026-11-01T114253.918Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T11:42:53.918Z",
+      "appliedAt": "2026-11-01T11:42:53.918Z",
+      "receiptFile": "05-jonas-relocated-import-receipt.json",
+      "receiptSha256": "1f4d79b67fc2b572b3eed271e405d2e95ca6aae366fdcf27f54d8703632e1921",
+      "imageId": "724f3de398154b658fe09b55e3da4ffa",
+      "ownerId": "36ca3c7a-8fe4-4470-932f-654c635c7cb2",
+      "createdAt": "2026-11-01T11:42:50.344Z",
+      "sourceUrl": "https://live.staticflickr.com/972/40201691410_e70dab276b.jpg",
+      "summary": "Import privé du média historique 05-jonas-relocated, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-07d7e7c3775b465d94aa753a6ba33b71-2026-11-01T114308.446Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T11:43:08.446Z",
+      "appliedAt": "2026-11-01T11:43:08.446Z",
+      "receiptFile": "05-entrance-reused-import-receipt.json",
+      "receiptSha256": "e50c1e00a6d06b1397042ba0606b886ad925ed0730d4016f258a45d47ae210f1",
+      "imageId": "07d7e7c3775b465d94aa753a6ba33b71",
+      "ownerId": "f0dc2a0c-f77b-42b5-82d8-ba05dc371002",
+      "createdAt": "2026-11-01T11:43:04.988Z",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/UGC%2C_Forum_des_Halles%2C_Paris_November_2010.jpg/960px-UGC%2C_Forum_des_Halles%2C_Paris_November_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      "summary": "Import privé du média historique 05-entrance-reused, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5aadcbe4bd514f629987cdc3e070d965-2026-11-01T114322.754Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T11:43:22.754Z",
+      "appliedAt": "2026-11-01T11:43:22.754Z",
+      "receiptFile": "05-shop-soundtrack-import-receipt.json",
+      "receiptSha256": "39a7cc31603e8c6f7c3d9193578187872ebcfdd8e890dfa0fde45e0315a9cf8d",
+      "imageId": "5aadcbe4bd514f629987cdc3e070d965",
+      "ownerId": "b557fd2a-3525-47d3-9d21-c893564c8432",
+      "createdAt": "2026-11-01T11:43:19.083Z",
+      "sourceUrl": "https://i.postimg.cc/52YR3mJ5/Parc-Oceanique-Cousteau-Booklet-01-04a.jpg",
+      "summary": "Import privé du média historique 05-shop-soundtrack, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-637ff234-02c2-4a6e-8eb8-14ec42f3a60d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T11:44:51.2031627Z",
+      "appliedAt": "2026-11-01T11:44:51.203Z",
+      "receiptFile": "05-references-apply.receipt.json",
+      "receiptSha256": "d96d70abd0d124f56f852e7594abf2d13953cf0bdcb50cfab24e6216d51ecb2d",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt",
+        "description.de",
+        "description.en",
+        "description.es",
+        "description.fr",
+        "description.it",
+        "description.nl",
+        "description.pl",
+        "description.pt"
+      ],
+      "summary": "Biographie de Jacques-Yves Cousteau et description historique de SPOC en huit langues ; périmètre limité aux deux références nouvellement créées, co-conception avec Jean-Michel préservée."
+    },
+    {
+      "eventId": "apply-4608a955-1b23-4c8b-9b0e-7289681181ba",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T11:49:16.8642237Z",
+      "appliedAt": "2026-11-01T11:49:16.864Z",
+      "receiptFile": "08-park-timeline-apply.receipt.json",
+      "receiptSha256": "772efdb0fd1271ab7254cc6588dd74b62b7e25d1452a796c0bf4a5577546c4b5",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Cinq faits historiques privés et sourcés en huit langues : ouverture, inauguration, dépôt de bilan, fermeture au mois exact et reconversion UGC ; lacunes photographiques événementielles conservées."
+    },
+    {
+      "eventId": "apply-ce4ed6c4-1e61-4cea-82be-474da00d7f86",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T11:56:20.9729309Z",
+      "appliedAt": "2026-11-01T11:56:20.972Z",
+      "receiptFile": "08-history-article-apply.receipt.json",
+      "receiptSha256": "1aea8bac63c4333effa35d5ea60428d61ca3a566f93d1dd9fc355a4aa96f0ba8",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article historique privé complet en huit langues, quatre sections, huit paragraphes, trois illustrations contextualisées et onze sources ; ouverture, exposition, colloque, crise financière et devenir des équipements."
+    },
+    {
+      "eventId": "apply-5319443f-4a68-4c99-afd6-4ea31fa17ffd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:02:59.19125Z",
+      "appliedAt": "2026-11-01T12:02:59.191Z",
+      "receiptFile": "08-item-timelines-v2-apply.receipt.json",
+      "receiptSha256": "3429a0f0b88ce95b3267a4e7221ebdbcc9d16ec32c3aaa3b61a197d17ebda01d",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Cinq faits sourcés pour les trois attractions et un colloque au parc intégrés en huit langues ; dates partielles préservées et images de Jonas explicitement postérieures à son transfert."
+    },
+    {
+      "eventId": "apply-f3617991-477a-446d-a566-e339b1678854",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:06:08.6111455Z",
+      "appliedAt": "2026-11-01T12:06:08.611Z",
+      "receiptFile": "09-editorial-corrections-apply.receipt.json",
+      "receiptSha256": "3a3c919c2a212e0929b6f23d4f63f2a90da26d83250fdeaf404821400553afd0",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "descriptions.pt"
+      ],
+      "summary": "Audit éditorial : trois paragraphes de l’article repris dans huit langues pour raconter les faits sans notes de méthode ; ouverture au public reformulée en portugais. Sources et légendes conservées."
+    },
+    {
+      "eventId": "apply-092ff43e-25f1-4ccb-a514-df07571944ff",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:15:06.7100489Z",
+      "appliedAt": "2026-11-01T12:15:06.710Z",
+      "receiptFile": "09-repetition-corrections-v2-apply.receipt.json",
+      "receiptSha256": "bc3c673e3acbc5854944ccb3a4ea9b6ef5eb85fa2e2a161549097f89fba70018",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "descriptions.es"
+      ],
+      "summary": "Suppression des reprises entre fiche, article et légendes dans huit langues ; une phrase de Jonas revue en espagnol. Lieux, périodes et sources conservés ; transfert au Futuroscope non daté arbitrairement."
+    }
+  ],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-939b9c0b-c676-4c47-8a3a-9a3fca87cb28",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:10:40.435115Z",
+      "appliedAt": "2026-11-01T12:10:40.435Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "fab51f11e160e6fd6dd757771d14f76b079f6ab349ae0413888ba5a0ed54a96d",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication des quatre médias audités ; propriétaires et contextes historiques conservés, parc encore masqué."
+    },
+    {
+      "eventId": "apply-6bd1dd97-637e-4224-b940-f297e2e24243",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:11:54.1018024Z",
+      "appliedAt": "2026-11-01T12:11:54.101Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "1000e7b83d5893417100931c88e446c5e9fb87d1b1dd0007945fe3f8e5933461",
+      "counts": {
+        "created": 0,
+        "updated": 17,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "article",
+        "isVisible"
+      ],
+      "summary": "Dépendances auditées publiées : cinq fiches, onze faits et un article ; exploitant validé. Parc parent maintenu masqué pour le contrôle final du score."
+    }
+  ]
+}
