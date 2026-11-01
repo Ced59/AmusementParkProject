@@ -1,0 +1,114 @@
+{
+  "name": "San Francisco Carousel",
+  "entryId": "US-candidate-discovery-0cb8cee26bb3f2b9",
+  "standaloneAttractionId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+  "qualification": "Carrousel à billet propre sur Pier 39, galerie marchande ouverte ; recherches officielles Park et Standalone sans correspondance.",
+  "decision": "Published",
+  "score": 78,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "gateAdmissionOffers": 0,
+    "onlinePriceOffers": 0,
+    "weeklyRules": 1
+  },
+  "remainingGaps": [
+    "Le site direct renvoie au prix affiché sur place et à Pier 39 pour le tarif actuel ; aucun montant vérifié n’a été saisi.",
+    "Le carrousel peut être fermé ou modifié selon la météo ; l’horaire structuré reprend la fiche directe de Pier 39."
+  ],
+  "sources": [
+    {
+      "label": "San Francisco Carousel et Bay Plunge — site direct et conditions de billet",
+      "url": "https://www.sfcarousel.com/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "PIER 39 — carrousel, horaires et description",
+      "url": "https://www.pier39.com/attraction/san-francisco-carousel/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "OpenStreetMap — point du San Francisco Carousel",
+      "url": "https://www.openstreetmap.org/node/128240118",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — San Francisco Carousel, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:San_Francisco_Carousel_at_Pier_39.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — San Francisco Carousel, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Pier_39_carousel_San_Francisco_2019.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — San Francisco Carousel, photo 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Fisherman%E2%80%99s_Wharf_-_April_2018_%286232%29.jpg",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "867b606be4e745af84161c8c74d5b96c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:San_Francisco_Carousel_at_Pier_39.jpg",
+      "author": "Miladferrari",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photographedAt": "2018-06-02",
+      "subject": "Le carrousel à deux étages et ses panneaux peints vus de près en juin 2018.",
+      "transformation": "Vignette Wikimedia Commons 1920 px, sans recadrage"
+    },
+    {
+      "imageId": "260b05b3358b486086aa3c6e06f5b1ea",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pier_39_carousel_San_Francisco_2019.jpg",
+      "author": "Steven Lek",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photographedAt": "2019-06-24",
+      "subject": "Le San Francisco Carousel et la promenade de Pier 39 en 2019.",
+      "transformation": "Vignette Wikimedia Commons 1920 px, sans recadrage"
+    },
+    {
+      "imageId": "f65d734ef7604c17a712d41d12cb6167",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fisherman%E2%80%99s_Wharf_-_April_2018_%286232%29.jpg",
+      "author": "Gregory Varnum",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photographedAt": "2018-04-01",
+      "subject": "Les deux niveaux du carrousel et ses animaux à Pier 39 en avril 2018.",
+      "transformation": "Vignette Wikimedia Commons 1920 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "6fcc9e4d66aea8c8a2aeb154068665880c71974adc78817f2db2ad2175425190",
+    "projectedScore": 78,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T16:07:48.967Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T16:04:55.689Z",
+    "photosPublishedAtUtc": "2026-11-01T16:05:38.257Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c182b724-d2df-4cef-82b5-8ee250055fdf"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/da3367d0-cdca-4fbe-8790-364ac656da4c/san-francisco-carousel",
+      "publishedAtUtc": "2026-11-01T16:06:18.064Z",
+      "applyOperationId": "18edee89-d2bf-4b78-b2c3-8b509b0f2d28"
+    },
+    "facebook": {
+      "id": "febc2afd97ad4f44b707abe27ce9bdfb",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T16:07:06.282Z",
+      "externalPostId": "1285475681307050_122125625403424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125625403424431"
+    }
+  }
+}
