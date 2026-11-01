@@ -1,0 +1,119 @@
+{
+  "name": "Ferris Wheel of Budapest",
+  "entryId": "HU-candidate-624c24722c02bd",
+  "standaloneAttractionId": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+  "qualification": "Grande roue avec billetterie et horaires autonomes sur Erzsébet tér ; recherches officielles Park et Standalone sous ses deux noms sans fiche.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 4,
+    "admissionOffers": 4,
+    "weeklyRules": 2,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les exceptions ponctuelles aux horaires habituels ne sont pas publiées sous forme d’un calendrier daté complet.",
+    "Les prix actuels n’ont pas de date de fin publiée ; une veille tarifaire reste nécessaire."
+  ],
+  "sources": [
+    {
+      "label": "Ferris Wheel of Budapest — exploitant, tarifs, horaires et localisation",
+      "url": "https://oriaskerek.com/en/"
+    },
+    {
+      "label": "Mapcarta / OpenStreetMap — position de la roue sur Erzsébet tér",
+      "url": "https://mapcarta.com/W386319234"
+    },
+    {
+      "label": "Wikimedia Commons — roue de Budapest, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Budapest_-_Budapest_Eye_2.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — roue de Budapest, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Erzsébet_Platz,_Skatepark,_Riesenrad,_2024_Lipótváros.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — roue de Budapest, photo 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Budapest_Eye_at_night.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — roue de Budapest, photo 4",
+      "url": "https://commons.wikimedia.org/wiki/File:Budapest_-_Budapest_Eye_1.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "7cb302375dd64d929d6b6c4c97dd69ef",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Budapest_-_Budapest_Eye_2.jpg",
+      "author": "Bultro",
+      "date": "2026-04-04",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Ferris Wheel of Budapest, avril 2026",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "c9e6761b5a2f44579dc9575b80c0cb19",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Erzsébet_Platz,_Skatepark,_Riesenrad,_2024_Lipótváros.jpg",
+      "author": "Globetrotter19",
+      "date": "2024-12",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Ferris Wheel of Budapest, décembre 2024",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "f159a39278fe44ab83f8fd0047e25490",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Budapest_Eye_at_night.jpg",
+      "author": "Yair-haklai",
+      "date": "2026-09-25",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Ferris Wheel of Budapest, septembre 2026",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "b73c6bd307d0441d99ac3d579f33b24b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Budapest_-_Budapest_Eye_1.jpg",
+      "author": "Bultro",
+      "date": "2026-04-02",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Ferris Wheel of Budapest, avril 2026",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "3d6a7e59497d8cb4c25c882f05726a8f75440f2ab5efe36ce237b638da070283",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T10:31:57.142Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T10:27:49.014Z",
+    "photosPublishedAtUtc": "2026-11-01T10:29:10.716Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:de0cf796-528a-4b07-aaf6-e62f32ad1ffc"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/f2c62e9b-bab0-430c-91d7-6b55aed8f7fc/ferris-wheel-of-budapest",
+      "publishedAtUtc": "2026-11-01T10:30:00.549Z",
+      "applyOperationId": "484fa01a-d9f1-42cf-b807-25ae96104e09"
+    },
+    "facebook": {
+      "id": "17603a6814704c5da277bd86d0bde009",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T10:30:56.638Z",
+      "externalPostId": "1285475681307050_122125587999424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125587999424431"
+    }
+  }
+}
