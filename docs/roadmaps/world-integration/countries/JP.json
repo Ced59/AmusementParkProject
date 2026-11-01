@@ -13945,37 +13945,191 @@
     {
       "entryId": "JP-candidate-db542127e800ef",
       "name": "Tempozan Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Osaka , Honshū",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "1-1-10 Kaigandori, Minato Ward, Osaka, Japon",
+      "siteId": "c694fb12-2689-4933-89be-06ee6c8c467d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:31:52.735Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active près de Kaiyukan ; tarifs 2026, horaires et billets propres documentés par KANSAI MaaS et Japan 47 GO.",
+      "identityConfidence": "Billetterie autonome au Tempozan Harbor Village, distincte de l’aquarium ; recherches officielles Park / Standalone Tempozan et Kaiyukan sans fiche.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "天保山大観覧車",
+        "Tempozan Giant Ferris Wheel",
+        "Tenpouzan Grand Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T11:28:56.685Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f9c63edf-cd60-41cb-9f81-8f6203709d3d",
+          "appliedAt": "2026-11-01T11:26:38.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:apply:f9c63edf-cd60-41cb-9f81-8f6203709d3d",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée, identité et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-06bd599729f145e8a56151ece9726638",
+          "appliedAt": "2026-11-01T11:27:45.764Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:image:06bd599729f145e8a56151ece9726638",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue Tempozan importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-f407c79c46144649b8c94bb58090f4d3",
+          "appliedAt": "2026-11-01T11:28:00.076Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:image:f407c79c46144649b8c94bb58090f4d3",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue Tempozan importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-c379e75037a8445da1c0296ab17d65ad",
+          "appliedAt": "2026-11-01T11:28:14.390Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:image:c379e75037a8445da1c0296ab17d65ad",
+          "auditEvidence": null,
+          "summary": "Photo #3 de la roue Tempozan importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-4c781cc8-1c2b-4f7c-8353-87e92102088f",
+          "appliedAt": "2026-11-01T11:28:32.350Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:apply:4c781cc8-1c2b-4f7c-8353-87e92102088f",
+          "auditEvidence": null,
+          "summary": "Tarifs japonais officiels depuis avril 2026 intégrés en JPY, billet général et tarif réduit"
+        },
+        {
+          "eventId": "apply-d7d730d5-8af5-46e5-8315-7d2060d48faf",
+          "appliedAt": "2026-11-01T11:28:56.685Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:apply:d7d730d5-8af5-46e5-8315-7d2060d48faf",
+          "auditEvidence": null,
+          "summary": "Deux règles hebdomadaires Osaka Metro intégrées avec exceptions de météo et de maintenance documentées"
+        },
+        {
+          "eventId": "closure-d7d730d5-8af5-46e5-8315-7d2060d48faf",
+          "appliedAt": "2026-11-01T11:28:56.685Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:apply:d7d730d5-8af5-46e5-8315-7d2060d48faf",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tempozan-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos de la roue ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier les jours de fermeture du Marketplace/Kaiyukan, la météo et la maintenance, ainsi que les tarifs lors d’une prochaine mise à jour. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "KANSAI MaaS / Osaka Metro — tarifs 2026 et horaires détaillés",
+          "url": "https://app.kansai-maas.jp/spots/14558",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Japan 47 GO — nouveaux tarifs depuis avril 2026 et adresse",
+          "url": "https://www.japan47go.travel/en/detail/a9b5b322-f75c-4db3-86f6-010a3fde6d77",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Osaka Convention & Tourism Bureau — vue et accès de la roue",
+          "url": "https://osaka-info.jp/spot/tempozan-ferris-wheel/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — point de la roue 天保山大観覧車",
+          "url": "https://www.openstreetmap.org/search?query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E5%A4%A7%E8%A6%B3%E8%A6%A7%E8%BB%8A",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Tempozan Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Grand_ferris_wheel_of_Tempozan_Harbor_Village.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Tempozan Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Grand_ferris_wheel_of_Tempozan_Harbor_Village_3.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Tempozan Ferris Wheel, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Ajigawa_River_and_grand_ferris_wheel_of_Tempozan_Harbor_Village_from_Tempozan_Ferry.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Tempozan Ferris Wheel",
+            "source": "KANSAI MaaS / Osaka Metro",
+            "url": "https://app.kansai-maas.jp/spots/14558",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Tempozan Harbor Village",
+            "sourceLifecycleSignal": "Tarifs 2026 et horaires hebdomadaires publiés",
+            "sourceLocality": "Minato, Osaka",
+            "matchingMethod": "Billetterie propre et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue est une attraction payante spécifique dans le complexe Tempozan, distincte de l’aquarium Kaiyukan et des autres sites voisins."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/c694fb12-2689-4933-89be-06ee6c8c467d/tempozan-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T11:30:14.343Z",
+          "verifiedAtUtc": "2026-11-01T11:31:52.735Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c63409a1-1034-468b-9de2-840b9843eb83"
+        },
+        "facebook": {
+          "id": "ffeccdc6258c454d91a8664aeb67b365",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:30:55.106Z",
+          "externalPostId": "1285475681307050_122125597287424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125597287424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:ffeccdc6258c454d91a8664aeb67b365"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "06bd599729f145e8a56151ece9726638",
+          "f407c79c46144649b8c94bb58090f4d3",
+          "c379e75037a8445da1c0296ab17d65ad"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:29:50.963Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:d93ed686-6bb7-4100-a868-0cebc5c98c86",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-tempozan-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tempozan-ferris-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
