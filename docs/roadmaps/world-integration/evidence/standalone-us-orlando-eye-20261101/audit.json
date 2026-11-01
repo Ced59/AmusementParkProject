@@ -1,0 +1,101 @@
+{
+  "name": "The Orlando Eye",
+  "entryId": "US-candidate-72972e2d343bf3",
+  "standaloneAttractionId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+  "qualification": "Roue de ICON Park à billet propre, distincte des autres attractions du complexe.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 1,
+    "weeklyRules": 0,
+    "dateOverrides": 2,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Le calendrier change selon la date : prochains jours à relever pour étendre les horaires sans extrapolation."
+  ],
+  "sources": [
+    {
+      "label": "The Orlando Eye — billetterie officielle et tarif variable dès 29 USD",
+      "url": "https://www.theorlandoeye.com/tickets/"
+    },
+    {
+      "label": "The Orlando Eye — horaires officiels par date",
+      "url": "https://www.theorlandoeye.com/plan-your-day/before-you-visit/opening-hours/"
+    },
+    {
+      "label": "The Orlando Eye — conditions tarifaires et accompagnement",
+      "url": "https://support.theorlandoeye.com/hc/en-us/articles/115003203532-How-much-are-tickets-to-The-Orlando-Eye"
+    },
+    {
+      "label": "ICON Park — roue et attractions voisines",
+      "url": "https://iconparkorlando.com/attractions/the-orlando-eye-at-icon-park/"
+    },
+    {
+      "label": "OpenStreetMap — emprise de The Orlando Eye",
+      "url": "https://www.openstreetmap.org/way/331551657"
+    },
+    {
+      "label": "Wikimedia Commons — Orlando Eye, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Wheel_at_ICON_Park_(purple).jpg"
+    },
+    {
+      "label": "Wikimedia Commons — Orlando Eye, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Orlando_%22Eye%22_Ferris_Wheel_01.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "3e2583df9dd54289aed854bb038931c6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Wheel_at_ICON_Park_(purple).jpg",
+      "author": "Kiran891",
+      "date": "2022-12-28 18:11:14",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "subject": "Les nacelles de la roue au-dessus du toit d’ICON Park",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "4547869c91d34b24a0934b6054af3c01",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orlando_%22Eye%22_Ferris_Wheel_01.jpg",
+      "author": "ADellaGuardia",
+      "date": "2015-09-10 20:54:37",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "subject": "La silhouette lumineuse de la roue à la tombée de la nuit",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "88848754bf393d892958407fb62c28b7f162eb74d3a60207d7d61f9863cd35ca",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T12:56:51.972Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T12:52:36.809Z",
+    "photosPublishedAtUtc": "2026-11-01T12:53:36.729Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:72401388-eb3e-4258-9730-2407165812e0"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/395c043d-9aca-4e01-9725-ddcce5f1195a/the-orlando-eye",
+      "publishedAtUtc": "2026-11-01T12:55:01.952Z",
+      "applyOperationId": "0142f8de-0d3c-4b82-a106-b8e229db59c5"
+    },
+    "facebook": {
+      "id": "7783a31c8d624d8d8ce4b16f0c21791e",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T12:55:50.985Z",
+      "externalPostId": "1285475681307050_122125608075424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125608075424431"
+    }
+  }
+}
