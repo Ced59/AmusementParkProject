@@ -15384,19 +15384,19 @@
     {
       "entryId": "DE-candidate-standalone-fbfcc656a25fbb",
       "name": "Luge Wiegand — Loreley",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-01",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "La référence Wiegand désigne la piste Loreley-Bob déjà intégrée sous une identité visiteur unique.",
+      "identityConfidence": "Constructeur, lieu de Bornich et nom Loreley rapprochés de la piste officielle à billet propre.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -15405,7 +15405,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence constructeur comme doublon documentaire de DE-candidate-a0ac84e5a9cacb ; ne pas créer de seconde fiche ni republier Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -15416,23 +15416,31 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.loreleybob.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Loreley-Bob — piste, parcours et conditions d’âge",
+          "url": "https://www.loreleybob.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
-            "name": "Loreley",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1268",
+            "name": "Loreley-Bob",
+            "source": "Loreley-Bob — exploitant",
+            "url": "https://www.loreleybob.de/sommersaison/sommerrodelbahn/",
             "family": "Luge d’été",
-            "sourceVenueName": "Loreley",
-            "referenceId": "location-id-1268"
+            "sourceVenueName": "Loreley-Bob",
+            "sourceLocality": "Bornich",
+            "matchingMethod": "Même lieu, même installation et même nom que la référence Wiegand"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "La référence du constructeur et la candidate de découverte désignent la même piste autonome ; conserver les deux lignes pour éviter une redécouverte."
+      },
+      "duplicateOf": "DE-candidate-a0ac84e5a9cacb",
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-loreley-bob-20261101/audit.json"
     },
     {
       "entryId": "DE-candidate-standalone-99b3786c77a2e5",
@@ -28750,38 +28758,176 @@
     },
     {
       "entryId": "DE-candidate-a0ac84e5a9cacb",
-      "name": "Wiegand Erlebnisberge - Sommerrodelbahn Loreley-Bob",
-      "entityKind": "ToQualify",
+      "name": "Loreley-Bob",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Bornich",
-      "siteId": null,
+      "category": "Luge d’été",
+      "locality": "Loreley 11, 56348 Bornich",
+      "siteId": "f86e0223-83b4-4090-b476-717b51776232",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T10:20:11.248Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Piste active jusqu’au 1er novembre 2026 inclus, de midi à 16 h et seulement par temps sec selon le feu d’ouverture actualisé le 28 octobre. Saison suivante non annoncée.",
+      "identityConfidence": "Piste Wiegand et billetterie propre établies par l’exploitant ; recherches officielles Park et Standalone « Loreley » sans fiche ; deux photos du parcours vérifiées. Le lieu offre aussi PitPat, Holzkugelbahn et des jeux.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Wiegand Erlebnisberge - Sommerrodelbahn Loreley-Bob",
+        "Sommerrodelbahn Loreley",
+        "Luge Wiegand — Loreley"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T10:16:07.792Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4b374910-3947-4262-b84c-e1aa062fa008",
+          "appliedAt": "2026-11-01T10:13:00.101Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f86e0223-83b4-4090-b476-717b51776232",
+          "evidence": "PARK_DATA_EDITOR:apply:4b374910-3947-4262-b84c-e1aa062fa008",
+          "auditEvidence": null,
+          "summary": "Fiche privée, descriptions en huit langues, identité de la piste et conditions de saison documentées"
+        },
+        {
+          "eventId": "image-22f06861a11b486fa507a44e59b8e9fe",
+          "appliedAt": "2026-11-01T10:13:34.814Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f86e0223-83b4-4090-b476-717b51776232",
+          "evidence": "PARK_DATA_EDITOR:image:22f06861a11b486fa507a44e59b8e9fe",
+          "auditEvidence": null,
+          "summary": "Photo #1 propre à la piste, prise en mars 2022, importée de Wikimedia Commons sous CC BY-SA 4.0"
+        },
+        {
+          "eventId": "image-c5abc868f5cb4406afe8a57bde249895",
+          "appliedAt": "2026-11-01T10:13:53.422Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f86e0223-83b4-4090-b476-717b51776232",
+          "evidence": "PARK_DATA_EDITOR:image:c5abc868f5cb4406afe8a57bde249895",
+          "auditEvidence": null,
+          "summary": "Photo #2 propre à la piste, prise en mars 2022, importée de Wikimedia Commons sous CC BY-SA 4.0"
+        },
+        {
+          "eventId": "apply-2419d235-b4fc-4efa-be15-26687958ece1",
+          "appliedAt": "2026-11-01T10:15:35.952Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f86e0223-83b4-4090-b476-717b51776232",
+          "evidence": "PARK_DATA_EDITOR:apply:2419d235-b4fc-4efa-be15-26687958ece1",
+          "auditEvidence": null,
+          "summary": "Quatre offres affichées le 1er novembre 2026, bornées à la dernière journée de la saison annoncée"
+        },
+        {
+          "eventId": "apply-d428e575-4d81-47f5-acd4-8b52047e477c",
+          "appliedAt": "2026-11-01T10:16:07.792Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f86e0223-83b4-4090-b476-717b51776232",
+          "evidence": "PARK_DATA_EDITOR:apply:d428e575-4d81-47f5-acd4-8b52047e477c",
+          "auditEvidence": null,
+          "summary": "Dernière période horaire 2026 jusqu’au 1er novembre inclus, conditionnée par la météo"
+        },
+        {
+          "eventId": "closure-d428e575-4d81-47f5-acd4-8b52047e477c",
+          "appliedAt": "2026-11-01T10:16:07.792Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f86e0223-83b4-4090-b476-717b51776232",
+          "evidence": "PARK_DATA_EDITOR:apply:d428e575-4d81-47f5-acd4-8b52047e477c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-loreley-bob-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage, deux photos propres importées ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier le calendrier et les tarifs de la saison suivante ; qualifier séparément le site parent et ses autres activités comme éventuelle fiche Park, sans dupliquer la piste. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/wiegand-erlebnisberge-sommerrodelbahn-loreley-bob/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Loreley-Bob — piste, parcours et conditions d’âge",
+          "url": "https://www.loreleybob.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Loreley-Bob — tarifs affichés de la piste",
+          "url": "https://www.loreleybob.de/infos/preise/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Loreley-Bob — horaires et feu d’ouverture actualisé le 28 octobre 2026",
+          "url": "https://www.loreleybob.de/infos/oeffnungszeiten/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Loreley-Bob — adresse et coordonnées officielles",
+          "url": "https://www.loreleybob.de/infos/anfahrt/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — piste et remontée, Whgler, 2022",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Loreley_2020b.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — courbe de piste, Whgler, 2022",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Loreley_2022a.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Loreley-Bob",
+            "source": "Loreley-Bob — exploitant",
+            "url": "https://www.loreleybob.de/sommersaison/sommerrodelbahn/",
+            "family": "Luge d’été",
+            "sourceVenueName": "Loreley-Bob",
+            "sourceLifecycleSignal": "Dernière plage annoncée jusqu’au 1er novembre 2026",
+            "sourceLocality": "Bornich",
+            "matchingMethod": "Piste précise à billet propre, photos du parcours et recherche officielle Park / Standalone sans correspondance"
+          }
+        ],
+        "rationale": "La piste possède son tarif et son identité propres. Le site propose d’autres activités, dont le classement éventuel en parc reste à qualifier ; la piste ne doit pas être dupliquée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f86e0223-83b4-4090-b476-717b51776232/loreley-bob",
+          "publishedAtUtc": "2026-11-01T10:17:47.692Z",
+          "verifiedAtUtc": "2026-11-01T10:20:11.248Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d2e775be-ca94-4866-8b4c-94cb7b5615a2"
+        },
+        "facebook": {
+          "id": "af1a23675cd546bb99ce101fc51500b8",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T10:18:43.298Z",
+          "externalPostId": "1285475681307050_122125586763424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125586763424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:af1a23675cd546bb99ce101fc51500b8"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "22f06861a11b486fa507a44e59b8e9fe",
+          "c5abc868f5cb4406afe8a57bde249895"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T10:16:55.109Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:9df0beed-3272-49e7-88b0-fac3a28d221c",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-de-loreley-bob-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-loreley-bob-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {

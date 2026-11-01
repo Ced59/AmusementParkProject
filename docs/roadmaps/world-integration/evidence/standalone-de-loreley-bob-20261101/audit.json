@@ -1,0 +1,97 @@
+{
+  "name": "Loreley-Bob",
+  "entryId": "DE-candidate-a0ac84e5a9cacb",
+  "standaloneAttractionId": "f86e0223-83b4-4090-b476-717b51776232",
+  "qualification": "Piste Wiegand à tarif propre sur le plateau de la Loreley ; le site possède d’autres activités dont le classement parent reste à qualifier. Recherches officielles Park et Standalone sans fiche.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 4,
+    "regularRules": 1,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Calendrier et tarifs au-delà du 1er novembre 2026 non annoncés.",
+    "Le classement du site parent et des autres activités reste à qualifier séparément."
+  ],
+  "sources": [
+    {
+      "label": "Loreley-Bob — piste, parcours et conditions d’âge",
+      "url": "https://www.loreleybob.de/sommersaison/sommerrodelbahn/"
+    },
+    {
+      "label": "Loreley-Bob — tarifs affichés de la piste",
+      "url": "https://www.loreleybob.de/infos/preise/"
+    },
+    {
+      "label": "Loreley-Bob — horaires et feu d’ouverture actualisé le 28 octobre 2026",
+      "url": "https://www.loreleybob.de/infos/oeffnungszeiten/"
+    },
+    {
+      "label": "Loreley-Bob — adresse et coordonnées officielles",
+      "url": "https://www.loreleybob.de/infos/anfahrt/"
+    },
+    {
+      "label": "Wikimedia Commons — piste et remontée, Whgler, 2022",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Loreley_2020b.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — courbe de piste, Whgler, 2022",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Loreley_2022a.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "22f06861a11b486fa507a44e59b8e9fe",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Loreley_2020b.jpg",
+      "author": "Whgler",
+      "date": "2022-03-03",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Vue de la piste et de la remontée, prise en mars 2022",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "c5abc868f5cb4406afe8a57bde249895",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Loreley_2022a.jpg",
+      "author": "Whgler",
+      "date": "2022-03-03",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Un virage de la Sommerrodelbahn Loreley en mars 2022",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "ec592aab21b8cfed60f590c7f1007eda67925cd4256c51c1738578499cdf7214",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T10:20:11.248Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T10:16:07.792Z",
+    "photosPublishedAtUtc": "2026-11-01T10:16:55.109Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:9df0beed-3272-49e7-88b0-fac3a28d221c"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/f86e0223-83b4-4090-b476-717b51776232/loreley-bob",
+      "publishedAtUtc": "2026-11-01T10:17:47.692Z",
+      "applyOperationId": "d2e775be-ca94-4866-8b4c-94cb7b5615a2"
+    },
+    "facebook": {
+      "id": "af1a23675cd546bb99ce101fc51500b8",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T10:18:43.298Z",
+      "externalPostId": "1285475681307050_122125586763424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125586763424431"
+    }
+  }
+}
