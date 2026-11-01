@@ -1,0 +1,128 @@
+{
+  "name": "Orlando StarFlyer",
+  "entryId": "US-candidate-discovery-f182f64e1743f5",
+  "standaloneAttractionId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+  "qualification": "Balançoire volante avec billets, exploitant et adresse propres ; quatre recherches officielles Park/Standalone sans fiche.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "gateAdmissionOffers": 4,
+    "onlinePriceOffers": 1,
+    "weeklyRules": 1
+  },
+  "remainingGaps": [
+    "L’accueil officiel indique 10 h–2 h chaque jour, mais la page Contact indique 12 h–minuit du dimanche au jeudi et 12 h–2 h le vendredi et samedi. La règle structurée reproduit l’accueil, avec avertissement multilingue ; une confirmation par l’exploitant reste nécessaire."
+  ],
+  "sources": [
+    {
+      "label": "Orlando StarFlyer — accueil, expérience et horaire affiché",
+      "url": "https://starflyer.com/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Orlando StarFlyer — tarifs et conditions officiels",
+      "url": "https://starflyer.com/tickets/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Orlando StarFlyer — historique et caractéristiques",
+      "url": "https://starflyer.com/about/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Orlando StarFlyer — règles de visite",
+      "url": "https://starflyer.com/rules-information/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Orlando StarFlyer — adresse et horaire contradictoire",
+      "url": "https://starflyer.com/contact-2/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "OpenStreetMap — point de l’adresse 8265 International Drive",
+      "url": "https://www.openstreetmap.org/search?query=8265%20International%20Drive%20Orlando",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Orlando StarFlyer, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_de_nuit_en_f%C3%A9vrier_2022.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Orlando StarFlyer, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_de_nuit_en_f%C3%A9vrier_2022_(2).jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Orlando StarFlyer, photo 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_en_f%C3%A9vrier_2022.JPG",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "30e02b056d61429fb863e5448ee3a48d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_de_nuit_en_f%C3%A9vrier_2022.jpg",
+      "author": "Benoît Prieur",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "photographedAt": "2022-02-01",
+      "subject": "La tour Orlando StarFlyer entière, illuminée de nuit en février 2022.",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "1c246a266a7d4cbc8a5f2fa32d304ebd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_de_nuit_en_f%C3%A9vrier_2022_(2).jpg",
+      "author": "Benoît Prieur",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "photographedAt": "2022-02-01",
+      "subject": "Sommet et sièges d’Orlando StarFlyer éclairés de nuit.",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "b87565c5aa164eb9bac8ae45037674d6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_en_f%C3%A9vrier_2022.JPG",
+      "author": "Benoît Prieur",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "photographedAt": "2022-02-03",
+      "subject": "Tour Orlando StarFlyer photographiée en plein jour en février 2022.",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "3ce18643a117f156adbf6d001554f0e0929e5217804e185c4a5f028353694887",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T15:01:47.263Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T14:58:13.978Z",
+    "photosPublishedAtUtc": "2026-11-01T14:56:01.007Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:a4760002-e032-4761-b8a7-525f25e0c63f"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e/orlando-starflyer",
+      "publishedAtUtc": "2026-11-01T14:59:30.329Z",
+      "applyOperationId": "cf42d732-f5cd-4010-9f86-b190614cc130"
+    },
+    "facebook": {
+      "id": "dfca02a41ecb49bca1b149ddf6176c53",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T15:00:31.256Z",
+      "externalPostId": "1285475681307050_122125619649424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125619649424431"
+    }
+  }
+}

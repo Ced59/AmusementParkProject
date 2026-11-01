@@ -74163,6 +74163,211 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "US-candidate-discovery-f182f64e1743f5",
+      "name": "Orlando StarFlyer",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire volante géante",
+      "locality": "8265 International Drive, Orlando, Floride, États-Unis",
+      "siteId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:01:47.263Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires affichés sur le site officiel au 1er novembre 2026 ; divergence d’horaires entre accueil et page Contact signalée.",
+      "identityConfidence": "Nouvelle découverte hors inventaire, exploitant et emplacement propres ; recherches officielles Park/Standalone Orlando StarFlyer, StarFlyer et ICON Park sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "Orlando Star Flyer",
+        "StarFlyer Orlando",
+        "I-Drive StarFlyer"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T14:58:13.978Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-41a7156b-bdb8-4fb6-ab25-f3341dd2c339",
+          "appliedAt": "2026-11-01T14:52:05.496Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:41a7156b-bdb8-4fb6-ab25-f3341dd2c339",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après découverte hors inventaire, identité et huit descriptions"
+        },
+        {
+          "eventId": "apply-7d27762d-2484-49c0-bcda-d8e7bd9b3e0c",
+          "appliedAt": "2026-11-01T14:53:30.937Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:7d27762d-2484-49c0-bcda-d8e7bd9b3e0c",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs officiels au guichet et un prix en ligne intégrés en USD, avec taxes et conditions signalées"
+        },
+        {
+          "eventId": "apply-53611ec3-615a-4bb3-aba3-89c672566288",
+          "appliedAt": "2026-11-01T14:54:07.104Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:53611ec3-615a-4bb3-aba3-89c672566288",
+          "auditEvidence": null,
+          "summary": "Horaire affiché sur la page d’accueil intégré avec avertissement explicite sur la contradiction de la page Contact"
+        },
+        {
+          "eventId": "image-30e02b056d61429fb863e5448ee3a48d",
+          "appliedAt": "2026-11-01T14:54:35.079Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:image:30e02b056d61429fb863e5448ee3a48d",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte d’Orlando StarFlyer importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-1c246a266a7d4cbc8a5f2fa32d304ebd",
+          "appliedAt": "2026-11-01T14:54:54.652Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:image:1c246a266a7d4cbc8a5f2fa32d304ebd",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte d’Orlando StarFlyer importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-b87565c5aa164eb9bac8ae45037674d6",
+          "appliedAt": "2026-11-01T14:55:15.398Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:image:b87565c5aa164eb9bac8ae45037674d6",
+          "auditEvidence": null,
+          "summary": "Photo 3 exacte d’Orlando StarFlyer importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-3bd4edda-a862-4443-9af5-d14de13fcf40",
+          "appliedAt": "2026-11-01T14:58:13.978Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:3bd4edda-a862-4443-9af5-d14de13fcf40",
+          "auditEvidence": null,
+          "summary": "Descriptions reformulées dans huit langues après contrôle éditorial des mesures brutes"
+        },
+        {
+          "eventId": "closure-3bd4edda-a862-4443-9af5-d14de13fcf40",
+          "appliedAt": "2026-11-01T14:58:13.978Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:3bd4edda-a862-4443-9af5-d14de13fcf40",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-starflyer-20261101/audit.json",
+          "summary": "Audit final 91/100 sans blocage et trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Faire confirmer les horaires divergents entre accueil et page Contact de l’exploitant, puis rectifier la règle horaire ; revérifier prix, taxes et conditions. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Orlando StarFlyer — accueil, expérience et horaire affiché",
+          "url": "https://starflyer.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Orlando StarFlyer — tarifs et conditions officiels",
+          "url": "https://starflyer.com/tickets/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Orlando StarFlyer — historique et caractéristiques",
+          "url": "https://starflyer.com/about/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Orlando StarFlyer — règles de visite",
+          "url": "https://starflyer.com/rules-information/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Orlando StarFlyer — adresse et horaire contradictoire",
+          "url": "https://starflyer.com/contact-2/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — point de l’adresse 8265 International Drive",
+          "url": "https://www.openstreetmap.org/search?query=8265%20International%20Drive%20Orlando",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Orlando StarFlyer, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_de_nuit_en_f%C3%A9vrier_2022.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Orlando StarFlyer, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_de_nuit_en_f%C3%A9vrier_2022_(2).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Orlando StarFlyer, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_en_f%C3%A9vrier_2022.JPG",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Orlando StarFlyer",
+            "source": "Orlando StarFlyer — site officiel",
+            "url": "https://starflyer.com/",
+            "family": "Balançoire volante géante",
+            "sourceVenueName": "Orlando StarFlyer",
+            "sourceLifecycleSignal": "Billetterie spécifique et site actif au 1er novembre 2026",
+            "sourceLocality": "International Drive, Orlando",
+            "matchingMethod": "Exploitant, billets et adresse propres ; recherches officielles Park/Standalone sans fiche"
+          }
+        ],
+        "rationale": "L’attraction est opérée avec sa billetterie et ses règles propres sur International Drive, distincte des attractions de voisinage."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e/orlando-starflyer",
+          "publishedAtUtc": "2026-11-01T14:59:30.329Z",
+          "verifiedAtUtc": "2026-11-01T15:01:47.263Z",
+          "evidence": "PARK_DATA_EDITOR:apply:cf42d732-f5cd-4010-9f86-b190614cc130"
+        },
+        "facebook": {
+          "id": "dfca02a41ecb49bca1b149ddf6176c53",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:00:31.256Z",
+          "externalPostId": "1285475681307050_122125619649424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125619649424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:dfca02a41ecb49bca1b149ddf6176c53"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "30e02b056d61429fb863e5448ee3a48d",
+          "1c246a266a7d4cbc8a5f2fa32d304ebd",
+          "b87565c5aa164eb9bac8ae45037674d6"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T14:56:01.007Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:a4760002-e032-4761-b8a7-525f25e0c63f",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-starflyer-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-starflyer-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
     }
   ]
 }
