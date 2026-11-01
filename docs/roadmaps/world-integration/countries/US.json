@@ -7584,38 +7584,170 @@
     },
     {
       "entryId": "US-candidate-3b680ad27a9128",
-      "name": "Branson Ferris Wheel",
-      "entityKind": "ToQualify",
+      "name": "The Branson Ferris Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "The Track Family Fun Parks, Hwy 76, Branson, Missouri",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "3335 W 76 Country Blvd, Branson, Missouri, États-Unis",
+      "siteId": "b7d1a5db-854c-453a-add8-0d95751eedea",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:10:16.780Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Billetterie officielle active au 1er novembre 2026, fonctionnement selon calendrier et météo.",
+      "identityConfidence": "Roue distincte des autres activités de Track 4, billet propre ; recherches Park et Standalone officielles sans homonyme.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Branson Ferris Wheel",
+        "The Track Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T12:06:27.113Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-49849c3b-b712-442b-a2ed-68bc2196812f",
+          "appliedAt": "2026-11-01T12:02:47.394Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:apply:49849c3b-b712-442b-a2ed-68bc2196812f",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée et descriptions en huit langues intégrées"
+        },
+        {
+          "eventId": "image-91577beba83c410c92b3389ee90be2e7",
+          "appliedAt": "2026-11-01T12:03:40.894Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:image:91577beba83c410c92b3389ee90be2e7",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la Branson Ferris Wheel importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-fe560586e48644259b13214ddd88814c",
+          "appliedAt": "2026-11-01T12:04:04.864Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:image:fe560586e48644259b13214ddd88814c",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la Branson Ferris Wheel importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-4541b21d-f5d0-4504-bff7-9698ba43664e",
+          "appliedAt": "2026-11-01T12:04:52.923Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:apply:4541b21d-f5d0-4504-bff7-9698ba43664e",
+          "auditEvidence": null,
+          "summary": "Tarifs adultes et enfants hors taxes intégrés en USD"
+        },
+        {
+          "eventId": "apply-e7695d10-6427-40f5-8615-9a4157a97a5e",
+          "appliedAt": "2026-11-01T12:06:27.113Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:apply:e7695d10-6427-40f5-8615-9a4157a97a5e",
+          "auditEvidence": null,
+          "summary": "Légendes des deux photos différenciées des textes alternatifs après audit éditorial"
+        },
+        {
+          "eventId": "closure-e7695d10-6427-40f5-8615-9a4157a97a5e",
+          "appliedAt": "2026-11-01T12:06:27.113Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:apply:e7695d10-6427-40f5-8615-9a4157a97a5e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-branson-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 81/100 publiable sans blocage et deux photos exactes ; horaires non chiffrés à compléter ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Relever les horaires quotidiens sur le calendrier de l’exploitant ; vérifier les prix et la météo avant chaque mise à jour. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The Track — Branson Ferris Wheel, tarifs et consignes officiels",
+          "url": "https://bransontracks.com/branson-ferris-wheel-homepage/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Book.Branson — roue à Track 4, adresse propre",
+          "url": "https://book.branson.com/attractions/the-branson-ferris-wheel",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — périmètre de la roue",
+          "url": "https://www.openstreetmap.org/way/523737192",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Branson Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel,_Branson,_MO_IMG_1680_(2).JPG",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Branson Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Framing-Ferris_Wheel.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "The Branson Ferris Wheel",
+            "source": "The Track — page de la roue",
+            "url": "https://bransontracks.com/branson-ferris-wheel-homepage/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Track 4",
+            "sourceLifecycleSignal": "Billetterie propre au 1er novembre 2026",
+            "sourceLocality": "Branson, Missouri",
+            "matchingMethod": "Billet propre et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Roue avec billet individuel adjacent à Track 4 ; les autres manèges sont des activités distinctes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b7d1a5db-854c-453a-add8-0d95751eedea/the-branson-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T12:07:43.256Z",
+          "verifiedAtUtc": "2026-11-01T12:10:16.780Z",
+          "evidence": "PARK_DATA_EDITOR:apply:4ac22e24-dad7-4a45-a081-5645aaf30615"
+        },
+        "facebook": {
+          "id": "11988982d40c4fb08f338d248c0dadfb",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T12:08:30.080Z",
+          "externalPostId": "1285475681307050_122125601877424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125601877424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:11988982d40c4fb08f338d248c0dadfb"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "91577beba83c410c92b3389ee90be2e7",
+          "fe560586e48644259b13214ddd88814c"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T12:07:15.683Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:e89888d2-c2ff-4ca8-9293-a8e6343f2d59",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-branson-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-branson-ferris-wheel-20261101/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -42207,37 +42339,60 @@
     {
       "entryId": "US-candidate-c13326c3f2c84f",
       "name": "Myrtle Beach SkyWheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "category": "Grande roue panoramique",
       "locality": "Myrtle Beach, South Carolina",
-      "siteId": null,
+      "siteId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:10:16.780Z",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "identityConfidence": "Myrtle Beach SkyWheel est la même roue que SkyWheel Myrtle Beach, déjà publiée sous US-candidate-b580f555d9d1fb ; page en ligne vérifiée et photo existante constatée.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "SkyWheel Myrtle Beach"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la piste comme alias de US-candidate-b580f555d9d1fb. Ne pas créer une seconde fiche ni republier Facebook ; suivre les mises à jour sur la fiche intégrée.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "SkyWheel Myrtle Beach — site officiel et identité",
+          "url": "https://skywheelmb.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Fiche standalone déjà publiée avec photographie",
+          "url": "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "SkyWheel Myrtle Beach",
+            "source": "SkyWheel Myrtle Beach — site officiel",
+            "url": "https://skywheelmb.com/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Myrtle Beach Boardwalk",
+            "sourceLifecycleSignal": "Billetterie et horaires officiels en ligne",
+            "sourceLocality": "Myrtle Beach, South Carolina",
+            "matchingMethod": "Nom inversé et même localité ; fiche déjà publiée"
+          }
+        ],
+        "rationale": "Le nom inversé désigne la roue déjà intégrée sous US-candidate-b580f555d9d1fb."
       }
     },
     {
