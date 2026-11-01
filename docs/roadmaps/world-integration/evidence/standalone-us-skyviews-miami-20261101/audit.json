@@ -1,0 +1,125 @@
+{
+  "name": "Skyviews Miami",
+  "entryId": "US-candidate-94cdb6c6fa968d",
+  "standaloneAttractionId": "998077d1-0e1b-4e1b-a263-1185a324f105",
+  "qualification": "Grande roue avec billets directs à Bayside Marketplace ; recherches officielles Park et Standalone sans correspondance.",
+  "decision": "Published",
+  "score": 78,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "gateAdmissionOffers": 0,
+    "onlinePriceOffers": 0,
+    "weeklyRules": 1
+  },
+  "remainingGaps": [
+    "La FAQ directe indique 13 h–22 h du lundi au vendredi et la page Contact indique 13 h–21 h 30 du lundi au jeudi, puis 12 h–22 h le vendredi. Seul le week-end, 12 h–22 h, est saisi en règle hebdomadaire.",
+    "Le prix de la billetterie directe n’a pas pu être lu de façon fiable ; aucun montant de revendeur n’a été attribué à l’exploitant.",
+    "La seconde photo montre explicitement la construction de la même roue en 2020 ; elle n’est pas présentée comme vue actuelle."
+  ],
+  "sources": [
+    {
+      "label": "Skyviews Miami — site et billetterie officielle",
+      "url": "https://skyviewsmiami.com/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Skyviews Miami — FAQ, durée, nacelles et horaires annoncés",
+      "url": "https://skyviewsmiami.com/faqs/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Skyviews Miami — adresse et horaires de fermeture divergents",
+      "url": "https://skyviewsmiami.com/contact-us/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Skyviews Miami — types de billets",
+      "url": "https://skyviewsmiami.com/tickets/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Tiqets / Outdooractive — coordonnées de la roue",
+      "url": "https://www.outdooractive.com/mobile/en/offer/miami-dade-county/skyviews-miami-observation-wheel-entry-ticket/805882040/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Skyviews Miami, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Skyviews_Miami_Bayside_Marketplace_-_Ferris_Wheel_Cars,_2022.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Skyviews Miami, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Observation_Wheel_Construction_Bayside_Marketplace_Downtown_Miami_-_01.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Skyviews Miami, photo 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Bayside,_Miami,_Florida_June_2021_-_03.jpg",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "4d5a5cb1c90740a2bb56e8b8b6f0abba",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyviews_Miami_Bayside_Marketplace_-_Ferris_Wheel_Cars,_2022.jpg",
+      "author": "Phillip Pessar",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2022-09-30",
+      "subject": "Nacelles de Skyviews Miami en fonctionnement au-dessus de Bayside Marketplace en septembre 2022.",
+      "transformation": "Vignette Wikimedia Commons 1920 px, sans recadrage"
+    },
+    {
+      "imageId": "ecb84e503c494a77bfcb113f201d176d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Observation_Wheel_Construction_Bayside_Marketplace_Downtown_Miami_-_01.jpg",
+      "author": "Phillip Pessar",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2020-02-14",
+      "subject": "Construction de la roue de Bayside Marketplace, future Skyviews Miami, en février 2020.",
+      "transformation": "Vignette Wikimedia redimensionnée et optimisée en JPEG, sans recadrage"
+    },
+    {
+      "imageId": "bba8983d0f8b41eaa5f9cfeb71b28d7b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bayside,_Miami,_Florida_June_2021_-_03.jpg",
+      "author": "Sharon Hahn Darlin",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2021-06-09",
+      "subject": "Skyviews Miami derrière les bâtiments du front de mer à Bayside Marketplace en juin 2021.",
+      "transformation": "Vignette Wikimedia Commons 1920 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "e82054b1f9ed3b1cdd1f2672598c9e24bebccf9f1ca4fcf6b2bce5b879743e4d",
+    "projectedScore": 78,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T16:19:31.318Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T16:16:13.554Z",
+    "photosPublishedAtUtc": "2026-11-01T16:16:58.870Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:7874895d-d174-49bc-82b6-e35b62b38df2"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/998077d1-0e1b-4e1b-a263-1185a324f105/skyviews-miami",
+      "publishedAtUtc": "2026-11-01T16:17:39.559Z",
+      "applyOperationId": "815e9cc3-15e0-4a2f-8cc6-33cbeb60a6aa"
+    },
+    "facebook": {
+      "id": "c121738cd9604d1e8d59df004f4871fc",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T16:18:34.285Z",
+      "externalPostId": "1285475681307050_122125626669424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125626669424431"
+    }
+  }
+}
