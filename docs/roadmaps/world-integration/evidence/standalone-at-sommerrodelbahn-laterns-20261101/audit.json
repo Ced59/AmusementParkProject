@@ -1,0 +1,96 @@
+{
+  "name": "Sommerrodelbahn Laterns",
+  "entryId": "AT-candidate-standalone-3f84eb294e7228",
+  "standaloneAttractionId": "e530512a-1a28-4a74-b968-052fac792800",
+  "qualification": "Billetterie propre à la luge Wiegand de Laterns ; saison 2026 terminée et fermeture estivale confirmée, sans date 2027 ; recherches officielles Park et Standalone sans fiche.",
+  "decision": "Published",
+  "score": 75,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "regularRules": 3,
+    "admissionOffers": 12,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "La prochaine saison estivale et ses tarifs ne sont pas encore annoncés ; les données 2026 sont bornées au 18 octobre.",
+    "Aucune date d’ouverture initiale certaine ni règle spécifique couvrant les jours fériés supplémentaires n’a été établie."
+  ],
+  "sources": [
+    {
+      "label": "Seilbahnen Laterns — parcours de la luge et conditions d’âge",
+      "url": "https://www.laterns.net/sommer/angebot/sommerrodelbahn"
+    },
+    {
+      "label": "Seilbahnen Laterns — tarifs et périodes de la saison 2026",
+      "url": "https://www.laterns.net/sommer/tarife-betriebszeiten"
+    },
+    {
+      "label": "Seilbahnen Laterns — avis de fin de saison estivale",
+      "url": "https://www.laterns.net/sommer"
+    },
+    {
+      "label": "OpenStreetMap Nominatim — Sommerrodelbahn Laterns",
+      "url": "https://nominatim.openstreetmap.org/search?q=Sommerrodelbahn+Laterns+K%C3%BChboden&format=json"
+    },
+    {
+      "label": "Wikimedia Commons — piste de Laterns 01, Asurnipal, 2024",
+      "url": "https://commons.wikimedia.org/wiki/File:Laterns-Kuehboden-summer_toboggan-run_(type_Wiegand)-01ASD.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — piste de Laterns 02, Asurnipal, 2024",
+      "url": "https://commons.wikimedia.org/wiki/File:Laterns-Kuehboden-summer_toboggan-run_(type_Wiegand)-02ASD.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "abe0a404983e4d09987288a965bc8282",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Laterns-Kuehboden-summer_toboggan-run_(type_Wiegand)-01ASD.jpg",
+      "author": "Asurnipal",
+      "date": "2024-07-06",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Remonte-pente de la luge de Laterns au Kühboden",
+      "transformation": "vignette Wikimedia Commons optimisée 960 px, sans recadrage"
+    },
+    {
+      "imageId": "8ac64514610d4f7b9073a64b2f31fdff",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Laterns-Kuehboden-summer_toboggan-run_(type_Wiegand)-02ASD.jpg",
+      "author": "Asurnipal",
+      "date": "2024-07-06",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Virage de la piste de Laterns près de la remontée",
+      "transformation": "vignette Wikimedia Commons optimisée 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "f01a702f576a1f32b05ff63786962fbe4cf910e39cebfd1a2b37d312d8b8c712",
+    "projectedScore": 75,
+    "projectedBlockers": [],
+    "publicScore": 75,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T09:47:54.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/e530512a-1a28-4a74-b968-052fac792800/sommerrodelbahn-laterns",
+      "publishedAtUtc": "2026-11-01T09:46:27.777Z",
+      "applyOperationId": "7e1ead88-4025-42e3-9eb2-432fe8eecdde"
+    },
+    "facebook": {
+      "id": "05bbc0de1a03450899002848c044287b",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T09:47:44.099Z",
+      "externalPostId": "1285475681307050_122125583043424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125583043424431"
+    }
+  }
+}

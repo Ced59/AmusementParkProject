@@ -3803,29 +3803,101 @@
     },
     {
       "entryId": "AT-candidate-standalone-3f84eb294e7228",
-      "name": "Luge Wiegand — Laterns",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Laterns",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Kühboden 7, 6830 Laterns",
+      "siteId": "e530512a-1a28-4a74-b968-052fac792800",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T09:47:54.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Saison 2026 achevée le 18 octobre ; exploitant confirme la fermeture estivale au 1er novembre. Aucune date 2027 publiée.",
+      "identityConfidence": "Piste Wiegand à billetterie propre sur le domaine Laterns ; recherches officielles Park et Standalone « Laterns » sans correspondance ; photos du parcours vérifiées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Laterns"
+        "Sommerrodelbahn Kühboden",
+        "Luge Wiegand — Laterns"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T09:45:52.657Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-e7f8ada3-4b3e-4f7a-b3a7-6f31077c7aad",
+          "appliedAt": "2026-10-28T23:52:56.767Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:e7f8ada3-4b3e-4f7a-b3a7-6f31077c7aad",
+          "auditEvidence": null,
+          "summary": "Fiche privée, descriptions en huit langues et fermeture de la saison 2026 documentées"
+        },
+        {
+          "eventId": "apply-8d55799c-abcb-4751-ad8d-8c0491ed9ce4",
+          "appliedAt": "2026-10-28T23:54:46.509Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:8d55799c-abcb-4751-ad8d-8c0491ed9ce4",
+          "auditEvidence": null,
+          "summary": "Cycle d’exploitation saisonnier clarifié sans annoncer de réouverture future"
+        },
+        {
+          "eventId": "apply-ea3714ff-8753-4ff7-97a0-b8b6c7982695",
+          "appliedAt": "2026-10-28T23:55:14.506Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:ea3714ff-8753-4ff7-97a0-b8b6c7982695",
+          "auditEvidence": null,
+          "summary": "Douze tarifs de la saison 2026 intégrés avec date de fin au 18 octobre"
+        },
+        {
+          "eventId": "image-abe0a404983e4d09987288a965bc8282",
+          "appliedAt": "2026-10-28T23:55:45.841Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:image:abe0a404983e4d09987288a965bc8282",
+          "auditEvidence": null,
+          "summary": "Photographie #1 propre à la piste importée de Wikimedia Commons, avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-8ac64514610d4f7b9073a64b2f31fdff",
+          "appliedAt": "2026-10-28T23:56:10.929Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:image:8ac64514610d4f7b9073a64b2f31fdff",
+          "auditEvidence": null,
+          "summary": "Photographie #2 propre à la piste importée de Wikimedia Commons, avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-16d56efd-6762-4460-aaaf-9d8eabbafb18",
+          "appliedAt": "2026-10-28T23:58:16.188Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:16d56efd-6762-4460-aaaf-9d8eabbafb18",
+          "auditEvidence": null,
+          "summary": "Trois périodes horaires 2026 bornées intégrées ; jours fériés supplémentaires et météo signalés"
+        },
+        {
+          "eventId": "apply-bfac2fdc-70dc-47b8-b597-c455f05bf3e9",
+          "appliedAt": "2026-11-01T09:45:52.657Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:bfac2fdc-70dc-47b8-b597-c455f05bf3e9",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-laterns-20261101/audit.json",
+          "summary": "Deux photographies propres rendues publiques ; audit final 75/100 sans blocage"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier la date de réouverture et les nouveaux tarifs 2027 avant toute mise à jour des horaires ou du statut saisonnier ; ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -3836,22 +3908,77 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.laterns.net/web_s/index.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Seilbahnen Laterns — parcours de la luge et conditions d’âge",
+          "url": "https://www.laterns.net/sommer/angebot/sommerrodelbahn",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Seilbahnen Laterns — tarifs et périodes de la saison 2026",
+          "url": "https://www.laterns.net/sommer/tarife-betriebszeiten",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Seilbahnen Laterns — avis de fin de saison estivale",
+          "url": "https://www.laterns.net/sommer",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — Sommerrodelbahn Laterns",
+          "url": "https://nominatim.openstreetmap.org/search?q=Sommerrodelbahn+Laterns+K%C3%BChboden&format=json",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — piste de Laterns 01, Asurnipal, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Laterns-Kuehboden-summer_toboggan-run_(type_Wiegand)-01ASD.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — piste de Laterns 02, Asurnipal, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Laterns-Kuehboden-summer_toboggan-run_(type_Wiegand)-02ASD.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
-            "name": "Laterns",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=369#location-id-1172",
+            "name": "Sommerrodelbahn Laterns",
+            "source": "Seilbahnen Laterns — exploitant",
+            "url": "https://www.laterns.net/sommer/angebot/sommerrodelbahn",
             "family": "Luge d’été",
-            "sourceVenueName": "Laterns",
-            "referenceId": "location-id-1172"
+            "sourceVenueName": "Seilbahnen Laterns",
+            "sourceLifecycleSignal": "Saison 2026 terminée le 18 octobre",
+            "sourceLocality": "Laterns",
+            "matchingMethod": "Billetterie propre à la descente, photos du parcours et recherches officielles Park / Standalone sans correspondance"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste à billet propre dans un domaine de montagne ; calendrier et tarifs de 2026 conservés avec leurs dates de fin, sans extrapolation vers 2027. Deux photos libres du parcours ; audit public 75/100 sans blocage."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e530512a-1a28-4a74-b968-052fac792800/sommerrodelbahn-laterns",
+          "publishedAtUtc": "2026-11-01T09:46:27.777Z",
+          "verifiedAtUtc": "2026-11-01T09:47:54.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7e1ead88-4025-42e3-9eb2-432fe8eecdde"
+        },
+        "facebook": {
+          "id": "05bbc0de1a03450899002848c044287b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T09:47:44.099Z",
+          "externalPostId": "1285475681307050_122125583043424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125583043424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:05bbc0de1a03450899002848c044287b"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-laterns-20261101/audit.json",
+        "score": 75,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
