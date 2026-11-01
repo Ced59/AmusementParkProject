@@ -2154,37 +2154,185 @@
     {
       "entryId": "JP-candidate-5e9f105844edd3",
       "name": "Diamond and Flower Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Kasai Rinkai Park , Tokyo , Honshū",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Kasai Rinkai Park, Edogawa, Tokyo",
+      "siteId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:04:31.458Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitation, tarifs et calendrier actifs sur les pages de Senyo Kogyo au 1er novembre 2026.",
+      "identityConfidence": "Roue à tarif, billetterie et fermetures propres dans un parc public ; aucune fiche homonyme dans les quatre recherches officielles.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "ダイヤと花の大観覧車",
+        "Daiya to Hana no Daikanransha",
+        "Kasai Rinkai Park Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T14:00:30.530Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-27b7d9a6-75a2-4966-a27e-009494a5ca36",
+          "appliedAt": "2026-11-01T13:56:09.863Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:apply:27b7d9a6-75a2-4966-a27e-009494a5ca36",
+          "auditEvidence": null,
+          "summary": "Fiche autonome créée avec huit descriptions, emplacement de la roue et sources Senyo Kogyo"
+        },
+        {
+          "eventId": "apply-170362b7-313f-40ec-b0e2-0d8cb2f5f1c2",
+          "appliedAt": "2026-11-01T13:58:59.562Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:apply:170362b7-313f-40ec-b0e2-0d8cb2f5f1c2",
+          "auditEvidence": null,
+          "summary": "Cinq tarifs individuels et conditions officielles en JPY intégrés"
+        },
+        {
+          "eventId": "apply-aa19e246-e4be-4ee5-906f-9299fdd4ef87",
+          "appliedAt": "2026-11-01T13:59:34.722Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:apply:aa19e246-e4be-4ee5-906f-9299fdd4ef87",
+          "auditEvidence": null,
+          "summary": "Horaires et 34 exceptions datées dont 16 fermetures jusqu’en décembre 2027 intégrés"
+        },
+        {
+          "eventId": "image-998f40a5dd1a452d89832ad1662aa25b",
+          "appliedAt": "2026-11-01T14:00:11.474Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:image:998f40a5dd1a452d89832ad1662aa25b",
+          "auditEvidence": null,
+          "summary": "Photo 1 de la roue importée de Wikimedia Commons, textes et crédits en huit langues"
+        },
+        {
+          "eventId": "image-c2fee030157248999936185c843dc10a",
+          "appliedAt": "2026-11-01T14:00:30.530Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:image:c2fee030157248999936185c843dc10a",
+          "auditEvidence": null,
+          "summary": "Photo 2 de la roue importée de Wikimedia Commons, textes et crédits en huit langues"
+        },
+        {
+          "eventId": "closure-c2fee030157248999936185c843dc10a",
+          "appliedAt": "2026-11-01T14:00:30.530Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:image:c2fee030157248999936185c843dc10a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-diamond-flower-20261101/audit.json",
+          "summary": "Audit final 91/100 sans blocage, deux photos propres ; publication du site et de Facebook ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Renouveler les tarifs et le calendrier de l’exploitant, surveiller les modifications ponctuelles et prolonger les exceptions au-delà de décembre 2027. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Senyo Kogyo — roue, expérience et règles de visite",
+          "url": "https://www.senyo.co.jp/kasai/giant_wheel.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Senyo Kogyo — tarifs officiels",
+          "url": "https://www.senyo.co.jp/kasai/fee.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Senyo Kogyo — horaires et fermetures",
+          "url": "https://www.senyo.co.jp/kasai/hours.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Senyo Kogyo — ouverture en 2001 et renouvellement LED en 2025",
+          "url": "https://www.senyo.co.jp/company/archivements/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Cabinet du Japon — jours fériés 2026–2027",
+          "url": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise de la grande roue",
+          "url": "https://www.openstreetmap.org/way/161931777",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Diamond and Flower, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_Wheel_@_Kasai_Rinkai_Park_@_Edogawa_City_(9553916915).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Diamond and Flower, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Dia_to_Hana_no_Daikanransha_02.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Diamond and Flower Ferris Wheel",
+            "source": "Senyo Kogyo — site officiel",
+            "url": "https://www.senyo.co.jp/kasai/giant_wheel.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Kasai Rinkai Park",
+            "sourceLifecycleSignal": "Billetterie et calendrier propres au 1er novembre 2026",
+            "sourceLocality": "Edogawa, Tokyo",
+            "matchingMethod": "Billet individuel, exploitant officiel et recherches Park / Standalone sans homonyme"
+          }
+        ],
+        "rationale": "La roue se trouve dans le parc public de Kasai Rinkai, avec une billetterie et des jours de fermeture propres ; elle n’est pas un manège interne à un parc d’attractions structuré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7e2dd93e-d506-4044-b6c1-8d20e913fddd/diamond-and-flower-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T14:02:17.845Z",
+          "verifiedAtUtc": "2026-11-01T14:04:31.458Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7adc6027-df44-4646-b1ee-c85d6656bbba"
+        },
+        "facebook": {
+          "id": "3d753d1057dc49e094ad97c9cc28cb55",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T14:03:17.627Z",
+          "externalPostId": "1285475681307050_122125614435424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125614435424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3d753d1057dc49e094ad97c9cc28cb55"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "998f40a5dd1a452d89832ad1662aa25b",
+          "c2fee030157248999936185c843dc10a"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T14:01:15.062Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:e8cc4471-cd32-402f-919f-719cb0ffa2b0",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-diamond-flower-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-diamond-flower-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
