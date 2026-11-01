@@ -156,6 +156,174 @@
       ]
     },
     {
+      "entryId": "AT-candidate-discovery-876a04accdc1dc",
+      "name": "Alpbachtaler Lauser-Sauser",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": "Wiedersbergerhornbahn Bergstation, Alpbach, Tyrol, Autriche",
+      "siteId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:29:22.849Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Saison automne 2026 annoncée jusqu’au 8 novembre ; tarifs hiver 2026/27 publiés, horaires hiver à confirmer.",
+      "identityConfidence": "Découverte à partir de l’élément interne de la fiche Park masquée Ski Juwel ; coaster à billet propre confirmé. Fiche Park conservée pour décision éditoriale séparée.",
+      "possibleMatches": [],
+      "aliases": [
+        "Lauser-Sauser",
+        "Alpbachtaler Lauser Sauser"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T12:25:41.037Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6cad74bc-649d-4cd6-a5f8-912f7d9d8e0a",
+          "appliedAt": "2026-11-01T12:22:48.451Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:apply:6cad74bc-649d-4cd6-a5f8-912f7d9d8e0a",
+          "auditEvidence": null,
+          "summary": "Fiche privée du coaster créée sans modifier la fiche Park masquée du domaine"
+        },
+        {
+          "eventId": "image-91d6cd90fe5845a7bd152e27022707ba",
+          "appliedAt": "2026-11-01T12:24:13.573Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:image:91d6cd90fe5845a7bd152e27022707ba",
+          "auditEvidence": null,
+          "summary": "Photo #1 du parcours Lauser-Sauser importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-6310c37805af4394aecb5d49503784a3",
+          "appliedAt": "2026-11-01T12:24:33.165Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:image:6310c37805af4394aecb5d49503784a3",
+          "auditEvidence": null,
+          "summary": "Photo #2 du parcours Lauser-Sauser importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-f8534c3d-12d9-40bc-a848-91c3154202c2",
+          "appliedAt": "2026-11-01T12:25:10.768Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:apply:f8534c3d-12d9-40bc-a848-91c3154202c2",
+          "auditEvidence": null,
+          "summary": "Huit offres de descente pour les saisons été 2026 et hiver 2026/27, avec périodes explicites"
+        },
+        {
+          "eventId": "apply-c1785d66-3398-4ec8-b3dc-19c8f85999de",
+          "appliedAt": "2026-11-01T12:25:41.037Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:apply:c1785d66-3398-4ec8-b3dc-19c8f85999de",
+          "auditEvidence": null,
+          "summary": "Règle datée du 7 septembre au 8 novembre 2026 intégrée ; dépendance à la télécabine et à la météo documentée"
+        },
+        {
+          "eventId": "closure-c1785d66-3398-4ec8-b3dc-19c8f85999de",
+          "appliedAt": "2026-11-01T12:25:41.037Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:apply:c1785d66-3398-4ec8-b3dc-19c8f85999de",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-alpbachtaler-lauser-sauser-20261101/audit.json",
+          "summary": "Audit 85/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Relever les horaires hiver 2026/27 quand publiés, vérifier les dates de télécabine et affiner le point exact de départ. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Alpbachtal Tourismus — Lauser-Sauser, horaires et tarifs été 2026",
+          "url": "https://www.alpbachtal.at/en/activitities/family-holidays/alpbachtaler-lauser-sauser",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Alpbachtal Tourismus — Lauser-Sauser, tarifs hiver 2026/27",
+          "url": "https://www.alpbachtal.at/en/activitities/ski-juwel-alpbachtal-wildschoenau/Alpbachtaler%20Lauser-Sauser%20Winter",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Alpbachtal Tourismus — fonctionnement de la Wiedersbergerhornbahn",
+          "url": "https://www.alpbachtal.at/en/activitities/summer-mountain-lifts/operating-times",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — gare supérieure, localisation approchée",
+          "url": "https://www.openstreetmap.org/node/414186374",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Lauser-Sauser, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpbachtaler_Lauser-Sauser_2.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Lauser-Sauser, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpbachtaler_Lauser-Sauser_4.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Alpbachtaler Lauser-Sauser",
+            "source": "Alpbachtal Tourismus — coaster et billetterie",
+            "url": "https://www.alpbachtal.at/en/activitities/family-holidays/alpbachtaler-lauser-sauser",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Wiedersbergerhornbahn / Ski Juwel",
+            "sourceLifecycleSignal": "Ouverture automne 2026 et tarifs saisonniers",
+            "sourceLocality": "Alpbach, Tyrol",
+            "matchingMethod": "Élément Park interne retrouvé ; billet de coaster distinct de la télécabine"
+          }
+        ],
+        "rationale": "Le coaster se vend à la descente ou en combinaison avec le téléphérique ; la fiche Park masquée reste à qualifier comme domaine distinct."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/212a52d7-6a44-4ef5-861d-2c6d644ed77a/alpbachtaler-lauser-sauser",
+          "publishedAtUtc": "2026-11-01T12:27:04.102Z",
+          "verifiedAtUtc": "2026-11-01T12:29:22.849Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ff991718-784b-491b-b278-f20b023e7b1a"
+        },
+        "facebook": {
+          "id": "83986cd12cd34e40bfdc1bb08f1551ae",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T12:27:47.617Z",
+          "externalPostId": "1285475681307050_122125604463424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125604463424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:83986cd12cd34e40bfdc1bb08f1551ae"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "91d6cd90fe5845a7bd152e27022707ba",
+          "6310c37805af4394aecb5d49503784a3"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T12:26:35.353Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:de393069-7532-44e2-b820-db5ba1139c79",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-at-alpbachtaler-lauser-sauser-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-alpbachtaler-lauser-sauser-20261101/audit.json",
+        "score": 85,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
       "entryId": "AT-candidate-c89f11f044a041",
       "name": "Alpenrose Water Park",
       "entityKind": "Park",
@@ -4820,13 +4988,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park du domaine existante et masquée, contenant un seul élément Lauser Sauser ; standalone à billet propre publiée séparément le 1er novembre 2026. Identité du domaine Park encore à qualifier.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Fiche Park masquée conservée. Son élément Alpbachtaler Lauser Sauser possède désormais la fiche standalone publiée 212a52d7-6a44-4ef5-861d-2c6d644ed77a (AT-candidate-discovery-876a04accdc1dc). Qualifier séparément le domaine Ski Juwel comme Park, puis décider de conserver, migrer ou retirer la coquille Park sans publier deux fois le coaster.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -4847,6 +5015,16 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=369#location-id-1971",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Alpbachtal Tourismus — Lauser-Sauser, billet propre et accès via le domaine",
+          "url": "https://www.alpbachtal.at/en/activitities/family-holidays/alpbachtaler-lauser-sauser",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Fiche standalone Lauser-Sauser publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/212a52d7-6a44-4ef5-861d-2c6d644ed77a/alpbachtaler-lauser-sauser",
+          "accessedAt": "2026-11-01"
         }
       ],
       "countryCodeAtInventory": "AT",

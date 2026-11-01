@@ -1,0 +1,97 @@
+{
+  "name": "Alpbachtaler Lauser-Sauser",
+  "entryId": "AT-candidate-discovery-876a04accdc1dc",
+  "standaloneAttractionId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+  "qualification": "Coaster à billet propre sur le domaine Ski Juwel ; fiche Park masquée contenant un élément interne conservée pour décision éditoriale séparée.",
+  "decision": "Published",
+  "score": 85,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 8,
+    "regularRules": 1,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les horaires hiver 2026/27 ne sont pas encore annoncés ; ne pas prolonger la règle datée après le 8 novembre 2026.",
+    "Les coordonnées sont proches de la gare supérieure, sans levé exact du centre du coaster."
+  ],
+  "sources": [
+    {
+      "label": "Alpbachtal Tourismus — Lauser-Sauser, horaires et tarifs été 2026",
+      "url": "https://www.alpbachtal.at/en/activitities/family-holidays/alpbachtaler-lauser-sauser"
+    },
+    {
+      "label": "Alpbachtal Tourismus — Lauser-Sauser, tarifs hiver 2026/27",
+      "url": "https://www.alpbachtal.at/en/activitities/ski-juwel-alpbachtal-wildschoenau/Alpbachtaler%20Lauser-Sauser%20Winter"
+    },
+    {
+      "label": "Alpbachtal Tourismus — fonctionnement de la Wiedersbergerhornbahn",
+      "url": "https://www.alpbachtal.at/en/activitities/summer-mountain-lifts/operating-times"
+    },
+    {
+      "label": "OpenStreetMap — gare supérieure, localisation approchée",
+      "url": "https://www.openstreetmap.org/node/414186374"
+    },
+    {
+      "label": "Wikimedia Commons — Lauser-Sauser, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Alpbachtaler_Lauser-Sauser_2.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — Lauser-Sauser, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Alpbachtaler_Lauser-Sauser_4.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "91d6cd90fe5845a7bd152e27022707ba",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alpbachtaler_Lauser-Sauser_2.jpg",
+      "author": "The wub",
+      "date": "2025-07-07 10:51:42",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "subject": "Vue du parcours depuis le versant opposé",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "6310c37805af4394aecb5d49503784a3",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alpbachtaler_Lauser-Sauser_4.jpg",
+      "author": "The wub",
+      "date": "2025-07-07 11:14:59",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "subject": "Le coaster et la télécabine sur le Wiedersberger Horn",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "c5daf0d99370a07af7f6e8c066de50ba7ebcc3c0390bbfbd6c801b0605bb01c9",
+    "projectedScore": 85,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T12:29:22.849Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T12:25:41.037Z",
+    "photosPublishedAtUtc": "2026-11-01T12:26:35.353Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:de393069-7532-44e2-b820-db5ba1139c79"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/212a52d7-6a44-4ef5-861d-2c6d644ed77a/alpbachtaler-lauser-sauser",
+      "publishedAtUtc": "2026-11-01T12:27:04.102Z",
+      "applyOperationId": "ff991718-784b-491b-b278-f20b023e7b1a"
+    },
+    "facebook": {
+      "id": "83986cd12cd34e40bfdc1bb08f1551ae",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T12:27:47.617Z",
+      "externalPostId": "1285475681307050_122125604463424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125604463424431"
+    }
+  }
+}
