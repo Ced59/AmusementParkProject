@@ -207,6 +207,180 @@
       ]
     },
     {
+      "entryId": "JP-candidate-discovery-87570422e6c85b",
+      "name": "MOSAIC Big Ferris Wheel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "1-6-1 Higashikawasakicho, Chuo Ward, Kobe, Japon",
+      "siteId": "f6742708-a40b-4b45-b726-f43daff2259d",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:43:00.676Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Roue active au complexe Kobe Harborland umie ; tarif propre et horaire officiel publiés au 1er novembre 2026.",
+      "identityConfidence": "Découverte hors inventaire initial, confirmée par le site officiel ; recherches Park Harborland/Mosaic et Standalone Mosaic sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "モザイク大観覧車",
+        "MOSAIC Ferris Wheel",
+        "Kobe Harborland Ferris Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T11:39:25.449Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f13984eb-1811-4f70-8cb7-21f5420bf2f9",
+          "appliedAt": "2026-11-01T11:36:59.356Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:apply:f13984eb-1811-4f70-8cb7-21f5420bf2f9",
+          "auditEvidence": null,
+          "summary": "Nouvelle fiche privée créée après découverte hors inventaire, descriptions en huit langues"
+        },
+        {
+          "eventId": "image-a72b6db649494194a768508c9a53aa99",
+          "appliedAt": "2026-11-01T11:38:02.367Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:image:a72b6db649494194a768508c9a53aa99",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue MOSAIC importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-61da97cee6384787adf2d0a3464d0301",
+          "appliedAt": "2026-11-01T11:38:29.042Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:image:61da97cee6384787adf2d0a3464d0301",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue MOSAIC importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-0392a0e2-0745-4567-b85d-62f44c73d264",
+          "appliedAt": "2026-11-01T11:39:01.979Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:apply:0392a0e2-0745-4567-b85d-62f44c73d264",
+          "auditEvidence": null,
+          "summary": "Billet officiel de la roue à 800 JPY dès trois ans intégré"
+        },
+        {
+          "eventId": "apply-ad0fff4c-a593-465d-bed1-9924509bdc0f",
+          "appliedAt": "2026-11-01T11:39:25.449Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:apply:ad0fff4c-a593-465d-bed1-9924509bdc0f",
+          "auditEvidence": null,
+          "summary": "Horaire quotidien officiel 10–22 h intégré avec fuseau Asia/Tokyo"
+        },
+        {
+          "eventId": "closure-ad0fff4c-a593-465d-bed1-9924509bdc0f",
+          "appliedAt": "2026-11-01T11:39:25.449Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:apply:ad0fff4c-a593-465d-bed1-9924509bdc0f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mosaic-big-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Affiner le point cartographique, actuellement celui du complexe MOSAIC, et surveiller les changements de tarif/horaire. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Kobe Harborland umie — roue MOSAIC, tarif et trajet",
+          "url": "https://umie.jp/features/mosaickanransya",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Kobe Harborland umie — horaires de la roue distincts du centre",
+          "url": "https://umie.jp/static-pages/opening-hours",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Feel KOBE — passe touristique 2026 et roue MOSAIC",
+          "url": "https://www.feel-kobe.jp/en/smartpass/facility/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Hyogo Tourism — adresse 1-6-1 Higashikawasakicho",
+          "url": "https://www.hyogo-tourism.jp/world/review/detail_234.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — complexe MOSAIC, coordonnées approchées",
+          "url": "https://www.openstreetmap.org/search?query=Kobe%20Harborland%20Mosaic",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — MOSAIC Big Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Kobe_20210903185824_(51816719229).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — MOSAIC Big Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Kobe%27s_Harborland,_Hyogo,_Japan_--_Night_View_of_Mosaic_Ferris_Wheel.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "MOSAIC Big Ferris Wheel",
+            "source": "Kobe Harborland umie — roue MOSAIC",
+            "url": "https://umie.jp/features/mosaickanransya",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Kobe Harborland umie MOSAIC",
+            "sourceLifecycleSignal": "Billet et horaire officiels au 1er novembre 2026",
+            "sourceLocality": "Chuo, Kobe",
+            "matchingMethod": "Billetterie propre et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue du front de mer a son billet propre et n’était ni dans le backlog japonais ni dans les fiches Park ou Standalone interrogées."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f6742708-a40b-4b45-b726-f43daff2259d/mosaic-big-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T11:40:54.107Z",
+          "verifiedAtUtc": "2026-11-01T11:43:00.676Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2e7a0802-9610-4f4b-8d1b-379670d51d6a"
+        },
+        "facebook": {
+          "id": "953eaff095974b31afaa0db00c16bd99",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:41:40.413Z",
+          "externalPostId": "1285475681307050_122125598733424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125598733424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:953eaff095974b31afaa0db00c16bd99"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "a72b6db649494194a768508c9a53aa99",
+          "61da97cee6384787adf2d0a3464d0301"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:40:19.318Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:6a51de83-0442-46a8-9cc0-52cd3b83c6dd",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-mosaic-big-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mosaic-big-ferris-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
       "entryId": "JP-candidate-c10792b8b5026c",
       "name": "アドベンチャーワールド",
       "entityKind": "Park",
