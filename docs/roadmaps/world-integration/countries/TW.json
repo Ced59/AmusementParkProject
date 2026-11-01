@@ -1015,37 +1015,196 @@
     {
       "entryId": "TW-candidate-4c7dad24c6c000",
       "name": "Miramar Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Miramar Entertainment Park , Taipei",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "No. 20 Jingye 3rd Road, Zhongshan District, Taipei, Taiwan",
+      "siteId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:09:07.841Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active sur le toit du centre Miramar ; billet propre, trois photos 2023/2024, distributeur actif au 1er novembre 2026.",
+      "identityConfidence": "Roue à billet distinct du centre commercial ; recherches officielles Park / Standalone Miramar sans fiche (Park Miramar Weinheim sans rapport).",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "美麗華摩天輪",
+        "美麗華百樂園摩天輪",
+        "Miramar Entertainment Park Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T11:05:33.247Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4783c21b-9ab2-47c2-9119-1b9f0d0d4a01",
+          "appliedAt": "2026-11-01T11:01:52.937Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:apply:4783c21b-9ab2-47c2-9119-1b9f0d0d4a01",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée, identité et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-661f6761206b4833af5ad1b17b87fbbc",
+          "appliedAt": "2026-11-01T11:02:36.607Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:image:661f6761206b4833af5ad1b17b87fbbc",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue Miramar importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-5a63b69cbde842fa92580195caccbc97",
+          "appliedAt": "2026-11-01T11:02:51.035Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:image:5a63b69cbde842fa92580195caccbc97",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue Miramar importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-5044d56bd59a4589ba2c723171a9b175",
+          "appliedAt": "2026-11-01T11:03:05.866Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:image:5044d56bd59a4589ba2c723171a9b175",
+          "auditEvidence": null,
+          "summary": "Photo #3 de la roue Miramar importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-844f65b2-e660-4383-aed7-1b6b6f7577c1",
+          "appliedAt": "2026-11-01T11:05:09.725Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:apply:844f65b2-e660-4383-aed7-1b6b6f7577c1",
+          "auditEvidence": null,
+          "summary": "Deux offres en ligne Taipei Fun Pass en TWD, source distributeur clairement indiquée"
+        },
+        {
+          "eventId": "apply-1dbba14b-051c-436e-b6c4-50e52fdc4ba3",
+          "appliedAt": "2026-11-01T11:05:33.247Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:apply:1dbba14b-051c-436e-b6c4-50e52fdc4ba3",
+          "auditEvidence": null,
+          "summary": "Deux règles horaires hebdomadaires du distributeur intégrées avec fuseau Asia/Taipei"
+        },
+        {
+          "eventId": "closure-1dbba14b-051c-436e-b6c4-50e52fdc4ba3",
+          "appliedAt": "2026-11-01T11:05:33.247Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:apply:1dbba14b-051c-436e-b6c4-50e52fdc4ba3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-miramar-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier directement auprès de l’exploitant le tarif à la caisse et les éventuelles exceptions d’horaires ; son site bloque actuellement l’accès automatisé. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Taipei Travel — Miramar Entertainment Park, roue et adresse",
+          "url": "https://www.travel.taipei/en/attraction/details/710",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Taiwan Tourism Administration — Miramar et roue panoramique",
+          "url": "https://eng.taiwan.net.tw/m1.aspx?id=5356&sNo=0002090",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Taipei Fun Pass — horaires de la roue et billets en ligne",
+          "url": "https://funpass.travel.taipei/store/info/pe1p",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Taipei Fun Pass — billet de semaine utilisable jusqu’en 2027",
+          "url": "https://funpass.travel.taipei/tour/paM3",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — Miramar Entertainment Park",
+          "url": "https://www.openstreetmap.org/search?query=Miramar%20Entertainment%20Park%20Taipei",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel,_Taipei,_2024.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel-01.2023-06-02.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel_at_night-01.2023-06-02.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Miramar Ferris Wheel",
+            "source": "Taipei Travel et Taipei Fun Pass",
+            "url": "https://funpass.travel.taipei/store/info/pe1p",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Miramar Entertainment Park",
+            "sourceLifecycleSignal": "Billets en ligne et horaires proposés au 1er novembre 2026",
+            "sourceLocality": "Dazhi, Taipei",
+            "matchingMethod": "Billetterie dédiée et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Le centre Miramar est un centre commercial ; sa grande roue possède une billetterie propre et constitue l’attraction à référencer."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/bdf7abcd-89d5-4393-bc04-845d92cb40f4/miramar-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T11:07:23.442Z",
+          "verifiedAtUtc": "2026-11-01T11:09:07.841Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7385d503-4d6e-4346-87ee-4812db9816f8"
+        },
+        "facebook": {
+          "id": "522e4f450f224fcf9019fcab3eeaca30",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:08:13.981Z",
+          "externalPostId": "1285475681307050_122125593945424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125593945424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:522e4f450f224fcf9019fcab3eeaca30"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "661f6761206b4833af5ad1b17b87fbbc",
+          "5a63b69cbde842fa92580195caccbc97",
+          "5044d56bd59a4589ba2c723171a9b175"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:07:00.073Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:a7feaed3-e3fe-456b-b9ed-675955b043ad",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-tw-miramar-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-miramar-ferris-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
