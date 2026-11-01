@@ -1,0 +1,855 @@
+{
+  "parkId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
+  "entryId": "FR-candidate-605fde75a058d0",
+  "name": "Eana",
+  "checkedAtUtc": "2026-11-01T11:17:16.213036+00:00",
+  "status": "partial",
+  "contentAuditPassed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "lastDataIntegrationAt": "2026-11-01T11:14:59.9532748Z",
+  "lastOperationId": "6d9df9ff-309b-4638-b96e-55e02c3ba316",
+  "coverage": {
+    "freshAtUtc": "2026-11-01T11:11:35.90263Z",
+    "items": 31,
+    "zones": 4,
+    "attractions": 18,
+    "attractionStatuses": {
+      "ClosedDefinitively": 18
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 14,
+    "attractionsWithImage": 4,
+    "attractionImageGaps": [
+      {
+        "id": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+        "name": "Aire de jeux"
+      },
+      {
+        "id": "2ee93589-d3a9-42ee-be0d-adcf3befbf29",
+        "name": "Bassins des plantes dépolluantes"
+      },
+      {
+        "id": "79a04620-649d-4e7f-9ba6-e684e4266fbc",
+        "name": "Détectives de l’Histoire"
+      },
+      {
+        "id": "da72e98b-5bcf-451d-8c8a-896f4b64933f",
+        "name": "Empreinte de l’eau"
+      },
+      {
+        "id": "6bfebdd0-97f6-4f04-a112-5fd59430033b",
+        "name": "Jardin de rosée"
+      },
+      {
+        "id": "415aedca-378a-4ffd-a039-46c73468b50e",
+        "name": "Jardin des couleurs"
+      },
+      {
+        "id": "7ccb0ef3-6786-4a73-bac6-522c15be6fd5",
+        "name": "Jardin des plantes voyageuses"
+      },
+      {
+        "id": "0344424e-ba19-438e-8df9-b57a4bb1aee5",
+        "name": "Jardin en liberté"
+      },
+      {
+        "id": "7e1563cb-ebd7-47ad-8d8a-bc0bdec93c82",
+        "name": "Modes de vie"
+      },
+      {
+        "id": "d65fd3a5-ca80-4f5a-a2cd-af6f3e984b67",
+        "name": "Pavillon des innovations"
+      },
+      {
+        "id": "0f32e336-f7ee-49cd-8565-8540461cabd9",
+        "name": "Plantes archaïques"
+      },
+      {
+        "id": "109fc9bd-9fb7-49d9-986c-347b7399ed16",
+        "name": "Salle des savoir-faire"
+      },
+      {
+        "id": "d0df2b02-c05f-43df-bfdc-f61cdc3c8754",
+        "name": "Sas de la consommation"
+      },
+      {
+        "id": "88f4198f-9acf-449a-ae20-55ea2be8e777",
+        "name": "Spectacle des origines"
+      }
+    ],
+    "ownedImages": 21,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "7e01c321-048b-4fe6-b45c-ec3e5e869143",
+        "name": "Abbaye du Valasse",
+        "category": "Other",
+        "images": 2
+      },
+      {
+        "id": "cb43073d-023f-45c0-8332-fe6aca8a4789",
+        "name": "Accueil d’Eana",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+        "name": "Aire de jeux",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "342bf208-e4a2-470e-a604-86920c4d8fd0",
+        "name": "Aires de pique-nique",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "0267d335-3658-4246-89b6-f933931c4f04",
+        "name": "Atlas des ressources",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "2ee93589-d3a9-42ee-be0d-adcf3befbf29",
+        "name": "Bassins des plantes dépolluantes",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "b68fdefa-ce63-4f2c-813f-ac858953ebdd",
+        "name": "Boutique d’Eana",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "79a04620-649d-4e7f-9ba6-e684e4266fbc",
+        "name": "Détectives de l’Histoire",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "da72e98b-5bcf-451d-8c8a-896f4b64933f",
+        "name": "Empreinte de l’eau",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "95fbe5db-237f-447a-b59a-11f6323d818d",
+        "name": "Forêt de brouillard",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "7b57b415-1583-4fb6-894e-b7c45ddae9ab",
+        "name": "Grande Halle",
+        "category": "Other",
+        "images": 2
+      },
+      {
+        "id": "6bfebdd0-97f6-4f04-a112-5fd59430033b",
+        "name": "Jardin de rosée",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "415aedca-378a-4ffd-a039-46c73468b50e",
+        "name": "Jardin des couleurs",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "7ccb0ef3-6786-4a73-bac6-522c15be6fd5",
+        "name": "Jardin des plantes voyageuses",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "0344424e-ba19-438e-8df9-b57a4bb1aee5",
+        "name": "Jardin en liberté",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "d2f1f9cd-38bf-468a-ac80-4fee0d8b4216",
+        "name": "Laboratoire vivant du développement durable",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "da716966-b661-48bb-9d4e-53c0a5e6b42b",
+        "name": "Le Pré",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "a0196ec4-93e0-4357-a000-da4881199239",
+        "name": "Les Falaises ardentes",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "b2698391-f4d1-42a2-8383-9917d678ba37",
+        "name": "L’Abbaye des Saveurs",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "7e1563cb-ebd7-47ad-8d8a-bc0bdec93c82",
+        "name": "Modes de vie",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "ae101ca9-d330-4ae7-be09-2bcc33cfe9bb",
+        "name": "Notre Terre vivante",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "f3f0f25a-05d6-4f63-ab6e-4d2791125c61",
+        "name": "Parking d’Eana",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "d65fd3a5-ca80-4f5a-a2cd-af6f3e984b67",
+        "name": "Pavillon des innovations",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "0f32e336-f7ee-49cd-8565-8540461cabd9",
+        "name": "Plantes archaïques",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a78ef247-6cd3-4592-855f-675eb1ad93c9",
+        "name": "Rendez-vous conte",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "301d1dd8-a8f3-4ef5-935e-5a7130c4a502",
+        "name": "Salle de déjeuner des groupes scolaires",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "109fc9bd-9fb7-49d9-986c-347b7399ed16",
+        "name": "Salle des savoir-faire",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "d0df2b02-c05f-43df-bfdc-f61cdc3c8754",
+        "name": "Sas de la consommation",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "d2c0831f-f695-4912-a60e-21ccb683b99b",
+        "name": "Scénarios du futur",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "88f4198f-9acf-449a-ae20-55ea2be8e777",
+        "name": "Spectacle des origines",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "9ddd66ab-6837-4b4a-ade6-1cb6ebe84786",
+        "name": "Théâtre de verdure",
+        "category": "Show",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 16,
+    "geolocationGaps": [
+      {
+        "id": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+        "name": "Aire de jeux",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "342bf208-e4a2-470e-a604-86920c4d8fd0",
+        "name": "Aires de pique-nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "2ee93589-d3a9-42ee-be0d-adcf3befbf29",
+        "name": "Bassins des plantes dépolluantes",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "da72e98b-5bcf-451d-8c8a-896f4b64933f",
+        "name": "Empreinte de l’eau",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "95fbe5db-237f-447a-b59a-11f6323d818d",
+        "name": "Forêt de brouillard",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "6bfebdd0-97f6-4f04-a112-5fd59430033b",
+        "name": "Jardin de rosée",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "415aedca-378a-4ffd-a039-46c73468b50e",
+        "name": "Jardin des couleurs",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "7ccb0ef3-6786-4a73-bac6-522c15be6fd5",
+        "name": "Jardin des plantes voyageuses",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "0344424e-ba19-438e-8df9-b57a4bb1aee5",
+        "name": "Jardin en liberté",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d2f1f9cd-38bf-468a-ac80-4fee0d8b4216",
+        "name": "Laboratoire vivant du développement durable",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "da716966-b661-48bb-9d4e-53c0a5e6b42b",
+        "name": "Le Pré",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "a0196ec4-93e0-4357-a000-da4881199239",
+        "name": "Les Falaises ardentes",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "0f32e336-f7ee-49cd-8565-8540461cabd9",
+        "name": "Plantes archaïques",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a78ef247-6cd3-4592-855f-675eb1ad93c9",
+        "name": "Rendez-vous conte",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "301d1dd8-a8f3-4ef5-935e-5a7130c4a502",
+        "name": "Salle de déjeuner des groupes scolaires",
+        "category": "Service",
+        "status": null
+      }
+    ],
+    "history": 9,
+    "parkHistory": 5,
+    "itemHistory": 4,
+    "historyWithSource": 9,
+    "historyWithImage": 9,
+    "articles": 1,
+    "officialMaps": [
+      {
+        "year": 2009,
+        "format": "Pdf",
+        "language": "fr"
+      },
+      {
+        "year": 2008,
+        "format": "Pdf",
+        "language": "fr"
+      }
+    ],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 1,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": false,
+    "itemsWith8Descriptions": 27,
+    "itemsWithImage": 7,
+    "currentLogo": "8ea6261ed8ce4444908e567f86d0f502"
+  },
+  "storedContentComparison": {
+    "checkedAtUtc": "2026-11-01T11:12:15.459851+00:00",
+    "exportedAtUtc": "2026-11-01T11:11:35.90263Z",
+    "freshExportSha256": "28b82cdbdbf42b5ca21f959de7bc7dc2fe4d6dbb2a79fa9a21376473cfb18232",
+    "checkedValues": 1393,
+    "differences": []
+  },
+  "reviewedCorrection": {
+    "operationId": "6d9df9ff-309b-4638-b96e-55e02c3ba316",
+    "appliedAtUtc": "2026-11-01T11:14:59.9532748Z",
+    "changes": "Sixteen localized descriptions: remove unsupported freer-growing vegetation interpretation and generic theatre landscape sentence. All actual Preview values inspected, Apply diff verified."
+  },
+  "idempotenceBeforeCorrection": {
+    "operationId": "2fe727e8-c8cf-4cf4-8d54-75045562ae8d",
+    "unchanged": 71,
+    "mutations": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "provisionalScore": {
+    "score": 92,
+    "earnedPoints": 94,
+    "applicableMaxPoints": 102,
+    "apiPublicationBlockers": [],
+    "scope": "Projection while all dependencies remain hidden. Not a final publication score and not proof of editorial completion."
+  },
+  "blockingEditorialGaps": [
+    {
+      "key": "eana-jardin-liberte",
+      "id": "0344424e-ba19-438e-8df9-b57a4bb1aee5",
+      "reason": "Brochure2009 et Wikipédia confirment le nom et le parcours origines. Composition, expérience et espèces propres non établies. Ne pas inventer une prairie sauvage à partir du nom."
+    },
+    {
+      "key": "eana-sas-consommation",
+      "id": "d0df2b02-c05f-43df-bfdc-f61cdc3c8754",
+      "reason": "Nom du module confirmé dans brochure2009. Aucun récit/scénographie précis retrouvé ; ne pas attribuer les ateliers sur la vie des objets à ce module sanspreuve."
+    },
+    {
+      "key": "eana-modes-vie",
+      "id": "7e1563cb-ebd7-47ad-8d8a-bc0bdec93c82",
+      "reason": "Module confirmé dans brochure2009. Contenu fin non documenté ; les scénarios2050 appartiennent au module suivant."
+    },
+    {
+      "key": "eana-aire-jeux",
+      "id": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+      "reason": "Aire confirmée brochure2009 et constructeur OGI. Archivepresse2009 signale inauguration Jardin des petits ; lien/alias avec aire de jeux à confirmer, PDF non retrouvé."
+    }
+  ],
+  "otherSourcingGaps": {
+    "descriptionExceptions": [
+      {
+        "key": "eana-plantes-archaiques",
+        "file": "04-origins-crafts-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-plantes-voyageuses",
+        "file": "04-origins-crafts-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-plantes-depolluantes",
+        "file": "04-origins-crafts-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-pavillon-innovations",
+        "file": "04-origins-crafts-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-salle-savoir-faire",
+        "file": "04-origins-crafts-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-detectives-histoire",
+        "file": "04-origins-crafts-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-boutique",
+        "file": "04-services-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-parking",
+        "file": "04-services-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-accueil",
+        "file": "04-services-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-pique-nique",
+        "file": "04-services-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-salle-dejeuner",
+        "file": "04-services-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-laboratoire",
+        "file": "04-services-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-rendez-vous-conte",
+        "file": "04-services-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-pre",
+        "file": "04-services-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-foret-brouillard",
+        "file": "04-gardens-water-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-jardin-rosee",
+        "file": "04-gardens-water-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-jardin-couleurs",
+        "file": "04-gardens-water-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-empreinte-eau",
+        "file": "04-gardens-water-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-atlas-ressources",
+        "file": "04-atlas-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-grande-halle",
+        "file": "04-places-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-abbaye-valasse",
+        "file": "04-places-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-abbaye-saveurs",
+        "file": "04-places-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-theatre-verdure",
+        "file": "04-places-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      },
+      {
+        "key": "eana-falaises-ardentes",
+        "file": "04-places-copy.json",
+        "reason": "Concise historical account limited to actual official/creator evidence, no fabricated extra scenes or specifications. Specific sources cited in inventories and copy metadata.",
+        "requiresFinalIndividualReview": true
+      }
+    ],
+    "imageGaps": [
+      {
+        "id": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+        "name": "Aire de jeux"
+      },
+      {
+        "id": "2ee93589-d3a9-42ee-be0d-adcf3befbf29",
+        "name": "Bassins des plantes dépolluantes"
+      },
+      {
+        "id": "79a04620-649d-4e7f-9ba6-e684e4266fbc",
+        "name": "Détectives de l’Histoire"
+      },
+      {
+        "id": "da72e98b-5bcf-451d-8c8a-896f4b64933f",
+        "name": "Empreinte de l’eau"
+      },
+      {
+        "id": "6bfebdd0-97f6-4f04-a112-5fd59430033b",
+        "name": "Jardin de rosée"
+      },
+      {
+        "id": "415aedca-378a-4ffd-a039-46c73468b50e",
+        "name": "Jardin des couleurs"
+      },
+      {
+        "id": "7ccb0ef3-6786-4a73-bac6-522c15be6fd5",
+        "name": "Jardin des plantes voyageuses"
+      },
+      {
+        "id": "0344424e-ba19-438e-8df9-b57a4bb1aee5",
+        "name": "Jardin en liberté"
+      },
+      {
+        "id": "7e1563cb-ebd7-47ad-8d8a-bc0bdec93c82",
+        "name": "Modes de vie"
+      },
+      {
+        "id": "d65fd3a5-ca80-4f5a-a2cd-af6f3e984b67",
+        "name": "Pavillon des innovations"
+      },
+      {
+        "id": "0f32e336-f7ee-49cd-8565-8540461cabd9",
+        "name": "Plantes archaïques"
+      },
+      {
+        "id": "109fc9bd-9fb7-49d9-986c-347b7399ed16",
+        "name": "Salle des savoir-faire"
+      },
+      {
+        "id": "d0df2b02-c05f-43df-bfdc-f61cdc3c8754",
+        "name": "Sas de la consommation"
+      },
+      {
+        "id": "88f4198f-9acf-449a-ae20-55ea2be8e777",
+        "name": "Spectacle des origines"
+      }
+    ],
+    "geolocationGaps": [
+      {
+        "id": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+        "name": "Aire de jeux",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "342bf208-e4a2-470e-a604-86920c4d8fd0",
+        "name": "Aires de pique-nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "2ee93589-d3a9-42ee-be0d-adcf3befbf29",
+        "name": "Bassins des plantes dépolluantes",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "da72e98b-5bcf-451d-8c8a-896f4b64933f",
+        "name": "Empreinte de l’eau",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "95fbe5db-237f-447a-b59a-11f6323d818d",
+        "name": "Forêt de brouillard",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "6bfebdd0-97f6-4f04-a112-5fd59430033b",
+        "name": "Jardin de rosée",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "415aedca-378a-4ffd-a039-46c73468b50e",
+        "name": "Jardin des couleurs",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "7ccb0ef3-6786-4a73-bac6-522c15be6fd5",
+        "name": "Jardin des plantes voyageuses",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "0344424e-ba19-438e-8df9-b57a4bb1aee5",
+        "name": "Jardin en liberté",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d2f1f9cd-38bf-468a-ac80-4fee0d8b4216",
+        "name": "Laboratoire vivant du développement durable",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "da716966-b661-48bb-9d4e-53c0a5e6b42b",
+        "name": "Le Pré",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "a0196ec4-93e0-4357-a000-da4881199239",
+        "name": "Les Falaises ardentes",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "0f32e336-f7ee-49cd-8565-8540461cabd9",
+        "name": "Plantes archaïques",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a78ef247-6cd3-4592-855f-675eb1ad93c9",
+        "name": "Rendez-vous conte",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "301d1dd8-a8f3-4ef5-935e-5a7130c4a502",
+        "name": "Salle de déjeuner des groupes scolaires",
+        "category": "Service",
+        "status": null
+      }
+    ],
+    "mapYears": "Original 2008/2009 official PDFs preserved. 2011 actual official SWF URL 404; 2010/2011 brochures and 2009 press dossier missing from examined captures. No year invented.",
+    "itemHistory": "Three first-season 2008 openings and one 2009 creative-project fact. Individual final operating dates are not inferred from park closure. Terre vivante 2009 opening field cleared because creator date does not establish first operation.",
+    "manufacturers": "MuchoMedia positively identified for Atlas; other creatives credited in copy without arbitrary manufacturer assignments. No current website or visitor schedule for closed Eana."
+  },
+  "sourceVerification": [
+    {
+      "key": "0",
+      "url": "https://www.ogi2.fr/catalogue/espaces-verts/parc-loisirs-eana-abbaye-valasse.html",
+      "label": "OGI — conception et travaux du parc Eana",
+      "status": 200,
+      "finalUrl": "https://www.ogi2.fr/catalogue/espaces-verts/parc-loisirs-eana-abbaye-valasse.html",
+      "bytesRead": 22918,
+      "checkedAt": "2026-11-01T11:01:56.863132+00:00"
+    },
+    {
+      "key": "1",
+      "url": "https://web.archive.org/web/20111121204356/http://www.eana.fr/parc/labbaye.php",
+      "label": "Eana — présentation historique de l’abbaye, archive de 2011",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20111121204356/http://www.eana.fr/parc/labbaye.php",
+      "bytesRead": 19276,
+      "checkedAt": "2026-11-01T11:01:58.405781+00:00"
+    },
+    {
+      "key": "2",
+      "url": "https://www.ccomptes.fr/sites/default/files/EzPublish/JF00128197_JF_INTERNET1.pdf",
+      "label": "Chambre régionale des comptes — Caux vallée de Seine",
+      "status": 200,
+      "finalUrl": "https://www.ccomptes.fr/sites/default/files/EzPublish/JF00128197_JF_INTERNET1.pdf",
+      "bytesRead": 169491,
+      "checkedAt": "2026-11-01T11:01:56.073218+00:00"
+    },
+    {
+      "key": "3",
+      "url": "https://www.esa.int/Space_in_Member_States/France/Eana_un_parc_de_loisirs_inedit_sur_le_devenir_de_la_Terre",
+      "label": "ESA — inauguration et ouverture d’Eana, juillet 2008",
+      "status": 200,
+      "finalUrl": "https://www.esa.int/Space_in_Member_States/France/Eana_un_parc_de_loisirs_inedit_sur_le_devenir_de_la_Terre",
+      "bytesRead": 14726,
+      "checkedAt": "2026-11-01T11:01:57.609608+00:00"
+    },
+    {
+      "key": "4",
+      "url": "https://web.archive.org/web/20090419051328id_/http://www.eana.fr/brochures/scolaires_ecran.pdf",
+      "label": "Eana — brochure scolaire 2009, archive officielle",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20090419051328id_/http://www.eana.fr/brochures/scolaires_ecran.pdf",
+      "bytesRead": 2082796,
+      "checkedAt": "2026-11-01T11:01:58.432280+00:00"
+    },
+    {
+      "key": "5",
+      "url": "https://www.nicolas-deveaux.com/home-4",
+      "label": "Nicolas Deveaux — Le Spectacle des origines",
+      "status": 200,
+      "finalUrl": "https://www.nicolas-deveaux.com/home-4",
+      "bytesRead": 1238583,
+      "checkedAt": "2026-11-01T11:01:58.165425+00:00"
+    },
+    {
+      "key": "6",
+      "url": "https://web.archive.org/web/20090225072430/http://mucho-media.net/",
+      "label": "MuchoMedia — Atlas des ressources, archive de 2009",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20090225072430/http://mucho-media.net/",
+      "bytesRead": 16017,
+      "checkedAt": "2026-11-01T11:01:59.087293+00:00"
+    },
+    {
+      "key": "7",
+      "url": "https://www.virtuel-production.com/scenarios-du-futur/",
+      "label": "Virtuel — Scénarios du futur",
+      "status": 200,
+      "finalUrl": "https://www.virtuel-production.com/scenarios-du-futur/",
+      "bytesRead": 84317,
+      "checkedAt": "2026-11-01T11:02:00.297373+00:00"
+    },
+    {
+      "key": "8",
+      "url": "https://www.vasken.fr/eana.php",
+      "label": "Vasken Yéghiayan — Eana, 2009",
+      "status": 200,
+      "finalUrl": "https://www.vasken.fr/eana.php",
+      "bytesRead": 6898,
+      "checkedAt": "2026-11-01T11:01:59.508134+00:00"
+    },
+    {
+      "key": "9",
+      "url": "https://france3-regions.francetvinfo.fr/haute-normandie/2012/11/29/le-parc-eana-de-gruchet-le-valasseseine-maritime-l-arret-quatre-ans-apres-son-ouverture-155091.html",
+      "label": "France 3 — arrêt d’Eana, 29 novembre 2012",
+      "status": 200,
+      "finalUrl": "https://france3-regions.franceinfo.fr/normandie/2012/11/29/le-parc-eana-de-gruchet-le-valasseseine-maritime-l-arret-quatre-ans-apres-son-ouverture-155091.html",
+      "bytesRead": 701374,
+      "checkedAt": "2026-11-01T11:02:01.189090+00:00"
+    },
+    {
+      "key": "10",
+      "url": "https://www.abbayeduvalasse.fr/",
+      "label": "Abbaye du Valasse — activités actuelles du domaine",
+      "status": 200,
+      "finalUrl": "https://www.abbayeduvalasse.fr/",
+      "bytesRead": 1238554,
+      "checkedAt": "2026-11-01T11:02:00.022025+00:00"
+    }
+  ],
+  "mediaResearch": "ESA, BASE/Landezine, Vasken Yéghiayan, Virtuel and Stéphane l’Hôte original files personally viewed; no transformed media. Original director GIF/video not converted into an attraction photo. Official 41-photo press ZIP, precise 2011 SWF and 2009 press PDF variants returned 404.",
+  "publicTextChecks": {
+    "corpusRows": 1125,
+    "encodingFindings": 0,
+    "duplicateParagraphGroupsAfterHeadingsAndNamesRemoved": 0,
+    "automaticFlagClassification": "The English phrase regional audit chamber refers to the French public financial-control institution, supported by CRC report; no internal workflow terminology intended. Full editorial completion not asserted while four descriptions remain absent."
+  },
+  "nextAction": "Resolve four source-limited descriptions and remaining item photo identities; review full corpus and coverage again. Keep site and Facebook unpublished until final editorial audit and applicable publication gate pass."
+}

@@ -1,0 +1,56 @@
+{
+  "entryId": "FR-candidate-605fde75a058d0",
+  "name": "Eana",
+  "conversation": "Conversation France",
+  "decision": "Relevant historical ThemePark, not standalone and not the current free abbey grounds",
+  "existingMatches": [],
+  "searches": [
+    "00-search-accent.json",
+    "00-search-eana.json",
+    "00-search-gruchet.json",
+    "00-search-standalone-valasse.json",
+    "00-search-standalone.json",
+    "00-search-terre.json",
+    "00-search-valasse.json"
+  ],
+  "initialCoverage": {
+    "parks": 0,
+    "items": 0,
+    "zones": 0,
+    "images": 0,
+    "historyEvents": 0,
+    "articles": 0
+  },
+  "sources": {
+    "base": "https://www.baseland.fr/projets/lillebonne-eana-parc-de-labbaye-du-valasse/",
+    "ogi": "https://www.ogi2.fr/catalogue/espaces-verts/parc-loisirs-eana-abbaye-valasse.html",
+    "landezine": "https://landezine.com/eana-park-by-base/",
+    "divisare": "https://divisare.com/projects/202422-base-eana",
+    "vasken": "https://www.vasken.fr/eana.php",
+    "fiasco-2012": "https://archives.seine-maritime.info/2012/12/10/le-fiasco-du-parc-eana-dans-le-pays-de-caux/",
+    "france3-closure": "https://france3-regions.francetvinfo.fr/haute-normandie/2012/11/29/le-parc-eana-de-gruchet-le-valasseseine-maritime-l-arret-quatre-ans-apres-son-ouverture-155091.html",
+    "esa-forum": "https://astronautique.actifforum.com/t6198-ouverture-du-parc-eana-parc-de-loisirs-sur-le-devenir-de-la-terre",
+    "citizenkid": "https://www.citizenkid.com/sortie/eana-terre-des-possibles-paris-a106239",
+    "esa-opening": "https://www.esa.int/Space_in_Member_States/France/Eana_un_parc_de_loisirs_inedit_sur_le_devenir_de_la_Terre",
+    "esa-inauguration-photo": "https://www.esa.int/ESA_Multimedia/Images/2008/07/Official_inauguration_of_Eana",
+    "crc-2012": "https://www.ccomptes.fr/sites/default/files/EzPublish/JF00128197_JF_INTERNET1.pdf"
+  },
+  "nextStep": "01-park-core",
+  "gaps": [
+    "Historical logo and annual official maps to find",
+    "Complete named historical inventory",
+    "Specific garden and indoor exhibit photographs",
+    "Exact last public day not established; closure year 2012 only",
+    "No current official Eana website: eana.fr is now an unrelated directory",
+    "Do not import current Abbaye du Valasse hours/prices or seasonal amenities into Eana"
+  ],
+  "scope": "Full historical integration with eight-language editorial content; opening hours and current prices not applicable; independent final audit before publication",
+  "checkedAtUtc": "2026-10-28T23:57:14.604747+00:00",
+  "parkId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
+  "createdAtUtc": "2026-10-28T23:58:10.1075295Z",
+  "resumeVerifiedAtUtc": "2026-11-01T09:46:23.467024+00:00",
+  "resumeSearch": "resume-search2-20261101.json",
+  "visible": false,
+  "scoreAtIntake": 57,
+  "completion": false
+}
