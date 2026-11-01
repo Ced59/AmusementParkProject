@@ -74368,6 +74368,155 @@
         "publicationBlockers": [],
         "gapCount": 1
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-0b298586d914cd",
+      "name": "Orlando SlingShot",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Reverse bungee",
+      "locality": "8433 International Drive, Orlando, Floride, États-Unis",
+      "siteId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:18:34.411Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie spécifique et heures « 10:00am – Late » affichées sur le site de l’exploitant au 1er novembre 2026.",
+      "identityConfidence": "Nouvelle découverte hors inventaire ; exploitant, billets et emplacement propres. Recherches officielles Park/Standalone Orlando SlingShot et SlingShot sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "Orlando Slingshot",
+        "SlingShot Orlando",
+        "ICON Park SlingShot"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T15:13:25.226Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-aa5b1ba7-dd38-4440-850f-7ad5fd4a73dc",
+          "appliedAt": "2026-11-01T15:08:05.602Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:apply:aa5b1ba7-dd38-4440-850f-7ad5fd4a73dc",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après découverte hors inventaire, identité et huit descriptions"
+        },
+        {
+          "eventId": "apply-a7d3e3fb-75fb-4dbc-917e-41bcc3d6e27e",
+          "appliedAt": "2026-11-01T15:10:46.736Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:apply:a7d3e3fb-75fb-4dbc-917e-41bcc3d6e27e",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels TTC et condition de paiement en espèces intégrés en USD"
+        },
+        {
+          "eventId": "image-2b84146f32a2406c80eaca5a4cc8c081",
+          "appliedAt": "2026-11-01T15:12:51.895Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:image:2b84146f32a2406c80eaca5a4cc8c081",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte d’Orlando SlingShot importée sous CC BY 4.0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-1f065235b3d44d148dce852caf5c5d51",
+          "appliedAt": "2026-11-01T15:13:25.226Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:image:1f065235b3d44d148dce852caf5c5d51",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte d’Orlando SlingShot importée sous CC BY 4.0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-1f065235b3d44d148dce852caf5c5d51",
+          "appliedAt": "2026-11-01T15:13:25.226Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:image:1f065235b3d44d148dce852caf5c5d51",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-slingshot-20261101/audit.json",
+          "summary": "Audit 81/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Obtenir une heure de fermeture fiable de l’exploitant avant toute règle horaire ; revérifier prix, remise espèces et conditions. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Orlando SlingShot — site officiel, prix, conditions et horaires non précis",
+          "url": "https://orlandoslingshot.net/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "ICON Park — horaires spéciaux, contrôle contextuel sans extrapolation",
+          "url": "https://iconparkorlando.com/icon-park-special-hours/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Coasterpedia — photo des deux tours Orlando SlingShot",
+          "url": "https://coasterpedia.net/wiki/File:Orlando_SlingShot_2023_02.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Coasterpedia — photo de la structure Orlando SlingShot",
+          "url": "https://coasterpedia.net/wiki/File:Orlando_SlingShot_2023_01.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Orlando SlingShot",
+            "source": "Orlando SlingShot — site officiel",
+            "url": "https://orlandoslingshot.net/",
+            "family": "Reverse bungee",
+            "sourceVenueName": "Orlando SlingShot",
+            "sourceLifecycleSignal": "Billetterie spécifique et site actif au 1er novembre 2026",
+            "sourceLocality": "International Drive, Orlando",
+            "matchingMethod": "Exploitant, billets et adresse propres ; recherches officielles Park/Standalone sans fiche"
+          }
+        ],
+        "rationale": "L’attraction est opérée avec sa billetterie propre sur International Drive, distincte de l’entrée des attractions voisines."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/2a0c4cab-6d8e-45a4-a0d2-01329f001af7/orlando-slingshot",
+          "publishedAtUtc": "2026-11-01T15:16:03.370Z",
+          "verifiedAtUtc": "2026-11-01T15:18:34.411Z",
+          "evidence": "PARK_DATA_EDITOR:apply:5169e51a-baa0-4eaa-bb3b-80db24251eda"
+        },
+        "facebook": {
+          "id": "c125ea57b6f6424ea4c6721d71450f48",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:17:11.355Z",
+          "externalPostId": "1285475681307050_122125620675424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125620675424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:c125ea57b6f6424ea4c6721d71450f48"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "2b84146f32a2406c80eaca5a4cc8c081",
+          "1f065235b3d44d148dce852caf5c5d51"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T15:15:20.488Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:b2542600-7421-4e80-958c-ac727addfa9c",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-slingshot-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-slingshot-20261101/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
     }
   ]
 }

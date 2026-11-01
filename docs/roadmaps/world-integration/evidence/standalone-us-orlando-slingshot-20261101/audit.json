@@ -1,0 +1,95 @@
+{
+  "name": "Orlando SlingShot",
+  "entryId": "US-candidate-discovery-0b298586d914cd",
+  "standaloneAttractionId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+  "qualification": "Reverse bungee avec billets, exploitant et adresse propres ; trois recherches officielles Park/Standalone sans fiche.",
+  "decision": "Published",
+  "score": 81,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "gateAdmissionOffers": 3,
+    "onlinePriceOffers": 0,
+    "weeklyRules": 0
+  },
+  "remainingGaps": [
+    "L’exploitant annonce « 10:00am – Late » sans heure de fermeture précise. La tentative de notes d’horaires sans règle structurée a été acceptée comme requête mais n’a créé aucune donnée (reçu inchangé). L’information est explicitée dans les descriptions ; aucune règle hebdomadaire n’a été inventée."
+  ],
+  "sources": [
+    {
+      "label": "Orlando SlingShot — site officiel, prix, conditions et horaires non précis",
+      "url": "https://orlandoslingshot.net/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "ICON Park — horaires spéciaux, contrôle contextuel sans extrapolation",
+      "url": "https://iconparkorlando.com/icon-park-special-hours/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Coasterpedia — photo des deux tours Orlando SlingShot",
+      "url": "https://coasterpedia.net/wiki/File:Orlando_SlingShot_2023_02.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Coasterpedia — photo de la structure Orlando SlingShot",
+      "url": "https://coasterpedia.net/wiki/File:Orlando_SlingShot_2023_01.jpg",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "2b84146f32a2406c80eaca5a4cc8c081",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Orlando_SlingShot_2023_02.jpg",
+      "author": "CoasterDave",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "photographedAt": "2023-07-18",
+      "subject": "Vue des deux tours et de la place d’embarquement d’Orlando SlingShot en juillet 2023.",
+      "transformation": "JPEG redimensionné et optimisé, orientation corrigée, sans recadrage"
+    },
+    {
+      "imageId": "1f065235b3d44d148dce852caf5c5d51",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Orlando_SlingShot_2023_01.jpg",
+      "author": "CoasterDave",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "photographedAt": "2023-07-18",
+      "subject": "Structure d’une tour d’Orlando SlingShot vue depuis le bas en juillet 2023.",
+      "transformation": "JPEG redimensionné et optimisé, orientation corrigée, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "a2fb28830777d370d65478b9aed29f5d7c336fca0b9789741b6370c64b588449",
+    "projectedScore": 81,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T15:18:34.411Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T15:13:25.226Z",
+    "photosPublishedAtUtc": "2026-11-01T15:15:20.488Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:b2542600-7421-4e80-958c-ac727addfa9c"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/2a0c4cab-6d8e-45a4-a0d2-01329f001af7/orlando-slingshot",
+      "publishedAtUtc": "2026-11-01T15:16:03.370Z",
+      "applyOperationId": "5169e51a-baa0-4eaa-bb3b-80db24251eda"
+    },
+    "facebook": {
+      "id": "c125ea57b6f6424ea4c6721d71450f48",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T15:17:11.355Z",
+      "externalPostId": "1285475681307050_122125620675424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125620675424431"
+    }
+  },
+  "rejectedPhotographs": [
+    "Deux fichiers Wikimedia Commons intitulés Orlando SlingShot ont été écartés après inspection visuelle : ils montrent la tour voisine Orlando FreeFall et non le SlingShot."
+  ]
+}
