@@ -1,0 +1,97 @@
+{
+  "name": "Skywheel of Tallinn",
+  "entryId": "EE-candidate-847a9466f32c0b",
+  "standaloneAttractionId": "651407c6-ba5d-4e08-86b8-07ae75b78149",
+  "qualification": "Roue panoramique à billetterie propre sur le toit du centre T1. Recherches officielles Park et Standalone sans fiche.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 5,
+    "weeklyRules": 2,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les exceptions individuelles des jours fériés 2026 sont signalées par le site T1 mais non encodées dans le calendrier.",
+    "Les tarifs publiés depuis novembre 2025 devront être revérifiés lors du prochain cycle."
+  ],
+  "sources": [
+    {
+      "label": "T1 Tallinn — Skywheel, autonomie, vente de billets et caractéristiques",
+      "url": "https://t1tallinn.com/en/entertainment/skywheel-of-tallinn-ferris-wheel/"
+    },
+    {
+      "label": "T1 Tallinn — horaires généraux et exceptions 2026",
+      "url": "https://t1tallinn.com/en/important-info/opening-hours/"
+    },
+    {
+      "label": "Super Skypark — tarifs de la roue depuis le 4 novembre 2025",
+      "url": "https://superskypark.ee/en/prices/"
+    },
+    {
+      "label": "OpenStreetMap / Nominatim — T1 keskus, Peterburi tee 2",
+      "url": "https://www.openstreetmap.org/search?query=Peterburi%20tee%202%20Tallinn"
+    },
+    {
+      "label": "Wikimedia Commons — Skywheel of Tallinn, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Mall_of_Tallinn.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — Skywheel of Tallinn, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:T1-Kaubanduskeskus_T1_Mall_of_Tallinn.Okt.2022_2.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "dc5e4d6fff5a4e819cf7dff3da36939d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mall_of_Tallinn.jpg",
+      "author": "Liilia Moroz",
+      "date": "2019-03-30",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "La roue blanche au-dessus du centre T1 en 2019",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "1457d7f4cd0344fca3db0693a87d4de6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:T1-Kaubanduskeskus_T1_Mall_of_Tallinn.Okt.2022_2.jpg",
+      "author": "Apiiroja",
+      "date": "2022-10-30",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Cabines de la roue sur le toit du centre T1, octobre 2022",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "0567ea65e613bc4b4e7d5ed52e1abb39c2fe3d2c22ac39a82d6d70b63a05eef2",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T10:57:49.898Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T10:54:34.519Z",
+    "photosPublishedAtUtc": "2026-11-01T10:55:37.783Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:f3523725-df09-4cbc-86fb-c46d85b0e636"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/651407c6-ba5d-4e08-86b8-07ae75b78149/skywheel-of-tallinn",
+      "publishedAtUtc": "2026-11-01T10:56:11.609Z",
+      "applyOperationId": "f2332f9f-f7a5-4d2e-b1d9-cfb1aa7b6478"
+    },
+    "facebook": {
+      "id": "03b1f2ca8bf74f9789b0d19cd00f4590",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T10:56:55.956Z",
+      "externalPostId": "1285475681307050_122125590729424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125590729424431"
+    }
+  }
+}
