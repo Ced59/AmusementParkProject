@@ -1,0 +1,92 @@
+{
+  "name": "The St. Louis Wheel",
+  "entryId": "US-candidate-7a55d8c10505e4",
+  "standaloneAttractionId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+  "qualification": "Grande roue de Union Station à billet propre, distincte des autres attractions du complexe ; pas de fiche homonyme dans l’éditeur officiel.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 2,
+    "weeklyRules": 4,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "La FAQ officielle ne précise pas la tranche d’âge du billet enfant ; à vérifier directement auprès de l’exploitant."
+  ],
+  "sources": [
+    {
+      "label": "The St. Louis Wheel — description et billetterie propre",
+      "url": "https://www.thestlouiswheel.com/st-louis-wheel"
+    },
+    {
+      "label": "The St. Louis Wheel — prix, horaires et adresse officiels",
+      "url": "https://www.thestlouiswheel.com/plan-your-visit"
+    },
+    {
+      "label": "OpenStreetMap / Nominatim — point exact de la roue",
+      "url": "https://www.openstreetmap.org/node/7863293647"
+    },
+    {
+      "label": "Wikimedia Commons — St. Louis Wheel, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:The_St._Louis_Wheel_at_Union_Station.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — St. Louis Wheel, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:St._Louis_Wheel,_St._Louis_Union_Station,_Market_Street,_St._Louis,_MO.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "fb041c712f8e4944b105d769306a7fc2",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_St._Louis_Wheel_at_Union_Station.jpg",
+      "author": "Retrodells",
+      "date": "2020-01-07",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "subject": "Vue rapprochée de la grande roue à Union Station",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "1acac94c4f6a41bfb9a8b62adf2bc1f8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:St._Louis_Wheel,_St._Louis_Union_Station,_Market_Street,_St._Louis,_MO.jpg",
+      "author": "w_lemay",
+      "date": "2023-03-25 13:36:57",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "subject": "Vue de la roue et de la rue pavée à Union Station",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "6c5423a5939eecb3bd4979b9e7fbc3d7d279929296d1564f5982c8030ed9e276",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T11:56:13.556Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T11:53:03.888Z",
+    "photosPublishedAtUtc": "2026-11-01T11:53:48.558Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:eb207c51-ae9b-421a-bfc1-e42126b1c51e"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/794a53d9-847b-452c-8a46-ee74a42e0dd9/the-st-louis-wheel",
+      "publishedAtUtc": "2026-11-01T11:54:23.975Z",
+      "applyOperationId": "4bf52a15-95d3-42bd-9420-c6d921584324"
+    },
+    "facebook": {
+      "id": "01d76f0e2ed54863bddabe311af664c4",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T11:55:16.228Z",
+      "externalPostId": "1285475681307050_122125600143424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125600143424431"
+    }
+  }
+}
