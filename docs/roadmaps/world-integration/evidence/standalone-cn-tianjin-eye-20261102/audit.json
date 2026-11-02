@@ -1,0 +1,158 @@
+{
+  "work": "Tianjin Eye is a separately ticketed observation wheel on Yongle Bridge over the Haihe. English, Chinese and broad-city official editor Park/Standalone searches found no same-site record; Fantawild Adventure Tianjin is a different distant park and Tianjin Shuishang Park has a separate wheel project. Created hidden with eight authored descriptions, recent Ctrip weekly hours, official April 2026 day/night adult fares, 2009 opening and 2023 gondola-renewal history, and four exact Commons photographs including a 2019 aerial view labelled historical. Audited and published site and Facebook.",
+  "qualification": "Bridge-top urban wheel with separately sold tickets; no structured amusement-park parent.",
+  "sourceChecks": {
+    "parkEnglish": 0,
+    "parkChinese": 0,
+    "standaloneEnglish": 0,
+    "standaloneChinese": 0,
+    "standaloneCity": 0,
+    "otherTianjinParks": "Fantawild Adventure Tianjin and Tianjin Shuishang Park are separate venues"
+  },
+  "sources": {
+    "municipal": "https://www.tj.gov.cn/sq/yztj/jqjs/202005/t20200520_2467986.html",
+    "municipalDimensions": "https://www.tj.gov.cn/sq/yztj/jgtp/202005/t20200520_2468039.html",
+    "library": "https://www.tjl.tj.cn/ArticleContent.aspx?ChannelId=241&ID=25268",
+    "opening": "https://news.enorth.com.cn/system/2009/04/16/003963354.shtml",
+    "fares": "https://news.enorth.com.cn/system/2026/04/17/059327095.shtml",
+    "ticketingSignal": "https://finance.sina.com.cn/jjxw/2026-09-25/doc-inisyywc4607763.shtml",
+    "hours": "https://you.ctrip.com/sight/tianjin154/56364.html",
+    "coordinates": "https://www.wikidata.org/wiki/Q750548"
+  },
+  "commercialData": {
+    "pricing": "Operator notice effective 2026-04-20: adult day CNY 90, adult evening CNY 138; eligible children and seniors pay half. The 2020 municipal page still displays old CNY 70 and was not used for current pricing.",
+    "openingHours": "Ctrip lists Monday 18:00–22:00 and Tuesday–Sunday 09:30–22:00 on 2026-11-02, subject to operator weather/inspection changes; the official WeChat account is the live notice source.",
+    "website": "No stable standalone operator website URL verified; official information is distributed via WeChat, so websiteUrl was not fabricated."
+  },
+  "dataReceipts": [
+    {
+      "operationId": "fcec452f-0d95-4e41-b9de-42fb033a9691",
+      "appliedAtUtc": "2026-11-02T08:16:53.984Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "862100ae-b71c-4589-a6d7-e3106355a0cc",
+      "appliedAtUtc": "2026-11-02T08:22:23.431Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "333e8dc0-4db1-4c0f-b81a-eaa509a7c204",
+      "appliedAtUtc": "2026-11-02T08:22:58.119Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "171a8e9f-9857-4896-92cc-99c5d7a57b79",
+      "appliedAtUtc": "2026-11-02T08:23:22.632Z",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "c01e975de66a409c8b37c3152bd6982b",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:%E5%A4%A9%E6%B4%A5%E4%B9%8B%E7%9C%BCfrom%E9%87%91%E5%88%9A%E6%A1%A5.jpg",
+      "author": "KangTyngrwey",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2023-01-31 15:06:22",
+      "historical": false,
+      "ownerId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T08:26:32.965Z"
+    },
+    {
+      "imageId": "b1824bb62de5427cbcf33ee3fd78dfb4",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:%E5%A4%A9%E6%B4%A5%E4%B9%8B%E7%9C%BCTianjin_Eye.jpg",
+      "author": "KangTyngrwey",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2023-07-16 21:40:56",
+      "historical": false,
+      "ownerId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T08:26:44.787Z"
+    },
+    {
+      "imageId": "85519d37bdb9492096d2d3aa0e3babde",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:%E5%A4%A9%E6%B4%A5%E4%B9%8B%E7%9C%BC%E8%88%AA%E6%8B%8D_DJI_0042.jpg",
+      "author": "David290",
+      "license": "CC BY-SA 4.0",
+      "takenAt": "2019-09-05 14:02:03",
+      "historical": true,
+      "ownerId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T08:26:56.399Z"
+    },
+    {
+      "imageId": "3bb36f051ff946e5aa330c3e93f621c1",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Tianjin_Eye_11.jpg",
+      "author": "H2v5o68z",
+      "license": "CC0",
+      "takenAt": "2024-09-21 20:31:27",
+      "historical": false,
+      "ownerId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T08:27:08.016Z"
+    }
+  ],
+  "audit": {
+    "score": 94,
+    "earnedPoints": 66,
+    "applicableMaxPoints": 70,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 4,
+    "visibleHistoryEvents": 2,
+    "knownScoringGaps": "No verified standalone operator website URL or sourced visitor access condition; no placeholder added."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/8f7f349b-4e1d-5e92-b9a3-dca866363537/tianjin-eye",
+    "sitePublishedAtUtc": "2026-11-02T08:28:04.113Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:c285ab8e-161e-4d90-8fee-27d1c40ee23b",
+    "siteHttpStatus": 200,
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "4647250a607745bf90892a11e96ccc9f",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125702827424431",
+    "facebookPublishedAtUtc": "2026-11-02T08:29:10.770Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T08:23:22.632Z",
+  "remainingGaps": [
+    "Find a stable, verifiably operator-owned public URL for ongoing notices, if one exists.",
+    "Recheck hours and fares through the operator WeChat account after any weather or inspection closure."
+  ]
+}
