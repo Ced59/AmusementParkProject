@@ -1,0 +1,304 @@
+{
+  "entryId": "FR-candidate-778dd6c0478ee2",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-02T18:59:02.109236+00:00",
+  "decision": "Create private historical Park for Grand Tivoli/Folie Boutin, public1795–1825; record temporarymove1810–1812 inhistory, not a second simultaneouspark. NouveauTivoli/FolieLaBouexiere,operatorRobertson,1826or1827–1842 is a distinct successor: no attractions or1827prints merged into originalpark. Its separatecandidate will retain discoverytrace.",
+  "name": "Tivoli (Folie Boutin)",
+  "aliases": [
+    "Grand Tivoli",
+    "Jardins Tivoli",
+    "Folie Boutin"
+  ],
+  "officialSearches": [
+    {
+      "action": "SearchParks",
+      "query": "Boutin",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "matches": []
+    },
+    {
+      "action": "SearchParks",
+      "query": "Richelieu",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "matches": []
+    },
+    {
+      "action": "SearchParks",
+      "query": "Robertson",
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "76dcf75b1f5582f04c02adfe62750271863e040fb1a8dd3d090ab1986db8dc8b",
+      "matches": [
+        {
+          "id": "2825e63a-cf40-4bff-9e2b-b406fb573825",
+          "name": "Mid America Adventure",
+          "countryCode": "US"
+        }
+      ]
+    },
+    {
+      "action": "SearchParks",
+      "query": "Tivoli",
+      "pagination": {
+        "totalItems": 30,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "1aa50fe1b40b4494467a36d8e67954655823d4312d93c6789349104e1d2e1dee",
+      "matches": [
+        {
+          "id": "f95c7ed8-6564-4fce-a031-3d81d3bee764",
+          "name": "Amusementspark Tivoli",
+          "countryCode": "NL"
+        },
+        {
+          "id": "21a70506-e31a-4054-bf76-9c8a7b312905",
+          "name": "Ankers Tivoli",
+          "countryCode": "DK"
+        },
+        {
+          "id": "e5b48105-642e-403a-b841-396e31e12f96",
+          "name": "Berglunds Tivoli",
+          "countryCode": "SE"
+        },
+        {
+          "id": "95025178-c620-43c2-a57c-00f2769a33cf",
+          "name": "Bergströms Tivoli",
+          "countryCode": "NO"
+        },
+        {
+          "id": "28d8ae5d-1875-48a8-b3c4-11920b1d76ff",
+          "name": "Fyns Tivoli",
+          "countryCode": "DK"
+        },
+        {
+          "id": "a7a75186-ae90-4128-8013-a905075a64c5",
+          "name": "Herning Tivolipark",
+          "countryCode": "DK"
+        },
+        {
+          "id": "37b88d26-4100-4979-87ce-4aaa3805ed28",
+          "name": "Hugos Tivoli",
+          "countryCode": "NO"
+        },
+        {
+          "id": "b4451ce3-66c0-4ac0-8fca-840db7f3a1ff",
+          "name": "Kjærs Tivoli",
+          "countryCode": "DK"
+        },
+        {
+          "id": "28a28181-b958-445f-bcdf-040da4f76709",
+          "name": "Kölner Tivoli",
+          "countryCode": "DE"
+        },
+        {
+          "id": "959193f6-c899-40f7-95da-c40ba115d2ca",
+          "name": "Luna Park Tivoli",
+          "countryCode": "GR"
+        },
+        {
+          "id": "6b9a6cab-0a93-497a-a936-e53bb2df69f7",
+          "name": "Lunds Tivoli",
+          "countryCode": "NO"
+        },
+        {
+          "id": "30dcd18a-6e17-4eed-b800-62f28e4fe667",
+          "name": "Max Tivoli",
+          "countryCode": "SE"
+        },
+        {
+          "id": "b7d7f175-28cd-44d5-bff4-44ccac3f26b3",
+          "name": "Möllers Tivoli AB",
+          "countryCode": "SE"
+        },
+        {
+          "id": "5ce1a84f-0a3d-4799-9f70-979e57a4b916",
+          "name": "Nordisk Tivolipark",
+          "countryCode": "DK"
+        },
+        {
+          "id": "58dfe3b2-2298-426a-8bd2-e93db346677b",
+          "name": "Rocca al Mare Tivoli",
+          "countryCode": null
+        },
+        {
+          "id": "b96d695d-b7fa-4eb1-90bf-2dd7b4c1a5c8",
+          "name": "Skandinavisk Tivolipark",
+          "countryCode": "NO"
+        },
+        {
+          "id": "433f91e4-a8fe-4911-b9d7-f4b84553eaea",
+          "name": "Suomi Tivoli",
+          "countryCode": "FI"
+        },
+        {
+          "id": "78401ecc-840e-4cd1-a18f-9a7b94b9f0cc",
+          "name": "Tivoli Friheden",
+          "countryCode": "DK"
+        },
+        {
+          "id": "940f5b89-9336-4f54-bf00-20232691c8ba",
+          "name": "Tivoli Gardens",
+          "countryCode": "DK"
+        },
+        {
+          "id": "88d00988-5b05-4f44-90f8-e628445f45b6",
+          "name": "Tivoli Karolinelund",
+          "countryCode": "DK"
+        },
+        {
+          "id": "6b7c1e67-a18e-4354-83bf-691e03c0055e",
+          "name": "Tivoli Mokia Finland",
+          "countryCode": "FI"
+        },
+        {
+          "id": "b92d7818-8485-403c-af23-798653d60993",
+          "name": "Tivoli Park (1973-1995)",
+          "countryCode": "ES"
+        },
+        {
+          "id": "2957d46e-fc66-4713-938d-49a368832cc1",
+          "name": "Tivoli Park (2020)",
+          "countryCode": "BR"
+        },
+        {
+          "id": "ba819e0f-dde1-422d-a85f-7aa0050ef9a6",
+          "name": "Tivoli Sariola",
+          "countryCode": "FI"
+        },
+        {
+          "id": "ada68259-fcb7-49fa-b77f-86786cc34a1c",
+          "name": "Tivoli Seiterä",
+          "countryCode": "FI"
+        },
+        {
+          "id": "96e1f029-be3d-4221-9598-c2ea17cd6c59",
+          "name": "Tivoli Suuronen",
+          "countryCode": "FI"
+        },
+        {
+          "id": "069eb28d-6599-442d-bd8e-190051e82fa3",
+          "name": "Tivoli World",
+          "countryCode": "ES"
+        },
+        {
+          "id": "62a3af4d-549d-4dc4-bfa2-4afd29ba4e6d",
+          "name": "Tivoliland",
+          "countryCode": "DK"
+        },
+        {
+          "id": "b6fb2293-15b5-4408-b468-0075671643da",
+          "name": "Tšehhi Tivoli Eesti",
+          "countryCode": null
+        },
+        {
+          "id": "e70b8e99-ed93-492e-8e51-b70d0b86c181",
+          "name": "Vikings Tivoli AB",
+          "countryCode": "SE"
+        }
+      ]
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Boutin",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "matches": []
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Richelieu",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "matches": []
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Robertson",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "matches": []
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Tivoli",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "matches": []
+    }
+  ],
+  "sources": [
+    {
+      "label": "Ville de Paris — Jardins Tivoli, public reopening in1795 and entrance rueSaintLazare",
+      "url": "https://parcoursrevolution.paris.fr/fr/points-interet/31-s-amuser-apres-la-revolution-les-jardins-tivoli"
+    },
+    {
+      "label": "9eHistoire — separate FolieBoutin,temporaryFolieRichelieu,NouveauTivoli; closure1825,demolition1826",
+      "url": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1"
+    },
+    {
+      "label": "Langlois1992 — privategarden1768–1771,notpublicopening1730",
+      "url": "https://www.persee.fr/doc/hista_0992-2059_1992_num_19_1_2516"
+    },
+    {
+      "label": "Lavallée1857 — GrandTivoli,balloons,montagnesrusses,concerts;demolished1826",
+      "url": "https://www.gutenberg.org/cache/epub/18727/pg18727-images.html"
+    },
+    {
+      "label": "Cambridge research — publicgarden1795,distinctlaternamesakes",
+      "url": "https://api.repository.cam.ac.uk/server/api/core/bitstreams/59f7ef91-e5ca-4f8d-9050-d4c00e4775f3/content"
+    }
+  ],
+  "notIncluded": [
+    "1730 date of earlierprivateFolieRichelieu,notTivolipublicopening",
+    "NouveauTivoliCoursesEoliennes/cabinetphysics/phantasmagoria/pigeonshooting",
+    "SeparatebathsBainsdeTivoli",
+    "CurrentCasinoParis",
+    "ItalianTivoli/DanishTivoli/otherinternationalhomonyms"
+  ],
+  "remainingGaps": [
+    "PrecisehistoricalGPSunknown",
+    "Authenticstandalonelogonotestablished",
+    "Completeiteminventoryandcontemporaryillustrationspending",
+    "Exactopeningandclosuredayunverified;years1795/1825supported;demolition1826keptseparate"
+  ],
+  "coordinationReference": "tivoli-paris-reservation.json",
+  "mutated": false
+}

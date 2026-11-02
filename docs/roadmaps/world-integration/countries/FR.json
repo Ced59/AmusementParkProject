@@ -29594,31 +29594,201 @@
     },
     {
       "entryId": "FR-candidate-778dd6c0478ee2",
-      "name": "Tivoli",
+      "name": "Tivoli (Folie Boutin)",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "Parc historique — jardin de divertissements",
       "locality": "Paris",
-      "siteId": null,
+      "siteId": "07c11d51-de76-442d-bc55-91e26aae66a1",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-02T19:31:44.7234674Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Parc public1795–1825 ; démolition1826 ; NouveauTivoli deRobertson distinct",
+      "identityConfidence": "Confirmé par Ville de Paris, 9eHistoire et archives historiques",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Grand Tivoli",
+        "Folie Boutin",
+        "Jardins Tivoli"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-02T19:33:37.043Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-737e8e16-6305-4d81-9572-f4306cf846f8",
+          "appliedAt": "2026-11-02T19:00:16.079Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-737e8e16-6305-4d81-9572-f4306cf846f8",
+          "auditEvidence": null,
+          "summary": "Création privée du Grand Tivoli/Folie Boutin, Paris : ouverture publique1795 et fermeture1825, avant démolition1826. NouveauTivoli deRobertson distinct ; GPSnonétabli."
+        },
+        {
+          "eventId": "apply-5260ad4e-df87-4ca3-bf08-a8eb5ee6da87",
+          "appliedAt": "2026-11-02T19:03:50.869Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-5260ad4e-df87-4ca3-bf08-a8eb5ee6da87",
+          "auditEvidence": null,
+          "summary": "Inventaire historique privé : neuf offres internes attestées (quatre jeux/manège, quatre programmes/spectacles et le limonadierDehodencq) ; parc classé AmusementPark. Sources1802et1857, aucun équipement moderne ni date inventés."
+        },
+        {
+          "eventId": "apply-ffbd33d0-db79-4680-9f40-88f0948eb252",
+          "appliedAt": "2026-11-02T19:07:09.991Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-ffbd33d0-db79-4680-9f40-88f0948eb252",
+          "auditEvidence": null,
+          "summary": "Description développée du GrandTivoli dans huit langues : paysage, bals et jeux de1802, ascensions et disparition du jardin. Trois sections et cinq paragraphes par langue,279–344mots ; fiche toujoursprivée."
+        },
+        {
+          "eventId": "import-photo-0f09fd9d27a24febbf18bc69db82987e-2026-11-02T190833.670Z",
+          "appliedAt": "2026-11-02T19:08:33.670Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#import-photo-0f09fd9d27a24febbf18bc69db82987e-2026-11-02T190833.670Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-poster, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0e96a9a4b5a34d17939acc782493b1f7-2026-11-02T190848.383Z",
+          "appliedAt": "2026-11-02T19:08:48.383Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#import-photo-0e96a9a4b5a34d17939acc782493b1f7-2026-11-02T190848.383Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-coupon, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-dd9092ae69b44fb58ead5a82b865d385-2026-11-02T190903.032Z",
+          "appliedAt": "2026-11-02T19:09:03.032Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#import-photo-dd9092ae69b44fb58ead5a82b865d385-2026-11-02T190903.032Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-fashion, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-a4b93d16-64ce-43fd-a38f-f998ceb80221",
+          "appliedAt": "2026-11-02T19:11:54.171Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-a4b93d16-64ce-43fd-a38f-f998ceb80221",
+          "auditEvidence": null,
+          "summary": "Sept faits historiques privés du GrandTivoli intégrés dans huit langues : ouverture1795, spectacle1797, annonce1802, déplacements1810/1812, fermeture1825 et démolition1826 ; précision annuelle sourcée."
+        },
+        {
+          "eventId": "import-photo-b469f481f462483a9cd41a72ce6ef057-2026-11-02T191322.608Z",
+          "appliedAt": "2026-11-02T19:13:22.608Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#import-photo-b469f481f462483a9cd41a72ce6ef057-2026-11-02T191322.608Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-balloon, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b83e82d85c09459dbea46bfc077e36a8-2026-11-02T191337.656Z",
+          "appliedAt": "2026-11-02T19:13:37.656Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#import-photo-b83e82d85c09459dbea46bfc077e36a8-2026-11-02T191337.656Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bal, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-f0694b69-6651-4048-aa28-040fd540bb83",
+          "appliedAt": "2026-11-02T19:21:27.345Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-f0694b69-6651-4048-aa28-040fd540bb83",
+          "auditEvidence": null,
+          "summary": "Article historique 1802 en huit langues, quatre sections, huit paragraphes et trois illustrations contextualisées ; cinq sources, événement existant conservé ; privé."
+        },
+        {
+          "eventId": "apply-0b85e307-cde1-4ef9-ae24-7b75f3feff65",
+          "appliedAt": "2026-11-02T19:23:53.833Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-0b85e307-cde1-4ef9-ae24-7b75f3feff65",
+          "auditEvidence": null,
+          "summary": "Deux animations historiques attestées par le récit de visite de 1802 : ombres chinoises et tours de force ; fiches internes privées, sans dates ou localisation inventées."
+        },
+        {
+          "eventId": "apply-628aca4d-0662-4cee-bf25-de7a163fc493",
+          "appliedAt": "2026-11-02T19:28:06.723Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-628aca4d-0662-4cee-bf25-de7a163fc493",
+          "auditEvidence": null,
+          "summary": "Cinq descriptions historiques en huit langues : bal, ascensions en ballon, feux d’artifice, limonadier Dehodencq et Orphée ; sources relues, lacunes documentées, fiches privées."
+        },
+        {
+          "eventId": "apply-6edb9658-fb31-44b5-b5f1-c45034bfe4e3",
+          "appliedAt": "2026-11-02T19:30:17.401Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-6edb9658-fb31-44b5-b5f1-c45034bfe4e3",
+          "auditEvidence": null,
+          "summary": "Relecture : tarif historique réservé à l’article documentaire, retiré des descriptions ; affiche originale 1802 choisie comme illustration principale privée, sans être assimilée à un logo."
+        },
+        {
+          "eventId": "apply-529b8e75-49c0-47fd-85c3-9f88dd0c372c",
+          "appliedAt": "2026-11-02T19:33:37.043Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/tivoli-paris-receipts.json#apply-529b8e75-49c0-47fd-85c3-9f88dd0c372c",
+          "auditEvidence": null,
+          "summary": "Lien explicite entre le jalon existant du spectacle Orphée en 1797 et sa fiche interne, sans événement supplémentaire ni date inventée."
+        }
+      ],
+      "nextAction": "Fiche privée auditée à 78/100 : onze éléments dont cinq décrits en huit langues, cinq illustrations historiques, sept faits et un article en huit langues. Logo requis ; six descriptions, inventaire complet, médias, plans et positions restent incomplets après recherche. Ne pas publier ni marquer completed. Voir tivoli-paris-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Paris — S’amuser après la Révolution : les jardins Tivoli",
+          "url": "https://parcoursrevolution.paris.fr/fr/points-interet/31-s-amuser-apres-la-revolution-les-jardins-tivoli",
+          "accessedAt": "2026-11-02T19:30:45.438224+00:00"
+        },
+        {
+          "label": "9e Histoire — Folies, Tivoli et rues nouvelles",
+          "url": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+          "accessedAt": "2026-11-02T19:30:45.439348+00:00"
+        },
+        {
+          "label": "Musée Carnavalet — affiche de Tivoli, 1802, AFF1499",
+          "url": "https://parismuseescollections.paris.fr/en/node/76489",
+          "accessedAt": "2026-11-02T19:30:45.439969+00:00"
+        },
+        {
+          "label": "Palais Galliera — Costume Parisien, 1798, 2025.21.123",
+          "url": "https://www.parismuseescollections.paris.fr/en/node/517700",
+          "accessedAt": "2026-11-02T19:30:46.568964+00:00"
+        },
+        {
+          "label": "Théophile Lavallée — Histoire de Paris, 1857, rue Saint-Lazare",
+          "url": "https://www.gutenberg.org/cache/epub/18727/pg18727-images.html",
+          "accessedAt": "2026-11-02T19:30:47.499750+00:00"
         }
       ]
     },
@@ -30948,14 +31118,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
@@ -33794,6 +33964,47 @@
         "evidence": "evidence/france-historical-20261022/zygofolis-identity-reconciliation.json",
         "canonicalEntryId": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff"
       }
+    },
+    {
+      "entryId": "FR-candidate-bc5ed7aa50e26f",
+      "name": "Nouveau Tivoli (Folie La Bouëxière)",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Parc historique à qualifier",
+      "locality": "Paris",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02T19:00:57.319304+00:00",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation Robertson à partir de1826ou1827 ; fin1841–1842àpréciser",
+      "identityConfidence": "Établissement distinct du GrandTivoli, dates etpérimètreàaffiner",
+      "possibleMatches": [],
+      "aliases": [
+        "Nouveau Tivoli",
+        "Folie La Bouëxière",
+        "Tivoli de Robertson"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Qualifier séparément le successeur du GrandTivoli : vérifier dates1826/1827 et fermeture1841/1842, rueClichy, opérateurs et parcelles ; reprendre la recherche officielle avant création. Aucun Apply pour ce candidat.",
+      "sources": [
+        {
+          "label": "9eHistoire — Nouveau Tivoli, distinct successeur à la Folie La Bouëxière",
+          "url": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Musée Carnavalet — lithographie Tivoli1827, G.11357",
+          "url": "https://www.parismuseescollections.paris.fr/en/node/143081",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "discoveredAt": "2026-11-02T19:00:57.319304+00:00",
+      "discoveryReason": "Séparation documentée du dossier historique national Tivoli1730–1842 ; jardin distinct à laFolieLaBouexiere, sans réécrire l’historique du dossier GrandTivoli."
     }
   ]
 }

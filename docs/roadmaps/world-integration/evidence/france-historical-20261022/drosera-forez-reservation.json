@@ -1,0 +1,181 @@
+{
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "name": "Village de la Droséra - Forez Miniature",
+  "owner": "Conversation France",
+  "reservedAtUtc": "2026-11-02T19:36:56.213055+00:00",
+  "stage": "Qualification; no parkcreatedyet",
+  "siteId": null,
+  "lastDataIntegrationAt": null,
+  "globalOfficialSearches": [
+    {
+      "file": "00-search-parks-drosera-accent-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-parks-drosera-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-parks-forez-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-parks-jeansagniere-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-standalone-drosera-accent-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-standalone-drosera-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-standalone-forez-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-standalone-jeansagniere-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    }
+  ],
+  "coordination": {
+    "checkedAtUtc": "2026-11-02 19:35:45 UTC",
+    "checks": [
+      {
+        "ref": "master",
+        "sha": "95cb37ba9b1fea6de172fcc041f26543a0431ce5",
+        "entries": [
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "name": "Tivoli",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "name": "Village de la Droséra - Forez Miniature",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      },
+      {
+        "ref": "docs/europe-integration-backlog",
+        "sha": "5bde75508d1e151f375f2a0a40d1368ef5629476",
+        "entries": [
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "name": "Tivoli",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "name": "Village de la Droséra - Forez Miniature",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      },
+      {
+        "ref": "docs/france-world-reconciliation-20261022",
+        "sha": "1d9207c2d770df1aba03d32260ec3b6a82e7ee19",
+        "entries": [
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "name": "Tivoli",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "name": "Village de la Droséra - Forez Miniature",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "label": "Patrick Burtart — official biography and reproduced press interviews",
+      "url": "https://www.patrickburtart.fr/"
+    },
+    {
+      "label": "M. Jourdan — personal holiday photographs, summer2001",
+      "url": "http://m.jourdan974.free.fr/photos5.htm"
+    }
+  ],
+  "identityBoundaries": [
+    "Parkofregionalmonumentminiatures separatefromactualmonuments",
+    "Vacationvillage/chaletresidentialuse not automatically currentpublicpark",
+    "PublisherEditionsduDrosera currentlogo nothistoricalparklogo",
+    "1992–2013founderpressperiod conflictsnational2009closure; qualifybeforestructuredclosuredate"
+  ],
+  "integrationEvents": []
+}

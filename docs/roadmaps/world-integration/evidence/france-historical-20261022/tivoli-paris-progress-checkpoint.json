@@ -1,0 +1,42 @@
+{
+  "entryId": "FR-candidate-778dd6c0478ee2",
+  "parkId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+  "name": "Tivoli (Folie Boutin)",
+  "owner": "Conversation France",
+  "updatedAtUtc": "2026-11-02T19:35:16.668625+00:00",
+  "phase": "partial-source-gaps",
+  "outcome": "partial",
+  "completed": false,
+  "finalAuditPerformed": true,
+  "parentVisible": false,
+  "items": 11,
+  "itemsWithEightDescriptions": 5,
+  "images": 5,
+  "logo": false,
+  "officialMaps": 0,
+  "historyFacts": 7,
+  "articleLanguages": 8,
+  "score": 78,
+  "publicationBlockers": [
+    "media.logo-required"
+  ],
+  "dataIntegrationEvents": 14,
+  "lastDataIntegrationAt": "2026-11-02T19:33:37.043Z",
+  "lastDataIntegrationRawUtc": "2026-11-02T19:33:37.043401Z",
+  "lastOperation": "apply-529b8e75-49c0-47fd-85c3-9f88dd0c372c",
+  "latestGraph": "09-consolidated-audit-graph.json",
+  "audit": "09-progress-audit.json",
+  "sourceGaps": "09-source-gaps.json",
+  "facebookStatus": "NotAttempted",
+  "next": "Continue remaininghistoricalqualification, Droséra–ForezMiniature and distinct NouveauTivoli. Preserve Tivoli privatepending sourcegaps; no completed claim.",
+  "warnings": [
+    "InitialopeningDate1795Previewignoredpre1800year; notapplied. CorrectopeningDateText1795verified.",
+    "InitialcurrentimagepatchisCurrentignored; notapplied. CorrectsetAsCurrentPreviewandApplyverified.",
+    "FirstmandatoryexportHTTP404; officialstatusidleverified, serialretrywaitedbusygateandcompleted. No datapatchreplayed.",
+    "Originalarticlebuilders predateEnglishspacingcleanup; itemcopybuilders predatehistoricalamountremoval. Use authoritativeconsolidatedauditgraph/workinggraph.",
+    "RelatedParkItemIdsstoredforOrphee; canonicalrelationCountstill0, no individualitemtimeline claimed."
+  ],
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}

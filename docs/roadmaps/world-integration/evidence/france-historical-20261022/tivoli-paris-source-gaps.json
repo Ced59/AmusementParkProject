@@ -1,0 +1,334 @@
+{
+  "entryId": "FR-candidate-778dd6c0478ee2",
+  "parkId": "07c11d51-de76-442d-bc55-91e26aae66a1",
+  "checkedAtUtc": "2026-11-02T19:35:16.668625+00:00",
+  "status": "Audited partial; private",
+  "identity": {
+    "publicPark": "Grand Tivoli/Folie Boutin, Paris,1795–1825; temporarymoveFolieRichelieu1810–1812; demolition1826.",
+    "distinctCandidate": "FR-candidate-bc5ed7aa50e26f NouveauTivoli/FolieLaBouexiere/Robertson,1826or1827–1841/1842 remains separate, noAPImutation.",
+    "excluded": [
+      "1730privateRichelieuestate asparkopening",
+      "BainsdeTivoliasparkservice",
+      "CasinoParis",
+      "ModernDanish/ItalianTivolilogos",
+      "NouveauTivoliCoursesEoliennes/phantasmagoria asGrandTivoliitems"
+    ],
+    "openingDateStorage": "ExplicitopeningDateText1795verifiedbyofficialSearch andfreshExport; initialPreviewwithopeningDate1795silentlyomittedyearandwasneverapplied. No invented1800orJan1."
+  },
+  "inventory": {
+    "items": 11,
+    "attractions": 4,
+    "shows": 6,
+    "refreshmentService": 1,
+    "exhaustiveInventoryProven": false,
+    "currentOrAnnounced": 0,
+    "removedAttractionDetails": 10,
+    "descriptionCoverage": {
+      "park": 8,
+      "items": 5,
+      "totalItems": 11,
+      "attractions": 0,
+      "totalAttractions": 4
+    },
+    "missingDescriptions": [
+      {
+        "id": "92f0a5e6-6e36-445a-8552-e6a47c3e3f07",
+        "name": "Balançoires",
+        "category": "Attraction"
+      },
+      {
+        "id": "39a6dd67-593c-472c-8bf2-703bec1b86f6",
+        "name": "Courses sur l’eau",
+        "category": "Attraction"
+      },
+      {
+        "id": "1725eb0f-c3b3-4e44-8fe9-8414066c2c05",
+        "name": "Jeux de bagues",
+        "category": "Attraction"
+      },
+      {
+        "id": "ba9698ea-3bf2-40ae-9b32-767f15425279",
+        "name": "Montagnes russes",
+        "category": "Attraction"
+      },
+      {
+        "id": "c4495a75-7bd4-44c8-aa1e-469129ed0b40",
+        "name": "Ombres chinoises",
+        "category": "Show"
+      },
+      {
+        "id": "c118c1b6-58d2-4631-952c-9544697f577a",
+        "name": "Tours de force",
+        "category": "Show"
+      }
+    ],
+    "reason": "Original1802poster nameswatergames,ringgames,swingswithoutconcreteequipmentdetails;1857Lavalleenamescoasterswithoutlayout/date/manufacturer;1802eyewitnessnames shadowtheatre/featsofstrengthwithoutperformers/scripts. Genuinearchive/searchreviewdidnotjustifydevelopedindividualdescriptions; no boilerplate.",
+    "shorterExceptions": [
+      {
+        "id": "ac52f0b9-46d1-449b-af8f-d2662a45d4c0",
+        "name": "Ascensions en ballon",
+        "reason": "Historic illustration/catalogue and1857description establish aerialdisplay,setting,appearance andlegacy but not individualprogramme or mechanics. Some languages below120words deliberately concise; exactdate uncertainty retained internally instead of padding."
+      },
+      {
+        "id": "680224ae-d4fa-4d12-9253-a32dbfbc99bc",
+        "name": "Limonadier Dehodencq",
+        "reason": "Only original operating poster identifies refreshmentservice; additionalDehodencqsearch returnedsamearchivedposter/mirrors without independent menu/layout. Three conciseparagraphs retain actualspecificfacts; below120inmostlanguages instead of inventedmenu or restaurantatmosphere."
+      },
+      {
+        "id": "69970a49-ff3b-4b46-82d7-9c32e4618fbc",
+        "name": "La Descente d’Orphée aux Enfers",
+        "reason": "Genuine searches namedshow+1797 and parkarchives found only concisehistorical account. No surviving programme/script personally available. Preserve narrow80–120worddescriptions instead of inventing scenes or padding to120."
+      }
+    ],
+    "notCreated": [
+      "Ambiguous volants/balons from1802poster",
+      "Unidentifiedmechanicalpieces/programmeattributions without stableofferidentity",
+      "Privategardenstyles/Gladiateurpavilionaspubliczones without datedpublicvisitorplan"
+    ]
+  },
+  "media": {
+    "total": 5,
+    "authenticUnmodifiedHistoricIllustrations": 5,
+    "actualPhotographs": 0,
+    "parkOwned": 3,
+    "parkMain": "0f09fd9d27a24febbf18bc69db82987e",
+    "itemOwners": 2,
+    "itemsWithThreePhotos": 0,
+    "importantItems": 10,
+    "generalPhotoQuota": {
+      "actual": 0,
+      "target": 5,
+      "reason": "Park closed1825 beforephotography; originalprints/documentshonestlyidentified, not counted asphotos."
+    },
+    "itemImages": [
+      {
+        "id": "ac52f0b9-46d1-449b-af8f-d2662a45d4c0",
+        "name": "Ascensions en ballon",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "92f0a5e6-6e36-445a-8552-e6a47c3e3f07",
+        "name": "Balançoires",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "69869319-e952-469c-a89f-5b43292ff4ef",
+        "name": "Bals de Tivoli",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "39a6dd67-593c-472c-8bf2-703bec1b86f6",
+        "name": "Courses sur l’eau",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f6279659-37f9-4965-a914-e7d34043eccd",
+        "name": "Feux d’artifice",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "1725eb0f-c3b3-4e44-8fe9-8414066c2c05",
+        "name": "Jeux de bagues",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "69970a49-ff3b-4b46-82d7-9c32e4618fbc",
+        "name": "La Descente d’Orphée aux Enfers",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "680224ae-d4fa-4d12-9253-a32dbfbc99bc",
+        "name": "Limonadier Dehodencq",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "ba9698ea-3bf2-40ae-9b32-767f15425279",
+        "name": "Montagnes russes",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c4495a75-7bd4-44c8-aa1e-469129ed0b40",
+        "name": "Ombres chinoises",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "c118c1b6-58d2-4631-952c-9544697f577a",
+        "name": "Tours de force",
+        "category": "Show",
+        "images": 0
+      }
+    ],
+    "copyright": "1802poster secondCC0museumvariant, couponCC0,1798fashionplateCC0; BNFhistoricballoonprintthrough9eHistoire; balhistoricillustrationCarnavalet/RogerViollet credited with explicit user reuseauthorization. No transformations/no watermarksremoved.",
+    "balloonDateUncertainty": "BNFtitle15ThermidorYearVIII andpublication1799? conflict; no exactdate imposed."
+  },
+  "logo": {
+    "present": false,
+    "blocking": true,
+    "research": "Officialmunicipalheritagepage,museumcollections/operator1802poster,coupon,BNFcatalogue,9eHistoireandtargetedlogo/enseigne/billet searches. No isolatedgenuineasset.",
+    "rejected": "Whole1802poster notstandalonelogo; no crop,reconstruction,generatedlogo orhomonym reuse."
+  },
+  "officialMaps": {
+    "editions": 0,
+    "years": [],
+    "research": "Private1774Boutingardenplan, laterurbanplans anddistinctNouveauTivoliplans are not annualoperatorvisitormaps. No datedofficialpublicparkmapfound; no falseeditionyear."
+  },
+  "coordinates": {
+    "parkPoint": null,
+    "itemPoints": 0,
+    "items": 11,
+    "namedGaps": [
+      {
+        "id": "ac52f0b9-46d1-449b-af8f-d2662a45d4c0",
+        "name": "Ascensions en ballon",
+        "category": "Show",
+        "status": "Removed"
+      },
+      {
+        "id": "92f0a5e6-6e36-445a-8552-e6a47c3e3f07",
+        "name": "Balançoires",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "69869319-e952-469c-a89f-5b43292ff4ef",
+        "name": "Bals de Tivoli",
+        "category": "Show",
+        "status": "Removed"
+      },
+      {
+        "id": "39a6dd67-593c-472c-8bf2-703bec1b86f6",
+        "name": "Courses sur l’eau",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f6279659-37f9-4965-a914-e7d34043eccd",
+        "name": "Feux d’artifice",
+        "category": "Show",
+        "status": "Removed"
+      },
+      {
+        "id": "1725eb0f-c3b3-4e44-8fe9-8414066c2c05",
+        "name": "Jeux de bagues",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "69970a49-ff3b-4b46-82d7-9c32e4618fbc",
+        "name": "La Descente d’Orphée aux Enfers",
+        "category": "Show",
+        "status": "Removed"
+      },
+      {
+        "id": "680224ae-d4fa-4d12-9253-a32dbfbc99bc",
+        "name": "Limonadier Dehodencq",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "ba9698ea-3bf2-40ae-9b32-767f15425279",
+        "name": "Montagnes russes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "c4495a75-7bd4-44c8-aa1e-469129ed0b40",
+        "name": "Ombres chinoises",
+        "category": "Show",
+        "status": "Removed"
+      },
+      {
+        "id": "c118c1b6-58d2-4631-952c-9544697f577a",
+        "name": "Tours de force",
+        "category": "Show",
+        "status": "Removed"
+      }
+    ],
+    "reason": "Demolishedgarden without provengeoreferencedvisitorlayout. Cityheritagepoint48.876048,2.329942at76–78rueSaintLazare reviewed; presentheritage/accesspointnearBainsnotprovenparkcentroid/historicentrance, notcopiedasexactitemposition."
+  },
+  "references": "Boutinprivateowner,Desrivieres/Bermondhistoricalentrepreneurs andRuggierifireworkartists documented; preciseglobalreferenceidentities/lifetimes roles unverified. No sharedfounder/operator/manufacturer referencecreatedorrewritten.",
+  "history": {
+    "currentFacts": 7,
+    "canonicalDraftFacts": 7,
+    "canonicalRetractedRevisions": 2,
+    "canonicalPublishedFacts": 0,
+    "canonicalBlockers": 0,
+    "parkFacts": 7,
+    "itemFacts": 0,
+    "legacyRelatedItemLinks": 1,
+    "canonicalRelations": 0,
+    "articles": 1,
+    "articleLanguages": 8,
+    "articleHeadings": 4,
+    "articleParagraphs": 8,
+    "articleWordRange": [
+      377,
+      437
+    ],
+    "articleImages": 3,
+    "articleSources": 5,
+    "sourcedFacts": 7,
+    "factsWithImage": 1,
+    "imageGaps": "Originalposterillustrates1802announcementitself; other sixfacts lack event-specificknownprints. Articleundatedballand1798fashionareexplicitcontext; no fakephotos.",
+    "periods": "Publicopening1795; show1797; poster1802; move1810;return1812;closure1825;demolition1826. Yearprecisionretained, no imaginedexactdays."
+  },
+  "calendarAndPricing": "ClosedDefinitively: no currentopeningHours/pricing. Historicalticketamount only documentaryarticle, no fakecurrentcurrency/tariff.",
+  "sourceAvailability": [
+    {
+      "url": "https://parcoursrevolution.paris.fr/fr/points-interet/31-s-amuser-apres-la-revolution-les-jardins-tivoli",
+      "label": "Ville de Paris — S’amuser après la Révolution : les jardins Tivoli",
+      "checkedAtUtc": "2026-11-02T19:30:45.438224+00:00",
+      "status": 200,
+      "finalUrl": "https://parcoursrevolution.paris.fr/fr/points-interet/31-s-amuser-apres-la-revolution-les-jardins-tivoli",
+      "bytes": 96697,
+      "sha256": "79bce384c21878749e7ee406eba3de223d7305b68f1eb65ba0f60878f02c500c"
+    },
+    {
+      "url": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+      "label": "9e Histoire — Folies, Tivoli et rues nouvelles",
+      "checkedAtUtc": "2026-11-02T19:30:45.439348+00:00",
+      "status": 200,
+      "finalUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+      "bytes": 171506,
+      "sha256": "e2fbb597f8c44954b1fb4757e6e2f5dcbb9226ba8919eaa3a4382c5bc8f9ce3c"
+    },
+    {
+      "url": "https://parismuseescollections.paris.fr/en/node/76489",
+      "label": "Musée Carnavalet — affiche de Tivoli, 1802, AFF1499",
+      "checkedAtUtc": "2026-11-02T19:30:45.439969+00:00",
+      "status": 200,
+      "finalUrl": "https://parismuseescollections.paris.fr/en/node/76489",
+      "bytes": 151572,
+      "sha256": "f9f80363036916df72fc9b8ea3c12739f7afc86c37a8b925b36fef0c38e7d55f"
+    },
+    {
+      "url": "https://www.parismuseescollections.paris.fr/en/node/517700",
+      "label": "Palais Galliera — Costume Parisien, 1798, 2025.21.123",
+      "checkedAtUtc": "2026-11-02T19:30:46.568964+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parismuseescollections.paris.fr/en/node/517700",
+      "bytes": 151694,
+      "sha256": "818bff2dbcbab32465f1387dd190d3abad22ca8ce00d720fb7d4f8f836eb2585"
+    },
+    {
+      "url": "https://www.gutenberg.org/cache/epub/18727/pg18727-images.html",
+      "label": "Théophile Lavallée — Histoire de Paris, 1857, rue Saint-Lazare",
+      "checkedAtUtc": "2026-11-02T19:30:47.499750+00:00",
+      "status": 200,
+      "finalUrl": "https://www.gutenberg.org/cache/epub/18727/pg18727-images.html",
+      "bytes": 904657,
+      "sha256": "1c27cab234c1af31aae3beaa9fe712938d52fd9fafb4157e25890a558e5f521a"
+    }
+  ],
+  "publication": "Not ready: requiredlogo absent, sixitemdescriptions/inventory/media/position gaps. No sitepublication orFacebookattempt; no exactscore/logogapexceptioninferred."
+}

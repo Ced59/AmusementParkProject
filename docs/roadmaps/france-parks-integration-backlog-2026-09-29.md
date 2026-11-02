@@ -38,7 +38,8 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Fiches historiques privées existantes | 10 | 4 |
 | Parcs historiques absents de la photographie FR | 20 | 19 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
-| **Total** | **225** | **134** |
+| Candidat historique distinct découvert lors de la qualification (Nouveau Tivoli) | 0 | 1 |
+| **Total** | **225** | **135** |
 
 ## 1. Fiches publiques à compléter
 
@@ -206,7 +207,8 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Pira Park — Nice — fermeture à dater — identité et adresse encore à établir ; 8 recherches officielles paginées, homonymes écartés. Sources de découverte non corroborées ; aucune fiche créée. [Qualification](world-integration/evidence/france-historical-20261022/pira-park-qualification.json).
 - [ ] Planète magique — Paris — 1989-1991 `305f6144-8dc2-4b24-a23d-d44749fe7d83` ; fiche et contenus publiés le 1er novembre 2026, 9 faits historiques et article accessibles dans huit langues. **93/100 sans bloqueur API** : ligne conservée ouverte avec ses lacunes historiques, aucune exception de score acceptée. [Facebook Published](https://www.facebook.com/1285475681307050/posts/122125615305424431). [Audit de publication](world-integration/evidence/france-historical-20261022/planete-magique-publication-audit.json).
 - [ ] Playmobil FunPark Fresnes — Fresnes — 1999-2022 `e88afcf6-3f31-4d21-8db3-fa7dfca604f8` ; fiche et contenus publiés le 1er novembre 2026, 6 faits historiques et article accessibles dans huit langues. **92/100 sans bloqueur API** : ligne conservée ouverte avec ses lacunes historiques, aucune exception de score acceptée. [Facebook Published](https://www.facebook.com/1285475681307050/posts/122125617357424431). [Audit de publication](world-integration/evidence/france-historical-20261022/playmobil-fresnes-publication-audit.json).
-- [ ] Tivoli — Paris — 1730-1842
+- [ ] Tivoli (Folie Boutin) — Paris — 1795–1825, démolition 1826 — `07c11d51-de76-442d-bc55-91e26aae66a1`, fiche privée : onze éléments dont cinq décrits en huit langues, cinq illustrations historiques, sept faits et un article en huit langues ; **audit 78/100, logo requis**. Six descriptions et les autres lacunes d’archives restent documentées. Site et Facebook non publiés. [Audit et sources](world-integration/evidence/france-historical-20261022/tivoli-paris-progress-audit.json).
+- [ ] Nouveau Tivoli (Folie La Bouëxière) — Paris — 1826/1827–1841/1842 à préciser — `FR-candidate-bc5ed7aa50e26f`, candidat distinct identifié pendant la qualification de Tivoli ; aucune fiche créée.
 - [ ] Village de la Droséra - Forez Miniature — Jeansagnière — 1992-2009
 - [ ] Zygofolis — Nice — 1987-1991 — **doublon de dossier conservé, hors dossiers actifs** : même parc que Zygo Park / Zygo Parc (`b2dca918-9747-4623-a0c0-38e89634aaff`), suivi en section 4.
 
