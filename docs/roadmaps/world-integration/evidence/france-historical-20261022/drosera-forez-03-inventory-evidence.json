@@ -1,0 +1,74 @@
+{
+  "scope": "Seven individually corroborated historical miniature exhibits plus historically documented boutique/picnic area. No current/future offerings: park closed2013. Model fate after closure unproven, so ClosedDefinitively not demolished/Removed. Source original summer2001 visitor photographs plus secondary named inventory; Château de la Roche independently named in July2010 eyewitness school account. Secondary uncorroborated remaining model names retained in local qualification list, not asserted complete. No model opening dates, GPS, manufacturers or access restrictions invented. Miniature models never Standalone or actual church/castle/mine facilities. Pict0056 landscape remains Park media until its individual miniature identities proven. No named thematic zones supported; regional groupings in wiki are catalogue headings, not physical zones. Residential chalets/pool not parkItems. No current schedule/pricing applicable.",
+  "items": [
+    {
+      "key": "batie-urfe",
+      "name": "Château de la Bâtie d’Urfé",
+      "source": "http://m.jourdan974.free.fr/photos5.htm",
+      "evidence": "Miniature in summer2001 pict0051; paired arcaded gallery, pale facade, stair turret, detached garden rotunda. Named in secondary inventory; original monument architecture corroborated by LoireTourisme."
+    },
+    {
+      "key": "chalmazel",
+      "name": "Château de Chalmazel",
+      "source": "http://m.jourdan974.free.fr/photos5.htm",
+      "evidence": "Miniature in summer2001 pict0052; high round towers around keep, low red-roofed outer range. Named in secondary inventory and architectural identity corroborated by LoireForez tourism."
+    },
+    {
+      "key": "clermont-cathedrale",
+      "name": "Cathédrale de Clermont-Ferrand",
+      "source": "http://m.jourdan974.free.fr/photos5.htm",
+      "evidence": "Two summer2001 photographs pict0053/54 show distinctive paired Gothic spires and flying buttresses. Named in secondary inventory; single model, not two attractions."
+    },
+    {
+      "key": "puits-couriot",
+      "name": "Puits Couriot",
+      "source": "http://m.jourdan974.free.fr/photos5.htm",
+      "evidence": "Summer2001 pict0055 shows mine headframe, low industrial buildings and paired spoil heaps. Explicitly named in secondary inventory; exhibit not an actual mine ride."
+    },
+    {
+      "key": "saint-bonnet",
+      "name": "Collégiale de Saint-Bonnet-le-Château",
+      "source": "http://m.jourdan974.free.fr/photos5.htm",
+      "evidence": "Summer2001 pict0057 shows church with two asymmetrical square towers, rose window and stepped entrance. Correct religious-building identity corroborated by LoireTourisme; do not import wiki mislabel Château de Saint-Bonnet-le-Château as another exhibit."
+    },
+    {
+      "key": "feurs-eglise",
+      "name": "Église de Feurs",
+      "source": "http://m.jourdan974.free.fr/photos5.htm",
+      "evidence": "Summer2001 photograph named feurs50.jpg plus explicit secondary inventory identifies church model; no represented full-size church opening date imported."
+    },
+    {
+      "key": "chateau-roche",
+      "name": "Château de la Roche",
+      "source": "https://classedespetits.blogspot.com/2010/07/",
+      "evidence": "Contemporary school account explicitly identifies model visited1July2010. Actual model installation date not established."
+    }
+  ],
+  "serviceSource": "https://www.infotourisme.net/circuit-touristique/1509/bienvenue-dans-les-montagnes-du-haut-forez",
+  "secondaryInventory": "https://everybodywiki.com/Village_de_la_Dros%C3%A9ra",
+  "totalDocumented2007": 53,
+  "individuallyCorroboratedModels": 7,
+  "unverifiedCandidates": [
+    "Abbaye de La Bénisson-Dieu",
+    "Château d’Essalois",
+    "Cheminée Marrel",
+    "Tour de Cleppé",
+    "Château de Montrond",
+    "Prieuré de Pouilly-les-Feurs",
+    "Théâtre de Roanne",
+    "Château de Sail-sous-Couzan",
+    "Mairie de Saint-Étienne",
+    "Chapelle Notre-Dame de Pitié",
+    "Barrage de Grangent",
+    "Église Saint-Romain-le-Puy",
+    "Église Saint-Sixte",
+    "Chastel de Saint-Victor-sur-Loire",
+    "Les Vignerons Foréziens",
+    "Pont du Pertuiset",
+    "Tour Matagrin",
+    "Mairie ronde d’Ambert",
+    "Château du Pirou",
+    "Thermes de Vichy"
+  ],
+  "namedZones": 0
+}

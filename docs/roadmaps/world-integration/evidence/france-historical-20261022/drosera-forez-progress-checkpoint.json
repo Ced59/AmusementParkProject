@@ -1,0 +1,40 @@
+{
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "name": "Parc de la Droséra – Forez Miniature",
+  "owner": "Conversation France",
+  "updatedAtUtc": "2026-11-02T20:12:06.988532+00:00",
+  "phase": "partial-source-gaps",
+  "completed": false,
+  "finalAuditPerformed": true,
+  "parentVisible": false,
+  "items": 9,
+  "itemsWithEightDescriptions": 7,
+  "images": 9,
+  "logo": false,
+  "officialMaps": 0,
+  "historyFacts": 2,
+  "articleLanguages": 8,
+  "score": 80,
+  "publicationBlockers": [
+    "media.logo-required"
+  ],
+  "dataIntegrationEvents": 17,
+  "lastDataIntegrationAt": "2026-11-02T20:10:50.935Z",
+  "lastDataIntegrationRawUtc": "2026-11-02T20:10:50.93586Z",
+  "lastOperation": "apply-0fa1da50-580c-4b36-a38b-a1c0dc699c05",
+  "latestGraph": "09-consolidated-audit-graph.json",
+  "audit": "09-progress-audit.json",
+  "sourceGaps": "09-source-gaps.json",
+  "facebookStatus": "NotAttempted",
+  "next": "Continue distinctNouveauTivoli qualification then remainingFrenchbacklog. Retryoldoperatorarchivesafterbackoffforlogo/maps/completeinventory. No completedclaim.",
+  "warnings": [
+    "CoreprivatecreationacceptedsolemissingGPSwarning; coordinatesnotinvented.",
+    "FirstcreditPreviewunresolveditemownerkeysnotapplied; correctedbareitemkeysresolvedallowners.",
+    "FreshfullExport1149acceptedvalues matchedafterdocumentedreference/itemkeyenumorderingnormalization; referencebiographyincluded.",
+    "Source-labelspacingrefinementafterfullExport is verifiedApply,consolidatedinto authoritativeauditgraph. One canonicalretractedrevision,notthirdcurrentfact."
+  ],
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}

@@ -31112,13 +31112,13 @@
       "name": "Village de la Droséra - Forez Miniature",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "Parc historique — miniatures",
       "locality": "Jeansagnière",
-      "siteId": null,
+      "siteId": "7879f5dc-db40-4fcf-a637-86c58754040d",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-02T20:08:43.2881509Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -31126,14 +31126,210 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-02T20:10:50.935Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-8f4b2dee-6769-4a2f-a0a0-a9792f199189",
+          "appliedAt": "2026-11-02T19:44:28.884Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-8f4b2dee-6769-4a2f-a0a0-a9792f199189",
+          "auditEvidence": null,
+          "summary": "Création privée de Droséra–Forez Miniature à Jeansagnière : activité1992–2013 vérifiée auprès du créateur et du département ; ancienne fermeture2009 infirmée par visite2010. Village de chalets distinct, GPS non établi."
+        },
+        {
+          "eventId": "apply-6cad7286-bc65-4bb6-a434-74069a714508",
+          "appliedAt": "2026-11-02T19:46:08.175Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-6cad7286-bc65-4bb6-a434-74069a714508",
+          "auditEvidence": null,
+          "summary": "Fondateur Patrick Burtart vérifié sur son site : nouvelle référence privée et rattachement au parc, sans modifier de référence partagée."
+        },
+        {
+          "eventId": "apply-d8cf4bd4-1fa8-438e-9942-45759a48ac99",
+          "appliedAt": "2026-11-02T19:48:03.101Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-d8cf4bd4-1fa8-438e-9942-45759a48ac99",
+          "auditEvidence": null,
+          "summary": "Inventaire historique initial : sept maquettes corroborées, boutique et aire de pique-nique ; neuf fiches privées, sans inventer dates individuelles, positions ou devenir matériel après fermeture."
+        },
+        {
+          "eventId": "apply-d6431658-571c-4443-908d-bd44499891a5",
+          "appliedAt": "2026-11-02T19:50:47.532Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-d6431658-571c-4443-908d-bd44499891a5",
+          "auditEvidence": null,
+          "summary": "Descriptions du parc rédigées et relues dans les huit langues : six paragraphes, paysage du Forez, maquettes régionales, collection de Patrick Burtart et fermeture2013."
+        },
+        {
+          "eventId": "import-photo-98dfc95db38b4f6692f0d5126f36ff4d-2026-11-02T195208.527Z",
+          "appliedAt": "2026-11-02T19:52:08.527Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-98dfc95db38b4f6692f0d5126f36ff4d-2026-11-02T195208.527Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-batie, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ead6d8bddba740edbbcec0638917ef27-2026-11-02T195222.757Z",
+          "appliedAt": "2026-11-02T19:52:22.757Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-ead6d8bddba740edbbcec0638917ef27-2026-11-02T195222.757Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-chalmazel, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a86e8e5556464239b53b0d7de25ecce5-2026-11-02T195236.950Z",
+          "appliedAt": "2026-11-02T19:52:36.950Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-a86e8e5556464239b53b0d7de25ecce5-2026-11-02T195236.950Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cathedrale-proche, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2d7ab9acb0e241ec8826755bf0fb5f76-2026-11-02T195254.739Z",
+          "appliedAt": "2026-11-02T19:52:54.739Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-2d7ab9acb0e241ec8826755bf0fb5f76-2026-11-02T195254.739Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cathedrale, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3c9e3f21c9164e64aadade2b2bf785d7-2026-11-02T195324.145Z",
+          "appliedAt": "2026-11-02T19:53:24.145Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-3c9e3f21c9164e64aadade2b2bf785d7-2026-11-02T195324.145Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-couriot, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d116533f50f74d079fe8ba491e9434e8-2026-11-02T195351.897Z",
+          "appliedAt": "2026-11-02T19:53:51.897Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-d116533f50f74d079fe8ba491e9434e8-2026-11-02T195351.897Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bassin, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6f73b70f21664169902c835133e6f8f8-2026-11-02T195406.903Z",
+          "appliedAt": "2026-11-02T19:54:06.903Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-6f73b70f21664169902c835133e6f8f8-2026-11-02T195406.903Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-saint-bonnet, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9fa27b91614e432e9428e24d8fed61b2-2026-11-02T195421.012Z",
+          "appliedAt": "2026-11-02T19:54:21.012Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-9fa27b91614e432e9428e24d8fed61b2-2026-11-02T195421.012Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-feurs, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6ea4e84eb03a4fd59d2da335842ffdfb-2026-11-02T195617.811Z",
+          "appliedAt": "2026-11-02T19:56:17.811Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-6ea4e84eb03a4fd59d2da335842ffdfb-2026-11-02T195617.811Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-roche, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-e4e6dede-6ca8-40c5-9611-0f60621b6e7a",
+          "appliedAt": "2026-11-02T20:00:59.903Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-e4e6dede-6ca8-40c5-9611-0f60621b6e7a",
+          "auditEvidence": null,
+          "summary": "Biographie de Patrick Burtart dans les huit langues et localisation des crédits des huit photographies de Michel Jourdan ; rattachements vérifiés sans réimport."
+        },
+        {
+          "eventId": "apply-8bc4c329-e072-4fdd-ba81-c1bcb57236c2",
+          "appliedAt": "2026-11-02T20:02:58.200Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-8bc4c329-e072-4fdd-ba81-c1bcb57236c2",
+          "auditEvidence": null,
+          "summary": "Sept maquettes décrites en huit langues :56 textes originaux de128 à167mots, vérifiés sur les photos de2001 et2010 ; boutique et aire de pique-nique restent sans texte faute de matière sourcée."
+        },
+        {
+          "eventId": "apply-bf6b514e-204a-4155-89f3-c1b6174641e9",
+          "appliedAt": "2026-11-02T20:08:13.643Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-bf6b514e-204a-4155-89f3-c1b6174641e9",
+          "auditEvidence": null,
+          "summary": "Histoire privée : création1992, fermeture2013 et article développé dans les huit langues, trois photographies contextuelles datées et quatre sources primaires ; dates conservées à l’année."
+        },
+        {
+          "eventId": "apply-0fa1da50-580c-4b36-a38b-a1c0dc699c05",
+          "appliedAt": "2026-11-02T20:10:50.935Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-0fa1da50-580c-4b36-a38b-a1c0dc699c05",
+          "auditEvidence": null,
+          "summary": "Audit final : correction de lisibilité de trois libellés de sources dans l’article existant, sans changer les faits, les textes ou les médias."
+        }
+      ],
+      "nextAction": "Fiche privée auditée à80/100 : neuf éléments dont sept maquettes décrites et illustrées en huit langues, neuf photos, deux faits et un article. Logo requis ; inventaire complet des53maquettes, deux descriptions de services, plans et coordonnées restent à documenter. Activité1992–2013, ancienne fermeture2009 infirmée. Voir drosera-forez-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Patrick Burtart",
+          "url": "https://www.patrickburtart.fr/",
+          "accessedAt": "2026-11-02T20:08:37.436580+00:00"
+        },
+        {
+          "label": "Loire Magazine62",
+          "url": "https://www.loire.fr/upload/docs/application/pdf/lm62.pdf",
+          "accessedAt": "2026-11-02T20:08:37.437951+00:00"
+        },
+        {
+          "label": "Michel Jourdan",
+          "url": "http://m.jourdan974.free.fr/photos5.htm",
+          "accessedAt": "2026-11-02T20:08:37.438725+00:00"
+        },
+        {
+          "label": "Visite scolaire2010",
+          "url": "https://classedespetits.blogspot.com/2010/07/",
+          "accessedAt": "2026-11-02T20:08:37.787646+00:00"
+        },
+        {
+          "label": "Historique du parcours",
+          "url": "https://www.infotourisme.net/circuit-touristique/1509/bienvenue-dans-les-montagnes-du-haut-forez",
+          "accessedAt": "2026-11-02T20:08:37.920732+00:00"
         }
       ]
     },
@@ -33976,21 +34172,21 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-11-02T19:00:57.319304+00:00",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Exploitation Robertson à partir de1826ou1827 ; fin1841–1842àpréciser",
-      "identityConfidence": "Établissement distinct du GrandTivoli, dates etpérimètreàaffiner",
+      "sourceLifecycleSignal": "Ouverture en 1826 ; fermeture et démolition en 1841–1842 à préciser.",
+      "identityConfidence": "Établissement distinct du Grand Tivoli ; succession de nom documentée, sans continuité de parcelle.",
       "possibleMatches": [],
       "aliases": [
         "Nouveau Tivoli",
         "Folie La Bouëxière",
         "Tivoli de Robertson"
       ],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Qualifier séparément le successeur du GrandTivoli : vérifier dates1826/1827 et fermeture1841/1842, rueClichy, opérateurs et parcelles ; reprendre la recherche officielle avant création. Aucun Apply pour ce candidat.",
+      "nextAction": "Conversation France : Nouveau Tivoli de Robertson à la Folie La Bouëxière, parc distinct du Grand Tivoli. Recherches mondiales Park et Standalone achevées pour Tivoli, Robertson, Bouexiere et Bouëxière ; aucun doublon du lieu. Ouverture 1826 ; fermeture/démolition 1841–1842 à préciser avant création. Preuve : docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-reservation.json",
       "sources": [
         {
           "label": "9eHistoire — Nouveau Tivoli, distinct successeur à la Folie La Bouëxière",

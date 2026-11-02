@@ -1,0 +1,335 @@
+{
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "name": "Parc de la Droséra – Forez Miniature",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-8f4b2dee-6769-4a2f-a0a0-a9792f199189",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T19:44:28.8848287Z",
+      "appliedAt": "2026-11-02T19:44:28.884Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "47364fce01ca7182f66e8189d8811caf4cc5df3a0cd609d64e98d044c2199fb9",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 1,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "openingDateText",
+        "postalCode",
+        "status",
+        "type"
+      ],
+      "summary": "Création privée de Droséra–Forez Miniature à Jeansagnière : activité1992–2013 vérifiée auprès du créateur et du département ; ancienne fermeture2009 infirmée par visite2010. Village de chalets distinct, GPS non établi."
+    },
+    {
+      "eventId": "apply-6cad7286-bc65-4bb6-a434-74069a714508",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T19:46:08.1753693Z",
+      "appliedAt": "2026-11-02T19:46:08.175Z",
+      "receiptFile": "01-founder-apply.receipt.json",
+      "receiptSha256": "888b2406be1af663a14a26ad2e49e2ae97b68f0d03e0c9ba5e9378a7275d3aba",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "founderId"
+      ],
+      "summary": "Fondateur Patrick Burtart vérifié sur son site : nouvelle référence privée et rattachement au parc, sans modifier de référence partagée."
+    },
+    {
+      "eventId": "apply-d8cf4bd4-1fa8-438e-9942-45759a48ac99",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T19:48:03.1010635Z",
+      "appliedAt": "2026-11-02T19:48:03.101Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "0d60d97b5e57bd106f46af0fe37b6b31a1f36608eadfaeac49df2517c4cffe13",
+      "counts": {
+        "created": 9,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Inventaire historique initial : sept maquettes corroborées, boutique et aire de pique-nique ; neuf fiches privées, sans inventer dates individuelles, positions ou devenir matériel après fermeture."
+    },
+    {
+      "eventId": "apply-d6431658-571c-4443-908d-bd44499891a5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T19:50:47.5324236Z",
+      "appliedAt": "2026-11-02T19:50:47.532Z",
+      "receiptFile": "04-park-apply.receipt.json",
+      "receiptSha256": "688b998b23870bfe9be3bcbf6e2def8fbc22984a2bf6c18131a79eda0ea55e03",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions du parc rédigées et relues dans les huit langues : six paragraphes, paysage du Forez, maquettes régionales, collection de Patrick Burtart et fermeture2013."
+    },
+    {
+      "eventId": "import-photo-98dfc95db38b4f6692f0d5126f36ff4d-2026-11-02T195208.527Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:52:08.527Z",
+      "appliedAt": "2026-11-02T19:52:08.527Z",
+      "receiptFile": "05-batie-import-receipt.json",
+      "receiptSha256": "c8786637dc745d1f7202c665a26f63fcdaaae40fc3629440037de69167438d36",
+      "imageId": "98dfc95db38b4f6692f0d5126f36ff4d",
+      "ownerId": "0af447eb-ce93-4566-aa21-a0ed22d50615",
+      "createdAt": "2026-11-02T19:52:04.651Z",
+      "sourceUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "summary": "Import privé du média historique 05-batie, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-ead6d8bddba740edbbcec0638917ef27-2026-11-02T195222.757Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:52:22.757Z",
+      "appliedAt": "2026-11-02T19:52:22.757Z",
+      "receiptFile": "05-chalmazel-import-receipt.json",
+      "receiptSha256": "366a3a2c3e2b6f104b03b220c313c65ed2b0fb47741004688738d0d61fd847e0",
+      "imageId": "ead6d8bddba740edbbcec0638917ef27",
+      "ownerId": "60cd5e5d-6404-4139-8604-41a77f53cc1a",
+      "createdAt": "2026-11-02T19:52:19.278Z",
+      "sourceUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "summary": "Import privé du média historique 05-chalmazel, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-a86e8e5556464239b53b0d7de25ecce5-2026-11-02T195236.950Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:52:36.95Z",
+      "appliedAt": "2026-11-02T19:52:36.950Z",
+      "receiptFile": "05-cathedrale-proche-import-receipt.json",
+      "receiptSha256": "271193a8dfce2d09827378106e6ddf706552efc911dbf0549f6ab4bdd4d2b5a4",
+      "imageId": "a86e8e5556464239b53b0d7de25ecce5",
+      "ownerId": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+      "createdAt": "2026-11-02T19:52:33.561Z",
+      "sourceUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "summary": "Import privé du média historique 05-cathedrale-proche, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-2d7ab9acb0e241ec8826755bf0fb5f76-2026-11-02T195254.739Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:52:54.739Z",
+      "appliedAt": "2026-11-02T19:52:54.739Z",
+      "receiptFile": "05-cathedrale-import-receipt.json",
+      "receiptSha256": "6a1ded5b14667ac6707ccb542590f8c2446103f9d99e7744bb6f3bc4e5dd23d4",
+      "imageId": "2d7ab9acb0e241ec8826755bf0fb5f76",
+      "ownerId": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+      "createdAt": "2026-11-02T19:52:51.305Z",
+      "sourceUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "summary": "Import privé du média historique 05-cathedrale, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3c9e3f21c9164e64aadade2b2bf785d7-2026-11-02T195324.145Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:53:24.145Z",
+      "appliedAt": "2026-11-02T19:53:24.145Z",
+      "receiptFile": "05-couriot-import-receipt.json",
+      "receiptSha256": "c052fb59f539b9f28e0f6556e8b5e4b0a4ab764038ed37a57b3ea539e62a0b06",
+      "imageId": "3c9e3f21c9164e64aadade2b2bf785d7",
+      "ownerId": "ef231784-6388-4beb-8b78-33a903a0a36f",
+      "createdAt": "2026-11-02T19:53:20.387Z",
+      "sourceUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "summary": "Import privé du média historique 05-couriot, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-d116533f50f74d079fe8ba491e9434e8-2026-11-02T195351.897Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:53:51.897Z",
+      "appliedAt": "2026-11-02T19:53:51.897Z",
+      "receiptFile": "05-bassin-import-receipt.json",
+      "receiptSha256": "c105c660d5519e7dfa068e21b1e735123164e7a8f2aa9f99958ea5772ee4dde6",
+      "imageId": "d116533f50f74d079fe8ba491e9434e8",
+      "ownerId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+      "createdAt": "2026-11-02T19:53:48.456Z",
+      "sourceUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "summary": "Import privé du média historique 05-bassin, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-6f73b70f21664169902c835133e6f8f8-2026-11-02T195406.903Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:54:06.903Z",
+      "appliedAt": "2026-11-02T19:54:06.903Z",
+      "receiptFile": "05-saint-bonnet-import-receipt.json",
+      "receiptSha256": "2f7af47769af86bb5f239d6b1aa03dc200e600ceeaa88b9ee54db68775b6e702",
+      "imageId": "6f73b70f21664169902c835133e6f8f8",
+      "ownerId": "8168fe00-832e-44c5-b952-024d63c38ecb",
+      "createdAt": "2026-11-02T19:54:03.305Z",
+      "sourceUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "summary": "Import privé du média historique 05-saint-bonnet, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-9fa27b91614e432e9428e24d8fed61b2-2026-11-02T195421.012Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:54:21.012Z",
+      "appliedAt": "2026-11-02T19:54:21.012Z",
+      "receiptFile": "05-feurs-import-receipt.json",
+      "receiptSha256": "44e0bf86b92bf28279d1727c4c1e4ca6ba4a383f81d964fa20d65d96fc3c8d25",
+      "imageId": "9fa27b91614e432e9428e24d8fed61b2",
+      "ownerId": "c8b74765-ed0c-4c9f-81c9-46950b77765b",
+      "createdAt": "2026-11-02T19:54:17.617Z",
+      "sourceUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "summary": "Import privé du média historique 05-feurs, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-6ea4e84eb03a4fd59d2da335842ffdfb-2026-11-02T195617.811Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T19:56:17.811Z",
+      "appliedAt": "2026-11-02T19:56:17.811Z",
+      "receiptFile": "05-roche-import-receipt.json",
+      "receiptSha256": "aed517fd0ed6dfbc4671d3b00a7ad833ff377d84a2dcc33ed44a50351159d770",
+      "imageId": "6ea4e84eb03a4fd59d2da335842ffdfb",
+      "ownerId": "4476e2ba-bd59-49de-9c77-3c6c5bb9a877",
+      "createdAt": "2026-11-02T19:56:14.275Z",
+      "sourceUrl": "https://classedespetits.blogspot.com/2010/07/",
+      "summary": "Import privé du média historique 05-roche, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-e4e6dede-6ca8-40c5-9611-0f60621b6e7a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T20:00:59.9037875Z",
+      "appliedAt": "2026-11-02T20:00:59.903Z",
+      "receiptFile": "05-credits-founder-reviewed-apply.receipt.json",
+      "receiptSha256": "7fdabb35ee301f893cec964def830bf765a68c34e391f0a1c0a3e5e512f246b2",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 7,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt",
+        "credits.de",
+        "credits.en",
+        "credits.es",
+        "credits.fr",
+        "credits.it",
+        "credits.nl",
+        "credits.pl",
+        "credits.pt"
+      ],
+      "summary": "Biographie de Patrick Burtart dans les huit langues et localisation des crédits des huit photographies de Michel Jourdan ; rattachements vérifiés sans réimport."
+    },
+    {
+      "eventId": "apply-8bc4c329-e072-4fdd-ba81-c1bcb57236c2",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T20:02:58.2001414Z",
+      "appliedAt": "2026-11-02T20:02:58.200Z",
+      "receiptFile": "04-items-apply.receipt.json",
+      "receiptSha256": "49a505560cf6acbccd52a21d02329881e00e5fd75828f6bf2b1a106abd3c6ccf",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Sept maquettes décrites en huit langues :56 textes originaux de128 à167mots, vérifiés sur les photos de2001 et2010 ; boutique et aire de pique-nique restent sans texte faute de matière sourcée."
+    },
+    {
+      "eventId": "apply-bf6b514e-204a-4155-89f3-c1b6174641e9",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T20:08:13.6431621Z",
+      "appliedAt": "2026-11-02T20:08:13.643Z",
+      "receiptFile": "08-history-apply.receipt.json",
+      "receiptSha256": "637b74e831389c5eac616dc6d6bef52aa0a2ccc4b146ba5c3669ba065b75a78e",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "contextParkId",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Histoire privée : création1992, fermeture2013 et article développé dans les huit langues, trois photographies contextuelles datées et quatre sources primaires ; dates conservées à l’année."
+    },
+    {
+      "eventId": "apply-0fa1da50-580c-4b36-a38b-a1c0dc699c05",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T20:10:50.93586Z",
+      "appliedAt": "2026-11-02T20:10:50.935Z",
+      "receiptFile": "09-source-labels-apply.receipt.json",
+      "receiptSha256": "0b29b2a6fe9aca90b353bb9088d568ce94eded251a4aab218790c35c5f3583c2",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Audit final : correction de lisibilité de trois libellés de sources dans l’article existant, sans changer les faits, les textes ou les médias."
+    }
+  ],
+  "publicationOrNoop": []
+}

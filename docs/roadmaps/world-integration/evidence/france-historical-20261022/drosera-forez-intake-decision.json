@@ -1,0 +1,146 @@
+{
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-02T19:43:32.760621+00:00",
+  "name": "Parc de la Droséra – Forez Miniature",
+  "aliases": [
+    "Village de la Droséra",
+    "Parc de la Droséra",
+    "Parc de la Drosera",
+    "Forez Miniature"
+  ],
+  "decision": "Create private historical ThemePark, founded1992 and closed2013 at year precision, Jeansagnière42920. No official Park or Standalone match across all eight searches. Residential chalet village and swimming-pool company are not separate park attractions by default.",
+  "officialSearches": [
+    {
+      "action": "SearchParks",
+      "query": "Droséra",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "action": "SearchParks",
+      "query": "Drosera",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "action": "SearchParks",
+      "query": "Forez",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "action": "SearchParks",
+      "query": "Jeansagnière",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Droséra",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Drosera",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Forez",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Jeansagnière",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.patrickburtart.fr/",
+      "evidence": "Creator Patrick Burtart biography and publicly reproduced press: founded1992; operated1992–2013 in CouleurForez9Dec2024. Spelling Burtart, not Butart. Publisher logo is not park logo."
+    },
+    {
+      "url": "https://www.loire.fr/upload/docs/application/pdf/lm62.pdf",
+      "evidence": "Department magazine March/April2007 p29: Jeansagnière, ten hectares,53 regional monument miniatures."
+    },
+    {
+      "url": "https://www.loire.fr/upload/docs/application/pdf/lm_52_2007_02_16__10_17_18_212.pdf",
+      "evidence": "Department magazine p17: Jeansagnière42920; older official domain parc-de-la-drosera.fr. Publication year not inferred from upload path."
+    },
+    {
+      "url": "http://m.jourdan974.free.fr/photos5.htm",
+      "evidence": "Eight original photographs from summer2001, all personally inspected; only proven monument identities will be attached to items."
+    },
+    {
+      "url": "https://classedespetits.blogspot.com/2010/07/",
+      "evidence": "School account dated2July2010 explicitly documents visit1July2010 and Château de la Roche miniature; contradicts earlier backlog2009 closure."
+    },
+    {
+      "url": "https://www.infotourisme.net/circuit-touristique/1509/bienvenue-dans-les-montagnes-du-haut-forez",
+      "evidence": "Historical park description: regional miniature trail, juniper/heather/bilberry vegetation, boutique with homemade products and picnic area. Stale opening hours are not current."
+    }
+  ],
+  "notIncluded": [
+    "Uncorroborated exact opening6June1992",
+    "Uncorroborated exact closure monthAugust2013",
+    "Incorrect2009 closure from national inventory",
+    "Creator current publisher logo/contact address",
+    "2012 pool-company liquidation as park closure",
+    "Current chalet residential use as an operating miniature park"
+  ],
+  "remainingGaps": [
+    "Historical park entrance coordinates not proven",
+    "Authentic isolated park logo not found yet",
+    "Complete named inventory of53 models not recovered",
+    "Individual model opening dates and positions unknown",
+    "Official annual maps not recovered"
+  ],
+  "coordinationReference": "drosera-forez-reservation.json",
+  "mutated": false
+}
